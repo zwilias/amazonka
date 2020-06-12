@@ -40,6 +40,7 @@ module Control.Monad.Trans.AWS
     , newEnv
     , Env
     , HasEnv       (..)
+    , askEnv
 
     -- ** Credential Discovery
     , Credentials  (..)
@@ -158,6 +159,7 @@ module Control.Monad.Trans.AWS
     ) where
 
 import Control.Applicative
+import Control.Monad
 import Control.Monad.Base
 import Control.Monad.Catch
 import Control.Monad.Error.Class    (MonadError (..))
@@ -183,7 +185,7 @@ import Network.AWS.Env
 import Network.AWS.Internal.Body
 import Network.AWS.Internal.HTTP
 import Network.AWS.Internal.Logger
-import Network.AWS.Lens            (catching, throwingM, trying, view)
+import Network.AWS.Lens            (catching, throwingM, trying, view, (^.))
 import Network.AWS.Pager           (AWSPager (..))
 import Network.AWS.Prelude         as AWS
 import Network.AWS.Request         (requestURL)
@@ -250,8 +252,13 @@ instance MonadBaseControl b m => MonadBaseControl b (AWST' r m) where
 
 instance MonadUnliftIO m => MonadUnliftIO (AWST' r m) where
 #if MIN_VERSION_unliftio_core(0,2,0)
-    withRunInIO inner = (AWST' $ (\(UnliftIO f) -> UnliftIO $ f . unAWST) <$> askUnliftIO) >>= \u -> liftIO (inner (unliftIO u))
+    {-# INLINE withRunInIO #-}
+    withRunInIO inner =
+        AWST' $
+        withRunInIO $ \run ->
+        inner (run . unAWST)
 #else
+    {-# INLINE askUnliftIO #-}
     askUnliftIO = AWST' $ (\(UnliftIO f) -> UnliftIO $ f . unAWST)
         <$> askUnliftIO
 #endif
@@ -288,6 +295,9 @@ instance PrimMonad m => PrimMonad (AWST' r m) where
 -- | Run an 'AWST' action with the specified environment.
 runAWST :: HasEnv r => r -> AWST' r m a -> m a
 runAWST r (AWST' m) = runReaderT m r
+
+askEnv :: (Monad m, HasEnv r) => AWST' r m Env
+askEnv = AWST' (asks (^. environment))
 
 -- | An alias for the constraints required to send requests,
 -- which 'AWST' implicitly fulfils.
