@@ -78,17 +78,19 @@ prodToJSON s Prod'{..} is =
         go (Help h) = Help (Text.replace "\n--" "" h)
 
 data Sum = Sum'
-    { _sumName  :: Text
-    , _sumDoc   :: Maybe Help
-    , _sumDecl  :: Rendered
-    , _sumCtors :: Map Text Text
+    { _sumName     :: Text
+    , _sumDoc      :: Maybe Help
+    , _sumDecl     :: Rendered
+    , _sumCtor     :: Text
+    , _sumPatterns :: Map Text Text
     } deriving (Eq, Show)
 
 sumToJSON :: Solved -> Sum -> [Text] -> [Pair]
 sumToJSON s Sum'{..} is =
     [ "type"          .= Text.pack "sum"
     , "name"          .= _sumName
-    , "constructors"  .= _sumCtors
+    , "constructor"   .= _sumCtor
+    , "patterns"      .= _sumPatterns
     , "documentation" .= _sumDoc
     , "declaration"   .= _sumDecl
     , "instances"     .= is
