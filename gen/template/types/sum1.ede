@@ -13,8 +13,8 @@
 module {{ moduleName }} (
   {{ shape.name }} (
     ..
-    {% for ctor in shape.constructors %}
-    , {{ ctor.key }}
+    {% for pat in shape.patterns %}
+    , {{ pat.key }}
     {% endfor %}
     )
   ) where

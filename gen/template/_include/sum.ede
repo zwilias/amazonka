@@ -3,14 +3,14 @@
 {% endif %}
 {{ shape.declaration }}
 
-{% for ctor in shape.constructors %}
-pattern {{ ctor.key }} :: {{ shape.name }}
-pattern {{ ctor.key }} = {{ shape.constructor }} "{{ ctor.value }}"
+{% for pat in shape.patterns %}
+pattern {{ pat.key }} :: {{ shape.name }}
+pattern {{ pat.key }} = {{ shape.constructor }} "{{ pat.value }}"
 
 {% endfor %}
 {-# COMPLETE
-{% for ctor in shape.constructors %}
-  {{ ctor.key }},
+{% for pat in shape.patterns %}
+  {{ pat.key }},
 {% endfor %}
   {{ shape.constructor }} #-}
 
@@ -26,13 +26,13 @@ instance ToText {{ shape.name }} where
 --   fromEnum is a partial function, and will error on values unknown at generation time.
 instance Enum {{ shape.name }} where
     toEnum i = case i of
-        {% for ctor in shape.constructors %}
-        {{ ctor.index0 }} -> {{ ctor.key }}
+        {% for pat in shape.patterns %}
+        {{ pat.index0 }} -> {{ pat.key }}
         {% endfor %}
         _ -> (error . showText) $ "Unknown index for {{ shape.name }}: " <> toText i
     fromEnum x = case x of
-        {% for ctor in shape.constructors %}
-        {{ ctor.key }} -> {{ ctor.index0 }}
+        {% for pat in shape.patterns %}
+        {{ pat.key }} -> {{ pat.index0 }}
         {% endfor %}    
         {{ shape.constructor }} name -> (error . showText) $ "Unknown {{ shape.name }}: " <> original name
 
@@ -40,12 +40,12 @@ instance Enum {{ shape.name }} where
 --   AWS may have added more since the source was generated.
 --   This instance exists only for backward compatibility.
 instance Bounded {{ shape.name }} where
-    {% for ctor in shape.constructors %}
-    {% if ctor.first %}
-    minBound = {{ ctor.key }}
+    {% for pat in shape.patterns %}
+    {% if pat.first %}
+    minBound = {{ pat.key }}
     {% endif %}
-    {% if ctor.last %}
-    maxBound = {{ ctor.key }}
+    {% if pat.last %}
+    maxBound = {{ pat.key }}
     {% endif %}
     {% endfor %}
 

@@ -88,7 +88,8 @@ populate d Templates{..} l = (encodeString d :/) . dir lib <$> layout
                 [ dir "AWS"
                     [ dir svc $
                         [ dir "Types" $
-                            mapMaybe shape (l ^.. shapes . each)
+                              mod (l ^. productNS) (productImports l) productTemplate
+                            : mapMaybe shape (l ^.. shapes . each)
                         , mod (l ^. typesNS) (typeImports l) typesTemplate
                         , mod (l ^. waitersNS) (waiterImports l) waitersTemplate
                         ] ++ map op (l ^.. operations . each)
@@ -139,8 +140,8 @@ populate d Templates{..} l = (encodeString d :/) . dir lib <$> layout
     shape :: SData -> Maybe (DirTree (Either Error Touch))
     shape s = (\t -> (write . shape' l t) s) <$> template s
       where
-        template (Prod _ _ _) = Just productTemplate
-        template (Sum  _ _ _) = Just sumTemplate
+        template (Prod _ _ _) = Just product1Template
+        template (Sum  _ _ _) = Just sum1Template
         template (Fun  _)     = Nothing
 
     fixture :: Operation Identity SData a -> [DirTree (Either Error Touch)]
@@ -186,8 +187,8 @@ shape' l t s = module' n (is s) t $ pure env
   where
     n = (l ^. typesNS) <> ((mkNS . typeId) $ identifier s)
 
-    is (Prod _ prod _) = productImports l prod
-    is (Sum  _ _    _) = sumImports l
+    is (Prod _ prod _) = product1Imports l prod
+    is (Sum  _ _    _) = sum1Imports l
     is _               = []
 
     env = object ["shape" .= s]
@@ -204,9 +205,7 @@ module' ns is tmpl f =
         return $! x <> fromPairs
             [ "moduleName"    .= ns
             , "moduleImports" .= is
-            , "templateName"  .= (templateName ns)
             ]
-      where templateName (NS xs) = last xs
 
 file' :: ToJSON a
       => Path

@@ -31,6 +31,7 @@ operationImports l o = sort $
     : "Network.AWS.Lens"
     : "Network.AWS.Prelude"
     : l ^. typesNS
+    : l ^. productNS
     : l ^. operationModules
    ++ maybeToList (const "Network.AWS.Pager" <$> o ^. opPager)
 
@@ -41,14 +42,28 @@ typeImports l = sort $
     : signatureImport (l ^. signatureVersion)
     : l ^. typeModules
 
-sumImports :: Library -> [NS]
-sumImports l = sort $
+sum1Imports :: Library -> [NS]
+sum1Imports l = sort $
       "Data.CaseInsensitive"
     : "Network.AWS.Prelude"
     : l ^. typeModules
 
-productImports :: Library -> Prod -> [NS]
-productImports l p = sort $
+productImports :: Library -> [NS]
+productImports l = sort $
+      "Network.AWS.Lens"
+    : "Network.AWS.Prelude"
+    : l ^. typeModules
+   <> productMods
+  where
+    productMods = (l ^. typesNS <>) . mkNS . typeId . identifier <$> products
+
+    products = filter isProduct $ l ^.. shapes . each
+
+    isProduct (Prod _ _ _) = True
+    isProduct _            = False
+
+product1Imports :: Library -> Prod -> [NS]
+product1Imports l p = sort $
       "Network.AWS.Lens"
     : "Network.AWS.Prelude"
     : l ^. typeModules
@@ -57,6 +72,7 @@ productImports l p = sort $
     moduleDependencies = Set.intersection dependencies moduleShapes
     dependencies = Set.map mkNS $ _prodDeps p
     moduleShapes = Set.fromList (mkNS . typeId . identifier <$> l ^.. shapes . each)
+
 
 waiterImports :: Library -> [NS]
 waiterImports l = sort $
