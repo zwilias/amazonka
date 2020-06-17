@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,38 +16,82 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.APIGateway.Types.IntegrationType where
+module Network.AWS.APIGateway.Types.IntegrationType (
+  IntegrationType (
+    ..
+    , AWS
+    , AWSProxy
+    , HTTP
+    , HTTPProxy
+    , Mock
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
+
 -- | The integration type. The valid value is @HTTP@ for integrating an API method with an HTTP backend; @AWS@ with any AWS service endpoints; @MOCK@ for testing without actually invoking the backend; @HTTP_PROXY@ for integrating with the HTTP proxy integration; @AWS_PROXY@ for integrating with the Lambda proxy integration. 
 --
 --
-data IntegrationType = AWS
-                     | AWSProxy
-                     | HTTP
-                     | HTTPProxy
-                     | Mock
-                         deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                   Typeable, Generic)
+data IntegrationType = IntegrationType' (CI Text)
+                         deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                   Generic)
+
+pattern AWS :: IntegrationType
+pattern AWS = IntegrationType' "AWS"
+
+pattern AWSProxy :: IntegrationType
+pattern AWSProxy = IntegrationType' "AWS_PROXY"
+
+pattern HTTP :: IntegrationType
+pattern HTTP = IntegrationType' "HTTP"
+
+pattern HTTPProxy :: IntegrationType
+pattern HTTPProxy = IntegrationType' "HTTP_PROXY"
+
+pattern Mock :: IntegrationType
+pattern Mock = IntegrationType' "MOCK"
+
+{-# COMPLETE
+  AWS,
+  AWSProxy,
+  HTTP,
+  HTTPProxy,
+  Mock,
+  IntegrationType' #-}
 
 instance FromText IntegrationType where
-    parser = takeLowerText >>= \case
-        "aws" -> pure AWS
-        "aws_proxy" -> pure AWSProxy
-        "http" -> pure HTTP
-        "http_proxy" -> pure HTTPProxy
-        "mock" -> pure Mock
-        e -> fromTextError $ "Failure parsing IntegrationType from value: '" <> e
-           <> "'. Accepted values: aws, aws_proxy, http, http_proxy, mock"
+    parser = (IntegrationType' . mk) <$> takeText
 
 instance ToText IntegrationType where
-    toText = \case
-        AWS -> "AWS"
-        AWSProxy -> "AWS_PROXY"
-        HTTP -> "HTTP"
-        HTTPProxy -> "HTTP_PROXY"
-        Mock -> "MOCK"
+    toText (IntegrationType' ci) = original ci
+
+-- | Represents an enum of /known/ $IntegrationType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum IntegrationType where
+    toEnum i = case i of
+        0 -> AWS
+        1 -> AWSProxy
+        2 -> HTTP
+        3 -> HTTPProxy
+        4 -> Mock
+        _ -> (error . showText) $ "Unknown index for IntegrationType: " <> toText i
+    fromEnum x = case x of
+        AWS -> 0
+        AWSProxy -> 1
+        HTTP -> 2
+        HTTPProxy -> 3
+        Mock -> 4
+        IntegrationType' name -> (error . showText) $ "Unknown IntegrationType: " <> original name
+
+-- | Represents the bounds of /known/ $IntegrationType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded IntegrationType where
+    minBound = AWS
+    maxBound = Mock
 
 instance Hashable     IntegrationType
 instance NFData       IntegrationType

@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,30 +16,67 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.APIGateway.Types.UnauthorizedCacheControlHeaderStrategy where
+module Network.AWS.APIGateway.Types.UnauthorizedCacheControlHeaderStrategy (
+  UnauthorizedCacheControlHeaderStrategy (
+    ..
+    , FailWith403
+    , SucceedWithResponseHeader
+    , SucceedWithoutResponseHeader
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data UnauthorizedCacheControlHeaderStrategy = FailWith403
-                                            | SucceedWithResponseHeader
-                                            | SucceedWithoutResponseHeader
+
+data UnauthorizedCacheControlHeaderStrategy = UnauthorizedCacheControlHeaderStrategy' (CI
+                                                                                         Text)
                                                 deriving (Eq, Ord, Read, Show,
-                                                          Enum, Bounded, Data,
-                                                          Typeable, Generic)
+                                                          Data, Typeable,
+                                                          Generic)
+
+pattern FailWith403 :: UnauthorizedCacheControlHeaderStrategy
+pattern FailWith403 = UnauthorizedCacheControlHeaderStrategy' "FAIL_WITH_403"
+
+pattern SucceedWithResponseHeader :: UnauthorizedCacheControlHeaderStrategy
+pattern SucceedWithResponseHeader = UnauthorizedCacheControlHeaderStrategy' "SUCCEED_WITH_RESPONSE_HEADER"
+
+pattern SucceedWithoutResponseHeader :: UnauthorizedCacheControlHeaderStrategy
+pattern SucceedWithoutResponseHeader = UnauthorizedCacheControlHeaderStrategy' "SUCCEED_WITHOUT_RESPONSE_HEADER"
+
+{-# COMPLETE
+  FailWith403,
+  SucceedWithResponseHeader,
+  SucceedWithoutResponseHeader,
+  UnauthorizedCacheControlHeaderStrategy' #-}
 
 instance FromText UnauthorizedCacheControlHeaderStrategy where
-    parser = takeLowerText >>= \case
-        "fail_with_403" -> pure FailWith403
-        "succeed_with_response_header" -> pure SucceedWithResponseHeader
-        "succeed_without_response_header" -> pure SucceedWithoutResponseHeader
-        e -> fromTextError $ "Failure parsing UnauthorizedCacheControlHeaderStrategy from value: '" <> e
-           <> "'. Accepted values: fail_with_403, succeed_with_response_header, succeed_without_response_header"
+    parser = (UnauthorizedCacheControlHeaderStrategy' . mk) <$> takeText
 
 instance ToText UnauthorizedCacheControlHeaderStrategy where
-    toText = \case
-        FailWith403 -> "FAIL_WITH_403"
-        SucceedWithResponseHeader -> "SUCCEED_WITH_RESPONSE_HEADER"
-        SucceedWithoutResponseHeader -> "SUCCEED_WITHOUT_RESPONSE_HEADER"
+    toText (UnauthorizedCacheControlHeaderStrategy' ci) = original ci
+
+-- | Represents an enum of /known/ $UnauthorizedCacheControlHeaderStrategy.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum UnauthorizedCacheControlHeaderStrategy where
+    toEnum i = case i of
+        0 -> FailWith403
+        1 -> SucceedWithResponseHeader
+        2 -> SucceedWithoutResponseHeader
+        _ -> (error . showText) $ "Unknown index for UnauthorizedCacheControlHeaderStrategy: " <> toText i
+    fromEnum x = case x of
+        FailWith403 -> 0
+        SucceedWithResponseHeader -> 1
+        SucceedWithoutResponseHeader -> 2
+        UnauthorizedCacheControlHeaderStrategy' name -> (error . showText) $ "Unknown UnauthorizedCacheControlHeaderStrategy: " <> original name
+
+-- | Represents the bounds of /known/ $UnauthorizedCacheControlHeaderStrategy.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded UnauthorizedCacheControlHeaderStrategy where
+    minBound = FailWith403
+    maxBound = SucceedWithoutResponseHeader
 
 instance Hashable     UnauthorizedCacheControlHeaderStrategy
 instance NFData       UnauthorizedCacheControlHeaderStrategy

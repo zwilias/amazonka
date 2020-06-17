@@ -46,6 +46,7 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.Route53Domains.Types
+import Network.AWS.Route53Domains.Types.Product
 
 -- | A @RenewDomain@ request includes the number of years that you want to renew for and the current expiration year.
 --

@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,27 +16,60 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.MediaLive.Types.FecOutputIncludeFec where
+module Network.AWS.MediaLive.Types.FecOutputIncludeFec (
+  FecOutputIncludeFec (
+    ..
+    , Column
+    , ColumnAndRow
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
+
 -- | Placeholder documentation for FecOutputIncludeFec
-data FecOutputIncludeFec = Column
-                         | ColumnAndRow
-                             deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                       Typeable, Generic)
+data FecOutputIncludeFec = FecOutputIncludeFec' (CI
+                                                   Text)
+                             deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                       Generic)
+
+pattern Column :: FecOutputIncludeFec
+pattern Column = FecOutputIncludeFec' "COLUMN"
+
+pattern ColumnAndRow :: FecOutputIncludeFec
+pattern ColumnAndRow = FecOutputIncludeFec' "COLUMN_AND_ROW"
+
+{-# COMPLETE
+  Column,
+  ColumnAndRow,
+  FecOutputIncludeFec' #-}
 
 instance FromText FecOutputIncludeFec where
-    parser = takeLowerText >>= \case
-        "column" -> pure Column
-        "column_and_row" -> pure ColumnAndRow
-        e -> fromTextError $ "Failure parsing FecOutputIncludeFec from value: '" <> e
-           <> "'. Accepted values: column, column_and_row"
+    parser = (FecOutputIncludeFec' . mk) <$> takeText
 
 instance ToText FecOutputIncludeFec where
-    toText = \case
-        Column -> "COLUMN"
-        ColumnAndRow -> "COLUMN_AND_ROW"
+    toText (FecOutputIncludeFec' ci) = original ci
+
+-- | Represents an enum of /known/ $FecOutputIncludeFec.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum FecOutputIncludeFec where
+    toEnum i = case i of
+        0 -> Column
+        1 -> ColumnAndRow
+        _ -> (error . showText) $ "Unknown index for FecOutputIncludeFec: " <> toText i
+    fromEnum x = case x of
+        Column -> 0
+        ColumnAndRow -> 1
+        FecOutputIncludeFec' name -> (error . showText) $ "Unknown FecOutputIncludeFec: " <> original name
+
+-- | Represents the bounds of /known/ $FecOutputIncludeFec.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded FecOutputIncludeFec where
+    minBound = Column
+    maxBound = ColumnAndRow
 
 instance Hashable     FecOutputIncludeFec
 instance NFData       FecOutputIncludeFec

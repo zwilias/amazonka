@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,23 +16,52 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.CertificateManagerPCA.Types.CertificateAuthorityType where
+module Network.AWS.CertificateManagerPCA.Types.CertificateAuthorityType (
+  CertificateAuthorityType (
+    ..
+    , Subordinate
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data CertificateAuthorityType = Subordinate
-                                  deriving (Eq, Ord, Read, Show, Enum, Bounded,
-                                            Data, Typeable, Generic)
+
+data CertificateAuthorityType = CertificateAuthorityType' (CI
+                                                             Text)
+                                  deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                            Generic)
+
+pattern Subordinate :: CertificateAuthorityType
+pattern Subordinate = CertificateAuthorityType' "SUBORDINATE"
+
+{-# COMPLETE
+  Subordinate,
+  CertificateAuthorityType' #-}
 
 instance FromText CertificateAuthorityType where
-    parser = takeLowerText >>= \case
-        "subordinate" -> pure Subordinate
-        e -> fromTextError $ "Failure parsing CertificateAuthorityType from value: '" <> e
-           <> "'. Accepted values: subordinate"
+    parser = (CertificateAuthorityType' . mk) <$> takeText
 
 instance ToText CertificateAuthorityType where
-    toText = \case
-        Subordinate -> "SUBORDINATE"
+    toText (CertificateAuthorityType' ci) = original ci
+
+-- | Represents an enum of /known/ $CertificateAuthorityType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum CertificateAuthorityType where
+    toEnum i = case i of
+        0 -> Subordinate
+        _ -> (error . showText) $ "Unknown index for CertificateAuthorityType: " <> toText i
+    fromEnum x = case x of
+        Subordinate -> 0
+        CertificateAuthorityType' name -> (error . showText) $ "Unknown CertificateAuthorityType: " <> original name
+
+-- | Represents the bounds of /known/ $CertificateAuthorityType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded CertificateAuthorityType where
+    minBound = Subordinate
+    maxBound = Subordinate
 
 instance Hashable     CertificateAuthorityType
 instance NFData       CertificateAuthorityType

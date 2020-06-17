@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,59 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.DynamoDB.Types.ReturnItemCollectionMetrics where
+module Network.AWS.DynamoDB.Types.ReturnItemCollectionMetrics (
+  ReturnItemCollectionMetrics (
+    ..
+    , RICMNone
+    , RICMSize
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data ReturnItemCollectionMetrics = RICMNone
-                                 | RICMSize
-                                     deriving (Eq, Ord, Read, Show, Enum,
-                                               Bounded, Data, Typeable, Generic)
+
+data ReturnItemCollectionMetrics = ReturnItemCollectionMetrics' (CI
+                                                                   Text)
+                                     deriving (Eq, Ord, Read, Show, Data,
+                                               Typeable, Generic)
+
+pattern RICMNone :: ReturnItemCollectionMetrics
+pattern RICMNone = ReturnItemCollectionMetrics' "NONE"
+
+pattern RICMSize :: ReturnItemCollectionMetrics
+pattern RICMSize = ReturnItemCollectionMetrics' "SIZE"
+
+{-# COMPLETE
+  RICMNone,
+  RICMSize,
+  ReturnItemCollectionMetrics' #-}
 
 instance FromText ReturnItemCollectionMetrics where
-    parser = takeLowerText >>= \case
-        "none" -> pure RICMNone
-        "size" -> pure RICMSize
-        e -> fromTextError $ "Failure parsing ReturnItemCollectionMetrics from value: '" <> e
-           <> "'. Accepted values: none, size"
+    parser = (ReturnItemCollectionMetrics' . mk) <$> takeText
 
 instance ToText ReturnItemCollectionMetrics where
-    toText = \case
-        RICMNone -> "NONE"
-        RICMSize -> "SIZE"
+    toText (ReturnItemCollectionMetrics' ci) = original ci
+
+-- | Represents an enum of /known/ $ReturnItemCollectionMetrics.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum ReturnItemCollectionMetrics where
+    toEnum i = case i of
+        0 -> RICMNone
+        1 -> RICMSize
+        _ -> (error . showText) $ "Unknown index for ReturnItemCollectionMetrics: " <> toText i
+    fromEnum x = case x of
+        RICMNone -> 0
+        RICMSize -> 1
+        ReturnItemCollectionMetrics' name -> (error . showText) $ "Unknown ReturnItemCollectionMetrics: " <> original name
+
+-- | Represents the bounds of /known/ $ReturnItemCollectionMetrics.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded ReturnItemCollectionMetrics where
+    minBound = RICMNone
+    maxBound = RICMSize
 
 instance Hashable     ReturnItemCollectionMetrics
 instance NFData       ReturnItemCollectionMetrics

@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,29 +16,65 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.MediaStore.Types.ContainerStatus where
+module Network.AWS.MediaStore.Types.ContainerStatus (
+  ContainerStatus (
+    ..
+    , Active
+    , Creating
+    , Deleting
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data ContainerStatus = Active
-                     | Creating
-                     | Deleting
-                         deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                   Typeable, Generic)
+
+data ContainerStatus = ContainerStatus' (CI Text)
+                         deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                   Generic)
+
+pattern Active :: ContainerStatus
+pattern Active = ContainerStatus' "ACTIVE"
+
+pattern Creating :: ContainerStatus
+pattern Creating = ContainerStatus' "CREATING"
+
+pattern Deleting :: ContainerStatus
+pattern Deleting = ContainerStatus' "DELETING"
+
+{-# COMPLETE
+  Active,
+  Creating,
+  Deleting,
+  ContainerStatus' #-}
 
 instance FromText ContainerStatus where
-    parser = takeLowerText >>= \case
-        "active" -> pure Active
-        "creating" -> pure Creating
-        "deleting" -> pure Deleting
-        e -> fromTextError $ "Failure parsing ContainerStatus from value: '" <> e
-           <> "'. Accepted values: active, creating, deleting"
+    parser = (ContainerStatus' . mk) <$> takeText
 
 instance ToText ContainerStatus where
-    toText = \case
-        Active -> "ACTIVE"
-        Creating -> "CREATING"
-        Deleting -> "DELETING"
+    toText (ContainerStatus' ci) = original ci
+
+-- | Represents an enum of /known/ $ContainerStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum ContainerStatus where
+    toEnum i = case i of
+        0 -> Active
+        1 -> Creating
+        2 -> Deleting
+        _ -> (error . showText) $ "Unknown index for ContainerStatus: " <> toText i
+    fromEnum x = case x of
+        Active -> 0
+        Creating -> 1
+        Deleting -> 2
+        ContainerStatus' name -> (error . showText) $ "Unknown ContainerStatus: " <> original name
+
+-- | Represents the bounds of /known/ $ContainerStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded ContainerStatus where
+    minBound = Active
+    maxBound = Deleting
 
 instance Hashable     ContainerStatus
 instance NFData       ContainerStatus

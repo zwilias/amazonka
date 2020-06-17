@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,34 +16,74 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.EC2.Types.TransitGatewayMulticastDomainState where
+module Network.AWS.EC2.Types.TransitGatewayMulticastDomainState (
+  TransitGatewayMulticastDomainState (
+    ..
+    , TGMDSAvailable
+    , TGMDSDeleted
+    , TGMDSDeleting
+    , TGMDSPending
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.EC2.Internal
 import Network.AWS.Prelude
-  
-data TransitGatewayMulticastDomainState = TGMDSAvailable
-                                        | TGMDSDeleted
-                                        | TGMDSDeleting
-                                        | TGMDSPending
-                                            deriving (Eq, Ord, Read, Show, Enum,
-                                                      Bounded, Data, Typeable,
-                                                      Generic)
+
+data TransitGatewayMulticastDomainState = TransitGatewayMulticastDomainState' (CI
+                                                                                 Text)
+                                            deriving (Eq, Ord, Read, Show, Data,
+                                                      Typeable, Generic)
+
+pattern TGMDSAvailable :: TransitGatewayMulticastDomainState
+pattern TGMDSAvailable = TransitGatewayMulticastDomainState' "available"
+
+pattern TGMDSDeleted :: TransitGatewayMulticastDomainState
+pattern TGMDSDeleted = TransitGatewayMulticastDomainState' "deleted"
+
+pattern TGMDSDeleting :: TransitGatewayMulticastDomainState
+pattern TGMDSDeleting = TransitGatewayMulticastDomainState' "deleting"
+
+pattern TGMDSPending :: TransitGatewayMulticastDomainState
+pattern TGMDSPending = TransitGatewayMulticastDomainState' "pending"
+
+{-# COMPLETE
+  TGMDSAvailable,
+  TGMDSDeleted,
+  TGMDSDeleting,
+  TGMDSPending,
+  TransitGatewayMulticastDomainState' #-}
 
 instance FromText TransitGatewayMulticastDomainState where
-    parser = takeLowerText >>= \case
-        "available" -> pure TGMDSAvailable
-        "deleted" -> pure TGMDSDeleted
-        "deleting" -> pure TGMDSDeleting
-        "pending" -> pure TGMDSPending
-        e -> fromTextError $ "Failure parsing TransitGatewayMulticastDomainState from value: '" <> e
-           <> "'. Accepted values: available, deleted, deleting, pending"
+    parser = (TransitGatewayMulticastDomainState' . mk) <$> takeText
 
 instance ToText TransitGatewayMulticastDomainState where
-    toText = \case
-        TGMDSAvailable -> "available"
-        TGMDSDeleted -> "deleted"
-        TGMDSDeleting -> "deleting"
-        TGMDSPending -> "pending"
+    toText (TransitGatewayMulticastDomainState' ci) = original ci
+
+-- | Represents an enum of /known/ $TransitGatewayMulticastDomainState.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum TransitGatewayMulticastDomainState where
+    toEnum i = case i of
+        0 -> TGMDSAvailable
+        1 -> TGMDSDeleted
+        2 -> TGMDSDeleting
+        3 -> TGMDSPending
+        _ -> (error . showText) $ "Unknown index for TransitGatewayMulticastDomainState: " <> toText i
+    fromEnum x = case x of
+        TGMDSAvailable -> 0
+        TGMDSDeleted -> 1
+        TGMDSDeleting -> 2
+        TGMDSPending -> 3
+        TransitGatewayMulticastDomainState' name -> (error . showText) $ "Unknown TransitGatewayMulticastDomainState: " <> original name
+
+-- | Represents the bounds of /known/ $TransitGatewayMulticastDomainState.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded TransitGatewayMulticastDomainState where
+    minBound = TGMDSAvailable
+    maxBound = TGMDSPending
 
 instance Hashable     TransitGatewayMulticastDomainState
 instance NFData       TransitGatewayMulticastDomainState

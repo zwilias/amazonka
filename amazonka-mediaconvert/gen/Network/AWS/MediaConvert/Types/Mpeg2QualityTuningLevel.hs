@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,27 +16,60 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.MediaConvert.Types.Mpeg2QualityTuningLevel where
+module Network.AWS.MediaConvert.Types.Mpeg2QualityTuningLevel (
+  Mpeg2QualityTuningLevel (
+    ..
+    , MQTLMultiPass
+    , MQTLSinglePass
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
+
 -- | Use Quality tuning level (Mpeg2QualityTuningLevel) to specifiy whether to use single-pass or multipass video encoding.
-data Mpeg2QualityTuningLevel = MQTLMultiPass
-                             | MQTLSinglePass
-                                 deriving (Eq, Ord, Read, Show, Enum, Bounded,
-                                           Data, Typeable, Generic)
+data Mpeg2QualityTuningLevel = Mpeg2QualityTuningLevel' (CI
+                                                           Text)
+                                 deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                           Generic)
+
+pattern MQTLMultiPass :: Mpeg2QualityTuningLevel
+pattern MQTLMultiPass = Mpeg2QualityTuningLevel' "MULTI_PASS"
+
+pattern MQTLSinglePass :: Mpeg2QualityTuningLevel
+pattern MQTLSinglePass = Mpeg2QualityTuningLevel' "SINGLE_PASS"
+
+{-# COMPLETE
+  MQTLMultiPass,
+  MQTLSinglePass,
+  Mpeg2QualityTuningLevel' #-}
 
 instance FromText Mpeg2QualityTuningLevel where
-    parser = takeLowerText >>= \case
-        "multi_pass" -> pure MQTLMultiPass
-        "single_pass" -> pure MQTLSinglePass
-        e -> fromTextError $ "Failure parsing Mpeg2QualityTuningLevel from value: '" <> e
-           <> "'. Accepted values: multi_pass, single_pass"
+    parser = (Mpeg2QualityTuningLevel' . mk) <$> takeText
 
 instance ToText Mpeg2QualityTuningLevel where
-    toText = \case
-        MQTLMultiPass -> "MULTI_PASS"
-        MQTLSinglePass -> "SINGLE_PASS"
+    toText (Mpeg2QualityTuningLevel' ci) = original ci
+
+-- | Represents an enum of /known/ $Mpeg2QualityTuningLevel.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum Mpeg2QualityTuningLevel where
+    toEnum i = case i of
+        0 -> MQTLMultiPass
+        1 -> MQTLSinglePass
+        _ -> (error . showText) $ "Unknown index for Mpeg2QualityTuningLevel: " <> toText i
+    fromEnum x = case x of
+        MQTLMultiPass -> 0
+        MQTLSinglePass -> 1
+        Mpeg2QualityTuningLevel' name -> (error . showText) $ "Unknown Mpeg2QualityTuningLevel: " <> original name
+
+-- | Represents the bounds of /known/ $Mpeg2QualityTuningLevel.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded Mpeg2QualityTuningLevel where
+    minBound = MQTLMultiPass
+    maxBound = MQTLSinglePass
 
 instance Hashable     Mpeg2QualityTuningLevel
 instance NFData       Mpeg2QualityTuningLevel

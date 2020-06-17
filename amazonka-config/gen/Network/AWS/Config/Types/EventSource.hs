@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,23 +16,51 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.Config.Types.EventSource where
+module Network.AWS.Config.Types.EventSource (
+  EventSource (
+    ..
+    , AWS_Config
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data EventSource = AWS_Config
-                     deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                               Typeable, Generic)
+
+data EventSource = EventSource' (CI Text)
+                     deriving (Eq, Ord, Read, Show, Data, Typeable,
+                               Generic)
+
+pattern AWS_Config :: EventSource
+pattern AWS_Config = EventSource' "aws.config"
+
+{-# COMPLETE
+  AWS_Config,
+  EventSource' #-}
 
 instance FromText EventSource where
-    parser = takeLowerText >>= \case
-        "aws.config" -> pure AWS_Config
-        e -> fromTextError $ "Failure parsing EventSource from value: '" <> e
-           <> "'. Accepted values: aws.config"
+    parser = (EventSource' . mk) <$> takeText
 
 instance ToText EventSource where
-    toText = \case
-        AWS_Config -> "aws.config"
+    toText (EventSource' ci) = original ci
+
+-- | Represents an enum of /known/ $EventSource.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum EventSource where
+    toEnum i = case i of
+        0 -> AWS_Config
+        _ -> (error . showText) $ "Unknown index for EventSource: " <> toText i
+    fromEnum x = case x of
+        AWS_Config -> 0
+        EventSource' name -> (error . showText) $ "Unknown EventSource: " <> original name
+
+-- | Represents the bounds of /known/ $EventSource.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded EventSource where
+    minBound = AWS_Config
+    maxBound = AWS_Config
 
 instance Hashable     EventSource
 instance NFData       EventSource

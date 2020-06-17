@@ -47,6 +47,7 @@ module Network.AWS.Config.GetAggregateComplianceDetailsByConfigRule
     ) where
 
 import Network.AWS.Config.Types
+import Network.AWS.Config.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude

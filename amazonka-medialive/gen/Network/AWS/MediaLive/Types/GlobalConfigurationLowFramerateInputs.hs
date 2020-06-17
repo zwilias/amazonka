@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,28 +16,61 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.MediaLive.Types.GlobalConfigurationLowFramerateInputs where
+module Network.AWS.MediaLive.Types.GlobalConfigurationLowFramerateInputs (
+  GlobalConfigurationLowFramerateInputs (
+    ..
+    , GCLFIDisabled
+    , GCLFIEnabled
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
+
 -- | Placeholder documentation for GlobalConfigurationLowFramerateInputs
-data GlobalConfigurationLowFramerateInputs = GCLFIDisabled
-                                           | GCLFIEnabled
+data GlobalConfigurationLowFramerateInputs = GlobalConfigurationLowFramerateInputs' (CI
+                                                                                       Text)
                                                deriving (Eq, Ord, Read, Show,
-                                                         Enum, Bounded, Data,
-                                                         Typeable, Generic)
+                                                         Data, Typeable,
+                                                         Generic)
+
+pattern GCLFIDisabled :: GlobalConfigurationLowFramerateInputs
+pattern GCLFIDisabled = GlobalConfigurationLowFramerateInputs' "DISABLED"
+
+pattern GCLFIEnabled :: GlobalConfigurationLowFramerateInputs
+pattern GCLFIEnabled = GlobalConfigurationLowFramerateInputs' "ENABLED"
+
+{-# COMPLETE
+  GCLFIDisabled,
+  GCLFIEnabled,
+  GlobalConfigurationLowFramerateInputs' #-}
 
 instance FromText GlobalConfigurationLowFramerateInputs where
-    parser = takeLowerText >>= \case
-        "disabled" -> pure GCLFIDisabled
-        "enabled" -> pure GCLFIEnabled
-        e -> fromTextError $ "Failure parsing GlobalConfigurationLowFramerateInputs from value: '" <> e
-           <> "'. Accepted values: disabled, enabled"
+    parser = (GlobalConfigurationLowFramerateInputs' . mk) <$> takeText
 
 instance ToText GlobalConfigurationLowFramerateInputs where
-    toText = \case
-        GCLFIDisabled -> "DISABLED"
-        GCLFIEnabled -> "ENABLED"
+    toText (GlobalConfigurationLowFramerateInputs' ci) = original ci
+
+-- | Represents an enum of /known/ $GlobalConfigurationLowFramerateInputs.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum GlobalConfigurationLowFramerateInputs where
+    toEnum i = case i of
+        0 -> GCLFIDisabled
+        1 -> GCLFIEnabled
+        _ -> (error . showText) $ "Unknown index for GlobalConfigurationLowFramerateInputs: " <> toText i
+    fromEnum x = case x of
+        GCLFIDisabled -> 0
+        GCLFIEnabled -> 1
+        GlobalConfigurationLowFramerateInputs' name -> (error . showText) $ "Unknown GlobalConfigurationLowFramerateInputs: " <> original name
+
+-- | Represents the bounds of /known/ $GlobalConfigurationLowFramerateInputs.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded GlobalConfigurationLowFramerateInputs where
+    minBound = GCLFIDisabled
+    maxBound = GCLFIEnabled
 
 instance Hashable     GlobalConfigurationLowFramerateInputs
 instance NFData       GlobalConfigurationLowFramerateInputs

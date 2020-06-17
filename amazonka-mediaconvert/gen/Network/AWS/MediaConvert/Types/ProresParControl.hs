@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,27 +16,59 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.MediaConvert.Types.ProresParControl where
+module Network.AWS.MediaConvert.Types.ProresParControl (
+  ProresParControl (
+    ..
+    , PPCInitializeFromSource
+    , PPCSpecified
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
+
 -- | Use (ProresParControl) to specify how the service determines the pixel aspect ratio. Set to Follow source (INITIALIZE_FROM_SOURCE) to use the pixel aspect ratio from the input.  To specify a different pixel aspect ratio: Using the console, choose it from the dropdown menu. Using the API, set ProresParControl to (SPECIFIED) and provide  for (ParNumerator) and (ParDenominator).
-data ProresParControl = PPCInitializeFromSource
-                      | PPCSpecified
-                          deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                    Typeable, Generic)
+data ProresParControl = ProresParControl' (CI Text)
+                          deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                    Generic)
+
+pattern PPCInitializeFromSource :: ProresParControl
+pattern PPCInitializeFromSource = ProresParControl' "INITIALIZE_FROM_SOURCE"
+
+pattern PPCSpecified :: ProresParControl
+pattern PPCSpecified = ProresParControl' "SPECIFIED"
+
+{-# COMPLETE
+  PPCInitializeFromSource,
+  PPCSpecified,
+  ProresParControl' #-}
 
 instance FromText ProresParControl where
-    parser = takeLowerText >>= \case
-        "initialize_from_source" -> pure PPCInitializeFromSource
-        "specified" -> pure PPCSpecified
-        e -> fromTextError $ "Failure parsing ProresParControl from value: '" <> e
-           <> "'. Accepted values: initialize_from_source, specified"
+    parser = (ProresParControl' . mk) <$> takeText
 
 instance ToText ProresParControl where
-    toText = \case
-        PPCInitializeFromSource -> "INITIALIZE_FROM_SOURCE"
-        PPCSpecified -> "SPECIFIED"
+    toText (ProresParControl' ci) = original ci
+
+-- | Represents an enum of /known/ $ProresParControl.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum ProresParControl where
+    toEnum i = case i of
+        0 -> PPCInitializeFromSource
+        1 -> PPCSpecified
+        _ -> (error . showText) $ "Unknown index for ProresParControl: " <> toText i
+    fromEnum x = case x of
+        PPCInitializeFromSource -> 0
+        PPCSpecified -> 1
+        ProresParControl' name -> (error . showText) $ "Unknown ProresParControl: " <> original name
+
+-- | Represents the bounds of /known/ $ProresParControl.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded ProresParControl where
+    minBound = PPCInitializeFromSource
+    maxBound = PPCSpecified
 
 instance Hashable     ProresParControl
 instance NFData       ProresParControl

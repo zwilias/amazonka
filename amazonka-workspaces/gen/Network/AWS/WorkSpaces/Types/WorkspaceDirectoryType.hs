@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,59 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.WorkSpaces.Types.WorkspaceDirectoryType where
+module Network.AWS.WorkSpaces.Types.WorkspaceDirectoryType (
+  WorkspaceDirectoryType (
+    ..
+    , AdConnector
+    , SimpleAd
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data WorkspaceDirectoryType = AdConnector
-                            | SimpleAd
-                                deriving (Eq, Ord, Read, Show, Enum, Bounded,
-                                          Data, Typeable, Generic)
+
+data WorkspaceDirectoryType = WorkspaceDirectoryType' (CI
+                                                         Text)
+                                deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                          Generic)
+
+pattern AdConnector :: WorkspaceDirectoryType
+pattern AdConnector = WorkspaceDirectoryType' "AD_CONNECTOR"
+
+pattern SimpleAd :: WorkspaceDirectoryType
+pattern SimpleAd = WorkspaceDirectoryType' "SIMPLE_AD"
+
+{-# COMPLETE
+  AdConnector,
+  SimpleAd,
+  WorkspaceDirectoryType' #-}
 
 instance FromText WorkspaceDirectoryType where
-    parser = takeLowerText >>= \case
-        "ad_connector" -> pure AdConnector
-        "simple_ad" -> pure SimpleAd
-        e -> fromTextError $ "Failure parsing WorkspaceDirectoryType from value: '" <> e
-           <> "'. Accepted values: ad_connector, simple_ad"
+    parser = (WorkspaceDirectoryType' . mk) <$> takeText
 
 instance ToText WorkspaceDirectoryType where
-    toText = \case
-        AdConnector -> "AD_CONNECTOR"
-        SimpleAd -> "SIMPLE_AD"
+    toText (WorkspaceDirectoryType' ci) = original ci
+
+-- | Represents an enum of /known/ $WorkspaceDirectoryType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum WorkspaceDirectoryType where
+    toEnum i = case i of
+        0 -> AdConnector
+        1 -> SimpleAd
+        _ -> (error . showText) $ "Unknown index for WorkspaceDirectoryType: " <> toText i
+    fromEnum x = case x of
+        AdConnector -> 0
+        SimpleAd -> 1
+        WorkspaceDirectoryType' name -> (error . showText) $ "Unknown WorkspaceDirectoryType: " <> original name
+
+-- | Represents the bounds of /known/ $WorkspaceDirectoryType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded WorkspaceDirectoryType where
+    minBound = AdConnector
+    maxBound = SimpleAd
 
 instance Hashable     WorkspaceDirectoryType
 instance NFData       WorkspaceDirectoryType

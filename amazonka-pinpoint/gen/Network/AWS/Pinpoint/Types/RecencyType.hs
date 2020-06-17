@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,58 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.Pinpoint.Types.RecencyType where
+module Network.AWS.Pinpoint.Types.RecencyType (
+  RecencyType (
+    ..
+    , Active
+    , Inactive
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data RecencyType = Active
-                 | Inactive
-                     deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                               Typeable, Generic)
+
+data RecencyType = RecencyType' (CI Text)
+                     deriving (Eq, Ord, Read, Show, Data, Typeable,
+                               Generic)
+
+pattern Active :: RecencyType
+pattern Active = RecencyType' "ACTIVE"
+
+pattern Inactive :: RecencyType
+pattern Inactive = RecencyType' "INACTIVE"
+
+{-# COMPLETE
+  Active,
+  Inactive,
+  RecencyType' #-}
 
 instance FromText RecencyType where
-    parser = takeLowerText >>= \case
-        "active" -> pure Active
-        "inactive" -> pure Inactive
-        e -> fromTextError $ "Failure parsing RecencyType from value: '" <> e
-           <> "'. Accepted values: active, inactive"
+    parser = (RecencyType' . mk) <$> takeText
 
 instance ToText RecencyType where
-    toText = \case
-        Active -> "ACTIVE"
-        Inactive -> "INACTIVE"
+    toText (RecencyType' ci) = original ci
+
+-- | Represents an enum of /known/ $RecencyType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum RecencyType where
+    toEnum i = case i of
+        0 -> Active
+        1 -> Inactive
+        _ -> (error . showText) $ "Unknown index for RecencyType: " <> toText i
+    fromEnum x = case x of
+        Active -> 0
+        Inactive -> 1
+        RecencyType' name -> (error . showText) $ "Unknown RecencyType: " <> original name
+
+-- | Represents the bounds of /known/ $RecencyType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded RecencyType where
+    minBound = Active
+    maxBound = Inactive
 
 instance Hashable     RecencyType
 instance NFData       RecencyType

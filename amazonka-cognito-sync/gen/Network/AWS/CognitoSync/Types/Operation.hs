@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,58 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.CognitoSync.Types.Operation where
+module Network.AWS.CognitoSync.Types.Operation (
+  Operation (
+    ..
+    , Remove
+    , Replace
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data Operation = Remove
-               | Replace
-                   deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                             Typeable, Generic)
+
+data Operation = Operation' (CI Text)
+                   deriving (Eq, Ord, Read, Show, Data, Typeable,
+                             Generic)
+
+pattern Remove :: Operation
+pattern Remove = Operation' "remove"
+
+pattern Replace :: Operation
+pattern Replace = Operation' "replace"
+
+{-# COMPLETE
+  Remove,
+  Replace,
+  Operation' #-}
 
 instance FromText Operation where
-    parser = takeLowerText >>= \case
-        "remove" -> pure Remove
-        "replace" -> pure Replace
-        e -> fromTextError $ "Failure parsing Operation from value: '" <> e
-           <> "'. Accepted values: remove, replace"
+    parser = (Operation' . mk) <$> takeText
 
 instance ToText Operation where
-    toText = \case
-        Remove -> "remove"
-        Replace -> "replace"
+    toText (Operation' ci) = original ci
+
+-- | Represents an enum of /known/ $Operation.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum Operation where
+    toEnum i = case i of
+        0 -> Remove
+        1 -> Replace
+        _ -> (error . showText) $ "Unknown index for Operation: " <> toText i
+    fromEnum x = case x of
+        Remove -> 0
+        Replace -> 1
+        Operation' name -> (error . showText) $ "Unknown Operation: " <> original name
+
+-- | Represents the bounds of /known/ $Operation.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded Operation where
+    minBound = Remove
+    maxBound = Replace
 
 instance Hashable     Operation
 instance NFData       Operation

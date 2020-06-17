@@ -57,6 +57,7 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.SecretsManager.Types
+import Network.AWS.SecretsManager.Types.Product
 
 -- | /See:/ 'restoreSecret' smart constructor.
 newtype RestoreSecret = RestoreSecret'{_rSecretId ::

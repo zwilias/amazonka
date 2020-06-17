@@ -52,6 +52,7 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.Route53.Types
+import Network.AWS.Route53.Types.Product
 
 -- | A request to get information about the traffic policy instances that you created by using the current AWS account.
 --

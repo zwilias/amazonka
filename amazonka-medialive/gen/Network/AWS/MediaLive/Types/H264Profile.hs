@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,39 +16,87 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.MediaLive.Types.H264Profile where
+module Network.AWS.MediaLive.Types.H264Profile (
+  H264Profile (
+    ..
+    , Baseline
+    , High
+    , High10BIT
+    , High422
+    , High42210BIT
+    , Main
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
+
 -- | Placeholder documentation for H264Profile
-data H264Profile = Baseline
-                 | High
-                 | High10BIT
-                 | High422
-                 | High42210BIT
-                 | Main
-                     deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                               Typeable, Generic)
+data H264Profile = H264Profile' (CI Text)
+                     deriving (Eq, Ord, Read, Show, Data, Typeable,
+                               Generic)
+
+pattern Baseline :: H264Profile
+pattern Baseline = H264Profile' "BASELINE"
+
+pattern High :: H264Profile
+pattern High = H264Profile' "HIGH"
+
+pattern High10BIT :: H264Profile
+pattern High10BIT = H264Profile' "HIGH_10BIT"
+
+pattern High422 :: H264Profile
+pattern High422 = H264Profile' "HIGH_422"
+
+pattern High42210BIT :: H264Profile
+pattern High42210BIT = H264Profile' "HIGH_422_10BIT"
+
+pattern Main :: H264Profile
+pattern Main = H264Profile' "MAIN"
+
+{-# COMPLETE
+  Baseline,
+  High,
+  High10BIT,
+  High422,
+  High42210BIT,
+  Main,
+  H264Profile' #-}
 
 instance FromText H264Profile where
-    parser = takeLowerText >>= \case
-        "baseline" -> pure Baseline
-        "high" -> pure High
-        "high_10bit" -> pure High10BIT
-        "high_422" -> pure High422
-        "high_422_10bit" -> pure High42210BIT
-        "main" -> pure Main
-        e -> fromTextError $ "Failure parsing H264Profile from value: '" <> e
-           <> "'. Accepted values: baseline, high, high_10bit, high_422, high_422_10bit, main"
+    parser = (H264Profile' . mk) <$> takeText
 
 instance ToText H264Profile where
-    toText = \case
-        Baseline -> "BASELINE"
-        High -> "HIGH"
-        High10BIT -> "HIGH_10BIT"
-        High422 -> "HIGH_422"
-        High42210BIT -> "HIGH_422_10BIT"
-        Main -> "MAIN"
+    toText (H264Profile' ci) = original ci
+
+-- | Represents an enum of /known/ $H264Profile.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum H264Profile where
+    toEnum i = case i of
+        0 -> Baseline
+        1 -> High
+        2 -> High10BIT
+        3 -> High422
+        4 -> High42210BIT
+        5 -> Main
+        _ -> (error . showText) $ "Unknown index for H264Profile: " <> toText i
+    fromEnum x = case x of
+        Baseline -> 0
+        High -> 1
+        High10BIT -> 2
+        High422 -> 3
+        High42210BIT -> 4
+        Main -> 5
+        H264Profile' name -> (error . showText) $ "Unknown H264Profile: " <> original name
+
+-- | Represents the bounds of /known/ $H264Profile.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded H264Profile where
+    minBound = Baseline
+    maxBound = Main
 
 instance Hashable     H264Profile
 instance NFData       H264Profile

@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,38 +16,86 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.CodePipeline.Types.FailureType where
+module Network.AWS.CodePipeline.Types.FailureType (
+  FailureType (
+    ..
+    , ConfigurationError
+    , JobFailed
+    , PermissionError
+    , RevisionOutOfSync
+    , RevisionUnavailable
+    , SystemUnavailable
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data FailureType = ConfigurationError
-                 | JobFailed
-                 | PermissionError
-                 | RevisionOutOfSync
-                 | RevisionUnavailable
-                 | SystemUnavailable
-                     deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                               Typeable, Generic)
+
+data FailureType = FailureType' (CI Text)
+                     deriving (Eq, Ord, Read, Show, Data, Typeable,
+                               Generic)
+
+pattern ConfigurationError :: FailureType
+pattern ConfigurationError = FailureType' "ConfigurationError"
+
+pattern JobFailed :: FailureType
+pattern JobFailed = FailureType' "JobFailed"
+
+pattern PermissionError :: FailureType
+pattern PermissionError = FailureType' "PermissionError"
+
+pattern RevisionOutOfSync :: FailureType
+pattern RevisionOutOfSync = FailureType' "RevisionOutOfSync"
+
+pattern RevisionUnavailable :: FailureType
+pattern RevisionUnavailable = FailureType' "RevisionUnavailable"
+
+pattern SystemUnavailable :: FailureType
+pattern SystemUnavailable = FailureType' "SystemUnavailable"
+
+{-# COMPLETE
+  ConfigurationError,
+  JobFailed,
+  PermissionError,
+  RevisionOutOfSync,
+  RevisionUnavailable,
+  SystemUnavailable,
+  FailureType' #-}
 
 instance FromText FailureType where
-    parser = takeLowerText >>= \case
-        "configurationerror" -> pure ConfigurationError
-        "jobfailed" -> pure JobFailed
-        "permissionerror" -> pure PermissionError
-        "revisionoutofsync" -> pure RevisionOutOfSync
-        "revisionunavailable" -> pure RevisionUnavailable
-        "systemunavailable" -> pure SystemUnavailable
-        e -> fromTextError $ "Failure parsing FailureType from value: '" <> e
-           <> "'. Accepted values: configurationerror, jobfailed, permissionerror, revisionoutofsync, revisionunavailable, systemunavailable"
+    parser = (FailureType' . mk) <$> takeText
 
 instance ToText FailureType where
-    toText = \case
-        ConfigurationError -> "ConfigurationError"
-        JobFailed -> "JobFailed"
-        PermissionError -> "PermissionError"
-        RevisionOutOfSync -> "RevisionOutOfSync"
-        RevisionUnavailable -> "RevisionUnavailable"
-        SystemUnavailable -> "SystemUnavailable"
+    toText (FailureType' ci) = original ci
+
+-- | Represents an enum of /known/ $FailureType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum FailureType where
+    toEnum i = case i of
+        0 -> ConfigurationError
+        1 -> JobFailed
+        2 -> PermissionError
+        3 -> RevisionOutOfSync
+        4 -> RevisionUnavailable
+        5 -> SystemUnavailable
+        _ -> (error . showText) $ "Unknown index for FailureType: " <> toText i
+    fromEnum x = case x of
+        ConfigurationError -> 0
+        JobFailed -> 1
+        PermissionError -> 2
+        RevisionOutOfSync -> 3
+        RevisionUnavailable -> 4
+        SystemUnavailable -> 5
+        FailureType' name -> (error . showText) $ "Unknown FailureType: " <> original name
+
+-- | Represents the bounds of /known/ $FailureType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded FailureType where
+    minBound = ConfigurationError
+    maxBound = SystemUnavailable
 
 instance Hashable     FailureType
 instance NFData       FailureType

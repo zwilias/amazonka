@@ -42,6 +42,7 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.SES.Types
+import Network.AWS.SES.Types.Product
 
 -- | Represents a request to modify the reputation metric publishing settings for a configuration set.
 --

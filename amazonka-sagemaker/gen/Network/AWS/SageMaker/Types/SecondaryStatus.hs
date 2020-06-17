@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,47 +16,107 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.SageMaker.Types.SecondaryStatus where
+module Network.AWS.SageMaker.Types.SecondaryStatus (
+  SecondaryStatus (
+    ..
+    , SSCompleted
+    , SSDownloading
+    , SSFailed
+    , SSMaxRuntimeExceeded
+    , SSStarting
+    , SSStopped
+    , SSStopping
+    , SSTraining
+    , SSUploading
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data SecondaryStatus = SSCompleted
-                     | SSDownloading
-                     | SSFailed
-                     | SSMaxRuntimeExceeded
-                     | SSStarting
-                     | SSStopped
-                     | SSStopping
-                     | SSTraining
-                     | SSUploading
-                         deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                   Typeable, Generic)
+
+data SecondaryStatus = SecondaryStatus' (CI Text)
+                         deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                   Generic)
+
+pattern SSCompleted :: SecondaryStatus
+pattern SSCompleted = SecondaryStatus' "Completed"
+
+pattern SSDownloading :: SecondaryStatus
+pattern SSDownloading = SecondaryStatus' "Downloading"
+
+pattern SSFailed :: SecondaryStatus
+pattern SSFailed = SecondaryStatus' "Failed"
+
+pattern SSMaxRuntimeExceeded :: SecondaryStatus
+pattern SSMaxRuntimeExceeded = SecondaryStatus' "MaxRuntimeExceeded"
+
+pattern SSStarting :: SecondaryStatus
+pattern SSStarting = SecondaryStatus' "Starting"
+
+pattern SSStopped :: SecondaryStatus
+pattern SSStopped = SecondaryStatus' "Stopped"
+
+pattern SSStopping :: SecondaryStatus
+pattern SSStopping = SecondaryStatus' "Stopping"
+
+pattern SSTraining :: SecondaryStatus
+pattern SSTraining = SecondaryStatus' "Training"
+
+pattern SSUploading :: SecondaryStatus
+pattern SSUploading = SecondaryStatus' "Uploading"
+
+{-# COMPLETE
+  SSCompleted,
+  SSDownloading,
+  SSFailed,
+  SSMaxRuntimeExceeded,
+  SSStarting,
+  SSStopped,
+  SSStopping,
+  SSTraining,
+  SSUploading,
+  SecondaryStatus' #-}
 
 instance FromText SecondaryStatus where
-    parser = takeLowerText >>= \case
-        "completed" -> pure SSCompleted
-        "downloading" -> pure SSDownloading
-        "failed" -> pure SSFailed
-        "maxruntimeexceeded" -> pure SSMaxRuntimeExceeded
-        "starting" -> pure SSStarting
-        "stopped" -> pure SSStopped
-        "stopping" -> pure SSStopping
-        "training" -> pure SSTraining
-        "uploading" -> pure SSUploading
-        e -> fromTextError $ "Failure parsing SecondaryStatus from value: '" <> e
-           <> "'. Accepted values: completed, downloading, failed, maxruntimeexceeded, starting, stopped, stopping, training, uploading"
+    parser = (SecondaryStatus' . mk) <$> takeText
 
 instance ToText SecondaryStatus where
-    toText = \case
-        SSCompleted -> "Completed"
-        SSDownloading -> "Downloading"
-        SSFailed -> "Failed"
-        SSMaxRuntimeExceeded -> "MaxRuntimeExceeded"
-        SSStarting -> "Starting"
-        SSStopped -> "Stopped"
-        SSStopping -> "Stopping"
-        SSTraining -> "Training"
-        SSUploading -> "Uploading"
+    toText (SecondaryStatus' ci) = original ci
+
+-- | Represents an enum of /known/ $SecondaryStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum SecondaryStatus where
+    toEnum i = case i of
+        0 -> SSCompleted
+        1 -> SSDownloading
+        2 -> SSFailed
+        3 -> SSMaxRuntimeExceeded
+        4 -> SSStarting
+        5 -> SSStopped
+        6 -> SSStopping
+        7 -> SSTraining
+        8 -> SSUploading
+        _ -> (error . showText) $ "Unknown index for SecondaryStatus: " <> toText i
+    fromEnum x = case x of
+        SSCompleted -> 0
+        SSDownloading -> 1
+        SSFailed -> 2
+        SSMaxRuntimeExceeded -> 3
+        SSStarting -> 4
+        SSStopped -> 5
+        SSStopping -> 6
+        SSTraining -> 7
+        SSUploading -> 8
+        SecondaryStatus' name -> (error . showText) $ "Unknown SecondaryStatus: " <> original name
+
+-- | Represents the bounds of /known/ $SecondaryStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded SecondaryStatus where
+    minBound = SSCompleted
+    maxBound = SSUploading
 
 instance Hashable     SecondaryStatus
 instance NFData       SecondaryStatus

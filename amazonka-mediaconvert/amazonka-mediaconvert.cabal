@@ -321,6 +321,7 @@ library
         , Network.AWS.MediaConvert.Types.Preset
         , Network.AWS.MediaConvert.Types.PresetListBy
         , Network.AWS.MediaConvert.Types.PresetSettings
+        , Network.AWS.MediaConvert.Types.Product
         , Network.AWS.MediaConvert.Types.ProresCodecProfile
         , Network.AWS.MediaConvert.Types.ProresFramerateControl
         , Network.AWS.MediaConvert.Types.ProresFramerateConversionAlgorithm
@@ -364,6 +365,7 @@ library
     build-depends:
           amazonka-core == 1.6.1.*
         , base          >= 4.7     && < 5
+        , case-insensitive
 
 test-suite amazonka-mediaconvert-test
     type:              exitcode-stdio-1.0
@@ -387,6 +389,7 @@ test-suite amazonka-mediaconvert-test
         , amazonka-mediaconvert
         , base
         , bytestring
+        , case-insensitive
         , tasty
         , tasty-hunit
         , text

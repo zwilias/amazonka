@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,23 +16,51 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.CloudHSMv2.Types.BackupPolicy where
+module Network.AWS.CloudHSMv2.Types.BackupPolicy (
+  BackupPolicy (
+    ..
+    , Default
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data BackupPolicy = Default
-                      deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                Typeable, Generic)
+
+data BackupPolicy = BackupPolicy' (CI Text)
+                      deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                Generic)
+
+pattern Default :: BackupPolicy
+pattern Default = BackupPolicy' "DEFAULT"
+
+{-# COMPLETE
+  Default,
+  BackupPolicy' #-}
 
 instance FromText BackupPolicy where
-    parser = takeLowerText >>= \case
-        "default" -> pure Default
-        e -> fromTextError $ "Failure parsing BackupPolicy from value: '" <> e
-           <> "'. Accepted values: default"
+    parser = (BackupPolicy' . mk) <$> takeText
 
 instance ToText BackupPolicy where
-    toText = \case
-        Default -> "DEFAULT"
+    toText (BackupPolicy' ci) = original ci
+
+-- | Represents an enum of /known/ $BackupPolicy.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum BackupPolicy where
+    toEnum i = case i of
+        0 -> Default
+        _ -> (error . showText) $ "Unknown index for BackupPolicy: " <> toText i
+    fromEnum x = case x of
+        Default -> 0
+        BackupPolicy' name -> (error . showText) $ "Unknown BackupPolicy: " <> original name
+
+-- | Represents the bounds of /known/ $BackupPolicy.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded BackupPolicy where
+    minBound = Default
+    maxBound = Default
 
 instance Hashable     BackupPolicy
 instance NFData       BackupPolicy

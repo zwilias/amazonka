@@ -48,6 +48,7 @@ module Network.AWS.Batch.SubmitJob
     ) where
 
 import Network.AWS.Batch.Types
+import Network.AWS.Batch.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request

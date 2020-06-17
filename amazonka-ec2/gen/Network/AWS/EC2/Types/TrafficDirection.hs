@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,27 +16,59 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.EC2.Types.TrafficDirection where
+module Network.AWS.EC2.Types.TrafficDirection (
+  TrafficDirection (
+    ..
+    , Egress
+    , Ingress
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.EC2.Internal
 import Network.AWS.Prelude
-  
-data TrafficDirection = Egress
-                      | Ingress
-                          deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                    Typeable, Generic)
+
+data TrafficDirection = TrafficDirection' (CI Text)
+                          deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                    Generic)
+
+pattern Egress :: TrafficDirection
+pattern Egress = TrafficDirection' "egress"
+
+pattern Ingress :: TrafficDirection
+pattern Ingress = TrafficDirection' "ingress"
+
+{-# COMPLETE
+  Egress,
+  Ingress,
+  TrafficDirection' #-}
 
 instance FromText TrafficDirection where
-    parser = takeLowerText >>= \case
-        "egress" -> pure Egress
-        "ingress" -> pure Ingress
-        e -> fromTextError $ "Failure parsing TrafficDirection from value: '" <> e
-           <> "'. Accepted values: egress, ingress"
+    parser = (TrafficDirection' . mk) <$> takeText
 
 instance ToText TrafficDirection where
-    toText = \case
-        Egress -> "egress"
-        Ingress -> "ingress"
+    toText (TrafficDirection' ci) = original ci
+
+-- | Represents an enum of /known/ $TrafficDirection.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum TrafficDirection where
+    toEnum i = case i of
+        0 -> Egress
+        1 -> Ingress
+        _ -> (error . showText) $ "Unknown index for TrafficDirection: " <> toText i
+    fromEnum x = case x of
+        Egress -> 0
+        Ingress -> 1
+        TrafficDirection' name -> (error . showText) $ "Unknown TrafficDirection: " <> original name
+
+-- | Represents the bounds of /known/ $TrafficDirection.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded TrafficDirection where
+    minBound = Egress
+    maxBound = Ingress
 
 instance Hashable     TrafficDirection
 instance NFData       TrafficDirection

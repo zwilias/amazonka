@@ -82,12 +82,14 @@ library
         , Network.AWS.Discovery.Types.NeighborConnectionDetail
         , Network.AWS.Discovery.Types.OrderByElement
         , Network.AWS.Discovery.Types.OrderString
+        , Network.AWS.Discovery.Types.Product
         , Network.AWS.Discovery.Types.Tag
         , Network.AWS.Discovery.Types.TagFilter
 
     build-depends:
           amazonka-core == 1.6.1.*
         , base          >= 4.7     && < 5
+        , case-insensitive
 
 test-suite amazonka-discovery-test
     type:              exitcode-stdio-1.0
@@ -111,6 +113,7 @@ test-suite amazonka-discovery-test
         , amazonka-discovery
         , base
         , bytestring
+        , case-insensitive
         , tasty
         , tasty-hunit
         , text

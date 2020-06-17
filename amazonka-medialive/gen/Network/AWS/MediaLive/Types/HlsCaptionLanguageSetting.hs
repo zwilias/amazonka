@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,30 +16,67 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.MediaLive.Types.HlsCaptionLanguageSetting where
+module Network.AWS.MediaLive.Types.HlsCaptionLanguageSetting (
+  HlsCaptionLanguageSetting (
+    ..
+    , HCLSInsert
+    , HCLSNone
+    , HCLSOmit
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
+
 -- | Placeholder documentation for HlsCaptionLanguageSetting
-data HlsCaptionLanguageSetting = HCLSInsert
-                               | HCLSNone
-                               | HCLSOmit
-                                   deriving (Eq, Ord, Read, Show, Enum, Bounded,
-                                             Data, Typeable, Generic)
+data HlsCaptionLanguageSetting = HlsCaptionLanguageSetting' (CI
+                                                               Text)
+                                   deriving (Eq, Ord, Read, Show, Data,
+                                             Typeable, Generic)
+
+pattern HCLSInsert :: HlsCaptionLanguageSetting
+pattern HCLSInsert = HlsCaptionLanguageSetting' "INSERT"
+
+pattern HCLSNone :: HlsCaptionLanguageSetting
+pattern HCLSNone = HlsCaptionLanguageSetting' "NONE"
+
+pattern HCLSOmit :: HlsCaptionLanguageSetting
+pattern HCLSOmit = HlsCaptionLanguageSetting' "OMIT"
+
+{-# COMPLETE
+  HCLSInsert,
+  HCLSNone,
+  HCLSOmit,
+  HlsCaptionLanguageSetting' #-}
 
 instance FromText HlsCaptionLanguageSetting where
-    parser = takeLowerText >>= \case
-        "insert" -> pure HCLSInsert
-        "none" -> pure HCLSNone
-        "omit" -> pure HCLSOmit
-        e -> fromTextError $ "Failure parsing HlsCaptionLanguageSetting from value: '" <> e
-           <> "'. Accepted values: insert, none, omit"
+    parser = (HlsCaptionLanguageSetting' . mk) <$> takeText
 
 instance ToText HlsCaptionLanguageSetting where
-    toText = \case
-        HCLSInsert -> "INSERT"
-        HCLSNone -> "NONE"
-        HCLSOmit -> "OMIT"
+    toText (HlsCaptionLanguageSetting' ci) = original ci
+
+-- | Represents an enum of /known/ $HlsCaptionLanguageSetting.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum HlsCaptionLanguageSetting where
+    toEnum i = case i of
+        0 -> HCLSInsert
+        1 -> HCLSNone
+        2 -> HCLSOmit
+        _ -> (error . showText) $ "Unknown index for HlsCaptionLanguageSetting: " <> toText i
+    fromEnum x = case x of
+        HCLSInsert -> 0
+        HCLSNone -> 1
+        HCLSOmit -> 2
+        HlsCaptionLanguageSetting' name -> (error . showText) $ "Unknown HlsCaptionLanguageSetting: " <> original name
+
+-- | Represents the bounds of /known/ $HlsCaptionLanguageSetting.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded HlsCaptionLanguageSetting where
+    minBound = HCLSInsert
+    maxBound = HCLSOmit
 
 instance Hashable     HlsCaptionLanguageSetting
 instance NFData       HlsCaptionLanguageSetting

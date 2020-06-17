@@ -123,6 +123,7 @@ library
         , Network.AWS.GuardDuty.Types.PortProbeAction
         , Network.AWS.GuardDuty.Types.PortProbeDetail
         , Network.AWS.GuardDuty.Types.PrivateIPAddressDetails
+        , Network.AWS.GuardDuty.Types.Product
         , Network.AWS.GuardDuty.Types.ProductCode
         , Network.AWS.GuardDuty.Types.RemoteIPDetails
         , Network.AWS.GuardDuty.Types.RemotePortDetails
@@ -138,6 +139,7 @@ library
     build-depends:
           amazonka-core == 1.6.1.*
         , base          >= 4.7     && < 5
+        , case-insensitive
 
 test-suite amazonka-guardduty-test
     type:              exitcode-stdio-1.0
@@ -161,6 +163,7 @@ test-suite amazonka-guardduty-test
         , amazonka-guardduty
         , base
         , bytestring
+        , case-insensitive
         , tasty
         , tasty-hunit
         , text

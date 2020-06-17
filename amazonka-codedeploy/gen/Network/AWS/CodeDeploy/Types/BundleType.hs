@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,35 +16,79 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.CodeDeploy.Types.BundleType where
+module Network.AWS.CodeDeploy.Types.BundleType (
+  BundleType (
+    ..
+    , JSON
+    , TAR
+    , TGZ
+    , Yaml
+    , Zip
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data BundleType = JSON
-                | TAR
-                | TGZ
-                | Yaml
-                | Zip
-                    deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                              Typeable, Generic)
+
+data BundleType = BundleType' (CI Text)
+                    deriving (Eq, Ord, Read, Show, Data, Typeable,
+                              Generic)
+
+pattern JSON :: BundleType
+pattern JSON = BundleType' "JSON"
+
+pattern TAR :: BundleType
+pattern TAR = BundleType' "tar"
+
+pattern TGZ :: BundleType
+pattern TGZ = BundleType' "tgz"
+
+pattern Yaml :: BundleType
+pattern Yaml = BundleType' "YAML"
+
+pattern Zip :: BundleType
+pattern Zip = BundleType' "zip"
+
+{-# COMPLETE
+  JSON,
+  TAR,
+  TGZ,
+  Yaml,
+  Zip,
+  BundleType' #-}
 
 instance FromText BundleType where
-    parser = takeLowerText >>= \case
-        "json" -> pure JSON
-        "tar" -> pure TAR
-        "tgz" -> pure TGZ
-        "yaml" -> pure Yaml
-        "zip" -> pure Zip
-        e -> fromTextError $ "Failure parsing BundleType from value: '" <> e
-           <> "'. Accepted values: json, tar, tgz, yaml, zip"
+    parser = (BundleType' . mk) <$> takeText
 
 instance ToText BundleType where
-    toText = \case
-        JSON -> "JSON"
-        TAR -> "tar"
-        TGZ -> "tgz"
-        Yaml -> "YAML"
-        Zip -> "zip"
+    toText (BundleType' ci) = original ci
+
+-- | Represents an enum of /known/ $BundleType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum BundleType where
+    toEnum i = case i of
+        0 -> JSON
+        1 -> TAR
+        2 -> TGZ
+        3 -> Yaml
+        4 -> Zip
+        _ -> (error . showText) $ "Unknown index for BundleType: " <> toText i
+    fromEnum x = case x of
+        JSON -> 0
+        TAR -> 1
+        TGZ -> 2
+        Yaml -> 3
+        Zip -> 4
+        BundleType' name -> (error . showText) $ "Unknown BundleType: " <> original name
+
+-- | Represents the bounds of /known/ $BundleType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded BundleType where
+    minBound = JSON
+    maxBound = Zip
 
 instance Hashable     BundleType
 instance NFData       BundleType

@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,29 +16,66 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.Config.Types.ResourceCountGroupKey where
+module Network.AWS.Config.Types.ResourceCountGroupKey (
+  ResourceCountGroupKey (
+    ..
+    , RCGKAWSRegion
+    , RCGKAccountId
+    , RCGKResourceType
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data ResourceCountGroupKey = RCGKAWSRegion
-                           | RCGKAccountId
-                           | RCGKResourceType
-                               deriving (Eq, Ord, Read, Show, Enum, Bounded,
-                                         Data, Typeable, Generic)
+
+data ResourceCountGroupKey = ResourceCountGroupKey' (CI
+                                                       Text)
+                               deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                         Generic)
+
+pattern RCGKAWSRegion :: ResourceCountGroupKey
+pattern RCGKAWSRegion = ResourceCountGroupKey' "AWS_REGION"
+
+pattern RCGKAccountId :: ResourceCountGroupKey
+pattern RCGKAccountId = ResourceCountGroupKey' "ACCOUNT_ID"
+
+pattern RCGKResourceType :: ResourceCountGroupKey
+pattern RCGKResourceType = ResourceCountGroupKey' "RESOURCE_TYPE"
+
+{-# COMPLETE
+  RCGKAWSRegion,
+  RCGKAccountId,
+  RCGKResourceType,
+  ResourceCountGroupKey' #-}
 
 instance FromText ResourceCountGroupKey where
-    parser = takeLowerText >>= \case
-        "aws_region" -> pure RCGKAWSRegion
-        "account_id" -> pure RCGKAccountId
-        "resource_type" -> pure RCGKResourceType
-        e -> fromTextError $ "Failure parsing ResourceCountGroupKey from value: '" <> e
-           <> "'. Accepted values: aws_region, account_id, resource_type"
+    parser = (ResourceCountGroupKey' . mk) <$> takeText
 
 instance ToText ResourceCountGroupKey where
-    toText = \case
-        RCGKAWSRegion -> "AWS_REGION"
-        RCGKAccountId -> "ACCOUNT_ID"
-        RCGKResourceType -> "RESOURCE_TYPE"
+    toText (ResourceCountGroupKey' ci) = original ci
+
+-- | Represents an enum of /known/ $ResourceCountGroupKey.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum ResourceCountGroupKey where
+    toEnum i = case i of
+        0 -> RCGKAWSRegion
+        1 -> RCGKAccountId
+        2 -> RCGKResourceType
+        _ -> (error . showText) $ "Unknown index for ResourceCountGroupKey: " <> toText i
+    fromEnum x = case x of
+        RCGKAWSRegion -> 0
+        RCGKAccountId -> 1
+        RCGKResourceType -> 2
+        ResourceCountGroupKey' name -> (error . showText) $ "Unknown ResourceCountGroupKey: " <> original name
+
+-- | Represents the bounds of /known/ $ResourceCountGroupKey.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded ResourceCountGroupKey where
+    minBound = RCGKAWSRegion
+    maxBound = RCGKResourceType
 
 instance Hashable     ResourceCountGroupKey
 instance NFData       ResourceCountGroupKey

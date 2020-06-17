@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,27 +16,59 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.MediaLive.Types.Eac3LfeFilter where
+module Network.AWS.MediaLive.Types.Eac3LfeFilter (
+  Eac3LfeFilter (
+    ..
+    , ELFDisabled
+    , ELFEnabled
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
+
 -- | Placeholder documentation for Eac3LfeFilter
-data Eac3LfeFilter = ELFDisabled
-                   | ELFEnabled
-                       deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                 Typeable, Generic)
+data Eac3LfeFilter = Eac3LfeFilter' (CI Text)
+                       deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                 Generic)
+
+pattern ELFDisabled :: Eac3LfeFilter
+pattern ELFDisabled = Eac3LfeFilter' "DISABLED"
+
+pattern ELFEnabled :: Eac3LfeFilter
+pattern ELFEnabled = Eac3LfeFilter' "ENABLED"
+
+{-# COMPLETE
+  ELFDisabled,
+  ELFEnabled,
+  Eac3LfeFilter' #-}
 
 instance FromText Eac3LfeFilter where
-    parser = takeLowerText >>= \case
-        "disabled" -> pure ELFDisabled
-        "enabled" -> pure ELFEnabled
-        e -> fromTextError $ "Failure parsing Eac3LfeFilter from value: '" <> e
-           <> "'. Accepted values: disabled, enabled"
+    parser = (Eac3LfeFilter' . mk) <$> takeText
 
 instance ToText Eac3LfeFilter where
-    toText = \case
-        ELFDisabled -> "DISABLED"
-        ELFEnabled -> "ENABLED"
+    toText (Eac3LfeFilter' ci) = original ci
+
+-- | Represents an enum of /known/ $Eac3LfeFilter.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum Eac3LfeFilter where
+    toEnum i = case i of
+        0 -> ELFDisabled
+        1 -> ELFEnabled
+        _ -> (error . showText) $ "Unknown index for Eac3LfeFilter: " <> toText i
+    fromEnum x = case x of
+        ELFDisabled -> 0
+        ELFEnabled -> 1
+        Eac3LfeFilter' name -> (error . showText) $ "Unknown Eac3LfeFilter: " <> original name
+
+-- | Represents the bounds of /known/ $Eac3LfeFilter.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded Eac3LfeFilter where
+    minBound = ELFDisabled
+    maxBound = ELFEnabled
 
 instance Hashable     Eac3LfeFilter
 instance NFData       Eac3LfeFilter

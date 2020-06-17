@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,27 +16,60 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.MediaLive.Types.RtmpCacheFullBehavior where
+module Network.AWS.MediaLive.Types.RtmpCacheFullBehavior (
+  RtmpCacheFullBehavior (
+    ..
+    , DisconnectImmediately
+    , WaitForServer
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
+
 -- | Placeholder documentation for RtmpCacheFullBehavior
-data RtmpCacheFullBehavior = DisconnectImmediately
-                           | WaitForServer
-                               deriving (Eq, Ord, Read, Show, Enum, Bounded,
-                                         Data, Typeable, Generic)
+data RtmpCacheFullBehavior = RtmpCacheFullBehavior' (CI
+                                                       Text)
+                               deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                         Generic)
+
+pattern DisconnectImmediately :: RtmpCacheFullBehavior
+pattern DisconnectImmediately = RtmpCacheFullBehavior' "DISCONNECT_IMMEDIATELY"
+
+pattern WaitForServer :: RtmpCacheFullBehavior
+pattern WaitForServer = RtmpCacheFullBehavior' "WAIT_FOR_SERVER"
+
+{-# COMPLETE
+  DisconnectImmediately,
+  WaitForServer,
+  RtmpCacheFullBehavior' #-}
 
 instance FromText RtmpCacheFullBehavior where
-    parser = takeLowerText >>= \case
-        "disconnect_immediately" -> pure DisconnectImmediately
-        "wait_for_server" -> pure WaitForServer
-        e -> fromTextError $ "Failure parsing RtmpCacheFullBehavior from value: '" <> e
-           <> "'. Accepted values: disconnect_immediately, wait_for_server"
+    parser = (RtmpCacheFullBehavior' . mk) <$> takeText
 
 instance ToText RtmpCacheFullBehavior where
-    toText = \case
-        DisconnectImmediately -> "DISCONNECT_IMMEDIATELY"
-        WaitForServer -> "WAIT_FOR_SERVER"
+    toText (RtmpCacheFullBehavior' ci) = original ci
+
+-- | Represents an enum of /known/ $RtmpCacheFullBehavior.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum RtmpCacheFullBehavior where
+    toEnum i = case i of
+        0 -> DisconnectImmediately
+        1 -> WaitForServer
+        _ -> (error . showText) $ "Unknown index for RtmpCacheFullBehavior: " <> toText i
+    fromEnum x = case x of
+        DisconnectImmediately -> 0
+        WaitForServer -> 1
+        RtmpCacheFullBehavior' name -> (error . showText) $ "Unknown RtmpCacheFullBehavior: " <> original name
+
+-- | Represents the bounds of /known/ $RtmpCacheFullBehavior.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded RtmpCacheFullBehavior where
+    minBound = DisconnectImmediately
+    maxBound = WaitForServer
 
 instance Hashable     RtmpCacheFullBehavior
 instance NFData       RtmpCacheFullBehavior

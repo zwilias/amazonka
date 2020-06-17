@@ -43,6 +43,7 @@ module Network.AWS.APIGateway.GetResource
     ) where
 
 import Network.AWS.APIGateway.Types
+import Network.AWS.APIGateway.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request

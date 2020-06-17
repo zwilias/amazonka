@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,30 +16,66 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.EC2.Types.ArchitectureType where
+module Network.AWS.EC2.Types.ArchitectureType (
+  ArchitectureType (
+    ..
+    , ATARM64
+    , ATI386
+    , ATX86_64
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.EC2.Internal
 import Network.AWS.Prelude
-  
-data ArchitectureType = ATARM64
-                      | ATI386
-                      | ATX86_64
-                          deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                    Typeable, Generic)
+
+data ArchitectureType = ArchitectureType' (CI Text)
+                          deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                    Generic)
+
+pattern ATARM64 :: ArchitectureType
+pattern ATARM64 = ArchitectureType' "arm64"
+
+pattern ATI386 :: ArchitectureType
+pattern ATI386 = ArchitectureType' "i386"
+
+pattern ATX86_64 :: ArchitectureType
+pattern ATX86_64 = ArchitectureType' "x86_64"
+
+{-# COMPLETE
+  ATARM64,
+  ATI386,
+  ATX86_64,
+  ArchitectureType' #-}
 
 instance FromText ArchitectureType where
-    parser = takeLowerText >>= \case
-        "arm64" -> pure ATARM64
-        "i386" -> pure ATI386
-        "x86_64" -> pure ATX86_64
-        e -> fromTextError $ "Failure parsing ArchitectureType from value: '" <> e
-           <> "'. Accepted values: arm64, i386, x86_64"
+    parser = (ArchitectureType' . mk) <$> takeText
 
 instance ToText ArchitectureType where
-    toText = \case
-        ATARM64 -> "arm64"
-        ATI386 -> "i386"
-        ATX86_64 -> "x86_64"
+    toText (ArchitectureType' ci) = original ci
+
+-- | Represents an enum of /known/ $ArchitectureType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum ArchitectureType where
+    toEnum i = case i of
+        0 -> ATARM64
+        1 -> ATI386
+        2 -> ATX86_64
+        _ -> (error . showText) $ "Unknown index for ArchitectureType: " <> toText i
+    fromEnum x = case x of
+        ATARM64 -> 0
+        ATI386 -> 1
+        ATX86_64 -> 2
+        ArchitectureType' name -> (error . showText) $ "Unknown ArchitectureType: " <> original name
+
+-- | Represents the bounds of /known/ $ArchitectureType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded ArchitectureType where
+    minBound = ATARM64
+    maxBound = ATX86_64
 
 instance Hashable     ArchitectureType
 instance NFData       ArchitectureType

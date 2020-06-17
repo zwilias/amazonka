@@ -44,6 +44,7 @@ module Network.AWS.CognitoIdentity.ListIdentityPools
     ) where
 
 import Network.AWS.CognitoIdentity.Types
+import Network.AWS.CognitoIdentity.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude

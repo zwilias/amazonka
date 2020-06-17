@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,41 +16,94 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.EMR.Types.InstanceFleetState where
+module Network.AWS.EMR.Types.InstanceFleetState (
+  InstanceFleetState (
+    ..
+    , IFSBootstrapping
+    , IFSProvisioning
+    , IFSResizing
+    , IFSRunning
+    , IFSSuspended
+    , IFSTerminated
+    , IFSTerminating
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data InstanceFleetState = IFSBootstrapping
-                        | IFSProvisioning
-                        | IFSResizing
-                        | IFSRunning
-                        | IFSSuspended
-                        | IFSTerminated
-                        | IFSTerminating
-                            deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                      Typeable, Generic)
+
+data InstanceFleetState = InstanceFleetState' (CI
+                                                 Text)
+                            deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                      Generic)
+
+pattern IFSBootstrapping :: InstanceFleetState
+pattern IFSBootstrapping = InstanceFleetState' "BOOTSTRAPPING"
+
+pattern IFSProvisioning :: InstanceFleetState
+pattern IFSProvisioning = InstanceFleetState' "PROVISIONING"
+
+pattern IFSResizing :: InstanceFleetState
+pattern IFSResizing = InstanceFleetState' "RESIZING"
+
+pattern IFSRunning :: InstanceFleetState
+pattern IFSRunning = InstanceFleetState' "RUNNING"
+
+pattern IFSSuspended :: InstanceFleetState
+pattern IFSSuspended = InstanceFleetState' "SUSPENDED"
+
+pattern IFSTerminated :: InstanceFleetState
+pattern IFSTerminated = InstanceFleetState' "TERMINATED"
+
+pattern IFSTerminating :: InstanceFleetState
+pattern IFSTerminating = InstanceFleetState' "TERMINATING"
+
+{-# COMPLETE
+  IFSBootstrapping,
+  IFSProvisioning,
+  IFSResizing,
+  IFSRunning,
+  IFSSuspended,
+  IFSTerminated,
+  IFSTerminating,
+  InstanceFleetState' #-}
 
 instance FromText InstanceFleetState where
-    parser = takeLowerText >>= \case
-        "bootstrapping" -> pure IFSBootstrapping
-        "provisioning" -> pure IFSProvisioning
-        "resizing" -> pure IFSResizing
-        "running" -> pure IFSRunning
-        "suspended" -> pure IFSSuspended
-        "terminated" -> pure IFSTerminated
-        "terminating" -> pure IFSTerminating
-        e -> fromTextError $ "Failure parsing InstanceFleetState from value: '" <> e
-           <> "'. Accepted values: bootstrapping, provisioning, resizing, running, suspended, terminated, terminating"
+    parser = (InstanceFleetState' . mk) <$> takeText
 
 instance ToText InstanceFleetState where
-    toText = \case
-        IFSBootstrapping -> "BOOTSTRAPPING"
-        IFSProvisioning -> "PROVISIONING"
-        IFSResizing -> "RESIZING"
-        IFSRunning -> "RUNNING"
-        IFSSuspended -> "SUSPENDED"
-        IFSTerminated -> "TERMINATED"
-        IFSTerminating -> "TERMINATING"
+    toText (InstanceFleetState' ci) = original ci
+
+-- | Represents an enum of /known/ $InstanceFleetState.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum InstanceFleetState where
+    toEnum i = case i of
+        0 -> IFSBootstrapping
+        1 -> IFSProvisioning
+        2 -> IFSResizing
+        3 -> IFSRunning
+        4 -> IFSSuspended
+        5 -> IFSTerminated
+        6 -> IFSTerminating
+        _ -> (error . showText) $ "Unknown index for InstanceFleetState: " <> toText i
+    fromEnum x = case x of
+        IFSBootstrapping -> 0
+        IFSProvisioning -> 1
+        IFSResizing -> 2
+        IFSRunning -> 3
+        IFSSuspended -> 4
+        IFSTerminated -> 5
+        IFSTerminating -> 6
+        InstanceFleetState' name -> (error . showText) $ "Unknown InstanceFleetState: " <> original name
+
+-- | Represents the bounds of /known/ $InstanceFleetState.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded InstanceFleetState where
+    minBound = IFSBootstrapping
+    maxBound = IFSTerminating
 
 instance Hashable     InstanceFleetState
 instance NFData       InstanceFleetState

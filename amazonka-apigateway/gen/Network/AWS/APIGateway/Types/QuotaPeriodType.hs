@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,29 +16,65 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.APIGateway.Types.QuotaPeriodType where
+module Network.AWS.APIGateway.Types.QuotaPeriodType (
+  QuotaPeriodType (
+    ..
+    , Day
+    , Month
+    , Week
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data QuotaPeriodType = Day
-                     | Month
-                     | Week
-                         deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                   Typeable, Generic)
+
+data QuotaPeriodType = QuotaPeriodType' (CI Text)
+                         deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                   Generic)
+
+pattern Day :: QuotaPeriodType
+pattern Day = QuotaPeriodType' "DAY"
+
+pattern Month :: QuotaPeriodType
+pattern Month = QuotaPeriodType' "MONTH"
+
+pattern Week :: QuotaPeriodType
+pattern Week = QuotaPeriodType' "WEEK"
+
+{-# COMPLETE
+  Day,
+  Month,
+  Week,
+  QuotaPeriodType' #-}
 
 instance FromText QuotaPeriodType where
-    parser = takeLowerText >>= \case
-        "day" -> pure Day
-        "month" -> pure Month
-        "week" -> pure Week
-        e -> fromTextError $ "Failure parsing QuotaPeriodType from value: '" <> e
-           <> "'. Accepted values: day, month, week"
+    parser = (QuotaPeriodType' . mk) <$> takeText
 
 instance ToText QuotaPeriodType where
-    toText = \case
-        Day -> "DAY"
-        Month -> "MONTH"
-        Week -> "WEEK"
+    toText (QuotaPeriodType' ci) = original ci
+
+-- | Represents an enum of /known/ $QuotaPeriodType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum QuotaPeriodType where
+    toEnum i = case i of
+        0 -> Day
+        1 -> Month
+        2 -> Week
+        _ -> (error . showText) $ "Unknown index for QuotaPeriodType: " <> toText i
+    fromEnum x = case x of
+        Day -> 0
+        Month -> 1
+        Week -> 2
+        QuotaPeriodType' name -> (error . showText) $ "Unknown QuotaPeriodType: " <> original name
+
+-- | Represents the bounds of /known/ $QuotaPeriodType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded QuotaPeriodType where
+    minBound = Day
+    maxBound = Week
 
 instance Hashable     QuotaPeriodType
 instance NFData       QuotaPeriodType

@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,28 +16,60 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.EC2.Types.ModifyAvailabilityZoneOptInStatus where
+module Network.AWS.EC2.Types.ModifyAvailabilityZoneOptInStatus (
+  ModifyAvailabilityZoneOptInStatus (
+    ..
+    , NotOptedIn
+    , OptedIn
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.EC2.Internal
 import Network.AWS.Prelude
-  
-data ModifyAvailabilityZoneOptInStatus = NotOptedIn
-                                       | OptedIn
-                                           deriving (Eq, Ord, Read, Show, Enum,
-                                                     Bounded, Data, Typeable,
-                                                     Generic)
+
+data ModifyAvailabilityZoneOptInStatus = ModifyAvailabilityZoneOptInStatus' (CI
+                                                                               Text)
+                                           deriving (Eq, Ord, Read, Show, Data,
+                                                     Typeable, Generic)
+
+pattern NotOptedIn :: ModifyAvailabilityZoneOptInStatus
+pattern NotOptedIn = ModifyAvailabilityZoneOptInStatus' "not-opted-in"
+
+pattern OptedIn :: ModifyAvailabilityZoneOptInStatus
+pattern OptedIn = ModifyAvailabilityZoneOptInStatus' "opted-in"
+
+{-# COMPLETE
+  NotOptedIn,
+  OptedIn,
+  ModifyAvailabilityZoneOptInStatus' #-}
 
 instance FromText ModifyAvailabilityZoneOptInStatus where
-    parser = takeLowerText >>= \case
-        "not-opted-in" -> pure NotOptedIn
-        "opted-in" -> pure OptedIn
-        e -> fromTextError $ "Failure parsing ModifyAvailabilityZoneOptInStatus from value: '" <> e
-           <> "'. Accepted values: not-opted-in, opted-in"
+    parser = (ModifyAvailabilityZoneOptInStatus' . mk) <$> takeText
 
 instance ToText ModifyAvailabilityZoneOptInStatus where
-    toText = \case
-        NotOptedIn -> "not-opted-in"
-        OptedIn -> "opted-in"
+    toText (ModifyAvailabilityZoneOptInStatus' ci) = original ci
+
+-- | Represents an enum of /known/ $ModifyAvailabilityZoneOptInStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum ModifyAvailabilityZoneOptInStatus where
+    toEnum i = case i of
+        0 -> NotOptedIn
+        1 -> OptedIn
+        _ -> (error . showText) $ "Unknown index for ModifyAvailabilityZoneOptInStatus: " <> toText i
+    fromEnum x = case x of
+        NotOptedIn -> 0
+        OptedIn -> 1
+        ModifyAvailabilityZoneOptInStatus' name -> (error . showText) $ "Unknown ModifyAvailabilityZoneOptInStatus: " <> original name
+
+-- | Represents the bounds of /known/ $ModifyAvailabilityZoneOptInStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded ModifyAvailabilityZoneOptInStatus where
+    minBound = NotOptedIn
+    maxBound = OptedIn
 
 instance Hashable     ModifyAvailabilityZoneOptInStatus
 instance NFData       ModifyAvailabilityZoneOptInStatus

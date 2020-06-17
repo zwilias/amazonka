@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,32 +16,72 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.DMS.Types.DmsSSLModeValue where
+module Network.AWS.DMS.Types.DmsSSLModeValue (
+  DmsSSLModeValue (
+    ..
+    , DSMVNone
+    , DSMVRequire
+    , DSMVVerifyCa
+    , DSMVVerifyFull
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data DmsSSLModeValue = DSMVNone
-                     | DSMVRequire
-                     | DSMVVerifyCa
-                     | DSMVVerifyFull
-                         deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                   Typeable, Generic)
+
+data DmsSSLModeValue = DmsSSLModeValue' (CI Text)
+                         deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                   Generic)
+
+pattern DSMVNone :: DmsSSLModeValue
+pattern DSMVNone = DmsSSLModeValue' "none"
+
+pattern DSMVRequire :: DmsSSLModeValue
+pattern DSMVRequire = DmsSSLModeValue' "require"
+
+pattern DSMVVerifyCa :: DmsSSLModeValue
+pattern DSMVVerifyCa = DmsSSLModeValue' "verify-ca"
+
+pattern DSMVVerifyFull :: DmsSSLModeValue
+pattern DSMVVerifyFull = DmsSSLModeValue' "verify-full"
+
+{-# COMPLETE
+  DSMVNone,
+  DSMVRequire,
+  DSMVVerifyCa,
+  DSMVVerifyFull,
+  DmsSSLModeValue' #-}
 
 instance FromText DmsSSLModeValue where
-    parser = takeLowerText >>= \case
-        "none" -> pure DSMVNone
-        "require" -> pure DSMVRequire
-        "verify-ca" -> pure DSMVVerifyCa
-        "verify-full" -> pure DSMVVerifyFull
-        e -> fromTextError $ "Failure parsing DmsSSLModeValue from value: '" <> e
-           <> "'. Accepted values: none, require, verify-ca, verify-full"
+    parser = (DmsSSLModeValue' . mk) <$> takeText
 
 instance ToText DmsSSLModeValue where
-    toText = \case
-        DSMVNone -> "none"
-        DSMVRequire -> "require"
-        DSMVVerifyCa -> "verify-ca"
-        DSMVVerifyFull -> "verify-full"
+    toText (DmsSSLModeValue' ci) = original ci
+
+-- | Represents an enum of /known/ $DmsSSLModeValue.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum DmsSSLModeValue where
+    toEnum i = case i of
+        0 -> DSMVNone
+        1 -> DSMVRequire
+        2 -> DSMVVerifyCa
+        3 -> DSMVVerifyFull
+        _ -> (error . showText) $ "Unknown index for DmsSSLModeValue: " <> toText i
+    fromEnum x = case x of
+        DSMVNone -> 0
+        DSMVRequire -> 1
+        DSMVVerifyCa -> 2
+        DSMVVerifyFull -> 3
+        DmsSSLModeValue' name -> (error . showText) $ "Unknown DmsSSLModeValue: " <> original name
+
+-- | Represents the bounds of /known/ $DmsSSLModeValue.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded DmsSSLModeValue where
+    minBound = DSMVNone
+    maxBound = DSMVVerifyFull
 
 instance Hashable     DmsSSLModeValue
 instance NFData       DmsSSLModeValue

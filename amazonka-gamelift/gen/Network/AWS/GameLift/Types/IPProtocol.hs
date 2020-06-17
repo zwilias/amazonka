@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,58 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.GameLift.Types.IPProtocol where
+module Network.AWS.GameLift.Types.IPProtocol (
+  IPProtocol (
+    ..
+    , TCP
+    , Udp
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data IPProtocol = TCP
-                | Udp
-                    deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                              Typeable, Generic)
+
+data IPProtocol = IPProtocol' (CI Text)
+                    deriving (Eq, Ord, Read, Show, Data, Typeable,
+                              Generic)
+
+pattern TCP :: IPProtocol
+pattern TCP = IPProtocol' "TCP"
+
+pattern Udp :: IPProtocol
+pattern Udp = IPProtocol' "UDP"
+
+{-# COMPLETE
+  TCP,
+  Udp,
+  IPProtocol' #-}
 
 instance FromText IPProtocol where
-    parser = takeLowerText >>= \case
-        "tcp" -> pure TCP
-        "udp" -> pure Udp
-        e -> fromTextError $ "Failure parsing IPProtocol from value: '" <> e
-           <> "'. Accepted values: tcp, udp"
+    parser = (IPProtocol' . mk) <$> takeText
 
 instance ToText IPProtocol where
-    toText = \case
-        TCP -> "TCP"
-        Udp -> "UDP"
+    toText (IPProtocol' ci) = original ci
+
+-- | Represents an enum of /known/ $IPProtocol.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum IPProtocol where
+    toEnum i = case i of
+        0 -> TCP
+        1 -> Udp
+        _ -> (error . showText) $ "Unknown index for IPProtocol: " <> toText i
+    fromEnum x = case x of
+        TCP -> 0
+        Udp -> 1
+        IPProtocol' name -> (error . showText) $ "Unknown IPProtocol: " <> original name
+
+-- | Represents the bounds of /known/ $IPProtocol.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded IPProtocol where
+    minBound = TCP
+    maxBound = Udp
 
 instance Hashable     IPProtocol
 instance NFData       IPProtocol

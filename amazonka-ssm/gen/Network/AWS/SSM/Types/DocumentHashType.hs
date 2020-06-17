@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,58 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.SSM.Types.DocumentHashType where
+module Network.AWS.SSM.Types.DocumentHashType (
+  DocumentHashType (
+    ..
+    , HashSHA1
+    , HashSHA256
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data DocumentHashType = HashSHA1
-                      | HashSHA256
-                          deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                    Typeable, Generic)
+
+data DocumentHashType = DocumentHashType' (CI Text)
+                          deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                    Generic)
+
+pattern HashSHA1 :: DocumentHashType
+pattern HashSHA1 = DocumentHashType' "Sha1"
+
+pattern HashSHA256 :: DocumentHashType
+pattern HashSHA256 = DocumentHashType' "Sha256"
+
+{-# COMPLETE
+  HashSHA1,
+  HashSHA256,
+  DocumentHashType' #-}
 
 instance FromText DocumentHashType where
-    parser = takeLowerText >>= \case
-        "sha1" -> pure HashSHA1
-        "sha256" -> pure HashSHA256
-        e -> fromTextError $ "Failure parsing DocumentHashType from value: '" <> e
-           <> "'. Accepted values: sha1, sha256"
+    parser = (DocumentHashType' . mk) <$> takeText
 
 instance ToText DocumentHashType where
-    toText = \case
-        HashSHA1 -> "Sha1"
-        HashSHA256 -> "Sha256"
+    toText (DocumentHashType' ci) = original ci
+
+-- | Represents an enum of /known/ $DocumentHashType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum DocumentHashType where
+    toEnum i = case i of
+        0 -> HashSHA1
+        1 -> HashSHA256
+        _ -> (error . showText) $ "Unknown index for DocumentHashType: " <> toText i
+    fromEnum x = case x of
+        HashSHA1 -> 0
+        HashSHA256 -> 1
+        DocumentHashType' name -> (error . showText) $ "Unknown DocumentHashType: " <> original name
+
+-- | Represents the bounds of /known/ $DocumentHashType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded DocumentHashType where
+    minBound = HashSHA1
+    maxBound = HashSHA256
 
 instance Hashable     DocumentHashType
 instance NFData       DocumentHashType

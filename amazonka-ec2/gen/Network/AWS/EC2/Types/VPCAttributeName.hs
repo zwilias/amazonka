@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,27 +16,59 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.EC2.Types.VPCAttributeName where
+module Network.AWS.EC2.Types.VPCAttributeName (
+  VPCAttributeName (
+    ..
+    , EnableDNSHostnames
+    , EnableDNSSupport
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.EC2.Internal
 import Network.AWS.Prelude
-  
-data VPCAttributeName = EnableDNSHostnames
-                      | EnableDNSSupport
-                          deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                    Typeable, Generic)
+
+data VPCAttributeName = VPCAttributeName' (CI Text)
+                          deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                    Generic)
+
+pattern EnableDNSHostnames :: VPCAttributeName
+pattern EnableDNSHostnames = VPCAttributeName' "enableDnsHostnames"
+
+pattern EnableDNSSupport :: VPCAttributeName
+pattern EnableDNSSupport = VPCAttributeName' "enableDnsSupport"
+
+{-# COMPLETE
+  EnableDNSHostnames,
+  EnableDNSSupport,
+  VPCAttributeName' #-}
 
 instance FromText VPCAttributeName where
-    parser = takeLowerText >>= \case
-        "enablednshostnames" -> pure EnableDNSHostnames
-        "enablednssupport" -> pure EnableDNSSupport
-        e -> fromTextError $ "Failure parsing VPCAttributeName from value: '" <> e
-           <> "'. Accepted values: enablednshostnames, enablednssupport"
+    parser = (VPCAttributeName' . mk) <$> takeText
 
 instance ToText VPCAttributeName where
-    toText = \case
-        EnableDNSHostnames -> "enableDnsHostnames"
-        EnableDNSSupport -> "enableDnsSupport"
+    toText (VPCAttributeName' ci) = original ci
+
+-- | Represents an enum of /known/ $VPCAttributeName.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum VPCAttributeName where
+    toEnum i = case i of
+        0 -> EnableDNSHostnames
+        1 -> EnableDNSSupport
+        _ -> (error . showText) $ "Unknown index for VPCAttributeName: " <> toText i
+    fromEnum x = case x of
+        EnableDNSHostnames -> 0
+        EnableDNSSupport -> 1
+        VPCAttributeName' name -> (error . showText) $ "Unknown VPCAttributeName: " <> original name
+
+-- | Represents the bounds of /known/ $VPCAttributeName.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded VPCAttributeName where
+    minBound = EnableDNSHostnames
+    maxBound = EnableDNSSupport
 
 instance Hashable     VPCAttributeName
 instance NFData       VPCAttributeName

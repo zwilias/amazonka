@@ -98,12 +98,14 @@ library
         , Network.AWS.KMS.Types.KeyUsageType
         , Network.AWS.KMS.Types.ListGrantsResponse
         , Network.AWS.KMS.Types.OriginType
+        , Network.AWS.KMS.Types.Product
         , Network.AWS.KMS.Types.Tag
         , Network.AWS.KMS.Types.WrappingKeySpec
 
     build-depends:
           amazonka-core == 1.6.1.*
         , base          >= 4.7     && < 5
+        , case-insensitive
 
 test-suite amazonka-kms-test
     type:              exitcode-stdio-1.0
@@ -127,6 +129,7 @@ test-suite amazonka-kms-test
         , amazonka-kms
         , base
         , bytestring
+        , case-insensitive
         , tasty
         , tasty-hunit
         , text

@@ -41,6 +41,7 @@ module Network.AWS.ECR.DeleteRepositoryPolicy
     ) where
 
 import Network.AWS.ECR.Types
+import Network.AWS.ECR.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request

@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,27 +16,59 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.S3.Types.CompressionType where
+module Network.AWS.S3.Types.CompressionType (
+  CompressionType (
+    ..
+    , CTGzip
+    , CTNone
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
 import Network.AWS.S3.Internal
-  
-data CompressionType = CTGzip
-                     | CTNone
-                         deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                   Typeable, Generic)
+
+data CompressionType = CompressionType' (CI Text)
+                         deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                   Generic)
+
+pattern CTGzip :: CompressionType
+pattern CTGzip = CompressionType' "GZIP"
+
+pattern CTNone :: CompressionType
+pattern CTNone = CompressionType' "NONE"
+
+{-# COMPLETE
+  CTGzip,
+  CTNone,
+  CompressionType' #-}
 
 instance FromText CompressionType where
-    parser = takeLowerText >>= \case
-        "gzip" -> pure CTGzip
-        "none" -> pure CTNone
-        e -> fromTextError $ "Failure parsing CompressionType from value: '" <> e
-           <> "'. Accepted values: gzip, none"
+    parser = (CompressionType' . mk) <$> takeText
 
 instance ToText CompressionType where
-    toText = \case
-        CTGzip -> "GZIP"
-        CTNone -> "NONE"
+    toText (CompressionType' ci) = original ci
+
+-- | Represents an enum of /known/ $CompressionType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum CompressionType where
+    toEnum i = case i of
+        0 -> CTGzip
+        1 -> CTNone
+        _ -> (error . showText) $ "Unknown index for CompressionType: " <> toText i
+    fromEnum x = case x of
+        CTGzip -> 0
+        CTNone -> 1
+        CompressionType' name -> (error . showText) $ "Unknown CompressionType: " <> original name
+
+-- | Represents the bounds of /known/ $CompressionType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded CompressionType where
+    minBound = CTGzip
+    maxBound = CTNone
 
 instance Hashable     CompressionType
 instance NFData       CompressionType

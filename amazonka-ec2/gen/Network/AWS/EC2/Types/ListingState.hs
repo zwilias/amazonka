@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,33 +16,73 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.EC2.Types.ListingState where
+module Network.AWS.EC2.Types.ListingState (
+  ListingState (
+    ..
+    , LAvailable
+    , LCancelled
+    , LPending
+    , LSold
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.EC2.Internal
 import Network.AWS.Prelude
-  
-data ListingState = LAvailable
-                  | LCancelled
-                  | LPending
-                  | LSold
-                      deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                Typeable, Generic)
+
+data ListingState = ListingState' (CI Text)
+                      deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                Generic)
+
+pattern LAvailable :: ListingState
+pattern LAvailable = ListingState' "available"
+
+pattern LCancelled :: ListingState
+pattern LCancelled = ListingState' "cancelled"
+
+pattern LPending :: ListingState
+pattern LPending = ListingState' "pending"
+
+pattern LSold :: ListingState
+pattern LSold = ListingState' "sold"
+
+{-# COMPLETE
+  LAvailable,
+  LCancelled,
+  LPending,
+  LSold,
+  ListingState' #-}
 
 instance FromText ListingState where
-    parser = takeLowerText >>= \case
-        "available" -> pure LAvailable
-        "cancelled" -> pure LCancelled
-        "pending" -> pure LPending
-        "sold" -> pure LSold
-        e -> fromTextError $ "Failure parsing ListingState from value: '" <> e
-           <> "'. Accepted values: available, cancelled, pending, sold"
+    parser = (ListingState' . mk) <$> takeText
 
 instance ToText ListingState where
-    toText = \case
-        LAvailable -> "available"
-        LCancelled -> "cancelled"
-        LPending -> "pending"
-        LSold -> "sold"
+    toText (ListingState' ci) = original ci
+
+-- | Represents an enum of /known/ $ListingState.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum ListingState where
+    toEnum i = case i of
+        0 -> LAvailable
+        1 -> LCancelled
+        2 -> LPending
+        3 -> LSold
+        _ -> (error . showText) $ "Unknown index for ListingState: " <> toText i
+    fromEnum x = case x of
+        LAvailable -> 0
+        LCancelled -> 1
+        LPending -> 2
+        LSold -> 3
+        ListingState' name -> (error . showText) $ "Unknown ListingState: " <> original name
+
+-- | Represents the bounds of /known/ $ListingState.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded ListingState where
+    minBound = LAvailable
+    maxBound = LSold
 
 instance Hashable     ListingState
 instance NFData       ListingState

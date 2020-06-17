@@ -41,6 +41,7 @@ module Network.AWS.MediaLive.ListInputSecurityGroups
 
 import Network.AWS.Lens
 import Network.AWS.MediaLive.Types
+import Network.AWS.MediaLive.Types.Product
 import Network.AWS.Pager
 import Network.AWS.Prelude
 import Network.AWS.Request

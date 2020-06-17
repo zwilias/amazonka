@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,29 +16,65 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.Lightsail.Types.NetworkProtocol where
+module Network.AWS.Lightsail.Types.NetworkProtocol (
+  NetworkProtocol (
+    ..
+    , All
+    , TCP
+    , Udp
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data NetworkProtocol = All
-                     | TCP
-                     | Udp
-                         deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                   Typeable, Generic)
+
+data NetworkProtocol = NetworkProtocol' (CI Text)
+                         deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                   Generic)
+
+pattern All :: NetworkProtocol
+pattern All = NetworkProtocol' "all"
+
+pattern TCP :: NetworkProtocol
+pattern TCP = NetworkProtocol' "tcp"
+
+pattern Udp :: NetworkProtocol
+pattern Udp = NetworkProtocol' "udp"
+
+{-# COMPLETE
+  All,
+  TCP,
+  Udp,
+  NetworkProtocol' #-}
 
 instance FromText NetworkProtocol where
-    parser = takeLowerText >>= \case
-        "all" -> pure All
-        "tcp" -> pure TCP
-        "udp" -> pure Udp
-        e -> fromTextError $ "Failure parsing NetworkProtocol from value: '" <> e
-           <> "'. Accepted values: all, tcp, udp"
+    parser = (NetworkProtocol' . mk) <$> takeText
 
 instance ToText NetworkProtocol where
-    toText = \case
-        All -> "all"
-        TCP -> "tcp"
-        Udp -> "udp"
+    toText (NetworkProtocol' ci) = original ci
+
+-- | Represents an enum of /known/ $NetworkProtocol.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum NetworkProtocol where
+    toEnum i = case i of
+        0 -> All
+        1 -> TCP
+        2 -> Udp
+        _ -> (error . showText) $ "Unknown index for NetworkProtocol: " <> toText i
+    fromEnum x = case x of
+        All -> 0
+        TCP -> 1
+        Udp -> 2
+        NetworkProtocol' name -> (error . showText) $ "Unknown NetworkProtocol: " <> original name
+
+-- | Represents the bounds of /known/ $NetworkProtocol.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded NetworkProtocol where
+    minBound = All
+    maxBound = Udp
 
 instance Hashable     NetworkProtocol
 instance NFData       NetworkProtocol

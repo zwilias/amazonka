@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,25 +16,53 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.Route53.Types.ReusableDelegationSetLimitType where
+module Network.AWS.Route53.Types.ReusableDelegationSetLimitType (
+  ReusableDelegationSetLimitType (
+    ..
+    , MaxZonesByReusableDelegationSet
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
 import Network.AWS.Route53.Internal
-  
-data ReusableDelegationSetLimitType = MaxZonesByReusableDelegationSet
-                                        deriving (Eq, Ord, Read, Show, Enum,
-                                                  Bounded, Data, Typeable,
-                                                  Generic)
+
+data ReusableDelegationSetLimitType = ReusableDelegationSetLimitType' (CI
+                                                                         Text)
+                                        deriving (Eq, Ord, Read, Show, Data,
+                                                  Typeable, Generic)
+
+pattern MaxZonesByReusableDelegationSet :: ReusableDelegationSetLimitType
+pattern MaxZonesByReusableDelegationSet = ReusableDelegationSetLimitType' "MAX_ZONES_BY_REUSABLE_DELEGATION_SET"
+
+{-# COMPLETE
+  MaxZonesByReusableDelegationSet,
+  ReusableDelegationSetLimitType' #-}
 
 instance FromText ReusableDelegationSetLimitType where
-    parser = takeLowerText >>= \case
-        "max_zones_by_reusable_delegation_set" -> pure MaxZonesByReusableDelegationSet
-        e -> fromTextError $ "Failure parsing ReusableDelegationSetLimitType from value: '" <> e
-           <> "'. Accepted values: max_zones_by_reusable_delegation_set"
+    parser = (ReusableDelegationSetLimitType' . mk) <$> takeText
 
 instance ToText ReusableDelegationSetLimitType where
-    toText = \case
-        MaxZonesByReusableDelegationSet -> "MAX_ZONES_BY_REUSABLE_DELEGATION_SET"
+    toText (ReusableDelegationSetLimitType' ci) = original ci
+
+-- | Represents an enum of /known/ $ReusableDelegationSetLimitType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum ReusableDelegationSetLimitType where
+    toEnum i = case i of
+        0 -> MaxZonesByReusableDelegationSet
+        _ -> (error . showText) $ "Unknown index for ReusableDelegationSetLimitType: " <> toText i
+    fromEnum x = case x of
+        MaxZonesByReusableDelegationSet -> 0
+        ReusableDelegationSetLimitType' name -> (error . showText) $ "Unknown ReusableDelegationSetLimitType: " <> original name
+
+-- | Represents the bounds of /known/ $ReusableDelegationSetLimitType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded ReusableDelegationSetLimitType where
+    minBound = MaxZonesByReusableDelegationSet
+    maxBound = MaxZonesByReusableDelegationSet
 
 instance Hashable     ReusableDelegationSetLimitType
 instance NFData       ReusableDelegationSetLimitType

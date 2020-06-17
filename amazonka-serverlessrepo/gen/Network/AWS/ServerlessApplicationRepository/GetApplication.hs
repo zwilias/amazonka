@@ -53,6 +53,7 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.ServerlessApplicationRepository.Types
+import Network.AWS.ServerlessApplicationRepository.Types.Product
 
 -- | /See:/ 'getApplication' smart constructor.
 data GetApplication = GetApplication'{_gaSemanticVersion

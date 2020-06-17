@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,27 +16,60 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.EC2.Types.VPNEcmpSupportValue where
+module Network.AWS.EC2.Types.VPNEcmpSupportValue (
+  VPNEcmpSupportValue (
+    ..
+    , VESVDisable
+    , VESVEnable
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.EC2.Internal
 import Network.AWS.Prelude
-  
-data VPNEcmpSupportValue = VESVDisable
-                         | VESVEnable
-                             deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                       Typeable, Generic)
+
+data VPNEcmpSupportValue = VPNEcmpSupportValue' (CI
+                                                   Text)
+                             deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                       Generic)
+
+pattern VESVDisable :: VPNEcmpSupportValue
+pattern VESVDisable = VPNEcmpSupportValue' "disable"
+
+pattern VESVEnable :: VPNEcmpSupportValue
+pattern VESVEnable = VPNEcmpSupportValue' "enable"
+
+{-# COMPLETE
+  VESVDisable,
+  VESVEnable,
+  VPNEcmpSupportValue' #-}
 
 instance FromText VPNEcmpSupportValue where
-    parser = takeLowerText >>= \case
-        "disable" -> pure VESVDisable
-        "enable" -> pure VESVEnable
-        e -> fromTextError $ "Failure parsing VPNEcmpSupportValue from value: '" <> e
-           <> "'. Accepted values: disable, enable"
+    parser = (VPNEcmpSupportValue' . mk) <$> takeText
 
 instance ToText VPNEcmpSupportValue where
-    toText = \case
-        VESVDisable -> "disable"
-        VESVEnable -> "enable"
+    toText (VPNEcmpSupportValue' ci) = original ci
+
+-- | Represents an enum of /known/ $VPNEcmpSupportValue.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum VPNEcmpSupportValue where
+    toEnum i = case i of
+        0 -> VESVDisable
+        1 -> VESVEnable
+        _ -> (error . showText) $ "Unknown index for VPNEcmpSupportValue: " <> toText i
+    fromEnum x = case x of
+        VESVDisable -> 0
+        VESVEnable -> 1
+        VPNEcmpSupportValue' name -> (error . showText) $ "Unknown VPNEcmpSupportValue: " <> original name
+
+-- | Represents the bounds of /known/ $VPNEcmpSupportValue.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded VPNEcmpSupportValue where
+    minBound = VESVDisable
+    maxBound = VESVEnable
 
 instance Hashable     VPNEcmpSupportValue
 instance NFData       VPNEcmpSupportValue

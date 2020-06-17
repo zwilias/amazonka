@@ -45,6 +45,7 @@ module Network.AWS.Batch.DescribeComputeEnvironments
     ) where
 
 import Network.AWS.Batch.Types
+import Network.AWS.Batch.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude

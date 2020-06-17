@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,27 +16,59 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.SMS.Types.LicenseType where
+module Network.AWS.SMS.Types.LicenseType (
+  LicenseType (
+    ..
+    , AWS
+    , Byol
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
+
 -- | The license type to be used for the Amazon Machine Image (AMI) created after a successful ReplicationRun.
-data LicenseType = AWS
-                 | Byol
-                     deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                               Typeable, Generic)
+data LicenseType = LicenseType' (CI Text)
+                     deriving (Eq, Ord, Read, Show, Data, Typeable,
+                               Generic)
+
+pattern AWS :: LicenseType
+pattern AWS = LicenseType' "AWS"
+
+pattern Byol :: LicenseType
+pattern Byol = LicenseType' "BYOL"
+
+{-# COMPLETE
+  AWS,
+  Byol,
+  LicenseType' #-}
 
 instance FromText LicenseType where
-    parser = takeLowerText >>= \case
-        "aws" -> pure AWS
-        "byol" -> pure Byol
-        e -> fromTextError $ "Failure parsing LicenseType from value: '" <> e
-           <> "'. Accepted values: aws, byol"
+    parser = (LicenseType' . mk) <$> takeText
 
 instance ToText LicenseType where
-    toText = \case
-        AWS -> "AWS"
-        Byol -> "BYOL"
+    toText (LicenseType' ci) = original ci
+
+-- | Represents an enum of /known/ $LicenseType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum LicenseType where
+    toEnum i = case i of
+        0 -> AWS
+        1 -> Byol
+        _ -> (error . showText) $ "Unknown index for LicenseType: " <> toText i
+    fromEnum x = case x of
+        AWS -> 0
+        Byol -> 1
+        LicenseType' name -> (error . showText) $ "Unknown LicenseType: " <> original name
+
+-- | Represents the bounds of /known/ $LicenseType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded LicenseType where
+    minBound = AWS
+    maxBound = Byol
 
 instance Hashable     LicenseType
 instance NFData       LicenseType

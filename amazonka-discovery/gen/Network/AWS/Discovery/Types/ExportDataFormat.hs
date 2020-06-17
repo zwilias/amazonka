@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,58 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.Discovery.Types.ExportDataFormat where
+module Network.AWS.Discovery.Types.ExportDataFormat (
+  ExportDataFormat (
+    ..
+    , CSV
+    , Graphml
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data ExportDataFormat = CSV
-                      | Graphml
-                          deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                    Typeable, Generic)
+
+data ExportDataFormat = ExportDataFormat' (CI Text)
+                          deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                    Generic)
+
+pattern CSV :: ExportDataFormat
+pattern CSV = ExportDataFormat' "CSV"
+
+pattern Graphml :: ExportDataFormat
+pattern Graphml = ExportDataFormat' "GRAPHML"
+
+{-# COMPLETE
+  CSV,
+  Graphml,
+  ExportDataFormat' #-}
 
 instance FromText ExportDataFormat where
-    parser = takeLowerText >>= \case
-        "csv" -> pure CSV
-        "graphml" -> pure Graphml
-        e -> fromTextError $ "Failure parsing ExportDataFormat from value: '" <> e
-           <> "'. Accepted values: csv, graphml"
+    parser = (ExportDataFormat' . mk) <$> takeText
 
 instance ToText ExportDataFormat where
-    toText = \case
-        CSV -> "CSV"
-        Graphml -> "GRAPHML"
+    toText (ExportDataFormat' ci) = original ci
+
+-- | Represents an enum of /known/ $ExportDataFormat.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum ExportDataFormat where
+    toEnum i = case i of
+        0 -> CSV
+        1 -> Graphml
+        _ -> (error . showText) $ "Unknown index for ExportDataFormat: " <> toText i
+    fromEnum x = case x of
+        CSV -> 0
+        Graphml -> 1
+        ExportDataFormat' name -> (error . showText) $ "Unknown ExportDataFormat: " <> original name
+
+-- | Represents the bounds of /known/ $ExportDataFormat.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded ExportDataFormat where
+    minBound = CSV
+    maxBound = Graphml
 
 instance Hashable     ExportDataFormat
 instance NFData       ExportDataFormat

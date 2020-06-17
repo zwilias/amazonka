@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,24 +16,53 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.SWF.Types.WorkflowExecutionCancelRequestedCause where
+module Network.AWS.SWF.Types.WorkflowExecutionCancelRequestedCause (
+  WorkflowExecutionCancelRequestedCause (
+    ..
+    , ChildPolicyApplied
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data WorkflowExecutionCancelRequestedCause = ChildPolicyApplied
+
+data WorkflowExecutionCancelRequestedCause = WorkflowExecutionCancelRequestedCause' (CI
+                                                                                       Text)
                                                deriving (Eq, Ord, Read, Show,
-                                                         Enum, Bounded, Data,
-                                                         Typeable, Generic)
+                                                         Data, Typeable,
+                                                         Generic)
+
+pattern ChildPolicyApplied :: WorkflowExecutionCancelRequestedCause
+pattern ChildPolicyApplied = WorkflowExecutionCancelRequestedCause' "CHILD_POLICY_APPLIED"
+
+{-# COMPLETE
+  ChildPolicyApplied,
+  WorkflowExecutionCancelRequestedCause' #-}
 
 instance FromText WorkflowExecutionCancelRequestedCause where
-    parser = takeLowerText >>= \case
-        "child_policy_applied" -> pure ChildPolicyApplied
-        e -> fromTextError $ "Failure parsing WorkflowExecutionCancelRequestedCause from value: '" <> e
-           <> "'. Accepted values: child_policy_applied"
+    parser = (WorkflowExecutionCancelRequestedCause' . mk) <$> takeText
 
 instance ToText WorkflowExecutionCancelRequestedCause where
-    toText = \case
-        ChildPolicyApplied -> "CHILD_POLICY_APPLIED"
+    toText (WorkflowExecutionCancelRequestedCause' ci) = original ci
+
+-- | Represents an enum of /known/ $WorkflowExecutionCancelRequestedCause.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum WorkflowExecutionCancelRequestedCause where
+    toEnum i = case i of
+        0 -> ChildPolicyApplied
+        _ -> (error . showText) $ "Unknown index for WorkflowExecutionCancelRequestedCause: " <> toText i
+    fromEnum x = case x of
+        ChildPolicyApplied -> 0
+        WorkflowExecutionCancelRequestedCause' name -> (error . showText) $ "Unknown WorkflowExecutionCancelRequestedCause: " <> original name
+
+-- | Represents the bounds of /known/ $WorkflowExecutionCancelRequestedCause.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded WorkflowExecutionCancelRequestedCause where
+    minBound = ChildPolicyApplied
+    maxBound = ChildPolicyApplied
 
 instance Hashable     WorkflowExecutionCancelRequestedCause
 instance NFData       WorkflowExecutionCancelRequestedCause

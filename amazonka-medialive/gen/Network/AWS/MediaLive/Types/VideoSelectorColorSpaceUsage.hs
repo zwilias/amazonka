@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,28 +16,60 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.MediaLive.Types.VideoSelectorColorSpaceUsage where
+module Network.AWS.MediaLive.Types.VideoSelectorColorSpaceUsage (
+  VideoSelectorColorSpaceUsage (
+    ..
+    , Fallback
+    , Force
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
+
 -- | Placeholder documentation for VideoSelectorColorSpaceUsage
-data VideoSelectorColorSpaceUsage = Fallback
-                                  | Force
-                                      deriving (Eq, Ord, Read, Show, Enum,
-                                                Bounded, Data, Typeable,
-                                                Generic)
+data VideoSelectorColorSpaceUsage = VideoSelectorColorSpaceUsage' (CI
+                                                                     Text)
+                                      deriving (Eq, Ord, Read, Show, Data,
+                                                Typeable, Generic)
+
+pattern Fallback :: VideoSelectorColorSpaceUsage
+pattern Fallback = VideoSelectorColorSpaceUsage' "FALLBACK"
+
+pattern Force :: VideoSelectorColorSpaceUsage
+pattern Force = VideoSelectorColorSpaceUsage' "FORCE"
+
+{-# COMPLETE
+  Fallback,
+  Force,
+  VideoSelectorColorSpaceUsage' #-}
 
 instance FromText VideoSelectorColorSpaceUsage where
-    parser = takeLowerText >>= \case
-        "fallback" -> pure Fallback
-        "force" -> pure Force
-        e -> fromTextError $ "Failure parsing VideoSelectorColorSpaceUsage from value: '" <> e
-           <> "'. Accepted values: fallback, force"
+    parser = (VideoSelectorColorSpaceUsage' . mk) <$> takeText
 
 instance ToText VideoSelectorColorSpaceUsage where
-    toText = \case
-        Fallback -> "FALLBACK"
-        Force -> "FORCE"
+    toText (VideoSelectorColorSpaceUsage' ci) = original ci
+
+-- | Represents an enum of /known/ $VideoSelectorColorSpaceUsage.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum VideoSelectorColorSpaceUsage where
+    toEnum i = case i of
+        0 -> Fallback
+        1 -> Force
+        _ -> (error . showText) $ "Unknown index for VideoSelectorColorSpaceUsage: " <> toText i
+    fromEnum x = case x of
+        Fallback -> 0
+        Force -> 1
+        VideoSelectorColorSpaceUsage' name -> (error . showText) $ "Unknown VideoSelectorColorSpaceUsage: " <> original name
+
+-- | Represents the bounds of /known/ $VideoSelectorColorSpaceUsage.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded VideoSelectorColorSpaceUsage where
+    minBound = Fallback
+    maxBound = Force
 
 instance Hashable     VideoSelectorColorSpaceUsage
 instance NFData       VideoSelectorColorSpaceUsage

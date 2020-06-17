@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,58 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.EMR.Types.ScaleDownBehavior where
+module Network.AWS.EMR.Types.ScaleDownBehavior (
+  ScaleDownBehavior (
+    ..
+    , TerminateAtInstanceHour
+    , TerminateAtTaskCompletion
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data ScaleDownBehavior = TerminateAtInstanceHour
-                       | TerminateAtTaskCompletion
-                           deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                     Typeable, Generic)
+
+data ScaleDownBehavior = ScaleDownBehavior' (CI Text)
+                           deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                     Generic)
+
+pattern TerminateAtInstanceHour :: ScaleDownBehavior
+pattern TerminateAtInstanceHour = ScaleDownBehavior' "TERMINATE_AT_INSTANCE_HOUR"
+
+pattern TerminateAtTaskCompletion :: ScaleDownBehavior
+pattern TerminateAtTaskCompletion = ScaleDownBehavior' "TERMINATE_AT_TASK_COMPLETION"
+
+{-# COMPLETE
+  TerminateAtInstanceHour,
+  TerminateAtTaskCompletion,
+  ScaleDownBehavior' #-}
 
 instance FromText ScaleDownBehavior where
-    parser = takeLowerText >>= \case
-        "terminate_at_instance_hour" -> pure TerminateAtInstanceHour
-        "terminate_at_task_completion" -> pure TerminateAtTaskCompletion
-        e -> fromTextError $ "Failure parsing ScaleDownBehavior from value: '" <> e
-           <> "'. Accepted values: terminate_at_instance_hour, terminate_at_task_completion"
+    parser = (ScaleDownBehavior' . mk) <$> takeText
 
 instance ToText ScaleDownBehavior where
-    toText = \case
-        TerminateAtInstanceHour -> "TERMINATE_AT_INSTANCE_HOUR"
-        TerminateAtTaskCompletion -> "TERMINATE_AT_TASK_COMPLETION"
+    toText (ScaleDownBehavior' ci) = original ci
+
+-- | Represents an enum of /known/ $ScaleDownBehavior.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum ScaleDownBehavior where
+    toEnum i = case i of
+        0 -> TerminateAtInstanceHour
+        1 -> TerminateAtTaskCompletion
+        _ -> (error . showText) $ "Unknown index for ScaleDownBehavior: " <> toText i
+    fromEnum x = case x of
+        TerminateAtInstanceHour -> 0
+        TerminateAtTaskCompletion -> 1
+        ScaleDownBehavior' name -> (error . showText) $ "Unknown ScaleDownBehavior: " <> original name
+
+-- | Represents the bounds of /known/ $ScaleDownBehavior.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded ScaleDownBehavior where
+    minBound = TerminateAtInstanceHour
+    maxBound = TerminateAtTaskCompletion
 
 instance Hashable     ScaleDownBehavior
 instance NFData       ScaleDownBehavior

@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,58 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.CostAndUsageReport.Types.ReportVersioning where
+module Network.AWS.CostAndUsageReport.Types.ReportVersioning (
+  ReportVersioning (
+    ..
+    , CreateNewReport
+    , OverwriteReport
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data ReportVersioning = CreateNewReport
-                      | OverwriteReport
-                          deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                    Typeable, Generic)
+
+data ReportVersioning = ReportVersioning' (CI Text)
+                          deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                    Generic)
+
+pattern CreateNewReport :: ReportVersioning
+pattern CreateNewReport = ReportVersioning' "CREATE_NEW_REPORT"
+
+pattern OverwriteReport :: ReportVersioning
+pattern OverwriteReport = ReportVersioning' "OVERWRITE_REPORT"
+
+{-# COMPLETE
+  CreateNewReport,
+  OverwriteReport,
+  ReportVersioning' #-}
 
 instance FromText ReportVersioning where
-    parser = takeLowerText >>= \case
-        "create_new_report" -> pure CreateNewReport
-        "overwrite_report" -> pure OverwriteReport
-        e -> fromTextError $ "Failure parsing ReportVersioning from value: '" <> e
-           <> "'. Accepted values: create_new_report, overwrite_report"
+    parser = (ReportVersioning' . mk) <$> takeText
 
 instance ToText ReportVersioning where
-    toText = \case
-        CreateNewReport -> "CREATE_NEW_REPORT"
-        OverwriteReport -> "OVERWRITE_REPORT"
+    toText (ReportVersioning' ci) = original ci
+
+-- | Represents an enum of /known/ $ReportVersioning.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum ReportVersioning where
+    toEnum i = case i of
+        0 -> CreateNewReport
+        1 -> OverwriteReport
+        _ -> (error . showText) $ "Unknown index for ReportVersioning: " <> toText i
+    fromEnum x = case x of
+        CreateNewReport -> 0
+        OverwriteReport -> 1
+        ReportVersioning' name -> (error . showText) $ "Unknown ReportVersioning: " <> original name
+
+-- | Represents the bounds of /known/ $ReportVersioning.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded ReportVersioning where
+    minBound = CreateNewReport
+    maxBound = OverwriteReport
 
 instance Hashable     ReportVersioning
 instance NFData       ReportVersioning

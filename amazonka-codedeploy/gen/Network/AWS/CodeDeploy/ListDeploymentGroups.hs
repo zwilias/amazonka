@@ -43,6 +43,7 @@ module Network.AWS.CodeDeploy.ListDeploymentGroups
     ) where
 
 import Network.AWS.CodeDeploy.Types
+import Network.AWS.CodeDeploy.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude

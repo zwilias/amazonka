@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,35 +16,79 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.ElastiCache.Types.SourceType where
+module Network.AWS.ElastiCache.Types.SourceType (
+  SourceType (
+    ..
+    , CacheCluster
+    , CacheParameterGroup
+    , CacheSecurityGroup
+    , CacheSubnetGroup
+    , ReplicationGroup
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data SourceType = CacheCluster
-                | CacheParameterGroup
-                | CacheSecurityGroup
-                | CacheSubnetGroup
-                | ReplicationGroup
-                    deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                              Typeable, Generic)
+
+data SourceType = SourceType' (CI Text)
+                    deriving (Eq, Ord, Read, Show, Data, Typeable,
+                              Generic)
+
+pattern CacheCluster :: SourceType
+pattern CacheCluster = SourceType' "cache-cluster"
+
+pattern CacheParameterGroup :: SourceType
+pattern CacheParameterGroup = SourceType' "cache-parameter-group"
+
+pattern CacheSecurityGroup :: SourceType
+pattern CacheSecurityGroup = SourceType' "cache-security-group"
+
+pattern CacheSubnetGroup :: SourceType
+pattern CacheSubnetGroup = SourceType' "cache-subnet-group"
+
+pattern ReplicationGroup :: SourceType
+pattern ReplicationGroup = SourceType' "replication-group"
+
+{-# COMPLETE
+  CacheCluster,
+  CacheParameterGroup,
+  CacheSecurityGroup,
+  CacheSubnetGroup,
+  ReplicationGroup,
+  SourceType' #-}
 
 instance FromText SourceType where
-    parser = takeLowerText >>= \case
-        "cache-cluster" -> pure CacheCluster
-        "cache-parameter-group" -> pure CacheParameterGroup
-        "cache-security-group" -> pure CacheSecurityGroup
-        "cache-subnet-group" -> pure CacheSubnetGroup
-        "replication-group" -> pure ReplicationGroup
-        e -> fromTextError $ "Failure parsing SourceType from value: '" <> e
-           <> "'. Accepted values: cache-cluster, cache-parameter-group, cache-security-group, cache-subnet-group, replication-group"
+    parser = (SourceType' . mk) <$> takeText
 
 instance ToText SourceType where
-    toText = \case
-        CacheCluster -> "cache-cluster"
-        CacheParameterGroup -> "cache-parameter-group"
-        CacheSecurityGroup -> "cache-security-group"
-        CacheSubnetGroup -> "cache-subnet-group"
-        ReplicationGroup -> "replication-group"
+    toText (SourceType' ci) = original ci
+
+-- | Represents an enum of /known/ $SourceType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum SourceType where
+    toEnum i = case i of
+        0 -> CacheCluster
+        1 -> CacheParameterGroup
+        2 -> CacheSecurityGroup
+        3 -> CacheSubnetGroup
+        4 -> ReplicationGroup
+        _ -> (error . showText) $ "Unknown index for SourceType: " <> toText i
+    fromEnum x = case x of
+        CacheCluster -> 0
+        CacheParameterGroup -> 1
+        CacheSecurityGroup -> 2
+        CacheSubnetGroup -> 3
+        ReplicationGroup -> 4
+        SourceType' name -> (error . showText) $ "Unknown SourceType: " <> original name
+
+-- | Represents the bounds of /known/ $SourceType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded SourceType where
+    minBound = CacheCluster
+    maxBound = ReplicationGroup
 
 instance Hashable     SourceType
 instance NFData       SourceType

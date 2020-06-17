@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,59 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.Firehose.Types.DeliveryStreamType where
+module Network.AWS.Firehose.Types.DeliveryStreamType (
+  DeliveryStreamType (
+    ..
+    , DirectPut
+    , KinesisStreamAsSource
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data DeliveryStreamType = DirectPut
-                        | KinesisStreamAsSource
-                            deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                      Typeable, Generic)
+
+data DeliveryStreamType = DeliveryStreamType' (CI
+                                                 Text)
+                            deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                      Generic)
+
+pattern DirectPut :: DeliveryStreamType
+pattern DirectPut = DeliveryStreamType' "DirectPut"
+
+pattern KinesisStreamAsSource :: DeliveryStreamType
+pattern KinesisStreamAsSource = DeliveryStreamType' "KinesisStreamAsSource"
+
+{-# COMPLETE
+  DirectPut,
+  KinesisStreamAsSource,
+  DeliveryStreamType' #-}
 
 instance FromText DeliveryStreamType where
-    parser = takeLowerText >>= \case
-        "directput" -> pure DirectPut
-        "kinesisstreamassource" -> pure KinesisStreamAsSource
-        e -> fromTextError $ "Failure parsing DeliveryStreamType from value: '" <> e
-           <> "'. Accepted values: directput, kinesisstreamassource"
+    parser = (DeliveryStreamType' . mk) <$> takeText
 
 instance ToText DeliveryStreamType where
-    toText = \case
-        DirectPut -> "DirectPut"
-        KinesisStreamAsSource -> "KinesisStreamAsSource"
+    toText (DeliveryStreamType' ci) = original ci
+
+-- | Represents an enum of /known/ $DeliveryStreamType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum DeliveryStreamType where
+    toEnum i = case i of
+        0 -> DirectPut
+        1 -> KinesisStreamAsSource
+        _ -> (error . showText) $ "Unknown index for DeliveryStreamType: " <> toText i
+    fromEnum x = case x of
+        DirectPut -> 0
+        KinesisStreamAsSource -> 1
+        DeliveryStreamType' name -> (error . showText) $ "Unknown DeliveryStreamType: " <> original name
+
+-- | Represents the bounds of /known/ $DeliveryStreamType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded DeliveryStreamType where
+    minBound = DirectPut
+    maxBound = KinesisStreamAsSource
 
 instance Hashable     DeliveryStreamType
 instance NFData       DeliveryStreamType

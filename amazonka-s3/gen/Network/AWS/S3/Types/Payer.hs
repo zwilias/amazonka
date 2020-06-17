@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,27 +16,59 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.S3.Types.Payer where
+module Network.AWS.S3.Types.Payer (
+  Payer (
+    ..
+    , BucketOwner
+    , Requester
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
 import Network.AWS.S3.Internal
-  
-data Payer = BucketOwner
-           | Requester
-               deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                         Typeable, Generic)
+
+data Payer = Payer' (CI Text)
+               deriving (Eq, Ord, Read, Show, Data, Typeable,
+                         Generic)
+
+pattern BucketOwner :: Payer
+pattern BucketOwner = Payer' "BucketOwner"
+
+pattern Requester :: Payer
+pattern Requester = Payer' "Requester"
+
+{-# COMPLETE
+  BucketOwner,
+  Requester,
+  Payer' #-}
 
 instance FromText Payer where
-    parser = takeLowerText >>= \case
-        "bucketowner" -> pure BucketOwner
-        "requester" -> pure Requester
-        e -> fromTextError $ "Failure parsing Payer from value: '" <> e
-           <> "'. Accepted values: bucketowner, requester"
+    parser = (Payer' . mk) <$> takeText
 
 instance ToText Payer where
-    toText = \case
-        BucketOwner -> "BucketOwner"
-        Requester -> "Requester"
+    toText (Payer' ci) = original ci
+
+-- | Represents an enum of /known/ $Payer.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum Payer where
+    toEnum i = case i of
+        0 -> BucketOwner
+        1 -> Requester
+        _ -> (error . showText) $ "Unknown index for Payer: " <> toText i
+    fromEnum x = case x of
+        BucketOwner -> 0
+        Requester -> 1
+        Payer' name -> (error . showText) $ "Unknown Payer: " <> original name
+
+-- | Represents the bounds of /known/ $Payer.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded Payer where
+    minBound = BucketOwner
+    maxBound = Requester
 
 instance Hashable     Payer
 instance NFData       Payer

@@ -42,6 +42,7 @@ module Network.AWS.CloudFormation.DescribeStackEvents
     ) where
 
 import Network.AWS.CloudFormation.Types
+import Network.AWS.CloudFormation.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude

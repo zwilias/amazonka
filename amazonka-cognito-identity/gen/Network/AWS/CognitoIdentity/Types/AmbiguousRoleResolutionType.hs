@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,59 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.CognitoIdentity.Types.AmbiguousRoleResolutionType where
+module Network.AWS.CognitoIdentity.Types.AmbiguousRoleResolutionType (
+  AmbiguousRoleResolutionType (
+    ..
+    , AuthenticatedRole
+    , Deny
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data AmbiguousRoleResolutionType = AuthenticatedRole
-                                 | Deny
-                                     deriving (Eq, Ord, Read, Show, Enum,
-                                               Bounded, Data, Typeable, Generic)
+
+data AmbiguousRoleResolutionType = AmbiguousRoleResolutionType' (CI
+                                                                   Text)
+                                     deriving (Eq, Ord, Read, Show, Data,
+                                               Typeable, Generic)
+
+pattern AuthenticatedRole :: AmbiguousRoleResolutionType
+pattern AuthenticatedRole = AmbiguousRoleResolutionType' "AuthenticatedRole"
+
+pattern Deny :: AmbiguousRoleResolutionType
+pattern Deny = AmbiguousRoleResolutionType' "Deny"
+
+{-# COMPLETE
+  AuthenticatedRole,
+  Deny,
+  AmbiguousRoleResolutionType' #-}
 
 instance FromText AmbiguousRoleResolutionType where
-    parser = takeLowerText >>= \case
-        "authenticatedrole" -> pure AuthenticatedRole
-        "deny" -> pure Deny
-        e -> fromTextError $ "Failure parsing AmbiguousRoleResolutionType from value: '" <> e
-           <> "'. Accepted values: authenticatedrole, deny"
+    parser = (AmbiguousRoleResolutionType' . mk) <$> takeText
 
 instance ToText AmbiguousRoleResolutionType where
-    toText = \case
-        AuthenticatedRole -> "AuthenticatedRole"
-        Deny -> "Deny"
+    toText (AmbiguousRoleResolutionType' ci) = original ci
+
+-- | Represents an enum of /known/ $AmbiguousRoleResolutionType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum AmbiguousRoleResolutionType where
+    toEnum i = case i of
+        0 -> AuthenticatedRole
+        1 -> Deny
+        _ -> (error . showText) $ "Unknown index for AmbiguousRoleResolutionType: " <> toText i
+    fromEnum x = case x of
+        AuthenticatedRole -> 0
+        Deny -> 1
+        AmbiguousRoleResolutionType' name -> (error . showText) $ "Unknown AmbiguousRoleResolutionType: " <> original name
+
+-- | Represents the bounds of /known/ $AmbiguousRoleResolutionType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded AmbiguousRoleResolutionType where
+    minBound = AuthenticatedRole
+    maxBound = Deny
 
 instance Hashable     AmbiguousRoleResolutionType
 instance NFData       AmbiguousRoleResolutionType

@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,29 +16,66 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.SSM.Types.LastResourceDataSyncStatus where
+module Network.AWS.SSM.Types.LastResourceDataSyncStatus (
+  LastResourceDataSyncStatus (
+    ..
+    , LRDSSFailed
+    , LRDSSInProgress
+    , LRDSSSuccessful
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data LastResourceDataSyncStatus = LRDSSFailed
-                                | LRDSSInProgress
-                                | LRDSSSuccessful
-                                    deriving (Eq, Ord, Read, Show, Enum,
-                                              Bounded, Data, Typeable, Generic)
+
+data LastResourceDataSyncStatus = LastResourceDataSyncStatus' (CI
+                                                                 Text)
+                                    deriving (Eq, Ord, Read, Show, Data,
+                                              Typeable, Generic)
+
+pattern LRDSSFailed :: LastResourceDataSyncStatus
+pattern LRDSSFailed = LastResourceDataSyncStatus' "Failed"
+
+pattern LRDSSInProgress :: LastResourceDataSyncStatus
+pattern LRDSSInProgress = LastResourceDataSyncStatus' "InProgress"
+
+pattern LRDSSSuccessful :: LastResourceDataSyncStatus
+pattern LRDSSSuccessful = LastResourceDataSyncStatus' "Successful"
+
+{-# COMPLETE
+  LRDSSFailed,
+  LRDSSInProgress,
+  LRDSSSuccessful,
+  LastResourceDataSyncStatus' #-}
 
 instance FromText LastResourceDataSyncStatus where
-    parser = takeLowerText >>= \case
-        "failed" -> pure LRDSSFailed
-        "inprogress" -> pure LRDSSInProgress
-        "successful" -> pure LRDSSSuccessful
-        e -> fromTextError $ "Failure parsing LastResourceDataSyncStatus from value: '" <> e
-           <> "'. Accepted values: failed, inprogress, successful"
+    parser = (LastResourceDataSyncStatus' . mk) <$> takeText
 
 instance ToText LastResourceDataSyncStatus where
-    toText = \case
-        LRDSSFailed -> "Failed"
-        LRDSSInProgress -> "InProgress"
-        LRDSSSuccessful -> "Successful"
+    toText (LastResourceDataSyncStatus' ci) = original ci
+
+-- | Represents an enum of /known/ $LastResourceDataSyncStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum LastResourceDataSyncStatus where
+    toEnum i = case i of
+        0 -> LRDSSFailed
+        1 -> LRDSSInProgress
+        2 -> LRDSSSuccessful
+        _ -> (error . showText) $ "Unknown index for LastResourceDataSyncStatus: " <> toText i
+    fromEnum x = case x of
+        LRDSSFailed -> 0
+        LRDSSInProgress -> 1
+        LRDSSSuccessful -> 2
+        LastResourceDataSyncStatus' name -> (error . showText) $ "Unknown LastResourceDataSyncStatus: " <> original name
+
+-- | Represents the bounds of /known/ $LastResourceDataSyncStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded LastResourceDataSyncStatus where
+    minBound = LRDSSFailed
+    maxBound = LRDSSSuccessful
 
 instance Hashable     LastResourceDataSyncStatus
 instance NFData       LastResourceDataSyncStatus

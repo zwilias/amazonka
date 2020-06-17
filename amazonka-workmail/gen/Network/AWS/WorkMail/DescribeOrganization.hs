@@ -49,6 +49,7 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.WorkMail.Types
+import Network.AWS.WorkMail.Types.Product
 
 -- | /See:/ 'describeOrganization' smart constructor.
 newtype DescribeOrganization = DescribeOrganization'{_doOrganizationId

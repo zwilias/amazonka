@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,59 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.Organizations.Types.AccountJoinedMethod where
+module Network.AWS.Organizations.Types.AccountJoinedMethod (
+  AccountJoinedMethod (
+    ..
+    , Created
+    , Invited
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data AccountJoinedMethod = Created
-                         | Invited
-                             deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                       Typeable, Generic)
+
+data AccountJoinedMethod = AccountJoinedMethod' (CI
+                                                   Text)
+                             deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                       Generic)
+
+pattern Created :: AccountJoinedMethod
+pattern Created = AccountJoinedMethod' "CREATED"
+
+pattern Invited :: AccountJoinedMethod
+pattern Invited = AccountJoinedMethod' "INVITED"
+
+{-# COMPLETE
+  Created,
+  Invited,
+  AccountJoinedMethod' #-}
 
 instance FromText AccountJoinedMethod where
-    parser = takeLowerText >>= \case
-        "created" -> pure Created
-        "invited" -> pure Invited
-        e -> fromTextError $ "Failure parsing AccountJoinedMethod from value: '" <> e
-           <> "'. Accepted values: created, invited"
+    parser = (AccountJoinedMethod' . mk) <$> takeText
 
 instance ToText AccountJoinedMethod where
-    toText = \case
-        Created -> "CREATED"
-        Invited -> "INVITED"
+    toText (AccountJoinedMethod' ci) = original ci
+
+-- | Represents an enum of /known/ $AccountJoinedMethod.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum AccountJoinedMethod where
+    toEnum i = case i of
+        0 -> Created
+        1 -> Invited
+        _ -> (error . showText) $ "Unknown index for AccountJoinedMethod: " <> toText i
+    fromEnum x = case x of
+        Created -> 0
+        Invited -> 1
+        AccountJoinedMethod' name -> (error . showText) $ "Unknown AccountJoinedMethod: " <> original name
+
+-- | Represents the bounds of /known/ $AccountJoinedMethod.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded AccountJoinedMethod where
+    minBound = Created
+    maxBound = Invited
 
 instance Hashable     AccountJoinedMethod
 instance NFData       AccountJoinedMethod

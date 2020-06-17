@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,27 +16,59 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.MediaConvert.Types.MovReference where
+module Network.AWS.MediaConvert.Types.MovReference (
+  MovReference (
+    ..
+    , External
+    , SelfContained
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
+
 -- | A value of 'external' creates separate media files and the wrapper file (.mov) contains references to these media files. A value of 'self_contained' creates only a wrapper (.mov) file and this file contains all of the media.
-data MovReference = External
-                  | SelfContained
-                      deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                Typeable, Generic)
+data MovReference = MovReference' (CI Text)
+                      deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                Generic)
+
+pattern External :: MovReference
+pattern External = MovReference' "EXTERNAL"
+
+pattern SelfContained :: MovReference
+pattern SelfContained = MovReference' "SELF_CONTAINED"
+
+{-# COMPLETE
+  External,
+  SelfContained,
+  MovReference' #-}
 
 instance FromText MovReference where
-    parser = takeLowerText >>= \case
-        "external" -> pure External
-        "self_contained" -> pure SelfContained
-        e -> fromTextError $ "Failure parsing MovReference from value: '" <> e
-           <> "'. Accepted values: external, self_contained"
+    parser = (MovReference' . mk) <$> takeText
 
 instance ToText MovReference where
-    toText = \case
-        External -> "EXTERNAL"
-        SelfContained -> "SELF_CONTAINED"
+    toText (MovReference' ci) = original ci
+
+-- | Represents an enum of /known/ $MovReference.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum MovReference where
+    toEnum i = case i of
+        0 -> External
+        1 -> SelfContained
+        _ -> (error . showText) $ "Unknown index for MovReference: " <> toText i
+    fromEnum x = case x of
+        External -> 0
+        SelfContained -> 1
+        MovReference' name -> (error . showText) $ "Unknown MovReference: " <> original name
+
+-- | Represents the bounds of /known/ $MovReference.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded MovReference where
+    minBound = External
+    maxBound = SelfContained
 
 instance Hashable     MovReference
 instance NFData       MovReference

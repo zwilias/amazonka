@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,28 +16,60 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.EC2.Types.InstanceMetadataOptionsState where
+module Network.AWS.EC2.Types.InstanceMetadataOptionsState (
+  InstanceMetadataOptionsState (
+    ..
+    , IMOSApplied
+    , IMOSPending
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.EC2.Internal
 import Network.AWS.Prelude
-  
-data InstanceMetadataOptionsState = IMOSApplied
-                                  | IMOSPending
-                                      deriving (Eq, Ord, Read, Show, Enum,
-                                                Bounded, Data, Typeable,
-                                                Generic)
+
+data InstanceMetadataOptionsState = InstanceMetadataOptionsState' (CI
+                                                                     Text)
+                                      deriving (Eq, Ord, Read, Show, Data,
+                                                Typeable, Generic)
+
+pattern IMOSApplied :: InstanceMetadataOptionsState
+pattern IMOSApplied = InstanceMetadataOptionsState' "applied"
+
+pattern IMOSPending :: InstanceMetadataOptionsState
+pattern IMOSPending = InstanceMetadataOptionsState' "pending"
+
+{-# COMPLETE
+  IMOSApplied,
+  IMOSPending,
+  InstanceMetadataOptionsState' #-}
 
 instance FromText InstanceMetadataOptionsState where
-    parser = takeLowerText >>= \case
-        "applied" -> pure IMOSApplied
-        "pending" -> pure IMOSPending
-        e -> fromTextError $ "Failure parsing InstanceMetadataOptionsState from value: '" <> e
-           <> "'. Accepted values: applied, pending"
+    parser = (InstanceMetadataOptionsState' . mk) <$> takeText
 
 instance ToText InstanceMetadataOptionsState where
-    toText = \case
-        IMOSApplied -> "applied"
-        IMOSPending -> "pending"
+    toText (InstanceMetadataOptionsState' ci) = original ci
+
+-- | Represents an enum of /known/ $InstanceMetadataOptionsState.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum InstanceMetadataOptionsState where
+    toEnum i = case i of
+        0 -> IMOSApplied
+        1 -> IMOSPending
+        _ -> (error . showText) $ "Unknown index for InstanceMetadataOptionsState: " <> toText i
+    fromEnum x = case x of
+        IMOSApplied -> 0
+        IMOSPending -> 1
+        InstanceMetadataOptionsState' name -> (error . showText) $ "Unknown InstanceMetadataOptionsState: " <> original name
+
+-- | Represents the bounds of /known/ $InstanceMetadataOptionsState.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded InstanceMetadataOptionsState where
+    minBound = IMOSApplied
+    maxBound = IMOSPending
 
 instance Hashable     InstanceMetadataOptionsState
 instance NFData       InstanceMetadataOptionsState

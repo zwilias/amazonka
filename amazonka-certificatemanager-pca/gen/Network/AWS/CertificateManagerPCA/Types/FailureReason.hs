@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,29 +16,65 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.CertificateManagerPCA.Types.FailureReason where
+module Network.AWS.CertificateManagerPCA.Types.FailureReason (
+  FailureReason (
+    ..
+    , Other
+    , RequestTimedOut
+    , UnsupportedAlgorithm
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data FailureReason = Other
-                   | RequestTimedOut
-                   | UnsupportedAlgorithm
-                       deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                 Typeable, Generic)
+
+data FailureReason = FailureReason' (CI Text)
+                       deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                 Generic)
+
+pattern Other :: FailureReason
+pattern Other = FailureReason' "OTHER"
+
+pattern RequestTimedOut :: FailureReason
+pattern RequestTimedOut = FailureReason' "REQUEST_TIMED_OUT"
+
+pattern UnsupportedAlgorithm :: FailureReason
+pattern UnsupportedAlgorithm = FailureReason' "UNSUPPORTED_ALGORITHM"
+
+{-# COMPLETE
+  Other,
+  RequestTimedOut,
+  UnsupportedAlgorithm,
+  FailureReason' #-}
 
 instance FromText FailureReason where
-    parser = takeLowerText >>= \case
-        "other" -> pure Other
-        "request_timed_out" -> pure RequestTimedOut
-        "unsupported_algorithm" -> pure UnsupportedAlgorithm
-        e -> fromTextError $ "Failure parsing FailureReason from value: '" <> e
-           <> "'. Accepted values: other, request_timed_out, unsupported_algorithm"
+    parser = (FailureReason' . mk) <$> takeText
 
 instance ToText FailureReason where
-    toText = \case
-        Other -> "OTHER"
-        RequestTimedOut -> "REQUEST_TIMED_OUT"
-        UnsupportedAlgorithm -> "UNSUPPORTED_ALGORITHM"
+    toText (FailureReason' ci) = original ci
+
+-- | Represents an enum of /known/ $FailureReason.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum FailureReason where
+    toEnum i = case i of
+        0 -> Other
+        1 -> RequestTimedOut
+        2 -> UnsupportedAlgorithm
+        _ -> (error . showText) $ "Unknown index for FailureReason: " <> toText i
+    fromEnum x = case x of
+        Other -> 0
+        RequestTimedOut -> 1
+        UnsupportedAlgorithm -> 2
+        FailureReason' name -> (error . showText) $ "Unknown FailureReason: " <> original name
+
+-- | Represents the bounds of /known/ $FailureReason.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded FailureReason where
+    minBound = Other
+    maxBound = UnsupportedAlgorithm
 
 instance Hashable     FailureReason
 instance NFData       FailureReason

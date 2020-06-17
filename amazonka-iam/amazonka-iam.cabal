@@ -204,6 +204,7 @@ library
         , Network.AWS.IAM.Types.PolicyUser
         , Network.AWS.IAM.Types.PolicyVersion
         , Network.AWS.IAM.Types.Position
+        , Network.AWS.IAM.Types.Product
         , Network.AWS.IAM.Types.ReportFormatType
         , Network.AWS.IAM.Types.ReportStateType
         , Network.AWS.IAM.Types.ResourceSpecificResult
@@ -229,6 +230,7 @@ library
     build-depends:
           amazonka-core == 1.6.1.*
         , base          >= 4.7     && < 5
+        , case-insensitive
 
 test-suite amazonka-iam-test
     type:              exitcode-stdio-1.0
@@ -252,6 +254,7 @@ test-suite amazonka-iam-test
         , amazonka-iam
         , base
         , bytestring
+        , case-insensitive
         , tasty
         , tasty-hunit
         , text

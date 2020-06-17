@@ -275,6 +275,7 @@ library
         , Network.AWS.SSM.Types.PatchStatus
         , Network.AWS.SSM.Types.PingStatus
         , Network.AWS.SSM.Types.PlatformType
+        , Network.AWS.SSM.Types.Product
         , Network.AWS.SSM.Types.ResolvedTargets
         , Network.AWS.SSM.Types.ResourceComplianceSummaryItem
         , Network.AWS.SSM.Types.ResourceDataSyncItem
@@ -297,6 +298,7 @@ library
     build-depends:
           amazonka-core == 1.6.1.*
         , base          >= 4.7     && < 5
+        , case-insensitive
 
 test-suite amazonka-ssm-test
     type:              exitcode-stdio-1.0
@@ -320,6 +322,7 @@ test-suite amazonka-ssm-test
         , amazonka-ssm
         , base
         , bytestring
+        , case-insensitive
         , tasty
         , tasty-hunit
         , text

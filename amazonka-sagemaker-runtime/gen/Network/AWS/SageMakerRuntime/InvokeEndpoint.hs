@@ -51,6 +51,7 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.SageMakerRuntime.Types
+import Network.AWS.SageMakerRuntime.Types.Product
 
 -- | /See:/ 'invokeEndpoint' smart constructor.
 data InvokeEndpoint = InvokeEndpoint'{_ieAccept ::

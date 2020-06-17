@@ -49,6 +49,7 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.WAF.Types
+import Network.AWS.WAF.Types.Product
 
 -- | /See:/ 'getSampledRequests' smart constructor.
 data GetSampledRequests = GetSampledRequests'{_gsrWebACLId

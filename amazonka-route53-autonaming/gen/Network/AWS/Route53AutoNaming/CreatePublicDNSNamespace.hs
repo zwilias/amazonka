@@ -44,6 +44,7 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.Route53AutoNaming.Types
+import Network.AWS.Route53AutoNaming.Types.Product
 
 -- | /See:/ 'createPublicDNSNamespace' smart constructor.
 data CreatePublicDNSNamespace = CreatePublicDNSNamespace'{_cpdnCreatorRequestId

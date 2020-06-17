@@ -49,6 +49,7 @@ module Network.AWS.IoT.DescribeThingRegistrationTask
     ) where
 
 import Network.AWS.IoT.Types
+import Network.AWS.IoT.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request

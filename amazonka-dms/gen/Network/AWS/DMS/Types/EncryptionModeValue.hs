@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,59 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.DMS.Types.EncryptionModeValue where
+module Network.AWS.DMS.Types.EncryptionModeValue (
+  EncryptionModeValue (
+    ..
+    , SseKMS
+    , SseS3
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data EncryptionModeValue = SseKMS
-                         | SseS3
-                             deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                       Typeable, Generic)
+
+data EncryptionModeValue = EncryptionModeValue' (CI
+                                                   Text)
+                             deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                       Generic)
+
+pattern SseKMS :: EncryptionModeValue
+pattern SseKMS = EncryptionModeValue' "sse-kms"
+
+pattern SseS3 :: EncryptionModeValue
+pattern SseS3 = EncryptionModeValue' "sse-s3"
+
+{-# COMPLETE
+  SseKMS,
+  SseS3,
+  EncryptionModeValue' #-}
 
 instance FromText EncryptionModeValue where
-    parser = takeLowerText >>= \case
-        "sse-kms" -> pure SseKMS
-        "sse-s3" -> pure SseS3
-        e -> fromTextError $ "Failure parsing EncryptionModeValue from value: '" <> e
-           <> "'. Accepted values: sse-kms, sse-s3"
+    parser = (EncryptionModeValue' . mk) <$> takeText
 
 instance ToText EncryptionModeValue where
-    toText = \case
-        SseKMS -> "sse-kms"
-        SseS3 -> "sse-s3"
+    toText (EncryptionModeValue' ci) = original ci
+
+-- | Represents an enum of /known/ $EncryptionModeValue.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum EncryptionModeValue where
+    toEnum i = case i of
+        0 -> SseKMS
+        1 -> SseS3
+        _ -> (error . showText) $ "Unknown index for EncryptionModeValue: " <> toText i
+    fromEnum x = case x of
+        SseKMS -> 0
+        SseS3 -> 1
+        EncryptionModeValue' name -> (error . showText) $ "Unknown EncryptionModeValue: " <> original name
+
+-- | Represents the bounds of /known/ $EncryptionModeValue.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded EncryptionModeValue where
+    minBound = SseKMS
+    maxBound = SseS3
 
 instance Hashable     EncryptionModeValue
 instance NFData       EncryptionModeValue

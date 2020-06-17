@@ -37,6 +37,7 @@ module Network.AWS.CodeDeploy.RegisterOnPremisesInstance
     ) where
 
 import Network.AWS.CodeDeploy.Types
+import Network.AWS.CodeDeploy.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request

@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,58 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.SSM.Types.NotificationType where
+module Network.AWS.SSM.Types.NotificationType (
+  NotificationType (
+    ..
+    , Command
+    , Invocation
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data NotificationType = Command
-                      | Invocation
-                          deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                    Typeable, Generic)
+
+data NotificationType = NotificationType' (CI Text)
+                          deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                    Generic)
+
+pattern Command :: NotificationType
+pattern Command = NotificationType' "Command"
+
+pattern Invocation :: NotificationType
+pattern Invocation = NotificationType' "Invocation"
+
+{-# COMPLETE
+  Command,
+  Invocation,
+  NotificationType' #-}
 
 instance FromText NotificationType where
-    parser = takeLowerText >>= \case
-        "command" -> pure Command
-        "invocation" -> pure Invocation
-        e -> fromTextError $ "Failure parsing NotificationType from value: '" <> e
-           <> "'. Accepted values: command, invocation"
+    parser = (NotificationType' . mk) <$> takeText
 
 instance ToText NotificationType where
-    toText = \case
-        Command -> "Command"
-        Invocation -> "Invocation"
+    toText (NotificationType' ci) = original ci
+
+-- | Represents an enum of /known/ $NotificationType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum NotificationType where
+    toEnum i = case i of
+        0 -> Command
+        1 -> Invocation
+        _ -> (error . showText) $ "Unknown index for NotificationType: " <> toText i
+    fromEnum x = case x of
+        Command -> 0
+        Invocation -> 1
+        NotificationType' name -> (error . showText) $ "Unknown NotificationType: " <> original name
+
+-- | Represents the bounds of /known/ $NotificationType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded NotificationType where
+    minBound = Command
+    maxBound = Invocation
 
 instance Hashable     NotificationType
 instance NFData       NotificationType

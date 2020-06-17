@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,29 +16,65 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.GameLift.Types.BuildStatus where
+module Network.AWS.GameLift.Types.BuildStatus (
+  BuildStatus (
+    ..
+    , Failed
+    , Initialized
+    , Ready
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data BuildStatus = Failed
-                 | Initialized
-                 | Ready
-                     deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                               Typeable, Generic)
+
+data BuildStatus = BuildStatus' (CI Text)
+                     deriving (Eq, Ord, Read, Show, Data, Typeable,
+                               Generic)
+
+pattern Failed :: BuildStatus
+pattern Failed = BuildStatus' "FAILED"
+
+pattern Initialized :: BuildStatus
+pattern Initialized = BuildStatus' "INITIALIZED"
+
+pattern Ready :: BuildStatus
+pattern Ready = BuildStatus' "READY"
+
+{-# COMPLETE
+  Failed,
+  Initialized,
+  Ready,
+  BuildStatus' #-}
 
 instance FromText BuildStatus where
-    parser = takeLowerText >>= \case
-        "failed" -> pure Failed
-        "initialized" -> pure Initialized
-        "ready" -> pure Ready
-        e -> fromTextError $ "Failure parsing BuildStatus from value: '" <> e
-           <> "'. Accepted values: failed, initialized, ready"
+    parser = (BuildStatus' . mk) <$> takeText
 
 instance ToText BuildStatus where
-    toText = \case
-        Failed -> "FAILED"
-        Initialized -> "INITIALIZED"
-        Ready -> "READY"
+    toText (BuildStatus' ci) = original ci
+
+-- | Represents an enum of /known/ $BuildStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum BuildStatus where
+    toEnum i = case i of
+        0 -> Failed
+        1 -> Initialized
+        2 -> Ready
+        _ -> (error . showText) $ "Unknown index for BuildStatus: " <> toText i
+    fromEnum x = case x of
+        Failed -> 0
+        Initialized -> 1
+        Ready -> 2
+        BuildStatus' name -> (error . showText) $ "Unknown BuildStatus: " <> original name
+
+-- | Represents the bounds of /known/ $BuildStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded BuildStatus where
+    minBound = Failed
+    maxBound = Ready
 
 instance Hashable     BuildStatus
 instance NFData       BuildStatus

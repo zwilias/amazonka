@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,27 +16,59 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.MediaConvert.Types.ColorMetadata where
+module Network.AWS.MediaConvert.Types.ColorMetadata (
+  ColorMetadata (
+    ..
+    , Ignore
+    , Insert
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
+
 -- | Enable Insert color metadata (ColorMetadata) to include color metadata in this output. This setting is enabled by default.
-data ColorMetadata = Ignore
-                   | Insert
-                       deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                 Typeable, Generic)
+data ColorMetadata = ColorMetadata' (CI Text)
+                       deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                 Generic)
+
+pattern Ignore :: ColorMetadata
+pattern Ignore = ColorMetadata' "IGNORE"
+
+pattern Insert :: ColorMetadata
+pattern Insert = ColorMetadata' "INSERT"
+
+{-# COMPLETE
+  Ignore,
+  Insert,
+  ColorMetadata' #-}
 
 instance FromText ColorMetadata where
-    parser = takeLowerText >>= \case
-        "ignore" -> pure Ignore
-        "insert" -> pure Insert
-        e -> fromTextError $ "Failure parsing ColorMetadata from value: '" <> e
-           <> "'. Accepted values: ignore, insert"
+    parser = (ColorMetadata' . mk) <$> takeText
 
 instance ToText ColorMetadata where
-    toText = \case
-        Ignore -> "IGNORE"
-        Insert -> "INSERT"
+    toText (ColorMetadata' ci) = original ci
+
+-- | Represents an enum of /known/ $ColorMetadata.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum ColorMetadata where
+    toEnum i = case i of
+        0 -> Ignore
+        1 -> Insert
+        _ -> (error . showText) $ "Unknown index for ColorMetadata: " <> toText i
+    fromEnum x = case x of
+        Ignore -> 0
+        Insert -> 1
+        ColorMetadata' name -> (error . showText) $ "Unknown ColorMetadata: " <> original name
+
+-- | Represents the bounds of /known/ $ColorMetadata.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded ColorMetadata where
+    minBound = Ignore
+    maxBound = Insert
 
 instance Hashable     ColorMetadata
 instance NFData       ColorMetadata

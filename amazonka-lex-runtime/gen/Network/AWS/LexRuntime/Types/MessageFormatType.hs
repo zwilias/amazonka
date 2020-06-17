@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,32 +16,72 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.LexRuntime.Types.MessageFormatType where
+module Network.AWS.LexRuntime.Types.MessageFormatType (
+  MessageFormatType (
+    ..
+    , Composite
+    , CustomPayload
+    , PlainText
+    , Ssml
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data MessageFormatType = Composite
-                       | CustomPayload
-                       | PlainText
-                       | Ssml
-                           deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                     Typeable, Generic)
+
+data MessageFormatType = MessageFormatType' (CI Text)
+                           deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                     Generic)
+
+pattern Composite :: MessageFormatType
+pattern Composite = MessageFormatType' "Composite"
+
+pattern CustomPayload :: MessageFormatType
+pattern CustomPayload = MessageFormatType' "CustomPayload"
+
+pattern PlainText :: MessageFormatType
+pattern PlainText = MessageFormatType' "PlainText"
+
+pattern Ssml :: MessageFormatType
+pattern Ssml = MessageFormatType' "SSML"
+
+{-# COMPLETE
+  Composite,
+  CustomPayload,
+  PlainText,
+  Ssml,
+  MessageFormatType' #-}
 
 instance FromText MessageFormatType where
-    parser = takeLowerText >>= \case
-        "composite" -> pure Composite
-        "custompayload" -> pure CustomPayload
-        "plaintext" -> pure PlainText
-        "ssml" -> pure Ssml
-        e -> fromTextError $ "Failure parsing MessageFormatType from value: '" <> e
-           <> "'. Accepted values: composite, custompayload, plaintext, ssml"
+    parser = (MessageFormatType' . mk) <$> takeText
 
 instance ToText MessageFormatType where
-    toText = \case
-        Composite -> "Composite"
-        CustomPayload -> "CustomPayload"
-        PlainText -> "PlainText"
-        Ssml -> "SSML"
+    toText (MessageFormatType' ci) = original ci
+
+-- | Represents an enum of /known/ $MessageFormatType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum MessageFormatType where
+    toEnum i = case i of
+        0 -> Composite
+        1 -> CustomPayload
+        2 -> PlainText
+        3 -> Ssml
+        _ -> (error . showText) $ "Unknown index for MessageFormatType: " <> toText i
+    fromEnum x = case x of
+        Composite -> 0
+        CustomPayload -> 1
+        PlainText -> 2
+        Ssml -> 3
+        MessageFormatType' name -> (error . showText) $ "Unknown MessageFormatType: " <> original name
+
+-- | Represents the bounds of /known/ $MessageFormatType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded MessageFormatType where
+    minBound = Composite
+    maxBound = Ssml
 
 instance Hashable     MessageFormatType
 instance NFData       MessageFormatType

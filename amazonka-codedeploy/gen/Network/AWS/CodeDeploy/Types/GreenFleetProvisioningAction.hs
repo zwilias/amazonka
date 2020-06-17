@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,27 +16,59 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.CodeDeploy.Types.GreenFleetProvisioningAction where
+module Network.AWS.CodeDeploy.Types.GreenFleetProvisioningAction (
+  GreenFleetProvisioningAction (
+    ..
+    , CopyAutoScalingGroup
+    , DiscoverExisting
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data GreenFleetProvisioningAction = CopyAutoScalingGroup
-                                  | DiscoverExisting
-                                      deriving (Eq, Ord, Read, Show, Enum,
-                                                Bounded, Data, Typeable,
-                                                Generic)
+
+data GreenFleetProvisioningAction = GreenFleetProvisioningAction' (CI
+                                                                     Text)
+                                      deriving (Eq, Ord, Read, Show, Data,
+                                                Typeable, Generic)
+
+pattern CopyAutoScalingGroup :: GreenFleetProvisioningAction
+pattern CopyAutoScalingGroup = GreenFleetProvisioningAction' "COPY_AUTO_SCALING_GROUP"
+
+pattern DiscoverExisting :: GreenFleetProvisioningAction
+pattern DiscoverExisting = GreenFleetProvisioningAction' "DISCOVER_EXISTING"
+
+{-# COMPLETE
+  CopyAutoScalingGroup,
+  DiscoverExisting,
+  GreenFleetProvisioningAction' #-}
 
 instance FromText GreenFleetProvisioningAction where
-    parser = takeLowerText >>= \case
-        "copy_auto_scaling_group" -> pure CopyAutoScalingGroup
-        "discover_existing" -> pure DiscoverExisting
-        e -> fromTextError $ "Failure parsing GreenFleetProvisioningAction from value: '" <> e
-           <> "'. Accepted values: copy_auto_scaling_group, discover_existing"
+    parser = (GreenFleetProvisioningAction' . mk) <$> takeText
 
 instance ToText GreenFleetProvisioningAction where
-    toText = \case
-        CopyAutoScalingGroup -> "COPY_AUTO_SCALING_GROUP"
-        DiscoverExisting -> "DISCOVER_EXISTING"
+    toText (GreenFleetProvisioningAction' ci) = original ci
+
+-- | Represents an enum of /known/ $GreenFleetProvisioningAction.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum GreenFleetProvisioningAction where
+    toEnum i = case i of
+        0 -> CopyAutoScalingGroup
+        1 -> DiscoverExisting
+        _ -> (error . showText) $ "Unknown index for GreenFleetProvisioningAction: " <> toText i
+    fromEnum x = case x of
+        CopyAutoScalingGroup -> 0
+        DiscoverExisting -> 1
+        GreenFleetProvisioningAction' name -> (error . showText) $ "Unknown GreenFleetProvisioningAction: " <> original name
+
+-- | Represents the bounds of /known/ $GreenFleetProvisioningAction.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded GreenFleetProvisioningAction where
+    minBound = CopyAutoScalingGroup
+    maxBound = DiscoverExisting
 
 instance Hashable     GreenFleetProvisioningAction
 instance NFData       GreenFleetProvisioningAction

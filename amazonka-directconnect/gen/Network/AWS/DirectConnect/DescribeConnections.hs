@@ -37,6 +37,7 @@ module Network.AWS.DirectConnect.DescribeConnections
     ) where
 
 import Network.AWS.DirectConnect.Types
+import Network.AWS.DirectConnect.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request

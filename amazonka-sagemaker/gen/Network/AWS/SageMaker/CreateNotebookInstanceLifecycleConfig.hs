@@ -54,6 +54,7 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.SageMaker.Types
+import Network.AWS.SageMaker.Types.Product
 
 -- | /See:/ 'createNotebookInstanceLifecycleConfig' smart constructor.
 data CreateNotebookInstanceLifecycleConfig = CreateNotebookInstanceLifecycleConfig'{_cnilcOnCreate

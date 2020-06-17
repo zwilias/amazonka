@@ -42,6 +42,7 @@ module Network.AWS.ElasticSearch.ListElasticsearchVersions
     ) where
 
 import Network.AWS.ElasticSearch.Types
+import Network.AWS.ElasticSearch.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude

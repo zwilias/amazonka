@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,32 +16,73 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.CodePipeline.Types.ActionExecutionStatus where
+module Network.AWS.CodePipeline.Types.ActionExecutionStatus (
+  ActionExecutionStatus (
+    ..
+    , AESAbandoned
+    , AESFailed
+    , AESInProgress
+    , AESSucceeded
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data ActionExecutionStatus = AESAbandoned
-                           | AESFailed
-                           | AESInProgress
-                           | AESSucceeded
-                               deriving (Eq, Ord, Read, Show, Enum, Bounded,
-                                         Data, Typeable, Generic)
+
+data ActionExecutionStatus = ActionExecutionStatus' (CI
+                                                       Text)
+                               deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                         Generic)
+
+pattern AESAbandoned :: ActionExecutionStatus
+pattern AESAbandoned = ActionExecutionStatus' "Abandoned"
+
+pattern AESFailed :: ActionExecutionStatus
+pattern AESFailed = ActionExecutionStatus' "Failed"
+
+pattern AESInProgress :: ActionExecutionStatus
+pattern AESInProgress = ActionExecutionStatus' "InProgress"
+
+pattern AESSucceeded :: ActionExecutionStatus
+pattern AESSucceeded = ActionExecutionStatus' "Succeeded"
+
+{-# COMPLETE
+  AESAbandoned,
+  AESFailed,
+  AESInProgress,
+  AESSucceeded,
+  ActionExecutionStatus' #-}
 
 instance FromText ActionExecutionStatus where
-    parser = takeLowerText >>= \case
-        "abandoned" -> pure AESAbandoned
-        "failed" -> pure AESFailed
-        "inprogress" -> pure AESInProgress
-        "succeeded" -> pure AESSucceeded
-        e -> fromTextError $ "Failure parsing ActionExecutionStatus from value: '" <> e
-           <> "'. Accepted values: abandoned, failed, inprogress, succeeded"
+    parser = (ActionExecutionStatus' . mk) <$> takeText
 
 instance ToText ActionExecutionStatus where
-    toText = \case
-        AESAbandoned -> "Abandoned"
-        AESFailed -> "Failed"
-        AESInProgress -> "InProgress"
-        AESSucceeded -> "Succeeded"
+    toText (ActionExecutionStatus' ci) = original ci
+
+-- | Represents an enum of /known/ $ActionExecutionStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum ActionExecutionStatus where
+    toEnum i = case i of
+        0 -> AESAbandoned
+        1 -> AESFailed
+        2 -> AESInProgress
+        3 -> AESSucceeded
+        _ -> (error . showText) $ "Unknown index for ActionExecutionStatus: " <> toText i
+    fromEnum x = case x of
+        AESAbandoned -> 0
+        AESFailed -> 1
+        AESInProgress -> 2
+        AESSucceeded -> 3
+        ActionExecutionStatus' name -> (error . showText) $ "Unknown ActionExecutionStatus: " <> original name
+
+-- | Represents the bounds of /known/ $ActionExecutionStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded ActionExecutionStatus where
+    minBound = AESAbandoned
+    maxBound = AESSucceeded
 
 instance Hashable     ActionExecutionStatus
 instance NFData       ActionExecutionStatus

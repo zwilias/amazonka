@@ -46,6 +46,7 @@ module Network.AWS.CloudFormation.CreateStackSet
     ) where
 
 import Network.AWS.CloudFormation.Types
+import Network.AWS.CloudFormation.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request

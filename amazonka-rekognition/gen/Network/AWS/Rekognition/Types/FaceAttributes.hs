@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,58 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.Rekognition.Types.FaceAttributes where
+module Network.AWS.Rekognition.Types.FaceAttributes (
+  FaceAttributes (
+    ..
+    , FAAll
+    , FADefault
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data FaceAttributes = FAAll
-                    | FADefault
-                        deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                  Typeable, Generic)
+
+data FaceAttributes = FaceAttributes' (CI Text)
+                        deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                  Generic)
+
+pattern FAAll :: FaceAttributes
+pattern FAAll = FaceAttributes' "ALL"
+
+pattern FADefault :: FaceAttributes
+pattern FADefault = FaceAttributes' "DEFAULT"
+
+{-# COMPLETE
+  FAAll,
+  FADefault,
+  FaceAttributes' #-}
 
 instance FromText FaceAttributes where
-    parser = takeLowerText >>= \case
-        "all" -> pure FAAll
-        "default" -> pure FADefault
-        e -> fromTextError $ "Failure parsing FaceAttributes from value: '" <> e
-           <> "'. Accepted values: all, default"
+    parser = (FaceAttributes' . mk) <$> takeText
 
 instance ToText FaceAttributes where
-    toText = \case
-        FAAll -> "ALL"
-        FADefault -> "DEFAULT"
+    toText (FaceAttributes' ci) = original ci
+
+-- | Represents an enum of /known/ $FaceAttributes.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum FaceAttributes where
+    toEnum i = case i of
+        0 -> FAAll
+        1 -> FADefault
+        _ -> (error . showText) $ "Unknown index for FaceAttributes: " <> toText i
+    fromEnum x = case x of
+        FAAll -> 0
+        FADefault -> 1
+        FaceAttributes' name -> (error . showText) $ "Unknown FaceAttributes: " <> original name
+
+-- | Represents the bounds of /known/ $FaceAttributes.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded FaceAttributes where
+    minBound = FAAll
+    maxBound = FADefault
 
 instance Hashable     FaceAttributes
 instance NFData       FaceAttributes

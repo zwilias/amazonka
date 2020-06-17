@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,58 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.DirectoryService.Types.SnapshotType where
+module Network.AWS.DirectoryService.Types.SnapshotType (
+  SnapshotType (
+    ..
+    , Auto
+    , Manual
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data SnapshotType = Auto
-                  | Manual
-                      deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                Typeable, Generic)
+
+data SnapshotType = SnapshotType' (CI Text)
+                      deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                Generic)
+
+pattern Auto :: SnapshotType
+pattern Auto = SnapshotType' "Auto"
+
+pattern Manual :: SnapshotType
+pattern Manual = SnapshotType' "Manual"
+
+{-# COMPLETE
+  Auto,
+  Manual,
+  SnapshotType' #-}
 
 instance FromText SnapshotType where
-    parser = takeLowerText >>= \case
-        "auto" -> pure Auto
-        "manual" -> pure Manual
-        e -> fromTextError $ "Failure parsing SnapshotType from value: '" <> e
-           <> "'. Accepted values: auto, manual"
+    parser = (SnapshotType' . mk) <$> takeText
 
 instance ToText SnapshotType where
-    toText = \case
-        Auto -> "Auto"
-        Manual -> "Manual"
+    toText (SnapshotType' ci) = original ci
+
+-- | Represents an enum of /known/ $SnapshotType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum SnapshotType where
+    toEnum i = case i of
+        0 -> Auto
+        1 -> Manual
+        _ -> (error . showText) $ "Unknown index for SnapshotType: " <> toText i
+    fromEnum x = case x of
+        Auto -> 0
+        Manual -> 1
+        SnapshotType' name -> (error . showText) $ "Unknown SnapshotType: " <> original name
+
+-- | Represents the bounds of /known/ $SnapshotType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded SnapshotType where
+    minBound = Auto
+    maxBound = Manual
 
 instance Hashable     SnapshotType
 instance NFData       SnapshotType

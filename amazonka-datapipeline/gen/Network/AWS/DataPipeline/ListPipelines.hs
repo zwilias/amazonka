@@ -42,6 +42,7 @@ module Network.AWS.DataPipeline.ListPipelines
     ) where
 
 import Network.AWS.DataPipeline.Types
+import Network.AWS.DataPipeline.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude

@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,29 +16,66 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.GameLift.Types.ScalingAdjustmentType where
+module Network.AWS.GameLift.Types.ScalingAdjustmentType (
+  ScalingAdjustmentType (
+    ..
+    , ChangeInCapacity
+    , ExactCapacity
+    , PercentChangeInCapacity
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data ScalingAdjustmentType = ChangeInCapacity
-                           | ExactCapacity
-                           | PercentChangeInCapacity
-                               deriving (Eq, Ord, Read, Show, Enum, Bounded,
-                                         Data, Typeable, Generic)
+
+data ScalingAdjustmentType = ScalingAdjustmentType' (CI
+                                                       Text)
+                               deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                         Generic)
+
+pattern ChangeInCapacity :: ScalingAdjustmentType
+pattern ChangeInCapacity = ScalingAdjustmentType' "ChangeInCapacity"
+
+pattern ExactCapacity :: ScalingAdjustmentType
+pattern ExactCapacity = ScalingAdjustmentType' "ExactCapacity"
+
+pattern PercentChangeInCapacity :: ScalingAdjustmentType
+pattern PercentChangeInCapacity = ScalingAdjustmentType' "PercentChangeInCapacity"
+
+{-# COMPLETE
+  ChangeInCapacity,
+  ExactCapacity,
+  PercentChangeInCapacity,
+  ScalingAdjustmentType' #-}
 
 instance FromText ScalingAdjustmentType where
-    parser = takeLowerText >>= \case
-        "changeincapacity" -> pure ChangeInCapacity
-        "exactcapacity" -> pure ExactCapacity
-        "percentchangeincapacity" -> pure PercentChangeInCapacity
-        e -> fromTextError $ "Failure parsing ScalingAdjustmentType from value: '" <> e
-           <> "'. Accepted values: changeincapacity, exactcapacity, percentchangeincapacity"
+    parser = (ScalingAdjustmentType' . mk) <$> takeText
 
 instance ToText ScalingAdjustmentType where
-    toText = \case
-        ChangeInCapacity -> "ChangeInCapacity"
-        ExactCapacity -> "ExactCapacity"
-        PercentChangeInCapacity -> "PercentChangeInCapacity"
+    toText (ScalingAdjustmentType' ci) = original ci
+
+-- | Represents an enum of /known/ $ScalingAdjustmentType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum ScalingAdjustmentType where
+    toEnum i = case i of
+        0 -> ChangeInCapacity
+        1 -> ExactCapacity
+        2 -> PercentChangeInCapacity
+        _ -> (error . showText) $ "Unknown index for ScalingAdjustmentType: " <> toText i
+    fromEnum x = case x of
+        ChangeInCapacity -> 0
+        ExactCapacity -> 1
+        PercentChangeInCapacity -> 2
+        ScalingAdjustmentType' name -> (error . showText) $ "Unknown ScalingAdjustmentType: " <> original name
+
+-- | Represents the bounds of /known/ $ScalingAdjustmentType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded ScalingAdjustmentType where
+    minBound = ChangeInCapacity
+    maxBound = PercentChangeInCapacity
 
 instance Hashable     ScalingAdjustmentType
 instance NFData       ScalingAdjustmentType

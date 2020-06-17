@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,58 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.SSM.Types.ExecutionMode where
+module Network.AWS.SSM.Types.ExecutionMode (
+  ExecutionMode (
+    ..
+    , Auto
+    , Interactive
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data ExecutionMode = Auto
-                   | Interactive
-                       deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                 Typeable, Generic)
+
+data ExecutionMode = ExecutionMode' (CI Text)
+                       deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                 Generic)
+
+pattern Auto :: ExecutionMode
+pattern Auto = ExecutionMode' "Auto"
+
+pattern Interactive :: ExecutionMode
+pattern Interactive = ExecutionMode' "Interactive"
+
+{-# COMPLETE
+  Auto,
+  Interactive,
+  ExecutionMode' #-}
 
 instance FromText ExecutionMode where
-    parser = takeLowerText >>= \case
-        "auto" -> pure Auto
-        "interactive" -> pure Interactive
-        e -> fromTextError $ "Failure parsing ExecutionMode from value: '" <> e
-           <> "'. Accepted values: auto, interactive"
+    parser = (ExecutionMode' . mk) <$> takeText
 
 instance ToText ExecutionMode where
-    toText = \case
-        Auto -> "Auto"
-        Interactive -> "Interactive"
+    toText (ExecutionMode' ci) = original ci
+
+-- | Represents an enum of /known/ $ExecutionMode.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum ExecutionMode where
+    toEnum i = case i of
+        0 -> Auto
+        1 -> Interactive
+        _ -> (error . showText) $ "Unknown index for ExecutionMode: " <> toText i
+    fromEnum x = case x of
+        Auto -> 0
+        Interactive -> 1
+        ExecutionMode' name -> (error . showText) $ "Unknown ExecutionMode: " <> original name
+
+-- | Represents the bounds of /known/ $ExecutionMode.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded ExecutionMode where
+    minBound = Auto
+    maxBound = Interactive
 
 instance Hashable     ExecutionMode
 instance NFData       ExecutionMode

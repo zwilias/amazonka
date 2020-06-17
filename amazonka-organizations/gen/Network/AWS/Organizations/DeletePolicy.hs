@@ -38,6 +38,7 @@ module Network.AWS.Organizations.DeletePolicy
 
 import Network.AWS.Lens
 import Network.AWS.Organizations.Types
+import Network.AWS.Organizations.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response

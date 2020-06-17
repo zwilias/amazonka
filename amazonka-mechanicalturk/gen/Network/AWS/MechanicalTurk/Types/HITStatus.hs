@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,35 +16,79 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.MechanicalTurk.Types.HITStatus where
+module Network.AWS.MechanicalTurk.Types.HITStatus (
+  HITStatus (
+    ..
+    , HITSAssignable
+    , HITSDisposed
+    , HITSReviewable
+    , HITSReviewing
+    , HITSUnassignable
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data HITStatus = HITSAssignable
-               | HITSDisposed
-               | HITSReviewable
-               | HITSReviewing
-               | HITSUnassignable
-                   deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                             Typeable, Generic)
+
+data HITStatus = HITStatus' (CI Text)
+                   deriving (Eq, Ord, Read, Show, Data, Typeable,
+                             Generic)
+
+pattern HITSAssignable :: HITStatus
+pattern HITSAssignable = HITStatus' "Assignable"
+
+pattern HITSDisposed :: HITStatus
+pattern HITSDisposed = HITStatus' "Disposed"
+
+pattern HITSReviewable :: HITStatus
+pattern HITSReviewable = HITStatus' "Reviewable"
+
+pattern HITSReviewing :: HITStatus
+pattern HITSReviewing = HITStatus' "Reviewing"
+
+pattern HITSUnassignable :: HITStatus
+pattern HITSUnassignable = HITStatus' "Unassignable"
+
+{-# COMPLETE
+  HITSAssignable,
+  HITSDisposed,
+  HITSReviewable,
+  HITSReviewing,
+  HITSUnassignable,
+  HITStatus' #-}
 
 instance FromText HITStatus where
-    parser = takeLowerText >>= \case
-        "assignable" -> pure HITSAssignable
-        "disposed" -> pure HITSDisposed
-        "reviewable" -> pure HITSReviewable
-        "reviewing" -> pure HITSReviewing
-        "unassignable" -> pure HITSUnassignable
-        e -> fromTextError $ "Failure parsing HITStatus from value: '" <> e
-           <> "'. Accepted values: assignable, disposed, reviewable, reviewing, unassignable"
+    parser = (HITStatus' . mk) <$> takeText
 
 instance ToText HITStatus where
-    toText = \case
-        HITSAssignable -> "Assignable"
-        HITSDisposed -> "Disposed"
-        HITSReviewable -> "Reviewable"
-        HITSReviewing -> "Reviewing"
-        HITSUnassignable -> "Unassignable"
+    toText (HITStatus' ci) = original ci
+
+-- | Represents an enum of /known/ $HITStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum HITStatus where
+    toEnum i = case i of
+        0 -> HITSAssignable
+        1 -> HITSDisposed
+        2 -> HITSReviewable
+        3 -> HITSReviewing
+        4 -> HITSUnassignable
+        _ -> (error . showText) $ "Unknown index for HITStatus: " <> toText i
+    fromEnum x = case x of
+        HITSAssignable -> 0
+        HITSDisposed -> 1
+        HITSReviewable -> 2
+        HITSReviewing -> 3
+        HITSUnassignable -> 4
+        HITStatus' name -> (error . showText) $ "Unknown HITStatus: " <> original name
+
+-- | Represents the bounds of /known/ $HITStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded HITStatus where
+    minBound = HITSAssignable
+    maxBound = HITSUnassignable
 
 instance Hashable     HITStatus
 instance NFData       HITStatus

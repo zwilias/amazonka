@@ -55,6 +55,7 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.SSM.Types
+import Network.AWS.SSM.Types.Product
 
 -- | /See:/ 'getPatchBaseline' smart constructor.
 newtype GetPatchBaseline = GetPatchBaseline'{_gpbBaselineId

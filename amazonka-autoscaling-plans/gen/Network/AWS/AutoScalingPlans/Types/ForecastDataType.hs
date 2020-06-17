@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,32 +16,72 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.AutoScalingPlans.Types.ForecastDataType where
+module Network.AWS.AutoScalingPlans.Types.ForecastDataType (
+  ForecastDataType (
+    ..
+    , CapacityForecast
+    , LoadForecast
+    , ScheduledActionMaxCapacity
+    , ScheduledActionMinCapacity
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data ForecastDataType = CapacityForecast
-                      | LoadForecast
-                      | ScheduledActionMaxCapacity
-                      | ScheduledActionMinCapacity
-                          deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                    Typeable, Generic)
+
+data ForecastDataType = ForecastDataType' (CI Text)
+                          deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                    Generic)
+
+pattern CapacityForecast :: ForecastDataType
+pattern CapacityForecast = ForecastDataType' "CapacityForecast"
+
+pattern LoadForecast :: ForecastDataType
+pattern LoadForecast = ForecastDataType' "LoadForecast"
+
+pattern ScheduledActionMaxCapacity :: ForecastDataType
+pattern ScheduledActionMaxCapacity = ForecastDataType' "ScheduledActionMaxCapacity"
+
+pattern ScheduledActionMinCapacity :: ForecastDataType
+pattern ScheduledActionMinCapacity = ForecastDataType' "ScheduledActionMinCapacity"
+
+{-# COMPLETE
+  CapacityForecast,
+  LoadForecast,
+  ScheduledActionMaxCapacity,
+  ScheduledActionMinCapacity,
+  ForecastDataType' #-}
 
 instance FromText ForecastDataType where
-    parser = takeLowerText >>= \case
-        "capacityforecast" -> pure CapacityForecast
-        "loadforecast" -> pure LoadForecast
-        "scheduledactionmaxcapacity" -> pure ScheduledActionMaxCapacity
-        "scheduledactionmincapacity" -> pure ScheduledActionMinCapacity
-        e -> fromTextError $ "Failure parsing ForecastDataType from value: '" <> e
-           <> "'. Accepted values: capacityforecast, loadforecast, scheduledactionmaxcapacity, scheduledactionmincapacity"
+    parser = (ForecastDataType' . mk) <$> takeText
 
 instance ToText ForecastDataType where
-    toText = \case
-        CapacityForecast -> "CapacityForecast"
-        LoadForecast -> "LoadForecast"
-        ScheduledActionMaxCapacity -> "ScheduledActionMaxCapacity"
-        ScheduledActionMinCapacity -> "ScheduledActionMinCapacity"
+    toText (ForecastDataType' ci) = original ci
+
+-- | Represents an enum of /known/ $ForecastDataType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum ForecastDataType where
+    toEnum i = case i of
+        0 -> CapacityForecast
+        1 -> LoadForecast
+        2 -> ScheduledActionMaxCapacity
+        3 -> ScheduledActionMinCapacity
+        _ -> (error . showText) $ "Unknown index for ForecastDataType: " <> toText i
+    fromEnum x = case x of
+        CapacityForecast -> 0
+        LoadForecast -> 1
+        ScheduledActionMaxCapacity -> 2
+        ScheduledActionMinCapacity -> 3
+        ForecastDataType' name -> (error . showText) $ "Unknown ForecastDataType: " <> original name
+
+-- | Represents the bounds of /known/ $ForecastDataType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded ForecastDataType where
+    minBound = CapacityForecast
+    maxBound = ScheduledActionMinCapacity
 
 instance Hashable     ForecastDataType
 instance NFData       ForecastDataType

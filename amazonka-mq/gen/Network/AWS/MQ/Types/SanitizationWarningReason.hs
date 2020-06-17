@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,30 +16,67 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.MQ.Types.SanitizationWarningReason where
+module Network.AWS.MQ.Types.SanitizationWarningReason (
+  SanitizationWarningReason (
+    ..
+    , DisallowedAttributeRemoved
+    , DisallowedElementRemoved
+    , InvalidAttributeValueRemoved
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
+
 -- | The reason for which the XML elements or attributes were sanitized. Possible values: DISALLOWED_ELEMENT_REMOVED, DISALLOWED_ATTRIBUTE_REMOVED, INVALID_ATTRIBUTE_VALUE_REMOVED DISALLOWED_ELEMENT_REMOVED shows that the provided element isn't allowed and has been removed. DISALLOWED_ATTRIBUTE_REMOVED shows that the provided attribute isn't allowed and has been removed. INVALID_ATTRIBUTE_VALUE_REMOVED shows that the provided value for the attribute isn't allowed and has been removed.
-data SanitizationWarningReason = DisallowedAttributeRemoved
-                               | DisallowedElementRemoved
-                               | InvalidAttributeValueRemoved
-                                   deriving (Eq, Ord, Read, Show, Enum, Bounded,
-                                             Data, Typeable, Generic)
+data SanitizationWarningReason = SanitizationWarningReason' (CI
+                                                               Text)
+                                   deriving (Eq, Ord, Read, Show, Data,
+                                             Typeable, Generic)
+
+pattern DisallowedAttributeRemoved :: SanitizationWarningReason
+pattern DisallowedAttributeRemoved = SanitizationWarningReason' "DISALLOWED_ATTRIBUTE_REMOVED"
+
+pattern DisallowedElementRemoved :: SanitizationWarningReason
+pattern DisallowedElementRemoved = SanitizationWarningReason' "DISALLOWED_ELEMENT_REMOVED"
+
+pattern InvalidAttributeValueRemoved :: SanitizationWarningReason
+pattern InvalidAttributeValueRemoved = SanitizationWarningReason' "INVALID_ATTRIBUTE_VALUE_REMOVED"
+
+{-# COMPLETE
+  DisallowedAttributeRemoved,
+  DisallowedElementRemoved,
+  InvalidAttributeValueRemoved,
+  SanitizationWarningReason' #-}
 
 instance FromText SanitizationWarningReason where
-    parser = takeLowerText >>= \case
-        "disallowed_attribute_removed" -> pure DisallowedAttributeRemoved
-        "disallowed_element_removed" -> pure DisallowedElementRemoved
-        "invalid_attribute_value_removed" -> pure InvalidAttributeValueRemoved
-        e -> fromTextError $ "Failure parsing SanitizationWarningReason from value: '" <> e
-           <> "'. Accepted values: disallowed_attribute_removed, disallowed_element_removed, invalid_attribute_value_removed"
+    parser = (SanitizationWarningReason' . mk) <$> takeText
 
 instance ToText SanitizationWarningReason where
-    toText = \case
-        DisallowedAttributeRemoved -> "DISALLOWED_ATTRIBUTE_REMOVED"
-        DisallowedElementRemoved -> "DISALLOWED_ELEMENT_REMOVED"
-        InvalidAttributeValueRemoved -> "INVALID_ATTRIBUTE_VALUE_REMOVED"
+    toText (SanitizationWarningReason' ci) = original ci
+
+-- | Represents an enum of /known/ $SanitizationWarningReason.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum SanitizationWarningReason where
+    toEnum i = case i of
+        0 -> DisallowedAttributeRemoved
+        1 -> DisallowedElementRemoved
+        2 -> InvalidAttributeValueRemoved
+        _ -> (error . showText) $ "Unknown index for SanitizationWarningReason: " <> toText i
+    fromEnum x = case x of
+        DisallowedAttributeRemoved -> 0
+        DisallowedElementRemoved -> 1
+        InvalidAttributeValueRemoved -> 2
+        SanitizationWarningReason' name -> (error . showText) $ "Unknown SanitizationWarningReason: " <> original name
+
+-- | Represents the bounds of /known/ $SanitizationWarningReason.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded SanitizationWarningReason where
+    minBound = DisallowedAttributeRemoved
+    maxBound = InvalidAttributeValueRemoved
 
 instance Hashable     SanitizationWarningReason
 instance NFData       SanitizationWarningReason

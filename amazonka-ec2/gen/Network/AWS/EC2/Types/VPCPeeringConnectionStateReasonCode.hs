@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,49 +16,109 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.EC2.Types.VPCPeeringConnectionStateReasonCode where
+module Network.AWS.EC2.Types.VPCPeeringConnectionStateReasonCode (
+  VPCPeeringConnectionStateReasonCode (
+    ..
+    , VPCSRCActive
+    , VPCSRCDeleted
+    , VPCSRCDeleting
+    , VPCSRCExpired
+    , VPCSRCFailed
+    , VPCSRCInitiatingRequest
+    , VPCSRCPendingAcceptance
+    , VPCSRCProvisioning
+    , VPCSRCRejected
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.EC2.Internal
 import Network.AWS.Prelude
-  
-data VPCPeeringConnectionStateReasonCode = VPCSRCActive
-                                         | VPCSRCDeleted
-                                         | VPCSRCDeleting
-                                         | VPCSRCExpired
-                                         | VPCSRCFailed
-                                         | VPCSRCInitiatingRequest
-                                         | VPCSRCPendingAcceptance
-                                         | VPCSRCProvisioning
-                                         | VPCSRCRejected
+
+data VPCPeeringConnectionStateReasonCode = VPCPeeringConnectionStateReasonCode' (CI
+                                                                                   Text)
                                              deriving (Eq, Ord, Read, Show,
-                                                       Enum, Bounded, Data,
-                                                       Typeable, Generic)
+                                                       Data, Typeable, Generic)
+
+pattern VPCSRCActive :: VPCPeeringConnectionStateReasonCode
+pattern VPCSRCActive = VPCPeeringConnectionStateReasonCode' "active"
+
+pattern VPCSRCDeleted :: VPCPeeringConnectionStateReasonCode
+pattern VPCSRCDeleted = VPCPeeringConnectionStateReasonCode' "deleted"
+
+pattern VPCSRCDeleting :: VPCPeeringConnectionStateReasonCode
+pattern VPCSRCDeleting = VPCPeeringConnectionStateReasonCode' "deleting"
+
+pattern VPCSRCExpired :: VPCPeeringConnectionStateReasonCode
+pattern VPCSRCExpired = VPCPeeringConnectionStateReasonCode' "expired"
+
+pattern VPCSRCFailed :: VPCPeeringConnectionStateReasonCode
+pattern VPCSRCFailed = VPCPeeringConnectionStateReasonCode' "failed"
+
+pattern VPCSRCInitiatingRequest :: VPCPeeringConnectionStateReasonCode
+pattern VPCSRCInitiatingRequest = VPCPeeringConnectionStateReasonCode' "initiating-request"
+
+pattern VPCSRCPendingAcceptance :: VPCPeeringConnectionStateReasonCode
+pattern VPCSRCPendingAcceptance = VPCPeeringConnectionStateReasonCode' "pending-acceptance"
+
+pattern VPCSRCProvisioning :: VPCPeeringConnectionStateReasonCode
+pattern VPCSRCProvisioning = VPCPeeringConnectionStateReasonCode' "provisioning"
+
+pattern VPCSRCRejected :: VPCPeeringConnectionStateReasonCode
+pattern VPCSRCRejected = VPCPeeringConnectionStateReasonCode' "rejected"
+
+{-# COMPLETE
+  VPCSRCActive,
+  VPCSRCDeleted,
+  VPCSRCDeleting,
+  VPCSRCExpired,
+  VPCSRCFailed,
+  VPCSRCInitiatingRequest,
+  VPCSRCPendingAcceptance,
+  VPCSRCProvisioning,
+  VPCSRCRejected,
+  VPCPeeringConnectionStateReasonCode' #-}
 
 instance FromText VPCPeeringConnectionStateReasonCode where
-    parser = takeLowerText >>= \case
-        "active" -> pure VPCSRCActive
-        "deleted" -> pure VPCSRCDeleted
-        "deleting" -> pure VPCSRCDeleting
-        "expired" -> pure VPCSRCExpired
-        "failed" -> pure VPCSRCFailed
-        "initiating-request" -> pure VPCSRCInitiatingRequest
-        "pending-acceptance" -> pure VPCSRCPendingAcceptance
-        "provisioning" -> pure VPCSRCProvisioning
-        "rejected" -> pure VPCSRCRejected
-        e -> fromTextError $ "Failure parsing VPCPeeringConnectionStateReasonCode from value: '" <> e
-           <> "'. Accepted values: active, deleted, deleting, expired, failed, initiating-request, pending-acceptance, provisioning, rejected"
+    parser = (VPCPeeringConnectionStateReasonCode' . mk) <$> takeText
 
 instance ToText VPCPeeringConnectionStateReasonCode where
-    toText = \case
-        VPCSRCActive -> "active"
-        VPCSRCDeleted -> "deleted"
-        VPCSRCDeleting -> "deleting"
-        VPCSRCExpired -> "expired"
-        VPCSRCFailed -> "failed"
-        VPCSRCInitiatingRequest -> "initiating-request"
-        VPCSRCPendingAcceptance -> "pending-acceptance"
-        VPCSRCProvisioning -> "provisioning"
-        VPCSRCRejected -> "rejected"
+    toText (VPCPeeringConnectionStateReasonCode' ci) = original ci
+
+-- | Represents an enum of /known/ $VPCPeeringConnectionStateReasonCode.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum VPCPeeringConnectionStateReasonCode where
+    toEnum i = case i of
+        0 -> VPCSRCActive
+        1 -> VPCSRCDeleted
+        2 -> VPCSRCDeleting
+        3 -> VPCSRCExpired
+        4 -> VPCSRCFailed
+        5 -> VPCSRCInitiatingRequest
+        6 -> VPCSRCPendingAcceptance
+        7 -> VPCSRCProvisioning
+        8 -> VPCSRCRejected
+        _ -> (error . showText) $ "Unknown index for VPCPeeringConnectionStateReasonCode: " <> toText i
+    fromEnum x = case x of
+        VPCSRCActive -> 0
+        VPCSRCDeleted -> 1
+        VPCSRCDeleting -> 2
+        VPCSRCExpired -> 3
+        VPCSRCFailed -> 4
+        VPCSRCInitiatingRequest -> 5
+        VPCSRCPendingAcceptance -> 6
+        VPCSRCProvisioning -> 7
+        VPCSRCRejected -> 8
+        VPCPeeringConnectionStateReasonCode' name -> (error . showText) $ "Unknown VPCPeeringConnectionStateReasonCode: " <> original name
+
+-- | Represents the bounds of /known/ $VPCPeeringConnectionStateReasonCode.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded VPCPeeringConnectionStateReasonCode where
+    minBound = VPCSRCActive
+    maxBound = VPCSRCRejected
 
 instance Hashable     VPCPeeringConnectionStateReasonCode
 instance NFData       VPCPeeringConnectionStateReasonCode

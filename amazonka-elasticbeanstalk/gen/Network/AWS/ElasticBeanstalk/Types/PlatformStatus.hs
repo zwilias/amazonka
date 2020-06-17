@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,35 +16,79 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.ElasticBeanstalk.Types.PlatformStatus where
+module Network.AWS.ElasticBeanstalk.Types.PlatformStatus (
+  PlatformStatus (
+    ..
+    , Creating
+    , Deleted
+    , Deleting
+    , Failed
+    , Ready
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data PlatformStatus = Creating
-                    | Deleted
-                    | Deleting
-                    | Failed
-                    | Ready
-                        deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                  Typeable, Generic)
+
+data PlatformStatus = PlatformStatus' (CI Text)
+                        deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                  Generic)
+
+pattern Creating :: PlatformStatus
+pattern Creating = PlatformStatus' "Creating"
+
+pattern Deleted :: PlatformStatus
+pattern Deleted = PlatformStatus' "Deleted"
+
+pattern Deleting :: PlatformStatus
+pattern Deleting = PlatformStatus' "Deleting"
+
+pattern Failed :: PlatformStatus
+pattern Failed = PlatformStatus' "Failed"
+
+pattern Ready :: PlatformStatus
+pattern Ready = PlatformStatus' "Ready"
+
+{-# COMPLETE
+  Creating,
+  Deleted,
+  Deleting,
+  Failed,
+  Ready,
+  PlatformStatus' #-}
 
 instance FromText PlatformStatus where
-    parser = takeLowerText >>= \case
-        "creating" -> pure Creating
-        "deleted" -> pure Deleted
-        "deleting" -> pure Deleting
-        "failed" -> pure Failed
-        "ready" -> pure Ready
-        e -> fromTextError $ "Failure parsing PlatformStatus from value: '" <> e
-           <> "'. Accepted values: creating, deleted, deleting, failed, ready"
+    parser = (PlatformStatus' . mk) <$> takeText
 
 instance ToText PlatformStatus where
-    toText = \case
-        Creating -> "Creating"
-        Deleted -> "Deleted"
-        Deleting -> "Deleting"
-        Failed -> "Failed"
-        Ready -> "Ready"
+    toText (PlatformStatus' ci) = original ci
+
+-- | Represents an enum of /known/ $PlatformStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum PlatformStatus where
+    toEnum i = case i of
+        0 -> Creating
+        1 -> Deleted
+        2 -> Deleting
+        3 -> Failed
+        4 -> Ready
+        _ -> (error . showText) $ "Unknown index for PlatformStatus: " <> toText i
+    fromEnum x = case x of
+        Creating -> 0
+        Deleted -> 1
+        Deleting -> 2
+        Failed -> 3
+        Ready -> 4
+        PlatformStatus' name -> (error . showText) $ "Unknown PlatformStatus: " <> original name
+
+-- | Represents the bounds of /known/ $PlatformStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded PlatformStatus where
+    minBound = Creating
+    maxBound = Ready
 
 instance Hashable     PlatformStatus
 instance NFData       PlatformStatus

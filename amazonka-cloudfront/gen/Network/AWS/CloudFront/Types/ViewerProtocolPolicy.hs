@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,29 +16,66 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.CloudFront.Types.ViewerProtocolPolicy where
+module Network.AWS.CloudFront.Types.ViewerProtocolPolicy (
+  ViewerProtocolPolicy (
+    ..
+    , VPPAllowAll
+    , VPPHTTPSOnly
+    , VPPRedirectToHTTPS
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data ViewerProtocolPolicy = VPPAllowAll
-                          | VPPHTTPSOnly
-                          | VPPRedirectToHTTPS
-                              deriving (Eq, Ord, Read, Show, Enum, Bounded,
-                                        Data, Typeable, Generic)
+
+data ViewerProtocolPolicy = ViewerProtocolPolicy' (CI
+                                                     Text)
+                              deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                        Generic)
+
+pattern VPPAllowAll :: ViewerProtocolPolicy
+pattern VPPAllowAll = ViewerProtocolPolicy' "allow-all"
+
+pattern VPPHTTPSOnly :: ViewerProtocolPolicy
+pattern VPPHTTPSOnly = ViewerProtocolPolicy' "https-only"
+
+pattern VPPRedirectToHTTPS :: ViewerProtocolPolicy
+pattern VPPRedirectToHTTPS = ViewerProtocolPolicy' "redirect-to-https"
+
+{-# COMPLETE
+  VPPAllowAll,
+  VPPHTTPSOnly,
+  VPPRedirectToHTTPS,
+  ViewerProtocolPolicy' #-}
 
 instance FromText ViewerProtocolPolicy where
-    parser = takeLowerText >>= \case
-        "allow-all" -> pure VPPAllowAll
-        "https-only" -> pure VPPHTTPSOnly
-        "redirect-to-https" -> pure VPPRedirectToHTTPS
-        e -> fromTextError $ "Failure parsing ViewerProtocolPolicy from value: '" <> e
-           <> "'. Accepted values: allow-all, https-only, redirect-to-https"
+    parser = (ViewerProtocolPolicy' . mk) <$> takeText
 
 instance ToText ViewerProtocolPolicy where
-    toText = \case
-        VPPAllowAll -> "allow-all"
-        VPPHTTPSOnly -> "https-only"
-        VPPRedirectToHTTPS -> "redirect-to-https"
+    toText (ViewerProtocolPolicy' ci) = original ci
+
+-- | Represents an enum of /known/ $ViewerProtocolPolicy.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum ViewerProtocolPolicy where
+    toEnum i = case i of
+        0 -> VPPAllowAll
+        1 -> VPPHTTPSOnly
+        2 -> VPPRedirectToHTTPS
+        _ -> (error . showText) $ "Unknown index for ViewerProtocolPolicy: " <> toText i
+    fromEnum x = case x of
+        VPPAllowAll -> 0
+        VPPHTTPSOnly -> 1
+        VPPRedirectToHTTPS -> 2
+        ViewerProtocolPolicy' name -> (error . showText) $ "Unknown ViewerProtocolPolicy: " <> original name
+
+-- | Represents the bounds of /known/ $ViewerProtocolPolicy.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded ViewerProtocolPolicy where
+    minBound = VPPAllowAll
+    maxBound = VPPRedirectToHTTPS
 
 instance Hashable     ViewerProtocolPolicy
 instance NFData       ViewerProtocolPolicy

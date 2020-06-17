@@ -40,6 +40,7 @@ module Network.AWS.Polly.GetLexicon
 
 import Network.AWS.Lens
 import Network.AWS.Polly.Types
+import Network.AWS.Polly.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response

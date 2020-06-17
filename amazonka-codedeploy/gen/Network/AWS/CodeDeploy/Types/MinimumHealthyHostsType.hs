@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,59 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.CodeDeploy.Types.MinimumHealthyHostsType where
+module Network.AWS.CodeDeploy.Types.MinimumHealthyHostsType (
+  MinimumHealthyHostsType (
+    ..
+    , FleetPercent
+    , HostCount
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data MinimumHealthyHostsType = FleetPercent
-                             | HostCount
-                                 deriving (Eq, Ord, Read, Show, Enum, Bounded,
-                                           Data, Typeable, Generic)
+
+data MinimumHealthyHostsType = MinimumHealthyHostsType' (CI
+                                                           Text)
+                                 deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                           Generic)
+
+pattern FleetPercent :: MinimumHealthyHostsType
+pattern FleetPercent = MinimumHealthyHostsType' "FLEET_PERCENT"
+
+pattern HostCount :: MinimumHealthyHostsType
+pattern HostCount = MinimumHealthyHostsType' "HOST_COUNT"
+
+{-# COMPLETE
+  FleetPercent,
+  HostCount,
+  MinimumHealthyHostsType' #-}
 
 instance FromText MinimumHealthyHostsType where
-    parser = takeLowerText >>= \case
-        "fleet_percent" -> pure FleetPercent
-        "host_count" -> pure HostCount
-        e -> fromTextError $ "Failure parsing MinimumHealthyHostsType from value: '" <> e
-           <> "'. Accepted values: fleet_percent, host_count"
+    parser = (MinimumHealthyHostsType' . mk) <$> takeText
 
 instance ToText MinimumHealthyHostsType where
-    toText = \case
-        FleetPercent -> "FLEET_PERCENT"
-        HostCount -> "HOST_COUNT"
+    toText (MinimumHealthyHostsType' ci) = original ci
+
+-- | Represents an enum of /known/ $MinimumHealthyHostsType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum MinimumHealthyHostsType where
+    toEnum i = case i of
+        0 -> FleetPercent
+        1 -> HostCount
+        _ -> (error . showText) $ "Unknown index for MinimumHealthyHostsType: " <> toText i
+    fromEnum x = case x of
+        FleetPercent -> 0
+        HostCount -> 1
+        MinimumHealthyHostsType' name -> (error . showText) $ "Unknown MinimumHealthyHostsType: " <> original name
+
+-- | Represents the bounds of /known/ $MinimumHealthyHostsType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded MinimumHealthyHostsType where
+    minBound = FleetPercent
+    maxBound = HostCount
 
 instance Hashable     MinimumHealthyHostsType
 instance NFData       MinimumHealthyHostsType

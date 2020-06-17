@@ -42,6 +42,7 @@ module Network.AWS.Mobile.CreateProject
 
 import Network.AWS.Lens
 import Network.AWS.Mobile.Types
+import Network.AWS.Mobile.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response

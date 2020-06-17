@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,41 +16,93 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.Pinpoint.Types.JobStatus where
+module Network.AWS.Pinpoint.Types.JobStatus (
+  JobStatus (
+    ..
+    , JSCompleted
+    , JSCompleting
+    , JSCreated
+    , JSFailed
+    , JSFailing
+    , JSInitializing
+    , JSProcessing
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data JobStatus = JSCompleted
-               | JSCompleting
-               | JSCreated
-               | JSFailed
-               | JSFailing
-               | JSInitializing
-               | JSProcessing
-                   deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                             Typeable, Generic)
+
+data JobStatus = JobStatus' (CI Text)
+                   deriving (Eq, Ord, Read, Show, Data, Typeable,
+                             Generic)
+
+pattern JSCompleted :: JobStatus
+pattern JSCompleted = JobStatus' "COMPLETED"
+
+pattern JSCompleting :: JobStatus
+pattern JSCompleting = JobStatus' "COMPLETING"
+
+pattern JSCreated :: JobStatus
+pattern JSCreated = JobStatus' "CREATED"
+
+pattern JSFailed :: JobStatus
+pattern JSFailed = JobStatus' "FAILED"
+
+pattern JSFailing :: JobStatus
+pattern JSFailing = JobStatus' "FAILING"
+
+pattern JSInitializing :: JobStatus
+pattern JSInitializing = JobStatus' "INITIALIZING"
+
+pattern JSProcessing :: JobStatus
+pattern JSProcessing = JobStatus' "PROCESSING"
+
+{-# COMPLETE
+  JSCompleted,
+  JSCompleting,
+  JSCreated,
+  JSFailed,
+  JSFailing,
+  JSInitializing,
+  JSProcessing,
+  JobStatus' #-}
 
 instance FromText JobStatus where
-    parser = takeLowerText >>= \case
-        "completed" -> pure JSCompleted
-        "completing" -> pure JSCompleting
-        "created" -> pure JSCreated
-        "failed" -> pure JSFailed
-        "failing" -> pure JSFailing
-        "initializing" -> pure JSInitializing
-        "processing" -> pure JSProcessing
-        e -> fromTextError $ "Failure parsing JobStatus from value: '" <> e
-           <> "'. Accepted values: completed, completing, created, failed, failing, initializing, processing"
+    parser = (JobStatus' . mk) <$> takeText
 
 instance ToText JobStatus where
-    toText = \case
-        JSCompleted -> "COMPLETED"
-        JSCompleting -> "COMPLETING"
-        JSCreated -> "CREATED"
-        JSFailed -> "FAILED"
-        JSFailing -> "FAILING"
-        JSInitializing -> "INITIALIZING"
-        JSProcessing -> "PROCESSING"
+    toText (JobStatus' ci) = original ci
+
+-- | Represents an enum of /known/ $JobStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum JobStatus where
+    toEnum i = case i of
+        0 -> JSCompleted
+        1 -> JSCompleting
+        2 -> JSCreated
+        3 -> JSFailed
+        4 -> JSFailing
+        5 -> JSInitializing
+        6 -> JSProcessing
+        _ -> (error . showText) $ "Unknown index for JobStatus: " <> toText i
+    fromEnum x = case x of
+        JSCompleted -> 0
+        JSCompleting -> 1
+        JSCreated -> 2
+        JSFailed -> 3
+        JSFailing -> 4
+        JSInitializing -> 5
+        JSProcessing -> 6
+        JobStatus' name -> (error . showText) $ "Unknown JobStatus: " <> original name
+
+-- | Represents the bounds of /known/ $JobStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded JobStatus where
+    minBound = JSCompleted
+    maxBound = JSProcessing
 
 instance Hashable     JobStatus
 instance NFData       JobStatus

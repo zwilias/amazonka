@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,29 +16,66 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.CodeBuild.Types.ReportGroupSortByType where
+module Network.AWS.CodeBuild.Types.ReportGroupSortByType (
+  ReportGroupSortByType (
+    ..
+    , RGSBTCreatedTime
+    , RGSBTLastModifiedTime
+    , RGSBTName
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data ReportGroupSortByType = RGSBTCreatedTime
-                           | RGSBTLastModifiedTime
-                           | RGSBTName
-                               deriving (Eq, Ord, Read, Show, Enum, Bounded,
-                                         Data, Typeable, Generic)
+
+data ReportGroupSortByType = ReportGroupSortByType' (CI
+                                                       Text)
+                               deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                         Generic)
+
+pattern RGSBTCreatedTime :: ReportGroupSortByType
+pattern RGSBTCreatedTime = ReportGroupSortByType' "CREATED_TIME"
+
+pattern RGSBTLastModifiedTime :: ReportGroupSortByType
+pattern RGSBTLastModifiedTime = ReportGroupSortByType' "LAST_MODIFIED_TIME"
+
+pattern RGSBTName :: ReportGroupSortByType
+pattern RGSBTName = ReportGroupSortByType' "NAME"
+
+{-# COMPLETE
+  RGSBTCreatedTime,
+  RGSBTLastModifiedTime,
+  RGSBTName,
+  ReportGroupSortByType' #-}
 
 instance FromText ReportGroupSortByType where
-    parser = takeLowerText >>= \case
-        "created_time" -> pure RGSBTCreatedTime
-        "last_modified_time" -> pure RGSBTLastModifiedTime
-        "name" -> pure RGSBTName
-        e -> fromTextError $ "Failure parsing ReportGroupSortByType from value: '" <> e
-           <> "'. Accepted values: created_time, last_modified_time, name"
+    parser = (ReportGroupSortByType' . mk) <$> takeText
 
 instance ToText ReportGroupSortByType where
-    toText = \case
-        RGSBTCreatedTime -> "CREATED_TIME"
-        RGSBTLastModifiedTime -> "LAST_MODIFIED_TIME"
-        RGSBTName -> "NAME"
+    toText (ReportGroupSortByType' ci) = original ci
+
+-- | Represents an enum of /known/ $ReportGroupSortByType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum ReportGroupSortByType where
+    toEnum i = case i of
+        0 -> RGSBTCreatedTime
+        1 -> RGSBTLastModifiedTime
+        2 -> RGSBTName
+        _ -> (error . showText) $ "Unknown index for ReportGroupSortByType: " <> toText i
+    fromEnum x = case x of
+        RGSBTCreatedTime -> 0
+        RGSBTLastModifiedTime -> 1
+        RGSBTName -> 2
+        ReportGroupSortByType' name -> (error . showText) $ "Unknown ReportGroupSortByType: " <> original name
+
+-- | Represents the bounds of /known/ $ReportGroupSortByType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded ReportGroupSortByType where
+    minBound = RGSBTCreatedTime
+    maxBound = RGSBTName
 
 instance Hashable     ReportGroupSortByType
 instance NFData       ReportGroupSortByType

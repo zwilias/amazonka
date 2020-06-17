@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,58 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.GameLift.Types.PolicyType where
+module Network.AWS.GameLift.Types.PolicyType (
+  PolicyType (
+    ..
+    , RuleBased
+    , TargetBased
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data PolicyType = RuleBased
-                | TargetBased
-                    deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                              Typeable, Generic)
+
+data PolicyType = PolicyType' (CI Text)
+                    deriving (Eq, Ord, Read, Show, Data, Typeable,
+                              Generic)
+
+pattern RuleBased :: PolicyType
+pattern RuleBased = PolicyType' "RuleBased"
+
+pattern TargetBased :: PolicyType
+pattern TargetBased = PolicyType' "TargetBased"
+
+{-# COMPLETE
+  RuleBased,
+  TargetBased,
+  PolicyType' #-}
 
 instance FromText PolicyType where
-    parser = takeLowerText >>= \case
-        "rulebased" -> pure RuleBased
-        "targetbased" -> pure TargetBased
-        e -> fromTextError $ "Failure parsing PolicyType from value: '" <> e
-           <> "'. Accepted values: rulebased, targetbased"
+    parser = (PolicyType' . mk) <$> takeText
 
 instance ToText PolicyType where
-    toText = \case
-        RuleBased -> "RuleBased"
-        TargetBased -> "TargetBased"
+    toText (PolicyType' ci) = original ci
+
+-- | Represents an enum of /known/ $PolicyType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum PolicyType where
+    toEnum i = case i of
+        0 -> RuleBased
+        1 -> TargetBased
+        _ -> (error . showText) $ "Unknown index for PolicyType: " <> toText i
+    fromEnum x = case x of
+        RuleBased -> 0
+        TargetBased -> 1
+        PolicyType' name -> (error . showText) $ "Unknown PolicyType: " <> original name
+
+-- | Represents the bounds of /known/ $PolicyType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded PolicyType where
+    minBound = RuleBased
+    maxBound = TargetBased
 
 instance Hashable     PolicyType
 instance NFData       PolicyType

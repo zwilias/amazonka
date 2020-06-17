@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,29 +16,65 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.CodeDeploy.Types.TagFilterType where
+module Network.AWS.CodeDeploy.Types.TagFilterType (
+  TagFilterType (
+    ..
+    , TFTKeyAndValue
+    , TFTKeyOnly
+    , TFTValueOnly
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data TagFilterType = TFTKeyAndValue
-                   | TFTKeyOnly
-                   | TFTValueOnly
-                       deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                 Typeable, Generic)
+
+data TagFilterType = TagFilterType' (CI Text)
+                       deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                 Generic)
+
+pattern TFTKeyAndValue :: TagFilterType
+pattern TFTKeyAndValue = TagFilterType' "KEY_AND_VALUE"
+
+pattern TFTKeyOnly :: TagFilterType
+pattern TFTKeyOnly = TagFilterType' "KEY_ONLY"
+
+pattern TFTValueOnly :: TagFilterType
+pattern TFTValueOnly = TagFilterType' "VALUE_ONLY"
+
+{-# COMPLETE
+  TFTKeyAndValue,
+  TFTKeyOnly,
+  TFTValueOnly,
+  TagFilterType' #-}
 
 instance FromText TagFilterType where
-    parser = takeLowerText >>= \case
-        "key_and_value" -> pure TFTKeyAndValue
-        "key_only" -> pure TFTKeyOnly
-        "value_only" -> pure TFTValueOnly
-        e -> fromTextError $ "Failure parsing TagFilterType from value: '" <> e
-           <> "'. Accepted values: key_and_value, key_only, value_only"
+    parser = (TagFilterType' . mk) <$> takeText
 
 instance ToText TagFilterType where
-    toText = \case
-        TFTKeyAndValue -> "KEY_AND_VALUE"
-        TFTKeyOnly -> "KEY_ONLY"
-        TFTValueOnly -> "VALUE_ONLY"
+    toText (TagFilterType' ci) = original ci
+
+-- | Represents an enum of /known/ $TagFilterType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum TagFilterType where
+    toEnum i = case i of
+        0 -> TFTKeyAndValue
+        1 -> TFTKeyOnly
+        2 -> TFTValueOnly
+        _ -> (error . showText) $ "Unknown index for TagFilterType: " <> toText i
+    fromEnum x = case x of
+        TFTKeyAndValue -> 0
+        TFTKeyOnly -> 1
+        TFTValueOnly -> 2
+        TagFilterType' name -> (error . showText) $ "Unknown TagFilterType: " <> original name
+
+-- | Represents the bounds of /known/ $TagFilterType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded TagFilterType where
+    minBound = TFTKeyAndValue
+    maxBound = TFTValueOnly
 
 instance Hashable     TagFilterType
 instance NFData       TagFilterType

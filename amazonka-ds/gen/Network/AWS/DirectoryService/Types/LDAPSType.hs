@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,23 +16,51 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.DirectoryService.Types.LDAPSType where
+module Network.AWS.DirectoryService.Types.LDAPSType (
+  LDAPSType (
+    ..
+    , Client
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data LDAPSType = Client
-                   deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                             Typeable, Generic)
+
+data LDAPSType = LDAPSType' (CI Text)
+                   deriving (Eq, Ord, Read, Show, Data, Typeable,
+                             Generic)
+
+pattern Client :: LDAPSType
+pattern Client = LDAPSType' "Client"
+
+{-# COMPLETE
+  Client,
+  LDAPSType' #-}
 
 instance FromText LDAPSType where
-    parser = takeLowerText >>= \case
-        "client" -> pure Client
-        e -> fromTextError $ "Failure parsing LDAPSType from value: '" <> e
-           <> "'. Accepted values: client"
+    parser = (LDAPSType' . mk) <$> takeText
 
 instance ToText LDAPSType where
-    toText = \case
-        Client -> "Client"
+    toText (LDAPSType' ci) = original ci
+
+-- | Represents an enum of /known/ $LDAPSType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum LDAPSType where
+    toEnum i = case i of
+        0 -> Client
+        _ -> (error . showText) $ "Unknown index for LDAPSType: " <> toText i
+    fromEnum x = case x of
+        Client -> 0
+        LDAPSType' name -> (error . showText) $ "Unknown LDAPSType: " <> original name
+
+-- | Represents the bounds of /known/ $LDAPSType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded LDAPSType where
+    minBound = Client
+    maxBound = Client
 
 instance Hashable     LDAPSType
 instance NFData       LDAPSType

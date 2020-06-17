@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,29 +16,65 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.IoTAnalytics.Types.DatastoreStatus where
+module Network.AWS.IoTAnalytics.Types.DatastoreStatus (
+  DatastoreStatus (
+    ..
+    , DSActive
+    , DSCreating
+    , DSDeleting
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data DatastoreStatus = DSActive
-                     | DSCreating
-                     | DSDeleting
-                         deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                   Typeable, Generic)
+
+data DatastoreStatus = DatastoreStatus' (CI Text)
+                         deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                   Generic)
+
+pattern DSActive :: DatastoreStatus
+pattern DSActive = DatastoreStatus' "ACTIVE"
+
+pattern DSCreating :: DatastoreStatus
+pattern DSCreating = DatastoreStatus' "CREATING"
+
+pattern DSDeleting :: DatastoreStatus
+pattern DSDeleting = DatastoreStatus' "DELETING"
+
+{-# COMPLETE
+  DSActive,
+  DSCreating,
+  DSDeleting,
+  DatastoreStatus' #-}
 
 instance FromText DatastoreStatus where
-    parser = takeLowerText >>= \case
-        "active" -> pure DSActive
-        "creating" -> pure DSCreating
-        "deleting" -> pure DSDeleting
-        e -> fromTextError $ "Failure parsing DatastoreStatus from value: '" <> e
-           <> "'. Accepted values: active, creating, deleting"
+    parser = (DatastoreStatus' . mk) <$> takeText
 
 instance ToText DatastoreStatus where
-    toText = \case
-        DSActive -> "ACTIVE"
-        DSCreating -> "CREATING"
-        DSDeleting -> "DELETING"
+    toText (DatastoreStatus' ci) = original ci
+
+-- | Represents an enum of /known/ $DatastoreStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum DatastoreStatus where
+    toEnum i = case i of
+        0 -> DSActive
+        1 -> DSCreating
+        2 -> DSDeleting
+        _ -> (error . showText) $ "Unknown index for DatastoreStatus: " <> toText i
+    fromEnum x = case x of
+        DSActive -> 0
+        DSCreating -> 1
+        DSDeleting -> 2
+        DatastoreStatus' name -> (error . showText) $ "Unknown DatastoreStatus: " <> original name
+
+-- | Represents the bounds of /known/ $DatastoreStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded DatastoreStatus where
+    minBound = DSActive
+    maxBound = DSDeleting
 
 instance Hashable     DatastoreStatus
 instance NFData       DatastoreStatus

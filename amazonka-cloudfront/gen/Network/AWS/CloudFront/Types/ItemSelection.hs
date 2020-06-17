@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,29 +16,65 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.CloudFront.Types.ItemSelection where
+module Network.AWS.CloudFront.Types.ItemSelection (
+  ItemSelection (
+    ..
+    , ISAll
+    , ISNone
+    , ISWhitelist
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data ItemSelection = ISAll
-                   | ISNone
-                   | ISWhitelist
-                       deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                 Typeable, Generic)
+
+data ItemSelection = ItemSelection' (CI Text)
+                       deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                 Generic)
+
+pattern ISAll :: ItemSelection
+pattern ISAll = ItemSelection' "all"
+
+pattern ISNone :: ItemSelection
+pattern ISNone = ItemSelection' "none"
+
+pattern ISWhitelist :: ItemSelection
+pattern ISWhitelist = ItemSelection' "whitelist"
+
+{-# COMPLETE
+  ISAll,
+  ISNone,
+  ISWhitelist,
+  ItemSelection' #-}
 
 instance FromText ItemSelection where
-    parser = takeLowerText >>= \case
-        "all" -> pure ISAll
-        "none" -> pure ISNone
-        "whitelist" -> pure ISWhitelist
-        e -> fromTextError $ "Failure parsing ItemSelection from value: '" <> e
-           <> "'. Accepted values: all, none, whitelist"
+    parser = (ItemSelection' . mk) <$> takeText
 
 instance ToText ItemSelection where
-    toText = \case
-        ISAll -> "all"
-        ISNone -> "none"
-        ISWhitelist -> "whitelist"
+    toText (ItemSelection' ci) = original ci
+
+-- | Represents an enum of /known/ $ItemSelection.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum ItemSelection where
+    toEnum i = case i of
+        0 -> ISAll
+        1 -> ISNone
+        2 -> ISWhitelist
+        _ -> (error . showText) $ "Unknown index for ItemSelection: " <> toText i
+    fromEnum x = case x of
+        ISAll -> 0
+        ISNone -> 1
+        ISWhitelist -> 2
+        ItemSelection' name -> (error . showText) $ "Unknown ItemSelection: " <> original name
+
+-- | Represents the bounds of /known/ $ItemSelection.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded ItemSelection where
+    minBound = ISAll
+    maxBound = ISWhitelist
 
 instance Hashable     ItemSelection
 instance NFData       ItemSelection

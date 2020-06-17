@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,58 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.WorkDocs.Types.UserFilterType where
+module Network.AWS.WorkDocs.Types.UserFilterType (
+  UserFilterType (
+    ..
+    , ActivePending
+    , All
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data UserFilterType = ActivePending
-                    | All
-                        deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                  Typeable, Generic)
+
+data UserFilterType = UserFilterType' (CI Text)
+                        deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                  Generic)
+
+pattern ActivePending :: UserFilterType
+pattern ActivePending = UserFilterType' "ACTIVE_PENDING"
+
+pattern All :: UserFilterType
+pattern All = UserFilterType' "ALL"
+
+{-# COMPLETE
+  ActivePending,
+  All,
+  UserFilterType' #-}
 
 instance FromText UserFilterType where
-    parser = takeLowerText >>= \case
-        "active_pending" -> pure ActivePending
-        "all" -> pure All
-        e -> fromTextError $ "Failure parsing UserFilterType from value: '" <> e
-           <> "'. Accepted values: active_pending, all"
+    parser = (UserFilterType' . mk) <$> takeText
 
 instance ToText UserFilterType where
-    toText = \case
-        ActivePending -> "ACTIVE_PENDING"
-        All -> "ALL"
+    toText (UserFilterType' ci) = original ci
+
+-- | Represents an enum of /known/ $UserFilterType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum UserFilterType where
+    toEnum i = case i of
+        0 -> ActivePending
+        1 -> All
+        _ -> (error . showText) $ "Unknown index for UserFilterType: " <> toText i
+    fromEnum x = case x of
+        ActivePending -> 0
+        All -> 1
+        UserFilterType' name -> (error . showText) $ "Unknown UserFilterType: " <> original name
+
+-- | Represents the bounds of /known/ $UserFilterType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded UserFilterType where
+    minBound = ActivePending
+    maxBound = All
 
 instance Hashable     UserFilterType
 instance NFData       UserFilterType

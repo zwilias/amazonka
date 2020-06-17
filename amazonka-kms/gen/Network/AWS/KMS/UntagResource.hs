@@ -38,6 +38,7 @@ module Network.AWS.KMS.UntagResource
     ) where
 
 import Network.AWS.KMS.Types
+import Network.AWS.KMS.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request

@@ -46,6 +46,7 @@ module Network.AWS.CloudHSMv2.DescribeBackups
     ) where
 
 import Network.AWS.CloudHSMv2.Types
+import Network.AWS.CloudHSMv2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude

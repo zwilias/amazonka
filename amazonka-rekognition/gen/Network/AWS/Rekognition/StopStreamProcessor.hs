@@ -39,6 +39,7 @@ module Network.AWS.Rekognition.StopStreamProcessor
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Rekognition.Types
+import Network.AWS.Rekognition.Types.Product
 import Network.AWS.Request
 import Network.AWS.Response
 

@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,29 +16,65 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.AppSync.Types.FieldLogLevel where
+module Network.AWS.AppSync.Types.FieldLogLevel (
+  FieldLogLevel (
+    ..
+    , FLLAll
+    , FLLError'
+    , FLLNone
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data FieldLogLevel = FLLAll
-                   | FLLError'
-                   | FLLNone
-                       deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                 Typeable, Generic)
+
+data FieldLogLevel = FieldLogLevel' (CI Text)
+                       deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                 Generic)
+
+pattern FLLAll :: FieldLogLevel
+pattern FLLAll = FieldLogLevel' "ALL"
+
+pattern FLLError' :: FieldLogLevel
+pattern FLLError' = FieldLogLevel' "ERROR"
+
+pattern FLLNone :: FieldLogLevel
+pattern FLLNone = FieldLogLevel' "NONE"
+
+{-# COMPLETE
+  FLLAll,
+  FLLError',
+  FLLNone,
+  FieldLogLevel' #-}
 
 instance FromText FieldLogLevel where
-    parser = takeLowerText >>= \case
-        "all" -> pure FLLAll
-        "error" -> pure FLLError'
-        "none" -> pure FLLNone
-        e -> fromTextError $ "Failure parsing FieldLogLevel from value: '" <> e
-           <> "'. Accepted values: all, error, none"
+    parser = (FieldLogLevel' . mk) <$> takeText
 
 instance ToText FieldLogLevel where
-    toText = \case
-        FLLAll -> "ALL"
-        FLLError' -> "ERROR"
-        FLLNone -> "NONE"
+    toText (FieldLogLevel' ci) = original ci
+
+-- | Represents an enum of /known/ $FieldLogLevel.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum FieldLogLevel where
+    toEnum i = case i of
+        0 -> FLLAll
+        1 -> FLLError'
+        2 -> FLLNone
+        _ -> (error . showText) $ "Unknown index for FieldLogLevel: " <> toText i
+    fromEnum x = case x of
+        FLLAll -> 0
+        FLLError' -> 1
+        FLLNone -> 2
+        FieldLogLevel' name -> (error . showText) $ "Unknown FieldLogLevel: " <> original name
+
+-- | Represents the bounds of /known/ $FieldLogLevel.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded FieldLogLevel where
+    minBound = FLLAll
+    maxBound = FLLNone
 
 instance Hashable     FieldLogLevel
 instance NFData       FieldLogLevel

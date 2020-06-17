@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,28 +16,60 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.MediaConvert.Types.AudioNormalizationPeakCalculation where
+module Network.AWS.MediaConvert.Types.AudioNormalizationPeakCalculation (
+  AudioNormalizationPeakCalculation (
+    ..
+    , ANPCNone
+    , ANPCTruePeak
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
+
 -- | If set to TRUE_PEAK, calculate and log the TruePeak for each output's audio track loudness.
-data AudioNormalizationPeakCalculation = ANPCNone
-                                       | ANPCTruePeak
-                                           deriving (Eq, Ord, Read, Show, Enum,
-                                                     Bounded, Data, Typeable,
-                                                     Generic)
+data AudioNormalizationPeakCalculation = AudioNormalizationPeakCalculation' (CI
+                                                                               Text)
+                                           deriving (Eq, Ord, Read, Show, Data,
+                                                     Typeable, Generic)
+
+pattern ANPCNone :: AudioNormalizationPeakCalculation
+pattern ANPCNone = AudioNormalizationPeakCalculation' "NONE"
+
+pattern ANPCTruePeak :: AudioNormalizationPeakCalculation
+pattern ANPCTruePeak = AudioNormalizationPeakCalculation' "TRUE_PEAK"
+
+{-# COMPLETE
+  ANPCNone,
+  ANPCTruePeak,
+  AudioNormalizationPeakCalculation' #-}
 
 instance FromText AudioNormalizationPeakCalculation where
-    parser = takeLowerText >>= \case
-        "none" -> pure ANPCNone
-        "true_peak" -> pure ANPCTruePeak
-        e -> fromTextError $ "Failure parsing AudioNormalizationPeakCalculation from value: '" <> e
-           <> "'. Accepted values: none, true_peak"
+    parser = (AudioNormalizationPeakCalculation' . mk) <$> takeText
 
 instance ToText AudioNormalizationPeakCalculation where
-    toText = \case
-        ANPCNone -> "NONE"
-        ANPCTruePeak -> "TRUE_PEAK"
+    toText (AudioNormalizationPeakCalculation' ci) = original ci
+
+-- | Represents an enum of /known/ $AudioNormalizationPeakCalculation.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum AudioNormalizationPeakCalculation where
+    toEnum i = case i of
+        0 -> ANPCNone
+        1 -> ANPCTruePeak
+        _ -> (error . showText) $ "Unknown index for AudioNormalizationPeakCalculation: " <> toText i
+    fromEnum x = case x of
+        ANPCNone -> 0
+        ANPCTruePeak -> 1
+        AudioNormalizationPeakCalculation' name -> (error . showText) $ "Unknown AudioNormalizationPeakCalculation: " <> original name
+
+-- | Represents the bounds of /known/ $AudioNormalizationPeakCalculation.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded AudioNormalizationPeakCalculation where
+    minBound = ANPCNone
+    maxBound = ANPCTruePeak
 
 instance Hashable     AudioNormalizationPeakCalculation
 instance NFData       AudioNormalizationPeakCalculation

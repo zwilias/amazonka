@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,27 +16,60 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.MediaConvert.Types.M2tsEbpAudioInterval where
+module Network.AWS.MediaConvert.Types.M2tsEbpAudioInterval (
+  M2tsEbpAudioInterval (
+    ..
+    , VideoAndFixedIntervals
+    , VideoInterval
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
+
 -- | When set to VIDEO_AND_FIXED_INTERVALS, audio EBP markers will be added to partitions 3 and 4. The interval between these additional markers will be fixed, and will be slightly shorter than the video EBP marker interval. When set to VIDEO_INTERVAL, these additional markers will not be inserted. Only applicable when EBP segmentation markers are is selected (segmentationMarkers is EBP or EBP_LEGACY).
-data M2tsEbpAudioInterval = VideoAndFixedIntervals
-                          | VideoInterval
-                              deriving (Eq, Ord, Read, Show, Enum, Bounded,
-                                        Data, Typeable, Generic)
+data M2tsEbpAudioInterval = M2tsEbpAudioInterval' (CI
+                                                     Text)
+                              deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                        Generic)
+
+pattern VideoAndFixedIntervals :: M2tsEbpAudioInterval
+pattern VideoAndFixedIntervals = M2tsEbpAudioInterval' "VIDEO_AND_FIXED_INTERVALS"
+
+pattern VideoInterval :: M2tsEbpAudioInterval
+pattern VideoInterval = M2tsEbpAudioInterval' "VIDEO_INTERVAL"
+
+{-# COMPLETE
+  VideoAndFixedIntervals,
+  VideoInterval,
+  M2tsEbpAudioInterval' #-}
 
 instance FromText M2tsEbpAudioInterval where
-    parser = takeLowerText >>= \case
-        "video_and_fixed_intervals" -> pure VideoAndFixedIntervals
-        "video_interval" -> pure VideoInterval
-        e -> fromTextError $ "Failure parsing M2tsEbpAudioInterval from value: '" <> e
-           <> "'. Accepted values: video_and_fixed_intervals, video_interval"
+    parser = (M2tsEbpAudioInterval' . mk) <$> takeText
 
 instance ToText M2tsEbpAudioInterval where
-    toText = \case
-        VideoAndFixedIntervals -> "VIDEO_AND_FIXED_INTERVALS"
-        VideoInterval -> "VIDEO_INTERVAL"
+    toText (M2tsEbpAudioInterval' ci) = original ci
+
+-- | Represents an enum of /known/ $M2tsEbpAudioInterval.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum M2tsEbpAudioInterval where
+    toEnum i = case i of
+        0 -> VideoAndFixedIntervals
+        1 -> VideoInterval
+        _ -> (error . showText) $ "Unknown index for M2tsEbpAudioInterval: " <> toText i
+    fromEnum x = case x of
+        VideoAndFixedIntervals -> 0
+        VideoInterval -> 1
+        M2tsEbpAudioInterval' name -> (error . showText) $ "Unknown M2tsEbpAudioInterval: " <> original name
+
+-- | Represents the bounds of /known/ $M2tsEbpAudioInterval.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded M2tsEbpAudioInterval where
+    minBound = VideoAndFixedIntervals
+    maxBound = VideoInterval
 
 instance Hashable     M2tsEbpAudioInterval
 instance NFData       M2tsEbpAudioInterval

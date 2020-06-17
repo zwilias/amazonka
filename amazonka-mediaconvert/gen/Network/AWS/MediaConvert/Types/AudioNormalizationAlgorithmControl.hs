@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,28 +16,60 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.MediaConvert.Types.AudioNormalizationAlgorithmControl where
+module Network.AWS.MediaConvert.Types.AudioNormalizationAlgorithmControl (
+  AudioNormalizationAlgorithmControl (
+    ..
+    , CorrectAudio
+    , MeasureOnly
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
+
 -- | When enabled the output audio is corrected using the chosen algorithm. If disabled, the audio will be measured but not adjusted.
-data AudioNormalizationAlgorithmControl = CorrectAudio
-                                        | MeasureOnly
-                                            deriving (Eq, Ord, Read, Show, Enum,
-                                                      Bounded, Data, Typeable,
-                                                      Generic)
+data AudioNormalizationAlgorithmControl = AudioNormalizationAlgorithmControl' (CI
+                                                                                 Text)
+                                            deriving (Eq, Ord, Read, Show, Data,
+                                                      Typeable, Generic)
+
+pattern CorrectAudio :: AudioNormalizationAlgorithmControl
+pattern CorrectAudio = AudioNormalizationAlgorithmControl' "CORRECT_AUDIO"
+
+pattern MeasureOnly :: AudioNormalizationAlgorithmControl
+pattern MeasureOnly = AudioNormalizationAlgorithmControl' "MEASURE_ONLY"
+
+{-# COMPLETE
+  CorrectAudio,
+  MeasureOnly,
+  AudioNormalizationAlgorithmControl' #-}
 
 instance FromText AudioNormalizationAlgorithmControl where
-    parser = takeLowerText >>= \case
-        "correct_audio" -> pure CorrectAudio
-        "measure_only" -> pure MeasureOnly
-        e -> fromTextError $ "Failure parsing AudioNormalizationAlgorithmControl from value: '" <> e
-           <> "'. Accepted values: correct_audio, measure_only"
+    parser = (AudioNormalizationAlgorithmControl' . mk) <$> takeText
 
 instance ToText AudioNormalizationAlgorithmControl where
-    toText = \case
-        CorrectAudio -> "CORRECT_AUDIO"
-        MeasureOnly -> "MEASURE_ONLY"
+    toText (AudioNormalizationAlgorithmControl' ci) = original ci
+
+-- | Represents an enum of /known/ $AudioNormalizationAlgorithmControl.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum AudioNormalizationAlgorithmControl where
+    toEnum i = case i of
+        0 -> CorrectAudio
+        1 -> MeasureOnly
+        _ -> (error . showText) $ "Unknown index for AudioNormalizationAlgorithmControl: " <> toText i
+    fromEnum x = case x of
+        CorrectAudio -> 0
+        MeasureOnly -> 1
+        AudioNormalizationAlgorithmControl' name -> (error . showText) $ "Unknown AudioNormalizationAlgorithmControl: " <> original name
+
+-- | Represents the bounds of /known/ $AudioNormalizationAlgorithmControl.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded AudioNormalizationAlgorithmControl where
+    minBound = CorrectAudio
+    maxBound = MeasureOnly
 
 instance Hashable     AudioNormalizationAlgorithmControl
 instance NFData       AudioNormalizationAlgorithmControl

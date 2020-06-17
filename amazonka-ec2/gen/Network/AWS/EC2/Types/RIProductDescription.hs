@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,33 +16,74 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.EC2.Types.RIProductDescription where
+module Network.AWS.EC2.Types.RIProductDescription (
+  RIProductDescription (
+    ..
+    , RIDLinuxUnix
+    , RIDLinuxUnixAmazonVPC
+    , RIDWindows
+    , RIDWindowsAmazonVPC
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.EC2.Internal
 import Network.AWS.Prelude
-  
-data RIProductDescription = RIDLinuxUnix
-                          | RIDLinuxUnixAmazonVPC
-                          | RIDWindows
-                          | RIDWindowsAmazonVPC
-                              deriving (Eq, Ord, Read, Show, Enum, Bounded,
-                                        Data, Typeable, Generic)
+
+data RIProductDescription = RIProductDescription' (CI
+                                                     Text)
+                              deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                        Generic)
+
+pattern RIDLinuxUnix :: RIProductDescription
+pattern RIDLinuxUnix = RIProductDescription' "Linux/UNIX"
+
+pattern RIDLinuxUnixAmazonVPC :: RIProductDescription
+pattern RIDLinuxUnixAmazonVPC = RIProductDescription' "Linux/UNIX (Amazon VPC)"
+
+pattern RIDWindows :: RIProductDescription
+pattern RIDWindows = RIProductDescription' "Windows"
+
+pattern RIDWindowsAmazonVPC :: RIProductDescription
+pattern RIDWindowsAmazonVPC = RIProductDescription' "Windows (Amazon VPC)"
+
+{-# COMPLETE
+  RIDLinuxUnix,
+  RIDLinuxUnixAmazonVPC,
+  RIDWindows,
+  RIDWindowsAmazonVPC,
+  RIProductDescription' #-}
 
 instance FromText RIProductDescription where
-    parser = takeLowerText >>= \case
-        "linux/unix" -> pure RIDLinuxUnix
-        "linux/unix (amazon vpc)" -> pure RIDLinuxUnixAmazonVPC
-        "windows" -> pure RIDWindows
-        "windows (amazon vpc)" -> pure RIDWindowsAmazonVPC
-        e -> fromTextError $ "Failure parsing RIProductDescription from value: '" <> e
-           <> "'. Accepted values: linux/unix, linux/unix (amazon vpc), windows, windows (amazon vpc)"
+    parser = (RIProductDescription' . mk) <$> takeText
 
 instance ToText RIProductDescription where
-    toText = \case
-        RIDLinuxUnix -> "Linux/UNIX"
-        RIDLinuxUnixAmazonVPC -> "Linux/UNIX (Amazon VPC)"
-        RIDWindows -> "Windows"
-        RIDWindowsAmazonVPC -> "Windows (Amazon VPC)"
+    toText (RIProductDescription' ci) = original ci
+
+-- | Represents an enum of /known/ $RIProductDescription.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum RIProductDescription where
+    toEnum i = case i of
+        0 -> RIDLinuxUnix
+        1 -> RIDLinuxUnixAmazonVPC
+        2 -> RIDWindows
+        3 -> RIDWindowsAmazonVPC
+        _ -> (error . showText) $ "Unknown index for RIProductDescription: " <> toText i
+    fromEnum x = case x of
+        RIDLinuxUnix -> 0
+        RIDLinuxUnixAmazonVPC -> 1
+        RIDWindows -> 2
+        RIDWindowsAmazonVPC -> 3
+        RIProductDescription' name -> (error . showText) $ "Unknown RIProductDescription: " <> original name
+
+-- | Represents the bounds of /known/ $RIProductDescription.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded RIProductDescription where
+    minBound = RIDLinuxUnix
+    maxBound = RIDWindowsAmazonVPC
 
 instance Hashable     RIProductDescription
 instance NFData       RIProductDescription

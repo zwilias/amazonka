@@ -41,6 +41,7 @@ module Network.AWS.DataPipeline.CreatePipeline
     ) where
 
 import Network.AWS.DataPipeline.Types
+import Network.AWS.DataPipeline.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request

@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,29 +16,65 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.IoT.Types.JobStatus where
+module Network.AWS.IoT.Types.JobStatus (
+  JobStatus (
+    ..
+    , JSCanceled
+    , JSCompleted
+    , JSInProgress
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data JobStatus = JSCanceled
-               | JSCompleted
-               | JSInProgress
-                   deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                             Typeable, Generic)
+
+data JobStatus = JobStatus' (CI Text)
+                   deriving (Eq, Ord, Read, Show, Data, Typeable,
+                             Generic)
+
+pattern JSCanceled :: JobStatus
+pattern JSCanceled = JobStatus' "CANCELED"
+
+pattern JSCompleted :: JobStatus
+pattern JSCompleted = JobStatus' "COMPLETED"
+
+pattern JSInProgress :: JobStatus
+pattern JSInProgress = JobStatus' "IN_PROGRESS"
+
+{-# COMPLETE
+  JSCanceled,
+  JSCompleted,
+  JSInProgress,
+  JobStatus' #-}
 
 instance FromText JobStatus where
-    parser = takeLowerText >>= \case
-        "canceled" -> pure JSCanceled
-        "completed" -> pure JSCompleted
-        "in_progress" -> pure JSInProgress
-        e -> fromTextError $ "Failure parsing JobStatus from value: '" <> e
-           <> "'. Accepted values: canceled, completed, in_progress"
+    parser = (JobStatus' . mk) <$> takeText
 
 instance ToText JobStatus where
-    toText = \case
-        JSCanceled -> "CANCELED"
-        JSCompleted -> "COMPLETED"
-        JSInProgress -> "IN_PROGRESS"
+    toText (JobStatus' ci) = original ci
+
+-- | Represents an enum of /known/ $JobStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum JobStatus where
+    toEnum i = case i of
+        0 -> JSCanceled
+        1 -> JSCompleted
+        2 -> JSInProgress
+        _ -> (error . showText) $ "Unknown index for JobStatus: " <> toText i
+    fromEnum x = case x of
+        JSCanceled -> 0
+        JSCompleted -> 1
+        JSInProgress -> 2
+        JobStatus' name -> (error . showText) $ "Unknown JobStatus: " <> original name
+
+-- | Represents the bounds of /known/ $JobStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded JobStatus where
+    minBound = JSCanceled
+    maxBound = JSInProgress
 
 instance Hashable     JobStatus
 instance NFData       JobStatus

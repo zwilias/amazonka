@@ -40,6 +40,7 @@ module Network.AWS.CognitoIdentity.DeleteIdentities
     ) where
 
 import Network.AWS.CognitoIdentity.Types
+import Network.AWS.CognitoIdentity.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request

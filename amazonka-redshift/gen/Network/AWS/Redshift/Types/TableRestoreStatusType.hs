@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,36 +16,81 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.Redshift.Types.TableRestoreStatusType where
+module Network.AWS.Redshift.Types.TableRestoreStatusType (
+  TableRestoreStatusType (
+    ..
+    , Canceled
+    , Failed
+    , InProgress
+    , Pending
+    , Succeeded
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
 import Network.AWS.Redshift.Internal
-  
-data TableRestoreStatusType = Canceled
-                            | Failed
-                            | InProgress
-                            | Pending
-                            | Succeeded
-                                deriving (Eq, Ord, Read, Show, Enum, Bounded,
-                                          Data, Typeable, Generic)
+
+data TableRestoreStatusType = TableRestoreStatusType' (CI
+                                                         Text)
+                                deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                          Generic)
+
+pattern Canceled :: TableRestoreStatusType
+pattern Canceled = TableRestoreStatusType' "CANCELED"
+
+pattern Failed :: TableRestoreStatusType
+pattern Failed = TableRestoreStatusType' "FAILED"
+
+pattern InProgress :: TableRestoreStatusType
+pattern InProgress = TableRestoreStatusType' "IN_PROGRESS"
+
+pattern Pending :: TableRestoreStatusType
+pattern Pending = TableRestoreStatusType' "PENDING"
+
+pattern Succeeded :: TableRestoreStatusType
+pattern Succeeded = TableRestoreStatusType' "SUCCEEDED"
+
+{-# COMPLETE
+  Canceled,
+  Failed,
+  InProgress,
+  Pending,
+  Succeeded,
+  TableRestoreStatusType' #-}
 
 instance FromText TableRestoreStatusType where
-    parser = takeLowerText >>= \case
-        "canceled" -> pure Canceled
-        "failed" -> pure Failed
-        "in_progress" -> pure InProgress
-        "pending" -> pure Pending
-        "succeeded" -> pure Succeeded
-        e -> fromTextError $ "Failure parsing TableRestoreStatusType from value: '" <> e
-           <> "'. Accepted values: canceled, failed, in_progress, pending, succeeded"
+    parser = (TableRestoreStatusType' . mk) <$> takeText
 
 instance ToText TableRestoreStatusType where
-    toText = \case
-        Canceled -> "CANCELED"
-        Failed -> "FAILED"
-        InProgress -> "IN_PROGRESS"
-        Pending -> "PENDING"
-        Succeeded -> "SUCCEEDED"
+    toText (TableRestoreStatusType' ci) = original ci
+
+-- | Represents an enum of /known/ $TableRestoreStatusType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum TableRestoreStatusType where
+    toEnum i = case i of
+        0 -> Canceled
+        1 -> Failed
+        2 -> InProgress
+        3 -> Pending
+        4 -> Succeeded
+        _ -> (error . showText) $ "Unknown index for TableRestoreStatusType: " <> toText i
+    fromEnum x = case x of
+        Canceled -> 0
+        Failed -> 1
+        InProgress -> 2
+        Pending -> 3
+        Succeeded -> 4
+        TableRestoreStatusType' name -> (error . showText) $ "Unknown TableRestoreStatusType: " <> original name
+
+-- | Represents the bounds of /known/ $TableRestoreStatusType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded TableRestoreStatusType where
+    minBound = Canceled
+    maxBound = Succeeded
 
 instance Hashable     TableRestoreStatusType
 instance NFData       TableRestoreStatusType

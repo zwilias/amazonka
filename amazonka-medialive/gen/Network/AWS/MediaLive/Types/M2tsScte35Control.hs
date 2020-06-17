@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,27 +16,59 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.MediaLive.Types.M2tsScte35Control where
+module Network.AWS.MediaLive.Types.M2tsScte35Control (
+  M2tsScte35Control (
+    ..
+    , MSCNone
+    , MSCPassthrough
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
+
 -- | Placeholder documentation for M2tsScte35Control
-data M2tsScte35Control = MSCNone
-                       | MSCPassthrough
-                           deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                     Typeable, Generic)
+data M2tsScte35Control = M2tsScte35Control' (CI Text)
+                           deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                     Generic)
+
+pattern MSCNone :: M2tsScte35Control
+pattern MSCNone = M2tsScte35Control' "NONE"
+
+pattern MSCPassthrough :: M2tsScte35Control
+pattern MSCPassthrough = M2tsScte35Control' "PASSTHROUGH"
+
+{-# COMPLETE
+  MSCNone,
+  MSCPassthrough,
+  M2tsScte35Control' #-}
 
 instance FromText M2tsScte35Control where
-    parser = takeLowerText >>= \case
-        "none" -> pure MSCNone
-        "passthrough" -> pure MSCPassthrough
-        e -> fromTextError $ "Failure parsing M2tsScte35Control from value: '" <> e
-           <> "'. Accepted values: none, passthrough"
+    parser = (M2tsScte35Control' . mk) <$> takeText
 
 instance ToText M2tsScte35Control where
-    toText = \case
-        MSCNone -> "NONE"
-        MSCPassthrough -> "PASSTHROUGH"
+    toText (M2tsScte35Control' ci) = original ci
+
+-- | Represents an enum of /known/ $M2tsScte35Control.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum M2tsScte35Control where
+    toEnum i = case i of
+        0 -> MSCNone
+        1 -> MSCPassthrough
+        _ -> (error . showText) $ "Unknown index for M2tsScte35Control: " <> toText i
+    fromEnum x = case x of
+        MSCNone -> 0
+        MSCPassthrough -> 1
+        M2tsScte35Control' name -> (error . showText) $ "Unknown M2tsScte35Control: " <> original name
+
+-- | Represents the bounds of /known/ $M2tsScte35Control.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded M2tsScte35Control where
+    minBound = MSCNone
+    maxBound = MSCPassthrough
 
 instance Hashable     M2tsScte35Control
 instance NFData       M2tsScte35Control

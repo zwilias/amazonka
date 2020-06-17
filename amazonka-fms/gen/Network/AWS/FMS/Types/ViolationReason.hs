@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,29 +16,65 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.FMS.Types.ViolationReason where
+module Network.AWS.FMS.Types.ViolationReason (
+  ViolationReason (
+    ..
+    , ResourceIncorrectWebACL
+    , ResourceMissingWebACL
+    , WebACLMissingRuleGroup
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data ViolationReason = ResourceIncorrectWebACL
-                     | ResourceMissingWebACL
-                     | WebACLMissingRuleGroup
-                         deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                   Typeable, Generic)
+
+data ViolationReason = ViolationReason' (CI Text)
+                         deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                   Generic)
+
+pattern ResourceIncorrectWebACL :: ViolationReason
+pattern ResourceIncorrectWebACL = ViolationReason' "RESOURCE_INCORRECT_WEB_ACL"
+
+pattern ResourceMissingWebACL :: ViolationReason
+pattern ResourceMissingWebACL = ViolationReason' "RESOURCE_MISSING_WEB_ACL"
+
+pattern WebACLMissingRuleGroup :: ViolationReason
+pattern WebACLMissingRuleGroup = ViolationReason' "WEB_ACL_MISSING_RULE_GROUP"
+
+{-# COMPLETE
+  ResourceIncorrectWebACL,
+  ResourceMissingWebACL,
+  WebACLMissingRuleGroup,
+  ViolationReason' #-}
 
 instance FromText ViolationReason where
-    parser = takeLowerText >>= \case
-        "resource_incorrect_web_acl" -> pure ResourceIncorrectWebACL
-        "resource_missing_web_acl" -> pure ResourceMissingWebACL
-        "web_acl_missing_rule_group" -> pure WebACLMissingRuleGroup
-        e -> fromTextError $ "Failure parsing ViolationReason from value: '" <> e
-           <> "'. Accepted values: resource_incorrect_web_acl, resource_missing_web_acl, web_acl_missing_rule_group"
+    parser = (ViolationReason' . mk) <$> takeText
 
 instance ToText ViolationReason where
-    toText = \case
-        ResourceIncorrectWebACL -> "RESOURCE_INCORRECT_WEB_ACL"
-        ResourceMissingWebACL -> "RESOURCE_MISSING_WEB_ACL"
-        WebACLMissingRuleGroup -> "WEB_ACL_MISSING_RULE_GROUP"
+    toText (ViolationReason' ci) = original ci
+
+-- | Represents an enum of /known/ $ViolationReason.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum ViolationReason where
+    toEnum i = case i of
+        0 -> ResourceIncorrectWebACL
+        1 -> ResourceMissingWebACL
+        2 -> WebACLMissingRuleGroup
+        _ -> (error . showText) $ "Unknown index for ViolationReason: " <> toText i
+    fromEnum x = case x of
+        ResourceIncorrectWebACL -> 0
+        ResourceMissingWebACL -> 1
+        WebACLMissingRuleGroup -> 2
+        ViolationReason' name -> (error . showText) $ "Unknown ViolationReason: " <> original name
+
+-- | Represents the bounds of /known/ $ViolationReason.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded ViolationReason where
+    minBound = ResourceIncorrectWebACL
+    maxBound = WebACLMissingRuleGroup
 
 instance Hashable     ViolationReason
 instance NFData       ViolationReason

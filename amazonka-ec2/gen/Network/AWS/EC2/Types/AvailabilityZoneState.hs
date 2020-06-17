@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,33 +16,74 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.EC2.Types.AvailabilityZoneState where
+module Network.AWS.EC2.Types.AvailabilityZoneState (
+  AvailabilityZoneState (
+    ..
+    , AZSAvailable
+    , AZSImpaired
+    , AZSInformation
+    , AZSUnavailable
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.EC2.Internal
 import Network.AWS.Prelude
-  
-data AvailabilityZoneState = AZSAvailable
-                           | AZSImpaired
-                           | AZSInformation
-                           | AZSUnavailable
-                               deriving (Eq, Ord, Read, Show, Enum, Bounded,
-                                         Data, Typeable, Generic)
+
+data AvailabilityZoneState = AvailabilityZoneState' (CI
+                                                       Text)
+                               deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                         Generic)
+
+pattern AZSAvailable :: AvailabilityZoneState
+pattern AZSAvailable = AvailabilityZoneState' "available"
+
+pattern AZSImpaired :: AvailabilityZoneState
+pattern AZSImpaired = AvailabilityZoneState' "impaired"
+
+pattern AZSInformation :: AvailabilityZoneState
+pattern AZSInformation = AvailabilityZoneState' "information"
+
+pattern AZSUnavailable :: AvailabilityZoneState
+pattern AZSUnavailable = AvailabilityZoneState' "unavailable"
+
+{-# COMPLETE
+  AZSAvailable,
+  AZSImpaired,
+  AZSInformation,
+  AZSUnavailable,
+  AvailabilityZoneState' #-}
 
 instance FromText AvailabilityZoneState where
-    parser = takeLowerText >>= \case
-        "available" -> pure AZSAvailable
-        "impaired" -> pure AZSImpaired
-        "information" -> pure AZSInformation
-        "unavailable" -> pure AZSUnavailable
-        e -> fromTextError $ "Failure parsing AvailabilityZoneState from value: '" <> e
-           <> "'. Accepted values: available, impaired, information, unavailable"
+    parser = (AvailabilityZoneState' . mk) <$> takeText
 
 instance ToText AvailabilityZoneState where
-    toText = \case
-        AZSAvailable -> "available"
-        AZSImpaired -> "impaired"
-        AZSInformation -> "information"
-        AZSUnavailable -> "unavailable"
+    toText (AvailabilityZoneState' ci) = original ci
+
+-- | Represents an enum of /known/ $AvailabilityZoneState.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum AvailabilityZoneState where
+    toEnum i = case i of
+        0 -> AZSAvailable
+        1 -> AZSImpaired
+        2 -> AZSInformation
+        3 -> AZSUnavailable
+        _ -> (error . showText) $ "Unknown index for AvailabilityZoneState: " <> toText i
+    fromEnum x = case x of
+        AZSAvailable -> 0
+        AZSImpaired -> 1
+        AZSInformation -> 2
+        AZSUnavailable -> 3
+        AvailabilityZoneState' name -> (error . showText) $ "Unknown AvailabilityZoneState: " <> original name
+
+-- | Represents the bounds of /known/ $AvailabilityZoneState.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded AvailabilityZoneState where
+    minBound = AZSAvailable
+    maxBound = AZSUnavailable
 
 instance Hashable     AvailabilityZoneState
 instance NFData       AvailabilityZoneState

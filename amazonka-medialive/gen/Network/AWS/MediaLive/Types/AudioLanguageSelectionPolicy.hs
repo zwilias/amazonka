@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,28 +16,60 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.MediaLive.Types.AudioLanguageSelectionPolicy where
+module Network.AWS.MediaLive.Types.AudioLanguageSelectionPolicy (
+  AudioLanguageSelectionPolicy (
+    ..
+    , Loose
+    , Strict
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
+
 -- | Placeholder documentation for AudioLanguageSelectionPolicy
-data AudioLanguageSelectionPolicy = Loose
-                                  | Strict
-                                      deriving (Eq, Ord, Read, Show, Enum,
-                                                Bounded, Data, Typeable,
-                                                Generic)
+data AudioLanguageSelectionPolicy = AudioLanguageSelectionPolicy' (CI
+                                                                     Text)
+                                      deriving (Eq, Ord, Read, Show, Data,
+                                                Typeable, Generic)
+
+pattern Loose :: AudioLanguageSelectionPolicy
+pattern Loose = AudioLanguageSelectionPolicy' "LOOSE"
+
+pattern Strict :: AudioLanguageSelectionPolicy
+pattern Strict = AudioLanguageSelectionPolicy' "STRICT"
+
+{-# COMPLETE
+  Loose,
+  Strict,
+  AudioLanguageSelectionPolicy' #-}
 
 instance FromText AudioLanguageSelectionPolicy where
-    parser = takeLowerText >>= \case
-        "loose" -> pure Loose
-        "strict" -> pure Strict
-        e -> fromTextError $ "Failure parsing AudioLanguageSelectionPolicy from value: '" <> e
-           <> "'. Accepted values: loose, strict"
+    parser = (AudioLanguageSelectionPolicy' . mk) <$> takeText
 
 instance ToText AudioLanguageSelectionPolicy where
-    toText = \case
-        Loose -> "LOOSE"
-        Strict -> "STRICT"
+    toText (AudioLanguageSelectionPolicy' ci) = original ci
+
+-- | Represents an enum of /known/ $AudioLanguageSelectionPolicy.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum AudioLanguageSelectionPolicy where
+    toEnum i = case i of
+        0 -> Loose
+        1 -> Strict
+        _ -> (error . showText) $ "Unknown index for AudioLanguageSelectionPolicy: " <> toText i
+    fromEnum x = case x of
+        Loose -> 0
+        Strict -> 1
+        AudioLanguageSelectionPolicy' name -> (error . showText) $ "Unknown AudioLanguageSelectionPolicy: " <> original name
+
+-- | Represents the bounds of /known/ $AudioLanguageSelectionPolicy.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded AudioLanguageSelectionPolicy where
+    minBound = Loose
+    maxBound = Strict
 
 instance Hashable     AudioLanguageSelectionPolicy
 instance NFData       AudioLanguageSelectionPolicy

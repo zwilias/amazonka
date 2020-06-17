@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,33 +16,74 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.MediaLive.Types.InputSecurityGroupState where
+module Network.AWS.MediaLive.Types.InputSecurityGroupState (
+  InputSecurityGroupState (
+    ..
+    , ISGSDeleted
+    , ISGSIdle
+    , ISGSInUse
+    , ISGSUpdating
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
+
 -- | Placeholder documentation for InputSecurityGroupState
-data InputSecurityGroupState = ISGSDeleted
-                             | ISGSIdle
-                             | ISGSInUse
-                             | ISGSUpdating
-                                 deriving (Eq, Ord, Read, Show, Enum, Bounded,
-                                           Data, Typeable, Generic)
+data InputSecurityGroupState = InputSecurityGroupState' (CI
+                                                           Text)
+                                 deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                           Generic)
+
+pattern ISGSDeleted :: InputSecurityGroupState
+pattern ISGSDeleted = InputSecurityGroupState' "DELETED"
+
+pattern ISGSIdle :: InputSecurityGroupState
+pattern ISGSIdle = InputSecurityGroupState' "IDLE"
+
+pattern ISGSInUse :: InputSecurityGroupState
+pattern ISGSInUse = InputSecurityGroupState' "IN_USE"
+
+pattern ISGSUpdating :: InputSecurityGroupState
+pattern ISGSUpdating = InputSecurityGroupState' "UPDATING"
+
+{-# COMPLETE
+  ISGSDeleted,
+  ISGSIdle,
+  ISGSInUse,
+  ISGSUpdating,
+  InputSecurityGroupState' #-}
 
 instance FromText InputSecurityGroupState where
-    parser = takeLowerText >>= \case
-        "deleted" -> pure ISGSDeleted
-        "idle" -> pure ISGSIdle
-        "in_use" -> pure ISGSInUse
-        "updating" -> pure ISGSUpdating
-        e -> fromTextError $ "Failure parsing InputSecurityGroupState from value: '" <> e
-           <> "'. Accepted values: deleted, idle, in_use, updating"
+    parser = (InputSecurityGroupState' . mk) <$> takeText
 
 instance ToText InputSecurityGroupState where
-    toText = \case
-        ISGSDeleted -> "DELETED"
-        ISGSIdle -> "IDLE"
-        ISGSInUse -> "IN_USE"
-        ISGSUpdating -> "UPDATING"
+    toText (InputSecurityGroupState' ci) = original ci
+
+-- | Represents an enum of /known/ $InputSecurityGroupState.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum InputSecurityGroupState where
+    toEnum i = case i of
+        0 -> ISGSDeleted
+        1 -> ISGSIdle
+        2 -> ISGSInUse
+        3 -> ISGSUpdating
+        _ -> (error . showText) $ "Unknown index for InputSecurityGroupState: " <> toText i
+    fromEnum x = case x of
+        ISGSDeleted -> 0
+        ISGSIdle -> 1
+        ISGSInUse -> 2
+        ISGSUpdating -> 3
+        InputSecurityGroupState' name -> (error . showText) $ "Unknown InputSecurityGroupState: " <> original name
+
+-- | Represents the bounds of /known/ $InputSecurityGroupState.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded InputSecurityGroupState where
+    minBound = ISGSDeleted
+    maxBound = ISGSUpdating
 
 instance Hashable     InputSecurityGroupState
 instance NFData       InputSecurityGroupState

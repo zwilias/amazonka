@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,36 +16,80 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.CloudFormation.Types.StackSetOperationResultStatus where
+module Network.AWS.CloudFormation.Types.StackSetOperationResultStatus (
+  StackSetOperationResultStatus (
+    ..
+    , Cancelled
+    , Failed
+    , Pending
+    , Running
+    , Succeeded
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data StackSetOperationResultStatus = Cancelled
-                                   | Failed
-                                   | Pending
-                                   | Running
-                                   | Succeeded
-                                       deriving (Eq, Ord, Read, Show, Enum,
-                                                 Bounded, Data, Typeable,
-                                                 Generic)
+
+data StackSetOperationResultStatus = StackSetOperationResultStatus' (CI
+                                                                       Text)
+                                       deriving (Eq, Ord, Read, Show, Data,
+                                                 Typeable, Generic)
+
+pattern Cancelled :: StackSetOperationResultStatus
+pattern Cancelled = StackSetOperationResultStatus' "CANCELLED"
+
+pattern Failed :: StackSetOperationResultStatus
+pattern Failed = StackSetOperationResultStatus' "FAILED"
+
+pattern Pending :: StackSetOperationResultStatus
+pattern Pending = StackSetOperationResultStatus' "PENDING"
+
+pattern Running :: StackSetOperationResultStatus
+pattern Running = StackSetOperationResultStatus' "RUNNING"
+
+pattern Succeeded :: StackSetOperationResultStatus
+pattern Succeeded = StackSetOperationResultStatus' "SUCCEEDED"
+
+{-# COMPLETE
+  Cancelled,
+  Failed,
+  Pending,
+  Running,
+  Succeeded,
+  StackSetOperationResultStatus' #-}
 
 instance FromText StackSetOperationResultStatus where
-    parser = takeLowerText >>= \case
-        "cancelled" -> pure Cancelled
-        "failed" -> pure Failed
-        "pending" -> pure Pending
-        "running" -> pure Running
-        "succeeded" -> pure Succeeded
-        e -> fromTextError $ "Failure parsing StackSetOperationResultStatus from value: '" <> e
-           <> "'. Accepted values: cancelled, failed, pending, running, succeeded"
+    parser = (StackSetOperationResultStatus' . mk) <$> takeText
 
 instance ToText StackSetOperationResultStatus where
-    toText = \case
-        Cancelled -> "CANCELLED"
-        Failed -> "FAILED"
-        Pending -> "PENDING"
-        Running -> "RUNNING"
-        Succeeded -> "SUCCEEDED"
+    toText (StackSetOperationResultStatus' ci) = original ci
+
+-- | Represents an enum of /known/ $StackSetOperationResultStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum StackSetOperationResultStatus where
+    toEnum i = case i of
+        0 -> Cancelled
+        1 -> Failed
+        2 -> Pending
+        3 -> Running
+        4 -> Succeeded
+        _ -> (error . showText) $ "Unknown index for StackSetOperationResultStatus: " <> toText i
+    fromEnum x = case x of
+        Cancelled -> 0
+        Failed -> 1
+        Pending -> 2
+        Running -> 3
+        Succeeded -> 4
+        StackSetOperationResultStatus' name -> (error . showText) $ "Unknown StackSetOperationResultStatus: " <> original name
+
+-- | Represents the bounds of /known/ $StackSetOperationResultStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded StackSetOperationResultStatus where
+    minBound = Cancelled
+    maxBound = Succeeded
 
 instance Hashable     StackSetOperationResultStatus
 instance NFData       StackSetOperationResultStatus

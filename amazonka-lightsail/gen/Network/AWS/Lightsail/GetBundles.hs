@@ -43,6 +43,7 @@ module Network.AWS.Lightsail.GetBundles
 
 import Network.AWS.Lens
 import Network.AWS.Lightsail.Types
+import Network.AWS.Lightsail.Types.Product
 import Network.AWS.Pager
 import Network.AWS.Prelude
 import Network.AWS.Request

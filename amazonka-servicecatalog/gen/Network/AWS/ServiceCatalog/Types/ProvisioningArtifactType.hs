@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,29 +16,66 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.ServiceCatalog.Types.ProvisioningArtifactType where
+module Network.AWS.ServiceCatalog.Types.ProvisioningArtifactType (
+  ProvisioningArtifactType (
+    ..
+    , PATCloudFormationTemplate
+    , PATMarketplaceAMI
+    , PATMarketplaceCar
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data ProvisioningArtifactType = PATCloudFormationTemplate
-                              | PATMarketplaceAMI
-                              | PATMarketplaceCar
-                                  deriving (Eq, Ord, Read, Show, Enum, Bounded,
-                                            Data, Typeable, Generic)
+
+data ProvisioningArtifactType = ProvisioningArtifactType' (CI
+                                                             Text)
+                                  deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                            Generic)
+
+pattern PATCloudFormationTemplate :: ProvisioningArtifactType
+pattern PATCloudFormationTemplate = ProvisioningArtifactType' "CLOUD_FORMATION_TEMPLATE"
+
+pattern PATMarketplaceAMI :: ProvisioningArtifactType
+pattern PATMarketplaceAMI = ProvisioningArtifactType' "MARKETPLACE_AMI"
+
+pattern PATMarketplaceCar :: ProvisioningArtifactType
+pattern PATMarketplaceCar = ProvisioningArtifactType' "MARKETPLACE_CAR"
+
+{-# COMPLETE
+  PATCloudFormationTemplate,
+  PATMarketplaceAMI,
+  PATMarketplaceCar,
+  ProvisioningArtifactType' #-}
 
 instance FromText ProvisioningArtifactType where
-    parser = takeLowerText >>= \case
-        "cloud_formation_template" -> pure PATCloudFormationTemplate
-        "marketplace_ami" -> pure PATMarketplaceAMI
-        "marketplace_car" -> pure PATMarketplaceCar
-        e -> fromTextError $ "Failure parsing ProvisioningArtifactType from value: '" <> e
-           <> "'. Accepted values: cloud_formation_template, marketplace_ami, marketplace_car"
+    parser = (ProvisioningArtifactType' . mk) <$> takeText
 
 instance ToText ProvisioningArtifactType where
-    toText = \case
-        PATCloudFormationTemplate -> "CLOUD_FORMATION_TEMPLATE"
-        PATMarketplaceAMI -> "MARKETPLACE_AMI"
-        PATMarketplaceCar -> "MARKETPLACE_CAR"
+    toText (ProvisioningArtifactType' ci) = original ci
+
+-- | Represents an enum of /known/ $ProvisioningArtifactType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum ProvisioningArtifactType where
+    toEnum i = case i of
+        0 -> PATCloudFormationTemplate
+        1 -> PATMarketplaceAMI
+        2 -> PATMarketplaceCar
+        _ -> (error . showText) $ "Unknown index for ProvisioningArtifactType: " <> toText i
+    fromEnum x = case x of
+        PATCloudFormationTemplate -> 0
+        PATMarketplaceAMI -> 1
+        PATMarketplaceCar -> 2
+        ProvisioningArtifactType' name -> (error . showText) $ "Unknown ProvisioningArtifactType: " <> original name
+
+-- | Represents the bounds of /known/ $ProvisioningArtifactType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded ProvisioningArtifactType where
+    minBound = PATCloudFormationTemplate
+    maxBound = PATMarketplaceCar
 
 instance Hashable     ProvisioningArtifactType
 instance NFData       ProvisioningArtifactType

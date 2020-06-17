@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,29 +16,65 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.CloudFormation.Types.AccountGateStatus where
+module Network.AWS.CloudFormation.Types.AccountGateStatus (
+  AccountGateStatus (
+    ..
+    , AGSFailed
+    , AGSSkipped
+    , AGSSucceeded
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data AccountGateStatus = AGSFailed
-                       | AGSSkipped
-                       | AGSSucceeded
-                           deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                     Typeable, Generic)
+
+data AccountGateStatus = AccountGateStatus' (CI Text)
+                           deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                     Generic)
+
+pattern AGSFailed :: AccountGateStatus
+pattern AGSFailed = AccountGateStatus' "FAILED"
+
+pattern AGSSkipped :: AccountGateStatus
+pattern AGSSkipped = AccountGateStatus' "SKIPPED"
+
+pattern AGSSucceeded :: AccountGateStatus
+pattern AGSSucceeded = AccountGateStatus' "SUCCEEDED"
+
+{-# COMPLETE
+  AGSFailed,
+  AGSSkipped,
+  AGSSucceeded,
+  AccountGateStatus' #-}
 
 instance FromText AccountGateStatus where
-    parser = takeLowerText >>= \case
-        "failed" -> pure AGSFailed
-        "skipped" -> pure AGSSkipped
-        "succeeded" -> pure AGSSucceeded
-        e -> fromTextError $ "Failure parsing AccountGateStatus from value: '" <> e
-           <> "'. Accepted values: failed, skipped, succeeded"
+    parser = (AccountGateStatus' . mk) <$> takeText
 
 instance ToText AccountGateStatus where
-    toText = \case
-        AGSFailed -> "FAILED"
-        AGSSkipped -> "SKIPPED"
-        AGSSucceeded -> "SUCCEEDED"
+    toText (AccountGateStatus' ci) = original ci
+
+-- | Represents an enum of /known/ $AccountGateStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum AccountGateStatus where
+    toEnum i = case i of
+        0 -> AGSFailed
+        1 -> AGSSkipped
+        2 -> AGSSucceeded
+        _ -> (error . showText) $ "Unknown index for AccountGateStatus: " <> toText i
+    fromEnum x = case x of
+        AGSFailed -> 0
+        AGSSkipped -> 1
+        AGSSucceeded -> 2
+        AccountGateStatus' name -> (error . showText) $ "Unknown AccountGateStatus: " <> original name
+
+-- | Represents the bounds of /known/ $AccountGateStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded AccountGateStatus where
+    minBound = AGSFailed
+    maxBound = AGSSucceeded
 
 instance Hashable     AccountGateStatus
 instance NFData       AccountGateStatus

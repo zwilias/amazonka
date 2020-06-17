@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,58 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.Batch.Types.JobDefinitionType where
+module Network.AWS.Batch.Types.JobDefinitionType (
+  JobDefinitionType (
+    ..
+    , Container
+    , Multinode
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data JobDefinitionType = Container
-                       | Multinode
-                           deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                     Typeable, Generic)
+
+data JobDefinitionType = JobDefinitionType' (CI Text)
+                           deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                     Generic)
+
+pattern Container :: JobDefinitionType
+pattern Container = JobDefinitionType' "container"
+
+pattern Multinode :: JobDefinitionType
+pattern Multinode = JobDefinitionType' "multinode"
+
+{-# COMPLETE
+  Container,
+  Multinode,
+  JobDefinitionType' #-}
 
 instance FromText JobDefinitionType where
-    parser = takeLowerText >>= \case
-        "container" -> pure Container
-        "multinode" -> pure Multinode
-        e -> fromTextError $ "Failure parsing JobDefinitionType from value: '" <> e
-           <> "'. Accepted values: container, multinode"
+    parser = (JobDefinitionType' . mk) <$> takeText
 
 instance ToText JobDefinitionType where
-    toText = \case
-        Container -> "container"
-        Multinode -> "multinode"
+    toText (JobDefinitionType' ci) = original ci
+
+-- | Represents an enum of /known/ $JobDefinitionType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum JobDefinitionType where
+    toEnum i = case i of
+        0 -> Container
+        1 -> Multinode
+        _ -> (error . showText) $ "Unknown index for JobDefinitionType: " <> toText i
+    fromEnum x = case x of
+        Container -> 0
+        Multinode -> 1
+        JobDefinitionType' name -> (error . showText) $ "Unknown JobDefinitionType: " <> original name
+
+-- | Represents the bounds of /known/ $JobDefinitionType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded JobDefinitionType where
+    minBound = Container
+    maxBound = Multinode
 
 instance Hashable     JobDefinitionType
 instance NFData       JobDefinitionType

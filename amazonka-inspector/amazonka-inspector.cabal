@@ -109,6 +109,7 @@ library
         , Network.AWS.Inspector.Types.InspectorEvent
         , Network.AWS.Inspector.Types.InspectorServiceAttributes
         , Network.AWS.Inspector.Types.Locale
+        , Network.AWS.Inspector.Types.Product
         , Network.AWS.Inspector.Types.ReportFileFormat
         , Network.AWS.Inspector.Types.ReportStatus
         , Network.AWS.Inspector.Types.ReportType
@@ -125,6 +126,7 @@ library
     build-depends:
           amazonka-core == 1.6.1.*
         , base          >= 4.7     && < 5
+        , case-insensitive
 
 test-suite amazonka-inspector-test
     type:              exitcode-stdio-1.0
@@ -148,6 +150,7 @@ test-suite amazonka-inspector-test
         , amazonka-inspector
         , base
         , bytestring
+        , case-insensitive
         , tasty
         , tasty-hunit
         , text

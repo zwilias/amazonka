@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,32 +16,72 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.MediaStore.Types.MethodName where
+module Network.AWS.MediaStore.Types.MethodName (
+  MethodName (
+    ..
+    , Delete
+    , Get
+    , Head
+    , Put
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data MethodName = Delete
-                | Get
-                | Head
-                | Put
-                    deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                              Typeable, Generic)
+
+data MethodName = MethodName' (CI Text)
+                    deriving (Eq, Ord, Read, Show, Data, Typeable,
+                              Generic)
+
+pattern Delete :: MethodName
+pattern Delete = MethodName' "DELETE"
+
+pattern Get :: MethodName
+pattern Get = MethodName' "GET"
+
+pattern Head :: MethodName
+pattern Head = MethodName' "HEAD"
+
+pattern Put :: MethodName
+pattern Put = MethodName' "PUT"
+
+{-# COMPLETE
+  Delete,
+  Get,
+  Head,
+  Put,
+  MethodName' #-}
 
 instance FromText MethodName where
-    parser = takeLowerText >>= \case
-        "delete" -> pure Delete
-        "get" -> pure Get
-        "head" -> pure Head
-        "put" -> pure Put
-        e -> fromTextError $ "Failure parsing MethodName from value: '" <> e
-           <> "'. Accepted values: delete, get, head, put"
+    parser = (MethodName' . mk) <$> takeText
 
 instance ToText MethodName where
-    toText = \case
-        Delete -> "DELETE"
-        Get -> "GET"
-        Head -> "HEAD"
-        Put -> "PUT"
+    toText (MethodName' ci) = original ci
+
+-- | Represents an enum of /known/ $MethodName.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum MethodName where
+    toEnum i = case i of
+        0 -> Delete
+        1 -> Get
+        2 -> Head
+        3 -> Put
+        _ -> (error . showText) $ "Unknown index for MethodName: " <> toText i
+    fromEnum x = case x of
+        Delete -> 0
+        Get -> 1
+        Head -> 2
+        Put -> 3
+        MethodName' name -> (error . showText) $ "Unknown MethodName: " <> original name
+
+-- | Represents the bounds of /known/ $MethodName.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded MethodName where
+    minBound = Delete
+    maxBound = Put
 
 instance Hashable     MethodName
 instance NFData       MethodName

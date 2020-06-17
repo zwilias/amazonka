@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,33 +16,73 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.MediaLive.Types.Eac3StereoDownmix where
+module Network.AWS.MediaLive.Types.Eac3StereoDownmix (
+  Eac3StereoDownmix (
+    ..
+    , DPL2
+    , LoRo
+    , LtRt
+    , NotIndicated
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
+
 -- | Placeholder documentation for Eac3StereoDownmix
-data Eac3StereoDownmix = DPL2
-                       | LoRo
-                       | LtRt
-                       | NotIndicated
-                           deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                     Typeable, Generic)
+data Eac3StereoDownmix = Eac3StereoDownmix' (CI Text)
+                           deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                     Generic)
+
+pattern DPL2 :: Eac3StereoDownmix
+pattern DPL2 = Eac3StereoDownmix' "DPL2"
+
+pattern LoRo :: Eac3StereoDownmix
+pattern LoRo = Eac3StereoDownmix' "LO_RO"
+
+pattern LtRt :: Eac3StereoDownmix
+pattern LtRt = Eac3StereoDownmix' "LT_RT"
+
+pattern NotIndicated :: Eac3StereoDownmix
+pattern NotIndicated = Eac3StereoDownmix' "NOT_INDICATED"
+
+{-# COMPLETE
+  DPL2,
+  LoRo,
+  LtRt,
+  NotIndicated,
+  Eac3StereoDownmix' #-}
 
 instance FromText Eac3StereoDownmix where
-    parser = takeLowerText >>= \case
-        "dpl2" -> pure DPL2
-        "lo_ro" -> pure LoRo
-        "lt_rt" -> pure LtRt
-        "not_indicated" -> pure NotIndicated
-        e -> fromTextError $ "Failure parsing Eac3StereoDownmix from value: '" <> e
-           <> "'. Accepted values: dpl2, lo_ro, lt_rt, not_indicated"
+    parser = (Eac3StereoDownmix' . mk) <$> takeText
 
 instance ToText Eac3StereoDownmix where
-    toText = \case
-        DPL2 -> "DPL2"
-        LoRo -> "LO_RO"
-        LtRt -> "LT_RT"
-        NotIndicated -> "NOT_INDICATED"
+    toText (Eac3StereoDownmix' ci) = original ci
+
+-- | Represents an enum of /known/ $Eac3StereoDownmix.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum Eac3StereoDownmix where
+    toEnum i = case i of
+        0 -> DPL2
+        1 -> LoRo
+        2 -> LtRt
+        3 -> NotIndicated
+        _ -> (error . showText) $ "Unknown index for Eac3StereoDownmix: " <> toText i
+    fromEnum x = case x of
+        DPL2 -> 0
+        LoRo -> 1
+        LtRt -> 2
+        NotIndicated -> 3
+        Eac3StereoDownmix' name -> (error . showText) $ "Unknown Eac3StereoDownmix: " <> original name
+
+-- | Represents the bounds of /known/ $Eac3StereoDownmix.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded Eac3StereoDownmix where
+    minBound = DPL2
+    maxBound = NotIndicated
 
 instance Hashable     Eac3StereoDownmix
 instance NFData       Eac3StereoDownmix

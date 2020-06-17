@@ -48,6 +48,7 @@ module Network.AWS.Organizations.ListHandshakesForAccount
 
 import Network.AWS.Lens
 import Network.AWS.Organizations.Types
+import Network.AWS.Organizations.Types.Product
 import Network.AWS.Pager
 import Network.AWS.Prelude
 import Network.AWS.Request

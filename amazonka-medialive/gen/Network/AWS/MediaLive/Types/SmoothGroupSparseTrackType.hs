@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,27 +16,60 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.MediaLive.Types.SmoothGroupSparseTrackType where
+module Network.AWS.MediaLive.Types.SmoothGroupSparseTrackType (
+  SmoothGroupSparseTrackType (
+    ..
+    , SGSTTNone
+    , SGSTTScte35
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
+
 -- | Placeholder documentation for SmoothGroupSparseTrackType
-data SmoothGroupSparseTrackType = SGSTTNone
-                                | SGSTTScte35
-                                    deriving (Eq, Ord, Read, Show, Enum,
-                                              Bounded, Data, Typeable, Generic)
+data SmoothGroupSparseTrackType = SmoothGroupSparseTrackType' (CI
+                                                                 Text)
+                                    deriving (Eq, Ord, Read, Show, Data,
+                                              Typeable, Generic)
+
+pattern SGSTTNone :: SmoothGroupSparseTrackType
+pattern SGSTTNone = SmoothGroupSparseTrackType' "NONE"
+
+pattern SGSTTScte35 :: SmoothGroupSparseTrackType
+pattern SGSTTScte35 = SmoothGroupSparseTrackType' "SCTE_35"
+
+{-# COMPLETE
+  SGSTTNone,
+  SGSTTScte35,
+  SmoothGroupSparseTrackType' #-}
 
 instance FromText SmoothGroupSparseTrackType where
-    parser = takeLowerText >>= \case
-        "none" -> pure SGSTTNone
-        "scte_35" -> pure SGSTTScte35
-        e -> fromTextError $ "Failure parsing SmoothGroupSparseTrackType from value: '" <> e
-           <> "'. Accepted values: none, scte_35"
+    parser = (SmoothGroupSparseTrackType' . mk) <$> takeText
 
 instance ToText SmoothGroupSparseTrackType where
-    toText = \case
-        SGSTTNone -> "NONE"
-        SGSTTScte35 -> "SCTE_35"
+    toText (SmoothGroupSparseTrackType' ci) = original ci
+
+-- | Represents an enum of /known/ $SmoothGroupSparseTrackType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum SmoothGroupSparseTrackType where
+    toEnum i = case i of
+        0 -> SGSTTNone
+        1 -> SGSTTScte35
+        _ -> (error . showText) $ "Unknown index for SmoothGroupSparseTrackType: " <> toText i
+    fromEnum x = case x of
+        SGSTTNone -> 0
+        SGSTTScte35 -> 1
+        SmoothGroupSparseTrackType' name -> (error . showText) $ "Unknown SmoothGroupSparseTrackType: " <> original name
+
+-- | Represents the bounds of /known/ $SmoothGroupSparseTrackType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded SmoothGroupSparseTrackType where
+    minBound = SGSTTNone
+    maxBound = SGSTTScte35
 
 instance Hashable     SmoothGroupSparseTrackType
 instance NFData       SmoothGroupSparseTrackType

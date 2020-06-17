@@ -62,6 +62,7 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.Translate.Types
+import Network.AWS.Translate.Types.Product
 
 -- | /See:/ 'translateText' smart constructor.
 data TranslateText = TranslateText'{_ttText :: !Text,

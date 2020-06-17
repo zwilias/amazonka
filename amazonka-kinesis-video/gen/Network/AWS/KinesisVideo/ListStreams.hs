@@ -41,6 +41,7 @@ module Network.AWS.KinesisVideo.ListStreams
     ) where
 
 import Network.AWS.KinesisVideo.Types
+import Network.AWS.KinesisVideo.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request

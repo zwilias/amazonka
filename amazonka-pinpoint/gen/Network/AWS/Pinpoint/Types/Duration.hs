@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,32 +16,72 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.Pinpoint.Types.Duration where
+module Network.AWS.Pinpoint.Types.Duration (
+  Duration (
+    ..
+    , Day14
+    , Day30
+    , Day7
+    , Hr24
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data Duration = Day14
-              | Day30
-              | Day7
-              | Hr24
-                  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                            Typeable, Generic)
+
+data Duration = Duration' (CI Text)
+                  deriving (Eq, Ord, Read, Show, Data, Typeable,
+                            Generic)
+
+pattern Day14 :: Duration
+pattern Day14 = Duration' "DAY_14"
+
+pattern Day30 :: Duration
+pattern Day30 = Duration' "DAY_30"
+
+pattern Day7 :: Duration
+pattern Day7 = Duration' "DAY_7"
+
+pattern Hr24 :: Duration
+pattern Hr24 = Duration' "HR_24"
+
+{-# COMPLETE
+  Day14,
+  Day30,
+  Day7,
+  Hr24,
+  Duration' #-}
 
 instance FromText Duration where
-    parser = takeLowerText >>= \case
-        "day_14" -> pure Day14
-        "day_30" -> pure Day30
-        "day_7" -> pure Day7
-        "hr_24" -> pure Hr24
-        e -> fromTextError $ "Failure parsing Duration from value: '" <> e
-           <> "'. Accepted values: day_14, day_30, day_7, hr_24"
+    parser = (Duration' . mk) <$> takeText
 
 instance ToText Duration where
-    toText = \case
-        Day14 -> "DAY_14"
-        Day30 -> "DAY_30"
-        Day7 -> "DAY_7"
-        Hr24 -> "HR_24"
+    toText (Duration' ci) = original ci
+
+-- | Represents an enum of /known/ $Duration.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum Duration where
+    toEnum i = case i of
+        0 -> Day14
+        1 -> Day30
+        2 -> Day7
+        3 -> Hr24
+        _ -> (error . showText) $ "Unknown index for Duration: " <> toText i
+    fromEnum x = case x of
+        Day14 -> 0
+        Day30 -> 1
+        Day7 -> 2
+        Hr24 -> 3
+        Duration' name -> (error . showText) $ "Unknown Duration: " <> original name
+
+-- | Represents the bounds of /known/ $Duration.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded Duration where
+    minBound = Day14
+    maxBound = Hr24
 
 instance Hashable     Duration
 instance NFData       Duration

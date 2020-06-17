@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,27 +16,60 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.MediaLive.Types.InputLossActionForHlsOut where
+module Network.AWS.MediaLive.Types.InputLossActionForHlsOut (
+  InputLossActionForHlsOut (
+    ..
+    , ILAFHOEmitOutput
+    , ILAFHOPauseOutput
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
+
 -- | Placeholder documentation for InputLossActionForHlsOut
-data InputLossActionForHlsOut = ILAFHOEmitOutput
-                              | ILAFHOPauseOutput
-                                  deriving (Eq, Ord, Read, Show, Enum, Bounded,
-                                            Data, Typeable, Generic)
+data InputLossActionForHlsOut = InputLossActionForHlsOut' (CI
+                                                             Text)
+                                  deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                            Generic)
+
+pattern ILAFHOEmitOutput :: InputLossActionForHlsOut
+pattern ILAFHOEmitOutput = InputLossActionForHlsOut' "EMIT_OUTPUT"
+
+pattern ILAFHOPauseOutput :: InputLossActionForHlsOut
+pattern ILAFHOPauseOutput = InputLossActionForHlsOut' "PAUSE_OUTPUT"
+
+{-# COMPLETE
+  ILAFHOEmitOutput,
+  ILAFHOPauseOutput,
+  InputLossActionForHlsOut' #-}
 
 instance FromText InputLossActionForHlsOut where
-    parser = takeLowerText >>= \case
-        "emit_output" -> pure ILAFHOEmitOutput
-        "pause_output" -> pure ILAFHOPauseOutput
-        e -> fromTextError $ "Failure parsing InputLossActionForHlsOut from value: '" <> e
-           <> "'. Accepted values: emit_output, pause_output"
+    parser = (InputLossActionForHlsOut' . mk) <$> takeText
 
 instance ToText InputLossActionForHlsOut where
-    toText = \case
-        ILAFHOEmitOutput -> "EMIT_OUTPUT"
-        ILAFHOPauseOutput -> "PAUSE_OUTPUT"
+    toText (InputLossActionForHlsOut' ci) = original ci
+
+-- | Represents an enum of /known/ $InputLossActionForHlsOut.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum InputLossActionForHlsOut where
+    toEnum i = case i of
+        0 -> ILAFHOEmitOutput
+        1 -> ILAFHOPauseOutput
+        _ -> (error . showText) $ "Unknown index for InputLossActionForHlsOut: " <> toText i
+    fromEnum x = case x of
+        ILAFHOEmitOutput -> 0
+        ILAFHOPauseOutput -> 1
+        InputLossActionForHlsOut' name -> (error . showText) $ "Unknown InputLossActionForHlsOut: " <> original name
+
+-- | Represents the bounds of /known/ $InputLossActionForHlsOut.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded InputLossActionForHlsOut where
+    minBound = ILAFHOEmitOutput
+    maxBound = ILAFHOPauseOutput
 
 instance Hashable     InputLossActionForHlsOut
 instance NFData       InputLossActionForHlsOut

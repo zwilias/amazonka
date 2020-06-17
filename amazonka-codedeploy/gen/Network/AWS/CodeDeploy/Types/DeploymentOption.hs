@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,58 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.CodeDeploy.Types.DeploymentOption where
+module Network.AWS.CodeDeploy.Types.DeploymentOption (
+  DeploymentOption (
+    ..
+    , WithTrafficControl
+    , WithoutTrafficControl
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data DeploymentOption = WithTrafficControl
-                      | WithoutTrafficControl
-                          deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                    Typeable, Generic)
+
+data DeploymentOption = DeploymentOption' (CI Text)
+                          deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                    Generic)
+
+pattern WithTrafficControl :: DeploymentOption
+pattern WithTrafficControl = DeploymentOption' "WITH_TRAFFIC_CONTROL"
+
+pattern WithoutTrafficControl :: DeploymentOption
+pattern WithoutTrafficControl = DeploymentOption' "WITHOUT_TRAFFIC_CONTROL"
+
+{-# COMPLETE
+  WithTrafficControl,
+  WithoutTrafficControl,
+  DeploymentOption' #-}
 
 instance FromText DeploymentOption where
-    parser = takeLowerText >>= \case
-        "with_traffic_control" -> pure WithTrafficControl
-        "without_traffic_control" -> pure WithoutTrafficControl
-        e -> fromTextError $ "Failure parsing DeploymentOption from value: '" <> e
-           <> "'. Accepted values: with_traffic_control, without_traffic_control"
+    parser = (DeploymentOption' . mk) <$> takeText
 
 instance ToText DeploymentOption where
-    toText = \case
-        WithTrafficControl -> "WITH_TRAFFIC_CONTROL"
-        WithoutTrafficControl -> "WITHOUT_TRAFFIC_CONTROL"
+    toText (DeploymentOption' ci) = original ci
+
+-- | Represents an enum of /known/ $DeploymentOption.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum DeploymentOption where
+    toEnum i = case i of
+        0 -> WithTrafficControl
+        1 -> WithoutTrafficControl
+        _ -> (error . showText) $ "Unknown index for DeploymentOption: " <> toText i
+    fromEnum x = case x of
+        WithTrafficControl -> 0
+        WithoutTrafficControl -> 1
+        DeploymentOption' name -> (error . showText) $ "Unknown DeploymentOption: " <> original name
+
+-- | Represents the bounds of /known/ $DeploymentOption.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded DeploymentOption where
+    minBound = WithTrafficControl
+    maxBound = WithoutTrafficControl
 
 instance Hashable     DeploymentOption
 instance NFData       DeploymentOption

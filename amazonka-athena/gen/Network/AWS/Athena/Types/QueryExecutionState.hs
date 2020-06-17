@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,35 +16,80 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.Athena.Types.QueryExecutionState where
+module Network.AWS.Athena.Types.QueryExecutionState (
+  QueryExecutionState (
+    ..
+    , Cancelled
+    , Failed
+    , Queued
+    , Running
+    , Succeeded
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data QueryExecutionState = Cancelled
-                         | Failed
-                         | Queued
-                         | Running
-                         | Succeeded
-                             deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                       Typeable, Generic)
+
+data QueryExecutionState = QueryExecutionState' (CI
+                                                   Text)
+                             deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                       Generic)
+
+pattern Cancelled :: QueryExecutionState
+pattern Cancelled = QueryExecutionState' "CANCELLED"
+
+pattern Failed :: QueryExecutionState
+pattern Failed = QueryExecutionState' "FAILED"
+
+pattern Queued :: QueryExecutionState
+pattern Queued = QueryExecutionState' "QUEUED"
+
+pattern Running :: QueryExecutionState
+pattern Running = QueryExecutionState' "RUNNING"
+
+pattern Succeeded :: QueryExecutionState
+pattern Succeeded = QueryExecutionState' "SUCCEEDED"
+
+{-# COMPLETE
+  Cancelled,
+  Failed,
+  Queued,
+  Running,
+  Succeeded,
+  QueryExecutionState' #-}
 
 instance FromText QueryExecutionState where
-    parser = takeLowerText >>= \case
-        "cancelled" -> pure Cancelled
-        "failed" -> pure Failed
-        "queued" -> pure Queued
-        "running" -> pure Running
-        "succeeded" -> pure Succeeded
-        e -> fromTextError $ "Failure parsing QueryExecutionState from value: '" <> e
-           <> "'. Accepted values: cancelled, failed, queued, running, succeeded"
+    parser = (QueryExecutionState' . mk) <$> takeText
 
 instance ToText QueryExecutionState where
-    toText = \case
-        Cancelled -> "CANCELLED"
-        Failed -> "FAILED"
-        Queued -> "QUEUED"
-        Running -> "RUNNING"
-        Succeeded -> "SUCCEEDED"
+    toText (QueryExecutionState' ci) = original ci
+
+-- | Represents an enum of /known/ $QueryExecutionState.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum QueryExecutionState where
+    toEnum i = case i of
+        0 -> Cancelled
+        1 -> Failed
+        2 -> Queued
+        3 -> Running
+        4 -> Succeeded
+        _ -> (error . showText) $ "Unknown index for QueryExecutionState: " <> toText i
+    fromEnum x = case x of
+        Cancelled -> 0
+        Failed -> 1
+        Queued -> 2
+        Running -> 3
+        Succeeded -> 4
+        QueryExecutionState' name -> (error . showText) $ "Unknown QueryExecutionState: " <> original name
+
+-- | Represents the bounds of /known/ $QueryExecutionState.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded QueryExecutionState where
+    minBound = Cancelled
+    maxBound = Succeeded
 
 instance Hashable     QueryExecutionState
 instance NFData       QueryExecutionState

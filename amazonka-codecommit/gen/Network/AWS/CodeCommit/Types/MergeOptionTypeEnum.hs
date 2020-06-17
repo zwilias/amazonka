@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,29 +16,66 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.CodeCommit.Types.MergeOptionTypeEnum where
+module Network.AWS.CodeCommit.Types.MergeOptionTypeEnum (
+  MergeOptionTypeEnum (
+    ..
+    , FastForwardMerge
+    , SquashMerge
+    , ThreeWayMerge
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data MergeOptionTypeEnum = FastForwardMerge
-                         | SquashMerge
-                         | ThreeWayMerge
-                             deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                       Typeable, Generic)
+
+data MergeOptionTypeEnum = MergeOptionTypeEnum' (CI
+                                                   Text)
+                             deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                       Generic)
+
+pattern FastForwardMerge :: MergeOptionTypeEnum
+pattern FastForwardMerge = MergeOptionTypeEnum' "FAST_FORWARD_MERGE"
+
+pattern SquashMerge :: MergeOptionTypeEnum
+pattern SquashMerge = MergeOptionTypeEnum' "SQUASH_MERGE"
+
+pattern ThreeWayMerge :: MergeOptionTypeEnum
+pattern ThreeWayMerge = MergeOptionTypeEnum' "THREE_WAY_MERGE"
+
+{-# COMPLETE
+  FastForwardMerge,
+  SquashMerge,
+  ThreeWayMerge,
+  MergeOptionTypeEnum' #-}
 
 instance FromText MergeOptionTypeEnum where
-    parser = takeLowerText >>= \case
-        "fast_forward_merge" -> pure FastForwardMerge
-        "squash_merge" -> pure SquashMerge
-        "three_way_merge" -> pure ThreeWayMerge
-        e -> fromTextError $ "Failure parsing MergeOptionTypeEnum from value: '" <> e
-           <> "'. Accepted values: fast_forward_merge, squash_merge, three_way_merge"
+    parser = (MergeOptionTypeEnum' . mk) <$> takeText
 
 instance ToText MergeOptionTypeEnum where
-    toText = \case
-        FastForwardMerge -> "FAST_FORWARD_MERGE"
-        SquashMerge -> "SQUASH_MERGE"
-        ThreeWayMerge -> "THREE_WAY_MERGE"
+    toText (MergeOptionTypeEnum' ci) = original ci
+
+-- | Represents an enum of /known/ $MergeOptionTypeEnum.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum MergeOptionTypeEnum where
+    toEnum i = case i of
+        0 -> FastForwardMerge
+        1 -> SquashMerge
+        2 -> ThreeWayMerge
+        _ -> (error . showText) $ "Unknown index for MergeOptionTypeEnum: " <> toText i
+    fromEnum x = case x of
+        FastForwardMerge -> 0
+        SquashMerge -> 1
+        ThreeWayMerge -> 2
+        MergeOptionTypeEnum' name -> (error . showText) $ "Unknown MergeOptionTypeEnum: " <> original name
+
+-- | Represents the bounds of /known/ $MergeOptionTypeEnum.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded MergeOptionTypeEnum where
+    minBound = FastForwardMerge
+    maxBound = ThreeWayMerge
 
 instance Hashable     MergeOptionTypeEnum
 instance NFData       MergeOptionTypeEnum

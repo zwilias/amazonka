@@ -42,6 +42,7 @@ module Network.AWS.DynamoDBStreams.DescribeStream
     ) where
 
 import Network.AWS.DynamoDBStreams.Types
+import Network.AWS.DynamoDBStreams.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request

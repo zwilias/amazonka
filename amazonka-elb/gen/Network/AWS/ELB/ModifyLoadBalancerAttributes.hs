@@ -54,6 +54,7 @@ module Network.AWS.ELB.ModifyLoadBalancerAttributes
     ) where
 
 import Network.AWS.ELB.Types
+import Network.AWS.ELB.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request

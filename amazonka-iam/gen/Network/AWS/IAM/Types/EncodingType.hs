@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,58 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.IAM.Types.EncodingType where
+module Network.AWS.IAM.Types.EncodingType (
+  EncodingType (
+    ..
+    , Pem
+    , SSH
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data EncodingType = Pem
-                  | SSH
-                      deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                Typeable, Generic)
+
+data EncodingType = EncodingType' (CI Text)
+                      deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                Generic)
+
+pattern Pem :: EncodingType
+pattern Pem = EncodingType' "PEM"
+
+pattern SSH :: EncodingType
+pattern SSH = EncodingType' "SSH"
+
+{-# COMPLETE
+  Pem,
+  SSH,
+  EncodingType' #-}
 
 instance FromText EncodingType where
-    parser = takeLowerText >>= \case
-        "pem" -> pure Pem
-        "ssh" -> pure SSH
-        e -> fromTextError $ "Failure parsing EncodingType from value: '" <> e
-           <> "'. Accepted values: pem, ssh"
+    parser = (EncodingType' . mk) <$> takeText
 
 instance ToText EncodingType where
-    toText = \case
-        Pem -> "PEM"
-        SSH -> "SSH"
+    toText (EncodingType' ci) = original ci
+
+-- | Represents an enum of /known/ $EncodingType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum EncodingType where
+    toEnum i = case i of
+        0 -> Pem
+        1 -> SSH
+        _ -> (error . showText) $ "Unknown index for EncodingType: " <> toText i
+    fromEnum x = case x of
+        Pem -> 0
+        SSH -> 1
+        EncodingType' name -> (error . showText) $ "Unknown EncodingType: " <> original name
+
+-- | Represents the bounds of /known/ $EncodingType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded EncodingType where
+    minBound = Pem
+    maxBound = SSH
 
 instance Hashable     EncodingType
 instance NFData       EncodingType

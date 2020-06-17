@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,29 +16,65 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.WorkDocs.Types.UserStatusType where
+module Network.AWS.WorkDocs.Types.UserStatusType (
+  UserStatusType (
+    ..
+    , Active
+    , Inactive
+    , Pending
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data UserStatusType = Active
-                    | Inactive
-                    | Pending
-                        deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                  Typeable, Generic)
+
+data UserStatusType = UserStatusType' (CI Text)
+                        deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                  Generic)
+
+pattern Active :: UserStatusType
+pattern Active = UserStatusType' "ACTIVE"
+
+pattern Inactive :: UserStatusType
+pattern Inactive = UserStatusType' "INACTIVE"
+
+pattern Pending :: UserStatusType
+pattern Pending = UserStatusType' "PENDING"
+
+{-# COMPLETE
+  Active,
+  Inactive,
+  Pending,
+  UserStatusType' #-}
 
 instance FromText UserStatusType where
-    parser = takeLowerText >>= \case
-        "active" -> pure Active
-        "inactive" -> pure Inactive
-        "pending" -> pure Pending
-        e -> fromTextError $ "Failure parsing UserStatusType from value: '" <> e
-           <> "'. Accepted values: active, inactive, pending"
+    parser = (UserStatusType' . mk) <$> takeText
 
 instance ToText UserStatusType where
-    toText = \case
-        Active -> "ACTIVE"
-        Inactive -> "INACTIVE"
-        Pending -> "PENDING"
+    toText (UserStatusType' ci) = original ci
+
+-- | Represents an enum of /known/ $UserStatusType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum UserStatusType where
+    toEnum i = case i of
+        0 -> Active
+        1 -> Inactive
+        2 -> Pending
+        _ -> (error . showText) $ "Unknown index for UserStatusType: " <> toText i
+    fromEnum x = case x of
+        Active -> 0
+        Inactive -> 1
+        Pending -> 2
+        UserStatusType' name -> (error . showText) $ "Unknown UserStatusType: " <> original name
+
+-- | Represents the bounds of /known/ $UserStatusType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded UserStatusType where
+    minBound = Active
+    maxBound = Pending
 
 instance Hashable     UserStatusType
 instance NFData       UserStatusType

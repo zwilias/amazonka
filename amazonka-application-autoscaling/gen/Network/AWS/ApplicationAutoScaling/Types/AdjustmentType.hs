@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,29 +16,65 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.ApplicationAutoScaling.Types.AdjustmentType where
+module Network.AWS.ApplicationAutoScaling.Types.AdjustmentType (
+  AdjustmentType (
+    ..
+    , ChangeInCapacity
+    , ExactCapacity
+    , PercentChangeInCapacity
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data AdjustmentType = ChangeInCapacity
-                    | ExactCapacity
-                    | PercentChangeInCapacity
-                        deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                  Typeable, Generic)
+
+data AdjustmentType = AdjustmentType' (CI Text)
+                        deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                  Generic)
+
+pattern ChangeInCapacity :: AdjustmentType
+pattern ChangeInCapacity = AdjustmentType' "ChangeInCapacity"
+
+pattern ExactCapacity :: AdjustmentType
+pattern ExactCapacity = AdjustmentType' "ExactCapacity"
+
+pattern PercentChangeInCapacity :: AdjustmentType
+pattern PercentChangeInCapacity = AdjustmentType' "PercentChangeInCapacity"
+
+{-# COMPLETE
+  ChangeInCapacity,
+  ExactCapacity,
+  PercentChangeInCapacity,
+  AdjustmentType' #-}
 
 instance FromText AdjustmentType where
-    parser = takeLowerText >>= \case
-        "changeincapacity" -> pure ChangeInCapacity
-        "exactcapacity" -> pure ExactCapacity
-        "percentchangeincapacity" -> pure PercentChangeInCapacity
-        e -> fromTextError $ "Failure parsing AdjustmentType from value: '" <> e
-           <> "'. Accepted values: changeincapacity, exactcapacity, percentchangeincapacity"
+    parser = (AdjustmentType' . mk) <$> takeText
 
 instance ToText AdjustmentType where
-    toText = \case
-        ChangeInCapacity -> "ChangeInCapacity"
-        ExactCapacity -> "ExactCapacity"
-        PercentChangeInCapacity -> "PercentChangeInCapacity"
+    toText (AdjustmentType' ci) = original ci
+
+-- | Represents an enum of /known/ $AdjustmentType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum AdjustmentType where
+    toEnum i = case i of
+        0 -> ChangeInCapacity
+        1 -> ExactCapacity
+        2 -> PercentChangeInCapacity
+        _ -> (error . showText) $ "Unknown index for AdjustmentType: " <> toText i
+    fromEnum x = case x of
+        ChangeInCapacity -> 0
+        ExactCapacity -> 1
+        PercentChangeInCapacity -> 2
+        AdjustmentType' name -> (error . showText) $ "Unknown AdjustmentType: " <> original name
+
+-- | Represents the bounds of /known/ $AdjustmentType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded AdjustmentType where
+    minBound = ChangeInCapacity
+    maxBound = PercentChangeInCapacity
 
 instance Hashable     AdjustmentType
 instance NFData       AdjustmentType

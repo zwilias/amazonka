@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,29 +16,65 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.CognitoIdentityProvider.Types.EventType where
+module Network.AWS.CognitoIdentityProvider.Types.EventType (
+  EventType (
+    ..
+    , ETForgotPassword
+    , ETSignIn
+    , ETSignUp
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data EventType = ETForgotPassword
-               | ETSignIn
-               | ETSignUp
-                   deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                             Typeable, Generic)
+
+data EventType = EventType' (CI Text)
+                   deriving (Eq, Ord, Read, Show, Data, Typeable,
+                             Generic)
+
+pattern ETForgotPassword :: EventType
+pattern ETForgotPassword = EventType' "ForgotPassword"
+
+pattern ETSignIn :: EventType
+pattern ETSignIn = EventType' "SignIn"
+
+pattern ETSignUp :: EventType
+pattern ETSignUp = EventType' "SignUp"
+
+{-# COMPLETE
+  ETForgotPassword,
+  ETSignIn,
+  ETSignUp,
+  EventType' #-}
 
 instance FromText EventType where
-    parser = takeLowerText >>= \case
-        "forgotpassword" -> pure ETForgotPassword
-        "signin" -> pure ETSignIn
-        "signup" -> pure ETSignUp
-        e -> fromTextError $ "Failure parsing EventType from value: '" <> e
-           <> "'. Accepted values: forgotpassword, signin, signup"
+    parser = (EventType' . mk) <$> takeText
 
 instance ToText EventType where
-    toText = \case
-        ETForgotPassword -> "ForgotPassword"
-        ETSignIn -> "SignIn"
-        ETSignUp -> "SignUp"
+    toText (EventType' ci) = original ci
+
+-- | Represents an enum of /known/ $EventType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum EventType where
+    toEnum i = case i of
+        0 -> ETForgotPassword
+        1 -> ETSignIn
+        2 -> ETSignUp
+        _ -> (error . showText) $ "Unknown index for EventType: " <> toText i
+    fromEnum x = case x of
+        ETForgotPassword -> 0
+        ETSignIn -> 1
+        ETSignUp -> 2
+        EventType' name -> (error . showText) $ "Unknown EventType: " <> original name
+
+-- | Represents the bounds of /known/ $EventType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded EventType where
+    minBound = ETForgotPassword
+    maxBound = ETSignUp
 
 instance Hashable     EventType
 instance NFData       EventType

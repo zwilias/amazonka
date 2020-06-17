@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,38 +16,86 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.DirectoryService.Types.IPRouteStatusMsg where
+module Network.AWS.DirectoryService.Types.IPRouteStatusMsg (
+  IPRouteStatusMsg (
+    ..
+    , AddFailed
+    , Added
+    , Adding
+    , RemoveFailed
+    , Removed
+    , Removing
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data IPRouteStatusMsg = AddFailed
-                      | Added
-                      | Adding
-                      | RemoveFailed
-                      | Removed
-                      | Removing
-                          deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                    Typeable, Generic)
+
+data IPRouteStatusMsg = IPRouteStatusMsg' (CI Text)
+                          deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                    Generic)
+
+pattern AddFailed :: IPRouteStatusMsg
+pattern AddFailed = IPRouteStatusMsg' "AddFailed"
+
+pattern Added :: IPRouteStatusMsg
+pattern Added = IPRouteStatusMsg' "Added"
+
+pattern Adding :: IPRouteStatusMsg
+pattern Adding = IPRouteStatusMsg' "Adding"
+
+pattern RemoveFailed :: IPRouteStatusMsg
+pattern RemoveFailed = IPRouteStatusMsg' "RemoveFailed"
+
+pattern Removed :: IPRouteStatusMsg
+pattern Removed = IPRouteStatusMsg' "Removed"
+
+pattern Removing :: IPRouteStatusMsg
+pattern Removing = IPRouteStatusMsg' "Removing"
+
+{-# COMPLETE
+  AddFailed,
+  Added,
+  Adding,
+  RemoveFailed,
+  Removed,
+  Removing,
+  IPRouteStatusMsg' #-}
 
 instance FromText IPRouteStatusMsg where
-    parser = takeLowerText >>= \case
-        "addfailed" -> pure AddFailed
-        "added" -> pure Added
-        "adding" -> pure Adding
-        "removefailed" -> pure RemoveFailed
-        "removed" -> pure Removed
-        "removing" -> pure Removing
-        e -> fromTextError $ "Failure parsing IPRouteStatusMsg from value: '" <> e
-           <> "'. Accepted values: addfailed, added, adding, removefailed, removed, removing"
+    parser = (IPRouteStatusMsg' . mk) <$> takeText
 
 instance ToText IPRouteStatusMsg where
-    toText = \case
-        AddFailed -> "AddFailed"
-        Added -> "Added"
-        Adding -> "Adding"
-        RemoveFailed -> "RemoveFailed"
-        Removed -> "Removed"
-        Removing -> "Removing"
+    toText (IPRouteStatusMsg' ci) = original ci
+
+-- | Represents an enum of /known/ $IPRouteStatusMsg.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum IPRouteStatusMsg where
+    toEnum i = case i of
+        0 -> AddFailed
+        1 -> Added
+        2 -> Adding
+        3 -> RemoveFailed
+        4 -> Removed
+        5 -> Removing
+        _ -> (error . showText) $ "Unknown index for IPRouteStatusMsg: " <> toText i
+    fromEnum x = case x of
+        AddFailed -> 0
+        Added -> 1
+        Adding -> 2
+        RemoveFailed -> 3
+        Removed -> 4
+        Removing -> 5
+        IPRouteStatusMsg' name -> (error . showText) $ "Unknown IPRouteStatusMsg: " <> original name
+
+-- | Represents the bounds of /known/ $IPRouteStatusMsg.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded IPRouteStatusMsg where
+    minBound = AddFailed
+    maxBound = Removing
 
 instance Hashable     IPRouteStatusMsg
 instance NFData       IPRouteStatusMsg

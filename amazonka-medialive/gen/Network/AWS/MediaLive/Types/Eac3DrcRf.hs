@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,39 +16,87 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.MediaLive.Types.Eac3DrcRf where
+module Network.AWS.MediaLive.Types.Eac3DrcRf (
+  Eac3DrcRf (
+    ..
+    , EDRFilmLight
+    , EDRFilmStandard
+    , EDRMusicLight
+    , EDRMusicStandard
+    , EDRNone
+    , EDRSpeech
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
+
 -- | Placeholder documentation for Eac3DrcRf
-data Eac3DrcRf = EDRFilmLight
-               | EDRFilmStandard
-               | EDRMusicLight
-               | EDRMusicStandard
-               | EDRNone
-               | EDRSpeech
-                   deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                             Typeable, Generic)
+data Eac3DrcRf = Eac3DrcRf' (CI Text)
+                   deriving (Eq, Ord, Read, Show, Data, Typeable,
+                             Generic)
+
+pattern EDRFilmLight :: Eac3DrcRf
+pattern EDRFilmLight = Eac3DrcRf' "FILM_LIGHT"
+
+pattern EDRFilmStandard :: Eac3DrcRf
+pattern EDRFilmStandard = Eac3DrcRf' "FILM_STANDARD"
+
+pattern EDRMusicLight :: Eac3DrcRf
+pattern EDRMusicLight = Eac3DrcRf' "MUSIC_LIGHT"
+
+pattern EDRMusicStandard :: Eac3DrcRf
+pattern EDRMusicStandard = Eac3DrcRf' "MUSIC_STANDARD"
+
+pattern EDRNone :: Eac3DrcRf
+pattern EDRNone = Eac3DrcRf' "NONE"
+
+pattern EDRSpeech :: Eac3DrcRf
+pattern EDRSpeech = Eac3DrcRf' "SPEECH"
+
+{-# COMPLETE
+  EDRFilmLight,
+  EDRFilmStandard,
+  EDRMusicLight,
+  EDRMusicStandard,
+  EDRNone,
+  EDRSpeech,
+  Eac3DrcRf' #-}
 
 instance FromText Eac3DrcRf where
-    parser = takeLowerText >>= \case
-        "film_light" -> pure EDRFilmLight
-        "film_standard" -> pure EDRFilmStandard
-        "music_light" -> pure EDRMusicLight
-        "music_standard" -> pure EDRMusicStandard
-        "none" -> pure EDRNone
-        "speech" -> pure EDRSpeech
-        e -> fromTextError $ "Failure parsing Eac3DrcRf from value: '" <> e
-           <> "'. Accepted values: film_light, film_standard, music_light, music_standard, none, speech"
+    parser = (Eac3DrcRf' . mk) <$> takeText
 
 instance ToText Eac3DrcRf where
-    toText = \case
-        EDRFilmLight -> "FILM_LIGHT"
-        EDRFilmStandard -> "FILM_STANDARD"
-        EDRMusicLight -> "MUSIC_LIGHT"
-        EDRMusicStandard -> "MUSIC_STANDARD"
-        EDRNone -> "NONE"
-        EDRSpeech -> "SPEECH"
+    toText (Eac3DrcRf' ci) = original ci
+
+-- | Represents an enum of /known/ $Eac3DrcRf.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum Eac3DrcRf where
+    toEnum i = case i of
+        0 -> EDRFilmLight
+        1 -> EDRFilmStandard
+        2 -> EDRMusicLight
+        3 -> EDRMusicStandard
+        4 -> EDRNone
+        5 -> EDRSpeech
+        _ -> (error . showText) $ "Unknown index for Eac3DrcRf: " <> toText i
+    fromEnum x = case x of
+        EDRFilmLight -> 0
+        EDRFilmStandard -> 1
+        EDRMusicLight -> 2
+        EDRMusicStandard -> 3
+        EDRNone -> 4
+        EDRSpeech -> 5
+        Eac3DrcRf' name -> (error . showText) $ "Unknown Eac3DrcRf: " <> original name
+
+-- | Represents the bounds of /known/ $Eac3DrcRf.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded Eac3DrcRf where
+    minBound = EDRFilmLight
+    maxBound = EDRSpeech
 
 instance Hashable     Eac3DrcRf
 instance NFData       Eac3DrcRf

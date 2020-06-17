@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,27 +16,60 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.MediaLive.Types.HlsProgramDateTime where
+module Network.AWS.MediaLive.Types.HlsProgramDateTime (
+  HlsProgramDateTime (
+    ..
+    , HPDTExclude
+    , HPDTInclude
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
+
 -- | Placeholder documentation for HlsProgramDateTime
-data HlsProgramDateTime = HPDTExclude
-                        | HPDTInclude
-                            deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                      Typeable, Generic)
+data HlsProgramDateTime = HlsProgramDateTime' (CI
+                                                 Text)
+                            deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                      Generic)
+
+pattern HPDTExclude :: HlsProgramDateTime
+pattern HPDTExclude = HlsProgramDateTime' "EXCLUDE"
+
+pattern HPDTInclude :: HlsProgramDateTime
+pattern HPDTInclude = HlsProgramDateTime' "INCLUDE"
+
+{-# COMPLETE
+  HPDTExclude,
+  HPDTInclude,
+  HlsProgramDateTime' #-}
 
 instance FromText HlsProgramDateTime where
-    parser = takeLowerText >>= \case
-        "exclude" -> pure HPDTExclude
-        "include" -> pure HPDTInclude
-        e -> fromTextError $ "Failure parsing HlsProgramDateTime from value: '" <> e
-           <> "'. Accepted values: exclude, include"
+    parser = (HlsProgramDateTime' . mk) <$> takeText
 
 instance ToText HlsProgramDateTime where
-    toText = \case
-        HPDTExclude -> "EXCLUDE"
-        HPDTInclude -> "INCLUDE"
+    toText (HlsProgramDateTime' ci) = original ci
+
+-- | Represents an enum of /known/ $HlsProgramDateTime.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum HlsProgramDateTime where
+    toEnum i = case i of
+        0 -> HPDTExclude
+        1 -> HPDTInclude
+        _ -> (error . showText) $ "Unknown index for HlsProgramDateTime: " <> toText i
+    fromEnum x = case x of
+        HPDTExclude -> 0
+        HPDTInclude -> 1
+        HlsProgramDateTime' name -> (error . showText) $ "Unknown HlsProgramDateTime: " <> original name
+
+-- | Represents the bounds of /known/ $HlsProgramDateTime.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded HlsProgramDateTime where
+    minBound = HPDTExclude
+    maxBound = HPDTInclude
 
 instance Hashable     HlsProgramDateTime
 instance NFData       HlsProgramDateTime

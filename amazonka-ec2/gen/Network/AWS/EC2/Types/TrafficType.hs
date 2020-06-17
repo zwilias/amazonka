@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,30 +16,66 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.EC2.Types.TrafficType where
+module Network.AWS.EC2.Types.TrafficType (
+  TrafficType (
+    ..
+    , TTAccept
+    , TTAll
+    , TTReject
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.EC2.Internal
 import Network.AWS.Prelude
-  
-data TrafficType = TTAccept
-                 | TTAll
-                 | TTReject
-                     deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                               Typeable, Generic)
+
+data TrafficType = TrafficType' (CI Text)
+                     deriving (Eq, Ord, Read, Show, Data, Typeable,
+                               Generic)
+
+pattern TTAccept :: TrafficType
+pattern TTAccept = TrafficType' "ACCEPT"
+
+pattern TTAll :: TrafficType
+pattern TTAll = TrafficType' "ALL"
+
+pattern TTReject :: TrafficType
+pattern TTReject = TrafficType' "REJECT"
+
+{-# COMPLETE
+  TTAccept,
+  TTAll,
+  TTReject,
+  TrafficType' #-}
 
 instance FromText TrafficType where
-    parser = takeLowerText >>= \case
-        "accept" -> pure TTAccept
-        "all" -> pure TTAll
-        "reject" -> pure TTReject
-        e -> fromTextError $ "Failure parsing TrafficType from value: '" <> e
-           <> "'. Accepted values: accept, all, reject"
+    parser = (TrafficType' . mk) <$> takeText
 
 instance ToText TrafficType where
-    toText = \case
-        TTAccept -> "ACCEPT"
-        TTAll -> "ALL"
-        TTReject -> "REJECT"
+    toText (TrafficType' ci) = original ci
+
+-- | Represents an enum of /known/ $TrafficType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum TrafficType where
+    toEnum i = case i of
+        0 -> TTAccept
+        1 -> TTAll
+        2 -> TTReject
+        _ -> (error . showText) $ "Unknown index for TrafficType: " <> toText i
+    fromEnum x = case x of
+        TTAccept -> 0
+        TTAll -> 1
+        TTReject -> 2
+        TrafficType' name -> (error . showText) $ "Unknown TrafficType: " <> original name
+
+-- | Represents the bounds of /known/ $TrafficType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded TrafficType where
+    minBound = TTAccept
+    maxBound = TTReject
 
 instance Hashable     TrafficType
 instance NFData       TrafficType

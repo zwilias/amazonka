@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,33 +16,73 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.DirectConnect.Types.DirectConnectGatewayAttachmentState where
+module Network.AWS.DirectConnect.Types.DirectConnectGatewayAttachmentState (
+  DirectConnectGatewayAttachmentState (
+    ..
+    , Attached
+    , Attaching
+    , Detached
+    , Detaching
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data DirectConnectGatewayAttachmentState = Attached
-                                         | Attaching
-                                         | Detached
-                                         | Detaching
+
+data DirectConnectGatewayAttachmentState = DirectConnectGatewayAttachmentState' (CI
+                                                                                   Text)
                                              deriving (Eq, Ord, Read, Show,
-                                                       Enum, Bounded, Data,
-                                                       Typeable, Generic)
+                                                       Data, Typeable, Generic)
+
+pattern Attached :: DirectConnectGatewayAttachmentState
+pattern Attached = DirectConnectGatewayAttachmentState' "attached"
+
+pattern Attaching :: DirectConnectGatewayAttachmentState
+pattern Attaching = DirectConnectGatewayAttachmentState' "attaching"
+
+pattern Detached :: DirectConnectGatewayAttachmentState
+pattern Detached = DirectConnectGatewayAttachmentState' "detached"
+
+pattern Detaching :: DirectConnectGatewayAttachmentState
+pattern Detaching = DirectConnectGatewayAttachmentState' "detaching"
+
+{-# COMPLETE
+  Attached,
+  Attaching,
+  Detached,
+  Detaching,
+  DirectConnectGatewayAttachmentState' #-}
 
 instance FromText DirectConnectGatewayAttachmentState where
-    parser = takeLowerText >>= \case
-        "attached" -> pure Attached
-        "attaching" -> pure Attaching
-        "detached" -> pure Detached
-        "detaching" -> pure Detaching
-        e -> fromTextError $ "Failure parsing DirectConnectGatewayAttachmentState from value: '" <> e
-           <> "'. Accepted values: attached, attaching, detached, detaching"
+    parser = (DirectConnectGatewayAttachmentState' . mk) <$> takeText
 
 instance ToText DirectConnectGatewayAttachmentState where
-    toText = \case
-        Attached -> "attached"
-        Attaching -> "attaching"
-        Detached -> "detached"
-        Detaching -> "detaching"
+    toText (DirectConnectGatewayAttachmentState' ci) = original ci
+
+-- | Represents an enum of /known/ $DirectConnectGatewayAttachmentState.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum DirectConnectGatewayAttachmentState where
+    toEnum i = case i of
+        0 -> Attached
+        1 -> Attaching
+        2 -> Detached
+        3 -> Detaching
+        _ -> (error . showText) $ "Unknown index for DirectConnectGatewayAttachmentState: " <> toText i
+    fromEnum x = case x of
+        Attached -> 0
+        Attaching -> 1
+        Detached -> 2
+        Detaching -> 3
+        DirectConnectGatewayAttachmentState' name -> (error . showText) $ "Unknown DirectConnectGatewayAttachmentState: " <> original name
+
+-- | Represents the bounds of /known/ $DirectConnectGatewayAttachmentState.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded DirectConnectGatewayAttachmentState where
+    minBound = Attached
+    maxBound = Detaching
 
 instance Hashable     DirectConnectGatewayAttachmentState
 instance NFData       DirectConnectGatewayAttachmentState

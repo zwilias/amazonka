@@ -43,6 +43,7 @@ module Network.AWS.MechanicalTurk.RejectAssignment
 
 import Network.AWS.Lens
 import Network.AWS.MechanicalTurk.Types
+import Network.AWS.MechanicalTurk.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response

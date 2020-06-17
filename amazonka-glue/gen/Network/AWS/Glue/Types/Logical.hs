@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,58 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.Glue.Types.Logical where
+module Network.AWS.Glue.Types.Logical (
+  Logical (
+    ..
+    , And
+    , Any
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data Logical = And
-             | Any
-                 deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                           Typeable, Generic)
+
+data Logical = Logical' (CI Text)
+                 deriving (Eq, Ord, Read, Show, Data, Typeable,
+                           Generic)
+
+pattern And :: Logical
+pattern And = Logical' "AND"
+
+pattern Any :: Logical
+pattern Any = Logical' "ANY"
+
+{-# COMPLETE
+  And,
+  Any,
+  Logical' #-}
 
 instance FromText Logical where
-    parser = takeLowerText >>= \case
-        "and" -> pure And
-        "any" -> pure Any
-        e -> fromTextError $ "Failure parsing Logical from value: '" <> e
-           <> "'. Accepted values: and, any"
+    parser = (Logical' . mk) <$> takeText
 
 instance ToText Logical where
-    toText = \case
-        And -> "AND"
-        Any -> "ANY"
+    toText (Logical' ci) = original ci
+
+-- | Represents an enum of /known/ $Logical.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum Logical where
+    toEnum i = case i of
+        0 -> And
+        1 -> Any
+        _ -> (error . showText) $ "Unknown index for Logical: " <> toText i
+    fromEnum x = case x of
+        And -> 0
+        Any -> 1
+        Logical' name -> (error . showText) $ "Unknown Logical: " <> original name
+
+-- | Represents the bounds of /known/ $Logical.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded Logical where
+    minBound = And
+    maxBound = Any
 
 instance Hashable     Logical
 instance NFData       Logical

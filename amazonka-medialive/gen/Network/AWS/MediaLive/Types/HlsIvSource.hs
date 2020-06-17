@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,27 +16,59 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.MediaLive.Types.HlsIvSource where
+module Network.AWS.MediaLive.Types.HlsIvSource (
+  HlsIvSource (
+    ..
+    , Explicit
+    , FollowsSegmentNumber
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
+
 -- | Placeholder documentation for HlsIvSource
-data HlsIvSource = Explicit
-                 | FollowsSegmentNumber
-                     deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                               Typeable, Generic)
+data HlsIvSource = HlsIvSource' (CI Text)
+                     deriving (Eq, Ord, Read, Show, Data, Typeable,
+                               Generic)
+
+pattern Explicit :: HlsIvSource
+pattern Explicit = HlsIvSource' "EXPLICIT"
+
+pattern FollowsSegmentNumber :: HlsIvSource
+pattern FollowsSegmentNumber = HlsIvSource' "FOLLOWS_SEGMENT_NUMBER"
+
+{-# COMPLETE
+  Explicit,
+  FollowsSegmentNumber,
+  HlsIvSource' #-}
 
 instance FromText HlsIvSource where
-    parser = takeLowerText >>= \case
-        "explicit" -> pure Explicit
-        "follows_segment_number" -> pure FollowsSegmentNumber
-        e -> fromTextError $ "Failure parsing HlsIvSource from value: '" <> e
-           <> "'. Accepted values: explicit, follows_segment_number"
+    parser = (HlsIvSource' . mk) <$> takeText
 
 instance ToText HlsIvSource where
-    toText = \case
-        Explicit -> "EXPLICIT"
-        FollowsSegmentNumber -> "FOLLOWS_SEGMENT_NUMBER"
+    toText (HlsIvSource' ci) = original ci
+
+-- | Represents an enum of /known/ $HlsIvSource.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum HlsIvSource where
+    toEnum i = case i of
+        0 -> Explicit
+        1 -> FollowsSegmentNumber
+        _ -> (error . showText) $ "Unknown index for HlsIvSource: " <> toText i
+    fromEnum x = case x of
+        Explicit -> 0
+        FollowsSegmentNumber -> 1
+        HlsIvSource' name -> (error . showText) $ "Unknown HlsIvSource: " <> original name
+
+-- | Represents the bounds of /known/ $HlsIvSource.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded HlsIvSource where
+    minBound = Explicit
+    maxBound = FollowsSegmentNumber
 
 instance Hashable     HlsIvSource
 instance NFData       HlsIvSource

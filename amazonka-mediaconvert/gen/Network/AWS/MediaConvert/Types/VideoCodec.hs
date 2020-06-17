@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,36 +16,80 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.MediaConvert.Types.VideoCodec where
+module Network.AWS.MediaConvert.Types.VideoCodec (
+  VideoCodec (
+    ..
+    , FrameCapture
+    , H264
+    , H265
+    , MPEG2
+    , Prores
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
+
 -- | Type of video codec
-data VideoCodec = FrameCapture
-                | H264
-                | H265
-                | MPEG2
-                | Prores
-                    deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                              Typeable, Generic)
+data VideoCodec = VideoCodec' (CI Text)
+                    deriving (Eq, Ord, Read, Show, Data, Typeable,
+                              Generic)
+
+pattern FrameCapture :: VideoCodec
+pattern FrameCapture = VideoCodec' "FRAME_CAPTURE"
+
+pattern H264 :: VideoCodec
+pattern H264 = VideoCodec' "H_264"
+
+pattern H265 :: VideoCodec
+pattern H265 = VideoCodec' "H_265"
+
+pattern MPEG2 :: VideoCodec
+pattern MPEG2 = VideoCodec' "MPEG2"
+
+pattern Prores :: VideoCodec
+pattern Prores = VideoCodec' "PRORES"
+
+{-# COMPLETE
+  FrameCapture,
+  H264,
+  H265,
+  MPEG2,
+  Prores,
+  VideoCodec' #-}
 
 instance FromText VideoCodec where
-    parser = takeLowerText >>= \case
-        "frame_capture" -> pure FrameCapture
-        "h_264" -> pure H264
-        "h_265" -> pure H265
-        "mpeg2" -> pure MPEG2
-        "prores" -> pure Prores
-        e -> fromTextError $ "Failure parsing VideoCodec from value: '" <> e
-           <> "'. Accepted values: frame_capture, h_264, h_265, mpeg2, prores"
+    parser = (VideoCodec' . mk) <$> takeText
 
 instance ToText VideoCodec where
-    toText = \case
-        FrameCapture -> "FRAME_CAPTURE"
-        H264 -> "H_264"
-        H265 -> "H_265"
-        MPEG2 -> "MPEG2"
-        Prores -> "PRORES"
+    toText (VideoCodec' ci) = original ci
+
+-- | Represents an enum of /known/ $VideoCodec.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum VideoCodec where
+    toEnum i = case i of
+        0 -> FrameCapture
+        1 -> H264
+        2 -> H265
+        3 -> MPEG2
+        4 -> Prores
+        _ -> (error . showText) $ "Unknown index for VideoCodec: " <> toText i
+    fromEnum x = case x of
+        FrameCapture -> 0
+        H264 -> 1
+        H265 -> 2
+        MPEG2 -> 3
+        Prores -> 4
+        VideoCodec' name -> (error . showText) $ "Unknown VideoCodec: " <> original name
+
+-- | Represents the bounds of /known/ $VideoCodec.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded VideoCodec where
+    minBound = FrameCapture
+    maxBound = Prores
 
 instance Hashable     VideoCodec
 instance NFData       VideoCodec

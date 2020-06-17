@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,32 +16,72 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.CertificateManagerPCA.Types.KeyAlgorithm where
+module Network.AWS.CertificateManagerPCA.Types.KeyAlgorithm (
+  KeyAlgorithm (
+    ..
+    , EcPRIME256V1
+    , EcSECP384R1
+    , Rsa2048
+    , Rsa4096
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data KeyAlgorithm = EcPRIME256V1
-                  | EcSECP384R1
-                  | Rsa2048
-                  | Rsa4096
-                      deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                Typeable, Generic)
+
+data KeyAlgorithm = KeyAlgorithm' (CI Text)
+                      deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                Generic)
+
+pattern EcPRIME256V1 :: KeyAlgorithm
+pattern EcPRIME256V1 = KeyAlgorithm' "EC_prime256v1"
+
+pattern EcSECP384R1 :: KeyAlgorithm
+pattern EcSECP384R1 = KeyAlgorithm' "EC_secp384r1"
+
+pattern Rsa2048 :: KeyAlgorithm
+pattern Rsa2048 = KeyAlgorithm' "RSA_2048"
+
+pattern Rsa4096 :: KeyAlgorithm
+pattern Rsa4096 = KeyAlgorithm' "RSA_4096"
+
+{-# COMPLETE
+  EcPRIME256V1,
+  EcSECP384R1,
+  Rsa2048,
+  Rsa4096,
+  KeyAlgorithm' #-}
 
 instance FromText KeyAlgorithm where
-    parser = takeLowerText >>= \case
-        "ec_prime256v1" -> pure EcPRIME256V1
-        "ec_secp384r1" -> pure EcSECP384R1
-        "rsa_2048" -> pure Rsa2048
-        "rsa_4096" -> pure Rsa4096
-        e -> fromTextError $ "Failure parsing KeyAlgorithm from value: '" <> e
-           <> "'. Accepted values: ec_prime256v1, ec_secp384r1, rsa_2048, rsa_4096"
+    parser = (KeyAlgorithm' . mk) <$> takeText
 
 instance ToText KeyAlgorithm where
-    toText = \case
-        EcPRIME256V1 -> "EC_prime256v1"
-        EcSECP384R1 -> "EC_secp384r1"
-        Rsa2048 -> "RSA_2048"
-        Rsa4096 -> "RSA_4096"
+    toText (KeyAlgorithm' ci) = original ci
+
+-- | Represents an enum of /known/ $KeyAlgorithm.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum KeyAlgorithm where
+    toEnum i = case i of
+        0 -> EcPRIME256V1
+        1 -> EcSECP384R1
+        2 -> Rsa2048
+        3 -> Rsa4096
+        _ -> (error . showText) $ "Unknown index for KeyAlgorithm: " <> toText i
+    fromEnum x = case x of
+        EcPRIME256V1 -> 0
+        EcSECP384R1 -> 1
+        Rsa2048 -> 2
+        Rsa4096 -> 3
+        KeyAlgorithm' name -> (error . showText) $ "Unknown KeyAlgorithm: " <> original name
+
+-- | Represents the bounds of /known/ $KeyAlgorithm.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded KeyAlgorithm where
+    minBound = EcPRIME256V1
+    maxBound = Rsa4096
 
 instance Hashable     KeyAlgorithm
 instance NFData       KeyAlgorithm

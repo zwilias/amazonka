@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,27 +16,59 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.EC2.Types.EndDateType where
+module Network.AWS.EC2.Types.EndDateType (
+  EndDateType (
+    ..
+    , Limited
+    , Unlimited
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.EC2.Internal
 import Network.AWS.Prelude
-  
-data EndDateType = Limited
-                 | Unlimited
-                     deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                               Typeable, Generic)
+
+data EndDateType = EndDateType' (CI Text)
+                     deriving (Eq, Ord, Read, Show, Data, Typeable,
+                               Generic)
+
+pattern Limited :: EndDateType
+pattern Limited = EndDateType' "limited"
+
+pattern Unlimited :: EndDateType
+pattern Unlimited = EndDateType' "unlimited"
+
+{-# COMPLETE
+  Limited,
+  Unlimited,
+  EndDateType' #-}
 
 instance FromText EndDateType where
-    parser = takeLowerText >>= \case
-        "limited" -> pure Limited
-        "unlimited" -> pure Unlimited
-        e -> fromTextError $ "Failure parsing EndDateType from value: '" <> e
-           <> "'. Accepted values: limited, unlimited"
+    parser = (EndDateType' . mk) <$> takeText
 
 instance ToText EndDateType where
-    toText = \case
-        Limited -> "limited"
-        Unlimited -> "unlimited"
+    toText (EndDateType' ci) = original ci
+
+-- | Represents an enum of /known/ $EndDateType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum EndDateType where
+    toEnum i = case i of
+        0 -> Limited
+        1 -> Unlimited
+        _ -> (error . showText) $ "Unknown index for EndDateType: " <> toText i
+    fromEnum x = case x of
+        Limited -> 0
+        Unlimited -> 1
+        EndDateType' name -> (error . showText) $ "Unknown EndDateType: " <> original name
+
+-- | Represents the bounds of /known/ $EndDateType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded EndDateType where
+    minBound = Limited
+    maxBound = Unlimited
 
 instance Hashable     EndDateType
 instance NFData       EndDateType

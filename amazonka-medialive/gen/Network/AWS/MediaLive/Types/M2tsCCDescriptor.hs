@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,27 +16,59 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.MediaLive.Types.M2tsCCDescriptor where
+module Network.AWS.MediaLive.Types.M2tsCCDescriptor (
+  M2tsCCDescriptor (
+    ..
+    , MCCDDisabled
+    , MCCDEnabled
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
+
 -- | Placeholder documentation for M2tsCcDescriptor
-data M2tsCCDescriptor = MCCDDisabled
-                      | MCCDEnabled
-                          deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                    Typeable, Generic)
+data M2tsCCDescriptor = M2tsCCDescriptor' (CI Text)
+                          deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                    Generic)
+
+pattern MCCDDisabled :: M2tsCCDescriptor
+pattern MCCDDisabled = M2tsCCDescriptor' "DISABLED"
+
+pattern MCCDEnabled :: M2tsCCDescriptor
+pattern MCCDEnabled = M2tsCCDescriptor' "ENABLED"
+
+{-# COMPLETE
+  MCCDDisabled,
+  MCCDEnabled,
+  M2tsCCDescriptor' #-}
 
 instance FromText M2tsCCDescriptor where
-    parser = takeLowerText >>= \case
-        "disabled" -> pure MCCDDisabled
-        "enabled" -> pure MCCDEnabled
-        e -> fromTextError $ "Failure parsing M2tsCCDescriptor from value: '" <> e
-           <> "'. Accepted values: disabled, enabled"
+    parser = (M2tsCCDescriptor' . mk) <$> takeText
 
 instance ToText M2tsCCDescriptor where
-    toText = \case
-        MCCDDisabled -> "DISABLED"
-        MCCDEnabled -> "ENABLED"
+    toText (M2tsCCDescriptor' ci) = original ci
+
+-- | Represents an enum of /known/ $M2tsCCDescriptor.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum M2tsCCDescriptor where
+    toEnum i = case i of
+        0 -> MCCDDisabled
+        1 -> MCCDEnabled
+        _ -> (error . showText) $ "Unknown index for M2tsCCDescriptor: " <> toText i
+    fromEnum x = case x of
+        MCCDDisabled -> 0
+        MCCDEnabled -> 1
+        M2tsCCDescriptor' name -> (error . showText) $ "Unknown M2tsCCDescriptor: " <> original name
+
+-- | Represents the bounds of /known/ $M2tsCCDescriptor.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded M2tsCCDescriptor where
+    minBound = MCCDDisabled
+    maxBound = MCCDEnabled
 
 instance Hashable     M2tsCCDescriptor
 instance NFData       M2tsCCDescriptor

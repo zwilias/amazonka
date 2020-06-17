@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,59 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.CodeDeploy.Types.RegistrationStatus where
+module Network.AWS.CodeDeploy.Types.RegistrationStatus (
+  RegistrationStatus (
+    ..
+    , Deregistered
+    , Registered
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data RegistrationStatus = Deregistered
-                        | Registered
-                            deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                      Typeable, Generic)
+
+data RegistrationStatus = RegistrationStatus' (CI
+                                                 Text)
+                            deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                      Generic)
+
+pattern Deregistered :: RegistrationStatus
+pattern Deregistered = RegistrationStatus' "Deregistered"
+
+pattern Registered :: RegistrationStatus
+pattern Registered = RegistrationStatus' "Registered"
+
+{-# COMPLETE
+  Deregistered,
+  Registered,
+  RegistrationStatus' #-}
 
 instance FromText RegistrationStatus where
-    parser = takeLowerText >>= \case
-        "deregistered" -> pure Deregistered
-        "registered" -> pure Registered
-        e -> fromTextError $ "Failure parsing RegistrationStatus from value: '" <> e
-           <> "'. Accepted values: deregistered, registered"
+    parser = (RegistrationStatus' . mk) <$> takeText
 
 instance ToText RegistrationStatus where
-    toText = \case
-        Deregistered -> "Deregistered"
-        Registered -> "Registered"
+    toText (RegistrationStatus' ci) = original ci
+
+-- | Represents an enum of /known/ $RegistrationStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum RegistrationStatus where
+    toEnum i = case i of
+        0 -> Deregistered
+        1 -> Registered
+        _ -> (error . showText) $ "Unknown index for RegistrationStatus: " <> toText i
+    fromEnum x = case x of
+        Deregistered -> 0
+        Registered -> 1
+        RegistrationStatus' name -> (error . showText) $ "Unknown RegistrationStatus: " <> original name
+
+-- | Represents the bounds of /known/ $RegistrationStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded RegistrationStatus where
+    minBound = Deregistered
+    maxBound = Registered
 
 instance Hashable     RegistrationStatus
 instance NFData       RegistrationStatus

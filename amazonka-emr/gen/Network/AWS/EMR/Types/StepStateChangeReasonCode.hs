@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,23 +16,52 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.EMR.Types.StepStateChangeReasonCode where
+module Network.AWS.EMR.Types.StepStateChangeReasonCode (
+  StepStateChangeReasonCode (
+    ..
+    , SSCRCNone
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data StepStateChangeReasonCode = SSCRCNone
-                                   deriving (Eq, Ord, Read, Show, Enum, Bounded,
-                                             Data, Typeable, Generic)
+
+data StepStateChangeReasonCode = StepStateChangeReasonCode' (CI
+                                                               Text)
+                                   deriving (Eq, Ord, Read, Show, Data,
+                                             Typeable, Generic)
+
+pattern SSCRCNone :: StepStateChangeReasonCode
+pattern SSCRCNone = StepStateChangeReasonCode' "NONE"
+
+{-# COMPLETE
+  SSCRCNone,
+  StepStateChangeReasonCode' #-}
 
 instance FromText StepStateChangeReasonCode where
-    parser = takeLowerText >>= \case
-        "none" -> pure SSCRCNone
-        e -> fromTextError $ "Failure parsing StepStateChangeReasonCode from value: '" <> e
-           <> "'. Accepted values: none"
+    parser = (StepStateChangeReasonCode' . mk) <$> takeText
 
 instance ToText StepStateChangeReasonCode where
-    toText = \case
-        SSCRCNone -> "NONE"
+    toText (StepStateChangeReasonCode' ci) = original ci
+
+-- | Represents an enum of /known/ $StepStateChangeReasonCode.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum StepStateChangeReasonCode where
+    toEnum i = case i of
+        0 -> SSCRCNone
+        _ -> (error . showText) $ "Unknown index for StepStateChangeReasonCode: " <> toText i
+    fromEnum x = case x of
+        SSCRCNone -> 0
+        StepStateChangeReasonCode' name -> (error . showText) $ "Unknown StepStateChangeReasonCode: " <> original name
+
+-- | Represents the bounds of /known/ $StepStateChangeReasonCode.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded StepStateChangeReasonCode where
+    minBound = SSCRCNone
+    maxBound = SSCRCNone
 
 instance Hashable     StepStateChangeReasonCode
 instance NFData       StepStateChangeReasonCode

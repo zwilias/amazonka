@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,30 +16,67 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.EC2.Types.ArchitectureValues where
+module Network.AWS.EC2.Types.ArchitectureValues (
+  ArchitectureValues (
+    ..
+    , ARM64
+    , I386
+    , X86_64
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.EC2.Internal
 import Network.AWS.Prelude
-  
-data ArchitectureValues = ARM64
-                        | I386
-                        | X86_64
-                            deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                      Typeable, Generic)
+
+data ArchitectureValues = ArchitectureValues' (CI
+                                                 Text)
+                            deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                      Generic)
+
+pattern ARM64 :: ArchitectureValues
+pattern ARM64 = ArchitectureValues' "arm64"
+
+pattern I386 :: ArchitectureValues
+pattern I386 = ArchitectureValues' "i386"
+
+pattern X86_64 :: ArchitectureValues
+pattern X86_64 = ArchitectureValues' "x86_64"
+
+{-# COMPLETE
+  ARM64,
+  I386,
+  X86_64,
+  ArchitectureValues' #-}
 
 instance FromText ArchitectureValues where
-    parser = takeLowerText >>= \case
-        "arm64" -> pure ARM64
-        "i386" -> pure I386
-        "x86_64" -> pure X86_64
-        e -> fromTextError $ "Failure parsing ArchitectureValues from value: '" <> e
-           <> "'. Accepted values: arm64, i386, x86_64"
+    parser = (ArchitectureValues' . mk) <$> takeText
 
 instance ToText ArchitectureValues where
-    toText = \case
-        ARM64 -> "arm64"
-        I386 -> "i386"
-        X86_64 -> "x86_64"
+    toText (ArchitectureValues' ci) = original ci
+
+-- | Represents an enum of /known/ $ArchitectureValues.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum ArchitectureValues where
+    toEnum i = case i of
+        0 -> ARM64
+        1 -> I386
+        2 -> X86_64
+        _ -> (error . showText) $ "Unknown index for ArchitectureValues: " <> toText i
+    fromEnum x = case x of
+        ARM64 -> 0
+        I386 -> 1
+        X86_64 -> 2
+        ArchitectureValues' name -> (error . showText) $ "Unknown ArchitectureValues: " <> original name
+
+-- | Represents the bounds of /known/ $ArchitectureValues.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded ArchitectureValues where
+    minBound = ARM64
+    maxBound = X86_64
 
 instance Hashable     ArchitectureValues
 instance NFData       ArchitectureValues

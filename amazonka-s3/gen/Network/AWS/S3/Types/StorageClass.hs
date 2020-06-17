@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,33 +16,73 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.S3.Types.StorageClass where
+module Network.AWS.S3.Types.StorageClass (
+  StorageClass (
+    ..
+    , OnezoneIA
+    , ReducedRedundancy
+    , Standard
+    , StandardIA
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
 import Network.AWS.S3.Internal
-  
-data StorageClass = OnezoneIA
-                  | ReducedRedundancy
-                  | Standard
-                  | StandardIA
-                      deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                Typeable, Generic)
+
+data StorageClass = StorageClass' (CI Text)
+                      deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                Generic)
+
+pattern OnezoneIA :: StorageClass
+pattern OnezoneIA = StorageClass' "ONEZONE_IA"
+
+pattern ReducedRedundancy :: StorageClass
+pattern ReducedRedundancy = StorageClass' "REDUCED_REDUNDANCY"
+
+pattern Standard :: StorageClass
+pattern Standard = StorageClass' "STANDARD"
+
+pattern StandardIA :: StorageClass
+pattern StandardIA = StorageClass' "STANDARD_IA"
+
+{-# COMPLETE
+  OnezoneIA,
+  ReducedRedundancy,
+  Standard,
+  StandardIA,
+  StorageClass' #-}
 
 instance FromText StorageClass where
-    parser = takeLowerText >>= \case
-        "onezone_ia" -> pure OnezoneIA
-        "reduced_redundancy" -> pure ReducedRedundancy
-        "standard" -> pure Standard
-        "standard_ia" -> pure StandardIA
-        e -> fromTextError $ "Failure parsing StorageClass from value: '" <> e
-           <> "'. Accepted values: onezone_ia, reduced_redundancy, standard, standard_ia"
+    parser = (StorageClass' . mk) <$> takeText
 
 instance ToText StorageClass where
-    toText = \case
-        OnezoneIA -> "ONEZONE_IA"
-        ReducedRedundancy -> "REDUCED_REDUNDANCY"
-        Standard -> "STANDARD"
-        StandardIA -> "STANDARD_IA"
+    toText (StorageClass' ci) = original ci
+
+-- | Represents an enum of /known/ $StorageClass.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum StorageClass where
+    toEnum i = case i of
+        0 -> OnezoneIA
+        1 -> ReducedRedundancy
+        2 -> Standard
+        3 -> StandardIA
+        _ -> (error . showText) $ "Unknown index for StorageClass: " <> toText i
+    fromEnum x = case x of
+        OnezoneIA -> 0
+        ReducedRedundancy -> 1
+        Standard -> 2
+        StandardIA -> 3
+        StorageClass' name -> (error . showText) $ "Unknown StorageClass: " <> original name
+
+-- | Represents the bounds of /known/ $StorageClass.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded StorageClass where
+    minBound = OnezoneIA
+    maxBound = StandardIA
 
 instance Hashable     StorageClass
 instance NFData       StorageClass

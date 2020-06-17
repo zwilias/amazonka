@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,32 +16,72 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.KinesisVideo.Types.APIName where
+module Network.AWS.KinesisVideo.Types.APIName (
+  APIName (
+    ..
+    , GetMedia
+    , GetMediaForFragmentList
+    , ListFragments
+    , PutMedia
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data APIName = GetMedia
-             | GetMediaForFragmentList
-             | ListFragments
-             | PutMedia
-                 deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                           Typeable, Generic)
+
+data APIName = APIName' (CI Text)
+                 deriving (Eq, Ord, Read, Show, Data, Typeable,
+                           Generic)
+
+pattern GetMedia :: APIName
+pattern GetMedia = APIName' "GET_MEDIA"
+
+pattern GetMediaForFragmentList :: APIName
+pattern GetMediaForFragmentList = APIName' "GET_MEDIA_FOR_FRAGMENT_LIST"
+
+pattern ListFragments :: APIName
+pattern ListFragments = APIName' "LIST_FRAGMENTS"
+
+pattern PutMedia :: APIName
+pattern PutMedia = APIName' "PUT_MEDIA"
+
+{-# COMPLETE
+  GetMedia,
+  GetMediaForFragmentList,
+  ListFragments,
+  PutMedia,
+  APIName' #-}
 
 instance FromText APIName where
-    parser = takeLowerText >>= \case
-        "get_media" -> pure GetMedia
-        "get_media_for_fragment_list" -> pure GetMediaForFragmentList
-        "list_fragments" -> pure ListFragments
-        "put_media" -> pure PutMedia
-        e -> fromTextError $ "Failure parsing APIName from value: '" <> e
-           <> "'. Accepted values: get_media, get_media_for_fragment_list, list_fragments, put_media"
+    parser = (APIName' . mk) <$> takeText
 
 instance ToText APIName where
-    toText = \case
-        GetMedia -> "GET_MEDIA"
-        GetMediaForFragmentList -> "GET_MEDIA_FOR_FRAGMENT_LIST"
-        ListFragments -> "LIST_FRAGMENTS"
-        PutMedia -> "PUT_MEDIA"
+    toText (APIName' ci) = original ci
+
+-- | Represents an enum of /known/ $APIName.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum APIName where
+    toEnum i = case i of
+        0 -> GetMedia
+        1 -> GetMediaForFragmentList
+        2 -> ListFragments
+        3 -> PutMedia
+        _ -> (error . showText) $ "Unknown index for APIName: " <> toText i
+    fromEnum x = case x of
+        GetMedia -> 0
+        GetMediaForFragmentList -> 1
+        ListFragments -> 2
+        PutMedia -> 3
+        APIName' name -> (error . showText) $ "Unknown APIName: " <> original name
+
+-- | Represents the bounds of /known/ $APIName.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded APIName where
+    minBound = GetMedia
+    maxBound = PutMedia
 
 instance Hashable     APIName
 instance NFData       APIName

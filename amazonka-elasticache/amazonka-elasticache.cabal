@@ -117,6 +117,7 @@ library
         , Network.AWS.ElastiCache.Types.ParameterNameValue
         , Network.AWS.ElastiCache.Types.PendingAutomaticFailoverStatus
         , Network.AWS.ElastiCache.Types.PendingModifiedValues
+        , Network.AWS.ElastiCache.Types.Product
         , Network.AWS.ElastiCache.Types.RecurringCharge
         , Network.AWS.ElastiCache.Types.ReplicationGroup
         , Network.AWS.ElastiCache.Types.ReplicationGroupPendingModifiedValues
@@ -135,6 +136,7 @@ library
     build-depends:
           amazonka-core == 1.6.1.*
         , base          >= 4.7     && < 5
+        , case-insensitive
 
 test-suite amazonka-elasticache-test
     type:              exitcode-stdio-1.0
@@ -158,6 +160,7 @@ test-suite amazonka-elasticache-test
         , amazonka-elasticache
         , base
         , bytestring
+        , case-insensitive
         , tasty
         , tasty-hunit
         , text

@@ -56,6 +56,7 @@ module Network.AWS.AutoScaling.RecordLifecycleActionHeartbeat
     ) where
 
 import Network.AWS.AutoScaling.Types
+import Network.AWS.AutoScaling.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request

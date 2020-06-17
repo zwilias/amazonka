@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,27 +16,60 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.MediaLive.Types.InputLossImageType where
+module Network.AWS.MediaLive.Types.InputLossImageType (
+  InputLossImageType (
+    ..
+    , Color
+    , Slate
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
+
 -- | Placeholder documentation for InputLossImageType
-data InputLossImageType = Color
-                        | Slate
-                            deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                      Typeable, Generic)
+data InputLossImageType = InputLossImageType' (CI
+                                                 Text)
+                            deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                      Generic)
+
+pattern Color :: InputLossImageType
+pattern Color = InputLossImageType' "COLOR"
+
+pattern Slate :: InputLossImageType
+pattern Slate = InputLossImageType' "SLATE"
+
+{-# COMPLETE
+  Color,
+  Slate,
+  InputLossImageType' #-}
 
 instance FromText InputLossImageType where
-    parser = takeLowerText >>= \case
-        "color" -> pure Color
-        "slate" -> pure Slate
-        e -> fromTextError $ "Failure parsing InputLossImageType from value: '" <> e
-           <> "'. Accepted values: color, slate"
+    parser = (InputLossImageType' . mk) <$> takeText
 
 instance ToText InputLossImageType where
-    toText = \case
-        Color -> "COLOR"
-        Slate -> "SLATE"
+    toText (InputLossImageType' ci) = original ci
+
+-- | Represents an enum of /known/ $InputLossImageType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum InputLossImageType where
+    toEnum i = case i of
+        0 -> Color
+        1 -> Slate
+        _ -> (error . showText) $ "Unknown index for InputLossImageType: " <> toText i
+    fromEnum x = case x of
+        Color -> 0
+        Slate -> 1
+        InputLossImageType' name -> (error . showText) $ "Unknown InputLossImageType: " <> original name
+
+-- | Represents the bounds of /known/ $InputLossImageType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded InputLossImageType where
+    minBound = Color
+    maxBound = Slate
 
 instance Hashable     InputLossImageType
 instance NFData       InputLossImageType

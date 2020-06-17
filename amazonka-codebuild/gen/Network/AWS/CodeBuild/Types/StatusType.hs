@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,38 +16,86 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.CodeBuild.Types.StatusType where
+module Network.AWS.CodeBuild.Types.StatusType (
+  StatusType (
+    ..
+    , STFailed
+    , STFault
+    , STInProgress
+    , STStopped
+    , STSucceeded
+    , STTimedOut
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data StatusType = STFailed
-                | STFault
-                | STInProgress
-                | STStopped
-                | STSucceeded
-                | STTimedOut
-                    deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                              Typeable, Generic)
+
+data StatusType = StatusType' (CI Text)
+                    deriving (Eq, Ord, Read, Show, Data, Typeable,
+                              Generic)
+
+pattern STFailed :: StatusType
+pattern STFailed = StatusType' "FAILED"
+
+pattern STFault :: StatusType
+pattern STFault = StatusType' "FAULT"
+
+pattern STInProgress :: StatusType
+pattern STInProgress = StatusType' "IN_PROGRESS"
+
+pattern STStopped :: StatusType
+pattern STStopped = StatusType' "STOPPED"
+
+pattern STSucceeded :: StatusType
+pattern STSucceeded = StatusType' "SUCCEEDED"
+
+pattern STTimedOut :: StatusType
+pattern STTimedOut = StatusType' "TIMED_OUT"
+
+{-# COMPLETE
+  STFailed,
+  STFault,
+  STInProgress,
+  STStopped,
+  STSucceeded,
+  STTimedOut,
+  StatusType' #-}
 
 instance FromText StatusType where
-    parser = takeLowerText >>= \case
-        "failed" -> pure STFailed
-        "fault" -> pure STFault
-        "in_progress" -> pure STInProgress
-        "stopped" -> pure STStopped
-        "succeeded" -> pure STSucceeded
-        "timed_out" -> pure STTimedOut
-        e -> fromTextError $ "Failure parsing StatusType from value: '" <> e
-           <> "'. Accepted values: failed, fault, in_progress, stopped, succeeded, timed_out"
+    parser = (StatusType' . mk) <$> takeText
 
 instance ToText StatusType where
-    toText = \case
-        STFailed -> "FAILED"
-        STFault -> "FAULT"
-        STInProgress -> "IN_PROGRESS"
-        STStopped -> "STOPPED"
-        STSucceeded -> "SUCCEEDED"
-        STTimedOut -> "TIMED_OUT"
+    toText (StatusType' ci) = original ci
+
+-- | Represents an enum of /known/ $StatusType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum StatusType where
+    toEnum i = case i of
+        0 -> STFailed
+        1 -> STFault
+        2 -> STInProgress
+        3 -> STStopped
+        4 -> STSucceeded
+        5 -> STTimedOut
+        _ -> (error . showText) $ "Unknown index for StatusType: " <> toText i
+    fromEnum x = case x of
+        STFailed -> 0
+        STFault -> 1
+        STInProgress -> 2
+        STStopped -> 3
+        STSucceeded -> 4
+        STTimedOut -> 5
+        StatusType' name -> (error . showText) $ "Unknown StatusType: " <> original name
+
+-- | Represents the bounds of /known/ $StatusType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded StatusType where
+    minBound = STFailed
+    maxBound = STTimedOut
 
 instance Hashable     StatusType
 instance NFData       StatusType

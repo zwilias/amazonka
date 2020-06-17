@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,27 +16,60 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.MediaConvert.Types.HlsProgramDateTime where
+module Network.AWS.MediaConvert.Types.HlsProgramDateTime (
+  HlsProgramDateTime (
+    ..
+    , Exclude
+    , Include
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
+
 -- | Includes or excludes EXT-X-PROGRAM-DATE-TIME tag in .m3u8 manifest files. The value is calculated as follows: either the program date and time are initialized using the input timecode source, or the time is initialized using the input timecode source and the date is initialized using the timestamp_offset.
-data HlsProgramDateTime = Exclude
-                        | Include
-                            deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                      Typeable, Generic)
+data HlsProgramDateTime = HlsProgramDateTime' (CI
+                                                 Text)
+                            deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                      Generic)
+
+pattern Exclude :: HlsProgramDateTime
+pattern Exclude = HlsProgramDateTime' "EXCLUDE"
+
+pattern Include :: HlsProgramDateTime
+pattern Include = HlsProgramDateTime' "INCLUDE"
+
+{-# COMPLETE
+  Exclude,
+  Include,
+  HlsProgramDateTime' #-}
 
 instance FromText HlsProgramDateTime where
-    parser = takeLowerText >>= \case
-        "exclude" -> pure Exclude
-        "include" -> pure Include
-        e -> fromTextError $ "Failure parsing HlsProgramDateTime from value: '" <> e
-           <> "'. Accepted values: exclude, include"
+    parser = (HlsProgramDateTime' . mk) <$> takeText
 
 instance ToText HlsProgramDateTime where
-    toText = \case
-        Exclude -> "EXCLUDE"
-        Include -> "INCLUDE"
+    toText (HlsProgramDateTime' ci) = original ci
+
+-- | Represents an enum of /known/ $HlsProgramDateTime.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum HlsProgramDateTime where
+    toEnum i = case i of
+        0 -> Exclude
+        1 -> Include
+        _ -> (error . showText) $ "Unknown index for HlsProgramDateTime: " <> toText i
+    fromEnum x = case x of
+        Exclude -> 0
+        Include -> 1
+        HlsProgramDateTime' name -> (error . showText) $ "Unknown HlsProgramDateTime: " <> original name
+
+-- | Represents the bounds of /known/ $HlsProgramDateTime.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded HlsProgramDateTime where
+    minBound = Exclude
+    maxBound = Include
 
 instance Hashable     HlsProgramDateTime
 instance NFData       HlsProgramDateTime

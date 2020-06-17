@@ -46,6 +46,7 @@ module Network.AWS.EFS.DescribeTags
     ) where
 
 import Network.AWS.EFS.Types
+import Network.AWS.EFS.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude

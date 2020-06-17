@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,28 +16,60 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.EC2.Types.FleetOnDemandAllocationStrategy where
+module Network.AWS.EC2.Types.FleetOnDemandAllocationStrategy (
+  FleetOnDemandAllocationStrategy (
+    ..
+    , FODASLowestPrice
+    , FODASPrioritized
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.EC2.Internal
 import Network.AWS.Prelude
-  
-data FleetOnDemandAllocationStrategy = FODASLowestPrice
-                                     | FODASPrioritized
-                                         deriving (Eq, Ord, Read, Show, Enum,
-                                                   Bounded, Data, Typeable,
-                                                   Generic)
+
+data FleetOnDemandAllocationStrategy = FleetOnDemandAllocationStrategy' (CI
+                                                                           Text)
+                                         deriving (Eq, Ord, Read, Show, Data,
+                                                   Typeable, Generic)
+
+pattern FODASLowestPrice :: FleetOnDemandAllocationStrategy
+pattern FODASLowestPrice = FleetOnDemandAllocationStrategy' "lowest-price"
+
+pattern FODASPrioritized :: FleetOnDemandAllocationStrategy
+pattern FODASPrioritized = FleetOnDemandAllocationStrategy' "prioritized"
+
+{-# COMPLETE
+  FODASLowestPrice,
+  FODASPrioritized,
+  FleetOnDemandAllocationStrategy' #-}
 
 instance FromText FleetOnDemandAllocationStrategy where
-    parser = takeLowerText >>= \case
-        "lowest-price" -> pure FODASLowestPrice
-        "prioritized" -> pure FODASPrioritized
-        e -> fromTextError $ "Failure parsing FleetOnDemandAllocationStrategy from value: '" <> e
-           <> "'. Accepted values: lowest-price, prioritized"
+    parser = (FleetOnDemandAllocationStrategy' . mk) <$> takeText
 
 instance ToText FleetOnDemandAllocationStrategy where
-    toText = \case
-        FODASLowestPrice -> "lowest-price"
-        FODASPrioritized -> "prioritized"
+    toText (FleetOnDemandAllocationStrategy' ci) = original ci
+
+-- | Represents an enum of /known/ $FleetOnDemandAllocationStrategy.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum FleetOnDemandAllocationStrategy where
+    toEnum i = case i of
+        0 -> FODASLowestPrice
+        1 -> FODASPrioritized
+        _ -> (error . showText) $ "Unknown index for FleetOnDemandAllocationStrategy: " <> toText i
+    fromEnum x = case x of
+        FODASLowestPrice -> 0
+        FODASPrioritized -> 1
+        FleetOnDemandAllocationStrategy' name -> (error . showText) $ "Unknown FleetOnDemandAllocationStrategy: " <> original name
+
+-- | Represents the bounds of /known/ $FleetOnDemandAllocationStrategy.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded FleetOnDemandAllocationStrategy where
+    minBound = FODASLowestPrice
+    maxBound = FODASPrioritized
 
 instance Hashable     FleetOnDemandAllocationStrategy
 instance NFData       FleetOnDemandAllocationStrategy

@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,27 +16,60 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.EC2.Types.LocalGatewayRouteType where
+module Network.AWS.EC2.Types.LocalGatewayRouteType (
+  LocalGatewayRouteType (
+    ..
+    , LGRTPropagated
+    , LGRTStatic
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.EC2.Internal
 import Network.AWS.Prelude
-  
-data LocalGatewayRouteType = LGRTPropagated
-                           | LGRTStatic
-                               deriving (Eq, Ord, Read, Show, Enum, Bounded,
-                                         Data, Typeable, Generic)
+
+data LocalGatewayRouteType = LocalGatewayRouteType' (CI
+                                                       Text)
+                               deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                         Generic)
+
+pattern LGRTPropagated :: LocalGatewayRouteType
+pattern LGRTPropagated = LocalGatewayRouteType' "propagated"
+
+pattern LGRTStatic :: LocalGatewayRouteType
+pattern LGRTStatic = LocalGatewayRouteType' "static"
+
+{-# COMPLETE
+  LGRTPropagated,
+  LGRTStatic,
+  LocalGatewayRouteType' #-}
 
 instance FromText LocalGatewayRouteType where
-    parser = takeLowerText >>= \case
-        "propagated" -> pure LGRTPropagated
-        "static" -> pure LGRTStatic
-        e -> fromTextError $ "Failure parsing LocalGatewayRouteType from value: '" <> e
-           <> "'. Accepted values: propagated, static"
+    parser = (LocalGatewayRouteType' . mk) <$> takeText
 
 instance ToText LocalGatewayRouteType where
-    toText = \case
-        LGRTPropagated -> "propagated"
-        LGRTStatic -> "static"
+    toText (LocalGatewayRouteType' ci) = original ci
+
+-- | Represents an enum of /known/ $LocalGatewayRouteType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum LocalGatewayRouteType where
+    toEnum i = case i of
+        0 -> LGRTPropagated
+        1 -> LGRTStatic
+        _ -> (error . showText) $ "Unknown index for LocalGatewayRouteType: " <> toText i
+    fromEnum x = case x of
+        LGRTPropagated -> 0
+        LGRTStatic -> 1
+        LocalGatewayRouteType' name -> (error . showText) $ "Unknown LocalGatewayRouteType: " <> original name
+
+-- | Represents the bounds of /known/ $LocalGatewayRouteType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded LocalGatewayRouteType where
+    minBound = LGRTPropagated
+    maxBound = LGRTStatic
 
 instance Hashable     LocalGatewayRouteType
 instance NFData       LocalGatewayRouteType

@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,23 +16,51 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.ServiceCatalog.Types.CopyOption where
+module Network.AWS.ServiceCatalog.Types.CopyOption (
+  CopyOption (
+    ..
+    , CopyTags
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data CopyOption = CopyTags
-                    deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                              Typeable, Generic)
+
+data CopyOption = CopyOption' (CI Text)
+                    deriving (Eq, Ord, Read, Show, Data, Typeable,
+                              Generic)
+
+pattern CopyTags :: CopyOption
+pattern CopyTags = CopyOption' "CopyTags"
+
+{-# COMPLETE
+  CopyTags,
+  CopyOption' #-}
 
 instance FromText CopyOption where
-    parser = takeLowerText >>= \case
-        "copytags" -> pure CopyTags
-        e -> fromTextError $ "Failure parsing CopyOption from value: '" <> e
-           <> "'. Accepted values: copytags"
+    parser = (CopyOption' . mk) <$> takeText
 
 instance ToText CopyOption where
-    toText = \case
-        CopyTags -> "CopyTags"
+    toText (CopyOption' ci) = original ci
+
+-- | Represents an enum of /known/ $CopyOption.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum CopyOption where
+    toEnum i = case i of
+        0 -> CopyTags
+        _ -> (error . showText) $ "Unknown index for CopyOption: " <> toText i
+    fromEnum x = case x of
+        CopyTags -> 0
+        CopyOption' name -> (error . showText) $ "Unknown CopyOption: " <> original name
+
+-- | Represents the bounds of /known/ $CopyOption.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded CopyOption where
+    minBound = CopyTags
+    maxBound = CopyTags
 
 instance Hashable     CopyOption
 instance NFData       CopyOption

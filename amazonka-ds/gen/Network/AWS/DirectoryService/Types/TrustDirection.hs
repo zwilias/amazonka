@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,29 +16,65 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.DirectoryService.Types.TrustDirection where
+module Network.AWS.DirectoryService.Types.TrustDirection (
+  TrustDirection (
+    ..
+    , OneWayIncoming
+    , OneWayOutgoing
+    , TwoWay
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data TrustDirection = OneWayIncoming
-                    | OneWayOutgoing
-                    | TwoWay
-                        deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                  Typeable, Generic)
+
+data TrustDirection = TrustDirection' (CI Text)
+                        deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                  Generic)
+
+pattern OneWayIncoming :: TrustDirection
+pattern OneWayIncoming = TrustDirection' "One-Way: Incoming"
+
+pattern OneWayOutgoing :: TrustDirection
+pattern OneWayOutgoing = TrustDirection' "One-Way: Outgoing"
+
+pattern TwoWay :: TrustDirection
+pattern TwoWay = TrustDirection' "Two-Way"
+
+{-# COMPLETE
+  OneWayIncoming,
+  OneWayOutgoing,
+  TwoWay,
+  TrustDirection' #-}
 
 instance FromText TrustDirection where
-    parser = takeLowerText >>= \case
-        "one-way: incoming" -> pure OneWayIncoming
-        "one-way: outgoing" -> pure OneWayOutgoing
-        "two-way" -> pure TwoWay
-        e -> fromTextError $ "Failure parsing TrustDirection from value: '" <> e
-           <> "'. Accepted values: one-way: incoming, one-way: outgoing, two-way"
+    parser = (TrustDirection' . mk) <$> takeText
 
 instance ToText TrustDirection where
-    toText = \case
-        OneWayIncoming -> "One-Way: Incoming"
-        OneWayOutgoing -> "One-Way: Outgoing"
-        TwoWay -> "Two-Way"
+    toText (TrustDirection' ci) = original ci
+
+-- | Represents an enum of /known/ $TrustDirection.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum TrustDirection where
+    toEnum i = case i of
+        0 -> OneWayIncoming
+        1 -> OneWayOutgoing
+        2 -> TwoWay
+        _ -> (error . showText) $ "Unknown index for TrustDirection: " <> toText i
+    fromEnum x = case x of
+        OneWayIncoming -> 0
+        OneWayOutgoing -> 1
+        TwoWay -> 2
+        TrustDirection' name -> (error . showText) $ "Unknown TrustDirection: " <> original name
+
+-- | Represents the bounds of /known/ $TrustDirection.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded TrustDirection where
+    minBound = OneWayIncoming
+    maxBound = TwoWay
 
 instance Hashable     TrustDirection
 instance NFData       TrustDirection

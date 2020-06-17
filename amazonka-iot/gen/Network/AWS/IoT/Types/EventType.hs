@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,44 +16,100 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.IoT.Types.EventType where
+module Network.AWS.IoT.Types.EventType (
+  EventType (
+    ..
+    , Job
+    , JobExecution
+    , Thing
+    , ThingGroup
+    , ThingGroupHierarchy
+    , ThingGroupMembership
+    , ThingType
+    , ThingTypeAssociation
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data EventType = Job
-               | JobExecution
-               | Thing
-               | ThingGroup
-               | ThingGroupHierarchy
-               | ThingGroupMembership
-               | ThingType
-               | ThingTypeAssociation
-                   deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                             Typeable, Generic)
+
+data EventType = EventType' (CI Text)
+                   deriving (Eq, Ord, Read, Show, Data, Typeable,
+                             Generic)
+
+pattern Job :: EventType
+pattern Job = EventType' "JOB"
+
+pattern JobExecution :: EventType
+pattern JobExecution = EventType' "JOB_EXECUTION"
+
+pattern Thing :: EventType
+pattern Thing = EventType' "THING"
+
+pattern ThingGroup :: EventType
+pattern ThingGroup = EventType' "THING_GROUP"
+
+pattern ThingGroupHierarchy :: EventType
+pattern ThingGroupHierarchy = EventType' "THING_GROUP_HIERARCHY"
+
+pattern ThingGroupMembership :: EventType
+pattern ThingGroupMembership = EventType' "THING_GROUP_MEMBERSHIP"
+
+pattern ThingType :: EventType
+pattern ThingType = EventType' "THING_TYPE"
+
+pattern ThingTypeAssociation :: EventType
+pattern ThingTypeAssociation = EventType' "THING_TYPE_ASSOCIATION"
+
+{-# COMPLETE
+  Job,
+  JobExecution,
+  Thing,
+  ThingGroup,
+  ThingGroupHierarchy,
+  ThingGroupMembership,
+  ThingType,
+  ThingTypeAssociation,
+  EventType' #-}
 
 instance FromText EventType where
-    parser = takeLowerText >>= \case
-        "job" -> pure Job
-        "job_execution" -> pure JobExecution
-        "thing" -> pure Thing
-        "thing_group" -> pure ThingGroup
-        "thing_group_hierarchy" -> pure ThingGroupHierarchy
-        "thing_group_membership" -> pure ThingGroupMembership
-        "thing_type" -> pure ThingType
-        "thing_type_association" -> pure ThingTypeAssociation
-        e -> fromTextError $ "Failure parsing EventType from value: '" <> e
-           <> "'. Accepted values: job, job_execution, thing, thing_group, thing_group_hierarchy, thing_group_membership, thing_type, thing_type_association"
+    parser = (EventType' . mk) <$> takeText
 
 instance ToText EventType where
-    toText = \case
-        Job -> "JOB"
-        JobExecution -> "JOB_EXECUTION"
-        Thing -> "THING"
-        ThingGroup -> "THING_GROUP"
-        ThingGroupHierarchy -> "THING_GROUP_HIERARCHY"
-        ThingGroupMembership -> "THING_GROUP_MEMBERSHIP"
-        ThingType -> "THING_TYPE"
-        ThingTypeAssociation -> "THING_TYPE_ASSOCIATION"
+    toText (EventType' ci) = original ci
+
+-- | Represents an enum of /known/ $EventType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum EventType where
+    toEnum i = case i of
+        0 -> Job
+        1 -> JobExecution
+        2 -> Thing
+        3 -> ThingGroup
+        4 -> ThingGroupHierarchy
+        5 -> ThingGroupMembership
+        6 -> ThingType
+        7 -> ThingTypeAssociation
+        _ -> (error . showText) $ "Unknown index for EventType: " <> toText i
+    fromEnum x = case x of
+        Job -> 0
+        JobExecution -> 1
+        Thing -> 2
+        ThingGroup -> 3
+        ThingGroupHierarchy -> 4
+        ThingGroupMembership -> 5
+        ThingType -> 6
+        ThingTypeAssociation -> 7
+        EventType' name -> (error . showText) $ "Unknown EventType: " <> original name
+
+-- | Represents the bounds of /known/ $EventType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded EventType where
+    minBound = Job
+    maxBound = ThingTypeAssociation
 
 instance Hashable     EventType
 instance NFData       EventType

@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,23 +16,51 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.ELBv2.Types.ActionTypeEnum where
+module Network.AWS.ELBv2.Types.ActionTypeEnum (
+  ActionTypeEnum (
+    ..
+    , Forward
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data ActionTypeEnum = Forward
-                        deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                  Typeable, Generic)
+
+data ActionTypeEnum = ActionTypeEnum' (CI Text)
+                        deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                  Generic)
+
+pattern Forward :: ActionTypeEnum
+pattern Forward = ActionTypeEnum' "forward"
+
+{-# COMPLETE
+  Forward,
+  ActionTypeEnum' #-}
 
 instance FromText ActionTypeEnum where
-    parser = takeLowerText >>= \case
-        "forward" -> pure Forward
-        e -> fromTextError $ "Failure parsing ActionTypeEnum from value: '" <> e
-           <> "'. Accepted values: forward"
+    parser = (ActionTypeEnum' . mk) <$> takeText
 
 instance ToText ActionTypeEnum where
-    toText = \case
-        Forward -> "forward"
+    toText (ActionTypeEnum' ci) = original ci
+
+-- | Represents an enum of /known/ $ActionTypeEnum.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum ActionTypeEnum where
+    toEnum i = case i of
+        0 -> Forward
+        _ -> (error . showText) $ "Unknown index for ActionTypeEnum: " <> toText i
+    fromEnum x = case x of
+        Forward -> 0
+        ActionTypeEnum' name -> (error . showText) $ "Unknown ActionTypeEnum: " <> original name
+
+-- | Represents the bounds of /known/ $ActionTypeEnum.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded ActionTypeEnum where
+    minBound = Forward
+    maxBound = Forward
 
 instance Hashable     ActionTypeEnum
 instance NFData       ActionTypeEnum

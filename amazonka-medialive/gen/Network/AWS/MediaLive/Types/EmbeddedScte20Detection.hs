@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,27 +16,60 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.MediaLive.Types.EmbeddedScte20Detection where
+module Network.AWS.MediaLive.Types.EmbeddedScte20Detection (
+  EmbeddedScte20Detection (
+    ..
+    , Auto
+    , Off
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
+
 -- | Placeholder documentation for EmbeddedScte20Detection
-data EmbeddedScte20Detection = Auto
-                             | Off
-                                 deriving (Eq, Ord, Read, Show, Enum, Bounded,
-                                           Data, Typeable, Generic)
+data EmbeddedScte20Detection = EmbeddedScte20Detection' (CI
+                                                           Text)
+                                 deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                           Generic)
+
+pattern Auto :: EmbeddedScte20Detection
+pattern Auto = EmbeddedScte20Detection' "AUTO"
+
+pattern Off :: EmbeddedScte20Detection
+pattern Off = EmbeddedScte20Detection' "OFF"
+
+{-# COMPLETE
+  Auto,
+  Off,
+  EmbeddedScte20Detection' #-}
 
 instance FromText EmbeddedScte20Detection where
-    parser = takeLowerText >>= \case
-        "auto" -> pure Auto
-        "off" -> pure Off
-        e -> fromTextError $ "Failure parsing EmbeddedScte20Detection from value: '" <> e
-           <> "'. Accepted values: auto, off"
+    parser = (EmbeddedScte20Detection' . mk) <$> takeText
 
 instance ToText EmbeddedScte20Detection where
-    toText = \case
-        Auto -> "AUTO"
-        Off -> "OFF"
+    toText (EmbeddedScte20Detection' ci) = original ci
+
+-- | Represents an enum of /known/ $EmbeddedScte20Detection.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum EmbeddedScte20Detection where
+    toEnum i = case i of
+        0 -> Auto
+        1 -> Off
+        _ -> (error . showText) $ "Unknown index for EmbeddedScte20Detection: " <> toText i
+    fromEnum x = case x of
+        Auto -> 0
+        Off -> 1
+        EmbeddedScte20Detection' name -> (error . showText) $ "Unknown EmbeddedScte20Detection: " <> original name
+
+-- | Represents the bounds of /known/ $EmbeddedScte20Detection.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded EmbeddedScte20Detection where
+    minBound = Auto
+    maxBound = Off
 
 instance Hashable     EmbeddedScte20Detection
 instance NFData       EmbeddedScte20Detection

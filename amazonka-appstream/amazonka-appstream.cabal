@@ -127,6 +127,7 @@ library
         , Network.AWS.AppStream.Types.NetworkAccessConfiguration
         , Network.AWS.AppStream.Types.Permission
         , Network.AWS.AppStream.Types.PlatformType
+        , Network.AWS.AppStream.Types.Product
         , Network.AWS.AppStream.Types.ResourceError
         , Network.AWS.AppStream.Types.ServiceAccountCredentials
         , Network.AWS.AppStream.Types.Session
@@ -153,6 +154,7 @@ library
     build-depends:
           amazonka-core == 1.6.1.*
         , base          >= 4.7     && < 5
+        , case-insensitive
 
 test-suite amazonka-appstream-test
     type:              exitcode-stdio-1.0
@@ -176,6 +178,7 @@ test-suite amazonka-appstream-test
         , amazonka-appstream
         , base
         , bytestring
+        , case-insensitive
         , tasty
         , tasty-hunit
         , text

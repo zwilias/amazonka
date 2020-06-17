@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,30 +16,67 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.EC2.Types.PlacementGroupStrategy where
+module Network.AWS.EC2.Types.PlacementGroupStrategy (
+  PlacementGroupStrategy (
+    ..
+    , PGSCluster
+    , PGSPartition
+    , PGSSpread
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.EC2.Internal
 import Network.AWS.Prelude
-  
-data PlacementGroupStrategy = PGSCluster
-                            | PGSPartition
-                            | PGSSpread
-                                deriving (Eq, Ord, Read, Show, Enum, Bounded,
-                                          Data, Typeable, Generic)
+
+data PlacementGroupStrategy = PlacementGroupStrategy' (CI
+                                                         Text)
+                                deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                          Generic)
+
+pattern PGSCluster :: PlacementGroupStrategy
+pattern PGSCluster = PlacementGroupStrategy' "cluster"
+
+pattern PGSPartition :: PlacementGroupStrategy
+pattern PGSPartition = PlacementGroupStrategy' "partition"
+
+pattern PGSSpread :: PlacementGroupStrategy
+pattern PGSSpread = PlacementGroupStrategy' "spread"
+
+{-# COMPLETE
+  PGSCluster,
+  PGSPartition,
+  PGSSpread,
+  PlacementGroupStrategy' #-}
 
 instance FromText PlacementGroupStrategy where
-    parser = takeLowerText >>= \case
-        "cluster" -> pure PGSCluster
-        "partition" -> pure PGSPartition
-        "spread" -> pure PGSSpread
-        e -> fromTextError $ "Failure parsing PlacementGroupStrategy from value: '" <> e
-           <> "'. Accepted values: cluster, partition, spread"
+    parser = (PlacementGroupStrategy' . mk) <$> takeText
 
 instance ToText PlacementGroupStrategy where
-    toText = \case
-        PGSCluster -> "cluster"
-        PGSPartition -> "partition"
-        PGSSpread -> "spread"
+    toText (PlacementGroupStrategy' ci) = original ci
+
+-- | Represents an enum of /known/ $PlacementGroupStrategy.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum PlacementGroupStrategy where
+    toEnum i = case i of
+        0 -> PGSCluster
+        1 -> PGSPartition
+        2 -> PGSSpread
+        _ -> (error . showText) $ "Unknown index for PlacementGroupStrategy: " <> toText i
+    fromEnum x = case x of
+        PGSCluster -> 0
+        PGSPartition -> 1
+        PGSSpread -> 2
+        PlacementGroupStrategy' name -> (error . showText) $ "Unknown PlacementGroupStrategy: " <> original name
+
+-- | Represents the bounds of /known/ $PlacementGroupStrategy.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded PlacementGroupStrategy where
+    minBound = PGSCluster
+    maxBound = PGSSpread
 
 instance Hashable     PlacementGroupStrategy
 instance NFData       PlacementGroupStrategy

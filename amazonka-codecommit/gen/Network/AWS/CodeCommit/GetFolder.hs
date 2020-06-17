@@ -46,6 +46,7 @@ module Network.AWS.CodeCommit.GetFolder
     ) where
 
 import Network.AWS.CodeCommit.Types
+import Network.AWS.CodeCommit.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request

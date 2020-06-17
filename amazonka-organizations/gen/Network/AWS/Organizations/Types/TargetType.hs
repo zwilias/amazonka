@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,29 +16,65 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.Organizations.Types.TargetType where
+module Network.AWS.Organizations.Types.TargetType (
+  TargetType (
+    ..
+    , TTAccount
+    , TTOrganizationalUnit
+    , TTRoot
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data TargetType = TTAccount
-                | TTOrganizationalUnit
-                | TTRoot
-                    deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                              Typeable, Generic)
+
+data TargetType = TargetType' (CI Text)
+                    deriving (Eq, Ord, Read, Show, Data, Typeable,
+                              Generic)
+
+pattern TTAccount :: TargetType
+pattern TTAccount = TargetType' "ACCOUNT"
+
+pattern TTOrganizationalUnit :: TargetType
+pattern TTOrganizationalUnit = TargetType' "ORGANIZATIONAL_UNIT"
+
+pattern TTRoot :: TargetType
+pattern TTRoot = TargetType' "ROOT"
+
+{-# COMPLETE
+  TTAccount,
+  TTOrganizationalUnit,
+  TTRoot,
+  TargetType' #-}
 
 instance FromText TargetType where
-    parser = takeLowerText >>= \case
-        "account" -> pure TTAccount
-        "organizational_unit" -> pure TTOrganizationalUnit
-        "root" -> pure TTRoot
-        e -> fromTextError $ "Failure parsing TargetType from value: '" <> e
-           <> "'. Accepted values: account, organizational_unit, root"
+    parser = (TargetType' . mk) <$> takeText
 
 instance ToText TargetType where
-    toText = \case
-        TTAccount -> "ACCOUNT"
-        TTOrganizationalUnit -> "ORGANIZATIONAL_UNIT"
-        TTRoot -> "ROOT"
+    toText (TargetType' ci) = original ci
+
+-- | Represents an enum of /known/ $TargetType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum TargetType where
+    toEnum i = case i of
+        0 -> TTAccount
+        1 -> TTOrganizationalUnit
+        2 -> TTRoot
+        _ -> (error . showText) $ "Unknown index for TargetType: " <> toText i
+    fromEnum x = case x of
+        TTAccount -> 0
+        TTOrganizationalUnit -> 1
+        TTRoot -> 2
+        TargetType' name -> (error . showText) $ "Unknown TargetType: " <> original name
+
+-- | Represents the bounds of /known/ $TargetType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded TargetType where
+    minBound = TTAccount
+    maxBound = TTRoot
 
 instance Hashable     TargetType
 instance NFData       TargetType

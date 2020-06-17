@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,31 +16,63 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.MachineLearning.Types.SortOrder where
+module Network.AWS.MachineLearning.Types.SortOrder (
+  SortOrder (
+    ..
+    , Asc
+    , Dsc
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
+
 -- | The sort order specified in a listing condition. Possible values include the following:
 --
 --
 --     * @asc@ - Present the information in ascending order (from A-Z).    * @dsc@ - Present the information in descending order (from Z-A).
 --
-data SortOrder = Asc
-               | Dsc
-                   deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                             Typeable, Generic)
+data SortOrder = SortOrder' (CI Text)
+                   deriving (Eq, Ord, Read, Show, Data, Typeable,
+                             Generic)
+
+pattern Asc :: SortOrder
+pattern Asc = SortOrder' "asc"
+
+pattern Dsc :: SortOrder
+pattern Dsc = SortOrder' "dsc"
+
+{-# COMPLETE
+  Asc,
+  Dsc,
+  SortOrder' #-}
 
 instance FromText SortOrder where
-    parser = takeLowerText >>= \case
-        "asc" -> pure Asc
-        "dsc" -> pure Dsc
-        e -> fromTextError $ "Failure parsing SortOrder from value: '" <> e
-           <> "'. Accepted values: asc, dsc"
+    parser = (SortOrder' . mk) <$> takeText
 
 instance ToText SortOrder where
-    toText = \case
-        Asc -> "asc"
-        Dsc -> "dsc"
+    toText (SortOrder' ci) = original ci
+
+-- | Represents an enum of /known/ $SortOrder.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum SortOrder where
+    toEnum i = case i of
+        0 -> Asc
+        1 -> Dsc
+        _ -> (error . showText) $ "Unknown index for SortOrder: " <> toText i
+    fromEnum x = case x of
+        Asc -> 0
+        Dsc -> 1
+        SortOrder' name -> (error . showText) $ "Unknown SortOrder: " <> original name
+
+-- | Represents the bounds of /known/ $SortOrder.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded SortOrder where
+    minBound = Asc
+    maxBound = Dsc
 
 instance Hashable     SortOrder
 instance NFData       SortOrder

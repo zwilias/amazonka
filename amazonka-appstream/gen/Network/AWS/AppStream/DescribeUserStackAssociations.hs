@@ -51,6 +51,7 @@ module Network.AWS.AppStream.DescribeUserStackAssociations
     ) where
 
 import Network.AWS.AppStream.Types
+import Network.AWS.AppStream.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude

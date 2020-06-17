@@ -42,6 +42,7 @@ module Network.AWS.MQ.ListConfigurationRevisions
 
 import Network.AWS.Lens
 import Network.AWS.MQ.Types
+import Network.AWS.MQ.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response

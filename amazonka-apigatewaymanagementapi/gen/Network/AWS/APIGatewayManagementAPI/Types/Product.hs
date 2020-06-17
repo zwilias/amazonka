@@ -1,7 +1,8 @@
 {-# LANGUAGE DeriveDataTypeable #-}
 {-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
-{-# LANGUAGE RecordWildCards    #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,51 +16,10 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.APIGatewayManagementAPI.Types.Product where
+module Network.AWS.APIGatewayManagementAPI.Types.Product (
+    module Network.AWS.APIGatewayManagementAPI.Types.Identity
+  ) where
 
-import Network.AWS.APIGatewayManagementAPI.Types.Sum
+import Network.AWS.APIGatewayManagementAPI.Types.Identity
 import Network.AWS.Lens
 import Network.AWS.Prelude
-
--- | /See:/ 'identity' smart constructor.
-data Identity =
-  Identity'
-    { _iSourceIP  :: !Text
-    , _iUserAgent :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
-
--- | Creates a value of 'Identity' with the minimum fields required to make a request.
---
--- Use one of the following lenses to modify other fields as desired:
---
--- * 'iSourceIP' - The source IP address of the TCP connection making the request to API Gateway.
---
--- * 'iUserAgent' - The User Agent of the API caller.
-identity
-    :: Text -- ^ 'iSourceIP'
-    -> Text -- ^ 'iUserAgent'
-    -> Identity
-identity pSourceIP_ pUserAgent_ =
-  Identity' {_iSourceIP = pSourceIP_, _iUserAgent = pUserAgent_}
-
-
--- | The source IP address of the TCP connection making the request to API Gateway.
-iSourceIP :: Lens' Identity Text
-iSourceIP = lens _iSourceIP (\ s a -> s{_iSourceIP = a})
-
--- | The User Agent of the API caller.
-iUserAgent :: Lens' Identity Text
-iUserAgent = lens _iUserAgent (\ s a -> s{_iUserAgent = a})
-
-instance FromJSON Identity where
-        parseJSON
-          = withObject "Identity"
-              (\ x ->
-                 Identity' <$>
-                   (x .: "sourceIp") <*> (x .: "userAgent"))
-
-instance Hashable Identity where
-
-instance NFData Identity where

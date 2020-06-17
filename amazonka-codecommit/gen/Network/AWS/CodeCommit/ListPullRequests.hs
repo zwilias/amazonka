@@ -45,6 +45,7 @@ module Network.AWS.CodeCommit.ListPullRequests
     ) where
 
 import Network.AWS.CodeCommit.Types
+import Network.AWS.CodeCommit.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude

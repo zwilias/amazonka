@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,29 +16,65 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.DynamoDB.Types.ProjectionType where
+module Network.AWS.DynamoDB.Types.ProjectionType (
+  ProjectionType (
+    ..
+    , PTAll
+    , PTInclude
+    , PTKeysOnly
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data ProjectionType = PTAll
-                    | PTInclude
-                    | PTKeysOnly
-                        deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                  Typeable, Generic)
+
+data ProjectionType = ProjectionType' (CI Text)
+                        deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                  Generic)
+
+pattern PTAll :: ProjectionType
+pattern PTAll = ProjectionType' "ALL"
+
+pattern PTInclude :: ProjectionType
+pattern PTInclude = ProjectionType' "INCLUDE"
+
+pattern PTKeysOnly :: ProjectionType
+pattern PTKeysOnly = ProjectionType' "KEYS_ONLY"
+
+{-# COMPLETE
+  PTAll,
+  PTInclude,
+  PTKeysOnly,
+  ProjectionType' #-}
 
 instance FromText ProjectionType where
-    parser = takeLowerText >>= \case
-        "all" -> pure PTAll
-        "include" -> pure PTInclude
-        "keys_only" -> pure PTKeysOnly
-        e -> fromTextError $ "Failure parsing ProjectionType from value: '" <> e
-           <> "'. Accepted values: all, include, keys_only"
+    parser = (ProjectionType' . mk) <$> takeText
 
 instance ToText ProjectionType where
-    toText = \case
-        PTAll -> "ALL"
-        PTInclude -> "INCLUDE"
-        PTKeysOnly -> "KEYS_ONLY"
+    toText (ProjectionType' ci) = original ci
+
+-- | Represents an enum of /known/ $ProjectionType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum ProjectionType where
+    toEnum i = case i of
+        0 -> PTAll
+        1 -> PTInclude
+        2 -> PTKeysOnly
+        _ -> (error . showText) $ "Unknown index for ProjectionType: " <> toText i
+    fromEnum x = case x of
+        PTAll -> 0
+        PTInclude -> 1
+        PTKeysOnly -> 2
+        ProjectionType' name -> (error . showText) $ "Unknown ProjectionType: " <> original name
+
+-- | Represents the bounds of /known/ $ProjectionType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded ProjectionType where
+    minBound = PTAll
+    maxBound = PTKeysOnly
 
 instance Hashable     ProjectionType
 instance NFData       ProjectionType

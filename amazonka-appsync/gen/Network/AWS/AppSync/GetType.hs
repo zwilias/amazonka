@@ -40,6 +40,7 @@ module Network.AWS.AppSync.GetType
     ) where
 
 import Network.AWS.AppSync.Types
+import Network.AWS.AppSync.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request

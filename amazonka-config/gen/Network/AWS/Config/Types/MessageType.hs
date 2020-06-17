@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,32 +16,72 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.Config.Types.MessageType where
+module Network.AWS.Config.Types.MessageType (
+  MessageType (
+    ..
+    , ConfigurationItemChangeNotification
+    , ConfigurationSnapshotDeliveryCompleted
+    , OversizedConfigurationItemChangeNotification
+    , ScheduledNotification
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data MessageType = ConfigurationItemChangeNotification
-                 | ConfigurationSnapshotDeliveryCompleted
-                 | OversizedConfigurationItemChangeNotification
-                 | ScheduledNotification
-                     deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                               Typeable, Generic)
+
+data MessageType = MessageType' (CI Text)
+                     deriving (Eq, Ord, Read, Show, Data, Typeable,
+                               Generic)
+
+pattern ConfigurationItemChangeNotification :: MessageType
+pattern ConfigurationItemChangeNotification = MessageType' "ConfigurationItemChangeNotification"
+
+pattern ConfigurationSnapshotDeliveryCompleted :: MessageType
+pattern ConfigurationSnapshotDeliveryCompleted = MessageType' "ConfigurationSnapshotDeliveryCompleted"
+
+pattern OversizedConfigurationItemChangeNotification :: MessageType
+pattern OversizedConfigurationItemChangeNotification = MessageType' "OversizedConfigurationItemChangeNotification"
+
+pattern ScheduledNotification :: MessageType
+pattern ScheduledNotification = MessageType' "ScheduledNotification"
+
+{-# COMPLETE
+  ConfigurationItemChangeNotification,
+  ConfigurationSnapshotDeliveryCompleted,
+  OversizedConfigurationItemChangeNotification,
+  ScheduledNotification,
+  MessageType' #-}
 
 instance FromText MessageType where
-    parser = takeLowerText >>= \case
-        "configurationitemchangenotification" -> pure ConfigurationItemChangeNotification
-        "configurationsnapshotdeliverycompleted" -> pure ConfigurationSnapshotDeliveryCompleted
-        "oversizedconfigurationitemchangenotification" -> pure OversizedConfigurationItemChangeNotification
-        "schedulednotification" -> pure ScheduledNotification
-        e -> fromTextError $ "Failure parsing MessageType from value: '" <> e
-           <> "'. Accepted values: configurationitemchangenotification, configurationsnapshotdeliverycompleted, oversizedconfigurationitemchangenotification, schedulednotification"
+    parser = (MessageType' . mk) <$> takeText
 
 instance ToText MessageType where
-    toText = \case
-        ConfigurationItemChangeNotification -> "ConfigurationItemChangeNotification"
-        ConfigurationSnapshotDeliveryCompleted -> "ConfigurationSnapshotDeliveryCompleted"
-        OversizedConfigurationItemChangeNotification -> "OversizedConfigurationItemChangeNotification"
-        ScheduledNotification -> "ScheduledNotification"
+    toText (MessageType' ci) = original ci
+
+-- | Represents an enum of /known/ $MessageType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum MessageType where
+    toEnum i = case i of
+        0 -> ConfigurationItemChangeNotification
+        1 -> ConfigurationSnapshotDeliveryCompleted
+        2 -> OversizedConfigurationItemChangeNotification
+        3 -> ScheduledNotification
+        _ -> (error . showText) $ "Unknown index for MessageType: " <> toText i
+    fromEnum x = case x of
+        ConfigurationItemChangeNotification -> 0
+        ConfigurationSnapshotDeliveryCompleted -> 1
+        OversizedConfigurationItemChangeNotification -> 2
+        ScheduledNotification -> 3
+        MessageType' name -> (error . showText) $ "Unknown MessageType: " <> original name
+
+-- | Represents the bounds of /known/ $MessageType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded MessageType where
+    minBound = ConfigurationItemChangeNotification
+    maxBound = ScheduledNotification
 
 instance Hashable     MessageType
 instance NFData       MessageType

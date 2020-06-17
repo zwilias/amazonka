@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,36 +16,80 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.MediaConvert.Types.H265InterlaceMode where
+module Network.AWS.MediaConvert.Types.H265InterlaceMode (
+  H265InterlaceMode (
+    ..
+    , BottomField
+    , FollowBottomField
+    , FollowTopField
+    , Progressive
+    , TopField
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
+
 -- | Use Interlace mode (InterlaceMode) to choose the scan line type for the output. * Top Field First (TOP_FIELD) and Bottom Field First (BOTTOM_FIELD) produce interlaced output with the entire output having the same field polarity (top or bottom first). * Follow, Default Top (FOLLOw_TOP_FIELD) and Follow, Default Bottom (FOLLOW_BOTTOM_FIELD) use the same  field polarity as the source. Therefore, behavior depends on the input scan type. - If the source is interlaced, the output will be interlaced with the same polarity as the source (it will follow the source). The output could therefore be a mix of "top field first" and "bottom field first". - If the source is progressive, the output will be interlaced with "top field first" or "bottom field first" polarity, depending on which of the Follow options you chose.
-data H265InterlaceMode = BottomField
-                       | FollowBottomField
-                       | FollowTopField
-                       | Progressive
-                       | TopField
-                           deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                     Typeable, Generic)
+data H265InterlaceMode = H265InterlaceMode' (CI Text)
+                           deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                     Generic)
+
+pattern BottomField :: H265InterlaceMode
+pattern BottomField = H265InterlaceMode' "BOTTOM_FIELD"
+
+pattern FollowBottomField :: H265InterlaceMode
+pattern FollowBottomField = H265InterlaceMode' "FOLLOW_BOTTOM_FIELD"
+
+pattern FollowTopField :: H265InterlaceMode
+pattern FollowTopField = H265InterlaceMode' "FOLLOW_TOP_FIELD"
+
+pattern Progressive :: H265InterlaceMode
+pattern Progressive = H265InterlaceMode' "PROGRESSIVE"
+
+pattern TopField :: H265InterlaceMode
+pattern TopField = H265InterlaceMode' "TOP_FIELD"
+
+{-# COMPLETE
+  BottomField,
+  FollowBottomField,
+  FollowTopField,
+  Progressive,
+  TopField,
+  H265InterlaceMode' #-}
 
 instance FromText H265InterlaceMode where
-    parser = takeLowerText >>= \case
-        "bottom_field" -> pure BottomField
-        "follow_bottom_field" -> pure FollowBottomField
-        "follow_top_field" -> pure FollowTopField
-        "progressive" -> pure Progressive
-        "top_field" -> pure TopField
-        e -> fromTextError $ "Failure parsing H265InterlaceMode from value: '" <> e
-           <> "'. Accepted values: bottom_field, follow_bottom_field, follow_top_field, progressive, top_field"
+    parser = (H265InterlaceMode' . mk) <$> takeText
 
 instance ToText H265InterlaceMode where
-    toText = \case
-        BottomField -> "BOTTOM_FIELD"
-        FollowBottomField -> "FOLLOW_BOTTOM_FIELD"
-        FollowTopField -> "FOLLOW_TOP_FIELD"
-        Progressive -> "PROGRESSIVE"
-        TopField -> "TOP_FIELD"
+    toText (H265InterlaceMode' ci) = original ci
+
+-- | Represents an enum of /known/ $H265InterlaceMode.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum H265InterlaceMode where
+    toEnum i = case i of
+        0 -> BottomField
+        1 -> FollowBottomField
+        2 -> FollowTopField
+        3 -> Progressive
+        4 -> TopField
+        _ -> (error . showText) $ "Unknown index for H265InterlaceMode: " <> toText i
+    fromEnum x = case x of
+        BottomField -> 0
+        FollowBottomField -> 1
+        FollowTopField -> 2
+        Progressive -> 3
+        TopField -> 4
+        H265InterlaceMode' name -> (error . showText) $ "Unknown H265InterlaceMode: " <> original name
+
+-- | Represents the bounds of /known/ $H265InterlaceMode.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded H265InterlaceMode where
+    minBound = BottomField
+    maxBound = TopField
 
 instance Hashable     H265InterlaceMode
 instance NFData       H265InterlaceMode

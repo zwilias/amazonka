@@ -42,6 +42,7 @@ module Network.AWS.GuardDuty.CreateFilter
     ) where
 
 import Network.AWS.GuardDuty.Types
+import Network.AWS.GuardDuty.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request

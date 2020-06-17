@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,27 +16,59 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.S3.Types.ExpirationStatus where
+module Network.AWS.S3.Types.ExpirationStatus (
+  ExpirationStatus (
+    ..
+    , ESDisabled
+    , ESEnabled
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
 import Network.AWS.S3.Internal
-  
-data ExpirationStatus = ESDisabled
-                      | ESEnabled
-                          deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                    Typeable, Generic)
+
+data ExpirationStatus = ExpirationStatus' (CI Text)
+                          deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                    Generic)
+
+pattern ESDisabled :: ExpirationStatus
+pattern ESDisabled = ExpirationStatus' "Disabled"
+
+pattern ESEnabled :: ExpirationStatus
+pattern ESEnabled = ExpirationStatus' "Enabled"
+
+{-# COMPLETE
+  ESDisabled,
+  ESEnabled,
+  ExpirationStatus' #-}
 
 instance FromText ExpirationStatus where
-    parser = takeLowerText >>= \case
-        "disabled" -> pure ESDisabled
-        "enabled" -> pure ESEnabled
-        e -> fromTextError $ "Failure parsing ExpirationStatus from value: '" <> e
-           <> "'. Accepted values: disabled, enabled"
+    parser = (ExpirationStatus' . mk) <$> takeText
 
 instance ToText ExpirationStatus where
-    toText = \case
-        ESDisabled -> "Disabled"
-        ESEnabled -> "Enabled"
+    toText (ExpirationStatus' ci) = original ci
+
+-- | Represents an enum of /known/ $ExpirationStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum ExpirationStatus where
+    toEnum i = case i of
+        0 -> ESDisabled
+        1 -> ESEnabled
+        _ -> (error . showText) $ "Unknown index for ExpirationStatus: " <> toText i
+    fromEnum x = case x of
+        ESDisabled -> 0
+        ESEnabled -> 1
+        ExpirationStatus' name -> (error . showText) $ "Unknown ExpirationStatus: " <> original name
+
+-- | Represents the bounds of /known/ $ExpirationStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded ExpirationStatus where
+    minBound = ESDisabled
+    maxBound = ESEnabled
 
 instance Hashable     ExpirationStatus
 instance NFData       ExpirationStatus

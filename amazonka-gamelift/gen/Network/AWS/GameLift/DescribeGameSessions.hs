@@ -74,6 +74,7 @@ module Network.AWS.GameLift.DescribeGameSessions
     ) where
 
 import Network.AWS.GameLift.Types
+import Network.AWS.GameLift.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request

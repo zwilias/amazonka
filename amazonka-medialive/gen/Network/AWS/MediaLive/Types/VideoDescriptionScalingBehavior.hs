@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,28 +16,60 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.MediaLive.Types.VideoDescriptionScalingBehavior where
+module Network.AWS.MediaLive.Types.VideoDescriptionScalingBehavior (
+  VideoDescriptionScalingBehavior (
+    ..
+    , Default
+    , StretchToOutput
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
+
 -- | Placeholder documentation for VideoDescriptionScalingBehavior
-data VideoDescriptionScalingBehavior = Default
-                                     | StretchToOutput
-                                         deriving (Eq, Ord, Read, Show, Enum,
-                                                   Bounded, Data, Typeable,
-                                                   Generic)
+data VideoDescriptionScalingBehavior = VideoDescriptionScalingBehavior' (CI
+                                                                           Text)
+                                         deriving (Eq, Ord, Read, Show, Data,
+                                                   Typeable, Generic)
+
+pattern Default :: VideoDescriptionScalingBehavior
+pattern Default = VideoDescriptionScalingBehavior' "DEFAULT"
+
+pattern StretchToOutput :: VideoDescriptionScalingBehavior
+pattern StretchToOutput = VideoDescriptionScalingBehavior' "STRETCH_TO_OUTPUT"
+
+{-# COMPLETE
+  Default,
+  StretchToOutput,
+  VideoDescriptionScalingBehavior' #-}
 
 instance FromText VideoDescriptionScalingBehavior where
-    parser = takeLowerText >>= \case
-        "default" -> pure Default
-        "stretch_to_output" -> pure StretchToOutput
-        e -> fromTextError $ "Failure parsing VideoDescriptionScalingBehavior from value: '" <> e
-           <> "'. Accepted values: default, stretch_to_output"
+    parser = (VideoDescriptionScalingBehavior' . mk) <$> takeText
 
 instance ToText VideoDescriptionScalingBehavior where
-    toText = \case
-        Default -> "DEFAULT"
-        StretchToOutput -> "STRETCH_TO_OUTPUT"
+    toText (VideoDescriptionScalingBehavior' ci) = original ci
+
+-- | Represents an enum of /known/ $VideoDescriptionScalingBehavior.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum VideoDescriptionScalingBehavior where
+    toEnum i = case i of
+        0 -> Default
+        1 -> StretchToOutput
+        _ -> (error . showText) $ "Unknown index for VideoDescriptionScalingBehavior: " <> toText i
+    fromEnum x = case x of
+        Default -> 0
+        StretchToOutput -> 1
+        VideoDescriptionScalingBehavior' name -> (error . showText) $ "Unknown VideoDescriptionScalingBehavior: " <> original name
+
+-- | Represents the bounds of /known/ $VideoDescriptionScalingBehavior.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded VideoDescriptionScalingBehavior where
+    minBound = Default
+    maxBound = StretchToOutput
 
 instance Hashable     VideoDescriptionScalingBehavior
 instance NFData       VideoDescriptionScalingBehavior

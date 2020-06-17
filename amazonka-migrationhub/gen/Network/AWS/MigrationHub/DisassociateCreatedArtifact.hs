@@ -49,6 +49,7 @@ module Network.AWS.MigrationHub.DisassociateCreatedArtifact
 
 import Network.AWS.Lens
 import Network.AWS.MigrationHub.Types
+import Network.AWS.MigrationHub.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response

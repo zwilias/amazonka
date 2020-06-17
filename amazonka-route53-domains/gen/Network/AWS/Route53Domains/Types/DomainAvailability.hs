@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,44 +16,101 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.Route53Domains.Types.DomainAvailability where
+module Network.AWS.Route53Domains.Types.DomainAvailability (
+  DomainAvailability (
+    ..
+    , DAAvailable
+    , DAAvailablePreorder
+    , DAAvailableReserved
+    , DADontKnow
+    , DAReserved
+    , DAUnavailable
+    , DAUnavailablePremium
+    , DAUnavailableRestricted
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data DomainAvailability = DAAvailable
-                        | DAAvailablePreorder
-                        | DAAvailableReserved
-                        | DADontKnow
-                        | DAReserved
-                        | DAUnavailable
-                        | DAUnavailablePremium
-                        | DAUnavailableRestricted
-                            deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                      Typeable, Generic)
+
+data DomainAvailability = DomainAvailability' (CI
+                                                 Text)
+                            deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                      Generic)
+
+pattern DAAvailable :: DomainAvailability
+pattern DAAvailable = DomainAvailability' "AVAILABLE"
+
+pattern DAAvailablePreorder :: DomainAvailability
+pattern DAAvailablePreorder = DomainAvailability' "AVAILABLE_PREORDER"
+
+pattern DAAvailableReserved :: DomainAvailability
+pattern DAAvailableReserved = DomainAvailability' "AVAILABLE_RESERVED"
+
+pattern DADontKnow :: DomainAvailability
+pattern DADontKnow = DomainAvailability' "DONT_KNOW"
+
+pattern DAReserved :: DomainAvailability
+pattern DAReserved = DomainAvailability' "RESERVED"
+
+pattern DAUnavailable :: DomainAvailability
+pattern DAUnavailable = DomainAvailability' "UNAVAILABLE"
+
+pattern DAUnavailablePremium :: DomainAvailability
+pattern DAUnavailablePremium = DomainAvailability' "UNAVAILABLE_PREMIUM"
+
+pattern DAUnavailableRestricted :: DomainAvailability
+pattern DAUnavailableRestricted = DomainAvailability' "UNAVAILABLE_RESTRICTED"
+
+{-# COMPLETE
+  DAAvailable,
+  DAAvailablePreorder,
+  DAAvailableReserved,
+  DADontKnow,
+  DAReserved,
+  DAUnavailable,
+  DAUnavailablePremium,
+  DAUnavailableRestricted,
+  DomainAvailability' #-}
 
 instance FromText DomainAvailability where
-    parser = takeLowerText >>= \case
-        "available" -> pure DAAvailable
-        "available_preorder" -> pure DAAvailablePreorder
-        "available_reserved" -> pure DAAvailableReserved
-        "dont_know" -> pure DADontKnow
-        "reserved" -> pure DAReserved
-        "unavailable" -> pure DAUnavailable
-        "unavailable_premium" -> pure DAUnavailablePremium
-        "unavailable_restricted" -> pure DAUnavailableRestricted
-        e -> fromTextError $ "Failure parsing DomainAvailability from value: '" <> e
-           <> "'. Accepted values: available, available_preorder, available_reserved, dont_know, reserved, unavailable, unavailable_premium, unavailable_restricted"
+    parser = (DomainAvailability' . mk) <$> takeText
 
 instance ToText DomainAvailability where
-    toText = \case
-        DAAvailable -> "AVAILABLE"
-        DAAvailablePreorder -> "AVAILABLE_PREORDER"
-        DAAvailableReserved -> "AVAILABLE_RESERVED"
-        DADontKnow -> "DONT_KNOW"
-        DAReserved -> "RESERVED"
-        DAUnavailable -> "UNAVAILABLE"
-        DAUnavailablePremium -> "UNAVAILABLE_PREMIUM"
-        DAUnavailableRestricted -> "UNAVAILABLE_RESTRICTED"
+    toText (DomainAvailability' ci) = original ci
+
+-- | Represents an enum of /known/ $DomainAvailability.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum DomainAvailability where
+    toEnum i = case i of
+        0 -> DAAvailable
+        1 -> DAAvailablePreorder
+        2 -> DAAvailableReserved
+        3 -> DADontKnow
+        4 -> DAReserved
+        5 -> DAUnavailable
+        6 -> DAUnavailablePremium
+        7 -> DAUnavailableRestricted
+        _ -> (error . showText) $ "Unknown index for DomainAvailability: " <> toText i
+    fromEnum x = case x of
+        DAAvailable -> 0
+        DAAvailablePreorder -> 1
+        DAAvailableReserved -> 2
+        DADontKnow -> 3
+        DAReserved -> 4
+        DAUnavailable -> 5
+        DAUnavailablePremium -> 6
+        DAUnavailableRestricted -> 7
+        DomainAvailability' name -> (error . showText) $ "Unknown DomainAvailability: " <> original name
+
+-- | Represents the bounds of /known/ $DomainAvailability.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded DomainAvailability where
+    minBound = DAAvailable
+    maxBound = DAUnavailableRestricted
 
 instance Hashable     DomainAvailability
 instance NFData       DomainAvailability

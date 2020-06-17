@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,58 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.Connect.Types.PhoneNumberType where
+module Network.AWS.Connect.Types.PhoneNumberType (
+  PhoneNumberType (
+    ..
+    , Did
+    , TollFree
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data PhoneNumberType = Did
-                     | TollFree
-                         deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                   Typeable, Generic)
+
+data PhoneNumberType = PhoneNumberType' (CI Text)
+                         deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                   Generic)
+
+pattern Did :: PhoneNumberType
+pattern Did = PhoneNumberType' "DID"
+
+pattern TollFree :: PhoneNumberType
+pattern TollFree = PhoneNumberType' "TOLL_FREE"
+
+{-# COMPLETE
+  Did,
+  TollFree,
+  PhoneNumberType' #-}
 
 instance FromText PhoneNumberType where
-    parser = takeLowerText >>= \case
-        "did" -> pure Did
-        "toll_free" -> pure TollFree
-        e -> fromTextError $ "Failure parsing PhoneNumberType from value: '" <> e
-           <> "'. Accepted values: did, toll_free"
+    parser = (PhoneNumberType' . mk) <$> takeText
 
 instance ToText PhoneNumberType where
-    toText = \case
-        Did -> "DID"
-        TollFree -> "TOLL_FREE"
+    toText (PhoneNumberType' ci) = original ci
+
+-- | Represents an enum of /known/ $PhoneNumberType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum PhoneNumberType where
+    toEnum i = case i of
+        0 -> Did
+        1 -> TollFree
+        _ -> (error . showText) $ "Unknown index for PhoneNumberType: " <> toText i
+    fromEnum x = case x of
+        Did -> 0
+        TollFree -> 1
+        PhoneNumberType' name -> (error . showText) $ "Unknown PhoneNumberType: " <> original name
+
+-- | Represents the bounds of /known/ $PhoneNumberType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded PhoneNumberType where
+    minBound = Did
+    maxBound = TollFree
 
 instance Hashable     PhoneNumberType
 instance NFData       PhoneNumberType

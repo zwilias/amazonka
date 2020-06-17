@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,35 +16,79 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.IoT.Types.LogLevel where
+module Network.AWS.IoT.Types.LogLevel (
+  LogLevel (
+    ..
+    , Debug
+    , Disabled
+    , Error'
+    , Info
+    , Warn
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data LogLevel = Debug
-              | Disabled
-              | Error'
-              | Info
-              | Warn
-                  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                            Typeable, Generic)
+
+data LogLevel = LogLevel' (CI Text)
+                  deriving (Eq, Ord, Read, Show, Data, Typeable,
+                            Generic)
+
+pattern Debug :: LogLevel
+pattern Debug = LogLevel' "DEBUG"
+
+pattern Disabled :: LogLevel
+pattern Disabled = LogLevel' "DISABLED"
+
+pattern Error' :: LogLevel
+pattern Error' = LogLevel' "ERROR"
+
+pattern Info :: LogLevel
+pattern Info = LogLevel' "INFO"
+
+pattern Warn :: LogLevel
+pattern Warn = LogLevel' "WARN"
+
+{-# COMPLETE
+  Debug,
+  Disabled,
+  Error',
+  Info,
+  Warn,
+  LogLevel' #-}
 
 instance FromText LogLevel where
-    parser = takeLowerText >>= \case
-        "debug" -> pure Debug
-        "disabled" -> pure Disabled
-        "error" -> pure Error'
-        "info" -> pure Info
-        "warn" -> pure Warn
-        e -> fromTextError $ "Failure parsing LogLevel from value: '" <> e
-           <> "'. Accepted values: debug, disabled, error, info, warn"
+    parser = (LogLevel' . mk) <$> takeText
 
 instance ToText LogLevel where
-    toText = \case
-        Debug -> "DEBUG"
-        Disabled -> "DISABLED"
-        Error' -> "ERROR"
-        Info -> "INFO"
-        Warn -> "WARN"
+    toText (LogLevel' ci) = original ci
+
+-- | Represents an enum of /known/ $LogLevel.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum LogLevel where
+    toEnum i = case i of
+        0 -> Debug
+        1 -> Disabled
+        2 -> Error'
+        3 -> Info
+        4 -> Warn
+        _ -> (error . showText) $ "Unknown index for LogLevel: " <> toText i
+    fromEnum x = case x of
+        Debug -> 0
+        Disabled -> 1
+        Error' -> 2
+        Info -> 3
+        Warn -> 4
+        LogLevel' name -> (error . showText) $ "Unknown LogLevel: " <> original name
+
+-- | Represents the bounds of /known/ $LogLevel.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded LogLevel where
+    minBound = Debug
+    maxBound = Warn
 
 instance Hashable     LogLevel
 instance NFData       LogLevel

@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,38 +16,86 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.CodePipeline.Types.TriggerType where
+module Network.AWS.CodePipeline.Types.TriggerType (
+  TriggerType (
+    ..
+    , CloudWatchEvent
+    , CreatePipeline
+    , PollForSourceChanges
+    , PutActionRevision
+    , StartPipelineExecution
+    , Webhook
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data TriggerType = CloudWatchEvent
-                 | CreatePipeline
-                 | PollForSourceChanges
-                 | PutActionRevision
-                 | StartPipelineExecution
-                 | Webhook
-                     deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                               Typeable, Generic)
+
+data TriggerType = TriggerType' (CI Text)
+                     deriving (Eq, Ord, Read, Show, Data, Typeable,
+                               Generic)
+
+pattern CloudWatchEvent :: TriggerType
+pattern CloudWatchEvent = TriggerType' "CloudWatchEvent"
+
+pattern CreatePipeline :: TriggerType
+pattern CreatePipeline = TriggerType' "CreatePipeline"
+
+pattern PollForSourceChanges :: TriggerType
+pattern PollForSourceChanges = TriggerType' "PollForSourceChanges"
+
+pattern PutActionRevision :: TriggerType
+pattern PutActionRevision = TriggerType' "PutActionRevision"
+
+pattern StartPipelineExecution :: TriggerType
+pattern StartPipelineExecution = TriggerType' "StartPipelineExecution"
+
+pattern Webhook :: TriggerType
+pattern Webhook = TriggerType' "Webhook"
+
+{-# COMPLETE
+  CloudWatchEvent,
+  CreatePipeline,
+  PollForSourceChanges,
+  PutActionRevision,
+  StartPipelineExecution,
+  Webhook,
+  TriggerType' #-}
 
 instance FromText TriggerType where
-    parser = takeLowerText >>= \case
-        "cloudwatchevent" -> pure CloudWatchEvent
-        "createpipeline" -> pure CreatePipeline
-        "pollforsourcechanges" -> pure PollForSourceChanges
-        "putactionrevision" -> pure PutActionRevision
-        "startpipelineexecution" -> pure StartPipelineExecution
-        "webhook" -> pure Webhook
-        e -> fromTextError $ "Failure parsing TriggerType from value: '" <> e
-           <> "'. Accepted values: cloudwatchevent, createpipeline, pollforsourcechanges, putactionrevision, startpipelineexecution, webhook"
+    parser = (TriggerType' . mk) <$> takeText
 
 instance ToText TriggerType where
-    toText = \case
-        CloudWatchEvent -> "CloudWatchEvent"
-        CreatePipeline -> "CreatePipeline"
-        PollForSourceChanges -> "PollForSourceChanges"
-        PutActionRevision -> "PutActionRevision"
-        StartPipelineExecution -> "StartPipelineExecution"
-        Webhook -> "Webhook"
+    toText (TriggerType' ci) = original ci
+
+-- | Represents an enum of /known/ $TriggerType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum TriggerType where
+    toEnum i = case i of
+        0 -> CloudWatchEvent
+        1 -> CreatePipeline
+        2 -> PollForSourceChanges
+        3 -> PutActionRevision
+        4 -> StartPipelineExecution
+        5 -> Webhook
+        _ -> (error . showText) $ "Unknown index for TriggerType: " <> toText i
+    fromEnum x = case x of
+        CloudWatchEvent -> 0
+        CreatePipeline -> 1
+        PollForSourceChanges -> 2
+        PutActionRevision -> 3
+        StartPipelineExecution -> 4
+        Webhook -> 5
+        TriggerType' name -> (error . showText) $ "Unknown TriggerType: " <> original name
+
+-- | Represents the bounds of /known/ $TriggerType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded TriggerType where
+    minBound = CloudWatchEvent
+    maxBound = Webhook
 
 instance Hashable     TriggerType
 instance NFData       TriggerType

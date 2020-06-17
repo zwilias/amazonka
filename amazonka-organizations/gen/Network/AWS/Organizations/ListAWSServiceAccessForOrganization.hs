@@ -47,6 +47,7 @@ module Network.AWS.Organizations.ListAWSServiceAccessForOrganization
 
 import Network.AWS.Lens
 import Network.AWS.Organizations.Types
+import Network.AWS.Organizations.Types.Product
 import Network.AWS.Pager
 import Network.AWS.Prelude
 import Network.AWS.Request

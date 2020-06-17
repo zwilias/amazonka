@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,59 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.SSM.Types.InventoryDeletionStatus where
+module Network.AWS.SSM.Types.InventoryDeletionStatus (
+  InventoryDeletionStatus (
+    ..
+    , Complete
+    , InProgress
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data InventoryDeletionStatus = Complete
-                             | InProgress
-                                 deriving (Eq, Ord, Read, Show, Enum, Bounded,
-                                           Data, Typeable, Generic)
+
+data InventoryDeletionStatus = InventoryDeletionStatus' (CI
+                                                           Text)
+                                 deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                           Generic)
+
+pattern Complete :: InventoryDeletionStatus
+pattern Complete = InventoryDeletionStatus' "Complete"
+
+pattern InProgress :: InventoryDeletionStatus
+pattern InProgress = InventoryDeletionStatus' "InProgress"
+
+{-# COMPLETE
+  Complete,
+  InProgress,
+  InventoryDeletionStatus' #-}
 
 instance FromText InventoryDeletionStatus where
-    parser = takeLowerText >>= \case
-        "complete" -> pure Complete
-        "inprogress" -> pure InProgress
-        e -> fromTextError $ "Failure parsing InventoryDeletionStatus from value: '" <> e
-           <> "'. Accepted values: complete, inprogress"
+    parser = (InventoryDeletionStatus' . mk) <$> takeText
 
 instance ToText InventoryDeletionStatus where
-    toText = \case
-        Complete -> "Complete"
-        InProgress -> "InProgress"
+    toText (InventoryDeletionStatus' ci) = original ci
+
+-- | Represents an enum of /known/ $InventoryDeletionStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum InventoryDeletionStatus where
+    toEnum i = case i of
+        0 -> Complete
+        1 -> InProgress
+        _ -> (error . showText) $ "Unknown index for InventoryDeletionStatus: " <> toText i
+    fromEnum x = case x of
+        Complete -> 0
+        InProgress -> 1
+        InventoryDeletionStatus' name -> (error . showText) $ "Unknown InventoryDeletionStatus: " <> original name
+
+-- | Represents the bounds of /known/ $InventoryDeletionStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded InventoryDeletionStatus where
+    minBound = Complete
+    maxBound = InProgress
 
 instance Hashable     InventoryDeletionStatus
 instance NFData       InventoryDeletionStatus

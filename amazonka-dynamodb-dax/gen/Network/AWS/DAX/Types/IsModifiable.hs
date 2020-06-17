@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,29 +16,65 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.DAX.Types.IsModifiable where
+module Network.AWS.DAX.Types.IsModifiable (
+  IsModifiable (
+    ..
+    , Conditional
+    , False'
+    , True'
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data IsModifiable = Conditional
-                  | False'
-                  | True'
-                      deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                Typeable, Generic)
+
+data IsModifiable = IsModifiable' (CI Text)
+                      deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                Generic)
+
+pattern Conditional :: IsModifiable
+pattern Conditional = IsModifiable' "CONDITIONAL"
+
+pattern False' :: IsModifiable
+pattern False' = IsModifiable' "FALSE"
+
+pattern True' :: IsModifiable
+pattern True' = IsModifiable' "TRUE"
+
+{-# COMPLETE
+  Conditional,
+  False',
+  True',
+  IsModifiable' #-}
 
 instance FromText IsModifiable where
-    parser = takeLowerText >>= \case
-        "conditional" -> pure Conditional
-        "false" -> pure False'
-        "true" -> pure True'
-        e -> fromTextError $ "Failure parsing IsModifiable from value: '" <> e
-           <> "'. Accepted values: conditional, false, true"
+    parser = (IsModifiable' . mk) <$> takeText
 
 instance ToText IsModifiable where
-    toText = \case
-        Conditional -> "CONDITIONAL"
-        False' -> "FALSE"
-        True' -> "TRUE"
+    toText (IsModifiable' ci) = original ci
+
+-- | Represents an enum of /known/ $IsModifiable.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum IsModifiable where
+    toEnum i = case i of
+        0 -> Conditional
+        1 -> False'
+        2 -> True'
+        _ -> (error . showText) $ "Unknown index for IsModifiable: " <> toText i
+    fromEnum x = case x of
+        Conditional -> 0
+        False' -> 1
+        True' -> 2
+        IsModifiable' name -> (error . showText) $ "Unknown IsModifiable: " <> original name
+
+-- | Represents the bounds of /known/ $IsModifiable.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded IsModifiable where
+    minBound = Conditional
+    maxBound = True'
 
 instance Hashable     IsModifiable
 instance NFData       IsModifiable

@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,31 +16,67 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.MediaLive.Types.VideoDescriptionRespondToAfd where
+module Network.AWS.MediaLive.Types.VideoDescriptionRespondToAfd (
+  VideoDescriptionRespondToAfd (
+    ..
+    , None
+    , Passthrough
+    , Respond
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
+
 -- | Placeholder documentation for VideoDescriptionRespondToAfd
-data VideoDescriptionRespondToAfd = None
-                                  | Passthrough
-                                  | Respond
-                                      deriving (Eq, Ord, Read, Show, Enum,
-                                                Bounded, Data, Typeable,
-                                                Generic)
+data VideoDescriptionRespondToAfd = VideoDescriptionRespondToAfd' (CI
+                                                                     Text)
+                                      deriving (Eq, Ord, Read, Show, Data,
+                                                Typeable, Generic)
+
+pattern None :: VideoDescriptionRespondToAfd
+pattern None = VideoDescriptionRespondToAfd' "NONE"
+
+pattern Passthrough :: VideoDescriptionRespondToAfd
+pattern Passthrough = VideoDescriptionRespondToAfd' "PASSTHROUGH"
+
+pattern Respond :: VideoDescriptionRespondToAfd
+pattern Respond = VideoDescriptionRespondToAfd' "RESPOND"
+
+{-# COMPLETE
+  None,
+  Passthrough,
+  Respond,
+  VideoDescriptionRespondToAfd' #-}
 
 instance FromText VideoDescriptionRespondToAfd where
-    parser = takeLowerText >>= \case
-        "none" -> pure None
-        "passthrough" -> pure Passthrough
-        "respond" -> pure Respond
-        e -> fromTextError $ "Failure parsing VideoDescriptionRespondToAfd from value: '" <> e
-           <> "'. Accepted values: none, passthrough, respond"
+    parser = (VideoDescriptionRespondToAfd' . mk) <$> takeText
 
 instance ToText VideoDescriptionRespondToAfd where
-    toText = \case
-        None -> "NONE"
-        Passthrough -> "PASSTHROUGH"
-        Respond -> "RESPOND"
+    toText (VideoDescriptionRespondToAfd' ci) = original ci
+
+-- | Represents an enum of /known/ $VideoDescriptionRespondToAfd.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum VideoDescriptionRespondToAfd where
+    toEnum i = case i of
+        0 -> None
+        1 -> Passthrough
+        2 -> Respond
+        _ -> (error . showText) $ "Unknown index for VideoDescriptionRespondToAfd: " <> toText i
+    fromEnum x = case x of
+        None -> 0
+        Passthrough -> 1
+        Respond -> 2
+        VideoDescriptionRespondToAfd' name -> (error . showText) $ "Unknown VideoDescriptionRespondToAfd: " <> original name
+
+-- | Represents the bounds of /known/ $VideoDescriptionRespondToAfd.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded VideoDescriptionRespondToAfd where
+    minBound = None
+    maxBound = Respond
 
 instance Hashable     VideoDescriptionRespondToAfd
 instance NFData       VideoDescriptionRespondToAfd

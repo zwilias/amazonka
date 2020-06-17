@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,58 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.ElastiCache.Types.ChangeType where
+module Network.AWS.ElastiCache.Types.ChangeType (
+  ChangeType (
+    ..
+    , Immediate
+    , RequiresReboot
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data ChangeType = Immediate
-                | RequiresReboot
-                    deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                              Typeable, Generic)
+
+data ChangeType = ChangeType' (CI Text)
+                    deriving (Eq, Ord, Read, Show, Data, Typeable,
+                              Generic)
+
+pattern Immediate :: ChangeType
+pattern Immediate = ChangeType' "immediate"
+
+pattern RequiresReboot :: ChangeType
+pattern RequiresReboot = ChangeType' "requires-reboot"
+
+{-# COMPLETE
+  Immediate,
+  RequiresReboot,
+  ChangeType' #-}
 
 instance FromText ChangeType where
-    parser = takeLowerText >>= \case
-        "immediate" -> pure Immediate
-        "requires-reboot" -> pure RequiresReboot
-        e -> fromTextError $ "Failure parsing ChangeType from value: '" <> e
-           <> "'. Accepted values: immediate, requires-reboot"
+    parser = (ChangeType' . mk) <$> takeText
 
 instance ToText ChangeType where
-    toText = \case
-        Immediate -> "immediate"
-        RequiresReboot -> "requires-reboot"
+    toText (ChangeType' ci) = original ci
+
+-- | Represents an enum of /known/ $ChangeType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum ChangeType where
+    toEnum i = case i of
+        0 -> Immediate
+        1 -> RequiresReboot
+        _ -> (error . showText) $ "Unknown index for ChangeType: " <> toText i
+    fromEnum x = case x of
+        Immediate -> 0
+        RequiresReboot -> 1
+        ChangeType' name -> (error . showText) $ "Unknown ChangeType: " <> original name
+
+-- | Represents the bounds of /known/ $ChangeType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded ChangeType where
+    minBound = Immediate
+    maxBound = RequiresReboot
 
 instance Hashable     ChangeType
 instance NFData       ChangeType

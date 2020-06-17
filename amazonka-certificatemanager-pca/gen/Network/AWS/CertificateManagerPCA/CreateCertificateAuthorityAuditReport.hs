@@ -41,6 +41,7 @@ module Network.AWS.CertificateManagerPCA.CreateCertificateAuthorityAuditReport
     ) where
 
 import Network.AWS.CertificateManagerPCA.Types
+import Network.AWS.CertificateManagerPCA.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request

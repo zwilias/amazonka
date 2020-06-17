@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,59 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.WorkSpaces.Types.TargetWorkspaceState where
+module Network.AWS.WorkSpaces.Types.TargetWorkspaceState (
+  TargetWorkspaceState (
+    ..
+    , AdminMaintenance
+    , Available
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data TargetWorkspaceState = AdminMaintenance
-                          | Available
-                              deriving (Eq, Ord, Read, Show, Enum, Bounded,
-                                        Data, Typeable, Generic)
+
+data TargetWorkspaceState = TargetWorkspaceState' (CI
+                                                     Text)
+                              deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                        Generic)
+
+pattern AdminMaintenance :: TargetWorkspaceState
+pattern AdminMaintenance = TargetWorkspaceState' "ADMIN_MAINTENANCE"
+
+pattern Available :: TargetWorkspaceState
+pattern Available = TargetWorkspaceState' "AVAILABLE"
+
+{-# COMPLETE
+  AdminMaintenance,
+  Available,
+  TargetWorkspaceState' #-}
 
 instance FromText TargetWorkspaceState where
-    parser = takeLowerText >>= \case
-        "admin_maintenance" -> pure AdminMaintenance
-        "available" -> pure Available
-        e -> fromTextError $ "Failure parsing TargetWorkspaceState from value: '" <> e
-           <> "'. Accepted values: admin_maintenance, available"
+    parser = (TargetWorkspaceState' . mk) <$> takeText
 
 instance ToText TargetWorkspaceState where
-    toText = \case
-        AdminMaintenance -> "ADMIN_MAINTENANCE"
-        Available -> "AVAILABLE"
+    toText (TargetWorkspaceState' ci) = original ci
+
+-- | Represents an enum of /known/ $TargetWorkspaceState.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum TargetWorkspaceState where
+    toEnum i = case i of
+        0 -> AdminMaintenance
+        1 -> Available
+        _ -> (error . showText) $ "Unknown index for TargetWorkspaceState: " <> toText i
+    fromEnum x = case x of
+        AdminMaintenance -> 0
+        Available -> 1
+        TargetWorkspaceState' name -> (error . showText) $ "Unknown TargetWorkspaceState: " <> original name
+
+-- | Represents the bounds of /known/ $TargetWorkspaceState.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded TargetWorkspaceState where
+    minBound = AdminMaintenance
+    maxBound = Available
 
 instance Hashable     TargetWorkspaceState
 instance NFData       TargetWorkspaceState

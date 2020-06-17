@@ -39,6 +39,7 @@ module Network.AWS.AutoScaling.SetDesiredCapacity
     ) where
 
 import Network.AWS.AutoScaling.Types
+import Network.AWS.AutoScaling.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request

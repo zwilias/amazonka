@@ -99,6 +99,7 @@ library
         , Network.AWS.ELBv2.Types.LoadBalancerStateEnum
         , Network.AWS.ELBv2.Types.LoadBalancerTypeEnum
         , Network.AWS.ELBv2.Types.Matcher
+        , Network.AWS.ELBv2.Types.Product
         , Network.AWS.ELBv2.Types.ProtocolEnum
         , Network.AWS.ELBv2.Types.Rule
         , Network.AWS.ELBv2.Types.RuleCondition
@@ -119,6 +120,7 @@ library
     build-depends:
           amazonka-core == 1.6.1.*
         , base          >= 4.7     && < 5
+        , case-insensitive
 
 test-suite amazonka-elbv2-test
     type:              exitcode-stdio-1.0
@@ -142,6 +144,7 @@ test-suite amazonka-elbv2-test
         , amazonka-elbv2
         , base
         , bytestring
+        , case-insensitive
         , tasty
         , tasty-hunit
         , text

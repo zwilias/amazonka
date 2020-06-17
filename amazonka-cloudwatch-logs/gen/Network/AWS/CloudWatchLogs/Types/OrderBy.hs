@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,58 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.CloudWatchLogs.Types.OrderBy where
+module Network.AWS.CloudWatchLogs.Types.OrderBy (
+  OrderBy (
+    ..
+    , LastEventTime
+    , LogStreamName
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data OrderBy = LastEventTime
-             | LogStreamName
-                 deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                           Typeable, Generic)
+
+data OrderBy = OrderBy' (CI Text)
+                 deriving (Eq, Ord, Read, Show, Data, Typeable,
+                           Generic)
+
+pattern LastEventTime :: OrderBy
+pattern LastEventTime = OrderBy' "LastEventTime"
+
+pattern LogStreamName :: OrderBy
+pattern LogStreamName = OrderBy' "LogStreamName"
+
+{-# COMPLETE
+  LastEventTime,
+  LogStreamName,
+  OrderBy' #-}
 
 instance FromText OrderBy where
-    parser = takeLowerText >>= \case
-        "lasteventtime" -> pure LastEventTime
-        "logstreamname" -> pure LogStreamName
-        e -> fromTextError $ "Failure parsing OrderBy from value: '" <> e
-           <> "'. Accepted values: lasteventtime, logstreamname"
+    parser = (OrderBy' . mk) <$> takeText
 
 instance ToText OrderBy where
-    toText = \case
-        LastEventTime -> "LastEventTime"
-        LogStreamName -> "LogStreamName"
+    toText (OrderBy' ci) = original ci
+
+-- | Represents an enum of /known/ $OrderBy.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum OrderBy where
+    toEnum i = case i of
+        0 -> LastEventTime
+        1 -> LogStreamName
+        _ -> (error . showText) $ "Unknown index for OrderBy: " <> toText i
+    fromEnum x = case x of
+        LastEventTime -> 0
+        LogStreamName -> 1
+        OrderBy' name -> (error . showText) $ "Unknown OrderBy: " <> original name
+
+-- | Represents the bounds of /known/ $OrderBy.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded OrderBy where
+    minBound = LastEventTime
+    maxBound = LogStreamName
 
 instance Hashable     OrderBy
 instance NFData       OrderBy

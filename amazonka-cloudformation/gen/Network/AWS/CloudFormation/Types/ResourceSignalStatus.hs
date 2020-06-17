@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,59 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.CloudFormation.Types.ResourceSignalStatus where
+module Network.AWS.CloudFormation.Types.ResourceSignalStatus (
+  ResourceSignalStatus (
+    ..
+    , Failure
+    , Success
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data ResourceSignalStatus = Failure
-                          | Success
-                              deriving (Eq, Ord, Read, Show, Enum, Bounded,
-                                        Data, Typeable, Generic)
+
+data ResourceSignalStatus = ResourceSignalStatus' (CI
+                                                     Text)
+                              deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                        Generic)
+
+pattern Failure :: ResourceSignalStatus
+pattern Failure = ResourceSignalStatus' "FAILURE"
+
+pattern Success :: ResourceSignalStatus
+pattern Success = ResourceSignalStatus' "SUCCESS"
+
+{-# COMPLETE
+  Failure,
+  Success,
+  ResourceSignalStatus' #-}
 
 instance FromText ResourceSignalStatus where
-    parser = takeLowerText >>= \case
-        "failure" -> pure Failure
-        "success" -> pure Success
-        e -> fromTextError $ "Failure parsing ResourceSignalStatus from value: '" <> e
-           <> "'. Accepted values: failure, success"
+    parser = (ResourceSignalStatus' . mk) <$> takeText
 
 instance ToText ResourceSignalStatus where
-    toText = \case
-        Failure -> "FAILURE"
-        Success -> "SUCCESS"
+    toText (ResourceSignalStatus' ci) = original ci
+
+-- | Represents an enum of /known/ $ResourceSignalStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum ResourceSignalStatus where
+    toEnum i = case i of
+        0 -> Failure
+        1 -> Success
+        _ -> (error . showText) $ "Unknown index for ResourceSignalStatus: " <> toText i
+    fromEnum x = case x of
+        Failure -> 0
+        Success -> 1
+        ResourceSignalStatus' name -> (error . showText) $ "Unknown ResourceSignalStatus: " <> original name
+
+-- | Represents the bounds of /known/ $ResourceSignalStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded ResourceSignalStatus where
+    minBound = Failure
+    maxBound = Success
 
 instance Hashable     ResourceSignalStatus
 instance NFData       ResourceSignalStatus

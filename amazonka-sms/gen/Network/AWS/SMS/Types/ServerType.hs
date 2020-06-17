@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,24 +16,52 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.SMS.Types.ServerType where
+module Network.AWS.SMS.Types.ServerType (
+  ServerType (
+    ..
+    , VirtualMachine
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
+
 -- | Type of server.
-data ServerType = VirtualMachine
-                    deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                              Typeable, Generic)
+data ServerType = ServerType' (CI Text)
+                    deriving (Eq, Ord, Read, Show, Data, Typeable,
+                              Generic)
+
+pattern VirtualMachine :: ServerType
+pattern VirtualMachine = ServerType' "VIRTUAL_MACHINE"
+
+{-# COMPLETE
+  VirtualMachine,
+  ServerType' #-}
 
 instance FromText ServerType where
-    parser = takeLowerText >>= \case
-        "virtual_machine" -> pure VirtualMachine
-        e -> fromTextError $ "Failure parsing ServerType from value: '" <> e
-           <> "'. Accepted values: virtual_machine"
+    parser = (ServerType' . mk) <$> takeText
 
 instance ToText ServerType where
-    toText = \case
-        VirtualMachine -> "VIRTUAL_MACHINE"
+    toText (ServerType' ci) = original ci
+
+-- | Represents an enum of /known/ $ServerType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum ServerType where
+    toEnum i = case i of
+        0 -> VirtualMachine
+        _ -> (error . showText) $ "Unknown index for ServerType: " <> toText i
+    fromEnum x = case x of
+        VirtualMachine -> 0
+        ServerType' name -> (error . showText) $ "Unknown ServerType: " <> original name
+
+-- | Represents the bounds of /known/ $ServerType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded ServerType where
+    minBound = VirtualMachine
+    maxBound = VirtualMachine
 
 instance Hashable     ServerType
 instance NFData       ServerType

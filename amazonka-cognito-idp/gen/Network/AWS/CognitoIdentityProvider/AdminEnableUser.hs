@@ -40,6 +40,7 @@ module Network.AWS.CognitoIdentityProvider.AdminEnableUser
     ) where
 
 import Network.AWS.CognitoIdentityProvider.Types
+import Network.AWS.CognitoIdentityProvider.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request

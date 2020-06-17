@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,23 +16,51 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.CloudTrail.Types.EventCategory where
+module Network.AWS.CloudTrail.Types.EventCategory (
+  EventCategory (
+    ..
+    , Insight
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data EventCategory = Insight
-                       deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                 Typeable, Generic)
+
+data EventCategory = EventCategory' (CI Text)
+                       deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                 Generic)
+
+pattern Insight :: EventCategory
+pattern Insight = EventCategory' "insight"
+
+{-# COMPLETE
+  Insight,
+  EventCategory' #-}
 
 instance FromText EventCategory where
-    parser = takeLowerText >>= \case
-        "insight" -> pure Insight
-        e -> fromTextError $ "Failure parsing EventCategory from value: '" <> e
-           <> "'. Accepted values: insight"
+    parser = (EventCategory' . mk) <$> takeText
 
 instance ToText EventCategory where
-    toText = \case
-        Insight -> "insight"
+    toText (EventCategory' ci) = original ci
+
+-- | Represents an enum of /known/ $EventCategory.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum EventCategory where
+    toEnum i = case i of
+        0 -> Insight
+        _ -> (error . showText) $ "Unknown index for EventCategory: " <> toText i
+    fromEnum x = case x of
+        Insight -> 0
+        EventCategory' name -> (error . showText) $ "Unknown EventCategory: " <> original name
+
+-- | Represents the bounds of /known/ $EventCategory.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded EventCategory where
+    minBound = Insight
+    maxBound = Insight
 
 instance Hashable     EventCategory
 instance NFData       EventCategory

@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,56 +16,129 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.Lightsail.Types.LoadBalancerMetricName where
+module Network.AWS.Lightsail.Types.LoadBalancerMetricName (
+  LoadBalancerMetricName (
+    ..
+    , ClientTLSNegotiationErrorCount
+    , HTTPCodeInstance2XXCount
+    , HTTPCodeInstance3XXCount
+    , HTTPCodeInstance4XXCount
+    , HTTPCodeInstance5XXCount
+    , HTTPCodeLb4XXCount
+    , HTTPCodeLb5XXCount
+    , HealthyHostCount
+    , InstanceResponseTime
+    , RejectedConnectionCount
+    , RequestCount
+    , UnhealthyHostCount
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data LoadBalancerMetricName = ClientTLSNegotiationErrorCount
-                            | HTTPCodeInstance2XXCount
-                            | HTTPCodeInstance3XXCount
-                            | HTTPCodeInstance4XXCount
-                            | HTTPCodeInstance5XXCount
-                            | HTTPCodeLb4XXCount
-                            | HTTPCodeLb5XXCount
-                            | HealthyHostCount
-                            | InstanceResponseTime
-                            | RejectedConnectionCount
-                            | RequestCount
-                            | UnhealthyHostCount
-                                deriving (Eq, Ord, Read, Show, Enum, Bounded,
-                                          Data, Typeable, Generic)
+
+data LoadBalancerMetricName = LoadBalancerMetricName' (CI
+                                                         Text)
+                                deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                          Generic)
+
+pattern ClientTLSNegotiationErrorCount :: LoadBalancerMetricName
+pattern ClientTLSNegotiationErrorCount = LoadBalancerMetricName' "ClientTLSNegotiationErrorCount"
+
+pattern HTTPCodeInstance2XXCount :: LoadBalancerMetricName
+pattern HTTPCodeInstance2XXCount = LoadBalancerMetricName' "HTTPCode_Instance_2XX_Count"
+
+pattern HTTPCodeInstance3XXCount :: LoadBalancerMetricName
+pattern HTTPCodeInstance3XXCount = LoadBalancerMetricName' "HTTPCode_Instance_3XX_Count"
+
+pattern HTTPCodeInstance4XXCount :: LoadBalancerMetricName
+pattern HTTPCodeInstance4XXCount = LoadBalancerMetricName' "HTTPCode_Instance_4XX_Count"
+
+pattern HTTPCodeInstance5XXCount :: LoadBalancerMetricName
+pattern HTTPCodeInstance5XXCount = LoadBalancerMetricName' "HTTPCode_Instance_5XX_Count"
+
+pattern HTTPCodeLb4XXCount :: LoadBalancerMetricName
+pattern HTTPCodeLb4XXCount = LoadBalancerMetricName' "HTTPCode_LB_4XX_Count"
+
+pattern HTTPCodeLb5XXCount :: LoadBalancerMetricName
+pattern HTTPCodeLb5XXCount = LoadBalancerMetricName' "HTTPCode_LB_5XX_Count"
+
+pattern HealthyHostCount :: LoadBalancerMetricName
+pattern HealthyHostCount = LoadBalancerMetricName' "HealthyHostCount"
+
+pattern InstanceResponseTime :: LoadBalancerMetricName
+pattern InstanceResponseTime = LoadBalancerMetricName' "InstanceResponseTime"
+
+pattern RejectedConnectionCount :: LoadBalancerMetricName
+pattern RejectedConnectionCount = LoadBalancerMetricName' "RejectedConnectionCount"
+
+pattern RequestCount :: LoadBalancerMetricName
+pattern RequestCount = LoadBalancerMetricName' "RequestCount"
+
+pattern UnhealthyHostCount :: LoadBalancerMetricName
+pattern UnhealthyHostCount = LoadBalancerMetricName' "UnhealthyHostCount"
+
+{-# COMPLETE
+  ClientTLSNegotiationErrorCount,
+  HTTPCodeInstance2XXCount,
+  HTTPCodeInstance3XXCount,
+  HTTPCodeInstance4XXCount,
+  HTTPCodeInstance5XXCount,
+  HTTPCodeLb4XXCount,
+  HTTPCodeLb5XXCount,
+  HealthyHostCount,
+  InstanceResponseTime,
+  RejectedConnectionCount,
+  RequestCount,
+  UnhealthyHostCount,
+  LoadBalancerMetricName' #-}
 
 instance FromText LoadBalancerMetricName where
-    parser = takeLowerText >>= \case
-        "clienttlsnegotiationerrorcount" -> pure ClientTLSNegotiationErrorCount
-        "httpcode_instance_2xx_count" -> pure HTTPCodeInstance2XXCount
-        "httpcode_instance_3xx_count" -> pure HTTPCodeInstance3XXCount
-        "httpcode_instance_4xx_count" -> pure HTTPCodeInstance4XXCount
-        "httpcode_instance_5xx_count" -> pure HTTPCodeInstance5XXCount
-        "httpcode_lb_4xx_count" -> pure HTTPCodeLb4XXCount
-        "httpcode_lb_5xx_count" -> pure HTTPCodeLb5XXCount
-        "healthyhostcount" -> pure HealthyHostCount
-        "instanceresponsetime" -> pure InstanceResponseTime
-        "rejectedconnectioncount" -> pure RejectedConnectionCount
-        "requestcount" -> pure RequestCount
-        "unhealthyhostcount" -> pure UnhealthyHostCount
-        e -> fromTextError $ "Failure parsing LoadBalancerMetricName from value: '" <> e
-           <> "'. Accepted values: clienttlsnegotiationerrorcount, httpcode_instance_2xx_count, httpcode_instance_3xx_count, httpcode_instance_4xx_count, httpcode_instance_5xx_count, httpcode_lb_4xx_count, httpcode_lb_5xx_count, healthyhostcount, instanceresponsetime, rejectedconnectioncount, requestcount, unhealthyhostcount"
+    parser = (LoadBalancerMetricName' . mk) <$> takeText
 
 instance ToText LoadBalancerMetricName where
-    toText = \case
-        ClientTLSNegotiationErrorCount -> "ClientTLSNegotiationErrorCount"
-        HTTPCodeInstance2XXCount -> "HTTPCode_Instance_2XX_Count"
-        HTTPCodeInstance3XXCount -> "HTTPCode_Instance_3XX_Count"
-        HTTPCodeInstance4XXCount -> "HTTPCode_Instance_4XX_Count"
-        HTTPCodeInstance5XXCount -> "HTTPCode_Instance_5XX_Count"
-        HTTPCodeLb4XXCount -> "HTTPCode_LB_4XX_Count"
-        HTTPCodeLb5XXCount -> "HTTPCode_LB_5XX_Count"
-        HealthyHostCount -> "HealthyHostCount"
-        InstanceResponseTime -> "InstanceResponseTime"
-        RejectedConnectionCount -> "RejectedConnectionCount"
-        RequestCount -> "RequestCount"
-        UnhealthyHostCount -> "UnhealthyHostCount"
+    toText (LoadBalancerMetricName' ci) = original ci
+
+-- | Represents an enum of /known/ $LoadBalancerMetricName.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum LoadBalancerMetricName where
+    toEnum i = case i of
+        0 -> ClientTLSNegotiationErrorCount
+        1 -> HTTPCodeInstance2XXCount
+        2 -> HTTPCodeInstance3XXCount
+        3 -> HTTPCodeInstance4XXCount
+        4 -> HTTPCodeInstance5XXCount
+        5 -> HTTPCodeLb4XXCount
+        6 -> HTTPCodeLb5XXCount
+        7 -> HealthyHostCount
+        8 -> InstanceResponseTime
+        9 -> RejectedConnectionCount
+        10 -> RequestCount
+        11 -> UnhealthyHostCount
+        _ -> (error . showText) $ "Unknown index for LoadBalancerMetricName: " <> toText i
+    fromEnum x = case x of
+        ClientTLSNegotiationErrorCount -> 0
+        HTTPCodeInstance2XXCount -> 1
+        HTTPCodeInstance3XXCount -> 2
+        HTTPCodeInstance4XXCount -> 3
+        HTTPCodeInstance5XXCount -> 4
+        HTTPCodeLb4XXCount -> 5
+        HTTPCodeLb5XXCount -> 6
+        HealthyHostCount -> 7
+        InstanceResponseTime -> 8
+        RejectedConnectionCount -> 9
+        RequestCount -> 10
+        UnhealthyHostCount -> 11
+        LoadBalancerMetricName' name -> (error . showText) $ "Unknown LoadBalancerMetricName: " <> original name
+
+-- | Represents the bounds of /known/ $LoadBalancerMetricName.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded LoadBalancerMetricName where
+    minBound = ClientTLSNegotiationErrorCount
+    maxBound = UnhealthyHostCount
 
 instance Hashable     LoadBalancerMetricName
 instance NFData       LoadBalancerMetricName

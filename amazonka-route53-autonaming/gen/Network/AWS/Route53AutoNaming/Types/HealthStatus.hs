@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,29 +16,65 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.Route53AutoNaming.Types.HealthStatus where
+module Network.AWS.Route53AutoNaming.Types.HealthStatus (
+  HealthStatus (
+    ..
+    , Healthy
+    , Unhealthy
+    , Unknown
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data HealthStatus = Healthy
-                  | Unhealthy
-                  | Unknown
-                      deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                Typeable, Generic)
+
+data HealthStatus = HealthStatus' (CI Text)
+                      deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                Generic)
+
+pattern Healthy :: HealthStatus
+pattern Healthy = HealthStatus' "HEALTHY"
+
+pattern Unhealthy :: HealthStatus
+pattern Unhealthy = HealthStatus' "UNHEALTHY"
+
+pattern Unknown :: HealthStatus
+pattern Unknown = HealthStatus' "UNKNOWN"
+
+{-# COMPLETE
+  Healthy,
+  Unhealthy,
+  Unknown,
+  HealthStatus' #-}
 
 instance FromText HealthStatus where
-    parser = takeLowerText >>= \case
-        "healthy" -> pure Healthy
-        "unhealthy" -> pure Unhealthy
-        "unknown" -> pure Unknown
-        e -> fromTextError $ "Failure parsing HealthStatus from value: '" <> e
-           <> "'. Accepted values: healthy, unhealthy, unknown"
+    parser = (HealthStatus' . mk) <$> takeText
 
 instance ToText HealthStatus where
-    toText = \case
-        Healthy -> "HEALTHY"
-        Unhealthy -> "UNHEALTHY"
-        Unknown -> "UNKNOWN"
+    toText (HealthStatus' ci) = original ci
+
+-- | Represents an enum of /known/ $HealthStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum HealthStatus where
+    toEnum i = case i of
+        0 -> Healthy
+        1 -> Unhealthy
+        2 -> Unknown
+        _ -> (error . showText) $ "Unknown index for HealthStatus: " <> toText i
+    fromEnum x = case x of
+        Healthy -> 0
+        Unhealthy -> 1
+        Unknown -> 2
+        HealthStatus' name -> (error . showText) $ "Unknown HealthStatus: " <> original name
+
+-- | Represents the bounds of /known/ $HealthStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded HealthStatus where
+    minBound = Healthy
+    maxBound = Unknown
 
 instance Hashable     HealthStatus
 instance NFData       HealthStatus

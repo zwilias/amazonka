@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,27 +16,59 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.MediaConvert.Types.H265TemporalIds where
+module Network.AWS.MediaConvert.Types.H265TemporalIds (
+  H265TemporalIds (
+    ..
+    , HTIDisabled
+    , HTIEnabled
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
+
 -- | Enables temporal layer identifiers in the encoded bitstream. Up to 3 layers are supported depending on GOP structure: I- and P-frames form one layer, reference B-frames can form a second layer and non-reference b-frames can form a third layer. Decoders can optionally decode only the lower temporal layers to generate a lower frame rate output. For example, given a bitstream with temporal IDs and with b-frames = 1 (i.e. IbPbPb display order), a decoder could decode all the frames for full frame rate output or only the I and P frames (lowest temporal layer) for a half frame rate output.
-data H265TemporalIds = HTIDisabled
-                     | HTIEnabled
-                         deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                   Typeable, Generic)
+data H265TemporalIds = H265TemporalIds' (CI Text)
+                         deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                   Generic)
+
+pattern HTIDisabled :: H265TemporalIds
+pattern HTIDisabled = H265TemporalIds' "DISABLED"
+
+pattern HTIEnabled :: H265TemporalIds
+pattern HTIEnabled = H265TemporalIds' "ENABLED"
+
+{-# COMPLETE
+  HTIDisabled,
+  HTIEnabled,
+  H265TemporalIds' #-}
 
 instance FromText H265TemporalIds where
-    parser = takeLowerText >>= \case
-        "disabled" -> pure HTIDisabled
-        "enabled" -> pure HTIEnabled
-        e -> fromTextError $ "Failure parsing H265TemporalIds from value: '" <> e
-           <> "'. Accepted values: disabled, enabled"
+    parser = (H265TemporalIds' . mk) <$> takeText
 
 instance ToText H265TemporalIds where
-    toText = \case
-        HTIDisabled -> "DISABLED"
-        HTIEnabled -> "ENABLED"
+    toText (H265TemporalIds' ci) = original ci
+
+-- | Represents an enum of /known/ $H265TemporalIds.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum H265TemporalIds where
+    toEnum i = case i of
+        0 -> HTIDisabled
+        1 -> HTIEnabled
+        _ -> (error . showText) $ "Unknown index for H265TemporalIds: " <> toText i
+    fromEnum x = case x of
+        HTIDisabled -> 0
+        HTIEnabled -> 1
+        H265TemporalIds' name -> (error . showText) $ "Unknown H265TemporalIds: " <> original name
+
+-- | Represents the bounds of /known/ $H265TemporalIds.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded H265TemporalIds where
+    minBound = HTIDisabled
+    maxBound = HTIEnabled
 
 instance Hashable     H265TemporalIds
 instance NFData       H265TemporalIds

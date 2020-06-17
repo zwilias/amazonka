@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,33 +16,74 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.EC2.Types.VolumeModificationState where
+module Network.AWS.EC2.Types.VolumeModificationState (
+  VolumeModificationState (
+    ..
+    , Completed
+    , Failed
+    , Modifying
+    , Optimizing
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.EC2.Internal
 import Network.AWS.Prelude
-  
-data VolumeModificationState = Completed
-                             | Failed
-                             | Modifying
-                             | Optimizing
-                                 deriving (Eq, Ord, Read, Show, Enum, Bounded,
-                                           Data, Typeable, Generic)
+
+data VolumeModificationState = VolumeModificationState' (CI
+                                                           Text)
+                                 deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                           Generic)
+
+pattern Completed :: VolumeModificationState
+pattern Completed = VolumeModificationState' "completed"
+
+pattern Failed :: VolumeModificationState
+pattern Failed = VolumeModificationState' "failed"
+
+pattern Modifying :: VolumeModificationState
+pattern Modifying = VolumeModificationState' "modifying"
+
+pattern Optimizing :: VolumeModificationState
+pattern Optimizing = VolumeModificationState' "optimizing"
+
+{-# COMPLETE
+  Completed,
+  Failed,
+  Modifying,
+  Optimizing,
+  VolumeModificationState' #-}
 
 instance FromText VolumeModificationState where
-    parser = takeLowerText >>= \case
-        "completed" -> pure Completed
-        "failed" -> pure Failed
-        "modifying" -> pure Modifying
-        "optimizing" -> pure Optimizing
-        e -> fromTextError $ "Failure parsing VolumeModificationState from value: '" <> e
-           <> "'. Accepted values: completed, failed, modifying, optimizing"
+    parser = (VolumeModificationState' . mk) <$> takeText
 
 instance ToText VolumeModificationState where
-    toText = \case
-        Completed -> "completed"
-        Failed -> "failed"
-        Modifying -> "modifying"
-        Optimizing -> "optimizing"
+    toText (VolumeModificationState' ci) = original ci
+
+-- | Represents an enum of /known/ $VolumeModificationState.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum VolumeModificationState where
+    toEnum i = case i of
+        0 -> Completed
+        1 -> Failed
+        2 -> Modifying
+        3 -> Optimizing
+        _ -> (error . showText) $ "Unknown index for VolumeModificationState: " <> toText i
+    fromEnum x = case x of
+        Completed -> 0
+        Failed -> 1
+        Modifying -> 2
+        Optimizing -> 3
+        VolumeModificationState' name -> (error . showText) $ "Unknown VolumeModificationState: " <> original name
+
+-- | Represents the bounds of /known/ $VolumeModificationState.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded VolumeModificationState where
+    minBound = Completed
+    maxBound = Optimizing
 
 instance Hashable     VolumeModificationState
 instance NFData       VolumeModificationState

@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,29 +16,66 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.MechanicalTurk.Types.NotificationTransport where
+module Network.AWS.MechanicalTurk.Types.NotificationTransport (
+  NotificationTransport (
+    ..
+    , Email
+    , SNS
+    , Sqs
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data NotificationTransport = Email
-                           | SNS
-                           | Sqs
-                               deriving (Eq, Ord, Read, Show, Enum, Bounded,
-                                         Data, Typeable, Generic)
+
+data NotificationTransport = NotificationTransport' (CI
+                                                       Text)
+                               deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                         Generic)
+
+pattern Email :: NotificationTransport
+pattern Email = NotificationTransport' "Email"
+
+pattern SNS :: NotificationTransport
+pattern SNS = NotificationTransport' "SNS"
+
+pattern Sqs :: NotificationTransport
+pattern Sqs = NotificationTransport' "SQS"
+
+{-# COMPLETE
+  Email,
+  SNS,
+  Sqs,
+  NotificationTransport' #-}
 
 instance FromText NotificationTransport where
-    parser = takeLowerText >>= \case
-        "email" -> pure Email
-        "sns" -> pure SNS
-        "sqs" -> pure Sqs
-        e -> fromTextError $ "Failure parsing NotificationTransport from value: '" <> e
-           <> "'. Accepted values: email, sns, sqs"
+    parser = (NotificationTransport' . mk) <$> takeText
 
 instance ToText NotificationTransport where
-    toText = \case
-        Email -> "Email"
-        SNS -> "SNS"
-        Sqs -> "SQS"
+    toText (NotificationTransport' ci) = original ci
+
+-- | Represents an enum of /known/ $NotificationTransport.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum NotificationTransport where
+    toEnum i = case i of
+        0 -> Email
+        1 -> SNS
+        2 -> Sqs
+        _ -> (error . showText) $ "Unknown index for NotificationTransport: " <> toText i
+    fromEnum x = case x of
+        Email -> 0
+        SNS -> 1
+        Sqs -> 2
+        NotificationTransport' name -> (error . showText) $ "Unknown NotificationTransport: " <> original name
+
+-- | Represents the bounds of /known/ $NotificationTransport.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded NotificationTransport where
+    minBound = Email
+    maxBound = Sqs
 
 instance Hashable     NotificationTransport
 instance NFData       NotificationTransport

@@ -97,6 +97,7 @@ library
         , Network.AWS.CloudWatchLogs.Types.MetricTransformation
         , Network.AWS.CloudWatchLogs.Types.OrderBy
         , Network.AWS.CloudWatchLogs.Types.OutputLogEvent
+        , Network.AWS.CloudWatchLogs.Types.Product
         , Network.AWS.CloudWatchLogs.Types.RejectedLogEventsInfo
         , Network.AWS.CloudWatchLogs.Types.ResourcePolicy
         , Network.AWS.CloudWatchLogs.Types.SearchedLogStream
@@ -105,6 +106,7 @@ library
     build-depends:
           amazonka-core == 1.6.1.*
         , base          >= 4.7     && < 5
+        , case-insensitive
 
 test-suite amazonka-cloudwatch-logs-test
     type:              exitcode-stdio-1.0
@@ -128,6 +130,7 @@ test-suite amazonka-cloudwatch-logs-test
         , amazonka-cloudwatch-logs
         , base
         , bytestring
+        , case-insensitive
         , tasty
         , tasty-hunit
         , text

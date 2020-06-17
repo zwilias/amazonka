@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,59 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.GameLift.Types.PlayerSessionCreationPolicy where
+module Network.AWS.GameLift.Types.PlayerSessionCreationPolicy (
+  PlayerSessionCreationPolicy (
+    ..
+    , AcceptAll
+    , DenyAll
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data PlayerSessionCreationPolicy = AcceptAll
-                                 | DenyAll
-                                     deriving (Eq, Ord, Read, Show, Enum,
-                                               Bounded, Data, Typeable, Generic)
+
+data PlayerSessionCreationPolicy = PlayerSessionCreationPolicy' (CI
+                                                                   Text)
+                                     deriving (Eq, Ord, Read, Show, Data,
+                                               Typeable, Generic)
+
+pattern AcceptAll :: PlayerSessionCreationPolicy
+pattern AcceptAll = PlayerSessionCreationPolicy' "ACCEPT_ALL"
+
+pattern DenyAll :: PlayerSessionCreationPolicy
+pattern DenyAll = PlayerSessionCreationPolicy' "DENY_ALL"
+
+{-# COMPLETE
+  AcceptAll,
+  DenyAll,
+  PlayerSessionCreationPolicy' #-}
 
 instance FromText PlayerSessionCreationPolicy where
-    parser = takeLowerText >>= \case
-        "accept_all" -> pure AcceptAll
-        "deny_all" -> pure DenyAll
-        e -> fromTextError $ "Failure parsing PlayerSessionCreationPolicy from value: '" <> e
-           <> "'. Accepted values: accept_all, deny_all"
+    parser = (PlayerSessionCreationPolicy' . mk) <$> takeText
 
 instance ToText PlayerSessionCreationPolicy where
-    toText = \case
-        AcceptAll -> "ACCEPT_ALL"
-        DenyAll -> "DENY_ALL"
+    toText (PlayerSessionCreationPolicy' ci) = original ci
+
+-- | Represents an enum of /known/ $PlayerSessionCreationPolicy.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum PlayerSessionCreationPolicy where
+    toEnum i = case i of
+        0 -> AcceptAll
+        1 -> DenyAll
+        _ -> (error . showText) $ "Unknown index for PlayerSessionCreationPolicy: " <> toText i
+    fromEnum x = case x of
+        AcceptAll -> 0
+        DenyAll -> 1
+        PlayerSessionCreationPolicy' name -> (error . showText) $ "Unknown PlayerSessionCreationPolicy: " <> original name
+
+-- | Represents the bounds of /known/ $PlayerSessionCreationPolicy.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded PlayerSessionCreationPolicy where
+    minBound = AcceptAll
+    maxBound = DenyAll
 
 instance Hashable     PlayerSessionCreationPolicy
 instance NFData       PlayerSessionCreationPolicy

@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,30 +16,66 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.DMS.Types.StartReplicationTaskTypeValue where
+module Network.AWS.DMS.Types.StartReplicationTaskTypeValue (
+  StartReplicationTaskTypeValue (
+    ..
+    , ReloadTarget
+    , ResumeProcessing
+    , StartReplication
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data StartReplicationTaskTypeValue = ReloadTarget
-                                   | ResumeProcessing
-                                   | StartReplication
-                                       deriving (Eq, Ord, Read, Show, Enum,
-                                                 Bounded, Data, Typeable,
-                                                 Generic)
+
+data StartReplicationTaskTypeValue = StartReplicationTaskTypeValue' (CI
+                                                                       Text)
+                                       deriving (Eq, Ord, Read, Show, Data,
+                                                 Typeable, Generic)
+
+pattern ReloadTarget :: StartReplicationTaskTypeValue
+pattern ReloadTarget = StartReplicationTaskTypeValue' "reload-target"
+
+pattern ResumeProcessing :: StartReplicationTaskTypeValue
+pattern ResumeProcessing = StartReplicationTaskTypeValue' "resume-processing"
+
+pattern StartReplication :: StartReplicationTaskTypeValue
+pattern StartReplication = StartReplicationTaskTypeValue' "start-replication"
+
+{-# COMPLETE
+  ReloadTarget,
+  ResumeProcessing,
+  StartReplication,
+  StartReplicationTaskTypeValue' #-}
 
 instance FromText StartReplicationTaskTypeValue where
-    parser = takeLowerText >>= \case
-        "reload-target" -> pure ReloadTarget
-        "resume-processing" -> pure ResumeProcessing
-        "start-replication" -> pure StartReplication
-        e -> fromTextError $ "Failure parsing StartReplicationTaskTypeValue from value: '" <> e
-           <> "'. Accepted values: reload-target, resume-processing, start-replication"
+    parser = (StartReplicationTaskTypeValue' . mk) <$> takeText
 
 instance ToText StartReplicationTaskTypeValue where
-    toText = \case
-        ReloadTarget -> "reload-target"
-        ResumeProcessing -> "resume-processing"
-        StartReplication -> "start-replication"
+    toText (StartReplicationTaskTypeValue' ci) = original ci
+
+-- | Represents an enum of /known/ $StartReplicationTaskTypeValue.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum StartReplicationTaskTypeValue where
+    toEnum i = case i of
+        0 -> ReloadTarget
+        1 -> ResumeProcessing
+        2 -> StartReplication
+        _ -> (error . showText) $ "Unknown index for StartReplicationTaskTypeValue: " <> toText i
+    fromEnum x = case x of
+        ReloadTarget -> 0
+        ResumeProcessing -> 1
+        StartReplication -> 2
+        StartReplicationTaskTypeValue' name -> (error . showText) $ "Unknown StartReplicationTaskTypeValue: " <> original name
+
+-- | Represents the bounds of /known/ $StartReplicationTaskTypeValue.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded StartReplicationTaskTypeValue where
+    minBound = ReloadTarget
+    maxBound = StartReplication
 
 instance Hashable     StartReplicationTaskTypeValue
 instance NFData       StartReplicationTaskTypeValue

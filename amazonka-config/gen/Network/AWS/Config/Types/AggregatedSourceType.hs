@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,59 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.Config.Types.AggregatedSourceType where
+module Network.AWS.Config.Types.AggregatedSourceType (
+  AggregatedSourceType (
+    ..
+    , Account
+    , Organization
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data AggregatedSourceType = Account
-                          | Organization
-                              deriving (Eq, Ord, Read, Show, Enum, Bounded,
-                                        Data, Typeable, Generic)
+
+data AggregatedSourceType = AggregatedSourceType' (CI
+                                                     Text)
+                              deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                        Generic)
+
+pattern Account :: AggregatedSourceType
+pattern Account = AggregatedSourceType' "ACCOUNT"
+
+pattern Organization :: AggregatedSourceType
+pattern Organization = AggregatedSourceType' "ORGANIZATION"
+
+{-# COMPLETE
+  Account,
+  Organization,
+  AggregatedSourceType' #-}
 
 instance FromText AggregatedSourceType where
-    parser = takeLowerText >>= \case
-        "account" -> pure Account
-        "organization" -> pure Organization
-        e -> fromTextError $ "Failure parsing AggregatedSourceType from value: '" <> e
-           <> "'. Accepted values: account, organization"
+    parser = (AggregatedSourceType' . mk) <$> takeText
 
 instance ToText AggregatedSourceType where
-    toText = \case
-        Account -> "ACCOUNT"
-        Organization -> "ORGANIZATION"
+    toText (AggregatedSourceType' ci) = original ci
+
+-- | Represents an enum of /known/ $AggregatedSourceType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum AggregatedSourceType where
+    toEnum i = case i of
+        0 -> Account
+        1 -> Organization
+        _ -> (error . showText) $ "Unknown index for AggregatedSourceType: " <> toText i
+    fromEnum x = case x of
+        Account -> 0
+        Organization -> 1
+        AggregatedSourceType' name -> (error . showText) $ "Unknown AggregatedSourceType: " <> original name
+
+-- | Represents the bounds of /known/ $AggregatedSourceType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded AggregatedSourceType where
+    minBound = Account
+    maxBound = Organization
 
 instance Hashable     AggregatedSourceType
 instance NFData       AggregatedSourceType

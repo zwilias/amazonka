@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,32 +16,73 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.ELBv2.Types.LoadBalancerStateEnum where
+module Network.AWS.ELBv2.Types.LoadBalancerStateEnum (
+  LoadBalancerStateEnum (
+    ..
+    , Active
+    , ActiveImpaired
+    , Failed
+    , Provisioning
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data LoadBalancerStateEnum = Active
-                           | ActiveImpaired
-                           | Failed
-                           | Provisioning
-                               deriving (Eq, Ord, Read, Show, Enum, Bounded,
-                                         Data, Typeable, Generic)
+
+data LoadBalancerStateEnum = LoadBalancerStateEnum' (CI
+                                                       Text)
+                               deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                         Generic)
+
+pattern Active :: LoadBalancerStateEnum
+pattern Active = LoadBalancerStateEnum' "active"
+
+pattern ActiveImpaired :: LoadBalancerStateEnum
+pattern ActiveImpaired = LoadBalancerStateEnum' "active_impaired"
+
+pattern Failed :: LoadBalancerStateEnum
+pattern Failed = LoadBalancerStateEnum' "failed"
+
+pattern Provisioning :: LoadBalancerStateEnum
+pattern Provisioning = LoadBalancerStateEnum' "provisioning"
+
+{-# COMPLETE
+  Active,
+  ActiveImpaired,
+  Failed,
+  Provisioning,
+  LoadBalancerStateEnum' #-}
 
 instance FromText LoadBalancerStateEnum where
-    parser = takeLowerText >>= \case
-        "active" -> pure Active
-        "active_impaired" -> pure ActiveImpaired
-        "failed" -> pure Failed
-        "provisioning" -> pure Provisioning
-        e -> fromTextError $ "Failure parsing LoadBalancerStateEnum from value: '" <> e
-           <> "'. Accepted values: active, active_impaired, failed, provisioning"
+    parser = (LoadBalancerStateEnum' . mk) <$> takeText
 
 instance ToText LoadBalancerStateEnum where
-    toText = \case
-        Active -> "active"
-        ActiveImpaired -> "active_impaired"
-        Failed -> "failed"
-        Provisioning -> "provisioning"
+    toText (LoadBalancerStateEnum' ci) = original ci
+
+-- | Represents an enum of /known/ $LoadBalancerStateEnum.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum LoadBalancerStateEnum where
+    toEnum i = case i of
+        0 -> Active
+        1 -> ActiveImpaired
+        2 -> Failed
+        3 -> Provisioning
+        _ -> (error . showText) $ "Unknown index for LoadBalancerStateEnum: " <> toText i
+    fromEnum x = case x of
+        Active -> 0
+        ActiveImpaired -> 1
+        Failed -> 2
+        Provisioning -> 3
+        LoadBalancerStateEnum' name -> (error . showText) $ "Unknown LoadBalancerStateEnum: " <> original name
+
+-- | Represents the bounds of /known/ $LoadBalancerStateEnum.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded LoadBalancerStateEnum where
+    minBound = Active
+    maxBound = Provisioning
 
 instance Hashable     LoadBalancerStateEnum
 instance NFData       LoadBalancerStateEnum

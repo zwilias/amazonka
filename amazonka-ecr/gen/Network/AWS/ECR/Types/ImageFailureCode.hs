@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,35 +16,79 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.ECR.Types.ImageFailureCode where
+module Network.AWS.ECR.Types.ImageFailureCode (
+  ImageFailureCode (
+    ..
+    , ImageNotFound
+    , ImageTagDoesNotMatchDigest
+    , InvalidImageDigest
+    , InvalidImageTag
+    , MissingDigestAndTag
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data ImageFailureCode = ImageNotFound
-                      | ImageTagDoesNotMatchDigest
-                      | InvalidImageDigest
-                      | InvalidImageTag
-                      | MissingDigestAndTag
-                          deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                    Typeable, Generic)
+
+data ImageFailureCode = ImageFailureCode' (CI Text)
+                          deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                    Generic)
+
+pattern ImageNotFound :: ImageFailureCode
+pattern ImageNotFound = ImageFailureCode' "ImageNotFound"
+
+pattern ImageTagDoesNotMatchDigest :: ImageFailureCode
+pattern ImageTagDoesNotMatchDigest = ImageFailureCode' "ImageTagDoesNotMatchDigest"
+
+pattern InvalidImageDigest :: ImageFailureCode
+pattern InvalidImageDigest = ImageFailureCode' "InvalidImageDigest"
+
+pattern InvalidImageTag :: ImageFailureCode
+pattern InvalidImageTag = ImageFailureCode' "InvalidImageTag"
+
+pattern MissingDigestAndTag :: ImageFailureCode
+pattern MissingDigestAndTag = ImageFailureCode' "MissingDigestAndTag"
+
+{-# COMPLETE
+  ImageNotFound,
+  ImageTagDoesNotMatchDigest,
+  InvalidImageDigest,
+  InvalidImageTag,
+  MissingDigestAndTag,
+  ImageFailureCode' #-}
 
 instance FromText ImageFailureCode where
-    parser = takeLowerText >>= \case
-        "imagenotfound" -> pure ImageNotFound
-        "imagetagdoesnotmatchdigest" -> pure ImageTagDoesNotMatchDigest
-        "invalidimagedigest" -> pure InvalidImageDigest
-        "invalidimagetag" -> pure InvalidImageTag
-        "missingdigestandtag" -> pure MissingDigestAndTag
-        e -> fromTextError $ "Failure parsing ImageFailureCode from value: '" <> e
-           <> "'. Accepted values: imagenotfound, imagetagdoesnotmatchdigest, invalidimagedigest, invalidimagetag, missingdigestandtag"
+    parser = (ImageFailureCode' . mk) <$> takeText
 
 instance ToText ImageFailureCode where
-    toText = \case
-        ImageNotFound -> "ImageNotFound"
-        ImageTagDoesNotMatchDigest -> "ImageTagDoesNotMatchDigest"
-        InvalidImageDigest -> "InvalidImageDigest"
-        InvalidImageTag -> "InvalidImageTag"
-        MissingDigestAndTag -> "MissingDigestAndTag"
+    toText (ImageFailureCode' ci) = original ci
+
+-- | Represents an enum of /known/ $ImageFailureCode.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum ImageFailureCode where
+    toEnum i = case i of
+        0 -> ImageNotFound
+        1 -> ImageTagDoesNotMatchDigest
+        2 -> InvalidImageDigest
+        3 -> InvalidImageTag
+        4 -> MissingDigestAndTag
+        _ -> (error . showText) $ "Unknown index for ImageFailureCode: " <> toText i
+    fromEnum x = case x of
+        ImageNotFound -> 0
+        ImageTagDoesNotMatchDigest -> 1
+        InvalidImageDigest -> 2
+        InvalidImageTag -> 3
+        MissingDigestAndTag -> 4
+        ImageFailureCode' name -> (error . showText) $ "Unknown ImageFailureCode: " <> original name
+
+-- | Represents the bounds of /known/ $ImageFailureCode.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded ImageFailureCode where
+    minBound = ImageNotFound
+    maxBound = MissingDigestAndTag
 
 instance Hashable     ImageFailureCode
 instance NFData       ImageFailureCode

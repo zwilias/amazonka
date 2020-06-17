@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,27 +16,59 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.MediaLive.Types.H264ParControl where
+module Network.AWS.MediaLive.Types.H264ParControl (
+  H264ParControl (
+    ..
+    , InitializeFromSource
+    , Specified
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
+
 -- | Placeholder documentation for H264ParControl
-data H264ParControl = InitializeFromSource
-                    | Specified
-                        deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                  Typeable, Generic)
+data H264ParControl = H264ParControl' (CI Text)
+                        deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                  Generic)
+
+pattern InitializeFromSource :: H264ParControl
+pattern InitializeFromSource = H264ParControl' "INITIALIZE_FROM_SOURCE"
+
+pattern Specified :: H264ParControl
+pattern Specified = H264ParControl' "SPECIFIED"
+
+{-# COMPLETE
+  InitializeFromSource,
+  Specified,
+  H264ParControl' #-}
 
 instance FromText H264ParControl where
-    parser = takeLowerText >>= \case
-        "initialize_from_source" -> pure InitializeFromSource
-        "specified" -> pure Specified
-        e -> fromTextError $ "Failure parsing H264ParControl from value: '" <> e
-           <> "'. Accepted values: initialize_from_source, specified"
+    parser = (H264ParControl' . mk) <$> takeText
 
 instance ToText H264ParControl where
-    toText = \case
-        InitializeFromSource -> "INITIALIZE_FROM_SOURCE"
-        Specified -> "SPECIFIED"
+    toText (H264ParControl' ci) = original ci
+
+-- | Represents an enum of /known/ $H264ParControl.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum H264ParControl where
+    toEnum i = case i of
+        0 -> InitializeFromSource
+        1 -> Specified
+        _ -> (error . showText) $ "Unknown index for H264ParControl: " <> toText i
+    fromEnum x = case x of
+        InitializeFromSource -> 0
+        Specified -> 1
+        H264ParControl' name -> (error . showText) $ "Unknown H264ParControl: " <> original name
+
+-- | Represents the bounds of /known/ $H264ParControl.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded H264ParControl where
+    minBound = InitializeFromSource
+    maxBound = Specified
 
 instance Hashable     H264ParControl
 instance NFData       H264ParControl

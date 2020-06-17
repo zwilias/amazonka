@@ -40,6 +40,7 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.Route53.Types
+import Network.AWS.Route53.Types.Product
 
 -- | Request to get the number of traffic policy instances that are associated with the current AWS account.
 --

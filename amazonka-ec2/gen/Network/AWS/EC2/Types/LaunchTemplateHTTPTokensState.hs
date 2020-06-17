@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,28 +16,60 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.EC2.Types.LaunchTemplateHTTPTokensState where
+module Network.AWS.EC2.Types.LaunchTemplateHTTPTokensState (
+  LaunchTemplateHTTPTokensState (
+    ..
+    , Optional
+    , Required
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.EC2.Internal
 import Network.AWS.Prelude
-  
-data LaunchTemplateHTTPTokensState = Optional
-                                   | Required
-                                       deriving (Eq, Ord, Read, Show, Enum,
-                                                 Bounded, Data, Typeable,
-                                                 Generic)
+
+data LaunchTemplateHTTPTokensState = LaunchTemplateHTTPTokensState' (CI
+                                                                       Text)
+                                       deriving (Eq, Ord, Read, Show, Data,
+                                                 Typeable, Generic)
+
+pattern Optional :: LaunchTemplateHTTPTokensState
+pattern Optional = LaunchTemplateHTTPTokensState' "optional"
+
+pattern Required :: LaunchTemplateHTTPTokensState
+pattern Required = LaunchTemplateHTTPTokensState' "required"
+
+{-# COMPLETE
+  Optional,
+  Required,
+  LaunchTemplateHTTPTokensState' #-}
 
 instance FromText LaunchTemplateHTTPTokensState where
-    parser = takeLowerText >>= \case
-        "optional" -> pure Optional
-        "required" -> pure Required
-        e -> fromTextError $ "Failure parsing LaunchTemplateHTTPTokensState from value: '" <> e
-           <> "'. Accepted values: optional, required"
+    parser = (LaunchTemplateHTTPTokensState' . mk) <$> takeText
 
 instance ToText LaunchTemplateHTTPTokensState where
-    toText = \case
-        Optional -> "optional"
-        Required -> "required"
+    toText (LaunchTemplateHTTPTokensState' ci) = original ci
+
+-- | Represents an enum of /known/ $LaunchTemplateHTTPTokensState.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum LaunchTemplateHTTPTokensState where
+    toEnum i = case i of
+        0 -> Optional
+        1 -> Required
+        _ -> (error . showText) $ "Unknown index for LaunchTemplateHTTPTokensState: " <> toText i
+    fromEnum x = case x of
+        Optional -> 0
+        Required -> 1
+        LaunchTemplateHTTPTokensState' name -> (error . showText) $ "Unknown LaunchTemplateHTTPTokensState: " <> original name
+
+-- | Represents the bounds of /known/ $LaunchTemplateHTTPTokensState.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded LaunchTemplateHTTPTokensState where
+    minBound = Optional
+    maxBound = Required
 
 instance Hashable     LaunchTemplateHTTPTokensState
 instance NFData       LaunchTemplateHTTPTokensState

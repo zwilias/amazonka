@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,50 +16,114 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.CertificateManager.Types.RevocationReason where
+module Network.AWS.CertificateManager.Types.RevocationReason (
+  RevocationReason (
+    ..
+    , AACompromise
+    , AffiliationChanged
+    , CaCompromise
+    , CertificateHold
+    , CessationOfOperation
+    , KeyCompromise
+    , PrivilegeWithdrawn
+    , RemoveFromCrl
+    , Superceded
+    , Unspecified
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data RevocationReason = AACompromise
-                      | AffiliationChanged
-                      | CaCompromise
-                      | CertificateHold
-                      | CessationOfOperation
-                      | KeyCompromise
-                      | PrivilegeWithdrawn
-                      | RemoveFromCrl
-                      | Superceded
-                      | Unspecified
-                          deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                    Typeable, Generic)
+
+data RevocationReason = RevocationReason' (CI Text)
+                          deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                    Generic)
+
+pattern AACompromise :: RevocationReason
+pattern AACompromise = RevocationReason' "A_A_COMPROMISE"
+
+pattern AffiliationChanged :: RevocationReason
+pattern AffiliationChanged = RevocationReason' "AFFILIATION_CHANGED"
+
+pattern CaCompromise :: RevocationReason
+pattern CaCompromise = RevocationReason' "CA_COMPROMISE"
+
+pattern CertificateHold :: RevocationReason
+pattern CertificateHold = RevocationReason' "CERTIFICATE_HOLD"
+
+pattern CessationOfOperation :: RevocationReason
+pattern CessationOfOperation = RevocationReason' "CESSATION_OF_OPERATION"
+
+pattern KeyCompromise :: RevocationReason
+pattern KeyCompromise = RevocationReason' "KEY_COMPROMISE"
+
+pattern PrivilegeWithdrawn :: RevocationReason
+pattern PrivilegeWithdrawn = RevocationReason' "PRIVILEGE_WITHDRAWN"
+
+pattern RemoveFromCrl :: RevocationReason
+pattern RemoveFromCrl = RevocationReason' "REMOVE_FROM_CRL"
+
+pattern Superceded :: RevocationReason
+pattern Superceded = RevocationReason' "SUPERCEDED"
+
+pattern Unspecified :: RevocationReason
+pattern Unspecified = RevocationReason' "UNSPECIFIED"
+
+{-# COMPLETE
+  AACompromise,
+  AffiliationChanged,
+  CaCompromise,
+  CertificateHold,
+  CessationOfOperation,
+  KeyCompromise,
+  PrivilegeWithdrawn,
+  RemoveFromCrl,
+  Superceded,
+  Unspecified,
+  RevocationReason' #-}
 
 instance FromText RevocationReason where
-    parser = takeLowerText >>= \case
-        "a_a_compromise" -> pure AACompromise
-        "affiliation_changed" -> pure AffiliationChanged
-        "ca_compromise" -> pure CaCompromise
-        "certificate_hold" -> pure CertificateHold
-        "cessation_of_operation" -> pure CessationOfOperation
-        "key_compromise" -> pure KeyCompromise
-        "privilege_withdrawn" -> pure PrivilegeWithdrawn
-        "remove_from_crl" -> pure RemoveFromCrl
-        "superceded" -> pure Superceded
-        "unspecified" -> pure Unspecified
-        e -> fromTextError $ "Failure parsing RevocationReason from value: '" <> e
-           <> "'. Accepted values: a_a_compromise, affiliation_changed, ca_compromise, certificate_hold, cessation_of_operation, key_compromise, privilege_withdrawn, remove_from_crl, superceded, unspecified"
+    parser = (RevocationReason' . mk) <$> takeText
 
 instance ToText RevocationReason where
-    toText = \case
-        AACompromise -> "A_A_COMPROMISE"
-        AffiliationChanged -> "AFFILIATION_CHANGED"
-        CaCompromise -> "CA_COMPROMISE"
-        CertificateHold -> "CERTIFICATE_HOLD"
-        CessationOfOperation -> "CESSATION_OF_OPERATION"
-        KeyCompromise -> "KEY_COMPROMISE"
-        PrivilegeWithdrawn -> "PRIVILEGE_WITHDRAWN"
-        RemoveFromCrl -> "REMOVE_FROM_CRL"
-        Superceded -> "SUPERCEDED"
-        Unspecified -> "UNSPECIFIED"
+    toText (RevocationReason' ci) = original ci
+
+-- | Represents an enum of /known/ $RevocationReason.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum RevocationReason where
+    toEnum i = case i of
+        0 -> AACompromise
+        1 -> AffiliationChanged
+        2 -> CaCompromise
+        3 -> CertificateHold
+        4 -> CessationOfOperation
+        5 -> KeyCompromise
+        6 -> PrivilegeWithdrawn
+        7 -> RemoveFromCrl
+        8 -> Superceded
+        9 -> Unspecified
+        _ -> (error . showText) $ "Unknown index for RevocationReason: " <> toText i
+    fromEnum x = case x of
+        AACompromise -> 0
+        AffiliationChanged -> 1
+        CaCompromise -> 2
+        CertificateHold -> 3
+        CessationOfOperation -> 4
+        KeyCompromise -> 5
+        PrivilegeWithdrawn -> 6
+        RemoveFromCrl -> 7
+        Superceded -> 8
+        Unspecified -> 9
+        RevocationReason' name -> (error . showText) $ "Unknown RevocationReason: " <> original name
+
+-- | Represents the bounds of /known/ $RevocationReason.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded RevocationReason where
+    minBound = AACompromise
+    maxBound = Unspecified
 
 instance Hashable     RevocationReason
 instance NFData       RevocationReason

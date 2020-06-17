@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,58 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.Greengrass.Types.LoggerComponent where
+module Network.AWS.Greengrass.Types.LoggerComponent (
+  LoggerComponent (
+    ..
+    , GreengrassSystem
+    , Lambda
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data LoggerComponent = GreengrassSystem
-                     | Lambda
-                         deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                   Typeable, Generic)
+
+data LoggerComponent = LoggerComponent' (CI Text)
+                         deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                   Generic)
+
+pattern GreengrassSystem :: LoggerComponent
+pattern GreengrassSystem = LoggerComponent' "GreengrassSystem"
+
+pattern Lambda :: LoggerComponent
+pattern Lambda = LoggerComponent' "Lambda"
+
+{-# COMPLETE
+  GreengrassSystem,
+  Lambda,
+  LoggerComponent' #-}
 
 instance FromText LoggerComponent where
-    parser = takeLowerText >>= \case
-        "greengrasssystem" -> pure GreengrassSystem
-        "lambda" -> pure Lambda
-        e -> fromTextError $ "Failure parsing LoggerComponent from value: '" <> e
-           <> "'. Accepted values: greengrasssystem, lambda"
+    parser = (LoggerComponent' . mk) <$> takeText
 
 instance ToText LoggerComponent where
-    toText = \case
-        GreengrassSystem -> "GreengrassSystem"
-        Lambda -> "Lambda"
+    toText (LoggerComponent' ci) = original ci
+
+-- | Represents an enum of /known/ $LoggerComponent.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum LoggerComponent where
+    toEnum i = case i of
+        0 -> GreengrassSystem
+        1 -> Lambda
+        _ -> (error . showText) $ "Unknown index for LoggerComponent: " <> toText i
+    fromEnum x = case x of
+        GreengrassSystem -> 0
+        Lambda -> 1
+        LoggerComponent' name -> (error . showText) $ "Unknown LoggerComponent: " <> original name
+
+-- | Represents the bounds of /known/ $LoggerComponent.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded LoggerComponent where
+    minBound = GreengrassSystem
+    maxBound = Lambda
 
 instance Hashable     LoggerComponent
 instance NFData       LoggerComponent

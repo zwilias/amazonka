@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,47 +16,108 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.DirectoryService.Types.SchemaExtensionStatus where
+module Network.AWS.DirectoryService.Types.SchemaExtensionStatus (
+  SchemaExtensionStatus (
+    ..
+    , SESCancelInProgress
+    , SESCancelled
+    , SESCompleted
+    , SESCreatingSnapshot
+    , SESFailed
+    , SESInitializing
+    , SESReplicating
+    , SESRollbackInProgress
+    , SESUpdatingSchema
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data SchemaExtensionStatus = SESCancelInProgress
-                           | SESCancelled
-                           | SESCompleted
-                           | SESCreatingSnapshot
-                           | SESFailed
-                           | SESInitializing
-                           | SESReplicating
-                           | SESRollbackInProgress
-                           | SESUpdatingSchema
-                               deriving (Eq, Ord, Read, Show, Enum, Bounded,
-                                         Data, Typeable, Generic)
+
+data SchemaExtensionStatus = SchemaExtensionStatus' (CI
+                                                       Text)
+                               deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                         Generic)
+
+pattern SESCancelInProgress :: SchemaExtensionStatus
+pattern SESCancelInProgress = SchemaExtensionStatus' "CancelInProgress"
+
+pattern SESCancelled :: SchemaExtensionStatus
+pattern SESCancelled = SchemaExtensionStatus' "Cancelled"
+
+pattern SESCompleted :: SchemaExtensionStatus
+pattern SESCompleted = SchemaExtensionStatus' "Completed"
+
+pattern SESCreatingSnapshot :: SchemaExtensionStatus
+pattern SESCreatingSnapshot = SchemaExtensionStatus' "CreatingSnapshot"
+
+pattern SESFailed :: SchemaExtensionStatus
+pattern SESFailed = SchemaExtensionStatus' "Failed"
+
+pattern SESInitializing :: SchemaExtensionStatus
+pattern SESInitializing = SchemaExtensionStatus' "Initializing"
+
+pattern SESReplicating :: SchemaExtensionStatus
+pattern SESReplicating = SchemaExtensionStatus' "Replicating"
+
+pattern SESRollbackInProgress :: SchemaExtensionStatus
+pattern SESRollbackInProgress = SchemaExtensionStatus' "RollbackInProgress"
+
+pattern SESUpdatingSchema :: SchemaExtensionStatus
+pattern SESUpdatingSchema = SchemaExtensionStatus' "UpdatingSchema"
+
+{-# COMPLETE
+  SESCancelInProgress,
+  SESCancelled,
+  SESCompleted,
+  SESCreatingSnapshot,
+  SESFailed,
+  SESInitializing,
+  SESReplicating,
+  SESRollbackInProgress,
+  SESUpdatingSchema,
+  SchemaExtensionStatus' #-}
 
 instance FromText SchemaExtensionStatus where
-    parser = takeLowerText >>= \case
-        "cancelinprogress" -> pure SESCancelInProgress
-        "cancelled" -> pure SESCancelled
-        "completed" -> pure SESCompleted
-        "creatingsnapshot" -> pure SESCreatingSnapshot
-        "failed" -> pure SESFailed
-        "initializing" -> pure SESInitializing
-        "replicating" -> pure SESReplicating
-        "rollbackinprogress" -> pure SESRollbackInProgress
-        "updatingschema" -> pure SESUpdatingSchema
-        e -> fromTextError $ "Failure parsing SchemaExtensionStatus from value: '" <> e
-           <> "'. Accepted values: cancelinprogress, cancelled, completed, creatingsnapshot, failed, initializing, replicating, rollbackinprogress, updatingschema"
+    parser = (SchemaExtensionStatus' . mk) <$> takeText
 
 instance ToText SchemaExtensionStatus where
-    toText = \case
-        SESCancelInProgress -> "CancelInProgress"
-        SESCancelled -> "Cancelled"
-        SESCompleted -> "Completed"
-        SESCreatingSnapshot -> "CreatingSnapshot"
-        SESFailed -> "Failed"
-        SESInitializing -> "Initializing"
-        SESReplicating -> "Replicating"
-        SESRollbackInProgress -> "RollbackInProgress"
-        SESUpdatingSchema -> "UpdatingSchema"
+    toText (SchemaExtensionStatus' ci) = original ci
+
+-- | Represents an enum of /known/ $SchemaExtensionStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum SchemaExtensionStatus where
+    toEnum i = case i of
+        0 -> SESCancelInProgress
+        1 -> SESCancelled
+        2 -> SESCompleted
+        3 -> SESCreatingSnapshot
+        4 -> SESFailed
+        5 -> SESInitializing
+        6 -> SESReplicating
+        7 -> SESRollbackInProgress
+        8 -> SESUpdatingSchema
+        _ -> (error . showText) $ "Unknown index for SchemaExtensionStatus: " <> toText i
+    fromEnum x = case x of
+        SESCancelInProgress -> 0
+        SESCancelled -> 1
+        SESCompleted -> 2
+        SESCreatingSnapshot -> 3
+        SESFailed -> 4
+        SESInitializing -> 5
+        SESReplicating -> 6
+        SESRollbackInProgress -> 7
+        SESUpdatingSchema -> 8
+        SchemaExtensionStatus' name -> (error . showText) $ "Unknown SchemaExtensionStatus: " <> original name
+
+-- | Represents the bounds of /known/ $SchemaExtensionStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded SchemaExtensionStatus where
+    minBound = SESCancelInProgress
+    maxBound = SESUpdatingSchema
 
 instance Hashable     SchemaExtensionStatus
 instance NFData       SchemaExtensionStatus

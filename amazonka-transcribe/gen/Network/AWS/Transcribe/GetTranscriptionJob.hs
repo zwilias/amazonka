@@ -42,6 +42,7 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.Transcribe.Types
+import Network.AWS.Transcribe.Types.Product
 
 -- | /See:/ 'getTranscriptionJob' smart constructor.
 newtype GetTranscriptionJob = GetTranscriptionJob'{_gtjTranscriptionJobName

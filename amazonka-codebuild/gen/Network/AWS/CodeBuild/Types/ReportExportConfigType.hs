@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,59 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.CodeBuild.Types.ReportExportConfigType where
+module Network.AWS.CodeBuild.Types.ReportExportConfigType (
+  ReportExportConfigType (
+    ..
+    , RECTNoExport
+    , RECTS3
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data ReportExportConfigType = RECTNoExport
-                            | RECTS3
-                                deriving (Eq, Ord, Read, Show, Enum, Bounded,
-                                          Data, Typeable, Generic)
+
+data ReportExportConfigType = ReportExportConfigType' (CI
+                                                         Text)
+                                deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                          Generic)
+
+pattern RECTNoExport :: ReportExportConfigType
+pattern RECTNoExport = ReportExportConfigType' "NO_EXPORT"
+
+pattern RECTS3 :: ReportExportConfigType
+pattern RECTS3 = ReportExportConfigType' "S3"
+
+{-# COMPLETE
+  RECTNoExport,
+  RECTS3,
+  ReportExportConfigType' #-}
 
 instance FromText ReportExportConfigType where
-    parser = takeLowerText >>= \case
-        "no_export" -> pure RECTNoExport
-        "s3" -> pure RECTS3
-        e -> fromTextError $ "Failure parsing ReportExportConfigType from value: '" <> e
-           <> "'. Accepted values: no_export, s3"
+    parser = (ReportExportConfigType' . mk) <$> takeText
 
 instance ToText ReportExportConfigType where
-    toText = \case
-        RECTNoExport -> "NO_EXPORT"
-        RECTS3 -> "S3"
+    toText (ReportExportConfigType' ci) = original ci
+
+-- | Represents an enum of /known/ $ReportExportConfigType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum ReportExportConfigType where
+    toEnum i = case i of
+        0 -> RECTNoExport
+        1 -> RECTS3
+        _ -> (error . showText) $ "Unknown index for ReportExportConfigType: " <> toText i
+    fromEnum x = case x of
+        RECTNoExport -> 0
+        RECTS3 -> 1
+        ReportExportConfigType' name -> (error . showText) $ "Unknown ReportExportConfigType: " <> original name
+
+-- | Represents the bounds of /known/ $ReportExportConfigType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded ReportExportConfigType where
+    minBound = RECTNoExport
+    maxBound = RECTS3
 
 instance Hashable     ReportExportConfigType
 instance NFData       ReportExportConfigType

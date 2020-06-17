@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,29 +16,65 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.SSM.Types.CommandFilterKey where
+module Network.AWS.SSM.Types.CommandFilterKey (
+  CommandFilterKey (
+    ..
+    , CommandInvokedAfter
+    , CommandInvokedBefore
+    , CommandStatus
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data CommandFilterKey = CommandInvokedAfter
-                      | CommandInvokedBefore
-                      | CommandStatus
-                          deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                    Typeable, Generic)
+
+data CommandFilterKey = CommandFilterKey' (CI Text)
+                          deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                    Generic)
+
+pattern CommandInvokedAfter :: CommandFilterKey
+pattern CommandInvokedAfter = CommandFilterKey' "InvokedAfter"
+
+pattern CommandInvokedBefore :: CommandFilterKey
+pattern CommandInvokedBefore = CommandFilterKey' "InvokedBefore"
+
+pattern CommandStatus :: CommandFilterKey
+pattern CommandStatus = CommandFilterKey' "Status"
+
+{-# COMPLETE
+  CommandInvokedAfter,
+  CommandInvokedBefore,
+  CommandStatus,
+  CommandFilterKey' #-}
 
 instance FromText CommandFilterKey where
-    parser = takeLowerText >>= \case
-        "invokedafter" -> pure CommandInvokedAfter
-        "invokedbefore" -> pure CommandInvokedBefore
-        "status" -> pure CommandStatus
-        e -> fromTextError $ "Failure parsing CommandFilterKey from value: '" <> e
-           <> "'. Accepted values: invokedafter, invokedbefore, status"
+    parser = (CommandFilterKey' . mk) <$> takeText
 
 instance ToText CommandFilterKey where
-    toText = \case
-        CommandInvokedAfter -> "InvokedAfter"
-        CommandInvokedBefore -> "InvokedBefore"
-        CommandStatus -> "Status"
+    toText (CommandFilterKey' ci) = original ci
+
+-- | Represents an enum of /known/ $CommandFilterKey.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum CommandFilterKey where
+    toEnum i = case i of
+        0 -> CommandInvokedAfter
+        1 -> CommandInvokedBefore
+        2 -> CommandStatus
+        _ -> (error . showText) $ "Unknown index for CommandFilterKey: " <> toText i
+    fromEnum x = case x of
+        CommandInvokedAfter -> 0
+        CommandInvokedBefore -> 1
+        CommandStatus -> 2
+        CommandFilterKey' name -> (error . showText) $ "Unknown CommandFilterKey: " <> original name
+
+-- | Represents the bounds of /known/ $CommandFilterKey.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded CommandFilterKey where
+    minBound = CommandInvokedAfter
+    maxBound = CommandStatus
 
 instance Hashable     CommandFilterKey
 instance NFData       CommandFilterKey

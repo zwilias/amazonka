@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,58 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.EMR.Types.MarketType where
+module Network.AWS.EMR.Types.MarketType (
+  MarketType (
+    ..
+    , OnDemand
+    , Spot
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data MarketType = OnDemand
-                | Spot
-                    deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                              Typeable, Generic)
+
+data MarketType = MarketType' (CI Text)
+                    deriving (Eq, Ord, Read, Show, Data, Typeable,
+                              Generic)
+
+pattern OnDemand :: MarketType
+pattern OnDemand = MarketType' "ON_DEMAND"
+
+pattern Spot :: MarketType
+pattern Spot = MarketType' "SPOT"
+
+{-# COMPLETE
+  OnDemand,
+  Spot,
+  MarketType' #-}
 
 instance FromText MarketType where
-    parser = takeLowerText >>= \case
-        "on_demand" -> pure OnDemand
-        "spot" -> pure Spot
-        e -> fromTextError $ "Failure parsing MarketType from value: '" <> e
-           <> "'. Accepted values: on_demand, spot"
+    parser = (MarketType' . mk) <$> takeText
 
 instance ToText MarketType where
-    toText = \case
-        OnDemand -> "ON_DEMAND"
-        Spot -> "SPOT"
+    toText (MarketType' ci) = original ci
+
+-- | Represents an enum of /known/ $MarketType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum MarketType where
+    toEnum i = case i of
+        0 -> OnDemand
+        1 -> Spot
+        _ -> (error . showText) $ "Unknown index for MarketType: " <> toText i
+    fromEnum x = case x of
+        OnDemand -> 0
+        Spot -> 1
+        MarketType' name -> (error . showText) $ "Unknown MarketType: " <> original name
+
+-- | Represents the bounds of /known/ $MarketType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded MarketType where
+    minBound = OnDemand
+    maxBound = Spot
 
 instance Hashable     MarketType
 instance NFData       MarketType

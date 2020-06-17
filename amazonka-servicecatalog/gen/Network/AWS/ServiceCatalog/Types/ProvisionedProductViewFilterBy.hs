@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,24 +16,52 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.ServiceCatalog.Types.ProvisionedProductViewFilterBy where
+module Network.AWS.ServiceCatalog.Types.ProvisionedProductViewFilterBy (
+  ProvisionedProductViewFilterBy (
+    ..
+    , SearchQuery
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data ProvisionedProductViewFilterBy = SearchQuery
-                                        deriving (Eq, Ord, Read, Show, Enum,
-                                                  Bounded, Data, Typeable,
-                                                  Generic)
+
+data ProvisionedProductViewFilterBy = ProvisionedProductViewFilterBy' (CI
+                                                                         Text)
+                                        deriving (Eq, Ord, Read, Show, Data,
+                                                  Typeable, Generic)
+
+pattern SearchQuery :: ProvisionedProductViewFilterBy
+pattern SearchQuery = ProvisionedProductViewFilterBy' "SearchQuery"
+
+{-# COMPLETE
+  SearchQuery,
+  ProvisionedProductViewFilterBy' #-}
 
 instance FromText ProvisionedProductViewFilterBy where
-    parser = takeLowerText >>= \case
-        "searchquery" -> pure SearchQuery
-        e -> fromTextError $ "Failure parsing ProvisionedProductViewFilterBy from value: '" <> e
-           <> "'. Accepted values: searchquery"
+    parser = (ProvisionedProductViewFilterBy' . mk) <$> takeText
 
 instance ToText ProvisionedProductViewFilterBy where
-    toText = \case
-        SearchQuery -> "SearchQuery"
+    toText (ProvisionedProductViewFilterBy' ci) = original ci
+
+-- | Represents an enum of /known/ $ProvisionedProductViewFilterBy.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum ProvisionedProductViewFilterBy where
+    toEnum i = case i of
+        0 -> SearchQuery
+        _ -> (error . showText) $ "Unknown index for ProvisionedProductViewFilterBy: " <> toText i
+    fromEnum x = case x of
+        SearchQuery -> 0
+        ProvisionedProductViewFilterBy' name -> (error . showText) $ "Unknown ProvisionedProductViewFilterBy: " <> original name
+
+-- | Represents the bounds of /known/ $ProvisionedProductViewFilterBy.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded ProvisionedProductViewFilterBy where
+    minBound = SearchQuery
+    maxBound = SearchQuery
 
 instance Hashable     ProvisionedProductViewFilterBy
 instance NFData       ProvisionedProductViewFilterBy

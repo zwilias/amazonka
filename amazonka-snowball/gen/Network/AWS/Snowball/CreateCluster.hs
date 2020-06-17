@@ -51,6 +51,7 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.Snowball.Types
+import Network.AWS.Snowball.Types.Product
 
 -- | /See:/ 'createCluster' smart constructor.
 data CreateCluster = CreateCluster'{_ccKMSKeyARN ::

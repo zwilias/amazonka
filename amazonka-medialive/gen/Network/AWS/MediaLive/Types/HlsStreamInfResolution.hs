@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,27 +16,60 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.MediaLive.Types.HlsStreamInfResolution where
+module Network.AWS.MediaLive.Types.HlsStreamInfResolution (
+  HlsStreamInfResolution (
+    ..
+    , HSIRExclude
+    , HSIRInclude
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
+
 -- | Placeholder documentation for HlsStreamInfResolution
-data HlsStreamInfResolution = HSIRExclude
-                            | HSIRInclude
-                                deriving (Eq, Ord, Read, Show, Enum, Bounded,
-                                          Data, Typeable, Generic)
+data HlsStreamInfResolution = HlsStreamInfResolution' (CI
+                                                         Text)
+                                deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                          Generic)
+
+pattern HSIRExclude :: HlsStreamInfResolution
+pattern HSIRExclude = HlsStreamInfResolution' "EXCLUDE"
+
+pattern HSIRInclude :: HlsStreamInfResolution
+pattern HSIRInclude = HlsStreamInfResolution' "INCLUDE"
+
+{-# COMPLETE
+  HSIRExclude,
+  HSIRInclude,
+  HlsStreamInfResolution' #-}
 
 instance FromText HlsStreamInfResolution where
-    parser = takeLowerText >>= \case
-        "exclude" -> pure HSIRExclude
-        "include" -> pure HSIRInclude
-        e -> fromTextError $ "Failure parsing HlsStreamInfResolution from value: '" <> e
-           <> "'. Accepted values: exclude, include"
+    parser = (HlsStreamInfResolution' . mk) <$> takeText
 
 instance ToText HlsStreamInfResolution where
-    toText = \case
-        HSIRExclude -> "EXCLUDE"
-        HSIRInclude -> "INCLUDE"
+    toText (HlsStreamInfResolution' ci) = original ci
+
+-- | Represents an enum of /known/ $HlsStreamInfResolution.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum HlsStreamInfResolution where
+    toEnum i = case i of
+        0 -> HSIRExclude
+        1 -> HSIRInclude
+        _ -> (error . showText) $ "Unknown index for HlsStreamInfResolution: " <> toText i
+    fromEnum x = case x of
+        HSIRExclude -> 0
+        HSIRInclude -> 1
+        HlsStreamInfResolution' name -> (error . showText) $ "Unknown HlsStreamInfResolution: " <> original name
+
+-- | Represents the bounds of /known/ $HlsStreamInfResolution.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded HlsStreamInfResolution where
+    minBound = HSIRExclude
+    maxBound = HSIRInclude
 
 instance Hashable     HlsStreamInfResolution
 instance NFData       HlsStreamInfResolution

@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,24 +16,53 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.EC2.Types.ConnectionNotificationType where
+module Network.AWS.EC2.Types.ConnectionNotificationType (
+  ConnectionNotificationType (
+    ..
+    , Topic
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.EC2.Internal
 import Network.AWS.Prelude
-  
-data ConnectionNotificationType = Topic
-                                    deriving (Eq, Ord, Read, Show, Enum,
-                                              Bounded, Data, Typeable, Generic)
+
+data ConnectionNotificationType = ConnectionNotificationType' (CI
+                                                                 Text)
+                                    deriving (Eq, Ord, Read, Show, Data,
+                                              Typeable, Generic)
+
+pattern Topic :: ConnectionNotificationType
+pattern Topic = ConnectionNotificationType' "Topic"
+
+{-# COMPLETE
+  Topic,
+  ConnectionNotificationType' #-}
 
 instance FromText ConnectionNotificationType where
-    parser = takeLowerText >>= \case
-        "topic" -> pure Topic
-        e -> fromTextError $ "Failure parsing ConnectionNotificationType from value: '" <> e
-           <> "'. Accepted values: topic"
+    parser = (ConnectionNotificationType' . mk) <$> takeText
 
 instance ToText ConnectionNotificationType where
-    toText = \case
-        Topic -> "Topic"
+    toText (ConnectionNotificationType' ci) = original ci
+
+-- | Represents an enum of /known/ $ConnectionNotificationType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum ConnectionNotificationType where
+    toEnum i = case i of
+        0 -> Topic
+        _ -> (error . showText) $ "Unknown index for ConnectionNotificationType: " <> toText i
+    fromEnum x = case x of
+        Topic -> 0
+        ConnectionNotificationType' name -> (error . showText) $ "Unknown ConnectionNotificationType: " <> original name
+
+-- | Represents the bounds of /known/ $ConnectionNotificationType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded ConnectionNotificationType where
+    minBound = Topic
+    maxBound = Topic
 
 instance Hashable     ConnectionNotificationType
 instance NFData       ConnectionNotificationType

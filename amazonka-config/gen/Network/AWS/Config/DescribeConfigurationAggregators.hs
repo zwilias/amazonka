@@ -43,6 +43,7 @@ module Network.AWS.Config.DescribeConfigurationAggregators
     ) where
 
 import Network.AWS.Config.Types
+import Network.AWS.Config.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude

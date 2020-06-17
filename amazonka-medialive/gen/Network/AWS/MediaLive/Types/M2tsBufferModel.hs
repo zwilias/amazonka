@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,27 +16,59 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.MediaLive.Types.M2tsBufferModel where
+module Network.AWS.MediaLive.Types.M2tsBufferModel (
+  M2tsBufferModel (
+    ..
+    , MBMMultiplex
+    , MBMNone
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
+
 -- | Placeholder documentation for M2tsBufferModel
-data M2tsBufferModel = MBMMultiplex
-                     | MBMNone
-                         deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                   Typeable, Generic)
+data M2tsBufferModel = M2tsBufferModel' (CI Text)
+                         deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                   Generic)
+
+pattern MBMMultiplex :: M2tsBufferModel
+pattern MBMMultiplex = M2tsBufferModel' "MULTIPLEX"
+
+pattern MBMNone :: M2tsBufferModel
+pattern MBMNone = M2tsBufferModel' "NONE"
+
+{-# COMPLETE
+  MBMMultiplex,
+  MBMNone,
+  M2tsBufferModel' #-}
 
 instance FromText M2tsBufferModel where
-    parser = takeLowerText >>= \case
-        "multiplex" -> pure MBMMultiplex
-        "none" -> pure MBMNone
-        e -> fromTextError $ "Failure parsing M2tsBufferModel from value: '" <> e
-           <> "'. Accepted values: multiplex, none"
+    parser = (M2tsBufferModel' . mk) <$> takeText
 
 instance ToText M2tsBufferModel where
-    toText = \case
-        MBMMultiplex -> "MULTIPLEX"
-        MBMNone -> "NONE"
+    toText (M2tsBufferModel' ci) = original ci
+
+-- | Represents an enum of /known/ $M2tsBufferModel.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum M2tsBufferModel where
+    toEnum i = case i of
+        0 -> MBMMultiplex
+        1 -> MBMNone
+        _ -> (error . showText) $ "Unknown index for M2tsBufferModel: " <> toText i
+    fromEnum x = case x of
+        MBMMultiplex -> 0
+        MBMNone -> 1
+        M2tsBufferModel' name -> (error . showText) $ "Unknown M2tsBufferModel: " <> original name
+
+-- | Represents the bounds of /known/ $M2tsBufferModel.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded M2tsBufferModel where
+    minBound = MBMMultiplex
+    maxBound = MBMNone
 
 instance Hashable     M2tsBufferModel
 instance NFData       M2tsBufferModel

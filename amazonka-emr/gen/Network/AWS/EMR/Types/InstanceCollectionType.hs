@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,59 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.EMR.Types.InstanceCollectionType where
+module Network.AWS.EMR.Types.InstanceCollectionType (
+  InstanceCollectionType (
+    ..
+    , InstanceFleet
+    , InstanceGroup
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data InstanceCollectionType = InstanceFleet
-                            | InstanceGroup
-                                deriving (Eq, Ord, Read, Show, Enum, Bounded,
-                                          Data, Typeable, Generic)
+
+data InstanceCollectionType = InstanceCollectionType' (CI
+                                                         Text)
+                                deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                          Generic)
+
+pattern InstanceFleet :: InstanceCollectionType
+pattern InstanceFleet = InstanceCollectionType' "INSTANCE_FLEET"
+
+pattern InstanceGroup :: InstanceCollectionType
+pattern InstanceGroup = InstanceCollectionType' "INSTANCE_GROUP"
+
+{-# COMPLETE
+  InstanceFleet,
+  InstanceGroup,
+  InstanceCollectionType' #-}
 
 instance FromText InstanceCollectionType where
-    parser = takeLowerText >>= \case
-        "instance_fleet" -> pure InstanceFleet
-        "instance_group" -> pure InstanceGroup
-        e -> fromTextError $ "Failure parsing InstanceCollectionType from value: '" <> e
-           <> "'. Accepted values: instance_fleet, instance_group"
+    parser = (InstanceCollectionType' . mk) <$> takeText
 
 instance ToText InstanceCollectionType where
-    toText = \case
-        InstanceFleet -> "INSTANCE_FLEET"
-        InstanceGroup -> "INSTANCE_GROUP"
+    toText (InstanceCollectionType' ci) = original ci
+
+-- | Represents an enum of /known/ $InstanceCollectionType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum InstanceCollectionType where
+    toEnum i = case i of
+        0 -> InstanceFleet
+        1 -> InstanceGroup
+        _ -> (error . showText) $ "Unknown index for InstanceCollectionType: " <> toText i
+    fromEnum x = case x of
+        InstanceFleet -> 0
+        InstanceGroup -> 1
+        InstanceCollectionType' name -> (error . showText) $ "Unknown InstanceCollectionType: " <> original name
+
+-- | Represents the bounds of /known/ $InstanceCollectionType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded InstanceCollectionType where
+    minBound = InstanceFleet
+    maxBound = InstanceGroup
 
 instance Hashable     InstanceCollectionType
 instance NFData       InstanceCollectionType

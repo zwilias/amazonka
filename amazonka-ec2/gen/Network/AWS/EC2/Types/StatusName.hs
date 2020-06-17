@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,24 +16,52 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.EC2.Types.StatusName where
+module Network.AWS.EC2.Types.StatusName (
+  StatusName (
+    ..
+    , Reachability
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.EC2.Internal
 import Network.AWS.Prelude
-  
-data StatusName = Reachability
-                    deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                              Typeable, Generic)
+
+data StatusName = StatusName' (CI Text)
+                    deriving (Eq, Ord, Read, Show, Data, Typeable,
+                              Generic)
+
+pattern Reachability :: StatusName
+pattern Reachability = StatusName' "reachability"
+
+{-# COMPLETE
+  Reachability,
+  StatusName' #-}
 
 instance FromText StatusName where
-    parser = takeLowerText >>= \case
-        "reachability" -> pure Reachability
-        e -> fromTextError $ "Failure parsing StatusName from value: '" <> e
-           <> "'. Accepted values: reachability"
+    parser = (StatusName' . mk) <$> takeText
 
 instance ToText StatusName where
-    toText = \case
-        Reachability -> "reachability"
+    toText (StatusName' ci) = original ci
+
+-- | Represents an enum of /known/ $StatusName.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum StatusName where
+    toEnum i = case i of
+        0 -> Reachability
+        _ -> (error . showText) $ "Unknown index for StatusName: " <> toText i
+    fromEnum x = case x of
+        Reachability -> 0
+        StatusName' name -> (error . showText) $ "Unknown StatusName: " <> original name
+
+-- | Represents the bounds of /known/ $StatusName.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded StatusName where
+    minBound = Reachability
+    maxBound = Reachability
 
 instance Hashable     StatusName
 instance NFData       StatusName

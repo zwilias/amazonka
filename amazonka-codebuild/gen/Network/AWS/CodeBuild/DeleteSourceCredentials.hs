@@ -38,6 +38,7 @@ module Network.AWS.CodeBuild.DeleteSourceCredentials
     ) where
 
 import Network.AWS.CodeBuild.Types
+import Network.AWS.CodeBuild.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request

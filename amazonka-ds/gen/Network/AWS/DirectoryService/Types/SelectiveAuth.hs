@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,58 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.DirectoryService.Types.SelectiveAuth where
+module Network.AWS.DirectoryService.Types.SelectiveAuth (
+  SelectiveAuth (
+    ..
+    , Disabled
+    , Enabled
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data SelectiveAuth = Disabled
-                   | Enabled
-                       deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                 Typeable, Generic)
+
+data SelectiveAuth = SelectiveAuth' (CI Text)
+                       deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                 Generic)
+
+pattern Disabled :: SelectiveAuth
+pattern Disabled = SelectiveAuth' "Disabled"
+
+pattern Enabled :: SelectiveAuth
+pattern Enabled = SelectiveAuth' "Enabled"
+
+{-# COMPLETE
+  Disabled,
+  Enabled,
+  SelectiveAuth' #-}
 
 instance FromText SelectiveAuth where
-    parser = takeLowerText >>= \case
-        "disabled" -> pure Disabled
-        "enabled" -> pure Enabled
-        e -> fromTextError $ "Failure parsing SelectiveAuth from value: '" <> e
-           <> "'. Accepted values: disabled, enabled"
+    parser = (SelectiveAuth' . mk) <$> takeText
 
 instance ToText SelectiveAuth where
-    toText = \case
-        Disabled -> "Disabled"
-        Enabled -> "Enabled"
+    toText (SelectiveAuth' ci) = original ci
+
+-- | Represents an enum of /known/ $SelectiveAuth.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum SelectiveAuth where
+    toEnum i = case i of
+        0 -> Disabled
+        1 -> Enabled
+        _ -> (error . showText) $ "Unknown index for SelectiveAuth: " <> toText i
+    fromEnum x = case x of
+        Disabled -> 0
+        Enabled -> 1
+        SelectiveAuth' name -> (error . showText) $ "Unknown SelectiveAuth: " <> original name
+
+-- | Represents the bounds of /known/ $SelectiveAuth.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded SelectiveAuth where
+    minBound = Disabled
+    maxBound = Enabled
 
 instance Hashable     SelectiveAuth
 instance NFData       SelectiveAuth

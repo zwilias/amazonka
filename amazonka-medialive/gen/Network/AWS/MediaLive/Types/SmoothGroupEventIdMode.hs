@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,30 +16,67 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.MediaLive.Types.SmoothGroupEventIdMode where
+module Network.AWS.MediaLive.Types.SmoothGroupEventIdMode (
+  SmoothGroupEventIdMode (
+    ..
+    , NoEventId
+    , UseConfigured
+    , UseTimestamp
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
+
 -- | Placeholder documentation for SmoothGroupEventIdMode
-data SmoothGroupEventIdMode = NoEventId
-                            | UseConfigured
-                            | UseTimestamp
-                                deriving (Eq, Ord, Read, Show, Enum, Bounded,
-                                          Data, Typeable, Generic)
+data SmoothGroupEventIdMode = SmoothGroupEventIdMode' (CI
+                                                         Text)
+                                deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                          Generic)
+
+pattern NoEventId :: SmoothGroupEventIdMode
+pattern NoEventId = SmoothGroupEventIdMode' "NO_EVENT_ID"
+
+pattern UseConfigured :: SmoothGroupEventIdMode
+pattern UseConfigured = SmoothGroupEventIdMode' "USE_CONFIGURED"
+
+pattern UseTimestamp :: SmoothGroupEventIdMode
+pattern UseTimestamp = SmoothGroupEventIdMode' "USE_TIMESTAMP"
+
+{-# COMPLETE
+  NoEventId,
+  UseConfigured,
+  UseTimestamp,
+  SmoothGroupEventIdMode' #-}
 
 instance FromText SmoothGroupEventIdMode where
-    parser = takeLowerText >>= \case
-        "no_event_id" -> pure NoEventId
-        "use_configured" -> pure UseConfigured
-        "use_timestamp" -> pure UseTimestamp
-        e -> fromTextError $ "Failure parsing SmoothGroupEventIdMode from value: '" <> e
-           <> "'. Accepted values: no_event_id, use_configured, use_timestamp"
+    parser = (SmoothGroupEventIdMode' . mk) <$> takeText
 
 instance ToText SmoothGroupEventIdMode where
-    toText = \case
-        NoEventId -> "NO_EVENT_ID"
-        UseConfigured -> "USE_CONFIGURED"
-        UseTimestamp -> "USE_TIMESTAMP"
+    toText (SmoothGroupEventIdMode' ci) = original ci
+
+-- | Represents an enum of /known/ $SmoothGroupEventIdMode.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum SmoothGroupEventIdMode where
+    toEnum i = case i of
+        0 -> NoEventId
+        1 -> UseConfigured
+        2 -> UseTimestamp
+        _ -> (error . showText) $ "Unknown index for SmoothGroupEventIdMode: " <> toText i
+    fromEnum x = case x of
+        NoEventId -> 0
+        UseConfigured -> 1
+        UseTimestamp -> 2
+        SmoothGroupEventIdMode' name -> (error . showText) $ "Unknown SmoothGroupEventIdMode: " <> original name
+
+-- | Represents the bounds of /known/ $SmoothGroupEventIdMode.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded SmoothGroupEventIdMode where
+    minBound = NoEventId
+    maxBound = UseTimestamp
 
 instance Hashable     SmoothGroupEventIdMode
 instance NFData       SmoothGroupEventIdMode

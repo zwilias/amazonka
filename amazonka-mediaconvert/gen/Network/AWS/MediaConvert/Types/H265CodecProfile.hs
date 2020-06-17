@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,45 +16,101 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.MediaConvert.Types.H265CodecProfile where
+module Network.AWS.MediaConvert.Types.H265CodecProfile (
+  H265CodecProfile (
+    ..
+    , MAIN10High
+    , MAIN10Main
+    , Main42210BITHigh
+    , Main42210BITMain
+    , Main4228BITHigh
+    , Main4228BITMain
+    , MainHigh
+    , MainMain
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
+
 -- | Represents the Profile and Tier, per the HEVC (H.265) specification. Selections are grouped as [Profile] / [Tier], so "Main/High" represents Main Profile with High Tier. 4:2:2 profiles are only available with the HEVC 4:2:2 License.
-data H265CodecProfile = MAIN10High
-                      | MAIN10Main
-                      | Main42210BITHigh
-                      | Main42210BITMain
-                      | Main4228BITHigh
-                      | Main4228BITMain
-                      | MainHigh
-                      | MainMain
-                          deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                    Typeable, Generic)
+data H265CodecProfile = H265CodecProfile' (CI Text)
+                          deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                    Generic)
+
+pattern MAIN10High :: H265CodecProfile
+pattern MAIN10High = H265CodecProfile' "MAIN10_HIGH"
+
+pattern MAIN10Main :: H265CodecProfile
+pattern MAIN10Main = H265CodecProfile' "MAIN10_MAIN"
+
+pattern Main42210BITHigh :: H265CodecProfile
+pattern Main42210BITHigh = H265CodecProfile' "MAIN_422_10BIT_HIGH"
+
+pattern Main42210BITMain :: H265CodecProfile
+pattern Main42210BITMain = H265CodecProfile' "MAIN_422_10BIT_MAIN"
+
+pattern Main4228BITHigh :: H265CodecProfile
+pattern Main4228BITHigh = H265CodecProfile' "MAIN_422_8BIT_HIGH"
+
+pattern Main4228BITMain :: H265CodecProfile
+pattern Main4228BITMain = H265CodecProfile' "MAIN_422_8BIT_MAIN"
+
+pattern MainHigh :: H265CodecProfile
+pattern MainHigh = H265CodecProfile' "MAIN_HIGH"
+
+pattern MainMain :: H265CodecProfile
+pattern MainMain = H265CodecProfile' "MAIN_MAIN"
+
+{-# COMPLETE
+  MAIN10High,
+  MAIN10Main,
+  Main42210BITHigh,
+  Main42210BITMain,
+  Main4228BITHigh,
+  Main4228BITMain,
+  MainHigh,
+  MainMain,
+  H265CodecProfile' #-}
 
 instance FromText H265CodecProfile where
-    parser = takeLowerText >>= \case
-        "main10_high" -> pure MAIN10High
-        "main10_main" -> pure MAIN10Main
-        "main_422_10bit_high" -> pure Main42210BITHigh
-        "main_422_10bit_main" -> pure Main42210BITMain
-        "main_422_8bit_high" -> pure Main4228BITHigh
-        "main_422_8bit_main" -> pure Main4228BITMain
-        "main_high" -> pure MainHigh
-        "main_main" -> pure MainMain
-        e -> fromTextError $ "Failure parsing H265CodecProfile from value: '" <> e
-           <> "'. Accepted values: main10_high, main10_main, main_422_10bit_high, main_422_10bit_main, main_422_8bit_high, main_422_8bit_main, main_high, main_main"
+    parser = (H265CodecProfile' . mk) <$> takeText
 
 instance ToText H265CodecProfile where
-    toText = \case
-        MAIN10High -> "MAIN10_HIGH"
-        MAIN10Main -> "MAIN10_MAIN"
-        Main42210BITHigh -> "MAIN_422_10BIT_HIGH"
-        Main42210BITMain -> "MAIN_422_10BIT_MAIN"
-        Main4228BITHigh -> "MAIN_422_8BIT_HIGH"
-        Main4228BITMain -> "MAIN_422_8BIT_MAIN"
-        MainHigh -> "MAIN_HIGH"
-        MainMain -> "MAIN_MAIN"
+    toText (H265CodecProfile' ci) = original ci
+
+-- | Represents an enum of /known/ $H265CodecProfile.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum H265CodecProfile where
+    toEnum i = case i of
+        0 -> MAIN10High
+        1 -> MAIN10Main
+        2 -> Main42210BITHigh
+        3 -> Main42210BITMain
+        4 -> Main4228BITHigh
+        5 -> Main4228BITMain
+        6 -> MainHigh
+        7 -> MainMain
+        _ -> (error . showText) $ "Unknown index for H265CodecProfile: " <> toText i
+    fromEnum x = case x of
+        MAIN10High -> 0
+        MAIN10Main -> 1
+        Main42210BITHigh -> 2
+        Main42210BITMain -> 3
+        Main4228BITHigh -> 4
+        Main4228BITMain -> 5
+        MainHigh -> 6
+        MainMain -> 7
+        H265CodecProfile' name -> (error . showText) $ "Unknown H265CodecProfile: " <> original name
+
+-- | Represents the bounds of /known/ $H265CodecProfile.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded H265CodecProfile where
+    minBound = MAIN10High
+    maxBound = MainMain
 
 instance Hashable     H265CodecProfile
 instance NFData       H265CodecProfile

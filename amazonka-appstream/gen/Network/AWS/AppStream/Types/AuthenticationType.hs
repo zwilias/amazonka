@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,29 +16,66 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.AppStream.Types.AuthenticationType where
+module Network.AWS.AppStream.Types.AuthenticationType (
+  AuthenticationType (
+    ..
+    , API
+    , Saml
+    , Userpool
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data AuthenticationType = API
-                        | Saml
-                        | Userpool
-                            deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                      Typeable, Generic)
+
+data AuthenticationType = AuthenticationType' (CI
+                                                 Text)
+                            deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                      Generic)
+
+pattern API :: AuthenticationType
+pattern API = AuthenticationType' "API"
+
+pattern Saml :: AuthenticationType
+pattern Saml = AuthenticationType' "SAML"
+
+pattern Userpool :: AuthenticationType
+pattern Userpool = AuthenticationType' "USERPOOL"
+
+{-# COMPLETE
+  API,
+  Saml,
+  Userpool,
+  AuthenticationType' #-}
 
 instance FromText AuthenticationType where
-    parser = takeLowerText >>= \case
-        "api" -> pure API
-        "saml" -> pure Saml
-        "userpool" -> pure Userpool
-        e -> fromTextError $ "Failure parsing AuthenticationType from value: '" <> e
-           <> "'. Accepted values: api, saml, userpool"
+    parser = (AuthenticationType' . mk) <$> takeText
 
 instance ToText AuthenticationType where
-    toText = \case
-        API -> "API"
-        Saml -> "SAML"
-        Userpool -> "USERPOOL"
+    toText (AuthenticationType' ci) = original ci
+
+-- | Represents an enum of /known/ $AuthenticationType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum AuthenticationType where
+    toEnum i = case i of
+        0 -> API
+        1 -> Saml
+        2 -> Userpool
+        _ -> (error . showText) $ "Unknown index for AuthenticationType: " <> toText i
+    fromEnum x = case x of
+        API -> 0
+        Saml -> 1
+        Userpool -> 2
+        AuthenticationType' name -> (error . showText) $ "Unknown AuthenticationType: " <> original name
+
+-- | Represents the bounds of /known/ $AuthenticationType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded AuthenticationType where
+    minBound = API
+    maxBound = Userpool
 
 instance Hashable     AuthenticationType
 instance NFData       AuthenticationType

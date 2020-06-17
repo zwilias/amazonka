@@ -109,6 +109,7 @@ library
         , Network.AWS.CloudFormation.Types.Parameter
         , Network.AWS.CloudFormation.Types.ParameterConstraints
         , Network.AWS.CloudFormation.Types.ParameterDeclaration
+        , Network.AWS.CloudFormation.Types.Product
         , Network.AWS.CloudFormation.Types.Replacement
         , Network.AWS.CloudFormation.Types.RequiresRecreation
         , Network.AWS.CloudFormation.Types.ResourceAttribute
@@ -146,6 +147,7 @@ library
     build-depends:
           amazonka-core == 1.6.1.*
         , base          >= 4.7     && < 5
+        , case-insensitive
 
 test-suite amazonka-cloudformation-test
     type:              exitcode-stdio-1.0
@@ -169,6 +171,7 @@ test-suite amazonka-cloudformation-test
         , amazonka-cloudformation
         , base
         , bytestring
+        , case-insensitive
         , tasty
         , tasty-hunit
         , text

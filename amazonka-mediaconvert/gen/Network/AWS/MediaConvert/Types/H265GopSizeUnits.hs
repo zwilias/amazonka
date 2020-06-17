@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,27 +16,59 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.MediaConvert.Types.H265GopSizeUnits where
+module Network.AWS.MediaConvert.Types.H265GopSizeUnits (
+  H265GopSizeUnits (
+    ..
+    , Frames
+    , Seconds
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
+
 -- | Indicates if the GOP Size in H265 is specified in frames or seconds. If seconds the system will convert the GOP Size into a frame count at run time.
-data H265GopSizeUnits = Frames
-                      | Seconds
-                          deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                    Typeable, Generic)
+data H265GopSizeUnits = H265GopSizeUnits' (CI Text)
+                          deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                    Generic)
+
+pattern Frames :: H265GopSizeUnits
+pattern Frames = H265GopSizeUnits' "FRAMES"
+
+pattern Seconds :: H265GopSizeUnits
+pattern Seconds = H265GopSizeUnits' "SECONDS"
+
+{-# COMPLETE
+  Frames,
+  Seconds,
+  H265GopSizeUnits' #-}
 
 instance FromText H265GopSizeUnits where
-    parser = takeLowerText >>= \case
-        "frames" -> pure Frames
-        "seconds" -> pure Seconds
-        e -> fromTextError $ "Failure parsing H265GopSizeUnits from value: '" <> e
-           <> "'. Accepted values: frames, seconds"
+    parser = (H265GopSizeUnits' . mk) <$> takeText
 
 instance ToText H265GopSizeUnits where
-    toText = \case
-        Frames -> "FRAMES"
-        Seconds -> "SECONDS"
+    toText (H265GopSizeUnits' ci) = original ci
+
+-- | Represents an enum of /known/ $H265GopSizeUnits.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum H265GopSizeUnits where
+    toEnum i = case i of
+        0 -> Frames
+        1 -> Seconds
+        _ -> (error . showText) $ "Unknown index for H265GopSizeUnits: " <> toText i
+    fromEnum x = case x of
+        Frames -> 0
+        Seconds -> 1
+        H265GopSizeUnits' name -> (error . showText) $ "Unknown H265GopSizeUnits: " <> original name
+
+-- | Represents the bounds of /known/ $H265GopSizeUnits.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded H265GopSizeUnits where
+    minBound = Frames
+    maxBound = Seconds
 
 instance Hashable     H265GopSizeUnits
 instance NFData       H265GopSizeUnits

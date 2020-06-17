@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,27 +16,59 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.EC2.Types.VPCState where
+module Network.AWS.EC2.Types.VPCState (
+  VPCState (
+    ..
+    , VPCSAvailable
+    , VPCSPending
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.EC2.Internal
 import Network.AWS.Prelude
-  
-data VPCState = VPCSAvailable
-              | VPCSPending
-                  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                            Typeable, Generic)
+
+data VPCState = VPCState' (CI Text)
+                  deriving (Eq, Ord, Read, Show, Data, Typeable,
+                            Generic)
+
+pattern VPCSAvailable :: VPCState
+pattern VPCSAvailable = VPCState' "available"
+
+pattern VPCSPending :: VPCState
+pattern VPCSPending = VPCState' "pending"
+
+{-# COMPLETE
+  VPCSAvailable,
+  VPCSPending,
+  VPCState' #-}
 
 instance FromText VPCState where
-    parser = takeLowerText >>= \case
-        "available" -> pure VPCSAvailable
-        "pending" -> pure VPCSPending
-        e -> fromTextError $ "Failure parsing VPCState from value: '" <> e
-           <> "'. Accepted values: available, pending"
+    parser = (VPCState' . mk) <$> takeText
 
 instance ToText VPCState where
-    toText = \case
-        VPCSAvailable -> "available"
-        VPCSPending -> "pending"
+    toText (VPCState' ci) = original ci
+
+-- | Represents an enum of /known/ $VPCState.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum VPCState where
+    toEnum i = case i of
+        0 -> VPCSAvailable
+        1 -> VPCSPending
+        _ -> (error . showText) $ "Unknown index for VPCState: " <> toText i
+    fromEnum x = case x of
+        VPCSAvailable -> 0
+        VPCSPending -> 1
+        VPCState' name -> (error . showText) $ "Unknown VPCState: " <> original name
+
+-- | Represents the bounds of /known/ $VPCState.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded VPCState where
+    minBound = VPCSAvailable
+    maxBound = VPCSPending
 
 instance Hashable     VPCState
 instance NFData       VPCState

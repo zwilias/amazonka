@@ -38,6 +38,7 @@ module Network.AWS.ECR.CreateRepository
     ) where
 
 import Network.AWS.ECR.Types
+import Network.AWS.ECR.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request

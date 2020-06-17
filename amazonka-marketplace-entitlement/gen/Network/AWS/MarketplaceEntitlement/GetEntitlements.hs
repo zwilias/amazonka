@@ -43,6 +43,7 @@ module Network.AWS.MarketplaceEntitlement.GetEntitlements
 
 import Network.AWS.Lens
 import Network.AWS.MarketplaceEntitlement.Types
+import Network.AWS.MarketplaceEntitlement.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response

@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,58 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.ElasticBeanstalk.Types.SourceType where
+module Network.AWS.ElasticBeanstalk.Types.SourceType (
+  SourceType (
+    ..
+    , Git
+    , Zip
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data SourceType = Git
-                | Zip
-                    deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                              Typeable, Generic)
+
+data SourceType = SourceType' (CI Text)
+                    deriving (Eq, Ord, Read, Show, Data, Typeable,
+                              Generic)
+
+pattern Git :: SourceType
+pattern Git = SourceType' "Git"
+
+pattern Zip :: SourceType
+pattern Zip = SourceType' "Zip"
+
+{-# COMPLETE
+  Git,
+  Zip,
+  SourceType' #-}
 
 instance FromText SourceType where
-    parser = takeLowerText >>= \case
-        "git" -> pure Git
-        "zip" -> pure Zip
-        e -> fromTextError $ "Failure parsing SourceType from value: '" <> e
-           <> "'. Accepted values: git, zip"
+    parser = (SourceType' . mk) <$> takeText
 
 instance ToText SourceType where
-    toText = \case
-        Git -> "Git"
-        Zip -> "Zip"
+    toText (SourceType' ci) = original ci
+
+-- | Represents an enum of /known/ $SourceType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum SourceType where
+    toEnum i = case i of
+        0 -> Git
+        1 -> Zip
+        _ -> (error . showText) $ "Unknown index for SourceType: " <> toText i
+    fromEnum x = case x of
+        Git -> 0
+        Zip -> 1
+        SourceType' name -> (error . showText) $ "Unknown SourceType: " <> original name
+
+-- | Represents the bounds of /known/ $SourceType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded SourceType where
+    minBound = Git
+    maxBound = Zip
 
 instance Hashable     SourceType
 instance NFData       SourceType

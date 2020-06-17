@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,29 +16,65 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.EMR.Types.InstanceGroupType where
+module Network.AWS.EMR.Types.InstanceGroupType (
+  InstanceGroupType (
+    ..
+    , Core
+    , Master
+    , Task
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data InstanceGroupType = Core
-                       | Master
-                       | Task
-                           deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                     Typeable, Generic)
+
+data InstanceGroupType = InstanceGroupType' (CI Text)
+                           deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                     Generic)
+
+pattern Core :: InstanceGroupType
+pattern Core = InstanceGroupType' "CORE"
+
+pattern Master :: InstanceGroupType
+pattern Master = InstanceGroupType' "MASTER"
+
+pattern Task :: InstanceGroupType
+pattern Task = InstanceGroupType' "TASK"
+
+{-# COMPLETE
+  Core,
+  Master,
+  Task,
+  InstanceGroupType' #-}
 
 instance FromText InstanceGroupType where
-    parser = takeLowerText >>= \case
-        "core" -> pure Core
-        "master" -> pure Master
-        "task" -> pure Task
-        e -> fromTextError $ "Failure parsing InstanceGroupType from value: '" <> e
-           <> "'. Accepted values: core, master, task"
+    parser = (InstanceGroupType' . mk) <$> takeText
 
 instance ToText InstanceGroupType where
-    toText = \case
-        Core -> "CORE"
-        Master -> "MASTER"
-        Task -> "TASK"
+    toText (InstanceGroupType' ci) = original ci
+
+-- | Represents an enum of /known/ $InstanceGroupType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum InstanceGroupType where
+    toEnum i = case i of
+        0 -> Core
+        1 -> Master
+        2 -> Task
+        _ -> (error . showText) $ "Unknown index for InstanceGroupType: " <> toText i
+    fromEnum x = case x of
+        Core -> 0
+        Master -> 1
+        Task -> 2
+        InstanceGroupType' name -> (error . showText) $ "Unknown InstanceGroupType: " <> original name
+
+-- | Represents the bounds of /known/ $InstanceGroupType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded InstanceGroupType where
+    minBound = Core
+    maxBound = Task
 
 instance Hashable     InstanceGroupType
 instance NFData       InstanceGroupType

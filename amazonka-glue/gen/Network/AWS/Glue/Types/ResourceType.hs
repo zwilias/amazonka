@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,29 +16,65 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.Glue.Types.ResourceType where
+module Network.AWS.Glue.Types.ResourceType (
+  ResourceType (
+    ..
+    , Archive
+    , File
+    , JAR
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data ResourceType = Archive
-                  | File
-                  | JAR
-                      deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                Typeable, Generic)
+
+data ResourceType = ResourceType' (CI Text)
+                      deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                Generic)
+
+pattern Archive :: ResourceType
+pattern Archive = ResourceType' "ARCHIVE"
+
+pattern File :: ResourceType
+pattern File = ResourceType' "FILE"
+
+pattern JAR :: ResourceType
+pattern JAR = ResourceType' "JAR"
+
+{-# COMPLETE
+  Archive,
+  File,
+  JAR,
+  ResourceType' #-}
 
 instance FromText ResourceType where
-    parser = takeLowerText >>= \case
-        "archive" -> pure Archive
-        "file" -> pure File
-        "jar" -> pure JAR
-        e -> fromTextError $ "Failure parsing ResourceType from value: '" <> e
-           <> "'. Accepted values: archive, file, jar"
+    parser = (ResourceType' . mk) <$> takeText
 
 instance ToText ResourceType where
-    toText = \case
-        Archive -> "ARCHIVE"
-        File -> "FILE"
-        JAR -> "JAR"
+    toText (ResourceType' ci) = original ci
+
+-- | Represents an enum of /known/ $ResourceType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum ResourceType where
+    toEnum i = case i of
+        0 -> Archive
+        1 -> File
+        2 -> JAR
+        _ -> (error . showText) $ "Unknown index for ResourceType: " <> toText i
+    fromEnum x = case x of
+        Archive -> 0
+        File -> 1
+        JAR -> 2
+        ResourceType' name -> (error . showText) $ "Unknown ResourceType: " <> original name
+
+-- | Represents the bounds of /known/ $ResourceType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded ResourceType where
+    minBound = Archive
+    maxBound = JAR
 
 instance Hashable     ResourceType
 instance NFData       ResourceType

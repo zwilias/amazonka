@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,58 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.Inspector.Types.ReportFileFormat where
+module Network.AWS.Inspector.Types.ReportFileFormat (
+  ReportFileFormat (
+    ..
+    , HTML
+    , Pdf
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data ReportFileFormat = HTML
-                      | Pdf
-                          deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                    Typeable, Generic)
+
+data ReportFileFormat = ReportFileFormat' (CI Text)
+                          deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                    Generic)
+
+pattern HTML :: ReportFileFormat
+pattern HTML = ReportFileFormat' "HTML"
+
+pattern Pdf :: ReportFileFormat
+pattern Pdf = ReportFileFormat' "PDF"
+
+{-# COMPLETE
+  HTML,
+  Pdf,
+  ReportFileFormat' #-}
 
 instance FromText ReportFileFormat where
-    parser = takeLowerText >>= \case
-        "html" -> pure HTML
-        "pdf" -> pure Pdf
-        e -> fromTextError $ "Failure parsing ReportFileFormat from value: '" <> e
-           <> "'. Accepted values: html, pdf"
+    parser = (ReportFileFormat' . mk) <$> takeText
 
 instance ToText ReportFileFormat where
-    toText = \case
-        HTML -> "HTML"
-        Pdf -> "PDF"
+    toText (ReportFileFormat' ci) = original ci
+
+-- | Represents an enum of /known/ $ReportFileFormat.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum ReportFileFormat where
+    toEnum i = case i of
+        0 -> HTML
+        1 -> Pdf
+        _ -> (error . showText) $ "Unknown index for ReportFileFormat: " <> toText i
+    fromEnum x = case x of
+        HTML -> 0
+        Pdf -> 1
+        ReportFileFormat' name -> (error . showText) $ "Unknown ReportFileFormat: " <> original name
+
+-- | Represents the bounds of /known/ $ReportFileFormat.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded ReportFileFormat where
+    minBound = HTML
+    maxBound = Pdf
 
 instance Hashable     ReportFileFormat
 instance NFData       ReportFileFormat

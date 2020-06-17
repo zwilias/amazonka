@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,58 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.AppStream.Types.StackErrorCode where
+module Network.AWS.AppStream.Types.StackErrorCode (
+  StackErrorCode (
+    ..
+    , SECInternalServiceError
+    , SECStorageConnectorError
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data StackErrorCode = SECInternalServiceError
-                    | SECStorageConnectorError
-                        deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                  Typeable, Generic)
+
+data StackErrorCode = StackErrorCode' (CI Text)
+                        deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                  Generic)
+
+pattern SECInternalServiceError :: StackErrorCode
+pattern SECInternalServiceError = StackErrorCode' "INTERNAL_SERVICE_ERROR"
+
+pattern SECStorageConnectorError :: StackErrorCode
+pattern SECStorageConnectorError = StackErrorCode' "STORAGE_CONNECTOR_ERROR"
+
+{-# COMPLETE
+  SECInternalServiceError,
+  SECStorageConnectorError,
+  StackErrorCode' #-}
 
 instance FromText StackErrorCode where
-    parser = takeLowerText >>= \case
-        "internal_service_error" -> pure SECInternalServiceError
-        "storage_connector_error" -> pure SECStorageConnectorError
-        e -> fromTextError $ "Failure parsing StackErrorCode from value: '" <> e
-           <> "'. Accepted values: internal_service_error, storage_connector_error"
+    parser = (StackErrorCode' . mk) <$> takeText
 
 instance ToText StackErrorCode where
-    toText = \case
-        SECInternalServiceError -> "INTERNAL_SERVICE_ERROR"
-        SECStorageConnectorError -> "STORAGE_CONNECTOR_ERROR"
+    toText (StackErrorCode' ci) = original ci
+
+-- | Represents an enum of /known/ $StackErrorCode.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum StackErrorCode where
+    toEnum i = case i of
+        0 -> SECInternalServiceError
+        1 -> SECStorageConnectorError
+        _ -> (error . showText) $ "Unknown index for StackErrorCode: " <> toText i
+    fromEnum x = case x of
+        SECInternalServiceError -> 0
+        SECStorageConnectorError -> 1
+        StackErrorCode' name -> (error . showText) $ "Unknown StackErrorCode: " <> original name
+
+-- | Represents the bounds of /known/ $StackErrorCode.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded StackErrorCode where
+    minBound = SECInternalServiceError
+    maxBound = SECStorageConnectorError
 
 instance Hashable     StackErrorCode
 instance NFData       StackErrorCode

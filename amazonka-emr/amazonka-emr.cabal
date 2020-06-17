@@ -142,6 +142,7 @@ library
         , Network.AWS.EMR.Types.MarketType
         , Network.AWS.EMR.Types.MetricDimension
         , Network.AWS.EMR.Types.PlacementType
+        , Network.AWS.EMR.Types.Product
         , Network.AWS.EMR.Types.RepoUpgradeOnBoot
         , Network.AWS.EMR.Types.ScaleDownBehavior
         , Network.AWS.EMR.Types.ScalingAction
@@ -171,6 +172,7 @@ library
     build-depends:
           amazonka-core == 1.6.1.*
         , base          >= 4.7     && < 5
+        , case-insensitive
 
 test-suite amazonka-emr-test
     type:              exitcode-stdio-1.0
@@ -194,6 +196,7 @@ test-suite amazonka-emr-test
         , amazonka-emr
         , base
         , bytestring
+        , case-insensitive
         , tasty
         , tasty-hunit
         , text

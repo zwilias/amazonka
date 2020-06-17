@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,38 +16,86 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.CodePipeline.Types.ActionCategory where
+module Network.AWS.CodePipeline.Types.ActionCategory (
+  ActionCategory (
+    ..
+    , Approval
+    , Build
+    , Deploy
+    , Invoke
+    , Source
+    , Test
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data ActionCategory = Approval
-                    | Build
-                    | Deploy
-                    | Invoke
-                    | Source
-                    | Test
-                        deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                  Typeable, Generic)
+
+data ActionCategory = ActionCategory' (CI Text)
+                        deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                  Generic)
+
+pattern Approval :: ActionCategory
+pattern Approval = ActionCategory' "Approval"
+
+pattern Build :: ActionCategory
+pattern Build = ActionCategory' "Build"
+
+pattern Deploy :: ActionCategory
+pattern Deploy = ActionCategory' "Deploy"
+
+pattern Invoke :: ActionCategory
+pattern Invoke = ActionCategory' "Invoke"
+
+pattern Source :: ActionCategory
+pattern Source = ActionCategory' "Source"
+
+pattern Test :: ActionCategory
+pattern Test = ActionCategory' "Test"
+
+{-# COMPLETE
+  Approval,
+  Build,
+  Deploy,
+  Invoke,
+  Source,
+  Test,
+  ActionCategory' #-}
 
 instance FromText ActionCategory where
-    parser = takeLowerText >>= \case
-        "approval" -> pure Approval
-        "build" -> pure Build
-        "deploy" -> pure Deploy
-        "invoke" -> pure Invoke
-        "source" -> pure Source
-        "test" -> pure Test
-        e -> fromTextError $ "Failure parsing ActionCategory from value: '" <> e
-           <> "'. Accepted values: approval, build, deploy, invoke, source, test"
+    parser = (ActionCategory' . mk) <$> takeText
 
 instance ToText ActionCategory where
-    toText = \case
-        Approval -> "Approval"
-        Build -> "Build"
-        Deploy -> "Deploy"
-        Invoke -> "Invoke"
-        Source -> "Source"
-        Test -> "Test"
+    toText (ActionCategory' ci) = original ci
+
+-- | Represents an enum of /known/ $ActionCategory.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum ActionCategory where
+    toEnum i = case i of
+        0 -> Approval
+        1 -> Build
+        2 -> Deploy
+        3 -> Invoke
+        4 -> Source
+        5 -> Test
+        _ -> (error . showText) $ "Unknown index for ActionCategory: " <> toText i
+    fromEnum x = case x of
+        Approval -> 0
+        Build -> 1
+        Deploy -> 2
+        Invoke -> 3
+        Source -> 4
+        Test -> 5
+        ActionCategory' name -> (error . showText) $ "Unknown ActionCategory: " <> original name
+
+-- | Represents the bounds of /known/ $ActionCategory.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded ActionCategory where
+    minBound = Approval
+    maxBound = Test
 
 instance Hashable     ActionCategory
 instance NFData       ActionCategory

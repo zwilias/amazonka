@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,58 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.Connect.Types.Grouping where
+module Network.AWS.Connect.Types.Grouping (
+  Grouping (
+    ..
+    , Channel
+    , Queue
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data Grouping = Channel
-              | Queue
-                  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                            Typeable, Generic)
+
+data Grouping = Grouping' (CI Text)
+                  deriving (Eq, Ord, Read, Show, Data, Typeable,
+                            Generic)
+
+pattern Channel :: Grouping
+pattern Channel = Grouping' "CHANNEL"
+
+pattern Queue :: Grouping
+pattern Queue = Grouping' "QUEUE"
+
+{-# COMPLETE
+  Channel,
+  Queue,
+  Grouping' #-}
 
 instance FromText Grouping where
-    parser = takeLowerText >>= \case
-        "channel" -> pure Channel
-        "queue" -> pure Queue
-        e -> fromTextError $ "Failure parsing Grouping from value: '" <> e
-           <> "'. Accepted values: channel, queue"
+    parser = (Grouping' . mk) <$> takeText
 
 instance ToText Grouping where
-    toText = \case
-        Channel -> "CHANNEL"
-        Queue -> "QUEUE"
+    toText (Grouping' ci) = original ci
+
+-- | Represents an enum of /known/ $Grouping.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum Grouping where
+    toEnum i = case i of
+        0 -> Channel
+        1 -> Queue
+        _ -> (error . showText) $ "Unknown index for Grouping: " <> toText i
+    fromEnum x = case x of
+        Channel -> 0
+        Queue -> 1
+        Grouping' name -> (error . showText) $ "Unknown Grouping: " <> original name
+
+-- | Represents the bounds of /known/ $Grouping.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded Grouping where
+    minBound = Channel
+    maxBound = Queue
 
 instance Hashable     Grouping
 instance NFData       Grouping

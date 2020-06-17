@@ -46,6 +46,7 @@ module Network.AWS.ECS.SubmitTaskStateChange
     ) where
 
 import Network.AWS.ECS.Types
+import Network.AWS.ECS.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request

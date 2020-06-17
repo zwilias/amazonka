@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,58 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.WorkMail.Types.ResourceType where
+module Network.AWS.WorkMail.Types.ResourceType (
+  ResourceType (
+    ..
+    , Equipment
+    , Room
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data ResourceType = Equipment
-                  | Room
-                      deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                Typeable, Generic)
+
+data ResourceType = ResourceType' (CI Text)
+                      deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                Generic)
+
+pattern Equipment :: ResourceType
+pattern Equipment = ResourceType' "EQUIPMENT"
+
+pattern Room :: ResourceType
+pattern Room = ResourceType' "ROOM"
+
+{-# COMPLETE
+  Equipment,
+  Room,
+  ResourceType' #-}
 
 instance FromText ResourceType where
-    parser = takeLowerText >>= \case
-        "equipment" -> pure Equipment
-        "room" -> pure Room
-        e -> fromTextError $ "Failure parsing ResourceType from value: '" <> e
-           <> "'. Accepted values: equipment, room"
+    parser = (ResourceType' . mk) <$> takeText
 
 instance ToText ResourceType where
-    toText = \case
-        Equipment -> "EQUIPMENT"
-        Room -> "ROOM"
+    toText (ResourceType' ci) = original ci
+
+-- | Represents an enum of /known/ $ResourceType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum ResourceType where
+    toEnum i = case i of
+        0 -> Equipment
+        1 -> Room
+        _ -> (error . showText) $ "Unknown index for ResourceType: " <> toText i
+    fromEnum x = case x of
+        Equipment -> 0
+        Room -> 1
+        ResourceType' name -> (error . showText) $ "Unknown ResourceType: " <> original name
+
+-- | Represents the bounds of /known/ $ResourceType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded ResourceType where
+    minBound = Equipment
+    maxBound = Room
 
 instance Hashable     ResourceType
 instance NFData       ResourceType

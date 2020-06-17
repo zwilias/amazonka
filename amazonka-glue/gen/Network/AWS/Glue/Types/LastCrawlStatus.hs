@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,29 +16,65 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.Glue.Types.LastCrawlStatus where
+module Network.AWS.Glue.Types.LastCrawlStatus (
+  LastCrawlStatus (
+    ..
+    , LCSCancelled
+    , LCSFailed
+    , LCSSucceeded
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data LastCrawlStatus = LCSCancelled
-                     | LCSFailed
-                     | LCSSucceeded
-                         deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                   Typeable, Generic)
+
+data LastCrawlStatus = LastCrawlStatus' (CI Text)
+                         deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                   Generic)
+
+pattern LCSCancelled :: LastCrawlStatus
+pattern LCSCancelled = LastCrawlStatus' "CANCELLED"
+
+pattern LCSFailed :: LastCrawlStatus
+pattern LCSFailed = LastCrawlStatus' "FAILED"
+
+pattern LCSSucceeded :: LastCrawlStatus
+pattern LCSSucceeded = LastCrawlStatus' "SUCCEEDED"
+
+{-# COMPLETE
+  LCSCancelled,
+  LCSFailed,
+  LCSSucceeded,
+  LastCrawlStatus' #-}
 
 instance FromText LastCrawlStatus where
-    parser = takeLowerText >>= \case
-        "cancelled" -> pure LCSCancelled
-        "failed" -> pure LCSFailed
-        "succeeded" -> pure LCSSucceeded
-        e -> fromTextError $ "Failure parsing LastCrawlStatus from value: '" <> e
-           <> "'. Accepted values: cancelled, failed, succeeded"
+    parser = (LastCrawlStatus' . mk) <$> takeText
 
 instance ToText LastCrawlStatus where
-    toText = \case
-        LCSCancelled -> "CANCELLED"
-        LCSFailed -> "FAILED"
-        LCSSucceeded -> "SUCCEEDED"
+    toText (LastCrawlStatus' ci) = original ci
+
+-- | Represents an enum of /known/ $LastCrawlStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum LastCrawlStatus where
+    toEnum i = case i of
+        0 -> LCSCancelled
+        1 -> LCSFailed
+        2 -> LCSSucceeded
+        _ -> (error . showText) $ "Unknown index for LastCrawlStatus: " <> toText i
+    fromEnum x = case x of
+        LCSCancelled -> 0
+        LCSFailed -> 1
+        LCSSucceeded -> 2
+        LastCrawlStatus' name -> (error . showText) $ "Unknown LastCrawlStatus: " <> original name
+
+-- | Represents the bounds of /known/ $LastCrawlStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded LastCrawlStatus where
+    minBound = LCSCancelled
+    maxBound = LCSSucceeded
 
 instance Hashable     LastCrawlStatus
 instance NFData       LastCrawlStatus

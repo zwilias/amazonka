@@ -130,6 +130,7 @@ library
         , Network.AWS.Rekognition.Types.PersonTrackingSortBy
         , Network.AWS.Rekognition.Types.Point
         , Network.AWS.Rekognition.Types.Pose
+        , Network.AWS.Rekognition.Types.Product
         , Network.AWS.Rekognition.Types.S3Object
         , Network.AWS.Rekognition.Types.Smile
         , Network.AWS.Rekognition.Types.StreamProcessor
@@ -147,6 +148,7 @@ library
     build-depends:
           amazonka-core == 1.6.1.*
         , base          >= 4.7     && < 5
+        , case-insensitive
 
 test-suite amazonka-rekognition-test
     type:              exitcode-stdio-1.0
@@ -170,6 +172,7 @@ test-suite amazonka-rekognition-test
         , amazonka-rekognition
         , base
         , bytestring
+        , case-insensitive
         , tasty
         , tasty-hunit
         , text

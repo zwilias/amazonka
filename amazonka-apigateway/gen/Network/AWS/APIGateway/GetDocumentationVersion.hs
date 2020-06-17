@@ -38,6 +38,7 @@ module Network.AWS.APIGateway.GetDocumentationVersion
     ) where
 
 import Network.AWS.APIGateway.Types
+import Network.AWS.APIGateway.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request

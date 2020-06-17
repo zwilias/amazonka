@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,58 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.IAM.Types.StatusType where
+module Network.AWS.IAM.Types.StatusType (
+  StatusType (
+    ..
+    , Active
+    , Inactive
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data StatusType = Active
-                | Inactive
-                    deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                              Typeable, Generic)
+
+data StatusType = StatusType' (CI Text)
+                    deriving (Eq, Ord, Read, Show, Data, Typeable,
+                              Generic)
+
+pattern Active :: StatusType
+pattern Active = StatusType' "Active"
+
+pattern Inactive :: StatusType
+pattern Inactive = StatusType' "Inactive"
+
+{-# COMPLETE
+  Active,
+  Inactive,
+  StatusType' #-}
 
 instance FromText StatusType where
-    parser = takeLowerText >>= \case
-        "active" -> pure Active
-        "inactive" -> pure Inactive
-        e -> fromTextError $ "Failure parsing StatusType from value: '" <> e
-           <> "'. Accepted values: active, inactive"
+    parser = (StatusType' . mk) <$> takeText
 
 instance ToText StatusType where
-    toText = \case
-        Active -> "Active"
-        Inactive -> "Inactive"
+    toText (StatusType' ci) = original ci
+
+-- | Represents an enum of /known/ $StatusType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum StatusType where
+    toEnum i = case i of
+        0 -> Active
+        1 -> Inactive
+        _ -> (error . showText) $ "Unknown index for StatusType: " <> toText i
+    fromEnum x = case x of
+        Active -> 0
+        Inactive -> 1
+        StatusType' name -> (error . showText) $ "Unknown StatusType: " <> original name
+
+-- | Represents the bounds of /known/ $StatusType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded StatusType where
+    minBound = Active
+    maxBound = Inactive
 
 instance Hashable     StatusType
 instance NFData       StatusType

@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,33 +16,73 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.MediaLive.Types.AudioType where
+module Network.AWS.MediaLive.Types.AudioType (
+  AudioType (
+    ..
+    , CleanEffects
+    , HearingImpaired
+    , Undefined
+    , VisualImpairedCommentary
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
+
 -- | Placeholder documentation for AudioType
-data AudioType = CleanEffects
-               | HearingImpaired
-               | Undefined
-               | VisualImpairedCommentary
-                   deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                             Typeable, Generic)
+data AudioType = AudioType' (CI Text)
+                   deriving (Eq, Ord, Read, Show, Data, Typeable,
+                             Generic)
+
+pattern CleanEffects :: AudioType
+pattern CleanEffects = AudioType' "CLEAN_EFFECTS"
+
+pattern HearingImpaired :: AudioType
+pattern HearingImpaired = AudioType' "HEARING_IMPAIRED"
+
+pattern Undefined :: AudioType
+pattern Undefined = AudioType' "UNDEFINED"
+
+pattern VisualImpairedCommentary :: AudioType
+pattern VisualImpairedCommentary = AudioType' "VISUAL_IMPAIRED_COMMENTARY"
+
+{-# COMPLETE
+  CleanEffects,
+  HearingImpaired,
+  Undefined,
+  VisualImpairedCommentary,
+  AudioType' #-}
 
 instance FromText AudioType where
-    parser = takeLowerText >>= \case
-        "clean_effects" -> pure CleanEffects
-        "hearing_impaired" -> pure HearingImpaired
-        "undefined" -> pure Undefined
-        "visual_impaired_commentary" -> pure VisualImpairedCommentary
-        e -> fromTextError $ "Failure parsing AudioType from value: '" <> e
-           <> "'. Accepted values: clean_effects, hearing_impaired, undefined, visual_impaired_commentary"
+    parser = (AudioType' . mk) <$> takeText
 
 instance ToText AudioType where
-    toText = \case
-        CleanEffects -> "CLEAN_EFFECTS"
-        HearingImpaired -> "HEARING_IMPAIRED"
-        Undefined -> "UNDEFINED"
-        VisualImpairedCommentary -> "VISUAL_IMPAIRED_COMMENTARY"
+    toText (AudioType' ci) = original ci
+
+-- | Represents an enum of /known/ $AudioType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum AudioType where
+    toEnum i = case i of
+        0 -> CleanEffects
+        1 -> HearingImpaired
+        2 -> Undefined
+        3 -> VisualImpairedCommentary
+        _ -> (error . showText) $ "Unknown index for AudioType: " <> toText i
+    fromEnum x = case x of
+        CleanEffects -> 0
+        HearingImpaired -> 1
+        Undefined -> 2
+        VisualImpairedCommentary -> 3
+        AudioType' name -> (error . showText) $ "Unknown AudioType: " <> original name
+
+-- | Represents the bounds of /known/ $AudioType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded AudioType where
+    minBound = CleanEffects
+    maxBound = VisualImpairedCommentary
 
 instance Hashable     AudioType
 instance NFData       AudioType

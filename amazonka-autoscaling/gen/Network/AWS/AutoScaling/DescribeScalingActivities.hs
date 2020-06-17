@@ -44,6 +44,7 @@ module Network.AWS.AutoScaling.DescribeScalingActivities
     ) where
 
 import Network.AWS.AutoScaling.Types
+import Network.AWS.AutoScaling.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude

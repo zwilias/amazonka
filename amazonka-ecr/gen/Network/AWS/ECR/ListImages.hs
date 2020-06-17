@@ -47,6 +47,7 @@ module Network.AWS.ECR.ListImages
     ) where
 
 import Network.AWS.ECR.Types
+import Network.AWS.ECR.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude

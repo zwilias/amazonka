@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,32 +16,73 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.ServiceCatalog.Types.ProductViewFilterBy where
+module Network.AWS.ServiceCatalog.Types.ProductViewFilterBy (
+  ProductViewFilterBy (
+    ..
+    , FullTextSearch
+    , Owner
+    , ProductType
+    , SourceProductId
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data ProductViewFilterBy = FullTextSearch
-                         | Owner
-                         | ProductType
-                         | SourceProductId
-                             deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                       Typeable, Generic)
+
+data ProductViewFilterBy = ProductViewFilterBy' (CI
+                                                   Text)
+                             deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                       Generic)
+
+pattern FullTextSearch :: ProductViewFilterBy
+pattern FullTextSearch = ProductViewFilterBy' "FullTextSearch"
+
+pattern Owner :: ProductViewFilterBy
+pattern Owner = ProductViewFilterBy' "Owner"
+
+pattern ProductType :: ProductViewFilterBy
+pattern ProductType = ProductViewFilterBy' "ProductType"
+
+pattern SourceProductId :: ProductViewFilterBy
+pattern SourceProductId = ProductViewFilterBy' "SourceProductId"
+
+{-# COMPLETE
+  FullTextSearch,
+  Owner,
+  ProductType,
+  SourceProductId,
+  ProductViewFilterBy' #-}
 
 instance FromText ProductViewFilterBy where
-    parser = takeLowerText >>= \case
-        "fulltextsearch" -> pure FullTextSearch
-        "owner" -> pure Owner
-        "producttype" -> pure ProductType
-        "sourceproductid" -> pure SourceProductId
-        e -> fromTextError $ "Failure parsing ProductViewFilterBy from value: '" <> e
-           <> "'. Accepted values: fulltextsearch, owner, producttype, sourceproductid"
+    parser = (ProductViewFilterBy' . mk) <$> takeText
 
 instance ToText ProductViewFilterBy where
-    toText = \case
-        FullTextSearch -> "FullTextSearch"
-        Owner -> "Owner"
-        ProductType -> "ProductType"
-        SourceProductId -> "SourceProductId"
+    toText (ProductViewFilterBy' ci) = original ci
+
+-- | Represents an enum of /known/ $ProductViewFilterBy.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum ProductViewFilterBy where
+    toEnum i = case i of
+        0 -> FullTextSearch
+        1 -> Owner
+        2 -> ProductType
+        3 -> SourceProductId
+        _ -> (error . showText) $ "Unknown index for ProductViewFilterBy: " <> toText i
+    fromEnum x = case x of
+        FullTextSearch -> 0
+        Owner -> 1
+        ProductType -> 2
+        SourceProductId -> 3
+        ProductViewFilterBy' name -> (error . showText) $ "Unknown ProductViewFilterBy: " <> original name
+
+-- | Represents the bounds of /known/ $ProductViewFilterBy.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded ProductViewFilterBy where
+    minBound = FullTextSearch
+    maxBound = SourceProductId
 
 instance Hashable     ProductViewFilterBy
 instance NFData       ProductViewFilterBy

@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,29 +16,65 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.Glue.Types.PrincipalType where
+module Network.AWS.Glue.Types.PrincipalType (
+  PrincipalType (
+    ..
+    , Group
+    , Role
+    , User
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data PrincipalType = Group
-                   | Role
-                   | User
-                       deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                 Typeable, Generic)
+
+data PrincipalType = PrincipalType' (CI Text)
+                       deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                 Generic)
+
+pattern Group :: PrincipalType
+pattern Group = PrincipalType' "GROUP"
+
+pattern Role :: PrincipalType
+pattern Role = PrincipalType' "ROLE"
+
+pattern User :: PrincipalType
+pattern User = PrincipalType' "USER"
+
+{-# COMPLETE
+  Group,
+  Role,
+  User,
+  PrincipalType' #-}
 
 instance FromText PrincipalType where
-    parser = takeLowerText >>= \case
-        "group" -> pure Group
-        "role" -> pure Role
-        "user" -> pure User
-        e -> fromTextError $ "Failure parsing PrincipalType from value: '" <> e
-           <> "'. Accepted values: group, role, user"
+    parser = (PrincipalType' . mk) <$> takeText
 
 instance ToText PrincipalType where
-    toText = \case
-        Group -> "GROUP"
-        Role -> "ROLE"
-        User -> "USER"
+    toText (PrincipalType' ci) = original ci
+
+-- | Represents an enum of /known/ $PrincipalType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum PrincipalType where
+    toEnum i = case i of
+        0 -> Group
+        1 -> Role
+        2 -> User
+        _ -> (error . showText) $ "Unknown index for PrincipalType: " <> toText i
+    fromEnum x = case x of
+        Group -> 0
+        Role -> 1
+        User -> 2
+        PrincipalType' name -> (error . showText) $ "Unknown PrincipalType: " <> original name
+
+-- | Represents the bounds of /known/ $PrincipalType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded PrincipalType where
+    minBound = Group
+    maxBound = User
 
 instance Hashable     PrincipalType
 instance NFData       PrincipalType

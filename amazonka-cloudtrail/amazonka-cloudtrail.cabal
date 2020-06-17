@@ -75,6 +75,7 @@ library
         , Network.AWS.CloudTrail.Types.InsightType
         , Network.AWS.CloudTrail.Types.LookupAttribute
         , Network.AWS.CloudTrail.Types.LookupAttributeKey
+        , Network.AWS.CloudTrail.Types.Product
         , Network.AWS.CloudTrail.Types.PublicKey
         , Network.AWS.CloudTrail.Types.ReadWriteType
         , Network.AWS.CloudTrail.Types.Resource
@@ -86,6 +87,7 @@ library
     build-depends:
           amazonka-core == 1.6.1.*
         , base          >= 4.7     && < 5
+        , case-insensitive
 
 test-suite amazonka-cloudtrail-test
     type:              exitcode-stdio-1.0
@@ -109,6 +111,7 @@ test-suite amazonka-cloudtrail-test
         , amazonka-cloudtrail
         , base
         , bytestring
+        , case-insensitive
         , tasty
         , tasty-hunit
         , text

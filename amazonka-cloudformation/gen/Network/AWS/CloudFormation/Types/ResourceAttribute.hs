@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,38 +16,86 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.CloudFormation.Types.ResourceAttribute where
+module Network.AWS.CloudFormation.Types.ResourceAttribute (
+  ResourceAttribute (
+    ..
+    , CreationPolicy
+    , DeletionPolicy
+    , Metadata
+    , Properties
+    , Tags
+    , UpdatePolicy
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data ResourceAttribute = CreationPolicy
-                       | DeletionPolicy
-                       | Metadata
-                       | Properties
-                       | Tags
-                       | UpdatePolicy
-                           deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                     Typeable, Generic)
+
+data ResourceAttribute = ResourceAttribute' (CI Text)
+                           deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                     Generic)
+
+pattern CreationPolicy :: ResourceAttribute
+pattern CreationPolicy = ResourceAttribute' "CreationPolicy"
+
+pattern DeletionPolicy :: ResourceAttribute
+pattern DeletionPolicy = ResourceAttribute' "DeletionPolicy"
+
+pattern Metadata :: ResourceAttribute
+pattern Metadata = ResourceAttribute' "Metadata"
+
+pattern Properties :: ResourceAttribute
+pattern Properties = ResourceAttribute' "Properties"
+
+pattern Tags :: ResourceAttribute
+pattern Tags = ResourceAttribute' "Tags"
+
+pattern UpdatePolicy :: ResourceAttribute
+pattern UpdatePolicy = ResourceAttribute' "UpdatePolicy"
+
+{-# COMPLETE
+  CreationPolicy,
+  DeletionPolicy,
+  Metadata,
+  Properties,
+  Tags,
+  UpdatePolicy,
+  ResourceAttribute' #-}
 
 instance FromText ResourceAttribute where
-    parser = takeLowerText >>= \case
-        "creationpolicy" -> pure CreationPolicy
-        "deletionpolicy" -> pure DeletionPolicy
-        "metadata" -> pure Metadata
-        "properties" -> pure Properties
-        "tags" -> pure Tags
-        "updatepolicy" -> pure UpdatePolicy
-        e -> fromTextError $ "Failure parsing ResourceAttribute from value: '" <> e
-           <> "'. Accepted values: creationpolicy, deletionpolicy, metadata, properties, tags, updatepolicy"
+    parser = (ResourceAttribute' . mk) <$> takeText
 
 instance ToText ResourceAttribute where
-    toText = \case
-        CreationPolicy -> "CreationPolicy"
-        DeletionPolicy -> "DeletionPolicy"
-        Metadata -> "Metadata"
-        Properties -> "Properties"
-        Tags -> "Tags"
-        UpdatePolicy -> "UpdatePolicy"
+    toText (ResourceAttribute' ci) = original ci
+
+-- | Represents an enum of /known/ $ResourceAttribute.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum ResourceAttribute where
+    toEnum i = case i of
+        0 -> CreationPolicy
+        1 -> DeletionPolicy
+        2 -> Metadata
+        3 -> Properties
+        4 -> Tags
+        5 -> UpdatePolicy
+        _ -> (error . showText) $ "Unknown index for ResourceAttribute: " <> toText i
+    fromEnum x = case x of
+        CreationPolicy -> 0
+        DeletionPolicy -> 1
+        Metadata -> 2
+        Properties -> 3
+        Tags -> 4
+        UpdatePolicy -> 5
+        ResourceAttribute' name -> (error . showText) $ "Unknown ResourceAttribute: " <> original name
+
+-- | Represents the bounds of /known/ $ResourceAttribute.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded ResourceAttribute where
+    minBound = CreationPolicy
+    maxBound = UpdatePolicy
 
 instance Hashable     ResourceAttribute
 instance NFData       ResourceAttribute

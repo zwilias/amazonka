@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,27 +16,59 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.MediaLive.Types.AacInputType where
+module Network.AWS.MediaLive.Types.AacInputType (
+  AacInputType (
+    ..
+    , BroadcasterMixedAd
+    , Normal
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
+
 -- | Placeholder documentation for AacInputType
-data AacInputType = BroadcasterMixedAd
-                  | Normal
-                      deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                Typeable, Generic)
+data AacInputType = AacInputType' (CI Text)
+                      deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                Generic)
+
+pattern BroadcasterMixedAd :: AacInputType
+pattern BroadcasterMixedAd = AacInputType' "BROADCASTER_MIXED_AD"
+
+pattern Normal :: AacInputType
+pattern Normal = AacInputType' "NORMAL"
+
+{-# COMPLETE
+  BroadcasterMixedAd,
+  Normal,
+  AacInputType' #-}
 
 instance FromText AacInputType where
-    parser = takeLowerText >>= \case
-        "broadcaster_mixed_ad" -> pure BroadcasterMixedAd
-        "normal" -> pure Normal
-        e -> fromTextError $ "Failure parsing AacInputType from value: '" <> e
-           <> "'. Accepted values: broadcaster_mixed_ad, normal"
+    parser = (AacInputType' . mk) <$> takeText
 
 instance ToText AacInputType where
-    toText = \case
-        BroadcasterMixedAd -> "BROADCASTER_MIXED_AD"
-        Normal -> "NORMAL"
+    toText (AacInputType' ci) = original ci
+
+-- | Represents an enum of /known/ $AacInputType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum AacInputType where
+    toEnum i = case i of
+        0 -> BroadcasterMixedAd
+        1 -> Normal
+        _ -> (error . showText) $ "Unknown index for AacInputType: " <> toText i
+    fromEnum x = case x of
+        BroadcasterMixedAd -> 0
+        Normal -> 1
+        AacInputType' name -> (error . showText) $ "Unknown AacInputType: " <> original name
+
+-- | Represents the bounds of /known/ $AacInputType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded AacInputType where
+    minBound = BroadcasterMixedAd
+    maxBound = Normal
 
 instance Hashable     AacInputType
 instance NFData       AacInputType

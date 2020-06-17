@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,27 +16,60 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.MediaLive.Types.M3u8TimedMetadataBehavior where
+module Network.AWS.MediaLive.Types.M3u8TimedMetadataBehavior (
+  M3u8TimedMetadataBehavior (
+    ..
+    , MNoPassthrough
+    , MPassthrough
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
+
 -- | Placeholder documentation for M3u8TimedMetadataBehavior
-data M3u8TimedMetadataBehavior = MNoPassthrough
-                               | MPassthrough
-                                   deriving (Eq, Ord, Read, Show, Enum, Bounded,
-                                             Data, Typeable, Generic)
+data M3u8TimedMetadataBehavior = M3u8TimedMetadataBehavior' (CI
+                                                               Text)
+                                   deriving (Eq, Ord, Read, Show, Data,
+                                             Typeable, Generic)
+
+pattern MNoPassthrough :: M3u8TimedMetadataBehavior
+pattern MNoPassthrough = M3u8TimedMetadataBehavior' "NO_PASSTHROUGH"
+
+pattern MPassthrough :: M3u8TimedMetadataBehavior
+pattern MPassthrough = M3u8TimedMetadataBehavior' "PASSTHROUGH"
+
+{-# COMPLETE
+  MNoPassthrough,
+  MPassthrough,
+  M3u8TimedMetadataBehavior' #-}
 
 instance FromText M3u8TimedMetadataBehavior where
-    parser = takeLowerText >>= \case
-        "no_passthrough" -> pure MNoPassthrough
-        "passthrough" -> pure MPassthrough
-        e -> fromTextError $ "Failure parsing M3u8TimedMetadataBehavior from value: '" <> e
-           <> "'. Accepted values: no_passthrough, passthrough"
+    parser = (M3u8TimedMetadataBehavior' . mk) <$> takeText
 
 instance ToText M3u8TimedMetadataBehavior where
-    toText = \case
-        MNoPassthrough -> "NO_PASSTHROUGH"
-        MPassthrough -> "PASSTHROUGH"
+    toText (M3u8TimedMetadataBehavior' ci) = original ci
+
+-- | Represents an enum of /known/ $M3u8TimedMetadataBehavior.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum M3u8TimedMetadataBehavior where
+    toEnum i = case i of
+        0 -> MNoPassthrough
+        1 -> MPassthrough
+        _ -> (error . showText) $ "Unknown index for M3u8TimedMetadataBehavior: " <> toText i
+    fromEnum x = case x of
+        MNoPassthrough -> 0
+        MPassthrough -> 1
+        M3u8TimedMetadataBehavior' name -> (error . showText) $ "Unknown M3u8TimedMetadataBehavior: " <> original name
+
+-- | Represents the bounds of /known/ $M3u8TimedMetadataBehavior.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded M3u8TimedMetadataBehavior where
+    minBound = MNoPassthrough
+    maxBound = MPassthrough
 
 instance Hashable     M3u8TimedMetadataBehavior
 instance NFData       M3u8TimedMetadataBehavior

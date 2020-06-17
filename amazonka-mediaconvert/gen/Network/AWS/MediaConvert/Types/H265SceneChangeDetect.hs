@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,27 +16,60 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.MediaConvert.Types.H265SceneChangeDetect where
+module Network.AWS.MediaConvert.Types.H265SceneChangeDetect (
+  H265SceneChangeDetect (
+    ..
+    , HSCDDisabled
+    , HSCDEnabled
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
+
 -- | Scene change detection (inserts I-frames on scene changes).
-data H265SceneChangeDetect = HSCDDisabled
-                           | HSCDEnabled
-                               deriving (Eq, Ord, Read, Show, Enum, Bounded,
-                                         Data, Typeable, Generic)
+data H265SceneChangeDetect = H265SceneChangeDetect' (CI
+                                                       Text)
+                               deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                         Generic)
+
+pattern HSCDDisabled :: H265SceneChangeDetect
+pattern HSCDDisabled = H265SceneChangeDetect' "DISABLED"
+
+pattern HSCDEnabled :: H265SceneChangeDetect
+pattern HSCDEnabled = H265SceneChangeDetect' "ENABLED"
+
+{-# COMPLETE
+  HSCDDisabled,
+  HSCDEnabled,
+  H265SceneChangeDetect' #-}
 
 instance FromText H265SceneChangeDetect where
-    parser = takeLowerText >>= \case
-        "disabled" -> pure HSCDDisabled
-        "enabled" -> pure HSCDEnabled
-        e -> fromTextError $ "Failure parsing H265SceneChangeDetect from value: '" <> e
-           <> "'. Accepted values: disabled, enabled"
+    parser = (H265SceneChangeDetect' . mk) <$> takeText
 
 instance ToText H265SceneChangeDetect where
-    toText = \case
-        HSCDDisabled -> "DISABLED"
-        HSCDEnabled -> "ENABLED"
+    toText (H265SceneChangeDetect' ci) = original ci
+
+-- | Represents an enum of /known/ $H265SceneChangeDetect.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum H265SceneChangeDetect where
+    toEnum i = case i of
+        0 -> HSCDDisabled
+        1 -> HSCDEnabled
+        _ -> (error . showText) $ "Unknown index for H265SceneChangeDetect: " <> toText i
+    fromEnum x = case x of
+        HSCDDisabled -> 0
+        HSCDEnabled -> 1
+        H265SceneChangeDetect' name -> (error . showText) $ "Unknown H265SceneChangeDetect: " <> original name
+
+-- | Represents the bounds of /known/ $H265SceneChangeDetect.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded H265SceneChangeDetect where
+    minBound = HSCDDisabled
+    maxBound = HSCDEnabled
 
 instance Hashable     H265SceneChangeDetect
 instance NFData       H265SceneChangeDetect

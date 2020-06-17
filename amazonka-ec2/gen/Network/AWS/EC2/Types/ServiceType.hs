@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,27 +16,59 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.EC2.Types.ServiceType where
+module Network.AWS.EC2.Types.ServiceType (
+  ServiceType (
+    ..
+    , Gateway
+    , Interface
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.EC2.Internal
 import Network.AWS.Prelude
-  
-data ServiceType = Gateway
-                 | Interface
-                     deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                               Typeable, Generic)
+
+data ServiceType = ServiceType' (CI Text)
+                     deriving (Eq, Ord, Read, Show, Data, Typeable,
+                               Generic)
+
+pattern Gateway :: ServiceType
+pattern Gateway = ServiceType' "Gateway"
+
+pattern Interface :: ServiceType
+pattern Interface = ServiceType' "Interface"
+
+{-# COMPLETE
+  Gateway,
+  Interface,
+  ServiceType' #-}
 
 instance FromText ServiceType where
-    parser = takeLowerText >>= \case
-        "gateway" -> pure Gateway
-        "interface" -> pure Interface
-        e -> fromTextError $ "Failure parsing ServiceType from value: '" <> e
-           <> "'. Accepted values: gateway, interface"
+    parser = (ServiceType' . mk) <$> takeText
 
 instance ToText ServiceType where
-    toText = \case
-        Gateway -> "Gateway"
-        Interface -> "Interface"
+    toText (ServiceType' ci) = original ci
+
+-- | Represents an enum of /known/ $ServiceType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum ServiceType where
+    toEnum i = case i of
+        0 -> Gateway
+        1 -> Interface
+        _ -> (error . showText) $ "Unknown index for ServiceType: " <> toText i
+    fromEnum x = case x of
+        Gateway -> 0
+        Interface -> 1
+        ServiceType' name -> (error . showText) $ "Unknown ServiceType: " <> original name
+
+-- | Represents the bounds of /known/ $ServiceType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded ServiceType where
+    minBound = Gateway
+    maxBound = Interface
 
 instance Hashable     ServiceType
 instance NFData       ServiceType

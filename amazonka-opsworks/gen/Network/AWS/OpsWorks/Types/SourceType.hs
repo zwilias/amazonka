@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,32 +16,72 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.OpsWorks.Types.SourceType where
+module Network.AWS.OpsWorks.Types.SourceType (
+  SourceType (
+    ..
+    , Archive
+    , Git
+    , S3
+    , SVN
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data SourceType = Archive
-                | Git
-                | S3
-                | SVN
-                    deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                              Typeable, Generic)
+
+data SourceType = SourceType' (CI Text)
+                    deriving (Eq, Ord, Read, Show, Data, Typeable,
+                              Generic)
+
+pattern Archive :: SourceType
+pattern Archive = SourceType' "archive"
+
+pattern Git :: SourceType
+pattern Git = SourceType' "git"
+
+pattern S3 :: SourceType
+pattern S3 = SourceType' "s3"
+
+pattern SVN :: SourceType
+pattern SVN = SourceType' "svn"
+
+{-# COMPLETE
+  Archive,
+  Git,
+  S3,
+  SVN,
+  SourceType' #-}
 
 instance FromText SourceType where
-    parser = takeLowerText >>= \case
-        "archive" -> pure Archive
-        "git" -> pure Git
-        "s3" -> pure S3
-        "svn" -> pure SVN
-        e -> fromTextError $ "Failure parsing SourceType from value: '" <> e
-           <> "'. Accepted values: archive, git, s3, svn"
+    parser = (SourceType' . mk) <$> takeText
 
 instance ToText SourceType where
-    toText = \case
-        Archive -> "archive"
-        Git -> "git"
-        S3 -> "s3"
-        SVN -> "svn"
+    toText (SourceType' ci) = original ci
+
+-- | Represents an enum of /known/ $SourceType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum SourceType where
+    toEnum i = case i of
+        0 -> Archive
+        1 -> Git
+        2 -> S3
+        3 -> SVN
+        _ -> (error . showText) $ "Unknown index for SourceType: " <> toText i
+    fromEnum x = case x of
+        Archive -> 0
+        Git -> 1
+        S3 -> 2
+        SVN -> 3
+        SourceType' name -> (error . showText) $ "Unknown SourceType: " <> original name
+
+-- | Represents the bounds of /known/ $SourceType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded SourceType where
+    minBound = Archive
+    maxBound = SVN
 
 instance Hashable     SourceType
 instance NFData       SourceType

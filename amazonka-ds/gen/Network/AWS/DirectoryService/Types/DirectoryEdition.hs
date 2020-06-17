@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,58 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.DirectoryService.Types.DirectoryEdition where
+module Network.AWS.DirectoryService.Types.DirectoryEdition (
+  DirectoryEdition (
+    ..
+    , Enterprise
+    , Standard
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data DirectoryEdition = Enterprise
-                      | Standard
-                          deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                    Typeable, Generic)
+
+data DirectoryEdition = DirectoryEdition' (CI Text)
+                          deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                    Generic)
+
+pattern Enterprise :: DirectoryEdition
+pattern Enterprise = DirectoryEdition' "Enterprise"
+
+pattern Standard :: DirectoryEdition
+pattern Standard = DirectoryEdition' "Standard"
+
+{-# COMPLETE
+  Enterprise,
+  Standard,
+  DirectoryEdition' #-}
 
 instance FromText DirectoryEdition where
-    parser = takeLowerText >>= \case
-        "enterprise" -> pure Enterprise
-        "standard" -> pure Standard
-        e -> fromTextError $ "Failure parsing DirectoryEdition from value: '" <> e
-           <> "'. Accepted values: enterprise, standard"
+    parser = (DirectoryEdition' . mk) <$> takeText
 
 instance ToText DirectoryEdition where
-    toText = \case
-        Enterprise -> "Enterprise"
-        Standard -> "Standard"
+    toText (DirectoryEdition' ci) = original ci
+
+-- | Represents an enum of /known/ $DirectoryEdition.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum DirectoryEdition where
+    toEnum i = case i of
+        0 -> Enterprise
+        1 -> Standard
+        _ -> (error . showText) $ "Unknown index for DirectoryEdition: " <> toText i
+    fromEnum x = case x of
+        Enterprise -> 0
+        Standard -> 1
+        DirectoryEdition' name -> (error . showText) $ "Unknown DirectoryEdition: " <> original name
+
+-- | Represents the bounds of /known/ $DirectoryEdition.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded DirectoryEdition where
+    minBound = Enterprise
+    maxBound = Standard
 
 instance Hashable     DirectoryEdition
 instance NFData       DirectoryEdition

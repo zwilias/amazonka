@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,30 +16,67 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.EC2.Types.VolumeStatusInfoStatus where
+module Network.AWS.EC2.Types.VolumeStatusInfoStatus (
+  VolumeStatusInfoStatus (
+    ..
+    , Impaired
+    , InsufficientData
+    , OK
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.EC2.Internal
 import Network.AWS.Prelude
-  
-data VolumeStatusInfoStatus = Impaired
-                            | InsufficientData
-                            | OK
-                                deriving (Eq, Ord, Read, Show, Enum, Bounded,
-                                          Data, Typeable, Generic)
+
+data VolumeStatusInfoStatus = VolumeStatusInfoStatus' (CI
+                                                         Text)
+                                deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                          Generic)
+
+pattern Impaired :: VolumeStatusInfoStatus
+pattern Impaired = VolumeStatusInfoStatus' "impaired"
+
+pattern InsufficientData :: VolumeStatusInfoStatus
+pattern InsufficientData = VolumeStatusInfoStatus' "insufficient-data"
+
+pattern OK :: VolumeStatusInfoStatus
+pattern OK = VolumeStatusInfoStatus' "ok"
+
+{-# COMPLETE
+  Impaired,
+  InsufficientData,
+  OK,
+  VolumeStatusInfoStatus' #-}
 
 instance FromText VolumeStatusInfoStatus where
-    parser = takeLowerText >>= \case
-        "impaired" -> pure Impaired
-        "insufficient-data" -> pure InsufficientData
-        "ok" -> pure OK
-        e -> fromTextError $ "Failure parsing VolumeStatusInfoStatus from value: '" <> e
-           <> "'. Accepted values: impaired, insufficient-data, ok"
+    parser = (VolumeStatusInfoStatus' . mk) <$> takeText
 
 instance ToText VolumeStatusInfoStatus where
-    toText = \case
-        Impaired -> "impaired"
-        InsufficientData -> "insufficient-data"
-        OK -> "ok"
+    toText (VolumeStatusInfoStatus' ci) = original ci
+
+-- | Represents an enum of /known/ $VolumeStatusInfoStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum VolumeStatusInfoStatus where
+    toEnum i = case i of
+        0 -> Impaired
+        1 -> InsufficientData
+        2 -> OK
+        _ -> (error . showText) $ "Unknown index for VolumeStatusInfoStatus: " <> toText i
+    fromEnum x = case x of
+        Impaired -> 0
+        InsufficientData -> 1
+        OK -> 2
+        VolumeStatusInfoStatus' name -> (error . showText) $ "Unknown VolumeStatusInfoStatus: " <> original name
+
+-- | Represents the bounds of /known/ $VolumeStatusInfoStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded VolumeStatusInfoStatus where
+    minBound = Impaired
+    maxBound = OK
 
 instance Hashable     VolumeStatusInfoStatus
 instance NFData       VolumeStatusInfoStatus

@@ -45,6 +45,7 @@ module Network.AWS.AlexaBusiness.SearchSkillGroups
     ) where
 
 import Network.AWS.AlexaBusiness.Types
+import Network.AWS.AlexaBusiness.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude

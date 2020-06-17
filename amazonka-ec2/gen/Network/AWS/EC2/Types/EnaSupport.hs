@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,30 +16,66 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.EC2.Types.EnaSupport where
+module Network.AWS.EC2.Types.EnaSupport (
+  EnaSupport (
+    ..
+    , ESRequired
+    , ESSupported
+    , ESUnsupported
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.EC2.Internal
 import Network.AWS.Prelude
-  
-data EnaSupport = ESRequired
-                | ESSupported
-                | ESUnsupported
-                    deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                              Typeable, Generic)
+
+data EnaSupport = EnaSupport' (CI Text)
+                    deriving (Eq, Ord, Read, Show, Data, Typeable,
+                              Generic)
+
+pattern ESRequired :: EnaSupport
+pattern ESRequired = EnaSupport' "required"
+
+pattern ESSupported :: EnaSupport
+pattern ESSupported = EnaSupport' "supported"
+
+pattern ESUnsupported :: EnaSupport
+pattern ESUnsupported = EnaSupport' "unsupported"
+
+{-# COMPLETE
+  ESRequired,
+  ESSupported,
+  ESUnsupported,
+  EnaSupport' #-}
 
 instance FromText EnaSupport where
-    parser = takeLowerText >>= \case
-        "required" -> pure ESRequired
-        "supported" -> pure ESSupported
-        "unsupported" -> pure ESUnsupported
-        e -> fromTextError $ "Failure parsing EnaSupport from value: '" <> e
-           <> "'. Accepted values: required, supported, unsupported"
+    parser = (EnaSupport' . mk) <$> takeText
 
 instance ToText EnaSupport where
-    toText = \case
-        ESRequired -> "required"
-        ESSupported -> "supported"
-        ESUnsupported -> "unsupported"
+    toText (EnaSupport' ci) = original ci
+
+-- | Represents an enum of /known/ $EnaSupport.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum EnaSupport where
+    toEnum i = case i of
+        0 -> ESRequired
+        1 -> ESSupported
+        2 -> ESUnsupported
+        _ -> (error . showText) $ "Unknown index for EnaSupport: " <> toText i
+    fromEnum x = case x of
+        ESRequired -> 0
+        ESSupported -> 1
+        ESUnsupported -> 2
+        EnaSupport' name -> (error . showText) $ "Unknown EnaSupport: " <> original name
+
+-- | Represents the bounds of /known/ $EnaSupport.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded EnaSupport where
+    minBound = ESRequired
+    maxBound = ESUnsupported
 
 instance Hashable     EnaSupport
 instance NFData       EnaSupport

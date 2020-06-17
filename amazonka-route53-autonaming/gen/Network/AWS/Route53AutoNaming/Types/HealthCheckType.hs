@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,29 +16,65 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.Route53AutoNaming.Types.HealthCheckType where
+module Network.AWS.Route53AutoNaming.Types.HealthCheckType (
+  HealthCheckType (
+    ..
+    , HTTP
+    , HTTPS
+    , TCP
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data HealthCheckType = HTTP
-                     | HTTPS
-                     | TCP
-                         deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                   Typeable, Generic)
+
+data HealthCheckType = HealthCheckType' (CI Text)
+                         deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                   Generic)
+
+pattern HTTP :: HealthCheckType
+pattern HTTP = HealthCheckType' "HTTP"
+
+pattern HTTPS :: HealthCheckType
+pattern HTTPS = HealthCheckType' "HTTPS"
+
+pattern TCP :: HealthCheckType
+pattern TCP = HealthCheckType' "TCP"
+
+{-# COMPLETE
+  HTTP,
+  HTTPS,
+  TCP,
+  HealthCheckType' #-}
 
 instance FromText HealthCheckType where
-    parser = takeLowerText >>= \case
-        "http" -> pure HTTP
-        "https" -> pure HTTPS
-        "tcp" -> pure TCP
-        e -> fromTextError $ "Failure parsing HealthCheckType from value: '" <> e
-           <> "'. Accepted values: http, https, tcp"
+    parser = (HealthCheckType' . mk) <$> takeText
 
 instance ToText HealthCheckType where
-    toText = \case
-        HTTP -> "HTTP"
-        HTTPS -> "HTTPS"
-        TCP -> "TCP"
+    toText (HealthCheckType' ci) = original ci
+
+-- | Represents an enum of /known/ $HealthCheckType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum HealthCheckType where
+    toEnum i = case i of
+        0 -> HTTP
+        1 -> HTTPS
+        2 -> TCP
+        _ -> (error . showText) $ "Unknown index for HealthCheckType: " <> toText i
+    fromEnum x = case x of
+        HTTP -> 0
+        HTTPS -> 1
+        TCP -> 2
+        HealthCheckType' name -> (error . showText) $ "Unknown HealthCheckType: " <> original name
+
+-- | Represents the bounds of /known/ $HealthCheckType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded HealthCheckType where
+    minBound = HTTP
+    maxBound = TCP
 
 instance Hashable     HealthCheckType
 instance NFData       HealthCheckType

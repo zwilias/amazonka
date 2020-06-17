@@ -130,6 +130,7 @@ library
         , Network.AWS.DirectConnect.Types.NewPublicVirtualInterfaceAllocation
         , Network.AWS.DirectConnect.Types.NewTransitVirtualInterface
         , Network.AWS.DirectConnect.Types.NewTransitVirtualInterfaceAllocation
+        , Network.AWS.DirectConnect.Types.Product
         , Network.AWS.DirectConnect.Types.ResourceTag
         , Network.AWS.DirectConnect.Types.RouteFilterPrefix
         , Network.AWS.DirectConnect.Types.Tag
@@ -140,6 +141,7 @@ library
     build-depends:
           amazonka-core == 1.6.1.*
         , base          >= 4.7     && < 5
+        , case-insensitive
 
 test-suite amazonka-directconnect-test
     type:              exitcode-stdio-1.0
@@ -163,6 +165,7 @@ test-suite amazonka-directconnect-test
         , amazonka-directconnect
         , base
         , bytestring
+        , case-insensitive
         , tasty
         , tasty-hunit
         , text

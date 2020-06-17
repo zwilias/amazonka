@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,32 +16,68 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.DirectConnect.Types.DirectConnectGatewayAssociationProposalState where
+module Network.AWS.DirectConnect.Types.DirectConnectGatewayAssociationProposalState (
+  DirectConnectGatewayAssociationProposalState (
+    ..
+    , DCGAPSAccepted
+    , DCGAPSDeleted
+    , DCGAPSRequested
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data DirectConnectGatewayAssociationProposalState = DCGAPSAccepted
-                                                  | DCGAPSDeleted
-                                                  | DCGAPSRequested
+
+data DirectConnectGatewayAssociationProposalState = DirectConnectGatewayAssociationProposalState' (CI
+                                                                                                     Text)
                                                       deriving (Eq, Ord, Read,
-                                                                Show, Enum,
-                                                                Bounded, Data,
+                                                                Show, Data,
                                                                 Typeable,
                                                                 Generic)
 
+pattern DCGAPSAccepted :: DirectConnectGatewayAssociationProposalState
+pattern DCGAPSAccepted = DirectConnectGatewayAssociationProposalState' "accepted"
+
+pattern DCGAPSDeleted :: DirectConnectGatewayAssociationProposalState
+pattern DCGAPSDeleted = DirectConnectGatewayAssociationProposalState' "deleted"
+
+pattern DCGAPSRequested :: DirectConnectGatewayAssociationProposalState
+pattern DCGAPSRequested = DirectConnectGatewayAssociationProposalState' "requested"
+
+{-# COMPLETE
+  DCGAPSAccepted,
+  DCGAPSDeleted,
+  DCGAPSRequested,
+  DirectConnectGatewayAssociationProposalState' #-}
+
 instance FromText DirectConnectGatewayAssociationProposalState where
-    parser = takeLowerText >>= \case
-        "accepted" -> pure DCGAPSAccepted
-        "deleted" -> pure DCGAPSDeleted
-        "requested" -> pure DCGAPSRequested
-        e -> fromTextError $ "Failure parsing DirectConnectGatewayAssociationProposalState from value: '" <> e
-           <> "'. Accepted values: accepted, deleted, requested"
+    parser = (DirectConnectGatewayAssociationProposalState' . mk) <$> takeText
 
 instance ToText DirectConnectGatewayAssociationProposalState where
-    toText = \case
-        DCGAPSAccepted -> "accepted"
-        DCGAPSDeleted -> "deleted"
-        DCGAPSRequested -> "requested"
+    toText (DirectConnectGatewayAssociationProposalState' ci) = original ci
+
+-- | Represents an enum of /known/ $DirectConnectGatewayAssociationProposalState.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum DirectConnectGatewayAssociationProposalState where
+    toEnum i = case i of
+        0 -> DCGAPSAccepted
+        1 -> DCGAPSDeleted
+        2 -> DCGAPSRequested
+        _ -> (error . showText) $ "Unknown index for DirectConnectGatewayAssociationProposalState: " <> toText i
+    fromEnum x = case x of
+        DCGAPSAccepted -> 0
+        DCGAPSDeleted -> 1
+        DCGAPSRequested -> 2
+        DirectConnectGatewayAssociationProposalState' name -> (error . showText) $ "Unknown DirectConnectGatewayAssociationProposalState: " <> original name
+
+-- | Represents the bounds of /known/ $DirectConnectGatewayAssociationProposalState.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded DirectConnectGatewayAssociationProposalState where
+    minBound = DCGAPSAccepted
+    maxBound = DCGAPSRequested
 
 instance Hashable     DirectConnectGatewayAssociationProposalState
 instance NFData       DirectConnectGatewayAssociationProposalState

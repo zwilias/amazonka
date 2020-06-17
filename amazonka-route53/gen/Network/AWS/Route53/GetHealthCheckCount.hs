@@ -40,6 +40,7 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.Route53.Types
+import Network.AWS.Route53.Types.Product
 
 -- | A request for the number of health checks that are associated with the current AWS account.
 --

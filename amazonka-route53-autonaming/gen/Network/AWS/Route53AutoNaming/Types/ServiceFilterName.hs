@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,23 +16,51 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.Route53AutoNaming.Types.ServiceFilterName where
+module Network.AWS.Route53AutoNaming.Types.ServiceFilterName (
+  ServiceFilterName (
+    ..
+    , NamespaceId
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data ServiceFilterName = NamespaceId
-                           deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                     Typeable, Generic)
+
+data ServiceFilterName = ServiceFilterName' (CI Text)
+                           deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                     Generic)
+
+pattern NamespaceId :: ServiceFilterName
+pattern NamespaceId = ServiceFilterName' "NAMESPACE_ID"
+
+{-# COMPLETE
+  NamespaceId,
+  ServiceFilterName' #-}
 
 instance FromText ServiceFilterName where
-    parser = takeLowerText >>= \case
-        "namespace_id" -> pure NamespaceId
-        e -> fromTextError $ "Failure parsing ServiceFilterName from value: '" <> e
-           <> "'. Accepted values: namespace_id"
+    parser = (ServiceFilterName' . mk) <$> takeText
 
 instance ToText ServiceFilterName where
-    toText = \case
-        NamespaceId -> "NAMESPACE_ID"
+    toText (ServiceFilterName' ci) = original ci
+
+-- | Represents an enum of /known/ $ServiceFilterName.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum ServiceFilterName where
+    toEnum i = case i of
+        0 -> NamespaceId
+        _ -> (error . showText) $ "Unknown index for ServiceFilterName: " <> toText i
+    fromEnum x = case x of
+        NamespaceId -> 0
+        ServiceFilterName' name -> (error . showText) $ "Unknown ServiceFilterName: " <> original name
+
+-- | Represents the bounds of /known/ $ServiceFilterName.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded ServiceFilterName where
+    minBound = NamespaceId
+    maxBound = NamespaceId
 
 instance Hashable     ServiceFilterName
 instance NFData       ServiceFilterName

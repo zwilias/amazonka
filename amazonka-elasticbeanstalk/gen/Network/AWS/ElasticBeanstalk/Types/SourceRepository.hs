@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,58 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.ElasticBeanstalk.Types.SourceRepository where
+module Network.AWS.ElasticBeanstalk.Types.SourceRepository (
+  SourceRepository (
+    ..
+    , CodeCommit
+    , S3
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data SourceRepository = CodeCommit
-                      | S3
-                          deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                    Typeable, Generic)
+
+data SourceRepository = SourceRepository' (CI Text)
+                          deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                    Generic)
+
+pattern CodeCommit :: SourceRepository
+pattern CodeCommit = SourceRepository' "CodeCommit"
+
+pattern S3 :: SourceRepository
+pattern S3 = SourceRepository' "S3"
+
+{-# COMPLETE
+  CodeCommit,
+  S3,
+  SourceRepository' #-}
 
 instance FromText SourceRepository where
-    parser = takeLowerText >>= \case
-        "codecommit" -> pure CodeCommit
-        "s3" -> pure S3
-        e -> fromTextError $ "Failure parsing SourceRepository from value: '" <> e
-           <> "'. Accepted values: codecommit, s3"
+    parser = (SourceRepository' . mk) <$> takeText
 
 instance ToText SourceRepository where
-    toText = \case
-        CodeCommit -> "CodeCommit"
-        S3 -> "S3"
+    toText (SourceRepository' ci) = original ci
+
+-- | Represents an enum of /known/ $SourceRepository.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum SourceRepository where
+    toEnum i = case i of
+        0 -> CodeCommit
+        1 -> S3
+        _ -> (error . showText) $ "Unknown index for SourceRepository: " <> toText i
+    fromEnum x = case x of
+        CodeCommit -> 0
+        S3 -> 1
+        SourceRepository' name -> (error . showText) $ "Unknown SourceRepository: " <> original name
+
+-- | Represents the bounds of /known/ $SourceRepository.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded SourceRepository where
+    minBound = CodeCommit
+    maxBound = S3
 
 instance Hashable     SourceRepository
 instance NFData       SourceRepository

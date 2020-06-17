@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,41 +16,93 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.CognitoIdentityProvider.Types.UserStatusType where
+module Network.AWS.CognitoIdentityProvider.Types.UserStatusType (
+  UserStatusType (
+    ..
+    , Archived
+    , Compromised
+    , Confirmed
+    , ForceChangePassword
+    , ResetRequired
+    , Unconfirmed
+    , Unknown
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data UserStatusType = Archived
-                    | Compromised
-                    | Confirmed
-                    | ForceChangePassword
-                    | ResetRequired
-                    | Unconfirmed
-                    | Unknown
-                        deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                  Typeable, Generic)
+
+data UserStatusType = UserStatusType' (CI Text)
+                        deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                  Generic)
+
+pattern Archived :: UserStatusType
+pattern Archived = UserStatusType' "ARCHIVED"
+
+pattern Compromised :: UserStatusType
+pattern Compromised = UserStatusType' "COMPROMISED"
+
+pattern Confirmed :: UserStatusType
+pattern Confirmed = UserStatusType' "CONFIRMED"
+
+pattern ForceChangePassword :: UserStatusType
+pattern ForceChangePassword = UserStatusType' "FORCE_CHANGE_PASSWORD"
+
+pattern ResetRequired :: UserStatusType
+pattern ResetRequired = UserStatusType' "RESET_REQUIRED"
+
+pattern Unconfirmed :: UserStatusType
+pattern Unconfirmed = UserStatusType' "UNCONFIRMED"
+
+pattern Unknown :: UserStatusType
+pattern Unknown = UserStatusType' "UNKNOWN"
+
+{-# COMPLETE
+  Archived,
+  Compromised,
+  Confirmed,
+  ForceChangePassword,
+  ResetRequired,
+  Unconfirmed,
+  Unknown,
+  UserStatusType' #-}
 
 instance FromText UserStatusType where
-    parser = takeLowerText >>= \case
-        "archived" -> pure Archived
-        "compromised" -> pure Compromised
-        "confirmed" -> pure Confirmed
-        "force_change_password" -> pure ForceChangePassword
-        "reset_required" -> pure ResetRequired
-        "unconfirmed" -> pure Unconfirmed
-        "unknown" -> pure Unknown
-        e -> fromTextError $ "Failure parsing UserStatusType from value: '" <> e
-           <> "'. Accepted values: archived, compromised, confirmed, force_change_password, reset_required, unconfirmed, unknown"
+    parser = (UserStatusType' . mk) <$> takeText
 
 instance ToText UserStatusType where
-    toText = \case
-        Archived -> "ARCHIVED"
-        Compromised -> "COMPROMISED"
-        Confirmed -> "CONFIRMED"
-        ForceChangePassword -> "FORCE_CHANGE_PASSWORD"
-        ResetRequired -> "RESET_REQUIRED"
-        Unconfirmed -> "UNCONFIRMED"
-        Unknown -> "UNKNOWN"
+    toText (UserStatusType' ci) = original ci
+
+-- | Represents an enum of /known/ $UserStatusType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum UserStatusType where
+    toEnum i = case i of
+        0 -> Archived
+        1 -> Compromised
+        2 -> Confirmed
+        3 -> ForceChangePassword
+        4 -> ResetRequired
+        5 -> Unconfirmed
+        6 -> Unknown
+        _ -> (error . showText) $ "Unknown index for UserStatusType: " <> toText i
+    fromEnum x = case x of
+        Archived -> 0
+        Compromised -> 1
+        Confirmed -> 2
+        ForceChangePassword -> 3
+        ResetRequired -> 4
+        Unconfirmed -> 5
+        Unknown -> 6
+        UserStatusType' name -> (error . showText) $ "Unknown UserStatusType: " <> original name
+
+-- | Represents the bounds of /known/ $UserStatusType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded UserStatusType where
+    minBound = Archived
+    maxBound = Unknown
 
 instance Hashable     UserStatusType
 instance NFData       UserStatusType

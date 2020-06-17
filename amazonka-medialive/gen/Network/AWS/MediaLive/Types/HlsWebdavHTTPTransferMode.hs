@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,27 +16,60 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.MediaLive.Types.HlsWebdavHTTPTransferMode where
+module Network.AWS.MediaLive.Types.HlsWebdavHTTPTransferMode (
+  HlsWebdavHTTPTransferMode (
+    ..
+    , WebdavChunked
+    , WebdavNonChunked
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
+
 -- | Placeholder documentation for HlsWebdavHttpTransferMode
-data HlsWebdavHTTPTransferMode = WebdavChunked
-                               | WebdavNonChunked
-                                   deriving (Eq, Ord, Read, Show, Enum, Bounded,
-                                             Data, Typeable, Generic)
+data HlsWebdavHTTPTransferMode = HlsWebdavHTTPTransferMode' (CI
+                                                               Text)
+                                   deriving (Eq, Ord, Read, Show, Data,
+                                             Typeable, Generic)
+
+pattern WebdavChunked :: HlsWebdavHTTPTransferMode
+pattern WebdavChunked = HlsWebdavHTTPTransferMode' "CHUNKED"
+
+pattern WebdavNonChunked :: HlsWebdavHTTPTransferMode
+pattern WebdavNonChunked = HlsWebdavHTTPTransferMode' "NON_CHUNKED"
+
+{-# COMPLETE
+  WebdavChunked,
+  WebdavNonChunked,
+  HlsWebdavHTTPTransferMode' #-}
 
 instance FromText HlsWebdavHTTPTransferMode where
-    parser = takeLowerText >>= \case
-        "chunked" -> pure WebdavChunked
-        "non_chunked" -> pure WebdavNonChunked
-        e -> fromTextError $ "Failure parsing HlsWebdavHTTPTransferMode from value: '" <> e
-           <> "'. Accepted values: chunked, non_chunked"
+    parser = (HlsWebdavHTTPTransferMode' . mk) <$> takeText
 
 instance ToText HlsWebdavHTTPTransferMode where
-    toText = \case
-        WebdavChunked -> "CHUNKED"
-        WebdavNonChunked -> "NON_CHUNKED"
+    toText (HlsWebdavHTTPTransferMode' ci) = original ci
+
+-- | Represents an enum of /known/ $HlsWebdavHTTPTransferMode.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum HlsWebdavHTTPTransferMode where
+    toEnum i = case i of
+        0 -> WebdavChunked
+        1 -> WebdavNonChunked
+        _ -> (error . showText) $ "Unknown index for HlsWebdavHTTPTransferMode: " <> toText i
+    fromEnum x = case x of
+        WebdavChunked -> 0
+        WebdavNonChunked -> 1
+        HlsWebdavHTTPTransferMode' name -> (error . showText) $ "Unknown HlsWebdavHTTPTransferMode: " <> original name
+
+-- | Represents the bounds of /known/ $HlsWebdavHTTPTransferMode.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded HlsWebdavHTTPTransferMode where
+    minBound = WebdavChunked
+    maxBound = WebdavNonChunked
 
 instance Hashable     HlsWebdavHTTPTransferMode
 instance NFData       HlsWebdavHTTPTransferMode

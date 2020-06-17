@@ -41,6 +41,7 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.SageMaker.Types
+import Network.AWS.SageMaker.Types.Product
 
 -- | /See:/ 'deleteNotebookInstance' smart constructor.
 newtype DeleteNotebookInstance = DeleteNotebookInstance'{_dNotebookInstanceName

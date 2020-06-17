@@ -203,6 +203,7 @@ library
         , Network.AWS.Config.Types.OrganizationRuleStatus
         , Network.AWS.Config.Types.Owner
         , Network.AWS.Config.Types.PendingAggregationRequest
+        , Network.AWS.Config.Types.Product
         , Network.AWS.Config.Types.QueryInfo
         , Network.AWS.Config.Types.RecorderStatus
         , Network.AWS.Config.Types.RecordingGroup
@@ -237,6 +238,7 @@ library
     build-depends:
           amazonka-core == 1.6.1.*
         , base          >= 4.7     && < 5
+        , case-insensitive
 
 test-suite amazonka-config-test
     type:              exitcode-stdio-1.0
@@ -260,6 +262,7 @@ test-suite amazonka-config-test
         , amazonka-config
         , base
         , bytestring
+        , case-insensitive
         , tasty
         , tasty-hunit
         , text

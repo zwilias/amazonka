@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,32 +16,72 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.DynamoDBStreams.Types.StreamViewType where
+module Network.AWS.DynamoDBStreams.Types.StreamViewType (
+  StreamViewType (
+    ..
+    , KeysOnly
+    , NewAndOldImages
+    , NewImage
+    , OldImage
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data StreamViewType = KeysOnly
-                    | NewAndOldImages
-                    | NewImage
-                    | OldImage
-                        deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                  Typeable, Generic)
+
+data StreamViewType = StreamViewType' (CI Text)
+                        deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                  Generic)
+
+pattern KeysOnly :: StreamViewType
+pattern KeysOnly = StreamViewType' "KEYS_ONLY"
+
+pattern NewAndOldImages :: StreamViewType
+pattern NewAndOldImages = StreamViewType' "NEW_AND_OLD_IMAGES"
+
+pattern NewImage :: StreamViewType
+pattern NewImage = StreamViewType' "NEW_IMAGE"
+
+pattern OldImage :: StreamViewType
+pattern OldImage = StreamViewType' "OLD_IMAGE"
+
+{-# COMPLETE
+  KeysOnly,
+  NewAndOldImages,
+  NewImage,
+  OldImage,
+  StreamViewType' #-}
 
 instance FromText StreamViewType where
-    parser = takeLowerText >>= \case
-        "keys_only" -> pure KeysOnly
-        "new_and_old_images" -> pure NewAndOldImages
-        "new_image" -> pure NewImage
-        "old_image" -> pure OldImage
-        e -> fromTextError $ "Failure parsing StreamViewType from value: '" <> e
-           <> "'. Accepted values: keys_only, new_and_old_images, new_image, old_image"
+    parser = (StreamViewType' . mk) <$> takeText
 
 instance ToText StreamViewType where
-    toText = \case
-        KeysOnly -> "KEYS_ONLY"
-        NewAndOldImages -> "NEW_AND_OLD_IMAGES"
-        NewImage -> "NEW_IMAGE"
-        OldImage -> "OLD_IMAGE"
+    toText (StreamViewType' ci) = original ci
+
+-- | Represents an enum of /known/ $StreamViewType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum StreamViewType where
+    toEnum i = case i of
+        0 -> KeysOnly
+        1 -> NewAndOldImages
+        2 -> NewImage
+        3 -> OldImage
+        _ -> (error . showText) $ "Unknown index for StreamViewType: " <> toText i
+    fromEnum x = case x of
+        KeysOnly -> 0
+        NewAndOldImages -> 1
+        NewImage -> 2
+        OldImage -> 3
+        StreamViewType' name -> (error . showText) $ "Unknown StreamViewType: " <> original name
+
+-- | Represents the bounds of /known/ $StreamViewType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded StreamViewType where
+    minBound = KeysOnly
+    maxBound = OldImage
 
 instance Hashable     StreamViewType
 instance NFData       StreamViewType

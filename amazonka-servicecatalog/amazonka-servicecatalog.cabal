@@ -125,6 +125,7 @@ library
         , Network.AWS.ServiceCatalog.Types.PortfolioDetail
         , Network.AWS.ServiceCatalog.Types.Principal
         , Network.AWS.ServiceCatalog.Types.PrincipalType
+        , Network.AWS.ServiceCatalog.Types.Product
         , Network.AWS.ServiceCatalog.Types.ProductSource
         , Network.AWS.ServiceCatalog.Types.ProductType
         , Network.AWS.ServiceCatalog.Types.ProductViewAggregationValue
@@ -171,6 +172,7 @@ library
     build-depends:
           amazonka-core == 1.6.1.*
         , base          >= 4.7     && < 5
+        , case-insensitive
 
 test-suite amazonka-servicecatalog-test
     type:              exitcode-stdio-1.0
@@ -194,6 +196,7 @@ test-suite amazonka-servicecatalog-test
         , amazonka-servicecatalog
         , base
         , bytestring
+        , case-insensitive
         , tasty
         , tasty-hunit
         , text

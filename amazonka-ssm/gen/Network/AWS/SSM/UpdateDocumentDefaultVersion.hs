@@ -43,6 +43,7 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.SSM.Types
+import Network.AWS.SSM.Types.Product
 
 -- | /See:/ 'updateDocumentDefaultVersion' smart constructor.
 data UpdateDocumentDefaultVersion = UpdateDocumentDefaultVersion'{_uddvName

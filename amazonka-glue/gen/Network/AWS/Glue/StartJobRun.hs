@@ -42,6 +42,7 @@ module Network.AWS.Glue.StartJobRun
     ) where
 
 import Network.AWS.Glue.Types
+import Network.AWS.Glue.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request

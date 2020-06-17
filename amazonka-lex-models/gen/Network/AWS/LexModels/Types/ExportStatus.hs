@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,29 +16,65 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.LexModels.Types.ExportStatus where
+module Network.AWS.LexModels.Types.ExportStatus (
+  ExportStatus (
+    ..
+    , ESFailed
+    , ESInProgress
+    , ESReady
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data ExportStatus = ESFailed
-                  | ESInProgress
-                  | ESReady
-                      deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                Typeable, Generic)
+
+data ExportStatus = ExportStatus' (CI Text)
+                      deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                Generic)
+
+pattern ESFailed :: ExportStatus
+pattern ESFailed = ExportStatus' "FAILED"
+
+pattern ESInProgress :: ExportStatus
+pattern ESInProgress = ExportStatus' "IN_PROGRESS"
+
+pattern ESReady :: ExportStatus
+pattern ESReady = ExportStatus' "READY"
+
+{-# COMPLETE
+  ESFailed,
+  ESInProgress,
+  ESReady,
+  ExportStatus' #-}
 
 instance FromText ExportStatus where
-    parser = takeLowerText >>= \case
-        "failed" -> pure ESFailed
-        "in_progress" -> pure ESInProgress
-        "ready" -> pure ESReady
-        e -> fromTextError $ "Failure parsing ExportStatus from value: '" <> e
-           <> "'. Accepted values: failed, in_progress, ready"
+    parser = (ExportStatus' . mk) <$> takeText
 
 instance ToText ExportStatus where
-    toText = \case
-        ESFailed -> "FAILED"
-        ESInProgress -> "IN_PROGRESS"
-        ESReady -> "READY"
+    toText (ExportStatus' ci) = original ci
+
+-- | Represents an enum of /known/ $ExportStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum ExportStatus where
+    toEnum i = case i of
+        0 -> ESFailed
+        1 -> ESInProgress
+        2 -> ESReady
+        _ -> (error . showText) $ "Unknown index for ExportStatus: " <> toText i
+    fromEnum x = case x of
+        ESFailed -> 0
+        ESInProgress -> 1
+        ESReady -> 2
+        ExportStatus' name -> (error . showText) $ "Unknown ExportStatus: " <> original name
+
+-- | Represents the bounds of /known/ $ExportStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded ExportStatus where
+    minBound = ESFailed
+    maxBound = ESReady
 
 instance Hashable     ExportStatus
 instance NFData       ExportStatus

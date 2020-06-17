@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,59 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.AppSync.Types.TypeDefinitionFormat where
+module Network.AWS.AppSync.Types.TypeDefinitionFormat (
+  TypeDefinitionFormat (
+    ..
+    , JSON
+    , Sdl
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data TypeDefinitionFormat = JSON
-                          | Sdl
-                              deriving (Eq, Ord, Read, Show, Enum, Bounded,
-                                        Data, Typeable, Generic)
+
+data TypeDefinitionFormat = TypeDefinitionFormat' (CI
+                                                     Text)
+                              deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                        Generic)
+
+pattern JSON :: TypeDefinitionFormat
+pattern JSON = TypeDefinitionFormat' "JSON"
+
+pattern Sdl :: TypeDefinitionFormat
+pattern Sdl = TypeDefinitionFormat' "SDL"
+
+{-# COMPLETE
+  JSON,
+  Sdl,
+  TypeDefinitionFormat' #-}
 
 instance FromText TypeDefinitionFormat where
-    parser = takeLowerText >>= \case
-        "json" -> pure JSON
-        "sdl" -> pure Sdl
-        e -> fromTextError $ "Failure parsing TypeDefinitionFormat from value: '" <> e
-           <> "'. Accepted values: json, sdl"
+    parser = (TypeDefinitionFormat' . mk) <$> takeText
 
 instance ToText TypeDefinitionFormat where
-    toText = \case
-        JSON -> "JSON"
-        Sdl -> "SDL"
+    toText (TypeDefinitionFormat' ci) = original ci
+
+-- | Represents an enum of /known/ $TypeDefinitionFormat.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum TypeDefinitionFormat where
+    toEnum i = case i of
+        0 -> JSON
+        1 -> Sdl
+        _ -> (error . showText) $ "Unknown index for TypeDefinitionFormat: " <> toText i
+    fromEnum x = case x of
+        JSON -> 0
+        Sdl -> 1
+        TypeDefinitionFormat' name -> (error . showText) $ "Unknown TypeDefinitionFormat: " <> original name
+
+-- | Represents the bounds of /known/ $TypeDefinitionFormat.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded TypeDefinitionFormat where
+    minBound = JSON
+    maxBound = Sdl
 
 instance Hashable     TypeDefinitionFormat
 instance NFData       TypeDefinitionFormat

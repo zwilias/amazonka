@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,29 +16,65 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.WorkSpaces.Types.ConnectionState where
+module Network.AWS.WorkSpaces.Types.ConnectionState (
+  ConnectionState (
+    ..
+    , Connected
+    , Disconnected
+    , Unknown
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data ConnectionState = Connected
-                     | Disconnected
-                     | Unknown
-                         deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                   Typeable, Generic)
+
+data ConnectionState = ConnectionState' (CI Text)
+                         deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                   Generic)
+
+pattern Connected :: ConnectionState
+pattern Connected = ConnectionState' "CONNECTED"
+
+pattern Disconnected :: ConnectionState
+pattern Disconnected = ConnectionState' "DISCONNECTED"
+
+pattern Unknown :: ConnectionState
+pattern Unknown = ConnectionState' "UNKNOWN"
+
+{-# COMPLETE
+  Connected,
+  Disconnected,
+  Unknown,
+  ConnectionState' #-}
 
 instance FromText ConnectionState where
-    parser = takeLowerText >>= \case
-        "connected" -> pure Connected
-        "disconnected" -> pure Disconnected
-        "unknown" -> pure Unknown
-        e -> fromTextError $ "Failure parsing ConnectionState from value: '" <> e
-           <> "'. Accepted values: connected, disconnected, unknown"
+    parser = (ConnectionState' . mk) <$> takeText
 
 instance ToText ConnectionState where
-    toText = \case
-        Connected -> "CONNECTED"
-        Disconnected -> "DISCONNECTED"
-        Unknown -> "UNKNOWN"
+    toText (ConnectionState' ci) = original ci
+
+-- | Represents an enum of /known/ $ConnectionState.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum ConnectionState where
+    toEnum i = case i of
+        0 -> Connected
+        1 -> Disconnected
+        2 -> Unknown
+        _ -> (error . showText) $ "Unknown index for ConnectionState: " <> toText i
+    fromEnum x = case x of
+        Connected -> 0
+        Disconnected -> 1
+        Unknown -> 2
+        ConnectionState' name -> (error . showText) $ "Unknown ConnectionState: " <> original name
+
+-- | Represents the bounds of /known/ $ConnectionState.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded ConnectionState where
+    minBound = Connected
+    maxBound = Unknown
 
 instance Hashable     ConnectionState
 instance NFData       ConnectionState

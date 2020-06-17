@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,58 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.AlexaBusiness.Types.DeviceEventType where
+module Network.AWS.AlexaBusiness.Types.DeviceEventType (
+  DeviceEventType (
+    ..
+    , ConnectionStatus
+    , DeviceStatus
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data DeviceEventType = ConnectionStatus
-                     | DeviceStatus
-                         deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                   Typeable, Generic)
+
+data DeviceEventType = DeviceEventType' (CI Text)
+                         deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                   Generic)
+
+pattern ConnectionStatus :: DeviceEventType
+pattern ConnectionStatus = DeviceEventType' "CONNECTION_STATUS"
+
+pattern DeviceStatus :: DeviceEventType
+pattern DeviceStatus = DeviceEventType' "DEVICE_STATUS"
+
+{-# COMPLETE
+  ConnectionStatus,
+  DeviceStatus,
+  DeviceEventType' #-}
 
 instance FromText DeviceEventType where
-    parser = takeLowerText >>= \case
-        "connection_status" -> pure ConnectionStatus
-        "device_status" -> pure DeviceStatus
-        e -> fromTextError $ "Failure parsing DeviceEventType from value: '" <> e
-           <> "'. Accepted values: connection_status, device_status"
+    parser = (DeviceEventType' . mk) <$> takeText
 
 instance ToText DeviceEventType where
-    toText = \case
-        ConnectionStatus -> "CONNECTION_STATUS"
-        DeviceStatus -> "DEVICE_STATUS"
+    toText (DeviceEventType' ci) = original ci
+
+-- | Represents an enum of /known/ $DeviceEventType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum DeviceEventType where
+    toEnum i = case i of
+        0 -> ConnectionStatus
+        1 -> DeviceStatus
+        _ -> (error . showText) $ "Unknown index for DeviceEventType: " <> toText i
+    fromEnum x = case x of
+        ConnectionStatus -> 0
+        DeviceStatus -> 1
+        DeviceEventType' name -> (error . showText) $ "Unknown DeviceEventType: " <> original name
+
+-- | Represents the bounds of /known/ $DeviceEventType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded DeviceEventType where
+    minBound = ConnectionStatus
+    maxBound = DeviceStatus
 
 instance Hashable     DeviceEventType
 instance NFData       DeviceEventType

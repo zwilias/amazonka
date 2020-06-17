@@ -46,6 +46,7 @@ module Network.AWS.AWSHealth.DescribeEvents
     ) where
 
 import Network.AWS.AWSHealth.Types
+import Network.AWS.AWSHealth.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude

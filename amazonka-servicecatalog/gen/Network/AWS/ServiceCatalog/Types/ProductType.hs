@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,58 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.ServiceCatalog.Types.ProductType where
+module Network.AWS.ServiceCatalog.Types.ProductType (
+  ProductType (
+    ..
+    , CloudFormationTemplate
+    , Marketplace
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data ProductType = CloudFormationTemplate
-                 | Marketplace
-                     deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                               Typeable, Generic)
+
+data ProductType = ProductType' (CI Text)
+                     deriving (Eq, Ord, Read, Show, Data, Typeable,
+                               Generic)
+
+pattern CloudFormationTemplate :: ProductType
+pattern CloudFormationTemplate = ProductType' "CLOUD_FORMATION_TEMPLATE"
+
+pattern Marketplace :: ProductType
+pattern Marketplace = ProductType' "MARKETPLACE"
+
+{-# COMPLETE
+  CloudFormationTemplate,
+  Marketplace,
+  ProductType' #-}
 
 instance FromText ProductType where
-    parser = takeLowerText >>= \case
-        "cloud_formation_template" -> pure CloudFormationTemplate
-        "marketplace" -> pure Marketplace
-        e -> fromTextError $ "Failure parsing ProductType from value: '" <> e
-           <> "'. Accepted values: cloud_formation_template, marketplace"
+    parser = (ProductType' . mk) <$> takeText
 
 instance ToText ProductType where
-    toText = \case
-        CloudFormationTemplate -> "CLOUD_FORMATION_TEMPLATE"
-        Marketplace -> "MARKETPLACE"
+    toText (ProductType' ci) = original ci
+
+-- | Represents an enum of /known/ $ProductType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum ProductType where
+    toEnum i = case i of
+        0 -> CloudFormationTemplate
+        1 -> Marketplace
+        _ -> (error . showText) $ "Unknown index for ProductType: " <> toText i
+    fromEnum x = case x of
+        CloudFormationTemplate -> 0
+        Marketplace -> 1
+        ProductType' name -> (error . showText) $ "Unknown ProductType: " <> original name
+
+-- | Represents the bounds of /known/ $ProductType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded ProductType where
+    minBound = CloudFormationTemplate
+    maxBound = Marketplace
 
 instance Hashable     ProductType
 instance NFData       ProductType

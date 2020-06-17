@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,27 +16,59 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.SWF.Types.FailWorkflowExecutionFailedCause where
+module Network.AWS.SWF.Types.FailWorkflowExecutionFailedCause (
+  FailWorkflowExecutionFailedCause (
+    ..
+    , FWEFCOperationNotPermitted
+    , FWEFCUnhandledDecision
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data FailWorkflowExecutionFailedCause = FWEFCOperationNotPermitted
-                                      | FWEFCUnhandledDecision
-                                          deriving (Eq, Ord, Read, Show, Enum,
-                                                    Bounded, Data, Typeable,
-                                                    Generic)
+
+data FailWorkflowExecutionFailedCause = FailWorkflowExecutionFailedCause' (CI
+                                                                             Text)
+                                          deriving (Eq, Ord, Read, Show, Data,
+                                                    Typeable, Generic)
+
+pattern FWEFCOperationNotPermitted :: FailWorkflowExecutionFailedCause
+pattern FWEFCOperationNotPermitted = FailWorkflowExecutionFailedCause' "OPERATION_NOT_PERMITTED"
+
+pattern FWEFCUnhandledDecision :: FailWorkflowExecutionFailedCause
+pattern FWEFCUnhandledDecision = FailWorkflowExecutionFailedCause' "UNHANDLED_DECISION"
+
+{-# COMPLETE
+  FWEFCOperationNotPermitted,
+  FWEFCUnhandledDecision,
+  FailWorkflowExecutionFailedCause' #-}
 
 instance FromText FailWorkflowExecutionFailedCause where
-    parser = takeLowerText >>= \case
-        "operation_not_permitted" -> pure FWEFCOperationNotPermitted
-        "unhandled_decision" -> pure FWEFCUnhandledDecision
-        e -> fromTextError $ "Failure parsing FailWorkflowExecutionFailedCause from value: '" <> e
-           <> "'. Accepted values: operation_not_permitted, unhandled_decision"
+    parser = (FailWorkflowExecutionFailedCause' . mk) <$> takeText
 
 instance ToText FailWorkflowExecutionFailedCause where
-    toText = \case
-        FWEFCOperationNotPermitted -> "OPERATION_NOT_PERMITTED"
-        FWEFCUnhandledDecision -> "UNHANDLED_DECISION"
+    toText (FailWorkflowExecutionFailedCause' ci) = original ci
+
+-- | Represents an enum of /known/ $FailWorkflowExecutionFailedCause.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum FailWorkflowExecutionFailedCause where
+    toEnum i = case i of
+        0 -> FWEFCOperationNotPermitted
+        1 -> FWEFCUnhandledDecision
+        _ -> (error . showText) $ "Unknown index for FailWorkflowExecutionFailedCause: " <> toText i
+    fromEnum x = case x of
+        FWEFCOperationNotPermitted -> 0
+        FWEFCUnhandledDecision -> 1
+        FailWorkflowExecutionFailedCause' name -> (error . showText) $ "Unknown FailWorkflowExecutionFailedCause: " <> original name
+
+-- | Represents the bounds of /known/ $FailWorkflowExecutionFailedCause.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded FailWorkflowExecutionFailedCause where
+    minBound = FWEFCOperationNotPermitted
+    maxBound = FWEFCUnhandledDecision
 
 instance Hashable     FailWorkflowExecutionFailedCause
 instance NFData       FailWorkflowExecutionFailedCause

@@ -55,6 +55,7 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.WAF.Types
+import Network.AWS.WAF.Types.Product
 
 -- | /See:/ 'deleteGeoMatchSet' smart constructor.
 data DeleteGeoMatchSet = DeleteGeoMatchSet'{_dgmsGeoMatchSetId

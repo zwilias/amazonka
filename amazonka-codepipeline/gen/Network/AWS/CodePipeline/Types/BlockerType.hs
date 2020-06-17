@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,23 +16,51 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.CodePipeline.Types.BlockerType where
+module Network.AWS.CodePipeline.Types.BlockerType (
+  BlockerType (
+    ..
+    , Schedule
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data BlockerType = Schedule
-                     deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                               Typeable, Generic)
+
+data BlockerType = BlockerType' (CI Text)
+                     deriving (Eq, Ord, Read, Show, Data, Typeable,
+                               Generic)
+
+pattern Schedule :: BlockerType
+pattern Schedule = BlockerType' "Schedule"
+
+{-# COMPLETE
+  Schedule,
+  BlockerType' #-}
 
 instance FromText BlockerType where
-    parser = takeLowerText >>= \case
-        "schedule" -> pure Schedule
-        e -> fromTextError $ "Failure parsing BlockerType from value: '" <> e
-           <> "'. Accepted values: schedule"
+    parser = (BlockerType' . mk) <$> takeText
 
 instance ToText BlockerType where
-    toText = \case
-        Schedule -> "Schedule"
+    toText (BlockerType' ci) = original ci
+
+-- | Represents an enum of /known/ $BlockerType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum BlockerType where
+    toEnum i = case i of
+        0 -> Schedule
+        _ -> (error . showText) $ "Unknown index for BlockerType: " <> toText i
+    fromEnum x = case x of
+        Schedule -> 0
+        BlockerType' name -> (error . showText) $ "Unknown BlockerType: " <> original name
+
+-- | Represents the bounds of /known/ $BlockerType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded BlockerType where
+    minBound = Schedule
+    maxBound = Schedule
 
 instance Hashable     BlockerType
 instance NFData       BlockerType

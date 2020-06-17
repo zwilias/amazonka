@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,27 +16,60 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.Redshift.Types.ParameterApplyType where
+module Network.AWS.Redshift.Types.ParameterApplyType (
+  ParameterApplyType (
+    ..
+    , Dynamic
+    , Static
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
 import Network.AWS.Redshift.Internal
-  
-data ParameterApplyType = Dynamic
-                        | Static
-                            deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                      Typeable, Generic)
+
+data ParameterApplyType = ParameterApplyType' (CI
+                                                 Text)
+                            deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                      Generic)
+
+pattern Dynamic :: ParameterApplyType
+pattern Dynamic = ParameterApplyType' "dynamic"
+
+pattern Static :: ParameterApplyType
+pattern Static = ParameterApplyType' "static"
+
+{-# COMPLETE
+  Dynamic,
+  Static,
+  ParameterApplyType' #-}
 
 instance FromText ParameterApplyType where
-    parser = takeLowerText >>= \case
-        "dynamic" -> pure Dynamic
-        "static" -> pure Static
-        e -> fromTextError $ "Failure parsing ParameterApplyType from value: '" <> e
-           <> "'. Accepted values: dynamic, static"
+    parser = (ParameterApplyType' . mk) <$> takeText
 
 instance ToText ParameterApplyType where
-    toText = \case
-        Dynamic -> "dynamic"
-        Static -> "static"
+    toText (ParameterApplyType' ci) = original ci
+
+-- | Represents an enum of /known/ $ParameterApplyType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum ParameterApplyType where
+    toEnum i = case i of
+        0 -> Dynamic
+        1 -> Static
+        _ -> (error . showText) $ "Unknown index for ParameterApplyType: " <> toText i
+    fromEnum x = case x of
+        Dynamic -> 0
+        Static -> 1
+        ParameterApplyType' name -> (error . showText) $ "Unknown ParameterApplyType: " <> original name
+
+-- | Represents the bounds of /known/ $ParameterApplyType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded ParameterApplyType where
+    minBound = Dynamic
+    maxBound = Static
 
 instance Hashable     ParameterApplyType
 instance NFData       ParameterApplyType

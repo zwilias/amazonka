@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,29 +16,65 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.GameLift.Types.InstanceStatus where
+module Network.AWS.GameLift.Types.InstanceStatus (
+  InstanceStatus (
+    ..
+    , ISActive
+    , ISPending
+    , ISTerminating
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data InstanceStatus = ISActive
-                    | ISPending
-                    | ISTerminating
-                        deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                  Typeable, Generic)
+
+data InstanceStatus = InstanceStatus' (CI Text)
+                        deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                  Generic)
+
+pattern ISActive :: InstanceStatus
+pattern ISActive = InstanceStatus' "ACTIVE"
+
+pattern ISPending :: InstanceStatus
+pattern ISPending = InstanceStatus' "PENDING"
+
+pattern ISTerminating :: InstanceStatus
+pattern ISTerminating = InstanceStatus' "TERMINATING"
+
+{-# COMPLETE
+  ISActive,
+  ISPending,
+  ISTerminating,
+  InstanceStatus' #-}
 
 instance FromText InstanceStatus where
-    parser = takeLowerText >>= \case
-        "active" -> pure ISActive
-        "pending" -> pure ISPending
-        "terminating" -> pure ISTerminating
-        e -> fromTextError $ "Failure parsing InstanceStatus from value: '" <> e
-           <> "'. Accepted values: active, pending, terminating"
+    parser = (InstanceStatus' . mk) <$> takeText
 
 instance ToText InstanceStatus where
-    toText = \case
-        ISActive -> "ACTIVE"
-        ISPending -> "PENDING"
-        ISTerminating -> "TERMINATING"
+    toText (InstanceStatus' ci) = original ci
+
+-- | Represents an enum of /known/ $InstanceStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum InstanceStatus where
+    toEnum i = case i of
+        0 -> ISActive
+        1 -> ISPending
+        2 -> ISTerminating
+        _ -> (error . showText) $ "Unknown index for InstanceStatus: " <> toText i
+    fromEnum x = case x of
+        ISActive -> 0
+        ISPending -> 1
+        ISTerminating -> 2
+        InstanceStatus' name -> (error . showText) $ "Unknown InstanceStatus: " <> original name
+
+-- | Represents the bounds of /known/ $InstanceStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded InstanceStatus where
+    minBound = ISActive
+    maxBound = ISTerminating
 
 instance Hashable     InstanceStatus
 instance NFData       InstanceStatus

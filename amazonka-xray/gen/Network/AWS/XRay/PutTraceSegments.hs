@@ -72,6 +72,7 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.XRay.Types
+import Network.AWS.XRay.Types.Product
 
 -- | /See:/ 'putTraceSegments' smart constructor.
 newtype PutTraceSegments = PutTraceSegments'{_ptsTraceSegmentDocuments

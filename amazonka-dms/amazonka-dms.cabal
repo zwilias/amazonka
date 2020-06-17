@@ -125,6 +125,7 @@ library
         , Network.AWS.DMS.Types.OrderableReplicationInstance
         , Network.AWS.DMS.Types.ParquetVersionValue
         , Network.AWS.DMS.Types.PendingMaintenanceAction
+        , Network.AWS.DMS.Types.Product
         , Network.AWS.DMS.Types.RedshiftSettings
         , Network.AWS.DMS.Types.RefreshSchemasStatus
         , Network.AWS.DMS.Types.RefreshSchemasStatusTypeValue
@@ -152,6 +153,7 @@ library
     build-depends:
           amazonka-core == 1.6.1.*
         , base          >= 4.7     && < 5
+        , case-insensitive
 
 test-suite amazonka-dms-test
     type:              exitcode-stdio-1.0
@@ -175,6 +177,7 @@ test-suite amazonka-dms-test
         , amazonka-dms
         , base
         , bytestring
+        , case-insensitive
         , tasty
         , tasty-hunit
         , text

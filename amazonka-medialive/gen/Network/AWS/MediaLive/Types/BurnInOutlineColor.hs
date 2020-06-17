@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,39 +16,88 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.MediaLive.Types.BurnInOutlineColor where
+module Network.AWS.MediaLive.Types.BurnInOutlineColor (
+  BurnInOutlineColor (
+    ..
+    , BIOCBlack
+    , BIOCBlue
+    , BIOCGreen
+    , BIOCRed
+    , BIOCWhite
+    , BIOCYellow
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
+
 -- | Placeholder documentation for BurnInOutlineColor
-data BurnInOutlineColor = BIOCBlack
-                        | BIOCBlue
-                        | BIOCGreen
-                        | BIOCRed
-                        | BIOCWhite
-                        | BIOCYellow
-                            deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                      Typeable, Generic)
+data BurnInOutlineColor = BurnInOutlineColor' (CI
+                                                 Text)
+                            deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                      Generic)
+
+pattern BIOCBlack :: BurnInOutlineColor
+pattern BIOCBlack = BurnInOutlineColor' "BLACK"
+
+pattern BIOCBlue :: BurnInOutlineColor
+pattern BIOCBlue = BurnInOutlineColor' "BLUE"
+
+pattern BIOCGreen :: BurnInOutlineColor
+pattern BIOCGreen = BurnInOutlineColor' "GREEN"
+
+pattern BIOCRed :: BurnInOutlineColor
+pattern BIOCRed = BurnInOutlineColor' "RED"
+
+pattern BIOCWhite :: BurnInOutlineColor
+pattern BIOCWhite = BurnInOutlineColor' "WHITE"
+
+pattern BIOCYellow :: BurnInOutlineColor
+pattern BIOCYellow = BurnInOutlineColor' "YELLOW"
+
+{-# COMPLETE
+  BIOCBlack,
+  BIOCBlue,
+  BIOCGreen,
+  BIOCRed,
+  BIOCWhite,
+  BIOCYellow,
+  BurnInOutlineColor' #-}
 
 instance FromText BurnInOutlineColor where
-    parser = takeLowerText >>= \case
-        "black" -> pure BIOCBlack
-        "blue" -> pure BIOCBlue
-        "green" -> pure BIOCGreen
-        "red" -> pure BIOCRed
-        "white" -> pure BIOCWhite
-        "yellow" -> pure BIOCYellow
-        e -> fromTextError $ "Failure parsing BurnInOutlineColor from value: '" <> e
-           <> "'. Accepted values: black, blue, green, red, white, yellow"
+    parser = (BurnInOutlineColor' . mk) <$> takeText
 
 instance ToText BurnInOutlineColor where
-    toText = \case
-        BIOCBlack -> "BLACK"
-        BIOCBlue -> "BLUE"
-        BIOCGreen -> "GREEN"
-        BIOCRed -> "RED"
-        BIOCWhite -> "WHITE"
-        BIOCYellow -> "YELLOW"
+    toText (BurnInOutlineColor' ci) = original ci
+
+-- | Represents an enum of /known/ $BurnInOutlineColor.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum BurnInOutlineColor where
+    toEnum i = case i of
+        0 -> BIOCBlack
+        1 -> BIOCBlue
+        2 -> BIOCGreen
+        3 -> BIOCRed
+        4 -> BIOCWhite
+        5 -> BIOCYellow
+        _ -> (error . showText) $ "Unknown index for BurnInOutlineColor: " <> toText i
+    fromEnum x = case x of
+        BIOCBlack -> 0
+        BIOCBlue -> 1
+        BIOCGreen -> 2
+        BIOCRed -> 3
+        BIOCWhite -> 4
+        BIOCYellow -> 5
+        BurnInOutlineColor' name -> (error . showText) $ "Unknown BurnInOutlineColor: " <> original name
+
+-- | Represents the bounds of /known/ $BurnInOutlineColor.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded BurnInOutlineColor where
+    minBound = BIOCBlack
+    maxBound = BIOCYellow
 
 instance Hashable     BurnInOutlineColor
 instance NFData       BurnInOutlineColor

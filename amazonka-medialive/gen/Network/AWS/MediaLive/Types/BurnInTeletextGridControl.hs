@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,27 +16,60 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.MediaLive.Types.BurnInTeletextGridControl where
+module Network.AWS.MediaLive.Types.BurnInTeletextGridControl (
+  BurnInTeletextGridControl (
+    ..
+    , BITGCFixed
+    , BITGCScaled
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
+
 -- | Placeholder documentation for BurnInTeletextGridControl
-data BurnInTeletextGridControl = BITGCFixed
-                               | BITGCScaled
-                                   deriving (Eq, Ord, Read, Show, Enum, Bounded,
-                                             Data, Typeable, Generic)
+data BurnInTeletextGridControl = BurnInTeletextGridControl' (CI
+                                                               Text)
+                                   deriving (Eq, Ord, Read, Show, Data,
+                                             Typeable, Generic)
+
+pattern BITGCFixed :: BurnInTeletextGridControl
+pattern BITGCFixed = BurnInTeletextGridControl' "FIXED"
+
+pattern BITGCScaled :: BurnInTeletextGridControl
+pattern BITGCScaled = BurnInTeletextGridControl' "SCALED"
+
+{-# COMPLETE
+  BITGCFixed,
+  BITGCScaled,
+  BurnInTeletextGridControl' #-}
 
 instance FromText BurnInTeletextGridControl where
-    parser = takeLowerText >>= \case
-        "fixed" -> pure BITGCFixed
-        "scaled" -> pure BITGCScaled
-        e -> fromTextError $ "Failure parsing BurnInTeletextGridControl from value: '" <> e
-           <> "'. Accepted values: fixed, scaled"
+    parser = (BurnInTeletextGridControl' . mk) <$> takeText
 
 instance ToText BurnInTeletextGridControl where
-    toText = \case
-        BITGCFixed -> "FIXED"
-        BITGCScaled -> "SCALED"
+    toText (BurnInTeletextGridControl' ci) = original ci
+
+-- | Represents an enum of /known/ $BurnInTeletextGridControl.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum BurnInTeletextGridControl where
+    toEnum i = case i of
+        0 -> BITGCFixed
+        1 -> BITGCScaled
+        _ -> (error . showText) $ "Unknown index for BurnInTeletextGridControl: " <> toText i
+    fromEnum x = case x of
+        BITGCFixed -> 0
+        BITGCScaled -> 1
+        BurnInTeletextGridControl' name -> (error . showText) $ "Unknown BurnInTeletextGridControl: " <> original name
+
+-- | Represents the bounds of /known/ $BurnInTeletextGridControl.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded BurnInTeletextGridControl where
+    minBound = BITGCFixed
+    maxBound = BITGCScaled
 
 instance Hashable     BurnInTeletextGridControl
 instance NFData       BurnInTeletextGridControl

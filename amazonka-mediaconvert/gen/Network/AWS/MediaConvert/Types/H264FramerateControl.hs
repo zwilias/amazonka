@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,27 +16,60 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.MediaConvert.Types.H264FramerateControl where
+module Network.AWS.MediaConvert.Types.H264FramerateControl (
+  H264FramerateControl (
+    ..
+    , HInitializeFromSource
+    , HSpecified
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
+
 -- | Using the API, set FramerateControl to INITIALIZE_FROM_SOURCE if you want the service to use the framerate from the input. Using the console, do this by choosing INITIALIZE_FROM_SOURCE for Framerate.
-data H264FramerateControl = HInitializeFromSource
-                          | HSpecified
-                              deriving (Eq, Ord, Read, Show, Enum, Bounded,
-                                        Data, Typeable, Generic)
+data H264FramerateControl = H264FramerateControl' (CI
+                                                     Text)
+                              deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                        Generic)
+
+pattern HInitializeFromSource :: H264FramerateControl
+pattern HInitializeFromSource = H264FramerateControl' "INITIALIZE_FROM_SOURCE"
+
+pattern HSpecified :: H264FramerateControl
+pattern HSpecified = H264FramerateControl' "SPECIFIED"
+
+{-# COMPLETE
+  HInitializeFromSource,
+  HSpecified,
+  H264FramerateControl' #-}
 
 instance FromText H264FramerateControl where
-    parser = takeLowerText >>= \case
-        "initialize_from_source" -> pure HInitializeFromSource
-        "specified" -> pure HSpecified
-        e -> fromTextError $ "Failure parsing H264FramerateControl from value: '" <> e
-           <> "'. Accepted values: initialize_from_source, specified"
+    parser = (H264FramerateControl' . mk) <$> takeText
 
 instance ToText H264FramerateControl where
-    toText = \case
-        HInitializeFromSource -> "INITIALIZE_FROM_SOURCE"
-        HSpecified -> "SPECIFIED"
+    toText (H264FramerateControl' ci) = original ci
+
+-- | Represents an enum of /known/ $H264FramerateControl.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum H264FramerateControl where
+    toEnum i = case i of
+        0 -> HInitializeFromSource
+        1 -> HSpecified
+        _ -> (error . showText) $ "Unknown index for H264FramerateControl: " <> toText i
+    fromEnum x = case x of
+        HInitializeFromSource -> 0
+        HSpecified -> 1
+        H264FramerateControl' name -> (error . showText) $ "Unknown H264FramerateControl: " <> original name
+
+-- | Represents the bounds of /known/ $H264FramerateControl.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded H264FramerateControl where
+    minBound = HInitializeFromSource
+    maxBound = HSpecified
 
 instance Hashable     H264FramerateControl
 instance NFData       H264FramerateControl

@@ -37,6 +37,7 @@ module Network.AWS.CostAndUsageReport.PutReportDefinition
     ) where
 
 import Network.AWS.CostAndUsageReport.Types
+import Network.AWS.CostAndUsageReport.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request

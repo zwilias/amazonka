@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,27 +16,59 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.MediaConvert.Types.QueueListBy where
+module Network.AWS.MediaConvert.Types.QueueListBy (
+  QueueListBy (
+    ..
+    , CreationDate
+    , Name
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
+
 -- | Optional. When you request a list of queues, you can choose to list them alphabetically by NAME or chronologically by CREATION_DATE. If you don't specify, the service will list them by creation date.
-data QueueListBy = CreationDate
-                 | Name
-                     deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                               Typeable, Generic)
+data QueueListBy = QueueListBy' (CI Text)
+                     deriving (Eq, Ord, Read, Show, Data, Typeable,
+                               Generic)
+
+pattern CreationDate :: QueueListBy
+pattern CreationDate = QueueListBy' "CREATION_DATE"
+
+pattern Name :: QueueListBy
+pattern Name = QueueListBy' "NAME"
+
+{-# COMPLETE
+  CreationDate,
+  Name,
+  QueueListBy' #-}
 
 instance FromText QueueListBy where
-    parser = takeLowerText >>= \case
-        "creation_date" -> pure CreationDate
-        "name" -> pure Name
-        e -> fromTextError $ "Failure parsing QueueListBy from value: '" <> e
-           <> "'. Accepted values: creation_date, name"
+    parser = (QueueListBy' . mk) <$> takeText
 
 instance ToText QueueListBy where
-    toText = \case
-        CreationDate -> "CREATION_DATE"
-        Name -> "NAME"
+    toText (QueueListBy' ci) = original ci
+
+-- | Represents an enum of /known/ $QueueListBy.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum QueueListBy where
+    toEnum i = case i of
+        0 -> CreationDate
+        1 -> Name
+        _ -> (error . showText) $ "Unknown index for QueueListBy: " <> toText i
+    fromEnum x = case x of
+        CreationDate -> 0
+        Name -> 1
+        QueueListBy' name -> (error . showText) $ "Unknown QueueListBy: " <> original name
+
+-- | Represents the bounds of /known/ $QueueListBy.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded QueueListBy where
+    minBound = CreationDate
+    maxBound = Name
 
 instance Hashable     QueueListBy
 instance NFData       QueueListBy

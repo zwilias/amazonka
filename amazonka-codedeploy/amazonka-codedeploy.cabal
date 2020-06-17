@@ -146,6 +146,7 @@ library
         , Network.AWS.CodeDeploy.Types.MinimumHealthyHosts
         , Network.AWS.CodeDeploy.Types.MinimumHealthyHostsType
         , Network.AWS.CodeDeploy.Types.OnPremisesTagSet
+        , Network.AWS.CodeDeploy.Types.Product
         , Network.AWS.CodeDeploy.Types.RawString
         , Network.AWS.CodeDeploy.Types.RegistrationStatus
         , Network.AWS.CodeDeploy.Types.RevisionInfo
@@ -176,6 +177,7 @@ library
     build-depends:
           amazonka-core == 1.6.1.*
         , base          >= 4.7     && < 5
+        , case-insensitive
 
 test-suite amazonka-codedeploy-test
     type:              exitcode-stdio-1.0
@@ -199,6 +201,7 @@ test-suite amazonka-codedeploy-test
         , amazonka-codedeploy
         , base
         , bytestring
+        , case-insensitive
         , tasty
         , tasty-hunit
         , text

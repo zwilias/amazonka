@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,27 +16,60 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.MediaLive.Types.SmoothGroupCertificateMode where
+module Network.AWS.MediaLive.Types.SmoothGroupCertificateMode (
+  SmoothGroupCertificateMode (
+    ..
+    , SelfSigned
+    , VerifyAuthenticity
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
+
 -- | Placeholder documentation for SmoothGroupCertificateMode
-data SmoothGroupCertificateMode = SelfSigned
-                                | VerifyAuthenticity
-                                    deriving (Eq, Ord, Read, Show, Enum,
-                                              Bounded, Data, Typeable, Generic)
+data SmoothGroupCertificateMode = SmoothGroupCertificateMode' (CI
+                                                                 Text)
+                                    deriving (Eq, Ord, Read, Show, Data,
+                                              Typeable, Generic)
+
+pattern SelfSigned :: SmoothGroupCertificateMode
+pattern SelfSigned = SmoothGroupCertificateMode' "SELF_SIGNED"
+
+pattern VerifyAuthenticity :: SmoothGroupCertificateMode
+pattern VerifyAuthenticity = SmoothGroupCertificateMode' "VERIFY_AUTHENTICITY"
+
+{-# COMPLETE
+  SelfSigned,
+  VerifyAuthenticity,
+  SmoothGroupCertificateMode' #-}
 
 instance FromText SmoothGroupCertificateMode where
-    parser = takeLowerText >>= \case
-        "self_signed" -> pure SelfSigned
-        "verify_authenticity" -> pure VerifyAuthenticity
-        e -> fromTextError $ "Failure parsing SmoothGroupCertificateMode from value: '" <> e
-           <> "'. Accepted values: self_signed, verify_authenticity"
+    parser = (SmoothGroupCertificateMode' . mk) <$> takeText
 
 instance ToText SmoothGroupCertificateMode where
-    toText = \case
-        SelfSigned -> "SELF_SIGNED"
-        VerifyAuthenticity -> "VERIFY_AUTHENTICITY"
+    toText (SmoothGroupCertificateMode' ci) = original ci
+
+-- | Represents an enum of /known/ $SmoothGroupCertificateMode.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum SmoothGroupCertificateMode where
+    toEnum i = case i of
+        0 -> SelfSigned
+        1 -> VerifyAuthenticity
+        _ -> (error . showText) $ "Unknown index for SmoothGroupCertificateMode: " <> toText i
+    fromEnum x = case x of
+        SelfSigned -> 0
+        VerifyAuthenticity -> 1
+        SmoothGroupCertificateMode' name -> (error . showText) $ "Unknown SmoothGroupCertificateMode: " <> original name
+
+-- | Represents the bounds of /known/ $SmoothGroupCertificateMode.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded SmoothGroupCertificateMode where
+    minBound = SelfSigned
+    maxBound = VerifyAuthenticity
 
 instance Hashable     SmoothGroupCertificateMode
 instance NFData       SmoothGroupCertificateMode

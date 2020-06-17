@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,35 +16,79 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.DirectConnect.Types.BGPPeerState where
+module Network.AWS.DirectConnect.Types.BGPPeerState (
+  BGPPeerState (
+    ..
+    , Available
+    , Deleted
+    , Deleting
+    , Pending
+    , Verifying
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data BGPPeerState = Available
-                  | Deleted
-                  | Deleting
-                  | Pending
-                  | Verifying
-                      deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                Typeable, Generic)
+
+data BGPPeerState = BGPPeerState' (CI Text)
+                      deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                Generic)
+
+pattern Available :: BGPPeerState
+pattern Available = BGPPeerState' "available"
+
+pattern Deleted :: BGPPeerState
+pattern Deleted = BGPPeerState' "deleted"
+
+pattern Deleting :: BGPPeerState
+pattern Deleting = BGPPeerState' "deleting"
+
+pattern Pending :: BGPPeerState
+pattern Pending = BGPPeerState' "pending"
+
+pattern Verifying :: BGPPeerState
+pattern Verifying = BGPPeerState' "verifying"
+
+{-# COMPLETE
+  Available,
+  Deleted,
+  Deleting,
+  Pending,
+  Verifying,
+  BGPPeerState' #-}
 
 instance FromText BGPPeerState where
-    parser = takeLowerText >>= \case
-        "available" -> pure Available
-        "deleted" -> pure Deleted
-        "deleting" -> pure Deleting
-        "pending" -> pure Pending
-        "verifying" -> pure Verifying
-        e -> fromTextError $ "Failure parsing BGPPeerState from value: '" <> e
-           <> "'. Accepted values: available, deleted, deleting, pending, verifying"
+    parser = (BGPPeerState' . mk) <$> takeText
 
 instance ToText BGPPeerState where
-    toText = \case
-        Available -> "available"
-        Deleted -> "deleted"
-        Deleting -> "deleting"
-        Pending -> "pending"
-        Verifying -> "verifying"
+    toText (BGPPeerState' ci) = original ci
+
+-- | Represents an enum of /known/ $BGPPeerState.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum BGPPeerState where
+    toEnum i = case i of
+        0 -> Available
+        1 -> Deleted
+        2 -> Deleting
+        3 -> Pending
+        4 -> Verifying
+        _ -> (error . showText) $ "Unknown index for BGPPeerState: " <> toText i
+    fromEnum x = case x of
+        Available -> 0
+        Deleted -> 1
+        Deleting -> 2
+        Pending -> 3
+        Verifying -> 4
+        BGPPeerState' name -> (error . showText) $ "Unknown BGPPeerState: " <> original name
+
+-- | Represents the bounds of /known/ $BGPPeerState.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded BGPPeerState where
+    minBound = Available
+    maxBound = Verifying
 
 instance Hashable     BGPPeerState
 instance NFData       BGPPeerState

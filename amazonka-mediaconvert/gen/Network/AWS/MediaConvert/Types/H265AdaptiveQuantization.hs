@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,39 +16,88 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.MediaConvert.Types.H265AdaptiveQuantization where
+module Network.AWS.MediaConvert.Types.H265AdaptiveQuantization (
+  H265AdaptiveQuantization (
+    ..
+    , High
+    , Higher
+    , Low
+    , Max
+    , Medium
+    , Off
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
+
 -- | Adaptive quantization. Allows intra-frame quantizers to vary to improve visual quality.
-data H265AdaptiveQuantization = High
-                              | Higher
-                              | Low
-                              | Max
-                              | Medium
-                              | Off
-                                  deriving (Eq, Ord, Read, Show, Enum, Bounded,
-                                            Data, Typeable, Generic)
+data H265AdaptiveQuantization = H265AdaptiveQuantization' (CI
+                                                             Text)
+                                  deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                            Generic)
+
+pattern High :: H265AdaptiveQuantization
+pattern High = H265AdaptiveQuantization' "HIGH"
+
+pattern Higher :: H265AdaptiveQuantization
+pattern Higher = H265AdaptiveQuantization' "HIGHER"
+
+pattern Low :: H265AdaptiveQuantization
+pattern Low = H265AdaptiveQuantization' "LOW"
+
+pattern Max :: H265AdaptiveQuantization
+pattern Max = H265AdaptiveQuantization' "MAX"
+
+pattern Medium :: H265AdaptiveQuantization
+pattern Medium = H265AdaptiveQuantization' "MEDIUM"
+
+pattern Off :: H265AdaptiveQuantization
+pattern Off = H265AdaptiveQuantization' "OFF"
+
+{-# COMPLETE
+  High,
+  Higher,
+  Low,
+  Max,
+  Medium,
+  Off,
+  H265AdaptiveQuantization' #-}
 
 instance FromText H265AdaptiveQuantization where
-    parser = takeLowerText >>= \case
-        "high" -> pure High
-        "higher" -> pure Higher
-        "low" -> pure Low
-        "max" -> pure Max
-        "medium" -> pure Medium
-        "off" -> pure Off
-        e -> fromTextError $ "Failure parsing H265AdaptiveQuantization from value: '" <> e
-           <> "'. Accepted values: high, higher, low, max, medium, off"
+    parser = (H265AdaptiveQuantization' . mk) <$> takeText
 
 instance ToText H265AdaptiveQuantization where
-    toText = \case
-        High -> "HIGH"
-        Higher -> "HIGHER"
-        Low -> "LOW"
-        Max -> "MAX"
-        Medium -> "MEDIUM"
-        Off -> "OFF"
+    toText (H265AdaptiveQuantization' ci) = original ci
+
+-- | Represents an enum of /known/ $H265AdaptiveQuantization.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum H265AdaptiveQuantization where
+    toEnum i = case i of
+        0 -> High
+        1 -> Higher
+        2 -> Low
+        3 -> Max
+        4 -> Medium
+        5 -> Off
+        _ -> (error . showText) $ "Unknown index for H265AdaptiveQuantization: " <> toText i
+    fromEnum x = case x of
+        High -> 0
+        Higher -> 1
+        Low -> 2
+        Max -> 3
+        Medium -> 4
+        Off -> 5
+        H265AdaptiveQuantization' name -> (error . showText) $ "Unknown H265AdaptiveQuantization: " <> original name
+
+-- | Represents the bounds of /known/ $H265AdaptiveQuantization.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded H265AdaptiveQuantization where
+    minBound = High
+    maxBound = Off
 
 instance Hashable     H265AdaptiveQuantization
 instance NFData       H265AdaptiveQuantization

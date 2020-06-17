@@ -71,10 +71,12 @@ library
         , Network.AWS.AWSHealth.Types.EventType
         , Network.AWS.AWSHealth.Types.EventTypeCategory
         , Network.AWS.AWSHealth.Types.EventTypeFilter
+        , Network.AWS.AWSHealth.Types.Product
 
     build-depends:
           amazonka-core == 1.6.1.*
         , base          >= 4.7     && < 5
+        , case-insensitive
 
 test-suite amazonka-health-test
     type:              exitcode-stdio-1.0
@@ -98,6 +100,7 @@ test-suite amazonka-health-test
         , amazonka-health
         , base
         , bytestring
+        , case-insensitive
         , tasty
         , tasty-hunit
         , text

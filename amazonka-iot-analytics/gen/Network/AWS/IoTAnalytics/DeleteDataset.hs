@@ -37,6 +37,7 @@ module Network.AWS.IoTAnalytics.DeleteDataset
     ) where
 
 import Network.AWS.IoTAnalytics.Types
+import Network.AWS.IoTAnalytics.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request

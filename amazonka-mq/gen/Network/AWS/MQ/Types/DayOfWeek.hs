@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,41 +16,93 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.MQ.Types.DayOfWeek where
+module Network.AWS.MQ.Types.DayOfWeek (
+  DayOfWeek (
+    ..
+    , Friday
+    , Monday
+    , Saturday
+    , Sunday
+    , Thursday
+    , Tuesday
+    , Wednesday
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data DayOfWeek = Friday
-               | Monday
-               | Saturday
-               | Sunday
-               | Thursday
-               | Tuesday
-               | Wednesday
-                   deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                             Typeable, Generic)
+
+data DayOfWeek = DayOfWeek' (CI Text)
+                   deriving (Eq, Ord, Read, Show, Data, Typeable,
+                             Generic)
+
+pattern Friday :: DayOfWeek
+pattern Friday = DayOfWeek' "FRIDAY"
+
+pattern Monday :: DayOfWeek
+pattern Monday = DayOfWeek' "MONDAY"
+
+pattern Saturday :: DayOfWeek
+pattern Saturday = DayOfWeek' "SATURDAY"
+
+pattern Sunday :: DayOfWeek
+pattern Sunday = DayOfWeek' "SUNDAY"
+
+pattern Thursday :: DayOfWeek
+pattern Thursday = DayOfWeek' "THURSDAY"
+
+pattern Tuesday :: DayOfWeek
+pattern Tuesday = DayOfWeek' "TUESDAY"
+
+pattern Wednesday :: DayOfWeek
+pattern Wednesday = DayOfWeek' "WEDNESDAY"
+
+{-# COMPLETE
+  Friday,
+  Monday,
+  Saturday,
+  Sunday,
+  Thursday,
+  Tuesday,
+  Wednesday,
+  DayOfWeek' #-}
 
 instance FromText DayOfWeek where
-    parser = takeLowerText >>= \case
-        "friday" -> pure Friday
-        "monday" -> pure Monday
-        "saturday" -> pure Saturday
-        "sunday" -> pure Sunday
-        "thursday" -> pure Thursday
-        "tuesday" -> pure Tuesday
-        "wednesday" -> pure Wednesday
-        e -> fromTextError $ "Failure parsing DayOfWeek from value: '" <> e
-           <> "'. Accepted values: friday, monday, saturday, sunday, thursday, tuesday, wednesday"
+    parser = (DayOfWeek' . mk) <$> takeText
 
 instance ToText DayOfWeek where
-    toText = \case
-        Friday -> "FRIDAY"
-        Monday -> "MONDAY"
-        Saturday -> "SATURDAY"
-        Sunday -> "SUNDAY"
-        Thursday -> "THURSDAY"
-        Tuesday -> "TUESDAY"
-        Wednesday -> "WEDNESDAY"
+    toText (DayOfWeek' ci) = original ci
+
+-- | Represents an enum of /known/ $DayOfWeek.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum DayOfWeek where
+    toEnum i = case i of
+        0 -> Friday
+        1 -> Monday
+        2 -> Saturday
+        3 -> Sunday
+        4 -> Thursday
+        5 -> Tuesday
+        6 -> Wednesday
+        _ -> (error . showText) $ "Unknown index for DayOfWeek: " <> toText i
+    fromEnum x = case x of
+        Friday -> 0
+        Monday -> 1
+        Saturday -> 2
+        Sunday -> 3
+        Thursday -> 4
+        Tuesday -> 5
+        Wednesday -> 6
+        DayOfWeek' name -> (error . showText) $ "Unknown DayOfWeek: " <> original name
+
+-- | Represents the bounds of /known/ $DayOfWeek.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded DayOfWeek where
+    minBound = Friday
+    maxBound = Wednesday
 
 instance Hashable     DayOfWeek
 instance NFData       DayOfWeek

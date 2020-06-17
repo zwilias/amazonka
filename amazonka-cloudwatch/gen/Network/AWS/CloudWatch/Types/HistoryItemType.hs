@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,29 +16,65 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.CloudWatch.Types.HistoryItemType where
+module Network.AWS.CloudWatch.Types.HistoryItemType (
+  HistoryItemType (
+    ..
+    , Action
+    , ConfigurationUpdate
+    , StateUpdate
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data HistoryItemType = Action
-                     | ConfigurationUpdate
-                     | StateUpdate
-                         deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                   Typeable, Generic)
+
+data HistoryItemType = HistoryItemType' (CI Text)
+                         deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                   Generic)
+
+pattern Action :: HistoryItemType
+pattern Action = HistoryItemType' "Action"
+
+pattern ConfigurationUpdate :: HistoryItemType
+pattern ConfigurationUpdate = HistoryItemType' "ConfigurationUpdate"
+
+pattern StateUpdate :: HistoryItemType
+pattern StateUpdate = HistoryItemType' "StateUpdate"
+
+{-# COMPLETE
+  Action,
+  ConfigurationUpdate,
+  StateUpdate,
+  HistoryItemType' #-}
 
 instance FromText HistoryItemType where
-    parser = takeLowerText >>= \case
-        "action" -> pure Action
-        "configurationupdate" -> pure ConfigurationUpdate
-        "stateupdate" -> pure StateUpdate
-        e -> fromTextError $ "Failure parsing HistoryItemType from value: '" <> e
-           <> "'. Accepted values: action, configurationupdate, stateupdate"
+    parser = (HistoryItemType' . mk) <$> takeText
 
 instance ToText HistoryItemType where
-    toText = \case
-        Action -> "Action"
-        ConfigurationUpdate -> "ConfigurationUpdate"
-        StateUpdate -> "StateUpdate"
+    toText (HistoryItemType' ci) = original ci
+
+-- | Represents an enum of /known/ $HistoryItemType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum HistoryItemType where
+    toEnum i = case i of
+        0 -> Action
+        1 -> ConfigurationUpdate
+        2 -> StateUpdate
+        _ -> (error . showText) $ "Unknown index for HistoryItemType: " <> toText i
+    fromEnum x = case x of
+        Action -> 0
+        ConfigurationUpdate -> 1
+        StateUpdate -> 2
+        HistoryItemType' name -> (error . showText) $ "Unknown HistoryItemType: " <> original name
+
+-- | Represents the bounds of /known/ $HistoryItemType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded HistoryItemType where
+    minBound = Action
+    maxBound = StateUpdate
 
 instance Hashable     HistoryItemType
 instance NFData       HistoryItemType

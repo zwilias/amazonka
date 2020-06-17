@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,38 +16,86 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.SSM.Types.NotificationEvent where
+module Network.AWS.SSM.Types.NotificationEvent (
+  NotificationEvent (
+    ..
+    , NEAll
+    , NECancelled
+    , NEFailed
+    , NEInProgress
+    , NESuccess
+    , NETimedOut
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data NotificationEvent = NEAll
-                       | NECancelled
-                       | NEFailed
-                       | NEInProgress
-                       | NESuccess
-                       | NETimedOut
-                           deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                     Typeable, Generic)
+
+data NotificationEvent = NotificationEvent' (CI Text)
+                           deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                     Generic)
+
+pattern NEAll :: NotificationEvent
+pattern NEAll = NotificationEvent' "All"
+
+pattern NECancelled :: NotificationEvent
+pattern NECancelled = NotificationEvent' "Cancelled"
+
+pattern NEFailed :: NotificationEvent
+pattern NEFailed = NotificationEvent' "Failed"
+
+pattern NEInProgress :: NotificationEvent
+pattern NEInProgress = NotificationEvent' "InProgress"
+
+pattern NESuccess :: NotificationEvent
+pattern NESuccess = NotificationEvent' "Success"
+
+pattern NETimedOut :: NotificationEvent
+pattern NETimedOut = NotificationEvent' "TimedOut"
+
+{-# COMPLETE
+  NEAll,
+  NECancelled,
+  NEFailed,
+  NEInProgress,
+  NESuccess,
+  NETimedOut,
+  NotificationEvent' #-}
 
 instance FromText NotificationEvent where
-    parser = takeLowerText >>= \case
-        "all" -> pure NEAll
-        "cancelled" -> pure NECancelled
-        "failed" -> pure NEFailed
-        "inprogress" -> pure NEInProgress
-        "success" -> pure NESuccess
-        "timedout" -> pure NETimedOut
-        e -> fromTextError $ "Failure parsing NotificationEvent from value: '" <> e
-           <> "'. Accepted values: all, cancelled, failed, inprogress, success, timedout"
+    parser = (NotificationEvent' . mk) <$> takeText
 
 instance ToText NotificationEvent where
-    toText = \case
-        NEAll -> "All"
-        NECancelled -> "Cancelled"
-        NEFailed -> "Failed"
-        NEInProgress -> "InProgress"
-        NESuccess -> "Success"
-        NETimedOut -> "TimedOut"
+    toText (NotificationEvent' ci) = original ci
+
+-- | Represents an enum of /known/ $NotificationEvent.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum NotificationEvent where
+    toEnum i = case i of
+        0 -> NEAll
+        1 -> NECancelled
+        2 -> NEFailed
+        3 -> NEInProgress
+        4 -> NESuccess
+        5 -> NETimedOut
+        _ -> (error . showText) $ "Unknown index for NotificationEvent: " <> toText i
+    fromEnum x = case x of
+        NEAll -> 0
+        NECancelled -> 1
+        NEFailed -> 2
+        NEInProgress -> 3
+        NESuccess -> 4
+        NETimedOut -> 5
+        NotificationEvent' name -> (error . showText) $ "Unknown NotificationEvent: " <> original name
+
+-- | Represents the bounds of /known/ $NotificationEvent.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded NotificationEvent where
+    minBound = NEAll
+    maxBound = NETimedOut
 
 instance Hashable     NotificationEvent
 instance NFData       NotificationEvent

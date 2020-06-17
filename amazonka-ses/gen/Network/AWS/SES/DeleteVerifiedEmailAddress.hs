@@ -39,6 +39,7 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.SES.Types
+import Network.AWS.SES.Types.Product
 
 -- | Represents a request to delete an email address from the list of email addresses you have attempted to verify under your AWS account.
 --

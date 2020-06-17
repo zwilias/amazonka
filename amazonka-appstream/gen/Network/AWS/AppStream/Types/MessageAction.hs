@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,58 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.AppStream.Types.MessageAction where
+module Network.AWS.AppStream.Types.MessageAction (
+  MessageAction (
+    ..
+    , Resend
+    , Suppress
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data MessageAction = Resend
-                   | Suppress
-                       deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                 Typeable, Generic)
+
+data MessageAction = MessageAction' (CI Text)
+                       deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                 Generic)
+
+pattern Resend :: MessageAction
+pattern Resend = MessageAction' "RESEND"
+
+pattern Suppress :: MessageAction
+pattern Suppress = MessageAction' "SUPPRESS"
+
+{-# COMPLETE
+  Resend,
+  Suppress,
+  MessageAction' #-}
 
 instance FromText MessageAction where
-    parser = takeLowerText >>= \case
-        "resend" -> pure Resend
-        "suppress" -> pure Suppress
-        e -> fromTextError $ "Failure parsing MessageAction from value: '" <> e
-           <> "'. Accepted values: resend, suppress"
+    parser = (MessageAction' . mk) <$> takeText
 
 instance ToText MessageAction where
-    toText = \case
-        Resend -> "RESEND"
-        Suppress -> "SUPPRESS"
+    toText (MessageAction' ci) = original ci
+
+-- | Represents an enum of /known/ $MessageAction.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum MessageAction where
+    toEnum i = case i of
+        0 -> Resend
+        1 -> Suppress
+        _ -> (error . showText) $ "Unknown index for MessageAction: " <> toText i
+    fromEnum x = case x of
+        Resend -> 0
+        Suppress -> 1
+        MessageAction' name -> (error . showText) $ "Unknown MessageAction: " <> original name
+
+-- | Represents the bounds of /known/ $MessageAction.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded MessageAction where
+    minBound = Resend
+    maxBound = Suppress
 
 instance Hashable     MessageAction
 instance NFData       MessageAction

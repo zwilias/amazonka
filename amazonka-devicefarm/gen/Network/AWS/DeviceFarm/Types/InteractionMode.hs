@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,29 +16,65 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.DeviceFarm.Types.InteractionMode where
+module Network.AWS.DeviceFarm.Types.InteractionMode (
+  InteractionMode (
+    ..
+    , Interactive
+    , NoVideo
+    , VideoOnly
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data InteractionMode = Interactive
-                     | NoVideo
-                     | VideoOnly
-                         deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                   Typeable, Generic)
+
+data InteractionMode = InteractionMode' (CI Text)
+                         deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                   Generic)
+
+pattern Interactive :: InteractionMode
+pattern Interactive = InteractionMode' "INTERACTIVE"
+
+pattern NoVideo :: InteractionMode
+pattern NoVideo = InteractionMode' "NO_VIDEO"
+
+pattern VideoOnly :: InteractionMode
+pattern VideoOnly = InteractionMode' "VIDEO_ONLY"
+
+{-# COMPLETE
+  Interactive,
+  NoVideo,
+  VideoOnly,
+  InteractionMode' #-}
 
 instance FromText InteractionMode where
-    parser = takeLowerText >>= \case
-        "interactive" -> pure Interactive
-        "no_video" -> pure NoVideo
-        "video_only" -> pure VideoOnly
-        e -> fromTextError $ "Failure parsing InteractionMode from value: '" <> e
-           <> "'. Accepted values: interactive, no_video, video_only"
+    parser = (InteractionMode' . mk) <$> takeText
 
 instance ToText InteractionMode where
-    toText = \case
-        Interactive -> "INTERACTIVE"
-        NoVideo -> "NO_VIDEO"
-        VideoOnly -> "VIDEO_ONLY"
+    toText (InteractionMode' ci) = original ci
+
+-- | Represents an enum of /known/ $InteractionMode.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum InteractionMode where
+    toEnum i = case i of
+        0 -> Interactive
+        1 -> NoVideo
+        2 -> VideoOnly
+        _ -> (error . showText) $ "Unknown index for InteractionMode: " <> toText i
+    fromEnum x = case x of
+        Interactive -> 0
+        NoVideo -> 1
+        VideoOnly -> 2
+        InteractionMode' name -> (error . showText) $ "Unknown InteractionMode: " <> original name
+
+-- | Represents the bounds of /known/ $InteractionMode.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded InteractionMode where
+    minBound = Interactive
+    maxBound = VideoOnly
 
 instance Hashable     InteractionMode
 instance NFData       InteractionMode

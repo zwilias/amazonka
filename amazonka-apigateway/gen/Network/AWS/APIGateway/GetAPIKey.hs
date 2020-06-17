@@ -47,6 +47,7 @@ module Network.AWS.APIGateway.GetAPIKey
     ) where
 
 import Network.AWS.APIGateway.Types
+import Network.AWS.APIGateway.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request

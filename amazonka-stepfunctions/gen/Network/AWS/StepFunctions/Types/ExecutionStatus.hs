@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,35 +16,79 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.StepFunctions.Types.ExecutionStatus where
+module Network.AWS.StepFunctions.Types.ExecutionStatus (
+  ExecutionStatus (
+    ..
+    , Aborted
+    , Failed
+    , Running
+    , Succeeded
+    , TimedOut
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data ExecutionStatus = Aborted
-                     | Failed
-                     | Running
-                     | Succeeded
-                     | TimedOut
-                         deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                   Typeable, Generic)
+
+data ExecutionStatus = ExecutionStatus' (CI Text)
+                         deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                   Generic)
+
+pattern Aborted :: ExecutionStatus
+pattern Aborted = ExecutionStatus' "ABORTED"
+
+pattern Failed :: ExecutionStatus
+pattern Failed = ExecutionStatus' "FAILED"
+
+pattern Running :: ExecutionStatus
+pattern Running = ExecutionStatus' "RUNNING"
+
+pattern Succeeded :: ExecutionStatus
+pattern Succeeded = ExecutionStatus' "SUCCEEDED"
+
+pattern TimedOut :: ExecutionStatus
+pattern TimedOut = ExecutionStatus' "TIMED_OUT"
+
+{-# COMPLETE
+  Aborted,
+  Failed,
+  Running,
+  Succeeded,
+  TimedOut,
+  ExecutionStatus' #-}
 
 instance FromText ExecutionStatus where
-    parser = takeLowerText >>= \case
-        "aborted" -> pure Aborted
-        "failed" -> pure Failed
-        "running" -> pure Running
-        "succeeded" -> pure Succeeded
-        "timed_out" -> pure TimedOut
-        e -> fromTextError $ "Failure parsing ExecutionStatus from value: '" <> e
-           <> "'. Accepted values: aborted, failed, running, succeeded, timed_out"
+    parser = (ExecutionStatus' . mk) <$> takeText
 
 instance ToText ExecutionStatus where
-    toText = \case
-        Aborted -> "ABORTED"
-        Failed -> "FAILED"
-        Running -> "RUNNING"
-        Succeeded -> "SUCCEEDED"
-        TimedOut -> "TIMED_OUT"
+    toText (ExecutionStatus' ci) = original ci
+
+-- | Represents an enum of /known/ $ExecutionStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum ExecutionStatus where
+    toEnum i = case i of
+        0 -> Aborted
+        1 -> Failed
+        2 -> Running
+        3 -> Succeeded
+        4 -> TimedOut
+        _ -> (error . showText) $ "Unknown index for ExecutionStatus: " <> toText i
+    fromEnum x = case x of
+        Aborted -> 0
+        Failed -> 1
+        Running -> 2
+        Succeeded -> 3
+        TimedOut -> 4
+        ExecutionStatus' name -> (error . showText) $ "Unknown ExecutionStatus: " <> original name
+
+-- | Represents the bounds of /known/ $ExecutionStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded ExecutionStatus where
+    minBound = Aborted
+    maxBound = TimedOut
 
 instance Hashable     ExecutionStatus
 instance NFData       ExecutionStatus

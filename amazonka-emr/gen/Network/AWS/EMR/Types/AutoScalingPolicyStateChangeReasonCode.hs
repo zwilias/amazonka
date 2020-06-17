@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,30 +16,67 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.EMR.Types.AutoScalingPolicyStateChangeReasonCode where
+module Network.AWS.EMR.Types.AutoScalingPolicyStateChangeReasonCode (
+  AutoScalingPolicyStateChangeReasonCode (
+    ..
+    , CleanupFailure
+    , ProvisionFailure
+    , UserRequest
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data AutoScalingPolicyStateChangeReasonCode = CleanupFailure
-                                            | ProvisionFailure
-                                            | UserRequest
+
+data AutoScalingPolicyStateChangeReasonCode = AutoScalingPolicyStateChangeReasonCode' (CI
+                                                                                         Text)
                                                 deriving (Eq, Ord, Read, Show,
-                                                          Enum, Bounded, Data,
-                                                          Typeable, Generic)
+                                                          Data, Typeable,
+                                                          Generic)
+
+pattern CleanupFailure :: AutoScalingPolicyStateChangeReasonCode
+pattern CleanupFailure = AutoScalingPolicyStateChangeReasonCode' "CLEANUP_FAILURE"
+
+pattern ProvisionFailure :: AutoScalingPolicyStateChangeReasonCode
+pattern ProvisionFailure = AutoScalingPolicyStateChangeReasonCode' "PROVISION_FAILURE"
+
+pattern UserRequest :: AutoScalingPolicyStateChangeReasonCode
+pattern UserRequest = AutoScalingPolicyStateChangeReasonCode' "USER_REQUEST"
+
+{-# COMPLETE
+  CleanupFailure,
+  ProvisionFailure,
+  UserRequest,
+  AutoScalingPolicyStateChangeReasonCode' #-}
 
 instance FromText AutoScalingPolicyStateChangeReasonCode where
-    parser = takeLowerText >>= \case
-        "cleanup_failure" -> pure CleanupFailure
-        "provision_failure" -> pure ProvisionFailure
-        "user_request" -> pure UserRequest
-        e -> fromTextError $ "Failure parsing AutoScalingPolicyStateChangeReasonCode from value: '" <> e
-           <> "'. Accepted values: cleanup_failure, provision_failure, user_request"
+    parser = (AutoScalingPolicyStateChangeReasonCode' . mk) <$> takeText
 
 instance ToText AutoScalingPolicyStateChangeReasonCode where
-    toText = \case
-        CleanupFailure -> "CLEANUP_FAILURE"
-        ProvisionFailure -> "PROVISION_FAILURE"
-        UserRequest -> "USER_REQUEST"
+    toText (AutoScalingPolicyStateChangeReasonCode' ci) = original ci
+
+-- | Represents an enum of /known/ $AutoScalingPolicyStateChangeReasonCode.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum AutoScalingPolicyStateChangeReasonCode where
+    toEnum i = case i of
+        0 -> CleanupFailure
+        1 -> ProvisionFailure
+        2 -> UserRequest
+        _ -> (error . showText) $ "Unknown index for AutoScalingPolicyStateChangeReasonCode: " <> toText i
+    fromEnum x = case x of
+        CleanupFailure -> 0
+        ProvisionFailure -> 1
+        UserRequest -> 2
+        AutoScalingPolicyStateChangeReasonCode' name -> (error . showText) $ "Unknown AutoScalingPolicyStateChangeReasonCode: " <> original name
+
+-- | Represents the bounds of /known/ $AutoScalingPolicyStateChangeReasonCode.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded AutoScalingPolicyStateChangeReasonCode where
+    minBound = CleanupFailure
+    maxBound = UserRequest
 
 instance Hashable     AutoScalingPolicyStateChangeReasonCode
 instance NFData       AutoScalingPolicyStateChangeReasonCode

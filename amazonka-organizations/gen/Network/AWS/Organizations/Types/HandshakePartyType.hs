@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,29 +16,66 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.Organizations.Types.HandshakePartyType where
+module Network.AWS.Organizations.Types.HandshakePartyType (
+  HandshakePartyType (
+    ..
+    , HPTAccount
+    , HPTEmail
+    , HPTOrganization
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data HandshakePartyType = HPTAccount
-                        | HPTEmail
-                        | HPTOrganization
-                            deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                      Typeable, Generic)
+
+data HandshakePartyType = HandshakePartyType' (CI
+                                                 Text)
+                            deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                      Generic)
+
+pattern HPTAccount :: HandshakePartyType
+pattern HPTAccount = HandshakePartyType' "ACCOUNT"
+
+pattern HPTEmail :: HandshakePartyType
+pattern HPTEmail = HandshakePartyType' "EMAIL"
+
+pattern HPTOrganization :: HandshakePartyType
+pattern HPTOrganization = HandshakePartyType' "ORGANIZATION"
+
+{-# COMPLETE
+  HPTAccount,
+  HPTEmail,
+  HPTOrganization,
+  HandshakePartyType' #-}
 
 instance FromText HandshakePartyType where
-    parser = takeLowerText >>= \case
-        "account" -> pure HPTAccount
-        "email" -> pure HPTEmail
-        "organization" -> pure HPTOrganization
-        e -> fromTextError $ "Failure parsing HandshakePartyType from value: '" <> e
-           <> "'. Accepted values: account, email, organization"
+    parser = (HandshakePartyType' . mk) <$> takeText
 
 instance ToText HandshakePartyType where
-    toText = \case
-        HPTAccount -> "ACCOUNT"
-        HPTEmail -> "EMAIL"
-        HPTOrganization -> "ORGANIZATION"
+    toText (HandshakePartyType' ci) = original ci
+
+-- | Represents an enum of /known/ $HandshakePartyType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum HandshakePartyType where
+    toEnum i = case i of
+        0 -> HPTAccount
+        1 -> HPTEmail
+        2 -> HPTOrganization
+        _ -> (error . showText) $ "Unknown index for HandshakePartyType: " <> toText i
+    fromEnum x = case x of
+        HPTAccount -> 0
+        HPTEmail -> 1
+        HPTOrganization -> 2
+        HandshakePartyType' name -> (error . showText) $ "Unknown HandshakePartyType: " <> original name
+
+-- | Represents the bounds of /known/ $HandshakePartyType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded HandshakePartyType where
+    minBound = HPTAccount
+    maxBound = HPTOrganization
 
 instance Hashable     HandshakePartyType
 instance NFData       HandshakePartyType

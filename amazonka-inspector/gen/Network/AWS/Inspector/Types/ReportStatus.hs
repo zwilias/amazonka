@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,29 +16,65 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.Inspector.Types.ReportStatus where
+module Network.AWS.Inspector.Types.ReportStatus (
+  ReportStatus (
+    ..
+    , RSCompleted
+    , RSFailed
+    , RSWorkInProgress
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data ReportStatus = RSCompleted
-                  | RSFailed
-                  | RSWorkInProgress
-                      deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                Typeable, Generic)
+
+data ReportStatus = ReportStatus' (CI Text)
+                      deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                Generic)
+
+pattern RSCompleted :: ReportStatus
+pattern RSCompleted = ReportStatus' "COMPLETED"
+
+pattern RSFailed :: ReportStatus
+pattern RSFailed = ReportStatus' "FAILED"
+
+pattern RSWorkInProgress :: ReportStatus
+pattern RSWorkInProgress = ReportStatus' "WORK_IN_PROGRESS"
+
+{-# COMPLETE
+  RSCompleted,
+  RSFailed,
+  RSWorkInProgress,
+  ReportStatus' #-}
 
 instance FromText ReportStatus where
-    parser = takeLowerText >>= \case
-        "completed" -> pure RSCompleted
-        "failed" -> pure RSFailed
-        "work_in_progress" -> pure RSWorkInProgress
-        e -> fromTextError $ "Failure parsing ReportStatus from value: '" <> e
-           <> "'. Accepted values: completed, failed, work_in_progress"
+    parser = (ReportStatus' . mk) <$> takeText
 
 instance ToText ReportStatus where
-    toText = \case
-        RSCompleted -> "COMPLETED"
-        RSFailed -> "FAILED"
-        RSWorkInProgress -> "WORK_IN_PROGRESS"
+    toText (ReportStatus' ci) = original ci
+
+-- | Represents an enum of /known/ $ReportStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum ReportStatus where
+    toEnum i = case i of
+        0 -> RSCompleted
+        1 -> RSFailed
+        2 -> RSWorkInProgress
+        _ -> (error . showText) $ "Unknown index for ReportStatus: " <> toText i
+    fromEnum x = case x of
+        RSCompleted -> 0
+        RSFailed -> 1
+        RSWorkInProgress -> 2
+        ReportStatus' name -> (error . showText) $ "Unknown ReportStatus: " <> original name
+
+-- | Represents the bounds of /known/ $ReportStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded ReportStatus where
+    minBound = RSCompleted
+    maxBound = RSWorkInProgress
 
 instance Hashable     ReportStatus
 instance NFData       ReportStatus

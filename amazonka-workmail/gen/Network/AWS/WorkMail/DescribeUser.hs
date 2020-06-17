@@ -50,6 +50,7 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.WorkMail.Types
+import Network.AWS.WorkMail.Types.Product
 
 -- | /See:/ 'describeUser' smart constructor.
 data DescribeUser = DescribeUser'{_duOrganizationId

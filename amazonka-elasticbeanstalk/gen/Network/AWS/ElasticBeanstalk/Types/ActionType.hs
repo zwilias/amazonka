@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,29 +16,65 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.ElasticBeanstalk.Types.ActionType where
+module Network.AWS.ElasticBeanstalk.Types.ActionType (
+  ActionType (
+    ..
+    , InstanceRefresh
+    , PlatformUpdate
+    , Unknown
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data ActionType = InstanceRefresh
-                | PlatformUpdate
-                | Unknown
-                    deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                              Typeable, Generic)
+
+data ActionType = ActionType' (CI Text)
+                    deriving (Eq, Ord, Read, Show, Data, Typeable,
+                              Generic)
+
+pattern InstanceRefresh :: ActionType
+pattern InstanceRefresh = ActionType' "InstanceRefresh"
+
+pattern PlatformUpdate :: ActionType
+pattern PlatformUpdate = ActionType' "PlatformUpdate"
+
+pattern Unknown :: ActionType
+pattern Unknown = ActionType' "Unknown"
+
+{-# COMPLETE
+  InstanceRefresh,
+  PlatformUpdate,
+  Unknown,
+  ActionType' #-}
 
 instance FromText ActionType where
-    parser = takeLowerText >>= \case
-        "instancerefresh" -> pure InstanceRefresh
-        "platformupdate" -> pure PlatformUpdate
-        "unknown" -> pure Unknown
-        e -> fromTextError $ "Failure parsing ActionType from value: '" <> e
-           <> "'. Accepted values: instancerefresh, platformupdate, unknown"
+    parser = (ActionType' . mk) <$> takeText
 
 instance ToText ActionType where
-    toText = \case
-        InstanceRefresh -> "InstanceRefresh"
-        PlatformUpdate -> "PlatformUpdate"
-        Unknown -> "Unknown"
+    toText (ActionType' ci) = original ci
+
+-- | Represents an enum of /known/ $ActionType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum ActionType where
+    toEnum i = case i of
+        0 -> InstanceRefresh
+        1 -> PlatformUpdate
+        2 -> Unknown
+        _ -> (error . showText) $ "Unknown index for ActionType: " <> toText i
+    fromEnum x = case x of
+        InstanceRefresh -> 0
+        PlatformUpdate -> 1
+        Unknown -> 2
+        ActionType' name -> (error . showText) $ "Unknown ActionType: " <> original name
+
+-- | Represents the bounds of /known/ $ActionType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded ActionType where
+    minBound = InstanceRefresh
+    maxBound = Unknown
 
 instance Hashable     ActionType
 instance NFData       ActionType

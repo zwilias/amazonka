@@ -41,6 +41,7 @@ module Network.AWS.CloudTrail.ListTrails
     ) where
 
 import Network.AWS.CloudTrail.Types
+import Network.AWS.CloudTrail.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude

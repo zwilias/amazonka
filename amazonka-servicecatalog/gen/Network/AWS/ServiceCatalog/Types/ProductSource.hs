@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,23 +16,51 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.ServiceCatalog.Types.ProductSource where
+module Network.AWS.ServiceCatalog.Types.ProductSource (
+  ProductSource (
+    ..
+    , PSAccount
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data ProductSource = PSAccount
-                       deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                 Typeable, Generic)
+
+data ProductSource = ProductSource' (CI Text)
+                       deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                 Generic)
+
+pattern PSAccount :: ProductSource
+pattern PSAccount = ProductSource' "ACCOUNT"
+
+{-# COMPLETE
+  PSAccount,
+  ProductSource' #-}
 
 instance FromText ProductSource where
-    parser = takeLowerText >>= \case
-        "account" -> pure PSAccount
-        e -> fromTextError $ "Failure parsing ProductSource from value: '" <> e
-           <> "'. Accepted values: account"
+    parser = (ProductSource' . mk) <$> takeText
 
 instance ToText ProductSource where
-    toText = \case
-        PSAccount -> "ACCOUNT"
+    toText (ProductSource' ci) = original ci
+
+-- | Represents an enum of /known/ $ProductSource.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum ProductSource where
+    toEnum i = case i of
+        0 -> PSAccount
+        _ -> (error . showText) $ "Unknown index for ProductSource: " <> toText i
+    fromEnum x = case x of
+        PSAccount -> 0
+        ProductSource' name -> (error . showText) $ "Unknown ProductSource: " <> original name
+
+-- | Represents the bounds of /known/ $ProductSource.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded ProductSource where
+    minBound = PSAccount
+    maxBound = PSAccount
 
 instance Hashable     ProductSource
 instance NFData       ProductSource

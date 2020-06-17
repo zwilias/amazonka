@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,32 +16,72 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.Kinesis.Types.StreamStatus where
+module Network.AWS.Kinesis.Types.StreamStatus (
+  StreamStatus (
+    ..
+    , Active
+    , Creating
+    , Deleting
+    , Updating
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data StreamStatus = Active
-                  | Creating
-                  | Deleting
-                  | Updating
-                      deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                Typeable, Generic)
+
+data StreamStatus = StreamStatus' (CI Text)
+                      deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                Generic)
+
+pattern Active :: StreamStatus
+pattern Active = StreamStatus' "ACTIVE"
+
+pattern Creating :: StreamStatus
+pattern Creating = StreamStatus' "CREATING"
+
+pattern Deleting :: StreamStatus
+pattern Deleting = StreamStatus' "DELETING"
+
+pattern Updating :: StreamStatus
+pattern Updating = StreamStatus' "UPDATING"
+
+{-# COMPLETE
+  Active,
+  Creating,
+  Deleting,
+  Updating,
+  StreamStatus' #-}
 
 instance FromText StreamStatus where
-    parser = takeLowerText >>= \case
-        "active" -> pure Active
-        "creating" -> pure Creating
-        "deleting" -> pure Deleting
-        "updating" -> pure Updating
-        e -> fromTextError $ "Failure parsing StreamStatus from value: '" <> e
-           <> "'. Accepted values: active, creating, deleting, updating"
+    parser = (StreamStatus' . mk) <$> takeText
 
 instance ToText StreamStatus where
-    toText = \case
-        Active -> "ACTIVE"
-        Creating -> "CREATING"
-        Deleting -> "DELETING"
-        Updating -> "UPDATING"
+    toText (StreamStatus' ci) = original ci
+
+-- | Represents an enum of /known/ $StreamStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum StreamStatus where
+    toEnum i = case i of
+        0 -> Active
+        1 -> Creating
+        2 -> Deleting
+        3 -> Updating
+        _ -> (error . showText) $ "Unknown index for StreamStatus: " <> toText i
+    fromEnum x = case x of
+        Active -> 0
+        Creating -> 1
+        Deleting -> 2
+        Updating -> 3
+        StreamStatus' name -> (error . showText) $ "Unknown StreamStatus: " <> original name
+
+-- | Represents the bounds of /known/ $StreamStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded StreamStatus where
+    minBound = Active
+    maxBound = Updating
 
 instance Hashable     StreamStatus
 instance NFData       StreamStatus

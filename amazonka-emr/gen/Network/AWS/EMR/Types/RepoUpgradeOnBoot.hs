@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,58 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.EMR.Types.RepoUpgradeOnBoot where
+module Network.AWS.EMR.Types.RepoUpgradeOnBoot (
+  RepoUpgradeOnBoot (
+    ..
+    , RUOBNone
+    , RUOBSecurity
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data RepoUpgradeOnBoot = RUOBNone
-                       | RUOBSecurity
-                           deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                     Typeable, Generic)
+
+data RepoUpgradeOnBoot = RepoUpgradeOnBoot' (CI Text)
+                           deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                     Generic)
+
+pattern RUOBNone :: RepoUpgradeOnBoot
+pattern RUOBNone = RepoUpgradeOnBoot' "NONE"
+
+pattern RUOBSecurity :: RepoUpgradeOnBoot
+pattern RUOBSecurity = RepoUpgradeOnBoot' "SECURITY"
+
+{-# COMPLETE
+  RUOBNone,
+  RUOBSecurity,
+  RepoUpgradeOnBoot' #-}
 
 instance FromText RepoUpgradeOnBoot where
-    parser = takeLowerText >>= \case
-        "none" -> pure RUOBNone
-        "security" -> pure RUOBSecurity
-        e -> fromTextError $ "Failure parsing RepoUpgradeOnBoot from value: '" <> e
-           <> "'. Accepted values: none, security"
+    parser = (RepoUpgradeOnBoot' . mk) <$> takeText
 
 instance ToText RepoUpgradeOnBoot where
-    toText = \case
-        RUOBNone -> "NONE"
-        RUOBSecurity -> "SECURITY"
+    toText (RepoUpgradeOnBoot' ci) = original ci
+
+-- | Represents an enum of /known/ $RepoUpgradeOnBoot.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum RepoUpgradeOnBoot where
+    toEnum i = case i of
+        0 -> RUOBNone
+        1 -> RUOBSecurity
+        _ -> (error . showText) $ "Unknown index for RepoUpgradeOnBoot: " <> toText i
+    fromEnum x = case x of
+        RUOBNone -> 0
+        RUOBSecurity -> 1
+        RepoUpgradeOnBoot' name -> (error . showText) $ "Unknown RepoUpgradeOnBoot: " <> original name
+
+-- | Represents the bounds of /known/ $RepoUpgradeOnBoot.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded RepoUpgradeOnBoot where
+    minBound = RUOBNone
+    maxBound = RUOBSecurity
 
 instance Hashable     RepoUpgradeOnBoot
 instance NFData       RepoUpgradeOnBoot

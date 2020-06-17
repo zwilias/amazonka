@@ -47,6 +47,7 @@ module Network.AWS.DMS.DescribeTableStatistics
     ) where
 
 import Network.AWS.DMS.Types
+import Network.AWS.DMS.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude

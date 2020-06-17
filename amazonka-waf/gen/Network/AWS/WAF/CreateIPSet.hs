@@ -58,6 +58,7 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.WAF.Types
+import Network.AWS.WAF.Types.Product
 
 -- | /See:/ 'createIPSet' smart constructor.
 data CreateIPSet = CreateIPSet'{_cisName :: !Text,

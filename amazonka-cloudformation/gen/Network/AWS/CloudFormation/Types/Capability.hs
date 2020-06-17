@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,58 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.CloudFormation.Types.Capability where
+module Network.AWS.CloudFormation.Types.Capability (
+  Capability (
+    ..
+    , CapabilityIAM
+    , CapabilityNamedIAM
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data Capability = CapabilityIAM
-                | CapabilityNamedIAM
-                    deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                              Typeable, Generic)
+
+data Capability = Capability' (CI Text)
+                    deriving (Eq, Ord, Read, Show, Data, Typeable,
+                              Generic)
+
+pattern CapabilityIAM :: Capability
+pattern CapabilityIAM = Capability' "CAPABILITY_IAM"
+
+pattern CapabilityNamedIAM :: Capability
+pattern CapabilityNamedIAM = Capability' "CAPABILITY_NAMED_IAM"
+
+{-# COMPLETE
+  CapabilityIAM,
+  CapabilityNamedIAM,
+  Capability' #-}
 
 instance FromText Capability where
-    parser = takeLowerText >>= \case
-        "capability_iam" -> pure CapabilityIAM
-        "capability_named_iam" -> pure CapabilityNamedIAM
-        e -> fromTextError $ "Failure parsing Capability from value: '" <> e
-           <> "'. Accepted values: capability_iam, capability_named_iam"
+    parser = (Capability' . mk) <$> takeText
 
 instance ToText Capability where
-    toText = \case
-        CapabilityIAM -> "CAPABILITY_IAM"
-        CapabilityNamedIAM -> "CAPABILITY_NAMED_IAM"
+    toText (Capability' ci) = original ci
+
+-- | Represents an enum of /known/ $Capability.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum Capability where
+    toEnum i = case i of
+        0 -> CapabilityIAM
+        1 -> CapabilityNamedIAM
+        _ -> (error . showText) $ "Unknown index for Capability: " <> toText i
+    fromEnum x = case x of
+        CapabilityIAM -> 0
+        CapabilityNamedIAM -> 1
+        Capability' name -> (error . showText) $ "Unknown Capability: " <> original name
+
+-- | Represents the bounds of /known/ $Capability.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded Capability where
+    minBound = CapabilityIAM
+    maxBound = CapabilityNamedIAM
 
 instance Hashable     Capability
 instance NFData       Capability

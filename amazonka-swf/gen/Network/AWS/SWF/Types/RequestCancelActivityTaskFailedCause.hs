@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,27 +16,59 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.SWF.Types.RequestCancelActivityTaskFailedCause where
+module Network.AWS.SWF.Types.RequestCancelActivityTaskFailedCause (
+  RequestCancelActivityTaskFailedCause (
+    ..
+    , RCATFCActivityIdUnknown
+    , RCATFCOperationNotPermitted
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data RequestCancelActivityTaskFailedCause = RCATFCActivityIdUnknown
-                                          | RCATFCOperationNotPermitted
+
+data RequestCancelActivityTaskFailedCause = RequestCancelActivityTaskFailedCause' (CI
+                                                                                     Text)
                                               deriving (Eq, Ord, Read, Show,
-                                                        Enum, Bounded, Data,
-                                                        Typeable, Generic)
+                                                        Data, Typeable, Generic)
+
+pattern RCATFCActivityIdUnknown :: RequestCancelActivityTaskFailedCause
+pattern RCATFCActivityIdUnknown = RequestCancelActivityTaskFailedCause' "ACTIVITY_ID_UNKNOWN"
+
+pattern RCATFCOperationNotPermitted :: RequestCancelActivityTaskFailedCause
+pattern RCATFCOperationNotPermitted = RequestCancelActivityTaskFailedCause' "OPERATION_NOT_PERMITTED"
+
+{-# COMPLETE
+  RCATFCActivityIdUnknown,
+  RCATFCOperationNotPermitted,
+  RequestCancelActivityTaskFailedCause' #-}
 
 instance FromText RequestCancelActivityTaskFailedCause where
-    parser = takeLowerText >>= \case
-        "activity_id_unknown" -> pure RCATFCActivityIdUnknown
-        "operation_not_permitted" -> pure RCATFCOperationNotPermitted
-        e -> fromTextError $ "Failure parsing RequestCancelActivityTaskFailedCause from value: '" <> e
-           <> "'. Accepted values: activity_id_unknown, operation_not_permitted"
+    parser = (RequestCancelActivityTaskFailedCause' . mk) <$> takeText
 
 instance ToText RequestCancelActivityTaskFailedCause where
-    toText = \case
-        RCATFCActivityIdUnknown -> "ACTIVITY_ID_UNKNOWN"
-        RCATFCOperationNotPermitted -> "OPERATION_NOT_PERMITTED"
+    toText (RequestCancelActivityTaskFailedCause' ci) = original ci
+
+-- | Represents an enum of /known/ $RequestCancelActivityTaskFailedCause.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum RequestCancelActivityTaskFailedCause where
+    toEnum i = case i of
+        0 -> RCATFCActivityIdUnknown
+        1 -> RCATFCOperationNotPermitted
+        _ -> (error . showText) $ "Unknown index for RequestCancelActivityTaskFailedCause: " <> toText i
+    fromEnum x = case x of
+        RCATFCActivityIdUnknown -> 0
+        RCATFCOperationNotPermitted -> 1
+        RequestCancelActivityTaskFailedCause' name -> (error . showText) $ "Unknown RequestCancelActivityTaskFailedCause: " <> original name
+
+-- | Represents the bounds of /known/ $RequestCancelActivityTaskFailedCause.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded RequestCancelActivityTaskFailedCause where
+    minBound = RCATFCActivityIdUnknown
+    maxBound = RCATFCOperationNotPermitted
 
 instance Hashable     RequestCancelActivityTaskFailedCause
 instance NFData       RequestCancelActivityTaskFailedCause

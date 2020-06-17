@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,58 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.CloudFormation.Types.ChangeSetType where
+module Network.AWS.CloudFormation.Types.ChangeSetType (
+  ChangeSetType (
+    ..
+    , Create
+    , Update
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data ChangeSetType = Create
-                   | Update
-                       deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                 Typeable, Generic)
+
+data ChangeSetType = ChangeSetType' (CI Text)
+                       deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                 Generic)
+
+pattern Create :: ChangeSetType
+pattern Create = ChangeSetType' "CREATE"
+
+pattern Update :: ChangeSetType
+pattern Update = ChangeSetType' "UPDATE"
+
+{-# COMPLETE
+  Create,
+  Update,
+  ChangeSetType' #-}
 
 instance FromText ChangeSetType where
-    parser = takeLowerText >>= \case
-        "create" -> pure Create
-        "update" -> pure Update
-        e -> fromTextError $ "Failure parsing ChangeSetType from value: '" <> e
-           <> "'. Accepted values: create, update"
+    parser = (ChangeSetType' . mk) <$> takeText
 
 instance ToText ChangeSetType where
-    toText = \case
-        Create -> "CREATE"
-        Update -> "UPDATE"
+    toText (ChangeSetType' ci) = original ci
+
+-- | Represents an enum of /known/ $ChangeSetType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum ChangeSetType where
+    toEnum i = case i of
+        0 -> Create
+        1 -> Update
+        _ -> (error . showText) $ "Unknown index for ChangeSetType: " <> toText i
+    fromEnum x = case x of
+        Create -> 0
+        Update -> 1
+        ChangeSetType' name -> (error . showText) $ "Unknown ChangeSetType: " <> original name
+
+-- | Represents the bounds of /known/ $ChangeSetType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded ChangeSetType where
+    minBound = Create
+    maxBound = Update
 
 instance Hashable     ChangeSetType
 instance NFData       ChangeSetType

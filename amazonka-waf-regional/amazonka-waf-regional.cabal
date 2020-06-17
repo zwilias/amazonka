@@ -148,6 +148,7 @@ library
         , Network.AWS.WAFRegional.Types.PositionalConstraint
         , Network.AWS.WAFRegional.Types.Predicate
         , Network.AWS.WAFRegional.Types.PredicateType
+        , Network.AWS.WAFRegional.Types.Product
         , Network.AWS.WAFRegional.Types.RateBasedRule
         , Network.AWS.WAFRegional.Types.RateKey
         , Network.AWS.WAFRegional.Types.RegexMatchSet
@@ -191,6 +192,7 @@ library
     build-depends:
           amazonka-core == 1.6.1.*
         , base          >= 4.7     && < 5
+        , case-insensitive
 
 test-suite amazonka-waf-regional-test
     type:              exitcode-stdio-1.0
@@ -214,6 +216,7 @@ test-suite amazonka-waf-regional-test
         , amazonka-waf-regional
         , base
         , bytestring
+        , case-insensitive
         , tasty
         , tasty-hunit
         , text

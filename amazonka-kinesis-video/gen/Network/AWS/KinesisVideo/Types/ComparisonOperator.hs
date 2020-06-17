@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,23 +16,52 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.KinesisVideo.Types.ComparisonOperator where
+module Network.AWS.KinesisVideo.Types.ComparisonOperator (
+  ComparisonOperator (
+    ..
+    , BeginsWith
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data ComparisonOperator = BeginsWith
-                            deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                      Typeable, Generic)
+
+data ComparisonOperator = ComparisonOperator' (CI
+                                                 Text)
+                            deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                      Generic)
+
+pattern BeginsWith :: ComparisonOperator
+pattern BeginsWith = ComparisonOperator' "BEGINS_WITH"
+
+{-# COMPLETE
+  BeginsWith,
+  ComparisonOperator' #-}
 
 instance FromText ComparisonOperator where
-    parser = takeLowerText >>= \case
-        "begins_with" -> pure BeginsWith
-        e -> fromTextError $ "Failure parsing ComparisonOperator from value: '" <> e
-           <> "'. Accepted values: begins_with"
+    parser = (ComparisonOperator' . mk) <$> takeText
 
 instance ToText ComparisonOperator where
-    toText = \case
-        BeginsWith -> "BEGINS_WITH"
+    toText (ComparisonOperator' ci) = original ci
+
+-- | Represents an enum of /known/ $ComparisonOperator.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum ComparisonOperator where
+    toEnum i = case i of
+        0 -> BeginsWith
+        _ -> (error . showText) $ "Unknown index for ComparisonOperator: " <> toText i
+    fromEnum x = case x of
+        BeginsWith -> 0
+        ComparisonOperator' name -> (error . showText) $ "Unknown ComparisonOperator: " <> original name
+
+-- | Represents the bounds of /known/ $ComparisonOperator.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded ComparisonOperator where
+    minBound = BeginsWith
+    maxBound = BeginsWith
 
 instance Hashable     ComparisonOperator
 instance NFData       ComparisonOperator

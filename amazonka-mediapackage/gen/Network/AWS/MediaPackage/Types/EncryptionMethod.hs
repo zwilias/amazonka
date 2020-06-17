@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,58 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.MediaPackage.Types.EncryptionMethod where
+module Network.AWS.MediaPackage.Types.EncryptionMethod (
+  EncryptionMethod (
+    ..
+    , AES128
+    , SampleAES
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data EncryptionMethod = AES128
-                      | SampleAES
-                          deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                    Typeable, Generic)
+
+data EncryptionMethod = EncryptionMethod' (CI Text)
+                          deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                    Generic)
+
+pattern AES128 :: EncryptionMethod
+pattern AES128 = EncryptionMethod' "AES_128"
+
+pattern SampleAES :: EncryptionMethod
+pattern SampleAES = EncryptionMethod' "SAMPLE_AES"
+
+{-# COMPLETE
+  AES128,
+  SampleAES,
+  EncryptionMethod' #-}
 
 instance FromText EncryptionMethod where
-    parser = takeLowerText >>= \case
-        "aes_128" -> pure AES128
-        "sample_aes" -> pure SampleAES
-        e -> fromTextError $ "Failure parsing EncryptionMethod from value: '" <> e
-           <> "'. Accepted values: aes_128, sample_aes"
+    parser = (EncryptionMethod' . mk) <$> takeText
 
 instance ToText EncryptionMethod where
-    toText = \case
-        AES128 -> "AES_128"
-        SampleAES -> "SAMPLE_AES"
+    toText (EncryptionMethod' ci) = original ci
+
+-- | Represents an enum of /known/ $EncryptionMethod.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum EncryptionMethod where
+    toEnum i = case i of
+        0 -> AES128
+        1 -> SampleAES
+        _ -> (error . showText) $ "Unknown index for EncryptionMethod: " <> toText i
+    fromEnum x = case x of
+        AES128 -> 0
+        SampleAES -> 1
+        EncryptionMethod' name -> (error . showText) $ "Unknown EncryptionMethod: " <> original name
+
+-- | Represents the bounds of /known/ $EncryptionMethod.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded EncryptionMethod where
+    minBound = AES128
+    maxBound = SampleAES
 
 instance Hashable     EncryptionMethod
 instance NFData       EncryptionMethod

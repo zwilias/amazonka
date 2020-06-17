@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,59 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.AutoScalingPlans.Types.PredictiveScalingMode where
+module Network.AWS.AutoScalingPlans.Types.PredictiveScalingMode (
+  PredictiveScalingMode (
+    ..
+    , ForecastAndScale
+    , ForecastOnly
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data PredictiveScalingMode = ForecastAndScale
-                           | ForecastOnly
-                               deriving (Eq, Ord, Read, Show, Enum, Bounded,
-                                         Data, Typeable, Generic)
+
+data PredictiveScalingMode = PredictiveScalingMode' (CI
+                                                       Text)
+                               deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                         Generic)
+
+pattern ForecastAndScale :: PredictiveScalingMode
+pattern ForecastAndScale = PredictiveScalingMode' "ForecastAndScale"
+
+pattern ForecastOnly :: PredictiveScalingMode
+pattern ForecastOnly = PredictiveScalingMode' "ForecastOnly"
+
+{-# COMPLETE
+  ForecastAndScale,
+  ForecastOnly,
+  PredictiveScalingMode' #-}
 
 instance FromText PredictiveScalingMode where
-    parser = takeLowerText >>= \case
-        "forecastandscale" -> pure ForecastAndScale
-        "forecastonly" -> pure ForecastOnly
-        e -> fromTextError $ "Failure parsing PredictiveScalingMode from value: '" <> e
-           <> "'. Accepted values: forecastandscale, forecastonly"
+    parser = (PredictiveScalingMode' . mk) <$> takeText
 
 instance ToText PredictiveScalingMode where
-    toText = \case
-        ForecastAndScale -> "ForecastAndScale"
-        ForecastOnly -> "ForecastOnly"
+    toText (PredictiveScalingMode' ci) = original ci
+
+-- | Represents an enum of /known/ $PredictiveScalingMode.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum PredictiveScalingMode where
+    toEnum i = case i of
+        0 -> ForecastAndScale
+        1 -> ForecastOnly
+        _ -> (error . showText) $ "Unknown index for PredictiveScalingMode: " <> toText i
+    fromEnum x = case x of
+        ForecastAndScale -> 0
+        ForecastOnly -> 1
+        PredictiveScalingMode' name -> (error . showText) $ "Unknown PredictiveScalingMode: " <> original name
+
+-- | Represents the bounds of /known/ $PredictiveScalingMode.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded PredictiveScalingMode where
+    minBound = ForecastAndScale
+    maxBound = ForecastOnly
 
 instance Hashable     PredictiveScalingMode
 instance NFData       PredictiveScalingMode

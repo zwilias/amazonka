@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,29 +16,65 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.DMS.Types.EncodingTypeValue where
+module Network.AWS.DMS.Types.EncodingTypeValue (
+  EncodingTypeValue (
+    ..
+    , Plain
+    , PlainDictionary
+    , RleDictionary
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data EncodingTypeValue = Plain
-                       | PlainDictionary
-                       | RleDictionary
-                           deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                     Typeable, Generic)
+
+data EncodingTypeValue = EncodingTypeValue' (CI Text)
+                           deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                     Generic)
+
+pattern Plain :: EncodingTypeValue
+pattern Plain = EncodingTypeValue' "plain"
+
+pattern PlainDictionary :: EncodingTypeValue
+pattern PlainDictionary = EncodingTypeValue' "plain-dictionary"
+
+pattern RleDictionary :: EncodingTypeValue
+pattern RleDictionary = EncodingTypeValue' "rle-dictionary"
+
+{-# COMPLETE
+  Plain,
+  PlainDictionary,
+  RleDictionary,
+  EncodingTypeValue' #-}
 
 instance FromText EncodingTypeValue where
-    parser = takeLowerText >>= \case
-        "plain" -> pure Plain
-        "plain-dictionary" -> pure PlainDictionary
-        "rle-dictionary" -> pure RleDictionary
-        e -> fromTextError $ "Failure parsing EncodingTypeValue from value: '" <> e
-           <> "'. Accepted values: plain, plain-dictionary, rle-dictionary"
+    parser = (EncodingTypeValue' . mk) <$> takeText
 
 instance ToText EncodingTypeValue where
-    toText = \case
-        Plain -> "plain"
-        PlainDictionary -> "plain-dictionary"
-        RleDictionary -> "rle-dictionary"
+    toText (EncodingTypeValue' ci) = original ci
+
+-- | Represents an enum of /known/ $EncodingTypeValue.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum EncodingTypeValue where
+    toEnum i = case i of
+        0 -> Plain
+        1 -> PlainDictionary
+        2 -> RleDictionary
+        _ -> (error . showText) $ "Unknown index for EncodingTypeValue: " <> toText i
+    fromEnum x = case x of
+        Plain -> 0
+        PlainDictionary -> 1
+        RleDictionary -> 2
+        EncodingTypeValue' name -> (error . showText) $ "Unknown EncodingTypeValue: " <> original name
+
+-- | Represents the bounds of /known/ $EncodingTypeValue.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded EncodingTypeValue where
+    minBound = Plain
+    maxBound = RleDictionary
 
 instance Hashable     EncodingTypeValue
 instance NFData       EncodingTypeValue

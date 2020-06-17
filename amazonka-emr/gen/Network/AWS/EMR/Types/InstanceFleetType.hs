@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,29 +16,65 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.EMR.Types.InstanceFleetType where
+module Network.AWS.EMR.Types.InstanceFleetType (
+  InstanceFleetType (
+    ..
+    , IFTCore
+    , IFTMaster
+    , IFTTask
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data InstanceFleetType = IFTCore
-                       | IFTMaster
-                       | IFTTask
-                           deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                     Typeable, Generic)
+
+data InstanceFleetType = InstanceFleetType' (CI Text)
+                           deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                     Generic)
+
+pattern IFTCore :: InstanceFleetType
+pattern IFTCore = InstanceFleetType' "CORE"
+
+pattern IFTMaster :: InstanceFleetType
+pattern IFTMaster = InstanceFleetType' "MASTER"
+
+pattern IFTTask :: InstanceFleetType
+pattern IFTTask = InstanceFleetType' "TASK"
+
+{-# COMPLETE
+  IFTCore,
+  IFTMaster,
+  IFTTask,
+  InstanceFleetType' #-}
 
 instance FromText InstanceFleetType where
-    parser = takeLowerText >>= \case
-        "core" -> pure IFTCore
-        "master" -> pure IFTMaster
-        "task" -> pure IFTTask
-        e -> fromTextError $ "Failure parsing InstanceFleetType from value: '" <> e
-           <> "'. Accepted values: core, master, task"
+    parser = (InstanceFleetType' . mk) <$> takeText
 
 instance ToText InstanceFleetType where
-    toText = \case
-        IFTCore -> "CORE"
-        IFTMaster -> "MASTER"
-        IFTTask -> "TASK"
+    toText (InstanceFleetType' ci) = original ci
+
+-- | Represents an enum of /known/ $InstanceFleetType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum InstanceFleetType where
+    toEnum i = case i of
+        0 -> IFTCore
+        1 -> IFTMaster
+        2 -> IFTTask
+        _ -> (error . showText) $ "Unknown index for InstanceFleetType: " <> toText i
+    fromEnum x = case x of
+        IFTCore -> 0
+        IFTMaster -> 1
+        IFTTask -> 2
+        InstanceFleetType' name -> (error . showText) $ "Unknown InstanceFleetType: " <> original name
+
+-- | Represents the bounds of /known/ $InstanceFleetType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded InstanceFleetType where
+    minBound = IFTCore
+    maxBound = IFTTask
 
 instance Hashable     InstanceFleetType
 instance NFData       InstanceFleetType

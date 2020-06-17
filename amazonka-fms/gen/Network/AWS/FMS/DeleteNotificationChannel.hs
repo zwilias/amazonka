@@ -33,6 +33,7 @@ module Network.AWS.FMS.DeleteNotificationChannel
     ) where
 
 import Network.AWS.FMS.Types
+import Network.AWS.FMS.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request

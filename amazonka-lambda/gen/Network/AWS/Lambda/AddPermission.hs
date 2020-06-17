@@ -52,6 +52,7 @@ module Network.AWS.Lambda.AddPermission
     ) where
 
 import Network.AWS.Lambda.Types
+import Network.AWS.Lambda.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request

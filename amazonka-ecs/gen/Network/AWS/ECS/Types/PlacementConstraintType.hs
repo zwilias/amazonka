@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,59 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.ECS.Types.PlacementConstraintType where
+module Network.AWS.ECS.Types.PlacementConstraintType (
+  PlacementConstraintType (
+    ..
+    , PCTDistinctInstance
+    , PCTMemberOf
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data PlacementConstraintType = PCTDistinctInstance
-                             | PCTMemberOf
-                                 deriving (Eq, Ord, Read, Show, Enum, Bounded,
-                                           Data, Typeable, Generic)
+
+data PlacementConstraintType = PlacementConstraintType' (CI
+                                                           Text)
+                                 deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                           Generic)
+
+pattern PCTDistinctInstance :: PlacementConstraintType
+pattern PCTDistinctInstance = PlacementConstraintType' "distinctInstance"
+
+pattern PCTMemberOf :: PlacementConstraintType
+pattern PCTMemberOf = PlacementConstraintType' "memberOf"
+
+{-# COMPLETE
+  PCTDistinctInstance,
+  PCTMemberOf,
+  PlacementConstraintType' #-}
 
 instance FromText PlacementConstraintType where
-    parser = takeLowerText >>= \case
-        "distinctinstance" -> pure PCTDistinctInstance
-        "memberof" -> pure PCTMemberOf
-        e -> fromTextError $ "Failure parsing PlacementConstraintType from value: '" <> e
-           <> "'. Accepted values: distinctinstance, memberof"
+    parser = (PlacementConstraintType' . mk) <$> takeText
 
 instance ToText PlacementConstraintType where
-    toText = \case
-        PCTDistinctInstance -> "distinctInstance"
-        PCTMemberOf -> "memberOf"
+    toText (PlacementConstraintType' ci) = original ci
+
+-- | Represents an enum of /known/ $PlacementConstraintType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum PlacementConstraintType where
+    toEnum i = case i of
+        0 -> PCTDistinctInstance
+        1 -> PCTMemberOf
+        _ -> (error . showText) $ "Unknown index for PlacementConstraintType: " <> toText i
+    fromEnum x = case x of
+        PCTDistinctInstance -> 0
+        PCTMemberOf -> 1
+        PlacementConstraintType' name -> (error . showText) $ "Unknown PlacementConstraintType: " <> original name
+
+-- | Represents the bounds of /known/ $PlacementConstraintType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded PlacementConstraintType where
+    minBound = PCTDistinctInstance
+    maxBound = PCTMemberOf
 
 instance Hashable     PlacementConstraintType
 instance NFData       PlacementConstraintType

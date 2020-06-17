@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,33 +16,73 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.CodeCommit.Types.ConflictResolutionStrategyTypeEnum where
+module Network.AWS.CodeCommit.Types.ConflictResolutionStrategyTypeEnum (
+  ConflictResolutionStrategyTypeEnum (
+    ..
+    , AcceptDestination
+    , AcceptSource
+    , Automerge
+    , None
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data ConflictResolutionStrategyTypeEnum = AcceptDestination
-                                        | AcceptSource
-                                        | Automerge
-                                        | None
-                                            deriving (Eq, Ord, Read, Show, Enum,
-                                                      Bounded, Data, Typeable,
-                                                      Generic)
+
+data ConflictResolutionStrategyTypeEnum = ConflictResolutionStrategyTypeEnum' (CI
+                                                                                 Text)
+                                            deriving (Eq, Ord, Read, Show, Data,
+                                                      Typeable, Generic)
+
+pattern AcceptDestination :: ConflictResolutionStrategyTypeEnum
+pattern AcceptDestination = ConflictResolutionStrategyTypeEnum' "ACCEPT_DESTINATION"
+
+pattern AcceptSource :: ConflictResolutionStrategyTypeEnum
+pattern AcceptSource = ConflictResolutionStrategyTypeEnum' "ACCEPT_SOURCE"
+
+pattern Automerge :: ConflictResolutionStrategyTypeEnum
+pattern Automerge = ConflictResolutionStrategyTypeEnum' "AUTOMERGE"
+
+pattern None :: ConflictResolutionStrategyTypeEnum
+pattern None = ConflictResolutionStrategyTypeEnum' "NONE"
+
+{-# COMPLETE
+  AcceptDestination,
+  AcceptSource,
+  Automerge,
+  None,
+  ConflictResolutionStrategyTypeEnum' #-}
 
 instance FromText ConflictResolutionStrategyTypeEnum where
-    parser = takeLowerText >>= \case
-        "accept_destination" -> pure AcceptDestination
-        "accept_source" -> pure AcceptSource
-        "automerge" -> pure Automerge
-        "none" -> pure None
-        e -> fromTextError $ "Failure parsing ConflictResolutionStrategyTypeEnum from value: '" <> e
-           <> "'. Accepted values: accept_destination, accept_source, automerge, none"
+    parser = (ConflictResolutionStrategyTypeEnum' . mk) <$> takeText
 
 instance ToText ConflictResolutionStrategyTypeEnum where
-    toText = \case
-        AcceptDestination -> "ACCEPT_DESTINATION"
-        AcceptSource -> "ACCEPT_SOURCE"
-        Automerge -> "AUTOMERGE"
-        None -> "NONE"
+    toText (ConflictResolutionStrategyTypeEnum' ci) = original ci
+
+-- | Represents an enum of /known/ $ConflictResolutionStrategyTypeEnum.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum ConflictResolutionStrategyTypeEnum where
+    toEnum i = case i of
+        0 -> AcceptDestination
+        1 -> AcceptSource
+        2 -> Automerge
+        3 -> None
+        _ -> (error . showText) $ "Unknown index for ConflictResolutionStrategyTypeEnum: " <> toText i
+    fromEnum x = case x of
+        AcceptDestination -> 0
+        AcceptSource -> 1
+        Automerge -> 2
+        None -> 3
+        ConflictResolutionStrategyTypeEnum' name -> (error . showText) $ "Unknown ConflictResolutionStrategyTypeEnum: " <> original name
+
+-- | Represents the bounds of /known/ $ConflictResolutionStrategyTypeEnum.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded ConflictResolutionStrategyTypeEnum where
+    minBound = AcceptDestination
+    maxBound = None
 
 instance Hashable     ConflictResolutionStrategyTypeEnum
 instance NFData       ConflictResolutionStrategyTypeEnum

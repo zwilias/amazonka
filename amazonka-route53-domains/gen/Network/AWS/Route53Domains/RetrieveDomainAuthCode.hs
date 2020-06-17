@@ -42,6 +42,7 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.Route53Domains.Types
+import Network.AWS.Route53Domains.Types.Product
 
 -- | A request for the authorization code for the specified domain. To transfer a domain to another registrar, you provide this value to the new registrar.
 --

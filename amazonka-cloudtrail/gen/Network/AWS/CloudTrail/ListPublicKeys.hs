@@ -43,6 +43,7 @@ module Network.AWS.CloudTrail.ListPublicKeys
     ) where
 
 import Network.AWS.CloudTrail.Types
+import Network.AWS.CloudTrail.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude

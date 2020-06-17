@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,27 +16,60 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.MediaConvert.Types.HlsIFrameOnlyManifest where
+module Network.AWS.MediaConvert.Types.HlsIFrameOnlyManifest (
+  HlsIFrameOnlyManifest (
+    ..
+    , HIFOMExclude
+    , HIFOMInclude
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
+
 -- | When set to INCLUDE, writes I-Frame Only Manifest in addition to the HLS manifest
-data HlsIFrameOnlyManifest = HIFOMExclude
-                           | HIFOMInclude
-                               deriving (Eq, Ord, Read, Show, Enum, Bounded,
-                                         Data, Typeable, Generic)
+data HlsIFrameOnlyManifest = HlsIFrameOnlyManifest' (CI
+                                                       Text)
+                               deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                         Generic)
+
+pattern HIFOMExclude :: HlsIFrameOnlyManifest
+pattern HIFOMExclude = HlsIFrameOnlyManifest' "EXCLUDE"
+
+pattern HIFOMInclude :: HlsIFrameOnlyManifest
+pattern HIFOMInclude = HlsIFrameOnlyManifest' "INCLUDE"
+
+{-# COMPLETE
+  HIFOMExclude,
+  HIFOMInclude,
+  HlsIFrameOnlyManifest' #-}
 
 instance FromText HlsIFrameOnlyManifest where
-    parser = takeLowerText >>= \case
-        "exclude" -> pure HIFOMExclude
-        "include" -> pure HIFOMInclude
-        e -> fromTextError $ "Failure parsing HlsIFrameOnlyManifest from value: '" <> e
-           <> "'. Accepted values: exclude, include"
+    parser = (HlsIFrameOnlyManifest' . mk) <$> takeText
 
 instance ToText HlsIFrameOnlyManifest where
-    toText = \case
-        HIFOMExclude -> "EXCLUDE"
-        HIFOMInclude -> "INCLUDE"
+    toText (HlsIFrameOnlyManifest' ci) = original ci
+
+-- | Represents an enum of /known/ $HlsIFrameOnlyManifest.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum HlsIFrameOnlyManifest where
+    toEnum i = case i of
+        0 -> HIFOMExclude
+        1 -> HIFOMInclude
+        _ -> (error . showText) $ "Unknown index for HlsIFrameOnlyManifest: " <> toText i
+    fromEnum x = case x of
+        HIFOMExclude -> 0
+        HIFOMInclude -> 1
+        HlsIFrameOnlyManifest' name -> (error . showText) $ "Unknown HlsIFrameOnlyManifest: " <> original name
+
+-- | Represents the bounds of /known/ $HlsIFrameOnlyManifest.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded HlsIFrameOnlyManifest where
+    minBound = HIFOMExclude
+    maxBound = HIFOMInclude
 
 instance Hashable     HlsIFrameOnlyManifest
 instance NFData       HlsIFrameOnlyManifest

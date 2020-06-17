@@ -42,6 +42,7 @@ module Network.AWS.Discovery.DescribeAgents
     ) where
 
 import Network.AWS.Discovery.Types
+import Network.AWS.Discovery.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request

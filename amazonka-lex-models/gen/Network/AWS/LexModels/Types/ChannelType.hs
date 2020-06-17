@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,32 +16,72 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.LexModels.Types.ChannelType where
+module Network.AWS.LexModels.Types.ChannelType (
+  ChannelType (
+    ..
+    , Facebook
+    , Kik
+    , Slack
+    , TwilioSms
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data ChannelType = Facebook
-                 | Kik
-                 | Slack
-                 | TwilioSms
-                     deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                               Typeable, Generic)
+
+data ChannelType = ChannelType' (CI Text)
+                     deriving (Eq, Ord, Read, Show, Data, Typeable,
+                               Generic)
+
+pattern Facebook :: ChannelType
+pattern Facebook = ChannelType' "Facebook"
+
+pattern Kik :: ChannelType
+pattern Kik = ChannelType' "Kik"
+
+pattern Slack :: ChannelType
+pattern Slack = ChannelType' "Slack"
+
+pattern TwilioSms :: ChannelType
+pattern TwilioSms = ChannelType' "Twilio-Sms"
+
+{-# COMPLETE
+  Facebook,
+  Kik,
+  Slack,
+  TwilioSms,
+  ChannelType' #-}
 
 instance FromText ChannelType where
-    parser = takeLowerText >>= \case
-        "facebook" -> pure Facebook
-        "kik" -> pure Kik
-        "slack" -> pure Slack
-        "twilio-sms" -> pure TwilioSms
-        e -> fromTextError $ "Failure parsing ChannelType from value: '" <> e
-           <> "'. Accepted values: facebook, kik, slack, twilio-sms"
+    parser = (ChannelType' . mk) <$> takeText
 
 instance ToText ChannelType where
-    toText = \case
-        Facebook -> "Facebook"
-        Kik -> "Kik"
-        Slack -> "Slack"
-        TwilioSms -> "Twilio-Sms"
+    toText (ChannelType' ci) = original ci
+
+-- | Represents an enum of /known/ $ChannelType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum ChannelType where
+    toEnum i = case i of
+        0 -> Facebook
+        1 -> Kik
+        2 -> Slack
+        3 -> TwilioSms
+        _ -> (error . showText) $ "Unknown index for ChannelType: " <> toText i
+    fromEnum x = case x of
+        Facebook -> 0
+        Kik -> 1
+        Slack -> 2
+        TwilioSms -> 3
+        ChannelType' name -> (error . showText) $ "Unknown ChannelType: " <> original name
+
+-- | Represents the bounds of /known/ $ChannelType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded ChannelType where
+    minBound = Facebook
+    maxBound = TwilioSms
 
 instance Hashable     ChannelType
 instance NFData       ChannelType

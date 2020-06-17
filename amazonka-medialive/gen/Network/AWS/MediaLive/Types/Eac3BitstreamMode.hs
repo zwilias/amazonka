@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,36 +16,80 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.MediaLive.Types.Eac3BitstreamMode where
+module Network.AWS.MediaLive.Types.Eac3BitstreamMode (
+  Eac3BitstreamMode (
+    ..
+    , EBMCommentary
+    , EBMCompleteMain
+    , EBMEmergency
+    , EBMHearingImpaired
+    , EBMVisuallyImpaired
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
+
 -- | Placeholder documentation for Eac3BitstreamMode
-data Eac3BitstreamMode = EBMCommentary
-                       | EBMCompleteMain
-                       | EBMEmergency
-                       | EBMHearingImpaired
-                       | EBMVisuallyImpaired
-                           deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                     Typeable, Generic)
+data Eac3BitstreamMode = Eac3BitstreamMode' (CI Text)
+                           deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                     Generic)
+
+pattern EBMCommentary :: Eac3BitstreamMode
+pattern EBMCommentary = Eac3BitstreamMode' "COMMENTARY"
+
+pattern EBMCompleteMain :: Eac3BitstreamMode
+pattern EBMCompleteMain = Eac3BitstreamMode' "COMPLETE_MAIN"
+
+pattern EBMEmergency :: Eac3BitstreamMode
+pattern EBMEmergency = Eac3BitstreamMode' "EMERGENCY"
+
+pattern EBMHearingImpaired :: Eac3BitstreamMode
+pattern EBMHearingImpaired = Eac3BitstreamMode' "HEARING_IMPAIRED"
+
+pattern EBMVisuallyImpaired :: Eac3BitstreamMode
+pattern EBMVisuallyImpaired = Eac3BitstreamMode' "VISUALLY_IMPAIRED"
+
+{-# COMPLETE
+  EBMCommentary,
+  EBMCompleteMain,
+  EBMEmergency,
+  EBMHearingImpaired,
+  EBMVisuallyImpaired,
+  Eac3BitstreamMode' #-}
 
 instance FromText Eac3BitstreamMode where
-    parser = takeLowerText >>= \case
-        "commentary" -> pure EBMCommentary
-        "complete_main" -> pure EBMCompleteMain
-        "emergency" -> pure EBMEmergency
-        "hearing_impaired" -> pure EBMHearingImpaired
-        "visually_impaired" -> pure EBMVisuallyImpaired
-        e -> fromTextError $ "Failure parsing Eac3BitstreamMode from value: '" <> e
-           <> "'. Accepted values: commentary, complete_main, emergency, hearing_impaired, visually_impaired"
+    parser = (Eac3BitstreamMode' . mk) <$> takeText
 
 instance ToText Eac3BitstreamMode where
-    toText = \case
-        EBMCommentary -> "COMMENTARY"
-        EBMCompleteMain -> "COMPLETE_MAIN"
-        EBMEmergency -> "EMERGENCY"
-        EBMHearingImpaired -> "HEARING_IMPAIRED"
-        EBMVisuallyImpaired -> "VISUALLY_IMPAIRED"
+    toText (Eac3BitstreamMode' ci) = original ci
+
+-- | Represents an enum of /known/ $Eac3BitstreamMode.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum Eac3BitstreamMode where
+    toEnum i = case i of
+        0 -> EBMCommentary
+        1 -> EBMCompleteMain
+        2 -> EBMEmergency
+        3 -> EBMHearingImpaired
+        4 -> EBMVisuallyImpaired
+        _ -> (error . showText) $ "Unknown index for Eac3BitstreamMode: " <> toText i
+    fromEnum x = case x of
+        EBMCommentary -> 0
+        EBMCompleteMain -> 1
+        EBMEmergency -> 2
+        EBMHearingImpaired -> 3
+        EBMVisuallyImpaired -> 4
+        Eac3BitstreamMode' name -> (error . showText) $ "Unknown Eac3BitstreamMode: " <> original name
+
+-- | Represents the bounds of /known/ $Eac3BitstreamMode.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded Eac3BitstreamMode where
+    minBound = EBMCommentary
+    maxBound = EBMVisuallyImpaired
 
 instance Hashable     Eac3BitstreamMode
 instance NFData       Eac3BitstreamMode

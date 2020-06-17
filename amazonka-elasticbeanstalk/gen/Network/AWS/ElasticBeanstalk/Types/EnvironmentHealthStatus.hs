@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,44 +16,101 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.ElasticBeanstalk.Types.EnvironmentHealthStatus where
+module Network.AWS.ElasticBeanstalk.Types.EnvironmentHealthStatus (
+  EnvironmentHealthStatus (
+    ..
+    , EHSDegraded
+    , EHSInfo
+    , EHSNoData
+    , EHSOK
+    , EHSPending
+    , EHSSevere
+    , EHSUnknown
+    , EHSWarning
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data EnvironmentHealthStatus = EHSDegraded
-                             | EHSInfo
-                             | EHSNoData
-                             | EHSOK
-                             | EHSPending
-                             | EHSSevere
-                             | EHSUnknown
-                             | EHSWarning
-                                 deriving (Eq, Ord, Read, Show, Enum, Bounded,
-                                           Data, Typeable, Generic)
+
+data EnvironmentHealthStatus = EnvironmentHealthStatus' (CI
+                                                           Text)
+                                 deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                           Generic)
+
+pattern EHSDegraded :: EnvironmentHealthStatus
+pattern EHSDegraded = EnvironmentHealthStatus' "Degraded"
+
+pattern EHSInfo :: EnvironmentHealthStatus
+pattern EHSInfo = EnvironmentHealthStatus' "Info"
+
+pattern EHSNoData :: EnvironmentHealthStatus
+pattern EHSNoData = EnvironmentHealthStatus' "NoData"
+
+pattern EHSOK :: EnvironmentHealthStatus
+pattern EHSOK = EnvironmentHealthStatus' "Ok"
+
+pattern EHSPending :: EnvironmentHealthStatus
+pattern EHSPending = EnvironmentHealthStatus' "Pending"
+
+pattern EHSSevere :: EnvironmentHealthStatus
+pattern EHSSevere = EnvironmentHealthStatus' "Severe"
+
+pattern EHSUnknown :: EnvironmentHealthStatus
+pattern EHSUnknown = EnvironmentHealthStatus' "Unknown"
+
+pattern EHSWarning :: EnvironmentHealthStatus
+pattern EHSWarning = EnvironmentHealthStatus' "Warning"
+
+{-# COMPLETE
+  EHSDegraded,
+  EHSInfo,
+  EHSNoData,
+  EHSOK,
+  EHSPending,
+  EHSSevere,
+  EHSUnknown,
+  EHSWarning,
+  EnvironmentHealthStatus' #-}
 
 instance FromText EnvironmentHealthStatus where
-    parser = takeLowerText >>= \case
-        "degraded" -> pure EHSDegraded
-        "info" -> pure EHSInfo
-        "nodata" -> pure EHSNoData
-        "ok" -> pure EHSOK
-        "pending" -> pure EHSPending
-        "severe" -> pure EHSSevere
-        "unknown" -> pure EHSUnknown
-        "warning" -> pure EHSWarning
-        e -> fromTextError $ "Failure parsing EnvironmentHealthStatus from value: '" <> e
-           <> "'. Accepted values: degraded, info, nodata, ok, pending, severe, unknown, warning"
+    parser = (EnvironmentHealthStatus' . mk) <$> takeText
 
 instance ToText EnvironmentHealthStatus where
-    toText = \case
-        EHSDegraded -> "Degraded"
-        EHSInfo -> "Info"
-        EHSNoData -> "NoData"
-        EHSOK -> "Ok"
-        EHSPending -> "Pending"
-        EHSSevere -> "Severe"
-        EHSUnknown -> "Unknown"
-        EHSWarning -> "Warning"
+    toText (EnvironmentHealthStatus' ci) = original ci
+
+-- | Represents an enum of /known/ $EnvironmentHealthStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum EnvironmentHealthStatus where
+    toEnum i = case i of
+        0 -> EHSDegraded
+        1 -> EHSInfo
+        2 -> EHSNoData
+        3 -> EHSOK
+        4 -> EHSPending
+        5 -> EHSSevere
+        6 -> EHSUnknown
+        7 -> EHSWarning
+        _ -> (error . showText) $ "Unknown index for EnvironmentHealthStatus: " <> toText i
+    fromEnum x = case x of
+        EHSDegraded -> 0
+        EHSInfo -> 1
+        EHSNoData -> 2
+        EHSOK -> 3
+        EHSPending -> 4
+        EHSSevere -> 5
+        EHSUnknown -> 6
+        EHSWarning -> 7
+        EnvironmentHealthStatus' name -> (error . showText) $ "Unknown EnvironmentHealthStatus: " <> original name
+
+-- | Represents the bounds of /known/ $EnvironmentHealthStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded EnvironmentHealthStatus where
+    minBound = EHSDegraded
+    maxBound = EHSWarning
 
 instance Hashable     EnvironmentHealthStatus
 instance NFData       EnvironmentHealthStatus

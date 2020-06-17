@@ -46,6 +46,7 @@ module Network.AWS.Connect.StartOutboundVoiceContact
     ) where
 
 import Network.AWS.Connect.Types
+import Network.AWS.Connect.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request

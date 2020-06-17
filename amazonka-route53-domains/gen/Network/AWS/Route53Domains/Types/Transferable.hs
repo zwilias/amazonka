@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,10 +16,18 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.Route53Domains.Types.Transferable where
+module Network.AWS.Route53Domains.Types.Transferable (
+  Transferable (
+    ..
+    , DontKnow
+    , Transferable
+    , Untransferable
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
+
 -- | Whether the domain name can be transferred to Amazon Route 53.
 --
 --
@@ -32,25 +41,53 @@ import Network.AWS.Prelude
 --
 --
 --
-data Transferable = DontKnow
-                  | Transferable
-                  | Untransferable
-                      deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                Typeable, Generic)
+data Transferable = Transferable' (CI Text)
+                      deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                Generic)
+
+pattern DontKnow :: Transferable
+pattern DontKnow = Transferable' "DONT_KNOW"
+
+pattern Transferable :: Transferable
+pattern Transferable = Transferable' "TRANSFERABLE"
+
+pattern Untransferable :: Transferable
+pattern Untransferable = Transferable' "UNTRANSFERABLE"
+
+{-# COMPLETE
+  DontKnow,
+  Transferable,
+  Untransferable,
+  Transferable' #-}
 
 instance FromText Transferable where
-    parser = takeLowerText >>= \case
-        "dont_know" -> pure DontKnow
-        "transferable" -> pure Transferable
-        "untransferable" -> pure Untransferable
-        e -> fromTextError $ "Failure parsing Transferable from value: '" <> e
-           <> "'. Accepted values: dont_know, transferable, untransferable"
+    parser = (Transferable' . mk) <$> takeText
 
 instance ToText Transferable where
-    toText = \case
-        DontKnow -> "DONT_KNOW"
-        Transferable -> "TRANSFERABLE"
-        Untransferable -> "UNTRANSFERABLE"
+    toText (Transferable' ci) = original ci
+
+-- | Represents an enum of /known/ $Transferable.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum Transferable where
+    toEnum i = case i of
+        0 -> DontKnow
+        1 -> Transferable
+        2 -> Untransferable
+        _ -> (error . showText) $ "Unknown index for Transferable: " <> toText i
+    fromEnum x = case x of
+        DontKnow -> 0
+        Transferable -> 1
+        Untransferable -> 2
+        Transferable' name -> (error . showText) $ "Unknown Transferable: " <> original name
+
+-- | Represents the bounds of /known/ $Transferable.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded Transferable where
+    minBound = DontKnow
+    maxBound = Untransferable
 
 instance Hashable     Transferable
 instance NFData       Transferable

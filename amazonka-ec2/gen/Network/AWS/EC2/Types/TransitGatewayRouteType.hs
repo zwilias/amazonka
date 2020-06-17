@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,27 +16,60 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.EC2.Types.TransitGatewayRouteType where
+module Network.AWS.EC2.Types.TransitGatewayRouteType (
+  TransitGatewayRouteType (
+    ..
+    , TGRTPropagated
+    , TGRTStatic
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.EC2.Internal
 import Network.AWS.Prelude
-  
-data TransitGatewayRouteType = TGRTPropagated
-                             | TGRTStatic
-                                 deriving (Eq, Ord, Read, Show, Enum, Bounded,
-                                           Data, Typeable, Generic)
+
+data TransitGatewayRouteType = TransitGatewayRouteType' (CI
+                                                           Text)
+                                 deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                           Generic)
+
+pattern TGRTPropagated :: TransitGatewayRouteType
+pattern TGRTPropagated = TransitGatewayRouteType' "propagated"
+
+pattern TGRTStatic :: TransitGatewayRouteType
+pattern TGRTStatic = TransitGatewayRouteType' "static"
+
+{-# COMPLETE
+  TGRTPropagated,
+  TGRTStatic,
+  TransitGatewayRouteType' #-}
 
 instance FromText TransitGatewayRouteType where
-    parser = takeLowerText >>= \case
-        "propagated" -> pure TGRTPropagated
-        "static" -> pure TGRTStatic
-        e -> fromTextError $ "Failure parsing TransitGatewayRouteType from value: '" <> e
-           <> "'. Accepted values: propagated, static"
+    parser = (TransitGatewayRouteType' . mk) <$> takeText
 
 instance ToText TransitGatewayRouteType where
-    toText = \case
-        TGRTPropagated -> "propagated"
-        TGRTStatic -> "static"
+    toText (TransitGatewayRouteType' ci) = original ci
+
+-- | Represents an enum of /known/ $TransitGatewayRouteType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum TransitGatewayRouteType where
+    toEnum i = case i of
+        0 -> TGRTPropagated
+        1 -> TGRTStatic
+        _ -> (error . showText) $ "Unknown index for TransitGatewayRouteType: " <> toText i
+    fromEnum x = case x of
+        TGRTPropagated -> 0
+        TGRTStatic -> 1
+        TransitGatewayRouteType' name -> (error . showText) $ "Unknown TransitGatewayRouteType: " <> original name
+
+-- | Represents the bounds of /known/ $TransitGatewayRouteType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded TransitGatewayRouteType where
+    minBound = TGRTPropagated
+    maxBound = TGRTStatic
 
 instance Hashable     TransitGatewayRouteType
 instance NFData       TransitGatewayRouteType

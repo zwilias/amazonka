@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,29 +16,65 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.EMR.Types.InstanceRoleType where
+module Network.AWS.EMR.Types.InstanceRoleType (
+  InstanceRoleType (
+    ..
+    , IRTCore
+    , IRTMaster
+    , IRTTask
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data InstanceRoleType = IRTCore
-                      | IRTMaster
-                      | IRTTask
-                          deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                    Typeable, Generic)
+
+data InstanceRoleType = InstanceRoleType' (CI Text)
+                          deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                    Generic)
+
+pattern IRTCore :: InstanceRoleType
+pattern IRTCore = InstanceRoleType' "CORE"
+
+pattern IRTMaster :: InstanceRoleType
+pattern IRTMaster = InstanceRoleType' "MASTER"
+
+pattern IRTTask :: InstanceRoleType
+pattern IRTTask = InstanceRoleType' "TASK"
+
+{-# COMPLETE
+  IRTCore,
+  IRTMaster,
+  IRTTask,
+  InstanceRoleType' #-}
 
 instance FromText InstanceRoleType where
-    parser = takeLowerText >>= \case
-        "core" -> pure IRTCore
-        "master" -> pure IRTMaster
-        "task" -> pure IRTTask
-        e -> fromTextError $ "Failure parsing InstanceRoleType from value: '" <> e
-           <> "'. Accepted values: core, master, task"
+    parser = (InstanceRoleType' . mk) <$> takeText
 
 instance ToText InstanceRoleType where
-    toText = \case
-        IRTCore -> "CORE"
-        IRTMaster -> "MASTER"
-        IRTTask -> "TASK"
+    toText (InstanceRoleType' ci) = original ci
+
+-- | Represents an enum of /known/ $InstanceRoleType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum InstanceRoleType where
+    toEnum i = case i of
+        0 -> IRTCore
+        1 -> IRTMaster
+        2 -> IRTTask
+        _ -> (error . showText) $ "Unknown index for InstanceRoleType: " <> toText i
+    fromEnum x = case x of
+        IRTCore -> 0
+        IRTMaster -> 1
+        IRTTask -> 2
+        InstanceRoleType' name -> (error . showText) $ "Unknown InstanceRoleType: " <> original name
+
+-- | Represents the bounds of /known/ $InstanceRoleType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded InstanceRoleType where
+    minBound = IRTCore
+    maxBound = IRTTask
 
 instance Hashable     InstanceRoleType
 instance NFData       InstanceRoleType

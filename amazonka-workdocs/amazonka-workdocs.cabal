@@ -112,6 +112,7 @@ library
         , Network.AWS.WorkDocs.Types.PermissionInfo
         , Network.AWS.WorkDocs.Types.Principal
         , Network.AWS.WorkDocs.Types.PrincipalType
+        , Network.AWS.WorkDocs.Types.Product
         , Network.AWS.WorkDocs.Types.ResourceMetadata
         , Network.AWS.WorkDocs.Types.ResourcePath
         , Network.AWS.WorkDocs.Types.ResourcePathComponent
@@ -140,6 +141,7 @@ library
     build-depends:
           amazonka-core == 1.6.1.*
         , base          >= 4.7     && < 5
+        , case-insensitive
 
 test-suite amazonka-workdocs-test
     type:              exitcode-stdio-1.0
@@ -163,6 +165,7 @@ test-suite amazonka-workdocs-test
         , amazonka-workdocs
         , base
         , bytestring
+        , case-insensitive
         , tasty
         , tasty-hunit
         , text

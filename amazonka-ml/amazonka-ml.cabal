@@ -91,6 +91,7 @@ library
         , Network.AWS.MachineLearning.Types.MLModelType
         , Network.AWS.MachineLearning.Types.PerformanceMetrics
         , Network.AWS.MachineLearning.Types.Prediction
+        , Network.AWS.MachineLearning.Types.Product
         , Network.AWS.MachineLearning.Types.RDSDataSpec
         , Network.AWS.MachineLearning.Types.RDSDatabase
         , Network.AWS.MachineLearning.Types.RDSDatabaseCredentials
@@ -109,6 +110,7 @@ library
     build-depends:
           amazonka-core == 1.6.1.*
         , base          >= 4.7     && < 5
+        , case-insensitive
 
 test-suite amazonka-ml-test
     type:              exitcode-stdio-1.0
@@ -132,6 +134,7 @@ test-suite amazonka-ml-test
         , amazonka-ml
         , base
         , bytestring
+        , case-insensitive
         , tasty
         , tasty-hunit
         , text

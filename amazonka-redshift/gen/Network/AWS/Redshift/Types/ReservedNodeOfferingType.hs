@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,27 +16,60 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.Redshift.Types.ReservedNodeOfferingType where
+module Network.AWS.Redshift.Types.ReservedNodeOfferingType (
+  ReservedNodeOfferingType (
+    ..
+    , Regular
+    , Upgradable
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
 import Network.AWS.Redshift.Internal
-  
-data ReservedNodeOfferingType = Regular
-                              | Upgradable
-                                  deriving (Eq, Ord, Read, Show, Enum, Bounded,
-                                            Data, Typeable, Generic)
+
+data ReservedNodeOfferingType = ReservedNodeOfferingType' (CI
+                                                             Text)
+                                  deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                            Generic)
+
+pattern Regular :: ReservedNodeOfferingType
+pattern Regular = ReservedNodeOfferingType' "Regular"
+
+pattern Upgradable :: ReservedNodeOfferingType
+pattern Upgradable = ReservedNodeOfferingType' "Upgradable"
+
+{-# COMPLETE
+  Regular,
+  Upgradable,
+  ReservedNodeOfferingType' #-}
 
 instance FromText ReservedNodeOfferingType where
-    parser = takeLowerText >>= \case
-        "regular" -> pure Regular
-        "upgradable" -> pure Upgradable
-        e -> fromTextError $ "Failure parsing ReservedNodeOfferingType from value: '" <> e
-           <> "'. Accepted values: regular, upgradable"
+    parser = (ReservedNodeOfferingType' . mk) <$> takeText
 
 instance ToText ReservedNodeOfferingType where
-    toText = \case
-        Regular -> "Regular"
-        Upgradable -> "Upgradable"
+    toText (ReservedNodeOfferingType' ci) = original ci
+
+-- | Represents an enum of /known/ $ReservedNodeOfferingType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum ReservedNodeOfferingType where
+    toEnum i = case i of
+        0 -> Regular
+        1 -> Upgradable
+        _ -> (error . showText) $ "Unknown index for ReservedNodeOfferingType: " <> toText i
+    fromEnum x = case x of
+        Regular -> 0
+        Upgradable -> 1
+        ReservedNodeOfferingType' name -> (error . showText) $ "Unknown ReservedNodeOfferingType: " <> original name
+
+-- | Represents the bounds of /known/ $ReservedNodeOfferingType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded ReservedNodeOfferingType where
+    minBound = Regular
+    maxBound = Upgradable
 
 instance Hashable     ReservedNodeOfferingType
 instance NFData       ReservedNodeOfferingType

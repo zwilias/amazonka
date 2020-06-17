@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,23 +16,52 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.FMS.Types.SecurityServiceType where
+module Network.AWS.FMS.Types.SecurityServiceType (
+  SecurityServiceType (
+    ..
+    , Waf
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data SecurityServiceType = Waf
-                             deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                       Typeable, Generic)
+
+data SecurityServiceType = SecurityServiceType' (CI
+                                                   Text)
+                             deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                       Generic)
+
+pattern Waf :: SecurityServiceType
+pattern Waf = SecurityServiceType' "WAF"
+
+{-# COMPLETE
+  Waf,
+  SecurityServiceType' #-}
 
 instance FromText SecurityServiceType where
-    parser = takeLowerText >>= \case
-        "waf" -> pure Waf
-        e -> fromTextError $ "Failure parsing SecurityServiceType from value: '" <> e
-           <> "'. Accepted values: waf"
+    parser = (SecurityServiceType' . mk) <$> takeText
 
 instance ToText SecurityServiceType where
-    toText = \case
-        Waf -> "WAF"
+    toText (SecurityServiceType' ci) = original ci
+
+-- | Represents an enum of /known/ $SecurityServiceType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum SecurityServiceType where
+    toEnum i = case i of
+        0 -> Waf
+        _ -> (error . showText) $ "Unknown index for SecurityServiceType: " <> toText i
+    fromEnum x = case x of
+        Waf -> 0
+        SecurityServiceType' name -> (error . showText) $ "Unknown SecurityServiceType: " <> original name
+
+-- | Represents the bounds of /known/ $SecurityServiceType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded SecurityServiceType where
+    minBound = Waf
+    maxBound = Waf
 
 instance Hashable     SecurityServiceType
 instance NFData       SecurityServiceType

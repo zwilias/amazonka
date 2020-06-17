@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,33 +16,73 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.EMR.Types.InstanceGroupStateChangeReasonCode where
+module Network.AWS.EMR.Types.InstanceGroupStateChangeReasonCode (
+  InstanceGroupStateChangeReasonCode (
+    ..
+    , ClusterTerminated
+    , InstanceFailure
+    , InternalError
+    , ValidationError
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data InstanceGroupStateChangeReasonCode = ClusterTerminated
-                                        | InstanceFailure
-                                        | InternalError
-                                        | ValidationError
-                                            deriving (Eq, Ord, Read, Show, Enum,
-                                                      Bounded, Data, Typeable,
-                                                      Generic)
+
+data InstanceGroupStateChangeReasonCode = InstanceGroupStateChangeReasonCode' (CI
+                                                                                 Text)
+                                            deriving (Eq, Ord, Read, Show, Data,
+                                                      Typeable, Generic)
+
+pattern ClusterTerminated :: InstanceGroupStateChangeReasonCode
+pattern ClusterTerminated = InstanceGroupStateChangeReasonCode' "CLUSTER_TERMINATED"
+
+pattern InstanceFailure :: InstanceGroupStateChangeReasonCode
+pattern InstanceFailure = InstanceGroupStateChangeReasonCode' "INSTANCE_FAILURE"
+
+pattern InternalError :: InstanceGroupStateChangeReasonCode
+pattern InternalError = InstanceGroupStateChangeReasonCode' "INTERNAL_ERROR"
+
+pattern ValidationError :: InstanceGroupStateChangeReasonCode
+pattern ValidationError = InstanceGroupStateChangeReasonCode' "VALIDATION_ERROR"
+
+{-# COMPLETE
+  ClusterTerminated,
+  InstanceFailure,
+  InternalError,
+  ValidationError,
+  InstanceGroupStateChangeReasonCode' #-}
 
 instance FromText InstanceGroupStateChangeReasonCode where
-    parser = takeLowerText >>= \case
-        "cluster_terminated" -> pure ClusterTerminated
-        "instance_failure" -> pure InstanceFailure
-        "internal_error" -> pure InternalError
-        "validation_error" -> pure ValidationError
-        e -> fromTextError $ "Failure parsing InstanceGroupStateChangeReasonCode from value: '" <> e
-           <> "'. Accepted values: cluster_terminated, instance_failure, internal_error, validation_error"
+    parser = (InstanceGroupStateChangeReasonCode' . mk) <$> takeText
 
 instance ToText InstanceGroupStateChangeReasonCode where
-    toText = \case
-        ClusterTerminated -> "CLUSTER_TERMINATED"
-        InstanceFailure -> "INSTANCE_FAILURE"
-        InternalError -> "INTERNAL_ERROR"
-        ValidationError -> "VALIDATION_ERROR"
+    toText (InstanceGroupStateChangeReasonCode' ci) = original ci
+
+-- | Represents an enum of /known/ $InstanceGroupStateChangeReasonCode.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum InstanceGroupStateChangeReasonCode where
+    toEnum i = case i of
+        0 -> ClusterTerminated
+        1 -> InstanceFailure
+        2 -> InternalError
+        3 -> ValidationError
+        _ -> (error . showText) $ "Unknown index for InstanceGroupStateChangeReasonCode: " <> toText i
+    fromEnum x = case x of
+        ClusterTerminated -> 0
+        InstanceFailure -> 1
+        InternalError -> 2
+        ValidationError -> 3
+        InstanceGroupStateChangeReasonCode' name -> (error . showText) $ "Unknown InstanceGroupStateChangeReasonCode: " <> original name
+
+-- | Represents the bounds of /known/ $InstanceGroupStateChangeReasonCode.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded InstanceGroupStateChangeReasonCode where
+    minBound = ClusterTerminated
+    maxBound = ValidationError
 
 instance Hashable     InstanceGroupStateChangeReasonCode
 instance NFData       InstanceGroupStateChangeReasonCode

@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,59 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.KMS.Types.ExpirationModelType where
+module Network.AWS.KMS.Types.ExpirationModelType (
+  ExpirationModelType (
+    ..
+    , KeyMaterialDoesNotExpire
+    , KeyMaterialExpires
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data ExpirationModelType = KeyMaterialDoesNotExpire
-                         | KeyMaterialExpires
-                             deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                       Typeable, Generic)
+
+data ExpirationModelType = ExpirationModelType' (CI
+                                                   Text)
+                             deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                       Generic)
+
+pattern KeyMaterialDoesNotExpire :: ExpirationModelType
+pattern KeyMaterialDoesNotExpire = ExpirationModelType' "KEY_MATERIAL_DOES_NOT_EXPIRE"
+
+pattern KeyMaterialExpires :: ExpirationModelType
+pattern KeyMaterialExpires = ExpirationModelType' "KEY_MATERIAL_EXPIRES"
+
+{-# COMPLETE
+  KeyMaterialDoesNotExpire,
+  KeyMaterialExpires,
+  ExpirationModelType' #-}
 
 instance FromText ExpirationModelType where
-    parser = takeLowerText >>= \case
-        "key_material_does_not_expire" -> pure KeyMaterialDoesNotExpire
-        "key_material_expires" -> pure KeyMaterialExpires
-        e -> fromTextError $ "Failure parsing ExpirationModelType from value: '" <> e
-           <> "'. Accepted values: key_material_does_not_expire, key_material_expires"
+    parser = (ExpirationModelType' . mk) <$> takeText
 
 instance ToText ExpirationModelType where
-    toText = \case
-        KeyMaterialDoesNotExpire -> "KEY_MATERIAL_DOES_NOT_EXPIRE"
-        KeyMaterialExpires -> "KEY_MATERIAL_EXPIRES"
+    toText (ExpirationModelType' ci) = original ci
+
+-- | Represents an enum of /known/ $ExpirationModelType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum ExpirationModelType where
+    toEnum i = case i of
+        0 -> KeyMaterialDoesNotExpire
+        1 -> KeyMaterialExpires
+        _ -> (error . showText) $ "Unknown index for ExpirationModelType: " <> toText i
+    fromEnum x = case x of
+        KeyMaterialDoesNotExpire -> 0
+        KeyMaterialExpires -> 1
+        ExpirationModelType' name -> (error . showText) $ "Unknown ExpirationModelType: " <> original name
+
+-- | Represents the bounds of /known/ $ExpirationModelType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded ExpirationModelType where
+    minBound = KeyMaterialDoesNotExpire
+    maxBound = KeyMaterialExpires
 
 instance Hashable     ExpirationModelType
 instance NFData       ExpirationModelType

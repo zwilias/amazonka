@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,38 +16,86 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.APIGateway.Types.Op where
+module Network.AWS.APIGateway.Types.Op (
+  Op (
+    ..
+    , Add
+    , Copy
+    , Move
+    , Remove
+    , Replace
+    , Test
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data Op = Add
-        | Copy
-        | Move
-        | Remove
-        | Replace
-        | Test
-            deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                      Typeable, Generic)
+
+data Op = Op' (CI Text)
+            deriving (Eq, Ord, Read, Show, Data, Typeable,
+                      Generic)
+
+pattern Add :: Op
+pattern Add = Op' "add"
+
+pattern Copy :: Op
+pattern Copy = Op' "copy"
+
+pattern Move :: Op
+pattern Move = Op' "move"
+
+pattern Remove :: Op
+pattern Remove = Op' "remove"
+
+pattern Replace :: Op
+pattern Replace = Op' "replace"
+
+pattern Test :: Op
+pattern Test = Op' "test"
+
+{-# COMPLETE
+  Add,
+  Copy,
+  Move,
+  Remove,
+  Replace,
+  Test,
+  Op' #-}
 
 instance FromText Op where
-    parser = takeLowerText >>= \case
-        "add" -> pure Add
-        "copy" -> pure Copy
-        "move" -> pure Move
-        "remove" -> pure Remove
-        "replace" -> pure Replace
-        "test" -> pure Test
-        e -> fromTextError $ "Failure parsing Op from value: '" <> e
-           <> "'. Accepted values: add, copy, move, remove, replace, test"
+    parser = (Op' . mk) <$> takeText
 
 instance ToText Op where
-    toText = \case
-        Add -> "add"
-        Copy -> "copy"
-        Move -> "move"
-        Remove -> "remove"
-        Replace -> "replace"
-        Test -> "test"
+    toText (Op' ci) = original ci
+
+-- | Represents an enum of /known/ $Op.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum Op where
+    toEnum i = case i of
+        0 -> Add
+        1 -> Copy
+        2 -> Move
+        3 -> Remove
+        4 -> Replace
+        5 -> Test
+        _ -> (error . showText) $ "Unknown index for Op: " <> toText i
+    fromEnum x = case x of
+        Add -> 0
+        Copy -> 1
+        Move -> 2
+        Remove -> 3
+        Replace -> 4
+        Test -> 5
+        Op' name -> (error . showText) $ "Unknown Op: " <> original name
+
+-- | Represents the bounds of /known/ $Op.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded Op where
+    minBound = Add
+    maxBound = Test
 
 instance Hashable     Op
 instance NFData       Op

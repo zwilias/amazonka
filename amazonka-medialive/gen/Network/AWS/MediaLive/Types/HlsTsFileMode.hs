@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,27 +16,59 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.MediaLive.Types.HlsTsFileMode where
+module Network.AWS.MediaLive.Types.HlsTsFileMode (
+  HlsTsFileMode (
+    ..
+    , SegmentedFiles
+    , SingleFile
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
+
 -- | Placeholder documentation for HlsTsFileMode
-data HlsTsFileMode = SegmentedFiles
-                   | SingleFile
-                       deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                 Typeable, Generic)
+data HlsTsFileMode = HlsTsFileMode' (CI Text)
+                       deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                 Generic)
+
+pattern SegmentedFiles :: HlsTsFileMode
+pattern SegmentedFiles = HlsTsFileMode' "SEGMENTED_FILES"
+
+pattern SingleFile :: HlsTsFileMode
+pattern SingleFile = HlsTsFileMode' "SINGLE_FILE"
+
+{-# COMPLETE
+  SegmentedFiles,
+  SingleFile,
+  HlsTsFileMode' #-}
 
 instance FromText HlsTsFileMode where
-    parser = takeLowerText >>= \case
-        "segmented_files" -> pure SegmentedFiles
-        "single_file" -> pure SingleFile
-        e -> fromTextError $ "Failure parsing HlsTsFileMode from value: '" <> e
-           <> "'. Accepted values: segmented_files, single_file"
+    parser = (HlsTsFileMode' . mk) <$> takeText
 
 instance ToText HlsTsFileMode where
-    toText = \case
-        SegmentedFiles -> "SEGMENTED_FILES"
-        SingleFile -> "SINGLE_FILE"
+    toText (HlsTsFileMode' ci) = original ci
+
+-- | Represents an enum of /known/ $HlsTsFileMode.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum HlsTsFileMode where
+    toEnum i = case i of
+        0 -> SegmentedFiles
+        1 -> SingleFile
+        _ -> (error . showText) $ "Unknown index for HlsTsFileMode: " <> toText i
+    fromEnum x = case x of
+        SegmentedFiles -> 0
+        SingleFile -> 1
+        HlsTsFileMode' name -> (error . showText) $ "Unknown HlsTsFileMode: " <> original name
+
+-- | Represents the bounds of /known/ $HlsTsFileMode.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded HlsTsFileMode where
+    minBound = SegmentedFiles
+    maxBound = SingleFile
 
 instance Hashable     HlsTsFileMode
 instance NFData       HlsTsFileMode

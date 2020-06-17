@@ -42,6 +42,7 @@ module Network.AWS.DAX.DescribeDefaultParameters
     ) where
 
 import Network.AWS.DAX.Types
+import Network.AWS.DAX.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude

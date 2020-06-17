@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,58 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.DeviceFarm.Types.DevicePoolType where
+module Network.AWS.DeviceFarm.Types.DevicePoolType (
+  DevicePoolType (
+    ..
+    , DPTCurated
+    , DPTPrivate
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data DevicePoolType = DPTCurated
-                    | DPTPrivate
-                        deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                  Typeable, Generic)
+
+data DevicePoolType = DevicePoolType' (CI Text)
+                        deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                  Generic)
+
+pattern DPTCurated :: DevicePoolType
+pattern DPTCurated = DevicePoolType' "CURATED"
+
+pattern DPTPrivate :: DevicePoolType
+pattern DPTPrivate = DevicePoolType' "PRIVATE"
+
+{-# COMPLETE
+  DPTCurated,
+  DPTPrivate,
+  DevicePoolType' #-}
 
 instance FromText DevicePoolType where
-    parser = takeLowerText >>= \case
-        "curated" -> pure DPTCurated
-        "private" -> pure DPTPrivate
-        e -> fromTextError $ "Failure parsing DevicePoolType from value: '" <> e
-           <> "'. Accepted values: curated, private"
+    parser = (DevicePoolType' . mk) <$> takeText
 
 instance ToText DevicePoolType where
-    toText = \case
-        DPTCurated -> "CURATED"
-        DPTPrivate -> "PRIVATE"
+    toText (DevicePoolType' ci) = original ci
+
+-- | Represents an enum of /known/ $DevicePoolType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum DevicePoolType where
+    toEnum i = case i of
+        0 -> DPTCurated
+        1 -> DPTPrivate
+        _ -> (error . showText) $ "Unknown index for DevicePoolType: " <> toText i
+    fromEnum x = case x of
+        DPTCurated -> 0
+        DPTPrivate -> 1
+        DevicePoolType' name -> (error . showText) $ "Unknown DevicePoolType: " <> original name
+
+-- | Represents the bounds of /known/ $DevicePoolType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded DevicePoolType where
+    minBound = DPTCurated
+    maxBound = DPTPrivate
 
 instance Hashable     DevicePoolType
 instance NFData       DevicePoolType

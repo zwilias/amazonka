@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,27 +16,60 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.MediaConvert.Types.Eac3AttenuationControl where
+module Network.AWS.MediaConvert.Types.Eac3AttenuationControl (
+  Eac3AttenuationControl (
+    ..
+    , EACAttenuate3DB
+    , EACNone
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
+
 -- | If set to ATTENUATE_3_DB, applies a 3 dB attenuation to the surround channels. Only used for 3/2 coding mode.
-data Eac3AttenuationControl = EACAttenuate3DB
-                            | EACNone
-                                deriving (Eq, Ord, Read, Show, Enum, Bounded,
-                                          Data, Typeable, Generic)
+data Eac3AttenuationControl = Eac3AttenuationControl' (CI
+                                                         Text)
+                                deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                          Generic)
+
+pattern EACAttenuate3DB :: Eac3AttenuationControl
+pattern EACAttenuate3DB = Eac3AttenuationControl' "ATTENUATE_3_DB"
+
+pattern EACNone :: Eac3AttenuationControl
+pattern EACNone = Eac3AttenuationControl' "NONE"
+
+{-# COMPLETE
+  EACAttenuate3DB,
+  EACNone,
+  Eac3AttenuationControl' #-}
 
 instance FromText Eac3AttenuationControl where
-    parser = takeLowerText >>= \case
-        "attenuate_3_db" -> pure EACAttenuate3DB
-        "none" -> pure EACNone
-        e -> fromTextError $ "Failure parsing Eac3AttenuationControl from value: '" <> e
-           <> "'. Accepted values: attenuate_3_db, none"
+    parser = (Eac3AttenuationControl' . mk) <$> takeText
 
 instance ToText Eac3AttenuationControl where
-    toText = \case
-        EACAttenuate3DB -> "ATTENUATE_3_DB"
-        EACNone -> "NONE"
+    toText (Eac3AttenuationControl' ci) = original ci
+
+-- | Represents an enum of /known/ $Eac3AttenuationControl.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum Eac3AttenuationControl where
+    toEnum i = case i of
+        0 -> EACAttenuate3DB
+        1 -> EACNone
+        _ -> (error . showText) $ "Unknown index for Eac3AttenuationControl: " <> toText i
+    fromEnum x = case x of
+        EACAttenuate3DB -> 0
+        EACNone -> 1
+        Eac3AttenuationControl' name -> (error . showText) $ "Unknown Eac3AttenuationControl: " <> original name
+
+-- | Represents the bounds of /known/ $Eac3AttenuationControl.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded Eac3AttenuationControl where
+    minBound = EACAttenuate3DB
+    maxBound = EACNone
 
 instance Hashable     Eac3AttenuationControl
 instance NFData       Eac3AttenuationControl

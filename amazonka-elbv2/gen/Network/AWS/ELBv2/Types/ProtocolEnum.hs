@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,29 +16,65 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.ELBv2.Types.ProtocolEnum where
+module Network.AWS.ELBv2.Types.ProtocolEnum (
+  ProtocolEnum (
+    ..
+    , HTTP
+    , HTTPS
+    , TCP
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data ProtocolEnum = HTTP
-                  | HTTPS
-                  | TCP
-                      deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                Typeable, Generic)
+
+data ProtocolEnum = ProtocolEnum' (CI Text)
+                      deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                Generic)
+
+pattern HTTP :: ProtocolEnum
+pattern HTTP = ProtocolEnum' "HTTP"
+
+pattern HTTPS :: ProtocolEnum
+pattern HTTPS = ProtocolEnum' "HTTPS"
+
+pattern TCP :: ProtocolEnum
+pattern TCP = ProtocolEnum' "TCP"
+
+{-# COMPLETE
+  HTTP,
+  HTTPS,
+  TCP,
+  ProtocolEnum' #-}
 
 instance FromText ProtocolEnum where
-    parser = takeLowerText >>= \case
-        "http" -> pure HTTP
-        "https" -> pure HTTPS
-        "tcp" -> pure TCP
-        e -> fromTextError $ "Failure parsing ProtocolEnum from value: '" <> e
-           <> "'. Accepted values: http, https, tcp"
+    parser = (ProtocolEnum' . mk) <$> takeText
 
 instance ToText ProtocolEnum where
-    toText = \case
-        HTTP -> "HTTP"
-        HTTPS -> "HTTPS"
-        TCP -> "TCP"
+    toText (ProtocolEnum' ci) = original ci
+
+-- | Represents an enum of /known/ $ProtocolEnum.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum ProtocolEnum where
+    toEnum i = case i of
+        0 -> HTTP
+        1 -> HTTPS
+        2 -> TCP
+        _ -> (error . showText) $ "Unknown index for ProtocolEnum: " <> toText i
+    fromEnum x = case x of
+        HTTP -> 0
+        HTTPS -> 1
+        TCP -> 2
+        ProtocolEnum' name -> (error . showText) $ "Unknown ProtocolEnum: " <> original name
+
+-- | Represents the bounds of /known/ $ProtocolEnum.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded ProtocolEnum where
+    minBound = HTTP
+    maxBound = TCP
 
 instance Hashable     ProtocolEnum
 instance NFData       ProtocolEnum

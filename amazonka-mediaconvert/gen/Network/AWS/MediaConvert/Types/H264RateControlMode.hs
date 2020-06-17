@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,27 +16,60 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.MediaConvert.Types.H264RateControlMode where
+module Network.AWS.MediaConvert.Types.H264RateControlMode (
+  H264RateControlMode (
+    ..
+    , HRCMCbr
+    , HRCMVbr
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
+
 -- | Rate control mode. CQ uses constant quantizer (qp), ABR (average bitrate) does not write HRD parameters.
-data H264RateControlMode = HRCMCbr
-                         | HRCMVbr
-                             deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                       Typeable, Generic)
+data H264RateControlMode = H264RateControlMode' (CI
+                                                   Text)
+                             deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                       Generic)
+
+pattern HRCMCbr :: H264RateControlMode
+pattern HRCMCbr = H264RateControlMode' "CBR"
+
+pattern HRCMVbr :: H264RateControlMode
+pattern HRCMVbr = H264RateControlMode' "VBR"
+
+{-# COMPLETE
+  HRCMCbr,
+  HRCMVbr,
+  H264RateControlMode' #-}
 
 instance FromText H264RateControlMode where
-    parser = takeLowerText >>= \case
-        "cbr" -> pure HRCMCbr
-        "vbr" -> pure HRCMVbr
-        e -> fromTextError $ "Failure parsing H264RateControlMode from value: '" <> e
-           <> "'. Accepted values: cbr, vbr"
+    parser = (H264RateControlMode' . mk) <$> takeText
 
 instance ToText H264RateControlMode where
-    toText = \case
-        HRCMCbr -> "CBR"
-        HRCMVbr -> "VBR"
+    toText (H264RateControlMode' ci) = original ci
+
+-- | Represents an enum of /known/ $H264RateControlMode.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum H264RateControlMode where
+    toEnum i = case i of
+        0 -> HRCMCbr
+        1 -> HRCMVbr
+        _ -> (error . showText) $ "Unknown index for H264RateControlMode: " <> toText i
+    fromEnum x = case x of
+        HRCMCbr -> 0
+        HRCMVbr -> 1
+        H264RateControlMode' name -> (error . showText) $ "Unknown H264RateControlMode: " <> original name
+
+-- | Represents the bounds of /known/ $H264RateControlMode.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded H264RateControlMode where
+    minBound = HRCMCbr
+    maxBound = HRCMVbr
 
 instance Hashable     H264RateControlMode
 instance NFData       H264RateControlMode

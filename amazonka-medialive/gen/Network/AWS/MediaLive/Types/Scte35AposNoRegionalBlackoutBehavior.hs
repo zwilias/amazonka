@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,28 +16,60 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.MediaLive.Types.Scte35AposNoRegionalBlackoutBehavior where
+module Network.AWS.MediaLive.Types.Scte35AposNoRegionalBlackoutBehavior (
+  Scte35AposNoRegionalBlackoutBehavior (
+    ..
+    , SANRBBFollow
+    , SANRBBIgnore
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
+
 -- | Placeholder documentation for Scte35AposNoRegionalBlackoutBehavior
-data Scte35AposNoRegionalBlackoutBehavior = SANRBBFollow
-                                          | SANRBBIgnore
+data Scte35AposNoRegionalBlackoutBehavior = Scte35AposNoRegionalBlackoutBehavior' (CI
+                                                                                     Text)
                                               deriving (Eq, Ord, Read, Show,
-                                                        Enum, Bounded, Data,
-                                                        Typeable, Generic)
+                                                        Data, Typeable, Generic)
+
+pattern SANRBBFollow :: Scte35AposNoRegionalBlackoutBehavior
+pattern SANRBBFollow = Scte35AposNoRegionalBlackoutBehavior' "FOLLOW"
+
+pattern SANRBBIgnore :: Scte35AposNoRegionalBlackoutBehavior
+pattern SANRBBIgnore = Scte35AposNoRegionalBlackoutBehavior' "IGNORE"
+
+{-# COMPLETE
+  SANRBBFollow,
+  SANRBBIgnore,
+  Scte35AposNoRegionalBlackoutBehavior' #-}
 
 instance FromText Scte35AposNoRegionalBlackoutBehavior where
-    parser = takeLowerText >>= \case
-        "follow" -> pure SANRBBFollow
-        "ignore" -> pure SANRBBIgnore
-        e -> fromTextError $ "Failure parsing Scte35AposNoRegionalBlackoutBehavior from value: '" <> e
-           <> "'. Accepted values: follow, ignore"
+    parser = (Scte35AposNoRegionalBlackoutBehavior' . mk) <$> takeText
 
 instance ToText Scte35AposNoRegionalBlackoutBehavior where
-    toText = \case
-        SANRBBFollow -> "FOLLOW"
-        SANRBBIgnore -> "IGNORE"
+    toText (Scte35AposNoRegionalBlackoutBehavior' ci) = original ci
+
+-- | Represents an enum of /known/ $Scte35AposNoRegionalBlackoutBehavior.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum Scte35AposNoRegionalBlackoutBehavior where
+    toEnum i = case i of
+        0 -> SANRBBFollow
+        1 -> SANRBBIgnore
+        _ -> (error . showText) $ "Unknown index for Scte35AposNoRegionalBlackoutBehavior: " <> toText i
+    fromEnum x = case x of
+        SANRBBFollow -> 0
+        SANRBBIgnore -> 1
+        Scte35AposNoRegionalBlackoutBehavior' name -> (error . showText) $ "Unknown Scte35AposNoRegionalBlackoutBehavior: " <> original name
+
+-- | Represents the bounds of /known/ $Scte35AposNoRegionalBlackoutBehavior.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded Scte35AposNoRegionalBlackoutBehavior where
+    minBound = SANRBBFollow
+    maxBound = SANRBBIgnore
 
 instance Hashable     Scte35AposNoRegionalBlackoutBehavior
 instance NFData       Scte35AposNoRegionalBlackoutBehavior

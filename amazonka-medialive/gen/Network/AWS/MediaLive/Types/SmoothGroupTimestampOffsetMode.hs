@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,28 +16,60 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.MediaLive.Types.SmoothGroupTimestampOffsetMode where
+module Network.AWS.MediaLive.Types.SmoothGroupTimestampOffsetMode (
+  SmoothGroupTimestampOffsetMode (
+    ..
+    , UseConfiguredOffset
+    , UseEventStartDate
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
+
 -- | Placeholder documentation for SmoothGroupTimestampOffsetMode
-data SmoothGroupTimestampOffsetMode = UseConfiguredOffset
-                                    | UseEventStartDate
-                                        deriving (Eq, Ord, Read, Show, Enum,
-                                                  Bounded, Data, Typeable,
-                                                  Generic)
+data SmoothGroupTimestampOffsetMode = SmoothGroupTimestampOffsetMode' (CI
+                                                                         Text)
+                                        deriving (Eq, Ord, Read, Show, Data,
+                                                  Typeable, Generic)
+
+pattern UseConfiguredOffset :: SmoothGroupTimestampOffsetMode
+pattern UseConfiguredOffset = SmoothGroupTimestampOffsetMode' "USE_CONFIGURED_OFFSET"
+
+pattern UseEventStartDate :: SmoothGroupTimestampOffsetMode
+pattern UseEventStartDate = SmoothGroupTimestampOffsetMode' "USE_EVENT_START_DATE"
+
+{-# COMPLETE
+  UseConfiguredOffset,
+  UseEventStartDate,
+  SmoothGroupTimestampOffsetMode' #-}
 
 instance FromText SmoothGroupTimestampOffsetMode where
-    parser = takeLowerText >>= \case
-        "use_configured_offset" -> pure UseConfiguredOffset
-        "use_event_start_date" -> pure UseEventStartDate
-        e -> fromTextError $ "Failure parsing SmoothGroupTimestampOffsetMode from value: '" <> e
-           <> "'. Accepted values: use_configured_offset, use_event_start_date"
+    parser = (SmoothGroupTimestampOffsetMode' . mk) <$> takeText
 
 instance ToText SmoothGroupTimestampOffsetMode where
-    toText = \case
-        UseConfiguredOffset -> "USE_CONFIGURED_OFFSET"
-        UseEventStartDate -> "USE_EVENT_START_DATE"
+    toText (SmoothGroupTimestampOffsetMode' ci) = original ci
+
+-- | Represents an enum of /known/ $SmoothGroupTimestampOffsetMode.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum SmoothGroupTimestampOffsetMode where
+    toEnum i = case i of
+        0 -> UseConfiguredOffset
+        1 -> UseEventStartDate
+        _ -> (error . showText) $ "Unknown index for SmoothGroupTimestampOffsetMode: " <> toText i
+    fromEnum x = case x of
+        UseConfiguredOffset -> 0
+        UseEventStartDate -> 1
+        SmoothGroupTimestampOffsetMode' name -> (error . showText) $ "Unknown SmoothGroupTimestampOffsetMode: " <> original name
+
+-- | Represents the bounds of /known/ $SmoothGroupTimestampOffsetMode.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded SmoothGroupTimestampOffsetMode where
+    minBound = UseConfiguredOffset
+    maxBound = UseEventStartDate
 
 instance Hashable     SmoothGroupTimestampOffsetMode
 instance NFData       SmoothGroupTimestampOffsetMode

@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,58 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.Lambda.Types.TracingMode where
+module Network.AWS.Lambda.Types.TracingMode (
+  TracingMode (
+    ..
+    , Active
+    , PassThrough
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data TracingMode = Active
-                 | PassThrough
-                     deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                               Typeable, Generic)
+
+data TracingMode = TracingMode' (CI Text)
+                     deriving (Eq, Ord, Read, Show, Data, Typeable,
+                               Generic)
+
+pattern Active :: TracingMode
+pattern Active = TracingMode' "Active"
+
+pattern PassThrough :: TracingMode
+pattern PassThrough = TracingMode' "PassThrough"
+
+{-# COMPLETE
+  Active,
+  PassThrough,
+  TracingMode' #-}
 
 instance FromText TracingMode where
-    parser = takeLowerText >>= \case
-        "active" -> pure Active
-        "passthrough" -> pure PassThrough
-        e -> fromTextError $ "Failure parsing TracingMode from value: '" <> e
-           <> "'. Accepted values: active, passthrough"
+    parser = (TracingMode' . mk) <$> takeText
 
 instance ToText TracingMode where
-    toText = \case
-        Active -> "Active"
-        PassThrough -> "PassThrough"
+    toText (TracingMode' ci) = original ci
+
+-- | Represents an enum of /known/ $TracingMode.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum TracingMode where
+    toEnum i = case i of
+        0 -> Active
+        1 -> PassThrough
+        _ -> (error . showText) $ "Unknown index for TracingMode: " <> toText i
+    fromEnum x = case x of
+        Active -> 0
+        PassThrough -> 1
+        TracingMode' name -> (error . showText) $ "Unknown TracingMode: " <> original name
+
+-- | Represents the bounds of /known/ $TracingMode.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded TracingMode where
+    minBound = Active
+    maxBound = PassThrough
 
 instance Hashable     TracingMode
 instance NFData       TracingMode

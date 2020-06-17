@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,38 +16,87 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.Organizations.Types.CreateAccountFailureReason where
+module Network.AWS.Organizations.Types.CreateAccountFailureReason (
+  CreateAccountFailureReason (
+    ..
+    , AccountLimitExceeded
+    , ConcurrentAccountModification
+    , EmailAlreadyExists
+    , InternalFailure
+    , InvalidAddress
+    , InvalidEmail
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data CreateAccountFailureReason = AccountLimitExceeded
-                                | ConcurrentAccountModification
-                                | EmailAlreadyExists
-                                | InternalFailure
-                                | InvalidAddress
-                                | InvalidEmail
-                                    deriving (Eq, Ord, Read, Show, Enum,
-                                              Bounded, Data, Typeable, Generic)
+
+data CreateAccountFailureReason = CreateAccountFailureReason' (CI
+                                                                 Text)
+                                    deriving (Eq, Ord, Read, Show, Data,
+                                              Typeable, Generic)
+
+pattern AccountLimitExceeded :: CreateAccountFailureReason
+pattern AccountLimitExceeded = CreateAccountFailureReason' "ACCOUNT_LIMIT_EXCEEDED"
+
+pattern ConcurrentAccountModification :: CreateAccountFailureReason
+pattern ConcurrentAccountModification = CreateAccountFailureReason' "CONCURRENT_ACCOUNT_MODIFICATION"
+
+pattern EmailAlreadyExists :: CreateAccountFailureReason
+pattern EmailAlreadyExists = CreateAccountFailureReason' "EMAIL_ALREADY_EXISTS"
+
+pattern InternalFailure :: CreateAccountFailureReason
+pattern InternalFailure = CreateAccountFailureReason' "INTERNAL_FAILURE"
+
+pattern InvalidAddress :: CreateAccountFailureReason
+pattern InvalidAddress = CreateAccountFailureReason' "INVALID_ADDRESS"
+
+pattern InvalidEmail :: CreateAccountFailureReason
+pattern InvalidEmail = CreateAccountFailureReason' "INVALID_EMAIL"
+
+{-# COMPLETE
+  AccountLimitExceeded,
+  ConcurrentAccountModification,
+  EmailAlreadyExists,
+  InternalFailure,
+  InvalidAddress,
+  InvalidEmail,
+  CreateAccountFailureReason' #-}
 
 instance FromText CreateAccountFailureReason where
-    parser = takeLowerText >>= \case
-        "account_limit_exceeded" -> pure AccountLimitExceeded
-        "concurrent_account_modification" -> pure ConcurrentAccountModification
-        "email_already_exists" -> pure EmailAlreadyExists
-        "internal_failure" -> pure InternalFailure
-        "invalid_address" -> pure InvalidAddress
-        "invalid_email" -> pure InvalidEmail
-        e -> fromTextError $ "Failure parsing CreateAccountFailureReason from value: '" <> e
-           <> "'. Accepted values: account_limit_exceeded, concurrent_account_modification, email_already_exists, internal_failure, invalid_address, invalid_email"
+    parser = (CreateAccountFailureReason' . mk) <$> takeText
 
 instance ToText CreateAccountFailureReason where
-    toText = \case
-        AccountLimitExceeded -> "ACCOUNT_LIMIT_EXCEEDED"
-        ConcurrentAccountModification -> "CONCURRENT_ACCOUNT_MODIFICATION"
-        EmailAlreadyExists -> "EMAIL_ALREADY_EXISTS"
-        InternalFailure -> "INTERNAL_FAILURE"
-        InvalidAddress -> "INVALID_ADDRESS"
-        InvalidEmail -> "INVALID_EMAIL"
+    toText (CreateAccountFailureReason' ci) = original ci
+
+-- | Represents an enum of /known/ $CreateAccountFailureReason.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum CreateAccountFailureReason where
+    toEnum i = case i of
+        0 -> AccountLimitExceeded
+        1 -> ConcurrentAccountModification
+        2 -> EmailAlreadyExists
+        3 -> InternalFailure
+        4 -> InvalidAddress
+        5 -> InvalidEmail
+        _ -> (error . showText) $ "Unknown index for CreateAccountFailureReason: " <> toText i
+    fromEnum x = case x of
+        AccountLimitExceeded -> 0
+        ConcurrentAccountModification -> 1
+        EmailAlreadyExists -> 2
+        InternalFailure -> 3
+        InvalidAddress -> 4
+        InvalidEmail -> 5
+        CreateAccountFailureReason' name -> (error . showText) $ "Unknown CreateAccountFailureReason: " <> original name
+
+-- | Represents the bounds of /known/ $CreateAccountFailureReason.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded CreateAccountFailureReason where
+    minBound = AccountLimitExceeded
+    maxBound = InvalidEmail
 
 instance Hashable     CreateAccountFailureReason
 instance NFData       CreateAccountFailureReason

@@ -52,6 +52,7 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.SageMaker.Types
+import Network.AWS.SageMaker.Types.Product
 
 -- | /See:/ 'createEndpoint' smart constructor.
 data CreateEndpoint = CreateEndpoint'{_ceTags ::

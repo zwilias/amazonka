@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,27 +16,60 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.CertificateManager.Types.CertificateTransparencyLoggingPreference where
+module Network.AWS.CertificateManager.Types.CertificateTransparencyLoggingPreference (
+  CertificateTransparencyLoggingPreference (
+    ..
+    , Disabled
+    , Enabled
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data CertificateTransparencyLoggingPreference = Disabled
-                                              | Enabled
+
+data CertificateTransparencyLoggingPreference = CertificateTransparencyLoggingPreference' (CI
+                                                                                             Text)
                                                   deriving (Eq, Ord, Read, Show,
-                                                            Enum, Bounded, Data,
-                                                            Typeable, Generic)
+                                                            Data, Typeable,
+                                                            Generic)
+
+pattern Disabled :: CertificateTransparencyLoggingPreference
+pattern Disabled = CertificateTransparencyLoggingPreference' "DISABLED"
+
+pattern Enabled :: CertificateTransparencyLoggingPreference
+pattern Enabled = CertificateTransparencyLoggingPreference' "ENABLED"
+
+{-# COMPLETE
+  Disabled,
+  Enabled,
+  CertificateTransparencyLoggingPreference' #-}
 
 instance FromText CertificateTransparencyLoggingPreference where
-    parser = takeLowerText >>= \case
-        "disabled" -> pure Disabled
-        "enabled" -> pure Enabled
-        e -> fromTextError $ "Failure parsing CertificateTransparencyLoggingPreference from value: '" <> e
-           <> "'. Accepted values: disabled, enabled"
+    parser = (CertificateTransparencyLoggingPreference' . mk) <$> takeText
 
 instance ToText CertificateTransparencyLoggingPreference where
-    toText = \case
-        Disabled -> "DISABLED"
-        Enabled -> "ENABLED"
+    toText (CertificateTransparencyLoggingPreference' ci) = original ci
+
+-- | Represents an enum of /known/ $CertificateTransparencyLoggingPreference.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum CertificateTransparencyLoggingPreference where
+    toEnum i = case i of
+        0 -> Disabled
+        1 -> Enabled
+        _ -> (error . showText) $ "Unknown index for CertificateTransparencyLoggingPreference: " <> toText i
+    fromEnum x = case x of
+        Disabled -> 0
+        Enabled -> 1
+        CertificateTransparencyLoggingPreference' name -> (error . showText) $ "Unknown CertificateTransparencyLoggingPreference: " <> original name
+
+-- | Represents the bounds of /known/ $CertificateTransparencyLoggingPreference.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded CertificateTransparencyLoggingPreference where
+    minBound = Disabled
+    maxBound = Enabled
 
 instance Hashable     CertificateTransparencyLoggingPreference
 instance NFData       CertificateTransparencyLoggingPreference

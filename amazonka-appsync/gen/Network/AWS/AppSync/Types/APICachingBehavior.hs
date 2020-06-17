@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,59 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.AppSync.Types.APICachingBehavior where
+module Network.AWS.AppSync.Types.APICachingBehavior (
+  APICachingBehavior (
+    ..
+    , FullRequestCaching
+    , PerResolverCaching
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data APICachingBehavior = FullRequestCaching
-                        | PerResolverCaching
-                            deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                      Typeable, Generic)
+
+data APICachingBehavior = APICachingBehavior' (CI
+                                                 Text)
+                            deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                      Generic)
+
+pattern FullRequestCaching :: APICachingBehavior
+pattern FullRequestCaching = APICachingBehavior' "FULL_REQUEST_CACHING"
+
+pattern PerResolverCaching :: APICachingBehavior
+pattern PerResolverCaching = APICachingBehavior' "PER_RESOLVER_CACHING"
+
+{-# COMPLETE
+  FullRequestCaching,
+  PerResolverCaching,
+  APICachingBehavior' #-}
 
 instance FromText APICachingBehavior where
-    parser = takeLowerText >>= \case
-        "full_request_caching" -> pure FullRequestCaching
-        "per_resolver_caching" -> pure PerResolverCaching
-        e -> fromTextError $ "Failure parsing APICachingBehavior from value: '" <> e
-           <> "'. Accepted values: full_request_caching, per_resolver_caching"
+    parser = (APICachingBehavior' . mk) <$> takeText
 
 instance ToText APICachingBehavior where
-    toText = \case
-        FullRequestCaching -> "FULL_REQUEST_CACHING"
-        PerResolverCaching -> "PER_RESOLVER_CACHING"
+    toText (APICachingBehavior' ci) = original ci
+
+-- | Represents an enum of /known/ $APICachingBehavior.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum APICachingBehavior where
+    toEnum i = case i of
+        0 -> FullRequestCaching
+        1 -> PerResolverCaching
+        _ -> (error . showText) $ "Unknown index for APICachingBehavior: " <> toText i
+    fromEnum x = case x of
+        FullRequestCaching -> 0
+        PerResolverCaching -> 1
+        APICachingBehavior' name -> (error . showText) $ "Unknown APICachingBehavior: " <> original name
+
+-- | Represents the bounds of /known/ $APICachingBehavior.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded APICachingBehavior where
+    minBound = FullRequestCaching
+    maxBound = PerResolverCaching
 
 instance Hashable     APICachingBehavior
 instance NFData       APICachingBehavior

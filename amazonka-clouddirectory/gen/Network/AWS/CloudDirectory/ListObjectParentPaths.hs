@@ -46,6 +46,7 @@ module Network.AWS.CloudDirectory.ListObjectParentPaths
     ) where
 
 import Network.AWS.CloudDirectory.Types
+import Network.AWS.CloudDirectory.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude

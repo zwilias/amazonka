@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,30 +16,66 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.Config.Types.OrganizationConfigRuleTriggerType where
+module Network.AWS.Config.Types.OrganizationConfigRuleTriggerType (
+  OrganizationConfigRuleTriggerType (
+    ..
+    , OCRTTConfigurationItemChangeNotification
+    , OCRTTOversizedConfigurationItemChangeNotification
+    , OCRTTScheduledNotification
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data OrganizationConfigRuleTriggerType = OCRTTConfigurationItemChangeNotification
-                                       | OCRTTOversizedConfigurationItemChangeNotification
-                                       | OCRTTScheduledNotification
-                                           deriving (Eq, Ord, Read, Show, Enum,
-                                                     Bounded, Data, Typeable,
-                                                     Generic)
+
+data OrganizationConfigRuleTriggerType = OrganizationConfigRuleTriggerType' (CI
+                                                                               Text)
+                                           deriving (Eq, Ord, Read, Show, Data,
+                                                     Typeable, Generic)
+
+pattern OCRTTConfigurationItemChangeNotification :: OrganizationConfigRuleTriggerType
+pattern OCRTTConfigurationItemChangeNotification = OrganizationConfigRuleTriggerType' "ConfigurationItemChangeNotification"
+
+pattern OCRTTOversizedConfigurationItemChangeNotification :: OrganizationConfigRuleTriggerType
+pattern OCRTTOversizedConfigurationItemChangeNotification = OrganizationConfigRuleTriggerType' "OversizedConfigurationItemChangeNotification"
+
+pattern OCRTTScheduledNotification :: OrganizationConfigRuleTriggerType
+pattern OCRTTScheduledNotification = OrganizationConfigRuleTriggerType' "ScheduledNotification"
+
+{-# COMPLETE
+  OCRTTConfigurationItemChangeNotification,
+  OCRTTOversizedConfigurationItemChangeNotification,
+  OCRTTScheduledNotification,
+  OrganizationConfigRuleTriggerType' #-}
 
 instance FromText OrganizationConfigRuleTriggerType where
-    parser = takeLowerText >>= \case
-        "configurationitemchangenotification" -> pure OCRTTConfigurationItemChangeNotification
-        "oversizedconfigurationitemchangenotification" -> pure OCRTTOversizedConfigurationItemChangeNotification
-        "schedulednotification" -> pure OCRTTScheduledNotification
-        e -> fromTextError $ "Failure parsing OrganizationConfigRuleTriggerType from value: '" <> e
-           <> "'. Accepted values: configurationitemchangenotification, oversizedconfigurationitemchangenotification, schedulednotification"
+    parser = (OrganizationConfigRuleTriggerType' . mk) <$> takeText
 
 instance ToText OrganizationConfigRuleTriggerType where
-    toText = \case
-        OCRTTConfigurationItemChangeNotification -> "ConfigurationItemChangeNotification"
-        OCRTTOversizedConfigurationItemChangeNotification -> "OversizedConfigurationItemChangeNotification"
-        OCRTTScheduledNotification -> "ScheduledNotification"
+    toText (OrganizationConfigRuleTriggerType' ci) = original ci
+
+-- | Represents an enum of /known/ $OrganizationConfigRuleTriggerType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum OrganizationConfigRuleTriggerType where
+    toEnum i = case i of
+        0 -> OCRTTConfigurationItemChangeNotification
+        1 -> OCRTTOversizedConfigurationItemChangeNotification
+        2 -> OCRTTScheduledNotification
+        _ -> (error . showText) $ "Unknown index for OrganizationConfigRuleTriggerType: " <> toText i
+    fromEnum x = case x of
+        OCRTTConfigurationItemChangeNotification -> 0
+        OCRTTOversizedConfigurationItemChangeNotification -> 1
+        OCRTTScheduledNotification -> 2
+        OrganizationConfigRuleTriggerType' name -> (error . showText) $ "Unknown OrganizationConfigRuleTriggerType: " <> original name
+
+-- | Represents the bounds of /known/ $OrganizationConfigRuleTriggerType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded OrganizationConfigRuleTriggerType where
+    minBound = OCRTTConfigurationItemChangeNotification
+    maxBound = OCRTTScheduledNotification
 
 instance Hashable     OrganizationConfigRuleTriggerType
 instance NFData       OrganizationConfigRuleTriggerType

@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,40 +16,88 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.MediaConvert.Types.Eac3DynamicRangeCompressionLine where
+module Network.AWS.MediaConvert.Types.Eac3DynamicRangeCompressionLine (
+  Eac3DynamicRangeCompressionLine (
+    ..
+    , EDRCLFilmLight
+    , EDRCLFilmStandard
+    , EDRCLMusicLight
+    , EDRCLMusicStandard
+    , EDRCLNone
+    , EDRCLSpeech
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
+
 -- | Enables Dynamic Range Compression that restricts the absolute peak level for a signal.
-data Eac3DynamicRangeCompressionLine = EDRCLFilmLight
-                                     | EDRCLFilmStandard
-                                     | EDRCLMusicLight
-                                     | EDRCLMusicStandard
-                                     | EDRCLNone
-                                     | EDRCLSpeech
-                                         deriving (Eq, Ord, Read, Show, Enum,
-                                                   Bounded, Data, Typeable,
-                                                   Generic)
+data Eac3DynamicRangeCompressionLine = Eac3DynamicRangeCompressionLine' (CI
+                                                                           Text)
+                                         deriving (Eq, Ord, Read, Show, Data,
+                                                   Typeable, Generic)
+
+pattern EDRCLFilmLight :: Eac3DynamicRangeCompressionLine
+pattern EDRCLFilmLight = Eac3DynamicRangeCompressionLine' "FILM_LIGHT"
+
+pattern EDRCLFilmStandard :: Eac3DynamicRangeCompressionLine
+pattern EDRCLFilmStandard = Eac3DynamicRangeCompressionLine' "FILM_STANDARD"
+
+pattern EDRCLMusicLight :: Eac3DynamicRangeCompressionLine
+pattern EDRCLMusicLight = Eac3DynamicRangeCompressionLine' "MUSIC_LIGHT"
+
+pattern EDRCLMusicStandard :: Eac3DynamicRangeCompressionLine
+pattern EDRCLMusicStandard = Eac3DynamicRangeCompressionLine' "MUSIC_STANDARD"
+
+pattern EDRCLNone :: Eac3DynamicRangeCompressionLine
+pattern EDRCLNone = Eac3DynamicRangeCompressionLine' "NONE"
+
+pattern EDRCLSpeech :: Eac3DynamicRangeCompressionLine
+pattern EDRCLSpeech = Eac3DynamicRangeCompressionLine' "SPEECH"
+
+{-# COMPLETE
+  EDRCLFilmLight,
+  EDRCLFilmStandard,
+  EDRCLMusicLight,
+  EDRCLMusicStandard,
+  EDRCLNone,
+  EDRCLSpeech,
+  Eac3DynamicRangeCompressionLine' #-}
 
 instance FromText Eac3DynamicRangeCompressionLine where
-    parser = takeLowerText >>= \case
-        "film_light" -> pure EDRCLFilmLight
-        "film_standard" -> pure EDRCLFilmStandard
-        "music_light" -> pure EDRCLMusicLight
-        "music_standard" -> pure EDRCLMusicStandard
-        "none" -> pure EDRCLNone
-        "speech" -> pure EDRCLSpeech
-        e -> fromTextError $ "Failure parsing Eac3DynamicRangeCompressionLine from value: '" <> e
-           <> "'. Accepted values: film_light, film_standard, music_light, music_standard, none, speech"
+    parser = (Eac3DynamicRangeCompressionLine' . mk) <$> takeText
 
 instance ToText Eac3DynamicRangeCompressionLine where
-    toText = \case
-        EDRCLFilmLight -> "FILM_LIGHT"
-        EDRCLFilmStandard -> "FILM_STANDARD"
-        EDRCLMusicLight -> "MUSIC_LIGHT"
-        EDRCLMusicStandard -> "MUSIC_STANDARD"
-        EDRCLNone -> "NONE"
-        EDRCLSpeech -> "SPEECH"
+    toText (Eac3DynamicRangeCompressionLine' ci) = original ci
+
+-- | Represents an enum of /known/ $Eac3DynamicRangeCompressionLine.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum Eac3DynamicRangeCompressionLine where
+    toEnum i = case i of
+        0 -> EDRCLFilmLight
+        1 -> EDRCLFilmStandard
+        2 -> EDRCLMusicLight
+        3 -> EDRCLMusicStandard
+        4 -> EDRCLNone
+        5 -> EDRCLSpeech
+        _ -> (error . showText) $ "Unknown index for Eac3DynamicRangeCompressionLine: " <> toText i
+    fromEnum x = case x of
+        EDRCLFilmLight -> 0
+        EDRCLFilmStandard -> 1
+        EDRCLMusicLight -> 2
+        EDRCLMusicStandard -> 3
+        EDRCLNone -> 4
+        EDRCLSpeech -> 5
+        Eac3DynamicRangeCompressionLine' name -> (error . showText) $ "Unknown Eac3DynamicRangeCompressionLine: " <> original name
+
+-- | Represents the bounds of /known/ $Eac3DynamicRangeCompressionLine.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded Eac3DynamicRangeCompressionLine where
+    minBound = EDRCLFilmLight
+    maxBound = EDRCLSpeech
 
 instance Hashable     Eac3DynamicRangeCompressionLine
 instance NFData       Eac3DynamicRangeCompressionLine

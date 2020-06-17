@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,58 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.Inspector.Types.ReportType where
+module Network.AWS.Inspector.Types.ReportType (
+  ReportType (
+    ..
+    , Finding
+    , Full
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data ReportType = Finding
-                | Full
-                    deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                              Typeable, Generic)
+
+data ReportType = ReportType' (CI Text)
+                    deriving (Eq, Ord, Read, Show, Data, Typeable,
+                              Generic)
+
+pattern Finding :: ReportType
+pattern Finding = ReportType' "FINDING"
+
+pattern Full :: ReportType
+pattern Full = ReportType' "FULL"
+
+{-# COMPLETE
+  Finding,
+  Full,
+  ReportType' #-}
 
 instance FromText ReportType where
-    parser = takeLowerText >>= \case
-        "finding" -> pure Finding
-        "full" -> pure Full
-        e -> fromTextError $ "Failure parsing ReportType from value: '" <> e
-           <> "'. Accepted values: finding, full"
+    parser = (ReportType' . mk) <$> takeText
 
 instance ToText ReportType where
-    toText = \case
-        Finding -> "FINDING"
-        Full -> "FULL"
+    toText (ReportType' ci) = original ci
+
+-- | Represents an enum of /known/ $ReportType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum ReportType where
+    toEnum i = case i of
+        0 -> Finding
+        1 -> Full
+        _ -> (error . showText) $ "Unknown index for ReportType: " <> toText i
+    fromEnum x = case x of
+        Finding -> 0
+        Full -> 1
+        ReportType' name -> (error . showText) $ "Unknown ReportType: " <> original name
+
+-- | Represents the bounds of /known/ $ReportType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded ReportType where
+    minBound = Finding
+    maxBound = Full
 
 instance Hashable     ReportType
 instance NFData       ReportType

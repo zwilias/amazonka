@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,29 +16,65 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.IAM.Types.ReportStateType where
+module Network.AWS.IAM.Types.ReportStateType (
+  ReportStateType (
+    ..
+    , RSTComplete
+    , RSTInprogress
+    , RSTStarted
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data ReportStateType = RSTComplete
-                     | RSTInprogress
-                     | RSTStarted
-                         deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                   Typeable, Generic)
+
+data ReportStateType = ReportStateType' (CI Text)
+                         deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                   Generic)
+
+pattern RSTComplete :: ReportStateType
+pattern RSTComplete = ReportStateType' "COMPLETE"
+
+pattern RSTInprogress :: ReportStateType
+pattern RSTInprogress = ReportStateType' "INPROGRESS"
+
+pattern RSTStarted :: ReportStateType
+pattern RSTStarted = ReportStateType' "STARTED"
+
+{-# COMPLETE
+  RSTComplete,
+  RSTInprogress,
+  RSTStarted,
+  ReportStateType' #-}
 
 instance FromText ReportStateType where
-    parser = takeLowerText >>= \case
-        "complete" -> pure RSTComplete
-        "inprogress" -> pure RSTInprogress
-        "started" -> pure RSTStarted
-        e -> fromTextError $ "Failure parsing ReportStateType from value: '" <> e
-           <> "'. Accepted values: complete, inprogress, started"
+    parser = (ReportStateType' . mk) <$> takeText
 
 instance ToText ReportStateType where
-    toText = \case
-        RSTComplete -> "COMPLETE"
-        RSTInprogress -> "INPROGRESS"
-        RSTStarted -> "STARTED"
+    toText (ReportStateType' ci) = original ci
+
+-- | Represents an enum of /known/ $ReportStateType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum ReportStateType where
+    toEnum i = case i of
+        0 -> RSTComplete
+        1 -> RSTInprogress
+        2 -> RSTStarted
+        _ -> (error . showText) $ "Unknown index for ReportStateType: " <> toText i
+    fromEnum x = case x of
+        RSTComplete -> 0
+        RSTInprogress -> 1
+        RSTStarted -> 2
+        ReportStateType' name -> (error . showText) $ "Unknown ReportStateType: " <> original name
+
+-- | Represents the bounds of /known/ $ReportStateType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded ReportStateType where
+    minBound = RSTComplete
+    maxBound = RSTStarted
 
 instance Hashable     ReportStateType
 instance NFData       ReportStateType

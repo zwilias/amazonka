@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,23 +16,51 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.CodeBuild.Types.FileSystemType where
+module Network.AWS.CodeBuild.Types.FileSystemType (
+  FileSystemType (
+    ..
+    , Efs
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data FileSystemType = Efs
-                        deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                  Typeable, Generic)
+
+data FileSystemType = FileSystemType' (CI Text)
+                        deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                  Generic)
+
+pattern Efs :: FileSystemType
+pattern Efs = FileSystemType' "EFS"
+
+{-# COMPLETE
+  Efs,
+  FileSystemType' #-}
 
 instance FromText FileSystemType where
-    parser = takeLowerText >>= \case
-        "efs" -> pure Efs
-        e -> fromTextError $ "Failure parsing FileSystemType from value: '" <> e
-           <> "'. Accepted values: efs"
+    parser = (FileSystemType' . mk) <$> takeText
 
 instance ToText FileSystemType where
-    toText = \case
-        Efs -> "EFS"
+    toText (FileSystemType' ci) = original ci
+
+-- | Represents an enum of /known/ $FileSystemType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum FileSystemType where
+    toEnum i = case i of
+        0 -> Efs
+        _ -> (error . showText) $ "Unknown index for FileSystemType: " <> toText i
+    fromEnum x = case x of
+        Efs -> 0
+        FileSystemType' name -> (error . showText) $ "Unknown FileSystemType: " <> original name
+
+-- | Represents the bounds of /known/ $FileSystemType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded FileSystemType where
+    minBound = Efs
+    maxBound = Efs
 
 instance Hashable     FileSystemType
 instance NFData       FileSystemType

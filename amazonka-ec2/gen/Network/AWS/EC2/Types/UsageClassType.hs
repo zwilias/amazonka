@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,27 +16,59 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.EC2.Types.UsageClassType where
+module Network.AWS.EC2.Types.UsageClassType (
+  UsageClassType (
+    ..
+    , UCTOnDemand
+    , UCTSpot
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.EC2.Internal
 import Network.AWS.Prelude
-  
-data UsageClassType = UCTOnDemand
-                    | UCTSpot
-                        deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                  Typeable, Generic)
+
+data UsageClassType = UsageClassType' (CI Text)
+                        deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                  Generic)
+
+pattern UCTOnDemand :: UsageClassType
+pattern UCTOnDemand = UsageClassType' "on-demand"
+
+pattern UCTSpot :: UsageClassType
+pattern UCTSpot = UsageClassType' "spot"
+
+{-# COMPLETE
+  UCTOnDemand,
+  UCTSpot,
+  UsageClassType' #-}
 
 instance FromText UsageClassType where
-    parser = takeLowerText >>= \case
-        "on-demand" -> pure UCTOnDemand
-        "spot" -> pure UCTSpot
-        e -> fromTextError $ "Failure parsing UsageClassType from value: '" <> e
-           <> "'. Accepted values: on-demand, spot"
+    parser = (UsageClassType' . mk) <$> takeText
 
 instance ToText UsageClassType where
-    toText = \case
-        UCTOnDemand -> "on-demand"
-        UCTSpot -> "spot"
+    toText (UsageClassType' ci) = original ci
+
+-- | Represents an enum of /known/ $UsageClassType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum UsageClassType where
+    toEnum i = case i of
+        0 -> UCTOnDemand
+        1 -> UCTSpot
+        _ -> (error . showText) $ "Unknown index for UsageClassType: " <> toText i
+    fromEnum x = case x of
+        UCTOnDemand -> 0
+        UCTSpot -> 1
+        UsageClassType' name -> (error . showText) $ "Unknown UsageClassType: " <> original name
+
+-- | Represents the bounds of /known/ $UsageClassType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded UsageClassType where
+    minBound = UCTOnDemand
+    maxBound = UCTSpot
 
 instance Hashable     UsageClassType
 instance NFData       UsageClassType

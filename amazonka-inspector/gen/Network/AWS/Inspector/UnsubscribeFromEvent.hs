@@ -37,6 +37,7 @@ module Network.AWS.Inspector.UnsubscribeFromEvent
     ) where
 
 import Network.AWS.Inspector.Types
+import Network.AWS.Inspector.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request

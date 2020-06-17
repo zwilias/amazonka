@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,30 +16,66 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.EC2.Types.PaymentOption where
+module Network.AWS.EC2.Types.PaymentOption (
+  PaymentOption (
+    ..
+    , POAllUpfront
+    , PONoUpfront
+    , POPartialUpfront
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.EC2.Internal
 import Network.AWS.Prelude
-  
-data PaymentOption = POAllUpfront
-                   | PONoUpfront
-                   | POPartialUpfront
-                       deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                 Typeable, Generic)
+
+data PaymentOption = PaymentOption' (CI Text)
+                       deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                 Generic)
+
+pattern POAllUpfront :: PaymentOption
+pattern POAllUpfront = PaymentOption' "AllUpfront"
+
+pattern PONoUpfront :: PaymentOption
+pattern PONoUpfront = PaymentOption' "NoUpfront"
+
+pattern POPartialUpfront :: PaymentOption
+pattern POPartialUpfront = PaymentOption' "PartialUpfront"
+
+{-# COMPLETE
+  POAllUpfront,
+  PONoUpfront,
+  POPartialUpfront,
+  PaymentOption' #-}
 
 instance FromText PaymentOption where
-    parser = takeLowerText >>= \case
-        "allupfront" -> pure POAllUpfront
-        "noupfront" -> pure PONoUpfront
-        "partialupfront" -> pure POPartialUpfront
-        e -> fromTextError $ "Failure parsing PaymentOption from value: '" <> e
-           <> "'. Accepted values: allupfront, noupfront, partialupfront"
+    parser = (PaymentOption' . mk) <$> takeText
 
 instance ToText PaymentOption where
-    toText = \case
-        POAllUpfront -> "AllUpfront"
-        PONoUpfront -> "NoUpfront"
-        POPartialUpfront -> "PartialUpfront"
+    toText (PaymentOption' ci) = original ci
+
+-- | Represents an enum of /known/ $PaymentOption.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum PaymentOption where
+    toEnum i = case i of
+        0 -> POAllUpfront
+        1 -> PONoUpfront
+        2 -> POPartialUpfront
+        _ -> (error . showText) $ "Unknown index for PaymentOption: " <> toText i
+    fromEnum x = case x of
+        POAllUpfront -> 0
+        PONoUpfront -> 1
+        POPartialUpfront -> 2
+        PaymentOption' name -> (error . showText) $ "Unknown PaymentOption: " <> original name
+
+-- | Represents the bounds of /known/ $PaymentOption.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded PaymentOption where
+    minBound = POAllUpfront
+    maxBound = POPartialUpfront
 
 instance Hashable     PaymentOption
 instance NFData       PaymentOption

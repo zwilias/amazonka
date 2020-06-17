@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,36 +16,80 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.Firehose.Types.ElasticsearchIndexRotationPeriod where
+module Network.AWS.Firehose.Types.ElasticsearchIndexRotationPeriod (
+  ElasticsearchIndexRotationPeriod (
+    ..
+    , NoRotation
+    , OneDay
+    , OneHour
+    , OneMonth
+    , OneWeek
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data ElasticsearchIndexRotationPeriod = NoRotation
-                                      | OneDay
-                                      | OneHour
-                                      | OneMonth
-                                      | OneWeek
-                                          deriving (Eq, Ord, Read, Show, Enum,
-                                                    Bounded, Data, Typeable,
-                                                    Generic)
+
+data ElasticsearchIndexRotationPeriod = ElasticsearchIndexRotationPeriod' (CI
+                                                                             Text)
+                                          deriving (Eq, Ord, Read, Show, Data,
+                                                    Typeable, Generic)
+
+pattern NoRotation :: ElasticsearchIndexRotationPeriod
+pattern NoRotation = ElasticsearchIndexRotationPeriod' "NoRotation"
+
+pattern OneDay :: ElasticsearchIndexRotationPeriod
+pattern OneDay = ElasticsearchIndexRotationPeriod' "OneDay"
+
+pattern OneHour :: ElasticsearchIndexRotationPeriod
+pattern OneHour = ElasticsearchIndexRotationPeriod' "OneHour"
+
+pattern OneMonth :: ElasticsearchIndexRotationPeriod
+pattern OneMonth = ElasticsearchIndexRotationPeriod' "OneMonth"
+
+pattern OneWeek :: ElasticsearchIndexRotationPeriod
+pattern OneWeek = ElasticsearchIndexRotationPeriod' "OneWeek"
+
+{-# COMPLETE
+  NoRotation,
+  OneDay,
+  OneHour,
+  OneMonth,
+  OneWeek,
+  ElasticsearchIndexRotationPeriod' #-}
 
 instance FromText ElasticsearchIndexRotationPeriod where
-    parser = takeLowerText >>= \case
-        "norotation" -> pure NoRotation
-        "oneday" -> pure OneDay
-        "onehour" -> pure OneHour
-        "onemonth" -> pure OneMonth
-        "oneweek" -> pure OneWeek
-        e -> fromTextError $ "Failure parsing ElasticsearchIndexRotationPeriod from value: '" <> e
-           <> "'. Accepted values: norotation, oneday, onehour, onemonth, oneweek"
+    parser = (ElasticsearchIndexRotationPeriod' . mk) <$> takeText
 
 instance ToText ElasticsearchIndexRotationPeriod where
-    toText = \case
-        NoRotation -> "NoRotation"
-        OneDay -> "OneDay"
-        OneHour -> "OneHour"
-        OneMonth -> "OneMonth"
-        OneWeek -> "OneWeek"
+    toText (ElasticsearchIndexRotationPeriod' ci) = original ci
+
+-- | Represents an enum of /known/ $ElasticsearchIndexRotationPeriod.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum ElasticsearchIndexRotationPeriod where
+    toEnum i = case i of
+        0 -> NoRotation
+        1 -> OneDay
+        2 -> OneHour
+        3 -> OneMonth
+        4 -> OneWeek
+        _ -> (error . showText) $ "Unknown index for ElasticsearchIndexRotationPeriod: " <> toText i
+    fromEnum x = case x of
+        NoRotation -> 0
+        OneDay -> 1
+        OneHour -> 2
+        OneMonth -> 3
+        OneWeek -> 4
+        ElasticsearchIndexRotationPeriod' name -> (error . showText) $ "Unknown ElasticsearchIndexRotationPeriod: " <> original name
+
+-- | Represents the bounds of /known/ $ElasticsearchIndexRotationPeriod.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded ElasticsearchIndexRotationPeriod where
+    minBound = NoRotation
+    maxBound = OneWeek
 
 instance Hashable     ElasticsearchIndexRotationPeriod
 instance NFData       ElasticsearchIndexRotationPeriod

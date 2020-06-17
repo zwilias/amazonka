@@ -40,6 +40,7 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.XRay.Types
+import Network.AWS.XRay.Types.Product
 
 -- | /See:/ 'getEncryptionConfig' smart constructor.
 data GetEncryptionConfig = GetEncryptionConfig'

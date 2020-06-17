@@ -151,6 +151,7 @@ library
         , Network.AWS.ElasticBeanstalk.Types.PlatformProgrammingLanguage
         , Network.AWS.ElasticBeanstalk.Types.PlatformStatus
         , Network.AWS.ElasticBeanstalk.Types.PlatformSummary
+        , Network.AWS.ElasticBeanstalk.Types.Product
         , Network.AWS.ElasticBeanstalk.Types.Queue
         , Network.AWS.ElasticBeanstalk.Types.ResourceQuota
         , Network.AWS.ElasticBeanstalk.Types.ResourceQuotas
@@ -171,6 +172,7 @@ library
     build-depends:
           amazonka-core == 1.6.1.*
         , base          >= 4.7     && < 5
+        , case-insensitive
 
 test-suite amazonka-elasticbeanstalk-test
     type:              exitcode-stdio-1.0
@@ -194,6 +196,7 @@ test-suite amazonka-elasticbeanstalk-test
         , amazonka-elasticbeanstalk
         , base
         , bytestring
+        , case-insensitive
         , tasty
         , tasty-hunit
         , text

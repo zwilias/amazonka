@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,32 +16,72 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.AutoScalingPlans.Types.LoadMetricType where
+module Network.AWS.AutoScalingPlans.Types.LoadMetricType (
+  LoadMetricType (
+    ..
+    , ALBTargetGroupRequestCount
+    , ASGTotalCPUUtilization
+    , ASGTotalNetworkIn
+    , ASGTotalNetworkOut
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data LoadMetricType = ALBTargetGroupRequestCount
-                    | ASGTotalCPUUtilization
-                    | ASGTotalNetworkIn
-                    | ASGTotalNetworkOut
-                        deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                  Typeable, Generic)
+
+data LoadMetricType = LoadMetricType' (CI Text)
+                        deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                  Generic)
+
+pattern ALBTargetGroupRequestCount :: LoadMetricType
+pattern ALBTargetGroupRequestCount = LoadMetricType' "ALBTargetGroupRequestCount"
+
+pattern ASGTotalCPUUtilization :: LoadMetricType
+pattern ASGTotalCPUUtilization = LoadMetricType' "ASGTotalCPUUtilization"
+
+pattern ASGTotalNetworkIn :: LoadMetricType
+pattern ASGTotalNetworkIn = LoadMetricType' "ASGTotalNetworkIn"
+
+pattern ASGTotalNetworkOut :: LoadMetricType
+pattern ASGTotalNetworkOut = LoadMetricType' "ASGTotalNetworkOut"
+
+{-# COMPLETE
+  ALBTargetGroupRequestCount,
+  ASGTotalCPUUtilization,
+  ASGTotalNetworkIn,
+  ASGTotalNetworkOut,
+  LoadMetricType' #-}
 
 instance FromText LoadMetricType where
-    parser = takeLowerText >>= \case
-        "albtargetgrouprequestcount" -> pure ALBTargetGroupRequestCount
-        "asgtotalcpuutilization" -> pure ASGTotalCPUUtilization
-        "asgtotalnetworkin" -> pure ASGTotalNetworkIn
-        "asgtotalnetworkout" -> pure ASGTotalNetworkOut
-        e -> fromTextError $ "Failure parsing LoadMetricType from value: '" <> e
-           <> "'. Accepted values: albtargetgrouprequestcount, asgtotalcpuutilization, asgtotalnetworkin, asgtotalnetworkout"
+    parser = (LoadMetricType' . mk) <$> takeText
 
 instance ToText LoadMetricType where
-    toText = \case
-        ALBTargetGroupRequestCount -> "ALBTargetGroupRequestCount"
-        ASGTotalCPUUtilization -> "ASGTotalCPUUtilization"
-        ASGTotalNetworkIn -> "ASGTotalNetworkIn"
-        ASGTotalNetworkOut -> "ASGTotalNetworkOut"
+    toText (LoadMetricType' ci) = original ci
+
+-- | Represents an enum of /known/ $LoadMetricType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum LoadMetricType where
+    toEnum i = case i of
+        0 -> ALBTargetGroupRequestCount
+        1 -> ASGTotalCPUUtilization
+        2 -> ASGTotalNetworkIn
+        3 -> ASGTotalNetworkOut
+        _ -> (error . showText) $ "Unknown index for LoadMetricType: " <> toText i
+    fromEnum x = case x of
+        ALBTargetGroupRequestCount -> 0
+        ASGTotalCPUUtilization -> 1
+        ASGTotalNetworkIn -> 2
+        ASGTotalNetworkOut -> 3
+        LoadMetricType' name -> (error . showText) $ "Unknown LoadMetricType: " <> original name
+
+-- | Represents the bounds of /known/ $LoadMetricType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded LoadMetricType where
+    minBound = ALBTargetGroupRequestCount
+    maxBound = ASGTotalNetworkOut
 
 instance Hashable     LoadMetricType
 instance NFData       LoadMetricType

@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,29 +16,65 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.Glue.Types.ScheduleState where
+module Network.AWS.Glue.Types.ScheduleState (
+  ScheduleState (
+    ..
+    , NotScheduled
+    , Scheduled
+    , Transitioning
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data ScheduleState = NotScheduled
-                   | Scheduled
-                   | Transitioning
-                       deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                 Typeable, Generic)
+
+data ScheduleState = ScheduleState' (CI Text)
+                       deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                 Generic)
+
+pattern NotScheduled :: ScheduleState
+pattern NotScheduled = ScheduleState' "NOT_SCHEDULED"
+
+pattern Scheduled :: ScheduleState
+pattern Scheduled = ScheduleState' "SCHEDULED"
+
+pattern Transitioning :: ScheduleState
+pattern Transitioning = ScheduleState' "TRANSITIONING"
+
+{-# COMPLETE
+  NotScheduled,
+  Scheduled,
+  Transitioning,
+  ScheduleState' #-}
 
 instance FromText ScheduleState where
-    parser = takeLowerText >>= \case
-        "not_scheduled" -> pure NotScheduled
-        "scheduled" -> pure Scheduled
-        "transitioning" -> pure Transitioning
-        e -> fromTextError $ "Failure parsing ScheduleState from value: '" <> e
-           <> "'. Accepted values: not_scheduled, scheduled, transitioning"
+    parser = (ScheduleState' . mk) <$> takeText
 
 instance ToText ScheduleState where
-    toText = \case
-        NotScheduled -> "NOT_SCHEDULED"
-        Scheduled -> "SCHEDULED"
-        Transitioning -> "TRANSITIONING"
+    toText (ScheduleState' ci) = original ci
+
+-- | Represents an enum of /known/ $ScheduleState.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum ScheduleState where
+    toEnum i = case i of
+        0 -> NotScheduled
+        1 -> Scheduled
+        2 -> Transitioning
+        _ -> (error . showText) $ "Unknown index for ScheduleState: " <> toText i
+    fromEnum x = case x of
+        NotScheduled -> 0
+        Scheduled -> 1
+        Transitioning -> 2
+        ScheduleState' name -> (error . showText) $ "Unknown ScheduleState: " <> original name
+
+-- | Represents the bounds of /known/ $ScheduleState.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded ScheduleState where
+    minBound = NotScheduled
+    maxBound = Transitioning
 
 instance Hashable     ScheduleState
 instance NFData       ScheduleState

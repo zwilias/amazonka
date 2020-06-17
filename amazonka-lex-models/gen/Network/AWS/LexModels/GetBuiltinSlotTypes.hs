@@ -49,6 +49,7 @@ module Network.AWS.LexModels.GetBuiltinSlotTypes
 
 import Network.AWS.Lens
 import Network.AWS.LexModels.Types
+import Network.AWS.LexModels.Types.Product
 import Network.AWS.Pager
 import Network.AWS.Prelude
 import Network.AWS.Request

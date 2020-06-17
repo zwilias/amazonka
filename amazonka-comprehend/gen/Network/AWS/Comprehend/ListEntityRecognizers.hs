@@ -45,6 +45,7 @@ module Network.AWS.Comprehend.ListEntityRecognizers
     ) where
 
 import Network.AWS.Comprehend.Types
+import Network.AWS.Comprehend.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude

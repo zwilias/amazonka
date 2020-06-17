@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,27 +16,60 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.EC2.Types.EBSEncryptionSupport where
+module Network.AWS.EC2.Types.EBSEncryptionSupport (
+  EBSEncryptionSupport (
+    ..
+    , Supported
+    , Unsupported
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.EC2.Internal
 import Network.AWS.Prelude
-  
-data EBSEncryptionSupport = Supported
-                          | Unsupported
-                              deriving (Eq, Ord, Read, Show, Enum, Bounded,
-                                        Data, Typeable, Generic)
+
+data EBSEncryptionSupport = EBSEncryptionSupport' (CI
+                                                     Text)
+                              deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                        Generic)
+
+pattern Supported :: EBSEncryptionSupport
+pattern Supported = EBSEncryptionSupport' "supported"
+
+pattern Unsupported :: EBSEncryptionSupport
+pattern Unsupported = EBSEncryptionSupport' "unsupported"
+
+{-# COMPLETE
+  Supported,
+  Unsupported,
+  EBSEncryptionSupport' #-}
 
 instance FromText EBSEncryptionSupport where
-    parser = takeLowerText >>= \case
-        "supported" -> pure Supported
-        "unsupported" -> pure Unsupported
-        e -> fromTextError $ "Failure parsing EBSEncryptionSupport from value: '" <> e
-           <> "'. Accepted values: supported, unsupported"
+    parser = (EBSEncryptionSupport' . mk) <$> takeText
 
 instance ToText EBSEncryptionSupport where
-    toText = \case
-        Supported -> "supported"
-        Unsupported -> "unsupported"
+    toText (EBSEncryptionSupport' ci) = original ci
+
+-- | Represents an enum of /known/ $EBSEncryptionSupport.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum EBSEncryptionSupport where
+    toEnum i = case i of
+        0 -> Supported
+        1 -> Unsupported
+        _ -> (error . showText) $ "Unknown index for EBSEncryptionSupport: " <> toText i
+    fromEnum x = case x of
+        Supported -> 0
+        Unsupported -> 1
+        EBSEncryptionSupport' name -> (error . showText) $ "Unknown EBSEncryptionSupport: " <> original name
+
+-- | Represents the bounds of /known/ $EBSEncryptionSupport.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded EBSEncryptionSupport where
+    minBound = Supported
+    maxBound = Unsupported
 
 instance Hashable     EBSEncryptionSupport
 instance NFData       EBSEncryptionSupport

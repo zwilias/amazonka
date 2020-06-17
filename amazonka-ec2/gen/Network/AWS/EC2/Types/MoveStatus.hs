@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,27 +16,59 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.EC2.Types.MoveStatus where
+module Network.AWS.EC2.Types.MoveStatus (
+  MoveStatus (
+    ..
+    , MovingToVPC
+    , RestoringToClassic
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.EC2.Internal
 import Network.AWS.Prelude
-  
-data MoveStatus = MovingToVPC
-                | RestoringToClassic
-                    deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                              Typeable, Generic)
+
+data MoveStatus = MoveStatus' (CI Text)
+                    deriving (Eq, Ord, Read, Show, Data, Typeable,
+                              Generic)
+
+pattern MovingToVPC :: MoveStatus
+pattern MovingToVPC = MoveStatus' "movingToVpc"
+
+pattern RestoringToClassic :: MoveStatus
+pattern RestoringToClassic = MoveStatus' "restoringToClassic"
+
+{-# COMPLETE
+  MovingToVPC,
+  RestoringToClassic,
+  MoveStatus' #-}
 
 instance FromText MoveStatus where
-    parser = takeLowerText >>= \case
-        "movingtovpc" -> pure MovingToVPC
-        "restoringtoclassic" -> pure RestoringToClassic
-        e -> fromTextError $ "Failure parsing MoveStatus from value: '" <> e
-           <> "'. Accepted values: movingtovpc, restoringtoclassic"
+    parser = (MoveStatus' . mk) <$> takeText
 
 instance ToText MoveStatus where
-    toText = \case
-        MovingToVPC -> "movingToVpc"
-        RestoringToClassic -> "restoringToClassic"
+    toText (MoveStatus' ci) = original ci
+
+-- | Represents an enum of /known/ $MoveStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum MoveStatus where
+    toEnum i = case i of
+        0 -> MovingToVPC
+        1 -> RestoringToClassic
+        _ -> (error . showText) $ "Unknown index for MoveStatus: " <> toText i
+    fromEnum x = case x of
+        MovingToVPC -> 0
+        RestoringToClassic -> 1
+        MoveStatus' name -> (error . showText) $ "Unknown MoveStatus: " <> original name
+
+-- | Represents the bounds of /known/ $MoveStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded MoveStatus where
+    minBound = MovingToVPC
+    maxBound = RestoringToClassic
 
 instance Hashable     MoveStatus
 instance NFData       MoveStatus

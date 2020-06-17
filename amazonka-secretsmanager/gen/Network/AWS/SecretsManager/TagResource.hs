@@ -74,6 +74,7 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.SecretsManager.Types
+import Network.AWS.SecretsManager.Types.Product
 
 -- | /See:/ 'tagResource' smart constructor.
 data TagResource = TagResource'{_trSecretId :: !Text,

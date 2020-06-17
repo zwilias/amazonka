@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,35 +16,79 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.SQS.Types.MessageAttribute where
+module Network.AWS.SQS.Types.MessageAttribute (
+  MessageAttribute (
+    ..
+    , All
+    , ApproximateFirstReceiveTimestamp
+    , ApproximateReceiveCount
+    , SenderId
+    , SentTimestamp
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data MessageAttribute = All
-                      | ApproximateFirstReceiveTimestamp
-                      | ApproximateReceiveCount
-                      | SenderId
-                      | SentTimestamp
-                          deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                    Typeable, Generic)
+
+data MessageAttribute = MessageAttribute' (CI Text)
+                          deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                    Generic)
+
+pattern All :: MessageAttribute
+pattern All = MessageAttribute' "All"
+
+pattern ApproximateFirstReceiveTimestamp :: MessageAttribute
+pattern ApproximateFirstReceiveTimestamp = MessageAttribute' "ApproximateFirstReceiveTimestamp"
+
+pattern ApproximateReceiveCount :: MessageAttribute
+pattern ApproximateReceiveCount = MessageAttribute' "ApproximateReceiveCount"
+
+pattern SenderId :: MessageAttribute
+pattern SenderId = MessageAttribute' "SenderId"
+
+pattern SentTimestamp :: MessageAttribute
+pattern SentTimestamp = MessageAttribute' "SentTimestamp"
+
+{-# COMPLETE
+  All,
+  ApproximateFirstReceiveTimestamp,
+  ApproximateReceiveCount,
+  SenderId,
+  SentTimestamp,
+  MessageAttribute' #-}
 
 instance FromText MessageAttribute where
-    parser = takeLowerText >>= \case
-        "all" -> pure All
-        "approximatefirstreceivetimestamp" -> pure ApproximateFirstReceiveTimestamp
-        "approximatereceivecount" -> pure ApproximateReceiveCount
-        "senderid" -> pure SenderId
-        "senttimestamp" -> pure SentTimestamp
-        e -> fromTextError $ "Failure parsing MessageAttribute from value: '" <> e
-           <> "'. Accepted values: all, approximatefirstreceivetimestamp, approximatereceivecount, senderid, senttimestamp"
+    parser = (MessageAttribute' . mk) <$> takeText
 
 instance ToText MessageAttribute where
-    toText = \case
-        All -> "All"
-        ApproximateFirstReceiveTimestamp -> "ApproximateFirstReceiveTimestamp"
-        ApproximateReceiveCount -> "ApproximateReceiveCount"
-        SenderId -> "SenderId"
-        SentTimestamp -> "SentTimestamp"
+    toText (MessageAttribute' ci) = original ci
+
+-- | Represents an enum of /known/ $MessageAttribute.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum MessageAttribute where
+    toEnum i = case i of
+        0 -> All
+        1 -> ApproximateFirstReceiveTimestamp
+        2 -> ApproximateReceiveCount
+        3 -> SenderId
+        4 -> SentTimestamp
+        _ -> (error . showText) $ "Unknown index for MessageAttribute: " <> toText i
+    fromEnum x = case x of
+        All -> 0
+        ApproximateFirstReceiveTimestamp -> 1
+        ApproximateReceiveCount -> 2
+        SenderId -> 3
+        SentTimestamp -> 4
+        MessageAttribute' name -> (error . showText) $ "Unknown MessageAttribute: " <> original name
+
+-- | Represents the bounds of /known/ $MessageAttribute.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded MessageAttribute where
+    minBound = All
+    maxBound = SentTimestamp
 
 instance Hashable     MessageAttribute
 instance NFData       MessageAttribute

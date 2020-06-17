@@ -44,6 +44,7 @@ module Network.AWS.KMS.ListKeyPolicies
     ) where
 
 import Network.AWS.KMS.Types
+import Network.AWS.KMS.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude

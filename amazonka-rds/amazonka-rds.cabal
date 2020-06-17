@@ -194,6 +194,7 @@ library
         , Network.AWS.RDS.Types.PendingCloudwatchLogsExports
         , Network.AWS.RDS.Types.PendingMaintenanceAction
         , Network.AWS.RDS.Types.PendingModifiedValues
+        , Network.AWS.RDS.Types.Product
         , Network.AWS.RDS.Types.Range
         , Network.AWS.RDS.Types.RecurringCharge
         , Network.AWS.RDS.Types.ReservedDBInstance
@@ -212,6 +213,7 @@ library
     build-depends:
           amazonka-core == 1.6.1.*
         , base          >= 4.7     && < 5
+        , case-insensitive
 
 test-suite amazonka-rds-test
     type:              exitcode-stdio-1.0
@@ -235,6 +237,7 @@ test-suite amazonka-rds-test
         , amazonka-rds
         , base
         , bytestring
+        , case-insensitive
         , tasty
         , tasty-hunit
         , text

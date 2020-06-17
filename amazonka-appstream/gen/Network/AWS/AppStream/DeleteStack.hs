@@ -37,6 +37,7 @@ module Network.AWS.AppStream.DeleteStack
     ) where
 
 import Network.AWS.AppStream.Types
+import Network.AWS.AppStream.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request

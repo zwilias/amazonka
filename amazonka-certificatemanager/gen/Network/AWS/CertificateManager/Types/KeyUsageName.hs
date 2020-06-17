@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,53 +16,121 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.CertificateManager.Types.KeyUsageName where
+module Network.AWS.CertificateManager.Types.KeyUsageName (
+  KeyUsageName (
+    ..
+    , KUNAny
+    , KUNCertificateSigning
+    , KUNCrlSigning
+    , KUNCustom
+    , KUNDataEncipherment
+    , KUNDecipherOnly
+    , KUNDigitalSignature
+    , KUNEncipherOnly
+    , KUNKeyAgreement
+    , KUNKeyEncipherment
+    , KUNNonRepudiation
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data KeyUsageName = KUNAny
-                  | KUNCertificateSigning
-                  | KUNCrlSigning
-                  | KUNCustom
-                  | KUNDataEncipherment
-                  | KUNDecipherOnly
-                  | KUNDigitalSignature
-                  | KUNEncipherOnly
-                  | KUNKeyAgreement
-                  | KUNKeyEncipherment
-                  | KUNNonRepudiation
-                      deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                Typeable, Generic)
+
+data KeyUsageName = KeyUsageName' (CI Text)
+                      deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                Generic)
+
+pattern KUNAny :: KeyUsageName
+pattern KUNAny = KeyUsageName' "ANY"
+
+pattern KUNCertificateSigning :: KeyUsageName
+pattern KUNCertificateSigning = KeyUsageName' "CERTIFICATE_SIGNING"
+
+pattern KUNCrlSigning :: KeyUsageName
+pattern KUNCrlSigning = KeyUsageName' "CRL_SIGNING"
+
+pattern KUNCustom :: KeyUsageName
+pattern KUNCustom = KeyUsageName' "CUSTOM"
+
+pattern KUNDataEncipherment :: KeyUsageName
+pattern KUNDataEncipherment = KeyUsageName' "DATA_ENCIPHERMENT"
+
+pattern KUNDecipherOnly :: KeyUsageName
+pattern KUNDecipherOnly = KeyUsageName' "DECIPHER_ONLY"
+
+pattern KUNDigitalSignature :: KeyUsageName
+pattern KUNDigitalSignature = KeyUsageName' "DIGITAL_SIGNATURE"
+
+pattern KUNEncipherOnly :: KeyUsageName
+pattern KUNEncipherOnly = KeyUsageName' "ENCIPHER_ONLY"
+
+pattern KUNKeyAgreement :: KeyUsageName
+pattern KUNKeyAgreement = KeyUsageName' "KEY_AGREEMENT"
+
+pattern KUNKeyEncipherment :: KeyUsageName
+pattern KUNKeyEncipherment = KeyUsageName' "KEY_ENCIPHERMENT"
+
+pattern KUNNonRepudiation :: KeyUsageName
+pattern KUNNonRepudiation = KeyUsageName' "NON_REPUDIATION"
+
+{-# COMPLETE
+  KUNAny,
+  KUNCertificateSigning,
+  KUNCrlSigning,
+  KUNCustom,
+  KUNDataEncipherment,
+  KUNDecipherOnly,
+  KUNDigitalSignature,
+  KUNEncipherOnly,
+  KUNKeyAgreement,
+  KUNKeyEncipherment,
+  KUNNonRepudiation,
+  KeyUsageName' #-}
 
 instance FromText KeyUsageName where
-    parser = takeLowerText >>= \case
-        "any" -> pure KUNAny
-        "certificate_signing" -> pure KUNCertificateSigning
-        "crl_signing" -> pure KUNCrlSigning
-        "custom" -> pure KUNCustom
-        "data_encipherment" -> pure KUNDataEncipherment
-        "decipher_only" -> pure KUNDecipherOnly
-        "digital_signature" -> pure KUNDigitalSignature
-        "encipher_only" -> pure KUNEncipherOnly
-        "key_agreement" -> pure KUNKeyAgreement
-        "key_encipherment" -> pure KUNKeyEncipherment
-        "non_repudiation" -> pure KUNNonRepudiation
-        e -> fromTextError $ "Failure parsing KeyUsageName from value: '" <> e
-           <> "'. Accepted values: any, certificate_signing, crl_signing, custom, data_encipherment, decipher_only, digital_signature, encipher_only, key_agreement, key_encipherment, non_repudiation"
+    parser = (KeyUsageName' . mk) <$> takeText
 
 instance ToText KeyUsageName where
-    toText = \case
-        KUNAny -> "ANY"
-        KUNCertificateSigning -> "CERTIFICATE_SIGNING"
-        KUNCrlSigning -> "CRL_SIGNING"
-        KUNCustom -> "CUSTOM"
-        KUNDataEncipherment -> "DATA_ENCIPHERMENT"
-        KUNDecipherOnly -> "DECIPHER_ONLY"
-        KUNDigitalSignature -> "DIGITAL_SIGNATURE"
-        KUNEncipherOnly -> "ENCIPHER_ONLY"
-        KUNKeyAgreement -> "KEY_AGREEMENT"
-        KUNKeyEncipherment -> "KEY_ENCIPHERMENT"
-        KUNNonRepudiation -> "NON_REPUDIATION"
+    toText (KeyUsageName' ci) = original ci
+
+-- | Represents an enum of /known/ $KeyUsageName.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum KeyUsageName where
+    toEnum i = case i of
+        0 -> KUNAny
+        1 -> KUNCertificateSigning
+        2 -> KUNCrlSigning
+        3 -> KUNCustom
+        4 -> KUNDataEncipherment
+        5 -> KUNDecipherOnly
+        6 -> KUNDigitalSignature
+        7 -> KUNEncipherOnly
+        8 -> KUNKeyAgreement
+        9 -> KUNKeyEncipherment
+        10 -> KUNNonRepudiation
+        _ -> (error . showText) $ "Unknown index for KeyUsageName: " <> toText i
+    fromEnum x = case x of
+        KUNAny -> 0
+        KUNCertificateSigning -> 1
+        KUNCrlSigning -> 2
+        KUNCustom -> 3
+        KUNDataEncipherment -> 4
+        KUNDecipherOnly -> 5
+        KUNDigitalSignature -> 6
+        KUNEncipherOnly -> 7
+        KUNKeyAgreement -> 8
+        KUNKeyEncipherment -> 9
+        KUNNonRepudiation -> 10
+        KeyUsageName' name -> (error . showText) $ "Unknown KeyUsageName: " <> original name
+
+-- | Represents the bounds of /known/ $KeyUsageName.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded KeyUsageName where
+    minBound = KUNAny
+    maxBound = KUNNonRepudiation
 
 instance Hashable     KeyUsageName
 instance NFData       KeyUsageName

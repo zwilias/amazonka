@@ -51,6 +51,7 @@ module Network.AWS.KinesisVideoMedia.GetMedia
     ) where
 
 import Network.AWS.KinesisVideoMedia.Types
+import Network.AWS.KinesisVideoMedia.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request

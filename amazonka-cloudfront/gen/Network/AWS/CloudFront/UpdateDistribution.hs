@@ -79,6 +79,7 @@ module Network.AWS.CloudFront.UpdateDistribution
     ) where
 
 import Network.AWS.CloudFront.Types
+import Network.AWS.CloudFront.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request

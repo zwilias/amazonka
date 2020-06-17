@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,59 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.CodeDeploy.Types.DeploymentReadyAction where
+module Network.AWS.CodeDeploy.Types.DeploymentReadyAction (
+  DeploymentReadyAction (
+    ..
+    , ContinueDeployment
+    , StopDeployment
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data DeploymentReadyAction = ContinueDeployment
-                           | StopDeployment
-                               deriving (Eq, Ord, Read, Show, Enum, Bounded,
-                                         Data, Typeable, Generic)
+
+data DeploymentReadyAction = DeploymentReadyAction' (CI
+                                                       Text)
+                               deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                         Generic)
+
+pattern ContinueDeployment :: DeploymentReadyAction
+pattern ContinueDeployment = DeploymentReadyAction' "CONTINUE_DEPLOYMENT"
+
+pattern StopDeployment :: DeploymentReadyAction
+pattern StopDeployment = DeploymentReadyAction' "STOP_DEPLOYMENT"
+
+{-# COMPLETE
+  ContinueDeployment,
+  StopDeployment,
+  DeploymentReadyAction' #-}
 
 instance FromText DeploymentReadyAction where
-    parser = takeLowerText >>= \case
-        "continue_deployment" -> pure ContinueDeployment
-        "stop_deployment" -> pure StopDeployment
-        e -> fromTextError $ "Failure parsing DeploymentReadyAction from value: '" <> e
-           <> "'. Accepted values: continue_deployment, stop_deployment"
+    parser = (DeploymentReadyAction' . mk) <$> takeText
 
 instance ToText DeploymentReadyAction where
-    toText = \case
-        ContinueDeployment -> "CONTINUE_DEPLOYMENT"
-        StopDeployment -> "STOP_DEPLOYMENT"
+    toText (DeploymentReadyAction' ci) = original ci
+
+-- | Represents an enum of /known/ $DeploymentReadyAction.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum DeploymentReadyAction where
+    toEnum i = case i of
+        0 -> ContinueDeployment
+        1 -> StopDeployment
+        _ -> (error . showText) $ "Unknown index for DeploymentReadyAction: " <> toText i
+    fromEnum x = case x of
+        ContinueDeployment -> 0
+        StopDeployment -> 1
+        DeploymentReadyAction' name -> (error . showText) $ "Unknown DeploymentReadyAction: " <> original name
+
+-- | Represents the bounds of /known/ $DeploymentReadyAction.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded DeploymentReadyAction where
+    minBound = ContinueDeployment
+    maxBound = StopDeployment
 
 instance Hashable     DeploymentReadyAction
 instance NFData       DeploymentReadyAction

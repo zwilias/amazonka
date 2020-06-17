@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,58 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.Shield.Types.AttackLayer where
+module Network.AWS.Shield.Types.AttackLayer (
+  AttackLayer (
+    ..
+    , Application
+    , Network
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data AttackLayer = Application
-                 | Network
-                     deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                               Typeable, Generic)
+
+data AttackLayer = AttackLayer' (CI Text)
+                     deriving (Eq, Ord, Read, Show, Data, Typeable,
+                               Generic)
+
+pattern Application :: AttackLayer
+pattern Application = AttackLayer' "APPLICATION"
+
+pattern Network :: AttackLayer
+pattern Network = AttackLayer' "NETWORK"
+
+{-# COMPLETE
+  Application,
+  Network,
+  AttackLayer' #-}
 
 instance FromText AttackLayer where
-    parser = takeLowerText >>= \case
-        "application" -> pure Application
-        "network" -> pure Network
-        e -> fromTextError $ "Failure parsing AttackLayer from value: '" <> e
-           <> "'. Accepted values: application, network"
+    parser = (AttackLayer' . mk) <$> takeText
 
 instance ToText AttackLayer where
-    toText = \case
-        Application -> "APPLICATION"
-        Network -> "NETWORK"
+    toText (AttackLayer' ci) = original ci
+
+-- | Represents an enum of /known/ $AttackLayer.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum AttackLayer where
+    toEnum i = case i of
+        0 -> Application
+        1 -> Network
+        _ -> (error . showText) $ "Unknown index for AttackLayer: " <> toText i
+    fromEnum x = case x of
+        Application -> 0
+        Network -> 1
+        AttackLayer' name -> (error . showText) $ "Unknown AttackLayer: " <> original name
+
+-- | Represents the bounds of /known/ $AttackLayer.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded AttackLayer where
+    minBound = Application
+    maxBound = Network
 
 instance Hashable     AttackLayer
 instance NFData       AttackLayer

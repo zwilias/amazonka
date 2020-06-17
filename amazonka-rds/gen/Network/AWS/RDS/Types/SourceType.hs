@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,38 +16,86 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.RDS.Types.SourceType where
+module Network.AWS.RDS.Types.SourceType (
+  SourceType (
+    ..
+    , DBCluster
+    , DBClusterSnapshot
+    , DBInstance
+    , DBParameterGroup
+    , DBSecurityGroup
+    , DBSnapshot
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data SourceType = DBCluster
-                | DBClusterSnapshot
-                | DBInstance
-                | DBParameterGroup
-                | DBSecurityGroup
-                | DBSnapshot
-                    deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                              Typeable, Generic)
+
+data SourceType = SourceType' (CI Text)
+                    deriving (Eq, Ord, Read, Show, Data, Typeable,
+                              Generic)
+
+pattern DBCluster :: SourceType
+pattern DBCluster = SourceType' "db-cluster"
+
+pattern DBClusterSnapshot :: SourceType
+pattern DBClusterSnapshot = SourceType' "db-cluster-snapshot"
+
+pattern DBInstance :: SourceType
+pattern DBInstance = SourceType' "db-instance"
+
+pattern DBParameterGroup :: SourceType
+pattern DBParameterGroup = SourceType' "db-parameter-group"
+
+pattern DBSecurityGroup :: SourceType
+pattern DBSecurityGroup = SourceType' "db-security-group"
+
+pattern DBSnapshot :: SourceType
+pattern DBSnapshot = SourceType' "db-snapshot"
+
+{-# COMPLETE
+  DBCluster,
+  DBClusterSnapshot,
+  DBInstance,
+  DBParameterGroup,
+  DBSecurityGroup,
+  DBSnapshot,
+  SourceType' #-}
 
 instance FromText SourceType where
-    parser = takeLowerText >>= \case
-        "db-cluster" -> pure DBCluster
-        "db-cluster-snapshot" -> pure DBClusterSnapshot
-        "db-instance" -> pure DBInstance
-        "db-parameter-group" -> pure DBParameterGroup
-        "db-security-group" -> pure DBSecurityGroup
-        "db-snapshot" -> pure DBSnapshot
-        e -> fromTextError $ "Failure parsing SourceType from value: '" <> e
-           <> "'. Accepted values: db-cluster, db-cluster-snapshot, db-instance, db-parameter-group, db-security-group, db-snapshot"
+    parser = (SourceType' . mk) <$> takeText
 
 instance ToText SourceType where
-    toText = \case
-        DBCluster -> "db-cluster"
-        DBClusterSnapshot -> "db-cluster-snapshot"
-        DBInstance -> "db-instance"
-        DBParameterGroup -> "db-parameter-group"
-        DBSecurityGroup -> "db-security-group"
-        DBSnapshot -> "db-snapshot"
+    toText (SourceType' ci) = original ci
+
+-- | Represents an enum of /known/ $SourceType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum SourceType where
+    toEnum i = case i of
+        0 -> DBCluster
+        1 -> DBClusterSnapshot
+        2 -> DBInstance
+        3 -> DBParameterGroup
+        4 -> DBSecurityGroup
+        5 -> DBSnapshot
+        _ -> (error . showText) $ "Unknown index for SourceType: " <> toText i
+    fromEnum x = case x of
+        DBCluster -> 0
+        DBClusterSnapshot -> 1
+        DBInstance -> 2
+        DBParameterGroup -> 3
+        DBSecurityGroup -> 4
+        DBSnapshot -> 5
+        SourceType' name -> (error . showText) $ "Unknown SourceType: " <> original name
+
+-- | Represents the bounds of /known/ $SourceType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded SourceType where
+    minBound = DBCluster
+    maxBound = DBSnapshot
 
 instance Hashable     SourceType
 instance NFData       SourceType

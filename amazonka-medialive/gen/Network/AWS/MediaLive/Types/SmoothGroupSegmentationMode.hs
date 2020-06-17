@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,27 +16,60 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.MediaLive.Types.SmoothGroupSegmentationMode where
+module Network.AWS.MediaLive.Types.SmoothGroupSegmentationMode (
+  SmoothGroupSegmentationMode (
+    ..
+    , UseInputSegmentation
+    , UseSegmentDuration
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
+
 -- | Placeholder documentation for SmoothGroupSegmentationMode
-data SmoothGroupSegmentationMode = UseInputSegmentation
-                                 | UseSegmentDuration
-                                     deriving (Eq, Ord, Read, Show, Enum,
-                                               Bounded, Data, Typeable, Generic)
+data SmoothGroupSegmentationMode = SmoothGroupSegmentationMode' (CI
+                                                                   Text)
+                                     deriving (Eq, Ord, Read, Show, Data,
+                                               Typeable, Generic)
+
+pattern UseInputSegmentation :: SmoothGroupSegmentationMode
+pattern UseInputSegmentation = SmoothGroupSegmentationMode' "USE_INPUT_SEGMENTATION"
+
+pattern UseSegmentDuration :: SmoothGroupSegmentationMode
+pattern UseSegmentDuration = SmoothGroupSegmentationMode' "USE_SEGMENT_DURATION"
+
+{-# COMPLETE
+  UseInputSegmentation,
+  UseSegmentDuration,
+  SmoothGroupSegmentationMode' #-}
 
 instance FromText SmoothGroupSegmentationMode where
-    parser = takeLowerText >>= \case
-        "use_input_segmentation" -> pure UseInputSegmentation
-        "use_segment_duration" -> pure UseSegmentDuration
-        e -> fromTextError $ "Failure parsing SmoothGroupSegmentationMode from value: '" <> e
-           <> "'. Accepted values: use_input_segmentation, use_segment_duration"
+    parser = (SmoothGroupSegmentationMode' . mk) <$> takeText
 
 instance ToText SmoothGroupSegmentationMode where
-    toText = \case
-        UseInputSegmentation -> "USE_INPUT_SEGMENTATION"
-        UseSegmentDuration -> "USE_SEGMENT_DURATION"
+    toText (SmoothGroupSegmentationMode' ci) = original ci
+
+-- | Represents an enum of /known/ $SmoothGroupSegmentationMode.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum SmoothGroupSegmentationMode where
+    toEnum i = case i of
+        0 -> UseInputSegmentation
+        1 -> UseSegmentDuration
+        _ -> (error . showText) $ "Unknown index for SmoothGroupSegmentationMode: " <> toText i
+    fromEnum x = case x of
+        UseInputSegmentation -> 0
+        UseSegmentDuration -> 1
+        SmoothGroupSegmentationMode' name -> (error . showText) $ "Unknown SmoothGroupSegmentationMode: " <> original name
+
+-- | Represents the bounds of /known/ $SmoothGroupSegmentationMode.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded SmoothGroupSegmentationMode where
+    minBound = UseInputSegmentation
+    maxBound = UseSegmentDuration
 
 instance Hashable     SmoothGroupSegmentationMode
 instance NFData       SmoothGroupSegmentationMode

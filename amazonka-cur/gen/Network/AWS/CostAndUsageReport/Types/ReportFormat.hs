@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,29 +16,61 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.CostAndUsageReport.Types.ReportFormat where
+module Network.AWS.CostAndUsageReport.Types.ReportFormat (
+  ReportFormat (
+    ..
+    , Parquet
+    , TextORcsv
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
+
 -- | The format that AWS saves the report in.
 --
 --
-data ReportFormat = Parquet
-                  | TextORcsv
-                      deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                Typeable, Generic)
+data ReportFormat = ReportFormat' (CI Text)
+                      deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                Generic)
+
+pattern Parquet :: ReportFormat
+pattern Parquet = ReportFormat' "Parquet"
+
+pattern TextORcsv :: ReportFormat
+pattern TextORcsv = ReportFormat' "textORcsv"
+
+{-# COMPLETE
+  Parquet,
+  TextORcsv,
+  ReportFormat' #-}
 
 instance FromText ReportFormat where
-    parser = takeLowerText >>= \case
-        "parquet" -> pure Parquet
-        "textorcsv" -> pure TextORcsv
-        e -> fromTextError $ "Failure parsing ReportFormat from value: '" <> e
-           <> "'. Accepted values: parquet, textorcsv"
+    parser = (ReportFormat' . mk) <$> takeText
 
 instance ToText ReportFormat where
-    toText = \case
-        Parquet -> "Parquet"
-        TextORcsv -> "textORcsv"
+    toText (ReportFormat' ci) = original ci
+
+-- | Represents an enum of /known/ $ReportFormat.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum ReportFormat where
+    toEnum i = case i of
+        0 -> Parquet
+        1 -> TextORcsv
+        _ -> (error . showText) $ "Unknown index for ReportFormat: " <> toText i
+    fromEnum x = case x of
+        Parquet -> 0
+        TextORcsv -> 1
+        ReportFormat' name -> (error . showText) $ "Unknown ReportFormat: " <> original name
+
+-- | Represents the bounds of /known/ $ReportFormat.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded ReportFormat where
+    minBound = Parquet
+    maxBound = TextORcsv
 
 instance Hashable     ReportFormat
 instance NFData       ReportFormat

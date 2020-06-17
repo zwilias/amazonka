@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,36 +16,81 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.EC2.Types.NetworkInterfaceStatus where
+module Network.AWS.EC2.Types.NetworkInterfaceStatus (
+  NetworkInterfaceStatus (
+    ..
+    , NISAssociated
+    , NISAttaching
+    , NISAvailable
+    , NISDetaching
+    , NISInUse
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.EC2.Internal
 import Network.AWS.Prelude
-  
-data NetworkInterfaceStatus = NISAssociated
-                            | NISAttaching
-                            | NISAvailable
-                            | NISDetaching
-                            | NISInUse
-                                deriving (Eq, Ord, Read, Show, Enum, Bounded,
-                                          Data, Typeable, Generic)
+
+data NetworkInterfaceStatus = NetworkInterfaceStatus' (CI
+                                                         Text)
+                                deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                          Generic)
+
+pattern NISAssociated :: NetworkInterfaceStatus
+pattern NISAssociated = NetworkInterfaceStatus' "associated"
+
+pattern NISAttaching :: NetworkInterfaceStatus
+pattern NISAttaching = NetworkInterfaceStatus' "attaching"
+
+pattern NISAvailable :: NetworkInterfaceStatus
+pattern NISAvailable = NetworkInterfaceStatus' "available"
+
+pattern NISDetaching :: NetworkInterfaceStatus
+pattern NISDetaching = NetworkInterfaceStatus' "detaching"
+
+pattern NISInUse :: NetworkInterfaceStatus
+pattern NISInUse = NetworkInterfaceStatus' "in-use"
+
+{-# COMPLETE
+  NISAssociated,
+  NISAttaching,
+  NISAvailable,
+  NISDetaching,
+  NISInUse,
+  NetworkInterfaceStatus' #-}
 
 instance FromText NetworkInterfaceStatus where
-    parser = takeLowerText >>= \case
-        "associated" -> pure NISAssociated
-        "attaching" -> pure NISAttaching
-        "available" -> pure NISAvailable
-        "detaching" -> pure NISDetaching
-        "in-use" -> pure NISInUse
-        e -> fromTextError $ "Failure parsing NetworkInterfaceStatus from value: '" <> e
-           <> "'. Accepted values: associated, attaching, available, detaching, in-use"
+    parser = (NetworkInterfaceStatus' . mk) <$> takeText
 
 instance ToText NetworkInterfaceStatus where
-    toText = \case
-        NISAssociated -> "associated"
-        NISAttaching -> "attaching"
-        NISAvailable -> "available"
-        NISDetaching -> "detaching"
-        NISInUse -> "in-use"
+    toText (NetworkInterfaceStatus' ci) = original ci
+
+-- | Represents an enum of /known/ $NetworkInterfaceStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum NetworkInterfaceStatus where
+    toEnum i = case i of
+        0 -> NISAssociated
+        1 -> NISAttaching
+        2 -> NISAvailable
+        3 -> NISDetaching
+        4 -> NISInUse
+        _ -> (error . showText) $ "Unknown index for NetworkInterfaceStatus: " <> toText i
+    fromEnum x = case x of
+        NISAssociated -> 0
+        NISAttaching -> 1
+        NISAvailable -> 2
+        NISDetaching -> 3
+        NISInUse -> 4
+        NetworkInterfaceStatus' name -> (error . showText) $ "Unknown NetworkInterfaceStatus: " <> original name
+
+-- | Represents the bounds of /known/ $NetworkInterfaceStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded NetworkInterfaceStatus where
+    minBound = NISAssociated
+    maxBound = NISInUse
 
 instance Hashable     NetworkInterfaceStatus
 instance NFData       NetworkInterfaceStatus

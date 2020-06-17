@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,59 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.SSM.Types.PatchOperationType where
+module Network.AWS.SSM.Types.PatchOperationType (
+  PatchOperationType (
+    ..
+    , Install
+    , Scan
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data PatchOperationType = Install
-                        | Scan
-                            deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                      Typeable, Generic)
+
+data PatchOperationType = PatchOperationType' (CI
+                                                 Text)
+                            deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                      Generic)
+
+pattern Install :: PatchOperationType
+pattern Install = PatchOperationType' "Install"
+
+pattern Scan :: PatchOperationType
+pattern Scan = PatchOperationType' "Scan"
+
+{-# COMPLETE
+  Install,
+  Scan,
+  PatchOperationType' #-}
 
 instance FromText PatchOperationType where
-    parser = takeLowerText >>= \case
-        "install" -> pure Install
-        "scan" -> pure Scan
-        e -> fromTextError $ "Failure parsing PatchOperationType from value: '" <> e
-           <> "'. Accepted values: install, scan"
+    parser = (PatchOperationType' . mk) <$> takeText
 
 instance ToText PatchOperationType where
-    toText = \case
-        Install -> "Install"
-        Scan -> "Scan"
+    toText (PatchOperationType' ci) = original ci
+
+-- | Represents an enum of /known/ $PatchOperationType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum PatchOperationType where
+    toEnum i = case i of
+        0 -> Install
+        1 -> Scan
+        _ -> (error . showText) $ "Unknown index for PatchOperationType: " <> toText i
+    fromEnum x = case x of
+        Install -> 0
+        Scan -> 1
+        PatchOperationType' name -> (error . showText) $ "Unknown PatchOperationType: " <> original name
+
+-- | Represents the bounds of /known/ $PatchOperationType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded PatchOperationType where
+    minBound = Install
+    maxBound = Scan
 
 instance Hashable     PatchOperationType
 instance NFData       PatchOperationType

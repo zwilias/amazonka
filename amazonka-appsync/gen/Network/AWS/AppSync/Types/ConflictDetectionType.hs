@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,59 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.AppSync.Types.ConflictDetectionType where
+module Network.AWS.AppSync.Types.ConflictDetectionType (
+  ConflictDetectionType (
+    ..
+    , CDTNone
+    , CDTVersion
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data ConflictDetectionType = CDTNone
-                           | CDTVersion
-                               deriving (Eq, Ord, Read, Show, Enum, Bounded,
-                                         Data, Typeable, Generic)
+
+data ConflictDetectionType = ConflictDetectionType' (CI
+                                                       Text)
+                               deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                         Generic)
+
+pattern CDTNone :: ConflictDetectionType
+pattern CDTNone = ConflictDetectionType' "NONE"
+
+pattern CDTVersion :: ConflictDetectionType
+pattern CDTVersion = ConflictDetectionType' "VERSION"
+
+{-# COMPLETE
+  CDTNone,
+  CDTVersion,
+  ConflictDetectionType' #-}
 
 instance FromText ConflictDetectionType where
-    parser = takeLowerText >>= \case
-        "none" -> pure CDTNone
-        "version" -> pure CDTVersion
-        e -> fromTextError $ "Failure parsing ConflictDetectionType from value: '" <> e
-           <> "'. Accepted values: none, version"
+    parser = (ConflictDetectionType' . mk) <$> takeText
 
 instance ToText ConflictDetectionType where
-    toText = \case
-        CDTNone -> "NONE"
-        CDTVersion -> "VERSION"
+    toText (ConflictDetectionType' ci) = original ci
+
+-- | Represents an enum of /known/ $ConflictDetectionType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum ConflictDetectionType where
+    toEnum i = case i of
+        0 -> CDTNone
+        1 -> CDTVersion
+        _ -> (error . showText) $ "Unknown index for ConflictDetectionType: " <> toText i
+    fromEnum x = case x of
+        CDTNone -> 0
+        CDTVersion -> 1
+        ConflictDetectionType' name -> (error . showText) $ "Unknown ConflictDetectionType: " <> original name
+
+-- | Represents the bounds of /known/ $ConflictDetectionType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded ConflictDetectionType where
+    minBound = CDTNone
+    maxBound = CDTVersion
 
 instance Hashable     ConflictDetectionType
 instance NFData       ConflictDetectionType

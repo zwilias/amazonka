@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,32 +16,73 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.CognitoIdentity.Types.MappingRuleMatchType where
+module Network.AWS.CognitoIdentity.Types.MappingRuleMatchType (
+  MappingRuleMatchType (
+    ..
+    , Contains
+    , Equals
+    , NotEqual
+    , StartsWith
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data MappingRuleMatchType = Contains
-                          | Equals
-                          | NotEqual
-                          | StartsWith
-                              deriving (Eq, Ord, Read, Show, Enum, Bounded,
-                                        Data, Typeable, Generic)
+
+data MappingRuleMatchType = MappingRuleMatchType' (CI
+                                                     Text)
+                              deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                        Generic)
+
+pattern Contains :: MappingRuleMatchType
+pattern Contains = MappingRuleMatchType' "Contains"
+
+pattern Equals :: MappingRuleMatchType
+pattern Equals = MappingRuleMatchType' "Equals"
+
+pattern NotEqual :: MappingRuleMatchType
+pattern NotEqual = MappingRuleMatchType' "NotEqual"
+
+pattern StartsWith :: MappingRuleMatchType
+pattern StartsWith = MappingRuleMatchType' "StartsWith"
+
+{-# COMPLETE
+  Contains,
+  Equals,
+  NotEqual,
+  StartsWith,
+  MappingRuleMatchType' #-}
 
 instance FromText MappingRuleMatchType where
-    parser = takeLowerText >>= \case
-        "contains" -> pure Contains
-        "equals" -> pure Equals
-        "notequal" -> pure NotEqual
-        "startswith" -> pure StartsWith
-        e -> fromTextError $ "Failure parsing MappingRuleMatchType from value: '" <> e
-           <> "'. Accepted values: contains, equals, notequal, startswith"
+    parser = (MappingRuleMatchType' . mk) <$> takeText
 
 instance ToText MappingRuleMatchType where
-    toText = \case
-        Contains -> "Contains"
-        Equals -> "Equals"
-        NotEqual -> "NotEqual"
-        StartsWith -> "StartsWith"
+    toText (MappingRuleMatchType' ci) = original ci
+
+-- | Represents an enum of /known/ $MappingRuleMatchType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum MappingRuleMatchType where
+    toEnum i = case i of
+        0 -> Contains
+        1 -> Equals
+        2 -> NotEqual
+        3 -> StartsWith
+        _ -> (error . showText) $ "Unknown index for MappingRuleMatchType: " <> toText i
+    fromEnum x = case x of
+        Contains -> 0
+        Equals -> 1
+        NotEqual -> 2
+        StartsWith -> 3
+        MappingRuleMatchType' name -> (error . showText) $ "Unknown MappingRuleMatchType: " <> original name
+
+-- | Represents the bounds of /known/ $MappingRuleMatchType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded MappingRuleMatchType where
+    minBound = Contains
+    maxBound = StartsWith
 
 instance Hashable     MappingRuleMatchType
 instance NFData       MappingRuleMatchType

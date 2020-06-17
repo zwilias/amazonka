@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,58 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.Pinpoint.Types.DefinitionFormat where
+module Network.AWS.Pinpoint.Types.DefinitionFormat (
+  DefinitionFormat (
+    ..
+    , CSV
+    , JSON
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data DefinitionFormat = CSV
-                      | JSON
-                          deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                    Typeable, Generic)
+
+data DefinitionFormat = DefinitionFormat' (CI Text)
+                          deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                    Generic)
+
+pattern CSV :: DefinitionFormat
+pattern CSV = DefinitionFormat' "CSV"
+
+pattern JSON :: DefinitionFormat
+pattern JSON = DefinitionFormat' "JSON"
+
+{-# COMPLETE
+  CSV,
+  JSON,
+  DefinitionFormat' #-}
 
 instance FromText DefinitionFormat where
-    parser = takeLowerText >>= \case
-        "csv" -> pure CSV
-        "json" -> pure JSON
-        e -> fromTextError $ "Failure parsing DefinitionFormat from value: '" <> e
-           <> "'. Accepted values: csv, json"
+    parser = (DefinitionFormat' . mk) <$> takeText
 
 instance ToText DefinitionFormat where
-    toText = \case
-        CSV -> "CSV"
-        JSON -> "JSON"
+    toText (DefinitionFormat' ci) = original ci
+
+-- | Represents an enum of /known/ $DefinitionFormat.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum DefinitionFormat where
+    toEnum i = case i of
+        0 -> CSV
+        1 -> JSON
+        _ -> (error . showText) $ "Unknown index for DefinitionFormat: " <> toText i
+    fromEnum x = case x of
+        CSV -> 0
+        JSON -> 1
+        DefinitionFormat' name -> (error . showText) $ "Unknown DefinitionFormat: " <> original name
+
+-- | Represents the bounds of /known/ $DefinitionFormat.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded DefinitionFormat where
+    minBound = CSV
+    maxBound = JSON
 
 instance Hashable     DefinitionFormat
 instance NFData       DefinitionFormat

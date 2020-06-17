@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,29 +16,65 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.SageMaker.Types.SortBy where
+module Network.AWS.SageMaker.Types.SortBy (
+  SortBy (
+    ..
+    , SBCreationTime
+    , SBName
+    , SBStatus
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data SortBy = SBCreationTime
-            | SBName
-            | SBStatus
-                deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                          Typeable, Generic)
+
+data SortBy = SortBy' (CI Text)
+                deriving (Eq, Ord, Read, Show, Data, Typeable,
+                          Generic)
+
+pattern SBCreationTime :: SortBy
+pattern SBCreationTime = SortBy' "CreationTime"
+
+pattern SBName :: SortBy
+pattern SBName = SortBy' "Name"
+
+pattern SBStatus :: SortBy
+pattern SBStatus = SortBy' "Status"
+
+{-# COMPLETE
+  SBCreationTime,
+  SBName,
+  SBStatus,
+  SortBy' #-}
 
 instance FromText SortBy where
-    parser = takeLowerText >>= \case
-        "creationtime" -> pure SBCreationTime
-        "name" -> pure SBName
-        "status" -> pure SBStatus
-        e -> fromTextError $ "Failure parsing SortBy from value: '" <> e
-           <> "'. Accepted values: creationtime, name, status"
+    parser = (SortBy' . mk) <$> takeText
 
 instance ToText SortBy where
-    toText = \case
-        SBCreationTime -> "CreationTime"
-        SBName -> "Name"
-        SBStatus -> "Status"
+    toText (SortBy' ci) = original ci
+
+-- | Represents an enum of /known/ $SortBy.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum SortBy where
+    toEnum i = case i of
+        0 -> SBCreationTime
+        1 -> SBName
+        2 -> SBStatus
+        _ -> (error . showText) $ "Unknown index for SortBy: " <> toText i
+    fromEnum x = case x of
+        SBCreationTime -> 0
+        SBName -> 1
+        SBStatus -> 2
+        SortBy' name -> (error . showText) $ "Unknown SortBy: " <> original name
+
+-- | Represents the bounds of /known/ $SortBy.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded SortBy where
+    minBound = SBCreationTime
+    maxBound = SBStatus
 
 instance Hashable     SortBy
 instance NFData       SortBy

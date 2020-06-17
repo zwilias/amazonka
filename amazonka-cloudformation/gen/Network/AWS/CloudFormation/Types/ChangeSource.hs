@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,35 +16,79 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.CloudFormation.Types.ChangeSource where
+module Network.AWS.CloudFormation.Types.ChangeSource (
+  ChangeSource (
+    ..
+    , Automatic
+    , DirectModification
+    , ParameterReference
+    , ResourceAttribute
+    , ResourceReference
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data ChangeSource = Automatic
-                  | DirectModification
-                  | ParameterReference
-                  | ResourceAttribute
-                  | ResourceReference
-                      deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                Typeable, Generic)
+
+data ChangeSource = ChangeSource' (CI Text)
+                      deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                Generic)
+
+pattern Automatic :: ChangeSource
+pattern Automatic = ChangeSource' "Automatic"
+
+pattern DirectModification :: ChangeSource
+pattern DirectModification = ChangeSource' "DirectModification"
+
+pattern ParameterReference :: ChangeSource
+pattern ParameterReference = ChangeSource' "ParameterReference"
+
+pattern ResourceAttribute :: ChangeSource
+pattern ResourceAttribute = ChangeSource' "ResourceAttribute"
+
+pattern ResourceReference :: ChangeSource
+pattern ResourceReference = ChangeSource' "ResourceReference"
+
+{-# COMPLETE
+  Automatic,
+  DirectModification,
+  ParameterReference,
+  ResourceAttribute,
+  ResourceReference,
+  ChangeSource' #-}
 
 instance FromText ChangeSource where
-    parser = takeLowerText >>= \case
-        "automatic" -> pure Automatic
-        "directmodification" -> pure DirectModification
-        "parameterreference" -> pure ParameterReference
-        "resourceattribute" -> pure ResourceAttribute
-        "resourcereference" -> pure ResourceReference
-        e -> fromTextError $ "Failure parsing ChangeSource from value: '" <> e
-           <> "'. Accepted values: automatic, directmodification, parameterreference, resourceattribute, resourcereference"
+    parser = (ChangeSource' . mk) <$> takeText
 
 instance ToText ChangeSource where
-    toText = \case
-        Automatic -> "Automatic"
-        DirectModification -> "DirectModification"
-        ParameterReference -> "ParameterReference"
-        ResourceAttribute -> "ResourceAttribute"
-        ResourceReference -> "ResourceReference"
+    toText (ChangeSource' ci) = original ci
+
+-- | Represents an enum of /known/ $ChangeSource.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum ChangeSource where
+    toEnum i = case i of
+        0 -> Automatic
+        1 -> DirectModification
+        2 -> ParameterReference
+        3 -> ResourceAttribute
+        4 -> ResourceReference
+        _ -> (error . showText) $ "Unknown index for ChangeSource: " <> toText i
+    fromEnum x = case x of
+        Automatic -> 0
+        DirectModification -> 1
+        ParameterReference -> 2
+        ResourceAttribute -> 3
+        ResourceReference -> 4
+        ChangeSource' name -> (error . showText) $ "Unknown ChangeSource: " <> original name
+
+-- | Represents the bounds of /known/ $ChangeSource.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded ChangeSource where
+    minBound = Automatic
+    maxBound = ResourceReference
 
 instance Hashable     ChangeSource
 instance NFData       ChangeSource

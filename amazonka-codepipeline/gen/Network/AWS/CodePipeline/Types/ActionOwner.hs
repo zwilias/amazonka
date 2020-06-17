@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,29 +16,65 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.CodePipeline.Types.ActionOwner where
+module Network.AWS.CodePipeline.Types.ActionOwner (
+  ActionOwner (
+    ..
+    , AWS
+    , Custom
+    , ThirdParty
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data ActionOwner = AWS
-                 | Custom
-                 | ThirdParty
-                     deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                               Typeable, Generic)
+
+data ActionOwner = ActionOwner' (CI Text)
+                     deriving (Eq, Ord, Read, Show, Data, Typeable,
+                               Generic)
+
+pattern AWS :: ActionOwner
+pattern AWS = ActionOwner' "AWS"
+
+pattern Custom :: ActionOwner
+pattern Custom = ActionOwner' "Custom"
+
+pattern ThirdParty :: ActionOwner
+pattern ThirdParty = ActionOwner' "ThirdParty"
+
+{-# COMPLETE
+  AWS,
+  Custom,
+  ThirdParty,
+  ActionOwner' #-}
 
 instance FromText ActionOwner where
-    parser = takeLowerText >>= \case
-        "aws" -> pure AWS
-        "custom" -> pure Custom
-        "thirdparty" -> pure ThirdParty
-        e -> fromTextError $ "Failure parsing ActionOwner from value: '" <> e
-           <> "'. Accepted values: aws, custom, thirdparty"
+    parser = (ActionOwner' . mk) <$> takeText
 
 instance ToText ActionOwner where
-    toText = \case
-        AWS -> "AWS"
-        Custom -> "Custom"
-        ThirdParty -> "ThirdParty"
+    toText (ActionOwner' ci) = original ci
+
+-- | Represents an enum of /known/ $ActionOwner.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum ActionOwner where
+    toEnum i = case i of
+        0 -> AWS
+        1 -> Custom
+        2 -> ThirdParty
+        _ -> (error . showText) $ "Unknown index for ActionOwner: " <> toText i
+    fromEnum x = case x of
+        AWS -> 0
+        Custom -> 1
+        ThirdParty -> 2
+        ActionOwner' name -> (error . showText) $ "Unknown ActionOwner: " <> original name
+
+-- | Represents the bounds of /known/ $ActionOwner.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded ActionOwner where
+    minBound = AWS
+    maxBound = ThirdParty
 
 instance Hashable     ActionOwner
 instance NFData       ActionOwner

@@ -110,6 +110,7 @@ library
         , Network.AWS.KinesisAnalytics.Types.Output
         , Network.AWS.KinesisAnalytics.Types.OutputDescription
         , Network.AWS.KinesisAnalytics.Types.OutputUpdate
+        , Network.AWS.KinesisAnalytics.Types.Product
         , Network.AWS.KinesisAnalytics.Types.RecordColumn
         , Network.AWS.KinesisAnalytics.Types.RecordFormat
         , Network.AWS.KinesisAnalytics.Types.RecordFormatType
@@ -125,6 +126,7 @@ library
     build-depends:
           amazonka-core == 1.6.1.*
         , base          >= 4.7     && < 5
+        , case-insensitive
 
 test-suite amazonka-kinesis-analytics-test
     type:              exitcode-stdio-1.0
@@ -148,6 +150,7 @@ test-suite amazonka-kinesis-analytics-test
         , amazonka-kinesis-analytics
         , base
         , bytestring
+        , case-insensitive
         , tasty
         , tasty-hunit
         , text

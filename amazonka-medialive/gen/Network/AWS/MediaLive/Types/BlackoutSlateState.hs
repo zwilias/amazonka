@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,27 +16,60 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.MediaLive.Types.BlackoutSlateState where
+module Network.AWS.MediaLive.Types.BlackoutSlateState (
+  BlackoutSlateState (
+    ..
+    , BSSDisabled
+    , BSSEnabled
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
+
 -- | Placeholder documentation for BlackoutSlateState
-data BlackoutSlateState = BSSDisabled
-                        | BSSEnabled
-                            deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                      Typeable, Generic)
+data BlackoutSlateState = BlackoutSlateState' (CI
+                                                 Text)
+                            deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                      Generic)
+
+pattern BSSDisabled :: BlackoutSlateState
+pattern BSSDisabled = BlackoutSlateState' "DISABLED"
+
+pattern BSSEnabled :: BlackoutSlateState
+pattern BSSEnabled = BlackoutSlateState' "ENABLED"
+
+{-# COMPLETE
+  BSSDisabled,
+  BSSEnabled,
+  BlackoutSlateState' #-}
 
 instance FromText BlackoutSlateState where
-    parser = takeLowerText >>= \case
-        "disabled" -> pure BSSDisabled
-        "enabled" -> pure BSSEnabled
-        e -> fromTextError $ "Failure parsing BlackoutSlateState from value: '" <> e
-           <> "'. Accepted values: disabled, enabled"
+    parser = (BlackoutSlateState' . mk) <$> takeText
 
 instance ToText BlackoutSlateState where
-    toText = \case
-        BSSDisabled -> "DISABLED"
-        BSSEnabled -> "ENABLED"
+    toText (BlackoutSlateState' ci) = original ci
+
+-- | Represents an enum of /known/ $BlackoutSlateState.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum BlackoutSlateState where
+    toEnum i = case i of
+        0 -> BSSDisabled
+        1 -> BSSEnabled
+        _ -> (error . showText) $ "Unknown index for BlackoutSlateState: " <> toText i
+    fromEnum x = case x of
+        BSSDisabled -> 0
+        BSSEnabled -> 1
+        BlackoutSlateState' name -> (error . showText) $ "Unknown BlackoutSlateState: " <> original name
+
+-- | Represents the bounds of /known/ $BlackoutSlateState.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded BlackoutSlateState where
+    minBound = BSSDisabled
+    maxBound = BSSEnabled
 
 instance Hashable     BlackoutSlateState
 instance NFData       BlackoutSlateState

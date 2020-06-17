@@ -65,6 +65,7 @@ module Network.AWS.Glacier.DescribeJob
     ) where
 
 import Network.AWS.Glacier.Types
+import Network.AWS.Glacier.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request

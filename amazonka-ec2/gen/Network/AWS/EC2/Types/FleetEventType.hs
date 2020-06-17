@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,30 +16,66 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.EC2.Types.FleetEventType where
+module Network.AWS.EC2.Types.FleetEventType (
+  FleetEventType (
+    ..
+    , FETFleetChange
+    , FETInstanceChange
+    , FETServiceError
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.EC2.Internal
 import Network.AWS.Prelude
-  
-data FleetEventType = FETFleetChange
-                    | FETInstanceChange
-                    | FETServiceError
-                        deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                  Typeable, Generic)
+
+data FleetEventType = FleetEventType' (CI Text)
+                        deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                  Generic)
+
+pattern FETFleetChange :: FleetEventType
+pattern FETFleetChange = FleetEventType' "fleet-change"
+
+pattern FETInstanceChange :: FleetEventType
+pattern FETInstanceChange = FleetEventType' "instance-change"
+
+pattern FETServiceError :: FleetEventType
+pattern FETServiceError = FleetEventType' "service-error"
+
+{-# COMPLETE
+  FETFleetChange,
+  FETInstanceChange,
+  FETServiceError,
+  FleetEventType' #-}
 
 instance FromText FleetEventType where
-    parser = takeLowerText >>= \case
-        "fleet-change" -> pure FETFleetChange
-        "instance-change" -> pure FETInstanceChange
-        "service-error" -> pure FETServiceError
-        e -> fromTextError $ "Failure parsing FleetEventType from value: '" <> e
-           <> "'. Accepted values: fleet-change, instance-change, service-error"
+    parser = (FleetEventType' . mk) <$> takeText
 
 instance ToText FleetEventType where
-    toText = \case
-        FETFleetChange -> "fleet-change"
-        FETInstanceChange -> "instance-change"
-        FETServiceError -> "service-error"
+    toText (FleetEventType' ci) = original ci
+
+-- | Represents an enum of /known/ $FleetEventType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum FleetEventType where
+    toEnum i = case i of
+        0 -> FETFleetChange
+        1 -> FETInstanceChange
+        2 -> FETServiceError
+        _ -> (error . showText) $ "Unknown index for FleetEventType: " <> toText i
+    fromEnum x = case x of
+        FETFleetChange -> 0
+        FETInstanceChange -> 1
+        FETServiceError -> 2
+        FleetEventType' name -> (error . showText) $ "Unknown FleetEventType: " <> original name
+
+-- | Represents the bounds of /known/ $FleetEventType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded FleetEventType where
+    minBound = FETFleetChange
+    maxBound = FETServiceError
 
 instance Hashable     FleetEventType
 instance NFData       FleetEventType

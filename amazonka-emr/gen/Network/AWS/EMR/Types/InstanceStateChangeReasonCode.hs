@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,36 +16,80 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.EMR.Types.InstanceStateChangeReasonCode where
+module Network.AWS.EMR.Types.InstanceStateChangeReasonCode (
+  InstanceStateChangeReasonCode (
+    ..
+    , ISCRCBootstrapFailure
+    , ISCRCClusterTerminated
+    , ISCRCInstanceFailure
+    , ISCRCInternalError
+    , ISCRCValidationError
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data InstanceStateChangeReasonCode = ISCRCBootstrapFailure
-                                   | ISCRCClusterTerminated
-                                   | ISCRCInstanceFailure
-                                   | ISCRCInternalError
-                                   | ISCRCValidationError
-                                       deriving (Eq, Ord, Read, Show, Enum,
-                                                 Bounded, Data, Typeable,
-                                                 Generic)
+
+data InstanceStateChangeReasonCode = InstanceStateChangeReasonCode' (CI
+                                                                       Text)
+                                       deriving (Eq, Ord, Read, Show, Data,
+                                                 Typeable, Generic)
+
+pattern ISCRCBootstrapFailure :: InstanceStateChangeReasonCode
+pattern ISCRCBootstrapFailure = InstanceStateChangeReasonCode' "BOOTSTRAP_FAILURE"
+
+pattern ISCRCClusterTerminated :: InstanceStateChangeReasonCode
+pattern ISCRCClusterTerminated = InstanceStateChangeReasonCode' "CLUSTER_TERMINATED"
+
+pattern ISCRCInstanceFailure :: InstanceStateChangeReasonCode
+pattern ISCRCInstanceFailure = InstanceStateChangeReasonCode' "INSTANCE_FAILURE"
+
+pattern ISCRCInternalError :: InstanceStateChangeReasonCode
+pattern ISCRCInternalError = InstanceStateChangeReasonCode' "INTERNAL_ERROR"
+
+pattern ISCRCValidationError :: InstanceStateChangeReasonCode
+pattern ISCRCValidationError = InstanceStateChangeReasonCode' "VALIDATION_ERROR"
+
+{-# COMPLETE
+  ISCRCBootstrapFailure,
+  ISCRCClusterTerminated,
+  ISCRCInstanceFailure,
+  ISCRCInternalError,
+  ISCRCValidationError,
+  InstanceStateChangeReasonCode' #-}
 
 instance FromText InstanceStateChangeReasonCode where
-    parser = takeLowerText >>= \case
-        "bootstrap_failure" -> pure ISCRCBootstrapFailure
-        "cluster_terminated" -> pure ISCRCClusterTerminated
-        "instance_failure" -> pure ISCRCInstanceFailure
-        "internal_error" -> pure ISCRCInternalError
-        "validation_error" -> pure ISCRCValidationError
-        e -> fromTextError $ "Failure parsing InstanceStateChangeReasonCode from value: '" <> e
-           <> "'. Accepted values: bootstrap_failure, cluster_terminated, instance_failure, internal_error, validation_error"
+    parser = (InstanceStateChangeReasonCode' . mk) <$> takeText
 
 instance ToText InstanceStateChangeReasonCode where
-    toText = \case
-        ISCRCBootstrapFailure -> "BOOTSTRAP_FAILURE"
-        ISCRCClusterTerminated -> "CLUSTER_TERMINATED"
-        ISCRCInstanceFailure -> "INSTANCE_FAILURE"
-        ISCRCInternalError -> "INTERNAL_ERROR"
-        ISCRCValidationError -> "VALIDATION_ERROR"
+    toText (InstanceStateChangeReasonCode' ci) = original ci
+
+-- | Represents an enum of /known/ $InstanceStateChangeReasonCode.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum InstanceStateChangeReasonCode where
+    toEnum i = case i of
+        0 -> ISCRCBootstrapFailure
+        1 -> ISCRCClusterTerminated
+        2 -> ISCRCInstanceFailure
+        3 -> ISCRCInternalError
+        4 -> ISCRCValidationError
+        _ -> (error . showText) $ "Unknown index for InstanceStateChangeReasonCode: " <> toText i
+    fromEnum x = case x of
+        ISCRCBootstrapFailure -> 0
+        ISCRCClusterTerminated -> 1
+        ISCRCInstanceFailure -> 2
+        ISCRCInternalError -> 3
+        ISCRCValidationError -> 4
+        InstanceStateChangeReasonCode' name -> (error . showText) $ "Unknown InstanceStateChangeReasonCode: " <> original name
+
+-- | Represents the bounds of /known/ $InstanceStateChangeReasonCode.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded InstanceStateChangeReasonCode where
+    minBound = ISCRCBootstrapFailure
+    maxBound = ISCRCValidationError
 
 instance Hashable     InstanceStateChangeReasonCode
 instance NFData       InstanceStateChangeReasonCode

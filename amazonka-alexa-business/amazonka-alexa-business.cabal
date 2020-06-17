@@ -115,6 +115,7 @@ library
         , Network.AWS.AlexaBusiness.Types.EnrollmentStatus
         , Network.AWS.AlexaBusiness.Types.Feature
         , Network.AWS.AlexaBusiness.Types.Filter
+        , Network.AWS.AlexaBusiness.Types.Product
         , Network.AWS.AlexaBusiness.Types.Profile
         , Network.AWS.AlexaBusiness.Types.ProfileData
         , Network.AWS.AlexaBusiness.Types.Room
@@ -133,6 +134,7 @@ library
     build-depends:
           amazonka-core == 1.6.1.*
         , base          >= 4.7     && < 5
+        , case-insensitive
 
 test-suite amazonka-alexa-business-test
     type:              exitcode-stdio-1.0
@@ -156,6 +158,7 @@ test-suite amazonka-alexa-business-test
         , amazonka-alexa-business
         , base
         , bytestring
+        , case-insensitive
         , tasty
         , tasty-hunit
         , text

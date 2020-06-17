@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,53 +16,121 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.CodeBuild.Types.BuildPhaseType where
+module Network.AWS.CodeBuild.Types.BuildPhaseType (
+  BuildPhaseType (
+    ..
+    , Build
+    , Completed
+    , DownloadSource
+    , Finalizing
+    , Install
+    , PostBuild
+    , PreBuild
+    , Provisioning
+    , Queued
+    , Submitted
+    , UploadArtifacts
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data BuildPhaseType = Build
-                    | Completed
-                    | DownloadSource
-                    | Finalizing
-                    | Install
-                    | PostBuild
-                    | PreBuild
-                    | Provisioning
-                    | Queued
-                    | Submitted
-                    | UploadArtifacts
-                        deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                  Typeable, Generic)
+
+data BuildPhaseType = BuildPhaseType' (CI Text)
+                        deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                  Generic)
+
+pattern Build :: BuildPhaseType
+pattern Build = BuildPhaseType' "BUILD"
+
+pattern Completed :: BuildPhaseType
+pattern Completed = BuildPhaseType' "COMPLETED"
+
+pattern DownloadSource :: BuildPhaseType
+pattern DownloadSource = BuildPhaseType' "DOWNLOAD_SOURCE"
+
+pattern Finalizing :: BuildPhaseType
+pattern Finalizing = BuildPhaseType' "FINALIZING"
+
+pattern Install :: BuildPhaseType
+pattern Install = BuildPhaseType' "INSTALL"
+
+pattern PostBuild :: BuildPhaseType
+pattern PostBuild = BuildPhaseType' "POST_BUILD"
+
+pattern PreBuild :: BuildPhaseType
+pattern PreBuild = BuildPhaseType' "PRE_BUILD"
+
+pattern Provisioning :: BuildPhaseType
+pattern Provisioning = BuildPhaseType' "PROVISIONING"
+
+pattern Queued :: BuildPhaseType
+pattern Queued = BuildPhaseType' "QUEUED"
+
+pattern Submitted :: BuildPhaseType
+pattern Submitted = BuildPhaseType' "SUBMITTED"
+
+pattern UploadArtifacts :: BuildPhaseType
+pattern UploadArtifacts = BuildPhaseType' "UPLOAD_ARTIFACTS"
+
+{-# COMPLETE
+  Build,
+  Completed,
+  DownloadSource,
+  Finalizing,
+  Install,
+  PostBuild,
+  PreBuild,
+  Provisioning,
+  Queued,
+  Submitted,
+  UploadArtifacts,
+  BuildPhaseType' #-}
 
 instance FromText BuildPhaseType where
-    parser = takeLowerText >>= \case
-        "build" -> pure Build
-        "completed" -> pure Completed
-        "download_source" -> pure DownloadSource
-        "finalizing" -> pure Finalizing
-        "install" -> pure Install
-        "post_build" -> pure PostBuild
-        "pre_build" -> pure PreBuild
-        "provisioning" -> pure Provisioning
-        "queued" -> pure Queued
-        "submitted" -> pure Submitted
-        "upload_artifacts" -> pure UploadArtifacts
-        e -> fromTextError $ "Failure parsing BuildPhaseType from value: '" <> e
-           <> "'. Accepted values: build, completed, download_source, finalizing, install, post_build, pre_build, provisioning, queued, submitted, upload_artifacts"
+    parser = (BuildPhaseType' . mk) <$> takeText
 
 instance ToText BuildPhaseType where
-    toText = \case
-        Build -> "BUILD"
-        Completed -> "COMPLETED"
-        DownloadSource -> "DOWNLOAD_SOURCE"
-        Finalizing -> "FINALIZING"
-        Install -> "INSTALL"
-        PostBuild -> "POST_BUILD"
-        PreBuild -> "PRE_BUILD"
-        Provisioning -> "PROVISIONING"
-        Queued -> "QUEUED"
-        Submitted -> "SUBMITTED"
-        UploadArtifacts -> "UPLOAD_ARTIFACTS"
+    toText (BuildPhaseType' ci) = original ci
+
+-- | Represents an enum of /known/ $BuildPhaseType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum BuildPhaseType where
+    toEnum i = case i of
+        0 -> Build
+        1 -> Completed
+        2 -> DownloadSource
+        3 -> Finalizing
+        4 -> Install
+        5 -> PostBuild
+        6 -> PreBuild
+        7 -> Provisioning
+        8 -> Queued
+        9 -> Submitted
+        10 -> UploadArtifacts
+        _ -> (error . showText) $ "Unknown index for BuildPhaseType: " <> toText i
+    fromEnum x = case x of
+        Build -> 0
+        Completed -> 1
+        DownloadSource -> 2
+        Finalizing -> 3
+        Install -> 4
+        PostBuild -> 5
+        PreBuild -> 6
+        Provisioning -> 7
+        Queued -> 8
+        Submitted -> 9
+        UploadArtifacts -> 10
+        BuildPhaseType' name -> (error . showText) $ "Unknown BuildPhaseType: " <> original name
+
+-- | Represents the bounds of /known/ $BuildPhaseType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded BuildPhaseType where
+    minBound = Build
+    maxBound = UploadArtifacts
 
 instance Hashable     BuildPhaseType
 instance NFData       BuildPhaseType

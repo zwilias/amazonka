@@ -47,6 +47,7 @@ module Network.AWS.CloudWatchEvents.PutPermission
     ) where
 
 import Network.AWS.CloudWatchEvents.Types
+import Network.AWS.CloudWatchEvents.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request

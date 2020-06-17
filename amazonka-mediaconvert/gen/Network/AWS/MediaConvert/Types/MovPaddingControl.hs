@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,27 +16,59 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.MediaConvert.Types.MovPaddingControl where
+module Network.AWS.MediaConvert.Types.MovPaddingControl (
+  MovPaddingControl (
+    ..
+    , MPCNone
+    , MPCOmneon
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
+
 -- | If set to OMNEON, inserts Omneon-compatible padding
-data MovPaddingControl = MPCNone
-                       | MPCOmneon
-                           deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                     Typeable, Generic)
+data MovPaddingControl = MovPaddingControl' (CI Text)
+                           deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                     Generic)
+
+pattern MPCNone :: MovPaddingControl
+pattern MPCNone = MovPaddingControl' "NONE"
+
+pattern MPCOmneon :: MovPaddingControl
+pattern MPCOmneon = MovPaddingControl' "OMNEON"
+
+{-# COMPLETE
+  MPCNone,
+  MPCOmneon,
+  MovPaddingControl' #-}
 
 instance FromText MovPaddingControl where
-    parser = takeLowerText >>= \case
-        "none" -> pure MPCNone
-        "omneon" -> pure MPCOmneon
-        e -> fromTextError $ "Failure parsing MovPaddingControl from value: '" <> e
-           <> "'. Accepted values: none, omneon"
+    parser = (MovPaddingControl' . mk) <$> takeText
 
 instance ToText MovPaddingControl where
-    toText = \case
-        MPCNone -> "NONE"
-        MPCOmneon -> "OMNEON"
+    toText (MovPaddingControl' ci) = original ci
+
+-- | Represents an enum of /known/ $MovPaddingControl.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum MovPaddingControl where
+    toEnum i = case i of
+        0 -> MPCNone
+        1 -> MPCOmneon
+        _ -> (error . showText) $ "Unknown index for MovPaddingControl: " <> toText i
+    fromEnum x = case x of
+        MPCNone -> 0
+        MPCOmneon -> 1
+        MovPaddingControl' name -> (error . showText) $ "Unknown MovPaddingControl: " <> original name
+
+-- | Represents the bounds of /known/ $MovPaddingControl.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded MovPaddingControl where
+    minBound = MPCNone
+    maxBound = MPCOmneon
 
 instance Hashable     MovPaddingControl
 instance NFData       MovPaddingControl

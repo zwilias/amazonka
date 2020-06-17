@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,30 +16,67 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.MediaLive.Types.InputMaximumBitrate where
+module Network.AWS.MediaLive.Types.InputMaximumBitrate (
+  InputMaximumBitrate (
+    ..
+    , Max10Mbps
+    , Max20Mbps
+    , Max50Mbps
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
+
 -- | Maximum input bitrate in megabits per second. Bitrates up to 50 Mbps are supported currently.
-data InputMaximumBitrate = Max10Mbps
-                         | Max20Mbps
-                         | Max50Mbps
-                             deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                       Typeable, Generic)
+data InputMaximumBitrate = InputMaximumBitrate' (CI
+                                                   Text)
+                             deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                       Generic)
+
+pattern Max10Mbps :: InputMaximumBitrate
+pattern Max10Mbps = InputMaximumBitrate' "MAX_10_MBPS"
+
+pattern Max20Mbps :: InputMaximumBitrate
+pattern Max20Mbps = InputMaximumBitrate' "MAX_20_MBPS"
+
+pattern Max50Mbps :: InputMaximumBitrate
+pattern Max50Mbps = InputMaximumBitrate' "MAX_50_MBPS"
+
+{-# COMPLETE
+  Max10Mbps,
+  Max20Mbps,
+  Max50Mbps,
+  InputMaximumBitrate' #-}
 
 instance FromText InputMaximumBitrate where
-    parser = takeLowerText >>= \case
-        "max_10_mbps" -> pure Max10Mbps
-        "max_20_mbps" -> pure Max20Mbps
-        "max_50_mbps" -> pure Max50Mbps
-        e -> fromTextError $ "Failure parsing InputMaximumBitrate from value: '" <> e
-           <> "'. Accepted values: max_10_mbps, max_20_mbps, max_50_mbps"
+    parser = (InputMaximumBitrate' . mk) <$> takeText
 
 instance ToText InputMaximumBitrate where
-    toText = \case
-        Max10Mbps -> "MAX_10_MBPS"
-        Max20Mbps -> "MAX_20_MBPS"
-        Max50Mbps -> "MAX_50_MBPS"
+    toText (InputMaximumBitrate' ci) = original ci
+
+-- | Represents an enum of /known/ $InputMaximumBitrate.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum InputMaximumBitrate where
+    toEnum i = case i of
+        0 -> Max10Mbps
+        1 -> Max20Mbps
+        2 -> Max50Mbps
+        _ -> (error . showText) $ "Unknown index for InputMaximumBitrate: " <> toText i
+    fromEnum x = case x of
+        Max10Mbps -> 0
+        Max20Mbps -> 1
+        Max50Mbps -> 2
+        InputMaximumBitrate' name -> (error . showText) $ "Unknown InputMaximumBitrate: " <> original name
+
+-- | Represents the bounds of /known/ $InputMaximumBitrate.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded InputMaximumBitrate where
+    minBound = Max10Mbps
+    maxBound = Max50Mbps
 
 instance Hashable     InputMaximumBitrate
 instance NFData       InputMaximumBitrate

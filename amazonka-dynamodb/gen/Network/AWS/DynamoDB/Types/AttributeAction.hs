@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,29 +16,65 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.DynamoDB.Types.AttributeAction where
+module Network.AWS.DynamoDB.Types.AttributeAction (
+  AttributeAction (
+    ..
+    , Add
+    , Delete
+    , Put
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data AttributeAction = Add
-                     | Delete
-                     | Put
-                         deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                   Typeable, Generic)
+
+data AttributeAction = AttributeAction' (CI Text)
+                         deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                   Generic)
+
+pattern Add :: AttributeAction
+pattern Add = AttributeAction' "ADD"
+
+pattern Delete :: AttributeAction
+pattern Delete = AttributeAction' "DELETE"
+
+pattern Put :: AttributeAction
+pattern Put = AttributeAction' "PUT"
+
+{-# COMPLETE
+  Add,
+  Delete,
+  Put,
+  AttributeAction' #-}
 
 instance FromText AttributeAction where
-    parser = takeLowerText >>= \case
-        "add" -> pure Add
-        "delete" -> pure Delete
-        "put" -> pure Put
-        e -> fromTextError $ "Failure parsing AttributeAction from value: '" <> e
-           <> "'. Accepted values: add, delete, put"
+    parser = (AttributeAction' . mk) <$> takeText
 
 instance ToText AttributeAction where
-    toText = \case
-        Add -> "ADD"
-        Delete -> "DELETE"
-        Put -> "PUT"
+    toText (AttributeAction' ci) = original ci
+
+-- | Represents an enum of /known/ $AttributeAction.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum AttributeAction where
+    toEnum i = case i of
+        0 -> Add
+        1 -> Delete
+        2 -> Put
+        _ -> (error . showText) $ "Unknown index for AttributeAction: " <> toText i
+    fromEnum x = case x of
+        Add -> 0
+        Delete -> 1
+        Put -> 2
+        AttributeAction' name -> (error . showText) $ "Unknown AttributeAction: " <> original name
+
+-- | Represents the bounds of /known/ $AttributeAction.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded AttributeAction where
+    minBound = Add
+    maxBound = Put
 
 instance Hashable     AttributeAction
 instance NFData       AttributeAction

@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,59 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.SES.Types.BehaviorOnMXFailure where
+module Network.AWS.SES.Types.BehaviorOnMXFailure (
+  BehaviorOnMXFailure (
+    ..
+    , RejectMessage
+    , UseDefaultValue
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data BehaviorOnMXFailure = RejectMessage
-                         | UseDefaultValue
-                             deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                       Typeable, Generic)
+
+data BehaviorOnMXFailure = BehaviorOnMXFailure' (CI
+                                                   Text)
+                             deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                       Generic)
+
+pattern RejectMessage :: BehaviorOnMXFailure
+pattern RejectMessage = BehaviorOnMXFailure' "RejectMessage"
+
+pattern UseDefaultValue :: BehaviorOnMXFailure
+pattern UseDefaultValue = BehaviorOnMXFailure' "UseDefaultValue"
+
+{-# COMPLETE
+  RejectMessage,
+  UseDefaultValue,
+  BehaviorOnMXFailure' #-}
 
 instance FromText BehaviorOnMXFailure where
-    parser = takeLowerText >>= \case
-        "rejectmessage" -> pure RejectMessage
-        "usedefaultvalue" -> pure UseDefaultValue
-        e -> fromTextError $ "Failure parsing BehaviorOnMXFailure from value: '" <> e
-           <> "'. Accepted values: rejectmessage, usedefaultvalue"
+    parser = (BehaviorOnMXFailure' . mk) <$> takeText
 
 instance ToText BehaviorOnMXFailure where
-    toText = \case
-        RejectMessage -> "RejectMessage"
-        UseDefaultValue -> "UseDefaultValue"
+    toText (BehaviorOnMXFailure' ci) = original ci
+
+-- | Represents an enum of /known/ $BehaviorOnMXFailure.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum BehaviorOnMXFailure where
+    toEnum i = case i of
+        0 -> RejectMessage
+        1 -> UseDefaultValue
+        _ -> (error . showText) $ "Unknown index for BehaviorOnMXFailure: " <> toText i
+    fromEnum x = case x of
+        RejectMessage -> 0
+        UseDefaultValue -> 1
+        BehaviorOnMXFailure' name -> (error . showText) $ "Unknown BehaviorOnMXFailure: " <> original name
+
+-- | Represents the bounds of /known/ $BehaviorOnMXFailure.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded BehaviorOnMXFailure where
+    minBound = RejectMessage
+    maxBound = UseDefaultValue
 
 instance Hashable     BehaviorOnMXFailure
 instance NFData       BehaviorOnMXFailure

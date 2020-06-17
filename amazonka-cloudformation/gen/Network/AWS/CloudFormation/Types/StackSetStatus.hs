@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,58 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.CloudFormation.Types.StackSetStatus where
+module Network.AWS.CloudFormation.Types.StackSetStatus (
+  StackSetStatus (
+    ..
+    , Active
+    , Deleted
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data StackSetStatus = Active
-                    | Deleted
-                        deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                  Typeable, Generic)
+
+data StackSetStatus = StackSetStatus' (CI Text)
+                        deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                  Generic)
+
+pattern Active :: StackSetStatus
+pattern Active = StackSetStatus' "ACTIVE"
+
+pattern Deleted :: StackSetStatus
+pattern Deleted = StackSetStatus' "DELETED"
+
+{-# COMPLETE
+  Active,
+  Deleted,
+  StackSetStatus' #-}
 
 instance FromText StackSetStatus where
-    parser = takeLowerText >>= \case
-        "active" -> pure Active
-        "deleted" -> pure Deleted
-        e -> fromTextError $ "Failure parsing StackSetStatus from value: '" <> e
-           <> "'. Accepted values: active, deleted"
+    parser = (StackSetStatus' . mk) <$> takeText
 
 instance ToText StackSetStatus where
-    toText = \case
-        Active -> "ACTIVE"
-        Deleted -> "DELETED"
+    toText (StackSetStatus' ci) = original ci
+
+-- | Represents an enum of /known/ $StackSetStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum StackSetStatus where
+    toEnum i = case i of
+        0 -> Active
+        1 -> Deleted
+        _ -> (error . showText) $ "Unknown index for StackSetStatus: " <> toText i
+    fromEnum x = case x of
+        Active -> 0
+        Deleted -> 1
+        StackSetStatus' name -> (error . showText) $ "Unknown StackSetStatus: " <> original name
+
+-- | Represents the bounds of /known/ $StackSetStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded StackSetStatus where
+    minBound = Active
+    maxBound = Deleted
 
 instance Hashable     StackSetStatus
 instance NFData       StackSetStatus

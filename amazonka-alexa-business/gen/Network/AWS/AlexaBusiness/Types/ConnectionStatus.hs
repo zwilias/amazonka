@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,58 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.AlexaBusiness.Types.ConnectionStatus where
+module Network.AWS.AlexaBusiness.Types.ConnectionStatus (
+  ConnectionStatus (
+    ..
+    , Offline
+    , Online
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data ConnectionStatus = Offline
-                      | Online
-                          deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                    Typeable, Generic)
+
+data ConnectionStatus = ConnectionStatus' (CI Text)
+                          deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                    Generic)
+
+pattern Offline :: ConnectionStatus
+pattern Offline = ConnectionStatus' "OFFLINE"
+
+pattern Online :: ConnectionStatus
+pattern Online = ConnectionStatus' "ONLINE"
+
+{-# COMPLETE
+  Offline,
+  Online,
+  ConnectionStatus' #-}
 
 instance FromText ConnectionStatus where
-    parser = takeLowerText >>= \case
-        "offline" -> pure Offline
-        "online" -> pure Online
-        e -> fromTextError $ "Failure parsing ConnectionStatus from value: '" <> e
-           <> "'. Accepted values: offline, online"
+    parser = (ConnectionStatus' . mk) <$> takeText
 
 instance ToText ConnectionStatus where
-    toText = \case
-        Offline -> "OFFLINE"
-        Online -> "ONLINE"
+    toText (ConnectionStatus' ci) = original ci
+
+-- | Represents an enum of /known/ $ConnectionStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum ConnectionStatus where
+    toEnum i = case i of
+        0 -> Offline
+        1 -> Online
+        _ -> (error . showText) $ "Unknown index for ConnectionStatus: " <> toText i
+    fromEnum x = case x of
+        Offline -> 0
+        Online -> 1
+        ConnectionStatus' name -> (error . showText) $ "Unknown ConnectionStatus: " <> original name
+
+-- | Represents the bounds of /known/ $ConnectionStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded ConnectionStatus where
+    minBound = Offline
+    maxBound = Online
 
 instance Hashable     ConnectionStatus
 instance NFData       ConnectionStatus

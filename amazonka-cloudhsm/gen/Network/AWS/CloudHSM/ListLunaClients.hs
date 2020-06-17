@@ -47,6 +47,7 @@ module Network.AWS.CloudHSM.ListLunaClients
     ) where
 
 import Network.AWS.CloudHSM.Types
+import Network.AWS.CloudHSM.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude

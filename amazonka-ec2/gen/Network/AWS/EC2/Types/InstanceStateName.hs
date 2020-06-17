@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,39 +16,87 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.EC2.Types.InstanceStateName where
+module Network.AWS.EC2.Types.InstanceStateName (
+  InstanceStateName (
+    ..
+    , ISNPending
+    , ISNRunning
+    , ISNShuttingDown
+    , ISNStopped
+    , ISNStopping
+    , ISNTerminated
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.EC2.Internal
 import Network.AWS.Prelude
-  
-data InstanceStateName = ISNPending
-                       | ISNRunning
-                       | ISNShuttingDown
-                       | ISNStopped
-                       | ISNStopping
-                       | ISNTerminated
-                           deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                     Typeable, Generic)
+
+data InstanceStateName = InstanceStateName' (CI Text)
+                           deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                     Generic)
+
+pattern ISNPending :: InstanceStateName
+pattern ISNPending = InstanceStateName' "pending"
+
+pattern ISNRunning :: InstanceStateName
+pattern ISNRunning = InstanceStateName' "running"
+
+pattern ISNShuttingDown :: InstanceStateName
+pattern ISNShuttingDown = InstanceStateName' "shutting-down"
+
+pattern ISNStopped :: InstanceStateName
+pattern ISNStopped = InstanceStateName' "stopped"
+
+pattern ISNStopping :: InstanceStateName
+pattern ISNStopping = InstanceStateName' "stopping"
+
+pattern ISNTerminated :: InstanceStateName
+pattern ISNTerminated = InstanceStateName' "terminated"
+
+{-# COMPLETE
+  ISNPending,
+  ISNRunning,
+  ISNShuttingDown,
+  ISNStopped,
+  ISNStopping,
+  ISNTerminated,
+  InstanceStateName' #-}
 
 instance FromText InstanceStateName where
-    parser = takeLowerText >>= \case
-        "pending" -> pure ISNPending
-        "running" -> pure ISNRunning
-        "shutting-down" -> pure ISNShuttingDown
-        "stopped" -> pure ISNStopped
-        "stopping" -> pure ISNStopping
-        "terminated" -> pure ISNTerminated
-        e -> fromTextError $ "Failure parsing InstanceStateName from value: '" <> e
-           <> "'. Accepted values: pending, running, shutting-down, stopped, stopping, terminated"
+    parser = (InstanceStateName' . mk) <$> takeText
 
 instance ToText InstanceStateName where
-    toText = \case
-        ISNPending -> "pending"
-        ISNRunning -> "running"
-        ISNShuttingDown -> "shutting-down"
-        ISNStopped -> "stopped"
-        ISNStopping -> "stopping"
-        ISNTerminated -> "terminated"
+    toText (InstanceStateName' ci) = original ci
+
+-- | Represents an enum of /known/ $InstanceStateName.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum InstanceStateName where
+    toEnum i = case i of
+        0 -> ISNPending
+        1 -> ISNRunning
+        2 -> ISNShuttingDown
+        3 -> ISNStopped
+        4 -> ISNStopping
+        5 -> ISNTerminated
+        _ -> (error . showText) $ "Unknown index for InstanceStateName: " <> toText i
+    fromEnum x = case x of
+        ISNPending -> 0
+        ISNRunning -> 1
+        ISNShuttingDown -> 2
+        ISNStopped -> 3
+        ISNStopping -> 4
+        ISNTerminated -> 5
+        InstanceStateName' name -> (error . showText) $ "Unknown InstanceStateName: " <> original name
+
+-- | Represents the bounds of /known/ $InstanceStateName.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded InstanceStateName where
+    minBound = ISNPending
+    maxBound = ISNTerminated
 
 instance Hashable     InstanceStateName
 instance NFData       InstanceStateName

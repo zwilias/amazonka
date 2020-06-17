@@ -43,6 +43,7 @@ module Network.AWS.CodeStar.ListResources
     ) where
 
 import Network.AWS.CodeStar.Types
+import Network.AWS.CodeStar.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude

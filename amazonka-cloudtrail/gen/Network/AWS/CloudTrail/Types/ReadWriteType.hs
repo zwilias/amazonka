@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,29 +16,65 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.CloudTrail.Types.ReadWriteType where
+module Network.AWS.CloudTrail.Types.ReadWriteType (
+  ReadWriteType (
+    ..
+    , RWTAll
+    , RWTReadOnly
+    , RWTWriteOnly
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data ReadWriteType = RWTAll
-                   | RWTReadOnly
-                   | RWTWriteOnly
-                       deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                 Typeable, Generic)
+
+data ReadWriteType = ReadWriteType' (CI Text)
+                       deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                 Generic)
+
+pattern RWTAll :: ReadWriteType
+pattern RWTAll = ReadWriteType' "All"
+
+pattern RWTReadOnly :: ReadWriteType
+pattern RWTReadOnly = ReadWriteType' "ReadOnly"
+
+pattern RWTWriteOnly :: ReadWriteType
+pattern RWTWriteOnly = ReadWriteType' "WriteOnly"
+
+{-# COMPLETE
+  RWTAll,
+  RWTReadOnly,
+  RWTWriteOnly,
+  ReadWriteType' #-}
 
 instance FromText ReadWriteType where
-    parser = takeLowerText >>= \case
-        "all" -> pure RWTAll
-        "readonly" -> pure RWTReadOnly
-        "writeonly" -> pure RWTWriteOnly
-        e -> fromTextError $ "Failure parsing ReadWriteType from value: '" <> e
-           <> "'. Accepted values: all, readonly, writeonly"
+    parser = (ReadWriteType' . mk) <$> takeText
 
 instance ToText ReadWriteType where
-    toText = \case
-        RWTAll -> "All"
-        RWTReadOnly -> "ReadOnly"
-        RWTWriteOnly -> "WriteOnly"
+    toText (ReadWriteType' ci) = original ci
+
+-- | Represents an enum of /known/ $ReadWriteType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum ReadWriteType where
+    toEnum i = case i of
+        0 -> RWTAll
+        1 -> RWTReadOnly
+        2 -> RWTWriteOnly
+        _ -> (error . showText) $ "Unknown index for ReadWriteType: " <> toText i
+    fromEnum x = case x of
+        RWTAll -> 0
+        RWTReadOnly -> 1
+        RWTWriteOnly -> 2
+        ReadWriteType' name -> (error . showText) $ "Unknown ReadWriteType: " <> original name
+
+-- | Represents the bounds of /known/ $ReadWriteType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded ReadWriteType where
+    minBound = RWTAll
+    maxBound = RWTWriteOnly
 
 instance Hashable     ReadWriteType
 instance NFData       ReadWriteType

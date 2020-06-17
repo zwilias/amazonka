@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,29 +16,66 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.CloudFormation.Types.RequiresRecreation where
+module Network.AWS.CloudFormation.Types.RequiresRecreation (
+  RequiresRecreation (
+    ..
+    , Always
+    , Conditionally
+    , Never
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data RequiresRecreation = Always
-                        | Conditionally
-                        | Never
-                            deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                      Typeable, Generic)
+
+data RequiresRecreation = RequiresRecreation' (CI
+                                                 Text)
+                            deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                      Generic)
+
+pattern Always :: RequiresRecreation
+pattern Always = RequiresRecreation' "Always"
+
+pattern Conditionally :: RequiresRecreation
+pattern Conditionally = RequiresRecreation' "Conditionally"
+
+pattern Never :: RequiresRecreation
+pattern Never = RequiresRecreation' "Never"
+
+{-# COMPLETE
+  Always,
+  Conditionally,
+  Never,
+  RequiresRecreation' #-}
 
 instance FromText RequiresRecreation where
-    parser = takeLowerText >>= \case
-        "always" -> pure Always
-        "conditionally" -> pure Conditionally
-        "never" -> pure Never
-        e -> fromTextError $ "Failure parsing RequiresRecreation from value: '" <> e
-           <> "'. Accepted values: always, conditionally, never"
+    parser = (RequiresRecreation' . mk) <$> takeText
 
 instance ToText RequiresRecreation where
-    toText = \case
-        Always -> "Always"
-        Conditionally -> "Conditionally"
-        Never -> "Never"
+    toText (RequiresRecreation' ci) = original ci
+
+-- | Represents an enum of /known/ $RequiresRecreation.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum RequiresRecreation where
+    toEnum i = case i of
+        0 -> Always
+        1 -> Conditionally
+        2 -> Never
+        _ -> (error . showText) $ "Unknown index for RequiresRecreation: " <> toText i
+    fromEnum x = case x of
+        Always -> 0
+        Conditionally -> 1
+        Never -> 2
+        RequiresRecreation' name -> (error . showText) $ "Unknown RequiresRecreation: " <> original name
+
+-- | Represents the bounds of /known/ $RequiresRecreation.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded RequiresRecreation where
+    minBound = Always
+    maxBound = Never
 
 instance Hashable     RequiresRecreation
 instance NFData       RequiresRecreation

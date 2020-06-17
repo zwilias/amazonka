@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,27 +16,60 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.EC2.Types.DatafeedSubscriptionState where
+module Network.AWS.EC2.Types.DatafeedSubscriptionState (
+  DatafeedSubscriptionState (
+    ..
+    , DSSActive
+    , DSSInactive
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.EC2.Internal
 import Network.AWS.Prelude
-  
-data DatafeedSubscriptionState = DSSActive
-                               | DSSInactive
-                                   deriving (Eq, Ord, Read, Show, Enum, Bounded,
-                                             Data, Typeable, Generic)
+
+data DatafeedSubscriptionState = DatafeedSubscriptionState' (CI
+                                                               Text)
+                                   deriving (Eq, Ord, Read, Show, Data,
+                                             Typeable, Generic)
+
+pattern DSSActive :: DatafeedSubscriptionState
+pattern DSSActive = DatafeedSubscriptionState' "Active"
+
+pattern DSSInactive :: DatafeedSubscriptionState
+pattern DSSInactive = DatafeedSubscriptionState' "Inactive"
+
+{-# COMPLETE
+  DSSActive,
+  DSSInactive,
+  DatafeedSubscriptionState' #-}
 
 instance FromText DatafeedSubscriptionState where
-    parser = takeLowerText >>= \case
-        "active" -> pure DSSActive
-        "inactive" -> pure DSSInactive
-        e -> fromTextError $ "Failure parsing DatafeedSubscriptionState from value: '" <> e
-           <> "'. Accepted values: active, inactive"
+    parser = (DatafeedSubscriptionState' . mk) <$> takeText
 
 instance ToText DatafeedSubscriptionState where
-    toText = \case
-        DSSActive -> "Active"
-        DSSInactive -> "Inactive"
+    toText (DatafeedSubscriptionState' ci) = original ci
+
+-- | Represents an enum of /known/ $DatafeedSubscriptionState.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum DatafeedSubscriptionState where
+    toEnum i = case i of
+        0 -> DSSActive
+        1 -> DSSInactive
+        _ -> (error . showText) $ "Unknown index for DatafeedSubscriptionState: " <> toText i
+    fromEnum x = case x of
+        DSSActive -> 0
+        DSSInactive -> 1
+        DatafeedSubscriptionState' name -> (error . showText) $ "Unknown DatafeedSubscriptionState: " <> original name
+
+-- | Represents the bounds of /known/ $DatafeedSubscriptionState.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded DatafeedSubscriptionState where
+    minBound = DSSActive
+    maxBound = DSSInactive
 
 instance Hashable     DatafeedSubscriptionState
 instance NFData       DatafeedSubscriptionState

@@ -63,12 +63,14 @@ library
         , Network.AWS.ServerlessApplicationRepository.Types.ApplicationSummary
         , Network.AWS.ServerlessApplicationRepository.Types.ParameterDefinition
         , Network.AWS.ServerlessApplicationRepository.Types.ParameterValue
+        , Network.AWS.ServerlessApplicationRepository.Types.Product
         , Network.AWS.ServerlessApplicationRepository.Types.Version
         , Network.AWS.ServerlessApplicationRepository.Types.VersionSummary
 
     build-depends:
           amazonka-core == 1.6.1.*
         , base          >= 4.7     && < 5
+        , case-insensitive
 
 test-suite amazonka-serverlessrepo-test
     type:              exitcode-stdio-1.0
@@ -92,6 +94,7 @@ test-suite amazonka-serverlessrepo-test
         , amazonka-serverlessrepo
         , base
         , bytestring
+        , case-insensitive
         , tasty
         , tasty-hunit
         , text

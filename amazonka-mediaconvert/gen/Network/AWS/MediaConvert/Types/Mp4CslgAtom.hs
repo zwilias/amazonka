@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,27 +16,59 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.MediaConvert.Types.Mp4CslgAtom where
+module Network.AWS.MediaConvert.Types.Mp4CslgAtom (
+  Mp4CslgAtom (
+    ..
+    , Mp4Exclude
+    , Mp4Include
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
+
 -- | When enabled, file composition times will start at zero, composition times in the 'ctts' (composition time to sample) box for B-frames will be negative, and a 'cslg' (composition shift least greatest) box will be included per 14496-1 amendment 1. This improves compatibility with Apple players and tools.
-data Mp4CslgAtom = Mp4Exclude
-                 | Mp4Include
-                     deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                               Typeable, Generic)
+data Mp4CslgAtom = Mp4CslgAtom' (CI Text)
+                     deriving (Eq, Ord, Read, Show, Data, Typeable,
+                               Generic)
+
+pattern Mp4Exclude :: Mp4CslgAtom
+pattern Mp4Exclude = Mp4CslgAtom' "EXCLUDE"
+
+pattern Mp4Include :: Mp4CslgAtom
+pattern Mp4Include = Mp4CslgAtom' "INCLUDE"
+
+{-# COMPLETE
+  Mp4Exclude,
+  Mp4Include,
+  Mp4CslgAtom' #-}
 
 instance FromText Mp4CslgAtom where
-    parser = takeLowerText >>= \case
-        "exclude" -> pure Mp4Exclude
-        "include" -> pure Mp4Include
-        e -> fromTextError $ "Failure parsing Mp4CslgAtom from value: '" <> e
-           <> "'. Accepted values: exclude, include"
+    parser = (Mp4CslgAtom' . mk) <$> takeText
 
 instance ToText Mp4CslgAtom where
-    toText = \case
-        Mp4Exclude -> "EXCLUDE"
-        Mp4Include -> "INCLUDE"
+    toText (Mp4CslgAtom' ci) = original ci
+
+-- | Represents an enum of /known/ $Mp4CslgAtom.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum Mp4CslgAtom where
+    toEnum i = case i of
+        0 -> Mp4Exclude
+        1 -> Mp4Include
+        _ -> (error . showText) $ "Unknown index for Mp4CslgAtom: " <> toText i
+    fromEnum x = case x of
+        Mp4Exclude -> 0
+        Mp4Include -> 1
+        Mp4CslgAtom' name -> (error . showText) $ "Unknown Mp4CslgAtom: " <> original name
+
+-- | Represents the bounds of /known/ $Mp4CslgAtom.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded Mp4CslgAtom where
+    minBound = Mp4Exclude
+    maxBound = Mp4Include
 
 instance Hashable     Mp4CslgAtom
 instance NFData       Mp4CslgAtom

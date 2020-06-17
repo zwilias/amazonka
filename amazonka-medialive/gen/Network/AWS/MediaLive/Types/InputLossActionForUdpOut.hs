@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,30 +16,67 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.MediaLive.Types.InputLossActionForUdpOut where
+module Network.AWS.MediaLive.Types.InputLossActionForUdpOut (
+  InputLossActionForUdpOut (
+    ..
+    , DropProgram
+    , DropTs
+    , EmitProgram
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
+
 -- | Placeholder documentation for InputLossActionForUdpOut
-data InputLossActionForUdpOut = DropProgram
-                              | DropTs
-                              | EmitProgram
-                                  deriving (Eq, Ord, Read, Show, Enum, Bounded,
-                                            Data, Typeable, Generic)
+data InputLossActionForUdpOut = InputLossActionForUdpOut' (CI
+                                                             Text)
+                                  deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                            Generic)
+
+pattern DropProgram :: InputLossActionForUdpOut
+pattern DropProgram = InputLossActionForUdpOut' "DROP_PROGRAM"
+
+pattern DropTs :: InputLossActionForUdpOut
+pattern DropTs = InputLossActionForUdpOut' "DROP_TS"
+
+pattern EmitProgram :: InputLossActionForUdpOut
+pattern EmitProgram = InputLossActionForUdpOut' "EMIT_PROGRAM"
+
+{-# COMPLETE
+  DropProgram,
+  DropTs,
+  EmitProgram,
+  InputLossActionForUdpOut' #-}
 
 instance FromText InputLossActionForUdpOut where
-    parser = takeLowerText >>= \case
-        "drop_program" -> pure DropProgram
-        "drop_ts" -> pure DropTs
-        "emit_program" -> pure EmitProgram
-        e -> fromTextError $ "Failure parsing InputLossActionForUdpOut from value: '" <> e
-           <> "'. Accepted values: drop_program, drop_ts, emit_program"
+    parser = (InputLossActionForUdpOut' . mk) <$> takeText
 
 instance ToText InputLossActionForUdpOut where
-    toText = \case
-        DropProgram -> "DROP_PROGRAM"
-        DropTs -> "DROP_TS"
-        EmitProgram -> "EMIT_PROGRAM"
+    toText (InputLossActionForUdpOut' ci) = original ci
+
+-- | Represents an enum of /known/ $InputLossActionForUdpOut.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum InputLossActionForUdpOut where
+    toEnum i = case i of
+        0 -> DropProgram
+        1 -> DropTs
+        2 -> EmitProgram
+        _ -> (error . showText) $ "Unknown index for InputLossActionForUdpOut: " <> toText i
+    fromEnum x = case x of
+        DropProgram -> 0
+        DropTs -> 1
+        EmitProgram -> 2
+        InputLossActionForUdpOut' name -> (error . showText) $ "Unknown InputLossActionForUdpOut: " <> original name
+
+-- | Represents the bounds of /known/ $InputLossActionForUdpOut.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded InputLossActionForUdpOut where
+    minBound = DropProgram
+    maxBound = EmitProgram
 
 instance Hashable     InputLossActionForUdpOut
 instance NFData       InputLossActionForUdpOut

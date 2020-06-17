@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,58 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.Rekognition.Types.Attribute where
+module Network.AWS.Rekognition.Types.Attribute (
+  Attribute (
+    ..
+    , All
+    , Default
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data Attribute = All
-               | Default
-                   deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                             Typeable, Generic)
+
+data Attribute = Attribute' (CI Text)
+                   deriving (Eq, Ord, Read, Show, Data, Typeable,
+                             Generic)
+
+pattern All :: Attribute
+pattern All = Attribute' "ALL"
+
+pattern Default :: Attribute
+pattern Default = Attribute' "DEFAULT"
+
+{-# COMPLETE
+  All,
+  Default,
+  Attribute' #-}
 
 instance FromText Attribute where
-    parser = takeLowerText >>= \case
-        "all" -> pure All
-        "default" -> pure Default
-        e -> fromTextError $ "Failure parsing Attribute from value: '" <> e
-           <> "'. Accepted values: all, default"
+    parser = (Attribute' . mk) <$> takeText
 
 instance ToText Attribute where
-    toText = \case
-        All -> "ALL"
-        Default -> "DEFAULT"
+    toText (Attribute' ci) = original ci
+
+-- | Represents an enum of /known/ $Attribute.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum Attribute where
+    toEnum i = case i of
+        0 -> All
+        1 -> Default
+        _ -> (error . showText) $ "Unknown index for Attribute: " <> toText i
+    fromEnum x = case x of
+        All -> 0
+        Default -> 1
+        Attribute' name -> (error . showText) $ "Unknown Attribute: " <> original name
+
+-- | Represents the bounds of /known/ $Attribute.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded Attribute where
+    minBound = All
+    maxBound = Default
 
 instance Hashable     Attribute
 instance NFData       Attribute

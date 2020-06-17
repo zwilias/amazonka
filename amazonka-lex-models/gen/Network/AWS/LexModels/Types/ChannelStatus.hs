@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,29 +16,65 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.LexModels.Types.ChannelStatus where
+module Network.AWS.LexModels.Types.ChannelStatus (
+  ChannelStatus (
+    ..
+    , Created
+    , Failed
+    , InProgress
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data ChannelStatus = Created
-                   | Failed
-                   | InProgress
-                       deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                 Typeable, Generic)
+
+data ChannelStatus = ChannelStatus' (CI Text)
+                       deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                 Generic)
+
+pattern Created :: ChannelStatus
+pattern Created = ChannelStatus' "CREATED"
+
+pattern Failed :: ChannelStatus
+pattern Failed = ChannelStatus' "FAILED"
+
+pattern InProgress :: ChannelStatus
+pattern InProgress = ChannelStatus' "IN_PROGRESS"
+
+{-# COMPLETE
+  Created,
+  Failed,
+  InProgress,
+  ChannelStatus' #-}
 
 instance FromText ChannelStatus where
-    parser = takeLowerText >>= \case
-        "created" -> pure Created
-        "failed" -> pure Failed
-        "in_progress" -> pure InProgress
-        e -> fromTextError $ "Failure parsing ChannelStatus from value: '" <> e
-           <> "'. Accepted values: created, failed, in_progress"
+    parser = (ChannelStatus' . mk) <$> takeText
 
 instance ToText ChannelStatus where
-    toText = \case
-        Created -> "CREATED"
-        Failed -> "FAILED"
-        InProgress -> "IN_PROGRESS"
+    toText (ChannelStatus' ci) = original ci
+
+-- | Represents an enum of /known/ $ChannelStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum ChannelStatus where
+    toEnum i = case i of
+        0 -> Created
+        1 -> Failed
+        2 -> InProgress
+        _ -> (error . showText) $ "Unknown index for ChannelStatus: " <> toText i
+    fromEnum x = case x of
+        Created -> 0
+        Failed -> 1
+        InProgress -> 2
+        ChannelStatus' name -> (error . showText) $ "Unknown ChannelStatus: " <> original name
+
+-- | Represents the bounds of /known/ $ChannelStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded ChannelStatus where
+    minBound = Created
+    maxBound = InProgress
 
 instance Hashable     ChannelStatus
 instance NFData       ChannelStatus

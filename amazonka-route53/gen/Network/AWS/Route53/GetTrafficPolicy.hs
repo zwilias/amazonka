@@ -43,6 +43,7 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.Route53.Types
+import Network.AWS.Route53.Types.Product
 
 -- | Gets information about a specific traffic policy version.
 --

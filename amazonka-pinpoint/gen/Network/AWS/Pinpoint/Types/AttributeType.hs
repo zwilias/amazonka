@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,58 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.Pinpoint.Types.AttributeType where
+module Network.AWS.Pinpoint.Types.AttributeType (
+  AttributeType (
+    ..
+    , Exclusive
+    , Inclusive
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data AttributeType = Exclusive
-                   | Inclusive
-                       deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                 Typeable, Generic)
+
+data AttributeType = AttributeType' (CI Text)
+                       deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                 Generic)
+
+pattern Exclusive :: AttributeType
+pattern Exclusive = AttributeType' "EXCLUSIVE"
+
+pattern Inclusive :: AttributeType
+pattern Inclusive = AttributeType' "INCLUSIVE"
+
+{-# COMPLETE
+  Exclusive,
+  Inclusive,
+  AttributeType' #-}
 
 instance FromText AttributeType where
-    parser = takeLowerText >>= \case
-        "exclusive" -> pure Exclusive
-        "inclusive" -> pure Inclusive
-        e -> fromTextError $ "Failure parsing AttributeType from value: '" <> e
-           <> "'. Accepted values: exclusive, inclusive"
+    parser = (AttributeType' . mk) <$> takeText
 
 instance ToText AttributeType where
-    toText = \case
-        Exclusive -> "EXCLUSIVE"
-        Inclusive -> "INCLUSIVE"
+    toText (AttributeType' ci) = original ci
+
+-- | Represents an enum of /known/ $AttributeType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum AttributeType where
+    toEnum i = case i of
+        0 -> Exclusive
+        1 -> Inclusive
+        _ -> (error . showText) $ "Unknown index for AttributeType: " <> toText i
+    fromEnum x = case x of
+        Exclusive -> 0
+        Inclusive -> 1
+        AttributeType' name -> (error . showText) $ "Unknown AttributeType: " <> original name
+
+-- | Represents the bounds of /known/ $AttributeType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded AttributeType where
+    minBound = Exclusive
+    maxBound = Inclusive
 
 instance Hashable     AttributeType
 instance NFData       AttributeType

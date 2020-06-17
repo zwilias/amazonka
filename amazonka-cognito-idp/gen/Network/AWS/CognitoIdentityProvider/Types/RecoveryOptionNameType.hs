@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,29 +16,66 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.CognitoIdentityProvider.Types.RecoveryOptionNameType where
+module Network.AWS.CognitoIdentityProvider.Types.RecoveryOptionNameType (
+  RecoveryOptionNameType (
+    ..
+    , AdminOnly
+    , VerifiedEmail
+    , VerifiedPhoneNumber
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data RecoveryOptionNameType = AdminOnly
-                            | VerifiedEmail
-                            | VerifiedPhoneNumber
-                                deriving (Eq, Ord, Read, Show, Enum, Bounded,
-                                          Data, Typeable, Generic)
+
+data RecoveryOptionNameType = RecoveryOptionNameType' (CI
+                                                         Text)
+                                deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                          Generic)
+
+pattern AdminOnly :: RecoveryOptionNameType
+pattern AdminOnly = RecoveryOptionNameType' "admin_only"
+
+pattern VerifiedEmail :: RecoveryOptionNameType
+pattern VerifiedEmail = RecoveryOptionNameType' "verified_email"
+
+pattern VerifiedPhoneNumber :: RecoveryOptionNameType
+pattern VerifiedPhoneNumber = RecoveryOptionNameType' "verified_phone_number"
+
+{-# COMPLETE
+  AdminOnly,
+  VerifiedEmail,
+  VerifiedPhoneNumber,
+  RecoveryOptionNameType' #-}
 
 instance FromText RecoveryOptionNameType where
-    parser = takeLowerText >>= \case
-        "admin_only" -> pure AdminOnly
-        "verified_email" -> pure VerifiedEmail
-        "verified_phone_number" -> pure VerifiedPhoneNumber
-        e -> fromTextError $ "Failure parsing RecoveryOptionNameType from value: '" <> e
-           <> "'. Accepted values: admin_only, verified_email, verified_phone_number"
+    parser = (RecoveryOptionNameType' . mk) <$> takeText
 
 instance ToText RecoveryOptionNameType where
-    toText = \case
-        AdminOnly -> "admin_only"
-        VerifiedEmail -> "verified_email"
-        VerifiedPhoneNumber -> "verified_phone_number"
+    toText (RecoveryOptionNameType' ci) = original ci
+
+-- | Represents an enum of /known/ $RecoveryOptionNameType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum RecoveryOptionNameType where
+    toEnum i = case i of
+        0 -> AdminOnly
+        1 -> VerifiedEmail
+        2 -> VerifiedPhoneNumber
+        _ -> (error . showText) $ "Unknown index for RecoveryOptionNameType: " <> toText i
+    fromEnum x = case x of
+        AdminOnly -> 0
+        VerifiedEmail -> 1
+        VerifiedPhoneNumber -> 2
+        RecoveryOptionNameType' name -> (error . showText) $ "Unknown RecoveryOptionNameType: " <> original name
+
+-- | Represents the bounds of /known/ $RecoveryOptionNameType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded RecoveryOptionNameType where
+    minBound = AdminOnly
+    maxBound = VerifiedPhoneNumber
 
 instance Hashable     RecoveryOptionNameType
 instance NFData       RecoveryOptionNameType

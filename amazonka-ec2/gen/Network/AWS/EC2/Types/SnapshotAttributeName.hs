@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,27 +16,60 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.EC2.Types.SnapshotAttributeName where
+module Network.AWS.EC2.Types.SnapshotAttributeName (
+  SnapshotAttributeName (
+    ..
+    , SANCreateVolumePermission
+    , SANProductCodes
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.EC2.Internal
 import Network.AWS.Prelude
-  
-data SnapshotAttributeName = SANCreateVolumePermission
-                           | SANProductCodes
-                               deriving (Eq, Ord, Read, Show, Enum, Bounded,
-                                         Data, Typeable, Generic)
+
+data SnapshotAttributeName = SnapshotAttributeName' (CI
+                                                       Text)
+                               deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                         Generic)
+
+pattern SANCreateVolumePermission :: SnapshotAttributeName
+pattern SANCreateVolumePermission = SnapshotAttributeName' "createVolumePermission"
+
+pattern SANProductCodes :: SnapshotAttributeName
+pattern SANProductCodes = SnapshotAttributeName' "productCodes"
+
+{-# COMPLETE
+  SANCreateVolumePermission,
+  SANProductCodes,
+  SnapshotAttributeName' #-}
 
 instance FromText SnapshotAttributeName where
-    parser = takeLowerText >>= \case
-        "createvolumepermission" -> pure SANCreateVolumePermission
-        "productcodes" -> pure SANProductCodes
-        e -> fromTextError $ "Failure parsing SnapshotAttributeName from value: '" <> e
-           <> "'. Accepted values: createvolumepermission, productcodes"
+    parser = (SnapshotAttributeName' . mk) <$> takeText
 
 instance ToText SnapshotAttributeName where
-    toText = \case
-        SANCreateVolumePermission -> "createVolumePermission"
-        SANProductCodes -> "productCodes"
+    toText (SnapshotAttributeName' ci) = original ci
+
+-- | Represents an enum of /known/ $SnapshotAttributeName.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum SnapshotAttributeName where
+    toEnum i = case i of
+        0 -> SANCreateVolumePermission
+        1 -> SANProductCodes
+        _ -> (error . showText) $ "Unknown index for SnapshotAttributeName: " <> toText i
+    fromEnum x = case x of
+        SANCreateVolumePermission -> 0
+        SANProductCodes -> 1
+        SnapshotAttributeName' name -> (error . showText) $ "Unknown SnapshotAttributeName: " <> original name
+
+-- | Represents the bounds of /known/ $SnapshotAttributeName.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded SnapshotAttributeName where
+    minBound = SANCreateVolumePermission
+    maxBound = SANProductCodes
 
 instance Hashable     SnapshotAttributeName
 instance NFData       SnapshotAttributeName

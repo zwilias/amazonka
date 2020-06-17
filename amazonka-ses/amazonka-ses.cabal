@@ -153,6 +153,7 @@ library
         , Network.AWS.SES.Types.MessageDsn
         , Network.AWS.SES.Types.MessageTag
         , Network.AWS.SES.Types.NotificationType
+        , Network.AWS.SES.Types.Product
         , Network.AWS.SES.Types.RawMessage
         , Network.AWS.SES.Types.ReceiptAction
         , Network.AWS.SES.Types.ReceiptFilter
@@ -179,6 +180,7 @@ library
     build-depends:
           amazonka-core == 1.6.1.*
         , base          >= 4.7     && < 5
+        , case-insensitive
 
 test-suite amazonka-ses-test
     type:              exitcode-stdio-1.0
@@ -202,6 +204,7 @@ test-suite amazonka-ses-test
         , amazonka-ses
         , base
         , bytestring
+        , case-insensitive
         , tasty
         , tasty-hunit
         , text

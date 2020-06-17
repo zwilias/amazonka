@@ -39,6 +39,7 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.Shield.Types
+import Network.AWS.Shield.Types.Product
 
 -- | /See:/ 'deleteSubscription' smart constructor.
 data DeleteSubscription = DeleteSubscription'

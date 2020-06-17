@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,35 +16,80 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.CloudFormation.Types.StackSetOperationStatus where
+module Network.AWS.CloudFormation.Types.StackSetOperationStatus (
+  StackSetOperationStatus (
+    ..
+    , SSOSFailed
+    , SSOSRunning
+    , SSOSStopped
+    , SSOSStopping
+    , SSOSSucceeded
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data StackSetOperationStatus = SSOSFailed
-                             | SSOSRunning
-                             | SSOSStopped
-                             | SSOSStopping
-                             | SSOSSucceeded
-                                 deriving (Eq, Ord, Read, Show, Enum, Bounded,
-                                           Data, Typeable, Generic)
+
+data StackSetOperationStatus = StackSetOperationStatus' (CI
+                                                           Text)
+                                 deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                           Generic)
+
+pattern SSOSFailed :: StackSetOperationStatus
+pattern SSOSFailed = StackSetOperationStatus' "FAILED"
+
+pattern SSOSRunning :: StackSetOperationStatus
+pattern SSOSRunning = StackSetOperationStatus' "RUNNING"
+
+pattern SSOSStopped :: StackSetOperationStatus
+pattern SSOSStopped = StackSetOperationStatus' "STOPPED"
+
+pattern SSOSStopping :: StackSetOperationStatus
+pattern SSOSStopping = StackSetOperationStatus' "STOPPING"
+
+pattern SSOSSucceeded :: StackSetOperationStatus
+pattern SSOSSucceeded = StackSetOperationStatus' "SUCCEEDED"
+
+{-# COMPLETE
+  SSOSFailed,
+  SSOSRunning,
+  SSOSStopped,
+  SSOSStopping,
+  SSOSSucceeded,
+  StackSetOperationStatus' #-}
 
 instance FromText StackSetOperationStatus where
-    parser = takeLowerText >>= \case
-        "failed" -> pure SSOSFailed
-        "running" -> pure SSOSRunning
-        "stopped" -> pure SSOSStopped
-        "stopping" -> pure SSOSStopping
-        "succeeded" -> pure SSOSSucceeded
-        e -> fromTextError $ "Failure parsing StackSetOperationStatus from value: '" <> e
-           <> "'. Accepted values: failed, running, stopped, stopping, succeeded"
+    parser = (StackSetOperationStatus' . mk) <$> takeText
 
 instance ToText StackSetOperationStatus where
-    toText = \case
-        SSOSFailed -> "FAILED"
-        SSOSRunning -> "RUNNING"
-        SSOSStopped -> "STOPPED"
-        SSOSStopping -> "STOPPING"
-        SSOSSucceeded -> "SUCCEEDED"
+    toText (StackSetOperationStatus' ci) = original ci
+
+-- | Represents an enum of /known/ $StackSetOperationStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum StackSetOperationStatus where
+    toEnum i = case i of
+        0 -> SSOSFailed
+        1 -> SSOSRunning
+        2 -> SSOSStopped
+        3 -> SSOSStopping
+        4 -> SSOSSucceeded
+        _ -> (error . showText) $ "Unknown index for StackSetOperationStatus: " <> toText i
+    fromEnum x = case x of
+        SSOSFailed -> 0
+        SSOSRunning -> 1
+        SSOSStopped -> 2
+        SSOSStopping -> 3
+        SSOSSucceeded -> 4
+        StackSetOperationStatus' name -> (error . showText) $ "Unknown StackSetOperationStatus: " <> original name
+
+-- | Represents the bounds of /known/ $StackSetOperationStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded StackSetOperationStatus where
+    minBound = SSOSFailed
+    maxBound = SSOSSucceeded
 
 instance Hashable     StackSetOperationStatus
 instance NFData       StackSetOperationStatus

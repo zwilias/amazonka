@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,57 +16,129 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.Route53.Types.RecordType where
+module Network.AWS.Route53.Types.RecordType (
+  RecordType (
+    ..
+    , A
+    , Aaaa
+    , Caa
+    , Cname
+    , MX
+    , NS
+    , Naptr
+    , Ptr
+    , Soa
+    , Spf
+    , Srv
+    , Txt
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
 import Network.AWS.Route53.Internal
-  
-data RecordType = A
-                | Aaaa
-                | Caa
-                | Cname
-                | MX
-                | NS
-                | Naptr
-                | Ptr
-                | Soa
-                | Spf
-                | Srv
-                | Txt
-                    deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                              Typeable, Generic)
+
+data RecordType = RecordType' (CI Text)
+                    deriving (Eq, Ord, Read, Show, Data, Typeable,
+                              Generic)
+
+pattern A :: RecordType
+pattern A = RecordType' "A"
+
+pattern Aaaa :: RecordType
+pattern Aaaa = RecordType' "AAAA"
+
+pattern Caa :: RecordType
+pattern Caa = RecordType' "CAA"
+
+pattern Cname :: RecordType
+pattern Cname = RecordType' "CNAME"
+
+pattern MX :: RecordType
+pattern MX = RecordType' "MX"
+
+pattern NS :: RecordType
+pattern NS = RecordType' "NS"
+
+pattern Naptr :: RecordType
+pattern Naptr = RecordType' "NAPTR"
+
+pattern Ptr :: RecordType
+pattern Ptr = RecordType' "PTR"
+
+pattern Soa :: RecordType
+pattern Soa = RecordType' "SOA"
+
+pattern Spf :: RecordType
+pattern Spf = RecordType' "SPF"
+
+pattern Srv :: RecordType
+pattern Srv = RecordType' "SRV"
+
+pattern Txt :: RecordType
+pattern Txt = RecordType' "TXT"
+
+{-# COMPLETE
+  A,
+  Aaaa,
+  Caa,
+  Cname,
+  MX,
+  NS,
+  Naptr,
+  Ptr,
+  Soa,
+  Spf,
+  Srv,
+  Txt,
+  RecordType' #-}
 
 instance FromText RecordType where
-    parser = takeLowerText >>= \case
-        "a" -> pure A
-        "aaaa" -> pure Aaaa
-        "caa" -> pure Caa
-        "cname" -> pure Cname
-        "mx" -> pure MX
-        "ns" -> pure NS
-        "naptr" -> pure Naptr
-        "ptr" -> pure Ptr
-        "soa" -> pure Soa
-        "spf" -> pure Spf
-        "srv" -> pure Srv
-        "txt" -> pure Txt
-        e -> fromTextError $ "Failure parsing RecordType from value: '" <> e
-           <> "'. Accepted values: a, aaaa, caa, cname, mx, ns, naptr, ptr, soa, spf, srv, txt"
+    parser = (RecordType' . mk) <$> takeText
 
 instance ToText RecordType where
-    toText = \case
-        A -> "A"
-        Aaaa -> "AAAA"
-        Caa -> "CAA"
-        Cname -> "CNAME"
-        MX -> "MX"
-        NS -> "NS"
-        Naptr -> "NAPTR"
-        Ptr -> "PTR"
-        Soa -> "SOA"
-        Spf -> "SPF"
-        Srv -> "SRV"
-        Txt -> "TXT"
+    toText (RecordType' ci) = original ci
+
+-- | Represents an enum of /known/ $RecordType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum RecordType where
+    toEnum i = case i of
+        0 -> A
+        1 -> Aaaa
+        2 -> Caa
+        3 -> Cname
+        4 -> MX
+        5 -> NS
+        6 -> Naptr
+        7 -> Ptr
+        8 -> Soa
+        9 -> Spf
+        10 -> Srv
+        11 -> Txt
+        _ -> (error . showText) $ "Unknown index for RecordType: " <> toText i
+    fromEnum x = case x of
+        A -> 0
+        Aaaa -> 1
+        Caa -> 2
+        Cname -> 3
+        MX -> 4
+        NS -> 5
+        Naptr -> 6
+        Ptr -> 7
+        Soa -> 8
+        Spf -> 9
+        Srv -> 10
+        Txt -> 11
+        RecordType' name -> (error . showText) $ "Unknown RecordType: " <> original name
+
+-- | Represents the bounds of /known/ $RecordType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded RecordType where
+    minBound = A
+    maxBound = Txt
 
 instance Hashable     RecordType
 instance NFData       RecordType

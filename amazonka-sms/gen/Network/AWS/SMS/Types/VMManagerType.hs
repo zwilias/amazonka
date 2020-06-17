@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,24 +16,52 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.SMS.Types.VMManagerType where
+module Network.AWS.SMS.Types.VMManagerType (
+  VMManagerType (
+    ..
+    , Vsphere
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
+
 -- | VM Management Product
-data VMManagerType = Vsphere
-                       deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                 Typeable, Generic)
+data VMManagerType = VMManagerType' (CI Text)
+                       deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                 Generic)
+
+pattern Vsphere :: VMManagerType
+pattern Vsphere = VMManagerType' "VSPHERE"
+
+{-# COMPLETE
+  Vsphere,
+  VMManagerType' #-}
 
 instance FromText VMManagerType where
-    parser = takeLowerText >>= \case
-        "vsphere" -> pure Vsphere
-        e -> fromTextError $ "Failure parsing VMManagerType from value: '" <> e
-           <> "'. Accepted values: vsphere"
+    parser = (VMManagerType' . mk) <$> takeText
 
 instance ToText VMManagerType where
-    toText = \case
-        Vsphere -> "VSPHERE"
+    toText (VMManagerType' ci) = original ci
+
+-- | Represents an enum of /known/ $VMManagerType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum VMManagerType where
+    toEnum i = case i of
+        0 -> Vsphere
+        _ -> (error . showText) $ "Unknown index for VMManagerType: " <> toText i
+    fromEnum x = case x of
+        Vsphere -> 0
+        VMManagerType' name -> (error . showText) $ "Unknown VMManagerType: " <> original name
+
+-- | Represents the bounds of /known/ $VMManagerType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded VMManagerType where
+    minBound = Vsphere
+    maxBound = Vsphere
 
 instance Hashable     VMManagerType
 instance NFData       VMManagerType

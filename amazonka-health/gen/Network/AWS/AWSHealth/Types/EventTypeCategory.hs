@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,29 +16,65 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.AWSHealth.Types.EventTypeCategory where
+module Network.AWS.AWSHealth.Types.EventTypeCategory (
+  EventTypeCategory (
+    ..
+    , AccountNotification
+    , Issue
+    , ScheduledChange
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data EventTypeCategory = AccountNotification
-                       | Issue
-                       | ScheduledChange
-                           deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                     Typeable, Generic)
+
+data EventTypeCategory = EventTypeCategory' (CI Text)
+                           deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                     Generic)
+
+pattern AccountNotification :: EventTypeCategory
+pattern AccountNotification = EventTypeCategory' "accountNotification"
+
+pattern Issue :: EventTypeCategory
+pattern Issue = EventTypeCategory' "issue"
+
+pattern ScheduledChange :: EventTypeCategory
+pattern ScheduledChange = EventTypeCategory' "scheduledChange"
+
+{-# COMPLETE
+  AccountNotification,
+  Issue,
+  ScheduledChange,
+  EventTypeCategory' #-}
 
 instance FromText EventTypeCategory where
-    parser = takeLowerText >>= \case
-        "accountnotification" -> pure AccountNotification
-        "issue" -> pure Issue
-        "scheduledchange" -> pure ScheduledChange
-        e -> fromTextError $ "Failure parsing EventTypeCategory from value: '" <> e
-           <> "'. Accepted values: accountnotification, issue, scheduledchange"
+    parser = (EventTypeCategory' . mk) <$> takeText
 
 instance ToText EventTypeCategory where
-    toText = \case
-        AccountNotification -> "accountNotification"
-        Issue -> "issue"
-        ScheduledChange -> "scheduledChange"
+    toText (EventTypeCategory' ci) = original ci
+
+-- | Represents an enum of /known/ $EventTypeCategory.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum EventTypeCategory where
+    toEnum i = case i of
+        0 -> AccountNotification
+        1 -> Issue
+        2 -> ScheduledChange
+        _ -> (error . showText) $ "Unknown index for EventTypeCategory: " <> toText i
+    fromEnum x = case x of
+        AccountNotification -> 0
+        Issue -> 1
+        ScheduledChange -> 2
+        EventTypeCategory' name -> (error . showText) $ "Unknown EventTypeCategory: " <> original name
+
+-- | Represents the bounds of /known/ $EventTypeCategory.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded EventTypeCategory where
+    minBound = AccountNotification
+    maxBound = ScheduledChange
 
 instance Hashable     EventTypeCategory
 instance NFData       EventTypeCategory

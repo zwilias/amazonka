@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,29 +16,66 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.Firehose.Types.DeliveryStreamStatus where
+module Network.AWS.Firehose.Types.DeliveryStreamStatus (
+  DeliveryStreamStatus (
+    ..
+    , Active
+    , Creating
+    , Deleting
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data DeliveryStreamStatus = Active
-                          | Creating
-                          | Deleting
-                              deriving (Eq, Ord, Read, Show, Enum, Bounded,
-                                        Data, Typeable, Generic)
+
+data DeliveryStreamStatus = DeliveryStreamStatus' (CI
+                                                     Text)
+                              deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                        Generic)
+
+pattern Active :: DeliveryStreamStatus
+pattern Active = DeliveryStreamStatus' "ACTIVE"
+
+pattern Creating :: DeliveryStreamStatus
+pattern Creating = DeliveryStreamStatus' "CREATING"
+
+pattern Deleting :: DeliveryStreamStatus
+pattern Deleting = DeliveryStreamStatus' "DELETING"
+
+{-# COMPLETE
+  Active,
+  Creating,
+  Deleting,
+  DeliveryStreamStatus' #-}
 
 instance FromText DeliveryStreamStatus where
-    parser = takeLowerText >>= \case
-        "active" -> pure Active
-        "creating" -> pure Creating
-        "deleting" -> pure Deleting
-        e -> fromTextError $ "Failure parsing DeliveryStreamStatus from value: '" <> e
-           <> "'. Accepted values: active, creating, deleting"
+    parser = (DeliveryStreamStatus' . mk) <$> takeText
 
 instance ToText DeliveryStreamStatus where
-    toText = \case
-        Active -> "ACTIVE"
-        Creating -> "CREATING"
-        Deleting -> "DELETING"
+    toText (DeliveryStreamStatus' ci) = original ci
+
+-- | Represents an enum of /known/ $DeliveryStreamStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum DeliveryStreamStatus where
+    toEnum i = case i of
+        0 -> Active
+        1 -> Creating
+        2 -> Deleting
+        _ -> (error . showText) $ "Unknown index for DeliveryStreamStatus: " <> toText i
+    fromEnum x = case x of
+        Active -> 0
+        Creating -> 1
+        Deleting -> 2
+        DeliveryStreamStatus' name -> (error . showText) $ "Unknown DeliveryStreamStatus: " <> original name
+
+-- | Represents the bounds of /known/ $DeliveryStreamStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded DeliveryStreamStatus where
+    minBound = Active
+    maxBound = Deleting
 
 instance Hashable     DeliveryStreamStatus
 instance NFData       DeliveryStreamStatus

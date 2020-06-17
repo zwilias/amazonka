@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,27 +16,59 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.S3.Types.MFADeleteStatus where
+module Network.AWS.S3.Types.MFADeleteStatus (
+  MFADeleteStatus (
+    ..
+    , MDSDisabled
+    , MDSEnabled
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
 import Network.AWS.S3.Internal
-  
-data MFADeleteStatus = MDSDisabled
-                     | MDSEnabled
-                         deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                   Typeable, Generic)
+
+data MFADeleteStatus = MFADeleteStatus' (CI Text)
+                         deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                   Generic)
+
+pattern MDSDisabled :: MFADeleteStatus
+pattern MDSDisabled = MFADeleteStatus' "Disabled"
+
+pattern MDSEnabled :: MFADeleteStatus
+pattern MDSEnabled = MFADeleteStatus' "Enabled"
+
+{-# COMPLETE
+  MDSDisabled,
+  MDSEnabled,
+  MFADeleteStatus' #-}
 
 instance FromText MFADeleteStatus where
-    parser = takeLowerText >>= \case
-        "disabled" -> pure MDSDisabled
-        "enabled" -> pure MDSEnabled
-        e -> fromTextError $ "Failure parsing MFADeleteStatus from value: '" <> e
-           <> "'. Accepted values: disabled, enabled"
+    parser = (MFADeleteStatus' . mk) <$> takeText
 
 instance ToText MFADeleteStatus where
-    toText = \case
-        MDSDisabled -> "Disabled"
-        MDSEnabled -> "Enabled"
+    toText (MFADeleteStatus' ci) = original ci
+
+-- | Represents an enum of /known/ $MFADeleteStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum MFADeleteStatus where
+    toEnum i = case i of
+        0 -> MDSDisabled
+        1 -> MDSEnabled
+        _ -> (error . showText) $ "Unknown index for MFADeleteStatus: " <> toText i
+    fromEnum x = case x of
+        MDSDisabled -> 0
+        MDSEnabled -> 1
+        MFADeleteStatus' name -> (error . showText) $ "Unknown MFADeleteStatus: " <> original name
+
+-- | Represents the bounds of /known/ $MFADeleteStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded MFADeleteStatus where
+    minBound = MDSDisabled
+    maxBound = MDSEnabled
 
 instance Hashable     MFADeleteStatus
 instance NFData       MFADeleteStatus

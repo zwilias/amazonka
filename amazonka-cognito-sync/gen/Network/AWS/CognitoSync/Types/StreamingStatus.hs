@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,58 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.CognitoSync.Types.StreamingStatus where
+module Network.AWS.CognitoSync.Types.StreamingStatus (
+  StreamingStatus (
+    ..
+    , Disabled
+    , Enabled
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data StreamingStatus = Disabled
-                     | Enabled
-                         deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                   Typeable, Generic)
+
+data StreamingStatus = StreamingStatus' (CI Text)
+                         deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                   Generic)
+
+pattern Disabled :: StreamingStatus
+pattern Disabled = StreamingStatus' "DISABLED"
+
+pattern Enabled :: StreamingStatus
+pattern Enabled = StreamingStatus' "ENABLED"
+
+{-# COMPLETE
+  Disabled,
+  Enabled,
+  StreamingStatus' #-}
 
 instance FromText StreamingStatus where
-    parser = takeLowerText >>= \case
-        "disabled" -> pure Disabled
-        "enabled" -> pure Enabled
-        e -> fromTextError $ "Failure parsing StreamingStatus from value: '" <> e
-           <> "'. Accepted values: disabled, enabled"
+    parser = (StreamingStatus' . mk) <$> takeText
 
 instance ToText StreamingStatus where
-    toText = \case
-        Disabled -> "DISABLED"
-        Enabled -> "ENABLED"
+    toText (StreamingStatus' ci) = original ci
+
+-- | Represents an enum of /known/ $StreamingStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum StreamingStatus where
+    toEnum i = case i of
+        0 -> Disabled
+        1 -> Enabled
+        _ -> (error . showText) $ "Unknown index for StreamingStatus: " <> toText i
+    fromEnum x = case x of
+        Disabled -> 0
+        Enabled -> 1
+        StreamingStatus' name -> (error . showText) $ "Unknown StreamingStatus: " <> original name
+
+-- | Represents the bounds of /known/ $StreamingStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded StreamingStatus where
+    minBound = Disabled
+    maxBound = Enabled
 
 instance Hashable     StreamingStatus
 instance NFData       StreamingStatus

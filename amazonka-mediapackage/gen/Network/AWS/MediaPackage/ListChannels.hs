@@ -41,6 +41,7 @@ module Network.AWS.MediaPackage.ListChannels
 
 import Network.AWS.Lens
 import Network.AWS.MediaPackage.Types
+import Network.AWS.MediaPackage.Types.Product
 import Network.AWS.Pager
 import Network.AWS.Prelude
 import Network.AWS.Request

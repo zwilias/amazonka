@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,29 +16,66 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.Route53AutoNaming.Types.OperationTargetType where
+module Network.AWS.Route53AutoNaming.Types.OperationTargetType (
+  OperationTargetType (
+    ..
+    , OTTInstance
+    , OTTNamespace
+    , OTTService
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data OperationTargetType = OTTInstance
-                         | OTTNamespace
-                         | OTTService
-                             deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                       Typeable, Generic)
+
+data OperationTargetType = OperationTargetType' (CI
+                                                   Text)
+                             deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                       Generic)
+
+pattern OTTInstance :: OperationTargetType
+pattern OTTInstance = OperationTargetType' "INSTANCE"
+
+pattern OTTNamespace :: OperationTargetType
+pattern OTTNamespace = OperationTargetType' "NAMESPACE"
+
+pattern OTTService :: OperationTargetType
+pattern OTTService = OperationTargetType' "SERVICE"
+
+{-# COMPLETE
+  OTTInstance,
+  OTTNamespace,
+  OTTService,
+  OperationTargetType' #-}
 
 instance FromText OperationTargetType where
-    parser = takeLowerText >>= \case
-        "instance" -> pure OTTInstance
-        "namespace" -> pure OTTNamespace
-        "service" -> pure OTTService
-        e -> fromTextError $ "Failure parsing OperationTargetType from value: '" <> e
-           <> "'. Accepted values: instance, namespace, service"
+    parser = (OperationTargetType' . mk) <$> takeText
 
 instance ToText OperationTargetType where
-    toText = \case
-        OTTInstance -> "INSTANCE"
-        OTTNamespace -> "NAMESPACE"
-        OTTService -> "SERVICE"
+    toText (OperationTargetType' ci) = original ci
+
+-- | Represents an enum of /known/ $OperationTargetType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum OperationTargetType where
+    toEnum i = case i of
+        0 -> OTTInstance
+        1 -> OTTNamespace
+        2 -> OTTService
+        _ -> (error . showText) $ "Unknown index for OperationTargetType: " <> toText i
+    fromEnum x = case x of
+        OTTInstance -> 0
+        OTTNamespace -> 1
+        OTTService -> 2
+        OperationTargetType' name -> (error . showText) $ "Unknown OperationTargetType: " <> original name
+
+-- | Represents the bounds of /known/ $OperationTargetType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded OperationTargetType where
+    minBound = OTTInstance
+    maxBound = OTTService
 
 instance Hashable     OperationTargetType
 instance NFData       OperationTargetType

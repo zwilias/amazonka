@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,32 +16,73 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.SES.Types.CustomMailFromStatus where
+module Network.AWS.SES.Types.CustomMailFromStatus (
+  CustomMailFromStatus (
+    ..
+    , CMFSFailed
+    , CMFSPending
+    , CMFSSuccess
+    , CMFSTemporaryFailure
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data CustomMailFromStatus = CMFSFailed
-                          | CMFSPending
-                          | CMFSSuccess
-                          | CMFSTemporaryFailure
-                              deriving (Eq, Ord, Read, Show, Enum, Bounded,
-                                        Data, Typeable, Generic)
+
+data CustomMailFromStatus = CustomMailFromStatus' (CI
+                                                     Text)
+                              deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                        Generic)
+
+pattern CMFSFailed :: CustomMailFromStatus
+pattern CMFSFailed = CustomMailFromStatus' "Failed"
+
+pattern CMFSPending :: CustomMailFromStatus
+pattern CMFSPending = CustomMailFromStatus' "Pending"
+
+pattern CMFSSuccess :: CustomMailFromStatus
+pattern CMFSSuccess = CustomMailFromStatus' "Success"
+
+pattern CMFSTemporaryFailure :: CustomMailFromStatus
+pattern CMFSTemporaryFailure = CustomMailFromStatus' "TemporaryFailure"
+
+{-# COMPLETE
+  CMFSFailed,
+  CMFSPending,
+  CMFSSuccess,
+  CMFSTemporaryFailure,
+  CustomMailFromStatus' #-}
 
 instance FromText CustomMailFromStatus where
-    parser = takeLowerText >>= \case
-        "failed" -> pure CMFSFailed
-        "pending" -> pure CMFSPending
-        "success" -> pure CMFSSuccess
-        "temporaryfailure" -> pure CMFSTemporaryFailure
-        e -> fromTextError $ "Failure parsing CustomMailFromStatus from value: '" <> e
-           <> "'. Accepted values: failed, pending, success, temporaryfailure"
+    parser = (CustomMailFromStatus' . mk) <$> takeText
 
 instance ToText CustomMailFromStatus where
-    toText = \case
-        CMFSFailed -> "Failed"
-        CMFSPending -> "Pending"
-        CMFSSuccess -> "Success"
-        CMFSTemporaryFailure -> "TemporaryFailure"
+    toText (CustomMailFromStatus' ci) = original ci
+
+-- | Represents an enum of /known/ $CustomMailFromStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum CustomMailFromStatus where
+    toEnum i = case i of
+        0 -> CMFSFailed
+        1 -> CMFSPending
+        2 -> CMFSSuccess
+        3 -> CMFSTemporaryFailure
+        _ -> (error . showText) $ "Unknown index for CustomMailFromStatus: " <> toText i
+    fromEnum x = case x of
+        CMFSFailed -> 0
+        CMFSPending -> 1
+        CMFSSuccess -> 2
+        CMFSTemporaryFailure -> 3
+        CustomMailFromStatus' name -> (error . showText) $ "Unknown CustomMailFromStatus: " <> original name
+
+-- | Represents the bounds of /known/ $CustomMailFromStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded CustomMailFromStatus where
+    minBound = CMFSFailed
+    maxBound = CMFSTemporaryFailure
 
 instance Hashable     CustomMailFromStatus
 instance NFData       CustomMailFromStatus

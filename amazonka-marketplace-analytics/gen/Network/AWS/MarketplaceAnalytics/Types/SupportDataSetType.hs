@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,59 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.MarketplaceAnalytics.Types.SupportDataSetType where
+module Network.AWS.MarketplaceAnalytics.Types.SupportDataSetType (
+  SupportDataSetType (
+    ..
+    , CustomerSupportContactsData
+    , TestCustomerSupportContactsData
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data SupportDataSetType = CustomerSupportContactsData
-                        | TestCustomerSupportContactsData
-                            deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                      Typeable, Generic)
+
+data SupportDataSetType = SupportDataSetType' (CI
+                                                 Text)
+                            deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                      Generic)
+
+pattern CustomerSupportContactsData :: SupportDataSetType
+pattern CustomerSupportContactsData = SupportDataSetType' "customer_support_contacts_data"
+
+pattern TestCustomerSupportContactsData :: SupportDataSetType
+pattern TestCustomerSupportContactsData = SupportDataSetType' "test_customer_support_contacts_data"
+
+{-# COMPLETE
+  CustomerSupportContactsData,
+  TestCustomerSupportContactsData,
+  SupportDataSetType' #-}
 
 instance FromText SupportDataSetType where
-    parser = takeLowerText >>= \case
-        "customer_support_contacts_data" -> pure CustomerSupportContactsData
-        "test_customer_support_contacts_data" -> pure TestCustomerSupportContactsData
-        e -> fromTextError $ "Failure parsing SupportDataSetType from value: '" <> e
-           <> "'. Accepted values: customer_support_contacts_data, test_customer_support_contacts_data"
+    parser = (SupportDataSetType' . mk) <$> takeText
 
 instance ToText SupportDataSetType where
-    toText = \case
-        CustomerSupportContactsData -> "customer_support_contacts_data"
-        TestCustomerSupportContactsData -> "test_customer_support_contacts_data"
+    toText (SupportDataSetType' ci) = original ci
+
+-- | Represents an enum of /known/ $SupportDataSetType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum SupportDataSetType where
+    toEnum i = case i of
+        0 -> CustomerSupportContactsData
+        1 -> TestCustomerSupportContactsData
+        _ -> (error . showText) $ "Unknown index for SupportDataSetType: " <> toText i
+    fromEnum x = case x of
+        CustomerSupportContactsData -> 0
+        TestCustomerSupportContactsData -> 1
+        SupportDataSetType' name -> (error . showText) $ "Unknown SupportDataSetType: " <> original name
+
+-- | Represents the bounds of /known/ $SupportDataSetType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded SupportDataSetType where
+    minBound = CustomerSupportContactsData
+    maxBound = TestCustomerSupportContactsData
 
 instance Hashable     SupportDataSetType
 instance NFData       SupportDataSetType

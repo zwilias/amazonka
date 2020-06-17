@@ -72,6 +72,7 @@ module Network.AWS.DynamoDB.Query
     ) where
 
 import Network.AWS.DynamoDB.Types
+import Network.AWS.DynamoDB.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude

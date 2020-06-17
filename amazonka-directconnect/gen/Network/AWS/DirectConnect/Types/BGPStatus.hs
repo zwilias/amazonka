@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,29 +16,65 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.DirectConnect.Types.BGPStatus where
+module Network.AWS.DirectConnect.Types.BGPStatus (
+  BGPStatus (
+    ..
+    , Down
+    , UP
+    , Unknown
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data BGPStatus = Down
-               | UP
-               | Unknown
-                   deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                             Typeable, Generic)
+
+data BGPStatus = BGPStatus' (CI Text)
+                   deriving (Eq, Ord, Read, Show, Data, Typeable,
+                             Generic)
+
+pattern Down :: BGPStatus
+pattern Down = BGPStatus' "down"
+
+pattern UP :: BGPStatus
+pattern UP = BGPStatus' "up"
+
+pattern Unknown :: BGPStatus
+pattern Unknown = BGPStatus' "unknown"
+
+{-# COMPLETE
+  Down,
+  UP,
+  Unknown,
+  BGPStatus' #-}
 
 instance FromText BGPStatus where
-    parser = takeLowerText >>= \case
-        "down" -> pure Down
-        "up" -> pure UP
-        "unknown" -> pure Unknown
-        e -> fromTextError $ "Failure parsing BGPStatus from value: '" <> e
-           <> "'. Accepted values: down, up, unknown"
+    parser = (BGPStatus' . mk) <$> takeText
 
 instance ToText BGPStatus where
-    toText = \case
-        Down -> "down"
-        UP -> "up"
-        Unknown -> "unknown"
+    toText (BGPStatus' ci) = original ci
+
+-- | Represents an enum of /known/ $BGPStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum BGPStatus where
+    toEnum i = case i of
+        0 -> Down
+        1 -> UP
+        2 -> Unknown
+        _ -> (error . showText) $ "Unknown index for BGPStatus: " <> toText i
+    fromEnum x = case x of
+        Down -> 0
+        UP -> 1
+        Unknown -> 2
+        BGPStatus' name -> (error . showText) $ "Unknown BGPStatus: " <> original name
+
+-- | Represents the bounds of /known/ $BGPStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded BGPStatus where
+    minBound = Down
+    maxBound = Unknown
 
 instance Hashable     BGPStatus
 instance NFData       BGPStatus

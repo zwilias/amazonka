@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,29 +16,65 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.CodeBuild.Types.ServerType where
+module Network.AWS.CodeBuild.Types.ServerType (
+  ServerType (
+    ..
+    , Bitbucket
+    , Github
+    , GithubEnterprise
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data ServerType = Bitbucket
-                | Github
-                | GithubEnterprise
-                    deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                              Typeable, Generic)
+
+data ServerType = ServerType' (CI Text)
+                    deriving (Eq, Ord, Read, Show, Data, Typeable,
+                              Generic)
+
+pattern Bitbucket :: ServerType
+pattern Bitbucket = ServerType' "BITBUCKET"
+
+pattern Github :: ServerType
+pattern Github = ServerType' "GITHUB"
+
+pattern GithubEnterprise :: ServerType
+pattern GithubEnterprise = ServerType' "GITHUB_ENTERPRISE"
+
+{-# COMPLETE
+  Bitbucket,
+  Github,
+  GithubEnterprise,
+  ServerType' #-}
 
 instance FromText ServerType where
-    parser = takeLowerText >>= \case
-        "bitbucket" -> pure Bitbucket
-        "github" -> pure Github
-        "github_enterprise" -> pure GithubEnterprise
-        e -> fromTextError $ "Failure parsing ServerType from value: '" <> e
-           <> "'. Accepted values: bitbucket, github, github_enterprise"
+    parser = (ServerType' . mk) <$> takeText
 
 instance ToText ServerType where
-    toText = \case
-        Bitbucket -> "BITBUCKET"
-        Github -> "GITHUB"
-        GithubEnterprise -> "GITHUB_ENTERPRISE"
+    toText (ServerType' ci) = original ci
+
+-- | Represents an enum of /known/ $ServerType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum ServerType where
+    toEnum i = case i of
+        0 -> Bitbucket
+        1 -> Github
+        2 -> GithubEnterprise
+        _ -> (error . showText) $ "Unknown index for ServerType: " <> toText i
+    fromEnum x = case x of
+        Bitbucket -> 0
+        Github -> 1
+        GithubEnterprise -> 2
+        ServerType' name -> (error . showText) $ "Unknown ServerType: " <> original name
+
+-- | Represents the bounds of /known/ $ServerType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded ServerType where
+    minBound = Bitbucket
+    maxBound = GithubEnterprise
 
 instance Hashable     ServerType
 instance NFData       ServerType

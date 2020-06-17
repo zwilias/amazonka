@@ -40,6 +40,7 @@ module Network.AWS.DirectoryService.UpdateTrust
     ) where
 
 import Network.AWS.DirectoryService.Types
+import Network.AWS.DirectoryService.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request

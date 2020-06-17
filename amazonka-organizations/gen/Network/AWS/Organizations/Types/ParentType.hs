@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,58 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.Organizations.Types.ParentType where
+module Network.AWS.Organizations.Types.ParentType (
+  ParentType (
+    ..
+    , OrganizationalUnit
+    , Root
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data ParentType = OrganizationalUnit
-                | Root
-                    deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                              Typeable, Generic)
+
+data ParentType = ParentType' (CI Text)
+                    deriving (Eq, Ord, Read, Show, Data, Typeable,
+                              Generic)
+
+pattern OrganizationalUnit :: ParentType
+pattern OrganizationalUnit = ParentType' "ORGANIZATIONAL_UNIT"
+
+pattern Root :: ParentType
+pattern Root = ParentType' "ROOT"
+
+{-# COMPLETE
+  OrganizationalUnit,
+  Root,
+  ParentType' #-}
 
 instance FromText ParentType where
-    parser = takeLowerText >>= \case
-        "organizational_unit" -> pure OrganizationalUnit
-        "root" -> pure Root
-        e -> fromTextError $ "Failure parsing ParentType from value: '" <> e
-           <> "'. Accepted values: organizational_unit, root"
+    parser = (ParentType' . mk) <$> takeText
 
 instance ToText ParentType where
-    toText = \case
-        OrganizationalUnit -> "ORGANIZATIONAL_UNIT"
-        Root -> "ROOT"
+    toText (ParentType' ci) = original ci
+
+-- | Represents an enum of /known/ $ParentType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum ParentType where
+    toEnum i = case i of
+        0 -> OrganizationalUnit
+        1 -> Root
+        _ -> (error . showText) $ "Unknown index for ParentType: " <> toText i
+    fromEnum x = case x of
+        OrganizationalUnit -> 0
+        Root -> 1
+        ParentType' name -> (error . showText) $ "Unknown ParentType: " <> original name
+
+-- | Represents the bounds of /known/ $ParentType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded ParentType where
+    minBound = OrganizationalUnit
+    maxBound = Root
 
 instance Hashable     ParentType
 instance NFData       ParentType

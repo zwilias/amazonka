@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,58 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.SageMaker.Types.S3DataType where
+module Network.AWS.SageMaker.Types.S3DataType (
+  S3DataType (
+    ..
+    , ManifestFile
+    , S3Prefix
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data S3DataType = ManifestFile
-                | S3Prefix
-                    deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                              Typeable, Generic)
+
+data S3DataType = S3DataType' (CI Text)
+                    deriving (Eq, Ord, Read, Show, Data, Typeable,
+                              Generic)
+
+pattern ManifestFile :: S3DataType
+pattern ManifestFile = S3DataType' "ManifestFile"
+
+pattern S3Prefix :: S3DataType
+pattern S3Prefix = S3DataType' "S3Prefix"
+
+{-# COMPLETE
+  ManifestFile,
+  S3Prefix,
+  S3DataType' #-}
 
 instance FromText S3DataType where
-    parser = takeLowerText >>= \case
-        "manifestfile" -> pure ManifestFile
-        "s3prefix" -> pure S3Prefix
-        e -> fromTextError $ "Failure parsing S3DataType from value: '" <> e
-           <> "'. Accepted values: manifestfile, s3prefix"
+    parser = (S3DataType' . mk) <$> takeText
 
 instance ToText S3DataType where
-    toText = \case
-        ManifestFile -> "ManifestFile"
-        S3Prefix -> "S3Prefix"
+    toText (S3DataType' ci) = original ci
+
+-- | Represents an enum of /known/ $S3DataType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum S3DataType where
+    toEnum i = case i of
+        0 -> ManifestFile
+        1 -> S3Prefix
+        _ -> (error . showText) $ "Unknown index for S3DataType: " <> toText i
+    fromEnum x = case x of
+        ManifestFile -> 0
+        S3Prefix -> 1
+        S3DataType' name -> (error . showText) $ "Unknown S3DataType: " <> original name
+
+-- | Represents the bounds of /known/ $S3DataType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded S3DataType where
+    minBound = ManifestFile
+    maxBound = S3Prefix
 
 instance Hashable     S3DataType
 instance NFData       S3DataType

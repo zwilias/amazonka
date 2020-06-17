@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,27 +16,59 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.MediaConvert.Types.M2tsEsRateInPes where
+module Network.AWS.MediaConvert.Types.M2tsEsRateInPes (
+  M2tsEsRateInPes (
+    ..
+    , MERIPExclude
+    , MERIPInclude
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
+
 -- | Controls whether to include the ES Rate field in the PES header.
-data M2tsEsRateInPes = MERIPExclude
-                     | MERIPInclude
-                         deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                   Typeable, Generic)
+data M2tsEsRateInPes = M2tsEsRateInPes' (CI Text)
+                         deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                   Generic)
+
+pattern MERIPExclude :: M2tsEsRateInPes
+pattern MERIPExclude = M2tsEsRateInPes' "EXCLUDE"
+
+pattern MERIPInclude :: M2tsEsRateInPes
+pattern MERIPInclude = M2tsEsRateInPes' "INCLUDE"
+
+{-# COMPLETE
+  MERIPExclude,
+  MERIPInclude,
+  M2tsEsRateInPes' #-}
 
 instance FromText M2tsEsRateInPes where
-    parser = takeLowerText >>= \case
-        "exclude" -> pure MERIPExclude
-        "include" -> pure MERIPInclude
-        e -> fromTextError $ "Failure parsing M2tsEsRateInPes from value: '" <> e
-           <> "'. Accepted values: exclude, include"
+    parser = (M2tsEsRateInPes' . mk) <$> takeText
 
 instance ToText M2tsEsRateInPes where
-    toText = \case
-        MERIPExclude -> "EXCLUDE"
-        MERIPInclude -> "INCLUDE"
+    toText (M2tsEsRateInPes' ci) = original ci
+
+-- | Represents an enum of /known/ $M2tsEsRateInPes.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum M2tsEsRateInPes where
+    toEnum i = case i of
+        0 -> MERIPExclude
+        1 -> MERIPInclude
+        _ -> (error . showText) $ "Unknown index for M2tsEsRateInPes: " <> toText i
+    fromEnum x = case x of
+        MERIPExclude -> 0
+        MERIPInclude -> 1
+        M2tsEsRateInPes' name -> (error . showText) $ "Unknown M2tsEsRateInPes: " <> original name
+
+-- | Represents the bounds of /known/ $M2tsEsRateInPes.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded M2tsEsRateInPes where
+    minBound = MERIPExclude
+    maxBound = MERIPInclude
 
 instance Hashable     M2tsEsRateInPes
 instance NFData       M2tsEsRateInPes

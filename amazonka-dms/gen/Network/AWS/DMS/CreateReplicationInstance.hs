@@ -53,6 +53,7 @@ module Network.AWS.DMS.CreateReplicationInstance
     ) where
 
 import Network.AWS.DMS.Types
+import Network.AWS.DMS.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request

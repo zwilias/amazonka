@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,30 +16,67 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.MediaLive.Types.BurnInBackgroundColor where
+module Network.AWS.MediaLive.Types.BurnInBackgroundColor (
+  BurnInBackgroundColor (
+    ..
+    , BIBCBlack
+    , BIBCNone
+    , BIBCWhite
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
+
 -- | Placeholder documentation for BurnInBackgroundColor
-data BurnInBackgroundColor = BIBCBlack
-                           | BIBCNone
-                           | BIBCWhite
-                               deriving (Eq, Ord, Read, Show, Enum, Bounded,
-                                         Data, Typeable, Generic)
+data BurnInBackgroundColor = BurnInBackgroundColor' (CI
+                                                       Text)
+                               deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                         Generic)
+
+pattern BIBCBlack :: BurnInBackgroundColor
+pattern BIBCBlack = BurnInBackgroundColor' "BLACK"
+
+pattern BIBCNone :: BurnInBackgroundColor
+pattern BIBCNone = BurnInBackgroundColor' "NONE"
+
+pattern BIBCWhite :: BurnInBackgroundColor
+pattern BIBCWhite = BurnInBackgroundColor' "WHITE"
+
+{-# COMPLETE
+  BIBCBlack,
+  BIBCNone,
+  BIBCWhite,
+  BurnInBackgroundColor' #-}
 
 instance FromText BurnInBackgroundColor where
-    parser = takeLowerText >>= \case
-        "black" -> pure BIBCBlack
-        "none" -> pure BIBCNone
-        "white" -> pure BIBCWhite
-        e -> fromTextError $ "Failure parsing BurnInBackgroundColor from value: '" <> e
-           <> "'. Accepted values: black, none, white"
+    parser = (BurnInBackgroundColor' . mk) <$> takeText
 
 instance ToText BurnInBackgroundColor where
-    toText = \case
-        BIBCBlack -> "BLACK"
-        BIBCNone -> "NONE"
-        BIBCWhite -> "WHITE"
+    toText (BurnInBackgroundColor' ci) = original ci
+
+-- | Represents an enum of /known/ $BurnInBackgroundColor.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum BurnInBackgroundColor where
+    toEnum i = case i of
+        0 -> BIBCBlack
+        1 -> BIBCNone
+        2 -> BIBCWhite
+        _ -> (error . showText) $ "Unknown index for BurnInBackgroundColor: " <> toText i
+    fromEnum x = case x of
+        BIBCBlack -> 0
+        BIBCNone -> 1
+        BIBCWhite -> 2
+        BurnInBackgroundColor' name -> (error . showText) $ "Unknown BurnInBackgroundColor: " <> original name
+
+-- | Represents the bounds of /known/ $BurnInBackgroundColor.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded BurnInBackgroundColor where
+    minBound = BIBCBlack
+    maxBound = BIBCWhite
 
 instance Hashable     BurnInBackgroundColor
 instance NFData       BurnInBackgroundColor

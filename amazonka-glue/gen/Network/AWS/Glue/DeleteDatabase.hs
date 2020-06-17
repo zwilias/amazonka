@@ -38,6 +38,7 @@ module Network.AWS.Glue.DeleteDatabase
     ) where
 
 import Network.AWS.Glue.Types
+import Network.AWS.Glue.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request

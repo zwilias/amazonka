@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,32 +16,72 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.MigrationHub.Types.MigrationStatus where
+module Network.AWS.MigrationHub.Types.MigrationStatus (
+  MigrationStatus (
+    ..
+    , Completed
+    , Failed
+    , InProgress
+    , NotStarted
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data MigrationStatus = Completed
-                     | Failed
-                     | InProgress
-                     | NotStarted
-                         deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                   Typeable, Generic)
+
+data MigrationStatus = MigrationStatus' (CI Text)
+                         deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                   Generic)
+
+pattern Completed :: MigrationStatus
+pattern Completed = MigrationStatus' "COMPLETED"
+
+pattern Failed :: MigrationStatus
+pattern Failed = MigrationStatus' "FAILED"
+
+pattern InProgress :: MigrationStatus
+pattern InProgress = MigrationStatus' "IN_PROGRESS"
+
+pattern NotStarted :: MigrationStatus
+pattern NotStarted = MigrationStatus' "NOT_STARTED"
+
+{-# COMPLETE
+  Completed,
+  Failed,
+  InProgress,
+  NotStarted,
+  MigrationStatus' #-}
 
 instance FromText MigrationStatus where
-    parser = takeLowerText >>= \case
-        "completed" -> pure Completed
-        "failed" -> pure Failed
-        "in_progress" -> pure InProgress
-        "not_started" -> pure NotStarted
-        e -> fromTextError $ "Failure parsing MigrationStatus from value: '" <> e
-           <> "'. Accepted values: completed, failed, in_progress, not_started"
+    parser = (MigrationStatus' . mk) <$> takeText
 
 instance ToText MigrationStatus where
-    toText = \case
-        Completed -> "COMPLETED"
-        Failed -> "FAILED"
-        InProgress -> "IN_PROGRESS"
-        NotStarted -> "NOT_STARTED"
+    toText (MigrationStatus' ci) = original ci
+
+-- | Represents an enum of /known/ $MigrationStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum MigrationStatus where
+    toEnum i = case i of
+        0 -> Completed
+        1 -> Failed
+        2 -> InProgress
+        3 -> NotStarted
+        _ -> (error . showText) $ "Unknown index for MigrationStatus: " <> toText i
+    fromEnum x = case x of
+        Completed -> 0
+        Failed -> 1
+        InProgress -> 2
+        NotStarted -> 3
+        MigrationStatus' name -> (error . showText) $ "Unknown MigrationStatus: " <> original name
+
+-- | Represents the bounds of /known/ $MigrationStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded MigrationStatus where
+    minBound = Completed
+    maxBound = NotStarted
 
 instance Hashable     MigrationStatus
 instance NFData       MigrationStatus

@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,56 +16,128 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.MechanicalTurk.Types.EventType where
+module Network.AWS.MechanicalTurk.Types.EventType (
+  EventType (
+    ..
+    , AssignmentAbandoned
+    , AssignmentAccepted
+    , AssignmentApproved
+    , AssignmentRejected
+    , AssignmentReturned
+    , AssignmentSubmitted
+    , HITCreated
+    , HITDisposed
+    , HITExpired
+    , HITExtended
+    , HITReviewable
+    , Ping
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data EventType = AssignmentAbandoned
-               | AssignmentAccepted
-               | AssignmentApproved
-               | AssignmentRejected
-               | AssignmentReturned
-               | AssignmentSubmitted
-               | HITCreated
-               | HITDisposed
-               | HITExpired
-               | HITExtended
-               | HITReviewable
-               | Ping
-                   deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                             Typeable, Generic)
+
+data EventType = EventType' (CI Text)
+                   deriving (Eq, Ord, Read, Show, Data, Typeable,
+                             Generic)
+
+pattern AssignmentAbandoned :: EventType
+pattern AssignmentAbandoned = EventType' "AssignmentAbandoned"
+
+pattern AssignmentAccepted :: EventType
+pattern AssignmentAccepted = EventType' "AssignmentAccepted"
+
+pattern AssignmentApproved :: EventType
+pattern AssignmentApproved = EventType' "AssignmentApproved"
+
+pattern AssignmentRejected :: EventType
+pattern AssignmentRejected = EventType' "AssignmentRejected"
+
+pattern AssignmentReturned :: EventType
+pattern AssignmentReturned = EventType' "AssignmentReturned"
+
+pattern AssignmentSubmitted :: EventType
+pattern AssignmentSubmitted = EventType' "AssignmentSubmitted"
+
+pattern HITCreated :: EventType
+pattern HITCreated = EventType' "HITCreated"
+
+pattern HITDisposed :: EventType
+pattern HITDisposed = EventType' "HITDisposed"
+
+pattern HITExpired :: EventType
+pattern HITExpired = EventType' "HITExpired"
+
+pattern HITExtended :: EventType
+pattern HITExtended = EventType' "HITExtended"
+
+pattern HITReviewable :: EventType
+pattern HITReviewable = EventType' "HITReviewable"
+
+pattern Ping :: EventType
+pattern Ping = EventType' "Ping"
+
+{-# COMPLETE
+  AssignmentAbandoned,
+  AssignmentAccepted,
+  AssignmentApproved,
+  AssignmentRejected,
+  AssignmentReturned,
+  AssignmentSubmitted,
+  HITCreated,
+  HITDisposed,
+  HITExpired,
+  HITExtended,
+  HITReviewable,
+  Ping,
+  EventType' #-}
 
 instance FromText EventType where
-    parser = takeLowerText >>= \case
-        "assignmentabandoned" -> pure AssignmentAbandoned
-        "assignmentaccepted" -> pure AssignmentAccepted
-        "assignmentapproved" -> pure AssignmentApproved
-        "assignmentrejected" -> pure AssignmentRejected
-        "assignmentreturned" -> pure AssignmentReturned
-        "assignmentsubmitted" -> pure AssignmentSubmitted
-        "hitcreated" -> pure HITCreated
-        "hitdisposed" -> pure HITDisposed
-        "hitexpired" -> pure HITExpired
-        "hitextended" -> pure HITExtended
-        "hitreviewable" -> pure HITReviewable
-        "ping" -> pure Ping
-        e -> fromTextError $ "Failure parsing EventType from value: '" <> e
-           <> "'. Accepted values: assignmentabandoned, assignmentaccepted, assignmentapproved, assignmentrejected, assignmentreturned, assignmentsubmitted, hitcreated, hitdisposed, hitexpired, hitextended, hitreviewable, ping"
+    parser = (EventType' . mk) <$> takeText
 
 instance ToText EventType where
-    toText = \case
-        AssignmentAbandoned -> "AssignmentAbandoned"
-        AssignmentAccepted -> "AssignmentAccepted"
-        AssignmentApproved -> "AssignmentApproved"
-        AssignmentRejected -> "AssignmentRejected"
-        AssignmentReturned -> "AssignmentReturned"
-        AssignmentSubmitted -> "AssignmentSubmitted"
-        HITCreated -> "HITCreated"
-        HITDisposed -> "HITDisposed"
-        HITExpired -> "HITExpired"
-        HITExtended -> "HITExtended"
-        HITReviewable -> "HITReviewable"
-        Ping -> "Ping"
+    toText (EventType' ci) = original ci
+
+-- | Represents an enum of /known/ $EventType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum EventType where
+    toEnum i = case i of
+        0 -> AssignmentAbandoned
+        1 -> AssignmentAccepted
+        2 -> AssignmentApproved
+        3 -> AssignmentRejected
+        4 -> AssignmentReturned
+        5 -> AssignmentSubmitted
+        6 -> HITCreated
+        7 -> HITDisposed
+        8 -> HITExpired
+        9 -> HITExtended
+        10 -> HITReviewable
+        11 -> Ping
+        _ -> (error . showText) $ "Unknown index for EventType: " <> toText i
+    fromEnum x = case x of
+        AssignmentAbandoned -> 0
+        AssignmentAccepted -> 1
+        AssignmentApproved -> 2
+        AssignmentRejected -> 3
+        AssignmentReturned -> 4
+        AssignmentSubmitted -> 5
+        HITCreated -> 6
+        HITDisposed -> 7
+        HITExpired -> 8
+        HITExtended -> 9
+        HITReviewable -> 10
+        Ping -> 11
+        EventType' name -> (error . showText) $ "Unknown EventType: " <> original name
+
+-- | Represents the bounds of /known/ $EventType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded EventType where
+    minBound = AssignmentAbandoned
+    maxBound = Ping
 
 instance Hashable     EventType
 instance NFData       EventType

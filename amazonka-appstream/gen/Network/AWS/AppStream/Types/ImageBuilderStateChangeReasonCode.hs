@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,27 +16,59 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.AppStream.Types.ImageBuilderStateChangeReasonCode where
+module Network.AWS.AppStream.Types.ImageBuilderStateChangeReasonCode (
+  ImageBuilderStateChangeReasonCode (
+    ..
+    , ImageUnavailable
+    , InternalError
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data ImageBuilderStateChangeReasonCode = ImageUnavailable
-                                       | InternalError
-                                           deriving (Eq, Ord, Read, Show, Enum,
-                                                     Bounded, Data, Typeable,
-                                                     Generic)
+
+data ImageBuilderStateChangeReasonCode = ImageBuilderStateChangeReasonCode' (CI
+                                                                               Text)
+                                           deriving (Eq, Ord, Read, Show, Data,
+                                                     Typeable, Generic)
+
+pattern ImageUnavailable :: ImageBuilderStateChangeReasonCode
+pattern ImageUnavailable = ImageBuilderStateChangeReasonCode' "IMAGE_UNAVAILABLE"
+
+pattern InternalError :: ImageBuilderStateChangeReasonCode
+pattern InternalError = ImageBuilderStateChangeReasonCode' "INTERNAL_ERROR"
+
+{-# COMPLETE
+  ImageUnavailable,
+  InternalError,
+  ImageBuilderStateChangeReasonCode' #-}
 
 instance FromText ImageBuilderStateChangeReasonCode where
-    parser = takeLowerText >>= \case
-        "image_unavailable" -> pure ImageUnavailable
-        "internal_error" -> pure InternalError
-        e -> fromTextError $ "Failure parsing ImageBuilderStateChangeReasonCode from value: '" <> e
-           <> "'. Accepted values: image_unavailable, internal_error"
+    parser = (ImageBuilderStateChangeReasonCode' . mk) <$> takeText
 
 instance ToText ImageBuilderStateChangeReasonCode where
-    toText = \case
-        ImageUnavailable -> "IMAGE_UNAVAILABLE"
-        InternalError -> "INTERNAL_ERROR"
+    toText (ImageBuilderStateChangeReasonCode' ci) = original ci
+
+-- | Represents an enum of /known/ $ImageBuilderStateChangeReasonCode.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum ImageBuilderStateChangeReasonCode where
+    toEnum i = case i of
+        0 -> ImageUnavailable
+        1 -> InternalError
+        _ -> (error . showText) $ "Unknown index for ImageBuilderStateChangeReasonCode: " <> toText i
+    fromEnum x = case x of
+        ImageUnavailable -> 0
+        InternalError -> 1
+        ImageBuilderStateChangeReasonCode' name -> (error . showText) $ "Unknown ImageBuilderStateChangeReasonCode: " <> original name
+
+-- | Represents the bounds of /known/ $ImageBuilderStateChangeReasonCode.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded ImageBuilderStateChangeReasonCode where
+    minBound = ImageUnavailable
+    maxBound = InternalError
 
 instance Hashable     ImageBuilderStateChangeReasonCode
 instance NFData       ImageBuilderStateChangeReasonCode

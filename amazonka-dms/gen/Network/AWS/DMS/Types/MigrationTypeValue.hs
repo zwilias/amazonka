@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,29 +16,66 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.DMS.Types.MigrationTypeValue where
+module Network.AWS.DMS.Types.MigrationTypeValue (
+  MigrationTypeValue (
+    ..
+    , Cdc
+    , FullLoad
+    , FullLoadAndCdc
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data MigrationTypeValue = Cdc
-                        | FullLoad
-                        | FullLoadAndCdc
-                            deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                      Typeable, Generic)
+
+data MigrationTypeValue = MigrationTypeValue' (CI
+                                                 Text)
+                            deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                      Generic)
+
+pattern Cdc :: MigrationTypeValue
+pattern Cdc = MigrationTypeValue' "cdc"
+
+pattern FullLoad :: MigrationTypeValue
+pattern FullLoad = MigrationTypeValue' "full-load"
+
+pattern FullLoadAndCdc :: MigrationTypeValue
+pattern FullLoadAndCdc = MigrationTypeValue' "full-load-and-cdc"
+
+{-# COMPLETE
+  Cdc,
+  FullLoad,
+  FullLoadAndCdc,
+  MigrationTypeValue' #-}
 
 instance FromText MigrationTypeValue where
-    parser = takeLowerText >>= \case
-        "cdc" -> pure Cdc
-        "full-load" -> pure FullLoad
-        "full-load-and-cdc" -> pure FullLoadAndCdc
-        e -> fromTextError $ "Failure parsing MigrationTypeValue from value: '" <> e
-           <> "'. Accepted values: cdc, full-load, full-load-and-cdc"
+    parser = (MigrationTypeValue' . mk) <$> takeText
 
 instance ToText MigrationTypeValue where
-    toText = \case
-        Cdc -> "cdc"
-        FullLoad -> "full-load"
-        FullLoadAndCdc -> "full-load-and-cdc"
+    toText (MigrationTypeValue' ci) = original ci
+
+-- | Represents an enum of /known/ $MigrationTypeValue.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum MigrationTypeValue where
+    toEnum i = case i of
+        0 -> Cdc
+        1 -> FullLoad
+        2 -> FullLoadAndCdc
+        _ -> (error . showText) $ "Unknown index for MigrationTypeValue: " <> toText i
+    fromEnum x = case x of
+        Cdc -> 0
+        FullLoad -> 1
+        FullLoadAndCdc -> 2
+        MigrationTypeValue' name -> (error . showText) $ "Unknown MigrationTypeValue: " <> original name
+
+-- | Represents the bounds of /known/ $MigrationTypeValue.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded MigrationTypeValue where
+    minBound = Cdc
+    maxBound = FullLoadAndCdc
 
 instance Hashable     MigrationTypeValue
 instance NFData       MigrationTypeValue

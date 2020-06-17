@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,25 +16,53 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.MediaLive.Types.AudioNormalizationAlgorithmControl where
+module Network.AWS.MediaLive.Types.AudioNormalizationAlgorithmControl (
+  AudioNormalizationAlgorithmControl (
+    ..
+    , CorrectAudio
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
+
 -- | Placeholder documentation for AudioNormalizationAlgorithmControl
-data AudioNormalizationAlgorithmControl = CorrectAudio
-                                            deriving (Eq, Ord, Read, Show, Enum,
-                                                      Bounded, Data, Typeable,
-                                                      Generic)
+data AudioNormalizationAlgorithmControl = AudioNormalizationAlgorithmControl' (CI
+                                                                                 Text)
+                                            deriving (Eq, Ord, Read, Show, Data,
+                                                      Typeable, Generic)
+
+pattern CorrectAudio :: AudioNormalizationAlgorithmControl
+pattern CorrectAudio = AudioNormalizationAlgorithmControl' "CORRECT_AUDIO"
+
+{-# COMPLETE
+  CorrectAudio,
+  AudioNormalizationAlgorithmControl' #-}
 
 instance FromText AudioNormalizationAlgorithmControl where
-    parser = takeLowerText >>= \case
-        "correct_audio" -> pure CorrectAudio
-        e -> fromTextError $ "Failure parsing AudioNormalizationAlgorithmControl from value: '" <> e
-           <> "'. Accepted values: correct_audio"
+    parser = (AudioNormalizationAlgorithmControl' . mk) <$> takeText
 
 instance ToText AudioNormalizationAlgorithmControl where
-    toText = \case
-        CorrectAudio -> "CORRECT_AUDIO"
+    toText (AudioNormalizationAlgorithmControl' ci) = original ci
+
+-- | Represents an enum of /known/ $AudioNormalizationAlgorithmControl.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum AudioNormalizationAlgorithmControl where
+    toEnum i = case i of
+        0 -> CorrectAudio
+        _ -> (error . showText) $ "Unknown index for AudioNormalizationAlgorithmControl: " <> toText i
+    fromEnum x = case x of
+        CorrectAudio -> 0
+        AudioNormalizationAlgorithmControl' name -> (error . showText) $ "Unknown AudioNormalizationAlgorithmControl: " <> original name
+
+-- | Represents the bounds of /known/ $AudioNormalizationAlgorithmControl.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded AudioNormalizationAlgorithmControl where
+    minBound = CorrectAudio
+    maxBound = CorrectAudio
 
 instance Hashable     AudioNormalizationAlgorithmControl
 instance NFData       AudioNormalizationAlgorithmControl

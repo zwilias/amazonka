@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,59 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.ElasticBeanstalk.Types.EnvironmentInfoType where
+module Network.AWS.ElasticBeanstalk.Types.EnvironmentInfoType (
+  EnvironmentInfoType (
+    ..
+    , Bundle
+    , Tail
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data EnvironmentInfoType = Bundle
-                         | Tail
-                             deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                       Typeable, Generic)
+
+data EnvironmentInfoType = EnvironmentInfoType' (CI
+                                                   Text)
+                             deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                       Generic)
+
+pattern Bundle :: EnvironmentInfoType
+pattern Bundle = EnvironmentInfoType' "bundle"
+
+pattern Tail :: EnvironmentInfoType
+pattern Tail = EnvironmentInfoType' "tail"
+
+{-# COMPLETE
+  Bundle,
+  Tail,
+  EnvironmentInfoType' #-}
 
 instance FromText EnvironmentInfoType where
-    parser = takeLowerText >>= \case
-        "bundle" -> pure Bundle
-        "tail" -> pure Tail
-        e -> fromTextError $ "Failure parsing EnvironmentInfoType from value: '" <> e
-           <> "'. Accepted values: bundle, tail"
+    parser = (EnvironmentInfoType' . mk) <$> takeText
 
 instance ToText EnvironmentInfoType where
-    toText = \case
-        Bundle -> "bundle"
-        Tail -> "tail"
+    toText (EnvironmentInfoType' ci) = original ci
+
+-- | Represents an enum of /known/ $EnvironmentInfoType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum EnvironmentInfoType where
+    toEnum i = case i of
+        0 -> Bundle
+        1 -> Tail
+        _ -> (error . showText) $ "Unknown index for EnvironmentInfoType: " <> toText i
+    fromEnum x = case x of
+        Bundle -> 0
+        Tail -> 1
+        EnvironmentInfoType' name -> (error . showText) $ "Unknown EnvironmentInfoType: " <> original name
+
+-- | Represents the bounds of /known/ $EnvironmentInfoType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded EnvironmentInfoType where
+    minBound = Bundle
+    maxBound = Tail
 
 instance Hashable     EnvironmentInfoType
 instance NFData       EnvironmentInfoType

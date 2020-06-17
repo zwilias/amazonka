@@ -235,6 +235,7 @@ library
         , Network.AWS.IoT.Types.Policy
         , Network.AWS.IoT.Types.PolicyVersion
         , Network.AWS.IoT.Types.PresignedURLConfig
+        , Network.AWS.IoT.Types.Product
         , Network.AWS.IoT.Types.PutItemInput
         , Network.AWS.IoT.Types.RegistrationConfig
         , Network.AWS.IoT.Types.ReportType
@@ -268,6 +269,7 @@ library
     build-depends:
           amazonka-core == 1.6.1.*
         , base          >= 4.7     && < 5
+        , case-insensitive
 
 test-suite amazonka-iot-test
     type:              exitcode-stdio-1.0
@@ -291,6 +293,7 @@ test-suite amazonka-iot-test
         , amazonka-iot
         , base
         , bytestring
+        , case-insensitive
         , tasty
         , tasty-hunit
         , text

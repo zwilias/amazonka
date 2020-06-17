@@ -39,6 +39,7 @@ module Network.AWS.OpsWorks.AssociateElasticIP
 
 import Network.AWS.Lens
 import Network.AWS.OpsWorks.Types
+import Network.AWS.OpsWorks.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response

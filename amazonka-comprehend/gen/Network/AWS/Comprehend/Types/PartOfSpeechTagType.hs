@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,74 +16,171 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.Comprehend.Types.PartOfSpeechTagType where
+module Network.AWS.Comprehend.Types.PartOfSpeechTagType (
+  PartOfSpeechTagType (
+    ..
+    , Adj
+    , Adp
+    , Adv
+    , Aux
+    , Cconj
+    , Conj
+    , Det
+    , Intj
+    , Noun
+    , Num
+    , O
+    , Part
+    , Pron
+    , Propn
+    , Punct
+    , Sconj
+    , Sym
+    , Verb
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data PartOfSpeechTagType = Adj
-                         | Adp
-                         | Adv
-                         | Aux
-                         | Cconj
-                         | Conj
-                         | Det
-                         | Intj
-                         | Noun
-                         | Num
-                         | O
-                         | Part
-                         | Pron
-                         | Propn
-                         | Punct
-                         | Sconj
-                         | Sym
-                         | Verb
-                             deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                       Typeable, Generic)
+
+data PartOfSpeechTagType = PartOfSpeechTagType' (CI
+                                                   Text)
+                             deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                       Generic)
+
+pattern Adj :: PartOfSpeechTagType
+pattern Adj = PartOfSpeechTagType' "ADJ"
+
+pattern Adp :: PartOfSpeechTagType
+pattern Adp = PartOfSpeechTagType' "ADP"
+
+pattern Adv :: PartOfSpeechTagType
+pattern Adv = PartOfSpeechTagType' "ADV"
+
+pattern Aux :: PartOfSpeechTagType
+pattern Aux = PartOfSpeechTagType' "AUX"
+
+pattern Cconj :: PartOfSpeechTagType
+pattern Cconj = PartOfSpeechTagType' "CCONJ"
+
+pattern Conj :: PartOfSpeechTagType
+pattern Conj = PartOfSpeechTagType' "CONJ"
+
+pattern Det :: PartOfSpeechTagType
+pattern Det = PartOfSpeechTagType' "DET"
+
+pattern Intj :: PartOfSpeechTagType
+pattern Intj = PartOfSpeechTagType' "INTJ"
+
+pattern Noun :: PartOfSpeechTagType
+pattern Noun = PartOfSpeechTagType' "NOUN"
+
+pattern Num :: PartOfSpeechTagType
+pattern Num = PartOfSpeechTagType' "NUM"
+
+pattern O :: PartOfSpeechTagType
+pattern O = PartOfSpeechTagType' "O"
+
+pattern Part :: PartOfSpeechTagType
+pattern Part = PartOfSpeechTagType' "PART"
+
+pattern Pron :: PartOfSpeechTagType
+pattern Pron = PartOfSpeechTagType' "PRON"
+
+pattern Propn :: PartOfSpeechTagType
+pattern Propn = PartOfSpeechTagType' "PROPN"
+
+pattern Punct :: PartOfSpeechTagType
+pattern Punct = PartOfSpeechTagType' "PUNCT"
+
+pattern Sconj :: PartOfSpeechTagType
+pattern Sconj = PartOfSpeechTagType' "SCONJ"
+
+pattern Sym :: PartOfSpeechTagType
+pattern Sym = PartOfSpeechTagType' "SYM"
+
+pattern Verb :: PartOfSpeechTagType
+pattern Verb = PartOfSpeechTagType' "VERB"
+
+{-# COMPLETE
+  Adj,
+  Adp,
+  Adv,
+  Aux,
+  Cconj,
+  Conj,
+  Det,
+  Intj,
+  Noun,
+  Num,
+  O,
+  Part,
+  Pron,
+  Propn,
+  Punct,
+  Sconj,
+  Sym,
+  Verb,
+  PartOfSpeechTagType' #-}
 
 instance FromText PartOfSpeechTagType where
-    parser = takeLowerText >>= \case
-        "adj" -> pure Adj
-        "adp" -> pure Adp
-        "adv" -> pure Adv
-        "aux" -> pure Aux
-        "cconj" -> pure Cconj
-        "conj" -> pure Conj
-        "det" -> pure Det
-        "intj" -> pure Intj
-        "noun" -> pure Noun
-        "num" -> pure Num
-        "o" -> pure O
-        "part" -> pure Part
-        "pron" -> pure Pron
-        "propn" -> pure Propn
-        "punct" -> pure Punct
-        "sconj" -> pure Sconj
-        "sym" -> pure Sym
-        "verb" -> pure Verb
-        e -> fromTextError $ "Failure parsing PartOfSpeechTagType from value: '" <> e
-           <> "'. Accepted values: adj, adp, adv, aux, cconj, conj, det, intj, noun, num, o, part, pron, propn, punct, sconj, sym, verb"
+    parser = (PartOfSpeechTagType' . mk) <$> takeText
 
 instance ToText PartOfSpeechTagType where
-    toText = \case
-        Adj -> "ADJ"
-        Adp -> "ADP"
-        Adv -> "ADV"
-        Aux -> "AUX"
-        Cconj -> "CCONJ"
-        Conj -> "CONJ"
-        Det -> "DET"
-        Intj -> "INTJ"
-        Noun -> "NOUN"
-        Num -> "NUM"
-        O -> "O"
-        Part -> "PART"
-        Pron -> "PRON"
-        Propn -> "PROPN"
-        Punct -> "PUNCT"
-        Sconj -> "SCONJ"
-        Sym -> "SYM"
-        Verb -> "VERB"
+    toText (PartOfSpeechTagType' ci) = original ci
+
+-- | Represents an enum of /known/ $PartOfSpeechTagType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum PartOfSpeechTagType where
+    toEnum i = case i of
+        0 -> Adj
+        1 -> Adp
+        2 -> Adv
+        3 -> Aux
+        4 -> Cconj
+        5 -> Conj
+        6 -> Det
+        7 -> Intj
+        8 -> Noun
+        9 -> Num
+        10 -> O
+        11 -> Part
+        12 -> Pron
+        13 -> Propn
+        14 -> Punct
+        15 -> Sconj
+        16 -> Sym
+        17 -> Verb
+        _ -> (error . showText) $ "Unknown index for PartOfSpeechTagType: " <> toText i
+    fromEnum x = case x of
+        Adj -> 0
+        Adp -> 1
+        Adv -> 2
+        Aux -> 3
+        Cconj -> 4
+        Conj -> 5
+        Det -> 6
+        Intj -> 7
+        Noun -> 8
+        Num -> 9
+        O -> 10
+        Part -> 11
+        Pron -> 12
+        Propn -> 13
+        Punct -> 14
+        Sconj -> 15
+        Sym -> 16
+        Verb -> 17
+        PartOfSpeechTagType' name -> (error . showText) $ "Unknown PartOfSpeechTagType: " <> original name
+
+-- | Represents the bounds of /known/ $PartOfSpeechTagType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded PartOfSpeechTagType where
+    minBound = Adj
+    maxBound = Verb
 
 instance Hashable     PartOfSpeechTagType
 instance NFData       PartOfSpeechTagType

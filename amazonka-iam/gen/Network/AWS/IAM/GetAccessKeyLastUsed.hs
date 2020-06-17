@@ -39,6 +39,7 @@ module Network.AWS.IAM.GetAccessKeyLastUsed
     ) where
 
 import Network.AWS.IAM.Types
+import Network.AWS.IAM.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request

@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,37 +16,81 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.EC2.Types.RouteTableAssociationStateCode where
+module Network.AWS.EC2.Types.RouteTableAssociationStateCode (
+  RouteTableAssociationStateCode (
+    ..
+    , RTASCAssociated
+    , RTASCAssociating
+    , RTASCDisassociated
+    , RTASCDisassociating
+    , RTASCFailed
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.EC2.Internal
 import Network.AWS.Prelude
-  
-data RouteTableAssociationStateCode = RTASCAssociated
-                                    | RTASCAssociating
-                                    | RTASCDisassociated
-                                    | RTASCDisassociating
-                                    | RTASCFailed
-                                        deriving (Eq, Ord, Read, Show, Enum,
-                                                  Bounded, Data, Typeable,
-                                                  Generic)
+
+data RouteTableAssociationStateCode = RouteTableAssociationStateCode' (CI
+                                                                         Text)
+                                        deriving (Eq, Ord, Read, Show, Data,
+                                                  Typeable, Generic)
+
+pattern RTASCAssociated :: RouteTableAssociationStateCode
+pattern RTASCAssociated = RouteTableAssociationStateCode' "associated"
+
+pattern RTASCAssociating :: RouteTableAssociationStateCode
+pattern RTASCAssociating = RouteTableAssociationStateCode' "associating"
+
+pattern RTASCDisassociated :: RouteTableAssociationStateCode
+pattern RTASCDisassociated = RouteTableAssociationStateCode' "disassociated"
+
+pattern RTASCDisassociating :: RouteTableAssociationStateCode
+pattern RTASCDisassociating = RouteTableAssociationStateCode' "disassociating"
+
+pattern RTASCFailed :: RouteTableAssociationStateCode
+pattern RTASCFailed = RouteTableAssociationStateCode' "failed"
+
+{-# COMPLETE
+  RTASCAssociated,
+  RTASCAssociating,
+  RTASCDisassociated,
+  RTASCDisassociating,
+  RTASCFailed,
+  RouteTableAssociationStateCode' #-}
 
 instance FromText RouteTableAssociationStateCode where
-    parser = takeLowerText >>= \case
-        "associated" -> pure RTASCAssociated
-        "associating" -> pure RTASCAssociating
-        "disassociated" -> pure RTASCDisassociated
-        "disassociating" -> pure RTASCDisassociating
-        "failed" -> pure RTASCFailed
-        e -> fromTextError $ "Failure parsing RouteTableAssociationStateCode from value: '" <> e
-           <> "'. Accepted values: associated, associating, disassociated, disassociating, failed"
+    parser = (RouteTableAssociationStateCode' . mk) <$> takeText
 
 instance ToText RouteTableAssociationStateCode where
-    toText = \case
-        RTASCAssociated -> "associated"
-        RTASCAssociating -> "associating"
-        RTASCDisassociated -> "disassociated"
-        RTASCDisassociating -> "disassociating"
-        RTASCFailed -> "failed"
+    toText (RouteTableAssociationStateCode' ci) = original ci
+
+-- | Represents an enum of /known/ $RouteTableAssociationStateCode.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum RouteTableAssociationStateCode where
+    toEnum i = case i of
+        0 -> RTASCAssociated
+        1 -> RTASCAssociating
+        2 -> RTASCDisassociated
+        3 -> RTASCDisassociating
+        4 -> RTASCFailed
+        _ -> (error . showText) $ "Unknown index for RouteTableAssociationStateCode: " <> toText i
+    fromEnum x = case x of
+        RTASCAssociated -> 0
+        RTASCAssociating -> 1
+        RTASCDisassociated -> 2
+        RTASCDisassociating -> 3
+        RTASCFailed -> 4
+        RouteTableAssociationStateCode' name -> (error . showText) $ "Unknown RouteTableAssociationStateCode: " <> original name
+
+-- | Represents the bounds of /known/ $RouteTableAssociationStateCode.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded RouteTableAssociationStateCode where
+    minBound = RTASCAssociated
+    maxBound = RTASCFailed
 
 instance Hashable     RouteTableAssociationStateCode
 instance NFData       RouteTableAssociationStateCode

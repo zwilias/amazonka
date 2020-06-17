@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,32 +16,69 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.CostAndUsageReport.Types.AdditionalArtifact where
+module Network.AWS.CostAndUsageReport.Types.AdditionalArtifact (
+  AdditionalArtifact (
+    ..
+    , Athena
+    , Quicksight
+    , Redshift
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
+
 -- | The types of manifest that you want AWS to create for this report.
 --
 --
-data AdditionalArtifact = Athena
-                        | Quicksight
-                        | Redshift
-                            deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                      Typeable, Generic)
+data AdditionalArtifact = AdditionalArtifact' (CI
+                                                 Text)
+                            deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                      Generic)
+
+pattern Athena :: AdditionalArtifact
+pattern Athena = AdditionalArtifact' "ATHENA"
+
+pattern Quicksight :: AdditionalArtifact
+pattern Quicksight = AdditionalArtifact' "QUICKSIGHT"
+
+pattern Redshift :: AdditionalArtifact
+pattern Redshift = AdditionalArtifact' "REDSHIFT"
+
+{-# COMPLETE
+  Athena,
+  Quicksight,
+  Redshift,
+  AdditionalArtifact' #-}
 
 instance FromText AdditionalArtifact where
-    parser = takeLowerText >>= \case
-        "athena" -> pure Athena
-        "quicksight" -> pure Quicksight
-        "redshift" -> pure Redshift
-        e -> fromTextError $ "Failure parsing AdditionalArtifact from value: '" <> e
-           <> "'. Accepted values: athena, quicksight, redshift"
+    parser = (AdditionalArtifact' . mk) <$> takeText
 
 instance ToText AdditionalArtifact where
-    toText = \case
-        Athena -> "ATHENA"
-        Quicksight -> "QUICKSIGHT"
-        Redshift -> "REDSHIFT"
+    toText (AdditionalArtifact' ci) = original ci
+
+-- | Represents an enum of /known/ $AdditionalArtifact.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum AdditionalArtifact where
+    toEnum i = case i of
+        0 -> Athena
+        1 -> Quicksight
+        2 -> Redshift
+        _ -> (error . showText) $ "Unknown index for AdditionalArtifact: " <> toText i
+    fromEnum x = case x of
+        Athena -> 0
+        Quicksight -> 1
+        Redshift -> 2
+        AdditionalArtifact' name -> (error . showText) $ "Unknown AdditionalArtifact: " <> original name
+
+-- | Represents the bounds of /known/ $AdditionalArtifact.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded AdditionalArtifact where
+    minBound = Athena
+    maxBound = Redshift
 
 instance Hashable     AdditionalArtifact
 instance NFData       AdditionalArtifact

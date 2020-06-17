@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,27 +16,59 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.EC2.Types.MembershipType where
+module Network.AWS.EC2.Types.MembershipType (
+  MembershipType (
+    ..
+    , MTIgmp
+    , MTStatic
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.EC2.Internal
 import Network.AWS.Prelude
-  
-data MembershipType = MTIgmp
-                    | MTStatic
-                        deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                  Typeable, Generic)
+
+data MembershipType = MembershipType' (CI Text)
+                        deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                  Generic)
+
+pattern MTIgmp :: MembershipType
+pattern MTIgmp = MembershipType' "igmp"
+
+pattern MTStatic :: MembershipType
+pattern MTStatic = MembershipType' "static"
+
+{-# COMPLETE
+  MTIgmp,
+  MTStatic,
+  MembershipType' #-}
 
 instance FromText MembershipType where
-    parser = takeLowerText >>= \case
-        "igmp" -> pure MTIgmp
-        "static" -> pure MTStatic
-        e -> fromTextError $ "Failure parsing MembershipType from value: '" <> e
-           <> "'. Accepted values: igmp, static"
+    parser = (MembershipType' . mk) <$> takeText
 
 instance ToText MembershipType where
-    toText = \case
-        MTIgmp -> "igmp"
-        MTStatic -> "static"
+    toText (MembershipType' ci) = original ci
+
+-- | Represents an enum of /known/ $MembershipType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum MembershipType where
+    toEnum i = case i of
+        0 -> MTIgmp
+        1 -> MTStatic
+        _ -> (error . showText) $ "Unknown index for MembershipType: " <> toText i
+    fromEnum x = case x of
+        MTIgmp -> 0
+        MTStatic -> 1
+        MembershipType' name -> (error . showText) $ "Unknown MembershipType: " <> original name
+
+-- | Represents the bounds of /known/ $MembershipType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded MembershipType where
+    minBound = MTIgmp
+    maxBound = MTStatic
 
 instance Hashable     MembershipType
 instance NFData       MembershipType

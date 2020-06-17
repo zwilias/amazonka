@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,27 +16,59 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.EC2.Types.HTTPTokensState where
+module Network.AWS.EC2.Types.HTTPTokensState (
+  HTTPTokensState (
+    ..
+    , HTTPTSOptional
+    , HTTPTSRequired
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.EC2.Internal
 import Network.AWS.Prelude
-  
-data HTTPTokensState = HTTPTSOptional
-                     | HTTPTSRequired
-                         deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                   Typeable, Generic)
+
+data HTTPTokensState = HTTPTokensState' (CI Text)
+                         deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                   Generic)
+
+pattern HTTPTSOptional :: HTTPTokensState
+pattern HTTPTSOptional = HTTPTokensState' "optional"
+
+pattern HTTPTSRequired :: HTTPTokensState
+pattern HTTPTSRequired = HTTPTokensState' "required"
+
+{-# COMPLETE
+  HTTPTSOptional,
+  HTTPTSRequired,
+  HTTPTokensState' #-}
 
 instance FromText HTTPTokensState where
-    parser = takeLowerText >>= \case
-        "optional" -> pure HTTPTSOptional
-        "required" -> pure HTTPTSRequired
-        e -> fromTextError $ "Failure parsing HTTPTokensState from value: '" <> e
-           <> "'. Accepted values: optional, required"
+    parser = (HTTPTokensState' . mk) <$> takeText
 
 instance ToText HTTPTokensState where
-    toText = \case
-        HTTPTSOptional -> "optional"
-        HTTPTSRequired -> "required"
+    toText (HTTPTokensState' ci) = original ci
+
+-- | Represents an enum of /known/ $HTTPTokensState.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum HTTPTokensState where
+    toEnum i = case i of
+        0 -> HTTPTSOptional
+        1 -> HTTPTSRequired
+        _ -> (error . showText) $ "Unknown index for HTTPTokensState: " <> toText i
+    fromEnum x = case x of
+        HTTPTSOptional -> 0
+        HTTPTSRequired -> 1
+        HTTPTokensState' name -> (error . showText) $ "Unknown HTTPTokensState: " <> original name
+
+-- | Represents the bounds of /known/ $HTTPTokensState.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded HTTPTokensState where
+    minBound = HTTPTSOptional
+    maxBound = HTTPTSRequired
 
 instance Hashable     HTTPTokensState
 instance NFData       HTTPTokensState

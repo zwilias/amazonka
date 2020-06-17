@@ -66,6 +66,7 @@ module Network.AWS.EFS.CreateFileSystem
     ) where
 
 import Network.AWS.EFS.Types
+import Network.AWS.EFS.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request

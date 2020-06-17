@@ -63,6 +63,7 @@ library
     other-modules:
           Network.AWS.ResourceGroups.Types.Group
         , Network.AWS.ResourceGroups.Types.GroupQuery
+        , Network.AWS.ResourceGroups.Types.Product
         , Network.AWS.ResourceGroups.Types.QueryType
         , Network.AWS.ResourceGroups.Types.ResourceIdentifier
         , Network.AWS.ResourceGroups.Types.ResourceQuery
@@ -70,6 +71,7 @@ library
     build-depends:
           amazonka-core == 1.6.1.*
         , base          >= 4.7     && < 5
+        , case-insensitive
 
 test-suite amazonka-resourcegroups-test
     type:              exitcode-stdio-1.0
@@ -93,6 +95,7 @@ test-suite amazonka-resourcegroups-test
         , amazonka-resourcegroups
         , base
         , bytestring
+        , case-insensitive
         , tasty
         , tasty-hunit
         , text

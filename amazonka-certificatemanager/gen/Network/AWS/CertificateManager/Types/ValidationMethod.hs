@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,58 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.CertificateManager.Types.ValidationMethod where
+module Network.AWS.CertificateManager.Types.ValidationMethod (
+  ValidationMethod (
+    ..
+    , DNS
+    , Email
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data ValidationMethod = DNS
-                      | Email
-                          deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                    Typeable, Generic)
+
+data ValidationMethod = ValidationMethod' (CI Text)
+                          deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                    Generic)
+
+pattern DNS :: ValidationMethod
+pattern DNS = ValidationMethod' "DNS"
+
+pattern Email :: ValidationMethod
+pattern Email = ValidationMethod' "EMAIL"
+
+{-# COMPLETE
+  DNS,
+  Email,
+  ValidationMethod' #-}
 
 instance FromText ValidationMethod where
-    parser = takeLowerText >>= \case
-        "dns" -> pure DNS
-        "email" -> pure Email
-        e -> fromTextError $ "Failure parsing ValidationMethod from value: '" <> e
-           <> "'. Accepted values: dns, email"
+    parser = (ValidationMethod' . mk) <$> takeText
 
 instance ToText ValidationMethod where
-    toText = \case
-        DNS -> "DNS"
-        Email -> "EMAIL"
+    toText (ValidationMethod' ci) = original ci
+
+-- | Represents an enum of /known/ $ValidationMethod.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum ValidationMethod where
+    toEnum i = case i of
+        0 -> DNS
+        1 -> Email
+        _ -> (error . showText) $ "Unknown index for ValidationMethod: " <> toText i
+    fromEnum x = case x of
+        DNS -> 0
+        Email -> 1
+        ValidationMethod' name -> (error . showText) $ "Unknown ValidationMethod: " <> original name
+
+-- | Represents the bounds of /known/ $ValidationMethod.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded ValidationMethod where
+    minBound = DNS
+    maxBound = Email
 
 instance Hashable     ValidationMethod
 instance NFData       ValidationMethod

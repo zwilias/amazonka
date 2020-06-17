@@ -35,6 +35,7 @@ module Network.AWS.IoTAnalytics.DeletePipeline
     ) where
 
 import Network.AWS.IoTAnalytics.Types
+import Network.AWS.IoTAnalytics.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request

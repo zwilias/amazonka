@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,53 +16,121 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.AppStream.Types.StackAttribute where
+module Network.AWS.AppStream.Types.StackAttribute (
+  StackAttribute (
+    ..
+    , AccessEndpoints
+    , EmbedHostDomains
+    , FeedbackURL
+    , IAMRoleARN
+    , RedirectURL
+    , StorageConnectorGoogleDrive
+    , StorageConnectorHomefolders
+    , StorageConnectorOneDrive
+    , StorageConnectors
+    , ThemeName
+    , UserSettings
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data StackAttribute = AccessEndpoints
-                    | EmbedHostDomains
-                    | FeedbackURL
-                    | IAMRoleARN
-                    | RedirectURL
-                    | StorageConnectorGoogleDrive
-                    | StorageConnectorHomefolders
-                    | StorageConnectorOneDrive
-                    | StorageConnectors
-                    | ThemeName
-                    | UserSettings
-                        deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                  Typeable, Generic)
+
+data StackAttribute = StackAttribute' (CI Text)
+                        deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                  Generic)
+
+pattern AccessEndpoints :: StackAttribute
+pattern AccessEndpoints = StackAttribute' "ACCESS_ENDPOINTS"
+
+pattern EmbedHostDomains :: StackAttribute
+pattern EmbedHostDomains = StackAttribute' "EMBED_HOST_DOMAINS"
+
+pattern FeedbackURL :: StackAttribute
+pattern FeedbackURL = StackAttribute' "FEEDBACK_URL"
+
+pattern IAMRoleARN :: StackAttribute
+pattern IAMRoleARN = StackAttribute' "IAM_ROLE_ARN"
+
+pattern RedirectURL :: StackAttribute
+pattern RedirectURL = StackAttribute' "REDIRECT_URL"
+
+pattern StorageConnectorGoogleDrive :: StackAttribute
+pattern StorageConnectorGoogleDrive = StackAttribute' "STORAGE_CONNECTOR_GOOGLE_DRIVE"
+
+pattern StorageConnectorHomefolders :: StackAttribute
+pattern StorageConnectorHomefolders = StackAttribute' "STORAGE_CONNECTOR_HOMEFOLDERS"
+
+pattern StorageConnectorOneDrive :: StackAttribute
+pattern StorageConnectorOneDrive = StackAttribute' "STORAGE_CONNECTOR_ONE_DRIVE"
+
+pattern StorageConnectors :: StackAttribute
+pattern StorageConnectors = StackAttribute' "STORAGE_CONNECTORS"
+
+pattern ThemeName :: StackAttribute
+pattern ThemeName = StackAttribute' "THEME_NAME"
+
+pattern UserSettings :: StackAttribute
+pattern UserSettings = StackAttribute' "USER_SETTINGS"
+
+{-# COMPLETE
+  AccessEndpoints,
+  EmbedHostDomains,
+  FeedbackURL,
+  IAMRoleARN,
+  RedirectURL,
+  StorageConnectorGoogleDrive,
+  StorageConnectorHomefolders,
+  StorageConnectorOneDrive,
+  StorageConnectors,
+  ThemeName,
+  UserSettings,
+  StackAttribute' #-}
 
 instance FromText StackAttribute where
-    parser = takeLowerText >>= \case
-        "access_endpoints" -> pure AccessEndpoints
-        "embed_host_domains" -> pure EmbedHostDomains
-        "feedback_url" -> pure FeedbackURL
-        "iam_role_arn" -> pure IAMRoleARN
-        "redirect_url" -> pure RedirectURL
-        "storage_connector_google_drive" -> pure StorageConnectorGoogleDrive
-        "storage_connector_homefolders" -> pure StorageConnectorHomefolders
-        "storage_connector_one_drive" -> pure StorageConnectorOneDrive
-        "storage_connectors" -> pure StorageConnectors
-        "theme_name" -> pure ThemeName
-        "user_settings" -> pure UserSettings
-        e -> fromTextError $ "Failure parsing StackAttribute from value: '" <> e
-           <> "'. Accepted values: access_endpoints, embed_host_domains, feedback_url, iam_role_arn, redirect_url, storage_connector_google_drive, storage_connector_homefolders, storage_connector_one_drive, storage_connectors, theme_name, user_settings"
+    parser = (StackAttribute' . mk) <$> takeText
 
 instance ToText StackAttribute where
-    toText = \case
-        AccessEndpoints -> "ACCESS_ENDPOINTS"
-        EmbedHostDomains -> "EMBED_HOST_DOMAINS"
-        FeedbackURL -> "FEEDBACK_URL"
-        IAMRoleARN -> "IAM_ROLE_ARN"
-        RedirectURL -> "REDIRECT_URL"
-        StorageConnectorGoogleDrive -> "STORAGE_CONNECTOR_GOOGLE_DRIVE"
-        StorageConnectorHomefolders -> "STORAGE_CONNECTOR_HOMEFOLDERS"
-        StorageConnectorOneDrive -> "STORAGE_CONNECTOR_ONE_DRIVE"
-        StorageConnectors -> "STORAGE_CONNECTORS"
-        ThemeName -> "THEME_NAME"
-        UserSettings -> "USER_SETTINGS"
+    toText (StackAttribute' ci) = original ci
+
+-- | Represents an enum of /known/ $StackAttribute.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum StackAttribute where
+    toEnum i = case i of
+        0 -> AccessEndpoints
+        1 -> EmbedHostDomains
+        2 -> FeedbackURL
+        3 -> IAMRoleARN
+        4 -> RedirectURL
+        5 -> StorageConnectorGoogleDrive
+        6 -> StorageConnectorHomefolders
+        7 -> StorageConnectorOneDrive
+        8 -> StorageConnectors
+        9 -> ThemeName
+        10 -> UserSettings
+        _ -> (error . showText) $ "Unknown index for StackAttribute: " <> toText i
+    fromEnum x = case x of
+        AccessEndpoints -> 0
+        EmbedHostDomains -> 1
+        FeedbackURL -> 2
+        IAMRoleARN -> 3
+        RedirectURL -> 4
+        StorageConnectorGoogleDrive -> 5
+        StorageConnectorHomefolders -> 6
+        StorageConnectorOneDrive -> 7
+        StorageConnectors -> 8
+        ThemeName -> 9
+        UserSettings -> 10
+        StackAttribute' name -> (error . showText) $ "Unknown StackAttribute: " <> original name
+
+-- | Represents the bounds of /known/ $StackAttribute.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded StackAttribute where
+    minBound = AccessEndpoints
+    maxBound = UserSettings
 
 instance Hashable     StackAttribute
 instance NFData       StackAttribute

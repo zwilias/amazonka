@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,30 +16,67 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.S3.Types.BucketLogsPermission where
+module Network.AWS.S3.Types.BucketLogsPermission (
+  BucketLogsPermission (
+    ..
+    , FullControl
+    , Read
+    , Write
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
 import Network.AWS.S3.Internal
-  
-data BucketLogsPermission = FullControl
-                          | Read
-                          | Write
-                              deriving (Eq, Ord, Read, Show, Enum, Bounded,
-                                        Data, Typeable, Generic)
+
+data BucketLogsPermission = BucketLogsPermission' (CI
+                                                     Text)
+                              deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                        Generic)
+
+pattern FullControl :: BucketLogsPermission
+pattern FullControl = BucketLogsPermission' "FULL_CONTROL"
+
+pattern Read :: BucketLogsPermission
+pattern Read = BucketLogsPermission' "READ"
+
+pattern Write :: BucketLogsPermission
+pattern Write = BucketLogsPermission' "WRITE"
+
+{-# COMPLETE
+  FullControl,
+  Read,
+  Write,
+  BucketLogsPermission' #-}
 
 instance FromText BucketLogsPermission where
-    parser = takeLowerText >>= \case
-        "full_control" -> pure FullControl
-        "read" -> pure Read
-        "write" -> pure Write
-        e -> fromTextError $ "Failure parsing BucketLogsPermission from value: '" <> e
-           <> "'. Accepted values: full_control, read, write"
+    parser = (BucketLogsPermission' . mk) <$> takeText
 
 instance ToText BucketLogsPermission where
-    toText = \case
-        FullControl -> "FULL_CONTROL"
-        Read -> "READ"
-        Write -> "WRITE"
+    toText (BucketLogsPermission' ci) = original ci
+
+-- | Represents an enum of /known/ $BucketLogsPermission.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum BucketLogsPermission where
+    toEnum i = case i of
+        0 -> FullControl
+        1 -> Read
+        2 -> Write
+        _ -> (error . showText) $ "Unknown index for BucketLogsPermission: " <> toText i
+    fromEnum x = case x of
+        FullControl -> 0
+        Read -> 1
+        Write -> 2
+        BucketLogsPermission' name -> (error . showText) $ "Unknown BucketLogsPermission: " <> original name
+
+-- | Represents the bounds of /known/ $BucketLogsPermission.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded BucketLogsPermission where
+    minBound = FullControl
+    maxBound = Write
 
 instance Hashable     BucketLogsPermission
 instance NFData       BucketLogsPermission

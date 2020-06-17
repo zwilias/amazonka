@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,54 +16,123 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.SWF.Types.StartChildWorkflowExecutionFailedCause where
+module Network.AWS.SWF.Types.StartChildWorkflowExecutionFailedCause (
+  StartChildWorkflowExecutionFailedCause (
+    ..
+    , SCWEFCChildCreationRateExceeded
+    , SCWEFCDefaultChildPolicyUndefined
+    , SCWEFCDefaultExecutionStartToCloseTimeoutUndefined
+    , SCWEFCDefaultTaskListUndefined
+    , SCWEFCDefaultTaskStartToCloseTimeoutUndefined
+    , SCWEFCOpenChildrenLimitExceeded
+    , SCWEFCOpenWorkflowsLimitExceeded
+    , SCWEFCOperationNotPermitted
+    , SCWEFCWorkflowAlreadyRunning
+    , SCWEFCWorkflowTypeDeprecated
+    , SCWEFCWorkflowTypeDoesNotExist
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data StartChildWorkflowExecutionFailedCause = SCWEFCChildCreationRateExceeded
-                                            | SCWEFCDefaultChildPolicyUndefined
-                                            | SCWEFCDefaultExecutionStartToCloseTimeoutUndefined
-                                            | SCWEFCDefaultTaskListUndefined
-                                            | SCWEFCDefaultTaskStartToCloseTimeoutUndefined
-                                            | SCWEFCOpenChildrenLimitExceeded
-                                            | SCWEFCOpenWorkflowsLimitExceeded
-                                            | SCWEFCOperationNotPermitted
-                                            | SCWEFCWorkflowAlreadyRunning
-                                            | SCWEFCWorkflowTypeDeprecated
-                                            | SCWEFCWorkflowTypeDoesNotExist
+
+data StartChildWorkflowExecutionFailedCause = StartChildWorkflowExecutionFailedCause' (CI
+                                                                                         Text)
                                                 deriving (Eq, Ord, Read, Show,
-                                                          Enum, Bounded, Data,
-                                                          Typeable, Generic)
+                                                          Data, Typeable,
+                                                          Generic)
+
+pattern SCWEFCChildCreationRateExceeded :: StartChildWorkflowExecutionFailedCause
+pattern SCWEFCChildCreationRateExceeded = StartChildWorkflowExecutionFailedCause' "CHILD_CREATION_RATE_EXCEEDED"
+
+pattern SCWEFCDefaultChildPolicyUndefined :: StartChildWorkflowExecutionFailedCause
+pattern SCWEFCDefaultChildPolicyUndefined = StartChildWorkflowExecutionFailedCause' "DEFAULT_CHILD_POLICY_UNDEFINED"
+
+pattern SCWEFCDefaultExecutionStartToCloseTimeoutUndefined :: StartChildWorkflowExecutionFailedCause
+pattern SCWEFCDefaultExecutionStartToCloseTimeoutUndefined = StartChildWorkflowExecutionFailedCause' "DEFAULT_EXECUTION_START_TO_CLOSE_TIMEOUT_UNDEFINED"
+
+pattern SCWEFCDefaultTaskListUndefined :: StartChildWorkflowExecutionFailedCause
+pattern SCWEFCDefaultTaskListUndefined = StartChildWorkflowExecutionFailedCause' "DEFAULT_TASK_LIST_UNDEFINED"
+
+pattern SCWEFCDefaultTaskStartToCloseTimeoutUndefined :: StartChildWorkflowExecutionFailedCause
+pattern SCWEFCDefaultTaskStartToCloseTimeoutUndefined = StartChildWorkflowExecutionFailedCause' "DEFAULT_TASK_START_TO_CLOSE_TIMEOUT_UNDEFINED"
+
+pattern SCWEFCOpenChildrenLimitExceeded :: StartChildWorkflowExecutionFailedCause
+pattern SCWEFCOpenChildrenLimitExceeded = StartChildWorkflowExecutionFailedCause' "OPEN_CHILDREN_LIMIT_EXCEEDED"
+
+pattern SCWEFCOpenWorkflowsLimitExceeded :: StartChildWorkflowExecutionFailedCause
+pattern SCWEFCOpenWorkflowsLimitExceeded = StartChildWorkflowExecutionFailedCause' "OPEN_WORKFLOWS_LIMIT_EXCEEDED"
+
+pattern SCWEFCOperationNotPermitted :: StartChildWorkflowExecutionFailedCause
+pattern SCWEFCOperationNotPermitted = StartChildWorkflowExecutionFailedCause' "OPERATION_NOT_PERMITTED"
+
+pattern SCWEFCWorkflowAlreadyRunning :: StartChildWorkflowExecutionFailedCause
+pattern SCWEFCWorkflowAlreadyRunning = StartChildWorkflowExecutionFailedCause' "WORKFLOW_ALREADY_RUNNING"
+
+pattern SCWEFCWorkflowTypeDeprecated :: StartChildWorkflowExecutionFailedCause
+pattern SCWEFCWorkflowTypeDeprecated = StartChildWorkflowExecutionFailedCause' "WORKFLOW_TYPE_DEPRECATED"
+
+pattern SCWEFCWorkflowTypeDoesNotExist :: StartChildWorkflowExecutionFailedCause
+pattern SCWEFCWorkflowTypeDoesNotExist = StartChildWorkflowExecutionFailedCause' "WORKFLOW_TYPE_DOES_NOT_EXIST"
+
+{-# COMPLETE
+  SCWEFCChildCreationRateExceeded,
+  SCWEFCDefaultChildPolicyUndefined,
+  SCWEFCDefaultExecutionStartToCloseTimeoutUndefined,
+  SCWEFCDefaultTaskListUndefined,
+  SCWEFCDefaultTaskStartToCloseTimeoutUndefined,
+  SCWEFCOpenChildrenLimitExceeded,
+  SCWEFCOpenWorkflowsLimitExceeded,
+  SCWEFCOperationNotPermitted,
+  SCWEFCWorkflowAlreadyRunning,
+  SCWEFCWorkflowTypeDeprecated,
+  SCWEFCWorkflowTypeDoesNotExist,
+  StartChildWorkflowExecutionFailedCause' #-}
 
 instance FromText StartChildWorkflowExecutionFailedCause where
-    parser = takeLowerText >>= \case
-        "child_creation_rate_exceeded" -> pure SCWEFCChildCreationRateExceeded
-        "default_child_policy_undefined" -> pure SCWEFCDefaultChildPolicyUndefined
-        "default_execution_start_to_close_timeout_undefined" -> pure SCWEFCDefaultExecutionStartToCloseTimeoutUndefined
-        "default_task_list_undefined" -> pure SCWEFCDefaultTaskListUndefined
-        "default_task_start_to_close_timeout_undefined" -> pure SCWEFCDefaultTaskStartToCloseTimeoutUndefined
-        "open_children_limit_exceeded" -> pure SCWEFCOpenChildrenLimitExceeded
-        "open_workflows_limit_exceeded" -> pure SCWEFCOpenWorkflowsLimitExceeded
-        "operation_not_permitted" -> pure SCWEFCOperationNotPermitted
-        "workflow_already_running" -> pure SCWEFCWorkflowAlreadyRunning
-        "workflow_type_deprecated" -> pure SCWEFCWorkflowTypeDeprecated
-        "workflow_type_does_not_exist" -> pure SCWEFCWorkflowTypeDoesNotExist
-        e -> fromTextError $ "Failure parsing StartChildWorkflowExecutionFailedCause from value: '" <> e
-           <> "'. Accepted values: child_creation_rate_exceeded, default_child_policy_undefined, default_execution_start_to_close_timeout_undefined, default_task_list_undefined, default_task_start_to_close_timeout_undefined, open_children_limit_exceeded, open_workflows_limit_exceeded, operation_not_permitted, workflow_already_running, workflow_type_deprecated, workflow_type_does_not_exist"
+    parser = (StartChildWorkflowExecutionFailedCause' . mk) <$> takeText
 
 instance ToText StartChildWorkflowExecutionFailedCause where
-    toText = \case
-        SCWEFCChildCreationRateExceeded -> "CHILD_CREATION_RATE_EXCEEDED"
-        SCWEFCDefaultChildPolicyUndefined -> "DEFAULT_CHILD_POLICY_UNDEFINED"
-        SCWEFCDefaultExecutionStartToCloseTimeoutUndefined -> "DEFAULT_EXECUTION_START_TO_CLOSE_TIMEOUT_UNDEFINED"
-        SCWEFCDefaultTaskListUndefined -> "DEFAULT_TASK_LIST_UNDEFINED"
-        SCWEFCDefaultTaskStartToCloseTimeoutUndefined -> "DEFAULT_TASK_START_TO_CLOSE_TIMEOUT_UNDEFINED"
-        SCWEFCOpenChildrenLimitExceeded -> "OPEN_CHILDREN_LIMIT_EXCEEDED"
-        SCWEFCOpenWorkflowsLimitExceeded -> "OPEN_WORKFLOWS_LIMIT_EXCEEDED"
-        SCWEFCOperationNotPermitted -> "OPERATION_NOT_PERMITTED"
-        SCWEFCWorkflowAlreadyRunning -> "WORKFLOW_ALREADY_RUNNING"
-        SCWEFCWorkflowTypeDeprecated -> "WORKFLOW_TYPE_DEPRECATED"
-        SCWEFCWorkflowTypeDoesNotExist -> "WORKFLOW_TYPE_DOES_NOT_EXIST"
+    toText (StartChildWorkflowExecutionFailedCause' ci) = original ci
+
+-- | Represents an enum of /known/ $StartChildWorkflowExecutionFailedCause.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum StartChildWorkflowExecutionFailedCause where
+    toEnum i = case i of
+        0 -> SCWEFCChildCreationRateExceeded
+        1 -> SCWEFCDefaultChildPolicyUndefined
+        2 -> SCWEFCDefaultExecutionStartToCloseTimeoutUndefined
+        3 -> SCWEFCDefaultTaskListUndefined
+        4 -> SCWEFCDefaultTaskStartToCloseTimeoutUndefined
+        5 -> SCWEFCOpenChildrenLimitExceeded
+        6 -> SCWEFCOpenWorkflowsLimitExceeded
+        7 -> SCWEFCOperationNotPermitted
+        8 -> SCWEFCWorkflowAlreadyRunning
+        9 -> SCWEFCWorkflowTypeDeprecated
+        10 -> SCWEFCWorkflowTypeDoesNotExist
+        _ -> (error . showText) $ "Unknown index for StartChildWorkflowExecutionFailedCause: " <> toText i
+    fromEnum x = case x of
+        SCWEFCChildCreationRateExceeded -> 0
+        SCWEFCDefaultChildPolicyUndefined -> 1
+        SCWEFCDefaultExecutionStartToCloseTimeoutUndefined -> 2
+        SCWEFCDefaultTaskListUndefined -> 3
+        SCWEFCDefaultTaskStartToCloseTimeoutUndefined -> 4
+        SCWEFCOpenChildrenLimitExceeded -> 5
+        SCWEFCOpenWorkflowsLimitExceeded -> 6
+        SCWEFCOperationNotPermitted -> 7
+        SCWEFCWorkflowAlreadyRunning -> 8
+        SCWEFCWorkflowTypeDeprecated -> 9
+        SCWEFCWorkflowTypeDoesNotExist -> 10
+        StartChildWorkflowExecutionFailedCause' name -> (error . showText) $ "Unknown StartChildWorkflowExecutionFailedCause: " <> original name
+
+-- | Represents the bounds of /known/ $StartChildWorkflowExecutionFailedCause.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded StartChildWorkflowExecutionFailedCause where
+    minBound = SCWEFCChildCreationRateExceeded
+    maxBound = SCWEFCWorkflowTypeDoesNotExist
 
 instance Hashable     StartChildWorkflowExecutionFailedCause
 instance NFData       StartChildWorkflowExecutionFailedCause

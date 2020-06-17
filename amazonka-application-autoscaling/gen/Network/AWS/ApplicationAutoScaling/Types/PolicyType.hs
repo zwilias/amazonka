@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,58 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.ApplicationAutoScaling.Types.PolicyType where
+module Network.AWS.ApplicationAutoScaling.Types.PolicyType (
+  PolicyType (
+    ..
+    , StepScaling
+    , TargetTrackingScaling
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data PolicyType = StepScaling
-                | TargetTrackingScaling
-                    deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                              Typeable, Generic)
+
+data PolicyType = PolicyType' (CI Text)
+                    deriving (Eq, Ord, Read, Show, Data, Typeable,
+                              Generic)
+
+pattern StepScaling :: PolicyType
+pattern StepScaling = PolicyType' "StepScaling"
+
+pattern TargetTrackingScaling :: PolicyType
+pattern TargetTrackingScaling = PolicyType' "TargetTrackingScaling"
+
+{-# COMPLETE
+  StepScaling,
+  TargetTrackingScaling,
+  PolicyType' #-}
 
 instance FromText PolicyType where
-    parser = takeLowerText >>= \case
-        "stepscaling" -> pure StepScaling
-        "targettrackingscaling" -> pure TargetTrackingScaling
-        e -> fromTextError $ "Failure parsing PolicyType from value: '" <> e
-           <> "'. Accepted values: stepscaling, targettrackingscaling"
+    parser = (PolicyType' . mk) <$> takeText
 
 instance ToText PolicyType where
-    toText = \case
-        StepScaling -> "StepScaling"
-        TargetTrackingScaling -> "TargetTrackingScaling"
+    toText (PolicyType' ci) = original ci
+
+-- | Represents an enum of /known/ $PolicyType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum PolicyType where
+    toEnum i = case i of
+        0 -> StepScaling
+        1 -> TargetTrackingScaling
+        _ -> (error . showText) $ "Unknown index for PolicyType: " <> toText i
+    fromEnum x = case x of
+        StepScaling -> 0
+        TargetTrackingScaling -> 1
+        PolicyType' name -> (error . showText) $ "Unknown PolicyType: " <> original name
+
+-- | Represents the bounds of /known/ $PolicyType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded PolicyType where
+    minBound = StepScaling
+    maxBound = TargetTrackingScaling
 
 instance Hashable     PolicyType
 instance NFData       PolicyType

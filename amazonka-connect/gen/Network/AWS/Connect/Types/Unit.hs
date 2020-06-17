@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,29 +16,65 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.Connect.Types.Unit where
+module Network.AWS.Connect.Types.Unit (
+  Unit (
+    ..
+    , Count
+    , Percent
+    , Seconds
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data Unit = Count
-          | Percent
-          | Seconds
-              deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                        Typeable, Generic)
+
+data Unit = Unit' (CI Text)
+              deriving (Eq, Ord, Read, Show, Data, Typeable,
+                        Generic)
+
+pattern Count :: Unit
+pattern Count = Unit' "COUNT"
+
+pattern Percent :: Unit
+pattern Percent = Unit' "PERCENT"
+
+pattern Seconds :: Unit
+pattern Seconds = Unit' "SECONDS"
+
+{-# COMPLETE
+  Count,
+  Percent,
+  Seconds,
+  Unit' #-}
 
 instance FromText Unit where
-    parser = takeLowerText >>= \case
-        "count" -> pure Count
-        "percent" -> pure Percent
-        "seconds" -> pure Seconds
-        e -> fromTextError $ "Failure parsing Unit from value: '" <> e
-           <> "'. Accepted values: count, percent, seconds"
+    parser = (Unit' . mk) <$> takeText
 
 instance ToText Unit where
-    toText = \case
-        Count -> "COUNT"
-        Percent -> "PERCENT"
-        Seconds -> "SECONDS"
+    toText (Unit' ci) = original ci
+
+-- | Represents an enum of /known/ $Unit.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum Unit where
+    toEnum i = case i of
+        0 -> Count
+        1 -> Percent
+        2 -> Seconds
+        _ -> (error . showText) $ "Unknown index for Unit: " <> toText i
+    fromEnum x = case x of
+        Count -> 0
+        Percent -> 1
+        Seconds -> 2
+        Unit' name -> (error . showText) $ "Unknown Unit: " <> original name
+
+-- | Represents the bounds of /known/ $Unit.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded Unit where
+    minBound = Count
+    maxBound = Seconds
 
 instance Hashable     Unit
 instance NFData       Unit

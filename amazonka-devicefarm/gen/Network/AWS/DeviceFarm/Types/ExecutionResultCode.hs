@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,59 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.DeviceFarm.Types.ExecutionResultCode where
+module Network.AWS.DeviceFarm.Types.ExecutionResultCode (
+  ExecutionResultCode (
+    ..
+    , ParsingFailed
+    , VPCEndpointSetupFailed
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data ExecutionResultCode = ParsingFailed
-                         | VPCEndpointSetupFailed
-                             deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                       Typeable, Generic)
+
+data ExecutionResultCode = ExecutionResultCode' (CI
+                                                   Text)
+                             deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                       Generic)
+
+pattern ParsingFailed :: ExecutionResultCode
+pattern ParsingFailed = ExecutionResultCode' "PARSING_FAILED"
+
+pattern VPCEndpointSetupFailed :: ExecutionResultCode
+pattern VPCEndpointSetupFailed = ExecutionResultCode' "VPC_ENDPOINT_SETUP_FAILED"
+
+{-# COMPLETE
+  ParsingFailed,
+  VPCEndpointSetupFailed,
+  ExecutionResultCode' #-}
 
 instance FromText ExecutionResultCode where
-    parser = takeLowerText >>= \case
-        "parsing_failed" -> pure ParsingFailed
-        "vpc_endpoint_setup_failed" -> pure VPCEndpointSetupFailed
-        e -> fromTextError $ "Failure parsing ExecutionResultCode from value: '" <> e
-           <> "'. Accepted values: parsing_failed, vpc_endpoint_setup_failed"
+    parser = (ExecutionResultCode' . mk) <$> takeText
 
 instance ToText ExecutionResultCode where
-    toText = \case
-        ParsingFailed -> "PARSING_FAILED"
-        VPCEndpointSetupFailed -> "VPC_ENDPOINT_SETUP_FAILED"
+    toText (ExecutionResultCode' ci) = original ci
+
+-- | Represents an enum of /known/ $ExecutionResultCode.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum ExecutionResultCode where
+    toEnum i = case i of
+        0 -> ParsingFailed
+        1 -> VPCEndpointSetupFailed
+        _ -> (error . showText) $ "Unknown index for ExecutionResultCode: " <> toText i
+    fromEnum x = case x of
+        ParsingFailed -> 0
+        VPCEndpointSetupFailed -> 1
+        ExecutionResultCode' name -> (error . showText) $ "Unknown ExecutionResultCode: " <> original name
+
+-- | Represents the bounds of /known/ $ExecutionResultCode.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded ExecutionResultCode where
+    minBound = ParsingFailed
+    maxBound = VPCEndpointSetupFailed
 
 instance Hashable     ExecutionResultCode
 instance NFData       ExecutionResultCode

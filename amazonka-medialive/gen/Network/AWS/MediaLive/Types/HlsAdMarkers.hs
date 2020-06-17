@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,30 +16,66 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.MediaLive.Types.HlsAdMarkers where
+module Network.AWS.MediaLive.Types.HlsAdMarkers (
+  HlsAdMarkers (
+    ..
+    , Adobe
+    , Elemental
+    , ElementalSCTE35
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
+
 -- | Placeholder documentation for HlsAdMarkers
-data HlsAdMarkers = Adobe
-                  | Elemental
-                  | ElementalSCTE35
-                      deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                Typeable, Generic)
+data HlsAdMarkers = HlsAdMarkers' (CI Text)
+                      deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                Generic)
+
+pattern Adobe :: HlsAdMarkers
+pattern Adobe = HlsAdMarkers' "ADOBE"
+
+pattern Elemental :: HlsAdMarkers
+pattern Elemental = HlsAdMarkers' "ELEMENTAL"
+
+pattern ElementalSCTE35 :: HlsAdMarkers
+pattern ElementalSCTE35 = HlsAdMarkers' "ELEMENTAL_SCTE35"
+
+{-# COMPLETE
+  Adobe,
+  Elemental,
+  ElementalSCTE35,
+  HlsAdMarkers' #-}
 
 instance FromText HlsAdMarkers where
-    parser = takeLowerText >>= \case
-        "adobe" -> pure Adobe
-        "elemental" -> pure Elemental
-        "elemental_scte35" -> pure ElementalSCTE35
-        e -> fromTextError $ "Failure parsing HlsAdMarkers from value: '" <> e
-           <> "'. Accepted values: adobe, elemental, elemental_scte35"
+    parser = (HlsAdMarkers' . mk) <$> takeText
 
 instance ToText HlsAdMarkers where
-    toText = \case
-        Adobe -> "ADOBE"
-        Elemental -> "ELEMENTAL"
-        ElementalSCTE35 -> "ELEMENTAL_SCTE35"
+    toText (HlsAdMarkers' ci) = original ci
+
+-- | Represents an enum of /known/ $HlsAdMarkers.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum HlsAdMarkers where
+    toEnum i = case i of
+        0 -> Adobe
+        1 -> Elemental
+        2 -> ElementalSCTE35
+        _ -> (error . showText) $ "Unknown index for HlsAdMarkers: " <> toText i
+    fromEnum x = case x of
+        Adobe -> 0
+        Elemental -> 1
+        ElementalSCTE35 -> 2
+        HlsAdMarkers' name -> (error . showText) $ "Unknown HlsAdMarkers: " <> original name
+
+-- | Represents the bounds of /known/ $HlsAdMarkers.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded HlsAdMarkers where
+    minBound = Adobe
+    maxBound = ElementalSCTE35
 
 instance Hashable     HlsAdMarkers
 instance NFData       HlsAdMarkers

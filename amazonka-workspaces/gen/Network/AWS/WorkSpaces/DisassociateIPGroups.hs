@@ -42,6 +42,7 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.WorkSpaces.Types
+import Network.AWS.WorkSpaces.Types.Product
 
 -- | /See:/ 'disassociateIPGroups' smart constructor.
 data DisassociateIPGroups = DisassociateIPGroups'{_digDirectoryId

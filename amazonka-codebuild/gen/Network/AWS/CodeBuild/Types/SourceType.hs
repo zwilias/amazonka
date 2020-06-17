@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,41 +16,93 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.CodeBuild.Types.SourceType where
+module Network.AWS.CodeBuild.Types.SourceType (
+  SourceType (
+    ..
+    , STBitbucket
+    , STCodecommit
+    , STCodepipeline
+    , STGithub
+    , STGithubEnterprise
+    , STNoSource
+    , STS3
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data SourceType = STBitbucket
-                | STCodecommit
-                | STCodepipeline
-                | STGithub
-                | STGithubEnterprise
-                | STNoSource
-                | STS3
-                    deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                              Typeable, Generic)
+
+data SourceType = SourceType' (CI Text)
+                    deriving (Eq, Ord, Read, Show, Data, Typeable,
+                              Generic)
+
+pattern STBitbucket :: SourceType
+pattern STBitbucket = SourceType' "BITBUCKET"
+
+pattern STCodecommit :: SourceType
+pattern STCodecommit = SourceType' "CODECOMMIT"
+
+pattern STCodepipeline :: SourceType
+pattern STCodepipeline = SourceType' "CODEPIPELINE"
+
+pattern STGithub :: SourceType
+pattern STGithub = SourceType' "GITHUB"
+
+pattern STGithubEnterprise :: SourceType
+pattern STGithubEnterprise = SourceType' "GITHUB_ENTERPRISE"
+
+pattern STNoSource :: SourceType
+pattern STNoSource = SourceType' "NO_SOURCE"
+
+pattern STS3 :: SourceType
+pattern STS3 = SourceType' "S3"
+
+{-# COMPLETE
+  STBitbucket,
+  STCodecommit,
+  STCodepipeline,
+  STGithub,
+  STGithubEnterprise,
+  STNoSource,
+  STS3,
+  SourceType' #-}
 
 instance FromText SourceType where
-    parser = takeLowerText >>= \case
-        "bitbucket" -> pure STBitbucket
-        "codecommit" -> pure STCodecommit
-        "codepipeline" -> pure STCodepipeline
-        "github" -> pure STGithub
-        "github_enterprise" -> pure STGithubEnterprise
-        "no_source" -> pure STNoSource
-        "s3" -> pure STS3
-        e -> fromTextError $ "Failure parsing SourceType from value: '" <> e
-           <> "'. Accepted values: bitbucket, codecommit, codepipeline, github, github_enterprise, no_source, s3"
+    parser = (SourceType' . mk) <$> takeText
 
 instance ToText SourceType where
-    toText = \case
-        STBitbucket -> "BITBUCKET"
-        STCodecommit -> "CODECOMMIT"
-        STCodepipeline -> "CODEPIPELINE"
-        STGithub -> "GITHUB"
-        STGithubEnterprise -> "GITHUB_ENTERPRISE"
-        STNoSource -> "NO_SOURCE"
-        STS3 -> "S3"
+    toText (SourceType' ci) = original ci
+
+-- | Represents an enum of /known/ $SourceType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum SourceType where
+    toEnum i = case i of
+        0 -> STBitbucket
+        1 -> STCodecommit
+        2 -> STCodepipeline
+        3 -> STGithub
+        4 -> STGithubEnterprise
+        5 -> STNoSource
+        6 -> STS3
+        _ -> (error . showText) $ "Unknown index for SourceType: " <> toText i
+    fromEnum x = case x of
+        STBitbucket -> 0
+        STCodecommit -> 1
+        STCodepipeline -> 2
+        STGithub -> 3
+        STGithubEnterprise -> 4
+        STNoSource -> 5
+        STS3 -> 6
+        SourceType' name -> (error . showText) $ "Unknown SourceType: " <> original name
+
+-- | Represents the bounds of /known/ $SourceType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded SourceType where
+    minBound = STBitbucket
+    maxBound = STS3
 
 instance Hashable     SourceType
 instance NFData       SourceType

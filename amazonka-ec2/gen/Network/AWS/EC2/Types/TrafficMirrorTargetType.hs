@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,27 +16,60 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.EC2.Types.TrafficMirrorTargetType where
+module Network.AWS.EC2.Types.TrafficMirrorTargetType (
+  TrafficMirrorTargetType (
+    ..
+    , NetworkInterface
+    , NetworkLoadBalancer
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.EC2.Internal
 import Network.AWS.Prelude
-  
-data TrafficMirrorTargetType = NetworkInterface
-                             | NetworkLoadBalancer
-                                 deriving (Eq, Ord, Read, Show, Enum, Bounded,
-                                           Data, Typeable, Generic)
+
+data TrafficMirrorTargetType = TrafficMirrorTargetType' (CI
+                                                           Text)
+                                 deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                           Generic)
+
+pattern NetworkInterface :: TrafficMirrorTargetType
+pattern NetworkInterface = TrafficMirrorTargetType' "network-interface"
+
+pattern NetworkLoadBalancer :: TrafficMirrorTargetType
+pattern NetworkLoadBalancer = TrafficMirrorTargetType' "network-load-balancer"
+
+{-# COMPLETE
+  NetworkInterface,
+  NetworkLoadBalancer,
+  TrafficMirrorTargetType' #-}
 
 instance FromText TrafficMirrorTargetType where
-    parser = takeLowerText >>= \case
-        "network-interface" -> pure NetworkInterface
-        "network-load-balancer" -> pure NetworkLoadBalancer
-        e -> fromTextError $ "Failure parsing TrafficMirrorTargetType from value: '" <> e
-           <> "'. Accepted values: network-interface, network-load-balancer"
+    parser = (TrafficMirrorTargetType' . mk) <$> takeText
 
 instance ToText TrafficMirrorTargetType where
-    toText = \case
-        NetworkInterface -> "network-interface"
-        NetworkLoadBalancer -> "network-load-balancer"
+    toText (TrafficMirrorTargetType' ci) = original ci
+
+-- | Represents an enum of /known/ $TrafficMirrorTargetType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum TrafficMirrorTargetType where
+    toEnum i = case i of
+        0 -> NetworkInterface
+        1 -> NetworkLoadBalancer
+        _ -> (error . showText) $ "Unknown index for TrafficMirrorTargetType: " <> toText i
+    fromEnum x = case x of
+        NetworkInterface -> 0
+        NetworkLoadBalancer -> 1
+        TrafficMirrorTargetType' name -> (error . showText) $ "Unknown TrafficMirrorTargetType: " <> original name
+
+-- | Represents the bounds of /known/ $TrafficMirrorTargetType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded TrafficMirrorTargetType where
+    minBound = NetworkInterface
+    maxBound = NetworkLoadBalancer
 
 instance Hashable     TrafficMirrorTargetType
 instance NFData       TrafficMirrorTargetType

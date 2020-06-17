@@ -44,6 +44,7 @@ module Network.AWS.AutoScalingPlans.DescribeScalingPlanResources
     ) where
 
 import Network.AWS.AutoScalingPlans.Types
+import Network.AWS.AutoScalingPlans.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude

@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,35 +16,79 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.Pinpoint.Types.Frequency where
+module Network.AWS.Pinpoint.Types.Frequency (
+  Frequency (
+    ..
+    , Daily
+    , Hourly
+    , Monthly
+    , Once
+    , Weekly
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data Frequency = Daily
-               | Hourly
-               | Monthly
-               | Once
-               | Weekly
-                   deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                             Typeable, Generic)
+
+data Frequency = Frequency' (CI Text)
+                   deriving (Eq, Ord, Read, Show, Data, Typeable,
+                             Generic)
+
+pattern Daily :: Frequency
+pattern Daily = Frequency' "DAILY"
+
+pattern Hourly :: Frequency
+pattern Hourly = Frequency' "HOURLY"
+
+pattern Monthly :: Frequency
+pattern Monthly = Frequency' "MONTHLY"
+
+pattern Once :: Frequency
+pattern Once = Frequency' "ONCE"
+
+pattern Weekly :: Frequency
+pattern Weekly = Frequency' "WEEKLY"
+
+{-# COMPLETE
+  Daily,
+  Hourly,
+  Monthly,
+  Once,
+  Weekly,
+  Frequency' #-}
 
 instance FromText Frequency where
-    parser = takeLowerText >>= \case
-        "daily" -> pure Daily
-        "hourly" -> pure Hourly
-        "monthly" -> pure Monthly
-        "once" -> pure Once
-        "weekly" -> pure Weekly
-        e -> fromTextError $ "Failure parsing Frequency from value: '" <> e
-           <> "'. Accepted values: daily, hourly, monthly, once, weekly"
+    parser = (Frequency' . mk) <$> takeText
 
 instance ToText Frequency where
-    toText = \case
-        Daily -> "DAILY"
-        Hourly -> "HOURLY"
-        Monthly -> "MONTHLY"
-        Once -> "ONCE"
-        Weekly -> "WEEKLY"
+    toText (Frequency' ci) = original ci
+
+-- | Represents an enum of /known/ $Frequency.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum Frequency where
+    toEnum i = case i of
+        0 -> Daily
+        1 -> Hourly
+        2 -> Monthly
+        3 -> Once
+        4 -> Weekly
+        _ -> (error . showText) $ "Unknown index for Frequency: " <> toText i
+    fromEnum x = case x of
+        Daily -> 0
+        Hourly -> 1
+        Monthly -> 2
+        Once -> 3
+        Weekly -> 4
+        Frequency' name -> (error . showText) $ "Unknown Frequency: " <> original name
+
+-- | Represents the bounds of /known/ $Frequency.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded Frequency where
+    minBound = Daily
+    maxBound = Weekly
 
 instance Hashable     Frequency
 instance NFData       Frequency

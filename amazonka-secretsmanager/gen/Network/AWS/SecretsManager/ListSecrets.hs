@@ -61,6 +61,7 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.SecretsManager.Types
+import Network.AWS.SecretsManager.Types.Product
 
 -- | /See:/ 'listSecrets' smart constructor.
 data ListSecrets = ListSecrets'{_lsNextToken ::

@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,58 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.MediaPackage.Types.Profile where
+module Network.AWS.MediaPackage.Types.Profile (
+  Profile (
+    ..
+    , PHbbtv15
+    , PNone
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data Profile = PHbbtv15
-             | PNone
-                 deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                           Typeable, Generic)
+
+data Profile = Profile' (CI Text)
+                 deriving (Eq, Ord, Read, Show, Data, Typeable,
+                           Generic)
+
+pattern PHbbtv15 :: Profile
+pattern PHbbtv15 = Profile' "HBBTV_1_5"
+
+pattern PNone :: Profile
+pattern PNone = Profile' "NONE"
+
+{-# COMPLETE
+  PHbbtv15,
+  PNone,
+  Profile' #-}
 
 instance FromText Profile where
-    parser = takeLowerText >>= \case
-        "hbbtv_1_5" -> pure PHbbtv15
-        "none" -> pure PNone
-        e -> fromTextError $ "Failure parsing Profile from value: '" <> e
-           <> "'. Accepted values: hbbtv_1_5, none"
+    parser = (Profile' . mk) <$> takeText
 
 instance ToText Profile where
-    toText = \case
-        PHbbtv15 -> "HBBTV_1_5"
-        PNone -> "NONE"
+    toText (Profile' ci) = original ci
+
+-- | Represents an enum of /known/ $Profile.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum Profile where
+    toEnum i = case i of
+        0 -> PHbbtv15
+        1 -> PNone
+        _ -> (error . showText) $ "Unknown index for Profile: " <> toText i
+    fromEnum x = case x of
+        PHbbtv15 -> 0
+        PNone -> 1
+        Profile' name -> (error . showText) $ "Unknown Profile: " <> original name
+
+-- | Represents the bounds of /known/ $Profile.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded Profile where
+    minBound = PHbbtv15
+    maxBound = PNone
 
 instance Hashable     Profile
 instance NFData       Profile

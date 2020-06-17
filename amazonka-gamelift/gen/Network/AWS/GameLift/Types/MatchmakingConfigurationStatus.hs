@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,45 +16,101 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.GameLift.Types.MatchmakingConfigurationStatus where
+module Network.AWS.GameLift.Types.MatchmakingConfigurationStatus (
+  MatchmakingConfigurationStatus (
+    ..
+    , MCSCancelled
+    , MCSCompleted
+    , MCSFailed
+    , MCSPlacing
+    , MCSQueued
+    , MCSRequiresAcceptance
+    , MCSSearching
+    , MCSTimedOut
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data MatchmakingConfigurationStatus = MCSCancelled
-                                    | MCSCompleted
-                                    | MCSFailed
-                                    | MCSPlacing
-                                    | MCSQueued
-                                    | MCSRequiresAcceptance
-                                    | MCSSearching
-                                    | MCSTimedOut
-                                        deriving (Eq, Ord, Read, Show, Enum,
-                                                  Bounded, Data, Typeable,
-                                                  Generic)
+
+data MatchmakingConfigurationStatus = MatchmakingConfigurationStatus' (CI
+                                                                         Text)
+                                        deriving (Eq, Ord, Read, Show, Data,
+                                                  Typeable, Generic)
+
+pattern MCSCancelled :: MatchmakingConfigurationStatus
+pattern MCSCancelled = MatchmakingConfigurationStatus' "CANCELLED"
+
+pattern MCSCompleted :: MatchmakingConfigurationStatus
+pattern MCSCompleted = MatchmakingConfigurationStatus' "COMPLETED"
+
+pattern MCSFailed :: MatchmakingConfigurationStatus
+pattern MCSFailed = MatchmakingConfigurationStatus' "FAILED"
+
+pattern MCSPlacing :: MatchmakingConfigurationStatus
+pattern MCSPlacing = MatchmakingConfigurationStatus' "PLACING"
+
+pattern MCSQueued :: MatchmakingConfigurationStatus
+pattern MCSQueued = MatchmakingConfigurationStatus' "QUEUED"
+
+pattern MCSRequiresAcceptance :: MatchmakingConfigurationStatus
+pattern MCSRequiresAcceptance = MatchmakingConfigurationStatus' "REQUIRES_ACCEPTANCE"
+
+pattern MCSSearching :: MatchmakingConfigurationStatus
+pattern MCSSearching = MatchmakingConfigurationStatus' "SEARCHING"
+
+pattern MCSTimedOut :: MatchmakingConfigurationStatus
+pattern MCSTimedOut = MatchmakingConfigurationStatus' "TIMED_OUT"
+
+{-# COMPLETE
+  MCSCancelled,
+  MCSCompleted,
+  MCSFailed,
+  MCSPlacing,
+  MCSQueued,
+  MCSRequiresAcceptance,
+  MCSSearching,
+  MCSTimedOut,
+  MatchmakingConfigurationStatus' #-}
 
 instance FromText MatchmakingConfigurationStatus where
-    parser = takeLowerText >>= \case
-        "cancelled" -> pure MCSCancelled
-        "completed" -> pure MCSCompleted
-        "failed" -> pure MCSFailed
-        "placing" -> pure MCSPlacing
-        "queued" -> pure MCSQueued
-        "requires_acceptance" -> pure MCSRequiresAcceptance
-        "searching" -> pure MCSSearching
-        "timed_out" -> pure MCSTimedOut
-        e -> fromTextError $ "Failure parsing MatchmakingConfigurationStatus from value: '" <> e
-           <> "'. Accepted values: cancelled, completed, failed, placing, queued, requires_acceptance, searching, timed_out"
+    parser = (MatchmakingConfigurationStatus' . mk) <$> takeText
 
 instance ToText MatchmakingConfigurationStatus where
-    toText = \case
-        MCSCancelled -> "CANCELLED"
-        MCSCompleted -> "COMPLETED"
-        MCSFailed -> "FAILED"
-        MCSPlacing -> "PLACING"
-        MCSQueued -> "QUEUED"
-        MCSRequiresAcceptance -> "REQUIRES_ACCEPTANCE"
-        MCSSearching -> "SEARCHING"
-        MCSTimedOut -> "TIMED_OUT"
+    toText (MatchmakingConfigurationStatus' ci) = original ci
+
+-- | Represents an enum of /known/ $MatchmakingConfigurationStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum MatchmakingConfigurationStatus where
+    toEnum i = case i of
+        0 -> MCSCancelled
+        1 -> MCSCompleted
+        2 -> MCSFailed
+        3 -> MCSPlacing
+        4 -> MCSQueued
+        5 -> MCSRequiresAcceptance
+        6 -> MCSSearching
+        7 -> MCSTimedOut
+        _ -> (error . showText) $ "Unknown index for MatchmakingConfigurationStatus: " <> toText i
+    fromEnum x = case x of
+        MCSCancelled -> 0
+        MCSCompleted -> 1
+        MCSFailed -> 2
+        MCSPlacing -> 3
+        MCSQueued -> 4
+        MCSRequiresAcceptance -> 5
+        MCSSearching -> 6
+        MCSTimedOut -> 7
+        MatchmakingConfigurationStatus' name -> (error . showText) $ "Unknown MatchmakingConfigurationStatus: " <> original name
+
+-- | Represents the bounds of /known/ $MatchmakingConfigurationStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded MatchmakingConfigurationStatus where
+    minBound = MCSCancelled
+    maxBound = MCSTimedOut
 
 instance Hashable     MatchmakingConfigurationStatus
 instance NFData       MatchmakingConfigurationStatus

@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,32 +16,72 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.KMS.Types.KeyState where
+module Network.AWS.KMS.Types.KeyState (
+  KeyState (
+    ..
+    , Disabled
+    , Enabled
+    , PendingDeletion
+    , PendingImport
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data KeyState = Disabled
-              | Enabled
-              | PendingDeletion
-              | PendingImport
-                  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                            Typeable, Generic)
+
+data KeyState = KeyState' (CI Text)
+                  deriving (Eq, Ord, Read, Show, Data, Typeable,
+                            Generic)
+
+pattern Disabled :: KeyState
+pattern Disabled = KeyState' "Disabled"
+
+pattern Enabled :: KeyState
+pattern Enabled = KeyState' "Enabled"
+
+pattern PendingDeletion :: KeyState
+pattern PendingDeletion = KeyState' "PendingDeletion"
+
+pattern PendingImport :: KeyState
+pattern PendingImport = KeyState' "PendingImport"
+
+{-# COMPLETE
+  Disabled,
+  Enabled,
+  PendingDeletion,
+  PendingImport,
+  KeyState' #-}
 
 instance FromText KeyState where
-    parser = takeLowerText >>= \case
-        "disabled" -> pure Disabled
-        "enabled" -> pure Enabled
-        "pendingdeletion" -> pure PendingDeletion
-        "pendingimport" -> pure PendingImport
-        e -> fromTextError $ "Failure parsing KeyState from value: '" <> e
-           <> "'. Accepted values: disabled, enabled, pendingdeletion, pendingimport"
+    parser = (KeyState' . mk) <$> takeText
 
 instance ToText KeyState where
-    toText = \case
-        Disabled -> "Disabled"
-        Enabled -> "Enabled"
-        PendingDeletion -> "PendingDeletion"
-        PendingImport -> "PendingImport"
+    toText (KeyState' ci) = original ci
+
+-- | Represents an enum of /known/ $KeyState.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum KeyState where
+    toEnum i = case i of
+        0 -> Disabled
+        1 -> Enabled
+        2 -> PendingDeletion
+        3 -> PendingImport
+        _ -> (error . showText) $ "Unknown index for KeyState: " <> toText i
+    fromEnum x = case x of
+        Disabled -> 0
+        Enabled -> 1
+        PendingDeletion -> 2
+        PendingImport -> 3
+        KeyState' name -> (error . showText) $ "Unknown KeyState: " <> original name
+
+-- | Represents the bounds of /known/ $KeyState.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded KeyState where
+    minBound = Disabled
+    maxBound = PendingImport
 
 instance Hashable     KeyState
 instance NFData       KeyState

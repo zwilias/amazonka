@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,28 +16,65 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.CodeCommit.Types.ChangeTypeEnum where
+module Network.AWS.CodeCommit.Types.ChangeTypeEnum (
+  ChangeTypeEnum (
+    ..
+    , A
+    , D
+    , M
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data ChangeTypeEnum = A
-                    | D
-                    | M deriving (Eq, Ord, Read, Show, Enum, Bounded,
-                                  Data, Typeable, Generic)
+
+data ChangeTypeEnum = ChangeTypeEnum' (CI Text)
+                        deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                  Generic)
+
+pattern A :: ChangeTypeEnum
+pattern A = ChangeTypeEnum' "A"
+
+pattern D :: ChangeTypeEnum
+pattern D = ChangeTypeEnum' "D"
+
+pattern M :: ChangeTypeEnum
+pattern M = ChangeTypeEnum' "M"
+
+{-# COMPLETE
+  A,
+  D,
+  M,
+  ChangeTypeEnum' #-}
 
 instance FromText ChangeTypeEnum where
-    parser = takeLowerText >>= \case
-        "a" -> pure A
-        "d" -> pure D
-        "m" -> pure M
-        e -> fromTextError $ "Failure parsing ChangeTypeEnum from value: '" <> e
-           <> "'. Accepted values: a, d, m"
+    parser = (ChangeTypeEnum' . mk) <$> takeText
 
 instance ToText ChangeTypeEnum where
-    toText = \case
-        A -> "A"
-        D -> "D"
-        M -> "M"
+    toText (ChangeTypeEnum' ci) = original ci
+
+-- | Represents an enum of /known/ $ChangeTypeEnum.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum ChangeTypeEnum where
+    toEnum i = case i of
+        0 -> A
+        1 -> D
+        2 -> M
+        _ -> (error . showText) $ "Unknown index for ChangeTypeEnum: " <> toText i
+    fromEnum x = case x of
+        A -> 0
+        D -> 1
+        M -> 2
+        ChangeTypeEnum' name -> (error . showText) $ "Unknown ChangeTypeEnum: " <> original name
+
+-- | Represents the bounds of /known/ $ChangeTypeEnum.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded ChangeTypeEnum where
+    minBound = A
+    maxBound = M
 
 instance Hashable     ChangeTypeEnum
 instance NFData       ChangeTypeEnum

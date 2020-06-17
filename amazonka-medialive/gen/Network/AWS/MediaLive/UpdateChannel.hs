@@ -43,6 +43,7 @@ module Network.AWS.MediaLive.UpdateChannel
 
 import Network.AWS.Lens
 import Network.AWS.MediaLive.Types
+import Network.AWS.MediaLive.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response

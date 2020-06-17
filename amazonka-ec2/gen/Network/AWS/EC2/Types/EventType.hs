@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,33 +16,73 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.EC2.Types.EventType where
+module Network.AWS.EC2.Types.EventType (
+  EventType (
+    ..
+    , ETError'
+    , ETFleetRequestChange
+    , ETInformation
+    , ETInstanceChange
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.EC2.Internal
 import Network.AWS.Prelude
-  
-data EventType = ETError'
-               | ETFleetRequestChange
-               | ETInformation
-               | ETInstanceChange
-                   deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                             Typeable, Generic)
+
+data EventType = EventType' (CI Text)
+                   deriving (Eq, Ord, Read, Show, Data, Typeable,
+                             Generic)
+
+pattern ETError' :: EventType
+pattern ETError' = EventType' "error"
+
+pattern ETFleetRequestChange :: EventType
+pattern ETFleetRequestChange = EventType' "fleetRequestChange"
+
+pattern ETInformation :: EventType
+pattern ETInformation = EventType' "information"
+
+pattern ETInstanceChange :: EventType
+pattern ETInstanceChange = EventType' "instanceChange"
+
+{-# COMPLETE
+  ETError',
+  ETFleetRequestChange,
+  ETInformation,
+  ETInstanceChange,
+  EventType' #-}
 
 instance FromText EventType where
-    parser = takeLowerText >>= \case
-        "error" -> pure ETError'
-        "fleetrequestchange" -> pure ETFleetRequestChange
-        "information" -> pure ETInformation
-        "instancechange" -> pure ETInstanceChange
-        e -> fromTextError $ "Failure parsing EventType from value: '" <> e
-           <> "'. Accepted values: error, fleetrequestchange, information, instancechange"
+    parser = (EventType' . mk) <$> takeText
 
 instance ToText EventType where
-    toText = \case
-        ETError' -> "error"
-        ETFleetRequestChange -> "fleetRequestChange"
-        ETInformation -> "information"
-        ETInstanceChange -> "instanceChange"
+    toText (EventType' ci) = original ci
+
+-- | Represents an enum of /known/ $EventType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum EventType where
+    toEnum i = case i of
+        0 -> ETError'
+        1 -> ETFleetRequestChange
+        2 -> ETInformation
+        3 -> ETInstanceChange
+        _ -> (error . showText) $ "Unknown index for EventType: " <> toText i
+    fromEnum x = case x of
+        ETError' -> 0
+        ETFleetRequestChange -> 1
+        ETInformation -> 2
+        ETInstanceChange -> 3
+        EventType' name -> (error . showText) $ "Unknown EventType: " <> original name
+
+-- | Represents the bounds of /known/ $EventType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded EventType where
+    minBound = ETError'
+    maxBound = ETInstanceChange
 
 instance Hashable     EventType
 instance NFData       EventType

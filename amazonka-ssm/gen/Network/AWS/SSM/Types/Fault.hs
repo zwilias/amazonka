@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,29 +16,65 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.SSM.Types.Fault where
+module Network.AWS.SSM.Types.Fault (
+  Fault (
+    ..
+    , Client
+    , Server
+    , Unknown
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data Fault = Client
-           | Server
-           | Unknown
-               deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                         Typeable, Generic)
+
+data Fault = Fault' (CI Text)
+               deriving (Eq, Ord, Read, Show, Data, Typeable,
+                         Generic)
+
+pattern Client :: Fault
+pattern Client = Fault' "Client"
+
+pattern Server :: Fault
+pattern Server = Fault' "Server"
+
+pattern Unknown :: Fault
+pattern Unknown = Fault' "Unknown"
+
+{-# COMPLETE
+  Client,
+  Server,
+  Unknown,
+  Fault' #-}
 
 instance FromText Fault where
-    parser = takeLowerText >>= \case
-        "client" -> pure Client
-        "server" -> pure Server
-        "unknown" -> pure Unknown
-        e -> fromTextError $ "Failure parsing Fault from value: '" <> e
-           <> "'. Accepted values: client, server, unknown"
+    parser = (Fault' . mk) <$> takeText
 
 instance ToText Fault where
-    toText = \case
-        Client -> "Client"
-        Server -> "Server"
-        Unknown -> "Unknown"
+    toText (Fault' ci) = original ci
+
+-- | Represents an enum of /known/ $Fault.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum Fault where
+    toEnum i = case i of
+        0 -> Client
+        1 -> Server
+        2 -> Unknown
+        _ -> (error . showText) $ "Unknown index for Fault: " <> toText i
+    fromEnum x = case x of
+        Client -> 0
+        Server -> 1
+        Unknown -> 2
+        Fault' name -> (error . showText) $ "Unknown Fault: " <> original name
+
+-- | Represents the bounds of /known/ $Fault.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded Fault where
+    minBound = Client
+    maxBound = Unknown
 
 instance Hashable     Fault
 instance NFData       Fault

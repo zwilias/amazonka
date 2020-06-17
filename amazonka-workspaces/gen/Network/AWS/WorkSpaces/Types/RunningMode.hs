@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,58 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.WorkSpaces.Types.RunningMode where
+module Network.AWS.WorkSpaces.Types.RunningMode (
+  RunningMode (
+    ..
+    , AlwaysOn
+    , AutoStop
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data RunningMode = AlwaysOn
-                 | AutoStop
-                     deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                               Typeable, Generic)
+
+data RunningMode = RunningMode' (CI Text)
+                     deriving (Eq, Ord, Read, Show, Data, Typeable,
+                               Generic)
+
+pattern AlwaysOn :: RunningMode
+pattern AlwaysOn = RunningMode' "ALWAYS_ON"
+
+pattern AutoStop :: RunningMode
+pattern AutoStop = RunningMode' "AUTO_STOP"
+
+{-# COMPLETE
+  AlwaysOn,
+  AutoStop,
+  RunningMode' #-}
 
 instance FromText RunningMode where
-    parser = takeLowerText >>= \case
-        "always_on" -> pure AlwaysOn
-        "auto_stop" -> pure AutoStop
-        e -> fromTextError $ "Failure parsing RunningMode from value: '" <> e
-           <> "'. Accepted values: always_on, auto_stop"
+    parser = (RunningMode' . mk) <$> takeText
 
 instance ToText RunningMode where
-    toText = \case
-        AlwaysOn -> "ALWAYS_ON"
-        AutoStop -> "AUTO_STOP"
+    toText (RunningMode' ci) = original ci
+
+-- | Represents an enum of /known/ $RunningMode.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum RunningMode where
+    toEnum i = case i of
+        0 -> AlwaysOn
+        1 -> AutoStop
+        _ -> (error . showText) $ "Unknown index for RunningMode: " <> toText i
+    fromEnum x = case x of
+        AlwaysOn -> 0
+        AutoStop -> 1
+        RunningMode' name -> (error . showText) $ "Unknown RunningMode: " <> original name
+
+-- | Represents the bounds of /known/ $RunningMode.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded RunningMode where
+    minBound = AlwaysOn
+    maxBound = AutoStop
 
 instance Hashable     RunningMode
 instance NFData       RunningMode

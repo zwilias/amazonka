@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,29 +16,65 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.WAF.Types.ChangeTokenStatus where
+module Network.AWS.WAF.Types.ChangeTokenStatus (
+  ChangeTokenStatus (
+    ..
+    , Insync
+    , Pending
+    , Provisioned
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data ChangeTokenStatus = Insync
-                       | Pending
-                       | Provisioned
-                           deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                     Typeable, Generic)
+
+data ChangeTokenStatus = ChangeTokenStatus' (CI Text)
+                           deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                     Generic)
+
+pattern Insync :: ChangeTokenStatus
+pattern Insync = ChangeTokenStatus' "INSYNC"
+
+pattern Pending :: ChangeTokenStatus
+pattern Pending = ChangeTokenStatus' "PENDING"
+
+pattern Provisioned :: ChangeTokenStatus
+pattern Provisioned = ChangeTokenStatus' "PROVISIONED"
+
+{-# COMPLETE
+  Insync,
+  Pending,
+  Provisioned,
+  ChangeTokenStatus' #-}
 
 instance FromText ChangeTokenStatus where
-    parser = takeLowerText >>= \case
-        "insync" -> pure Insync
-        "pending" -> pure Pending
-        "provisioned" -> pure Provisioned
-        e -> fromTextError $ "Failure parsing ChangeTokenStatus from value: '" <> e
-           <> "'. Accepted values: insync, pending, provisioned"
+    parser = (ChangeTokenStatus' . mk) <$> takeText
 
 instance ToText ChangeTokenStatus where
-    toText = \case
-        Insync -> "INSYNC"
-        Pending -> "PENDING"
-        Provisioned -> "PROVISIONED"
+    toText (ChangeTokenStatus' ci) = original ci
+
+-- | Represents an enum of /known/ $ChangeTokenStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum ChangeTokenStatus where
+    toEnum i = case i of
+        0 -> Insync
+        1 -> Pending
+        2 -> Provisioned
+        _ -> (error . showText) $ "Unknown index for ChangeTokenStatus: " <> toText i
+    fromEnum x = case x of
+        Insync -> 0
+        Pending -> 1
+        Provisioned -> 2
+        ChangeTokenStatus' name -> (error . showText) $ "Unknown ChangeTokenStatus: " <> original name
+
+-- | Represents the bounds of /known/ $ChangeTokenStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded ChangeTokenStatus where
+    minBound = Insync
+    maxBound = Provisioned
 
 instance Hashable     ChangeTokenStatus
 instance NFData       ChangeTokenStatus

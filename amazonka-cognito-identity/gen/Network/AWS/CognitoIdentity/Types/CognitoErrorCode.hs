@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,58 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.CognitoIdentity.Types.CognitoErrorCode where
+module Network.AWS.CognitoIdentity.Types.CognitoErrorCode (
+  CognitoErrorCode (
+    ..
+    , AccessDenied
+    , InternalServerError
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data CognitoErrorCode = AccessDenied
-                      | InternalServerError
-                          deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                    Typeable, Generic)
+
+data CognitoErrorCode = CognitoErrorCode' (CI Text)
+                          deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                    Generic)
+
+pattern AccessDenied :: CognitoErrorCode
+pattern AccessDenied = CognitoErrorCode' "AccessDenied"
+
+pattern InternalServerError :: CognitoErrorCode
+pattern InternalServerError = CognitoErrorCode' "InternalServerError"
+
+{-# COMPLETE
+  AccessDenied,
+  InternalServerError,
+  CognitoErrorCode' #-}
 
 instance FromText CognitoErrorCode where
-    parser = takeLowerText >>= \case
-        "accessdenied" -> pure AccessDenied
-        "internalservererror" -> pure InternalServerError
-        e -> fromTextError $ "Failure parsing CognitoErrorCode from value: '" <> e
-           <> "'. Accepted values: accessdenied, internalservererror"
+    parser = (CognitoErrorCode' . mk) <$> takeText
 
 instance ToText CognitoErrorCode where
-    toText = \case
-        AccessDenied -> "AccessDenied"
-        InternalServerError -> "InternalServerError"
+    toText (CognitoErrorCode' ci) = original ci
+
+-- | Represents an enum of /known/ $CognitoErrorCode.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum CognitoErrorCode where
+    toEnum i = case i of
+        0 -> AccessDenied
+        1 -> InternalServerError
+        _ -> (error . showText) $ "Unknown index for CognitoErrorCode: " <> toText i
+    fromEnum x = case x of
+        AccessDenied -> 0
+        InternalServerError -> 1
+        CognitoErrorCode' name -> (error . showText) $ "Unknown CognitoErrorCode: " <> original name
+
+-- | Represents the bounds of /known/ $CognitoErrorCode.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded CognitoErrorCode where
+    minBound = AccessDenied
+    maxBound = InternalServerError
 
 instance Hashable     CognitoErrorCode
 instance NFData       CognitoErrorCode

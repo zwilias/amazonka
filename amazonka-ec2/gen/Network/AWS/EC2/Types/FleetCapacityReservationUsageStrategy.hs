@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,25 +16,54 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.EC2.Types.FleetCapacityReservationUsageStrategy where
+module Network.AWS.EC2.Types.FleetCapacityReservationUsageStrategy (
+  FleetCapacityReservationUsageStrategy (
+    ..
+    , UseCapacityReservationsFirst
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.EC2.Internal
 import Network.AWS.Prelude
-  
-data FleetCapacityReservationUsageStrategy = UseCapacityReservationsFirst
+
+data FleetCapacityReservationUsageStrategy = FleetCapacityReservationUsageStrategy' (CI
+                                                                                       Text)
                                                deriving (Eq, Ord, Read, Show,
-                                                         Enum, Bounded, Data,
-                                                         Typeable, Generic)
+                                                         Data, Typeable,
+                                                         Generic)
+
+pattern UseCapacityReservationsFirst :: FleetCapacityReservationUsageStrategy
+pattern UseCapacityReservationsFirst = FleetCapacityReservationUsageStrategy' "use-capacity-reservations-first"
+
+{-# COMPLETE
+  UseCapacityReservationsFirst,
+  FleetCapacityReservationUsageStrategy' #-}
 
 instance FromText FleetCapacityReservationUsageStrategy where
-    parser = takeLowerText >>= \case
-        "use-capacity-reservations-first" -> pure UseCapacityReservationsFirst
-        e -> fromTextError $ "Failure parsing FleetCapacityReservationUsageStrategy from value: '" <> e
-           <> "'. Accepted values: use-capacity-reservations-first"
+    parser = (FleetCapacityReservationUsageStrategy' . mk) <$> takeText
 
 instance ToText FleetCapacityReservationUsageStrategy where
-    toText = \case
-        UseCapacityReservationsFirst -> "use-capacity-reservations-first"
+    toText (FleetCapacityReservationUsageStrategy' ci) = original ci
+
+-- | Represents an enum of /known/ $FleetCapacityReservationUsageStrategy.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum FleetCapacityReservationUsageStrategy where
+    toEnum i = case i of
+        0 -> UseCapacityReservationsFirst
+        _ -> (error . showText) $ "Unknown index for FleetCapacityReservationUsageStrategy: " <> toText i
+    fromEnum x = case x of
+        UseCapacityReservationsFirst -> 0
+        FleetCapacityReservationUsageStrategy' name -> (error . showText) $ "Unknown FleetCapacityReservationUsageStrategy: " <> original name
+
+-- | Represents the bounds of /known/ $FleetCapacityReservationUsageStrategy.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded FleetCapacityReservationUsageStrategy where
+    minBound = UseCapacityReservationsFirst
+    maxBound = UseCapacityReservationsFirst
 
 instance Hashable     FleetCapacityReservationUsageStrategy
 instance NFData       FleetCapacityReservationUsageStrategy

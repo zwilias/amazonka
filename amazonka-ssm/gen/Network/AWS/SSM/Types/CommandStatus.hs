@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,41 +16,93 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.SSM.Types.CommandStatus where
+module Network.AWS.SSM.Types.CommandStatus (
+  CommandStatus (
+    ..
+    , CSCancelled
+    , CSCancelling
+    , CSFailed
+    , CSInProgress
+    , CSPending
+    , CSSuccess
+    , CSTimedOut
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data CommandStatus = CSCancelled
-                   | CSCancelling
-                   | CSFailed
-                   | CSInProgress
-                   | CSPending
-                   | CSSuccess
-                   | CSTimedOut
-                       deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                 Typeable, Generic)
+
+data CommandStatus = CommandStatus' (CI Text)
+                       deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                 Generic)
+
+pattern CSCancelled :: CommandStatus
+pattern CSCancelled = CommandStatus' "Cancelled"
+
+pattern CSCancelling :: CommandStatus
+pattern CSCancelling = CommandStatus' "Cancelling"
+
+pattern CSFailed :: CommandStatus
+pattern CSFailed = CommandStatus' "Failed"
+
+pattern CSInProgress :: CommandStatus
+pattern CSInProgress = CommandStatus' "InProgress"
+
+pattern CSPending :: CommandStatus
+pattern CSPending = CommandStatus' "Pending"
+
+pattern CSSuccess :: CommandStatus
+pattern CSSuccess = CommandStatus' "Success"
+
+pattern CSTimedOut :: CommandStatus
+pattern CSTimedOut = CommandStatus' "TimedOut"
+
+{-# COMPLETE
+  CSCancelled,
+  CSCancelling,
+  CSFailed,
+  CSInProgress,
+  CSPending,
+  CSSuccess,
+  CSTimedOut,
+  CommandStatus' #-}
 
 instance FromText CommandStatus where
-    parser = takeLowerText >>= \case
-        "cancelled" -> pure CSCancelled
-        "cancelling" -> pure CSCancelling
-        "failed" -> pure CSFailed
-        "inprogress" -> pure CSInProgress
-        "pending" -> pure CSPending
-        "success" -> pure CSSuccess
-        "timedout" -> pure CSTimedOut
-        e -> fromTextError $ "Failure parsing CommandStatus from value: '" <> e
-           <> "'. Accepted values: cancelled, cancelling, failed, inprogress, pending, success, timedout"
+    parser = (CommandStatus' . mk) <$> takeText
 
 instance ToText CommandStatus where
-    toText = \case
-        CSCancelled -> "Cancelled"
-        CSCancelling -> "Cancelling"
-        CSFailed -> "Failed"
-        CSInProgress -> "InProgress"
-        CSPending -> "Pending"
-        CSSuccess -> "Success"
-        CSTimedOut -> "TimedOut"
+    toText (CommandStatus' ci) = original ci
+
+-- | Represents an enum of /known/ $CommandStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum CommandStatus where
+    toEnum i = case i of
+        0 -> CSCancelled
+        1 -> CSCancelling
+        2 -> CSFailed
+        3 -> CSInProgress
+        4 -> CSPending
+        5 -> CSSuccess
+        6 -> CSTimedOut
+        _ -> (error . showText) $ "Unknown index for CommandStatus: " <> toText i
+    fromEnum x = case x of
+        CSCancelled -> 0
+        CSCancelling -> 1
+        CSFailed -> 2
+        CSInProgress -> 3
+        CSPending -> 4
+        CSSuccess -> 5
+        CSTimedOut -> 6
+        CommandStatus' name -> (error . showText) $ "Unknown CommandStatus: " <> original name
+
+-- | Represents the bounds of /known/ $CommandStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded CommandStatus where
+    minBound = CSCancelled
+    maxBound = CSTimedOut
 
 instance Hashable     CommandStatus
 instance NFData       CommandStatus

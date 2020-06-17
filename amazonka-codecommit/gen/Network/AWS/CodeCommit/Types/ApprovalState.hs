@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,58 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.CodeCommit.Types.ApprovalState where
+module Network.AWS.CodeCommit.Types.ApprovalState (
+  ApprovalState (
+    ..
+    , ASApprove
+    , ASRevoke
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data ApprovalState = ASApprove
-                   | ASRevoke
-                       deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                 Typeable, Generic)
+
+data ApprovalState = ApprovalState' (CI Text)
+                       deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                 Generic)
+
+pattern ASApprove :: ApprovalState
+pattern ASApprove = ApprovalState' "APPROVE"
+
+pattern ASRevoke :: ApprovalState
+pattern ASRevoke = ApprovalState' "REVOKE"
+
+{-# COMPLETE
+  ASApprove,
+  ASRevoke,
+  ApprovalState' #-}
 
 instance FromText ApprovalState where
-    parser = takeLowerText >>= \case
-        "approve" -> pure ASApprove
-        "revoke" -> pure ASRevoke
-        e -> fromTextError $ "Failure parsing ApprovalState from value: '" <> e
-           <> "'. Accepted values: approve, revoke"
+    parser = (ApprovalState' . mk) <$> takeText
 
 instance ToText ApprovalState where
-    toText = \case
-        ASApprove -> "APPROVE"
-        ASRevoke -> "REVOKE"
+    toText (ApprovalState' ci) = original ci
+
+-- | Represents an enum of /known/ $ApprovalState.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum ApprovalState where
+    toEnum i = case i of
+        0 -> ASApprove
+        1 -> ASRevoke
+        _ -> (error . showText) $ "Unknown index for ApprovalState: " <> toText i
+    fromEnum x = case x of
+        ASApprove -> 0
+        ASRevoke -> 1
+        ApprovalState' name -> (error . showText) $ "Unknown ApprovalState: " <> original name
+
+-- | Represents the bounds of /known/ $ApprovalState.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded ApprovalState where
+    minBound = ASApprove
+    maxBound = ASRevoke
 
 instance Hashable     ApprovalState
 instance NFData       ApprovalState

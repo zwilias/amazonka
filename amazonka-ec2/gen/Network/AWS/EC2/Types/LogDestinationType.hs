@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,27 +16,60 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.EC2.Types.LogDestinationType where
+module Network.AWS.EC2.Types.LogDestinationType (
+  LogDestinationType (
+    ..
+    , CloudWatchLogs
+    , S3
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.EC2.Internal
 import Network.AWS.Prelude
-  
-data LogDestinationType = CloudWatchLogs
-                        | S3
-                            deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                      Typeable, Generic)
+
+data LogDestinationType = LogDestinationType' (CI
+                                                 Text)
+                            deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                      Generic)
+
+pattern CloudWatchLogs :: LogDestinationType
+pattern CloudWatchLogs = LogDestinationType' "cloud-watch-logs"
+
+pattern S3 :: LogDestinationType
+pattern S3 = LogDestinationType' "s3"
+
+{-# COMPLETE
+  CloudWatchLogs,
+  S3,
+  LogDestinationType' #-}
 
 instance FromText LogDestinationType where
-    parser = takeLowerText >>= \case
-        "cloud-watch-logs" -> pure CloudWatchLogs
-        "s3" -> pure S3
-        e -> fromTextError $ "Failure parsing LogDestinationType from value: '" <> e
-           <> "'. Accepted values: cloud-watch-logs, s3"
+    parser = (LogDestinationType' . mk) <$> takeText
 
 instance ToText LogDestinationType where
-    toText = \case
-        CloudWatchLogs -> "cloud-watch-logs"
-        S3 -> "s3"
+    toText (LogDestinationType' ci) = original ci
+
+-- | Represents an enum of /known/ $LogDestinationType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum LogDestinationType where
+    toEnum i = case i of
+        0 -> CloudWatchLogs
+        1 -> S3
+        _ -> (error . showText) $ "Unknown index for LogDestinationType: " <> toText i
+    fromEnum x = case x of
+        CloudWatchLogs -> 0
+        S3 -> 1
+        LogDestinationType' name -> (error . showText) $ "Unknown LogDestinationType: " <> original name
+
+-- | Represents the bounds of /known/ $LogDestinationType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded LogDestinationType where
+    minBound = CloudWatchLogs
+    maxBound = S3
 
 instance Hashable     LogDestinationType
 instance NFData       LogDestinationType

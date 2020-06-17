@@ -37,6 +37,7 @@ module Network.AWS.Cloud9.DeleteEnvironment
     ) where
 
 import Network.AWS.Cloud9.Types
+import Network.AWS.Cloud9.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request

@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,29 +16,66 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.CloudWatch.Types.AnomalyDetectorStateValue where
+module Network.AWS.CloudWatch.Types.AnomalyDetectorStateValue (
+  AnomalyDetectorStateValue (
+    ..
+    , PendingTraining
+    , Trained
+    , TrainedInsufficientData
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data AnomalyDetectorStateValue = PendingTraining
-                               | Trained
-                               | TrainedInsufficientData
-                                   deriving (Eq, Ord, Read, Show, Enum, Bounded,
-                                             Data, Typeable, Generic)
+
+data AnomalyDetectorStateValue = AnomalyDetectorStateValue' (CI
+                                                               Text)
+                                   deriving (Eq, Ord, Read, Show, Data,
+                                             Typeable, Generic)
+
+pattern PendingTraining :: AnomalyDetectorStateValue
+pattern PendingTraining = AnomalyDetectorStateValue' "PENDING_TRAINING"
+
+pattern Trained :: AnomalyDetectorStateValue
+pattern Trained = AnomalyDetectorStateValue' "TRAINED"
+
+pattern TrainedInsufficientData :: AnomalyDetectorStateValue
+pattern TrainedInsufficientData = AnomalyDetectorStateValue' "TRAINED_INSUFFICIENT_DATA"
+
+{-# COMPLETE
+  PendingTraining,
+  Trained,
+  TrainedInsufficientData,
+  AnomalyDetectorStateValue' #-}
 
 instance FromText AnomalyDetectorStateValue where
-    parser = takeLowerText >>= \case
-        "pending_training" -> pure PendingTraining
-        "trained" -> pure Trained
-        "trained_insufficient_data" -> pure TrainedInsufficientData
-        e -> fromTextError $ "Failure parsing AnomalyDetectorStateValue from value: '" <> e
-           <> "'. Accepted values: pending_training, trained, trained_insufficient_data"
+    parser = (AnomalyDetectorStateValue' . mk) <$> takeText
 
 instance ToText AnomalyDetectorStateValue where
-    toText = \case
-        PendingTraining -> "PENDING_TRAINING"
-        Trained -> "TRAINED"
-        TrainedInsufficientData -> "TRAINED_INSUFFICIENT_DATA"
+    toText (AnomalyDetectorStateValue' ci) = original ci
+
+-- | Represents an enum of /known/ $AnomalyDetectorStateValue.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum AnomalyDetectorStateValue where
+    toEnum i = case i of
+        0 -> PendingTraining
+        1 -> Trained
+        2 -> TrainedInsufficientData
+        _ -> (error . showText) $ "Unknown index for AnomalyDetectorStateValue: " <> toText i
+    fromEnum x = case x of
+        PendingTraining -> 0
+        Trained -> 1
+        TrainedInsufficientData -> 2
+        AnomalyDetectorStateValue' name -> (error . showText) $ "Unknown AnomalyDetectorStateValue: " <> original name
+
+-- | Represents the bounds of /known/ $AnomalyDetectorStateValue.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded AnomalyDetectorStateValue where
+    minBound = PendingTraining
+    maxBound = TrainedInsufficientData
 
 instance Hashable     AnomalyDetectorStateValue
 instance NFData       AnomalyDetectorStateValue

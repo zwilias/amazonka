@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,27 +16,60 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.EC2.Types.InterfacePermissionType where
+module Network.AWS.EC2.Types.InterfacePermissionType (
+  InterfacePermissionType (
+    ..
+    , EIPAssociate
+    , InstanceAttach
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.EC2.Internal
 import Network.AWS.Prelude
-  
-data InterfacePermissionType = EIPAssociate
-                             | InstanceAttach
-                                 deriving (Eq, Ord, Read, Show, Enum, Bounded,
-                                           Data, Typeable, Generic)
+
+data InterfacePermissionType = InterfacePermissionType' (CI
+                                                           Text)
+                                 deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                           Generic)
+
+pattern EIPAssociate :: InterfacePermissionType
+pattern EIPAssociate = InterfacePermissionType' "EIP-ASSOCIATE"
+
+pattern InstanceAttach :: InterfacePermissionType
+pattern InstanceAttach = InterfacePermissionType' "INSTANCE-ATTACH"
+
+{-# COMPLETE
+  EIPAssociate,
+  InstanceAttach,
+  InterfacePermissionType' #-}
 
 instance FromText InterfacePermissionType where
-    parser = takeLowerText >>= \case
-        "eip-associate" -> pure EIPAssociate
-        "instance-attach" -> pure InstanceAttach
-        e -> fromTextError $ "Failure parsing InterfacePermissionType from value: '" <> e
-           <> "'. Accepted values: eip-associate, instance-attach"
+    parser = (InterfacePermissionType' . mk) <$> takeText
 
 instance ToText InterfacePermissionType where
-    toText = \case
-        EIPAssociate -> "EIP-ASSOCIATE"
-        InstanceAttach -> "INSTANCE-ATTACH"
+    toText (InterfacePermissionType' ci) = original ci
+
+-- | Represents an enum of /known/ $InterfacePermissionType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum InterfacePermissionType where
+    toEnum i = case i of
+        0 -> EIPAssociate
+        1 -> InstanceAttach
+        _ -> (error . showText) $ "Unknown index for InterfacePermissionType: " <> toText i
+    fromEnum x = case x of
+        EIPAssociate -> 0
+        InstanceAttach -> 1
+        InterfacePermissionType' name -> (error . showText) $ "Unknown InterfacePermissionType: " <> original name
+
+-- | Represents the bounds of /known/ $InterfacePermissionType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded InterfacePermissionType where
+    minBound = EIPAssociate
+    maxBound = InstanceAttach
 
 instance Hashable     InterfacePermissionType
 instance NFData       InterfacePermissionType

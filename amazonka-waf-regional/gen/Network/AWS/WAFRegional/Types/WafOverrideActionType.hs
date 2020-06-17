@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,59 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.WAFRegional.Types.WafOverrideActionType where
+module Network.AWS.WAFRegional.Types.WafOverrideActionType (
+  WafOverrideActionType (
+    ..
+    , WOATCount
+    , WOATNone
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data WafOverrideActionType = WOATCount
-                           | WOATNone
-                               deriving (Eq, Ord, Read, Show, Enum, Bounded,
-                                         Data, Typeable, Generic)
+
+data WafOverrideActionType = WafOverrideActionType' (CI
+                                                       Text)
+                               deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                         Generic)
+
+pattern WOATCount :: WafOverrideActionType
+pattern WOATCount = WafOverrideActionType' "COUNT"
+
+pattern WOATNone :: WafOverrideActionType
+pattern WOATNone = WafOverrideActionType' "NONE"
+
+{-# COMPLETE
+  WOATCount,
+  WOATNone,
+  WafOverrideActionType' #-}
 
 instance FromText WafOverrideActionType where
-    parser = takeLowerText >>= \case
-        "count" -> pure WOATCount
-        "none" -> pure WOATNone
-        e -> fromTextError $ "Failure parsing WafOverrideActionType from value: '" <> e
-           <> "'. Accepted values: count, none"
+    parser = (WafOverrideActionType' . mk) <$> takeText
 
 instance ToText WafOverrideActionType where
-    toText = \case
-        WOATCount -> "COUNT"
-        WOATNone -> "NONE"
+    toText (WafOverrideActionType' ci) = original ci
+
+-- | Represents an enum of /known/ $WafOverrideActionType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum WafOverrideActionType where
+    toEnum i = case i of
+        0 -> WOATCount
+        1 -> WOATNone
+        _ -> (error . showText) $ "Unknown index for WafOverrideActionType: " <> toText i
+    fromEnum x = case x of
+        WOATCount -> 0
+        WOATNone -> 1
+        WafOverrideActionType' name -> (error . showText) $ "Unknown WafOverrideActionType: " <> original name
+
+-- | Represents the bounds of /known/ $WafOverrideActionType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded WafOverrideActionType where
+    minBound = WOATCount
+    maxBound = WOATNone
 
 instance Hashable     WafOverrideActionType
 instance NFData       WafOverrideActionType

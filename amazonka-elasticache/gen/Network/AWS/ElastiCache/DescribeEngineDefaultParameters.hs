@@ -42,6 +42,7 @@ module Network.AWS.ElastiCache.DescribeEngineDefaultParameters
     ) where
 
 import Network.AWS.ElastiCache.Types
+import Network.AWS.ElastiCache.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude

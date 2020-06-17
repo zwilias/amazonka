@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,24 +16,53 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.SMS.Types.ConnectorCapability where
+module Network.AWS.SMS.Types.ConnectorCapability (
+  ConnectorCapability (
+    ..
+    , CCVsphere
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
+
 -- | Capabilities for a Connector
-data ConnectorCapability = CCVsphere
-                             deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                       Typeable, Generic)
+data ConnectorCapability = ConnectorCapability' (CI
+                                                   Text)
+                             deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                       Generic)
+
+pattern CCVsphere :: ConnectorCapability
+pattern CCVsphere = ConnectorCapability' "VSPHERE"
+
+{-# COMPLETE
+  CCVsphere,
+  ConnectorCapability' #-}
 
 instance FromText ConnectorCapability where
-    parser = takeLowerText >>= \case
-        "vsphere" -> pure CCVsphere
-        e -> fromTextError $ "Failure parsing ConnectorCapability from value: '" <> e
-           <> "'. Accepted values: vsphere"
+    parser = (ConnectorCapability' . mk) <$> takeText
 
 instance ToText ConnectorCapability where
-    toText = \case
-        CCVsphere -> "VSPHERE"
+    toText (ConnectorCapability' ci) = original ci
+
+-- | Represents an enum of /known/ $ConnectorCapability.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum ConnectorCapability where
+    toEnum i = case i of
+        0 -> CCVsphere
+        _ -> (error . showText) $ "Unknown index for ConnectorCapability: " <> toText i
+    fromEnum x = case x of
+        CCVsphere -> 0
+        ConnectorCapability' name -> (error . showText) $ "Unknown ConnectorCapability: " <> original name
+
+-- | Represents the bounds of /known/ $ConnectorCapability.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded ConnectorCapability where
+    minBound = CCVsphere
+    maxBound = CCVsphere
 
 instance Hashable     ConnectorCapability
 instance NFData       ConnectorCapability

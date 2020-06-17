@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,41 +16,94 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.IoTJobsData.Types.JobExecutionStatus where
+module Network.AWS.IoTJobsData.Types.JobExecutionStatus (
+  JobExecutionStatus (
+    ..
+    , Canceled
+    , Failed
+    , InProgress
+    , Queued
+    , Rejected
+    , Removed
+    , Succeeded
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data JobExecutionStatus = Canceled
-                        | Failed
-                        | InProgress
-                        | Queued
-                        | Rejected
-                        | Removed
-                        | Succeeded
-                            deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                      Typeable, Generic)
+
+data JobExecutionStatus = JobExecutionStatus' (CI
+                                                 Text)
+                            deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                      Generic)
+
+pattern Canceled :: JobExecutionStatus
+pattern Canceled = JobExecutionStatus' "CANCELED"
+
+pattern Failed :: JobExecutionStatus
+pattern Failed = JobExecutionStatus' "FAILED"
+
+pattern InProgress :: JobExecutionStatus
+pattern InProgress = JobExecutionStatus' "IN_PROGRESS"
+
+pattern Queued :: JobExecutionStatus
+pattern Queued = JobExecutionStatus' "QUEUED"
+
+pattern Rejected :: JobExecutionStatus
+pattern Rejected = JobExecutionStatus' "REJECTED"
+
+pattern Removed :: JobExecutionStatus
+pattern Removed = JobExecutionStatus' "REMOVED"
+
+pattern Succeeded :: JobExecutionStatus
+pattern Succeeded = JobExecutionStatus' "SUCCEEDED"
+
+{-# COMPLETE
+  Canceled,
+  Failed,
+  InProgress,
+  Queued,
+  Rejected,
+  Removed,
+  Succeeded,
+  JobExecutionStatus' #-}
 
 instance FromText JobExecutionStatus where
-    parser = takeLowerText >>= \case
-        "canceled" -> pure Canceled
-        "failed" -> pure Failed
-        "in_progress" -> pure InProgress
-        "queued" -> pure Queued
-        "rejected" -> pure Rejected
-        "removed" -> pure Removed
-        "succeeded" -> pure Succeeded
-        e -> fromTextError $ "Failure parsing JobExecutionStatus from value: '" <> e
-           <> "'. Accepted values: canceled, failed, in_progress, queued, rejected, removed, succeeded"
+    parser = (JobExecutionStatus' . mk) <$> takeText
 
 instance ToText JobExecutionStatus where
-    toText = \case
-        Canceled -> "CANCELED"
-        Failed -> "FAILED"
-        InProgress -> "IN_PROGRESS"
-        Queued -> "QUEUED"
-        Rejected -> "REJECTED"
-        Removed -> "REMOVED"
-        Succeeded -> "SUCCEEDED"
+    toText (JobExecutionStatus' ci) = original ci
+
+-- | Represents an enum of /known/ $JobExecutionStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum JobExecutionStatus where
+    toEnum i = case i of
+        0 -> Canceled
+        1 -> Failed
+        2 -> InProgress
+        3 -> Queued
+        4 -> Rejected
+        5 -> Removed
+        6 -> Succeeded
+        _ -> (error . showText) $ "Unknown index for JobExecutionStatus: " <> toText i
+    fromEnum x = case x of
+        Canceled -> 0
+        Failed -> 1
+        InProgress -> 2
+        Queued -> 3
+        Rejected -> 4
+        Removed -> 5
+        Succeeded -> 6
+        JobExecutionStatus' name -> (error . showText) $ "Unknown JobExecutionStatus: " <> original name
+
+-- | Represents the bounds of /known/ $JobExecutionStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded JobExecutionStatus where
+    minBound = Canceled
+    maxBound = Succeeded
 
 instance Hashable     JobExecutionStatus
 instance NFData       JobExecutionStatus

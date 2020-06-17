@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,29 +16,66 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.DeviceFarm.Types.OfferingTransactionType where
+module Network.AWS.DeviceFarm.Types.OfferingTransactionType (
+  OfferingTransactionType (
+    ..
+    , Purchase
+    , Renew
+    , System
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data OfferingTransactionType = Purchase
-                             | Renew
-                             | System
-                                 deriving (Eq, Ord, Read, Show, Enum, Bounded,
-                                           Data, Typeable, Generic)
+
+data OfferingTransactionType = OfferingTransactionType' (CI
+                                                           Text)
+                                 deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                           Generic)
+
+pattern Purchase :: OfferingTransactionType
+pattern Purchase = OfferingTransactionType' "PURCHASE"
+
+pattern Renew :: OfferingTransactionType
+pattern Renew = OfferingTransactionType' "RENEW"
+
+pattern System :: OfferingTransactionType
+pattern System = OfferingTransactionType' "SYSTEM"
+
+{-# COMPLETE
+  Purchase,
+  Renew,
+  System,
+  OfferingTransactionType' #-}
 
 instance FromText OfferingTransactionType where
-    parser = takeLowerText >>= \case
-        "purchase" -> pure Purchase
-        "renew" -> pure Renew
-        "system" -> pure System
-        e -> fromTextError $ "Failure parsing OfferingTransactionType from value: '" <> e
-           <> "'. Accepted values: purchase, renew, system"
+    parser = (OfferingTransactionType' . mk) <$> takeText
 
 instance ToText OfferingTransactionType where
-    toText = \case
-        Purchase -> "PURCHASE"
-        Renew -> "RENEW"
-        System -> "SYSTEM"
+    toText (OfferingTransactionType' ci) = original ci
+
+-- | Represents an enum of /known/ $OfferingTransactionType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum OfferingTransactionType where
+    toEnum i = case i of
+        0 -> Purchase
+        1 -> Renew
+        2 -> System
+        _ -> (error . showText) $ "Unknown index for OfferingTransactionType: " <> toText i
+    fromEnum x = case x of
+        Purchase -> 0
+        Renew -> 1
+        System -> 2
+        OfferingTransactionType' name -> (error . showText) $ "Unknown OfferingTransactionType: " <> original name
+
+-- | Represents the bounds of /known/ $OfferingTransactionType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded OfferingTransactionType where
+    minBound = Purchase
+    maxBound = System
 
 instance Hashable     OfferingTransactionType
 instance NFData       OfferingTransactionType

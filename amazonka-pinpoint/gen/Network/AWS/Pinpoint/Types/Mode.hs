@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,58 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.Pinpoint.Types.Mode where
+module Network.AWS.Pinpoint.Types.Mode (
+  Mode (
+    ..
+    , Delivery
+    , Filter
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data Mode = Delivery
-          | Filter
-              deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                        Typeable, Generic)
+
+data Mode = Mode' (CI Text)
+              deriving (Eq, Ord, Read, Show, Data, Typeable,
+                        Generic)
+
+pattern Delivery :: Mode
+pattern Delivery = Mode' "DELIVERY"
+
+pattern Filter :: Mode
+pattern Filter = Mode' "FILTER"
+
+{-# COMPLETE
+  Delivery,
+  Filter,
+  Mode' #-}
 
 instance FromText Mode where
-    parser = takeLowerText >>= \case
-        "delivery" -> pure Delivery
-        "filter" -> pure Filter
-        e -> fromTextError $ "Failure parsing Mode from value: '" <> e
-           <> "'. Accepted values: delivery, filter"
+    parser = (Mode' . mk) <$> takeText
 
 instance ToText Mode where
-    toText = \case
-        Delivery -> "DELIVERY"
-        Filter -> "FILTER"
+    toText (Mode' ci) = original ci
+
+-- | Represents an enum of /known/ $Mode.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum Mode where
+    toEnum i = case i of
+        0 -> Delivery
+        1 -> Filter
+        _ -> (error . showText) $ "Unknown index for Mode: " <> toText i
+    fromEnum x = case x of
+        Delivery -> 0
+        Filter -> 1
+        Mode' name -> (error . showText) $ "Unknown Mode: " <> original name
+
+-- | Represents the bounds of /known/ $Mode.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded Mode where
+    minBound = Delivery
+    maxBound = Filter
 
 instance Hashable     Mode
 instance NFData       Mode

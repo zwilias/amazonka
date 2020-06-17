@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,29 +16,65 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.SWF.Types.ChildPolicy where
+module Network.AWS.SWF.Types.ChildPolicy (
+  ChildPolicy (
+    ..
+    , Abandon
+    , RequestCancel
+    , Terminate
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data ChildPolicy = Abandon
-                 | RequestCancel
-                 | Terminate
-                     deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                               Typeable, Generic)
+
+data ChildPolicy = ChildPolicy' (CI Text)
+                     deriving (Eq, Ord, Read, Show, Data, Typeable,
+                               Generic)
+
+pattern Abandon :: ChildPolicy
+pattern Abandon = ChildPolicy' "ABANDON"
+
+pattern RequestCancel :: ChildPolicy
+pattern RequestCancel = ChildPolicy' "REQUEST_CANCEL"
+
+pattern Terminate :: ChildPolicy
+pattern Terminate = ChildPolicy' "TERMINATE"
+
+{-# COMPLETE
+  Abandon,
+  RequestCancel,
+  Terminate,
+  ChildPolicy' #-}
 
 instance FromText ChildPolicy where
-    parser = takeLowerText >>= \case
-        "abandon" -> pure Abandon
-        "request_cancel" -> pure RequestCancel
-        "terminate" -> pure Terminate
-        e -> fromTextError $ "Failure parsing ChildPolicy from value: '" <> e
-           <> "'. Accepted values: abandon, request_cancel, terminate"
+    parser = (ChildPolicy' . mk) <$> takeText
 
 instance ToText ChildPolicy where
-    toText = \case
-        Abandon -> "ABANDON"
-        RequestCancel -> "REQUEST_CANCEL"
-        Terminate -> "TERMINATE"
+    toText (ChildPolicy' ci) = original ci
+
+-- | Represents an enum of /known/ $ChildPolicy.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum ChildPolicy where
+    toEnum i = case i of
+        0 -> Abandon
+        1 -> RequestCancel
+        2 -> Terminate
+        _ -> (error . showText) $ "Unknown index for ChildPolicy: " <> toText i
+    fromEnum x = case x of
+        Abandon -> 0
+        RequestCancel -> 1
+        Terminate -> 2
+        ChildPolicy' name -> (error . showText) $ "Unknown ChildPolicy: " <> original name
+
+-- | Represents the bounds of /known/ $ChildPolicy.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded ChildPolicy where
+    minBound = Abandon
+    maxBound = Terminate
 
 instance Hashable     ChildPolicy
 instance NFData       ChildPolicy

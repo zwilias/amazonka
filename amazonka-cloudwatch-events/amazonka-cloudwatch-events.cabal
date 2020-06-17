@@ -96,6 +96,7 @@ library
         , Network.AWS.CloudWatchEvents.Types.NetworkConfiguration
         , Network.AWS.CloudWatchEvents.Types.PartnerEventSource
         , Network.AWS.CloudWatchEvents.Types.PartnerEventSourceAccount
+        , Network.AWS.CloudWatchEvents.Types.Product
         , Network.AWS.CloudWatchEvents.Types.PutEventsRequestEntry
         , Network.AWS.CloudWatchEvents.Types.PutEventsResultEntry
         , Network.AWS.CloudWatchEvents.Types.PutPartnerEventsRequestEntry
@@ -113,6 +114,7 @@ library
     build-depends:
           amazonka-core == 1.6.1.*
         , base          >= 4.7     && < 5
+        , case-insensitive
 
 test-suite amazonka-cloudwatch-events-test
     type:              exitcode-stdio-1.0
@@ -136,6 +138,7 @@ test-suite amazonka-cloudwatch-events-test
         , amazonka-cloudwatch-events
         , base
         , bytestring
+        , case-insensitive
         , tasty
         , tasty-hunit
         , text

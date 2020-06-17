@@ -47,6 +47,7 @@ module Network.AWS.Redshift.DescribeSnapshotCopyGrants
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Redshift.Types
+import Network.AWS.Redshift.Types.Product
 import Network.AWS.Request
 import Network.AWS.Response
 

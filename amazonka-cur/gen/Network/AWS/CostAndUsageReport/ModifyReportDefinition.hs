@@ -38,6 +38,7 @@ module Network.AWS.CostAndUsageReport.ModifyReportDefinition
     ) where
 
 import Network.AWS.CostAndUsageReport.Types
+import Network.AWS.CostAndUsageReport.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request

@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,29 +16,65 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.CostExplorer.Types.Context where
+module Network.AWS.CostExplorer.Types.Context (
+  Context (
+    ..
+    , CostAndUsage
+    , Reservations
+    , SavingsPlans
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data Context = CostAndUsage
-             | Reservations
-             | SavingsPlans
-                 deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                           Typeable, Generic)
+
+data Context = Context' (CI Text)
+                 deriving (Eq, Ord, Read, Show, Data, Typeable,
+                           Generic)
+
+pattern CostAndUsage :: Context
+pattern CostAndUsage = Context' "COST_AND_USAGE"
+
+pattern Reservations :: Context
+pattern Reservations = Context' "RESERVATIONS"
+
+pattern SavingsPlans :: Context
+pattern SavingsPlans = Context' "SAVINGS_PLANS"
+
+{-# COMPLETE
+  CostAndUsage,
+  Reservations,
+  SavingsPlans,
+  Context' #-}
 
 instance FromText Context where
-    parser = takeLowerText >>= \case
-        "cost_and_usage" -> pure CostAndUsage
-        "reservations" -> pure Reservations
-        "savings_plans" -> pure SavingsPlans
-        e -> fromTextError $ "Failure parsing Context from value: '" <> e
-           <> "'. Accepted values: cost_and_usage, reservations, savings_plans"
+    parser = (Context' . mk) <$> takeText
 
 instance ToText Context where
-    toText = \case
-        CostAndUsage -> "COST_AND_USAGE"
-        Reservations -> "RESERVATIONS"
-        SavingsPlans -> "SAVINGS_PLANS"
+    toText (Context' ci) = original ci
+
+-- | Represents an enum of /known/ $Context.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum Context where
+    toEnum i = case i of
+        0 -> CostAndUsage
+        1 -> Reservations
+        2 -> SavingsPlans
+        _ -> (error . showText) $ "Unknown index for Context: " <> toText i
+    fromEnum x = case x of
+        CostAndUsage -> 0
+        Reservations -> 1
+        SavingsPlans -> 2
+        Context' name -> (error . showText) $ "Unknown Context: " <> original name
+
+-- | Represents the bounds of /known/ $Context.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded Context where
+    minBound = CostAndUsage
+    maxBound = SavingsPlans
 
 instance Hashable     Context
 instance NFData       Context

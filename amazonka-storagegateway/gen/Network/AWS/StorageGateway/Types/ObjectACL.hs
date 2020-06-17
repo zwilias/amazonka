@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,44 +16,96 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.StorageGateway.Types.ObjectACL where
+module Network.AWS.StorageGateway.Types.ObjectACL (
+  ObjectACL (
+    ..
+    , AWSExecRead
+    , AuthenticatedRead
+    , BucketOwnerFullControl
+    , BucketOwnerRead
+    , Private
+    , PublicRead
+    , PublicReadWrite
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
+
 -- | Sets the access control list permission for objects in the S3 bucket that a file gateway puts objects into. The default value is "private".
 --
 --
-data ObjectACL = AWSExecRead
-               | AuthenticatedRead
-               | BucketOwnerFullControl
-               | BucketOwnerRead
-               | Private
-               | PublicRead
-               | PublicReadWrite
-                   deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                             Typeable, Generic)
+data ObjectACL = ObjectACL' (CI Text)
+                   deriving (Eq, Ord, Read, Show, Data, Typeable,
+                             Generic)
+
+pattern AWSExecRead :: ObjectACL
+pattern AWSExecRead = ObjectACL' "aws-exec-read"
+
+pattern AuthenticatedRead :: ObjectACL
+pattern AuthenticatedRead = ObjectACL' "authenticated-read"
+
+pattern BucketOwnerFullControl :: ObjectACL
+pattern BucketOwnerFullControl = ObjectACL' "bucket-owner-full-control"
+
+pattern BucketOwnerRead :: ObjectACL
+pattern BucketOwnerRead = ObjectACL' "bucket-owner-read"
+
+pattern Private :: ObjectACL
+pattern Private = ObjectACL' "private"
+
+pattern PublicRead :: ObjectACL
+pattern PublicRead = ObjectACL' "public-read"
+
+pattern PublicReadWrite :: ObjectACL
+pattern PublicReadWrite = ObjectACL' "public-read-write"
+
+{-# COMPLETE
+  AWSExecRead,
+  AuthenticatedRead,
+  BucketOwnerFullControl,
+  BucketOwnerRead,
+  Private,
+  PublicRead,
+  PublicReadWrite,
+  ObjectACL' #-}
 
 instance FromText ObjectACL where
-    parser = takeLowerText >>= \case
-        "aws-exec-read" -> pure AWSExecRead
-        "authenticated-read" -> pure AuthenticatedRead
-        "bucket-owner-full-control" -> pure BucketOwnerFullControl
-        "bucket-owner-read" -> pure BucketOwnerRead
-        "private" -> pure Private
-        "public-read" -> pure PublicRead
-        "public-read-write" -> pure PublicReadWrite
-        e -> fromTextError $ "Failure parsing ObjectACL from value: '" <> e
-           <> "'. Accepted values: aws-exec-read, authenticated-read, bucket-owner-full-control, bucket-owner-read, private, public-read, public-read-write"
+    parser = (ObjectACL' . mk) <$> takeText
 
 instance ToText ObjectACL where
-    toText = \case
-        AWSExecRead -> "aws-exec-read"
-        AuthenticatedRead -> "authenticated-read"
-        BucketOwnerFullControl -> "bucket-owner-full-control"
-        BucketOwnerRead -> "bucket-owner-read"
-        Private -> "private"
-        PublicRead -> "public-read"
-        PublicReadWrite -> "public-read-write"
+    toText (ObjectACL' ci) = original ci
+
+-- | Represents an enum of /known/ $ObjectACL.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum ObjectACL where
+    toEnum i = case i of
+        0 -> AWSExecRead
+        1 -> AuthenticatedRead
+        2 -> BucketOwnerFullControl
+        3 -> BucketOwnerRead
+        4 -> Private
+        5 -> PublicRead
+        6 -> PublicReadWrite
+        _ -> (error . showText) $ "Unknown index for ObjectACL: " <> toText i
+    fromEnum x = case x of
+        AWSExecRead -> 0
+        AuthenticatedRead -> 1
+        BucketOwnerFullControl -> 2
+        BucketOwnerRead -> 3
+        Private -> 4
+        PublicRead -> 5
+        PublicReadWrite -> 6
+        ObjectACL' name -> (error . showText) $ "Unknown ObjectACL: " <> original name
+
+-- | Represents the bounds of /known/ $ObjectACL.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded ObjectACL where
+    minBound = AWSExecRead
+    maxBound = PublicReadWrite
 
 instance Hashable     ObjectACL
 instance NFData       ObjectACL

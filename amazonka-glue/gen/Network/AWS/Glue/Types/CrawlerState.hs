@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,29 +16,65 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.Glue.Types.CrawlerState where
+module Network.AWS.Glue.Types.CrawlerState (
+  CrawlerState (
+    ..
+    , CSReady
+    , CSRunning
+    , CSStopping
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data CrawlerState = CSReady
-                  | CSRunning
-                  | CSStopping
-                      deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                Typeable, Generic)
+
+data CrawlerState = CrawlerState' (CI Text)
+                      deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                Generic)
+
+pattern CSReady :: CrawlerState
+pattern CSReady = CrawlerState' "READY"
+
+pattern CSRunning :: CrawlerState
+pattern CSRunning = CrawlerState' "RUNNING"
+
+pattern CSStopping :: CrawlerState
+pattern CSStopping = CrawlerState' "STOPPING"
+
+{-# COMPLETE
+  CSReady,
+  CSRunning,
+  CSStopping,
+  CrawlerState' #-}
 
 instance FromText CrawlerState where
-    parser = takeLowerText >>= \case
-        "ready" -> pure CSReady
-        "running" -> pure CSRunning
-        "stopping" -> pure CSStopping
-        e -> fromTextError $ "Failure parsing CrawlerState from value: '" <> e
-           <> "'. Accepted values: ready, running, stopping"
+    parser = (CrawlerState' . mk) <$> takeText
 
 instance ToText CrawlerState where
-    toText = \case
-        CSReady -> "READY"
-        CSRunning -> "RUNNING"
-        CSStopping -> "STOPPING"
+    toText (CrawlerState' ci) = original ci
+
+-- | Represents an enum of /known/ $CrawlerState.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum CrawlerState where
+    toEnum i = case i of
+        0 -> CSReady
+        1 -> CSRunning
+        2 -> CSStopping
+        _ -> (error . showText) $ "Unknown index for CrawlerState: " <> toText i
+    fromEnum x = case x of
+        CSReady -> 0
+        CSRunning -> 1
+        CSStopping -> 2
+        CrawlerState' name -> (error . showText) $ "Unknown CrawlerState: " <> original name
+
+-- | Represents the bounds of /known/ $CrawlerState.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded CrawlerState where
+    minBound = CSReady
+    maxBound = CSStopping
 
 instance Hashable     CrawlerState
 instance NFData       CrawlerState

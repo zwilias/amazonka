@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,33 +16,73 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.EC2.Types.MonitoringState where
+module Network.AWS.EC2.Types.MonitoringState (
+  MonitoringState (
+    ..
+    , MSDisabled
+    , MSDisabling
+    , MSEnabled
+    , MSPending
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.EC2.Internal
 import Network.AWS.Prelude
-  
-data MonitoringState = MSDisabled
-                     | MSDisabling
-                     | MSEnabled
-                     | MSPending
-                         deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                   Typeable, Generic)
+
+data MonitoringState = MonitoringState' (CI Text)
+                         deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                   Generic)
+
+pattern MSDisabled :: MonitoringState
+pattern MSDisabled = MonitoringState' "disabled"
+
+pattern MSDisabling :: MonitoringState
+pattern MSDisabling = MonitoringState' "disabling"
+
+pattern MSEnabled :: MonitoringState
+pattern MSEnabled = MonitoringState' "enabled"
+
+pattern MSPending :: MonitoringState
+pattern MSPending = MonitoringState' "pending"
+
+{-# COMPLETE
+  MSDisabled,
+  MSDisabling,
+  MSEnabled,
+  MSPending,
+  MonitoringState' #-}
 
 instance FromText MonitoringState where
-    parser = takeLowerText >>= \case
-        "disabled" -> pure MSDisabled
-        "disabling" -> pure MSDisabling
-        "enabled" -> pure MSEnabled
-        "pending" -> pure MSPending
-        e -> fromTextError $ "Failure parsing MonitoringState from value: '" <> e
-           <> "'. Accepted values: disabled, disabling, enabled, pending"
+    parser = (MonitoringState' . mk) <$> takeText
 
 instance ToText MonitoringState where
-    toText = \case
-        MSDisabled -> "disabled"
-        MSDisabling -> "disabling"
-        MSEnabled -> "enabled"
-        MSPending -> "pending"
+    toText (MonitoringState' ci) = original ci
+
+-- | Represents an enum of /known/ $MonitoringState.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum MonitoringState where
+    toEnum i = case i of
+        0 -> MSDisabled
+        1 -> MSDisabling
+        2 -> MSEnabled
+        3 -> MSPending
+        _ -> (error . showText) $ "Unknown index for MonitoringState: " <> toText i
+    fromEnum x = case x of
+        MSDisabled -> 0
+        MSDisabling -> 1
+        MSEnabled -> 2
+        MSPending -> 3
+        MonitoringState' name -> (error . showText) $ "Unknown MonitoringState: " <> original name
+
+-- | Represents the bounds of /known/ $MonitoringState.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded MonitoringState where
+    minBound = MSDisabled
+    maxBound = MSPending
 
 instance Hashable     MonitoringState
 instance NFData       MonitoringState

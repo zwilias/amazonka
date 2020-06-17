@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,59 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.ELBv2.Types.LoadBalancerSchemeEnum where
+module Network.AWS.ELBv2.Types.LoadBalancerSchemeEnum (
+  LoadBalancerSchemeEnum (
+    ..
+    , Internal
+    , InternetFacing
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data LoadBalancerSchemeEnum = Internal
-                            | InternetFacing
-                                deriving (Eq, Ord, Read, Show, Enum, Bounded,
-                                          Data, Typeable, Generic)
+
+data LoadBalancerSchemeEnum = LoadBalancerSchemeEnum' (CI
+                                                         Text)
+                                deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                          Generic)
+
+pattern Internal :: LoadBalancerSchemeEnum
+pattern Internal = LoadBalancerSchemeEnum' "internal"
+
+pattern InternetFacing :: LoadBalancerSchemeEnum
+pattern InternetFacing = LoadBalancerSchemeEnum' "internet-facing"
+
+{-# COMPLETE
+  Internal,
+  InternetFacing,
+  LoadBalancerSchemeEnum' #-}
 
 instance FromText LoadBalancerSchemeEnum where
-    parser = takeLowerText >>= \case
-        "internal" -> pure Internal
-        "internet-facing" -> pure InternetFacing
-        e -> fromTextError $ "Failure parsing LoadBalancerSchemeEnum from value: '" <> e
-           <> "'. Accepted values: internal, internet-facing"
+    parser = (LoadBalancerSchemeEnum' . mk) <$> takeText
 
 instance ToText LoadBalancerSchemeEnum where
-    toText = \case
-        Internal -> "internal"
-        InternetFacing -> "internet-facing"
+    toText (LoadBalancerSchemeEnum' ci) = original ci
+
+-- | Represents an enum of /known/ $LoadBalancerSchemeEnum.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum LoadBalancerSchemeEnum where
+    toEnum i = case i of
+        0 -> Internal
+        1 -> InternetFacing
+        _ -> (error . showText) $ "Unknown index for LoadBalancerSchemeEnum: " <> toText i
+    fromEnum x = case x of
+        Internal -> 0
+        InternetFacing -> 1
+        LoadBalancerSchemeEnum' name -> (error . showText) $ "Unknown LoadBalancerSchemeEnum: " <> original name
+
+-- | Represents the bounds of /known/ $LoadBalancerSchemeEnum.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded LoadBalancerSchemeEnum where
+    minBound = Internal
+    maxBound = InternetFacing
 
 instance Hashable     LoadBalancerSchemeEnum
 instance NFData       LoadBalancerSchemeEnum

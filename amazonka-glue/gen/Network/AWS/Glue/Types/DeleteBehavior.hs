@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,29 +16,65 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.Glue.Types.DeleteBehavior where
+module Network.AWS.Glue.Types.DeleteBehavior (
+  DeleteBehavior (
+    ..
+    , DeleteFromDatabase
+    , DeprecateInDatabase
+    , Log
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data DeleteBehavior = DeleteFromDatabase
-                    | DeprecateInDatabase
-                    | Log
-                        deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                  Typeable, Generic)
+
+data DeleteBehavior = DeleteBehavior' (CI Text)
+                        deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                  Generic)
+
+pattern DeleteFromDatabase :: DeleteBehavior
+pattern DeleteFromDatabase = DeleteBehavior' "DELETE_FROM_DATABASE"
+
+pattern DeprecateInDatabase :: DeleteBehavior
+pattern DeprecateInDatabase = DeleteBehavior' "DEPRECATE_IN_DATABASE"
+
+pattern Log :: DeleteBehavior
+pattern Log = DeleteBehavior' "LOG"
+
+{-# COMPLETE
+  DeleteFromDatabase,
+  DeprecateInDatabase,
+  Log,
+  DeleteBehavior' #-}
 
 instance FromText DeleteBehavior where
-    parser = takeLowerText >>= \case
-        "delete_from_database" -> pure DeleteFromDatabase
-        "deprecate_in_database" -> pure DeprecateInDatabase
-        "log" -> pure Log
-        e -> fromTextError $ "Failure parsing DeleteBehavior from value: '" <> e
-           <> "'. Accepted values: delete_from_database, deprecate_in_database, log"
+    parser = (DeleteBehavior' . mk) <$> takeText
 
 instance ToText DeleteBehavior where
-    toText = \case
-        DeleteFromDatabase -> "DELETE_FROM_DATABASE"
-        DeprecateInDatabase -> "DEPRECATE_IN_DATABASE"
-        Log -> "LOG"
+    toText (DeleteBehavior' ci) = original ci
+
+-- | Represents an enum of /known/ $DeleteBehavior.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum DeleteBehavior where
+    toEnum i = case i of
+        0 -> DeleteFromDatabase
+        1 -> DeprecateInDatabase
+        2 -> Log
+        _ -> (error . showText) $ "Unknown index for DeleteBehavior: " <> toText i
+    fromEnum x = case x of
+        DeleteFromDatabase -> 0
+        DeprecateInDatabase -> 1
+        Log -> 2
+        DeleteBehavior' name -> (error . showText) $ "Unknown DeleteBehavior: " <> original name
+
+-- | Represents the bounds of /known/ $DeleteBehavior.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded DeleteBehavior where
+    minBound = DeleteFromDatabase
+    maxBound = Log
 
 instance Hashable     DeleteBehavior
 instance NFData       DeleteBehavior

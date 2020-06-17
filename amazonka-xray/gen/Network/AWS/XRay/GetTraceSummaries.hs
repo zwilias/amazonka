@@ -62,6 +62,7 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.XRay.Types
+import Network.AWS.XRay.Types.Product
 
 -- | /See:/ 'getTraceSummaries' smart constructor.
 data GetTraceSummaries = GetTraceSummaries'{_gtsFilterExpression

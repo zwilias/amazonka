@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,44 +16,101 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.IoT.Types.CannedAccessControlList where
+module Network.AWS.IoT.Types.CannedAccessControlList (
+  CannedAccessControlList (
+    ..
+    , AWSExecRead
+    , AuthenticatedRead
+    , BucketOwnerFullControl
+    , BucketOwnerRead
+    , LogDeliveryWrite
+    , Private
+    , PublicRead
+    , PublicReadWrite
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data CannedAccessControlList = AWSExecRead
-                             | AuthenticatedRead
-                             | BucketOwnerFullControl
-                             | BucketOwnerRead
-                             | LogDeliveryWrite
-                             | Private
-                             | PublicRead
-                             | PublicReadWrite
-                                 deriving (Eq, Ord, Read, Show, Enum, Bounded,
-                                           Data, Typeable, Generic)
+
+data CannedAccessControlList = CannedAccessControlList' (CI
+                                                           Text)
+                                 deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                           Generic)
+
+pattern AWSExecRead :: CannedAccessControlList
+pattern AWSExecRead = CannedAccessControlList' "aws-exec-read"
+
+pattern AuthenticatedRead :: CannedAccessControlList
+pattern AuthenticatedRead = CannedAccessControlList' "authenticated-read"
+
+pattern BucketOwnerFullControl :: CannedAccessControlList
+pattern BucketOwnerFullControl = CannedAccessControlList' "bucket-owner-full-control"
+
+pattern BucketOwnerRead :: CannedAccessControlList
+pattern BucketOwnerRead = CannedAccessControlList' "bucket-owner-read"
+
+pattern LogDeliveryWrite :: CannedAccessControlList
+pattern LogDeliveryWrite = CannedAccessControlList' "log-delivery-write"
+
+pattern Private :: CannedAccessControlList
+pattern Private = CannedAccessControlList' "private"
+
+pattern PublicRead :: CannedAccessControlList
+pattern PublicRead = CannedAccessControlList' "public-read"
+
+pattern PublicReadWrite :: CannedAccessControlList
+pattern PublicReadWrite = CannedAccessControlList' "public-read-write"
+
+{-# COMPLETE
+  AWSExecRead,
+  AuthenticatedRead,
+  BucketOwnerFullControl,
+  BucketOwnerRead,
+  LogDeliveryWrite,
+  Private,
+  PublicRead,
+  PublicReadWrite,
+  CannedAccessControlList' #-}
 
 instance FromText CannedAccessControlList where
-    parser = takeLowerText >>= \case
-        "aws-exec-read" -> pure AWSExecRead
-        "authenticated-read" -> pure AuthenticatedRead
-        "bucket-owner-full-control" -> pure BucketOwnerFullControl
-        "bucket-owner-read" -> pure BucketOwnerRead
-        "log-delivery-write" -> pure LogDeliveryWrite
-        "private" -> pure Private
-        "public-read" -> pure PublicRead
-        "public-read-write" -> pure PublicReadWrite
-        e -> fromTextError $ "Failure parsing CannedAccessControlList from value: '" <> e
-           <> "'. Accepted values: aws-exec-read, authenticated-read, bucket-owner-full-control, bucket-owner-read, log-delivery-write, private, public-read, public-read-write"
+    parser = (CannedAccessControlList' . mk) <$> takeText
 
 instance ToText CannedAccessControlList where
-    toText = \case
-        AWSExecRead -> "aws-exec-read"
-        AuthenticatedRead -> "authenticated-read"
-        BucketOwnerFullControl -> "bucket-owner-full-control"
-        BucketOwnerRead -> "bucket-owner-read"
-        LogDeliveryWrite -> "log-delivery-write"
-        Private -> "private"
-        PublicRead -> "public-read"
-        PublicReadWrite -> "public-read-write"
+    toText (CannedAccessControlList' ci) = original ci
+
+-- | Represents an enum of /known/ $CannedAccessControlList.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum CannedAccessControlList where
+    toEnum i = case i of
+        0 -> AWSExecRead
+        1 -> AuthenticatedRead
+        2 -> BucketOwnerFullControl
+        3 -> BucketOwnerRead
+        4 -> LogDeliveryWrite
+        5 -> Private
+        6 -> PublicRead
+        7 -> PublicReadWrite
+        _ -> (error . showText) $ "Unknown index for CannedAccessControlList: " <> toText i
+    fromEnum x = case x of
+        AWSExecRead -> 0
+        AuthenticatedRead -> 1
+        BucketOwnerFullControl -> 2
+        BucketOwnerRead -> 3
+        LogDeliveryWrite -> 4
+        Private -> 5
+        PublicRead -> 6
+        PublicReadWrite -> 7
+        CannedAccessControlList' name -> (error . showText) $ "Unknown CannedAccessControlList: " <> original name
+
+-- | Represents the bounds of /known/ $CannedAccessControlList.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded CannedAccessControlList where
+    minBound = AWSExecRead
+    maxBound = PublicReadWrite
 
 instance Hashable     CannedAccessControlList
 instance NFData       CannedAccessControlList

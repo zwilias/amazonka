@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,42 +16,94 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.SSM.Types.AutomationExecutionFilterKey where
+module Network.AWS.SSM.Types.AutomationExecutionFilterKey (
+  AutomationExecutionFilterKey (
+    ..
+    , AEFKCurrentAction
+    , AEFKDocumentNamePrefix
+    , AEFKExecutionId
+    , AEFKExecutionStatus
+    , AEFKParentExecutionId
+    , AEFKStartTimeAfter
+    , AEFKStartTimeBefore
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data AutomationExecutionFilterKey = AEFKCurrentAction
-                                  | AEFKDocumentNamePrefix
-                                  | AEFKExecutionId
-                                  | AEFKExecutionStatus
-                                  | AEFKParentExecutionId
-                                  | AEFKStartTimeAfter
-                                  | AEFKStartTimeBefore
-                                      deriving (Eq, Ord, Read, Show, Enum,
-                                                Bounded, Data, Typeable,
-                                                Generic)
+
+data AutomationExecutionFilterKey = AutomationExecutionFilterKey' (CI
+                                                                     Text)
+                                      deriving (Eq, Ord, Read, Show, Data,
+                                                Typeable, Generic)
+
+pattern AEFKCurrentAction :: AutomationExecutionFilterKey
+pattern AEFKCurrentAction = AutomationExecutionFilterKey' "CurrentAction"
+
+pattern AEFKDocumentNamePrefix :: AutomationExecutionFilterKey
+pattern AEFKDocumentNamePrefix = AutomationExecutionFilterKey' "DocumentNamePrefix"
+
+pattern AEFKExecutionId :: AutomationExecutionFilterKey
+pattern AEFKExecutionId = AutomationExecutionFilterKey' "ExecutionId"
+
+pattern AEFKExecutionStatus :: AutomationExecutionFilterKey
+pattern AEFKExecutionStatus = AutomationExecutionFilterKey' "ExecutionStatus"
+
+pattern AEFKParentExecutionId :: AutomationExecutionFilterKey
+pattern AEFKParentExecutionId = AutomationExecutionFilterKey' "ParentExecutionId"
+
+pattern AEFKStartTimeAfter :: AutomationExecutionFilterKey
+pattern AEFKStartTimeAfter = AutomationExecutionFilterKey' "StartTimeAfter"
+
+pattern AEFKStartTimeBefore :: AutomationExecutionFilterKey
+pattern AEFKStartTimeBefore = AutomationExecutionFilterKey' "StartTimeBefore"
+
+{-# COMPLETE
+  AEFKCurrentAction,
+  AEFKDocumentNamePrefix,
+  AEFKExecutionId,
+  AEFKExecutionStatus,
+  AEFKParentExecutionId,
+  AEFKStartTimeAfter,
+  AEFKStartTimeBefore,
+  AutomationExecutionFilterKey' #-}
 
 instance FromText AutomationExecutionFilterKey where
-    parser = takeLowerText >>= \case
-        "currentaction" -> pure AEFKCurrentAction
-        "documentnameprefix" -> pure AEFKDocumentNamePrefix
-        "executionid" -> pure AEFKExecutionId
-        "executionstatus" -> pure AEFKExecutionStatus
-        "parentexecutionid" -> pure AEFKParentExecutionId
-        "starttimeafter" -> pure AEFKStartTimeAfter
-        "starttimebefore" -> pure AEFKStartTimeBefore
-        e -> fromTextError $ "Failure parsing AutomationExecutionFilterKey from value: '" <> e
-           <> "'. Accepted values: currentaction, documentnameprefix, executionid, executionstatus, parentexecutionid, starttimeafter, starttimebefore"
+    parser = (AutomationExecutionFilterKey' . mk) <$> takeText
 
 instance ToText AutomationExecutionFilterKey where
-    toText = \case
-        AEFKCurrentAction -> "CurrentAction"
-        AEFKDocumentNamePrefix -> "DocumentNamePrefix"
-        AEFKExecutionId -> "ExecutionId"
-        AEFKExecutionStatus -> "ExecutionStatus"
-        AEFKParentExecutionId -> "ParentExecutionId"
-        AEFKStartTimeAfter -> "StartTimeAfter"
-        AEFKStartTimeBefore -> "StartTimeBefore"
+    toText (AutomationExecutionFilterKey' ci) = original ci
+
+-- | Represents an enum of /known/ $AutomationExecutionFilterKey.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum AutomationExecutionFilterKey where
+    toEnum i = case i of
+        0 -> AEFKCurrentAction
+        1 -> AEFKDocumentNamePrefix
+        2 -> AEFKExecutionId
+        3 -> AEFKExecutionStatus
+        4 -> AEFKParentExecutionId
+        5 -> AEFKStartTimeAfter
+        6 -> AEFKStartTimeBefore
+        _ -> (error . showText) $ "Unknown index for AutomationExecutionFilterKey: " <> toText i
+    fromEnum x = case x of
+        AEFKCurrentAction -> 0
+        AEFKDocumentNamePrefix -> 1
+        AEFKExecutionId -> 2
+        AEFKExecutionStatus -> 3
+        AEFKParentExecutionId -> 4
+        AEFKStartTimeAfter -> 5
+        AEFKStartTimeBefore -> 6
+        AutomationExecutionFilterKey' name -> (error . showText) $ "Unknown AutomationExecutionFilterKey: " <> original name
+
+-- | Represents the bounds of /known/ $AutomationExecutionFilterKey.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded AutomationExecutionFilterKey where
+    minBound = AEFKCurrentAction
+    maxBound = AEFKStartTimeBefore
 
 instance Hashable     AutomationExecutionFilterKey
 instance NFData       AutomationExecutionFilterKey

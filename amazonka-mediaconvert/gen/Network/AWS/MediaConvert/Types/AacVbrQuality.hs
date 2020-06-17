@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,33 +16,73 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.MediaConvert.Types.AacVbrQuality where
+module Network.AWS.MediaConvert.Types.AacVbrQuality (
+  AacVbrQuality (
+    ..
+    , AVQHigh
+    , AVQLow
+    , AVQMediumHigh
+    , AVQMediumLow
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
+
 -- | VBR Quality Level - Only used if rate_control_mode is VBR.
-data AacVbrQuality = AVQHigh
-                   | AVQLow
-                   | AVQMediumHigh
-                   | AVQMediumLow
-                       deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                 Typeable, Generic)
+data AacVbrQuality = AacVbrQuality' (CI Text)
+                       deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                 Generic)
+
+pattern AVQHigh :: AacVbrQuality
+pattern AVQHigh = AacVbrQuality' "HIGH"
+
+pattern AVQLow :: AacVbrQuality
+pattern AVQLow = AacVbrQuality' "LOW"
+
+pattern AVQMediumHigh :: AacVbrQuality
+pattern AVQMediumHigh = AacVbrQuality' "MEDIUM_HIGH"
+
+pattern AVQMediumLow :: AacVbrQuality
+pattern AVQMediumLow = AacVbrQuality' "MEDIUM_LOW"
+
+{-# COMPLETE
+  AVQHigh,
+  AVQLow,
+  AVQMediumHigh,
+  AVQMediumLow,
+  AacVbrQuality' #-}
 
 instance FromText AacVbrQuality where
-    parser = takeLowerText >>= \case
-        "high" -> pure AVQHigh
-        "low" -> pure AVQLow
-        "medium_high" -> pure AVQMediumHigh
-        "medium_low" -> pure AVQMediumLow
-        e -> fromTextError $ "Failure parsing AacVbrQuality from value: '" <> e
-           <> "'. Accepted values: high, low, medium_high, medium_low"
+    parser = (AacVbrQuality' . mk) <$> takeText
 
 instance ToText AacVbrQuality where
-    toText = \case
-        AVQHigh -> "HIGH"
-        AVQLow -> "LOW"
-        AVQMediumHigh -> "MEDIUM_HIGH"
-        AVQMediumLow -> "MEDIUM_LOW"
+    toText (AacVbrQuality' ci) = original ci
+
+-- | Represents an enum of /known/ $AacVbrQuality.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum AacVbrQuality where
+    toEnum i = case i of
+        0 -> AVQHigh
+        1 -> AVQLow
+        2 -> AVQMediumHigh
+        3 -> AVQMediumLow
+        _ -> (error . showText) $ "Unknown index for AacVbrQuality: " <> toText i
+    fromEnum x = case x of
+        AVQHigh -> 0
+        AVQLow -> 1
+        AVQMediumHigh -> 2
+        AVQMediumLow -> 3
+        AacVbrQuality' name -> (error . showText) $ "Unknown AacVbrQuality: " <> original name
+
+-- | Represents the bounds of /known/ $AacVbrQuality.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded AacVbrQuality where
+    minBound = AVQHigh
+    maxBound = AVQMediumLow
 
 instance Hashable     AacVbrQuality
 instance NFData       AacVbrQuality

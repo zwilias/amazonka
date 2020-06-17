@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,24 +16,52 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.SWF.Types.StartLambdaFunctionFailedCause where
+module Network.AWS.SWF.Types.StartLambdaFunctionFailedCause (
+  StartLambdaFunctionFailedCause (
+    ..
+    , AssumeRoleFailed
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data StartLambdaFunctionFailedCause = AssumeRoleFailed
-                                        deriving (Eq, Ord, Read, Show, Enum,
-                                                  Bounded, Data, Typeable,
-                                                  Generic)
+
+data StartLambdaFunctionFailedCause = StartLambdaFunctionFailedCause' (CI
+                                                                         Text)
+                                        deriving (Eq, Ord, Read, Show, Data,
+                                                  Typeable, Generic)
+
+pattern AssumeRoleFailed :: StartLambdaFunctionFailedCause
+pattern AssumeRoleFailed = StartLambdaFunctionFailedCause' "ASSUME_ROLE_FAILED"
+
+{-# COMPLETE
+  AssumeRoleFailed,
+  StartLambdaFunctionFailedCause' #-}
 
 instance FromText StartLambdaFunctionFailedCause where
-    parser = takeLowerText >>= \case
-        "assume_role_failed" -> pure AssumeRoleFailed
-        e -> fromTextError $ "Failure parsing StartLambdaFunctionFailedCause from value: '" <> e
-           <> "'. Accepted values: assume_role_failed"
+    parser = (StartLambdaFunctionFailedCause' . mk) <$> takeText
 
 instance ToText StartLambdaFunctionFailedCause where
-    toText = \case
-        AssumeRoleFailed -> "ASSUME_ROLE_FAILED"
+    toText (StartLambdaFunctionFailedCause' ci) = original ci
+
+-- | Represents an enum of /known/ $StartLambdaFunctionFailedCause.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum StartLambdaFunctionFailedCause where
+    toEnum i = case i of
+        0 -> AssumeRoleFailed
+        _ -> (error . showText) $ "Unknown index for StartLambdaFunctionFailedCause: " <> toText i
+    fromEnum x = case x of
+        AssumeRoleFailed -> 0
+        StartLambdaFunctionFailedCause' name -> (error . showText) $ "Unknown StartLambdaFunctionFailedCause: " <> original name
+
+-- | Represents the bounds of /known/ $StartLambdaFunctionFailedCause.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded StartLambdaFunctionFailedCause where
+    minBound = AssumeRoleFailed
+    maxBound = AssumeRoleFailed
 
 instance Hashable     StartLambdaFunctionFailedCause
 instance NFData       StartLambdaFunctionFailedCause

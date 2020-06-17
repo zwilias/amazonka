@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,23 +16,51 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.Pricing.Types.FilterType where
+module Network.AWS.Pricing.Types.FilterType (
+  FilterType (
+    ..
+    , TermMatch
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data FilterType = TermMatch
-                    deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                              Typeable, Generic)
+
+data FilterType = FilterType' (CI Text)
+                    deriving (Eq, Ord, Read, Show, Data, Typeable,
+                              Generic)
+
+pattern TermMatch :: FilterType
+pattern TermMatch = FilterType' "TERM_MATCH"
+
+{-# COMPLETE
+  TermMatch,
+  FilterType' #-}
 
 instance FromText FilterType where
-    parser = takeLowerText >>= \case
-        "term_match" -> pure TermMatch
-        e -> fromTextError $ "Failure parsing FilterType from value: '" <> e
-           <> "'. Accepted values: term_match"
+    parser = (FilterType' . mk) <$> takeText
 
 instance ToText FilterType where
-    toText = \case
-        TermMatch -> "TERM_MATCH"
+    toText (FilterType' ci) = original ci
+
+-- | Represents an enum of /known/ $FilterType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum FilterType where
+    toEnum i = case i of
+        0 -> TermMatch
+        _ -> (error . showText) $ "Unknown index for FilterType: " <> toText i
+    fromEnum x = case x of
+        TermMatch -> 0
+        FilterType' name -> (error . showText) $ "Unknown FilterType: " <> original name
+
+-- | Represents the bounds of /known/ $FilterType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded FilterType where
+    minBound = TermMatch
+    maxBound = TermMatch
 
 instance Hashable     FilterType
 instance NFData       FilterType

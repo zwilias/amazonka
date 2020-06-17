@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,36 +16,80 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.MediaLive.Types.InputType where
+module Network.AWS.MediaLive.Types.InputType (
+  InputType (
+    ..
+    , RtmpPull
+    , RtmpPush
+    , RtpPush
+    , URLPull
+    , UdpPush
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
+
 -- | Placeholder documentation for InputType
-data InputType = RtmpPull
-               | RtmpPush
-               | RtpPush
-               | URLPull
-               | UdpPush
-                   deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                             Typeable, Generic)
+data InputType = InputType' (CI Text)
+                   deriving (Eq, Ord, Read, Show, Data, Typeable,
+                             Generic)
+
+pattern RtmpPull :: InputType
+pattern RtmpPull = InputType' "RTMP_PULL"
+
+pattern RtmpPush :: InputType
+pattern RtmpPush = InputType' "RTMP_PUSH"
+
+pattern RtpPush :: InputType
+pattern RtpPush = InputType' "RTP_PUSH"
+
+pattern URLPull :: InputType
+pattern URLPull = InputType' "URL_PULL"
+
+pattern UdpPush :: InputType
+pattern UdpPush = InputType' "UDP_PUSH"
+
+{-# COMPLETE
+  RtmpPull,
+  RtmpPush,
+  RtpPush,
+  URLPull,
+  UdpPush,
+  InputType' #-}
 
 instance FromText InputType where
-    parser = takeLowerText >>= \case
-        "rtmp_pull" -> pure RtmpPull
-        "rtmp_push" -> pure RtmpPush
-        "rtp_push" -> pure RtpPush
-        "url_pull" -> pure URLPull
-        "udp_push" -> pure UdpPush
-        e -> fromTextError $ "Failure parsing InputType from value: '" <> e
-           <> "'. Accepted values: rtmp_pull, rtmp_push, rtp_push, url_pull, udp_push"
+    parser = (InputType' . mk) <$> takeText
 
 instance ToText InputType where
-    toText = \case
-        RtmpPull -> "RTMP_PULL"
-        RtmpPush -> "RTMP_PUSH"
-        RtpPush -> "RTP_PUSH"
-        URLPull -> "URL_PULL"
-        UdpPush -> "UDP_PUSH"
+    toText (InputType' ci) = original ci
+
+-- | Represents an enum of /known/ $InputType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum InputType where
+    toEnum i = case i of
+        0 -> RtmpPull
+        1 -> RtmpPush
+        2 -> RtpPush
+        3 -> URLPull
+        4 -> UdpPush
+        _ -> (error . showText) $ "Unknown index for InputType: " <> toText i
+    fromEnum x = case x of
+        RtmpPull -> 0
+        RtmpPush -> 1
+        RtpPush -> 2
+        URLPull -> 3
+        UdpPush -> 4
+        InputType' name -> (error . showText) $ "Unknown InputType: " <> original name
+
+-- | Represents the bounds of /known/ $InputType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded InputType where
+    minBound = RtmpPull
+    maxBound = UdpPush
 
 instance Hashable     InputType
 instance NFData       InputType

@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,36 +16,80 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.EC2.Types.SpotInstanceState where
+module Network.AWS.EC2.Types.SpotInstanceState (
+  SpotInstanceState (
+    ..
+    , SISActive
+    , SISCancelled
+    , SISClosed
+    , SISFailed
+    , SISOpen
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.EC2.Internal
 import Network.AWS.Prelude
-  
-data SpotInstanceState = SISActive
-                       | SISCancelled
-                       | SISClosed
-                       | SISFailed
-                       | SISOpen
-                           deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                     Typeable, Generic)
+
+data SpotInstanceState = SpotInstanceState' (CI Text)
+                           deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                     Generic)
+
+pattern SISActive :: SpotInstanceState
+pattern SISActive = SpotInstanceState' "active"
+
+pattern SISCancelled :: SpotInstanceState
+pattern SISCancelled = SpotInstanceState' "cancelled"
+
+pattern SISClosed :: SpotInstanceState
+pattern SISClosed = SpotInstanceState' "closed"
+
+pattern SISFailed :: SpotInstanceState
+pattern SISFailed = SpotInstanceState' "failed"
+
+pattern SISOpen :: SpotInstanceState
+pattern SISOpen = SpotInstanceState' "open"
+
+{-# COMPLETE
+  SISActive,
+  SISCancelled,
+  SISClosed,
+  SISFailed,
+  SISOpen,
+  SpotInstanceState' #-}
 
 instance FromText SpotInstanceState where
-    parser = takeLowerText >>= \case
-        "active" -> pure SISActive
-        "cancelled" -> pure SISCancelled
-        "closed" -> pure SISClosed
-        "failed" -> pure SISFailed
-        "open" -> pure SISOpen
-        e -> fromTextError $ "Failure parsing SpotInstanceState from value: '" <> e
-           <> "'. Accepted values: active, cancelled, closed, failed, open"
+    parser = (SpotInstanceState' . mk) <$> takeText
 
 instance ToText SpotInstanceState where
-    toText = \case
-        SISActive -> "active"
-        SISCancelled -> "cancelled"
-        SISClosed -> "closed"
-        SISFailed -> "failed"
-        SISOpen -> "open"
+    toText (SpotInstanceState' ci) = original ci
+
+-- | Represents an enum of /known/ $SpotInstanceState.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum SpotInstanceState where
+    toEnum i = case i of
+        0 -> SISActive
+        1 -> SISCancelled
+        2 -> SISClosed
+        3 -> SISFailed
+        4 -> SISOpen
+        _ -> (error . showText) $ "Unknown index for SpotInstanceState: " <> toText i
+    fromEnum x = case x of
+        SISActive -> 0
+        SISCancelled -> 1
+        SISClosed -> 2
+        SISFailed -> 3
+        SISOpen -> 4
+        SpotInstanceState' name -> (error . showText) $ "Unknown SpotInstanceState: " <> original name
+
+-- | Represents the bounds of /known/ $SpotInstanceState.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded SpotInstanceState where
+    minBound = SISActive
+    maxBound = SISOpen
 
 instance Hashable     SpotInstanceState
 instance NFData       SpotInstanceState

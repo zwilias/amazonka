@@ -39,6 +39,7 @@ module Network.AWS.MediaConvert.DescribeEndpoints
 
 import Network.AWS.Lens
 import Network.AWS.MediaConvert.Types
+import Network.AWS.MediaConvert.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response

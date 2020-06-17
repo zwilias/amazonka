@@ -40,6 +40,7 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.Route53.Types
+import Network.AWS.Route53.Types.Product
 
 -- | A request to retrieve a count of all the hosted zones that are associated with the current AWS account.
 --

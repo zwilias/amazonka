@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,24 +16,53 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.EC2.Types.TrafficMirrorNetworkService where
+module Network.AWS.EC2.Types.TrafficMirrorNetworkService (
+  TrafficMirrorNetworkService (
+    ..
+    , AmazonDNS
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.EC2.Internal
 import Network.AWS.Prelude
-  
-data TrafficMirrorNetworkService = AmazonDNS
-                                     deriving (Eq, Ord, Read, Show, Enum,
-                                               Bounded, Data, Typeable, Generic)
+
+data TrafficMirrorNetworkService = TrafficMirrorNetworkService' (CI
+                                                                   Text)
+                                     deriving (Eq, Ord, Read, Show, Data,
+                                               Typeable, Generic)
+
+pattern AmazonDNS :: TrafficMirrorNetworkService
+pattern AmazonDNS = TrafficMirrorNetworkService' "amazon-dns"
+
+{-# COMPLETE
+  AmazonDNS,
+  TrafficMirrorNetworkService' #-}
 
 instance FromText TrafficMirrorNetworkService where
-    parser = takeLowerText >>= \case
-        "amazon-dns" -> pure AmazonDNS
-        e -> fromTextError $ "Failure parsing TrafficMirrorNetworkService from value: '" <> e
-           <> "'. Accepted values: amazon-dns"
+    parser = (TrafficMirrorNetworkService' . mk) <$> takeText
 
 instance ToText TrafficMirrorNetworkService where
-    toText = \case
-        AmazonDNS -> "amazon-dns"
+    toText (TrafficMirrorNetworkService' ci) = original ci
+
+-- | Represents an enum of /known/ $TrafficMirrorNetworkService.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum TrafficMirrorNetworkService where
+    toEnum i = case i of
+        0 -> AmazonDNS
+        _ -> (error . showText) $ "Unknown index for TrafficMirrorNetworkService: " <> toText i
+    fromEnum x = case x of
+        AmazonDNS -> 0
+        TrafficMirrorNetworkService' name -> (error . showText) $ "Unknown TrafficMirrorNetworkService: " <> original name
+
+-- | Represents the bounds of /known/ $TrafficMirrorNetworkService.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded TrafficMirrorNetworkService where
+    minBound = AmazonDNS
+    maxBound = AmazonDNS
 
 instance Hashable     TrafficMirrorNetworkService
 instance NFData       TrafficMirrorNetworkService

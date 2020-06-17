@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,30 +16,66 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.MediaLive.Types.AacProfile where
+module Network.AWS.MediaLive.Types.AacProfile (
+  AacProfile (
+    ..
+    , HEV1
+    , HEV2
+    , LC
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
+
 -- | Placeholder documentation for AacProfile
-data AacProfile = HEV1
-                | HEV2
-                | LC
-                    deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                              Typeable, Generic)
+data AacProfile = AacProfile' (CI Text)
+                    deriving (Eq, Ord, Read, Show, Data, Typeable,
+                              Generic)
+
+pattern HEV1 :: AacProfile
+pattern HEV1 = AacProfile' "HEV1"
+
+pattern HEV2 :: AacProfile
+pattern HEV2 = AacProfile' "HEV2"
+
+pattern LC :: AacProfile
+pattern LC = AacProfile' "LC"
+
+{-# COMPLETE
+  HEV1,
+  HEV2,
+  LC,
+  AacProfile' #-}
 
 instance FromText AacProfile where
-    parser = takeLowerText >>= \case
-        "hev1" -> pure HEV1
-        "hev2" -> pure HEV2
-        "lc" -> pure LC
-        e -> fromTextError $ "Failure parsing AacProfile from value: '" <> e
-           <> "'. Accepted values: hev1, hev2, lc"
+    parser = (AacProfile' . mk) <$> takeText
 
 instance ToText AacProfile where
-    toText = \case
-        HEV1 -> "HEV1"
-        HEV2 -> "HEV2"
-        LC -> "LC"
+    toText (AacProfile' ci) = original ci
+
+-- | Represents an enum of /known/ $AacProfile.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum AacProfile where
+    toEnum i = case i of
+        0 -> HEV1
+        1 -> HEV2
+        2 -> LC
+        _ -> (error . showText) $ "Unknown index for AacProfile: " <> toText i
+    fromEnum x = case x of
+        HEV1 -> 0
+        HEV2 -> 1
+        LC -> 2
+        AacProfile' name -> (error . showText) $ "Unknown AacProfile: " <> original name
+
+-- | Represents the bounds of /known/ $AacProfile.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded AacProfile where
+    minBound = HEV1
+    maxBound = LC
 
 instance Hashable     AacProfile
 instance NFData       AacProfile

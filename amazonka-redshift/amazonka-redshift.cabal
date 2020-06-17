@@ -144,6 +144,7 @@ library
         , Network.AWS.Redshift.Types.Parameter
         , Network.AWS.Redshift.Types.ParameterApplyType
         , Network.AWS.Redshift.Types.PendingModifiedValues
+        , Network.AWS.Redshift.Types.Product
         , Network.AWS.Redshift.Types.RecurringCharge
         , Network.AWS.Redshift.Types.ReservedNode
         , Network.AWS.Redshift.Types.ReservedNodeOffering
@@ -163,6 +164,7 @@ library
     build-depends:
           amazonka-core == 1.6.1.*
         , base          >= 4.7     && < 5
+        , case-insensitive
 
 test-suite amazonka-redshift-test
     type:              exitcode-stdio-1.0
@@ -186,6 +188,7 @@ test-suite amazonka-redshift-test
         , amazonka-redshift
         , base
         , bytestring
+        , case-insensitive
         , tasty
         , tasty-hunit
         , text

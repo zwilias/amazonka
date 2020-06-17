@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,29 +16,66 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.Route53Domains.Types.ReachabilityStatus where
+module Network.AWS.Route53Domains.Types.ReachabilityStatus (
+  ReachabilityStatus (
+    ..
+    , Done
+    , Expired
+    , Pending
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data ReachabilityStatus = Done
-                        | Expired
-                        | Pending
-                            deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                      Typeable, Generic)
+
+data ReachabilityStatus = ReachabilityStatus' (CI
+                                                 Text)
+                            deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                      Generic)
+
+pattern Done :: ReachabilityStatus
+pattern Done = ReachabilityStatus' "DONE"
+
+pattern Expired :: ReachabilityStatus
+pattern Expired = ReachabilityStatus' "EXPIRED"
+
+pattern Pending :: ReachabilityStatus
+pattern Pending = ReachabilityStatus' "PENDING"
+
+{-# COMPLETE
+  Done,
+  Expired,
+  Pending,
+  ReachabilityStatus' #-}
 
 instance FromText ReachabilityStatus where
-    parser = takeLowerText >>= \case
-        "done" -> pure Done
-        "expired" -> pure Expired
-        "pending" -> pure Pending
-        e -> fromTextError $ "Failure parsing ReachabilityStatus from value: '" <> e
-           <> "'. Accepted values: done, expired, pending"
+    parser = (ReachabilityStatus' . mk) <$> takeText
 
 instance ToText ReachabilityStatus where
-    toText = \case
-        Done -> "DONE"
-        Expired -> "EXPIRED"
-        Pending -> "PENDING"
+    toText (ReachabilityStatus' ci) = original ci
+
+-- | Represents an enum of /known/ $ReachabilityStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum ReachabilityStatus where
+    toEnum i = case i of
+        0 -> Done
+        1 -> Expired
+        2 -> Pending
+        _ -> (error . showText) $ "Unknown index for ReachabilityStatus: " <> toText i
+    fromEnum x = case x of
+        Done -> 0
+        Expired -> 1
+        Pending -> 2
+        ReachabilityStatus' name -> (error . showText) $ "Unknown ReachabilityStatus: " <> original name
+
+-- | Represents the bounds of /known/ $ReachabilityStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded ReachabilityStatus where
+    minBound = Done
+    maxBound = Pending
 
 instance Hashable     ReachabilityStatus
 instance NFData       ReachabilityStatus

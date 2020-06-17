@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,59 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.CostExplorer.Types.RecommendationTarget where
+module Network.AWS.CostExplorer.Types.RecommendationTarget (
+  RecommendationTarget (
+    ..
+    , CrossInstanceFamily
+    , SameInstanceFamily
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data RecommendationTarget = CrossInstanceFamily
-                          | SameInstanceFamily
-                              deriving (Eq, Ord, Read, Show, Enum, Bounded,
-                                        Data, Typeable, Generic)
+
+data RecommendationTarget = RecommendationTarget' (CI
+                                                     Text)
+                              deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                        Generic)
+
+pattern CrossInstanceFamily :: RecommendationTarget
+pattern CrossInstanceFamily = RecommendationTarget' "CROSS_INSTANCE_FAMILY"
+
+pattern SameInstanceFamily :: RecommendationTarget
+pattern SameInstanceFamily = RecommendationTarget' "SAME_INSTANCE_FAMILY"
+
+{-# COMPLETE
+  CrossInstanceFamily,
+  SameInstanceFamily,
+  RecommendationTarget' #-}
 
 instance FromText RecommendationTarget where
-    parser = takeLowerText >>= \case
-        "cross_instance_family" -> pure CrossInstanceFamily
-        "same_instance_family" -> pure SameInstanceFamily
-        e -> fromTextError $ "Failure parsing RecommendationTarget from value: '" <> e
-           <> "'. Accepted values: cross_instance_family, same_instance_family"
+    parser = (RecommendationTarget' . mk) <$> takeText
 
 instance ToText RecommendationTarget where
-    toText = \case
-        CrossInstanceFamily -> "CROSS_INSTANCE_FAMILY"
-        SameInstanceFamily -> "SAME_INSTANCE_FAMILY"
+    toText (RecommendationTarget' ci) = original ci
+
+-- | Represents an enum of /known/ $RecommendationTarget.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum RecommendationTarget where
+    toEnum i = case i of
+        0 -> CrossInstanceFamily
+        1 -> SameInstanceFamily
+        _ -> (error . showText) $ "Unknown index for RecommendationTarget: " <> toText i
+    fromEnum x = case x of
+        CrossInstanceFamily -> 0
+        SameInstanceFamily -> 1
+        RecommendationTarget' name -> (error . showText) $ "Unknown RecommendationTarget: " <> original name
+
+-- | Represents the bounds of /known/ $RecommendationTarget.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded RecommendationTarget where
+    minBound = CrossInstanceFamily
+    maxBound = SameInstanceFamily
 
 instance Hashable     RecommendationTarget
 instance NFData       RecommendationTarget

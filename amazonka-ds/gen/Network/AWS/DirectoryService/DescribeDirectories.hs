@@ -49,6 +49,7 @@ module Network.AWS.DirectoryService.DescribeDirectories
     ) where
 
 import Network.AWS.DirectoryService.Types
+import Network.AWS.DirectoryService.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude

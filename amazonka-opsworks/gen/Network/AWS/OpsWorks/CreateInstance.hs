@@ -58,6 +58,7 @@ module Network.AWS.OpsWorks.CreateInstance
 
 import Network.AWS.Lens
 import Network.AWS.OpsWorks.Types
+import Network.AWS.OpsWorks.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response

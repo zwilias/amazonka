@@ -53,10 +53,12 @@ library
         , Network.AWS.IoTData.Waiters
 
     other-modules:
+          Network.AWS.IoTData.Types.Product
 
     build-depends:
           amazonka-core == 1.6.1.*
         , base          >= 4.7     && < 5
+        , case-insensitive
 
 test-suite amazonka-iot-dataplane-test
     type:              exitcode-stdio-1.0
@@ -80,6 +82,7 @@ test-suite amazonka-iot-dataplane-test
         , amazonka-iot-dataplane
         , base
         , bytestring
+        , case-insensitive
         , tasty
         , tasty-hunit
         , text

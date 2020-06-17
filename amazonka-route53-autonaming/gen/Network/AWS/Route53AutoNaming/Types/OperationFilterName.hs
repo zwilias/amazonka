@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,35 +16,80 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.Route53AutoNaming.Types.OperationFilterName where
+module Network.AWS.Route53AutoNaming.Types.OperationFilterName (
+  OperationFilterName (
+    ..
+    , OFNNamespaceId
+    , OFNServiceId
+    , OFNStatus
+    , OFNType
+    , OFNUpdateDate
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data OperationFilterName = OFNNamespaceId
-                         | OFNServiceId
-                         | OFNStatus
-                         | OFNType
-                         | OFNUpdateDate
-                             deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                       Typeable, Generic)
+
+data OperationFilterName = OperationFilterName' (CI
+                                                   Text)
+                             deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                       Generic)
+
+pattern OFNNamespaceId :: OperationFilterName
+pattern OFNNamespaceId = OperationFilterName' "NAMESPACE_ID"
+
+pattern OFNServiceId :: OperationFilterName
+pattern OFNServiceId = OperationFilterName' "SERVICE_ID"
+
+pattern OFNStatus :: OperationFilterName
+pattern OFNStatus = OperationFilterName' "STATUS"
+
+pattern OFNType :: OperationFilterName
+pattern OFNType = OperationFilterName' "TYPE"
+
+pattern OFNUpdateDate :: OperationFilterName
+pattern OFNUpdateDate = OperationFilterName' "UPDATE_DATE"
+
+{-# COMPLETE
+  OFNNamespaceId,
+  OFNServiceId,
+  OFNStatus,
+  OFNType,
+  OFNUpdateDate,
+  OperationFilterName' #-}
 
 instance FromText OperationFilterName where
-    parser = takeLowerText >>= \case
-        "namespace_id" -> pure OFNNamespaceId
-        "service_id" -> pure OFNServiceId
-        "status" -> pure OFNStatus
-        "type" -> pure OFNType
-        "update_date" -> pure OFNUpdateDate
-        e -> fromTextError $ "Failure parsing OperationFilterName from value: '" <> e
-           <> "'. Accepted values: namespace_id, service_id, status, type, update_date"
+    parser = (OperationFilterName' . mk) <$> takeText
 
 instance ToText OperationFilterName where
-    toText = \case
-        OFNNamespaceId -> "NAMESPACE_ID"
-        OFNServiceId -> "SERVICE_ID"
-        OFNStatus -> "STATUS"
-        OFNType -> "TYPE"
-        OFNUpdateDate -> "UPDATE_DATE"
+    toText (OperationFilterName' ci) = original ci
+
+-- | Represents an enum of /known/ $OperationFilterName.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum OperationFilterName where
+    toEnum i = case i of
+        0 -> OFNNamespaceId
+        1 -> OFNServiceId
+        2 -> OFNStatus
+        3 -> OFNType
+        4 -> OFNUpdateDate
+        _ -> (error . showText) $ "Unknown index for OperationFilterName: " <> toText i
+    fromEnum x = case x of
+        OFNNamespaceId -> 0
+        OFNServiceId -> 1
+        OFNStatus -> 2
+        OFNType -> 3
+        OFNUpdateDate -> 4
+        OperationFilterName' name -> (error . showText) $ "Unknown OperationFilterName: " <> original name
+
+-- | Represents the bounds of /known/ $OperationFilterName.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded OperationFilterName where
+    minBound = OFNNamespaceId
+    maxBound = OFNUpdateDate
 
 instance Hashable     OperationFilterName
 instance NFData       OperationFilterName

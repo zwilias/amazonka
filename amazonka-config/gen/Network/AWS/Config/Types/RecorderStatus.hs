@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,29 +16,65 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.Config.Types.RecorderStatus where
+module Network.AWS.Config.Types.RecorderStatus (
+  RecorderStatus (
+    ..
+    , RSFailure
+    , RSPending
+    , RSSuccess
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data RecorderStatus = RSFailure
-                    | RSPending
-                    | RSSuccess
-                        deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                  Typeable, Generic)
+
+data RecorderStatus = RecorderStatus' (CI Text)
+                        deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                  Generic)
+
+pattern RSFailure :: RecorderStatus
+pattern RSFailure = RecorderStatus' "Failure"
+
+pattern RSPending :: RecorderStatus
+pattern RSPending = RecorderStatus' "Pending"
+
+pattern RSSuccess :: RecorderStatus
+pattern RSSuccess = RecorderStatus' "Success"
+
+{-# COMPLETE
+  RSFailure,
+  RSPending,
+  RSSuccess,
+  RecorderStatus' #-}
 
 instance FromText RecorderStatus where
-    parser = takeLowerText >>= \case
-        "failure" -> pure RSFailure
-        "pending" -> pure RSPending
-        "success" -> pure RSSuccess
-        e -> fromTextError $ "Failure parsing RecorderStatus from value: '" <> e
-           <> "'. Accepted values: failure, pending, success"
+    parser = (RecorderStatus' . mk) <$> takeText
 
 instance ToText RecorderStatus where
-    toText = \case
-        RSFailure -> "Failure"
-        RSPending -> "Pending"
-        RSSuccess -> "Success"
+    toText (RecorderStatus' ci) = original ci
+
+-- | Represents an enum of /known/ $RecorderStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum RecorderStatus where
+    toEnum i = case i of
+        0 -> RSFailure
+        1 -> RSPending
+        2 -> RSSuccess
+        _ -> (error . showText) $ "Unknown index for RecorderStatus: " <> toText i
+    fromEnum x = case x of
+        RSFailure -> 0
+        RSPending -> 1
+        RSSuccess -> 2
+        RecorderStatus' name -> (error . showText) $ "Unknown RecorderStatus: " <> original name
+
+-- | Represents the bounds of /known/ $RecorderStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded RecorderStatus where
+    minBound = RSFailure
+    maxBound = RSSuccess
 
 instance Hashable     RecorderStatus
 instance NFData       RecorderStatus

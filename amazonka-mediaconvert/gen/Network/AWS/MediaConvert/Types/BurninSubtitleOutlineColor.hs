@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,39 +16,88 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.MediaConvert.Types.BurninSubtitleOutlineColor where
+module Network.AWS.MediaConvert.Types.BurninSubtitleOutlineColor (
+  BurninSubtitleOutlineColor (
+    ..
+    , BSOCBlack
+    , BSOCBlue
+    , BSOCGreen
+    , BSOCRed
+    , BSOCWhite
+    , BSOCYellow
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
+
 -- | Specifies font outline color. This option is not valid for source captions that are either 608/embedded or teletext. These source settings are already pre-defined by the caption stream. All burn-in and DVB-Sub font settings must match.
-data BurninSubtitleOutlineColor = BSOCBlack
-                                | BSOCBlue
-                                | BSOCGreen
-                                | BSOCRed
-                                | BSOCWhite
-                                | BSOCYellow
-                                    deriving (Eq, Ord, Read, Show, Enum,
-                                              Bounded, Data, Typeable, Generic)
+data BurninSubtitleOutlineColor = BurninSubtitleOutlineColor' (CI
+                                                                 Text)
+                                    deriving (Eq, Ord, Read, Show, Data,
+                                              Typeable, Generic)
+
+pattern BSOCBlack :: BurninSubtitleOutlineColor
+pattern BSOCBlack = BurninSubtitleOutlineColor' "BLACK"
+
+pattern BSOCBlue :: BurninSubtitleOutlineColor
+pattern BSOCBlue = BurninSubtitleOutlineColor' "BLUE"
+
+pattern BSOCGreen :: BurninSubtitleOutlineColor
+pattern BSOCGreen = BurninSubtitleOutlineColor' "GREEN"
+
+pattern BSOCRed :: BurninSubtitleOutlineColor
+pattern BSOCRed = BurninSubtitleOutlineColor' "RED"
+
+pattern BSOCWhite :: BurninSubtitleOutlineColor
+pattern BSOCWhite = BurninSubtitleOutlineColor' "WHITE"
+
+pattern BSOCYellow :: BurninSubtitleOutlineColor
+pattern BSOCYellow = BurninSubtitleOutlineColor' "YELLOW"
+
+{-# COMPLETE
+  BSOCBlack,
+  BSOCBlue,
+  BSOCGreen,
+  BSOCRed,
+  BSOCWhite,
+  BSOCYellow,
+  BurninSubtitleOutlineColor' #-}
 
 instance FromText BurninSubtitleOutlineColor where
-    parser = takeLowerText >>= \case
-        "black" -> pure BSOCBlack
-        "blue" -> pure BSOCBlue
-        "green" -> pure BSOCGreen
-        "red" -> pure BSOCRed
-        "white" -> pure BSOCWhite
-        "yellow" -> pure BSOCYellow
-        e -> fromTextError $ "Failure parsing BurninSubtitleOutlineColor from value: '" <> e
-           <> "'. Accepted values: black, blue, green, red, white, yellow"
+    parser = (BurninSubtitleOutlineColor' . mk) <$> takeText
 
 instance ToText BurninSubtitleOutlineColor where
-    toText = \case
-        BSOCBlack -> "BLACK"
-        BSOCBlue -> "BLUE"
-        BSOCGreen -> "GREEN"
-        BSOCRed -> "RED"
-        BSOCWhite -> "WHITE"
-        BSOCYellow -> "YELLOW"
+    toText (BurninSubtitleOutlineColor' ci) = original ci
+
+-- | Represents an enum of /known/ $BurninSubtitleOutlineColor.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum BurninSubtitleOutlineColor where
+    toEnum i = case i of
+        0 -> BSOCBlack
+        1 -> BSOCBlue
+        2 -> BSOCGreen
+        3 -> BSOCRed
+        4 -> BSOCWhite
+        5 -> BSOCYellow
+        _ -> (error . showText) $ "Unknown index for BurninSubtitleOutlineColor: " <> toText i
+    fromEnum x = case x of
+        BSOCBlack -> 0
+        BSOCBlue -> 1
+        BSOCGreen -> 2
+        BSOCRed -> 3
+        BSOCWhite -> 4
+        BSOCYellow -> 5
+        BurninSubtitleOutlineColor' name -> (error . showText) $ "Unknown BurninSubtitleOutlineColor: " <> original name
+
+-- | Represents the bounds of /known/ $BurninSubtitleOutlineColor.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded BurninSubtitleOutlineColor where
+    minBound = BSOCBlack
+    maxBound = BSOCYellow
 
 instance Hashable     BurninSubtitleOutlineColor
 instance NFData       BurninSubtitleOutlineColor

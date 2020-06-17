@@ -40,6 +40,7 @@ module Network.AWS.Firehose.DescribeDeliveryStream
     ) where
 
 import Network.AWS.Firehose.Types
+import Network.AWS.Firehose.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request

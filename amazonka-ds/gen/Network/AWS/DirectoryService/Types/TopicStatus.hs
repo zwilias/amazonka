@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,32 +16,72 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.DirectoryService.Types.TopicStatus where
+module Network.AWS.DirectoryService.Types.TopicStatus (
+  TopicStatus (
+    ..
+    , TDeleted
+    , TFailed
+    , TRegistered
+    , TTopicNotFound
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data TopicStatus = TDeleted
-                 | TFailed
-                 | TRegistered
-                 | TTopicNotFound
-                     deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                               Typeable, Generic)
+
+data TopicStatus = TopicStatus' (CI Text)
+                     deriving (Eq, Ord, Read, Show, Data, Typeable,
+                               Generic)
+
+pattern TDeleted :: TopicStatus
+pattern TDeleted = TopicStatus' "Deleted"
+
+pattern TFailed :: TopicStatus
+pattern TFailed = TopicStatus' "Failed"
+
+pattern TRegistered :: TopicStatus
+pattern TRegistered = TopicStatus' "Registered"
+
+pattern TTopicNotFound :: TopicStatus
+pattern TTopicNotFound = TopicStatus' "Topic not found"
+
+{-# COMPLETE
+  TDeleted,
+  TFailed,
+  TRegistered,
+  TTopicNotFound,
+  TopicStatus' #-}
 
 instance FromText TopicStatus where
-    parser = takeLowerText >>= \case
-        "deleted" -> pure TDeleted
-        "failed" -> pure TFailed
-        "registered" -> pure TRegistered
-        "topic not found" -> pure TTopicNotFound
-        e -> fromTextError $ "Failure parsing TopicStatus from value: '" <> e
-           <> "'. Accepted values: deleted, failed, registered, topic not found"
+    parser = (TopicStatus' . mk) <$> takeText
 
 instance ToText TopicStatus where
-    toText = \case
-        TDeleted -> "Deleted"
-        TFailed -> "Failed"
-        TRegistered -> "Registered"
-        TTopicNotFound -> "Topic not found"
+    toText (TopicStatus' ci) = original ci
+
+-- | Represents an enum of /known/ $TopicStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum TopicStatus where
+    toEnum i = case i of
+        0 -> TDeleted
+        1 -> TFailed
+        2 -> TRegistered
+        3 -> TTopicNotFound
+        _ -> (error . showText) $ "Unknown index for TopicStatus: " <> toText i
+    fromEnum x = case x of
+        TDeleted -> 0
+        TFailed -> 1
+        TRegistered -> 2
+        TTopicNotFound -> 3
+        TopicStatus' name -> (error . showText) $ "Unknown TopicStatus: " <> original name
+
+-- | Represents the bounds of /known/ $TopicStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded TopicStatus where
+    minBound = TDeleted
+    maxBound = TTopicNotFound
 
 instance Hashable     TopicStatus
 instance NFData       TopicStatus

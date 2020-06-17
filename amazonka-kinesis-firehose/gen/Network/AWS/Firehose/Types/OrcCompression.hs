@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,29 +16,65 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.Firehose.Types.OrcCompression where
+module Network.AWS.Firehose.Types.OrcCompression (
+  OrcCompression (
+    ..
+    , OCNone
+    , OCSnappy
+    , OCZlib
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data OrcCompression = OCNone
-                    | OCSnappy
-                    | OCZlib
-                        deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                  Typeable, Generic)
+
+data OrcCompression = OrcCompression' (CI Text)
+                        deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                  Generic)
+
+pattern OCNone :: OrcCompression
+pattern OCNone = OrcCompression' "NONE"
+
+pattern OCSnappy :: OrcCompression
+pattern OCSnappy = OrcCompression' "SNAPPY"
+
+pattern OCZlib :: OrcCompression
+pattern OCZlib = OrcCompression' "ZLIB"
+
+{-# COMPLETE
+  OCNone,
+  OCSnappy,
+  OCZlib,
+  OrcCompression' #-}
 
 instance FromText OrcCompression where
-    parser = takeLowerText >>= \case
-        "none" -> pure OCNone
-        "snappy" -> pure OCSnappy
-        "zlib" -> pure OCZlib
-        e -> fromTextError $ "Failure parsing OrcCompression from value: '" <> e
-           <> "'. Accepted values: none, snappy, zlib"
+    parser = (OrcCompression' . mk) <$> takeText
 
 instance ToText OrcCompression where
-    toText = \case
-        OCNone -> "NONE"
-        OCSnappy -> "SNAPPY"
-        OCZlib -> "ZLIB"
+    toText (OrcCompression' ci) = original ci
+
+-- | Represents an enum of /known/ $OrcCompression.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum OrcCompression where
+    toEnum i = case i of
+        0 -> OCNone
+        1 -> OCSnappy
+        2 -> OCZlib
+        _ -> (error . showText) $ "Unknown index for OrcCompression: " <> toText i
+    fromEnum x = case x of
+        OCNone -> 0
+        OCSnappy -> 1
+        OCZlib -> 2
+        OrcCompression' name -> (error . showText) $ "Unknown OrcCompression: " <> original name
+
+-- | Represents the bounds of /known/ $OrcCompression.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded OrcCompression where
+    minBound = OCNone
+    maxBound = OCZlib
 
 instance Hashable     OrcCompression
 instance NFData       OrcCompression

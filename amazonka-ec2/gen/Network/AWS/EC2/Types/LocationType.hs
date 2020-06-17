@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,30 +16,66 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.EC2.Types.LocationType where
+module Network.AWS.EC2.Types.LocationType (
+  LocationType (
+    ..
+    , AvailabilityZone
+    , AvailabilityZoneId
+    , Region
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.EC2.Internal
 import Network.AWS.Prelude
-  
-data LocationType = AvailabilityZone
-                  | AvailabilityZoneId
-                  | Region
-                      deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                Typeable, Generic)
+
+data LocationType = LocationType' (CI Text)
+                      deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                Generic)
+
+pattern AvailabilityZone :: LocationType
+pattern AvailabilityZone = LocationType' "availability-zone"
+
+pattern AvailabilityZoneId :: LocationType
+pattern AvailabilityZoneId = LocationType' "availability-zone-id"
+
+pattern Region :: LocationType
+pattern Region = LocationType' "region"
+
+{-# COMPLETE
+  AvailabilityZone,
+  AvailabilityZoneId,
+  Region,
+  LocationType' #-}
 
 instance FromText LocationType where
-    parser = takeLowerText >>= \case
-        "availability-zone" -> pure AvailabilityZone
-        "availability-zone-id" -> pure AvailabilityZoneId
-        "region" -> pure Region
-        e -> fromTextError $ "Failure parsing LocationType from value: '" <> e
-           <> "'. Accepted values: availability-zone, availability-zone-id, region"
+    parser = (LocationType' . mk) <$> takeText
 
 instance ToText LocationType where
-    toText = \case
-        AvailabilityZone -> "availability-zone"
-        AvailabilityZoneId -> "availability-zone-id"
-        Region -> "region"
+    toText (LocationType' ci) = original ci
+
+-- | Represents an enum of /known/ $LocationType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum LocationType where
+    toEnum i = case i of
+        0 -> AvailabilityZone
+        1 -> AvailabilityZoneId
+        2 -> Region
+        _ -> (error . showText) $ "Unknown index for LocationType: " <> toText i
+    fromEnum x = case x of
+        AvailabilityZone -> 0
+        AvailabilityZoneId -> 1
+        Region -> 2
+        LocationType' name -> (error . showText) $ "Unknown LocationType: " <> original name
+
+-- | Represents the bounds of /known/ $LocationType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded LocationType where
+    minBound = AvailabilityZone
+    maxBound = Region
 
 instance Hashable     LocationType
 instance NFData       LocationType

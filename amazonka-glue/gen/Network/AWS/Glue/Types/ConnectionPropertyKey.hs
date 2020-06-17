@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,53 +16,122 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.Glue.Types.ConnectionPropertyKey where
+module Network.AWS.Glue.Types.ConnectionPropertyKey (
+  ConnectionPropertyKey (
+    ..
+    , ConfigFiles
+    , Host
+    , InstanceId
+    , JdbcConnectionURL
+    , JdbcDriverClassName
+    , JdbcDriverJARURI
+    , JdbcEngine
+    , JdbcEngineVersion
+    , Password
+    , Port
+    , Username
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data ConnectionPropertyKey = ConfigFiles
-                           | Host
-                           | InstanceId
-                           | JdbcConnectionURL
-                           | JdbcDriverClassName
-                           | JdbcDriverJARURI
-                           | JdbcEngine
-                           | JdbcEngineVersion
-                           | Password
-                           | Port
-                           | Username
-                               deriving (Eq, Ord, Read, Show, Enum, Bounded,
-                                         Data, Typeable, Generic)
+
+data ConnectionPropertyKey = ConnectionPropertyKey' (CI
+                                                       Text)
+                               deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                         Generic)
+
+pattern ConfigFiles :: ConnectionPropertyKey
+pattern ConfigFiles = ConnectionPropertyKey' "CONFIG_FILES"
+
+pattern Host :: ConnectionPropertyKey
+pattern Host = ConnectionPropertyKey' "HOST"
+
+pattern InstanceId :: ConnectionPropertyKey
+pattern InstanceId = ConnectionPropertyKey' "INSTANCE_ID"
+
+pattern JdbcConnectionURL :: ConnectionPropertyKey
+pattern JdbcConnectionURL = ConnectionPropertyKey' "JDBC_CONNECTION_URL"
+
+pattern JdbcDriverClassName :: ConnectionPropertyKey
+pattern JdbcDriverClassName = ConnectionPropertyKey' "JDBC_DRIVER_CLASS_NAME"
+
+pattern JdbcDriverJARURI :: ConnectionPropertyKey
+pattern JdbcDriverJARURI = ConnectionPropertyKey' "JDBC_DRIVER_JAR_URI"
+
+pattern JdbcEngine :: ConnectionPropertyKey
+pattern JdbcEngine = ConnectionPropertyKey' "JDBC_ENGINE"
+
+pattern JdbcEngineVersion :: ConnectionPropertyKey
+pattern JdbcEngineVersion = ConnectionPropertyKey' "JDBC_ENGINE_VERSION"
+
+pattern Password :: ConnectionPropertyKey
+pattern Password = ConnectionPropertyKey' "PASSWORD"
+
+pattern Port :: ConnectionPropertyKey
+pattern Port = ConnectionPropertyKey' "PORT"
+
+pattern Username :: ConnectionPropertyKey
+pattern Username = ConnectionPropertyKey' "USERNAME"
+
+{-# COMPLETE
+  ConfigFiles,
+  Host,
+  InstanceId,
+  JdbcConnectionURL,
+  JdbcDriverClassName,
+  JdbcDriverJARURI,
+  JdbcEngine,
+  JdbcEngineVersion,
+  Password,
+  Port,
+  Username,
+  ConnectionPropertyKey' #-}
 
 instance FromText ConnectionPropertyKey where
-    parser = takeLowerText >>= \case
-        "config_files" -> pure ConfigFiles
-        "host" -> pure Host
-        "instance_id" -> pure InstanceId
-        "jdbc_connection_url" -> pure JdbcConnectionURL
-        "jdbc_driver_class_name" -> pure JdbcDriverClassName
-        "jdbc_driver_jar_uri" -> pure JdbcDriverJARURI
-        "jdbc_engine" -> pure JdbcEngine
-        "jdbc_engine_version" -> pure JdbcEngineVersion
-        "password" -> pure Password
-        "port" -> pure Port
-        "username" -> pure Username
-        e -> fromTextError $ "Failure parsing ConnectionPropertyKey from value: '" <> e
-           <> "'. Accepted values: config_files, host, instance_id, jdbc_connection_url, jdbc_driver_class_name, jdbc_driver_jar_uri, jdbc_engine, jdbc_engine_version, password, port, username"
+    parser = (ConnectionPropertyKey' . mk) <$> takeText
 
 instance ToText ConnectionPropertyKey where
-    toText = \case
-        ConfigFiles -> "CONFIG_FILES"
-        Host -> "HOST"
-        InstanceId -> "INSTANCE_ID"
-        JdbcConnectionURL -> "JDBC_CONNECTION_URL"
-        JdbcDriverClassName -> "JDBC_DRIVER_CLASS_NAME"
-        JdbcDriverJARURI -> "JDBC_DRIVER_JAR_URI"
-        JdbcEngine -> "JDBC_ENGINE"
-        JdbcEngineVersion -> "JDBC_ENGINE_VERSION"
-        Password -> "PASSWORD"
-        Port -> "PORT"
-        Username -> "USERNAME"
+    toText (ConnectionPropertyKey' ci) = original ci
+
+-- | Represents an enum of /known/ $ConnectionPropertyKey.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum ConnectionPropertyKey where
+    toEnum i = case i of
+        0 -> ConfigFiles
+        1 -> Host
+        2 -> InstanceId
+        3 -> JdbcConnectionURL
+        4 -> JdbcDriverClassName
+        5 -> JdbcDriverJARURI
+        6 -> JdbcEngine
+        7 -> JdbcEngineVersion
+        8 -> Password
+        9 -> Port
+        10 -> Username
+        _ -> (error . showText) $ "Unknown index for ConnectionPropertyKey: " <> toText i
+    fromEnum x = case x of
+        ConfigFiles -> 0
+        Host -> 1
+        InstanceId -> 2
+        JdbcConnectionURL -> 3
+        JdbcDriverClassName -> 4
+        JdbcDriverJARURI -> 5
+        JdbcEngine -> 6
+        JdbcEngineVersion -> 7
+        Password -> 8
+        Port -> 9
+        Username -> 10
+        ConnectionPropertyKey' name -> (error . showText) $ "Unknown ConnectionPropertyKey: " <> original name
+
+-- | Represents the bounds of /known/ $ConnectionPropertyKey.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded ConnectionPropertyKey where
+    minBound = ConfigFiles
+    maxBound = Username
 
 instance Hashable     ConnectionPropertyKey
 instance NFData       ConnectionPropertyKey

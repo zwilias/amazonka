@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,68 +16,156 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.Route53Domains.Types.OperationType where
+module Network.AWS.Route53Domains.Types.OperationType (
+  OperationType (
+    ..
+    , AddDNSsec
+    , ChangeDomainOwner
+    , ChangePrivacyProtection
+    , DeleteDomain
+    , DisableAutorenew
+    , DomainLock
+    , EnableAutorenew
+    , ExpireDomain
+    , PushDomain
+    , RegisterDomain
+    , RemoveDNSsec
+    , RenewDomain
+    , TransferInDomain
+    , TransferOutDomain
+    , UpdateDomainContact
+    , UpdateNameserver
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data OperationType = AddDNSsec
-                   | ChangeDomainOwner
-                   | ChangePrivacyProtection
-                   | DeleteDomain
-                   | DisableAutorenew
-                   | DomainLock
-                   | EnableAutorenew
-                   | ExpireDomain
-                   | PushDomain
-                   | RegisterDomain
-                   | RemoveDNSsec
-                   | RenewDomain
-                   | TransferInDomain
-                   | TransferOutDomain
-                   | UpdateDomainContact
-                   | UpdateNameserver
-                       deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                 Typeable, Generic)
+
+data OperationType = OperationType' (CI Text)
+                       deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                 Generic)
+
+pattern AddDNSsec :: OperationType
+pattern AddDNSsec = OperationType' "ADD_DNSSEC"
+
+pattern ChangeDomainOwner :: OperationType
+pattern ChangeDomainOwner = OperationType' "CHANGE_DOMAIN_OWNER"
+
+pattern ChangePrivacyProtection :: OperationType
+pattern ChangePrivacyProtection = OperationType' "CHANGE_PRIVACY_PROTECTION"
+
+pattern DeleteDomain :: OperationType
+pattern DeleteDomain = OperationType' "DELETE_DOMAIN"
+
+pattern DisableAutorenew :: OperationType
+pattern DisableAutorenew = OperationType' "DISABLE_AUTORENEW"
+
+pattern DomainLock :: OperationType
+pattern DomainLock = OperationType' "DOMAIN_LOCK"
+
+pattern EnableAutorenew :: OperationType
+pattern EnableAutorenew = OperationType' "ENABLE_AUTORENEW"
+
+pattern ExpireDomain :: OperationType
+pattern ExpireDomain = OperationType' "EXPIRE_DOMAIN"
+
+pattern PushDomain :: OperationType
+pattern PushDomain = OperationType' "PUSH_DOMAIN"
+
+pattern RegisterDomain :: OperationType
+pattern RegisterDomain = OperationType' "REGISTER_DOMAIN"
+
+pattern RemoveDNSsec :: OperationType
+pattern RemoveDNSsec = OperationType' "REMOVE_DNSSEC"
+
+pattern RenewDomain :: OperationType
+pattern RenewDomain = OperationType' "RENEW_DOMAIN"
+
+pattern TransferInDomain :: OperationType
+pattern TransferInDomain = OperationType' "TRANSFER_IN_DOMAIN"
+
+pattern TransferOutDomain :: OperationType
+pattern TransferOutDomain = OperationType' "TRANSFER_OUT_DOMAIN"
+
+pattern UpdateDomainContact :: OperationType
+pattern UpdateDomainContact = OperationType' "UPDATE_DOMAIN_CONTACT"
+
+pattern UpdateNameserver :: OperationType
+pattern UpdateNameserver = OperationType' "UPDATE_NAMESERVER"
+
+{-# COMPLETE
+  AddDNSsec,
+  ChangeDomainOwner,
+  ChangePrivacyProtection,
+  DeleteDomain,
+  DisableAutorenew,
+  DomainLock,
+  EnableAutorenew,
+  ExpireDomain,
+  PushDomain,
+  RegisterDomain,
+  RemoveDNSsec,
+  RenewDomain,
+  TransferInDomain,
+  TransferOutDomain,
+  UpdateDomainContact,
+  UpdateNameserver,
+  OperationType' #-}
 
 instance FromText OperationType where
-    parser = takeLowerText >>= \case
-        "add_dnssec" -> pure AddDNSsec
-        "change_domain_owner" -> pure ChangeDomainOwner
-        "change_privacy_protection" -> pure ChangePrivacyProtection
-        "delete_domain" -> pure DeleteDomain
-        "disable_autorenew" -> pure DisableAutorenew
-        "domain_lock" -> pure DomainLock
-        "enable_autorenew" -> pure EnableAutorenew
-        "expire_domain" -> pure ExpireDomain
-        "push_domain" -> pure PushDomain
-        "register_domain" -> pure RegisterDomain
-        "remove_dnssec" -> pure RemoveDNSsec
-        "renew_domain" -> pure RenewDomain
-        "transfer_in_domain" -> pure TransferInDomain
-        "transfer_out_domain" -> pure TransferOutDomain
-        "update_domain_contact" -> pure UpdateDomainContact
-        "update_nameserver" -> pure UpdateNameserver
-        e -> fromTextError $ "Failure parsing OperationType from value: '" <> e
-           <> "'. Accepted values: add_dnssec, change_domain_owner, change_privacy_protection, delete_domain, disable_autorenew, domain_lock, enable_autorenew, expire_domain, push_domain, register_domain, remove_dnssec, renew_domain, transfer_in_domain, transfer_out_domain, update_domain_contact, update_nameserver"
+    parser = (OperationType' . mk) <$> takeText
 
 instance ToText OperationType where
-    toText = \case
-        AddDNSsec -> "ADD_DNSSEC"
-        ChangeDomainOwner -> "CHANGE_DOMAIN_OWNER"
-        ChangePrivacyProtection -> "CHANGE_PRIVACY_PROTECTION"
-        DeleteDomain -> "DELETE_DOMAIN"
-        DisableAutorenew -> "DISABLE_AUTORENEW"
-        DomainLock -> "DOMAIN_LOCK"
-        EnableAutorenew -> "ENABLE_AUTORENEW"
-        ExpireDomain -> "EXPIRE_DOMAIN"
-        PushDomain -> "PUSH_DOMAIN"
-        RegisterDomain -> "REGISTER_DOMAIN"
-        RemoveDNSsec -> "REMOVE_DNSSEC"
-        RenewDomain -> "RENEW_DOMAIN"
-        TransferInDomain -> "TRANSFER_IN_DOMAIN"
-        TransferOutDomain -> "TRANSFER_OUT_DOMAIN"
-        UpdateDomainContact -> "UPDATE_DOMAIN_CONTACT"
-        UpdateNameserver -> "UPDATE_NAMESERVER"
+    toText (OperationType' ci) = original ci
+
+-- | Represents an enum of /known/ $OperationType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum OperationType where
+    toEnum i = case i of
+        0 -> AddDNSsec
+        1 -> ChangeDomainOwner
+        2 -> ChangePrivacyProtection
+        3 -> DeleteDomain
+        4 -> DisableAutorenew
+        5 -> DomainLock
+        6 -> EnableAutorenew
+        7 -> ExpireDomain
+        8 -> PushDomain
+        9 -> RegisterDomain
+        10 -> RemoveDNSsec
+        11 -> RenewDomain
+        12 -> TransferInDomain
+        13 -> TransferOutDomain
+        14 -> UpdateDomainContact
+        15 -> UpdateNameserver
+        _ -> (error . showText) $ "Unknown index for OperationType: " <> toText i
+    fromEnum x = case x of
+        AddDNSsec -> 0
+        ChangeDomainOwner -> 1
+        ChangePrivacyProtection -> 2
+        DeleteDomain -> 3
+        DisableAutorenew -> 4
+        DomainLock -> 5
+        EnableAutorenew -> 6
+        ExpireDomain -> 7
+        PushDomain -> 8
+        RegisterDomain -> 9
+        RemoveDNSsec -> 10
+        RenewDomain -> 11
+        TransferInDomain -> 12
+        TransferOutDomain -> 13
+        UpdateDomainContact -> 14
+        UpdateNameserver -> 15
+        OperationType' name -> (error . showText) $ "Unknown OperationType: " <> original name
+
+-- | Represents the bounds of /known/ $OperationType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded OperationType where
+    minBound = AddDNSsec
+    maxBound = UpdateNameserver
 
 instance Hashable     OperationType
 instance NFData       OperationType

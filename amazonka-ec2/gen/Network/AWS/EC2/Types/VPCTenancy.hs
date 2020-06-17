@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,24 +16,52 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.EC2.Types.VPCTenancy where
+module Network.AWS.EC2.Types.VPCTenancy (
+  VPCTenancy (
+    ..
+    , VTDefault
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.EC2.Internal
 import Network.AWS.Prelude
-  
-data VPCTenancy = VTDefault
-                    deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                              Typeable, Generic)
+
+data VPCTenancy = VPCTenancy' (CI Text)
+                    deriving (Eq, Ord, Read, Show, Data, Typeable,
+                              Generic)
+
+pattern VTDefault :: VPCTenancy
+pattern VTDefault = VPCTenancy' "default"
+
+{-# COMPLETE
+  VTDefault,
+  VPCTenancy' #-}
 
 instance FromText VPCTenancy where
-    parser = takeLowerText >>= \case
-        "default" -> pure VTDefault
-        e -> fromTextError $ "Failure parsing VPCTenancy from value: '" <> e
-           <> "'. Accepted values: default"
+    parser = (VPCTenancy' . mk) <$> takeText
 
 instance ToText VPCTenancy where
-    toText = \case
-        VTDefault -> "default"
+    toText (VPCTenancy' ci) = original ci
+
+-- | Represents an enum of /known/ $VPCTenancy.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum VPCTenancy where
+    toEnum i = case i of
+        0 -> VTDefault
+        _ -> (error . showText) $ "Unknown index for VPCTenancy: " <> toText i
+    fromEnum x = case x of
+        VTDefault -> 0
+        VPCTenancy' name -> (error . showText) $ "Unknown VPCTenancy: " <> original name
+
+-- | Represents the bounds of /known/ $VPCTenancy.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded VPCTenancy where
+    minBound = VTDefault
+    maxBound = VTDefault
 
 instance Hashable     VPCTenancy
 instance NFData       VPCTenancy

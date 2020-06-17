@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,27 +16,59 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.MediaConvert.Types.Mpeg2GopSizeUnits where
+module Network.AWS.MediaConvert.Types.Mpeg2GopSizeUnits (
+  Mpeg2GopSizeUnits (
+    ..
+    , MGSUFrames
+    , MGSUSeconds
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
+
 -- | Indicates if the GOP Size in MPEG2 is specified in frames or seconds. If seconds the system will convert the GOP Size into a frame count at run time.
-data Mpeg2GopSizeUnits = MGSUFrames
-                       | MGSUSeconds
-                           deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                     Typeable, Generic)
+data Mpeg2GopSizeUnits = Mpeg2GopSizeUnits' (CI Text)
+                           deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                     Generic)
+
+pattern MGSUFrames :: Mpeg2GopSizeUnits
+pattern MGSUFrames = Mpeg2GopSizeUnits' "FRAMES"
+
+pattern MGSUSeconds :: Mpeg2GopSizeUnits
+pattern MGSUSeconds = Mpeg2GopSizeUnits' "SECONDS"
+
+{-# COMPLETE
+  MGSUFrames,
+  MGSUSeconds,
+  Mpeg2GopSizeUnits' #-}
 
 instance FromText Mpeg2GopSizeUnits where
-    parser = takeLowerText >>= \case
-        "frames" -> pure MGSUFrames
-        "seconds" -> pure MGSUSeconds
-        e -> fromTextError $ "Failure parsing Mpeg2GopSizeUnits from value: '" <> e
-           <> "'. Accepted values: frames, seconds"
+    parser = (Mpeg2GopSizeUnits' . mk) <$> takeText
 
 instance ToText Mpeg2GopSizeUnits where
-    toText = \case
-        MGSUFrames -> "FRAMES"
-        MGSUSeconds -> "SECONDS"
+    toText (Mpeg2GopSizeUnits' ci) = original ci
+
+-- | Represents an enum of /known/ $Mpeg2GopSizeUnits.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum Mpeg2GopSizeUnits where
+    toEnum i = case i of
+        0 -> MGSUFrames
+        1 -> MGSUSeconds
+        _ -> (error . showText) $ "Unknown index for Mpeg2GopSizeUnits: " <> toText i
+    fromEnum x = case x of
+        MGSUFrames -> 0
+        MGSUSeconds -> 1
+        Mpeg2GopSizeUnits' name -> (error . showText) $ "Unknown Mpeg2GopSizeUnits: " <> original name
+
+-- | Represents the bounds of /known/ $Mpeg2GopSizeUnits.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded Mpeg2GopSizeUnits where
+    minBound = MGSUFrames
+    maxBound = MGSUSeconds
 
 instance Hashable     Mpeg2GopSizeUnits
 instance NFData       Mpeg2GopSizeUnits

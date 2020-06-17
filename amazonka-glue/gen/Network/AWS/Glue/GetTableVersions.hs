@@ -45,6 +45,7 @@ module Network.AWS.Glue.GetTableVersions
     ) where
 
 import Network.AWS.Glue.Types
+import Network.AWS.Glue.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude

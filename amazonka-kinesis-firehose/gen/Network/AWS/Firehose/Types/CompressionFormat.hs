@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,32 +16,72 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.Firehose.Types.CompressionFormat where
+module Network.AWS.Firehose.Types.CompressionFormat (
+  CompressionFormat (
+    ..
+    , Gzip
+    , Snappy
+    , Uncompressed
+    , Zip
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data CompressionFormat = Gzip
-                       | Snappy
-                       | Uncompressed
-                       | Zip
-                           deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                     Typeable, Generic)
+
+data CompressionFormat = CompressionFormat' (CI Text)
+                           deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                     Generic)
+
+pattern Gzip :: CompressionFormat
+pattern Gzip = CompressionFormat' "GZIP"
+
+pattern Snappy :: CompressionFormat
+pattern Snappy = CompressionFormat' "Snappy"
+
+pattern Uncompressed :: CompressionFormat
+pattern Uncompressed = CompressionFormat' "UNCOMPRESSED"
+
+pattern Zip :: CompressionFormat
+pattern Zip = CompressionFormat' "ZIP"
+
+{-# COMPLETE
+  Gzip,
+  Snappy,
+  Uncompressed,
+  Zip,
+  CompressionFormat' #-}
 
 instance FromText CompressionFormat where
-    parser = takeLowerText >>= \case
-        "gzip" -> pure Gzip
-        "snappy" -> pure Snappy
-        "uncompressed" -> pure Uncompressed
-        "zip" -> pure Zip
-        e -> fromTextError $ "Failure parsing CompressionFormat from value: '" <> e
-           <> "'. Accepted values: gzip, snappy, uncompressed, zip"
+    parser = (CompressionFormat' . mk) <$> takeText
 
 instance ToText CompressionFormat where
-    toText = \case
-        Gzip -> "GZIP"
-        Snappy -> "Snappy"
-        Uncompressed -> "UNCOMPRESSED"
-        Zip -> "ZIP"
+    toText (CompressionFormat' ci) = original ci
+
+-- | Represents an enum of /known/ $CompressionFormat.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum CompressionFormat where
+    toEnum i = case i of
+        0 -> Gzip
+        1 -> Snappy
+        2 -> Uncompressed
+        3 -> Zip
+        _ -> (error . showText) $ "Unknown index for CompressionFormat: " <> toText i
+    fromEnum x = case x of
+        Gzip -> 0
+        Snappy -> 1
+        Uncompressed -> 2
+        Zip -> 3
+        CompressionFormat' name -> (error . showText) $ "Unknown CompressionFormat: " <> original name
+
+-- | Represents the bounds of /known/ $CompressionFormat.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded CompressionFormat where
+    minBound = Gzip
+    maxBound = Zip
 
 instance Hashable     CompressionFormat
 instance NFData       CompressionFormat

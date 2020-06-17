@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,29 +16,66 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.SSM.Types.AssociationStatusName where
+module Network.AWS.SSM.Types.AssociationStatusName (
+  AssociationStatusName (
+    ..
+    , ASNFailed
+    , ASNPending
+    , ASNSuccess
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data AssociationStatusName = ASNFailed
-                           | ASNPending
-                           | ASNSuccess
-                               deriving (Eq, Ord, Read, Show, Enum, Bounded,
-                                         Data, Typeable, Generic)
+
+data AssociationStatusName = AssociationStatusName' (CI
+                                                       Text)
+                               deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                         Generic)
+
+pattern ASNFailed :: AssociationStatusName
+pattern ASNFailed = AssociationStatusName' "Failed"
+
+pattern ASNPending :: AssociationStatusName
+pattern ASNPending = AssociationStatusName' "Pending"
+
+pattern ASNSuccess :: AssociationStatusName
+pattern ASNSuccess = AssociationStatusName' "Success"
+
+{-# COMPLETE
+  ASNFailed,
+  ASNPending,
+  ASNSuccess,
+  AssociationStatusName' #-}
 
 instance FromText AssociationStatusName where
-    parser = takeLowerText >>= \case
-        "failed" -> pure ASNFailed
-        "pending" -> pure ASNPending
-        "success" -> pure ASNSuccess
-        e -> fromTextError $ "Failure parsing AssociationStatusName from value: '" <> e
-           <> "'. Accepted values: failed, pending, success"
+    parser = (AssociationStatusName' . mk) <$> takeText
 
 instance ToText AssociationStatusName where
-    toText = \case
-        ASNFailed -> "Failed"
-        ASNPending -> "Pending"
-        ASNSuccess -> "Success"
+    toText (AssociationStatusName' ci) = original ci
+
+-- | Represents an enum of /known/ $AssociationStatusName.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum AssociationStatusName where
+    toEnum i = case i of
+        0 -> ASNFailed
+        1 -> ASNPending
+        2 -> ASNSuccess
+        _ -> (error . showText) $ "Unknown index for AssociationStatusName: " <> toText i
+    fromEnum x = case x of
+        ASNFailed -> 0
+        ASNPending -> 1
+        ASNSuccess -> 2
+        AssociationStatusName' name -> (error . showText) $ "Unknown AssociationStatusName: " <> original name
+
+-- | Represents the bounds of /known/ $AssociationStatusName.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded AssociationStatusName where
+    minBound = ASNFailed
+    maxBound = ASNSuccess
 
 instance Hashable     AssociationStatusName
 instance NFData       AssociationStatusName

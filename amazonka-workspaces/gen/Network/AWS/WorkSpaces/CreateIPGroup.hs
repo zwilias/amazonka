@@ -48,6 +48,7 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.WorkSpaces.Types
+import Network.AWS.WorkSpaces.Types.Product
 
 -- | /See:/ 'createIPGroup' smart constructor.
 data CreateIPGroup = CreateIPGroup'{_cigGroupDesc ::

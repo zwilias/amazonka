@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,33 +16,73 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.MediaConvert.Types.OutputSdt where
+module Network.AWS.MediaConvert.Types.OutputSdt (
+  OutputSdt (
+    ..
+    , SdtFollow
+    , SdtFollowIfPresent
+    , SdtManual
+    , SdtNone
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
+
 -- | Selects method of inserting SDT information into output stream.  "Follow input SDT" copies SDT information from input stream to  output stream. "Follow input SDT if present" copies SDT information from  input stream to output stream if SDT information is present in the input, otherwise it will fall back on the user-defined values. Enter "SDT  Manually" means user will enter the SDT information. "No SDT" means output  stream will not contain SDT information.
-data OutputSdt = SdtFollow
-               | SdtFollowIfPresent
-               | SdtManual
-               | SdtNone
-                   deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                             Typeable, Generic)
+data OutputSdt = OutputSdt' (CI Text)
+                   deriving (Eq, Ord, Read, Show, Data, Typeable,
+                             Generic)
+
+pattern SdtFollow :: OutputSdt
+pattern SdtFollow = OutputSdt' "SDT_FOLLOW"
+
+pattern SdtFollowIfPresent :: OutputSdt
+pattern SdtFollowIfPresent = OutputSdt' "SDT_FOLLOW_IF_PRESENT"
+
+pattern SdtManual :: OutputSdt
+pattern SdtManual = OutputSdt' "SDT_MANUAL"
+
+pattern SdtNone :: OutputSdt
+pattern SdtNone = OutputSdt' "SDT_NONE"
+
+{-# COMPLETE
+  SdtFollow,
+  SdtFollowIfPresent,
+  SdtManual,
+  SdtNone,
+  OutputSdt' #-}
 
 instance FromText OutputSdt where
-    parser = takeLowerText >>= \case
-        "sdt_follow" -> pure SdtFollow
-        "sdt_follow_if_present" -> pure SdtFollowIfPresent
-        "sdt_manual" -> pure SdtManual
-        "sdt_none" -> pure SdtNone
-        e -> fromTextError $ "Failure parsing OutputSdt from value: '" <> e
-           <> "'. Accepted values: sdt_follow, sdt_follow_if_present, sdt_manual, sdt_none"
+    parser = (OutputSdt' . mk) <$> takeText
 
 instance ToText OutputSdt where
-    toText = \case
-        SdtFollow -> "SDT_FOLLOW"
-        SdtFollowIfPresent -> "SDT_FOLLOW_IF_PRESENT"
-        SdtManual -> "SDT_MANUAL"
-        SdtNone -> "SDT_NONE"
+    toText (OutputSdt' ci) = original ci
+
+-- | Represents an enum of /known/ $OutputSdt.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum OutputSdt where
+    toEnum i = case i of
+        0 -> SdtFollow
+        1 -> SdtFollowIfPresent
+        2 -> SdtManual
+        3 -> SdtNone
+        _ -> (error . showText) $ "Unknown index for OutputSdt: " <> toText i
+    fromEnum x = case x of
+        SdtFollow -> 0
+        SdtFollowIfPresent -> 1
+        SdtManual -> 2
+        SdtNone -> 3
+        OutputSdt' name -> (error . showText) $ "Unknown OutputSdt: " <> original name
+
+-- | Represents the bounds of /known/ $OutputSdt.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded OutputSdt where
+    minBound = SdtFollow
+    maxBound = SdtNone
 
 instance Hashable     OutputSdt
 instance NFData       OutputSdt

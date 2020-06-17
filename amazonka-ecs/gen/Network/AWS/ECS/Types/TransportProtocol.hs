@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,58 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.ECS.Types.TransportProtocol where
+module Network.AWS.ECS.Types.TransportProtocol (
+  TransportProtocol (
+    ..
+    , TCP
+    , Udp
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data TransportProtocol = TCP
-                       | Udp
-                           deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                     Typeable, Generic)
+
+data TransportProtocol = TransportProtocol' (CI Text)
+                           deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                     Generic)
+
+pattern TCP :: TransportProtocol
+pattern TCP = TransportProtocol' "tcp"
+
+pattern Udp :: TransportProtocol
+pattern Udp = TransportProtocol' "udp"
+
+{-# COMPLETE
+  TCP,
+  Udp,
+  TransportProtocol' #-}
 
 instance FromText TransportProtocol where
-    parser = takeLowerText >>= \case
-        "tcp" -> pure TCP
-        "udp" -> pure Udp
-        e -> fromTextError $ "Failure parsing TransportProtocol from value: '" <> e
-           <> "'. Accepted values: tcp, udp"
+    parser = (TransportProtocol' . mk) <$> takeText
 
 instance ToText TransportProtocol where
-    toText = \case
-        TCP -> "tcp"
-        Udp -> "udp"
+    toText (TransportProtocol' ci) = original ci
+
+-- | Represents an enum of /known/ $TransportProtocol.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum TransportProtocol where
+    toEnum i = case i of
+        0 -> TCP
+        1 -> Udp
+        _ -> (error . showText) $ "Unknown index for TransportProtocol: " <> toText i
+    fromEnum x = case x of
+        TCP -> 0
+        Udp -> 1
+        TransportProtocol' name -> (error . showText) $ "Unknown TransportProtocol: " <> original name
+
+-- | Represents the bounds of /known/ $TransportProtocol.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded TransportProtocol where
+    minBound = TCP
+    maxBound = Udp
 
 instance Hashable     TransportProtocol
 instance NFData       TransportProtocol

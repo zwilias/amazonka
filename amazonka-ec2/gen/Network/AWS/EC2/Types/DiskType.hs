@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,27 +16,59 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.EC2.Types.DiskType where
+module Network.AWS.EC2.Types.DiskType (
+  DiskType (
+    ..
+    , Hdd
+    , Ssd
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.EC2.Internal
 import Network.AWS.Prelude
-  
-data DiskType = Hdd
-              | Ssd
-                  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                            Typeable, Generic)
+
+data DiskType = DiskType' (CI Text)
+                  deriving (Eq, Ord, Read, Show, Data, Typeable,
+                            Generic)
+
+pattern Hdd :: DiskType
+pattern Hdd = DiskType' "hdd"
+
+pattern Ssd :: DiskType
+pattern Ssd = DiskType' "ssd"
+
+{-# COMPLETE
+  Hdd,
+  Ssd,
+  DiskType' #-}
 
 instance FromText DiskType where
-    parser = takeLowerText >>= \case
-        "hdd" -> pure Hdd
-        "ssd" -> pure Ssd
-        e -> fromTextError $ "Failure parsing DiskType from value: '" <> e
-           <> "'. Accepted values: hdd, ssd"
+    parser = (DiskType' . mk) <$> takeText
 
 instance ToText DiskType where
-    toText = \case
-        Hdd -> "hdd"
-        Ssd -> "ssd"
+    toText (DiskType' ci) = original ci
+
+-- | Represents an enum of /known/ $DiskType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum DiskType where
+    toEnum i = case i of
+        0 -> Hdd
+        1 -> Ssd
+        _ -> (error . showText) $ "Unknown index for DiskType: " <> toText i
+    fromEnum x = case x of
+        Hdd -> 0
+        Ssd -> 1
+        DiskType' name -> (error . showText) $ "Unknown DiskType: " <> original name
+
+-- | Represents the bounds of /known/ $DiskType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded DiskType where
+    minBound = Hdd
+    maxBound = Ssd
 
 instance Hashable     DiskType
 instance NFData       DiskType

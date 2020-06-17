@@ -42,6 +42,7 @@ module Network.AWS.AutoScalingPlans.UpdateScalingPlan
     ) where
 
 import Network.AWS.AutoScalingPlans.Types
+import Network.AWS.AutoScalingPlans.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request

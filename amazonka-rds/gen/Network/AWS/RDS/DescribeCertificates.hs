@@ -44,6 +44,7 @@ module Network.AWS.RDS.DescribeCertificates
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.RDS.Types
+import Network.AWS.RDS.Types.Product
 import Network.AWS.Request
 import Network.AWS.Response
 

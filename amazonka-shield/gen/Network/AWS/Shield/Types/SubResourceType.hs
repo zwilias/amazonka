@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,58 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.Shield.Types.SubResourceType where
+module Network.AWS.Shield.Types.SubResourceType (
+  SubResourceType (
+    ..
+    , IP
+    , URL
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data SubResourceType = IP
-                     | URL
-                         deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                   Typeable, Generic)
+
+data SubResourceType = SubResourceType' (CI Text)
+                         deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                   Generic)
+
+pattern IP :: SubResourceType
+pattern IP = SubResourceType' "IP"
+
+pattern URL :: SubResourceType
+pattern URL = SubResourceType' "URL"
+
+{-# COMPLETE
+  IP,
+  URL,
+  SubResourceType' #-}
 
 instance FromText SubResourceType where
-    parser = takeLowerText >>= \case
-        "ip" -> pure IP
-        "url" -> pure URL
-        e -> fromTextError $ "Failure parsing SubResourceType from value: '" <> e
-           <> "'. Accepted values: ip, url"
+    parser = (SubResourceType' . mk) <$> takeText
 
 instance ToText SubResourceType where
-    toText = \case
-        IP -> "IP"
-        URL -> "URL"
+    toText (SubResourceType' ci) = original ci
+
+-- | Represents an enum of /known/ $SubResourceType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum SubResourceType where
+    toEnum i = case i of
+        0 -> IP
+        1 -> URL
+        _ -> (error . showText) $ "Unknown index for SubResourceType: " <> toText i
+    fromEnum x = case x of
+        IP -> 0
+        URL -> 1
+        SubResourceType' name -> (error . showText) $ "Unknown SubResourceType: " <> original name
+
+-- | Represents the bounds of /known/ $SubResourceType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded SubResourceType where
+    minBound = IP
+    maxBound = URL
 
 instance Hashable     SubResourceType
 instance NFData       SubResourceType

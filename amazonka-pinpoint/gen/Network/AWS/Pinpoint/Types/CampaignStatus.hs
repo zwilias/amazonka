@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,35 +16,79 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.Pinpoint.Types.CampaignStatus where
+module Network.AWS.Pinpoint.Types.CampaignStatus (
+  CampaignStatus (
+    ..
+    , Completed
+    , Executing
+    , Paused
+    , PendingNextRun
+    , Scheduled
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data CampaignStatus = Completed
-                    | Executing
-                    | Paused
-                    | PendingNextRun
-                    | Scheduled
-                        deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                  Typeable, Generic)
+
+data CampaignStatus = CampaignStatus' (CI Text)
+                        deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                  Generic)
+
+pattern Completed :: CampaignStatus
+pattern Completed = CampaignStatus' "COMPLETED"
+
+pattern Executing :: CampaignStatus
+pattern Executing = CampaignStatus' "EXECUTING"
+
+pattern Paused :: CampaignStatus
+pattern Paused = CampaignStatus' "PAUSED"
+
+pattern PendingNextRun :: CampaignStatus
+pattern PendingNextRun = CampaignStatus' "PENDING_NEXT_RUN"
+
+pattern Scheduled :: CampaignStatus
+pattern Scheduled = CampaignStatus' "SCHEDULED"
+
+{-# COMPLETE
+  Completed,
+  Executing,
+  Paused,
+  PendingNextRun,
+  Scheduled,
+  CampaignStatus' #-}
 
 instance FromText CampaignStatus where
-    parser = takeLowerText >>= \case
-        "completed" -> pure Completed
-        "executing" -> pure Executing
-        "paused" -> pure Paused
-        "pending_next_run" -> pure PendingNextRun
-        "scheduled" -> pure Scheduled
-        e -> fromTextError $ "Failure parsing CampaignStatus from value: '" <> e
-           <> "'. Accepted values: completed, executing, paused, pending_next_run, scheduled"
+    parser = (CampaignStatus' . mk) <$> takeText
 
 instance ToText CampaignStatus where
-    toText = \case
-        Completed -> "COMPLETED"
-        Executing -> "EXECUTING"
-        Paused -> "PAUSED"
-        PendingNextRun -> "PENDING_NEXT_RUN"
-        Scheduled -> "SCHEDULED"
+    toText (CampaignStatus' ci) = original ci
+
+-- | Represents an enum of /known/ $CampaignStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum CampaignStatus where
+    toEnum i = case i of
+        0 -> Completed
+        1 -> Executing
+        2 -> Paused
+        3 -> PendingNextRun
+        4 -> Scheduled
+        _ -> (error . showText) $ "Unknown index for CampaignStatus: " <> toText i
+    fromEnum x = case x of
+        Completed -> 0
+        Executing -> 1
+        Paused -> 2
+        PendingNextRun -> 3
+        Scheduled -> 4
+        CampaignStatus' name -> (error . showText) $ "Unknown CampaignStatus: " <> original name
+
+-- | Represents the bounds of /known/ $CampaignStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded CampaignStatus where
+    minBound = Completed
+    maxBound = Scheduled
 
 instance Hashable     CampaignStatus
 instance NFData       CampaignStatus

@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,58 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.KMS.Types.OriginType where
+module Network.AWS.KMS.Types.OriginType (
+  OriginType (
+    ..
+    , AWSKMS
+    , External
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data OriginType = AWSKMS
-                | External
-                    deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                              Typeable, Generic)
+
+data OriginType = OriginType' (CI Text)
+                    deriving (Eq, Ord, Read, Show, Data, Typeable,
+                              Generic)
+
+pattern AWSKMS :: OriginType
+pattern AWSKMS = OriginType' "AWS_KMS"
+
+pattern External :: OriginType
+pattern External = OriginType' "EXTERNAL"
+
+{-# COMPLETE
+  AWSKMS,
+  External,
+  OriginType' #-}
 
 instance FromText OriginType where
-    parser = takeLowerText >>= \case
-        "aws_kms" -> pure AWSKMS
-        "external" -> pure External
-        e -> fromTextError $ "Failure parsing OriginType from value: '" <> e
-           <> "'. Accepted values: aws_kms, external"
+    parser = (OriginType' . mk) <$> takeText
 
 instance ToText OriginType where
-    toText = \case
-        AWSKMS -> "AWS_KMS"
-        External -> "EXTERNAL"
+    toText (OriginType' ci) = original ci
+
+-- | Represents an enum of /known/ $OriginType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum OriginType where
+    toEnum i = case i of
+        0 -> AWSKMS
+        1 -> External
+        _ -> (error . showText) $ "Unknown index for OriginType: " <> toText i
+    fromEnum x = case x of
+        AWSKMS -> 0
+        External -> 1
+        OriginType' name -> (error . showText) $ "Unknown OriginType: " <> original name
+
+-- | Represents the bounds of /known/ $OriginType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded OriginType where
+    minBound = AWSKMS
+    maxBound = External
 
 instance Hashable     OriginType
 instance NFData       OriginType

@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,58 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.DMS.Types.NestingLevelValue where
+module Network.AWS.DMS.Types.NestingLevelValue (
+  NestingLevelValue (
+    ..
+    , None
+    , One
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data NestingLevelValue = None
-                       | One
-                           deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                     Typeable, Generic)
+
+data NestingLevelValue = NestingLevelValue' (CI Text)
+                           deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                     Generic)
+
+pattern None :: NestingLevelValue
+pattern None = NestingLevelValue' "none"
+
+pattern One :: NestingLevelValue
+pattern One = NestingLevelValue' "one"
+
+{-# COMPLETE
+  None,
+  One,
+  NestingLevelValue' #-}
 
 instance FromText NestingLevelValue where
-    parser = takeLowerText >>= \case
-        "none" -> pure None
-        "one" -> pure One
-        e -> fromTextError $ "Failure parsing NestingLevelValue from value: '" <> e
-           <> "'. Accepted values: none, one"
+    parser = (NestingLevelValue' . mk) <$> takeText
 
 instance ToText NestingLevelValue where
-    toText = \case
-        None -> "none"
-        One -> "one"
+    toText (NestingLevelValue' ci) = original ci
+
+-- | Represents an enum of /known/ $NestingLevelValue.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum NestingLevelValue where
+    toEnum i = case i of
+        0 -> None
+        1 -> One
+        _ -> (error . showText) $ "Unknown index for NestingLevelValue: " <> toText i
+    fromEnum x = case x of
+        None -> 0
+        One -> 1
+        NestingLevelValue' name -> (error . showText) $ "Unknown NestingLevelValue: " <> original name
+
+-- | Represents the bounds of /known/ $NestingLevelValue.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded NestingLevelValue where
+    minBound = None
+    maxBound = One
 
 instance Hashable     NestingLevelValue
 instance NFData       NestingLevelValue

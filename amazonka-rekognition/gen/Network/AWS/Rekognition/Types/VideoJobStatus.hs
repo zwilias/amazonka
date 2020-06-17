@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,29 +16,65 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.Rekognition.Types.VideoJobStatus where
+module Network.AWS.Rekognition.Types.VideoJobStatus (
+  VideoJobStatus (
+    ..
+    , Failed
+    , InProgress
+    , Succeeded
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data VideoJobStatus = Failed
-                    | InProgress
-                    | Succeeded
-                        deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                  Typeable, Generic)
+
+data VideoJobStatus = VideoJobStatus' (CI Text)
+                        deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                  Generic)
+
+pattern Failed :: VideoJobStatus
+pattern Failed = VideoJobStatus' "FAILED"
+
+pattern InProgress :: VideoJobStatus
+pattern InProgress = VideoJobStatus' "IN_PROGRESS"
+
+pattern Succeeded :: VideoJobStatus
+pattern Succeeded = VideoJobStatus' "SUCCEEDED"
+
+{-# COMPLETE
+  Failed,
+  InProgress,
+  Succeeded,
+  VideoJobStatus' #-}
 
 instance FromText VideoJobStatus where
-    parser = takeLowerText >>= \case
-        "failed" -> pure Failed
-        "in_progress" -> pure InProgress
-        "succeeded" -> pure Succeeded
-        e -> fromTextError $ "Failure parsing VideoJobStatus from value: '" <> e
-           <> "'. Accepted values: failed, in_progress, succeeded"
+    parser = (VideoJobStatus' . mk) <$> takeText
 
 instance ToText VideoJobStatus where
-    toText = \case
-        Failed -> "FAILED"
-        InProgress -> "IN_PROGRESS"
-        Succeeded -> "SUCCEEDED"
+    toText (VideoJobStatus' ci) = original ci
+
+-- | Represents an enum of /known/ $VideoJobStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum VideoJobStatus where
+    toEnum i = case i of
+        0 -> Failed
+        1 -> InProgress
+        2 -> Succeeded
+        _ -> (error . showText) $ "Unknown index for VideoJobStatus: " <> toText i
+    fromEnum x = case x of
+        Failed -> 0
+        InProgress -> 1
+        Succeeded -> 2
+        VideoJobStatus' name -> (error . showText) $ "Unknown VideoJobStatus: " <> original name
+
+-- | Represents the bounds of /known/ $VideoJobStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded VideoJobStatus where
+    minBound = Failed
+    maxBound = Succeeded
 
 instance Hashable     VideoJobStatus
 instance NFData       VideoJobStatus

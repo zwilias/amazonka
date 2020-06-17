@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,27 +16,60 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.MediaConvert.Types.HlsKeyProviderType where
+module Network.AWS.MediaConvert.Types.HlsKeyProviderType (
+  HlsKeyProviderType (
+    ..
+    , Speke
+    , StaticKey
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
+
 -- | Indicates which type of key provider is used for encryption.
-data HlsKeyProviderType = Speke
-                        | StaticKey
-                            deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                      Typeable, Generic)
+data HlsKeyProviderType = HlsKeyProviderType' (CI
+                                                 Text)
+                            deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                      Generic)
+
+pattern Speke :: HlsKeyProviderType
+pattern Speke = HlsKeyProviderType' "SPEKE"
+
+pattern StaticKey :: HlsKeyProviderType
+pattern StaticKey = HlsKeyProviderType' "STATIC_KEY"
+
+{-# COMPLETE
+  Speke,
+  StaticKey,
+  HlsKeyProviderType' #-}
 
 instance FromText HlsKeyProviderType where
-    parser = takeLowerText >>= \case
-        "speke" -> pure Speke
-        "static_key" -> pure StaticKey
-        e -> fromTextError $ "Failure parsing HlsKeyProviderType from value: '" <> e
-           <> "'. Accepted values: speke, static_key"
+    parser = (HlsKeyProviderType' . mk) <$> takeText
 
 instance ToText HlsKeyProviderType where
-    toText = \case
-        Speke -> "SPEKE"
-        StaticKey -> "STATIC_KEY"
+    toText (HlsKeyProviderType' ci) = original ci
+
+-- | Represents an enum of /known/ $HlsKeyProviderType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum HlsKeyProviderType where
+    toEnum i = case i of
+        0 -> Speke
+        1 -> StaticKey
+        _ -> (error . showText) $ "Unknown index for HlsKeyProviderType: " <> toText i
+    fromEnum x = case x of
+        Speke -> 0
+        StaticKey -> 1
+        HlsKeyProviderType' name -> (error . showText) $ "Unknown HlsKeyProviderType: " <> original name
+
+-- | Represents the bounds of /known/ $HlsKeyProviderType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded HlsKeyProviderType where
+    minBound = Speke
+    maxBound = StaticKey
 
 instance Hashable     HlsKeyProviderType
 instance NFData       HlsKeyProviderType

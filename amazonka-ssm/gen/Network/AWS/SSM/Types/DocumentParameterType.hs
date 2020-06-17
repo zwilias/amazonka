@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,59 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.SSM.Types.DocumentParameterType where
+module Network.AWS.SSM.Types.DocumentParameterType (
+  DocumentParameterType (
+    ..
+    , DPTString
+    , DPTStringList
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data DocumentParameterType = DPTString
-                           | DPTStringList
-                               deriving (Eq, Ord, Read, Show, Enum, Bounded,
-                                         Data, Typeable, Generic)
+
+data DocumentParameterType = DocumentParameterType' (CI
+                                                       Text)
+                               deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                         Generic)
+
+pattern DPTString :: DocumentParameterType
+pattern DPTString = DocumentParameterType' "String"
+
+pattern DPTStringList :: DocumentParameterType
+pattern DPTStringList = DocumentParameterType' "StringList"
+
+{-# COMPLETE
+  DPTString,
+  DPTStringList,
+  DocumentParameterType' #-}
 
 instance FromText DocumentParameterType where
-    parser = takeLowerText >>= \case
-        "string" -> pure DPTString
-        "stringlist" -> pure DPTStringList
-        e -> fromTextError $ "Failure parsing DocumentParameterType from value: '" <> e
-           <> "'. Accepted values: string, stringlist"
+    parser = (DocumentParameterType' . mk) <$> takeText
 
 instance ToText DocumentParameterType where
-    toText = \case
-        DPTString -> "String"
-        DPTStringList -> "StringList"
+    toText (DocumentParameterType' ci) = original ci
+
+-- | Represents an enum of /known/ $DocumentParameterType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum DocumentParameterType where
+    toEnum i = case i of
+        0 -> DPTString
+        1 -> DPTStringList
+        _ -> (error . showText) $ "Unknown index for DocumentParameterType: " <> toText i
+    fromEnum x = case x of
+        DPTString -> 0
+        DPTStringList -> 1
+        DocumentParameterType' name -> (error . showText) $ "Unknown DocumentParameterType: " <> original name
+
+-- | Represents the bounds of /known/ $DocumentParameterType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded DocumentParameterType where
+    minBound = DPTString
+    maxBound = DPTStringList
 
 instance Hashable     DocumentParameterType
 instance NFData       DocumentParameterType

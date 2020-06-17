@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,29 +16,65 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.DataPipeline.Types.TaskStatus where
+module Network.AWS.DataPipeline.Types.TaskStatus (
+  TaskStatus (
+    ..
+    , Failed
+    , False'
+    , Finished
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data TaskStatus = Failed
-                | False'
-                | Finished
-                    deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                              Typeable, Generic)
+
+data TaskStatus = TaskStatus' (CI Text)
+                    deriving (Eq, Ord, Read, Show, Data, Typeable,
+                              Generic)
+
+pattern Failed :: TaskStatus
+pattern Failed = TaskStatus' "FAILED"
+
+pattern False' :: TaskStatus
+pattern False' = TaskStatus' "FALSE"
+
+pattern Finished :: TaskStatus
+pattern Finished = TaskStatus' "FINISHED"
+
+{-# COMPLETE
+  Failed,
+  False',
+  Finished,
+  TaskStatus' #-}
 
 instance FromText TaskStatus where
-    parser = takeLowerText >>= \case
-        "failed" -> pure Failed
-        "false" -> pure False'
-        "finished" -> pure Finished
-        e -> fromTextError $ "Failure parsing TaskStatus from value: '" <> e
-           <> "'. Accepted values: failed, false, finished"
+    parser = (TaskStatus' . mk) <$> takeText
 
 instance ToText TaskStatus where
-    toText = \case
-        Failed -> "FAILED"
-        False' -> "FALSE"
-        Finished -> "FINISHED"
+    toText (TaskStatus' ci) = original ci
+
+-- | Represents an enum of /known/ $TaskStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum TaskStatus where
+    toEnum i = case i of
+        0 -> Failed
+        1 -> False'
+        2 -> Finished
+        _ -> (error . showText) $ "Unknown index for TaskStatus: " <> toText i
+    fromEnum x = case x of
+        Failed -> 0
+        False' -> 1
+        Finished -> 2
+        TaskStatus' name -> (error . showText) $ "Unknown TaskStatus: " <> original name
+
+-- | Represents the bounds of /known/ $TaskStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded TaskStatus where
+    minBound = Failed
+    maxBound = Finished
 
 instance Hashable     TaskStatus
 instance NFData       TaskStatus

@@ -133,6 +133,7 @@ library
         , Network.AWS.DirectoryService.Types.LDAPSType
         , Network.AWS.DirectoryService.Types.LogSubscription
         , Network.AWS.DirectoryService.Types.OwnerDirectoryDescription
+        , Network.AWS.DirectoryService.Types.Product
         , Network.AWS.DirectoryService.Types.RadiusAuthenticationProtocol
         , Network.AWS.DirectoryService.Types.RadiusSettings
         , Network.AWS.DirectoryService.Types.RadiusStatus
@@ -160,6 +161,7 @@ library
     build-depends:
           amazonka-core == 1.6.1.*
         , base          >= 4.7     && < 5
+        , case-insensitive
 
 test-suite amazonka-ds-test
     type:              exitcode-stdio-1.0
@@ -183,6 +185,7 @@ test-suite amazonka-ds-test
         , amazonka-ds
         , base
         , bytestring
+        , case-insensitive
         , tasty
         , tasty-hunit
         , text

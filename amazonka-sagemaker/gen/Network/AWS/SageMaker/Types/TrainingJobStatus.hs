@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,35 +16,79 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.SageMaker.Types.TrainingJobStatus where
+module Network.AWS.SageMaker.Types.TrainingJobStatus (
+  TrainingJobStatus (
+    ..
+    , TJSCompleted
+    , TJSFailed
+    , TJSInProgress
+    , TJSStopped
+    , TJSStopping
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data TrainingJobStatus = TJSCompleted
-                       | TJSFailed
-                       | TJSInProgress
-                       | TJSStopped
-                       | TJSStopping
-                           deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                     Typeable, Generic)
+
+data TrainingJobStatus = TrainingJobStatus' (CI Text)
+                           deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                     Generic)
+
+pattern TJSCompleted :: TrainingJobStatus
+pattern TJSCompleted = TrainingJobStatus' "Completed"
+
+pattern TJSFailed :: TrainingJobStatus
+pattern TJSFailed = TrainingJobStatus' "Failed"
+
+pattern TJSInProgress :: TrainingJobStatus
+pattern TJSInProgress = TrainingJobStatus' "InProgress"
+
+pattern TJSStopped :: TrainingJobStatus
+pattern TJSStopped = TrainingJobStatus' "Stopped"
+
+pattern TJSStopping :: TrainingJobStatus
+pattern TJSStopping = TrainingJobStatus' "Stopping"
+
+{-# COMPLETE
+  TJSCompleted,
+  TJSFailed,
+  TJSInProgress,
+  TJSStopped,
+  TJSStopping,
+  TrainingJobStatus' #-}
 
 instance FromText TrainingJobStatus where
-    parser = takeLowerText >>= \case
-        "completed" -> pure TJSCompleted
-        "failed" -> pure TJSFailed
-        "inprogress" -> pure TJSInProgress
-        "stopped" -> pure TJSStopped
-        "stopping" -> pure TJSStopping
-        e -> fromTextError $ "Failure parsing TrainingJobStatus from value: '" <> e
-           <> "'. Accepted values: completed, failed, inprogress, stopped, stopping"
+    parser = (TrainingJobStatus' . mk) <$> takeText
 
 instance ToText TrainingJobStatus where
-    toText = \case
-        TJSCompleted -> "Completed"
-        TJSFailed -> "Failed"
-        TJSInProgress -> "InProgress"
-        TJSStopped -> "Stopped"
-        TJSStopping -> "Stopping"
+    toText (TrainingJobStatus' ci) = original ci
+
+-- | Represents an enum of /known/ $TrainingJobStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum TrainingJobStatus where
+    toEnum i = case i of
+        0 -> TJSCompleted
+        1 -> TJSFailed
+        2 -> TJSInProgress
+        3 -> TJSStopped
+        4 -> TJSStopping
+        _ -> (error . showText) $ "Unknown index for TrainingJobStatus: " <> toText i
+    fromEnum x = case x of
+        TJSCompleted -> 0
+        TJSFailed -> 1
+        TJSInProgress -> 2
+        TJSStopped -> 3
+        TJSStopping -> 4
+        TrainingJobStatus' name -> (error . showText) $ "Unknown TrainingJobStatus: " <> original name
+
+-- | Represents the bounds of /known/ $TrainingJobStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded TrainingJobStatus where
+    minBound = TJSCompleted
+    maxBound = TJSStopping
 
 instance Hashable     TrainingJobStatus
 instance NFData       TrainingJobStatus

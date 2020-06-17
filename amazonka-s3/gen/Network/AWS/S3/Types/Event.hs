@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,49 +16,109 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.S3.Types.Event where
+module Network.AWS.S3.Types.Event (
+  Event (
+    ..
+    , S3ObjectCreated
+    , S3ObjectCreatedCompleteMultipartUpload
+    , S3ObjectCreatedCopy
+    , S3ObjectCreatedPost
+    , S3ObjectCreatedPut
+    , S3ObjectRemoved
+    , S3ObjectRemovedDelete
+    , S3ObjectRemovedDeleteMarkerCreated
+    , S3ReducedRedundancyLostObject
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
 import Network.AWS.S3.Internal
-  
+
 -- | Bucket event for which to send notifications.
-data Event = S3ObjectCreated
-           | S3ObjectCreatedCompleteMultipartUpload
-           | S3ObjectCreatedCopy
-           | S3ObjectCreatedPost
-           | S3ObjectCreatedPut
-           | S3ObjectRemoved
-           | S3ObjectRemovedDelete
-           | S3ObjectRemovedDeleteMarkerCreated
-           | S3ReducedRedundancyLostObject
-               deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                         Typeable, Generic)
+data Event = Event' (CI Text)
+               deriving (Eq, Ord, Read, Show, Data, Typeable,
+                         Generic)
+
+pattern S3ObjectCreated :: Event
+pattern S3ObjectCreated = Event' "s3:ObjectCreated:*"
+
+pattern S3ObjectCreatedCompleteMultipartUpload :: Event
+pattern S3ObjectCreatedCompleteMultipartUpload = Event' "s3:ObjectCreated:CompleteMultipartUpload"
+
+pattern S3ObjectCreatedCopy :: Event
+pattern S3ObjectCreatedCopy = Event' "s3:ObjectCreated:Copy"
+
+pattern S3ObjectCreatedPost :: Event
+pattern S3ObjectCreatedPost = Event' "s3:ObjectCreated:Post"
+
+pattern S3ObjectCreatedPut :: Event
+pattern S3ObjectCreatedPut = Event' "s3:ObjectCreated:Put"
+
+pattern S3ObjectRemoved :: Event
+pattern S3ObjectRemoved = Event' "s3:ObjectRemoved:*"
+
+pattern S3ObjectRemovedDelete :: Event
+pattern S3ObjectRemovedDelete = Event' "s3:ObjectRemoved:Delete"
+
+pattern S3ObjectRemovedDeleteMarkerCreated :: Event
+pattern S3ObjectRemovedDeleteMarkerCreated = Event' "s3:ObjectRemoved:DeleteMarkerCreated"
+
+pattern S3ReducedRedundancyLostObject :: Event
+pattern S3ReducedRedundancyLostObject = Event' "s3:ReducedRedundancyLostObject"
+
+{-# COMPLETE
+  S3ObjectCreated,
+  S3ObjectCreatedCompleteMultipartUpload,
+  S3ObjectCreatedCopy,
+  S3ObjectCreatedPost,
+  S3ObjectCreatedPut,
+  S3ObjectRemoved,
+  S3ObjectRemovedDelete,
+  S3ObjectRemovedDeleteMarkerCreated,
+  S3ReducedRedundancyLostObject,
+  Event' #-}
 
 instance FromText Event where
-    parser = takeLowerText >>= \case
-        "s3:objectcreated:*" -> pure S3ObjectCreated
-        "s3:objectcreated:completemultipartupload" -> pure S3ObjectCreatedCompleteMultipartUpload
-        "s3:objectcreated:copy" -> pure S3ObjectCreatedCopy
-        "s3:objectcreated:post" -> pure S3ObjectCreatedPost
-        "s3:objectcreated:put" -> pure S3ObjectCreatedPut
-        "s3:objectremoved:*" -> pure S3ObjectRemoved
-        "s3:objectremoved:delete" -> pure S3ObjectRemovedDelete
-        "s3:objectremoved:deletemarkercreated" -> pure S3ObjectRemovedDeleteMarkerCreated
-        "s3:reducedredundancylostobject" -> pure S3ReducedRedundancyLostObject
-        e -> fromTextError $ "Failure parsing Event from value: '" <> e
-           <> "'. Accepted values: s3:objectcreated:*, s3:objectcreated:completemultipartupload, s3:objectcreated:copy, s3:objectcreated:post, s3:objectcreated:put, s3:objectremoved:*, s3:objectremoved:delete, s3:objectremoved:deletemarkercreated, s3:reducedredundancylostobject"
+    parser = (Event' . mk) <$> takeText
 
 instance ToText Event where
-    toText = \case
-        S3ObjectCreated -> "s3:ObjectCreated:*"
-        S3ObjectCreatedCompleteMultipartUpload -> "s3:ObjectCreated:CompleteMultipartUpload"
-        S3ObjectCreatedCopy -> "s3:ObjectCreated:Copy"
-        S3ObjectCreatedPost -> "s3:ObjectCreated:Post"
-        S3ObjectCreatedPut -> "s3:ObjectCreated:Put"
-        S3ObjectRemoved -> "s3:ObjectRemoved:*"
-        S3ObjectRemovedDelete -> "s3:ObjectRemoved:Delete"
-        S3ObjectRemovedDeleteMarkerCreated -> "s3:ObjectRemoved:DeleteMarkerCreated"
-        S3ReducedRedundancyLostObject -> "s3:ReducedRedundancyLostObject"
+    toText (Event' ci) = original ci
+
+-- | Represents an enum of /known/ $Event.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum Event where
+    toEnum i = case i of
+        0 -> S3ObjectCreated
+        1 -> S3ObjectCreatedCompleteMultipartUpload
+        2 -> S3ObjectCreatedCopy
+        3 -> S3ObjectCreatedPost
+        4 -> S3ObjectCreatedPut
+        5 -> S3ObjectRemoved
+        6 -> S3ObjectRemovedDelete
+        7 -> S3ObjectRemovedDeleteMarkerCreated
+        8 -> S3ReducedRedundancyLostObject
+        _ -> (error . showText) $ "Unknown index for Event: " <> toText i
+    fromEnum x = case x of
+        S3ObjectCreated -> 0
+        S3ObjectCreatedCompleteMultipartUpload -> 1
+        S3ObjectCreatedCopy -> 2
+        S3ObjectCreatedPost -> 3
+        S3ObjectCreatedPut -> 4
+        S3ObjectRemoved -> 5
+        S3ObjectRemovedDelete -> 6
+        S3ObjectRemovedDeleteMarkerCreated -> 7
+        S3ReducedRedundancyLostObject -> 8
+        Event' name -> (error . showText) $ "Unknown Event: " <> original name
+
+-- | Represents the bounds of /known/ $Event.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded Event where
+    minBound = S3ObjectCreated
+    maxBound = S3ReducedRedundancyLostObject
 
 instance Hashable     Event
 instance NFData       Event

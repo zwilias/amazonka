@@ -41,6 +41,7 @@ module Network.AWS.IoTData.UpdateThingShadow
     ) where
 
 import Network.AWS.IoTData.Types
+import Network.AWS.IoTData.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request

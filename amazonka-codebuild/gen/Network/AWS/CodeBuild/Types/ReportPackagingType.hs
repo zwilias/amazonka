@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,59 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.CodeBuild.Types.ReportPackagingType where
+module Network.AWS.CodeBuild.Types.ReportPackagingType (
+  ReportPackagingType (
+    ..
+    , RPTNone
+    , RPTZip
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data ReportPackagingType = RPTNone
-                         | RPTZip
-                             deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                       Typeable, Generic)
+
+data ReportPackagingType = ReportPackagingType' (CI
+                                                   Text)
+                             deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                       Generic)
+
+pattern RPTNone :: ReportPackagingType
+pattern RPTNone = ReportPackagingType' "NONE"
+
+pattern RPTZip :: ReportPackagingType
+pattern RPTZip = ReportPackagingType' "ZIP"
+
+{-# COMPLETE
+  RPTNone,
+  RPTZip,
+  ReportPackagingType' #-}
 
 instance FromText ReportPackagingType where
-    parser = takeLowerText >>= \case
-        "none" -> pure RPTNone
-        "zip" -> pure RPTZip
-        e -> fromTextError $ "Failure parsing ReportPackagingType from value: '" <> e
-           <> "'. Accepted values: none, zip"
+    parser = (ReportPackagingType' . mk) <$> takeText
 
 instance ToText ReportPackagingType where
-    toText = \case
-        RPTNone -> "NONE"
-        RPTZip -> "ZIP"
+    toText (ReportPackagingType' ci) = original ci
+
+-- | Represents an enum of /known/ $ReportPackagingType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum ReportPackagingType where
+    toEnum i = case i of
+        0 -> RPTNone
+        1 -> RPTZip
+        _ -> (error . showText) $ "Unknown index for ReportPackagingType: " <> toText i
+    fromEnum x = case x of
+        RPTNone -> 0
+        RPTZip -> 1
+        ReportPackagingType' name -> (error . showText) $ "Unknown ReportPackagingType: " <> original name
+
+-- | Represents the bounds of /known/ $ReportPackagingType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded ReportPackagingType where
+    minBound = RPTNone
+    maxBound = RPTZip
 
 instance Hashable     ReportPackagingType
 instance NFData       ReportPackagingType

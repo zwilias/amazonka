@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,29 +16,61 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.CostAndUsageReport.Types.TimeUnit where
+module Network.AWS.CostAndUsageReport.Types.TimeUnit (
+  TimeUnit (
+    ..
+    , Daily
+    , Hourly
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
+
 -- | The length of time covered by the report. 
 --
 --
-data TimeUnit = Daily
-              | Hourly
-                  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                            Typeable, Generic)
+data TimeUnit = TimeUnit' (CI Text)
+                  deriving (Eq, Ord, Read, Show, Data, Typeable,
+                            Generic)
+
+pattern Daily :: TimeUnit
+pattern Daily = TimeUnit' "DAILY"
+
+pattern Hourly :: TimeUnit
+pattern Hourly = TimeUnit' "HOURLY"
+
+{-# COMPLETE
+  Daily,
+  Hourly,
+  TimeUnit' #-}
 
 instance FromText TimeUnit where
-    parser = takeLowerText >>= \case
-        "daily" -> pure Daily
-        "hourly" -> pure Hourly
-        e -> fromTextError $ "Failure parsing TimeUnit from value: '" <> e
-           <> "'. Accepted values: daily, hourly"
+    parser = (TimeUnit' . mk) <$> takeText
 
 instance ToText TimeUnit where
-    toText = \case
-        Daily -> "DAILY"
-        Hourly -> "HOURLY"
+    toText (TimeUnit' ci) = original ci
+
+-- | Represents an enum of /known/ $TimeUnit.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum TimeUnit where
+    toEnum i = case i of
+        0 -> Daily
+        1 -> Hourly
+        _ -> (error . showText) $ "Unknown index for TimeUnit: " <> toText i
+    fromEnum x = case x of
+        Daily -> 0
+        Hourly -> 1
+        TimeUnit' name -> (error . showText) $ "Unknown TimeUnit: " <> original name
+
+-- | Represents the bounds of /known/ $TimeUnit.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded TimeUnit where
+    minBound = Daily
+    maxBound = Hourly
 
 instance Hashable     TimeUnit
 instance NFData       TimeUnit

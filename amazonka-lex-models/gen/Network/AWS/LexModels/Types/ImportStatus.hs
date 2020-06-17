@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,29 +16,65 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.LexModels.Types.ImportStatus where
+module Network.AWS.LexModels.Types.ImportStatus (
+  ImportStatus (
+    ..
+    , ISComplete
+    , ISFailed
+    , ISInProgress
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data ImportStatus = ISComplete
-                  | ISFailed
-                  | ISInProgress
-                      deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                Typeable, Generic)
+
+data ImportStatus = ImportStatus' (CI Text)
+                      deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                Generic)
+
+pattern ISComplete :: ImportStatus
+pattern ISComplete = ImportStatus' "COMPLETE"
+
+pattern ISFailed :: ImportStatus
+pattern ISFailed = ImportStatus' "FAILED"
+
+pattern ISInProgress :: ImportStatus
+pattern ISInProgress = ImportStatus' "IN_PROGRESS"
+
+{-# COMPLETE
+  ISComplete,
+  ISFailed,
+  ISInProgress,
+  ImportStatus' #-}
 
 instance FromText ImportStatus where
-    parser = takeLowerText >>= \case
-        "complete" -> pure ISComplete
-        "failed" -> pure ISFailed
-        "in_progress" -> pure ISInProgress
-        e -> fromTextError $ "Failure parsing ImportStatus from value: '" <> e
-           <> "'. Accepted values: complete, failed, in_progress"
+    parser = (ImportStatus' . mk) <$> takeText
 
 instance ToText ImportStatus where
-    toText = \case
-        ISComplete -> "COMPLETE"
-        ISFailed -> "FAILED"
-        ISInProgress -> "IN_PROGRESS"
+    toText (ImportStatus' ci) = original ci
+
+-- | Represents an enum of /known/ $ImportStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum ImportStatus where
+    toEnum i = case i of
+        0 -> ISComplete
+        1 -> ISFailed
+        2 -> ISInProgress
+        _ -> (error . showText) $ "Unknown index for ImportStatus: " <> toText i
+    fromEnum x = case x of
+        ISComplete -> 0
+        ISFailed -> 1
+        ISInProgress -> 2
+        ImportStatus' name -> (error . showText) $ "Unknown ImportStatus: " <> original name
+
+-- | Represents the bounds of /known/ $ImportStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded ImportStatus where
+    minBound = ISComplete
+    maxBound = ISInProgress
 
 instance Hashable     ImportStatus
 instance NFData       ImportStatus

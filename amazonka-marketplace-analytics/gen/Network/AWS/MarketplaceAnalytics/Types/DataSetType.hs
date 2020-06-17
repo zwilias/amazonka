@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,83 +16,191 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.MarketplaceAnalytics.Types.DataSetType where
+module Network.AWS.MarketplaceAnalytics.Types.DataSetType (
+  DataSetType (
+    ..
+    , CustomerProfileByGeography
+    , CustomerProfileByIndustry
+    , CustomerProfileByRevenue
+    , CustomerSubscriberAnnualSubscriptions
+    , CustomerSubscriberHourlyMonthlySubscriptions
+    , DailyBusinessCanceledProductSubscribers
+    , DailyBusinessFees
+    , DailyBusinessFreeTrialConversions
+    , DailyBusinessNewInstances
+    , DailyBusinessNewProductSubscribers
+    , DailyBusinessUsageByInstanceType
+    , DisbursedAmountByAgeOfDisbursedFunds
+    , DisbursedAmountByAgeOfUncollectedFunds
+    , DisbursedAmountByCustomerGeo
+    , DisbursedAmountByInstanceHours
+    , DisbursedAmountByProduct
+    , DisbursedAmountByProductWithUncollectedFunds
+    , MonthlyRevenueAnnualSubscriptions
+    , MonthlyRevenueBillingAndRevenueData
+    , SalesCompensationBilledRevenue
+    , UsSalesAndUseTaxRecords
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data DataSetType = CustomerProfileByGeography
-                 | CustomerProfileByIndustry
-                 | CustomerProfileByRevenue
-                 | CustomerSubscriberAnnualSubscriptions
-                 | CustomerSubscriberHourlyMonthlySubscriptions
-                 | DailyBusinessCanceledProductSubscribers
-                 | DailyBusinessFees
-                 | DailyBusinessFreeTrialConversions
-                 | DailyBusinessNewInstances
-                 | DailyBusinessNewProductSubscribers
-                 | DailyBusinessUsageByInstanceType
-                 | DisbursedAmountByAgeOfDisbursedFunds
-                 | DisbursedAmountByAgeOfUncollectedFunds
-                 | DisbursedAmountByCustomerGeo
-                 | DisbursedAmountByInstanceHours
-                 | DisbursedAmountByProduct
-                 | DisbursedAmountByProductWithUncollectedFunds
-                 | MonthlyRevenueAnnualSubscriptions
-                 | MonthlyRevenueBillingAndRevenueData
-                 | SalesCompensationBilledRevenue
-                 | UsSalesAndUseTaxRecords
-                     deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                               Typeable, Generic)
+
+data DataSetType = DataSetType' (CI Text)
+                     deriving (Eq, Ord, Read, Show, Data, Typeable,
+                               Generic)
+
+pattern CustomerProfileByGeography :: DataSetType
+pattern CustomerProfileByGeography = DataSetType' "customer_profile_by_geography"
+
+pattern CustomerProfileByIndustry :: DataSetType
+pattern CustomerProfileByIndustry = DataSetType' "customer_profile_by_industry"
+
+pattern CustomerProfileByRevenue :: DataSetType
+pattern CustomerProfileByRevenue = DataSetType' "customer_profile_by_revenue"
+
+pattern CustomerSubscriberAnnualSubscriptions :: DataSetType
+pattern CustomerSubscriberAnnualSubscriptions = DataSetType' "customer_subscriber_annual_subscriptions"
+
+pattern CustomerSubscriberHourlyMonthlySubscriptions :: DataSetType
+pattern CustomerSubscriberHourlyMonthlySubscriptions = DataSetType' "customer_subscriber_hourly_monthly_subscriptions"
+
+pattern DailyBusinessCanceledProductSubscribers :: DataSetType
+pattern DailyBusinessCanceledProductSubscribers = DataSetType' "daily_business_canceled_product_subscribers"
+
+pattern DailyBusinessFees :: DataSetType
+pattern DailyBusinessFees = DataSetType' "daily_business_fees"
+
+pattern DailyBusinessFreeTrialConversions :: DataSetType
+pattern DailyBusinessFreeTrialConversions = DataSetType' "daily_business_free_trial_conversions"
+
+pattern DailyBusinessNewInstances :: DataSetType
+pattern DailyBusinessNewInstances = DataSetType' "daily_business_new_instances"
+
+pattern DailyBusinessNewProductSubscribers :: DataSetType
+pattern DailyBusinessNewProductSubscribers = DataSetType' "daily_business_new_product_subscribers"
+
+pattern DailyBusinessUsageByInstanceType :: DataSetType
+pattern DailyBusinessUsageByInstanceType = DataSetType' "daily_business_usage_by_instance_type"
+
+pattern DisbursedAmountByAgeOfDisbursedFunds :: DataSetType
+pattern DisbursedAmountByAgeOfDisbursedFunds = DataSetType' "disbursed_amount_by_age_of_disbursed_funds"
+
+pattern DisbursedAmountByAgeOfUncollectedFunds :: DataSetType
+pattern DisbursedAmountByAgeOfUncollectedFunds = DataSetType' "disbursed_amount_by_age_of_uncollected_funds"
+
+pattern DisbursedAmountByCustomerGeo :: DataSetType
+pattern DisbursedAmountByCustomerGeo = DataSetType' "disbursed_amount_by_customer_geo"
+
+pattern DisbursedAmountByInstanceHours :: DataSetType
+pattern DisbursedAmountByInstanceHours = DataSetType' "disbursed_amount_by_instance_hours"
+
+pattern DisbursedAmountByProduct :: DataSetType
+pattern DisbursedAmountByProduct = DataSetType' "disbursed_amount_by_product"
+
+pattern DisbursedAmountByProductWithUncollectedFunds :: DataSetType
+pattern DisbursedAmountByProductWithUncollectedFunds = DataSetType' "disbursed_amount_by_product_with_uncollected_funds"
+
+pattern MonthlyRevenueAnnualSubscriptions :: DataSetType
+pattern MonthlyRevenueAnnualSubscriptions = DataSetType' "monthly_revenue_annual_subscriptions"
+
+pattern MonthlyRevenueBillingAndRevenueData :: DataSetType
+pattern MonthlyRevenueBillingAndRevenueData = DataSetType' "monthly_revenue_billing_and_revenue_data"
+
+pattern SalesCompensationBilledRevenue :: DataSetType
+pattern SalesCompensationBilledRevenue = DataSetType' "sales_compensation_billed_revenue"
+
+pattern UsSalesAndUseTaxRecords :: DataSetType
+pattern UsSalesAndUseTaxRecords = DataSetType' "us_sales_and_use_tax_records"
+
+{-# COMPLETE
+  CustomerProfileByGeography,
+  CustomerProfileByIndustry,
+  CustomerProfileByRevenue,
+  CustomerSubscriberAnnualSubscriptions,
+  CustomerSubscriberHourlyMonthlySubscriptions,
+  DailyBusinessCanceledProductSubscribers,
+  DailyBusinessFees,
+  DailyBusinessFreeTrialConversions,
+  DailyBusinessNewInstances,
+  DailyBusinessNewProductSubscribers,
+  DailyBusinessUsageByInstanceType,
+  DisbursedAmountByAgeOfDisbursedFunds,
+  DisbursedAmountByAgeOfUncollectedFunds,
+  DisbursedAmountByCustomerGeo,
+  DisbursedAmountByInstanceHours,
+  DisbursedAmountByProduct,
+  DisbursedAmountByProductWithUncollectedFunds,
+  MonthlyRevenueAnnualSubscriptions,
+  MonthlyRevenueBillingAndRevenueData,
+  SalesCompensationBilledRevenue,
+  UsSalesAndUseTaxRecords,
+  DataSetType' #-}
 
 instance FromText DataSetType where
-    parser = takeLowerText >>= \case
-        "customer_profile_by_geography" -> pure CustomerProfileByGeography
-        "customer_profile_by_industry" -> pure CustomerProfileByIndustry
-        "customer_profile_by_revenue" -> pure CustomerProfileByRevenue
-        "customer_subscriber_annual_subscriptions" -> pure CustomerSubscriberAnnualSubscriptions
-        "customer_subscriber_hourly_monthly_subscriptions" -> pure CustomerSubscriberHourlyMonthlySubscriptions
-        "daily_business_canceled_product_subscribers" -> pure DailyBusinessCanceledProductSubscribers
-        "daily_business_fees" -> pure DailyBusinessFees
-        "daily_business_free_trial_conversions" -> pure DailyBusinessFreeTrialConversions
-        "daily_business_new_instances" -> pure DailyBusinessNewInstances
-        "daily_business_new_product_subscribers" -> pure DailyBusinessNewProductSubscribers
-        "daily_business_usage_by_instance_type" -> pure DailyBusinessUsageByInstanceType
-        "disbursed_amount_by_age_of_disbursed_funds" -> pure DisbursedAmountByAgeOfDisbursedFunds
-        "disbursed_amount_by_age_of_uncollected_funds" -> pure DisbursedAmountByAgeOfUncollectedFunds
-        "disbursed_amount_by_customer_geo" -> pure DisbursedAmountByCustomerGeo
-        "disbursed_amount_by_instance_hours" -> pure DisbursedAmountByInstanceHours
-        "disbursed_amount_by_product" -> pure DisbursedAmountByProduct
-        "disbursed_amount_by_product_with_uncollected_funds" -> pure DisbursedAmountByProductWithUncollectedFunds
-        "monthly_revenue_annual_subscriptions" -> pure MonthlyRevenueAnnualSubscriptions
-        "monthly_revenue_billing_and_revenue_data" -> pure MonthlyRevenueBillingAndRevenueData
-        "sales_compensation_billed_revenue" -> pure SalesCompensationBilledRevenue
-        "us_sales_and_use_tax_records" -> pure UsSalesAndUseTaxRecords
-        e -> fromTextError $ "Failure parsing DataSetType from value: '" <> e
-           <> "'. Accepted values: customer_profile_by_geography, customer_profile_by_industry, customer_profile_by_revenue, customer_subscriber_annual_subscriptions, customer_subscriber_hourly_monthly_subscriptions, daily_business_canceled_product_subscribers, daily_business_fees, daily_business_free_trial_conversions, daily_business_new_instances, daily_business_new_product_subscribers, daily_business_usage_by_instance_type, disbursed_amount_by_age_of_disbursed_funds, disbursed_amount_by_age_of_uncollected_funds, disbursed_amount_by_customer_geo, disbursed_amount_by_instance_hours, disbursed_amount_by_product, disbursed_amount_by_product_with_uncollected_funds, monthly_revenue_annual_subscriptions, monthly_revenue_billing_and_revenue_data, sales_compensation_billed_revenue, us_sales_and_use_tax_records"
+    parser = (DataSetType' . mk) <$> takeText
 
 instance ToText DataSetType where
-    toText = \case
-        CustomerProfileByGeography -> "customer_profile_by_geography"
-        CustomerProfileByIndustry -> "customer_profile_by_industry"
-        CustomerProfileByRevenue -> "customer_profile_by_revenue"
-        CustomerSubscriberAnnualSubscriptions -> "customer_subscriber_annual_subscriptions"
-        CustomerSubscriberHourlyMonthlySubscriptions -> "customer_subscriber_hourly_monthly_subscriptions"
-        DailyBusinessCanceledProductSubscribers -> "daily_business_canceled_product_subscribers"
-        DailyBusinessFees -> "daily_business_fees"
-        DailyBusinessFreeTrialConversions -> "daily_business_free_trial_conversions"
-        DailyBusinessNewInstances -> "daily_business_new_instances"
-        DailyBusinessNewProductSubscribers -> "daily_business_new_product_subscribers"
-        DailyBusinessUsageByInstanceType -> "daily_business_usage_by_instance_type"
-        DisbursedAmountByAgeOfDisbursedFunds -> "disbursed_amount_by_age_of_disbursed_funds"
-        DisbursedAmountByAgeOfUncollectedFunds -> "disbursed_amount_by_age_of_uncollected_funds"
-        DisbursedAmountByCustomerGeo -> "disbursed_amount_by_customer_geo"
-        DisbursedAmountByInstanceHours -> "disbursed_amount_by_instance_hours"
-        DisbursedAmountByProduct -> "disbursed_amount_by_product"
-        DisbursedAmountByProductWithUncollectedFunds -> "disbursed_amount_by_product_with_uncollected_funds"
-        MonthlyRevenueAnnualSubscriptions -> "monthly_revenue_annual_subscriptions"
-        MonthlyRevenueBillingAndRevenueData -> "monthly_revenue_billing_and_revenue_data"
-        SalesCompensationBilledRevenue -> "sales_compensation_billed_revenue"
-        UsSalesAndUseTaxRecords -> "us_sales_and_use_tax_records"
+    toText (DataSetType' ci) = original ci
+
+-- | Represents an enum of /known/ $DataSetType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum DataSetType where
+    toEnum i = case i of
+        0 -> CustomerProfileByGeography
+        1 -> CustomerProfileByIndustry
+        2 -> CustomerProfileByRevenue
+        3 -> CustomerSubscriberAnnualSubscriptions
+        4 -> CustomerSubscriberHourlyMonthlySubscriptions
+        5 -> DailyBusinessCanceledProductSubscribers
+        6 -> DailyBusinessFees
+        7 -> DailyBusinessFreeTrialConversions
+        8 -> DailyBusinessNewInstances
+        9 -> DailyBusinessNewProductSubscribers
+        10 -> DailyBusinessUsageByInstanceType
+        11 -> DisbursedAmountByAgeOfDisbursedFunds
+        12 -> DisbursedAmountByAgeOfUncollectedFunds
+        13 -> DisbursedAmountByCustomerGeo
+        14 -> DisbursedAmountByInstanceHours
+        15 -> DisbursedAmountByProduct
+        16 -> DisbursedAmountByProductWithUncollectedFunds
+        17 -> MonthlyRevenueAnnualSubscriptions
+        18 -> MonthlyRevenueBillingAndRevenueData
+        19 -> SalesCompensationBilledRevenue
+        20 -> UsSalesAndUseTaxRecords
+        _ -> (error . showText) $ "Unknown index for DataSetType: " <> toText i
+    fromEnum x = case x of
+        CustomerProfileByGeography -> 0
+        CustomerProfileByIndustry -> 1
+        CustomerProfileByRevenue -> 2
+        CustomerSubscriberAnnualSubscriptions -> 3
+        CustomerSubscriberHourlyMonthlySubscriptions -> 4
+        DailyBusinessCanceledProductSubscribers -> 5
+        DailyBusinessFees -> 6
+        DailyBusinessFreeTrialConversions -> 7
+        DailyBusinessNewInstances -> 8
+        DailyBusinessNewProductSubscribers -> 9
+        DailyBusinessUsageByInstanceType -> 10
+        DisbursedAmountByAgeOfDisbursedFunds -> 11
+        DisbursedAmountByAgeOfUncollectedFunds -> 12
+        DisbursedAmountByCustomerGeo -> 13
+        DisbursedAmountByInstanceHours -> 14
+        DisbursedAmountByProduct -> 15
+        DisbursedAmountByProductWithUncollectedFunds -> 16
+        MonthlyRevenueAnnualSubscriptions -> 17
+        MonthlyRevenueBillingAndRevenueData -> 18
+        SalesCompensationBilledRevenue -> 19
+        UsSalesAndUseTaxRecords -> 20
+        DataSetType' name -> (error . showText) $ "Unknown DataSetType: " <> original name
+
+-- | Represents the bounds of /known/ $DataSetType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded DataSetType where
+    minBound = CustomerProfileByGeography
+    maxBound = UsSalesAndUseTaxRecords
 
 instance Hashable     DataSetType
 instance NFData       DataSetType

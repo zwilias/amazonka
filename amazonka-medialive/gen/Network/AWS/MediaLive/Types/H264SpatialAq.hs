@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,27 +16,59 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.MediaLive.Types.H264SpatialAq where
+module Network.AWS.MediaLive.Types.H264SpatialAq (
+  H264SpatialAq (
+    ..
+    , HSADisabled
+    , HSAEnabled
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
+
 -- | Placeholder documentation for H264SpatialAq
-data H264SpatialAq = HSADisabled
-                   | HSAEnabled
-                       deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                 Typeable, Generic)
+data H264SpatialAq = H264SpatialAq' (CI Text)
+                       deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                 Generic)
+
+pattern HSADisabled :: H264SpatialAq
+pattern HSADisabled = H264SpatialAq' "DISABLED"
+
+pattern HSAEnabled :: H264SpatialAq
+pattern HSAEnabled = H264SpatialAq' "ENABLED"
+
+{-# COMPLETE
+  HSADisabled,
+  HSAEnabled,
+  H264SpatialAq' #-}
 
 instance FromText H264SpatialAq where
-    parser = takeLowerText >>= \case
-        "disabled" -> pure HSADisabled
-        "enabled" -> pure HSAEnabled
-        e -> fromTextError $ "Failure parsing H264SpatialAq from value: '" <> e
-           <> "'. Accepted values: disabled, enabled"
+    parser = (H264SpatialAq' . mk) <$> takeText
 
 instance ToText H264SpatialAq where
-    toText = \case
-        HSADisabled -> "DISABLED"
-        HSAEnabled -> "ENABLED"
+    toText (H264SpatialAq' ci) = original ci
+
+-- | Represents an enum of /known/ $H264SpatialAq.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum H264SpatialAq where
+    toEnum i = case i of
+        0 -> HSADisabled
+        1 -> HSAEnabled
+        _ -> (error . showText) $ "Unknown index for H264SpatialAq: " <> toText i
+    fromEnum x = case x of
+        HSADisabled -> 0
+        HSAEnabled -> 1
+        H264SpatialAq' name -> (error . showText) $ "Unknown H264SpatialAq: " <> original name
+
+-- | Represents the bounds of /known/ $H264SpatialAq.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded H264SpatialAq where
+    minBound = HSADisabled
+    maxBound = HSAEnabled
 
 instance Hashable     H264SpatialAq
 instance NFData       H264SpatialAq

@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,29 +16,65 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.Config.Types.DeliveryStatus where
+module Network.AWS.Config.Types.DeliveryStatus (
+  DeliveryStatus (
+    ..
+    , DSFailure
+    , DSNotApplicable
+    , DSSuccess
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data DeliveryStatus = DSFailure
-                    | DSNotApplicable
-                    | DSSuccess
-                        deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                  Typeable, Generic)
+
+data DeliveryStatus = DeliveryStatus' (CI Text)
+                        deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                  Generic)
+
+pattern DSFailure :: DeliveryStatus
+pattern DSFailure = DeliveryStatus' "Failure"
+
+pattern DSNotApplicable :: DeliveryStatus
+pattern DSNotApplicable = DeliveryStatus' "Not_Applicable"
+
+pattern DSSuccess :: DeliveryStatus
+pattern DSSuccess = DeliveryStatus' "Success"
+
+{-# COMPLETE
+  DSFailure,
+  DSNotApplicable,
+  DSSuccess,
+  DeliveryStatus' #-}
 
 instance FromText DeliveryStatus where
-    parser = takeLowerText >>= \case
-        "failure" -> pure DSFailure
-        "not_applicable" -> pure DSNotApplicable
-        "success" -> pure DSSuccess
-        e -> fromTextError $ "Failure parsing DeliveryStatus from value: '" <> e
-           <> "'. Accepted values: failure, not_applicable, success"
+    parser = (DeliveryStatus' . mk) <$> takeText
 
 instance ToText DeliveryStatus where
-    toText = \case
-        DSFailure -> "Failure"
-        DSNotApplicable -> "Not_Applicable"
-        DSSuccess -> "Success"
+    toText (DeliveryStatus' ci) = original ci
+
+-- | Represents an enum of /known/ $DeliveryStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum DeliveryStatus where
+    toEnum i = case i of
+        0 -> DSFailure
+        1 -> DSNotApplicable
+        2 -> DSSuccess
+        _ -> (error . showText) $ "Unknown index for DeliveryStatus: " <> toText i
+    fromEnum x = case x of
+        DSFailure -> 0
+        DSNotApplicable -> 1
+        DSSuccess -> 2
+        DeliveryStatus' name -> (error . showText) $ "Unknown DeliveryStatus: " <> original name
+
+-- | Represents the bounds of /known/ $DeliveryStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded DeliveryStatus where
+    minBound = DSFailure
+    maxBound = DSSuccess
 
 instance Hashable     DeliveryStatus
 instance NFData       DeliveryStatus

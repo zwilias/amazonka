@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,29 +16,65 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.CertificateManager.Types.CertificateType where
+module Network.AWS.CertificateManager.Types.CertificateType (
+  CertificateType (
+    ..
+    , AmazonIssued
+    , Imported
+    , Private
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data CertificateType = AmazonIssued
-                     | Imported
-                     | Private
-                         deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                   Typeable, Generic)
+
+data CertificateType = CertificateType' (CI Text)
+                         deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                   Generic)
+
+pattern AmazonIssued :: CertificateType
+pattern AmazonIssued = CertificateType' "AMAZON_ISSUED"
+
+pattern Imported :: CertificateType
+pattern Imported = CertificateType' "IMPORTED"
+
+pattern Private :: CertificateType
+pattern Private = CertificateType' "PRIVATE"
+
+{-# COMPLETE
+  AmazonIssued,
+  Imported,
+  Private,
+  CertificateType' #-}
 
 instance FromText CertificateType where
-    parser = takeLowerText >>= \case
-        "amazon_issued" -> pure AmazonIssued
-        "imported" -> pure Imported
-        "private" -> pure Private
-        e -> fromTextError $ "Failure parsing CertificateType from value: '" <> e
-           <> "'. Accepted values: amazon_issued, imported, private"
+    parser = (CertificateType' . mk) <$> takeText
 
 instance ToText CertificateType where
-    toText = \case
-        AmazonIssued -> "AMAZON_ISSUED"
-        Imported -> "IMPORTED"
-        Private -> "PRIVATE"
+    toText (CertificateType' ci) = original ci
+
+-- | Represents an enum of /known/ $CertificateType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum CertificateType where
+    toEnum i = case i of
+        0 -> AmazonIssued
+        1 -> Imported
+        2 -> Private
+        _ -> (error . showText) $ "Unknown index for CertificateType: " <> toText i
+    fromEnum x = case x of
+        AmazonIssued -> 0
+        Imported -> 1
+        Private -> 2
+        CertificateType' name -> (error . showText) $ "Unknown CertificateType: " <> original name
+
+-- | Represents the bounds of /known/ $CertificateType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded CertificateType where
+    minBound = AmazonIssued
+    maxBound = Private
 
 instance Hashable     CertificateType
 instance NFData       CertificateType

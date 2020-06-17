@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,59 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.AutoScalingPlans.Types.ScalingPolicyUpdateBehavior where
+module Network.AWS.AutoScalingPlans.Types.ScalingPolicyUpdateBehavior (
+  ScalingPolicyUpdateBehavior (
+    ..
+    , KeepExternalPolicies
+    , ReplaceExternalPolicies
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data ScalingPolicyUpdateBehavior = KeepExternalPolicies
-                                 | ReplaceExternalPolicies
-                                     deriving (Eq, Ord, Read, Show, Enum,
-                                               Bounded, Data, Typeable, Generic)
+
+data ScalingPolicyUpdateBehavior = ScalingPolicyUpdateBehavior' (CI
+                                                                   Text)
+                                     deriving (Eq, Ord, Read, Show, Data,
+                                               Typeable, Generic)
+
+pattern KeepExternalPolicies :: ScalingPolicyUpdateBehavior
+pattern KeepExternalPolicies = ScalingPolicyUpdateBehavior' "KeepExternalPolicies"
+
+pattern ReplaceExternalPolicies :: ScalingPolicyUpdateBehavior
+pattern ReplaceExternalPolicies = ScalingPolicyUpdateBehavior' "ReplaceExternalPolicies"
+
+{-# COMPLETE
+  KeepExternalPolicies,
+  ReplaceExternalPolicies,
+  ScalingPolicyUpdateBehavior' #-}
 
 instance FromText ScalingPolicyUpdateBehavior where
-    parser = takeLowerText >>= \case
-        "keepexternalpolicies" -> pure KeepExternalPolicies
-        "replaceexternalpolicies" -> pure ReplaceExternalPolicies
-        e -> fromTextError $ "Failure parsing ScalingPolicyUpdateBehavior from value: '" <> e
-           <> "'. Accepted values: keepexternalpolicies, replaceexternalpolicies"
+    parser = (ScalingPolicyUpdateBehavior' . mk) <$> takeText
 
 instance ToText ScalingPolicyUpdateBehavior where
-    toText = \case
-        KeepExternalPolicies -> "KeepExternalPolicies"
-        ReplaceExternalPolicies -> "ReplaceExternalPolicies"
+    toText (ScalingPolicyUpdateBehavior' ci) = original ci
+
+-- | Represents an enum of /known/ $ScalingPolicyUpdateBehavior.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum ScalingPolicyUpdateBehavior where
+    toEnum i = case i of
+        0 -> KeepExternalPolicies
+        1 -> ReplaceExternalPolicies
+        _ -> (error . showText) $ "Unknown index for ScalingPolicyUpdateBehavior: " <> toText i
+    fromEnum x = case x of
+        KeepExternalPolicies -> 0
+        ReplaceExternalPolicies -> 1
+        ScalingPolicyUpdateBehavior' name -> (error . showText) $ "Unknown ScalingPolicyUpdateBehavior: " <> original name
+
+-- | Represents the bounds of /known/ $ScalingPolicyUpdateBehavior.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded ScalingPolicyUpdateBehavior where
+    minBound = KeepExternalPolicies
+    maxBound = ReplaceExternalPolicies
 
 instance Hashable     ScalingPolicyUpdateBehavior
 instance NFData       ScalingPolicyUpdateBehavior

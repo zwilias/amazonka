@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,35 +16,79 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.Snowball.Types.ClusterState where
+module Network.AWS.Snowball.Types.ClusterState (
+  ClusterState (
+    ..
+    , AwaitingQuorum
+    , Cancelled
+    , Complete
+    , InUse
+    , Pending
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data ClusterState = AwaitingQuorum
-                  | Cancelled
-                  | Complete
-                  | InUse
-                  | Pending
-                      deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                Typeable, Generic)
+
+data ClusterState = ClusterState' (CI Text)
+                      deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                Generic)
+
+pattern AwaitingQuorum :: ClusterState
+pattern AwaitingQuorum = ClusterState' "AwaitingQuorum"
+
+pattern Cancelled :: ClusterState
+pattern Cancelled = ClusterState' "Cancelled"
+
+pattern Complete :: ClusterState
+pattern Complete = ClusterState' "Complete"
+
+pattern InUse :: ClusterState
+pattern InUse = ClusterState' "InUse"
+
+pattern Pending :: ClusterState
+pattern Pending = ClusterState' "Pending"
+
+{-# COMPLETE
+  AwaitingQuorum,
+  Cancelled,
+  Complete,
+  InUse,
+  Pending,
+  ClusterState' #-}
 
 instance FromText ClusterState where
-    parser = takeLowerText >>= \case
-        "awaitingquorum" -> pure AwaitingQuorum
-        "cancelled" -> pure Cancelled
-        "complete" -> pure Complete
-        "inuse" -> pure InUse
-        "pending" -> pure Pending
-        e -> fromTextError $ "Failure parsing ClusterState from value: '" <> e
-           <> "'. Accepted values: awaitingquorum, cancelled, complete, inuse, pending"
+    parser = (ClusterState' . mk) <$> takeText
 
 instance ToText ClusterState where
-    toText = \case
-        AwaitingQuorum -> "AwaitingQuorum"
-        Cancelled -> "Cancelled"
-        Complete -> "Complete"
-        InUse -> "InUse"
-        Pending -> "Pending"
+    toText (ClusterState' ci) = original ci
+
+-- | Represents an enum of /known/ $ClusterState.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum ClusterState where
+    toEnum i = case i of
+        0 -> AwaitingQuorum
+        1 -> Cancelled
+        2 -> Complete
+        3 -> InUse
+        4 -> Pending
+        _ -> (error . showText) $ "Unknown index for ClusterState: " <> toText i
+    fromEnum x = case x of
+        AwaitingQuorum -> 0
+        Cancelled -> 1
+        Complete -> 2
+        InUse -> 3
+        Pending -> 4
+        ClusterState' name -> (error . showText) $ "Unknown ClusterState: " <> original name
+
+-- | Represents the bounds of /known/ $ClusterState.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded ClusterState where
+    minBound = AwaitingQuorum
+    maxBound = Pending
 
 instance Hashable     ClusterState
 instance NFData       ClusterState

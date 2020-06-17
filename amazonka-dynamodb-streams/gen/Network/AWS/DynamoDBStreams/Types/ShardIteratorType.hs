@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,32 +16,72 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.DynamoDBStreams.Types.ShardIteratorType where
+module Network.AWS.DynamoDBStreams.Types.ShardIteratorType (
+  ShardIteratorType (
+    ..
+    , AfterSequenceNumber
+    , AtSequenceNumber
+    , Latest
+    , TrimHorizon
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data ShardIteratorType = AfterSequenceNumber
-                       | AtSequenceNumber
-                       | Latest
-                       | TrimHorizon
-                           deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                     Typeable, Generic)
+
+data ShardIteratorType = ShardIteratorType' (CI Text)
+                           deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                     Generic)
+
+pattern AfterSequenceNumber :: ShardIteratorType
+pattern AfterSequenceNumber = ShardIteratorType' "AFTER_SEQUENCE_NUMBER"
+
+pattern AtSequenceNumber :: ShardIteratorType
+pattern AtSequenceNumber = ShardIteratorType' "AT_SEQUENCE_NUMBER"
+
+pattern Latest :: ShardIteratorType
+pattern Latest = ShardIteratorType' "LATEST"
+
+pattern TrimHorizon :: ShardIteratorType
+pattern TrimHorizon = ShardIteratorType' "TRIM_HORIZON"
+
+{-# COMPLETE
+  AfterSequenceNumber,
+  AtSequenceNumber,
+  Latest,
+  TrimHorizon,
+  ShardIteratorType' #-}
 
 instance FromText ShardIteratorType where
-    parser = takeLowerText >>= \case
-        "after_sequence_number" -> pure AfterSequenceNumber
-        "at_sequence_number" -> pure AtSequenceNumber
-        "latest" -> pure Latest
-        "trim_horizon" -> pure TrimHorizon
-        e -> fromTextError $ "Failure parsing ShardIteratorType from value: '" <> e
-           <> "'. Accepted values: after_sequence_number, at_sequence_number, latest, trim_horizon"
+    parser = (ShardIteratorType' . mk) <$> takeText
 
 instance ToText ShardIteratorType where
-    toText = \case
-        AfterSequenceNumber -> "AFTER_SEQUENCE_NUMBER"
-        AtSequenceNumber -> "AT_SEQUENCE_NUMBER"
-        Latest -> "LATEST"
-        TrimHorizon -> "TRIM_HORIZON"
+    toText (ShardIteratorType' ci) = original ci
+
+-- | Represents an enum of /known/ $ShardIteratorType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum ShardIteratorType where
+    toEnum i = case i of
+        0 -> AfterSequenceNumber
+        1 -> AtSequenceNumber
+        2 -> Latest
+        3 -> TrimHorizon
+        _ -> (error . showText) $ "Unknown index for ShardIteratorType: " <> toText i
+    fromEnum x = case x of
+        AfterSequenceNumber -> 0
+        AtSequenceNumber -> 1
+        Latest -> 2
+        TrimHorizon -> 3
+        ShardIteratorType' name -> (error . showText) $ "Unknown ShardIteratorType: " <> original name
+
+-- | Represents the bounds of /known/ $ShardIteratorType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded ShardIteratorType where
+    minBound = AfterSequenceNumber
+    maxBound = TrimHorizon
 
 instance Hashable     ShardIteratorType
 instance NFData       ShardIteratorType

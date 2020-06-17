@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,58 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.WorkDocs.Types.OrderType where
+module Network.AWS.WorkDocs.Types.OrderType (
+  OrderType (
+    ..
+    , Ascending
+    , Descending
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data OrderType = Ascending
-               | Descending
-                   deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                             Typeable, Generic)
+
+data OrderType = OrderType' (CI Text)
+                   deriving (Eq, Ord, Read, Show, Data, Typeable,
+                             Generic)
+
+pattern Ascending :: OrderType
+pattern Ascending = OrderType' "ASCENDING"
+
+pattern Descending :: OrderType
+pattern Descending = OrderType' "DESCENDING"
+
+{-# COMPLETE
+  Ascending,
+  Descending,
+  OrderType' #-}
 
 instance FromText OrderType where
-    parser = takeLowerText >>= \case
-        "ascending" -> pure Ascending
-        "descending" -> pure Descending
-        e -> fromTextError $ "Failure parsing OrderType from value: '" <> e
-           <> "'. Accepted values: ascending, descending"
+    parser = (OrderType' . mk) <$> takeText
 
 instance ToText OrderType where
-    toText = \case
-        Ascending -> "ASCENDING"
-        Descending -> "DESCENDING"
+    toText (OrderType' ci) = original ci
+
+-- | Represents an enum of /known/ $OrderType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum OrderType where
+    toEnum i = case i of
+        0 -> Ascending
+        1 -> Descending
+        _ -> (error . showText) $ "Unknown index for OrderType: " <> toText i
+    fromEnum x = case x of
+        Ascending -> 0
+        Descending -> 1
+        OrderType' name -> (error . showText) $ "Unknown OrderType: " <> original name
+
+-- | Represents the bounds of /known/ $OrderType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded OrderType where
+    minBound = Ascending
+    maxBound = Descending
 
 instance Hashable     OrderType
 instance NFData       OrderType

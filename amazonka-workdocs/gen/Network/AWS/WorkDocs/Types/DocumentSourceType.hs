@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,59 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.WorkDocs.Types.DocumentSourceType where
+module Network.AWS.WorkDocs.Types.DocumentSourceType (
+  DocumentSourceType (
+    ..
+    , Original
+    , WithComments
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data DocumentSourceType = Original
-                        | WithComments
-                            deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                      Typeable, Generic)
+
+data DocumentSourceType = DocumentSourceType' (CI
+                                                 Text)
+                            deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                      Generic)
+
+pattern Original :: DocumentSourceType
+pattern Original = DocumentSourceType' "ORIGINAL"
+
+pattern WithComments :: DocumentSourceType
+pattern WithComments = DocumentSourceType' "WITH_COMMENTS"
+
+{-# COMPLETE
+  Original,
+  WithComments,
+  DocumentSourceType' #-}
 
 instance FromText DocumentSourceType where
-    parser = takeLowerText >>= \case
-        "original" -> pure Original
-        "with_comments" -> pure WithComments
-        e -> fromTextError $ "Failure parsing DocumentSourceType from value: '" <> e
-           <> "'. Accepted values: original, with_comments"
+    parser = (DocumentSourceType' . mk) <$> takeText
 
 instance ToText DocumentSourceType where
-    toText = \case
-        Original -> "ORIGINAL"
-        WithComments -> "WITH_COMMENTS"
+    toText (DocumentSourceType' ci) = original ci
+
+-- | Represents an enum of /known/ $DocumentSourceType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum DocumentSourceType where
+    toEnum i = case i of
+        0 -> Original
+        1 -> WithComments
+        _ -> (error . showText) $ "Unknown index for DocumentSourceType: " <> toText i
+    fromEnum x = case x of
+        Original -> 0
+        WithComments -> 1
+        DocumentSourceType' name -> (error . showText) $ "Unknown DocumentSourceType: " <> original name
+
+-- | Represents the bounds of /known/ $DocumentSourceType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded DocumentSourceType where
+    minBound = Original
+    maxBound = WithComments
 
 instance Hashable     DocumentSourceType
 instance NFData       DocumentSourceType

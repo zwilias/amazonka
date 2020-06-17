@@ -43,6 +43,7 @@ module Network.AWS.MarketplaceAnalytics.StartSupportDataExport
 
 import Network.AWS.Lens
 import Network.AWS.MarketplaceAnalytics.Types
+import Network.AWS.MarketplaceAnalytics.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response

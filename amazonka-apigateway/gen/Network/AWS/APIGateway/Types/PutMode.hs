@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,58 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.APIGateway.Types.PutMode where
+module Network.AWS.APIGateway.Types.PutMode (
+  PutMode (
+    ..
+    , Merge
+    , Overwrite
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data PutMode = Merge
-             | Overwrite
-                 deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                           Typeable, Generic)
+
+data PutMode = PutMode' (CI Text)
+                 deriving (Eq, Ord, Read, Show, Data, Typeable,
+                           Generic)
+
+pattern Merge :: PutMode
+pattern Merge = PutMode' "merge"
+
+pattern Overwrite :: PutMode
+pattern Overwrite = PutMode' "overwrite"
+
+{-# COMPLETE
+  Merge,
+  Overwrite,
+  PutMode' #-}
 
 instance FromText PutMode where
-    parser = takeLowerText >>= \case
-        "merge" -> pure Merge
-        "overwrite" -> pure Overwrite
-        e -> fromTextError $ "Failure parsing PutMode from value: '" <> e
-           <> "'. Accepted values: merge, overwrite"
+    parser = (PutMode' . mk) <$> takeText
 
 instance ToText PutMode where
-    toText = \case
-        Merge -> "merge"
-        Overwrite -> "overwrite"
+    toText (PutMode' ci) = original ci
+
+-- | Represents an enum of /known/ $PutMode.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum PutMode where
+    toEnum i = case i of
+        0 -> Merge
+        1 -> Overwrite
+        _ -> (error . showText) $ "Unknown index for PutMode: " <> toText i
+    fromEnum x = case x of
+        Merge -> 0
+        Overwrite -> 1
+        PutMode' name -> (error . showText) $ "Unknown PutMode: " <> original name
+
+-- | Represents the bounds of /known/ $PutMode.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded PutMode where
+    minBound = Merge
+    maxBound = Overwrite
 
 instance Hashable     PutMode
 instance NFData       PutMode

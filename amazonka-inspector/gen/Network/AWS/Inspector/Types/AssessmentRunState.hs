@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,59 +16,136 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.Inspector.Types.AssessmentRunState where
+module Network.AWS.Inspector.Types.AssessmentRunState (
+  AssessmentRunState (
+    ..
+    , Canceled
+    , CollectingData
+    , Completed
+    , CompletedWithErrors
+    , Created
+    , DataCollected
+    , Error'
+    , EvaluatingRules
+    , Failed
+    , StartDataCollectionInProgress
+    , StartDataCollectionPending
+    , StartEvaluatingRulesPending
+    , StopDataCollectionPending
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data AssessmentRunState = Canceled
-                        | CollectingData
-                        | Completed
-                        | CompletedWithErrors
-                        | Created
-                        | DataCollected
-                        | Error'
-                        | EvaluatingRules
-                        | Failed
-                        | StartDataCollectionInProgress
-                        | StartDataCollectionPending
-                        | StartEvaluatingRulesPending
-                        | StopDataCollectionPending
-                            deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                      Typeable, Generic)
+
+data AssessmentRunState = AssessmentRunState' (CI
+                                                 Text)
+                            deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                      Generic)
+
+pattern Canceled :: AssessmentRunState
+pattern Canceled = AssessmentRunState' "CANCELED"
+
+pattern CollectingData :: AssessmentRunState
+pattern CollectingData = AssessmentRunState' "COLLECTING_DATA"
+
+pattern Completed :: AssessmentRunState
+pattern Completed = AssessmentRunState' "COMPLETED"
+
+pattern CompletedWithErrors :: AssessmentRunState
+pattern CompletedWithErrors = AssessmentRunState' "COMPLETED_WITH_ERRORS"
+
+pattern Created :: AssessmentRunState
+pattern Created = AssessmentRunState' "CREATED"
+
+pattern DataCollected :: AssessmentRunState
+pattern DataCollected = AssessmentRunState' "DATA_COLLECTED"
+
+pattern Error' :: AssessmentRunState
+pattern Error' = AssessmentRunState' "ERROR"
+
+pattern EvaluatingRules :: AssessmentRunState
+pattern EvaluatingRules = AssessmentRunState' "EVALUATING_RULES"
+
+pattern Failed :: AssessmentRunState
+pattern Failed = AssessmentRunState' "FAILED"
+
+pattern StartDataCollectionInProgress :: AssessmentRunState
+pattern StartDataCollectionInProgress = AssessmentRunState' "START_DATA_COLLECTION_IN_PROGRESS"
+
+pattern StartDataCollectionPending :: AssessmentRunState
+pattern StartDataCollectionPending = AssessmentRunState' "START_DATA_COLLECTION_PENDING"
+
+pattern StartEvaluatingRulesPending :: AssessmentRunState
+pattern StartEvaluatingRulesPending = AssessmentRunState' "START_EVALUATING_RULES_PENDING"
+
+pattern StopDataCollectionPending :: AssessmentRunState
+pattern StopDataCollectionPending = AssessmentRunState' "STOP_DATA_COLLECTION_PENDING"
+
+{-# COMPLETE
+  Canceled,
+  CollectingData,
+  Completed,
+  CompletedWithErrors,
+  Created,
+  DataCollected,
+  Error',
+  EvaluatingRules,
+  Failed,
+  StartDataCollectionInProgress,
+  StartDataCollectionPending,
+  StartEvaluatingRulesPending,
+  StopDataCollectionPending,
+  AssessmentRunState' #-}
 
 instance FromText AssessmentRunState where
-    parser = takeLowerText >>= \case
-        "canceled" -> pure Canceled
-        "collecting_data" -> pure CollectingData
-        "completed" -> pure Completed
-        "completed_with_errors" -> pure CompletedWithErrors
-        "created" -> pure Created
-        "data_collected" -> pure DataCollected
-        "error" -> pure Error'
-        "evaluating_rules" -> pure EvaluatingRules
-        "failed" -> pure Failed
-        "start_data_collection_in_progress" -> pure StartDataCollectionInProgress
-        "start_data_collection_pending" -> pure StartDataCollectionPending
-        "start_evaluating_rules_pending" -> pure StartEvaluatingRulesPending
-        "stop_data_collection_pending" -> pure StopDataCollectionPending
-        e -> fromTextError $ "Failure parsing AssessmentRunState from value: '" <> e
-           <> "'. Accepted values: canceled, collecting_data, completed, completed_with_errors, created, data_collected, error, evaluating_rules, failed, start_data_collection_in_progress, start_data_collection_pending, start_evaluating_rules_pending, stop_data_collection_pending"
+    parser = (AssessmentRunState' . mk) <$> takeText
 
 instance ToText AssessmentRunState where
-    toText = \case
-        Canceled -> "CANCELED"
-        CollectingData -> "COLLECTING_DATA"
-        Completed -> "COMPLETED"
-        CompletedWithErrors -> "COMPLETED_WITH_ERRORS"
-        Created -> "CREATED"
-        DataCollected -> "DATA_COLLECTED"
-        Error' -> "ERROR"
-        EvaluatingRules -> "EVALUATING_RULES"
-        Failed -> "FAILED"
-        StartDataCollectionInProgress -> "START_DATA_COLLECTION_IN_PROGRESS"
-        StartDataCollectionPending -> "START_DATA_COLLECTION_PENDING"
-        StartEvaluatingRulesPending -> "START_EVALUATING_RULES_PENDING"
-        StopDataCollectionPending -> "STOP_DATA_COLLECTION_PENDING"
+    toText (AssessmentRunState' ci) = original ci
+
+-- | Represents an enum of /known/ $AssessmentRunState.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum AssessmentRunState where
+    toEnum i = case i of
+        0 -> Canceled
+        1 -> CollectingData
+        2 -> Completed
+        3 -> CompletedWithErrors
+        4 -> Created
+        5 -> DataCollected
+        6 -> Error'
+        7 -> EvaluatingRules
+        8 -> Failed
+        9 -> StartDataCollectionInProgress
+        10 -> StartDataCollectionPending
+        11 -> StartEvaluatingRulesPending
+        12 -> StopDataCollectionPending
+        _ -> (error . showText) $ "Unknown index for AssessmentRunState: " <> toText i
+    fromEnum x = case x of
+        Canceled -> 0
+        CollectingData -> 1
+        Completed -> 2
+        CompletedWithErrors -> 3
+        Created -> 4
+        DataCollected -> 5
+        Error' -> 6
+        EvaluatingRules -> 7
+        Failed -> 8
+        StartDataCollectionInProgress -> 9
+        StartDataCollectionPending -> 10
+        StartEvaluatingRulesPending -> 11
+        StopDataCollectionPending -> 12
+        AssessmentRunState' name -> (error . showText) $ "Unknown AssessmentRunState: " <> original name
+
+-- | Represents the bounds of /known/ $AssessmentRunState.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded AssessmentRunState where
+    minBound = Canceled
+    maxBound = StopDataCollectionPending
 
 instance Hashable     AssessmentRunState
 instance NFData       AssessmentRunState

@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,23 +16,51 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.KMS.Types.WrappingKeySpec where
+module Network.AWS.KMS.Types.WrappingKeySpec (
+  WrappingKeySpec (
+    ..
+    , Rsa2048
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data WrappingKeySpec = Rsa2048
-                         deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                   Typeable, Generic)
+
+data WrappingKeySpec = WrappingKeySpec' (CI Text)
+                         deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                   Generic)
+
+pattern Rsa2048 :: WrappingKeySpec
+pattern Rsa2048 = WrappingKeySpec' "RSA_2048"
+
+{-# COMPLETE
+  Rsa2048,
+  WrappingKeySpec' #-}
 
 instance FromText WrappingKeySpec where
-    parser = takeLowerText >>= \case
-        "rsa_2048" -> pure Rsa2048
-        e -> fromTextError $ "Failure parsing WrappingKeySpec from value: '" <> e
-           <> "'. Accepted values: rsa_2048"
+    parser = (WrappingKeySpec' . mk) <$> takeText
 
 instance ToText WrappingKeySpec where
-    toText = \case
-        Rsa2048 -> "RSA_2048"
+    toText (WrappingKeySpec' ci) = original ci
+
+-- | Represents an enum of /known/ $WrappingKeySpec.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum WrappingKeySpec where
+    toEnum i = case i of
+        0 -> Rsa2048
+        _ -> (error . showText) $ "Unknown index for WrappingKeySpec: " <> toText i
+    fromEnum x = case x of
+        Rsa2048 -> 0
+        WrappingKeySpec' name -> (error . showText) $ "Unknown WrappingKeySpec: " <> original name
+
+-- | Represents the bounds of /known/ $WrappingKeySpec.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded WrappingKeySpec where
+    minBound = Rsa2048
+    maxBound = Rsa2048
 
 instance Hashable     WrappingKeySpec
 instance NFData       WrappingKeySpec

@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,36 +16,80 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.Route53.Types.Statistic where
+module Network.AWS.Route53.Types.Statistic (
+  Statistic (
+    ..
+    , Average
+    , Maximum
+    , Minimum
+    , SampleCount
+    , Sum
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
 import Network.AWS.Route53.Internal
-  
-data Statistic = Average
-               | Maximum
-               | Minimum
-               | SampleCount
-               | Sum
-                   deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                             Typeable, Generic)
+
+data Statistic = Statistic' (CI Text)
+                   deriving (Eq, Ord, Read, Show, Data, Typeable,
+                             Generic)
+
+pattern Average :: Statistic
+pattern Average = Statistic' "Average"
+
+pattern Maximum :: Statistic
+pattern Maximum = Statistic' "Maximum"
+
+pattern Minimum :: Statistic
+pattern Minimum = Statistic' "Minimum"
+
+pattern SampleCount :: Statistic
+pattern SampleCount = Statistic' "SampleCount"
+
+pattern Sum :: Statistic
+pattern Sum = Statistic' "Sum"
+
+{-# COMPLETE
+  Average,
+  Maximum,
+  Minimum,
+  SampleCount,
+  Sum,
+  Statistic' #-}
 
 instance FromText Statistic where
-    parser = takeLowerText >>= \case
-        "average" -> pure Average
-        "maximum" -> pure Maximum
-        "minimum" -> pure Minimum
-        "samplecount" -> pure SampleCount
-        "sum" -> pure Sum
-        e -> fromTextError $ "Failure parsing Statistic from value: '" <> e
-           <> "'. Accepted values: average, maximum, minimum, samplecount, sum"
+    parser = (Statistic' . mk) <$> takeText
 
 instance ToText Statistic where
-    toText = \case
-        Average -> "Average"
-        Maximum -> "Maximum"
-        Minimum -> "Minimum"
-        SampleCount -> "SampleCount"
-        Sum -> "Sum"
+    toText (Statistic' ci) = original ci
+
+-- | Represents an enum of /known/ $Statistic.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum Statistic where
+    toEnum i = case i of
+        0 -> Average
+        1 -> Maximum
+        2 -> Minimum
+        3 -> SampleCount
+        4 -> Sum
+        _ -> (error . showText) $ "Unknown index for Statistic: " <> toText i
+    fromEnum x = case x of
+        Average -> 0
+        Maximum -> 1
+        Minimum -> 2
+        SampleCount -> 3
+        Sum -> 4
+        Statistic' name -> (error . showText) $ "Unknown Statistic: " <> original name
+
+-- | Represents the bounds of /known/ $Statistic.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded Statistic where
+    minBound = Average
+    maxBound = Sum
 
 instance Hashable     Statistic
 instance NFData       Statistic

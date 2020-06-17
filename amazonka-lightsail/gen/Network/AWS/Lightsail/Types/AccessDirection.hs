@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,58 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.Lightsail.Types.AccessDirection where
+module Network.AWS.Lightsail.Types.AccessDirection (
+  AccessDirection (
+    ..
+    , Inbound
+    , Outbound
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data AccessDirection = Inbound
-                     | Outbound
-                         deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                   Typeable, Generic)
+
+data AccessDirection = AccessDirection' (CI Text)
+                         deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                   Generic)
+
+pattern Inbound :: AccessDirection
+pattern Inbound = AccessDirection' "inbound"
+
+pattern Outbound :: AccessDirection
+pattern Outbound = AccessDirection' "outbound"
+
+{-# COMPLETE
+  Inbound,
+  Outbound,
+  AccessDirection' #-}
 
 instance FromText AccessDirection where
-    parser = takeLowerText >>= \case
-        "inbound" -> pure Inbound
-        "outbound" -> pure Outbound
-        e -> fromTextError $ "Failure parsing AccessDirection from value: '" <> e
-           <> "'. Accepted values: inbound, outbound"
+    parser = (AccessDirection' . mk) <$> takeText
 
 instance ToText AccessDirection where
-    toText = \case
-        Inbound -> "inbound"
-        Outbound -> "outbound"
+    toText (AccessDirection' ci) = original ci
+
+-- | Represents an enum of /known/ $AccessDirection.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum AccessDirection where
+    toEnum i = case i of
+        0 -> Inbound
+        1 -> Outbound
+        _ -> (error . showText) $ "Unknown index for AccessDirection: " <> toText i
+    fromEnum x = case x of
+        Inbound -> 0
+        Outbound -> 1
+        AccessDirection' name -> (error . showText) $ "Unknown AccessDirection: " <> original name
+
+-- | Represents the bounds of /known/ $AccessDirection.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded AccessDirection where
+    minBound = Inbound
+    maxBound = Outbound
 
 instance Hashable     AccessDirection
 instance NFData       AccessDirection

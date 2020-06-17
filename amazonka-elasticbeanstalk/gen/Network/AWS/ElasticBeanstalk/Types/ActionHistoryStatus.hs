@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,29 +16,66 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.ElasticBeanstalk.Types.ActionHistoryStatus where
+module Network.AWS.ElasticBeanstalk.Types.ActionHistoryStatus (
+  ActionHistoryStatus (
+    ..
+    , AHSCompleted
+    , AHSFailed
+    , AHSUnknown
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data ActionHistoryStatus = AHSCompleted
-                         | AHSFailed
-                         | AHSUnknown
-                             deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                       Typeable, Generic)
+
+data ActionHistoryStatus = ActionHistoryStatus' (CI
+                                                   Text)
+                             deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                       Generic)
+
+pattern AHSCompleted :: ActionHistoryStatus
+pattern AHSCompleted = ActionHistoryStatus' "Completed"
+
+pattern AHSFailed :: ActionHistoryStatus
+pattern AHSFailed = ActionHistoryStatus' "Failed"
+
+pattern AHSUnknown :: ActionHistoryStatus
+pattern AHSUnknown = ActionHistoryStatus' "Unknown"
+
+{-# COMPLETE
+  AHSCompleted,
+  AHSFailed,
+  AHSUnknown,
+  ActionHistoryStatus' #-}
 
 instance FromText ActionHistoryStatus where
-    parser = takeLowerText >>= \case
-        "completed" -> pure AHSCompleted
-        "failed" -> pure AHSFailed
-        "unknown" -> pure AHSUnknown
-        e -> fromTextError $ "Failure parsing ActionHistoryStatus from value: '" <> e
-           <> "'. Accepted values: completed, failed, unknown"
+    parser = (ActionHistoryStatus' . mk) <$> takeText
 
 instance ToText ActionHistoryStatus where
-    toText = \case
-        AHSCompleted -> "Completed"
-        AHSFailed -> "Failed"
-        AHSUnknown -> "Unknown"
+    toText (ActionHistoryStatus' ci) = original ci
+
+-- | Represents an enum of /known/ $ActionHistoryStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum ActionHistoryStatus where
+    toEnum i = case i of
+        0 -> AHSCompleted
+        1 -> AHSFailed
+        2 -> AHSUnknown
+        _ -> (error . showText) $ "Unknown index for ActionHistoryStatus: " <> toText i
+    fromEnum x = case x of
+        AHSCompleted -> 0
+        AHSFailed -> 1
+        AHSUnknown -> 2
+        ActionHistoryStatus' name -> (error . showText) $ "Unknown ActionHistoryStatus: " <> original name
+
+-- | Represents the bounds of /known/ $ActionHistoryStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded ActionHistoryStatus where
+    minBound = AHSCompleted
+    maxBound = AHSUnknown
 
 instance Hashable     ActionHistoryStatus
 instance NFData       ActionHistoryStatus

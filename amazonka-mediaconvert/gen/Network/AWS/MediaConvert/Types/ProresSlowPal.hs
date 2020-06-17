@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,27 +16,59 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.MediaConvert.Types.ProresSlowPal where
+module Network.AWS.MediaConvert.Types.ProresSlowPal (
+  ProresSlowPal (
+    ..
+    , PSPDisabled
+    , PSPEnabled
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
+
 -- | Enables Slow PAL rate conversion. 23.976fps and 24fps input is relabeled as 25fps, and audio is sped up correspondingly.
-data ProresSlowPal = PSPDisabled
-                   | PSPEnabled
-                       deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                 Typeable, Generic)
+data ProresSlowPal = ProresSlowPal' (CI Text)
+                       deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                 Generic)
+
+pattern PSPDisabled :: ProresSlowPal
+pattern PSPDisabled = ProresSlowPal' "DISABLED"
+
+pattern PSPEnabled :: ProresSlowPal
+pattern PSPEnabled = ProresSlowPal' "ENABLED"
+
+{-# COMPLETE
+  PSPDisabled,
+  PSPEnabled,
+  ProresSlowPal' #-}
 
 instance FromText ProresSlowPal where
-    parser = takeLowerText >>= \case
-        "disabled" -> pure PSPDisabled
-        "enabled" -> pure PSPEnabled
-        e -> fromTextError $ "Failure parsing ProresSlowPal from value: '" <> e
-           <> "'. Accepted values: disabled, enabled"
+    parser = (ProresSlowPal' . mk) <$> takeText
 
 instance ToText ProresSlowPal where
-    toText = \case
-        PSPDisabled -> "DISABLED"
-        PSPEnabled -> "ENABLED"
+    toText (ProresSlowPal' ci) = original ci
+
+-- | Represents an enum of /known/ $ProresSlowPal.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum ProresSlowPal where
+    toEnum i = case i of
+        0 -> PSPDisabled
+        1 -> PSPEnabled
+        _ -> (error . showText) $ "Unknown index for ProresSlowPal: " <> toText i
+    fromEnum x = case x of
+        PSPDisabled -> 0
+        PSPEnabled -> 1
+        ProresSlowPal' name -> (error . showText) $ "Unknown ProresSlowPal: " <> original name
+
+-- | Represents the bounds of /known/ $ProresSlowPal.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded ProresSlowPal where
+    minBound = PSPDisabled
+    maxBound = PSPEnabled
 
 instance Hashable     ProresSlowPal
 instance NFData       ProresSlowPal

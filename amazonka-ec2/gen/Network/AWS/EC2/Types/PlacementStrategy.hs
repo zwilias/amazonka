@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,30 +16,66 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.EC2.Types.PlacementStrategy where
+module Network.AWS.EC2.Types.PlacementStrategy (
+  PlacementStrategy (
+    ..
+    , Cluster
+    , Partition
+    , Spread
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.EC2.Internal
 import Network.AWS.Prelude
-  
-data PlacementStrategy = Cluster
-                       | Partition
-                       | Spread
-                           deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                     Typeable, Generic)
+
+data PlacementStrategy = PlacementStrategy' (CI Text)
+                           deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                     Generic)
+
+pattern Cluster :: PlacementStrategy
+pattern Cluster = PlacementStrategy' "cluster"
+
+pattern Partition :: PlacementStrategy
+pattern Partition = PlacementStrategy' "partition"
+
+pattern Spread :: PlacementStrategy
+pattern Spread = PlacementStrategy' "spread"
+
+{-# COMPLETE
+  Cluster,
+  Partition,
+  Spread,
+  PlacementStrategy' #-}
 
 instance FromText PlacementStrategy where
-    parser = takeLowerText >>= \case
-        "cluster" -> pure Cluster
-        "partition" -> pure Partition
-        "spread" -> pure Spread
-        e -> fromTextError $ "Failure parsing PlacementStrategy from value: '" <> e
-           <> "'. Accepted values: cluster, partition, spread"
+    parser = (PlacementStrategy' . mk) <$> takeText
 
 instance ToText PlacementStrategy where
-    toText = \case
-        Cluster -> "cluster"
-        Partition -> "partition"
-        Spread -> "spread"
+    toText (PlacementStrategy' ci) = original ci
+
+-- | Represents an enum of /known/ $PlacementStrategy.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum PlacementStrategy where
+    toEnum i = case i of
+        0 -> Cluster
+        1 -> Partition
+        2 -> Spread
+        _ -> (error . showText) $ "Unknown index for PlacementStrategy: " <> toText i
+    fromEnum x = case x of
+        Cluster -> 0
+        Partition -> 1
+        Spread -> 2
+        PlacementStrategy' name -> (error . showText) $ "Unknown PlacementStrategy: " <> original name
+
+-- | Represents the bounds of /known/ $PlacementStrategy.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded PlacementStrategy where
+    minBound = Cluster
+    maxBound = Spread
 
 instance Hashable     PlacementStrategy
 instance NFData       PlacementStrategy

@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,58 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.Budgets.Types.NotificationState where
+module Network.AWS.Budgets.Types.NotificationState (
+  NotificationState (
+    ..
+    , Alarm
+    , OK
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data NotificationState = Alarm
-                       | OK
-                           deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                     Typeable, Generic)
+
+data NotificationState = NotificationState' (CI Text)
+                           deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                     Generic)
+
+pattern Alarm :: NotificationState
+pattern Alarm = NotificationState' "ALARM"
+
+pattern OK :: NotificationState
+pattern OK = NotificationState' "OK"
+
+{-# COMPLETE
+  Alarm,
+  OK,
+  NotificationState' #-}
 
 instance FromText NotificationState where
-    parser = takeLowerText >>= \case
-        "alarm" -> pure Alarm
-        "ok" -> pure OK
-        e -> fromTextError $ "Failure parsing NotificationState from value: '" <> e
-           <> "'. Accepted values: alarm, ok"
+    parser = (NotificationState' . mk) <$> takeText
 
 instance ToText NotificationState where
-    toText = \case
-        Alarm -> "ALARM"
-        OK -> "OK"
+    toText (NotificationState' ci) = original ci
+
+-- | Represents an enum of /known/ $NotificationState.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum NotificationState where
+    toEnum i = case i of
+        0 -> Alarm
+        1 -> OK
+        _ -> (error . showText) $ "Unknown index for NotificationState: " <> toText i
+    fromEnum x = case x of
+        Alarm -> 0
+        OK -> 1
+        NotificationState' name -> (error . showText) $ "Unknown NotificationState: " <> original name
+
+-- | Represents the bounds of /known/ $NotificationState.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded NotificationState where
+    minBound = Alarm
+    maxBound = OK
 
 instance Hashable     NotificationState
 instance NFData       NotificationState

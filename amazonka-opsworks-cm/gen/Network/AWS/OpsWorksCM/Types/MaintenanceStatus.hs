@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,58 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.OpsWorksCM.Types.MaintenanceStatus where
+module Network.AWS.OpsWorksCM.Types.MaintenanceStatus (
+  MaintenanceStatus (
+    ..
+    , MSFailed
+    , MSSuccess
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data MaintenanceStatus = MSFailed
-                       | MSSuccess
-                           deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                     Typeable, Generic)
+
+data MaintenanceStatus = MaintenanceStatus' (CI Text)
+                           deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                     Generic)
+
+pattern MSFailed :: MaintenanceStatus
+pattern MSFailed = MaintenanceStatus' "FAILED"
+
+pattern MSSuccess :: MaintenanceStatus
+pattern MSSuccess = MaintenanceStatus' "SUCCESS"
+
+{-# COMPLETE
+  MSFailed,
+  MSSuccess,
+  MaintenanceStatus' #-}
 
 instance FromText MaintenanceStatus where
-    parser = takeLowerText >>= \case
-        "failed" -> pure MSFailed
-        "success" -> pure MSSuccess
-        e -> fromTextError $ "Failure parsing MaintenanceStatus from value: '" <> e
-           <> "'. Accepted values: failed, success"
+    parser = (MaintenanceStatus' . mk) <$> takeText
 
 instance ToText MaintenanceStatus where
-    toText = \case
-        MSFailed -> "FAILED"
-        MSSuccess -> "SUCCESS"
+    toText (MaintenanceStatus' ci) = original ci
+
+-- | Represents an enum of /known/ $MaintenanceStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum MaintenanceStatus where
+    toEnum i = case i of
+        0 -> MSFailed
+        1 -> MSSuccess
+        _ -> (error . showText) $ "Unknown index for MaintenanceStatus: " <> toText i
+    fromEnum x = case x of
+        MSFailed -> 0
+        MSSuccess -> 1
+        MaintenanceStatus' name -> (error . showText) $ "Unknown MaintenanceStatus: " <> original name
+
+-- | Represents the bounds of /known/ $MaintenanceStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded MaintenanceStatus where
+    minBound = MSFailed
+    maxBound = MSSuccess
 
 instance Hashable     MaintenanceStatus
 instance NFData       MaintenanceStatus

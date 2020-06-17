@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,59 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.FMS.Types.PolicyComplianceStatusType where
+module Network.AWS.FMS.Types.PolicyComplianceStatusType (
+  PolicyComplianceStatusType (
+    ..
+    , Compliant
+    , NonCompliant
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data PolicyComplianceStatusType = Compliant
-                                | NonCompliant
-                                    deriving (Eq, Ord, Read, Show, Enum,
-                                              Bounded, Data, Typeable, Generic)
+
+data PolicyComplianceStatusType = PolicyComplianceStatusType' (CI
+                                                                 Text)
+                                    deriving (Eq, Ord, Read, Show, Data,
+                                              Typeable, Generic)
+
+pattern Compliant :: PolicyComplianceStatusType
+pattern Compliant = PolicyComplianceStatusType' "COMPLIANT"
+
+pattern NonCompliant :: PolicyComplianceStatusType
+pattern NonCompliant = PolicyComplianceStatusType' "NON_COMPLIANT"
+
+{-# COMPLETE
+  Compliant,
+  NonCompliant,
+  PolicyComplianceStatusType' #-}
 
 instance FromText PolicyComplianceStatusType where
-    parser = takeLowerText >>= \case
-        "compliant" -> pure Compliant
-        "non_compliant" -> pure NonCompliant
-        e -> fromTextError $ "Failure parsing PolicyComplianceStatusType from value: '" <> e
-           <> "'. Accepted values: compliant, non_compliant"
+    parser = (PolicyComplianceStatusType' . mk) <$> takeText
 
 instance ToText PolicyComplianceStatusType where
-    toText = \case
-        Compliant -> "COMPLIANT"
-        NonCompliant -> "NON_COMPLIANT"
+    toText (PolicyComplianceStatusType' ci) = original ci
+
+-- | Represents an enum of /known/ $PolicyComplianceStatusType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum PolicyComplianceStatusType where
+    toEnum i = case i of
+        0 -> Compliant
+        1 -> NonCompliant
+        _ -> (error . showText) $ "Unknown index for PolicyComplianceStatusType: " <> toText i
+    fromEnum x = case x of
+        Compliant -> 0
+        NonCompliant -> 1
+        PolicyComplianceStatusType' name -> (error . showText) $ "Unknown PolicyComplianceStatusType: " <> original name
+
+-- | Represents the bounds of /known/ $PolicyComplianceStatusType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded PolicyComplianceStatusType where
+    minBound = Compliant
+    maxBound = NonCompliant
 
 instance Hashable     PolicyComplianceStatusType
 instance NFData       PolicyComplianceStatusType

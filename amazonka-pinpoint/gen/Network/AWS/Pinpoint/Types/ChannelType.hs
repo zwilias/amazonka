@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,50 +16,114 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.Pinpoint.Types.ChannelType where
+module Network.AWS.Pinpoint.Types.ChannelType (
+  ChannelType (
+    ..
+    , ADM
+    , APNS
+    , APNSSandbox
+    , APNSVoip
+    , APNSVoipSandbox
+    , Baidu
+    , Custom
+    , Email
+    , GCM
+    , Sms
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data ChannelType = ADM
-                 | APNS
-                 | APNSSandbox
-                 | APNSVoip
-                 | APNSVoipSandbox
-                 | Baidu
-                 | Custom
-                 | Email
-                 | GCM
-                 | Sms
-                     deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                               Typeable, Generic)
+
+data ChannelType = ChannelType' (CI Text)
+                     deriving (Eq, Ord, Read, Show, Data, Typeable,
+                               Generic)
+
+pattern ADM :: ChannelType
+pattern ADM = ChannelType' "ADM"
+
+pattern APNS :: ChannelType
+pattern APNS = ChannelType' "APNS"
+
+pattern APNSSandbox :: ChannelType
+pattern APNSSandbox = ChannelType' "APNS_SANDBOX"
+
+pattern APNSVoip :: ChannelType
+pattern APNSVoip = ChannelType' "APNS_VOIP"
+
+pattern APNSVoipSandbox :: ChannelType
+pattern APNSVoipSandbox = ChannelType' "APNS_VOIP_SANDBOX"
+
+pattern Baidu :: ChannelType
+pattern Baidu = ChannelType' "BAIDU"
+
+pattern Custom :: ChannelType
+pattern Custom = ChannelType' "CUSTOM"
+
+pattern Email :: ChannelType
+pattern Email = ChannelType' "EMAIL"
+
+pattern GCM :: ChannelType
+pattern GCM = ChannelType' "GCM"
+
+pattern Sms :: ChannelType
+pattern Sms = ChannelType' "SMS"
+
+{-# COMPLETE
+  ADM,
+  APNS,
+  APNSSandbox,
+  APNSVoip,
+  APNSVoipSandbox,
+  Baidu,
+  Custom,
+  Email,
+  GCM,
+  Sms,
+  ChannelType' #-}
 
 instance FromText ChannelType where
-    parser = takeLowerText >>= \case
-        "adm" -> pure ADM
-        "apns" -> pure APNS
-        "apns_sandbox" -> pure APNSSandbox
-        "apns_voip" -> pure APNSVoip
-        "apns_voip_sandbox" -> pure APNSVoipSandbox
-        "baidu" -> pure Baidu
-        "custom" -> pure Custom
-        "email" -> pure Email
-        "gcm" -> pure GCM
-        "sms" -> pure Sms
-        e -> fromTextError $ "Failure parsing ChannelType from value: '" <> e
-           <> "'. Accepted values: adm, apns, apns_sandbox, apns_voip, apns_voip_sandbox, baidu, custom, email, gcm, sms"
+    parser = (ChannelType' . mk) <$> takeText
 
 instance ToText ChannelType where
-    toText = \case
-        ADM -> "ADM"
-        APNS -> "APNS"
-        APNSSandbox -> "APNS_SANDBOX"
-        APNSVoip -> "APNS_VOIP"
-        APNSVoipSandbox -> "APNS_VOIP_SANDBOX"
-        Baidu -> "BAIDU"
-        Custom -> "CUSTOM"
-        Email -> "EMAIL"
-        GCM -> "GCM"
-        Sms -> "SMS"
+    toText (ChannelType' ci) = original ci
+
+-- | Represents an enum of /known/ $ChannelType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum ChannelType where
+    toEnum i = case i of
+        0 -> ADM
+        1 -> APNS
+        2 -> APNSSandbox
+        3 -> APNSVoip
+        4 -> APNSVoipSandbox
+        5 -> Baidu
+        6 -> Custom
+        7 -> Email
+        8 -> GCM
+        9 -> Sms
+        _ -> (error . showText) $ "Unknown index for ChannelType: " <> toText i
+    fromEnum x = case x of
+        ADM -> 0
+        APNS -> 1
+        APNSSandbox -> 2
+        APNSVoip -> 3
+        APNSVoipSandbox -> 4
+        Baidu -> 5
+        Custom -> 6
+        Email -> 7
+        GCM -> 8
+        Sms -> 9
+        ChannelType' name -> (error . showText) $ "Unknown ChannelType: " <> original name
+
+-- | Represents the bounds of /known/ $ChannelType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded ChannelType where
+    minBound = ADM
+    maxBound = Sms
 
 instance Hashable     ChannelType
 instance NFData       ChannelType

@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,29 +16,65 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.CertificateManagerPCA.Types.AuditReportStatus where
+module Network.AWS.CertificateManagerPCA.Types.AuditReportStatus (
+  AuditReportStatus (
+    ..
+    , ARSCreating
+    , ARSFailed
+    , ARSSuccess
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data AuditReportStatus = ARSCreating
-                       | ARSFailed
-                       | ARSSuccess
-                           deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                     Typeable, Generic)
+
+data AuditReportStatus = AuditReportStatus' (CI Text)
+                           deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                     Generic)
+
+pattern ARSCreating :: AuditReportStatus
+pattern ARSCreating = AuditReportStatus' "CREATING"
+
+pattern ARSFailed :: AuditReportStatus
+pattern ARSFailed = AuditReportStatus' "FAILED"
+
+pattern ARSSuccess :: AuditReportStatus
+pattern ARSSuccess = AuditReportStatus' "SUCCESS"
+
+{-# COMPLETE
+  ARSCreating,
+  ARSFailed,
+  ARSSuccess,
+  AuditReportStatus' #-}
 
 instance FromText AuditReportStatus where
-    parser = takeLowerText >>= \case
-        "creating" -> pure ARSCreating
-        "failed" -> pure ARSFailed
-        "success" -> pure ARSSuccess
-        e -> fromTextError $ "Failure parsing AuditReportStatus from value: '" <> e
-           <> "'. Accepted values: creating, failed, success"
+    parser = (AuditReportStatus' . mk) <$> takeText
 
 instance ToText AuditReportStatus where
-    toText = \case
-        ARSCreating -> "CREATING"
-        ARSFailed -> "FAILED"
-        ARSSuccess -> "SUCCESS"
+    toText (AuditReportStatus' ci) = original ci
+
+-- | Represents an enum of /known/ $AuditReportStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum AuditReportStatus where
+    toEnum i = case i of
+        0 -> ARSCreating
+        1 -> ARSFailed
+        2 -> ARSSuccess
+        _ -> (error . showText) $ "Unknown index for AuditReportStatus: " <> toText i
+    fromEnum x = case x of
+        ARSCreating -> 0
+        ARSFailed -> 1
+        ARSSuccess -> 2
+        AuditReportStatus' name -> (error . showText) $ "Unknown AuditReportStatus: " <> original name
+
+-- | Represents the bounds of /known/ $AuditReportStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded AuditReportStatus where
+    minBound = ARSCreating
+    maxBound = ARSSuccess
 
 instance Hashable     AuditReportStatus
 instance NFData       AuditReportStatus

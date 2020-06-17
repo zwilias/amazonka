@@ -158,6 +158,7 @@ library
         , Network.AWS.OpsWorks.Types.OperatingSystem
         , Network.AWS.OpsWorks.Types.OperatingSystemConfigurationManager
         , Network.AWS.OpsWorks.Types.Permission
+        , Network.AWS.OpsWorks.Types.Product
         , Network.AWS.OpsWorks.Types.RAIdArray
         , Network.AWS.OpsWorks.Types.RDSDBInstance
         , Network.AWS.OpsWorks.Types.Recipes
@@ -185,6 +186,7 @@ library
     build-depends:
           amazonka-core == 1.6.1.*
         , base          >= 4.7     && < 5
+        , case-insensitive
 
 test-suite amazonka-opsworks-test
     type:              exitcode-stdio-1.0
@@ -208,6 +210,7 @@ test-suite amazonka-opsworks-test
         , amazonka-opsworks
         , base
         , bytestring
+        , case-insensitive
         , tasty
         , tasty-hunit
         , text

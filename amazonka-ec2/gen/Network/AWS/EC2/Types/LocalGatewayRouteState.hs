@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,36 +16,81 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.EC2.Types.LocalGatewayRouteState where
+module Network.AWS.EC2.Types.LocalGatewayRouteState (
+  LocalGatewayRouteState (
+    ..
+    , LGRSActive
+    , LGRSBlackhole
+    , LGRSDeleted
+    , LGRSDeleting
+    , LGRSPending
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.EC2.Internal
 import Network.AWS.Prelude
-  
-data LocalGatewayRouteState = LGRSActive
-                            | LGRSBlackhole
-                            | LGRSDeleted
-                            | LGRSDeleting
-                            | LGRSPending
-                                deriving (Eq, Ord, Read, Show, Enum, Bounded,
-                                          Data, Typeable, Generic)
+
+data LocalGatewayRouteState = LocalGatewayRouteState' (CI
+                                                         Text)
+                                deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                          Generic)
+
+pattern LGRSActive :: LocalGatewayRouteState
+pattern LGRSActive = LocalGatewayRouteState' "active"
+
+pattern LGRSBlackhole :: LocalGatewayRouteState
+pattern LGRSBlackhole = LocalGatewayRouteState' "blackhole"
+
+pattern LGRSDeleted :: LocalGatewayRouteState
+pattern LGRSDeleted = LocalGatewayRouteState' "deleted"
+
+pattern LGRSDeleting :: LocalGatewayRouteState
+pattern LGRSDeleting = LocalGatewayRouteState' "deleting"
+
+pattern LGRSPending :: LocalGatewayRouteState
+pattern LGRSPending = LocalGatewayRouteState' "pending"
+
+{-# COMPLETE
+  LGRSActive,
+  LGRSBlackhole,
+  LGRSDeleted,
+  LGRSDeleting,
+  LGRSPending,
+  LocalGatewayRouteState' #-}
 
 instance FromText LocalGatewayRouteState where
-    parser = takeLowerText >>= \case
-        "active" -> pure LGRSActive
-        "blackhole" -> pure LGRSBlackhole
-        "deleted" -> pure LGRSDeleted
-        "deleting" -> pure LGRSDeleting
-        "pending" -> pure LGRSPending
-        e -> fromTextError $ "Failure parsing LocalGatewayRouteState from value: '" <> e
-           <> "'. Accepted values: active, blackhole, deleted, deleting, pending"
+    parser = (LocalGatewayRouteState' . mk) <$> takeText
 
 instance ToText LocalGatewayRouteState where
-    toText = \case
-        LGRSActive -> "active"
-        LGRSBlackhole -> "blackhole"
-        LGRSDeleted -> "deleted"
-        LGRSDeleting -> "deleting"
-        LGRSPending -> "pending"
+    toText (LocalGatewayRouteState' ci) = original ci
+
+-- | Represents an enum of /known/ $LocalGatewayRouteState.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum LocalGatewayRouteState where
+    toEnum i = case i of
+        0 -> LGRSActive
+        1 -> LGRSBlackhole
+        2 -> LGRSDeleted
+        3 -> LGRSDeleting
+        4 -> LGRSPending
+        _ -> (error . showText) $ "Unknown index for LocalGatewayRouteState: " <> toText i
+    fromEnum x = case x of
+        LGRSActive -> 0
+        LGRSBlackhole -> 1
+        LGRSDeleted -> 2
+        LGRSDeleting -> 3
+        LGRSPending -> 4
+        LocalGatewayRouteState' name -> (error . showText) $ "Unknown LocalGatewayRouteState: " <> original name
+
+-- | Represents the bounds of /known/ $LocalGatewayRouteState.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded LocalGatewayRouteState where
+    minBound = LGRSActive
+    maxBound = LGRSPending
 
 instance Hashable     LocalGatewayRouteState
 instance NFData       LocalGatewayRouteState

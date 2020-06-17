@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,24 +16,52 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.EC2.Types.PlatformValues where
+module Network.AWS.EC2.Types.PlatformValues (
+  PlatformValues (
+    ..
+    , Windows
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.EC2.Internal
 import Network.AWS.Prelude
-  
-data PlatformValues = Windows
-                        deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                  Typeable, Generic)
+
+data PlatformValues = PlatformValues' (CI Text)
+                        deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                  Generic)
+
+pattern Windows :: PlatformValues
+pattern Windows = PlatformValues' "Windows"
+
+{-# COMPLETE
+  Windows,
+  PlatformValues' #-}
 
 instance FromText PlatformValues where
-    parser = takeLowerText >>= \case
-        "windows" -> pure Windows
-        e -> fromTextError $ "Failure parsing PlatformValues from value: '" <> e
-           <> "'. Accepted values: windows"
+    parser = (PlatformValues' . mk) <$> takeText
 
 instance ToText PlatformValues where
-    toText = \case
-        Windows -> "Windows"
+    toText (PlatformValues' ci) = original ci
+
+-- | Represents an enum of /known/ $PlatformValues.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum PlatformValues where
+    toEnum i = case i of
+        0 -> Windows
+        _ -> (error . showText) $ "Unknown index for PlatformValues: " <> toText i
+    fromEnum x = case x of
+        Windows -> 0
+        PlatformValues' name -> (error . showText) $ "Unknown PlatformValues: " <> original name
+
+-- | Represents the bounds of /known/ $PlatformValues.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded PlatformValues where
+    minBound = Windows
+    maxBound = Windows
 
 instance Hashable     PlatformValues
 instance NFData       PlatformValues

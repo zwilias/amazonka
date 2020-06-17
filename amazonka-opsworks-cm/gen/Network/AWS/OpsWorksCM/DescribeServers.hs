@@ -46,6 +46,7 @@ module Network.AWS.OpsWorksCM.DescribeServers
 
 import Network.AWS.Lens
 import Network.AWS.OpsWorksCM.Types
+import Network.AWS.OpsWorksCM.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response

@@ -36,6 +36,7 @@ module Network.AWS.CloudFront.DeletePublicKey
     ) where
 
 import Network.AWS.CloudFront.Types
+import Network.AWS.CloudFront.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request

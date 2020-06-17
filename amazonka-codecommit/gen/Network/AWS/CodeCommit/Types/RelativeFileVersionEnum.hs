@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,59 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.CodeCommit.Types.RelativeFileVersionEnum where
+module Network.AWS.CodeCommit.Types.RelativeFileVersionEnum (
+  RelativeFileVersionEnum (
+    ..
+    , After
+    , Before
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data RelativeFileVersionEnum = After
-                             | Before
-                                 deriving (Eq, Ord, Read, Show, Enum, Bounded,
-                                           Data, Typeable, Generic)
+
+data RelativeFileVersionEnum = RelativeFileVersionEnum' (CI
+                                                           Text)
+                                 deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                           Generic)
+
+pattern After :: RelativeFileVersionEnum
+pattern After = RelativeFileVersionEnum' "AFTER"
+
+pattern Before :: RelativeFileVersionEnum
+pattern Before = RelativeFileVersionEnum' "BEFORE"
+
+{-# COMPLETE
+  After,
+  Before,
+  RelativeFileVersionEnum' #-}
 
 instance FromText RelativeFileVersionEnum where
-    parser = takeLowerText >>= \case
-        "after" -> pure After
-        "before" -> pure Before
-        e -> fromTextError $ "Failure parsing RelativeFileVersionEnum from value: '" <> e
-           <> "'. Accepted values: after, before"
+    parser = (RelativeFileVersionEnum' . mk) <$> takeText
 
 instance ToText RelativeFileVersionEnum where
-    toText = \case
-        After -> "AFTER"
-        Before -> "BEFORE"
+    toText (RelativeFileVersionEnum' ci) = original ci
+
+-- | Represents an enum of /known/ $RelativeFileVersionEnum.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum RelativeFileVersionEnum where
+    toEnum i = case i of
+        0 -> After
+        1 -> Before
+        _ -> (error . showText) $ "Unknown index for RelativeFileVersionEnum: " <> toText i
+    fromEnum x = case x of
+        After -> 0
+        Before -> 1
+        RelativeFileVersionEnum' name -> (error . showText) $ "Unknown RelativeFileVersionEnum: " <> original name
+
+-- | Represents the bounds of /known/ $RelativeFileVersionEnum.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded RelativeFileVersionEnum where
+    minBound = After
+    maxBound = Before
 
 instance Hashable     RelativeFileVersionEnum
 instance NFData       RelativeFileVersionEnum

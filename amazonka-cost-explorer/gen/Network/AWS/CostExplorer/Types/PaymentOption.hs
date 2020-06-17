@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,38 +16,86 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.CostExplorer.Types.PaymentOption where
+module Network.AWS.CostExplorer.Types.PaymentOption (
+  PaymentOption (
+    ..
+    , AllUpfront
+    , HeavyUtilization
+    , LightUtilization
+    , MediumUtilization
+    , NoUpfront
+    , PartialUpfront
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data PaymentOption = AllUpfront
-                   | HeavyUtilization
-                   | LightUtilization
-                   | MediumUtilization
-                   | NoUpfront
-                   | PartialUpfront
-                       deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                 Typeable, Generic)
+
+data PaymentOption = PaymentOption' (CI Text)
+                       deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                 Generic)
+
+pattern AllUpfront :: PaymentOption
+pattern AllUpfront = PaymentOption' "ALL_UPFRONT"
+
+pattern HeavyUtilization :: PaymentOption
+pattern HeavyUtilization = PaymentOption' "HEAVY_UTILIZATION"
+
+pattern LightUtilization :: PaymentOption
+pattern LightUtilization = PaymentOption' "LIGHT_UTILIZATION"
+
+pattern MediumUtilization :: PaymentOption
+pattern MediumUtilization = PaymentOption' "MEDIUM_UTILIZATION"
+
+pattern NoUpfront :: PaymentOption
+pattern NoUpfront = PaymentOption' "NO_UPFRONT"
+
+pattern PartialUpfront :: PaymentOption
+pattern PartialUpfront = PaymentOption' "PARTIAL_UPFRONT"
+
+{-# COMPLETE
+  AllUpfront,
+  HeavyUtilization,
+  LightUtilization,
+  MediumUtilization,
+  NoUpfront,
+  PartialUpfront,
+  PaymentOption' #-}
 
 instance FromText PaymentOption where
-    parser = takeLowerText >>= \case
-        "all_upfront" -> pure AllUpfront
-        "heavy_utilization" -> pure HeavyUtilization
-        "light_utilization" -> pure LightUtilization
-        "medium_utilization" -> pure MediumUtilization
-        "no_upfront" -> pure NoUpfront
-        "partial_upfront" -> pure PartialUpfront
-        e -> fromTextError $ "Failure parsing PaymentOption from value: '" <> e
-           <> "'. Accepted values: all_upfront, heavy_utilization, light_utilization, medium_utilization, no_upfront, partial_upfront"
+    parser = (PaymentOption' . mk) <$> takeText
 
 instance ToText PaymentOption where
-    toText = \case
-        AllUpfront -> "ALL_UPFRONT"
-        HeavyUtilization -> "HEAVY_UTILIZATION"
-        LightUtilization -> "LIGHT_UTILIZATION"
-        MediumUtilization -> "MEDIUM_UTILIZATION"
-        NoUpfront -> "NO_UPFRONT"
-        PartialUpfront -> "PARTIAL_UPFRONT"
+    toText (PaymentOption' ci) = original ci
+
+-- | Represents an enum of /known/ $PaymentOption.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum PaymentOption where
+    toEnum i = case i of
+        0 -> AllUpfront
+        1 -> HeavyUtilization
+        2 -> LightUtilization
+        3 -> MediumUtilization
+        4 -> NoUpfront
+        5 -> PartialUpfront
+        _ -> (error . showText) $ "Unknown index for PaymentOption: " <> toText i
+    fromEnum x = case x of
+        AllUpfront -> 0
+        HeavyUtilization -> 1
+        LightUtilization -> 2
+        MediumUtilization -> 3
+        NoUpfront -> 4
+        PartialUpfront -> 5
+        PaymentOption' name -> (error . showText) $ "Unknown PaymentOption: " <> original name
+
+-- | Represents the bounds of /known/ $PaymentOption.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded PaymentOption where
+    minBound = AllUpfront
+    maxBound = PartialUpfront
 
 instance Hashable     PaymentOption
 instance NFData       PaymentOption

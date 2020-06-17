@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,33 +16,74 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.MediaConvert.Types.ProresCodecProfile where
+module Network.AWS.MediaConvert.Types.ProresCodecProfile (
+  ProresCodecProfile (
+    ..
+    , AppleProres422
+    , AppleProres422Hq
+    , AppleProres422LT
+    , AppleProres422Proxy
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
+
 -- | Use Profile (ProResCodecProfile) to specifiy the type of Apple ProRes codec to use for this output.
-data ProresCodecProfile = AppleProres422
-                        | AppleProres422Hq
-                        | AppleProres422LT
-                        | AppleProres422Proxy
-                            deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                      Typeable, Generic)
+data ProresCodecProfile = ProresCodecProfile' (CI
+                                                 Text)
+                            deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                      Generic)
+
+pattern AppleProres422 :: ProresCodecProfile
+pattern AppleProres422 = ProresCodecProfile' "APPLE_PRORES_422"
+
+pattern AppleProres422Hq :: ProresCodecProfile
+pattern AppleProres422Hq = ProresCodecProfile' "APPLE_PRORES_422_HQ"
+
+pattern AppleProres422LT :: ProresCodecProfile
+pattern AppleProres422LT = ProresCodecProfile' "APPLE_PRORES_422_LT"
+
+pattern AppleProres422Proxy :: ProresCodecProfile
+pattern AppleProres422Proxy = ProresCodecProfile' "APPLE_PRORES_422_PROXY"
+
+{-# COMPLETE
+  AppleProres422,
+  AppleProres422Hq,
+  AppleProres422LT,
+  AppleProres422Proxy,
+  ProresCodecProfile' #-}
 
 instance FromText ProresCodecProfile where
-    parser = takeLowerText >>= \case
-        "apple_prores_422" -> pure AppleProres422
-        "apple_prores_422_hq" -> pure AppleProres422Hq
-        "apple_prores_422_lt" -> pure AppleProres422LT
-        "apple_prores_422_proxy" -> pure AppleProres422Proxy
-        e -> fromTextError $ "Failure parsing ProresCodecProfile from value: '" <> e
-           <> "'. Accepted values: apple_prores_422, apple_prores_422_hq, apple_prores_422_lt, apple_prores_422_proxy"
+    parser = (ProresCodecProfile' . mk) <$> takeText
 
 instance ToText ProresCodecProfile where
-    toText = \case
-        AppleProres422 -> "APPLE_PRORES_422"
-        AppleProres422Hq -> "APPLE_PRORES_422_HQ"
-        AppleProres422LT -> "APPLE_PRORES_422_LT"
-        AppleProres422Proxy -> "APPLE_PRORES_422_PROXY"
+    toText (ProresCodecProfile' ci) = original ci
+
+-- | Represents an enum of /known/ $ProresCodecProfile.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum ProresCodecProfile where
+    toEnum i = case i of
+        0 -> AppleProres422
+        1 -> AppleProres422Hq
+        2 -> AppleProres422LT
+        3 -> AppleProres422Proxy
+        _ -> (error . showText) $ "Unknown index for ProresCodecProfile: " <> toText i
+    fromEnum x = case x of
+        AppleProres422 -> 0
+        AppleProres422Hq -> 1
+        AppleProres422LT -> 2
+        AppleProres422Proxy -> 3
+        ProresCodecProfile' name -> (error . showText) $ "Unknown ProresCodecProfile: " <> original name
+
+-- | Represents the bounds of /known/ $ProresCodecProfile.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded ProresCodecProfile where
+    minBound = AppleProres422
+    maxBound = AppleProres422Proxy
 
 instance Hashable     ProresCodecProfile
 instance NFData       ProresCodecProfile

@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,44 +16,100 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.SES.Types.EventType where
+module Network.AWS.SES.Types.EventType (
+  EventType (
+    ..
+    , ETBounce
+    , ETClick
+    , ETComplaint
+    , ETDelivery
+    , ETOpen
+    , ETReject
+    , ETRenderingFailure
+    , ETSend
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data EventType = ETBounce
-               | ETClick
-               | ETComplaint
-               | ETDelivery
-               | ETOpen
-               | ETReject
-               | ETRenderingFailure
-               | ETSend
-                   deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                             Typeable, Generic)
+
+data EventType = EventType' (CI Text)
+                   deriving (Eq, Ord, Read, Show, Data, Typeable,
+                             Generic)
+
+pattern ETBounce :: EventType
+pattern ETBounce = EventType' "bounce"
+
+pattern ETClick :: EventType
+pattern ETClick = EventType' "click"
+
+pattern ETComplaint :: EventType
+pattern ETComplaint = EventType' "complaint"
+
+pattern ETDelivery :: EventType
+pattern ETDelivery = EventType' "delivery"
+
+pattern ETOpen :: EventType
+pattern ETOpen = EventType' "open"
+
+pattern ETReject :: EventType
+pattern ETReject = EventType' "reject"
+
+pattern ETRenderingFailure :: EventType
+pattern ETRenderingFailure = EventType' "renderingFailure"
+
+pattern ETSend :: EventType
+pattern ETSend = EventType' "send"
+
+{-# COMPLETE
+  ETBounce,
+  ETClick,
+  ETComplaint,
+  ETDelivery,
+  ETOpen,
+  ETReject,
+  ETRenderingFailure,
+  ETSend,
+  EventType' #-}
 
 instance FromText EventType where
-    parser = takeLowerText >>= \case
-        "bounce" -> pure ETBounce
-        "click" -> pure ETClick
-        "complaint" -> pure ETComplaint
-        "delivery" -> pure ETDelivery
-        "open" -> pure ETOpen
-        "reject" -> pure ETReject
-        "renderingfailure" -> pure ETRenderingFailure
-        "send" -> pure ETSend
-        e -> fromTextError $ "Failure parsing EventType from value: '" <> e
-           <> "'. Accepted values: bounce, click, complaint, delivery, open, reject, renderingfailure, send"
+    parser = (EventType' . mk) <$> takeText
 
 instance ToText EventType where
-    toText = \case
-        ETBounce -> "bounce"
-        ETClick -> "click"
-        ETComplaint -> "complaint"
-        ETDelivery -> "delivery"
-        ETOpen -> "open"
-        ETReject -> "reject"
-        ETRenderingFailure -> "renderingFailure"
-        ETSend -> "send"
+    toText (EventType' ci) = original ci
+
+-- | Represents an enum of /known/ $EventType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum EventType where
+    toEnum i = case i of
+        0 -> ETBounce
+        1 -> ETClick
+        2 -> ETComplaint
+        3 -> ETDelivery
+        4 -> ETOpen
+        5 -> ETReject
+        6 -> ETRenderingFailure
+        7 -> ETSend
+        _ -> (error . showText) $ "Unknown index for EventType: " <> toText i
+    fromEnum x = case x of
+        ETBounce -> 0
+        ETClick -> 1
+        ETComplaint -> 2
+        ETDelivery -> 3
+        ETOpen -> 4
+        ETReject -> 5
+        ETRenderingFailure -> 6
+        ETSend -> 7
+        EventType' name -> (error . showText) $ "Unknown EventType: " <> original name
+
+-- | Represents the bounds of /known/ $EventType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded EventType where
+    minBound = ETBounce
+    maxBound = ETSend
 
 instance Hashable     EventType
 instance NFData       EventType

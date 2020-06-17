@@ -49,6 +49,7 @@ module Network.AWS.MediaPackage.DescribeOriginEndpoint
 
 import Network.AWS.Lens
 import Network.AWS.MediaPackage.Types
+import Network.AWS.MediaPackage.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response

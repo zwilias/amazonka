@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,28 +16,60 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.MediaLive.Types.AudioDescriptionLanguageCodeControl where
+module Network.AWS.MediaLive.Types.AudioDescriptionLanguageCodeControl (
+  AudioDescriptionLanguageCodeControl (
+    ..
+    , ADLCCFollowInput
+    , ADLCCUseConfigured
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
+
 -- | Placeholder documentation for AudioDescriptionLanguageCodeControl
-data AudioDescriptionLanguageCodeControl = ADLCCFollowInput
-                                         | ADLCCUseConfigured
+data AudioDescriptionLanguageCodeControl = AudioDescriptionLanguageCodeControl' (CI
+                                                                                   Text)
                                              deriving (Eq, Ord, Read, Show,
-                                                       Enum, Bounded, Data,
-                                                       Typeable, Generic)
+                                                       Data, Typeable, Generic)
+
+pattern ADLCCFollowInput :: AudioDescriptionLanguageCodeControl
+pattern ADLCCFollowInput = AudioDescriptionLanguageCodeControl' "FOLLOW_INPUT"
+
+pattern ADLCCUseConfigured :: AudioDescriptionLanguageCodeControl
+pattern ADLCCUseConfigured = AudioDescriptionLanguageCodeControl' "USE_CONFIGURED"
+
+{-# COMPLETE
+  ADLCCFollowInput,
+  ADLCCUseConfigured,
+  AudioDescriptionLanguageCodeControl' #-}
 
 instance FromText AudioDescriptionLanguageCodeControl where
-    parser = takeLowerText >>= \case
-        "follow_input" -> pure ADLCCFollowInput
-        "use_configured" -> pure ADLCCUseConfigured
-        e -> fromTextError $ "Failure parsing AudioDescriptionLanguageCodeControl from value: '" <> e
-           <> "'. Accepted values: follow_input, use_configured"
+    parser = (AudioDescriptionLanguageCodeControl' . mk) <$> takeText
 
 instance ToText AudioDescriptionLanguageCodeControl where
-    toText = \case
-        ADLCCFollowInput -> "FOLLOW_INPUT"
-        ADLCCUseConfigured -> "USE_CONFIGURED"
+    toText (AudioDescriptionLanguageCodeControl' ci) = original ci
+
+-- | Represents an enum of /known/ $AudioDescriptionLanguageCodeControl.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum AudioDescriptionLanguageCodeControl where
+    toEnum i = case i of
+        0 -> ADLCCFollowInput
+        1 -> ADLCCUseConfigured
+        _ -> (error . showText) $ "Unknown index for AudioDescriptionLanguageCodeControl: " <> toText i
+    fromEnum x = case x of
+        ADLCCFollowInput -> 0
+        ADLCCUseConfigured -> 1
+        AudioDescriptionLanguageCodeControl' name -> (error . showText) $ "Unknown AudioDescriptionLanguageCodeControl: " <> original name
+
+-- | Represents the bounds of /known/ $AudioDescriptionLanguageCodeControl.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded AudioDescriptionLanguageCodeControl where
+    minBound = ADLCCFollowInput
+    maxBound = ADLCCUseConfigured
 
 instance Hashable     AudioDescriptionLanguageCodeControl
 instance NFData       AudioDescriptionLanguageCodeControl

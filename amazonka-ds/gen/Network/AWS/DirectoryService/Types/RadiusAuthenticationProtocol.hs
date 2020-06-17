@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,33 +16,73 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.DirectoryService.Types.RadiusAuthenticationProtocol where
+module Network.AWS.DirectoryService.Types.RadiusAuthenticationProtocol (
+  RadiusAuthenticationProtocol (
+    ..
+    , Chap
+    , MsCHAPV1
+    , MsCHAPV2
+    , Pap
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data RadiusAuthenticationProtocol = Chap
-                                  | MsCHAPV1
-                                  | MsCHAPV2
-                                  | Pap
-                                      deriving (Eq, Ord, Read, Show, Enum,
-                                                Bounded, Data, Typeable,
-                                                Generic)
+
+data RadiusAuthenticationProtocol = RadiusAuthenticationProtocol' (CI
+                                                                     Text)
+                                      deriving (Eq, Ord, Read, Show, Data,
+                                                Typeable, Generic)
+
+pattern Chap :: RadiusAuthenticationProtocol
+pattern Chap = RadiusAuthenticationProtocol' "CHAP"
+
+pattern MsCHAPV1 :: RadiusAuthenticationProtocol
+pattern MsCHAPV1 = RadiusAuthenticationProtocol' "MS-CHAPv1"
+
+pattern MsCHAPV2 :: RadiusAuthenticationProtocol
+pattern MsCHAPV2 = RadiusAuthenticationProtocol' "MS-CHAPv2"
+
+pattern Pap :: RadiusAuthenticationProtocol
+pattern Pap = RadiusAuthenticationProtocol' "PAP"
+
+{-# COMPLETE
+  Chap,
+  MsCHAPV1,
+  MsCHAPV2,
+  Pap,
+  RadiusAuthenticationProtocol' #-}
 
 instance FromText RadiusAuthenticationProtocol where
-    parser = takeLowerText >>= \case
-        "chap" -> pure Chap
-        "ms-chapv1" -> pure MsCHAPV1
-        "ms-chapv2" -> pure MsCHAPV2
-        "pap" -> pure Pap
-        e -> fromTextError $ "Failure parsing RadiusAuthenticationProtocol from value: '" <> e
-           <> "'. Accepted values: chap, ms-chapv1, ms-chapv2, pap"
+    parser = (RadiusAuthenticationProtocol' . mk) <$> takeText
 
 instance ToText RadiusAuthenticationProtocol where
-    toText = \case
-        Chap -> "CHAP"
-        MsCHAPV1 -> "MS-CHAPv1"
-        MsCHAPV2 -> "MS-CHAPv2"
-        Pap -> "PAP"
+    toText (RadiusAuthenticationProtocol' ci) = original ci
+
+-- | Represents an enum of /known/ $RadiusAuthenticationProtocol.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum RadiusAuthenticationProtocol where
+    toEnum i = case i of
+        0 -> Chap
+        1 -> MsCHAPV1
+        2 -> MsCHAPV2
+        3 -> Pap
+        _ -> (error . showText) $ "Unknown index for RadiusAuthenticationProtocol: " <> toText i
+    fromEnum x = case x of
+        Chap -> 0
+        MsCHAPV1 -> 1
+        MsCHAPV2 -> 2
+        Pap -> 3
+        RadiusAuthenticationProtocol' name -> (error . showText) $ "Unknown RadiusAuthenticationProtocol: " <> original name
+
+-- | Represents the bounds of /known/ $RadiusAuthenticationProtocol.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded RadiusAuthenticationProtocol where
+    minBound = Chap
+    maxBound = Pap
 
 instance Hashable     RadiusAuthenticationProtocol
 instance NFData       RadiusAuthenticationProtocol

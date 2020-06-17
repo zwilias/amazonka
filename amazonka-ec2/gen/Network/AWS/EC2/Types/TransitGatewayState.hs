@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,36 +16,81 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.EC2.Types.TransitGatewayState where
+module Network.AWS.EC2.Types.TransitGatewayState (
+  TransitGatewayState (
+    ..
+    , TGSAvailable
+    , TGSDeleted
+    , TGSDeleting
+    , TGSModifying
+    , TGSPending
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.EC2.Internal
 import Network.AWS.Prelude
-  
-data TransitGatewayState = TGSAvailable
-                         | TGSDeleted
-                         | TGSDeleting
-                         | TGSModifying
-                         | TGSPending
-                             deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                       Typeable, Generic)
+
+data TransitGatewayState = TransitGatewayState' (CI
+                                                   Text)
+                             deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                       Generic)
+
+pattern TGSAvailable :: TransitGatewayState
+pattern TGSAvailable = TransitGatewayState' "available"
+
+pattern TGSDeleted :: TransitGatewayState
+pattern TGSDeleted = TransitGatewayState' "deleted"
+
+pattern TGSDeleting :: TransitGatewayState
+pattern TGSDeleting = TransitGatewayState' "deleting"
+
+pattern TGSModifying :: TransitGatewayState
+pattern TGSModifying = TransitGatewayState' "modifying"
+
+pattern TGSPending :: TransitGatewayState
+pattern TGSPending = TransitGatewayState' "pending"
+
+{-# COMPLETE
+  TGSAvailable,
+  TGSDeleted,
+  TGSDeleting,
+  TGSModifying,
+  TGSPending,
+  TransitGatewayState' #-}
 
 instance FromText TransitGatewayState where
-    parser = takeLowerText >>= \case
-        "available" -> pure TGSAvailable
-        "deleted" -> pure TGSDeleted
-        "deleting" -> pure TGSDeleting
-        "modifying" -> pure TGSModifying
-        "pending" -> pure TGSPending
-        e -> fromTextError $ "Failure parsing TransitGatewayState from value: '" <> e
-           <> "'. Accepted values: available, deleted, deleting, modifying, pending"
+    parser = (TransitGatewayState' . mk) <$> takeText
 
 instance ToText TransitGatewayState where
-    toText = \case
-        TGSAvailable -> "available"
-        TGSDeleted -> "deleted"
-        TGSDeleting -> "deleting"
-        TGSModifying -> "modifying"
-        TGSPending -> "pending"
+    toText (TransitGatewayState' ci) = original ci
+
+-- | Represents an enum of /known/ $TransitGatewayState.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum TransitGatewayState where
+    toEnum i = case i of
+        0 -> TGSAvailable
+        1 -> TGSDeleted
+        2 -> TGSDeleting
+        3 -> TGSModifying
+        4 -> TGSPending
+        _ -> (error . showText) $ "Unknown index for TransitGatewayState: " <> toText i
+    fromEnum x = case x of
+        TGSAvailable -> 0
+        TGSDeleted -> 1
+        TGSDeleting -> 2
+        TGSModifying -> 3
+        TGSPending -> 4
+        TransitGatewayState' name -> (error . showText) $ "Unknown TransitGatewayState: " <> original name
+
+-- | Represents the bounds of /known/ $TransitGatewayState.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded TransitGatewayState where
+    minBound = TGSAvailable
+    maxBound = TGSPending
 
 instance Hashable     TransitGatewayState
 instance NFData       TransitGatewayState

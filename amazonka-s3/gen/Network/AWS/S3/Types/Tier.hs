@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,30 +16,66 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.S3.Types.Tier where
+module Network.AWS.S3.Types.Tier (
+  Tier (
+    ..
+    , TBulk
+    , TExpedited
+    , TStandard
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
 import Network.AWS.S3.Internal
-  
-data Tier = TBulk
-          | TExpedited
-          | TStandard
-              deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                        Typeable, Generic)
+
+data Tier = Tier' (CI Text)
+              deriving (Eq, Ord, Read, Show, Data, Typeable,
+                        Generic)
+
+pattern TBulk :: Tier
+pattern TBulk = Tier' "Bulk"
+
+pattern TExpedited :: Tier
+pattern TExpedited = Tier' "Expedited"
+
+pattern TStandard :: Tier
+pattern TStandard = Tier' "Standard"
+
+{-# COMPLETE
+  TBulk,
+  TExpedited,
+  TStandard,
+  Tier' #-}
 
 instance FromText Tier where
-    parser = takeLowerText >>= \case
-        "bulk" -> pure TBulk
-        "expedited" -> pure TExpedited
-        "standard" -> pure TStandard
-        e -> fromTextError $ "Failure parsing Tier from value: '" <> e
-           <> "'. Accepted values: bulk, expedited, standard"
+    parser = (Tier' . mk) <$> takeText
 
 instance ToText Tier where
-    toText = \case
-        TBulk -> "Bulk"
-        TExpedited -> "Expedited"
-        TStandard -> "Standard"
+    toText (Tier' ci) = original ci
+
+-- | Represents an enum of /known/ $Tier.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum Tier where
+    toEnum i = case i of
+        0 -> TBulk
+        1 -> TExpedited
+        2 -> TStandard
+        _ -> (error . showText) $ "Unknown index for Tier: " <> toText i
+    fromEnum x = case x of
+        TBulk -> 0
+        TExpedited -> 1
+        TStandard -> 2
+        Tier' name -> (error . showText) $ "Unknown Tier: " <> original name
+
+-- | Represents the bounds of /known/ $Tier.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded Tier where
+    minBound = TBulk
+    maxBound = TStandard
 
 instance Hashable     Tier
 instance NFData       Tier

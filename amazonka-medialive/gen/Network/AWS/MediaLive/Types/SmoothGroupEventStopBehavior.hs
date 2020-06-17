@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,28 +16,60 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.MediaLive.Types.SmoothGroupEventStopBehavior where
+module Network.AWS.MediaLive.Types.SmoothGroupEventStopBehavior (
+  SmoothGroupEventStopBehavior (
+    ..
+    , SGESBNone
+    , SGESBSendEos
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
+
 -- | Placeholder documentation for SmoothGroupEventStopBehavior
-data SmoothGroupEventStopBehavior = SGESBNone
-                                  | SGESBSendEos
-                                      deriving (Eq, Ord, Read, Show, Enum,
-                                                Bounded, Data, Typeable,
-                                                Generic)
+data SmoothGroupEventStopBehavior = SmoothGroupEventStopBehavior' (CI
+                                                                     Text)
+                                      deriving (Eq, Ord, Read, Show, Data,
+                                                Typeable, Generic)
+
+pattern SGESBNone :: SmoothGroupEventStopBehavior
+pattern SGESBNone = SmoothGroupEventStopBehavior' "NONE"
+
+pattern SGESBSendEos :: SmoothGroupEventStopBehavior
+pattern SGESBSendEos = SmoothGroupEventStopBehavior' "SEND_EOS"
+
+{-# COMPLETE
+  SGESBNone,
+  SGESBSendEos,
+  SmoothGroupEventStopBehavior' #-}
 
 instance FromText SmoothGroupEventStopBehavior where
-    parser = takeLowerText >>= \case
-        "none" -> pure SGESBNone
-        "send_eos" -> pure SGESBSendEos
-        e -> fromTextError $ "Failure parsing SmoothGroupEventStopBehavior from value: '" <> e
-           <> "'. Accepted values: none, send_eos"
+    parser = (SmoothGroupEventStopBehavior' . mk) <$> takeText
 
 instance ToText SmoothGroupEventStopBehavior where
-    toText = \case
-        SGESBNone -> "NONE"
-        SGESBSendEos -> "SEND_EOS"
+    toText (SmoothGroupEventStopBehavior' ci) = original ci
+
+-- | Represents an enum of /known/ $SmoothGroupEventStopBehavior.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum SmoothGroupEventStopBehavior where
+    toEnum i = case i of
+        0 -> SGESBNone
+        1 -> SGESBSendEos
+        _ -> (error . showText) $ "Unknown index for SmoothGroupEventStopBehavior: " <> toText i
+    fromEnum x = case x of
+        SGESBNone -> 0
+        SGESBSendEos -> 1
+        SmoothGroupEventStopBehavior' name -> (error . showText) $ "Unknown SmoothGroupEventStopBehavior: " <> original name
+
+-- | Represents the bounds of /known/ $SmoothGroupEventStopBehavior.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded SmoothGroupEventStopBehavior where
+    minBound = SGESBNone
+    maxBound = SGESBSendEos
 
 instance Hashable     SmoothGroupEventStopBehavior
 instance NFData       SmoothGroupEventStopBehavior

@@ -38,6 +38,7 @@ module Network.AWS.CloudFormation.DescribeStackSet
     ) where
 
 import Network.AWS.CloudFormation.Types
+import Network.AWS.CloudFormation.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request

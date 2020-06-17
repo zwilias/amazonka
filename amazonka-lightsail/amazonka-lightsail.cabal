@@ -175,6 +175,7 @@ library
         , Network.AWS.Lightsail.Types.PortAccessType
         , Network.AWS.Lightsail.Types.PortInfo
         , Network.AWS.Lightsail.Types.PortState
+        , Network.AWS.Lightsail.Types.Product
         , Network.AWS.Lightsail.Types.RegionInfo
         , Network.AWS.Lightsail.Types.RegionName
         , Network.AWS.Lightsail.Types.ResourceLocation
@@ -184,6 +185,7 @@ library
     build-depends:
           amazonka-core == 1.6.1.*
         , base          >= 4.7     && < 5
+        , case-insensitive
 
 test-suite amazonka-lightsail-test
     type:              exitcode-stdio-1.0
@@ -207,6 +209,7 @@ test-suite amazonka-lightsail-test
         , amazonka-lightsail
         , base
         , bytestring
+        , case-insensitive
         , tasty
         , tasty-hunit
         , text

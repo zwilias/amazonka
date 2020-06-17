@@ -43,6 +43,7 @@ module Network.AWS.DirectoryService.ListTagsForResource
     ) where
 
 import Network.AWS.DirectoryService.Types
+import Network.AWS.DirectoryService.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude

@@ -40,6 +40,7 @@ module Network.AWS.IoTData.DeleteThingShadow
     ) where
 
 import Network.AWS.IoTData.Types
+import Network.AWS.IoTData.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request

@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,36 +16,80 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.EC2.Types.SummaryStatus where
+module Network.AWS.EC2.Types.SummaryStatus (
+  SummaryStatus (
+    ..
+    , SSImpaired
+    , SSInitializing
+    , SSInsufficientData
+    , SSNotApplicable
+    , SSOK
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.EC2.Internal
 import Network.AWS.Prelude
-  
-data SummaryStatus = SSImpaired
-                   | SSInitializing
-                   | SSInsufficientData
-                   | SSNotApplicable
-                   | SSOK
-                       deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                 Typeable, Generic)
+
+data SummaryStatus = SummaryStatus' (CI Text)
+                       deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                 Generic)
+
+pattern SSImpaired :: SummaryStatus
+pattern SSImpaired = SummaryStatus' "impaired"
+
+pattern SSInitializing :: SummaryStatus
+pattern SSInitializing = SummaryStatus' "initializing"
+
+pattern SSInsufficientData :: SummaryStatus
+pattern SSInsufficientData = SummaryStatus' "insufficient-data"
+
+pattern SSNotApplicable :: SummaryStatus
+pattern SSNotApplicable = SummaryStatus' "not-applicable"
+
+pattern SSOK :: SummaryStatus
+pattern SSOK = SummaryStatus' "ok"
+
+{-# COMPLETE
+  SSImpaired,
+  SSInitializing,
+  SSInsufficientData,
+  SSNotApplicable,
+  SSOK,
+  SummaryStatus' #-}
 
 instance FromText SummaryStatus where
-    parser = takeLowerText >>= \case
-        "impaired" -> pure SSImpaired
-        "initializing" -> pure SSInitializing
-        "insufficient-data" -> pure SSInsufficientData
-        "not-applicable" -> pure SSNotApplicable
-        "ok" -> pure SSOK
-        e -> fromTextError $ "Failure parsing SummaryStatus from value: '" <> e
-           <> "'. Accepted values: impaired, initializing, insufficient-data, not-applicable, ok"
+    parser = (SummaryStatus' . mk) <$> takeText
 
 instance ToText SummaryStatus where
-    toText = \case
-        SSImpaired -> "impaired"
-        SSInitializing -> "initializing"
-        SSInsufficientData -> "insufficient-data"
-        SSNotApplicable -> "not-applicable"
-        SSOK -> "ok"
+    toText (SummaryStatus' ci) = original ci
+
+-- | Represents an enum of /known/ $SummaryStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum SummaryStatus where
+    toEnum i = case i of
+        0 -> SSImpaired
+        1 -> SSInitializing
+        2 -> SSInsufficientData
+        3 -> SSNotApplicable
+        4 -> SSOK
+        _ -> (error . showText) $ "Unknown index for SummaryStatus: " <> toText i
+    fromEnum x = case x of
+        SSImpaired -> 0
+        SSInitializing -> 1
+        SSInsufficientData -> 2
+        SSNotApplicable -> 3
+        SSOK -> 4
+        SummaryStatus' name -> (error . showText) $ "Unknown SummaryStatus: " <> original name
+
+-- | Represents the bounds of /known/ $SummaryStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded SummaryStatus where
+    minBound = SSImpaired
+    maxBound = SSOK
 
 instance Hashable     SummaryStatus
 instance NFData       SummaryStatus

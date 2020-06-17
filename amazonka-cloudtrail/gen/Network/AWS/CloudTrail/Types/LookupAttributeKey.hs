@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,44 +16,101 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.CloudTrail.Types.LookupAttributeKey where
+module Network.AWS.CloudTrail.Types.LookupAttributeKey (
+  LookupAttributeKey (
+    ..
+    , AccessKeyId
+    , EventId
+    , EventName
+    , EventSource
+    , ReadOnly
+    , ResourceName
+    , ResourceType
+    , Username
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data LookupAttributeKey = AccessKeyId
-                        | EventId
-                        | EventName
-                        | EventSource
-                        | ReadOnly
-                        | ResourceName
-                        | ResourceType
-                        | Username
-                            deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                      Typeable, Generic)
+
+data LookupAttributeKey = LookupAttributeKey' (CI
+                                                 Text)
+                            deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                      Generic)
+
+pattern AccessKeyId :: LookupAttributeKey
+pattern AccessKeyId = LookupAttributeKey' "AccessKeyId"
+
+pattern EventId :: LookupAttributeKey
+pattern EventId = LookupAttributeKey' "EventId"
+
+pattern EventName :: LookupAttributeKey
+pattern EventName = LookupAttributeKey' "EventName"
+
+pattern EventSource :: LookupAttributeKey
+pattern EventSource = LookupAttributeKey' "EventSource"
+
+pattern ReadOnly :: LookupAttributeKey
+pattern ReadOnly = LookupAttributeKey' "ReadOnly"
+
+pattern ResourceName :: LookupAttributeKey
+pattern ResourceName = LookupAttributeKey' "ResourceName"
+
+pattern ResourceType :: LookupAttributeKey
+pattern ResourceType = LookupAttributeKey' "ResourceType"
+
+pattern Username :: LookupAttributeKey
+pattern Username = LookupAttributeKey' "Username"
+
+{-# COMPLETE
+  AccessKeyId,
+  EventId,
+  EventName,
+  EventSource,
+  ReadOnly,
+  ResourceName,
+  ResourceType,
+  Username,
+  LookupAttributeKey' #-}
 
 instance FromText LookupAttributeKey where
-    parser = takeLowerText >>= \case
-        "accesskeyid" -> pure AccessKeyId
-        "eventid" -> pure EventId
-        "eventname" -> pure EventName
-        "eventsource" -> pure EventSource
-        "readonly" -> pure ReadOnly
-        "resourcename" -> pure ResourceName
-        "resourcetype" -> pure ResourceType
-        "username" -> pure Username
-        e -> fromTextError $ "Failure parsing LookupAttributeKey from value: '" <> e
-           <> "'. Accepted values: accesskeyid, eventid, eventname, eventsource, readonly, resourcename, resourcetype, username"
+    parser = (LookupAttributeKey' . mk) <$> takeText
 
 instance ToText LookupAttributeKey where
-    toText = \case
-        AccessKeyId -> "AccessKeyId"
-        EventId -> "EventId"
-        EventName -> "EventName"
-        EventSource -> "EventSource"
-        ReadOnly -> "ReadOnly"
-        ResourceName -> "ResourceName"
-        ResourceType -> "ResourceType"
-        Username -> "Username"
+    toText (LookupAttributeKey' ci) = original ci
+
+-- | Represents an enum of /known/ $LookupAttributeKey.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum LookupAttributeKey where
+    toEnum i = case i of
+        0 -> AccessKeyId
+        1 -> EventId
+        2 -> EventName
+        3 -> EventSource
+        4 -> ReadOnly
+        5 -> ResourceName
+        6 -> ResourceType
+        7 -> Username
+        _ -> (error . showText) $ "Unknown index for LookupAttributeKey: " <> toText i
+    fromEnum x = case x of
+        AccessKeyId -> 0
+        EventId -> 1
+        EventName -> 2
+        EventSource -> 3
+        ReadOnly -> 4
+        ResourceName -> 5
+        ResourceType -> 6
+        Username -> 7
+        LookupAttributeKey' name -> (error . showText) $ "Unknown LookupAttributeKey: " <> original name
+
+-- | Represents the bounds of /known/ $LookupAttributeKey.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded LookupAttributeKey where
+    minBound = AccessKeyId
+    maxBound = Username
 
 instance Hashable     LookupAttributeKey
 instance NFData       LookupAttributeKey

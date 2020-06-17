@@ -44,6 +44,7 @@ module Network.AWS.ApplicationAutoScaling.DeleteScalingPolicy
     ) where
 
 import Network.AWS.ApplicationAutoScaling.Types
+import Network.AWS.ApplicationAutoScaling.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request

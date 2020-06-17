@@ -41,6 +41,7 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.SSM.Types
+import Network.AWS.SSM.Types.Product
 
 -- | /See:/ 'deleteActivation' smart constructor.
 newtype DeleteActivation = DeleteActivation'{_daActivationId

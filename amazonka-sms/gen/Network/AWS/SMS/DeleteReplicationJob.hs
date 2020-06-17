@@ -39,6 +39,7 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.SMS.Types
+import Network.AWS.SMS.Types.Product
 
 -- | /See:/ 'deleteReplicationJob' smart constructor.
 newtype DeleteReplicationJob = DeleteReplicationJob'{_drjReplicationJobId

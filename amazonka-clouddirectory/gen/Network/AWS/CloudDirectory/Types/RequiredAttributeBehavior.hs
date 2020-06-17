@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,59 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.CloudDirectory.Types.RequiredAttributeBehavior where
+module Network.AWS.CloudDirectory.Types.RequiredAttributeBehavior (
+  RequiredAttributeBehavior (
+    ..
+    , NotRequired
+    , RequiredAlways
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data RequiredAttributeBehavior = NotRequired
-                               | RequiredAlways
-                                   deriving (Eq, Ord, Read, Show, Enum, Bounded,
-                                             Data, Typeable, Generic)
+
+data RequiredAttributeBehavior = RequiredAttributeBehavior' (CI
+                                                               Text)
+                                   deriving (Eq, Ord, Read, Show, Data,
+                                             Typeable, Generic)
+
+pattern NotRequired :: RequiredAttributeBehavior
+pattern NotRequired = RequiredAttributeBehavior' "NOT_REQUIRED"
+
+pattern RequiredAlways :: RequiredAttributeBehavior
+pattern RequiredAlways = RequiredAttributeBehavior' "REQUIRED_ALWAYS"
+
+{-# COMPLETE
+  NotRequired,
+  RequiredAlways,
+  RequiredAttributeBehavior' #-}
 
 instance FromText RequiredAttributeBehavior where
-    parser = takeLowerText >>= \case
-        "not_required" -> pure NotRequired
-        "required_always" -> pure RequiredAlways
-        e -> fromTextError $ "Failure parsing RequiredAttributeBehavior from value: '" <> e
-           <> "'. Accepted values: not_required, required_always"
+    parser = (RequiredAttributeBehavior' . mk) <$> takeText
 
 instance ToText RequiredAttributeBehavior where
-    toText = \case
-        NotRequired -> "NOT_REQUIRED"
-        RequiredAlways -> "REQUIRED_ALWAYS"
+    toText (RequiredAttributeBehavior' ci) = original ci
+
+-- | Represents an enum of /known/ $RequiredAttributeBehavior.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum RequiredAttributeBehavior where
+    toEnum i = case i of
+        0 -> NotRequired
+        1 -> RequiredAlways
+        _ -> (error . showText) $ "Unknown index for RequiredAttributeBehavior: " <> toText i
+    fromEnum x = case x of
+        NotRequired -> 0
+        RequiredAlways -> 1
+        RequiredAttributeBehavior' name -> (error . showText) $ "Unknown RequiredAttributeBehavior: " <> original name
+
+-- | Represents the bounds of /known/ $RequiredAttributeBehavior.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded RequiredAttributeBehavior where
+    minBound = NotRequired
+    maxBound = RequiredAlways
 
 instance Hashable     RequiredAttributeBehavior
 instance NFData       RequiredAttributeBehavior

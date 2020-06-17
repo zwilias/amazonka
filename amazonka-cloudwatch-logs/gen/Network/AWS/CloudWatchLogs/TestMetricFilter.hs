@@ -39,6 +39,7 @@ module Network.AWS.CloudWatchLogs.TestMetricFilter
     ) where
 
 import Network.AWS.CloudWatchLogs.Types
+import Network.AWS.CloudWatchLogs.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request

@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,59 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.CodeBuild.Types.LogsConfigStatusType where
+module Network.AWS.CodeBuild.Types.LogsConfigStatusType (
+  LogsConfigStatusType (
+    ..
+    , Disabled
+    , Enabled
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data LogsConfigStatusType = Disabled
-                          | Enabled
-                              deriving (Eq, Ord, Read, Show, Enum, Bounded,
-                                        Data, Typeable, Generic)
+
+data LogsConfigStatusType = LogsConfigStatusType' (CI
+                                                     Text)
+                              deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                        Generic)
+
+pattern Disabled :: LogsConfigStatusType
+pattern Disabled = LogsConfigStatusType' "DISABLED"
+
+pattern Enabled :: LogsConfigStatusType
+pattern Enabled = LogsConfigStatusType' "ENABLED"
+
+{-# COMPLETE
+  Disabled,
+  Enabled,
+  LogsConfigStatusType' #-}
 
 instance FromText LogsConfigStatusType where
-    parser = takeLowerText >>= \case
-        "disabled" -> pure Disabled
-        "enabled" -> pure Enabled
-        e -> fromTextError $ "Failure parsing LogsConfigStatusType from value: '" <> e
-           <> "'. Accepted values: disabled, enabled"
+    parser = (LogsConfigStatusType' . mk) <$> takeText
 
 instance ToText LogsConfigStatusType where
-    toText = \case
-        Disabled -> "DISABLED"
-        Enabled -> "ENABLED"
+    toText (LogsConfigStatusType' ci) = original ci
+
+-- | Represents an enum of /known/ $LogsConfigStatusType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum LogsConfigStatusType where
+    toEnum i = case i of
+        0 -> Disabled
+        1 -> Enabled
+        _ -> (error . showText) $ "Unknown index for LogsConfigStatusType: " <> toText i
+    fromEnum x = case x of
+        Disabled -> 0
+        Enabled -> 1
+        LogsConfigStatusType' name -> (error . showText) $ "Unknown LogsConfigStatusType: " <> original name
+
+-- | Represents the bounds of /known/ $LogsConfigStatusType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded LogsConfigStatusType where
+    minBound = Disabled
+    maxBound = Enabled
 
 instance Hashable     LogsConfigStatusType
 instance NFData       LogsConfigStatusType

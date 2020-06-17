@@ -39,6 +39,7 @@ module Network.AWS.IoTJobsData.StartNextPendingJobExecution
     ) where
 
 import Network.AWS.IoTJobsData.Types
+import Network.AWS.IoTJobsData.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request

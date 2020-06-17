@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,23 +16,52 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.SSM.Types.DocumentPermissionType where
+module Network.AWS.SSM.Types.DocumentPermissionType (
+  DocumentPermissionType (
+    ..
+    , Share
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data DocumentPermissionType = Share
-                                deriving (Eq, Ord, Read, Show, Enum, Bounded,
-                                          Data, Typeable, Generic)
+
+data DocumentPermissionType = DocumentPermissionType' (CI
+                                                         Text)
+                                deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                          Generic)
+
+pattern Share :: DocumentPermissionType
+pattern Share = DocumentPermissionType' "Share"
+
+{-# COMPLETE
+  Share,
+  DocumentPermissionType' #-}
 
 instance FromText DocumentPermissionType where
-    parser = takeLowerText >>= \case
-        "share" -> pure Share
-        e -> fromTextError $ "Failure parsing DocumentPermissionType from value: '" <> e
-           <> "'. Accepted values: share"
+    parser = (DocumentPermissionType' . mk) <$> takeText
 
 instance ToText DocumentPermissionType where
-    toText = \case
-        Share -> "Share"
+    toText (DocumentPermissionType' ci) = original ci
+
+-- | Represents an enum of /known/ $DocumentPermissionType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum DocumentPermissionType where
+    toEnum i = case i of
+        0 -> Share
+        _ -> (error . showText) $ "Unknown index for DocumentPermissionType: " <> toText i
+    fromEnum x = case x of
+        Share -> 0
+        DocumentPermissionType' name -> (error . showText) $ "Unknown DocumentPermissionType: " <> original name
+
+-- | Represents the bounds of /known/ $DocumentPermissionType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded DocumentPermissionType where
+    minBound = Share
+    maxBound = Share
 
 instance Hashable     DocumentPermissionType
 instance NFData       DocumentPermissionType

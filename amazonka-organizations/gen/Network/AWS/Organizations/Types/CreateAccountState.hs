@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,29 +16,66 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.Organizations.Types.CreateAccountState where
+module Network.AWS.Organizations.Types.CreateAccountState (
+  CreateAccountState (
+    ..
+    , Failed
+    , InProgress
+    , Succeeded
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data CreateAccountState = Failed
-                        | InProgress
-                        | Succeeded
-                            deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                      Typeable, Generic)
+
+data CreateAccountState = CreateAccountState' (CI
+                                                 Text)
+                            deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                      Generic)
+
+pattern Failed :: CreateAccountState
+pattern Failed = CreateAccountState' "FAILED"
+
+pattern InProgress :: CreateAccountState
+pattern InProgress = CreateAccountState' "IN_PROGRESS"
+
+pattern Succeeded :: CreateAccountState
+pattern Succeeded = CreateAccountState' "SUCCEEDED"
+
+{-# COMPLETE
+  Failed,
+  InProgress,
+  Succeeded,
+  CreateAccountState' #-}
 
 instance FromText CreateAccountState where
-    parser = takeLowerText >>= \case
-        "failed" -> pure Failed
-        "in_progress" -> pure InProgress
-        "succeeded" -> pure Succeeded
-        e -> fromTextError $ "Failure parsing CreateAccountState from value: '" <> e
-           <> "'. Accepted values: failed, in_progress, succeeded"
+    parser = (CreateAccountState' . mk) <$> takeText
 
 instance ToText CreateAccountState where
-    toText = \case
-        Failed -> "FAILED"
-        InProgress -> "IN_PROGRESS"
-        Succeeded -> "SUCCEEDED"
+    toText (CreateAccountState' ci) = original ci
+
+-- | Represents an enum of /known/ $CreateAccountState.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum CreateAccountState where
+    toEnum i = case i of
+        0 -> Failed
+        1 -> InProgress
+        2 -> Succeeded
+        _ -> (error . showText) $ "Unknown index for CreateAccountState: " <> toText i
+    fromEnum x = case x of
+        Failed -> 0
+        InProgress -> 1
+        Succeeded -> 2
+        CreateAccountState' name -> (error . showText) $ "Unknown CreateAccountState: " <> original name
+
+-- | Represents the bounds of /known/ $CreateAccountState.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded CreateAccountState where
+    minBound = Failed
+    maxBound = Succeeded
 
 instance Hashable     CreateAccountState
 instance NFData       CreateAccountState

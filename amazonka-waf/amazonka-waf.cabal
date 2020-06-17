@@ -144,6 +144,7 @@ library
         , Network.AWS.WAF.Types.PositionalConstraint
         , Network.AWS.WAF.Types.Predicate
         , Network.AWS.WAF.Types.PredicateType
+        , Network.AWS.WAF.Types.Product
         , Network.AWS.WAF.Types.RateBasedRule
         , Network.AWS.WAF.Types.RateKey
         , Network.AWS.WAF.Types.RegexMatchSet
@@ -187,6 +188,7 @@ library
     build-depends:
           amazonka-core == 1.6.1.*
         , base          >= 4.7     && < 5
+        , case-insensitive
 
 test-suite amazonka-waf-test
     type:              exitcode-stdio-1.0
@@ -210,6 +212,7 @@ test-suite amazonka-waf-test
         , amazonka-waf
         , base
         , bytestring
+        , case-insensitive
         , tasty
         , tasty-hunit
         , text

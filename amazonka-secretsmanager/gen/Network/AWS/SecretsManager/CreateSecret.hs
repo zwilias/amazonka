@@ -84,6 +84,7 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.SecretsManager.Types
+import Network.AWS.SecretsManager.Types.Product
 
 -- | /See:/ 'createSecret' smart constructor.
 data CreateSecret = CreateSecret'{_csSecretBinary ::

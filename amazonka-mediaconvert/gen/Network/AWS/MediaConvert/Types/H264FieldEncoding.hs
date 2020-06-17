@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,27 +16,59 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.MediaConvert.Types.H264FieldEncoding where
+module Network.AWS.MediaConvert.Types.H264FieldEncoding (
+  H264FieldEncoding (
+    ..
+    , ForceField
+    , Paff
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
+
 -- | Choosing FORCE_FIELD disables PAFF encoding for interlaced outputs.
-data H264FieldEncoding = ForceField
-                       | Paff
-                           deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                     Typeable, Generic)
+data H264FieldEncoding = H264FieldEncoding' (CI Text)
+                           deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                     Generic)
+
+pattern ForceField :: H264FieldEncoding
+pattern ForceField = H264FieldEncoding' "FORCE_FIELD"
+
+pattern Paff :: H264FieldEncoding
+pattern Paff = H264FieldEncoding' "PAFF"
+
+{-# COMPLETE
+  ForceField,
+  Paff,
+  H264FieldEncoding' #-}
 
 instance FromText H264FieldEncoding where
-    parser = takeLowerText >>= \case
-        "force_field" -> pure ForceField
-        "paff" -> pure Paff
-        e -> fromTextError $ "Failure parsing H264FieldEncoding from value: '" <> e
-           <> "'. Accepted values: force_field, paff"
+    parser = (H264FieldEncoding' . mk) <$> takeText
 
 instance ToText H264FieldEncoding where
-    toText = \case
-        ForceField -> "FORCE_FIELD"
-        Paff -> "PAFF"
+    toText (H264FieldEncoding' ci) = original ci
+
+-- | Represents an enum of /known/ $H264FieldEncoding.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum H264FieldEncoding where
+    toEnum i = case i of
+        0 -> ForceField
+        1 -> Paff
+        _ -> (error . showText) $ "Unknown index for H264FieldEncoding: " <> toText i
+    fromEnum x = case x of
+        ForceField -> 0
+        Paff -> 1
+        H264FieldEncoding' name -> (error . showText) $ "Unknown H264FieldEncoding: " <> original name
+
+-- | Represents the bounds of /known/ $H264FieldEncoding.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded H264FieldEncoding where
+    minBound = ForceField
+    maxBound = Paff
 
 instance Hashable     H264FieldEncoding
 instance NFData       H264FieldEncoding

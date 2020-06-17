@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,33 +16,74 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.EC2.Types.FpgaImageStateCode where
+module Network.AWS.EC2.Types.FpgaImageStateCode (
+  FpgaImageStateCode (
+    ..
+    , FISCAvailable
+    , FISCFailed
+    , FISCPending
+    , FISCUnavailable
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.EC2.Internal
 import Network.AWS.Prelude
-  
-data FpgaImageStateCode = FISCAvailable
-                        | FISCFailed
-                        | FISCPending
-                        | FISCUnavailable
-                            deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                      Typeable, Generic)
+
+data FpgaImageStateCode = FpgaImageStateCode' (CI
+                                                 Text)
+                            deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                      Generic)
+
+pattern FISCAvailable :: FpgaImageStateCode
+pattern FISCAvailable = FpgaImageStateCode' "available"
+
+pattern FISCFailed :: FpgaImageStateCode
+pattern FISCFailed = FpgaImageStateCode' "failed"
+
+pattern FISCPending :: FpgaImageStateCode
+pattern FISCPending = FpgaImageStateCode' "pending"
+
+pattern FISCUnavailable :: FpgaImageStateCode
+pattern FISCUnavailable = FpgaImageStateCode' "unavailable"
+
+{-# COMPLETE
+  FISCAvailable,
+  FISCFailed,
+  FISCPending,
+  FISCUnavailable,
+  FpgaImageStateCode' #-}
 
 instance FromText FpgaImageStateCode where
-    parser = takeLowerText >>= \case
-        "available" -> pure FISCAvailable
-        "failed" -> pure FISCFailed
-        "pending" -> pure FISCPending
-        "unavailable" -> pure FISCUnavailable
-        e -> fromTextError $ "Failure parsing FpgaImageStateCode from value: '" <> e
-           <> "'. Accepted values: available, failed, pending, unavailable"
+    parser = (FpgaImageStateCode' . mk) <$> takeText
 
 instance ToText FpgaImageStateCode where
-    toText = \case
-        FISCAvailable -> "available"
-        FISCFailed -> "failed"
-        FISCPending -> "pending"
-        FISCUnavailable -> "unavailable"
+    toText (FpgaImageStateCode' ci) = original ci
+
+-- | Represents an enum of /known/ $FpgaImageStateCode.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum FpgaImageStateCode where
+    toEnum i = case i of
+        0 -> FISCAvailable
+        1 -> FISCFailed
+        2 -> FISCPending
+        3 -> FISCUnavailable
+        _ -> (error . showText) $ "Unknown index for FpgaImageStateCode: " <> toText i
+    fromEnum x = case x of
+        FISCAvailable -> 0
+        FISCFailed -> 1
+        FISCPending -> 2
+        FISCUnavailable -> 3
+        FpgaImageStateCode' name -> (error . showText) $ "Unknown FpgaImageStateCode: " <> original name
+
+-- | Represents the bounds of /known/ $FpgaImageStateCode.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded FpgaImageStateCode where
+    minBound = FISCAvailable
+    maxBound = FISCUnavailable
 
 instance Hashable     FpgaImageStateCode
 instance NFData       FpgaImageStateCode

@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,23 +16,52 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.Route53AutoNaming.Types.NamespaceFilterName where
+module Network.AWS.Route53AutoNaming.Types.NamespaceFilterName (
+  NamespaceFilterName (
+    ..
+    , Type
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data NamespaceFilterName = Type
-                             deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                       Typeable, Generic)
+
+data NamespaceFilterName = NamespaceFilterName' (CI
+                                                   Text)
+                             deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                       Generic)
+
+pattern Type :: NamespaceFilterName
+pattern Type = NamespaceFilterName' "TYPE"
+
+{-# COMPLETE
+  Type,
+  NamespaceFilterName' #-}
 
 instance FromText NamespaceFilterName where
-    parser = takeLowerText >>= \case
-        "type" -> pure Type
-        e -> fromTextError $ "Failure parsing NamespaceFilterName from value: '" <> e
-           <> "'. Accepted values: type"
+    parser = (NamespaceFilterName' . mk) <$> takeText
 
 instance ToText NamespaceFilterName where
-    toText = \case
-        Type -> "TYPE"
+    toText (NamespaceFilterName' ci) = original ci
+
+-- | Represents an enum of /known/ $NamespaceFilterName.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum NamespaceFilterName where
+    toEnum i = case i of
+        0 -> Type
+        _ -> (error . showText) $ "Unknown index for NamespaceFilterName: " <> toText i
+    fromEnum x = case x of
+        Type -> 0
+        NamespaceFilterName' name -> (error . showText) $ "Unknown NamespaceFilterName: " <> original name
+
+-- | Represents the bounds of /known/ $NamespaceFilterName.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded NamespaceFilterName where
+    minBound = Type
+    maxBound = Type
 
 instance Hashable     NamespaceFilterName
 instance NFData       NamespaceFilterName

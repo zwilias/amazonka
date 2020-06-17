@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,23 +16,52 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.SWF.Types.LambdaFunctionTimeoutType where
+module Network.AWS.SWF.Types.LambdaFunctionTimeoutType (
+  LambdaFunctionTimeoutType (
+    ..
+    , LFTTStartToClose
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data LambdaFunctionTimeoutType = LFTTStartToClose
-                                   deriving (Eq, Ord, Read, Show, Enum, Bounded,
-                                             Data, Typeable, Generic)
+
+data LambdaFunctionTimeoutType = LambdaFunctionTimeoutType' (CI
+                                                               Text)
+                                   deriving (Eq, Ord, Read, Show, Data,
+                                             Typeable, Generic)
+
+pattern LFTTStartToClose :: LambdaFunctionTimeoutType
+pattern LFTTStartToClose = LambdaFunctionTimeoutType' "START_TO_CLOSE"
+
+{-# COMPLETE
+  LFTTStartToClose,
+  LambdaFunctionTimeoutType' #-}
 
 instance FromText LambdaFunctionTimeoutType where
-    parser = takeLowerText >>= \case
-        "start_to_close" -> pure LFTTStartToClose
-        e -> fromTextError $ "Failure parsing LambdaFunctionTimeoutType from value: '" <> e
-           <> "'. Accepted values: start_to_close"
+    parser = (LambdaFunctionTimeoutType' . mk) <$> takeText
 
 instance ToText LambdaFunctionTimeoutType where
-    toText = \case
-        LFTTStartToClose -> "START_TO_CLOSE"
+    toText (LambdaFunctionTimeoutType' ci) = original ci
+
+-- | Represents an enum of /known/ $LambdaFunctionTimeoutType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum LambdaFunctionTimeoutType where
+    toEnum i = case i of
+        0 -> LFTTStartToClose
+        _ -> (error . showText) $ "Unknown index for LambdaFunctionTimeoutType: " <> toText i
+    fromEnum x = case x of
+        LFTTStartToClose -> 0
+        LambdaFunctionTimeoutType' name -> (error . showText) $ "Unknown LambdaFunctionTimeoutType: " <> original name
+
+-- | Represents the bounds of /known/ $LambdaFunctionTimeoutType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded LambdaFunctionTimeoutType where
+    minBound = LFTTStartToClose
+    maxBound = LFTTStartToClose
 
 instance Hashable     LambdaFunctionTimeoutType
 instance NFData       LambdaFunctionTimeoutType

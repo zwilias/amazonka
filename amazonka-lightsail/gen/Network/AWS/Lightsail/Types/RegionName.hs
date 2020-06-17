@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,56 +16,128 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.Lightsail.Types.RegionName where
+module Network.AWS.Lightsail.Types.RegionName (
+  RegionName (
+    ..
+    , ApNortheast1
+    , ApNortheast2
+    , ApSouth1
+    , ApSoutheast1
+    , ApSoutheast2
+    , EuCentral1
+    , EuWest1
+    , EuWest2
+    , UsEast1
+    , UsEast2
+    , UsWest1
+    , UsWest2
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data RegionName = ApNortheast1
-                | ApNortheast2
-                | ApSouth1
-                | ApSoutheast1
-                | ApSoutheast2
-                | EuCentral1
-                | EuWest1
-                | EuWest2
-                | UsEast1
-                | UsEast2
-                | UsWest1
-                | UsWest2
-                    deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                              Typeable, Generic)
+
+data RegionName = RegionName' (CI Text)
+                    deriving (Eq, Ord, Read, Show, Data, Typeable,
+                              Generic)
+
+pattern ApNortheast1 :: RegionName
+pattern ApNortheast1 = RegionName' "ap-northeast-1"
+
+pattern ApNortheast2 :: RegionName
+pattern ApNortheast2 = RegionName' "ap-northeast-2"
+
+pattern ApSouth1 :: RegionName
+pattern ApSouth1 = RegionName' "ap-south-1"
+
+pattern ApSoutheast1 :: RegionName
+pattern ApSoutheast1 = RegionName' "ap-southeast-1"
+
+pattern ApSoutheast2 :: RegionName
+pattern ApSoutheast2 = RegionName' "ap-southeast-2"
+
+pattern EuCentral1 :: RegionName
+pattern EuCentral1 = RegionName' "eu-central-1"
+
+pattern EuWest1 :: RegionName
+pattern EuWest1 = RegionName' "eu-west-1"
+
+pattern EuWest2 :: RegionName
+pattern EuWest2 = RegionName' "eu-west-2"
+
+pattern UsEast1 :: RegionName
+pattern UsEast1 = RegionName' "us-east-1"
+
+pattern UsEast2 :: RegionName
+pattern UsEast2 = RegionName' "us-east-2"
+
+pattern UsWest1 :: RegionName
+pattern UsWest1 = RegionName' "us-west-1"
+
+pattern UsWest2 :: RegionName
+pattern UsWest2 = RegionName' "us-west-2"
+
+{-# COMPLETE
+  ApNortheast1,
+  ApNortheast2,
+  ApSouth1,
+  ApSoutheast1,
+  ApSoutheast2,
+  EuCentral1,
+  EuWest1,
+  EuWest2,
+  UsEast1,
+  UsEast2,
+  UsWest1,
+  UsWest2,
+  RegionName' #-}
 
 instance FromText RegionName where
-    parser = takeLowerText >>= \case
-        "ap-northeast-1" -> pure ApNortheast1
-        "ap-northeast-2" -> pure ApNortheast2
-        "ap-south-1" -> pure ApSouth1
-        "ap-southeast-1" -> pure ApSoutheast1
-        "ap-southeast-2" -> pure ApSoutheast2
-        "eu-central-1" -> pure EuCentral1
-        "eu-west-1" -> pure EuWest1
-        "eu-west-2" -> pure EuWest2
-        "us-east-1" -> pure UsEast1
-        "us-east-2" -> pure UsEast2
-        "us-west-1" -> pure UsWest1
-        "us-west-2" -> pure UsWest2
-        e -> fromTextError $ "Failure parsing RegionName from value: '" <> e
-           <> "'. Accepted values: ap-northeast-1, ap-northeast-2, ap-south-1, ap-southeast-1, ap-southeast-2, eu-central-1, eu-west-1, eu-west-2, us-east-1, us-east-2, us-west-1, us-west-2"
+    parser = (RegionName' . mk) <$> takeText
 
 instance ToText RegionName where
-    toText = \case
-        ApNortheast1 -> "ap-northeast-1"
-        ApNortheast2 -> "ap-northeast-2"
-        ApSouth1 -> "ap-south-1"
-        ApSoutheast1 -> "ap-southeast-1"
-        ApSoutheast2 -> "ap-southeast-2"
-        EuCentral1 -> "eu-central-1"
-        EuWest1 -> "eu-west-1"
-        EuWest2 -> "eu-west-2"
-        UsEast1 -> "us-east-1"
-        UsEast2 -> "us-east-2"
-        UsWest1 -> "us-west-1"
-        UsWest2 -> "us-west-2"
+    toText (RegionName' ci) = original ci
+
+-- | Represents an enum of /known/ $RegionName.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum RegionName where
+    toEnum i = case i of
+        0 -> ApNortheast1
+        1 -> ApNortheast2
+        2 -> ApSouth1
+        3 -> ApSoutheast1
+        4 -> ApSoutheast2
+        5 -> EuCentral1
+        6 -> EuWest1
+        7 -> EuWest2
+        8 -> UsEast1
+        9 -> UsEast2
+        10 -> UsWest1
+        11 -> UsWest2
+        _ -> (error . showText) $ "Unknown index for RegionName: " <> toText i
+    fromEnum x = case x of
+        ApNortheast1 -> 0
+        ApNortheast2 -> 1
+        ApSouth1 -> 2
+        ApSoutheast1 -> 3
+        ApSoutheast2 -> 4
+        EuCentral1 -> 5
+        EuWest1 -> 6
+        EuWest2 -> 7
+        UsEast1 -> 8
+        UsEast2 -> 9
+        UsWest1 -> 10
+        UsWest2 -> 11
+        RegionName' name -> (error . showText) $ "Unknown RegionName: " <> original name
+
+-- | Represents the bounds of /known/ $RegionName.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded RegionName where
+    minBound = ApNortheast1
+    maxBound = UsWest2
 
 instance Hashable     RegionName
 instance NFData       RegionName

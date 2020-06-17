@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,38 +16,87 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.ELBv2.Types.TargetHealthStateEnum where
+module Network.AWS.ELBv2.Types.TargetHealthStateEnum (
+  TargetHealthStateEnum (
+    ..
+    , Draining
+    , Healthy
+    , Initial
+    , Unavailable
+    , Unhealthy
+    , Unused
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data TargetHealthStateEnum = Draining
-                           | Healthy
-                           | Initial
-                           | Unavailable
-                           | Unhealthy
-                           | Unused
-                               deriving (Eq, Ord, Read, Show, Enum, Bounded,
-                                         Data, Typeable, Generic)
+
+data TargetHealthStateEnum = TargetHealthStateEnum' (CI
+                                                       Text)
+                               deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                         Generic)
+
+pattern Draining :: TargetHealthStateEnum
+pattern Draining = TargetHealthStateEnum' "draining"
+
+pattern Healthy :: TargetHealthStateEnum
+pattern Healthy = TargetHealthStateEnum' "healthy"
+
+pattern Initial :: TargetHealthStateEnum
+pattern Initial = TargetHealthStateEnum' "initial"
+
+pattern Unavailable :: TargetHealthStateEnum
+pattern Unavailable = TargetHealthStateEnum' "unavailable"
+
+pattern Unhealthy :: TargetHealthStateEnum
+pattern Unhealthy = TargetHealthStateEnum' "unhealthy"
+
+pattern Unused :: TargetHealthStateEnum
+pattern Unused = TargetHealthStateEnum' "unused"
+
+{-# COMPLETE
+  Draining,
+  Healthy,
+  Initial,
+  Unavailable,
+  Unhealthy,
+  Unused,
+  TargetHealthStateEnum' #-}
 
 instance FromText TargetHealthStateEnum where
-    parser = takeLowerText >>= \case
-        "draining" -> pure Draining
-        "healthy" -> pure Healthy
-        "initial" -> pure Initial
-        "unavailable" -> pure Unavailable
-        "unhealthy" -> pure Unhealthy
-        "unused" -> pure Unused
-        e -> fromTextError $ "Failure parsing TargetHealthStateEnum from value: '" <> e
-           <> "'. Accepted values: draining, healthy, initial, unavailable, unhealthy, unused"
+    parser = (TargetHealthStateEnum' . mk) <$> takeText
 
 instance ToText TargetHealthStateEnum where
-    toText = \case
-        Draining -> "draining"
-        Healthy -> "healthy"
-        Initial -> "initial"
-        Unavailable -> "unavailable"
-        Unhealthy -> "unhealthy"
-        Unused -> "unused"
+    toText (TargetHealthStateEnum' ci) = original ci
+
+-- | Represents an enum of /known/ $TargetHealthStateEnum.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum TargetHealthStateEnum where
+    toEnum i = case i of
+        0 -> Draining
+        1 -> Healthy
+        2 -> Initial
+        3 -> Unavailable
+        4 -> Unhealthy
+        5 -> Unused
+        _ -> (error . showText) $ "Unknown index for TargetHealthStateEnum: " <> toText i
+    fromEnum x = case x of
+        Draining -> 0
+        Healthy -> 1
+        Initial -> 2
+        Unavailable -> 3
+        Unhealthy -> 4
+        Unused -> 5
+        TargetHealthStateEnum' name -> (error . showText) $ "Unknown TargetHealthStateEnum: " <> original name
+
+-- | Represents the bounds of /known/ $TargetHealthStateEnum.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded TargetHealthStateEnum where
+    minBound = Draining
+    maxBound = Unused
 
 instance Hashable     TargetHealthStateEnum
 instance NFData       TargetHealthStateEnum

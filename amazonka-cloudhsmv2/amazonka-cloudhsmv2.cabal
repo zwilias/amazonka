@@ -71,11 +71,13 @@ library
         , Network.AWS.CloudHSMv2.Types.DestinationBackup
         , Network.AWS.CloudHSMv2.Types.HSM
         , Network.AWS.CloudHSMv2.Types.HSMState
+        , Network.AWS.CloudHSMv2.Types.Product
         , Network.AWS.CloudHSMv2.Types.Tag
 
     build-depends:
           amazonka-core == 1.6.1.*
         , base          >= 4.7     && < 5
+        , case-insensitive
 
 test-suite amazonka-cloudhsmv2-test
     type:              exitcode-stdio-1.0
@@ -99,6 +101,7 @@ test-suite amazonka-cloudhsmv2-test
         , amazonka-cloudhsmv2
         , base
         , bytestring
+        , case-insensitive
         , tasty
         , tasty-hunit
         , text

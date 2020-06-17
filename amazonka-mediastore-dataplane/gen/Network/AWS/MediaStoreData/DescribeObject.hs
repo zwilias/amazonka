@@ -43,6 +43,7 @@ module Network.AWS.MediaStoreData.DescribeObject
 
 import Network.AWS.Lens
 import Network.AWS.MediaStoreData.Types
+import Network.AWS.MediaStoreData.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response

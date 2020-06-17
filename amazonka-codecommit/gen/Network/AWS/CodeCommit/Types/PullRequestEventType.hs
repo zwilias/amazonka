@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,47 +16,108 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.CodeCommit.Types.PullRequestEventType where
+module Network.AWS.CodeCommit.Types.PullRequestEventType (
+  PullRequestEventType (
+    ..
+    , PullRequestApprovalRuleCreated
+    , PullRequestApprovalRuleDeleted
+    , PullRequestApprovalRuleOverridden
+    , PullRequestApprovalRuleUpdated
+    , PullRequestApprovalStateChanged
+    , PullRequestCreated
+    , PullRequestMergeStateChanged
+    , PullRequestSourceReferenceUpdated
+    , PullRequestStatusChanged
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data PullRequestEventType = PullRequestApprovalRuleCreated
-                          | PullRequestApprovalRuleDeleted
-                          | PullRequestApprovalRuleOverridden
-                          | PullRequestApprovalRuleUpdated
-                          | PullRequestApprovalStateChanged
-                          | PullRequestCreated
-                          | PullRequestMergeStateChanged
-                          | PullRequestSourceReferenceUpdated
-                          | PullRequestStatusChanged
-                              deriving (Eq, Ord, Read, Show, Enum, Bounded,
-                                        Data, Typeable, Generic)
+
+data PullRequestEventType = PullRequestEventType' (CI
+                                                     Text)
+                              deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                        Generic)
+
+pattern PullRequestApprovalRuleCreated :: PullRequestEventType
+pattern PullRequestApprovalRuleCreated = PullRequestEventType' "PULL_REQUEST_APPROVAL_RULE_CREATED"
+
+pattern PullRequestApprovalRuleDeleted :: PullRequestEventType
+pattern PullRequestApprovalRuleDeleted = PullRequestEventType' "PULL_REQUEST_APPROVAL_RULE_DELETED"
+
+pattern PullRequestApprovalRuleOverridden :: PullRequestEventType
+pattern PullRequestApprovalRuleOverridden = PullRequestEventType' "PULL_REQUEST_APPROVAL_RULE_OVERRIDDEN"
+
+pattern PullRequestApprovalRuleUpdated :: PullRequestEventType
+pattern PullRequestApprovalRuleUpdated = PullRequestEventType' "PULL_REQUEST_APPROVAL_RULE_UPDATED"
+
+pattern PullRequestApprovalStateChanged :: PullRequestEventType
+pattern PullRequestApprovalStateChanged = PullRequestEventType' "PULL_REQUEST_APPROVAL_STATE_CHANGED"
+
+pattern PullRequestCreated :: PullRequestEventType
+pattern PullRequestCreated = PullRequestEventType' "PULL_REQUEST_CREATED"
+
+pattern PullRequestMergeStateChanged :: PullRequestEventType
+pattern PullRequestMergeStateChanged = PullRequestEventType' "PULL_REQUEST_MERGE_STATE_CHANGED"
+
+pattern PullRequestSourceReferenceUpdated :: PullRequestEventType
+pattern PullRequestSourceReferenceUpdated = PullRequestEventType' "PULL_REQUEST_SOURCE_REFERENCE_UPDATED"
+
+pattern PullRequestStatusChanged :: PullRequestEventType
+pattern PullRequestStatusChanged = PullRequestEventType' "PULL_REQUEST_STATUS_CHANGED"
+
+{-# COMPLETE
+  PullRequestApprovalRuleCreated,
+  PullRequestApprovalRuleDeleted,
+  PullRequestApprovalRuleOverridden,
+  PullRequestApprovalRuleUpdated,
+  PullRequestApprovalStateChanged,
+  PullRequestCreated,
+  PullRequestMergeStateChanged,
+  PullRequestSourceReferenceUpdated,
+  PullRequestStatusChanged,
+  PullRequestEventType' #-}
 
 instance FromText PullRequestEventType where
-    parser = takeLowerText >>= \case
-        "pull_request_approval_rule_created" -> pure PullRequestApprovalRuleCreated
-        "pull_request_approval_rule_deleted" -> pure PullRequestApprovalRuleDeleted
-        "pull_request_approval_rule_overridden" -> pure PullRequestApprovalRuleOverridden
-        "pull_request_approval_rule_updated" -> pure PullRequestApprovalRuleUpdated
-        "pull_request_approval_state_changed" -> pure PullRequestApprovalStateChanged
-        "pull_request_created" -> pure PullRequestCreated
-        "pull_request_merge_state_changed" -> pure PullRequestMergeStateChanged
-        "pull_request_source_reference_updated" -> pure PullRequestSourceReferenceUpdated
-        "pull_request_status_changed" -> pure PullRequestStatusChanged
-        e -> fromTextError $ "Failure parsing PullRequestEventType from value: '" <> e
-           <> "'. Accepted values: pull_request_approval_rule_created, pull_request_approval_rule_deleted, pull_request_approval_rule_overridden, pull_request_approval_rule_updated, pull_request_approval_state_changed, pull_request_created, pull_request_merge_state_changed, pull_request_source_reference_updated, pull_request_status_changed"
+    parser = (PullRequestEventType' . mk) <$> takeText
 
 instance ToText PullRequestEventType where
-    toText = \case
-        PullRequestApprovalRuleCreated -> "PULL_REQUEST_APPROVAL_RULE_CREATED"
-        PullRequestApprovalRuleDeleted -> "PULL_REQUEST_APPROVAL_RULE_DELETED"
-        PullRequestApprovalRuleOverridden -> "PULL_REQUEST_APPROVAL_RULE_OVERRIDDEN"
-        PullRequestApprovalRuleUpdated -> "PULL_REQUEST_APPROVAL_RULE_UPDATED"
-        PullRequestApprovalStateChanged -> "PULL_REQUEST_APPROVAL_STATE_CHANGED"
-        PullRequestCreated -> "PULL_REQUEST_CREATED"
-        PullRequestMergeStateChanged -> "PULL_REQUEST_MERGE_STATE_CHANGED"
-        PullRequestSourceReferenceUpdated -> "PULL_REQUEST_SOURCE_REFERENCE_UPDATED"
-        PullRequestStatusChanged -> "PULL_REQUEST_STATUS_CHANGED"
+    toText (PullRequestEventType' ci) = original ci
+
+-- | Represents an enum of /known/ $PullRequestEventType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum PullRequestEventType where
+    toEnum i = case i of
+        0 -> PullRequestApprovalRuleCreated
+        1 -> PullRequestApprovalRuleDeleted
+        2 -> PullRequestApprovalRuleOverridden
+        3 -> PullRequestApprovalRuleUpdated
+        4 -> PullRequestApprovalStateChanged
+        5 -> PullRequestCreated
+        6 -> PullRequestMergeStateChanged
+        7 -> PullRequestSourceReferenceUpdated
+        8 -> PullRequestStatusChanged
+        _ -> (error . showText) $ "Unknown index for PullRequestEventType: " <> toText i
+    fromEnum x = case x of
+        PullRequestApprovalRuleCreated -> 0
+        PullRequestApprovalRuleDeleted -> 1
+        PullRequestApprovalRuleOverridden -> 2
+        PullRequestApprovalRuleUpdated -> 3
+        PullRequestApprovalStateChanged -> 4
+        PullRequestCreated -> 5
+        PullRequestMergeStateChanged -> 6
+        PullRequestSourceReferenceUpdated -> 7
+        PullRequestStatusChanged -> 8
+        PullRequestEventType' name -> (error . showText) $ "Unknown PullRequestEventType: " <> original name
+
+-- | Represents the bounds of /known/ $PullRequestEventType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded PullRequestEventType where
+    minBound = PullRequestApprovalRuleCreated
+    maxBound = PullRequestStatusChanged
 
 instance Hashable     PullRequestEventType
 instance NFData       PullRequestEventType

@@ -183,6 +183,7 @@ library
         , Network.AWS.Glue.Types.Predecessor
         , Network.AWS.Glue.Types.Predicate
         , Network.AWS.Glue.Types.PrincipalType
+        , Network.AWS.Glue.Types.Product
         , Network.AWS.Glue.Types.ResourceType
         , Network.AWS.Glue.Types.ResourceURI
         , Network.AWS.Glue.Types.S3Target
@@ -213,6 +214,7 @@ library
     build-depends:
           amazonka-core == 1.6.1.*
         , base          >= 4.7     && < 5
+        , case-insensitive
 
 test-suite amazonka-glue-test
     type:              exitcode-stdio-1.0
@@ -236,6 +238,7 @@ test-suite amazonka-glue-test
         , amazonka-glue
         , base
         , bytestring
+        , case-insensitive
         , tasty
         , tasty-hunit
         , text

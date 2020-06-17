@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,32 +16,73 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.EMR.Types.ComparisonOperator where
+module Network.AWS.EMR.Types.ComparisonOperator (
+  ComparisonOperator (
+    ..
+    , GreaterThan
+    , GreaterThanOrEqual
+    , LessThan
+    , LessThanOrEqual
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data ComparisonOperator = GreaterThan
-                        | GreaterThanOrEqual
-                        | LessThan
-                        | LessThanOrEqual
-                            deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                      Typeable, Generic)
+
+data ComparisonOperator = ComparisonOperator' (CI
+                                                 Text)
+                            deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                      Generic)
+
+pattern GreaterThan :: ComparisonOperator
+pattern GreaterThan = ComparisonOperator' "GREATER_THAN"
+
+pattern GreaterThanOrEqual :: ComparisonOperator
+pattern GreaterThanOrEqual = ComparisonOperator' "GREATER_THAN_OR_EQUAL"
+
+pattern LessThan :: ComparisonOperator
+pattern LessThan = ComparisonOperator' "LESS_THAN"
+
+pattern LessThanOrEqual :: ComparisonOperator
+pattern LessThanOrEqual = ComparisonOperator' "LESS_THAN_OR_EQUAL"
+
+{-# COMPLETE
+  GreaterThan,
+  GreaterThanOrEqual,
+  LessThan,
+  LessThanOrEqual,
+  ComparisonOperator' #-}
 
 instance FromText ComparisonOperator where
-    parser = takeLowerText >>= \case
-        "greater_than" -> pure GreaterThan
-        "greater_than_or_equal" -> pure GreaterThanOrEqual
-        "less_than" -> pure LessThan
-        "less_than_or_equal" -> pure LessThanOrEqual
-        e -> fromTextError $ "Failure parsing ComparisonOperator from value: '" <> e
-           <> "'. Accepted values: greater_than, greater_than_or_equal, less_than, less_than_or_equal"
+    parser = (ComparisonOperator' . mk) <$> takeText
 
 instance ToText ComparisonOperator where
-    toText = \case
-        GreaterThan -> "GREATER_THAN"
-        GreaterThanOrEqual -> "GREATER_THAN_OR_EQUAL"
-        LessThan -> "LESS_THAN"
-        LessThanOrEqual -> "LESS_THAN_OR_EQUAL"
+    toText (ComparisonOperator' ci) = original ci
+
+-- | Represents an enum of /known/ $ComparisonOperator.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum ComparisonOperator where
+    toEnum i = case i of
+        0 -> GreaterThan
+        1 -> GreaterThanOrEqual
+        2 -> LessThan
+        3 -> LessThanOrEqual
+        _ -> (error . showText) $ "Unknown index for ComparisonOperator: " <> toText i
+    fromEnum x = case x of
+        GreaterThan -> 0
+        GreaterThanOrEqual -> 1
+        LessThan -> 2
+        LessThanOrEqual -> 3
+        ComparisonOperator' name -> (error . showText) $ "Unknown ComparisonOperator: " <> original name
+
+-- | Represents the bounds of /known/ $ComparisonOperator.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded ComparisonOperator where
+    minBound = GreaterThan
+    maxBound = LessThanOrEqual
 
 instance Hashable     ComparisonOperator
 instance NFData       ComparisonOperator

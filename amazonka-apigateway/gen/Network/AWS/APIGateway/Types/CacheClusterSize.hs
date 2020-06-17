@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,47 +16,103 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.APIGateway.Types.CacheClusterSize where
+module Network.AWS.APIGateway.Types.CacheClusterSize (
+  CacheClusterSize (
+    ..
+    , D0_5
+    , D118
+    , D13_5
+    , D1_6
+    , D237
+    , D28_4
+    , D58_2
+    , D6_1
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
+
 -- | Returns the size of the __CacheCluster__ .
 --
 --
-data CacheClusterSize = D0_5
-                      | D118
-                      | D13_5
-                      | D1_6
-                      | D237
-                      | D28_4
-                      | D58_2
-                      | D6_1
-                          deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                    Typeable, Generic)
+data CacheClusterSize = CacheClusterSize' (CI Text)
+                          deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                    Generic)
+
+pattern D0_5 :: CacheClusterSize
+pattern D0_5 = CacheClusterSize' "0.5"
+
+pattern D118 :: CacheClusterSize
+pattern D118 = CacheClusterSize' "118"
+
+pattern D13_5 :: CacheClusterSize
+pattern D13_5 = CacheClusterSize' "13.5"
+
+pattern D1_6 :: CacheClusterSize
+pattern D1_6 = CacheClusterSize' "1.6"
+
+pattern D237 :: CacheClusterSize
+pattern D237 = CacheClusterSize' "237"
+
+pattern D28_4 :: CacheClusterSize
+pattern D28_4 = CacheClusterSize' "28.4"
+
+pattern D58_2 :: CacheClusterSize
+pattern D58_2 = CacheClusterSize' "58.2"
+
+pattern D6_1 :: CacheClusterSize
+pattern D6_1 = CacheClusterSize' "6.1"
+
+{-# COMPLETE
+  D0_5,
+  D118,
+  D13_5,
+  D1_6,
+  D237,
+  D28_4,
+  D58_2,
+  D6_1,
+  CacheClusterSize' #-}
 
 instance FromText CacheClusterSize where
-    parser = takeLowerText >>= \case
-        "0.5" -> pure D0_5
-        "118" -> pure D118
-        "13.5" -> pure D13_5
-        "1.6" -> pure D1_6
-        "237" -> pure D237
-        "28.4" -> pure D28_4
-        "58.2" -> pure D58_2
-        "6.1" -> pure D6_1
-        e -> fromTextError $ "Failure parsing CacheClusterSize from value: '" <> e
-           <> "'. Accepted values: 0.5, 118, 13.5, 1.6, 237, 28.4, 58.2, 6.1"
+    parser = (CacheClusterSize' . mk) <$> takeText
 
 instance ToText CacheClusterSize where
-    toText = \case
-        D0_5 -> "0.5"
-        D118 -> "118"
-        D13_5 -> "13.5"
-        D1_6 -> "1.6"
-        D237 -> "237"
-        D28_4 -> "28.4"
-        D58_2 -> "58.2"
-        D6_1 -> "6.1"
+    toText (CacheClusterSize' ci) = original ci
+
+-- | Represents an enum of /known/ $CacheClusterSize.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum CacheClusterSize where
+    toEnum i = case i of
+        0 -> D0_5
+        1 -> D118
+        2 -> D13_5
+        3 -> D1_6
+        4 -> D237
+        5 -> D28_4
+        6 -> D58_2
+        7 -> D6_1
+        _ -> (error . showText) $ "Unknown index for CacheClusterSize: " <> toText i
+    fromEnum x = case x of
+        D0_5 -> 0
+        D118 -> 1
+        D13_5 -> 2
+        D1_6 -> 3
+        D237 -> 4
+        D28_4 -> 5
+        D58_2 -> 6
+        D6_1 -> 7
+        CacheClusterSize' name -> (error . showText) $ "Unknown CacheClusterSize: " <> original name
+
+-- | Represents the bounds of /known/ $CacheClusterSize.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded CacheClusterSize where
+    minBound = D0_5
+    maxBound = D6_1
 
 instance Hashable     CacheClusterSize
 instance NFData       CacheClusterSize

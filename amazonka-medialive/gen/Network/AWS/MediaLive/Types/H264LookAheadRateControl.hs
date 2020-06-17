@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,30 +16,67 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.MediaLive.Types.H264LookAheadRateControl where
+module Network.AWS.MediaLive.Types.H264LookAheadRateControl (
+  H264LookAheadRateControl (
+    ..
+    , HLARCHigh
+    , HLARCLow
+    , HLARCMedium
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
+
 -- | Placeholder documentation for H264LookAheadRateControl
-data H264LookAheadRateControl = HLARCHigh
-                              | HLARCLow
-                              | HLARCMedium
-                                  deriving (Eq, Ord, Read, Show, Enum, Bounded,
-                                            Data, Typeable, Generic)
+data H264LookAheadRateControl = H264LookAheadRateControl' (CI
+                                                             Text)
+                                  deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                            Generic)
+
+pattern HLARCHigh :: H264LookAheadRateControl
+pattern HLARCHigh = H264LookAheadRateControl' "HIGH"
+
+pattern HLARCLow :: H264LookAheadRateControl
+pattern HLARCLow = H264LookAheadRateControl' "LOW"
+
+pattern HLARCMedium :: H264LookAheadRateControl
+pattern HLARCMedium = H264LookAheadRateControl' "MEDIUM"
+
+{-# COMPLETE
+  HLARCHigh,
+  HLARCLow,
+  HLARCMedium,
+  H264LookAheadRateControl' #-}
 
 instance FromText H264LookAheadRateControl where
-    parser = takeLowerText >>= \case
-        "high" -> pure HLARCHigh
-        "low" -> pure HLARCLow
-        "medium" -> pure HLARCMedium
-        e -> fromTextError $ "Failure parsing H264LookAheadRateControl from value: '" <> e
-           <> "'. Accepted values: high, low, medium"
+    parser = (H264LookAheadRateControl' . mk) <$> takeText
 
 instance ToText H264LookAheadRateControl where
-    toText = \case
-        HLARCHigh -> "HIGH"
-        HLARCLow -> "LOW"
-        HLARCMedium -> "MEDIUM"
+    toText (H264LookAheadRateControl' ci) = original ci
+
+-- | Represents an enum of /known/ $H264LookAheadRateControl.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum H264LookAheadRateControl where
+    toEnum i = case i of
+        0 -> HLARCHigh
+        1 -> HLARCLow
+        2 -> HLARCMedium
+        _ -> (error . showText) $ "Unknown index for H264LookAheadRateControl: " <> toText i
+    fromEnum x = case x of
+        HLARCHigh -> 0
+        HLARCLow -> 1
+        HLARCMedium -> 2
+        H264LookAheadRateControl' name -> (error . showText) $ "Unknown H264LookAheadRateControl: " <> original name
+
+-- | Represents the bounds of /known/ $H264LookAheadRateControl.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded H264LookAheadRateControl where
+    minBound = HLARCHigh
+    maxBound = HLARCMedium
 
 instance Hashable     H264LookAheadRateControl
 instance NFData       H264LookAheadRateControl

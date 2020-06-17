@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,34 +16,74 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.EC2.Types.ClientVPNConnectionStatusCode where
+module Network.AWS.EC2.Types.ClientVPNConnectionStatusCode (
+  ClientVPNConnectionStatusCode (
+    ..
+    , CVCSCActive
+    , CVCSCFailedToTerminate
+    , CVCSCTerminated
+    , CVCSCTerminating
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.EC2.Internal
 import Network.AWS.Prelude
-  
-data ClientVPNConnectionStatusCode = CVCSCActive
-                                   | CVCSCFailedToTerminate
-                                   | CVCSCTerminated
-                                   | CVCSCTerminating
-                                       deriving (Eq, Ord, Read, Show, Enum,
-                                                 Bounded, Data, Typeable,
-                                                 Generic)
+
+data ClientVPNConnectionStatusCode = ClientVPNConnectionStatusCode' (CI
+                                                                       Text)
+                                       deriving (Eq, Ord, Read, Show, Data,
+                                                 Typeable, Generic)
+
+pattern CVCSCActive :: ClientVPNConnectionStatusCode
+pattern CVCSCActive = ClientVPNConnectionStatusCode' "active"
+
+pattern CVCSCFailedToTerminate :: ClientVPNConnectionStatusCode
+pattern CVCSCFailedToTerminate = ClientVPNConnectionStatusCode' "failed-to-terminate"
+
+pattern CVCSCTerminated :: ClientVPNConnectionStatusCode
+pattern CVCSCTerminated = ClientVPNConnectionStatusCode' "terminated"
+
+pattern CVCSCTerminating :: ClientVPNConnectionStatusCode
+pattern CVCSCTerminating = ClientVPNConnectionStatusCode' "terminating"
+
+{-# COMPLETE
+  CVCSCActive,
+  CVCSCFailedToTerminate,
+  CVCSCTerminated,
+  CVCSCTerminating,
+  ClientVPNConnectionStatusCode' #-}
 
 instance FromText ClientVPNConnectionStatusCode where
-    parser = takeLowerText >>= \case
-        "active" -> pure CVCSCActive
-        "failed-to-terminate" -> pure CVCSCFailedToTerminate
-        "terminated" -> pure CVCSCTerminated
-        "terminating" -> pure CVCSCTerminating
-        e -> fromTextError $ "Failure parsing ClientVPNConnectionStatusCode from value: '" <> e
-           <> "'. Accepted values: active, failed-to-terminate, terminated, terminating"
+    parser = (ClientVPNConnectionStatusCode' . mk) <$> takeText
 
 instance ToText ClientVPNConnectionStatusCode where
-    toText = \case
-        CVCSCActive -> "active"
-        CVCSCFailedToTerminate -> "failed-to-terminate"
-        CVCSCTerminated -> "terminated"
-        CVCSCTerminating -> "terminating"
+    toText (ClientVPNConnectionStatusCode' ci) = original ci
+
+-- | Represents an enum of /known/ $ClientVPNConnectionStatusCode.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum ClientVPNConnectionStatusCode where
+    toEnum i = case i of
+        0 -> CVCSCActive
+        1 -> CVCSCFailedToTerminate
+        2 -> CVCSCTerminated
+        3 -> CVCSCTerminating
+        _ -> (error . showText) $ "Unknown index for ClientVPNConnectionStatusCode: " <> toText i
+    fromEnum x = case x of
+        CVCSCActive -> 0
+        CVCSCFailedToTerminate -> 1
+        CVCSCTerminated -> 2
+        CVCSCTerminating -> 3
+        ClientVPNConnectionStatusCode' name -> (error . showText) $ "Unknown ClientVPNConnectionStatusCode: " <> original name
+
+-- | Represents the bounds of /known/ $ClientVPNConnectionStatusCode.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded ClientVPNConnectionStatusCode where
+    minBound = CVCSCActive
+    maxBound = CVCSCTerminating
 
 instance Hashable     ClientVPNConnectionStatusCode
 instance NFData       ClientVPNConnectionStatusCode

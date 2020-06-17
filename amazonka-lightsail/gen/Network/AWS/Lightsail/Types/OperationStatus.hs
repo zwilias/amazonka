@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,35 +16,79 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.Lightsail.Types.OperationStatus where
+module Network.AWS.Lightsail.Types.OperationStatus (
+  OperationStatus (
+    ..
+    , Completed
+    , Failed
+    , NotStarted
+    , Started
+    , Succeeded
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data OperationStatus = Completed
-                     | Failed
-                     | NotStarted
-                     | Started
-                     | Succeeded
-                         deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                   Typeable, Generic)
+
+data OperationStatus = OperationStatus' (CI Text)
+                         deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                   Generic)
+
+pattern Completed :: OperationStatus
+pattern Completed = OperationStatus' "Completed"
+
+pattern Failed :: OperationStatus
+pattern Failed = OperationStatus' "Failed"
+
+pattern NotStarted :: OperationStatus
+pattern NotStarted = OperationStatus' "NotStarted"
+
+pattern Started :: OperationStatus
+pattern Started = OperationStatus' "Started"
+
+pattern Succeeded :: OperationStatus
+pattern Succeeded = OperationStatus' "Succeeded"
+
+{-# COMPLETE
+  Completed,
+  Failed,
+  NotStarted,
+  Started,
+  Succeeded,
+  OperationStatus' #-}
 
 instance FromText OperationStatus where
-    parser = takeLowerText >>= \case
-        "completed" -> pure Completed
-        "failed" -> pure Failed
-        "notstarted" -> pure NotStarted
-        "started" -> pure Started
-        "succeeded" -> pure Succeeded
-        e -> fromTextError $ "Failure parsing OperationStatus from value: '" <> e
-           <> "'. Accepted values: completed, failed, notstarted, started, succeeded"
+    parser = (OperationStatus' . mk) <$> takeText
 
 instance ToText OperationStatus where
-    toText = \case
-        Completed -> "Completed"
-        Failed -> "Failed"
-        NotStarted -> "NotStarted"
-        Started -> "Started"
-        Succeeded -> "Succeeded"
+    toText (OperationStatus' ci) = original ci
+
+-- | Represents an enum of /known/ $OperationStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum OperationStatus where
+    toEnum i = case i of
+        0 -> Completed
+        1 -> Failed
+        2 -> NotStarted
+        3 -> Started
+        4 -> Succeeded
+        _ -> (error . showText) $ "Unknown index for OperationStatus: " <> toText i
+    fromEnum x = case x of
+        Completed -> 0
+        Failed -> 1
+        NotStarted -> 2
+        Started -> 3
+        Succeeded -> 4
+        OperationStatus' name -> (error . showText) $ "Unknown OperationStatus: " <> original name
+
+-- | Represents the bounds of /known/ $OperationStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded OperationStatus where
+    minBound = Completed
+    maxBound = Succeeded
 
 instance Hashable     OperationStatus
 instance NFData       OperationStatus

@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,58 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.DeviceFarm.Types.UploadCategory where
+module Network.AWS.DeviceFarm.Types.UploadCategory (
+  UploadCategory (
+    ..
+    , UCCurated
+    , UCPrivate
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data UploadCategory = UCCurated
-                    | UCPrivate
-                        deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                  Typeable, Generic)
+
+data UploadCategory = UploadCategory' (CI Text)
+                        deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                  Generic)
+
+pattern UCCurated :: UploadCategory
+pattern UCCurated = UploadCategory' "CURATED"
+
+pattern UCPrivate :: UploadCategory
+pattern UCPrivate = UploadCategory' "PRIVATE"
+
+{-# COMPLETE
+  UCCurated,
+  UCPrivate,
+  UploadCategory' #-}
 
 instance FromText UploadCategory where
-    parser = takeLowerText >>= \case
-        "curated" -> pure UCCurated
-        "private" -> pure UCPrivate
-        e -> fromTextError $ "Failure parsing UploadCategory from value: '" <> e
-           <> "'. Accepted values: curated, private"
+    parser = (UploadCategory' . mk) <$> takeText
 
 instance ToText UploadCategory where
-    toText = \case
-        UCCurated -> "CURATED"
-        UCPrivate -> "PRIVATE"
+    toText (UploadCategory' ci) = original ci
+
+-- | Represents an enum of /known/ $UploadCategory.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum UploadCategory where
+    toEnum i = case i of
+        0 -> UCCurated
+        1 -> UCPrivate
+        _ -> (error . showText) $ "Unknown index for UploadCategory: " <> toText i
+    fromEnum x = case x of
+        UCCurated -> 0
+        UCPrivate -> 1
+        UploadCategory' name -> (error . showText) $ "Unknown UploadCategory: " <> original name
+
+-- | Represents the bounds of /known/ $UploadCategory.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded UploadCategory where
+    minBound = UCCurated
+    maxBound = UCPrivate
 
 instance Hashable     UploadCategory
 instance NFData       UploadCategory

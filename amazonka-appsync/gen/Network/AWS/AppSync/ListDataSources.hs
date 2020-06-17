@@ -43,6 +43,7 @@ module Network.AWS.AppSync.ListDataSources
     ) where
 
 import Network.AWS.AppSync.Types
+import Network.AWS.AppSync.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude

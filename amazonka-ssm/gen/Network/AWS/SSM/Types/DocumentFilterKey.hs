@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,32 +16,72 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.SSM.Types.DocumentFilterKey where
+module Network.AWS.SSM.Types.DocumentFilterKey (
+  DocumentFilterKey (
+    ..
+    , DocumentType
+    , Name
+    , Owner
+    , PlatformTypes
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data DocumentFilterKey = DocumentType
-                       | Name
-                       | Owner
-                       | PlatformTypes
-                           deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                     Typeable, Generic)
+
+data DocumentFilterKey = DocumentFilterKey' (CI Text)
+                           deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                     Generic)
+
+pattern DocumentType :: DocumentFilterKey
+pattern DocumentType = DocumentFilterKey' "DocumentType"
+
+pattern Name :: DocumentFilterKey
+pattern Name = DocumentFilterKey' "Name"
+
+pattern Owner :: DocumentFilterKey
+pattern Owner = DocumentFilterKey' "Owner"
+
+pattern PlatformTypes :: DocumentFilterKey
+pattern PlatformTypes = DocumentFilterKey' "PlatformTypes"
+
+{-# COMPLETE
+  DocumentType,
+  Name,
+  Owner,
+  PlatformTypes,
+  DocumentFilterKey' #-}
 
 instance FromText DocumentFilterKey where
-    parser = takeLowerText >>= \case
-        "documenttype" -> pure DocumentType
-        "name" -> pure Name
-        "owner" -> pure Owner
-        "platformtypes" -> pure PlatformTypes
-        e -> fromTextError $ "Failure parsing DocumentFilterKey from value: '" <> e
-           <> "'. Accepted values: documenttype, name, owner, platformtypes"
+    parser = (DocumentFilterKey' . mk) <$> takeText
 
 instance ToText DocumentFilterKey where
-    toText = \case
-        DocumentType -> "DocumentType"
-        Name -> "Name"
-        Owner -> "Owner"
-        PlatformTypes -> "PlatformTypes"
+    toText (DocumentFilterKey' ci) = original ci
+
+-- | Represents an enum of /known/ $DocumentFilterKey.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum DocumentFilterKey where
+    toEnum i = case i of
+        0 -> DocumentType
+        1 -> Name
+        2 -> Owner
+        3 -> PlatformTypes
+        _ -> (error . showText) $ "Unknown index for DocumentFilterKey: " <> toText i
+    fromEnum x = case x of
+        DocumentType -> 0
+        Name -> 1
+        Owner -> 2
+        PlatformTypes -> 3
+        DocumentFilterKey' name -> (error . showText) $ "Unknown DocumentFilterKey: " <> original name
+
+-- | Represents the bounds of /known/ $DocumentFilterKey.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded DocumentFilterKey where
+    minBound = DocumentType
+    maxBound = PlatformTypes
 
 instance Hashable     DocumentFilterKey
 instance NFData       DocumentFilterKey

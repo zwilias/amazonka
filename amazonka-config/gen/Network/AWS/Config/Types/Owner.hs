@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,58 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.Config.Types.Owner where
+module Network.AWS.Config.Types.Owner (
+  Owner (
+    ..
+    , AWS
+    , CustomLambda
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data Owner = AWS
-           | CustomLambda
-               deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                         Typeable, Generic)
+
+data Owner = Owner' (CI Text)
+               deriving (Eq, Ord, Read, Show, Data, Typeable,
+                         Generic)
+
+pattern AWS :: Owner
+pattern AWS = Owner' "AWS"
+
+pattern CustomLambda :: Owner
+pattern CustomLambda = Owner' "CUSTOM_LAMBDA"
+
+{-# COMPLETE
+  AWS,
+  CustomLambda,
+  Owner' #-}
 
 instance FromText Owner where
-    parser = takeLowerText >>= \case
-        "aws" -> pure AWS
-        "custom_lambda" -> pure CustomLambda
-        e -> fromTextError $ "Failure parsing Owner from value: '" <> e
-           <> "'. Accepted values: aws, custom_lambda"
+    parser = (Owner' . mk) <$> takeText
 
 instance ToText Owner where
-    toText = \case
-        AWS -> "AWS"
-        CustomLambda -> "CUSTOM_LAMBDA"
+    toText (Owner' ci) = original ci
+
+-- | Represents an enum of /known/ $Owner.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum Owner where
+    toEnum i = case i of
+        0 -> AWS
+        1 -> CustomLambda
+        _ -> (error . showText) $ "Unknown index for Owner: " <> toText i
+    fromEnum x = case x of
+        AWS -> 0
+        CustomLambda -> 1
+        Owner' name -> (error . showText) $ "Unknown Owner: " <> original name
+
+-- | Represents the bounds of /known/ $Owner.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded Owner where
+    minBound = AWS
+    maxBound = CustomLambda
 
 instance Hashable     Owner
 instance NFData       Owner

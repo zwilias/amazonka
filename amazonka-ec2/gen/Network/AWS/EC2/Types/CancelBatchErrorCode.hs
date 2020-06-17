@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,33 +16,74 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.EC2.Types.CancelBatchErrorCode where
+module Network.AWS.EC2.Types.CancelBatchErrorCode (
+  CancelBatchErrorCode (
+    ..
+    , CBECFleetRequestIdDoesNotExist
+    , CBECFleetRequestIdMalformed
+    , CBECFleetRequestNotInCancellableState
+    , CBECUnexpectedError
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.EC2.Internal
 import Network.AWS.Prelude
-  
-data CancelBatchErrorCode = CBECFleetRequestIdDoesNotExist
-                          | CBECFleetRequestIdMalformed
-                          | CBECFleetRequestNotInCancellableState
-                          | CBECUnexpectedError
-                              deriving (Eq, Ord, Read, Show, Enum, Bounded,
-                                        Data, Typeable, Generic)
+
+data CancelBatchErrorCode = CancelBatchErrorCode' (CI
+                                                     Text)
+                              deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                        Generic)
+
+pattern CBECFleetRequestIdDoesNotExist :: CancelBatchErrorCode
+pattern CBECFleetRequestIdDoesNotExist = CancelBatchErrorCode' "fleetRequestIdDoesNotExist"
+
+pattern CBECFleetRequestIdMalformed :: CancelBatchErrorCode
+pattern CBECFleetRequestIdMalformed = CancelBatchErrorCode' "fleetRequestIdMalformed"
+
+pattern CBECFleetRequestNotInCancellableState :: CancelBatchErrorCode
+pattern CBECFleetRequestNotInCancellableState = CancelBatchErrorCode' "fleetRequestNotInCancellableState"
+
+pattern CBECUnexpectedError :: CancelBatchErrorCode
+pattern CBECUnexpectedError = CancelBatchErrorCode' "unexpectedError"
+
+{-# COMPLETE
+  CBECFleetRequestIdDoesNotExist,
+  CBECFleetRequestIdMalformed,
+  CBECFleetRequestNotInCancellableState,
+  CBECUnexpectedError,
+  CancelBatchErrorCode' #-}
 
 instance FromText CancelBatchErrorCode where
-    parser = takeLowerText >>= \case
-        "fleetrequestiddoesnotexist" -> pure CBECFleetRequestIdDoesNotExist
-        "fleetrequestidmalformed" -> pure CBECFleetRequestIdMalformed
-        "fleetrequestnotincancellablestate" -> pure CBECFleetRequestNotInCancellableState
-        "unexpectederror" -> pure CBECUnexpectedError
-        e -> fromTextError $ "Failure parsing CancelBatchErrorCode from value: '" <> e
-           <> "'. Accepted values: fleetrequestiddoesnotexist, fleetrequestidmalformed, fleetrequestnotincancellablestate, unexpectederror"
+    parser = (CancelBatchErrorCode' . mk) <$> takeText
 
 instance ToText CancelBatchErrorCode where
-    toText = \case
-        CBECFleetRequestIdDoesNotExist -> "fleetRequestIdDoesNotExist"
-        CBECFleetRequestIdMalformed -> "fleetRequestIdMalformed"
-        CBECFleetRequestNotInCancellableState -> "fleetRequestNotInCancellableState"
-        CBECUnexpectedError -> "unexpectedError"
+    toText (CancelBatchErrorCode' ci) = original ci
+
+-- | Represents an enum of /known/ $CancelBatchErrorCode.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum CancelBatchErrorCode where
+    toEnum i = case i of
+        0 -> CBECFleetRequestIdDoesNotExist
+        1 -> CBECFleetRequestIdMalformed
+        2 -> CBECFleetRequestNotInCancellableState
+        3 -> CBECUnexpectedError
+        _ -> (error . showText) $ "Unknown index for CancelBatchErrorCode: " <> toText i
+    fromEnum x = case x of
+        CBECFleetRequestIdDoesNotExist -> 0
+        CBECFleetRequestIdMalformed -> 1
+        CBECFleetRequestNotInCancellableState -> 2
+        CBECUnexpectedError -> 3
+        CancelBatchErrorCode' name -> (error . showText) $ "Unknown CancelBatchErrorCode: " <> original name
+
+-- | Represents the bounds of /known/ $CancelBatchErrorCode.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded CancelBatchErrorCode where
+    minBound = CBECFleetRequestIdDoesNotExist
+    maxBound = CBECUnexpectedError
 
 instance Hashable     CancelBatchErrorCode
 instance NFData       CancelBatchErrorCode

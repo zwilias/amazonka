@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,36 +16,81 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.MediaConvert.Types.ColorSpaceConversion where
+module Network.AWS.MediaConvert.Types.ColorSpaceConversion (
+  ColorSpaceConversion (
+    ..
+    , CSCForce601
+    , CSCForce709
+    , CSCForceHDR10
+    , CSCForceHlg2020
+    , CSCNone
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
+
 -- | Determines if colorspace conversion will be performed. If set to _None_, no conversion will be performed. If _Force 601_ or _Force 709_ are selected, conversion will be performed for inputs with differing colorspaces. An input's colorspace can be specified explicitly in the "Video Selector":#inputs-video_selector if necessary.
-data ColorSpaceConversion = CSCForce601
-                          | CSCForce709
-                          | CSCForceHDR10
-                          | CSCForceHlg2020
-                          | CSCNone
-                              deriving (Eq, Ord, Read, Show, Enum, Bounded,
-                                        Data, Typeable, Generic)
+data ColorSpaceConversion = ColorSpaceConversion' (CI
+                                                     Text)
+                              deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                        Generic)
+
+pattern CSCForce601 :: ColorSpaceConversion
+pattern CSCForce601 = ColorSpaceConversion' "FORCE_601"
+
+pattern CSCForce709 :: ColorSpaceConversion
+pattern CSCForce709 = ColorSpaceConversion' "FORCE_709"
+
+pattern CSCForceHDR10 :: ColorSpaceConversion
+pattern CSCForceHDR10 = ColorSpaceConversion' "FORCE_HDR10"
+
+pattern CSCForceHlg2020 :: ColorSpaceConversion
+pattern CSCForceHlg2020 = ColorSpaceConversion' "FORCE_HLG_2020"
+
+pattern CSCNone :: ColorSpaceConversion
+pattern CSCNone = ColorSpaceConversion' "NONE"
+
+{-# COMPLETE
+  CSCForce601,
+  CSCForce709,
+  CSCForceHDR10,
+  CSCForceHlg2020,
+  CSCNone,
+  ColorSpaceConversion' #-}
 
 instance FromText ColorSpaceConversion where
-    parser = takeLowerText >>= \case
-        "force_601" -> pure CSCForce601
-        "force_709" -> pure CSCForce709
-        "force_hdr10" -> pure CSCForceHDR10
-        "force_hlg_2020" -> pure CSCForceHlg2020
-        "none" -> pure CSCNone
-        e -> fromTextError $ "Failure parsing ColorSpaceConversion from value: '" <> e
-           <> "'. Accepted values: force_601, force_709, force_hdr10, force_hlg_2020, none"
+    parser = (ColorSpaceConversion' . mk) <$> takeText
 
 instance ToText ColorSpaceConversion where
-    toText = \case
-        CSCForce601 -> "FORCE_601"
-        CSCForce709 -> "FORCE_709"
-        CSCForceHDR10 -> "FORCE_HDR10"
-        CSCForceHlg2020 -> "FORCE_HLG_2020"
-        CSCNone -> "NONE"
+    toText (ColorSpaceConversion' ci) = original ci
+
+-- | Represents an enum of /known/ $ColorSpaceConversion.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum ColorSpaceConversion where
+    toEnum i = case i of
+        0 -> CSCForce601
+        1 -> CSCForce709
+        2 -> CSCForceHDR10
+        3 -> CSCForceHlg2020
+        4 -> CSCNone
+        _ -> (error . showText) $ "Unknown index for ColorSpaceConversion: " <> toText i
+    fromEnum x = case x of
+        CSCForce601 -> 0
+        CSCForce709 -> 1
+        CSCForceHDR10 -> 2
+        CSCForceHlg2020 -> 3
+        CSCNone -> 4
+        ColorSpaceConversion' name -> (error . showText) $ "Unknown ColorSpaceConversion: " <> original name
+
+-- | Represents the bounds of /known/ $ColorSpaceConversion.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded ColorSpaceConversion where
+    minBound = CSCForce601
+    maxBound = CSCNone
 
 instance Hashable     ColorSpaceConversion
 instance NFData       ColorSpaceConversion

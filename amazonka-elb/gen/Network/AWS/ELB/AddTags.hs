@@ -42,6 +42,7 @@ module Network.AWS.ELB.AddTags
     ) where
 
 import Network.AWS.ELB.Types
+import Network.AWS.ELB.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request

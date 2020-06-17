@@ -44,6 +44,7 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.WAF.Types
+import Network.AWS.WAF.Types.Product
 
 -- | /See:/ 'listRateBasedRules' smart constructor.
 data ListRateBasedRules = ListRateBasedRules'{_lrbrNextMarker

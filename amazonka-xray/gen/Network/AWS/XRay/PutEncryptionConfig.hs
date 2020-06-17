@@ -43,6 +43,7 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.XRay.Types
+import Network.AWS.XRay.Types.Product
 
 -- | /See:/ 'putEncryptionConfig' smart constructor.
 data PutEncryptionConfig = PutEncryptionConfig'{_pecKeyId

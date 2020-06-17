@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,23 +16,51 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.DeviceFarm.Types.OfferingType where
+module Network.AWS.DeviceFarm.Types.OfferingType (
+  OfferingType (
+    ..
+    , Recurring
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data OfferingType = Recurring
-                      deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                Typeable, Generic)
+
+data OfferingType = OfferingType' (CI Text)
+                      deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                Generic)
+
+pattern Recurring :: OfferingType
+pattern Recurring = OfferingType' "RECURRING"
+
+{-# COMPLETE
+  Recurring,
+  OfferingType' #-}
 
 instance FromText OfferingType where
-    parser = takeLowerText >>= \case
-        "recurring" -> pure Recurring
-        e -> fromTextError $ "Failure parsing OfferingType from value: '" <> e
-           <> "'. Accepted values: recurring"
+    parser = (OfferingType' . mk) <$> takeText
 
 instance ToText OfferingType where
-    toText = \case
-        Recurring -> "RECURRING"
+    toText (OfferingType' ci) = original ci
+
+-- | Represents an enum of /known/ $OfferingType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum OfferingType where
+    toEnum i = case i of
+        0 -> Recurring
+        _ -> (error . showText) $ "Unknown index for OfferingType: " <> toText i
+    fromEnum x = case x of
+        Recurring -> 0
+        OfferingType' name -> (error . showText) $ "Unknown OfferingType: " <> original name
+
+-- | Represents the bounds of /known/ $OfferingType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded OfferingType where
+    minBound = Recurring
+    maxBound = Recurring
 
 instance Hashable     OfferingType
 instance NFData       OfferingType

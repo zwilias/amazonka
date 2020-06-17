@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,27 +16,60 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.EC2.Types.InstanceHealthStatus where
+module Network.AWS.EC2.Types.InstanceHealthStatus (
+  InstanceHealthStatus (
+    ..
+    , Healthy
+    , Unhealthy
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.EC2.Internal
 import Network.AWS.Prelude
-  
-data InstanceHealthStatus = Healthy
-                          | Unhealthy
-                              deriving (Eq, Ord, Read, Show, Enum, Bounded,
-                                        Data, Typeable, Generic)
+
+data InstanceHealthStatus = InstanceHealthStatus' (CI
+                                                     Text)
+                              deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                        Generic)
+
+pattern Healthy :: InstanceHealthStatus
+pattern Healthy = InstanceHealthStatus' "healthy"
+
+pattern Unhealthy :: InstanceHealthStatus
+pattern Unhealthy = InstanceHealthStatus' "unhealthy"
+
+{-# COMPLETE
+  Healthy,
+  Unhealthy,
+  InstanceHealthStatus' #-}
 
 instance FromText InstanceHealthStatus where
-    parser = takeLowerText >>= \case
-        "healthy" -> pure Healthy
-        "unhealthy" -> pure Unhealthy
-        e -> fromTextError $ "Failure parsing InstanceHealthStatus from value: '" <> e
-           <> "'. Accepted values: healthy, unhealthy"
+    parser = (InstanceHealthStatus' . mk) <$> takeText
 
 instance ToText InstanceHealthStatus where
-    toText = \case
-        Healthy -> "healthy"
-        Unhealthy -> "unhealthy"
+    toText (InstanceHealthStatus' ci) = original ci
+
+-- | Represents an enum of /known/ $InstanceHealthStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum InstanceHealthStatus where
+    toEnum i = case i of
+        0 -> Healthy
+        1 -> Unhealthy
+        _ -> (error . showText) $ "Unknown index for InstanceHealthStatus: " <> toText i
+    fromEnum x = case x of
+        Healthy -> 0
+        Unhealthy -> 1
+        InstanceHealthStatus' name -> (error . showText) $ "Unknown InstanceHealthStatus: " <> original name
+
+-- | Represents the bounds of /known/ $InstanceHealthStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded InstanceHealthStatus where
+    minBound = Healthy
+    maxBound = Unhealthy
 
 instance Hashable     InstanceHealthStatus
 instance NFData       InstanceHealthStatus

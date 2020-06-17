@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,32 +16,73 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.ElastiCache.Types.AutomaticFailoverStatus where
+module Network.AWS.ElastiCache.Types.AutomaticFailoverStatus (
+  AutomaticFailoverStatus (
+    ..
+    , AFSDisabled
+    , AFSDisabling
+    , AFSEnabled
+    , AFSEnabling
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data AutomaticFailoverStatus = AFSDisabled
-                             | AFSDisabling
-                             | AFSEnabled
-                             | AFSEnabling
-                                 deriving (Eq, Ord, Read, Show, Enum, Bounded,
-                                           Data, Typeable, Generic)
+
+data AutomaticFailoverStatus = AutomaticFailoverStatus' (CI
+                                                           Text)
+                                 deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                           Generic)
+
+pattern AFSDisabled :: AutomaticFailoverStatus
+pattern AFSDisabled = AutomaticFailoverStatus' "disabled"
+
+pattern AFSDisabling :: AutomaticFailoverStatus
+pattern AFSDisabling = AutomaticFailoverStatus' "disabling"
+
+pattern AFSEnabled :: AutomaticFailoverStatus
+pattern AFSEnabled = AutomaticFailoverStatus' "enabled"
+
+pattern AFSEnabling :: AutomaticFailoverStatus
+pattern AFSEnabling = AutomaticFailoverStatus' "enabling"
+
+{-# COMPLETE
+  AFSDisabled,
+  AFSDisabling,
+  AFSEnabled,
+  AFSEnabling,
+  AutomaticFailoverStatus' #-}
 
 instance FromText AutomaticFailoverStatus where
-    parser = takeLowerText >>= \case
-        "disabled" -> pure AFSDisabled
-        "disabling" -> pure AFSDisabling
-        "enabled" -> pure AFSEnabled
-        "enabling" -> pure AFSEnabling
-        e -> fromTextError $ "Failure parsing AutomaticFailoverStatus from value: '" <> e
-           <> "'. Accepted values: disabled, disabling, enabled, enabling"
+    parser = (AutomaticFailoverStatus' . mk) <$> takeText
 
 instance ToText AutomaticFailoverStatus where
-    toText = \case
-        AFSDisabled -> "disabled"
-        AFSDisabling -> "disabling"
-        AFSEnabled -> "enabled"
-        AFSEnabling -> "enabling"
+    toText (AutomaticFailoverStatus' ci) = original ci
+
+-- | Represents an enum of /known/ $AutomaticFailoverStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum AutomaticFailoverStatus where
+    toEnum i = case i of
+        0 -> AFSDisabled
+        1 -> AFSDisabling
+        2 -> AFSEnabled
+        3 -> AFSEnabling
+        _ -> (error . showText) $ "Unknown index for AutomaticFailoverStatus: " <> toText i
+    fromEnum x = case x of
+        AFSDisabled -> 0
+        AFSDisabling -> 1
+        AFSEnabled -> 2
+        AFSEnabling -> 3
+        AutomaticFailoverStatus' name -> (error . showText) $ "Unknown AutomaticFailoverStatus: " <> original name
+
+-- | Represents the bounds of /known/ $AutomaticFailoverStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded AutomaticFailoverStatus where
+    minBound = AFSDisabled
+    maxBound = AFSEnabling
 
 instance Hashable     AutomaticFailoverStatus
 instance NFData       AutomaticFailoverStatus

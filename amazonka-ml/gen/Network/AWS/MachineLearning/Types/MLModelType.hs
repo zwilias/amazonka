@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,29 +16,65 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.MachineLearning.Types.MLModelType where
+module Network.AWS.MachineLearning.Types.MLModelType (
+  MLModelType (
+    ..
+    , Binary
+    , Multiclass
+    , Regression
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data MLModelType = Binary
-                 | Multiclass
-                 | Regression
-                     deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                               Typeable, Generic)
+
+data MLModelType = MLModelType' (CI Text)
+                     deriving (Eq, Ord, Read, Show, Data, Typeable,
+                               Generic)
+
+pattern Binary :: MLModelType
+pattern Binary = MLModelType' "BINARY"
+
+pattern Multiclass :: MLModelType
+pattern Multiclass = MLModelType' "MULTICLASS"
+
+pattern Regression :: MLModelType
+pattern Regression = MLModelType' "REGRESSION"
+
+{-# COMPLETE
+  Binary,
+  Multiclass,
+  Regression,
+  MLModelType' #-}
 
 instance FromText MLModelType where
-    parser = takeLowerText >>= \case
-        "binary" -> pure Binary
-        "multiclass" -> pure Multiclass
-        "regression" -> pure Regression
-        e -> fromTextError $ "Failure parsing MLModelType from value: '" <> e
-           <> "'. Accepted values: binary, multiclass, regression"
+    parser = (MLModelType' . mk) <$> takeText
 
 instance ToText MLModelType where
-    toText = \case
-        Binary -> "BINARY"
-        Multiclass -> "MULTICLASS"
-        Regression -> "REGRESSION"
+    toText (MLModelType' ci) = original ci
+
+-- | Represents an enum of /known/ $MLModelType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum MLModelType where
+    toEnum i = case i of
+        0 -> Binary
+        1 -> Multiclass
+        2 -> Regression
+        _ -> (error . showText) $ "Unknown index for MLModelType: " <> toText i
+    fromEnum x = case x of
+        Binary -> 0
+        Multiclass -> 1
+        Regression -> 2
+        MLModelType' name -> (error . showText) $ "Unknown MLModelType: " <> original name
+
+-- | Represents the bounds of /known/ $MLModelType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded MLModelType where
+    minBound = Binary
+    maxBound = Regression
 
 instance Hashable     MLModelType
 instance NFData       MLModelType

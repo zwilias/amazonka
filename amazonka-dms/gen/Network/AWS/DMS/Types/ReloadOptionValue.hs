@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,58 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.DMS.Types.ReloadOptionValue where
+module Network.AWS.DMS.Types.ReloadOptionValue (
+  ReloadOptionValue (
+    ..
+    , DataReload
+    , ValidateOnly
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data ReloadOptionValue = DataReload
-                       | ValidateOnly
-                           deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                     Typeable, Generic)
+
+data ReloadOptionValue = ReloadOptionValue' (CI Text)
+                           deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                     Generic)
+
+pattern DataReload :: ReloadOptionValue
+pattern DataReload = ReloadOptionValue' "data-reload"
+
+pattern ValidateOnly :: ReloadOptionValue
+pattern ValidateOnly = ReloadOptionValue' "validate-only"
+
+{-# COMPLETE
+  DataReload,
+  ValidateOnly,
+  ReloadOptionValue' #-}
 
 instance FromText ReloadOptionValue where
-    parser = takeLowerText >>= \case
-        "data-reload" -> pure DataReload
-        "validate-only" -> pure ValidateOnly
-        e -> fromTextError $ "Failure parsing ReloadOptionValue from value: '" <> e
-           <> "'. Accepted values: data-reload, validate-only"
+    parser = (ReloadOptionValue' . mk) <$> takeText
 
 instance ToText ReloadOptionValue where
-    toText = \case
-        DataReload -> "data-reload"
-        ValidateOnly -> "validate-only"
+    toText (ReloadOptionValue' ci) = original ci
+
+-- | Represents an enum of /known/ $ReloadOptionValue.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum ReloadOptionValue where
+    toEnum i = case i of
+        0 -> DataReload
+        1 -> ValidateOnly
+        _ -> (error . showText) $ "Unknown index for ReloadOptionValue: " <> toText i
+    fromEnum x = case x of
+        DataReload -> 0
+        ValidateOnly -> 1
+        ReloadOptionValue' name -> (error . showText) $ "Unknown ReloadOptionValue: " <> original name
+
+-- | Represents the bounds of /known/ $ReloadOptionValue.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded ReloadOptionValue where
+    minBound = DataReload
+    maxBound = ValidateOnly
 
 instance Hashable     ReloadOptionValue
 instance NFData       ReloadOptionValue

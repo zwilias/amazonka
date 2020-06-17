@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,27 +16,60 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.MediaConvert.Types.TtmlStylePassthrough where
+module Network.AWS.MediaConvert.Types.TtmlStylePassthrough (
+  TtmlStylePassthrough (
+    ..
+    , TSPDisabled
+    , TSPEnabled
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
+
 -- | Pass through style and position information from a TTML-like input source (TTML, SMPTE-TT, CFF-TT) to the CFF-TT output or TTML output.
-data TtmlStylePassthrough = TSPDisabled
-                          | TSPEnabled
-                              deriving (Eq, Ord, Read, Show, Enum, Bounded,
-                                        Data, Typeable, Generic)
+data TtmlStylePassthrough = TtmlStylePassthrough' (CI
+                                                     Text)
+                              deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                        Generic)
+
+pattern TSPDisabled :: TtmlStylePassthrough
+pattern TSPDisabled = TtmlStylePassthrough' "DISABLED"
+
+pattern TSPEnabled :: TtmlStylePassthrough
+pattern TSPEnabled = TtmlStylePassthrough' "ENABLED"
+
+{-# COMPLETE
+  TSPDisabled,
+  TSPEnabled,
+  TtmlStylePassthrough' #-}
 
 instance FromText TtmlStylePassthrough where
-    parser = takeLowerText >>= \case
-        "disabled" -> pure TSPDisabled
-        "enabled" -> pure TSPEnabled
-        e -> fromTextError $ "Failure parsing TtmlStylePassthrough from value: '" <> e
-           <> "'. Accepted values: disabled, enabled"
+    parser = (TtmlStylePassthrough' . mk) <$> takeText
 
 instance ToText TtmlStylePassthrough where
-    toText = \case
-        TSPDisabled -> "DISABLED"
-        TSPEnabled -> "ENABLED"
+    toText (TtmlStylePassthrough' ci) = original ci
+
+-- | Represents an enum of /known/ $TtmlStylePassthrough.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum TtmlStylePassthrough where
+    toEnum i = case i of
+        0 -> TSPDisabled
+        1 -> TSPEnabled
+        _ -> (error . showText) $ "Unknown index for TtmlStylePassthrough: " <> toText i
+    fromEnum x = case x of
+        TSPDisabled -> 0
+        TSPEnabled -> 1
+        TtmlStylePassthrough' name -> (error . showText) $ "Unknown TtmlStylePassthrough: " <> original name
+
+-- | Represents the bounds of /known/ $TtmlStylePassthrough.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded TtmlStylePassthrough where
+    minBound = TSPDisabled
+    maxBound = TSPEnabled
 
 instance Hashable     TtmlStylePassthrough
 instance NFData       TtmlStylePassthrough

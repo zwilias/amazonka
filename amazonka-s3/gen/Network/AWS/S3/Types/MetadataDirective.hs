@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,27 +16,59 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.S3.Types.MetadataDirective where
+module Network.AWS.S3.Types.MetadataDirective (
+  MetadataDirective (
+    ..
+    , MDCopy
+    , MDReplace
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
 import Network.AWS.S3.Internal
-  
-data MetadataDirective = MDCopy
-                       | MDReplace
-                           deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                     Typeable, Generic)
+
+data MetadataDirective = MetadataDirective' (CI Text)
+                           deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                     Generic)
+
+pattern MDCopy :: MetadataDirective
+pattern MDCopy = MetadataDirective' "COPY"
+
+pattern MDReplace :: MetadataDirective
+pattern MDReplace = MetadataDirective' "REPLACE"
+
+{-# COMPLETE
+  MDCopy,
+  MDReplace,
+  MetadataDirective' #-}
 
 instance FromText MetadataDirective where
-    parser = takeLowerText >>= \case
-        "copy" -> pure MDCopy
-        "replace" -> pure MDReplace
-        e -> fromTextError $ "Failure parsing MetadataDirective from value: '" <> e
-           <> "'. Accepted values: copy, replace"
+    parser = (MetadataDirective' . mk) <$> takeText
 
 instance ToText MetadataDirective where
-    toText = \case
-        MDCopy -> "COPY"
-        MDReplace -> "REPLACE"
+    toText (MetadataDirective' ci) = original ci
+
+-- | Represents an enum of /known/ $MetadataDirective.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum MetadataDirective where
+    toEnum i = case i of
+        0 -> MDCopy
+        1 -> MDReplace
+        _ -> (error . showText) $ "Unknown index for MetadataDirective: " <> toText i
+    fromEnum x = case x of
+        MDCopy -> 0
+        MDReplace -> 1
+        MetadataDirective' name -> (error . showText) $ "Unknown MetadataDirective: " <> original name
+
+-- | Represents the bounds of /known/ $MetadataDirective.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded MetadataDirective where
+    minBound = MDCopy
+    maxBound = MDReplace
 
 instance Hashable     MetadataDirective
 instance NFData       MetadataDirective

@@ -42,6 +42,7 @@ module Network.AWS.ELBv2.AddTags
     ) where
 
 import Network.AWS.ELBv2.Types
+import Network.AWS.ELBv2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request

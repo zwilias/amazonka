@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,44 +16,101 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.Organizations.Types.HandshakeResourceType where
+module Network.AWS.Organizations.Types.HandshakeResourceType (
+  HandshakeResourceType (
+    ..
+    , Account
+    , Email
+    , MasterEmail
+    , MasterName
+    , Notes
+    , Organization
+    , OrganizationFeatureSet
+    , ParentHandshake
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data HandshakeResourceType = Account
-                           | Email
-                           | MasterEmail
-                           | MasterName
-                           | Notes
-                           | Organization
-                           | OrganizationFeatureSet
-                           | ParentHandshake
-                               deriving (Eq, Ord, Read, Show, Enum, Bounded,
-                                         Data, Typeable, Generic)
+
+data HandshakeResourceType = HandshakeResourceType' (CI
+                                                       Text)
+                               deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                         Generic)
+
+pattern Account :: HandshakeResourceType
+pattern Account = HandshakeResourceType' "ACCOUNT"
+
+pattern Email :: HandshakeResourceType
+pattern Email = HandshakeResourceType' "EMAIL"
+
+pattern MasterEmail :: HandshakeResourceType
+pattern MasterEmail = HandshakeResourceType' "MASTER_EMAIL"
+
+pattern MasterName :: HandshakeResourceType
+pattern MasterName = HandshakeResourceType' "MASTER_NAME"
+
+pattern Notes :: HandshakeResourceType
+pattern Notes = HandshakeResourceType' "NOTES"
+
+pattern Organization :: HandshakeResourceType
+pattern Organization = HandshakeResourceType' "ORGANIZATION"
+
+pattern OrganizationFeatureSet :: HandshakeResourceType
+pattern OrganizationFeatureSet = HandshakeResourceType' "ORGANIZATION_FEATURE_SET"
+
+pattern ParentHandshake :: HandshakeResourceType
+pattern ParentHandshake = HandshakeResourceType' "PARENT_HANDSHAKE"
+
+{-# COMPLETE
+  Account,
+  Email,
+  MasterEmail,
+  MasterName,
+  Notes,
+  Organization,
+  OrganizationFeatureSet,
+  ParentHandshake,
+  HandshakeResourceType' #-}
 
 instance FromText HandshakeResourceType where
-    parser = takeLowerText >>= \case
-        "account" -> pure Account
-        "email" -> pure Email
-        "master_email" -> pure MasterEmail
-        "master_name" -> pure MasterName
-        "notes" -> pure Notes
-        "organization" -> pure Organization
-        "organization_feature_set" -> pure OrganizationFeatureSet
-        "parent_handshake" -> pure ParentHandshake
-        e -> fromTextError $ "Failure parsing HandshakeResourceType from value: '" <> e
-           <> "'. Accepted values: account, email, master_email, master_name, notes, organization, organization_feature_set, parent_handshake"
+    parser = (HandshakeResourceType' . mk) <$> takeText
 
 instance ToText HandshakeResourceType where
-    toText = \case
-        Account -> "ACCOUNT"
-        Email -> "EMAIL"
-        MasterEmail -> "MASTER_EMAIL"
-        MasterName -> "MASTER_NAME"
-        Notes -> "NOTES"
-        Organization -> "ORGANIZATION"
-        OrganizationFeatureSet -> "ORGANIZATION_FEATURE_SET"
-        ParentHandshake -> "PARENT_HANDSHAKE"
+    toText (HandshakeResourceType' ci) = original ci
+
+-- | Represents an enum of /known/ $HandshakeResourceType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum HandshakeResourceType where
+    toEnum i = case i of
+        0 -> Account
+        1 -> Email
+        2 -> MasterEmail
+        3 -> MasterName
+        4 -> Notes
+        5 -> Organization
+        6 -> OrganizationFeatureSet
+        7 -> ParentHandshake
+        _ -> (error . showText) $ "Unknown index for HandshakeResourceType: " <> toText i
+    fromEnum x = case x of
+        Account -> 0
+        Email -> 1
+        MasterEmail -> 2
+        MasterName -> 3
+        Notes -> 4
+        Organization -> 5
+        OrganizationFeatureSet -> 6
+        ParentHandshake -> 7
+        HandshakeResourceType' name -> (error . showText) $ "Unknown HandshakeResourceType: " <> original name
+
+-- | Represents the bounds of /known/ $HandshakeResourceType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded HandshakeResourceType where
+    minBound = Account
+    maxBound = ParentHandshake
 
 instance Hashable     HandshakeResourceType
 instance NFData       HandshakeResourceType

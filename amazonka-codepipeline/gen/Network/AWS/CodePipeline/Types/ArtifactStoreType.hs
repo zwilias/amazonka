@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,23 +16,51 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.CodePipeline.Types.ArtifactStoreType where
+module Network.AWS.CodePipeline.Types.ArtifactStoreType (
+  ArtifactStoreType (
+    ..
+    , S3
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data ArtifactStoreType = S3
-                           deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                     Typeable, Generic)
+
+data ArtifactStoreType = ArtifactStoreType' (CI Text)
+                           deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                     Generic)
+
+pattern S3 :: ArtifactStoreType
+pattern S3 = ArtifactStoreType' "S3"
+
+{-# COMPLETE
+  S3,
+  ArtifactStoreType' #-}
 
 instance FromText ArtifactStoreType where
-    parser = takeLowerText >>= \case
-        "s3" -> pure S3
-        e -> fromTextError $ "Failure parsing ArtifactStoreType from value: '" <> e
-           <> "'. Accepted values: s3"
+    parser = (ArtifactStoreType' . mk) <$> takeText
 
 instance ToText ArtifactStoreType where
-    toText = \case
-        S3 -> "S3"
+    toText (ArtifactStoreType' ci) = original ci
+
+-- | Represents an enum of /known/ $ArtifactStoreType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum ArtifactStoreType where
+    toEnum i = case i of
+        0 -> S3
+        _ -> (error . showText) $ "Unknown index for ArtifactStoreType: " <> toText i
+    fromEnum x = case x of
+        S3 -> 0
+        ArtifactStoreType' name -> (error . showText) $ "Unknown ArtifactStoreType: " <> original name
+
+-- | Represents the bounds of /known/ $ArtifactStoreType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded ArtifactStoreType where
+    minBound = S3
+    maxBound = S3
 
 instance Hashable     ArtifactStoreType
 instance NFData       ArtifactStoreType

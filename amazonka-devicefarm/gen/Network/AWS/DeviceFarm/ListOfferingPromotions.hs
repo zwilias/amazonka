@@ -41,6 +41,7 @@ module Network.AWS.DeviceFarm.ListOfferingPromotions
     ) where
 
 import Network.AWS.DeviceFarm.Types
+import Network.AWS.DeviceFarm.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude

@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,23 +16,52 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.SSM.Types.ResourceDataSyncS3Format where
+module Network.AWS.SSM.Types.ResourceDataSyncS3Format (
+  ResourceDataSyncS3Format (
+    ..
+    , JSONSerDe
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data ResourceDataSyncS3Format = JSONSerDe
-                                  deriving (Eq, Ord, Read, Show, Enum, Bounded,
-                                            Data, Typeable, Generic)
+
+data ResourceDataSyncS3Format = ResourceDataSyncS3Format' (CI
+                                                             Text)
+                                  deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                            Generic)
+
+pattern JSONSerDe :: ResourceDataSyncS3Format
+pattern JSONSerDe = ResourceDataSyncS3Format' "JsonSerDe"
+
+{-# COMPLETE
+  JSONSerDe,
+  ResourceDataSyncS3Format' #-}
 
 instance FromText ResourceDataSyncS3Format where
-    parser = takeLowerText >>= \case
-        "jsonserde" -> pure JSONSerDe
-        e -> fromTextError $ "Failure parsing ResourceDataSyncS3Format from value: '" <> e
-           <> "'. Accepted values: jsonserde"
+    parser = (ResourceDataSyncS3Format' . mk) <$> takeText
 
 instance ToText ResourceDataSyncS3Format where
-    toText = \case
-        JSONSerDe -> "JsonSerDe"
+    toText (ResourceDataSyncS3Format' ci) = original ci
+
+-- | Represents an enum of /known/ $ResourceDataSyncS3Format.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum ResourceDataSyncS3Format where
+    toEnum i = case i of
+        0 -> JSONSerDe
+        _ -> (error . showText) $ "Unknown index for ResourceDataSyncS3Format: " <> toText i
+    fromEnum x = case x of
+        JSONSerDe -> 0
+        ResourceDataSyncS3Format' name -> (error . showText) $ "Unknown ResourceDataSyncS3Format: " <> original name
+
+-- | Represents the bounds of /known/ $ResourceDataSyncS3Format.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded ResourceDataSyncS3Format where
+    minBound = JSONSerDe
+    maxBound = JSONSerDe
 
 instance Hashable     ResourceDataSyncS3Format
 instance NFData       ResourceDataSyncS3Format

@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,36 +16,80 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.MediaConvert.Types.ColorSpace where
+module Network.AWS.MediaConvert.Types.ColorSpace (
+  ColorSpace (
+    ..
+    , Follow
+    , HDR10
+    , Hlg2020
+    , Rec601
+    , Rec709
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
+
 -- | Specifies the colorspace of an input. This setting works in tandem with "Color Corrector":#color_corrector > color_space_conversion to determine if any conversion will be performed.
-data ColorSpace = Follow
-                | HDR10
-                | Hlg2020
-                | Rec601
-                | Rec709
-                    deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                              Typeable, Generic)
+data ColorSpace = ColorSpace' (CI Text)
+                    deriving (Eq, Ord, Read, Show, Data, Typeable,
+                              Generic)
+
+pattern Follow :: ColorSpace
+pattern Follow = ColorSpace' "FOLLOW"
+
+pattern HDR10 :: ColorSpace
+pattern HDR10 = ColorSpace' "HDR10"
+
+pattern Hlg2020 :: ColorSpace
+pattern Hlg2020 = ColorSpace' "HLG_2020"
+
+pattern Rec601 :: ColorSpace
+pattern Rec601 = ColorSpace' "REC_601"
+
+pattern Rec709 :: ColorSpace
+pattern Rec709 = ColorSpace' "REC_709"
+
+{-# COMPLETE
+  Follow,
+  HDR10,
+  Hlg2020,
+  Rec601,
+  Rec709,
+  ColorSpace' #-}
 
 instance FromText ColorSpace where
-    parser = takeLowerText >>= \case
-        "follow" -> pure Follow
-        "hdr10" -> pure HDR10
-        "hlg_2020" -> pure Hlg2020
-        "rec_601" -> pure Rec601
-        "rec_709" -> pure Rec709
-        e -> fromTextError $ "Failure parsing ColorSpace from value: '" <> e
-           <> "'. Accepted values: follow, hdr10, hlg_2020, rec_601, rec_709"
+    parser = (ColorSpace' . mk) <$> takeText
 
 instance ToText ColorSpace where
-    toText = \case
-        Follow -> "FOLLOW"
-        HDR10 -> "HDR10"
-        Hlg2020 -> "HLG_2020"
-        Rec601 -> "REC_601"
-        Rec709 -> "REC_709"
+    toText (ColorSpace' ci) = original ci
+
+-- | Represents an enum of /known/ $ColorSpace.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum ColorSpace where
+    toEnum i = case i of
+        0 -> Follow
+        1 -> HDR10
+        2 -> Hlg2020
+        3 -> Rec601
+        4 -> Rec709
+        _ -> (error . showText) $ "Unknown index for ColorSpace: " <> toText i
+    fromEnum x = case x of
+        Follow -> 0
+        HDR10 -> 1
+        Hlg2020 -> 2
+        Rec601 -> 3
+        Rec709 -> 4
+        ColorSpace' name -> (error . showText) $ "Unknown ColorSpace: " <> original name
+
+-- | Represents the bounds of /known/ $ColorSpace.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded ColorSpace where
+    minBound = Follow
+    maxBound = Rec709
 
 instance Hashable     ColorSpace
 instance NFData       ColorSpace

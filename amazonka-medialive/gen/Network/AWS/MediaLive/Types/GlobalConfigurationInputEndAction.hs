@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,28 +16,60 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.MediaLive.Types.GlobalConfigurationInputEndAction where
+module Network.AWS.MediaLive.Types.GlobalConfigurationInputEndAction (
+  GlobalConfigurationInputEndAction (
+    ..
+    , GCIEANone
+    , GCIEASwitchAndLoopInputs
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
+
 -- | Placeholder documentation for GlobalConfigurationInputEndAction
-data GlobalConfigurationInputEndAction = GCIEANone
-                                       | GCIEASwitchAndLoopInputs
-                                           deriving (Eq, Ord, Read, Show, Enum,
-                                                     Bounded, Data, Typeable,
-                                                     Generic)
+data GlobalConfigurationInputEndAction = GlobalConfigurationInputEndAction' (CI
+                                                                               Text)
+                                           deriving (Eq, Ord, Read, Show, Data,
+                                                     Typeable, Generic)
+
+pattern GCIEANone :: GlobalConfigurationInputEndAction
+pattern GCIEANone = GlobalConfigurationInputEndAction' "NONE"
+
+pattern GCIEASwitchAndLoopInputs :: GlobalConfigurationInputEndAction
+pattern GCIEASwitchAndLoopInputs = GlobalConfigurationInputEndAction' "SWITCH_AND_LOOP_INPUTS"
+
+{-# COMPLETE
+  GCIEANone,
+  GCIEASwitchAndLoopInputs,
+  GlobalConfigurationInputEndAction' #-}
 
 instance FromText GlobalConfigurationInputEndAction where
-    parser = takeLowerText >>= \case
-        "none" -> pure GCIEANone
-        "switch_and_loop_inputs" -> pure GCIEASwitchAndLoopInputs
-        e -> fromTextError $ "Failure parsing GlobalConfigurationInputEndAction from value: '" <> e
-           <> "'. Accepted values: none, switch_and_loop_inputs"
+    parser = (GlobalConfigurationInputEndAction' . mk) <$> takeText
 
 instance ToText GlobalConfigurationInputEndAction where
-    toText = \case
-        GCIEANone -> "NONE"
-        GCIEASwitchAndLoopInputs -> "SWITCH_AND_LOOP_INPUTS"
+    toText (GlobalConfigurationInputEndAction' ci) = original ci
+
+-- | Represents an enum of /known/ $GlobalConfigurationInputEndAction.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum GlobalConfigurationInputEndAction where
+    toEnum i = case i of
+        0 -> GCIEANone
+        1 -> GCIEASwitchAndLoopInputs
+        _ -> (error . showText) $ "Unknown index for GlobalConfigurationInputEndAction: " <> toText i
+    fromEnum x = case x of
+        GCIEANone -> 0
+        GCIEASwitchAndLoopInputs -> 1
+        GlobalConfigurationInputEndAction' name -> (error . showText) $ "Unknown GlobalConfigurationInputEndAction: " <> original name
+
+-- | Represents the bounds of /known/ $GlobalConfigurationInputEndAction.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded GlobalConfigurationInputEndAction where
+    minBound = GCIEANone
+    maxBound = GCIEASwitchAndLoopInputs
 
 instance Hashable     GlobalConfigurationInputEndAction
 instance NFData       GlobalConfigurationInputEndAction

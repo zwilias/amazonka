@@ -40,6 +40,7 @@ module Network.AWS.CognitoSync.BulkPublish
     ) where
 
 import Network.AWS.CognitoSync.Types
+import Network.AWS.CognitoSync.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request

@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,23 +16,52 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.SWF.Types.RecordMarkerFailedCause where
+module Network.AWS.SWF.Types.RecordMarkerFailedCause (
+  RecordMarkerFailedCause (
+    ..
+    , OperationNotPermitted
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data RecordMarkerFailedCause = OperationNotPermitted
-                                 deriving (Eq, Ord, Read, Show, Enum, Bounded,
-                                           Data, Typeable, Generic)
+
+data RecordMarkerFailedCause = RecordMarkerFailedCause' (CI
+                                                           Text)
+                                 deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                           Generic)
+
+pattern OperationNotPermitted :: RecordMarkerFailedCause
+pattern OperationNotPermitted = RecordMarkerFailedCause' "OPERATION_NOT_PERMITTED"
+
+{-# COMPLETE
+  OperationNotPermitted,
+  RecordMarkerFailedCause' #-}
 
 instance FromText RecordMarkerFailedCause where
-    parser = takeLowerText >>= \case
-        "operation_not_permitted" -> pure OperationNotPermitted
-        e -> fromTextError $ "Failure parsing RecordMarkerFailedCause from value: '" <> e
-           <> "'. Accepted values: operation_not_permitted"
+    parser = (RecordMarkerFailedCause' . mk) <$> takeText
 
 instance ToText RecordMarkerFailedCause where
-    toText = \case
-        OperationNotPermitted -> "OPERATION_NOT_PERMITTED"
+    toText (RecordMarkerFailedCause' ci) = original ci
+
+-- | Represents an enum of /known/ $RecordMarkerFailedCause.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum RecordMarkerFailedCause where
+    toEnum i = case i of
+        0 -> OperationNotPermitted
+        _ -> (error . showText) $ "Unknown index for RecordMarkerFailedCause: " <> toText i
+    fromEnum x = case x of
+        OperationNotPermitted -> 0
+        RecordMarkerFailedCause' name -> (error . showText) $ "Unknown RecordMarkerFailedCause: " <> original name
+
+-- | Represents the bounds of /known/ $RecordMarkerFailedCause.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded RecordMarkerFailedCause where
+    minBound = OperationNotPermitted
+    maxBound = OperationNotPermitted
 
 instance Hashable     RecordMarkerFailedCause
 instance NFData       RecordMarkerFailedCause

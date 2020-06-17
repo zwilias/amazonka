@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,33 +16,73 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.MediaConvert.Types.HlsAudioTrackType where
+module Network.AWS.MediaConvert.Types.HlsAudioTrackType (
+  HlsAudioTrackType (
+    ..
+    , AlternateAudioAutoSelect
+    , AlternateAudioAutoSelectDefault
+    , AlternateAudioNotAutoSelect
+    , AudioOnlyVariantStream
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
+
 -- | Four types of audio-only tracks are supported: Audio-Only Variant Stream The client can play back this audio-only stream instead of video in low-bandwidth scenarios. Represented as an EXT-X-STREAM-INF in the HLS manifest. Alternate Audio, Auto Select, Default Alternate rendition that the client should try to play back by default. Represented as an EXT-X-MEDIA in the HLS manifest with DEFAULT=YES, AUTOSELECT=YES Alternate Audio, Auto Select, Not Default Alternate rendition that the client may try to play back by default. Represented as an EXT-X-MEDIA in the HLS manifest with DEFAULT=NO, AUTOSELECT=YES Alternate Audio, not Auto Select Alternate rendition that the client will not try to play back by default. Represented as an EXT-X-MEDIA in the HLS manifest with DEFAULT=NO, AUTOSELECT=NO
-data HlsAudioTrackType = AlternateAudioAutoSelect
-                       | AlternateAudioAutoSelectDefault
-                       | AlternateAudioNotAutoSelect
-                       | AudioOnlyVariantStream
-                           deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                     Typeable, Generic)
+data HlsAudioTrackType = HlsAudioTrackType' (CI Text)
+                           deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                     Generic)
+
+pattern AlternateAudioAutoSelect :: HlsAudioTrackType
+pattern AlternateAudioAutoSelect = HlsAudioTrackType' "ALTERNATE_AUDIO_AUTO_SELECT"
+
+pattern AlternateAudioAutoSelectDefault :: HlsAudioTrackType
+pattern AlternateAudioAutoSelectDefault = HlsAudioTrackType' "ALTERNATE_AUDIO_AUTO_SELECT_DEFAULT"
+
+pattern AlternateAudioNotAutoSelect :: HlsAudioTrackType
+pattern AlternateAudioNotAutoSelect = HlsAudioTrackType' "ALTERNATE_AUDIO_NOT_AUTO_SELECT"
+
+pattern AudioOnlyVariantStream :: HlsAudioTrackType
+pattern AudioOnlyVariantStream = HlsAudioTrackType' "AUDIO_ONLY_VARIANT_STREAM"
+
+{-# COMPLETE
+  AlternateAudioAutoSelect,
+  AlternateAudioAutoSelectDefault,
+  AlternateAudioNotAutoSelect,
+  AudioOnlyVariantStream,
+  HlsAudioTrackType' #-}
 
 instance FromText HlsAudioTrackType where
-    parser = takeLowerText >>= \case
-        "alternate_audio_auto_select" -> pure AlternateAudioAutoSelect
-        "alternate_audio_auto_select_default" -> pure AlternateAudioAutoSelectDefault
-        "alternate_audio_not_auto_select" -> pure AlternateAudioNotAutoSelect
-        "audio_only_variant_stream" -> pure AudioOnlyVariantStream
-        e -> fromTextError $ "Failure parsing HlsAudioTrackType from value: '" <> e
-           <> "'. Accepted values: alternate_audio_auto_select, alternate_audio_auto_select_default, alternate_audio_not_auto_select, audio_only_variant_stream"
+    parser = (HlsAudioTrackType' . mk) <$> takeText
 
 instance ToText HlsAudioTrackType where
-    toText = \case
-        AlternateAudioAutoSelect -> "ALTERNATE_AUDIO_AUTO_SELECT"
-        AlternateAudioAutoSelectDefault -> "ALTERNATE_AUDIO_AUTO_SELECT_DEFAULT"
-        AlternateAudioNotAutoSelect -> "ALTERNATE_AUDIO_NOT_AUTO_SELECT"
-        AudioOnlyVariantStream -> "AUDIO_ONLY_VARIANT_STREAM"
+    toText (HlsAudioTrackType' ci) = original ci
+
+-- | Represents an enum of /known/ $HlsAudioTrackType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum HlsAudioTrackType where
+    toEnum i = case i of
+        0 -> AlternateAudioAutoSelect
+        1 -> AlternateAudioAutoSelectDefault
+        2 -> AlternateAudioNotAutoSelect
+        3 -> AudioOnlyVariantStream
+        _ -> (error . showText) $ "Unknown index for HlsAudioTrackType: " <> toText i
+    fromEnum x = case x of
+        AlternateAudioAutoSelect -> 0
+        AlternateAudioAutoSelectDefault -> 1
+        AlternateAudioNotAutoSelect -> 2
+        AudioOnlyVariantStream -> 3
+        HlsAudioTrackType' name -> (error . showText) $ "Unknown HlsAudioTrackType: " <> original name
+
+-- | Represents the bounds of /known/ $HlsAudioTrackType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded HlsAudioTrackType where
+    minBound = AlternateAudioAutoSelect
+    maxBound = AudioOnlyVariantStream
 
 instance Hashable     HlsAudioTrackType
 instance NFData       HlsAudioTrackType

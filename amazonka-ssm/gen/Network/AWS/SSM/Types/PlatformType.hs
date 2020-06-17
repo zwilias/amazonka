@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,58 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.SSM.Types.PlatformType where
+module Network.AWS.SSM.Types.PlatformType (
+  PlatformType (
+    ..
+    , PTLinux
+    , PTWindows
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data PlatformType = PTLinux
-                  | PTWindows
-                      deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                Typeable, Generic)
+
+data PlatformType = PlatformType' (CI Text)
+                      deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                Generic)
+
+pattern PTLinux :: PlatformType
+pattern PTLinux = PlatformType' "Linux"
+
+pattern PTWindows :: PlatformType
+pattern PTWindows = PlatformType' "Windows"
+
+{-# COMPLETE
+  PTLinux,
+  PTWindows,
+  PlatformType' #-}
 
 instance FromText PlatformType where
-    parser = takeLowerText >>= \case
-        "linux" -> pure PTLinux
-        "windows" -> pure PTWindows
-        e -> fromTextError $ "Failure parsing PlatformType from value: '" <> e
-           <> "'. Accepted values: linux, windows"
+    parser = (PlatformType' . mk) <$> takeText
 
 instance ToText PlatformType where
-    toText = \case
-        PTLinux -> "Linux"
-        PTWindows -> "Windows"
+    toText (PlatformType' ci) = original ci
+
+-- | Represents an enum of /known/ $PlatformType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum PlatformType where
+    toEnum i = case i of
+        0 -> PTLinux
+        1 -> PTWindows
+        _ -> (error . showText) $ "Unknown index for PlatformType: " <> toText i
+    fromEnum x = case x of
+        PTLinux -> 0
+        PTWindows -> 1
+        PlatformType' name -> (error . showText) $ "Unknown PlatformType: " <> original name
+
+-- | Represents the bounds of /known/ $PlatformType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded PlatformType where
+    minBound = PTLinux
+    maxBound = PTWindows
 
 instance Hashable     PlatformType
 instance NFData       PlatformType

@@ -47,6 +47,7 @@ module Network.AWS.Glacier.DescribeVault
     ) where
 
 import Network.AWS.Glacier.Types
+import Network.AWS.Glacier.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request

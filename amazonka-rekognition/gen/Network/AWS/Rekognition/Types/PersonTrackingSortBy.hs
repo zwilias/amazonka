@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,59 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.Rekognition.Types.PersonTrackingSortBy where
+module Network.AWS.Rekognition.Types.PersonTrackingSortBy (
+  PersonTrackingSortBy (
+    ..
+    , Index
+    , Timestamp
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data PersonTrackingSortBy = Index
-                          | Timestamp
-                              deriving (Eq, Ord, Read, Show, Enum, Bounded,
-                                        Data, Typeable, Generic)
+
+data PersonTrackingSortBy = PersonTrackingSortBy' (CI
+                                                     Text)
+                              deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                        Generic)
+
+pattern Index :: PersonTrackingSortBy
+pattern Index = PersonTrackingSortBy' "INDEX"
+
+pattern Timestamp :: PersonTrackingSortBy
+pattern Timestamp = PersonTrackingSortBy' "TIMESTAMP"
+
+{-# COMPLETE
+  Index,
+  Timestamp,
+  PersonTrackingSortBy' #-}
 
 instance FromText PersonTrackingSortBy where
-    parser = takeLowerText >>= \case
-        "index" -> pure Index
-        "timestamp" -> pure Timestamp
-        e -> fromTextError $ "Failure parsing PersonTrackingSortBy from value: '" <> e
-           <> "'. Accepted values: index, timestamp"
+    parser = (PersonTrackingSortBy' . mk) <$> takeText
 
 instance ToText PersonTrackingSortBy where
-    toText = \case
-        Index -> "INDEX"
-        Timestamp -> "TIMESTAMP"
+    toText (PersonTrackingSortBy' ci) = original ci
+
+-- | Represents an enum of /known/ $PersonTrackingSortBy.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum PersonTrackingSortBy where
+    toEnum i = case i of
+        0 -> Index
+        1 -> Timestamp
+        _ -> (error . showText) $ "Unknown index for PersonTrackingSortBy: " <> toText i
+    fromEnum x = case x of
+        Index -> 0
+        Timestamp -> 1
+        PersonTrackingSortBy' name -> (error . showText) $ "Unknown PersonTrackingSortBy: " <> original name
+
+-- | Represents the bounds of /known/ $PersonTrackingSortBy.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded PersonTrackingSortBy where
+    minBound = Index
+    maxBound = Timestamp
 
 instance Hashable     PersonTrackingSortBy
 instance NFData       PersonTrackingSortBy

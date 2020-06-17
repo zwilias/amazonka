@@ -47,6 +47,7 @@ module Network.AWS.MechanicalTurk.ListQualificationTypes
 
 import Network.AWS.Lens
 import Network.AWS.MechanicalTurk.Types
+import Network.AWS.MechanicalTurk.Types.Product
 import Network.AWS.Pager
 import Network.AWS.Prelude
 import Network.AWS.Request

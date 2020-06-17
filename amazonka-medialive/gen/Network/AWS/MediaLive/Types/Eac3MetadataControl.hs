@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,27 +16,60 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.MediaLive.Types.Eac3MetadataControl where
+module Network.AWS.MediaLive.Types.Eac3MetadataControl (
+  Eac3MetadataControl (
+    ..
+    , EMCFollowInput
+    , EMCUseConfigured
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
+
 -- | Placeholder documentation for Eac3MetadataControl
-data Eac3MetadataControl = EMCFollowInput
-                         | EMCUseConfigured
-                             deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                       Typeable, Generic)
+data Eac3MetadataControl = Eac3MetadataControl' (CI
+                                                   Text)
+                             deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                       Generic)
+
+pattern EMCFollowInput :: Eac3MetadataControl
+pattern EMCFollowInput = Eac3MetadataControl' "FOLLOW_INPUT"
+
+pattern EMCUseConfigured :: Eac3MetadataControl
+pattern EMCUseConfigured = Eac3MetadataControl' "USE_CONFIGURED"
+
+{-# COMPLETE
+  EMCFollowInput,
+  EMCUseConfigured,
+  Eac3MetadataControl' #-}
 
 instance FromText Eac3MetadataControl where
-    parser = takeLowerText >>= \case
-        "follow_input" -> pure EMCFollowInput
-        "use_configured" -> pure EMCUseConfigured
-        e -> fromTextError $ "Failure parsing Eac3MetadataControl from value: '" <> e
-           <> "'. Accepted values: follow_input, use_configured"
+    parser = (Eac3MetadataControl' . mk) <$> takeText
 
 instance ToText Eac3MetadataControl where
-    toText = \case
-        EMCFollowInput -> "FOLLOW_INPUT"
-        EMCUseConfigured -> "USE_CONFIGURED"
+    toText (Eac3MetadataControl' ci) = original ci
+
+-- | Represents an enum of /known/ $Eac3MetadataControl.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum Eac3MetadataControl where
+    toEnum i = case i of
+        0 -> EMCFollowInput
+        1 -> EMCUseConfigured
+        _ -> (error . showText) $ "Unknown index for Eac3MetadataControl: " <> toText i
+    fromEnum x = case x of
+        EMCFollowInput -> 0
+        EMCUseConfigured -> 1
+        Eac3MetadataControl' name -> (error . showText) $ "Unknown Eac3MetadataControl: " <> original name
+
+-- | Represents the bounds of /known/ $Eac3MetadataControl.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded Eac3MetadataControl where
+    minBound = EMCFollowInput
+    maxBound = EMCUseConfigured
 
 instance Hashable     Eac3MetadataControl
 instance NFData       Eac3MetadataControl

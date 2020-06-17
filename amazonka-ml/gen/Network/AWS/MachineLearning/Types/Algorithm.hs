@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,28 +16,56 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.MachineLearning.Types.Algorithm where
+module Network.AWS.MachineLearning.Types.Algorithm (
+  Algorithm (
+    ..
+    , SGD
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
+
 -- | The function used to train an @MLModel@ . Training choices supported by Amazon ML include the following:
 --
 --
 --     * @SGD@ - Stochastic Gradient Descent.    * @RandomForest@ - Random forest of decision trees.
 --
-data Algorithm = SGD
-                   deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                             Typeable, Generic)
+data Algorithm = Algorithm' (CI Text)
+                   deriving (Eq, Ord, Read, Show, Data, Typeable,
+                             Generic)
+
+pattern SGD :: Algorithm
+pattern SGD = Algorithm' "sgd"
+
+{-# COMPLETE
+  SGD,
+  Algorithm' #-}
 
 instance FromText Algorithm where
-    parser = takeLowerText >>= \case
-        "sgd" -> pure SGD
-        e -> fromTextError $ "Failure parsing Algorithm from value: '" <> e
-           <> "'. Accepted values: sgd"
+    parser = (Algorithm' . mk) <$> takeText
 
 instance ToText Algorithm where
-    toText = \case
-        SGD -> "sgd"
+    toText (Algorithm' ci) = original ci
+
+-- | Represents an enum of /known/ $Algorithm.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum Algorithm where
+    toEnum i = case i of
+        0 -> SGD
+        _ -> (error . showText) $ "Unknown index for Algorithm: " <> toText i
+    fromEnum x = case x of
+        SGD -> 0
+        Algorithm' name -> (error . showText) $ "Unknown Algorithm: " <> original name
+
+-- | Represents the bounds of /known/ $Algorithm.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded Algorithm where
+    minBound = SGD
+    maxBound = SGD
 
 instance Hashable     Algorithm
 instance NFData       Algorithm

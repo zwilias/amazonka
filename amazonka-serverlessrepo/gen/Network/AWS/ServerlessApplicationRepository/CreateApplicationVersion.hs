@@ -51,6 +51,7 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.ServerlessApplicationRepository.Types
+import Network.AWS.ServerlessApplicationRepository.Types.Product
 
 -- | /See:/ 'createApplicationVersion' smart constructor.
 data CreateApplicationVersion = CreateApplicationVersion'{_cavSourceCodeURL

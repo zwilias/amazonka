@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,38 +16,87 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.WAF.Types.TextTransformation where
+module Network.AWS.WAF.Types.TextTransformation (
+  TextTransformation (
+    ..
+    , CmdLine
+    , CompressWhiteSpace
+    , HTMLEntityDecode
+    , Lowercase
+    , None
+    , URLDecode
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data TextTransformation = CmdLine
-                        | CompressWhiteSpace
-                        | HTMLEntityDecode
-                        | Lowercase
-                        | None
-                        | URLDecode
-                            deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                      Typeable, Generic)
+
+data TextTransformation = TextTransformation' (CI
+                                                 Text)
+                            deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                      Generic)
+
+pattern CmdLine :: TextTransformation
+pattern CmdLine = TextTransformation' "CMD_LINE"
+
+pattern CompressWhiteSpace :: TextTransformation
+pattern CompressWhiteSpace = TextTransformation' "COMPRESS_WHITE_SPACE"
+
+pattern HTMLEntityDecode :: TextTransformation
+pattern HTMLEntityDecode = TextTransformation' "HTML_ENTITY_DECODE"
+
+pattern Lowercase :: TextTransformation
+pattern Lowercase = TextTransformation' "LOWERCASE"
+
+pattern None :: TextTransformation
+pattern None = TextTransformation' "NONE"
+
+pattern URLDecode :: TextTransformation
+pattern URLDecode = TextTransformation' "URL_DECODE"
+
+{-# COMPLETE
+  CmdLine,
+  CompressWhiteSpace,
+  HTMLEntityDecode,
+  Lowercase,
+  None,
+  URLDecode,
+  TextTransformation' #-}
 
 instance FromText TextTransformation where
-    parser = takeLowerText >>= \case
-        "cmd_line" -> pure CmdLine
-        "compress_white_space" -> pure CompressWhiteSpace
-        "html_entity_decode" -> pure HTMLEntityDecode
-        "lowercase" -> pure Lowercase
-        "none" -> pure None
-        "url_decode" -> pure URLDecode
-        e -> fromTextError $ "Failure parsing TextTransformation from value: '" <> e
-           <> "'. Accepted values: cmd_line, compress_white_space, html_entity_decode, lowercase, none, url_decode"
+    parser = (TextTransformation' . mk) <$> takeText
 
 instance ToText TextTransformation where
-    toText = \case
-        CmdLine -> "CMD_LINE"
-        CompressWhiteSpace -> "COMPRESS_WHITE_SPACE"
-        HTMLEntityDecode -> "HTML_ENTITY_DECODE"
-        Lowercase -> "LOWERCASE"
-        None -> "NONE"
-        URLDecode -> "URL_DECODE"
+    toText (TextTransformation' ci) = original ci
+
+-- | Represents an enum of /known/ $TextTransformation.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum TextTransformation where
+    toEnum i = case i of
+        0 -> CmdLine
+        1 -> CompressWhiteSpace
+        2 -> HTMLEntityDecode
+        3 -> Lowercase
+        4 -> None
+        5 -> URLDecode
+        _ -> (error . showText) $ "Unknown index for TextTransformation: " <> toText i
+    fromEnum x = case x of
+        CmdLine -> 0
+        CompressWhiteSpace -> 1
+        HTMLEntityDecode -> 2
+        Lowercase -> 3
+        None -> 4
+        URLDecode -> 5
+        TextTransformation' name -> (error . showText) $ "Unknown TextTransformation: " <> original name
+
+-- | Represents the bounds of /known/ $TextTransformation.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded TextTransformation where
+    minBound = CmdLine
+    maxBound = URLDecode
 
 instance Hashable     TextTransformation
 instance NFData       TextTransformation

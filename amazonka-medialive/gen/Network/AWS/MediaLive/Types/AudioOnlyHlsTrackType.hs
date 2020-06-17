@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,33 +16,74 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.MediaLive.Types.AudioOnlyHlsTrackType where
+module Network.AWS.MediaLive.Types.AudioOnlyHlsTrackType (
+  AudioOnlyHlsTrackType (
+    ..
+    , AlternateAudioAutoSelect
+    , AlternateAudioAutoSelectDefault
+    , AlternateAudioNotAutoSelect
+    , AudioOnlyVariantStream
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
+
 -- | Placeholder documentation for AudioOnlyHlsTrackType
-data AudioOnlyHlsTrackType = AlternateAudioAutoSelect
-                           | AlternateAudioAutoSelectDefault
-                           | AlternateAudioNotAutoSelect
-                           | AudioOnlyVariantStream
-                               deriving (Eq, Ord, Read, Show, Enum, Bounded,
-                                         Data, Typeable, Generic)
+data AudioOnlyHlsTrackType = AudioOnlyHlsTrackType' (CI
+                                                       Text)
+                               deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                         Generic)
+
+pattern AlternateAudioAutoSelect :: AudioOnlyHlsTrackType
+pattern AlternateAudioAutoSelect = AudioOnlyHlsTrackType' "ALTERNATE_AUDIO_AUTO_SELECT"
+
+pattern AlternateAudioAutoSelectDefault :: AudioOnlyHlsTrackType
+pattern AlternateAudioAutoSelectDefault = AudioOnlyHlsTrackType' "ALTERNATE_AUDIO_AUTO_SELECT_DEFAULT"
+
+pattern AlternateAudioNotAutoSelect :: AudioOnlyHlsTrackType
+pattern AlternateAudioNotAutoSelect = AudioOnlyHlsTrackType' "ALTERNATE_AUDIO_NOT_AUTO_SELECT"
+
+pattern AudioOnlyVariantStream :: AudioOnlyHlsTrackType
+pattern AudioOnlyVariantStream = AudioOnlyHlsTrackType' "AUDIO_ONLY_VARIANT_STREAM"
+
+{-# COMPLETE
+  AlternateAudioAutoSelect,
+  AlternateAudioAutoSelectDefault,
+  AlternateAudioNotAutoSelect,
+  AudioOnlyVariantStream,
+  AudioOnlyHlsTrackType' #-}
 
 instance FromText AudioOnlyHlsTrackType where
-    parser = takeLowerText >>= \case
-        "alternate_audio_auto_select" -> pure AlternateAudioAutoSelect
-        "alternate_audio_auto_select_default" -> pure AlternateAudioAutoSelectDefault
-        "alternate_audio_not_auto_select" -> pure AlternateAudioNotAutoSelect
-        "audio_only_variant_stream" -> pure AudioOnlyVariantStream
-        e -> fromTextError $ "Failure parsing AudioOnlyHlsTrackType from value: '" <> e
-           <> "'. Accepted values: alternate_audio_auto_select, alternate_audio_auto_select_default, alternate_audio_not_auto_select, audio_only_variant_stream"
+    parser = (AudioOnlyHlsTrackType' . mk) <$> takeText
 
 instance ToText AudioOnlyHlsTrackType where
-    toText = \case
-        AlternateAudioAutoSelect -> "ALTERNATE_AUDIO_AUTO_SELECT"
-        AlternateAudioAutoSelectDefault -> "ALTERNATE_AUDIO_AUTO_SELECT_DEFAULT"
-        AlternateAudioNotAutoSelect -> "ALTERNATE_AUDIO_NOT_AUTO_SELECT"
-        AudioOnlyVariantStream -> "AUDIO_ONLY_VARIANT_STREAM"
+    toText (AudioOnlyHlsTrackType' ci) = original ci
+
+-- | Represents an enum of /known/ $AudioOnlyHlsTrackType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum AudioOnlyHlsTrackType where
+    toEnum i = case i of
+        0 -> AlternateAudioAutoSelect
+        1 -> AlternateAudioAutoSelectDefault
+        2 -> AlternateAudioNotAutoSelect
+        3 -> AudioOnlyVariantStream
+        _ -> (error . showText) $ "Unknown index for AudioOnlyHlsTrackType: " <> toText i
+    fromEnum x = case x of
+        AlternateAudioAutoSelect -> 0
+        AlternateAudioAutoSelectDefault -> 1
+        AlternateAudioNotAutoSelect -> 2
+        AudioOnlyVariantStream -> 3
+        AudioOnlyHlsTrackType' name -> (error . showText) $ "Unknown AudioOnlyHlsTrackType: " <> original name
+
+-- | Represents the bounds of /known/ $AudioOnlyHlsTrackType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded AudioOnlyHlsTrackType where
+    minBound = AlternateAudioAutoSelect
+    maxBound = AudioOnlyVariantStream
 
 instance Hashable     AudioOnlyHlsTrackType
 instance NFData       AudioOnlyHlsTrackType

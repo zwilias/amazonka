@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,59 +16,135 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.DeviceFarm.Types.DeviceAttribute where
+module Network.AWS.DeviceFarm.Types.DeviceAttribute (
+  DeviceAttribute (
+    ..
+    , ARN
+    , AppiumVersion
+    , Availability
+    , FleetType
+    , FormFactor
+    , InstanceARN
+    , InstanceLabels
+    , Manufacturer
+    , Model
+    , OSVersion
+    , Platform
+    , RemoteAccessEnabled
+    , RemoteDebugEnabled
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data DeviceAttribute = ARN
-                     | AppiumVersion
-                     | Availability
-                     | FleetType
-                     | FormFactor
-                     | InstanceARN
-                     | InstanceLabels
-                     | Manufacturer
-                     | Model
-                     | OSVersion
-                     | Platform
-                     | RemoteAccessEnabled
-                     | RemoteDebugEnabled
-                         deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                   Typeable, Generic)
+
+data DeviceAttribute = DeviceAttribute' (CI Text)
+                         deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                   Generic)
+
+pattern ARN :: DeviceAttribute
+pattern ARN = DeviceAttribute' "ARN"
+
+pattern AppiumVersion :: DeviceAttribute
+pattern AppiumVersion = DeviceAttribute' "APPIUM_VERSION"
+
+pattern Availability :: DeviceAttribute
+pattern Availability = DeviceAttribute' "AVAILABILITY"
+
+pattern FleetType :: DeviceAttribute
+pattern FleetType = DeviceAttribute' "FLEET_TYPE"
+
+pattern FormFactor :: DeviceAttribute
+pattern FormFactor = DeviceAttribute' "FORM_FACTOR"
+
+pattern InstanceARN :: DeviceAttribute
+pattern InstanceARN = DeviceAttribute' "INSTANCE_ARN"
+
+pattern InstanceLabels :: DeviceAttribute
+pattern InstanceLabels = DeviceAttribute' "INSTANCE_LABELS"
+
+pattern Manufacturer :: DeviceAttribute
+pattern Manufacturer = DeviceAttribute' "MANUFACTURER"
+
+pattern Model :: DeviceAttribute
+pattern Model = DeviceAttribute' "MODEL"
+
+pattern OSVersion :: DeviceAttribute
+pattern OSVersion = DeviceAttribute' "OS_VERSION"
+
+pattern Platform :: DeviceAttribute
+pattern Platform = DeviceAttribute' "PLATFORM"
+
+pattern RemoteAccessEnabled :: DeviceAttribute
+pattern RemoteAccessEnabled = DeviceAttribute' "REMOTE_ACCESS_ENABLED"
+
+pattern RemoteDebugEnabled :: DeviceAttribute
+pattern RemoteDebugEnabled = DeviceAttribute' "REMOTE_DEBUG_ENABLED"
+
+{-# COMPLETE
+  ARN,
+  AppiumVersion,
+  Availability,
+  FleetType,
+  FormFactor,
+  InstanceARN,
+  InstanceLabels,
+  Manufacturer,
+  Model,
+  OSVersion,
+  Platform,
+  RemoteAccessEnabled,
+  RemoteDebugEnabled,
+  DeviceAttribute' #-}
 
 instance FromText DeviceAttribute where
-    parser = takeLowerText >>= \case
-        "arn" -> pure ARN
-        "appium_version" -> pure AppiumVersion
-        "availability" -> pure Availability
-        "fleet_type" -> pure FleetType
-        "form_factor" -> pure FormFactor
-        "instance_arn" -> pure InstanceARN
-        "instance_labels" -> pure InstanceLabels
-        "manufacturer" -> pure Manufacturer
-        "model" -> pure Model
-        "os_version" -> pure OSVersion
-        "platform" -> pure Platform
-        "remote_access_enabled" -> pure RemoteAccessEnabled
-        "remote_debug_enabled" -> pure RemoteDebugEnabled
-        e -> fromTextError $ "Failure parsing DeviceAttribute from value: '" <> e
-           <> "'. Accepted values: arn, appium_version, availability, fleet_type, form_factor, instance_arn, instance_labels, manufacturer, model, os_version, platform, remote_access_enabled, remote_debug_enabled"
+    parser = (DeviceAttribute' . mk) <$> takeText
 
 instance ToText DeviceAttribute where
-    toText = \case
-        ARN -> "ARN"
-        AppiumVersion -> "APPIUM_VERSION"
-        Availability -> "AVAILABILITY"
-        FleetType -> "FLEET_TYPE"
-        FormFactor -> "FORM_FACTOR"
-        InstanceARN -> "INSTANCE_ARN"
-        InstanceLabels -> "INSTANCE_LABELS"
-        Manufacturer -> "MANUFACTURER"
-        Model -> "MODEL"
-        OSVersion -> "OS_VERSION"
-        Platform -> "PLATFORM"
-        RemoteAccessEnabled -> "REMOTE_ACCESS_ENABLED"
-        RemoteDebugEnabled -> "REMOTE_DEBUG_ENABLED"
+    toText (DeviceAttribute' ci) = original ci
+
+-- | Represents an enum of /known/ $DeviceAttribute.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum DeviceAttribute where
+    toEnum i = case i of
+        0 -> ARN
+        1 -> AppiumVersion
+        2 -> Availability
+        3 -> FleetType
+        4 -> FormFactor
+        5 -> InstanceARN
+        6 -> InstanceLabels
+        7 -> Manufacturer
+        8 -> Model
+        9 -> OSVersion
+        10 -> Platform
+        11 -> RemoteAccessEnabled
+        12 -> RemoteDebugEnabled
+        _ -> (error . showText) $ "Unknown index for DeviceAttribute: " <> toText i
+    fromEnum x = case x of
+        ARN -> 0
+        AppiumVersion -> 1
+        Availability -> 2
+        FleetType -> 3
+        FormFactor -> 4
+        InstanceARN -> 5
+        InstanceLabels -> 6
+        Manufacturer -> 7
+        Model -> 8
+        OSVersion -> 9
+        Platform -> 10
+        RemoteAccessEnabled -> 11
+        RemoteDebugEnabled -> 12
+        DeviceAttribute' name -> (error . showText) $ "Unknown DeviceAttribute: " <> original name
+
+-- | Represents the bounds of /known/ $DeviceAttribute.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded DeviceAttribute where
+    minBound = ARN
+    maxBound = RemoteDebugEnabled
 
 instance Hashable     DeviceAttribute
 instance NFData       DeviceAttribute

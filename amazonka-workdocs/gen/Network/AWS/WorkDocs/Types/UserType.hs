@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,35 +16,79 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.WorkDocs.Types.UserType where
+module Network.AWS.WorkDocs.Types.UserType (
+  UserType (
+    ..
+    , UTAdmin
+    , UTMinimaluser
+    , UTPoweruser
+    , UTUser
+    , UTWorkspacesuser
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data UserType = UTAdmin
-              | UTMinimaluser
-              | UTPoweruser
-              | UTUser
-              | UTWorkspacesuser
-                  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                            Typeable, Generic)
+
+data UserType = UserType' (CI Text)
+                  deriving (Eq, Ord, Read, Show, Data, Typeable,
+                            Generic)
+
+pattern UTAdmin :: UserType
+pattern UTAdmin = UserType' "ADMIN"
+
+pattern UTMinimaluser :: UserType
+pattern UTMinimaluser = UserType' "MINIMALUSER"
+
+pattern UTPoweruser :: UserType
+pattern UTPoweruser = UserType' "POWERUSER"
+
+pattern UTUser :: UserType
+pattern UTUser = UserType' "USER"
+
+pattern UTWorkspacesuser :: UserType
+pattern UTWorkspacesuser = UserType' "WORKSPACESUSER"
+
+{-# COMPLETE
+  UTAdmin,
+  UTMinimaluser,
+  UTPoweruser,
+  UTUser,
+  UTWorkspacesuser,
+  UserType' #-}
 
 instance FromText UserType where
-    parser = takeLowerText >>= \case
-        "admin" -> pure UTAdmin
-        "minimaluser" -> pure UTMinimaluser
-        "poweruser" -> pure UTPoweruser
-        "user" -> pure UTUser
-        "workspacesuser" -> pure UTWorkspacesuser
-        e -> fromTextError $ "Failure parsing UserType from value: '" <> e
-           <> "'. Accepted values: admin, minimaluser, poweruser, user, workspacesuser"
+    parser = (UserType' . mk) <$> takeText
 
 instance ToText UserType where
-    toText = \case
-        UTAdmin -> "ADMIN"
-        UTMinimaluser -> "MINIMALUSER"
-        UTPoweruser -> "POWERUSER"
-        UTUser -> "USER"
-        UTWorkspacesuser -> "WORKSPACESUSER"
+    toText (UserType' ci) = original ci
+
+-- | Represents an enum of /known/ $UserType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum UserType where
+    toEnum i = case i of
+        0 -> UTAdmin
+        1 -> UTMinimaluser
+        2 -> UTPoweruser
+        3 -> UTUser
+        4 -> UTWorkspacesuser
+        _ -> (error . showText) $ "Unknown index for UserType: " <> toText i
+    fromEnum x = case x of
+        UTAdmin -> 0
+        UTMinimaluser -> 1
+        UTPoweruser -> 2
+        UTUser -> 3
+        UTWorkspacesuser -> 4
+        UserType' name -> (error . showText) $ "Unknown UserType: " <> original name
+
+-- | Represents the bounds of /known/ $UserType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded UserType where
+    minBound = UTAdmin
+    maxBound = UTWorkspacesuser
 
 instance Hashable     UserType
 instance NFData       UserType

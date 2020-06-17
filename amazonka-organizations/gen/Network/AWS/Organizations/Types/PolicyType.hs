@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,23 +16,51 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.Organizations.Types.PolicyType where
+module Network.AWS.Organizations.Types.PolicyType (
+  PolicyType (
+    ..
+    , ServiceControlPolicy
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data PolicyType = ServiceControlPolicy
-                    deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                              Typeable, Generic)
+
+data PolicyType = PolicyType' (CI Text)
+                    deriving (Eq, Ord, Read, Show, Data, Typeable,
+                              Generic)
+
+pattern ServiceControlPolicy :: PolicyType
+pattern ServiceControlPolicy = PolicyType' "SERVICE_CONTROL_POLICY"
+
+{-# COMPLETE
+  ServiceControlPolicy,
+  PolicyType' #-}
 
 instance FromText PolicyType where
-    parser = takeLowerText >>= \case
-        "service_control_policy" -> pure ServiceControlPolicy
-        e -> fromTextError $ "Failure parsing PolicyType from value: '" <> e
-           <> "'. Accepted values: service_control_policy"
+    parser = (PolicyType' . mk) <$> takeText
 
 instance ToText PolicyType where
-    toText = \case
-        ServiceControlPolicy -> "SERVICE_CONTROL_POLICY"
+    toText (PolicyType' ci) = original ci
+
+-- | Represents an enum of /known/ $PolicyType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum PolicyType where
+    toEnum i = case i of
+        0 -> ServiceControlPolicy
+        _ -> (error . showText) $ "Unknown index for PolicyType: " <> toText i
+    fromEnum x = case x of
+        ServiceControlPolicy -> 0
+        PolicyType' name -> (error . showText) $ "Unknown PolicyType: " <> original name
+
+-- | Represents the bounds of /known/ $PolicyType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded PolicyType where
+    minBound = ServiceControlPolicy
+    maxBound = ServiceControlPolicy
 
 instance Hashable     PolicyType
 instance NFData       PolicyType

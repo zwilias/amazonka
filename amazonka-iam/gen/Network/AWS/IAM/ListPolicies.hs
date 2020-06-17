@@ -52,6 +52,7 @@ module Network.AWS.IAM.ListPolicies
     ) where
 
 import Network.AWS.IAM.Types
+import Network.AWS.IAM.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude

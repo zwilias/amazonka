@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,29 +16,61 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.CloudWatchLogs.Types.Distribution where
+module Network.AWS.CloudWatchLogs.Types.Distribution (
+  Distribution (
+    ..
+    , ByLogStream
+    , Random
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
+
 -- | The method used to distribute log data to the destination, which can be either random or grouped by log stream.
 --
 --
-data Distribution = ByLogStream
-                  | Random
-                      deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                Typeable, Generic)
+data Distribution = Distribution' (CI Text)
+                      deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                Generic)
+
+pattern ByLogStream :: Distribution
+pattern ByLogStream = Distribution' "ByLogStream"
+
+pattern Random :: Distribution
+pattern Random = Distribution' "Random"
+
+{-# COMPLETE
+  ByLogStream,
+  Random,
+  Distribution' #-}
 
 instance FromText Distribution where
-    parser = takeLowerText >>= \case
-        "bylogstream" -> pure ByLogStream
-        "random" -> pure Random
-        e -> fromTextError $ "Failure parsing Distribution from value: '" <> e
-           <> "'. Accepted values: bylogstream, random"
+    parser = (Distribution' . mk) <$> takeText
 
 instance ToText Distribution where
-    toText = \case
-        ByLogStream -> "ByLogStream"
-        Random -> "Random"
+    toText (Distribution' ci) = original ci
+
+-- | Represents an enum of /known/ $Distribution.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum Distribution where
+    toEnum i = case i of
+        0 -> ByLogStream
+        1 -> Random
+        _ -> (error . showText) $ "Unknown index for Distribution: " <> toText i
+    fromEnum x = case x of
+        ByLogStream -> 0
+        Random -> 1
+        Distribution' name -> (error . showText) $ "Unknown Distribution: " <> original name
+
+-- | Represents the bounds of /known/ $Distribution.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded Distribution where
+    minBound = ByLogStream
+    maxBound = Random
 
 instance Hashable     Distribution
 instance NFData       Distribution

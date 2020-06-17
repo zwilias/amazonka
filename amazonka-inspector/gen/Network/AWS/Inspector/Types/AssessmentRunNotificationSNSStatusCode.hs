@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,33 +16,74 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.Inspector.Types.AssessmentRunNotificationSNSStatusCode where
+module Network.AWS.Inspector.Types.AssessmentRunNotificationSNSStatusCode (
+  AssessmentRunNotificationSNSStatusCode (
+    ..
+    , AccessDenied
+    , InternalError
+    , Success
+    , TopicDoesNotExist
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data AssessmentRunNotificationSNSStatusCode = AccessDenied
-                                            | InternalError
-                                            | Success
-                                            | TopicDoesNotExist
+
+data AssessmentRunNotificationSNSStatusCode = AssessmentRunNotificationSNSStatusCode' (CI
+                                                                                         Text)
                                                 deriving (Eq, Ord, Read, Show,
-                                                          Enum, Bounded, Data,
-                                                          Typeable, Generic)
+                                                          Data, Typeable,
+                                                          Generic)
+
+pattern AccessDenied :: AssessmentRunNotificationSNSStatusCode
+pattern AccessDenied = AssessmentRunNotificationSNSStatusCode' "ACCESS_DENIED"
+
+pattern InternalError :: AssessmentRunNotificationSNSStatusCode
+pattern InternalError = AssessmentRunNotificationSNSStatusCode' "INTERNAL_ERROR"
+
+pattern Success :: AssessmentRunNotificationSNSStatusCode
+pattern Success = AssessmentRunNotificationSNSStatusCode' "SUCCESS"
+
+pattern TopicDoesNotExist :: AssessmentRunNotificationSNSStatusCode
+pattern TopicDoesNotExist = AssessmentRunNotificationSNSStatusCode' "TOPIC_DOES_NOT_EXIST"
+
+{-# COMPLETE
+  AccessDenied,
+  InternalError,
+  Success,
+  TopicDoesNotExist,
+  AssessmentRunNotificationSNSStatusCode' #-}
 
 instance FromText AssessmentRunNotificationSNSStatusCode where
-    parser = takeLowerText >>= \case
-        "access_denied" -> pure AccessDenied
-        "internal_error" -> pure InternalError
-        "success" -> pure Success
-        "topic_does_not_exist" -> pure TopicDoesNotExist
-        e -> fromTextError $ "Failure parsing AssessmentRunNotificationSNSStatusCode from value: '" <> e
-           <> "'. Accepted values: access_denied, internal_error, success, topic_does_not_exist"
+    parser = (AssessmentRunNotificationSNSStatusCode' . mk) <$> takeText
 
 instance ToText AssessmentRunNotificationSNSStatusCode where
-    toText = \case
-        AccessDenied -> "ACCESS_DENIED"
-        InternalError -> "INTERNAL_ERROR"
-        Success -> "SUCCESS"
-        TopicDoesNotExist -> "TOPIC_DOES_NOT_EXIST"
+    toText (AssessmentRunNotificationSNSStatusCode' ci) = original ci
+
+-- | Represents an enum of /known/ $AssessmentRunNotificationSNSStatusCode.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum AssessmentRunNotificationSNSStatusCode where
+    toEnum i = case i of
+        0 -> AccessDenied
+        1 -> InternalError
+        2 -> Success
+        3 -> TopicDoesNotExist
+        _ -> (error . showText) $ "Unknown index for AssessmentRunNotificationSNSStatusCode: " <> toText i
+    fromEnum x = case x of
+        AccessDenied -> 0
+        InternalError -> 1
+        Success -> 2
+        TopicDoesNotExist -> 3
+        AssessmentRunNotificationSNSStatusCode' name -> (error . showText) $ "Unknown AssessmentRunNotificationSNSStatusCode: " <> original name
+
+-- | Represents the bounds of /known/ $AssessmentRunNotificationSNSStatusCode.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded AssessmentRunNotificationSNSStatusCode where
+    minBound = AccessDenied
+    maxBound = TopicDoesNotExist
 
 instance Hashable     AssessmentRunNotificationSNSStatusCode
 instance NFData       AssessmentRunNotificationSNSStatusCode

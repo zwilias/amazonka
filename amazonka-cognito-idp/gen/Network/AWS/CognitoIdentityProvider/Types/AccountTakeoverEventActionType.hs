@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,33 +16,73 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.CognitoIdentityProvider.Types.AccountTakeoverEventActionType where
+module Network.AWS.CognitoIdentityProvider.Types.AccountTakeoverEventActionType (
+  AccountTakeoverEventActionType (
+    ..
+    , ATEATBlock
+    , ATEATMFAIfConfigured
+    , ATEATMFARequired
+    , ATEATNoAction
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data AccountTakeoverEventActionType = ATEATBlock
-                                    | ATEATMFAIfConfigured
-                                    | ATEATMFARequired
-                                    | ATEATNoAction
-                                        deriving (Eq, Ord, Read, Show, Enum,
-                                                  Bounded, Data, Typeable,
-                                                  Generic)
+
+data AccountTakeoverEventActionType = AccountTakeoverEventActionType' (CI
+                                                                         Text)
+                                        deriving (Eq, Ord, Read, Show, Data,
+                                                  Typeable, Generic)
+
+pattern ATEATBlock :: AccountTakeoverEventActionType
+pattern ATEATBlock = AccountTakeoverEventActionType' "BLOCK"
+
+pattern ATEATMFAIfConfigured :: AccountTakeoverEventActionType
+pattern ATEATMFAIfConfigured = AccountTakeoverEventActionType' "MFA_IF_CONFIGURED"
+
+pattern ATEATMFARequired :: AccountTakeoverEventActionType
+pattern ATEATMFARequired = AccountTakeoverEventActionType' "MFA_REQUIRED"
+
+pattern ATEATNoAction :: AccountTakeoverEventActionType
+pattern ATEATNoAction = AccountTakeoverEventActionType' "NO_ACTION"
+
+{-# COMPLETE
+  ATEATBlock,
+  ATEATMFAIfConfigured,
+  ATEATMFARequired,
+  ATEATNoAction,
+  AccountTakeoverEventActionType' #-}
 
 instance FromText AccountTakeoverEventActionType where
-    parser = takeLowerText >>= \case
-        "block" -> pure ATEATBlock
-        "mfa_if_configured" -> pure ATEATMFAIfConfigured
-        "mfa_required" -> pure ATEATMFARequired
-        "no_action" -> pure ATEATNoAction
-        e -> fromTextError $ "Failure parsing AccountTakeoverEventActionType from value: '" <> e
-           <> "'. Accepted values: block, mfa_if_configured, mfa_required, no_action"
+    parser = (AccountTakeoverEventActionType' . mk) <$> takeText
 
 instance ToText AccountTakeoverEventActionType where
-    toText = \case
-        ATEATBlock -> "BLOCK"
-        ATEATMFAIfConfigured -> "MFA_IF_CONFIGURED"
-        ATEATMFARequired -> "MFA_REQUIRED"
-        ATEATNoAction -> "NO_ACTION"
+    toText (AccountTakeoverEventActionType' ci) = original ci
+
+-- | Represents an enum of /known/ $AccountTakeoverEventActionType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum AccountTakeoverEventActionType where
+    toEnum i = case i of
+        0 -> ATEATBlock
+        1 -> ATEATMFAIfConfigured
+        2 -> ATEATMFARequired
+        3 -> ATEATNoAction
+        _ -> (error . showText) $ "Unknown index for AccountTakeoverEventActionType: " <> toText i
+    fromEnum x = case x of
+        ATEATBlock -> 0
+        ATEATMFAIfConfigured -> 1
+        ATEATMFARequired -> 2
+        ATEATNoAction -> 3
+        AccountTakeoverEventActionType' name -> (error . showText) $ "Unknown AccountTakeoverEventActionType: " <> original name
+
+-- | Represents the bounds of /known/ $AccountTakeoverEventActionType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded AccountTakeoverEventActionType where
+    minBound = ATEATBlock
+    maxBound = ATEATNoAction
 
 instance Hashable     AccountTakeoverEventActionType
 instance NFData       AccountTakeoverEventActionType

@@ -38,6 +38,7 @@ module Network.AWS.CodeDeploy.BatchGetOnPremisesInstances
     ) where
 
 import Network.AWS.CodeDeploy.Types
+import Network.AWS.CodeDeploy.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request

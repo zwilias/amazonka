@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,32 +16,69 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.MediaConvert.Types.DvbSubtitleShadowColor where
+module Network.AWS.MediaConvert.Types.DvbSubtitleShadowColor (
+  DvbSubtitleShadowColor (
+    ..
+    , DSSCBlack
+    , DSSCNone
+    , DSSCWhite
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
+
 -- | Specifies the color of the shadow cast by the captions.
 --
 -- All burn-in and DVB-Sub font settings must match.
-data DvbSubtitleShadowColor = DSSCBlack
-                            | DSSCNone
-                            | DSSCWhite
-                                deriving (Eq, Ord, Read, Show, Enum, Bounded,
-                                          Data, Typeable, Generic)
+data DvbSubtitleShadowColor = DvbSubtitleShadowColor' (CI
+                                                         Text)
+                                deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                          Generic)
+
+pattern DSSCBlack :: DvbSubtitleShadowColor
+pattern DSSCBlack = DvbSubtitleShadowColor' "BLACK"
+
+pattern DSSCNone :: DvbSubtitleShadowColor
+pattern DSSCNone = DvbSubtitleShadowColor' "NONE"
+
+pattern DSSCWhite :: DvbSubtitleShadowColor
+pattern DSSCWhite = DvbSubtitleShadowColor' "WHITE"
+
+{-# COMPLETE
+  DSSCBlack,
+  DSSCNone,
+  DSSCWhite,
+  DvbSubtitleShadowColor' #-}
 
 instance FromText DvbSubtitleShadowColor where
-    parser = takeLowerText >>= \case
-        "black" -> pure DSSCBlack
-        "none" -> pure DSSCNone
-        "white" -> pure DSSCWhite
-        e -> fromTextError $ "Failure parsing DvbSubtitleShadowColor from value: '" <> e
-           <> "'. Accepted values: black, none, white"
+    parser = (DvbSubtitleShadowColor' . mk) <$> takeText
 
 instance ToText DvbSubtitleShadowColor where
-    toText = \case
-        DSSCBlack -> "BLACK"
-        DSSCNone -> "NONE"
-        DSSCWhite -> "WHITE"
+    toText (DvbSubtitleShadowColor' ci) = original ci
+
+-- | Represents an enum of /known/ $DvbSubtitleShadowColor.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum DvbSubtitleShadowColor where
+    toEnum i = case i of
+        0 -> DSSCBlack
+        1 -> DSSCNone
+        2 -> DSSCWhite
+        _ -> (error . showText) $ "Unknown index for DvbSubtitleShadowColor: " <> toText i
+    fromEnum x = case x of
+        DSSCBlack -> 0
+        DSSCNone -> 1
+        DSSCWhite -> 2
+        DvbSubtitleShadowColor' name -> (error . showText) $ "Unknown DvbSubtitleShadowColor: " <> original name
+
+-- | Represents the bounds of /known/ $DvbSubtitleShadowColor.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded DvbSubtitleShadowColor where
+    minBound = DSSCBlack
+    maxBound = DSSCWhite
 
 instance Hashable     DvbSubtitleShadowColor
 instance NFData       DvbSubtitleShadowColor

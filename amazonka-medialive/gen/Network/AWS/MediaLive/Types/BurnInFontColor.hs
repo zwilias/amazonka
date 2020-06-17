@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,39 +16,87 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.MediaLive.Types.BurnInFontColor where
+module Network.AWS.MediaLive.Types.BurnInFontColor (
+  BurnInFontColor (
+    ..
+    , BIFCBlack
+    , BIFCBlue
+    , BIFCGreen
+    , BIFCRed
+    , BIFCWhite
+    , BIFCYellow
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
+
 -- | Placeholder documentation for BurnInFontColor
-data BurnInFontColor = BIFCBlack
-                     | BIFCBlue
-                     | BIFCGreen
-                     | BIFCRed
-                     | BIFCWhite
-                     | BIFCYellow
-                         deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                   Typeable, Generic)
+data BurnInFontColor = BurnInFontColor' (CI Text)
+                         deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                   Generic)
+
+pattern BIFCBlack :: BurnInFontColor
+pattern BIFCBlack = BurnInFontColor' "BLACK"
+
+pattern BIFCBlue :: BurnInFontColor
+pattern BIFCBlue = BurnInFontColor' "BLUE"
+
+pattern BIFCGreen :: BurnInFontColor
+pattern BIFCGreen = BurnInFontColor' "GREEN"
+
+pattern BIFCRed :: BurnInFontColor
+pattern BIFCRed = BurnInFontColor' "RED"
+
+pattern BIFCWhite :: BurnInFontColor
+pattern BIFCWhite = BurnInFontColor' "WHITE"
+
+pattern BIFCYellow :: BurnInFontColor
+pattern BIFCYellow = BurnInFontColor' "YELLOW"
+
+{-# COMPLETE
+  BIFCBlack,
+  BIFCBlue,
+  BIFCGreen,
+  BIFCRed,
+  BIFCWhite,
+  BIFCYellow,
+  BurnInFontColor' #-}
 
 instance FromText BurnInFontColor where
-    parser = takeLowerText >>= \case
-        "black" -> pure BIFCBlack
-        "blue" -> pure BIFCBlue
-        "green" -> pure BIFCGreen
-        "red" -> pure BIFCRed
-        "white" -> pure BIFCWhite
-        "yellow" -> pure BIFCYellow
-        e -> fromTextError $ "Failure parsing BurnInFontColor from value: '" <> e
-           <> "'. Accepted values: black, blue, green, red, white, yellow"
+    parser = (BurnInFontColor' . mk) <$> takeText
 
 instance ToText BurnInFontColor where
-    toText = \case
-        BIFCBlack -> "BLACK"
-        BIFCBlue -> "BLUE"
-        BIFCGreen -> "GREEN"
-        BIFCRed -> "RED"
-        BIFCWhite -> "WHITE"
-        BIFCYellow -> "YELLOW"
+    toText (BurnInFontColor' ci) = original ci
+
+-- | Represents an enum of /known/ $BurnInFontColor.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum BurnInFontColor where
+    toEnum i = case i of
+        0 -> BIFCBlack
+        1 -> BIFCBlue
+        2 -> BIFCGreen
+        3 -> BIFCRed
+        4 -> BIFCWhite
+        5 -> BIFCYellow
+        _ -> (error . showText) $ "Unknown index for BurnInFontColor: " <> toText i
+    fromEnum x = case x of
+        BIFCBlack -> 0
+        BIFCBlue -> 1
+        BIFCGreen -> 2
+        BIFCRed -> 3
+        BIFCWhite -> 4
+        BIFCYellow -> 5
+        BurnInFontColor' name -> (error . showText) $ "Unknown BurnInFontColor: " <> original name
+
+-- | Represents the bounds of /known/ $BurnInFontColor.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded BurnInFontColor where
+    minBound = BIFCBlack
+    maxBound = BIFCYellow
 
 instance Hashable     BurnInFontColor
 instance NFData       BurnInFontColor

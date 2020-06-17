@@ -42,6 +42,7 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.Route53AutoNaming.Types
+import Network.AWS.Route53AutoNaming.Types.Product
 
 -- | /See:/ 'getOperation' smart constructor.
 newtype GetOperation = GetOperation'{_goOperationId

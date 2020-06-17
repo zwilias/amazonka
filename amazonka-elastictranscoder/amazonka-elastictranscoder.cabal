@@ -91,6 +91,7 @@ library
         , Network.AWS.ElasticTranscoder.Types.Playlist
         , Network.AWS.ElasticTranscoder.Types.Preset
         , Network.AWS.ElasticTranscoder.Types.PresetWatermark
+        , Network.AWS.ElasticTranscoder.Types.Product
         , Network.AWS.ElasticTranscoder.Types.Thumbnails
         , Network.AWS.ElasticTranscoder.Types.TimeSpan
         , Network.AWS.ElasticTranscoder.Types.Timing
@@ -100,6 +101,7 @@ library
     build-depends:
           amazonka-core == 1.6.1.*
         , base          >= 4.7     && < 5
+        , case-insensitive
 
 test-suite amazonka-elastictranscoder-test
     type:              exitcode-stdio-1.0
@@ -123,6 +125,7 @@ test-suite amazonka-elastictranscoder-test
         , amazonka-elastictranscoder
         , base
         , bytestring
+        , case-insensitive
         , tasty
         , tasty-hunit
         , text

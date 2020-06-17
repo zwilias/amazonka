@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,58 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.KMS.Types.DataKeySpec where
+module Network.AWS.KMS.Types.DataKeySpec (
+  DataKeySpec (
+    ..
+    , AES128
+    , AES256
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data DataKeySpec = AES128
-                 | AES256
-                     deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                               Typeable, Generic)
+
+data DataKeySpec = DataKeySpec' (CI Text)
+                     deriving (Eq, Ord, Read, Show, Data, Typeable,
+                               Generic)
+
+pattern AES128 :: DataKeySpec
+pattern AES128 = DataKeySpec' "AES_128"
+
+pattern AES256 :: DataKeySpec
+pattern AES256 = DataKeySpec' "AES_256"
+
+{-# COMPLETE
+  AES128,
+  AES256,
+  DataKeySpec' #-}
 
 instance FromText DataKeySpec where
-    parser = takeLowerText >>= \case
-        "aes_128" -> pure AES128
-        "aes_256" -> pure AES256
-        e -> fromTextError $ "Failure parsing DataKeySpec from value: '" <> e
-           <> "'. Accepted values: aes_128, aes_256"
+    parser = (DataKeySpec' . mk) <$> takeText
 
 instance ToText DataKeySpec where
-    toText = \case
-        AES128 -> "AES_128"
-        AES256 -> "AES_256"
+    toText (DataKeySpec' ci) = original ci
+
+-- | Represents an enum of /known/ $DataKeySpec.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum DataKeySpec where
+    toEnum i = case i of
+        0 -> AES128
+        1 -> AES256
+        _ -> (error . showText) $ "Unknown index for DataKeySpec: " <> toText i
+    fromEnum x = case x of
+        AES128 -> 0
+        AES256 -> 1
+        DataKeySpec' name -> (error . showText) $ "Unknown DataKeySpec: " <> original name
+
+-- | Represents the bounds of /known/ $DataKeySpec.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded DataKeySpec where
+    minBound = AES128
+    maxBound = AES256
 
 instance Hashable     DataKeySpec
 instance NFData       DataKeySpec

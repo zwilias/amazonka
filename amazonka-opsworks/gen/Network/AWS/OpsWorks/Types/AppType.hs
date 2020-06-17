@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,41 +16,93 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.OpsWorks.Types.AppType where
+module Network.AWS.OpsWorks.Types.AppType (
+  AppType (
+    ..
+    , ATAWSFlowRuby
+    , ATJava
+    , ATNodejs
+    , ATOther
+    , ATPHP
+    , ATRails
+    , ATStatic
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data AppType = ATAWSFlowRuby
-             | ATJava
-             | ATNodejs
-             | ATOther
-             | ATPHP
-             | ATRails
-             | ATStatic
-                 deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                           Typeable, Generic)
+
+data AppType = AppType' (CI Text)
+                 deriving (Eq, Ord, Read, Show, Data, Typeable,
+                           Generic)
+
+pattern ATAWSFlowRuby :: AppType
+pattern ATAWSFlowRuby = AppType' "aws-flow-ruby"
+
+pattern ATJava :: AppType
+pattern ATJava = AppType' "java"
+
+pattern ATNodejs :: AppType
+pattern ATNodejs = AppType' "nodejs"
+
+pattern ATOther :: AppType
+pattern ATOther = AppType' "other"
+
+pattern ATPHP :: AppType
+pattern ATPHP = AppType' "php"
+
+pattern ATRails :: AppType
+pattern ATRails = AppType' "rails"
+
+pattern ATStatic :: AppType
+pattern ATStatic = AppType' "static"
+
+{-# COMPLETE
+  ATAWSFlowRuby,
+  ATJava,
+  ATNodejs,
+  ATOther,
+  ATPHP,
+  ATRails,
+  ATStatic,
+  AppType' #-}
 
 instance FromText AppType where
-    parser = takeLowerText >>= \case
-        "aws-flow-ruby" -> pure ATAWSFlowRuby
-        "java" -> pure ATJava
-        "nodejs" -> pure ATNodejs
-        "other" -> pure ATOther
-        "php" -> pure ATPHP
-        "rails" -> pure ATRails
-        "static" -> pure ATStatic
-        e -> fromTextError $ "Failure parsing AppType from value: '" <> e
-           <> "'. Accepted values: aws-flow-ruby, java, nodejs, other, php, rails, static"
+    parser = (AppType' . mk) <$> takeText
 
 instance ToText AppType where
-    toText = \case
-        ATAWSFlowRuby -> "aws-flow-ruby"
-        ATJava -> "java"
-        ATNodejs -> "nodejs"
-        ATOther -> "other"
-        ATPHP -> "php"
-        ATRails -> "rails"
-        ATStatic -> "static"
+    toText (AppType' ci) = original ci
+
+-- | Represents an enum of /known/ $AppType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum AppType where
+    toEnum i = case i of
+        0 -> ATAWSFlowRuby
+        1 -> ATJava
+        2 -> ATNodejs
+        3 -> ATOther
+        4 -> ATPHP
+        5 -> ATRails
+        6 -> ATStatic
+        _ -> (error . showText) $ "Unknown index for AppType: " <> toText i
+    fromEnum x = case x of
+        ATAWSFlowRuby -> 0
+        ATJava -> 1
+        ATNodejs -> 2
+        ATOther -> 3
+        ATPHP -> 4
+        ATRails -> 5
+        ATStatic -> 6
+        AppType' name -> (error . showText) $ "Unknown AppType: " <> original name
+
+-- | Represents the bounds of /known/ $AppType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded AppType where
+    minBound = ATAWSFlowRuby
+    maxBound = ATStatic
 
 instance Hashable     AppType
 instance NFData       AppType

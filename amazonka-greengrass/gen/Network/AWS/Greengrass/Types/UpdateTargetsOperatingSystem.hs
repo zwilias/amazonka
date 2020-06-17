@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,31 +16,67 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.Greengrass.Types.UpdateTargetsOperatingSystem where
+module Network.AWS.Greengrass.Types.UpdateTargetsOperatingSystem (
+  UpdateTargetsOperatingSystem (
+    ..
+    , AmazonLinux
+    , Raspbian
+    , Ubuntu
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
+
 -- | The operating system of the cores which are the targets of an update.
-data UpdateTargetsOperatingSystem = AmazonLinux
-                                  | Raspbian
-                                  | Ubuntu
-                                      deriving (Eq, Ord, Read, Show, Enum,
-                                                Bounded, Data, Typeable,
-                                                Generic)
+data UpdateTargetsOperatingSystem = UpdateTargetsOperatingSystem' (CI
+                                                                     Text)
+                                      deriving (Eq, Ord, Read, Show, Data,
+                                                Typeable, Generic)
+
+pattern AmazonLinux :: UpdateTargetsOperatingSystem
+pattern AmazonLinux = UpdateTargetsOperatingSystem' "amazon_linux"
+
+pattern Raspbian :: UpdateTargetsOperatingSystem
+pattern Raspbian = UpdateTargetsOperatingSystem' "raspbian"
+
+pattern Ubuntu :: UpdateTargetsOperatingSystem
+pattern Ubuntu = UpdateTargetsOperatingSystem' "ubuntu"
+
+{-# COMPLETE
+  AmazonLinux,
+  Raspbian,
+  Ubuntu,
+  UpdateTargetsOperatingSystem' #-}
 
 instance FromText UpdateTargetsOperatingSystem where
-    parser = takeLowerText >>= \case
-        "amazon_linux" -> pure AmazonLinux
-        "raspbian" -> pure Raspbian
-        "ubuntu" -> pure Ubuntu
-        e -> fromTextError $ "Failure parsing UpdateTargetsOperatingSystem from value: '" <> e
-           <> "'. Accepted values: amazon_linux, raspbian, ubuntu"
+    parser = (UpdateTargetsOperatingSystem' . mk) <$> takeText
 
 instance ToText UpdateTargetsOperatingSystem where
-    toText = \case
-        AmazonLinux -> "amazon_linux"
-        Raspbian -> "raspbian"
-        Ubuntu -> "ubuntu"
+    toText (UpdateTargetsOperatingSystem' ci) = original ci
+
+-- | Represents an enum of /known/ $UpdateTargetsOperatingSystem.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum UpdateTargetsOperatingSystem where
+    toEnum i = case i of
+        0 -> AmazonLinux
+        1 -> Raspbian
+        2 -> Ubuntu
+        _ -> (error . showText) $ "Unknown index for UpdateTargetsOperatingSystem: " <> toText i
+    fromEnum x = case x of
+        AmazonLinux -> 0
+        Raspbian -> 1
+        Ubuntu -> 2
+        UpdateTargetsOperatingSystem' name -> (error . showText) $ "Unknown UpdateTargetsOperatingSystem: " <> original name
+
+-- | Represents the bounds of /known/ $UpdateTargetsOperatingSystem.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded UpdateTargetsOperatingSystem where
+    minBound = AmazonLinux
+    maxBound = Ubuntu
 
 instance Hashable     UpdateTargetsOperatingSystem
 instance NFData       UpdateTargetsOperatingSystem

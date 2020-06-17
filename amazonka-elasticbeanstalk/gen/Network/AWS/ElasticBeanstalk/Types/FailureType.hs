@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,41 +16,93 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.ElasticBeanstalk.Types.FailureType where
+module Network.AWS.ElasticBeanstalk.Types.FailureType (
+  FailureType (
+    ..
+    , CancellationFailed
+    , InternalFailure
+    , InvalidEnvironmentState
+    , PermissionsError
+    , RollbackFailed
+    , RollbackSuccessful
+    , UpdateCancelled
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data FailureType = CancellationFailed
-                 | InternalFailure
-                 | InvalidEnvironmentState
-                 | PermissionsError
-                 | RollbackFailed
-                 | RollbackSuccessful
-                 | UpdateCancelled
-                     deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                               Typeable, Generic)
+
+data FailureType = FailureType' (CI Text)
+                     deriving (Eq, Ord, Read, Show, Data, Typeable,
+                               Generic)
+
+pattern CancellationFailed :: FailureType
+pattern CancellationFailed = FailureType' "CancellationFailed"
+
+pattern InternalFailure :: FailureType
+pattern InternalFailure = FailureType' "InternalFailure"
+
+pattern InvalidEnvironmentState :: FailureType
+pattern InvalidEnvironmentState = FailureType' "InvalidEnvironmentState"
+
+pattern PermissionsError :: FailureType
+pattern PermissionsError = FailureType' "PermissionsError"
+
+pattern RollbackFailed :: FailureType
+pattern RollbackFailed = FailureType' "RollbackFailed"
+
+pattern RollbackSuccessful :: FailureType
+pattern RollbackSuccessful = FailureType' "RollbackSuccessful"
+
+pattern UpdateCancelled :: FailureType
+pattern UpdateCancelled = FailureType' "UpdateCancelled"
+
+{-# COMPLETE
+  CancellationFailed,
+  InternalFailure,
+  InvalidEnvironmentState,
+  PermissionsError,
+  RollbackFailed,
+  RollbackSuccessful,
+  UpdateCancelled,
+  FailureType' #-}
 
 instance FromText FailureType where
-    parser = takeLowerText >>= \case
-        "cancellationfailed" -> pure CancellationFailed
-        "internalfailure" -> pure InternalFailure
-        "invalidenvironmentstate" -> pure InvalidEnvironmentState
-        "permissionserror" -> pure PermissionsError
-        "rollbackfailed" -> pure RollbackFailed
-        "rollbacksuccessful" -> pure RollbackSuccessful
-        "updatecancelled" -> pure UpdateCancelled
-        e -> fromTextError $ "Failure parsing FailureType from value: '" <> e
-           <> "'. Accepted values: cancellationfailed, internalfailure, invalidenvironmentstate, permissionserror, rollbackfailed, rollbacksuccessful, updatecancelled"
+    parser = (FailureType' . mk) <$> takeText
 
 instance ToText FailureType where
-    toText = \case
-        CancellationFailed -> "CancellationFailed"
-        InternalFailure -> "InternalFailure"
-        InvalidEnvironmentState -> "InvalidEnvironmentState"
-        PermissionsError -> "PermissionsError"
-        RollbackFailed -> "RollbackFailed"
-        RollbackSuccessful -> "RollbackSuccessful"
-        UpdateCancelled -> "UpdateCancelled"
+    toText (FailureType' ci) = original ci
+
+-- | Represents an enum of /known/ $FailureType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum FailureType where
+    toEnum i = case i of
+        0 -> CancellationFailed
+        1 -> InternalFailure
+        2 -> InvalidEnvironmentState
+        3 -> PermissionsError
+        4 -> RollbackFailed
+        5 -> RollbackSuccessful
+        6 -> UpdateCancelled
+        _ -> (error . showText) $ "Unknown index for FailureType: " <> toText i
+    fromEnum x = case x of
+        CancellationFailed -> 0
+        InternalFailure -> 1
+        InvalidEnvironmentState -> 2
+        PermissionsError -> 3
+        RollbackFailed -> 4
+        RollbackSuccessful -> 5
+        UpdateCancelled -> 6
+        FailureType' name -> (error . showText) $ "Unknown FailureType: " <> original name
+
+-- | Represents the bounds of /known/ $FailureType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded FailureType where
+    minBound = CancellationFailed
+    maxBound = UpdateCancelled
 
 instance Hashable     FailureType
 instance NFData       FailureType

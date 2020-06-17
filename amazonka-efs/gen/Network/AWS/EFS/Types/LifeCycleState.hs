@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,32 +16,72 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.EFS.Types.LifeCycleState where
+module Network.AWS.EFS.Types.LifeCycleState (
+  LifeCycleState (
+    ..
+    , Available
+    , Creating
+    , Deleted
+    , Deleting
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data LifeCycleState = Available
-                    | Creating
-                    | Deleted
-                    | Deleting
-                        deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                  Typeable, Generic)
+
+data LifeCycleState = LifeCycleState' (CI Text)
+                        deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                  Generic)
+
+pattern Available :: LifeCycleState
+pattern Available = LifeCycleState' "available"
+
+pattern Creating :: LifeCycleState
+pattern Creating = LifeCycleState' "creating"
+
+pattern Deleted :: LifeCycleState
+pattern Deleted = LifeCycleState' "deleted"
+
+pattern Deleting :: LifeCycleState
+pattern Deleting = LifeCycleState' "deleting"
+
+{-# COMPLETE
+  Available,
+  Creating,
+  Deleted,
+  Deleting,
+  LifeCycleState' #-}
 
 instance FromText LifeCycleState where
-    parser = takeLowerText >>= \case
-        "available" -> pure Available
-        "creating" -> pure Creating
-        "deleted" -> pure Deleted
-        "deleting" -> pure Deleting
-        e -> fromTextError $ "Failure parsing LifeCycleState from value: '" <> e
-           <> "'. Accepted values: available, creating, deleted, deleting"
+    parser = (LifeCycleState' . mk) <$> takeText
 
 instance ToText LifeCycleState where
-    toText = \case
-        Available -> "available"
-        Creating -> "creating"
-        Deleted -> "deleted"
-        Deleting -> "deleting"
+    toText (LifeCycleState' ci) = original ci
+
+-- | Represents an enum of /known/ $LifeCycleState.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum LifeCycleState where
+    toEnum i = case i of
+        0 -> Available
+        1 -> Creating
+        2 -> Deleted
+        3 -> Deleting
+        _ -> (error . showText) $ "Unknown index for LifeCycleState: " <> toText i
+    fromEnum x = case x of
+        Available -> 0
+        Creating -> 1
+        Deleted -> 2
+        Deleting -> 3
+        LifeCycleState' name -> (error . showText) $ "Unknown LifeCycleState: " <> original name
+
+-- | Represents the bounds of /known/ $LifeCycleState.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded LifeCycleState where
+    minBound = Available
+    maxBound = Deleting
 
 instance Hashable     LifeCycleState
 instance NFData       LifeCycleState

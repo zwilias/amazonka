@@ -48,6 +48,7 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.Route53AutoNaming.Types
+import Network.AWS.Route53AutoNaming.Types.Product
 
 -- | /See:/ 'listInstances' smart constructor.
 data ListInstances = ListInstances'{_liNextToken ::

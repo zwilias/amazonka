@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,27 +16,60 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.MediaLive.Types.TtmlDestinationStyleControl where
+module Network.AWS.MediaLive.Types.TtmlDestinationStyleControl (
+  TtmlDestinationStyleControl (
+    ..
+    , TDSCPassthrough
+    , TDSCUseConfigured
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
+
 -- | Placeholder documentation for TtmlDestinationStyleControl
-data TtmlDestinationStyleControl = TDSCPassthrough
-                                 | TDSCUseConfigured
-                                     deriving (Eq, Ord, Read, Show, Enum,
-                                               Bounded, Data, Typeable, Generic)
+data TtmlDestinationStyleControl = TtmlDestinationStyleControl' (CI
+                                                                   Text)
+                                     deriving (Eq, Ord, Read, Show, Data,
+                                               Typeable, Generic)
+
+pattern TDSCPassthrough :: TtmlDestinationStyleControl
+pattern TDSCPassthrough = TtmlDestinationStyleControl' "PASSTHROUGH"
+
+pattern TDSCUseConfigured :: TtmlDestinationStyleControl
+pattern TDSCUseConfigured = TtmlDestinationStyleControl' "USE_CONFIGURED"
+
+{-# COMPLETE
+  TDSCPassthrough,
+  TDSCUseConfigured,
+  TtmlDestinationStyleControl' #-}
 
 instance FromText TtmlDestinationStyleControl where
-    parser = takeLowerText >>= \case
-        "passthrough" -> pure TDSCPassthrough
-        "use_configured" -> pure TDSCUseConfigured
-        e -> fromTextError $ "Failure parsing TtmlDestinationStyleControl from value: '" <> e
-           <> "'. Accepted values: passthrough, use_configured"
+    parser = (TtmlDestinationStyleControl' . mk) <$> takeText
 
 instance ToText TtmlDestinationStyleControl where
-    toText = \case
-        TDSCPassthrough -> "PASSTHROUGH"
-        TDSCUseConfigured -> "USE_CONFIGURED"
+    toText (TtmlDestinationStyleControl' ci) = original ci
+
+-- | Represents an enum of /known/ $TtmlDestinationStyleControl.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum TtmlDestinationStyleControl where
+    toEnum i = case i of
+        0 -> TDSCPassthrough
+        1 -> TDSCUseConfigured
+        _ -> (error . showText) $ "Unknown index for TtmlDestinationStyleControl: " <> toText i
+    fromEnum x = case x of
+        TDSCPassthrough -> 0
+        TDSCUseConfigured -> 1
+        TtmlDestinationStyleControl' name -> (error . showText) $ "Unknown TtmlDestinationStyleControl: " <> original name
+
+-- | Represents the bounds of /known/ $TtmlDestinationStyleControl.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded TtmlDestinationStyleControl where
+    minBound = TDSCPassthrough
+    maxBound = TDSCUseConfigured
 
 instance Hashable     TtmlDestinationStyleControl
 instance NFData       TtmlDestinationStyleControl

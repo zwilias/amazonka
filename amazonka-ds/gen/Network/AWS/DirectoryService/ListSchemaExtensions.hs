@@ -43,6 +43,7 @@ module Network.AWS.DirectoryService.ListSchemaExtensions
     ) where
 
 import Network.AWS.DirectoryService.Types
+import Network.AWS.DirectoryService.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude

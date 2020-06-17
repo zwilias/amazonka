@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,35 +16,79 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.Greengrass.Types.LoggerLevel where
+module Network.AWS.Greengrass.Types.LoggerLevel (
+  LoggerLevel (
+    ..
+    , Debug
+    , Error'
+    , Fatal
+    , Info
+    , Warn
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data LoggerLevel = Debug
-                 | Error'
-                 | Fatal
-                 | Info
-                 | Warn
-                     deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                               Typeable, Generic)
+
+data LoggerLevel = LoggerLevel' (CI Text)
+                     deriving (Eq, Ord, Read, Show, Data, Typeable,
+                               Generic)
+
+pattern Debug :: LoggerLevel
+pattern Debug = LoggerLevel' "DEBUG"
+
+pattern Error' :: LoggerLevel
+pattern Error' = LoggerLevel' "ERROR"
+
+pattern Fatal :: LoggerLevel
+pattern Fatal = LoggerLevel' "FATAL"
+
+pattern Info :: LoggerLevel
+pattern Info = LoggerLevel' "INFO"
+
+pattern Warn :: LoggerLevel
+pattern Warn = LoggerLevel' "WARN"
+
+{-# COMPLETE
+  Debug,
+  Error',
+  Fatal,
+  Info,
+  Warn,
+  LoggerLevel' #-}
 
 instance FromText LoggerLevel where
-    parser = takeLowerText >>= \case
-        "debug" -> pure Debug
-        "error" -> pure Error'
-        "fatal" -> pure Fatal
-        "info" -> pure Info
-        "warn" -> pure Warn
-        e -> fromTextError $ "Failure parsing LoggerLevel from value: '" <> e
-           <> "'. Accepted values: debug, error, fatal, info, warn"
+    parser = (LoggerLevel' . mk) <$> takeText
 
 instance ToText LoggerLevel where
-    toText = \case
-        Debug -> "DEBUG"
-        Error' -> "ERROR"
-        Fatal -> "FATAL"
-        Info -> "INFO"
-        Warn -> "WARN"
+    toText (LoggerLevel' ci) = original ci
+
+-- | Represents an enum of /known/ $LoggerLevel.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum LoggerLevel where
+    toEnum i = case i of
+        0 -> Debug
+        1 -> Error'
+        2 -> Fatal
+        3 -> Info
+        4 -> Warn
+        _ -> (error . showText) $ "Unknown index for LoggerLevel: " <> toText i
+    fromEnum x = case x of
+        Debug -> 0
+        Error' -> 1
+        Fatal -> 2
+        Info -> 3
+        Warn -> 4
+        LoggerLevel' name -> (error . showText) $ "Unknown LoggerLevel: " <> original name
+
+-- | Represents the bounds of /known/ $LoggerLevel.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded LoggerLevel where
+    minBound = Debug
+    maxBound = Warn
 
 instance Hashable     LoggerLevel
 instance NFData       LoggerLevel

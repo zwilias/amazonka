@@ -207,6 +207,7 @@ library
         , Network.AWS.APIGateway.Types.Model
         , Network.AWS.APIGateway.Types.Op
         , Network.AWS.APIGateway.Types.PatchOperation
+        , Network.AWS.APIGateway.Types.Product
         , Network.AWS.APIGateway.Types.PutMode
         , Network.AWS.APIGateway.Types.QuotaPeriodType
         , Network.AWS.APIGateway.Types.QuotaSettings
@@ -229,6 +230,7 @@ library
     build-depends:
           amazonka-core == 1.6.1.*
         , base          >= 4.7     && < 5
+        , case-insensitive
 
 test-suite amazonka-apigateway-test
     type:              exitcode-stdio-1.0
@@ -252,6 +254,7 @@ test-suite amazonka-apigateway-test
         , amazonka-apigateway
         , base
         , bytestring
+        , case-insensitive
         , tasty
         , tasty-hunit
         , text

@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,58 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.AppSync.Types.DefaultAction where
+module Network.AWS.AppSync.Types.DefaultAction (
+  DefaultAction (
+    ..
+    , Allow
+    , Deny
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data DefaultAction = Allow
-                   | Deny
-                       deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                 Typeable, Generic)
+
+data DefaultAction = DefaultAction' (CI Text)
+                       deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                 Generic)
+
+pattern Allow :: DefaultAction
+pattern Allow = DefaultAction' "ALLOW"
+
+pattern Deny :: DefaultAction
+pattern Deny = DefaultAction' "DENY"
+
+{-# COMPLETE
+  Allow,
+  Deny,
+  DefaultAction' #-}
 
 instance FromText DefaultAction where
-    parser = takeLowerText >>= \case
-        "allow" -> pure Allow
-        "deny" -> pure Deny
-        e -> fromTextError $ "Failure parsing DefaultAction from value: '" <> e
-           <> "'. Accepted values: allow, deny"
+    parser = (DefaultAction' . mk) <$> takeText
 
 instance ToText DefaultAction where
-    toText = \case
-        Allow -> "ALLOW"
-        Deny -> "DENY"
+    toText (DefaultAction' ci) = original ci
+
+-- | Represents an enum of /known/ $DefaultAction.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum DefaultAction where
+    toEnum i = case i of
+        0 -> Allow
+        1 -> Deny
+        _ -> (error . showText) $ "Unknown index for DefaultAction: " <> toText i
+    fromEnum x = case x of
+        Allow -> 0
+        Deny -> 1
+        DefaultAction' name -> (error . showText) $ "Unknown DefaultAction: " <> original name
+
+-- | Represents the bounds of /known/ $DefaultAction.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded DefaultAction where
+    minBound = Allow
+    maxBound = Deny
 
 instance Hashable     DefaultAction
 instance NFData       DefaultAction

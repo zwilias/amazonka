@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,58 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.CognitoIdentityProvider.Types.ChallengeName where
+module Network.AWS.CognitoIdentityProvider.Types.ChallengeName (
+  ChallengeName (
+    ..
+    , MFA
+    , Password
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data ChallengeName = MFA
-                   | Password
-                       deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                 Typeable, Generic)
+
+data ChallengeName = ChallengeName' (CI Text)
+                       deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                 Generic)
+
+pattern MFA :: ChallengeName
+pattern MFA = ChallengeName' "Mfa"
+
+pattern Password :: ChallengeName
+pattern Password = ChallengeName' "Password"
+
+{-# COMPLETE
+  MFA,
+  Password,
+  ChallengeName' #-}
 
 instance FromText ChallengeName where
-    parser = takeLowerText >>= \case
-        "mfa" -> pure MFA
-        "password" -> pure Password
-        e -> fromTextError $ "Failure parsing ChallengeName from value: '" <> e
-           <> "'. Accepted values: mfa, password"
+    parser = (ChallengeName' . mk) <$> takeText
 
 instance ToText ChallengeName where
-    toText = \case
-        MFA -> "Mfa"
-        Password -> "Password"
+    toText (ChallengeName' ci) = original ci
+
+-- | Represents an enum of /known/ $ChallengeName.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum ChallengeName where
+    toEnum i = case i of
+        0 -> MFA
+        1 -> Password
+        _ -> (error . showText) $ "Unknown index for ChallengeName: " <> toText i
+    fromEnum x = case x of
+        MFA -> 0
+        Password -> 1
+        ChallengeName' name -> (error . showText) $ "Unknown ChallengeName: " <> original name
+
+-- | Represents the bounds of /known/ $ChallengeName.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded ChallengeName where
+    minBound = MFA
+    maxBound = Password
 
 instance Hashable     ChallengeName
 instance NFData       ChallengeName

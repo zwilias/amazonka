@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,58 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.CloudWatch.Types.ScanBy where
+module Network.AWS.CloudWatch.Types.ScanBy (
+  ScanBy (
+    ..
+    , TimestampAscending
+    , TimestampDescending
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data ScanBy = TimestampAscending
-            | TimestampDescending
-                deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                          Typeable, Generic)
+
+data ScanBy = ScanBy' (CI Text)
+                deriving (Eq, Ord, Read, Show, Data, Typeable,
+                          Generic)
+
+pattern TimestampAscending :: ScanBy
+pattern TimestampAscending = ScanBy' "TimestampAscending"
+
+pattern TimestampDescending :: ScanBy
+pattern TimestampDescending = ScanBy' "TimestampDescending"
+
+{-# COMPLETE
+  TimestampAscending,
+  TimestampDescending,
+  ScanBy' #-}
 
 instance FromText ScanBy where
-    parser = takeLowerText >>= \case
-        "timestampascending" -> pure TimestampAscending
-        "timestampdescending" -> pure TimestampDescending
-        e -> fromTextError $ "Failure parsing ScanBy from value: '" <> e
-           <> "'. Accepted values: timestampascending, timestampdescending"
+    parser = (ScanBy' . mk) <$> takeText
 
 instance ToText ScanBy where
-    toText = \case
-        TimestampAscending -> "TimestampAscending"
-        TimestampDescending -> "TimestampDescending"
+    toText (ScanBy' ci) = original ci
+
+-- | Represents an enum of /known/ $ScanBy.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum ScanBy where
+    toEnum i = case i of
+        0 -> TimestampAscending
+        1 -> TimestampDescending
+        _ -> (error . showText) $ "Unknown index for ScanBy: " <> toText i
+    fromEnum x = case x of
+        TimestampAscending -> 0
+        TimestampDescending -> 1
+        ScanBy' name -> (error . showText) $ "Unknown ScanBy: " <> original name
+
+-- | Represents the bounds of /known/ $ScanBy.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded ScanBy where
+    minBound = TimestampAscending
+    maxBound = TimestampDescending
 
 instance Hashable     ScanBy
 instance NFData       ScanBy

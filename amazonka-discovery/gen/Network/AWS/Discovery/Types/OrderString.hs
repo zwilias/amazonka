@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,58 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.Discovery.Types.OrderString where
+module Network.AWS.Discovery.Types.OrderString (
+  OrderString (
+    ..
+    , Asc
+    , Desc
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data OrderString = Asc
-                 | Desc
-                     deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                               Typeable, Generic)
+
+data OrderString = OrderString' (CI Text)
+                     deriving (Eq, Ord, Read, Show, Data, Typeable,
+                               Generic)
+
+pattern Asc :: OrderString
+pattern Asc = OrderString' "ASC"
+
+pattern Desc :: OrderString
+pattern Desc = OrderString' "DESC"
+
+{-# COMPLETE
+  Asc,
+  Desc,
+  OrderString' #-}
 
 instance FromText OrderString where
-    parser = takeLowerText >>= \case
-        "asc" -> pure Asc
-        "desc" -> pure Desc
-        e -> fromTextError $ "Failure parsing OrderString from value: '" <> e
-           <> "'. Accepted values: asc, desc"
+    parser = (OrderString' . mk) <$> takeText
 
 instance ToText OrderString where
-    toText = \case
-        Asc -> "ASC"
-        Desc -> "DESC"
+    toText (OrderString' ci) = original ci
+
+-- | Represents an enum of /known/ $OrderString.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum OrderString where
+    toEnum i = case i of
+        0 -> Asc
+        1 -> Desc
+        _ -> (error . showText) $ "Unknown index for OrderString: " <> toText i
+    fromEnum x = case x of
+        Asc -> 0
+        Desc -> 1
+        OrderString' name -> (error . showText) $ "Unknown OrderString: " <> original name
+
+-- | Represents the bounds of /known/ $OrderString.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded OrderString where
+    minBound = Asc
+    maxBound = Desc
 
 instance Hashable     OrderString
 instance NFData       OrderString

@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,27 +16,60 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.S3.Types.InventoryFrequency where
+module Network.AWS.S3.Types.InventoryFrequency (
+  InventoryFrequency (
+    ..
+    , Daily
+    , Weekly
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
 import Network.AWS.S3.Internal
-  
-data InventoryFrequency = Daily
-                        | Weekly
-                            deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                      Typeable, Generic)
+
+data InventoryFrequency = InventoryFrequency' (CI
+                                                 Text)
+                            deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                      Generic)
+
+pattern Daily :: InventoryFrequency
+pattern Daily = InventoryFrequency' "Daily"
+
+pattern Weekly :: InventoryFrequency
+pattern Weekly = InventoryFrequency' "Weekly"
+
+{-# COMPLETE
+  Daily,
+  Weekly,
+  InventoryFrequency' #-}
 
 instance FromText InventoryFrequency where
-    parser = takeLowerText >>= \case
-        "daily" -> pure Daily
-        "weekly" -> pure Weekly
-        e -> fromTextError $ "Failure parsing InventoryFrequency from value: '" <> e
-           <> "'. Accepted values: daily, weekly"
+    parser = (InventoryFrequency' . mk) <$> takeText
 
 instance ToText InventoryFrequency where
-    toText = \case
-        Daily -> "Daily"
-        Weekly -> "Weekly"
+    toText (InventoryFrequency' ci) = original ci
+
+-- | Represents an enum of /known/ $InventoryFrequency.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum InventoryFrequency where
+    toEnum i = case i of
+        0 -> Daily
+        1 -> Weekly
+        _ -> (error . showText) $ "Unknown index for InventoryFrequency: " <> toText i
+    fromEnum x = case x of
+        Daily -> 0
+        Weekly -> 1
+        InventoryFrequency' name -> (error . showText) $ "Unknown InventoryFrequency: " <> original name
+
+-- | Represents the bounds of /known/ $InventoryFrequency.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded InventoryFrequency where
+    minBound = Daily
+    maxBound = Weekly
 
 instance Hashable     InventoryFrequency
 instance NFData       InventoryFrequency

@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,27 +16,60 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.MediaLive.Types.InputDenoiseFilter where
+module Network.AWS.MediaLive.Types.InputDenoiseFilter (
+  InputDenoiseFilter (
+    ..
+    , IDisabled
+    , IEnabled
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
+
 -- | Placeholder documentation for InputDenoiseFilter
-data InputDenoiseFilter = IDisabled
-                        | IEnabled
-                            deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                      Typeable, Generic)
+data InputDenoiseFilter = InputDenoiseFilter' (CI
+                                                 Text)
+                            deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                      Generic)
+
+pattern IDisabled :: InputDenoiseFilter
+pattern IDisabled = InputDenoiseFilter' "DISABLED"
+
+pattern IEnabled :: InputDenoiseFilter
+pattern IEnabled = InputDenoiseFilter' "ENABLED"
+
+{-# COMPLETE
+  IDisabled,
+  IEnabled,
+  InputDenoiseFilter' #-}
 
 instance FromText InputDenoiseFilter where
-    parser = takeLowerText >>= \case
-        "disabled" -> pure IDisabled
-        "enabled" -> pure IEnabled
-        e -> fromTextError $ "Failure parsing InputDenoiseFilter from value: '" <> e
-           <> "'. Accepted values: disabled, enabled"
+    parser = (InputDenoiseFilter' . mk) <$> takeText
 
 instance ToText InputDenoiseFilter where
-    toText = \case
-        IDisabled -> "DISABLED"
-        IEnabled -> "ENABLED"
+    toText (InputDenoiseFilter' ci) = original ci
+
+-- | Represents an enum of /known/ $InputDenoiseFilter.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum InputDenoiseFilter where
+    toEnum i = case i of
+        0 -> IDisabled
+        1 -> IEnabled
+        _ -> (error . showText) $ "Unknown index for InputDenoiseFilter: " <> toText i
+    fromEnum x = case x of
+        IDisabled -> 0
+        IEnabled -> 1
+        InputDenoiseFilter' name -> (error . showText) $ "Unknown InputDenoiseFilter: " <> original name
+
+-- | Represents the bounds of /known/ $InputDenoiseFilter.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded InputDenoiseFilter where
+    minBound = IDisabled
+    maxBound = IEnabled
 
 instance Hashable     InputDenoiseFilter
 instance NFData       InputDenoiseFilter

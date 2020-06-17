@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,27 +16,59 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.MediaConvert.Types.HlsEncryptionType where
+module Network.AWS.MediaConvert.Types.HlsEncryptionType (
+  HlsEncryptionType (
+    ..
+    , AES128
+    , SampleAES
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
+
 -- | Encrypts the segments with the given encryption scheme. Leave blank to disable. Selecting 'Disabled' in the web interface also disables encryption.
-data HlsEncryptionType = AES128
-                       | SampleAES
-                           deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                     Typeable, Generic)
+data HlsEncryptionType = HlsEncryptionType' (CI Text)
+                           deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                     Generic)
+
+pattern AES128 :: HlsEncryptionType
+pattern AES128 = HlsEncryptionType' "AES128"
+
+pattern SampleAES :: HlsEncryptionType
+pattern SampleAES = HlsEncryptionType' "SAMPLE_AES"
+
+{-# COMPLETE
+  AES128,
+  SampleAES,
+  HlsEncryptionType' #-}
 
 instance FromText HlsEncryptionType where
-    parser = takeLowerText >>= \case
-        "aes128" -> pure AES128
-        "sample_aes" -> pure SampleAES
-        e -> fromTextError $ "Failure parsing HlsEncryptionType from value: '" <> e
-           <> "'. Accepted values: aes128, sample_aes"
+    parser = (HlsEncryptionType' . mk) <$> takeText
 
 instance ToText HlsEncryptionType where
-    toText = \case
-        AES128 -> "AES128"
-        SampleAES -> "SAMPLE_AES"
+    toText (HlsEncryptionType' ci) = original ci
+
+-- | Represents an enum of /known/ $HlsEncryptionType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum HlsEncryptionType where
+    toEnum i = case i of
+        0 -> AES128
+        1 -> SampleAES
+        _ -> (error . showText) $ "Unknown index for HlsEncryptionType: " <> toText i
+    fromEnum x = case x of
+        AES128 -> 0
+        SampleAES -> 1
+        HlsEncryptionType' name -> (error . showText) $ "Unknown HlsEncryptionType: " <> original name
+
+-- | Represents the bounds of /known/ $HlsEncryptionType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded HlsEncryptionType where
+    minBound = AES128
+    maxBound = SampleAES
 
 instance Hashable     HlsEncryptionType
 instance NFData       HlsEncryptionType

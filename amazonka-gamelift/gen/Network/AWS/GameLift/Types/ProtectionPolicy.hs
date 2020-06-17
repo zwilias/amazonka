@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,58 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.GameLift.Types.ProtectionPolicy where
+module Network.AWS.GameLift.Types.ProtectionPolicy (
+  ProtectionPolicy (
+    ..
+    , FullProtection
+    , NoProtection
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data ProtectionPolicy = FullProtection
-                      | NoProtection
-                          deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                    Typeable, Generic)
+
+data ProtectionPolicy = ProtectionPolicy' (CI Text)
+                          deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                    Generic)
+
+pattern FullProtection :: ProtectionPolicy
+pattern FullProtection = ProtectionPolicy' "FullProtection"
+
+pattern NoProtection :: ProtectionPolicy
+pattern NoProtection = ProtectionPolicy' "NoProtection"
+
+{-# COMPLETE
+  FullProtection,
+  NoProtection,
+  ProtectionPolicy' #-}
 
 instance FromText ProtectionPolicy where
-    parser = takeLowerText >>= \case
-        "fullprotection" -> pure FullProtection
-        "noprotection" -> pure NoProtection
-        e -> fromTextError $ "Failure parsing ProtectionPolicy from value: '" <> e
-           <> "'. Accepted values: fullprotection, noprotection"
+    parser = (ProtectionPolicy' . mk) <$> takeText
 
 instance ToText ProtectionPolicy where
-    toText = \case
-        FullProtection -> "FullProtection"
-        NoProtection -> "NoProtection"
+    toText (ProtectionPolicy' ci) = original ci
+
+-- | Represents an enum of /known/ $ProtectionPolicy.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum ProtectionPolicy where
+    toEnum i = case i of
+        0 -> FullProtection
+        1 -> NoProtection
+        _ -> (error . showText) $ "Unknown index for ProtectionPolicy: " <> toText i
+    fromEnum x = case x of
+        FullProtection -> 0
+        NoProtection -> 1
+        ProtectionPolicy' name -> (error . showText) $ "Unknown ProtectionPolicy: " <> original name
+
+-- | Represents the bounds of /known/ $ProtectionPolicy.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded ProtectionPolicy where
+    minBound = FullProtection
+    maxBound = NoProtection
 
 instance Hashable     ProtectionPolicy
 instance NFData       ProtectionPolicy

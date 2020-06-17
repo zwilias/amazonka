@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,28 +16,60 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.MediaConvert.Types.H265TemporalAdaptiveQuantization where
+module Network.AWS.MediaConvert.Types.H265TemporalAdaptiveQuantization (
+  H265TemporalAdaptiveQuantization (
+    ..
+    , HTAQDisabled
+    , HTAQEnabled
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
+
 -- | Adjust quantization within each frame based on temporal variation of content complexity.
-data H265TemporalAdaptiveQuantization = HTAQDisabled
-                                      | HTAQEnabled
-                                          deriving (Eq, Ord, Read, Show, Enum,
-                                                    Bounded, Data, Typeable,
-                                                    Generic)
+data H265TemporalAdaptiveQuantization = H265TemporalAdaptiveQuantization' (CI
+                                                                             Text)
+                                          deriving (Eq, Ord, Read, Show, Data,
+                                                    Typeable, Generic)
+
+pattern HTAQDisabled :: H265TemporalAdaptiveQuantization
+pattern HTAQDisabled = H265TemporalAdaptiveQuantization' "DISABLED"
+
+pattern HTAQEnabled :: H265TemporalAdaptiveQuantization
+pattern HTAQEnabled = H265TemporalAdaptiveQuantization' "ENABLED"
+
+{-# COMPLETE
+  HTAQDisabled,
+  HTAQEnabled,
+  H265TemporalAdaptiveQuantization' #-}
 
 instance FromText H265TemporalAdaptiveQuantization where
-    parser = takeLowerText >>= \case
-        "disabled" -> pure HTAQDisabled
-        "enabled" -> pure HTAQEnabled
-        e -> fromTextError $ "Failure parsing H265TemporalAdaptiveQuantization from value: '" <> e
-           <> "'. Accepted values: disabled, enabled"
+    parser = (H265TemporalAdaptiveQuantization' . mk) <$> takeText
 
 instance ToText H265TemporalAdaptiveQuantization where
-    toText = \case
-        HTAQDisabled -> "DISABLED"
-        HTAQEnabled -> "ENABLED"
+    toText (H265TemporalAdaptiveQuantization' ci) = original ci
+
+-- | Represents an enum of /known/ $H265TemporalAdaptiveQuantization.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum H265TemporalAdaptiveQuantization where
+    toEnum i = case i of
+        0 -> HTAQDisabled
+        1 -> HTAQEnabled
+        _ -> (error . showText) $ "Unknown index for H265TemporalAdaptiveQuantization: " <> toText i
+    fromEnum x = case x of
+        HTAQDisabled -> 0
+        HTAQEnabled -> 1
+        H265TemporalAdaptiveQuantization' name -> (error . showText) $ "Unknown H265TemporalAdaptiveQuantization: " <> original name
+
+-- | Represents the bounds of /known/ $H265TemporalAdaptiveQuantization.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded H265TemporalAdaptiveQuantization where
+    minBound = HTAQDisabled
+    maxBound = HTAQEnabled
 
 instance Hashable     H265TemporalAdaptiveQuantization
 instance NFData       H265TemporalAdaptiveQuantization

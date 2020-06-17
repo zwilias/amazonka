@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,24 +16,52 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.AppSync.Types.RelationalDatabaseSourceType where
+module Network.AWS.AppSync.Types.RelationalDatabaseSourceType (
+  RelationalDatabaseSourceType (
+    ..
+    , RDSHTTPEndpoint
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data RelationalDatabaseSourceType = RDSHTTPEndpoint
-                                      deriving (Eq, Ord, Read, Show, Enum,
-                                                Bounded, Data, Typeable,
-                                                Generic)
+
+data RelationalDatabaseSourceType = RelationalDatabaseSourceType' (CI
+                                                                     Text)
+                                      deriving (Eq, Ord, Read, Show, Data,
+                                                Typeable, Generic)
+
+pattern RDSHTTPEndpoint :: RelationalDatabaseSourceType
+pattern RDSHTTPEndpoint = RelationalDatabaseSourceType' "RDS_HTTP_ENDPOINT"
+
+{-# COMPLETE
+  RDSHTTPEndpoint,
+  RelationalDatabaseSourceType' #-}
 
 instance FromText RelationalDatabaseSourceType where
-    parser = takeLowerText >>= \case
-        "rds_http_endpoint" -> pure RDSHTTPEndpoint
-        e -> fromTextError $ "Failure parsing RelationalDatabaseSourceType from value: '" <> e
-           <> "'. Accepted values: rds_http_endpoint"
+    parser = (RelationalDatabaseSourceType' . mk) <$> takeText
 
 instance ToText RelationalDatabaseSourceType where
-    toText = \case
-        RDSHTTPEndpoint -> "RDS_HTTP_ENDPOINT"
+    toText (RelationalDatabaseSourceType' ci) = original ci
+
+-- | Represents an enum of /known/ $RelationalDatabaseSourceType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum RelationalDatabaseSourceType where
+    toEnum i = case i of
+        0 -> RDSHTTPEndpoint
+        _ -> (error . showText) $ "Unknown index for RelationalDatabaseSourceType: " <> toText i
+    fromEnum x = case x of
+        RDSHTTPEndpoint -> 0
+        RelationalDatabaseSourceType' name -> (error . showText) $ "Unknown RelationalDatabaseSourceType: " <> original name
+
+-- | Represents the bounds of /known/ $RelationalDatabaseSourceType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded RelationalDatabaseSourceType where
+    minBound = RDSHTTPEndpoint
+    maxBound = RDSHTTPEndpoint
 
 instance Hashable     RelationalDatabaseSourceType
 instance NFData       RelationalDatabaseSourceType

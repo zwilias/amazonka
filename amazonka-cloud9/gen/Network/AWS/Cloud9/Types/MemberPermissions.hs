@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,58 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.Cloud9.Types.MemberPermissions where
+module Network.AWS.Cloud9.Types.MemberPermissions (
+  MemberPermissions (
+    ..
+    , MPReadOnly
+    , MPReadWrite
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data MemberPermissions = MPReadOnly
-                       | MPReadWrite
-                           deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                     Typeable, Generic)
+
+data MemberPermissions = MemberPermissions' (CI Text)
+                           deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                     Generic)
+
+pattern MPReadOnly :: MemberPermissions
+pattern MPReadOnly = MemberPermissions' "read-only"
+
+pattern MPReadWrite :: MemberPermissions
+pattern MPReadWrite = MemberPermissions' "read-write"
+
+{-# COMPLETE
+  MPReadOnly,
+  MPReadWrite,
+  MemberPermissions' #-}
 
 instance FromText MemberPermissions where
-    parser = takeLowerText >>= \case
-        "read-only" -> pure MPReadOnly
-        "read-write" -> pure MPReadWrite
-        e -> fromTextError $ "Failure parsing MemberPermissions from value: '" <> e
-           <> "'. Accepted values: read-only, read-write"
+    parser = (MemberPermissions' . mk) <$> takeText
 
 instance ToText MemberPermissions where
-    toText = \case
-        MPReadOnly -> "read-only"
-        MPReadWrite -> "read-write"
+    toText (MemberPermissions' ci) = original ci
+
+-- | Represents an enum of /known/ $MemberPermissions.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum MemberPermissions where
+    toEnum i = case i of
+        0 -> MPReadOnly
+        1 -> MPReadWrite
+        _ -> (error . showText) $ "Unknown index for MemberPermissions: " <> toText i
+    fromEnum x = case x of
+        MPReadOnly -> 0
+        MPReadWrite -> 1
+        MemberPermissions' name -> (error . showText) $ "Unknown MemberPermissions: " <> original name
+
+-- | Represents the bounds of /known/ $MemberPermissions.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded MemberPermissions where
+    minBound = MPReadOnly
+    maxBound = MPReadWrite
 
 instance Hashable     MemberPermissions
 instance NFData       MemberPermissions

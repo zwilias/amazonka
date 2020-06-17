@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,29 +16,66 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.ECS.Types.TaskDefinitionFamilyStatus where
+module Network.AWS.ECS.Types.TaskDefinitionFamilyStatus (
+  TaskDefinitionFamilyStatus (
+    ..
+    , TDFSActive
+    , TDFSAll
+    , TDFSInactive
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data TaskDefinitionFamilyStatus = TDFSActive
-                                | TDFSAll
-                                | TDFSInactive
-                                    deriving (Eq, Ord, Read, Show, Enum,
-                                              Bounded, Data, Typeable, Generic)
+
+data TaskDefinitionFamilyStatus = TaskDefinitionFamilyStatus' (CI
+                                                                 Text)
+                                    deriving (Eq, Ord, Read, Show, Data,
+                                              Typeable, Generic)
+
+pattern TDFSActive :: TaskDefinitionFamilyStatus
+pattern TDFSActive = TaskDefinitionFamilyStatus' "ACTIVE"
+
+pattern TDFSAll :: TaskDefinitionFamilyStatus
+pattern TDFSAll = TaskDefinitionFamilyStatus' "ALL"
+
+pattern TDFSInactive :: TaskDefinitionFamilyStatus
+pattern TDFSInactive = TaskDefinitionFamilyStatus' "INACTIVE"
+
+{-# COMPLETE
+  TDFSActive,
+  TDFSAll,
+  TDFSInactive,
+  TaskDefinitionFamilyStatus' #-}
 
 instance FromText TaskDefinitionFamilyStatus where
-    parser = takeLowerText >>= \case
-        "active" -> pure TDFSActive
-        "all" -> pure TDFSAll
-        "inactive" -> pure TDFSInactive
-        e -> fromTextError $ "Failure parsing TaskDefinitionFamilyStatus from value: '" <> e
-           <> "'. Accepted values: active, all, inactive"
+    parser = (TaskDefinitionFamilyStatus' . mk) <$> takeText
 
 instance ToText TaskDefinitionFamilyStatus where
-    toText = \case
-        TDFSActive -> "ACTIVE"
-        TDFSAll -> "ALL"
-        TDFSInactive -> "INACTIVE"
+    toText (TaskDefinitionFamilyStatus' ci) = original ci
+
+-- | Represents an enum of /known/ $TaskDefinitionFamilyStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum TaskDefinitionFamilyStatus where
+    toEnum i = case i of
+        0 -> TDFSActive
+        1 -> TDFSAll
+        2 -> TDFSInactive
+        _ -> (error . showText) $ "Unknown index for TaskDefinitionFamilyStatus: " <> toText i
+    fromEnum x = case x of
+        TDFSActive -> 0
+        TDFSAll -> 1
+        TDFSInactive -> 2
+        TaskDefinitionFamilyStatus' name -> (error . showText) $ "Unknown TaskDefinitionFamilyStatus: " <> original name
+
+-- | Represents the bounds of /known/ $TaskDefinitionFamilyStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded TaskDefinitionFamilyStatus where
+    minBound = TDFSActive
+    maxBound = TDFSInactive
 
 instance Hashable     TaskDefinitionFamilyStatus
 instance NFData       TaskDefinitionFamilyStatus

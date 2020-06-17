@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,29 +16,65 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.Glue.Types.TriggerType where
+module Network.AWS.Glue.Types.TriggerType (
+  TriggerType (
+    ..
+    , TTConditional
+    , TTOnDemand
+    , TTScheduled
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data TriggerType = TTConditional
-                 | TTOnDemand
-                 | TTScheduled
-                     deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                               Typeable, Generic)
+
+data TriggerType = TriggerType' (CI Text)
+                     deriving (Eq, Ord, Read, Show, Data, Typeable,
+                               Generic)
+
+pattern TTConditional :: TriggerType
+pattern TTConditional = TriggerType' "CONDITIONAL"
+
+pattern TTOnDemand :: TriggerType
+pattern TTOnDemand = TriggerType' "ON_DEMAND"
+
+pattern TTScheduled :: TriggerType
+pattern TTScheduled = TriggerType' "SCHEDULED"
+
+{-# COMPLETE
+  TTConditional,
+  TTOnDemand,
+  TTScheduled,
+  TriggerType' #-}
 
 instance FromText TriggerType where
-    parser = takeLowerText >>= \case
-        "conditional" -> pure TTConditional
-        "on_demand" -> pure TTOnDemand
-        "scheduled" -> pure TTScheduled
-        e -> fromTextError $ "Failure parsing TriggerType from value: '" <> e
-           <> "'. Accepted values: conditional, on_demand, scheduled"
+    parser = (TriggerType' . mk) <$> takeText
 
 instance ToText TriggerType where
-    toText = \case
-        TTConditional -> "CONDITIONAL"
-        TTOnDemand -> "ON_DEMAND"
-        TTScheduled -> "SCHEDULED"
+    toText (TriggerType' ci) = original ci
+
+-- | Represents an enum of /known/ $TriggerType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum TriggerType where
+    toEnum i = case i of
+        0 -> TTConditional
+        1 -> TTOnDemand
+        2 -> TTScheduled
+        _ -> (error . showText) $ "Unknown index for TriggerType: " <> toText i
+    fromEnum x = case x of
+        TTConditional -> 0
+        TTOnDemand -> 1
+        TTScheduled -> 2
+        TriggerType' name -> (error . showText) $ "Unknown TriggerType: " <> original name
+
+-- | Represents the bounds of /known/ $TriggerType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded TriggerType where
+    minBound = TTConditional
+    maxBound = TTScheduled
 
 instance Hashable     TriggerType
 instance NFData       TriggerType

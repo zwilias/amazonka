@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,59 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.ELBv2.Types.LoadBalancerTypeEnum where
+module Network.AWS.ELBv2.Types.LoadBalancerTypeEnum (
+  LoadBalancerTypeEnum (
+    ..
+    , Application
+    , Network
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data LoadBalancerTypeEnum = Application
-                          | Network
-                              deriving (Eq, Ord, Read, Show, Enum, Bounded,
-                                        Data, Typeable, Generic)
+
+data LoadBalancerTypeEnum = LoadBalancerTypeEnum' (CI
+                                                     Text)
+                              deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                        Generic)
+
+pattern Application :: LoadBalancerTypeEnum
+pattern Application = LoadBalancerTypeEnum' "application"
+
+pattern Network :: LoadBalancerTypeEnum
+pattern Network = LoadBalancerTypeEnum' "network"
+
+{-# COMPLETE
+  Application,
+  Network,
+  LoadBalancerTypeEnum' #-}
 
 instance FromText LoadBalancerTypeEnum where
-    parser = takeLowerText >>= \case
-        "application" -> pure Application
-        "network" -> pure Network
-        e -> fromTextError $ "Failure parsing LoadBalancerTypeEnum from value: '" <> e
-           <> "'. Accepted values: application, network"
+    parser = (LoadBalancerTypeEnum' . mk) <$> takeText
 
 instance ToText LoadBalancerTypeEnum where
-    toText = \case
-        Application -> "application"
-        Network -> "network"
+    toText (LoadBalancerTypeEnum' ci) = original ci
+
+-- | Represents an enum of /known/ $LoadBalancerTypeEnum.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum LoadBalancerTypeEnum where
+    toEnum i = case i of
+        0 -> Application
+        1 -> Network
+        _ -> (error . showText) $ "Unknown index for LoadBalancerTypeEnum: " <> toText i
+    fromEnum x = case x of
+        Application -> 0
+        Network -> 1
+        LoadBalancerTypeEnum' name -> (error . showText) $ "Unknown LoadBalancerTypeEnum: " <> original name
+
+-- | Represents the bounds of /known/ $LoadBalancerTypeEnum.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded LoadBalancerTypeEnum where
+    minBound = Application
+    maxBound = Network
 
 instance Hashable     LoadBalancerTypeEnum
 instance NFData       LoadBalancerTypeEnum

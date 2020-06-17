@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,58 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.XRay.Types.EncryptionType where
+module Network.AWS.XRay.Types.EncryptionType (
+  EncryptionType (
+    ..
+    , KMS
+    , None
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data EncryptionType = KMS
-                    | None
-                        deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                  Typeable, Generic)
+
+data EncryptionType = EncryptionType' (CI Text)
+                        deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                  Generic)
+
+pattern KMS :: EncryptionType
+pattern KMS = EncryptionType' "KMS"
+
+pattern None :: EncryptionType
+pattern None = EncryptionType' "NONE"
+
+{-# COMPLETE
+  KMS,
+  None,
+  EncryptionType' #-}
 
 instance FromText EncryptionType where
-    parser = takeLowerText >>= \case
-        "kms" -> pure KMS
-        "none" -> pure None
-        e -> fromTextError $ "Failure parsing EncryptionType from value: '" <> e
-           <> "'. Accepted values: kms, none"
+    parser = (EncryptionType' . mk) <$> takeText
 
 instance ToText EncryptionType where
-    toText = \case
-        KMS -> "KMS"
-        None -> "NONE"
+    toText (EncryptionType' ci) = original ci
+
+-- | Represents an enum of /known/ $EncryptionType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum EncryptionType where
+    toEnum i = case i of
+        0 -> KMS
+        1 -> None
+        _ -> (error . showText) $ "Unknown index for EncryptionType: " <> toText i
+    fromEnum x = case x of
+        KMS -> 0
+        None -> 1
+        EncryptionType' name -> (error . showText) $ "Unknown EncryptionType: " <> original name
+
+-- | Represents the bounds of /known/ $EncryptionType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded EncryptionType where
+    minBound = KMS
+    maxBound = None
 
 instance Hashable     EncryptionType
 instance NFData       EncryptionType

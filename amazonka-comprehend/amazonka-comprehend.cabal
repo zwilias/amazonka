@@ -149,6 +149,7 @@ library
         , Network.AWS.Comprehend.Types.OutputDataConfig
         , Network.AWS.Comprehend.Types.PartOfSpeechTag
         , Network.AWS.Comprehend.Types.PartOfSpeechTagType
+        , Network.AWS.Comprehend.Types.Product
         , Network.AWS.Comprehend.Types.SentimentDetectionJobFilter
         , Network.AWS.Comprehend.Types.SentimentDetectionJobProperties
         , Network.AWS.Comprehend.Types.SentimentScore
@@ -163,6 +164,7 @@ library
     build-depends:
           amazonka-core == 1.6.1.*
         , base          >= 4.7     && < 5
+        , case-insensitive
 
 test-suite amazonka-comprehend-test
     type:              exitcode-stdio-1.0
@@ -186,6 +188,7 @@ test-suite amazonka-comprehend-test
         , amazonka-comprehend
         , base
         , bytestring
+        , case-insensitive
         , tasty
         , tasty-hunit
         , text

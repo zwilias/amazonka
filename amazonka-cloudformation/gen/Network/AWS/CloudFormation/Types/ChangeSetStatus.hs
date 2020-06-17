@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,35 +16,79 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.CloudFormation.Types.ChangeSetStatus where
+module Network.AWS.CloudFormation.Types.ChangeSetStatus (
+  ChangeSetStatus (
+    ..
+    , CSSCreateComplete
+    , CSSCreateInProgress
+    , CSSCreatePending
+    , CSSDeleteComplete
+    , CSSFailed
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data ChangeSetStatus = CSSCreateComplete
-                     | CSSCreateInProgress
-                     | CSSCreatePending
-                     | CSSDeleteComplete
-                     | CSSFailed
-                         deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                   Typeable, Generic)
+
+data ChangeSetStatus = ChangeSetStatus' (CI Text)
+                         deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                   Generic)
+
+pattern CSSCreateComplete :: ChangeSetStatus
+pattern CSSCreateComplete = ChangeSetStatus' "CREATE_COMPLETE"
+
+pattern CSSCreateInProgress :: ChangeSetStatus
+pattern CSSCreateInProgress = ChangeSetStatus' "CREATE_IN_PROGRESS"
+
+pattern CSSCreatePending :: ChangeSetStatus
+pattern CSSCreatePending = ChangeSetStatus' "CREATE_PENDING"
+
+pattern CSSDeleteComplete :: ChangeSetStatus
+pattern CSSDeleteComplete = ChangeSetStatus' "DELETE_COMPLETE"
+
+pattern CSSFailed :: ChangeSetStatus
+pattern CSSFailed = ChangeSetStatus' "FAILED"
+
+{-# COMPLETE
+  CSSCreateComplete,
+  CSSCreateInProgress,
+  CSSCreatePending,
+  CSSDeleteComplete,
+  CSSFailed,
+  ChangeSetStatus' #-}
 
 instance FromText ChangeSetStatus where
-    parser = takeLowerText >>= \case
-        "create_complete" -> pure CSSCreateComplete
-        "create_in_progress" -> pure CSSCreateInProgress
-        "create_pending" -> pure CSSCreatePending
-        "delete_complete" -> pure CSSDeleteComplete
-        "failed" -> pure CSSFailed
-        e -> fromTextError $ "Failure parsing ChangeSetStatus from value: '" <> e
-           <> "'. Accepted values: create_complete, create_in_progress, create_pending, delete_complete, failed"
+    parser = (ChangeSetStatus' . mk) <$> takeText
 
 instance ToText ChangeSetStatus where
-    toText = \case
-        CSSCreateComplete -> "CREATE_COMPLETE"
-        CSSCreateInProgress -> "CREATE_IN_PROGRESS"
-        CSSCreatePending -> "CREATE_PENDING"
-        CSSDeleteComplete -> "DELETE_COMPLETE"
-        CSSFailed -> "FAILED"
+    toText (ChangeSetStatus' ci) = original ci
+
+-- | Represents an enum of /known/ $ChangeSetStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum ChangeSetStatus where
+    toEnum i = case i of
+        0 -> CSSCreateComplete
+        1 -> CSSCreateInProgress
+        2 -> CSSCreatePending
+        3 -> CSSDeleteComplete
+        4 -> CSSFailed
+        _ -> (error . showText) $ "Unknown index for ChangeSetStatus: " <> toText i
+    fromEnum x = case x of
+        CSSCreateComplete -> 0
+        CSSCreateInProgress -> 1
+        CSSCreatePending -> 2
+        CSSDeleteComplete -> 3
+        CSSFailed -> 4
+        ChangeSetStatus' name -> (error . showText) $ "Unknown ChangeSetStatus: " <> original name
+
+-- | Represents the bounds of /known/ $ChangeSetStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded ChangeSetStatus where
+    minBound = CSSCreateComplete
+    maxBound = CSSFailed
 
 instance Hashable     ChangeSetStatus
 instance NFData       ChangeSetStatus

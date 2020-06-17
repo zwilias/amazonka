@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,24 +16,53 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.GuardDuty.Types.FindingStatisticType where
+module Network.AWS.GuardDuty.Types.FindingStatisticType (
+  FindingStatisticType (
+    ..
+    , CountBySeverity
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
+
 -- | The types of finding statistics.
-data FindingStatisticType = CountBySeverity
-                              deriving (Eq, Ord, Read, Show, Enum, Bounded,
-                                        Data, Typeable, Generic)
+data FindingStatisticType = FindingStatisticType' (CI
+                                                     Text)
+                              deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                        Generic)
+
+pattern CountBySeverity :: FindingStatisticType
+pattern CountBySeverity = FindingStatisticType' "COUNT_BY_SEVERITY"
+
+{-# COMPLETE
+  CountBySeverity,
+  FindingStatisticType' #-}
 
 instance FromText FindingStatisticType where
-    parser = takeLowerText >>= \case
-        "count_by_severity" -> pure CountBySeverity
-        e -> fromTextError $ "Failure parsing FindingStatisticType from value: '" <> e
-           <> "'. Accepted values: count_by_severity"
+    parser = (FindingStatisticType' . mk) <$> takeText
 
 instance ToText FindingStatisticType where
-    toText = \case
-        CountBySeverity -> "COUNT_BY_SEVERITY"
+    toText (FindingStatisticType' ci) = original ci
+
+-- | Represents an enum of /known/ $FindingStatisticType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum FindingStatisticType where
+    toEnum i = case i of
+        0 -> CountBySeverity
+        _ -> (error . showText) $ "Unknown index for FindingStatisticType: " <> toText i
+    fromEnum x = case x of
+        CountBySeverity -> 0
+        FindingStatisticType' name -> (error . showText) $ "Unknown FindingStatisticType: " <> original name
+
+-- | Represents the bounds of /known/ $FindingStatisticType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded FindingStatisticType where
+    minBound = CountBySeverity
+    maxBound = CountBySeverity
 
 instance Hashable     FindingStatisticType
 instance NFData       FindingStatisticType

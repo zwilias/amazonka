@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,27 +16,60 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.MediaConvert.Types.InputDeblockFilter where
+module Network.AWS.MediaConvert.Types.InputDeblockFilter (
+  InputDeblockFilter (
+    ..
+    , Disabled
+    , Enabled
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
+
 -- | Enable Deblock (InputDeblockFilter) to produce smoother motion in the output. Default is disabled. Only manaully controllable for MPEG2 and uncompressed video inputs.
-data InputDeblockFilter = Disabled
-                        | Enabled
-                            deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                      Typeable, Generic)
+data InputDeblockFilter = InputDeblockFilter' (CI
+                                                 Text)
+                            deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                      Generic)
+
+pattern Disabled :: InputDeblockFilter
+pattern Disabled = InputDeblockFilter' "DISABLED"
+
+pattern Enabled :: InputDeblockFilter
+pattern Enabled = InputDeblockFilter' "ENABLED"
+
+{-# COMPLETE
+  Disabled,
+  Enabled,
+  InputDeblockFilter' #-}
 
 instance FromText InputDeblockFilter where
-    parser = takeLowerText >>= \case
-        "disabled" -> pure Disabled
-        "enabled" -> pure Enabled
-        e -> fromTextError $ "Failure parsing InputDeblockFilter from value: '" <> e
-           <> "'. Accepted values: disabled, enabled"
+    parser = (InputDeblockFilter' . mk) <$> takeText
 
 instance ToText InputDeblockFilter where
-    toText = \case
-        Disabled -> "DISABLED"
-        Enabled -> "ENABLED"
+    toText (InputDeblockFilter' ci) = original ci
+
+-- | Represents an enum of /known/ $InputDeblockFilter.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum InputDeblockFilter where
+    toEnum i = case i of
+        0 -> Disabled
+        1 -> Enabled
+        _ -> (error . showText) $ "Unknown index for InputDeblockFilter: " <> toText i
+    fromEnum x = case x of
+        Disabled -> 0
+        Enabled -> 1
+        InputDeblockFilter' name -> (error . showText) $ "Unknown InputDeblockFilter: " <> original name
+
+-- | Represents the bounds of /known/ $InputDeblockFilter.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded InputDeblockFilter where
+    minBound = Disabled
+    maxBound = Enabled
 
 instance Hashable     InputDeblockFilter
 instance NFData       InputDeblockFilter

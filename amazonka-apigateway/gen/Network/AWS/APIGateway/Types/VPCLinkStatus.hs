@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,32 +16,72 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.APIGateway.Types.VPCLinkStatus where
+module Network.AWS.APIGateway.Types.VPCLinkStatus (
+  VPCLinkStatus (
+    ..
+    , VLSAvailable
+    , VLSDeleting
+    , VLSFailed
+    , VLSPending
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data VPCLinkStatus = VLSAvailable
-                   | VLSDeleting
-                   | VLSFailed
-                   | VLSPending
-                       deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                 Typeable, Generic)
+
+data VPCLinkStatus = VPCLinkStatus' (CI Text)
+                       deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                 Generic)
+
+pattern VLSAvailable :: VPCLinkStatus
+pattern VLSAvailable = VPCLinkStatus' "AVAILABLE"
+
+pattern VLSDeleting :: VPCLinkStatus
+pattern VLSDeleting = VPCLinkStatus' "DELETING"
+
+pattern VLSFailed :: VPCLinkStatus
+pattern VLSFailed = VPCLinkStatus' "FAILED"
+
+pattern VLSPending :: VPCLinkStatus
+pattern VLSPending = VPCLinkStatus' "PENDING"
+
+{-# COMPLETE
+  VLSAvailable,
+  VLSDeleting,
+  VLSFailed,
+  VLSPending,
+  VPCLinkStatus' #-}
 
 instance FromText VPCLinkStatus where
-    parser = takeLowerText >>= \case
-        "available" -> pure VLSAvailable
-        "deleting" -> pure VLSDeleting
-        "failed" -> pure VLSFailed
-        "pending" -> pure VLSPending
-        e -> fromTextError $ "Failure parsing VPCLinkStatus from value: '" <> e
-           <> "'. Accepted values: available, deleting, failed, pending"
+    parser = (VPCLinkStatus' . mk) <$> takeText
 
 instance ToText VPCLinkStatus where
-    toText = \case
-        VLSAvailable -> "AVAILABLE"
-        VLSDeleting -> "DELETING"
-        VLSFailed -> "FAILED"
-        VLSPending -> "PENDING"
+    toText (VPCLinkStatus' ci) = original ci
+
+-- | Represents an enum of /known/ $VPCLinkStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum VPCLinkStatus where
+    toEnum i = case i of
+        0 -> VLSAvailable
+        1 -> VLSDeleting
+        2 -> VLSFailed
+        3 -> VLSPending
+        _ -> (error . showText) $ "Unknown index for VPCLinkStatus: " <> toText i
+    fromEnum x = case x of
+        VLSAvailable -> 0
+        VLSDeleting -> 1
+        VLSFailed -> 2
+        VLSPending -> 3
+        VPCLinkStatus' name -> (error . showText) $ "Unknown VPCLinkStatus: " <> original name
+
+-- | Represents the bounds of /known/ $VPCLinkStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded VPCLinkStatus where
+    minBound = VLSAvailable
+    maxBound = VLSPending
 
 instance Hashable     VPCLinkStatus
 instance NFData       VPCLinkStatus

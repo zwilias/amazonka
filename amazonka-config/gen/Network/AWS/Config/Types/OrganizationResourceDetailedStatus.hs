@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,48 +16,108 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.Config.Types.OrganizationResourceDetailedStatus where
+module Network.AWS.Config.Types.OrganizationResourceDetailedStatus (
+  OrganizationResourceDetailedStatus (
+    ..
+    , CreateFailed
+    , CreateInProgress
+    , CreateSuccessful
+    , DeleteFailed
+    , DeleteInProgress
+    , DeleteSuccessful
+    , UpdateFailed
+    , UpdateInProgress
+    , UpdateSuccessful
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data OrganizationResourceDetailedStatus = CreateFailed
-                                        | CreateInProgress
-                                        | CreateSuccessful
-                                        | DeleteFailed
-                                        | DeleteInProgress
-                                        | DeleteSuccessful
-                                        | UpdateFailed
-                                        | UpdateInProgress
-                                        | UpdateSuccessful
-                                            deriving (Eq, Ord, Read, Show, Enum,
-                                                      Bounded, Data, Typeable,
-                                                      Generic)
+
+data OrganizationResourceDetailedStatus = OrganizationResourceDetailedStatus' (CI
+                                                                                 Text)
+                                            deriving (Eq, Ord, Read, Show, Data,
+                                                      Typeable, Generic)
+
+pattern CreateFailed :: OrganizationResourceDetailedStatus
+pattern CreateFailed = OrganizationResourceDetailedStatus' "CREATE_FAILED"
+
+pattern CreateInProgress :: OrganizationResourceDetailedStatus
+pattern CreateInProgress = OrganizationResourceDetailedStatus' "CREATE_IN_PROGRESS"
+
+pattern CreateSuccessful :: OrganizationResourceDetailedStatus
+pattern CreateSuccessful = OrganizationResourceDetailedStatus' "CREATE_SUCCESSFUL"
+
+pattern DeleteFailed :: OrganizationResourceDetailedStatus
+pattern DeleteFailed = OrganizationResourceDetailedStatus' "DELETE_FAILED"
+
+pattern DeleteInProgress :: OrganizationResourceDetailedStatus
+pattern DeleteInProgress = OrganizationResourceDetailedStatus' "DELETE_IN_PROGRESS"
+
+pattern DeleteSuccessful :: OrganizationResourceDetailedStatus
+pattern DeleteSuccessful = OrganizationResourceDetailedStatus' "DELETE_SUCCESSFUL"
+
+pattern UpdateFailed :: OrganizationResourceDetailedStatus
+pattern UpdateFailed = OrganizationResourceDetailedStatus' "UPDATE_FAILED"
+
+pattern UpdateInProgress :: OrganizationResourceDetailedStatus
+pattern UpdateInProgress = OrganizationResourceDetailedStatus' "UPDATE_IN_PROGRESS"
+
+pattern UpdateSuccessful :: OrganizationResourceDetailedStatus
+pattern UpdateSuccessful = OrganizationResourceDetailedStatus' "UPDATE_SUCCESSFUL"
+
+{-# COMPLETE
+  CreateFailed,
+  CreateInProgress,
+  CreateSuccessful,
+  DeleteFailed,
+  DeleteInProgress,
+  DeleteSuccessful,
+  UpdateFailed,
+  UpdateInProgress,
+  UpdateSuccessful,
+  OrganizationResourceDetailedStatus' #-}
 
 instance FromText OrganizationResourceDetailedStatus where
-    parser = takeLowerText >>= \case
-        "create_failed" -> pure CreateFailed
-        "create_in_progress" -> pure CreateInProgress
-        "create_successful" -> pure CreateSuccessful
-        "delete_failed" -> pure DeleteFailed
-        "delete_in_progress" -> pure DeleteInProgress
-        "delete_successful" -> pure DeleteSuccessful
-        "update_failed" -> pure UpdateFailed
-        "update_in_progress" -> pure UpdateInProgress
-        "update_successful" -> pure UpdateSuccessful
-        e -> fromTextError $ "Failure parsing OrganizationResourceDetailedStatus from value: '" <> e
-           <> "'. Accepted values: create_failed, create_in_progress, create_successful, delete_failed, delete_in_progress, delete_successful, update_failed, update_in_progress, update_successful"
+    parser = (OrganizationResourceDetailedStatus' . mk) <$> takeText
 
 instance ToText OrganizationResourceDetailedStatus where
-    toText = \case
-        CreateFailed -> "CREATE_FAILED"
-        CreateInProgress -> "CREATE_IN_PROGRESS"
-        CreateSuccessful -> "CREATE_SUCCESSFUL"
-        DeleteFailed -> "DELETE_FAILED"
-        DeleteInProgress -> "DELETE_IN_PROGRESS"
-        DeleteSuccessful -> "DELETE_SUCCESSFUL"
-        UpdateFailed -> "UPDATE_FAILED"
-        UpdateInProgress -> "UPDATE_IN_PROGRESS"
-        UpdateSuccessful -> "UPDATE_SUCCESSFUL"
+    toText (OrganizationResourceDetailedStatus' ci) = original ci
+
+-- | Represents an enum of /known/ $OrganizationResourceDetailedStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum OrganizationResourceDetailedStatus where
+    toEnum i = case i of
+        0 -> CreateFailed
+        1 -> CreateInProgress
+        2 -> CreateSuccessful
+        3 -> DeleteFailed
+        4 -> DeleteInProgress
+        5 -> DeleteSuccessful
+        6 -> UpdateFailed
+        7 -> UpdateInProgress
+        8 -> UpdateSuccessful
+        _ -> (error . showText) $ "Unknown index for OrganizationResourceDetailedStatus: " <> toText i
+    fromEnum x = case x of
+        CreateFailed -> 0
+        CreateInProgress -> 1
+        CreateSuccessful -> 2
+        DeleteFailed -> 3
+        DeleteInProgress -> 4
+        DeleteSuccessful -> 5
+        UpdateFailed -> 6
+        UpdateInProgress -> 7
+        UpdateSuccessful -> 8
+        OrganizationResourceDetailedStatus' name -> (error . showText) $ "Unknown OrganizationResourceDetailedStatus: " <> original name
+
+-- | Represents the bounds of /known/ $OrganizationResourceDetailedStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded OrganizationResourceDetailedStatus where
+    minBound = CreateFailed
+    maxBound = UpdateSuccessful
 
 instance Hashable     OrganizationResourceDetailedStatus
 instance NFData       OrganizationResourceDetailedStatus

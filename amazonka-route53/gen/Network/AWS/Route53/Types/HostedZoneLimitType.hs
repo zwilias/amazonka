@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,27 +16,60 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.Route53.Types.HostedZoneLimitType where
+module Network.AWS.Route53.Types.HostedZoneLimitType (
+  HostedZoneLimitType (
+    ..
+    , MaxRrsetsByZone
+    , MaxVPCsAssociatedByZone
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
 import Network.AWS.Route53.Internal
-  
-data HostedZoneLimitType = MaxRrsetsByZone
-                         | MaxVPCsAssociatedByZone
-                             deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                       Typeable, Generic)
+
+data HostedZoneLimitType = HostedZoneLimitType' (CI
+                                                   Text)
+                             deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                       Generic)
+
+pattern MaxRrsetsByZone :: HostedZoneLimitType
+pattern MaxRrsetsByZone = HostedZoneLimitType' "MAX_RRSETS_BY_ZONE"
+
+pattern MaxVPCsAssociatedByZone :: HostedZoneLimitType
+pattern MaxVPCsAssociatedByZone = HostedZoneLimitType' "MAX_VPCS_ASSOCIATED_BY_ZONE"
+
+{-# COMPLETE
+  MaxRrsetsByZone,
+  MaxVPCsAssociatedByZone,
+  HostedZoneLimitType' #-}
 
 instance FromText HostedZoneLimitType where
-    parser = takeLowerText >>= \case
-        "max_rrsets_by_zone" -> pure MaxRrsetsByZone
-        "max_vpcs_associated_by_zone" -> pure MaxVPCsAssociatedByZone
-        e -> fromTextError $ "Failure parsing HostedZoneLimitType from value: '" <> e
-           <> "'. Accepted values: max_rrsets_by_zone, max_vpcs_associated_by_zone"
+    parser = (HostedZoneLimitType' . mk) <$> takeText
 
 instance ToText HostedZoneLimitType where
-    toText = \case
-        MaxRrsetsByZone -> "MAX_RRSETS_BY_ZONE"
-        MaxVPCsAssociatedByZone -> "MAX_VPCS_ASSOCIATED_BY_ZONE"
+    toText (HostedZoneLimitType' ci) = original ci
+
+-- | Represents an enum of /known/ $HostedZoneLimitType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum HostedZoneLimitType where
+    toEnum i = case i of
+        0 -> MaxRrsetsByZone
+        1 -> MaxVPCsAssociatedByZone
+        _ -> (error . showText) $ "Unknown index for HostedZoneLimitType: " <> toText i
+    fromEnum x = case x of
+        MaxRrsetsByZone -> 0
+        MaxVPCsAssociatedByZone -> 1
+        HostedZoneLimitType' name -> (error . showText) $ "Unknown HostedZoneLimitType: " <> original name
+
+-- | Represents the bounds of /known/ $HostedZoneLimitType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded HostedZoneLimitType where
+    minBound = MaxRrsetsByZone
+    maxBound = MaxVPCsAssociatedByZone
 
 instance Hashable     HostedZoneLimitType
 instance NFData       HostedZoneLimitType

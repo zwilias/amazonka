@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,59 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.CostExplorer.Types.SupportedSavingsPlansType where
+module Network.AWS.CostExplorer.Types.SupportedSavingsPlansType (
+  SupportedSavingsPlansType (
+    ..
+    , ComputeSp
+    , EC2InstanceSp
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data SupportedSavingsPlansType = ComputeSp
-                               | EC2InstanceSp
-                                   deriving (Eq, Ord, Read, Show, Enum, Bounded,
-                                             Data, Typeable, Generic)
+
+data SupportedSavingsPlansType = SupportedSavingsPlansType' (CI
+                                                               Text)
+                                   deriving (Eq, Ord, Read, Show, Data,
+                                             Typeable, Generic)
+
+pattern ComputeSp :: SupportedSavingsPlansType
+pattern ComputeSp = SupportedSavingsPlansType' "COMPUTE_SP"
+
+pattern EC2InstanceSp :: SupportedSavingsPlansType
+pattern EC2InstanceSp = SupportedSavingsPlansType' "EC2_INSTANCE_SP"
+
+{-# COMPLETE
+  ComputeSp,
+  EC2InstanceSp,
+  SupportedSavingsPlansType' #-}
 
 instance FromText SupportedSavingsPlansType where
-    parser = takeLowerText >>= \case
-        "compute_sp" -> pure ComputeSp
-        "ec2_instance_sp" -> pure EC2InstanceSp
-        e -> fromTextError $ "Failure parsing SupportedSavingsPlansType from value: '" <> e
-           <> "'. Accepted values: compute_sp, ec2_instance_sp"
+    parser = (SupportedSavingsPlansType' . mk) <$> takeText
 
 instance ToText SupportedSavingsPlansType where
-    toText = \case
-        ComputeSp -> "COMPUTE_SP"
-        EC2InstanceSp -> "EC2_INSTANCE_SP"
+    toText (SupportedSavingsPlansType' ci) = original ci
+
+-- | Represents an enum of /known/ $SupportedSavingsPlansType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum SupportedSavingsPlansType where
+    toEnum i = case i of
+        0 -> ComputeSp
+        1 -> EC2InstanceSp
+        _ -> (error . showText) $ "Unknown index for SupportedSavingsPlansType: " <> toText i
+    fromEnum x = case x of
+        ComputeSp -> 0
+        EC2InstanceSp -> 1
+        SupportedSavingsPlansType' name -> (error . showText) $ "Unknown SupportedSavingsPlansType: " <> original name
+
+-- | Represents the bounds of /known/ $SupportedSavingsPlansType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded SupportedSavingsPlansType where
+    minBound = ComputeSp
+    maxBound = EC2InstanceSp
 
 instance Hashable     SupportedSavingsPlansType
 instance NFData       SupportedSavingsPlansType

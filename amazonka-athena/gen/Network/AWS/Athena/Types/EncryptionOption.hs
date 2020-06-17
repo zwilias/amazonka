@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,29 +16,65 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.Athena.Types.EncryptionOption where
+module Network.AWS.Athena.Types.EncryptionOption (
+  EncryptionOption (
+    ..
+    , CseKMS
+    , SseKMS
+    , SseS3
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data EncryptionOption = CseKMS
-                      | SseKMS
-                      | SseS3
-                          deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                    Typeable, Generic)
+
+data EncryptionOption = EncryptionOption' (CI Text)
+                          deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                    Generic)
+
+pattern CseKMS :: EncryptionOption
+pattern CseKMS = EncryptionOption' "CSE_KMS"
+
+pattern SseKMS :: EncryptionOption
+pattern SseKMS = EncryptionOption' "SSE_KMS"
+
+pattern SseS3 :: EncryptionOption
+pattern SseS3 = EncryptionOption' "SSE_S3"
+
+{-# COMPLETE
+  CseKMS,
+  SseKMS,
+  SseS3,
+  EncryptionOption' #-}
 
 instance FromText EncryptionOption where
-    parser = takeLowerText >>= \case
-        "cse_kms" -> pure CseKMS
-        "sse_kms" -> pure SseKMS
-        "sse_s3" -> pure SseS3
-        e -> fromTextError $ "Failure parsing EncryptionOption from value: '" <> e
-           <> "'. Accepted values: cse_kms, sse_kms, sse_s3"
+    parser = (EncryptionOption' . mk) <$> takeText
 
 instance ToText EncryptionOption where
-    toText = \case
-        CseKMS -> "CSE_KMS"
-        SseKMS -> "SSE_KMS"
-        SseS3 -> "SSE_S3"
+    toText (EncryptionOption' ci) = original ci
+
+-- | Represents an enum of /known/ $EncryptionOption.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum EncryptionOption where
+    toEnum i = case i of
+        0 -> CseKMS
+        1 -> SseKMS
+        2 -> SseS3
+        _ -> (error . showText) $ "Unknown index for EncryptionOption: " <> toText i
+    fromEnum x = case x of
+        CseKMS -> 0
+        SseKMS -> 1
+        SseS3 -> 2
+        EncryptionOption' name -> (error . showText) $ "Unknown EncryptionOption: " <> original name
+
+-- | Represents the bounds of /known/ $EncryptionOption.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded EncryptionOption where
+    minBound = CseKMS
+    maxBound = SseS3
 
 instance Hashable     EncryptionOption
 instance NFData       EncryptionOption

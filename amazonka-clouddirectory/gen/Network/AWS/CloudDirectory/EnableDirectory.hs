@@ -38,6 +38,7 @@ module Network.AWS.CloudDirectory.EnableDirectory
     ) where
 
 import Network.AWS.CloudDirectory.Types
+import Network.AWS.CloudDirectory.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request

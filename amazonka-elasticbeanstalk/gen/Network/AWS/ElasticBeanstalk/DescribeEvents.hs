@@ -52,6 +52,7 @@ module Network.AWS.ElasticBeanstalk.DescribeEvents
     ) where
 
 import Network.AWS.ElasticBeanstalk.Types
+import Network.AWS.ElasticBeanstalk.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude

@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,41 +16,93 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.Cloud9.Types.EnvironmentStatus where
+module Network.AWS.Cloud9.Types.EnvironmentStatus (
+  EnvironmentStatus (
+    ..
+    , ESConnecting
+    , ESCreating
+    , ESDeleting
+    , ESError'
+    , ESReady
+    , ESStopped
+    , ESStopping
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data EnvironmentStatus = ESConnecting
-                       | ESCreating
-                       | ESDeleting
-                       | ESError'
-                       | ESReady
-                       | ESStopped
-                       | ESStopping
-                           deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                     Typeable, Generic)
+
+data EnvironmentStatus = EnvironmentStatus' (CI Text)
+                           deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                     Generic)
+
+pattern ESConnecting :: EnvironmentStatus
+pattern ESConnecting = EnvironmentStatus' "connecting"
+
+pattern ESCreating :: EnvironmentStatus
+pattern ESCreating = EnvironmentStatus' "creating"
+
+pattern ESDeleting :: EnvironmentStatus
+pattern ESDeleting = EnvironmentStatus' "deleting"
+
+pattern ESError' :: EnvironmentStatus
+pattern ESError' = EnvironmentStatus' "error"
+
+pattern ESReady :: EnvironmentStatus
+pattern ESReady = EnvironmentStatus' "ready"
+
+pattern ESStopped :: EnvironmentStatus
+pattern ESStopped = EnvironmentStatus' "stopped"
+
+pattern ESStopping :: EnvironmentStatus
+pattern ESStopping = EnvironmentStatus' "stopping"
+
+{-# COMPLETE
+  ESConnecting,
+  ESCreating,
+  ESDeleting,
+  ESError',
+  ESReady,
+  ESStopped,
+  ESStopping,
+  EnvironmentStatus' #-}
 
 instance FromText EnvironmentStatus where
-    parser = takeLowerText >>= \case
-        "connecting" -> pure ESConnecting
-        "creating" -> pure ESCreating
-        "deleting" -> pure ESDeleting
-        "error" -> pure ESError'
-        "ready" -> pure ESReady
-        "stopped" -> pure ESStopped
-        "stopping" -> pure ESStopping
-        e -> fromTextError $ "Failure parsing EnvironmentStatus from value: '" <> e
-           <> "'. Accepted values: connecting, creating, deleting, error, ready, stopped, stopping"
+    parser = (EnvironmentStatus' . mk) <$> takeText
 
 instance ToText EnvironmentStatus where
-    toText = \case
-        ESConnecting -> "connecting"
-        ESCreating -> "creating"
-        ESDeleting -> "deleting"
-        ESError' -> "error"
-        ESReady -> "ready"
-        ESStopped -> "stopped"
-        ESStopping -> "stopping"
+    toText (EnvironmentStatus' ci) = original ci
+
+-- | Represents an enum of /known/ $EnvironmentStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum EnvironmentStatus where
+    toEnum i = case i of
+        0 -> ESConnecting
+        1 -> ESCreating
+        2 -> ESDeleting
+        3 -> ESError'
+        4 -> ESReady
+        5 -> ESStopped
+        6 -> ESStopping
+        _ -> (error . showText) $ "Unknown index for EnvironmentStatus: " <> toText i
+    fromEnum x = case x of
+        ESConnecting -> 0
+        ESCreating -> 1
+        ESDeleting -> 2
+        ESError' -> 3
+        ESReady -> 4
+        ESStopped -> 5
+        ESStopping -> 6
+        EnvironmentStatus' name -> (error . showText) $ "Unknown EnvironmentStatus: " <> original name
+
+-- | Represents the bounds of /known/ $EnvironmentStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded EnvironmentStatus where
+    minBound = ESConnecting
+    maxBound = ESStopping
 
 instance Hashable     EnvironmentStatus
 instance NFData       EnvironmentStatus

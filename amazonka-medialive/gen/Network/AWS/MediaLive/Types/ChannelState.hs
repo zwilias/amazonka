@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,48 +16,108 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.MediaLive.Types.ChannelState where
+module Network.AWS.MediaLive.Types.ChannelState (
+  ChannelState (
+    ..
+    , CreateFailed
+    , Creating
+    , Deleted
+    , Deleting
+    , Idle
+    , Recovering
+    , Running
+    , Starting
+    , Stopping
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
+
 -- | Placeholder documentation for ChannelState
-data ChannelState = CreateFailed
-                  | Creating
-                  | Deleted
-                  | Deleting
-                  | Idle
-                  | Recovering
-                  | Running
-                  | Starting
-                  | Stopping
-                      deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                Typeable, Generic)
+data ChannelState = ChannelState' (CI Text)
+                      deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                Generic)
+
+pattern CreateFailed :: ChannelState
+pattern CreateFailed = ChannelState' "CREATE_FAILED"
+
+pattern Creating :: ChannelState
+pattern Creating = ChannelState' "CREATING"
+
+pattern Deleted :: ChannelState
+pattern Deleted = ChannelState' "DELETED"
+
+pattern Deleting :: ChannelState
+pattern Deleting = ChannelState' "DELETING"
+
+pattern Idle :: ChannelState
+pattern Idle = ChannelState' "IDLE"
+
+pattern Recovering :: ChannelState
+pattern Recovering = ChannelState' "RECOVERING"
+
+pattern Running :: ChannelState
+pattern Running = ChannelState' "RUNNING"
+
+pattern Starting :: ChannelState
+pattern Starting = ChannelState' "STARTING"
+
+pattern Stopping :: ChannelState
+pattern Stopping = ChannelState' "STOPPING"
+
+{-# COMPLETE
+  CreateFailed,
+  Creating,
+  Deleted,
+  Deleting,
+  Idle,
+  Recovering,
+  Running,
+  Starting,
+  Stopping,
+  ChannelState' #-}
 
 instance FromText ChannelState where
-    parser = takeLowerText >>= \case
-        "create_failed" -> pure CreateFailed
-        "creating" -> pure Creating
-        "deleted" -> pure Deleted
-        "deleting" -> pure Deleting
-        "idle" -> pure Idle
-        "recovering" -> pure Recovering
-        "running" -> pure Running
-        "starting" -> pure Starting
-        "stopping" -> pure Stopping
-        e -> fromTextError $ "Failure parsing ChannelState from value: '" <> e
-           <> "'. Accepted values: create_failed, creating, deleted, deleting, idle, recovering, running, starting, stopping"
+    parser = (ChannelState' . mk) <$> takeText
 
 instance ToText ChannelState where
-    toText = \case
-        CreateFailed -> "CREATE_FAILED"
-        Creating -> "CREATING"
-        Deleted -> "DELETED"
-        Deleting -> "DELETING"
-        Idle -> "IDLE"
-        Recovering -> "RECOVERING"
-        Running -> "RUNNING"
-        Starting -> "STARTING"
-        Stopping -> "STOPPING"
+    toText (ChannelState' ci) = original ci
+
+-- | Represents an enum of /known/ $ChannelState.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum ChannelState where
+    toEnum i = case i of
+        0 -> CreateFailed
+        1 -> Creating
+        2 -> Deleted
+        3 -> Deleting
+        4 -> Idle
+        5 -> Recovering
+        6 -> Running
+        7 -> Starting
+        8 -> Stopping
+        _ -> (error . showText) $ "Unknown index for ChannelState: " <> toText i
+    fromEnum x = case x of
+        CreateFailed -> 0
+        Creating -> 1
+        Deleted -> 2
+        Deleting -> 3
+        Idle -> 4
+        Recovering -> 5
+        Running -> 6
+        Starting -> 7
+        Stopping -> 8
+        ChannelState' name -> (error . showText) $ "Unknown ChannelState: " <> original name
+
+-- | Represents the bounds of /known/ $ChannelState.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded ChannelState where
+    minBound = CreateFailed
+    maxBound = Stopping
 
 instance Hashable     ChannelState
 instance NFData       ChannelState

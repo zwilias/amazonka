@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,38 +16,87 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.SSM.Types.PatchComplianceLevel where
+module Network.AWS.SSM.Types.PatchComplianceLevel (
+  PatchComplianceLevel (
+    ..
+    , Critical
+    , High
+    , Informational
+    , Low
+    , Medium
+    , Unspecified
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data PatchComplianceLevel = Critical
-                          | High
-                          | Informational
-                          | Low
-                          | Medium
-                          | Unspecified
-                              deriving (Eq, Ord, Read, Show, Enum, Bounded,
-                                        Data, Typeable, Generic)
+
+data PatchComplianceLevel = PatchComplianceLevel' (CI
+                                                     Text)
+                              deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                        Generic)
+
+pattern Critical :: PatchComplianceLevel
+pattern Critical = PatchComplianceLevel' "CRITICAL"
+
+pattern High :: PatchComplianceLevel
+pattern High = PatchComplianceLevel' "HIGH"
+
+pattern Informational :: PatchComplianceLevel
+pattern Informational = PatchComplianceLevel' "INFORMATIONAL"
+
+pattern Low :: PatchComplianceLevel
+pattern Low = PatchComplianceLevel' "LOW"
+
+pattern Medium :: PatchComplianceLevel
+pattern Medium = PatchComplianceLevel' "MEDIUM"
+
+pattern Unspecified :: PatchComplianceLevel
+pattern Unspecified = PatchComplianceLevel' "UNSPECIFIED"
+
+{-# COMPLETE
+  Critical,
+  High,
+  Informational,
+  Low,
+  Medium,
+  Unspecified,
+  PatchComplianceLevel' #-}
 
 instance FromText PatchComplianceLevel where
-    parser = takeLowerText >>= \case
-        "critical" -> pure Critical
-        "high" -> pure High
-        "informational" -> pure Informational
-        "low" -> pure Low
-        "medium" -> pure Medium
-        "unspecified" -> pure Unspecified
-        e -> fromTextError $ "Failure parsing PatchComplianceLevel from value: '" <> e
-           <> "'. Accepted values: critical, high, informational, low, medium, unspecified"
+    parser = (PatchComplianceLevel' . mk) <$> takeText
 
 instance ToText PatchComplianceLevel where
-    toText = \case
-        Critical -> "CRITICAL"
-        High -> "HIGH"
-        Informational -> "INFORMATIONAL"
-        Low -> "LOW"
-        Medium -> "MEDIUM"
-        Unspecified -> "UNSPECIFIED"
+    toText (PatchComplianceLevel' ci) = original ci
+
+-- | Represents an enum of /known/ $PatchComplianceLevel.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum PatchComplianceLevel where
+    toEnum i = case i of
+        0 -> Critical
+        1 -> High
+        2 -> Informational
+        3 -> Low
+        4 -> Medium
+        5 -> Unspecified
+        _ -> (error . showText) $ "Unknown index for PatchComplianceLevel: " <> toText i
+    fromEnum x = case x of
+        Critical -> 0
+        High -> 1
+        Informational -> 2
+        Low -> 3
+        Medium -> 4
+        Unspecified -> 5
+        PatchComplianceLevel' name -> (error . showText) $ "Unknown PatchComplianceLevel: " <> original name
+
+-- | Represents the bounds of /known/ $PatchComplianceLevel.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded PatchComplianceLevel where
+    minBound = Critical
+    maxBound = Unspecified
 
 instance Hashable     PatchComplianceLevel
 instance NFData       PatchComplianceLevel

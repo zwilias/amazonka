@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,59 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.DynamoDB.Types.ConditionalOperator where
+module Network.AWS.DynamoDB.Types.ConditionalOperator (
+  ConditionalOperator (
+    ..
+    , And
+    , OR
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data ConditionalOperator = And
-                         | OR
-                             deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                       Typeable, Generic)
+
+data ConditionalOperator = ConditionalOperator' (CI
+                                                   Text)
+                             deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                       Generic)
+
+pattern And :: ConditionalOperator
+pattern And = ConditionalOperator' "AND"
+
+pattern OR :: ConditionalOperator
+pattern OR = ConditionalOperator' "OR"
+
+{-# COMPLETE
+  And,
+  OR,
+  ConditionalOperator' #-}
 
 instance FromText ConditionalOperator where
-    parser = takeLowerText >>= \case
-        "and" -> pure And
-        "or" -> pure OR
-        e -> fromTextError $ "Failure parsing ConditionalOperator from value: '" <> e
-           <> "'. Accepted values: and, or"
+    parser = (ConditionalOperator' . mk) <$> takeText
 
 instance ToText ConditionalOperator where
-    toText = \case
-        And -> "AND"
-        OR -> "OR"
+    toText (ConditionalOperator' ci) = original ci
+
+-- | Represents an enum of /known/ $ConditionalOperator.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum ConditionalOperator where
+    toEnum i = case i of
+        0 -> And
+        1 -> OR
+        _ -> (error . showText) $ "Unknown index for ConditionalOperator: " <> toText i
+    fromEnum x = case x of
+        And -> 0
+        OR -> 1
+        ConditionalOperator' name -> (error . showText) $ "Unknown ConditionalOperator: " <> original name
+
+-- | Represents the bounds of /known/ $ConditionalOperator.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded ConditionalOperator where
+    minBound = And
+    maxBound = OR
 
 instance Hashable     ConditionalOperator
 instance NFData       ConditionalOperator

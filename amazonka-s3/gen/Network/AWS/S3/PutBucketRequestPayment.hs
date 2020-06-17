@@ -39,6 +39,7 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.S3.Types
+import Network.AWS.S3.Types.Product
 
 -- | /See:/ 'putBucketRequestPayment' smart constructor.
 data PutBucketRequestPayment = PutBucketRequestPayment'{_pbrpContentMD5

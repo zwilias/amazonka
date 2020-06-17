@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,27 +16,59 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.GuardDuty.Types.FilterAction where
+module Network.AWS.GuardDuty.Types.FilterAction (
+  FilterAction (
+    ..
+    , Archive
+    , Noop
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
+
 -- | The action associated with a filter.
-data FilterAction = Archive
-                  | Noop
-                      deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                Typeable, Generic)
+data FilterAction = FilterAction' (CI Text)
+                      deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                Generic)
+
+pattern Archive :: FilterAction
+pattern Archive = FilterAction' "ARCHIVE"
+
+pattern Noop :: FilterAction
+pattern Noop = FilterAction' "NOOP"
+
+{-# COMPLETE
+  Archive,
+  Noop,
+  FilterAction' #-}
 
 instance FromText FilterAction where
-    parser = takeLowerText >>= \case
-        "archive" -> pure Archive
-        "noop" -> pure Noop
-        e -> fromTextError $ "Failure parsing FilterAction from value: '" <> e
-           <> "'. Accepted values: archive, noop"
+    parser = (FilterAction' . mk) <$> takeText
 
 instance ToText FilterAction where
-    toText = \case
-        Archive -> "ARCHIVE"
-        Noop -> "NOOP"
+    toText (FilterAction' ci) = original ci
+
+-- | Represents an enum of /known/ $FilterAction.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum FilterAction where
+    toEnum i = case i of
+        0 -> Archive
+        1 -> Noop
+        _ -> (error . showText) $ "Unknown index for FilterAction: " <> toText i
+    fromEnum x = case x of
+        Archive -> 0
+        Noop -> 1
+        FilterAction' name -> (error . showText) $ "Unknown FilterAction: " <> original name
+
+-- | Represents the bounds of /known/ $FilterAction.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded FilterAction where
+    minBound = Archive
+    maxBound = Noop
 
 instance Hashable     FilterAction
 instance NFData       FilterAction

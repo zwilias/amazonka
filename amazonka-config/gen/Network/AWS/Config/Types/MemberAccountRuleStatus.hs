@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,47 +16,108 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.Config.Types.MemberAccountRuleStatus where
+module Network.AWS.Config.Types.MemberAccountRuleStatus (
+  MemberAccountRuleStatus (
+    ..
+    , MARSCreateFailed
+    , MARSCreateInProgress
+    , MARSCreateSuccessful
+    , MARSDeleteFailed
+    , MARSDeleteInProgress
+    , MARSDeleteSuccessful
+    , MARSUpdateFailed
+    , MARSUpdateInProgress
+    , MARSUpdateSuccessful
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data MemberAccountRuleStatus = MARSCreateFailed
-                             | MARSCreateInProgress
-                             | MARSCreateSuccessful
-                             | MARSDeleteFailed
-                             | MARSDeleteInProgress
-                             | MARSDeleteSuccessful
-                             | MARSUpdateFailed
-                             | MARSUpdateInProgress
-                             | MARSUpdateSuccessful
-                                 deriving (Eq, Ord, Read, Show, Enum, Bounded,
-                                           Data, Typeable, Generic)
+
+data MemberAccountRuleStatus = MemberAccountRuleStatus' (CI
+                                                           Text)
+                                 deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                           Generic)
+
+pattern MARSCreateFailed :: MemberAccountRuleStatus
+pattern MARSCreateFailed = MemberAccountRuleStatus' "CREATE_FAILED"
+
+pattern MARSCreateInProgress :: MemberAccountRuleStatus
+pattern MARSCreateInProgress = MemberAccountRuleStatus' "CREATE_IN_PROGRESS"
+
+pattern MARSCreateSuccessful :: MemberAccountRuleStatus
+pattern MARSCreateSuccessful = MemberAccountRuleStatus' "CREATE_SUCCESSFUL"
+
+pattern MARSDeleteFailed :: MemberAccountRuleStatus
+pattern MARSDeleteFailed = MemberAccountRuleStatus' "DELETE_FAILED"
+
+pattern MARSDeleteInProgress :: MemberAccountRuleStatus
+pattern MARSDeleteInProgress = MemberAccountRuleStatus' "DELETE_IN_PROGRESS"
+
+pattern MARSDeleteSuccessful :: MemberAccountRuleStatus
+pattern MARSDeleteSuccessful = MemberAccountRuleStatus' "DELETE_SUCCESSFUL"
+
+pattern MARSUpdateFailed :: MemberAccountRuleStatus
+pattern MARSUpdateFailed = MemberAccountRuleStatus' "UPDATE_FAILED"
+
+pattern MARSUpdateInProgress :: MemberAccountRuleStatus
+pattern MARSUpdateInProgress = MemberAccountRuleStatus' "UPDATE_IN_PROGRESS"
+
+pattern MARSUpdateSuccessful :: MemberAccountRuleStatus
+pattern MARSUpdateSuccessful = MemberAccountRuleStatus' "UPDATE_SUCCESSFUL"
+
+{-# COMPLETE
+  MARSCreateFailed,
+  MARSCreateInProgress,
+  MARSCreateSuccessful,
+  MARSDeleteFailed,
+  MARSDeleteInProgress,
+  MARSDeleteSuccessful,
+  MARSUpdateFailed,
+  MARSUpdateInProgress,
+  MARSUpdateSuccessful,
+  MemberAccountRuleStatus' #-}
 
 instance FromText MemberAccountRuleStatus where
-    parser = takeLowerText >>= \case
-        "create_failed" -> pure MARSCreateFailed
-        "create_in_progress" -> pure MARSCreateInProgress
-        "create_successful" -> pure MARSCreateSuccessful
-        "delete_failed" -> pure MARSDeleteFailed
-        "delete_in_progress" -> pure MARSDeleteInProgress
-        "delete_successful" -> pure MARSDeleteSuccessful
-        "update_failed" -> pure MARSUpdateFailed
-        "update_in_progress" -> pure MARSUpdateInProgress
-        "update_successful" -> pure MARSUpdateSuccessful
-        e -> fromTextError $ "Failure parsing MemberAccountRuleStatus from value: '" <> e
-           <> "'. Accepted values: create_failed, create_in_progress, create_successful, delete_failed, delete_in_progress, delete_successful, update_failed, update_in_progress, update_successful"
+    parser = (MemberAccountRuleStatus' . mk) <$> takeText
 
 instance ToText MemberAccountRuleStatus where
-    toText = \case
-        MARSCreateFailed -> "CREATE_FAILED"
-        MARSCreateInProgress -> "CREATE_IN_PROGRESS"
-        MARSCreateSuccessful -> "CREATE_SUCCESSFUL"
-        MARSDeleteFailed -> "DELETE_FAILED"
-        MARSDeleteInProgress -> "DELETE_IN_PROGRESS"
-        MARSDeleteSuccessful -> "DELETE_SUCCESSFUL"
-        MARSUpdateFailed -> "UPDATE_FAILED"
-        MARSUpdateInProgress -> "UPDATE_IN_PROGRESS"
-        MARSUpdateSuccessful -> "UPDATE_SUCCESSFUL"
+    toText (MemberAccountRuleStatus' ci) = original ci
+
+-- | Represents an enum of /known/ $MemberAccountRuleStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum MemberAccountRuleStatus where
+    toEnum i = case i of
+        0 -> MARSCreateFailed
+        1 -> MARSCreateInProgress
+        2 -> MARSCreateSuccessful
+        3 -> MARSDeleteFailed
+        4 -> MARSDeleteInProgress
+        5 -> MARSDeleteSuccessful
+        6 -> MARSUpdateFailed
+        7 -> MARSUpdateInProgress
+        8 -> MARSUpdateSuccessful
+        _ -> (error . showText) $ "Unknown index for MemberAccountRuleStatus: " <> toText i
+    fromEnum x = case x of
+        MARSCreateFailed -> 0
+        MARSCreateInProgress -> 1
+        MARSCreateSuccessful -> 2
+        MARSDeleteFailed -> 3
+        MARSDeleteInProgress -> 4
+        MARSDeleteSuccessful -> 5
+        MARSUpdateFailed -> 6
+        MARSUpdateInProgress -> 7
+        MARSUpdateSuccessful -> 8
+        MemberAccountRuleStatus' name -> (error . showText) $ "Unknown MemberAccountRuleStatus: " <> original name
+
+-- | Represents the bounds of /known/ $MemberAccountRuleStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded MemberAccountRuleStatus where
+    minBound = MARSCreateFailed
+    maxBound = MARSUpdateSuccessful
 
 instance Hashable     MemberAccountRuleStatus
 instance NFData       MemberAccountRuleStatus

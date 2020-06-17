@@ -47,6 +47,7 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.Transcribe.Types
+import Network.AWS.Transcribe.Types.Product
 
 -- | /See:/ 'getVocabulary' smart constructor.
 newtype GetVocabulary = GetVocabulary'{_gvVocabularyName

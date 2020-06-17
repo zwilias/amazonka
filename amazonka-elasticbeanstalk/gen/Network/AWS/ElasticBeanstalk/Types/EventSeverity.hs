@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,38 +16,86 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.ElasticBeanstalk.Types.EventSeverity where
+module Network.AWS.ElasticBeanstalk.Types.EventSeverity (
+  EventSeverity (
+    ..
+    , LevelDebug
+    , LevelError'
+    , LevelFatal
+    , LevelInfo
+    , LevelTrace
+    , LevelWarn
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data EventSeverity = LevelDebug
-                   | LevelError'
-                   | LevelFatal
-                   | LevelInfo
-                   | LevelTrace
-                   | LevelWarn
-                       deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                 Typeable, Generic)
+
+data EventSeverity = EventSeverity' (CI Text)
+                       deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                 Generic)
+
+pattern LevelDebug :: EventSeverity
+pattern LevelDebug = EventSeverity' "DEBUG"
+
+pattern LevelError' :: EventSeverity
+pattern LevelError' = EventSeverity' "ERROR"
+
+pattern LevelFatal :: EventSeverity
+pattern LevelFatal = EventSeverity' "FATAL"
+
+pattern LevelInfo :: EventSeverity
+pattern LevelInfo = EventSeverity' "INFO"
+
+pattern LevelTrace :: EventSeverity
+pattern LevelTrace = EventSeverity' "TRACE"
+
+pattern LevelWarn :: EventSeverity
+pattern LevelWarn = EventSeverity' "WARN"
+
+{-# COMPLETE
+  LevelDebug,
+  LevelError',
+  LevelFatal,
+  LevelInfo,
+  LevelTrace,
+  LevelWarn,
+  EventSeverity' #-}
 
 instance FromText EventSeverity where
-    parser = takeLowerText >>= \case
-        "debug" -> pure LevelDebug
-        "error" -> pure LevelError'
-        "fatal" -> pure LevelFatal
-        "info" -> pure LevelInfo
-        "trace" -> pure LevelTrace
-        "warn" -> pure LevelWarn
-        e -> fromTextError $ "Failure parsing EventSeverity from value: '" <> e
-           <> "'. Accepted values: debug, error, fatal, info, trace, warn"
+    parser = (EventSeverity' . mk) <$> takeText
 
 instance ToText EventSeverity where
-    toText = \case
-        LevelDebug -> "DEBUG"
-        LevelError' -> "ERROR"
-        LevelFatal -> "FATAL"
-        LevelInfo -> "INFO"
-        LevelTrace -> "TRACE"
-        LevelWarn -> "WARN"
+    toText (EventSeverity' ci) = original ci
+
+-- | Represents an enum of /known/ $EventSeverity.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum EventSeverity where
+    toEnum i = case i of
+        0 -> LevelDebug
+        1 -> LevelError'
+        2 -> LevelFatal
+        3 -> LevelInfo
+        4 -> LevelTrace
+        5 -> LevelWarn
+        _ -> (error . showText) $ "Unknown index for EventSeverity: " <> toText i
+    fromEnum x = case x of
+        LevelDebug -> 0
+        LevelError' -> 1
+        LevelFatal -> 2
+        LevelInfo -> 3
+        LevelTrace -> 4
+        LevelWarn -> 5
+        EventSeverity' name -> (error . showText) $ "Unknown EventSeverity: " <> original name
+
+-- | Represents the bounds of /known/ $EventSeverity.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded EventSeverity where
+    minBound = LevelDebug
+    maxBound = LevelWarn
 
 instance Hashable     EventSeverity
 instance NFData       EventSeverity

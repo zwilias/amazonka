@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,28 +16,60 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.MediaConvert.Types.H265FramerateConversionAlgorithm where
+module Network.AWS.MediaConvert.Types.H265FramerateConversionAlgorithm (
+  H265FramerateConversionAlgorithm (
+    ..
+    , DuplicateDrop
+    , Interpolate
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
+
 -- | When set to INTERPOLATE, produces smoother motion during framerate conversion.
-data H265FramerateConversionAlgorithm = DuplicateDrop
-                                      | Interpolate
-                                          deriving (Eq, Ord, Read, Show, Enum,
-                                                    Bounded, Data, Typeable,
-                                                    Generic)
+data H265FramerateConversionAlgorithm = H265FramerateConversionAlgorithm' (CI
+                                                                             Text)
+                                          deriving (Eq, Ord, Read, Show, Data,
+                                                    Typeable, Generic)
+
+pattern DuplicateDrop :: H265FramerateConversionAlgorithm
+pattern DuplicateDrop = H265FramerateConversionAlgorithm' "DUPLICATE_DROP"
+
+pattern Interpolate :: H265FramerateConversionAlgorithm
+pattern Interpolate = H265FramerateConversionAlgorithm' "INTERPOLATE"
+
+{-# COMPLETE
+  DuplicateDrop,
+  Interpolate,
+  H265FramerateConversionAlgorithm' #-}
 
 instance FromText H265FramerateConversionAlgorithm where
-    parser = takeLowerText >>= \case
-        "duplicate_drop" -> pure DuplicateDrop
-        "interpolate" -> pure Interpolate
-        e -> fromTextError $ "Failure parsing H265FramerateConversionAlgorithm from value: '" <> e
-           <> "'. Accepted values: duplicate_drop, interpolate"
+    parser = (H265FramerateConversionAlgorithm' . mk) <$> takeText
 
 instance ToText H265FramerateConversionAlgorithm where
-    toText = \case
-        DuplicateDrop -> "DUPLICATE_DROP"
-        Interpolate -> "INTERPOLATE"
+    toText (H265FramerateConversionAlgorithm' ci) = original ci
+
+-- | Represents an enum of /known/ $H265FramerateConversionAlgorithm.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum H265FramerateConversionAlgorithm where
+    toEnum i = case i of
+        0 -> DuplicateDrop
+        1 -> Interpolate
+        _ -> (error . showText) $ "Unknown index for H265FramerateConversionAlgorithm: " <> toText i
+    fromEnum x = case x of
+        DuplicateDrop -> 0
+        Interpolate -> 1
+        H265FramerateConversionAlgorithm' name -> (error . showText) $ "Unknown H265FramerateConversionAlgorithm: " <> original name
+
+-- | Represents the bounds of /known/ $H265FramerateConversionAlgorithm.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded H265FramerateConversionAlgorithm where
+    minBound = DuplicateDrop
+    maxBound = Interpolate
 
 instance Hashable     H265FramerateConversionAlgorithm
 instance NFData       H265FramerateConversionAlgorithm

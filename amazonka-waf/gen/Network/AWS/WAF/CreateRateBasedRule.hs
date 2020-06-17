@@ -91,6 +91,7 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.WAF.Types
+import Network.AWS.WAF.Types.Product
 
 -- | /See:/ 'createRateBasedRule' smart constructor.
 data CreateRateBasedRule = CreateRateBasedRule'{_crbrName

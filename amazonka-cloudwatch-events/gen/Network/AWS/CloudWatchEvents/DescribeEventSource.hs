@@ -43,6 +43,7 @@ module Network.AWS.CloudWatchEvents.DescribeEventSource
     ) where
 
 import Network.AWS.CloudWatchEvents.Types
+import Network.AWS.CloudWatchEvents.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request

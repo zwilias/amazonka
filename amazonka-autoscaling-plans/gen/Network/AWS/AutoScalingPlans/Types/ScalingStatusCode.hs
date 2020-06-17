@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,29 +16,65 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.AutoScalingPlans.Types.ScalingStatusCode where
+module Network.AWS.AutoScalingPlans.Types.ScalingStatusCode (
+  ScalingStatusCode (
+    ..
+    , Active
+    , Inactive
+    , PartiallyActive
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data ScalingStatusCode = Active
-                       | Inactive
-                       | PartiallyActive
-                           deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                     Typeable, Generic)
+
+data ScalingStatusCode = ScalingStatusCode' (CI Text)
+                           deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                     Generic)
+
+pattern Active :: ScalingStatusCode
+pattern Active = ScalingStatusCode' "Active"
+
+pattern Inactive :: ScalingStatusCode
+pattern Inactive = ScalingStatusCode' "Inactive"
+
+pattern PartiallyActive :: ScalingStatusCode
+pattern PartiallyActive = ScalingStatusCode' "PartiallyActive"
+
+{-# COMPLETE
+  Active,
+  Inactive,
+  PartiallyActive,
+  ScalingStatusCode' #-}
 
 instance FromText ScalingStatusCode where
-    parser = takeLowerText >>= \case
-        "active" -> pure Active
-        "inactive" -> pure Inactive
-        "partiallyactive" -> pure PartiallyActive
-        e -> fromTextError $ "Failure parsing ScalingStatusCode from value: '" <> e
-           <> "'. Accepted values: active, inactive, partiallyactive"
+    parser = (ScalingStatusCode' . mk) <$> takeText
 
 instance ToText ScalingStatusCode where
-    toText = \case
-        Active -> "Active"
-        Inactive -> "Inactive"
-        PartiallyActive -> "PartiallyActive"
+    toText (ScalingStatusCode' ci) = original ci
+
+-- | Represents an enum of /known/ $ScalingStatusCode.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum ScalingStatusCode where
+    toEnum i = case i of
+        0 -> Active
+        1 -> Inactive
+        2 -> PartiallyActive
+        _ -> (error . showText) $ "Unknown index for ScalingStatusCode: " <> toText i
+    fromEnum x = case x of
+        Active -> 0
+        Inactive -> 1
+        PartiallyActive -> 2
+        ScalingStatusCode' name -> (error . showText) $ "Unknown ScalingStatusCode: " <> original name
+
+-- | Represents the bounds of /known/ $ScalingStatusCode.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded ScalingStatusCode where
+    minBound = Active
+    maxBound = PartiallyActive
 
 instance Hashable     ScalingStatusCode
 instance NFData       ScalingStatusCode

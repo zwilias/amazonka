@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,36 +16,80 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.S3.Types.Permission where
+module Network.AWS.S3.Types.Permission (
+  Permission (
+    ..
+    , PFullControl
+    , PRead
+    , PReadAcp
+    , PWrite
+    , PWriteAcp
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
 import Network.AWS.S3.Internal
-  
-data Permission = PFullControl
-                | PRead
-                | PReadAcp
-                | PWrite
-                | PWriteAcp
-                    deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                              Typeable, Generic)
+
+data Permission = Permission' (CI Text)
+                    deriving (Eq, Ord, Read, Show, Data, Typeable,
+                              Generic)
+
+pattern PFullControl :: Permission
+pattern PFullControl = Permission' "FULL_CONTROL"
+
+pattern PRead :: Permission
+pattern PRead = Permission' "READ"
+
+pattern PReadAcp :: Permission
+pattern PReadAcp = Permission' "READ_ACP"
+
+pattern PWrite :: Permission
+pattern PWrite = Permission' "WRITE"
+
+pattern PWriteAcp :: Permission
+pattern PWriteAcp = Permission' "WRITE_ACP"
+
+{-# COMPLETE
+  PFullControl,
+  PRead,
+  PReadAcp,
+  PWrite,
+  PWriteAcp,
+  Permission' #-}
 
 instance FromText Permission where
-    parser = takeLowerText >>= \case
-        "full_control" -> pure PFullControl
-        "read" -> pure PRead
-        "read_acp" -> pure PReadAcp
-        "write" -> pure PWrite
-        "write_acp" -> pure PWriteAcp
-        e -> fromTextError $ "Failure parsing Permission from value: '" <> e
-           <> "'. Accepted values: full_control, read, read_acp, write, write_acp"
+    parser = (Permission' . mk) <$> takeText
 
 instance ToText Permission where
-    toText = \case
-        PFullControl -> "FULL_CONTROL"
-        PRead -> "READ"
-        PReadAcp -> "READ_ACP"
-        PWrite -> "WRITE"
-        PWriteAcp -> "WRITE_ACP"
+    toText (Permission' ci) = original ci
+
+-- | Represents an enum of /known/ $Permission.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum Permission where
+    toEnum i = case i of
+        0 -> PFullControl
+        1 -> PRead
+        2 -> PReadAcp
+        3 -> PWrite
+        4 -> PWriteAcp
+        _ -> (error . showText) $ "Unknown index for Permission: " <> toText i
+    fromEnum x = case x of
+        PFullControl -> 0
+        PRead -> 1
+        PReadAcp -> 2
+        PWrite -> 3
+        PWriteAcp -> 4
+        Permission' name -> (error . showText) $ "Unknown Permission: " <> original name
+
+-- | Represents the bounds of /known/ $Permission.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded Permission where
+    minBound = PFullControl
+    maxBound = PWriteAcp
 
 instance Hashable     Permission
 instance NFData       Permission

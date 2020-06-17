@@ -280,6 +280,7 @@ library
         , Network.AWS.MediaLive.Types.OutputLocationRef
         , Network.AWS.MediaLive.Types.OutputSettings
         , Network.AWS.MediaLive.Types.PassThroughSettings
+        , Network.AWS.MediaLive.Types.Product
         , Network.AWS.MediaLive.Types.RemixSettings
         , Network.AWS.MediaLive.Types.RtmpCacheFullBehavior
         , Network.AWS.MediaLive.Types.RtmpCaptionData
@@ -334,6 +335,7 @@ library
     build-depends:
           amazonka-core == 1.6.1.*
         , base          >= 4.7     && < 5
+        , case-insensitive
 
 test-suite amazonka-medialive-test
     type:              exitcode-stdio-1.0
@@ -357,6 +359,7 @@ test-suite amazonka-medialive-test
         , amazonka-medialive
         , base
         , bytestring
+        , case-insensitive
         , tasty
         , tasty-hunit
         , text

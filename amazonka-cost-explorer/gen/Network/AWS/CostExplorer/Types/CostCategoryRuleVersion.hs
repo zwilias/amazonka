@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,55 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.CostExplorer.Types.CostCategoryRuleVersion where
+module Network.AWS.CostExplorer.Types.CostCategoryRuleVersion (
+  CostCategoryRuleVersion (
+    ..
+    , CostCategoryExpression_V1
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
+
 -- | The rule schema version in this particular Cost Category.
 --
 --
-data CostCategoryRuleVersion = CostCategoryExpression_V1
-                                 deriving (Eq, Ord, Read, Show, Enum, Bounded,
-                                           Data, Typeable, Generic)
+data CostCategoryRuleVersion = CostCategoryRuleVersion' (CI
+                                                           Text)
+                                 deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                           Generic)
+
+pattern CostCategoryExpression_V1 :: CostCategoryRuleVersion
+pattern CostCategoryExpression_V1 = CostCategoryRuleVersion' "CostCategoryExpression.v1"
+
+{-# COMPLETE
+  CostCategoryExpression_V1,
+  CostCategoryRuleVersion' #-}
 
 instance FromText CostCategoryRuleVersion where
-    parser = takeLowerText >>= \case
-        "costcategoryexpression.v1" -> pure CostCategoryExpression_V1
-        e -> fromTextError $ "Failure parsing CostCategoryRuleVersion from value: '" <> e
-           <> "'. Accepted values: costcategoryexpression.v1"
+    parser = (CostCategoryRuleVersion' . mk) <$> takeText
 
 instance ToText CostCategoryRuleVersion where
-    toText = \case
-        CostCategoryExpression_V1 -> "CostCategoryExpression.v1"
+    toText (CostCategoryRuleVersion' ci) = original ci
+
+-- | Represents an enum of /known/ $CostCategoryRuleVersion.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum CostCategoryRuleVersion where
+    toEnum i = case i of
+        0 -> CostCategoryExpression_V1
+        _ -> (error . showText) $ "Unknown index for CostCategoryRuleVersion: " <> toText i
+    fromEnum x = case x of
+        CostCategoryExpression_V1 -> 0
+        CostCategoryRuleVersion' name -> (error . showText) $ "Unknown CostCategoryRuleVersion: " <> original name
+
+-- | Represents the bounds of /known/ $CostCategoryRuleVersion.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded CostCategoryRuleVersion where
+    minBound = CostCategoryExpression_V1
+    maxBound = CostCategoryExpression_V1
 
 instance Hashable     CostCategoryRuleVersion
 instance NFData       CostCategoryRuleVersion

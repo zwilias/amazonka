@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,27 +16,59 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.SMS.Types.ConnectorStatus where
+module Network.AWS.SMS.Types.ConnectorStatus (
+  ConnectorStatus (
+    ..
+    , Healthy
+    , Unhealthy
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
+
 -- | Status of on-premise Connector
-data ConnectorStatus = Healthy
-                     | Unhealthy
-                         deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                   Typeable, Generic)
+data ConnectorStatus = ConnectorStatus' (CI Text)
+                         deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                   Generic)
+
+pattern Healthy :: ConnectorStatus
+pattern Healthy = ConnectorStatus' "HEALTHY"
+
+pattern Unhealthy :: ConnectorStatus
+pattern Unhealthy = ConnectorStatus' "UNHEALTHY"
+
+{-# COMPLETE
+  Healthy,
+  Unhealthy,
+  ConnectorStatus' #-}
 
 instance FromText ConnectorStatus where
-    parser = takeLowerText >>= \case
-        "healthy" -> pure Healthy
-        "unhealthy" -> pure Unhealthy
-        e -> fromTextError $ "Failure parsing ConnectorStatus from value: '" <> e
-           <> "'. Accepted values: healthy, unhealthy"
+    parser = (ConnectorStatus' . mk) <$> takeText
 
 instance ToText ConnectorStatus where
-    toText = \case
-        Healthy -> "HEALTHY"
-        Unhealthy -> "UNHEALTHY"
+    toText (ConnectorStatus' ci) = original ci
+
+-- | Represents an enum of /known/ $ConnectorStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum ConnectorStatus where
+    toEnum i = case i of
+        0 -> Healthy
+        1 -> Unhealthy
+        _ -> (error . showText) $ "Unknown index for ConnectorStatus: " <> toText i
+    fromEnum x = case x of
+        Healthy -> 0
+        Unhealthy -> 1
+        ConnectorStatus' name -> (error . showText) $ "Unknown ConnectorStatus: " <> original name
+
+-- | Represents the bounds of /known/ $ConnectorStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded ConnectorStatus where
+    minBound = Healthy
+    maxBound = Unhealthy
 
 instance Hashable     ConnectorStatus
 instance NFData       ConnectorStatus

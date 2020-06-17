@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,58 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.IoT.Types.TargetSelection where
+module Network.AWS.IoT.Types.TargetSelection (
+  TargetSelection (
+    ..
+    , Continuous
+    , Snapshot
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data TargetSelection = Continuous
-                     | Snapshot
-                         deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                   Typeable, Generic)
+
+data TargetSelection = TargetSelection' (CI Text)
+                         deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                   Generic)
+
+pattern Continuous :: TargetSelection
+pattern Continuous = TargetSelection' "CONTINUOUS"
+
+pattern Snapshot :: TargetSelection
+pattern Snapshot = TargetSelection' "SNAPSHOT"
+
+{-# COMPLETE
+  Continuous,
+  Snapshot,
+  TargetSelection' #-}
 
 instance FromText TargetSelection where
-    parser = takeLowerText >>= \case
-        "continuous" -> pure Continuous
-        "snapshot" -> pure Snapshot
-        e -> fromTextError $ "Failure parsing TargetSelection from value: '" <> e
-           <> "'. Accepted values: continuous, snapshot"
+    parser = (TargetSelection' . mk) <$> takeText
 
 instance ToText TargetSelection where
-    toText = \case
-        Continuous -> "CONTINUOUS"
-        Snapshot -> "SNAPSHOT"
+    toText (TargetSelection' ci) = original ci
+
+-- | Represents an enum of /known/ $TargetSelection.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum TargetSelection where
+    toEnum i = case i of
+        0 -> Continuous
+        1 -> Snapshot
+        _ -> (error . showText) $ "Unknown index for TargetSelection: " <> toText i
+    fromEnum x = case x of
+        Continuous -> 0
+        Snapshot -> 1
+        TargetSelection' name -> (error . showText) $ "Unknown TargetSelection: " <> original name
+
+-- | Represents the bounds of /known/ $TargetSelection.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded TargetSelection where
+    minBound = Continuous
+    maxBound = Snapshot
 
 instance Hashable     TargetSelection
 instance NFData       TargetSelection

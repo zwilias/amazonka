@@ -43,6 +43,7 @@ module Network.AWS.GuardDuty.ListFindings
     ) where
 
 import Network.AWS.GuardDuty.Types
+import Network.AWS.GuardDuty.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude

@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,23 +16,51 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.LexRuntime.Types.ContentType where
+module Network.AWS.LexRuntime.Types.ContentType (
+  ContentType (
+    ..
+    , ApplicationVnd_Amazonaws_Card_Generic
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data ContentType = ApplicationVnd_Amazonaws_Card_Generic
-                     deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                               Typeable, Generic)
+
+data ContentType = ContentType' (CI Text)
+                     deriving (Eq, Ord, Read, Show, Data, Typeable,
+                               Generic)
+
+pattern ApplicationVnd_Amazonaws_Card_Generic :: ContentType
+pattern ApplicationVnd_Amazonaws_Card_Generic = ContentType' "application/vnd.amazonaws.card.generic"
+
+{-# COMPLETE
+  ApplicationVnd_Amazonaws_Card_Generic,
+  ContentType' #-}
 
 instance FromText ContentType where
-    parser = takeLowerText >>= \case
-        "application/vnd.amazonaws.card.generic" -> pure ApplicationVnd_Amazonaws_Card_Generic
-        e -> fromTextError $ "Failure parsing ContentType from value: '" <> e
-           <> "'. Accepted values: application/vnd.amazonaws.card.generic"
+    parser = (ContentType' . mk) <$> takeText
 
 instance ToText ContentType where
-    toText = \case
-        ApplicationVnd_Amazonaws_Card_Generic -> "application/vnd.amazonaws.card.generic"
+    toText (ContentType' ci) = original ci
+
+-- | Represents an enum of /known/ $ContentType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum ContentType where
+    toEnum i = case i of
+        0 -> ApplicationVnd_Amazonaws_Card_Generic
+        _ -> (error . showText) $ "Unknown index for ContentType: " <> toText i
+    fromEnum x = case x of
+        ApplicationVnd_Amazonaws_Card_Generic -> 0
+        ContentType' name -> (error . showText) $ "Unknown ContentType: " <> original name
+
+-- | Represents the bounds of /known/ $ContentType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded ContentType where
+    minBound = ApplicationVnd_Amazonaws_Card_Generic
+    maxBound = ApplicationVnd_Amazonaws_Card_Generic
 
 instance Hashable     ContentType
 instance NFData       ContentType

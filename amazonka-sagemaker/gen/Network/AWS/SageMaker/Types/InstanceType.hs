@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,65 +16,149 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.SageMaker.Types.InstanceType where
+module Network.AWS.SageMaker.Types.InstanceType (
+  InstanceType (
+    ..
+    , Ml_M4_10XLarge
+    , Ml_M4_16XLarge
+    , Ml_M4_2XLarge
+    , Ml_M4_4XLarge
+    , Ml_M4_XLarge
+    , Ml_P2_16XLarge
+    , Ml_P2_8XLarge
+    , Ml_P2_XLarge
+    , Ml_P3_16XLarge
+    , Ml_P3_2XLarge
+    , Ml_P3_8XLarge
+    , Ml_T2_2XLarge
+    , Ml_T2_Large
+    , Ml_T2_Medium
+    , Ml_T2_XLarge
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data InstanceType = Ml_M4_10XLarge
-                  | Ml_M4_16XLarge
-                  | Ml_M4_2XLarge
-                  | Ml_M4_4XLarge
-                  | Ml_M4_XLarge
-                  | Ml_P2_16XLarge
-                  | Ml_P2_8XLarge
-                  | Ml_P2_XLarge
-                  | Ml_P3_16XLarge
-                  | Ml_P3_2XLarge
-                  | Ml_P3_8XLarge
-                  | Ml_T2_2XLarge
-                  | Ml_T2_Large
-                  | Ml_T2_Medium
-                  | Ml_T2_XLarge
-                      deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                Typeable, Generic)
+
+data InstanceType = InstanceType' (CI Text)
+                      deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                Generic)
+
+pattern Ml_M4_10XLarge :: InstanceType
+pattern Ml_M4_10XLarge = InstanceType' "ml.m4.10xlarge"
+
+pattern Ml_M4_16XLarge :: InstanceType
+pattern Ml_M4_16XLarge = InstanceType' "ml.m4.16xlarge"
+
+pattern Ml_M4_2XLarge :: InstanceType
+pattern Ml_M4_2XLarge = InstanceType' "ml.m4.2xlarge"
+
+pattern Ml_M4_4XLarge :: InstanceType
+pattern Ml_M4_4XLarge = InstanceType' "ml.m4.4xlarge"
+
+pattern Ml_M4_XLarge :: InstanceType
+pattern Ml_M4_XLarge = InstanceType' "ml.m4.xlarge"
+
+pattern Ml_P2_16XLarge :: InstanceType
+pattern Ml_P2_16XLarge = InstanceType' "ml.p2.16xlarge"
+
+pattern Ml_P2_8XLarge :: InstanceType
+pattern Ml_P2_8XLarge = InstanceType' "ml.p2.8xlarge"
+
+pattern Ml_P2_XLarge :: InstanceType
+pattern Ml_P2_XLarge = InstanceType' "ml.p2.xlarge"
+
+pattern Ml_P3_16XLarge :: InstanceType
+pattern Ml_P3_16XLarge = InstanceType' "ml.p3.16xlarge"
+
+pattern Ml_P3_2XLarge :: InstanceType
+pattern Ml_P3_2XLarge = InstanceType' "ml.p3.2xlarge"
+
+pattern Ml_P3_8XLarge :: InstanceType
+pattern Ml_P3_8XLarge = InstanceType' "ml.p3.8xlarge"
+
+pattern Ml_T2_2XLarge :: InstanceType
+pattern Ml_T2_2XLarge = InstanceType' "ml.t2.2xlarge"
+
+pattern Ml_T2_Large :: InstanceType
+pattern Ml_T2_Large = InstanceType' "ml.t2.large"
+
+pattern Ml_T2_Medium :: InstanceType
+pattern Ml_T2_Medium = InstanceType' "ml.t2.medium"
+
+pattern Ml_T2_XLarge :: InstanceType
+pattern Ml_T2_XLarge = InstanceType' "ml.t2.xlarge"
+
+{-# COMPLETE
+  Ml_M4_10XLarge,
+  Ml_M4_16XLarge,
+  Ml_M4_2XLarge,
+  Ml_M4_4XLarge,
+  Ml_M4_XLarge,
+  Ml_P2_16XLarge,
+  Ml_P2_8XLarge,
+  Ml_P2_XLarge,
+  Ml_P3_16XLarge,
+  Ml_P3_2XLarge,
+  Ml_P3_8XLarge,
+  Ml_T2_2XLarge,
+  Ml_T2_Large,
+  Ml_T2_Medium,
+  Ml_T2_XLarge,
+  InstanceType' #-}
 
 instance FromText InstanceType where
-    parser = takeLowerText >>= \case
-        "ml.m4.10xlarge" -> pure Ml_M4_10XLarge
-        "ml.m4.16xlarge" -> pure Ml_M4_16XLarge
-        "ml.m4.2xlarge" -> pure Ml_M4_2XLarge
-        "ml.m4.4xlarge" -> pure Ml_M4_4XLarge
-        "ml.m4.xlarge" -> pure Ml_M4_XLarge
-        "ml.p2.16xlarge" -> pure Ml_P2_16XLarge
-        "ml.p2.8xlarge" -> pure Ml_P2_8XLarge
-        "ml.p2.xlarge" -> pure Ml_P2_XLarge
-        "ml.p3.16xlarge" -> pure Ml_P3_16XLarge
-        "ml.p3.2xlarge" -> pure Ml_P3_2XLarge
-        "ml.p3.8xlarge" -> pure Ml_P3_8XLarge
-        "ml.t2.2xlarge" -> pure Ml_T2_2XLarge
-        "ml.t2.large" -> pure Ml_T2_Large
-        "ml.t2.medium" -> pure Ml_T2_Medium
-        "ml.t2.xlarge" -> pure Ml_T2_XLarge
-        e -> fromTextError $ "Failure parsing InstanceType from value: '" <> e
-           <> "'. Accepted values: ml.m4.10xlarge, ml.m4.16xlarge, ml.m4.2xlarge, ml.m4.4xlarge, ml.m4.xlarge, ml.p2.16xlarge, ml.p2.8xlarge, ml.p2.xlarge, ml.p3.16xlarge, ml.p3.2xlarge, ml.p3.8xlarge, ml.t2.2xlarge, ml.t2.large, ml.t2.medium, ml.t2.xlarge"
+    parser = (InstanceType' . mk) <$> takeText
 
 instance ToText InstanceType where
-    toText = \case
-        Ml_M4_10XLarge -> "ml.m4.10xlarge"
-        Ml_M4_16XLarge -> "ml.m4.16xlarge"
-        Ml_M4_2XLarge -> "ml.m4.2xlarge"
-        Ml_M4_4XLarge -> "ml.m4.4xlarge"
-        Ml_M4_XLarge -> "ml.m4.xlarge"
-        Ml_P2_16XLarge -> "ml.p2.16xlarge"
-        Ml_P2_8XLarge -> "ml.p2.8xlarge"
-        Ml_P2_XLarge -> "ml.p2.xlarge"
-        Ml_P3_16XLarge -> "ml.p3.16xlarge"
-        Ml_P3_2XLarge -> "ml.p3.2xlarge"
-        Ml_P3_8XLarge -> "ml.p3.8xlarge"
-        Ml_T2_2XLarge -> "ml.t2.2xlarge"
-        Ml_T2_Large -> "ml.t2.large"
-        Ml_T2_Medium -> "ml.t2.medium"
-        Ml_T2_XLarge -> "ml.t2.xlarge"
+    toText (InstanceType' ci) = original ci
+
+-- | Represents an enum of /known/ $InstanceType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum InstanceType where
+    toEnum i = case i of
+        0 -> Ml_M4_10XLarge
+        1 -> Ml_M4_16XLarge
+        2 -> Ml_M4_2XLarge
+        3 -> Ml_M4_4XLarge
+        4 -> Ml_M4_XLarge
+        5 -> Ml_P2_16XLarge
+        6 -> Ml_P2_8XLarge
+        7 -> Ml_P2_XLarge
+        8 -> Ml_P3_16XLarge
+        9 -> Ml_P3_2XLarge
+        10 -> Ml_P3_8XLarge
+        11 -> Ml_T2_2XLarge
+        12 -> Ml_T2_Large
+        13 -> Ml_T2_Medium
+        14 -> Ml_T2_XLarge
+        _ -> (error . showText) $ "Unknown index for InstanceType: " <> toText i
+    fromEnum x = case x of
+        Ml_M4_10XLarge -> 0
+        Ml_M4_16XLarge -> 1
+        Ml_M4_2XLarge -> 2
+        Ml_M4_4XLarge -> 3
+        Ml_M4_XLarge -> 4
+        Ml_P2_16XLarge -> 5
+        Ml_P2_8XLarge -> 6
+        Ml_P2_XLarge -> 7
+        Ml_P3_16XLarge -> 8
+        Ml_P3_2XLarge -> 9
+        Ml_P3_8XLarge -> 10
+        Ml_T2_2XLarge -> 11
+        Ml_T2_Large -> 12
+        Ml_T2_Medium -> 13
+        Ml_T2_XLarge -> 14
+        InstanceType' name -> (error . showText) $ "Unknown InstanceType: " <> original name
+
+-- | Represents the bounds of /known/ $InstanceType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded InstanceType where
+    minBound = Ml_M4_10XLarge
+    maxBound = Ml_T2_XLarge
 
 instance Hashable     InstanceType
 instance NFData       InstanceType

@@ -120,12 +120,14 @@ library
         , Network.AWS.Organizations.Types.PolicyType
         , Network.AWS.Organizations.Types.PolicyTypeStatus
         , Network.AWS.Organizations.Types.PolicyTypeSummary
+        , Network.AWS.Organizations.Types.Product
         , Network.AWS.Organizations.Types.Root
         , Network.AWS.Organizations.Types.TargetType
 
     build-depends:
           amazonka-core == 1.6.1.*
         , base          >= 4.7     && < 5
+        , case-insensitive
 
 test-suite amazonka-organizations-test
     type:              exitcode-stdio-1.0
@@ -149,6 +151,7 @@ test-suite amazonka-organizations-test
         , amazonka-organizations
         , base
         , bytestring
+        , case-insensitive
         , tasty
         , tasty-hunit
         , text

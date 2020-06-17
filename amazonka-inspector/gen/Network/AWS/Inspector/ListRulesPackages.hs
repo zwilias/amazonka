@@ -42,6 +42,7 @@ module Network.AWS.Inspector.ListRulesPackages
     ) where
 
 import Network.AWS.Inspector.Types
+import Network.AWS.Inspector.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude

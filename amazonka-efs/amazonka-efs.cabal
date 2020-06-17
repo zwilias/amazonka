@@ -65,11 +65,13 @@ library
         , Network.AWS.EFS.Types.LifeCycleState
         , Network.AWS.EFS.Types.MountTargetDescription
         , Network.AWS.EFS.Types.PerformanceMode
+        , Network.AWS.EFS.Types.Product
         , Network.AWS.EFS.Types.Tag
 
     build-depends:
           amazonka-core == 1.6.1.*
         , base          >= 4.7     && < 5
+        , case-insensitive
 
 test-suite amazonka-efs-test
     type:              exitcode-stdio-1.0
@@ -93,6 +95,7 @@ test-suite amazonka-efs-test
         , amazonka-efs
         , base
         , bytestring
+        , case-insensitive
         , tasty
         , tasty-hunit
         , text

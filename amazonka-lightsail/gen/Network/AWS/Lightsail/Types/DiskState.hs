@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,35 +16,79 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.Lightsail.Types.DiskState where
+module Network.AWS.Lightsail.Types.DiskState (
+  DiskState (
+    ..
+    , Available
+    , Error'
+    , InUse
+    , Pending
+    , Unknown
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data DiskState = Available
-               | Error'
-               | InUse
-               | Pending
-               | Unknown
-                   deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                             Typeable, Generic)
+
+data DiskState = DiskState' (CI Text)
+                   deriving (Eq, Ord, Read, Show, Data, Typeable,
+                             Generic)
+
+pattern Available :: DiskState
+pattern Available = DiskState' "available"
+
+pattern Error' :: DiskState
+pattern Error' = DiskState' "error"
+
+pattern InUse :: DiskState
+pattern InUse = DiskState' "in-use"
+
+pattern Pending :: DiskState
+pattern Pending = DiskState' "pending"
+
+pattern Unknown :: DiskState
+pattern Unknown = DiskState' "unknown"
+
+{-# COMPLETE
+  Available,
+  Error',
+  InUse,
+  Pending,
+  Unknown,
+  DiskState' #-}
 
 instance FromText DiskState where
-    parser = takeLowerText >>= \case
-        "available" -> pure Available
-        "error" -> pure Error'
-        "in-use" -> pure InUse
-        "pending" -> pure Pending
-        "unknown" -> pure Unknown
-        e -> fromTextError $ "Failure parsing DiskState from value: '" <> e
-           <> "'. Accepted values: available, error, in-use, pending, unknown"
+    parser = (DiskState' . mk) <$> takeText
 
 instance ToText DiskState where
-    toText = \case
-        Available -> "available"
-        Error' -> "error"
-        InUse -> "in-use"
-        Pending -> "pending"
-        Unknown -> "unknown"
+    toText (DiskState' ci) = original ci
+
+-- | Represents an enum of /known/ $DiskState.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum DiskState where
+    toEnum i = case i of
+        0 -> Available
+        1 -> Error'
+        2 -> InUse
+        3 -> Pending
+        4 -> Unknown
+        _ -> (error . showText) $ "Unknown index for DiskState: " <> toText i
+    fromEnum x = case x of
+        Available -> 0
+        Error' -> 1
+        InUse -> 2
+        Pending -> 3
+        Unknown -> 4
+        DiskState' name -> (error . showText) $ "Unknown DiskState: " <> original name
+
+-- | Represents the bounds of /known/ $DiskState.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded DiskState where
+    minBound = Available
+    maxBound = Unknown
 
 instance Hashable     DiskState
 instance NFData       DiskState

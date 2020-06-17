@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,28 +16,60 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.MediaLive.Types.InputLossActionForMsSmoothOut where
+module Network.AWS.MediaLive.Types.InputLossActionForMsSmoothOut (
+  InputLossActionForMsSmoothOut (
+    ..
+    , EmitOutput
+    , PauseOutput
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
+
 -- | Placeholder documentation for InputLossActionForMsSmoothOut
-data InputLossActionForMsSmoothOut = EmitOutput
-                                   | PauseOutput
-                                       deriving (Eq, Ord, Read, Show, Enum,
-                                                 Bounded, Data, Typeable,
-                                                 Generic)
+data InputLossActionForMsSmoothOut = InputLossActionForMsSmoothOut' (CI
+                                                                       Text)
+                                       deriving (Eq, Ord, Read, Show, Data,
+                                                 Typeable, Generic)
+
+pattern EmitOutput :: InputLossActionForMsSmoothOut
+pattern EmitOutput = InputLossActionForMsSmoothOut' "EMIT_OUTPUT"
+
+pattern PauseOutput :: InputLossActionForMsSmoothOut
+pattern PauseOutput = InputLossActionForMsSmoothOut' "PAUSE_OUTPUT"
+
+{-# COMPLETE
+  EmitOutput,
+  PauseOutput,
+  InputLossActionForMsSmoothOut' #-}
 
 instance FromText InputLossActionForMsSmoothOut where
-    parser = takeLowerText >>= \case
-        "emit_output" -> pure EmitOutput
-        "pause_output" -> pure PauseOutput
-        e -> fromTextError $ "Failure parsing InputLossActionForMsSmoothOut from value: '" <> e
-           <> "'. Accepted values: emit_output, pause_output"
+    parser = (InputLossActionForMsSmoothOut' . mk) <$> takeText
 
 instance ToText InputLossActionForMsSmoothOut where
-    toText = \case
-        EmitOutput -> "EMIT_OUTPUT"
-        PauseOutput -> "PAUSE_OUTPUT"
+    toText (InputLossActionForMsSmoothOut' ci) = original ci
+
+-- | Represents an enum of /known/ $InputLossActionForMsSmoothOut.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum InputLossActionForMsSmoothOut where
+    toEnum i = case i of
+        0 -> EmitOutput
+        1 -> PauseOutput
+        _ -> (error . showText) $ "Unknown index for InputLossActionForMsSmoothOut: " <> toText i
+    fromEnum x = case x of
+        EmitOutput -> 0
+        PauseOutput -> 1
+        InputLossActionForMsSmoothOut' name -> (error . showText) $ "Unknown InputLossActionForMsSmoothOut: " <> original name
+
+-- | Represents the bounds of /known/ $InputLossActionForMsSmoothOut.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded InputLossActionForMsSmoothOut where
+    minBound = EmitOutput
+    maxBound = PauseOutput
 
 instance Hashable     InputLossActionForMsSmoothOut
 instance NFData       InputLossActionForMsSmoothOut

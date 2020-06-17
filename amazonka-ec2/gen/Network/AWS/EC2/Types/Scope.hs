@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,27 +16,59 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.EC2.Types.Scope where
+module Network.AWS.EC2.Types.Scope (
+  Scope (
+    ..
+    , SAvailabilityZone
+    , SRegion
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.EC2.Internal
 import Network.AWS.Prelude
-  
-data Scope = SAvailabilityZone
-           | SRegion
-               deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                         Typeable, Generic)
+
+data Scope = Scope' (CI Text)
+               deriving (Eq, Ord, Read, Show, Data, Typeable,
+                         Generic)
+
+pattern SAvailabilityZone :: Scope
+pattern SAvailabilityZone = Scope' "Availability Zone"
+
+pattern SRegion :: Scope
+pattern SRegion = Scope' "Region"
+
+{-# COMPLETE
+  SAvailabilityZone,
+  SRegion,
+  Scope' #-}
 
 instance FromText Scope where
-    parser = takeLowerText >>= \case
-        "availability zone" -> pure SAvailabilityZone
-        "region" -> pure SRegion
-        e -> fromTextError $ "Failure parsing Scope from value: '" <> e
-           <> "'. Accepted values: availability zone, region"
+    parser = (Scope' . mk) <$> takeText
 
 instance ToText Scope where
-    toText = \case
-        SAvailabilityZone -> "Availability Zone"
-        SRegion -> "Region"
+    toText (Scope' ci) = original ci
+
+-- | Represents an enum of /known/ $Scope.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum Scope where
+    toEnum i = case i of
+        0 -> SAvailabilityZone
+        1 -> SRegion
+        _ -> (error . showText) $ "Unknown index for Scope: " <> toText i
+    fromEnum x = case x of
+        SAvailabilityZone -> 0
+        SRegion -> 1
+        Scope' name -> (error . showText) $ "Unknown Scope: " <> original name
+
+-- | Represents the bounds of /known/ $Scope.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded Scope where
+    minBound = SAvailabilityZone
+    maxBound = SRegion
 
 instance Hashable     Scope
 instance NFData       Scope

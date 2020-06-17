@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,27 +16,60 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.MediaConvert.Types.HlsManifestCompression where
+module Network.AWS.MediaConvert.Types.HlsManifestCompression (
+  HlsManifestCompression (
+    ..
+    , HMCGzip
+    , HMCNone
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
+
 -- | When set to GZIP, compresses HLS playlist.
-data HlsManifestCompression = HMCGzip
-                            | HMCNone
-                                deriving (Eq, Ord, Read, Show, Enum, Bounded,
-                                          Data, Typeable, Generic)
+data HlsManifestCompression = HlsManifestCompression' (CI
+                                                         Text)
+                                deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                          Generic)
+
+pattern HMCGzip :: HlsManifestCompression
+pattern HMCGzip = HlsManifestCompression' "GZIP"
+
+pattern HMCNone :: HlsManifestCompression
+pattern HMCNone = HlsManifestCompression' "NONE"
+
+{-# COMPLETE
+  HMCGzip,
+  HMCNone,
+  HlsManifestCompression' #-}
 
 instance FromText HlsManifestCompression where
-    parser = takeLowerText >>= \case
-        "gzip" -> pure HMCGzip
-        "none" -> pure HMCNone
-        e -> fromTextError $ "Failure parsing HlsManifestCompression from value: '" <> e
-           <> "'. Accepted values: gzip, none"
+    parser = (HlsManifestCompression' . mk) <$> takeText
 
 instance ToText HlsManifestCompression where
-    toText = \case
-        HMCGzip -> "GZIP"
-        HMCNone -> "NONE"
+    toText (HlsManifestCompression' ci) = original ci
+
+-- | Represents an enum of /known/ $HlsManifestCompression.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum HlsManifestCompression where
+    toEnum i = case i of
+        0 -> HMCGzip
+        1 -> HMCNone
+        _ -> (error . showText) $ "Unknown index for HlsManifestCompression: " <> toText i
+    fromEnum x = case x of
+        HMCGzip -> 0
+        HMCNone -> 1
+        HlsManifestCompression' name -> (error . showText) $ "Unknown HlsManifestCompression: " <> original name
+
+-- | Represents the bounds of /known/ $HlsManifestCompression.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded HlsManifestCompression where
+    minBound = HMCGzip
+    maxBound = HMCNone
 
 instance Hashable     HlsManifestCompression
 instance NFData       HlsManifestCompression

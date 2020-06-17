@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,58 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.Organizations.Types.ChildType where
+module Network.AWS.Organizations.Types.ChildType (
+  ChildType (
+    ..
+    , CTAccount
+    , CTOrganizationalUnit
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data ChildType = CTAccount
-               | CTOrganizationalUnit
-                   deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                             Typeable, Generic)
+
+data ChildType = ChildType' (CI Text)
+                   deriving (Eq, Ord, Read, Show, Data, Typeable,
+                             Generic)
+
+pattern CTAccount :: ChildType
+pattern CTAccount = ChildType' "ACCOUNT"
+
+pattern CTOrganizationalUnit :: ChildType
+pattern CTOrganizationalUnit = ChildType' "ORGANIZATIONAL_UNIT"
+
+{-# COMPLETE
+  CTAccount,
+  CTOrganizationalUnit,
+  ChildType' #-}
 
 instance FromText ChildType where
-    parser = takeLowerText >>= \case
-        "account" -> pure CTAccount
-        "organizational_unit" -> pure CTOrganizationalUnit
-        e -> fromTextError $ "Failure parsing ChildType from value: '" <> e
-           <> "'. Accepted values: account, organizational_unit"
+    parser = (ChildType' . mk) <$> takeText
 
 instance ToText ChildType where
-    toText = \case
-        CTAccount -> "ACCOUNT"
-        CTOrganizationalUnit -> "ORGANIZATIONAL_UNIT"
+    toText (ChildType' ci) = original ci
+
+-- | Represents an enum of /known/ $ChildType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum ChildType where
+    toEnum i = case i of
+        0 -> CTAccount
+        1 -> CTOrganizationalUnit
+        _ -> (error . showText) $ "Unknown index for ChildType: " <> toText i
+    fromEnum x = case x of
+        CTAccount -> 0
+        CTOrganizationalUnit -> 1
+        ChildType' name -> (error . showText) $ "Unknown ChildType: " <> original name
+
+-- | Represents the bounds of /known/ $ChildType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded ChildType where
+    minBound = CTAccount
+    maxBound = CTOrganizationalUnit
 
 instance Hashable     ChildType
 instance NFData       ChildType

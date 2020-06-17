@@ -41,6 +41,7 @@ module Network.AWS.CloudFormation.ListStackSets
     ) where
 
 import Network.AWS.CloudFormation.Types
+import Network.AWS.CloudFormation.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request

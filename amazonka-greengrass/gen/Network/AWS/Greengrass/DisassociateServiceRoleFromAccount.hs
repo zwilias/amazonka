@@ -34,6 +34,7 @@ module Network.AWS.Greengrass.DisassociateServiceRoleFromAccount
     ) where
 
 import Network.AWS.Greengrass.Types
+import Network.AWS.Greengrass.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request

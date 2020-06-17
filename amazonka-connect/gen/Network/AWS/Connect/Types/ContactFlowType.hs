@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,47 +16,107 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.Connect.Types.ContactFlowType where
+module Network.AWS.Connect.Types.ContactFlowType (
+  ContactFlowType (
+    ..
+    , AgentHold
+    , AgentTransfer
+    , AgentWhisper
+    , ContactFlow
+    , CustomerHold
+    , CustomerQueue
+    , CustomerWhisper
+    , OutboundWhisper
+    , QueueTransfer
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data ContactFlowType = AgentHold
-                     | AgentTransfer
-                     | AgentWhisper
-                     | ContactFlow
-                     | CustomerHold
-                     | CustomerQueue
-                     | CustomerWhisper
-                     | OutboundWhisper
-                     | QueueTransfer
-                         deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                   Typeable, Generic)
+
+data ContactFlowType = ContactFlowType' (CI Text)
+                         deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                   Generic)
+
+pattern AgentHold :: ContactFlowType
+pattern AgentHold = ContactFlowType' "AGENT_HOLD"
+
+pattern AgentTransfer :: ContactFlowType
+pattern AgentTransfer = ContactFlowType' "AGENT_TRANSFER"
+
+pattern AgentWhisper :: ContactFlowType
+pattern AgentWhisper = ContactFlowType' "AGENT_WHISPER"
+
+pattern ContactFlow :: ContactFlowType
+pattern ContactFlow = ContactFlowType' "CONTACT_FLOW"
+
+pattern CustomerHold :: ContactFlowType
+pattern CustomerHold = ContactFlowType' "CUSTOMER_HOLD"
+
+pattern CustomerQueue :: ContactFlowType
+pattern CustomerQueue = ContactFlowType' "CUSTOMER_QUEUE"
+
+pattern CustomerWhisper :: ContactFlowType
+pattern CustomerWhisper = ContactFlowType' "CUSTOMER_WHISPER"
+
+pattern OutboundWhisper :: ContactFlowType
+pattern OutboundWhisper = ContactFlowType' "OUTBOUND_WHISPER"
+
+pattern QueueTransfer :: ContactFlowType
+pattern QueueTransfer = ContactFlowType' "QUEUE_TRANSFER"
+
+{-# COMPLETE
+  AgentHold,
+  AgentTransfer,
+  AgentWhisper,
+  ContactFlow,
+  CustomerHold,
+  CustomerQueue,
+  CustomerWhisper,
+  OutboundWhisper,
+  QueueTransfer,
+  ContactFlowType' #-}
 
 instance FromText ContactFlowType where
-    parser = takeLowerText >>= \case
-        "agent_hold" -> pure AgentHold
-        "agent_transfer" -> pure AgentTransfer
-        "agent_whisper" -> pure AgentWhisper
-        "contact_flow" -> pure ContactFlow
-        "customer_hold" -> pure CustomerHold
-        "customer_queue" -> pure CustomerQueue
-        "customer_whisper" -> pure CustomerWhisper
-        "outbound_whisper" -> pure OutboundWhisper
-        "queue_transfer" -> pure QueueTransfer
-        e -> fromTextError $ "Failure parsing ContactFlowType from value: '" <> e
-           <> "'. Accepted values: agent_hold, agent_transfer, agent_whisper, contact_flow, customer_hold, customer_queue, customer_whisper, outbound_whisper, queue_transfer"
+    parser = (ContactFlowType' . mk) <$> takeText
 
 instance ToText ContactFlowType where
-    toText = \case
-        AgentHold -> "AGENT_HOLD"
-        AgentTransfer -> "AGENT_TRANSFER"
-        AgentWhisper -> "AGENT_WHISPER"
-        ContactFlow -> "CONTACT_FLOW"
-        CustomerHold -> "CUSTOMER_HOLD"
-        CustomerQueue -> "CUSTOMER_QUEUE"
-        CustomerWhisper -> "CUSTOMER_WHISPER"
-        OutboundWhisper -> "OUTBOUND_WHISPER"
-        QueueTransfer -> "QUEUE_TRANSFER"
+    toText (ContactFlowType' ci) = original ci
+
+-- | Represents an enum of /known/ $ContactFlowType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum ContactFlowType where
+    toEnum i = case i of
+        0 -> AgentHold
+        1 -> AgentTransfer
+        2 -> AgentWhisper
+        3 -> ContactFlow
+        4 -> CustomerHold
+        5 -> CustomerQueue
+        6 -> CustomerWhisper
+        7 -> OutboundWhisper
+        8 -> QueueTransfer
+        _ -> (error . showText) $ "Unknown index for ContactFlowType: " <> toText i
+    fromEnum x = case x of
+        AgentHold -> 0
+        AgentTransfer -> 1
+        AgentWhisper -> 2
+        ContactFlow -> 3
+        CustomerHold -> 4
+        CustomerQueue -> 5
+        CustomerWhisper -> 6
+        OutboundWhisper -> 7
+        QueueTransfer -> 8
+        ContactFlowType' name -> (error . showText) $ "Unknown ContactFlowType: " <> original name
+
+-- | Represents the bounds of /known/ $ContactFlowType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded ContactFlowType where
+    minBound = AgentHold
+    maxBound = QueueTransfer
 
 instance Hashable     ContactFlowType
 instance NFData       ContactFlowType

@@ -43,6 +43,7 @@ module Network.AWS.CodeBuild.ListBuildsForProject
     ) where
 
 import Network.AWS.CodeBuild.Types
+import Network.AWS.CodeBuild.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude

@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,58 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.SSM.Types.DocumentFormat where
+module Network.AWS.SSM.Types.DocumentFormat (
+  DocumentFormat (
+    ..
+    , JSON
+    , Yaml
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data DocumentFormat = JSON
-                    | Yaml
-                        deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                  Typeable, Generic)
+
+data DocumentFormat = DocumentFormat' (CI Text)
+                        deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                  Generic)
+
+pattern JSON :: DocumentFormat
+pattern JSON = DocumentFormat' "JSON"
+
+pattern Yaml :: DocumentFormat
+pattern Yaml = DocumentFormat' "YAML"
+
+{-# COMPLETE
+  JSON,
+  Yaml,
+  DocumentFormat' #-}
 
 instance FromText DocumentFormat where
-    parser = takeLowerText >>= \case
-        "json" -> pure JSON
-        "yaml" -> pure Yaml
-        e -> fromTextError $ "Failure parsing DocumentFormat from value: '" <> e
-           <> "'. Accepted values: json, yaml"
+    parser = (DocumentFormat' . mk) <$> takeText
 
 instance ToText DocumentFormat where
-    toText = \case
-        JSON -> "JSON"
-        Yaml -> "YAML"
+    toText (DocumentFormat' ci) = original ci
+
+-- | Represents an enum of /known/ $DocumentFormat.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum DocumentFormat where
+    toEnum i = case i of
+        0 -> JSON
+        1 -> Yaml
+        _ -> (error . showText) $ "Unknown index for DocumentFormat: " <> toText i
+    fromEnum x = case x of
+        JSON -> 0
+        Yaml -> 1
+        DocumentFormat' name -> (error . showText) $ "Unknown DocumentFormat: " <> original name
+
+-- | Represents the bounds of /known/ $DocumentFormat.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded DocumentFormat where
+    minBound = JSON
+    maxBound = Yaml
 
 instance Hashable     DocumentFormat
 instance NFData       DocumentFormat

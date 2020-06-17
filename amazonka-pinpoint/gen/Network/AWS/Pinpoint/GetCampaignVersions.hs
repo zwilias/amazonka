@@ -40,6 +40,7 @@ module Network.AWS.Pinpoint.GetCampaignVersions
 
 import Network.AWS.Lens
 import Network.AWS.Pinpoint.Types
+import Network.AWS.Pinpoint.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response

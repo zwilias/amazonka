@@ -65,6 +65,7 @@ module Network.AWS.CloudWatch.GetMetricData
     ) where
 
 import Network.AWS.CloudWatch.Types
+import Network.AWS.CloudWatch.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude

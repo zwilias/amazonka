@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,27 +16,59 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.MediaLive.Types.M3u8PcrControl where
+module Network.AWS.MediaLive.Types.M3u8PcrControl (
+  M3u8PcrControl (
+    ..
+    , MPCConfiguredPcrPeriod
+    , MPCPcrEveryPesPacket
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
+
 -- | Placeholder documentation for M3u8PcrControl
-data M3u8PcrControl = MPCConfiguredPcrPeriod
-                    | MPCPcrEveryPesPacket
-                        deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                  Typeable, Generic)
+data M3u8PcrControl = M3u8PcrControl' (CI Text)
+                        deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                  Generic)
+
+pattern MPCConfiguredPcrPeriod :: M3u8PcrControl
+pattern MPCConfiguredPcrPeriod = M3u8PcrControl' "CONFIGURED_PCR_PERIOD"
+
+pattern MPCPcrEveryPesPacket :: M3u8PcrControl
+pattern MPCPcrEveryPesPacket = M3u8PcrControl' "PCR_EVERY_PES_PACKET"
+
+{-# COMPLETE
+  MPCConfiguredPcrPeriod,
+  MPCPcrEveryPesPacket,
+  M3u8PcrControl' #-}
 
 instance FromText M3u8PcrControl where
-    parser = takeLowerText >>= \case
-        "configured_pcr_period" -> pure MPCConfiguredPcrPeriod
-        "pcr_every_pes_packet" -> pure MPCPcrEveryPesPacket
-        e -> fromTextError $ "Failure parsing M3u8PcrControl from value: '" <> e
-           <> "'. Accepted values: configured_pcr_period, pcr_every_pes_packet"
+    parser = (M3u8PcrControl' . mk) <$> takeText
 
 instance ToText M3u8PcrControl where
-    toText = \case
-        MPCConfiguredPcrPeriod -> "CONFIGURED_PCR_PERIOD"
-        MPCPcrEveryPesPacket -> "PCR_EVERY_PES_PACKET"
+    toText (M3u8PcrControl' ci) = original ci
+
+-- | Represents an enum of /known/ $M3u8PcrControl.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum M3u8PcrControl where
+    toEnum i = case i of
+        0 -> MPCConfiguredPcrPeriod
+        1 -> MPCPcrEveryPesPacket
+        _ -> (error . showText) $ "Unknown index for M3u8PcrControl: " <> toText i
+    fromEnum x = case x of
+        MPCConfiguredPcrPeriod -> 0
+        MPCPcrEveryPesPacket -> 1
+        M3u8PcrControl' name -> (error . showText) $ "Unknown M3u8PcrControl: " <> original name
+
+-- | Represents the bounds of /known/ $M3u8PcrControl.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded M3u8PcrControl where
+    minBound = MPCConfiguredPcrPeriod
+    maxBound = MPCPcrEveryPesPacket
 
 instance Hashable     M3u8PcrControl
 instance NFData       M3u8PcrControl

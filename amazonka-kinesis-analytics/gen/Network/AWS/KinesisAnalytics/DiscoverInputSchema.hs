@@ -49,6 +49,7 @@ module Network.AWS.KinesisAnalytics.DiscoverInputSchema
     ) where
 
 import Network.AWS.KinesisAnalytics.Types
+import Network.AWS.KinesisAnalytics.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request

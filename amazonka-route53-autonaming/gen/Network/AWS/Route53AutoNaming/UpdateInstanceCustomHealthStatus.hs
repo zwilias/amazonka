@@ -39,6 +39,7 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.Route53AutoNaming.Types
+import Network.AWS.Route53AutoNaming.Types.Product
 
 -- | /See:/ 'updateInstanceCustomHealthStatus' smart constructor.
 data UpdateInstanceCustomHealthStatus = UpdateInstanceCustomHealthStatus'{_uichsServiceId

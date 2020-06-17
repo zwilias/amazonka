@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,58 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.Route53AutoNaming.Types.NamespaceType where
+module Network.AWS.Route53AutoNaming.Types.NamespaceType (
+  NamespaceType (
+    ..
+    , DNSPrivate
+    , DNSPublic
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data NamespaceType = DNSPrivate
-                   | DNSPublic
-                       deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                 Typeable, Generic)
+
+data NamespaceType = NamespaceType' (CI Text)
+                       deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                 Generic)
+
+pattern DNSPrivate :: NamespaceType
+pattern DNSPrivate = NamespaceType' "DNS_PRIVATE"
+
+pattern DNSPublic :: NamespaceType
+pattern DNSPublic = NamespaceType' "DNS_PUBLIC"
+
+{-# COMPLETE
+  DNSPrivate,
+  DNSPublic,
+  NamespaceType' #-}
 
 instance FromText NamespaceType where
-    parser = takeLowerText >>= \case
-        "dns_private" -> pure DNSPrivate
-        "dns_public" -> pure DNSPublic
-        e -> fromTextError $ "Failure parsing NamespaceType from value: '" <> e
-           <> "'. Accepted values: dns_private, dns_public"
+    parser = (NamespaceType' . mk) <$> takeText
 
 instance ToText NamespaceType where
-    toText = \case
-        DNSPrivate -> "DNS_PRIVATE"
-        DNSPublic -> "DNS_PUBLIC"
+    toText (NamespaceType' ci) = original ci
+
+-- | Represents an enum of /known/ $NamespaceType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum NamespaceType where
+    toEnum i = case i of
+        0 -> DNSPrivate
+        1 -> DNSPublic
+        _ -> (error . showText) $ "Unknown index for NamespaceType: " <> toText i
+    fromEnum x = case x of
+        DNSPrivate -> 0
+        DNSPublic -> 1
+        NamespaceType' name -> (error . showText) $ "Unknown NamespaceType: " <> original name
+
+-- | Represents the bounds of /known/ $NamespaceType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded NamespaceType where
+    minBound = DNSPrivate
+    maxBound = DNSPublic
 
 instance Hashable     NamespaceType
 instance NFData       NamespaceType

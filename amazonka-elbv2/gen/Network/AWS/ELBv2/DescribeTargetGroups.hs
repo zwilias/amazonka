@@ -47,6 +47,7 @@ module Network.AWS.ELBv2.DescribeTargetGroups
     ) where
 
 import Network.AWS.ELBv2.Types
+import Network.AWS.ELBv2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude

@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,29 +16,65 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.LexModels.Types.Locale where
+module Network.AWS.LexModels.Types.Locale (
+  Locale (
+    ..
+    , DeDe
+    , EnGb
+    , EnUs
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data Locale = DeDe
-            | EnGb
-            | EnUs
-                deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                          Typeable, Generic)
+
+data Locale = Locale' (CI Text)
+                deriving (Eq, Ord, Read, Show, Data, Typeable,
+                          Generic)
+
+pattern DeDe :: Locale
+pattern DeDe = Locale' "de-DE"
+
+pattern EnGb :: Locale
+pattern EnGb = Locale' "en-GB"
+
+pattern EnUs :: Locale
+pattern EnUs = Locale' "en-US"
+
+{-# COMPLETE
+  DeDe,
+  EnGb,
+  EnUs,
+  Locale' #-}
 
 instance FromText Locale where
-    parser = takeLowerText >>= \case
-        "de-de" -> pure DeDe
-        "en-gb" -> pure EnGb
-        "en-us" -> pure EnUs
-        e -> fromTextError $ "Failure parsing Locale from value: '" <> e
-           <> "'. Accepted values: de-de, en-gb, en-us"
+    parser = (Locale' . mk) <$> takeText
 
 instance ToText Locale where
-    toText = \case
-        DeDe -> "de-DE"
-        EnGb -> "en-GB"
-        EnUs -> "en-US"
+    toText (Locale' ci) = original ci
+
+-- | Represents an enum of /known/ $Locale.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum Locale where
+    toEnum i = case i of
+        0 -> DeDe
+        1 -> EnGb
+        2 -> EnUs
+        _ -> (error . showText) $ "Unknown index for Locale: " <> toText i
+    fromEnum x = case x of
+        DeDe -> 0
+        EnGb -> 1
+        EnUs -> 2
+        Locale' name -> (error . showText) $ "Unknown Locale: " <> original name
+
+-- | Represents the bounds of /known/ $Locale.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded Locale where
+    minBound = DeDe
+    maxBound = EnUs
 
 instance Hashable     Locale
 instance NFData       Locale

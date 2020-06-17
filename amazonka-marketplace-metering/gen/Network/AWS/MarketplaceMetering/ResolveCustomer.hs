@@ -40,6 +40,7 @@ module Network.AWS.MarketplaceMetering.ResolveCustomer
 
 import Network.AWS.Lens
 import Network.AWS.MarketplaceMetering.Types
+import Network.AWS.MarketplaceMetering.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response

@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,58 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.Rekognition.Types.FaceSearchSortBy where
+module Network.AWS.Rekognition.Types.FaceSearchSortBy (
+  FaceSearchSortBy (
+    ..
+    , FSSBIndex
+    , FSSBTimestamp
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data FaceSearchSortBy = FSSBIndex
-                      | FSSBTimestamp
-                          deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                    Typeable, Generic)
+
+data FaceSearchSortBy = FaceSearchSortBy' (CI Text)
+                          deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                    Generic)
+
+pattern FSSBIndex :: FaceSearchSortBy
+pattern FSSBIndex = FaceSearchSortBy' "INDEX"
+
+pattern FSSBTimestamp :: FaceSearchSortBy
+pattern FSSBTimestamp = FaceSearchSortBy' "TIMESTAMP"
+
+{-# COMPLETE
+  FSSBIndex,
+  FSSBTimestamp,
+  FaceSearchSortBy' #-}
 
 instance FromText FaceSearchSortBy where
-    parser = takeLowerText >>= \case
-        "index" -> pure FSSBIndex
-        "timestamp" -> pure FSSBTimestamp
-        e -> fromTextError $ "Failure parsing FaceSearchSortBy from value: '" <> e
-           <> "'. Accepted values: index, timestamp"
+    parser = (FaceSearchSortBy' . mk) <$> takeText
 
 instance ToText FaceSearchSortBy where
-    toText = \case
-        FSSBIndex -> "INDEX"
-        FSSBTimestamp -> "TIMESTAMP"
+    toText (FaceSearchSortBy' ci) = original ci
+
+-- | Represents an enum of /known/ $FaceSearchSortBy.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum FaceSearchSortBy where
+    toEnum i = case i of
+        0 -> FSSBIndex
+        1 -> FSSBTimestamp
+        _ -> (error . showText) $ "Unknown index for FaceSearchSortBy: " <> toText i
+    fromEnum x = case x of
+        FSSBIndex -> 0
+        FSSBTimestamp -> 1
+        FaceSearchSortBy' name -> (error . showText) $ "Unknown FaceSearchSortBy: " <> original name
+
+-- | Represents the bounds of /known/ $FaceSearchSortBy.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded FaceSearchSortBy where
+    minBound = FSSBIndex
+    maxBound = FSSBTimestamp
 
 instance Hashable     FaceSearchSortBy
 instance NFData       FaceSearchSortBy

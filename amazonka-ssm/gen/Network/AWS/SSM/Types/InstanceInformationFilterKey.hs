@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,45 +16,101 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.SSM.Types.InstanceInformationFilterKey where
+module Network.AWS.SSM.Types.InstanceInformationFilterKey (
+  InstanceInformationFilterKey (
+    ..
+    , IIFKActivationIds
+    , IIFKAgentVersion
+    , IIFKAssociationStatus
+    , IIFKIAMRole
+    , IIFKInstanceIds
+    , IIFKPingStatus
+    , IIFKPlatformTypes
+    , IIFKResourceType
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data InstanceInformationFilterKey = IIFKActivationIds
-                                  | IIFKAgentVersion
-                                  | IIFKAssociationStatus
-                                  | IIFKIAMRole
-                                  | IIFKInstanceIds
-                                  | IIFKPingStatus
-                                  | IIFKPlatformTypes
-                                  | IIFKResourceType
-                                      deriving (Eq, Ord, Read, Show, Enum,
-                                                Bounded, Data, Typeable,
-                                                Generic)
+
+data InstanceInformationFilterKey = InstanceInformationFilterKey' (CI
+                                                                     Text)
+                                      deriving (Eq, Ord, Read, Show, Data,
+                                                Typeable, Generic)
+
+pattern IIFKActivationIds :: InstanceInformationFilterKey
+pattern IIFKActivationIds = InstanceInformationFilterKey' "ActivationIds"
+
+pattern IIFKAgentVersion :: InstanceInformationFilterKey
+pattern IIFKAgentVersion = InstanceInformationFilterKey' "AgentVersion"
+
+pattern IIFKAssociationStatus :: InstanceInformationFilterKey
+pattern IIFKAssociationStatus = InstanceInformationFilterKey' "AssociationStatus"
+
+pattern IIFKIAMRole :: InstanceInformationFilterKey
+pattern IIFKIAMRole = InstanceInformationFilterKey' "IamRole"
+
+pattern IIFKInstanceIds :: InstanceInformationFilterKey
+pattern IIFKInstanceIds = InstanceInformationFilterKey' "InstanceIds"
+
+pattern IIFKPingStatus :: InstanceInformationFilterKey
+pattern IIFKPingStatus = InstanceInformationFilterKey' "PingStatus"
+
+pattern IIFKPlatformTypes :: InstanceInformationFilterKey
+pattern IIFKPlatformTypes = InstanceInformationFilterKey' "PlatformTypes"
+
+pattern IIFKResourceType :: InstanceInformationFilterKey
+pattern IIFKResourceType = InstanceInformationFilterKey' "ResourceType"
+
+{-# COMPLETE
+  IIFKActivationIds,
+  IIFKAgentVersion,
+  IIFKAssociationStatus,
+  IIFKIAMRole,
+  IIFKInstanceIds,
+  IIFKPingStatus,
+  IIFKPlatformTypes,
+  IIFKResourceType,
+  InstanceInformationFilterKey' #-}
 
 instance FromText InstanceInformationFilterKey where
-    parser = takeLowerText >>= \case
-        "activationids" -> pure IIFKActivationIds
-        "agentversion" -> pure IIFKAgentVersion
-        "associationstatus" -> pure IIFKAssociationStatus
-        "iamrole" -> pure IIFKIAMRole
-        "instanceids" -> pure IIFKInstanceIds
-        "pingstatus" -> pure IIFKPingStatus
-        "platformtypes" -> pure IIFKPlatformTypes
-        "resourcetype" -> pure IIFKResourceType
-        e -> fromTextError $ "Failure parsing InstanceInformationFilterKey from value: '" <> e
-           <> "'. Accepted values: activationids, agentversion, associationstatus, iamrole, instanceids, pingstatus, platformtypes, resourcetype"
+    parser = (InstanceInformationFilterKey' . mk) <$> takeText
 
 instance ToText InstanceInformationFilterKey where
-    toText = \case
-        IIFKActivationIds -> "ActivationIds"
-        IIFKAgentVersion -> "AgentVersion"
-        IIFKAssociationStatus -> "AssociationStatus"
-        IIFKIAMRole -> "IamRole"
-        IIFKInstanceIds -> "InstanceIds"
-        IIFKPingStatus -> "PingStatus"
-        IIFKPlatformTypes -> "PlatformTypes"
-        IIFKResourceType -> "ResourceType"
+    toText (InstanceInformationFilterKey' ci) = original ci
+
+-- | Represents an enum of /known/ $InstanceInformationFilterKey.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum InstanceInformationFilterKey where
+    toEnum i = case i of
+        0 -> IIFKActivationIds
+        1 -> IIFKAgentVersion
+        2 -> IIFKAssociationStatus
+        3 -> IIFKIAMRole
+        4 -> IIFKInstanceIds
+        5 -> IIFKPingStatus
+        6 -> IIFKPlatformTypes
+        7 -> IIFKResourceType
+        _ -> (error . showText) $ "Unknown index for InstanceInformationFilterKey: " <> toText i
+    fromEnum x = case x of
+        IIFKActivationIds -> 0
+        IIFKAgentVersion -> 1
+        IIFKAssociationStatus -> 2
+        IIFKIAMRole -> 3
+        IIFKInstanceIds -> 4
+        IIFKPingStatus -> 5
+        IIFKPlatformTypes -> 6
+        IIFKResourceType -> 7
+        InstanceInformationFilterKey' name -> (error . showText) $ "Unknown InstanceInformationFilterKey: " <> original name
+
+-- | Represents the bounds of /known/ $InstanceInformationFilterKey.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded InstanceInformationFilterKey where
+    minBound = IIFKActivationIds
+    maxBound = IIFKResourceType
 
 instance Hashable     InstanceInformationFilterKey
 instance NFData       InstanceInformationFilterKey

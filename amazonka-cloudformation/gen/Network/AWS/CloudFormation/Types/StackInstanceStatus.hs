@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,29 +16,66 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.CloudFormation.Types.StackInstanceStatus where
+module Network.AWS.CloudFormation.Types.StackInstanceStatus (
+  StackInstanceStatus (
+    ..
+    , Current
+    , Inoperable
+    , Outdated
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data StackInstanceStatus = Current
-                         | Inoperable
-                         | Outdated
-                             deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                       Typeable, Generic)
+
+data StackInstanceStatus = StackInstanceStatus' (CI
+                                                   Text)
+                             deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                       Generic)
+
+pattern Current :: StackInstanceStatus
+pattern Current = StackInstanceStatus' "CURRENT"
+
+pattern Inoperable :: StackInstanceStatus
+pattern Inoperable = StackInstanceStatus' "INOPERABLE"
+
+pattern Outdated :: StackInstanceStatus
+pattern Outdated = StackInstanceStatus' "OUTDATED"
+
+{-# COMPLETE
+  Current,
+  Inoperable,
+  Outdated,
+  StackInstanceStatus' #-}
 
 instance FromText StackInstanceStatus where
-    parser = takeLowerText >>= \case
-        "current" -> pure Current
-        "inoperable" -> pure Inoperable
-        "outdated" -> pure Outdated
-        e -> fromTextError $ "Failure parsing StackInstanceStatus from value: '" <> e
-           <> "'. Accepted values: current, inoperable, outdated"
+    parser = (StackInstanceStatus' . mk) <$> takeText
 
 instance ToText StackInstanceStatus where
-    toText = \case
-        Current -> "CURRENT"
-        Inoperable -> "INOPERABLE"
-        Outdated -> "OUTDATED"
+    toText (StackInstanceStatus' ci) = original ci
+
+-- | Represents an enum of /known/ $StackInstanceStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum StackInstanceStatus where
+    toEnum i = case i of
+        0 -> Current
+        1 -> Inoperable
+        2 -> Outdated
+        _ -> (error . showText) $ "Unknown index for StackInstanceStatus: " <> toText i
+    fromEnum x = case x of
+        Current -> 0
+        Inoperable -> 1
+        Outdated -> 2
+        StackInstanceStatus' name -> (error . showText) $ "Unknown StackInstanceStatus: " <> original name
+
+-- | Represents the bounds of /known/ $StackInstanceStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded StackInstanceStatus where
+    minBound = Current
+    maxBound = Outdated
 
 instance Hashable     StackInstanceStatus
 instance NFData       StackInstanceStatus

@@ -40,6 +40,7 @@ module Network.AWS.APIGatewayManagementAPI.GetConnection
     ) where
 
 import Network.AWS.APIGatewayManagementAPI.Types
+import Network.AWS.APIGatewayManagementAPI.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request

@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,38 +16,87 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.Shield.Types.AttackPropertyIdentifier where
+module Network.AWS.Shield.Types.AttackPropertyIdentifier (
+  AttackPropertyIdentifier (
+    ..
+    , DestinationURL
+    , Referrer
+    , SourceASN
+    , SourceCountry
+    , SourceIPAddress
+    , SourceUserAgent
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data AttackPropertyIdentifier = DestinationURL
-                              | Referrer
-                              | SourceASN
-                              | SourceCountry
-                              | SourceIPAddress
-                              | SourceUserAgent
-                                  deriving (Eq, Ord, Read, Show, Enum, Bounded,
-                                            Data, Typeable, Generic)
+
+data AttackPropertyIdentifier = AttackPropertyIdentifier' (CI
+                                                             Text)
+                                  deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                            Generic)
+
+pattern DestinationURL :: AttackPropertyIdentifier
+pattern DestinationURL = AttackPropertyIdentifier' "DESTINATION_URL"
+
+pattern Referrer :: AttackPropertyIdentifier
+pattern Referrer = AttackPropertyIdentifier' "REFERRER"
+
+pattern SourceASN :: AttackPropertyIdentifier
+pattern SourceASN = AttackPropertyIdentifier' "SOURCE_ASN"
+
+pattern SourceCountry :: AttackPropertyIdentifier
+pattern SourceCountry = AttackPropertyIdentifier' "SOURCE_COUNTRY"
+
+pattern SourceIPAddress :: AttackPropertyIdentifier
+pattern SourceIPAddress = AttackPropertyIdentifier' "SOURCE_IP_ADDRESS"
+
+pattern SourceUserAgent :: AttackPropertyIdentifier
+pattern SourceUserAgent = AttackPropertyIdentifier' "SOURCE_USER_AGENT"
+
+{-# COMPLETE
+  DestinationURL,
+  Referrer,
+  SourceASN,
+  SourceCountry,
+  SourceIPAddress,
+  SourceUserAgent,
+  AttackPropertyIdentifier' #-}
 
 instance FromText AttackPropertyIdentifier where
-    parser = takeLowerText >>= \case
-        "destination_url" -> pure DestinationURL
-        "referrer" -> pure Referrer
-        "source_asn" -> pure SourceASN
-        "source_country" -> pure SourceCountry
-        "source_ip_address" -> pure SourceIPAddress
-        "source_user_agent" -> pure SourceUserAgent
-        e -> fromTextError $ "Failure parsing AttackPropertyIdentifier from value: '" <> e
-           <> "'. Accepted values: destination_url, referrer, source_asn, source_country, source_ip_address, source_user_agent"
+    parser = (AttackPropertyIdentifier' . mk) <$> takeText
 
 instance ToText AttackPropertyIdentifier where
-    toText = \case
-        DestinationURL -> "DESTINATION_URL"
-        Referrer -> "REFERRER"
-        SourceASN -> "SOURCE_ASN"
-        SourceCountry -> "SOURCE_COUNTRY"
-        SourceIPAddress -> "SOURCE_IP_ADDRESS"
-        SourceUserAgent -> "SOURCE_USER_AGENT"
+    toText (AttackPropertyIdentifier' ci) = original ci
+
+-- | Represents an enum of /known/ $AttackPropertyIdentifier.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum AttackPropertyIdentifier where
+    toEnum i = case i of
+        0 -> DestinationURL
+        1 -> Referrer
+        2 -> SourceASN
+        3 -> SourceCountry
+        4 -> SourceIPAddress
+        5 -> SourceUserAgent
+        _ -> (error . showText) $ "Unknown index for AttackPropertyIdentifier: " <> toText i
+    fromEnum x = case x of
+        DestinationURL -> 0
+        Referrer -> 1
+        SourceASN -> 2
+        SourceCountry -> 3
+        SourceIPAddress -> 4
+        SourceUserAgent -> 5
+        AttackPropertyIdentifier' name -> (error . showText) $ "Unknown AttackPropertyIdentifier: " <> original name
+
+-- | Represents the bounds of /known/ $AttackPropertyIdentifier.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded AttackPropertyIdentifier where
+    minBound = DestinationURL
+    maxBound = SourceUserAgent
 
 instance Hashable     AttackPropertyIdentifier
 instance NFData       AttackPropertyIdentifier

@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,58 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.CostExplorer.Types.OfferingClass where
+module Network.AWS.CostExplorer.Types.OfferingClass (
+  OfferingClass (
+    ..
+    , Convertible
+    , Standard
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data OfferingClass = Convertible
-                   | Standard
-                       deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                 Typeable, Generic)
+
+data OfferingClass = OfferingClass' (CI Text)
+                       deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                 Generic)
+
+pattern Convertible :: OfferingClass
+pattern Convertible = OfferingClass' "CONVERTIBLE"
+
+pattern Standard :: OfferingClass
+pattern Standard = OfferingClass' "STANDARD"
+
+{-# COMPLETE
+  Convertible,
+  Standard,
+  OfferingClass' #-}
 
 instance FromText OfferingClass where
-    parser = takeLowerText >>= \case
-        "convertible" -> pure Convertible
-        "standard" -> pure Standard
-        e -> fromTextError $ "Failure parsing OfferingClass from value: '" <> e
-           <> "'. Accepted values: convertible, standard"
+    parser = (OfferingClass' . mk) <$> takeText
 
 instance ToText OfferingClass where
-    toText = \case
-        Convertible -> "CONVERTIBLE"
-        Standard -> "STANDARD"
+    toText (OfferingClass' ci) = original ci
+
+-- | Represents an enum of /known/ $OfferingClass.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum OfferingClass where
+    toEnum i = case i of
+        0 -> Convertible
+        1 -> Standard
+        _ -> (error . showText) $ "Unknown index for OfferingClass: " <> toText i
+    fromEnum x = case x of
+        Convertible -> 0
+        Standard -> 1
+        OfferingClass' name -> (error . showText) $ "Unknown OfferingClass: " <> original name
+
+-- | Represents the bounds of /known/ $OfferingClass.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded OfferingClass where
+    minBound = Convertible
+    maxBound = Standard
 
 instance Hashable     OfferingClass
 instance NFData       OfferingClass

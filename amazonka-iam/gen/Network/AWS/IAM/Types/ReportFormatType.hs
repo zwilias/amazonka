@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,23 +16,51 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.IAM.Types.ReportFormatType where
+module Network.AWS.IAM.Types.ReportFormatType (
+  ReportFormatType (
+    ..
+    , TextCSV
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data ReportFormatType = TextCSV
-                          deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                    Typeable, Generic)
+
+data ReportFormatType = ReportFormatType' (CI Text)
+                          deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                    Generic)
+
+pattern TextCSV :: ReportFormatType
+pattern TextCSV = ReportFormatType' "text/csv"
+
+{-# COMPLETE
+  TextCSV,
+  ReportFormatType' #-}
 
 instance FromText ReportFormatType where
-    parser = takeLowerText >>= \case
-        "text/csv" -> pure TextCSV
-        e -> fromTextError $ "Failure parsing ReportFormatType from value: '" <> e
-           <> "'. Accepted values: text/csv"
+    parser = (ReportFormatType' . mk) <$> takeText
 
 instance ToText ReportFormatType where
-    toText = \case
-        TextCSV -> "text/csv"
+    toText (ReportFormatType' ci) = original ci
+
+-- | Represents an enum of /known/ $ReportFormatType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum ReportFormatType where
+    toEnum i = case i of
+        0 -> TextCSV
+        _ -> (error . showText) $ "Unknown index for ReportFormatType: " <> toText i
+    fromEnum x = case x of
+        TextCSV -> 0
+        ReportFormatType' name -> (error . showText) $ "Unknown ReportFormatType: " <> original name
+
+-- | Represents the bounds of /known/ $ReportFormatType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded ReportFormatType where
+    minBound = TextCSV
+    maxBound = TextCSV
 
 instance Hashable     ReportFormatType
 instance NFData       ReportFormatType

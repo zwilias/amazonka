@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,29 +16,65 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.AWSHealth.Types.EntityStatusCode where
+module Network.AWS.AWSHealth.Types.EntityStatusCode (
+  EntityStatusCode (
+    ..
+    , Impaired
+    , Unimpaired
+    , Unknown
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data EntityStatusCode = Impaired
-                      | Unimpaired
-                      | Unknown
-                          deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                    Typeable, Generic)
+
+data EntityStatusCode = EntityStatusCode' (CI Text)
+                          deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                    Generic)
+
+pattern Impaired :: EntityStatusCode
+pattern Impaired = EntityStatusCode' "IMPAIRED"
+
+pattern Unimpaired :: EntityStatusCode
+pattern Unimpaired = EntityStatusCode' "UNIMPAIRED"
+
+pattern Unknown :: EntityStatusCode
+pattern Unknown = EntityStatusCode' "UNKNOWN"
+
+{-# COMPLETE
+  Impaired,
+  Unimpaired,
+  Unknown,
+  EntityStatusCode' #-}
 
 instance FromText EntityStatusCode where
-    parser = takeLowerText >>= \case
-        "impaired" -> pure Impaired
-        "unimpaired" -> pure Unimpaired
-        "unknown" -> pure Unknown
-        e -> fromTextError $ "Failure parsing EntityStatusCode from value: '" <> e
-           <> "'. Accepted values: impaired, unimpaired, unknown"
+    parser = (EntityStatusCode' . mk) <$> takeText
 
 instance ToText EntityStatusCode where
-    toText = \case
-        Impaired -> "IMPAIRED"
-        Unimpaired -> "UNIMPAIRED"
-        Unknown -> "UNKNOWN"
+    toText (EntityStatusCode' ci) = original ci
+
+-- | Represents an enum of /known/ $EntityStatusCode.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum EntityStatusCode where
+    toEnum i = case i of
+        0 -> Impaired
+        1 -> Unimpaired
+        2 -> Unknown
+        _ -> (error . showText) $ "Unknown index for EntityStatusCode: " <> toText i
+    fromEnum x = case x of
+        Impaired -> 0
+        Unimpaired -> 1
+        Unknown -> 2
+        EntityStatusCode' name -> (error . showText) $ "Unknown EntityStatusCode: " <> original name
+
+-- | Represents the bounds of /known/ $EntityStatusCode.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded EntityStatusCode where
+    minBound = Impaired
+    maxBound = Unknown
 
 instance Hashable     EntityStatusCode
 instance NFData       EntityStatusCode

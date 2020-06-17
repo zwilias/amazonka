@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,27 +16,60 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.MediaConvert.Types.H264UnregisteredSeiTimecode where
+module Network.AWS.MediaConvert.Types.H264UnregisteredSeiTimecode (
+  H264UnregisteredSeiTimecode (
+    ..
+    , HDisabled
+    , HEnabled
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
+
 -- | Inserts timecode for each frame as 4 bytes of an unregistered SEI message.
-data H264UnregisteredSeiTimecode = HDisabled
-                                 | HEnabled
-                                     deriving (Eq, Ord, Read, Show, Enum,
-                                               Bounded, Data, Typeable, Generic)
+data H264UnregisteredSeiTimecode = H264UnregisteredSeiTimecode' (CI
+                                                                   Text)
+                                     deriving (Eq, Ord, Read, Show, Data,
+                                               Typeable, Generic)
+
+pattern HDisabled :: H264UnregisteredSeiTimecode
+pattern HDisabled = H264UnregisteredSeiTimecode' "DISABLED"
+
+pattern HEnabled :: H264UnregisteredSeiTimecode
+pattern HEnabled = H264UnregisteredSeiTimecode' "ENABLED"
+
+{-# COMPLETE
+  HDisabled,
+  HEnabled,
+  H264UnregisteredSeiTimecode' #-}
 
 instance FromText H264UnregisteredSeiTimecode where
-    parser = takeLowerText >>= \case
-        "disabled" -> pure HDisabled
-        "enabled" -> pure HEnabled
-        e -> fromTextError $ "Failure parsing H264UnregisteredSeiTimecode from value: '" <> e
-           <> "'. Accepted values: disabled, enabled"
+    parser = (H264UnregisteredSeiTimecode' . mk) <$> takeText
 
 instance ToText H264UnregisteredSeiTimecode where
-    toText = \case
-        HDisabled -> "DISABLED"
-        HEnabled -> "ENABLED"
+    toText (H264UnregisteredSeiTimecode' ci) = original ci
+
+-- | Represents an enum of /known/ $H264UnregisteredSeiTimecode.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum H264UnregisteredSeiTimecode where
+    toEnum i = case i of
+        0 -> HDisabled
+        1 -> HEnabled
+        _ -> (error . showText) $ "Unknown index for H264UnregisteredSeiTimecode: " <> toText i
+    fromEnum x = case x of
+        HDisabled -> 0
+        HEnabled -> 1
+        H264UnregisteredSeiTimecode' name -> (error . showText) $ "Unknown H264UnregisteredSeiTimecode: " <> original name
+
+-- | Represents the bounds of /known/ $H264UnregisteredSeiTimecode.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded H264UnregisteredSeiTimecode where
+    minBound = HDisabled
+    maxBound = HEnabled
 
 instance Hashable     H264UnregisteredSeiTimecode
 instance NFData       H264UnregisteredSeiTimecode

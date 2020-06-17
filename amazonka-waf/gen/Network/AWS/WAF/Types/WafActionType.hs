@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,29 +16,65 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.WAF.Types.WafActionType where
+module Network.AWS.WAF.Types.WafActionType (
+  WafActionType (
+    ..
+    , Allow
+    , Block
+    , Count
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data WafActionType = Allow
-                   | Block
-                   | Count
-                       deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                 Typeable, Generic)
+
+data WafActionType = WafActionType' (CI Text)
+                       deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                 Generic)
+
+pattern Allow :: WafActionType
+pattern Allow = WafActionType' "ALLOW"
+
+pattern Block :: WafActionType
+pattern Block = WafActionType' "BLOCK"
+
+pattern Count :: WafActionType
+pattern Count = WafActionType' "COUNT"
+
+{-# COMPLETE
+  Allow,
+  Block,
+  Count,
+  WafActionType' #-}
 
 instance FromText WafActionType where
-    parser = takeLowerText >>= \case
-        "allow" -> pure Allow
-        "block" -> pure Block
-        "count" -> pure Count
-        e -> fromTextError $ "Failure parsing WafActionType from value: '" <> e
-           <> "'. Accepted values: allow, block, count"
+    parser = (WafActionType' . mk) <$> takeText
 
 instance ToText WafActionType where
-    toText = \case
-        Allow -> "ALLOW"
-        Block -> "BLOCK"
-        Count -> "COUNT"
+    toText (WafActionType' ci) = original ci
+
+-- | Represents an enum of /known/ $WafActionType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum WafActionType where
+    toEnum i = case i of
+        0 -> Allow
+        1 -> Block
+        2 -> Count
+        _ -> (error . showText) $ "Unknown index for WafActionType: " <> toText i
+    fromEnum x = case x of
+        Allow -> 0
+        Block -> 1
+        Count -> 2
+        WafActionType' name -> (error . showText) $ "Unknown WafActionType: " <> original name
+
+-- | Represents the bounds of /known/ $WafActionType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded WafActionType where
+    minBound = Allow
+    maxBound = Count
 
 instance Hashable     WafActionType
 instance NFData       WafActionType

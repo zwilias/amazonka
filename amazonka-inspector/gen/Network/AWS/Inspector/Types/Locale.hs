@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,23 +16,51 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.Inspector.Types.Locale where
+module Network.AWS.Inspector.Types.Locale (
+  Locale (
+    ..
+    , EnUs
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data Locale = EnUs
-                deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                          Typeable, Generic)
+
+data Locale = Locale' (CI Text)
+                deriving (Eq, Ord, Read, Show, Data, Typeable,
+                          Generic)
+
+pattern EnUs :: Locale
+pattern EnUs = Locale' "EN_US"
+
+{-# COMPLETE
+  EnUs,
+  Locale' #-}
 
 instance FromText Locale where
-    parser = takeLowerText >>= \case
-        "en_us" -> pure EnUs
-        e -> fromTextError $ "Failure parsing Locale from value: '" <> e
-           <> "'. Accepted values: en_us"
+    parser = (Locale' . mk) <$> takeText
 
 instance ToText Locale where
-    toText = \case
-        EnUs -> "EN_US"
+    toText (Locale' ci) = original ci
+
+-- | Represents an enum of /known/ $Locale.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum Locale where
+    toEnum i = case i of
+        0 -> EnUs
+        _ -> (error . showText) $ "Unknown index for Locale: " <> toText i
+    fromEnum x = case x of
+        EnUs -> 0
+        Locale' name -> (error . showText) $ "Unknown Locale: " <> original name
+
+-- | Represents the bounds of /known/ $Locale.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded Locale where
+    minBound = EnUs
+    maxBound = EnUs
 
 instance Hashable     Locale
 instance NFData       Locale

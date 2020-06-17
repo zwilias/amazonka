@@ -43,6 +43,7 @@ module Network.AWS.Mobile.ListProjects
 
 import Network.AWS.Lens
 import Network.AWS.Mobile.Types
+import Network.AWS.Mobile.Types.Product
 import Network.AWS.Pager
 import Network.AWS.Prelude
 import Network.AWS.Request

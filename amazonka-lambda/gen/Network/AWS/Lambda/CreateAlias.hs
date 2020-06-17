@@ -48,6 +48,7 @@ module Network.AWS.Lambda.CreateAlias
     ) where
 
 import Network.AWS.Lambda.Types
+import Network.AWS.Lambda.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request

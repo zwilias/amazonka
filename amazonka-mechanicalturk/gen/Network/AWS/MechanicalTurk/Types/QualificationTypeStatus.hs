@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,59 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.MechanicalTurk.Types.QualificationTypeStatus where
+module Network.AWS.MechanicalTurk.Types.QualificationTypeStatus (
+  QualificationTypeStatus (
+    ..
+    , Active
+    , Inactive
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data QualificationTypeStatus = Active
-                             | Inactive
-                                 deriving (Eq, Ord, Read, Show, Enum, Bounded,
-                                           Data, Typeable, Generic)
+
+data QualificationTypeStatus = QualificationTypeStatus' (CI
+                                                           Text)
+                                 deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                           Generic)
+
+pattern Active :: QualificationTypeStatus
+pattern Active = QualificationTypeStatus' "Active"
+
+pattern Inactive :: QualificationTypeStatus
+pattern Inactive = QualificationTypeStatus' "Inactive"
+
+{-# COMPLETE
+  Active,
+  Inactive,
+  QualificationTypeStatus' #-}
 
 instance FromText QualificationTypeStatus where
-    parser = takeLowerText >>= \case
-        "active" -> pure Active
-        "inactive" -> pure Inactive
-        e -> fromTextError $ "Failure parsing QualificationTypeStatus from value: '" <> e
-           <> "'. Accepted values: active, inactive"
+    parser = (QualificationTypeStatus' . mk) <$> takeText
 
 instance ToText QualificationTypeStatus where
-    toText = \case
-        Active -> "Active"
-        Inactive -> "Inactive"
+    toText (QualificationTypeStatus' ci) = original ci
+
+-- | Represents an enum of /known/ $QualificationTypeStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum QualificationTypeStatus where
+    toEnum i = case i of
+        0 -> Active
+        1 -> Inactive
+        _ -> (error . showText) $ "Unknown index for QualificationTypeStatus: " <> toText i
+    fromEnum x = case x of
+        Active -> 0
+        Inactive -> 1
+        QualificationTypeStatus' name -> (error . showText) $ "Unknown QualificationTypeStatus: " <> original name
+
+-- | Represents the bounds of /known/ $QualificationTypeStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded QualificationTypeStatus where
+    minBound = Active
+    maxBound = Inactive
 
 instance Hashable     QualificationTypeStatus
 instance NFData       QualificationTypeStatus

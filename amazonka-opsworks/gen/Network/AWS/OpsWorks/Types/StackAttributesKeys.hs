@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,23 +16,52 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.OpsWorks.Types.StackAttributesKeys where
+module Network.AWS.OpsWorks.Types.StackAttributesKeys (
+  StackAttributesKeys (
+    ..
+    , Color
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data StackAttributesKeys = Color
-                             deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                       Typeable, Generic)
+
+data StackAttributesKeys = StackAttributesKeys' (CI
+                                                   Text)
+                             deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                       Generic)
+
+pattern Color :: StackAttributesKeys
+pattern Color = StackAttributesKeys' "Color"
+
+{-# COMPLETE
+  Color,
+  StackAttributesKeys' #-}
 
 instance FromText StackAttributesKeys where
-    parser = takeLowerText >>= \case
-        "color" -> pure Color
-        e -> fromTextError $ "Failure parsing StackAttributesKeys from value: '" <> e
-           <> "'. Accepted values: color"
+    parser = (StackAttributesKeys' . mk) <$> takeText
 
 instance ToText StackAttributesKeys where
-    toText = \case
-        Color -> "Color"
+    toText (StackAttributesKeys' ci) = original ci
+
+-- | Represents an enum of /known/ $StackAttributesKeys.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum StackAttributesKeys where
+    toEnum i = case i of
+        0 -> Color
+        _ -> (error . showText) $ "Unknown index for StackAttributesKeys: " <> toText i
+    fromEnum x = case x of
+        Color -> 0
+        StackAttributesKeys' name -> (error . showText) $ "Unknown StackAttributesKeys: " <> original name
+
+-- | Represents the bounds of /known/ $StackAttributesKeys.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded StackAttributesKeys where
+    minBound = Color
+    maxBound = Color
 
 instance Hashable     StackAttributesKeys
 instance NFData       StackAttributesKeys

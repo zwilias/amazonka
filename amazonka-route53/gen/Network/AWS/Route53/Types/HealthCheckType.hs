@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,42 +16,94 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.Route53.Types.HealthCheckType where
+module Network.AWS.Route53.Types.HealthCheckType (
+  HealthCheckType (
+    ..
+    , Calculated
+    , CloudwatchMetric
+    , HTTP
+    , HTTPS
+    , HTTPSStrMatch
+    , HTTPStrMatch
+    , TCP
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
 import Network.AWS.Route53.Internal
-  
-data HealthCheckType = Calculated
-                     | CloudwatchMetric
-                     | HTTP
-                     | HTTPS
-                     | HTTPSStrMatch
-                     | HTTPStrMatch
-                     | TCP
-                         deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                   Typeable, Generic)
+
+data HealthCheckType = HealthCheckType' (CI Text)
+                         deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                   Generic)
+
+pattern Calculated :: HealthCheckType
+pattern Calculated = HealthCheckType' "CALCULATED"
+
+pattern CloudwatchMetric :: HealthCheckType
+pattern CloudwatchMetric = HealthCheckType' "CLOUDWATCH_METRIC"
+
+pattern HTTP :: HealthCheckType
+pattern HTTP = HealthCheckType' "HTTP"
+
+pattern HTTPS :: HealthCheckType
+pattern HTTPS = HealthCheckType' "HTTPS"
+
+pattern HTTPSStrMatch :: HealthCheckType
+pattern HTTPSStrMatch = HealthCheckType' "HTTPS_STR_MATCH"
+
+pattern HTTPStrMatch :: HealthCheckType
+pattern HTTPStrMatch = HealthCheckType' "HTTP_STR_MATCH"
+
+pattern TCP :: HealthCheckType
+pattern TCP = HealthCheckType' "TCP"
+
+{-# COMPLETE
+  Calculated,
+  CloudwatchMetric,
+  HTTP,
+  HTTPS,
+  HTTPSStrMatch,
+  HTTPStrMatch,
+  TCP,
+  HealthCheckType' #-}
 
 instance FromText HealthCheckType where
-    parser = takeLowerText >>= \case
-        "calculated" -> pure Calculated
-        "cloudwatch_metric" -> pure CloudwatchMetric
-        "http" -> pure HTTP
-        "https" -> pure HTTPS
-        "https_str_match" -> pure HTTPSStrMatch
-        "http_str_match" -> pure HTTPStrMatch
-        "tcp" -> pure TCP
-        e -> fromTextError $ "Failure parsing HealthCheckType from value: '" <> e
-           <> "'. Accepted values: calculated, cloudwatch_metric, http, https, https_str_match, http_str_match, tcp"
+    parser = (HealthCheckType' . mk) <$> takeText
 
 instance ToText HealthCheckType where
-    toText = \case
-        Calculated -> "CALCULATED"
-        CloudwatchMetric -> "CLOUDWATCH_METRIC"
-        HTTP -> "HTTP"
-        HTTPS -> "HTTPS"
-        HTTPSStrMatch -> "HTTPS_STR_MATCH"
-        HTTPStrMatch -> "HTTP_STR_MATCH"
-        TCP -> "TCP"
+    toText (HealthCheckType' ci) = original ci
+
+-- | Represents an enum of /known/ $HealthCheckType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum HealthCheckType where
+    toEnum i = case i of
+        0 -> Calculated
+        1 -> CloudwatchMetric
+        2 -> HTTP
+        3 -> HTTPS
+        4 -> HTTPSStrMatch
+        5 -> HTTPStrMatch
+        6 -> TCP
+        _ -> (error . showText) $ "Unknown index for HealthCheckType: " <> toText i
+    fromEnum x = case x of
+        Calculated -> 0
+        CloudwatchMetric -> 1
+        HTTP -> 2
+        HTTPS -> 3
+        HTTPSStrMatch -> 4
+        HTTPStrMatch -> 5
+        TCP -> 6
+        HealthCheckType' name -> (error . showText) $ "Unknown HealthCheckType: " <> original name
+
+-- | Represents the bounds of /known/ $HealthCheckType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded HealthCheckType where
+    minBound = Calculated
+    maxBound = TCP
 
 instance Hashable     HealthCheckType
 instance NFData       HealthCheckType

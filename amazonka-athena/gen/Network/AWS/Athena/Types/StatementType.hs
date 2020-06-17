@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,29 +16,65 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.Athena.Types.StatementType where
+module Network.AWS.Athena.Types.StatementType (
+  StatementType (
+    ..
+    , Ddl
+    , Dml
+    , Utility
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data StatementType = Ddl
-                   | Dml
-                   | Utility
-                       deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                 Typeable, Generic)
+
+data StatementType = StatementType' (CI Text)
+                       deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                 Generic)
+
+pattern Ddl :: StatementType
+pattern Ddl = StatementType' "DDL"
+
+pattern Dml :: StatementType
+pattern Dml = StatementType' "DML"
+
+pattern Utility :: StatementType
+pattern Utility = StatementType' "UTILITY"
+
+{-# COMPLETE
+  Ddl,
+  Dml,
+  Utility,
+  StatementType' #-}
 
 instance FromText StatementType where
-    parser = takeLowerText >>= \case
-        "ddl" -> pure Ddl
-        "dml" -> pure Dml
-        "utility" -> pure Utility
-        e -> fromTextError $ "Failure parsing StatementType from value: '" <> e
-           <> "'. Accepted values: ddl, dml, utility"
+    parser = (StatementType' . mk) <$> takeText
 
 instance ToText StatementType where
-    toText = \case
-        Ddl -> "DDL"
-        Dml -> "DML"
-        Utility -> "UTILITY"
+    toText (StatementType' ci) = original ci
+
+-- | Represents an enum of /known/ $StatementType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum StatementType where
+    toEnum i = case i of
+        0 -> Ddl
+        1 -> Dml
+        2 -> Utility
+        _ -> (error . showText) $ "Unknown index for StatementType: " <> toText i
+    fromEnum x = case x of
+        Ddl -> 0
+        Dml -> 1
+        Utility -> 2
+        StatementType' name -> (error . showText) $ "Unknown StatementType: " <> original name
+
+-- | Represents the bounds of /known/ $StatementType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded StatementType where
+    minBound = Ddl
+    maxBound = Utility
 
 instance Hashable     StatementType
 instance NFData       StatementType

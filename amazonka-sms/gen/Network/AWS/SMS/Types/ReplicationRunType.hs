@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,27 +16,60 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.SMS.Types.ReplicationRunType where
+module Network.AWS.SMS.Types.ReplicationRunType (
+  ReplicationRunType (
+    ..
+    , Automatic
+    , OnDemand
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
+
 -- | Type of Replication Run
-data ReplicationRunType = Automatic
-                        | OnDemand
-                            deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                      Typeable, Generic)
+data ReplicationRunType = ReplicationRunType' (CI
+                                                 Text)
+                            deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                      Generic)
+
+pattern Automatic :: ReplicationRunType
+pattern Automatic = ReplicationRunType' "AUTOMATIC"
+
+pattern OnDemand :: ReplicationRunType
+pattern OnDemand = ReplicationRunType' "ON_DEMAND"
+
+{-# COMPLETE
+  Automatic,
+  OnDemand,
+  ReplicationRunType' #-}
 
 instance FromText ReplicationRunType where
-    parser = takeLowerText >>= \case
-        "automatic" -> pure Automatic
-        "on_demand" -> pure OnDemand
-        e -> fromTextError $ "Failure parsing ReplicationRunType from value: '" <> e
-           <> "'. Accepted values: automatic, on_demand"
+    parser = (ReplicationRunType' . mk) <$> takeText
 
 instance ToText ReplicationRunType where
-    toText = \case
-        Automatic -> "AUTOMATIC"
-        OnDemand -> "ON_DEMAND"
+    toText (ReplicationRunType' ci) = original ci
+
+-- | Represents an enum of /known/ $ReplicationRunType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum ReplicationRunType where
+    toEnum i = case i of
+        0 -> Automatic
+        1 -> OnDemand
+        _ -> (error . showText) $ "Unknown index for ReplicationRunType: " <> toText i
+    fromEnum x = case x of
+        Automatic -> 0
+        OnDemand -> 1
+        ReplicationRunType' name -> (error . showText) $ "Unknown ReplicationRunType: " <> original name
+
+-- | Represents the bounds of /known/ $ReplicationRunType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded ReplicationRunType where
+    minBound = Automatic
+    maxBound = OnDemand
 
 instance Hashable     ReplicationRunType
 instance NFData       ReplicationRunType

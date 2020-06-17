@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,32 +16,73 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.SSM.Types.MaintenanceWindowTaskType where
+module Network.AWS.SSM.Types.MaintenanceWindowTaskType (
+  MaintenanceWindowTaskType (
+    ..
+    , Automation
+    , Lambda
+    , RunCommand
+    , StepFunctions
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data MaintenanceWindowTaskType = Automation
-                               | Lambda
-                               | RunCommand
-                               | StepFunctions
-                                   deriving (Eq, Ord, Read, Show, Enum, Bounded,
-                                             Data, Typeable, Generic)
+
+data MaintenanceWindowTaskType = MaintenanceWindowTaskType' (CI
+                                                               Text)
+                                   deriving (Eq, Ord, Read, Show, Data,
+                                             Typeable, Generic)
+
+pattern Automation :: MaintenanceWindowTaskType
+pattern Automation = MaintenanceWindowTaskType' "AUTOMATION"
+
+pattern Lambda :: MaintenanceWindowTaskType
+pattern Lambda = MaintenanceWindowTaskType' "LAMBDA"
+
+pattern RunCommand :: MaintenanceWindowTaskType
+pattern RunCommand = MaintenanceWindowTaskType' "RUN_COMMAND"
+
+pattern StepFunctions :: MaintenanceWindowTaskType
+pattern StepFunctions = MaintenanceWindowTaskType' "STEP_FUNCTIONS"
+
+{-# COMPLETE
+  Automation,
+  Lambda,
+  RunCommand,
+  StepFunctions,
+  MaintenanceWindowTaskType' #-}
 
 instance FromText MaintenanceWindowTaskType where
-    parser = takeLowerText >>= \case
-        "automation" -> pure Automation
-        "lambda" -> pure Lambda
-        "run_command" -> pure RunCommand
-        "step_functions" -> pure StepFunctions
-        e -> fromTextError $ "Failure parsing MaintenanceWindowTaskType from value: '" <> e
-           <> "'. Accepted values: automation, lambda, run_command, step_functions"
+    parser = (MaintenanceWindowTaskType' . mk) <$> takeText
 
 instance ToText MaintenanceWindowTaskType where
-    toText = \case
-        Automation -> "AUTOMATION"
-        Lambda -> "LAMBDA"
-        RunCommand -> "RUN_COMMAND"
-        StepFunctions -> "STEP_FUNCTIONS"
+    toText (MaintenanceWindowTaskType' ci) = original ci
+
+-- | Represents an enum of /known/ $MaintenanceWindowTaskType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum MaintenanceWindowTaskType where
+    toEnum i = case i of
+        0 -> Automation
+        1 -> Lambda
+        2 -> RunCommand
+        3 -> StepFunctions
+        _ -> (error . showText) $ "Unknown index for MaintenanceWindowTaskType: " <> toText i
+    fromEnum x = case x of
+        Automation -> 0
+        Lambda -> 1
+        RunCommand -> 2
+        StepFunctions -> 3
+        MaintenanceWindowTaskType' name -> (error . showText) $ "Unknown MaintenanceWindowTaskType: " <> original name
+
+-- | Represents the bounds of /known/ $MaintenanceWindowTaskType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded MaintenanceWindowTaskType where
+    minBound = Automation
+    maxBound = StepFunctions
 
 instance Hashable     MaintenanceWindowTaskType
 instance NFData       MaintenanceWindowTaskType

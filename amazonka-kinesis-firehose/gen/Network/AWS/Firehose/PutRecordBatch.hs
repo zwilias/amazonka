@@ -58,6 +58,7 @@ module Network.AWS.Firehose.PutRecordBatch
     ) where
 
 import Network.AWS.Firehose.Types
+import Network.AWS.Firehose.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request

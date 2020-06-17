@@ -105,6 +105,7 @@ library
         , Network.AWS.MechanicalTurk.Types.NotifyWorkersFailureStatus
         , Network.AWS.MechanicalTurk.Types.ParameterMapEntry
         , Network.AWS.MechanicalTurk.Types.PolicyParameter
+        , Network.AWS.MechanicalTurk.Types.Product
         , Network.AWS.MechanicalTurk.Types.Qualification
         , Network.AWS.MechanicalTurk.Types.QualificationRequest
         , Network.AWS.MechanicalTurk.Types.QualificationRequirement
@@ -123,6 +124,7 @@ library
     build-depends:
           amazonka-core == 1.6.1.*
         , base          >= 4.7     && < 5
+        , case-insensitive
 
 test-suite amazonka-mechanicalturk-test
     type:              exitcode-stdio-1.0
@@ -146,6 +148,7 @@ test-suite amazonka-mechanicalturk-test
         , amazonka-mechanicalturk
         , base
         , bytestring
+        , case-insensitive
         , tasty
         , tasty-hunit
         , text

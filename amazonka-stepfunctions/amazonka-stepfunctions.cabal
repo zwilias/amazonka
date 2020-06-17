@@ -90,6 +90,7 @@ library
         , Network.AWS.StepFunctions.Types.LambdaFunctionStartFailedEventDetails
         , Network.AWS.StepFunctions.Types.LambdaFunctionSucceededEventDetails
         , Network.AWS.StepFunctions.Types.LambdaFunctionTimedOutEventDetails
+        , Network.AWS.StepFunctions.Types.Product
         , Network.AWS.StepFunctions.Types.StateEnteredEventDetails
         , Network.AWS.StepFunctions.Types.StateExitedEventDetails
         , Network.AWS.StepFunctions.Types.StateMachineListItem
@@ -98,6 +99,7 @@ library
     build-depends:
           amazonka-core == 1.6.1.*
         , base          >= 4.7     && < 5
+        , case-insensitive
 
 test-suite amazonka-stepfunctions-test
     type:              exitcode-stdio-1.0
@@ -121,6 +123,7 @@ test-suite amazonka-stepfunctions-test
         , amazonka-stepfunctions
         , base
         , bytestring
+        , case-insensitive
         , tasty
         , tasty-hunit
         , text

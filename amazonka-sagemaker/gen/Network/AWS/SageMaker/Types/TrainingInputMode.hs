@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,58 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.SageMaker.Types.TrainingInputMode where
+module Network.AWS.SageMaker.Types.TrainingInputMode (
+  TrainingInputMode (
+    ..
+    , File
+    , Pipe
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data TrainingInputMode = File
-                       | Pipe
-                           deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                     Typeable, Generic)
+
+data TrainingInputMode = TrainingInputMode' (CI Text)
+                           deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                     Generic)
+
+pattern File :: TrainingInputMode
+pattern File = TrainingInputMode' "File"
+
+pattern Pipe :: TrainingInputMode
+pattern Pipe = TrainingInputMode' "Pipe"
+
+{-# COMPLETE
+  File,
+  Pipe,
+  TrainingInputMode' #-}
 
 instance FromText TrainingInputMode where
-    parser = takeLowerText >>= \case
-        "file" -> pure File
-        "pipe" -> pure Pipe
-        e -> fromTextError $ "Failure parsing TrainingInputMode from value: '" <> e
-           <> "'. Accepted values: file, pipe"
+    parser = (TrainingInputMode' . mk) <$> takeText
 
 instance ToText TrainingInputMode where
-    toText = \case
-        File -> "File"
-        Pipe -> "Pipe"
+    toText (TrainingInputMode' ci) = original ci
+
+-- | Represents an enum of /known/ $TrainingInputMode.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum TrainingInputMode where
+    toEnum i = case i of
+        0 -> File
+        1 -> Pipe
+        _ -> (error . showText) $ "Unknown index for TrainingInputMode: " <> toText i
+    fromEnum x = case x of
+        File -> 0
+        Pipe -> 1
+        TrainingInputMode' name -> (error . showText) $ "Unknown TrainingInputMode: " <> original name
+
+-- | Represents the bounds of /known/ $TrainingInputMode.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded TrainingInputMode where
+    minBound = File
+    maxBound = Pipe
 
 instance Hashable     TrainingInputMode
 instance NFData       TrainingInputMode

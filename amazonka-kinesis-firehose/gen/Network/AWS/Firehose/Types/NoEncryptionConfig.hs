@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,23 +16,52 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.Firehose.Types.NoEncryptionConfig where
+module Network.AWS.Firehose.Types.NoEncryptionConfig (
+  NoEncryptionConfig (
+    ..
+    , NoEncryption
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data NoEncryptionConfig = NoEncryption
-                            deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                      Typeable, Generic)
+
+data NoEncryptionConfig = NoEncryptionConfig' (CI
+                                                 Text)
+                            deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                      Generic)
+
+pattern NoEncryption :: NoEncryptionConfig
+pattern NoEncryption = NoEncryptionConfig' "NoEncryption"
+
+{-# COMPLETE
+  NoEncryption,
+  NoEncryptionConfig' #-}
 
 instance FromText NoEncryptionConfig where
-    parser = takeLowerText >>= \case
-        "noencryption" -> pure NoEncryption
-        e -> fromTextError $ "Failure parsing NoEncryptionConfig from value: '" <> e
-           <> "'. Accepted values: noencryption"
+    parser = (NoEncryptionConfig' . mk) <$> takeText
 
 instance ToText NoEncryptionConfig where
-    toText = \case
-        NoEncryption -> "NoEncryption"
+    toText (NoEncryptionConfig' ci) = original ci
+
+-- | Represents an enum of /known/ $NoEncryptionConfig.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum NoEncryptionConfig where
+    toEnum i = case i of
+        0 -> NoEncryption
+        _ -> (error . showText) $ "Unknown index for NoEncryptionConfig: " <> toText i
+    fromEnum x = case x of
+        NoEncryption -> 0
+        NoEncryptionConfig' name -> (error . showText) $ "Unknown NoEncryptionConfig: " <> original name
+
+-- | Represents the bounds of /known/ $NoEncryptionConfig.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded NoEncryptionConfig where
+    minBound = NoEncryption
+    maxBound = NoEncryption
 
 instance Hashable     NoEncryptionConfig
 instance NFData       NoEncryptionConfig

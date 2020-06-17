@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,41 +16,93 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.EMR.Types.ClusterState where
+module Network.AWS.EMR.Types.ClusterState (
+  ClusterState (
+    ..
+    , CSBootstrapping
+    , CSRunning
+    , CSStarting
+    , CSTerminated
+    , CSTerminatedWithErrors
+    , CSTerminating
+    , CSWaiting
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data ClusterState = CSBootstrapping
-                  | CSRunning
-                  | CSStarting
-                  | CSTerminated
-                  | CSTerminatedWithErrors
-                  | CSTerminating
-                  | CSWaiting
-                      deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                Typeable, Generic)
+
+data ClusterState = ClusterState' (CI Text)
+                      deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                Generic)
+
+pattern CSBootstrapping :: ClusterState
+pattern CSBootstrapping = ClusterState' "BOOTSTRAPPING"
+
+pattern CSRunning :: ClusterState
+pattern CSRunning = ClusterState' "RUNNING"
+
+pattern CSStarting :: ClusterState
+pattern CSStarting = ClusterState' "STARTING"
+
+pattern CSTerminated :: ClusterState
+pattern CSTerminated = ClusterState' "TERMINATED"
+
+pattern CSTerminatedWithErrors :: ClusterState
+pattern CSTerminatedWithErrors = ClusterState' "TERMINATED_WITH_ERRORS"
+
+pattern CSTerminating :: ClusterState
+pattern CSTerminating = ClusterState' "TERMINATING"
+
+pattern CSWaiting :: ClusterState
+pattern CSWaiting = ClusterState' "WAITING"
+
+{-# COMPLETE
+  CSBootstrapping,
+  CSRunning,
+  CSStarting,
+  CSTerminated,
+  CSTerminatedWithErrors,
+  CSTerminating,
+  CSWaiting,
+  ClusterState' #-}
 
 instance FromText ClusterState where
-    parser = takeLowerText >>= \case
-        "bootstrapping" -> pure CSBootstrapping
-        "running" -> pure CSRunning
-        "starting" -> pure CSStarting
-        "terminated" -> pure CSTerminated
-        "terminated_with_errors" -> pure CSTerminatedWithErrors
-        "terminating" -> pure CSTerminating
-        "waiting" -> pure CSWaiting
-        e -> fromTextError $ "Failure parsing ClusterState from value: '" <> e
-           <> "'. Accepted values: bootstrapping, running, starting, terminated, terminated_with_errors, terminating, waiting"
+    parser = (ClusterState' . mk) <$> takeText
 
 instance ToText ClusterState where
-    toText = \case
-        CSBootstrapping -> "BOOTSTRAPPING"
-        CSRunning -> "RUNNING"
-        CSStarting -> "STARTING"
-        CSTerminated -> "TERMINATED"
-        CSTerminatedWithErrors -> "TERMINATED_WITH_ERRORS"
-        CSTerminating -> "TERMINATING"
-        CSWaiting -> "WAITING"
+    toText (ClusterState' ci) = original ci
+
+-- | Represents an enum of /known/ $ClusterState.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum ClusterState where
+    toEnum i = case i of
+        0 -> CSBootstrapping
+        1 -> CSRunning
+        2 -> CSStarting
+        3 -> CSTerminated
+        4 -> CSTerminatedWithErrors
+        5 -> CSTerminating
+        6 -> CSWaiting
+        _ -> (error . showText) $ "Unknown index for ClusterState: " <> toText i
+    fromEnum x = case x of
+        CSBootstrapping -> 0
+        CSRunning -> 1
+        CSStarting -> 2
+        CSTerminated -> 3
+        CSTerminatedWithErrors -> 4
+        CSTerminating -> 5
+        CSWaiting -> 6
+        ClusterState' name -> (error . showText) $ "Unknown ClusterState: " <> original name
+
+-- | Represents the bounds of /known/ $ClusterState.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded ClusterState where
+    minBound = CSBootstrapping
+    maxBound = CSWaiting
 
 instance Hashable     ClusterState
 instance NFData       ClusterState

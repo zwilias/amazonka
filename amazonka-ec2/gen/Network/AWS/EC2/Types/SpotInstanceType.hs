@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,27 +16,59 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.EC2.Types.SpotInstanceType where
+module Network.AWS.EC2.Types.SpotInstanceType (
+  SpotInstanceType (
+    ..
+    , OneTime
+    , Persistent
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.EC2.Internal
 import Network.AWS.Prelude
-  
-data SpotInstanceType = OneTime
-                      | Persistent
-                          deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                    Typeable, Generic)
+
+data SpotInstanceType = SpotInstanceType' (CI Text)
+                          deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                    Generic)
+
+pattern OneTime :: SpotInstanceType
+pattern OneTime = SpotInstanceType' "one-time"
+
+pattern Persistent :: SpotInstanceType
+pattern Persistent = SpotInstanceType' "persistent"
+
+{-# COMPLETE
+  OneTime,
+  Persistent,
+  SpotInstanceType' #-}
 
 instance FromText SpotInstanceType where
-    parser = takeLowerText >>= \case
-        "one-time" -> pure OneTime
-        "persistent" -> pure Persistent
-        e -> fromTextError $ "Failure parsing SpotInstanceType from value: '" <> e
-           <> "'. Accepted values: one-time, persistent"
+    parser = (SpotInstanceType' . mk) <$> takeText
 
 instance ToText SpotInstanceType where
-    toText = \case
-        OneTime -> "one-time"
-        Persistent -> "persistent"
+    toText (SpotInstanceType' ci) = original ci
+
+-- | Represents an enum of /known/ $SpotInstanceType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum SpotInstanceType where
+    toEnum i = case i of
+        0 -> OneTime
+        1 -> Persistent
+        _ -> (error . showText) $ "Unknown index for SpotInstanceType: " <> toText i
+    fromEnum x = case x of
+        OneTime -> 0
+        Persistent -> 1
+        SpotInstanceType' name -> (error . showText) $ "Unknown SpotInstanceType: " <> original name
+
+-- | Represents the bounds of /known/ $SpotInstanceType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded SpotInstanceType where
+    minBound = OneTime
+    maxBound = Persistent
 
 instance Hashable     SpotInstanceType
 instance NFData       SpotInstanceType

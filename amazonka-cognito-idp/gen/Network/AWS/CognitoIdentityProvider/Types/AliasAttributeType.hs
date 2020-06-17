@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,29 +16,66 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.CognitoIdentityProvider.Types.AliasAttributeType where
+module Network.AWS.CognitoIdentityProvider.Types.AliasAttributeType (
+  AliasAttributeType (
+    ..
+    , AATEmail
+    , AATPhoneNumber
+    , AATPreferredUsername
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data AliasAttributeType = AATEmail
-                        | AATPhoneNumber
-                        | AATPreferredUsername
-                            deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                      Typeable, Generic)
+
+data AliasAttributeType = AliasAttributeType' (CI
+                                                 Text)
+                            deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                      Generic)
+
+pattern AATEmail :: AliasAttributeType
+pattern AATEmail = AliasAttributeType' "email"
+
+pattern AATPhoneNumber :: AliasAttributeType
+pattern AATPhoneNumber = AliasAttributeType' "phone_number"
+
+pattern AATPreferredUsername :: AliasAttributeType
+pattern AATPreferredUsername = AliasAttributeType' "preferred_username"
+
+{-# COMPLETE
+  AATEmail,
+  AATPhoneNumber,
+  AATPreferredUsername,
+  AliasAttributeType' #-}
 
 instance FromText AliasAttributeType where
-    parser = takeLowerText >>= \case
-        "email" -> pure AATEmail
-        "phone_number" -> pure AATPhoneNumber
-        "preferred_username" -> pure AATPreferredUsername
-        e -> fromTextError $ "Failure parsing AliasAttributeType from value: '" <> e
-           <> "'. Accepted values: email, phone_number, preferred_username"
+    parser = (AliasAttributeType' . mk) <$> takeText
 
 instance ToText AliasAttributeType where
-    toText = \case
-        AATEmail -> "email"
-        AATPhoneNumber -> "phone_number"
-        AATPreferredUsername -> "preferred_username"
+    toText (AliasAttributeType' ci) = original ci
+
+-- | Represents an enum of /known/ $AliasAttributeType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum AliasAttributeType where
+    toEnum i = case i of
+        0 -> AATEmail
+        1 -> AATPhoneNumber
+        2 -> AATPreferredUsername
+        _ -> (error . showText) $ "Unknown index for AliasAttributeType: " <> toText i
+    fromEnum x = case x of
+        AATEmail -> 0
+        AATPhoneNumber -> 1
+        AATPreferredUsername -> 2
+        AliasAttributeType' name -> (error . showText) $ "Unknown AliasAttributeType: " <> original name
+
+-- | Represents the bounds of /known/ $AliasAttributeType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded AliasAttributeType where
+    minBound = AATEmail
+    maxBound = AATPreferredUsername
 
 instance Hashable     AliasAttributeType
 instance NFData       AliasAttributeType

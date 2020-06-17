@@ -41,6 +41,7 @@ module Network.AWS.Athena.ListTagsForResource
     ) where
 
 import Network.AWS.Athena.Types
+import Network.AWS.Athena.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request

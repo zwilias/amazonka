@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,30 +16,66 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.SSM.Types.DescribeActivationsFilterKeys where
+module Network.AWS.SSM.Types.DescribeActivationsFilterKeys (
+  DescribeActivationsFilterKeys (
+    ..
+    , ActivationIds
+    , DefaultInstanceName
+    , IAMRole
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data DescribeActivationsFilterKeys = ActivationIds
-                                   | DefaultInstanceName
-                                   | IAMRole
-                                       deriving (Eq, Ord, Read, Show, Enum,
-                                                 Bounded, Data, Typeable,
-                                                 Generic)
+
+data DescribeActivationsFilterKeys = DescribeActivationsFilterKeys' (CI
+                                                                       Text)
+                                       deriving (Eq, Ord, Read, Show, Data,
+                                                 Typeable, Generic)
+
+pattern ActivationIds :: DescribeActivationsFilterKeys
+pattern ActivationIds = DescribeActivationsFilterKeys' "ActivationIds"
+
+pattern DefaultInstanceName :: DescribeActivationsFilterKeys
+pattern DefaultInstanceName = DescribeActivationsFilterKeys' "DefaultInstanceName"
+
+pattern IAMRole :: DescribeActivationsFilterKeys
+pattern IAMRole = DescribeActivationsFilterKeys' "IamRole"
+
+{-# COMPLETE
+  ActivationIds,
+  DefaultInstanceName,
+  IAMRole,
+  DescribeActivationsFilterKeys' #-}
 
 instance FromText DescribeActivationsFilterKeys where
-    parser = takeLowerText >>= \case
-        "activationids" -> pure ActivationIds
-        "defaultinstancename" -> pure DefaultInstanceName
-        "iamrole" -> pure IAMRole
-        e -> fromTextError $ "Failure parsing DescribeActivationsFilterKeys from value: '" <> e
-           <> "'. Accepted values: activationids, defaultinstancename, iamrole"
+    parser = (DescribeActivationsFilterKeys' . mk) <$> takeText
 
 instance ToText DescribeActivationsFilterKeys where
-    toText = \case
-        ActivationIds -> "ActivationIds"
-        DefaultInstanceName -> "DefaultInstanceName"
-        IAMRole -> "IamRole"
+    toText (DescribeActivationsFilterKeys' ci) = original ci
+
+-- | Represents an enum of /known/ $DescribeActivationsFilterKeys.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum DescribeActivationsFilterKeys where
+    toEnum i = case i of
+        0 -> ActivationIds
+        1 -> DefaultInstanceName
+        2 -> IAMRole
+        _ -> (error . showText) $ "Unknown index for DescribeActivationsFilterKeys: " <> toText i
+    fromEnum x = case x of
+        ActivationIds -> 0
+        DefaultInstanceName -> 1
+        IAMRole -> 2
+        DescribeActivationsFilterKeys' name -> (error . showText) $ "Unknown DescribeActivationsFilterKeys: " <> original name
+
+-- | Represents the bounds of /known/ $DescribeActivationsFilterKeys.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded DescribeActivationsFilterKeys where
+    minBound = ActivationIds
+    maxBound = IAMRole
 
 instance Hashable     DescribeActivationsFilterKeys
 instance NFData       DescribeActivationsFilterKeys

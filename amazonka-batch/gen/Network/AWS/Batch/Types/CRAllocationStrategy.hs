@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,29 +16,66 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.Batch.Types.CRAllocationStrategy where
+module Network.AWS.Batch.Types.CRAllocationStrategy (
+  CRAllocationStrategy (
+    ..
+    , BestFit
+    , BestFitProgressive
+    , SpotCapacityOptimized
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data CRAllocationStrategy = BestFit
-                          | BestFitProgressive
-                          | SpotCapacityOptimized
-                              deriving (Eq, Ord, Read, Show, Enum, Bounded,
-                                        Data, Typeable, Generic)
+
+data CRAllocationStrategy = CRAllocationStrategy' (CI
+                                                     Text)
+                              deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                        Generic)
+
+pattern BestFit :: CRAllocationStrategy
+pattern BestFit = CRAllocationStrategy' "BEST_FIT"
+
+pattern BestFitProgressive :: CRAllocationStrategy
+pattern BestFitProgressive = CRAllocationStrategy' "BEST_FIT_PROGRESSIVE"
+
+pattern SpotCapacityOptimized :: CRAllocationStrategy
+pattern SpotCapacityOptimized = CRAllocationStrategy' "SPOT_CAPACITY_OPTIMIZED"
+
+{-# COMPLETE
+  BestFit,
+  BestFitProgressive,
+  SpotCapacityOptimized,
+  CRAllocationStrategy' #-}
 
 instance FromText CRAllocationStrategy where
-    parser = takeLowerText >>= \case
-        "best_fit" -> pure BestFit
-        "best_fit_progressive" -> pure BestFitProgressive
-        "spot_capacity_optimized" -> pure SpotCapacityOptimized
-        e -> fromTextError $ "Failure parsing CRAllocationStrategy from value: '" <> e
-           <> "'. Accepted values: best_fit, best_fit_progressive, spot_capacity_optimized"
+    parser = (CRAllocationStrategy' . mk) <$> takeText
 
 instance ToText CRAllocationStrategy where
-    toText = \case
-        BestFit -> "BEST_FIT"
-        BestFitProgressive -> "BEST_FIT_PROGRESSIVE"
-        SpotCapacityOptimized -> "SPOT_CAPACITY_OPTIMIZED"
+    toText (CRAllocationStrategy' ci) = original ci
+
+-- | Represents an enum of /known/ $CRAllocationStrategy.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum CRAllocationStrategy where
+    toEnum i = case i of
+        0 -> BestFit
+        1 -> BestFitProgressive
+        2 -> SpotCapacityOptimized
+        _ -> (error . showText) $ "Unknown index for CRAllocationStrategy: " <> toText i
+    fromEnum x = case x of
+        BestFit -> 0
+        BestFitProgressive -> 1
+        SpotCapacityOptimized -> 2
+        CRAllocationStrategy' name -> (error . showText) $ "Unknown CRAllocationStrategy: " <> original name
+
+-- | Represents the bounds of /known/ $CRAllocationStrategy.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded CRAllocationStrategy where
+    minBound = BestFit
+    maxBound = SpotCapacityOptimized
 
 instance Hashable     CRAllocationStrategy
 instance NFData       CRAllocationStrategy

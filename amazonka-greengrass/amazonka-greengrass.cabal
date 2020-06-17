@@ -149,6 +149,7 @@ library
         , Network.AWS.Greengrass.Types.LoggerLevel
         , Network.AWS.Greengrass.Types.LoggerType
         , Network.AWS.Greengrass.Types.Permission
+        , Network.AWS.Greengrass.Types.Product
         , Network.AWS.Greengrass.Types.Resource
         , Network.AWS.Greengrass.Types.ResourceAccessPolicy
         , Network.AWS.Greengrass.Types.ResourceDataContainer
@@ -166,6 +167,7 @@ library
     build-depends:
           amazonka-core == 1.6.1.*
         , base          >= 4.7     && < 5
+        , case-insensitive
 
 test-suite amazonka-greengrass-test
     type:              exitcode-stdio-1.0
@@ -189,6 +191,7 @@ test-suite amazonka-greengrass-test
         , amazonka-greengrass
         , base
         , bytestring
+        , case-insensitive
         , tasty
         , tasty-hunit
         , text

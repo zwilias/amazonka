@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,32 +16,73 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.CodeDeploy.Types.RevisionLocationType where
+module Network.AWS.CodeDeploy.Types.RevisionLocationType (
+  RevisionLocationType (
+    ..
+    , AppSpecContent
+    , GitHub
+    , S3
+    , String
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data RevisionLocationType = AppSpecContent
-                          | GitHub
-                          | S3
-                          | String
-                              deriving (Eq, Ord, Read, Show, Enum, Bounded,
-                                        Data, Typeable, Generic)
+
+data RevisionLocationType = RevisionLocationType' (CI
+                                                     Text)
+                              deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                        Generic)
+
+pattern AppSpecContent :: RevisionLocationType
+pattern AppSpecContent = RevisionLocationType' "AppSpecContent"
+
+pattern GitHub :: RevisionLocationType
+pattern GitHub = RevisionLocationType' "GitHub"
+
+pattern S3 :: RevisionLocationType
+pattern S3 = RevisionLocationType' "S3"
+
+pattern String :: RevisionLocationType
+pattern String = RevisionLocationType' "String"
+
+{-# COMPLETE
+  AppSpecContent,
+  GitHub,
+  S3,
+  String,
+  RevisionLocationType' #-}
 
 instance FromText RevisionLocationType where
-    parser = takeLowerText >>= \case
-        "appspeccontent" -> pure AppSpecContent
-        "github" -> pure GitHub
-        "s3" -> pure S3
-        "string" -> pure String
-        e -> fromTextError $ "Failure parsing RevisionLocationType from value: '" <> e
-           <> "'. Accepted values: appspeccontent, github, s3, string"
+    parser = (RevisionLocationType' . mk) <$> takeText
 
 instance ToText RevisionLocationType where
-    toText = \case
-        AppSpecContent -> "AppSpecContent"
-        GitHub -> "GitHub"
-        S3 -> "S3"
-        String -> "String"
+    toText (RevisionLocationType' ci) = original ci
+
+-- | Represents an enum of /known/ $RevisionLocationType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum RevisionLocationType where
+    toEnum i = case i of
+        0 -> AppSpecContent
+        1 -> GitHub
+        2 -> S3
+        3 -> String
+        _ -> (error . showText) $ "Unknown index for RevisionLocationType: " <> toText i
+    fromEnum x = case x of
+        AppSpecContent -> 0
+        GitHub -> 1
+        S3 -> 2
+        String -> 3
+        RevisionLocationType' name -> (error . showText) $ "Unknown RevisionLocationType: " <> original name
+
+-- | Represents the bounds of /known/ $RevisionLocationType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded RevisionLocationType where
+    minBound = AppSpecContent
+    maxBound = String
 
 instance Hashable     RevisionLocationType
 instance NFData       RevisionLocationType

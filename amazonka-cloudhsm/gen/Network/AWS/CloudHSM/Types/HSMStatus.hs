@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,41 +16,93 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.CloudHSM.Types.HSMStatus where
+module Network.AWS.CloudHSM.Types.HSMStatus (
+  HSMStatus (
+    ..
+    , HSDegraded
+    , HSPending
+    , HSRunning
+    , HSSuspended
+    , HSTerminated
+    , HSTerminating
+    , HSUpdating
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data HSMStatus = HSDegraded
-               | HSPending
-               | HSRunning
-               | HSSuspended
-               | HSTerminated
-               | HSTerminating
-               | HSUpdating
-                   deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                             Typeable, Generic)
+
+data HSMStatus = HSMStatus' (CI Text)
+                   deriving (Eq, Ord, Read, Show, Data, Typeable,
+                             Generic)
+
+pattern HSDegraded :: HSMStatus
+pattern HSDegraded = HSMStatus' "DEGRADED"
+
+pattern HSPending :: HSMStatus
+pattern HSPending = HSMStatus' "PENDING"
+
+pattern HSRunning :: HSMStatus
+pattern HSRunning = HSMStatus' "RUNNING"
+
+pattern HSSuspended :: HSMStatus
+pattern HSSuspended = HSMStatus' "SUSPENDED"
+
+pattern HSTerminated :: HSMStatus
+pattern HSTerminated = HSMStatus' "TERMINATED"
+
+pattern HSTerminating :: HSMStatus
+pattern HSTerminating = HSMStatus' "TERMINATING"
+
+pattern HSUpdating :: HSMStatus
+pattern HSUpdating = HSMStatus' "UPDATING"
+
+{-# COMPLETE
+  HSDegraded,
+  HSPending,
+  HSRunning,
+  HSSuspended,
+  HSTerminated,
+  HSTerminating,
+  HSUpdating,
+  HSMStatus' #-}
 
 instance FromText HSMStatus where
-    parser = takeLowerText >>= \case
-        "degraded" -> pure HSDegraded
-        "pending" -> pure HSPending
-        "running" -> pure HSRunning
-        "suspended" -> pure HSSuspended
-        "terminated" -> pure HSTerminated
-        "terminating" -> pure HSTerminating
-        "updating" -> pure HSUpdating
-        e -> fromTextError $ "Failure parsing HSMStatus from value: '" <> e
-           <> "'. Accepted values: degraded, pending, running, suspended, terminated, terminating, updating"
+    parser = (HSMStatus' . mk) <$> takeText
 
 instance ToText HSMStatus where
-    toText = \case
-        HSDegraded -> "DEGRADED"
-        HSPending -> "PENDING"
-        HSRunning -> "RUNNING"
-        HSSuspended -> "SUSPENDED"
-        HSTerminated -> "TERMINATED"
-        HSTerminating -> "TERMINATING"
-        HSUpdating -> "UPDATING"
+    toText (HSMStatus' ci) = original ci
+
+-- | Represents an enum of /known/ $HSMStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum HSMStatus where
+    toEnum i = case i of
+        0 -> HSDegraded
+        1 -> HSPending
+        2 -> HSRunning
+        3 -> HSSuspended
+        4 -> HSTerminated
+        5 -> HSTerminating
+        6 -> HSUpdating
+        _ -> (error . showText) $ "Unknown index for HSMStatus: " <> toText i
+    fromEnum x = case x of
+        HSDegraded -> 0
+        HSPending -> 1
+        HSRunning -> 2
+        HSSuspended -> 3
+        HSTerminated -> 4
+        HSTerminating -> 5
+        HSUpdating -> 6
+        HSMStatus' name -> (error . showText) $ "Unknown HSMStatus: " <> original name
+
+-- | Represents the bounds of /known/ $HSMStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded HSMStatus where
+    minBound = HSDegraded
+    maxBound = HSUpdating
 
 instance Hashable     HSMStatus
 instance NFData       HSMStatus

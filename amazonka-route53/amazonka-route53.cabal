@@ -134,6 +134,7 @@ library
         , Network.AWS.Route53.Types.HostedZoneLimitType
         , Network.AWS.Route53.Types.InsufficientDataHealthStatus
         , Network.AWS.Route53.Types.LinkedService
+        , Network.AWS.Route53.Types.Product
         , Network.AWS.Route53.Types.QueryLoggingConfig
         , Network.AWS.Route53.Types.RecordType
         , Network.AWS.Route53.Types.ResettableElementName
@@ -155,6 +156,7 @@ library
     build-depends:
           amazonka-core == 1.6.1.*
         , base          >= 4.7     && < 5
+        , case-insensitive
         , text >= 1.1
 
 test-suite amazonka-route53-test
@@ -179,6 +181,7 @@ test-suite amazonka-route53-test
         , amazonka-route53
         , base
         , bytestring
+        , case-insensitive
         , tasty
         , tasty-hunit
         , text

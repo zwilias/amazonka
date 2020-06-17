@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,30 +16,66 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.AppStream.Types.UserStackAssociationErrorCode where
+module Network.AWS.AppStream.Types.UserStackAssociationErrorCode (
+  UserStackAssociationErrorCode (
+    ..
+    , USAECInternalError
+    , USAECStackNotFound
+    , USAECUserNameNotFound
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data UserStackAssociationErrorCode = USAECInternalError
-                                   | USAECStackNotFound
-                                   | USAECUserNameNotFound
-                                       deriving (Eq, Ord, Read, Show, Enum,
-                                                 Bounded, Data, Typeable,
-                                                 Generic)
+
+data UserStackAssociationErrorCode = UserStackAssociationErrorCode' (CI
+                                                                       Text)
+                                       deriving (Eq, Ord, Read, Show, Data,
+                                                 Typeable, Generic)
+
+pattern USAECInternalError :: UserStackAssociationErrorCode
+pattern USAECInternalError = UserStackAssociationErrorCode' "INTERNAL_ERROR"
+
+pattern USAECStackNotFound :: UserStackAssociationErrorCode
+pattern USAECStackNotFound = UserStackAssociationErrorCode' "STACK_NOT_FOUND"
+
+pattern USAECUserNameNotFound :: UserStackAssociationErrorCode
+pattern USAECUserNameNotFound = UserStackAssociationErrorCode' "USER_NAME_NOT_FOUND"
+
+{-# COMPLETE
+  USAECInternalError,
+  USAECStackNotFound,
+  USAECUserNameNotFound,
+  UserStackAssociationErrorCode' #-}
 
 instance FromText UserStackAssociationErrorCode where
-    parser = takeLowerText >>= \case
-        "internal_error" -> pure USAECInternalError
-        "stack_not_found" -> pure USAECStackNotFound
-        "user_name_not_found" -> pure USAECUserNameNotFound
-        e -> fromTextError $ "Failure parsing UserStackAssociationErrorCode from value: '" <> e
-           <> "'. Accepted values: internal_error, stack_not_found, user_name_not_found"
+    parser = (UserStackAssociationErrorCode' . mk) <$> takeText
 
 instance ToText UserStackAssociationErrorCode where
-    toText = \case
-        USAECInternalError -> "INTERNAL_ERROR"
-        USAECStackNotFound -> "STACK_NOT_FOUND"
-        USAECUserNameNotFound -> "USER_NAME_NOT_FOUND"
+    toText (UserStackAssociationErrorCode' ci) = original ci
+
+-- | Represents an enum of /known/ $UserStackAssociationErrorCode.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum UserStackAssociationErrorCode where
+    toEnum i = case i of
+        0 -> USAECInternalError
+        1 -> USAECStackNotFound
+        2 -> USAECUserNameNotFound
+        _ -> (error . showText) $ "Unknown index for UserStackAssociationErrorCode: " <> toText i
+    fromEnum x = case x of
+        USAECInternalError -> 0
+        USAECStackNotFound -> 1
+        USAECUserNameNotFound -> 2
+        UserStackAssociationErrorCode' name -> (error . showText) $ "Unknown UserStackAssociationErrorCode: " <> original name
+
+-- | Represents the bounds of /known/ $UserStackAssociationErrorCode.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded UserStackAssociationErrorCode where
+    minBound = USAECInternalError
+    maxBound = USAECUserNameNotFound
 
 instance Hashable     UserStackAssociationErrorCode
 instance NFData       UserStackAssociationErrorCode

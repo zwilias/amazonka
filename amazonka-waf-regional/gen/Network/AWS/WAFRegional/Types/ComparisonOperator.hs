@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,38 +16,87 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.WAFRegional.Types.ComparisonOperator where
+module Network.AWS.WAFRegional.Types.ComparisonOperator (
+  ComparisonOperator (
+    ..
+    , EQ'
+    , GE
+    , GT'
+    , LE
+    , LT'
+    , NE
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data ComparisonOperator = EQ'
-                        | GE
-                        | GT'
-                        | LE
-                        | LT'
-                        | NE
-                            deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                      Typeable, Generic)
+
+data ComparisonOperator = ComparisonOperator' (CI
+                                                 Text)
+                            deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                      Generic)
+
+pattern EQ' :: ComparisonOperator
+pattern EQ' = ComparisonOperator' "EQ"
+
+pattern GE :: ComparisonOperator
+pattern GE = ComparisonOperator' "GE"
+
+pattern GT' :: ComparisonOperator
+pattern GT' = ComparisonOperator' "GT"
+
+pattern LE :: ComparisonOperator
+pattern LE = ComparisonOperator' "LE"
+
+pattern LT' :: ComparisonOperator
+pattern LT' = ComparisonOperator' "LT"
+
+pattern NE :: ComparisonOperator
+pattern NE = ComparisonOperator' "NE"
+
+{-# COMPLETE
+  EQ',
+  GE,
+  GT',
+  LE,
+  LT',
+  NE,
+  ComparisonOperator' #-}
 
 instance FromText ComparisonOperator where
-    parser = takeLowerText >>= \case
-        "eq" -> pure EQ'
-        "ge" -> pure GE
-        "gt" -> pure GT'
-        "le" -> pure LE
-        "lt" -> pure LT'
-        "ne" -> pure NE
-        e -> fromTextError $ "Failure parsing ComparisonOperator from value: '" <> e
-           <> "'. Accepted values: eq, ge, gt, le, lt, ne"
+    parser = (ComparisonOperator' . mk) <$> takeText
 
 instance ToText ComparisonOperator where
-    toText = \case
-        EQ' -> "EQ"
-        GE -> "GE"
-        GT' -> "GT"
-        LE -> "LE"
-        LT' -> "LT"
-        NE -> "NE"
+    toText (ComparisonOperator' ci) = original ci
+
+-- | Represents an enum of /known/ $ComparisonOperator.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum ComparisonOperator where
+    toEnum i = case i of
+        0 -> EQ'
+        1 -> GE
+        2 -> GT'
+        3 -> LE
+        4 -> LT'
+        5 -> NE
+        _ -> (error . showText) $ "Unknown index for ComparisonOperator: " <> toText i
+    fromEnum x = case x of
+        EQ' -> 0
+        GE -> 1
+        GT' -> 2
+        LE -> 3
+        LT' -> 4
+        NE -> 5
+        ComparisonOperator' name -> (error . showText) $ "Unknown ComparisonOperator: " <> original name
+
+-- | Represents the bounds of /known/ $ComparisonOperator.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded ComparisonOperator where
+    minBound = EQ'
+    maxBound = NE
 
 instance Hashable     ComparisonOperator
 instance NFData       ComparisonOperator

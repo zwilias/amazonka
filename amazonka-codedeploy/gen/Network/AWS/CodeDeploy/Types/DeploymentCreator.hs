@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,29 +16,65 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.CodeDeploy.Types.DeploymentCreator where
+module Network.AWS.CodeDeploy.Types.DeploymentCreator (
+  DeploymentCreator (
+    ..
+    , Autoscaling
+    , CodeDeployRollback
+    , User
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data DeploymentCreator = Autoscaling
-                       | CodeDeployRollback
-                       | User
-                           deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                     Typeable, Generic)
+
+data DeploymentCreator = DeploymentCreator' (CI Text)
+                           deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                     Generic)
+
+pattern Autoscaling :: DeploymentCreator
+pattern Autoscaling = DeploymentCreator' "autoscaling"
+
+pattern CodeDeployRollback :: DeploymentCreator
+pattern CodeDeployRollback = DeploymentCreator' "codeDeployRollback"
+
+pattern User :: DeploymentCreator
+pattern User = DeploymentCreator' "user"
+
+{-# COMPLETE
+  Autoscaling,
+  CodeDeployRollback,
+  User,
+  DeploymentCreator' #-}
 
 instance FromText DeploymentCreator where
-    parser = takeLowerText >>= \case
-        "autoscaling" -> pure Autoscaling
-        "codedeployrollback" -> pure CodeDeployRollback
-        "user" -> pure User
-        e -> fromTextError $ "Failure parsing DeploymentCreator from value: '" <> e
-           <> "'. Accepted values: autoscaling, codedeployrollback, user"
+    parser = (DeploymentCreator' . mk) <$> takeText
 
 instance ToText DeploymentCreator where
-    toText = \case
-        Autoscaling -> "autoscaling"
-        CodeDeployRollback -> "codeDeployRollback"
-        User -> "user"
+    toText (DeploymentCreator' ci) = original ci
+
+-- | Represents an enum of /known/ $DeploymentCreator.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum DeploymentCreator where
+    toEnum i = case i of
+        0 -> Autoscaling
+        1 -> CodeDeployRollback
+        2 -> User
+        _ -> (error . showText) $ "Unknown index for DeploymentCreator: " <> toText i
+    fromEnum x = case x of
+        Autoscaling -> 0
+        CodeDeployRollback -> 1
+        User -> 2
+        DeploymentCreator' name -> (error . showText) $ "Unknown DeploymentCreator: " <> original name
+
+-- | Represents the bounds of /known/ $DeploymentCreator.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded DeploymentCreator where
+    minBound = Autoscaling
+    maxBound = User
 
 instance Hashable     DeploymentCreator
 instance NFData       DeploymentCreator

@@ -55,6 +55,7 @@ library
 
     other-modules:
           Network.AWS.ResourceGroupsTagging.Types.FailureInfo
+        , Network.AWS.ResourceGroupsTagging.Types.Product
         , Network.AWS.ResourceGroupsTagging.Types.ResourceErrorCode
         , Network.AWS.ResourceGroupsTagging.Types.ResourceTagMapping
         , Network.AWS.ResourceGroupsTagging.Types.Tag
@@ -63,6 +64,7 @@ library
     build-depends:
           amazonka-core == 1.6.1.*
         , base          >= 4.7     && < 5
+        , case-insensitive
 
 test-suite amazonka-resourcegroupstagging-test
     type:              exitcode-stdio-1.0
@@ -86,6 +88,7 @@ test-suite amazonka-resourcegroupstagging-test
         , amazonka-resourcegroupstagging
         , base
         , bytestring
+        , case-insensitive
         , tasty
         , tasty-hunit
         , text

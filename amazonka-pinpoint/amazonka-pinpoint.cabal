@@ -188,6 +188,7 @@ library
         , Network.AWS.Pinpoint.Types.MessageResult
         , Network.AWS.Pinpoint.Types.MessageType
         , Network.AWS.Pinpoint.Types.Mode
+        , Network.AWS.Pinpoint.Types.Product
         , Network.AWS.Pinpoint.Types.QuietTime
         , Network.AWS.Pinpoint.Types.RecencyDimension
         , Network.AWS.Pinpoint.Types.RecencyType
@@ -216,6 +217,7 @@ library
     build-depends:
           amazonka-core == 1.6.1.*
         , base          >= 4.7     && < 5
+        , case-insensitive
 
 test-suite amazonka-pinpoint-test
     type:              exitcode-stdio-1.0
@@ -239,6 +241,7 @@ test-suite amazonka-pinpoint-test
         , amazonka-pinpoint
         , base
         , bytestring
+        , case-insensitive
         , tasty
         , tasty-hunit
         , text

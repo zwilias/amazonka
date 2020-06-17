@@ -40,6 +40,7 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.Route53.Types
+import Network.AWS.Route53.Types.Product
 
 -- | /See:/ 'getCheckerIPRanges' smart constructor.
 data GetCheckerIPRanges = GetCheckerIPRanges'

@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,33 +16,74 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.Lightsail.Types.LoadBalancerTLSCertificateRenewalStatus where
+module Network.AWS.Lightsail.Types.LoadBalancerTLSCertificateRenewalStatus (
+  LoadBalancerTLSCertificateRenewalStatus (
+    ..
+    , LBTCRSFailed
+    , LBTCRSPendingAutoRenewal
+    , LBTCRSPendingValidation
+    , LBTCRSSuccess
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data LoadBalancerTLSCertificateRenewalStatus = LBTCRSFailed
-                                             | LBTCRSPendingAutoRenewal
-                                             | LBTCRSPendingValidation
-                                             | LBTCRSSuccess
+
+data LoadBalancerTLSCertificateRenewalStatus = LoadBalancerTLSCertificateRenewalStatus' (CI
+                                                                                           Text)
                                                  deriving (Eq, Ord, Read, Show,
-                                                           Enum, Bounded, Data,
-                                                           Typeable, Generic)
+                                                           Data, Typeable,
+                                                           Generic)
+
+pattern LBTCRSFailed :: LoadBalancerTLSCertificateRenewalStatus
+pattern LBTCRSFailed = LoadBalancerTLSCertificateRenewalStatus' "FAILED"
+
+pattern LBTCRSPendingAutoRenewal :: LoadBalancerTLSCertificateRenewalStatus
+pattern LBTCRSPendingAutoRenewal = LoadBalancerTLSCertificateRenewalStatus' "PENDING_AUTO_RENEWAL"
+
+pattern LBTCRSPendingValidation :: LoadBalancerTLSCertificateRenewalStatus
+pattern LBTCRSPendingValidation = LoadBalancerTLSCertificateRenewalStatus' "PENDING_VALIDATION"
+
+pattern LBTCRSSuccess :: LoadBalancerTLSCertificateRenewalStatus
+pattern LBTCRSSuccess = LoadBalancerTLSCertificateRenewalStatus' "SUCCESS"
+
+{-# COMPLETE
+  LBTCRSFailed,
+  LBTCRSPendingAutoRenewal,
+  LBTCRSPendingValidation,
+  LBTCRSSuccess,
+  LoadBalancerTLSCertificateRenewalStatus' #-}
 
 instance FromText LoadBalancerTLSCertificateRenewalStatus where
-    parser = takeLowerText >>= \case
-        "failed" -> pure LBTCRSFailed
-        "pending_auto_renewal" -> pure LBTCRSPendingAutoRenewal
-        "pending_validation" -> pure LBTCRSPendingValidation
-        "success" -> pure LBTCRSSuccess
-        e -> fromTextError $ "Failure parsing LoadBalancerTLSCertificateRenewalStatus from value: '" <> e
-           <> "'. Accepted values: failed, pending_auto_renewal, pending_validation, success"
+    parser = (LoadBalancerTLSCertificateRenewalStatus' . mk) <$> takeText
 
 instance ToText LoadBalancerTLSCertificateRenewalStatus where
-    toText = \case
-        LBTCRSFailed -> "FAILED"
-        LBTCRSPendingAutoRenewal -> "PENDING_AUTO_RENEWAL"
-        LBTCRSPendingValidation -> "PENDING_VALIDATION"
-        LBTCRSSuccess -> "SUCCESS"
+    toText (LoadBalancerTLSCertificateRenewalStatus' ci) = original ci
+
+-- | Represents an enum of /known/ $LoadBalancerTLSCertificateRenewalStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum LoadBalancerTLSCertificateRenewalStatus where
+    toEnum i = case i of
+        0 -> LBTCRSFailed
+        1 -> LBTCRSPendingAutoRenewal
+        2 -> LBTCRSPendingValidation
+        3 -> LBTCRSSuccess
+        _ -> (error . showText) $ "Unknown index for LoadBalancerTLSCertificateRenewalStatus: " <> toText i
+    fromEnum x = case x of
+        LBTCRSFailed -> 0
+        LBTCRSPendingAutoRenewal -> 1
+        LBTCRSPendingValidation -> 2
+        LBTCRSSuccess -> 3
+        LoadBalancerTLSCertificateRenewalStatus' name -> (error . showText) $ "Unknown LoadBalancerTLSCertificateRenewalStatus: " <> original name
+
+-- | Represents the bounds of /known/ $LoadBalancerTLSCertificateRenewalStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded LoadBalancerTLSCertificateRenewalStatus where
+    minBound = LBTCRSFailed
+    maxBound = LBTCRSSuccess
 
 instance Hashable     LoadBalancerTLSCertificateRenewalStatus
 instance NFData       LoadBalancerTLSCertificateRenewalStatus

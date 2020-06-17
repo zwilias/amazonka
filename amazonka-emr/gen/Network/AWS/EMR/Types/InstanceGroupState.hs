@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,50 +16,115 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.EMR.Types.InstanceGroupState where
+module Network.AWS.EMR.Types.InstanceGroupState (
+  InstanceGroupState (
+    ..
+    , Arrested
+    , Bootstrapping
+    , Ended
+    , Provisioning
+    , Resizing
+    , Running
+    , ShuttingDown
+    , Suspended
+    , Terminated
+    , Terminating
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data InstanceGroupState = Arrested
-                        | Bootstrapping
-                        | Ended
-                        | Provisioning
-                        | Resizing
-                        | Running
-                        | ShuttingDown
-                        | Suspended
-                        | Terminated
-                        | Terminating
-                            deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                      Typeable, Generic)
+
+data InstanceGroupState = InstanceGroupState' (CI
+                                                 Text)
+                            deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                      Generic)
+
+pattern Arrested :: InstanceGroupState
+pattern Arrested = InstanceGroupState' "ARRESTED"
+
+pattern Bootstrapping :: InstanceGroupState
+pattern Bootstrapping = InstanceGroupState' "BOOTSTRAPPING"
+
+pattern Ended :: InstanceGroupState
+pattern Ended = InstanceGroupState' "ENDED"
+
+pattern Provisioning :: InstanceGroupState
+pattern Provisioning = InstanceGroupState' "PROVISIONING"
+
+pattern Resizing :: InstanceGroupState
+pattern Resizing = InstanceGroupState' "RESIZING"
+
+pattern Running :: InstanceGroupState
+pattern Running = InstanceGroupState' "RUNNING"
+
+pattern ShuttingDown :: InstanceGroupState
+pattern ShuttingDown = InstanceGroupState' "SHUTTING_DOWN"
+
+pattern Suspended :: InstanceGroupState
+pattern Suspended = InstanceGroupState' "SUSPENDED"
+
+pattern Terminated :: InstanceGroupState
+pattern Terminated = InstanceGroupState' "TERMINATED"
+
+pattern Terminating :: InstanceGroupState
+pattern Terminating = InstanceGroupState' "TERMINATING"
+
+{-# COMPLETE
+  Arrested,
+  Bootstrapping,
+  Ended,
+  Provisioning,
+  Resizing,
+  Running,
+  ShuttingDown,
+  Suspended,
+  Terminated,
+  Terminating,
+  InstanceGroupState' #-}
 
 instance FromText InstanceGroupState where
-    parser = takeLowerText >>= \case
-        "arrested" -> pure Arrested
-        "bootstrapping" -> pure Bootstrapping
-        "ended" -> pure Ended
-        "provisioning" -> pure Provisioning
-        "resizing" -> pure Resizing
-        "running" -> pure Running
-        "shutting_down" -> pure ShuttingDown
-        "suspended" -> pure Suspended
-        "terminated" -> pure Terminated
-        "terminating" -> pure Terminating
-        e -> fromTextError $ "Failure parsing InstanceGroupState from value: '" <> e
-           <> "'. Accepted values: arrested, bootstrapping, ended, provisioning, resizing, running, shutting_down, suspended, terminated, terminating"
+    parser = (InstanceGroupState' . mk) <$> takeText
 
 instance ToText InstanceGroupState where
-    toText = \case
-        Arrested -> "ARRESTED"
-        Bootstrapping -> "BOOTSTRAPPING"
-        Ended -> "ENDED"
-        Provisioning -> "PROVISIONING"
-        Resizing -> "RESIZING"
-        Running -> "RUNNING"
-        ShuttingDown -> "SHUTTING_DOWN"
-        Suspended -> "SUSPENDED"
-        Terminated -> "TERMINATED"
-        Terminating -> "TERMINATING"
+    toText (InstanceGroupState' ci) = original ci
+
+-- | Represents an enum of /known/ $InstanceGroupState.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum InstanceGroupState where
+    toEnum i = case i of
+        0 -> Arrested
+        1 -> Bootstrapping
+        2 -> Ended
+        3 -> Provisioning
+        4 -> Resizing
+        5 -> Running
+        6 -> ShuttingDown
+        7 -> Suspended
+        8 -> Terminated
+        9 -> Terminating
+        _ -> (error . showText) $ "Unknown index for InstanceGroupState: " <> toText i
+    fromEnum x = case x of
+        Arrested -> 0
+        Bootstrapping -> 1
+        Ended -> 2
+        Provisioning -> 3
+        Resizing -> 4
+        Running -> 5
+        ShuttingDown -> 6
+        Suspended -> 7
+        Terminated -> 8
+        Terminating -> 9
+        InstanceGroupState' name -> (error . showText) $ "Unknown InstanceGroupState: " <> original name
+
+-- | Represents the bounds of /known/ $InstanceGroupState.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded InstanceGroupState where
+    minBound = Arrested
+    maxBound = Terminating
 
 instance Hashable     InstanceGroupState
 instance NFData       InstanceGroupState

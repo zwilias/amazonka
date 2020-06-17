@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,50 +16,114 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.MechanicalTurk.Types.Comparator where
+module Network.AWS.MechanicalTurk.Types.Comparator (
+  Comparator (
+    ..
+    , DoesNotExist
+    , EqualTo
+    , Exists
+    , GreaterThan
+    , GreaterThanOrEqualTo
+    , IN
+    , LessThan
+    , LessThanOrEqualTo
+    , NotEqualTo
+    , NotIn
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data Comparator = DoesNotExist
-                | EqualTo
-                | Exists
-                | GreaterThan
-                | GreaterThanOrEqualTo
-                | IN
-                | LessThan
-                | LessThanOrEqualTo
-                | NotEqualTo
-                | NotIn
-                    deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                              Typeable, Generic)
+
+data Comparator = Comparator' (CI Text)
+                    deriving (Eq, Ord, Read, Show, Data, Typeable,
+                              Generic)
+
+pattern DoesNotExist :: Comparator
+pattern DoesNotExist = Comparator' "DoesNotExist"
+
+pattern EqualTo :: Comparator
+pattern EqualTo = Comparator' "EqualTo"
+
+pattern Exists :: Comparator
+pattern Exists = Comparator' "Exists"
+
+pattern GreaterThan :: Comparator
+pattern GreaterThan = Comparator' "GreaterThan"
+
+pattern GreaterThanOrEqualTo :: Comparator
+pattern GreaterThanOrEqualTo = Comparator' "GreaterThanOrEqualTo"
+
+pattern IN :: Comparator
+pattern IN = Comparator' "In"
+
+pattern LessThan :: Comparator
+pattern LessThan = Comparator' "LessThan"
+
+pattern LessThanOrEqualTo :: Comparator
+pattern LessThanOrEqualTo = Comparator' "LessThanOrEqualTo"
+
+pattern NotEqualTo :: Comparator
+pattern NotEqualTo = Comparator' "NotEqualTo"
+
+pattern NotIn :: Comparator
+pattern NotIn = Comparator' "NotIn"
+
+{-# COMPLETE
+  DoesNotExist,
+  EqualTo,
+  Exists,
+  GreaterThan,
+  GreaterThanOrEqualTo,
+  IN,
+  LessThan,
+  LessThanOrEqualTo,
+  NotEqualTo,
+  NotIn,
+  Comparator' #-}
 
 instance FromText Comparator where
-    parser = takeLowerText >>= \case
-        "doesnotexist" -> pure DoesNotExist
-        "equalto" -> pure EqualTo
-        "exists" -> pure Exists
-        "greaterthan" -> pure GreaterThan
-        "greaterthanorequalto" -> pure GreaterThanOrEqualTo
-        "in" -> pure IN
-        "lessthan" -> pure LessThan
-        "lessthanorequalto" -> pure LessThanOrEqualTo
-        "notequalto" -> pure NotEqualTo
-        "notin" -> pure NotIn
-        e -> fromTextError $ "Failure parsing Comparator from value: '" <> e
-           <> "'. Accepted values: doesnotexist, equalto, exists, greaterthan, greaterthanorequalto, in, lessthan, lessthanorequalto, notequalto, notin"
+    parser = (Comparator' . mk) <$> takeText
 
 instance ToText Comparator where
-    toText = \case
-        DoesNotExist -> "DoesNotExist"
-        EqualTo -> "EqualTo"
-        Exists -> "Exists"
-        GreaterThan -> "GreaterThan"
-        GreaterThanOrEqualTo -> "GreaterThanOrEqualTo"
-        IN -> "In"
-        LessThan -> "LessThan"
-        LessThanOrEqualTo -> "LessThanOrEqualTo"
-        NotEqualTo -> "NotEqualTo"
-        NotIn -> "NotIn"
+    toText (Comparator' ci) = original ci
+
+-- | Represents an enum of /known/ $Comparator.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum Comparator where
+    toEnum i = case i of
+        0 -> DoesNotExist
+        1 -> EqualTo
+        2 -> Exists
+        3 -> GreaterThan
+        4 -> GreaterThanOrEqualTo
+        5 -> IN
+        6 -> LessThan
+        7 -> LessThanOrEqualTo
+        8 -> NotEqualTo
+        9 -> NotIn
+        _ -> (error . showText) $ "Unknown index for Comparator: " <> toText i
+    fromEnum x = case x of
+        DoesNotExist -> 0
+        EqualTo -> 1
+        Exists -> 2
+        GreaterThan -> 3
+        GreaterThanOrEqualTo -> 4
+        IN -> 5
+        LessThan -> 6
+        LessThanOrEqualTo -> 7
+        NotEqualTo -> 8
+        NotIn -> 9
+        Comparator' name -> (error . showText) $ "Unknown Comparator: " <> original name
+
+-- | Represents the bounds of /known/ $Comparator.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded Comparator where
+    minBound = DoesNotExist
+    maxBound = NotIn
 
 instance Hashable     Comparator
 instance NFData       Comparator

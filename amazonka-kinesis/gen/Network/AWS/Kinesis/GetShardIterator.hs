@@ -54,6 +54,7 @@ module Network.AWS.Kinesis.GetShardIterator
     ) where
 
 import Network.AWS.Kinesis.Types
+import Network.AWS.Kinesis.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request

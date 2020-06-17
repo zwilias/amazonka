@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,24 +16,53 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.EC2.Types.ResetFpgaImageAttributeName where
+module Network.AWS.EC2.Types.ResetFpgaImageAttributeName (
+  ResetFpgaImageAttributeName (
+    ..
+    , LoadPermission
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.EC2.Internal
 import Network.AWS.Prelude
-  
-data ResetFpgaImageAttributeName = LoadPermission
-                                     deriving (Eq, Ord, Read, Show, Enum,
-                                               Bounded, Data, Typeable, Generic)
+
+data ResetFpgaImageAttributeName = ResetFpgaImageAttributeName' (CI
+                                                                   Text)
+                                     deriving (Eq, Ord, Read, Show, Data,
+                                               Typeable, Generic)
+
+pattern LoadPermission :: ResetFpgaImageAttributeName
+pattern LoadPermission = ResetFpgaImageAttributeName' "loadPermission"
+
+{-# COMPLETE
+  LoadPermission,
+  ResetFpgaImageAttributeName' #-}
 
 instance FromText ResetFpgaImageAttributeName where
-    parser = takeLowerText >>= \case
-        "loadpermission" -> pure LoadPermission
-        e -> fromTextError $ "Failure parsing ResetFpgaImageAttributeName from value: '" <> e
-           <> "'. Accepted values: loadpermission"
+    parser = (ResetFpgaImageAttributeName' . mk) <$> takeText
 
 instance ToText ResetFpgaImageAttributeName where
-    toText = \case
-        LoadPermission -> "loadPermission"
+    toText (ResetFpgaImageAttributeName' ci) = original ci
+
+-- | Represents an enum of /known/ $ResetFpgaImageAttributeName.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum ResetFpgaImageAttributeName where
+    toEnum i = case i of
+        0 -> LoadPermission
+        _ -> (error . showText) $ "Unknown index for ResetFpgaImageAttributeName: " <> toText i
+    fromEnum x = case x of
+        LoadPermission -> 0
+        ResetFpgaImageAttributeName' name -> (error . showText) $ "Unknown ResetFpgaImageAttributeName: " <> original name
+
+-- | Represents the bounds of /known/ $ResetFpgaImageAttributeName.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded ResetFpgaImageAttributeName where
+    minBound = LoadPermission
+    maxBound = LoadPermission
 
 instance Hashable     ResetFpgaImageAttributeName
 instance NFData       ResetFpgaImageAttributeName

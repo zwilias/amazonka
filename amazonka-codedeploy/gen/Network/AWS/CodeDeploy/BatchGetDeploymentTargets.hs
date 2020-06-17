@@ -49,6 +49,7 @@ module Network.AWS.CodeDeploy.BatchGetDeploymentTargets
     ) where
 
 import Network.AWS.CodeDeploy.Types
+import Network.AWS.CodeDeploy.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request

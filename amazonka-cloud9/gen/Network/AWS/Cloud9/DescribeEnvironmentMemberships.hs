@@ -45,6 +45,7 @@ module Network.AWS.Cloud9.DescribeEnvironmentMemberships
     ) where
 
 import Network.AWS.Cloud9.Types
+import Network.AWS.Cloud9.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude

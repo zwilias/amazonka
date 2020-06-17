@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,59 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.Firehose.Types.SplunkS3BackupMode where
+module Network.AWS.Firehose.Types.SplunkS3BackupMode (
+  SplunkS3BackupMode (
+    ..
+    , AllEvents
+    , FailedEventsOnly
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data SplunkS3BackupMode = AllEvents
-                        | FailedEventsOnly
-                            deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                      Typeable, Generic)
+
+data SplunkS3BackupMode = SplunkS3BackupMode' (CI
+                                                 Text)
+                            deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                      Generic)
+
+pattern AllEvents :: SplunkS3BackupMode
+pattern AllEvents = SplunkS3BackupMode' "AllEvents"
+
+pattern FailedEventsOnly :: SplunkS3BackupMode
+pattern FailedEventsOnly = SplunkS3BackupMode' "FailedEventsOnly"
+
+{-# COMPLETE
+  AllEvents,
+  FailedEventsOnly,
+  SplunkS3BackupMode' #-}
 
 instance FromText SplunkS3BackupMode where
-    parser = takeLowerText >>= \case
-        "allevents" -> pure AllEvents
-        "failedeventsonly" -> pure FailedEventsOnly
-        e -> fromTextError $ "Failure parsing SplunkS3BackupMode from value: '" <> e
-           <> "'. Accepted values: allevents, failedeventsonly"
+    parser = (SplunkS3BackupMode' . mk) <$> takeText
 
 instance ToText SplunkS3BackupMode where
-    toText = \case
-        AllEvents -> "AllEvents"
-        FailedEventsOnly -> "FailedEventsOnly"
+    toText (SplunkS3BackupMode' ci) = original ci
+
+-- | Represents an enum of /known/ $SplunkS3BackupMode.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum SplunkS3BackupMode where
+    toEnum i = case i of
+        0 -> AllEvents
+        1 -> FailedEventsOnly
+        _ -> (error . showText) $ "Unknown index for SplunkS3BackupMode: " <> toText i
+    fromEnum x = case x of
+        AllEvents -> 0
+        FailedEventsOnly -> 1
+        SplunkS3BackupMode' name -> (error . showText) $ "Unknown SplunkS3BackupMode: " <> original name
+
+-- | Represents the bounds of /known/ $SplunkS3BackupMode.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded SplunkS3BackupMode where
+    minBound = AllEvents
+    maxBound = FailedEventsOnly
 
 instance Hashable     SplunkS3BackupMode
 instance NFData       SplunkS3BackupMode

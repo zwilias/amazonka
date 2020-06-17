@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,29 +16,65 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.CodeBuild.Types.ArtifactsType where
+module Network.AWS.CodeBuild.Types.ArtifactsType (
+  ArtifactsType (
+    ..
+    , Codepipeline
+    , NoArtifacts
+    , S3
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data ArtifactsType = Codepipeline
-                   | NoArtifacts
-                   | S3
-                       deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                 Typeable, Generic)
+
+data ArtifactsType = ArtifactsType' (CI Text)
+                       deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                 Generic)
+
+pattern Codepipeline :: ArtifactsType
+pattern Codepipeline = ArtifactsType' "CODEPIPELINE"
+
+pattern NoArtifacts :: ArtifactsType
+pattern NoArtifacts = ArtifactsType' "NO_ARTIFACTS"
+
+pattern S3 :: ArtifactsType
+pattern S3 = ArtifactsType' "S3"
+
+{-# COMPLETE
+  Codepipeline,
+  NoArtifacts,
+  S3,
+  ArtifactsType' #-}
 
 instance FromText ArtifactsType where
-    parser = takeLowerText >>= \case
-        "codepipeline" -> pure Codepipeline
-        "no_artifacts" -> pure NoArtifacts
-        "s3" -> pure S3
-        e -> fromTextError $ "Failure parsing ArtifactsType from value: '" <> e
-           <> "'. Accepted values: codepipeline, no_artifacts, s3"
+    parser = (ArtifactsType' . mk) <$> takeText
 
 instance ToText ArtifactsType where
-    toText = \case
-        Codepipeline -> "CODEPIPELINE"
-        NoArtifacts -> "NO_ARTIFACTS"
-        S3 -> "S3"
+    toText (ArtifactsType' ci) = original ci
+
+-- | Represents an enum of /known/ $ArtifactsType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum ArtifactsType where
+    toEnum i = case i of
+        0 -> Codepipeline
+        1 -> NoArtifacts
+        2 -> S3
+        _ -> (error . showText) $ "Unknown index for ArtifactsType: " <> toText i
+    fromEnum x = case x of
+        Codepipeline -> 0
+        NoArtifacts -> 1
+        S3 -> 2
+        ArtifactsType' name -> (error . showText) $ "Unknown ArtifactsType: " <> original name
+
+-- | Represents the bounds of /known/ $ArtifactsType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded ArtifactsType where
+    minBound = Codepipeline
+    maxBound = S3
 
 instance Hashable     ArtifactsType
 instance NFData       ArtifactsType

@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,23 +16,52 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.SWF.Types.DecisionTaskTimeoutType where
+module Network.AWS.SWF.Types.DecisionTaskTimeoutType (
+  DecisionTaskTimeoutType (
+    ..
+    , StartToClose
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data DecisionTaskTimeoutType = StartToClose
-                                 deriving (Eq, Ord, Read, Show, Enum, Bounded,
-                                           Data, Typeable, Generic)
+
+data DecisionTaskTimeoutType = DecisionTaskTimeoutType' (CI
+                                                           Text)
+                                 deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                           Generic)
+
+pattern StartToClose :: DecisionTaskTimeoutType
+pattern StartToClose = DecisionTaskTimeoutType' "START_TO_CLOSE"
+
+{-# COMPLETE
+  StartToClose,
+  DecisionTaskTimeoutType' #-}
 
 instance FromText DecisionTaskTimeoutType where
-    parser = takeLowerText >>= \case
-        "start_to_close" -> pure StartToClose
-        e -> fromTextError $ "Failure parsing DecisionTaskTimeoutType from value: '" <> e
-           <> "'. Accepted values: start_to_close"
+    parser = (DecisionTaskTimeoutType' . mk) <$> takeText
 
 instance ToText DecisionTaskTimeoutType where
-    toText = \case
-        StartToClose -> "START_TO_CLOSE"
+    toText (DecisionTaskTimeoutType' ci) = original ci
+
+-- | Represents an enum of /known/ $DecisionTaskTimeoutType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum DecisionTaskTimeoutType where
+    toEnum i = case i of
+        0 -> StartToClose
+        _ -> (error . showText) $ "Unknown index for DecisionTaskTimeoutType: " <> toText i
+    fromEnum x = case x of
+        StartToClose -> 0
+        DecisionTaskTimeoutType' name -> (error . showText) $ "Unknown DecisionTaskTimeoutType: " <> original name
+
+-- | Represents the bounds of /known/ $DecisionTaskTimeoutType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded DecisionTaskTimeoutType where
+    minBound = StartToClose
+    maxBound = StartToClose
 
 instance Hashable     DecisionTaskTimeoutType
 instance NFData       DecisionTaskTimeoutType

@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,59 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.Lightsail.Types.InstanceAccessProtocol where
+module Network.AWS.Lightsail.Types.InstanceAccessProtocol (
+  InstanceAccessProtocol (
+    ..
+    , Rdp
+    , SSH
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data InstanceAccessProtocol = Rdp
-                            | SSH
-                                deriving (Eq, Ord, Read, Show, Enum, Bounded,
-                                          Data, Typeable, Generic)
+
+data InstanceAccessProtocol = InstanceAccessProtocol' (CI
+                                                         Text)
+                                deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                          Generic)
+
+pattern Rdp :: InstanceAccessProtocol
+pattern Rdp = InstanceAccessProtocol' "rdp"
+
+pattern SSH :: InstanceAccessProtocol
+pattern SSH = InstanceAccessProtocol' "ssh"
+
+{-# COMPLETE
+  Rdp,
+  SSH,
+  InstanceAccessProtocol' #-}
 
 instance FromText InstanceAccessProtocol where
-    parser = takeLowerText >>= \case
-        "rdp" -> pure Rdp
-        "ssh" -> pure SSH
-        e -> fromTextError $ "Failure parsing InstanceAccessProtocol from value: '" <> e
-           <> "'. Accepted values: rdp, ssh"
+    parser = (InstanceAccessProtocol' . mk) <$> takeText
 
 instance ToText InstanceAccessProtocol where
-    toText = \case
-        Rdp -> "rdp"
-        SSH -> "ssh"
+    toText (InstanceAccessProtocol' ci) = original ci
+
+-- | Represents an enum of /known/ $InstanceAccessProtocol.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum InstanceAccessProtocol where
+    toEnum i = case i of
+        0 -> Rdp
+        1 -> SSH
+        _ -> (error . showText) $ "Unknown index for InstanceAccessProtocol: " <> toText i
+    fromEnum x = case x of
+        Rdp -> 0
+        SSH -> 1
+        InstanceAccessProtocol' name -> (error . showText) $ "Unknown InstanceAccessProtocol: " <> original name
+
+-- | Represents the bounds of /known/ $InstanceAccessProtocol.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded InstanceAccessProtocol where
+    minBound = Rdp
+    maxBound = SSH
 
 instance Hashable     InstanceAccessProtocol
 instance NFData       InstanceAccessProtocol

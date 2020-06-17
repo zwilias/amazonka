@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,32 +16,72 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.Config.Types.ComplianceType where
+module Network.AWS.Config.Types.ComplianceType (
+  ComplianceType (
+    ..
+    , Compliant
+    , InsufficientData
+    , NonCompliant
+    , NotApplicable
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data ComplianceType = Compliant
-                    | InsufficientData
-                    | NonCompliant
-                    | NotApplicable
-                        deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                  Typeable, Generic)
+
+data ComplianceType = ComplianceType' (CI Text)
+                        deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                  Generic)
+
+pattern Compliant :: ComplianceType
+pattern Compliant = ComplianceType' "COMPLIANT"
+
+pattern InsufficientData :: ComplianceType
+pattern InsufficientData = ComplianceType' "INSUFFICIENT_DATA"
+
+pattern NonCompliant :: ComplianceType
+pattern NonCompliant = ComplianceType' "NON_COMPLIANT"
+
+pattern NotApplicable :: ComplianceType
+pattern NotApplicable = ComplianceType' "NOT_APPLICABLE"
+
+{-# COMPLETE
+  Compliant,
+  InsufficientData,
+  NonCompliant,
+  NotApplicable,
+  ComplianceType' #-}
 
 instance FromText ComplianceType where
-    parser = takeLowerText >>= \case
-        "compliant" -> pure Compliant
-        "insufficient_data" -> pure InsufficientData
-        "non_compliant" -> pure NonCompliant
-        "not_applicable" -> pure NotApplicable
-        e -> fromTextError $ "Failure parsing ComplianceType from value: '" <> e
-           <> "'. Accepted values: compliant, insufficient_data, non_compliant, not_applicable"
+    parser = (ComplianceType' . mk) <$> takeText
 
 instance ToText ComplianceType where
-    toText = \case
-        Compliant -> "COMPLIANT"
-        InsufficientData -> "INSUFFICIENT_DATA"
-        NonCompliant -> "NON_COMPLIANT"
-        NotApplicable -> "NOT_APPLICABLE"
+    toText (ComplianceType' ci) = original ci
+
+-- | Represents an enum of /known/ $ComplianceType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum ComplianceType where
+    toEnum i = case i of
+        0 -> Compliant
+        1 -> InsufficientData
+        2 -> NonCompliant
+        3 -> NotApplicable
+        _ -> (error . showText) $ "Unknown index for ComplianceType: " <> toText i
+    fromEnum x = case x of
+        Compliant -> 0
+        InsufficientData -> 1
+        NonCompliant -> 2
+        NotApplicable -> 3
+        ComplianceType' name -> (error . showText) $ "Unknown ComplianceType: " <> original name
+
+-- | Represents the bounds of /known/ $ComplianceType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded ComplianceType where
+    minBound = Compliant
+    maxBound = NotApplicable
 
 instance Hashable     ComplianceType
 instance NFData       ComplianceType

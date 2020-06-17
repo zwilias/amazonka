@@ -38,6 +38,7 @@ module Network.AWS.CertificateManager.RemoveTagsFromCertificate
     ) where
 
 import Network.AWS.CertificateManager.Types
+import Network.AWS.CertificateManager.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request

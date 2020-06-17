@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,35 +16,79 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.WAFRegional.Types.MatchFieldType where
+module Network.AWS.WAFRegional.Types.MatchFieldType (
+  MatchFieldType (
+    ..
+    , Body
+    , Header
+    , Method
+    , QueryString
+    , URI
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data MatchFieldType = Body
-                    | Header
-                    | Method
-                    | QueryString
-                    | URI
-                        deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                  Typeable, Generic)
+
+data MatchFieldType = MatchFieldType' (CI Text)
+                        deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                  Generic)
+
+pattern Body :: MatchFieldType
+pattern Body = MatchFieldType' "BODY"
+
+pattern Header :: MatchFieldType
+pattern Header = MatchFieldType' "HEADER"
+
+pattern Method :: MatchFieldType
+pattern Method = MatchFieldType' "METHOD"
+
+pattern QueryString :: MatchFieldType
+pattern QueryString = MatchFieldType' "QUERY_STRING"
+
+pattern URI :: MatchFieldType
+pattern URI = MatchFieldType' "URI"
+
+{-# COMPLETE
+  Body,
+  Header,
+  Method,
+  QueryString,
+  URI,
+  MatchFieldType' #-}
 
 instance FromText MatchFieldType where
-    parser = takeLowerText >>= \case
-        "body" -> pure Body
-        "header" -> pure Header
-        "method" -> pure Method
-        "query_string" -> pure QueryString
-        "uri" -> pure URI
-        e -> fromTextError $ "Failure parsing MatchFieldType from value: '" <> e
-           <> "'. Accepted values: body, header, method, query_string, uri"
+    parser = (MatchFieldType' . mk) <$> takeText
 
 instance ToText MatchFieldType where
-    toText = \case
-        Body -> "BODY"
-        Header -> "HEADER"
-        Method -> "METHOD"
-        QueryString -> "QUERY_STRING"
-        URI -> "URI"
+    toText (MatchFieldType' ci) = original ci
+
+-- | Represents an enum of /known/ $MatchFieldType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum MatchFieldType where
+    toEnum i = case i of
+        0 -> Body
+        1 -> Header
+        2 -> Method
+        3 -> QueryString
+        4 -> URI
+        _ -> (error . showText) $ "Unknown index for MatchFieldType: " <> toText i
+    fromEnum x = case x of
+        Body -> 0
+        Header -> 1
+        Method -> 2
+        QueryString -> 3
+        URI -> 4
+        MatchFieldType' name -> (error . showText) $ "Unknown MatchFieldType: " <> original name
+
+-- | Represents the bounds of /known/ $MatchFieldType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded MatchFieldType where
+    minBound = Body
+    maxBound = URI
 
 instance Hashable     MatchFieldType
 instance NFData       MatchFieldType

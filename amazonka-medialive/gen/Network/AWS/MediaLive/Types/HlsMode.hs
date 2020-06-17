@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,27 +16,59 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.MediaLive.Types.HlsMode where
+module Network.AWS.MediaLive.Types.HlsMode (
+  HlsMode (
+    ..
+    , Live
+    , Vod
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
+
 -- | Placeholder documentation for HlsMode
-data HlsMode = Live
-             | Vod
-                 deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                           Typeable, Generic)
+data HlsMode = HlsMode' (CI Text)
+                 deriving (Eq, Ord, Read, Show, Data, Typeable,
+                           Generic)
+
+pattern Live :: HlsMode
+pattern Live = HlsMode' "LIVE"
+
+pattern Vod :: HlsMode
+pattern Vod = HlsMode' "VOD"
+
+{-# COMPLETE
+  Live,
+  Vod,
+  HlsMode' #-}
 
 instance FromText HlsMode where
-    parser = takeLowerText >>= \case
-        "live" -> pure Live
-        "vod" -> pure Vod
-        e -> fromTextError $ "Failure parsing HlsMode from value: '" <> e
-           <> "'. Accepted values: live, vod"
+    parser = (HlsMode' . mk) <$> takeText
 
 instance ToText HlsMode where
-    toText = \case
-        Live -> "LIVE"
-        Vod -> "VOD"
+    toText (HlsMode' ci) = original ci
+
+-- | Represents an enum of /known/ $HlsMode.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum HlsMode where
+    toEnum i = case i of
+        0 -> Live
+        1 -> Vod
+        _ -> (error . showText) $ "Unknown index for HlsMode: " <> toText i
+    fromEnum x = case x of
+        Live -> 0
+        Vod -> 1
+        HlsMode' name -> (error . showText) $ "Unknown HlsMode: " <> original name
+
+-- | Represents the bounds of /known/ $HlsMode.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded HlsMode where
+    minBound = Live
+    maxBound = Vod
 
 instance Hashable     HlsMode
 instance NFData       HlsMode

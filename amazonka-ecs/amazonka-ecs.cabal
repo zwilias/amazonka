@@ -124,6 +124,7 @@ library
         , Network.AWS.ECS.Types.PlacementStrategy
         , Network.AWS.ECS.Types.PlacementStrategyType
         , Network.AWS.ECS.Types.PortMapping
+        , Network.AWS.ECS.Types.Product
         , Network.AWS.ECS.Types.Resource
         , Network.AWS.ECS.Types.ServiceEvent
         , Network.AWS.ECS.Types.ServiceRegistry
@@ -147,6 +148,7 @@ library
     build-depends:
           amazonka-core == 1.6.1.*
         , base          >= 4.7     && < 5
+        , case-insensitive
 
 test-suite amazonka-ecs-test
     type:              exitcode-stdio-1.0
@@ -170,6 +172,7 @@ test-suite amazonka-ecs-test
         , amazonka-ecs
         , base
         , bytestring
+        , case-insensitive
         , tasty
         , tasty-hunit
         , text

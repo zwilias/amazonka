@@ -39,6 +39,7 @@ module Network.AWS.DirectoryService.DisableSSO
     ) where
 
 import Network.AWS.DirectoryService.Types
+import Network.AWS.DirectoryService.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request

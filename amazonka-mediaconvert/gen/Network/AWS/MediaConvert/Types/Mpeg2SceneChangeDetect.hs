@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,27 +16,60 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.MediaConvert.Types.Mpeg2SceneChangeDetect where
+module Network.AWS.MediaConvert.Types.Mpeg2SceneChangeDetect (
+  Mpeg2SceneChangeDetect (
+    ..
+    , MSCDDisabled
+    , MSCDEnabled
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
+
 -- | Scene change detection (inserts I-frames on scene changes).
-data Mpeg2SceneChangeDetect = MSCDDisabled
-                            | MSCDEnabled
-                                deriving (Eq, Ord, Read, Show, Enum, Bounded,
-                                          Data, Typeable, Generic)
+data Mpeg2SceneChangeDetect = Mpeg2SceneChangeDetect' (CI
+                                                         Text)
+                                deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                          Generic)
+
+pattern MSCDDisabled :: Mpeg2SceneChangeDetect
+pattern MSCDDisabled = Mpeg2SceneChangeDetect' "DISABLED"
+
+pattern MSCDEnabled :: Mpeg2SceneChangeDetect
+pattern MSCDEnabled = Mpeg2SceneChangeDetect' "ENABLED"
+
+{-# COMPLETE
+  MSCDDisabled,
+  MSCDEnabled,
+  Mpeg2SceneChangeDetect' #-}
 
 instance FromText Mpeg2SceneChangeDetect where
-    parser = takeLowerText >>= \case
-        "disabled" -> pure MSCDDisabled
-        "enabled" -> pure MSCDEnabled
-        e -> fromTextError $ "Failure parsing Mpeg2SceneChangeDetect from value: '" <> e
-           <> "'. Accepted values: disabled, enabled"
+    parser = (Mpeg2SceneChangeDetect' . mk) <$> takeText
 
 instance ToText Mpeg2SceneChangeDetect where
-    toText = \case
-        MSCDDisabled -> "DISABLED"
-        MSCDEnabled -> "ENABLED"
+    toText (Mpeg2SceneChangeDetect' ci) = original ci
+
+-- | Represents an enum of /known/ $Mpeg2SceneChangeDetect.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum Mpeg2SceneChangeDetect where
+    toEnum i = case i of
+        0 -> MSCDDisabled
+        1 -> MSCDEnabled
+        _ -> (error . showText) $ "Unknown index for Mpeg2SceneChangeDetect: " <> toText i
+    fromEnum x = case x of
+        MSCDDisabled -> 0
+        MSCDEnabled -> 1
+        Mpeg2SceneChangeDetect' name -> (error . showText) $ "Unknown Mpeg2SceneChangeDetect: " <> original name
+
+-- | Represents the bounds of /known/ $Mpeg2SceneChangeDetect.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded Mpeg2SceneChangeDetect where
+    minBound = MSCDDisabled
+    maxBound = MSCDEnabled
 
 instance Hashable     Mpeg2SceneChangeDetect
 instance NFData       Mpeg2SceneChangeDetect

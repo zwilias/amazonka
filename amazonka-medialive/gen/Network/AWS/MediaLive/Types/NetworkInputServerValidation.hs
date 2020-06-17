@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,28 +16,60 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.MediaLive.Types.NetworkInputServerValidation where
+module Network.AWS.MediaLive.Types.NetworkInputServerValidation (
+  NetworkInputServerValidation (
+    ..
+    , CheckCryptographyAndValidateName
+    , CheckCryptographyOnly
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
+
 -- | Placeholder documentation for NetworkInputServerValidation
-data NetworkInputServerValidation = CheckCryptographyAndValidateName
-                                  | CheckCryptographyOnly
-                                      deriving (Eq, Ord, Read, Show, Enum,
-                                                Bounded, Data, Typeable,
-                                                Generic)
+data NetworkInputServerValidation = NetworkInputServerValidation' (CI
+                                                                     Text)
+                                      deriving (Eq, Ord, Read, Show, Data,
+                                                Typeable, Generic)
+
+pattern CheckCryptographyAndValidateName :: NetworkInputServerValidation
+pattern CheckCryptographyAndValidateName = NetworkInputServerValidation' "CHECK_CRYPTOGRAPHY_AND_VALIDATE_NAME"
+
+pattern CheckCryptographyOnly :: NetworkInputServerValidation
+pattern CheckCryptographyOnly = NetworkInputServerValidation' "CHECK_CRYPTOGRAPHY_ONLY"
+
+{-# COMPLETE
+  CheckCryptographyAndValidateName,
+  CheckCryptographyOnly,
+  NetworkInputServerValidation' #-}
 
 instance FromText NetworkInputServerValidation where
-    parser = takeLowerText >>= \case
-        "check_cryptography_and_validate_name" -> pure CheckCryptographyAndValidateName
-        "check_cryptography_only" -> pure CheckCryptographyOnly
-        e -> fromTextError $ "Failure parsing NetworkInputServerValidation from value: '" <> e
-           <> "'. Accepted values: check_cryptography_and_validate_name, check_cryptography_only"
+    parser = (NetworkInputServerValidation' . mk) <$> takeText
 
 instance ToText NetworkInputServerValidation where
-    toText = \case
-        CheckCryptographyAndValidateName -> "CHECK_CRYPTOGRAPHY_AND_VALIDATE_NAME"
-        CheckCryptographyOnly -> "CHECK_CRYPTOGRAPHY_ONLY"
+    toText (NetworkInputServerValidation' ci) = original ci
+
+-- | Represents an enum of /known/ $NetworkInputServerValidation.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum NetworkInputServerValidation where
+    toEnum i = case i of
+        0 -> CheckCryptographyAndValidateName
+        1 -> CheckCryptographyOnly
+        _ -> (error . showText) $ "Unknown index for NetworkInputServerValidation: " <> toText i
+    fromEnum x = case x of
+        CheckCryptographyAndValidateName -> 0
+        CheckCryptographyOnly -> 1
+        NetworkInputServerValidation' name -> (error . showText) $ "Unknown NetworkInputServerValidation: " <> original name
+
+-- | Represents the bounds of /known/ $NetworkInputServerValidation.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded NetworkInputServerValidation where
+    minBound = CheckCryptographyAndValidateName
+    maxBound = CheckCryptographyOnly
 
 instance Hashable     NetworkInputServerValidation
 instance NFData       NetworkInputServerValidation

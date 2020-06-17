@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,58 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.Polly.Types.TextType where
+module Network.AWS.Polly.Types.TextType (
+  TextType (
+    ..
+    , TTSsml
+    , TTText
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data TextType = TTSsml
-              | TTText
-                  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                            Typeable, Generic)
+
+data TextType = TextType' (CI Text)
+                  deriving (Eq, Ord, Read, Show, Data, Typeable,
+                            Generic)
+
+pattern TTSsml :: TextType
+pattern TTSsml = TextType' "ssml"
+
+pattern TTText :: TextType
+pattern TTText = TextType' "text"
+
+{-# COMPLETE
+  TTSsml,
+  TTText,
+  TextType' #-}
 
 instance FromText TextType where
-    parser = takeLowerText >>= \case
-        "ssml" -> pure TTSsml
-        "text" -> pure TTText
-        e -> fromTextError $ "Failure parsing TextType from value: '" <> e
-           <> "'. Accepted values: ssml, text"
+    parser = (TextType' . mk) <$> takeText
 
 instance ToText TextType where
-    toText = \case
-        TTSsml -> "ssml"
-        TTText -> "text"
+    toText (TextType' ci) = original ci
+
+-- | Represents an enum of /known/ $TextType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum TextType where
+    toEnum i = case i of
+        0 -> TTSsml
+        1 -> TTText
+        _ -> (error . showText) $ "Unknown index for TextType: " <> toText i
+    fromEnum x = case x of
+        TTSsml -> 0
+        TTText -> 1
+        TextType' name -> (error . showText) $ "Unknown TextType: " <> original name
+
+-- | Represents the bounds of /known/ $TextType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded TextType where
+    minBound = TTSsml
+    maxBound = TTText
 
 instance Hashable     TextType
 instance NFData       TextType

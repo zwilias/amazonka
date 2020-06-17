@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,27 +16,59 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.S3.Types.TaggingDirective where
+module Network.AWS.S3.Types.TaggingDirective (
+  TaggingDirective (
+    ..
+    , Copy
+    , Replace
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
 import Network.AWS.S3.Internal
-  
-data TaggingDirective = Copy
-                      | Replace
-                          deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                    Typeable, Generic)
+
+data TaggingDirective = TaggingDirective' (CI Text)
+                          deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                    Generic)
+
+pattern Copy :: TaggingDirective
+pattern Copy = TaggingDirective' "COPY"
+
+pattern Replace :: TaggingDirective
+pattern Replace = TaggingDirective' "REPLACE"
+
+{-# COMPLETE
+  Copy,
+  Replace,
+  TaggingDirective' #-}
 
 instance FromText TaggingDirective where
-    parser = takeLowerText >>= \case
-        "copy" -> pure Copy
-        "replace" -> pure Replace
-        e -> fromTextError $ "Failure parsing TaggingDirective from value: '" <> e
-           <> "'. Accepted values: copy, replace"
+    parser = (TaggingDirective' . mk) <$> takeText
 
 instance ToText TaggingDirective where
-    toText = \case
-        Copy -> "COPY"
-        Replace -> "REPLACE"
+    toText (TaggingDirective' ci) = original ci
+
+-- | Represents an enum of /known/ $TaggingDirective.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum TaggingDirective where
+    toEnum i = case i of
+        0 -> Copy
+        1 -> Replace
+        _ -> (error . showText) $ "Unknown index for TaggingDirective: " <> toText i
+    fromEnum x = case x of
+        Copy -> 0
+        Replace -> 1
+        TaggingDirective' name -> (error . showText) $ "Unknown TaggingDirective: " <> original name
+
+-- | Represents the bounds of /known/ $TaggingDirective.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded TaggingDirective where
+    minBound = Copy
+    maxBound = Replace
 
 instance Hashable     TaggingDirective
 instance NFData       TaggingDirective

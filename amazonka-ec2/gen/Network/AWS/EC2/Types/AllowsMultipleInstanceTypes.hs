@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,27 +16,60 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.EC2.Types.AllowsMultipleInstanceTypes where
+module Network.AWS.EC2.Types.AllowsMultipleInstanceTypes (
+  AllowsMultipleInstanceTypes (
+    ..
+    , ON
+    , Off
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.EC2.Internal
 import Network.AWS.Prelude
-  
-data AllowsMultipleInstanceTypes = ON
-                                 | Off
-                                     deriving (Eq, Ord, Read, Show, Enum,
-                                               Bounded, Data, Typeable, Generic)
+
+data AllowsMultipleInstanceTypes = AllowsMultipleInstanceTypes' (CI
+                                                                   Text)
+                                     deriving (Eq, Ord, Read, Show, Data,
+                                               Typeable, Generic)
+
+pattern ON :: AllowsMultipleInstanceTypes
+pattern ON = AllowsMultipleInstanceTypes' "on"
+
+pattern Off :: AllowsMultipleInstanceTypes
+pattern Off = AllowsMultipleInstanceTypes' "off"
+
+{-# COMPLETE
+  ON,
+  Off,
+  AllowsMultipleInstanceTypes' #-}
 
 instance FromText AllowsMultipleInstanceTypes where
-    parser = takeLowerText >>= \case
-        "on" -> pure ON
-        "off" -> pure Off
-        e -> fromTextError $ "Failure parsing AllowsMultipleInstanceTypes from value: '" <> e
-           <> "'. Accepted values: on, off"
+    parser = (AllowsMultipleInstanceTypes' . mk) <$> takeText
 
 instance ToText AllowsMultipleInstanceTypes where
-    toText = \case
-        ON -> "on"
-        Off -> "off"
+    toText (AllowsMultipleInstanceTypes' ci) = original ci
+
+-- | Represents an enum of /known/ $AllowsMultipleInstanceTypes.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum AllowsMultipleInstanceTypes where
+    toEnum i = case i of
+        0 -> ON
+        1 -> Off
+        _ -> (error . showText) $ "Unknown index for AllowsMultipleInstanceTypes: " <> toText i
+    fromEnum x = case x of
+        ON -> 0
+        Off -> 1
+        AllowsMultipleInstanceTypes' name -> (error . showText) $ "Unknown AllowsMultipleInstanceTypes: " <> original name
+
+-- | Represents the bounds of /known/ $AllowsMultipleInstanceTypes.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded AllowsMultipleInstanceTypes where
+    minBound = ON
+    maxBound = Off
 
 instance Hashable     AllowsMultipleInstanceTypes
 instance NFData       AllowsMultipleInstanceTypes

@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,29 +16,65 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.CloudFront.Types.CertificateSource where
+module Network.AWS.CloudFront.Types.CertificateSource (
+  CertificateSource (
+    ..
+    , Acm
+    , Cloudfront
+    , IAM
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data CertificateSource = Acm
-                       | Cloudfront
-                       | IAM
-                           deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                     Typeable, Generic)
+
+data CertificateSource = CertificateSource' (CI Text)
+                           deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                     Generic)
+
+pattern Acm :: CertificateSource
+pattern Acm = CertificateSource' "acm"
+
+pattern Cloudfront :: CertificateSource
+pattern Cloudfront = CertificateSource' "cloudfront"
+
+pattern IAM :: CertificateSource
+pattern IAM = CertificateSource' "iam"
+
+{-# COMPLETE
+  Acm,
+  Cloudfront,
+  IAM,
+  CertificateSource' #-}
 
 instance FromText CertificateSource where
-    parser = takeLowerText >>= \case
-        "acm" -> pure Acm
-        "cloudfront" -> pure Cloudfront
-        "iam" -> pure IAM
-        e -> fromTextError $ "Failure parsing CertificateSource from value: '" <> e
-           <> "'. Accepted values: acm, cloudfront, iam"
+    parser = (CertificateSource' . mk) <$> takeText
 
 instance ToText CertificateSource where
-    toText = \case
-        Acm -> "acm"
-        Cloudfront -> "cloudfront"
-        IAM -> "iam"
+    toText (CertificateSource' ci) = original ci
+
+-- | Represents an enum of /known/ $CertificateSource.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum CertificateSource where
+    toEnum i = case i of
+        0 -> Acm
+        1 -> Cloudfront
+        2 -> IAM
+        _ -> (error . showText) $ "Unknown index for CertificateSource: " <> toText i
+    fromEnum x = case x of
+        Acm -> 0
+        Cloudfront -> 1
+        IAM -> 2
+        CertificateSource' name -> (error . showText) $ "Unknown CertificateSource: " <> original name
+
+-- | Represents the bounds of /known/ $CertificateSource.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded CertificateSource where
+    minBound = Acm
+    maxBound = IAM
 
 instance Hashable     CertificateSource
 instance NFData       CertificateSource

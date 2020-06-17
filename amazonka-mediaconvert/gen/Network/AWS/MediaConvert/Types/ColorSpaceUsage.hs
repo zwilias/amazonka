@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,27 +16,59 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.MediaConvert.Types.ColorSpaceUsage where
+module Network.AWS.MediaConvert.Types.ColorSpaceUsage (
+  ColorSpaceUsage (
+    ..
+    , Fallback
+    , Force
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
+
 -- | There are two sources for color metadata, the input file and the job configuration. This enum controls which takes precedence. FORCE: System will use color metadata supplied by user, if any. If the user does not supply color metadata the system will use data from the source. FALLBACK: System will use color metadata from the source. If source has no color metadata, the system will use user-supplied color metadata values if available.
-data ColorSpaceUsage = Fallback
-                     | Force
-                         deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                   Typeable, Generic)
+data ColorSpaceUsage = ColorSpaceUsage' (CI Text)
+                         deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                   Generic)
+
+pattern Fallback :: ColorSpaceUsage
+pattern Fallback = ColorSpaceUsage' "FALLBACK"
+
+pattern Force :: ColorSpaceUsage
+pattern Force = ColorSpaceUsage' "FORCE"
+
+{-# COMPLETE
+  Fallback,
+  Force,
+  ColorSpaceUsage' #-}
 
 instance FromText ColorSpaceUsage where
-    parser = takeLowerText >>= \case
-        "fallback" -> pure Fallback
-        "force" -> pure Force
-        e -> fromTextError $ "Failure parsing ColorSpaceUsage from value: '" <> e
-           <> "'. Accepted values: fallback, force"
+    parser = (ColorSpaceUsage' . mk) <$> takeText
 
 instance ToText ColorSpaceUsage where
-    toText = \case
-        Fallback -> "FALLBACK"
-        Force -> "FORCE"
+    toText (ColorSpaceUsage' ci) = original ci
+
+-- | Represents an enum of /known/ $ColorSpaceUsage.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum ColorSpaceUsage where
+    toEnum i = case i of
+        0 -> Fallback
+        1 -> Force
+        _ -> (error . showText) $ "Unknown index for ColorSpaceUsage: " <> toText i
+    fromEnum x = case x of
+        Fallback -> 0
+        Force -> 1
+        ColorSpaceUsage' name -> (error . showText) $ "Unknown ColorSpaceUsage: " <> original name
+
+-- | Represents the bounds of /known/ $ColorSpaceUsage.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded ColorSpaceUsage where
+    minBound = Fallback
+    maxBound = Force
 
 instance Hashable     ColorSpaceUsage
 instance NFData       ColorSpaceUsage

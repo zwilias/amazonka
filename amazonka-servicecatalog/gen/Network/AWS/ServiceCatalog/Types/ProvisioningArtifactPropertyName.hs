@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,24 +16,52 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.ServiceCatalog.Types.ProvisioningArtifactPropertyName where
+module Network.AWS.ServiceCatalog.Types.ProvisioningArtifactPropertyName (
+  ProvisioningArtifactPropertyName (
+    ..
+    , Id
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data ProvisioningArtifactPropertyName = Id
-                                          deriving (Eq, Ord, Read, Show, Enum,
-                                                    Bounded, Data, Typeable,
-                                                    Generic)
+
+data ProvisioningArtifactPropertyName = ProvisioningArtifactPropertyName' (CI
+                                                                             Text)
+                                          deriving (Eq, Ord, Read, Show, Data,
+                                                    Typeable, Generic)
+
+pattern Id :: ProvisioningArtifactPropertyName
+pattern Id = ProvisioningArtifactPropertyName' "Id"
+
+{-# COMPLETE
+  Id,
+  ProvisioningArtifactPropertyName' #-}
 
 instance FromText ProvisioningArtifactPropertyName where
-    parser = takeLowerText >>= \case
-        "id" -> pure Id
-        e -> fromTextError $ "Failure parsing ProvisioningArtifactPropertyName from value: '" <> e
-           <> "'. Accepted values: id"
+    parser = (ProvisioningArtifactPropertyName' . mk) <$> takeText
 
 instance ToText ProvisioningArtifactPropertyName where
-    toText = \case
-        Id -> "Id"
+    toText (ProvisioningArtifactPropertyName' ci) = original ci
+
+-- | Represents an enum of /known/ $ProvisioningArtifactPropertyName.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum ProvisioningArtifactPropertyName where
+    toEnum i = case i of
+        0 -> Id
+        _ -> (error . showText) $ "Unknown index for ProvisioningArtifactPropertyName: " <> toText i
+    fromEnum x = case x of
+        Id -> 0
+        ProvisioningArtifactPropertyName' name -> (error . showText) $ "Unknown ProvisioningArtifactPropertyName: " <> original name
+
+-- | Represents the bounds of /known/ $ProvisioningArtifactPropertyName.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded ProvisioningArtifactPropertyName where
+    minBound = Id
+    maxBound = Id
 
 instance Hashable     ProvisioningArtifactPropertyName
 instance NFData       ProvisioningArtifactPropertyName

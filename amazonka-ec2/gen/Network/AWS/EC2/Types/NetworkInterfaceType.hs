@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,30 +16,67 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.EC2.Types.NetworkInterfaceType where
+module Network.AWS.EC2.Types.NetworkInterfaceType (
+  NetworkInterfaceType (
+    ..
+    , NITEfa
+    , NITInterface
+    , NITNatGateway
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.EC2.Internal
 import Network.AWS.Prelude
-  
-data NetworkInterfaceType = NITEfa
-                          | NITInterface
-                          | NITNatGateway
-                              deriving (Eq, Ord, Read, Show, Enum, Bounded,
-                                        Data, Typeable, Generic)
+
+data NetworkInterfaceType = NetworkInterfaceType' (CI
+                                                     Text)
+                              deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                        Generic)
+
+pattern NITEfa :: NetworkInterfaceType
+pattern NITEfa = NetworkInterfaceType' "efa"
+
+pattern NITInterface :: NetworkInterfaceType
+pattern NITInterface = NetworkInterfaceType' "interface"
+
+pattern NITNatGateway :: NetworkInterfaceType
+pattern NITNatGateway = NetworkInterfaceType' "natGateway"
+
+{-# COMPLETE
+  NITEfa,
+  NITInterface,
+  NITNatGateway,
+  NetworkInterfaceType' #-}
 
 instance FromText NetworkInterfaceType where
-    parser = takeLowerText >>= \case
-        "efa" -> pure NITEfa
-        "interface" -> pure NITInterface
-        "natgateway" -> pure NITNatGateway
-        e -> fromTextError $ "Failure parsing NetworkInterfaceType from value: '" <> e
-           <> "'. Accepted values: efa, interface, natgateway"
+    parser = (NetworkInterfaceType' . mk) <$> takeText
 
 instance ToText NetworkInterfaceType where
-    toText = \case
-        NITEfa -> "efa"
-        NITInterface -> "interface"
-        NITNatGateway -> "natGateway"
+    toText (NetworkInterfaceType' ci) = original ci
+
+-- | Represents an enum of /known/ $NetworkInterfaceType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum NetworkInterfaceType where
+    toEnum i = case i of
+        0 -> NITEfa
+        1 -> NITInterface
+        2 -> NITNatGateway
+        _ -> (error . showText) $ "Unknown index for NetworkInterfaceType: " <> toText i
+    fromEnum x = case x of
+        NITEfa -> 0
+        NITInterface -> 1
+        NITNatGateway -> 2
+        NetworkInterfaceType' name -> (error . showText) $ "Unknown NetworkInterfaceType: " <> original name
+
+-- | Represents the bounds of /known/ $NetworkInterfaceType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded NetworkInterfaceType where
+    minBound = NITEfa
+    maxBound = NITNatGateway
 
 instance Hashable     NetworkInterfaceType
 instance NFData       NetworkInterfaceType

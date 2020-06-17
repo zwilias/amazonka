@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,35 +16,79 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.CloudHSMv2.Types.HSMState where
+module Network.AWS.CloudHSMv2.Types.HSMState (
+  HSMState (
+    ..
+    , HSActive
+    , HSCreateInProgress
+    , HSDegraded
+    , HSDeleteInProgress
+    , HSDeleted
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data HSMState = HSActive
-              | HSCreateInProgress
-              | HSDegraded
-              | HSDeleteInProgress
-              | HSDeleted
-                  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                            Typeable, Generic)
+
+data HSMState = HSMState' (CI Text)
+                  deriving (Eq, Ord, Read, Show, Data, Typeable,
+                            Generic)
+
+pattern HSActive :: HSMState
+pattern HSActive = HSMState' "ACTIVE"
+
+pattern HSCreateInProgress :: HSMState
+pattern HSCreateInProgress = HSMState' "CREATE_IN_PROGRESS"
+
+pattern HSDegraded :: HSMState
+pattern HSDegraded = HSMState' "DEGRADED"
+
+pattern HSDeleteInProgress :: HSMState
+pattern HSDeleteInProgress = HSMState' "DELETE_IN_PROGRESS"
+
+pattern HSDeleted :: HSMState
+pattern HSDeleted = HSMState' "DELETED"
+
+{-# COMPLETE
+  HSActive,
+  HSCreateInProgress,
+  HSDegraded,
+  HSDeleteInProgress,
+  HSDeleted,
+  HSMState' #-}
 
 instance FromText HSMState where
-    parser = takeLowerText >>= \case
-        "active" -> pure HSActive
-        "create_in_progress" -> pure HSCreateInProgress
-        "degraded" -> pure HSDegraded
-        "delete_in_progress" -> pure HSDeleteInProgress
-        "deleted" -> pure HSDeleted
-        e -> fromTextError $ "Failure parsing HSMState from value: '" <> e
-           <> "'. Accepted values: active, create_in_progress, degraded, delete_in_progress, deleted"
+    parser = (HSMState' . mk) <$> takeText
 
 instance ToText HSMState where
-    toText = \case
-        HSActive -> "ACTIVE"
-        HSCreateInProgress -> "CREATE_IN_PROGRESS"
-        HSDegraded -> "DEGRADED"
-        HSDeleteInProgress -> "DELETE_IN_PROGRESS"
-        HSDeleted -> "DELETED"
+    toText (HSMState' ci) = original ci
+
+-- | Represents an enum of /known/ $HSMState.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum HSMState where
+    toEnum i = case i of
+        0 -> HSActive
+        1 -> HSCreateInProgress
+        2 -> HSDegraded
+        3 -> HSDeleteInProgress
+        4 -> HSDeleted
+        _ -> (error . showText) $ "Unknown index for HSMState: " <> toText i
+    fromEnum x = case x of
+        HSActive -> 0
+        HSCreateInProgress -> 1
+        HSDegraded -> 2
+        HSDeleteInProgress -> 3
+        HSDeleted -> 4
+        HSMState' name -> (error . showText) $ "Unknown HSMState: " <> original name
+
+-- | Represents the bounds of /known/ $HSMState.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded HSMState where
+    minBound = HSActive
+    maxBound = HSDeleted
 
 instance Hashable     HSMState
 instance NFData       HSMState

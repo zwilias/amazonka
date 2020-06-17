@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,39 +16,87 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.EC2.Types.PrincipalType where
+module Network.AWS.EC2.Types.PrincipalType (
+  PrincipalType (
+    ..
+    , PTAccount
+    , PTAll
+    , PTOrganizationUnit
+    , PTRole
+    , PTService
+    , PTUser
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.EC2.Internal
 import Network.AWS.Prelude
-  
-data PrincipalType = PTAccount
-                   | PTAll
-                   | PTOrganizationUnit
-                   | PTRole
-                   | PTService
-                   | PTUser
-                       deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                 Typeable, Generic)
+
+data PrincipalType = PrincipalType' (CI Text)
+                       deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                 Generic)
+
+pattern PTAccount :: PrincipalType
+pattern PTAccount = PrincipalType' "Account"
+
+pattern PTAll :: PrincipalType
+pattern PTAll = PrincipalType' "All"
+
+pattern PTOrganizationUnit :: PrincipalType
+pattern PTOrganizationUnit = PrincipalType' "OrganizationUnit"
+
+pattern PTRole :: PrincipalType
+pattern PTRole = PrincipalType' "Role"
+
+pattern PTService :: PrincipalType
+pattern PTService = PrincipalType' "Service"
+
+pattern PTUser :: PrincipalType
+pattern PTUser = PrincipalType' "User"
+
+{-# COMPLETE
+  PTAccount,
+  PTAll,
+  PTOrganizationUnit,
+  PTRole,
+  PTService,
+  PTUser,
+  PrincipalType' #-}
 
 instance FromText PrincipalType where
-    parser = takeLowerText >>= \case
-        "account" -> pure PTAccount
-        "all" -> pure PTAll
-        "organizationunit" -> pure PTOrganizationUnit
-        "role" -> pure PTRole
-        "service" -> pure PTService
-        "user" -> pure PTUser
-        e -> fromTextError $ "Failure parsing PrincipalType from value: '" <> e
-           <> "'. Accepted values: account, all, organizationunit, role, service, user"
+    parser = (PrincipalType' . mk) <$> takeText
 
 instance ToText PrincipalType where
-    toText = \case
-        PTAccount -> "Account"
-        PTAll -> "All"
-        PTOrganizationUnit -> "OrganizationUnit"
-        PTRole -> "Role"
-        PTService -> "Service"
-        PTUser -> "User"
+    toText (PrincipalType' ci) = original ci
+
+-- | Represents an enum of /known/ $PrincipalType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum PrincipalType where
+    toEnum i = case i of
+        0 -> PTAccount
+        1 -> PTAll
+        2 -> PTOrganizationUnit
+        3 -> PTRole
+        4 -> PTService
+        5 -> PTUser
+        _ -> (error . showText) $ "Unknown index for PrincipalType: " <> toText i
+    fromEnum x = case x of
+        PTAccount -> 0
+        PTAll -> 1
+        PTOrganizationUnit -> 2
+        PTRole -> 3
+        PTService -> 4
+        PTUser -> 5
+        PrincipalType' name -> (error . showText) $ "Unknown PrincipalType: " <> original name
+
+-- | Represents the bounds of /known/ $PrincipalType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded PrincipalType where
+    minBound = PTAccount
+    maxBound = PTUser
 
 instance Hashable     PrincipalType
 instance NFData       PrincipalType

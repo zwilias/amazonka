@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,58 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.SageMaker.Types.ModelSortKey where
+module Network.AWS.SageMaker.Types.ModelSortKey (
+  ModelSortKey (
+    ..
+    , MSKCreationTime
+    , MSKName
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data ModelSortKey = MSKCreationTime
-                  | MSKName
-                      deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                Typeable, Generic)
+
+data ModelSortKey = ModelSortKey' (CI Text)
+                      deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                Generic)
+
+pattern MSKCreationTime :: ModelSortKey
+pattern MSKCreationTime = ModelSortKey' "CreationTime"
+
+pattern MSKName :: ModelSortKey
+pattern MSKName = ModelSortKey' "Name"
+
+{-# COMPLETE
+  MSKCreationTime,
+  MSKName,
+  ModelSortKey' #-}
 
 instance FromText ModelSortKey where
-    parser = takeLowerText >>= \case
-        "creationtime" -> pure MSKCreationTime
-        "name" -> pure MSKName
-        e -> fromTextError $ "Failure parsing ModelSortKey from value: '" <> e
-           <> "'. Accepted values: creationtime, name"
+    parser = (ModelSortKey' . mk) <$> takeText
 
 instance ToText ModelSortKey where
-    toText = \case
-        MSKCreationTime -> "CreationTime"
-        MSKName -> "Name"
+    toText (ModelSortKey' ci) = original ci
+
+-- | Represents an enum of /known/ $ModelSortKey.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum ModelSortKey where
+    toEnum i = case i of
+        0 -> MSKCreationTime
+        1 -> MSKName
+        _ -> (error . showText) $ "Unknown index for ModelSortKey: " <> toText i
+    fromEnum x = case x of
+        MSKCreationTime -> 0
+        MSKName -> 1
+        ModelSortKey' name -> (error . showText) $ "Unknown ModelSortKey: " <> original name
+
+-- | Represents the bounds of /known/ $ModelSortKey.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded ModelSortKey where
+    minBound = MSKCreationTime
+    maxBound = MSKName
 
 instance Hashable     ModelSortKey
 instance NFData       ModelSortKey

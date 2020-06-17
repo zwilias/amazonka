@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,58 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.CodeDeploy.Types.TargetLabel where
+module Network.AWS.CodeDeploy.Types.TargetLabel (
+  TargetLabel (
+    ..
+    , TLBlue
+    , TLGreen
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data TargetLabel = TLBlue
-                 | TLGreen
-                     deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                               Typeable, Generic)
+
+data TargetLabel = TargetLabel' (CI Text)
+                     deriving (Eq, Ord, Read, Show, Data, Typeable,
+                               Generic)
+
+pattern TLBlue :: TargetLabel
+pattern TLBlue = TargetLabel' "Blue"
+
+pattern TLGreen :: TargetLabel
+pattern TLGreen = TargetLabel' "Green"
+
+{-# COMPLETE
+  TLBlue,
+  TLGreen,
+  TargetLabel' #-}
 
 instance FromText TargetLabel where
-    parser = takeLowerText >>= \case
-        "blue" -> pure TLBlue
-        "green" -> pure TLGreen
-        e -> fromTextError $ "Failure parsing TargetLabel from value: '" <> e
-           <> "'. Accepted values: blue, green"
+    parser = (TargetLabel' . mk) <$> takeText
 
 instance ToText TargetLabel where
-    toText = \case
-        TLBlue -> "Blue"
-        TLGreen -> "Green"
+    toText (TargetLabel' ci) = original ci
+
+-- | Represents an enum of /known/ $TargetLabel.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum TargetLabel where
+    toEnum i = case i of
+        0 -> TLBlue
+        1 -> TLGreen
+        _ -> (error . showText) $ "Unknown index for TargetLabel: " <> toText i
+    fromEnum x = case x of
+        TLBlue -> 0
+        TLGreen -> 1
+        TargetLabel' name -> (error . showText) $ "Unknown TargetLabel: " <> original name
+
+-- | Represents the bounds of /known/ $TargetLabel.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded TargetLabel where
+    minBound = TLBlue
+    maxBound = TLGreen
 
 instance Hashable     TargetLabel
 instance NFData       TargetLabel

@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,38 +16,86 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.SSM.Types.OperatingSystem where
+module Network.AWS.SSM.Types.OperatingSystem (
+  OperatingSystem (
+    ..
+    , AmazonLinux
+    , Centos
+    , RedhatEnterpriseLinux
+    , Suse
+    , Ubuntu
+    , Windows
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data OperatingSystem = AmazonLinux
-                     | Centos
-                     | RedhatEnterpriseLinux
-                     | Suse
-                     | Ubuntu
-                     | Windows
-                         deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                   Typeable, Generic)
+
+data OperatingSystem = OperatingSystem' (CI Text)
+                         deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                   Generic)
+
+pattern AmazonLinux :: OperatingSystem
+pattern AmazonLinux = OperatingSystem' "AMAZON_LINUX"
+
+pattern Centos :: OperatingSystem
+pattern Centos = OperatingSystem' "CENTOS"
+
+pattern RedhatEnterpriseLinux :: OperatingSystem
+pattern RedhatEnterpriseLinux = OperatingSystem' "REDHAT_ENTERPRISE_LINUX"
+
+pattern Suse :: OperatingSystem
+pattern Suse = OperatingSystem' "SUSE"
+
+pattern Ubuntu :: OperatingSystem
+pattern Ubuntu = OperatingSystem' "UBUNTU"
+
+pattern Windows :: OperatingSystem
+pattern Windows = OperatingSystem' "WINDOWS"
+
+{-# COMPLETE
+  AmazonLinux,
+  Centos,
+  RedhatEnterpriseLinux,
+  Suse,
+  Ubuntu,
+  Windows,
+  OperatingSystem' #-}
 
 instance FromText OperatingSystem where
-    parser = takeLowerText >>= \case
-        "amazon_linux" -> pure AmazonLinux
-        "centos" -> pure Centos
-        "redhat_enterprise_linux" -> pure RedhatEnterpriseLinux
-        "suse" -> pure Suse
-        "ubuntu" -> pure Ubuntu
-        "windows" -> pure Windows
-        e -> fromTextError $ "Failure parsing OperatingSystem from value: '" <> e
-           <> "'. Accepted values: amazon_linux, centos, redhat_enterprise_linux, suse, ubuntu, windows"
+    parser = (OperatingSystem' . mk) <$> takeText
 
 instance ToText OperatingSystem where
-    toText = \case
-        AmazonLinux -> "AMAZON_LINUX"
-        Centos -> "CENTOS"
-        RedhatEnterpriseLinux -> "REDHAT_ENTERPRISE_LINUX"
-        Suse -> "SUSE"
-        Ubuntu -> "UBUNTU"
-        Windows -> "WINDOWS"
+    toText (OperatingSystem' ci) = original ci
+
+-- | Represents an enum of /known/ $OperatingSystem.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum OperatingSystem where
+    toEnum i = case i of
+        0 -> AmazonLinux
+        1 -> Centos
+        2 -> RedhatEnterpriseLinux
+        3 -> Suse
+        4 -> Ubuntu
+        5 -> Windows
+        _ -> (error . showText) $ "Unknown index for OperatingSystem: " <> toText i
+    fromEnum x = case x of
+        AmazonLinux -> 0
+        Centos -> 1
+        RedhatEnterpriseLinux -> 2
+        Suse -> 3
+        Ubuntu -> 4
+        Windows -> 5
+        OperatingSystem' name -> (error . showText) $ "Unknown OperatingSystem: " <> original name
+
+-- | Represents the bounds of /known/ $OperatingSystem.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded OperatingSystem where
+    minBound = AmazonLinux
+    maxBound = Windows
 
 instance Hashable     OperatingSystem
 instance NFData       OperatingSystem

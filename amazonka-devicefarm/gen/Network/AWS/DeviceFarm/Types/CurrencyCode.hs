@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,23 +16,51 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.DeviceFarm.Types.CurrencyCode where
+module Network.AWS.DeviceFarm.Types.CurrencyCode (
+  CurrencyCode (
+    ..
+    , Usd
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data CurrencyCode = Usd
-                      deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                Typeable, Generic)
+
+data CurrencyCode = CurrencyCode' (CI Text)
+                      deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                Generic)
+
+pattern Usd :: CurrencyCode
+pattern Usd = CurrencyCode' "USD"
+
+{-# COMPLETE
+  Usd,
+  CurrencyCode' #-}
 
 instance FromText CurrencyCode where
-    parser = takeLowerText >>= \case
-        "usd" -> pure Usd
-        e -> fromTextError $ "Failure parsing CurrencyCode from value: '" <> e
-           <> "'. Accepted values: usd"
+    parser = (CurrencyCode' . mk) <$> takeText
 
 instance ToText CurrencyCode where
-    toText = \case
-        Usd -> "USD"
+    toText (CurrencyCode' ci) = original ci
+
+-- | Represents an enum of /known/ $CurrencyCode.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum CurrencyCode where
+    toEnum i = case i of
+        0 -> Usd
+        _ -> (error . showText) $ "Unknown index for CurrencyCode: " <> toText i
+    fromEnum x = case x of
+        Usd -> 0
+        CurrencyCode' name -> (error . showText) $ "Unknown CurrencyCode: " <> original name
+
+-- | Represents the bounds of /known/ $CurrencyCode.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded CurrencyCode where
+    minBound = Usd
+    maxBound = Usd
 
 instance Hashable     CurrencyCode
 instance NFData       CurrencyCode

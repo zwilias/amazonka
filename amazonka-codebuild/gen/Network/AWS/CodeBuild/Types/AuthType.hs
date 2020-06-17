@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,29 +16,65 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.CodeBuild.Types.AuthType where
+module Network.AWS.CodeBuild.Types.AuthType (
+  AuthType (
+    ..
+    , ATBasicAuth
+    , ATOauth
+    , ATPersonalAccessToken
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data AuthType = ATBasicAuth
-              | ATOauth
-              | ATPersonalAccessToken
-                  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                            Typeable, Generic)
+
+data AuthType = AuthType' (CI Text)
+                  deriving (Eq, Ord, Read, Show, Data, Typeable,
+                            Generic)
+
+pattern ATBasicAuth :: AuthType
+pattern ATBasicAuth = AuthType' "BASIC_AUTH"
+
+pattern ATOauth :: AuthType
+pattern ATOauth = AuthType' "OAUTH"
+
+pattern ATPersonalAccessToken :: AuthType
+pattern ATPersonalAccessToken = AuthType' "PERSONAL_ACCESS_TOKEN"
+
+{-# COMPLETE
+  ATBasicAuth,
+  ATOauth,
+  ATPersonalAccessToken,
+  AuthType' #-}
 
 instance FromText AuthType where
-    parser = takeLowerText >>= \case
-        "basic_auth" -> pure ATBasicAuth
-        "oauth" -> pure ATOauth
-        "personal_access_token" -> pure ATPersonalAccessToken
-        e -> fromTextError $ "Failure parsing AuthType from value: '" <> e
-           <> "'. Accepted values: basic_auth, oauth, personal_access_token"
+    parser = (AuthType' . mk) <$> takeText
 
 instance ToText AuthType where
-    toText = \case
-        ATBasicAuth -> "BASIC_AUTH"
-        ATOauth -> "OAUTH"
-        ATPersonalAccessToken -> "PERSONAL_ACCESS_TOKEN"
+    toText (AuthType' ci) = original ci
+
+-- | Represents an enum of /known/ $AuthType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum AuthType where
+    toEnum i = case i of
+        0 -> ATBasicAuth
+        1 -> ATOauth
+        2 -> ATPersonalAccessToken
+        _ -> (error . showText) $ "Unknown index for AuthType: " <> toText i
+    fromEnum x = case x of
+        ATBasicAuth -> 0
+        ATOauth -> 1
+        ATPersonalAccessToken -> 2
+        AuthType' name -> (error . showText) $ "Unknown AuthType: " <> original name
+
+-- | Represents the bounds of /known/ $AuthType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded AuthType where
+    minBound = ATBasicAuth
+    maxBound = ATPersonalAccessToken
 
 instance Hashable     AuthType
 instance NFData       AuthType

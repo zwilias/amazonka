@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,23 +16,51 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.WAFRegional.Types.RateKey where
+module Network.AWS.WAFRegional.Types.RateKey (
+  RateKey (
+    ..
+    , IP
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data RateKey = IP
-                 deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                           Typeable, Generic)
+
+data RateKey = RateKey' (CI Text)
+                 deriving (Eq, Ord, Read, Show, Data, Typeable,
+                           Generic)
+
+pattern IP :: RateKey
+pattern IP = RateKey' "IP"
+
+{-# COMPLETE
+  IP,
+  RateKey' #-}
 
 instance FromText RateKey where
-    parser = takeLowerText >>= \case
-        "ip" -> pure IP
-        e -> fromTextError $ "Failure parsing RateKey from value: '" <> e
-           <> "'. Accepted values: ip"
+    parser = (RateKey' . mk) <$> takeText
 
 instance ToText RateKey where
-    toText = \case
-        IP -> "IP"
+    toText (RateKey' ci) = original ci
+
+-- | Represents an enum of /known/ $RateKey.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum RateKey where
+    toEnum i = case i of
+        0 -> IP
+        _ -> (error . showText) $ "Unknown index for RateKey: " <> toText i
+    fromEnum x = case x of
+        IP -> 0
+        RateKey' name -> (error . showText) $ "Unknown RateKey: " <> original name
+
+-- | Represents the bounds of /known/ $RateKey.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded RateKey where
+    minBound = IP
+    maxBound = IP
 
 instance Hashable     RateKey
 instance NFData       RateKey

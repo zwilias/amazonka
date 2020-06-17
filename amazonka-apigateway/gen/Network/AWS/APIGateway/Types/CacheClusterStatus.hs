@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,38 +16,83 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.APIGateway.Types.CacheClusterStatus where
+module Network.AWS.APIGateway.Types.CacheClusterStatus (
+  CacheClusterStatus (
+    ..
+    , Available
+    , CreateInProgress
+    , DeleteInProgress
+    , FlushInProgress
+    , NotAvailable
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
+
 -- | Returns the status of the __CacheCluster__ .
 --
 --
-data CacheClusterStatus = Available
-                        | CreateInProgress
-                        | DeleteInProgress
-                        | FlushInProgress
-                        | NotAvailable
-                            deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                      Typeable, Generic)
+data CacheClusterStatus = CacheClusterStatus' (CI
+                                                 Text)
+                            deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                      Generic)
+
+pattern Available :: CacheClusterStatus
+pattern Available = CacheClusterStatus' "AVAILABLE"
+
+pattern CreateInProgress :: CacheClusterStatus
+pattern CreateInProgress = CacheClusterStatus' "CREATE_IN_PROGRESS"
+
+pattern DeleteInProgress :: CacheClusterStatus
+pattern DeleteInProgress = CacheClusterStatus' "DELETE_IN_PROGRESS"
+
+pattern FlushInProgress :: CacheClusterStatus
+pattern FlushInProgress = CacheClusterStatus' "FLUSH_IN_PROGRESS"
+
+pattern NotAvailable :: CacheClusterStatus
+pattern NotAvailable = CacheClusterStatus' "NOT_AVAILABLE"
+
+{-# COMPLETE
+  Available,
+  CreateInProgress,
+  DeleteInProgress,
+  FlushInProgress,
+  NotAvailable,
+  CacheClusterStatus' #-}
 
 instance FromText CacheClusterStatus where
-    parser = takeLowerText >>= \case
-        "available" -> pure Available
-        "create_in_progress" -> pure CreateInProgress
-        "delete_in_progress" -> pure DeleteInProgress
-        "flush_in_progress" -> pure FlushInProgress
-        "not_available" -> pure NotAvailable
-        e -> fromTextError $ "Failure parsing CacheClusterStatus from value: '" <> e
-           <> "'. Accepted values: available, create_in_progress, delete_in_progress, flush_in_progress, not_available"
+    parser = (CacheClusterStatus' . mk) <$> takeText
 
 instance ToText CacheClusterStatus where
-    toText = \case
-        Available -> "AVAILABLE"
-        CreateInProgress -> "CREATE_IN_PROGRESS"
-        DeleteInProgress -> "DELETE_IN_PROGRESS"
-        FlushInProgress -> "FLUSH_IN_PROGRESS"
-        NotAvailable -> "NOT_AVAILABLE"
+    toText (CacheClusterStatus' ci) = original ci
+
+-- | Represents an enum of /known/ $CacheClusterStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum CacheClusterStatus where
+    toEnum i = case i of
+        0 -> Available
+        1 -> CreateInProgress
+        2 -> DeleteInProgress
+        3 -> FlushInProgress
+        4 -> NotAvailable
+        _ -> (error . showText) $ "Unknown index for CacheClusterStatus: " <> toText i
+    fromEnum x = case x of
+        Available -> 0
+        CreateInProgress -> 1
+        DeleteInProgress -> 2
+        FlushInProgress -> 3
+        NotAvailable -> 4
+        CacheClusterStatus' name -> (error . showText) $ "Unknown CacheClusterStatus: " <> original name
+
+-- | Represents the bounds of /known/ $CacheClusterStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded CacheClusterStatus where
+    minBound = Available
+    maxBound = NotAvailable
 
 instance Hashable     CacheClusterStatus
 instance NFData       CacheClusterStatus

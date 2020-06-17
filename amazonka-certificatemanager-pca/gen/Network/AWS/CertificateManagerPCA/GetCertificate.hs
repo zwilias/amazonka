@@ -40,6 +40,7 @@ module Network.AWS.CertificateManagerPCA.GetCertificate
     ) where
 
 import Network.AWS.CertificateManagerPCA.Types
+import Network.AWS.CertificateManagerPCA.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request

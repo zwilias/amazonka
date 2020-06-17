@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,10 +16,18 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.OpsWorksCM.Types.NodeAssociationStatus where
+module Network.AWS.OpsWorksCM.Types.NodeAssociationStatus (
+  NodeAssociationStatus (
+    ..
+    , NASFailed
+    , NASInProgress
+    , NASSuccess
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
+
 -- | The status of the association or disassociation request. 
 --
 --
@@ -32,25 +41,54 @@ import Network.AWS.Prelude
 --
 --
 --
-data NodeAssociationStatus = NASFailed
-                           | NASInProgress
-                           | NASSuccess
-                               deriving (Eq, Ord, Read, Show, Enum, Bounded,
-                                         Data, Typeable, Generic)
+data NodeAssociationStatus = NodeAssociationStatus' (CI
+                                                       Text)
+                               deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                         Generic)
+
+pattern NASFailed :: NodeAssociationStatus
+pattern NASFailed = NodeAssociationStatus' "FAILED"
+
+pattern NASInProgress :: NodeAssociationStatus
+pattern NASInProgress = NodeAssociationStatus' "IN_PROGRESS"
+
+pattern NASSuccess :: NodeAssociationStatus
+pattern NASSuccess = NodeAssociationStatus' "SUCCESS"
+
+{-# COMPLETE
+  NASFailed,
+  NASInProgress,
+  NASSuccess,
+  NodeAssociationStatus' #-}
 
 instance FromText NodeAssociationStatus where
-    parser = takeLowerText >>= \case
-        "failed" -> pure NASFailed
-        "in_progress" -> pure NASInProgress
-        "success" -> pure NASSuccess
-        e -> fromTextError $ "Failure parsing NodeAssociationStatus from value: '" <> e
-           <> "'. Accepted values: failed, in_progress, success"
+    parser = (NodeAssociationStatus' . mk) <$> takeText
 
 instance ToText NodeAssociationStatus where
-    toText = \case
-        NASFailed -> "FAILED"
-        NASInProgress -> "IN_PROGRESS"
-        NASSuccess -> "SUCCESS"
+    toText (NodeAssociationStatus' ci) = original ci
+
+-- | Represents an enum of /known/ $NodeAssociationStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum NodeAssociationStatus where
+    toEnum i = case i of
+        0 -> NASFailed
+        1 -> NASInProgress
+        2 -> NASSuccess
+        _ -> (error . showText) $ "Unknown index for NodeAssociationStatus: " <> toText i
+    fromEnum x = case x of
+        NASFailed -> 0
+        NASInProgress -> 1
+        NASSuccess -> 2
+        NodeAssociationStatus' name -> (error . showText) $ "Unknown NodeAssociationStatus: " <> original name
+
+-- | Represents the bounds of /known/ $NodeAssociationStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded NodeAssociationStatus where
+    minBound = NASFailed
+    maxBound = NASSuccess
 
 instance Hashable     NodeAssociationStatus
 instance NFData       NodeAssociationStatus

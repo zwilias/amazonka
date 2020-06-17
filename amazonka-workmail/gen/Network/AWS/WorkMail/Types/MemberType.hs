@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,58 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.WorkMail.Types.MemberType where
+module Network.AWS.WorkMail.Types.MemberType (
+  MemberType (
+    ..
+    , Group
+    , User
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data MemberType = Group
-                | User
-                    deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                              Typeable, Generic)
+
+data MemberType = MemberType' (CI Text)
+                    deriving (Eq, Ord, Read, Show, Data, Typeable,
+                              Generic)
+
+pattern Group :: MemberType
+pattern Group = MemberType' "GROUP"
+
+pattern User :: MemberType
+pattern User = MemberType' "USER"
+
+{-# COMPLETE
+  Group,
+  User,
+  MemberType' #-}
 
 instance FromText MemberType where
-    parser = takeLowerText >>= \case
-        "group" -> pure Group
-        "user" -> pure User
-        e -> fromTextError $ "Failure parsing MemberType from value: '" <> e
-           <> "'. Accepted values: group, user"
+    parser = (MemberType' . mk) <$> takeText
 
 instance ToText MemberType where
-    toText = \case
-        Group -> "GROUP"
-        User -> "USER"
+    toText (MemberType' ci) = original ci
+
+-- | Represents an enum of /known/ $MemberType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum MemberType where
+    toEnum i = case i of
+        0 -> Group
+        1 -> User
+        _ -> (error . showText) $ "Unknown index for MemberType: " <> toText i
+    fromEnum x = case x of
+        Group -> 0
+        User -> 1
+        MemberType' name -> (error . showText) $ "Unknown MemberType: " <> original name
+
+-- | Represents the bounds of /known/ $MemberType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded MemberType where
+    minBound = Group
+    maxBound = User
 
 instance Hashable     MemberType
 instance NFData       MemberType

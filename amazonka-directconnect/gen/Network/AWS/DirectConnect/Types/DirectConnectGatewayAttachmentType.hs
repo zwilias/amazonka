@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,27 +16,59 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.DirectConnect.Types.DirectConnectGatewayAttachmentType where
+module Network.AWS.DirectConnect.Types.DirectConnectGatewayAttachmentType (
+  DirectConnectGatewayAttachmentType (
+    ..
+    , PrivateVirtualInterface
+    , TransitVirtualInterface
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data DirectConnectGatewayAttachmentType = PrivateVirtualInterface
-                                        | TransitVirtualInterface
-                                            deriving (Eq, Ord, Read, Show, Enum,
-                                                      Bounded, Data, Typeable,
-                                                      Generic)
+
+data DirectConnectGatewayAttachmentType = DirectConnectGatewayAttachmentType' (CI
+                                                                                 Text)
+                                            deriving (Eq, Ord, Read, Show, Data,
+                                                      Typeable, Generic)
+
+pattern PrivateVirtualInterface :: DirectConnectGatewayAttachmentType
+pattern PrivateVirtualInterface = DirectConnectGatewayAttachmentType' "PrivateVirtualInterface"
+
+pattern TransitVirtualInterface :: DirectConnectGatewayAttachmentType
+pattern TransitVirtualInterface = DirectConnectGatewayAttachmentType' "TransitVirtualInterface"
+
+{-# COMPLETE
+  PrivateVirtualInterface,
+  TransitVirtualInterface,
+  DirectConnectGatewayAttachmentType' #-}
 
 instance FromText DirectConnectGatewayAttachmentType where
-    parser = takeLowerText >>= \case
-        "privatevirtualinterface" -> pure PrivateVirtualInterface
-        "transitvirtualinterface" -> pure TransitVirtualInterface
-        e -> fromTextError $ "Failure parsing DirectConnectGatewayAttachmentType from value: '" <> e
-           <> "'. Accepted values: privatevirtualinterface, transitvirtualinterface"
+    parser = (DirectConnectGatewayAttachmentType' . mk) <$> takeText
 
 instance ToText DirectConnectGatewayAttachmentType where
-    toText = \case
-        PrivateVirtualInterface -> "PrivateVirtualInterface"
-        TransitVirtualInterface -> "TransitVirtualInterface"
+    toText (DirectConnectGatewayAttachmentType' ci) = original ci
+
+-- | Represents an enum of /known/ $DirectConnectGatewayAttachmentType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum DirectConnectGatewayAttachmentType where
+    toEnum i = case i of
+        0 -> PrivateVirtualInterface
+        1 -> TransitVirtualInterface
+        _ -> (error . showText) $ "Unknown index for DirectConnectGatewayAttachmentType: " <> toText i
+    fromEnum x = case x of
+        PrivateVirtualInterface -> 0
+        TransitVirtualInterface -> 1
+        DirectConnectGatewayAttachmentType' name -> (error . showText) $ "Unknown DirectConnectGatewayAttachmentType: " <> original name
+
+-- | Represents the bounds of /known/ $DirectConnectGatewayAttachmentType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded DirectConnectGatewayAttachmentType where
+    minBound = PrivateVirtualInterface
+    maxBound = TransitVirtualInterface
 
 instance Hashable     DirectConnectGatewayAttachmentType
 instance NFData       DirectConnectGatewayAttachmentType

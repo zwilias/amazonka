@@ -82,6 +82,7 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.WAFRegional.Types
+import Network.AWS.WAFRegional.Types.Product
 
 -- | /See:/ 'updateIPSet' smart constructor.
 data UpdateIPSet = UpdateIPSet'{_uisIPSetId :: !Text,

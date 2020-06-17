@@ -207,6 +207,7 @@ library
         , Network.AWS.CognitoIdentityProvider.Types.OAuthFlowType
         , Network.AWS.CognitoIdentityProvider.Types.PasswordPolicyType
         , Network.AWS.CognitoIdentityProvider.Types.PreventUserExistenceErrorTypes
+        , Network.AWS.CognitoIdentityProvider.Types.Product
         , Network.AWS.CognitoIdentityProvider.Types.ProviderDescription
         , Network.AWS.CognitoIdentityProvider.Types.ProviderUserIdentifierType
         , Network.AWS.CognitoIdentityProvider.Types.RecoveryOptionNameType
@@ -247,6 +248,7 @@ library
     build-depends:
           amazonka-core == 1.6.1.*
         , base          >= 4.7     && < 5
+        , case-insensitive
 
 test-suite amazonka-cognito-idp-test
     type:              exitcode-stdio-1.0
@@ -270,6 +272,7 @@ test-suite amazonka-cognito-idp-test
         , amazonka-cognito-idp
         , base
         , bytestring
+        , case-insensitive
         , tasty
         , tasty-hunit
         , text

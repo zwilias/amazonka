@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,59 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.EMR.Types.CancelStepsRequestStatus where
+module Network.AWS.EMR.Types.CancelStepsRequestStatus (
+  CancelStepsRequestStatus (
+    ..
+    , CSRSFailed
+    , CSRSSubmitted
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data CancelStepsRequestStatus = CSRSFailed
-                              | CSRSSubmitted
-                                  deriving (Eq, Ord, Read, Show, Enum, Bounded,
-                                            Data, Typeable, Generic)
+
+data CancelStepsRequestStatus = CancelStepsRequestStatus' (CI
+                                                             Text)
+                                  deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                            Generic)
+
+pattern CSRSFailed :: CancelStepsRequestStatus
+pattern CSRSFailed = CancelStepsRequestStatus' "FAILED"
+
+pattern CSRSSubmitted :: CancelStepsRequestStatus
+pattern CSRSSubmitted = CancelStepsRequestStatus' "SUBMITTED"
+
+{-# COMPLETE
+  CSRSFailed,
+  CSRSSubmitted,
+  CancelStepsRequestStatus' #-}
 
 instance FromText CancelStepsRequestStatus where
-    parser = takeLowerText >>= \case
-        "failed" -> pure CSRSFailed
-        "submitted" -> pure CSRSSubmitted
-        e -> fromTextError $ "Failure parsing CancelStepsRequestStatus from value: '" <> e
-           <> "'. Accepted values: failed, submitted"
+    parser = (CancelStepsRequestStatus' . mk) <$> takeText
 
 instance ToText CancelStepsRequestStatus where
-    toText = \case
-        CSRSFailed -> "FAILED"
-        CSRSSubmitted -> "SUBMITTED"
+    toText (CancelStepsRequestStatus' ci) = original ci
+
+-- | Represents an enum of /known/ $CancelStepsRequestStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum CancelStepsRequestStatus where
+    toEnum i = case i of
+        0 -> CSRSFailed
+        1 -> CSRSSubmitted
+        _ -> (error . showText) $ "Unknown index for CancelStepsRequestStatus: " <> toText i
+    fromEnum x = case x of
+        CSRSFailed -> 0
+        CSRSSubmitted -> 1
+        CancelStepsRequestStatus' name -> (error . showText) $ "Unknown CancelStepsRequestStatus: " <> original name
+
+-- | Represents the bounds of /known/ $CancelStepsRequestStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded CancelStepsRequestStatus where
+    minBound = CSRSFailed
+    maxBound = CSRSSubmitted
 
 instance Hashable     CancelStepsRequestStatus
 instance NFData       CancelStepsRequestStatus

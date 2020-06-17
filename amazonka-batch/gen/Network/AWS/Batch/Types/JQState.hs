@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,58 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.Batch.Types.JQState where
+module Network.AWS.Batch.Types.JQState (
+  JQState (
+    ..
+    , JQSDisabled
+    , JQSEnabled
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data JQState = JQSDisabled
-             | JQSEnabled
-                 deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                           Typeable, Generic)
+
+data JQState = JQState' (CI Text)
+                 deriving (Eq, Ord, Read, Show, Data, Typeable,
+                           Generic)
+
+pattern JQSDisabled :: JQState
+pattern JQSDisabled = JQState' "DISABLED"
+
+pattern JQSEnabled :: JQState
+pattern JQSEnabled = JQState' "ENABLED"
+
+{-# COMPLETE
+  JQSDisabled,
+  JQSEnabled,
+  JQState' #-}
 
 instance FromText JQState where
-    parser = takeLowerText >>= \case
-        "disabled" -> pure JQSDisabled
-        "enabled" -> pure JQSEnabled
-        e -> fromTextError $ "Failure parsing JQState from value: '" <> e
-           <> "'. Accepted values: disabled, enabled"
+    parser = (JQState' . mk) <$> takeText
 
 instance ToText JQState where
-    toText = \case
-        JQSDisabled -> "DISABLED"
-        JQSEnabled -> "ENABLED"
+    toText (JQState' ci) = original ci
+
+-- | Represents an enum of /known/ $JQState.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum JQState where
+    toEnum i = case i of
+        0 -> JQSDisabled
+        1 -> JQSEnabled
+        _ -> (error . showText) $ "Unknown index for JQState: " <> toText i
+    fromEnum x = case x of
+        JQSDisabled -> 0
+        JQSEnabled -> 1
+        JQState' name -> (error . showText) $ "Unknown JQState: " <> original name
+
+-- | Represents the bounds of /known/ $JQState.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded JQState where
+    minBound = JQSDisabled
+    maxBound = JQSEnabled
 
 instance Hashable     JQState
 instance NFData       JQState

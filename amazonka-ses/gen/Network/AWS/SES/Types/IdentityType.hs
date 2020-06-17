@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,58 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.SES.Types.IdentityType where
+module Network.AWS.SES.Types.IdentityType (
+  IdentityType (
+    ..
+    , Domain
+    , EmailAddress
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data IdentityType = Domain
-                  | EmailAddress
-                      deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                Typeable, Generic)
+
+data IdentityType = IdentityType' (CI Text)
+                      deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                Generic)
+
+pattern Domain :: IdentityType
+pattern Domain = IdentityType' "Domain"
+
+pattern EmailAddress :: IdentityType
+pattern EmailAddress = IdentityType' "EmailAddress"
+
+{-# COMPLETE
+  Domain,
+  EmailAddress,
+  IdentityType' #-}
 
 instance FromText IdentityType where
-    parser = takeLowerText >>= \case
-        "domain" -> pure Domain
-        "emailaddress" -> pure EmailAddress
-        e -> fromTextError $ "Failure parsing IdentityType from value: '" <> e
-           <> "'. Accepted values: domain, emailaddress"
+    parser = (IdentityType' . mk) <$> takeText
 
 instance ToText IdentityType where
-    toText = \case
-        Domain -> "Domain"
-        EmailAddress -> "EmailAddress"
+    toText (IdentityType' ci) = original ci
+
+-- | Represents an enum of /known/ $IdentityType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum IdentityType where
+    toEnum i = case i of
+        0 -> Domain
+        1 -> EmailAddress
+        _ -> (error . showText) $ "Unknown index for IdentityType: " <> toText i
+    fromEnum x = case x of
+        Domain -> 0
+        EmailAddress -> 1
+        IdentityType' name -> (error . showText) $ "Unknown IdentityType: " <> original name
+
+-- | Represents the bounds of /known/ $IdentityType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded IdentityType where
+    minBound = Domain
+    maxBound = EmailAddress
 
 instance Hashable     IdentityType
 instance NFData       IdentityType

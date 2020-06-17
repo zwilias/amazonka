@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,29 +16,65 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.Transcribe.Types.VocabularyState where
+module Network.AWS.Transcribe.Types.VocabularyState (
+  VocabularyState (
+    ..
+    , Failed
+    , Pending
+    , Ready
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data VocabularyState = Failed
-                     | Pending
-                     | Ready
-                         deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                   Typeable, Generic)
+
+data VocabularyState = VocabularyState' (CI Text)
+                         deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                   Generic)
+
+pattern Failed :: VocabularyState
+pattern Failed = VocabularyState' "FAILED"
+
+pattern Pending :: VocabularyState
+pattern Pending = VocabularyState' "PENDING"
+
+pattern Ready :: VocabularyState
+pattern Ready = VocabularyState' "READY"
+
+{-# COMPLETE
+  Failed,
+  Pending,
+  Ready,
+  VocabularyState' #-}
 
 instance FromText VocabularyState where
-    parser = takeLowerText >>= \case
-        "failed" -> pure Failed
-        "pending" -> pure Pending
-        "ready" -> pure Ready
-        e -> fromTextError $ "Failure parsing VocabularyState from value: '" <> e
-           <> "'. Accepted values: failed, pending, ready"
+    parser = (VocabularyState' . mk) <$> takeText
 
 instance ToText VocabularyState where
-    toText = \case
-        Failed -> "FAILED"
-        Pending -> "PENDING"
-        Ready -> "READY"
+    toText (VocabularyState' ci) = original ci
+
+-- | Represents an enum of /known/ $VocabularyState.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum VocabularyState where
+    toEnum i = case i of
+        0 -> Failed
+        1 -> Pending
+        2 -> Ready
+        _ -> (error . showText) $ "Unknown index for VocabularyState: " <> toText i
+    fromEnum x = case x of
+        Failed -> 0
+        Pending -> 1
+        Ready -> 2
+        VocabularyState' name -> (error . showText) $ "Unknown VocabularyState: " <> original name
+
+-- | Represents the bounds of /known/ $VocabularyState.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded VocabularyState where
+    minBound = Failed
+    maxBound = Ready
 
 instance Hashable     VocabularyState
 instance NFData       VocabularyState

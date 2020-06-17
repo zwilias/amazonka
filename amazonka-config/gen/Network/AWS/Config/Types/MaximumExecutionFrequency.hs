@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,35 +16,80 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.Config.Types.MaximumExecutionFrequency where
+module Network.AWS.Config.Types.MaximumExecutionFrequency (
+  MaximumExecutionFrequency (
+    ..
+    , OneHour
+    , SixHours
+    , ThreeHours
+    , TwelveHours
+    , TwentyFourHours
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data MaximumExecutionFrequency = OneHour
-                               | SixHours
-                               | ThreeHours
-                               | TwelveHours
-                               | TwentyFourHours
-                                   deriving (Eq, Ord, Read, Show, Enum, Bounded,
-                                             Data, Typeable, Generic)
+
+data MaximumExecutionFrequency = MaximumExecutionFrequency' (CI
+                                                               Text)
+                                   deriving (Eq, Ord, Read, Show, Data,
+                                             Typeable, Generic)
+
+pattern OneHour :: MaximumExecutionFrequency
+pattern OneHour = MaximumExecutionFrequency' "One_Hour"
+
+pattern SixHours :: MaximumExecutionFrequency
+pattern SixHours = MaximumExecutionFrequency' "Six_Hours"
+
+pattern ThreeHours :: MaximumExecutionFrequency
+pattern ThreeHours = MaximumExecutionFrequency' "Three_Hours"
+
+pattern TwelveHours :: MaximumExecutionFrequency
+pattern TwelveHours = MaximumExecutionFrequency' "Twelve_Hours"
+
+pattern TwentyFourHours :: MaximumExecutionFrequency
+pattern TwentyFourHours = MaximumExecutionFrequency' "TwentyFour_Hours"
+
+{-# COMPLETE
+  OneHour,
+  SixHours,
+  ThreeHours,
+  TwelveHours,
+  TwentyFourHours,
+  MaximumExecutionFrequency' #-}
 
 instance FromText MaximumExecutionFrequency where
-    parser = takeLowerText >>= \case
-        "one_hour" -> pure OneHour
-        "six_hours" -> pure SixHours
-        "three_hours" -> pure ThreeHours
-        "twelve_hours" -> pure TwelveHours
-        "twentyfour_hours" -> pure TwentyFourHours
-        e -> fromTextError $ "Failure parsing MaximumExecutionFrequency from value: '" <> e
-           <> "'. Accepted values: one_hour, six_hours, three_hours, twelve_hours, twentyfour_hours"
+    parser = (MaximumExecutionFrequency' . mk) <$> takeText
 
 instance ToText MaximumExecutionFrequency where
-    toText = \case
-        OneHour -> "One_Hour"
-        SixHours -> "Six_Hours"
-        ThreeHours -> "Three_Hours"
-        TwelveHours -> "Twelve_Hours"
-        TwentyFourHours -> "TwentyFour_Hours"
+    toText (MaximumExecutionFrequency' ci) = original ci
+
+-- | Represents an enum of /known/ $MaximumExecutionFrequency.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum MaximumExecutionFrequency where
+    toEnum i = case i of
+        0 -> OneHour
+        1 -> SixHours
+        2 -> ThreeHours
+        3 -> TwelveHours
+        4 -> TwentyFourHours
+        _ -> (error . showText) $ "Unknown index for MaximumExecutionFrequency: " <> toText i
+    fromEnum x = case x of
+        OneHour -> 0
+        SixHours -> 1
+        ThreeHours -> 2
+        TwelveHours -> 3
+        TwentyFourHours -> 4
+        MaximumExecutionFrequency' name -> (error . showText) $ "Unknown MaximumExecutionFrequency: " <> original name
+
+-- | Represents the bounds of /known/ $MaximumExecutionFrequency.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded MaximumExecutionFrequency where
+    minBound = OneHour
+    maxBound = TwentyFourHours
 
 instance Hashable     MaximumExecutionFrequency
 instance NFData       MaximumExecutionFrequency

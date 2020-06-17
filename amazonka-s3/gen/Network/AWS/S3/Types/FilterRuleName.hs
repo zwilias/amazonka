@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,27 +16,59 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.S3.Types.FilterRuleName where
+module Network.AWS.S3.Types.FilterRuleName (
+  FilterRuleName (
+    ..
+    , Prefix
+    , Suffix
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
 import Network.AWS.S3.Internal
-  
-data FilterRuleName = Prefix
-                    | Suffix
-                        deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                  Typeable, Generic)
+
+data FilterRuleName = FilterRuleName' (CI Text)
+                        deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                  Generic)
+
+pattern Prefix :: FilterRuleName
+pattern Prefix = FilterRuleName' "prefix"
+
+pattern Suffix :: FilterRuleName
+pattern Suffix = FilterRuleName' "suffix"
+
+{-# COMPLETE
+  Prefix,
+  Suffix,
+  FilterRuleName' #-}
 
 instance FromText FilterRuleName where
-    parser = takeLowerText >>= \case
-        "prefix" -> pure Prefix
-        "suffix" -> pure Suffix
-        e -> fromTextError $ "Failure parsing FilterRuleName from value: '" <> e
-           <> "'. Accepted values: prefix, suffix"
+    parser = (FilterRuleName' . mk) <$> takeText
 
 instance ToText FilterRuleName where
-    toText = \case
-        Prefix -> "prefix"
-        Suffix -> "suffix"
+    toText (FilterRuleName' ci) = original ci
+
+-- | Represents an enum of /known/ $FilterRuleName.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum FilterRuleName where
+    toEnum i = case i of
+        0 -> Prefix
+        1 -> Suffix
+        _ -> (error . showText) $ "Unknown index for FilterRuleName: " <> toText i
+    fromEnum x = case x of
+        Prefix -> 0
+        Suffix -> 1
+        FilterRuleName' name -> (error . showText) $ "Unknown FilterRuleName: " <> original name
+
+-- | Represents the bounds of /known/ $FilterRuleName.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded FilterRuleName where
+    minBound = Prefix
+    maxBound = Suffix
 
 instance Hashable     FilterRuleName
 instance NFData       FilterRuleName

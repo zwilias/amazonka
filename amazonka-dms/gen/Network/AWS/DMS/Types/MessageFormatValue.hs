@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,59 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.DMS.Types.MessageFormatValue where
+module Network.AWS.DMS.Types.MessageFormatValue (
+  MessageFormatValue (
+    ..
+    , JSON
+    , JSONUnformatted
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data MessageFormatValue = JSON
-                        | JSONUnformatted
-                            deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                      Typeable, Generic)
+
+data MessageFormatValue = MessageFormatValue' (CI
+                                                 Text)
+                            deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                      Generic)
+
+pattern JSON :: MessageFormatValue
+pattern JSON = MessageFormatValue' "json"
+
+pattern JSONUnformatted :: MessageFormatValue
+pattern JSONUnformatted = MessageFormatValue' "json-unformatted"
+
+{-# COMPLETE
+  JSON,
+  JSONUnformatted,
+  MessageFormatValue' #-}
 
 instance FromText MessageFormatValue where
-    parser = takeLowerText >>= \case
-        "json" -> pure JSON
-        "json-unformatted" -> pure JSONUnformatted
-        e -> fromTextError $ "Failure parsing MessageFormatValue from value: '" <> e
-           <> "'. Accepted values: json, json-unformatted"
+    parser = (MessageFormatValue' . mk) <$> takeText
 
 instance ToText MessageFormatValue where
-    toText = \case
-        JSON -> "json"
-        JSONUnformatted -> "json-unformatted"
+    toText (MessageFormatValue' ci) = original ci
+
+-- | Represents an enum of /known/ $MessageFormatValue.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum MessageFormatValue where
+    toEnum i = case i of
+        0 -> JSON
+        1 -> JSONUnformatted
+        _ -> (error . showText) $ "Unknown index for MessageFormatValue: " <> toText i
+    fromEnum x = case x of
+        JSON -> 0
+        JSONUnformatted -> 1
+        MessageFormatValue' name -> (error . showText) $ "Unknown MessageFormatValue: " <> original name
+
+-- | Represents the bounds of /known/ $MessageFormatValue.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded MessageFormatValue where
+    minBound = JSON
+    maxBound = JSONUnformatted
 
 instance Hashable     MessageFormatValue
 instance NFData       MessageFormatValue

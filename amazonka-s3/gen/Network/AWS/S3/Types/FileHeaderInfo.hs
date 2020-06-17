@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,30 +16,66 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.S3.Types.FileHeaderInfo where
+module Network.AWS.S3.Types.FileHeaderInfo (
+  FileHeaderInfo (
+    ..
+    , Ignore
+    , None
+    , Use
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
 import Network.AWS.S3.Internal
-  
-data FileHeaderInfo = Ignore
-                    | None
-                    | Use
-                        deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                  Typeable, Generic)
+
+data FileHeaderInfo = FileHeaderInfo' (CI Text)
+                        deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                  Generic)
+
+pattern Ignore :: FileHeaderInfo
+pattern Ignore = FileHeaderInfo' "IGNORE"
+
+pattern None :: FileHeaderInfo
+pattern None = FileHeaderInfo' "NONE"
+
+pattern Use :: FileHeaderInfo
+pattern Use = FileHeaderInfo' "USE"
+
+{-# COMPLETE
+  Ignore,
+  None,
+  Use,
+  FileHeaderInfo' #-}
 
 instance FromText FileHeaderInfo where
-    parser = takeLowerText >>= \case
-        "ignore" -> pure Ignore
-        "none" -> pure None
-        "use" -> pure Use
-        e -> fromTextError $ "Failure parsing FileHeaderInfo from value: '" <> e
-           <> "'. Accepted values: ignore, none, use"
+    parser = (FileHeaderInfo' . mk) <$> takeText
 
 instance ToText FileHeaderInfo where
-    toText = \case
-        Ignore -> "IGNORE"
-        None -> "NONE"
-        Use -> "USE"
+    toText (FileHeaderInfo' ci) = original ci
+
+-- | Represents an enum of /known/ $FileHeaderInfo.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum FileHeaderInfo where
+    toEnum i = case i of
+        0 -> Ignore
+        1 -> None
+        2 -> Use
+        _ -> (error . showText) $ "Unknown index for FileHeaderInfo: " <> toText i
+    fromEnum x = case x of
+        Ignore -> 0
+        None -> 1
+        Use -> 2
+        FileHeaderInfo' name -> (error . showText) $ "Unknown FileHeaderInfo: " <> original name
+
+-- | Represents the bounds of /known/ $FileHeaderInfo.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded FileHeaderInfo where
+    minBound = Ignore
+    maxBound = Use
 
 instance Hashable     FileHeaderInfo
 instance NFData       FileHeaderInfo

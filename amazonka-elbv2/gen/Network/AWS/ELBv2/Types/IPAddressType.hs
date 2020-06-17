@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,58 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.ELBv2.Types.IPAddressType where
+module Network.AWS.ELBv2.Types.IPAddressType (
+  IPAddressType (
+    ..
+    , Dualstack
+    , IPV4
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data IPAddressType = Dualstack
-                   | IPV4
-                       deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                 Typeable, Generic)
+
+data IPAddressType = IPAddressType' (CI Text)
+                       deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                 Generic)
+
+pattern Dualstack :: IPAddressType
+pattern Dualstack = IPAddressType' "dualstack"
+
+pattern IPV4 :: IPAddressType
+pattern IPV4 = IPAddressType' "ipv4"
+
+{-# COMPLETE
+  Dualstack,
+  IPV4,
+  IPAddressType' #-}
 
 instance FromText IPAddressType where
-    parser = takeLowerText >>= \case
-        "dualstack" -> pure Dualstack
-        "ipv4" -> pure IPV4
-        e -> fromTextError $ "Failure parsing IPAddressType from value: '" <> e
-           <> "'. Accepted values: dualstack, ipv4"
+    parser = (IPAddressType' . mk) <$> takeText
 
 instance ToText IPAddressType where
-    toText = \case
-        Dualstack -> "dualstack"
-        IPV4 -> "ipv4"
+    toText (IPAddressType' ci) = original ci
+
+-- | Represents an enum of /known/ $IPAddressType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum IPAddressType where
+    toEnum i = case i of
+        0 -> Dualstack
+        1 -> IPV4
+        _ -> (error . showText) $ "Unknown index for IPAddressType: " <> toText i
+    fromEnum x = case x of
+        Dualstack -> 0
+        IPV4 -> 1
+        IPAddressType' name -> (error . showText) $ "Unknown IPAddressType: " <> original name
+
+-- | Represents the bounds of /known/ $IPAddressType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded IPAddressType where
+    minBound = Dualstack
+    maxBound = IPV4
 
 instance Hashable     IPAddressType
 instance NFData       IPAddressType

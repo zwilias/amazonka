@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,54 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.CostAndUsageReport.Types.SchemaElement where
+module Network.AWS.CostAndUsageReport.Types.SchemaElement (
+  SchemaElement (
+    ..
+    , Resources
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
+
 -- | Whether or not AWS includes resource IDs in the report. 
 --
 --
-data SchemaElement = Resources
-                       deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                 Typeable, Generic)
+data SchemaElement = SchemaElement' (CI Text)
+                       deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                 Generic)
+
+pattern Resources :: SchemaElement
+pattern Resources = SchemaElement' "RESOURCES"
+
+{-# COMPLETE
+  Resources,
+  SchemaElement' #-}
 
 instance FromText SchemaElement where
-    parser = takeLowerText >>= \case
-        "resources" -> pure Resources
-        e -> fromTextError $ "Failure parsing SchemaElement from value: '" <> e
-           <> "'. Accepted values: resources"
+    parser = (SchemaElement' . mk) <$> takeText
 
 instance ToText SchemaElement where
-    toText = \case
-        Resources -> "RESOURCES"
+    toText (SchemaElement' ci) = original ci
+
+-- | Represents an enum of /known/ $SchemaElement.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum SchemaElement where
+    toEnum i = case i of
+        0 -> Resources
+        _ -> (error . showText) $ "Unknown index for SchemaElement: " <> toText i
+    fromEnum x = case x of
+        Resources -> 0
+        SchemaElement' name -> (error . showText) $ "Unknown SchemaElement: " <> original name
+
+-- | Represents the bounds of /known/ $SchemaElement.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded SchemaElement where
+    minBound = Resources
+    maxBound = Resources
 
 instance Hashable     SchemaElement
 instance NFData       SchemaElement

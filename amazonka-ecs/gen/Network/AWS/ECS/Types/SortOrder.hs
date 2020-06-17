@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,58 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.ECS.Types.SortOrder where
+module Network.AWS.ECS.Types.SortOrder (
+  SortOrder (
+    ..
+    , Asc
+    , Desc
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data SortOrder = Asc
-               | Desc
-                   deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                             Typeable, Generic)
+
+data SortOrder = SortOrder' (CI Text)
+                   deriving (Eq, Ord, Read, Show, Data, Typeable,
+                             Generic)
+
+pattern Asc :: SortOrder
+pattern Asc = SortOrder' "ASC"
+
+pattern Desc :: SortOrder
+pattern Desc = SortOrder' "DESC"
+
+{-# COMPLETE
+  Asc,
+  Desc,
+  SortOrder' #-}
 
 instance FromText SortOrder where
-    parser = takeLowerText >>= \case
-        "asc" -> pure Asc
-        "desc" -> pure Desc
-        e -> fromTextError $ "Failure parsing SortOrder from value: '" <> e
-           <> "'. Accepted values: asc, desc"
+    parser = (SortOrder' . mk) <$> takeText
 
 instance ToText SortOrder where
-    toText = \case
-        Asc -> "ASC"
-        Desc -> "DESC"
+    toText (SortOrder' ci) = original ci
+
+-- | Represents an enum of /known/ $SortOrder.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum SortOrder where
+    toEnum i = case i of
+        0 -> Asc
+        1 -> Desc
+        _ -> (error . showText) $ "Unknown index for SortOrder: " <> toText i
+    fromEnum x = case x of
+        Asc -> 0
+        Desc -> 1
+        SortOrder' name -> (error . showText) $ "Unknown SortOrder: " <> original name
+
+-- | Represents the bounds of /known/ $SortOrder.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded SortOrder where
+    minBound = Asc
+    maxBound = Desc
 
 instance Hashable     SortOrder
 instance NFData       SortOrder

@@ -43,6 +43,7 @@ module Network.AWS.AlexaBusiness.CreateUser
     ) where
 
 import Network.AWS.AlexaBusiness.Types
+import Network.AWS.AlexaBusiness.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request

@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,58 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.IoT.Types.DynamoKeyType where
+module Network.AWS.IoT.Types.DynamoKeyType (
+  DynamoKeyType (
+    ..
+    , Number
+    , String
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data DynamoKeyType = Number
-                   | String
-                       deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                 Typeable, Generic)
+
+data DynamoKeyType = DynamoKeyType' (CI Text)
+                       deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                 Generic)
+
+pattern Number :: DynamoKeyType
+pattern Number = DynamoKeyType' "NUMBER"
+
+pattern String :: DynamoKeyType
+pattern String = DynamoKeyType' "STRING"
+
+{-# COMPLETE
+  Number,
+  String,
+  DynamoKeyType' #-}
 
 instance FromText DynamoKeyType where
-    parser = takeLowerText >>= \case
-        "number" -> pure Number
-        "string" -> pure String
-        e -> fromTextError $ "Failure parsing DynamoKeyType from value: '" <> e
-           <> "'. Accepted values: number, string"
+    parser = (DynamoKeyType' . mk) <$> takeText
 
 instance ToText DynamoKeyType where
-    toText = \case
-        Number -> "NUMBER"
-        String -> "STRING"
+    toText (DynamoKeyType' ci) = original ci
+
+-- | Represents an enum of /known/ $DynamoKeyType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum DynamoKeyType where
+    toEnum i = case i of
+        0 -> Number
+        1 -> String
+        _ -> (error . showText) $ "Unknown index for DynamoKeyType: " <> toText i
+    fromEnum x = case x of
+        Number -> 0
+        String -> 1
+        DynamoKeyType' name -> (error . showText) $ "Unknown DynamoKeyType: " <> original name
+
+-- | Represents the bounds of /known/ $DynamoKeyType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded DynamoKeyType where
+    minBound = Number
+    maxBound = String
 
 instance Hashable     DynamoKeyType
 instance NFData       DynamoKeyType

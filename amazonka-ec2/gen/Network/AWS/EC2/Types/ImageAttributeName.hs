@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,42 +16,95 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.EC2.Types.ImageAttributeName where
+module Network.AWS.EC2.Types.ImageAttributeName (
+  ImageAttributeName (
+    ..
+    , BlockDeviceMapping
+    , Description
+    , Kernel
+    , LaunchPermission
+    , ProductCodes
+    , RAMDisk
+    , SRIOVNetSupport
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.EC2.Internal
 import Network.AWS.Prelude
-  
-data ImageAttributeName = BlockDeviceMapping
-                        | Description
-                        | Kernel
-                        | LaunchPermission
-                        | ProductCodes
-                        | RAMDisk
-                        | SRIOVNetSupport
-                            deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                      Typeable, Generic)
+
+data ImageAttributeName = ImageAttributeName' (CI
+                                                 Text)
+                            deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                      Generic)
+
+pattern BlockDeviceMapping :: ImageAttributeName
+pattern BlockDeviceMapping = ImageAttributeName' "blockDeviceMapping"
+
+pattern Description :: ImageAttributeName
+pattern Description = ImageAttributeName' "description"
+
+pattern Kernel :: ImageAttributeName
+pattern Kernel = ImageAttributeName' "kernel"
+
+pattern LaunchPermission :: ImageAttributeName
+pattern LaunchPermission = ImageAttributeName' "launchPermission"
+
+pattern ProductCodes :: ImageAttributeName
+pattern ProductCodes = ImageAttributeName' "productCodes"
+
+pattern RAMDisk :: ImageAttributeName
+pattern RAMDisk = ImageAttributeName' "ramdisk"
+
+pattern SRIOVNetSupport :: ImageAttributeName
+pattern SRIOVNetSupport = ImageAttributeName' "sriovNetSupport"
+
+{-# COMPLETE
+  BlockDeviceMapping,
+  Description,
+  Kernel,
+  LaunchPermission,
+  ProductCodes,
+  RAMDisk,
+  SRIOVNetSupport,
+  ImageAttributeName' #-}
 
 instance FromText ImageAttributeName where
-    parser = takeLowerText >>= \case
-        "blockdevicemapping" -> pure BlockDeviceMapping
-        "description" -> pure Description
-        "kernel" -> pure Kernel
-        "launchpermission" -> pure LaunchPermission
-        "productcodes" -> pure ProductCodes
-        "ramdisk" -> pure RAMDisk
-        "sriovnetsupport" -> pure SRIOVNetSupport
-        e -> fromTextError $ "Failure parsing ImageAttributeName from value: '" <> e
-           <> "'. Accepted values: blockdevicemapping, description, kernel, launchpermission, productcodes, ramdisk, sriovnetsupport"
+    parser = (ImageAttributeName' . mk) <$> takeText
 
 instance ToText ImageAttributeName where
-    toText = \case
-        BlockDeviceMapping -> "blockDeviceMapping"
-        Description -> "description"
-        Kernel -> "kernel"
-        LaunchPermission -> "launchPermission"
-        ProductCodes -> "productCodes"
-        RAMDisk -> "ramdisk"
-        SRIOVNetSupport -> "sriovNetSupport"
+    toText (ImageAttributeName' ci) = original ci
+
+-- | Represents an enum of /known/ $ImageAttributeName.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum ImageAttributeName where
+    toEnum i = case i of
+        0 -> BlockDeviceMapping
+        1 -> Description
+        2 -> Kernel
+        3 -> LaunchPermission
+        4 -> ProductCodes
+        5 -> RAMDisk
+        6 -> SRIOVNetSupport
+        _ -> (error . showText) $ "Unknown index for ImageAttributeName: " <> toText i
+    fromEnum x = case x of
+        BlockDeviceMapping -> 0
+        Description -> 1
+        Kernel -> 2
+        LaunchPermission -> 3
+        ProductCodes -> 4
+        RAMDisk -> 5
+        SRIOVNetSupport -> 6
+        ImageAttributeName' name -> (error . showText) $ "Unknown ImageAttributeName: " <> original name
+
+-- | Represents the bounds of /known/ $ImageAttributeName.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded ImageAttributeName where
+    minBound = BlockDeviceMapping
+    maxBound = SRIOVNetSupport
 
 instance Hashable     ImageAttributeName
 instance NFData       ImageAttributeName

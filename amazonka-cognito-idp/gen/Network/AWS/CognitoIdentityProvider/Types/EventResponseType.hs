@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,58 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.CognitoIdentityProvider.Types.EventResponseType where
+module Network.AWS.CognitoIdentityProvider.Types.EventResponseType (
+  EventResponseType (
+    ..
+    , Failure
+    , Success
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data EventResponseType = Failure
-                       | Success
-                           deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                     Typeable, Generic)
+
+data EventResponseType = EventResponseType' (CI Text)
+                           deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                     Generic)
+
+pattern Failure :: EventResponseType
+pattern Failure = EventResponseType' "Failure"
+
+pattern Success :: EventResponseType
+pattern Success = EventResponseType' "Success"
+
+{-# COMPLETE
+  Failure,
+  Success,
+  EventResponseType' #-}
 
 instance FromText EventResponseType where
-    parser = takeLowerText >>= \case
-        "failure" -> pure Failure
-        "success" -> pure Success
-        e -> fromTextError $ "Failure parsing EventResponseType from value: '" <> e
-           <> "'. Accepted values: failure, success"
+    parser = (EventResponseType' . mk) <$> takeText
 
 instance ToText EventResponseType where
-    toText = \case
-        Failure -> "Failure"
-        Success -> "Success"
+    toText (EventResponseType' ci) = original ci
+
+-- | Represents an enum of /known/ $EventResponseType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum EventResponseType where
+    toEnum i = case i of
+        0 -> Failure
+        1 -> Success
+        _ -> (error . showText) $ "Unknown index for EventResponseType: " <> toText i
+    fromEnum x = case x of
+        Failure -> 0
+        Success -> 1
+        EventResponseType' name -> (error . showText) $ "Unknown EventResponseType: " <> original name
+
+-- | Represents the bounds of /known/ $EventResponseType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded EventResponseType where
+    minBound = Failure
+    maxBound = Success
 
 instance Hashable     EventResponseType
 instance NFData       EventResponseType

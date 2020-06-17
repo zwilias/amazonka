@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,30 +16,62 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.OpsWorks.Types.CloudWatchLogsInitialPosition where
+module Network.AWS.OpsWorks.Types.CloudWatchLogsInitialPosition (
+  CloudWatchLogsInitialPosition (
+    ..
+    , EndOfFile
+    , StartOfFile
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
+
 -- | Specifies where to start to read data (start_of_file or end_of_file). The default is start_of_file. It's only used if there is no state persisted for that log stream.
 --
 --
-data CloudWatchLogsInitialPosition = EndOfFile
-                                   | StartOfFile
-                                       deriving (Eq, Ord, Read, Show, Enum,
-                                                 Bounded, Data, Typeable,
-                                                 Generic)
+data CloudWatchLogsInitialPosition = CloudWatchLogsInitialPosition' (CI
+                                                                       Text)
+                                       deriving (Eq, Ord, Read, Show, Data,
+                                                 Typeable, Generic)
+
+pattern EndOfFile :: CloudWatchLogsInitialPosition
+pattern EndOfFile = CloudWatchLogsInitialPosition' "end_of_file"
+
+pattern StartOfFile :: CloudWatchLogsInitialPosition
+pattern StartOfFile = CloudWatchLogsInitialPosition' "start_of_file"
+
+{-# COMPLETE
+  EndOfFile,
+  StartOfFile,
+  CloudWatchLogsInitialPosition' #-}
 
 instance FromText CloudWatchLogsInitialPosition where
-    parser = takeLowerText >>= \case
-        "end_of_file" -> pure EndOfFile
-        "start_of_file" -> pure StartOfFile
-        e -> fromTextError $ "Failure parsing CloudWatchLogsInitialPosition from value: '" <> e
-           <> "'. Accepted values: end_of_file, start_of_file"
+    parser = (CloudWatchLogsInitialPosition' . mk) <$> takeText
 
 instance ToText CloudWatchLogsInitialPosition where
-    toText = \case
-        EndOfFile -> "end_of_file"
-        StartOfFile -> "start_of_file"
+    toText (CloudWatchLogsInitialPosition' ci) = original ci
+
+-- | Represents an enum of /known/ $CloudWatchLogsInitialPosition.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum CloudWatchLogsInitialPosition where
+    toEnum i = case i of
+        0 -> EndOfFile
+        1 -> StartOfFile
+        _ -> (error . showText) $ "Unknown index for CloudWatchLogsInitialPosition: " <> toText i
+    fromEnum x = case x of
+        EndOfFile -> 0
+        StartOfFile -> 1
+        CloudWatchLogsInitialPosition' name -> (error . showText) $ "Unknown CloudWatchLogsInitialPosition: " <> original name
+
+-- | Represents the bounds of /known/ $CloudWatchLogsInitialPosition.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded CloudWatchLogsInitialPosition where
+    minBound = EndOfFile
+    maxBound = StartOfFile
 
 instance Hashable     CloudWatchLogsInitialPosition
 instance NFData       CloudWatchLogsInitialPosition

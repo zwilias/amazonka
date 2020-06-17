@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,32 +16,68 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.CostAndUsageReport.Types.CompressionFormat where
+module Network.AWS.CostAndUsageReport.Types.CompressionFormat (
+  CompressionFormat (
+    ..
+    , CFGzip
+    , CFParquet
+    , CFZip
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
+
 -- | The compression format that AWS uses for the report.
 --
 --
-data CompressionFormat = CFGzip
-                       | CFParquet
-                       | CFZip
-                           deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                     Typeable, Generic)
+data CompressionFormat = CompressionFormat' (CI Text)
+                           deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                     Generic)
+
+pattern CFGzip :: CompressionFormat
+pattern CFGzip = CompressionFormat' "GZIP"
+
+pattern CFParquet :: CompressionFormat
+pattern CFParquet = CompressionFormat' "Parquet"
+
+pattern CFZip :: CompressionFormat
+pattern CFZip = CompressionFormat' "ZIP"
+
+{-# COMPLETE
+  CFGzip,
+  CFParquet,
+  CFZip,
+  CompressionFormat' #-}
 
 instance FromText CompressionFormat where
-    parser = takeLowerText >>= \case
-        "gzip" -> pure CFGzip
-        "parquet" -> pure CFParquet
-        "zip" -> pure CFZip
-        e -> fromTextError $ "Failure parsing CompressionFormat from value: '" <> e
-           <> "'. Accepted values: gzip, parquet, zip"
+    parser = (CompressionFormat' . mk) <$> takeText
 
 instance ToText CompressionFormat where
-    toText = \case
-        CFGzip -> "GZIP"
-        CFParquet -> "Parquet"
-        CFZip -> "ZIP"
+    toText (CompressionFormat' ci) = original ci
+
+-- | Represents an enum of /known/ $CompressionFormat.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum CompressionFormat where
+    toEnum i = case i of
+        0 -> CFGzip
+        1 -> CFParquet
+        2 -> CFZip
+        _ -> (error . showText) $ "Unknown index for CompressionFormat: " <> toText i
+    fromEnum x = case x of
+        CFGzip -> 0
+        CFParquet -> 1
+        CFZip -> 2
+        CompressionFormat' name -> (error . showText) $ "Unknown CompressionFormat: " <> original name
+
+-- | Represents the bounds of /known/ $CompressionFormat.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded CompressionFormat where
+    minBound = CFGzip
+    maxBound = CFZip
 
 instance Hashable     CompressionFormat
 instance NFData       CompressionFormat

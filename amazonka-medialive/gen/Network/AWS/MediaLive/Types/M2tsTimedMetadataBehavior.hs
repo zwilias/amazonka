@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,27 +16,60 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.MediaLive.Types.M2tsTimedMetadataBehavior where
+module Network.AWS.MediaLive.Types.M2tsTimedMetadataBehavior (
+  M2tsTimedMetadataBehavior (
+    ..
+    , MTMBNoPassthrough
+    , MTMBPassthrough
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
+
 -- | Placeholder documentation for M2tsTimedMetadataBehavior
-data M2tsTimedMetadataBehavior = MTMBNoPassthrough
-                               | MTMBPassthrough
-                                   deriving (Eq, Ord, Read, Show, Enum, Bounded,
-                                             Data, Typeable, Generic)
+data M2tsTimedMetadataBehavior = M2tsTimedMetadataBehavior' (CI
+                                                               Text)
+                                   deriving (Eq, Ord, Read, Show, Data,
+                                             Typeable, Generic)
+
+pattern MTMBNoPassthrough :: M2tsTimedMetadataBehavior
+pattern MTMBNoPassthrough = M2tsTimedMetadataBehavior' "NO_PASSTHROUGH"
+
+pattern MTMBPassthrough :: M2tsTimedMetadataBehavior
+pattern MTMBPassthrough = M2tsTimedMetadataBehavior' "PASSTHROUGH"
+
+{-# COMPLETE
+  MTMBNoPassthrough,
+  MTMBPassthrough,
+  M2tsTimedMetadataBehavior' #-}
 
 instance FromText M2tsTimedMetadataBehavior where
-    parser = takeLowerText >>= \case
-        "no_passthrough" -> pure MTMBNoPassthrough
-        "passthrough" -> pure MTMBPassthrough
-        e -> fromTextError $ "Failure parsing M2tsTimedMetadataBehavior from value: '" <> e
-           <> "'. Accepted values: no_passthrough, passthrough"
+    parser = (M2tsTimedMetadataBehavior' . mk) <$> takeText
 
 instance ToText M2tsTimedMetadataBehavior where
-    toText = \case
-        MTMBNoPassthrough -> "NO_PASSTHROUGH"
-        MTMBPassthrough -> "PASSTHROUGH"
+    toText (M2tsTimedMetadataBehavior' ci) = original ci
+
+-- | Represents an enum of /known/ $M2tsTimedMetadataBehavior.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum M2tsTimedMetadataBehavior where
+    toEnum i = case i of
+        0 -> MTMBNoPassthrough
+        1 -> MTMBPassthrough
+        _ -> (error . showText) $ "Unknown index for M2tsTimedMetadataBehavior: " <> toText i
+    fromEnum x = case x of
+        MTMBNoPassthrough -> 0
+        MTMBPassthrough -> 1
+        M2tsTimedMetadataBehavior' name -> (error . showText) $ "Unknown M2tsTimedMetadataBehavior: " <> original name
+
+-- | Represents the bounds of /known/ $M2tsTimedMetadataBehavior.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded M2tsTimedMetadataBehavior where
+    minBound = MTMBNoPassthrough
+    maxBound = MTMBPassthrough
 
 instance Hashable     M2tsTimedMetadataBehavior
 instance NFData       M2tsTimedMetadataBehavior

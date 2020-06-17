@@ -37,6 +37,7 @@ module Network.AWS.Lightsail.UnpeerVPC
 
 import Network.AWS.Lens
 import Network.AWS.Lightsail.Types
+import Network.AWS.Lightsail.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response

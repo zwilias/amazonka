@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,29 +16,61 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.EC2.Types.LaunchTemplateInstanceMetadataOptionsState where
+module Network.AWS.EC2.Types.LaunchTemplateInstanceMetadataOptionsState (
+  LaunchTemplateInstanceMetadataOptionsState (
+    ..
+    , LTIMOSApplied
+    , LTIMOSPending
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.EC2.Internal
 import Network.AWS.Prelude
-  
-data LaunchTemplateInstanceMetadataOptionsState = LTIMOSApplied
-                                                | LTIMOSPending
+
+data LaunchTemplateInstanceMetadataOptionsState = LaunchTemplateInstanceMetadataOptionsState' (CI
+                                                                                                 Text)
                                                     deriving (Eq, Ord, Read,
-                                                              Show, Enum,
-                                                              Bounded, Data,
+                                                              Show, Data,
                                                               Typeable, Generic)
 
+pattern LTIMOSApplied :: LaunchTemplateInstanceMetadataOptionsState
+pattern LTIMOSApplied = LaunchTemplateInstanceMetadataOptionsState' "applied"
+
+pattern LTIMOSPending :: LaunchTemplateInstanceMetadataOptionsState
+pattern LTIMOSPending = LaunchTemplateInstanceMetadataOptionsState' "pending"
+
+{-# COMPLETE
+  LTIMOSApplied,
+  LTIMOSPending,
+  LaunchTemplateInstanceMetadataOptionsState' #-}
+
 instance FromText LaunchTemplateInstanceMetadataOptionsState where
-    parser = takeLowerText >>= \case
-        "applied" -> pure LTIMOSApplied
-        "pending" -> pure LTIMOSPending
-        e -> fromTextError $ "Failure parsing LaunchTemplateInstanceMetadataOptionsState from value: '" <> e
-           <> "'. Accepted values: applied, pending"
+    parser = (LaunchTemplateInstanceMetadataOptionsState' . mk) <$> takeText
 
 instance ToText LaunchTemplateInstanceMetadataOptionsState where
-    toText = \case
-        LTIMOSApplied -> "applied"
-        LTIMOSPending -> "pending"
+    toText (LaunchTemplateInstanceMetadataOptionsState' ci) = original ci
+
+-- | Represents an enum of /known/ $LaunchTemplateInstanceMetadataOptionsState.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum LaunchTemplateInstanceMetadataOptionsState where
+    toEnum i = case i of
+        0 -> LTIMOSApplied
+        1 -> LTIMOSPending
+        _ -> (error . showText) $ "Unknown index for LaunchTemplateInstanceMetadataOptionsState: " <> toText i
+    fromEnum x = case x of
+        LTIMOSApplied -> 0
+        LTIMOSPending -> 1
+        LaunchTemplateInstanceMetadataOptionsState' name -> (error . showText) $ "Unknown LaunchTemplateInstanceMetadataOptionsState: " <> original name
+
+-- | Represents the bounds of /known/ $LaunchTemplateInstanceMetadataOptionsState.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded LaunchTemplateInstanceMetadataOptionsState where
+    minBound = LTIMOSApplied
+    maxBound = LTIMOSPending
 
 instance Hashable     LaunchTemplateInstanceMetadataOptionsState
 instance NFData       LaunchTemplateInstanceMetadataOptionsState

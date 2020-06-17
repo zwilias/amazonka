@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,36 +16,80 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.MediaConvert.Types.JobStatus where
+module Network.AWS.MediaConvert.Types.JobStatus (
+  JobStatus (
+    ..
+    , Canceled
+    , Complete
+    , Error'
+    , Progressing
+    , Submitted
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
+
 -- | A job's status can be SUBMITTED, PROGRESSING, COMPLETE, CANCELED, or ERROR.
-data JobStatus = Canceled
-               | Complete
-               | Error'
-               | Progressing
-               | Submitted
-                   deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                             Typeable, Generic)
+data JobStatus = JobStatus' (CI Text)
+                   deriving (Eq, Ord, Read, Show, Data, Typeable,
+                             Generic)
+
+pattern Canceled :: JobStatus
+pattern Canceled = JobStatus' "CANCELED"
+
+pattern Complete :: JobStatus
+pattern Complete = JobStatus' "COMPLETE"
+
+pattern Error' :: JobStatus
+pattern Error' = JobStatus' "ERROR"
+
+pattern Progressing :: JobStatus
+pattern Progressing = JobStatus' "PROGRESSING"
+
+pattern Submitted :: JobStatus
+pattern Submitted = JobStatus' "SUBMITTED"
+
+{-# COMPLETE
+  Canceled,
+  Complete,
+  Error',
+  Progressing,
+  Submitted,
+  JobStatus' #-}
 
 instance FromText JobStatus where
-    parser = takeLowerText >>= \case
-        "canceled" -> pure Canceled
-        "complete" -> pure Complete
-        "error" -> pure Error'
-        "progressing" -> pure Progressing
-        "submitted" -> pure Submitted
-        e -> fromTextError $ "Failure parsing JobStatus from value: '" <> e
-           <> "'. Accepted values: canceled, complete, error, progressing, submitted"
+    parser = (JobStatus' . mk) <$> takeText
 
 instance ToText JobStatus where
-    toText = \case
-        Canceled -> "CANCELED"
-        Complete -> "COMPLETE"
-        Error' -> "ERROR"
-        Progressing -> "PROGRESSING"
-        Submitted -> "SUBMITTED"
+    toText (JobStatus' ci) = original ci
+
+-- | Represents an enum of /known/ $JobStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum JobStatus where
+    toEnum i = case i of
+        0 -> Canceled
+        1 -> Complete
+        2 -> Error'
+        3 -> Progressing
+        4 -> Submitted
+        _ -> (error . showText) $ "Unknown index for JobStatus: " <> toText i
+    fromEnum x = case x of
+        Canceled -> 0
+        Complete -> 1
+        Error' -> 2
+        Progressing -> 3
+        Submitted -> 4
+        JobStatus' name -> (error . showText) $ "Unknown JobStatus: " <> original name
+
+-- | Represents the bounds of /known/ $JobStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded JobStatus where
+    minBound = Canceled
+    maxBound = Submitted
 
 instance Hashable     JobStatus
 instance NFData       JobStatus

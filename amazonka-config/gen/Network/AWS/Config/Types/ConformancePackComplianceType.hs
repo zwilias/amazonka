@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,27 +16,59 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.Config.Types.ConformancePackComplianceType where
+module Network.AWS.Config.Types.ConformancePackComplianceType (
+  ConformancePackComplianceType (
+    ..
+    , CPCTCompliant
+    , CPCTNonCompliant
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data ConformancePackComplianceType = CPCTCompliant
-                                   | CPCTNonCompliant
-                                       deriving (Eq, Ord, Read, Show, Enum,
-                                                 Bounded, Data, Typeable,
-                                                 Generic)
+
+data ConformancePackComplianceType = ConformancePackComplianceType' (CI
+                                                                       Text)
+                                       deriving (Eq, Ord, Read, Show, Data,
+                                                 Typeable, Generic)
+
+pattern CPCTCompliant :: ConformancePackComplianceType
+pattern CPCTCompliant = ConformancePackComplianceType' "COMPLIANT"
+
+pattern CPCTNonCompliant :: ConformancePackComplianceType
+pattern CPCTNonCompliant = ConformancePackComplianceType' "NON_COMPLIANT"
+
+{-# COMPLETE
+  CPCTCompliant,
+  CPCTNonCompliant,
+  ConformancePackComplianceType' #-}
 
 instance FromText ConformancePackComplianceType where
-    parser = takeLowerText >>= \case
-        "compliant" -> pure CPCTCompliant
-        "non_compliant" -> pure CPCTNonCompliant
-        e -> fromTextError $ "Failure parsing ConformancePackComplianceType from value: '" <> e
-           <> "'. Accepted values: compliant, non_compliant"
+    parser = (ConformancePackComplianceType' . mk) <$> takeText
 
 instance ToText ConformancePackComplianceType where
-    toText = \case
-        CPCTCompliant -> "COMPLIANT"
-        CPCTNonCompliant -> "NON_COMPLIANT"
+    toText (ConformancePackComplianceType' ci) = original ci
+
+-- | Represents an enum of /known/ $ConformancePackComplianceType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum ConformancePackComplianceType where
+    toEnum i = case i of
+        0 -> CPCTCompliant
+        1 -> CPCTNonCompliant
+        _ -> (error . showText) $ "Unknown index for ConformancePackComplianceType: " <> toText i
+    fromEnum x = case x of
+        CPCTCompliant -> 0
+        CPCTNonCompliant -> 1
+        ConformancePackComplianceType' name -> (error . showText) $ "Unknown ConformancePackComplianceType: " <> original name
+
+-- | Represents the bounds of /known/ $ConformancePackComplianceType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded ConformancePackComplianceType where
+    minBound = CPCTCompliant
+    maxBound = CPCTNonCompliant
 
 instance Hashable     ConformancePackComplianceType
 instance NFData       ConformancePackComplianceType

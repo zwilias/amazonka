@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,47 +16,108 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.Config.Types.OrganizationResourceStatus where
+module Network.AWS.Config.Types.OrganizationResourceStatus (
+  OrganizationResourceStatus (
+    ..
+    , ORSCreateFailed
+    , ORSCreateInProgress
+    , ORSCreateSuccessful
+    , ORSDeleteFailed
+    , ORSDeleteInProgress
+    , ORSDeleteSuccessful
+    , ORSUpdateFailed
+    , ORSUpdateInProgress
+    , ORSUpdateSuccessful
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data OrganizationResourceStatus = ORSCreateFailed
-                                | ORSCreateInProgress
-                                | ORSCreateSuccessful
-                                | ORSDeleteFailed
-                                | ORSDeleteInProgress
-                                | ORSDeleteSuccessful
-                                | ORSUpdateFailed
-                                | ORSUpdateInProgress
-                                | ORSUpdateSuccessful
-                                    deriving (Eq, Ord, Read, Show, Enum,
-                                              Bounded, Data, Typeable, Generic)
+
+data OrganizationResourceStatus = OrganizationResourceStatus' (CI
+                                                                 Text)
+                                    deriving (Eq, Ord, Read, Show, Data,
+                                              Typeable, Generic)
+
+pattern ORSCreateFailed :: OrganizationResourceStatus
+pattern ORSCreateFailed = OrganizationResourceStatus' "CREATE_FAILED"
+
+pattern ORSCreateInProgress :: OrganizationResourceStatus
+pattern ORSCreateInProgress = OrganizationResourceStatus' "CREATE_IN_PROGRESS"
+
+pattern ORSCreateSuccessful :: OrganizationResourceStatus
+pattern ORSCreateSuccessful = OrganizationResourceStatus' "CREATE_SUCCESSFUL"
+
+pattern ORSDeleteFailed :: OrganizationResourceStatus
+pattern ORSDeleteFailed = OrganizationResourceStatus' "DELETE_FAILED"
+
+pattern ORSDeleteInProgress :: OrganizationResourceStatus
+pattern ORSDeleteInProgress = OrganizationResourceStatus' "DELETE_IN_PROGRESS"
+
+pattern ORSDeleteSuccessful :: OrganizationResourceStatus
+pattern ORSDeleteSuccessful = OrganizationResourceStatus' "DELETE_SUCCESSFUL"
+
+pattern ORSUpdateFailed :: OrganizationResourceStatus
+pattern ORSUpdateFailed = OrganizationResourceStatus' "UPDATE_FAILED"
+
+pattern ORSUpdateInProgress :: OrganizationResourceStatus
+pattern ORSUpdateInProgress = OrganizationResourceStatus' "UPDATE_IN_PROGRESS"
+
+pattern ORSUpdateSuccessful :: OrganizationResourceStatus
+pattern ORSUpdateSuccessful = OrganizationResourceStatus' "UPDATE_SUCCESSFUL"
+
+{-# COMPLETE
+  ORSCreateFailed,
+  ORSCreateInProgress,
+  ORSCreateSuccessful,
+  ORSDeleteFailed,
+  ORSDeleteInProgress,
+  ORSDeleteSuccessful,
+  ORSUpdateFailed,
+  ORSUpdateInProgress,
+  ORSUpdateSuccessful,
+  OrganizationResourceStatus' #-}
 
 instance FromText OrganizationResourceStatus where
-    parser = takeLowerText >>= \case
-        "create_failed" -> pure ORSCreateFailed
-        "create_in_progress" -> pure ORSCreateInProgress
-        "create_successful" -> pure ORSCreateSuccessful
-        "delete_failed" -> pure ORSDeleteFailed
-        "delete_in_progress" -> pure ORSDeleteInProgress
-        "delete_successful" -> pure ORSDeleteSuccessful
-        "update_failed" -> pure ORSUpdateFailed
-        "update_in_progress" -> pure ORSUpdateInProgress
-        "update_successful" -> pure ORSUpdateSuccessful
-        e -> fromTextError $ "Failure parsing OrganizationResourceStatus from value: '" <> e
-           <> "'. Accepted values: create_failed, create_in_progress, create_successful, delete_failed, delete_in_progress, delete_successful, update_failed, update_in_progress, update_successful"
+    parser = (OrganizationResourceStatus' . mk) <$> takeText
 
 instance ToText OrganizationResourceStatus where
-    toText = \case
-        ORSCreateFailed -> "CREATE_FAILED"
-        ORSCreateInProgress -> "CREATE_IN_PROGRESS"
-        ORSCreateSuccessful -> "CREATE_SUCCESSFUL"
-        ORSDeleteFailed -> "DELETE_FAILED"
-        ORSDeleteInProgress -> "DELETE_IN_PROGRESS"
-        ORSDeleteSuccessful -> "DELETE_SUCCESSFUL"
-        ORSUpdateFailed -> "UPDATE_FAILED"
-        ORSUpdateInProgress -> "UPDATE_IN_PROGRESS"
-        ORSUpdateSuccessful -> "UPDATE_SUCCESSFUL"
+    toText (OrganizationResourceStatus' ci) = original ci
+
+-- | Represents an enum of /known/ $OrganizationResourceStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum OrganizationResourceStatus where
+    toEnum i = case i of
+        0 -> ORSCreateFailed
+        1 -> ORSCreateInProgress
+        2 -> ORSCreateSuccessful
+        3 -> ORSDeleteFailed
+        4 -> ORSDeleteInProgress
+        5 -> ORSDeleteSuccessful
+        6 -> ORSUpdateFailed
+        7 -> ORSUpdateInProgress
+        8 -> ORSUpdateSuccessful
+        _ -> (error . showText) $ "Unknown index for OrganizationResourceStatus: " <> toText i
+    fromEnum x = case x of
+        ORSCreateFailed -> 0
+        ORSCreateInProgress -> 1
+        ORSCreateSuccessful -> 2
+        ORSDeleteFailed -> 3
+        ORSDeleteInProgress -> 4
+        ORSDeleteSuccessful -> 5
+        ORSUpdateFailed -> 6
+        ORSUpdateInProgress -> 7
+        ORSUpdateSuccessful -> 8
+        OrganizationResourceStatus' name -> (error . showText) $ "Unknown OrganizationResourceStatus: " <> original name
+
+-- | Represents the bounds of /known/ $OrganizationResourceStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded OrganizationResourceStatus where
+    minBound = ORSCreateFailed
+    maxBound = ORSUpdateSuccessful
 
 instance Hashable     OrganizationResourceStatus
 instance NFData       OrganizationResourceStatus

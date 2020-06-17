@@ -46,6 +46,7 @@ module Network.AWS.EC2.DescribeFpgaImages
     ) where
 
 import Network.AWS.EC2.Types
+import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude

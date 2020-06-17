@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,27 +16,60 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.MediaLive.Types.HlsCodecSpecification where
+module Network.AWS.MediaLive.Types.HlsCodecSpecification (
+  HlsCodecSpecification (
+    ..
+    , Rfc4281
+    , Rfc6381
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
+
 -- | Placeholder documentation for HlsCodecSpecification
-data HlsCodecSpecification = Rfc4281
-                           | Rfc6381
-                               deriving (Eq, Ord, Read, Show, Enum, Bounded,
-                                         Data, Typeable, Generic)
+data HlsCodecSpecification = HlsCodecSpecification' (CI
+                                                       Text)
+                               deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                         Generic)
+
+pattern Rfc4281 :: HlsCodecSpecification
+pattern Rfc4281 = HlsCodecSpecification' "RFC_4281"
+
+pattern Rfc6381 :: HlsCodecSpecification
+pattern Rfc6381 = HlsCodecSpecification' "RFC_6381"
+
+{-# COMPLETE
+  Rfc4281,
+  Rfc6381,
+  HlsCodecSpecification' #-}
 
 instance FromText HlsCodecSpecification where
-    parser = takeLowerText >>= \case
-        "rfc_4281" -> pure Rfc4281
-        "rfc_6381" -> pure Rfc6381
-        e -> fromTextError $ "Failure parsing HlsCodecSpecification from value: '" <> e
-           <> "'. Accepted values: rfc_4281, rfc_6381"
+    parser = (HlsCodecSpecification' . mk) <$> takeText
 
 instance ToText HlsCodecSpecification where
-    toText = \case
-        Rfc4281 -> "RFC_4281"
-        Rfc6381 -> "RFC_6381"
+    toText (HlsCodecSpecification' ci) = original ci
+
+-- | Represents an enum of /known/ $HlsCodecSpecification.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum HlsCodecSpecification where
+    toEnum i = case i of
+        0 -> Rfc4281
+        1 -> Rfc6381
+        _ -> (error . showText) $ "Unknown index for HlsCodecSpecification: " <> toText i
+    fromEnum x = case x of
+        Rfc4281 -> 0
+        Rfc6381 -> 1
+        HlsCodecSpecification' name -> (error . showText) $ "Unknown HlsCodecSpecification: " <> original name
+
+-- | Represents the bounds of /known/ $HlsCodecSpecification.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded HlsCodecSpecification where
+    minBound = Rfc4281
+    maxBound = Rfc6381
 
 instance Hashable     HlsCodecSpecification
 instance NFData       HlsCodecSpecification

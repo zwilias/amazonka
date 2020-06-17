@@ -40,6 +40,7 @@ module Network.AWS.Budgets.CreateNotification
     ) where
 
 import Network.AWS.Budgets.Types
+import Network.AWS.Budgets.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request

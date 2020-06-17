@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,27 +16,60 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.S3.Types.ServerSideEncryption where
+module Network.AWS.S3.Types.ServerSideEncryption (
+  ServerSideEncryption (
+    ..
+    , AES256
+    , AWSKMS
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
 import Network.AWS.S3.Internal
-  
-data ServerSideEncryption = AES256
-                          | AWSKMS
-                              deriving (Eq, Ord, Read, Show, Enum, Bounded,
-                                        Data, Typeable, Generic)
+
+data ServerSideEncryption = ServerSideEncryption' (CI
+                                                     Text)
+                              deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                        Generic)
+
+pattern AES256 :: ServerSideEncryption
+pattern AES256 = ServerSideEncryption' "AES256"
+
+pattern AWSKMS :: ServerSideEncryption
+pattern AWSKMS = ServerSideEncryption' "aws:kms"
+
+{-# COMPLETE
+  AES256,
+  AWSKMS,
+  ServerSideEncryption' #-}
 
 instance FromText ServerSideEncryption where
-    parser = takeLowerText >>= \case
-        "aes256" -> pure AES256
-        "aws:kms" -> pure AWSKMS
-        e -> fromTextError $ "Failure parsing ServerSideEncryption from value: '" <> e
-           <> "'. Accepted values: aes256, aws:kms"
+    parser = (ServerSideEncryption' . mk) <$> takeText
 
 instance ToText ServerSideEncryption where
-    toText = \case
-        AES256 -> "AES256"
-        AWSKMS -> "aws:kms"
+    toText (ServerSideEncryption' ci) = original ci
+
+-- | Represents an enum of /known/ $ServerSideEncryption.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum ServerSideEncryption where
+    toEnum i = case i of
+        0 -> AES256
+        1 -> AWSKMS
+        _ -> (error . showText) $ "Unknown index for ServerSideEncryption: " <> toText i
+    fromEnum x = case x of
+        AES256 -> 0
+        AWSKMS -> 1
+        ServerSideEncryption' name -> (error . showText) $ "Unknown ServerSideEncryption: " <> original name
+
+-- | Represents the bounds of /known/ $ServerSideEncryption.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded ServerSideEncryption where
+    minBound = AES256
+    maxBound = AWSKMS
 
 instance Hashable     ServerSideEncryption
 instance NFData       ServerSideEncryption

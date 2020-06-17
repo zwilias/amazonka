@@ -44,6 +44,7 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.WorkMail.Types
+import Network.AWS.WorkMail.Types.Product
 
 -- | /See:/ 'putMailboxPermissions' smart constructor.
 data PutMailboxPermissions = PutMailboxPermissions'{_pmpOrganizationId

@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,23 +16,52 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.AppStream.Types.UsageReportSchedule where
+module Network.AWS.AppStream.Types.UsageReportSchedule (
+  UsageReportSchedule (
+    ..
+    , Daily
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data UsageReportSchedule = Daily
-                             deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                       Typeable, Generic)
+
+data UsageReportSchedule = UsageReportSchedule' (CI
+                                                   Text)
+                             deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                       Generic)
+
+pattern Daily :: UsageReportSchedule
+pattern Daily = UsageReportSchedule' "DAILY"
+
+{-# COMPLETE
+  Daily,
+  UsageReportSchedule' #-}
 
 instance FromText UsageReportSchedule where
-    parser = takeLowerText >>= \case
-        "daily" -> pure Daily
-        e -> fromTextError $ "Failure parsing UsageReportSchedule from value: '" <> e
-           <> "'. Accepted values: daily"
+    parser = (UsageReportSchedule' . mk) <$> takeText
 
 instance ToText UsageReportSchedule where
-    toText = \case
-        Daily -> "DAILY"
+    toText (UsageReportSchedule' ci) = original ci
+
+-- | Represents an enum of /known/ $UsageReportSchedule.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum UsageReportSchedule where
+    toEnum i = case i of
+        0 -> Daily
+        _ -> (error . showText) $ "Unknown index for UsageReportSchedule: " <> toText i
+    fromEnum x = case x of
+        Daily -> 0
+        UsageReportSchedule' name -> (error . showText) $ "Unknown UsageReportSchedule: " <> original name
+
+-- | Represents the bounds of /known/ $UsageReportSchedule.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded UsageReportSchedule where
+    minBound = Daily
+    maxBound = Daily
 
 instance Hashable     UsageReportSchedule
 instance NFData       UsageReportSchedule

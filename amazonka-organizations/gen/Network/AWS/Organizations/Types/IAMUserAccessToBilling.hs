@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,59 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.Organizations.Types.IAMUserAccessToBilling where
+module Network.AWS.Organizations.Types.IAMUserAccessToBilling (
+  IAMUserAccessToBilling (
+    ..
+    , Allow
+    , Deny
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data IAMUserAccessToBilling = Allow
-                            | Deny
-                                deriving (Eq, Ord, Read, Show, Enum, Bounded,
-                                          Data, Typeable, Generic)
+
+data IAMUserAccessToBilling = IAMUserAccessToBilling' (CI
+                                                         Text)
+                                deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                          Generic)
+
+pattern Allow :: IAMUserAccessToBilling
+pattern Allow = IAMUserAccessToBilling' "ALLOW"
+
+pattern Deny :: IAMUserAccessToBilling
+pattern Deny = IAMUserAccessToBilling' "DENY"
+
+{-# COMPLETE
+  Allow,
+  Deny,
+  IAMUserAccessToBilling' #-}
 
 instance FromText IAMUserAccessToBilling where
-    parser = takeLowerText >>= \case
-        "allow" -> pure Allow
-        "deny" -> pure Deny
-        e -> fromTextError $ "Failure parsing IAMUserAccessToBilling from value: '" <> e
-           <> "'. Accepted values: allow, deny"
+    parser = (IAMUserAccessToBilling' . mk) <$> takeText
 
 instance ToText IAMUserAccessToBilling where
-    toText = \case
-        Allow -> "ALLOW"
-        Deny -> "DENY"
+    toText (IAMUserAccessToBilling' ci) = original ci
+
+-- | Represents an enum of /known/ $IAMUserAccessToBilling.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum IAMUserAccessToBilling where
+    toEnum i = case i of
+        0 -> Allow
+        1 -> Deny
+        _ -> (error . showText) $ "Unknown index for IAMUserAccessToBilling: " <> toText i
+    fromEnum x = case x of
+        Allow -> 0
+        Deny -> 1
+        IAMUserAccessToBilling' name -> (error . showText) $ "Unknown IAMUserAccessToBilling: " <> original name
+
+-- | Represents the bounds of /known/ $IAMUserAccessToBilling.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded IAMUserAccessToBilling where
+    minBound = Allow
+    maxBound = Deny
 
 instance Hashable     IAMUserAccessToBilling
 instance NFData       IAMUserAccessToBilling

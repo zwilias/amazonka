@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,50 +16,115 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.MachineLearning.Types.MLModelFilterVariable where
+module Network.AWS.MachineLearning.Types.MLModelFilterVariable (
+  MLModelFilterVariable (
+    ..
+    , MLMFVAlgorithm
+    , MLMFVCreatedAt
+    , MLMFVIAMUser
+    , MLMFVLastUpdatedAt
+    , MLMFVMLModelType
+    , MLMFVName
+    , MLMFVRealtimeEndpointStatus
+    , MLMFVStatus
+    , MLMFVTrainingDataSourceId
+    , MLMFVTrainingDataURI
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data MLModelFilterVariable = MLMFVAlgorithm
-                           | MLMFVCreatedAt
-                           | MLMFVIAMUser
-                           | MLMFVLastUpdatedAt
-                           | MLMFVMLModelType
-                           | MLMFVName
-                           | MLMFVRealtimeEndpointStatus
-                           | MLMFVStatus
-                           | MLMFVTrainingDataSourceId
-                           | MLMFVTrainingDataURI
-                               deriving (Eq, Ord, Read, Show, Enum, Bounded,
-                                         Data, Typeable, Generic)
+
+data MLModelFilterVariable = MLModelFilterVariable' (CI
+                                                       Text)
+                               deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                         Generic)
+
+pattern MLMFVAlgorithm :: MLModelFilterVariable
+pattern MLMFVAlgorithm = MLModelFilterVariable' "Algorithm"
+
+pattern MLMFVCreatedAt :: MLModelFilterVariable
+pattern MLMFVCreatedAt = MLModelFilterVariable' "CreatedAt"
+
+pattern MLMFVIAMUser :: MLModelFilterVariable
+pattern MLMFVIAMUser = MLModelFilterVariable' "IAMUser"
+
+pattern MLMFVLastUpdatedAt :: MLModelFilterVariable
+pattern MLMFVLastUpdatedAt = MLModelFilterVariable' "LastUpdatedAt"
+
+pattern MLMFVMLModelType :: MLModelFilterVariable
+pattern MLMFVMLModelType = MLModelFilterVariable' "MLModelType"
+
+pattern MLMFVName :: MLModelFilterVariable
+pattern MLMFVName = MLModelFilterVariable' "Name"
+
+pattern MLMFVRealtimeEndpointStatus :: MLModelFilterVariable
+pattern MLMFVRealtimeEndpointStatus = MLModelFilterVariable' "RealtimeEndpointStatus"
+
+pattern MLMFVStatus :: MLModelFilterVariable
+pattern MLMFVStatus = MLModelFilterVariable' "Status"
+
+pattern MLMFVTrainingDataSourceId :: MLModelFilterVariable
+pattern MLMFVTrainingDataSourceId = MLModelFilterVariable' "TrainingDataSourceId"
+
+pattern MLMFVTrainingDataURI :: MLModelFilterVariable
+pattern MLMFVTrainingDataURI = MLModelFilterVariable' "TrainingDataURI"
+
+{-# COMPLETE
+  MLMFVAlgorithm,
+  MLMFVCreatedAt,
+  MLMFVIAMUser,
+  MLMFVLastUpdatedAt,
+  MLMFVMLModelType,
+  MLMFVName,
+  MLMFVRealtimeEndpointStatus,
+  MLMFVStatus,
+  MLMFVTrainingDataSourceId,
+  MLMFVTrainingDataURI,
+  MLModelFilterVariable' #-}
 
 instance FromText MLModelFilterVariable where
-    parser = takeLowerText >>= \case
-        "algorithm" -> pure MLMFVAlgorithm
-        "createdat" -> pure MLMFVCreatedAt
-        "iamuser" -> pure MLMFVIAMUser
-        "lastupdatedat" -> pure MLMFVLastUpdatedAt
-        "mlmodeltype" -> pure MLMFVMLModelType
-        "name" -> pure MLMFVName
-        "realtimeendpointstatus" -> pure MLMFVRealtimeEndpointStatus
-        "status" -> pure MLMFVStatus
-        "trainingdatasourceid" -> pure MLMFVTrainingDataSourceId
-        "trainingdatauri" -> pure MLMFVTrainingDataURI
-        e -> fromTextError $ "Failure parsing MLModelFilterVariable from value: '" <> e
-           <> "'. Accepted values: algorithm, createdat, iamuser, lastupdatedat, mlmodeltype, name, realtimeendpointstatus, status, trainingdatasourceid, trainingdatauri"
+    parser = (MLModelFilterVariable' . mk) <$> takeText
 
 instance ToText MLModelFilterVariable where
-    toText = \case
-        MLMFVAlgorithm -> "Algorithm"
-        MLMFVCreatedAt -> "CreatedAt"
-        MLMFVIAMUser -> "IAMUser"
-        MLMFVLastUpdatedAt -> "LastUpdatedAt"
-        MLMFVMLModelType -> "MLModelType"
-        MLMFVName -> "Name"
-        MLMFVRealtimeEndpointStatus -> "RealtimeEndpointStatus"
-        MLMFVStatus -> "Status"
-        MLMFVTrainingDataSourceId -> "TrainingDataSourceId"
-        MLMFVTrainingDataURI -> "TrainingDataURI"
+    toText (MLModelFilterVariable' ci) = original ci
+
+-- | Represents an enum of /known/ $MLModelFilterVariable.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum MLModelFilterVariable where
+    toEnum i = case i of
+        0 -> MLMFVAlgorithm
+        1 -> MLMFVCreatedAt
+        2 -> MLMFVIAMUser
+        3 -> MLMFVLastUpdatedAt
+        4 -> MLMFVMLModelType
+        5 -> MLMFVName
+        6 -> MLMFVRealtimeEndpointStatus
+        7 -> MLMFVStatus
+        8 -> MLMFVTrainingDataSourceId
+        9 -> MLMFVTrainingDataURI
+        _ -> (error . showText) $ "Unknown index for MLModelFilterVariable: " <> toText i
+    fromEnum x = case x of
+        MLMFVAlgorithm -> 0
+        MLMFVCreatedAt -> 1
+        MLMFVIAMUser -> 2
+        MLMFVLastUpdatedAt -> 3
+        MLMFVMLModelType -> 4
+        MLMFVName -> 5
+        MLMFVRealtimeEndpointStatus -> 6
+        MLMFVStatus -> 7
+        MLMFVTrainingDataSourceId -> 8
+        MLMFVTrainingDataURI -> 9
+        MLModelFilterVariable' name -> (error . showText) $ "Unknown MLModelFilterVariable: " <> original name
+
+-- | Represents the bounds of /known/ $MLModelFilterVariable.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded MLModelFilterVariable where
+    minBound = MLMFVAlgorithm
+    maxBound = MLMFVTrainingDataURI
 
 instance Hashable     MLModelFilterVariable
 instance NFData       MLModelFilterVariable

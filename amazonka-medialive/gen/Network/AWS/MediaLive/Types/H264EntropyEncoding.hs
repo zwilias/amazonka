@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,27 +16,60 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.MediaLive.Types.H264EntropyEncoding where
+module Network.AWS.MediaLive.Types.H264EntropyEncoding (
+  H264EntropyEncoding (
+    ..
+    , Cabac
+    , Cavlc
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
+
 -- | Placeholder documentation for H264EntropyEncoding
-data H264EntropyEncoding = Cabac
-                         | Cavlc
-                             deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                       Typeable, Generic)
+data H264EntropyEncoding = H264EntropyEncoding' (CI
+                                                   Text)
+                             deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                       Generic)
+
+pattern Cabac :: H264EntropyEncoding
+pattern Cabac = H264EntropyEncoding' "CABAC"
+
+pattern Cavlc :: H264EntropyEncoding
+pattern Cavlc = H264EntropyEncoding' "CAVLC"
+
+{-# COMPLETE
+  Cabac,
+  Cavlc,
+  H264EntropyEncoding' #-}
 
 instance FromText H264EntropyEncoding where
-    parser = takeLowerText >>= \case
-        "cabac" -> pure Cabac
-        "cavlc" -> pure Cavlc
-        e -> fromTextError $ "Failure parsing H264EntropyEncoding from value: '" <> e
-           <> "'. Accepted values: cabac, cavlc"
+    parser = (H264EntropyEncoding' . mk) <$> takeText
 
 instance ToText H264EntropyEncoding where
-    toText = \case
-        Cabac -> "CABAC"
-        Cavlc -> "CAVLC"
+    toText (H264EntropyEncoding' ci) = original ci
+
+-- | Represents an enum of /known/ $H264EntropyEncoding.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum H264EntropyEncoding where
+    toEnum i = case i of
+        0 -> Cabac
+        1 -> Cavlc
+        _ -> (error . showText) $ "Unknown index for H264EntropyEncoding: " <> toText i
+    fromEnum x = case x of
+        Cabac -> 0
+        Cavlc -> 1
+        H264EntropyEncoding' name -> (error . showText) $ "Unknown H264EntropyEncoding: " <> original name
+
+-- | Represents the bounds of /known/ $H264EntropyEncoding.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded H264EntropyEncoding where
+    minBound = Cabac
+    maxBound = Cavlc
 
 instance Hashable     H264EntropyEncoding
 instance NFData       H264EntropyEncoding

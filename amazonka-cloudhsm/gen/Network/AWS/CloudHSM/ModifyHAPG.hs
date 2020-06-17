@@ -44,6 +44,7 @@ module Network.AWS.CloudHSM.ModifyHAPG
     ) where
 
 import Network.AWS.CloudHSM.Types
+import Network.AWS.CloudHSM.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request

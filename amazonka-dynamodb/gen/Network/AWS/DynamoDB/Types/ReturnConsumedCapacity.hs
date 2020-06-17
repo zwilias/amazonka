@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,10 +16,18 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.DynamoDB.Types.ReturnConsumedCapacity where
+module Network.AWS.DynamoDB.Types.ReturnConsumedCapacity (
+  ReturnConsumedCapacity (
+    ..
+    , RCCIndexes
+    , RCCNone
+    , RCCTotal
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
+
 -- | Determines the level of detail about provisioned throughput consumption that is returned in the response:
 --
 --
@@ -32,25 +41,54 @@ import Network.AWS.Prelude
 --
 --
 --
-data ReturnConsumedCapacity = RCCIndexes
-                            | RCCNone
-                            | RCCTotal
-                                deriving (Eq, Ord, Read, Show, Enum, Bounded,
-                                          Data, Typeable, Generic)
+data ReturnConsumedCapacity = ReturnConsumedCapacity' (CI
+                                                         Text)
+                                deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                          Generic)
+
+pattern RCCIndexes :: ReturnConsumedCapacity
+pattern RCCIndexes = ReturnConsumedCapacity' "INDEXES"
+
+pattern RCCNone :: ReturnConsumedCapacity
+pattern RCCNone = ReturnConsumedCapacity' "NONE"
+
+pattern RCCTotal :: ReturnConsumedCapacity
+pattern RCCTotal = ReturnConsumedCapacity' "TOTAL"
+
+{-# COMPLETE
+  RCCIndexes,
+  RCCNone,
+  RCCTotal,
+  ReturnConsumedCapacity' #-}
 
 instance FromText ReturnConsumedCapacity where
-    parser = takeLowerText >>= \case
-        "indexes" -> pure RCCIndexes
-        "none" -> pure RCCNone
-        "total" -> pure RCCTotal
-        e -> fromTextError $ "Failure parsing ReturnConsumedCapacity from value: '" <> e
-           <> "'. Accepted values: indexes, none, total"
+    parser = (ReturnConsumedCapacity' . mk) <$> takeText
 
 instance ToText ReturnConsumedCapacity where
-    toText = \case
-        RCCIndexes -> "INDEXES"
-        RCCNone -> "NONE"
-        RCCTotal -> "TOTAL"
+    toText (ReturnConsumedCapacity' ci) = original ci
+
+-- | Represents an enum of /known/ $ReturnConsumedCapacity.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum ReturnConsumedCapacity where
+    toEnum i = case i of
+        0 -> RCCIndexes
+        1 -> RCCNone
+        2 -> RCCTotal
+        _ -> (error . showText) $ "Unknown index for ReturnConsumedCapacity: " <> toText i
+    fromEnum x = case x of
+        RCCIndexes -> 0
+        RCCNone -> 1
+        RCCTotal -> 2
+        ReturnConsumedCapacity' name -> (error . showText) $ "Unknown ReturnConsumedCapacity: " <> original name
+
+-- | Represents the bounds of /known/ $ReturnConsumedCapacity.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded ReturnConsumedCapacity where
+    minBound = RCCIndexes
+    maxBound = RCCTotal
 
 instance Hashable     ReturnConsumedCapacity
 instance NFData       ReturnConsumedCapacity

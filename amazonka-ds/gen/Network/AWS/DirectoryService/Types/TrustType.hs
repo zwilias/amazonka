@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,58 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.DirectoryService.Types.TrustType where
+module Network.AWS.DirectoryService.Types.TrustType (
+  TrustType (
+    ..
+    , External
+    , Forest
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data TrustType = External
-               | Forest
-                   deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                             Typeable, Generic)
+
+data TrustType = TrustType' (CI Text)
+                   deriving (Eq, Ord, Read, Show, Data, Typeable,
+                             Generic)
+
+pattern External :: TrustType
+pattern External = TrustType' "External"
+
+pattern Forest :: TrustType
+pattern Forest = TrustType' "Forest"
+
+{-# COMPLETE
+  External,
+  Forest,
+  TrustType' #-}
 
 instance FromText TrustType where
-    parser = takeLowerText >>= \case
-        "external" -> pure External
-        "forest" -> pure Forest
-        e -> fromTextError $ "Failure parsing TrustType from value: '" <> e
-           <> "'. Accepted values: external, forest"
+    parser = (TrustType' . mk) <$> takeText
 
 instance ToText TrustType where
-    toText = \case
-        External -> "External"
-        Forest -> "Forest"
+    toText (TrustType' ci) = original ci
+
+-- | Represents an enum of /known/ $TrustType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum TrustType where
+    toEnum i = case i of
+        0 -> External
+        1 -> Forest
+        _ -> (error . showText) $ "Unknown index for TrustType: " <> toText i
+    fromEnum x = case x of
+        External -> 0
+        Forest -> 1
+        TrustType' name -> (error . showText) $ "Unknown TrustType: " <> original name
+
+-- | Represents the bounds of /known/ $TrustType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded TrustType where
+    minBound = External
+    maxBound = Forest
 
 instance Hashable     TrustType
 instance NFData       TrustType

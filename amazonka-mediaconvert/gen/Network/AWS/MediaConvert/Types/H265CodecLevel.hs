@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,63 +16,143 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.MediaConvert.Types.H265CodecLevel where
+module Network.AWS.MediaConvert.Types.H265CodecLevel (
+  H265CodecLevel (
+    ..
+    , Auto
+    , Level1
+    , Level2
+    , Level21
+    , Level3
+    , Level31
+    , Level4
+    , Level41
+    , Level5
+    , Level51
+    , Level52
+    , Level6
+    , Level61
+    , Level62
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
+
 -- | H.265 Level.
-data H265CodecLevel = Auto
-                    | Level1
-                    | Level2
-                    | Level21
-                    | Level3
-                    | Level31
-                    | Level4
-                    | Level41
-                    | Level5
-                    | Level51
-                    | Level52
-                    | Level6
-                    | Level61
-                    | Level62
-                        deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                  Typeable, Generic)
+data H265CodecLevel = H265CodecLevel' (CI Text)
+                        deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                  Generic)
+
+pattern Auto :: H265CodecLevel
+pattern Auto = H265CodecLevel' "AUTO"
+
+pattern Level1 :: H265CodecLevel
+pattern Level1 = H265CodecLevel' "LEVEL_1"
+
+pattern Level2 :: H265CodecLevel
+pattern Level2 = H265CodecLevel' "LEVEL_2"
+
+pattern Level21 :: H265CodecLevel
+pattern Level21 = H265CodecLevel' "LEVEL_2_1"
+
+pattern Level3 :: H265CodecLevel
+pattern Level3 = H265CodecLevel' "LEVEL_3"
+
+pattern Level31 :: H265CodecLevel
+pattern Level31 = H265CodecLevel' "LEVEL_3_1"
+
+pattern Level4 :: H265CodecLevel
+pattern Level4 = H265CodecLevel' "LEVEL_4"
+
+pattern Level41 :: H265CodecLevel
+pattern Level41 = H265CodecLevel' "LEVEL_4_1"
+
+pattern Level5 :: H265CodecLevel
+pattern Level5 = H265CodecLevel' "LEVEL_5"
+
+pattern Level51 :: H265CodecLevel
+pattern Level51 = H265CodecLevel' "LEVEL_5_1"
+
+pattern Level52 :: H265CodecLevel
+pattern Level52 = H265CodecLevel' "LEVEL_5_2"
+
+pattern Level6 :: H265CodecLevel
+pattern Level6 = H265CodecLevel' "LEVEL_6"
+
+pattern Level61 :: H265CodecLevel
+pattern Level61 = H265CodecLevel' "LEVEL_6_1"
+
+pattern Level62 :: H265CodecLevel
+pattern Level62 = H265CodecLevel' "LEVEL_6_2"
+
+{-# COMPLETE
+  Auto,
+  Level1,
+  Level2,
+  Level21,
+  Level3,
+  Level31,
+  Level4,
+  Level41,
+  Level5,
+  Level51,
+  Level52,
+  Level6,
+  Level61,
+  Level62,
+  H265CodecLevel' #-}
 
 instance FromText H265CodecLevel where
-    parser = takeLowerText >>= \case
-        "auto" -> pure Auto
-        "level_1" -> pure Level1
-        "level_2" -> pure Level2
-        "level_2_1" -> pure Level21
-        "level_3" -> pure Level3
-        "level_3_1" -> pure Level31
-        "level_4" -> pure Level4
-        "level_4_1" -> pure Level41
-        "level_5" -> pure Level5
-        "level_5_1" -> pure Level51
-        "level_5_2" -> pure Level52
-        "level_6" -> pure Level6
-        "level_6_1" -> pure Level61
-        "level_6_2" -> pure Level62
-        e -> fromTextError $ "Failure parsing H265CodecLevel from value: '" <> e
-           <> "'. Accepted values: auto, level_1, level_2, level_2_1, level_3, level_3_1, level_4, level_4_1, level_5, level_5_1, level_5_2, level_6, level_6_1, level_6_2"
+    parser = (H265CodecLevel' . mk) <$> takeText
 
 instance ToText H265CodecLevel where
-    toText = \case
-        Auto -> "AUTO"
-        Level1 -> "LEVEL_1"
-        Level2 -> "LEVEL_2"
-        Level21 -> "LEVEL_2_1"
-        Level3 -> "LEVEL_3"
-        Level31 -> "LEVEL_3_1"
-        Level4 -> "LEVEL_4"
-        Level41 -> "LEVEL_4_1"
-        Level5 -> "LEVEL_5"
-        Level51 -> "LEVEL_5_1"
-        Level52 -> "LEVEL_5_2"
-        Level6 -> "LEVEL_6"
-        Level61 -> "LEVEL_6_1"
-        Level62 -> "LEVEL_6_2"
+    toText (H265CodecLevel' ci) = original ci
+
+-- | Represents an enum of /known/ $H265CodecLevel.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum H265CodecLevel where
+    toEnum i = case i of
+        0 -> Auto
+        1 -> Level1
+        2 -> Level2
+        3 -> Level21
+        4 -> Level3
+        5 -> Level31
+        6 -> Level4
+        7 -> Level41
+        8 -> Level5
+        9 -> Level51
+        10 -> Level52
+        11 -> Level6
+        12 -> Level61
+        13 -> Level62
+        _ -> (error . showText) $ "Unknown index for H265CodecLevel: " <> toText i
+    fromEnum x = case x of
+        Auto -> 0
+        Level1 -> 1
+        Level2 -> 2
+        Level21 -> 3
+        Level3 -> 4
+        Level31 -> 5
+        Level4 -> 6
+        Level41 -> 7
+        Level5 -> 8
+        Level51 -> 9
+        Level52 -> 10
+        Level6 -> 11
+        Level61 -> 12
+        Level62 -> 13
+        H265CodecLevel' name -> (error . showText) $ "Unknown H265CodecLevel: " <> original name
+
+-- | Represents the bounds of /known/ $H265CodecLevel.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded H265CodecLevel where
+    minBound = Auto
+    maxBound = Level62
 
 instance Hashable     H265CodecLevel
 instance NFData       H265CodecLevel

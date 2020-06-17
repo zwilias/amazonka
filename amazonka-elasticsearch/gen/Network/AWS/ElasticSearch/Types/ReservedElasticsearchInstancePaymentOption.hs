@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,31 +16,67 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.ElasticSearch.Types.ReservedElasticsearchInstancePaymentOption where
+module Network.AWS.ElasticSearch.Types.ReservedElasticsearchInstancePaymentOption (
+  ReservedElasticsearchInstancePaymentOption (
+    ..
+    , AllUpfront
+    , NoUpfront
+    , PartialUpfront
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data ReservedElasticsearchInstancePaymentOption = AllUpfront
-                                                | NoUpfront
-                                                | PartialUpfront
+
+data ReservedElasticsearchInstancePaymentOption = ReservedElasticsearchInstancePaymentOption' (CI
+                                                                                                 Text)
                                                     deriving (Eq, Ord, Read,
-                                                              Show, Enum,
-                                                              Bounded, Data,
+                                                              Show, Data,
                                                               Typeable, Generic)
 
+pattern AllUpfront :: ReservedElasticsearchInstancePaymentOption
+pattern AllUpfront = ReservedElasticsearchInstancePaymentOption' "ALL_UPFRONT"
+
+pattern NoUpfront :: ReservedElasticsearchInstancePaymentOption
+pattern NoUpfront = ReservedElasticsearchInstancePaymentOption' "NO_UPFRONT"
+
+pattern PartialUpfront :: ReservedElasticsearchInstancePaymentOption
+pattern PartialUpfront = ReservedElasticsearchInstancePaymentOption' "PARTIAL_UPFRONT"
+
+{-# COMPLETE
+  AllUpfront,
+  NoUpfront,
+  PartialUpfront,
+  ReservedElasticsearchInstancePaymentOption' #-}
+
 instance FromText ReservedElasticsearchInstancePaymentOption where
-    parser = takeLowerText >>= \case
-        "all_upfront" -> pure AllUpfront
-        "no_upfront" -> pure NoUpfront
-        "partial_upfront" -> pure PartialUpfront
-        e -> fromTextError $ "Failure parsing ReservedElasticsearchInstancePaymentOption from value: '" <> e
-           <> "'. Accepted values: all_upfront, no_upfront, partial_upfront"
+    parser = (ReservedElasticsearchInstancePaymentOption' . mk) <$> takeText
 
 instance ToText ReservedElasticsearchInstancePaymentOption where
-    toText = \case
-        AllUpfront -> "ALL_UPFRONT"
-        NoUpfront -> "NO_UPFRONT"
-        PartialUpfront -> "PARTIAL_UPFRONT"
+    toText (ReservedElasticsearchInstancePaymentOption' ci) = original ci
+
+-- | Represents an enum of /known/ $ReservedElasticsearchInstancePaymentOption.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum ReservedElasticsearchInstancePaymentOption where
+    toEnum i = case i of
+        0 -> AllUpfront
+        1 -> NoUpfront
+        2 -> PartialUpfront
+        _ -> (error . showText) $ "Unknown index for ReservedElasticsearchInstancePaymentOption: " <> toText i
+    fromEnum x = case x of
+        AllUpfront -> 0
+        NoUpfront -> 1
+        PartialUpfront -> 2
+        ReservedElasticsearchInstancePaymentOption' name -> (error . showText) $ "Unknown ReservedElasticsearchInstancePaymentOption: " <> original name
+
+-- | Represents the bounds of /known/ $ReservedElasticsearchInstancePaymentOption.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded ReservedElasticsearchInstancePaymentOption where
+    minBound = AllUpfront
+    maxBound = PartialUpfront
 
 instance Hashable     ReservedElasticsearchInstancePaymentOption
 instance NFData       ReservedElasticsearchInstancePaymentOption

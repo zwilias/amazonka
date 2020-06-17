@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,58 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.DynamoDB.Types.SSEType where
+module Network.AWS.DynamoDB.Types.SSEType (
+  SSEType (
+    ..
+    , AES256
+    , KMS
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data SSEType = AES256
-             | KMS
-                 deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                           Typeable, Generic)
+
+data SSEType = SSEType' (CI Text)
+                 deriving (Eq, Ord, Read, Show, Data, Typeable,
+                           Generic)
+
+pattern AES256 :: SSEType
+pattern AES256 = SSEType' "AES256"
+
+pattern KMS :: SSEType
+pattern KMS = SSEType' "KMS"
+
+{-# COMPLETE
+  AES256,
+  KMS,
+  SSEType' #-}
 
 instance FromText SSEType where
-    parser = takeLowerText >>= \case
-        "aes256" -> pure AES256
-        "kms" -> pure KMS
-        e -> fromTextError $ "Failure parsing SSEType from value: '" <> e
-           <> "'. Accepted values: aes256, kms"
+    parser = (SSEType' . mk) <$> takeText
 
 instance ToText SSEType where
-    toText = \case
-        AES256 -> "AES256"
-        KMS -> "KMS"
+    toText (SSEType' ci) = original ci
+
+-- | Represents an enum of /known/ $SSEType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum SSEType where
+    toEnum i = case i of
+        0 -> AES256
+        1 -> KMS
+        _ -> (error . showText) $ "Unknown index for SSEType: " <> toText i
+    fromEnum x = case x of
+        AES256 -> 0
+        KMS -> 1
+        SSEType' name -> (error . showText) $ "Unknown SSEType: " <> original name
+
+-- | Represents the bounds of /known/ $SSEType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded SSEType where
+    minBound = AES256
+    maxBound = KMS
 
 instance Hashable     SSEType
 instance NFData       SSEType

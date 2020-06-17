@@ -41,6 +41,7 @@ module Network.AWS.GuardDuty.ListThreatIntelSets
     ) where
 
 import Network.AWS.GuardDuty.Types
+import Network.AWS.GuardDuty.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude

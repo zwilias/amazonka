@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,32 +16,68 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.AppStream.Types.SessionState where
+module Network.AWS.AppStream.Types.SessionState (
+  SessionState (
+    ..
+    , Active
+    , Expired
+    , Pending
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
+
 -- | Possible values for the state of a streaming session.
 --
 --
-data SessionState = Active
-                  | Expired
-                  | Pending
-                      deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                Typeable, Generic)
+data SessionState = SessionState' (CI Text)
+                      deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                Generic)
+
+pattern Active :: SessionState
+pattern Active = SessionState' "ACTIVE"
+
+pattern Expired :: SessionState
+pattern Expired = SessionState' "EXPIRED"
+
+pattern Pending :: SessionState
+pattern Pending = SessionState' "PENDING"
+
+{-# COMPLETE
+  Active,
+  Expired,
+  Pending,
+  SessionState' #-}
 
 instance FromText SessionState where
-    parser = takeLowerText >>= \case
-        "active" -> pure Active
-        "expired" -> pure Expired
-        "pending" -> pure Pending
-        e -> fromTextError $ "Failure parsing SessionState from value: '" <> e
-           <> "'. Accepted values: active, expired, pending"
+    parser = (SessionState' . mk) <$> takeText
 
 instance ToText SessionState where
-    toText = \case
-        Active -> "ACTIVE"
-        Expired -> "EXPIRED"
-        Pending -> "PENDING"
+    toText (SessionState' ci) = original ci
+
+-- | Represents an enum of /known/ $SessionState.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum SessionState where
+    toEnum i = case i of
+        0 -> Active
+        1 -> Expired
+        2 -> Pending
+        _ -> (error . showText) $ "Unknown index for SessionState: " <> toText i
+    fromEnum x = case x of
+        Active -> 0
+        Expired -> 1
+        Pending -> 2
+        SessionState' name -> (error . showText) $ "Unknown SessionState: " <> original name
+
+-- | Represents the bounds of /known/ $SessionState.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded SessionState where
+    minBound = Active
+    maxBound = Pending
 
 instance Hashable     SessionState
 instance NFData       SessionState

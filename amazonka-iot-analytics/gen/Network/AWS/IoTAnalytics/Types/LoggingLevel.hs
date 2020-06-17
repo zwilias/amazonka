@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,23 +16,51 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.IoTAnalytics.Types.LoggingLevel where
+module Network.AWS.IoTAnalytics.Types.LoggingLevel (
+  LoggingLevel (
+    ..
+    , Error'
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data LoggingLevel = Error'
-                      deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                Typeable, Generic)
+
+data LoggingLevel = LoggingLevel' (CI Text)
+                      deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                Generic)
+
+pattern Error' :: LoggingLevel
+pattern Error' = LoggingLevel' "ERROR"
+
+{-# COMPLETE
+  Error',
+  LoggingLevel' #-}
 
 instance FromText LoggingLevel where
-    parser = takeLowerText >>= \case
-        "error" -> pure Error'
-        e -> fromTextError $ "Failure parsing LoggingLevel from value: '" <> e
-           <> "'. Accepted values: error"
+    parser = (LoggingLevel' . mk) <$> takeText
 
 instance ToText LoggingLevel where
-    toText = \case
-        Error' -> "ERROR"
+    toText (LoggingLevel' ci) = original ci
+
+-- | Represents an enum of /known/ $LoggingLevel.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum LoggingLevel where
+    toEnum i = case i of
+        0 -> Error'
+        _ -> (error . showText) $ "Unknown index for LoggingLevel: " <> toText i
+    fromEnum x = case x of
+        Error' -> 0
+        LoggingLevel' name -> (error . showText) $ "Unknown LoggingLevel: " <> original name
+
+-- | Represents the bounds of /known/ $LoggingLevel.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded LoggingLevel where
+    minBound = Error'
+    maxBound = Error'
 
 instance Hashable     LoggingLevel
 instance NFData       LoggingLevel

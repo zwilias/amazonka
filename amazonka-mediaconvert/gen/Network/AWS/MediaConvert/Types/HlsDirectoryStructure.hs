@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,27 +16,60 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.MediaConvert.Types.HlsDirectoryStructure where
+module Network.AWS.MediaConvert.Types.HlsDirectoryStructure (
+  HlsDirectoryStructure (
+    ..
+    , SingleDirectory
+    , SubdirectoryPerStream
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
+
 -- | Indicates whether segments should be placed in subdirectories.
-data HlsDirectoryStructure = SingleDirectory
-                           | SubdirectoryPerStream
-                               deriving (Eq, Ord, Read, Show, Enum, Bounded,
-                                         Data, Typeable, Generic)
+data HlsDirectoryStructure = HlsDirectoryStructure' (CI
+                                                       Text)
+                               deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                         Generic)
+
+pattern SingleDirectory :: HlsDirectoryStructure
+pattern SingleDirectory = HlsDirectoryStructure' "SINGLE_DIRECTORY"
+
+pattern SubdirectoryPerStream :: HlsDirectoryStructure
+pattern SubdirectoryPerStream = HlsDirectoryStructure' "SUBDIRECTORY_PER_STREAM"
+
+{-# COMPLETE
+  SingleDirectory,
+  SubdirectoryPerStream,
+  HlsDirectoryStructure' #-}
 
 instance FromText HlsDirectoryStructure where
-    parser = takeLowerText >>= \case
-        "single_directory" -> pure SingleDirectory
-        "subdirectory_per_stream" -> pure SubdirectoryPerStream
-        e -> fromTextError $ "Failure parsing HlsDirectoryStructure from value: '" <> e
-           <> "'. Accepted values: single_directory, subdirectory_per_stream"
+    parser = (HlsDirectoryStructure' . mk) <$> takeText
 
 instance ToText HlsDirectoryStructure where
-    toText = \case
-        SingleDirectory -> "SINGLE_DIRECTORY"
-        SubdirectoryPerStream -> "SUBDIRECTORY_PER_STREAM"
+    toText (HlsDirectoryStructure' ci) = original ci
+
+-- | Represents an enum of /known/ $HlsDirectoryStructure.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum HlsDirectoryStructure where
+    toEnum i = case i of
+        0 -> SingleDirectory
+        1 -> SubdirectoryPerStream
+        _ -> (error . showText) $ "Unknown index for HlsDirectoryStructure: " <> toText i
+    fromEnum x = case x of
+        SingleDirectory -> 0
+        SubdirectoryPerStream -> 1
+        HlsDirectoryStructure' name -> (error . showText) $ "Unknown HlsDirectoryStructure: " <> original name
+
+-- | Represents the bounds of /known/ $HlsDirectoryStructure.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded HlsDirectoryStructure where
+    minBound = SingleDirectory
+    maxBound = SubdirectoryPerStream
 
 instance Hashable     HlsDirectoryStructure
 instance NFData       HlsDirectoryStructure

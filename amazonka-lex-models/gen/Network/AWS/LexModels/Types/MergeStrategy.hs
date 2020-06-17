@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,58 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.LexModels.Types.MergeStrategy where
+module Network.AWS.LexModels.Types.MergeStrategy (
+  MergeStrategy (
+    ..
+    , FailOnConflict
+    , OverwriteLatest
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data MergeStrategy = FailOnConflict
-                   | OverwriteLatest
-                       deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                 Typeable, Generic)
+
+data MergeStrategy = MergeStrategy' (CI Text)
+                       deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                 Generic)
+
+pattern FailOnConflict :: MergeStrategy
+pattern FailOnConflict = MergeStrategy' "FAIL_ON_CONFLICT"
+
+pattern OverwriteLatest :: MergeStrategy
+pattern OverwriteLatest = MergeStrategy' "OVERWRITE_LATEST"
+
+{-# COMPLETE
+  FailOnConflict,
+  OverwriteLatest,
+  MergeStrategy' #-}
 
 instance FromText MergeStrategy where
-    parser = takeLowerText >>= \case
-        "fail_on_conflict" -> pure FailOnConflict
-        "overwrite_latest" -> pure OverwriteLatest
-        e -> fromTextError $ "Failure parsing MergeStrategy from value: '" <> e
-           <> "'. Accepted values: fail_on_conflict, overwrite_latest"
+    parser = (MergeStrategy' . mk) <$> takeText
 
 instance ToText MergeStrategy where
-    toText = \case
-        FailOnConflict -> "FAIL_ON_CONFLICT"
-        OverwriteLatest -> "OVERWRITE_LATEST"
+    toText (MergeStrategy' ci) = original ci
+
+-- | Represents an enum of /known/ $MergeStrategy.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum MergeStrategy where
+    toEnum i = case i of
+        0 -> FailOnConflict
+        1 -> OverwriteLatest
+        _ -> (error . showText) $ "Unknown index for MergeStrategy: " <> toText i
+    fromEnum x = case x of
+        FailOnConflict -> 0
+        OverwriteLatest -> 1
+        MergeStrategy' name -> (error . showText) $ "Unknown MergeStrategy: " <> original name
+
+-- | Represents the bounds of /known/ $MergeStrategy.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded MergeStrategy where
+    minBound = FailOnConflict
+    maxBound = OverwriteLatest
 
 instance Hashable     MergeStrategy
 instance NFData       MergeStrategy

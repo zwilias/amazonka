@@ -41,6 +41,7 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.Snowball.Types
+import Network.AWS.Snowball.Types.Product
 
 -- | /See:/ 'cancelJob' smart constructor.
 newtype CancelJob = CancelJob'{_cjJobId :: Text}

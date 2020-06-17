@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,28 +16,60 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.EC2.Types.DefaultRouteTablePropagationValue where
+module Network.AWS.EC2.Types.DefaultRouteTablePropagationValue (
+  DefaultRouteTablePropagationValue (
+    ..
+    , DRTPVDisable
+    , DRTPVEnable
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.EC2.Internal
 import Network.AWS.Prelude
-  
-data DefaultRouteTablePropagationValue = DRTPVDisable
-                                       | DRTPVEnable
-                                           deriving (Eq, Ord, Read, Show, Enum,
-                                                     Bounded, Data, Typeable,
-                                                     Generic)
+
+data DefaultRouteTablePropagationValue = DefaultRouteTablePropagationValue' (CI
+                                                                               Text)
+                                           deriving (Eq, Ord, Read, Show, Data,
+                                                     Typeable, Generic)
+
+pattern DRTPVDisable :: DefaultRouteTablePropagationValue
+pattern DRTPVDisable = DefaultRouteTablePropagationValue' "disable"
+
+pattern DRTPVEnable :: DefaultRouteTablePropagationValue
+pattern DRTPVEnable = DefaultRouteTablePropagationValue' "enable"
+
+{-# COMPLETE
+  DRTPVDisable,
+  DRTPVEnable,
+  DefaultRouteTablePropagationValue' #-}
 
 instance FromText DefaultRouteTablePropagationValue where
-    parser = takeLowerText >>= \case
-        "disable" -> pure DRTPVDisable
-        "enable" -> pure DRTPVEnable
-        e -> fromTextError $ "Failure parsing DefaultRouteTablePropagationValue from value: '" <> e
-           <> "'. Accepted values: disable, enable"
+    parser = (DefaultRouteTablePropagationValue' . mk) <$> takeText
 
 instance ToText DefaultRouteTablePropagationValue where
-    toText = \case
-        DRTPVDisable -> "disable"
-        DRTPVEnable -> "enable"
+    toText (DefaultRouteTablePropagationValue' ci) = original ci
+
+-- | Represents an enum of /known/ $DefaultRouteTablePropagationValue.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum DefaultRouteTablePropagationValue where
+    toEnum i = case i of
+        0 -> DRTPVDisable
+        1 -> DRTPVEnable
+        _ -> (error . showText) $ "Unknown index for DefaultRouteTablePropagationValue: " <> toText i
+    fromEnum x = case x of
+        DRTPVDisable -> 0
+        DRTPVEnable -> 1
+        DefaultRouteTablePropagationValue' name -> (error . showText) $ "Unknown DefaultRouteTablePropagationValue: " <> original name
+
+-- | Represents the bounds of /known/ $DefaultRouteTablePropagationValue.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded DefaultRouteTablePropagationValue where
+    minBound = DRTPVDisable
+    maxBound = DRTPVEnable
 
 instance Hashable     DefaultRouteTablePropagationValue
 instance NFData       DefaultRouteTablePropagationValue

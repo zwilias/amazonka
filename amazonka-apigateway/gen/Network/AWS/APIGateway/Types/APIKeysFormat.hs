@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,23 +16,51 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.APIGateway.Types.APIKeysFormat where
+module Network.AWS.APIGateway.Types.APIKeysFormat (
+  APIKeysFormat (
+    ..
+    , CSV
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data APIKeysFormat = CSV
-                       deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                 Typeable, Generic)
+
+data APIKeysFormat = APIKeysFormat' (CI Text)
+                       deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                 Generic)
+
+pattern CSV :: APIKeysFormat
+pattern CSV = APIKeysFormat' "csv"
+
+{-# COMPLETE
+  CSV,
+  APIKeysFormat' #-}
 
 instance FromText APIKeysFormat where
-    parser = takeLowerText >>= \case
-        "csv" -> pure CSV
-        e -> fromTextError $ "Failure parsing APIKeysFormat from value: '" <> e
-           <> "'. Accepted values: csv"
+    parser = (APIKeysFormat' . mk) <$> takeText
 
 instance ToText APIKeysFormat where
-    toText = \case
-        CSV -> "csv"
+    toText (APIKeysFormat' ci) = original ci
+
+-- | Represents an enum of /known/ $APIKeysFormat.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum APIKeysFormat where
+    toEnum i = case i of
+        0 -> CSV
+        _ -> (error . showText) $ "Unknown index for APIKeysFormat: " <> toText i
+    fromEnum x = case x of
+        CSV -> 0
+        APIKeysFormat' name -> (error . showText) $ "Unknown APIKeysFormat: " <> original name
+
+-- | Represents the bounds of /known/ $APIKeysFormat.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded APIKeysFormat where
+    minBound = CSV
+    maxBound = CSV
 
 instance Hashable     APIKeysFormat
 instance NFData       APIKeysFormat

@@ -50,6 +50,7 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.XRay.Types
+import Network.AWS.XRay.Types.Product
 
 -- | /See:/ 'getServiceGraph' smart constructor.
 data GetServiceGraph = GetServiceGraph'{_gsgNextToken

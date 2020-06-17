@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,29 +16,66 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.IoTAnalytics.Types.DatasetContentState where
+module Network.AWS.IoTAnalytics.Types.DatasetContentState (
+  DatasetContentState (
+    ..
+    , DCSCreating
+    , DCSFailed
+    , DCSSucceeded
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data DatasetContentState = DCSCreating
-                         | DCSFailed
-                         | DCSSucceeded
-                             deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                       Typeable, Generic)
+
+data DatasetContentState = DatasetContentState' (CI
+                                                   Text)
+                             deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                       Generic)
+
+pattern DCSCreating :: DatasetContentState
+pattern DCSCreating = DatasetContentState' "CREATING"
+
+pattern DCSFailed :: DatasetContentState
+pattern DCSFailed = DatasetContentState' "FAILED"
+
+pattern DCSSucceeded :: DatasetContentState
+pattern DCSSucceeded = DatasetContentState' "SUCCEEDED"
+
+{-# COMPLETE
+  DCSCreating,
+  DCSFailed,
+  DCSSucceeded,
+  DatasetContentState' #-}
 
 instance FromText DatasetContentState where
-    parser = takeLowerText >>= \case
-        "creating" -> pure DCSCreating
-        "failed" -> pure DCSFailed
-        "succeeded" -> pure DCSSucceeded
-        e -> fromTextError $ "Failure parsing DatasetContentState from value: '" <> e
-           <> "'. Accepted values: creating, failed, succeeded"
+    parser = (DatasetContentState' . mk) <$> takeText
 
 instance ToText DatasetContentState where
-    toText = \case
-        DCSCreating -> "CREATING"
-        DCSFailed -> "FAILED"
-        DCSSucceeded -> "SUCCEEDED"
+    toText (DatasetContentState' ci) = original ci
+
+-- | Represents an enum of /known/ $DatasetContentState.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum DatasetContentState where
+    toEnum i = case i of
+        0 -> DCSCreating
+        1 -> DCSFailed
+        2 -> DCSSucceeded
+        _ -> (error . showText) $ "Unknown index for DatasetContentState: " <> toText i
+    fromEnum x = case x of
+        DCSCreating -> 0
+        DCSFailed -> 1
+        DCSSucceeded -> 2
+        DatasetContentState' name -> (error . showText) $ "Unknown DatasetContentState: " <> original name
+
+-- | Represents the bounds of /known/ $DatasetContentState.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded DatasetContentState where
+    minBound = DCSCreating
+    maxBound = DCSSucceeded
 
 instance Hashable     DatasetContentState
 instance NFData       DatasetContentState

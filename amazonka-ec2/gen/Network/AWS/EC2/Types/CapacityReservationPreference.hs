@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,28 +16,60 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.EC2.Types.CapacityReservationPreference where
+module Network.AWS.EC2.Types.CapacityReservationPreference (
+  CapacityReservationPreference (
+    ..
+    , None
+    , Open
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.EC2.Internal
 import Network.AWS.Prelude
-  
-data CapacityReservationPreference = None
-                                   | Open
-                                       deriving (Eq, Ord, Read, Show, Enum,
-                                                 Bounded, Data, Typeable,
-                                                 Generic)
+
+data CapacityReservationPreference = CapacityReservationPreference' (CI
+                                                                       Text)
+                                       deriving (Eq, Ord, Read, Show, Data,
+                                                 Typeable, Generic)
+
+pattern None :: CapacityReservationPreference
+pattern None = CapacityReservationPreference' "none"
+
+pattern Open :: CapacityReservationPreference
+pattern Open = CapacityReservationPreference' "open"
+
+{-# COMPLETE
+  None,
+  Open,
+  CapacityReservationPreference' #-}
 
 instance FromText CapacityReservationPreference where
-    parser = takeLowerText >>= \case
-        "none" -> pure None
-        "open" -> pure Open
-        e -> fromTextError $ "Failure parsing CapacityReservationPreference from value: '" <> e
-           <> "'. Accepted values: none, open"
+    parser = (CapacityReservationPreference' . mk) <$> takeText
 
 instance ToText CapacityReservationPreference where
-    toText = \case
-        None -> "none"
-        Open -> "open"
+    toText (CapacityReservationPreference' ci) = original ci
+
+-- | Represents an enum of /known/ $CapacityReservationPreference.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum CapacityReservationPreference where
+    toEnum i = case i of
+        0 -> None
+        1 -> Open
+        _ -> (error . showText) $ "Unknown index for CapacityReservationPreference: " <> toText i
+    fromEnum x = case x of
+        None -> 0
+        Open -> 1
+        CapacityReservationPreference' name -> (error . showText) $ "Unknown CapacityReservationPreference: " <> original name
+
+-- | Represents the bounds of /known/ $CapacityReservationPreference.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded CapacityReservationPreference where
+    minBound = None
+    maxBound = Open
 
 instance Hashable     CapacityReservationPreference
 instance NFData       CapacityReservationPreference

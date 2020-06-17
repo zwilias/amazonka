@@ -51,6 +51,7 @@ module Network.AWS.Firehose.PutRecord
     ) where
 
 import Network.AWS.Firehose.Types
+import Network.AWS.Firehose.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request

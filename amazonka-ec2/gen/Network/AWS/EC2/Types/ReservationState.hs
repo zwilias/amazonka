@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,33 +16,73 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.EC2.Types.ReservationState where
+module Network.AWS.EC2.Types.ReservationState (
+  ReservationState (
+    ..
+    , RSActive
+    , RSPaymentFailed
+    , RSPaymentPending
+    , RSRetired
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.EC2.Internal
 import Network.AWS.Prelude
-  
-data ReservationState = RSActive
-                      | RSPaymentFailed
-                      | RSPaymentPending
-                      | RSRetired
-                          deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                    Typeable, Generic)
+
+data ReservationState = ReservationState' (CI Text)
+                          deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                    Generic)
+
+pattern RSActive :: ReservationState
+pattern RSActive = ReservationState' "active"
+
+pattern RSPaymentFailed :: ReservationState
+pattern RSPaymentFailed = ReservationState' "payment-failed"
+
+pattern RSPaymentPending :: ReservationState
+pattern RSPaymentPending = ReservationState' "payment-pending"
+
+pattern RSRetired :: ReservationState
+pattern RSRetired = ReservationState' "retired"
+
+{-# COMPLETE
+  RSActive,
+  RSPaymentFailed,
+  RSPaymentPending,
+  RSRetired,
+  ReservationState' #-}
 
 instance FromText ReservationState where
-    parser = takeLowerText >>= \case
-        "active" -> pure RSActive
-        "payment-failed" -> pure RSPaymentFailed
-        "payment-pending" -> pure RSPaymentPending
-        "retired" -> pure RSRetired
-        e -> fromTextError $ "Failure parsing ReservationState from value: '" <> e
-           <> "'. Accepted values: active, payment-failed, payment-pending, retired"
+    parser = (ReservationState' . mk) <$> takeText
 
 instance ToText ReservationState where
-    toText = \case
-        RSActive -> "active"
-        RSPaymentFailed -> "payment-failed"
-        RSPaymentPending -> "payment-pending"
-        RSRetired -> "retired"
+    toText (ReservationState' ci) = original ci
+
+-- | Represents an enum of /known/ $ReservationState.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum ReservationState where
+    toEnum i = case i of
+        0 -> RSActive
+        1 -> RSPaymentFailed
+        2 -> RSPaymentPending
+        3 -> RSRetired
+        _ -> (error . showText) $ "Unknown index for ReservationState: " <> toText i
+    fromEnum x = case x of
+        RSActive -> 0
+        RSPaymentFailed -> 1
+        RSPaymentPending -> 2
+        RSRetired -> 3
+        ReservationState' name -> (error . showText) $ "Unknown ReservationState: " <> original name
+
+-- | Represents the bounds of /known/ $ReservationState.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded ReservationState where
+    minBound = RSActive
+    maxBound = RSRetired
 
 instance Hashable     ReservationState
 instance NFData       ReservationState

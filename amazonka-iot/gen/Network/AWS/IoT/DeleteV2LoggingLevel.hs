@@ -36,6 +36,7 @@ module Network.AWS.IoT.DeleteV2LoggingLevel
     ) where
 
 import Network.AWS.IoT.Types
+import Network.AWS.IoT.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request

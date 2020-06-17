@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,58 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.DirectConnect.Types.AddressFamily where
+module Network.AWS.DirectConnect.Types.AddressFamily (
+  AddressFamily (
+    ..
+    , IPV4
+    , IPV6
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data AddressFamily = IPV4
-                   | IPV6
-                       deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                 Typeable, Generic)
+
+data AddressFamily = AddressFamily' (CI Text)
+                       deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                 Generic)
+
+pattern IPV4 :: AddressFamily
+pattern IPV4 = AddressFamily' "ipv4"
+
+pattern IPV6 :: AddressFamily
+pattern IPV6 = AddressFamily' "ipv6"
+
+{-# COMPLETE
+  IPV4,
+  IPV6,
+  AddressFamily' #-}
 
 instance FromText AddressFamily where
-    parser = takeLowerText >>= \case
-        "ipv4" -> pure IPV4
-        "ipv6" -> pure IPV6
-        e -> fromTextError $ "Failure parsing AddressFamily from value: '" <> e
-           <> "'. Accepted values: ipv4, ipv6"
+    parser = (AddressFamily' . mk) <$> takeText
 
 instance ToText AddressFamily where
-    toText = \case
-        IPV4 -> "ipv4"
-        IPV6 -> "ipv6"
+    toText (AddressFamily' ci) = original ci
+
+-- | Represents an enum of /known/ $AddressFamily.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum AddressFamily where
+    toEnum i = case i of
+        0 -> IPV4
+        1 -> IPV6
+        _ -> (error . showText) $ "Unknown index for AddressFamily: " <> toText i
+    fromEnum x = case x of
+        IPV4 -> 0
+        IPV6 -> 1
+        AddressFamily' name -> (error . showText) $ "Unknown AddressFamily: " <> original name
+
+-- | Represents the bounds of /known/ $AddressFamily.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded AddressFamily where
+    minBound = IPV4
+    maxBound = IPV6
 
 instance Hashable     AddressFamily
 instance NFData       AddressFamily

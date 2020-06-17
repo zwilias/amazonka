@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,34 +16,74 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.EC2.Types.IAMInstanceProfileAssociationState where
+module Network.AWS.EC2.Types.IAMInstanceProfileAssociationState (
+  IAMInstanceProfileAssociationState (
+    ..
+    , IAPASAssociated
+    , IAPASAssociating
+    , IAPASDisassociated
+    , IAPASDisassociating
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.EC2.Internal
 import Network.AWS.Prelude
-  
-data IAMInstanceProfileAssociationState = IAPASAssociated
-                                        | IAPASAssociating
-                                        | IAPASDisassociated
-                                        | IAPASDisassociating
-                                            deriving (Eq, Ord, Read, Show, Enum,
-                                                      Bounded, Data, Typeable,
-                                                      Generic)
+
+data IAMInstanceProfileAssociationState = IAMInstanceProfileAssociationState' (CI
+                                                                                 Text)
+                                            deriving (Eq, Ord, Read, Show, Data,
+                                                      Typeable, Generic)
+
+pattern IAPASAssociated :: IAMInstanceProfileAssociationState
+pattern IAPASAssociated = IAMInstanceProfileAssociationState' "associated"
+
+pattern IAPASAssociating :: IAMInstanceProfileAssociationState
+pattern IAPASAssociating = IAMInstanceProfileAssociationState' "associating"
+
+pattern IAPASDisassociated :: IAMInstanceProfileAssociationState
+pattern IAPASDisassociated = IAMInstanceProfileAssociationState' "disassociated"
+
+pattern IAPASDisassociating :: IAMInstanceProfileAssociationState
+pattern IAPASDisassociating = IAMInstanceProfileAssociationState' "disassociating"
+
+{-# COMPLETE
+  IAPASAssociated,
+  IAPASAssociating,
+  IAPASDisassociated,
+  IAPASDisassociating,
+  IAMInstanceProfileAssociationState' #-}
 
 instance FromText IAMInstanceProfileAssociationState where
-    parser = takeLowerText >>= \case
-        "associated" -> pure IAPASAssociated
-        "associating" -> pure IAPASAssociating
-        "disassociated" -> pure IAPASDisassociated
-        "disassociating" -> pure IAPASDisassociating
-        e -> fromTextError $ "Failure parsing IAMInstanceProfileAssociationState from value: '" <> e
-           <> "'. Accepted values: associated, associating, disassociated, disassociating"
+    parser = (IAMInstanceProfileAssociationState' . mk) <$> takeText
 
 instance ToText IAMInstanceProfileAssociationState where
-    toText = \case
-        IAPASAssociated -> "associated"
-        IAPASAssociating -> "associating"
-        IAPASDisassociated -> "disassociated"
-        IAPASDisassociating -> "disassociating"
+    toText (IAMInstanceProfileAssociationState' ci) = original ci
+
+-- | Represents an enum of /known/ $IAMInstanceProfileAssociationState.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum IAMInstanceProfileAssociationState where
+    toEnum i = case i of
+        0 -> IAPASAssociated
+        1 -> IAPASAssociating
+        2 -> IAPASDisassociated
+        3 -> IAPASDisassociating
+        _ -> (error . showText) $ "Unknown index for IAMInstanceProfileAssociationState: " <> toText i
+    fromEnum x = case x of
+        IAPASAssociated -> 0
+        IAPASAssociating -> 1
+        IAPASDisassociated -> 2
+        IAPASDisassociating -> 3
+        IAMInstanceProfileAssociationState' name -> (error . showText) $ "Unknown IAMInstanceProfileAssociationState: " <> original name
+
+-- | Represents the bounds of /known/ $IAMInstanceProfileAssociationState.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded IAMInstanceProfileAssociationState where
+    minBound = IAPASAssociated
+    maxBound = IAPASDisassociating
 
 instance Hashable     IAMInstanceProfileAssociationState
 instance NFData       IAMInstanceProfileAssociationState

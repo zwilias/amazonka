@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,27 +16,60 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.MediaConvert.Types.AacRateControlMode where
+module Network.AWS.MediaConvert.Types.AacRateControlMode (
+  AacRateControlMode (
+    ..
+    , ARCMCbr
+    , ARCMVbr
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
+
 -- | Rate Control Mode.
-data AacRateControlMode = ARCMCbr
-                        | ARCMVbr
-                            deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                      Typeable, Generic)
+data AacRateControlMode = AacRateControlMode' (CI
+                                                 Text)
+                            deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                      Generic)
+
+pattern ARCMCbr :: AacRateControlMode
+pattern ARCMCbr = AacRateControlMode' "CBR"
+
+pattern ARCMVbr :: AacRateControlMode
+pattern ARCMVbr = AacRateControlMode' "VBR"
+
+{-# COMPLETE
+  ARCMCbr,
+  ARCMVbr,
+  AacRateControlMode' #-}
 
 instance FromText AacRateControlMode where
-    parser = takeLowerText >>= \case
-        "cbr" -> pure ARCMCbr
-        "vbr" -> pure ARCMVbr
-        e -> fromTextError $ "Failure parsing AacRateControlMode from value: '" <> e
-           <> "'. Accepted values: cbr, vbr"
+    parser = (AacRateControlMode' . mk) <$> takeText
 
 instance ToText AacRateControlMode where
-    toText = \case
-        ARCMCbr -> "CBR"
-        ARCMVbr -> "VBR"
+    toText (AacRateControlMode' ci) = original ci
+
+-- | Represents an enum of /known/ $AacRateControlMode.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum AacRateControlMode where
+    toEnum i = case i of
+        0 -> ARCMCbr
+        1 -> ARCMVbr
+        _ -> (error . showText) $ "Unknown index for AacRateControlMode: " <> toText i
+    fromEnum x = case x of
+        ARCMCbr -> 0
+        ARCMVbr -> 1
+        AacRateControlMode' name -> (error . showText) $ "Unknown AacRateControlMode: " <> original name
+
+-- | Represents the bounds of /known/ $AacRateControlMode.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded AacRateControlMode where
+    minBound = ARCMCbr
+    maxBound = ARCMVbr
 
 instance Hashable     AacRateControlMode
 instance NFData       AacRateControlMode

@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,36 +16,81 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.MediaConvert.Types.Mpeg2IntraDcPrecision where
+module Network.AWS.MediaConvert.Types.Mpeg2IntraDcPrecision (
+  Mpeg2IntraDcPrecision (
+    ..
+    , MIDPAuto
+    , MIDPIntraDcPrecision10
+    , MIDPIntraDcPrecision11
+    , MIDPIntraDcPrecision8
+    , MIDPIntraDcPrecision9
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
+
 -- | Use Intra DC precision (Mpeg2IntraDcPrecision) to set quantization precision for intra-block DC coefficients. If you choose the value auto, the service will automatically select the precision based on the per-frame compression ratio.
-data Mpeg2IntraDcPrecision = MIDPAuto
-                           | MIDPIntraDcPrecision10
-                           | MIDPIntraDcPrecision11
-                           | MIDPIntraDcPrecision8
-                           | MIDPIntraDcPrecision9
-                               deriving (Eq, Ord, Read, Show, Enum, Bounded,
-                                         Data, Typeable, Generic)
+data Mpeg2IntraDcPrecision = Mpeg2IntraDcPrecision' (CI
+                                                       Text)
+                               deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                         Generic)
+
+pattern MIDPAuto :: Mpeg2IntraDcPrecision
+pattern MIDPAuto = Mpeg2IntraDcPrecision' "AUTO"
+
+pattern MIDPIntraDcPrecision10 :: Mpeg2IntraDcPrecision
+pattern MIDPIntraDcPrecision10 = Mpeg2IntraDcPrecision' "INTRA_DC_PRECISION_10"
+
+pattern MIDPIntraDcPrecision11 :: Mpeg2IntraDcPrecision
+pattern MIDPIntraDcPrecision11 = Mpeg2IntraDcPrecision' "INTRA_DC_PRECISION_11"
+
+pattern MIDPIntraDcPrecision8 :: Mpeg2IntraDcPrecision
+pattern MIDPIntraDcPrecision8 = Mpeg2IntraDcPrecision' "INTRA_DC_PRECISION_8"
+
+pattern MIDPIntraDcPrecision9 :: Mpeg2IntraDcPrecision
+pattern MIDPIntraDcPrecision9 = Mpeg2IntraDcPrecision' "INTRA_DC_PRECISION_9"
+
+{-# COMPLETE
+  MIDPAuto,
+  MIDPIntraDcPrecision10,
+  MIDPIntraDcPrecision11,
+  MIDPIntraDcPrecision8,
+  MIDPIntraDcPrecision9,
+  Mpeg2IntraDcPrecision' #-}
 
 instance FromText Mpeg2IntraDcPrecision where
-    parser = takeLowerText >>= \case
-        "auto" -> pure MIDPAuto
-        "intra_dc_precision_10" -> pure MIDPIntraDcPrecision10
-        "intra_dc_precision_11" -> pure MIDPIntraDcPrecision11
-        "intra_dc_precision_8" -> pure MIDPIntraDcPrecision8
-        "intra_dc_precision_9" -> pure MIDPIntraDcPrecision9
-        e -> fromTextError $ "Failure parsing Mpeg2IntraDcPrecision from value: '" <> e
-           <> "'. Accepted values: auto, intra_dc_precision_10, intra_dc_precision_11, intra_dc_precision_8, intra_dc_precision_9"
+    parser = (Mpeg2IntraDcPrecision' . mk) <$> takeText
 
 instance ToText Mpeg2IntraDcPrecision where
-    toText = \case
-        MIDPAuto -> "AUTO"
-        MIDPIntraDcPrecision10 -> "INTRA_DC_PRECISION_10"
-        MIDPIntraDcPrecision11 -> "INTRA_DC_PRECISION_11"
-        MIDPIntraDcPrecision8 -> "INTRA_DC_PRECISION_8"
-        MIDPIntraDcPrecision9 -> "INTRA_DC_PRECISION_9"
+    toText (Mpeg2IntraDcPrecision' ci) = original ci
+
+-- | Represents an enum of /known/ $Mpeg2IntraDcPrecision.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum Mpeg2IntraDcPrecision where
+    toEnum i = case i of
+        0 -> MIDPAuto
+        1 -> MIDPIntraDcPrecision10
+        2 -> MIDPIntraDcPrecision11
+        3 -> MIDPIntraDcPrecision8
+        4 -> MIDPIntraDcPrecision9
+        _ -> (error . showText) $ "Unknown index for Mpeg2IntraDcPrecision: " <> toText i
+    fromEnum x = case x of
+        MIDPAuto -> 0
+        MIDPIntraDcPrecision10 -> 1
+        MIDPIntraDcPrecision11 -> 2
+        MIDPIntraDcPrecision8 -> 3
+        MIDPIntraDcPrecision9 -> 4
+        Mpeg2IntraDcPrecision' name -> (error . showText) $ "Unknown Mpeg2IntraDcPrecision: " <> original name
+
+-- | Represents the bounds of /known/ $Mpeg2IntraDcPrecision.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded Mpeg2IntraDcPrecision where
+    minBound = MIDPAuto
+    maxBound = MIDPIntraDcPrecision9
 
 instance Hashable     Mpeg2IntraDcPrecision
 instance NFData       Mpeg2IntraDcPrecision

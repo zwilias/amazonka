@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,56 +16,129 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.DeviceFarm.Types.DeviceFilterAttribute where
+module Network.AWS.DeviceFarm.Types.DeviceFilterAttribute (
+  DeviceFilterAttribute (
+    ..
+    , DFAARN
+    , DFAAvailability
+    , DFAFleetType
+    , DFAFormFactor
+    , DFAInstanceARN
+    , DFAInstanceLabels
+    , DFAManufacturer
+    , DFAModel
+    , DFAOSVersion
+    , DFAPlatform
+    , DFARemoteAccessEnabled
+    , DFARemoteDebugEnabled
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data DeviceFilterAttribute = DFAARN
-                           | DFAAvailability
-                           | DFAFleetType
-                           | DFAFormFactor
-                           | DFAInstanceARN
-                           | DFAInstanceLabels
-                           | DFAManufacturer
-                           | DFAModel
-                           | DFAOSVersion
-                           | DFAPlatform
-                           | DFARemoteAccessEnabled
-                           | DFARemoteDebugEnabled
-                               deriving (Eq, Ord, Read, Show, Enum, Bounded,
-                                         Data, Typeable, Generic)
+
+data DeviceFilterAttribute = DeviceFilterAttribute' (CI
+                                                       Text)
+                               deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                         Generic)
+
+pattern DFAARN :: DeviceFilterAttribute
+pattern DFAARN = DeviceFilterAttribute' "ARN"
+
+pattern DFAAvailability :: DeviceFilterAttribute
+pattern DFAAvailability = DeviceFilterAttribute' "AVAILABILITY"
+
+pattern DFAFleetType :: DeviceFilterAttribute
+pattern DFAFleetType = DeviceFilterAttribute' "FLEET_TYPE"
+
+pattern DFAFormFactor :: DeviceFilterAttribute
+pattern DFAFormFactor = DeviceFilterAttribute' "FORM_FACTOR"
+
+pattern DFAInstanceARN :: DeviceFilterAttribute
+pattern DFAInstanceARN = DeviceFilterAttribute' "INSTANCE_ARN"
+
+pattern DFAInstanceLabels :: DeviceFilterAttribute
+pattern DFAInstanceLabels = DeviceFilterAttribute' "INSTANCE_LABELS"
+
+pattern DFAManufacturer :: DeviceFilterAttribute
+pattern DFAManufacturer = DeviceFilterAttribute' "MANUFACTURER"
+
+pattern DFAModel :: DeviceFilterAttribute
+pattern DFAModel = DeviceFilterAttribute' "MODEL"
+
+pattern DFAOSVersion :: DeviceFilterAttribute
+pattern DFAOSVersion = DeviceFilterAttribute' "OS_VERSION"
+
+pattern DFAPlatform :: DeviceFilterAttribute
+pattern DFAPlatform = DeviceFilterAttribute' "PLATFORM"
+
+pattern DFARemoteAccessEnabled :: DeviceFilterAttribute
+pattern DFARemoteAccessEnabled = DeviceFilterAttribute' "REMOTE_ACCESS_ENABLED"
+
+pattern DFARemoteDebugEnabled :: DeviceFilterAttribute
+pattern DFARemoteDebugEnabled = DeviceFilterAttribute' "REMOTE_DEBUG_ENABLED"
+
+{-# COMPLETE
+  DFAARN,
+  DFAAvailability,
+  DFAFleetType,
+  DFAFormFactor,
+  DFAInstanceARN,
+  DFAInstanceLabels,
+  DFAManufacturer,
+  DFAModel,
+  DFAOSVersion,
+  DFAPlatform,
+  DFARemoteAccessEnabled,
+  DFARemoteDebugEnabled,
+  DeviceFilterAttribute' #-}
 
 instance FromText DeviceFilterAttribute where
-    parser = takeLowerText >>= \case
-        "arn" -> pure DFAARN
-        "availability" -> pure DFAAvailability
-        "fleet_type" -> pure DFAFleetType
-        "form_factor" -> pure DFAFormFactor
-        "instance_arn" -> pure DFAInstanceARN
-        "instance_labels" -> pure DFAInstanceLabels
-        "manufacturer" -> pure DFAManufacturer
-        "model" -> pure DFAModel
-        "os_version" -> pure DFAOSVersion
-        "platform" -> pure DFAPlatform
-        "remote_access_enabled" -> pure DFARemoteAccessEnabled
-        "remote_debug_enabled" -> pure DFARemoteDebugEnabled
-        e -> fromTextError $ "Failure parsing DeviceFilterAttribute from value: '" <> e
-           <> "'. Accepted values: arn, availability, fleet_type, form_factor, instance_arn, instance_labels, manufacturer, model, os_version, platform, remote_access_enabled, remote_debug_enabled"
+    parser = (DeviceFilterAttribute' . mk) <$> takeText
 
 instance ToText DeviceFilterAttribute where
-    toText = \case
-        DFAARN -> "ARN"
-        DFAAvailability -> "AVAILABILITY"
-        DFAFleetType -> "FLEET_TYPE"
-        DFAFormFactor -> "FORM_FACTOR"
-        DFAInstanceARN -> "INSTANCE_ARN"
-        DFAInstanceLabels -> "INSTANCE_LABELS"
-        DFAManufacturer -> "MANUFACTURER"
-        DFAModel -> "MODEL"
-        DFAOSVersion -> "OS_VERSION"
-        DFAPlatform -> "PLATFORM"
-        DFARemoteAccessEnabled -> "REMOTE_ACCESS_ENABLED"
-        DFARemoteDebugEnabled -> "REMOTE_DEBUG_ENABLED"
+    toText (DeviceFilterAttribute' ci) = original ci
+
+-- | Represents an enum of /known/ $DeviceFilterAttribute.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum DeviceFilterAttribute where
+    toEnum i = case i of
+        0 -> DFAARN
+        1 -> DFAAvailability
+        2 -> DFAFleetType
+        3 -> DFAFormFactor
+        4 -> DFAInstanceARN
+        5 -> DFAInstanceLabels
+        6 -> DFAManufacturer
+        7 -> DFAModel
+        8 -> DFAOSVersion
+        9 -> DFAPlatform
+        10 -> DFARemoteAccessEnabled
+        11 -> DFARemoteDebugEnabled
+        _ -> (error . showText) $ "Unknown index for DeviceFilterAttribute: " <> toText i
+    fromEnum x = case x of
+        DFAARN -> 0
+        DFAAvailability -> 1
+        DFAFleetType -> 2
+        DFAFormFactor -> 3
+        DFAInstanceARN -> 4
+        DFAInstanceLabels -> 5
+        DFAManufacturer -> 6
+        DFAModel -> 7
+        DFAOSVersion -> 8
+        DFAPlatform -> 9
+        DFARemoteAccessEnabled -> 10
+        DFARemoteDebugEnabled -> 11
+        DeviceFilterAttribute' name -> (error . showText) $ "Unknown DeviceFilterAttribute: " <> original name
+
+-- | Represents the bounds of /known/ $DeviceFilterAttribute.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded DeviceFilterAttribute where
+    minBound = DFAARN
+    maxBound = DFARemoteDebugEnabled
 
 instance Hashable     DeviceFilterAttribute
 instance NFData       DeviceFilterAttribute

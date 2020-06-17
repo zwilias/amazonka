@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,27 +16,59 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.EC2.Types.DeviceType where
+module Network.AWS.EC2.Types.DeviceType (
+  DeviceType (
+    ..
+    , DTEBS
+    , DTInstanceStore
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.EC2.Internal
 import Network.AWS.Prelude
-  
-data DeviceType = DTEBS
-                | DTInstanceStore
-                    deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                              Typeable, Generic)
+
+data DeviceType = DeviceType' (CI Text)
+                    deriving (Eq, Ord, Read, Show, Data, Typeable,
+                              Generic)
+
+pattern DTEBS :: DeviceType
+pattern DTEBS = DeviceType' "ebs"
+
+pattern DTInstanceStore :: DeviceType
+pattern DTInstanceStore = DeviceType' "instance-store"
+
+{-# COMPLETE
+  DTEBS,
+  DTInstanceStore,
+  DeviceType' #-}
 
 instance FromText DeviceType where
-    parser = takeLowerText >>= \case
-        "ebs" -> pure DTEBS
-        "instance-store" -> pure DTInstanceStore
-        e -> fromTextError $ "Failure parsing DeviceType from value: '" <> e
-           <> "'. Accepted values: ebs, instance-store"
+    parser = (DeviceType' . mk) <$> takeText
 
 instance ToText DeviceType where
-    toText = \case
-        DTEBS -> "ebs"
-        DTInstanceStore -> "instance-store"
+    toText (DeviceType' ci) = original ci
+
+-- | Represents an enum of /known/ $DeviceType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum DeviceType where
+    toEnum i = case i of
+        0 -> DTEBS
+        1 -> DTInstanceStore
+        _ -> (error . showText) $ "Unknown index for DeviceType: " <> toText i
+    fromEnum x = case x of
+        DTEBS -> 0
+        DTInstanceStore -> 1
+        DeviceType' name -> (error . showText) $ "Unknown DeviceType: " <> original name
+
+-- | Represents the bounds of /known/ $DeviceType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded DeviceType where
+    minBound = DTEBS
+    maxBound = DTInstanceStore
 
 instance Hashable     DeviceType
 instance NFData       DeviceType

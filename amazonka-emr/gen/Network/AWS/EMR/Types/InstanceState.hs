@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,35 +16,79 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.EMR.Types.InstanceState where
+module Network.AWS.EMR.Types.InstanceState (
+  InstanceState (
+    ..
+    , ISAwaitingFulfillment
+    , ISBootstrapping
+    , ISProvisioning
+    , ISRunning
+    , ISTerminated
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data InstanceState = ISAwaitingFulfillment
-                   | ISBootstrapping
-                   | ISProvisioning
-                   | ISRunning
-                   | ISTerminated
-                       deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                 Typeable, Generic)
+
+data InstanceState = InstanceState' (CI Text)
+                       deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                 Generic)
+
+pattern ISAwaitingFulfillment :: InstanceState
+pattern ISAwaitingFulfillment = InstanceState' "AWAITING_FULFILLMENT"
+
+pattern ISBootstrapping :: InstanceState
+pattern ISBootstrapping = InstanceState' "BOOTSTRAPPING"
+
+pattern ISProvisioning :: InstanceState
+pattern ISProvisioning = InstanceState' "PROVISIONING"
+
+pattern ISRunning :: InstanceState
+pattern ISRunning = InstanceState' "RUNNING"
+
+pattern ISTerminated :: InstanceState
+pattern ISTerminated = InstanceState' "TERMINATED"
+
+{-# COMPLETE
+  ISAwaitingFulfillment,
+  ISBootstrapping,
+  ISProvisioning,
+  ISRunning,
+  ISTerminated,
+  InstanceState' #-}
 
 instance FromText InstanceState where
-    parser = takeLowerText >>= \case
-        "awaiting_fulfillment" -> pure ISAwaitingFulfillment
-        "bootstrapping" -> pure ISBootstrapping
-        "provisioning" -> pure ISProvisioning
-        "running" -> pure ISRunning
-        "terminated" -> pure ISTerminated
-        e -> fromTextError $ "Failure parsing InstanceState from value: '" <> e
-           <> "'. Accepted values: awaiting_fulfillment, bootstrapping, provisioning, running, terminated"
+    parser = (InstanceState' . mk) <$> takeText
 
 instance ToText InstanceState where
-    toText = \case
-        ISAwaitingFulfillment -> "AWAITING_FULFILLMENT"
-        ISBootstrapping -> "BOOTSTRAPPING"
-        ISProvisioning -> "PROVISIONING"
-        ISRunning -> "RUNNING"
-        ISTerminated -> "TERMINATED"
+    toText (InstanceState' ci) = original ci
+
+-- | Represents an enum of /known/ $InstanceState.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum InstanceState where
+    toEnum i = case i of
+        0 -> ISAwaitingFulfillment
+        1 -> ISBootstrapping
+        2 -> ISProvisioning
+        3 -> ISRunning
+        4 -> ISTerminated
+        _ -> (error . showText) $ "Unknown index for InstanceState: " <> toText i
+    fromEnum x = case x of
+        ISAwaitingFulfillment -> 0
+        ISBootstrapping -> 1
+        ISProvisioning -> 2
+        ISRunning -> 3
+        ISTerminated -> 4
+        InstanceState' name -> (error . showText) $ "Unknown InstanceState: " <> original name
+
+-- | Represents the bounds of /known/ $InstanceState.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded InstanceState where
+    minBound = ISAwaitingFulfillment
+    maxBound = ISTerminated
 
 instance Hashable     InstanceState
 instance NFData       InstanceState

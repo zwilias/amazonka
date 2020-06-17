@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,59 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.Comprehend.Types.DocumentClassifierMode where
+module Network.AWS.Comprehend.Types.DocumentClassifierMode (
+  DocumentClassifierMode (
+    ..
+    , MultiClass
+    , MultiLabel
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data DocumentClassifierMode = MultiClass
-                            | MultiLabel
-                                deriving (Eq, Ord, Read, Show, Enum, Bounded,
-                                          Data, Typeable, Generic)
+
+data DocumentClassifierMode = DocumentClassifierMode' (CI
+                                                         Text)
+                                deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                          Generic)
+
+pattern MultiClass :: DocumentClassifierMode
+pattern MultiClass = DocumentClassifierMode' "MULTI_CLASS"
+
+pattern MultiLabel :: DocumentClassifierMode
+pattern MultiLabel = DocumentClassifierMode' "MULTI_LABEL"
+
+{-# COMPLETE
+  MultiClass,
+  MultiLabel,
+  DocumentClassifierMode' #-}
 
 instance FromText DocumentClassifierMode where
-    parser = takeLowerText >>= \case
-        "multi_class" -> pure MultiClass
-        "multi_label" -> pure MultiLabel
-        e -> fromTextError $ "Failure parsing DocumentClassifierMode from value: '" <> e
-           <> "'. Accepted values: multi_class, multi_label"
+    parser = (DocumentClassifierMode' . mk) <$> takeText
 
 instance ToText DocumentClassifierMode where
-    toText = \case
-        MultiClass -> "MULTI_CLASS"
-        MultiLabel -> "MULTI_LABEL"
+    toText (DocumentClassifierMode' ci) = original ci
+
+-- | Represents an enum of /known/ $DocumentClassifierMode.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum DocumentClassifierMode where
+    toEnum i = case i of
+        0 -> MultiClass
+        1 -> MultiLabel
+        _ -> (error . showText) $ "Unknown index for DocumentClassifierMode: " <> toText i
+    fromEnum x = case x of
+        MultiClass -> 0
+        MultiLabel -> 1
+        DocumentClassifierMode' name -> (error . showText) $ "Unknown DocumentClassifierMode: " <> original name
+
+-- | Represents the bounds of /known/ $DocumentClassifierMode.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded DocumentClassifierMode where
+    minBound = MultiClass
+    maxBound = MultiLabel
 
 instance Hashable     DocumentClassifierMode
 instance NFData       DocumentClassifierMode

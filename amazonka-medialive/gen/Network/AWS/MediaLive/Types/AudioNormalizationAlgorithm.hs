@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,27 +16,60 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.MediaLive.Types.AudioNormalizationAlgorithm where
+module Network.AWS.MediaLive.Types.AudioNormalizationAlgorithm (
+  AudioNormalizationAlgorithm (
+    ..
+    , Itu17701
+    , Itu17702
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
+
 -- | Placeholder documentation for AudioNormalizationAlgorithm
-data AudioNormalizationAlgorithm = Itu17701
-                                 | Itu17702
-                                     deriving (Eq, Ord, Read, Show, Enum,
-                                               Bounded, Data, Typeable, Generic)
+data AudioNormalizationAlgorithm = AudioNormalizationAlgorithm' (CI
+                                                                   Text)
+                                     deriving (Eq, Ord, Read, Show, Data,
+                                               Typeable, Generic)
+
+pattern Itu17701 :: AudioNormalizationAlgorithm
+pattern Itu17701 = AudioNormalizationAlgorithm' "ITU_1770_1"
+
+pattern Itu17702 :: AudioNormalizationAlgorithm
+pattern Itu17702 = AudioNormalizationAlgorithm' "ITU_1770_2"
+
+{-# COMPLETE
+  Itu17701,
+  Itu17702,
+  AudioNormalizationAlgorithm' #-}
 
 instance FromText AudioNormalizationAlgorithm where
-    parser = takeLowerText >>= \case
-        "itu_1770_1" -> pure Itu17701
-        "itu_1770_2" -> pure Itu17702
-        e -> fromTextError $ "Failure parsing AudioNormalizationAlgorithm from value: '" <> e
-           <> "'. Accepted values: itu_1770_1, itu_1770_2"
+    parser = (AudioNormalizationAlgorithm' . mk) <$> takeText
 
 instance ToText AudioNormalizationAlgorithm where
-    toText = \case
-        Itu17701 -> "ITU_1770_1"
-        Itu17702 -> "ITU_1770_2"
+    toText (AudioNormalizationAlgorithm' ci) = original ci
+
+-- | Represents an enum of /known/ $AudioNormalizationAlgorithm.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum AudioNormalizationAlgorithm where
+    toEnum i = case i of
+        0 -> Itu17701
+        1 -> Itu17702
+        _ -> (error . showText) $ "Unknown index for AudioNormalizationAlgorithm: " <> toText i
+    fromEnum x = case x of
+        Itu17701 -> 0
+        Itu17702 -> 1
+        AudioNormalizationAlgorithm' name -> (error . showText) $ "Unknown AudioNormalizationAlgorithm: " <> original name
+
+-- | Represents the bounds of /known/ $AudioNormalizationAlgorithm.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded AudioNormalizationAlgorithm where
+    minBound = Itu17701
+    maxBound = Itu17702
 
 instance Hashable     AudioNormalizationAlgorithm
 instance NFData       AudioNormalizationAlgorithm

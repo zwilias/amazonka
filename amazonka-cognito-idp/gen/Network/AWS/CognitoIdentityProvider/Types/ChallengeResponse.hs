@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,58 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.CognitoIdentityProvider.Types.ChallengeResponse where
+module Network.AWS.CognitoIdentityProvider.Types.ChallengeResponse (
+  ChallengeResponse (
+    ..
+    , CFailure
+    , CSuccess
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data ChallengeResponse = CFailure
-                       | CSuccess
-                           deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                     Typeable, Generic)
+
+data ChallengeResponse = ChallengeResponse' (CI Text)
+                           deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                     Generic)
+
+pattern CFailure :: ChallengeResponse
+pattern CFailure = ChallengeResponse' "Failure"
+
+pattern CSuccess :: ChallengeResponse
+pattern CSuccess = ChallengeResponse' "Success"
+
+{-# COMPLETE
+  CFailure,
+  CSuccess,
+  ChallengeResponse' #-}
 
 instance FromText ChallengeResponse where
-    parser = takeLowerText >>= \case
-        "failure" -> pure CFailure
-        "success" -> pure CSuccess
-        e -> fromTextError $ "Failure parsing ChallengeResponse from value: '" <> e
-           <> "'. Accepted values: failure, success"
+    parser = (ChallengeResponse' . mk) <$> takeText
 
 instance ToText ChallengeResponse where
-    toText = \case
-        CFailure -> "Failure"
-        CSuccess -> "Success"
+    toText (ChallengeResponse' ci) = original ci
+
+-- | Represents an enum of /known/ $ChallengeResponse.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum ChallengeResponse where
+    toEnum i = case i of
+        0 -> CFailure
+        1 -> CSuccess
+        _ -> (error . showText) $ "Unknown index for ChallengeResponse: " <> toText i
+    fromEnum x = case x of
+        CFailure -> 0
+        CSuccess -> 1
+        ChallengeResponse' name -> (error . showText) $ "Unknown ChallengeResponse: " <> original name
+
+-- | Represents the bounds of /known/ $ChallengeResponse.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded ChallengeResponse where
+    minBound = CFailure
+    maxBound = CSuccess
 
 instance Hashable     ChallengeResponse
 instance NFData       ChallengeResponse

@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,58 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.CostExplorer.Types.TermInYears where
+module Network.AWS.CostExplorer.Types.TermInYears (
+  TermInYears (
+    ..
+    , OneYear
+    , ThreeYears
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data TermInYears = OneYear
-                 | ThreeYears
-                     deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                               Typeable, Generic)
+
+data TermInYears = TermInYears' (CI Text)
+                     deriving (Eq, Ord, Read, Show, Data, Typeable,
+                               Generic)
+
+pattern OneYear :: TermInYears
+pattern OneYear = TermInYears' "ONE_YEAR"
+
+pattern ThreeYears :: TermInYears
+pattern ThreeYears = TermInYears' "THREE_YEARS"
+
+{-# COMPLETE
+  OneYear,
+  ThreeYears,
+  TermInYears' #-}
 
 instance FromText TermInYears where
-    parser = takeLowerText >>= \case
-        "one_year" -> pure OneYear
-        "three_years" -> pure ThreeYears
-        e -> fromTextError $ "Failure parsing TermInYears from value: '" <> e
-           <> "'. Accepted values: one_year, three_years"
+    parser = (TermInYears' . mk) <$> takeText
 
 instance ToText TermInYears where
-    toText = \case
-        OneYear -> "ONE_YEAR"
-        ThreeYears -> "THREE_YEARS"
+    toText (TermInYears' ci) = original ci
+
+-- | Represents an enum of /known/ $TermInYears.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum TermInYears where
+    toEnum i = case i of
+        0 -> OneYear
+        1 -> ThreeYears
+        _ -> (error . showText) $ "Unknown index for TermInYears: " <> toText i
+    fromEnum x = case x of
+        OneYear -> 0
+        ThreeYears -> 1
+        TermInYears' name -> (error . showText) $ "Unknown TermInYears: " <> original name
+
+-- | Represents the bounds of /known/ $TermInYears.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded TermInYears where
+    minBound = OneYear
+    maxBound = ThreeYears
 
 instance Hashable     TermInYears
 instance NFData       TermInYears

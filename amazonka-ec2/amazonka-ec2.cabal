@@ -888,6 +888,7 @@ library
         , Network.AWS.EC2.Types.PrivateDNSNameConfiguration
         , Network.AWS.EC2.Types.PrivateIPAddressSpecification
         , Network.AWS.EC2.Types.ProcessorInfo
+        , Network.AWS.EC2.Types.Product
         , Network.AWS.EC2.Types.ProductCode
         , Network.AWS.EC2.Types.ProductCodeValues
         , Network.AWS.EC2.Types.PropagatingVGW
@@ -1127,6 +1128,7 @@ library
     build-depends:
           amazonka-core == 1.6.1.*
         , base          >= 4.7     && < 5
+        , case-insensitive
 
 test-suite amazonka-ec2-test
     type:              exitcode-stdio-1.0
@@ -1150,6 +1152,7 @@ test-suite amazonka-ec2-test
         , amazonka-ec2
         , base
         , bytestring
+        , case-insensitive
         , tasty
         , tasty-hunit
         , text

@@ -40,6 +40,7 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.S3.Types
+import Network.AWS.S3.Types.Product
 
 -- | /See:/ 'getBucketEncryption' smart constructor.
 newtype GetBucketEncryption = GetBucketEncryption'{_gbeBucket

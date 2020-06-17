@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,58 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.CloudDirectory.Types.ConsistencyLevel where
+module Network.AWS.CloudDirectory.Types.ConsistencyLevel (
+  ConsistencyLevel (
+    ..
+    , Eventual
+    , Serializable
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data ConsistencyLevel = Eventual
-                      | Serializable
-                          deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                    Typeable, Generic)
+
+data ConsistencyLevel = ConsistencyLevel' (CI Text)
+                          deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                    Generic)
+
+pattern Eventual :: ConsistencyLevel
+pattern Eventual = ConsistencyLevel' "EVENTUAL"
+
+pattern Serializable :: ConsistencyLevel
+pattern Serializable = ConsistencyLevel' "SERIALIZABLE"
+
+{-# COMPLETE
+  Eventual,
+  Serializable,
+  ConsistencyLevel' #-}
 
 instance FromText ConsistencyLevel where
-    parser = takeLowerText >>= \case
-        "eventual" -> pure Eventual
-        "serializable" -> pure Serializable
-        e -> fromTextError $ "Failure parsing ConsistencyLevel from value: '" <> e
-           <> "'. Accepted values: eventual, serializable"
+    parser = (ConsistencyLevel' . mk) <$> takeText
 
 instance ToText ConsistencyLevel where
-    toText = \case
-        Eventual -> "EVENTUAL"
-        Serializable -> "SERIALIZABLE"
+    toText (ConsistencyLevel' ci) = original ci
+
+-- | Represents an enum of /known/ $ConsistencyLevel.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum ConsistencyLevel where
+    toEnum i = case i of
+        0 -> Eventual
+        1 -> Serializable
+        _ -> (error . showText) $ "Unknown index for ConsistencyLevel: " <> toText i
+    fromEnum x = case x of
+        Eventual -> 0
+        Serializable -> 1
+        ConsistencyLevel' name -> (error . showText) $ "Unknown ConsistencyLevel: " <> original name
+
+-- | Represents the bounds of /known/ $ConsistencyLevel.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded ConsistencyLevel where
+    minBound = Eventual
+    maxBound = Serializable
 
 instance Hashable     ConsistencyLevel
 instance NFData       ConsistencyLevel

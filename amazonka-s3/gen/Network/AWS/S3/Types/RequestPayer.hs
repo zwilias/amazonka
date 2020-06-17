@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,25 +16,53 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.S3.Types.RequestPayer where
+module Network.AWS.S3.Types.RequestPayer (
+  RequestPayer (
+    ..
+    , RPRequester
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
 import Network.AWS.S3.Internal
-  
+
 -- | Confirms that the requester knows that she or he will be charged for the request. Bucket owners need not specify this parameter in their requests. Documentation on downloading objects from requester pays buckets can be found at http://docs.aws.amazon.com/AmazonS3/latest/dev/ObjectsinRequesterPaysBuckets.html
-data RequestPayer = RPRequester
-                      deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                Typeable, Generic)
+data RequestPayer = RequestPayer' (CI Text)
+                      deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                Generic)
+
+pattern RPRequester :: RequestPayer
+pattern RPRequester = RequestPayer' "requester"
+
+{-# COMPLETE
+  RPRequester,
+  RequestPayer' #-}
 
 instance FromText RequestPayer where
-    parser = takeLowerText >>= \case
-        "requester" -> pure RPRequester
-        e -> fromTextError $ "Failure parsing RequestPayer from value: '" <> e
-           <> "'. Accepted values: requester"
+    parser = (RequestPayer' . mk) <$> takeText
 
 instance ToText RequestPayer where
-    toText = \case
-        RPRequester -> "requester"
+    toText (RequestPayer' ci) = original ci
+
+-- | Represents an enum of /known/ $RequestPayer.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum RequestPayer where
+    toEnum i = case i of
+        0 -> RPRequester
+        _ -> (error . showText) $ "Unknown index for RequestPayer: " <> toText i
+    fromEnum x = case x of
+        RPRequester -> 0
+        RequestPayer' name -> (error . showText) $ "Unknown RequestPayer: " <> original name
+
+-- | Represents the bounds of /known/ $RequestPayer.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded RequestPayer where
+    minBound = RPRequester
+    maxBound = RPRequester
 
 instance Hashable     RequestPayer
 instance NFData       RequestPayer

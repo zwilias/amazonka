@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,34 +16,74 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.EC2.Types.TrafficMirrorFilterRuleField where
+module Network.AWS.EC2.Types.TrafficMirrorFilterRuleField (
+  TrafficMirrorFilterRuleField (
+    ..
+    , TMFRFDescription
+    , TMFRFDestinationPortRange
+    , TMFRFProtocol
+    , TMFRFSourcePortRange
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.EC2.Internal
 import Network.AWS.Prelude
-  
-data TrafficMirrorFilterRuleField = TMFRFDescription
-                                  | TMFRFDestinationPortRange
-                                  | TMFRFProtocol
-                                  | TMFRFSourcePortRange
-                                      deriving (Eq, Ord, Read, Show, Enum,
-                                                Bounded, Data, Typeable,
-                                                Generic)
+
+data TrafficMirrorFilterRuleField = TrafficMirrorFilterRuleField' (CI
+                                                                     Text)
+                                      deriving (Eq, Ord, Read, Show, Data,
+                                                Typeable, Generic)
+
+pattern TMFRFDescription :: TrafficMirrorFilterRuleField
+pattern TMFRFDescription = TrafficMirrorFilterRuleField' "description"
+
+pattern TMFRFDestinationPortRange :: TrafficMirrorFilterRuleField
+pattern TMFRFDestinationPortRange = TrafficMirrorFilterRuleField' "destination-port-range"
+
+pattern TMFRFProtocol :: TrafficMirrorFilterRuleField
+pattern TMFRFProtocol = TrafficMirrorFilterRuleField' "protocol"
+
+pattern TMFRFSourcePortRange :: TrafficMirrorFilterRuleField
+pattern TMFRFSourcePortRange = TrafficMirrorFilterRuleField' "source-port-range"
+
+{-# COMPLETE
+  TMFRFDescription,
+  TMFRFDestinationPortRange,
+  TMFRFProtocol,
+  TMFRFSourcePortRange,
+  TrafficMirrorFilterRuleField' #-}
 
 instance FromText TrafficMirrorFilterRuleField where
-    parser = takeLowerText >>= \case
-        "description" -> pure TMFRFDescription
-        "destination-port-range" -> pure TMFRFDestinationPortRange
-        "protocol" -> pure TMFRFProtocol
-        "source-port-range" -> pure TMFRFSourcePortRange
-        e -> fromTextError $ "Failure parsing TrafficMirrorFilterRuleField from value: '" <> e
-           <> "'. Accepted values: description, destination-port-range, protocol, source-port-range"
+    parser = (TrafficMirrorFilterRuleField' . mk) <$> takeText
 
 instance ToText TrafficMirrorFilterRuleField where
-    toText = \case
-        TMFRFDescription -> "description"
-        TMFRFDestinationPortRange -> "destination-port-range"
-        TMFRFProtocol -> "protocol"
-        TMFRFSourcePortRange -> "source-port-range"
+    toText (TrafficMirrorFilterRuleField' ci) = original ci
+
+-- | Represents an enum of /known/ $TrafficMirrorFilterRuleField.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum TrafficMirrorFilterRuleField where
+    toEnum i = case i of
+        0 -> TMFRFDescription
+        1 -> TMFRFDestinationPortRange
+        2 -> TMFRFProtocol
+        3 -> TMFRFSourcePortRange
+        _ -> (error . showText) $ "Unknown index for TrafficMirrorFilterRuleField: " <> toText i
+    fromEnum x = case x of
+        TMFRFDescription -> 0
+        TMFRFDestinationPortRange -> 1
+        TMFRFProtocol -> 2
+        TMFRFSourcePortRange -> 3
+        TrafficMirrorFilterRuleField' name -> (error . showText) $ "Unknown TrafficMirrorFilterRuleField: " <> original name
+
+-- | Represents the bounds of /known/ $TrafficMirrorFilterRuleField.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded TrafficMirrorFilterRuleField where
+    minBound = TMFRFDescription
+    maxBound = TMFRFSourcePortRange
 
 instance Hashable     TrafficMirrorFilterRuleField
 instance NFData       TrafficMirrorFilterRuleField

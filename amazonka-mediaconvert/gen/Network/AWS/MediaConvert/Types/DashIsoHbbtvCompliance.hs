@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,27 +16,60 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.MediaConvert.Types.DashIsoHbbtvCompliance where
+module Network.AWS.MediaConvert.Types.DashIsoHbbtvCompliance (
+  DashIsoHbbtvCompliance (
+    ..
+    , DIHCHbbtv15
+    , DIHCNone
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
+
 -- | Supports HbbTV specification as indicated
-data DashIsoHbbtvCompliance = DIHCHbbtv15
-                            | DIHCNone
-                                deriving (Eq, Ord, Read, Show, Enum, Bounded,
-                                          Data, Typeable, Generic)
+data DashIsoHbbtvCompliance = DashIsoHbbtvCompliance' (CI
+                                                         Text)
+                                deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                          Generic)
+
+pattern DIHCHbbtv15 :: DashIsoHbbtvCompliance
+pattern DIHCHbbtv15 = DashIsoHbbtvCompliance' "HBBTV_1_5"
+
+pattern DIHCNone :: DashIsoHbbtvCompliance
+pattern DIHCNone = DashIsoHbbtvCompliance' "NONE"
+
+{-# COMPLETE
+  DIHCHbbtv15,
+  DIHCNone,
+  DashIsoHbbtvCompliance' #-}
 
 instance FromText DashIsoHbbtvCompliance where
-    parser = takeLowerText >>= \case
-        "hbbtv_1_5" -> pure DIHCHbbtv15
-        "none" -> pure DIHCNone
-        e -> fromTextError $ "Failure parsing DashIsoHbbtvCompliance from value: '" <> e
-           <> "'. Accepted values: hbbtv_1_5, none"
+    parser = (DashIsoHbbtvCompliance' . mk) <$> takeText
 
 instance ToText DashIsoHbbtvCompliance where
-    toText = \case
-        DIHCHbbtv15 -> "HBBTV_1_5"
-        DIHCNone -> "NONE"
+    toText (DashIsoHbbtvCompliance' ci) = original ci
+
+-- | Represents an enum of /known/ $DashIsoHbbtvCompliance.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum DashIsoHbbtvCompliance where
+    toEnum i = case i of
+        0 -> DIHCHbbtv15
+        1 -> DIHCNone
+        _ -> (error . showText) $ "Unknown index for DashIsoHbbtvCompliance: " <> toText i
+    fromEnum x = case x of
+        DIHCHbbtv15 -> 0
+        DIHCNone -> 1
+        DashIsoHbbtvCompliance' name -> (error . showText) $ "Unknown DashIsoHbbtvCompliance: " <> original name
+
+-- | Represents the bounds of /known/ $DashIsoHbbtvCompliance.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded DashIsoHbbtvCompliance where
+    minBound = DIHCHbbtv15
+    maxBound = DIHCNone
 
 instance Hashable     DashIsoHbbtvCompliance
 instance NFData       DashIsoHbbtvCompliance

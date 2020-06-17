@@ -166,6 +166,7 @@ library
         , Network.AWS.GameLift.Types.PlayerSessionCreationPolicy
         , Network.AWS.GameLift.Types.PlayerSessionStatus
         , Network.AWS.GameLift.Types.PolicyType
+        , Network.AWS.GameLift.Types.Product
         , Network.AWS.GameLift.Types.ProtectionPolicy
         , Network.AWS.GameLift.Types.ResourceCreationLimitPolicy
         , Network.AWS.GameLift.Types.RoutingStrategy
@@ -184,6 +185,7 @@ library
     build-depends:
           amazonka-core == 1.6.1.*
         , base          >= 4.7     && < 5
+        , case-insensitive
 
 test-suite amazonka-gamelift-test
     type:              exitcode-stdio-1.0
@@ -207,6 +209,7 @@ test-suite amazonka-gamelift-test
         , amazonka-gamelift
         , base
         , bytestring
+        , case-insensitive
         , tasty
         , tasty-hunit
         , text

@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,58 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.GuardDuty.Types.OrderBy where
+module Network.AWS.GuardDuty.Types.OrderBy (
+  OrderBy (
+    ..
+    , Asc
+    , Desc
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data OrderBy = Asc
-             | Desc
-                 deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                           Typeable, Generic)
+
+data OrderBy = OrderBy' (CI Text)
+                 deriving (Eq, Ord, Read, Show, Data, Typeable,
+                           Generic)
+
+pattern Asc :: OrderBy
+pattern Asc = OrderBy' "ASC"
+
+pattern Desc :: OrderBy
+pattern Desc = OrderBy' "DESC"
+
+{-# COMPLETE
+  Asc,
+  Desc,
+  OrderBy' #-}
 
 instance FromText OrderBy where
-    parser = takeLowerText >>= \case
-        "asc" -> pure Asc
-        "desc" -> pure Desc
-        e -> fromTextError $ "Failure parsing OrderBy from value: '" <> e
-           <> "'. Accepted values: asc, desc"
+    parser = (OrderBy' . mk) <$> takeText
 
 instance ToText OrderBy where
-    toText = \case
-        Asc -> "ASC"
-        Desc -> "DESC"
+    toText (OrderBy' ci) = original ci
+
+-- | Represents an enum of /known/ $OrderBy.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum OrderBy where
+    toEnum i = case i of
+        0 -> Asc
+        1 -> Desc
+        _ -> (error . showText) $ "Unknown index for OrderBy: " <> toText i
+    fromEnum x = case x of
+        Asc -> 0
+        Desc -> 1
+        OrderBy' name -> (error . showText) $ "Unknown OrderBy: " <> original name
+
+-- | Represents the bounds of /known/ $OrderBy.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded OrderBy where
+    minBound = Asc
+    maxBound = Desc
 
 instance Hashable     OrderBy
 instance NFData       OrderBy

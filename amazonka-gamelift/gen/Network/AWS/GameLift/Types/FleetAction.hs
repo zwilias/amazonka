@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,23 +16,51 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.GameLift.Types.FleetAction where
+module Network.AWS.GameLift.Types.FleetAction (
+  FleetAction (
+    ..
+    , AutoScaling
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data FleetAction = AutoScaling
-                     deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                               Typeable, Generic)
+
+data FleetAction = FleetAction' (CI Text)
+                     deriving (Eq, Ord, Read, Show, Data, Typeable,
+                               Generic)
+
+pattern AutoScaling :: FleetAction
+pattern AutoScaling = FleetAction' "AUTO_SCALING"
+
+{-# COMPLETE
+  AutoScaling,
+  FleetAction' #-}
 
 instance FromText FleetAction where
-    parser = takeLowerText >>= \case
-        "auto_scaling" -> pure AutoScaling
-        e -> fromTextError $ "Failure parsing FleetAction from value: '" <> e
-           <> "'. Accepted values: auto_scaling"
+    parser = (FleetAction' . mk) <$> takeText
 
 instance ToText FleetAction where
-    toText = \case
-        AutoScaling -> "AUTO_SCALING"
+    toText (FleetAction' ci) = original ci
+
+-- | Represents an enum of /known/ $FleetAction.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum FleetAction where
+    toEnum i = case i of
+        0 -> AutoScaling
+        _ -> (error . showText) $ "Unknown index for FleetAction: " <> toText i
+    fromEnum x = case x of
+        AutoScaling -> 0
+        FleetAction' name -> (error . showText) $ "Unknown FleetAction: " <> original name
+
+-- | Represents the bounds of /known/ $FleetAction.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded FleetAction where
+    minBound = AutoScaling
+    maxBound = AutoScaling
 
 instance Hashable     FleetAction
 instance NFData       FleetAction

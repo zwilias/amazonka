@@ -44,6 +44,7 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.WAFRegional.Types
+import Network.AWS.WAFRegional.Types.Product
 
 -- | /See:/ 'getRuleGroup' smart constructor.
 newtype GetRuleGroup = GetRuleGroup'{_grgRuleGroupId

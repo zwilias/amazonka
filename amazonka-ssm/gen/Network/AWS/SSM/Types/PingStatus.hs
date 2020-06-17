@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,29 +16,65 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.SSM.Types.PingStatus where
+module Network.AWS.SSM.Types.PingStatus (
+  PingStatus (
+    ..
+    , ConnectionLost
+    , Inactive
+    , Online
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data PingStatus = ConnectionLost
-                | Inactive
-                | Online
-                    deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                              Typeable, Generic)
+
+data PingStatus = PingStatus' (CI Text)
+                    deriving (Eq, Ord, Read, Show, Data, Typeable,
+                              Generic)
+
+pattern ConnectionLost :: PingStatus
+pattern ConnectionLost = PingStatus' "ConnectionLost"
+
+pattern Inactive :: PingStatus
+pattern Inactive = PingStatus' "Inactive"
+
+pattern Online :: PingStatus
+pattern Online = PingStatus' "Online"
+
+{-# COMPLETE
+  ConnectionLost,
+  Inactive,
+  Online,
+  PingStatus' #-}
 
 instance FromText PingStatus where
-    parser = takeLowerText >>= \case
-        "connectionlost" -> pure ConnectionLost
-        "inactive" -> pure Inactive
-        "online" -> pure Online
-        e -> fromTextError $ "Failure parsing PingStatus from value: '" <> e
-           <> "'. Accepted values: connectionlost, inactive, online"
+    parser = (PingStatus' . mk) <$> takeText
 
 instance ToText PingStatus where
-    toText = \case
-        ConnectionLost -> "ConnectionLost"
-        Inactive -> "Inactive"
-        Online -> "Online"
+    toText (PingStatus' ci) = original ci
+
+-- | Represents an enum of /known/ $PingStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum PingStatus where
+    toEnum i = case i of
+        0 -> ConnectionLost
+        1 -> Inactive
+        2 -> Online
+        _ -> (error . showText) $ "Unknown index for PingStatus: " <> toText i
+    fromEnum x = case x of
+        ConnectionLost -> 0
+        Inactive -> 1
+        Online -> 2
+        PingStatus' name -> (error . showText) $ "Unknown PingStatus: " <> original name
+
+-- | Represents the bounds of /known/ $PingStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded PingStatus where
+    minBound = ConnectionLost
+    maxBound = Online
 
 instance Hashable     PingStatus
 instance NFData       PingStatus

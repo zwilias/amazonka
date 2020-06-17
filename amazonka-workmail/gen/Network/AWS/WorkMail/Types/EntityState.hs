@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,29 +16,65 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.WorkMail.Types.EntityState where
+module Network.AWS.WorkMail.Types.EntityState (
+  EntityState (
+    ..
+    , Deleted
+    , Disabled
+    , Enabled
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data EntityState = Deleted
-                 | Disabled
-                 | Enabled
-                     deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                               Typeable, Generic)
+
+data EntityState = EntityState' (CI Text)
+                     deriving (Eq, Ord, Read, Show, Data, Typeable,
+                               Generic)
+
+pattern Deleted :: EntityState
+pattern Deleted = EntityState' "DELETED"
+
+pattern Disabled :: EntityState
+pattern Disabled = EntityState' "DISABLED"
+
+pattern Enabled :: EntityState
+pattern Enabled = EntityState' "ENABLED"
+
+{-# COMPLETE
+  Deleted,
+  Disabled,
+  Enabled,
+  EntityState' #-}
 
 instance FromText EntityState where
-    parser = takeLowerText >>= \case
-        "deleted" -> pure Deleted
-        "disabled" -> pure Disabled
-        "enabled" -> pure Enabled
-        e -> fromTextError $ "Failure parsing EntityState from value: '" <> e
-           <> "'. Accepted values: deleted, disabled, enabled"
+    parser = (EntityState' . mk) <$> takeText
 
 instance ToText EntityState where
-    toText = \case
-        Deleted -> "DELETED"
-        Disabled -> "DISABLED"
-        Enabled -> "ENABLED"
+    toText (EntityState' ci) = original ci
+
+-- | Represents an enum of /known/ $EntityState.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum EntityState where
+    toEnum i = case i of
+        0 -> Deleted
+        1 -> Disabled
+        2 -> Enabled
+        _ -> (error . showText) $ "Unknown index for EntityState: " <> toText i
+    fromEnum x = case x of
+        Deleted -> 0
+        Disabled -> 1
+        Enabled -> 2
+        EntityState' name -> (error . showText) $ "Unknown EntityState: " <> original name
+
+-- | Represents the bounds of /known/ $EntityState.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded EntityState where
+    minBound = Deleted
+    maxBound = Enabled
 
 instance Hashable     EntityState
 instance NFData       EntityState

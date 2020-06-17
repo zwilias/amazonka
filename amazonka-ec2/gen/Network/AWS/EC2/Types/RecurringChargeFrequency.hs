@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,24 +16,53 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.EC2.Types.RecurringChargeFrequency where
+module Network.AWS.EC2.Types.RecurringChargeFrequency (
+  RecurringChargeFrequency (
+    ..
+    , Hourly
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.EC2.Internal
 import Network.AWS.Prelude
-  
-data RecurringChargeFrequency = Hourly
-                                  deriving (Eq, Ord, Read, Show, Enum, Bounded,
-                                            Data, Typeable, Generic)
+
+data RecurringChargeFrequency = RecurringChargeFrequency' (CI
+                                                             Text)
+                                  deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                            Generic)
+
+pattern Hourly :: RecurringChargeFrequency
+pattern Hourly = RecurringChargeFrequency' "Hourly"
+
+{-# COMPLETE
+  Hourly,
+  RecurringChargeFrequency' #-}
 
 instance FromText RecurringChargeFrequency where
-    parser = takeLowerText >>= \case
-        "hourly" -> pure Hourly
-        e -> fromTextError $ "Failure parsing RecurringChargeFrequency from value: '" <> e
-           <> "'. Accepted values: hourly"
+    parser = (RecurringChargeFrequency' . mk) <$> takeText
 
 instance ToText RecurringChargeFrequency where
-    toText = \case
-        Hourly -> "Hourly"
+    toText (RecurringChargeFrequency' ci) = original ci
+
+-- | Represents an enum of /known/ $RecurringChargeFrequency.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum RecurringChargeFrequency where
+    toEnum i = case i of
+        0 -> Hourly
+        _ -> (error . showText) $ "Unknown index for RecurringChargeFrequency: " <> toText i
+    fromEnum x = case x of
+        Hourly -> 0
+        RecurringChargeFrequency' name -> (error . showText) $ "Unknown RecurringChargeFrequency: " <> original name
+
+-- | Represents the bounds of /known/ $RecurringChargeFrequency.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded RecurringChargeFrequency where
+    minBound = Hourly
+    maxBound = Hourly
 
 instance Hashable     RecurringChargeFrequency
 instance NFData       RecurringChargeFrequency

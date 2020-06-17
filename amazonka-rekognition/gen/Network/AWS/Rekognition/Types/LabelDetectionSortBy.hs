@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,59 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.Rekognition.Types.LabelDetectionSortBy where
+module Network.AWS.Rekognition.Types.LabelDetectionSortBy (
+  LabelDetectionSortBy (
+    ..
+    , LDSBName
+    , LDSBTimestamp
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data LabelDetectionSortBy = LDSBName
-                          | LDSBTimestamp
-                              deriving (Eq, Ord, Read, Show, Enum, Bounded,
-                                        Data, Typeable, Generic)
+
+data LabelDetectionSortBy = LabelDetectionSortBy' (CI
+                                                     Text)
+                              deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                        Generic)
+
+pattern LDSBName :: LabelDetectionSortBy
+pattern LDSBName = LabelDetectionSortBy' "NAME"
+
+pattern LDSBTimestamp :: LabelDetectionSortBy
+pattern LDSBTimestamp = LabelDetectionSortBy' "TIMESTAMP"
+
+{-# COMPLETE
+  LDSBName,
+  LDSBTimestamp,
+  LabelDetectionSortBy' #-}
 
 instance FromText LabelDetectionSortBy where
-    parser = takeLowerText >>= \case
-        "name" -> pure LDSBName
-        "timestamp" -> pure LDSBTimestamp
-        e -> fromTextError $ "Failure parsing LabelDetectionSortBy from value: '" <> e
-           <> "'. Accepted values: name, timestamp"
+    parser = (LabelDetectionSortBy' . mk) <$> takeText
 
 instance ToText LabelDetectionSortBy where
-    toText = \case
-        LDSBName -> "NAME"
-        LDSBTimestamp -> "TIMESTAMP"
+    toText (LabelDetectionSortBy' ci) = original ci
+
+-- | Represents an enum of /known/ $LabelDetectionSortBy.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum LabelDetectionSortBy where
+    toEnum i = case i of
+        0 -> LDSBName
+        1 -> LDSBTimestamp
+        _ -> (error . showText) $ "Unknown index for LabelDetectionSortBy: " <> toText i
+    fromEnum x = case x of
+        LDSBName -> 0
+        LDSBTimestamp -> 1
+        LabelDetectionSortBy' name -> (error . showText) $ "Unknown LabelDetectionSortBy: " <> original name
+
+-- | Represents the bounds of /known/ $LabelDetectionSortBy.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded LabelDetectionSortBy where
+    minBound = LDSBName
+    maxBound = LDSBTimestamp
 
 instance Hashable     LabelDetectionSortBy
 instance NFData       LabelDetectionSortBy

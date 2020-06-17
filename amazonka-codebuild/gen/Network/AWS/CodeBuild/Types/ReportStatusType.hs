@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,35 +16,79 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.CodeBuild.Types.ReportStatusType where
+module Network.AWS.CodeBuild.Types.ReportStatusType (
+  ReportStatusType (
+    ..
+    , Deleting
+    , Failed
+    , Generating
+    , Incomplete
+    , Succeeded
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data ReportStatusType = Deleting
-                      | Failed
-                      | Generating
-                      | Incomplete
-                      | Succeeded
-                          deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                    Typeable, Generic)
+
+data ReportStatusType = ReportStatusType' (CI Text)
+                          deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                    Generic)
+
+pattern Deleting :: ReportStatusType
+pattern Deleting = ReportStatusType' "DELETING"
+
+pattern Failed :: ReportStatusType
+pattern Failed = ReportStatusType' "FAILED"
+
+pattern Generating :: ReportStatusType
+pattern Generating = ReportStatusType' "GENERATING"
+
+pattern Incomplete :: ReportStatusType
+pattern Incomplete = ReportStatusType' "INCOMPLETE"
+
+pattern Succeeded :: ReportStatusType
+pattern Succeeded = ReportStatusType' "SUCCEEDED"
+
+{-# COMPLETE
+  Deleting,
+  Failed,
+  Generating,
+  Incomplete,
+  Succeeded,
+  ReportStatusType' #-}
 
 instance FromText ReportStatusType where
-    parser = takeLowerText >>= \case
-        "deleting" -> pure Deleting
-        "failed" -> pure Failed
-        "generating" -> pure Generating
-        "incomplete" -> pure Incomplete
-        "succeeded" -> pure Succeeded
-        e -> fromTextError $ "Failure parsing ReportStatusType from value: '" <> e
-           <> "'. Accepted values: deleting, failed, generating, incomplete, succeeded"
+    parser = (ReportStatusType' . mk) <$> takeText
 
 instance ToText ReportStatusType where
-    toText = \case
-        Deleting -> "DELETING"
-        Failed -> "FAILED"
-        Generating -> "GENERATING"
-        Incomplete -> "INCOMPLETE"
-        Succeeded -> "SUCCEEDED"
+    toText (ReportStatusType' ci) = original ci
+
+-- | Represents an enum of /known/ $ReportStatusType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum ReportStatusType where
+    toEnum i = case i of
+        0 -> Deleting
+        1 -> Failed
+        2 -> Generating
+        3 -> Incomplete
+        4 -> Succeeded
+        _ -> (error . showText) $ "Unknown index for ReportStatusType: " <> toText i
+    fromEnum x = case x of
+        Deleting -> 0
+        Failed -> 1
+        Generating -> 2
+        Incomplete -> 3
+        Succeeded -> 4
+        ReportStatusType' name -> (error . showText) $ "Unknown ReportStatusType: " <> original name
+
+-- | Represents the bounds of /known/ $ReportStatusType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded ReportStatusType where
+    minBound = Deleting
+    maxBound = Succeeded
 
 instance Hashable     ReportStatusType
 instance NFData       ReportStatusType

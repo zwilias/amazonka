@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,27 +16,60 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.S3.Types.ReplicationRuleStatus where
+module Network.AWS.S3.Types.ReplicationRuleStatus (
+  ReplicationRuleStatus (
+    ..
+    , Disabled
+    , Enabled
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
 import Network.AWS.S3.Internal
-  
-data ReplicationRuleStatus = Disabled
-                           | Enabled
-                               deriving (Eq, Ord, Read, Show, Enum, Bounded,
-                                         Data, Typeable, Generic)
+
+data ReplicationRuleStatus = ReplicationRuleStatus' (CI
+                                                       Text)
+                               deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                         Generic)
+
+pattern Disabled :: ReplicationRuleStatus
+pattern Disabled = ReplicationRuleStatus' "Disabled"
+
+pattern Enabled :: ReplicationRuleStatus
+pattern Enabled = ReplicationRuleStatus' "Enabled"
+
+{-# COMPLETE
+  Disabled,
+  Enabled,
+  ReplicationRuleStatus' #-}
 
 instance FromText ReplicationRuleStatus where
-    parser = takeLowerText >>= \case
-        "disabled" -> pure Disabled
-        "enabled" -> pure Enabled
-        e -> fromTextError $ "Failure parsing ReplicationRuleStatus from value: '" <> e
-           <> "'. Accepted values: disabled, enabled"
+    parser = (ReplicationRuleStatus' . mk) <$> takeText
 
 instance ToText ReplicationRuleStatus where
-    toText = \case
-        Disabled -> "Disabled"
-        Enabled -> "Enabled"
+    toText (ReplicationRuleStatus' ci) = original ci
+
+-- | Represents an enum of /known/ $ReplicationRuleStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum ReplicationRuleStatus where
+    toEnum i = case i of
+        0 -> Disabled
+        1 -> Enabled
+        _ -> (error . showText) $ "Unknown index for ReplicationRuleStatus: " <> toText i
+    fromEnum x = case x of
+        Disabled -> 0
+        Enabled -> 1
+        ReplicationRuleStatus' name -> (error . showText) $ "Unknown ReplicationRuleStatus: " <> original name
+
+-- | Represents the bounds of /known/ $ReplicationRuleStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded ReplicationRuleStatus where
+    minBound = Disabled
+    maxBound = Enabled
 
 instance Hashable     ReplicationRuleStatus
 instance NFData       ReplicationRuleStatus

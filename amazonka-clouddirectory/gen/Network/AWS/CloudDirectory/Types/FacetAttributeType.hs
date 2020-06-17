@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,38 +16,87 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.CloudDirectory.Types.FacetAttributeType where
+module Network.AWS.CloudDirectory.Types.FacetAttributeType (
+  FacetAttributeType (
+    ..
+    , Binary
+    , Boolean
+    , Datetime
+    , Number
+    , String
+    , Variant
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data FacetAttributeType = Binary
-                        | Boolean
-                        | Datetime
-                        | Number
-                        | String
-                        | Variant
-                            deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                      Typeable, Generic)
+
+data FacetAttributeType = FacetAttributeType' (CI
+                                                 Text)
+                            deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                      Generic)
+
+pattern Binary :: FacetAttributeType
+pattern Binary = FacetAttributeType' "BINARY"
+
+pattern Boolean :: FacetAttributeType
+pattern Boolean = FacetAttributeType' "BOOLEAN"
+
+pattern Datetime :: FacetAttributeType
+pattern Datetime = FacetAttributeType' "DATETIME"
+
+pattern Number :: FacetAttributeType
+pattern Number = FacetAttributeType' "NUMBER"
+
+pattern String :: FacetAttributeType
+pattern String = FacetAttributeType' "STRING"
+
+pattern Variant :: FacetAttributeType
+pattern Variant = FacetAttributeType' "VARIANT"
+
+{-# COMPLETE
+  Binary,
+  Boolean,
+  Datetime,
+  Number,
+  String,
+  Variant,
+  FacetAttributeType' #-}
 
 instance FromText FacetAttributeType where
-    parser = takeLowerText >>= \case
-        "binary" -> pure Binary
-        "boolean" -> pure Boolean
-        "datetime" -> pure Datetime
-        "number" -> pure Number
-        "string" -> pure String
-        "variant" -> pure Variant
-        e -> fromTextError $ "Failure parsing FacetAttributeType from value: '" <> e
-           <> "'. Accepted values: binary, boolean, datetime, number, string, variant"
+    parser = (FacetAttributeType' . mk) <$> takeText
 
 instance ToText FacetAttributeType where
-    toText = \case
-        Binary -> "BINARY"
-        Boolean -> "BOOLEAN"
-        Datetime -> "DATETIME"
-        Number -> "NUMBER"
-        String -> "STRING"
-        Variant -> "VARIANT"
+    toText (FacetAttributeType' ci) = original ci
+
+-- | Represents an enum of /known/ $FacetAttributeType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum FacetAttributeType where
+    toEnum i = case i of
+        0 -> Binary
+        1 -> Boolean
+        2 -> Datetime
+        3 -> Number
+        4 -> String
+        5 -> Variant
+        _ -> (error . showText) $ "Unknown index for FacetAttributeType: " <> toText i
+    fromEnum x = case x of
+        Binary -> 0
+        Boolean -> 1
+        Datetime -> 2
+        Number -> 3
+        String -> 4
+        Variant -> 5
+        FacetAttributeType' name -> (error . showText) $ "Unknown FacetAttributeType: " <> original name
+
+-- | Represents the bounds of /known/ $FacetAttributeType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded FacetAttributeType where
+    minBound = Binary
+    maxBound = Variant
 
 instance Hashable     FacetAttributeType
 instance NFData       FacetAttributeType

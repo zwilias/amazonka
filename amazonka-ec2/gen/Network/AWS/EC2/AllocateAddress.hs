@@ -57,6 +57,7 @@ module Network.AWS.EC2.AllocateAddress
     ) where
 
 import Network.AWS.EC2.Types
+import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request

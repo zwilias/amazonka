@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,29 +16,65 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.Cloud9.Types.Permissions where
+module Network.AWS.Cloud9.Types.Permissions (
+  Permissions (
+    ..
+    , Owner
+    , ReadOnly
+    , ReadWrite
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data Permissions = Owner
-                 | ReadOnly
-                 | ReadWrite
-                     deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                               Typeable, Generic)
+
+data Permissions = Permissions' (CI Text)
+                     deriving (Eq, Ord, Read, Show, Data, Typeable,
+                               Generic)
+
+pattern Owner :: Permissions
+pattern Owner = Permissions' "owner"
+
+pattern ReadOnly :: Permissions
+pattern ReadOnly = Permissions' "read-only"
+
+pattern ReadWrite :: Permissions
+pattern ReadWrite = Permissions' "read-write"
+
+{-# COMPLETE
+  Owner,
+  ReadOnly,
+  ReadWrite,
+  Permissions' #-}
 
 instance FromText Permissions where
-    parser = takeLowerText >>= \case
-        "owner" -> pure Owner
-        "read-only" -> pure ReadOnly
-        "read-write" -> pure ReadWrite
-        e -> fromTextError $ "Failure parsing Permissions from value: '" <> e
-           <> "'. Accepted values: owner, read-only, read-write"
+    parser = (Permissions' . mk) <$> takeText
 
 instance ToText Permissions where
-    toText = \case
-        Owner -> "owner"
-        ReadOnly -> "read-only"
-        ReadWrite -> "read-write"
+    toText (Permissions' ci) = original ci
+
+-- | Represents an enum of /known/ $Permissions.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum Permissions where
+    toEnum i = case i of
+        0 -> Owner
+        1 -> ReadOnly
+        2 -> ReadWrite
+        _ -> (error . showText) $ "Unknown index for Permissions: " <> toText i
+    fromEnum x = case x of
+        Owner -> 0
+        ReadOnly -> 1
+        ReadWrite -> 2
+        Permissions' name -> (error . showText) $ "Unknown Permissions: " <> original name
+
+-- | Represents the bounds of /known/ $Permissions.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded Permissions where
+    minBound = Owner
+    maxBound = ReadWrite
 
 instance Hashable     Permissions
 instance NFData       Permissions

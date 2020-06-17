@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,58 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.AppSync.Types.OutputType where
+module Network.AWS.AppSync.Types.OutputType (
+  OutputType (
+    ..
+    , OTJSON
+    , OTSdl
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data OutputType = OTJSON
-                | OTSdl
-                    deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                              Typeable, Generic)
+
+data OutputType = OutputType' (CI Text)
+                    deriving (Eq, Ord, Read, Show, Data, Typeable,
+                              Generic)
+
+pattern OTJSON :: OutputType
+pattern OTJSON = OutputType' "JSON"
+
+pattern OTSdl :: OutputType
+pattern OTSdl = OutputType' "SDL"
+
+{-# COMPLETE
+  OTJSON,
+  OTSdl,
+  OutputType' #-}
 
 instance FromText OutputType where
-    parser = takeLowerText >>= \case
-        "json" -> pure OTJSON
-        "sdl" -> pure OTSdl
-        e -> fromTextError $ "Failure parsing OutputType from value: '" <> e
-           <> "'. Accepted values: json, sdl"
+    parser = (OutputType' . mk) <$> takeText
 
 instance ToText OutputType where
-    toText = \case
-        OTJSON -> "JSON"
-        OTSdl -> "SDL"
+    toText (OutputType' ci) = original ci
+
+-- | Represents an enum of /known/ $OutputType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum OutputType where
+    toEnum i = case i of
+        0 -> OTJSON
+        1 -> OTSdl
+        _ -> (error . showText) $ "Unknown index for OutputType: " <> toText i
+    fromEnum x = case x of
+        OTJSON -> 0
+        OTSdl -> 1
+        OutputType' name -> (error . showText) $ "Unknown OutputType: " <> original name
+
+-- | Represents the bounds of /known/ $OutputType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded OutputType where
+    minBound = OTJSON
+    maxBound = OTSdl
 
 instance Hashable     OutputType
 instance NFData       OutputType

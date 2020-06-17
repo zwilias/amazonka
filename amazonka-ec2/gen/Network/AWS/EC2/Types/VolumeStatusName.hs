@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,27 +16,59 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.EC2.Types.VolumeStatusName where
+module Network.AWS.EC2.Types.VolumeStatusName (
+  VolumeStatusName (
+    ..
+    , IOEnabled
+    , IOPerformance
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.EC2.Internal
 import Network.AWS.Prelude
-  
-data VolumeStatusName = IOEnabled
-                      | IOPerformance
-                          deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                    Typeable, Generic)
+
+data VolumeStatusName = VolumeStatusName' (CI Text)
+                          deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                    Generic)
+
+pattern IOEnabled :: VolumeStatusName
+pattern IOEnabled = VolumeStatusName' "io-enabled"
+
+pattern IOPerformance :: VolumeStatusName
+pattern IOPerformance = VolumeStatusName' "io-performance"
+
+{-# COMPLETE
+  IOEnabled,
+  IOPerformance,
+  VolumeStatusName' #-}
 
 instance FromText VolumeStatusName where
-    parser = takeLowerText >>= \case
-        "io-enabled" -> pure IOEnabled
-        "io-performance" -> pure IOPerformance
-        e -> fromTextError $ "Failure parsing VolumeStatusName from value: '" <> e
-           <> "'. Accepted values: io-enabled, io-performance"
+    parser = (VolumeStatusName' . mk) <$> takeText
 
 instance ToText VolumeStatusName where
-    toText = \case
-        IOEnabled -> "io-enabled"
-        IOPerformance -> "io-performance"
+    toText (VolumeStatusName' ci) = original ci
+
+-- | Represents an enum of /known/ $VolumeStatusName.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum VolumeStatusName where
+    toEnum i = case i of
+        0 -> IOEnabled
+        1 -> IOPerformance
+        _ -> (error . showText) $ "Unknown index for VolumeStatusName: " <> toText i
+    fromEnum x = case x of
+        IOEnabled -> 0
+        IOPerformance -> 1
+        VolumeStatusName' name -> (error . showText) $ "Unknown VolumeStatusName: " <> original name
+
+-- | Represents the bounds of /known/ $VolumeStatusName.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded VolumeStatusName where
+    minBound = IOEnabled
+    maxBound = IOPerformance
 
 instance Hashable     VolumeStatusName
 instance NFData       VolumeStatusName

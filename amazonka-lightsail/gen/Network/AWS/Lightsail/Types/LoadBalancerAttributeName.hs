@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,29 +16,66 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.Lightsail.Types.LoadBalancerAttributeName where
+module Network.AWS.Lightsail.Types.LoadBalancerAttributeName (
+  LoadBalancerAttributeName (
+    ..
+    , HealthCheckPath
+    , SessionStickinessEnabled
+    , SessionStickinessLbCookieDurationSeconds
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data LoadBalancerAttributeName = HealthCheckPath
-                               | SessionStickinessEnabled
-                               | SessionStickinessLbCookieDurationSeconds
-                                   deriving (Eq, Ord, Read, Show, Enum, Bounded,
-                                             Data, Typeable, Generic)
+
+data LoadBalancerAttributeName = LoadBalancerAttributeName' (CI
+                                                               Text)
+                                   deriving (Eq, Ord, Read, Show, Data,
+                                             Typeable, Generic)
+
+pattern HealthCheckPath :: LoadBalancerAttributeName
+pattern HealthCheckPath = LoadBalancerAttributeName' "HealthCheckPath"
+
+pattern SessionStickinessEnabled :: LoadBalancerAttributeName
+pattern SessionStickinessEnabled = LoadBalancerAttributeName' "SessionStickinessEnabled"
+
+pattern SessionStickinessLbCookieDurationSeconds :: LoadBalancerAttributeName
+pattern SessionStickinessLbCookieDurationSeconds = LoadBalancerAttributeName' "SessionStickiness_LB_CookieDurationSeconds"
+
+{-# COMPLETE
+  HealthCheckPath,
+  SessionStickinessEnabled,
+  SessionStickinessLbCookieDurationSeconds,
+  LoadBalancerAttributeName' #-}
 
 instance FromText LoadBalancerAttributeName where
-    parser = takeLowerText >>= \case
-        "healthcheckpath" -> pure HealthCheckPath
-        "sessionstickinessenabled" -> pure SessionStickinessEnabled
-        "sessionstickiness_lb_cookiedurationseconds" -> pure SessionStickinessLbCookieDurationSeconds
-        e -> fromTextError $ "Failure parsing LoadBalancerAttributeName from value: '" <> e
-           <> "'. Accepted values: healthcheckpath, sessionstickinessenabled, sessionstickiness_lb_cookiedurationseconds"
+    parser = (LoadBalancerAttributeName' . mk) <$> takeText
 
 instance ToText LoadBalancerAttributeName where
-    toText = \case
-        HealthCheckPath -> "HealthCheckPath"
-        SessionStickinessEnabled -> "SessionStickinessEnabled"
-        SessionStickinessLbCookieDurationSeconds -> "SessionStickiness_LB_CookieDurationSeconds"
+    toText (LoadBalancerAttributeName' ci) = original ci
+
+-- | Represents an enum of /known/ $LoadBalancerAttributeName.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum LoadBalancerAttributeName where
+    toEnum i = case i of
+        0 -> HealthCheckPath
+        1 -> SessionStickinessEnabled
+        2 -> SessionStickinessLbCookieDurationSeconds
+        _ -> (error . showText) $ "Unknown index for LoadBalancerAttributeName: " <> toText i
+    fromEnum x = case x of
+        HealthCheckPath -> 0
+        SessionStickinessEnabled -> 1
+        SessionStickinessLbCookieDurationSeconds -> 2
+        LoadBalancerAttributeName' name -> (error . showText) $ "Unknown LoadBalancerAttributeName: " <> original name
+
+-- | Represents the bounds of /known/ $LoadBalancerAttributeName.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded LoadBalancerAttributeName where
+    minBound = HealthCheckPath
+    maxBound = SessionStickinessLbCookieDurationSeconds
 
 instance Hashable     LoadBalancerAttributeName
 instance NFData       LoadBalancerAttributeName

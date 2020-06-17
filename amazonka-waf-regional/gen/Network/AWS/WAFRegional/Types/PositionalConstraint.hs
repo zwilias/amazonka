@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,35 +16,80 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.WAFRegional.Types.PositionalConstraint where
+module Network.AWS.WAFRegional.Types.PositionalConstraint (
+  PositionalConstraint (
+    ..
+    , Contains
+    , ContainsWord
+    , EndsWith
+    , Exactly
+    , StartsWith
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data PositionalConstraint = Contains
-                          | ContainsWord
-                          | EndsWith
-                          | Exactly
-                          | StartsWith
-                              deriving (Eq, Ord, Read, Show, Enum, Bounded,
-                                        Data, Typeable, Generic)
+
+data PositionalConstraint = PositionalConstraint' (CI
+                                                     Text)
+                              deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                        Generic)
+
+pattern Contains :: PositionalConstraint
+pattern Contains = PositionalConstraint' "CONTAINS"
+
+pattern ContainsWord :: PositionalConstraint
+pattern ContainsWord = PositionalConstraint' "CONTAINS_WORD"
+
+pattern EndsWith :: PositionalConstraint
+pattern EndsWith = PositionalConstraint' "ENDS_WITH"
+
+pattern Exactly :: PositionalConstraint
+pattern Exactly = PositionalConstraint' "EXACTLY"
+
+pattern StartsWith :: PositionalConstraint
+pattern StartsWith = PositionalConstraint' "STARTS_WITH"
+
+{-# COMPLETE
+  Contains,
+  ContainsWord,
+  EndsWith,
+  Exactly,
+  StartsWith,
+  PositionalConstraint' #-}
 
 instance FromText PositionalConstraint where
-    parser = takeLowerText >>= \case
-        "contains" -> pure Contains
-        "contains_word" -> pure ContainsWord
-        "ends_with" -> pure EndsWith
-        "exactly" -> pure Exactly
-        "starts_with" -> pure StartsWith
-        e -> fromTextError $ "Failure parsing PositionalConstraint from value: '" <> e
-           <> "'. Accepted values: contains, contains_word, ends_with, exactly, starts_with"
+    parser = (PositionalConstraint' . mk) <$> takeText
 
 instance ToText PositionalConstraint where
-    toText = \case
-        Contains -> "CONTAINS"
-        ContainsWord -> "CONTAINS_WORD"
-        EndsWith -> "ENDS_WITH"
-        Exactly -> "EXACTLY"
-        StartsWith -> "STARTS_WITH"
+    toText (PositionalConstraint' ci) = original ci
+
+-- | Represents an enum of /known/ $PositionalConstraint.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum PositionalConstraint where
+    toEnum i = case i of
+        0 -> Contains
+        1 -> ContainsWord
+        2 -> EndsWith
+        3 -> Exactly
+        4 -> StartsWith
+        _ -> (error . showText) $ "Unknown index for PositionalConstraint: " <> toText i
+    fromEnum x = case x of
+        Contains -> 0
+        ContainsWord -> 1
+        EndsWith -> 2
+        Exactly -> 3
+        StartsWith -> 4
+        PositionalConstraint' name -> (error . showText) $ "Unknown PositionalConstraint: " <> original name
+
+-- | Represents the bounds of /known/ $PositionalConstraint.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded PositionalConstraint where
+    minBound = Contains
+    maxBound = StartsWith
 
 instance Hashable     PositionalConstraint
 instance NFData       PositionalConstraint

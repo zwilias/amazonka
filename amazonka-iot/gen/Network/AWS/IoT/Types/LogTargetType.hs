@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,58 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.IoT.Types.LogTargetType where
+module Network.AWS.IoT.Types.LogTargetType (
+  LogTargetType (
+    ..
+    , LTTDefault
+    , LTTThingGroup
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data LogTargetType = LTTDefault
-                   | LTTThingGroup
-                       deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                 Typeable, Generic)
+
+data LogTargetType = LogTargetType' (CI Text)
+                       deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                 Generic)
+
+pattern LTTDefault :: LogTargetType
+pattern LTTDefault = LogTargetType' "DEFAULT"
+
+pattern LTTThingGroup :: LogTargetType
+pattern LTTThingGroup = LogTargetType' "THING_GROUP"
+
+{-# COMPLETE
+  LTTDefault,
+  LTTThingGroup,
+  LogTargetType' #-}
 
 instance FromText LogTargetType where
-    parser = takeLowerText >>= \case
-        "default" -> pure LTTDefault
-        "thing_group" -> pure LTTThingGroup
-        e -> fromTextError $ "Failure parsing LogTargetType from value: '" <> e
-           <> "'. Accepted values: default, thing_group"
+    parser = (LogTargetType' . mk) <$> takeText
 
 instance ToText LogTargetType where
-    toText = \case
-        LTTDefault -> "DEFAULT"
-        LTTThingGroup -> "THING_GROUP"
+    toText (LogTargetType' ci) = original ci
+
+-- | Represents an enum of /known/ $LogTargetType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum LogTargetType where
+    toEnum i = case i of
+        0 -> LTTDefault
+        1 -> LTTThingGroup
+        _ -> (error . showText) $ "Unknown index for LogTargetType: " <> toText i
+    fromEnum x = case x of
+        LTTDefault -> 0
+        LTTThingGroup -> 1
+        LogTargetType' name -> (error . showText) $ "Unknown LogTargetType: " <> original name
+
+-- | Represents the bounds of /known/ $LogTargetType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded LogTargetType where
+    minBound = LTTDefault
+    maxBound = LTTThingGroup
 
 instance Hashable     LogTargetType
 instance NFData       LogTargetType

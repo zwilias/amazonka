@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,29 +16,65 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.AppStream.Types.PlatformType where
+module Network.AWS.AppStream.Types.PlatformType (
+  PlatformType (
+    ..
+    , Windows
+    , WindowsServer2016
+    , WindowsServer2019
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data PlatformType = Windows
-                  | WindowsServer2016
-                  | WindowsServer2019
-                      deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                Typeable, Generic)
+
+data PlatformType = PlatformType' (CI Text)
+                      deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                Generic)
+
+pattern Windows :: PlatformType
+pattern Windows = PlatformType' "WINDOWS"
+
+pattern WindowsServer2016 :: PlatformType
+pattern WindowsServer2016 = PlatformType' "WINDOWS_SERVER_2016"
+
+pattern WindowsServer2019 :: PlatformType
+pattern WindowsServer2019 = PlatformType' "WINDOWS_SERVER_2019"
+
+{-# COMPLETE
+  Windows,
+  WindowsServer2016,
+  WindowsServer2019,
+  PlatformType' #-}
 
 instance FromText PlatformType where
-    parser = takeLowerText >>= \case
-        "windows" -> pure Windows
-        "windows_server_2016" -> pure WindowsServer2016
-        "windows_server_2019" -> pure WindowsServer2019
-        e -> fromTextError $ "Failure parsing PlatformType from value: '" <> e
-           <> "'. Accepted values: windows, windows_server_2016, windows_server_2019"
+    parser = (PlatformType' . mk) <$> takeText
 
 instance ToText PlatformType where
-    toText = \case
-        Windows -> "WINDOWS"
-        WindowsServer2016 -> "WINDOWS_SERVER_2016"
-        WindowsServer2019 -> "WINDOWS_SERVER_2019"
+    toText (PlatformType' ci) = original ci
+
+-- | Represents an enum of /known/ $PlatformType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum PlatformType where
+    toEnum i = case i of
+        0 -> Windows
+        1 -> WindowsServer2016
+        2 -> WindowsServer2019
+        _ -> (error . showText) $ "Unknown index for PlatformType: " <> toText i
+    fromEnum x = case x of
+        Windows -> 0
+        WindowsServer2016 -> 1
+        WindowsServer2019 -> 2
+        PlatformType' name -> (error . showText) $ "Unknown PlatformType: " <> original name
+
+-- | Represents the bounds of /known/ $PlatformType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded PlatformType where
+    minBound = Windows
+    maxBound = WindowsServer2019
 
 instance Hashable     PlatformType
 instance NFData       PlatformType

@@ -46,6 +46,7 @@ module Network.AWS.MachineLearning.CreateEvaluation
 
 import Network.AWS.Lens
 import Network.AWS.MachineLearning.Types
+import Network.AWS.MachineLearning.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response

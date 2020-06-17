@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,32 +16,73 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.SWF.Types.StartTimerFailedCause where
+module Network.AWS.SWF.Types.StartTimerFailedCause (
+  StartTimerFailedCause (
+    ..
+    , STFCOpenTimersLimitExceeded
+    , STFCOperationNotPermitted
+    , STFCTimerCreationRateExceeded
+    , STFCTimerIdAlreadyInUse
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data StartTimerFailedCause = STFCOpenTimersLimitExceeded
-                           | STFCOperationNotPermitted
-                           | STFCTimerCreationRateExceeded
-                           | STFCTimerIdAlreadyInUse
-                               deriving (Eq, Ord, Read, Show, Enum, Bounded,
-                                         Data, Typeable, Generic)
+
+data StartTimerFailedCause = StartTimerFailedCause' (CI
+                                                       Text)
+                               deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                         Generic)
+
+pattern STFCOpenTimersLimitExceeded :: StartTimerFailedCause
+pattern STFCOpenTimersLimitExceeded = StartTimerFailedCause' "OPEN_TIMERS_LIMIT_EXCEEDED"
+
+pattern STFCOperationNotPermitted :: StartTimerFailedCause
+pattern STFCOperationNotPermitted = StartTimerFailedCause' "OPERATION_NOT_PERMITTED"
+
+pattern STFCTimerCreationRateExceeded :: StartTimerFailedCause
+pattern STFCTimerCreationRateExceeded = StartTimerFailedCause' "TIMER_CREATION_RATE_EXCEEDED"
+
+pattern STFCTimerIdAlreadyInUse :: StartTimerFailedCause
+pattern STFCTimerIdAlreadyInUse = StartTimerFailedCause' "TIMER_ID_ALREADY_IN_USE"
+
+{-# COMPLETE
+  STFCOpenTimersLimitExceeded,
+  STFCOperationNotPermitted,
+  STFCTimerCreationRateExceeded,
+  STFCTimerIdAlreadyInUse,
+  StartTimerFailedCause' #-}
 
 instance FromText StartTimerFailedCause where
-    parser = takeLowerText >>= \case
-        "open_timers_limit_exceeded" -> pure STFCOpenTimersLimitExceeded
-        "operation_not_permitted" -> pure STFCOperationNotPermitted
-        "timer_creation_rate_exceeded" -> pure STFCTimerCreationRateExceeded
-        "timer_id_already_in_use" -> pure STFCTimerIdAlreadyInUse
-        e -> fromTextError $ "Failure parsing StartTimerFailedCause from value: '" <> e
-           <> "'. Accepted values: open_timers_limit_exceeded, operation_not_permitted, timer_creation_rate_exceeded, timer_id_already_in_use"
+    parser = (StartTimerFailedCause' . mk) <$> takeText
 
 instance ToText StartTimerFailedCause where
-    toText = \case
-        STFCOpenTimersLimitExceeded -> "OPEN_TIMERS_LIMIT_EXCEEDED"
-        STFCOperationNotPermitted -> "OPERATION_NOT_PERMITTED"
-        STFCTimerCreationRateExceeded -> "TIMER_CREATION_RATE_EXCEEDED"
-        STFCTimerIdAlreadyInUse -> "TIMER_ID_ALREADY_IN_USE"
+    toText (StartTimerFailedCause' ci) = original ci
+
+-- | Represents an enum of /known/ $StartTimerFailedCause.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum StartTimerFailedCause where
+    toEnum i = case i of
+        0 -> STFCOpenTimersLimitExceeded
+        1 -> STFCOperationNotPermitted
+        2 -> STFCTimerCreationRateExceeded
+        3 -> STFCTimerIdAlreadyInUse
+        _ -> (error . showText) $ "Unknown index for StartTimerFailedCause: " <> toText i
+    fromEnum x = case x of
+        STFCOpenTimersLimitExceeded -> 0
+        STFCOperationNotPermitted -> 1
+        STFCTimerCreationRateExceeded -> 2
+        STFCTimerIdAlreadyInUse -> 3
+        StartTimerFailedCause' name -> (error . showText) $ "Unknown StartTimerFailedCause: " <> original name
+
+-- | Represents the bounds of /known/ $StartTimerFailedCause.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded StartTimerFailedCause where
+    minBound = STFCOpenTimersLimitExceeded
+    maxBound = STFCTimerIdAlreadyInUse
 
 instance Hashable     StartTimerFailedCause
 instance NFData       StartTimerFailedCause

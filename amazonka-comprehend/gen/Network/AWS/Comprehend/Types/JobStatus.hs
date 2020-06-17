@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,38 +16,86 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.Comprehend.Types.JobStatus where
+module Network.AWS.Comprehend.Types.JobStatus (
+  JobStatus (
+    ..
+    , Completed
+    , Failed
+    , InProgress
+    , StopRequested
+    , Stopped
+    , Submitted
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data JobStatus = Completed
-               | Failed
-               | InProgress
-               | StopRequested
-               | Stopped
-               | Submitted
-                   deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                             Typeable, Generic)
+
+data JobStatus = JobStatus' (CI Text)
+                   deriving (Eq, Ord, Read, Show, Data, Typeable,
+                             Generic)
+
+pattern Completed :: JobStatus
+pattern Completed = JobStatus' "COMPLETED"
+
+pattern Failed :: JobStatus
+pattern Failed = JobStatus' "FAILED"
+
+pattern InProgress :: JobStatus
+pattern InProgress = JobStatus' "IN_PROGRESS"
+
+pattern StopRequested :: JobStatus
+pattern StopRequested = JobStatus' "STOP_REQUESTED"
+
+pattern Stopped :: JobStatus
+pattern Stopped = JobStatus' "STOPPED"
+
+pattern Submitted :: JobStatus
+pattern Submitted = JobStatus' "SUBMITTED"
+
+{-# COMPLETE
+  Completed,
+  Failed,
+  InProgress,
+  StopRequested,
+  Stopped,
+  Submitted,
+  JobStatus' #-}
 
 instance FromText JobStatus where
-    parser = takeLowerText >>= \case
-        "completed" -> pure Completed
-        "failed" -> pure Failed
-        "in_progress" -> pure InProgress
-        "stop_requested" -> pure StopRequested
-        "stopped" -> pure Stopped
-        "submitted" -> pure Submitted
-        e -> fromTextError $ "Failure parsing JobStatus from value: '" <> e
-           <> "'. Accepted values: completed, failed, in_progress, stop_requested, stopped, submitted"
+    parser = (JobStatus' . mk) <$> takeText
 
 instance ToText JobStatus where
-    toText = \case
-        Completed -> "COMPLETED"
-        Failed -> "FAILED"
-        InProgress -> "IN_PROGRESS"
-        StopRequested -> "STOP_REQUESTED"
-        Stopped -> "STOPPED"
-        Submitted -> "SUBMITTED"
+    toText (JobStatus' ci) = original ci
+
+-- | Represents an enum of /known/ $JobStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum JobStatus where
+    toEnum i = case i of
+        0 -> Completed
+        1 -> Failed
+        2 -> InProgress
+        3 -> StopRequested
+        4 -> Stopped
+        5 -> Submitted
+        _ -> (error . showText) $ "Unknown index for JobStatus: " <> toText i
+    fromEnum x = case x of
+        Completed -> 0
+        Failed -> 1
+        InProgress -> 2
+        StopRequested -> 3
+        Stopped -> 4
+        Submitted -> 5
+        JobStatus' name -> (error . showText) $ "Unknown JobStatus: " <> original name
+
+-- | Represents the bounds of /known/ $JobStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded JobStatus where
+    minBound = Completed
+    maxBound = Submitted
 
 instance Hashable     JobStatus
 instance NFData       JobStatus

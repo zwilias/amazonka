@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,23 +16,51 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.SES.Types.StopScope where
+module Network.AWS.SES.Types.StopScope (
+  StopScope (
+    ..
+    , RuleSet
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data StopScope = RuleSet
-                   deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                             Typeable, Generic)
+
+data StopScope = StopScope' (CI Text)
+                   deriving (Eq, Ord, Read, Show, Data, Typeable,
+                             Generic)
+
+pattern RuleSet :: StopScope
+pattern RuleSet = StopScope' "RuleSet"
+
+{-# COMPLETE
+  RuleSet,
+  StopScope' #-}
 
 instance FromText StopScope where
-    parser = takeLowerText >>= \case
-        "ruleset" -> pure RuleSet
-        e -> fromTextError $ "Failure parsing StopScope from value: '" <> e
-           <> "'. Accepted values: ruleset"
+    parser = (StopScope' . mk) <$> takeText
 
 instance ToText StopScope where
-    toText = \case
-        RuleSet -> "RuleSet"
+    toText (StopScope' ci) = original ci
+
+-- | Represents an enum of /known/ $StopScope.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum StopScope where
+    toEnum i = case i of
+        0 -> RuleSet
+        _ -> (error . showText) $ "Unknown index for StopScope: " <> toText i
+    fromEnum x = case x of
+        RuleSet -> 0
+        StopScope' name -> (error . showText) $ "Unknown StopScope: " <> original name
+
+-- | Represents the bounds of /known/ $StopScope.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded StopScope where
+    minBound = RuleSet
+    maxBound = RuleSet
 
 instance Hashable     StopScope
 instance NFData       StopScope

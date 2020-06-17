@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,58 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.CognitoIdentity.Types.RoleMappingType where
+module Network.AWS.CognitoIdentity.Types.RoleMappingType (
+  RoleMappingType (
+    ..
+    , Rules
+    , Token
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data RoleMappingType = Rules
-                     | Token
-                         deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                   Typeable, Generic)
+
+data RoleMappingType = RoleMappingType' (CI Text)
+                         deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                   Generic)
+
+pattern Rules :: RoleMappingType
+pattern Rules = RoleMappingType' "Rules"
+
+pattern Token :: RoleMappingType
+pattern Token = RoleMappingType' "Token"
+
+{-# COMPLETE
+  Rules,
+  Token,
+  RoleMappingType' #-}
 
 instance FromText RoleMappingType where
-    parser = takeLowerText >>= \case
-        "rules" -> pure Rules
-        "token" -> pure Token
-        e -> fromTextError $ "Failure parsing RoleMappingType from value: '" <> e
-           <> "'. Accepted values: rules, token"
+    parser = (RoleMappingType' . mk) <$> takeText
 
 instance ToText RoleMappingType where
-    toText = \case
-        Rules -> "Rules"
-        Token -> "Token"
+    toText (RoleMappingType' ci) = original ci
+
+-- | Represents an enum of /known/ $RoleMappingType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum RoleMappingType where
+    toEnum i = case i of
+        0 -> Rules
+        1 -> Token
+        _ -> (error . showText) $ "Unknown index for RoleMappingType: " <> toText i
+    fromEnum x = case x of
+        Rules -> 0
+        Token -> 1
+        RoleMappingType' name -> (error . showText) $ "Unknown RoleMappingType: " <> original name
+
+-- | Represents the bounds of /known/ $RoleMappingType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded RoleMappingType where
+    minBound = Rules
+    maxBound = Token
 
 instance Hashable     RoleMappingType
 instance NFData       RoleMappingType

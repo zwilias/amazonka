@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,44 +16,101 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.CognitoIdentityProvider.Types.ExplicitAuthFlowsType where
+module Network.AWS.CognitoIdentityProvider.Types.ExplicitAuthFlowsType (
+  ExplicitAuthFlowsType (
+    ..
+    , EAFTAdminNoSrpAuth
+    , EAFTAllowAdminUserPasswordAuth
+    , EAFTAllowCustomAuth
+    , EAFTAllowRefreshTokenAuth
+    , EAFTAllowUserPasswordAuth
+    , EAFTAllowUserSrpAuth
+    , EAFTCustomAuthFlowOnly
+    , EAFTUserPasswordAuth
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data ExplicitAuthFlowsType = EAFTAdminNoSrpAuth
-                           | EAFTAllowAdminUserPasswordAuth
-                           | EAFTAllowCustomAuth
-                           | EAFTAllowRefreshTokenAuth
-                           | EAFTAllowUserPasswordAuth
-                           | EAFTAllowUserSrpAuth
-                           | EAFTCustomAuthFlowOnly
-                           | EAFTUserPasswordAuth
-                               deriving (Eq, Ord, Read, Show, Enum, Bounded,
-                                         Data, Typeable, Generic)
+
+data ExplicitAuthFlowsType = ExplicitAuthFlowsType' (CI
+                                                       Text)
+                               deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                         Generic)
+
+pattern EAFTAdminNoSrpAuth :: ExplicitAuthFlowsType
+pattern EAFTAdminNoSrpAuth = ExplicitAuthFlowsType' "ADMIN_NO_SRP_AUTH"
+
+pattern EAFTAllowAdminUserPasswordAuth :: ExplicitAuthFlowsType
+pattern EAFTAllowAdminUserPasswordAuth = ExplicitAuthFlowsType' "ALLOW_ADMIN_USER_PASSWORD_AUTH"
+
+pattern EAFTAllowCustomAuth :: ExplicitAuthFlowsType
+pattern EAFTAllowCustomAuth = ExplicitAuthFlowsType' "ALLOW_CUSTOM_AUTH"
+
+pattern EAFTAllowRefreshTokenAuth :: ExplicitAuthFlowsType
+pattern EAFTAllowRefreshTokenAuth = ExplicitAuthFlowsType' "ALLOW_REFRESH_TOKEN_AUTH"
+
+pattern EAFTAllowUserPasswordAuth :: ExplicitAuthFlowsType
+pattern EAFTAllowUserPasswordAuth = ExplicitAuthFlowsType' "ALLOW_USER_PASSWORD_AUTH"
+
+pattern EAFTAllowUserSrpAuth :: ExplicitAuthFlowsType
+pattern EAFTAllowUserSrpAuth = ExplicitAuthFlowsType' "ALLOW_USER_SRP_AUTH"
+
+pattern EAFTCustomAuthFlowOnly :: ExplicitAuthFlowsType
+pattern EAFTCustomAuthFlowOnly = ExplicitAuthFlowsType' "CUSTOM_AUTH_FLOW_ONLY"
+
+pattern EAFTUserPasswordAuth :: ExplicitAuthFlowsType
+pattern EAFTUserPasswordAuth = ExplicitAuthFlowsType' "USER_PASSWORD_AUTH"
+
+{-# COMPLETE
+  EAFTAdminNoSrpAuth,
+  EAFTAllowAdminUserPasswordAuth,
+  EAFTAllowCustomAuth,
+  EAFTAllowRefreshTokenAuth,
+  EAFTAllowUserPasswordAuth,
+  EAFTAllowUserSrpAuth,
+  EAFTCustomAuthFlowOnly,
+  EAFTUserPasswordAuth,
+  ExplicitAuthFlowsType' #-}
 
 instance FromText ExplicitAuthFlowsType where
-    parser = takeLowerText >>= \case
-        "admin_no_srp_auth" -> pure EAFTAdminNoSrpAuth
-        "allow_admin_user_password_auth" -> pure EAFTAllowAdminUserPasswordAuth
-        "allow_custom_auth" -> pure EAFTAllowCustomAuth
-        "allow_refresh_token_auth" -> pure EAFTAllowRefreshTokenAuth
-        "allow_user_password_auth" -> pure EAFTAllowUserPasswordAuth
-        "allow_user_srp_auth" -> pure EAFTAllowUserSrpAuth
-        "custom_auth_flow_only" -> pure EAFTCustomAuthFlowOnly
-        "user_password_auth" -> pure EAFTUserPasswordAuth
-        e -> fromTextError $ "Failure parsing ExplicitAuthFlowsType from value: '" <> e
-           <> "'. Accepted values: admin_no_srp_auth, allow_admin_user_password_auth, allow_custom_auth, allow_refresh_token_auth, allow_user_password_auth, allow_user_srp_auth, custom_auth_flow_only, user_password_auth"
+    parser = (ExplicitAuthFlowsType' . mk) <$> takeText
 
 instance ToText ExplicitAuthFlowsType where
-    toText = \case
-        EAFTAdminNoSrpAuth -> "ADMIN_NO_SRP_AUTH"
-        EAFTAllowAdminUserPasswordAuth -> "ALLOW_ADMIN_USER_PASSWORD_AUTH"
-        EAFTAllowCustomAuth -> "ALLOW_CUSTOM_AUTH"
-        EAFTAllowRefreshTokenAuth -> "ALLOW_REFRESH_TOKEN_AUTH"
-        EAFTAllowUserPasswordAuth -> "ALLOW_USER_PASSWORD_AUTH"
-        EAFTAllowUserSrpAuth -> "ALLOW_USER_SRP_AUTH"
-        EAFTCustomAuthFlowOnly -> "CUSTOM_AUTH_FLOW_ONLY"
-        EAFTUserPasswordAuth -> "USER_PASSWORD_AUTH"
+    toText (ExplicitAuthFlowsType' ci) = original ci
+
+-- | Represents an enum of /known/ $ExplicitAuthFlowsType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum ExplicitAuthFlowsType where
+    toEnum i = case i of
+        0 -> EAFTAdminNoSrpAuth
+        1 -> EAFTAllowAdminUserPasswordAuth
+        2 -> EAFTAllowCustomAuth
+        3 -> EAFTAllowRefreshTokenAuth
+        4 -> EAFTAllowUserPasswordAuth
+        5 -> EAFTAllowUserSrpAuth
+        6 -> EAFTCustomAuthFlowOnly
+        7 -> EAFTUserPasswordAuth
+        _ -> (error . showText) $ "Unknown index for ExplicitAuthFlowsType: " <> toText i
+    fromEnum x = case x of
+        EAFTAdminNoSrpAuth -> 0
+        EAFTAllowAdminUserPasswordAuth -> 1
+        EAFTAllowCustomAuth -> 2
+        EAFTAllowRefreshTokenAuth -> 3
+        EAFTAllowUserPasswordAuth -> 4
+        EAFTAllowUserSrpAuth -> 5
+        EAFTCustomAuthFlowOnly -> 6
+        EAFTUserPasswordAuth -> 7
+        ExplicitAuthFlowsType' name -> (error . showText) $ "Unknown ExplicitAuthFlowsType: " <> original name
+
+-- | Represents the bounds of /known/ $ExplicitAuthFlowsType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded ExplicitAuthFlowsType where
+    minBound = EAFTAdminNoSrpAuth
+    maxBound = EAFTUserPasswordAuth
 
 instance Hashable     ExplicitAuthFlowsType
 instance NFData       ExplicitAuthFlowsType

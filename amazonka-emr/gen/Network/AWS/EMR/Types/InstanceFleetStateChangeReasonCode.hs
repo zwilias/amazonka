@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,33 +16,73 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.EMR.Types.InstanceFleetStateChangeReasonCode where
+module Network.AWS.EMR.Types.InstanceFleetStateChangeReasonCode (
+  InstanceFleetStateChangeReasonCode (
+    ..
+    , IFSCRCClusterTerminated
+    , IFSCRCInstanceFailure
+    , IFSCRCInternalError
+    , IFSCRCValidationError
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data InstanceFleetStateChangeReasonCode = IFSCRCClusterTerminated
-                                        | IFSCRCInstanceFailure
-                                        | IFSCRCInternalError
-                                        | IFSCRCValidationError
-                                            deriving (Eq, Ord, Read, Show, Enum,
-                                                      Bounded, Data, Typeable,
-                                                      Generic)
+
+data InstanceFleetStateChangeReasonCode = InstanceFleetStateChangeReasonCode' (CI
+                                                                                 Text)
+                                            deriving (Eq, Ord, Read, Show, Data,
+                                                      Typeable, Generic)
+
+pattern IFSCRCClusterTerminated :: InstanceFleetStateChangeReasonCode
+pattern IFSCRCClusterTerminated = InstanceFleetStateChangeReasonCode' "CLUSTER_TERMINATED"
+
+pattern IFSCRCInstanceFailure :: InstanceFleetStateChangeReasonCode
+pattern IFSCRCInstanceFailure = InstanceFleetStateChangeReasonCode' "INSTANCE_FAILURE"
+
+pattern IFSCRCInternalError :: InstanceFleetStateChangeReasonCode
+pattern IFSCRCInternalError = InstanceFleetStateChangeReasonCode' "INTERNAL_ERROR"
+
+pattern IFSCRCValidationError :: InstanceFleetStateChangeReasonCode
+pattern IFSCRCValidationError = InstanceFleetStateChangeReasonCode' "VALIDATION_ERROR"
+
+{-# COMPLETE
+  IFSCRCClusterTerminated,
+  IFSCRCInstanceFailure,
+  IFSCRCInternalError,
+  IFSCRCValidationError,
+  InstanceFleetStateChangeReasonCode' #-}
 
 instance FromText InstanceFleetStateChangeReasonCode where
-    parser = takeLowerText >>= \case
-        "cluster_terminated" -> pure IFSCRCClusterTerminated
-        "instance_failure" -> pure IFSCRCInstanceFailure
-        "internal_error" -> pure IFSCRCInternalError
-        "validation_error" -> pure IFSCRCValidationError
-        e -> fromTextError $ "Failure parsing InstanceFleetStateChangeReasonCode from value: '" <> e
-           <> "'. Accepted values: cluster_terminated, instance_failure, internal_error, validation_error"
+    parser = (InstanceFleetStateChangeReasonCode' . mk) <$> takeText
 
 instance ToText InstanceFleetStateChangeReasonCode where
-    toText = \case
-        IFSCRCClusterTerminated -> "CLUSTER_TERMINATED"
-        IFSCRCInstanceFailure -> "INSTANCE_FAILURE"
-        IFSCRCInternalError -> "INTERNAL_ERROR"
-        IFSCRCValidationError -> "VALIDATION_ERROR"
+    toText (InstanceFleetStateChangeReasonCode' ci) = original ci
+
+-- | Represents an enum of /known/ $InstanceFleetStateChangeReasonCode.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum InstanceFleetStateChangeReasonCode where
+    toEnum i = case i of
+        0 -> IFSCRCClusterTerminated
+        1 -> IFSCRCInstanceFailure
+        2 -> IFSCRCInternalError
+        3 -> IFSCRCValidationError
+        _ -> (error . showText) $ "Unknown index for InstanceFleetStateChangeReasonCode: " <> toText i
+    fromEnum x = case x of
+        IFSCRCClusterTerminated -> 0
+        IFSCRCInstanceFailure -> 1
+        IFSCRCInternalError -> 2
+        IFSCRCValidationError -> 3
+        InstanceFleetStateChangeReasonCode' name -> (error . showText) $ "Unknown InstanceFleetStateChangeReasonCode: " <> original name
+
+-- | Represents the bounds of /known/ $InstanceFleetStateChangeReasonCode.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded InstanceFleetStateChangeReasonCode where
+    minBound = IFSCRCClusterTerminated
+    maxBound = IFSCRCValidationError
 
 instance Hashable     InstanceFleetStateChangeReasonCode
 instance NFData       InstanceFleetStateChangeReasonCode

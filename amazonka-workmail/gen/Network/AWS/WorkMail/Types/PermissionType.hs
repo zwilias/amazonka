@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,29 +16,65 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.WorkMail.Types.PermissionType where
+module Network.AWS.WorkMail.Types.PermissionType (
+  PermissionType (
+    ..
+    , FullAccess
+    , SendAs
+    , SendOnBehalf
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data PermissionType = FullAccess
-                    | SendAs
-                    | SendOnBehalf
-                        deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                  Typeable, Generic)
+
+data PermissionType = PermissionType' (CI Text)
+                        deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                  Generic)
+
+pattern FullAccess :: PermissionType
+pattern FullAccess = PermissionType' "FULL_ACCESS"
+
+pattern SendAs :: PermissionType
+pattern SendAs = PermissionType' "SEND_AS"
+
+pattern SendOnBehalf :: PermissionType
+pattern SendOnBehalf = PermissionType' "SEND_ON_BEHALF"
+
+{-# COMPLETE
+  FullAccess,
+  SendAs,
+  SendOnBehalf,
+  PermissionType' #-}
 
 instance FromText PermissionType where
-    parser = takeLowerText >>= \case
-        "full_access" -> pure FullAccess
-        "send_as" -> pure SendAs
-        "send_on_behalf" -> pure SendOnBehalf
-        e -> fromTextError $ "Failure parsing PermissionType from value: '" <> e
-           <> "'. Accepted values: full_access, send_as, send_on_behalf"
+    parser = (PermissionType' . mk) <$> takeText
 
 instance ToText PermissionType where
-    toText = \case
-        FullAccess -> "FULL_ACCESS"
-        SendAs -> "SEND_AS"
-        SendOnBehalf -> "SEND_ON_BEHALF"
+    toText (PermissionType' ci) = original ci
+
+-- | Represents an enum of /known/ $PermissionType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum PermissionType where
+    toEnum i = case i of
+        0 -> FullAccess
+        1 -> SendAs
+        2 -> SendOnBehalf
+        _ -> (error . showText) $ "Unknown index for PermissionType: " <> toText i
+    fromEnum x = case x of
+        FullAccess -> 0
+        SendAs -> 1
+        SendOnBehalf -> 2
+        PermissionType' name -> (error . showText) $ "Unknown PermissionType: " <> original name
+
+-- | Represents the bounds of /known/ $PermissionType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded PermissionType where
+    minBound = FullAccess
+    maxBound = SendOnBehalf
 
 instance Hashable     PermissionType
 instance NFData       PermissionType

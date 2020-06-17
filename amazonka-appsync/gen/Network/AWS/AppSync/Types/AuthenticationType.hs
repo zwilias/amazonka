@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,32 +16,73 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.AppSync.Types.AuthenticationType where
+module Network.AWS.AppSync.Types.AuthenticationType (
+  AuthenticationType (
+    ..
+    , ATAPIKey
+    , ATAWSIAM
+    , ATAmazonCognitoUserPools
+    , ATOpenidConnect
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data AuthenticationType = ATAPIKey
-                        | ATAWSIAM
-                        | ATAmazonCognitoUserPools
-                        | ATOpenidConnect
-                            deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                      Typeable, Generic)
+
+data AuthenticationType = AuthenticationType' (CI
+                                                 Text)
+                            deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                      Generic)
+
+pattern ATAPIKey :: AuthenticationType
+pattern ATAPIKey = AuthenticationType' "API_KEY"
+
+pattern ATAWSIAM :: AuthenticationType
+pattern ATAWSIAM = AuthenticationType' "AWS_IAM"
+
+pattern ATAmazonCognitoUserPools :: AuthenticationType
+pattern ATAmazonCognitoUserPools = AuthenticationType' "AMAZON_COGNITO_USER_POOLS"
+
+pattern ATOpenidConnect :: AuthenticationType
+pattern ATOpenidConnect = AuthenticationType' "OPENID_CONNECT"
+
+{-# COMPLETE
+  ATAPIKey,
+  ATAWSIAM,
+  ATAmazonCognitoUserPools,
+  ATOpenidConnect,
+  AuthenticationType' #-}
 
 instance FromText AuthenticationType where
-    parser = takeLowerText >>= \case
-        "api_key" -> pure ATAPIKey
-        "aws_iam" -> pure ATAWSIAM
-        "amazon_cognito_user_pools" -> pure ATAmazonCognitoUserPools
-        "openid_connect" -> pure ATOpenidConnect
-        e -> fromTextError $ "Failure parsing AuthenticationType from value: '" <> e
-           <> "'. Accepted values: api_key, aws_iam, amazon_cognito_user_pools, openid_connect"
+    parser = (AuthenticationType' . mk) <$> takeText
 
 instance ToText AuthenticationType where
-    toText = \case
-        ATAPIKey -> "API_KEY"
-        ATAWSIAM -> "AWS_IAM"
-        ATAmazonCognitoUserPools -> "AMAZON_COGNITO_USER_POOLS"
-        ATOpenidConnect -> "OPENID_CONNECT"
+    toText (AuthenticationType' ci) = original ci
+
+-- | Represents an enum of /known/ $AuthenticationType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum AuthenticationType where
+    toEnum i = case i of
+        0 -> ATAPIKey
+        1 -> ATAWSIAM
+        2 -> ATAmazonCognitoUserPools
+        3 -> ATOpenidConnect
+        _ -> (error . showText) $ "Unknown index for AuthenticationType: " <> toText i
+    fromEnum x = case x of
+        ATAPIKey -> 0
+        ATAWSIAM -> 1
+        ATAmazonCognitoUserPools -> 2
+        ATOpenidConnect -> 3
+        AuthenticationType' name -> (error . showText) $ "Unknown AuthenticationType: " <> original name
+
+-- | Represents the bounds of /known/ $AuthenticationType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded AuthenticationType where
+    minBound = ATAPIKey
+    maxBound = ATOpenidConnect
 
 instance Hashable     AuthenticationType
 instance NFData       AuthenticationType

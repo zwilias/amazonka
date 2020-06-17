@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,33 +16,73 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.S3.Types.BucketCannedACL where
+module Network.AWS.S3.Types.BucketCannedACL (
+  BucketCannedACL (
+    ..
+    , BAuthenticatedRead
+    , BPrivate
+    , BPublicRead
+    , BPublicReadWrite
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
 import Network.AWS.S3.Internal
-  
-data BucketCannedACL = BAuthenticatedRead
-                     | BPrivate
-                     | BPublicRead
-                     | BPublicReadWrite
-                         deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                   Typeable, Generic)
+
+data BucketCannedACL = BucketCannedACL' (CI Text)
+                         deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                   Generic)
+
+pattern BAuthenticatedRead :: BucketCannedACL
+pattern BAuthenticatedRead = BucketCannedACL' "authenticated-read"
+
+pattern BPrivate :: BucketCannedACL
+pattern BPrivate = BucketCannedACL' "private"
+
+pattern BPublicRead :: BucketCannedACL
+pattern BPublicRead = BucketCannedACL' "public-read"
+
+pattern BPublicReadWrite :: BucketCannedACL
+pattern BPublicReadWrite = BucketCannedACL' "public-read-write"
+
+{-# COMPLETE
+  BAuthenticatedRead,
+  BPrivate,
+  BPublicRead,
+  BPublicReadWrite,
+  BucketCannedACL' #-}
 
 instance FromText BucketCannedACL where
-    parser = takeLowerText >>= \case
-        "authenticated-read" -> pure BAuthenticatedRead
-        "private" -> pure BPrivate
-        "public-read" -> pure BPublicRead
-        "public-read-write" -> pure BPublicReadWrite
-        e -> fromTextError $ "Failure parsing BucketCannedACL from value: '" <> e
-           <> "'. Accepted values: authenticated-read, private, public-read, public-read-write"
+    parser = (BucketCannedACL' . mk) <$> takeText
 
 instance ToText BucketCannedACL where
-    toText = \case
-        BAuthenticatedRead -> "authenticated-read"
-        BPrivate -> "private"
-        BPublicRead -> "public-read"
-        BPublicReadWrite -> "public-read-write"
+    toText (BucketCannedACL' ci) = original ci
+
+-- | Represents an enum of /known/ $BucketCannedACL.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum BucketCannedACL where
+    toEnum i = case i of
+        0 -> BAuthenticatedRead
+        1 -> BPrivate
+        2 -> BPublicRead
+        3 -> BPublicReadWrite
+        _ -> (error . showText) $ "Unknown index for BucketCannedACL: " <> toText i
+    fromEnum x = case x of
+        BAuthenticatedRead -> 0
+        BPrivate -> 1
+        BPublicRead -> 2
+        BPublicReadWrite -> 3
+        BucketCannedACL' name -> (error . showText) $ "Unknown BucketCannedACL: " <> original name
+
+-- | Represents the bounds of /known/ $BucketCannedACL.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded BucketCannedACL where
+    minBound = BAuthenticatedRead
+    maxBound = BPublicReadWrite
 
 instance Hashable     BucketCannedACL
 instance NFData       BucketCannedACL

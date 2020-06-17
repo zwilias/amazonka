@@ -42,6 +42,7 @@ module Network.AWS.ImportExport.UpdateJob
     ) where
 
 import Network.AWS.ImportExport.Types
+import Network.AWS.ImportExport.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request

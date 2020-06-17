@@ -48,6 +48,7 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.SageMaker.Types
+import Network.AWS.SageMaker.Types.Product
 
 -- | /See:/ 'listTags' smart constructor.
 data ListTags = ListTags'{_ltNextToken ::

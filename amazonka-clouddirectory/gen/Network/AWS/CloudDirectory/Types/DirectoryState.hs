@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,29 +16,65 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.CloudDirectory.Types.DirectoryState where
+module Network.AWS.CloudDirectory.Types.DirectoryState (
+  DirectoryState (
+    ..
+    , Deleted
+    , Disabled
+    , Enabled
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data DirectoryState = Deleted
-                    | Disabled
-                    | Enabled
-                        deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                  Typeable, Generic)
+
+data DirectoryState = DirectoryState' (CI Text)
+                        deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                  Generic)
+
+pattern Deleted :: DirectoryState
+pattern Deleted = DirectoryState' "DELETED"
+
+pattern Disabled :: DirectoryState
+pattern Disabled = DirectoryState' "DISABLED"
+
+pattern Enabled :: DirectoryState
+pattern Enabled = DirectoryState' "ENABLED"
+
+{-# COMPLETE
+  Deleted,
+  Disabled,
+  Enabled,
+  DirectoryState' #-}
 
 instance FromText DirectoryState where
-    parser = takeLowerText >>= \case
-        "deleted" -> pure Deleted
-        "disabled" -> pure Disabled
-        "enabled" -> pure Enabled
-        e -> fromTextError $ "Failure parsing DirectoryState from value: '" <> e
-           <> "'. Accepted values: deleted, disabled, enabled"
+    parser = (DirectoryState' . mk) <$> takeText
 
 instance ToText DirectoryState where
-    toText = \case
-        Deleted -> "DELETED"
-        Disabled -> "DISABLED"
-        Enabled -> "ENABLED"
+    toText (DirectoryState' ci) = original ci
+
+-- | Represents an enum of /known/ $DirectoryState.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum DirectoryState where
+    toEnum i = case i of
+        0 -> Deleted
+        1 -> Disabled
+        2 -> Enabled
+        _ -> (error . showText) $ "Unknown index for DirectoryState: " <> toText i
+    fromEnum x = case x of
+        Deleted -> 0
+        Disabled -> 1
+        Enabled -> 2
+        DirectoryState' name -> (error . showText) $ "Unknown DirectoryState: " <> original name
+
+-- | Represents the bounds of /known/ $DirectoryState.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded DirectoryState where
+    minBound = Deleted
+    maxBound = Enabled
 
 instance Hashable     DirectoryState
 instance NFData       DirectoryState

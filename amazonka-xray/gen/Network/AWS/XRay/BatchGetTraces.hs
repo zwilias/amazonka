@@ -48,6 +48,7 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.XRay.Types
+import Network.AWS.XRay.Types.Product
 
 -- | /See:/ 'batchGetTraces' smart constructor.
 data BatchGetTraces = BatchGetTraces'{_bgtNextToken

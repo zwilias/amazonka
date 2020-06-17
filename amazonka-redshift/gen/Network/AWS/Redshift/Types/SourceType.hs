@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,33 +16,73 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.Redshift.Types.SourceType where
+module Network.AWS.Redshift.Types.SourceType (
+  SourceType (
+    ..
+    , Cluster
+    , ClusterParameterGroup
+    , ClusterSecurityGroup
+    , ClusterSnapshot
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
 import Network.AWS.Redshift.Internal
-  
-data SourceType = Cluster
-                | ClusterParameterGroup
-                | ClusterSecurityGroup
-                | ClusterSnapshot
-                    deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                              Typeable, Generic)
+
+data SourceType = SourceType' (CI Text)
+                    deriving (Eq, Ord, Read, Show, Data, Typeable,
+                              Generic)
+
+pattern Cluster :: SourceType
+pattern Cluster = SourceType' "cluster"
+
+pattern ClusterParameterGroup :: SourceType
+pattern ClusterParameterGroup = SourceType' "cluster-parameter-group"
+
+pattern ClusterSecurityGroup :: SourceType
+pattern ClusterSecurityGroup = SourceType' "cluster-security-group"
+
+pattern ClusterSnapshot :: SourceType
+pattern ClusterSnapshot = SourceType' "cluster-snapshot"
+
+{-# COMPLETE
+  Cluster,
+  ClusterParameterGroup,
+  ClusterSecurityGroup,
+  ClusterSnapshot,
+  SourceType' #-}
 
 instance FromText SourceType where
-    parser = takeLowerText >>= \case
-        "cluster" -> pure Cluster
-        "cluster-parameter-group" -> pure ClusterParameterGroup
-        "cluster-security-group" -> pure ClusterSecurityGroup
-        "cluster-snapshot" -> pure ClusterSnapshot
-        e -> fromTextError $ "Failure parsing SourceType from value: '" <> e
-           <> "'. Accepted values: cluster, cluster-parameter-group, cluster-security-group, cluster-snapshot"
+    parser = (SourceType' . mk) <$> takeText
 
 instance ToText SourceType where
-    toText = \case
-        Cluster -> "cluster"
-        ClusterParameterGroup -> "cluster-parameter-group"
-        ClusterSecurityGroup -> "cluster-security-group"
-        ClusterSnapshot -> "cluster-snapshot"
+    toText (SourceType' ci) = original ci
+
+-- | Represents an enum of /known/ $SourceType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum SourceType where
+    toEnum i = case i of
+        0 -> Cluster
+        1 -> ClusterParameterGroup
+        2 -> ClusterSecurityGroup
+        3 -> ClusterSnapshot
+        _ -> (error . showText) $ "Unknown index for SourceType: " <> toText i
+    fromEnum x = case x of
+        Cluster -> 0
+        ClusterParameterGroup -> 1
+        ClusterSecurityGroup -> 2
+        ClusterSnapshot -> 3
+        SourceType' name -> (error . showText) $ "Unknown SourceType: " <> original name
+
+-- | Represents the bounds of /known/ $SourceType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded SourceType where
+    minBound = Cluster
+    maxBound = ClusterSnapshot
 
 instance Hashable     SourceType
 instance NFData       SourceType

@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,23 +16,51 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.MediaStoreData.Types.StorageClass where
+module Network.AWS.MediaStoreData.Types.StorageClass (
+  StorageClass (
+    ..
+    , Temporal
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data StorageClass = Temporal
-                      deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                Typeable, Generic)
+
+data StorageClass = StorageClass' (CI Text)
+                      deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                Generic)
+
+pattern Temporal :: StorageClass
+pattern Temporal = StorageClass' "TEMPORAL"
+
+{-# COMPLETE
+  Temporal,
+  StorageClass' #-}
 
 instance FromText StorageClass where
-    parser = takeLowerText >>= \case
-        "temporal" -> pure Temporal
-        e -> fromTextError $ "Failure parsing StorageClass from value: '" <> e
-           <> "'. Accepted values: temporal"
+    parser = (StorageClass' . mk) <$> takeText
 
 instance ToText StorageClass where
-    toText = \case
-        Temporal -> "TEMPORAL"
+    toText (StorageClass' ci) = original ci
+
+-- | Represents an enum of /known/ $StorageClass.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum StorageClass where
+    toEnum i = case i of
+        0 -> Temporal
+        _ -> (error . showText) $ "Unknown index for StorageClass: " <> toText i
+    fromEnum x = case x of
+        Temporal -> 0
+        StorageClass' name -> (error . showText) $ "Unknown StorageClass: " <> original name
+
+-- | Represents the bounds of /known/ $StorageClass.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded StorageClass where
+    minBound = Temporal
+    maxBound = Temporal
 
 instance Hashable     StorageClass
 instance NFData       StorageClass

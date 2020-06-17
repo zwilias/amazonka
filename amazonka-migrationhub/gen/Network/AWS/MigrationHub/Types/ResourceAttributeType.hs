@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,50 +16,115 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.MigrationHub.Types.ResourceAttributeType where
+module Network.AWS.MigrationHub.Types.ResourceAttributeType (
+  ResourceAttributeType (
+    ..
+    , BiosId
+    , Fqdn
+    , IPV4Address
+    , IPV6Address
+    , MACAddress
+    , MotherboardSerialNumber
+    , VMManagedObjectReference
+    , VMManagerId
+    , VMName
+    , VMPath
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data ResourceAttributeType = BiosId
-                           | Fqdn
-                           | IPV4Address
-                           | IPV6Address
-                           | MACAddress
-                           | MotherboardSerialNumber
-                           | VMManagedObjectReference
-                           | VMManagerId
-                           | VMName
-                           | VMPath
-                               deriving (Eq, Ord, Read, Show, Enum, Bounded,
-                                         Data, Typeable, Generic)
+
+data ResourceAttributeType = ResourceAttributeType' (CI
+                                                       Text)
+                               deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                         Generic)
+
+pattern BiosId :: ResourceAttributeType
+pattern BiosId = ResourceAttributeType' "BIOS_ID"
+
+pattern Fqdn :: ResourceAttributeType
+pattern Fqdn = ResourceAttributeType' "FQDN"
+
+pattern IPV4Address :: ResourceAttributeType
+pattern IPV4Address = ResourceAttributeType' "IPV4_ADDRESS"
+
+pattern IPV6Address :: ResourceAttributeType
+pattern IPV6Address = ResourceAttributeType' "IPV6_ADDRESS"
+
+pattern MACAddress :: ResourceAttributeType
+pattern MACAddress = ResourceAttributeType' "MAC_ADDRESS"
+
+pattern MotherboardSerialNumber :: ResourceAttributeType
+pattern MotherboardSerialNumber = ResourceAttributeType' "MOTHERBOARD_SERIAL_NUMBER"
+
+pattern VMManagedObjectReference :: ResourceAttributeType
+pattern VMManagedObjectReference = ResourceAttributeType' "VM_MANAGED_OBJECT_REFERENCE"
+
+pattern VMManagerId :: ResourceAttributeType
+pattern VMManagerId = ResourceAttributeType' "VM_MANAGER_ID"
+
+pattern VMName :: ResourceAttributeType
+pattern VMName = ResourceAttributeType' "VM_NAME"
+
+pattern VMPath :: ResourceAttributeType
+pattern VMPath = ResourceAttributeType' "VM_PATH"
+
+{-# COMPLETE
+  BiosId,
+  Fqdn,
+  IPV4Address,
+  IPV6Address,
+  MACAddress,
+  MotherboardSerialNumber,
+  VMManagedObjectReference,
+  VMManagerId,
+  VMName,
+  VMPath,
+  ResourceAttributeType' #-}
 
 instance FromText ResourceAttributeType where
-    parser = takeLowerText >>= \case
-        "bios_id" -> pure BiosId
-        "fqdn" -> pure Fqdn
-        "ipv4_address" -> pure IPV4Address
-        "ipv6_address" -> pure IPV6Address
-        "mac_address" -> pure MACAddress
-        "motherboard_serial_number" -> pure MotherboardSerialNumber
-        "vm_managed_object_reference" -> pure VMManagedObjectReference
-        "vm_manager_id" -> pure VMManagerId
-        "vm_name" -> pure VMName
-        "vm_path" -> pure VMPath
-        e -> fromTextError $ "Failure parsing ResourceAttributeType from value: '" <> e
-           <> "'. Accepted values: bios_id, fqdn, ipv4_address, ipv6_address, mac_address, motherboard_serial_number, vm_managed_object_reference, vm_manager_id, vm_name, vm_path"
+    parser = (ResourceAttributeType' . mk) <$> takeText
 
 instance ToText ResourceAttributeType where
-    toText = \case
-        BiosId -> "BIOS_ID"
-        Fqdn -> "FQDN"
-        IPV4Address -> "IPV4_ADDRESS"
-        IPV6Address -> "IPV6_ADDRESS"
-        MACAddress -> "MAC_ADDRESS"
-        MotherboardSerialNumber -> "MOTHERBOARD_SERIAL_NUMBER"
-        VMManagedObjectReference -> "VM_MANAGED_OBJECT_REFERENCE"
-        VMManagerId -> "VM_MANAGER_ID"
-        VMName -> "VM_NAME"
-        VMPath -> "VM_PATH"
+    toText (ResourceAttributeType' ci) = original ci
+
+-- | Represents an enum of /known/ $ResourceAttributeType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum ResourceAttributeType where
+    toEnum i = case i of
+        0 -> BiosId
+        1 -> Fqdn
+        2 -> IPV4Address
+        3 -> IPV6Address
+        4 -> MACAddress
+        5 -> MotherboardSerialNumber
+        6 -> VMManagedObjectReference
+        7 -> VMManagerId
+        8 -> VMName
+        9 -> VMPath
+        _ -> (error . showText) $ "Unknown index for ResourceAttributeType: " <> toText i
+    fromEnum x = case x of
+        BiosId -> 0
+        Fqdn -> 1
+        IPV4Address -> 2
+        IPV6Address -> 3
+        MACAddress -> 4
+        MotherboardSerialNumber -> 5
+        VMManagedObjectReference -> 6
+        VMManagerId -> 7
+        VMName -> 8
+        VMPath -> 9
+        ResourceAttributeType' name -> (error . showText) $ "Unknown ResourceAttributeType: " <> original name
+
+-- | Represents the bounds of /known/ $ResourceAttributeType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded ResourceAttributeType where
+    minBound = BiosId
+    maxBound = VMPath
 
 instance Hashable     ResourceAttributeType
 instance NFData       ResourceAttributeType

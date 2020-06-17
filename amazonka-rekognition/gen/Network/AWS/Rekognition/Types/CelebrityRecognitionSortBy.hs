@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,59 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.Rekognition.Types.CelebrityRecognitionSortBy where
+module Network.AWS.Rekognition.Types.CelebrityRecognitionSortBy (
+  CelebrityRecognitionSortBy (
+    ..
+    , CRSBId
+    , CRSBTimestamp
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data CelebrityRecognitionSortBy = CRSBId
-                                | CRSBTimestamp
-                                    deriving (Eq, Ord, Read, Show, Enum,
-                                              Bounded, Data, Typeable, Generic)
+
+data CelebrityRecognitionSortBy = CelebrityRecognitionSortBy' (CI
+                                                                 Text)
+                                    deriving (Eq, Ord, Read, Show, Data,
+                                              Typeable, Generic)
+
+pattern CRSBId :: CelebrityRecognitionSortBy
+pattern CRSBId = CelebrityRecognitionSortBy' "ID"
+
+pattern CRSBTimestamp :: CelebrityRecognitionSortBy
+pattern CRSBTimestamp = CelebrityRecognitionSortBy' "TIMESTAMP"
+
+{-# COMPLETE
+  CRSBId,
+  CRSBTimestamp,
+  CelebrityRecognitionSortBy' #-}
 
 instance FromText CelebrityRecognitionSortBy where
-    parser = takeLowerText >>= \case
-        "id" -> pure CRSBId
-        "timestamp" -> pure CRSBTimestamp
-        e -> fromTextError $ "Failure parsing CelebrityRecognitionSortBy from value: '" <> e
-           <> "'. Accepted values: id, timestamp"
+    parser = (CelebrityRecognitionSortBy' . mk) <$> takeText
 
 instance ToText CelebrityRecognitionSortBy where
-    toText = \case
-        CRSBId -> "ID"
-        CRSBTimestamp -> "TIMESTAMP"
+    toText (CelebrityRecognitionSortBy' ci) = original ci
+
+-- | Represents an enum of /known/ $CelebrityRecognitionSortBy.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum CelebrityRecognitionSortBy where
+    toEnum i = case i of
+        0 -> CRSBId
+        1 -> CRSBTimestamp
+        _ -> (error . showText) $ "Unknown index for CelebrityRecognitionSortBy: " <> toText i
+    fromEnum x = case x of
+        CRSBId -> 0
+        CRSBTimestamp -> 1
+        CelebrityRecognitionSortBy' name -> (error . showText) $ "Unknown CelebrityRecognitionSortBy: " <> original name
+
+-- | Represents the bounds of /known/ $CelebrityRecognitionSortBy.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded CelebrityRecognitionSortBy where
+    minBound = CRSBId
+    maxBound = CRSBTimestamp
 
 instance Hashable     CelebrityRecognitionSortBy
 instance NFData       CelebrityRecognitionSortBy

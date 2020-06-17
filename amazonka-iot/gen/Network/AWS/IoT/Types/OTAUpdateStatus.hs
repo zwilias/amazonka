@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,32 +16,72 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.IoT.Types.OTAUpdateStatus where
+module Network.AWS.IoT.Types.OTAUpdateStatus (
+  OTAUpdateStatus (
+    ..
+    , CreateComplete
+    , CreateFailed
+    , CreateInProgress
+    , CreatePending
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data OTAUpdateStatus = CreateComplete
-                     | CreateFailed
-                     | CreateInProgress
-                     | CreatePending
-                         deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                   Typeable, Generic)
+
+data OTAUpdateStatus = OTAUpdateStatus' (CI Text)
+                         deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                   Generic)
+
+pattern CreateComplete :: OTAUpdateStatus
+pattern CreateComplete = OTAUpdateStatus' "CREATE_COMPLETE"
+
+pattern CreateFailed :: OTAUpdateStatus
+pattern CreateFailed = OTAUpdateStatus' "CREATE_FAILED"
+
+pattern CreateInProgress :: OTAUpdateStatus
+pattern CreateInProgress = OTAUpdateStatus' "CREATE_IN_PROGRESS"
+
+pattern CreatePending :: OTAUpdateStatus
+pattern CreatePending = OTAUpdateStatus' "CREATE_PENDING"
+
+{-# COMPLETE
+  CreateComplete,
+  CreateFailed,
+  CreateInProgress,
+  CreatePending,
+  OTAUpdateStatus' #-}
 
 instance FromText OTAUpdateStatus where
-    parser = takeLowerText >>= \case
-        "create_complete" -> pure CreateComplete
-        "create_failed" -> pure CreateFailed
-        "create_in_progress" -> pure CreateInProgress
-        "create_pending" -> pure CreatePending
-        e -> fromTextError $ "Failure parsing OTAUpdateStatus from value: '" <> e
-           <> "'. Accepted values: create_complete, create_failed, create_in_progress, create_pending"
+    parser = (OTAUpdateStatus' . mk) <$> takeText
 
 instance ToText OTAUpdateStatus where
-    toText = \case
-        CreateComplete -> "CREATE_COMPLETE"
-        CreateFailed -> "CREATE_FAILED"
-        CreateInProgress -> "CREATE_IN_PROGRESS"
-        CreatePending -> "CREATE_PENDING"
+    toText (OTAUpdateStatus' ci) = original ci
+
+-- | Represents an enum of /known/ $OTAUpdateStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum OTAUpdateStatus where
+    toEnum i = case i of
+        0 -> CreateComplete
+        1 -> CreateFailed
+        2 -> CreateInProgress
+        3 -> CreatePending
+        _ -> (error . showText) $ "Unknown index for OTAUpdateStatus: " <> toText i
+    fromEnum x = case x of
+        CreateComplete -> 0
+        CreateFailed -> 1
+        CreateInProgress -> 2
+        CreatePending -> 3
+        OTAUpdateStatus' name -> (error . showText) $ "Unknown OTAUpdateStatus: " <> original name
+
+-- | Represents the bounds of /known/ $OTAUpdateStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded OTAUpdateStatus where
+    minBound = CreateComplete
+    maxBound = CreatePending
 
 instance Hashable     OTAUpdateStatus
 instance NFData       OTAUpdateStatus

@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,29 +16,66 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.SageMaker.Types.NotebookInstanceSortKey where
+module Network.AWS.SageMaker.Types.NotebookInstanceSortKey (
+  NotebookInstanceSortKey (
+    ..
+    , NISKCreationTime
+    , NISKName
+    , NISKStatus
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data NotebookInstanceSortKey = NISKCreationTime
-                             | NISKName
-                             | NISKStatus
-                                 deriving (Eq, Ord, Read, Show, Enum, Bounded,
-                                           Data, Typeable, Generic)
+
+data NotebookInstanceSortKey = NotebookInstanceSortKey' (CI
+                                                           Text)
+                                 deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                           Generic)
+
+pattern NISKCreationTime :: NotebookInstanceSortKey
+pattern NISKCreationTime = NotebookInstanceSortKey' "CreationTime"
+
+pattern NISKName :: NotebookInstanceSortKey
+pattern NISKName = NotebookInstanceSortKey' "Name"
+
+pattern NISKStatus :: NotebookInstanceSortKey
+pattern NISKStatus = NotebookInstanceSortKey' "Status"
+
+{-# COMPLETE
+  NISKCreationTime,
+  NISKName,
+  NISKStatus,
+  NotebookInstanceSortKey' #-}
 
 instance FromText NotebookInstanceSortKey where
-    parser = takeLowerText >>= \case
-        "creationtime" -> pure NISKCreationTime
-        "name" -> pure NISKName
-        "status" -> pure NISKStatus
-        e -> fromTextError $ "Failure parsing NotebookInstanceSortKey from value: '" <> e
-           <> "'. Accepted values: creationtime, name, status"
+    parser = (NotebookInstanceSortKey' . mk) <$> takeText
 
 instance ToText NotebookInstanceSortKey where
-    toText = \case
-        NISKCreationTime -> "CreationTime"
-        NISKName -> "Name"
-        NISKStatus -> "Status"
+    toText (NotebookInstanceSortKey' ci) = original ci
+
+-- | Represents an enum of /known/ $NotebookInstanceSortKey.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum NotebookInstanceSortKey where
+    toEnum i = case i of
+        0 -> NISKCreationTime
+        1 -> NISKName
+        2 -> NISKStatus
+        _ -> (error . showText) $ "Unknown index for NotebookInstanceSortKey: " <> toText i
+    fromEnum x = case x of
+        NISKCreationTime -> 0
+        NISKName -> 1
+        NISKStatus -> 2
+        NotebookInstanceSortKey' name -> (error . showText) $ "Unknown NotebookInstanceSortKey: " <> original name
+
+-- | Represents the bounds of /known/ $NotebookInstanceSortKey.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded NotebookInstanceSortKey where
+    minBound = NISKCreationTime
+    maxBound = NISKStatus
 
 instance Hashable     NotebookInstanceSortKey
 instance NFData       NotebookInstanceSortKey

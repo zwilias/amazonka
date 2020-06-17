@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,59 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.CertificateManager.Types.RenewalEligibility where
+module Network.AWS.CertificateManager.Types.RenewalEligibility (
+  RenewalEligibility (
+    ..
+    , Eligible
+    , Ineligible
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data RenewalEligibility = Eligible
-                        | Ineligible
-                            deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                      Typeable, Generic)
+
+data RenewalEligibility = RenewalEligibility' (CI
+                                                 Text)
+                            deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                      Generic)
+
+pattern Eligible :: RenewalEligibility
+pattern Eligible = RenewalEligibility' "ELIGIBLE"
+
+pattern Ineligible :: RenewalEligibility
+pattern Ineligible = RenewalEligibility' "INELIGIBLE"
+
+{-# COMPLETE
+  Eligible,
+  Ineligible,
+  RenewalEligibility' #-}
 
 instance FromText RenewalEligibility where
-    parser = takeLowerText >>= \case
-        "eligible" -> pure Eligible
-        "ineligible" -> pure Ineligible
-        e -> fromTextError $ "Failure parsing RenewalEligibility from value: '" <> e
-           <> "'. Accepted values: eligible, ineligible"
+    parser = (RenewalEligibility' . mk) <$> takeText
 
 instance ToText RenewalEligibility where
-    toText = \case
-        Eligible -> "ELIGIBLE"
-        Ineligible -> "INELIGIBLE"
+    toText (RenewalEligibility' ci) = original ci
+
+-- | Represents an enum of /known/ $RenewalEligibility.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum RenewalEligibility where
+    toEnum i = case i of
+        0 -> Eligible
+        1 -> Ineligible
+        _ -> (error . showText) $ "Unknown index for RenewalEligibility: " <> toText i
+    fromEnum x = case x of
+        Eligible -> 0
+        Ineligible -> 1
+        RenewalEligibility' name -> (error . showText) $ "Unknown RenewalEligibility: " <> original name
+
+-- | Represents the bounds of /known/ $RenewalEligibility.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded RenewalEligibility where
+    minBound = Eligible
+    maxBound = Ineligible
 
 instance Hashable     RenewalEligibility
 instance NFData       RenewalEligibility

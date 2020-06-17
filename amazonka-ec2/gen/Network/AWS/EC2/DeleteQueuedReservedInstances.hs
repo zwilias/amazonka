@@ -40,6 +40,7 @@ module Network.AWS.EC2.DeleteQueuedReservedInstances
     ) where
 
 import Network.AWS.EC2.Types
+import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request

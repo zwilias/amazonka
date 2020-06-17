@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,41 +16,93 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.SSM.Types.PatchFilterKey where
+module Network.AWS.SSM.Types.PatchFilterKey (
+  PatchFilterKey (
+    ..
+    , Classification
+    , MsrcSeverity
+    , PatchId
+    , Priority
+    , Product
+    , Section
+    , Severity
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data PatchFilterKey = Classification
-                    | MsrcSeverity
-                    | PatchId
-                    | Priority
-                    | Product
-                    | Section
-                    | Severity
-                        deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                  Typeable, Generic)
+
+data PatchFilterKey = PatchFilterKey' (CI Text)
+                        deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                  Generic)
+
+pattern Classification :: PatchFilterKey
+pattern Classification = PatchFilterKey' "CLASSIFICATION"
+
+pattern MsrcSeverity :: PatchFilterKey
+pattern MsrcSeverity = PatchFilterKey' "MSRC_SEVERITY"
+
+pattern PatchId :: PatchFilterKey
+pattern PatchId = PatchFilterKey' "PATCH_ID"
+
+pattern Priority :: PatchFilterKey
+pattern Priority = PatchFilterKey' "PRIORITY"
+
+pattern Product :: PatchFilterKey
+pattern Product = PatchFilterKey' "PRODUCT"
+
+pattern Section :: PatchFilterKey
+pattern Section = PatchFilterKey' "SECTION"
+
+pattern Severity :: PatchFilterKey
+pattern Severity = PatchFilterKey' "SEVERITY"
+
+{-# COMPLETE
+  Classification,
+  MsrcSeverity,
+  PatchId,
+  Priority,
+  Product,
+  Section,
+  Severity,
+  PatchFilterKey' #-}
 
 instance FromText PatchFilterKey where
-    parser = takeLowerText >>= \case
-        "classification" -> pure Classification
-        "msrc_severity" -> pure MsrcSeverity
-        "patch_id" -> pure PatchId
-        "priority" -> pure Priority
-        "product" -> pure Product
-        "section" -> pure Section
-        "severity" -> pure Severity
-        e -> fromTextError $ "Failure parsing PatchFilterKey from value: '" <> e
-           <> "'. Accepted values: classification, msrc_severity, patch_id, priority, product, section, severity"
+    parser = (PatchFilterKey' . mk) <$> takeText
 
 instance ToText PatchFilterKey where
-    toText = \case
-        Classification -> "CLASSIFICATION"
-        MsrcSeverity -> "MSRC_SEVERITY"
-        PatchId -> "PATCH_ID"
-        Priority -> "PRIORITY"
-        Product -> "PRODUCT"
-        Section -> "SECTION"
-        Severity -> "SEVERITY"
+    toText (PatchFilterKey' ci) = original ci
+
+-- | Represents an enum of /known/ $PatchFilterKey.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum PatchFilterKey where
+    toEnum i = case i of
+        0 -> Classification
+        1 -> MsrcSeverity
+        2 -> PatchId
+        3 -> Priority
+        4 -> Product
+        5 -> Section
+        6 -> Severity
+        _ -> (error . showText) $ "Unknown index for PatchFilterKey: " <> toText i
+    fromEnum x = case x of
+        Classification -> 0
+        MsrcSeverity -> 1
+        PatchId -> 2
+        Priority -> 3
+        Product -> 4
+        Section -> 5
+        Severity -> 6
+        PatchFilterKey' name -> (error . showText) $ "Unknown PatchFilterKey: " <> original name
+
+-- | Represents the bounds of /known/ $PatchFilterKey.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded PatchFilterKey where
+    minBound = Classification
+    maxBound = Severity
 
 instance Hashable     PatchFilterKey
 instance NFData       PatchFilterKey

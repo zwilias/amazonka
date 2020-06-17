@@ -41,6 +41,7 @@ module Network.AWS.ElastiCache.ListAllowedNodeTypeModifications
     ) where
 
 import Network.AWS.ElastiCache.Types
+import Network.AWS.ElastiCache.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request

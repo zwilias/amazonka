@@ -78,6 +78,7 @@ library
         , Network.AWS.DataPipeline.Types.PipelineDescription
         , Network.AWS.DataPipeline.Types.PipelineIdName
         , Network.AWS.DataPipeline.Types.PipelineObject
+        , Network.AWS.DataPipeline.Types.Product
         , Network.AWS.DataPipeline.Types.Query
         , Network.AWS.DataPipeline.Types.Selector
         , Network.AWS.DataPipeline.Types.Tag
@@ -89,6 +90,7 @@ library
     build-depends:
           amazonka-core == 1.6.1.*
         , base          >= 4.7     && < 5
+        , case-insensitive
 
 test-suite amazonka-datapipeline-test
     type:              exitcode-stdio-1.0
@@ -112,6 +114,7 @@ test-suite amazonka-datapipeline-test
         , amazonka-datapipeline
         , base
         , bytestring
+        , case-insensitive
         , tasty
         , tasty-hunit
         , text

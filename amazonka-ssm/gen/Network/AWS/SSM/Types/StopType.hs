@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,58 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.SSM.Types.StopType where
+module Network.AWS.SSM.Types.StopType (
+  StopType (
+    ..
+    , STCancel
+    , STComplete
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data StopType = STCancel
-              | STComplete
-                  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                            Typeable, Generic)
+
+data StopType = StopType' (CI Text)
+                  deriving (Eq, Ord, Read, Show, Data, Typeable,
+                            Generic)
+
+pattern STCancel :: StopType
+pattern STCancel = StopType' "Cancel"
+
+pattern STComplete :: StopType
+pattern STComplete = StopType' "Complete"
+
+{-# COMPLETE
+  STCancel,
+  STComplete,
+  StopType' #-}
 
 instance FromText StopType where
-    parser = takeLowerText >>= \case
-        "cancel" -> pure STCancel
-        "complete" -> pure STComplete
-        e -> fromTextError $ "Failure parsing StopType from value: '" <> e
-           <> "'. Accepted values: cancel, complete"
+    parser = (StopType' . mk) <$> takeText
 
 instance ToText StopType where
-    toText = \case
-        STCancel -> "Cancel"
-        STComplete -> "Complete"
+    toText (StopType' ci) = original ci
+
+-- | Represents an enum of /known/ $StopType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum StopType where
+    toEnum i = case i of
+        0 -> STCancel
+        1 -> STComplete
+        _ -> (error . showText) $ "Unknown index for StopType: " <> toText i
+    fromEnum x = case x of
+        STCancel -> 0
+        STComplete -> 1
+        StopType' name -> (error . showText) $ "Unknown StopType: " <> original name
+
+-- | Represents the bounds of /known/ $StopType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded StopType where
+    minBound = STCancel
+    maxBound = STComplete
 
 instance Hashable     StopType
 instance NFData       StopType

@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,39 +16,88 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.MediaConvert.Types.DvbSubtitleFontColor where
+module Network.AWS.MediaConvert.Types.DvbSubtitleFontColor (
+  DvbSubtitleFontColor (
+    ..
+    , DSFCBlack
+    , DSFCBlue
+    , DSFCGreen
+    , DSFCRed
+    , DSFCWhite
+    , DSFCYellow
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
+
 -- | Specifies the color of the burned-in captions. This option is not valid for source captions that are STL, 608/embedded or teletext. These source settings are already pre-defined by the caption stream. All burn-in and DVB-Sub font settings must match.
-data DvbSubtitleFontColor = DSFCBlack
-                          | DSFCBlue
-                          | DSFCGreen
-                          | DSFCRed
-                          | DSFCWhite
-                          | DSFCYellow
-                              deriving (Eq, Ord, Read, Show, Enum, Bounded,
-                                        Data, Typeable, Generic)
+data DvbSubtitleFontColor = DvbSubtitleFontColor' (CI
+                                                     Text)
+                              deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                        Generic)
+
+pattern DSFCBlack :: DvbSubtitleFontColor
+pattern DSFCBlack = DvbSubtitleFontColor' "BLACK"
+
+pattern DSFCBlue :: DvbSubtitleFontColor
+pattern DSFCBlue = DvbSubtitleFontColor' "BLUE"
+
+pattern DSFCGreen :: DvbSubtitleFontColor
+pattern DSFCGreen = DvbSubtitleFontColor' "GREEN"
+
+pattern DSFCRed :: DvbSubtitleFontColor
+pattern DSFCRed = DvbSubtitleFontColor' "RED"
+
+pattern DSFCWhite :: DvbSubtitleFontColor
+pattern DSFCWhite = DvbSubtitleFontColor' "WHITE"
+
+pattern DSFCYellow :: DvbSubtitleFontColor
+pattern DSFCYellow = DvbSubtitleFontColor' "YELLOW"
+
+{-# COMPLETE
+  DSFCBlack,
+  DSFCBlue,
+  DSFCGreen,
+  DSFCRed,
+  DSFCWhite,
+  DSFCYellow,
+  DvbSubtitleFontColor' #-}
 
 instance FromText DvbSubtitleFontColor where
-    parser = takeLowerText >>= \case
-        "black" -> pure DSFCBlack
-        "blue" -> pure DSFCBlue
-        "green" -> pure DSFCGreen
-        "red" -> pure DSFCRed
-        "white" -> pure DSFCWhite
-        "yellow" -> pure DSFCYellow
-        e -> fromTextError $ "Failure parsing DvbSubtitleFontColor from value: '" <> e
-           <> "'. Accepted values: black, blue, green, red, white, yellow"
+    parser = (DvbSubtitleFontColor' . mk) <$> takeText
 
 instance ToText DvbSubtitleFontColor where
-    toText = \case
-        DSFCBlack -> "BLACK"
-        DSFCBlue -> "BLUE"
-        DSFCGreen -> "GREEN"
-        DSFCRed -> "RED"
-        DSFCWhite -> "WHITE"
-        DSFCYellow -> "YELLOW"
+    toText (DvbSubtitleFontColor' ci) = original ci
+
+-- | Represents an enum of /known/ $DvbSubtitleFontColor.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum DvbSubtitleFontColor where
+    toEnum i = case i of
+        0 -> DSFCBlack
+        1 -> DSFCBlue
+        2 -> DSFCGreen
+        3 -> DSFCRed
+        4 -> DSFCWhite
+        5 -> DSFCYellow
+        _ -> (error . showText) $ "Unknown index for DvbSubtitleFontColor: " <> toText i
+    fromEnum x = case x of
+        DSFCBlack -> 0
+        DSFCBlue -> 1
+        DSFCGreen -> 2
+        DSFCRed -> 3
+        DSFCWhite -> 4
+        DSFCYellow -> 5
+        DvbSubtitleFontColor' name -> (error . showText) $ "Unknown DvbSubtitleFontColor: " <> original name
+
+-- | Represents the bounds of /known/ $DvbSubtitleFontColor.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded DvbSubtitleFontColor where
+    minBound = DSFCBlack
+    maxBound = DSFCYellow
 
 instance Hashable     DvbSubtitleFontColor
 instance NFData       DvbSubtitleFontColor

@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,59 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.CodeDeploy.Types.DeploymentWaitType where
+module Network.AWS.CodeDeploy.Types.DeploymentWaitType (
+  DeploymentWaitType (
+    ..
+    , ReadyWait
+    , TerminationWait
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data DeploymentWaitType = ReadyWait
-                        | TerminationWait
-                            deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                      Typeable, Generic)
+
+data DeploymentWaitType = DeploymentWaitType' (CI
+                                                 Text)
+                            deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                      Generic)
+
+pattern ReadyWait :: DeploymentWaitType
+pattern ReadyWait = DeploymentWaitType' "READY_WAIT"
+
+pattern TerminationWait :: DeploymentWaitType
+pattern TerminationWait = DeploymentWaitType' "TERMINATION_WAIT"
+
+{-# COMPLETE
+  ReadyWait,
+  TerminationWait,
+  DeploymentWaitType' #-}
 
 instance FromText DeploymentWaitType where
-    parser = takeLowerText >>= \case
-        "ready_wait" -> pure ReadyWait
-        "termination_wait" -> pure TerminationWait
-        e -> fromTextError $ "Failure parsing DeploymentWaitType from value: '" <> e
-           <> "'. Accepted values: ready_wait, termination_wait"
+    parser = (DeploymentWaitType' . mk) <$> takeText
 
 instance ToText DeploymentWaitType where
-    toText = \case
-        ReadyWait -> "READY_WAIT"
-        TerminationWait -> "TERMINATION_WAIT"
+    toText (DeploymentWaitType' ci) = original ci
+
+-- | Represents an enum of /known/ $DeploymentWaitType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum DeploymentWaitType where
+    toEnum i = case i of
+        0 -> ReadyWait
+        1 -> TerminationWait
+        _ -> (error . showText) $ "Unknown index for DeploymentWaitType: " <> toText i
+    fromEnum x = case x of
+        ReadyWait -> 0
+        TerminationWait -> 1
+        DeploymentWaitType' name -> (error . showText) $ "Unknown DeploymentWaitType: " <> original name
+
+-- | Represents the bounds of /known/ $DeploymentWaitType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded DeploymentWaitType where
+    minBound = ReadyWait
+    maxBound = TerminationWait
 
 instance Hashable     DeploymentWaitType
 instance NFData       DeploymentWaitType

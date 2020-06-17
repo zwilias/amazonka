@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,33 +16,73 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.SWF.Types.ScheduleLambdaFunctionFailedCause where
+module Network.AWS.SWF.Types.ScheduleLambdaFunctionFailedCause (
+  ScheduleLambdaFunctionFailedCause (
+    ..
+    , IdAlreadyInUse
+    , LambdaFunctionCreationRateExceeded
+    , LambdaServiceNotAvailableInRegion
+    , OpenLambdaFunctionsLimitExceeded
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data ScheduleLambdaFunctionFailedCause = IdAlreadyInUse
-                                       | LambdaFunctionCreationRateExceeded
-                                       | LambdaServiceNotAvailableInRegion
-                                       | OpenLambdaFunctionsLimitExceeded
-                                           deriving (Eq, Ord, Read, Show, Enum,
-                                                     Bounded, Data, Typeable,
-                                                     Generic)
+
+data ScheduleLambdaFunctionFailedCause = ScheduleLambdaFunctionFailedCause' (CI
+                                                                               Text)
+                                           deriving (Eq, Ord, Read, Show, Data,
+                                                     Typeable, Generic)
+
+pattern IdAlreadyInUse :: ScheduleLambdaFunctionFailedCause
+pattern IdAlreadyInUse = ScheduleLambdaFunctionFailedCause' "ID_ALREADY_IN_USE"
+
+pattern LambdaFunctionCreationRateExceeded :: ScheduleLambdaFunctionFailedCause
+pattern LambdaFunctionCreationRateExceeded = ScheduleLambdaFunctionFailedCause' "LAMBDA_FUNCTION_CREATION_RATE_EXCEEDED"
+
+pattern LambdaServiceNotAvailableInRegion :: ScheduleLambdaFunctionFailedCause
+pattern LambdaServiceNotAvailableInRegion = ScheduleLambdaFunctionFailedCause' "LAMBDA_SERVICE_NOT_AVAILABLE_IN_REGION"
+
+pattern OpenLambdaFunctionsLimitExceeded :: ScheduleLambdaFunctionFailedCause
+pattern OpenLambdaFunctionsLimitExceeded = ScheduleLambdaFunctionFailedCause' "OPEN_LAMBDA_FUNCTIONS_LIMIT_EXCEEDED"
+
+{-# COMPLETE
+  IdAlreadyInUse,
+  LambdaFunctionCreationRateExceeded,
+  LambdaServiceNotAvailableInRegion,
+  OpenLambdaFunctionsLimitExceeded,
+  ScheduleLambdaFunctionFailedCause' #-}
 
 instance FromText ScheduleLambdaFunctionFailedCause where
-    parser = takeLowerText >>= \case
-        "id_already_in_use" -> pure IdAlreadyInUse
-        "lambda_function_creation_rate_exceeded" -> pure LambdaFunctionCreationRateExceeded
-        "lambda_service_not_available_in_region" -> pure LambdaServiceNotAvailableInRegion
-        "open_lambda_functions_limit_exceeded" -> pure OpenLambdaFunctionsLimitExceeded
-        e -> fromTextError $ "Failure parsing ScheduleLambdaFunctionFailedCause from value: '" <> e
-           <> "'. Accepted values: id_already_in_use, lambda_function_creation_rate_exceeded, lambda_service_not_available_in_region, open_lambda_functions_limit_exceeded"
+    parser = (ScheduleLambdaFunctionFailedCause' . mk) <$> takeText
 
 instance ToText ScheduleLambdaFunctionFailedCause where
-    toText = \case
-        IdAlreadyInUse -> "ID_ALREADY_IN_USE"
-        LambdaFunctionCreationRateExceeded -> "LAMBDA_FUNCTION_CREATION_RATE_EXCEEDED"
-        LambdaServiceNotAvailableInRegion -> "LAMBDA_SERVICE_NOT_AVAILABLE_IN_REGION"
-        OpenLambdaFunctionsLimitExceeded -> "OPEN_LAMBDA_FUNCTIONS_LIMIT_EXCEEDED"
+    toText (ScheduleLambdaFunctionFailedCause' ci) = original ci
+
+-- | Represents an enum of /known/ $ScheduleLambdaFunctionFailedCause.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum ScheduleLambdaFunctionFailedCause where
+    toEnum i = case i of
+        0 -> IdAlreadyInUse
+        1 -> LambdaFunctionCreationRateExceeded
+        2 -> LambdaServiceNotAvailableInRegion
+        3 -> OpenLambdaFunctionsLimitExceeded
+        _ -> (error . showText) $ "Unknown index for ScheduleLambdaFunctionFailedCause: " <> toText i
+    fromEnum x = case x of
+        IdAlreadyInUse -> 0
+        LambdaFunctionCreationRateExceeded -> 1
+        LambdaServiceNotAvailableInRegion -> 2
+        OpenLambdaFunctionsLimitExceeded -> 3
+        ScheduleLambdaFunctionFailedCause' name -> (error . showText) $ "Unknown ScheduleLambdaFunctionFailedCause: " <> original name
+
+-- | Represents the bounds of /known/ $ScheduleLambdaFunctionFailedCause.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded ScheduleLambdaFunctionFailedCause where
+    minBound = IdAlreadyInUse
+    maxBound = OpenLambdaFunctionsLimitExceeded
 
 instance Hashable     ScheduleLambdaFunctionFailedCause
 instance NFData       ScheduleLambdaFunctionFailedCause

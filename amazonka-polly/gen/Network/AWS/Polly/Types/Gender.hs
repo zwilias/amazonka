@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,58 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.Polly.Types.Gender where
+module Network.AWS.Polly.Types.Gender (
+  Gender (
+    ..
+    , Female
+    , Male
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data Gender = Female
-            | Male
-                deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                          Typeable, Generic)
+
+data Gender = Gender' (CI Text)
+                deriving (Eq, Ord, Read, Show, Data, Typeable,
+                          Generic)
+
+pattern Female :: Gender
+pattern Female = Gender' "Female"
+
+pattern Male :: Gender
+pattern Male = Gender' "Male"
+
+{-# COMPLETE
+  Female,
+  Male,
+  Gender' #-}
 
 instance FromText Gender where
-    parser = takeLowerText >>= \case
-        "female" -> pure Female
-        "male" -> pure Male
-        e -> fromTextError $ "Failure parsing Gender from value: '" <> e
-           <> "'. Accepted values: female, male"
+    parser = (Gender' . mk) <$> takeText
 
 instance ToText Gender where
-    toText = \case
-        Female -> "Female"
-        Male -> "Male"
+    toText (Gender' ci) = original ci
+
+-- | Represents an enum of /known/ $Gender.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum Gender where
+    toEnum i = case i of
+        0 -> Female
+        1 -> Male
+        _ -> (error . showText) $ "Unknown index for Gender: " <> toText i
+    fromEnum x = case x of
+        Female -> 0
+        Male -> 1
+        Gender' name -> (error . showText) $ "Unknown Gender: " <> original name
+
+-- | Represents the bounds of /known/ $Gender.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded Gender where
+    minBound = Female
+    maxBound = Male
 
 instance Hashable     Gender
 instance NFData       Gender

@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,59 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.Organizations.Types.OrganizationFeatureSet where
+module Network.AWS.Organizations.Types.OrganizationFeatureSet (
+  OrganizationFeatureSet (
+    ..
+    , All
+    , ConsolidatedBilling
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data OrganizationFeatureSet = All
-                            | ConsolidatedBilling
-                                deriving (Eq, Ord, Read, Show, Enum, Bounded,
-                                          Data, Typeable, Generic)
+
+data OrganizationFeatureSet = OrganizationFeatureSet' (CI
+                                                         Text)
+                                deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                          Generic)
+
+pattern All :: OrganizationFeatureSet
+pattern All = OrganizationFeatureSet' "ALL"
+
+pattern ConsolidatedBilling :: OrganizationFeatureSet
+pattern ConsolidatedBilling = OrganizationFeatureSet' "CONSOLIDATED_BILLING"
+
+{-# COMPLETE
+  All,
+  ConsolidatedBilling,
+  OrganizationFeatureSet' #-}
 
 instance FromText OrganizationFeatureSet where
-    parser = takeLowerText >>= \case
-        "all" -> pure All
-        "consolidated_billing" -> pure ConsolidatedBilling
-        e -> fromTextError $ "Failure parsing OrganizationFeatureSet from value: '" <> e
-           <> "'. Accepted values: all, consolidated_billing"
+    parser = (OrganizationFeatureSet' . mk) <$> takeText
 
 instance ToText OrganizationFeatureSet where
-    toText = \case
-        All -> "ALL"
-        ConsolidatedBilling -> "CONSOLIDATED_BILLING"
+    toText (OrganizationFeatureSet' ci) = original ci
+
+-- | Represents an enum of /known/ $OrganizationFeatureSet.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum OrganizationFeatureSet where
+    toEnum i = case i of
+        0 -> All
+        1 -> ConsolidatedBilling
+        _ -> (error . showText) $ "Unknown index for OrganizationFeatureSet: " <> toText i
+    fromEnum x = case x of
+        All -> 0
+        ConsolidatedBilling -> 1
+        OrganizationFeatureSet' name -> (error . showText) $ "Unknown OrganizationFeatureSet: " <> original name
+
+-- | Represents the bounds of /known/ $OrganizationFeatureSet.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded OrganizationFeatureSet where
+    minBound = All
+    maxBound = ConsolidatedBilling
 
 instance Hashable     OrganizationFeatureSet
 instance NFData       OrganizationFeatureSet

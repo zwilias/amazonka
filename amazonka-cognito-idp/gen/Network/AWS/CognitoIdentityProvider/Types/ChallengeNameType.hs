@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,50 +16,114 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.CognitoIdentityProvider.Types.ChallengeNameType where
+module Network.AWS.CognitoIdentityProvider.Types.ChallengeNameType (
+  ChallengeNameType (
+    ..
+    , CNTAdminNoSrpAuth
+    , CNTCustomChallenge
+    , CNTDevicePasswordVerifier
+    , CNTDeviceSrpAuth
+    , CNTMFASetup
+    , CNTNewPasswordRequired
+    , CNTPasswordVerifier
+    , CNTSelectMFAType
+    , CNTSmsMFA
+    , CNTSoftwareTokenMFA
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data ChallengeNameType = CNTAdminNoSrpAuth
-                       | CNTCustomChallenge
-                       | CNTDevicePasswordVerifier
-                       | CNTDeviceSrpAuth
-                       | CNTMFASetup
-                       | CNTNewPasswordRequired
-                       | CNTPasswordVerifier
-                       | CNTSelectMFAType
-                       | CNTSmsMFA
-                       | CNTSoftwareTokenMFA
-                           deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                     Typeable, Generic)
+
+data ChallengeNameType = ChallengeNameType' (CI Text)
+                           deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                     Generic)
+
+pattern CNTAdminNoSrpAuth :: ChallengeNameType
+pattern CNTAdminNoSrpAuth = ChallengeNameType' "ADMIN_NO_SRP_AUTH"
+
+pattern CNTCustomChallenge :: ChallengeNameType
+pattern CNTCustomChallenge = ChallengeNameType' "CUSTOM_CHALLENGE"
+
+pattern CNTDevicePasswordVerifier :: ChallengeNameType
+pattern CNTDevicePasswordVerifier = ChallengeNameType' "DEVICE_PASSWORD_VERIFIER"
+
+pattern CNTDeviceSrpAuth :: ChallengeNameType
+pattern CNTDeviceSrpAuth = ChallengeNameType' "DEVICE_SRP_AUTH"
+
+pattern CNTMFASetup :: ChallengeNameType
+pattern CNTMFASetup = ChallengeNameType' "MFA_SETUP"
+
+pattern CNTNewPasswordRequired :: ChallengeNameType
+pattern CNTNewPasswordRequired = ChallengeNameType' "NEW_PASSWORD_REQUIRED"
+
+pattern CNTPasswordVerifier :: ChallengeNameType
+pattern CNTPasswordVerifier = ChallengeNameType' "PASSWORD_VERIFIER"
+
+pattern CNTSelectMFAType :: ChallengeNameType
+pattern CNTSelectMFAType = ChallengeNameType' "SELECT_MFA_TYPE"
+
+pattern CNTSmsMFA :: ChallengeNameType
+pattern CNTSmsMFA = ChallengeNameType' "SMS_MFA"
+
+pattern CNTSoftwareTokenMFA :: ChallengeNameType
+pattern CNTSoftwareTokenMFA = ChallengeNameType' "SOFTWARE_TOKEN_MFA"
+
+{-# COMPLETE
+  CNTAdminNoSrpAuth,
+  CNTCustomChallenge,
+  CNTDevicePasswordVerifier,
+  CNTDeviceSrpAuth,
+  CNTMFASetup,
+  CNTNewPasswordRequired,
+  CNTPasswordVerifier,
+  CNTSelectMFAType,
+  CNTSmsMFA,
+  CNTSoftwareTokenMFA,
+  ChallengeNameType' #-}
 
 instance FromText ChallengeNameType where
-    parser = takeLowerText >>= \case
-        "admin_no_srp_auth" -> pure CNTAdminNoSrpAuth
-        "custom_challenge" -> pure CNTCustomChallenge
-        "device_password_verifier" -> pure CNTDevicePasswordVerifier
-        "device_srp_auth" -> pure CNTDeviceSrpAuth
-        "mfa_setup" -> pure CNTMFASetup
-        "new_password_required" -> pure CNTNewPasswordRequired
-        "password_verifier" -> pure CNTPasswordVerifier
-        "select_mfa_type" -> pure CNTSelectMFAType
-        "sms_mfa" -> pure CNTSmsMFA
-        "software_token_mfa" -> pure CNTSoftwareTokenMFA
-        e -> fromTextError $ "Failure parsing ChallengeNameType from value: '" <> e
-           <> "'. Accepted values: admin_no_srp_auth, custom_challenge, device_password_verifier, device_srp_auth, mfa_setup, new_password_required, password_verifier, select_mfa_type, sms_mfa, software_token_mfa"
+    parser = (ChallengeNameType' . mk) <$> takeText
 
 instance ToText ChallengeNameType where
-    toText = \case
-        CNTAdminNoSrpAuth -> "ADMIN_NO_SRP_AUTH"
-        CNTCustomChallenge -> "CUSTOM_CHALLENGE"
-        CNTDevicePasswordVerifier -> "DEVICE_PASSWORD_VERIFIER"
-        CNTDeviceSrpAuth -> "DEVICE_SRP_AUTH"
-        CNTMFASetup -> "MFA_SETUP"
-        CNTNewPasswordRequired -> "NEW_PASSWORD_REQUIRED"
-        CNTPasswordVerifier -> "PASSWORD_VERIFIER"
-        CNTSelectMFAType -> "SELECT_MFA_TYPE"
-        CNTSmsMFA -> "SMS_MFA"
-        CNTSoftwareTokenMFA -> "SOFTWARE_TOKEN_MFA"
+    toText (ChallengeNameType' ci) = original ci
+
+-- | Represents an enum of /known/ $ChallengeNameType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum ChallengeNameType where
+    toEnum i = case i of
+        0 -> CNTAdminNoSrpAuth
+        1 -> CNTCustomChallenge
+        2 -> CNTDevicePasswordVerifier
+        3 -> CNTDeviceSrpAuth
+        4 -> CNTMFASetup
+        5 -> CNTNewPasswordRequired
+        6 -> CNTPasswordVerifier
+        7 -> CNTSelectMFAType
+        8 -> CNTSmsMFA
+        9 -> CNTSoftwareTokenMFA
+        _ -> (error . showText) $ "Unknown index for ChallengeNameType: " <> toText i
+    fromEnum x = case x of
+        CNTAdminNoSrpAuth -> 0
+        CNTCustomChallenge -> 1
+        CNTDevicePasswordVerifier -> 2
+        CNTDeviceSrpAuth -> 3
+        CNTMFASetup -> 4
+        CNTNewPasswordRequired -> 5
+        CNTPasswordVerifier -> 6
+        CNTSelectMFAType -> 7
+        CNTSmsMFA -> 8
+        CNTSoftwareTokenMFA -> 9
+        ChallengeNameType' name -> (error . showText) $ "Unknown ChallengeNameType: " <> original name
+
+-- | Represents the bounds of /known/ $ChallengeNameType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded ChallengeNameType where
+    minBound = CNTAdminNoSrpAuth
+    maxBound = CNTSoftwareTokenMFA
 
 instance Hashable     ChallengeNameType
 instance NFData       ChallengeNameType

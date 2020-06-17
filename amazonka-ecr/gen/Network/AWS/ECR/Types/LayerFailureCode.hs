@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,58 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.ECR.Types.LayerFailureCode where
+module Network.AWS.ECR.Types.LayerFailureCode (
+  LayerFailureCode (
+    ..
+    , InvalidLayerDigest
+    , MissingLayerDigest
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data LayerFailureCode = InvalidLayerDigest
-                      | MissingLayerDigest
-                          deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                    Typeable, Generic)
+
+data LayerFailureCode = LayerFailureCode' (CI Text)
+                          deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                    Generic)
+
+pattern InvalidLayerDigest :: LayerFailureCode
+pattern InvalidLayerDigest = LayerFailureCode' "InvalidLayerDigest"
+
+pattern MissingLayerDigest :: LayerFailureCode
+pattern MissingLayerDigest = LayerFailureCode' "MissingLayerDigest"
+
+{-# COMPLETE
+  InvalidLayerDigest,
+  MissingLayerDigest,
+  LayerFailureCode' #-}
 
 instance FromText LayerFailureCode where
-    parser = takeLowerText >>= \case
-        "invalidlayerdigest" -> pure InvalidLayerDigest
-        "missinglayerdigest" -> pure MissingLayerDigest
-        e -> fromTextError $ "Failure parsing LayerFailureCode from value: '" <> e
-           <> "'. Accepted values: invalidlayerdigest, missinglayerdigest"
+    parser = (LayerFailureCode' . mk) <$> takeText
 
 instance ToText LayerFailureCode where
-    toText = \case
-        InvalidLayerDigest -> "InvalidLayerDigest"
-        MissingLayerDigest -> "MissingLayerDigest"
+    toText (LayerFailureCode' ci) = original ci
+
+-- | Represents an enum of /known/ $LayerFailureCode.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum LayerFailureCode where
+    toEnum i = case i of
+        0 -> InvalidLayerDigest
+        1 -> MissingLayerDigest
+        _ -> (error . showText) $ "Unknown index for LayerFailureCode: " <> toText i
+    fromEnum x = case x of
+        InvalidLayerDigest -> 0
+        MissingLayerDigest -> 1
+        LayerFailureCode' name -> (error . showText) $ "Unknown LayerFailureCode: " <> original name
+
+-- | Represents the bounds of /known/ $LayerFailureCode.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded LayerFailureCode where
+    minBound = InvalidLayerDigest
+    maxBound = MissingLayerDigest
 
 instance Hashable     LayerFailureCode
 instance NFData       LayerFailureCode

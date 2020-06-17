@@ -171,6 +171,7 @@ library
         , Network.AWS.DeviceFarm.Types.OfferingType
         , Network.AWS.DeviceFarm.Types.Problem
         , Network.AWS.DeviceFarm.Types.ProblemDetail
+        , Network.AWS.DeviceFarm.Types.Product
         , Network.AWS.DeviceFarm.Types.Project
         , Network.AWS.DeviceFarm.Types.Radios
         , Network.AWS.DeviceFarm.Types.RecurringCharge
@@ -206,6 +207,7 @@ library
     build-depends:
           amazonka-core == 1.6.1.*
         , base          >= 4.7     && < 5
+        , case-insensitive
 
 test-suite amazonka-devicefarm-test
     type:              exitcode-stdio-1.0
@@ -229,6 +231,7 @@ test-suite amazonka-devicefarm-test
         , amazonka-devicefarm
         , base
         , bytestring
+        , case-insensitive
         , tasty
         , tasty-hunit
         , text

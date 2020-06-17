@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,30 +16,67 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.Greengrass.Types.UpdateTargetsArchitecture where
+module Network.AWS.Greengrass.Types.UpdateTargetsArchitecture (
+  UpdateTargetsArchitecture (
+    ..
+    , AARCH64
+    , Armv7l
+    , X86_64
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
+
 -- | The architecture of the cores which are the targets of an update.
-data UpdateTargetsArchitecture = AARCH64
-                               | Armv7l
-                               | X86_64
-                                   deriving (Eq, Ord, Read, Show, Enum, Bounded,
-                                             Data, Typeable, Generic)
+data UpdateTargetsArchitecture = UpdateTargetsArchitecture' (CI
+                                                               Text)
+                                   deriving (Eq, Ord, Read, Show, Data,
+                                             Typeable, Generic)
+
+pattern AARCH64 :: UpdateTargetsArchitecture
+pattern AARCH64 = UpdateTargetsArchitecture' "aarch64"
+
+pattern Armv7l :: UpdateTargetsArchitecture
+pattern Armv7l = UpdateTargetsArchitecture' "armv7l"
+
+pattern X86_64 :: UpdateTargetsArchitecture
+pattern X86_64 = UpdateTargetsArchitecture' "x86_64"
+
+{-# COMPLETE
+  AARCH64,
+  Armv7l,
+  X86_64,
+  UpdateTargetsArchitecture' #-}
 
 instance FromText UpdateTargetsArchitecture where
-    parser = takeLowerText >>= \case
-        "aarch64" -> pure AARCH64
-        "armv7l" -> pure Armv7l
-        "x86_64" -> pure X86_64
-        e -> fromTextError $ "Failure parsing UpdateTargetsArchitecture from value: '" <> e
-           <> "'. Accepted values: aarch64, armv7l, x86_64"
+    parser = (UpdateTargetsArchitecture' . mk) <$> takeText
 
 instance ToText UpdateTargetsArchitecture where
-    toText = \case
-        AARCH64 -> "aarch64"
-        Armv7l -> "armv7l"
-        X86_64 -> "x86_64"
+    toText (UpdateTargetsArchitecture' ci) = original ci
+
+-- | Represents an enum of /known/ $UpdateTargetsArchitecture.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum UpdateTargetsArchitecture where
+    toEnum i = case i of
+        0 -> AARCH64
+        1 -> Armv7l
+        2 -> X86_64
+        _ -> (error . showText) $ "Unknown index for UpdateTargetsArchitecture: " <> toText i
+    fromEnum x = case x of
+        AARCH64 -> 0
+        Armv7l -> 1
+        X86_64 -> 2
+        UpdateTargetsArchitecture' name -> (error . showText) $ "Unknown UpdateTargetsArchitecture: " <> original name
+
+-- | Represents the bounds of /known/ $UpdateTargetsArchitecture.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded UpdateTargetsArchitecture where
+    minBound = AARCH64
+    maxBound = X86_64
 
 instance Hashable     UpdateTargetsArchitecture
 instance NFData       UpdateTargetsArchitecture

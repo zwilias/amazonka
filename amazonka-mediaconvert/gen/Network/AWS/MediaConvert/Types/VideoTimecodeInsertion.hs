@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,27 +16,60 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.MediaConvert.Types.VideoTimecodeInsertion where
+module Network.AWS.MediaConvert.Types.VideoTimecodeInsertion (
+  VideoTimecodeInsertion (
+    ..
+    , VTIDisabled
+    , VTIPicTimingSei
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
+
 -- | Enable Timecode insertion to include timecode information in this output. Do this in the API by setting (VideoTimecodeInsertion) to (PIC_TIMING_SEI). To get timecodes to appear correctly in your output, also set up the timecode configuration for your job in the input settings. Only enable Timecode insertion when the input framerate is identical to output framerate. Disable this setting to remove the timecode from the output. Default is disabled.
-data VideoTimecodeInsertion = VTIDisabled
-                            | VTIPicTimingSei
-                                deriving (Eq, Ord, Read, Show, Enum, Bounded,
-                                          Data, Typeable, Generic)
+data VideoTimecodeInsertion = VideoTimecodeInsertion' (CI
+                                                         Text)
+                                deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                          Generic)
+
+pattern VTIDisabled :: VideoTimecodeInsertion
+pattern VTIDisabled = VideoTimecodeInsertion' "DISABLED"
+
+pattern VTIPicTimingSei :: VideoTimecodeInsertion
+pattern VTIPicTimingSei = VideoTimecodeInsertion' "PIC_TIMING_SEI"
+
+{-# COMPLETE
+  VTIDisabled,
+  VTIPicTimingSei,
+  VideoTimecodeInsertion' #-}
 
 instance FromText VideoTimecodeInsertion where
-    parser = takeLowerText >>= \case
-        "disabled" -> pure VTIDisabled
-        "pic_timing_sei" -> pure VTIPicTimingSei
-        e -> fromTextError $ "Failure parsing VideoTimecodeInsertion from value: '" <> e
-           <> "'. Accepted values: disabled, pic_timing_sei"
+    parser = (VideoTimecodeInsertion' . mk) <$> takeText
 
 instance ToText VideoTimecodeInsertion where
-    toText = \case
-        VTIDisabled -> "DISABLED"
-        VTIPicTimingSei -> "PIC_TIMING_SEI"
+    toText (VideoTimecodeInsertion' ci) = original ci
+
+-- | Represents an enum of /known/ $VideoTimecodeInsertion.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum VideoTimecodeInsertion where
+    toEnum i = case i of
+        0 -> VTIDisabled
+        1 -> VTIPicTimingSei
+        _ -> (error . showText) $ "Unknown index for VideoTimecodeInsertion: " <> toText i
+    fromEnum x = case x of
+        VTIDisabled -> 0
+        VTIPicTimingSei -> 1
+        VideoTimecodeInsertion' name -> (error . showText) $ "Unknown VideoTimecodeInsertion: " <> original name
+
+-- | Represents the bounds of /known/ $VideoTimecodeInsertion.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded VideoTimecodeInsertion where
+    minBound = VTIDisabled
+    maxBound = VTIPicTimingSei
 
 instance Hashable     VideoTimecodeInsertion
 instance NFData       VideoTimecodeInsertion

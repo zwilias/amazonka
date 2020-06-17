@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,28 +16,60 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.EC2.Types.AutoAcceptSharedAttachmentsValue where
+module Network.AWS.EC2.Types.AutoAcceptSharedAttachmentsValue (
+  AutoAcceptSharedAttachmentsValue (
+    ..
+    , Disable
+    , Enable
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.EC2.Internal
 import Network.AWS.Prelude
-  
-data AutoAcceptSharedAttachmentsValue = Disable
-                                      | Enable
-                                          deriving (Eq, Ord, Read, Show, Enum,
-                                                    Bounded, Data, Typeable,
-                                                    Generic)
+
+data AutoAcceptSharedAttachmentsValue = AutoAcceptSharedAttachmentsValue' (CI
+                                                                             Text)
+                                          deriving (Eq, Ord, Read, Show, Data,
+                                                    Typeable, Generic)
+
+pattern Disable :: AutoAcceptSharedAttachmentsValue
+pattern Disable = AutoAcceptSharedAttachmentsValue' "disable"
+
+pattern Enable :: AutoAcceptSharedAttachmentsValue
+pattern Enable = AutoAcceptSharedAttachmentsValue' "enable"
+
+{-# COMPLETE
+  Disable,
+  Enable,
+  AutoAcceptSharedAttachmentsValue' #-}
 
 instance FromText AutoAcceptSharedAttachmentsValue where
-    parser = takeLowerText >>= \case
-        "disable" -> pure Disable
-        "enable" -> pure Enable
-        e -> fromTextError $ "Failure parsing AutoAcceptSharedAttachmentsValue from value: '" <> e
-           <> "'. Accepted values: disable, enable"
+    parser = (AutoAcceptSharedAttachmentsValue' . mk) <$> takeText
 
 instance ToText AutoAcceptSharedAttachmentsValue where
-    toText = \case
-        Disable -> "disable"
-        Enable -> "enable"
+    toText (AutoAcceptSharedAttachmentsValue' ci) = original ci
+
+-- | Represents an enum of /known/ $AutoAcceptSharedAttachmentsValue.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum AutoAcceptSharedAttachmentsValue where
+    toEnum i = case i of
+        0 -> Disable
+        1 -> Enable
+        _ -> (error . showText) $ "Unknown index for AutoAcceptSharedAttachmentsValue: " <> toText i
+    fromEnum x = case x of
+        Disable -> 0
+        Enable -> 1
+        AutoAcceptSharedAttachmentsValue' name -> (error . showText) $ "Unknown AutoAcceptSharedAttachmentsValue: " <> original name
+
+-- | Represents the bounds of /known/ $AutoAcceptSharedAttachmentsValue.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded AutoAcceptSharedAttachmentsValue where
+    minBound = Disable
+    maxBound = Enable
 
 instance Hashable     AutoAcceptSharedAttachmentsValue
 instance NFData       AutoAcceptSharedAttachmentsValue

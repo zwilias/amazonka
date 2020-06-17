@@ -40,6 +40,7 @@ module Network.AWS.LexModels.DeleteBotChannelAssociation
 
 import Network.AWS.Lens
 import Network.AWS.LexModels.Types
+import Network.AWS.LexModels.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response

@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,29 +16,65 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.SSM.Types.DocumentType where
+module Network.AWS.SSM.Types.DocumentType (
+  DocumentType (
+    ..
+    , DTAutomation
+    , DTCommand
+    , DTPolicy
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data DocumentType = DTAutomation
-                  | DTCommand
-                  | DTPolicy
-                      deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                Typeable, Generic)
+
+data DocumentType = DocumentType' (CI Text)
+                      deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                Generic)
+
+pattern DTAutomation :: DocumentType
+pattern DTAutomation = DocumentType' "Automation"
+
+pattern DTCommand :: DocumentType
+pattern DTCommand = DocumentType' "Command"
+
+pattern DTPolicy :: DocumentType
+pattern DTPolicy = DocumentType' "Policy"
+
+{-# COMPLETE
+  DTAutomation,
+  DTCommand,
+  DTPolicy,
+  DocumentType' #-}
 
 instance FromText DocumentType where
-    parser = takeLowerText >>= \case
-        "automation" -> pure DTAutomation
-        "command" -> pure DTCommand
-        "policy" -> pure DTPolicy
-        e -> fromTextError $ "Failure parsing DocumentType from value: '" <> e
-           <> "'. Accepted values: automation, command, policy"
+    parser = (DocumentType' . mk) <$> takeText
 
 instance ToText DocumentType where
-    toText = \case
-        DTAutomation -> "Automation"
-        DTCommand -> "Command"
-        DTPolicy -> "Policy"
+    toText (DocumentType' ci) = original ci
+
+-- | Represents an enum of /known/ $DocumentType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum DocumentType where
+    toEnum i = case i of
+        0 -> DTAutomation
+        1 -> DTCommand
+        2 -> DTPolicy
+        _ -> (error . showText) $ "Unknown index for DocumentType: " <> toText i
+    fromEnum x = case x of
+        DTAutomation -> 0
+        DTCommand -> 1
+        DTPolicy -> 2
+        DocumentType' name -> (error . showText) $ "Unknown DocumentType: " <> original name
+
+-- | Represents the bounds of /known/ $DocumentType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded DocumentType where
+    minBound = DTAutomation
+    maxBound = DTPolicy
 
 instance Hashable     DocumentType
 instance NFData       DocumentType

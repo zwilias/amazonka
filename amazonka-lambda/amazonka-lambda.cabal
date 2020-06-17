@@ -95,6 +95,7 @@ library
         , Network.AWS.Lambda.Types.FunctionVersion
         , Network.AWS.Lambda.Types.InvocationType
         , Network.AWS.Lambda.Types.LogType
+        , Network.AWS.Lambda.Types.Product
         , Network.AWS.Lambda.Types.Runtime
         , Network.AWS.Lambda.Types.TracingConfig
         , Network.AWS.Lambda.Types.TracingConfigResponse
@@ -105,6 +106,7 @@ library
     build-depends:
           amazonka-core == 1.6.1.*
         , base          >= 4.7     && < 5
+        , case-insensitive
 
 test-suite amazonka-lambda-test
     type:              exitcode-stdio-1.0
@@ -128,6 +130,7 @@ test-suite amazonka-lambda-test
         , amazonka-lambda
         , base
         , bytestring
+        , case-insensitive
         , tasty
         , tasty-hunit
         , text

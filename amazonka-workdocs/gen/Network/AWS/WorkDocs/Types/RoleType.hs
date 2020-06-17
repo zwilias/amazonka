@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,32 +16,72 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.WorkDocs.Types.RoleType where
+module Network.AWS.WorkDocs.Types.RoleType (
+  RoleType (
+    ..
+    , Contributor
+    , Coowner
+    , Owner
+    , Viewer
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data RoleType = Contributor
-              | Coowner
-              | Owner
-              | Viewer
-                  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                            Typeable, Generic)
+
+data RoleType = RoleType' (CI Text)
+                  deriving (Eq, Ord, Read, Show, Data, Typeable,
+                            Generic)
+
+pattern Contributor :: RoleType
+pattern Contributor = RoleType' "CONTRIBUTOR"
+
+pattern Coowner :: RoleType
+pattern Coowner = RoleType' "COOWNER"
+
+pattern Owner :: RoleType
+pattern Owner = RoleType' "OWNER"
+
+pattern Viewer :: RoleType
+pattern Viewer = RoleType' "VIEWER"
+
+{-# COMPLETE
+  Contributor,
+  Coowner,
+  Owner,
+  Viewer,
+  RoleType' #-}
 
 instance FromText RoleType where
-    parser = takeLowerText >>= \case
-        "contributor" -> pure Contributor
-        "coowner" -> pure Coowner
-        "owner" -> pure Owner
-        "viewer" -> pure Viewer
-        e -> fromTextError $ "Failure parsing RoleType from value: '" <> e
-           <> "'. Accepted values: contributor, coowner, owner, viewer"
+    parser = (RoleType' . mk) <$> takeText
 
 instance ToText RoleType where
-    toText = \case
-        Contributor -> "CONTRIBUTOR"
-        Coowner -> "COOWNER"
-        Owner -> "OWNER"
-        Viewer -> "VIEWER"
+    toText (RoleType' ci) = original ci
+
+-- | Represents an enum of /known/ $RoleType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum RoleType where
+    toEnum i = case i of
+        0 -> Contributor
+        1 -> Coowner
+        2 -> Owner
+        3 -> Viewer
+        _ -> (error . showText) $ "Unknown index for RoleType: " <> toText i
+    fromEnum x = case x of
+        Contributor -> 0
+        Coowner -> 1
+        Owner -> 2
+        Viewer -> 3
+        RoleType' name -> (error . showText) $ "Unknown RoleType: " <> original name
+
+-- | Represents the bounds of /known/ $RoleType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded RoleType where
+    minBound = Contributor
+    maxBound = Viewer
 
 instance Hashable     RoleType
 instance NFData       RoleType

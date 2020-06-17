@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,32 +16,72 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.ECS.Types.NetworkMode where
+module Network.AWS.ECS.Types.NetworkMode (
+  NetworkMode (
+    ..
+    , AWSvpc
+    , Bridge
+    , Host
+    , None
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data NetworkMode = AWSvpc
-                 | Bridge
-                 | Host
-                 | None
-                     deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                               Typeable, Generic)
+
+data NetworkMode = NetworkMode' (CI Text)
+                     deriving (Eq, Ord, Read, Show, Data, Typeable,
+                               Generic)
+
+pattern AWSvpc :: NetworkMode
+pattern AWSvpc = NetworkMode' "awsvpc"
+
+pattern Bridge :: NetworkMode
+pattern Bridge = NetworkMode' "bridge"
+
+pattern Host :: NetworkMode
+pattern Host = NetworkMode' "host"
+
+pattern None :: NetworkMode
+pattern None = NetworkMode' "none"
+
+{-# COMPLETE
+  AWSvpc,
+  Bridge,
+  Host,
+  None,
+  NetworkMode' #-}
 
 instance FromText NetworkMode where
-    parser = takeLowerText >>= \case
-        "awsvpc" -> pure AWSvpc
-        "bridge" -> pure Bridge
-        "host" -> pure Host
-        "none" -> pure None
-        e -> fromTextError $ "Failure parsing NetworkMode from value: '" <> e
-           <> "'. Accepted values: awsvpc, bridge, host, none"
+    parser = (NetworkMode' . mk) <$> takeText
 
 instance ToText NetworkMode where
-    toText = \case
-        AWSvpc -> "awsvpc"
-        Bridge -> "bridge"
-        Host -> "host"
-        None -> "none"
+    toText (NetworkMode' ci) = original ci
+
+-- | Represents an enum of /known/ $NetworkMode.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum NetworkMode where
+    toEnum i = case i of
+        0 -> AWSvpc
+        1 -> Bridge
+        2 -> Host
+        3 -> None
+        _ -> (error . showText) $ "Unknown index for NetworkMode: " <> toText i
+    fromEnum x = case x of
+        AWSvpc -> 0
+        Bridge -> 1
+        Host -> 2
+        None -> 3
+        NetworkMode' name -> (error . showText) $ "Unknown NetworkMode: " <> original name
+
+-- | Represents the bounds of /known/ $NetworkMode.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded NetworkMode where
+    minBound = AWSvpc
+    maxBound = None
 
 instance Hashable     NetworkMode
 instance NFData       NetworkMode

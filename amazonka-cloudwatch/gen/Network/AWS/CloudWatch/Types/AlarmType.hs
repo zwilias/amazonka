@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,58 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.CloudWatch.Types.AlarmType where
+module Network.AWS.CloudWatch.Types.AlarmType (
+  AlarmType (
+    ..
+    , CompositeAlarm
+    , MetricAlarm
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data AlarmType = CompositeAlarm
-               | MetricAlarm
-                   deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                             Typeable, Generic)
+
+data AlarmType = AlarmType' (CI Text)
+                   deriving (Eq, Ord, Read, Show, Data, Typeable,
+                             Generic)
+
+pattern CompositeAlarm :: AlarmType
+pattern CompositeAlarm = AlarmType' "CompositeAlarm"
+
+pattern MetricAlarm :: AlarmType
+pattern MetricAlarm = AlarmType' "MetricAlarm"
+
+{-# COMPLETE
+  CompositeAlarm,
+  MetricAlarm,
+  AlarmType' #-}
 
 instance FromText AlarmType where
-    parser = takeLowerText >>= \case
-        "compositealarm" -> pure CompositeAlarm
-        "metricalarm" -> pure MetricAlarm
-        e -> fromTextError $ "Failure parsing AlarmType from value: '" <> e
-           <> "'. Accepted values: compositealarm, metricalarm"
+    parser = (AlarmType' . mk) <$> takeText
 
 instance ToText AlarmType where
-    toText = \case
-        CompositeAlarm -> "CompositeAlarm"
-        MetricAlarm -> "MetricAlarm"
+    toText (AlarmType' ci) = original ci
+
+-- | Represents an enum of /known/ $AlarmType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum AlarmType where
+    toEnum i = case i of
+        0 -> CompositeAlarm
+        1 -> MetricAlarm
+        _ -> (error . showText) $ "Unknown index for AlarmType: " <> toText i
+    fromEnum x = case x of
+        CompositeAlarm -> 0
+        MetricAlarm -> 1
+        AlarmType' name -> (error . showText) $ "Unknown AlarmType: " <> original name
+
+-- | Represents the bounds of /known/ $AlarmType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded AlarmType where
+    minBound = CompositeAlarm
+    maxBound = MetricAlarm
 
 instance Hashable     AlarmType
 instance NFData       AlarmType

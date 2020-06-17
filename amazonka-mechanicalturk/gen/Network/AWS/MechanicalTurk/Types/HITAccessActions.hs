@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,29 +16,65 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.MechanicalTurk.Types.HITAccessActions where
+module Network.AWS.MechanicalTurk.Types.HITAccessActions (
+  HITAccessActions (
+    ..
+    , Accept
+    , DiscoverPreviewAndAccept
+    , PreviewAndAccept
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data HITAccessActions = Accept
-                      | DiscoverPreviewAndAccept
-                      | PreviewAndAccept
-                          deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                    Typeable, Generic)
+
+data HITAccessActions = HITAccessActions' (CI Text)
+                          deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                    Generic)
+
+pattern Accept :: HITAccessActions
+pattern Accept = HITAccessActions' "Accept"
+
+pattern DiscoverPreviewAndAccept :: HITAccessActions
+pattern DiscoverPreviewAndAccept = HITAccessActions' "DiscoverPreviewAndAccept"
+
+pattern PreviewAndAccept :: HITAccessActions
+pattern PreviewAndAccept = HITAccessActions' "PreviewAndAccept"
+
+{-# COMPLETE
+  Accept,
+  DiscoverPreviewAndAccept,
+  PreviewAndAccept,
+  HITAccessActions' #-}
 
 instance FromText HITAccessActions where
-    parser = takeLowerText >>= \case
-        "accept" -> pure Accept
-        "discoverpreviewandaccept" -> pure DiscoverPreviewAndAccept
-        "previewandaccept" -> pure PreviewAndAccept
-        e -> fromTextError $ "Failure parsing HITAccessActions from value: '" <> e
-           <> "'. Accepted values: accept, discoverpreviewandaccept, previewandaccept"
+    parser = (HITAccessActions' . mk) <$> takeText
 
 instance ToText HITAccessActions where
-    toText = \case
-        Accept -> "Accept"
-        DiscoverPreviewAndAccept -> "DiscoverPreviewAndAccept"
-        PreviewAndAccept -> "PreviewAndAccept"
+    toText (HITAccessActions' ci) = original ci
+
+-- | Represents an enum of /known/ $HITAccessActions.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum HITAccessActions where
+    toEnum i = case i of
+        0 -> Accept
+        1 -> DiscoverPreviewAndAccept
+        2 -> PreviewAndAccept
+        _ -> (error . showText) $ "Unknown index for HITAccessActions: " <> toText i
+    fromEnum x = case x of
+        Accept -> 0
+        DiscoverPreviewAndAccept -> 1
+        PreviewAndAccept -> 2
+        HITAccessActions' name -> (error . showText) $ "Unknown HITAccessActions: " <> original name
+
+-- | Represents the bounds of /known/ $HITAccessActions.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded HITAccessActions where
+    minBound = Accept
+    maxBound = PreviewAndAccept
 
 instance Hashable     HITAccessActions
 instance NFData       HITAccessActions

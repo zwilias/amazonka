@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,59 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.MechanicalTurk.Types.QualificationStatus where
+module Network.AWS.MechanicalTurk.Types.QualificationStatus (
+  QualificationStatus (
+    ..
+    , Granted
+    , Revoked
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data QualificationStatus = Granted
-                         | Revoked
-                             deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                       Typeable, Generic)
+
+data QualificationStatus = QualificationStatus' (CI
+                                                   Text)
+                             deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                       Generic)
+
+pattern Granted :: QualificationStatus
+pattern Granted = QualificationStatus' "Granted"
+
+pattern Revoked :: QualificationStatus
+pattern Revoked = QualificationStatus' "Revoked"
+
+{-# COMPLETE
+  Granted,
+  Revoked,
+  QualificationStatus' #-}
 
 instance FromText QualificationStatus where
-    parser = takeLowerText >>= \case
-        "granted" -> pure Granted
-        "revoked" -> pure Revoked
-        e -> fromTextError $ "Failure parsing QualificationStatus from value: '" <> e
-           <> "'. Accepted values: granted, revoked"
+    parser = (QualificationStatus' . mk) <$> takeText
 
 instance ToText QualificationStatus where
-    toText = \case
-        Granted -> "Granted"
-        Revoked -> "Revoked"
+    toText (QualificationStatus' ci) = original ci
+
+-- | Represents an enum of /known/ $QualificationStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum QualificationStatus where
+    toEnum i = case i of
+        0 -> Granted
+        1 -> Revoked
+        _ -> (error . showText) $ "Unknown index for QualificationStatus: " <> toText i
+    fromEnum x = case x of
+        Granted -> 0
+        Revoked -> 1
+        QualificationStatus' name -> (error . showText) $ "Unknown QualificationStatus: " <> original name
+
+-- | Represents the bounds of /known/ $QualificationStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded QualificationStatus where
+    minBound = Granted
+    maxBound = Revoked
 
 instance Hashable     QualificationStatus
 instance NFData       QualificationStatus

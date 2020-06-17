@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,59 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.CodePipeline.Types.StageTransitionType where
+module Network.AWS.CodePipeline.Types.StageTransitionType (
+  StageTransitionType (
+    ..
+    , Inbound
+    , Outbound
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data StageTransitionType = Inbound
-                         | Outbound
-                             deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                       Typeable, Generic)
+
+data StageTransitionType = StageTransitionType' (CI
+                                                   Text)
+                             deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                       Generic)
+
+pattern Inbound :: StageTransitionType
+pattern Inbound = StageTransitionType' "Inbound"
+
+pattern Outbound :: StageTransitionType
+pattern Outbound = StageTransitionType' "Outbound"
+
+{-# COMPLETE
+  Inbound,
+  Outbound,
+  StageTransitionType' #-}
 
 instance FromText StageTransitionType where
-    parser = takeLowerText >>= \case
-        "inbound" -> pure Inbound
-        "outbound" -> pure Outbound
-        e -> fromTextError $ "Failure parsing StageTransitionType from value: '" <> e
-           <> "'. Accepted values: inbound, outbound"
+    parser = (StageTransitionType' . mk) <$> takeText
 
 instance ToText StageTransitionType where
-    toText = \case
-        Inbound -> "Inbound"
-        Outbound -> "Outbound"
+    toText (StageTransitionType' ci) = original ci
+
+-- | Represents an enum of /known/ $StageTransitionType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum StageTransitionType where
+    toEnum i = case i of
+        0 -> Inbound
+        1 -> Outbound
+        _ -> (error . showText) $ "Unknown index for StageTransitionType: " <> toText i
+    fromEnum x = case x of
+        Inbound -> 0
+        Outbound -> 1
+        StageTransitionType' name -> (error . showText) $ "Unknown StageTransitionType: " <> original name
+
+-- | Represents the bounds of /known/ $StageTransitionType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded StageTransitionType where
+    minBound = Inbound
+    maxBound = Outbound
 
 instance Hashable     StageTransitionType
 instance NFData       StageTransitionType

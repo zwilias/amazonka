@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,27 +16,60 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.MediaLive.Types.M2tsSegmentationStyle where
+module Network.AWS.MediaLive.Types.M2tsSegmentationStyle (
+  M2tsSegmentationStyle (
+    ..
+    , MaintainCadence
+    , ResetCadence
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
+
 -- | Placeholder documentation for M2tsSegmentationStyle
-data M2tsSegmentationStyle = MaintainCadence
-                           | ResetCadence
-                               deriving (Eq, Ord, Read, Show, Enum, Bounded,
-                                         Data, Typeable, Generic)
+data M2tsSegmentationStyle = M2tsSegmentationStyle' (CI
+                                                       Text)
+                               deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                         Generic)
+
+pattern MaintainCadence :: M2tsSegmentationStyle
+pattern MaintainCadence = M2tsSegmentationStyle' "MAINTAIN_CADENCE"
+
+pattern ResetCadence :: M2tsSegmentationStyle
+pattern ResetCadence = M2tsSegmentationStyle' "RESET_CADENCE"
+
+{-# COMPLETE
+  MaintainCadence,
+  ResetCadence,
+  M2tsSegmentationStyle' #-}
 
 instance FromText M2tsSegmentationStyle where
-    parser = takeLowerText >>= \case
-        "maintain_cadence" -> pure MaintainCadence
-        "reset_cadence" -> pure ResetCadence
-        e -> fromTextError $ "Failure parsing M2tsSegmentationStyle from value: '" <> e
-           <> "'. Accepted values: maintain_cadence, reset_cadence"
+    parser = (M2tsSegmentationStyle' . mk) <$> takeText
 
 instance ToText M2tsSegmentationStyle where
-    toText = \case
-        MaintainCadence -> "MAINTAIN_CADENCE"
-        ResetCadence -> "RESET_CADENCE"
+    toText (M2tsSegmentationStyle' ci) = original ci
+
+-- | Represents an enum of /known/ $M2tsSegmentationStyle.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum M2tsSegmentationStyle where
+    toEnum i = case i of
+        0 -> MaintainCadence
+        1 -> ResetCadence
+        _ -> (error . showText) $ "Unknown index for M2tsSegmentationStyle: " <> toText i
+    fromEnum x = case x of
+        MaintainCadence -> 0
+        ResetCadence -> 1
+        M2tsSegmentationStyle' name -> (error . showText) $ "Unknown M2tsSegmentationStyle: " <> original name
+
+-- | Represents the bounds of /known/ $M2tsSegmentationStyle.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded M2tsSegmentationStyle where
+    minBound = MaintainCadence
+    maxBound = ResetCadence
 
 instance Hashable     M2tsSegmentationStyle
 instance NFData       M2tsSegmentationStyle

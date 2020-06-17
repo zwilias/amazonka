@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,23 +16,51 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.Config.Types.ResourceValueType where
+module Network.AWS.Config.Types.ResourceValueType (
+  ResourceValueType (
+    ..
+    , ResourceId
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data ResourceValueType = ResourceId
-                           deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                     Typeable, Generic)
+
+data ResourceValueType = ResourceValueType' (CI Text)
+                           deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                     Generic)
+
+pattern ResourceId :: ResourceValueType
+pattern ResourceId = ResourceValueType' "RESOURCE_ID"
+
+{-# COMPLETE
+  ResourceId,
+  ResourceValueType' #-}
 
 instance FromText ResourceValueType where
-    parser = takeLowerText >>= \case
-        "resource_id" -> pure ResourceId
-        e -> fromTextError $ "Failure parsing ResourceValueType from value: '" <> e
-           <> "'. Accepted values: resource_id"
+    parser = (ResourceValueType' . mk) <$> takeText
 
 instance ToText ResourceValueType where
-    toText = \case
-        ResourceId -> "RESOURCE_ID"
+    toText (ResourceValueType' ci) = original ci
+
+-- | Represents an enum of /known/ $ResourceValueType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum ResourceValueType where
+    toEnum i = case i of
+        0 -> ResourceId
+        _ -> (error . showText) $ "Unknown index for ResourceValueType: " <> toText i
+    fromEnum x = case x of
+        ResourceId -> 0
+        ResourceValueType' name -> (error . showText) $ "Unknown ResourceValueType: " <> original name
+
+-- | Represents the bounds of /known/ $ResourceValueType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded ResourceValueType where
+    minBound = ResourceId
+    maxBound = ResourceId
 
 instance Hashable     ResourceValueType
 instance NFData       ResourceValueType

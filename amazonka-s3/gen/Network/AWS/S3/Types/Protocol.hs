@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,27 +16,59 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.S3.Types.Protocol where
+module Network.AWS.S3.Types.Protocol (
+  Protocol (
+    ..
+    , HTTP
+    , HTTPS
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
 import Network.AWS.S3.Internal
-  
-data Protocol = HTTP
-              | HTTPS
-                  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                            Typeable, Generic)
+
+data Protocol = Protocol' (CI Text)
+                  deriving (Eq, Ord, Read, Show, Data, Typeable,
+                            Generic)
+
+pattern HTTP :: Protocol
+pattern HTTP = Protocol' "http"
+
+pattern HTTPS :: Protocol
+pattern HTTPS = Protocol' "https"
+
+{-# COMPLETE
+  HTTP,
+  HTTPS,
+  Protocol' #-}
 
 instance FromText Protocol where
-    parser = takeLowerText >>= \case
-        "http" -> pure HTTP
-        "https" -> pure HTTPS
-        e -> fromTextError $ "Failure parsing Protocol from value: '" <> e
-           <> "'. Accepted values: http, https"
+    parser = (Protocol' . mk) <$> takeText
 
 instance ToText Protocol where
-    toText = \case
-        HTTP -> "http"
-        HTTPS -> "https"
+    toText (Protocol' ci) = original ci
+
+-- | Represents an enum of /known/ $Protocol.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum Protocol where
+    toEnum i = case i of
+        0 -> HTTP
+        1 -> HTTPS
+        _ -> (error . showText) $ "Unknown index for Protocol: " <> toText i
+    fromEnum x = case x of
+        HTTP -> 0
+        HTTPS -> 1
+        Protocol' name -> (error . showText) $ "Unknown Protocol: " <> original name
+
+-- | Represents the bounds of /known/ $Protocol.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded Protocol where
+    minBound = HTTP
+    maxBound = HTTPS
 
 instance Hashable     Protocol
 instance NFData       Protocol

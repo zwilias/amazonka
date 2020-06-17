@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,23 +16,51 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.Lambda.Types.FunctionVersion where
+module Network.AWS.Lambda.Types.FunctionVersion (
+  FunctionVersion (
+    ..
+    , All
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data FunctionVersion = All
-                         deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                   Typeable, Generic)
+
+data FunctionVersion = FunctionVersion' (CI Text)
+                         deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                   Generic)
+
+pattern All :: FunctionVersion
+pattern All = FunctionVersion' "ALL"
+
+{-# COMPLETE
+  All,
+  FunctionVersion' #-}
 
 instance FromText FunctionVersion where
-    parser = takeLowerText >>= \case
-        "all" -> pure All
-        e -> fromTextError $ "Failure parsing FunctionVersion from value: '" <> e
-           <> "'. Accepted values: all"
+    parser = (FunctionVersion' . mk) <$> takeText
 
 instance ToText FunctionVersion where
-    toText = \case
-        All -> "ALL"
+    toText (FunctionVersion' ci) = original ci
+
+-- | Represents an enum of /known/ $FunctionVersion.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum FunctionVersion where
+    toEnum i = case i of
+        0 -> All
+        _ -> (error . showText) $ "Unknown index for FunctionVersion: " <> toText i
+    fromEnum x = case x of
+        All -> 0
+        FunctionVersion' name -> (error . showText) $ "Unknown FunctionVersion: " <> original name
+
+-- | Represents the bounds of /known/ $FunctionVersion.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded FunctionVersion where
+    minBound = All
+    maxBound = All
 
 instance Hashable     FunctionVersion
 instance NFData       FunctionVersion

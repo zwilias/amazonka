@@ -36,6 +36,7 @@ module Network.AWS.CodeDeploy.ContinueDeployment
     ) where
 
 import Network.AWS.CodeDeploy.Types
+import Network.AWS.CodeDeploy.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request

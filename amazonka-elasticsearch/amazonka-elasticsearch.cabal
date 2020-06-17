@@ -90,6 +90,7 @@ library
         , Network.AWS.ElasticSearch.Types.LogType
         , Network.AWS.ElasticSearch.Types.OptionState
         , Network.AWS.ElasticSearch.Types.OptionStatus
+        , Network.AWS.ElasticSearch.Types.Product
         , Network.AWS.ElasticSearch.Types.RecurringCharge
         , Network.AWS.ElasticSearch.Types.ReservedElasticsearchInstance
         , Network.AWS.ElasticSearch.Types.ReservedElasticsearchInstanceOffering
@@ -107,6 +108,7 @@ library
     build-depends:
           amazonka-core == 1.6.1.*
         , base          >= 4.7     && < 5
+        , case-insensitive
 
 test-suite amazonka-elasticsearch-test
     type:              exitcode-stdio-1.0
@@ -130,6 +132,7 @@ test-suite amazonka-elasticsearch-test
         , amazonka-elasticsearch
         , base
         , bytestring
+        , case-insensitive
         , tasty
         , tasty-hunit
         , text

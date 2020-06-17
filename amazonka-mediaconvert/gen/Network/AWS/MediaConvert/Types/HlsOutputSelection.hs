@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,27 +16,60 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.MediaConvert.Types.HlsOutputSelection where
+module Network.AWS.MediaConvert.Types.HlsOutputSelection (
+  HlsOutputSelection (
+    ..
+    , ManifestsAndSegments
+    , SegmentsOnly
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
+
 -- | Indicates whether the .m3u8 manifest file should be generated for this HLS output group.
-data HlsOutputSelection = ManifestsAndSegments
-                        | SegmentsOnly
-                            deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                      Typeable, Generic)
+data HlsOutputSelection = HlsOutputSelection' (CI
+                                                 Text)
+                            deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                      Generic)
+
+pattern ManifestsAndSegments :: HlsOutputSelection
+pattern ManifestsAndSegments = HlsOutputSelection' "MANIFESTS_AND_SEGMENTS"
+
+pattern SegmentsOnly :: HlsOutputSelection
+pattern SegmentsOnly = HlsOutputSelection' "SEGMENTS_ONLY"
+
+{-# COMPLETE
+  ManifestsAndSegments,
+  SegmentsOnly,
+  HlsOutputSelection' #-}
 
 instance FromText HlsOutputSelection where
-    parser = takeLowerText >>= \case
-        "manifests_and_segments" -> pure ManifestsAndSegments
-        "segments_only" -> pure SegmentsOnly
-        e -> fromTextError $ "Failure parsing HlsOutputSelection from value: '" <> e
-           <> "'. Accepted values: manifests_and_segments, segments_only"
+    parser = (HlsOutputSelection' . mk) <$> takeText
 
 instance ToText HlsOutputSelection where
-    toText = \case
-        ManifestsAndSegments -> "MANIFESTS_AND_SEGMENTS"
-        SegmentsOnly -> "SEGMENTS_ONLY"
+    toText (HlsOutputSelection' ci) = original ci
+
+-- | Represents an enum of /known/ $HlsOutputSelection.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum HlsOutputSelection where
+    toEnum i = case i of
+        0 -> ManifestsAndSegments
+        1 -> SegmentsOnly
+        _ -> (error . showText) $ "Unknown index for HlsOutputSelection: " <> toText i
+    fromEnum x = case x of
+        ManifestsAndSegments -> 0
+        SegmentsOnly -> 1
+        HlsOutputSelection' name -> (error . showText) $ "Unknown HlsOutputSelection: " <> original name
+
+-- | Represents the bounds of /known/ $HlsOutputSelection.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded HlsOutputSelection where
+    minBound = ManifestsAndSegments
+    maxBound = SegmentsOnly
 
 instance Hashable     HlsOutputSelection
 instance NFData       HlsOutputSelection

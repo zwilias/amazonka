@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,33 +16,73 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.S3.Types.ReplicationStatus where
+module Network.AWS.S3.Types.ReplicationStatus (
+  ReplicationStatus (
+    ..
+    , Completed
+    , Failed
+    , Pending
+    , Replica
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
 import Network.AWS.S3.Internal
-  
-data ReplicationStatus = Completed
-                       | Failed
-                       | Pending
-                       | Replica
-                           deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                     Typeable, Generic)
+
+data ReplicationStatus = ReplicationStatus' (CI Text)
+                           deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                     Generic)
+
+pattern Completed :: ReplicationStatus
+pattern Completed = ReplicationStatus' "COMPLETED"
+
+pattern Failed :: ReplicationStatus
+pattern Failed = ReplicationStatus' "FAILED"
+
+pattern Pending :: ReplicationStatus
+pattern Pending = ReplicationStatus' "PENDING"
+
+pattern Replica :: ReplicationStatus
+pattern Replica = ReplicationStatus' "REPLICA"
+
+{-# COMPLETE
+  Completed,
+  Failed,
+  Pending,
+  Replica,
+  ReplicationStatus' #-}
 
 instance FromText ReplicationStatus where
-    parser = takeLowerText >>= \case
-        "completed" -> pure Completed
-        "failed" -> pure Failed
-        "pending" -> pure Pending
-        "replica" -> pure Replica
-        e -> fromTextError $ "Failure parsing ReplicationStatus from value: '" <> e
-           <> "'. Accepted values: completed, failed, pending, replica"
+    parser = (ReplicationStatus' . mk) <$> takeText
 
 instance ToText ReplicationStatus where
-    toText = \case
-        Completed -> "COMPLETED"
-        Failed -> "FAILED"
-        Pending -> "PENDING"
-        Replica -> "REPLICA"
+    toText (ReplicationStatus' ci) = original ci
+
+-- | Represents an enum of /known/ $ReplicationStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum ReplicationStatus where
+    toEnum i = case i of
+        0 -> Completed
+        1 -> Failed
+        2 -> Pending
+        3 -> Replica
+        _ -> (error . showText) $ "Unknown index for ReplicationStatus: " <> toText i
+    fromEnum x = case x of
+        Completed -> 0
+        Failed -> 1
+        Pending -> 2
+        Replica -> 3
+        ReplicationStatus' name -> (error . showText) $ "Unknown ReplicationStatus: " <> original name
+
+-- | Represents the bounds of /known/ $ReplicationStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded ReplicationStatus where
+    minBound = Completed
+    maxBound = Replica
 
 instance Hashable     ReplicationStatus
 instance NFData       ReplicationStatus

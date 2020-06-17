@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,58 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.Lightsail.Types.PortAccessType where
+module Network.AWS.Lightsail.Types.PortAccessType (
+  PortAccessType (
+    ..
+    , Private
+    , Public
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data PortAccessType = Private
-                    | Public
-                        deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                  Typeable, Generic)
+
+data PortAccessType = PortAccessType' (CI Text)
+                        deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                  Generic)
+
+pattern Private :: PortAccessType
+pattern Private = PortAccessType' "Private"
+
+pattern Public :: PortAccessType
+pattern Public = PortAccessType' "Public"
+
+{-# COMPLETE
+  Private,
+  Public,
+  PortAccessType' #-}
 
 instance FromText PortAccessType where
-    parser = takeLowerText >>= \case
-        "private" -> pure Private
-        "public" -> pure Public
-        e -> fromTextError $ "Failure parsing PortAccessType from value: '" <> e
-           <> "'. Accepted values: private, public"
+    parser = (PortAccessType' . mk) <$> takeText
 
 instance ToText PortAccessType where
-    toText = \case
-        Private -> "Private"
-        Public -> "Public"
+    toText (PortAccessType' ci) = original ci
+
+-- | Represents an enum of /known/ $PortAccessType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum PortAccessType where
+    toEnum i = case i of
+        0 -> Private
+        1 -> Public
+        _ -> (error . showText) $ "Unknown index for PortAccessType: " <> toText i
+    fromEnum x = case x of
+        Private -> 0
+        Public -> 1
+        PortAccessType' name -> (error . showText) $ "Unknown PortAccessType: " <> original name
+
+-- | Represents the bounds of /known/ $PortAccessType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded PortAccessType where
+    minBound = Private
+    maxBound = Public
 
 instance Hashable     PortAccessType
 instance NFData       PortAccessType

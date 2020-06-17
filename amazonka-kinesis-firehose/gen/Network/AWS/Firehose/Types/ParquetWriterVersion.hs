@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,59 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.Firehose.Types.ParquetWriterVersion where
+module Network.AWS.Firehose.Types.ParquetWriterVersion (
+  ParquetWriterVersion (
+    ..
+    , V1
+    , V2
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data ParquetWriterVersion = V1
-                          | V2
-                              deriving (Eq, Ord, Read, Show, Enum, Bounded,
-                                        Data, Typeable, Generic)
+
+data ParquetWriterVersion = ParquetWriterVersion' (CI
+                                                     Text)
+                              deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                        Generic)
+
+pattern V1 :: ParquetWriterVersion
+pattern V1 = ParquetWriterVersion' "V1"
+
+pattern V2 :: ParquetWriterVersion
+pattern V2 = ParquetWriterVersion' "V2"
+
+{-# COMPLETE
+  V1,
+  V2,
+  ParquetWriterVersion' #-}
 
 instance FromText ParquetWriterVersion where
-    parser = takeLowerText >>= \case
-        "v1" -> pure V1
-        "v2" -> pure V2
-        e -> fromTextError $ "Failure parsing ParquetWriterVersion from value: '" <> e
-           <> "'. Accepted values: v1, v2"
+    parser = (ParquetWriterVersion' . mk) <$> takeText
 
 instance ToText ParquetWriterVersion where
-    toText = \case
-        V1 -> "V1"
-        V2 -> "V2"
+    toText (ParquetWriterVersion' ci) = original ci
+
+-- | Represents an enum of /known/ $ParquetWriterVersion.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum ParquetWriterVersion where
+    toEnum i = case i of
+        0 -> V1
+        1 -> V2
+        _ -> (error . showText) $ "Unknown index for ParquetWriterVersion: " <> toText i
+    fromEnum x = case x of
+        V1 -> 0
+        V2 -> 1
+        ParquetWriterVersion' name -> (error . showText) $ "Unknown ParquetWriterVersion: " <> original name
+
+-- | Represents the bounds of /known/ $ParquetWriterVersion.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded ParquetWriterVersion where
+    minBound = V1
+    maxBound = V2
 
 instance Hashable     ParquetWriterVersion
 instance NFData       ParquetWriterVersion

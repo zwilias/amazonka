@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,41 +16,93 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.CognitoIdentityProvider.Types.AuthFlowType where
+module Network.AWS.CognitoIdentityProvider.Types.AuthFlowType (
+  AuthFlowType (
+    ..
+    , AdminNoSrpAuth
+    , AdminUserPasswordAuth
+    , CustomAuth
+    , RefreshToken
+    , RefreshTokenAuth
+    , UserPasswordAuth
+    , UserSrpAuth
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data AuthFlowType = AdminNoSrpAuth
-                  | AdminUserPasswordAuth
-                  | CustomAuth
-                  | RefreshToken
-                  | RefreshTokenAuth
-                  | UserPasswordAuth
-                  | UserSrpAuth
-                      deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                Typeable, Generic)
+
+data AuthFlowType = AuthFlowType' (CI Text)
+                      deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                Generic)
+
+pattern AdminNoSrpAuth :: AuthFlowType
+pattern AdminNoSrpAuth = AuthFlowType' "ADMIN_NO_SRP_AUTH"
+
+pattern AdminUserPasswordAuth :: AuthFlowType
+pattern AdminUserPasswordAuth = AuthFlowType' "ADMIN_USER_PASSWORD_AUTH"
+
+pattern CustomAuth :: AuthFlowType
+pattern CustomAuth = AuthFlowType' "CUSTOM_AUTH"
+
+pattern RefreshToken :: AuthFlowType
+pattern RefreshToken = AuthFlowType' "REFRESH_TOKEN"
+
+pattern RefreshTokenAuth :: AuthFlowType
+pattern RefreshTokenAuth = AuthFlowType' "REFRESH_TOKEN_AUTH"
+
+pattern UserPasswordAuth :: AuthFlowType
+pattern UserPasswordAuth = AuthFlowType' "USER_PASSWORD_AUTH"
+
+pattern UserSrpAuth :: AuthFlowType
+pattern UserSrpAuth = AuthFlowType' "USER_SRP_AUTH"
+
+{-# COMPLETE
+  AdminNoSrpAuth,
+  AdminUserPasswordAuth,
+  CustomAuth,
+  RefreshToken,
+  RefreshTokenAuth,
+  UserPasswordAuth,
+  UserSrpAuth,
+  AuthFlowType' #-}
 
 instance FromText AuthFlowType where
-    parser = takeLowerText >>= \case
-        "admin_no_srp_auth" -> pure AdminNoSrpAuth
-        "admin_user_password_auth" -> pure AdminUserPasswordAuth
-        "custom_auth" -> pure CustomAuth
-        "refresh_token" -> pure RefreshToken
-        "refresh_token_auth" -> pure RefreshTokenAuth
-        "user_password_auth" -> pure UserPasswordAuth
-        "user_srp_auth" -> pure UserSrpAuth
-        e -> fromTextError $ "Failure parsing AuthFlowType from value: '" <> e
-           <> "'. Accepted values: admin_no_srp_auth, admin_user_password_auth, custom_auth, refresh_token, refresh_token_auth, user_password_auth, user_srp_auth"
+    parser = (AuthFlowType' . mk) <$> takeText
 
 instance ToText AuthFlowType where
-    toText = \case
-        AdminNoSrpAuth -> "ADMIN_NO_SRP_AUTH"
-        AdminUserPasswordAuth -> "ADMIN_USER_PASSWORD_AUTH"
-        CustomAuth -> "CUSTOM_AUTH"
-        RefreshToken -> "REFRESH_TOKEN"
-        RefreshTokenAuth -> "REFRESH_TOKEN_AUTH"
-        UserPasswordAuth -> "USER_PASSWORD_AUTH"
-        UserSrpAuth -> "USER_SRP_AUTH"
+    toText (AuthFlowType' ci) = original ci
+
+-- | Represents an enum of /known/ $AuthFlowType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum AuthFlowType where
+    toEnum i = case i of
+        0 -> AdminNoSrpAuth
+        1 -> AdminUserPasswordAuth
+        2 -> CustomAuth
+        3 -> RefreshToken
+        4 -> RefreshTokenAuth
+        5 -> UserPasswordAuth
+        6 -> UserSrpAuth
+        _ -> (error . showText) $ "Unknown index for AuthFlowType: " <> toText i
+    fromEnum x = case x of
+        AdminNoSrpAuth -> 0
+        AdminUserPasswordAuth -> 1
+        CustomAuth -> 2
+        RefreshToken -> 3
+        RefreshTokenAuth -> 4
+        UserPasswordAuth -> 5
+        UserSrpAuth -> 6
+        AuthFlowType' name -> (error . showText) $ "Unknown AuthFlowType: " <> original name
+
+-- | Represents the bounds of /known/ $AuthFlowType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded AuthFlowType where
+    minBound = AdminNoSrpAuth
+    maxBound = UserSrpAuth
 
 instance Hashable     AuthFlowType
 instance NFData       AuthFlowType

@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,32 +16,73 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.SWF.Types.ActivityTaskTimeoutType where
+module Network.AWS.SWF.Types.ActivityTaskTimeoutType (
+  ActivityTaskTimeoutType (
+    ..
+    , ATTTHeartbeat
+    , ATTTScheduleToClose
+    , ATTTScheduleToStart
+    , ATTTStartToClose
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data ActivityTaskTimeoutType = ATTTHeartbeat
-                             | ATTTScheduleToClose
-                             | ATTTScheduleToStart
-                             | ATTTStartToClose
-                                 deriving (Eq, Ord, Read, Show, Enum, Bounded,
-                                           Data, Typeable, Generic)
+
+data ActivityTaskTimeoutType = ActivityTaskTimeoutType' (CI
+                                                           Text)
+                                 deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                           Generic)
+
+pattern ATTTHeartbeat :: ActivityTaskTimeoutType
+pattern ATTTHeartbeat = ActivityTaskTimeoutType' "HEARTBEAT"
+
+pattern ATTTScheduleToClose :: ActivityTaskTimeoutType
+pattern ATTTScheduleToClose = ActivityTaskTimeoutType' "SCHEDULE_TO_CLOSE"
+
+pattern ATTTScheduleToStart :: ActivityTaskTimeoutType
+pattern ATTTScheduleToStart = ActivityTaskTimeoutType' "SCHEDULE_TO_START"
+
+pattern ATTTStartToClose :: ActivityTaskTimeoutType
+pattern ATTTStartToClose = ActivityTaskTimeoutType' "START_TO_CLOSE"
+
+{-# COMPLETE
+  ATTTHeartbeat,
+  ATTTScheduleToClose,
+  ATTTScheduleToStart,
+  ATTTStartToClose,
+  ActivityTaskTimeoutType' #-}
 
 instance FromText ActivityTaskTimeoutType where
-    parser = takeLowerText >>= \case
-        "heartbeat" -> pure ATTTHeartbeat
-        "schedule_to_close" -> pure ATTTScheduleToClose
-        "schedule_to_start" -> pure ATTTScheduleToStart
-        "start_to_close" -> pure ATTTStartToClose
-        e -> fromTextError $ "Failure parsing ActivityTaskTimeoutType from value: '" <> e
-           <> "'. Accepted values: heartbeat, schedule_to_close, schedule_to_start, start_to_close"
+    parser = (ActivityTaskTimeoutType' . mk) <$> takeText
 
 instance ToText ActivityTaskTimeoutType where
-    toText = \case
-        ATTTHeartbeat -> "HEARTBEAT"
-        ATTTScheduleToClose -> "SCHEDULE_TO_CLOSE"
-        ATTTScheduleToStart -> "SCHEDULE_TO_START"
-        ATTTStartToClose -> "START_TO_CLOSE"
+    toText (ActivityTaskTimeoutType' ci) = original ci
+
+-- | Represents an enum of /known/ $ActivityTaskTimeoutType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum ActivityTaskTimeoutType where
+    toEnum i = case i of
+        0 -> ATTTHeartbeat
+        1 -> ATTTScheduleToClose
+        2 -> ATTTScheduleToStart
+        3 -> ATTTStartToClose
+        _ -> (error . showText) $ "Unknown index for ActivityTaskTimeoutType: " <> toText i
+    fromEnum x = case x of
+        ATTTHeartbeat -> 0
+        ATTTScheduleToClose -> 1
+        ATTTScheduleToStart -> 2
+        ATTTStartToClose -> 3
+        ActivityTaskTimeoutType' name -> (error . showText) $ "Unknown ActivityTaskTimeoutType: " <> original name
+
+-- | Represents the bounds of /known/ $ActivityTaskTimeoutType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded ActivityTaskTimeoutType where
+    minBound = ATTTHeartbeat
+    maxBound = ATTTStartToClose
 
 instance Hashable     ActivityTaskTimeoutType
 instance NFData       ActivityTaskTimeoutType

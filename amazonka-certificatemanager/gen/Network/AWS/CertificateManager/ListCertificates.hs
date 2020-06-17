@@ -44,6 +44,7 @@ module Network.AWS.CertificateManager.ListCertificates
     ) where
 
 import Network.AWS.CertificateManager.Types
+import Network.AWS.CertificateManager.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude

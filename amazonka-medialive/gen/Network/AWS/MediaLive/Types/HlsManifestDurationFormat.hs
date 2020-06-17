@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,27 +16,60 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.MediaLive.Types.HlsManifestDurationFormat where
+module Network.AWS.MediaLive.Types.HlsManifestDurationFormat (
+  HlsManifestDurationFormat (
+    ..
+    , FloatingPoint
+    , Integer
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
+
 -- | Placeholder documentation for HlsManifestDurationFormat
-data HlsManifestDurationFormat = FloatingPoint
-                               | Integer
-                                   deriving (Eq, Ord, Read, Show, Enum, Bounded,
-                                             Data, Typeable, Generic)
+data HlsManifestDurationFormat = HlsManifestDurationFormat' (CI
+                                                               Text)
+                                   deriving (Eq, Ord, Read, Show, Data,
+                                             Typeable, Generic)
+
+pattern FloatingPoint :: HlsManifestDurationFormat
+pattern FloatingPoint = HlsManifestDurationFormat' "FLOATING_POINT"
+
+pattern Integer :: HlsManifestDurationFormat
+pattern Integer = HlsManifestDurationFormat' "INTEGER"
+
+{-# COMPLETE
+  FloatingPoint,
+  Integer,
+  HlsManifestDurationFormat' #-}
 
 instance FromText HlsManifestDurationFormat where
-    parser = takeLowerText >>= \case
-        "floating_point" -> pure FloatingPoint
-        "integer" -> pure Integer
-        e -> fromTextError $ "Failure parsing HlsManifestDurationFormat from value: '" <> e
-           <> "'. Accepted values: floating_point, integer"
+    parser = (HlsManifestDurationFormat' . mk) <$> takeText
 
 instance ToText HlsManifestDurationFormat where
-    toText = \case
-        FloatingPoint -> "FLOATING_POINT"
-        Integer -> "INTEGER"
+    toText (HlsManifestDurationFormat' ci) = original ci
+
+-- | Represents an enum of /known/ $HlsManifestDurationFormat.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum HlsManifestDurationFormat where
+    toEnum i = case i of
+        0 -> FloatingPoint
+        1 -> Integer
+        _ -> (error . showText) $ "Unknown index for HlsManifestDurationFormat: " <> toText i
+    fromEnum x = case x of
+        FloatingPoint -> 0
+        Integer -> 1
+        HlsManifestDurationFormat' name -> (error . showText) $ "Unknown HlsManifestDurationFormat: " <> original name
+
+-- | Represents the bounds of /known/ $HlsManifestDurationFormat.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded HlsManifestDurationFormat where
+    minBound = FloatingPoint
+    maxBound = Integer
 
 instance Hashable     HlsManifestDurationFormat
 instance NFData       HlsManifestDurationFormat

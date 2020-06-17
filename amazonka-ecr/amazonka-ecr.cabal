@@ -89,12 +89,14 @@ library
         , Network.AWS.ECR.Types.LifecyclePolicyPreviewSummary
         , Network.AWS.ECR.Types.LifecyclePolicyRuleAction
         , Network.AWS.ECR.Types.ListImagesFilter
+        , Network.AWS.ECR.Types.Product
         , Network.AWS.ECR.Types.Repository
         , Network.AWS.ECR.Types.TagStatus
 
     build-depends:
           amazonka-core == 1.6.1.*
         , base          >= 4.7     && < 5
+        , case-insensitive
 
 test-suite amazonka-ecr-test
     type:              exitcode-stdio-1.0
@@ -118,6 +120,7 @@ test-suite amazonka-ecr-test
         , amazonka-ecr
         , base
         , bytestring
+        , case-insensitive
         , tasty
         , tasty-hunit
         , text

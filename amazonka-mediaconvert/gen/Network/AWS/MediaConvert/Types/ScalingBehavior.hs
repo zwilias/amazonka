@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,27 +16,59 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.MediaConvert.Types.ScalingBehavior where
+module Network.AWS.MediaConvert.Types.ScalingBehavior (
+  ScalingBehavior (
+    ..
+    , SBDefault
+    , SBStretchToOutput
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
+
 -- | Applies only if your input aspect ratio is different from your output aspect ratio. Enable Stretch to output (StretchToOutput) to have the service stretch your video image to fit. Leave this setting disabled to allow the service to letterbox your video instead. This setting overrides any positioning value you specify elsewhere in the job.
-data ScalingBehavior = SBDefault
-                     | SBStretchToOutput
-                         deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                   Typeable, Generic)
+data ScalingBehavior = ScalingBehavior' (CI Text)
+                         deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                   Generic)
+
+pattern SBDefault :: ScalingBehavior
+pattern SBDefault = ScalingBehavior' "DEFAULT"
+
+pattern SBStretchToOutput :: ScalingBehavior
+pattern SBStretchToOutput = ScalingBehavior' "STRETCH_TO_OUTPUT"
+
+{-# COMPLETE
+  SBDefault,
+  SBStretchToOutput,
+  ScalingBehavior' #-}
 
 instance FromText ScalingBehavior where
-    parser = takeLowerText >>= \case
-        "default" -> pure SBDefault
-        "stretch_to_output" -> pure SBStretchToOutput
-        e -> fromTextError $ "Failure parsing ScalingBehavior from value: '" <> e
-           <> "'. Accepted values: default, stretch_to_output"
+    parser = (ScalingBehavior' . mk) <$> takeText
 
 instance ToText ScalingBehavior where
-    toText = \case
-        SBDefault -> "DEFAULT"
-        SBStretchToOutput -> "STRETCH_TO_OUTPUT"
+    toText (ScalingBehavior' ci) = original ci
+
+-- | Represents an enum of /known/ $ScalingBehavior.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum ScalingBehavior where
+    toEnum i = case i of
+        0 -> SBDefault
+        1 -> SBStretchToOutput
+        _ -> (error . showText) $ "Unknown index for ScalingBehavior: " <> toText i
+    fromEnum x = case x of
+        SBDefault -> 0
+        SBStretchToOutput -> 1
+        ScalingBehavior' name -> (error . showText) $ "Unknown ScalingBehavior: " <> original name
+
+-- | Represents the bounds of /known/ $ScalingBehavior.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded ScalingBehavior where
+    minBound = SBDefault
+    maxBound = SBStretchToOutput
 
 instance Hashable     ScalingBehavior
 instance NFData       ScalingBehavior

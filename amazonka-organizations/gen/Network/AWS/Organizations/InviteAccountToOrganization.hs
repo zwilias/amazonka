@@ -46,6 +46,7 @@ module Network.AWS.Organizations.InviteAccountToOrganization
 
 import Network.AWS.Lens
 import Network.AWS.Organizations.Types
+import Network.AWS.Organizations.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response

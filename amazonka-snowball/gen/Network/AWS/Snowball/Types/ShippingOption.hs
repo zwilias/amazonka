@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,32 +16,72 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.Snowball.Types.ShippingOption where
+module Network.AWS.Snowball.Types.ShippingOption (
+  ShippingOption (
+    ..
+    , SOExpress
+    , SONextDay
+    , SOSecondDay
+    , SOStandard
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data ShippingOption = SOExpress
-                    | SONextDay
-                    | SOSecondDay
-                    | SOStandard
-                        deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                  Typeable, Generic)
+
+data ShippingOption = ShippingOption' (CI Text)
+                        deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                  Generic)
+
+pattern SOExpress :: ShippingOption
+pattern SOExpress = ShippingOption' "EXPRESS"
+
+pattern SONextDay :: ShippingOption
+pattern SONextDay = ShippingOption' "NEXT_DAY"
+
+pattern SOSecondDay :: ShippingOption
+pattern SOSecondDay = ShippingOption' "SECOND_DAY"
+
+pattern SOStandard :: ShippingOption
+pattern SOStandard = ShippingOption' "STANDARD"
+
+{-# COMPLETE
+  SOExpress,
+  SONextDay,
+  SOSecondDay,
+  SOStandard,
+  ShippingOption' #-}
 
 instance FromText ShippingOption where
-    parser = takeLowerText >>= \case
-        "express" -> pure SOExpress
-        "next_day" -> pure SONextDay
-        "second_day" -> pure SOSecondDay
-        "standard" -> pure SOStandard
-        e -> fromTextError $ "Failure parsing ShippingOption from value: '" <> e
-           <> "'. Accepted values: express, next_day, second_day, standard"
+    parser = (ShippingOption' . mk) <$> takeText
 
 instance ToText ShippingOption where
-    toText = \case
-        SOExpress -> "EXPRESS"
-        SONextDay -> "NEXT_DAY"
-        SOSecondDay -> "SECOND_DAY"
-        SOStandard -> "STANDARD"
+    toText (ShippingOption' ci) = original ci
+
+-- | Represents an enum of /known/ $ShippingOption.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum ShippingOption where
+    toEnum i = case i of
+        0 -> SOExpress
+        1 -> SONextDay
+        2 -> SOSecondDay
+        3 -> SOStandard
+        _ -> (error . showText) $ "Unknown index for ShippingOption: " <> toText i
+    fromEnum x = case x of
+        SOExpress -> 0
+        SONextDay -> 1
+        SOSecondDay -> 2
+        SOStandard -> 3
+        ShippingOption' name -> (error . showText) $ "Unknown ShippingOption: " <> original name
+
+-- | Represents the bounds of /known/ $ShippingOption.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded ShippingOption where
+    minBound = SOExpress
+    maxBound = SOStandard
 
 instance Hashable     ShippingOption
 instance NFData       ShippingOption

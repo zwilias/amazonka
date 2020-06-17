@@ -38,6 +38,7 @@ module Network.AWS.Config.PutRemediationConfigurations
     ) where
 
 import Network.AWS.Config.Types
+import Network.AWS.Config.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request

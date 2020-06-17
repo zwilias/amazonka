@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,34 +16,74 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.EC2.Types.TransitGatewayRouteTableState where
+module Network.AWS.EC2.Types.TransitGatewayRouteTableState (
+  TransitGatewayRouteTableState (
+    ..
+    , TGRTSAvailable
+    , TGRTSDeleted
+    , TGRTSDeleting
+    , TGRTSPending
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.EC2.Internal
 import Network.AWS.Prelude
-  
-data TransitGatewayRouteTableState = TGRTSAvailable
-                                   | TGRTSDeleted
-                                   | TGRTSDeleting
-                                   | TGRTSPending
-                                       deriving (Eq, Ord, Read, Show, Enum,
-                                                 Bounded, Data, Typeable,
-                                                 Generic)
+
+data TransitGatewayRouteTableState = TransitGatewayRouteTableState' (CI
+                                                                       Text)
+                                       deriving (Eq, Ord, Read, Show, Data,
+                                                 Typeable, Generic)
+
+pattern TGRTSAvailable :: TransitGatewayRouteTableState
+pattern TGRTSAvailable = TransitGatewayRouteTableState' "available"
+
+pattern TGRTSDeleted :: TransitGatewayRouteTableState
+pattern TGRTSDeleted = TransitGatewayRouteTableState' "deleted"
+
+pattern TGRTSDeleting :: TransitGatewayRouteTableState
+pattern TGRTSDeleting = TransitGatewayRouteTableState' "deleting"
+
+pattern TGRTSPending :: TransitGatewayRouteTableState
+pattern TGRTSPending = TransitGatewayRouteTableState' "pending"
+
+{-# COMPLETE
+  TGRTSAvailable,
+  TGRTSDeleted,
+  TGRTSDeleting,
+  TGRTSPending,
+  TransitGatewayRouteTableState' #-}
 
 instance FromText TransitGatewayRouteTableState where
-    parser = takeLowerText >>= \case
-        "available" -> pure TGRTSAvailable
-        "deleted" -> pure TGRTSDeleted
-        "deleting" -> pure TGRTSDeleting
-        "pending" -> pure TGRTSPending
-        e -> fromTextError $ "Failure parsing TransitGatewayRouteTableState from value: '" <> e
-           <> "'. Accepted values: available, deleted, deleting, pending"
+    parser = (TransitGatewayRouteTableState' . mk) <$> takeText
 
 instance ToText TransitGatewayRouteTableState where
-    toText = \case
-        TGRTSAvailable -> "available"
-        TGRTSDeleted -> "deleted"
-        TGRTSDeleting -> "deleting"
-        TGRTSPending -> "pending"
+    toText (TransitGatewayRouteTableState' ci) = original ci
+
+-- | Represents an enum of /known/ $TransitGatewayRouteTableState.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum TransitGatewayRouteTableState where
+    toEnum i = case i of
+        0 -> TGRTSAvailable
+        1 -> TGRTSDeleted
+        2 -> TGRTSDeleting
+        3 -> TGRTSPending
+        _ -> (error . showText) $ "Unknown index for TransitGatewayRouteTableState: " <> toText i
+    fromEnum x = case x of
+        TGRTSAvailable -> 0
+        TGRTSDeleted -> 1
+        TGRTSDeleting -> 2
+        TGRTSPending -> 3
+        TransitGatewayRouteTableState' name -> (error . showText) $ "Unknown TransitGatewayRouteTableState: " <> original name
+
+-- | Represents the bounds of /known/ $TransitGatewayRouteTableState.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded TransitGatewayRouteTableState where
+    minBound = TGRTSAvailable
+    maxBound = TGRTSPending
 
 instance Hashable     TransitGatewayRouteTableState
 instance NFData       TransitGatewayRouteTableState

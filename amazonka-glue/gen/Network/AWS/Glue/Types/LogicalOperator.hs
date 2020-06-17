@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,23 +16,51 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.Glue.Types.LogicalOperator where
+module Network.AWS.Glue.Types.LogicalOperator (
+  LogicalOperator (
+    ..
+    , Equals
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data LogicalOperator = Equals
-                         deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                   Typeable, Generic)
+
+data LogicalOperator = LogicalOperator' (CI Text)
+                         deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                   Generic)
+
+pattern Equals :: LogicalOperator
+pattern Equals = LogicalOperator' "EQUALS"
+
+{-# COMPLETE
+  Equals,
+  LogicalOperator' #-}
 
 instance FromText LogicalOperator where
-    parser = takeLowerText >>= \case
-        "equals" -> pure Equals
-        e -> fromTextError $ "Failure parsing LogicalOperator from value: '" <> e
-           <> "'. Accepted values: equals"
+    parser = (LogicalOperator' . mk) <$> takeText
 
 instance ToText LogicalOperator where
-    toText = \case
-        Equals -> "EQUALS"
+    toText (LogicalOperator' ci) = original ci
+
+-- | Represents an enum of /known/ $LogicalOperator.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum LogicalOperator where
+    toEnum i = case i of
+        0 -> Equals
+        _ -> (error . showText) $ "Unknown index for LogicalOperator: " <> toText i
+    fromEnum x = case x of
+        Equals -> 0
+        LogicalOperator' name -> (error . showText) $ "Unknown LogicalOperator: " <> original name
+
+-- | Represents the bounds of /known/ $LogicalOperator.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded LogicalOperator where
+    minBound = Equals
+    maxBound = Equals
 
 instance Hashable     LogicalOperator
 instance NFData       LogicalOperator

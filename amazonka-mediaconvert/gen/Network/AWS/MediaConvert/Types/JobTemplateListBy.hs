@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,30 +16,66 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.MediaConvert.Types.JobTemplateListBy where
+module Network.AWS.MediaConvert.Types.JobTemplateListBy (
+  JobTemplateListBy (
+    ..
+    , JTLBCreationDate
+    , JTLBName
+    , JTLBSystem
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
+
 -- | Optional. When you request a list of job templates, you can choose to list them alphabetically by NAME or chronologically by CREATION_DATE. If you don't specify, the service will list them by name.
-data JobTemplateListBy = JTLBCreationDate
-                       | JTLBName
-                       | JTLBSystem
-                           deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                     Typeable, Generic)
+data JobTemplateListBy = JobTemplateListBy' (CI Text)
+                           deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                     Generic)
+
+pattern JTLBCreationDate :: JobTemplateListBy
+pattern JTLBCreationDate = JobTemplateListBy' "CREATION_DATE"
+
+pattern JTLBName :: JobTemplateListBy
+pattern JTLBName = JobTemplateListBy' "NAME"
+
+pattern JTLBSystem :: JobTemplateListBy
+pattern JTLBSystem = JobTemplateListBy' "SYSTEM"
+
+{-# COMPLETE
+  JTLBCreationDate,
+  JTLBName,
+  JTLBSystem,
+  JobTemplateListBy' #-}
 
 instance FromText JobTemplateListBy where
-    parser = takeLowerText >>= \case
-        "creation_date" -> pure JTLBCreationDate
-        "name" -> pure JTLBName
-        "system" -> pure JTLBSystem
-        e -> fromTextError $ "Failure parsing JobTemplateListBy from value: '" <> e
-           <> "'. Accepted values: creation_date, name, system"
+    parser = (JobTemplateListBy' . mk) <$> takeText
 
 instance ToText JobTemplateListBy where
-    toText = \case
-        JTLBCreationDate -> "CREATION_DATE"
-        JTLBName -> "NAME"
-        JTLBSystem -> "SYSTEM"
+    toText (JobTemplateListBy' ci) = original ci
+
+-- | Represents an enum of /known/ $JobTemplateListBy.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum JobTemplateListBy where
+    toEnum i = case i of
+        0 -> JTLBCreationDate
+        1 -> JTLBName
+        2 -> JTLBSystem
+        _ -> (error . showText) $ "Unknown index for JobTemplateListBy: " <> toText i
+    fromEnum x = case x of
+        JTLBCreationDate -> 0
+        JTLBName -> 1
+        JTLBSystem -> 2
+        JobTemplateListBy' name -> (error . showText) $ "Unknown JobTemplateListBy: " <> original name
+
+-- | Represents the bounds of /known/ $JobTemplateListBy.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded JobTemplateListBy where
+    minBound = JTLBCreationDate
+    maxBound = JTLBSystem
 
 instance Hashable     JobTemplateListBy
 instance NFData       JobTemplateListBy

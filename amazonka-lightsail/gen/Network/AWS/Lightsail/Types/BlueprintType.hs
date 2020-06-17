@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,58 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.Lightsail.Types.BlueprintType where
+module Network.AWS.Lightsail.Types.BlueprintType (
+  BlueprintType (
+    ..
+    , App
+    , OS
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data BlueprintType = App
-                   | OS
-                       deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                 Typeable, Generic)
+
+data BlueprintType = BlueprintType' (CI Text)
+                       deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                 Generic)
+
+pattern App :: BlueprintType
+pattern App = BlueprintType' "app"
+
+pattern OS :: BlueprintType
+pattern OS = BlueprintType' "os"
+
+{-# COMPLETE
+  App,
+  OS,
+  BlueprintType' #-}
 
 instance FromText BlueprintType where
-    parser = takeLowerText >>= \case
-        "app" -> pure App
-        "os" -> pure OS
-        e -> fromTextError $ "Failure parsing BlueprintType from value: '" <> e
-           <> "'. Accepted values: app, os"
+    parser = (BlueprintType' . mk) <$> takeText
 
 instance ToText BlueprintType where
-    toText = \case
-        App -> "app"
-        OS -> "os"
+    toText (BlueprintType' ci) = original ci
+
+-- | Represents an enum of /known/ $BlueprintType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum BlueprintType where
+    toEnum i = case i of
+        0 -> App
+        1 -> OS
+        _ -> (error . showText) $ "Unknown index for BlueprintType: " <> toText i
+    fromEnum x = case x of
+        App -> 0
+        OS -> 1
+        BlueprintType' name -> (error . showText) $ "Unknown BlueprintType: " <> original name
+
+-- | Represents the bounds of /known/ $BlueprintType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded BlueprintType where
+    minBound = App
+    maxBound = OS
 
 instance Hashable     BlueprintType
 instance NFData       BlueprintType

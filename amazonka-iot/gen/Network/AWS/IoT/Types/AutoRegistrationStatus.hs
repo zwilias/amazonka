@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,59 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.IoT.Types.AutoRegistrationStatus where
+module Network.AWS.IoT.Types.AutoRegistrationStatus (
+  AutoRegistrationStatus (
+    ..
+    , Disable
+    , Enable
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data AutoRegistrationStatus = Disable
-                            | Enable
-                                deriving (Eq, Ord, Read, Show, Enum, Bounded,
-                                          Data, Typeable, Generic)
+
+data AutoRegistrationStatus = AutoRegistrationStatus' (CI
+                                                         Text)
+                                deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                          Generic)
+
+pattern Disable :: AutoRegistrationStatus
+pattern Disable = AutoRegistrationStatus' "DISABLE"
+
+pattern Enable :: AutoRegistrationStatus
+pattern Enable = AutoRegistrationStatus' "ENABLE"
+
+{-# COMPLETE
+  Disable,
+  Enable,
+  AutoRegistrationStatus' #-}
 
 instance FromText AutoRegistrationStatus where
-    parser = takeLowerText >>= \case
-        "disable" -> pure Disable
-        "enable" -> pure Enable
-        e -> fromTextError $ "Failure parsing AutoRegistrationStatus from value: '" <> e
-           <> "'. Accepted values: disable, enable"
+    parser = (AutoRegistrationStatus' . mk) <$> takeText
 
 instance ToText AutoRegistrationStatus where
-    toText = \case
-        Disable -> "DISABLE"
-        Enable -> "ENABLE"
+    toText (AutoRegistrationStatus' ci) = original ci
+
+-- | Represents an enum of /known/ $AutoRegistrationStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum AutoRegistrationStatus where
+    toEnum i = case i of
+        0 -> Disable
+        1 -> Enable
+        _ -> (error . showText) $ "Unknown index for AutoRegistrationStatus: " <> toText i
+    fromEnum x = case x of
+        Disable -> 0
+        Enable -> 1
+        AutoRegistrationStatus' name -> (error . showText) $ "Unknown AutoRegistrationStatus: " <> original name
+
+-- | Represents the bounds of /known/ $AutoRegistrationStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded AutoRegistrationStatus where
+    minBound = Disable
+    maxBound = Enable
 
 instance Hashable     AutoRegistrationStatus
 instance NFData       AutoRegistrationStatus

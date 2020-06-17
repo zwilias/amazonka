@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,29 +16,65 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.LexModels.Types.ResourceType where
+module Network.AWS.LexModels.Types.ResourceType (
+  ResourceType (
+    ..
+    , Bot
+    , Intent
+    , SlotType
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data ResourceType = Bot
-                  | Intent
-                  | SlotType
-                      deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                Typeable, Generic)
+
+data ResourceType = ResourceType' (CI Text)
+                      deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                Generic)
+
+pattern Bot :: ResourceType
+pattern Bot = ResourceType' "BOT"
+
+pattern Intent :: ResourceType
+pattern Intent = ResourceType' "INTENT"
+
+pattern SlotType :: ResourceType
+pattern SlotType = ResourceType' "SLOT_TYPE"
+
+{-# COMPLETE
+  Bot,
+  Intent,
+  SlotType,
+  ResourceType' #-}
 
 instance FromText ResourceType where
-    parser = takeLowerText >>= \case
-        "bot" -> pure Bot
-        "intent" -> pure Intent
-        "slot_type" -> pure SlotType
-        e -> fromTextError $ "Failure parsing ResourceType from value: '" <> e
-           <> "'. Accepted values: bot, intent, slot_type"
+    parser = (ResourceType' . mk) <$> takeText
 
 instance ToText ResourceType where
-    toText = \case
-        Bot -> "BOT"
-        Intent -> "INTENT"
-        SlotType -> "SLOT_TYPE"
+    toText (ResourceType' ci) = original ci
+
+-- | Represents an enum of /known/ $ResourceType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum ResourceType where
+    toEnum i = case i of
+        0 -> Bot
+        1 -> Intent
+        2 -> SlotType
+        _ -> (error . showText) $ "Unknown index for ResourceType: " <> toText i
+    fromEnum x = case x of
+        Bot -> 0
+        Intent -> 1
+        SlotType -> 2
+        ResourceType' name -> (error . showText) $ "Unknown ResourceType: " <> original name
+
+-- | Represents the bounds of /known/ $ResourceType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded ResourceType where
+    minBound = Bot
+    maxBound = SlotType
 
 instance Hashable     ResourceType
 instance NFData       ResourceType

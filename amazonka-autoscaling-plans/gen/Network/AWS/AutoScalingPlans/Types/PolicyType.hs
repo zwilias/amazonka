@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,23 +16,51 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.AutoScalingPlans.Types.PolicyType where
+module Network.AWS.AutoScalingPlans.Types.PolicyType (
+  PolicyType (
+    ..
+    , TargetTrackingScaling
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data PolicyType = TargetTrackingScaling
-                    deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                              Typeable, Generic)
+
+data PolicyType = PolicyType' (CI Text)
+                    deriving (Eq, Ord, Read, Show, Data, Typeable,
+                              Generic)
+
+pattern TargetTrackingScaling :: PolicyType
+pattern TargetTrackingScaling = PolicyType' "TargetTrackingScaling"
+
+{-# COMPLETE
+  TargetTrackingScaling,
+  PolicyType' #-}
 
 instance FromText PolicyType where
-    parser = takeLowerText >>= \case
-        "targettrackingscaling" -> pure TargetTrackingScaling
-        e -> fromTextError $ "Failure parsing PolicyType from value: '" <> e
-           <> "'. Accepted values: targettrackingscaling"
+    parser = (PolicyType' . mk) <$> takeText
 
 instance ToText PolicyType where
-    toText = \case
-        TargetTrackingScaling -> "TargetTrackingScaling"
+    toText (PolicyType' ci) = original ci
+
+-- | Represents an enum of /known/ $PolicyType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum PolicyType where
+    toEnum i = case i of
+        0 -> TargetTrackingScaling
+        _ -> (error . showText) $ "Unknown index for PolicyType: " <> toText i
+    fromEnum x = case x of
+        TargetTrackingScaling -> 0
+        PolicyType' name -> (error . showText) $ "Unknown PolicyType: " <> original name
+
+-- | Represents the bounds of /known/ $PolicyType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded PolicyType where
+    minBound = TargetTrackingScaling
+    maxBound = TargetTrackingScaling
 
 instance Hashable     PolicyType
 instance NFData       PolicyType

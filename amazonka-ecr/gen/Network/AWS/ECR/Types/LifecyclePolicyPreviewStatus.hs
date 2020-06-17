@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,33 +16,73 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.ECR.Types.LifecyclePolicyPreviewStatus where
+module Network.AWS.ECR.Types.LifecyclePolicyPreviewStatus (
+  LifecyclePolicyPreviewStatus (
+    ..
+    , Complete
+    , Expired
+    , Failed
+    , InProgress
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data LifecyclePolicyPreviewStatus = Complete
-                                  | Expired
-                                  | Failed
-                                  | InProgress
-                                      deriving (Eq, Ord, Read, Show, Enum,
-                                                Bounded, Data, Typeable,
-                                                Generic)
+
+data LifecyclePolicyPreviewStatus = LifecyclePolicyPreviewStatus' (CI
+                                                                     Text)
+                                      deriving (Eq, Ord, Read, Show, Data,
+                                                Typeable, Generic)
+
+pattern Complete :: LifecyclePolicyPreviewStatus
+pattern Complete = LifecyclePolicyPreviewStatus' "COMPLETE"
+
+pattern Expired :: LifecyclePolicyPreviewStatus
+pattern Expired = LifecyclePolicyPreviewStatus' "EXPIRED"
+
+pattern Failed :: LifecyclePolicyPreviewStatus
+pattern Failed = LifecyclePolicyPreviewStatus' "FAILED"
+
+pattern InProgress :: LifecyclePolicyPreviewStatus
+pattern InProgress = LifecyclePolicyPreviewStatus' "IN_PROGRESS"
+
+{-# COMPLETE
+  Complete,
+  Expired,
+  Failed,
+  InProgress,
+  LifecyclePolicyPreviewStatus' #-}
 
 instance FromText LifecyclePolicyPreviewStatus where
-    parser = takeLowerText >>= \case
-        "complete" -> pure Complete
-        "expired" -> pure Expired
-        "failed" -> pure Failed
-        "in_progress" -> pure InProgress
-        e -> fromTextError $ "Failure parsing LifecyclePolicyPreviewStatus from value: '" <> e
-           <> "'. Accepted values: complete, expired, failed, in_progress"
+    parser = (LifecyclePolicyPreviewStatus' . mk) <$> takeText
 
 instance ToText LifecyclePolicyPreviewStatus where
-    toText = \case
-        Complete -> "COMPLETE"
-        Expired -> "EXPIRED"
-        Failed -> "FAILED"
-        InProgress -> "IN_PROGRESS"
+    toText (LifecyclePolicyPreviewStatus' ci) = original ci
+
+-- | Represents an enum of /known/ $LifecyclePolicyPreviewStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum LifecyclePolicyPreviewStatus where
+    toEnum i = case i of
+        0 -> Complete
+        1 -> Expired
+        2 -> Failed
+        3 -> InProgress
+        _ -> (error . showText) $ "Unknown index for LifecyclePolicyPreviewStatus: " <> toText i
+    fromEnum x = case x of
+        Complete -> 0
+        Expired -> 1
+        Failed -> 2
+        InProgress -> 3
+        LifecyclePolicyPreviewStatus' name -> (error . showText) $ "Unknown LifecyclePolicyPreviewStatus: " <> original name
+
+-- | Represents the bounds of /known/ $LifecyclePolicyPreviewStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded LifecyclePolicyPreviewStatus where
+    minBound = Complete
+    maxBound = InProgress
 
 instance Hashable     LifecyclePolicyPreviewStatus
 instance NFData       LifecyclePolicyPreviewStatus

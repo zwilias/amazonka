@@ -45,6 +45,7 @@ module Network.AWS.Athena.ListQueryExecutions
     ) where
 
 import Network.AWS.Athena.Types
+import Network.AWS.Athena.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude

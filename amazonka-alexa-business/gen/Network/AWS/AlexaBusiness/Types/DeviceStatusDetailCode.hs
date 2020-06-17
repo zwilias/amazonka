@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,59 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.AlexaBusiness.Types.DeviceStatusDetailCode where
+module Network.AWS.AlexaBusiness.Types.DeviceStatusDetailCode (
+  DeviceStatusDetailCode (
+    ..
+    , DeviceSoftwareUpdateNeeded
+    , DeviceWasOffline
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data DeviceStatusDetailCode = DeviceSoftwareUpdateNeeded
-                            | DeviceWasOffline
-                                deriving (Eq, Ord, Read, Show, Enum, Bounded,
-                                          Data, Typeable, Generic)
+
+data DeviceStatusDetailCode = DeviceStatusDetailCode' (CI
+                                                         Text)
+                                deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                          Generic)
+
+pattern DeviceSoftwareUpdateNeeded :: DeviceStatusDetailCode
+pattern DeviceSoftwareUpdateNeeded = DeviceStatusDetailCode' "DEVICE_SOFTWARE_UPDATE_NEEDED"
+
+pattern DeviceWasOffline :: DeviceStatusDetailCode
+pattern DeviceWasOffline = DeviceStatusDetailCode' "DEVICE_WAS_OFFLINE"
+
+{-# COMPLETE
+  DeviceSoftwareUpdateNeeded,
+  DeviceWasOffline,
+  DeviceStatusDetailCode' #-}
 
 instance FromText DeviceStatusDetailCode where
-    parser = takeLowerText >>= \case
-        "device_software_update_needed" -> pure DeviceSoftwareUpdateNeeded
-        "device_was_offline" -> pure DeviceWasOffline
-        e -> fromTextError $ "Failure parsing DeviceStatusDetailCode from value: '" <> e
-           <> "'. Accepted values: device_software_update_needed, device_was_offline"
+    parser = (DeviceStatusDetailCode' . mk) <$> takeText
 
 instance ToText DeviceStatusDetailCode where
-    toText = \case
-        DeviceSoftwareUpdateNeeded -> "DEVICE_SOFTWARE_UPDATE_NEEDED"
-        DeviceWasOffline -> "DEVICE_WAS_OFFLINE"
+    toText (DeviceStatusDetailCode' ci) = original ci
+
+-- | Represents an enum of /known/ $DeviceStatusDetailCode.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum DeviceStatusDetailCode where
+    toEnum i = case i of
+        0 -> DeviceSoftwareUpdateNeeded
+        1 -> DeviceWasOffline
+        _ -> (error . showText) $ "Unknown index for DeviceStatusDetailCode: " <> toText i
+    fromEnum x = case x of
+        DeviceSoftwareUpdateNeeded -> 0
+        DeviceWasOffline -> 1
+        DeviceStatusDetailCode' name -> (error . showText) $ "Unknown DeviceStatusDetailCode: " <> original name
+
+-- | Represents the bounds of /known/ $DeviceStatusDetailCode.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded DeviceStatusDetailCode where
+    minBound = DeviceSoftwareUpdateNeeded
+    maxBound = DeviceWasOffline
 
 instance Hashable     DeviceStatusDetailCode
 instance NFData       DeviceStatusDetailCode

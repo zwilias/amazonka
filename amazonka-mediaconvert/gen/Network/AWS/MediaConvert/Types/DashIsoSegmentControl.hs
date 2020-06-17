@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,27 +16,60 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.MediaConvert.Types.DashIsoSegmentControl where
+module Network.AWS.MediaConvert.Types.DashIsoSegmentControl (
+  DashIsoSegmentControl (
+    ..
+    , DISCSegmentedFiles
+    , DISCSingleFile
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
+
 -- | When set to SINGLE_FILE, a single output file is generated, which is internally segmented using the Fragment Length and Segment Length. When set to SEGMENTED_FILES, separate segment files will be created.
-data DashIsoSegmentControl = DISCSegmentedFiles
-                           | DISCSingleFile
-                               deriving (Eq, Ord, Read, Show, Enum, Bounded,
-                                         Data, Typeable, Generic)
+data DashIsoSegmentControl = DashIsoSegmentControl' (CI
+                                                       Text)
+                               deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                         Generic)
+
+pattern DISCSegmentedFiles :: DashIsoSegmentControl
+pattern DISCSegmentedFiles = DashIsoSegmentControl' "SEGMENTED_FILES"
+
+pattern DISCSingleFile :: DashIsoSegmentControl
+pattern DISCSingleFile = DashIsoSegmentControl' "SINGLE_FILE"
+
+{-# COMPLETE
+  DISCSegmentedFiles,
+  DISCSingleFile,
+  DashIsoSegmentControl' #-}
 
 instance FromText DashIsoSegmentControl where
-    parser = takeLowerText >>= \case
-        "segmented_files" -> pure DISCSegmentedFiles
-        "single_file" -> pure DISCSingleFile
-        e -> fromTextError $ "Failure parsing DashIsoSegmentControl from value: '" <> e
-           <> "'. Accepted values: segmented_files, single_file"
+    parser = (DashIsoSegmentControl' . mk) <$> takeText
 
 instance ToText DashIsoSegmentControl where
-    toText = \case
-        DISCSegmentedFiles -> "SEGMENTED_FILES"
-        DISCSingleFile -> "SINGLE_FILE"
+    toText (DashIsoSegmentControl' ci) = original ci
+
+-- | Represents an enum of /known/ $DashIsoSegmentControl.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum DashIsoSegmentControl where
+    toEnum i = case i of
+        0 -> DISCSegmentedFiles
+        1 -> DISCSingleFile
+        _ -> (error . showText) $ "Unknown index for DashIsoSegmentControl: " <> toText i
+    fromEnum x = case x of
+        DISCSegmentedFiles -> 0
+        DISCSingleFile -> 1
+        DashIsoSegmentControl' name -> (error . showText) $ "Unknown DashIsoSegmentControl: " <> original name
+
+-- | Represents the bounds of /known/ $DashIsoSegmentControl.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded DashIsoSegmentControl where
+    minBound = DISCSegmentedFiles
+    maxBound = DISCSingleFile
 
 instance Hashable     DashIsoSegmentControl
 instance NFData       DashIsoSegmentControl

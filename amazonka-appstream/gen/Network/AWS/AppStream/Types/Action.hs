@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,35 +16,79 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.AppStream.Types.Action where
+module Network.AWS.AppStream.Types.Action (
+  Action (
+    ..
+    , ClipboardCopyFromLocalDevice
+    , ClipboardCopyToLocalDevice
+    , FileDownload
+    , FileUpload
+    , PrintingToLocalDevice
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data Action = ClipboardCopyFromLocalDevice
-            | ClipboardCopyToLocalDevice
-            | FileDownload
-            | FileUpload
-            | PrintingToLocalDevice
-                deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                          Typeable, Generic)
+
+data Action = Action' (CI Text)
+                deriving (Eq, Ord, Read, Show, Data, Typeable,
+                          Generic)
+
+pattern ClipboardCopyFromLocalDevice :: Action
+pattern ClipboardCopyFromLocalDevice = Action' "CLIPBOARD_COPY_FROM_LOCAL_DEVICE"
+
+pattern ClipboardCopyToLocalDevice :: Action
+pattern ClipboardCopyToLocalDevice = Action' "CLIPBOARD_COPY_TO_LOCAL_DEVICE"
+
+pattern FileDownload :: Action
+pattern FileDownload = Action' "FILE_DOWNLOAD"
+
+pattern FileUpload :: Action
+pattern FileUpload = Action' "FILE_UPLOAD"
+
+pattern PrintingToLocalDevice :: Action
+pattern PrintingToLocalDevice = Action' "PRINTING_TO_LOCAL_DEVICE"
+
+{-# COMPLETE
+  ClipboardCopyFromLocalDevice,
+  ClipboardCopyToLocalDevice,
+  FileDownload,
+  FileUpload,
+  PrintingToLocalDevice,
+  Action' #-}
 
 instance FromText Action where
-    parser = takeLowerText >>= \case
-        "clipboard_copy_from_local_device" -> pure ClipboardCopyFromLocalDevice
-        "clipboard_copy_to_local_device" -> pure ClipboardCopyToLocalDevice
-        "file_download" -> pure FileDownload
-        "file_upload" -> pure FileUpload
-        "printing_to_local_device" -> pure PrintingToLocalDevice
-        e -> fromTextError $ "Failure parsing Action from value: '" <> e
-           <> "'. Accepted values: clipboard_copy_from_local_device, clipboard_copy_to_local_device, file_download, file_upload, printing_to_local_device"
+    parser = (Action' . mk) <$> takeText
 
 instance ToText Action where
-    toText = \case
-        ClipboardCopyFromLocalDevice -> "CLIPBOARD_COPY_FROM_LOCAL_DEVICE"
-        ClipboardCopyToLocalDevice -> "CLIPBOARD_COPY_TO_LOCAL_DEVICE"
-        FileDownload -> "FILE_DOWNLOAD"
-        FileUpload -> "FILE_UPLOAD"
-        PrintingToLocalDevice -> "PRINTING_TO_LOCAL_DEVICE"
+    toText (Action' ci) = original ci
+
+-- | Represents an enum of /known/ $Action.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum Action where
+    toEnum i = case i of
+        0 -> ClipboardCopyFromLocalDevice
+        1 -> ClipboardCopyToLocalDevice
+        2 -> FileDownload
+        3 -> FileUpload
+        4 -> PrintingToLocalDevice
+        _ -> (error . showText) $ "Unknown index for Action: " <> toText i
+    fromEnum x = case x of
+        ClipboardCopyFromLocalDevice -> 0
+        ClipboardCopyToLocalDevice -> 1
+        FileDownload -> 2
+        FileUpload -> 3
+        PrintingToLocalDevice -> 4
+        Action' name -> (error . showText) $ "Unknown Action: " <> original name
+
+-- | Represents the bounds of /known/ $Action.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded Action where
+    minBound = ClipboardCopyFromLocalDevice
+    maxBound = PrintingToLocalDevice
 
 instance Hashable     Action
 instance NFData       Action

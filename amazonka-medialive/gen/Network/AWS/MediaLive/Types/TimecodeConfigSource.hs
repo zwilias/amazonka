@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,30 +16,67 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.MediaLive.Types.TimecodeConfigSource where
+module Network.AWS.MediaLive.Types.TimecodeConfigSource (
+  TimecodeConfigSource (
+    ..
+    , Embedded
+    , Systemclock
+    , Zerobased
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
+
 -- | Placeholder documentation for TimecodeConfigSource
-data TimecodeConfigSource = Embedded
-                          | Systemclock
-                          | Zerobased
-                              deriving (Eq, Ord, Read, Show, Enum, Bounded,
-                                        Data, Typeable, Generic)
+data TimecodeConfigSource = TimecodeConfigSource' (CI
+                                                     Text)
+                              deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                        Generic)
+
+pattern Embedded :: TimecodeConfigSource
+pattern Embedded = TimecodeConfigSource' "EMBEDDED"
+
+pattern Systemclock :: TimecodeConfigSource
+pattern Systemclock = TimecodeConfigSource' "SYSTEMCLOCK"
+
+pattern Zerobased :: TimecodeConfigSource
+pattern Zerobased = TimecodeConfigSource' "ZEROBASED"
+
+{-# COMPLETE
+  Embedded,
+  Systemclock,
+  Zerobased,
+  TimecodeConfigSource' #-}
 
 instance FromText TimecodeConfigSource where
-    parser = takeLowerText >>= \case
-        "embedded" -> pure Embedded
-        "systemclock" -> pure Systemclock
-        "zerobased" -> pure Zerobased
-        e -> fromTextError $ "Failure parsing TimecodeConfigSource from value: '" <> e
-           <> "'. Accepted values: embedded, systemclock, zerobased"
+    parser = (TimecodeConfigSource' . mk) <$> takeText
 
 instance ToText TimecodeConfigSource where
-    toText = \case
-        Embedded -> "EMBEDDED"
-        Systemclock -> "SYSTEMCLOCK"
-        Zerobased -> "ZEROBASED"
+    toText (TimecodeConfigSource' ci) = original ci
+
+-- | Represents an enum of /known/ $TimecodeConfigSource.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum TimecodeConfigSource where
+    toEnum i = case i of
+        0 -> Embedded
+        1 -> Systemclock
+        2 -> Zerobased
+        _ -> (error . showText) $ "Unknown index for TimecodeConfigSource: " <> toText i
+    fromEnum x = case x of
+        Embedded -> 0
+        Systemclock -> 1
+        Zerobased -> 2
+        TimecodeConfigSource' name -> (error . showText) $ "Unknown TimecodeConfigSource: " <> original name
+
+-- | Represents the bounds of /known/ $TimecodeConfigSource.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded TimecodeConfigSource where
+    minBound = Embedded
+    maxBound = Zerobased
 
 instance Hashable     TimecodeConfigSource
 instance NFData       TimecodeConfigSource

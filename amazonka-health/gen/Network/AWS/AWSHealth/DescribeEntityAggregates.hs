@@ -38,6 +38,7 @@ module Network.AWS.AWSHealth.DescribeEntityAggregates
     ) where
 
 import Network.AWS.AWSHealth.Types
+import Network.AWS.AWSHealth.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request

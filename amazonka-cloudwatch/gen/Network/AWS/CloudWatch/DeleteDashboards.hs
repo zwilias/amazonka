@@ -37,6 +37,7 @@ module Network.AWS.CloudWatch.DeleteDashboards
     ) where
 
 import Network.AWS.CloudWatch.Types
+import Network.AWS.CloudWatch.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request

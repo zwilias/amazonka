@@ -83,6 +83,7 @@ module Network.AWS.LexRuntime.PostText
 
 import Network.AWS.Lens
 import Network.AWS.LexRuntime.Types
+import Network.AWS.LexRuntime.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response

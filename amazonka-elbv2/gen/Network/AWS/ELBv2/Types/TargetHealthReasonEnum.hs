@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,53 +16,122 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.ELBv2.Types.TargetHealthReasonEnum where
+module Network.AWS.ELBv2.Types.TargetHealthReasonEnum (
+  TargetHealthReasonEnum (
+    ..
+    , Elb_InitialHealthChecking
+    , Elb_InternalError
+    , Elb_RegistrationInProgress
+    , Target_DeregistrationInProgress
+    , Target_FailedHealthChecks
+    , Target_IPUnusable
+    , Target_InvalidState
+    , Target_NotInUse
+    , Target_NotRegistered
+    , Target_ResponseCodeMismatch
+    , Target_Timeout
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data TargetHealthReasonEnum = Elb_InitialHealthChecking
-                            | Elb_InternalError
-                            | Elb_RegistrationInProgress
-                            | Target_DeregistrationInProgress
-                            | Target_FailedHealthChecks
-                            | Target_IPUnusable
-                            | Target_InvalidState
-                            | Target_NotInUse
-                            | Target_NotRegistered
-                            | Target_ResponseCodeMismatch
-                            | Target_Timeout
-                                deriving (Eq, Ord, Read, Show, Enum, Bounded,
-                                          Data, Typeable, Generic)
+
+data TargetHealthReasonEnum = TargetHealthReasonEnum' (CI
+                                                         Text)
+                                deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                          Generic)
+
+pattern Elb_InitialHealthChecking :: TargetHealthReasonEnum
+pattern Elb_InitialHealthChecking = TargetHealthReasonEnum' "Elb.InitialHealthChecking"
+
+pattern Elb_InternalError :: TargetHealthReasonEnum
+pattern Elb_InternalError = TargetHealthReasonEnum' "Elb.InternalError"
+
+pattern Elb_RegistrationInProgress :: TargetHealthReasonEnum
+pattern Elb_RegistrationInProgress = TargetHealthReasonEnum' "Elb.RegistrationInProgress"
+
+pattern Target_DeregistrationInProgress :: TargetHealthReasonEnum
+pattern Target_DeregistrationInProgress = TargetHealthReasonEnum' "Target.DeregistrationInProgress"
+
+pattern Target_FailedHealthChecks :: TargetHealthReasonEnum
+pattern Target_FailedHealthChecks = TargetHealthReasonEnum' "Target.FailedHealthChecks"
+
+pattern Target_IPUnusable :: TargetHealthReasonEnum
+pattern Target_IPUnusable = TargetHealthReasonEnum' "Target.IpUnusable"
+
+pattern Target_InvalidState :: TargetHealthReasonEnum
+pattern Target_InvalidState = TargetHealthReasonEnum' "Target.InvalidState"
+
+pattern Target_NotInUse :: TargetHealthReasonEnum
+pattern Target_NotInUse = TargetHealthReasonEnum' "Target.NotInUse"
+
+pattern Target_NotRegistered :: TargetHealthReasonEnum
+pattern Target_NotRegistered = TargetHealthReasonEnum' "Target.NotRegistered"
+
+pattern Target_ResponseCodeMismatch :: TargetHealthReasonEnum
+pattern Target_ResponseCodeMismatch = TargetHealthReasonEnum' "Target.ResponseCodeMismatch"
+
+pattern Target_Timeout :: TargetHealthReasonEnum
+pattern Target_Timeout = TargetHealthReasonEnum' "Target.Timeout"
+
+{-# COMPLETE
+  Elb_InitialHealthChecking,
+  Elb_InternalError,
+  Elb_RegistrationInProgress,
+  Target_DeregistrationInProgress,
+  Target_FailedHealthChecks,
+  Target_IPUnusable,
+  Target_InvalidState,
+  Target_NotInUse,
+  Target_NotRegistered,
+  Target_ResponseCodeMismatch,
+  Target_Timeout,
+  TargetHealthReasonEnum' #-}
 
 instance FromText TargetHealthReasonEnum where
-    parser = takeLowerText >>= \case
-        "elb.initialhealthchecking" -> pure Elb_InitialHealthChecking
-        "elb.internalerror" -> pure Elb_InternalError
-        "elb.registrationinprogress" -> pure Elb_RegistrationInProgress
-        "target.deregistrationinprogress" -> pure Target_DeregistrationInProgress
-        "target.failedhealthchecks" -> pure Target_FailedHealthChecks
-        "target.ipunusable" -> pure Target_IPUnusable
-        "target.invalidstate" -> pure Target_InvalidState
-        "target.notinuse" -> pure Target_NotInUse
-        "target.notregistered" -> pure Target_NotRegistered
-        "target.responsecodemismatch" -> pure Target_ResponseCodeMismatch
-        "target.timeout" -> pure Target_Timeout
-        e -> fromTextError $ "Failure parsing TargetHealthReasonEnum from value: '" <> e
-           <> "'. Accepted values: elb.initialhealthchecking, elb.internalerror, elb.registrationinprogress, target.deregistrationinprogress, target.failedhealthchecks, target.ipunusable, target.invalidstate, target.notinuse, target.notregistered, target.responsecodemismatch, target.timeout"
+    parser = (TargetHealthReasonEnum' . mk) <$> takeText
 
 instance ToText TargetHealthReasonEnum where
-    toText = \case
-        Elb_InitialHealthChecking -> "Elb.InitialHealthChecking"
-        Elb_InternalError -> "Elb.InternalError"
-        Elb_RegistrationInProgress -> "Elb.RegistrationInProgress"
-        Target_DeregistrationInProgress -> "Target.DeregistrationInProgress"
-        Target_FailedHealthChecks -> "Target.FailedHealthChecks"
-        Target_IPUnusable -> "Target.IpUnusable"
-        Target_InvalidState -> "Target.InvalidState"
-        Target_NotInUse -> "Target.NotInUse"
-        Target_NotRegistered -> "Target.NotRegistered"
-        Target_ResponseCodeMismatch -> "Target.ResponseCodeMismatch"
-        Target_Timeout -> "Target.Timeout"
+    toText (TargetHealthReasonEnum' ci) = original ci
+
+-- | Represents an enum of /known/ $TargetHealthReasonEnum.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum TargetHealthReasonEnum where
+    toEnum i = case i of
+        0 -> Elb_InitialHealthChecking
+        1 -> Elb_InternalError
+        2 -> Elb_RegistrationInProgress
+        3 -> Target_DeregistrationInProgress
+        4 -> Target_FailedHealthChecks
+        5 -> Target_IPUnusable
+        6 -> Target_InvalidState
+        7 -> Target_NotInUse
+        8 -> Target_NotRegistered
+        9 -> Target_ResponseCodeMismatch
+        10 -> Target_Timeout
+        _ -> (error . showText) $ "Unknown index for TargetHealthReasonEnum: " <> toText i
+    fromEnum x = case x of
+        Elb_InitialHealthChecking -> 0
+        Elb_InternalError -> 1
+        Elb_RegistrationInProgress -> 2
+        Target_DeregistrationInProgress -> 3
+        Target_FailedHealthChecks -> 4
+        Target_IPUnusable -> 5
+        Target_InvalidState -> 6
+        Target_NotInUse -> 7
+        Target_NotRegistered -> 8
+        Target_ResponseCodeMismatch -> 9
+        Target_Timeout -> 10
+        TargetHealthReasonEnum' name -> (error . showText) $ "Unknown TargetHealthReasonEnum: " <> original name
+
+-- | Represents the bounds of /known/ $TargetHealthReasonEnum.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded TargetHealthReasonEnum where
+    minBound = Elb_InitialHealthChecking
+    maxBound = Target_Timeout
 
 instance Hashable     TargetHealthReasonEnum
 instance NFData       TargetHealthReasonEnum

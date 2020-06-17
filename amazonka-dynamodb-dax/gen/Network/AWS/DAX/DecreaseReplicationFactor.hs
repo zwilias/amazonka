@@ -41,6 +41,7 @@ module Network.AWS.DAX.DecreaseReplicationFactor
     ) where
 
 import Network.AWS.DAX.Types
+import Network.AWS.DAX.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request

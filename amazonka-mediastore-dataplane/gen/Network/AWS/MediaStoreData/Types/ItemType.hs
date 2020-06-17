@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,58 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.MediaStoreData.Types.ItemType where
+module Network.AWS.MediaStoreData.Types.ItemType (
+  ItemType (
+    ..
+    , TypeFolder
+    , TypeObject
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data ItemType = TypeFolder
-              | TypeObject
-                  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                            Typeable, Generic)
+
+data ItemType = ItemType' (CI Text)
+                  deriving (Eq, Ord, Read, Show, Data, Typeable,
+                            Generic)
+
+pattern TypeFolder :: ItemType
+pattern TypeFolder = ItemType' "FOLDER"
+
+pattern TypeObject :: ItemType
+pattern TypeObject = ItemType' "OBJECT"
+
+{-# COMPLETE
+  TypeFolder,
+  TypeObject,
+  ItemType' #-}
 
 instance FromText ItemType where
-    parser = takeLowerText >>= \case
-        "folder" -> pure TypeFolder
-        "object" -> pure TypeObject
-        e -> fromTextError $ "Failure parsing ItemType from value: '" <> e
-           <> "'. Accepted values: folder, object"
+    parser = (ItemType' . mk) <$> takeText
 
 instance ToText ItemType where
-    toText = \case
-        TypeFolder -> "FOLDER"
-        TypeObject -> "OBJECT"
+    toText (ItemType' ci) = original ci
+
+-- | Represents an enum of /known/ $ItemType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum ItemType where
+    toEnum i = case i of
+        0 -> TypeFolder
+        1 -> TypeObject
+        _ -> (error . showText) $ "Unknown index for ItemType: " <> toText i
+    fromEnum x = case x of
+        TypeFolder -> 0
+        TypeObject -> 1
+        ItemType' name -> (error . showText) $ "Unknown ItemType: " <> original name
+
+-- | Represents the bounds of /known/ $ItemType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded ItemType where
+    minBound = TypeFolder
+    maxBound = TypeObject
 
 instance Hashable     ItemType
 instance NFData       ItemType

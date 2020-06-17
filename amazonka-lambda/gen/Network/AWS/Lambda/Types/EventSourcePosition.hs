@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,29 +16,66 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.Lambda.Types.EventSourcePosition where
+module Network.AWS.Lambda.Types.EventSourcePosition (
+  EventSourcePosition (
+    ..
+    , AtTimestamp
+    , Latest
+    , TrimHorizon
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data EventSourcePosition = AtTimestamp
-                         | Latest
-                         | TrimHorizon
-                             deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                       Typeable, Generic)
+
+data EventSourcePosition = EventSourcePosition' (CI
+                                                   Text)
+                             deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                       Generic)
+
+pattern AtTimestamp :: EventSourcePosition
+pattern AtTimestamp = EventSourcePosition' "AT_TIMESTAMP"
+
+pattern Latest :: EventSourcePosition
+pattern Latest = EventSourcePosition' "LATEST"
+
+pattern TrimHorizon :: EventSourcePosition
+pattern TrimHorizon = EventSourcePosition' "TRIM_HORIZON"
+
+{-# COMPLETE
+  AtTimestamp,
+  Latest,
+  TrimHorizon,
+  EventSourcePosition' #-}
 
 instance FromText EventSourcePosition where
-    parser = takeLowerText >>= \case
-        "at_timestamp" -> pure AtTimestamp
-        "latest" -> pure Latest
-        "trim_horizon" -> pure TrimHorizon
-        e -> fromTextError $ "Failure parsing EventSourcePosition from value: '" <> e
-           <> "'. Accepted values: at_timestamp, latest, trim_horizon"
+    parser = (EventSourcePosition' . mk) <$> takeText
 
 instance ToText EventSourcePosition where
-    toText = \case
-        AtTimestamp -> "AT_TIMESTAMP"
-        Latest -> "LATEST"
-        TrimHorizon -> "TRIM_HORIZON"
+    toText (EventSourcePosition' ci) = original ci
+
+-- | Represents an enum of /known/ $EventSourcePosition.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum EventSourcePosition where
+    toEnum i = case i of
+        0 -> AtTimestamp
+        1 -> Latest
+        2 -> TrimHorizon
+        _ -> (error . showText) $ "Unknown index for EventSourcePosition: " <> toText i
+    fromEnum x = case x of
+        AtTimestamp -> 0
+        Latest -> 1
+        TrimHorizon -> 2
+        EventSourcePosition' name -> (error . showText) $ "Unknown EventSourcePosition: " <> original name
+
+-- | Represents the bounds of /known/ $EventSourcePosition.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded EventSourcePosition where
+    minBound = AtTimestamp
+    maxBound = TrimHorizon
 
 instance Hashable     EventSourcePosition
 instance NFData       EventSourcePosition

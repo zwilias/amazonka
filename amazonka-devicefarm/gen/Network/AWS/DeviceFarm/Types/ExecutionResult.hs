@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,41 +16,93 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.DeviceFarm.Types.ExecutionResult where
+module Network.AWS.DeviceFarm.Types.ExecutionResult (
+  ExecutionResult (
+    ..
+    , ERErrored
+    , ERFailed
+    , ERPassed
+    , ERPending
+    , ERSkipped
+    , ERStopped
+    , ERWarned
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data ExecutionResult = ERErrored
-                     | ERFailed
-                     | ERPassed
-                     | ERPending
-                     | ERSkipped
-                     | ERStopped
-                     | ERWarned
-                         deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                   Typeable, Generic)
+
+data ExecutionResult = ExecutionResult' (CI Text)
+                         deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                   Generic)
+
+pattern ERErrored :: ExecutionResult
+pattern ERErrored = ExecutionResult' "ERRORED"
+
+pattern ERFailed :: ExecutionResult
+pattern ERFailed = ExecutionResult' "FAILED"
+
+pattern ERPassed :: ExecutionResult
+pattern ERPassed = ExecutionResult' "PASSED"
+
+pattern ERPending :: ExecutionResult
+pattern ERPending = ExecutionResult' "PENDING"
+
+pattern ERSkipped :: ExecutionResult
+pattern ERSkipped = ExecutionResult' "SKIPPED"
+
+pattern ERStopped :: ExecutionResult
+pattern ERStopped = ExecutionResult' "STOPPED"
+
+pattern ERWarned :: ExecutionResult
+pattern ERWarned = ExecutionResult' "WARNED"
+
+{-# COMPLETE
+  ERErrored,
+  ERFailed,
+  ERPassed,
+  ERPending,
+  ERSkipped,
+  ERStopped,
+  ERWarned,
+  ExecutionResult' #-}
 
 instance FromText ExecutionResult where
-    parser = takeLowerText >>= \case
-        "errored" -> pure ERErrored
-        "failed" -> pure ERFailed
-        "passed" -> pure ERPassed
-        "pending" -> pure ERPending
-        "skipped" -> pure ERSkipped
-        "stopped" -> pure ERStopped
-        "warned" -> pure ERWarned
-        e -> fromTextError $ "Failure parsing ExecutionResult from value: '" <> e
-           <> "'. Accepted values: errored, failed, passed, pending, skipped, stopped, warned"
+    parser = (ExecutionResult' . mk) <$> takeText
 
 instance ToText ExecutionResult where
-    toText = \case
-        ERErrored -> "ERRORED"
-        ERFailed -> "FAILED"
-        ERPassed -> "PASSED"
-        ERPending -> "PENDING"
-        ERSkipped -> "SKIPPED"
-        ERStopped -> "STOPPED"
-        ERWarned -> "WARNED"
+    toText (ExecutionResult' ci) = original ci
+
+-- | Represents an enum of /known/ $ExecutionResult.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum ExecutionResult where
+    toEnum i = case i of
+        0 -> ERErrored
+        1 -> ERFailed
+        2 -> ERPassed
+        3 -> ERPending
+        4 -> ERSkipped
+        5 -> ERStopped
+        6 -> ERWarned
+        _ -> (error . showText) $ "Unknown index for ExecutionResult: " <> toText i
+    fromEnum x = case x of
+        ERErrored -> 0
+        ERFailed -> 1
+        ERPassed -> 2
+        ERPending -> 3
+        ERSkipped -> 4
+        ERStopped -> 5
+        ERWarned -> 6
+        ExecutionResult' name -> (error . showText) $ "Unknown ExecutionResult: " <> original name
+
+-- | Represents the bounds of /known/ $ExecutionResult.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded ExecutionResult where
+    minBound = ERErrored
+    maxBound = ERWarned
 
 instance Hashable     ExecutionResult
 instance NFData       ExecutionResult

@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,33 +16,74 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.EC2.Types.ClientVPNEndpointStatusCode where
+module Network.AWS.EC2.Types.ClientVPNEndpointStatusCode (
+  ClientVPNEndpointStatusCode (
+    ..
+    , CVESCAvailable
+    , CVESCDeleted
+    , CVESCDeleting
+    , CVESCPendingAssociate
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.EC2.Internal
 import Network.AWS.Prelude
-  
-data ClientVPNEndpointStatusCode = CVESCAvailable
-                                 | CVESCDeleted
-                                 | CVESCDeleting
-                                 | CVESCPendingAssociate
-                                     deriving (Eq, Ord, Read, Show, Enum,
-                                               Bounded, Data, Typeable, Generic)
+
+data ClientVPNEndpointStatusCode = ClientVPNEndpointStatusCode' (CI
+                                                                   Text)
+                                     deriving (Eq, Ord, Read, Show, Data,
+                                               Typeable, Generic)
+
+pattern CVESCAvailable :: ClientVPNEndpointStatusCode
+pattern CVESCAvailable = ClientVPNEndpointStatusCode' "available"
+
+pattern CVESCDeleted :: ClientVPNEndpointStatusCode
+pattern CVESCDeleted = ClientVPNEndpointStatusCode' "deleted"
+
+pattern CVESCDeleting :: ClientVPNEndpointStatusCode
+pattern CVESCDeleting = ClientVPNEndpointStatusCode' "deleting"
+
+pattern CVESCPendingAssociate :: ClientVPNEndpointStatusCode
+pattern CVESCPendingAssociate = ClientVPNEndpointStatusCode' "pending-associate"
+
+{-# COMPLETE
+  CVESCAvailable,
+  CVESCDeleted,
+  CVESCDeleting,
+  CVESCPendingAssociate,
+  ClientVPNEndpointStatusCode' #-}
 
 instance FromText ClientVPNEndpointStatusCode where
-    parser = takeLowerText >>= \case
-        "available" -> pure CVESCAvailable
-        "deleted" -> pure CVESCDeleted
-        "deleting" -> pure CVESCDeleting
-        "pending-associate" -> pure CVESCPendingAssociate
-        e -> fromTextError $ "Failure parsing ClientVPNEndpointStatusCode from value: '" <> e
-           <> "'. Accepted values: available, deleted, deleting, pending-associate"
+    parser = (ClientVPNEndpointStatusCode' . mk) <$> takeText
 
 instance ToText ClientVPNEndpointStatusCode where
-    toText = \case
-        CVESCAvailable -> "available"
-        CVESCDeleted -> "deleted"
-        CVESCDeleting -> "deleting"
-        CVESCPendingAssociate -> "pending-associate"
+    toText (ClientVPNEndpointStatusCode' ci) = original ci
+
+-- | Represents an enum of /known/ $ClientVPNEndpointStatusCode.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum ClientVPNEndpointStatusCode where
+    toEnum i = case i of
+        0 -> CVESCAvailable
+        1 -> CVESCDeleted
+        2 -> CVESCDeleting
+        3 -> CVESCPendingAssociate
+        _ -> (error . showText) $ "Unknown index for ClientVPNEndpointStatusCode: " <> toText i
+    fromEnum x = case x of
+        CVESCAvailable -> 0
+        CVESCDeleted -> 1
+        CVESCDeleting -> 2
+        CVESCPendingAssociate -> 3
+        ClientVPNEndpointStatusCode' name -> (error . showText) $ "Unknown ClientVPNEndpointStatusCode: " <> original name
+
+-- | Represents the bounds of /known/ $ClientVPNEndpointStatusCode.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded ClientVPNEndpointStatusCode where
+    minBound = CVESCAvailable
+    maxBound = CVESCPendingAssociate
 
 instance Hashable     ClientVPNEndpointStatusCode
 instance NFData       ClientVPNEndpointStatusCode

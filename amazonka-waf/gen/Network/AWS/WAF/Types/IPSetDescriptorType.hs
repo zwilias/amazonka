@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,59 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.WAF.Types.IPSetDescriptorType where
+module Network.AWS.WAF.Types.IPSetDescriptorType (
+  IPSetDescriptorType (
+    ..
+    , IPV4
+    , IPV6
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data IPSetDescriptorType = IPV4
-                         | IPV6
-                             deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                       Typeable, Generic)
+
+data IPSetDescriptorType = IPSetDescriptorType' (CI
+                                                   Text)
+                             deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                       Generic)
+
+pattern IPV4 :: IPSetDescriptorType
+pattern IPV4 = IPSetDescriptorType' "IPV4"
+
+pattern IPV6 :: IPSetDescriptorType
+pattern IPV6 = IPSetDescriptorType' "IPV6"
+
+{-# COMPLETE
+  IPV4,
+  IPV6,
+  IPSetDescriptorType' #-}
 
 instance FromText IPSetDescriptorType where
-    parser = takeLowerText >>= \case
-        "ipv4" -> pure IPV4
-        "ipv6" -> pure IPV6
-        e -> fromTextError $ "Failure parsing IPSetDescriptorType from value: '" <> e
-           <> "'. Accepted values: ipv4, ipv6"
+    parser = (IPSetDescriptorType' . mk) <$> takeText
 
 instance ToText IPSetDescriptorType where
-    toText = \case
-        IPV4 -> "IPV4"
-        IPV6 -> "IPV6"
+    toText (IPSetDescriptorType' ci) = original ci
+
+-- | Represents an enum of /known/ $IPSetDescriptorType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum IPSetDescriptorType where
+    toEnum i = case i of
+        0 -> IPV4
+        1 -> IPV6
+        _ -> (error . showText) $ "Unknown index for IPSetDescriptorType: " <> toText i
+    fromEnum x = case x of
+        IPV4 -> 0
+        IPV6 -> 1
+        IPSetDescriptorType' name -> (error . showText) $ "Unknown IPSetDescriptorType: " <> original name
+
+-- | Represents the bounds of /known/ $IPSetDescriptorType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded IPSetDescriptorType where
+    minBound = IPV4
+    maxBound = IPV6
 
 instance Hashable     IPSetDescriptorType
 instance NFData       IPSetDescriptorType

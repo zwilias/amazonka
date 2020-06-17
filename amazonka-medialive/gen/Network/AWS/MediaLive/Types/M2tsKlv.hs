@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,27 +16,59 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.MediaLive.Types.M2tsKlv where
+module Network.AWS.MediaLive.Types.M2tsKlv (
+  M2tsKlv (
+    ..
+    , MKNone
+    , MKPassthrough
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
+
 -- | Placeholder documentation for M2tsKlv
-data M2tsKlv = MKNone
-             | MKPassthrough
-                 deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                           Typeable, Generic)
+data M2tsKlv = M2tsKlv' (CI Text)
+                 deriving (Eq, Ord, Read, Show, Data, Typeable,
+                           Generic)
+
+pattern MKNone :: M2tsKlv
+pattern MKNone = M2tsKlv' "NONE"
+
+pattern MKPassthrough :: M2tsKlv
+pattern MKPassthrough = M2tsKlv' "PASSTHROUGH"
+
+{-# COMPLETE
+  MKNone,
+  MKPassthrough,
+  M2tsKlv' #-}
 
 instance FromText M2tsKlv where
-    parser = takeLowerText >>= \case
-        "none" -> pure MKNone
-        "passthrough" -> pure MKPassthrough
-        e -> fromTextError $ "Failure parsing M2tsKlv from value: '" <> e
-           <> "'. Accepted values: none, passthrough"
+    parser = (M2tsKlv' . mk) <$> takeText
 
 instance ToText M2tsKlv where
-    toText = \case
-        MKNone -> "NONE"
-        MKPassthrough -> "PASSTHROUGH"
+    toText (M2tsKlv' ci) = original ci
+
+-- | Represents an enum of /known/ $M2tsKlv.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum M2tsKlv where
+    toEnum i = case i of
+        0 -> MKNone
+        1 -> MKPassthrough
+        _ -> (error . showText) $ "Unknown index for M2tsKlv: " <> toText i
+    fromEnum x = case x of
+        MKNone -> 0
+        MKPassthrough -> 1
+        M2tsKlv' name -> (error . showText) $ "Unknown M2tsKlv: " <> original name
+
+-- | Represents the bounds of /known/ $M2tsKlv.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded M2tsKlv where
+    minBound = MKNone
+    maxBound = MKPassthrough
 
 instance Hashable     M2tsKlv
 instance NFData       M2tsKlv

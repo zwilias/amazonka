@@ -43,6 +43,7 @@ module Network.AWS.Connect.ListUserHierarchyGroups
     ) where
 
 import Network.AWS.Connect.Types
+import Network.AWS.Connect.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude

@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,35 +16,79 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.CodeBuild.Types.WebhookFilterType where
+module Network.AWS.CodeBuild.Types.WebhookFilterType (
+  WebhookFilterType (
+    ..
+    , ActorAccountId
+    , BaseRef
+    , Event
+    , FilePath
+    , HeadRef
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data WebhookFilterType = ActorAccountId
-                       | BaseRef
-                       | Event
-                       | FilePath
-                       | HeadRef
-                           deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                     Typeable, Generic)
+
+data WebhookFilterType = WebhookFilterType' (CI Text)
+                           deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                     Generic)
+
+pattern ActorAccountId :: WebhookFilterType
+pattern ActorAccountId = WebhookFilterType' "ACTOR_ACCOUNT_ID"
+
+pattern BaseRef :: WebhookFilterType
+pattern BaseRef = WebhookFilterType' "BASE_REF"
+
+pattern Event :: WebhookFilterType
+pattern Event = WebhookFilterType' "EVENT"
+
+pattern FilePath :: WebhookFilterType
+pattern FilePath = WebhookFilterType' "FILE_PATH"
+
+pattern HeadRef :: WebhookFilterType
+pattern HeadRef = WebhookFilterType' "HEAD_REF"
+
+{-# COMPLETE
+  ActorAccountId,
+  BaseRef,
+  Event,
+  FilePath,
+  HeadRef,
+  WebhookFilterType' #-}
 
 instance FromText WebhookFilterType where
-    parser = takeLowerText >>= \case
-        "actor_account_id" -> pure ActorAccountId
-        "base_ref" -> pure BaseRef
-        "event" -> pure Event
-        "file_path" -> pure FilePath
-        "head_ref" -> pure HeadRef
-        e -> fromTextError $ "Failure parsing WebhookFilterType from value: '" <> e
-           <> "'. Accepted values: actor_account_id, base_ref, event, file_path, head_ref"
+    parser = (WebhookFilterType' . mk) <$> takeText
 
 instance ToText WebhookFilterType where
-    toText = \case
-        ActorAccountId -> "ACTOR_ACCOUNT_ID"
-        BaseRef -> "BASE_REF"
-        Event -> "EVENT"
-        FilePath -> "FILE_PATH"
-        HeadRef -> "HEAD_REF"
+    toText (WebhookFilterType' ci) = original ci
+
+-- | Represents an enum of /known/ $WebhookFilterType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum WebhookFilterType where
+    toEnum i = case i of
+        0 -> ActorAccountId
+        1 -> BaseRef
+        2 -> Event
+        3 -> FilePath
+        4 -> HeadRef
+        _ -> (error . showText) $ "Unknown index for WebhookFilterType: " <> toText i
+    fromEnum x = case x of
+        ActorAccountId -> 0
+        BaseRef -> 1
+        Event -> 2
+        FilePath -> 3
+        HeadRef -> 4
+        WebhookFilterType' name -> (error . showText) $ "Unknown WebhookFilterType: " <> original name
+
+-- | Represents the bounds of /known/ $WebhookFilterType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded WebhookFilterType where
+    minBound = ActorAccountId
+    maxBound = HeadRef
 
 instance Hashable     WebhookFilterType
 instance NFData       WebhookFilterType

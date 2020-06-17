@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,58 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.CloudSearchDomains.Types.ContentType where
+module Network.AWS.CloudSearchDomains.Types.ContentType (
+  ContentType (
+    ..
+    , ApplicationJSON
+    , ApplicationXML
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data ContentType = ApplicationJSON
-                 | ApplicationXML
-                     deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                               Typeable, Generic)
+
+data ContentType = ContentType' (CI Text)
+                     deriving (Eq, Ord, Read, Show, Data, Typeable,
+                               Generic)
+
+pattern ApplicationJSON :: ContentType
+pattern ApplicationJSON = ContentType' "application/json"
+
+pattern ApplicationXML :: ContentType
+pattern ApplicationXML = ContentType' "application/xml"
+
+{-# COMPLETE
+  ApplicationJSON,
+  ApplicationXML,
+  ContentType' #-}
 
 instance FromText ContentType where
-    parser = takeLowerText >>= \case
-        "application/json" -> pure ApplicationJSON
-        "application/xml" -> pure ApplicationXML
-        e -> fromTextError $ "Failure parsing ContentType from value: '" <> e
-           <> "'. Accepted values: application/json, application/xml"
+    parser = (ContentType' . mk) <$> takeText
 
 instance ToText ContentType where
-    toText = \case
-        ApplicationJSON -> "application/json"
-        ApplicationXML -> "application/xml"
+    toText (ContentType' ci) = original ci
+
+-- | Represents an enum of /known/ $ContentType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum ContentType where
+    toEnum i = case i of
+        0 -> ApplicationJSON
+        1 -> ApplicationXML
+        _ -> (error . showText) $ "Unknown index for ContentType: " <> toText i
+    fromEnum x = case x of
+        ApplicationJSON -> 0
+        ApplicationXML -> 1
+        ContentType' name -> (error . showText) $ "Unknown ContentType: " <> original name
+
+-- | Represents the bounds of /known/ $ContentType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded ContentType where
+    minBound = ApplicationJSON
+    maxBound = ApplicationXML
 
 instance Hashable     ContentType
 instance NFData       ContentType

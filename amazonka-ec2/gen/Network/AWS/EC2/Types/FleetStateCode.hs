@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,42 +16,94 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.EC2.Types.FleetStateCode where
+module Network.AWS.EC2.Types.FleetStateCode (
+  FleetStateCode (
+    ..
+    , FSCActive
+    , FSCDeleted
+    , FSCDeletedRunning
+    , FSCDeletedTerminating
+    , FSCFailed
+    , FSCModifying
+    , FSCSubmitted
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.EC2.Internal
 import Network.AWS.Prelude
-  
-data FleetStateCode = FSCActive
-                    | FSCDeleted
-                    | FSCDeletedRunning
-                    | FSCDeletedTerminating
-                    | FSCFailed
-                    | FSCModifying
-                    | FSCSubmitted
-                        deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                  Typeable, Generic)
+
+data FleetStateCode = FleetStateCode' (CI Text)
+                        deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                  Generic)
+
+pattern FSCActive :: FleetStateCode
+pattern FSCActive = FleetStateCode' "active"
+
+pattern FSCDeleted :: FleetStateCode
+pattern FSCDeleted = FleetStateCode' "deleted"
+
+pattern FSCDeletedRunning :: FleetStateCode
+pattern FSCDeletedRunning = FleetStateCode' "deleted_running"
+
+pattern FSCDeletedTerminating :: FleetStateCode
+pattern FSCDeletedTerminating = FleetStateCode' "deleted_terminating"
+
+pattern FSCFailed :: FleetStateCode
+pattern FSCFailed = FleetStateCode' "failed"
+
+pattern FSCModifying :: FleetStateCode
+pattern FSCModifying = FleetStateCode' "modifying"
+
+pattern FSCSubmitted :: FleetStateCode
+pattern FSCSubmitted = FleetStateCode' "submitted"
+
+{-# COMPLETE
+  FSCActive,
+  FSCDeleted,
+  FSCDeletedRunning,
+  FSCDeletedTerminating,
+  FSCFailed,
+  FSCModifying,
+  FSCSubmitted,
+  FleetStateCode' #-}
 
 instance FromText FleetStateCode where
-    parser = takeLowerText >>= \case
-        "active" -> pure FSCActive
-        "deleted" -> pure FSCDeleted
-        "deleted_running" -> pure FSCDeletedRunning
-        "deleted_terminating" -> pure FSCDeletedTerminating
-        "failed" -> pure FSCFailed
-        "modifying" -> pure FSCModifying
-        "submitted" -> pure FSCSubmitted
-        e -> fromTextError $ "Failure parsing FleetStateCode from value: '" <> e
-           <> "'. Accepted values: active, deleted, deleted_running, deleted_terminating, failed, modifying, submitted"
+    parser = (FleetStateCode' . mk) <$> takeText
 
 instance ToText FleetStateCode where
-    toText = \case
-        FSCActive -> "active"
-        FSCDeleted -> "deleted"
-        FSCDeletedRunning -> "deleted_running"
-        FSCDeletedTerminating -> "deleted_terminating"
-        FSCFailed -> "failed"
-        FSCModifying -> "modifying"
-        FSCSubmitted -> "submitted"
+    toText (FleetStateCode' ci) = original ci
+
+-- | Represents an enum of /known/ $FleetStateCode.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum FleetStateCode where
+    toEnum i = case i of
+        0 -> FSCActive
+        1 -> FSCDeleted
+        2 -> FSCDeletedRunning
+        3 -> FSCDeletedTerminating
+        4 -> FSCFailed
+        5 -> FSCModifying
+        6 -> FSCSubmitted
+        _ -> (error . showText) $ "Unknown index for FleetStateCode: " <> toText i
+    fromEnum x = case x of
+        FSCActive -> 0
+        FSCDeleted -> 1
+        FSCDeletedRunning -> 2
+        FSCDeletedTerminating -> 3
+        FSCFailed -> 4
+        FSCModifying -> 5
+        FSCSubmitted -> 6
+        FleetStateCode' name -> (error . showText) $ "Unknown FleetStateCode: " <> original name
+
+-- | Represents the bounds of /known/ $FleetStateCode.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded FleetStateCode where
+    minBound = FSCActive
+    maxBound = FSCSubmitted
 
 instance Hashable     FleetStateCode
 instance NFData       FleetStateCode

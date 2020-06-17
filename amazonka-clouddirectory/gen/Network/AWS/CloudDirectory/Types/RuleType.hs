@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,32 +16,72 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.CloudDirectory.Types.RuleType where
+module Network.AWS.CloudDirectory.Types.RuleType (
+  RuleType (
+    ..
+    , BinaryLength
+    , NumberComparison
+    , StringFromSet
+    , StringLength
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data RuleType = BinaryLength
-              | NumberComparison
-              | StringFromSet
-              | StringLength
-                  deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                            Typeable, Generic)
+
+data RuleType = RuleType' (CI Text)
+                  deriving (Eq, Ord, Read, Show, Data, Typeable,
+                            Generic)
+
+pattern BinaryLength :: RuleType
+pattern BinaryLength = RuleType' "BINARY_LENGTH"
+
+pattern NumberComparison :: RuleType
+pattern NumberComparison = RuleType' "NUMBER_COMPARISON"
+
+pattern StringFromSet :: RuleType
+pattern StringFromSet = RuleType' "STRING_FROM_SET"
+
+pattern StringLength :: RuleType
+pattern StringLength = RuleType' "STRING_LENGTH"
+
+{-# COMPLETE
+  BinaryLength,
+  NumberComparison,
+  StringFromSet,
+  StringLength,
+  RuleType' #-}
 
 instance FromText RuleType where
-    parser = takeLowerText >>= \case
-        "binary_length" -> pure BinaryLength
-        "number_comparison" -> pure NumberComparison
-        "string_from_set" -> pure StringFromSet
-        "string_length" -> pure StringLength
-        e -> fromTextError $ "Failure parsing RuleType from value: '" <> e
-           <> "'. Accepted values: binary_length, number_comparison, string_from_set, string_length"
+    parser = (RuleType' . mk) <$> takeText
 
 instance ToText RuleType where
-    toText = \case
-        BinaryLength -> "BINARY_LENGTH"
-        NumberComparison -> "NUMBER_COMPARISON"
-        StringFromSet -> "STRING_FROM_SET"
-        StringLength -> "STRING_LENGTH"
+    toText (RuleType' ci) = original ci
+
+-- | Represents an enum of /known/ $RuleType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum RuleType where
+    toEnum i = case i of
+        0 -> BinaryLength
+        1 -> NumberComparison
+        2 -> StringFromSet
+        3 -> StringLength
+        _ -> (error . showText) $ "Unknown index for RuleType: " <> toText i
+    fromEnum x = case x of
+        BinaryLength -> 0
+        NumberComparison -> 1
+        StringFromSet -> 2
+        StringLength -> 3
+        RuleType' name -> (error . showText) $ "Unknown RuleType: " <> original name
+
+-- | Represents the bounds of /known/ $RuleType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded RuleType where
+    minBound = BinaryLength
+    maxBound = StringLength
 
 instance Hashable     RuleType
 instance NFData       RuleType

@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,32 +16,73 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.CodeCommit.Types.RepositoryTriggerEventEnum where
+module Network.AWS.CodeCommit.Types.RepositoryTriggerEventEnum (
+  RepositoryTriggerEventEnum (
+    ..
+    , All
+    , CreateReference
+    , DeleteReference
+    , UpdateReference
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data RepositoryTriggerEventEnum = All
-                                | CreateReference
-                                | DeleteReference
-                                | UpdateReference
-                                    deriving (Eq, Ord, Read, Show, Enum,
-                                              Bounded, Data, Typeable, Generic)
+
+data RepositoryTriggerEventEnum = RepositoryTriggerEventEnum' (CI
+                                                                 Text)
+                                    deriving (Eq, Ord, Read, Show, Data,
+                                              Typeable, Generic)
+
+pattern All :: RepositoryTriggerEventEnum
+pattern All = RepositoryTriggerEventEnum' "all"
+
+pattern CreateReference :: RepositoryTriggerEventEnum
+pattern CreateReference = RepositoryTriggerEventEnum' "createReference"
+
+pattern DeleteReference :: RepositoryTriggerEventEnum
+pattern DeleteReference = RepositoryTriggerEventEnum' "deleteReference"
+
+pattern UpdateReference :: RepositoryTriggerEventEnum
+pattern UpdateReference = RepositoryTriggerEventEnum' "updateReference"
+
+{-# COMPLETE
+  All,
+  CreateReference,
+  DeleteReference,
+  UpdateReference,
+  RepositoryTriggerEventEnum' #-}
 
 instance FromText RepositoryTriggerEventEnum where
-    parser = takeLowerText >>= \case
-        "all" -> pure All
-        "createreference" -> pure CreateReference
-        "deletereference" -> pure DeleteReference
-        "updatereference" -> pure UpdateReference
-        e -> fromTextError $ "Failure parsing RepositoryTriggerEventEnum from value: '" <> e
-           <> "'. Accepted values: all, createreference, deletereference, updatereference"
+    parser = (RepositoryTriggerEventEnum' . mk) <$> takeText
 
 instance ToText RepositoryTriggerEventEnum where
-    toText = \case
-        All -> "all"
-        CreateReference -> "createReference"
-        DeleteReference -> "deleteReference"
-        UpdateReference -> "updateReference"
+    toText (RepositoryTriggerEventEnum' ci) = original ci
+
+-- | Represents an enum of /known/ $RepositoryTriggerEventEnum.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum RepositoryTriggerEventEnum where
+    toEnum i = case i of
+        0 -> All
+        1 -> CreateReference
+        2 -> DeleteReference
+        3 -> UpdateReference
+        _ -> (error . showText) $ "Unknown index for RepositoryTriggerEventEnum: " <> toText i
+    fromEnum x = case x of
+        All -> 0
+        CreateReference -> 1
+        DeleteReference -> 2
+        UpdateReference -> 3
+        RepositoryTriggerEventEnum' name -> (error . showText) $ "Unknown RepositoryTriggerEventEnum: " <> original name
+
+-- | Represents the bounds of /known/ $RepositoryTriggerEventEnum.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded RepositoryTriggerEventEnum where
+    minBound = All
+    maxBound = UpdateReference
 
 instance Hashable     RepositoryTriggerEventEnum
 instance NFData       RepositoryTriggerEventEnum

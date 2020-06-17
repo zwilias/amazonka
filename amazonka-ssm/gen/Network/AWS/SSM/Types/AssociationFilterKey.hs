@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,41 +16,94 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.SSM.Types.AssociationFilterKey where
+module Network.AWS.SSM.Types.AssociationFilterKey (
+  AssociationFilterKey (
+    ..
+    , AFKAssociationId
+    , AFKAssociationName
+    , AFKAssociationStatusName
+    , AFKInstanceId
+    , AFKLastExecutedAfter
+    , AFKLastExecutedBefore
+    , AFKName
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data AssociationFilterKey = AFKAssociationId
-                          | AFKAssociationName
-                          | AFKAssociationStatusName
-                          | AFKInstanceId
-                          | AFKLastExecutedAfter
-                          | AFKLastExecutedBefore
-                          | AFKName
-                              deriving (Eq, Ord, Read, Show, Enum, Bounded,
-                                        Data, Typeable, Generic)
+
+data AssociationFilterKey = AssociationFilterKey' (CI
+                                                     Text)
+                              deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                        Generic)
+
+pattern AFKAssociationId :: AssociationFilterKey
+pattern AFKAssociationId = AssociationFilterKey' "AssociationId"
+
+pattern AFKAssociationName :: AssociationFilterKey
+pattern AFKAssociationName = AssociationFilterKey' "AssociationName"
+
+pattern AFKAssociationStatusName :: AssociationFilterKey
+pattern AFKAssociationStatusName = AssociationFilterKey' "AssociationStatusName"
+
+pattern AFKInstanceId :: AssociationFilterKey
+pattern AFKInstanceId = AssociationFilterKey' "InstanceId"
+
+pattern AFKLastExecutedAfter :: AssociationFilterKey
+pattern AFKLastExecutedAfter = AssociationFilterKey' "LastExecutedAfter"
+
+pattern AFKLastExecutedBefore :: AssociationFilterKey
+pattern AFKLastExecutedBefore = AssociationFilterKey' "LastExecutedBefore"
+
+pattern AFKName :: AssociationFilterKey
+pattern AFKName = AssociationFilterKey' "Name"
+
+{-# COMPLETE
+  AFKAssociationId,
+  AFKAssociationName,
+  AFKAssociationStatusName,
+  AFKInstanceId,
+  AFKLastExecutedAfter,
+  AFKLastExecutedBefore,
+  AFKName,
+  AssociationFilterKey' #-}
 
 instance FromText AssociationFilterKey where
-    parser = takeLowerText >>= \case
-        "associationid" -> pure AFKAssociationId
-        "associationname" -> pure AFKAssociationName
-        "associationstatusname" -> pure AFKAssociationStatusName
-        "instanceid" -> pure AFKInstanceId
-        "lastexecutedafter" -> pure AFKLastExecutedAfter
-        "lastexecutedbefore" -> pure AFKLastExecutedBefore
-        "name" -> pure AFKName
-        e -> fromTextError $ "Failure parsing AssociationFilterKey from value: '" <> e
-           <> "'. Accepted values: associationid, associationname, associationstatusname, instanceid, lastexecutedafter, lastexecutedbefore, name"
+    parser = (AssociationFilterKey' . mk) <$> takeText
 
 instance ToText AssociationFilterKey where
-    toText = \case
-        AFKAssociationId -> "AssociationId"
-        AFKAssociationName -> "AssociationName"
-        AFKAssociationStatusName -> "AssociationStatusName"
-        AFKInstanceId -> "InstanceId"
-        AFKLastExecutedAfter -> "LastExecutedAfter"
-        AFKLastExecutedBefore -> "LastExecutedBefore"
-        AFKName -> "Name"
+    toText (AssociationFilterKey' ci) = original ci
+
+-- | Represents an enum of /known/ $AssociationFilterKey.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum AssociationFilterKey where
+    toEnum i = case i of
+        0 -> AFKAssociationId
+        1 -> AFKAssociationName
+        2 -> AFKAssociationStatusName
+        3 -> AFKInstanceId
+        4 -> AFKLastExecutedAfter
+        5 -> AFKLastExecutedBefore
+        6 -> AFKName
+        _ -> (error . showText) $ "Unknown index for AssociationFilterKey: " <> toText i
+    fromEnum x = case x of
+        AFKAssociationId -> 0
+        AFKAssociationName -> 1
+        AFKAssociationStatusName -> 2
+        AFKInstanceId -> 3
+        AFKLastExecutedAfter -> 4
+        AFKLastExecutedBefore -> 5
+        AFKName -> 6
+        AssociationFilterKey' name -> (error . showText) $ "Unknown AssociationFilterKey: " <> original name
+
+-- | Represents the bounds of /known/ $AssociationFilterKey.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded AssociationFilterKey where
+    minBound = AFKAssociationId
+    maxBound = AFKName
 
 instance Hashable     AssociationFilterKey
 instance NFData       AssociationFilterKey

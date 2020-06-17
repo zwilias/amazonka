@@ -38,6 +38,7 @@ module Network.AWS.MediaStore.DeleteContainerPolicy
 
 import Network.AWS.Lens
 import Network.AWS.MediaStore.Types
+import Network.AWS.MediaStore.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response

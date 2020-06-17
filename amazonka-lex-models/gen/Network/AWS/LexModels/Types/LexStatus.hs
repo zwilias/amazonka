@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,32 +16,72 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.LexModels.Types.LexStatus where
+module Network.AWS.LexModels.Types.LexStatus (
+  LexStatus (
+    ..
+    , LSBuilding
+    , LSFailed
+    , LSNotBuilt
+    , LSReady
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data LexStatus = LSBuilding
-               | LSFailed
-               | LSNotBuilt
-               | LSReady
-                   deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                             Typeable, Generic)
+
+data LexStatus = LexStatus' (CI Text)
+                   deriving (Eq, Ord, Read, Show, Data, Typeable,
+                             Generic)
+
+pattern LSBuilding :: LexStatus
+pattern LSBuilding = LexStatus' "BUILDING"
+
+pattern LSFailed :: LexStatus
+pattern LSFailed = LexStatus' "FAILED"
+
+pattern LSNotBuilt :: LexStatus
+pattern LSNotBuilt = LexStatus' "NOT_BUILT"
+
+pattern LSReady :: LexStatus
+pattern LSReady = LexStatus' "READY"
+
+{-# COMPLETE
+  LSBuilding,
+  LSFailed,
+  LSNotBuilt,
+  LSReady,
+  LexStatus' #-}
 
 instance FromText LexStatus where
-    parser = takeLowerText >>= \case
-        "building" -> pure LSBuilding
-        "failed" -> pure LSFailed
-        "not_built" -> pure LSNotBuilt
-        "ready" -> pure LSReady
-        e -> fromTextError $ "Failure parsing LexStatus from value: '" <> e
-           <> "'. Accepted values: building, failed, not_built, ready"
+    parser = (LexStatus' . mk) <$> takeText
 
 instance ToText LexStatus where
-    toText = \case
-        LSBuilding -> "BUILDING"
-        LSFailed -> "FAILED"
-        LSNotBuilt -> "NOT_BUILT"
-        LSReady -> "READY"
+    toText (LexStatus' ci) = original ci
+
+-- | Represents an enum of /known/ $LexStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum LexStatus where
+    toEnum i = case i of
+        0 -> LSBuilding
+        1 -> LSFailed
+        2 -> LSNotBuilt
+        3 -> LSReady
+        _ -> (error . showText) $ "Unknown index for LexStatus: " <> toText i
+    fromEnum x = case x of
+        LSBuilding -> 0
+        LSFailed -> 1
+        LSNotBuilt -> 2
+        LSReady -> 3
+        LexStatus' name -> (error . showText) $ "Unknown LexStatus: " <> original name
+
+-- | Represents the bounds of /known/ $LexStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded LexStatus where
+    minBound = LSBuilding
+    maxBound = LSReady
 
 instance Hashable     LexStatus
 instance NFData       LexStatus

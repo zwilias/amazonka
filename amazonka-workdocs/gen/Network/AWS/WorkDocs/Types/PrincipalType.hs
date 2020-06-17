@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,35 +16,79 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.WorkDocs.Types.PrincipalType where
+module Network.AWS.WorkDocs.Types.PrincipalType (
+  PrincipalType (
+    ..
+    , Anonymous
+    , Group
+    , Invite
+    , Organization
+    , User
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data PrincipalType = Anonymous
-                   | Group
-                   | Invite
-                   | Organization
-                   | User
-                       deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                 Typeable, Generic)
+
+data PrincipalType = PrincipalType' (CI Text)
+                       deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                 Generic)
+
+pattern Anonymous :: PrincipalType
+pattern Anonymous = PrincipalType' "ANONYMOUS"
+
+pattern Group :: PrincipalType
+pattern Group = PrincipalType' "GROUP"
+
+pattern Invite :: PrincipalType
+pattern Invite = PrincipalType' "INVITE"
+
+pattern Organization :: PrincipalType
+pattern Organization = PrincipalType' "ORGANIZATION"
+
+pattern User :: PrincipalType
+pattern User = PrincipalType' "USER"
+
+{-# COMPLETE
+  Anonymous,
+  Group,
+  Invite,
+  Organization,
+  User,
+  PrincipalType' #-}
 
 instance FromText PrincipalType where
-    parser = takeLowerText >>= \case
-        "anonymous" -> pure Anonymous
-        "group" -> pure Group
-        "invite" -> pure Invite
-        "organization" -> pure Organization
-        "user" -> pure User
-        e -> fromTextError $ "Failure parsing PrincipalType from value: '" <> e
-           <> "'. Accepted values: anonymous, group, invite, organization, user"
+    parser = (PrincipalType' . mk) <$> takeText
 
 instance ToText PrincipalType where
-    toText = \case
-        Anonymous -> "ANONYMOUS"
-        Group -> "GROUP"
-        Invite -> "INVITE"
-        Organization -> "ORGANIZATION"
-        User -> "USER"
+    toText (PrincipalType' ci) = original ci
+
+-- | Represents an enum of /known/ $PrincipalType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum PrincipalType where
+    toEnum i = case i of
+        0 -> Anonymous
+        1 -> Group
+        2 -> Invite
+        3 -> Organization
+        4 -> User
+        _ -> (error . showText) $ "Unknown index for PrincipalType: " <> toText i
+    fromEnum x = case x of
+        Anonymous -> 0
+        Group -> 1
+        Invite -> 2
+        Organization -> 3
+        User -> 4
+        PrincipalType' name -> (error . showText) $ "Unknown PrincipalType: " <> original name
+
+-- | Represents the bounds of /known/ $PrincipalType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded PrincipalType where
+    minBound = Anonymous
+    maxBound = User
 
 instance Hashable     PrincipalType
 instance NFData       PrincipalType

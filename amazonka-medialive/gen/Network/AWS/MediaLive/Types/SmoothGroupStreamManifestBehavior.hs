@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,28 +16,60 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.MediaLive.Types.SmoothGroupStreamManifestBehavior where
+module Network.AWS.MediaLive.Types.SmoothGroupStreamManifestBehavior (
+  SmoothGroupStreamManifestBehavior (
+    ..
+    , DoNotSend
+    , Send
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
+
 -- | Placeholder documentation for SmoothGroupStreamManifestBehavior
-data SmoothGroupStreamManifestBehavior = DoNotSend
-                                       | Send
-                                           deriving (Eq, Ord, Read, Show, Enum,
-                                                     Bounded, Data, Typeable,
-                                                     Generic)
+data SmoothGroupStreamManifestBehavior = SmoothGroupStreamManifestBehavior' (CI
+                                                                               Text)
+                                           deriving (Eq, Ord, Read, Show, Data,
+                                                     Typeable, Generic)
+
+pattern DoNotSend :: SmoothGroupStreamManifestBehavior
+pattern DoNotSend = SmoothGroupStreamManifestBehavior' "DO_NOT_SEND"
+
+pattern Send :: SmoothGroupStreamManifestBehavior
+pattern Send = SmoothGroupStreamManifestBehavior' "SEND"
+
+{-# COMPLETE
+  DoNotSend,
+  Send,
+  SmoothGroupStreamManifestBehavior' #-}
 
 instance FromText SmoothGroupStreamManifestBehavior where
-    parser = takeLowerText >>= \case
-        "do_not_send" -> pure DoNotSend
-        "send" -> pure Send
-        e -> fromTextError $ "Failure parsing SmoothGroupStreamManifestBehavior from value: '" <> e
-           <> "'. Accepted values: do_not_send, send"
+    parser = (SmoothGroupStreamManifestBehavior' . mk) <$> takeText
 
 instance ToText SmoothGroupStreamManifestBehavior where
-    toText = \case
-        DoNotSend -> "DO_NOT_SEND"
-        Send -> "SEND"
+    toText (SmoothGroupStreamManifestBehavior' ci) = original ci
+
+-- | Represents an enum of /known/ $SmoothGroupStreamManifestBehavior.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum SmoothGroupStreamManifestBehavior where
+    toEnum i = case i of
+        0 -> DoNotSend
+        1 -> Send
+        _ -> (error . showText) $ "Unknown index for SmoothGroupStreamManifestBehavior: " <> toText i
+    fromEnum x = case x of
+        DoNotSend -> 0
+        Send -> 1
+        SmoothGroupStreamManifestBehavior' name -> (error . showText) $ "Unknown SmoothGroupStreamManifestBehavior: " <> original name
+
+-- | Represents the bounds of /known/ $SmoothGroupStreamManifestBehavior.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded SmoothGroupStreamManifestBehavior where
+    minBound = DoNotSend
+    maxBound = Send
 
 instance Hashable     SmoothGroupStreamManifestBehavior
 instance NFData       SmoothGroupStreamManifestBehavior

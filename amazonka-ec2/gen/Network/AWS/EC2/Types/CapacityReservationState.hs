@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,36 +16,81 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.EC2.Types.CapacityReservationState where
+module Network.AWS.EC2.Types.CapacityReservationState (
+  CapacityReservationState (
+    ..
+    , CRSActive
+    , CRSCancelled
+    , CRSExpired
+    , CRSFailed
+    , CRSPending
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.EC2.Internal
 import Network.AWS.Prelude
-  
-data CapacityReservationState = CRSActive
-                              | CRSCancelled
-                              | CRSExpired
-                              | CRSFailed
-                              | CRSPending
-                                  deriving (Eq, Ord, Read, Show, Enum, Bounded,
-                                            Data, Typeable, Generic)
+
+data CapacityReservationState = CapacityReservationState' (CI
+                                                             Text)
+                                  deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                            Generic)
+
+pattern CRSActive :: CapacityReservationState
+pattern CRSActive = CapacityReservationState' "active"
+
+pattern CRSCancelled :: CapacityReservationState
+pattern CRSCancelled = CapacityReservationState' "cancelled"
+
+pattern CRSExpired :: CapacityReservationState
+pattern CRSExpired = CapacityReservationState' "expired"
+
+pattern CRSFailed :: CapacityReservationState
+pattern CRSFailed = CapacityReservationState' "failed"
+
+pattern CRSPending :: CapacityReservationState
+pattern CRSPending = CapacityReservationState' "pending"
+
+{-# COMPLETE
+  CRSActive,
+  CRSCancelled,
+  CRSExpired,
+  CRSFailed,
+  CRSPending,
+  CapacityReservationState' #-}
 
 instance FromText CapacityReservationState where
-    parser = takeLowerText >>= \case
-        "active" -> pure CRSActive
-        "cancelled" -> pure CRSCancelled
-        "expired" -> pure CRSExpired
-        "failed" -> pure CRSFailed
-        "pending" -> pure CRSPending
-        e -> fromTextError $ "Failure parsing CapacityReservationState from value: '" <> e
-           <> "'. Accepted values: active, cancelled, expired, failed, pending"
+    parser = (CapacityReservationState' . mk) <$> takeText
 
 instance ToText CapacityReservationState where
-    toText = \case
-        CRSActive -> "active"
-        CRSCancelled -> "cancelled"
-        CRSExpired -> "expired"
-        CRSFailed -> "failed"
-        CRSPending -> "pending"
+    toText (CapacityReservationState' ci) = original ci
+
+-- | Represents an enum of /known/ $CapacityReservationState.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum CapacityReservationState where
+    toEnum i = case i of
+        0 -> CRSActive
+        1 -> CRSCancelled
+        2 -> CRSExpired
+        3 -> CRSFailed
+        4 -> CRSPending
+        _ -> (error . showText) $ "Unknown index for CapacityReservationState: " <> toText i
+    fromEnum x = case x of
+        CRSActive -> 0
+        CRSCancelled -> 1
+        CRSExpired -> 2
+        CRSFailed -> 3
+        CRSPending -> 4
+        CapacityReservationState' name -> (error . showText) $ "Unknown CapacityReservationState: " <> original name
+
+-- | Represents the bounds of /known/ $CapacityReservationState.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded CapacityReservationState where
+    minBound = CRSActive
+    maxBound = CRSPending
 
 instance Hashable     CapacityReservationState
 instance NFData       CapacityReservationState

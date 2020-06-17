@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,23 +16,51 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.ResourceGroups.Types.QueryType where
+module Network.AWS.ResourceGroups.Types.QueryType (
+  QueryType (
+    ..
+    , TagFilters10
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data QueryType = TagFilters10
-                   deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                             Typeable, Generic)
+
+data QueryType = QueryType' (CI Text)
+                   deriving (Eq, Ord, Read, Show, Data, Typeable,
+                             Generic)
+
+pattern TagFilters10 :: QueryType
+pattern TagFilters10 = QueryType' "TAG_FILTERS_1_0"
+
+{-# COMPLETE
+  TagFilters10,
+  QueryType' #-}
 
 instance FromText QueryType where
-    parser = takeLowerText >>= \case
-        "tag_filters_1_0" -> pure TagFilters10
-        e -> fromTextError $ "Failure parsing QueryType from value: '" <> e
-           <> "'. Accepted values: tag_filters_1_0"
+    parser = (QueryType' . mk) <$> takeText
 
 instance ToText QueryType where
-    toText = \case
-        TagFilters10 -> "TAG_FILTERS_1_0"
+    toText (QueryType' ci) = original ci
+
+-- | Represents an enum of /known/ $QueryType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum QueryType where
+    toEnum i = case i of
+        0 -> TagFilters10
+        _ -> (error . showText) $ "Unknown index for QueryType: " <> toText i
+    fromEnum x = case x of
+        TagFilters10 -> 0
+        QueryType' name -> (error . showText) $ "Unknown QueryType: " <> original name
+
+-- | Represents the bounds of /known/ $QueryType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded QueryType where
+    minBound = TagFilters10
+    maxBound = TagFilters10
 
 instance Hashable     QueryType
 instance NFData       QueryType

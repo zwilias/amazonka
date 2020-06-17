@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,29 +16,61 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.Budgets.Types.ThresholdType where
+module Network.AWS.Budgets.Types.ThresholdType (
+  ThresholdType (
+    ..
+    , AbsoluteValue
+    , Percentage
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
+
 -- | The type of threshold for a notification. It can be PERCENTAGE or ABSOLUTE_VALUE.
 --
 --
-data ThresholdType = AbsoluteValue
-                   | Percentage
-                       deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                 Typeable, Generic)
+data ThresholdType = ThresholdType' (CI Text)
+                       deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                 Generic)
+
+pattern AbsoluteValue :: ThresholdType
+pattern AbsoluteValue = ThresholdType' "ABSOLUTE_VALUE"
+
+pattern Percentage :: ThresholdType
+pattern Percentage = ThresholdType' "PERCENTAGE"
+
+{-# COMPLETE
+  AbsoluteValue,
+  Percentage,
+  ThresholdType' #-}
 
 instance FromText ThresholdType where
-    parser = takeLowerText >>= \case
-        "absolute_value" -> pure AbsoluteValue
-        "percentage" -> pure Percentage
-        e -> fromTextError $ "Failure parsing ThresholdType from value: '" <> e
-           <> "'. Accepted values: absolute_value, percentage"
+    parser = (ThresholdType' . mk) <$> takeText
 
 instance ToText ThresholdType where
-    toText = \case
-        AbsoluteValue -> "ABSOLUTE_VALUE"
-        Percentage -> "PERCENTAGE"
+    toText (ThresholdType' ci) = original ci
+
+-- | Represents an enum of /known/ $ThresholdType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum ThresholdType where
+    toEnum i = case i of
+        0 -> AbsoluteValue
+        1 -> Percentage
+        _ -> (error . showText) $ "Unknown index for ThresholdType: " <> toText i
+    fromEnum x = case x of
+        AbsoluteValue -> 0
+        Percentage -> 1
+        ThresholdType' name -> (error . showText) $ "Unknown ThresholdType: " <> original name
+
+-- | Represents the bounds of /known/ $ThresholdType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded ThresholdType where
+    minBound = AbsoluteValue
+    maxBound = Percentage
 
 instance Hashable     ThresholdType
 instance NFData       ThresholdType

@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,58 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.DeviceFarm.Types.BillingMethod where
+module Network.AWS.DeviceFarm.Types.BillingMethod (
+  BillingMethod (
+    ..
+    , Metered
+    , Unmetered
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data BillingMethod = Metered
-                   | Unmetered
-                       deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                 Typeable, Generic)
+
+data BillingMethod = BillingMethod' (CI Text)
+                       deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                 Generic)
+
+pattern Metered :: BillingMethod
+pattern Metered = BillingMethod' "METERED"
+
+pattern Unmetered :: BillingMethod
+pattern Unmetered = BillingMethod' "UNMETERED"
+
+{-# COMPLETE
+  Metered,
+  Unmetered,
+  BillingMethod' #-}
 
 instance FromText BillingMethod where
-    parser = takeLowerText >>= \case
-        "metered" -> pure Metered
-        "unmetered" -> pure Unmetered
-        e -> fromTextError $ "Failure parsing BillingMethod from value: '" <> e
-           <> "'. Accepted values: metered, unmetered"
+    parser = (BillingMethod' . mk) <$> takeText
 
 instance ToText BillingMethod where
-    toText = \case
-        Metered -> "METERED"
-        Unmetered -> "UNMETERED"
+    toText (BillingMethod' ci) = original ci
+
+-- | Represents an enum of /known/ $BillingMethod.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum BillingMethod where
+    toEnum i = case i of
+        0 -> Metered
+        1 -> Unmetered
+        _ -> (error . showText) $ "Unknown index for BillingMethod: " <> toText i
+    fromEnum x = case x of
+        Metered -> 0
+        Unmetered -> 1
+        BillingMethod' name -> (error . showText) $ "Unknown BillingMethod: " <> original name
+
+-- | Represents the bounds of /known/ $BillingMethod.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded BillingMethod where
+    minBound = Metered
+    maxBound = Unmetered
 
 instance Hashable     BillingMethod
 instance NFData       BillingMethod

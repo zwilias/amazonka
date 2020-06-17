@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,35 +16,79 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.IoT.Types.TaskStatus where
+module Network.AWS.IoT.Types.TaskStatus (
+  TaskStatus (
+    ..
+    , TSCancelled
+    , TSCancelling
+    , TSCompleted
+    , TSFailed
+    , TSInProgress
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data TaskStatus = TSCancelled
-                | TSCancelling
-                | TSCompleted
-                | TSFailed
-                | TSInProgress
-                    deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                              Typeable, Generic)
+
+data TaskStatus = TaskStatus' (CI Text)
+                    deriving (Eq, Ord, Read, Show, Data, Typeable,
+                              Generic)
+
+pattern TSCancelled :: TaskStatus
+pattern TSCancelled = TaskStatus' "Cancelled"
+
+pattern TSCancelling :: TaskStatus
+pattern TSCancelling = TaskStatus' "Cancelling"
+
+pattern TSCompleted :: TaskStatus
+pattern TSCompleted = TaskStatus' "Completed"
+
+pattern TSFailed :: TaskStatus
+pattern TSFailed = TaskStatus' "Failed"
+
+pattern TSInProgress :: TaskStatus
+pattern TSInProgress = TaskStatus' "InProgress"
+
+{-# COMPLETE
+  TSCancelled,
+  TSCancelling,
+  TSCompleted,
+  TSFailed,
+  TSInProgress,
+  TaskStatus' #-}
 
 instance FromText TaskStatus where
-    parser = takeLowerText >>= \case
-        "cancelled" -> pure TSCancelled
-        "cancelling" -> pure TSCancelling
-        "completed" -> pure TSCompleted
-        "failed" -> pure TSFailed
-        "inprogress" -> pure TSInProgress
-        e -> fromTextError $ "Failure parsing TaskStatus from value: '" <> e
-           <> "'. Accepted values: cancelled, cancelling, completed, failed, inprogress"
+    parser = (TaskStatus' . mk) <$> takeText
 
 instance ToText TaskStatus where
-    toText = \case
-        TSCancelled -> "Cancelled"
-        TSCancelling -> "Cancelling"
-        TSCompleted -> "Completed"
-        TSFailed -> "Failed"
-        TSInProgress -> "InProgress"
+    toText (TaskStatus' ci) = original ci
+
+-- | Represents an enum of /known/ $TaskStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum TaskStatus where
+    toEnum i = case i of
+        0 -> TSCancelled
+        1 -> TSCancelling
+        2 -> TSCompleted
+        3 -> TSFailed
+        4 -> TSInProgress
+        _ -> (error . showText) $ "Unknown index for TaskStatus: " <> toText i
+    fromEnum x = case x of
+        TSCancelled -> 0
+        TSCancelling -> 1
+        TSCompleted -> 2
+        TSFailed -> 3
+        TSInProgress -> 4
+        TaskStatus' name -> (error . showText) $ "Unknown TaskStatus: " <> original name
+
+-- | Represents the bounds of /known/ $TaskStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded TaskStatus where
+    minBound = TSCancelled
+    maxBound = TSInProgress
 
 instance Hashable     TaskStatus
 instance NFData       TaskStatus

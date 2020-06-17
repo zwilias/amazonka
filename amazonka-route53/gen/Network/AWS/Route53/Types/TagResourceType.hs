@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,27 +16,59 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.Route53.Types.TagResourceType where
+module Network.AWS.Route53.Types.TagResourceType (
+  TagResourceType (
+    ..
+    , Healthcheck
+    , Hostedzone
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
 import Network.AWS.Route53.Internal
-  
-data TagResourceType = Healthcheck
-                     | Hostedzone
-                         deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                   Typeable, Generic)
+
+data TagResourceType = TagResourceType' (CI Text)
+                         deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                   Generic)
+
+pattern Healthcheck :: TagResourceType
+pattern Healthcheck = TagResourceType' "healthcheck"
+
+pattern Hostedzone :: TagResourceType
+pattern Hostedzone = TagResourceType' "hostedzone"
+
+{-# COMPLETE
+  Healthcheck,
+  Hostedzone,
+  TagResourceType' #-}
 
 instance FromText TagResourceType where
-    parser = takeLowerText >>= \case
-        "healthcheck" -> pure Healthcheck
-        "hostedzone" -> pure Hostedzone
-        e -> fromTextError $ "Failure parsing TagResourceType from value: '" <> e
-           <> "'. Accepted values: healthcheck, hostedzone"
+    parser = (TagResourceType' . mk) <$> takeText
 
 instance ToText TagResourceType where
-    toText = \case
-        Healthcheck -> "healthcheck"
-        Hostedzone -> "hostedzone"
+    toText (TagResourceType' ci) = original ci
+
+-- | Represents an enum of /known/ $TagResourceType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum TagResourceType where
+    toEnum i = case i of
+        0 -> Healthcheck
+        1 -> Hostedzone
+        _ -> (error . showText) $ "Unknown index for TagResourceType: " <> toText i
+    fromEnum x = case x of
+        Healthcheck -> 0
+        Hostedzone -> 1
+        TagResourceType' name -> (error . showText) $ "Unknown TagResourceType: " <> original name
+
+-- | Represents the bounds of /known/ $TagResourceType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded TagResourceType where
+    minBound = Healthcheck
+    maxBound = Hostedzone
 
 instance Hashable     TagResourceType
 instance NFData       TagResourceType

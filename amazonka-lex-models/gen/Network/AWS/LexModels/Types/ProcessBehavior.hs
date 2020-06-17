@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,58 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.LexModels.Types.ProcessBehavior where
+module Network.AWS.LexModels.Types.ProcessBehavior (
+  ProcessBehavior (
+    ..
+    , Build
+    , Save
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data ProcessBehavior = Build
-                     | Save
-                         deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                   Typeable, Generic)
+
+data ProcessBehavior = ProcessBehavior' (CI Text)
+                         deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                   Generic)
+
+pattern Build :: ProcessBehavior
+pattern Build = ProcessBehavior' "BUILD"
+
+pattern Save :: ProcessBehavior
+pattern Save = ProcessBehavior' "SAVE"
+
+{-# COMPLETE
+  Build,
+  Save,
+  ProcessBehavior' #-}
 
 instance FromText ProcessBehavior where
-    parser = takeLowerText >>= \case
-        "build" -> pure Build
-        "save" -> pure Save
-        e -> fromTextError $ "Failure parsing ProcessBehavior from value: '" <> e
-           <> "'. Accepted values: build, save"
+    parser = (ProcessBehavior' . mk) <$> takeText
 
 instance ToText ProcessBehavior where
-    toText = \case
-        Build -> "BUILD"
-        Save -> "SAVE"
+    toText (ProcessBehavior' ci) = original ci
+
+-- | Represents an enum of /known/ $ProcessBehavior.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum ProcessBehavior where
+    toEnum i = case i of
+        0 -> Build
+        1 -> Save
+        _ -> (error . showText) $ "Unknown index for ProcessBehavior: " <> toText i
+    fromEnum x = case x of
+        Build -> 0
+        Save -> 1
+        ProcessBehavior' name -> (error . showText) $ "Unknown ProcessBehavior: " <> original name
+
+-- | Represents the bounds of /known/ $ProcessBehavior.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded ProcessBehavior where
+    minBound = Build
+    maxBound = Save
 
 instance Hashable     ProcessBehavior
 instance NFData       ProcessBehavior

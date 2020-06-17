@@ -43,6 +43,7 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.Route53AutoNaming.Types
+import Network.AWS.Route53AutoNaming.Types.Product
 
 -- | /See:/ 'deregisterInstance' smart constructor.
 data DeregisterInstance = DeregisterInstance'{_diServiceId

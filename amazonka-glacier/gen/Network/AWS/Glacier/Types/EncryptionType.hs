@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,58 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.Glacier.Types.EncryptionType where
+module Network.AWS.Glacier.Types.EncryptionType (
+  EncryptionType (
+    ..
+    , AES256
+    , AWSKMS
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data EncryptionType = AES256
-                    | AWSKMS
-                        deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                  Typeable, Generic)
+
+data EncryptionType = EncryptionType' (CI Text)
+                        deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                  Generic)
+
+pattern AES256 :: EncryptionType
+pattern AES256 = EncryptionType' "AES256"
+
+pattern AWSKMS :: EncryptionType
+pattern AWSKMS = EncryptionType' "aws:kms"
+
+{-# COMPLETE
+  AES256,
+  AWSKMS,
+  EncryptionType' #-}
 
 instance FromText EncryptionType where
-    parser = takeLowerText >>= \case
-        "aes256" -> pure AES256
-        "aws:kms" -> pure AWSKMS
-        e -> fromTextError $ "Failure parsing EncryptionType from value: '" <> e
-           <> "'. Accepted values: aes256, aws:kms"
+    parser = (EncryptionType' . mk) <$> takeText
 
 instance ToText EncryptionType where
-    toText = \case
-        AES256 -> "AES256"
-        AWSKMS -> "aws:kms"
+    toText (EncryptionType' ci) = original ci
+
+-- | Represents an enum of /known/ $EncryptionType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum EncryptionType where
+    toEnum i = case i of
+        0 -> AES256
+        1 -> AWSKMS
+        _ -> (error . showText) $ "Unknown index for EncryptionType: " <> toText i
+    fromEnum x = case x of
+        AES256 -> 0
+        AWSKMS -> 1
+        EncryptionType' name -> (error . showText) $ "Unknown EncryptionType: " <> original name
+
+-- | Represents the bounds of /known/ $EncryptionType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded EncryptionType where
+    minBound = AES256
+    maxBound = AWSKMS
 
 instance Hashable     EncryptionType
 instance NFData       EncryptionType

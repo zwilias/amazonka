@@ -114,6 +114,7 @@ library
         , Network.AWS.CodeBuild.Types.NetworkInterface
         , Network.AWS.CodeBuild.Types.PhaseContext
         , Network.AWS.CodeBuild.Types.PlatformType
+        , Network.AWS.CodeBuild.Types.Product
         , Network.AWS.CodeBuild.Types.Project
         , Network.AWS.CodeBuild.Types.ProjectArtifacts
         , Network.AWS.CodeBuild.Types.ProjectBadge
@@ -155,6 +156,7 @@ library
     build-depends:
           amazonka-core == 1.6.1.*
         , base          >= 4.7     && < 5
+        , case-insensitive
 
 test-suite amazonka-codebuild-test
     type:              exitcode-stdio-1.0
@@ -178,6 +180,7 @@ test-suite amazonka-codebuild-test
         , amazonka-codebuild
         , base
         , bytestring
+        , case-insensitive
         , tasty
         , tasty-hunit
         , text

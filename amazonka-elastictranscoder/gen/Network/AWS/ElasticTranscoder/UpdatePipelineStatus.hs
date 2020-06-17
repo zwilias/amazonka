@@ -41,6 +41,7 @@ module Network.AWS.ElasticTranscoder.UpdatePipelineStatus
     ) where
 
 import Network.AWS.ElasticTranscoder.Types
+import Network.AWS.ElasticTranscoder.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request

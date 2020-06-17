@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,24 +16,52 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.MQ.Types.EngineType where
+module Network.AWS.MQ.Types.EngineType (
+  EngineType (
+    ..
+    , Activemq
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
+
 -- | The type of broker engine. Note: Currently, Amazon MQ supports only ActiveMQ.
-data EngineType = Activemq
-                    deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                              Typeable, Generic)
+data EngineType = EngineType' (CI Text)
+                    deriving (Eq, Ord, Read, Show, Data, Typeable,
+                              Generic)
+
+pattern Activemq :: EngineType
+pattern Activemq = EngineType' "ACTIVEMQ"
+
+{-# COMPLETE
+  Activemq,
+  EngineType' #-}
 
 instance FromText EngineType where
-    parser = takeLowerText >>= \case
-        "activemq" -> pure Activemq
-        e -> fromTextError $ "Failure parsing EngineType from value: '" <> e
-           <> "'. Accepted values: activemq"
+    parser = (EngineType' . mk) <$> takeText
 
 instance ToText EngineType where
-    toText = \case
-        Activemq -> "ACTIVEMQ"
+    toText (EngineType' ci) = original ci
+
+-- | Represents an enum of /known/ $EngineType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum EngineType where
+    toEnum i = case i of
+        0 -> Activemq
+        _ -> (error . showText) $ "Unknown index for EngineType: " <> toText i
+    fromEnum x = case x of
+        Activemq -> 0
+        EngineType' name -> (error . showText) $ "Unknown EngineType: " <> original name
+
+-- | Represents the bounds of /known/ $EngineType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded EngineType where
+    minBound = Activemq
+    maxBound = Activemq
 
 instance Hashable     EngineType
 instance NFData       EngineType

@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,27 +16,59 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.MachineLearning.Types.DetailsAttributes where
+module Network.AWS.MachineLearning.Types.DetailsAttributes (
+  DetailsAttributes (
+    ..
+    , Algorithm
+    , PredictiveModelType
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
+
 -- | Contains the key values of @DetailsMap@ : @PredictiveModelType@ - Indicates the type of the @MLModel@ . @Algorithm@ - Indicates the algorithm that was used for the @MLModel@ .
-data DetailsAttributes = Algorithm
-                       | PredictiveModelType
-                           deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                     Typeable, Generic)
+data DetailsAttributes = DetailsAttributes' (CI Text)
+                           deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                     Generic)
+
+pattern Algorithm :: DetailsAttributes
+pattern Algorithm = DetailsAttributes' "Algorithm"
+
+pattern PredictiveModelType :: DetailsAttributes
+pattern PredictiveModelType = DetailsAttributes' "PredictiveModelType"
+
+{-# COMPLETE
+  Algorithm,
+  PredictiveModelType,
+  DetailsAttributes' #-}
 
 instance FromText DetailsAttributes where
-    parser = takeLowerText >>= \case
-        "algorithm" -> pure Algorithm
-        "predictivemodeltype" -> pure PredictiveModelType
-        e -> fromTextError $ "Failure parsing DetailsAttributes from value: '" <> e
-           <> "'. Accepted values: algorithm, predictivemodeltype"
+    parser = (DetailsAttributes' . mk) <$> takeText
 
 instance ToText DetailsAttributes where
-    toText = \case
-        Algorithm -> "Algorithm"
-        PredictiveModelType -> "PredictiveModelType"
+    toText (DetailsAttributes' ci) = original ci
+
+-- | Represents an enum of /known/ $DetailsAttributes.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum DetailsAttributes where
+    toEnum i = case i of
+        0 -> Algorithm
+        1 -> PredictiveModelType
+        _ -> (error . showText) $ "Unknown index for DetailsAttributes: " <> toText i
+    fromEnum x = case x of
+        Algorithm -> 0
+        PredictiveModelType -> 1
+        DetailsAttributes' name -> (error . showText) $ "Unknown DetailsAttributes: " <> original name
+
+-- | Represents the bounds of /known/ $DetailsAttributes.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded DetailsAttributes where
+    minBound = Algorithm
+    maxBound = PredictiveModelType
 
 instance Hashable     DetailsAttributes
 instance NFData       DetailsAttributes

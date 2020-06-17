@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,58 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.GameLift.Types.OperatingSystem where
+module Network.AWS.GameLift.Types.OperatingSystem (
+  OperatingSystem (
+    ..
+    , AmazonLinux
+    , Windows2012
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data OperatingSystem = AmazonLinux
-                     | Windows2012
-                         deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                   Typeable, Generic)
+
+data OperatingSystem = OperatingSystem' (CI Text)
+                         deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                   Generic)
+
+pattern AmazonLinux :: OperatingSystem
+pattern AmazonLinux = OperatingSystem' "AMAZON_LINUX"
+
+pattern Windows2012 :: OperatingSystem
+pattern Windows2012 = OperatingSystem' "WINDOWS_2012"
+
+{-# COMPLETE
+  AmazonLinux,
+  Windows2012,
+  OperatingSystem' #-}
 
 instance FromText OperatingSystem where
-    parser = takeLowerText >>= \case
-        "amazon_linux" -> pure AmazonLinux
-        "windows_2012" -> pure Windows2012
-        e -> fromTextError $ "Failure parsing OperatingSystem from value: '" <> e
-           <> "'. Accepted values: amazon_linux, windows_2012"
+    parser = (OperatingSystem' . mk) <$> takeText
 
 instance ToText OperatingSystem where
-    toText = \case
-        AmazonLinux -> "AMAZON_LINUX"
-        Windows2012 -> "WINDOWS_2012"
+    toText (OperatingSystem' ci) = original ci
+
+-- | Represents an enum of /known/ $OperatingSystem.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum OperatingSystem where
+    toEnum i = case i of
+        0 -> AmazonLinux
+        1 -> Windows2012
+        _ -> (error . showText) $ "Unknown index for OperatingSystem: " <> toText i
+    fromEnum x = case x of
+        AmazonLinux -> 0
+        Windows2012 -> 1
+        OperatingSystem' name -> (error . showText) $ "Unknown OperatingSystem: " <> original name
+
+-- | Represents the bounds of /known/ $OperatingSystem.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded OperatingSystem where
+    minBound = AmazonLinux
+    maxBound = Windows2012
 
 instance Hashable     OperatingSystem
 instance NFData       OperatingSystem

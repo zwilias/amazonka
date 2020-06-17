@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,29 +16,65 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.Inspector.Types.AgentHealth where
+module Network.AWS.Inspector.Types.AgentHealth (
+  AgentHealth (
+    ..
+    , AHHealthy
+    , AHUnhealthy
+    , AHUnknown
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data AgentHealth = AHHealthy
-                 | AHUnhealthy
-                 | AHUnknown
-                     deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                               Typeable, Generic)
+
+data AgentHealth = AgentHealth' (CI Text)
+                     deriving (Eq, Ord, Read, Show, Data, Typeable,
+                               Generic)
+
+pattern AHHealthy :: AgentHealth
+pattern AHHealthy = AgentHealth' "HEALTHY"
+
+pattern AHUnhealthy :: AgentHealth
+pattern AHUnhealthy = AgentHealth' "UNHEALTHY"
+
+pattern AHUnknown :: AgentHealth
+pattern AHUnknown = AgentHealth' "UNKNOWN"
+
+{-# COMPLETE
+  AHHealthy,
+  AHUnhealthy,
+  AHUnknown,
+  AgentHealth' #-}
 
 instance FromText AgentHealth where
-    parser = takeLowerText >>= \case
-        "healthy" -> pure AHHealthy
-        "unhealthy" -> pure AHUnhealthy
-        "unknown" -> pure AHUnknown
-        e -> fromTextError $ "Failure parsing AgentHealth from value: '" <> e
-           <> "'. Accepted values: healthy, unhealthy, unknown"
+    parser = (AgentHealth' . mk) <$> takeText
 
 instance ToText AgentHealth where
-    toText = \case
-        AHHealthy -> "HEALTHY"
-        AHUnhealthy -> "UNHEALTHY"
-        AHUnknown -> "UNKNOWN"
+    toText (AgentHealth' ci) = original ci
+
+-- | Represents an enum of /known/ $AgentHealth.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum AgentHealth where
+    toEnum i = case i of
+        0 -> AHHealthy
+        1 -> AHUnhealthy
+        2 -> AHUnknown
+        _ -> (error . showText) $ "Unknown index for AgentHealth: " <> toText i
+    fromEnum x = case x of
+        AHHealthy -> 0
+        AHUnhealthy -> 1
+        AHUnknown -> 2
+        AgentHealth' name -> (error . showText) $ "Unknown AgentHealth: " <> original name
+
+-- | Represents the bounds of /known/ $AgentHealth.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded AgentHealth where
+    minBound = AHHealthy
+    maxBound = AHUnknown
 
 instance Hashable     AgentHealth
 instance NFData       AgentHealth

@@ -42,6 +42,7 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.WorkSpaces.Types
+import Network.AWS.WorkSpaces.Types.Product
 
 -- | /See:/ 'updateRulesOfIPGroup' smart constructor.
 data UpdateRulesOfIPGroup = UpdateRulesOfIPGroup'{_uroigGroupId

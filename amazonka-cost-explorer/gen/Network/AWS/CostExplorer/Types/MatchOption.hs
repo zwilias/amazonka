@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,38 +16,86 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.CostExplorer.Types.MatchOption where
+module Network.AWS.CostExplorer.Types.MatchOption (
+  MatchOption (
+    ..
+    , CaseInsensitive
+    , CaseSensitive
+    , Contains
+    , EndsWith
+    , Equals
+    , StartsWith
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data MatchOption = CaseInsensitive
-                 | CaseSensitive
-                 | Contains
-                 | EndsWith
-                 | Equals
-                 | StartsWith
-                     deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                               Typeable, Generic)
+
+data MatchOption = MatchOption' (CI Text)
+                     deriving (Eq, Ord, Read, Show, Data, Typeable,
+                               Generic)
+
+pattern CaseInsensitive :: MatchOption
+pattern CaseInsensitive = MatchOption' "CASE_INSENSITIVE"
+
+pattern CaseSensitive :: MatchOption
+pattern CaseSensitive = MatchOption' "CASE_SENSITIVE"
+
+pattern Contains :: MatchOption
+pattern Contains = MatchOption' "CONTAINS"
+
+pattern EndsWith :: MatchOption
+pattern EndsWith = MatchOption' "ENDS_WITH"
+
+pattern Equals :: MatchOption
+pattern Equals = MatchOption' "EQUALS"
+
+pattern StartsWith :: MatchOption
+pattern StartsWith = MatchOption' "STARTS_WITH"
+
+{-# COMPLETE
+  CaseInsensitive,
+  CaseSensitive,
+  Contains,
+  EndsWith,
+  Equals,
+  StartsWith,
+  MatchOption' #-}
 
 instance FromText MatchOption where
-    parser = takeLowerText >>= \case
-        "case_insensitive" -> pure CaseInsensitive
-        "case_sensitive" -> pure CaseSensitive
-        "contains" -> pure Contains
-        "ends_with" -> pure EndsWith
-        "equals" -> pure Equals
-        "starts_with" -> pure StartsWith
-        e -> fromTextError $ "Failure parsing MatchOption from value: '" <> e
-           <> "'. Accepted values: case_insensitive, case_sensitive, contains, ends_with, equals, starts_with"
+    parser = (MatchOption' . mk) <$> takeText
 
 instance ToText MatchOption where
-    toText = \case
-        CaseInsensitive -> "CASE_INSENSITIVE"
-        CaseSensitive -> "CASE_SENSITIVE"
-        Contains -> "CONTAINS"
-        EndsWith -> "ENDS_WITH"
-        Equals -> "EQUALS"
-        StartsWith -> "STARTS_WITH"
+    toText (MatchOption' ci) = original ci
+
+-- | Represents an enum of /known/ $MatchOption.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum MatchOption where
+    toEnum i = case i of
+        0 -> CaseInsensitive
+        1 -> CaseSensitive
+        2 -> Contains
+        3 -> EndsWith
+        4 -> Equals
+        5 -> StartsWith
+        _ -> (error . showText) $ "Unknown index for MatchOption: " <> toText i
+    fromEnum x = case x of
+        CaseInsensitive -> 0
+        CaseSensitive -> 1
+        Contains -> 2
+        EndsWith -> 3
+        Equals -> 4
+        StartsWith -> 5
+        MatchOption' name -> (error . showText) $ "Unknown MatchOption: " <> original name
+
+-- | Represents the bounds of /known/ $MatchOption.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded MatchOption where
+    minBound = CaseInsensitive
+    maxBound = StartsWith
 
 instance Hashable     MatchOption
 instance NFData       MatchOption

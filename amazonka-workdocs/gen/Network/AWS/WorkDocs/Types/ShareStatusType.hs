@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,58 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.WorkDocs.Types.ShareStatusType where
+module Network.AWS.WorkDocs.Types.ShareStatusType (
+  ShareStatusType (
+    ..
+    , Failure
+    , Success
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data ShareStatusType = Failure
-                     | Success
-                         deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                   Typeable, Generic)
+
+data ShareStatusType = ShareStatusType' (CI Text)
+                         deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                   Generic)
+
+pattern Failure :: ShareStatusType
+pattern Failure = ShareStatusType' "FAILURE"
+
+pattern Success :: ShareStatusType
+pattern Success = ShareStatusType' "SUCCESS"
+
+{-# COMPLETE
+  Failure,
+  Success,
+  ShareStatusType' #-}
 
 instance FromText ShareStatusType where
-    parser = takeLowerText >>= \case
-        "failure" -> pure Failure
-        "success" -> pure Success
-        e -> fromTextError $ "Failure parsing ShareStatusType from value: '" <> e
-           <> "'. Accepted values: failure, success"
+    parser = (ShareStatusType' . mk) <$> takeText
 
 instance ToText ShareStatusType where
-    toText = \case
-        Failure -> "FAILURE"
-        Success -> "SUCCESS"
+    toText (ShareStatusType' ci) = original ci
+
+-- | Represents an enum of /known/ $ShareStatusType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum ShareStatusType where
+    toEnum i = case i of
+        0 -> Failure
+        1 -> Success
+        _ -> (error . showText) $ "Unknown index for ShareStatusType: " <> toText i
+    fromEnum x = case x of
+        Failure -> 0
+        Success -> 1
+        ShareStatusType' name -> (error . showText) $ "Unknown ShareStatusType: " <> original name
+
+-- | Represents the bounds of /known/ $ShareStatusType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded ShareStatusType where
+    minBound = Failure
+    maxBound = Success
 
 instance Hashable     ShareStatusType
 instance NFData       ShareStatusType

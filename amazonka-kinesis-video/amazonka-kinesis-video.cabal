@@ -61,6 +61,7 @@ library
     other-modules:
           Network.AWS.KinesisVideo.Types.APIName
         , Network.AWS.KinesisVideo.Types.ComparisonOperator
+        , Network.AWS.KinesisVideo.Types.Product
         , Network.AWS.KinesisVideo.Types.StreamInfo
         , Network.AWS.KinesisVideo.Types.StreamNameCondition
         , Network.AWS.KinesisVideo.Types.StreamStatus
@@ -69,6 +70,7 @@ library
     build-depends:
           amazonka-core == 1.6.1.*
         , base          >= 4.7     && < 5
+        , case-insensitive
 
 test-suite amazonka-kinesis-video-test
     type:              exitcode-stdio-1.0
@@ -92,6 +94,7 @@ test-suite amazonka-kinesis-video-test
         , amazonka-kinesis-video
         , base
         , bytestring
+        , case-insensitive
         , tasty
         , tasty-hunit
         , text

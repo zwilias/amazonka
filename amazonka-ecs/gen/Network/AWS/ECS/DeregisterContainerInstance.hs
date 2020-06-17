@@ -44,6 +44,7 @@ module Network.AWS.ECS.DeregisterContainerInstance
     ) where
 
 import Network.AWS.ECS.Types
+import Network.AWS.ECS.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request

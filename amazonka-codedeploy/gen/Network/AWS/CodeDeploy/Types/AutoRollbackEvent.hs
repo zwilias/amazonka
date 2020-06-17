@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,29 +16,65 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.CodeDeploy.Types.AutoRollbackEvent where
+module Network.AWS.CodeDeploy.Types.AutoRollbackEvent (
+  AutoRollbackEvent (
+    ..
+    , AREDeploymentFailure
+    , AREDeploymentStopOnAlarm
+    , AREDeploymentStopOnRequest
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data AutoRollbackEvent = AREDeploymentFailure
-                       | AREDeploymentStopOnAlarm
-                       | AREDeploymentStopOnRequest
-                           deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                     Typeable, Generic)
+
+data AutoRollbackEvent = AutoRollbackEvent' (CI Text)
+                           deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                     Generic)
+
+pattern AREDeploymentFailure :: AutoRollbackEvent
+pattern AREDeploymentFailure = AutoRollbackEvent' "DEPLOYMENT_FAILURE"
+
+pattern AREDeploymentStopOnAlarm :: AutoRollbackEvent
+pattern AREDeploymentStopOnAlarm = AutoRollbackEvent' "DEPLOYMENT_STOP_ON_ALARM"
+
+pattern AREDeploymentStopOnRequest :: AutoRollbackEvent
+pattern AREDeploymentStopOnRequest = AutoRollbackEvent' "DEPLOYMENT_STOP_ON_REQUEST"
+
+{-# COMPLETE
+  AREDeploymentFailure,
+  AREDeploymentStopOnAlarm,
+  AREDeploymentStopOnRequest,
+  AutoRollbackEvent' #-}
 
 instance FromText AutoRollbackEvent where
-    parser = takeLowerText >>= \case
-        "deployment_failure" -> pure AREDeploymentFailure
-        "deployment_stop_on_alarm" -> pure AREDeploymentStopOnAlarm
-        "deployment_stop_on_request" -> pure AREDeploymentStopOnRequest
-        e -> fromTextError $ "Failure parsing AutoRollbackEvent from value: '" <> e
-           <> "'. Accepted values: deployment_failure, deployment_stop_on_alarm, deployment_stop_on_request"
+    parser = (AutoRollbackEvent' . mk) <$> takeText
 
 instance ToText AutoRollbackEvent where
-    toText = \case
-        AREDeploymentFailure -> "DEPLOYMENT_FAILURE"
-        AREDeploymentStopOnAlarm -> "DEPLOYMENT_STOP_ON_ALARM"
-        AREDeploymentStopOnRequest -> "DEPLOYMENT_STOP_ON_REQUEST"
+    toText (AutoRollbackEvent' ci) = original ci
+
+-- | Represents an enum of /known/ $AutoRollbackEvent.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum AutoRollbackEvent where
+    toEnum i = case i of
+        0 -> AREDeploymentFailure
+        1 -> AREDeploymentStopOnAlarm
+        2 -> AREDeploymentStopOnRequest
+        _ -> (error . showText) $ "Unknown index for AutoRollbackEvent: " <> toText i
+    fromEnum x = case x of
+        AREDeploymentFailure -> 0
+        AREDeploymentStopOnAlarm -> 1
+        AREDeploymentStopOnRequest -> 2
+        AutoRollbackEvent' name -> (error . showText) $ "Unknown AutoRollbackEvent: " <> original name
+
+-- | Represents the bounds of /known/ $AutoRollbackEvent.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded AutoRollbackEvent where
+    minBound = AREDeploymentFailure
+    maxBound = AREDeploymentStopOnRequest
 
 instance Hashable     AutoRollbackEvent
 instance NFData       AutoRollbackEvent

@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,28 +16,60 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.MediaLive.Types.BlackoutSlateNetworkEndBlackout where
+module Network.AWS.MediaLive.Types.BlackoutSlateNetworkEndBlackout (
+  BlackoutSlateNetworkEndBlackout (
+    ..
+    , BSNEBDisabled
+    , BSNEBEnabled
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
+
 -- | Placeholder documentation for BlackoutSlateNetworkEndBlackout
-data BlackoutSlateNetworkEndBlackout = BSNEBDisabled
-                                     | BSNEBEnabled
-                                         deriving (Eq, Ord, Read, Show, Enum,
-                                                   Bounded, Data, Typeable,
-                                                   Generic)
+data BlackoutSlateNetworkEndBlackout = BlackoutSlateNetworkEndBlackout' (CI
+                                                                           Text)
+                                         deriving (Eq, Ord, Read, Show, Data,
+                                                   Typeable, Generic)
+
+pattern BSNEBDisabled :: BlackoutSlateNetworkEndBlackout
+pattern BSNEBDisabled = BlackoutSlateNetworkEndBlackout' "DISABLED"
+
+pattern BSNEBEnabled :: BlackoutSlateNetworkEndBlackout
+pattern BSNEBEnabled = BlackoutSlateNetworkEndBlackout' "ENABLED"
+
+{-# COMPLETE
+  BSNEBDisabled,
+  BSNEBEnabled,
+  BlackoutSlateNetworkEndBlackout' #-}
 
 instance FromText BlackoutSlateNetworkEndBlackout where
-    parser = takeLowerText >>= \case
-        "disabled" -> pure BSNEBDisabled
-        "enabled" -> pure BSNEBEnabled
-        e -> fromTextError $ "Failure parsing BlackoutSlateNetworkEndBlackout from value: '" <> e
-           <> "'. Accepted values: disabled, enabled"
+    parser = (BlackoutSlateNetworkEndBlackout' . mk) <$> takeText
 
 instance ToText BlackoutSlateNetworkEndBlackout where
-    toText = \case
-        BSNEBDisabled -> "DISABLED"
-        BSNEBEnabled -> "ENABLED"
+    toText (BlackoutSlateNetworkEndBlackout' ci) = original ci
+
+-- | Represents an enum of /known/ $BlackoutSlateNetworkEndBlackout.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum BlackoutSlateNetworkEndBlackout where
+    toEnum i = case i of
+        0 -> BSNEBDisabled
+        1 -> BSNEBEnabled
+        _ -> (error . showText) $ "Unknown index for BlackoutSlateNetworkEndBlackout: " <> toText i
+    fromEnum x = case x of
+        BSNEBDisabled -> 0
+        BSNEBEnabled -> 1
+        BlackoutSlateNetworkEndBlackout' name -> (error . showText) $ "Unknown BlackoutSlateNetworkEndBlackout: " <> original name
+
+-- | Represents the bounds of /known/ $BlackoutSlateNetworkEndBlackout.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded BlackoutSlateNetworkEndBlackout where
+    minBound = BSNEBDisabled
+    maxBound = BSNEBEnabled
 
 instance Hashable     BlackoutSlateNetworkEndBlackout
 instance NFData       BlackoutSlateNetworkEndBlackout

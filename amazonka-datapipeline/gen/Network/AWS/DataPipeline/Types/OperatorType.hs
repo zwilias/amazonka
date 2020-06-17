@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,35 +16,79 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.DataPipeline.Types.OperatorType where
+module Network.AWS.DataPipeline.Types.OperatorType (
+  OperatorType (
+    ..
+    , OperatorBetween
+    , OperatorEQ'
+    , OperatorGE
+    , OperatorLE
+    , OperatorRefEQ
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data OperatorType = OperatorBetween
-                  | OperatorEQ'
-                  | OperatorGE
-                  | OperatorLE
-                  | OperatorRefEQ
-                      deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                Typeable, Generic)
+
+data OperatorType = OperatorType' (CI Text)
+                      deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                Generic)
+
+pattern OperatorBetween :: OperatorType
+pattern OperatorBetween = OperatorType' "BETWEEN"
+
+pattern OperatorEQ' :: OperatorType
+pattern OperatorEQ' = OperatorType' "EQ"
+
+pattern OperatorGE :: OperatorType
+pattern OperatorGE = OperatorType' "GE"
+
+pattern OperatorLE :: OperatorType
+pattern OperatorLE = OperatorType' "LE"
+
+pattern OperatorRefEQ :: OperatorType
+pattern OperatorRefEQ = OperatorType' "REF_EQ"
+
+{-# COMPLETE
+  OperatorBetween,
+  OperatorEQ',
+  OperatorGE,
+  OperatorLE,
+  OperatorRefEQ,
+  OperatorType' #-}
 
 instance FromText OperatorType where
-    parser = takeLowerText >>= \case
-        "between" -> pure OperatorBetween
-        "eq" -> pure OperatorEQ'
-        "ge" -> pure OperatorGE
-        "le" -> pure OperatorLE
-        "ref_eq" -> pure OperatorRefEQ
-        e -> fromTextError $ "Failure parsing OperatorType from value: '" <> e
-           <> "'. Accepted values: between, eq, ge, le, ref_eq"
+    parser = (OperatorType' . mk) <$> takeText
 
 instance ToText OperatorType where
-    toText = \case
-        OperatorBetween -> "BETWEEN"
-        OperatorEQ' -> "EQ"
-        OperatorGE -> "GE"
-        OperatorLE -> "LE"
-        OperatorRefEQ -> "REF_EQ"
+    toText (OperatorType' ci) = original ci
+
+-- | Represents an enum of /known/ $OperatorType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum OperatorType where
+    toEnum i = case i of
+        0 -> OperatorBetween
+        1 -> OperatorEQ'
+        2 -> OperatorGE
+        3 -> OperatorLE
+        4 -> OperatorRefEQ
+        _ -> (error . showText) $ "Unknown index for OperatorType: " <> toText i
+    fromEnum x = case x of
+        OperatorBetween -> 0
+        OperatorEQ' -> 1
+        OperatorGE -> 2
+        OperatorLE -> 3
+        OperatorRefEQ -> 4
+        OperatorType' name -> (error . showText) $ "Unknown OperatorType: " <> original name
+
+-- | Represents the bounds of /known/ $OperatorType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded OperatorType where
+    minBound = OperatorBetween
+    maxBound = OperatorRefEQ
 
 instance Hashable     OperatorType
 instance NFData       OperatorType

@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,23 +16,51 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.CertificateManager.Types.RecordType where
+module Network.AWS.CertificateManager.Types.RecordType (
+  RecordType (
+    ..
+    , Cname
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data RecordType = Cname
-                    deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                              Typeable, Generic)
+
+data RecordType = RecordType' (CI Text)
+                    deriving (Eq, Ord, Read, Show, Data, Typeable,
+                              Generic)
+
+pattern Cname :: RecordType
+pattern Cname = RecordType' "CNAME"
+
+{-# COMPLETE
+  Cname,
+  RecordType' #-}
 
 instance FromText RecordType where
-    parser = takeLowerText >>= \case
-        "cname" -> pure Cname
-        e -> fromTextError $ "Failure parsing RecordType from value: '" <> e
-           <> "'. Accepted values: cname"
+    parser = (RecordType' . mk) <$> takeText
 
 instance ToText RecordType where
-    toText = \case
-        Cname -> "CNAME"
+    toText (RecordType' ci) = original ci
+
+-- | Represents an enum of /known/ $RecordType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum RecordType where
+    toEnum i = case i of
+        0 -> Cname
+        _ -> (error . showText) $ "Unknown index for RecordType: " <> toText i
+    fromEnum x = case x of
+        Cname -> 0
+        RecordType' name -> (error . showText) $ "Unknown RecordType: " <> original name
+
+-- | Represents the bounds of /known/ $RecordType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded RecordType where
+    minBound = Cname
+    maxBound = Cname
 
 instance Hashable     RecordType
 instance NFData       RecordType

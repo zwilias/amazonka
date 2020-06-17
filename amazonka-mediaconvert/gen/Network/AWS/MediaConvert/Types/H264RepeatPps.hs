@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,27 +16,59 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.MediaConvert.Types.H264RepeatPps where
+module Network.AWS.MediaConvert.Types.H264RepeatPps (
+  H264RepeatPps (
+    ..
+    , HRPDisabled
+    , HRPEnabled
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
+
 -- | Places a PPS header on each encoded picture, even if repeated.
-data H264RepeatPps = HRPDisabled
-                   | HRPEnabled
-                       deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                 Typeable, Generic)
+data H264RepeatPps = H264RepeatPps' (CI Text)
+                       deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                 Generic)
+
+pattern HRPDisabled :: H264RepeatPps
+pattern HRPDisabled = H264RepeatPps' "DISABLED"
+
+pattern HRPEnabled :: H264RepeatPps
+pattern HRPEnabled = H264RepeatPps' "ENABLED"
+
+{-# COMPLETE
+  HRPDisabled,
+  HRPEnabled,
+  H264RepeatPps' #-}
 
 instance FromText H264RepeatPps where
-    parser = takeLowerText >>= \case
-        "disabled" -> pure HRPDisabled
-        "enabled" -> pure HRPEnabled
-        e -> fromTextError $ "Failure parsing H264RepeatPps from value: '" <> e
-           <> "'. Accepted values: disabled, enabled"
+    parser = (H264RepeatPps' . mk) <$> takeText
 
 instance ToText H264RepeatPps where
-    toText = \case
-        HRPDisabled -> "DISABLED"
-        HRPEnabled -> "ENABLED"
+    toText (H264RepeatPps' ci) = original ci
+
+-- | Represents an enum of /known/ $H264RepeatPps.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum H264RepeatPps where
+    toEnum i = case i of
+        0 -> HRPDisabled
+        1 -> HRPEnabled
+        _ -> (error . showText) $ "Unknown index for H264RepeatPps: " <> toText i
+    fromEnum x = case x of
+        HRPDisabled -> 0
+        HRPEnabled -> 1
+        H264RepeatPps' name -> (error . showText) $ "Unknown H264RepeatPps: " <> original name
+
+-- | Represents the bounds of /known/ $H264RepeatPps.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded H264RepeatPps where
+    minBound = HRPDisabled
+    maxBound = HRPEnabled
 
 instance Hashable     H264RepeatPps
 instance NFData       H264RepeatPps

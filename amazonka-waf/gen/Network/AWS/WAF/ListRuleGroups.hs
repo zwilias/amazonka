@@ -44,6 +44,7 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.WAF.Types
+import Network.AWS.WAF.Types.Product
 
 -- | /See:/ 'listRuleGroups' smart constructor.
 data ListRuleGroups = ListRuleGroups'{_lrgNextMarker

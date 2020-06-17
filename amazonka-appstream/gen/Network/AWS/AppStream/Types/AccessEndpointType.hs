@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,23 +16,52 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.AppStream.Types.AccessEndpointType where
+module Network.AWS.AppStream.Types.AccessEndpointType (
+  AccessEndpointType (
+    ..
+    , Streaming
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data AccessEndpointType = Streaming
-                            deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                      Typeable, Generic)
+
+data AccessEndpointType = AccessEndpointType' (CI
+                                                 Text)
+                            deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                      Generic)
+
+pattern Streaming :: AccessEndpointType
+pattern Streaming = AccessEndpointType' "STREAMING"
+
+{-# COMPLETE
+  Streaming,
+  AccessEndpointType' #-}
 
 instance FromText AccessEndpointType where
-    parser = takeLowerText >>= \case
-        "streaming" -> pure Streaming
-        e -> fromTextError $ "Failure parsing AccessEndpointType from value: '" <> e
-           <> "'. Accepted values: streaming"
+    parser = (AccessEndpointType' . mk) <$> takeText
 
 instance ToText AccessEndpointType where
-    toText = \case
-        Streaming -> "STREAMING"
+    toText (AccessEndpointType' ci) = original ci
+
+-- | Represents an enum of /known/ $AccessEndpointType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum AccessEndpointType where
+    toEnum i = case i of
+        0 -> Streaming
+        _ -> (error . showText) $ "Unknown index for AccessEndpointType: " <> toText i
+    fromEnum x = case x of
+        Streaming -> 0
+        AccessEndpointType' name -> (error . showText) $ "Unknown AccessEndpointType: " <> original name
+
+-- | Represents the bounds of /known/ $AccessEndpointType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded AccessEndpointType where
+    minBound = Streaming
+    maxBound = Streaming
 
 instance Hashable     AccessEndpointType
 instance NFData       AccessEndpointType

@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,27 +16,59 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.EC2.Types.VPCEndpointType where
+module Network.AWS.EC2.Types.VPCEndpointType (
+  VPCEndpointType (
+    ..
+    , VETGateway
+    , VETInterface
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.EC2.Internal
 import Network.AWS.Prelude
-  
-data VPCEndpointType = VETGateway
-                     | VETInterface
-                         deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                   Typeable, Generic)
+
+data VPCEndpointType = VPCEndpointType' (CI Text)
+                         deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                   Generic)
+
+pattern VETGateway :: VPCEndpointType
+pattern VETGateway = VPCEndpointType' "Gateway"
+
+pattern VETInterface :: VPCEndpointType
+pattern VETInterface = VPCEndpointType' "Interface"
+
+{-# COMPLETE
+  VETGateway,
+  VETInterface,
+  VPCEndpointType' #-}
 
 instance FromText VPCEndpointType where
-    parser = takeLowerText >>= \case
-        "gateway" -> pure VETGateway
-        "interface" -> pure VETInterface
-        e -> fromTextError $ "Failure parsing VPCEndpointType from value: '" <> e
-           <> "'. Accepted values: gateway, interface"
+    parser = (VPCEndpointType' . mk) <$> takeText
 
 instance ToText VPCEndpointType where
-    toText = \case
-        VETGateway -> "Gateway"
-        VETInterface -> "Interface"
+    toText (VPCEndpointType' ci) = original ci
+
+-- | Represents an enum of /known/ $VPCEndpointType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum VPCEndpointType where
+    toEnum i = case i of
+        0 -> VETGateway
+        1 -> VETInterface
+        _ -> (error . showText) $ "Unknown index for VPCEndpointType: " <> toText i
+    fromEnum x = case x of
+        VETGateway -> 0
+        VETInterface -> 1
+        VPCEndpointType' name -> (error . showText) $ "Unknown VPCEndpointType: " <> original name
+
+-- | Represents the bounds of /known/ $VPCEndpointType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded VPCEndpointType where
+    minBound = VETGateway
+    maxBound = VETInterface
 
 instance Hashable     VPCEndpointType
 instance NFData       VPCEndpointType

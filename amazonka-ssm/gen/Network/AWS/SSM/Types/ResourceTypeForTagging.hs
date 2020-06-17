@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,35 +16,80 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.SSM.Types.ResourceTypeForTagging where
+module Network.AWS.SSM.Types.ResourceTypeForTagging (
+  ResourceTypeForTagging (
+    ..
+    , RTFTDocument
+    , RTFTMaintenanceWindow
+    , RTFTManagedInstance
+    , RTFTParameter
+    , RTFTPatchBaseline
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data ResourceTypeForTagging = RTFTDocument
-                            | RTFTMaintenanceWindow
-                            | RTFTManagedInstance
-                            | RTFTParameter
-                            | RTFTPatchBaseline
-                                deriving (Eq, Ord, Read, Show, Enum, Bounded,
-                                          Data, Typeable, Generic)
+
+data ResourceTypeForTagging = ResourceTypeForTagging' (CI
+                                                         Text)
+                                deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                          Generic)
+
+pattern RTFTDocument :: ResourceTypeForTagging
+pattern RTFTDocument = ResourceTypeForTagging' "Document"
+
+pattern RTFTMaintenanceWindow :: ResourceTypeForTagging
+pattern RTFTMaintenanceWindow = ResourceTypeForTagging' "MaintenanceWindow"
+
+pattern RTFTManagedInstance :: ResourceTypeForTagging
+pattern RTFTManagedInstance = ResourceTypeForTagging' "ManagedInstance"
+
+pattern RTFTParameter :: ResourceTypeForTagging
+pattern RTFTParameter = ResourceTypeForTagging' "Parameter"
+
+pattern RTFTPatchBaseline :: ResourceTypeForTagging
+pattern RTFTPatchBaseline = ResourceTypeForTagging' "PatchBaseline"
+
+{-# COMPLETE
+  RTFTDocument,
+  RTFTMaintenanceWindow,
+  RTFTManagedInstance,
+  RTFTParameter,
+  RTFTPatchBaseline,
+  ResourceTypeForTagging' #-}
 
 instance FromText ResourceTypeForTagging where
-    parser = takeLowerText >>= \case
-        "document" -> pure RTFTDocument
-        "maintenancewindow" -> pure RTFTMaintenanceWindow
-        "managedinstance" -> pure RTFTManagedInstance
-        "parameter" -> pure RTFTParameter
-        "patchbaseline" -> pure RTFTPatchBaseline
-        e -> fromTextError $ "Failure parsing ResourceTypeForTagging from value: '" <> e
-           <> "'. Accepted values: document, maintenancewindow, managedinstance, parameter, patchbaseline"
+    parser = (ResourceTypeForTagging' . mk) <$> takeText
 
 instance ToText ResourceTypeForTagging where
-    toText = \case
-        RTFTDocument -> "Document"
-        RTFTMaintenanceWindow -> "MaintenanceWindow"
-        RTFTManagedInstance -> "ManagedInstance"
-        RTFTParameter -> "Parameter"
-        RTFTPatchBaseline -> "PatchBaseline"
+    toText (ResourceTypeForTagging' ci) = original ci
+
+-- | Represents an enum of /known/ $ResourceTypeForTagging.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum ResourceTypeForTagging where
+    toEnum i = case i of
+        0 -> RTFTDocument
+        1 -> RTFTMaintenanceWindow
+        2 -> RTFTManagedInstance
+        3 -> RTFTParameter
+        4 -> RTFTPatchBaseline
+        _ -> (error . showText) $ "Unknown index for ResourceTypeForTagging: " <> toText i
+    fromEnum x = case x of
+        RTFTDocument -> 0
+        RTFTMaintenanceWindow -> 1
+        RTFTManagedInstance -> 2
+        RTFTParameter -> 3
+        RTFTPatchBaseline -> 4
+        ResourceTypeForTagging' name -> (error . showText) $ "Unknown ResourceTypeForTagging: " <> original name
+
+-- | Represents the bounds of /known/ $ResourceTypeForTagging.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded ResourceTypeForTagging where
+    minBound = RTFTDocument
+    maxBound = RTFTPatchBaseline
 
 instance Hashable     ResourceTypeForTagging
 instance NFData       ResourceTypeForTagging

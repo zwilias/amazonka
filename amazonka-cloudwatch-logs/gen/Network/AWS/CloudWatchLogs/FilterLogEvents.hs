@@ -51,6 +51,7 @@ module Network.AWS.CloudWatchLogs.FilterLogEvents
     ) where
 
 import Network.AWS.CloudWatchLogs.Types
+import Network.AWS.CloudWatchLogs.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude

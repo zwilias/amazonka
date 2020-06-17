@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,59 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.WorkSpaces.Types.ModificationStateEnum where
+module Network.AWS.WorkSpaces.Types.ModificationStateEnum (
+  ModificationStateEnum (
+    ..
+    , UpdateInProgress
+    , UpdateInitiated
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data ModificationStateEnum = UpdateInProgress
-                           | UpdateInitiated
-                               deriving (Eq, Ord, Read, Show, Enum, Bounded,
-                                         Data, Typeable, Generic)
+
+data ModificationStateEnum = ModificationStateEnum' (CI
+                                                       Text)
+                               deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                         Generic)
+
+pattern UpdateInProgress :: ModificationStateEnum
+pattern UpdateInProgress = ModificationStateEnum' "UPDATE_IN_PROGRESS"
+
+pattern UpdateInitiated :: ModificationStateEnum
+pattern UpdateInitiated = ModificationStateEnum' "UPDATE_INITIATED"
+
+{-# COMPLETE
+  UpdateInProgress,
+  UpdateInitiated,
+  ModificationStateEnum' #-}
 
 instance FromText ModificationStateEnum where
-    parser = takeLowerText >>= \case
-        "update_in_progress" -> pure UpdateInProgress
-        "update_initiated" -> pure UpdateInitiated
-        e -> fromTextError $ "Failure parsing ModificationStateEnum from value: '" <> e
-           <> "'. Accepted values: update_in_progress, update_initiated"
+    parser = (ModificationStateEnum' . mk) <$> takeText
 
 instance ToText ModificationStateEnum where
-    toText = \case
-        UpdateInProgress -> "UPDATE_IN_PROGRESS"
-        UpdateInitiated -> "UPDATE_INITIATED"
+    toText (ModificationStateEnum' ci) = original ci
+
+-- | Represents an enum of /known/ $ModificationStateEnum.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum ModificationStateEnum where
+    toEnum i = case i of
+        0 -> UpdateInProgress
+        1 -> UpdateInitiated
+        _ -> (error . showText) $ "Unknown index for ModificationStateEnum: " <> toText i
+    fromEnum x = case x of
+        UpdateInProgress -> 0
+        UpdateInitiated -> 1
+        ModificationStateEnum' name -> (error . showText) $ "Unknown ModificationStateEnum: " <> original name
+
+-- | Represents the bounds of /known/ $ModificationStateEnum.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded ModificationStateEnum where
+    minBound = UpdateInProgress
+    maxBound = UpdateInitiated
 
 instance Hashable     ModificationStateEnum
 instance NFData       ModificationStateEnum

@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,38 +16,86 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.ECS.Types.AgentUpdateStatus where
+module Network.AWS.ECS.Types.AgentUpdateStatus (
+  AgentUpdateStatus (
+    ..
+    , AUSFailed
+    , AUSPending
+    , AUSStaged
+    , AUSStaging
+    , AUSUpdated
+    , AUSUpdating
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data AgentUpdateStatus = AUSFailed
-                       | AUSPending
-                       | AUSStaged
-                       | AUSStaging
-                       | AUSUpdated
-                       | AUSUpdating
-                           deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                     Typeable, Generic)
+
+data AgentUpdateStatus = AgentUpdateStatus' (CI Text)
+                           deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                     Generic)
+
+pattern AUSFailed :: AgentUpdateStatus
+pattern AUSFailed = AgentUpdateStatus' "FAILED"
+
+pattern AUSPending :: AgentUpdateStatus
+pattern AUSPending = AgentUpdateStatus' "PENDING"
+
+pattern AUSStaged :: AgentUpdateStatus
+pattern AUSStaged = AgentUpdateStatus' "STAGED"
+
+pattern AUSStaging :: AgentUpdateStatus
+pattern AUSStaging = AgentUpdateStatus' "STAGING"
+
+pattern AUSUpdated :: AgentUpdateStatus
+pattern AUSUpdated = AgentUpdateStatus' "UPDATED"
+
+pattern AUSUpdating :: AgentUpdateStatus
+pattern AUSUpdating = AgentUpdateStatus' "UPDATING"
+
+{-# COMPLETE
+  AUSFailed,
+  AUSPending,
+  AUSStaged,
+  AUSStaging,
+  AUSUpdated,
+  AUSUpdating,
+  AgentUpdateStatus' #-}
 
 instance FromText AgentUpdateStatus where
-    parser = takeLowerText >>= \case
-        "failed" -> pure AUSFailed
-        "pending" -> pure AUSPending
-        "staged" -> pure AUSStaged
-        "staging" -> pure AUSStaging
-        "updated" -> pure AUSUpdated
-        "updating" -> pure AUSUpdating
-        e -> fromTextError $ "Failure parsing AgentUpdateStatus from value: '" <> e
-           <> "'. Accepted values: failed, pending, staged, staging, updated, updating"
+    parser = (AgentUpdateStatus' . mk) <$> takeText
 
 instance ToText AgentUpdateStatus where
-    toText = \case
-        AUSFailed -> "FAILED"
-        AUSPending -> "PENDING"
-        AUSStaged -> "STAGED"
-        AUSStaging -> "STAGING"
-        AUSUpdated -> "UPDATED"
-        AUSUpdating -> "UPDATING"
+    toText (AgentUpdateStatus' ci) = original ci
+
+-- | Represents an enum of /known/ $AgentUpdateStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum AgentUpdateStatus where
+    toEnum i = case i of
+        0 -> AUSFailed
+        1 -> AUSPending
+        2 -> AUSStaged
+        3 -> AUSStaging
+        4 -> AUSUpdated
+        5 -> AUSUpdating
+        _ -> (error . showText) $ "Unknown index for AgentUpdateStatus: " <> toText i
+    fromEnum x = case x of
+        AUSFailed -> 0
+        AUSPending -> 1
+        AUSStaged -> 2
+        AUSStaging -> 3
+        AUSUpdated -> 4
+        AUSUpdating -> 5
+        AgentUpdateStatus' name -> (error . showText) $ "Unknown AgentUpdateStatus: " <> original name
+
+-- | Represents the bounds of /known/ $AgentUpdateStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded AgentUpdateStatus where
+    minBound = AUSFailed
+    maxBound = AUSUpdating
 
 instance Hashable     AgentUpdateStatus
 instance NFData       AgentUpdateStatus

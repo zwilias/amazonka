@@ -41,6 +41,7 @@ module Network.AWS.CloudTrail.GetInsightSelectors
     ) where
 
 import Network.AWS.CloudTrail.Types
+import Network.AWS.CloudTrail.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request

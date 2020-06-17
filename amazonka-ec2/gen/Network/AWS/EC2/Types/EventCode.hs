@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,36 +16,80 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.EC2.Types.EventCode where
+module Network.AWS.EC2.Types.EventCode (
+  EventCode (
+    ..
+    , InstanceReboot
+    , InstanceRetirement
+    , InstanceStop
+    , SystemMaintenance
+    , SystemReboot
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.EC2.Internal
 import Network.AWS.Prelude
-  
-data EventCode = InstanceReboot
-               | InstanceRetirement
-               | InstanceStop
-               | SystemMaintenance
-               | SystemReboot
-                   deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                             Typeable, Generic)
+
+data EventCode = EventCode' (CI Text)
+                   deriving (Eq, Ord, Read, Show, Data, Typeable,
+                             Generic)
+
+pattern InstanceReboot :: EventCode
+pattern InstanceReboot = EventCode' "instance-reboot"
+
+pattern InstanceRetirement :: EventCode
+pattern InstanceRetirement = EventCode' "instance-retirement"
+
+pattern InstanceStop :: EventCode
+pattern InstanceStop = EventCode' "instance-stop"
+
+pattern SystemMaintenance :: EventCode
+pattern SystemMaintenance = EventCode' "system-maintenance"
+
+pattern SystemReboot :: EventCode
+pattern SystemReboot = EventCode' "system-reboot"
+
+{-# COMPLETE
+  InstanceReboot,
+  InstanceRetirement,
+  InstanceStop,
+  SystemMaintenance,
+  SystemReboot,
+  EventCode' #-}
 
 instance FromText EventCode where
-    parser = takeLowerText >>= \case
-        "instance-reboot" -> pure InstanceReboot
-        "instance-retirement" -> pure InstanceRetirement
-        "instance-stop" -> pure InstanceStop
-        "system-maintenance" -> pure SystemMaintenance
-        "system-reboot" -> pure SystemReboot
-        e -> fromTextError $ "Failure parsing EventCode from value: '" <> e
-           <> "'. Accepted values: instance-reboot, instance-retirement, instance-stop, system-maintenance, system-reboot"
+    parser = (EventCode' . mk) <$> takeText
 
 instance ToText EventCode where
-    toText = \case
-        InstanceReboot -> "instance-reboot"
-        InstanceRetirement -> "instance-retirement"
-        InstanceStop -> "instance-stop"
-        SystemMaintenance -> "system-maintenance"
-        SystemReboot -> "system-reboot"
+    toText (EventCode' ci) = original ci
+
+-- | Represents an enum of /known/ $EventCode.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum EventCode where
+    toEnum i = case i of
+        0 -> InstanceReboot
+        1 -> InstanceRetirement
+        2 -> InstanceStop
+        3 -> SystemMaintenance
+        4 -> SystemReboot
+        _ -> (error . showText) $ "Unknown index for EventCode: " <> toText i
+    fromEnum x = case x of
+        InstanceReboot -> 0
+        InstanceRetirement -> 1
+        InstanceStop -> 2
+        SystemMaintenance -> 3
+        SystemReboot -> 4
+        EventCode' name -> (error . showText) $ "Unknown EventCode: " <> original name
+
+-- | Represents the bounds of /known/ $EventCode.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded EventCode where
+    minBound = InstanceReboot
+    maxBound = SystemReboot
 
 instance Hashable     EventCode
 instance NFData       EventCode

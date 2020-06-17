@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,33 +16,73 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.MediaLive.Types.DvbSdtOutputSdt where
+module Network.AWS.MediaLive.Types.DvbSdtOutputSdt (
+  DvbSdtOutputSdt (
+    ..
+    , SdtFollow
+    , SdtFollowIfPresent
+    , SdtManual
+    , SdtNone
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
+
 -- | Placeholder documentation for DvbSdtOutputSdt
-data DvbSdtOutputSdt = SdtFollow
-                     | SdtFollowIfPresent
-                     | SdtManual
-                     | SdtNone
-                         deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                   Typeable, Generic)
+data DvbSdtOutputSdt = DvbSdtOutputSdt' (CI Text)
+                         deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                   Generic)
+
+pattern SdtFollow :: DvbSdtOutputSdt
+pattern SdtFollow = DvbSdtOutputSdt' "SDT_FOLLOW"
+
+pattern SdtFollowIfPresent :: DvbSdtOutputSdt
+pattern SdtFollowIfPresent = DvbSdtOutputSdt' "SDT_FOLLOW_IF_PRESENT"
+
+pattern SdtManual :: DvbSdtOutputSdt
+pattern SdtManual = DvbSdtOutputSdt' "SDT_MANUAL"
+
+pattern SdtNone :: DvbSdtOutputSdt
+pattern SdtNone = DvbSdtOutputSdt' "SDT_NONE"
+
+{-# COMPLETE
+  SdtFollow,
+  SdtFollowIfPresent,
+  SdtManual,
+  SdtNone,
+  DvbSdtOutputSdt' #-}
 
 instance FromText DvbSdtOutputSdt where
-    parser = takeLowerText >>= \case
-        "sdt_follow" -> pure SdtFollow
-        "sdt_follow_if_present" -> pure SdtFollowIfPresent
-        "sdt_manual" -> pure SdtManual
-        "sdt_none" -> pure SdtNone
-        e -> fromTextError $ "Failure parsing DvbSdtOutputSdt from value: '" <> e
-           <> "'. Accepted values: sdt_follow, sdt_follow_if_present, sdt_manual, sdt_none"
+    parser = (DvbSdtOutputSdt' . mk) <$> takeText
 
 instance ToText DvbSdtOutputSdt where
-    toText = \case
-        SdtFollow -> "SDT_FOLLOW"
-        SdtFollowIfPresent -> "SDT_FOLLOW_IF_PRESENT"
-        SdtManual -> "SDT_MANUAL"
-        SdtNone -> "SDT_NONE"
+    toText (DvbSdtOutputSdt' ci) = original ci
+
+-- | Represents an enum of /known/ $DvbSdtOutputSdt.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum DvbSdtOutputSdt where
+    toEnum i = case i of
+        0 -> SdtFollow
+        1 -> SdtFollowIfPresent
+        2 -> SdtManual
+        3 -> SdtNone
+        _ -> (error . showText) $ "Unknown index for DvbSdtOutputSdt: " <> toText i
+    fromEnum x = case x of
+        SdtFollow -> 0
+        SdtFollowIfPresent -> 1
+        SdtManual -> 2
+        SdtNone -> 3
+        DvbSdtOutputSdt' name -> (error . showText) $ "Unknown DvbSdtOutputSdt: " <> original name
+
+-- | Represents the bounds of /known/ $DvbSdtOutputSdt.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded DvbSdtOutputSdt where
+    minBound = SdtFollow
+    maxBound = SdtNone
 
 instance Hashable     DvbSdtOutputSdt
 instance NFData       DvbSdtOutputSdt

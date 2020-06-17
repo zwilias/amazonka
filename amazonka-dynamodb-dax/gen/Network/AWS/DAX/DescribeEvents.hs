@@ -49,6 +49,7 @@ module Network.AWS.DAX.DescribeEvents
     ) where
 
 import Network.AWS.DAX.Types
+import Network.AWS.DAX.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude

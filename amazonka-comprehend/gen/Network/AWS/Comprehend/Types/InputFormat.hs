@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,58 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.Comprehend.Types.InputFormat where
+module Network.AWS.Comprehend.Types.InputFormat (
+  InputFormat (
+    ..
+    , OneDocPerFile
+    , OneDocPerLine
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data InputFormat = OneDocPerFile
-                 | OneDocPerLine
-                     deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                               Typeable, Generic)
+
+data InputFormat = InputFormat' (CI Text)
+                     deriving (Eq, Ord, Read, Show, Data, Typeable,
+                               Generic)
+
+pattern OneDocPerFile :: InputFormat
+pattern OneDocPerFile = InputFormat' "ONE_DOC_PER_FILE"
+
+pattern OneDocPerLine :: InputFormat
+pattern OneDocPerLine = InputFormat' "ONE_DOC_PER_LINE"
+
+{-# COMPLETE
+  OneDocPerFile,
+  OneDocPerLine,
+  InputFormat' #-}
 
 instance FromText InputFormat where
-    parser = takeLowerText >>= \case
-        "one_doc_per_file" -> pure OneDocPerFile
-        "one_doc_per_line" -> pure OneDocPerLine
-        e -> fromTextError $ "Failure parsing InputFormat from value: '" <> e
-           <> "'. Accepted values: one_doc_per_file, one_doc_per_line"
+    parser = (InputFormat' . mk) <$> takeText
 
 instance ToText InputFormat where
-    toText = \case
-        OneDocPerFile -> "ONE_DOC_PER_FILE"
-        OneDocPerLine -> "ONE_DOC_PER_LINE"
+    toText (InputFormat' ci) = original ci
+
+-- | Represents an enum of /known/ $InputFormat.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum InputFormat where
+    toEnum i = case i of
+        0 -> OneDocPerFile
+        1 -> OneDocPerLine
+        _ -> (error . showText) $ "Unknown index for InputFormat: " <> toText i
+    fromEnum x = case x of
+        OneDocPerFile -> 0
+        OneDocPerLine -> 1
+        InputFormat' name -> (error . showText) $ "Unknown InputFormat: " <> original name
+
+-- | Represents the bounds of /known/ $InputFormat.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded InputFormat where
+    minBound = OneDocPerFile
+    maxBound = OneDocPerLine
 
 instance Hashable     InputFormat
 instance NFData       InputFormat

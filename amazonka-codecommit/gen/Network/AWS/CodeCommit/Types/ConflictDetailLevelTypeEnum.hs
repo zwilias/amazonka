@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,59 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.CodeCommit.Types.ConflictDetailLevelTypeEnum where
+module Network.AWS.CodeCommit.Types.ConflictDetailLevelTypeEnum (
+  ConflictDetailLevelTypeEnum (
+    ..
+    , FileLevel
+    , LineLevel
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data ConflictDetailLevelTypeEnum = FileLevel
-                                 | LineLevel
-                                     deriving (Eq, Ord, Read, Show, Enum,
-                                               Bounded, Data, Typeable, Generic)
+
+data ConflictDetailLevelTypeEnum = ConflictDetailLevelTypeEnum' (CI
+                                                                   Text)
+                                     deriving (Eq, Ord, Read, Show, Data,
+                                               Typeable, Generic)
+
+pattern FileLevel :: ConflictDetailLevelTypeEnum
+pattern FileLevel = ConflictDetailLevelTypeEnum' "FILE_LEVEL"
+
+pattern LineLevel :: ConflictDetailLevelTypeEnum
+pattern LineLevel = ConflictDetailLevelTypeEnum' "LINE_LEVEL"
+
+{-# COMPLETE
+  FileLevel,
+  LineLevel,
+  ConflictDetailLevelTypeEnum' #-}
 
 instance FromText ConflictDetailLevelTypeEnum where
-    parser = takeLowerText >>= \case
-        "file_level" -> pure FileLevel
-        "line_level" -> pure LineLevel
-        e -> fromTextError $ "Failure parsing ConflictDetailLevelTypeEnum from value: '" <> e
-           <> "'. Accepted values: file_level, line_level"
+    parser = (ConflictDetailLevelTypeEnum' . mk) <$> takeText
 
 instance ToText ConflictDetailLevelTypeEnum where
-    toText = \case
-        FileLevel -> "FILE_LEVEL"
-        LineLevel -> "LINE_LEVEL"
+    toText (ConflictDetailLevelTypeEnum' ci) = original ci
+
+-- | Represents an enum of /known/ $ConflictDetailLevelTypeEnum.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum ConflictDetailLevelTypeEnum where
+    toEnum i = case i of
+        0 -> FileLevel
+        1 -> LineLevel
+        _ -> (error . showText) $ "Unknown index for ConflictDetailLevelTypeEnum: " <> toText i
+    fromEnum x = case x of
+        FileLevel -> 0
+        LineLevel -> 1
+        ConflictDetailLevelTypeEnum' name -> (error . showText) $ "Unknown ConflictDetailLevelTypeEnum: " <> original name
+
+-- | Represents the bounds of /known/ $ConflictDetailLevelTypeEnum.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded ConflictDetailLevelTypeEnum where
+    minBound = FileLevel
+    maxBound = LineLevel
 
 instance Hashable     ConflictDetailLevelTypeEnum
 instance NFData       ConflictDetailLevelTypeEnum

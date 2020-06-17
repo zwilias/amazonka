@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,32 +16,72 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.Greengrass.Types.DeploymentType where
+module Network.AWS.Greengrass.Types.DeploymentType (
+  DeploymentType (
+    ..
+    , ForceResetDeployment
+    , NewDeployment
+    , Redeployment
+    , ResetDeployment
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data DeploymentType = ForceResetDeployment
-                    | NewDeployment
-                    | Redeployment
-                    | ResetDeployment
-                        deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                  Typeable, Generic)
+
+data DeploymentType = DeploymentType' (CI Text)
+                        deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                  Generic)
+
+pattern ForceResetDeployment :: DeploymentType
+pattern ForceResetDeployment = DeploymentType' "ForceResetDeployment"
+
+pattern NewDeployment :: DeploymentType
+pattern NewDeployment = DeploymentType' "NewDeployment"
+
+pattern Redeployment :: DeploymentType
+pattern Redeployment = DeploymentType' "Redeployment"
+
+pattern ResetDeployment :: DeploymentType
+pattern ResetDeployment = DeploymentType' "ResetDeployment"
+
+{-# COMPLETE
+  ForceResetDeployment,
+  NewDeployment,
+  Redeployment,
+  ResetDeployment,
+  DeploymentType' #-}
 
 instance FromText DeploymentType where
-    parser = takeLowerText >>= \case
-        "forceresetdeployment" -> pure ForceResetDeployment
-        "newdeployment" -> pure NewDeployment
-        "redeployment" -> pure Redeployment
-        "resetdeployment" -> pure ResetDeployment
-        e -> fromTextError $ "Failure parsing DeploymentType from value: '" <> e
-           <> "'. Accepted values: forceresetdeployment, newdeployment, redeployment, resetdeployment"
+    parser = (DeploymentType' . mk) <$> takeText
 
 instance ToText DeploymentType where
-    toText = \case
-        ForceResetDeployment -> "ForceResetDeployment"
-        NewDeployment -> "NewDeployment"
-        Redeployment -> "Redeployment"
-        ResetDeployment -> "ResetDeployment"
+    toText (DeploymentType' ci) = original ci
+
+-- | Represents an enum of /known/ $DeploymentType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum DeploymentType where
+    toEnum i = case i of
+        0 -> ForceResetDeployment
+        1 -> NewDeployment
+        2 -> Redeployment
+        3 -> ResetDeployment
+        _ -> (error . showText) $ "Unknown index for DeploymentType: " <> toText i
+    fromEnum x = case x of
+        ForceResetDeployment -> 0
+        NewDeployment -> 1
+        Redeployment -> 2
+        ResetDeployment -> 3
+        DeploymentType' name -> (error . showText) $ "Unknown DeploymentType: " <> original name
+
+-- | Represents the bounds of /known/ $DeploymentType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded DeploymentType where
+    minBound = ForceResetDeployment
+    maxBound = ResetDeployment
 
 instance Hashable     DeploymentType
 instance NFData       DeploymentType

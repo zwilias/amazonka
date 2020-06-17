@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,38 +16,86 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.IoT.Types.CertificateStatus where
+module Network.AWS.IoT.Types.CertificateStatus (
+  CertificateStatus (
+    ..
+    , CSActive
+    , CSInactive
+    , CSPendingActivation
+    , CSPendingTransfer
+    , CSRegisterInactive
+    , CSRevoked
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data CertificateStatus = CSActive
-                       | CSInactive
-                       | CSPendingActivation
-                       | CSPendingTransfer
-                       | CSRegisterInactive
-                       | CSRevoked
-                           deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                     Typeable, Generic)
+
+data CertificateStatus = CertificateStatus' (CI Text)
+                           deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                     Generic)
+
+pattern CSActive :: CertificateStatus
+pattern CSActive = CertificateStatus' "ACTIVE"
+
+pattern CSInactive :: CertificateStatus
+pattern CSInactive = CertificateStatus' "INACTIVE"
+
+pattern CSPendingActivation :: CertificateStatus
+pattern CSPendingActivation = CertificateStatus' "PENDING_ACTIVATION"
+
+pattern CSPendingTransfer :: CertificateStatus
+pattern CSPendingTransfer = CertificateStatus' "PENDING_TRANSFER"
+
+pattern CSRegisterInactive :: CertificateStatus
+pattern CSRegisterInactive = CertificateStatus' "REGISTER_INACTIVE"
+
+pattern CSRevoked :: CertificateStatus
+pattern CSRevoked = CertificateStatus' "REVOKED"
+
+{-# COMPLETE
+  CSActive,
+  CSInactive,
+  CSPendingActivation,
+  CSPendingTransfer,
+  CSRegisterInactive,
+  CSRevoked,
+  CertificateStatus' #-}
 
 instance FromText CertificateStatus where
-    parser = takeLowerText >>= \case
-        "active" -> pure CSActive
-        "inactive" -> pure CSInactive
-        "pending_activation" -> pure CSPendingActivation
-        "pending_transfer" -> pure CSPendingTransfer
-        "register_inactive" -> pure CSRegisterInactive
-        "revoked" -> pure CSRevoked
-        e -> fromTextError $ "Failure parsing CertificateStatus from value: '" <> e
-           <> "'. Accepted values: active, inactive, pending_activation, pending_transfer, register_inactive, revoked"
+    parser = (CertificateStatus' . mk) <$> takeText
 
 instance ToText CertificateStatus where
-    toText = \case
-        CSActive -> "ACTIVE"
-        CSInactive -> "INACTIVE"
-        CSPendingActivation -> "PENDING_ACTIVATION"
-        CSPendingTransfer -> "PENDING_TRANSFER"
-        CSRegisterInactive -> "REGISTER_INACTIVE"
-        CSRevoked -> "REVOKED"
+    toText (CertificateStatus' ci) = original ci
+
+-- | Represents an enum of /known/ $CertificateStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum CertificateStatus where
+    toEnum i = case i of
+        0 -> CSActive
+        1 -> CSInactive
+        2 -> CSPendingActivation
+        3 -> CSPendingTransfer
+        4 -> CSRegisterInactive
+        5 -> CSRevoked
+        _ -> (error . showText) $ "Unknown index for CertificateStatus: " <> toText i
+    fromEnum x = case x of
+        CSActive -> 0
+        CSInactive -> 1
+        CSPendingActivation -> 2
+        CSPendingTransfer -> 3
+        CSRegisterInactive -> 4
+        CSRevoked -> 5
+        CertificateStatus' name -> (error . showText) $ "Unknown CertificateStatus: " <> original name
+
+-- | Represents the bounds of /known/ $CertificateStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded CertificateStatus where
+    minBound = CSActive
+    maxBound = CSRevoked
 
 instance Hashable     CertificateStatus
 instance NFData       CertificateStatus

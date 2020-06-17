@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,59 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.LexModels.Types.FulfillmentActivityType where
+module Network.AWS.LexModels.Types.FulfillmentActivityType (
+  FulfillmentActivityType (
+    ..
+    , CodeHook
+    , ReturnIntent
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data FulfillmentActivityType = CodeHook
-                             | ReturnIntent
-                                 deriving (Eq, Ord, Read, Show, Enum, Bounded,
-                                           Data, Typeable, Generic)
+
+data FulfillmentActivityType = FulfillmentActivityType' (CI
+                                                           Text)
+                                 deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                           Generic)
+
+pattern CodeHook :: FulfillmentActivityType
+pattern CodeHook = FulfillmentActivityType' "CodeHook"
+
+pattern ReturnIntent :: FulfillmentActivityType
+pattern ReturnIntent = FulfillmentActivityType' "ReturnIntent"
+
+{-# COMPLETE
+  CodeHook,
+  ReturnIntent,
+  FulfillmentActivityType' #-}
 
 instance FromText FulfillmentActivityType where
-    parser = takeLowerText >>= \case
-        "codehook" -> pure CodeHook
-        "returnintent" -> pure ReturnIntent
-        e -> fromTextError $ "Failure parsing FulfillmentActivityType from value: '" <> e
-           <> "'. Accepted values: codehook, returnintent"
+    parser = (FulfillmentActivityType' . mk) <$> takeText
 
 instance ToText FulfillmentActivityType where
-    toText = \case
-        CodeHook -> "CodeHook"
-        ReturnIntent -> "ReturnIntent"
+    toText (FulfillmentActivityType' ci) = original ci
+
+-- | Represents an enum of /known/ $FulfillmentActivityType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum FulfillmentActivityType where
+    toEnum i = case i of
+        0 -> CodeHook
+        1 -> ReturnIntent
+        _ -> (error . showText) $ "Unknown index for FulfillmentActivityType: " <> toText i
+    fromEnum x = case x of
+        CodeHook -> 0
+        ReturnIntent -> 1
+        FulfillmentActivityType' name -> (error . showText) $ "Unknown FulfillmentActivityType: " <> original name
+
+-- | Represents the bounds of /known/ $FulfillmentActivityType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded FulfillmentActivityType where
+    minBound = CodeHook
+    maxBound = ReturnIntent
 
 instance Hashable     FulfillmentActivityType
 instance NFData       FulfillmentActivityType

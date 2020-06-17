@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,58 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.Pinpoint.Types.DimensionType where
+module Network.AWS.Pinpoint.Types.DimensionType (
+  DimensionType (
+    ..
+    , DTExclusive
+    , DTInclusive
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data DimensionType = DTExclusive
-                   | DTInclusive
-                       deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                 Typeable, Generic)
+
+data DimensionType = DimensionType' (CI Text)
+                       deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                 Generic)
+
+pattern DTExclusive :: DimensionType
+pattern DTExclusive = DimensionType' "EXCLUSIVE"
+
+pattern DTInclusive :: DimensionType
+pattern DTInclusive = DimensionType' "INCLUSIVE"
+
+{-# COMPLETE
+  DTExclusive,
+  DTInclusive,
+  DimensionType' #-}
 
 instance FromText DimensionType where
-    parser = takeLowerText >>= \case
-        "exclusive" -> pure DTExclusive
-        "inclusive" -> pure DTInclusive
-        e -> fromTextError $ "Failure parsing DimensionType from value: '" <> e
-           <> "'. Accepted values: exclusive, inclusive"
+    parser = (DimensionType' . mk) <$> takeText
 
 instance ToText DimensionType where
-    toText = \case
-        DTExclusive -> "EXCLUSIVE"
-        DTInclusive -> "INCLUSIVE"
+    toText (DimensionType' ci) = original ci
+
+-- | Represents an enum of /known/ $DimensionType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum DimensionType where
+    toEnum i = case i of
+        0 -> DTExclusive
+        1 -> DTInclusive
+        _ -> (error . showText) $ "Unknown index for DimensionType: " <> toText i
+    fromEnum x = case x of
+        DTExclusive -> 0
+        DTInclusive -> 1
+        DimensionType' name -> (error . showText) $ "Unknown DimensionType: " <> original name
+
+-- | Represents the bounds of /known/ $DimensionType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded DimensionType where
+    minBound = DTExclusive
+    maxBound = DTInclusive
 
 instance Hashable     DimensionType
 instance NFData       DimensionType

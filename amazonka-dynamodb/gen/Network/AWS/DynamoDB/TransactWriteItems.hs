@@ -70,6 +70,7 @@ module Network.AWS.DynamoDB.TransactWriteItems
     ) where
 
 import Network.AWS.DynamoDB.Types
+import Network.AWS.DynamoDB.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request

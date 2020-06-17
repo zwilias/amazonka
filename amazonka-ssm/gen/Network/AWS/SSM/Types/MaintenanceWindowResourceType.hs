@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,24 +16,52 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.SSM.Types.MaintenanceWindowResourceType where
+module Network.AWS.SSM.Types.MaintenanceWindowResourceType (
+  MaintenanceWindowResourceType (
+    ..
+    , Instance
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data MaintenanceWindowResourceType = Instance
-                                       deriving (Eq, Ord, Read, Show, Enum,
-                                                 Bounded, Data, Typeable,
-                                                 Generic)
+
+data MaintenanceWindowResourceType = MaintenanceWindowResourceType' (CI
+                                                                       Text)
+                                       deriving (Eq, Ord, Read, Show, Data,
+                                                 Typeable, Generic)
+
+pattern Instance :: MaintenanceWindowResourceType
+pattern Instance = MaintenanceWindowResourceType' "INSTANCE"
+
+{-# COMPLETE
+  Instance,
+  MaintenanceWindowResourceType' #-}
 
 instance FromText MaintenanceWindowResourceType where
-    parser = takeLowerText >>= \case
-        "instance" -> pure Instance
-        e -> fromTextError $ "Failure parsing MaintenanceWindowResourceType from value: '" <> e
-           <> "'. Accepted values: instance"
+    parser = (MaintenanceWindowResourceType' . mk) <$> takeText
 
 instance ToText MaintenanceWindowResourceType where
-    toText = \case
-        Instance -> "INSTANCE"
+    toText (MaintenanceWindowResourceType' ci) = original ci
+
+-- | Represents an enum of /known/ $MaintenanceWindowResourceType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum MaintenanceWindowResourceType where
+    toEnum i = case i of
+        0 -> Instance
+        _ -> (error . showText) $ "Unknown index for MaintenanceWindowResourceType: " <> toText i
+    fromEnum x = case x of
+        Instance -> 0
+        MaintenanceWindowResourceType' name -> (error . showText) $ "Unknown MaintenanceWindowResourceType: " <> original name
+
+-- | Represents the bounds of /known/ $MaintenanceWindowResourceType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded MaintenanceWindowResourceType where
+    minBound = Instance
+    maxBound = Instance
 
 instance Hashable     MaintenanceWindowResourceType
 instance NFData       MaintenanceWindowResourceType

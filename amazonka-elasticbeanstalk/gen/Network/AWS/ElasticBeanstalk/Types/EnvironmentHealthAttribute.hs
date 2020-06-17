@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,44 +16,101 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.ElasticBeanstalk.Types.EnvironmentHealthAttribute where
+module Network.AWS.ElasticBeanstalk.Types.EnvironmentHealthAttribute (
+  EnvironmentHealthAttribute (
+    ..
+    , EHAAll
+    , EHAApplicationMetrics
+    , EHACauses
+    , EHAColor
+    , EHAHealthStatus
+    , EHAInstancesHealth
+    , EHARefreshedAt
+    , EHAStatus
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data EnvironmentHealthAttribute = EHAAll
-                                | EHAApplicationMetrics
-                                | EHACauses
-                                | EHAColor
-                                | EHAHealthStatus
-                                | EHAInstancesHealth
-                                | EHARefreshedAt
-                                | EHAStatus
-                                    deriving (Eq, Ord, Read, Show, Enum,
-                                              Bounded, Data, Typeable, Generic)
+
+data EnvironmentHealthAttribute = EnvironmentHealthAttribute' (CI
+                                                                 Text)
+                                    deriving (Eq, Ord, Read, Show, Data,
+                                              Typeable, Generic)
+
+pattern EHAAll :: EnvironmentHealthAttribute
+pattern EHAAll = EnvironmentHealthAttribute' "All"
+
+pattern EHAApplicationMetrics :: EnvironmentHealthAttribute
+pattern EHAApplicationMetrics = EnvironmentHealthAttribute' "ApplicationMetrics"
+
+pattern EHACauses :: EnvironmentHealthAttribute
+pattern EHACauses = EnvironmentHealthAttribute' "Causes"
+
+pattern EHAColor :: EnvironmentHealthAttribute
+pattern EHAColor = EnvironmentHealthAttribute' "Color"
+
+pattern EHAHealthStatus :: EnvironmentHealthAttribute
+pattern EHAHealthStatus = EnvironmentHealthAttribute' "HealthStatus"
+
+pattern EHAInstancesHealth :: EnvironmentHealthAttribute
+pattern EHAInstancesHealth = EnvironmentHealthAttribute' "InstancesHealth"
+
+pattern EHARefreshedAt :: EnvironmentHealthAttribute
+pattern EHARefreshedAt = EnvironmentHealthAttribute' "RefreshedAt"
+
+pattern EHAStatus :: EnvironmentHealthAttribute
+pattern EHAStatus = EnvironmentHealthAttribute' "Status"
+
+{-# COMPLETE
+  EHAAll,
+  EHAApplicationMetrics,
+  EHACauses,
+  EHAColor,
+  EHAHealthStatus,
+  EHAInstancesHealth,
+  EHARefreshedAt,
+  EHAStatus,
+  EnvironmentHealthAttribute' #-}
 
 instance FromText EnvironmentHealthAttribute where
-    parser = takeLowerText >>= \case
-        "all" -> pure EHAAll
-        "applicationmetrics" -> pure EHAApplicationMetrics
-        "causes" -> pure EHACauses
-        "color" -> pure EHAColor
-        "healthstatus" -> pure EHAHealthStatus
-        "instanceshealth" -> pure EHAInstancesHealth
-        "refreshedat" -> pure EHARefreshedAt
-        "status" -> pure EHAStatus
-        e -> fromTextError $ "Failure parsing EnvironmentHealthAttribute from value: '" <> e
-           <> "'. Accepted values: all, applicationmetrics, causes, color, healthstatus, instanceshealth, refreshedat, status"
+    parser = (EnvironmentHealthAttribute' . mk) <$> takeText
 
 instance ToText EnvironmentHealthAttribute where
-    toText = \case
-        EHAAll -> "All"
-        EHAApplicationMetrics -> "ApplicationMetrics"
-        EHACauses -> "Causes"
-        EHAColor -> "Color"
-        EHAHealthStatus -> "HealthStatus"
-        EHAInstancesHealth -> "InstancesHealth"
-        EHARefreshedAt -> "RefreshedAt"
-        EHAStatus -> "Status"
+    toText (EnvironmentHealthAttribute' ci) = original ci
+
+-- | Represents an enum of /known/ $EnvironmentHealthAttribute.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum EnvironmentHealthAttribute where
+    toEnum i = case i of
+        0 -> EHAAll
+        1 -> EHAApplicationMetrics
+        2 -> EHACauses
+        3 -> EHAColor
+        4 -> EHAHealthStatus
+        5 -> EHAInstancesHealth
+        6 -> EHARefreshedAt
+        7 -> EHAStatus
+        _ -> (error . showText) $ "Unknown index for EnvironmentHealthAttribute: " <> toText i
+    fromEnum x = case x of
+        EHAAll -> 0
+        EHAApplicationMetrics -> 1
+        EHACauses -> 2
+        EHAColor -> 3
+        EHAHealthStatus -> 4
+        EHAInstancesHealth -> 5
+        EHARefreshedAt -> 6
+        EHAStatus -> 7
+        EnvironmentHealthAttribute' name -> (error . showText) $ "Unknown EnvironmentHealthAttribute: " <> original name
+
+-- | Represents the bounds of /known/ $EnvironmentHealthAttribute.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded EnvironmentHealthAttribute where
+    minBound = EHAAll
+    maxBound = EHAStatus
 
 instance Hashable     EnvironmentHealthAttribute
 instance NFData       EnvironmentHealthAttribute

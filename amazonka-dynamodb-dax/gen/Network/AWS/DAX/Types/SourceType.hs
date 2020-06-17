@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,29 +16,65 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.DAX.Types.SourceType where
+module Network.AWS.DAX.Types.SourceType (
+  SourceType (
+    ..
+    , Cluster
+    , ParameterGroup
+    , SubnetGroup
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data SourceType = Cluster
-                | ParameterGroup
-                | SubnetGroup
-                    deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                              Typeable, Generic)
+
+data SourceType = SourceType' (CI Text)
+                    deriving (Eq, Ord, Read, Show, Data, Typeable,
+                              Generic)
+
+pattern Cluster :: SourceType
+pattern Cluster = SourceType' "CLUSTER"
+
+pattern ParameterGroup :: SourceType
+pattern ParameterGroup = SourceType' "PARAMETER_GROUP"
+
+pattern SubnetGroup :: SourceType
+pattern SubnetGroup = SourceType' "SUBNET_GROUP"
+
+{-# COMPLETE
+  Cluster,
+  ParameterGroup,
+  SubnetGroup,
+  SourceType' #-}
 
 instance FromText SourceType where
-    parser = takeLowerText >>= \case
-        "cluster" -> pure Cluster
-        "parameter_group" -> pure ParameterGroup
-        "subnet_group" -> pure SubnetGroup
-        e -> fromTextError $ "Failure parsing SourceType from value: '" <> e
-           <> "'. Accepted values: cluster, parameter_group, subnet_group"
+    parser = (SourceType' . mk) <$> takeText
 
 instance ToText SourceType where
-    toText = \case
-        Cluster -> "CLUSTER"
-        ParameterGroup -> "PARAMETER_GROUP"
-        SubnetGroup -> "SUBNET_GROUP"
+    toText (SourceType' ci) = original ci
+
+-- | Represents an enum of /known/ $SourceType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum SourceType where
+    toEnum i = case i of
+        0 -> Cluster
+        1 -> ParameterGroup
+        2 -> SubnetGroup
+        _ -> (error . showText) $ "Unknown index for SourceType: " <> toText i
+    fromEnum x = case x of
+        Cluster -> 0
+        ParameterGroup -> 1
+        SubnetGroup -> 2
+        SourceType' name -> (error . showText) $ "Unknown SourceType: " <> original name
+
+-- | Represents the bounds of /known/ $SourceType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded SourceType where
+    minBound = Cluster
+    maxBound = SubnetGroup
 
 instance Hashable     SourceType
 instance NFData       SourceType

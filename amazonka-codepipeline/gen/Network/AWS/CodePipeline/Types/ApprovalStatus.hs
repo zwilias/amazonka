@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,58 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.CodePipeline.Types.ApprovalStatus where
+module Network.AWS.CodePipeline.Types.ApprovalStatus (
+  ApprovalStatus (
+    ..
+    , Approved
+    , Rejected
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data ApprovalStatus = Approved
-                    | Rejected
-                        deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                  Typeable, Generic)
+
+data ApprovalStatus = ApprovalStatus' (CI Text)
+                        deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                  Generic)
+
+pattern Approved :: ApprovalStatus
+pattern Approved = ApprovalStatus' "Approved"
+
+pattern Rejected :: ApprovalStatus
+pattern Rejected = ApprovalStatus' "Rejected"
+
+{-# COMPLETE
+  Approved,
+  Rejected,
+  ApprovalStatus' #-}
 
 instance FromText ApprovalStatus where
-    parser = takeLowerText >>= \case
-        "approved" -> pure Approved
-        "rejected" -> pure Rejected
-        e -> fromTextError $ "Failure parsing ApprovalStatus from value: '" <> e
-           <> "'. Accepted values: approved, rejected"
+    parser = (ApprovalStatus' . mk) <$> takeText
 
 instance ToText ApprovalStatus where
-    toText = \case
-        Approved -> "Approved"
-        Rejected -> "Rejected"
+    toText (ApprovalStatus' ci) = original ci
+
+-- | Represents an enum of /known/ $ApprovalStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum ApprovalStatus where
+    toEnum i = case i of
+        0 -> Approved
+        1 -> Rejected
+        _ -> (error . showText) $ "Unknown index for ApprovalStatus: " <> toText i
+    fromEnum x = case x of
+        Approved -> 0
+        Rejected -> 1
+        ApprovalStatus' name -> (error . showText) $ "Unknown ApprovalStatus: " <> original name
+
+-- | Represents the bounds of /known/ $ApprovalStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded ApprovalStatus where
+    minBound = Approved
+    maxBound = Rejected
 
 instance Hashable     ApprovalStatus
 instance NFData       ApprovalStatus

@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,29 +16,66 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.SES.Types.ConfigurationSetAttribute where
+module Network.AWS.SES.Types.ConfigurationSetAttribute (
+  ConfigurationSetAttribute (
+    ..
+    , EventDestinations
+    , ReputationOptions
+    , TrackingOptions
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data ConfigurationSetAttribute = EventDestinations
-                               | ReputationOptions
-                               | TrackingOptions
-                                   deriving (Eq, Ord, Read, Show, Enum, Bounded,
-                                             Data, Typeable, Generic)
+
+data ConfigurationSetAttribute = ConfigurationSetAttribute' (CI
+                                                               Text)
+                                   deriving (Eq, Ord, Read, Show, Data,
+                                             Typeable, Generic)
+
+pattern EventDestinations :: ConfigurationSetAttribute
+pattern EventDestinations = ConfigurationSetAttribute' "eventDestinations"
+
+pattern ReputationOptions :: ConfigurationSetAttribute
+pattern ReputationOptions = ConfigurationSetAttribute' "reputationOptions"
+
+pattern TrackingOptions :: ConfigurationSetAttribute
+pattern TrackingOptions = ConfigurationSetAttribute' "trackingOptions"
+
+{-# COMPLETE
+  EventDestinations,
+  ReputationOptions,
+  TrackingOptions,
+  ConfigurationSetAttribute' #-}
 
 instance FromText ConfigurationSetAttribute where
-    parser = takeLowerText >>= \case
-        "eventdestinations" -> pure EventDestinations
-        "reputationoptions" -> pure ReputationOptions
-        "trackingoptions" -> pure TrackingOptions
-        e -> fromTextError $ "Failure parsing ConfigurationSetAttribute from value: '" <> e
-           <> "'. Accepted values: eventdestinations, reputationoptions, trackingoptions"
+    parser = (ConfigurationSetAttribute' . mk) <$> takeText
 
 instance ToText ConfigurationSetAttribute where
-    toText = \case
-        EventDestinations -> "eventDestinations"
-        ReputationOptions -> "reputationOptions"
-        TrackingOptions -> "trackingOptions"
+    toText (ConfigurationSetAttribute' ci) = original ci
+
+-- | Represents an enum of /known/ $ConfigurationSetAttribute.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum ConfigurationSetAttribute where
+    toEnum i = case i of
+        0 -> EventDestinations
+        1 -> ReputationOptions
+        2 -> TrackingOptions
+        _ -> (error . showText) $ "Unknown index for ConfigurationSetAttribute: " <> toText i
+    fromEnum x = case x of
+        EventDestinations -> 0
+        ReputationOptions -> 1
+        TrackingOptions -> 2
+        ConfigurationSetAttribute' name -> (error . showText) $ "Unknown ConfigurationSetAttribute: " <> original name
+
+-- | Represents the bounds of /known/ $ConfigurationSetAttribute.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded ConfigurationSetAttribute where
+    minBound = EventDestinations
+    maxBound = TrackingOptions
 
 instance Hashable     ConfigurationSetAttribute
 instance NFData       ConfigurationSetAttribute

@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,27 +16,59 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.MediaLive.Types.AacSpec where
+module Network.AWS.MediaLive.Types.AacSpec (
+  AacSpec (
+    ..
+    , ASMPEG2
+    , ASMPEG4
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
+
 -- | Placeholder documentation for AacSpec
-data AacSpec = ASMPEG2
-             | ASMPEG4
-                 deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                           Typeable, Generic)
+data AacSpec = AacSpec' (CI Text)
+                 deriving (Eq, Ord, Read, Show, Data, Typeable,
+                           Generic)
+
+pattern ASMPEG2 :: AacSpec
+pattern ASMPEG2 = AacSpec' "MPEG2"
+
+pattern ASMPEG4 :: AacSpec
+pattern ASMPEG4 = AacSpec' "MPEG4"
+
+{-# COMPLETE
+  ASMPEG2,
+  ASMPEG4,
+  AacSpec' #-}
 
 instance FromText AacSpec where
-    parser = takeLowerText >>= \case
-        "mpeg2" -> pure ASMPEG2
-        "mpeg4" -> pure ASMPEG4
-        e -> fromTextError $ "Failure parsing AacSpec from value: '" <> e
-           <> "'. Accepted values: mpeg2, mpeg4"
+    parser = (AacSpec' . mk) <$> takeText
 
 instance ToText AacSpec where
-    toText = \case
-        ASMPEG2 -> "MPEG2"
-        ASMPEG4 -> "MPEG4"
+    toText (AacSpec' ci) = original ci
+
+-- | Represents an enum of /known/ $AacSpec.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum AacSpec where
+    toEnum i = case i of
+        0 -> ASMPEG2
+        1 -> ASMPEG4
+        _ -> (error . showText) $ "Unknown index for AacSpec: " <> toText i
+    fromEnum x = case x of
+        ASMPEG2 -> 0
+        ASMPEG4 -> 1
+        AacSpec' name -> (error . showText) $ "Unknown AacSpec: " <> original name
+
+-- | Represents the bounds of /known/ $AacSpec.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded AacSpec where
+    minBound = ASMPEG2
+    maxBound = ASMPEG4
 
 instance Hashable     AacSpec
 instance NFData       AacSpec

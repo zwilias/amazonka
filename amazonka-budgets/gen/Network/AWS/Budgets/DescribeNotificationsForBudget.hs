@@ -44,6 +44,7 @@ module Network.AWS.Budgets.DescribeNotificationsForBudget
     ) where
 
 import Network.AWS.Budgets.Types
+import Network.AWS.Budgets.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude

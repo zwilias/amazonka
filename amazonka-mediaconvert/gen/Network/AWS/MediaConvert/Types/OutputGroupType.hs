@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,33 +16,73 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.MediaConvert.Types.OutputGroupType where
+module Network.AWS.MediaConvert.Types.OutputGroupType (
+  OutputGroupType (
+    ..
+    , DashIsoGroupSettings
+    , FileGroupSettings
+    , HlsGroupSettings
+    , MsSmoothGroupSettings
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
+
 -- | Type of output group (File group, Apple HLS, DASH ISO, Microsoft Smooth Streaming)
-data OutputGroupType = DashIsoGroupSettings
-                     | FileGroupSettings
-                     | HlsGroupSettings
-                     | MsSmoothGroupSettings
-                         deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                   Typeable, Generic)
+data OutputGroupType = OutputGroupType' (CI Text)
+                         deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                   Generic)
+
+pattern DashIsoGroupSettings :: OutputGroupType
+pattern DashIsoGroupSettings = OutputGroupType' "DASH_ISO_GROUP_SETTINGS"
+
+pattern FileGroupSettings :: OutputGroupType
+pattern FileGroupSettings = OutputGroupType' "FILE_GROUP_SETTINGS"
+
+pattern HlsGroupSettings :: OutputGroupType
+pattern HlsGroupSettings = OutputGroupType' "HLS_GROUP_SETTINGS"
+
+pattern MsSmoothGroupSettings :: OutputGroupType
+pattern MsSmoothGroupSettings = OutputGroupType' "MS_SMOOTH_GROUP_SETTINGS"
+
+{-# COMPLETE
+  DashIsoGroupSettings,
+  FileGroupSettings,
+  HlsGroupSettings,
+  MsSmoothGroupSettings,
+  OutputGroupType' #-}
 
 instance FromText OutputGroupType where
-    parser = takeLowerText >>= \case
-        "dash_iso_group_settings" -> pure DashIsoGroupSettings
-        "file_group_settings" -> pure FileGroupSettings
-        "hls_group_settings" -> pure HlsGroupSettings
-        "ms_smooth_group_settings" -> pure MsSmoothGroupSettings
-        e -> fromTextError $ "Failure parsing OutputGroupType from value: '" <> e
-           <> "'. Accepted values: dash_iso_group_settings, file_group_settings, hls_group_settings, ms_smooth_group_settings"
+    parser = (OutputGroupType' . mk) <$> takeText
 
 instance ToText OutputGroupType where
-    toText = \case
-        DashIsoGroupSettings -> "DASH_ISO_GROUP_SETTINGS"
-        FileGroupSettings -> "FILE_GROUP_SETTINGS"
-        HlsGroupSettings -> "HLS_GROUP_SETTINGS"
-        MsSmoothGroupSettings -> "MS_SMOOTH_GROUP_SETTINGS"
+    toText (OutputGroupType' ci) = original ci
+
+-- | Represents an enum of /known/ $OutputGroupType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum OutputGroupType where
+    toEnum i = case i of
+        0 -> DashIsoGroupSettings
+        1 -> FileGroupSettings
+        2 -> HlsGroupSettings
+        3 -> MsSmoothGroupSettings
+        _ -> (error . showText) $ "Unknown index for OutputGroupType: " <> toText i
+    fromEnum x = case x of
+        DashIsoGroupSettings -> 0
+        FileGroupSettings -> 1
+        HlsGroupSettings -> 2
+        MsSmoothGroupSettings -> 3
+        OutputGroupType' name -> (error . showText) $ "Unknown OutputGroupType: " <> original name
+
+-- | Represents the bounds of /known/ $OutputGroupType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded OutputGroupType where
+    minBound = DashIsoGroupSettings
+    maxBound = MsSmoothGroupSettings
 
 instance Hashable     OutputGroupType
 instance NFData       OutputGroupType

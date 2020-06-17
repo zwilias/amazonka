@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,32 +16,73 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.CodeCommit.Types.ReplacementTypeEnum where
+module Network.AWS.CodeCommit.Types.ReplacementTypeEnum (
+  ReplacementTypeEnum (
+    ..
+    , KeepBase
+    , KeepDestination
+    , KeepSource
+    , UseNewContent
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data ReplacementTypeEnum = KeepBase
-                         | KeepDestination
-                         | KeepSource
-                         | UseNewContent
-                             deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                       Typeable, Generic)
+
+data ReplacementTypeEnum = ReplacementTypeEnum' (CI
+                                                   Text)
+                             deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                       Generic)
+
+pattern KeepBase :: ReplacementTypeEnum
+pattern KeepBase = ReplacementTypeEnum' "KEEP_BASE"
+
+pattern KeepDestination :: ReplacementTypeEnum
+pattern KeepDestination = ReplacementTypeEnum' "KEEP_DESTINATION"
+
+pattern KeepSource :: ReplacementTypeEnum
+pattern KeepSource = ReplacementTypeEnum' "KEEP_SOURCE"
+
+pattern UseNewContent :: ReplacementTypeEnum
+pattern UseNewContent = ReplacementTypeEnum' "USE_NEW_CONTENT"
+
+{-# COMPLETE
+  KeepBase,
+  KeepDestination,
+  KeepSource,
+  UseNewContent,
+  ReplacementTypeEnum' #-}
 
 instance FromText ReplacementTypeEnum where
-    parser = takeLowerText >>= \case
-        "keep_base" -> pure KeepBase
-        "keep_destination" -> pure KeepDestination
-        "keep_source" -> pure KeepSource
-        "use_new_content" -> pure UseNewContent
-        e -> fromTextError $ "Failure parsing ReplacementTypeEnum from value: '" <> e
-           <> "'. Accepted values: keep_base, keep_destination, keep_source, use_new_content"
+    parser = (ReplacementTypeEnum' . mk) <$> takeText
 
 instance ToText ReplacementTypeEnum where
-    toText = \case
-        KeepBase -> "KEEP_BASE"
-        KeepDestination -> "KEEP_DESTINATION"
-        KeepSource -> "KEEP_SOURCE"
-        UseNewContent -> "USE_NEW_CONTENT"
+    toText (ReplacementTypeEnum' ci) = original ci
+
+-- | Represents an enum of /known/ $ReplacementTypeEnum.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum ReplacementTypeEnum where
+    toEnum i = case i of
+        0 -> KeepBase
+        1 -> KeepDestination
+        2 -> KeepSource
+        3 -> UseNewContent
+        _ -> (error . showText) $ "Unknown index for ReplacementTypeEnum: " <> toText i
+    fromEnum x = case x of
+        KeepBase -> 0
+        KeepDestination -> 1
+        KeepSource -> 2
+        UseNewContent -> 3
+        ReplacementTypeEnum' name -> (error . showText) $ "Unknown ReplacementTypeEnum: " <> original name
+
+-- | Represents the bounds of /known/ $ReplacementTypeEnum.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded ReplacementTypeEnum where
+    minBound = KeepBase
+    maxBound = UseNewContent
 
 instance Hashable     ReplacementTypeEnum
 instance NFData       ReplacementTypeEnum

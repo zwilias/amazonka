@@ -42,6 +42,7 @@ module Network.AWS.KinesisVideoArchivedMedia.ListFragments
     ) where
 
 import Network.AWS.KinesisVideoArchivedMedia.Types
+import Network.AWS.KinesisVideoArchivedMedia.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request

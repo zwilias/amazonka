@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,24 +16,52 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.EC2.Types.ElasticGpuState where
+module Network.AWS.EC2.Types.ElasticGpuState (
+  ElasticGpuState (
+    ..
+    , Attached
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.EC2.Internal
 import Network.AWS.Prelude
-  
-data ElasticGpuState = Attached
-                         deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                   Typeable, Generic)
+
+data ElasticGpuState = ElasticGpuState' (CI Text)
+                         deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                   Generic)
+
+pattern Attached :: ElasticGpuState
+pattern Attached = ElasticGpuState' "ATTACHED"
+
+{-# COMPLETE
+  Attached,
+  ElasticGpuState' #-}
 
 instance FromText ElasticGpuState where
-    parser = takeLowerText >>= \case
-        "attached" -> pure Attached
-        e -> fromTextError $ "Failure parsing ElasticGpuState from value: '" <> e
-           <> "'. Accepted values: attached"
+    parser = (ElasticGpuState' . mk) <$> takeText
 
 instance ToText ElasticGpuState where
-    toText = \case
-        Attached -> "ATTACHED"
+    toText (ElasticGpuState' ci) = original ci
+
+-- | Represents an enum of /known/ $ElasticGpuState.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum ElasticGpuState where
+    toEnum i = case i of
+        0 -> Attached
+        _ -> (error . showText) $ "Unknown index for ElasticGpuState: " <> toText i
+    fromEnum x = case x of
+        Attached -> 0
+        ElasticGpuState' name -> (error . showText) $ "Unknown ElasticGpuState: " <> original name
+
+-- | Represents the bounds of /known/ $ElasticGpuState.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded ElasticGpuState where
+    minBound = Attached
+    maxBound = Attached
 
 instance Hashable     ElasticGpuState
 instance NFData       ElasticGpuState

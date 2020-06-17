@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,29 +16,65 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.CloudFormation.Types.Replacement where
+module Network.AWS.CloudFormation.Types.Replacement (
+  Replacement (
+    ..
+    , Conditional
+    , False'
+    , True'
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data Replacement = Conditional
-                 | False'
-                 | True'
-                     deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                               Typeable, Generic)
+
+data Replacement = Replacement' (CI Text)
+                     deriving (Eq, Ord, Read, Show, Data, Typeable,
+                               Generic)
+
+pattern Conditional :: Replacement
+pattern Conditional = Replacement' "Conditional"
+
+pattern False' :: Replacement
+pattern False' = Replacement' "False"
+
+pattern True' :: Replacement
+pattern True' = Replacement' "True"
+
+{-# COMPLETE
+  Conditional,
+  False',
+  True',
+  Replacement' #-}
 
 instance FromText Replacement where
-    parser = takeLowerText >>= \case
-        "conditional" -> pure Conditional
-        "false" -> pure False'
-        "true" -> pure True'
-        e -> fromTextError $ "Failure parsing Replacement from value: '" <> e
-           <> "'. Accepted values: conditional, false, true"
+    parser = (Replacement' . mk) <$> takeText
 
 instance ToText Replacement where
-    toText = \case
-        Conditional -> "Conditional"
-        False' -> "False"
-        True' -> "True"
+    toText (Replacement' ci) = original ci
+
+-- | Represents an enum of /known/ $Replacement.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum Replacement where
+    toEnum i = case i of
+        0 -> Conditional
+        1 -> False'
+        2 -> True'
+        _ -> (error . showText) $ "Unknown index for Replacement: " <> toText i
+    fromEnum x = case x of
+        Conditional -> 0
+        False' -> 1
+        True' -> 2
+        Replacement' name -> (error . showText) $ "Unknown Replacement: " <> original name
+
+-- | Represents the bounds of /known/ $Replacement.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded Replacement where
+    minBound = Conditional
+    maxBound = True'
 
 instance Hashable     Replacement
 instance NFData       Replacement

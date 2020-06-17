@@ -83,6 +83,7 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.SecretsManager.Types
+import Network.AWS.SecretsManager.Types.Product
 
 -- | /See:/ 'putSecretValue' smart constructor.
 data PutSecretValue = PutSecretValue'{_psvVersionStages

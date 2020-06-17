@@ -44,6 +44,7 @@ module Network.AWS.CostExplorer.GetReservationUtilization
     ) where
 
 import Network.AWS.CostExplorer.Types
+import Network.AWS.CostExplorer.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request

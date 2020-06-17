@@ -47,6 +47,7 @@ import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
 import Network.AWS.Pricing.Types
+import Network.AWS.Pricing.Types.Product
 import Network.AWS.Request
 import Network.AWS.Response
 

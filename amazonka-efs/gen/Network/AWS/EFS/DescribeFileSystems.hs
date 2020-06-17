@@ -55,6 +55,7 @@ module Network.AWS.EFS.DescribeFileSystems
     ) where
 
 import Network.AWS.EFS.Types
+import Network.AWS.EFS.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude

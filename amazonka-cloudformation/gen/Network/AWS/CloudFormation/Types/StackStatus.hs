@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,71 +16,163 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.CloudFormation.Types.StackStatus where
+module Network.AWS.CloudFormation.Types.StackStatus (
+  StackStatus (
+    ..
+    , SSCreateComplete
+    , SSCreateFailed
+    , SSCreateInProgress
+    , SSDeleteComplete
+    , SSDeleteFailed
+    , SSDeleteInProgress
+    , SSReviewInProgress
+    , SSRollbackComplete
+    , SSRollbackFailed
+    , SSRollbackInProgress
+    , SSUpdateComplete
+    , SSUpdateCompleteCleanupInProgress
+    , SSUpdateInProgress
+    , SSUpdateRollbackComplete
+    , SSUpdateRollbackCompleteCleanupInProgress
+    , SSUpdateRollbackFailed
+    , SSUpdateRollbackInProgress
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data StackStatus = SSCreateComplete
-                 | SSCreateFailed
-                 | SSCreateInProgress
-                 | SSDeleteComplete
-                 | SSDeleteFailed
-                 | SSDeleteInProgress
-                 | SSReviewInProgress
-                 | SSRollbackComplete
-                 | SSRollbackFailed
-                 | SSRollbackInProgress
-                 | SSUpdateComplete
-                 | SSUpdateCompleteCleanupInProgress
-                 | SSUpdateInProgress
-                 | SSUpdateRollbackComplete
-                 | SSUpdateRollbackCompleteCleanupInProgress
-                 | SSUpdateRollbackFailed
-                 | SSUpdateRollbackInProgress
-                     deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                               Typeable, Generic)
+
+data StackStatus = StackStatus' (CI Text)
+                     deriving (Eq, Ord, Read, Show, Data, Typeable,
+                               Generic)
+
+pattern SSCreateComplete :: StackStatus
+pattern SSCreateComplete = StackStatus' "CREATE_COMPLETE"
+
+pattern SSCreateFailed :: StackStatus
+pattern SSCreateFailed = StackStatus' "CREATE_FAILED"
+
+pattern SSCreateInProgress :: StackStatus
+pattern SSCreateInProgress = StackStatus' "CREATE_IN_PROGRESS"
+
+pattern SSDeleteComplete :: StackStatus
+pattern SSDeleteComplete = StackStatus' "DELETE_COMPLETE"
+
+pattern SSDeleteFailed :: StackStatus
+pattern SSDeleteFailed = StackStatus' "DELETE_FAILED"
+
+pattern SSDeleteInProgress :: StackStatus
+pattern SSDeleteInProgress = StackStatus' "DELETE_IN_PROGRESS"
+
+pattern SSReviewInProgress :: StackStatus
+pattern SSReviewInProgress = StackStatus' "REVIEW_IN_PROGRESS"
+
+pattern SSRollbackComplete :: StackStatus
+pattern SSRollbackComplete = StackStatus' "ROLLBACK_COMPLETE"
+
+pattern SSRollbackFailed :: StackStatus
+pattern SSRollbackFailed = StackStatus' "ROLLBACK_FAILED"
+
+pattern SSRollbackInProgress :: StackStatus
+pattern SSRollbackInProgress = StackStatus' "ROLLBACK_IN_PROGRESS"
+
+pattern SSUpdateComplete :: StackStatus
+pattern SSUpdateComplete = StackStatus' "UPDATE_COMPLETE"
+
+pattern SSUpdateCompleteCleanupInProgress :: StackStatus
+pattern SSUpdateCompleteCleanupInProgress = StackStatus' "UPDATE_COMPLETE_CLEANUP_IN_PROGRESS"
+
+pattern SSUpdateInProgress :: StackStatus
+pattern SSUpdateInProgress = StackStatus' "UPDATE_IN_PROGRESS"
+
+pattern SSUpdateRollbackComplete :: StackStatus
+pattern SSUpdateRollbackComplete = StackStatus' "UPDATE_ROLLBACK_COMPLETE"
+
+pattern SSUpdateRollbackCompleteCleanupInProgress :: StackStatus
+pattern SSUpdateRollbackCompleteCleanupInProgress = StackStatus' "UPDATE_ROLLBACK_COMPLETE_CLEANUP_IN_PROGRESS"
+
+pattern SSUpdateRollbackFailed :: StackStatus
+pattern SSUpdateRollbackFailed = StackStatus' "UPDATE_ROLLBACK_FAILED"
+
+pattern SSUpdateRollbackInProgress :: StackStatus
+pattern SSUpdateRollbackInProgress = StackStatus' "UPDATE_ROLLBACK_IN_PROGRESS"
+
+{-# COMPLETE
+  SSCreateComplete,
+  SSCreateFailed,
+  SSCreateInProgress,
+  SSDeleteComplete,
+  SSDeleteFailed,
+  SSDeleteInProgress,
+  SSReviewInProgress,
+  SSRollbackComplete,
+  SSRollbackFailed,
+  SSRollbackInProgress,
+  SSUpdateComplete,
+  SSUpdateCompleteCleanupInProgress,
+  SSUpdateInProgress,
+  SSUpdateRollbackComplete,
+  SSUpdateRollbackCompleteCleanupInProgress,
+  SSUpdateRollbackFailed,
+  SSUpdateRollbackInProgress,
+  StackStatus' #-}
 
 instance FromText StackStatus where
-    parser = takeLowerText >>= \case
-        "create_complete" -> pure SSCreateComplete
-        "create_failed" -> pure SSCreateFailed
-        "create_in_progress" -> pure SSCreateInProgress
-        "delete_complete" -> pure SSDeleteComplete
-        "delete_failed" -> pure SSDeleteFailed
-        "delete_in_progress" -> pure SSDeleteInProgress
-        "review_in_progress" -> pure SSReviewInProgress
-        "rollback_complete" -> pure SSRollbackComplete
-        "rollback_failed" -> pure SSRollbackFailed
-        "rollback_in_progress" -> pure SSRollbackInProgress
-        "update_complete" -> pure SSUpdateComplete
-        "update_complete_cleanup_in_progress" -> pure SSUpdateCompleteCleanupInProgress
-        "update_in_progress" -> pure SSUpdateInProgress
-        "update_rollback_complete" -> pure SSUpdateRollbackComplete
-        "update_rollback_complete_cleanup_in_progress" -> pure SSUpdateRollbackCompleteCleanupInProgress
-        "update_rollback_failed" -> pure SSUpdateRollbackFailed
-        "update_rollback_in_progress" -> pure SSUpdateRollbackInProgress
-        e -> fromTextError $ "Failure parsing StackStatus from value: '" <> e
-           <> "'. Accepted values: create_complete, create_failed, create_in_progress, delete_complete, delete_failed, delete_in_progress, review_in_progress, rollback_complete, rollback_failed, rollback_in_progress, update_complete, update_complete_cleanup_in_progress, update_in_progress, update_rollback_complete, update_rollback_complete_cleanup_in_progress, update_rollback_failed, update_rollback_in_progress"
+    parser = (StackStatus' . mk) <$> takeText
 
 instance ToText StackStatus where
-    toText = \case
-        SSCreateComplete -> "CREATE_COMPLETE"
-        SSCreateFailed -> "CREATE_FAILED"
-        SSCreateInProgress -> "CREATE_IN_PROGRESS"
-        SSDeleteComplete -> "DELETE_COMPLETE"
-        SSDeleteFailed -> "DELETE_FAILED"
-        SSDeleteInProgress -> "DELETE_IN_PROGRESS"
-        SSReviewInProgress -> "REVIEW_IN_PROGRESS"
-        SSRollbackComplete -> "ROLLBACK_COMPLETE"
-        SSRollbackFailed -> "ROLLBACK_FAILED"
-        SSRollbackInProgress -> "ROLLBACK_IN_PROGRESS"
-        SSUpdateComplete -> "UPDATE_COMPLETE"
-        SSUpdateCompleteCleanupInProgress -> "UPDATE_COMPLETE_CLEANUP_IN_PROGRESS"
-        SSUpdateInProgress -> "UPDATE_IN_PROGRESS"
-        SSUpdateRollbackComplete -> "UPDATE_ROLLBACK_COMPLETE"
-        SSUpdateRollbackCompleteCleanupInProgress -> "UPDATE_ROLLBACK_COMPLETE_CLEANUP_IN_PROGRESS"
-        SSUpdateRollbackFailed -> "UPDATE_ROLLBACK_FAILED"
-        SSUpdateRollbackInProgress -> "UPDATE_ROLLBACK_IN_PROGRESS"
+    toText (StackStatus' ci) = original ci
+
+-- | Represents an enum of /known/ $StackStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum StackStatus where
+    toEnum i = case i of
+        0 -> SSCreateComplete
+        1 -> SSCreateFailed
+        2 -> SSCreateInProgress
+        3 -> SSDeleteComplete
+        4 -> SSDeleteFailed
+        5 -> SSDeleteInProgress
+        6 -> SSReviewInProgress
+        7 -> SSRollbackComplete
+        8 -> SSRollbackFailed
+        9 -> SSRollbackInProgress
+        10 -> SSUpdateComplete
+        11 -> SSUpdateCompleteCleanupInProgress
+        12 -> SSUpdateInProgress
+        13 -> SSUpdateRollbackComplete
+        14 -> SSUpdateRollbackCompleteCleanupInProgress
+        15 -> SSUpdateRollbackFailed
+        16 -> SSUpdateRollbackInProgress
+        _ -> (error . showText) $ "Unknown index for StackStatus: " <> toText i
+    fromEnum x = case x of
+        SSCreateComplete -> 0
+        SSCreateFailed -> 1
+        SSCreateInProgress -> 2
+        SSDeleteComplete -> 3
+        SSDeleteFailed -> 4
+        SSDeleteInProgress -> 5
+        SSReviewInProgress -> 6
+        SSRollbackComplete -> 7
+        SSRollbackFailed -> 8
+        SSRollbackInProgress -> 9
+        SSUpdateComplete -> 10
+        SSUpdateCompleteCleanupInProgress -> 11
+        SSUpdateInProgress -> 12
+        SSUpdateRollbackComplete -> 13
+        SSUpdateRollbackCompleteCleanupInProgress -> 14
+        SSUpdateRollbackFailed -> 15
+        SSUpdateRollbackInProgress -> 16
+        StackStatus' name -> (error . showText) $ "Unknown StackStatus: " <> original name
+
+-- | Represents the bounds of /known/ $StackStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded StackStatus where
+    minBound = SSCreateComplete
+    maxBound = SSUpdateRollbackInProgress
 
 instance Hashable     StackStatus
 instance NFData       StackStatus

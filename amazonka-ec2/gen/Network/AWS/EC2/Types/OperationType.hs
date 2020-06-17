@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,27 +16,59 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.EC2.Types.OperationType where
+module Network.AWS.EC2.Types.OperationType (
+  OperationType (
+    ..
+    , Add
+    , Remove
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.EC2.Internal
 import Network.AWS.Prelude
-  
-data OperationType = Add
-                   | Remove
-                       deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                 Typeable, Generic)
+
+data OperationType = OperationType' (CI Text)
+                       deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                 Generic)
+
+pattern Add :: OperationType
+pattern Add = OperationType' "add"
+
+pattern Remove :: OperationType
+pattern Remove = OperationType' "remove"
+
+{-# COMPLETE
+  Add,
+  Remove,
+  OperationType' #-}
 
 instance FromText OperationType where
-    parser = takeLowerText >>= \case
-        "add" -> pure Add
-        "remove" -> pure Remove
-        e -> fromTextError $ "Failure parsing OperationType from value: '" <> e
-           <> "'. Accepted values: add, remove"
+    parser = (OperationType' . mk) <$> takeText
 
 instance ToText OperationType where
-    toText = \case
-        Add -> "add"
-        Remove -> "remove"
+    toText (OperationType' ci) = original ci
+
+-- | Represents an enum of /known/ $OperationType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum OperationType where
+    toEnum i = case i of
+        0 -> Add
+        1 -> Remove
+        _ -> (error . showText) $ "Unknown index for OperationType: " <> toText i
+    fromEnum x = case x of
+        Add -> 0
+        Remove -> 1
+        OperationType' name -> (error . showText) $ "Unknown OperationType: " <> original name
+
+-- | Represents the bounds of /known/ $OperationType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded OperationType where
+    minBound = Add
+    maxBound = Remove
 
 instance Hashable     OperationType
 instance NFData       OperationType

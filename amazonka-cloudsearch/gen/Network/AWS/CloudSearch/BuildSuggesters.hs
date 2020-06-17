@@ -38,6 +38,7 @@ module Network.AWS.CloudSearch.BuildSuggesters
     ) where
 
 import Network.AWS.CloudSearch.Types
+import Network.AWS.CloudSearch.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request

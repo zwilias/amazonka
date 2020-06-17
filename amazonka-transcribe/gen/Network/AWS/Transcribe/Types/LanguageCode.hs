@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,58 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.Transcribe.Types.LanguageCode where
+module Network.AWS.Transcribe.Types.LanguageCode (
+  LanguageCode (
+    ..
+    , EnUs
+    , EsUs
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data LanguageCode = EnUs
-                  | EsUs
-                      deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                Typeable, Generic)
+
+data LanguageCode = LanguageCode' (CI Text)
+                      deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                Generic)
+
+pattern EnUs :: LanguageCode
+pattern EnUs = LanguageCode' "en-US"
+
+pattern EsUs :: LanguageCode
+pattern EsUs = LanguageCode' "es-US"
+
+{-# COMPLETE
+  EnUs,
+  EsUs,
+  LanguageCode' #-}
 
 instance FromText LanguageCode where
-    parser = takeLowerText >>= \case
-        "en-us" -> pure EnUs
-        "es-us" -> pure EsUs
-        e -> fromTextError $ "Failure parsing LanguageCode from value: '" <> e
-           <> "'. Accepted values: en-us, es-us"
+    parser = (LanguageCode' . mk) <$> takeText
 
 instance ToText LanguageCode where
-    toText = \case
-        EnUs -> "en-US"
-        EsUs -> "es-US"
+    toText (LanguageCode' ci) = original ci
+
+-- | Represents an enum of /known/ $LanguageCode.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum LanguageCode where
+    toEnum i = case i of
+        0 -> EnUs
+        1 -> EsUs
+        _ -> (error . showText) $ "Unknown index for LanguageCode: " <> toText i
+    fromEnum x = case x of
+        EnUs -> 0
+        EsUs -> 1
+        LanguageCode' name -> (error . showText) $ "Unknown LanguageCode: " <> original name
+
+-- | Represents the bounds of /known/ $LanguageCode.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded LanguageCode where
+    minBound = EnUs
+    maxBound = EsUs
 
 instance Hashable     LanguageCode
 instance NFData       LanguageCode

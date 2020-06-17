@@ -100,6 +100,7 @@ library
         , Network.AWS.Firehose.Types.ProcessorParameter
         , Network.AWS.Firehose.Types.ProcessorParameterName
         , Network.AWS.Firehose.Types.ProcessorType
+        , Network.AWS.Firehose.Types.Product
         , Network.AWS.Firehose.Types.PutRecordBatchResponseEntry
         , Network.AWS.Firehose.Types.Record
         , Network.AWS.Firehose.Types.RedshiftDestinationConfiguration
@@ -124,6 +125,7 @@ library
     build-depends:
           amazonka-core == 1.6.1.*
         , base          >= 4.7     && < 5
+        , case-insensitive
 
 test-suite amazonka-kinesis-firehose-test
     type:              exitcode-stdio-1.0
@@ -147,6 +149,7 @@ test-suite amazonka-kinesis-firehose-test
         , amazonka-kinesis-firehose
         , base
         , bytestring
+        , case-insensitive
         , tasty
         , tasty-hunit
         , text

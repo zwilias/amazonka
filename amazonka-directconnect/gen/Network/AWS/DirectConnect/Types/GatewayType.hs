@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,58 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.DirectConnect.Types.GatewayType where
+module Network.AWS.DirectConnect.Types.GatewayType (
+  GatewayType (
+    ..
+    , TransitGateway
+    , VirtualPrivateGateway
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data GatewayType = TransitGateway
-                 | VirtualPrivateGateway
-                     deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                               Typeable, Generic)
+
+data GatewayType = GatewayType' (CI Text)
+                     deriving (Eq, Ord, Read, Show, Data, Typeable,
+                               Generic)
+
+pattern TransitGateway :: GatewayType
+pattern TransitGateway = GatewayType' "transitGateway"
+
+pattern VirtualPrivateGateway :: GatewayType
+pattern VirtualPrivateGateway = GatewayType' "virtualPrivateGateway"
+
+{-# COMPLETE
+  TransitGateway,
+  VirtualPrivateGateway,
+  GatewayType' #-}
 
 instance FromText GatewayType where
-    parser = takeLowerText >>= \case
-        "transitgateway" -> pure TransitGateway
-        "virtualprivategateway" -> pure VirtualPrivateGateway
-        e -> fromTextError $ "Failure parsing GatewayType from value: '" <> e
-           <> "'. Accepted values: transitgateway, virtualprivategateway"
+    parser = (GatewayType' . mk) <$> takeText
 
 instance ToText GatewayType where
-    toText = \case
-        TransitGateway -> "transitGateway"
-        VirtualPrivateGateway -> "virtualPrivateGateway"
+    toText (GatewayType' ci) = original ci
+
+-- | Represents an enum of /known/ $GatewayType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum GatewayType where
+    toEnum i = case i of
+        0 -> TransitGateway
+        1 -> VirtualPrivateGateway
+        _ -> (error . showText) $ "Unknown index for GatewayType: " <> toText i
+    fromEnum x = case x of
+        TransitGateway -> 0
+        VirtualPrivateGateway -> 1
+        GatewayType' name -> (error . showText) $ "Unknown GatewayType: " <> original name
+
+-- | Represents the bounds of /known/ $GatewayType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded GatewayType where
+    minBound = TransitGateway
+    maxBound = VirtualPrivateGateway
 
 instance Hashable     GatewayType
 instance NFData       GatewayType

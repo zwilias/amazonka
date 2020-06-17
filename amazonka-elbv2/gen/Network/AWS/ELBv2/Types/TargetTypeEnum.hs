@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,58 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.ELBv2.Types.TargetTypeEnum where
+module Network.AWS.ELBv2.Types.TargetTypeEnum (
+  TargetTypeEnum (
+    ..
+    , IP
+    , Instance
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data TargetTypeEnum = IP
-                    | Instance
-                        deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                  Typeable, Generic)
+
+data TargetTypeEnum = TargetTypeEnum' (CI Text)
+                        deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                  Generic)
+
+pattern IP :: TargetTypeEnum
+pattern IP = TargetTypeEnum' "ip"
+
+pattern Instance :: TargetTypeEnum
+pattern Instance = TargetTypeEnum' "instance"
+
+{-# COMPLETE
+  IP,
+  Instance,
+  TargetTypeEnum' #-}
 
 instance FromText TargetTypeEnum where
-    parser = takeLowerText >>= \case
-        "ip" -> pure IP
-        "instance" -> pure Instance
-        e -> fromTextError $ "Failure parsing TargetTypeEnum from value: '" <> e
-           <> "'. Accepted values: ip, instance"
+    parser = (TargetTypeEnum' . mk) <$> takeText
 
 instance ToText TargetTypeEnum where
-    toText = \case
-        IP -> "ip"
-        Instance -> "instance"
+    toText (TargetTypeEnum' ci) = original ci
+
+-- | Represents an enum of /known/ $TargetTypeEnum.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum TargetTypeEnum where
+    toEnum i = case i of
+        0 -> IP
+        1 -> Instance
+        _ -> (error . showText) $ "Unknown index for TargetTypeEnum: " <> toText i
+    fromEnum x = case x of
+        IP -> 0
+        Instance -> 1
+        TargetTypeEnum' name -> (error . showText) $ "Unknown TargetTypeEnum: " <> original name
+
+-- | Represents the bounds of /known/ $TargetTypeEnum.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded TargetTypeEnum where
+    minBound = IP
+    maxBound = Instance
 
 instance Hashable     TargetTypeEnum
 instance NFData       TargetTypeEnum

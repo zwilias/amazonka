@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,34 +16,69 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.SWF.Types.RequestCancelExternalWorkflowExecutionFailedCause where
+module Network.AWS.SWF.Types.RequestCancelExternalWorkflowExecutionFailedCause (
+  RequestCancelExternalWorkflowExecutionFailedCause (
+    ..
+    , RCEWEFCOperationNotPermitted
+    , RCEWEFCRequestCancelExternalWorkflowExecutionRateExceeded
+    , RCEWEFCUnknownExternalWorkflowExecution
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data RequestCancelExternalWorkflowExecutionFailedCause = RCEWEFCOperationNotPermitted
-                                                       | RCEWEFCRequestCancelExternalWorkflowExecutionRateExceeded
-                                                       | RCEWEFCUnknownExternalWorkflowExecution
+
+data RequestCancelExternalWorkflowExecutionFailedCause = RequestCancelExternalWorkflowExecutionFailedCause' (CI
+                                                                                                               Text)
                                                            deriving (Eq, Ord,
                                                                      Read, Show,
-                                                                     Enum,
-                                                                     Bounded,
                                                                      Data,
                                                                      Typeable,
                                                                      Generic)
 
+pattern RCEWEFCOperationNotPermitted :: RequestCancelExternalWorkflowExecutionFailedCause
+pattern RCEWEFCOperationNotPermitted = RequestCancelExternalWorkflowExecutionFailedCause' "OPERATION_NOT_PERMITTED"
+
+pattern RCEWEFCRequestCancelExternalWorkflowExecutionRateExceeded :: RequestCancelExternalWorkflowExecutionFailedCause
+pattern RCEWEFCRequestCancelExternalWorkflowExecutionRateExceeded = RequestCancelExternalWorkflowExecutionFailedCause' "REQUEST_CANCEL_EXTERNAL_WORKFLOW_EXECUTION_RATE_EXCEEDED"
+
+pattern RCEWEFCUnknownExternalWorkflowExecution :: RequestCancelExternalWorkflowExecutionFailedCause
+pattern RCEWEFCUnknownExternalWorkflowExecution = RequestCancelExternalWorkflowExecutionFailedCause' "UNKNOWN_EXTERNAL_WORKFLOW_EXECUTION"
+
+{-# COMPLETE
+  RCEWEFCOperationNotPermitted,
+  RCEWEFCRequestCancelExternalWorkflowExecutionRateExceeded,
+  RCEWEFCUnknownExternalWorkflowExecution,
+  RequestCancelExternalWorkflowExecutionFailedCause' #-}
+
 instance FromText RequestCancelExternalWorkflowExecutionFailedCause where
-    parser = takeLowerText >>= \case
-        "operation_not_permitted" -> pure RCEWEFCOperationNotPermitted
-        "request_cancel_external_workflow_execution_rate_exceeded" -> pure RCEWEFCRequestCancelExternalWorkflowExecutionRateExceeded
-        "unknown_external_workflow_execution" -> pure RCEWEFCUnknownExternalWorkflowExecution
-        e -> fromTextError $ "Failure parsing RequestCancelExternalWorkflowExecutionFailedCause from value: '" <> e
-           <> "'. Accepted values: operation_not_permitted, request_cancel_external_workflow_execution_rate_exceeded, unknown_external_workflow_execution"
+    parser = (RequestCancelExternalWorkflowExecutionFailedCause' . mk) <$> takeText
 
 instance ToText RequestCancelExternalWorkflowExecutionFailedCause where
-    toText = \case
-        RCEWEFCOperationNotPermitted -> "OPERATION_NOT_PERMITTED"
-        RCEWEFCRequestCancelExternalWorkflowExecutionRateExceeded -> "REQUEST_CANCEL_EXTERNAL_WORKFLOW_EXECUTION_RATE_EXCEEDED"
-        RCEWEFCUnknownExternalWorkflowExecution -> "UNKNOWN_EXTERNAL_WORKFLOW_EXECUTION"
+    toText (RequestCancelExternalWorkflowExecutionFailedCause' ci) = original ci
+
+-- | Represents an enum of /known/ $RequestCancelExternalWorkflowExecutionFailedCause.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum RequestCancelExternalWorkflowExecutionFailedCause where
+    toEnum i = case i of
+        0 -> RCEWEFCOperationNotPermitted
+        1 -> RCEWEFCRequestCancelExternalWorkflowExecutionRateExceeded
+        2 -> RCEWEFCUnknownExternalWorkflowExecution
+        _ -> (error . showText) $ "Unknown index for RequestCancelExternalWorkflowExecutionFailedCause: " <> toText i
+    fromEnum x = case x of
+        RCEWEFCOperationNotPermitted -> 0
+        RCEWEFCRequestCancelExternalWorkflowExecutionRateExceeded -> 1
+        RCEWEFCUnknownExternalWorkflowExecution -> 2
+        RequestCancelExternalWorkflowExecutionFailedCause' name -> (error . showText) $ "Unknown RequestCancelExternalWorkflowExecutionFailedCause: " <> original name
+
+-- | Represents the bounds of /known/ $RequestCancelExternalWorkflowExecutionFailedCause.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded RequestCancelExternalWorkflowExecutionFailedCause where
+    minBound = RCEWEFCOperationNotPermitted
+    maxBound = RCEWEFCUnknownExternalWorkflowExecution
 
 instance Hashable     RequestCancelExternalWorkflowExecutionFailedCause
 instance NFData       RequestCancelExternalWorkflowExecutionFailedCause

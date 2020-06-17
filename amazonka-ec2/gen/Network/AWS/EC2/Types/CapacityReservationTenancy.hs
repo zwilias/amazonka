@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,27 +16,60 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.EC2.Types.CapacityReservationTenancy where
+module Network.AWS.EC2.Types.CapacityReservationTenancy (
+  CapacityReservationTenancy (
+    ..
+    , CRTDedicated
+    , CRTDefault
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.EC2.Internal
 import Network.AWS.Prelude
-  
-data CapacityReservationTenancy = CRTDedicated
-                                | CRTDefault
-                                    deriving (Eq, Ord, Read, Show, Enum,
-                                              Bounded, Data, Typeable, Generic)
+
+data CapacityReservationTenancy = CapacityReservationTenancy' (CI
+                                                                 Text)
+                                    deriving (Eq, Ord, Read, Show, Data,
+                                              Typeable, Generic)
+
+pattern CRTDedicated :: CapacityReservationTenancy
+pattern CRTDedicated = CapacityReservationTenancy' "dedicated"
+
+pattern CRTDefault :: CapacityReservationTenancy
+pattern CRTDefault = CapacityReservationTenancy' "default"
+
+{-# COMPLETE
+  CRTDedicated,
+  CRTDefault,
+  CapacityReservationTenancy' #-}
 
 instance FromText CapacityReservationTenancy where
-    parser = takeLowerText >>= \case
-        "dedicated" -> pure CRTDedicated
-        "default" -> pure CRTDefault
-        e -> fromTextError $ "Failure parsing CapacityReservationTenancy from value: '" <> e
-           <> "'. Accepted values: dedicated, default"
+    parser = (CapacityReservationTenancy' . mk) <$> takeText
 
 instance ToText CapacityReservationTenancy where
-    toText = \case
-        CRTDedicated -> "dedicated"
-        CRTDefault -> "default"
+    toText (CapacityReservationTenancy' ci) = original ci
+
+-- | Represents an enum of /known/ $CapacityReservationTenancy.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum CapacityReservationTenancy where
+    toEnum i = case i of
+        0 -> CRTDedicated
+        1 -> CRTDefault
+        _ -> (error . showText) $ "Unknown index for CapacityReservationTenancy: " <> toText i
+    fromEnum x = case x of
+        CRTDedicated -> 0
+        CRTDefault -> 1
+        CapacityReservationTenancy' name -> (error . showText) $ "Unknown CapacityReservationTenancy: " <> original name
+
+-- | Represents the bounds of /known/ $CapacityReservationTenancy.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded CapacityReservationTenancy where
+    minBound = CRTDedicated
+    maxBound = CRTDefault
 
 instance Hashable     CapacityReservationTenancy
 instance NFData       CapacityReservationTenancy

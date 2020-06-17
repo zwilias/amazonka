@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,23 +16,51 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.AppSync.Types.AuthorizationType where
+module Network.AWS.AppSync.Types.AuthorizationType (
+  AuthorizationType (
+    ..
+    , AWSIAM
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data AuthorizationType = AWSIAM
-                           deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                     Typeable, Generic)
+
+data AuthorizationType = AuthorizationType' (CI Text)
+                           deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                     Generic)
+
+pattern AWSIAM :: AuthorizationType
+pattern AWSIAM = AuthorizationType' "AWS_IAM"
+
+{-# COMPLETE
+  AWSIAM,
+  AuthorizationType' #-}
 
 instance FromText AuthorizationType where
-    parser = takeLowerText >>= \case
-        "aws_iam" -> pure AWSIAM
-        e -> fromTextError $ "Failure parsing AuthorizationType from value: '" <> e
-           <> "'. Accepted values: aws_iam"
+    parser = (AuthorizationType' . mk) <$> takeText
 
 instance ToText AuthorizationType where
-    toText = \case
-        AWSIAM -> "AWS_IAM"
+    toText (AuthorizationType' ci) = original ci
+
+-- | Represents an enum of /known/ $AuthorizationType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum AuthorizationType where
+    toEnum i = case i of
+        0 -> AWSIAM
+        _ -> (error . showText) $ "Unknown index for AuthorizationType: " <> toText i
+    fromEnum x = case x of
+        AWSIAM -> 0
+        AuthorizationType' name -> (error . showText) $ "Unknown AuthorizationType: " <> original name
+
+-- | Represents the bounds of /known/ $AuthorizationType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded AuthorizationType where
+    minBound = AWSIAM
+    maxBound = AWSIAM
 
 instance Hashable     AuthorizationType
 instance NFData       AuthorizationType

@@ -81,6 +81,7 @@ library
         , Network.AWS.Snowball.Types.KeyRange
         , Network.AWS.Snowball.Types.LambdaResource
         , Network.AWS.Snowball.Types.Notification
+        , Network.AWS.Snowball.Types.Product
         , Network.AWS.Snowball.Types.S3Resource
         , Network.AWS.Snowball.Types.Shipment
         , Network.AWS.Snowball.Types.ShippingDetails
@@ -91,6 +92,7 @@ library
     build-depends:
           amazonka-core == 1.6.1.*
         , base          >= 4.7     && < 5
+        , case-insensitive
 
 test-suite amazonka-snowball-test
     type:              exitcode-stdio-1.0
@@ -114,6 +116,7 @@ test-suite amazonka-snowball-test
         , amazonka-snowball
         , base
         , bytestring
+        , case-insensitive
         , tasty
         , tasty-hunit
         , text

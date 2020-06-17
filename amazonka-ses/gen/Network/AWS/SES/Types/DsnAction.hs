@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,35 +16,79 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.SES.Types.DsnAction where
+module Network.AWS.SES.Types.DsnAction (
+  DsnAction (
+    ..
+    , DADelayed
+    , DADelivered
+    , DAExpanded
+    , DAFailed
+    , DARelayed
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data DsnAction = DADelayed
-               | DADelivered
-               | DAExpanded
-               | DAFailed
-               | DARelayed
-                   deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                             Typeable, Generic)
+
+data DsnAction = DsnAction' (CI Text)
+                   deriving (Eq, Ord, Read, Show, Data, Typeable,
+                             Generic)
+
+pattern DADelayed :: DsnAction
+pattern DADelayed = DsnAction' "delayed"
+
+pattern DADelivered :: DsnAction
+pattern DADelivered = DsnAction' "delivered"
+
+pattern DAExpanded :: DsnAction
+pattern DAExpanded = DsnAction' "expanded"
+
+pattern DAFailed :: DsnAction
+pattern DAFailed = DsnAction' "failed"
+
+pattern DARelayed :: DsnAction
+pattern DARelayed = DsnAction' "relayed"
+
+{-# COMPLETE
+  DADelayed,
+  DADelivered,
+  DAExpanded,
+  DAFailed,
+  DARelayed,
+  DsnAction' #-}
 
 instance FromText DsnAction where
-    parser = takeLowerText >>= \case
-        "delayed" -> pure DADelayed
-        "delivered" -> pure DADelivered
-        "expanded" -> pure DAExpanded
-        "failed" -> pure DAFailed
-        "relayed" -> pure DARelayed
-        e -> fromTextError $ "Failure parsing DsnAction from value: '" <> e
-           <> "'. Accepted values: delayed, delivered, expanded, failed, relayed"
+    parser = (DsnAction' . mk) <$> takeText
 
 instance ToText DsnAction where
-    toText = \case
-        DADelayed -> "delayed"
-        DADelivered -> "delivered"
-        DAExpanded -> "expanded"
-        DAFailed -> "failed"
-        DARelayed -> "relayed"
+    toText (DsnAction' ci) = original ci
+
+-- | Represents an enum of /known/ $DsnAction.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum DsnAction where
+    toEnum i = case i of
+        0 -> DADelayed
+        1 -> DADelivered
+        2 -> DAExpanded
+        3 -> DAFailed
+        4 -> DARelayed
+        _ -> (error . showText) $ "Unknown index for DsnAction: " <> toText i
+    fromEnum x = case x of
+        DADelayed -> 0
+        DADelivered -> 1
+        DAExpanded -> 2
+        DAFailed -> 3
+        DARelayed -> 4
+        DsnAction' name -> (error . showText) $ "Unknown DsnAction: " <> original name
+
+-- | Represents the bounds of /known/ $DsnAction.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded DsnAction where
+    minBound = DADelayed
+    maxBound = DARelayed
 
 instance Hashable     DsnAction
 instance NFData       DsnAction

@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,59 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.CognitoIdentityProvider.Types.DeliveryMediumType where
+module Network.AWS.CognitoIdentityProvider.Types.DeliveryMediumType (
+  DeliveryMediumType (
+    ..
+    , DMTEmail
+    , DMTSms
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data DeliveryMediumType = DMTEmail
-                        | DMTSms
-                            deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                      Typeable, Generic)
+
+data DeliveryMediumType = DeliveryMediumType' (CI
+                                                 Text)
+                            deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                      Generic)
+
+pattern DMTEmail :: DeliveryMediumType
+pattern DMTEmail = DeliveryMediumType' "EMAIL"
+
+pattern DMTSms :: DeliveryMediumType
+pattern DMTSms = DeliveryMediumType' "SMS"
+
+{-# COMPLETE
+  DMTEmail,
+  DMTSms,
+  DeliveryMediumType' #-}
 
 instance FromText DeliveryMediumType where
-    parser = takeLowerText >>= \case
-        "email" -> pure DMTEmail
-        "sms" -> pure DMTSms
-        e -> fromTextError $ "Failure parsing DeliveryMediumType from value: '" <> e
-           <> "'. Accepted values: email, sms"
+    parser = (DeliveryMediumType' . mk) <$> takeText
 
 instance ToText DeliveryMediumType where
-    toText = \case
-        DMTEmail -> "EMAIL"
-        DMTSms -> "SMS"
+    toText (DeliveryMediumType' ci) = original ci
+
+-- | Represents an enum of /known/ $DeliveryMediumType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum DeliveryMediumType where
+    toEnum i = case i of
+        0 -> DMTEmail
+        1 -> DMTSms
+        _ -> (error . showText) $ "Unknown index for DeliveryMediumType: " <> toText i
+    fromEnum x = case x of
+        DMTEmail -> 0
+        DMTSms -> 1
+        DeliveryMediumType' name -> (error . showText) $ "Unknown DeliveryMediumType: " <> original name
+
+-- | Represents the bounds of /known/ $DeliveryMediumType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded DeliveryMediumType where
+    minBound = DMTEmail
+    maxBound = DMTSms
 
 instance Hashable     DeliveryMediumType
 instance NFData       DeliveryMediumType

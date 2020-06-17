@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,58 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.CloudFront.Types.SSLSupportMethod where
+module Network.AWS.CloudFront.Types.SSLSupportMethod (
+  SSLSupportMethod (
+    ..
+    , SNIOnly
+    , VIP
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data SSLSupportMethod = SNIOnly
-                      | VIP
-                          deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                    Typeable, Generic)
+
+data SSLSupportMethod = SSLSupportMethod' (CI Text)
+                          deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                    Generic)
+
+pattern SNIOnly :: SSLSupportMethod
+pattern SNIOnly = SSLSupportMethod' "sni-only"
+
+pattern VIP :: SSLSupportMethod
+pattern VIP = SSLSupportMethod' "vip"
+
+{-# COMPLETE
+  SNIOnly,
+  VIP,
+  SSLSupportMethod' #-}
 
 instance FromText SSLSupportMethod where
-    parser = takeLowerText >>= \case
-        "sni-only" -> pure SNIOnly
-        "vip" -> pure VIP
-        e -> fromTextError $ "Failure parsing SSLSupportMethod from value: '" <> e
-           <> "'. Accepted values: sni-only, vip"
+    parser = (SSLSupportMethod' . mk) <$> takeText
 
 instance ToText SSLSupportMethod where
-    toText = \case
-        SNIOnly -> "sni-only"
-        VIP -> "vip"
+    toText (SSLSupportMethod' ci) = original ci
+
+-- | Represents an enum of /known/ $SSLSupportMethod.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum SSLSupportMethod where
+    toEnum i = case i of
+        0 -> SNIOnly
+        1 -> VIP
+        _ -> (error . showText) $ "Unknown index for SSLSupportMethod: " <> toText i
+    fromEnum x = case x of
+        SNIOnly -> 0
+        VIP -> 1
+        SSLSupportMethod' name -> (error . showText) $ "Unknown SSLSupportMethod: " <> original name
+
+-- | Represents the bounds of /known/ $SSLSupportMethod.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded SSLSupportMethod where
+    minBound = SNIOnly
+    maxBound = VIP
 
 instance Hashable     SSLSupportMethod
 instance NFData       SSLSupportMethod

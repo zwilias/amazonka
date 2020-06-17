@@ -82,6 +82,7 @@ library
         , Network.AWS.WorkSpaces.Types.ModificationResourceEnum
         , Network.AWS.WorkSpaces.Types.ModificationState
         , Network.AWS.WorkSpaces.Types.ModificationStateEnum
+        , Network.AWS.WorkSpaces.Types.Product
         , Network.AWS.WorkSpaces.Types.RebootRequest
         , Network.AWS.WorkSpaces.Types.RebuildRequest
         , Network.AWS.WorkSpaces.Types.RootStorage
@@ -106,6 +107,7 @@ library
     build-depends:
           amazonka-core == 1.6.1.*
         , base          >= 4.7     && < 5
+        , case-insensitive
 
 test-suite amazonka-workspaces-test
     type:              exitcode-stdio-1.0
@@ -129,6 +131,7 @@ test-suite amazonka-workspaces-test
         , amazonka-workspaces
         , base
         , bytestring
+        , case-insensitive
         , tasty
         , tasty-hunit
         , text

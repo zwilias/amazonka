@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,27 +16,59 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.EC2.Types.HostRecovery where
+module Network.AWS.EC2.Types.HostRecovery (
+  HostRecovery (
+    ..
+    , HRON
+    , HROff
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.EC2.Internal
 import Network.AWS.Prelude
-  
-data HostRecovery = HRON
-                  | HROff
-                      deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                Typeable, Generic)
+
+data HostRecovery = HostRecovery' (CI Text)
+                      deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                Generic)
+
+pattern HRON :: HostRecovery
+pattern HRON = HostRecovery' "on"
+
+pattern HROff :: HostRecovery
+pattern HROff = HostRecovery' "off"
+
+{-# COMPLETE
+  HRON,
+  HROff,
+  HostRecovery' #-}
 
 instance FromText HostRecovery where
-    parser = takeLowerText >>= \case
-        "on" -> pure HRON
-        "off" -> pure HROff
-        e -> fromTextError $ "Failure parsing HostRecovery from value: '" <> e
-           <> "'. Accepted values: on, off"
+    parser = (HostRecovery' . mk) <$> takeText
 
 instance ToText HostRecovery where
-    toText = \case
-        HRON -> "on"
-        HROff -> "off"
+    toText (HostRecovery' ci) = original ci
+
+-- | Represents an enum of /known/ $HostRecovery.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum HostRecovery where
+    toEnum i = case i of
+        0 -> HRON
+        1 -> HROff
+        _ -> (error . showText) $ "Unknown index for HostRecovery: " <> toText i
+    fromEnum x = case x of
+        HRON -> 0
+        HROff -> 1
+        HostRecovery' name -> (error . showText) $ "Unknown HostRecovery: " <> original name
+
+-- | Represents the bounds of /known/ $HostRecovery.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded HostRecovery where
+    minBound = HRON
+    maxBound = HROff
 
 instance Hashable     HostRecovery
 instance NFData       HostRecovery

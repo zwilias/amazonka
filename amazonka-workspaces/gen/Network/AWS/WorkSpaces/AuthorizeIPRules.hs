@@ -44,6 +44,7 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.WorkSpaces.Types
+import Network.AWS.WorkSpaces.Types.Product
 
 -- | /See:/ 'authorizeIPRules' smart constructor.
 data AuthorizeIPRules = AuthorizeIPRules'{_airGroupId

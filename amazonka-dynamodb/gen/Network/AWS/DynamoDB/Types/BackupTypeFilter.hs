@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,32 +16,72 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.DynamoDB.Types.BackupTypeFilter where
+module Network.AWS.DynamoDB.Types.BackupTypeFilter (
+  BackupTypeFilter (
+    ..
+    , BTFAWSBackup
+    , BTFAll
+    , BTFSystem
+    , BTFUser
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data BackupTypeFilter = BTFAWSBackup
-                      | BTFAll
-                      | BTFSystem
-                      | BTFUser
-                          deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                    Typeable, Generic)
+
+data BackupTypeFilter = BackupTypeFilter' (CI Text)
+                          deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                    Generic)
+
+pattern BTFAWSBackup :: BackupTypeFilter
+pattern BTFAWSBackup = BackupTypeFilter' "AWS_BACKUP"
+
+pattern BTFAll :: BackupTypeFilter
+pattern BTFAll = BackupTypeFilter' "ALL"
+
+pattern BTFSystem :: BackupTypeFilter
+pattern BTFSystem = BackupTypeFilter' "SYSTEM"
+
+pattern BTFUser :: BackupTypeFilter
+pattern BTFUser = BackupTypeFilter' "USER"
+
+{-# COMPLETE
+  BTFAWSBackup,
+  BTFAll,
+  BTFSystem,
+  BTFUser,
+  BackupTypeFilter' #-}
 
 instance FromText BackupTypeFilter where
-    parser = takeLowerText >>= \case
-        "aws_backup" -> pure BTFAWSBackup
-        "all" -> pure BTFAll
-        "system" -> pure BTFSystem
-        "user" -> pure BTFUser
-        e -> fromTextError $ "Failure parsing BackupTypeFilter from value: '" <> e
-           <> "'. Accepted values: aws_backup, all, system, user"
+    parser = (BackupTypeFilter' . mk) <$> takeText
 
 instance ToText BackupTypeFilter where
-    toText = \case
-        BTFAWSBackup -> "AWS_BACKUP"
-        BTFAll -> "ALL"
-        BTFSystem -> "SYSTEM"
-        BTFUser -> "USER"
+    toText (BackupTypeFilter' ci) = original ci
+
+-- | Represents an enum of /known/ $BackupTypeFilter.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum BackupTypeFilter where
+    toEnum i = case i of
+        0 -> BTFAWSBackup
+        1 -> BTFAll
+        2 -> BTFSystem
+        3 -> BTFUser
+        _ -> (error . showText) $ "Unknown index for BackupTypeFilter: " <> toText i
+    fromEnum x = case x of
+        BTFAWSBackup -> 0
+        BTFAll -> 1
+        BTFSystem -> 2
+        BTFUser -> 3
+        BackupTypeFilter' name -> (error . showText) $ "Unknown BackupTypeFilter: " <> original name
+
+-- | Represents the bounds of /known/ $BackupTypeFilter.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded BackupTypeFilter where
+    minBound = BTFAWSBackup
+    maxBound = BTFUser
 
 instance Hashable     BackupTypeFilter
 instance NFData       BackupTypeFilter

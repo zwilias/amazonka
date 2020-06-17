@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,58 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.Firehose.Types.OrcFormatVersion where
+module Network.AWS.Firehose.Types.OrcFormatVersion (
+  OrcFormatVersion (
+    ..
+    , V011
+    , V012
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data OrcFormatVersion = V011
-                      | V012
-                          deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                    Typeable, Generic)
+
+data OrcFormatVersion = OrcFormatVersion' (CI Text)
+                          deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                    Generic)
+
+pattern V011 :: OrcFormatVersion
+pattern V011 = OrcFormatVersion' "V0_11"
+
+pattern V012 :: OrcFormatVersion
+pattern V012 = OrcFormatVersion' "V0_12"
+
+{-# COMPLETE
+  V011,
+  V012,
+  OrcFormatVersion' #-}
 
 instance FromText OrcFormatVersion where
-    parser = takeLowerText >>= \case
-        "v0_11" -> pure V011
-        "v0_12" -> pure V012
-        e -> fromTextError $ "Failure parsing OrcFormatVersion from value: '" <> e
-           <> "'. Accepted values: v0_11, v0_12"
+    parser = (OrcFormatVersion' . mk) <$> takeText
 
 instance ToText OrcFormatVersion where
-    toText = \case
-        V011 -> "V0_11"
-        V012 -> "V0_12"
+    toText (OrcFormatVersion' ci) = original ci
+
+-- | Represents an enum of /known/ $OrcFormatVersion.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum OrcFormatVersion where
+    toEnum i = case i of
+        0 -> V011
+        1 -> V012
+        _ -> (error . showText) $ "Unknown index for OrcFormatVersion: " <> toText i
+    fromEnum x = case x of
+        V011 -> 0
+        V012 -> 1
+        OrcFormatVersion' name -> (error . showText) $ "Unknown OrcFormatVersion: " <> original name
+
+-- | Represents the bounds of /known/ $OrcFormatVersion.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded OrcFormatVersion where
+    minBound = V011
+    maxBound = V012
 
 instance Hashable     OrcFormatVersion
 instance NFData       OrcFormatVersion

@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,35 +16,80 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.Firehose.Types.ProcessorParameterName where
+module Network.AWS.Firehose.Types.ProcessorParameterName (
+  ProcessorParameterName (
+    ..
+    , BufferIntervalInSeconds
+    , BufferSizeInMBs
+    , LambdaARN
+    , NumberOfRetries
+    , RoleARN
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data ProcessorParameterName = BufferIntervalInSeconds
-                            | BufferSizeInMBs
-                            | LambdaARN
-                            | NumberOfRetries
-                            | RoleARN
-                                deriving (Eq, Ord, Read, Show, Enum, Bounded,
-                                          Data, Typeable, Generic)
+
+data ProcessorParameterName = ProcessorParameterName' (CI
+                                                         Text)
+                                deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                          Generic)
+
+pattern BufferIntervalInSeconds :: ProcessorParameterName
+pattern BufferIntervalInSeconds = ProcessorParameterName' "BufferIntervalInSeconds"
+
+pattern BufferSizeInMBs :: ProcessorParameterName
+pattern BufferSizeInMBs = ProcessorParameterName' "BufferSizeInMBs"
+
+pattern LambdaARN :: ProcessorParameterName
+pattern LambdaARN = ProcessorParameterName' "LambdaArn"
+
+pattern NumberOfRetries :: ProcessorParameterName
+pattern NumberOfRetries = ProcessorParameterName' "NumberOfRetries"
+
+pattern RoleARN :: ProcessorParameterName
+pattern RoleARN = ProcessorParameterName' "RoleArn"
+
+{-# COMPLETE
+  BufferIntervalInSeconds,
+  BufferSizeInMBs,
+  LambdaARN,
+  NumberOfRetries,
+  RoleARN,
+  ProcessorParameterName' #-}
 
 instance FromText ProcessorParameterName where
-    parser = takeLowerText >>= \case
-        "bufferintervalinseconds" -> pure BufferIntervalInSeconds
-        "buffersizeinmbs" -> pure BufferSizeInMBs
-        "lambdaarn" -> pure LambdaARN
-        "numberofretries" -> pure NumberOfRetries
-        "rolearn" -> pure RoleARN
-        e -> fromTextError $ "Failure parsing ProcessorParameterName from value: '" <> e
-           <> "'. Accepted values: bufferintervalinseconds, buffersizeinmbs, lambdaarn, numberofretries, rolearn"
+    parser = (ProcessorParameterName' . mk) <$> takeText
 
 instance ToText ProcessorParameterName where
-    toText = \case
-        BufferIntervalInSeconds -> "BufferIntervalInSeconds"
-        BufferSizeInMBs -> "BufferSizeInMBs"
-        LambdaARN -> "LambdaArn"
-        NumberOfRetries -> "NumberOfRetries"
-        RoleARN -> "RoleArn"
+    toText (ProcessorParameterName' ci) = original ci
+
+-- | Represents an enum of /known/ $ProcessorParameterName.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum ProcessorParameterName where
+    toEnum i = case i of
+        0 -> BufferIntervalInSeconds
+        1 -> BufferSizeInMBs
+        2 -> LambdaARN
+        3 -> NumberOfRetries
+        4 -> RoleARN
+        _ -> (error . showText) $ "Unknown index for ProcessorParameterName: " <> toText i
+    fromEnum x = case x of
+        BufferIntervalInSeconds -> 0
+        BufferSizeInMBs -> 1
+        LambdaARN -> 2
+        NumberOfRetries -> 3
+        RoleARN -> 4
+        ProcessorParameterName' name -> (error . showText) $ "Unknown ProcessorParameterName: " <> original name
+
+-- | Represents the bounds of /known/ $ProcessorParameterName.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded ProcessorParameterName where
+    minBound = BufferIntervalInSeconds
+    maxBound = RoleARN
 
 instance Hashable     ProcessorParameterName
 instance NFData       ProcessorParameterName

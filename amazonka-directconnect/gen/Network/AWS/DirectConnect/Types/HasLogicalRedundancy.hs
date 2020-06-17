@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,29 +16,66 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.DirectConnect.Types.HasLogicalRedundancy where
+module Network.AWS.DirectConnect.Types.HasLogicalRedundancy (
+  HasLogicalRedundancy (
+    ..
+    , HLRNO
+    , HLRUnknown
+    , HLRYes
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data HasLogicalRedundancy = HLRNO
-                          | HLRUnknown
-                          | HLRYes
-                              deriving (Eq, Ord, Read, Show, Enum, Bounded,
-                                        Data, Typeable, Generic)
+
+data HasLogicalRedundancy = HasLogicalRedundancy' (CI
+                                                     Text)
+                              deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                        Generic)
+
+pattern HLRNO :: HasLogicalRedundancy
+pattern HLRNO = HasLogicalRedundancy' "no"
+
+pattern HLRUnknown :: HasLogicalRedundancy
+pattern HLRUnknown = HasLogicalRedundancy' "unknown"
+
+pattern HLRYes :: HasLogicalRedundancy
+pattern HLRYes = HasLogicalRedundancy' "yes"
+
+{-# COMPLETE
+  HLRNO,
+  HLRUnknown,
+  HLRYes,
+  HasLogicalRedundancy' #-}
 
 instance FromText HasLogicalRedundancy where
-    parser = takeLowerText >>= \case
-        "no" -> pure HLRNO
-        "unknown" -> pure HLRUnknown
-        "yes" -> pure HLRYes
-        e -> fromTextError $ "Failure parsing HasLogicalRedundancy from value: '" <> e
-           <> "'. Accepted values: no, unknown, yes"
+    parser = (HasLogicalRedundancy' . mk) <$> takeText
 
 instance ToText HasLogicalRedundancy where
-    toText = \case
-        HLRNO -> "no"
-        HLRUnknown -> "unknown"
-        HLRYes -> "yes"
+    toText (HasLogicalRedundancy' ci) = original ci
+
+-- | Represents an enum of /known/ $HasLogicalRedundancy.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum HasLogicalRedundancy where
+    toEnum i = case i of
+        0 -> HLRNO
+        1 -> HLRUnknown
+        2 -> HLRYes
+        _ -> (error . showText) $ "Unknown index for HasLogicalRedundancy: " <> toText i
+    fromEnum x = case x of
+        HLRNO -> 0
+        HLRUnknown -> 1
+        HLRYes -> 2
+        HasLogicalRedundancy' name -> (error . showText) $ "Unknown HasLogicalRedundancy: " <> original name
+
+-- | Represents the bounds of /known/ $HasLogicalRedundancy.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded HasLogicalRedundancy where
+    minBound = HLRNO
+    maxBound = HLRYes
 
 instance Hashable     HasLogicalRedundancy
 instance NFData       HasLogicalRedundancy

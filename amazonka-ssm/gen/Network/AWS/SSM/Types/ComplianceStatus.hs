@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,58 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.SSM.Types.ComplianceStatus where
+module Network.AWS.SSM.Types.ComplianceStatus (
+  ComplianceStatus (
+    ..
+    , Compliant
+    , NonCompliant
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data ComplianceStatus = Compliant
-                      | NonCompliant
-                          deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                    Typeable, Generic)
+
+data ComplianceStatus = ComplianceStatus' (CI Text)
+                          deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                    Generic)
+
+pattern Compliant :: ComplianceStatus
+pattern Compliant = ComplianceStatus' "COMPLIANT"
+
+pattern NonCompliant :: ComplianceStatus
+pattern NonCompliant = ComplianceStatus' "NON_COMPLIANT"
+
+{-# COMPLETE
+  Compliant,
+  NonCompliant,
+  ComplianceStatus' #-}
 
 instance FromText ComplianceStatus where
-    parser = takeLowerText >>= \case
-        "compliant" -> pure Compliant
-        "non_compliant" -> pure NonCompliant
-        e -> fromTextError $ "Failure parsing ComplianceStatus from value: '" <> e
-           <> "'. Accepted values: compliant, non_compliant"
+    parser = (ComplianceStatus' . mk) <$> takeText
 
 instance ToText ComplianceStatus where
-    toText = \case
-        Compliant -> "COMPLIANT"
-        NonCompliant -> "NON_COMPLIANT"
+    toText (ComplianceStatus' ci) = original ci
+
+-- | Represents an enum of /known/ $ComplianceStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum ComplianceStatus where
+    toEnum i = case i of
+        0 -> Compliant
+        1 -> NonCompliant
+        _ -> (error . showText) $ "Unknown index for ComplianceStatus: " <> toText i
+    fromEnum x = case x of
+        Compliant -> 0
+        NonCompliant -> 1
+        ComplianceStatus' name -> (error . showText) $ "Unknown ComplianceStatus: " <> original name
+
+-- | Represents the bounds of /known/ $ComplianceStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded ComplianceStatus where
+    minBound = Compliant
+    maxBound = NonCompliant
 
 instance Hashable     ComplianceStatus
 instance NFData       ComplianceStatus

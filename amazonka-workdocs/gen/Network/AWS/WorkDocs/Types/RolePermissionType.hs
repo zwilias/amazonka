@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,59 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.WorkDocs.Types.RolePermissionType where
+module Network.AWS.WorkDocs.Types.RolePermissionType (
+  RolePermissionType (
+    ..
+    , Direct
+    , Inherited
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data RolePermissionType = Direct
-                        | Inherited
-                            deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                                      Typeable, Generic)
+
+data RolePermissionType = RolePermissionType' (CI
+                                                 Text)
+                            deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                      Generic)
+
+pattern Direct :: RolePermissionType
+pattern Direct = RolePermissionType' "DIRECT"
+
+pattern Inherited :: RolePermissionType
+pattern Inherited = RolePermissionType' "INHERITED"
+
+{-# COMPLETE
+  Direct,
+  Inherited,
+  RolePermissionType' #-}
 
 instance FromText RolePermissionType where
-    parser = takeLowerText >>= \case
-        "direct" -> pure Direct
-        "inherited" -> pure Inherited
-        e -> fromTextError $ "Failure parsing RolePermissionType from value: '" <> e
-           <> "'. Accepted values: direct, inherited"
+    parser = (RolePermissionType' . mk) <$> takeText
 
 instance ToText RolePermissionType where
-    toText = \case
-        Direct -> "DIRECT"
-        Inherited -> "INHERITED"
+    toText (RolePermissionType' ci) = original ci
+
+-- | Represents an enum of /known/ $RolePermissionType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum RolePermissionType where
+    toEnum i = case i of
+        0 -> Direct
+        1 -> Inherited
+        _ -> (error . showText) $ "Unknown index for RolePermissionType: " <> toText i
+    fromEnum x = case x of
+        Direct -> 0
+        Inherited -> 1
+        RolePermissionType' name -> (error . showText) $ "Unknown RolePermissionType: " <> original name
+
+-- | Represents the bounds of /known/ $RolePermissionType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded RolePermissionType where
+    minBound = Direct
+    maxBound = Inherited
 
 instance Hashable     RolePermissionType
 instance NFData       RolePermissionType

@@ -140,6 +140,7 @@ library
         , Network.AWS.CodePipeline.Types.PipelineExecutionSummary
         , Network.AWS.CodePipeline.Types.PipelineMetadata
         , Network.AWS.CodePipeline.Types.PipelineSummary
+        , Network.AWS.CodePipeline.Types.Product
         , Network.AWS.CodePipeline.Types.S3ArtifactLocation
         , Network.AWS.CodePipeline.Types.S3Location
         , Network.AWS.CodePipeline.Types.SourceRevision
@@ -165,6 +166,7 @@ library
     build-depends:
           amazonka-core == 1.6.1.*
         , base          >= 4.7     && < 5
+        , case-insensitive
 
 test-suite amazonka-codepipeline-test
     type:              exitcode-stdio-1.0
@@ -188,6 +190,7 @@ test-suite amazonka-codepipeline-test
         , amazonka-codepipeline
         , base
         , bytestring
+        , case-insensitive
         , tasty
         , tasty-hunit
         , text

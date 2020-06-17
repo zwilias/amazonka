@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,26 +16,58 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.DynamoDBStreams.Types.KeyType where
+module Network.AWS.DynamoDBStreams.Types.KeyType (
+  KeyType (
+    ..
+    , Hash
+    , Range
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data KeyType = Hash
-             | Range
-                 deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                           Typeable, Generic)
+
+data KeyType = KeyType' (CI Text)
+                 deriving (Eq, Ord, Read, Show, Data, Typeable,
+                           Generic)
+
+pattern Hash :: KeyType
+pattern Hash = KeyType' "HASH"
+
+pattern Range :: KeyType
+pattern Range = KeyType' "RANGE"
+
+{-# COMPLETE
+  Hash,
+  Range,
+  KeyType' #-}
 
 instance FromText KeyType where
-    parser = takeLowerText >>= \case
-        "hash" -> pure Hash
-        "range" -> pure Range
-        e -> fromTextError $ "Failure parsing KeyType from value: '" <> e
-           <> "'. Accepted values: hash, range"
+    parser = (KeyType' . mk) <$> takeText
 
 instance ToText KeyType where
-    toText = \case
-        Hash -> "HASH"
-        Range -> "RANGE"
+    toText (KeyType' ci) = original ci
+
+-- | Represents an enum of /known/ $KeyType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum KeyType where
+    toEnum i = case i of
+        0 -> Hash
+        1 -> Range
+        _ -> (error . showText) $ "Unknown index for KeyType: " <> toText i
+    fromEnum x = case x of
+        Hash -> 0
+        Range -> 1
+        KeyType' name -> (error . showText) $ "Unknown KeyType: " <> original name
+
+-- | Represents the bounds of /known/ $KeyType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded KeyType where
+    minBound = Hash
+    maxBound = Range
 
 instance Hashable     KeyType
 instance NFData       KeyType

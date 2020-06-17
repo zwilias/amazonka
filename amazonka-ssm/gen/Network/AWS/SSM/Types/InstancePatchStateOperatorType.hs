@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,33 +16,73 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.SSM.Types.InstancePatchStateOperatorType where
+module Network.AWS.SSM.Types.InstancePatchStateOperatorType (
+  InstancePatchStateOperatorType (
+    ..
+    , IPSOTEqual
+    , IPSOTGreaterThan
+    , IPSOTLessThan
+    , IPSOTNotEqual
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data InstancePatchStateOperatorType = IPSOTEqual
-                                    | IPSOTGreaterThan
-                                    | IPSOTLessThan
-                                    | IPSOTNotEqual
-                                        deriving (Eq, Ord, Read, Show, Enum,
-                                                  Bounded, Data, Typeable,
-                                                  Generic)
+
+data InstancePatchStateOperatorType = InstancePatchStateOperatorType' (CI
+                                                                         Text)
+                                        deriving (Eq, Ord, Read, Show, Data,
+                                                  Typeable, Generic)
+
+pattern IPSOTEqual :: InstancePatchStateOperatorType
+pattern IPSOTEqual = InstancePatchStateOperatorType' "Equal"
+
+pattern IPSOTGreaterThan :: InstancePatchStateOperatorType
+pattern IPSOTGreaterThan = InstancePatchStateOperatorType' "GreaterThan"
+
+pattern IPSOTLessThan :: InstancePatchStateOperatorType
+pattern IPSOTLessThan = InstancePatchStateOperatorType' "LessThan"
+
+pattern IPSOTNotEqual :: InstancePatchStateOperatorType
+pattern IPSOTNotEqual = InstancePatchStateOperatorType' "NotEqual"
+
+{-# COMPLETE
+  IPSOTEqual,
+  IPSOTGreaterThan,
+  IPSOTLessThan,
+  IPSOTNotEqual,
+  InstancePatchStateOperatorType' #-}
 
 instance FromText InstancePatchStateOperatorType where
-    parser = takeLowerText >>= \case
-        "equal" -> pure IPSOTEqual
-        "greaterthan" -> pure IPSOTGreaterThan
-        "lessthan" -> pure IPSOTLessThan
-        "notequal" -> pure IPSOTNotEqual
-        e -> fromTextError $ "Failure parsing InstancePatchStateOperatorType from value: '" <> e
-           <> "'. Accepted values: equal, greaterthan, lessthan, notequal"
+    parser = (InstancePatchStateOperatorType' . mk) <$> takeText
 
 instance ToText InstancePatchStateOperatorType where
-    toText = \case
-        IPSOTEqual -> "Equal"
-        IPSOTGreaterThan -> "GreaterThan"
-        IPSOTLessThan -> "LessThan"
-        IPSOTNotEqual -> "NotEqual"
+    toText (InstancePatchStateOperatorType' ci) = original ci
+
+-- | Represents an enum of /known/ $InstancePatchStateOperatorType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum InstancePatchStateOperatorType where
+    toEnum i = case i of
+        0 -> IPSOTEqual
+        1 -> IPSOTGreaterThan
+        2 -> IPSOTLessThan
+        3 -> IPSOTNotEqual
+        _ -> (error . showText) $ "Unknown index for InstancePatchStateOperatorType: " <> toText i
+    fromEnum x = case x of
+        IPSOTEqual -> 0
+        IPSOTGreaterThan -> 1
+        IPSOTLessThan -> 2
+        IPSOTNotEqual -> 3
+        InstancePatchStateOperatorType' name -> (error . showText) $ "Unknown InstancePatchStateOperatorType: " <> original name
+
+-- | Represents the bounds of /known/ $InstancePatchStateOperatorType.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded InstancePatchStateOperatorType where
+    minBound = IPSOTEqual
+    maxBound = IPSOTNotEqual
 
 instance Hashable     InstancePatchStateOperatorType
 instance NFData       InstancePatchStateOperatorType

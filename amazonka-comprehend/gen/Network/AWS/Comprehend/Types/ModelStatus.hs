@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,41 +16,93 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.Comprehend.Types.ModelStatus where
+module Network.AWS.Comprehend.Types.ModelStatus (
+  ModelStatus (
+    ..
+    , MSDeleting
+    , MSInError
+    , MSStopRequested
+    , MSStopped
+    , MSSubmitted
+    , MSTrained
+    , MSTraining
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data ModelStatus = MSDeleting
-                 | MSInError
-                 | MSStopRequested
-                 | MSStopped
-                 | MSSubmitted
-                 | MSTrained
-                 | MSTraining
-                     deriving (Eq, Ord, Read, Show, Enum, Bounded, Data,
-                               Typeable, Generic)
+
+data ModelStatus = ModelStatus' (CI Text)
+                     deriving (Eq, Ord, Read, Show, Data, Typeable,
+                               Generic)
+
+pattern MSDeleting :: ModelStatus
+pattern MSDeleting = ModelStatus' "DELETING"
+
+pattern MSInError :: ModelStatus
+pattern MSInError = ModelStatus' "IN_ERROR"
+
+pattern MSStopRequested :: ModelStatus
+pattern MSStopRequested = ModelStatus' "STOP_REQUESTED"
+
+pattern MSStopped :: ModelStatus
+pattern MSStopped = ModelStatus' "STOPPED"
+
+pattern MSSubmitted :: ModelStatus
+pattern MSSubmitted = ModelStatus' "SUBMITTED"
+
+pattern MSTrained :: ModelStatus
+pattern MSTrained = ModelStatus' "TRAINED"
+
+pattern MSTraining :: ModelStatus
+pattern MSTraining = ModelStatus' "TRAINING"
+
+{-# COMPLETE
+  MSDeleting,
+  MSInError,
+  MSStopRequested,
+  MSStopped,
+  MSSubmitted,
+  MSTrained,
+  MSTraining,
+  ModelStatus' #-}
 
 instance FromText ModelStatus where
-    parser = takeLowerText >>= \case
-        "deleting" -> pure MSDeleting
-        "in_error" -> pure MSInError
-        "stop_requested" -> pure MSStopRequested
-        "stopped" -> pure MSStopped
-        "submitted" -> pure MSSubmitted
-        "trained" -> pure MSTrained
-        "training" -> pure MSTraining
-        e -> fromTextError $ "Failure parsing ModelStatus from value: '" <> e
-           <> "'. Accepted values: deleting, in_error, stop_requested, stopped, submitted, trained, training"
+    parser = (ModelStatus' . mk) <$> takeText
 
 instance ToText ModelStatus where
-    toText = \case
-        MSDeleting -> "DELETING"
-        MSInError -> "IN_ERROR"
-        MSStopRequested -> "STOP_REQUESTED"
-        MSStopped -> "STOPPED"
-        MSSubmitted -> "SUBMITTED"
-        MSTrained -> "TRAINED"
-        MSTraining -> "TRAINING"
+    toText (ModelStatus' ci) = original ci
+
+-- | Represents an enum of /known/ $ModelStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum ModelStatus where
+    toEnum i = case i of
+        0 -> MSDeleting
+        1 -> MSInError
+        2 -> MSStopRequested
+        3 -> MSStopped
+        4 -> MSSubmitted
+        5 -> MSTrained
+        6 -> MSTraining
+        _ -> (error . showText) $ "Unknown index for ModelStatus: " <> toText i
+    fromEnum x = case x of
+        MSDeleting -> 0
+        MSInError -> 1
+        MSStopRequested -> 2
+        MSStopped -> 3
+        MSSubmitted -> 4
+        MSTrained -> 5
+        MSTraining -> 6
+        ModelStatus' name -> (error . showText) $ "Unknown ModelStatus: " <> original name
+
+-- | Represents the bounds of /known/ $ModelStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded ModelStatus where
+    minBound = MSDeleting
+    maxBound = MSTraining
 
 instance Hashable     ModelStatus
 instance NFData       ModelStatus

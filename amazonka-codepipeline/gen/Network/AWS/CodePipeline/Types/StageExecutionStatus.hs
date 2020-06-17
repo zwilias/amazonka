@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,35 +16,80 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.CodePipeline.Types.StageExecutionStatus where
+module Network.AWS.CodePipeline.Types.StageExecutionStatus (
+  StageExecutionStatus (
+    ..
+    , SESFailed
+    , SESInProgress
+    , SESStopped
+    , SESStopping
+    , SESSucceeded
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data StageExecutionStatus = SESFailed
-                          | SESInProgress
-                          | SESStopped
-                          | SESStopping
-                          | SESSucceeded
-                              deriving (Eq, Ord, Read, Show, Enum, Bounded,
-                                        Data, Typeable, Generic)
+
+data StageExecutionStatus = StageExecutionStatus' (CI
+                                                     Text)
+                              deriving (Eq, Ord, Read, Show, Data, Typeable,
+                                        Generic)
+
+pattern SESFailed :: StageExecutionStatus
+pattern SESFailed = StageExecutionStatus' "Failed"
+
+pattern SESInProgress :: StageExecutionStatus
+pattern SESInProgress = StageExecutionStatus' "InProgress"
+
+pattern SESStopped :: StageExecutionStatus
+pattern SESStopped = StageExecutionStatus' "Stopped"
+
+pattern SESStopping :: StageExecutionStatus
+pattern SESStopping = StageExecutionStatus' "Stopping"
+
+pattern SESSucceeded :: StageExecutionStatus
+pattern SESSucceeded = StageExecutionStatus' "Succeeded"
+
+{-# COMPLETE
+  SESFailed,
+  SESInProgress,
+  SESStopped,
+  SESStopping,
+  SESSucceeded,
+  StageExecutionStatus' #-}
 
 instance FromText StageExecutionStatus where
-    parser = takeLowerText >>= \case
-        "failed" -> pure SESFailed
-        "inprogress" -> pure SESInProgress
-        "stopped" -> pure SESStopped
-        "stopping" -> pure SESStopping
-        "succeeded" -> pure SESSucceeded
-        e -> fromTextError $ "Failure parsing StageExecutionStatus from value: '" <> e
-           <> "'. Accepted values: failed, inprogress, stopped, stopping, succeeded"
+    parser = (StageExecutionStatus' . mk) <$> takeText
 
 instance ToText StageExecutionStatus where
-    toText = \case
-        SESFailed -> "Failed"
-        SESInProgress -> "InProgress"
-        SESStopped -> "Stopped"
-        SESStopping -> "Stopping"
-        SESSucceeded -> "Succeeded"
+    toText (StageExecutionStatus' ci) = original ci
+
+-- | Represents an enum of /known/ $StageExecutionStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum StageExecutionStatus where
+    toEnum i = case i of
+        0 -> SESFailed
+        1 -> SESInProgress
+        2 -> SESStopped
+        3 -> SESStopping
+        4 -> SESSucceeded
+        _ -> (error . showText) $ "Unknown index for StageExecutionStatus: " <> toText i
+    fromEnum x = case x of
+        SESFailed -> 0
+        SESInProgress -> 1
+        SESStopped -> 2
+        SESStopping -> 3
+        SESSucceeded -> 4
+        StageExecutionStatus' name -> (error . showText) $ "Unknown StageExecutionStatus: " <> original name
+
+-- | Represents the bounds of /known/ $StageExecutionStatus.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded StageExecutionStatus where
+    minBound = SESFailed
+    maxBound = SESSucceeded
 
 instance Hashable     StageExecutionStatus
 instance NFData       StageExecutionStatus

@@ -2,6 +2,7 @@
 {-# LANGUAGE DeriveGeneric      #-}
 {-# LANGUAGE LambdaCase         #-}
 {-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE PatternSynonyms    #-}
 
 {-# OPTIONS_GHC -fno-warn-unused-imports #-}
 
@@ -15,31 +16,67 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
-module Network.AWS.SWF.Types.SignalExternalWorkflowExecutionFailedCause where
+module Network.AWS.SWF.Types.SignalExternalWorkflowExecutionFailedCause (
+  SignalExternalWorkflowExecutionFailedCause (
+    ..
+    , SEWEFCOperationNotPermitted
+    , SEWEFCSignalExternalWorkflowExecutionRateExceeded
+    , SEWEFCUnknownExternalWorkflowExecution
+    )
+  ) where
 
+import Data.CaseInsensitive
 import Network.AWS.Prelude
-  
-data SignalExternalWorkflowExecutionFailedCause = SEWEFCOperationNotPermitted
-                                                | SEWEFCSignalExternalWorkflowExecutionRateExceeded
-                                                | SEWEFCUnknownExternalWorkflowExecution
+
+data SignalExternalWorkflowExecutionFailedCause = SignalExternalWorkflowExecutionFailedCause' (CI
+                                                                                                 Text)
                                                     deriving (Eq, Ord, Read,
-                                                              Show, Enum,
-                                                              Bounded, Data,
+                                                              Show, Data,
                                                               Typeable, Generic)
 
+pattern SEWEFCOperationNotPermitted :: SignalExternalWorkflowExecutionFailedCause
+pattern SEWEFCOperationNotPermitted = SignalExternalWorkflowExecutionFailedCause' "OPERATION_NOT_PERMITTED"
+
+pattern SEWEFCSignalExternalWorkflowExecutionRateExceeded :: SignalExternalWorkflowExecutionFailedCause
+pattern SEWEFCSignalExternalWorkflowExecutionRateExceeded = SignalExternalWorkflowExecutionFailedCause' "SIGNAL_EXTERNAL_WORKFLOW_EXECUTION_RATE_EXCEEDED"
+
+pattern SEWEFCUnknownExternalWorkflowExecution :: SignalExternalWorkflowExecutionFailedCause
+pattern SEWEFCUnknownExternalWorkflowExecution = SignalExternalWorkflowExecutionFailedCause' "UNKNOWN_EXTERNAL_WORKFLOW_EXECUTION"
+
+{-# COMPLETE
+  SEWEFCOperationNotPermitted,
+  SEWEFCSignalExternalWorkflowExecutionRateExceeded,
+  SEWEFCUnknownExternalWorkflowExecution,
+  SignalExternalWorkflowExecutionFailedCause' #-}
+
 instance FromText SignalExternalWorkflowExecutionFailedCause where
-    parser = takeLowerText >>= \case
-        "operation_not_permitted" -> pure SEWEFCOperationNotPermitted
-        "signal_external_workflow_execution_rate_exceeded" -> pure SEWEFCSignalExternalWorkflowExecutionRateExceeded
-        "unknown_external_workflow_execution" -> pure SEWEFCUnknownExternalWorkflowExecution
-        e -> fromTextError $ "Failure parsing SignalExternalWorkflowExecutionFailedCause from value: '" <> e
-           <> "'. Accepted values: operation_not_permitted, signal_external_workflow_execution_rate_exceeded, unknown_external_workflow_execution"
+    parser = (SignalExternalWorkflowExecutionFailedCause' . mk) <$> takeText
 
 instance ToText SignalExternalWorkflowExecutionFailedCause where
-    toText = \case
-        SEWEFCOperationNotPermitted -> "OPERATION_NOT_PERMITTED"
-        SEWEFCSignalExternalWorkflowExecutionRateExceeded -> "SIGNAL_EXTERNAL_WORKFLOW_EXECUTION_RATE_EXCEEDED"
-        SEWEFCUnknownExternalWorkflowExecution -> "UNKNOWN_EXTERNAL_WORKFLOW_EXECUTION"
+    toText (SignalExternalWorkflowExecutionFailedCause' ci) = original ci
+
+-- | Represents an enum of /known/ $SignalExternalWorkflowExecutionFailedCause.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+--   fromEnum is a partial function, and will error on values unknown at generation time.
+instance Enum SignalExternalWorkflowExecutionFailedCause where
+    toEnum i = case i of
+        0 -> SEWEFCOperationNotPermitted
+        1 -> SEWEFCSignalExternalWorkflowExecutionRateExceeded
+        2 -> SEWEFCUnknownExternalWorkflowExecution
+        _ -> (error . showText) $ "Unknown index for SignalExternalWorkflowExecutionFailedCause: " <> toText i
+    fromEnum x = case x of
+        SEWEFCOperationNotPermitted -> 0
+        SEWEFCSignalExternalWorkflowExecutionRateExceeded -> 1
+        SEWEFCUnknownExternalWorkflowExecution -> 2
+        SignalExternalWorkflowExecutionFailedCause' name -> (error . showText) $ "Unknown SignalExternalWorkflowExecutionFailedCause: " <> original name
+
+-- | Represents the bounds of /known/ $SignalExternalWorkflowExecutionFailedCause.
+--   AWS may have added more since the source was generated.
+--   This instance exists only for backward compatibility.
+instance Bounded SignalExternalWorkflowExecutionFailedCause where
+    minBound = SEWEFCOperationNotPermitted
+    maxBound = SEWEFCUnknownExternalWorkflowExecution
 
 instance Hashable     SignalExternalWorkflowExecutionFailedCause
 instance NFData       SignalExternalWorkflowExecutionFailedCause
