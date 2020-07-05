@@ -6,6 +6,24 @@
         },
         "HlsWebdavHttpTransferMode": {
             "enumPrefix": "Webdav"
+        },
+        "CreateMultiplexProgram": {
+            "renamedTo": "CreateMultiplexProgramStub"
+        },
+        "PurchaseOffering": {
+            "renamedTo": "PurchaseOfferingStub"
+        },
+        "UpdateInput": {
+            "renamedTo": "UpdateInputStub"
+        },
+        "UpdateMultiplex": {
+            "renamedTo": "UpdateMultiplexStub"
+        },
+        "UpdateMultiplexProgram": {
+            "renamedTo": "UpdateMultiplexProgramStub"
+        },
+        "UpdateReservation": {
+            "renamedTo": "UpdateReservationStub"
         }
     }
 }
