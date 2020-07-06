@@ -350,7 +350,10 @@ waiterNotationE = \case
 
     label b = \case
         Key  f -> key b f
-        Each f -> Exts.app (var "folding") . Exts.paren $ Exts.app (var "concatOf") (key True f)
+        Each f -> Exts.app (var "folding") . Exts.paren $
+          Exts.app (var "concatOf") $
+          Exts.infixApp (key True f) "." $
+          Exts.app (var "to") (var "toList")
         Last f -> Exts.infixApp (key False f) "." (var "_last")
 
     key False f = var (fieldLens f)
