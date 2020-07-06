@@ -31,7 +31,7 @@ import Control.Monad.Trans.State
 
 import Data.Bifunctor
 import Data.Char      (isSpace)
-import Data.List      (find, sort)
+import Data.List      (find)
 import Data.Monoid    ((<>))
 import Data.String
 import Data.Text      (Text)
