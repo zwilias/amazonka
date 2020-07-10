@@ -23,7 +23,6 @@ import Control.Monad.Except (throwError)
 import Control.Monad.State
 
 import Data.Hashable
-import Data.Monoid
 
 import Gen.AST.Cofree
 import Gen.AST.Data
