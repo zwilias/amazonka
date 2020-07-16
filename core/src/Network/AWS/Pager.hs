@@ -19,6 +19,7 @@ module Network.AWS.Pager
 import           Control.Applicative
 import           Data.HashMap.Strict   (HashMap)
 import qualified Data.HashMap.Strict   as Map
+import           Data.List.NonEmpty
 import           Data.Maybe            (isJust, fromMaybe)
 import           Data.Text             (Text)
 import           Network.AWS.Data.Text (ToText (..))
@@ -40,6 +41,9 @@ instance AWSTruncated Bool where
 
 instance AWSTruncated [a] where
     truncated = not . null
+
+instance AWSTruncated (NonEmpty a) where
+    truncated = const True
 
 instance AWSTruncated (HashMap k v) where
     truncated = not . Map.null

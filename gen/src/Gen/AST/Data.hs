@@ -19,6 +19,7 @@ module Gen.AST.Data
     ( serviceData
     , operationData
     , shapeData
+    , errorData
     , waiterData
     ) where
 
@@ -31,7 +32,7 @@ import Control.Monad.Trans.State
 
 import Data.Bifunctor
 import Data.Char      (isSpace)
-import Data.List      (find, sort)
+import Data.List      (find)
 import Data.Monoid    ((<>))
 import Data.String
 import Data.Text      (Text)
@@ -101,7 +102,6 @@ shapeData :: HasMetadata a Identity
           -> Shape Solved
           -> Either Error (Maybe SData)
 shapeData m (a :< s) = case s of
-    _ | s ^. infoException -> Just <$> errorData m a (s ^. info)
     Enum   i vs            -> Just <$> sumData p a i vs
     Struct st              -> do
         (d, fs) <- prodData m a st
@@ -120,11 +120,15 @@ addInstances s = f isHashable IsHashable . f isNFData IsNFData
 
 errorData :: HasMetadata a Identity
           => a
-          -> Solved
-          -> Info
-          -> Either Error SData
-errorData m s i = Fun <$> mk
+          -> (Id -> Id)
+          -> Shape Solved
+          -> Either Error (Maybe SData)
+errorData m idf (a :< s)
+  | s ^. infoException = (Just . Fun) <$> mk
+  | otherwise          = pure Nothing
   where
+    i = s ^. info
+
     mk = Fun' p h
         <$> pp None  (errorS p)
         <*> pp Print (errorD m p status code)
@@ -137,8 +141,8 @@ errorData m s i = Fun <$> mk
     status = i ^? infoError . _Just . errStatus
     code   = fromMaybe (memberId n) (i ^. infoError . _Just . errCode)
 
-    p = Text.cons '_' (typeId n)
-    n = s ^. annId
+    p = typeId $ idf n
+    n = a ^. annId
 
 sumData :: Protocol
         -> Solved
@@ -321,6 +325,8 @@ notation m = go
   where
     go :: Shape Solved -> Notation Id -> Either Error (Notation Field)
     go s = \case
+        EmptyList k      -> EmptyList    <$> key s k
+        EmptyText k      -> EmptyText    <$> key s k
         NonEmptyList k   -> NonEmptyList <$> key s k
         NonEmptyText k   -> NonEmptyText <$> key s k
         Choice       x y -> Choice       <$> go s x <*> go s y
