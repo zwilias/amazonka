@@ -27,7 +27,7 @@ module Network.AWS.MediaLive.Types.M2tsPcrControl (
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | Placeholder documentation for M2tsPcrControl
+-- | M2ts Pcr Control
 data M2tsPcrControl = M2tsPcrControl' (CI Text)
                         deriving (Eq, Ord, Read, Show, Data, Typeable,
                                   Generic)

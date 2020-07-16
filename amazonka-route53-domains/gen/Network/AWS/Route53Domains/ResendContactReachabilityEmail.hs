@@ -58,14 +58,14 @@ newtype ResendContactReachabilityEmail = ResendContactReachabilityEmail'{_rcreDo
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'rcreDomainName' - The name of the domain for which you want Amazon Route 53 to resend a confirmation email to the registrant contact.
+-- * 'rcreDomainName' - The name of the domain for which you want Route 53 to resend a confirmation email to the registrant contact.
 resendContactReachabilityEmail
     :: ResendContactReachabilityEmail
 resendContactReachabilityEmail
   = ResendContactReachabilityEmail'{_rcreDomainName =
                                       Nothing}
 
--- | The name of the domain for which you want Amazon Route 53 to resend a confirmation email to the registrant contact.
+-- | The name of the domain for which you want Route 53 to resend a confirmation email to the registrant contact.
 rcreDomainName :: Lens' ResendContactReachabilityEmail (Maybe Text)
 rcreDomainName = lens _rcreDomainName (\ s a -> s{_rcreDomainName = a})
 

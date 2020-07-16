@@ -39,7 +39,7 @@ data FilteredLogEvent = FilteredLogEvent'{_fleIngestionTime
 --
 -- * 'fleIngestionTime' - The time the event was ingested, expressed as the number of milliseconds after Jan 1, 1970 00:00:00 UTC.
 --
--- * 'fleLogStreamName' - The name of the log stream this event belongs to.
+-- * 'fleLogStreamName' - The name of the log stream to which this event belongs.
 --
 -- * 'fleMessage' - The data contained in the log event.
 --
@@ -57,7 +57,7 @@ filteredLogEvent
 fleIngestionTime :: Lens' FilteredLogEvent (Maybe Natural)
 fleIngestionTime = lens _fleIngestionTime (\ s a -> s{_fleIngestionTime = a}) . mapping _Nat
 
--- | The name of the log stream this event belongs to.
+-- | The name of the log stream to which this event belongs.
 fleLogStreamName :: Lens' FilteredLogEvent (Maybe Text)
 fleLogStreamName = lens _fleLogStreamName (\ s a -> s{_fleLogStreamName = a})
 

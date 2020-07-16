@@ -35,7 +35,7 @@
 --
 --
 --
--- If the caller doesn't have sufficient permissions to invoke the action, or the parameter values fall outside the specified constraints, the action fails. The associated event attribute's @cause@ parameter is set to @OPERATION_NOT_PERMITTED@ . For details and example IAM policies, see <http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html Using IAM to Manage Access to Amazon SWF Workflows> in the /Amazon SWF Developer Guide/ .
+-- If the caller doesn't have sufficient permissions to invoke the action, or the parameter values fall outside the specified constraints, the action fails. The associated event attribute's @cause@ parameter is set to @OPERATION_NOT_PERMITTED@ . For details and example IAM policies, see <https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html Using IAM to Manage Access to Amazon SWF Workflows> in the /Amazon SWF Developer Guide/ .
 --
 module Network.AWS.SWF.PollForActivityTask
     (
@@ -82,7 +82,7 @@ data PollForActivityTask = PollForActivityTask'{_pfatIdentity
 --
 -- * 'pfatDomain' - The name of the domain that contains the task lists being polled.
 --
--- * 'pfatTaskList' - Specifies the task list to poll for activity tasks. The specified string must not start or end with whitespace. It must not contain a @:@ (colon), @/@ (slash), @|@ (vertical bar), or any control characters (@\u0000-\u001f@ | @\u007f-\u009f@ ). Also, it must not contain the literal string @arn@ .
+-- * 'pfatTaskList' - Specifies the task list to poll for activity tasks. The specified string must not start or end with whitespace. It must not contain a @:@ (colon), @/@ (slash), @|@ (vertical bar), or any control characters (@\u0000-\u001f@ | @\u007f-\u009f@ ). Also, it must not /be/ the literal string @arn@ .
 pollForActivityTask
     :: Text -- ^ 'pfatDomain'
     -> TaskList -- ^ 'pfatTaskList'
@@ -99,7 +99,7 @@ pfatIdentity = lens _pfatIdentity (\ s a -> s{_pfatIdentity = a})
 pfatDomain :: Lens' PollForActivityTask Text
 pfatDomain = lens _pfatDomain (\ s a -> s{_pfatDomain = a})
 
--- | Specifies the task list to poll for activity tasks. The specified string must not start or end with whitespace. It must not contain a @:@ (colon), @/@ (slash), @|@ (vertical bar), or any control characters (@\u0000-\u001f@ | @\u007f-\u009f@ ). Also, it must not contain the literal string @arn@ .
+-- | Specifies the task list to poll for activity tasks. The specified string must not start or end with whitespace. It must not contain a @:@ (colon), @/@ (slash), @|@ (vertical bar), or any control characters (@\u0000-\u001f@ | @\u007f-\u009f@ ). Also, it must not /be/ the literal string @arn@ .
 pfatTaskList :: Lens' PollForActivityTask TaskList
 pfatTaskList = lens _pfatTaskList (\ s a -> s{_pfatTaskList = a})
 

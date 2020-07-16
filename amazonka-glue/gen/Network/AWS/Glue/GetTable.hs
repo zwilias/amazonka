@@ -56,7 +56,7 @@ data GetTable = GetTable'{_gttblCatalogId ::
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'gttblCatalogId' - The ID of the Data Catalog where the table resides. If none is supplied, the AWS account ID is used by default.
+-- * 'gttblCatalogId' - The ID of the Data Catalog where the table resides. If none is provided, the AWS account ID is used by default.
 --
 -- * 'gttblDatabaseName' - The name of the database in the catalog in which the table resides. For Hive compatibility, this name is entirely lowercase.
 --
@@ -70,7 +70,7 @@ getTable pDatabaseName_ pName_
               _gttblDatabaseName = pDatabaseName_,
               _gttblName = pName_}
 
--- | The ID of the Data Catalog where the table resides. If none is supplied, the AWS account ID is used by default.
+-- | The ID of the Data Catalog where the table resides. If none is provided, the AWS account ID is used by default.
 gttblCatalogId :: Lens' GetTable (Maybe Text)
 gttblCatalogId = lens _gttblCatalogId (\ s a -> s{_gttblCatalogId = a})
 

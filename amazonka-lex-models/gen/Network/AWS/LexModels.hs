@@ -62,6 +62,9 @@ module Network.AWS.LexModels
     -- ** CreateSlotTypeVersion 
     , module Network.AWS.LexModels.CreateSlotTypeVersion
 
+    -- ** ListTagsForResource 
+    , module Network.AWS.LexModels.ListTagsForResource
+
     -- ** GetIntent 
     , module Network.AWS.LexModels.GetIntent
 
@@ -146,11 +149,17 @@ module Network.AWS.LexModels
     -- ** GetBuiltinSlotTypes (Paginated)
     , module Network.AWS.LexModels.GetBuiltinSlotTypes
 
+    -- ** TagResource 
+    , module Network.AWS.LexModels.TagResource
+
     -- ** GetUtterancesView 
     , module Network.AWS.LexModels.GetUtterancesView
 
     -- ** GetSlotTypeVersions (Paginated)
     , module Network.AWS.LexModels.GetSlotTypeVersions
+
+    -- ** UntagResource 
+    , module Network.AWS.LexModels.UntagResource
 
     -- ** GetIntents (Paginated)
     , module Network.AWS.LexModels.GetIntents
@@ -168,6 +177,9 @@ module Network.AWS.LexModels
 
     -- ** ContentType
     , ContentType (..)
+
+    -- ** Destination
+    , Destination (..)
 
     -- ** ExportStatus
     , ExportStatus (..)
@@ -187,8 +199,14 @@ module Network.AWS.LexModels
     -- ** Locale
     , Locale (..)
 
+    -- ** LogType
+    , LogType (..)
+
     -- ** MergeStrategy
     , MergeStrategy (..)
+
+    -- ** ObfuscationSetting
+    , ObfuscationSetting (..)
 
     -- ** ProcessBehavior
     , ProcessBehavior (..)
@@ -213,6 +231,7 @@ module Network.AWS.LexModels
     , bamBotName
     , bamCreatedDate
     , bamName
+    , bamConversationLogs
     , bamLastUpdatedDate
     , bamDescription
 
@@ -262,6 +281,18 @@ module Network.AWS.LexModels
     , chUri
     , chMessageVersion
 
+    -- ** ConversationLogsRequest
+    , ConversationLogsRequest
+    , conversationLogsRequest
+    , clrLogSettings
+    , clrIamRoleARN
+
+    -- ** ConversationLogsResponse
+    , ConversationLogsResponse
+    , conversationLogsResponse
+    , clIamRoleARN
+    , clLogSettings
+
     -- ** EnumerationValue
     , EnumerationValue
     , enumerationValue
@@ -295,6 +326,23 @@ module Network.AWS.LexModels
     , imLastUpdatedDate
     , imDescription
 
+    -- ** LogSettingsRequest
+    , LogSettingsRequest
+    , logSettingsRequest
+    , lsrKmsKeyARN
+    , lsrLogType
+    , lsrDestination
+    , lsrResourceARN
+
+    -- ** LogSettingsResponse
+    , LogSettingsResponse
+    , logSettingsResponse
+    , lsDestination
+    , lsKmsKeyARN
+    , lsLogType
+    , lsResourceARN
+    , lsResourcePrefix
+
     -- ** Message
     , Message
     , message
@@ -316,11 +364,17 @@ module Network.AWS.LexModels
     , sValueElicitationPrompt
     , sResponseCard
     , sPriority
+    , sObfuscationSetting
     , sSlotTypeVersion
     , sSampleUtterances
     , sDescription
     , sName
     , sSlotConstraint
+
+    -- ** SlotTypeConfiguration
+    , SlotTypeConfiguration
+    , slotTypeConfiguration
+    , stcRegexConfiguration
 
     -- ** SlotTypeMetadata
     , SlotTypeMetadata
@@ -331,11 +385,22 @@ module Network.AWS.LexModels
     , stmLastUpdatedDate
     , stmDescription
 
+    -- ** SlotTypeRegexConfiguration
+    , SlotTypeRegexConfiguration
+    , slotTypeRegexConfiguration
+    , strcPattern
+
     -- ** Statement
     , Statement
     , statement
     , staResponseCard
     , staMessages
+
+    -- ** Tag
+    , Tag
+    , tag
+    , tagKey
+    , tagValue
 
     -- ** UtteranceData
     , UtteranceData
@@ -384,12 +449,15 @@ import Network.AWS.LexModels.GetSlotType
 import Network.AWS.LexModels.GetSlotTypeVersions
 import Network.AWS.LexModels.GetSlotTypes
 import Network.AWS.LexModels.GetUtterancesView
+import Network.AWS.LexModels.ListTagsForResource
 import Network.AWS.LexModels.PutBot
 import Network.AWS.LexModels.PutBotAlias
 import Network.AWS.LexModels.PutIntent
 import Network.AWS.LexModels.PutSlotType
 import Network.AWS.LexModels.StartImport
+import Network.AWS.LexModels.TagResource
 import Network.AWS.LexModels.Types
+import Network.AWS.LexModels.UntagResource
 import Network.AWS.LexModels.Waiters
 
 {- $errors

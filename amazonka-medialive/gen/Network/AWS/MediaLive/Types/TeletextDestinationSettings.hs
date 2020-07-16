@@ -20,7 +20,7 @@ module Network.AWS.MediaLive.Types.TeletextDestinationSettings where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | Placeholder documentation for TeletextDestinationSettings
+-- | Teletext Destination Settings
 --
 -- /See:/ 'teletextDestinationSettings' smart constructor.
 data TeletextDestinationSettings = TeletextDestinationSettings'

@@ -20,7 +20,7 @@ module Network.AWS.StepFunctions.Types.ExecutionTimedOutEventDetails where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | Contains details about the execution timeout which occurred during the execution.
+-- | Contains details about the execution timeout that occurred during the execution.
 --
 --
 --
@@ -28,12 +28,14 @@ import Network.AWS.Prelude
 data ExecutionTimedOutEventDetails = ExecutionTimedOutEventDetails'{_etoedError
                                                                     ::
                                                                     !(Maybe
-                                                                        Text),
+                                                                        (Sensitive
+                                                                           Text)),
                                                                     _etoedCause
                                                                     ::
                                                                     !(Maybe
-                                                                        Text)}
-                                       deriving (Eq, Read, Show, Data, Typeable,
+                                                                        (Sensitive
+                                                                           Text))}
+                                       deriving (Eq, Show, Data, Typeable,
                                                  Generic)
 
 -- | Creates a value of 'ExecutionTimedOutEventDetails' with the minimum fields required to make a request.
@@ -52,11 +54,11 @@ executionTimedOutEventDetails
 
 -- | The error code of the failure.
 etoedError :: Lens' ExecutionTimedOutEventDetails (Maybe Text)
-etoedError = lens _etoedError (\ s a -> s{_etoedError = a})
+etoedError = lens _etoedError (\ s a -> s{_etoedError = a}) . mapping _Sensitive
 
 -- | A more detailed explanation of the cause of the timeout.
 etoedCause :: Lens' ExecutionTimedOutEventDetails (Maybe Text)
-etoedCause = lens _etoedCause (\ s a -> s{_etoedCause = a})
+etoedCause = lens _etoedCause (\ s a -> s{_etoedCause = a}) . mapping _Sensitive
 
 instance FromJSON ExecutionTimedOutEventDetails where
         parseJSON

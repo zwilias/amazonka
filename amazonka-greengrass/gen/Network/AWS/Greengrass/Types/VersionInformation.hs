@@ -39,9 +39,9 @@ data VersionInformation = VersionInformation'{_viARN
 --
 -- * 'viCreationTimestamp' - The time, in milliseconds since the epoch, when the version was created.
 --
--- * 'viVersion' - The unique ID of the version.
+-- * 'viVersion' - The ID of the version.
 --
--- * 'viId' - The ID of the version.
+-- * 'viId' - The ID of the parent definition that the version is associated with.
 versionInformation
     :: VersionInformation
 versionInformation
@@ -57,11 +57,11 @@ viARN = lens _viARN (\ s a -> s{_viARN = a})
 viCreationTimestamp :: Lens' VersionInformation (Maybe Text)
 viCreationTimestamp = lens _viCreationTimestamp (\ s a -> s{_viCreationTimestamp = a})
 
--- | The unique ID of the version.
+-- | The ID of the version.
 viVersion :: Lens' VersionInformation (Maybe Text)
 viVersion = lens _viVersion (\ s a -> s{_viVersion = a})
 
--- | The ID of the version.
+-- | The ID of the parent definition that the version is associated with.
 viId :: Lens' VersionInformation (Maybe Text)
 viId = lens _viId (\ s a -> s{_viId = a})
 

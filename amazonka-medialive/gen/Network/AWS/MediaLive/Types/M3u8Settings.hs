@@ -18,6 +18,7 @@
 module Network.AWS.MediaLive.Types.M3u8Settings where
 
 import Network.AWS.Lens
+import Network.AWS.MediaLive.Types.M3u8NielsenId3Behavior
 import Network.AWS.MediaLive.Types.M3u8PcrControl
 import Network.AWS.MediaLive.Types.M3u8Scte35Behavior
 import Network.AWS.MediaLive.Types.M3u8TimedMetadataBehavior
@@ -29,6 +30,8 @@ import Network.AWS.Prelude
 data M3u8Settings = M3u8Settings'{_mPmtPid ::
                                   !(Maybe Text),
                                   _mVideoPid :: !(Maybe Text),
+                                  _mNielsenId3Behavior ::
+                                  !(Maybe M3u8NielsenId3Behavior),
                                   _mScte35Pid :: !(Maybe Text),
                                   _mTransportStreamId :: !(Maybe Nat),
                                   _mProgramNum :: !(Maybe Nat),
@@ -54,6 +57,8 @@ data M3u8Settings = M3u8Settings'{_mPmtPid ::
 -- * 'mPmtPid' - Packet Identifier (PID) for the Program Map Table (PMT) in the transport stream. Can be entered as a decimal or hexadecimal value.
 --
 -- * 'mVideoPid' - Packet Identifier (PID) of the elementary video stream in the transport stream. Can be entered as a decimal or hexadecimal value.
+--
+-- * 'mNielsenId3Behavior' - If set to passthrough, Nielsen inaudible tones for media tracking will be detected in the input audio and an equivalent ID3 tag will be inserted in the output.
 --
 -- * 'mScte35Pid' - Packet Identifier (PID) of the SCTE-35 stream in the transport stream. Can be entered as a decimal or hexadecimal value.
 --
@@ -86,8 +91,8 @@ m3u8Settings
     :: M3u8Settings
 m3u8Settings
   = M3u8Settings'{_mPmtPid = Nothing,
-                  _mVideoPid = Nothing, _mScte35Pid = Nothing,
-                  _mTransportStreamId = Nothing,
+                  _mVideoPid = Nothing, _mNielsenId3Behavior = Nothing,
+                  _mScte35Pid = Nothing, _mTransportStreamId = Nothing,
                   _mProgramNum = Nothing,
                   _mTimedMetadataBehavior = Nothing,
                   _mPmtInterval = Nothing, _mEcmPid = Nothing,
@@ -104,6 +109,10 @@ mPmtPid = lens _mPmtPid (\ s a -> s{_mPmtPid = a})
 -- | Packet Identifier (PID) of the elementary video stream in the transport stream. Can be entered as a decimal or hexadecimal value.
 mVideoPid :: Lens' M3u8Settings (Maybe Text)
 mVideoPid = lens _mVideoPid (\ s a -> s{_mVideoPid = a})
+
+-- | If set to passthrough, Nielsen inaudible tones for media tracking will be detected in the input audio and an equivalent ID3 tag will be inserted in the output.
+mNielsenId3Behavior :: Lens' M3u8Settings (Maybe M3u8NielsenId3Behavior)
+mNielsenId3Behavior = lens _mNielsenId3Behavior (\ s a -> s{_mNielsenId3Behavior = a})
 
 -- | Packet Identifier (PID) of the SCTE-35 stream in the transport stream. Can be entered as a decimal or hexadecimal value.
 mScte35Pid :: Lens' M3u8Settings (Maybe Text)
@@ -167,7 +176,8 @@ instance FromJSON M3u8Settings where
               (\ x ->
                  M3u8Settings' <$>
                    (x .:? "pmtPid") <*> (x .:? "videoPid") <*>
-                     (x .:? "scte35Pid")
+                     (x .:? "nielsenId3Behavior")
+                     <*> (x .:? "scte35Pid")
                      <*> (x .:? "transportStreamId")
                      <*> (x .:? "programNum")
                      <*> (x .:? "timedMetadataBehavior")
@@ -192,6 +202,7 @@ instance ToJSON M3u8Settings where
               (catMaybes
                  [("pmtPid" .=) <$> _mPmtPid,
                   ("videoPid" .=) <$> _mVideoPid,
+                  ("nielsenId3Behavior" .=) <$> _mNielsenId3Behavior,
                   ("scte35Pid" .=) <$> _mScte35Pid,
                   ("transportStreamId" .=) <$> _mTransportStreamId,
                   ("programNum" .=) <$> _mProgramNum,

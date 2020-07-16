@@ -22,41 +22,45 @@ import Network.AWS.Pinpoint.Types.Duration
 import Network.AWS.Pinpoint.Types.RecencyType
 import Network.AWS.Prelude
 
--- | Define how a segment based on recency of use.
+-- | Specifies criteria for including or excluding endpoints from a segment based on how recently an endpoint was active.
+--
+--
 --
 -- /See:/ 'recencyDimension' smart constructor.
-data RecencyDimension = RecencyDimension'{_rdRecencyType
-                                          :: !(Maybe RecencyType),
-                                          _rdDuration :: !(Maybe Duration)}
+data RecencyDimension = RecencyDimension'{_rdDuration
+                                          :: !Duration,
+                                          _rdRecencyType :: !RecencyType}
                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'RecencyDimension' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'rdRecencyType' - The recency dimension type: ACTIVE - Users who have used your app within the specified duration are included in the segment. INACTIVE - Users who have not used your app within the specified duration are included in the segment.
+-- * 'rdDuration' - The duration to use when determining whether an endpoint is active or inactive.
 --
--- * 'rdDuration' - The length of time during which users have been active or inactive with your app. Valid values: HR_24, DAY_7, DAY_14, DAY_30
+-- * 'rdRecencyType' - The type of recency dimension to use for the segment. Valid values are: ACTIVE, endpoints that were active within the specified duration are included in the segment; and, INACTIVE, endpoints that weren't active within the specified duration are included in the segment.
 recencyDimension
-    :: RecencyDimension
-recencyDimension
-  = RecencyDimension'{_rdRecencyType = Nothing,
-                      _rdDuration = Nothing}
+    :: Duration -- ^ 'rdDuration'
+    -> RecencyType -- ^ 'rdRecencyType'
+    -> RecencyDimension
+recencyDimension pDuration_ pRecencyType_
+  = RecencyDimension'{_rdDuration = pDuration_,
+                      _rdRecencyType = pRecencyType_}
 
--- | The recency dimension type: ACTIVE - Users who have used your app within the specified duration are included in the segment. INACTIVE - Users who have not used your app within the specified duration are included in the segment.
-rdRecencyType :: Lens' RecencyDimension (Maybe RecencyType)
-rdRecencyType = lens _rdRecencyType (\ s a -> s{_rdRecencyType = a})
-
--- | The length of time during which users have been active or inactive with your app. Valid values: HR_24, DAY_7, DAY_14, DAY_30
-rdDuration :: Lens' RecencyDimension (Maybe Duration)
+-- | The duration to use when determining whether an endpoint is active or inactive.
+rdDuration :: Lens' RecencyDimension Duration
 rdDuration = lens _rdDuration (\ s a -> s{_rdDuration = a})
+
+-- | The type of recency dimension to use for the segment. Valid values are: ACTIVE, endpoints that were active within the specified duration are included in the segment; and, INACTIVE, endpoints that weren't active within the specified duration are included in the segment.
+rdRecencyType :: Lens' RecencyDimension RecencyType
+rdRecencyType = lens _rdRecencyType (\ s a -> s{_rdRecencyType = a})
 
 instance FromJSON RecencyDimension where
         parseJSON
           = withObject "RecencyDimension"
               (\ x ->
                  RecencyDimension' <$>
-                   (x .:? "RecencyType") <*> (x .:? "Duration"))
+                   (x .: "Duration") <*> (x .: "RecencyType"))
 
 instance Hashable RecencyDimension where
 
@@ -66,5 +70,5 @@ instance ToJSON RecencyDimension where
         toJSON RecencyDimension'{..}
           = object
               (catMaybes
-                 [("RecencyType" .=) <$> _rdRecencyType,
-                  ("Duration" .=) <$> _rdDuration])
+                 [Just ("Duration" .= _rdDuration),
+                  Just ("RecencyType" .= _rdRecencyType)])

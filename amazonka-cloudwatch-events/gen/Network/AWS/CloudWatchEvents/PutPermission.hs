@@ -18,16 +18,16 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Running @PutPermission@ permits the specified AWS account or AWS organization to put events to the specified /event bus/ . Rules in your account are triggered by these events arriving to an event bus in your account. 
+-- Running @PutPermission@ permits the specified AWS account or AWS organization to put events to the specified /event bus/ . CloudWatch Events rules in your account are triggered by these events arriving to an event bus in your account. 
 --
 --
--- For another account to send events to your account, that external account must have a rule with your account's event bus as a target.
+-- For another account to send events to your account, that external account must have an EventBridge rule with your account's event bus as a target.
 --
--- To enable multiple AWS accounts to put events to an event bus, run @PutPermission@ once for each of these accounts. Or, if all the accounts are members of the same AWS organization, you can run @PutPermission@ once specifying @Principal@ as "*" and specifying the AWS organization ID in @Condition@ , to grant permissions to all accounts in that organization.
+-- To enable multiple AWS accounts to put events to your event bus, run @PutPermission@ once for each of these accounts. Or, if all the accounts are members of the same AWS organization, you can run @PutPermission@ once specifying @Principal@ as "*" and specifying the AWS organization ID in @Condition@ , to grant permissions to all accounts in that organization.
 --
 -- If you grant permissions using an organization, then accounts in that organization must specify a @RoleArn@ with proper permissions when they use @PutTarget@ to add your account's event bus as a target. For more information, see <https://docs.aws.amazon.com/eventbridge/latest/userguide/eventbridge-cross-account-event-delivery.html Sending and Receiving Events Between AWS Accounts> in the /Amazon EventBridge User Guide/ .
 --
--- The permission policy on an event bus can't exceed 10 KB in size.
+-- The permission policy on the default event bus cannot exceed 10 KB in size.
 --
 module Network.AWS.CloudWatchEvents.PutPermission
     (
@@ -67,13 +67,13 @@ data PutPermission = PutPermission'{_ppEventBusName
 --
 -- * 'ppEventBusName' - The event bus associated with the rule. If you omit this, the default event bus is used.
 --
--- * 'ppCondition' - This parameter enables you to limit the permission to accounts that fulfill a certain condition, such as being a member of a certain AWS organization. For more information about AWS Organizations, see <https://docs.aws.amazon.com/organizations/latest/userguide/orgs_introduction.html What Is AWS Organizations?> in the /AWS Organizations User Guide/ . If you specify @Condition@ with an AWS organization ID and specify "*" as the value for @Principal@ , you grant permission to all the accounts in the named organization. The @Condition@ is a JSON string that must contain @Type@ , @Key@ , and @Value@ fields.
+-- * 'ppCondition' - This parameter enables you to limit the permission to accounts that fulfill a certain condition, such as being a member of a certain AWS organization. For more information about AWS Organizations, see <https://docs.aws.amazon.com/organizations/latest/userguide/orgs_introduction.html What Is AWS Organizations> in the /AWS Organizations User Guide/ . If you specify @Condition@ with an AWS organization ID, and specify "*" as the value for @Principal@ , you grant permission to all the accounts in the named organization. The @Condition@ is a JSON string which must contain @Type@ , @Key@ , and @Value@ fields.
 --
--- * 'ppAction' - The action that you're enabling the other account to perform. Currently, this must be @events:PutEvents@ .
+-- * 'ppAction' - The action that you are enabling the other account to perform. Currently, this must be @events:PutEvents@ .
 --
--- * 'ppPrincipal' - The 12-digit AWS account ID that you are permitting to put events to your default event bus. Specify "*" to permit any account to put events to your default event bus. If you specify "*" without specifying @Condition@ , avoid creating rules that might match undesirable events. To create more secure rules, make sure that the event pattern for each rule contains an @account@ field with a specific account ID to receive events from. Rules with an account field don't match any events sent from other accounts.
+-- * 'ppPrincipal' - The 12-digit AWS account ID that you are permitting to put events to your default event bus. Specify "*" to permit any account to put events to your default event bus. If you specify "*" without specifying @Condition@ , avoid creating rules that may match undesirable events. To create more secure rules, make sure that the event pattern for each rule contains an @account@ field with a specific account ID from which to receive events. Rules with an account field do not match any events sent from other accounts.
 --
--- * 'ppStatementId' - An identifier string for the external account that you're granting permissions to. If you later want to revoke the permission for this external account, specify this @StatementId@ when you run 'RemovePermission' .
+-- * 'ppStatementId' - An identifier string for the external account that you are granting permissions to. If you later want to revoke the permission for this external account, specify this @StatementId@ when you run 'RemovePermission' .
 putPermission
     :: Text -- ^ 'ppAction'
     -> Text -- ^ 'ppPrincipal'
@@ -89,19 +89,19 @@ putPermission pAction_ pPrincipal_ pStatementId_
 ppEventBusName :: Lens' PutPermission (Maybe Text)
 ppEventBusName = lens _ppEventBusName (\ s a -> s{_ppEventBusName = a})
 
--- | This parameter enables you to limit the permission to accounts that fulfill a certain condition, such as being a member of a certain AWS organization. For more information about AWS Organizations, see <https://docs.aws.amazon.com/organizations/latest/userguide/orgs_introduction.html What Is AWS Organizations?> in the /AWS Organizations User Guide/ . If you specify @Condition@ with an AWS organization ID and specify "*" as the value for @Principal@ , you grant permission to all the accounts in the named organization. The @Condition@ is a JSON string that must contain @Type@ , @Key@ , and @Value@ fields.
+-- | This parameter enables you to limit the permission to accounts that fulfill a certain condition, such as being a member of a certain AWS organization. For more information about AWS Organizations, see <https://docs.aws.amazon.com/organizations/latest/userguide/orgs_introduction.html What Is AWS Organizations> in the /AWS Organizations User Guide/ . If you specify @Condition@ with an AWS organization ID, and specify "*" as the value for @Principal@ , you grant permission to all the accounts in the named organization. The @Condition@ is a JSON string which must contain @Type@ , @Key@ , and @Value@ fields.
 ppCondition :: Lens' PutPermission (Maybe Condition)
 ppCondition = lens _ppCondition (\ s a -> s{_ppCondition = a})
 
--- | The action that you're enabling the other account to perform. Currently, this must be @events:PutEvents@ .
+-- | The action that you are enabling the other account to perform. Currently, this must be @events:PutEvents@ .
 ppAction :: Lens' PutPermission Text
 ppAction = lens _ppAction (\ s a -> s{_ppAction = a})
 
--- | The 12-digit AWS account ID that you are permitting to put events to your default event bus. Specify "*" to permit any account to put events to your default event bus. If you specify "*" without specifying @Condition@ , avoid creating rules that might match undesirable events. To create more secure rules, make sure that the event pattern for each rule contains an @account@ field with a specific account ID to receive events from. Rules with an account field don't match any events sent from other accounts.
+-- | The 12-digit AWS account ID that you are permitting to put events to your default event bus. Specify "*" to permit any account to put events to your default event bus. If you specify "*" without specifying @Condition@ , avoid creating rules that may match undesirable events. To create more secure rules, make sure that the event pattern for each rule contains an @account@ field with a specific account ID from which to receive events. Rules with an account field do not match any events sent from other accounts.
 ppPrincipal :: Lens' PutPermission Text
 ppPrincipal = lens _ppPrincipal (\ s a -> s{_ppPrincipal = a})
 
--- | An identifier string for the external account that you're granting permissions to. If you later want to revoke the permission for this external account, specify this @StatementId@ when you run 'RemovePermission' .
+-- | An identifier string for the external account that you are granting permissions to. If you later want to revoke the permission for this external account, specify this @StatementId@ when you run 'RemovePermission' .
 ppStatementId :: Lens' PutPermission Text
 ppStatementId = lens _ppStatementId (\ s a -> s{_ppStatementId = a})
 

@@ -13,25 +13,25 @@
 --
 -- __AWS Identity and Access Management__ 
 --
--- AWS Identity and Access Management (IAM) is a web service that you can use to manage users and user permissions under your AWS account. This guide provides descriptions of IAM actions that you can call programmatically. For general information about IAM, see <http://aws.amazon.com/iam/ AWS Identity and Access Management (IAM)> . For the user guide for IAM, see <http://docs.aws.amazon.com/IAM/latest/UserGuide/ Using IAM> . 
+-- AWS Identity and Access Management (IAM) is a web service that you can use to manage users and user permissions under your AWS account. This guide provides descriptions of IAM actions that you can call programmatically. For general information about IAM, see <http://aws.amazon.com/iam/ AWS Identity and Access Management (IAM)> . For the user guide for IAM, see <https://docs.aws.amazon.com/IAM/latest/UserGuide/ Using IAM> . 
 --
--- We recommend that you use the AWS SDKs to make programmatic API calls to IAM. However, you can also use the IAM Query API to make direct calls to the IAM web service. To learn more about the IAM Query API, see <http://docs.aws.amazon.com/IAM/latest/UserGuide/IAM_UsingQueryAPI.html Making Query Requests> in the /Using IAM/ guide. IAM supports GET and POST requests for all actions. That is, the API does not require you to use GET for some actions and POST for others. However, GET requests are subject to the limitation size of a URL. Therefore, for operations that require larger sizes, use a POST request. 
+-- We recommend that you use the AWS SDKs to make programmatic API calls to IAM. However, you can also use the IAM Query API to make direct calls to the IAM web service. To learn more about the IAM Query API, see <https://docs.aws.amazon.com/IAM/latest/UserGuide/IAM_UsingQueryAPI.html Making Query Requests> in the /Using IAM/ guide. IAM supports GET and POST requests for all actions. That is, the API does not require you to use GET for some actions and POST for others. However, GET requests are subject to the limitation size of a URL. Therefore, for operations that require larger sizes, use a POST request. 
 --
 -- __Signing Requests__ 
 --
 -- Requests must be signed using an access key ID and a secret access key. We strongly recommend that you do not use your AWS account access key ID and secret access key for everyday work with IAM. You can use the access key ID and secret access key for an IAM user or you can use the AWS Security Token Service to generate temporary security credentials and use those to sign requests.
 --
--- To sign requests, we recommend that you use <http://docs.aws.amazon.com/general/latest/gr/signature-version-4.html Signature Version 4> . If you have an existing application that uses Signature Version 2, you do not have to update it to use Signature Version 4. However, some operations now require Signature Version 4. The documentation for operations that require version 4 indicate this requirement. 
+-- To sign requests, we recommend that you use <https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html Signature Version 4> . If you have an existing application that uses Signature Version 2, you do not have to update it to use Signature Version 4. However, some operations now require Signature Version 4. The documentation for operations that require version 4 indicate this requirement. 
 --
 -- __Additional Resources__ 
 --
 -- For more information, see the following:
 --
---     * <http://docs.aws.amazon.com/general/latest/gr/aws-security-credentials.html AWS Security Credentials> . This topic provides general information about the types of credentials used for accessing AWS. 
+--     * <https://docs.aws.amazon.com/general/latest/gr/aws-security-credentials.html AWS Security Credentials> . This topic provides general information about the types of credentials used for accessing AWS. 
 --
---     * <http://docs.aws.amazon.com/IAM/latest/UserGuide/IAMBestPractices.html IAM Best Practices> . This topic presents a list of suggestions for using the IAM service to help secure your AWS resources. 
+--     * <https://docs.aws.amazon.com/IAM/latest/UserGuide/IAMBestPractices.html IAM Best Practices> . This topic presents a list of suggestions for using the IAM service to help secure your AWS resources. 
 --
---     * <http://docs.aws.amazon.com/general/latest/gr/signing_aws_api_requests.html Signing AWS API Requests> . This set of topics walk you through the process of signing a request using an access key ID and secret access key. 
+--     * <https://docs.aws.amazon.com/general/latest/gr/signing_aws_api_requests.html Signing AWS API Requests> . This set of topics walk you through the process of signing a request using an access key ID and secret access key. 
 --
 --
 --
@@ -82,6 +82,9 @@ module Network.AWS.IAM
     -- ** PolicyEvaluationException
     , _PolicyEvaluationException
 
+    -- ** ReportGenerationLimitExceededException
+    , _ReportGenerationLimitExceededException
+
     -- ** UnrecognizedPublicKeyEncodingException
     , _UnrecognizedPublicKeyEncodingException
 
@@ -102,6 +105,9 @@ module Network.AWS.IAM
 
     -- ** ServiceFailureException
     , _ServiceFailureException
+
+    -- ** ConcurrentModificationException
+    , _ConcurrentModificationException
 
     -- ** MalformedPolicyDocumentException
     , _MalformedPolicyDocumentException
@@ -127,6 +133,12 @@ module Network.AWS.IAM
     -- ** UserExists
     , userExists
 
+    -- ** RoleExists
+    , roleExists
+
+    -- ** PolicyExists
+    , policyExists
+
     -- * Operations
     -- $operations
 
@@ -147,6 +159,9 @@ module Network.AWS.IAM
 
     -- ** CreateAccessKey 
     , module Network.AWS.IAM.CreateAccessKey
+
+    -- ** ListRoleTags 
+    , module Network.AWS.IAM.ListRoleTags
 
     -- ** ListSSHPublicKeys (Paginated)
     , module Network.AWS.IAM.ListSSHPublicKeys
@@ -202,8 +217,14 @@ module Network.AWS.IAM
     -- ** ListUserPolicies (Paginated)
     , module Network.AWS.IAM.ListUserPolicies
 
+    -- ** PutRolePermissionsBoundary 
+    , module Network.AWS.IAM.PutRolePermissionsBoundary
+
     -- ** UploadSSHPublicKey 
     , module Network.AWS.IAM.UploadSSHPublicKey
+
+    -- ** DeleteRolePermissionsBoundary 
+    , module Network.AWS.IAM.DeleteRolePermissionsBoundary
 
     -- ** SimulateCustomPolicy (Paginated)
     , module Network.AWS.IAM.SimulateCustomPolicy
@@ -226,14 +247,23 @@ module Network.AWS.IAM
     -- ** GetSSHPublicKey 
     , module Network.AWS.IAM.GetSSHPublicKey
 
+    -- ** UntagUser 
+    , module Network.AWS.IAM.UntagUser
+
     -- ** DetachGroupPolicy 
     , module Network.AWS.IAM.DetachGroupPolicy
 
     -- ** GetOpenIdConnectProvider 
     , module Network.AWS.IAM.GetOpenIdConnectProvider
 
+    -- ** PutUserPermissionsBoundary 
+    , module Network.AWS.IAM.PutUserPermissionsBoundary
+
     -- ** DeleteUserPolicy 
     , module Network.AWS.IAM.DeleteUserPolicy
+
+    -- ** DeleteUserPermissionsBoundary 
+    , module Network.AWS.IAM.DeleteUserPermissionsBoundary
 
     -- ** CreateRole 
     , module Network.AWS.IAM.CreateRole
@@ -247,11 +277,17 @@ module Network.AWS.IAM
     -- ** GetAccountSummary 
     , module Network.AWS.IAM.GetAccountSummary
 
+    -- ** GenerateServiceLastAccessedDetails 
+    , module Network.AWS.IAM.GenerateServiceLastAccessedDetails
+
     -- ** ListGroupPolicies (Paginated)
     , module Network.AWS.IAM.ListGroupPolicies
 
     -- ** DeletePolicyVersion 
     , module Network.AWS.IAM.DeletePolicyVersion
+
+    -- ** TagUser 
+    , module Network.AWS.IAM.TagUser
 
     -- ** DeleteInstanceProfile 
     , module Network.AWS.IAM.DeleteInstanceProfile
@@ -289,6 +325,9 @@ module Network.AWS.IAM
     -- ** DeleteGroupPolicy 
     , module Network.AWS.IAM.DeleteGroupPolicy
 
+    -- ** TagRole 
+    , module Network.AWS.IAM.TagRole
+
     -- ** PutGroupPolicy 
     , module Network.AWS.IAM.PutGroupPolicy
 
@@ -297,6 +336,9 @@ module Network.AWS.IAM
 
     -- ** GetGroupPolicy 
     , module Network.AWS.IAM.GetGroupPolicy
+
+    -- ** GenerateOrganizationsAccessReport 
+    , module Network.AWS.IAM.GenerateOrganizationsAccessReport
 
     -- ** ChangePassword 
     , module Network.AWS.IAM.ChangePassword
@@ -312,6 +354,9 @@ module Network.AWS.IAM
 
     -- ** UpdateAssumeRolePolicy 
     , module Network.AWS.IAM.UpdateAssumeRolePolicy
+
+    -- ** GetServiceLastAccessedDetailsWithEntities 
+    , module Network.AWS.IAM.GetServiceLastAccessedDetailsWithEntities
 
     -- ** GetInstanceProfile 
     , module Network.AWS.IAM.GetInstanceProfile
@@ -336,6 +381,9 @@ module Network.AWS.IAM
 
     -- ** SimulatePrincipalPolicy (Paginated)
     , module Network.AWS.IAM.SimulatePrincipalPolicy
+
+    -- ** GetOrganizationsAccessReport 
+    , module Network.AWS.IAM.GetOrganizationsAccessReport
 
     -- ** GetPolicyVersion 
     , module Network.AWS.IAM.GetPolicyVersion
@@ -385,11 +433,20 @@ module Network.AWS.IAM
     -- ** UpdateAccessKey 
     , module Network.AWS.IAM.UpdateAccessKey
 
+    -- ** ListUserTags 
+    , module Network.AWS.IAM.ListUserTags
+
     -- ** ListAccessKeys (Paginated)
     , module Network.AWS.IAM.ListAccessKeys
 
     -- ** GetRolePolicy 
     , module Network.AWS.IAM.GetRolePolicy
+
+    -- ** SetSecurityTokenServicePreferences 
+    , module Network.AWS.IAM.SetSecurityTokenServicePreferences
+
+    -- ** UntagRole 
+    , module Network.AWS.IAM.UntagRole
 
     -- ** CreateUser 
     , module Network.AWS.IAM.CreateUser
@@ -427,6 +484,9 @@ module Network.AWS.IAM
     -- ** CreateAccountAlias 
     , module Network.AWS.IAM.CreateAccountAlias
 
+    -- ** ListPoliciesGrantingServiceAccess 
+    , module Network.AWS.IAM.ListPoliciesGrantingServiceAccess
+
     -- ** ListInstanceProfiles (Paginated)
     , module Network.AWS.IAM.ListInstanceProfiles
 
@@ -462,6 +522,9 @@ module Network.AWS.IAM
 
     -- ** ListSAMLProviders 
     , module Network.AWS.IAM.ListSAMLProviders
+
+    -- ** GetServiceLastAccessedDetails 
+    , module Network.AWS.IAM.GetServiceLastAccessedDetails
 
     -- ** GetServerCertificate 
     , module Network.AWS.IAM.GetServerCertificate
@@ -516,8 +579,20 @@ module Network.AWS.IAM
     -- ** EntityType
     , EntityType (..)
 
+    -- ** GlobalEndpointTokenVersion
+    , GlobalEndpointTokenVersion (..)
+
+    -- ** JobStatusType
+    , JobStatusType (..)
+
+    -- ** PermissionsBoundaryAttachmentType
+    , PermissionsBoundaryAttachmentType (..)
+
     -- ** PolicyEvaluationDecisionType
     , PolicyEvaluationDecisionType (..)
+
+    -- ** PolicyOwnerEntityType
+    , PolicyOwnerEntityType (..)
 
     -- ** PolicyScopeType
     , PolicyScopeType (..)
@@ -525,17 +600,36 @@ module Network.AWS.IAM
     -- ** PolicySourceType
     , PolicySourceType (..)
 
+    -- ** PolicyType
+    , PolicyType (..)
+
+    -- ** PolicyUsageType
+    , PolicyUsageType (..)
+
     -- ** ReportFormatType
     , ReportFormatType (..)
 
     -- ** ReportStateType
     , ReportStateType (..)
 
+    -- ** SortKeyType
+    , SortKeyType (..)
+
     -- ** StatusType
     , StatusType (..)
 
     -- ** SummaryKeyType
     , SummaryKeyType (..)
+
+    -- ** AccessDetail
+    , AccessDetail
+    , accessDetail
+    , adEntityPath
+    , adRegion
+    , adLastAuthenticatedTime
+    , adTotalAuthenticatedEntities
+    , adServiceName
+    , adServiceNamespace
 
     -- ** AccessKeyInfo
     , AccessKeyInfo
@@ -561,6 +655,12 @@ module Network.AWS.IAM
     , akmUserName
     , akmAccessKeyId
 
+    -- ** AttachedPermissionsBoundary
+    , AttachedPermissionsBoundary
+    , attachedPermissionsBoundary
+    , apbPermissionsBoundaryType
+    , apbPermissionsBoundaryARN
+
     -- ** AttachedPolicy
     , AttachedPolicy
     , attachedPolicy
@@ -580,6 +680,27 @@ module Network.AWS.IAM
     , dtfrtRoleUsageList
     , dtfrtReason
 
+    -- ** EntityDetails
+    , EntityDetails
+    , entityDetails
+    , edLastAuthenticated
+    , edEntityInfo
+
+    -- ** EntityInfo
+    , EntityInfo
+    , entityInfo
+    , eiPath
+    , eiARN
+    , eiName
+    , eiType
+    , eiId
+
+    -- ** ErrorDetails
+    , ErrorDetails
+    , errorDetails
+    , edMessage
+    , edCode
+
     -- ** EvaluationResult
     , EvaluationResult
     , evaluationResult
@@ -588,6 +709,7 @@ module Network.AWS.IAM
     , erResourceSpecificResults
     , erEvalResourceName
     , erMissingContextValues
+    , erPermissionsBoundaryDecisionDetail
     , erOrganizationsDecisionDetail
     , erEvalActionName
     , erEvalDecision
@@ -627,6 +749,12 @@ module Network.AWS.IAM
     , ipCreateDate
     , ipRoles
 
+    -- ** ListPoliciesGrantingServiceAccessEntry
+    , ListPoliciesGrantingServiceAccessEntry
+    , listPoliciesGrantingServiceAccessEntry
+    , lpgsaeServiceNamespace
+    , lpgsaePolicies
+
     -- ** LoginProfile
     , LoginProfile
     , loginProfile
@@ -652,6 +780,7 @@ module Network.AWS.IAM
     , mpdPolicyVersionList
     , mpdCreateDate
     , mpdIsAttachable
+    , mpdPermissionsBoundaryUsageCount
     , mpdDefaultVersionId
     , mpdAttachmentCount
     , mpdDescription
@@ -680,6 +809,11 @@ module Network.AWS.IAM
     , ppRequireUppercaseCharacters
     , ppAllowUsersToChangePassword
 
+    -- ** PermissionsBoundaryDecisionDetail
+    , PermissionsBoundaryDecisionDetail
+    , permissionsBoundaryDecisionDetail
+    , pbddAllowedByPermissionsBoundary
+
     -- ** Policy
     , Policy
     , policy
@@ -690,6 +824,7 @@ module Network.AWS.IAM
     , pPath
     , pCreateDate
     , pIsAttachable
+    , pPermissionsBoundaryUsageCount
     , pDefaultVersionId
     , pAttachmentCount
     , pDescription
@@ -699,6 +834,15 @@ module Network.AWS.IAM
     , policyDetail
     , pdPolicyDocument
     , pdPolicyName
+
+    -- ** PolicyGrantingServiceAccess
+    , PolicyGrantingServiceAccess
+    , policyGrantingServiceAccess
+    , pgsaEntityName
+    , pgsaEntityType
+    , pgsaPolicyARN
+    , pgsaPolicyName
+    , pgsaPolicyType
 
     -- ** PolicyGroup
     , PolicyGroup
@@ -738,6 +882,7 @@ module Network.AWS.IAM
     , rsrMatchedStatements
     , rsrEvalDecisionDetails
     , rsrMissingContextValues
+    , rsrPermissionsBoundaryDecisionDetail
     , rsrEvalResourceName
     , rsrEvalResourceDecision
 
@@ -746,7 +891,10 @@ module Network.AWS.IAM
     , role'
     , rMaxSessionDuration
     , rAssumeRolePolicyDocument
+    , rRoleLastUsed
+    , rPermissionsBoundary
     , rDescription
+    , rTags
     , rPath
     , rRoleName
     , rRoleId
@@ -763,8 +911,17 @@ module Network.AWS.IAM
     , rdCreateDate
     , rdRoleName
     , rdRoleId
+    , rdRoleLastUsed
+    , rdPermissionsBoundary
     , rdRolePolicyList
+    , rdTags
     , rdAttachedManagedPolicies
+
+    -- ** RoleLastUsed
+    , RoleLastUsed
+    , roleLastUsed
+    , rluLastUsedDate
+    , rluRegion
 
     -- ** RoleUsageType
     , RoleUsageType
@@ -814,6 +971,15 @@ module Network.AWS.IAM
     , scmServerCertificateId
     , scmARN
 
+    -- ** ServiceLastAccessed
+    , ServiceLastAccessed
+    , serviceLastAccessed
+    , slaLastAuthenticated
+    , slaLastAuthenticatedEntity
+    , slaTotalAuthenticatedEntities
+    , slaServiceName
+    , slaServiceNamespace
+
     -- ** ServiceSpecificCredential
     , ServiceSpecificCredential
     , serviceSpecificCredential
@@ -859,10 +1025,18 @@ module Network.AWS.IAM
     , sEndPosition
     , sStartPosition
 
+    -- ** Tag
+    , Tag
+    , tag
+    , tagKey
+    , tagValue
+
     -- ** User
     , User
     , user
     , uPasswordLastUsed
+    , uPermissionsBoundary
+    , uTags
     , uPath
     , uUserName
     , uUserId
@@ -878,7 +1052,9 @@ module Network.AWS.IAM
     , udCreateDate
     , udUserName
     , udUserId
+    , udPermissionsBoundary
     , udUserPolicyList
+    , udTags
     , udAttachedManagedPolicies
 
     -- ** VirtualMFADevice
@@ -924,6 +1100,7 @@ import Network.AWS.IAM.DeleteOpenIdConnectProvider
 import Network.AWS.IAM.DeletePolicy
 import Network.AWS.IAM.DeletePolicyVersion
 import Network.AWS.IAM.DeleteRole
+import Network.AWS.IAM.DeleteRolePermissionsBoundary
 import Network.AWS.IAM.DeleteRolePolicy
 import Network.AWS.IAM.DeleteSAMLProvider
 import Network.AWS.IAM.DeleteSSHPublicKey
@@ -932,6 +1109,7 @@ import Network.AWS.IAM.DeleteServiceLinkedRole
 import Network.AWS.IAM.DeleteServiceSpecificCredential
 import Network.AWS.IAM.DeleteSigningCertificate
 import Network.AWS.IAM.DeleteUser
+import Network.AWS.IAM.DeleteUserPermissionsBoundary
 import Network.AWS.IAM.DeleteUserPolicy
 import Network.AWS.IAM.DeleteVirtualMFADevice
 import Network.AWS.IAM.DetachGroupPolicy
@@ -939,6 +1117,8 @@ import Network.AWS.IAM.DetachRolePolicy
 import Network.AWS.IAM.DetachUserPolicy
 import Network.AWS.IAM.EnableMFADevice
 import Network.AWS.IAM.GenerateCredentialReport
+import Network.AWS.IAM.GenerateOrganizationsAccessReport
+import Network.AWS.IAM.GenerateServiceLastAccessedDetails
 import Network.AWS.IAM.GetAccessKeyLastUsed
 import Network.AWS.IAM.GetAccountAuthorizationDetails
 import Network.AWS.IAM.GetAccountPasswordPolicy
@@ -951,6 +1131,7 @@ import Network.AWS.IAM.GetGroupPolicy
 import Network.AWS.IAM.GetInstanceProfile
 import Network.AWS.IAM.GetLoginProfile
 import Network.AWS.IAM.GetOpenIdConnectProvider
+import Network.AWS.IAM.GetOrganizationsAccessReport
 import Network.AWS.IAM.GetPolicy
 import Network.AWS.IAM.GetPolicyVersion
 import Network.AWS.IAM.GetRole
@@ -958,6 +1139,8 @@ import Network.AWS.IAM.GetRolePolicy
 import Network.AWS.IAM.GetSAMLProvider
 import Network.AWS.IAM.GetSSHPublicKey
 import Network.AWS.IAM.GetServerCertificate
+import Network.AWS.IAM.GetServiceLastAccessedDetails
+import Network.AWS.IAM.GetServiceLastAccessedDetailsWithEntities
 import Network.AWS.IAM.GetServiceLinkedRoleDeletionStatus
 import Network.AWS.IAM.GetUser
 import Network.AWS.IAM.GetUserPolicy
@@ -975,8 +1158,10 @@ import Network.AWS.IAM.ListInstanceProfilesForRole
 import Network.AWS.IAM.ListMFADevices
 import Network.AWS.IAM.ListOpenIdConnectProviders
 import Network.AWS.IAM.ListPolicies
+import Network.AWS.IAM.ListPoliciesGrantingServiceAccess
 import Network.AWS.IAM.ListPolicyVersions
 import Network.AWS.IAM.ListRolePolicies
+import Network.AWS.IAM.ListRoleTags
 import Network.AWS.IAM.ListRoles
 import Network.AWS.IAM.ListSAMLProviders
 import Network.AWS.IAM.ListSSHPublicKeys
@@ -984,10 +1169,13 @@ import Network.AWS.IAM.ListServerCertificates
 import Network.AWS.IAM.ListServiceSpecificCredentials
 import Network.AWS.IAM.ListSigningCertificates
 import Network.AWS.IAM.ListUserPolicies
+import Network.AWS.IAM.ListUserTags
 import Network.AWS.IAM.ListUsers
 import Network.AWS.IAM.ListVirtualMFADevices
 import Network.AWS.IAM.PutGroupPolicy
+import Network.AWS.IAM.PutRolePermissionsBoundary
 import Network.AWS.IAM.PutRolePolicy
+import Network.AWS.IAM.PutUserPermissionsBoundary
 import Network.AWS.IAM.PutUserPolicy
 import Network.AWS.IAM.RemoveClientIdFromOpenIdConnectProvider
 import Network.AWS.IAM.RemoveRoleFromInstanceProfile
@@ -995,9 +1183,14 @@ import Network.AWS.IAM.RemoveUserFromGroup
 import Network.AWS.IAM.ResetServiceSpecificCredential
 import Network.AWS.IAM.ResyncMFADevice
 import Network.AWS.IAM.SetDefaultPolicyVersion
+import Network.AWS.IAM.SetSecurityTokenServicePreferences
 import Network.AWS.IAM.SimulateCustomPolicy
 import Network.AWS.IAM.SimulatePrincipalPolicy
+import Network.AWS.IAM.TagRole
+import Network.AWS.IAM.TagUser
 import Network.AWS.IAM.Types
+import Network.AWS.IAM.UntagRole
+import Network.AWS.IAM.UntagUser
 import Network.AWS.IAM.UpdateAccessKey
 import Network.AWS.IAM.UpdateAccountPasswordPolicy
 import Network.AWS.IAM.UpdateAssumeRolePolicy

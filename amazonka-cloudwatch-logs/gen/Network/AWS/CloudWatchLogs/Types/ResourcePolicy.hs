@@ -39,7 +39,7 @@ data ResourcePolicy = ResourcePolicy'{_rpPolicyName
 --
 -- * 'rpPolicyDocument' - The details of the policy.
 --
--- * 'rpLastUpdatedTime' - Time stamp showing when this policy was last updated, expressed as the number of milliseconds after Jan 1, 1970 00:00:00 UTC.
+-- * 'rpLastUpdatedTime' - Timestamp showing when this policy was last updated, expressed as the number of milliseconds after Jan 1, 1970 00:00:00 UTC.
 resourcePolicy
     :: ResourcePolicy
 resourcePolicy
@@ -55,7 +55,7 @@ rpPolicyName = lens _rpPolicyName (\ s a -> s{_rpPolicyName = a})
 rpPolicyDocument :: Lens' ResourcePolicy (Maybe Text)
 rpPolicyDocument = lens _rpPolicyDocument (\ s a -> s{_rpPolicyDocument = a})
 
--- | Time stamp showing when this policy was last updated, expressed as the number of milliseconds after Jan 1, 1970 00:00:00 UTC.
+-- | Timestamp showing when this policy was last updated, expressed as the number of milliseconds after Jan 1, 1970 00:00:00 UTC.
 rpLastUpdatedTime :: Lens' ResourcePolicy (Maybe Natural)
 rpLastUpdatedTime = lens _rpLastUpdatedTime (\ s a -> s{_rpLastUpdatedTime = a}) . mapping _Nat
 

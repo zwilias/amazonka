@@ -19,21 +19,30 @@ module Network.AWS.MediaLive.Types.OutputSettings where
 
 import Network.AWS.Lens
 import Network.AWS.MediaLive.Types.ArchiveOutputSettings
+import Network.AWS.MediaLive.Types.FrameCaptureOutputSettings
 import Network.AWS.MediaLive.Types.HlsOutputSettings
+import Network.AWS.MediaLive.Types.MediaPackageOutputSettings
 import Network.AWS.MediaLive.Types.MsSmoothOutputSettings
+import Network.AWS.MediaLive.Types.MultiplexOutputSettings
 import Network.AWS.MediaLive.Types.RtmpOutputSettings
 import Network.AWS.MediaLive.Types.UdpOutputSettings
 import Network.AWS.Prelude
 
--- | Placeholder documentation for OutputSettings
+-- | Output Settings
 --
 -- /See:/ 'outputSettings' smart constructor.
-data OutputSettings = OutputSettings'{_osArchiveOutputSettings
-                                      :: !(Maybe ArchiveOutputSettings),
+data OutputSettings = OutputSettings'{_osMultiplexOutputSettings
+                                      :: !(Maybe MultiplexOutputSettings),
+                                      _osArchiveOutputSettings ::
+                                      !(Maybe ArchiveOutputSettings),
                                       _osRtmpOutputSettings ::
                                       !(Maybe RtmpOutputSettings),
+                                      _osMediaPackageOutputSettings ::
+                                      !(Maybe MediaPackageOutputSettings),
                                       _osHlsOutputSettings ::
                                       !(Maybe HlsOutputSettings),
+                                      _osFrameCaptureOutputSettings ::
+                                      !(Maybe FrameCaptureOutputSettings),
                                       _osUdpOutputSettings ::
                                       !(Maybe UdpOutputSettings),
                                       _osMsSmoothOutputSettings ::
@@ -44,11 +53,17 @@ data OutputSettings = OutputSettings'{_osArchiveOutputSettings
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
+-- * 'osMultiplexOutputSettings' - Undocumented member.
+--
 -- * 'osArchiveOutputSettings' - Undocumented member.
 --
 -- * 'osRtmpOutputSettings' - Undocumented member.
 --
+-- * 'osMediaPackageOutputSettings' - Undocumented member.
+--
 -- * 'osHlsOutputSettings' - Undocumented member.
+--
+-- * 'osFrameCaptureOutputSettings' - Undocumented member.
 --
 -- * 'osUdpOutputSettings' - Undocumented member.
 --
@@ -56,11 +71,19 @@ data OutputSettings = OutputSettings'{_osArchiveOutputSettings
 outputSettings
     :: OutputSettings
 outputSettings
-  = OutputSettings'{_osArchiveOutputSettings = Nothing,
+  = OutputSettings'{_osMultiplexOutputSettings =
+                      Nothing,
+                    _osArchiveOutputSettings = Nothing,
                     _osRtmpOutputSettings = Nothing,
+                    _osMediaPackageOutputSettings = Nothing,
                     _osHlsOutputSettings = Nothing,
+                    _osFrameCaptureOutputSettings = Nothing,
                     _osUdpOutputSettings = Nothing,
                     _osMsSmoothOutputSettings = Nothing}
+
+-- | Undocumented member.
+osMultiplexOutputSettings :: Lens' OutputSettings (Maybe MultiplexOutputSettings)
+osMultiplexOutputSettings = lens _osMultiplexOutputSettings (\ s a -> s{_osMultiplexOutputSettings = a})
 
 -- | Undocumented member.
 osArchiveOutputSettings :: Lens' OutputSettings (Maybe ArchiveOutputSettings)
@@ -71,8 +94,16 @@ osRtmpOutputSettings :: Lens' OutputSettings (Maybe RtmpOutputSettings)
 osRtmpOutputSettings = lens _osRtmpOutputSettings (\ s a -> s{_osRtmpOutputSettings = a})
 
 -- | Undocumented member.
+osMediaPackageOutputSettings :: Lens' OutputSettings (Maybe MediaPackageOutputSettings)
+osMediaPackageOutputSettings = lens _osMediaPackageOutputSettings (\ s a -> s{_osMediaPackageOutputSettings = a})
+
+-- | Undocumented member.
 osHlsOutputSettings :: Lens' OutputSettings (Maybe HlsOutputSettings)
 osHlsOutputSettings = lens _osHlsOutputSettings (\ s a -> s{_osHlsOutputSettings = a})
+
+-- | Undocumented member.
+osFrameCaptureOutputSettings :: Lens' OutputSettings (Maybe FrameCaptureOutputSettings)
+osFrameCaptureOutputSettings = lens _osFrameCaptureOutputSettings (\ s a -> s{_osFrameCaptureOutputSettings = a})
 
 -- | Undocumented member.
 osUdpOutputSettings :: Lens' OutputSettings (Maybe UdpOutputSettings)
@@ -87,9 +118,12 @@ instance FromJSON OutputSettings where
           = withObject "OutputSettings"
               (\ x ->
                  OutputSettings' <$>
-                   (x .:? "archiveOutputSettings") <*>
-                     (x .:? "rtmpOutputSettings")
+                   (x .:? "multiplexOutputSettings") <*>
+                     (x .:? "archiveOutputSettings")
+                     <*> (x .:? "rtmpOutputSettings")
+                     <*> (x .:? "mediaPackageOutputSettings")
                      <*> (x .:? "hlsOutputSettings")
+                     <*> (x .:? "frameCaptureOutputSettings")
                      <*> (x .:? "udpOutputSettings")
                      <*> (x .:? "msSmoothOutputSettings"))
 
@@ -101,10 +135,16 @@ instance ToJSON OutputSettings where
         toJSON OutputSettings'{..}
           = object
               (catMaybes
-                 [("archiveOutputSettings" .=) <$>
+                 [("multiplexOutputSettings" .=) <$>
+                    _osMultiplexOutputSettings,
+                  ("archiveOutputSettings" .=) <$>
                     _osArchiveOutputSettings,
                   ("rtmpOutputSettings" .=) <$> _osRtmpOutputSettings,
+                  ("mediaPackageOutputSettings" .=) <$>
+                    _osMediaPackageOutputSettings,
                   ("hlsOutputSettings" .=) <$> _osHlsOutputSettings,
+                  ("frameCaptureOutputSettings" .=) <$>
+                    _osFrameCaptureOutputSettings,
                   ("udpOutputSettings" .=) <$> _osUdpOutputSettings,
                   ("msSmoothOutputSettings" .=) <$>
                     _osMsSmoothOutputSettings])

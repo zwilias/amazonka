@@ -29,7 +29,7 @@ import Network.AWS.Prelude
 -- | Targets are the resources to be invoked when a rule is triggered. For a complete list of services and resources that can be set as a target, see 'PutTargets' .
 --
 --
--- If you're setting the event bus of another account as the target and that account granted permission to your account through an organization instead of directly by the account ID, you must specify a @RoleArn@ with proper permissions in the @Target@ structure. For more information, see <https://docs.aws.amazon.com/eventbridge/latest/userguide/eventbridge-cross-account-event-delivery.html Sending and Receiving Events Between AWS Accounts> in the /Amazon EventBridge User Guide/ .
+-- If you are setting the event bus of another account as the target, and that account granted permission to your account through an organization instead of directly by the account ID, then you must specify a @RoleArn@ with proper permissions in the @Target@ structure. For more information, see <https://docs.aws.amazon.com/eventbridge/latest/userguide/eventbridge-cross-account-event-delivery.html Sending and Receiving Events Between AWS Accounts> in the /Amazon EventBridge User Guide/ .
 --
 --
 -- /See:/ 'target' smart constructor.
@@ -52,7 +52,7 @@ data Target = Target'{_tRunCommandParameters ::
 --
 -- * 'tRunCommandParameters' - Parameters used when you are using the rule to invoke Amazon EC2 Run Command.
 --
--- * 'tKinesisParameters' - The custom parameter that you can use to control the shard assignment when the target is a Kinesis data stream. If you don't include this parameter, the default is to use the @eventId@ as the partition key.
+-- * 'tKinesisParameters' - The custom parameter you can use to control the shard assignment, when the target is a Kinesis data stream. If you do not include this parameter, the default is to use the @eventId@ as the partition key.
 --
 -- * 'tInputTransformer' - Settings to enable you to provide custom input to a target based on certain event data. You can extract one or more key-value pairs from the event and then use that data to send customized input to the target.
 --
@@ -62,7 +62,7 @@ data Target = Target'{_tRunCommandParameters ::
 --
 -- * 'tBatchParameters' - If the event target is an AWS Batch job, this contains the job definition, job name, and other parameters. For more information, see <https://docs.aws.amazon.com/batch/latest/userguide/jobs.html Jobs> in the /AWS Batch User Guide/ .
 --
--- * 'tEcsParameters' - Contains the Amazon ECS task definition and task count to be used if the event target is an Amazon ECS task. For more information about Amazon ECS tasks, see <https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_defintions.html Task Definitions > in the /Amazon EC2 Container Service Developer Guide/ .
+-- * 'tEcsParameters' - Contains the Amazon ECS task definition and task count to be used, if the event target is an Amazon ECS task. For more information about Amazon ECS tasks, see <https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_defintions.html Task Definitions > in the /Amazon EC2 Container Service Developer Guide/ .
 --
 -- * 'tInputPath' - The value of the JSONPath that is used for extracting part of the matched event when passing it to the target. You must use JSON dot notation, not bracket notation. For more information about JSON paths, see <http://goessner.net/articles/JsonPath/ JSONPath> .
 --
@@ -88,7 +88,7 @@ target pId_ pARN_
 tRunCommandParameters :: Lens' Target (Maybe RunCommandParameters)
 tRunCommandParameters = lens _tRunCommandParameters (\ s a -> s{_tRunCommandParameters = a})
 
--- | The custom parameter that you can use to control the shard assignment when the target is a Kinesis data stream. If you don't include this parameter, the default is to use the @eventId@ as the partition key.
+-- | The custom parameter you can use to control the shard assignment, when the target is a Kinesis data stream. If you do not include this parameter, the default is to use the @eventId@ as the partition key.
 tKinesisParameters :: Lens' Target (Maybe KinesisParameters)
 tKinesisParameters = lens _tKinesisParameters (\ s a -> s{_tKinesisParameters = a})
 
@@ -108,7 +108,7 @@ tInput = lens _tInput (\ s a -> s{_tInput = a})
 tBatchParameters :: Lens' Target (Maybe BatchParameters)
 tBatchParameters = lens _tBatchParameters (\ s a -> s{_tBatchParameters = a})
 
--- | Contains the Amazon ECS task definition and task count to be used if the event target is an Amazon ECS task. For more information about Amazon ECS tasks, see <https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_defintions.html Task Definitions > in the /Amazon EC2 Container Service Developer Guide/ .
+-- | Contains the Amazon ECS task definition and task count to be used, if the event target is an Amazon ECS task. For more information about Amazon ECS tasks, see <https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_defintions.html Task Definitions > in the /Amazon EC2 Container Service Developer Guide/ .
 tEcsParameters :: Lens' Target (Maybe EcsParameters)
 tEcsParameters = lens _tEcsParameters (\ s a -> s{_tEcsParameters = a})
 

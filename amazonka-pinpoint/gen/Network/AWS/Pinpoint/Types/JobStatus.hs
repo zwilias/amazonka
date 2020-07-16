@@ -25,6 +25,8 @@ module Network.AWS.Pinpoint.Types.JobStatus (
     , JSFailed
     , JSFailing
     , JSInitializing
+    , JSPendingJob
+    , JSPreparingForInitialization
     , JSProcessing
     )
   ) where
@@ -54,6 +56,12 @@ pattern JSFailing = JobStatus' "FAILING"
 pattern JSInitializing :: JobStatus
 pattern JSInitializing = JobStatus' "INITIALIZING"
 
+pattern JSPendingJob :: JobStatus
+pattern JSPendingJob = JobStatus' "PENDING_JOB"
+
+pattern JSPreparingForInitialization :: JobStatus
+pattern JSPreparingForInitialization = JobStatus' "PREPARING_FOR_INITIALIZATION"
+
 pattern JSProcessing :: JobStatus
 pattern JSProcessing = JobStatus' "PROCESSING"
 
@@ -64,6 +72,8 @@ pattern JSProcessing = JobStatus' "PROCESSING"
   JSFailed,
   JSFailing,
   JSInitializing,
+  JSPendingJob,
+  JSPreparingForInitialization,
   JSProcessing,
   JobStatus' #-}
 
@@ -85,7 +95,9 @@ instance Enum JobStatus where
         3 -> JSFailed
         4 -> JSFailing
         5 -> JSInitializing
-        6 -> JSProcessing
+        6 -> JSPendingJob
+        7 -> JSPreparingForInitialization
+        8 -> JSProcessing
         _ -> (error . showText) $ "Unknown index for JobStatus: " <> toText i
     fromEnum x = case x of
         JSCompleted -> 0
@@ -94,7 +106,9 @@ instance Enum JobStatus where
         JSFailed -> 3
         JSFailing -> 4
         JSInitializing -> 5
-        JSProcessing -> 6
+        JSPendingJob -> 6
+        JSPreparingForInitialization -> 7
+        JSProcessing -> 8
         JobStatus' name -> (error . showText) $ "Unknown JobStatus: " <> original name
 
 -- | Represents the bounds of /known/ $JobStatus.

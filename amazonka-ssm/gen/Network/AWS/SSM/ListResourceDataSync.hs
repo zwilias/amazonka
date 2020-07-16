@@ -23,12 +23,15 @@
 --
 -- The number of sync configurations might be too large to return using a single call to @ListResourceDataSync@ . You can limit the number of sync configurations returned by using the @MaxResults@ parameter. To determine whether there are more sync configurations to list, check the value of @NextToken@ in the output. If there are more sync configurations to list, you can request them by specifying the @NextToken@ returned in the call to the parameter of a subsequent call. 
 --
+--
+-- This operation returns paginated results.
 module Network.AWS.SSM.ListResourceDataSync
     (
     -- * Creating a Request
       listResourceDataSync
     , ListResourceDataSync
     -- * Request Lenses
+    , lrdsSyncType
     , lrdsNextToken
     , lrdsMaxResults
 
@@ -42,6 +45,7 @@ module Network.AWS.SSM.ListResourceDataSync
     ) where
 
 import Network.AWS.Lens
+import Network.AWS.Pager
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
@@ -49,8 +53,10 @@ import Network.AWS.SSM.Types
 import Network.AWS.SSM.Types.Product
 
 -- | /See:/ 'listResourceDataSync' smart constructor.
-data ListResourceDataSync = ListResourceDataSync'{_lrdsNextToken
+data ListResourceDataSync = ListResourceDataSync'{_lrdsSyncType
                                                   :: !(Maybe Text),
+                                                  _lrdsNextToken ::
+                                                  !(Maybe Text),
                                                   _lrdsMaxResults ::
                                                   !(Maybe Nat)}
                               deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -59,14 +65,20 @@ data ListResourceDataSync = ListResourceDataSync'{_lrdsNextToken
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
+-- * 'lrdsSyncType' - View a list of resource data syncs according to the sync type. Specify @SyncToDestination@ to view resource data syncs that synchronize data to an Amazon S3 buckets. Specify @SyncFromSource@ to view resource data syncs from AWS Organizations or from multiple AWS Regions. 
+--
 -- * 'lrdsNextToken' - A token to start the list. Use this token to get the next set of results. 
 --
 -- * 'lrdsMaxResults' - The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.
 listResourceDataSync
     :: ListResourceDataSync
 listResourceDataSync
-  = ListResourceDataSync'{_lrdsNextToken = Nothing,
-                          _lrdsMaxResults = Nothing}
+  = ListResourceDataSync'{_lrdsSyncType = Nothing,
+                          _lrdsNextToken = Nothing, _lrdsMaxResults = Nothing}
+
+-- | View a list of resource data syncs according to the sync type. Specify @SyncToDestination@ to view resource data syncs that synchronize data to an Amazon S3 buckets. Specify @SyncFromSource@ to view resource data syncs from AWS Organizations or from multiple AWS Regions. 
+lrdsSyncType :: Lens' ListResourceDataSync (Maybe Text)
+lrdsSyncType = lens _lrdsSyncType (\ s a -> s{_lrdsSyncType = a})
 
 -- | A token to start the list. Use this token to get the next set of results. 
 lrdsNextToken :: Lens' ListResourceDataSync (Maybe Text)
@@ -75,6 +87,13 @@ lrdsNextToken = lens _lrdsNextToken (\ s a -> s{_lrdsNextToken = a})
 -- | The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.
 lrdsMaxResults :: Lens' ListResourceDataSync (Maybe Natural)
 lrdsMaxResults = lens _lrdsMaxResults (\ s a -> s{_lrdsMaxResults = a}) . mapping _Nat
+
+instance AWSPager ListResourceDataSync where
+        page rq rs
+          | stop (rs ^. lrdsrsNextToken) = Nothing
+          | stop (rs ^. lrdsrsResourceDataSyncItems) = Nothing
+          | otherwise =
+            Just $ rq & lrdsNextToken .~ rs ^. lrdsrsNextToken
 
 instance AWSRequest ListResourceDataSync where
         type Rs ListResourceDataSync =
@@ -105,7 +124,8 @@ instance ToJSON ListResourceDataSync where
         toJSON ListResourceDataSync'{..}
           = object
               (catMaybes
-                 [("NextToken" .=) <$> _lrdsNextToken,
+                 [("SyncType" .=) <$> _lrdsSyncType,
+                  ("NextToken" .=) <$> _lrdsNextToken,
                   ("MaxResults" .=) <$> _lrdsMaxResults])
 
 instance ToPath ListResourceDataSync where

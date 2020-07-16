@@ -19,9 +19,11 @@ module Network.AWS.KinesisVideo.Types
     , _TagsPerResourceExceededLimitException
     , _DeviceStreamLimitExceededException
     , _InvalidResourceFormatException
+    , _AccessDeniedException
     , _VersionMismatchException
     , _InvalidDeviceException
     , _ResourceNotFoundException
+    , _AccountChannelLimitExceededException
     , _ClientLimitExceededException
     , _InvalidArgumentException
     , _NotAuthorizedException
@@ -31,6 +33,15 @@ module Network.AWS.KinesisVideo.Types
     -- * APIName
     , APIName (..)
 
+    -- * ChannelProtocol
+    , ChannelProtocol (..)
+
+    -- * ChannelRole
+    , ChannelRole (..)
+
+    -- * ChannelType
+    , ChannelType (..)
+
     -- * ComparisonOperator
     , ComparisonOperator (..)
 
@@ -39,6 +50,40 @@ module Network.AWS.KinesisVideo.Types
 
     -- * UpdateDataRetentionOperation
     , UpdateDataRetentionOperation (..)
+
+    -- * ChannelInfo
+    , ChannelInfo
+    , channelInfo
+    , ciCreationTime
+    , ciChannelStatus
+    , ciChannelARN
+    , ciSingleMasterConfiguration
+    , ciChannelName
+    , ciVersion
+    , ciChannelType
+
+    -- * ChannelNameCondition
+    , ChannelNameCondition
+    , channelNameCondition
+    , cncComparisonOperator
+    , cncComparisonValue
+
+    -- * ResourceEndpointListItem
+    , ResourceEndpointListItem
+    , resourceEndpointListItem
+    , reliProtocol
+    , reliResourceEndpoint
+
+    -- * SingleMasterChannelEndpointConfiguration
+    , SingleMasterChannelEndpointConfiguration
+    , singleMasterChannelEndpointConfiguration
+    , smcecProtocols
+    , smcecRole
+
+    -- * SingleMasterConfiguration
+    , SingleMasterConfiguration
+    , singleMasterConfiguration
+    , smcMessageTtlSeconds
 
     -- * StreamInfo
     , StreamInfo
@@ -58,17 +103,32 @@ module Network.AWS.KinesisVideo.Types
     , streamNameCondition
     , sncComparisonOperator
     , sncComparisonValue
+
+    -- * Tag
+    , Tag
+    , tag
+    , tagKey
+    , tagValue
     ) where
 
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Sign.V4
 import Network.AWS.KinesisVideo.Types.APIName
+import Network.AWS.KinesisVideo.Types.ChannelProtocol
+import Network.AWS.KinesisVideo.Types.ChannelRole
+import Network.AWS.KinesisVideo.Types.ChannelType
 import Network.AWS.KinesisVideo.Types.ComparisonOperator
 import Network.AWS.KinesisVideo.Types.StreamStatus
 import Network.AWS.KinesisVideo.Types.UpdateDataRetentionOperation
+import Network.AWS.KinesisVideo.Types.ChannelInfo
+import Network.AWS.KinesisVideo.Types.ChannelNameCondition
+import Network.AWS.KinesisVideo.Types.ResourceEndpointListItem
+import Network.AWS.KinesisVideo.Types.SingleMasterChannelEndpointConfiguration
+import Network.AWS.KinesisVideo.Types.SingleMasterConfiguration
 import Network.AWS.KinesisVideo.Types.StreamInfo
 import Network.AWS.KinesisVideo.Types.StreamNameCondition
+import Network.AWS.KinesisVideo.Types.Tag
 
 -- | API version @2017-09-30@ of the Amazon Kinesis Video Streams SDK configuration.
 kinesisVideo :: Service
@@ -93,6 +153,11 @@ kinesisVideo
             = Just "throttling_exception"
           | has (hasCode "Throttling" . hasStatus 400) e =
             Just "throttling"
+          | has
+              (hasCode "ProvisionedThroughputExceededException" .
+                 hasStatus 400)
+              e
+            = Just "throughput_exceeded"
           | has (hasStatus 504) e = Just "gateway_timeout"
           | has
               (hasCode "RequestThrottledException" . hasStatus 400)
@@ -131,7 +196,16 @@ _InvalidResourceFormatException
       "InvalidResourceFormatException"
       . hasStatus 400
 
--- | The stream version that you specified is not the latest version. To get the latest version, use the <http://docs.aws.amazon.com/kinesisvideo/latest/dg/API_DescribeStream.html DescribeStream> API.
+-- | You do not have required permissions to perform this operation.
+--
+--
+_AccessDeniedException :: AsError a => Getting (First ServiceError) a ServiceError
+_AccessDeniedException
+  = _MatchServiceError kinesisVideo
+      "AccessDeniedException"
+      . hasStatus 401
+
+-- | The stream version that you specified is not the latest version. To get the latest version, use the <https://docs.aws.amazon.com/kinesisvideostreams/latest/dg/API_DescribeStream.html DescribeStream> API.
 --
 --
 _VersionMismatchException :: AsError a => Getting (First ServiceError) a ServiceError
@@ -157,6 +231,15 @@ _ResourceNotFoundException
   = _MatchServiceError kinesisVideo
       "ResourceNotFoundException"
       . hasStatus 404
+
+-- | You have reached the maximum limit of active signaling channels for this AWS account in this region.
+--
+--
+_AccountChannelLimitExceededException :: AsError a => Getting (First ServiceError) a ServiceError
+_AccountChannelLimitExceededException
+  = _MatchServiceError kinesisVideo
+      "AccountChannelLimitExceededException"
+      . hasStatus 400
 
 -- | Kinesis Video Streams has throttled the request because you have exceeded the limit of allowed client calls. Try making the call later.
 --
@@ -194,7 +277,7 @@ _AccountStreamLimitExceededException
       "AccountStreamLimitExceededException"
       . hasStatus 400
 
--- | The stream is currently not available for this operation.
+-- | The signaling channel is currently not available for this operation.
 --
 --
 _ResourceInUseException :: AsError a => Getting (First ServiceError) a ServiceError

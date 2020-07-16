@@ -19,29 +19,39 @@
 module Network.AWS.MediaLive.Types.H264RateControlMode (
   H264RateControlMode (
     ..
-    , Cbr
-    , Vbr
+    , HRCMCbr
+    , HRCMMultiplex
+    , HRCMQvbr
+    , HRCMVbr
     )
   ) where
 
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | Placeholder documentation for H264RateControlMode
+-- | H264 Rate Control Mode
 data H264RateControlMode = H264RateControlMode' (CI
                                                    Text)
                              deriving (Eq, Ord, Read, Show, Data, Typeable,
                                        Generic)
 
-pattern Cbr :: H264RateControlMode
-pattern Cbr = H264RateControlMode' "CBR"
+pattern HRCMCbr :: H264RateControlMode
+pattern HRCMCbr = H264RateControlMode' "CBR"
 
-pattern Vbr :: H264RateControlMode
-pattern Vbr = H264RateControlMode' "VBR"
+pattern HRCMMultiplex :: H264RateControlMode
+pattern HRCMMultiplex = H264RateControlMode' "MULTIPLEX"
+
+pattern HRCMQvbr :: H264RateControlMode
+pattern HRCMQvbr = H264RateControlMode' "QVBR"
+
+pattern HRCMVbr :: H264RateControlMode
+pattern HRCMVbr = H264RateControlMode' "VBR"
 
 {-# COMPLETE
-  Cbr,
-  Vbr,
+  HRCMCbr,
+  HRCMMultiplex,
+  HRCMQvbr,
+  HRCMVbr,
   H264RateControlMode' #-}
 
 instance FromText H264RateControlMode where
@@ -56,20 +66,24 @@ instance ToText H264RateControlMode where
 --   fromEnum is a partial function, and will error on values unknown at generation time.
 instance Enum H264RateControlMode where
     toEnum i = case i of
-        0 -> Cbr
-        1 -> Vbr
+        0 -> HRCMCbr
+        1 -> HRCMMultiplex
+        2 -> HRCMQvbr
+        3 -> HRCMVbr
         _ -> (error . showText) $ "Unknown index for H264RateControlMode: " <> toText i
     fromEnum x = case x of
-        Cbr -> 0
-        Vbr -> 1
+        HRCMCbr -> 0
+        HRCMMultiplex -> 1
+        HRCMQvbr -> 2
+        HRCMVbr -> 3
         H264RateControlMode' name -> (error . showText) $ "Unknown H264RateControlMode: " <> original name
 
 -- | Represents the bounds of /known/ $H264RateControlMode.
 --   AWS may have added more since the source was generated.
 --   This instance exists only for backward compatibility.
 instance Bounded H264RateControlMode where
-    minBound = Cbr
-    maxBound = Vbr
+    minBound = HRCMCbr
+    maxBound = HRCMVbr
 
 instance Hashable     H264RateControlMode
 instance NFData       H264RateControlMode

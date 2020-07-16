@@ -34,7 +34,7 @@ data Delegate = Delegate'{_dId :: !Text,
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dId' - The identifier for the user or group is associated as the resource's delegate.
+-- * 'dId' - The identifier for the user or group associated as the resource's delegate.
 --
 -- * 'dType' - The type of the delegate: user or group.
 delegate
@@ -44,7 +44,7 @@ delegate
 delegate pId_ pType_
   = Delegate'{_dId = pId_, _dType = pType_}
 
--- | The identifier for the user or group is associated as the resource's delegate.
+-- | The identifier for the user or group associated as the resource's delegate.
 dId :: Lens' Delegate Text
 dId = lens _dId (\ s a -> s{_dId = a})
 

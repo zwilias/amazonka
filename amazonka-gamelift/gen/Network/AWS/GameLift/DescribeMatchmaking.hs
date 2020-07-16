@@ -25,7 +25,13 @@
 --
 -- To request matchmaking tickets, provide a list of up to 10 ticket IDs. If the request is successful, a ticket object is returned for each requested ID that currently exists.
 --
--- Matchmaking-related operations include:
+-- __Learn more__ 
+--
+-- <https://docs.aws.amazon.com/gamelift/latest/developerguide/match-client.html Add FlexMatch to a Game Client> 
+--
+-- <https://docs.aws.amazon.com/gamelift/latest/developerguide/match-notification.html Set Up FlexMatch Event Notification> 
+--
+-- __Related operations__ 
 --
 --     * 'StartMatchmaking' 
 --
@@ -76,13 +82,13 @@ newtype DescribeMatchmaking = DescribeMatchmaking'{_dmTicketIds
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dmTicketIds' - Unique identifier for a matchmaking ticket. You can include up to 10 ID values. 
+-- * 'dmTicketIds' - A unique identifier for a matchmaking ticket. You can include up to 10 ID values. 
 describeMatchmaking
     :: DescribeMatchmaking
 describeMatchmaking
   = DescribeMatchmaking'{_dmTicketIds = mempty}
 
--- | Unique identifier for a matchmaking ticket. You can include up to 10 ID values. 
+-- | A unique identifier for a matchmaking ticket. You can include up to 10 ID values. 
 dmTicketIds :: Lens' DescribeMatchmaking [Text]
 dmTicketIds = lens _dmTicketIds (\ s a -> s{_dmTicketIds = a}) . _Coerce
 
@@ -139,7 +145,7 @@ data DescribeMatchmakingResponse = DescribeMatchmakingResponse'{_dmrsTicketList
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dmrsTicketList' - Collection of existing matchmaking ticket objects matching the request.
+-- * 'dmrsTicketList' - A collection of existing matchmaking ticket objects matching the request.
 --
 -- * 'dmrsResponseStatus' - -- | The response status code.
 describeMatchmakingResponse
@@ -150,7 +156,7 @@ describeMatchmakingResponse pResponseStatus_
                                    Nothing,
                                  _dmrsResponseStatus = pResponseStatus_}
 
--- | Collection of existing matchmaking ticket objects matching the request.
+-- | A collection of existing matchmaking ticket objects matching the request.
 dmrsTicketList :: Lens' DescribeMatchmakingResponse [MatchmakingTicket]
 dmrsTicketList = lens _dmrsTicketList (\ s a -> s{_dmrsTicketList = a}) . _Default . _Coerce
 

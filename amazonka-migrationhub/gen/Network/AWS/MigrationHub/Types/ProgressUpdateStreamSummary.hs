@@ -35,14 +35,14 @@ newtype ProgressUpdateStreamSummary = ProgressUpdateStreamSummary'{_pussProgress
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'pussProgressUpdateStreamName' - The name of the ProgressUpdateStream. 
+-- * 'pussProgressUpdateStreamName' - The name of the ProgressUpdateStream. /Do not store personal data in this field./ 
 progressUpdateStreamSummary
     :: ProgressUpdateStreamSummary
 progressUpdateStreamSummary
   = ProgressUpdateStreamSummary'{_pussProgressUpdateStreamName
                                    = Nothing}
 
--- | The name of the ProgressUpdateStream. 
+-- | The name of the ProgressUpdateStream. /Do not store personal data in this field./ 
 pussProgressUpdateStreamName :: Lens' ProgressUpdateStreamSummary (Maybe Text)
 pussProgressUpdateStreamName = lens _pussProgressUpdateStreamName (\ s a -> s{_pussProgressUpdateStreamName = a})
 

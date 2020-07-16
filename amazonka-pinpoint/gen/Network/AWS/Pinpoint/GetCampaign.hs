@@ -18,7 +18,9 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Returns information about a campaign.
+-- Retrieves information about the status, configuration, and other settings for a campaign.
+--
+--
 module Network.AWS.Pinpoint.GetCampaign
     (
     -- * Creating a Request
@@ -53,9 +55,9 @@ data GetCampaign = GetCampaign'{_getCampaignId ::
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'getCampaignId' - Undocumented member.
+-- * 'getCampaignId' - The unique identifier for the campaign.
 --
--- * 'getApplicationId' - Undocumented member.
+-- * 'getApplicationId' - The unique identifier for the application. This identifier is displayed as the __Project ID__ on the Amazon Pinpoint console.
 getCampaign
     :: Text -- ^ 'getCampaignId'
     -> Text -- ^ 'getApplicationId'
@@ -64,11 +66,11 @@ getCampaign pCampaignId_ pApplicationId_
   = GetCampaign'{_getCampaignId = pCampaignId_,
                  _getApplicationId = pApplicationId_}
 
--- | Undocumented member.
+-- | The unique identifier for the campaign.
 getCampaignId :: Lens' GetCampaign Text
 getCampaignId = lens _getCampaignId (\ s a -> s{_getCampaignId = a})
 
--- | Undocumented member.
+-- | The unique identifier for the application. This identifier is displayed as the __Project ID__ on the Amazon Pinpoint console.
 getApplicationId :: Lens' GetCampaign Text
 getApplicationId = lens _getApplicationId (\ s a -> s{_getApplicationId = a})
 

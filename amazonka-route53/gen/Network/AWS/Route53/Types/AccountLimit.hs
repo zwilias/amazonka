@@ -38,7 +38,7 @@ data AccountLimit = AccountLimit'{_alType ::
 --
 -- * 'alType' - The limit that you requested. Valid values include the following:     * __MAX_HEALTH_CHECKS_BY_OWNER__ : The maximum number of health checks that you can create using the current account.     * __MAX_HOSTED_ZONES_BY_OWNER__ : The maximum number of hosted zones that you can create using the current account.     * __MAX_REUSABLE_DELEGATION_SETS_BY_OWNER__ : The maximum number of reusable delegation sets that you can create using the current account.     * __MAX_TRAFFIC_POLICIES_BY_OWNER__ : The maximum number of traffic policies that you can create using the current account.     * __MAX_TRAFFIC_POLICY_INSTANCES_BY_OWNER__ : The maximum number of traffic policy instances that you can create using the current account. (Traffic policy instances are referred to as traffic flow policy records in the Amazon Route 53 console.)
 --
--- * 'alValue' - The current value for the limit that is specified by 'AccountLimit$Type' .
+-- * 'alValue' - The current value for the limit that is specified by <https://docs.aws.amazon.com/Route53/latest/APIReference/API_AccountLimit.html#Route53-Type-AccountLimit-Type Type> .
 accountLimit
     :: AccountLimitType -- ^ 'alType'
     -> Natural -- ^ 'alValue'
@@ -51,7 +51,7 @@ accountLimit pType_ pValue_
 alType :: Lens' AccountLimit AccountLimitType
 alType = lens _alType (\ s a -> s{_alType = a})
 
--- | The current value for the limit that is specified by 'AccountLimit$Type' .
+-- | The current value for the limit that is specified by <https://docs.aws.amazon.com/Route53/latest/APIReference/API_AccountLimit.html#Route53-Type-AccountLimit-Type Type> .
 alValue :: Lens' AccountLimit Natural
 alValue = lens _alValue (\ s a -> s{_alValue = a}) . _Nat
 

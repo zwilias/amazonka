@@ -21,7 +21,7 @@ import Network.AWS.Lambda.Types.AliasRoutingConfiguration
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | Provides configuration information about a Lambda function version alias.
+-- | Provides configuration information about a Lambda function <https://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html alias> .
 --
 --
 --
@@ -42,17 +42,17 @@ data AliasConfiguration = AliasConfiguration'{_acRoutingConfig
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'acRoutingConfig' - Specifies an additional function versions the alias points to, allowing you to dictate what percentage of traffic will invoke each version. For more information, see 'lambda-traffic-shifting-using-aliases' .
+-- * 'acRoutingConfig' - The <https://docs.aws.amazon.com/lambda/latest/dg/lambda-traffic-shifting-using-aliases.html routing configuration> of the alias.
 --
--- * 'acName' - Alias name.
+-- * 'acName' - The name of the alias.
 --
--- * 'acFunctionVersion' - Function version to which the alias points.
+-- * 'acFunctionVersion' - The function version that the alias invokes.
 --
--- * 'acAliasARN' - Lambda function ARN that is qualified using the alias name as the suffix. For example, if you create an alias called @BETA@ that points to a helloworld function version, the ARN is @arn:aws:lambda:aws-regions:acct-id:function:helloworld:BETA@ .
+-- * 'acAliasARN' - The Amazon Resource Name (ARN) of the alias.
 --
--- * 'acDescription' - Alias description.
+-- * 'acDescription' - A description of the alias.
 --
--- * 'acRevisionId' - Represents the latest updated revision of the function or alias.
+-- * 'acRevisionId' - A unique identifier that changes when you update the alias.
 aliasConfiguration
     :: AliasConfiguration
 aliasConfiguration
@@ -61,27 +61,27 @@ aliasConfiguration
                         _acAliasARN = Nothing, _acDescription = Nothing,
                         _acRevisionId = Nothing}
 
--- | Specifies an additional function versions the alias points to, allowing you to dictate what percentage of traffic will invoke each version. For more information, see 'lambda-traffic-shifting-using-aliases' .
+-- | The <https://docs.aws.amazon.com/lambda/latest/dg/lambda-traffic-shifting-using-aliases.html routing configuration> of the alias.
 acRoutingConfig :: Lens' AliasConfiguration (Maybe AliasRoutingConfiguration)
 acRoutingConfig = lens _acRoutingConfig (\ s a -> s{_acRoutingConfig = a})
 
--- | Alias name.
+-- | The name of the alias.
 acName :: Lens' AliasConfiguration (Maybe Text)
 acName = lens _acName (\ s a -> s{_acName = a})
 
--- | Function version to which the alias points.
+-- | The function version that the alias invokes.
 acFunctionVersion :: Lens' AliasConfiguration (Maybe Text)
 acFunctionVersion = lens _acFunctionVersion (\ s a -> s{_acFunctionVersion = a})
 
--- | Lambda function ARN that is qualified using the alias name as the suffix. For example, if you create an alias called @BETA@ that points to a helloworld function version, the ARN is @arn:aws:lambda:aws-regions:acct-id:function:helloworld:BETA@ .
+-- | The Amazon Resource Name (ARN) of the alias.
 acAliasARN :: Lens' AliasConfiguration (Maybe Text)
 acAliasARN = lens _acAliasARN (\ s a -> s{_acAliasARN = a})
 
--- | Alias description.
+-- | A description of the alias.
 acDescription :: Lens' AliasConfiguration (Maybe Text)
 acDescription = lens _acDescription (\ s a -> s{_acDescription = a})
 
--- | Represents the latest updated revision of the function or alias.
+-- | A unique identifier that changes when you update the alias.
 acRevisionId :: Lens' AliasConfiguration (Maybe Text)
 acRevisionId = lens _acRevisionId (\ s a -> s{_acRevisionId = a})
 

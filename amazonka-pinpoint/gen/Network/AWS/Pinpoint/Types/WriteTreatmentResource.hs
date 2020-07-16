@@ -18,25 +18,36 @@
 module Network.AWS.Pinpoint.Types.WriteTreatmentResource where
 
 import Network.AWS.Lens
+import Network.AWS.Pinpoint.Types.CustomDeliveryConfiguration
 import Network.AWS.Pinpoint.Types.MessageConfiguration
 import Network.AWS.Pinpoint.Types.Schedule
+import Network.AWS.Pinpoint.Types.TemplateConfiguration
 import Network.AWS.Prelude
 
--- | Used to create a campaign treatment.
+-- | Specifies the settings for a campaign treatment. A /treatment/ is a variation of a campaign that's used for A/B testing of a campaign.
+--
+--
 --
 -- /See:/ 'writeTreatmentResource' smart constructor.
-data WriteTreatmentResource = WriteTreatmentResource'{_wtrSchedule
-                                                      :: !(Maybe Schedule),
+data WriteTreatmentResource = WriteTreatmentResource'{_wtrCustomDeliveryConfiguration
+                                                      ::
+                                                      !(Maybe
+                                                          CustomDeliveryConfiguration),
+                                                      _wtrSchedule ::
+                                                      !(Maybe Schedule),
+                                                      _wtrTemplateConfiguration
+                                                      ::
+                                                      !(Maybe
+                                                          TemplateConfiguration),
                                                       _wtrTreatmentName ::
                                                       !(Maybe Text),
-                                                      _wtrSizePercent ::
-                                                      !(Maybe Int),
                                                       _wtrTreatmentDescription
                                                       :: !(Maybe Text),
                                                       _wtrMessageConfiguration
                                                       ::
                                                       !(Maybe
-                                                          MessageConfiguration)}
+                                                          MessageConfiguration),
+                                                      _wtrSizePercent :: !Int}
                                 deriving (Eq, Read, Show, Data, Typeable,
                                           Generic)
 
@@ -44,43 +55,59 @@ data WriteTreatmentResource = WriteTreatmentResource'{_wtrSchedule
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'wtrSchedule' - The campaign schedule.
+-- * 'wtrCustomDeliveryConfiguration' - The delivery configuration settings for sending the treatment through a custom channel. This object is required if the MessageConfiguration object for the treatment specifies a CustomMessage object.
 --
--- * 'wtrTreatmentName' - The custom name of a variation of the campaign used for A/B testing.
+-- * 'wtrSchedule' - The schedule settings for the treatment.
 --
--- * 'wtrSizePercent' - The allocated percentage of users for this treatment.
+-- * 'wtrTemplateConfiguration' - The message template to use for the treatment.
 --
--- * 'wtrTreatmentDescription' - A custom description for the treatment.
+-- * 'wtrTreatmentName' - A custom name for the treatment.
 --
--- * 'wtrMessageConfiguration' - The message configuration settings.
+-- * 'wtrTreatmentDescription' - A custom description of the treatment.
+--
+-- * 'wtrMessageConfiguration' - The message configuration settings for the treatment.
+--
+-- * 'wtrSizePercent' - The allocated percentage of users (segment members) to send the treatment to.
 writeTreatmentResource
-    :: WriteTreatmentResource
-writeTreatmentResource
-  = WriteTreatmentResource'{_wtrSchedule = Nothing,
+    :: Int -- ^ 'wtrSizePercent'
+    -> WriteTreatmentResource
+writeTreatmentResource pSizePercent_
+  = WriteTreatmentResource'{_wtrCustomDeliveryConfiguration
+                              = Nothing,
+                            _wtrSchedule = Nothing,
+                            _wtrTemplateConfiguration = Nothing,
                             _wtrTreatmentName = Nothing,
-                            _wtrSizePercent = Nothing,
                             _wtrTreatmentDescription = Nothing,
-                            _wtrMessageConfiguration = Nothing}
+                            _wtrMessageConfiguration = Nothing,
+                            _wtrSizePercent = pSizePercent_}
 
--- | The campaign schedule.
+-- | The delivery configuration settings for sending the treatment through a custom channel. This object is required if the MessageConfiguration object for the treatment specifies a CustomMessage object.
+wtrCustomDeliveryConfiguration :: Lens' WriteTreatmentResource (Maybe CustomDeliveryConfiguration)
+wtrCustomDeliveryConfiguration = lens _wtrCustomDeliveryConfiguration (\ s a -> s{_wtrCustomDeliveryConfiguration = a})
+
+-- | The schedule settings for the treatment.
 wtrSchedule :: Lens' WriteTreatmentResource (Maybe Schedule)
 wtrSchedule = lens _wtrSchedule (\ s a -> s{_wtrSchedule = a})
 
--- | The custom name of a variation of the campaign used for A/B testing.
+-- | The message template to use for the treatment.
+wtrTemplateConfiguration :: Lens' WriteTreatmentResource (Maybe TemplateConfiguration)
+wtrTemplateConfiguration = lens _wtrTemplateConfiguration (\ s a -> s{_wtrTemplateConfiguration = a})
+
+-- | A custom name for the treatment.
 wtrTreatmentName :: Lens' WriteTreatmentResource (Maybe Text)
 wtrTreatmentName = lens _wtrTreatmentName (\ s a -> s{_wtrTreatmentName = a})
 
--- | The allocated percentage of users for this treatment.
-wtrSizePercent :: Lens' WriteTreatmentResource (Maybe Int)
-wtrSizePercent = lens _wtrSizePercent (\ s a -> s{_wtrSizePercent = a})
-
--- | A custom description for the treatment.
+-- | A custom description of the treatment.
 wtrTreatmentDescription :: Lens' WriteTreatmentResource (Maybe Text)
 wtrTreatmentDescription = lens _wtrTreatmentDescription (\ s a -> s{_wtrTreatmentDescription = a})
 
--- | The message configuration settings.
+-- | The message configuration settings for the treatment.
 wtrMessageConfiguration :: Lens' WriteTreatmentResource (Maybe MessageConfiguration)
 wtrMessageConfiguration = lens _wtrMessageConfiguration (\ s a -> s{_wtrMessageConfiguration = a})
+
+-- | The allocated percentage of users (segment members) to send the treatment to.
+wtrSizePercent :: Lens' WriteTreatmentResource Int
+wtrSizePercent = lens _wtrSizePercent (\ s a -> s{_wtrSizePercent = a})
 
 instance Hashable WriteTreatmentResource where
 
@@ -90,10 +117,14 @@ instance ToJSON WriteTreatmentResource where
         toJSON WriteTreatmentResource'{..}
           = object
               (catMaybes
-                 [("Schedule" .=) <$> _wtrSchedule,
+                 [("CustomDeliveryConfiguration" .=) <$>
+                    _wtrCustomDeliveryConfiguration,
+                  ("Schedule" .=) <$> _wtrSchedule,
+                  ("TemplateConfiguration" .=) <$>
+                    _wtrTemplateConfiguration,
                   ("TreatmentName" .=) <$> _wtrTreatmentName,
-                  ("SizePercent" .=) <$> _wtrSizePercent,
                   ("TreatmentDescription" .=) <$>
                     _wtrTreatmentDescription,
                   ("MessageConfiguration" .=) <$>
-                    _wtrMessageConfiguration])
+                    _wtrMessageConfiguration,
+                  Just ("SizePercent" .= _wtrSizePercent)])

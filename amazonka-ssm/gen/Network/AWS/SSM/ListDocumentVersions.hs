@@ -21,6 +21,8 @@
 -- List all versions for a document.
 --
 --
+--
+-- This operation returns paginated results.
 module Network.AWS.SSM.ListDocumentVersions
     (
     -- * Creating a Request
@@ -41,6 +43,7 @@ module Network.AWS.SSM.ListDocumentVersions
     ) where
 
 import Network.AWS.Lens
+import Network.AWS.Pager
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
@@ -63,7 +66,7 @@ data ListDocumentVersions = ListDocumentVersions'{_ldvNextToken
 --
 -- * 'ldvMaxResults' - The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.
 --
--- * 'ldvName' - The name of the document about which you want version information.
+-- * 'ldvName' - The name of the document. You can specify an Amazon Resource Name (ARN).
 listDocumentVersions
     :: Text -- ^ 'ldvName'
     -> ListDocumentVersions
@@ -79,9 +82,16 @@ ldvNextToken = lens _ldvNextToken (\ s a -> s{_ldvNextToken = a})
 ldvMaxResults :: Lens' ListDocumentVersions (Maybe Natural)
 ldvMaxResults = lens _ldvMaxResults (\ s a -> s{_ldvMaxResults = a}) . mapping _Nat
 
--- | The name of the document about which you want version information.
+-- | The name of the document. You can specify an Amazon Resource Name (ARN).
 ldvName :: Lens' ListDocumentVersions Text
 ldvName = lens _ldvName (\ s a -> s{_ldvName = a})
+
+instance AWSPager ListDocumentVersions where
+        page rq rs
+          | stop (rs ^. ldvrsNextToken) = Nothing
+          | stop (rs ^. ldvrsDocumentVersions) = Nothing
+          | otherwise =
+            Just $ rq & ldvNextToken .~ rs ^. ldvrsNextToken
 
 instance AWSRequest ListDocumentVersions where
         type Rs ListDocumentVersions =

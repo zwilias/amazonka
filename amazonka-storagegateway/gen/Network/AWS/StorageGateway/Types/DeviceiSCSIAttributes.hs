@@ -40,7 +40,7 @@ data DeviceiSCSIAttributes = DeviceiSCSIAttributes'{_dscsiaTargetARN
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dscsiaTargetARN' - Specifies the unique Amazon Resource Name(ARN) that encodes the iSCSI qualified name(iqn) of a tape drive or media changer target.
+-- * 'dscsiaTargetARN' - Specifies the unique Amazon Resource Name (ARN) that encodes the iSCSI qualified name(iqn) of a tape drive or media changer target.
 --
 -- * 'dscsiaChapEnabled' - Indicates whether mutual CHAP is enabled for the iSCSI target.
 --
@@ -55,7 +55,7 @@ deviceiSCSIAttributes
                            _dscsiaNetworkInterfaceId = Nothing,
                            _dscsiaNetworkInterfacePort = Nothing}
 
--- | Specifies the unique Amazon Resource Name(ARN) that encodes the iSCSI qualified name(iqn) of a tape drive or media changer target.
+-- | Specifies the unique Amazon Resource Name (ARN) that encodes the iSCSI qualified name(iqn) of a tape drive or media changer target.
 dscsiaTargetARN :: Lens' DeviceiSCSIAttributes (Maybe Text)
 dscsiaTargetARN = lens _dscsiaTargetARN (\ s a -> s{_dscsiaTargetARN = a})
 

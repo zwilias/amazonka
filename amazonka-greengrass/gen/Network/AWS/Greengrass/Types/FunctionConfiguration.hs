@@ -45,7 +45,7 @@ data FunctionConfiguration = FunctionConfiguration'{_fcMemorySize
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'fcMemorySize' - The memory size, in KB, which the function requires.
+-- * 'fcMemorySize' - The memory size, in KB, which the function requires. This setting is not applicable and should be cleared when you run the Lambda function without containerization.
 --
 -- * 'fcExecArgs' - The execution arguments.
 --
@@ -57,7 +57,7 @@ data FunctionConfiguration = FunctionConfiguration'{_fcMemorySize
 --
 -- * 'fcEncodingType' - The expected encoding type of the input payload for the function. The default is ''json''.
 --
--- * 'fcTimeout' - The allowed function execution time, after which Lambda should terminate the function. This timeout still applies to pinned lambdas for each request.
+-- * 'fcTimeout' - The allowed function execution time, after which Lambda should terminate the function. This timeout still applies to pinned Lambda functions for each request.
 functionConfiguration
     :: FunctionConfiguration
 functionConfiguration
@@ -66,7 +66,7 @@ functionConfiguration
                            _fcExecutable = Nothing, _fcPinned = Nothing,
                            _fcEncodingType = Nothing, _fcTimeout = Nothing}
 
--- | The memory size, in KB, which the function requires.
+-- | The memory size, in KB, which the function requires. This setting is not applicable and should be cleared when you run the Lambda function without containerization.
 fcMemorySize :: Lens' FunctionConfiguration (Maybe Int)
 fcMemorySize = lens _fcMemorySize (\ s a -> s{_fcMemorySize = a})
 
@@ -90,7 +90,7 @@ fcPinned = lens _fcPinned (\ s a -> s{_fcPinned = a})
 fcEncodingType :: Lens' FunctionConfiguration (Maybe EncodingType)
 fcEncodingType = lens _fcEncodingType (\ s a -> s{_fcEncodingType = a})
 
--- | The allowed function execution time, after which Lambda should terminate the function. This timeout still applies to pinned lambdas for each request.
+-- | The allowed function execution time, after which Lambda should terminate the function. This timeout still applies to pinned Lambda functions for each request.
 fcTimeout :: Lens' FunctionConfiguration (Maybe Int)
 fcTimeout = lens _fcTimeout (\ s a -> s{_fcTimeout = a})
 

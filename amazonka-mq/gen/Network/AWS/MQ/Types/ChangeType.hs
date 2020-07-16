@@ -28,7 +28,7 @@ module Network.AWS.MQ.Types.ChangeType (
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | The type of change pending for the ActiveMQ user. Possible values: CREATE, UPDATE, DELETE
+-- | The type of change pending for the ActiveMQ user.
 data ChangeType = ChangeType' (CI Text)
                     deriving (Eq, Ord, Read, Show, Data, Typeable,
                               Generic)

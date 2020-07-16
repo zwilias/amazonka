@@ -35,7 +35,7 @@ data SNSAction = SNSAction'{_snsaMessageFormat ::
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'snsaMessageFormat' - The message format of the message to publish. Optional. Accepted values are "JSON" and "RAW". The default value of the attribute is "RAW". SNS uses this setting to determine if the payload should be parsed and relevant platform-specific bits of the payload should be extracted. To read more about SNS message formats, see <http://docs.aws.amazon.com/sns/latest/dg/json-formats.html http://docs.aws.amazon.com/sns/latest/dg/json-formats.html> refer to their official documentation.
+-- * 'snsaMessageFormat' - (Optional) The message format of the message to publish. Accepted values are "JSON" and "RAW". The default value of the attribute is "RAW". SNS uses this setting to determine if the payload should be parsed and relevant platform-specific bits of the payload should be extracted. To read more about SNS message formats, see <https://docs.aws.amazon.com/sns/latest/dg/json-formats.html https://docs.aws.amazon.com/sns/latest/dg/json-formats.html> refer to their official documentation.
 --
 -- * 'snsaTargetARN' - The ARN of the SNS topic.
 --
@@ -49,7 +49,7 @@ snsAction pTargetARN_ pRoleARN_
                _snsaTargetARN = pTargetARN_,
                _snsaRoleARN = pRoleARN_}
 
--- | The message format of the message to publish. Optional. Accepted values are "JSON" and "RAW". The default value of the attribute is "RAW". SNS uses this setting to determine if the payload should be parsed and relevant platform-specific bits of the payload should be extracted. To read more about SNS message formats, see <http://docs.aws.amazon.com/sns/latest/dg/json-formats.html http://docs.aws.amazon.com/sns/latest/dg/json-formats.html> refer to their official documentation.
+-- | (Optional) The message format of the message to publish. Accepted values are "JSON" and "RAW". The default value of the attribute is "RAW". SNS uses this setting to determine if the payload should be parsed and relevant platform-specific bits of the payload should be extracted. To read more about SNS message formats, see <https://docs.aws.amazon.com/sns/latest/dg/json-formats.html https://docs.aws.amazon.com/sns/latest/dg/json-formats.html> refer to their official documentation.
 snsaMessageFormat :: Lens' SNSAction (Maybe MessageFormat)
 snsaMessageFormat = lens _snsaMessageFormat (\ s a -> s{_snsaMessageFormat = a})
 

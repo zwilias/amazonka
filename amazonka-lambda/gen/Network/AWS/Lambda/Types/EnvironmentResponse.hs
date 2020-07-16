@@ -21,7 +21,7 @@ import Network.AWS.Lambda.Types.EnvironmentError
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | The parent object returned that contains your environment's configuration settings or any error information associated with your configuration settings.
+-- | The results of an operation to update or read environment variables. If the operation is successful, the response contains the environment variables. If it failed, the response contains details about the error.
 --
 --
 --
@@ -40,20 +40,20 @@ data EnvironmentResponse = EnvironmentResponse'{_envVariables
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'envVariables' - The key-value pairs returned that represent your environment's configuration settings or error information.
+-- * 'envVariables' - Environment variable key-value pairs.
 --
--- * 'envError' - Undocumented member.
+-- * 'envError' - Error messages for environment variables that couldn't be applied.
 environmentResponse
     :: EnvironmentResponse
 environmentResponse
   = EnvironmentResponse'{_envVariables = Nothing,
                          _envError = Nothing}
 
--- | The key-value pairs returned that represent your environment's configuration settings or error information.
+-- | Environment variable key-value pairs.
 envVariables :: Lens' EnvironmentResponse (Maybe (HashMap Text Text))
 envVariables = lens _envVariables (\ s a -> s{_envVariables = a}) . mapping (_Sensitive . _Map)
 
--- | Undocumented member.
+-- | Error messages for environment variables that couldn't be applied.
 envError :: Lens' EnvironmentResponse (Maybe EnvironmentError)
 envError = lens _envError (\ s a -> s{_envError = a})
 

@@ -25,9 +25,15 @@
 --
 -- To register acceptance, specify the ticket ID, a response, and one or more players. Once all players have registered acceptance, the matchmaking tickets advance to status @PLACING@ , where a new game session is created for the match. 
 --
--- If any player rejects the match, or if acceptances are not received before a specified timeout, the proposed match is dropped. The matchmaking tickets are then handled in one of two ways: For tickets where all players accepted the match, the ticket status is returned to @SEARCHING@ to find a new match. For tickets where one or more players failed to accept the match, the ticket status is set to @FAILED@ , and processing is terminated. A new matchmaking request for these players can be submitted as needed. 
+-- If any player rejects the match, or if acceptances are not received before a specified timeout, the proposed match is dropped. The matchmaking tickets are then handled in one of two ways: For tickets where one or more players rejected the match, the ticket status is returned to @SEARCHING@ to find a new match. For tickets where one or more players failed to respond, the ticket status is set to @CANCELLED@ , and processing is terminated. A new matchmaking request for these players can be submitted as needed. 
 --
--- Matchmaking-related operations include:
+-- __Learn more__ 
+--
+-- <https://docs.aws.amazon.com/gamelift/latest/developerguide/match-client.html Add FlexMatch to a Game Client> 
+--
+-- <https://docs.aws.amazon.com/gamelift/latest/developerguide/match-events.html FlexMatch Events Reference> 
+--
+-- __Related operations__ 
 --
 --     * 'StartMatchmaking' 
 --
@@ -79,9 +85,9 @@ data AcceptMatch = AcceptMatch'{_amTicketId :: !Text,
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'amTicketId' - Unique identifier for a matchmaking ticket. The ticket must be in status @REQUIRES_ACCEPTANCE@ ; otherwise this request will fail.
+-- * 'amTicketId' - A unique identifier for a matchmaking ticket. The ticket must be in status @REQUIRES_ACCEPTANCE@ ; otherwise this request will fail.
 --
--- * 'amPlayerIds' - Unique identifier for a player delivering the response. This parameter can include one or multiple player IDs.
+-- * 'amPlayerIds' - A unique identifier for a player delivering the response. This parameter can include one or multiple player IDs.
 --
 -- * 'amAcceptanceType' - Player response to the proposed match.
 acceptMatch
@@ -93,11 +99,11 @@ acceptMatch pTicketId_ pAcceptanceType_
                  _amPlayerIds = mempty,
                  _amAcceptanceType = pAcceptanceType_}
 
--- | Unique identifier for a matchmaking ticket. The ticket must be in status @REQUIRES_ACCEPTANCE@ ; otherwise this request will fail.
+-- | A unique identifier for a matchmaking ticket. The ticket must be in status @REQUIRES_ACCEPTANCE@ ; otherwise this request will fail.
 amTicketId :: Lens' AcceptMatch Text
 amTicketId = lens _amTicketId (\ s a -> s{_amTicketId = a})
 
--- | Unique identifier for a player delivering the response. This parameter can include one or multiple player IDs.
+-- | A unique identifier for a player delivering the response. This parameter can include one or multiple player IDs.
 amPlayerIds :: Lens' AcceptMatch [Text]
 amPlayerIds = lens _amPlayerIds (\ s a -> s{_amPlayerIds = a}) . _Coerce
 

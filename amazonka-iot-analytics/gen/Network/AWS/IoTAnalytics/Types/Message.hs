@@ -33,9 +33,9 @@ data Message = Message'{_mMessageId :: !Text,
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'mMessageId' - The ID you wish to assign to the message.
+-- * 'mMessageId' - The ID you wish to assign to the message. Each "messageId" must be unique within each batch sent.
 --
--- * 'mPayload' - The payload of the message.-- /Note:/ This 'Lens' automatically encodes and decodes Base64 data. The underlying isomorphism will encode to Base64 representation during serialisation, and decode from Base64 representation during deserialisation. This 'Lens' accepts and returns only raw unencoded data.
+-- * 'mPayload' - The payload of the message. This may be a JSON string or a Base64-encoded string representing binary data (in which case you must decode it by means of a pipeline activity).-- /Note:/ This 'Lens' automatically encodes and decodes Base64 data. The underlying isomorphism will encode to Base64 representation during serialisation, and decode from Base64 representation during deserialisation. This 'Lens' accepts and returns only raw unencoded data.
 message
     :: Text -- ^ 'mMessageId'
     -> ByteString -- ^ 'mPayload'
@@ -44,11 +44,11 @@ message pMessageId_ pPayload_
   = Message'{_mMessageId = pMessageId_,
              _mPayload = _Base64 # pPayload_}
 
--- | The ID you wish to assign to the message.
+-- | The ID you wish to assign to the message. Each "messageId" must be unique within each batch sent.
 mMessageId :: Lens' Message Text
 mMessageId = lens _mMessageId (\ s a -> s{_mMessageId = a})
 
--- | The payload of the message.-- /Note:/ This 'Lens' automatically encodes and decodes Base64 data. The underlying isomorphism will encode to Base64 representation during serialisation, and decode from Base64 representation during deserialisation. This 'Lens' accepts and returns only raw unencoded data.
+-- | The payload of the message. This may be a JSON string or a Base64-encoded string representing binary data (in which case you must decode it by means of a pipeline activity).-- /Note:/ This 'Lens' automatically encodes and decodes Base64 data. The underlying isomorphism will encode to Base64 representation during serialisation, and decode from Base64 representation during deserialisation. This 'Lens' accepts and returns only raw unencoded data.
 mPayload :: Lens' Message ByteString
 mPayload = lens _mPayload (\ s a -> s{_mPayload = a}) . _Base64
 

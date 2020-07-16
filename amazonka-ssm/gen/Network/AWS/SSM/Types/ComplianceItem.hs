@@ -23,7 +23,7 @@ import Network.AWS.SSM.Types.ComplianceExecutionSummary
 import Network.AWS.SSM.Types.ComplianceSeverity
 import Network.AWS.SSM.Types.ComplianceStatus
 
--- | Information about the compliance as defined by the resource type. For example, for a patch resource type, @Items@ includes information about the PatchSeverity, Classification, etc.
+-- | Information about the compliance as defined by the resource type. For example, for a patch resource type, @Items@ includes information about the PatchSeverity, Classification, and so on.
 --
 --
 --

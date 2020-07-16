@@ -20,7 +20,7 @@ module Network.AWS.ECS.Types.HostVolumeProperties where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | Details on a container instance host volume.
+-- | Details on a container instance bind mount host volume.
 --
 --
 --
@@ -34,13 +34,13 @@ newtype HostVolumeProperties = HostVolumeProperties'{_hvpSourcePath
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'hvpSourcePath' - The path on the host container instance that is presented to the container. If this parameter is empty, then the Docker daemon has assigned a host path for you. If the @host@ parameter contains a @sourcePath@ file location, then the data volume persists at the specified location on the host container instance until you delete it manually. If the @sourcePath@ value does not exist on the host container instance, the Docker daemon creates it. If the location does exist, the contents of the source path folder are exported. If you are using the Fargate launch type, the @sourcePath@ parameter is not supported.
+-- * 'hvpSourcePath' - When the @host@ parameter is used, specify a @sourcePath@ to declare the path on the host container instance that is presented to the container. If this parameter is empty, then the Docker daemon has assigned a host path for you. If the @host@ parameter contains a @sourcePath@ file location, then the data volume persists at the specified location on the host container instance until you delete it manually. If the @sourcePath@ value does not exist on the host container instance, the Docker daemon creates it. If the location does exist, the contents of the source path folder are exported. If you are using the Fargate launch type, the @sourcePath@ parameter is not supported.
 hostVolumeProperties
     :: HostVolumeProperties
 hostVolumeProperties
   = HostVolumeProperties'{_hvpSourcePath = Nothing}
 
--- | The path on the host container instance that is presented to the container. If this parameter is empty, then the Docker daemon has assigned a host path for you. If the @host@ parameter contains a @sourcePath@ file location, then the data volume persists at the specified location on the host container instance until you delete it manually. If the @sourcePath@ value does not exist on the host container instance, the Docker daemon creates it. If the location does exist, the contents of the source path folder are exported. If you are using the Fargate launch type, the @sourcePath@ parameter is not supported.
+-- | When the @host@ parameter is used, specify a @sourcePath@ to declare the path on the host container instance that is presented to the container. If this parameter is empty, then the Docker daemon has assigned a host path for you. If the @host@ parameter contains a @sourcePath@ file location, then the data volume persists at the specified location on the host container instance until you delete it manually. If the @sourcePath@ value does not exist on the host container instance, the Docker daemon creates it. If the location does exist, the contents of the source path folder are exported. If you are using the Fargate launch type, the @sourcePath@ parameter is not supported.
 hvpSourcePath :: Lens' HostVolumeProperties (Maybe Text)
 hvpSourcePath = lens _hvpSourcePath (\ s a -> s{_hvpSourcePath = a})
 

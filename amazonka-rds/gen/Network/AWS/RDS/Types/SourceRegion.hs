@@ -20,7 +20,7 @@ module Network.AWS.RDS.Types.SourceRegion where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | Contains an AWS Region name as the result of a successful call to the 'DescribeSourceRegions' action.
+-- | Contains an AWS Region name as the result of a successful call to the @DescribeSourceRegions@ action.
 --
 --
 --

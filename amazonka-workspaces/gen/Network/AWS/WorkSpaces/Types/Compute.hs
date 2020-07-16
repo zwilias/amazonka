@@ -20,8 +20,10 @@ module Network.AWS.WorkSpaces.Types.Compute (
   Compute (
     ..
     , Graphics
+    , Graphicspro
     , Performance
     , Power
+    , Powerpro
     , Standard
     , Value
     )
@@ -37,11 +39,17 @@ data Compute = Compute' (CI Text)
 pattern Graphics :: Compute
 pattern Graphics = Compute' "GRAPHICS"
 
+pattern Graphicspro :: Compute
+pattern Graphicspro = Compute' "GRAPHICSPRO"
+
 pattern Performance :: Compute
 pattern Performance = Compute' "PERFORMANCE"
 
 pattern Power :: Compute
 pattern Power = Compute' "POWER"
+
+pattern Powerpro :: Compute
+pattern Powerpro = Compute' "POWERPRO"
 
 pattern Standard :: Compute
 pattern Standard = Compute' "STANDARD"
@@ -51,8 +59,10 @@ pattern Value = Compute' "VALUE"
 
 {-# COMPLETE
   Graphics,
+  Graphicspro,
   Performance,
   Power,
+  Powerpro,
   Standard,
   Value,
   Compute' #-}
@@ -70,17 +80,21 @@ instance ToText Compute where
 instance Enum Compute where
     toEnum i = case i of
         0 -> Graphics
-        1 -> Performance
-        2 -> Power
-        3 -> Standard
-        4 -> Value
+        1 -> Graphicspro
+        2 -> Performance
+        3 -> Power
+        4 -> Powerpro
+        5 -> Standard
+        6 -> Value
         _ -> (error . showText) $ "Unknown index for Compute: " <> toText i
     fromEnum x = case x of
         Graphics -> 0
-        Performance -> 1
-        Power -> 2
-        Standard -> 3
-        Value -> 4
+        Graphicspro -> 1
+        Performance -> 2
+        Power -> 3
+        Powerpro -> 4
+        Standard -> 5
+        Value -> 6
         Compute' name -> (error . showText) $ "Unknown Compute: " <> original name
 
 -- | Represents the bounds of /known/ $Compute.

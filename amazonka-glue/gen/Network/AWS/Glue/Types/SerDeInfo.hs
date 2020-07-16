@@ -20,7 +20,7 @@ module Network.AWS.Glue.Types.SerDeInfo where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | Information about a serialization/deserialization program (SerDe) which serves as an extractor and loader.
+-- | Information about a serialization/deserialization program (SerDe) that serves as an extractor and loader.
 --
 --
 --
@@ -35,18 +35,18 @@ data SerDeInfo = SerDeInfo'{_sdiSerializationLibrary
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'sdiSerializationLibrary' - Usually the class that implements the SerDe. An example is: @org.apache.hadoop.hive.serde2.columnar.ColumnarSerDe@ .
+-- * 'sdiSerializationLibrary' - Usually the class that implements the SerDe. An example is @org.apache.hadoop.hive.serde2.columnar.ColumnarSerDe@ .
 --
 -- * 'sdiName' - Name of the SerDe.
 --
--- * 'sdiParameters' - A list of initialization parameters for the SerDe, in key-value form.
+-- * 'sdiParameters' - These key-value pairs define initialization parameters for the SerDe.
 serDeInfo
     :: SerDeInfo
 serDeInfo
   = SerDeInfo'{_sdiSerializationLibrary = Nothing,
                _sdiName = Nothing, _sdiParameters = Nothing}
 
--- | Usually the class that implements the SerDe. An example is: @org.apache.hadoop.hive.serde2.columnar.ColumnarSerDe@ .
+-- | Usually the class that implements the SerDe. An example is @org.apache.hadoop.hive.serde2.columnar.ColumnarSerDe@ .
 sdiSerializationLibrary :: Lens' SerDeInfo (Maybe Text)
 sdiSerializationLibrary = lens _sdiSerializationLibrary (\ s a -> s{_sdiSerializationLibrary = a})
 
@@ -54,7 +54,7 @@ sdiSerializationLibrary = lens _sdiSerializationLibrary (\ s a -> s{_sdiSerializ
 sdiName :: Lens' SerDeInfo (Maybe Text)
 sdiName = lens _sdiName (\ s a -> s{_sdiName = a})
 
--- | A list of initialization parameters for the SerDe, in key-value form.
+-- | These key-value pairs define initialization parameters for the SerDe.
 sdiParameters :: Lens' SerDeInfo (HashMap Text Text)
 sdiParameters = lens _sdiParameters (\ s a -> s{_sdiParameters = a}) . _Default . _Map
 

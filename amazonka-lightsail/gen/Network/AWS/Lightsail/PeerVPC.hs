@@ -93,7 +93,7 @@ data PeerVPCResponse = PeerVPCResponse'{_pvrsOperation
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'pvrsOperation' - An array of key-value pairs containing information about the request operation.
+-- * 'pvrsOperation' - An array of objects that describe the result of the action, such as the status of the request, the time stamp of the request, and the resources affected by the request.
 --
 -- * 'pvrsResponseStatus' - -- | The response status code.
 peerVPCResponse
@@ -103,7 +103,7 @@ peerVPCResponse pResponseStatus_
   = PeerVPCResponse'{_pvrsOperation = Nothing,
                      _pvrsResponseStatus = pResponseStatus_}
 
--- | An array of key-value pairs containing information about the request operation.
+-- | An array of objects that describe the result of the action, such as the status of the request, the time stamp of the request, and the resources affected by the request.
 pvrsOperation :: Lens' PeerVPCResponse (Maybe Operation)
 pvrsOperation = lens _pvrsOperation (\ s a -> s{_pvrsOperation = a})
 

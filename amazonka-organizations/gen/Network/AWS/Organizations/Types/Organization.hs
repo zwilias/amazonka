@@ -44,11 +44,11 @@ data Organization = Organization'{_oARN ::
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'oARN' - The Amazon Resource Name (ARN) of an organization. For more information about ARNs in Organizations, see <http://docs.aws.amazon.com/organizations/latest/userguide/orgs_permissions.html#orgs-permissions-arns ARN Formats Supported by Organizations> in the /AWS Organizations User Guide/ .
+-- * 'oARN' - The Amazon Resource Name (ARN) of an organization. For more information about ARNs in Organizations, see <https://docs.aws.amazon.com/organizations/latest/userguide/orgs_permissions.html#orgs-permissions-arns ARN Formats Supported by Organizations> in the /AWS Organizations User Guide/ .
 --
 -- * 'oMasterAccountId' - The unique identifier (ID) of the master account of an organization. The <http://wikipedia.org/wiki/regex regex pattern> for an account ID string requires exactly 12 digits.
 --
--- * 'oMasterAccountARN' - The Amazon Resource Name (ARN) of the account that is designated as the master account for the organization. For more information about ARNs in Organizations, see <http://docs.aws.amazon.com/organizations/latest/userguide/orgs_permissions.html#orgs-permissions-arns ARN Formats Supported by Organizations> in the /AWS Organizations User Guide/ .
+-- * 'oMasterAccountARN' - The Amazon Resource Name (ARN) of the account that is designated as the master account for the organization. For more information about ARNs in Organizations, see <https://docs.aws.amazon.com/organizations/latest/userguide/orgs_permissions.html#orgs-permissions-arns ARN Formats Supported by Organizations> in the /AWS Organizations User Guide/ .
 --
 -- * 'oMasterAccountEmail' - The email address that is associated with the AWS account that is designated as the master account for the organization.
 --
@@ -56,7 +56,7 @@ data Organization = Organization'{_oARN ::
 --
 -- * 'oId' - The unique identifier (ID) of an organization. The <http://wikipedia.org/wiki/regex regex pattern> for an organization ID string requires "o-" followed by from 10 to 32 lower-case letters or digits.
 --
--- * 'oFeatureSet' - Specifies the functionality that currently is available to the organization. If set to "ALL", then all features are enabled and policies can be applied to accounts in the organization. If set to "CONSOLIDATED_BILLING", then only consolidated billing functionality is available. For more information, see <http://docs.aws.amazon.com/IAM/latest/UserGuide/orgs_manage_org_support-all-features.html Enabling All Features in Your Organization> in the /AWS Organizations User Guide/ .
+-- * 'oFeatureSet' - Specifies the functionality that currently is available to the organization. If set to "ALL", then all features are enabled and policies can be applied to accounts in the organization. If set to "CONSOLIDATED_BILLING", then only consolidated billing functionality is available. For more information, see <https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_support-all-features.html Enabling All Features in Your Organization> in the /AWS Organizations User Guide/ .
 organization
     :: Organization
 organization
@@ -67,7 +67,7 @@ organization
                   _oAvailablePolicyTypes = Nothing, _oId = Nothing,
                   _oFeatureSet = Nothing}
 
--- | The Amazon Resource Name (ARN) of an organization. For more information about ARNs in Organizations, see <http://docs.aws.amazon.com/organizations/latest/userguide/orgs_permissions.html#orgs-permissions-arns ARN Formats Supported by Organizations> in the /AWS Organizations User Guide/ .
+-- | The Amazon Resource Name (ARN) of an organization. For more information about ARNs in Organizations, see <https://docs.aws.amazon.com/organizations/latest/userguide/orgs_permissions.html#orgs-permissions-arns ARN Formats Supported by Organizations> in the /AWS Organizations User Guide/ .
 oARN :: Lens' Organization (Maybe Text)
 oARN = lens _oARN (\ s a -> s{_oARN = a})
 
@@ -75,7 +75,7 @@ oARN = lens _oARN (\ s a -> s{_oARN = a})
 oMasterAccountId :: Lens' Organization (Maybe Text)
 oMasterAccountId = lens _oMasterAccountId (\ s a -> s{_oMasterAccountId = a})
 
--- | The Amazon Resource Name (ARN) of the account that is designated as the master account for the organization. For more information about ARNs in Organizations, see <http://docs.aws.amazon.com/organizations/latest/userguide/orgs_permissions.html#orgs-permissions-arns ARN Formats Supported by Organizations> in the /AWS Organizations User Guide/ .
+-- | The Amazon Resource Name (ARN) of the account that is designated as the master account for the organization. For more information about ARNs in Organizations, see <https://docs.aws.amazon.com/organizations/latest/userguide/orgs_permissions.html#orgs-permissions-arns ARN Formats Supported by Organizations> in the /AWS Organizations User Guide/ .
 oMasterAccountARN :: Lens' Organization (Maybe Text)
 oMasterAccountARN = lens _oMasterAccountARN (\ s a -> s{_oMasterAccountARN = a})
 
@@ -91,7 +91,7 @@ oAvailablePolicyTypes = lens _oAvailablePolicyTypes (\ s a -> s{_oAvailablePolic
 oId :: Lens' Organization (Maybe Text)
 oId = lens _oId (\ s a -> s{_oId = a})
 
--- | Specifies the functionality that currently is available to the organization. If set to "ALL", then all features are enabled and policies can be applied to accounts in the organization. If set to "CONSOLIDATED_BILLING", then only consolidated billing functionality is available. For more information, see <http://docs.aws.amazon.com/IAM/latest/UserGuide/orgs_manage_org_support-all-features.html Enabling All Features in Your Organization> in the /AWS Organizations User Guide/ .
+-- | Specifies the functionality that currently is available to the organization. If set to "ALL", then all features are enabled and policies can be applied to accounts in the organization. If set to "CONSOLIDATED_BILLING", then only consolidated billing functionality is available. For more information, see <https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_support-all-features.html Enabling All Features in Your Organization> in the /AWS Organizations User Guide/ .
 oFeatureSet :: Lens' Organization (Maybe OrganizationFeatureSet)
 oFeatureSet = lens _oFeatureSet (\ s a -> s{_oFeatureSet = a})
 

@@ -20,7 +20,7 @@ module Network.AWS.GameLift.Types.S3Location where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | Location in Amazon Simple Storage Service (Amazon S3) where build files can be stored for access by Amazon GameLift. This location is specified in a 'CreateBuild' request. For more details, see the <http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-build-cli-uploading.html#gamelift-build-cli-uploading-create-build Create a Build with Files in Amazon S3> .
+-- | The location in S3 where build or script files are stored for access by Amazon GameLift. This location is specified in 'CreateBuild' , 'CreateScript' , and 'UpdateScript' requests. 
 --
 --
 --
@@ -28,6 +28,7 @@ import Network.AWS.Prelude
 data S3Location = S3Location'{_slBucket ::
                               !(Maybe Text),
                               _slKey :: !(Maybe Text),
+                              _slObjectVersion :: !(Maybe Text),
                               _slRoleARN :: !(Maybe Text)}
                     deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -35,26 +36,32 @@ data S3Location = S3Location'{_slBucket ::
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'slBucket' - Amazon S3 bucket identifier. This is the name of your S3 bucket.
+-- * 'slBucket' - An S3 bucket identifier. This is the name of the S3 bucket.
 --
--- * 'slKey' - Name of the zip file containing your build files. 
+-- * 'slKey' - The name of the zip file that contains the build files or script files. 
 --
--- * 'slRoleARN' - Amazon Resource Name (<http://docs.aws.amazon.com/AmazonS3/latest/dev/s3-arn-format.html ARN> ) for the access role that allows Amazon GameLift to access your S3 bucket.
+-- * 'slObjectVersion' - The version of the file, if object versioning is turned on for the bucket. Amazon GameLift uses this information when retrieving files from an S3 bucket that you own. Use this parameter to specify a specific version of the file. If not set, the latest version of the file is retrieved. 
+--
+-- * 'slRoleARN' - The Amazon Resource Name (<https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-arn-format.html ARN> ) for an IAM role that allows Amazon GameLift to access the S3 bucket.
 s3Location
     :: S3Location
 s3Location
   = S3Location'{_slBucket = Nothing, _slKey = Nothing,
-                _slRoleARN = Nothing}
+                _slObjectVersion = Nothing, _slRoleARN = Nothing}
 
--- | Amazon S3 bucket identifier. This is the name of your S3 bucket.
+-- | An S3 bucket identifier. This is the name of the S3 bucket.
 slBucket :: Lens' S3Location (Maybe Text)
 slBucket = lens _slBucket (\ s a -> s{_slBucket = a})
 
--- | Name of the zip file containing your build files. 
+-- | The name of the zip file that contains the build files or script files. 
 slKey :: Lens' S3Location (Maybe Text)
 slKey = lens _slKey (\ s a -> s{_slKey = a})
 
--- | Amazon Resource Name (<http://docs.aws.amazon.com/AmazonS3/latest/dev/s3-arn-format.html ARN> ) for the access role that allows Amazon GameLift to access your S3 bucket.
+-- | The version of the file, if object versioning is turned on for the bucket. Amazon GameLift uses this information when retrieving files from an S3 bucket that you own. Use this parameter to specify a specific version of the file. If not set, the latest version of the file is retrieved. 
+slObjectVersion :: Lens' S3Location (Maybe Text)
+slObjectVersion = lens _slObjectVersion (\ s a -> s{_slObjectVersion = a})
+
+-- | The Amazon Resource Name (<https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-arn-format.html ARN> ) for an IAM role that allows Amazon GameLift to access the S3 bucket.
 slRoleARN :: Lens' S3Location (Maybe Text)
 slRoleARN = lens _slRoleARN (\ s a -> s{_slRoleARN = a})
 
@@ -64,7 +71,8 @@ instance FromJSON S3Location where
               (\ x ->
                  S3Location' <$>
                    (x .:? "Bucket") <*> (x .:? "Key") <*>
-                     (x .:? "RoleArn"))
+                     (x .:? "ObjectVersion")
+                     <*> (x .:? "RoleArn"))
 
 instance Hashable S3Location where
 
@@ -75,4 +83,5 @@ instance ToJSON S3Location where
           = object
               (catMaybes
                  [("Bucket" .=) <$> _slBucket, ("Key" .=) <$> _slKey,
+                  ("ObjectVersion" .=) <$> _slObjectVersion,
                   ("RoleArn" .=) <$> _slRoleARN])

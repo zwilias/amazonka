@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Get details of a parameter.
+-- Get details of a parameter. Don't confuse this API action with the 'GetParameter' API action.
 --
 --
 module Network.AWS.SSM.GetParameters
@@ -126,7 +126,7 @@ data GetParametersResponse = GetParametersResponse'{_grsParameters
 --
 -- * 'grsParameters' - A list of details for a parameter.
 --
--- * 'grsInvalidParameters' - A list of parameters that are not formatted correctly or do not run when executed.
+-- * 'grsInvalidParameters' - A list of parameters that are not formatted correctly or do not run during an execution.
 --
 -- * 'grsResponseStatus' - -- | The response status code.
 getParametersResponse
@@ -141,7 +141,7 @@ getParametersResponse pResponseStatus_
 grsParameters :: Lens' GetParametersResponse [Parameter]
 grsParameters = lens _grsParameters (\ s a -> s{_grsParameters = a}) . _Default . _Coerce
 
--- | A list of parameters that are not formatted correctly or do not run when executed.
+-- | A list of parameters that are not formatted correctly or do not run during an execution.
 grsInvalidParameters :: Lens' GetParametersResponse [Text]
 grsInvalidParameters = lens _grsInvalidParameters (\ s a -> s{_grsInvalidParameters = a}) . _Default . _Coerce
 

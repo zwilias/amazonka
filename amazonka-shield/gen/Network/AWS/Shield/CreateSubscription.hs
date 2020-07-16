@@ -21,6 +21,12 @@
 -- Activates AWS Shield Advanced for an account.
 --
 --
+-- As part of this request you can specify @EmergencySettings@ that automaticaly grant the DDoS response team (DRT) needed permissions to assist you during a suspected DDoS attack. For more information see <https://docs.aws.amazon.com/waf/latest/developerguide/authorize-DRT.html Authorize the DDoS Response Team to Create Rules and Web ACLs on Your Behalf> .
+--
+-- To use the services of the DRT, you must be subscribed to the <https://aws.amazon.com/premiumsupport/business-support/ Business Support plan> or the <https://aws.amazon.com/premiumsupport/enterprise-support/ Enterprise Support plan> .
+--
+-- When you initally create a subscription, your subscription is set to be automatically renewed at the end of the existing subscription period. You can change this by submitting an @UpdateSubscription@ request. 
+--
 module Network.AWS.Shield.CreateSubscription
     (
     -- * Creating a Request

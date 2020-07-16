@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Lists the ARNs of the assessment targets within this AWS account. For more information about assessment targets, see <http://docs.aws.amazon.com/inspector/latest/userguide/inspector_applications.html Amazon Inspector Assessment Targets> .
+-- Lists the ARNs of the assessment targets within this AWS account. For more information about assessment targets, see <https://docs.aws.amazon.com/inspector/latest/userguide/inspector_applications.html Amazon Inspector Assessment Targets> .
 --
 --
 --

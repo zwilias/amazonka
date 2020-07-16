@@ -63,7 +63,7 @@ data RemoveTargets = RemoveTargets'{_rtForce ::
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'rtForce' - If this is a managed rule created by an AWS service on your behalf, you must specify @Force@ as @True@ to remove targets. This parameter is ignored for rules that aren't managed rules. You can check whether a rule is a managed rule by using @DescribeRule@ or @ListRules@ and checking the @ManagedBy@ field of the response.
+-- * 'rtForce' - If this is a managed rule, created by an AWS service on your behalf, you must specify @Force@ as @True@ to remove targets. This parameter is ignored for rules that are not managed rules. You can check whether a rule is a managed rule by using @DescribeRule@ or @ListRules@ and checking the @ManagedBy@ field of the response.
 --
 -- * 'rtEventBusName' - The name of the event bus associated with the rule.
 --
@@ -79,7 +79,7 @@ removeTargets pRule_ pIds_
                    _rtEventBusName = Nothing, _rtRule = pRule_,
                    _rtIds = _List1 # pIds_}
 
--- | If this is a managed rule created by an AWS service on your behalf, you must specify @Force@ as @True@ to remove targets. This parameter is ignored for rules that aren't managed rules. You can check whether a rule is a managed rule by using @DescribeRule@ or @ListRules@ and checking the @ManagedBy@ field of the response.
+-- | If this is a managed rule, created by an AWS service on your behalf, you must specify @Force@ as @True@ to remove targets. This parameter is ignored for rules that are not managed rules. You can check whether a rule is a managed rule by using @DescribeRule@ or @ListRules@ and checking the @ManagedBy@ field of the response.
 rtForce :: Lens' RemoveTargets (Maybe Bool)
 rtForce = lens _rtForce (\ s a -> s{_rtForce = a})
 

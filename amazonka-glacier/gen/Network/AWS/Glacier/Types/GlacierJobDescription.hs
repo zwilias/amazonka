@@ -25,7 +25,7 @@ import Network.AWS.Glacier.Types.StatusCode
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | Contains the description of an Amazon Glacier job.
+-- | Contains the description of an Amazon S3 Glacier job.
 --
 --
 --
@@ -85,7 +85,7 @@ data GlacierJobDescription = GlacierJobDescription'{_gjdSHA256TreeHash
 --
 -- * 'gjdSelectParameters' - Contains the parameters used for a select.
 --
--- * 'gjdJobId' - An opaque string that identifies an Amazon Glacier job.
+-- * 'gjdJobId' - An opaque string that identifies an Amazon S3 Glacier job.
 --
 -- * 'gjdJobOutputPath' - Contains the job output location.
 --
@@ -153,7 +153,7 @@ gjdArchiveId = lens _gjdArchiveId (\ s a -> s{_gjdArchiveId = a})
 gjdSelectParameters :: Lens' GlacierJobDescription (Maybe SelectParameters)
 gjdSelectParameters = lens _gjdSelectParameters (\ s a -> s{_gjdSelectParameters = a})
 
--- | An opaque string that identifies an Amazon Glacier job.
+-- | An opaque string that identifies an Amazon S3 Glacier job.
 gjdJobId :: Lens' GlacierJobDescription (Maybe Text)
 gjdJobId = lens _gjdJobId (\ s a -> s{_gjdJobId = a})
 

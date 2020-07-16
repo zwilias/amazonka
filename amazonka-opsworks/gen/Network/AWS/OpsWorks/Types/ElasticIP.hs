@@ -44,7 +44,7 @@ data ElasticIP = ElasticIP'{_eiInstanceId ::
 --
 -- * 'eiName' - The name.
 --
--- * 'eiRegion' - The AWS region. For more information, see <http://docs.aws.amazon.com/general/latest/gr/rande.html Regions and Endpoints> .
+-- * 'eiRegion' - The AWS region. For more information, see <https://docs.aws.amazon.com/general/latest/gr/rande.html Regions and Endpoints> .
 elasticIP
     :: ElasticIP
 elasticIP
@@ -68,7 +68,7 @@ eiIP = lens _eiIP (\ s a -> s{_eiIP = a})
 eiName :: Lens' ElasticIP (Maybe Text)
 eiName = lens _eiName (\ s a -> s{_eiName = a})
 
--- | The AWS region. For more information, see <http://docs.aws.amazon.com/general/latest/gr/rande.html Regions and Endpoints> .
+-- | The AWS region. For more information, see <https://docs.aws.amazon.com/general/latest/gr/rande.html Regions and Endpoints> .
 eiRegion :: Lens' ElasticIP (Maybe Text)
 eiRegion = lens _eiRegion (\ s a -> s{_eiRegion = a})
 

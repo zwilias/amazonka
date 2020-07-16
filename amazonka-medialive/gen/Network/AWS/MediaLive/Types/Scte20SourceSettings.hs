@@ -21,7 +21,7 @@ import Network.AWS.Lens
 import Network.AWS.MediaLive.Types.Scte20Convert608To708
 import Network.AWS.Prelude
 
--- | Placeholder documentation for Scte20SourceSettings
+-- | Scte20 Source Settings
 --
 -- /See:/ 'scte20SourceSettings' smart constructor.
 data Scte20SourceSettings = Scte20SourceSettings'{_sssConvert608To708

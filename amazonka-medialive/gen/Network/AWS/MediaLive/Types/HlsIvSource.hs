@@ -27,7 +27,7 @@ module Network.AWS.MediaLive.Types.HlsIvSource (
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | Placeholder documentation for HlsIvSource
+-- | Hls Iv Source
 data HlsIvSource = HlsIvSource' (CI Text)
                      deriving (Eq, Ord, Read, Show, Data, Typeable,
                                Generic)

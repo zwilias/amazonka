@@ -21,7 +21,7 @@
 -- Removes the specified managed policy from the specified role.
 --
 --
--- A role can also have inline policies embedded with it. To delete an inline policy, use the 'DeleteRolePolicy' API. For information about policies, see <http://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html Managed Policies and Inline Policies> in the /IAM User Guide/ .
+-- A role can also have inline policies embedded with it. To delete an inline policy, use the 'DeleteRolePolicy' API. For information about policies, see <https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html Managed Policies and Inline Policies> in the /IAM User Guide/ .
 --
 module Network.AWS.IAM.DetachRolePolicy
     (
@@ -54,9 +54,9 @@ data DetachRolePolicy = DetachRolePolicy'{_drpRoleName
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'drpRoleName' - The name (friendly name, not ARN) of the IAM role to detach the policy from. This parameter allows (per its <http://wikipedia.org/wiki/regex regex pattern> ) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
+-- * 'drpRoleName' - The name (friendly name, not ARN) of the IAM role to detach the policy from. This parameter allows (through its <http://wikipedia.org/wiki/regex regex pattern> ) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
 --
--- * 'drpPolicyARN' - The Amazon Resource Name (ARN) of the IAM policy you want to detach. For more information about ARNs, see <http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html Amazon Resource Names (ARNs) and AWS Service Namespaces> in the /AWS General Reference/ .
+-- * 'drpPolicyARN' - The Amazon Resource Name (ARN) of the IAM policy you want to detach. For more information about ARNs, see <https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html Amazon Resource Names (ARNs) and AWS Service Namespaces> in the /AWS General Reference/ .
 detachRolePolicy
     :: Text -- ^ 'drpRoleName'
     -> Text -- ^ 'drpPolicyARN'
@@ -65,11 +65,11 @@ detachRolePolicy pRoleName_ pPolicyARN_
   = DetachRolePolicy'{_drpRoleName = pRoleName_,
                       _drpPolicyARN = pPolicyARN_}
 
--- | The name (friendly name, not ARN) of the IAM role to detach the policy from. This parameter allows (per its <http://wikipedia.org/wiki/regex regex pattern> ) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
+-- | The name (friendly name, not ARN) of the IAM role to detach the policy from. This parameter allows (through its <http://wikipedia.org/wiki/regex regex pattern> ) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
 drpRoleName :: Lens' DetachRolePolicy Text
 drpRoleName = lens _drpRoleName (\ s a -> s{_drpRoleName = a})
 
--- | The Amazon Resource Name (ARN) of the IAM policy you want to detach. For more information about ARNs, see <http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html Amazon Resource Names (ARNs) and AWS Service Namespaces> in the /AWS General Reference/ .
+-- | The Amazon Resource Name (ARN) of the IAM policy you want to detach. For more information about ARNs, see <https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html Amazon Resource Names (ARNs) and AWS Service Namespaces> in the /AWS General Reference/ .
 drpPolicyARN :: Lens' DetachRolePolicy Text
 drpPolicyARN = lens _drpPolicyARN (\ s a -> s{_drpPolicyARN = a})
 

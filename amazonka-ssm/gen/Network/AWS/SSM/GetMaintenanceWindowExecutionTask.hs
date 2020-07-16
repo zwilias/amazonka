@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Retrieves the details about a specific task executed as part of a Maintenance Window execution.
+-- Retrieves the details about a specific task run as part of a maintenance window execution.
 --
 --
 module Network.AWS.SSM.GetMaintenanceWindowExecutionTask
@@ -71,9 +71,9 @@ data GetMaintenanceWindowExecutionTask = GetMaintenanceWindowExecutionTask'{_gmw
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'gmwetWindowExecutionId' - The ID of the Maintenance Window execution that includes the task.
+-- * 'gmwetWindowExecutionId' - The ID of the maintenance window execution that includes the task.
 --
--- * 'gmwetTaskId' - The ID of the specific task execution in the Maintenance Window task that should be retrieved.
+-- * 'gmwetTaskId' - The ID of the specific task execution in the maintenance window task that should be retrieved.
 getMaintenanceWindowExecutionTask
     :: Text -- ^ 'gmwetWindowExecutionId'
     -> Text -- ^ 'gmwetTaskId'
@@ -84,11 +84,11 @@ getMaintenanceWindowExecutionTask pWindowExecutionId_
                                          = pWindowExecutionId_,
                                        _gmwetTaskId = pTaskId_}
 
--- | The ID of the Maintenance Window execution that includes the task.
+-- | The ID of the maintenance window execution that includes the task.
 gmwetWindowExecutionId :: Lens' GetMaintenanceWindowExecutionTask Text
 gmwetWindowExecutionId = lens _gmwetWindowExecutionId (\ s a -> s{_gmwetWindowExecutionId = a})
 
--- | The ID of the specific task execution in the Maintenance Window task that should be retrieved.
+-- | The ID of the specific task execution in the maintenance window task that should be retrieved.
 gmwetTaskId :: Lens' GetMaintenanceWindowExecutionTask Text
 gmwetTaskId = lens _gmwetTaskId (\ s a -> s{_gmwetTaskId = a})
 
@@ -220,17 +220,17 @@ data GetMaintenanceWindowExecutionTaskResponse = GetMaintenanceWindowExecutionTa
 --
 -- * 'gmwetrsStatus' - The status of the task.
 --
--- * 'gmwetrsTaskParameters' - The parameters passed to the task when it was executed. The map has the following format: Key: string, between 1 and 255 characters Value: an array of strings, each string is between 1 and 255 characters
+-- * 'gmwetrsTaskParameters' - The parameters passed to the task when it was run. The map has the following format: Key: string, between 1 and 255 characters Value: an array of strings, each string is between 1 and 255 characters
 --
--- * 'gmwetrsTaskExecutionId' - The ID of the specific task execution in the Maintenance Window task that was retrieved.
+-- * 'gmwetrsTaskExecutionId' - The ID of the specific task execution in the maintenance window task that was retrieved.
 --
 -- * 'gmwetrsPriority' - The priority of the task.
 --
 -- * 'gmwetrsStartTime' - The time the task execution started.
 --
--- * 'gmwetrsTaskARN' - The ARN of the executed task.
+-- * 'gmwetrsTaskARN' - The ARN of the task that ran.
 --
--- * 'gmwetrsWindowExecutionId' - The ID of the Maintenance Window execution that includes the task.
+-- * 'gmwetrsWindowExecutionId' - The ID of the maintenance window execution that includes the task.
 --
 -- * 'gmwetrsStatusDetails' - The details explaining the Status. Only available for certain status values.
 --
@@ -238,11 +238,11 @@ data GetMaintenanceWindowExecutionTaskResponse = GetMaintenanceWindowExecutionTa
 --
 -- * 'gmwetrsEndTime' - The time the task execution completed.
 --
--- * 'gmwetrsType' - The type of task executed.
+-- * 'gmwetrsType' - The type of task that was run.
 --
 -- * 'gmwetrsMaxConcurrency' - The defined maximum number of task executions that could be run in parallel.
 --
--- * 'gmwetrsServiceRole' - The role that was assumed when executing the task.
+-- * 'gmwetrsServiceRole' - The role that was assumed when running the task.
 --
 -- * 'gmwetrsResponseStatus' - -- | The response status code.
 getMaintenanceWindowExecutionTaskResponse
@@ -273,11 +273,11 @@ getMaintenanceWindowExecutionTaskResponse
 gmwetrsStatus :: Lens' GetMaintenanceWindowExecutionTaskResponse (Maybe MaintenanceWindowExecutionStatus)
 gmwetrsStatus = lens _gmwetrsStatus (\ s a -> s{_gmwetrsStatus = a})
 
--- | The parameters passed to the task when it was executed. The map has the following format: Key: string, between 1 and 255 characters Value: an array of strings, each string is between 1 and 255 characters
+-- | The parameters passed to the task when it was run. The map has the following format: Key: string, between 1 and 255 characters Value: an array of strings, each string is between 1 and 255 characters
 gmwetrsTaskParameters :: Lens' GetMaintenanceWindowExecutionTaskResponse (Maybe [HashMap Text MaintenanceWindowTaskParameterValueExpression])
 gmwetrsTaskParameters = lens _gmwetrsTaskParameters (\ s a -> s{_gmwetrsTaskParameters = a}) . mapping (_Sensitive . _Coerce)
 
--- | The ID of the specific task execution in the Maintenance Window task that was retrieved.
+-- | The ID of the specific task execution in the maintenance window task that was retrieved.
 gmwetrsTaskExecutionId :: Lens' GetMaintenanceWindowExecutionTaskResponse (Maybe Text)
 gmwetrsTaskExecutionId = lens _gmwetrsTaskExecutionId (\ s a -> s{_gmwetrsTaskExecutionId = a})
 
@@ -289,11 +289,11 @@ gmwetrsPriority = lens _gmwetrsPriority (\ s a -> s{_gmwetrsPriority = a}) . map
 gmwetrsStartTime :: Lens' GetMaintenanceWindowExecutionTaskResponse (Maybe UTCTime)
 gmwetrsStartTime = lens _gmwetrsStartTime (\ s a -> s{_gmwetrsStartTime = a}) . mapping _Time
 
--- | The ARN of the executed task.
+-- | The ARN of the task that ran.
 gmwetrsTaskARN :: Lens' GetMaintenanceWindowExecutionTaskResponse (Maybe Text)
 gmwetrsTaskARN = lens _gmwetrsTaskARN (\ s a -> s{_gmwetrsTaskARN = a})
 
--- | The ID of the Maintenance Window execution that includes the task.
+-- | The ID of the maintenance window execution that includes the task.
 gmwetrsWindowExecutionId :: Lens' GetMaintenanceWindowExecutionTaskResponse (Maybe Text)
 gmwetrsWindowExecutionId = lens _gmwetrsWindowExecutionId (\ s a -> s{_gmwetrsWindowExecutionId = a})
 
@@ -309,7 +309,7 @@ gmwetrsMaxErrors = lens _gmwetrsMaxErrors (\ s a -> s{_gmwetrsMaxErrors = a})
 gmwetrsEndTime :: Lens' GetMaintenanceWindowExecutionTaskResponse (Maybe UTCTime)
 gmwetrsEndTime = lens _gmwetrsEndTime (\ s a -> s{_gmwetrsEndTime = a}) . mapping _Time
 
--- | The type of task executed.
+-- | The type of task that was run.
 gmwetrsType :: Lens' GetMaintenanceWindowExecutionTaskResponse (Maybe MaintenanceWindowTaskType)
 gmwetrsType = lens _gmwetrsType (\ s a -> s{_gmwetrsType = a})
 
@@ -317,7 +317,7 @@ gmwetrsType = lens _gmwetrsType (\ s a -> s{_gmwetrsType = a})
 gmwetrsMaxConcurrency :: Lens' GetMaintenanceWindowExecutionTaskResponse (Maybe Text)
 gmwetrsMaxConcurrency = lens _gmwetrsMaxConcurrency (\ s a -> s{_gmwetrsMaxConcurrency = a})
 
--- | The role that was assumed when executing the task.
+-- | The role that was assumed when running the task.
 gmwetrsServiceRole :: Lens' GetMaintenanceWindowExecutionTaskResponse (Maybe Text)
 gmwetrsServiceRole = lens _gmwetrsServiceRole (\ s a -> s{_gmwetrsServiceRole = a})
 

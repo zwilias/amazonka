@@ -27,7 +27,9 @@ import Data.CaseInsensitive
 import Network.AWS.Prelude
 import Network.AWS.S3.Internal
 
--- | Confirms that the requester knows that she or he will be charged for the request. Bucket owners need not specify this parameter in their requests. Documentation on downloading objects from requester pays buckets can be found at http://docs.aws.amazon.com/AmazonS3/latest/dev/ObjectsinRequesterPaysBuckets.html
+-- | Confirms that the requester knows that they will be charged for the request. Bucket owners need not specify this parameter in their requests. For information about downloading objects from requester pays buckets, see <https://docs.aws.amazon.com/AmazonS3/latest/dev/ObjectsinRequesterPaysBuckets.html Downloading Objects in Requestor Pays Buckets> in the /Amazon S3 Developer Guide/ .
+--
+--
 data RequestPayer = RequestPayer' (CI Text)
                       deriving (Eq, Ord, Read, Show, Data, Typeable,
                                 Generic)

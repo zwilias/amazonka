@@ -38,7 +38,7 @@ data CreateJSONClassifierRequest = CreateJSONClassifierRequest'{_cjcrName
 --
 -- * 'cjcrName' - The name of the classifier.
 --
--- * 'cjcrJSONPath' - A @JsonPath@ string defining the JSON data for the classifier to classify. AWS Glue supports a subset of JsonPath, as described in <https://docs.aws.amazon.com/glue/latest/dg/custom-classifier.html#custom-classifier-json Writing JsonPath Custom Classifiers> .
+-- * 'cjcrJSONPath' - A @JsonPath@ string defining the JSON data for the classifier to classify. AWS Glue supports a subset of @JsonPath@ , as described in <https://docs.aws.amazon.com/glue/latest/dg/custom-classifier.html#custom-classifier-json Writing JsonPath Custom Classifiers> .
 createJSONClassifierRequest
     :: Text -- ^ 'cjcrName'
     -> Text -- ^ 'cjcrJSONPath'
@@ -51,7 +51,7 @@ createJSONClassifierRequest pName_ pJSONPath_
 cjcrName :: Lens' CreateJSONClassifierRequest Text
 cjcrName = lens _cjcrName (\ s a -> s{_cjcrName = a})
 
--- | A @JsonPath@ string defining the JSON data for the classifier to classify. AWS Glue supports a subset of JsonPath, as described in <https://docs.aws.amazon.com/glue/latest/dg/custom-classifier.html#custom-classifier-json Writing JsonPath Custom Classifiers> .
+-- | A @JsonPath@ string defining the JSON data for the classifier to classify. AWS Glue supports a subset of @JsonPath@ , as described in <https://docs.aws.amazon.com/glue/latest/dg/custom-classifier.html#custom-classifier-json Writing JsonPath Custom Classifiers> .
 cjcrJSONPath :: Lens' CreateJSONClassifierRequest Text
 cjcrJSONPath = lens _cjcrJSONPath (\ s a -> s{_cjcrJSONPath = a})
 

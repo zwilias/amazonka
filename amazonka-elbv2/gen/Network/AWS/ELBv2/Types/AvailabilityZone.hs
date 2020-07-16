@@ -37,11 +37,11 @@ data AvailabilityZone = AvailabilityZone'{_azSubnetId
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'azSubnetId' - The ID of the subnet.
+-- * 'azSubnetId' - The ID of the subnet. You can specify one subnet per Availability Zone.
 --
 -- * 'azZoneName' - The name of the Availability Zone.
 --
--- * 'azLoadBalancerAddresses' - [Network Load Balancers] The static IP address.
+-- * 'azLoadBalancerAddresses' - [Network Load Balancers] If you need static IP addresses for your load balancer, you can specify one Elastic IP address per Availability Zone when you create an internal-facing load balancer. For internal load balancers, you can specify a private IP address from the IPv4 range of the subnet.
 availabilityZone
     :: AvailabilityZone
 availabilityZone
@@ -49,7 +49,7 @@ availabilityZone
                       _azZoneName = Nothing,
                       _azLoadBalancerAddresses = Nothing}
 
--- | The ID of the subnet.
+-- | The ID of the subnet. You can specify one subnet per Availability Zone.
 azSubnetId :: Lens' AvailabilityZone (Maybe Text)
 azSubnetId = lens _azSubnetId (\ s a -> s{_azSubnetId = a})
 
@@ -57,7 +57,7 @@ azSubnetId = lens _azSubnetId (\ s a -> s{_azSubnetId = a})
 azZoneName :: Lens' AvailabilityZone (Maybe Text)
 azZoneName = lens _azZoneName (\ s a -> s{_azZoneName = a})
 
--- | [Network Load Balancers] The static IP address.
+-- | [Network Load Balancers] If you need static IP addresses for your load balancer, you can specify one Elastic IP address per Availability Zone when you create an internal-facing load balancer. For internal load balancers, you can specify a private IP address from the IPv4 range of the subnet.
 azLoadBalancerAddresses :: Lens' AvailabilityZone [LoadBalancerAddress]
 azLoadBalancerAddresses = lens _azLoadBalancerAddresses (\ s a -> s{_azLoadBalancerAddresses = a}) . _Default . _Coerce
 

@@ -30,7 +30,7 @@ module Network.AWS.MediaConvert.Types.ColorSpaceConversion (
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | Determines if colorspace conversion will be performed. If set to _None_, no conversion will be performed. If _Force 601_ or _Force 709_ are selected, conversion will be performed for inputs with differing colorspaces. An input's colorspace can be specified explicitly in the "Video Selector":#inputs-video_selector if necessary.
+-- | Specify the color space you want for this output. The service supports conversion between HDR formats, between SDR formats, from SDR to HDR, and from HDR to SDR. SDR to HDR conversion doesn't upgrade the dynamic range. The converted video has an HDR format, but visually appears the same as an unconverted output. HDR to SDR conversion uses Elemental tone mapping technology to approximate the outcome of manually regrading from HDR to SDR.
 data ColorSpaceConversion = ColorSpaceConversion' (CI
                                                      Text)
                               deriving (Eq, Ord, Read, Show, Data, Typeable,

@@ -24,7 +24,7 @@ import Network.AWS.RDS.Types.Subnet
 -- | Contains the details of an Amazon RDS DB subnet group. 
 --
 --
--- This data type is used as a response element in the 'DescribeDBSubnetGroups' action. 
+-- This data type is used as a response element in the @DescribeDBSubnetGroups@ action. 
 --
 --
 -- /See:/ 'dbSubnetGroup' smart constructor.
@@ -46,7 +46,7 @@ data DBSubnetGroup = DBSubnetGroup'{_dsgDBSubnetGroupName
 --
 -- * 'dsgVPCId' - Provides the VpcId of the DB subnet group.
 --
--- * 'dsgSubnets' - Contains a list of 'Subnet' elements. 
+-- * 'dsgSubnets' - Contains a list of @Subnet@ elements. 
 --
 -- * 'dsgDBSubnetGroupDescription' - Provides the description of the DB subnet group.
 --
@@ -70,7 +70,7 @@ dsgDBSubnetGroupName = lens _dsgDBSubnetGroupName (\ s a -> s{_dsgDBSubnetGroupN
 dsgVPCId :: Lens' DBSubnetGroup (Maybe Text)
 dsgVPCId = lens _dsgVPCId (\ s a -> s{_dsgVPCId = a})
 
--- | Contains a list of 'Subnet' elements. 
+-- | Contains a list of @Subnet@ elements. 
 dsgSubnets :: Lens' DBSubnetGroup [Subnet]
 dsgSubnets = lens _dsgSubnets (\ s a -> s{_dsgSubnets = a}) . _Default . _Coerce
 

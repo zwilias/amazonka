@@ -27,7 +27,7 @@ module Network.AWS.MediaLive.Types.M2tsAudioStreamType (
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | Placeholder documentation for M2tsAudioStreamType
+-- | M2ts Audio Stream Type
 data M2tsAudioStreamType = M2tsAudioStreamType' (CI
                                                    Text)
                              deriving (Eq, Ord, Read, Show, Data, Typeable,

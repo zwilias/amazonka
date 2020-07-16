@@ -28,7 +28,7 @@ module Network.AWS.MediaLive.Types.HlsCaptionLanguageSetting (
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | Placeholder documentation for HlsCaptionLanguageSetting
+-- | Hls Caption Language Setting
 data HlsCaptionLanguageSetting = HlsCaptionLanguageSetting' (CI
                                                                Text)
                                    deriving (Eq, Ord, Read, Show, Data,

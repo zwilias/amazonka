@@ -21,20 +21,19 @@ import Network.AWS.Lens
 import Network.AWS.Pinpoint.Types.DefinitionFormat
 import Network.AWS.Prelude
 
--- | Segment import definition.
+-- | Provides information about the import job that created a segment. An import job is a job that creates a user segment by importing endpoint definitions.
+--
+--
 --
 -- /See:/ 'segmentImportResource' smart constructor.
-data SegmentImportResource = SegmentImportResource'{_sirSize
-                                                    :: !(Maybe Int),
+data SegmentImportResource = SegmentImportResource'{_sirChannelCounts
+                                                    :: !(Maybe (Map Text Int)),
                                                     _sirFormat ::
-                                                    !(Maybe DefinitionFormat),
-                                                    _sirChannelCounts ::
-                                                    !(Maybe (Map Text Int)),
-                                                    _sirExternalId ::
-                                                    !(Maybe Text),
-                                                    _sirS3URL :: !(Maybe Text),
-                                                    _sirRoleARN ::
-                                                    !(Maybe Text)}
+                                                    !DefinitionFormat,
+                                                    _sirS3URL :: !Text,
+                                                    _sirSize :: !Int,
+                                                    _sirExternalId :: !Text,
+                                                    _sirRoleARN :: !Text}
                                deriving (Eq, Read, Show, Data, Typeable,
                                          Generic)
 
@@ -42,47 +41,53 @@ data SegmentImportResource = SegmentImportResource'{_sirSize
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'sirSize' - The number of endpoints that were successfully imported to create this segment.
+-- * 'sirChannelCounts' - The number of channel types in the endpoint definitions that were imported to create the segment.
 --
--- * 'sirFormat' - The format of the endpoint files that were imported to create this segment. Valid values: CSV, JSON
+-- * 'sirFormat' - The format of the files that were imported to create the segment. Valid values are: CSV, for comma-separated values format; and, JSON, for newline-delimited JSON format.
 --
--- * 'sirChannelCounts' - Channel type counts
+-- * 'sirS3URL' - The URL of the Amazon Simple Storage Service (Amazon S3) bucket that the endpoint definitions were imported from to create the segment.
 --
--- * 'sirExternalId' - DEPRECATED. Your AWS account ID, which you assigned to the ExternalID key in an IAM trust policy. Used by Amazon Pinpoint to assume an IAM role. This requirement is removed, and external IDs are not recommended for IAM roles assumed by Amazon Pinpoint.
+-- * 'sirSize' - The number of endpoint definitions that were imported successfully to create the segment.
 --
--- * 'sirS3URL' - A URL that points to the Amazon S3 location from which the endpoints for this segment were imported.
+-- * 'sirExternalId' - (Deprecated) Your AWS account ID, which you assigned to an external ID key in an IAM trust policy. Amazon Pinpoint previously used this value to assume an IAM role when importing endpoint definitions, but we removed this requirement. We don't recommend use of external IDs for IAM roles that are assumed by Amazon Pinpoint.
 --
--- * 'sirRoleARN' - The Amazon Resource Name (ARN) of an IAM role that grants Amazon Pinpoint access to the endpoints in Amazon S3.
+-- * 'sirRoleARN' - The Amazon Resource Name (ARN) of the AWS Identity and Access Management (IAM) role that authorized Amazon Pinpoint to access the Amazon S3 location to import endpoint definitions from.
 segmentImportResource
-    :: SegmentImportResource
-segmentImportResource
-  = SegmentImportResource'{_sirSize = Nothing,
-                           _sirFormat = Nothing, _sirChannelCounts = Nothing,
-                           _sirExternalId = Nothing, _sirS3URL = Nothing,
-                           _sirRoleARN = Nothing}
+    :: DefinitionFormat -- ^ 'sirFormat'
+    -> Text -- ^ 'sirS3URL'
+    -> Int -- ^ 'sirSize'
+    -> Text -- ^ 'sirExternalId'
+    -> Text -- ^ 'sirRoleARN'
+    -> SegmentImportResource
+segmentImportResource pFormat_ pS3URL_ pSize_
+  pExternalId_ pRoleARN_
+  = SegmentImportResource'{_sirChannelCounts = Nothing,
+                           _sirFormat = pFormat_, _sirS3URL = pS3URL_,
+                           _sirSize = pSize_, _sirExternalId = pExternalId_,
+                           _sirRoleARN = pRoleARN_}
 
--- | The number of endpoints that were successfully imported to create this segment.
-sirSize :: Lens' SegmentImportResource (Maybe Int)
-sirSize = lens _sirSize (\ s a -> s{_sirSize = a})
-
--- | The format of the endpoint files that were imported to create this segment. Valid values: CSV, JSON
-sirFormat :: Lens' SegmentImportResource (Maybe DefinitionFormat)
-sirFormat = lens _sirFormat (\ s a -> s{_sirFormat = a})
-
--- | Channel type counts
+-- | The number of channel types in the endpoint definitions that were imported to create the segment.
 sirChannelCounts :: Lens' SegmentImportResource (HashMap Text Int)
 sirChannelCounts = lens _sirChannelCounts (\ s a -> s{_sirChannelCounts = a}) . _Default . _Map
 
--- | DEPRECATED. Your AWS account ID, which you assigned to the ExternalID key in an IAM trust policy. Used by Amazon Pinpoint to assume an IAM role. This requirement is removed, and external IDs are not recommended for IAM roles assumed by Amazon Pinpoint.
-sirExternalId :: Lens' SegmentImportResource (Maybe Text)
-sirExternalId = lens _sirExternalId (\ s a -> s{_sirExternalId = a})
+-- | The format of the files that were imported to create the segment. Valid values are: CSV, for comma-separated values format; and, JSON, for newline-delimited JSON format.
+sirFormat :: Lens' SegmentImportResource DefinitionFormat
+sirFormat = lens _sirFormat (\ s a -> s{_sirFormat = a})
 
--- | A URL that points to the Amazon S3 location from which the endpoints for this segment were imported.
-sirS3URL :: Lens' SegmentImportResource (Maybe Text)
+-- | The URL of the Amazon Simple Storage Service (Amazon S3) bucket that the endpoint definitions were imported from to create the segment.
+sirS3URL :: Lens' SegmentImportResource Text
 sirS3URL = lens _sirS3URL (\ s a -> s{_sirS3URL = a})
 
--- | The Amazon Resource Name (ARN) of an IAM role that grants Amazon Pinpoint access to the endpoints in Amazon S3.
-sirRoleARN :: Lens' SegmentImportResource (Maybe Text)
+-- | The number of endpoint definitions that were imported successfully to create the segment.
+sirSize :: Lens' SegmentImportResource Int
+sirSize = lens _sirSize (\ s a -> s{_sirSize = a})
+
+-- | (Deprecated) Your AWS account ID, which you assigned to an external ID key in an IAM trust policy. Amazon Pinpoint previously used this value to assume an IAM role when importing endpoint definitions, but we removed this requirement. We don't recommend use of external IDs for IAM roles that are assumed by Amazon Pinpoint.
+sirExternalId :: Lens' SegmentImportResource Text
+sirExternalId = lens _sirExternalId (\ s a -> s{_sirExternalId = a})
+
+-- | The Amazon Resource Name (ARN) of the AWS Identity and Access Management (IAM) role that authorized Amazon Pinpoint to access the Amazon S3 location to import endpoint definitions from.
+sirRoleARN :: Lens' SegmentImportResource Text
 sirRoleARN = lens _sirRoleARN (\ s a -> s{_sirRoleARN = a})
 
 instance FromJSON SegmentImportResource where
@@ -90,11 +95,12 @@ instance FromJSON SegmentImportResource where
           = withObject "SegmentImportResource"
               (\ x ->
                  SegmentImportResource' <$>
-                   (x .:? "Size") <*> (x .:? "Format") <*>
-                     (x .:? "ChannelCounts" .!= mempty)
-                     <*> (x .:? "ExternalId")
-                     <*> (x .:? "S3Url")
-                     <*> (x .:? "RoleArn"))
+                   (x .:? "ChannelCounts" .!= mempty) <*>
+                     (x .: "Format")
+                     <*> (x .: "S3Url")
+                     <*> (x .: "Size")
+                     <*> (x .: "ExternalId")
+                     <*> (x .: "RoleArn"))
 
 instance Hashable SegmentImportResource where
 

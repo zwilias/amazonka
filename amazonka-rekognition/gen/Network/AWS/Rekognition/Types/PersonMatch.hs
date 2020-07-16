@@ -22,7 +22,7 @@ import Network.AWS.Prelude
 import Network.AWS.Rekognition.Types.FaceMatch
 import Network.AWS.Rekognition.Types.PersonDetail
 
--- | Information about a person whose face matches a face(s) in a Amazon Rekognition collection. Includes information about the faces in the Amazon Rekognition collection (, information about the person ('PersonDetail' ) and the timestamp for when the person was detected in a video. An array of @PersonMatch@ objects is returned by . 
+-- | Information about a person whose face matches a face(s) in an Amazon Rekognition collection. Includes information about the faces in the Amazon Rekognition collection ('FaceMatch' ), information about the person ('PersonDetail' ), and the time stamp for when the person was detected in a video. An array of @PersonMatch@ objects is returned by 'GetFaceSearch' . 
 --
 --
 --

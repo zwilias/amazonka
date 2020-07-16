@@ -75,7 +75,7 @@ data DisassociateCreatedArtifact = DisassociateCreatedArtifact'{_dcaDryRun
 --
 -- * 'dcaProgressUpdateStream' - The name of the ProgressUpdateStream. 
 --
--- * 'dcaMigrationTaskName' - Unique identifier that references the migration task to be disassociated with the artifact.
+-- * 'dcaMigrationTaskName' - Unique identifier that references the migration task to be disassociated with the artifact. /Do not store personal data in this field./ 
 --
 -- * 'dcaCreatedArtifactName' - An ARN of the AWS resource related to the migration (e.g., AMI, EC2 instance, RDS instance, etc.)
 disassociateCreatedArtifact
@@ -100,7 +100,7 @@ dcaDryRun = lens _dcaDryRun (\ s a -> s{_dcaDryRun = a})
 dcaProgressUpdateStream :: Lens' DisassociateCreatedArtifact Text
 dcaProgressUpdateStream = lens _dcaProgressUpdateStream (\ s a -> s{_dcaProgressUpdateStream = a})
 
--- | Unique identifier that references the migration task to be disassociated with the artifact.
+-- | Unique identifier that references the migration task to be disassociated with the artifact. /Do not store personal data in this field./ 
 dcaMigrationTaskName :: Lens' DisassociateCreatedArtifact Text
 dcaMigrationTaskName = lens _dcaMigrationTaskName (\ s a -> s{_dcaMigrationTaskName = a})
 

@@ -46,11 +46,11 @@ data GroupDetail = GroupDetail'{_gdARN ::
 --
 -- * 'gdARN' - Undocumented member.
 --
--- * 'gdPath' - The path to the group. For more information about paths, see <http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html IAM Identifiers> in the /Using IAM/ guide.
+-- * 'gdPath' - The path to the group. For more information about paths, see <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html IAM Identifiers> in the /IAM User Guide/ .
 --
 -- * 'gdCreateDate' - The date and time, in <http://www.iso.org/iso/iso8601 ISO 8601 date-time format> , when the group was created.
 --
--- * 'gdGroupId' - The stable and unique string identifying the group. For more information about IDs, see <http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html IAM Identifiers> in the /Using IAM/ guide.
+-- * 'gdGroupId' - The stable and unique string identifying the group. For more information about IDs, see <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html IAM Identifiers> in the /IAM User Guide/ .
 --
 -- * 'gdGroupPolicyList' - A list of the inline policies embedded in the group.
 --
@@ -69,7 +69,7 @@ groupDetail
 gdARN :: Lens' GroupDetail (Maybe Text)
 gdARN = lens _gdARN (\ s a -> s{_gdARN = a})
 
--- | The path to the group. For more information about paths, see <http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html IAM Identifiers> in the /Using IAM/ guide.
+-- | The path to the group. For more information about paths, see <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html IAM Identifiers> in the /IAM User Guide/ .
 gdPath :: Lens' GroupDetail (Maybe Text)
 gdPath = lens _gdPath (\ s a -> s{_gdPath = a})
 
@@ -77,7 +77,7 @@ gdPath = lens _gdPath (\ s a -> s{_gdPath = a})
 gdCreateDate :: Lens' GroupDetail (Maybe UTCTime)
 gdCreateDate = lens _gdCreateDate (\ s a -> s{_gdCreateDate = a}) . mapping _Time
 
--- | The stable and unique string identifying the group. For more information about IDs, see <http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html IAM Identifiers> in the /Using IAM/ guide.
+-- | The stable and unique string identifying the group. For more information about IDs, see <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html IAM Identifiers> in the /IAM User Guide/ .
 gdGroupId :: Lens' GroupDetail (Maybe Text)
 gdGroupId = lens _gdGroupId (\ s a -> s{_gdGroupId = a})
 

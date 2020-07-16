@@ -32,13 +32,13 @@ newtype TagFilter = TagFilter'{_tfTag :: Text}
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'tfTag' - Specifies the tag that must be associated with the execution for it to meet the filter criteria.
+-- * 'tfTag' - Specifies the tag that must be associated with the execution for it to meet the filter criteria. Tags may only contain unicode letters, digits, whitespace, or these symbols: @_ . : / = + - @@ .
 tagFilter
     :: Text -- ^ 'tfTag'
     -> TagFilter
 tagFilter pTag_ = TagFilter'{_tfTag = pTag_}
 
--- | Specifies the tag that must be associated with the execution for it to meet the filter criteria.
+-- | Specifies the tag that must be associated with the execution for it to meet the filter criteria. Tags may only contain unicode letters, digits, whitespace, or these symbols: @_ . : / = + - @@ .
 tfTag :: Lens' TagFilter Text
 tfTag = lens _tfTag (\ s a -> s{_tfTag = a})
 

@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Displays a list of event categories for all event source types, or for a specified source type. For a list of the event categories and source types, go to <http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-event-notifications.html Amazon Redshift Event Notifications> .
+-- Displays a list of event categories for all event source types, or for a specified source type. For a list of the event categories and source types, go to <https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-event-notifications.html Amazon Redshift Event Notifications> .
 --
 --
 module Network.AWS.Redshift.DescribeEventCategories
@@ -58,13 +58,13 @@ newtype DescribeEventCategories = DescribeEventCategories'{_decSourceType
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'decSourceType' - The source type, such as cluster or parameter group, to which the described event categories apply. Valid values: cluster, cluster-snapshot, cluster-parameter-group, and cluster-security-group.
+-- * 'decSourceType' - The source type, such as cluster or parameter group, to which the described event categories apply. Valid values: cluster, cluster-snapshot, cluster-parameter-group, cluster-security-group, and scheduled-action.
 describeEventCategories
     :: DescribeEventCategories
 describeEventCategories
   = DescribeEventCategories'{_decSourceType = Nothing}
 
--- | The source type, such as cluster or parameter group, to which the described event categories apply. Valid values: cluster, cluster-snapshot, cluster-parameter-group, and cluster-security-group.
+-- | The source type, such as cluster or parameter group, to which the described event categories apply. Valid values: cluster, cluster-snapshot, cluster-parameter-group, cluster-security-group, and scheduled-action.
 decSourceType :: Lens' DescribeEventCategories (Maybe Text)
 decSourceType = lens _decSourceType (\ s a -> s{_decSourceType = a})
 

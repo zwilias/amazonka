@@ -93,7 +93,7 @@ data UnpeerVPCResponse = UnpeerVPCResponse'{_uvrsOperation
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'uvrsOperation' - An array of key-value pairs containing information about the request operation.
+-- * 'uvrsOperation' - An array of objects that describe the result of the action, such as the status of the request, the time stamp of the request, and the resources affected by the request.
 --
 -- * 'uvrsResponseStatus' - -- | The response status code.
 unpeerVPCResponse
@@ -103,7 +103,7 @@ unpeerVPCResponse pResponseStatus_
   = UnpeerVPCResponse'{_uvrsOperation = Nothing,
                        _uvrsResponseStatus = pResponseStatus_}
 
--- | An array of key-value pairs containing information about the request operation.
+-- | An array of objects that describe the result of the action, such as the status of the request, the time stamp of the request, and the resources affected by the request.
 uvrsOperation :: Lens' UnpeerVPCResponse (Maybe Operation)
 uvrsOperation = lens _uvrsOperation (\ s a -> s{_uvrsOperation = a})
 

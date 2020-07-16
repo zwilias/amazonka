@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Attaches a IAM policy to the specified resource. The only supported use for this action is to share a RuleGroup across accounts.
+-- Attaches an IAM policy to the specified resource. The only supported use for this action is to share a RuleGroup across accounts.
 --
 --
 -- The @PutPermissionPolicy@ is subject to the following restrictions:
@@ -29,7 +29,7 @@
 --
 --     * @Effect@ must specify @Allow@ .
 --
---     * The @Action@ in the policy must be @waf:UpdateWebACL@ and @waf-regional:UpdateWebACL@ . Any extra or wildcard actions in the policy will be rejected.
+--     * The @Action@ in the policy must be @waf:UpdateWebACL@ , @waf-regional:UpdateWebACL@ , @waf:GetRuleGroup@ and @waf-regional:GetRuleGroup@ . Any extra or wildcard actions in the policy will be rejected.
 --
 --     * The policy cannot include a @Resource@ parameter.
 --

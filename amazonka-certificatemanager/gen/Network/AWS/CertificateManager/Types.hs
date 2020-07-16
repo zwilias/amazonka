@@ -16,11 +16,14 @@ module Network.AWS.CertificateManager.Types
       certificateManager
 
     -- * Errors
+    , _TagPolicyException
     , _InvalidDomainValidationOptionsException
+    , _InvalidParameterException
     , _InvalidTagException
     , _RequestInProgressException
     , _InvalidStateException
     , _TooManyTagsException
+    , _InvalidArgsException
     , _ResourceNotFoundException
     , _InvalidARNException
     , _LimitExceededException
@@ -143,8 +146,10 @@ module Network.AWS.CertificateManager.Types
     -- * RenewalSummary
     , RenewalSummary
     , renewalSummary
+    , rsRenewalStatusReason
     , rsRenewalStatus
     , rsDomainValidationOptions
+    , rsUpdatedAt
 
     -- * ResourceRecord
     , ResourceRecord
@@ -211,6 +216,11 @@ certificateManager
             = Just "throttling_exception"
           | has (hasCode "Throttling" . hasStatus 400) e =
             Just "throttling"
+          | has
+              (hasCode "ProvisionedThroughputExceededException" .
+                 hasStatus 400)
+              e
+            = Just "throughput_exceeded"
           | has (hasStatus 504) e = Just "gateway_timeout"
           | has
               (hasCode "RequestThrottledException" . hasStatus 400)
@@ -222,6 +232,14 @@ certificateManager
           | has (hasStatus 509) e = Just "limit_exceeded"
           | otherwise = Nothing
 
+-- | A specified tag did not comply with an existing tag policy and was rejected.
+--
+--
+_TagPolicyException :: AsError a => Getting (First ServiceError) a ServiceError
+_TagPolicyException
+  = _MatchServiceError certificateManager
+      "TagPolicyException"
+
 -- | One or more values in the 'DomainValidationOption' structure is incorrect.
 --
 --
@@ -229,6 +247,14 @@ _InvalidDomainValidationOptionsException :: AsError a => Getting (First ServiceE
 _InvalidDomainValidationOptionsException
   = _MatchServiceError certificateManager
       "InvalidDomainValidationOptionsException"
+
+-- | An input parameter was invalid.
+--
+--
+_InvalidParameterException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidParameterException
+  = _MatchServiceError certificateManager
+      "InvalidParameterException"
 
 -- | One or both of the values that make up the key-value pair is not valid. For example, you cannot specify a tag value that begins with @aws:@ .
 --
@@ -262,6 +288,14 @@ _TooManyTagsException
   = _MatchServiceError certificateManager
       "TooManyTagsException"
 
+-- | One or more of of request parameters specified is not valid.
+--
+--
+_InvalidArgsException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidArgsException
+  = _MatchServiceError certificateManager
+      "InvalidArgsException"
+
 -- | The specified certificate cannot be found in the caller's account or the caller's account cannot be found.
 --
 --
@@ -278,7 +312,7 @@ _InvalidARNException
   = _MatchServiceError certificateManager
       "InvalidArnException"
 
--- | An ACM limit has been exceeded.
+-- | An ACM quota has been exceeded.
 --
 --
 _LimitExceededException :: AsError a => Getting (First ServiceError) a ServiceError

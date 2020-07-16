@@ -39,7 +39,12 @@ module Network.AWS.MediaLive.DescribeInput
     , dscrbinptrsName
     , dscrbinptrsAttachedChannels
     , dscrbinptrsId
+    , dscrbinptrsInputClass
     , dscrbinptrsType
+    , dscrbinptrsMediaConnectFlows
+    , dscrbinptrsInputSourceType
+    , dscrbinptrsTags
+    , dscrbinptrsRoleARN
     , dscrbinptrsResponseStatus
     ) where
 
@@ -87,7 +92,12 @@ instance AWSRequest DescribeInput where
                      <*> (x .?> "name")
                      <*> (x .?> "attachedChannels" .!@ mempty)
                      <*> (x .?> "id")
+                     <*> (x .?> "inputClass")
                      <*> (x .?> "type")
+                     <*> (x .?> "mediaConnectFlows" .!@ mempty)
+                     <*> (x .?> "inputSourceType")
+                     <*> (x .?> "tags" .!@ mempty)
+                     <*> (x .?> "roleArn")
                      <*> (pure (fromEnum s)))
 
 instance Hashable DescribeInput where
@@ -127,8 +137,19 @@ data DescribeInputResponse = DescribeInputResponse'{_dscrbinptrsState
                                                     :: !(Maybe [Text]),
                                                     _dscrbinptrsId ::
                                                     !(Maybe Text),
+                                                    _dscrbinptrsInputClass ::
+                                                    !(Maybe InputClass),
                                                     _dscrbinptrsType ::
                                                     !(Maybe InputType),
+                                                    _dscrbinptrsMediaConnectFlows
+                                                    ::
+                                                    !(Maybe [MediaConnectFlow]),
+                                                    _dscrbinptrsInputSourceType
+                                                    :: !(Maybe InputSourceType),
+                                                    _dscrbinptrsTags ::
+                                                    !(Maybe (Map Text Text)),
+                                                    _dscrbinptrsRoleARN ::
+                                                    !(Maybe Text),
                                                     _dscrbinptrsResponseStatus
                                                     :: !Int}
                                deriving (Eq, Read, Show, Data, Typeable,
@@ -140,7 +161,7 @@ data DescribeInputResponse = DescribeInputResponse'{_dscrbinptrsState
 --
 -- * 'dscrbinptrsState' - Undocumented member.
 --
--- * 'dscrbinptrsSecurityGroups' - A list of IDs for all the security groups attached to the input.
+-- * 'dscrbinptrsSecurityGroups' - A list of IDs for all the Input Security Groups attached to the input.
 --
 -- * 'dscrbinptrsARN' - The Unique ARN of the input (generated, immutable).
 --
@@ -154,7 +175,17 @@ data DescribeInputResponse = DescribeInputResponse'{_dscrbinptrsState
 --
 -- * 'dscrbinptrsId' - The generated ID of the input (unique for user account, immutable).
 --
+-- * 'dscrbinptrsInputClass' - STANDARD - MediaLive expects two sources to be connected to this input. If the channel is also STANDARD, both sources will be ingested. If the channel is SINGLE_PIPELINE, only the first source will be ingested; the second source will always be ignored, even if the first source fails. SINGLE_PIPELINE - You can connect only one source to this input. If the ChannelClass is also  SINGLE_PIPELINE, this value is valid. If the ChannelClass is STANDARD, this value is not valid because the channel requires two sources in the input.
+--
 -- * 'dscrbinptrsType' - Undocumented member.
+--
+-- * 'dscrbinptrsMediaConnectFlows' - A list of MediaConnect Flows for this input.
+--
+-- * 'dscrbinptrsInputSourceType' - Certain pull input sources can be dynamic, meaning that they can have their URL's dynamically changes during input switch actions. Presently, this functionality only works with MP4_FILE inputs.
+--
+-- * 'dscrbinptrsTags' - A collection of key-value pairs.
+--
+-- * 'dscrbinptrsRoleARN' - The Amazon Resource Name (ARN) of the role this input assumes during and after creation.
 --
 -- * 'dscrbinptrsResponseStatus' - -- | The response status code.
 describeInputResponse
@@ -168,14 +199,20 @@ describeInputResponse pResponseStatus_
                            _dscrbinptrsDestinations = Nothing,
                            _dscrbinptrsName = Nothing,
                            _dscrbinptrsAttachedChannels = Nothing,
-                           _dscrbinptrsId = Nothing, _dscrbinptrsType = Nothing,
+                           _dscrbinptrsId = Nothing,
+                           _dscrbinptrsInputClass = Nothing,
+                           _dscrbinptrsType = Nothing,
+                           _dscrbinptrsMediaConnectFlows = Nothing,
+                           _dscrbinptrsInputSourceType = Nothing,
+                           _dscrbinptrsTags = Nothing,
+                           _dscrbinptrsRoleARN = Nothing,
                            _dscrbinptrsResponseStatus = pResponseStatus_}
 
 -- | Undocumented member.
 dscrbinptrsState :: Lens' DescribeInputResponse (Maybe InputState)
 dscrbinptrsState = lens _dscrbinptrsState (\ s a -> s{_dscrbinptrsState = a})
 
--- | A list of IDs for all the security groups attached to the input.
+-- | A list of IDs for all the Input Security Groups attached to the input.
 dscrbinptrsSecurityGroups :: Lens' DescribeInputResponse [Text]
 dscrbinptrsSecurityGroups = lens _dscrbinptrsSecurityGroups (\ s a -> s{_dscrbinptrsSecurityGroups = a}) . _Default . _Coerce
 
@@ -203,9 +240,29 @@ dscrbinptrsAttachedChannels = lens _dscrbinptrsAttachedChannels (\ s a -> s{_dsc
 dscrbinptrsId :: Lens' DescribeInputResponse (Maybe Text)
 dscrbinptrsId = lens _dscrbinptrsId (\ s a -> s{_dscrbinptrsId = a})
 
+-- | STANDARD - MediaLive expects two sources to be connected to this input. If the channel is also STANDARD, both sources will be ingested. If the channel is SINGLE_PIPELINE, only the first source will be ingested; the second source will always be ignored, even if the first source fails. SINGLE_PIPELINE - You can connect only one source to this input. If the ChannelClass is also  SINGLE_PIPELINE, this value is valid. If the ChannelClass is STANDARD, this value is not valid because the channel requires two sources in the input.
+dscrbinptrsInputClass :: Lens' DescribeInputResponse (Maybe InputClass)
+dscrbinptrsInputClass = lens _dscrbinptrsInputClass (\ s a -> s{_dscrbinptrsInputClass = a})
+
 -- | Undocumented member.
 dscrbinptrsType :: Lens' DescribeInputResponse (Maybe InputType)
 dscrbinptrsType = lens _dscrbinptrsType (\ s a -> s{_dscrbinptrsType = a})
+
+-- | A list of MediaConnect Flows for this input.
+dscrbinptrsMediaConnectFlows :: Lens' DescribeInputResponse [MediaConnectFlow]
+dscrbinptrsMediaConnectFlows = lens _dscrbinptrsMediaConnectFlows (\ s a -> s{_dscrbinptrsMediaConnectFlows = a}) . _Default . _Coerce
+
+-- | Certain pull input sources can be dynamic, meaning that they can have their URL's dynamically changes during input switch actions. Presently, this functionality only works with MP4_FILE inputs.
+dscrbinptrsInputSourceType :: Lens' DescribeInputResponse (Maybe InputSourceType)
+dscrbinptrsInputSourceType = lens _dscrbinptrsInputSourceType (\ s a -> s{_dscrbinptrsInputSourceType = a})
+
+-- | A collection of key-value pairs.
+dscrbinptrsTags :: Lens' DescribeInputResponse (HashMap Text Text)
+dscrbinptrsTags = lens _dscrbinptrsTags (\ s a -> s{_dscrbinptrsTags = a}) . _Default . _Map
+
+-- | The Amazon Resource Name (ARN) of the role this input assumes during and after creation.
+dscrbinptrsRoleARN :: Lens' DescribeInputResponse (Maybe Text)
+dscrbinptrsRoleARN = lens _dscrbinptrsRoleARN (\ s a -> s{_dscrbinptrsRoleARN = a})
 
 -- | -- | The response status code.
 dscrbinptrsResponseStatus :: Lens' DescribeInputResponse Int

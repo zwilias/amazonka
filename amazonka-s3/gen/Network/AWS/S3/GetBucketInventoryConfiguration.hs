@@ -18,7 +18,23 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Returns an inventory configuration (identified by the inventory ID) from the bucket.
+-- Returns an inventory configuration (identified by the inventory configuration ID) from the bucket.
+--
+--
+-- To use this operation, you must have permissions to perform the @s3:GetInventoryConfiguration@ action. The bucket owner has this permission by default and can grant this permission to others. For more information about permissions, see <https://docs.aws.amazon.com/AmazonS3/latest/dev/using-with-s3-actions.html#using-with-s3-actions-related-to-bucket-subresources Permissions Related to Bucket Subresource Operations> and <https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-access-control.html Managing Access Permissions to Your Amazon S3 Resources> .
+--
+-- For information about the Amazon S3 inventory feature, see <https://docs.aws.amazon.com/AmazonS3/latest/dev/storage-inventory.html Amazon S3 Inventory> .
+--
+-- The following operations are related to @GetBucketInventoryConfiguration@ :
+--
+--     * 'DeleteBucketInventoryConfiguration' 
+--
+--     * 'ListBucketInventoryConfigurations' 
+--
+--     * 'PutBucketInventoryConfiguration' 
+--
+--
+--
 module Network.AWS.S3.GetBucketInventoryConfiguration
     (
     -- * Creating a Request

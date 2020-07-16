@@ -23,8 +23,6 @@
 --
 -- To get alias properties, specify the alias ID. If successful, the requested alias record is returned.
 --
--- Alias-related operations include:
---
 --     * 'CreateAlias' 
 --
 --     * 'ListAliases' 
@@ -75,14 +73,14 @@ newtype DescribeAlias = DescribeAlias'{_dAliasId ::
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dAliasId' - Unique identifier for a fleet alias. Specify the alias you want to retrieve.
+-- * 'dAliasId' - The unique identifier for the fleet alias that you want to retrieve. You can use either the alias ID or ARN value. 
 describeAlias
     :: Text -- ^ 'dAliasId'
     -> DescribeAlias
 describeAlias pAliasId_
   = DescribeAlias'{_dAliasId = pAliasId_}
 
--- | Unique identifier for a fleet alias. Specify the alias you want to retrieve.
+-- | The unique identifier for the fleet alias that you want to retrieve. You can use either the alias ID or ARN value. 
 dAliasId :: Lens' DescribeAlias Text
 dAliasId = lens _dAliasId (\ s a -> s{_dAliasId = a})
 
@@ -133,7 +131,7 @@ data DescribeAliasResponse = DescribeAliasResponse'{_darsAlias
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'darsAlias' - Object that contains the requested alias.
+-- * 'darsAlias' - The requested alias resource.
 --
 -- * 'darsResponseStatus' - -- | The response status code.
 describeAliasResponse
@@ -143,7 +141,7 @@ describeAliasResponse pResponseStatus_
   = DescribeAliasResponse'{_darsAlias = Nothing,
                            _darsResponseStatus = pResponseStatus_}
 
--- | Object that contains the requested alias.
+-- | The requested alias resource.
 darsAlias :: Lens' DescribeAliasResponse (Maybe Alias)
 darsAlias = lens _darsAlias (\ s a -> s{_darsAlias = a})
 

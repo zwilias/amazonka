@@ -21,7 +21,9 @@ import Network.AWS.GuardDuty.Types.OrderBy
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | Represents the criteria used for sorting findings.
+-- | Contains information about the criteria used for sorting findings.
+--
+--
 --
 -- /See:/ 'sortCriteria' smart constructor.
 data SortCriteria = SortCriteria'{_scOrderBy ::
@@ -33,20 +35,20 @@ data SortCriteria = SortCriteria'{_scOrderBy ::
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'scOrderBy' - Order by which the sorted findings are to be displayed.
+-- * 'scOrderBy' - The order by which the sorted findings are to be displayed.
 --
--- * 'scAttributeName' - Represents the finding attribute (for example, accountId) by which to sort findings.
+-- * 'scAttributeName' - Represents the finding attribute (for example, accountId) to sort findings by.
 sortCriteria
     :: SortCriteria
 sortCriteria
   = SortCriteria'{_scOrderBy = Nothing,
                   _scAttributeName = Nothing}
 
--- | Order by which the sorted findings are to be displayed.
+-- | The order by which the sorted findings are to be displayed.
 scOrderBy :: Lens' SortCriteria (Maybe OrderBy)
 scOrderBy = lens _scOrderBy (\ s a -> s{_scOrderBy = a})
 
--- | Represents the finding attribute (for example, accountId) by which to sort findings.
+-- | Represents the finding attribute (for example, accountId) to sort findings by.
 scAttributeName :: Lens' SortCriteria (Maybe Text)
 scAttributeName = lens _scAttributeName (\ s a -> s{_scAttributeName = a})
 

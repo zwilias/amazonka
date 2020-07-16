@@ -18,12 +18,16 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Deletes a build. This action permanently deletes the build record and any uploaded build files.
+-- Deletes a build. This action permanently deletes the build resource and any uploaded build files. Deleting a build does not affect the status of any active fleets using the build, but you can no longer create new fleets with the deleted build.
 --
 --
--- To delete a build, specify its ID. Deleting a build does not affect the status of any active fleets using the build, but you can no longer create new fleets with the deleted build.
+-- To delete a build, specify the build ID. 
 --
--- Build-related operations include:
+-- __Learn more__ 
+--
+-- <https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-build-intro.html Upload a Custom Server Build> 
+--
+-- __Related operations__ 
 --
 --     * 'CreateBuild' 
 --
@@ -70,14 +74,14 @@ newtype DeleteBuild = DeleteBuild'{_dbBuildId ::
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dbBuildId' - Unique identifier for a build to delete.
+-- * 'dbBuildId' - A unique identifier for a build to delete. You can use either the build ID or ARN value. 
 deleteBuild
     :: Text -- ^ 'dbBuildId'
     -> DeleteBuild
 deleteBuild pBuildId_
   = DeleteBuild'{_dbBuildId = pBuildId_}
 
--- | Unique identifier for a build to delete.
+-- | A unique identifier for a build to delete. You can use either the build ID or ARN value. 
 dbBuildId :: Lens' DeleteBuild Text
 dbBuildId = lens _dbBuildId (\ s a -> s{_dbBuildId = a})
 

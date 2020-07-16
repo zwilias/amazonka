@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Describes your account attributes, and creates requests to increase limits before they are reached or exceeded. 
+-- Describes your OpsWorks-CM account attributes. 
 --
 --
 -- This operation is synchronous. 

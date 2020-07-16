@@ -75,7 +75,7 @@ data ContactDetail = ContactDetail'{_cdOrganizationName
 --
 -- * 'cdCountryCode' - Code for the country of the contact's address.
 --
--- * 'cdContactType' - Indicates whether the contact is a person, company, association, or public organization. If you choose an option other than @PERSON@ , you must enter an organization name, and you can't enable privacy protection for the contact.
+-- * 'cdContactType' - Indicates whether the contact is a person, company, association, or public organization. Note the following:     * If you specify a value other than @PERSON@ , you must also specify a value for @OrganizationName@ .     * For some TLDs, the privacy protection available depends on the value that you specify for @Contact Type@ . For the privacy protection settings for your TLD, see <https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/registrar-tld-list.html Domains that You Can Register with Amazon Route 53> in the /Amazon Route 53 Developer Guide/      * For .es domains, if you specify @PERSON@ , you must specify @INDIVIDUAL@ for the value of @ES_LEGAL_FORM@ .
 contactDetail
     :: ContactDetail
 contactDetail
@@ -140,7 +140,7 @@ cdFirstName = lens _cdFirstName (\ s a -> s{_cdFirstName = a})
 cdCountryCode :: Lens' ContactDetail (Maybe CountryCode)
 cdCountryCode = lens _cdCountryCode (\ s a -> s{_cdCountryCode = a})
 
--- | Indicates whether the contact is a person, company, association, or public organization. If you choose an option other than @PERSON@ , you must enter an organization name, and you can't enable privacy protection for the contact.
+-- | Indicates whether the contact is a person, company, association, or public organization. Note the following:     * If you specify a value other than @PERSON@ , you must also specify a value for @OrganizationName@ .     * For some TLDs, the privacy protection available depends on the value that you specify for @Contact Type@ . For the privacy protection settings for your TLD, see <https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/registrar-tld-list.html Domains that You Can Register with Amazon Route 53> in the /Amazon Route 53 Developer Guide/      * For .es domains, if you specify @PERSON@ , you must specify @INDIVIDUAL@ for the value of @ES_LEGAL_FORM@ .
 cdContactType :: Lens' ContactDetail (Maybe ContactType)
 cdContactType = lens _cdContactType (\ s a -> s{_cdContactType = a})
 

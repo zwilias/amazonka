@@ -18,7 +18,9 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Use to update a campaign.
+-- Updates the configuration and other settings for a campaign.
+--
+--
 module Network.AWS.Pinpoint.UpdateCampaign
     (
     -- * Creating a Request
@@ -56,9 +58,9 @@ data UpdateCampaign = UpdateCampaign'{_ucCampaignId
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'ucCampaignId' - Undocumented member.
+-- * 'ucCampaignId' - The unique identifier for the campaign.
 --
--- * 'ucApplicationId' - Undocumented member.
+-- * 'ucApplicationId' - The unique identifier for the application. This identifier is displayed as the __Project ID__ on the Amazon Pinpoint console.
 --
 -- * 'ucWriteCampaignRequest' - Undocumented member.
 updateCampaign
@@ -72,11 +74,11 @@ updateCampaign pCampaignId_ pApplicationId_
                     _ucApplicationId = pApplicationId_,
                     _ucWriteCampaignRequest = pWriteCampaignRequest_}
 
--- | Undocumented member.
+-- | The unique identifier for the campaign.
 ucCampaignId :: Lens' UpdateCampaign Text
 ucCampaignId = lens _ucCampaignId (\ s a -> s{_ucCampaignId = a})
 
--- | Undocumented member.
+-- | The unique identifier for the application. This identifier is displayed as the __Project ID__ on the Amazon Pinpoint console.
 ucApplicationId :: Lens' UpdateCampaign Text
 ucApplicationId = lens _ucApplicationId (\ s a -> s{_ucApplicationId = a})
 

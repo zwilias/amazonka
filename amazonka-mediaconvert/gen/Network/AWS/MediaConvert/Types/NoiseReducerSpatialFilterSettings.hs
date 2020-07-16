@@ -26,11 +26,11 @@ import Network.AWS.Prelude
 data NoiseReducerSpatialFilterSettings = NoiseReducerSpatialFilterSettings'{_nrsfsStrength
                                                                             ::
                                                                             !(Maybe
-                                                                                Int),
+                                                                                Nat),
                                                                             _nrsfsPostFilterSharpenStrength
                                                                             ::
                                                                             !(Maybe
-                                                                                Int),
+                                                                                Nat),
                                                                             _nrsfsSpeed
                                                                             ::
                                                                             !(Maybe
@@ -57,12 +57,12 @@ noiseReducerSpatialFilterSettings
                                        _nrsfsSpeed = Nothing}
 
 -- | Relative strength of noise reducing filter. Higher values produce stronger filtering.
-nrsfsStrength :: Lens' NoiseReducerSpatialFilterSettings (Maybe Int)
-nrsfsStrength = lens _nrsfsStrength (\ s a -> s{_nrsfsStrength = a})
+nrsfsStrength :: Lens' NoiseReducerSpatialFilterSettings (Maybe Natural)
+nrsfsStrength = lens _nrsfsStrength (\ s a -> s{_nrsfsStrength = a}) . mapping _Nat
 
 -- | Specify strength of post noise reduction sharpening filter, with 0 disabling the filter and 3 enabling it at maximum strength.
-nrsfsPostFilterSharpenStrength :: Lens' NoiseReducerSpatialFilterSettings (Maybe Int)
-nrsfsPostFilterSharpenStrength = lens _nrsfsPostFilterSharpenStrength (\ s a -> s{_nrsfsPostFilterSharpenStrength = a})
+nrsfsPostFilterSharpenStrength :: Lens' NoiseReducerSpatialFilterSettings (Maybe Natural)
+nrsfsPostFilterSharpenStrength = lens _nrsfsPostFilterSharpenStrength (\ s a -> s{_nrsfsPostFilterSharpenStrength = a}) . mapping _Nat
 
 -- | The speed of the filter, from -2 (lower speed) to 3 (higher speed), with 0 being the nominal value.
 nrsfsSpeed :: Lens' NoiseReducerSpatialFilterSettings (Maybe Int)

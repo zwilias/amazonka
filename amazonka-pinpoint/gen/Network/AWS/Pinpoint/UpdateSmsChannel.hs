@@ -18,7 +18,9 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Update an SMS channel
+-- Enables the SMS channel for an application or updates the status and settings of the SMS channel for an application.
+--
+--
 module Network.AWS.Pinpoint.UpdateSmsChannel
     (
     -- * Creating a Request
@@ -54,7 +56,7 @@ data UpdateSmsChannel = UpdateSmsChannel'{_uscApplicationId
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'uscApplicationId' - Undocumented member.
+-- * 'uscApplicationId' - The unique identifier for the application. This identifier is displayed as the __Project ID__ on the Amazon Pinpoint console.
 --
 -- * 'uscSMSChannelRequest' - Undocumented member.
 updateSmsChannel
@@ -66,7 +68,7 @@ updateSmsChannel pApplicationId_ pSMSChannelRequest_
                         pApplicationId_,
                       _uscSMSChannelRequest = pSMSChannelRequest_}
 
--- | Undocumented member.
+-- | The unique identifier for the application. This identifier is displayed as the __Project ID__ on the Amazon Pinpoint console.
 uscApplicationId :: Lens' UpdateSmsChannel Text
 uscApplicationId = lens _uscApplicationId (\ s a -> s{_uscApplicationId = a})
 

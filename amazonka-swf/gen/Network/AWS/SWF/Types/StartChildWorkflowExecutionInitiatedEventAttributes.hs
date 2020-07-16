@@ -93,7 +93,7 @@ data StartChildWorkflowExecutionInitiatedEventAttributes = StartChildWorkflowExe
 --
 -- * 'scweieaExecutionStartToCloseTimeout' - The maximum duration for the child workflow execution. If the workflow execution isn't closed within this duration, it is timed out and force-terminated. The duration is specified in seconds, an integer greater than or equal to @0@ . You can use @NONE@ to specify unlimited duration.
 --
--- * 'scweieaTaskPriority' - The priority assigned for the decision tasks for this workflow execution. Valid values are integers that range from Java's @Integer.MIN_VALUE@ (-2147483648) to @Integer.MAX_VALUE@ (2147483647). Higher numbers indicate higher priority. For more information about setting task priority, see <http://docs.aws.amazon.com/amazonswf/latest/developerguide/programming-priority.html Setting Task Priority> in the /Amazon SWF Developer Guide/ .
+-- * 'scweieaTaskPriority' - The priority assigned for the decision tasks for this workflow execution. Valid values are integers that range from Java's @Integer.MIN_VALUE@ (-2147483648) to @Integer.MAX_VALUE@ (2147483647). Higher numbers indicate higher priority. For more information about setting task priority, see <https://docs.aws.amazon.com/amazonswf/latest/developerguide/programming-priority.html Setting Task Priority> in the /Amazon SWF Developer Guide/ .
 --
 -- * 'scweieaWorkflowId' - The @workflowId@ of the child workflow execution.
 --
@@ -164,7 +164,7 @@ scweieaInput = lens _scweieaInput (\ s a -> s{_scweieaInput = a})
 scweieaExecutionStartToCloseTimeout :: Lens' StartChildWorkflowExecutionInitiatedEventAttributes (Maybe Text)
 scweieaExecutionStartToCloseTimeout = lens _scweieaExecutionStartToCloseTimeout (\ s a -> s{_scweieaExecutionStartToCloseTimeout = a})
 
--- | The priority assigned for the decision tasks for this workflow execution. Valid values are integers that range from Java's @Integer.MIN_VALUE@ (-2147483648) to @Integer.MAX_VALUE@ (2147483647). Higher numbers indicate higher priority. For more information about setting task priority, see <http://docs.aws.amazon.com/amazonswf/latest/developerguide/programming-priority.html Setting Task Priority> in the /Amazon SWF Developer Guide/ .
+-- | The priority assigned for the decision tasks for this workflow execution. Valid values are integers that range from Java's @Integer.MIN_VALUE@ (-2147483648) to @Integer.MAX_VALUE@ (2147483647). Higher numbers indicate higher priority. For more information about setting task priority, see <https://docs.aws.amazon.com/amazonswf/latest/developerguide/programming-priority.html Setting Task Priority> in the /Amazon SWF Developer Guide/ .
 scweieaTaskPriority :: Lens' StartChildWorkflowExecutionInitiatedEventAttributes (Maybe Text)
 scweieaTaskPriority = lens _scweieaTaskPriority (\ s a -> s{_scweieaTaskPriority = a})
 

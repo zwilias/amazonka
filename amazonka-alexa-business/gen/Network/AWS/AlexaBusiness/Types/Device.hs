@@ -17,6 +17,7 @@
 --
 module Network.AWS.AlexaBusiness.Types.Device where
 
+import Network.AWS.AlexaBusiness.Types.DeviceNetworkProfileInfo
 import Network.AWS.AlexaBusiness.Types.DeviceStatus
 import Network.AWS.AlexaBusiness.Types.DeviceStatusInfo
 import Network.AWS.Lens
@@ -36,6 +37,8 @@ data Device = Device'{_dDeviceStatus ::
                       _dRoomARN :: !(Maybe Text),
                       _dSoftwareVersion :: !(Maybe Text),
                       _dDeviceType :: !(Maybe Text),
+                      _dNetworkProfileInfo ::
+                      !(Maybe DeviceNetworkProfileInfo),
                       _dDeviceSerialNumber :: !(Maybe Text)}
                 deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -59,6 +62,8 @@ data Device = Device'{_dDeviceStatus ::
 --
 -- * 'dDeviceType' - The type of a device.
 --
+-- * 'dNetworkProfileInfo' - Detailed information about a device's network profile.
+--
 -- * 'dDeviceSerialNumber' - The serial number of a device.
 device
     :: Device
@@ -68,6 +73,7 @@ device
             _dMACAddress = Nothing, _dDeviceName = Nothing,
             _dRoomARN = Nothing, _dSoftwareVersion = Nothing,
             _dDeviceType = Nothing,
+            _dNetworkProfileInfo = Nothing,
             _dDeviceSerialNumber = Nothing}
 
 -- | The status of a device. If the status is not READY, check the DeviceStatusInfo value for details.
@@ -102,6 +108,10 @@ dSoftwareVersion = lens _dSoftwareVersion (\ s a -> s{_dSoftwareVersion = a})
 dDeviceType :: Lens' Device (Maybe Text)
 dDeviceType = lens _dDeviceType (\ s a -> s{_dDeviceType = a})
 
+-- | Detailed information about a device's network profile.
+dNetworkProfileInfo :: Lens' Device (Maybe DeviceNetworkProfileInfo)
+dNetworkProfileInfo = lens _dNetworkProfileInfo (\ s a -> s{_dNetworkProfileInfo = a})
+
 -- | The serial number of a device.
 dDeviceSerialNumber :: Lens' Device (Maybe Text)
 dDeviceSerialNumber = lens _dDeviceSerialNumber (\ s a -> s{_dDeviceSerialNumber = a})
@@ -118,6 +128,7 @@ instance FromJSON Device where
                      <*> (x .:? "RoomArn")
                      <*> (x .:? "SoftwareVersion")
                      <*> (x .:? "DeviceType")
+                     <*> (x .:? "NetworkProfileInfo")
                      <*> (x .:? "DeviceSerialNumber"))
 
 instance Hashable Device where

@@ -18,7 +18,15 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Gets the access control policy for the bucket.
+-- This implementation of the @GET@ operation uses the @acl@ subresource to return the access control list (ACL) of a bucket. To use @GET@ to return the ACL of the bucket, you must have @READ_ACP@ access to the bucket. If @READ_ACP@ permission is granted to the anonymous user, you can return the ACL of the bucket without using an authorization header.
+--
+--
+-- __Related Resources__ 
+--
+--     * 
+--
+--
+--
 module Network.AWS.S3.GetBucketACL
     (
     -- * Creating a Request
@@ -52,14 +60,14 @@ newtype GetBucketACL = GetBucketACL'{_gbaBucket ::
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'gbaBucket' - Undocumented member.
+-- * 'gbaBucket' - Specifies the S3 bucket whose ACL is being requested.
 getBucketACL
     :: BucketName -- ^ 'gbaBucket'
     -> GetBucketACL
 getBucketACL pBucket_
   = GetBucketACL'{_gbaBucket = pBucket_}
 
--- | Undocumented member.
+-- | Specifies the S3 bucket whose ACL is being requested.
 gbaBucket :: Lens' GetBucketACL BucketName
 gbaBucket = lens _gbaBucket (\ s a -> s{_gbaBucket = a})
 
@@ -102,7 +110,7 @@ data GetBucketACLResponse = GetBucketACLResponse'{_gbarsGrants
 --
 -- * 'gbarsGrants' - A list of grants.
 --
--- * 'gbarsOwner' - Undocumented member.
+-- * 'gbarsOwner' - Container for the bucket owner's display name and ID.
 --
 -- * 'gbarsResponseStatus' - -- | The response status code.
 getBucketACLResponse
@@ -117,7 +125,7 @@ getBucketACLResponse pResponseStatus_
 gbarsGrants :: Lens' GetBucketACLResponse [Grant]
 gbarsGrants = lens _gbarsGrants (\ s a -> s{_gbarsGrants = a}) . _Default . _Coerce
 
--- | Undocumented member.
+-- | Container for the bucket owner's display name and ID.
 gbarsOwner :: Lens' GetBucketACLResponse (Maybe Owner)
 gbarsOwner = lens _gbarsOwner (\ s a -> s{_gbarsOwner = a})
 

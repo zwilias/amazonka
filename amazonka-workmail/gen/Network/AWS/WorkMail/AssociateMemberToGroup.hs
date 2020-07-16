@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Adds a member to the group's set.
+-- Adds a member (user or group) to the group's set.
 --
 --
 module Network.AWS.WorkMail.AssociateMemberToGroup
@@ -59,9 +59,9 @@ data AssociateMemberToGroup = AssociateMemberToGroup'{_amtgOrganizationId
 --
 -- * 'amtgOrganizationId' - The organization under which the group exists.
 --
--- * 'amtgGroupId' - The group for which the member is associated.
+-- * 'amtgGroupId' - The group to which the member (user or group) is associated.
 --
--- * 'amtgMemberId' - The member to associate to the group.
+-- * 'amtgMemberId' - The member (user or group) to associate to the group.
 associateMemberToGroup
     :: Text -- ^ 'amtgOrganizationId'
     -> Text -- ^ 'amtgGroupId'
@@ -78,11 +78,11 @@ associateMemberToGroup pOrganizationId_ pGroupId_
 amtgOrganizationId :: Lens' AssociateMemberToGroup Text
 amtgOrganizationId = lens _amtgOrganizationId (\ s a -> s{_amtgOrganizationId = a})
 
--- | The group for which the member is associated.
+-- | The group to which the member (user or group) is associated.
 amtgGroupId :: Lens' AssociateMemberToGroup Text
 amtgGroupId = lens _amtgGroupId (\ s a -> s{_amtgGroupId = a})
 
--- | The member to associate to the group.
+-- | The member (user or group) to associate to the group.
 amtgMemberId :: Lens' AssociateMemberToGroup Text
 amtgMemberId = lens _amtgMemberId (\ s a -> s{_amtgMemberId = a})
 

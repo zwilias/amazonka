@@ -27,7 +27,7 @@ module Network.AWS.MediaLive.Types.GlobalConfigurationLowFramerateInputs (
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | Placeholder documentation for GlobalConfigurationLowFramerateInputs
+-- | Global Configuration Low Framerate Inputs
 data GlobalConfigurationLowFramerateInputs = GlobalConfigurationLowFramerateInputs' (CI
                                                                                        Text)
                                                deriving (Eq, Ord, Read, Show,

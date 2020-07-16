@@ -143,15 +143,15 @@ data DescribeGroupResponse = DescribeGroupResponse'{_desrsEmail
 --
 -- * 'desrsEmail' - The email of the described group.
 --
--- * 'desrsState' - The state of the user: enabled (registered to Amazon WorkMail) or disabled (deregistered or never registered to Amazon WorkMail).
+-- * 'desrsState' - The state of the user: enabled (registered to Amazon WorkMail) or disabled (deregistered or never registered to WorkMail).
 --
--- * 'desrsDisabledDate' - The date and time when a user was deregistered from Amazon WorkMail, in UNIX epoch time format.
+-- * 'desrsDisabledDate' - The date and time when a user was deregistered from WorkMail, in UNIX epoch time format.
 --
 -- * 'desrsName' - The name of the described group.
 --
 -- * 'desrsGroupId' - The identifier of the described group.
 --
--- * 'desrsEnabledDate' - The date and time when a user was registered to Amazon WorkMail, in UNIX epoch time format.
+-- * 'desrsEnabledDate' - The date and time when a user was registered to WorkMail, in UNIX epoch time format.
 --
 -- * 'desrsResponseStatus' - -- | The response status code.
 describeGroupResponse
@@ -168,11 +168,11 @@ describeGroupResponse pResponseStatus_
 desrsEmail :: Lens' DescribeGroupResponse (Maybe Text)
 desrsEmail = lens _desrsEmail (\ s a -> s{_desrsEmail = a})
 
--- | The state of the user: enabled (registered to Amazon WorkMail) or disabled (deregistered or never registered to Amazon WorkMail).
+-- | The state of the user: enabled (registered to Amazon WorkMail) or disabled (deregistered or never registered to WorkMail).
 desrsState :: Lens' DescribeGroupResponse (Maybe EntityState)
 desrsState = lens _desrsState (\ s a -> s{_desrsState = a})
 
--- | The date and time when a user was deregistered from Amazon WorkMail, in UNIX epoch time format.
+-- | The date and time when a user was deregistered from WorkMail, in UNIX epoch time format.
 desrsDisabledDate :: Lens' DescribeGroupResponse (Maybe UTCTime)
 desrsDisabledDate = lens _desrsDisabledDate (\ s a -> s{_desrsDisabledDate = a}) . mapping _Time
 
@@ -184,7 +184,7 @@ desrsName = lens _desrsName (\ s a -> s{_desrsName = a})
 desrsGroupId :: Lens' DescribeGroupResponse (Maybe Text)
 desrsGroupId = lens _desrsGroupId (\ s a -> s{_desrsGroupId = a})
 
--- | The date and time when a user was registered to Amazon WorkMail, in UNIX epoch time format.
+-- | The date and time when a user was registered to WorkMail, in UNIX epoch time format.
 desrsEnabledDate :: Lens' DescribeGroupResponse (Maybe UTCTime)
 desrsEnabledDate = lens _desrsEnabledDate (\ s a -> s{_desrsEnabledDate = a}) . mapping _Time
 

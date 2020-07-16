@@ -21,6 +21,7 @@ module Network.AWS.CertificateManagerPCA.Types.Product (
     module Network.AWS.CertificateManagerPCA.Types.CertificateAuthority,
     module Network.AWS.CertificateManagerPCA.Types.CertificateAuthorityConfiguration,
     module Network.AWS.CertificateManagerPCA.Types.CrlConfiguration,
+    module Network.AWS.CertificateManagerPCA.Types.Permission,
     module Network.AWS.CertificateManagerPCA.Types.RevocationConfiguration,
     module Network.AWS.CertificateManagerPCA.Types.Tag,
     module Network.AWS.CertificateManagerPCA.Types.Validity
@@ -30,6 +31,7 @@ import Network.AWS.CertificateManagerPCA.Types.ASN1Subject
 import Network.AWS.CertificateManagerPCA.Types.CertificateAuthority
 import Network.AWS.CertificateManagerPCA.Types.CertificateAuthorityConfiguration
 import Network.AWS.CertificateManagerPCA.Types.CrlConfiguration
+import Network.AWS.CertificateManagerPCA.Types.Permission
 import Network.AWS.CertificateManagerPCA.Types.RevocationConfiguration
 import Network.AWS.CertificateManagerPCA.Types.Tag
 import Network.AWS.CertificateManagerPCA.Types.Validity

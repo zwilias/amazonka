@@ -18,9 +18,11 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Lists the executions of a Maintenance Window. This includes information about when the Maintenance Window was scheduled to be active, and information about tasks registered and run with the Maintenance Window.
+-- Lists the executions of a maintenance window. This includes information about when the maintenance window was scheduled to be active, and information about tasks registered and run with the maintenance window.
 --
 --
+--
+-- This operation returns paginated results.
 module Network.AWS.SSM.DescribeMaintenanceWindowExecutions
     (
     -- * Creating a Request
@@ -42,6 +44,7 @@ module Network.AWS.SSM.DescribeMaintenanceWindowExecutions
     ) where
 
 import Network.AWS.Lens
+import Network.AWS.Pager
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
@@ -77,7 +80,7 @@ data DescribeMaintenanceWindowExecutions = DescribeMaintenanceWindowExecutions'{
 --
 -- * 'dmweMaxResults' - The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.
 --
--- * 'dmweWindowId' - The ID of the Maintenance Window whose executions should be retrieved.
+-- * 'dmweWindowId' - The ID of the maintenance window whose executions should be retrieved.
 describeMaintenanceWindowExecutions
     :: Text -- ^ 'dmweWindowId'
     -> DescribeMaintenanceWindowExecutions
@@ -100,9 +103,17 @@ dmweNextToken = lens _dmweNextToken (\ s a -> s{_dmweNextToken = a})
 dmweMaxResults :: Lens' DescribeMaintenanceWindowExecutions (Maybe Natural)
 dmweMaxResults = lens _dmweMaxResults (\ s a -> s{_dmweMaxResults = a}) . mapping _Nat
 
--- | The ID of the Maintenance Window whose executions should be retrieved.
+-- | The ID of the maintenance window whose executions should be retrieved.
 dmweWindowId :: Lens' DescribeMaintenanceWindowExecutions Text
 dmweWindowId = lens _dmweWindowId (\ s a -> s{_dmweWindowId = a})
+
+instance AWSPager DescribeMaintenanceWindowExecutions
+         where
+        page rq rs
+          | stop (rs ^. dmwersNextToken) = Nothing
+          | stop (rs ^. dmwersWindowExecutions) = Nothing
+          | otherwise =
+            Just $ rq & dmweNextToken .~ rs ^. dmwersNextToken
 
 instance AWSRequest
            DescribeMaintenanceWindowExecutions
@@ -174,7 +185,7 @@ data DescribeMaintenanceWindowExecutionsResponse = DescribeMaintenanceWindowExec
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dmwersWindowExecutions' - Information about the Maintenance Windows execution.
+-- * 'dmwersWindowExecutions' - Information about the maintenance window executions.
 --
 -- * 'dmwersNextToken' - The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.
 --
@@ -190,7 +201,7 @@ describeMaintenanceWindowExecutionsResponse
                                                  _dmwersResponseStatus =
                                                    pResponseStatus_}
 
--- | Information about the Maintenance Windows execution.
+-- | Information about the maintenance window executions.
 dmwersWindowExecutions :: Lens' DescribeMaintenanceWindowExecutionsResponse [MaintenanceWindowExecution]
 dmwersWindowExecutions = lens _dmwersWindowExecutions (\ s a -> s{_dmwersWindowExecutions = a}) . _Default . _Coerce
 

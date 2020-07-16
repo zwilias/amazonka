@@ -25,9 +25,9 @@
 --
 -- This API retrieves information about managed policies. To retrieve information about an inline policy that is embedded in a user, group, or role, use the 'GetUserPolicy' , 'GetGroupPolicy' , or 'GetRolePolicy' API.
 --
--- For more information about the types of policies, see <http://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html Managed Policies and Inline Policies> in the /IAM User Guide/ .
+-- For more information about the types of policies, see <https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html Managed Policies and Inline Policies> in the /IAM User Guide/ .
 --
--- For more information about managed policy versions, see <http://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-versions.html Versioning for Managed Policies> in the /IAM User Guide/ .
+-- For more information about managed policy versions, see <https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-versions.html Versioning for Managed Policies> in the /IAM User Guide/ .
 --
 module Network.AWS.IAM.GetPolicyVersion
     (
@@ -63,9 +63,9 @@ data GetPolicyVersion = GetPolicyVersion'{_gpvPolicyARN
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'gpvPolicyARN' - The Amazon Resource Name (ARN) of the managed policy that you want information about. For more information about ARNs, see <http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html Amazon Resource Names (ARNs) and AWS Service Namespaces> in the /AWS General Reference/ .
+-- * 'gpvPolicyARN' - The Amazon Resource Name (ARN) of the managed policy that you want information about. For more information about ARNs, see <https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html Amazon Resource Names (ARNs) and AWS Service Namespaces> in the /AWS General Reference/ .
 --
--- * 'gpvVersionId' - Identifies the policy version to retrieve. This parameter allows (per its <http://wikipedia.org/wiki/regex regex pattern> ) a string of characters that consists of the lowercase letter 'v' followed by one or two digits, and optionally followed by a period '.' and a string of letters and digits.
+-- * 'gpvVersionId' - Identifies the policy version to retrieve. This parameter allows (through its <http://wikipedia.org/wiki/regex regex pattern> ) a string of characters that consists of the lowercase letter 'v' followed by one or two digits, and optionally followed by a period '.' and a string of letters and digits.
 getPolicyVersion
     :: Text -- ^ 'gpvPolicyARN'
     -> Text -- ^ 'gpvVersionId'
@@ -74,11 +74,11 @@ getPolicyVersion pPolicyARN_ pVersionId_
   = GetPolicyVersion'{_gpvPolicyARN = pPolicyARN_,
                       _gpvVersionId = pVersionId_}
 
--- | The Amazon Resource Name (ARN) of the managed policy that you want information about. For more information about ARNs, see <http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html Amazon Resource Names (ARNs) and AWS Service Namespaces> in the /AWS General Reference/ .
+-- | The Amazon Resource Name (ARN) of the managed policy that you want information about. For more information about ARNs, see <https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html Amazon Resource Names (ARNs) and AWS Service Namespaces> in the /AWS General Reference/ .
 gpvPolicyARN :: Lens' GetPolicyVersion Text
 gpvPolicyARN = lens _gpvPolicyARN (\ s a -> s{_gpvPolicyARN = a})
 
--- | Identifies the policy version to retrieve. This parameter allows (per its <http://wikipedia.org/wiki/regex regex pattern> ) a string of characters that consists of the lowercase letter 'v' followed by one or two digits, and optionally followed by a period '.' and a string of letters and digits.
+-- | Identifies the policy version to retrieve. This parameter allows (through its <http://wikipedia.org/wiki/regex regex pattern> ) a string of characters that consists of the lowercase letter 'v' followed by one or two digits, and optionally followed by a period '.' and a string of letters and digits.
 gpvVersionId :: Lens' GetPolicyVersion Text
 gpvVersionId = lens _gpvVersionId (\ s a -> s{_gpvVersionId = a})
 

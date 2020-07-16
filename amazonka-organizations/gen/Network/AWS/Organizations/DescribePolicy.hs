@@ -21,7 +21,7 @@
 -- Retrieves information about a policy.
 --
 --
--- This operation can be called only from the organization's master account.
+-- This operation can be called only from the organization's master account or by a member account that is a delegated administrator for an AWS service.
 --
 module Network.AWS.Organizations.DescribePolicy
     (
@@ -55,14 +55,14 @@ newtype DescribePolicy = DescribePolicy'{_dpPolicyId
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dpPolicyId' - The unique identifier (ID) of the policy that you want details about. You can get the ID from the 'ListPolicies' or 'ListPoliciesForTarget' operations. The <http://wikipedia.org/wiki/regex regex pattern> for a policy ID string requires "p-" followed by from 8 to 128 lower-case letters or digits.
+-- * 'dpPolicyId' - The unique identifier (ID) of the policy that you want details about. You can get the ID from the 'ListPolicies' or 'ListPoliciesForTarget' operations. The <http://wikipedia.org/wiki/regex regex pattern> for a policy ID string requires "p-" followed by from 8 to 128 lowercase or uppercase letters, digits, or the underscore character (_).
 describePolicy
     :: Text -- ^ 'dpPolicyId'
     -> DescribePolicy
 describePolicy pPolicyId_
   = DescribePolicy'{_dpPolicyId = pPolicyId_}
 
--- | The unique identifier (ID) of the policy that you want details about. You can get the ID from the 'ListPolicies' or 'ListPoliciesForTarget' operations. The <http://wikipedia.org/wiki/regex regex pattern> for a policy ID string requires "p-" followed by from 8 to 128 lower-case letters or digits.
+-- | The unique identifier (ID) of the policy that you want details about. You can get the ID from the 'ListPolicies' or 'ListPoliciesForTarget' operations. The <http://wikipedia.org/wiki/regex regex pattern> for a policy ID string requires "p-" followed by from 8 to 128 lowercase or uppercase letters, digits, or the underscore character (_).
 dpPolicyId :: Lens' DescribePolicy Text
 dpPolicyId = lens _dpPolicyId (\ s a -> s{_dpPolicyId = a})
 

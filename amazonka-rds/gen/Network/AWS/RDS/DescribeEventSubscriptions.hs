@@ -75,11 +75,11 @@ data DescribeEventSubscriptions = DescribeEventSubscriptions'{_dSubscriptionName
 --
 -- * 'dSubscriptionName' - The name of the RDS event notification subscription you want to describe.
 --
--- * 'dFilters' - This parameter is not currently supported.
+-- * 'dFilters' - This parameter isn't currently supported.
 --
 -- * 'dMarker' - An optional pagination token provided by a previous DescribeOrderableDBInstanceOptions request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by @MaxRecords@ . 
 --
--- * 'dMaxRecords' - The maximum number of records to include in the response. If more records exist than the specified @MaxRecords@ value, a pagination token called a marker is included in the response so that the remaining results can be retrieved.  Default: 100 Constraints: Minimum 20, maximum 100.
+-- * 'dMaxRecords' - The maximum number of records to include in the response. If more records exist than the specified @MaxRecords@ value, a pagination token called a marker is included in the response so that you can retrieve the remaining results.  Default: 100 Constraints: Minimum 20, maximum 100.
 describeEventSubscriptions
     :: DescribeEventSubscriptions
 describeEventSubscriptions
@@ -92,7 +92,7 @@ describeEventSubscriptions
 dSubscriptionName :: Lens' DescribeEventSubscriptions (Maybe Text)
 dSubscriptionName = lens _dSubscriptionName (\ s a -> s{_dSubscriptionName = a})
 
--- | This parameter is not currently supported.
+-- | This parameter isn't currently supported.
 dFilters :: Lens' DescribeEventSubscriptions [Filter]
 dFilters = lens _dFilters (\ s a -> s{_dFilters = a}) . _Default . _Coerce
 
@@ -100,7 +100,7 @@ dFilters = lens _dFilters (\ s a -> s{_dFilters = a}) . _Default . _Coerce
 dMarker :: Lens' DescribeEventSubscriptions (Maybe Text)
 dMarker = lens _dMarker (\ s a -> s{_dMarker = a})
 
--- | The maximum number of records to include in the response. If more records exist than the specified @MaxRecords@ value, a pagination token called a marker is included in the response so that the remaining results can be retrieved.  Default: 100 Constraints: Minimum 20, maximum 100.
+-- | The maximum number of records to include in the response. If more records exist than the specified @MaxRecords@ value, a pagination token called a marker is included in the response so that you can retrieve the remaining results.  Default: 100 Constraints: Minimum 20, maximum 100.
 dMaxRecords :: Lens' DescribeEventSubscriptions (Maybe Int)
 dMaxRecords = lens _dMaxRecords (\ s a -> s{_dMaxRecords = a})
 

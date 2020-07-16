@@ -25,6 +25,8 @@ module Network.AWS.Shield.Types.AttackPropertyIdentifier (
     , SourceCountry
     , SourceIPAddress
     , SourceUserAgent
+    , WordpressPingbackReflector
+    , WordpressPingbackSource
     )
   ) where
 
@@ -54,6 +56,12 @@ pattern SourceIPAddress = AttackPropertyIdentifier' "SOURCE_IP_ADDRESS"
 pattern SourceUserAgent :: AttackPropertyIdentifier
 pattern SourceUserAgent = AttackPropertyIdentifier' "SOURCE_USER_AGENT"
 
+pattern WordpressPingbackReflector :: AttackPropertyIdentifier
+pattern WordpressPingbackReflector = AttackPropertyIdentifier' "WORDPRESS_PINGBACK_REFLECTOR"
+
+pattern WordpressPingbackSource :: AttackPropertyIdentifier
+pattern WordpressPingbackSource = AttackPropertyIdentifier' "WORDPRESS_PINGBACK_SOURCE"
+
 {-# COMPLETE
   DestinationURL,
   Referrer,
@@ -61,6 +69,8 @@ pattern SourceUserAgent = AttackPropertyIdentifier' "SOURCE_USER_AGENT"
   SourceCountry,
   SourceIPAddress,
   SourceUserAgent,
+  WordpressPingbackReflector,
+  WordpressPingbackSource,
   AttackPropertyIdentifier' #-}
 
 instance FromText AttackPropertyIdentifier where
@@ -81,6 +91,8 @@ instance Enum AttackPropertyIdentifier where
         3 -> SourceCountry
         4 -> SourceIPAddress
         5 -> SourceUserAgent
+        6 -> WordpressPingbackReflector
+        7 -> WordpressPingbackSource
         _ -> (error . showText) $ "Unknown index for AttackPropertyIdentifier: " <> toText i
     fromEnum x = case x of
         DestinationURL -> 0
@@ -89,6 +101,8 @@ instance Enum AttackPropertyIdentifier where
         SourceCountry -> 3
         SourceIPAddress -> 4
         SourceUserAgent -> 5
+        WordpressPingbackReflector -> 6
+        WordpressPingbackSource -> 7
         AttackPropertyIdentifier' name -> (error . showText) $ "Unknown AttackPropertyIdentifier: " <> original name
 
 -- | Represents the bounds of /known/ $AttackPropertyIdentifier.
@@ -96,7 +110,7 @@ instance Enum AttackPropertyIdentifier where
 --   This instance exists only for backward compatibility.
 instance Bounded AttackPropertyIdentifier where
     minBound = DestinationURL
-    maxBound = SourceUserAgent
+    maxBound = WordpressPingbackSource
 
 instance Hashable     AttackPropertyIdentifier
 instance NFData       AttackPropertyIdentifier

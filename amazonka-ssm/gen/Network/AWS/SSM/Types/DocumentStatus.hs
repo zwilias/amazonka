@@ -19,37 +19,45 @@
 module Network.AWS.SSM.Types.DocumentStatus (
   DocumentStatus (
     ..
-    , Active
-    , Creating
-    , Deleting
-    , Updating
+    , DSActive
+    , DSCreating
+    , DSDeleting
+    , DSFailed
+    , DSUpdating
     )
   ) where
 
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
+-- | The status of a document.
+--
+--
 data DocumentStatus = DocumentStatus' (CI Text)
                         deriving (Eq, Ord, Read, Show, Data, Typeable,
                                   Generic)
 
-pattern Active :: DocumentStatus
-pattern Active = DocumentStatus' "Active"
+pattern DSActive :: DocumentStatus
+pattern DSActive = DocumentStatus' "Active"
 
-pattern Creating :: DocumentStatus
-pattern Creating = DocumentStatus' "Creating"
+pattern DSCreating :: DocumentStatus
+pattern DSCreating = DocumentStatus' "Creating"
 
-pattern Deleting :: DocumentStatus
-pattern Deleting = DocumentStatus' "Deleting"
+pattern DSDeleting :: DocumentStatus
+pattern DSDeleting = DocumentStatus' "Deleting"
 
-pattern Updating :: DocumentStatus
-pattern Updating = DocumentStatus' "Updating"
+pattern DSFailed :: DocumentStatus
+pattern DSFailed = DocumentStatus' "Failed"
+
+pattern DSUpdating :: DocumentStatus
+pattern DSUpdating = DocumentStatus' "Updating"
 
 {-# COMPLETE
-  Active,
-  Creating,
-  Deleting,
-  Updating,
+  DSActive,
+  DSCreating,
+  DSDeleting,
+  DSFailed,
+  DSUpdating,
   DocumentStatus' #-}
 
 instance FromText DocumentStatus where
@@ -64,24 +72,26 @@ instance ToText DocumentStatus where
 --   fromEnum is a partial function, and will error on values unknown at generation time.
 instance Enum DocumentStatus where
     toEnum i = case i of
-        0 -> Active
-        1 -> Creating
-        2 -> Deleting
-        3 -> Updating
+        0 -> DSActive
+        1 -> DSCreating
+        2 -> DSDeleting
+        3 -> DSFailed
+        4 -> DSUpdating
         _ -> (error . showText) $ "Unknown index for DocumentStatus: " <> toText i
     fromEnum x = case x of
-        Active -> 0
-        Creating -> 1
-        Deleting -> 2
-        Updating -> 3
+        DSActive -> 0
+        DSCreating -> 1
+        DSDeleting -> 2
+        DSFailed -> 3
+        DSUpdating -> 4
         DocumentStatus' name -> (error . showText) $ "Unknown DocumentStatus: " <> original name
 
 -- | Represents the bounds of /known/ $DocumentStatus.
 --   AWS may have added more since the source was generated.
 --   This instance exists only for backward compatibility.
 instance Bounded DocumentStatus where
-    minBound = Active
-    maxBound = Updating
+    minBound = DSActive
+    maxBound = DSUpdating
 
 instance Hashable     DocumentStatus
 instance NFData       DocumentStatus

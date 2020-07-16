@@ -25,6 +25,7 @@ module Network.AWS.Lightsail.Types.OperationType (
     , AttachLoadBalancerTLSCertificate
     , AttachStaticIP
     , CloseInstancePublicPorts
+    , CreateContactMethod
     , CreateDisk
     , CreateDiskFromSnapshot
     , CreateDiskSnapshot
@@ -34,25 +35,45 @@ module Network.AWS.Lightsail.Types.OperationType (
     , CreateInstancesFromSnapshot
     , CreateLoadBalancer
     , CreateLoadBalancerTLSCertificate
+    , CreateRelationalDatabase
+    , CreateRelationalDatabaseFromSnapshot
+    , CreateRelationalDatabaseSnapshot
+    , DeleteAlarm
+    , DeleteContactMethod
     , DeleteDisk
     , DeleteDiskSnapshot
     , DeleteDomain
     , DeleteDomainEntry
     , DeleteInstance
     , DeleteInstanceSnapshot
+    , DeleteKnownHostKeys
     , DeleteLoadBalancer
     , DeleteLoadBalancerTLSCertificate
+    , DeleteRelationalDatabase
+    , DeleteRelationalDatabaseSnapshot
     , DetachDisk
     , DetachInstancesFromLoadBalancer
     , DetachStaticIP
+    , DisableAddOn
+    , EnableAddOn
+    , GetAlarms
+    , GetContactMethods
     , OpenInstancePublicPorts
+    , PutAlarm
     , PutInstancePublicPorts
     , RebootInstance
+    , RebootRelationalDatabase
     , ReleaseStaticIP
+    , SendContactMethodVerification
     , StartInstance
+    , StartRelationalDatabase
     , StopInstance
+    , StopRelationalDatabase
+    , TestAlarm
     , UpdateDomainEntry
     , UpdateLoadBalancerAttribute
+    , UpdateRelationalDatabase
+    , UpdateRelationalDatabaseParameters
     )
   ) where
 
@@ -81,6 +102,9 @@ pattern AttachStaticIP = OperationType' "AttachStaticIp"
 pattern CloseInstancePublicPorts :: OperationType
 pattern CloseInstancePublicPorts = OperationType' "CloseInstancePublicPorts"
 
+pattern CreateContactMethod :: OperationType
+pattern CreateContactMethod = OperationType' "CreateContactMethod"
+
 pattern CreateDisk :: OperationType
 pattern CreateDisk = OperationType' "CreateDisk"
 
@@ -108,6 +132,21 @@ pattern CreateLoadBalancer = OperationType' "CreateLoadBalancer"
 pattern CreateLoadBalancerTLSCertificate :: OperationType
 pattern CreateLoadBalancerTLSCertificate = OperationType' "CreateLoadBalancerTlsCertificate"
 
+pattern CreateRelationalDatabase :: OperationType
+pattern CreateRelationalDatabase = OperationType' "CreateRelationalDatabase"
+
+pattern CreateRelationalDatabaseFromSnapshot :: OperationType
+pattern CreateRelationalDatabaseFromSnapshot = OperationType' "CreateRelationalDatabaseFromSnapshot"
+
+pattern CreateRelationalDatabaseSnapshot :: OperationType
+pattern CreateRelationalDatabaseSnapshot = OperationType' "CreateRelationalDatabaseSnapshot"
+
+pattern DeleteAlarm :: OperationType
+pattern DeleteAlarm = OperationType' "DeleteAlarm"
+
+pattern DeleteContactMethod :: OperationType
+pattern DeleteContactMethod = OperationType' "DeleteContactMethod"
+
 pattern DeleteDisk :: OperationType
 pattern DeleteDisk = OperationType' "DeleteDisk"
 
@@ -126,11 +165,20 @@ pattern DeleteInstance = OperationType' "DeleteInstance"
 pattern DeleteInstanceSnapshot :: OperationType
 pattern DeleteInstanceSnapshot = OperationType' "DeleteInstanceSnapshot"
 
+pattern DeleteKnownHostKeys :: OperationType
+pattern DeleteKnownHostKeys = OperationType' "DeleteKnownHostKeys"
+
 pattern DeleteLoadBalancer :: OperationType
 pattern DeleteLoadBalancer = OperationType' "DeleteLoadBalancer"
 
 pattern DeleteLoadBalancerTLSCertificate :: OperationType
 pattern DeleteLoadBalancerTLSCertificate = OperationType' "DeleteLoadBalancerTlsCertificate"
+
+pattern DeleteRelationalDatabase :: OperationType
+pattern DeleteRelationalDatabase = OperationType' "DeleteRelationalDatabase"
+
+pattern DeleteRelationalDatabaseSnapshot :: OperationType
+pattern DeleteRelationalDatabaseSnapshot = OperationType' "DeleteRelationalDatabaseSnapshot"
 
 pattern DetachDisk :: OperationType
 pattern DetachDisk = OperationType' "DetachDisk"
@@ -141,8 +189,23 @@ pattern DetachInstancesFromLoadBalancer = OperationType' "DetachInstancesFromLoa
 pattern DetachStaticIP :: OperationType
 pattern DetachStaticIP = OperationType' "DetachStaticIp"
 
+pattern DisableAddOn :: OperationType
+pattern DisableAddOn = OperationType' "DisableAddOn"
+
+pattern EnableAddOn :: OperationType
+pattern EnableAddOn = OperationType' "EnableAddOn"
+
+pattern GetAlarms :: OperationType
+pattern GetAlarms = OperationType' "GetAlarms"
+
+pattern GetContactMethods :: OperationType
+pattern GetContactMethods = OperationType' "GetContactMethods"
+
 pattern OpenInstancePublicPorts :: OperationType
 pattern OpenInstancePublicPorts = OperationType' "OpenInstancePublicPorts"
+
+pattern PutAlarm :: OperationType
+pattern PutAlarm = OperationType' "PutAlarm"
 
 pattern PutInstancePublicPorts :: OperationType
 pattern PutInstancePublicPorts = OperationType' "PutInstancePublicPorts"
@@ -150,20 +213,41 @@ pattern PutInstancePublicPorts = OperationType' "PutInstancePublicPorts"
 pattern RebootInstance :: OperationType
 pattern RebootInstance = OperationType' "RebootInstance"
 
+pattern RebootRelationalDatabase :: OperationType
+pattern RebootRelationalDatabase = OperationType' "RebootRelationalDatabase"
+
 pattern ReleaseStaticIP :: OperationType
 pattern ReleaseStaticIP = OperationType' "ReleaseStaticIp"
+
+pattern SendContactMethodVerification :: OperationType
+pattern SendContactMethodVerification = OperationType' "SendContactMethodVerification"
 
 pattern StartInstance :: OperationType
 pattern StartInstance = OperationType' "StartInstance"
 
+pattern StartRelationalDatabase :: OperationType
+pattern StartRelationalDatabase = OperationType' "StartRelationalDatabase"
+
 pattern StopInstance :: OperationType
 pattern StopInstance = OperationType' "StopInstance"
+
+pattern StopRelationalDatabase :: OperationType
+pattern StopRelationalDatabase = OperationType' "StopRelationalDatabase"
+
+pattern TestAlarm :: OperationType
+pattern TestAlarm = OperationType' "TestAlarm"
 
 pattern UpdateDomainEntry :: OperationType
 pattern UpdateDomainEntry = OperationType' "UpdateDomainEntry"
 
 pattern UpdateLoadBalancerAttribute :: OperationType
 pattern UpdateLoadBalancerAttribute = OperationType' "UpdateLoadBalancerAttribute"
+
+pattern UpdateRelationalDatabase :: OperationType
+pattern UpdateRelationalDatabase = OperationType' "UpdateRelationalDatabase"
+
+pattern UpdateRelationalDatabaseParameters :: OperationType
+pattern UpdateRelationalDatabaseParameters = OperationType' "UpdateRelationalDatabaseParameters"
 
 {-# COMPLETE
   AllocateStaticIP,
@@ -172,6 +256,7 @@ pattern UpdateLoadBalancerAttribute = OperationType' "UpdateLoadBalancerAttribut
   AttachLoadBalancerTLSCertificate,
   AttachStaticIP,
   CloseInstancePublicPorts,
+  CreateContactMethod,
   CreateDisk,
   CreateDiskFromSnapshot,
   CreateDiskSnapshot,
@@ -181,25 +266,45 @@ pattern UpdateLoadBalancerAttribute = OperationType' "UpdateLoadBalancerAttribut
   CreateInstancesFromSnapshot,
   CreateLoadBalancer,
   CreateLoadBalancerTLSCertificate,
+  CreateRelationalDatabase,
+  CreateRelationalDatabaseFromSnapshot,
+  CreateRelationalDatabaseSnapshot,
+  DeleteAlarm,
+  DeleteContactMethod,
   DeleteDisk,
   DeleteDiskSnapshot,
   DeleteDomain,
   DeleteDomainEntry,
   DeleteInstance,
   DeleteInstanceSnapshot,
+  DeleteKnownHostKeys,
   DeleteLoadBalancer,
   DeleteLoadBalancerTLSCertificate,
+  DeleteRelationalDatabase,
+  DeleteRelationalDatabaseSnapshot,
   DetachDisk,
   DetachInstancesFromLoadBalancer,
   DetachStaticIP,
+  DisableAddOn,
+  EnableAddOn,
+  GetAlarms,
+  GetContactMethods,
   OpenInstancePublicPorts,
+  PutAlarm,
   PutInstancePublicPorts,
   RebootInstance,
+  RebootRelationalDatabase,
   ReleaseStaticIP,
+  SendContactMethodVerification,
   StartInstance,
+  StartRelationalDatabase,
   StopInstance,
+  StopRelationalDatabase,
+  TestAlarm,
   UpdateDomainEntry,
   UpdateLoadBalancerAttribute,
+  UpdateRelationalDatabase,
+  UpdateRelationalDatabaseParameters,
   OperationType' #-}
 
 instance FromText OperationType where
@@ -220,34 +325,55 @@ instance Enum OperationType where
         3 -> AttachLoadBalancerTLSCertificate
         4 -> AttachStaticIP
         5 -> CloseInstancePublicPorts
-        6 -> CreateDisk
-        7 -> CreateDiskFromSnapshot
-        8 -> CreateDiskSnapshot
-        9 -> CreateDomain
-        10 -> CreateInstance
-        11 -> CreateInstanceSnapshot
-        12 -> CreateInstancesFromSnapshot
-        13 -> CreateLoadBalancer
-        14 -> CreateLoadBalancerTLSCertificate
-        15 -> DeleteDisk
-        16 -> DeleteDiskSnapshot
-        17 -> DeleteDomain
-        18 -> DeleteDomainEntry
-        19 -> DeleteInstance
-        20 -> DeleteInstanceSnapshot
-        21 -> DeleteLoadBalancer
-        22 -> DeleteLoadBalancerTLSCertificate
-        23 -> DetachDisk
-        24 -> DetachInstancesFromLoadBalancer
-        25 -> DetachStaticIP
-        26 -> OpenInstancePublicPorts
-        27 -> PutInstancePublicPorts
-        28 -> RebootInstance
-        29 -> ReleaseStaticIP
-        30 -> StartInstance
-        31 -> StopInstance
-        32 -> UpdateDomainEntry
-        33 -> UpdateLoadBalancerAttribute
+        6 -> CreateContactMethod
+        7 -> CreateDisk
+        8 -> CreateDiskFromSnapshot
+        9 -> CreateDiskSnapshot
+        10 -> CreateDomain
+        11 -> CreateInstance
+        12 -> CreateInstanceSnapshot
+        13 -> CreateInstancesFromSnapshot
+        14 -> CreateLoadBalancer
+        15 -> CreateLoadBalancerTLSCertificate
+        16 -> CreateRelationalDatabase
+        17 -> CreateRelationalDatabaseFromSnapshot
+        18 -> CreateRelationalDatabaseSnapshot
+        19 -> DeleteAlarm
+        20 -> DeleteContactMethod
+        21 -> DeleteDisk
+        22 -> DeleteDiskSnapshot
+        23 -> DeleteDomain
+        24 -> DeleteDomainEntry
+        25 -> DeleteInstance
+        26 -> DeleteInstanceSnapshot
+        27 -> DeleteKnownHostKeys
+        28 -> DeleteLoadBalancer
+        29 -> DeleteLoadBalancerTLSCertificate
+        30 -> DeleteRelationalDatabase
+        31 -> DeleteRelationalDatabaseSnapshot
+        32 -> DetachDisk
+        33 -> DetachInstancesFromLoadBalancer
+        34 -> DetachStaticIP
+        35 -> DisableAddOn
+        36 -> EnableAddOn
+        37 -> GetAlarms
+        38 -> GetContactMethods
+        39 -> OpenInstancePublicPorts
+        40 -> PutAlarm
+        41 -> PutInstancePublicPorts
+        42 -> RebootInstance
+        43 -> RebootRelationalDatabase
+        44 -> ReleaseStaticIP
+        45 -> SendContactMethodVerification
+        46 -> StartInstance
+        47 -> StartRelationalDatabase
+        48 -> StopInstance
+        49 -> StopRelationalDatabase
+        50 -> TestAlarm
+        51 -> UpdateDomainEntry
+        52 -> UpdateLoadBalancerAttribute
+        53 -> UpdateRelationalDatabase
+        54 -> UpdateRelationalDatabaseParameters
         _ -> (error . showText) $ "Unknown index for OperationType: " <> toText i
     fromEnum x = case x of
         AllocateStaticIP -> 0
@@ -256,34 +382,55 @@ instance Enum OperationType where
         AttachLoadBalancerTLSCertificate -> 3
         AttachStaticIP -> 4
         CloseInstancePublicPorts -> 5
-        CreateDisk -> 6
-        CreateDiskFromSnapshot -> 7
-        CreateDiskSnapshot -> 8
-        CreateDomain -> 9
-        CreateInstance -> 10
-        CreateInstanceSnapshot -> 11
-        CreateInstancesFromSnapshot -> 12
-        CreateLoadBalancer -> 13
-        CreateLoadBalancerTLSCertificate -> 14
-        DeleteDisk -> 15
-        DeleteDiskSnapshot -> 16
-        DeleteDomain -> 17
-        DeleteDomainEntry -> 18
-        DeleteInstance -> 19
-        DeleteInstanceSnapshot -> 20
-        DeleteLoadBalancer -> 21
-        DeleteLoadBalancerTLSCertificate -> 22
-        DetachDisk -> 23
-        DetachInstancesFromLoadBalancer -> 24
-        DetachStaticIP -> 25
-        OpenInstancePublicPorts -> 26
-        PutInstancePublicPorts -> 27
-        RebootInstance -> 28
-        ReleaseStaticIP -> 29
-        StartInstance -> 30
-        StopInstance -> 31
-        UpdateDomainEntry -> 32
-        UpdateLoadBalancerAttribute -> 33
+        CreateContactMethod -> 6
+        CreateDisk -> 7
+        CreateDiskFromSnapshot -> 8
+        CreateDiskSnapshot -> 9
+        CreateDomain -> 10
+        CreateInstance -> 11
+        CreateInstanceSnapshot -> 12
+        CreateInstancesFromSnapshot -> 13
+        CreateLoadBalancer -> 14
+        CreateLoadBalancerTLSCertificate -> 15
+        CreateRelationalDatabase -> 16
+        CreateRelationalDatabaseFromSnapshot -> 17
+        CreateRelationalDatabaseSnapshot -> 18
+        DeleteAlarm -> 19
+        DeleteContactMethod -> 20
+        DeleteDisk -> 21
+        DeleteDiskSnapshot -> 22
+        DeleteDomain -> 23
+        DeleteDomainEntry -> 24
+        DeleteInstance -> 25
+        DeleteInstanceSnapshot -> 26
+        DeleteKnownHostKeys -> 27
+        DeleteLoadBalancer -> 28
+        DeleteLoadBalancerTLSCertificate -> 29
+        DeleteRelationalDatabase -> 30
+        DeleteRelationalDatabaseSnapshot -> 31
+        DetachDisk -> 32
+        DetachInstancesFromLoadBalancer -> 33
+        DetachStaticIP -> 34
+        DisableAddOn -> 35
+        EnableAddOn -> 36
+        GetAlarms -> 37
+        GetContactMethods -> 38
+        OpenInstancePublicPorts -> 39
+        PutAlarm -> 40
+        PutInstancePublicPorts -> 41
+        RebootInstance -> 42
+        RebootRelationalDatabase -> 43
+        ReleaseStaticIP -> 44
+        SendContactMethodVerification -> 45
+        StartInstance -> 46
+        StartRelationalDatabase -> 47
+        StopInstance -> 48
+        StopRelationalDatabase -> 49
+        TestAlarm -> 50
+        UpdateDomainEntry -> 51
+        UpdateLoadBalancerAttribute -> 52
+        UpdateRelationalDatabase -> 53
+        UpdateRelationalDatabaseParameters -> 54
         OperationType' name -> (error . showText) $ "Unknown OperationType: " <> original name
 
 -- | Represents the bounds of /known/ $OperationType.
@@ -291,7 +438,7 @@ instance Enum OperationType where
 --   This instance exists only for backward compatibility.
 instance Bounded OperationType where
     minBound = AllocateStaticIP
-    maxBound = UpdateLoadBalancerAttribute
+    maxBound = UpdateRelationalDatabaseParameters
 
 instance Hashable     OperationType
 instance NFData       OperationType

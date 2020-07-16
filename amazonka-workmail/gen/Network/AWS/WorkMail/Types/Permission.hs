@@ -22,7 +22,7 @@ import Network.AWS.Prelude
 import Network.AWS.WorkMail.Types.MemberType
 import Network.AWS.WorkMail.Types.PermissionType
 
--- | Permission granted to an entity (user, group) to access a certain aspect of another entity's mailbox.
+-- | Permission granted to a user, group, or resource to access a certain aspect of another user, group, or resource mailbox.
 --
 --
 --
@@ -36,9 +36,9 @@ data Permission = Permission'{_pGranteeId :: !Text,
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'pGranteeId' - The identifier of the entity (user or group) to which the permissions are granted.
+-- * 'pGranteeId' - The identifier of the user, group, or resource to which the permissions are granted.
 --
--- * 'pGranteeType' - The type of entity (user, group) of the entity referred to in GranteeId.
+-- * 'pGranteeType' - The type of user, group, or resource referred to in GranteeId.
 --
 -- * 'pPermissionValues' - The permissions granted to the grantee. SEND_AS allows the grantee to send email as the owner of the mailbox (the grantee is not mentioned on these emails). SEND_ON_BEHALF allows the grantee to send email on behalf of the owner of the mailbox (the grantee is not mentioned as the physical sender of these emails). FULL_ACCESS allows the grantee full access to the mailbox, irrespective of other folder-level permissions set on the mailbox.
 permission
@@ -50,11 +50,11 @@ permission pGranteeId_ pGranteeType_
                 _pGranteeType = pGranteeType_,
                 _pPermissionValues = mempty}
 
--- | The identifier of the entity (user or group) to which the permissions are granted.
+-- | The identifier of the user, group, or resource to which the permissions are granted.
 pGranteeId :: Lens' Permission Text
 pGranteeId = lens _pGranteeId (\ s a -> s{_pGranteeId = a})
 
--- | The type of entity (user, group) of the entity referred to in GranteeId.
+-- | The type of user, group, or resource referred to in GranteeId.
 pGranteeType :: Lens' Permission MemberType
 pGranteeType = lens _pGranteeType (\ s a -> s{_pGranteeType = a})
 

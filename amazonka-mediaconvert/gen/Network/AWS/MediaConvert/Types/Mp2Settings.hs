@@ -23,38 +23,38 @@ import Network.AWS.Prelude
 -- | Required when you set (Codec) under (AudioDescriptions)>(CodecSettings) to the value MP2.
 --
 -- /See:/ 'mp2Settings' smart constructor.
-data Mp2Settings = Mp2Settings'{_mssChannels ::
-                                !(Maybe Int),
-                                _mssSampleRate :: !(Maybe Int),
-                                _mssBitrate :: !(Maybe Int)}
+data Mp2Settings = Mp2Settings'{_mChannels ::
+                                !(Maybe Nat),
+                                _mSampleRate :: !(Maybe Nat),
+                                _mBitrate :: !(Maybe Nat)}
                      deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'Mp2Settings' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'mssChannels' - Set Channels to specify the number of channels in this output audio track. Choosing Mono in the console will give you 1 output channel; choosing Stereo will give you 2. In the API, valid values are 1 and 2.
+-- * 'mChannels' - Set Channels to specify the number of channels in this output audio track. Choosing Mono in the console will give you 1 output channel; choosing Stereo will give you 2. In the API, valid values are 1 and 2.
 --
--- * 'mssSampleRate' - Sample rate in hz.
+-- * 'mSampleRate' - Sample rate in hz.
 --
--- * 'mssBitrate' - Average bitrate in bits/second.
+-- * 'mBitrate' - Specify the average bitrate in bits per second.
 mp2Settings
     :: Mp2Settings
 mp2Settings
-  = Mp2Settings'{_mssChannels = Nothing,
-                 _mssSampleRate = Nothing, _mssBitrate = Nothing}
+  = Mp2Settings'{_mChannels = Nothing,
+                 _mSampleRate = Nothing, _mBitrate = Nothing}
 
 -- | Set Channels to specify the number of channels in this output audio track. Choosing Mono in the console will give you 1 output channel; choosing Stereo will give you 2. In the API, valid values are 1 and 2.
-mssChannels :: Lens' Mp2Settings (Maybe Int)
-mssChannels = lens _mssChannels (\ s a -> s{_mssChannels = a})
+mChannels :: Lens' Mp2Settings (Maybe Natural)
+mChannels = lens _mChannels (\ s a -> s{_mChannels = a}) . mapping _Nat
 
 -- | Sample rate in hz.
-mssSampleRate :: Lens' Mp2Settings (Maybe Int)
-mssSampleRate = lens _mssSampleRate (\ s a -> s{_mssSampleRate = a})
+mSampleRate :: Lens' Mp2Settings (Maybe Natural)
+mSampleRate = lens _mSampleRate (\ s a -> s{_mSampleRate = a}) . mapping _Nat
 
--- | Average bitrate in bits/second.
-mssBitrate :: Lens' Mp2Settings (Maybe Int)
-mssBitrate = lens _mssBitrate (\ s a -> s{_mssBitrate = a})
+-- | Specify the average bitrate in bits per second.
+mBitrate :: Lens' Mp2Settings (Maybe Natural)
+mBitrate = lens _mBitrate (\ s a -> s{_mBitrate = a}) . mapping _Nat
 
 instance FromJSON Mp2Settings where
         parseJSON
@@ -72,6 +72,6 @@ instance ToJSON Mp2Settings where
         toJSON Mp2Settings'{..}
           = object
               (catMaybes
-                 [("channels" .=) <$> _mssChannels,
-                  ("sampleRate" .=) <$> _mssSampleRate,
-                  ("bitrate" .=) <$> _mssBitrate])
+                 [("channels" .=) <$> _mChannels,
+                  ("sampleRate" .=) <$> _mSampleRate,
+                  ("bitrate" .=) <$> _mBitrate])

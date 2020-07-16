@@ -24,7 +24,7 @@ import Network.AWS.Rekognition.Types.ImageQuality
 import Network.AWS.Rekognition.Types.Landmark
 import Network.AWS.Rekognition.Types.Pose
 
--- | Provides face metadata for target image faces that are analysed by @CompareFaces@ and @RecognizeCelebrities@ .
+-- | Provides face metadata for target image faces that are analyzed by @CompareFaces@ and @RecognizeCelebrities@ .
 --
 --
 --

@@ -18,7 +18,9 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Used to update the settings for an app.
+-- Updates the settings for an application.
+--
+--
 module Network.AWS.Pinpoint.UpdateApplicationSettings
     (
     -- * Creating a Request
@@ -56,7 +58,7 @@ data UpdateApplicationSettings = UpdateApplicationSettings'{_uasApplicationId
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'uasApplicationId' - Undocumented member.
+-- * 'uasApplicationId' - The unique identifier for the application. This identifier is displayed as the __Project ID__ on the Amazon Pinpoint console.
 --
 -- * 'uasWriteApplicationSettingsRequest' - Undocumented member.
 updateApplicationSettings
@@ -70,7 +72,7 @@ updateApplicationSettings pApplicationId_
                                _uasWriteApplicationSettingsRequest =
                                  pWriteApplicationSettingsRequest_}
 
--- | Undocumented member.
+-- | The unique identifier for the application. This identifier is displayed as the __Project ID__ on the Amazon Pinpoint console.
 uasApplicationId :: Lens' UpdateApplicationSettings Text
 uasApplicationId = lens _uasApplicationId (\ s a -> s{_uasApplicationId = a})
 

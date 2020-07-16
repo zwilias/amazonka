@@ -22,14 +22,14 @@ import Network.AWS.Prelude
 import Network.AWS.Rekognition.Types.Geometry
 import Network.AWS.Rekognition.Types.TextTypes
 
--- | Information about a word or line of text detected by .
+-- | Information about a word or line of text detected by 'DetectText' .
 --
 --
 -- The @DetectedText@ field contains the text that Amazon Rekognition detected in the image. 
 --
 -- Every word and line has an identifier (@Id@ ). Each word belongs to a line and has a parent identifier (@ParentId@ ) that identifies the line of text in which the word appears. The word @Id@ is also an index for the word within a line of words. 
 --
--- For more information, see 'text-detection' .
+-- For more information, see Detecting Text in the Amazon Rekognition Developer Guide.
 --
 --
 -- /See:/ 'textDetection' smart constructor.

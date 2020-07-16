@@ -25,6 +25,7 @@ import Network.AWS.Lightsail.Types.LoadBalancerTLSCertificateRevocationReason
 import Network.AWS.Lightsail.Types.LoadBalancerTLSCertificateStatus
 import Network.AWS.Lightsail.Types.ResourceLocation
 import Network.AWS.Lightsail.Types.ResourceType
+import Network.AWS.Lightsail.Types.Tag
 import Network.AWS.Prelude
 
 -- | Describes a load balancer SSL/TLS certificate.
@@ -93,6 +94,8 @@ data LoadBalancerTLSCertificate = LoadBalancerTLSCertificate'{_lbtcFailureReason
                                                               :: !(Maybe Text),
                                                               _lbtcIssuer ::
                                                               !(Maybe Text),
+                                                              _lbtcTags ::
+                                                              !(Maybe [Tag]),
                                                               _lbtcNotAfter ::
                                                               !(Maybe POSIX)}
                                     deriving (Eq, Read, Show, Data, Typeable,
@@ -148,6 +151,8 @@ data LoadBalancerTLSCertificate = LoadBalancerTLSCertificate'{_lbtcFailureReason
 --
 -- * 'lbtcIssuer' - The issuer of the certificate.
 --
+-- * 'lbtcTags' - The tag keys and optional values for the resource. For more information about tags in Lightsail, see the <https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-tags Lightsail Dev Guide> .
+--
 -- * 'lbtcNotAfter' - The timestamp when the SSL/TLS certificate expires.
 loadBalancerTLSCertificate
     :: LoadBalancerTLSCertificate
@@ -172,7 +177,8 @@ loadBalancerTLSCertificate
                                 _lbtcIssuedAt = Nothing,
                                 _lbtcKeyAlgorithm = Nothing,
                                 _lbtcSignatureAlgorithm = Nothing,
-                                _lbtcIssuer = Nothing, _lbtcNotAfter = Nothing}
+                                _lbtcIssuer = Nothing, _lbtcTags = Nothing,
+                                _lbtcNotAfter = Nothing}
 
 -- | The reason for the SSL/TLS certificate validation failure.
 lbtcFailureReason :: Lens' LoadBalancerTLSCertificate (Maybe LoadBalancerTLSCertificateFailureReason)
@@ -266,6 +272,10 @@ lbtcSignatureAlgorithm = lens _lbtcSignatureAlgorithm (\ s a -> s{_lbtcSignature
 lbtcIssuer :: Lens' LoadBalancerTLSCertificate (Maybe Text)
 lbtcIssuer = lens _lbtcIssuer (\ s a -> s{_lbtcIssuer = a})
 
+-- | The tag keys and optional values for the resource. For more information about tags in Lightsail, see the <https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-tags Lightsail Dev Guide> .
+lbtcTags :: Lens' LoadBalancerTLSCertificate [Tag]
+lbtcTags = lens _lbtcTags (\ s a -> s{_lbtcTags = a}) . _Default . _Coerce
+
 -- | The timestamp when the SSL/TLS certificate expires.
 lbtcNotAfter :: Lens' LoadBalancerTLSCertificate (Maybe UTCTime)
 lbtcNotAfter = lens _lbtcNotAfter (\ s a -> s{_lbtcNotAfter = a}) . mapping _Time
@@ -297,6 +307,7 @@ instance FromJSON LoadBalancerTLSCertificate where
                      <*> (x .:? "keyAlgorithm")
                      <*> (x .:? "signatureAlgorithm")
                      <*> (x .:? "issuer")
+                     <*> (x .:? "tags" .!= mempty)
                      <*> (x .:? "notAfter"))
 
 instance Hashable LoadBalancerTLSCertificate where

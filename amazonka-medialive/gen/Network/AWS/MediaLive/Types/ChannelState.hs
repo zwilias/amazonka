@@ -28,6 +28,8 @@ module Network.AWS.MediaLive.Types.ChannelState (
     , Running
     , Starting
     , Stopping
+    , UpdateFailed
+    , Updating
     )
   ) where
 
@@ -66,6 +68,12 @@ pattern Starting = ChannelState' "STARTING"
 pattern Stopping :: ChannelState
 pattern Stopping = ChannelState' "STOPPING"
 
+pattern UpdateFailed :: ChannelState
+pattern UpdateFailed = ChannelState' "UPDATE_FAILED"
+
+pattern Updating :: ChannelState
+pattern Updating = ChannelState' "UPDATING"
+
 {-# COMPLETE
   CreateFailed,
   Creating,
@@ -76,6 +84,8 @@ pattern Stopping = ChannelState' "STOPPING"
   Running,
   Starting,
   Stopping,
+  UpdateFailed,
+  Updating,
   ChannelState' #-}
 
 instance FromText ChannelState where
@@ -99,6 +109,8 @@ instance Enum ChannelState where
         6 -> Running
         7 -> Starting
         8 -> Stopping
+        9 -> UpdateFailed
+        10 -> Updating
         _ -> (error . showText) $ "Unknown index for ChannelState: " <> toText i
     fromEnum x = case x of
         CreateFailed -> 0
@@ -110,6 +122,8 @@ instance Enum ChannelState where
         Running -> 6
         Starting -> 7
         Stopping -> 8
+        UpdateFailed -> 9
+        Updating -> 10
         ChannelState' name -> (error . showText) $ "Unknown ChannelState: " <> original name
 
 -- | Represents the bounds of /known/ $ChannelState.
@@ -117,7 +131,7 @@ instance Enum ChannelState where
 --   This instance exists only for backward compatibility.
 instance Bounded ChannelState where
     minBound = CreateFailed
-    maxBound = Stopping
+    maxBound = Updating
 
 instance Hashable     ChannelState
 instance NFData       ChannelState

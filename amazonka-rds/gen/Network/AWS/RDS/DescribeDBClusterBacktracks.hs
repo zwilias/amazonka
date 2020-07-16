@@ -21,8 +21,10 @@
 -- Returns information about backtracks for a DB cluster.
 --
 --
--- For more information on Amazon Aurora, see <http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Aurora.html Aurora on Amazon RDS> in the /Amazon RDS User Guide./ 
+-- For more information on Amazon Aurora, see <https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html What Is Amazon Aurora?> in the /Amazon Aurora User Guide./ 
 --
+--
+-- This operation returns paginated results.
 module Network.AWS.RDS.DescribeDBClusterBacktracks
     (
     -- * Creating a Request
@@ -45,6 +47,7 @@ module Network.AWS.RDS.DescribeDBClusterBacktracks
     ) where
 
 import Network.AWS.Lens
+import Network.AWS.Pager
 import Network.AWS.Prelude
 import Network.AWS.RDS.Types
 import Network.AWS.RDS.Types.Product
@@ -77,13 +80,13 @@ data DescribeDBClusterBacktracks = DescribeDBClusterBacktracks'{_ddcbBacktrackId
 --
 -- * 'ddcbBacktrackIdentifier' - If specified, this value is the backtrack identifier of the backtrack to be described. Constraints:     * Must contain a valid universally unique identifier (UUID). For more information about UUIDs, see <http://www.ietf.org/rfc/rfc4122.txt A Universally Unique Identifier (UUID) URN Namespace> . Example: @123e4567-e89b-12d3-a456-426655440000@ 
 --
--- * 'ddcbFilters' - A filter that specifies one or more DB clusters to describe. Supported filters include the following:     * @db-cluster-backtrack-id@ - Accepts backtrack identifiers. The results list includes information about only the backtracks identified by these identifiers.     * @db-cluster-backtrack-status@ - Accepts any of the following backtrack status values:     * @applying@      * @completed@      * @failed@      * @pending@  The results list includes information about only the backtracks identified by these values. For more information about backtrack status values, see 'DBClusterBacktrack' .
+-- * 'ddcbFilters' - A filter that specifies one or more DB clusters to describe. Supported filters include the following:     * @db-cluster-backtrack-id@ - Accepts backtrack identifiers. The results list includes information about only the backtracks identified by these identifiers.     * @db-cluster-backtrack-status@ - Accepts any of the following backtrack status values:     * @applying@      * @completed@      * @failed@      * @pending@  The results list includes information about only the backtracks identified by these values.
 --
--- * 'ddcbMarker' - An optional pagination token provided by a previous 'DescribeDBClusterBacktracks' request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by @MaxRecords@ . 
+-- * 'ddcbMarker' - An optional pagination token provided by a previous @DescribeDBClusterBacktracks@ request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by @MaxRecords@ . 
 --
--- * 'ddcbMaxRecords' - The maximum number of records to include in the response. If more records exist than the specified @MaxRecords@ value, a pagination token called a marker is included in the response so that the remaining results can be retrieved.  Default: 100 Constraints: Minimum 20, maximum 100.
+-- * 'ddcbMaxRecords' - The maximum number of records to include in the response. If more records exist than the specified @MaxRecords@ value, a pagination token called a marker is included in the response so you can retrieve the remaining results.  Default: 100 Constraints: Minimum 20, maximum 100.
 --
--- * 'ddcbDBClusterIdentifier' - The DB cluster identifier of the DB cluster to be described. This parameter is stored as a lowercase string. Constraints:     * Must contain from 1 to 63 alphanumeric characters or hyphens.     * First character must be a letter.     * Cannot end with a hyphen or contain two consecutive hyphens. Example: @my-cluster1@ 
+-- * 'ddcbDBClusterIdentifier' - The DB cluster identifier of the DB cluster to be described. This parameter is stored as a lowercase string. Constraints:     * Must contain from 1 to 63 alphanumeric characters or hyphens.     * First character must be a letter.     * Can't end with a hyphen or contain two consecutive hyphens. Example: @my-cluster1@ 
 describeDBClusterBacktracks
     :: Text -- ^ 'ddcbDBClusterIdentifier'
     -> DescribeDBClusterBacktracks
@@ -99,21 +102,28 @@ describeDBClusterBacktracks pDBClusterIdentifier_
 ddcbBacktrackIdentifier :: Lens' DescribeDBClusterBacktracks (Maybe Text)
 ddcbBacktrackIdentifier = lens _ddcbBacktrackIdentifier (\ s a -> s{_ddcbBacktrackIdentifier = a})
 
--- | A filter that specifies one or more DB clusters to describe. Supported filters include the following:     * @db-cluster-backtrack-id@ - Accepts backtrack identifiers. The results list includes information about only the backtracks identified by these identifiers.     * @db-cluster-backtrack-status@ - Accepts any of the following backtrack status values:     * @applying@      * @completed@      * @failed@      * @pending@  The results list includes information about only the backtracks identified by these values. For more information about backtrack status values, see 'DBClusterBacktrack' .
+-- | A filter that specifies one or more DB clusters to describe. Supported filters include the following:     * @db-cluster-backtrack-id@ - Accepts backtrack identifiers. The results list includes information about only the backtracks identified by these identifiers.     * @db-cluster-backtrack-status@ - Accepts any of the following backtrack status values:     * @applying@      * @completed@      * @failed@      * @pending@  The results list includes information about only the backtracks identified by these values.
 ddcbFilters :: Lens' DescribeDBClusterBacktracks [Filter]
 ddcbFilters = lens _ddcbFilters (\ s a -> s{_ddcbFilters = a}) . _Default . _Coerce
 
--- | An optional pagination token provided by a previous 'DescribeDBClusterBacktracks' request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by @MaxRecords@ . 
+-- | An optional pagination token provided by a previous @DescribeDBClusterBacktracks@ request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by @MaxRecords@ . 
 ddcbMarker :: Lens' DescribeDBClusterBacktracks (Maybe Text)
 ddcbMarker = lens _ddcbMarker (\ s a -> s{_ddcbMarker = a})
 
--- | The maximum number of records to include in the response. If more records exist than the specified @MaxRecords@ value, a pagination token called a marker is included in the response so that the remaining results can be retrieved.  Default: 100 Constraints: Minimum 20, maximum 100.
+-- | The maximum number of records to include in the response. If more records exist than the specified @MaxRecords@ value, a pagination token called a marker is included in the response so you can retrieve the remaining results.  Default: 100 Constraints: Minimum 20, maximum 100.
 ddcbMaxRecords :: Lens' DescribeDBClusterBacktracks (Maybe Int)
 ddcbMaxRecords = lens _ddcbMaxRecords (\ s a -> s{_ddcbMaxRecords = a})
 
--- | The DB cluster identifier of the DB cluster to be described. This parameter is stored as a lowercase string. Constraints:     * Must contain from 1 to 63 alphanumeric characters or hyphens.     * First character must be a letter.     * Cannot end with a hyphen or contain two consecutive hyphens. Example: @my-cluster1@ 
+-- | The DB cluster identifier of the DB cluster to be described. This parameter is stored as a lowercase string. Constraints:     * Must contain from 1 to 63 alphanumeric characters or hyphens.     * First character must be a letter.     * Can't end with a hyphen or contain two consecutive hyphens. Example: @my-cluster1@ 
 ddcbDBClusterIdentifier :: Lens' DescribeDBClusterBacktracks Text
 ddcbDBClusterIdentifier = lens _ddcbDBClusterIdentifier (\ s a -> s{_ddcbDBClusterIdentifier = a})
+
+instance AWSPager DescribeDBClusterBacktracks where
+        page rq rs
+          | stop (rs ^. ddcbrsMarker) = Nothing
+          | stop (rs ^. ddcbrsDBClusterBacktracks) = Nothing
+          | otherwise =
+            Just $ rq & ddcbMarker .~ rs ^. ddcbrsMarker
 
 instance AWSRequest DescribeDBClusterBacktracks where
         type Rs DescribeDBClusterBacktracks =
@@ -152,7 +162,7 @@ instance ToQuery DescribeDBClusterBacktracks where
                "MaxRecords" =: _ddcbMaxRecords,
                "DBClusterIdentifier" =: _ddcbDBClusterIdentifier]
 
--- | Contains the result of a successful invocation of the 'DescribeDBClusterBacktracks' action.
+-- | Contains the result of a successful invocation of the @DescribeDBClusterBacktracks@ action.
 --
 --
 --
@@ -175,7 +185,7 @@ data DescribeDBClusterBacktracksResponse = DescribeDBClusterBacktracksResponse'{
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'ddcbrsMarker' - A pagination token that can be used in a subsequent 'DescribeDBClusterBacktracks' request.
+-- * 'ddcbrsMarker' - A pagination token that can be used in a later @DescribeDBClusterBacktracks@ request.
 --
 -- * 'ddcbrsDBClusterBacktracks' - Contains a list of backtracks for the user.
 --
@@ -190,7 +200,7 @@ describeDBClusterBacktracksResponse pResponseStatus_
                                          _ddcbrsResponseStatus =
                                            pResponseStatus_}
 
--- | A pagination token that can be used in a subsequent 'DescribeDBClusterBacktracks' request.
+-- | A pagination token that can be used in a later @DescribeDBClusterBacktracks@ request.
 ddcbrsMarker :: Lens' DescribeDBClusterBacktracksResponse (Maybe Text)
 ddcbrsMarker = lens _ddcbrsMarker (\ s a -> s{_ddcbrsMarker = a})
 

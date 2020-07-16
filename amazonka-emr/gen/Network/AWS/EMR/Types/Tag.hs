@@ -20,7 +20,7 @@ module Network.AWS.EMR.Types.Tag where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | A key/value pair containing user-defined metadata that you can associate with an Amazon EMR resource. Tags make it easier to associate clusters in various ways, such as grouping clusters to track your Amazon EMR resource allocation costs. For more information, see <http://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-plan-tags.html Tag Clusters> . 
+-- | A key/value pair containing user-defined metadata that you can associate with an Amazon EMR resource. Tags make it easier to associate clusters in various ways, such as grouping clusters to track your Amazon EMR resource allocation costs. For more information, see <https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-plan-tags.html Tag Clusters> . 
 --
 --
 --
@@ -33,18 +33,18 @@ data Tag = Tag'{_tagValue :: !(Maybe Text),
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'tagValue' - A user-defined value, which is optional in a tag. For more information, see <http://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-plan-tags.html Tag Clusters> . 
+-- * 'tagValue' - A user-defined value, which is optional in a tag. For more information, see <https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-plan-tags.html Tag Clusters> . 
 --
--- * 'tagKey' - A user-defined key, which is the minimum required information for a valid tag. For more information, see <http://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-plan-tags.html Tag > . 
+-- * 'tagKey' - A user-defined key, which is the minimum required information for a valid tag. For more information, see <https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-plan-tags.html Tag > . 
 tag
     :: Tag
 tag = Tag'{_tagValue = Nothing, _tagKey = Nothing}
 
--- | A user-defined value, which is optional in a tag. For more information, see <http://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-plan-tags.html Tag Clusters> . 
+-- | A user-defined value, which is optional in a tag. For more information, see <https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-plan-tags.html Tag Clusters> . 
 tagValue :: Lens' Tag (Maybe Text)
 tagValue = lens _tagValue (\ s a -> s{_tagValue = a})
 
--- | A user-defined key, which is the minimum required information for a valid tag. For more information, see <http://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-plan-tags.html Tag > . 
+-- | A user-defined key, which is the minimum required information for a valid tag. For more information, see <https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-plan-tags.html Tag > . 
 tagKey :: Lens' Tag (Maybe Text)
 tagKey = lens _tagKey (\ s a -> s{_tagKey = a})
 

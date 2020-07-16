@@ -39,7 +39,7 @@
 --
 --
 --
--- For more information about how to use the AWS WAF API, see the <http://docs.aws.amazon.com/waf/latest/developerguide/ AWS WAF Developer Guide> .
+-- For more information about how to use the AWS WAF API, see the <https://docs.aws.amazon.com/waf/latest/developerguide/ AWS WAF Developer Guide> .
 --
 module Network.AWS.WAFRegional.CreateWebACL
     (
@@ -47,6 +47,7 @@ module Network.AWS.WAFRegional.CreateWebACL
       createWebACL
     , CreateWebACL
     -- * Request Lenses
+    , cwaTags
     , cwaName
     , cwaMetricName
     , cwaDefaultAction
@@ -69,8 +70,9 @@ import Network.AWS.WAFRegional.Types
 import Network.AWS.WAFRegional.Types.Product
 
 -- | /See:/ 'createWebACL' smart constructor.
-data CreateWebACL = CreateWebACL'{_cwaName :: !Text,
-                                  _cwaMetricName :: !Text,
+data CreateWebACL = CreateWebACL'{_cwaTags ::
+                                  !(Maybe (List1 Tag)),
+                                  _cwaName :: !Text, _cwaMetricName :: !Text,
                                   _cwaDefaultAction :: !WafAction,
                                   _cwaChangeToken :: !Text}
                       deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -79,9 +81,11 @@ data CreateWebACL = CreateWebACL'{_cwaName :: !Text,
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
+-- * 'cwaTags' - 
+--
 -- * 'cwaName' - A friendly name or description of the 'WebACL' . You can't change @Name@ after you create the @WebACL@ .
 --
--- * 'cwaMetricName' - A friendly name or description for the metrics for this @WebACL@ . The name can contain only alphanumeric characters (A-Z, a-z, 0-9); the name can't contain whitespace. You can't change @MetricName@ after you create the @WebACL@ .
+-- * 'cwaMetricName' - A friendly name or description for the metrics for this @WebACL@ .The name can contain only alphanumeric characters (A-Z, a-z, 0-9), with maximum length 128 and minimum length one. It can't contain whitespace or metric names reserved for AWS WAF, including "All" and "Default_Action." You can't change @MetricName@ after you create the @WebACL@ .
 --
 -- * 'cwaDefaultAction' - The action that you want AWS WAF to take when a request doesn't match the criteria specified in any of the @Rule@ objects that are associated with the @WebACL@ .
 --
@@ -94,16 +98,20 @@ createWebACL
     -> CreateWebACL
 createWebACL pName_ pMetricName_ pDefaultAction_
   pChangeToken_
-  = CreateWebACL'{_cwaName = pName_,
-                  _cwaMetricName = pMetricName_,
+  = CreateWebACL'{_cwaTags = Nothing,
+                  _cwaName = pName_, _cwaMetricName = pMetricName_,
                   _cwaDefaultAction = pDefaultAction_,
                   _cwaChangeToken = pChangeToken_}
+
+-- | 
+cwaTags :: Lens' CreateWebACL (Maybe (NonEmpty Tag))
+cwaTags = lens _cwaTags (\ s a -> s{_cwaTags = a}) . mapping _List1
 
 -- | A friendly name or description of the 'WebACL' . You can't change @Name@ after you create the @WebACL@ .
 cwaName :: Lens' CreateWebACL Text
 cwaName = lens _cwaName (\ s a -> s{_cwaName = a})
 
--- | A friendly name or description for the metrics for this @WebACL@ . The name can contain only alphanumeric characters (A-Z, a-z, 0-9); the name can't contain whitespace. You can't change @MetricName@ after you create the @WebACL@ .
+-- | A friendly name or description for the metrics for this @WebACL@ .The name can contain only alphanumeric characters (A-Z, a-z, 0-9), with maximum length 128 and minimum length one. It can't contain whitespace or metric names reserved for AWS WAF, including "All" and "Default_Action." You can't change @MetricName@ after you create the @WebACL@ .
 cwaMetricName :: Lens' CreateWebACL Text
 cwaMetricName = lens _cwaMetricName (\ s a -> s{_cwaMetricName = a})
 
@@ -143,7 +151,7 @@ instance ToJSON CreateWebACL where
         toJSON CreateWebACL'{..}
           = object
               (catMaybes
-                 [Just ("Name" .= _cwaName),
+                 [("Tags" .=) <$> _cwaTags, Just ("Name" .= _cwaName),
                   Just ("MetricName" .= _cwaMetricName),
                   Just ("DefaultAction" .= _cwaDefaultAction),
                   Just ("ChangeToken" .= _cwaChangeToken)])

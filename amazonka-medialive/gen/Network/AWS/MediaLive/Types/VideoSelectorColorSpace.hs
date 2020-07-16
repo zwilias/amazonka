@@ -28,7 +28,7 @@ module Network.AWS.MediaLive.Types.VideoSelectorColorSpace (
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | Placeholder documentation for VideoSelectorColorSpace
+-- | Video Selector Color Space
 data VideoSelectorColorSpace = VideoSelectorColorSpace' (CI
                                                            Text)
                                  deriving (Eq, Ord, Read, Show, Data, Typeable,

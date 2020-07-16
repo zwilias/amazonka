@@ -94,6 +94,7 @@ module Network.AWS.OpsWorksCM.Types
     , sKeyPair
     , sCreatedAt
     , sServerARN
+    , sCustomDomain
     , sEngine
     , sMaintenanceStatus
     , sInstanceType
@@ -113,6 +114,12 @@ module Network.AWS.OpsWorksCM.Types
     , seServerName
     , seCreatedAt
     , seMessage
+
+    -- * Tag
+    , Tag
+    , tag
+    , tagKey
+    , tagValue
     ) where
 
 import Network.AWS.Lens
@@ -128,8 +135,9 @@ import Network.AWS.OpsWorksCM.Types.Backup
 import Network.AWS.OpsWorksCM.Types.EngineAttribute
 import Network.AWS.OpsWorksCM.Types.Server
 import Network.AWS.OpsWorksCM.Types.ServerEvent
+import Network.AWS.OpsWorksCM.Types.Tag
 
--- | API version @2016-11-01@ of the Amazon OpsWorks for Chef Automate SDK configuration.
+-- | API version @2016-11-01@ of the Amazon OpsWorks CM SDK configuration.
 opsWorksCM :: Service
 opsWorksCM
   = Service{_svcAbbrev = "OpsWorksCM", _svcSigner = v4,
@@ -152,6 +160,11 @@ opsWorksCM
             = Just "throttling_exception"
           | has (hasCode "Throttling" . hasStatus 400) e =
             Just "throttling"
+          | has
+              (hasCode "ProvisionedThroughputExceededException" .
+                 hasStatus 400)
+              e
+            = Just "throughput_exceeded"
           | has (hasStatus 504) e = Just "gateway_timeout"
           | has
               (hasCode "RequestThrottledException" . hasStatus 400)

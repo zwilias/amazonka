@@ -27,7 +27,7 @@ module Network.AWS.MediaLive.Types.SmoothGroupCertificateMode (
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | Placeholder documentation for SmoothGroupCertificateMode
+-- | Smooth Group Certificate Mode
 data SmoothGroupCertificateMode = SmoothGroupCertificateMode' (CI
                                                                  Text)
                                     deriving (Eq, Ord, Read, Show, Data,

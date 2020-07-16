@@ -20,7 +20,9 @@ module Network.AWS.GuardDuty.Types.RemotePortDetails where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | Remote port information of the connection.
+-- | Contains information about the remote port.
+--
+--
 --
 -- /See:/ 'remotePortDetails' smart constructor.
 data RemotePortDetails = RemotePortDetails'{_rpdPortName
@@ -32,20 +34,20 @@ data RemotePortDetails = RemotePortDetails'{_rpdPortName
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'rpdPortName' - Port name of the remote connection.
+-- * 'rpdPortName' - The port name of the remote connection.
 --
--- * 'rpdPort' - Port number of the remote connection.
+-- * 'rpdPort' - The port number of the remote connection.
 remotePortDetails
     :: RemotePortDetails
 remotePortDetails
   = RemotePortDetails'{_rpdPortName = Nothing,
                        _rpdPort = Nothing}
 
--- | Port name of the remote connection.
+-- | The port name of the remote connection.
 rpdPortName :: Lens' RemotePortDetails (Maybe Text)
 rpdPortName = lens _rpdPortName (\ s a -> s{_rpdPortName = a})
 
--- | Port number of the remote connection.
+-- | The port number of the remote connection.
 rpdPort :: Lens' RemotePortDetails (Maybe Int)
 rpdPort = lens _rpdPort (\ s a -> s{_rpdPort = a})
 

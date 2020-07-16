@@ -62,7 +62,7 @@ data AddPermission = AddPermission'{_apTopicARN ::
 --
 -- * 'apAWSAccountId' - The AWS account IDs of the users (principals) who will be given access to the specified actions. The users must have AWS accounts, but do not need to be signed up for this service.
 --
--- * 'apActionName' - The action you want to allow for the specified principal(s). Valid values: any Amazon SNS action name.
+-- * 'apActionName' - The action you want to allow for the specified principal(s). Valid values: Any Amazon SNS action name, for example @Publish@ .
 addPermission
     :: Text -- ^ 'apTopicARN'
     -> Text -- ^ 'apLabel'
@@ -84,7 +84,7 @@ apLabel = lens _apLabel (\ s a -> s{_apLabel = a})
 apAWSAccountId :: Lens' AddPermission [Text]
 apAWSAccountId = lens _apAWSAccountId (\ s a -> s{_apAWSAccountId = a}) . _Coerce
 
--- | The action you want to allow for the specified principal(s). Valid values: any Amazon SNS action name.
+-- | The action you want to allow for the specified principal(s). Valid values: Any Amazon SNS action name, for example @Publish@ .
 apActionName :: Lens' AddPermission [Text]
 apActionName = lens _apActionName (\ s a -> s{_apActionName = a}) . _Coerce
 

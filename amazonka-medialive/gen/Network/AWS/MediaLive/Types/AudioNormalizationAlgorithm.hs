@@ -27,7 +27,7 @@ module Network.AWS.MediaLive.Types.AudioNormalizationAlgorithm (
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | Placeholder documentation for AudioNormalizationAlgorithm
+-- | Audio Normalization Algorithm
 data AudioNormalizationAlgorithm = AudioNormalizationAlgorithm' (CI
                                                                    Text)
                                      deriving (Eq, Ord, Read, Show, Data,

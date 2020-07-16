@@ -68,7 +68,7 @@ data CreateUser = CreateUser'{_cuAuthenticationToken
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'cuAuthenticationToken' - Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.
+-- * 'cuAuthenticationToken' - Amazon WorkDocs authentication token. Not required when using AWS administrator credentials to access the API.
 --
 -- * 'cuStorageRule' - The amount of storage for the user.
 --
@@ -100,7 +100,7 @@ createUser pUsername_ pGivenName_ pSurname_
                 _cuSurname = pSurname_,
                 _cuPassword = _Sensitive # pPassword_}
 
--- | Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.
+-- | Amazon WorkDocs authentication token. Not required when using AWS administrator credentials to access the API.
 cuAuthenticationToken :: Lens' CreateUser (Maybe Text)
 cuAuthenticationToken = lens _cuAuthenticationToken (\ s a -> s{_cuAuthenticationToken = a}) . mapping _Sensitive
 

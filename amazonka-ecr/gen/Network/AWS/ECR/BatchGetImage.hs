@@ -18,8 +18,10 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Gets detailed information for specified images within a specified repository. Images are specified with either @imageTag@ or @imageDigest@ .
+-- Gets detailed information for an image. Images are specified with either an @imageTag@ or @imageDigest@ .
 --
+--
+-- When an image is pulled, the BatchGetImage API is called once to retrieve the image manifest.
 --
 module Network.AWS.ECR.BatchGetImage
     (

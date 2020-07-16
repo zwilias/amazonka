@@ -16,6 +16,8 @@ module Network.AWS.KinesisAnalytics.Types
       kinesisAnalytics
 
     -- * Errors
+    , _UnsupportedOperationException
+    , _TooManyTagsException
     , _ResourceNotFoundException
     , _UnableToDetectSchemaException
     , _ServiceUnavailableException
@@ -394,6 +396,12 @@ module Network.AWS.KinesisAnalytics.Types
     , ssRecordEncoding
     , ssRecordFormat
     , ssRecordColumns
+
+    -- * Tag
+    , Tag
+    , tag
+    , tagValue
+    , tagKey
     ) where
 
 import Network.AWS.Lens
@@ -454,6 +462,7 @@ import Network.AWS.KinesisAnalytics.Types.S3ReferenceDataSource
 import Network.AWS.KinesisAnalytics.Types.S3ReferenceDataSourceDescription
 import Network.AWS.KinesisAnalytics.Types.S3ReferenceDataSourceUpdate
 import Network.AWS.KinesisAnalytics.Types.SourceSchema
+import Network.AWS.KinesisAnalytics.Types.Tag
 
 -- | API version @2015-08-14@ of the Amazon Kinesis Analytics SDK configuration.
 kinesisAnalytics :: Service
@@ -478,6 +487,11 @@ kinesisAnalytics
             = Just "throttling_exception"
           | has (hasCode "Throttling" . hasStatus 400) e =
             Just "throttling"
+          | has
+              (hasCode "ProvisionedThroughputExceededException" .
+                 hasStatus 400)
+              e
+            = Just "throughput_exceeded"
           | has (hasStatus 504) e = Just "gateway_timeout"
           | has
               (hasCode "RequestThrottledException" . hasStatus 400)
@@ -489,6 +503,22 @@ kinesisAnalytics
           | has (hasStatus 509) e = Just "limit_exceeded"
           | otherwise = Nothing
 
+-- | The request was rejected because a specified parameter is not supported or a specified resource is not valid for this operation. 
+--
+--
+_UnsupportedOperationException :: AsError a => Getting (First ServiceError) a ServiceError
+_UnsupportedOperationException
+  = _MatchServiceError kinesisAnalytics
+      "UnsupportedOperationException"
+
+-- | Application created with too many tags, or too many tags added to an application. Note that the maximum number of application tags includes system tags. The maximum number of user-defined application tags is 50.
+--
+--
+_TooManyTagsException :: AsError a => Getting (First ServiceError) a ServiceError
+_TooManyTagsException
+  = _MatchServiceError kinesisAnalytics
+      "TooManyTagsException"
+
 -- | Specified application can't be found.
 --
 --
@@ -497,7 +527,7 @@ _ResourceNotFoundException
   = _MatchServiceError kinesisAnalytics
       "ResourceNotFoundException"
 
--- | Data format is not valid, Amazon Kinesis Analytics is not able to detect schema for the given streaming source.
+-- | Data format is not valid. Amazon Kinesis Analytics is not able to detect schema for the given streaming source.
 --
 --
 _UnableToDetectSchemaException :: AsError a => Getting (First ServiceError) a ServiceError
@@ -505,7 +535,7 @@ _UnableToDetectSchemaException
   = _MatchServiceError kinesisAnalytics
       "UnableToDetectSchemaException"
 
--- | The service is unavailable, back off and retry the operation. 
+-- | The service is unavailable. Back off and retry the operation. 
 --
 --
 _ServiceUnavailableException :: AsError a => Getting (First ServiceError) a ServiceError
@@ -537,7 +567,7 @@ _InvalidApplicationConfigurationException
   = _MatchServiceError kinesisAnalytics
       "InvalidApplicationConfigurationException"
 
--- | Discovery failed to get a record from the streaming source because of the Amazon Kinesis Streams ProvisionedThroughputExceededException. For more information, see <http://docs.aws.amazon.com/kinesis/latest/APIReference/API_GetRecords.html GetRecords> in the Amazon Kinesis Streams API Reference.
+-- | Discovery failed to get a record from the streaming source because of the Amazon Kinesis Streams ProvisionedThroughputExceededException. For more information, see <https://docs.aws.amazon.com/kinesis/latest/APIReference/API_GetRecords.html GetRecords> in the Amazon Kinesis Streams API Reference.
 --
 --
 _ResourceProvisionedThroughputExceededException :: AsError a => Getting (First ServiceError) a ServiceError

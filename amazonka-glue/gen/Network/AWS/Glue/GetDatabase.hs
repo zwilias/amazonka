@@ -55,7 +55,7 @@ data GetDatabase = GetDatabase'{_gtdtbsCatalogId ::
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'gtdtbsCatalogId' - The ID of the Data Catalog in which the database resides. If none is supplied, the AWS account ID is used by default.
+-- * 'gtdtbsCatalogId' - The ID of the Data Catalog in which the database resides. If none is provided, the AWS account ID is used by default.
 --
 -- * 'gtdtbsName' - The name of the database to retrieve. For Hive compatibility, this should be all lowercase.
 getDatabase
@@ -65,7 +65,7 @@ getDatabase pName_
   = GetDatabase'{_gtdtbsCatalogId = Nothing,
                  _gtdtbsName = pName_}
 
--- | The ID of the Data Catalog in which the database resides. If none is supplied, the AWS account ID is used by default.
+-- | The ID of the Data Catalog in which the database resides. If none is provided, the AWS account ID is used by default.
 gtdtbsCatalogId :: Lens' GetDatabase (Maybe Text)
 gtdtbsCatalogId = lens _gtdtbsCatalogId (\ s a -> s{_gtdtbsCatalogId = a})
 
@@ -118,7 +118,7 @@ data GetDatabaseResponse = GetDatabaseResponse'{_gdrsDatabase
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'gdrsDatabase' - The definition of the specified database in the catalog.
+-- * 'gdrsDatabase' - The definition of the specified database in the Data Catalog.
 --
 -- * 'gdrsResponseStatus' - -- | The response status code.
 getDatabaseResponse
@@ -128,7 +128,7 @@ getDatabaseResponse pResponseStatus_
   = GetDatabaseResponse'{_gdrsDatabase = Nothing,
                          _gdrsResponseStatus = pResponseStatus_}
 
--- | The definition of the specified database in the catalog.
+-- | The definition of the specified database in the Data Catalog.
 gdrsDatabase :: Lens' GetDatabaseResponse (Maybe Database)
 gdrsDatabase = lens _gdrsDatabase (\ s a -> s{_gdrsDatabase = a})
 

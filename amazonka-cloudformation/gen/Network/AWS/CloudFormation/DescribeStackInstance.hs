@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Returns the stack instance that's associated with the specified stack set, AWS account, and region.
+-- Returns the stack instance that's associated with the specified stack set, AWS account, and Region.
 --
 --
 -- For a list of stack instances that are associated with a specific stack set, use 'ListStackInstances' .
@@ -66,7 +66,7 @@ data DescribeStackInstance = DescribeStackInstance'{_dStackSetName
 --
 -- * 'dStackInstanceAccount' - The ID of an AWS account that's associated with this stack instance.
 --
--- * 'dStackInstanceRegion' - The name of a region that's associated with this stack instance.
+-- * 'dStackInstanceRegion' - The name of a Region that's associated with this stack instance.
 describeStackInstance
     :: Text -- ^ 'dStackSetName'
     -> Text -- ^ 'dStackInstanceAccount'
@@ -87,7 +87,7 @@ dStackSetName = lens _dStackSetName (\ s a -> s{_dStackSetName = a})
 dStackInstanceAccount :: Lens' DescribeStackInstance Text
 dStackInstanceAccount = lens _dStackInstanceAccount (\ s a -> s{_dStackInstanceAccount = a})
 
--- | The name of a region that's associated with this stack instance.
+-- | The name of a Region that's associated with this stack instance.
 dStackInstanceRegion :: Lens' DescribeStackInstance Text
 dStackInstanceRegion = lens _dStackInstanceRegion (\ s a -> s{_dStackInstanceRegion = a})
 

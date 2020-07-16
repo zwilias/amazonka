@@ -20,7 +20,9 @@ module Network.AWS.SMS.Types.VMServerAddress where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | Object representing a server's location
+-- | Represents a VM server location.
+--
+--
 --
 -- /See:/ 'vMServerAddress' smart constructor.
 data VMServerAddress = VMServerAddress'{_vmsaVmManagerId
@@ -32,20 +34,20 @@ data VMServerAddress = VMServerAddress'{_vmsaVmManagerId
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'vmsaVmManagerId' - Undocumented member.
+-- * 'vmsaVmManagerId' - The identifier of the VM manager.
 --
--- * 'vmsaVmId' - Undocumented member.
+-- * 'vmsaVmId' - The identifier of the VM.
 vMServerAddress
     :: VMServerAddress
 vMServerAddress
   = VMServerAddress'{_vmsaVmManagerId = Nothing,
                      _vmsaVmId = Nothing}
 
--- | Undocumented member.
+-- | The identifier of the VM manager.
 vmsaVmManagerId :: Lens' VMServerAddress (Maybe Text)
 vmsaVmManagerId = lens _vmsaVmManagerId (\ s a -> s{_vmsaVmManagerId = a})
 
--- | Undocumented member.
+-- | The identifier of the VM.
 vmsaVmId :: Lens' VMServerAddress (Maybe Text)
 vmsaVmId = lens _vmsaVmId (\ s a -> s{_vmsaVmId = a})
 
@@ -59,3 +61,10 @@ instance FromJSON VMServerAddress where
 instance Hashable VMServerAddress where
 
 instance NFData VMServerAddress where
+
+instance ToJSON VMServerAddress where
+        toJSON VMServerAddress'{..}
+          = object
+              (catMaybes
+                 [("vmManagerId" .=) <$> _vmsaVmManagerId,
+                  ("vmId" .=) <$> _vmsaVmId])

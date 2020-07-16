@@ -21,6 +21,8 @@
 -- Lists the role aliases registered in your account.
 --
 --
+--
+-- This operation returns paginated results.
 module Network.AWS.IoT.ListRoleAliases
     (
     -- * Creating a Request
@@ -43,6 +45,7 @@ module Network.AWS.IoT.ListRoleAliases
 import Network.AWS.IoT.Types
 import Network.AWS.IoT.Types.Product
 import Network.AWS.Lens
+import Network.AWS.Pager
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
@@ -80,6 +83,13 @@ lraAscendingOrder = lens _lraAscendingOrder (\ s a -> s{_lraAscendingOrder = a})
 -- | The maximum number of results to return at one time.
 lraPageSize :: Lens' ListRoleAliases (Maybe Natural)
 lraPageSize = lens _lraPageSize (\ s a -> s{_lraPageSize = a}) . mapping _Nat
+
+instance AWSPager ListRoleAliases where
+        page rq rs
+          | stop (rs ^. lrarsNextMarker) = Nothing
+          | stop (rs ^. lrarsRoleAliases) = Nothing
+          | otherwise =
+            Just $ rq & lraMarker .~ rs ^. lrarsNextMarker
 
 instance AWSRequest ListRoleAliases where
         type Rs ListRoleAliases = ListRoleAliasesResponse

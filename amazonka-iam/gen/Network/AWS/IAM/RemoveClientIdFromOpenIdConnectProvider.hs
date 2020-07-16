@@ -58,7 +58,7 @@ data RemoveClientIdFromOpenIdConnectProvider = RemoveClientIdFromOpenIdConnectPr
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'rcifoicpOpenIdConnectProviderARN' - The Amazon Resource Name (ARN) of the IAM OIDC provider resource to remove the client ID from. You can get a list of OIDC provider ARNs by using the 'ListOpenIDConnectProviders' operation. For more information about ARNs, see <http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html Amazon Resource Names (ARNs) and AWS Service Namespaces> in the /AWS General Reference/ .
+-- * 'rcifoicpOpenIdConnectProviderARN' - The Amazon Resource Name (ARN) of the IAM OIDC provider resource to remove the client ID from. You can get a list of OIDC provider ARNs by using the 'ListOpenIDConnectProviders' operation. For more information about ARNs, see <https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html Amazon Resource Names (ARNs) and AWS Service Namespaces> in the /AWS General Reference/ .
 --
 -- * 'rcifoicpClientId' - The client ID (also known as audience) to remove from the IAM OIDC provider resource. For more information about client IDs, see 'CreateOpenIDConnectProvider' .
 removeClientIdFromOpenIdConnectProvider
@@ -71,7 +71,7 @@ removeClientIdFromOpenIdConnectProvider
                                                = pOpenIdConnectProviderARN_,
                                              _rcifoicpClientId = pClientId_}
 
--- | The Amazon Resource Name (ARN) of the IAM OIDC provider resource to remove the client ID from. You can get a list of OIDC provider ARNs by using the 'ListOpenIDConnectProviders' operation. For more information about ARNs, see <http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html Amazon Resource Names (ARNs) and AWS Service Namespaces> in the /AWS General Reference/ .
+-- | The Amazon Resource Name (ARN) of the IAM OIDC provider resource to remove the client ID from. You can get a list of OIDC provider ARNs by using the 'ListOpenIDConnectProviders' operation. For more information about ARNs, see <https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html Amazon Resource Names (ARNs) and AWS Service Namespaces> in the /AWS General Reference/ .
 rcifoicpOpenIdConnectProviderARN :: Lens' RemoveClientIdFromOpenIdConnectProvider Text
 rcifoicpOpenIdConnectProviderARN = lens _rcifoicpOpenIdConnectProviderARN (\ s a -> s{_rcifoicpOpenIdConnectProviderARN = a})
 

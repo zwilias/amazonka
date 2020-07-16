@@ -33,14 +33,14 @@ newtype RotationRulesType = RotationRulesType'{_rrtAutomaticallyAfterDays
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'rrtAutomaticallyAfterDays' - Specifies the number of days between automatic scheduled rotations of the secret.
+-- * 'rrtAutomaticallyAfterDays' - Specifies the number of days between automatic scheduled rotations of the secret. Secrets Manager schedules the next rotation when the previous one is complete. Secrets Manager schedules the date by adding the rotation interval (number of days) to the actual date of the last rotation. The service chooses the hour within that 24-hour date window randomly. The minute is also chosen somewhat randomly, but weighted towards the top of the hour and influenced by a variety of factors that help distribute load.
 rotationRulesType
     :: RotationRulesType
 rotationRulesType
   = RotationRulesType'{_rrtAutomaticallyAfterDays =
                          Nothing}
 
--- | Specifies the number of days between automatic scheduled rotations of the secret.
+-- | Specifies the number of days between automatic scheduled rotations of the secret. Secrets Manager schedules the next rotation when the previous one is complete. Secrets Manager schedules the date by adding the rotation interval (number of days) to the actual date of the last rotation. The service chooses the hour within that 24-hour date window randomly. The minute is also chosen somewhat randomly, but weighted towards the top of the hour and influenced by a variety of factors that help distribute load.
 rrtAutomaticallyAfterDays :: Lens' RotationRulesType (Maybe Natural)
 rrtAutomaticallyAfterDays = lens _rrtAutomaticallyAfterDays (\ s a -> s{_rrtAutomaticallyAfterDays = a}) . mapping _Nat
 

@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Assigns or changes an Amazon Identity and Access Management (IAM) role to the managed instance.
+-- Changes the Amazon Identity and Access Management (IAM) role that is assigned to the on-premises instance or virtual machines (VM). IAM roles are first assigned to these hybrid instances during the activation process. For more information, see 'CreateActivation' .
 --
 --
 module Network.AWS.SSM.UpdateManagedInstanceRole

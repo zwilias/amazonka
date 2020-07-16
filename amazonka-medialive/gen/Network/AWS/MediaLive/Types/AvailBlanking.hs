@@ -22,7 +22,7 @@ import Network.AWS.MediaLive.Types.AvailBlankingState
 import Network.AWS.MediaLive.Types.InputLocation
 import Network.AWS.Prelude
 
--- | Placeholder documentation for AvailBlanking
+-- | Avail Blanking
 --
 -- /See:/ 'availBlanking' smart constructor.
 data AvailBlanking = AvailBlanking'{_abState ::

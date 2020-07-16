@@ -23,7 +23,7 @@ import Network.AWS.Glue.Types.PhysicalConnectionRequirements
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | A structure used to specify a connection to create or update.
+-- | A structure that is used to specify a connection to create or update.
 --
 --
 --
@@ -45,15 +45,15 @@ data ConnectionInput = ConnectionInput'{_ciMatchCriteria
 --
 -- * 'ciMatchCriteria' - A list of criteria that can be used in selecting this connection.
 --
--- * 'ciPhysicalConnectionRequirements' - A map of physical connection requirements, such as VPC and SecurityGroup, needed for making this connection successfully.
+-- * 'ciPhysicalConnectionRequirements' - A map of physical connection requirements, such as virtual private cloud (VPC) and @SecurityGroup@ , that are needed to successfully make this connection.
 --
--- * 'ciDescription' - Description of the connection.
+-- * 'ciDescription' - The description of the connection.
 --
 -- * 'ciName' - The name of the connection.
 --
--- * 'ciConnectionType' - The type of the connection. Currently, only JDBC is supported; SFTP is not supported.
+-- * 'ciConnectionType' - The type of the connection. Currently, these types are supported:     * @JDBC@ - Designates a connection to a database through Java Database Connectivity (JDBC).     * @KAFKA@ - Designates a connection to an Apache Kafka streaming platform.     * @MONGODB@ - Designates a connection to a MongoDB document database. SFTP is not supported.
 --
--- * 'ciConnectionProperties' - A list of key-value pairs used as parameters for this connection.
+-- * 'ciConnectionProperties' - These key-value pairs define parameters for the connection.
 connectionInput
     :: Text -- ^ 'ciName'
     -> ConnectionType -- ^ 'ciConnectionType'
@@ -69,11 +69,11 @@ connectionInput pName_ pConnectionType_
 ciMatchCriteria :: Lens' ConnectionInput [Text]
 ciMatchCriteria = lens _ciMatchCriteria (\ s a -> s{_ciMatchCriteria = a}) . _Default . _Coerce
 
--- | A map of physical connection requirements, such as VPC and SecurityGroup, needed for making this connection successfully.
+-- | A map of physical connection requirements, such as virtual private cloud (VPC) and @SecurityGroup@ , that are needed to successfully make this connection.
 ciPhysicalConnectionRequirements :: Lens' ConnectionInput (Maybe PhysicalConnectionRequirements)
 ciPhysicalConnectionRequirements = lens _ciPhysicalConnectionRequirements (\ s a -> s{_ciPhysicalConnectionRequirements = a})
 
--- | Description of the connection.
+-- | The description of the connection.
 ciDescription :: Lens' ConnectionInput (Maybe Text)
 ciDescription = lens _ciDescription (\ s a -> s{_ciDescription = a})
 
@@ -81,11 +81,11 @@ ciDescription = lens _ciDescription (\ s a -> s{_ciDescription = a})
 ciName :: Lens' ConnectionInput Text
 ciName = lens _ciName (\ s a -> s{_ciName = a})
 
--- | The type of the connection. Currently, only JDBC is supported; SFTP is not supported.
+-- | The type of the connection. Currently, these types are supported:     * @JDBC@ - Designates a connection to a database through Java Database Connectivity (JDBC).     * @KAFKA@ - Designates a connection to an Apache Kafka streaming platform.     * @MONGODB@ - Designates a connection to a MongoDB document database. SFTP is not supported.
 ciConnectionType :: Lens' ConnectionInput ConnectionType
 ciConnectionType = lens _ciConnectionType (\ s a -> s{_ciConnectionType = a})
 
--- | A list of key-value pairs used as parameters for this connection.
+-- | These key-value pairs define parameters for the connection.
 ciConnectionProperties :: Lens' ConnectionInput (HashMap ConnectionPropertyKey Text)
 ciConnectionProperties = lens _ciConnectionProperties (\ s a -> s{_ciConnectionProperties = a}) . _Map
 

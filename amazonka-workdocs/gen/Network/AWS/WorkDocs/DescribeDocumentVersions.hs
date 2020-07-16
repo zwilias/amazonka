@@ -78,7 +78,7 @@ data DescribeDocumentVersions = DescribeDocumentVersions'{_ddvInclude
 --
 -- * 'ddvInclude' - A comma-separated list of values. Specify "INITIALIZED" to include incomplete versions.
 --
--- * 'ddvAuthenticationToken' - Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.
+-- * 'ddvAuthenticationToken' - Amazon WorkDocs authentication token. Not required when using AWS administrator credentials to access the API.
 --
 -- * 'ddvMarker' - The marker for the next set of results. (You received this marker from a previous call.)
 --
@@ -101,7 +101,7 @@ describeDocumentVersions pDocumentId_
 ddvInclude :: Lens' DescribeDocumentVersions (Maybe Text)
 ddvInclude = lens _ddvInclude (\ s a -> s{_ddvInclude = a})
 
--- | Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.
+-- | Amazon WorkDocs authentication token. Not required when using AWS administrator credentials to access the API.
 ddvAuthenticationToken :: Lens' DescribeDocumentVersions (Maybe Text)
 ddvAuthenticationToken = lens _ddvAuthenticationToken (\ s a -> s{_ddvAuthenticationToken = a}) . mapping _Sensitive
 

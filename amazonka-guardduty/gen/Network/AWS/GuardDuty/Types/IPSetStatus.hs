@@ -32,7 +32,6 @@ module Network.AWS.GuardDuty.Types.IPSetStatus (
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | The status of ipSet file uploaded.
 data IPSetStatus = IPSetStatus' (CI Text)
                      deriving (Eq, Ord, Read, Show, Data, Typeable,
                                Generic)

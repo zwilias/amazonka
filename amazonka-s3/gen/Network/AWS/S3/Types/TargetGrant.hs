@@ -23,7 +23,11 @@ import Network.AWS.S3.Internal
 import Network.AWS.S3.Types.BucketLogsPermission
 import Network.AWS.S3.Types.Grantee
 
--- | /See:/ 'targetGrant' smart constructor.
+-- | Container for granting information.
+--
+--
+--
+-- /See:/ 'targetGrant' smart constructor.
 data TargetGrant = TargetGrant'{_tgPermission ::
                                 !(Maybe BucketLogsPermission),
                                 _tgGrantee :: !(Maybe Grantee)}
@@ -35,7 +39,7 @@ data TargetGrant = TargetGrant'{_tgPermission ::
 --
 -- * 'tgPermission' - Logging permissions assigned to the Grantee for the bucket.
 --
--- * 'tgGrantee' - Undocumented member.
+-- * 'tgGrantee' - Container for the person being granted permissions.
 targetGrant
     :: TargetGrant
 targetGrant
@@ -46,7 +50,7 @@ targetGrant
 tgPermission :: Lens' TargetGrant (Maybe BucketLogsPermission)
 tgPermission = lens _tgPermission (\ s a -> s{_tgPermission = a})
 
--- | Undocumented member.
+-- | Container for the person being granted permissions.
 tgGrantee :: Lens' TargetGrant (Maybe Grantee)
 tgGrantee = lens _tgGrantee (\ s a -> s{_tgGrantee = a})
 

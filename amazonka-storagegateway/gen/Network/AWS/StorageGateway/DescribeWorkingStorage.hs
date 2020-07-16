@@ -49,7 +49,7 @@ import Network.AWS.Response
 import Network.AWS.StorageGateway.Types
 import Network.AWS.StorageGateway.Types.Product
 
--- | A JSON object containing the of the gateway.
+-- | A JSON object containing the Amazon Resource Name (ARN) of the gateway.
 --
 --
 --

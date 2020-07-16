@@ -19,6 +19,7 @@
 module Network.AWS.KMS.Types.OriginType (
   OriginType (
     ..
+    , AWSCloudhsm
     , AWSKMS
     , External
     )
@@ -31,6 +32,9 @@ data OriginType = OriginType' (CI Text)
                     deriving (Eq, Ord, Read, Show, Data, Typeable,
                               Generic)
 
+pattern AWSCloudhsm :: OriginType
+pattern AWSCloudhsm = OriginType' "AWS_CLOUDHSM"
+
 pattern AWSKMS :: OriginType
 pattern AWSKMS = OriginType' "AWS_KMS"
 
@@ -38,6 +42,7 @@ pattern External :: OriginType
 pattern External = OriginType' "EXTERNAL"
 
 {-# COMPLETE
+  AWSCloudhsm,
   AWSKMS,
   External,
   OriginType' #-}
@@ -54,19 +59,21 @@ instance ToText OriginType where
 --   fromEnum is a partial function, and will error on values unknown at generation time.
 instance Enum OriginType where
     toEnum i = case i of
-        0 -> AWSKMS
-        1 -> External
+        0 -> AWSCloudhsm
+        1 -> AWSKMS
+        2 -> External
         _ -> (error . showText) $ "Unknown index for OriginType: " <> toText i
     fromEnum x = case x of
-        AWSKMS -> 0
-        External -> 1
+        AWSCloudhsm -> 0
+        AWSKMS -> 1
+        External -> 2
         OriginType' name -> (error . showText) $ "Unknown OriginType: " <> original name
 
 -- | Represents the bounds of /known/ $OriginType.
 --   AWS may have added more since the source was generated.
 --   This instance exists only for backward compatibility.
 instance Bounded OriginType where
-    minBound = AWSKMS
+    minBound = AWSCloudhsm
     maxBound = External
 
 instance Hashable     OriginType

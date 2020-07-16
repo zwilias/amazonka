@@ -27,10 +27,12 @@ import Network.AWS.Prelude
 -- /See:/ 'chapInfo' smart constructor.
 data ChapInfo = ChapInfo'{_ciTargetARN ::
                           !(Maybe Text),
-                          _ciSecretToAuthenticateInitiator :: !(Maybe Text),
+                          _ciSecretToAuthenticateInitiator ::
+                          !(Maybe (Sensitive Text)),
                           _ciInitiatorName :: !(Maybe Text),
-                          _ciSecretToAuthenticateTarget :: !(Maybe Text)}
-                  deriving (Eq, Read, Show, Data, Typeable, Generic)
+                          _ciSecretToAuthenticateTarget ::
+                          !(Maybe (Sensitive Text))}
+                  deriving (Eq, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ChapInfo' with the minimum fields required to make a request.
 --
@@ -57,7 +59,7 @@ ciTargetARN = lens _ciTargetARN (\ s a -> s{_ciTargetARN = a})
 
 -- | The secret key that the initiator (for example, the Windows client) must provide to participate in mutual CHAP with the target.
 ciSecretToAuthenticateInitiator :: Lens' ChapInfo (Maybe Text)
-ciSecretToAuthenticateInitiator = lens _ciSecretToAuthenticateInitiator (\ s a -> s{_ciSecretToAuthenticateInitiator = a})
+ciSecretToAuthenticateInitiator = lens _ciSecretToAuthenticateInitiator (\ s a -> s{_ciSecretToAuthenticateInitiator = a}) . mapping _Sensitive
 
 -- | The iSCSI initiator that connects to the target.
 ciInitiatorName :: Lens' ChapInfo (Maybe Text)
@@ -65,7 +67,7 @@ ciInitiatorName = lens _ciInitiatorName (\ s a -> s{_ciInitiatorName = a})
 
 -- | The secret key that the target must provide to participate in mutual CHAP with the initiator (e.g. Windows client).
 ciSecretToAuthenticateTarget :: Lens' ChapInfo (Maybe Text)
-ciSecretToAuthenticateTarget = lens _ciSecretToAuthenticateTarget (\ s a -> s{_ciSecretToAuthenticateTarget = a})
+ciSecretToAuthenticateTarget = lens _ciSecretToAuthenticateTarget (\ s a -> s{_ciSecretToAuthenticateTarget = a}) . mapping _Sensitive
 
 instance FromJSON ChapInfo where
         parseJSON

@@ -21,6 +21,8 @@
 -- Deletes a Lightsail load balancer and all its associated SSL/TLS certificates. Once the load balancer is deleted, you will need to create a new load balancer, create a new certificate, and verify domain ownership again.
 --
 --
+-- The @delete load balancer@ operation supports tag-based access control via resource tags applied to the resource identified by @load balancer name@ . For more information, see the <https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags Lightsail Dev Guide> .
+--
 module Network.AWS.Lightsail.DeleteLoadBalancer
     (
     -- * Creating a Request
@@ -117,7 +119,7 @@ data DeleteLoadBalancerResponse = DeleteLoadBalancerResponse'{_dlbrsOperations
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dlbrsOperations' - An object describing the API operations.
+-- * 'dlbrsOperations' - An array of objects that describe the result of the action, such as the status of the request, the time stamp of the request, and the resources affected by the request.
 --
 -- * 'dlbrsResponseStatus' - -- | The response status code.
 deleteLoadBalancerResponse
@@ -128,7 +130,7 @@ deleteLoadBalancerResponse pResponseStatus_
                                   Nothing,
                                 _dlbrsResponseStatus = pResponseStatus_}
 
--- | An object describing the API operations.
+-- | An array of objects that describe the result of the action, such as the status of the request, the time stamp of the request, and the resources affected by the request.
 dlbrsOperations :: Lens' DeleteLoadBalancerResponse [Operation]
 dlbrsOperations = lens _dlbrsOperations (\ s a -> s{_dlbrsOperations = a}) . _Default . _Coerce
 

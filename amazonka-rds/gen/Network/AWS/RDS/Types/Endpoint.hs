@@ -20,16 +20,18 @@ module Network.AWS.RDS.Types.Endpoint where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | This data type is used as a response element in the following actions:
+-- | This data type represents the information you need to connect to an Amazon RDS DB instance. This data type is used as a response element in the following actions:
 --
 --
---     * 'CreateDBInstance' 
+--     * @CreateDBInstance@ 
 --
---     * 'DescribeDBInstances' 
+--     * @DescribeDBInstances@ 
 --
---     * 'DeleteDBInstance' 
+--     * @DeleteDBInstance@ 
 --
 --
+--
+-- For the data structure that represents Amazon Aurora DB cluster endpoints, see @DBClusterEndpoint@ .
 --
 --
 -- /See:/ 'endpoint' smart constructor.

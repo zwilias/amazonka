@@ -22,10 +22,10 @@ import Network.AWS.GameLift.Types.OperatingSystem
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | Properties describing a game build.
+-- | Properties describing a custom game build.
 --
 --
--- Build-related operations include:
+-- __Related operations__ 
 --
 --     * 'CreateBuild' 
 --
@@ -46,6 +46,7 @@ data Build = Build'{_bCreationTime :: !(Maybe POSIX),
                     _bOperatingSystem :: !(Maybe OperatingSystem),
                     _bBuildId :: !(Maybe Text), _bName :: !(Maybe Text),
                     _bVersion :: !(Maybe Text),
+                    _bBuildARN :: !(Maybe Text),
                     _bSizeOnDisk :: !(Maybe Nat)}
                deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -59,11 +60,13 @@ data Build = Build'{_bCreationTime :: !(Maybe POSIX),
 --
 -- * 'bOperatingSystem' - Operating system that the game server binaries are built to run on. This value determines the type of fleet resources that you can use for this build.
 --
--- * 'bBuildId' - Unique identifier for a build.
+-- * 'bBuildId' - A unique identifier for a build.
 --
--- * 'bName' - Descriptive label that is associated with a build. Build names do not need to be unique. It can be set using 'CreateBuild' or 'UpdateBuild' .
+-- * 'bName' - A descriptive label that is associated with a build. Build names do not need to be unique. It can be set using 'CreateBuild' or 'UpdateBuild' .
 --
--- * 'bVersion' - Version that is associated with this build. Version strings do not need to be unique. This value can be set using 'CreateBuild' or 'UpdateBuild' .
+-- * 'bVersion' - Version information that is associated with a build or script. Version strings do not need to be unique. This value can be set using 'CreateBuild' or 'UpdateBuild' .
+--
+-- * 'bBuildARN' - Amazon Resource Name (<https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html ARN> ) that is assigned to a GameLift build resource and uniquely identifies it. ARNs are unique across all Regions. In a GameLift build ARN, the resource ID matches the /BuildId/ value.
 --
 -- * 'bSizeOnDisk' - File size of the uploaded game build, expressed in bytes. When the build status is @INITIALIZED@ , this value is 0.
 build
@@ -72,7 +75,8 @@ build
   = Build'{_bCreationTime = Nothing,
            _bStatus = Nothing, _bOperatingSystem = Nothing,
            _bBuildId = Nothing, _bName = Nothing,
-           _bVersion = Nothing, _bSizeOnDisk = Nothing}
+           _bVersion = Nothing, _bBuildARN = Nothing,
+           _bSizeOnDisk = Nothing}
 
 -- | Time stamp indicating when this data object was created. Format is a number expressed in Unix time as milliseconds (for example "1469498468.057").
 bCreationTime :: Lens' Build (Maybe UTCTime)
@@ -86,17 +90,21 @@ bStatus = lens _bStatus (\ s a -> s{_bStatus = a})
 bOperatingSystem :: Lens' Build (Maybe OperatingSystem)
 bOperatingSystem = lens _bOperatingSystem (\ s a -> s{_bOperatingSystem = a})
 
--- | Unique identifier for a build.
+-- | A unique identifier for a build.
 bBuildId :: Lens' Build (Maybe Text)
 bBuildId = lens _bBuildId (\ s a -> s{_bBuildId = a})
 
--- | Descriptive label that is associated with a build. Build names do not need to be unique. It can be set using 'CreateBuild' or 'UpdateBuild' .
+-- | A descriptive label that is associated with a build. Build names do not need to be unique. It can be set using 'CreateBuild' or 'UpdateBuild' .
 bName :: Lens' Build (Maybe Text)
 bName = lens _bName (\ s a -> s{_bName = a})
 
--- | Version that is associated with this build. Version strings do not need to be unique. This value can be set using 'CreateBuild' or 'UpdateBuild' .
+-- | Version information that is associated with a build or script. Version strings do not need to be unique. This value can be set using 'CreateBuild' or 'UpdateBuild' .
 bVersion :: Lens' Build (Maybe Text)
 bVersion = lens _bVersion (\ s a -> s{_bVersion = a})
+
+-- | Amazon Resource Name (<https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html ARN> ) that is assigned to a GameLift build resource and uniquely identifies it. ARNs are unique across all Regions. In a GameLift build ARN, the resource ID matches the /BuildId/ value.
+bBuildARN :: Lens' Build (Maybe Text)
+bBuildARN = lens _bBuildARN (\ s a -> s{_bBuildARN = a})
 
 -- | File size of the uploaded game build, expressed in bytes. When the build status is @INITIALIZED@ , this value is 0.
 bSizeOnDisk :: Lens' Build (Maybe Natural)
@@ -112,6 +120,7 @@ instance FromJSON Build where
                      <*> (x .:? "BuildId")
                      <*> (x .:? "Name")
                      <*> (x .:? "Version")
+                     <*> (x .:? "BuildArn")
                      <*> (x .:? "SizeOnDisk"))
 
 instance Hashable Build where

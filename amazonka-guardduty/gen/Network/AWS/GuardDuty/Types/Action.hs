@@ -24,7 +24,9 @@ import Network.AWS.GuardDuty.Types.PortProbeAction
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | Information about the activity described in a finding.
+-- | Contains information about actions.
+--
+--
 --
 -- /See:/ 'action' smart constructor.
 data Action = Action'{_aNetworkConnectionAction ::
@@ -43,7 +45,7 @@ data Action = Action'{_aNetworkConnectionAction ::
 --
 -- * 'aPortProbeAction' - Information about the PORT_PROBE action described in this finding.
 --
--- * 'aActionType' - GuardDuty Finding activity type.
+-- * 'aActionType' - The GuardDuty finding activity type.
 --
 -- * 'aDNSRequestAction' - Information about the DNS_REQUEST action described in this finding.
 --
@@ -64,7 +66,7 @@ aNetworkConnectionAction = lens _aNetworkConnectionAction (\ s a -> s{_aNetworkC
 aPortProbeAction :: Lens' Action (Maybe PortProbeAction)
 aPortProbeAction = lens _aPortProbeAction (\ s a -> s{_aPortProbeAction = a})
 
--- | GuardDuty Finding activity type.
+-- | The GuardDuty finding activity type.
 aActionType :: Lens' Action (Maybe Text)
 aActionType = lens _aActionType (\ s a -> s{_aActionType = a})
 

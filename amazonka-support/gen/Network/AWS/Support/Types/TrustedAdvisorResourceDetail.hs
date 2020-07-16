@@ -51,7 +51,7 @@ data TrustedAdvisorResourceDetail = TrustedAdvisorResourceDetail'{_tardIsSuppres
 --
 -- * 'tardResourceId' - The unique identifier for the identified resource.
 --
--- * 'tardMetadata' - Additional information about the identified resource. The exact metadata and its order can be obtained by inspecting the 'TrustedAdvisorCheckDescription' object returned by the call to 'DescribeTrustedAdvisorChecks' . __Metadata__ contains all the data that is shown in the Excel download, even in those cases where the UI shows just summary data. 
+-- * 'tardMetadata' - Additional information about the identified resource. The exact metadata and its order can be obtained by inspecting the 'TrustedAdvisorCheckDescription' object returned by the call to 'DescribeTrustedAdvisorChecks' . __Metadata__ contains all the data that is shown in the Excel download, even in those cases where the UI shows just summary data.
 trustedAdvisorResourceDetail
     :: Text -- ^ 'tardStatus'
     -> Text -- ^ 'tardResourceId'
@@ -79,7 +79,7 @@ tardStatus = lens _tardStatus (\ s a -> s{_tardStatus = a})
 tardResourceId :: Lens' TrustedAdvisorResourceDetail Text
 tardResourceId = lens _tardResourceId (\ s a -> s{_tardResourceId = a})
 
--- | Additional information about the identified resource. The exact metadata and its order can be obtained by inspecting the 'TrustedAdvisorCheckDescription' object returned by the call to 'DescribeTrustedAdvisorChecks' . __Metadata__ contains all the data that is shown in the Excel download, even in those cases where the UI shows just summary data. 
+-- | Additional information about the identified resource. The exact metadata and its order can be obtained by inspecting the 'TrustedAdvisorCheckDescription' object returned by the call to 'DescribeTrustedAdvisorChecks' . __Metadata__ contains all the data that is shown in the Excel download, even in those cases where the UI shows just summary data.
 tardMetadata :: Lens' TrustedAdvisorResourceDetail [Text]
 tardMetadata = lens _tardMetadata (\ s a -> s{_tardMetadata = a}) . _Coerce
 

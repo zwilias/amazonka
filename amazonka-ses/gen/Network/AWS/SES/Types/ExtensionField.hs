@@ -23,7 +23,7 @@ import Network.AWS.Prelude
 -- | Additional X-headers to include in the Delivery Status Notification (DSN) when an email that Amazon SES receives on your behalf bounces.
 --
 --
--- For information about receiving email through Amazon SES, see the <http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email.html Amazon SES Developer Guide> .
+-- For information about receiving email through Amazon SES, see the <https://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email.html Amazon SES Developer Guide> .
 --
 --
 -- /See:/ 'extensionField' smart constructor.

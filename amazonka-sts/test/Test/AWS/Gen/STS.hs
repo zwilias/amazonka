@@ -34,6 +34,9 @@ import Test.AWS.STS.Internal
 --         , requestAssumeRole $
 --             assumeRole
 --
+--         , requestGetAccessKeyInfo $
+--             getAccessKeyInfo
+--
 --         , requestDecodeAuthorizationMessage $
 --             decodeAuthorizationMessage
 --
@@ -57,6 +60,9 @@ import Test.AWS.STS.Internal
 --
 --         , responseAssumeRole $
 --             assumeRoleResponse
+--
+--         , responseGetAccessKeyInfo $
+--             getAccessKeyInfoResponse
 --
 --         , responseDecodeAuthorizationMessage $
 --             decodeAuthorizationMessageResponse
@@ -87,6 +93,11 @@ requestAssumeRole :: AssumeRole -> TestTree
 requestAssumeRole = req
     "AssumeRole"
     "fixture/AssumeRole.yaml"
+
+requestGetAccessKeyInfo :: GetAccessKeyInfo -> TestTree
+requestGetAccessKeyInfo = req
+    "GetAccessKeyInfo"
+    "fixture/GetAccessKeyInfo.yaml"
 
 requestDecodeAuthorizationMessage :: DecodeAuthorizationMessage -> TestTree
 requestDecodeAuthorizationMessage = req
@@ -128,6 +139,13 @@ responseAssumeRole = res
     "fixture/AssumeRoleResponse.proto"
     sts
     (Proxy :: Proxy AssumeRole)
+
+responseGetAccessKeyInfo :: GetAccessKeyInfoResponse -> TestTree
+responseGetAccessKeyInfo = res
+    "GetAccessKeyInfoResponse"
+    "fixture/GetAccessKeyInfoResponse.proto"
+    sts
+    (Proxy :: Proxy GetAccessKeyInfo)
 
 responseDecodeAuthorizationMessage :: DecodeAuthorizationMessageResponse -> TestTree
 responseDecodeAuthorizationMessage = res

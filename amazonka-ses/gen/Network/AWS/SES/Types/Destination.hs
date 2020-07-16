@@ -35,26 +35,26 @@ data Destination = Destination'{_dBCCAddresses ::
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dBCCAddresses' - The BCC: field(s) of the message.
+-- * 'dBCCAddresses' - The recipients to place on the BCC: line of the message.
 --
--- * 'dCCAddresses' - The CC: field(s) of the message.
+-- * 'dCCAddresses' - The recipients to place on the CC: line of the message.
 --
--- * 'dToAddresses' - The To: field(s) of the message.
+-- * 'dToAddresses' - The recipients to place on the To: line of the message.
 destination
     :: Destination
 destination
   = Destination'{_dBCCAddresses = Nothing,
                  _dCCAddresses = Nothing, _dToAddresses = Nothing}
 
--- | The BCC: field(s) of the message.
+-- | The recipients to place on the BCC: line of the message.
 dBCCAddresses :: Lens' Destination [Text]
 dBCCAddresses = lens _dBCCAddresses (\ s a -> s{_dBCCAddresses = a}) . _Default . _Coerce
 
--- | The CC: field(s) of the message.
+-- | The recipients to place on the CC: line of the message.
 dCCAddresses :: Lens' Destination [Text]
 dCCAddresses = lens _dCCAddresses (\ s a -> s{_dCCAddresses = a}) . _Default . _Coerce
 
--- | The To: field(s) of the message.
+-- | The recipients to place on the To: line of the message.
 dToAddresses :: Lens' Destination [Text]
 dToAddresses = lens _dToAddresses (\ s a -> s{_dToAddresses = a}) . _Default . _Coerce
 

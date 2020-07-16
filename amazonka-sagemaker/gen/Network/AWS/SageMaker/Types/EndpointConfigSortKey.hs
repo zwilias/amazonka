@@ -19,8 +19,8 @@
 module Network.AWS.SageMaker.Types.EndpointConfigSortKey (
   EndpointConfigSortKey (
     ..
-    , CreationTime
-    , Name
+    , ECSKCreationTime
+    , ECSKName
     )
   ) where
 
@@ -32,15 +32,15 @@ data EndpointConfigSortKey = EndpointConfigSortKey' (CI
                                deriving (Eq, Ord, Read, Show, Data, Typeable,
                                          Generic)
 
-pattern CreationTime :: EndpointConfigSortKey
-pattern CreationTime = EndpointConfigSortKey' "CreationTime"
+pattern ECSKCreationTime :: EndpointConfigSortKey
+pattern ECSKCreationTime = EndpointConfigSortKey' "CreationTime"
 
-pattern Name :: EndpointConfigSortKey
-pattern Name = EndpointConfigSortKey' "Name"
+pattern ECSKName :: EndpointConfigSortKey
+pattern ECSKName = EndpointConfigSortKey' "Name"
 
 {-# COMPLETE
-  CreationTime,
-  Name,
+  ECSKCreationTime,
+  ECSKName,
   EndpointConfigSortKey' #-}
 
 instance FromText EndpointConfigSortKey where
@@ -55,20 +55,20 @@ instance ToText EndpointConfigSortKey where
 --   fromEnum is a partial function, and will error on values unknown at generation time.
 instance Enum EndpointConfigSortKey where
     toEnum i = case i of
-        0 -> CreationTime
-        1 -> Name
+        0 -> ECSKCreationTime
+        1 -> ECSKName
         _ -> (error . showText) $ "Unknown index for EndpointConfigSortKey: " <> toText i
     fromEnum x = case x of
-        CreationTime -> 0
-        Name -> 1
+        ECSKCreationTime -> 0
+        ECSKName -> 1
         EndpointConfigSortKey' name -> (error . showText) $ "Unknown EndpointConfigSortKey: " <> original name
 
 -- | Represents the bounds of /known/ $EndpointConfigSortKey.
 --   AWS may have added more since the source was generated.
 --   This instance exists only for backward compatibility.
 instance Bounded EndpointConfigSortKey where
-    minBound = CreationTime
-    maxBound = Name
+    minBound = ECSKCreationTime
+    maxBound = ECSKName
 
 instance Hashable     EndpointConfigSortKey
 instance NFData       EndpointConfigSortKey

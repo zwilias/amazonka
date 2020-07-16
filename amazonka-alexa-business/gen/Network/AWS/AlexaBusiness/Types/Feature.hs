@@ -22,7 +22,9 @@ module Network.AWS.AlexaBusiness.Types.Feature (
     , All
     , Bluetooth
     , Lists
+    , NetworkProfile
     , Notifications
+    , Settings
     , Skills
     , Volume
     )
@@ -44,8 +46,14 @@ pattern Bluetooth = Feature' "BLUETOOTH"
 pattern Lists :: Feature
 pattern Lists = Feature' "LISTS"
 
+pattern NetworkProfile :: Feature
+pattern NetworkProfile = Feature' "NETWORK_PROFILE"
+
 pattern Notifications :: Feature
 pattern Notifications = Feature' "NOTIFICATIONS"
+
+pattern Settings :: Feature
+pattern Settings = Feature' "SETTINGS"
 
 pattern Skills :: Feature
 pattern Skills = Feature' "SKILLS"
@@ -57,7 +65,9 @@ pattern Volume = Feature' "VOLUME"
   All,
   Bluetooth,
   Lists,
+  NetworkProfile,
   Notifications,
+  Settings,
   Skills,
   Volume,
   Feature' #-}
@@ -77,17 +87,21 @@ instance Enum Feature where
         0 -> All
         1 -> Bluetooth
         2 -> Lists
-        3 -> Notifications
-        4 -> Skills
-        5 -> Volume
+        3 -> NetworkProfile
+        4 -> Notifications
+        5 -> Settings
+        6 -> Skills
+        7 -> Volume
         _ -> (error . showText) $ "Unknown index for Feature: " <> toText i
     fromEnum x = case x of
         All -> 0
         Bluetooth -> 1
         Lists -> 2
-        Notifications -> 3
-        Skills -> 4
-        Volume -> 5
+        NetworkProfile -> 3
+        Notifications -> 4
+        Settings -> 5
+        Skills -> 6
+        Volume -> 7
         Feature' name -> (error . showText) $ "Unknown Feature: " <> original name
 
 -- | Represents the bounds of /known/ $Feature.
@@ -105,3 +119,6 @@ instance ToHeader     Feature
 
 instance ToJSON Feature where
     toJSON = toJSONText
+
+instance FromJSON Feature where
+    parseJSON = parseJSONText "Feature"

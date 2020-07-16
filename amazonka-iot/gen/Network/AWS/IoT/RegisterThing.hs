@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Provisions a thing.
+-- Provisions a thing in the device registry. RegisterThing calls other AWS IoT control plane APIs. These calls might exceed your account level <https://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html#limits_iot AWS IoT Throttling Limits> and cause throttle errors. Please contact <https://console.aws.amazon.com/support/home AWS Customer Support> to raise your throttling limits if necessary.
 --
 --
 module Network.AWS.IoT.RegisterThing
@@ -56,9 +56,9 @@ data RegisterThing = RegisterThing'{_rtParameters ::
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'rtParameters' - The parameters for provisioning a thing. See <http://docs.aws.amazon.com/iot/latest/developerguide/programmatic-provisioning.html Programmatic Provisioning> for more information.
+-- * 'rtParameters' - The parameters for provisioning a thing. See <https://docs.aws.amazon.com/iot/latest/developerguide/provision-template.html Provisioning Templates> for more information.
 --
--- * 'rtTemplateBody' - The provisioning template. See <http://docs.aws.amazon.com/iot/latest/developerguide/programmatic-provisioning.html Programmatic Provisioning> for more information.
+-- * 'rtTemplateBody' - The provisioning template. See <https://docs.aws.amazon.com/iot/latest/developerguide/provision-w-cert.html Provisioning Devices That Have Device Certificates> for more information.
 registerThing
     :: Text -- ^ 'rtTemplateBody'
     -> RegisterThing
@@ -66,11 +66,11 @@ registerThing pTemplateBody_
   = RegisterThing'{_rtParameters = Nothing,
                    _rtTemplateBody = pTemplateBody_}
 
--- | The parameters for provisioning a thing. See <http://docs.aws.amazon.com/iot/latest/developerguide/programmatic-provisioning.html Programmatic Provisioning> for more information.
+-- | The parameters for provisioning a thing. See <https://docs.aws.amazon.com/iot/latest/developerguide/provision-template.html Provisioning Templates> for more information.
 rtParameters :: Lens' RegisterThing (HashMap Text Text)
 rtParameters = lens _rtParameters (\ s a -> s{_rtParameters = a}) . _Default . _Map
 
--- | The provisioning template. See <http://docs.aws.amazon.com/iot/latest/developerguide/programmatic-provisioning.html Programmatic Provisioning> for more information.
+-- | The provisioning template. See <https://docs.aws.amazon.com/iot/latest/developerguide/provision-w-cert.html Provisioning Devices That Have Device Certificates> for more information.
 rtTemplateBody :: Lens' RegisterThing Text
 rtTemplateBody = lens _rtTemplateBody (\ s a -> s{_rtTemplateBody = a})
 
@@ -118,7 +118,7 @@ data RegisterThingResponse = RegisterThingResponse'{_rtrsCertificatePem
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'rtrsCertificatePem' - Undocumented member.
+-- * 'rtrsCertificatePem' - The certificate data, in PEM format.
 --
 -- * 'rtrsResourceARNs' - ARNs for the generated resources.
 --
@@ -132,7 +132,7 @@ registerThingResponse pResponseStatus_
                            _rtrsResourceARNs = Nothing,
                            _rtrsResponseStatus = pResponseStatus_}
 
--- | Undocumented member.
+-- | The certificate data, in PEM format.
 rtrsCertificatePem :: Lens' RegisterThingResponse (Maybe Text)
 rtrsCertificatePem = lens _rtrsCertificatePem (\ s a -> s{_rtrsCertificatePem = a})
 

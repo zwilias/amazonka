@@ -67,7 +67,7 @@ data ListThingTypes = ListThingTypes'{_lttThingTypeName
 --
 -- * 'lttThingTypeName' - The name of the thing type.
 --
--- * 'lttNextToken' - The token for the next set of results, or __null__ if there are no additional results.
+-- * 'lttNextToken' - The token to retrieve the next set of results.
 --
 -- * 'lttMaxResults' - The maximum number of results to return in this operation.
 listThingTypes
@@ -80,7 +80,7 @@ listThingTypes
 lttThingTypeName :: Lens' ListThingTypes (Maybe Text)
 lttThingTypeName = lens _lttThingTypeName (\ s a -> s{_lttThingTypeName = a})
 
--- | The token for the next set of results, or __null__ if there are no additional results.
+-- | The token to retrieve the next set of results.
 lttNextToken :: Lens' ListThingTypes (Maybe Text)
 lttNextToken = lens _lttNextToken (\ s a -> s{_lttNextToken = a})
 

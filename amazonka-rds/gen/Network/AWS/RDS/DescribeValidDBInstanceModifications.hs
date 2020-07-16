@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- You can call 'DescribeValidDBInstanceModifications' to learn what modifications you can make to your DB instance. You can use this information when you call 'ModifyDBInstance' . 
+-- You can call @DescribeValidDBInstanceModifications@ to learn what modifications you can make to your DB instance. You can use this information when you call @ModifyDBInstance@ . 
 --
 --
 module Network.AWS.RDS.DescribeValidDBInstanceModifications

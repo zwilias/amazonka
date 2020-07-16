@@ -30,138 +30,149 @@ import Network.AWS.Prelude
 --
 --
 -- /See:/ 'crawler' smart constructor.
-data Crawler = Crawler'{_craCreationTime ::
+data Crawler = Crawler'{_crwlrCreationTime ::
                         !(Maybe POSIX),
-                        _craState :: !(Maybe CrawlerState),
-                        _craSchemaChangePolicy ::
+                        _crwlrState :: !(Maybe CrawlerState),
+                        _crwlrSchemaChangePolicy ::
                         !(Maybe SchemaChangePolicy),
-                        _craLastUpdated :: !(Maybe POSIX),
-                        _craSchedule :: !(Maybe Schedule),
-                        _craLastCrawl :: !(Maybe LastCrawlInfo),
-                        _craCrawlElapsedTime :: !(Maybe Integer),
-                        _craClassifiers :: !(Maybe [Text]),
-                        _craRole :: !(Maybe Text), _craName :: !(Maybe Text),
-                        _craTargets :: !(Maybe CrawlerTargets),
-                        _craVersion :: !(Maybe Integer),
-                        _craDatabaseName :: !(Maybe Text),
-                        _craConfiguration :: !(Maybe Text),
-                        _craTablePrefix :: !(Maybe Text),
-                        _craDescription :: !(Maybe Text)}
+                        _crwlrLastUpdated :: !(Maybe POSIX),
+                        _crwlrSchedule :: !(Maybe Schedule),
+                        _crwlrLastCrawl :: !(Maybe LastCrawlInfo),
+                        _crwlrCrawlElapsedTime :: !(Maybe Integer),
+                        _crwlrClassifiers :: !(Maybe [Text]),
+                        _crwlrRole :: !(Maybe Text),
+                        _crwlrName :: !(Maybe Text),
+                        _crwlrTargets :: !(Maybe CrawlerTargets),
+                        _crwlrVersion :: !(Maybe Integer),
+                        _crwlrDatabaseName :: !(Maybe Text),
+                        _crwlrCrawlerSecurityConfiguration :: !(Maybe Text),
+                        _crwlrConfiguration :: !(Maybe Text),
+                        _crwlrTablePrefix :: !(Maybe Text),
+                        _crwlrDescription :: !(Maybe Text)}
                  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'Crawler' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'craCreationTime' - The time when the crawler was created.
+-- * 'crwlrCreationTime' - The time that the crawler was created.
 --
--- * 'craState' - Indicates whether the crawler is running, or whether a run is pending.
+-- * 'crwlrState' - Indicates whether the crawler is running, or whether a run is pending.
 --
--- * 'craSchemaChangePolicy' - Sets the behavior when the crawler finds a changed or deleted object.
+-- * 'crwlrSchemaChangePolicy' - The policy that specifies update and delete behaviors for the crawler.
 --
--- * 'craLastUpdated' - The time the crawler was last updated.
+-- * 'crwlrLastUpdated' - The time that the crawler was last updated.
 --
--- * 'craSchedule' - For scheduled crawlers, the schedule when the crawler runs.
+-- * 'crwlrSchedule' - For scheduled crawlers, the schedule when the crawler runs.
 --
--- * 'craLastCrawl' - The status of the last crawl, and potentially error information if an error occurred.
+-- * 'crwlrLastCrawl' - The status of the last crawl, and potentially error information if an error occurred.
 --
--- * 'craCrawlElapsedTime' - If the crawler is running, contains the total time elapsed since the last crawl began.
+-- * 'crwlrCrawlElapsedTime' - If the crawler is running, contains the total time elapsed since the last crawl began.
 --
--- * 'craClassifiers' - A list of custom classifiers associated with the crawler.
+-- * 'crwlrClassifiers' - A list of UTF-8 strings that specify the custom classifiers that are associated with the crawler.
 --
--- * 'craRole' - The IAM role (or ARN of an IAM role) used to access customer resources, such as data in Amazon S3.
+-- * 'crwlrRole' - The Amazon Resource Name (ARN) of an IAM role that's used to access customer resources, such as Amazon Simple Storage Service (Amazon S3) data.
 --
--- * 'craName' - The crawler name.
+-- * 'crwlrName' - The name of the crawler.
 --
--- * 'craTargets' - A collection of targets to crawl.
+-- * 'crwlrTargets' - A collection of targets to crawl.
 --
--- * 'craVersion' - The version of the crawler.
+-- * 'crwlrVersion' - The version of the crawler.
 --
--- * 'craDatabaseName' - The database where metadata is written by this crawler.
+-- * 'crwlrDatabaseName' - The name of the database in which the crawler's output is stored.
 --
--- * 'craConfiguration' - Crawler configuration information. This versioned JSON string allows users to specify aspects of a Crawler's behavior. You can use this field to force partitions to inherit metadata such as classification, input format, output format, serde information, and schema from their parent table, rather than detect this information separately for each partition. Use the following JSON string to specify that behavior: Example: @'{ "Version": 1.0, "CrawlerOutput": { "Partitions": { "AddOrUpdateBehavior": "InheritFromTable" } } }'@ 
+-- * 'crwlrCrawlerSecurityConfiguration' - The name of the @SecurityConfiguration@ structure to be used by this crawler.
 --
--- * 'craTablePrefix' - The prefix added to the names of tables that are created.
+-- * 'crwlrConfiguration' - Crawler configuration information. This versioned JSON string allows users to specify aspects of a crawler's behavior. For more information, see <http://docs.aws.amazon.com/glue/latest/dg/crawler-configuration.html Configuring a Crawler> .
 --
--- * 'craDescription' - A description of the crawler.
+-- * 'crwlrTablePrefix' - The prefix added to the names of tables that are created.
+--
+-- * 'crwlrDescription' - A description of the crawler.
 crawler
     :: Crawler
 crawler
-  = Crawler'{_craCreationTime = Nothing,
-             _craState = Nothing,
-             _craSchemaChangePolicy = Nothing,
-             _craLastUpdated = Nothing, _craSchedule = Nothing,
-             _craLastCrawl = Nothing,
-             _craCrawlElapsedTime = Nothing,
-             _craClassifiers = Nothing, _craRole = Nothing,
-             _craName = Nothing, _craTargets = Nothing,
-             _craVersion = Nothing, _craDatabaseName = Nothing,
-             _craConfiguration = Nothing,
-             _craTablePrefix = Nothing, _craDescription = Nothing}
+  = Crawler'{_crwlrCreationTime = Nothing,
+             _crwlrState = Nothing,
+             _crwlrSchemaChangePolicy = Nothing,
+             _crwlrLastUpdated = Nothing,
+             _crwlrSchedule = Nothing, _crwlrLastCrawl = Nothing,
+             _crwlrCrawlElapsedTime = Nothing,
+             _crwlrClassifiers = Nothing, _crwlrRole = Nothing,
+             _crwlrName = Nothing, _crwlrTargets = Nothing,
+             _crwlrVersion = Nothing,
+             _crwlrDatabaseName = Nothing,
+             _crwlrCrawlerSecurityConfiguration = Nothing,
+             _crwlrConfiguration = Nothing,
+             _crwlrTablePrefix = Nothing,
+             _crwlrDescription = Nothing}
 
--- | The time when the crawler was created.
-craCreationTime :: Lens' Crawler (Maybe UTCTime)
-craCreationTime = lens _craCreationTime (\ s a -> s{_craCreationTime = a}) . mapping _Time
+-- | The time that the crawler was created.
+crwlrCreationTime :: Lens' Crawler (Maybe UTCTime)
+crwlrCreationTime = lens _crwlrCreationTime (\ s a -> s{_crwlrCreationTime = a}) . mapping _Time
 
 -- | Indicates whether the crawler is running, or whether a run is pending.
-craState :: Lens' Crawler (Maybe CrawlerState)
-craState = lens _craState (\ s a -> s{_craState = a})
+crwlrState :: Lens' Crawler (Maybe CrawlerState)
+crwlrState = lens _crwlrState (\ s a -> s{_crwlrState = a})
 
--- | Sets the behavior when the crawler finds a changed or deleted object.
-craSchemaChangePolicy :: Lens' Crawler (Maybe SchemaChangePolicy)
-craSchemaChangePolicy = lens _craSchemaChangePolicy (\ s a -> s{_craSchemaChangePolicy = a})
+-- | The policy that specifies update and delete behaviors for the crawler.
+crwlrSchemaChangePolicy :: Lens' Crawler (Maybe SchemaChangePolicy)
+crwlrSchemaChangePolicy = lens _crwlrSchemaChangePolicy (\ s a -> s{_crwlrSchemaChangePolicy = a})
 
--- | The time the crawler was last updated.
-craLastUpdated :: Lens' Crawler (Maybe UTCTime)
-craLastUpdated = lens _craLastUpdated (\ s a -> s{_craLastUpdated = a}) . mapping _Time
+-- | The time that the crawler was last updated.
+crwlrLastUpdated :: Lens' Crawler (Maybe UTCTime)
+crwlrLastUpdated = lens _crwlrLastUpdated (\ s a -> s{_crwlrLastUpdated = a}) . mapping _Time
 
 -- | For scheduled crawlers, the schedule when the crawler runs.
-craSchedule :: Lens' Crawler (Maybe Schedule)
-craSchedule = lens _craSchedule (\ s a -> s{_craSchedule = a})
+crwlrSchedule :: Lens' Crawler (Maybe Schedule)
+crwlrSchedule = lens _crwlrSchedule (\ s a -> s{_crwlrSchedule = a})
 
 -- | The status of the last crawl, and potentially error information if an error occurred.
-craLastCrawl :: Lens' Crawler (Maybe LastCrawlInfo)
-craLastCrawl = lens _craLastCrawl (\ s a -> s{_craLastCrawl = a})
+crwlrLastCrawl :: Lens' Crawler (Maybe LastCrawlInfo)
+crwlrLastCrawl = lens _crwlrLastCrawl (\ s a -> s{_crwlrLastCrawl = a})
 
 -- | If the crawler is running, contains the total time elapsed since the last crawl began.
-craCrawlElapsedTime :: Lens' Crawler (Maybe Integer)
-craCrawlElapsedTime = lens _craCrawlElapsedTime (\ s a -> s{_craCrawlElapsedTime = a})
+crwlrCrawlElapsedTime :: Lens' Crawler (Maybe Integer)
+crwlrCrawlElapsedTime = lens _crwlrCrawlElapsedTime (\ s a -> s{_crwlrCrawlElapsedTime = a})
 
--- | A list of custom classifiers associated with the crawler.
-craClassifiers :: Lens' Crawler [Text]
-craClassifiers = lens _craClassifiers (\ s a -> s{_craClassifiers = a}) . _Default . _Coerce
+-- | A list of UTF-8 strings that specify the custom classifiers that are associated with the crawler.
+crwlrClassifiers :: Lens' Crawler [Text]
+crwlrClassifiers = lens _crwlrClassifiers (\ s a -> s{_crwlrClassifiers = a}) . _Default . _Coerce
 
--- | The IAM role (or ARN of an IAM role) used to access customer resources, such as data in Amazon S3.
-craRole :: Lens' Crawler (Maybe Text)
-craRole = lens _craRole (\ s a -> s{_craRole = a})
+-- | The Amazon Resource Name (ARN) of an IAM role that's used to access customer resources, such as Amazon Simple Storage Service (Amazon S3) data.
+crwlrRole :: Lens' Crawler (Maybe Text)
+crwlrRole = lens _crwlrRole (\ s a -> s{_crwlrRole = a})
 
--- | The crawler name.
-craName :: Lens' Crawler (Maybe Text)
-craName = lens _craName (\ s a -> s{_craName = a})
+-- | The name of the crawler.
+crwlrName :: Lens' Crawler (Maybe Text)
+crwlrName = lens _crwlrName (\ s a -> s{_crwlrName = a})
 
 -- | A collection of targets to crawl.
-craTargets :: Lens' Crawler (Maybe CrawlerTargets)
-craTargets = lens _craTargets (\ s a -> s{_craTargets = a})
+crwlrTargets :: Lens' Crawler (Maybe CrawlerTargets)
+crwlrTargets = lens _crwlrTargets (\ s a -> s{_crwlrTargets = a})
 
 -- | The version of the crawler.
-craVersion :: Lens' Crawler (Maybe Integer)
-craVersion = lens _craVersion (\ s a -> s{_craVersion = a})
+crwlrVersion :: Lens' Crawler (Maybe Integer)
+crwlrVersion = lens _crwlrVersion (\ s a -> s{_crwlrVersion = a})
 
--- | The database where metadata is written by this crawler.
-craDatabaseName :: Lens' Crawler (Maybe Text)
-craDatabaseName = lens _craDatabaseName (\ s a -> s{_craDatabaseName = a})
+-- | The name of the database in which the crawler's output is stored.
+crwlrDatabaseName :: Lens' Crawler (Maybe Text)
+crwlrDatabaseName = lens _crwlrDatabaseName (\ s a -> s{_crwlrDatabaseName = a})
 
--- | Crawler configuration information. This versioned JSON string allows users to specify aspects of a Crawler's behavior. You can use this field to force partitions to inherit metadata such as classification, input format, output format, serde information, and schema from their parent table, rather than detect this information separately for each partition. Use the following JSON string to specify that behavior: Example: @'{ "Version": 1.0, "CrawlerOutput": { "Partitions": { "AddOrUpdateBehavior": "InheritFromTable" } } }'@ 
-craConfiguration :: Lens' Crawler (Maybe Text)
-craConfiguration = lens _craConfiguration (\ s a -> s{_craConfiguration = a})
+-- | The name of the @SecurityConfiguration@ structure to be used by this crawler.
+crwlrCrawlerSecurityConfiguration :: Lens' Crawler (Maybe Text)
+crwlrCrawlerSecurityConfiguration = lens _crwlrCrawlerSecurityConfiguration (\ s a -> s{_crwlrCrawlerSecurityConfiguration = a})
+
+-- | Crawler configuration information. This versioned JSON string allows users to specify aspects of a crawler's behavior. For more information, see <http://docs.aws.amazon.com/glue/latest/dg/crawler-configuration.html Configuring a Crawler> .
+crwlrConfiguration :: Lens' Crawler (Maybe Text)
+crwlrConfiguration = lens _crwlrConfiguration (\ s a -> s{_crwlrConfiguration = a})
 
 -- | The prefix added to the names of tables that are created.
-craTablePrefix :: Lens' Crawler (Maybe Text)
-craTablePrefix = lens _craTablePrefix (\ s a -> s{_craTablePrefix = a})
+crwlrTablePrefix :: Lens' Crawler (Maybe Text)
+crwlrTablePrefix = lens _crwlrTablePrefix (\ s a -> s{_crwlrTablePrefix = a})
 
 -- | A description of the crawler.
-craDescription :: Lens' Crawler (Maybe Text)
-craDescription = lens _craDescription (\ s a -> s{_craDescription = a})
+crwlrDescription :: Lens' Crawler (Maybe Text)
+crwlrDescription = lens _crwlrDescription (\ s a -> s{_crwlrDescription = a})
 
 instance FromJSON Crawler where
         parseJSON
@@ -180,6 +191,7 @@ instance FromJSON Crawler where
                      <*> (x .:? "Targets")
                      <*> (x .:? "Version")
                      <*> (x .:? "DatabaseName")
+                     <*> (x .:? "CrawlerSecurityConfiguration")
                      <*> (x .:? "Configuration")
                      <*> (x .:? "TablePrefix")
                      <*> (x .:? "Description"))

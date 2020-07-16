@@ -18,6 +18,7 @@
 module Network.AWS.IoTAnalytics.Types.Datastore where
 
 import Network.AWS.IoTAnalytics.Types.DatastoreStatus
+import Network.AWS.IoTAnalytics.Types.DatastoreStorage
 import Network.AWS.IoTAnalytics.Types.RetentionPeriod
 import Network.AWS.Lens
 import Network.AWS.Prelude
@@ -31,6 +32,7 @@ data Datastore = Datastore'{_datCreationTime ::
                             !(Maybe POSIX),
                             _datStatus :: !(Maybe DatastoreStatus),
                             _datArn :: !(Maybe Text),
+                            _datStorage :: !(Maybe DatastoreStorage),
                             _datRetentionPeriod :: !(Maybe RetentionPeriod),
                             _datName :: !(Maybe Text),
                             _datLastUpdateTime :: !(Maybe POSIX)}
@@ -46,7 +48,9 @@ data Datastore = Datastore'{_datCreationTime ::
 --
 -- * 'datArn' - The ARN of the data store.
 --
--- * 'datRetentionPeriod' - How long, in days, message data is kept for the data store.
+-- * 'datStorage' - Where data store data is stored. You may choose one of "serviceManagedS3" or "customerManagedS3" storage. If not specified, the default is "serviceManagedS3". This cannot be changed after the data store is created.
+--
+-- * 'datRetentionPeriod' - How long, in days, message data is kept for the data store. When "customerManagedS3" storage is selected, this parameter is ignored.
 --
 -- * 'datName' - The name of the data store.
 --
@@ -56,8 +60,8 @@ datastore
 datastore
   = Datastore'{_datCreationTime = Nothing,
                _datStatus = Nothing, _datArn = Nothing,
-               _datRetentionPeriod = Nothing, _datName = Nothing,
-               _datLastUpdateTime = Nothing}
+               _datStorage = Nothing, _datRetentionPeriod = Nothing,
+               _datName = Nothing, _datLastUpdateTime = Nothing}
 
 -- | When the data store was created.
 datCreationTime :: Lens' Datastore (Maybe UTCTime)
@@ -71,7 +75,11 @@ datStatus = lens _datStatus (\ s a -> s{_datStatus = a})
 datArn :: Lens' Datastore (Maybe Text)
 datArn = lens _datArn (\ s a -> s{_datArn = a})
 
--- | How long, in days, message data is kept for the data store.
+-- | Where data store data is stored. You may choose one of "serviceManagedS3" or "customerManagedS3" storage. If not specified, the default is "serviceManagedS3". This cannot be changed after the data store is created.
+datStorage :: Lens' Datastore (Maybe DatastoreStorage)
+datStorage = lens _datStorage (\ s a -> s{_datStorage = a})
+
+-- | How long, in days, message data is kept for the data store. When "customerManagedS3" storage is selected, this parameter is ignored.
 datRetentionPeriod :: Lens' Datastore (Maybe RetentionPeriod)
 datRetentionPeriod = lens _datRetentionPeriod (\ s a -> s{_datRetentionPeriod = a})
 
@@ -90,6 +98,7 @@ instance FromJSON Datastore where
                  Datastore' <$>
                    (x .:? "creationTime") <*> (x .:? "status") <*>
                      (x .:? "arn")
+                     <*> (x .:? "storage")
                      <*> (x .:? "retentionPeriod")
                      <*> (x .:? "name")
                      <*> (x .:? "lastUpdateTime"))

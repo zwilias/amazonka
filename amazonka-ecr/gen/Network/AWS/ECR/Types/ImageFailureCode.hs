@@ -20,6 +20,7 @@ module Network.AWS.ECR.Types.ImageFailureCode (
   ImageFailureCode (
     ..
     , ImageNotFound
+    , ImageReferencedByManifestList
     , ImageTagDoesNotMatchDigest
     , InvalidImageDigest
     , InvalidImageTag
@@ -37,6 +38,9 @@ data ImageFailureCode = ImageFailureCode' (CI Text)
 pattern ImageNotFound :: ImageFailureCode
 pattern ImageNotFound = ImageFailureCode' "ImageNotFound"
 
+pattern ImageReferencedByManifestList :: ImageFailureCode
+pattern ImageReferencedByManifestList = ImageFailureCode' "ImageReferencedByManifestList"
+
 pattern ImageTagDoesNotMatchDigest :: ImageFailureCode
 pattern ImageTagDoesNotMatchDigest = ImageFailureCode' "ImageTagDoesNotMatchDigest"
 
@@ -51,6 +55,7 @@ pattern MissingDigestAndTag = ImageFailureCode' "MissingDigestAndTag"
 
 {-# COMPLETE
   ImageNotFound,
+  ImageReferencedByManifestList,
   ImageTagDoesNotMatchDigest,
   InvalidImageDigest,
   InvalidImageTag,
@@ -70,17 +75,19 @@ instance ToText ImageFailureCode where
 instance Enum ImageFailureCode where
     toEnum i = case i of
         0 -> ImageNotFound
-        1 -> ImageTagDoesNotMatchDigest
-        2 -> InvalidImageDigest
-        3 -> InvalidImageTag
-        4 -> MissingDigestAndTag
+        1 -> ImageReferencedByManifestList
+        2 -> ImageTagDoesNotMatchDigest
+        3 -> InvalidImageDigest
+        4 -> InvalidImageTag
+        5 -> MissingDigestAndTag
         _ -> (error . showText) $ "Unknown index for ImageFailureCode: " <> toText i
     fromEnum x = case x of
         ImageNotFound -> 0
-        ImageTagDoesNotMatchDigest -> 1
-        InvalidImageDigest -> 2
-        InvalidImageTag -> 3
-        MissingDigestAndTag -> 4
+        ImageReferencedByManifestList -> 1
+        ImageTagDoesNotMatchDigest -> 2
+        InvalidImageDigest -> 3
+        InvalidImageTag -> 4
+        MissingDigestAndTag -> 5
         ImageFailureCode' name -> (error . showText) $ "Unknown ImageFailureCode: " <> original name
 
 -- | Represents the bounds of /known/ $ImageFailureCode.

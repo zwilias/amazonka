@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Creates a new Amazon WorkMail resource. The available types are equipment and room.
+-- Creates a new Amazon WorkMail resource. 
 --
 --
 module Network.AWS.WorkMail.CreateResource
@@ -59,9 +59,9 @@ data CreateResource = CreateResource'{_crOrganizationId
 --
 -- * 'crOrganizationId' - The identifier associated with the organization for which the resource is created.
 --
--- * 'crName' - The name of the created resource.
+-- * 'crName' - The name of the new resource.
 --
--- * 'crType' - The type of the created resource.
+-- * 'crType' - The type of the new resource. The available types are @equipment@ and @room@ .
 createResource
     :: Text -- ^ 'crOrganizationId'
     -> Text -- ^ 'crName'
@@ -76,11 +76,11 @@ createResource pOrganizationId_ pName_ pType_
 crOrganizationId :: Lens' CreateResource Text
 crOrganizationId = lens _crOrganizationId (\ s a -> s{_crOrganizationId = a})
 
--- | The name of the created resource.
+-- | The name of the new resource.
 crName :: Lens' CreateResource Text
 crName = lens _crName (\ s a -> s{_crName = a})
 
--- | The type of the created resource.
+-- | The type of the new resource. The available types are @equipment@ and @room@ .
 crType :: Lens' CreateResource ResourceType
 crType = lens _crType (\ s a -> s{_crType = a})
 
@@ -131,7 +131,7 @@ data CreateResourceResponse = CreateResourceResponse'{_crrsResourceId
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'crrsResourceId' - The identifier of the created resource.
+-- * 'crrsResourceId' - The identifier of the new resource.
 --
 -- * 'crrsResponseStatus' - -- | The response status code.
 createResourceResponse
@@ -141,7 +141,7 @@ createResourceResponse pResponseStatus_
   = CreateResourceResponse'{_crrsResourceId = Nothing,
                             _crrsResponseStatus = pResponseStatus_}
 
--- | The identifier of the created resource.
+-- | The identifier of the new resource.
 crrsResourceId :: Lens' CreateResourceResponse (Maybe Text)
 crrsResourceId = lens _crrsResourceId (\ s a -> s{_crrsResourceId = a})
 

@@ -19,15 +19,16 @@
 module Network.AWS.MediaConvert.Types.ContainerType (
   ContainerType (
     ..
-    , F4V
-    , Ismv
-    , M2TS
-    , M3U8
-    , MP4
-    , Mov
-    , Mpd
-    , Mxf
-    , Raw
+    , CTCmfc
+    , CTF4V
+    , CTIsmv
+    , CTM2TS
+    , CTM3U8
+    , CTMP4
+    , CTMov
+    , CTMpd
+    , CTMxf
+    , CTRaw
     )
   ) where
 
@@ -39,43 +40,47 @@ data ContainerType = ContainerType' (CI Text)
                        deriving (Eq, Ord, Read, Show, Data, Typeable,
                                  Generic)
 
-pattern F4V :: ContainerType
-pattern F4V = ContainerType' "F4V"
+pattern CTCmfc :: ContainerType
+pattern CTCmfc = ContainerType' "CMFC"
 
-pattern Ismv :: ContainerType
-pattern Ismv = ContainerType' "ISMV"
+pattern CTF4V :: ContainerType
+pattern CTF4V = ContainerType' "F4V"
 
-pattern M2TS :: ContainerType
-pattern M2TS = ContainerType' "M2TS"
+pattern CTIsmv :: ContainerType
+pattern CTIsmv = ContainerType' "ISMV"
 
-pattern M3U8 :: ContainerType
-pattern M3U8 = ContainerType' "M3U8"
+pattern CTM2TS :: ContainerType
+pattern CTM2TS = ContainerType' "M2TS"
 
-pattern MP4 :: ContainerType
-pattern MP4 = ContainerType' "MP4"
+pattern CTM3U8 :: ContainerType
+pattern CTM3U8 = ContainerType' "M3U8"
 
-pattern Mov :: ContainerType
-pattern Mov = ContainerType' "MOV"
+pattern CTMP4 :: ContainerType
+pattern CTMP4 = ContainerType' "MP4"
 
-pattern Mpd :: ContainerType
-pattern Mpd = ContainerType' "MPD"
+pattern CTMov :: ContainerType
+pattern CTMov = ContainerType' "MOV"
 
-pattern Mxf :: ContainerType
-pattern Mxf = ContainerType' "MXF"
+pattern CTMpd :: ContainerType
+pattern CTMpd = ContainerType' "MPD"
 
-pattern Raw :: ContainerType
-pattern Raw = ContainerType' "RAW"
+pattern CTMxf :: ContainerType
+pattern CTMxf = ContainerType' "MXF"
+
+pattern CTRaw :: ContainerType
+pattern CTRaw = ContainerType' "RAW"
 
 {-# COMPLETE
-  F4V,
-  Ismv,
-  M2TS,
-  M3U8,
-  MP4,
-  Mov,
-  Mpd,
-  Mxf,
-  Raw,
+  CTCmfc,
+  CTF4V,
+  CTIsmv,
+  CTM2TS,
+  CTM3U8,
+  CTMP4,
+  CTMov,
+  CTMpd,
+  CTMxf,
+  CTRaw,
   ContainerType' #-}
 
 instance FromText ContainerType where
@@ -90,34 +95,36 @@ instance ToText ContainerType where
 --   fromEnum is a partial function, and will error on values unknown at generation time.
 instance Enum ContainerType where
     toEnum i = case i of
-        0 -> F4V
-        1 -> Ismv
-        2 -> M2TS
-        3 -> M3U8
-        4 -> MP4
-        5 -> Mov
-        6 -> Mpd
-        7 -> Mxf
-        8 -> Raw
+        0 -> CTCmfc
+        1 -> CTF4V
+        2 -> CTIsmv
+        3 -> CTM2TS
+        4 -> CTM3U8
+        5 -> CTMP4
+        6 -> CTMov
+        7 -> CTMpd
+        8 -> CTMxf
+        9 -> CTRaw
         _ -> (error . showText) $ "Unknown index for ContainerType: " <> toText i
     fromEnum x = case x of
-        F4V -> 0
-        Ismv -> 1
-        M2TS -> 2
-        M3U8 -> 3
-        MP4 -> 4
-        Mov -> 5
-        Mpd -> 6
-        Mxf -> 7
-        Raw -> 8
+        CTCmfc -> 0
+        CTF4V -> 1
+        CTIsmv -> 2
+        CTM2TS -> 3
+        CTM3U8 -> 4
+        CTMP4 -> 5
+        CTMov -> 6
+        CTMpd -> 7
+        CTMxf -> 8
+        CTRaw -> 9
         ContainerType' name -> (error . showText) $ "Unknown ContainerType: " <> original name
 
 -- | Represents the bounds of /known/ $ContainerType.
 --   AWS may have added more since the source was generated.
 --   This instance exists only for backward compatibility.
 instance Bounded ContainerType where
-    minBound = F4V
-    maxBound = Raw
+    minBound = CTCmfc
+    maxBound = CTRaw
 
 instance Hashable     ContainerType
 instance NFData       ContainerType

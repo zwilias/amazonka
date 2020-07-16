@@ -30,6 +30,8 @@ import Network.AWS.Prelude
 data RegionInfo = RegionInfo'{_riAvailabilityZones ::
                               !(Maybe [AvailabilityZone]),
                               _riName :: !(Maybe RegionName),
+                              _riRelationalDatabaseAvailabilityZones ::
+                              !(Maybe [AvailabilityZone]),
                               _riDisplayName :: !(Maybe Text),
                               _riContinentCode :: !(Maybe Text),
                               _riDescription :: !(Maybe Text)}
@@ -43,6 +45,8 @@ data RegionInfo = RegionInfo'{_riAvailabilityZones ::
 --
 -- * 'riName' - The region name (e.g., @us-east-2@ ).
 --
+-- * 'riRelationalDatabaseAvailabilityZones' - The Availability Zones for databases. Follows the format @us-east-2a@ (case-sensitive).
+--
 -- * 'riDisplayName' - The display name (e.g., @Ohio@ ).
 --
 -- * 'riContinentCode' - The continent code (e.g., @NA@ , meaning North America).
@@ -52,8 +56,10 @@ regionInfo
     :: RegionInfo
 regionInfo
   = RegionInfo'{_riAvailabilityZones = Nothing,
-                _riName = Nothing, _riDisplayName = Nothing,
-                _riContinentCode = Nothing, _riDescription = Nothing}
+                _riName = Nothing,
+                _riRelationalDatabaseAvailabilityZones = Nothing,
+                _riDisplayName = Nothing, _riContinentCode = Nothing,
+                _riDescription = Nothing}
 
 -- | The Availability Zones. Follows the format @us-east-2a@ (case-sensitive).
 riAvailabilityZones :: Lens' RegionInfo [AvailabilityZone]
@@ -62,6 +68,10 @@ riAvailabilityZones = lens _riAvailabilityZones (\ s a -> s{_riAvailabilityZones
 -- | The region name (e.g., @us-east-2@ ).
 riName :: Lens' RegionInfo (Maybe RegionName)
 riName = lens _riName (\ s a -> s{_riName = a})
+
+-- | The Availability Zones for databases. Follows the format @us-east-2a@ (case-sensitive).
+riRelationalDatabaseAvailabilityZones :: Lens' RegionInfo [AvailabilityZone]
+riRelationalDatabaseAvailabilityZones = lens _riRelationalDatabaseAvailabilityZones (\ s a -> s{_riRelationalDatabaseAvailabilityZones = a}) . _Default . _Coerce
 
 -- | The display name (e.g., @Ohio@ ).
 riDisplayName :: Lens' RegionInfo (Maybe Text)
@@ -82,6 +92,9 @@ instance FromJSON RegionInfo where
                  RegionInfo' <$>
                    (x .:? "availabilityZones" .!= mempty) <*>
                      (x .:? "name")
+                     <*>
+                     (x .:? "relationalDatabaseAvailabilityZones" .!=
+                        mempty)
                      <*> (x .:? "displayName")
                      <*> (x .:? "continentCode")
                      <*> (x .:? "description"))

@@ -32,7 +32,7 @@ module Network.AWS.StorageGateway.Types.ObjectACL (
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | Sets the access control list permission for objects in the S3 bucket that a file gateway puts objects into. The default value is "private".
+-- | A value that sets the access control list permission for objects in the S3 bucket that a file gateway puts objects into. The default value is "private".
 --
 --
 data ObjectACL = ObjectACL' (CI Text)

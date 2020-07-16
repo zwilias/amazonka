@@ -23,7 +23,7 @@
 --
 -- When you register a domain, Amazon Route 53 does the following:
 --
---     * Creates a Amazon Route 53 hosted zone that has the same name as the domain. Amazon Route 53 assigns four name servers to your hosted zone and automatically updates your domain registration with the names of these name servers.
+--     * Creates a Route 53 hosted zone that has the same name as the domain. Route 53 assigns four name servers to your hosted zone and automatically updates your domain registration with the names of these name servers.
 --
 --     * Enables autorenew, so your domain registration will renew automatically each year. We'll notify you in advance of the renewal date so you can choose whether to renew the registration.
 --
@@ -104,15 +104,15 @@ data RegisterDomain = RegisterDomain'{_rPrivacyProtectTechContact
 --
 -- * 'rIdNLangCode' - Reserved for future use.
 --
--- * 'rDomainName' - The domain name that you want to register. Constraints: The domain name can contain only the letters a through z, the numbers 0 through 9, and hyphen (-). Internationalized Domain Names are not supported.
+-- * 'rDomainName' - The domain name that you want to register. The top-level domain (TLD), such as .com, must be a TLD that Route 53 supports. For a list of supported TLDs, see <https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/registrar-tld-list.html Domains that You Can Register with Amazon Route 53> in the /Amazon Route 53 Developer Guide/ . The domain name can contain only the following characters:     * Letters a through z. Domain names are not case sensitive.     * Numbers 0 through 9.     * Hyphen (-). You can't specify a hyphen at the beginning or end of a label.      * Period (.) to separate the labels in the name, such as the @.@ in @example.com@ . Internationalized domain names are not supported for some top-level domains. To determine whether the TLD that you want to use supports internationalized domain names, see <https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/registrar-tld-list.html Domains that You Can Register with Amazon Route 53> . For more information, see <https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DomainNameFormat.html#domain-name-format-idns Formatting Internationalized Domain Names> . 
 --
--- * 'rDurationInYears' - The number of years that you want to register the domain for. Domains are registered for a minimum of one year. The maximum period depends on the top-level domain. For the range of valid values for your domain, see <http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/registrar-tld-list.html Domains that You Can Register with Amazon Route 53> in the /Amazon Route 53 Developer Guide/ . Default: 1
+-- * 'rDurationInYears' - The number of years that you want to register the domain for. Domains are registered for a minimum of one year. The maximum period depends on the top-level domain. For the range of valid values for your domain, see <https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/registrar-tld-list.html Domains that You Can Register with Amazon Route 53> in the /Amazon Route 53 Developer Guide/ . Default: 1
 --
--- * 'rAdminContact' - Provides detailed contact information.
+-- * 'rAdminContact' - Provides detailed contact information. For information about the values that you specify for each element, see <https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_ContactDetail.html ContactDetail> .
 --
--- * 'rRegistrantContact' - Provides detailed contact information.
+-- * 'rRegistrantContact' - Provides detailed contact information. For information about the values that you specify for each element, see <https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_ContactDetail.html ContactDetail> .
 --
--- * 'rTechContact' - Provides detailed contact information.
+-- * 'rTechContact' - Provides detailed contact information. For information about the values that you specify for each element, see <https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_ContactDetail.html ContactDetail> .
 registerDomain
     :: Text -- ^ 'rDomainName'
     -> Natural -- ^ 'rDurationInYears'
@@ -154,23 +154,23 @@ rPrivacyProtectAdminContact = lens _rPrivacyProtectAdminContact (\ s a -> s{_rPr
 rIdNLangCode :: Lens' RegisterDomain (Maybe Text)
 rIdNLangCode = lens _rIdNLangCode (\ s a -> s{_rIdNLangCode = a})
 
--- | The domain name that you want to register. Constraints: The domain name can contain only the letters a through z, the numbers 0 through 9, and hyphen (-). Internationalized Domain Names are not supported.
+-- | The domain name that you want to register. The top-level domain (TLD), such as .com, must be a TLD that Route 53 supports. For a list of supported TLDs, see <https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/registrar-tld-list.html Domains that You Can Register with Amazon Route 53> in the /Amazon Route 53 Developer Guide/ . The domain name can contain only the following characters:     * Letters a through z. Domain names are not case sensitive.     * Numbers 0 through 9.     * Hyphen (-). You can't specify a hyphen at the beginning or end of a label.      * Period (.) to separate the labels in the name, such as the @.@ in @example.com@ . Internationalized domain names are not supported for some top-level domains. To determine whether the TLD that you want to use supports internationalized domain names, see <https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/registrar-tld-list.html Domains that You Can Register with Amazon Route 53> . For more information, see <https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DomainNameFormat.html#domain-name-format-idns Formatting Internationalized Domain Names> . 
 rDomainName :: Lens' RegisterDomain Text
 rDomainName = lens _rDomainName (\ s a -> s{_rDomainName = a})
 
--- | The number of years that you want to register the domain for. Domains are registered for a minimum of one year. The maximum period depends on the top-level domain. For the range of valid values for your domain, see <http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/registrar-tld-list.html Domains that You Can Register with Amazon Route 53> in the /Amazon Route 53 Developer Guide/ . Default: 1
+-- | The number of years that you want to register the domain for. Domains are registered for a minimum of one year. The maximum period depends on the top-level domain. For the range of valid values for your domain, see <https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/registrar-tld-list.html Domains that You Can Register with Amazon Route 53> in the /Amazon Route 53 Developer Guide/ . Default: 1
 rDurationInYears :: Lens' RegisterDomain Natural
 rDurationInYears = lens _rDurationInYears (\ s a -> s{_rDurationInYears = a}) . _Nat
 
--- | Provides detailed contact information.
+-- | Provides detailed contact information. For information about the values that you specify for each element, see <https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_ContactDetail.html ContactDetail> .
 rAdminContact :: Lens' RegisterDomain ContactDetail
 rAdminContact = lens _rAdminContact (\ s a -> s{_rAdminContact = a}) . _Sensitive
 
--- | Provides detailed contact information.
+-- | Provides detailed contact information. For information about the values that you specify for each element, see <https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_ContactDetail.html ContactDetail> .
 rRegistrantContact :: Lens' RegisterDomain ContactDetail
 rRegistrantContact = lens _rRegistrantContact (\ s a -> s{_rRegistrantContact = a}) . _Sensitive
 
--- | Provides detailed contact information.
+-- | Provides detailed contact information. For information about the values that you specify for each element, see <https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_ContactDetail.html ContactDetail> .
 rTechContact :: Lens' RegisterDomain ContactDetail
 rTechContact = lens _rTechContact (\ s a -> s{_rTechContact = a}) . _Sensitive
 
@@ -238,7 +238,7 @@ data RegisterDomainResponse = RegisterDomainResponse'{_rdrsResponseStatus
 --
 -- * 'rdrsResponseStatus' - -- | The response status code.
 --
--- * 'rdrsOperationId' - Identifier for tracking the progress of the request. To use this ID to query the operation status, use 'GetOperationDetail' .
+-- * 'rdrsOperationId' - Identifier for tracking the progress of the request. To query the operation status, use <https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_GetOperationDetail.html GetOperationDetail> .
 registerDomainResponse
     :: Int -- ^ 'rdrsResponseStatus'
     -> Text -- ^ 'rdrsOperationId'
@@ -252,7 +252,7 @@ registerDomainResponse pResponseStatus_ pOperationId_
 rdrsResponseStatus :: Lens' RegisterDomainResponse Int
 rdrsResponseStatus = lens _rdrsResponseStatus (\ s a -> s{_rdrsResponseStatus = a})
 
--- | Identifier for tracking the progress of the request. To use this ID to query the operation status, use 'GetOperationDetail' .
+-- | Identifier for tracking the progress of the request. To query the operation status, use <https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_GetOperationDetail.html GetOperationDetail> .
 rdrsOperationId :: Lens' RegisterDomainResponse Text
 rdrsOperationId = lens _rdrsOperationId (\ s a -> s{_rdrsOperationId = a})
 

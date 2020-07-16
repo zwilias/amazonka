@@ -20,7 +20,7 @@ module Network.AWS.CloudWatchEvents.Types.PutPartnerEventsResultEntry where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | Represents an event that a partner tried to generate but failed.
+-- | Represents an event that a partner tried to generate, but failed.
 --
 --
 --

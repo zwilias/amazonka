@@ -23,6 +23,8 @@
 --
 -- TLS is just an updated, more secure version of Secure Socket Layer (SSL).
 --
+-- The @CreateLoadBalancerTlsCertificate@ operation supports tag-based access control via resource tags applied to the resource identified by @load balancer name@ . For more information, see the <https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags Lightsail Dev Guide> .
+--
 module Network.AWS.Lightsail.CreateLoadBalancerTLSCertificate
     (
     -- * Creating a Request
@@ -30,6 +32,7 @@ module Network.AWS.Lightsail.CreateLoadBalancerTLSCertificate
     , CreateLoadBalancerTLSCertificate
     -- * Request Lenses
     , clbtcCertificateAlternativeNames
+    , clbtcTags
     , clbtcLoadBalancerName
     , clbtcCertificateName
     , clbtcCertificateDomainName
@@ -54,6 +57,10 @@ data CreateLoadBalancerTLSCertificate = CreateLoadBalancerTLSCertificate'{_clbtc
                                                                           ::
                                                                           !(Maybe
                                                                               [Text]),
+                                                                          _clbtcTags
+                                                                          ::
+                                                                          !(Maybe
+                                                                              [Tag]),
                                                                           _clbtcLoadBalancerName
                                                                           ::
                                                                           !Text,
@@ -72,6 +79,8 @@ data CreateLoadBalancerTLSCertificate = CreateLoadBalancerTLSCertificate'{_clbtc
 --
 -- * 'clbtcCertificateAlternativeNames' - An array of strings listing alternative domains and subdomains for your SSL/TLS certificate. Lightsail will de-dupe the names for you. You can have a maximum of 9 alternative names (in addition to the 1 primary domain). We do not support wildcards (e.g., @*.example.com@ ).
 --
+-- * 'clbtcTags' - The tag keys and optional values to add to the resource during create. To tag a resource after it has been created, see the @tag resource@ operation.
+--
 -- * 'clbtcLoadBalancerName' - The load balancer name where you want to create the SSL/TLS certificate.
 --
 -- * 'clbtcCertificateName' - The SSL/TLS certificate name. You can have up to 10 certificates in your account at one time. Each Lightsail load balancer can have up to 2 certificates associated with it at one time. There is also an overall limit to the number of certificates that can be issue in a 365-day period. For more information, see <http://docs.aws.amazon.com/acm/latest/userguide/acm-limits.html Limits> .
@@ -86,6 +95,7 @@ createLoadBalancerTLSCertificate pLoadBalancerName_
   pCertificateName_ pCertificateDomainName_
   = CreateLoadBalancerTLSCertificate'{_clbtcCertificateAlternativeNames
                                         = Nothing,
+                                      _clbtcTags = Nothing,
                                       _clbtcLoadBalancerName =
                                         pLoadBalancerName_,
                                       _clbtcCertificateName = pCertificateName_,
@@ -95,6 +105,10 @@ createLoadBalancerTLSCertificate pLoadBalancerName_
 -- | An array of strings listing alternative domains and subdomains for your SSL/TLS certificate. Lightsail will de-dupe the names for you. You can have a maximum of 9 alternative names (in addition to the 1 primary domain). We do not support wildcards (e.g., @*.example.com@ ).
 clbtcCertificateAlternativeNames :: Lens' CreateLoadBalancerTLSCertificate [Text]
 clbtcCertificateAlternativeNames = lens _clbtcCertificateAlternativeNames (\ s a -> s{_clbtcCertificateAlternativeNames = a}) . _Default . _Coerce
+
+-- | The tag keys and optional values to add to the resource during create. To tag a resource after it has been created, see the @tag resource@ operation.
+clbtcTags :: Lens' CreateLoadBalancerTLSCertificate [Tag]
+clbtcTags = lens _clbtcTags (\ s a -> s{_clbtcTags = a}) . _Default . _Coerce
 
 -- | The load balancer name where you want to create the SSL/TLS certificate.
 clbtcLoadBalancerName :: Lens' CreateLoadBalancerTLSCertificate Text
@@ -144,6 +158,7 @@ instance ToJSON CreateLoadBalancerTLSCertificate
               (catMaybes
                  [("certificateAlternativeNames" .=) <$>
                     _clbtcCertificateAlternativeNames,
+                  ("tags" .=) <$> _clbtcTags,
                   Just ("loadBalancerName" .= _clbtcLoadBalancerName),
                   Just ("certificateName" .= _clbtcCertificateName),
                   Just
@@ -174,7 +189,7 @@ data CreateLoadBalancerTLSCertificateResponse = CreateLoadBalancerTLSCertificate
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'clbtcrsOperations' - An object containing information about the API operations.
+-- * 'clbtcrsOperations' - An array of objects that describe the result of the action, such as the status of the request, the time stamp of the request, and the resources affected by the request.
 --
 -- * 'clbtcrsResponseStatus' - -- | The response status code.
 createLoadBalancerTLSCertificateResponse
@@ -187,7 +202,7 @@ createLoadBalancerTLSCertificateResponse
                                               _clbtcrsResponseStatus =
                                                 pResponseStatus_}
 
--- | An object containing information about the API operations.
+-- | An array of objects that describe the result of the action, such as the status of the request, the time stamp of the request, and the resources affected by the request.
 clbtcrsOperations :: Lens' CreateLoadBalancerTLSCertificateResponse [Operation]
 clbtcrsOperations = lens _clbtcrsOperations (\ s a -> s{_clbtcrsOperations = a}) . _Default . _Coerce
 

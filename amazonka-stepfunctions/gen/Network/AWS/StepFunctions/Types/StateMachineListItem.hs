@@ -19,6 +19,7 @@ module Network.AWS.StepFunctions.Types.StateMachineListItem where
 
 import Network.AWS.Lens
 import Network.AWS.Prelude
+import Network.AWS.StepFunctions.Types.StateMachineType
 
 -- | Contains details about the state machine.
 --
@@ -28,6 +29,8 @@ import Network.AWS.Prelude
 data StateMachineListItem = StateMachineListItem'{_smliStateMachineARN
                                                   :: !Text,
                                                   _smliName :: !Text,
+                                                  _smliType ::
+                                                  !StateMachineType,
                                                   _smliCreationDate :: !POSIX}
                               deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -37,28 +40,35 @@ data StateMachineListItem = StateMachineListItem'{_smliStateMachineARN
 --
 -- * 'smliStateMachineARN' - The Amazon Resource Name (ARN) that identifies the state machine.
 --
--- * 'smliName' - The name of the state machine. A name must /not/ contain:     * whitespace     * brackets @< > { } [ ]@      * wildcard characters @? *@      * special characters @" # % \ ^ | ~ ` $ & , ; : /@      * control characters (@U+0000-001F@ , @U+007F-009F@ )
+-- * 'smliName' - The name of the state machine. A name must /not/ contain:     * white space     * brackets @< > { } [ ]@      * wildcard characters @? *@      * special characters @" # % \ ^ | ~ ` $ & , ; : /@      * control characters (@U+0000-001F@ , @U+007F-009F@ ) To enable logging with CloudWatch Logs, the name should only contain 0-9, A-Z, a-z, - and _.
+--
+-- * 'smliType' - 
 --
 -- * 'smliCreationDate' - The date the state machine is created.
 stateMachineListItem
     :: Text -- ^ 'smliStateMachineARN'
     -> Text -- ^ 'smliName'
+    -> StateMachineType -- ^ 'smliType'
     -> UTCTime -- ^ 'smliCreationDate'
     -> StateMachineListItem
-stateMachineListItem pStateMachineARN_ pName_
+stateMachineListItem pStateMachineARN_ pName_ pType_
   pCreationDate_
   = StateMachineListItem'{_smliStateMachineARN =
                             pStateMachineARN_,
-                          _smliName = pName_,
+                          _smliName = pName_, _smliType = pType_,
                           _smliCreationDate = _Time # pCreationDate_}
 
 -- | The Amazon Resource Name (ARN) that identifies the state machine.
 smliStateMachineARN :: Lens' StateMachineListItem Text
 smliStateMachineARN = lens _smliStateMachineARN (\ s a -> s{_smliStateMachineARN = a})
 
--- | The name of the state machine. A name must /not/ contain:     * whitespace     * brackets @< > { } [ ]@      * wildcard characters @? *@      * special characters @" # % \ ^ | ~ ` $ & , ; : /@      * control characters (@U+0000-001F@ , @U+007F-009F@ )
+-- | The name of the state machine. A name must /not/ contain:     * white space     * brackets @< > { } [ ]@      * wildcard characters @? *@      * special characters @" # % \ ^ | ~ ` $ & , ; : /@      * control characters (@U+0000-001F@ , @U+007F-009F@ ) To enable logging with CloudWatch Logs, the name should only contain 0-9, A-Z, a-z, - and _.
 smliName :: Lens' StateMachineListItem Text
 smliName = lens _smliName (\ s a -> s{_smliName = a})
+
+-- | 
+smliType :: Lens' StateMachineListItem StateMachineType
+smliType = lens _smliType (\ s a -> s{_smliType = a})
 
 -- | The date the state machine is created.
 smliCreationDate :: Lens' StateMachineListItem UTCTime
@@ -70,7 +80,8 @@ instance FromJSON StateMachineListItem where
               (\ x ->
                  StateMachineListItem' <$>
                    (x .: "stateMachineArn") <*> (x .: "name") <*>
-                     (x .: "creationDate"))
+                     (x .: "type")
+                     <*> (x .: "creationDate"))
 
 instance Hashable StateMachineListItem where
 

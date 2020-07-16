@@ -23,7 +23,7 @@ import Network.AWS.Prelude
 -- | The X and Y coordinates of a point on an image. The X and Y values returned are ratios of the overall image size. For example, if the input image is 700x200 and the operation returns X=0.5 and Y=0.25, then the point is at the (350,50) pixel coordinate on the image.
 --
 --
--- An array of @Point@ objects, @Polygon@ , is returned by . @Polygon@ represents a fine-grained polygon around detected text. For more information, see . 
+-- An array of @Point@ objects, @Polygon@ , is returned by 'DetectText' and by 'DetectCustomLabels' . @Polygon@ represents a fine-grained polygon around a detected item. For more information, see Geometry in the Amazon Rekognition Developer Guide. 
 --
 --
 -- /See:/ 'point' smart constructor.

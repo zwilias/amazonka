@@ -62,7 +62,7 @@ data ListEventBuses = ListEventBuses'{_lebNextToken
 --
 -- * 'lebNamePrefix' - Specifying this limits the results to only those event buses with names that start with the specified prefix.
 --
--- * 'lebLimit' - Specifying this limits the number of results returned by this operation. The operation also returns a @NextToken@ that you can use in a subsequent operation to retrieve the next set of results.
+-- * 'lebLimit' - Specifying this limits the number of results returned by this operation. The operation also returns a NextToken which you can use in a subsequent operation to retrieve the next set of results.
 listEventBuses
     :: ListEventBuses
 listEventBuses
@@ -77,7 +77,7 @@ lebNextToken = lens _lebNextToken (\ s a -> s{_lebNextToken = a})
 lebNamePrefix :: Lens' ListEventBuses (Maybe Text)
 lebNamePrefix = lens _lebNamePrefix (\ s a -> s{_lebNamePrefix = a})
 
--- | Specifying this limits the number of results returned by this operation. The operation also returns a @NextToken@ that you can use in a subsequent operation to retrieve the next set of results.
+-- | Specifying this limits the number of results returned by this operation. The operation also returns a NextToken which you can use in a subsequent operation to retrieve the next set of results.
 lebLimit :: Lens' ListEventBuses (Maybe Natural)
 lebLimit = lens _lebLimit (\ s a -> s{_lebLimit = a}) . mapping _Nat
 

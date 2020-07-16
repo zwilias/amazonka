@@ -41,15 +41,15 @@ data MovSettings = MovSettings'{_msReference ::
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'msReference' - Undocumented member.
+-- * 'msReference' - Always keep the default value (SELF_CONTAINED) for this setting.
 --
--- * 'msCslgAtom' - Undocumented member.
+-- * 'msCslgAtom' - When enabled, file composition times will start at zero, composition times in the 'ctts' (composition time to sample) box for B-frames will be negative, and a 'cslg' (composition shift least greatest) box will be included per 14496-1 amendment 1. This improves compatibility with Apple players and tools.
 --
--- * 'msMpeg2FourCCControl' - Undocumented member.
+-- * 'msMpeg2FourCCControl' - When set to XDCAM, writes MPEG2 video streams into the QuickTime file using XDCAM fourcc codes. This increases compatibility with Apple editors and players, but may decrease compatibility with other players. Only applicable when the video codec is MPEG2.
 --
--- * 'msPaddingControl' - Undocumented member.
+-- * 'msPaddingControl' - If set to OMNEON, inserts Omneon-compatible padding
 --
--- * 'msClapAtom' - Undocumented member.
+-- * 'msClapAtom' - When enabled, include 'clap' atom if appropriate for the video output settings.
 movSettings
     :: MovSettings
 movSettings
@@ -58,23 +58,23 @@ movSettings
                  _msMpeg2FourCCControl = Nothing,
                  _msPaddingControl = Nothing, _msClapAtom = Nothing}
 
--- | Undocumented member.
+-- | Always keep the default value (SELF_CONTAINED) for this setting.
 msReference :: Lens' MovSettings (Maybe MovReference)
 msReference = lens _msReference (\ s a -> s{_msReference = a})
 
--- | Undocumented member.
+-- | When enabled, file composition times will start at zero, composition times in the 'ctts' (composition time to sample) box for B-frames will be negative, and a 'cslg' (composition shift least greatest) box will be included per 14496-1 amendment 1. This improves compatibility with Apple players and tools.
 msCslgAtom :: Lens' MovSettings (Maybe MovCslgAtom)
 msCslgAtom = lens _msCslgAtom (\ s a -> s{_msCslgAtom = a})
 
--- | Undocumented member.
+-- | When set to XDCAM, writes MPEG2 video streams into the QuickTime file using XDCAM fourcc codes. This increases compatibility with Apple editors and players, but may decrease compatibility with other players. Only applicable when the video codec is MPEG2.
 msMpeg2FourCCControl :: Lens' MovSettings (Maybe MovMpeg2FourCCControl)
 msMpeg2FourCCControl = lens _msMpeg2FourCCControl (\ s a -> s{_msMpeg2FourCCControl = a})
 
--- | Undocumented member.
+-- | If set to OMNEON, inserts Omneon-compatible padding
 msPaddingControl :: Lens' MovSettings (Maybe MovPaddingControl)
 msPaddingControl = lens _msPaddingControl (\ s a -> s{_msPaddingControl = a})
 
--- | Undocumented member.
+-- | When enabled, include 'clap' atom if appropriate for the video output settings.
 msClapAtom :: Lens' MovSettings (Maybe MovClapAtom)
 msClapAtom = lens _msClapAtom (\ s a -> s{_msClapAtom = a})
 

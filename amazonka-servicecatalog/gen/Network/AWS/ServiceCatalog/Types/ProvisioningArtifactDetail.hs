@@ -19,6 +19,7 @@ module Network.AWS.ServiceCatalog.Types.ProvisioningArtifactDetail where
 
 import Network.AWS.Lens
 import Network.AWS.Prelude
+import Network.AWS.ServiceCatalog.Types.ProvisioningArtifactGuidance
 import Network.AWS.ServiceCatalog.Types.ProvisioningArtifactType
 
 -- | Information about a provisioning artifact (also known as a version) for a product.
@@ -37,6 +38,9 @@ data ProvisioningArtifactDetail = ProvisioningArtifactDetail'{_padCreatedTime
                                                               _padType ::
                                                               !(Maybe
                                                                   ProvisioningArtifactType),
+                                                              _padGuidance ::
+                                                              !(Maybe
+                                                                  ProvisioningArtifactGuidance),
                                                               _padDescription ::
                                                               !(Maybe Text)}
                                     deriving (Eq, Read, Show, Data, Typeable,
@@ -56,6 +60,8 @@ data ProvisioningArtifactDetail = ProvisioningArtifactDetail'{_padCreatedTime
 --
 -- * 'padType' - The type of provisioning artifact.     * @CLOUD_FORMATION_TEMPLATE@ - AWS CloudFormation template     * @MARKETPLACE_AMI@ - AWS Marketplace AMI     * @MARKETPLACE_CAR@ - AWS Marketplace Clusters and AWS Resources
 --
+-- * 'padGuidance' - Information set by the administrator to provide guidance to end users about which provisioning artifacts to use.
+--
 -- * 'padDescription' - The description of the provisioning artifact.
 provisioningArtifactDetail
     :: ProvisioningArtifactDetail
@@ -64,6 +70,7 @@ provisioningArtifactDetail
                                   Nothing,
                                 _padActive = Nothing, _padName = Nothing,
                                 _padId = Nothing, _padType = Nothing,
+                                _padGuidance = Nothing,
                                 _padDescription = Nothing}
 
 -- | The UTC time stamp of the creation time.
@@ -86,6 +93,10 @@ padId = lens _padId (\ s a -> s{_padId = a})
 padType :: Lens' ProvisioningArtifactDetail (Maybe ProvisioningArtifactType)
 padType = lens _padType (\ s a -> s{_padType = a})
 
+-- | Information set by the administrator to provide guidance to end users about which provisioning artifacts to use.
+padGuidance :: Lens' ProvisioningArtifactDetail (Maybe ProvisioningArtifactGuidance)
+padGuidance = lens _padGuidance (\ s a -> s{_padGuidance = a})
+
 -- | The description of the provisioning artifact.
 padDescription :: Lens' ProvisioningArtifactDetail (Maybe Text)
 padDescription = lens _padDescription (\ s a -> s{_padDescription = a})
@@ -99,6 +110,7 @@ instance FromJSON ProvisioningArtifactDetail where
                      (x .:? "Name")
                      <*> (x .:? "Id")
                      <*> (x .:? "Type")
+                     <*> (x .:? "Guidance")
                      <*> (x .:? "Description"))
 
 instance Hashable ProvisioningArtifactDetail where

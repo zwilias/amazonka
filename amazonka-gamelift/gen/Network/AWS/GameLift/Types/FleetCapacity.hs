@@ -25,51 +25,17 @@ import Network.AWS.Prelude
 -- | Information about the fleet's capacity. Fleet capacity is measured in EC2 instances. By default, new fleets have a capacity of one instance, but can be updated as needed. The maximum number of instances for a fleet is determined by the fleet's instance type.
 --
 --
--- Fleet-related operations include:
---
 --     * 'CreateFleet' 
 --
 --     * 'ListFleets' 
 --
 --     * 'DeleteFleet' 
 --
---     * Describe fleets:
---
 --     * 'DescribeFleetAttributes' 
---
---     * 'DescribeFleetCapacity' 
---
---     * 'DescribeFleetPortSettings' 
---
---     * 'DescribeFleetUtilization' 
---
---     * 'DescribeRuntimeConfiguration' 
---
---     * 'DescribeEC2InstanceLimits' 
---
---     * 'DescribeFleetEvents' 
---
---
---
---     * Update fleets:
 --
 --     * 'UpdateFleetAttributes' 
 --
---     * 'UpdateFleetCapacity' 
---
---     * 'UpdateFleetPortSettings' 
---
---     * 'UpdateRuntimeConfiguration' 
---
---
---
---     * Manage fleet actions:
---
---     * 'StartFleetActions' 
---
---     * 'StopFleetActions' 
---
---
+--     * 'StartFleetActions' or 'StopFleetActions' 
 --
 --
 --
@@ -88,7 +54,7 @@ data FleetCapacity = FleetCapacity'{_fcInstanceType
 --
 -- * 'fcInstanceType' - Name of an EC2 instance type that is supported in Amazon GameLift. A fleet instance type determines the computing resources of each instance in the fleet, including CPU, memory, storage, and networking capacity. Amazon GameLift supports the following EC2 instance types. See <http://aws.amazon.com/ec2/instance-types/ Amazon EC2 Instance Types> for detailed descriptions.
 --
--- * 'fcFleetId' - Unique identifier for a fleet.
+-- * 'fcFleetId' - A unique identifier for a fleet.
 --
 -- * 'fcInstanceCounts' - Current status of fleet capacity.
 fleetCapacity
@@ -101,7 +67,7 @@ fleetCapacity
 fcInstanceType :: Lens' FleetCapacity (Maybe EC2InstanceType)
 fcInstanceType = lens _fcInstanceType (\ s a -> s{_fcInstanceType = a})
 
--- | Unique identifier for a fleet.
+-- | A unique identifier for a fleet.
 fcFleetId :: Lens' FleetCapacity (Maybe Text)
 fcFleetId = lens _fcFleetId (\ s a -> s{_fcFleetId = a})
 

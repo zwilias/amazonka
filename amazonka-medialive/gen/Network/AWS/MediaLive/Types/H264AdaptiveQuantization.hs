@@ -19,49 +19,49 @@
 module Network.AWS.MediaLive.Types.H264AdaptiveQuantization (
   H264AdaptiveQuantization (
     ..
-    , HAQHigh
-    , HAQHigher
-    , HAQLow
-    , HAQMax
-    , HAQMedium
-    , HAQOff
+    , HHigh
+    , HHigher
+    , HLow
+    , HMax
+    , HMedium
+    , HOff
     )
   ) where
 
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | Placeholder documentation for H264AdaptiveQuantization
+-- | H264 Adaptive Quantization
 data H264AdaptiveQuantization = H264AdaptiveQuantization' (CI
                                                              Text)
                                   deriving (Eq, Ord, Read, Show, Data, Typeable,
                                             Generic)
 
-pattern HAQHigh :: H264AdaptiveQuantization
-pattern HAQHigh = H264AdaptiveQuantization' "HIGH"
+pattern HHigh :: H264AdaptiveQuantization
+pattern HHigh = H264AdaptiveQuantization' "HIGH"
 
-pattern HAQHigher :: H264AdaptiveQuantization
-pattern HAQHigher = H264AdaptiveQuantization' "HIGHER"
+pattern HHigher :: H264AdaptiveQuantization
+pattern HHigher = H264AdaptiveQuantization' "HIGHER"
 
-pattern HAQLow :: H264AdaptiveQuantization
-pattern HAQLow = H264AdaptiveQuantization' "LOW"
+pattern HLow :: H264AdaptiveQuantization
+pattern HLow = H264AdaptiveQuantization' "LOW"
 
-pattern HAQMax :: H264AdaptiveQuantization
-pattern HAQMax = H264AdaptiveQuantization' "MAX"
+pattern HMax :: H264AdaptiveQuantization
+pattern HMax = H264AdaptiveQuantization' "MAX"
 
-pattern HAQMedium :: H264AdaptiveQuantization
-pattern HAQMedium = H264AdaptiveQuantization' "MEDIUM"
+pattern HMedium :: H264AdaptiveQuantization
+pattern HMedium = H264AdaptiveQuantization' "MEDIUM"
 
-pattern HAQOff :: H264AdaptiveQuantization
-pattern HAQOff = H264AdaptiveQuantization' "OFF"
+pattern HOff :: H264AdaptiveQuantization
+pattern HOff = H264AdaptiveQuantization' "OFF"
 
 {-# COMPLETE
-  HAQHigh,
-  HAQHigher,
-  HAQLow,
-  HAQMax,
-  HAQMedium,
-  HAQOff,
+  HHigh,
+  HHigher,
+  HLow,
+  HMax,
+  HMedium,
+  HOff,
   H264AdaptiveQuantization' #-}
 
 instance FromText H264AdaptiveQuantization where
@@ -76,28 +76,28 @@ instance ToText H264AdaptiveQuantization where
 --   fromEnum is a partial function, and will error on values unknown at generation time.
 instance Enum H264AdaptiveQuantization where
     toEnum i = case i of
-        0 -> HAQHigh
-        1 -> HAQHigher
-        2 -> HAQLow
-        3 -> HAQMax
-        4 -> HAQMedium
-        5 -> HAQOff
+        0 -> HHigh
+        1 -> HHigher
+        2 -> HLow
+        3 -> HMax
+        4 -> HMedium
+        5 -> HOff
         _ -> (error . showText) $ "Unknown index for H264AdaptiveQuantization: " <> toText i
     fromEnum x = case x of
-        HAQHigh -> 0
-        HAQHigher -> 1
-        HAQLow -> 2
-        HAQMax -> 3
-        HAQMedium -> 4
-        HAQOff -> 5
+        HHigh -> 0
+        HHigher -> 1
+        HLow -> 2
+        HMax -> 3
+        HMedium -> 4
+        HOff -> 5
         H264AdaptiveQuantization' name -> (error . showText) $ "Unknown H264AdaptiveQuantization: " <> original name
 
 -- | Represents the bounds of /known/ $H264AdaptiveQuantization.
 --   AWS may have added more since the source was generated.
 --   This instance exists only for backward compatibility.
 instance Bounded H264AdaptiveQuantization where
-    minBound = HAQHigh
-    maxBound = HAQOff
+    minBound = HHigh
+    maxBound = HOff
 
 instance Hashable     H264AdaptiveQuantization
 instance NFData       H264AdaptiveQuantization

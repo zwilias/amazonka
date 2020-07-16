@@ -20,7 +20,9 @@ module Network.AWS.Pinpoint.Types.EndpointUser where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | Endpoint user specific custom userAttributes
+-- | Specifies data for one or more attributes that describe the user who's associated with an endpoint.
+--
+--
 --
 -- /See:/ 'endpointUser' smart constructor.
 data EndpointUser = EndpointUser'{_euUserAttributes
@@ -32,20 +34,20 @@ data EndpointUser = EndpointUser'{_euUserAttributes
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'euUserAttributes' - Custom attributes that describe an end user by associating a name with an array of values. For example, an attribute named "interests" might have the values ["science", "politics", "travel"]. You can use these attributes as selection criteria when you create a segment of users to engage with a messaging campaign. The following characters are not recommended in attribute names: # : ? \ /. The Amazon Pinpoint console does not display attributes that include these characters in the name. This limitation does not apply to attribute values.
+-- * 'euUserAttributes' - One or more custom attributes that describe the user by associating a name with an array of values. For example, the value of an attribute named Interests might be: ["Science", "Music", "Travel"]. You can use these attributes as filter criteria when you create segments. Attribute names are case sensitive. An attribute name can contain up to 50 characters. An attribute value can contain up to 100 characters. When you define the name of a custom attribute, avoid using the following characters: number sign (#), colon (:), question mark (?), backslash (\), and slash (/). The Amazon Pinpoint console can't display attribute names that contain these characters. This restriction doesn't apply to attribute values.
 --
--- * 'euUserId' - The unique ID of the user.
+-- * 'euUserId' - The unique identifier for the user.
 endpointUser
     :: EndpointUser
 endpointUser
   = EndpointUser'{_euUserAttributes = Nothing,
                   _euUserId = Nothing}
 
--- | Custom attributes that describe an end user by associating a name with an array of values. For example, an attribute named "interests" might have the values ["science", "politics", "travel"]. You can use these attributes as selection criteria when you create a segment of users to engage with a messaging campaign. The following characters are not recommended in attribute names: # : ? \ /. The Amazon Pinpoint console does not display attributes that include these characters in the name. This limitation does not apply to attribute values.
+-- | One or more custom attributes that describe the user by associating a name with an array of values. For example, the value of an attribute named Interests might be: ["Science", "Music", "Travel"]. You can use these attributes as filter criteria when you create segments. Attribute names are case sensitive. An attribute name can contain up to 50 characters. An attribute value can contain up to 100 characters. When you define the name of a custom attribute, avoid using the following characters: number sign (#), colon (:), question mark (?), backslash (\), and slash (/). The Amazon Pinpoint console can't display attribute names that contain these characters. This restriction doesn't apply to attribute values.
 euUserAttributes :: Lens' EndpointUser (HashMap Text [Text])
 euUserAttributes = lens _euUserAttributes (\ s a -> s{_euUserAttributes = a}) . _Default . _Map
 
--- | The unique ID of the user.
+-- | The unique identifier for the user.
 euUserId :: Lens' EndpointUser (Maybe Text)
 euUserId = lens _euUserId (\ s a -> s{_euUserId = a})
 

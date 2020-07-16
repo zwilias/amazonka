@@ -25,7 +25,7 @@ import Network.AWS.Prelude
 --
 -- For keys, you can specify one or more tags that have been applied to a document. 
 --
--- Other valid values include Owner, Name, PlatformTypes, and DocumentType.
+-- Other valid values include @Owner@ , @Name@ , @PlatformTypes@ , @DocumentType@ , and @TargetType@ .
 --
 -- Note that only one Owner can be specified in a request. For example: @Key=Owner,Values=Self@ .
 --
@@ -35,7 +35,7 @@ import Network.AWS.Prelude
 --
 -- If you specify more than two keys, only documents that are identified by all the tags are returned in the results. If you specify more than two values for a key, documents that are identified by any of the values are returned in the results.
 --
--- To specify a custom key and value pair, use the format @Key=tag:[tagName],Values=[valueName]@ .
+-- To specify a custom key and value pair, use the format @Key=tag:tagName,Values=valueName@ .
 --
 -- For example, if you created a Key called region and are using the AWS CLI to call the @list-documents@ command: 
 --

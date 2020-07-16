@@ -97,7 +97,7 @@ data GetJobResponse = GetJobResponse'{_gjrsJob ::
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'gjrsJob' - Undocumented member.
+-- * 'gjrsJob' - Each job converts an input file into an output file or files. For more information, see the User Guide at http://docs.aws.amazon.com/mediaconvert/latest/ug/what-is.html
 --
 -- * 'gjrsResponseStatus' - -- | The response status code.
 getJobResponse
@@ -107,7 +107,7 @@ getJobResponse pResponseStatus_
   = GetJobResponse'{_gjrsJob = Nothing,
                     _gjrsResponseStatus = pResponseStatus_}
 
--- | Undocumented member.
+-- | Each job converts an input file into an output file or files. For more information, see the User Guide at http://docs.aws.amazon.com/mediaconvert/latest/ug/what-is.html
 gjrsJob :: Lens' GetJobResponse (Maybe Job)
 gjrsJob = lens _gjrsJob (\ s a -> s{_gjrsJob = a})
 

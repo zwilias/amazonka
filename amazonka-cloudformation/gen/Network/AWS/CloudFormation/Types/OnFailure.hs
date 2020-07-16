@@ -19,9 +19,9 @@
 module Network.AWS.CloudFormation.Types.OnFailure (
   OnFailure (
     ..
-    , Delete
-    , DoNothing
-    , Rollback
+    , OFDelete
+    , OFDoNothing
+    , OFRollback
     )
   ) where
 
@@ -32,19 +32,19 @@ data OnFailure = OnFailure' (CI Text)
                    deriving (Eq, Ord, Read, Show, Data, Typeable,
                              Generic)
 
-pattern Delete :: OnFailure
-pattern Delete = OnFailure' "DELETE"
+pattern OFDelete :: OnFailure
+pattern OFDelete = OnFailure' "DELETE"
 
-pattern DoNothing :: OnFailure
-pattern DoNothing = OnFailure' "DO_NOTHING"
+pattern OFDoNothing :: OnFailure
+pattern OFDoNothing = OnFailure' "DO_NOTHING"
 
-pattern Rollback :: OnFailure
-pattern Rollback = OnFailure' "ROLLBACK"
+pattern OFRollback :: OnFailure
+pattern OFRollback = OnFailure' "ROLLBACK"
 
 {-# COMPLETE
-  Delete,
-  DoNothing,
-  Rollback,
+  OFDelete,
+  OFDoNothing,
+  OFRollback,
   OnFailure' #-}
 
 instance FromText OnFailure where
@@ -59,22 +59,22 @@ instance ToText OnFailure where
 --   fromEnum is a partial function, and will error on values unknown at generation time.
 instance Enum OnFailure where
     toEnum i = case i of
-        0 -> Delete
-        1 -> DoNothing
-        2 -> Rollback
+        0 -> OFDelete
+        1 -> OFDoNothing
+        2 -> OFRollback
         _ -> (error . showText) $ "Unknown index for OnFailure: " <> toText i
     fromEnum x = case x of
-        Delete -> 0
-        DoNothing -> 1
-        Rollback -> 2
+        OFDelete -> 0
+        OFDoNothing -> 1
+        OFRollback -> 2
         OnFailure' name -> (error . showText) $ "Unknown OnFailure: " <> original name
 
 -- | Represents the bounds of /known/ $OnFailure.
 --   AWS may have added more since the source was generated.
 --   This instance exists only for backward compatibility.
 instance Bounded OnFailure where
-    minBound = Delete
-    maxBound = Rollback
+    minBound = OFDelete
+    maxBound = OFRollback
 
 instance Hashable     OnFailure
 instance NFData       OnFailure

@@ -27,7 +27,8 @@ import Network.AWS.Prelude
 data Channel = Channel'{_cHlsIngest ::
                         !(Maybe HlsIngest),
                         _cARN :: !(Maybe Text), _cId :: !(Maybe Text),
-                        _cDescription :: !(Maybe Text)}
+                        _cDescription :: !(Maybe Text),
+                        _cTags :: !(Maybe (Map Text Text))}
                  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'Channel' with the minimum fields required to make a request.
@@ -41,11 +42,14 @@ data Channel = Channel'{_cHlsIngest ::
 -- * 'cId' - The ID of the Channel.
 --
 -- * 'cDescription' - A short text description of the Channel.
+--
+-- * 'cTags' - Undocumented member.
 channel
     :: Channel
 channel
   = Channel'{_cHlsIngest = Nothing, _cARN = Nothing,
-             _cId = Nothing, _cDescription = Nothing}
+             _cId = Nothing, _cDescription = Nothing,
+             _cTags = Nothing}
 
 -- | Undocumented member.
 cHlsIngest :: Lens' Channel (Maybe HlsIngest)
@@ -63,6 +67,10 @@ cId = lens _cId (\ s a -> s{_cId = a})
 cDescription :: Lens' Channel (Maybe Text)
 cDescription = lens _cDescription (\ s a -> s{_cDescription = a})
 
+-- | Undocumented member.
+cTags :: Lens' Channel (HashMap Text Text)
+cTags = lens _cTags (\ s a -> s{_cTags = a}) . _Default . _Map
+
 instance FromJSON Channel where
         parseJSON
           = withObject "Channel"
@@ -70,7 +78,8 @@ instance FromJSON Channel where
                  Channel' <$>
                    (x .:? "hlsIngest") <*> (x .:? "arn") <*>
                      (x .:? "id")
-                     <*> (x .:? "description"))
+                     <*> (x .:? "description")
+                     <*> (x .:? "tags" .!= mempty))
 
 instance Hashable Channel where
 

@@ -38,7 +38,7 @@ data DBClusterMember = DBClusterMember'{_dcmPromotionTier
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dcmPromotionTier' - A value that specifies the order in which an Aurora Replica is promoted to the primary instance after a failure of the existing primary instance. For more information, see <http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Aurora.Managing.html#Aurora.Managing.FaultTolerance Fault Tolerance for an Aurora DB Cluster> . 
+-- * 'dcmPromotionTier' - A value that specifies the order in which an Aurora Replica is promoted to the primary instance after a failure of the existing primary instance. For more information, see <https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.Managing.Backups.html#Aurora.Managing.FaultTolerance Fault Tolerance for an Aurora DB Cluster> in the /Amazon Aurora User Guide/ . 
 --
 -- * 'dcmDBInstanceIdentifier' - Specifies the instance identifier for this member of the DB cluster.
 --
@@ -53,7 +53,7 @@ dbClusterMember
                      _dcmIsClusterWriter = Nothing,
                      _dcmDBClusterParameterGroupStatus = Nothing}
 
--- | A value that specifies the order in which an Aurora Replica is promoted to the primary instance after a failure of the existing primary instance. For more information, see <http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Aurora.Managing.html#Aurora.Managing.FaultTolerance Fault Tolerance for an Aurora DB Cluster> . 
+-- | A value that specifies the order in which an Aurora Replica is promoted to the primary instance after a failure of the existing primary instance. For more information, see <https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.Managing.Backups.html#Aurora.Managing.FaultTolerance Fault Tolerance for an Aurora DB Cluster> in the /Amazon Aurora User Guide/ . 
 dcmPromotionTier :: Lens' DBClusterMember (Maybe Int)
 dcmPromotionTier = lens _dcmPromotionTier (\ s a -> s{_dcmPromotionTier = a})
 

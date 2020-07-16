@@ -20,7 +20,7 @@ module Network.AWS.ECS.Types.NetworkInterface where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | An object representing the Elastic Network Interface for tasks that use the @awsvpc@ network mode.
+-- | An object representing the elastic network interface for tasks that use the @awsvpc@ network mode.
 --
 --
 --

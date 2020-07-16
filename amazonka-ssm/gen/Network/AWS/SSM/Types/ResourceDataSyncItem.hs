@@ -21,14 +21,20 @@ import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.SSM.Types.LastResourceDataSyncStatus
 import Network.AWS.SSM.Types.ResourceDataSyncS3Destination
+import Network.AWS.SSM.Types.ResourceDataSyncSourceWithState
 
 -- | Information about a Resource Data Sync configuration, including its current status and last successful sync.
 --
 --
 --
 -- /See:/ 'resourceDataSyncItem' smart constructor.
-data ResourceDataSyncItem = ResourceDataSyncItem'{_rdsiLastSyncStatusMessage
+data ResourceDataSyncItem = ResourceDataSyncItem'{_rdsiSyncType
                                                   :: !(Maybe Text),
+                                                  _rdsiSyncSource ::
+                                                  !(Maybe
+                                                      ResourceDataSyncSourceWithState),
+                                                  _rdsiLastSyncStatusMessage ::
+                                                  !(Maybe Text),
                                                   _rdsiSyncCreatedTime ::
                                                   !(Maybe POSIX),
                                                   _rdsiLastSyncTime ::
@@ -38,6 +44,8 @@ data ResourceDataSyncItem = ResourceDataSyncItem'{_rdsiLastSyncStatusMessage
                                                   _rdsiLastStatus ::
                                                   !(Maybe
                                                       LastResourceDataSyncStatus),
+                                                  _rdsiSyncLastModifiedTime ::
+                                                  !(Maybe POSIX),
                                                   _rdsiS3Destination ::
                                                   !(Maybe
                                                       ResourceDataSyncS3Destination),
@@ -49,6 +57,10 @@ data ResourceDataSyncItem = ResourceDataSyncItem'{_rdsiLastSyncStatusMessage
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
+-- * 'rdsiSyncType' - The type of resource data sync. If @SyncType@ is @SyncToDestination@ , then the resource data sync synchronizes data to an S3 bucket. If the @SyncType@ is @SyncFromSource@ then the resource data sync synchronizes data from AWS Organizations or from multiple AWS Regions.
+--
+-- * 'rdsiSyncSource' - Information about the source where the data was synchronized. 
+--
 -- * 'rdsiLastSyncStatusMessage' - The status message details reported by the last sync.
 --
 -- * 'rdsiSyncCreatedTime' - The date and time the configuration was created (UTC).
@@ -59,19 +71,31 @@ data ResourceDataSyncItem = ResourceDataSyncItem'{_rdsiLastSyncStatusMessage
 --
 -- * 'rdsiLastStatus' - The status reported by the last sync.
 --
--- * 'rdsiS3Destination' - Configuration information for the target Amazon S3 bucket.
+-- * 'rdsiSyncLastModifiedTime' - The date and time the resource data sync was changed. 
+--
+-- * 'rdsiS3Destination' - Configuration information for the target S3 bucket.
 --
 -- * 'rdsiLastSuccessfulSyncTime' - The last time the sync operations returned a status of @SUCCESSFUL@ (UTC).
 resourceDataSyncItem
     :: ResourceDataSyncItem
 resourceDataSyncItem
-  = ResourceDataSyncItem'{_rdsiLastSyncStatusMessage =
-                            Nothing,
+  = ResourceDataSyncItem'{_rdsiSyncType = Nothing,
+                          _rdsiSyncSource = Nothing,
+                          _rdsiLastSyncStatusMessage = Nothing,
                           _rdsiSyncCreatedTime = Nothing,
                           _rdsiLastSyncTime = Nothing, _rdsiSyncName = Nothing,
                           _rdsiLastStatus = Nothing,
+                          _rdsiSyncLastModifiedTime = Nothing,
                           _rdsiS3Destination = Nothing,
                           _rdsiLastSuccessfulSyncTime = Nothing}
+
+-- | The type of resource data sync. If @SyncType@ is @SyncToDestination@ , then the resource data sync synchronizes data to an S3 bucket. If the @SyncType@ is @SyncFromSource@ then the resource data sync synchronizes data from AWS Organizations or from multiple AWS Regions.
+rdsiSyncType :: Lens' ResourceDataSyncItem (Maybe Text)
+rdsiSyncType = lens _rdsiSyncType (\ s a -> s{_rdsiSyncType = a})
+
+-- | Information about the source where the data was synchronized. 
+rdsiSyncSource :: Lens' ResourceDataSyncItem (Maybe ResourceDataSyncSourceWithState)
+rdsiSyncSource = lens _rdsiSyncSource (\ s a -> s{_rdsiSyncSource = a})
 
 -- | The status message details reported by the last sync.
 rdsiLastSyncStatusMessage :: Lens' ResourceDataSyncItem (Maybe Text)
@@ -93,7 +117,11 @@ rdsiSyncName = lens _rdsiSyncName (\ s a -> s{_rdsiSyncName = a})
 rdsiLastStatus :: Lens' ResourceDataSyncItem (Maybe LastResourceDataSyncStatus)
 rdsiLastStatus = lens _rdsiLastStatus (\ s a -> s{_rdsiLastStatus = a})
 
--- | Configuration information for the target Amazon S3 bucket.
+-- | The date and time the resource data sync was changed. 
+rdsiSyncLastModifiedTime :: Lens' ResourceDataSyncItem (Maybe UTCTime)
+rdsiSyncLastModifiedTime = lens _rdsiSyncLastModifiedTime (\ s a -> s{_rdsiSyncLastModifiedTime = a}) . mapping _Time
+
+-- | Configuration information for the target S3 bucket.
 rdsiS3Destination :: Lens' ResourceDataSyncItem (Maybe ResourceDataSyncS3Destination)
 rdsiS3Destination = lens _rdsiS3Destination (\ s a -> s{_rdsiS3Destination = a})
 
@@ -106,11 +134,13 @@ instance FromJSON ResourceDataSyncItem where
           = withObject "ResourceDataSyncItem"
               (\ x ->
                  ResourceDataSyncItem' <$>
-                   (x .:? "LastSyncStatusMessage") <*>
-                     (x .:? "SyncCreatedTime")
+                   (x .:? "SyncType") <*> (x .:? "SyncSource") <*>
+                     (x .:? "LastSyncStatusMessage")
+                     <*> (x .:? "SyncCreatedTime")
                      <*> (x .:? "LastSyncTime")
                      <*> (x .:? "SyncName")
                      <*> (x .:? "LastStatus")
+                     <*> (x .:? "SyncLastModifiedTime")
                      <*> (x .:? "S3Destination")
                      <*> (x .:? "LastSuccessfulSyncTime"))
 

@@ -20,6 +20,7 @@ module Network.AWS.SSM.Types.AutomationExecutionMetadata where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.SSM.Types.AutomationExecutionStatus
+import Network.AWS.SSM.Types.AutomationType
 import Network.AWS.SSM.Types.ExecutionMode
 import Network.AWS.SSM.Types.ResolvedTargets
 import Network.AWS.SSM.Types.Target
@@ -52,6 +53,11 @@ data AutomationExecutionMetadata = AutomationExecutionMetadata'{_aemCurrentStepN
                                                                 _aemMode ::
                                                                 !(Maybe
                                                                     ExecutionMode),
+                                                                _aemTargetMaps
+                                                                ::
+                                                                !(Maybe
+                                                                    [Map Text
+                                                                       [Text]]),
                                                                 _aemAutomationExecutionStatus
                                                                 ::
                                                                 !(Maybe
@@ -68,6 +74,10 @@ data AutomationExecutionMetadata = AutomationExecutionMetadata'{_aemCurrentStepN
                                                                 _aemExecutionStartTime
                                                                 ::
                                                                 !(Maybe POSIX),
+                                                                _aemAutomationType
+                                                                ::
+                                                                !(Maybe
+                                                                    AutomationType),
                                                                 _aemCurrentAction
                                                                 ::
                                                                 !(Maybe Text),
@@ -96,13 +106,13 @@ data AutomationExecutionMetadata = AutomationExecutionMetadata'{_aemCurrentStepN
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'aemCurrentStepName' - The name of the currently executing step.
+-- * 'aemCurrentStepName' - The name of the step that is currently running.
 --
 -- * 'aemTargetParameterName' - The list of execution outputs as defined in the Automation document.
 --
--- * 'aemLogFile' - An Amazon S3 bucket where execution information is stored.
+-- * 'aemLogFile' - An S3 bucket where execution information is stored.
 --
--- * 'aemExecutedBy' - The IAM role ARN of the user who executed the Automation.
+-- * 'aemExecutedBy' - The IAM role ARN of the user who ran the Automation.
 --
 -- * 'aemDocumentName' - The name of the Automation document used during execution.
 --
@@ -112,7 +122,9 @@ data AutomationExecutionMetadata = AutomationExecutionMetadata'{_aemCurrentStepN
 --
 -- * 'aemMode' - The Automation execution mode.
 --
--- * 'aemAutomationExecutionStatus' - The status of the execution. Valid values include: Running, Succeeded, Failed, Timed out, or Cancelled.
+-- * 'aemTargetMaps' - The specified key-value mapping of document parameters to target resources.
+--
+-- * 'aemAutomationExecutionStatus' - The status of the execution.
 --
 -- * 'aemParentAutomationExecutionId' - The ExecutionId of the parent Automation.
 --
@@ -120,9 +132,11 @@ data AutomationExecutionMetadata = AutomationExecutionMetadata'{_aemCurrentStepN
 --
 -- * 'aemMaxErrors' - The MaxErrors value specified by the user when starting the Automation.
 --
--- * 'aemExecutionStartTime' - The time the execution started.>
+-- * 'aemExecutionStartTime' - The time the execution started.
 --
--- * 'aemCurrentAction' - The action of the currently executing step.
+-- * 'aemAutomationType' - Use this filter with 'DescribeAutomationExecutions' . Specify either Local or CrossAccount. CrossAccount is an Automation that runs in multiple AWS Regions and accounts. For more information, see <https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-automation-multiple-accounts-and-regions.html Running Automation workflows in multiple AWS Regions and accounts> in the /AWS Systems Manager User Guide/ . 
+--
+-- * 'aemCurrentAction' - The action of the step that is currently running.
 --
 -- * 'aemTargets' - The targets defined by the user when starting the Automation.
 --
@@ -146,11 +160,12 @@ automationExecutionMetadata
                                  _aemDocumentName = Nothing,
                                  _aemExecutionEndTime = Nothing,
                                  _aemFailureMessage = Nothing,
-                                 _aemMode = Nothing,
+                                 _aemMode = Nothing, _aemTargetMaps = Nothing,
                                  _aemAutomationExecutionStatus = Nothing,
                                  _aemParentAutomationExecutionId = Nothing,
                                  _aemOutputs = Nothing, _aemMaxErrors = Nothing,
                                  _aemExecutionStartTime = Nothing,
+                                 _aemAutomationType = Nothing,
                                  _aemCurrentAction = Nothing,
                                  _aemTargets = Nothing,
                                  _aemResolvedTargets = Nothing,
@@ -159,7 +174,7 @@ automationExecutionMetadata
                                  _aemMaxConcurrency = Nothing,
                                  _aemTarget = Nothing}
 
--- | The name of the currently executing step.
+-- | The name of the step that is currently running.
 aemCurrentStepName :: Lens' AutomationExecutionMetadata (Maybe Text)
 aemCurrentStepName = lens _aemCurrentStepName (\ s a -> s{_aemCurrentStepName = a})
 
@@ -167,11 +182,11 @@ aemCurrentStepName = lens _aemCurrentStepName (\ s a -> s{_aemCurrentStepName = 
 aemTargetParameterName :: Lens' AutomationExecutionMetadata (Maybe Text)
 aemTargetParameterName = lens _aemTargetParameterName (\ s a -> s{_aemTargetParameterName = a})
 
--- | An Amazon S3 bucket where execution information is stored.
+-- | An S3 bucket where execution information is stored.
 aemLogFile :: Lens' AutomationExecutionMetadata (Maybe Text)
 aemLogFile = lens _aemLogFile (\ s a -> s{_aemLogFile = a})
 
--- | The IAM role ARN of the user who executed the Automation.
+-- | The IAM role ARN of the user who ran the Automation.
 aemExecutedBy :: Lens' AutomationExecutionMetadata (Maybe Text)
 aemExecutedBy = lens _aemExecutedBy (\ s a -> s{_aemExecutedBy = a})
 
@@ -191,7 +206,11 @@ aemFailureMessage = lens _aemFailureMessage (\ s a -> s{_aemFailureMessage = a})
 aemMode :: Lens' AutomationExecutionMetadata (Maybe ExecutionMode)
 aemMode = lens _aemMode (\ s a -> s{_aemMode = a})
 
--- | The status of the execution. Valid values include: Running, Succeeded, Failed, Timed out, or Cancelled.
+-- | The specified key-value mapping of document parameters to target resources.
+aemTargetMaps :: Lens' AutomationExecutionMetadata [HashMap Text [Text]]
+aemTargetMaps = lens _aemTargetMaps (\ s a -> s{_aemTargetMaps = a}) . _Default . _Coerce
+
+-- | The status of the execution.
 aemAutomationExecutionStatus :: Lens' AutomationExecutionMetadata (Maybe AutomationExecutionStatus)
 aemAutomationExecutionStatus = lens _aemAutomationExecutionStatus (\ s a -> s{_aemAutomationExecutionStatus = a})
 
@@ -207,11 +226,15 @@ aemOutputs = lens _aemOutputs (\ s a -> s{_aemOutputs = a}) . _Default . _Map
 aemMaxErrors :: Lens' AutomationExecutionMetadata (Maybe Text)
 aemMaxErrors = lens _aemMaxErrors (\ s a -> s{_aemMaxErrors = a})
 
--- | The time the execution started.>
+-- | The time the execution started.
 aemExecutionStartTime :: Lens' AutomationExecutionMetadata (Maybe UTCTime)
 aemExecutionStartTime = lens _aemExecutionStartTime (\ s a -> s{_aemExecutionStartTime = a}) . mapping _Time
 
--- | The action of the currently executing step.
+-- | Use this filter with 'DescribeAutomationExecutions' . Specify either Local or CrossAccount. CrossAccount is an Automation that runs in multiple AWS Regions and accounts. For more information, see <https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-automation-multiple-accounts-and-regions.html Running Automation workflows in multiple AWS Regions and accounts> in the /AWS Systems Manager User Guide/ . 
+aemAutomationType :: Lens' AutomationExecutionMetadata (Maybe AutomationType)
+aemAutomationType = lens _aemAutomationType (\ s a -> s{_aemAutomationType = a})
+
+-- | The action of the step that is currently running.
 aemCurrentAction :: Lens' AutomationExecutionMetadata (Maybe Text)
 aemCurrentAction = lens _aemCurrentAction (\ s a -> s{_aemCurrentAction = a})
 
@@ -252,11 +275,13 @@ instance FromJSON AutomationExecutionMetadata where
                      <*> (x .:? "ExecutionEndTime")
                      <*> (x .:? "FailureMessage")
                      <*> (x .:? "Mode")
+                     <*> (x .:? "TargetMaps" .!= mempty)
                      <*> (x .:? "AutomationExecutionStatus")
                      <*> (x .:? "ParentAutomationExecutionId")
                      <*> (x .:? "Outputs" .!= mempty)
                      <*> (x .:? "MaxErrors")
                      <*> (x .:? "ExecutionStartTime")
+                     <*> (x .:? "AutomationType")
                      <*> (x .:? "CurrentAction")
                      <*> (x .:? "Targets" .!= mempty)
                      <*> (x .:? "ResolvedTargets")

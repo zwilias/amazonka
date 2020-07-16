@@ -28,6 +28,7 @@ import Network.AWS.Prelude
 data BrokerSummary = BrokerSummary'{_bsBrokerName ::
                                     !(Maybe Text),
                                     _bsBrokerState :: !(Maybe BrokerState),
+                                    _bsCreated :: !(Maybe POSIX),
                                     _bsDeploymentMode ::
                                     !(Maybe DeploymentMode),
                                     _bsBrokerId :: !(Maybe Text),
@@ -41,20 +42,22 @@ data BrokerSummary = BrokerSummary'{_bsBrokerName ::
 --
 -- * 'bsBrokerName' - The name of the broker. This value must be unique in your AWS account, 1-50 characters long, must contain only letters, numbers, dashes, and underscores, and must not contain whitespaces, brackets, wildcard characters, or special characters.
 --
--- * 'bsBrokerState' - The status of the broker. Possible values: CREATION_IN_PROGRESS, CREATION_FAILED, DELETION_IN_PROGRESS, RUNNING, REBOOT_IN_PROGRESS
+-- * 'bsBrokerState' - The status of the broker.
 --
--- * 'bsDeploymentMode' - Required. The deployment mode of the broker. Possible values: SINGLE_INSTANCE, ACTIVE_STANDBY_MULTI_AZ SINGLE_INSTANCE creates a single-instance broker in a single Availability Zone. ACTIVE_STANDBY_MULTI_AZ creates an active/standby broker for high availability.
+-- * 'bsCreated' - The time when the broker was created.
+--
+-- * 'bsDeploymentMode' - Required. The deployment mode of the broker.
 --
 -- * 'bsBrokerId' - The unique ID that Amazon MQ generates for the broker.
 --
 -- * 'bsBrokerARN' - The Amazon Resource Name (ARN) of the broker.
 --
--- * 'bsHostInstanceType' - The broker's instance type. Possible values: mq.t2.micro, mq.m4.large
+-- * 'bsHostInstanceType' - The broker's instance type.
 brokerSummary
     :: BrokerSummary
 brokerSummary
   = BrokerSummary'{_bsBrokerName = Nothing,
-                   _bsBrokerState = Nothing,
+                   _bsBrokerState = Nothing, _bsCreated = Nothing,
                    _bsDeploymentMode = Nothing, _bsBrokerId = Nothing,
                    _bsBrokerARN = Nothing,
                    _bsHostInstanceType = Nothing}
@@ -63,11 +66,15 @@ brokerSummary
 bsBrokerName :: Lens' BrokerSummary (Maybe Text)
 bsBrokerName = lens _bsBrokerName (\ s a -> s{_bsBrokerName = a})
 
--- | The status of the broker. Possible values: CREATION_IN_PROGRESS, CREATION_FAILED, DELETION_IN_PROGRESS, RUNNING, REBOOT_IN_PROGRESS
+-- | The status of the broker.
 bsBrokerState :: Lens' BrokerSummary (Maybe BrokerState)
 bsBrokerState = lens _bsBrokerState (\ s a -> s{_bsBrokerState = a})
 
--- | Required. The deployment mode of the broker. Possible values: SINGLE_INSTANCE, ACTIVE_STANDBY_MULTI_AZ SINGLE_INSTANCE creates a single-instance broker in a single Availability Zone. ACTIVE_STANDBY_MULTI_AZ creates an active/standby broker for high availability.
+-- | The time when the broker was created.
+bsCreated :: Lens' BrokerSummary (Maybe UTCTime)
+bsCreated = lens _bsCreated (\ s a -> s{_bsCreated = a}) . mapping _Time
+
+-- | Required. The deployment mode of the broker.
 bsDeploymentMode :: Lens' BrokerSummary (Maybe DeploymentMode)
 bsDeploymentMode = lens _bsDeploymentMode (\ s a -> s{_bsDeploymentMode = a})
 
@@ -79,7 +86,7 @@ bsBrokerId = lens _bsBrokerId (\ s a -> s{_bsBrokerId = a})
 bsBrokerARN :: Lens' BrokerSummary (Maybe Text)
 bsBrokerARN = lens _bsBrokerARN (\ s a -> s{_bsBrokerARN = a})
 
--- | The broker's instance type. Possible values: mq.t2.micro, mq.m4.large
+-- | The broker's instance type.
 bsHostInstanceType :: Lens' BrokerSummary (Maybe Text)
 bsHostInstanceType = lens _bsHostInstanceType (\ s a -> s{_bsHostInstanceType = a})
 
@@ -89,7 +96,8 @@ instance FromJSON BrokerSummary where
               (\ x ->
                  BrokerSummary' <$>
                    (x .:? "brokerName") <*> (x .:? "brokerState") <*>
-                     (x .:? "deploymentMode")
+                     (x .:? "created")
+                     <*> (x .:? "deploymentMode")
                      <*> (x .:? "brokerId")
                      <*> (x .:? "brokerArn")
                      <*> (x .:? "hostInstanceType"))

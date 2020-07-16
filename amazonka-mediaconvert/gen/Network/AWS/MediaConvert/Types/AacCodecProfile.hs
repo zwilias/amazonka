@@ -19,9 +19,9 @@
 module Network.AWS.MediaConvert.Types.AacCodecProfile (
   AacCodecProfile (
     ..
-    , HEV1
-    , HEV2
-    , LC
+    , ACPHEV1
+    , ACPHEV2
+    , ACPLC
     )
   ) where
 
@@ -33,19 +33,19 @@ data AacCodecProfile = AacCodecProfile' (CI Text)
                          deriving (Eq, Ord, Read, Show, Data, Typeable,
                                    Generic)
 
-pattern HEV1 :: AacCodecProfile
-pattern HEV1 = AacCodecProfile' "HEV1"
+pattern ACPHEV1 :: AacCodecProfile
+pattern ACPHEV1 = AacCodecProfile' "HEV1"
 
-pattern HEV2 :: AacCodecProfile
-pattern HEV2 = AacCodecProfile' "HEV2"
+pattern ACPHEV2 :: AacCodecProfile
+pattern ACPHEV2 = AacCodecProfile' "HEV2"
 
-pattern LC :: AacCodecProfile
-pattern LC = AacCodecProfile' "LC"
+pattern ACPLC :: AacCodecProfile
+pattern ACPLC = AacCodecProfile' "LC"
 
 {-# COMPLETE
-  HEV1,
-  HEV2,
-  LC,
+  ACPHEV1,
+  ACPHEV2,
+  ACPLC,
   AacCodecProfile' #-}
 
 instance FromText AacCodecProfile where
@@ -60,22 +60,22 @@ instance ToText AacCodecProfile where
 --   fromEnum is a partial function, and will error on values unknown at generation time.
 instance Enum AacCodecProfile where
     toEnum i = case i of
-        0 -> HEV1
-        1 -> HEV2
-        2 -> LC
+        0 -> ACPHEV1
+        1 -> ACPHEV2
+        2 -> ACPLC
         _ -> (error . showText) $ "Unknown index for AacCodecProfile: " <> toText i
     fromEnum x = case x of
-        HEV1 -> 0
-        HEV2 -> 1
-        LC -> 2
+        ACPHEV1 -> 0
+        ACPHEV2 -> 1
+        ACPLC -> 2
         AacCodecProfile' name -> (error . showText) $ "Unknown AacCodecProfile: " <> original name
 
 -- | Represents the bounds of /known/ $AacCodecProfile.
 --   AWS may have added more since the source was generated.
 --   This instance exists only for backward compatibility.
 instance Bounded AacCodecProfile where
-    minBound = HEV1
-    maxBound = LC
+    minBound = ACPHEV1
+    maxBound = ACPLC
 
 instance Hashable     AacCodecProfile
 instance NFData       AacCodecProfile

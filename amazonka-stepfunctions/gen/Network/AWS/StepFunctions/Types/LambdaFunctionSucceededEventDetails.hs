@@ -20,7 +20,7 @@ module Network.AWS.StepFunctions.Types.LambdaFunctionSucceededEventDetails where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | Contains details about a lambda function which successfully terminated during an execution.
+-- | Contains details about a lambda function that successfully terminated during an execution.
 --
 --
 --
@@ -28,8 +28,9 @@ import Network.AWS.Prelude
 newtype LambdaFunctionSucceededEventDetails = LambdaFunctionSucceededEventDetails'{_lfsedOutput
                                                                                    ::
                                                                                    Maybe
-                                                                                     Text}
-                                                deriving (Eq, Read, Show, Data,
+                                                                                     (Sensitive
+                                                                                        Text)}
+                                                deriving (Eq, Show, Data,
                                                           Typeable, Generic)
 
 -- | Creates a value of 'LambdaFunctionSucceededEventDetails' with the minimum fields required to make a request.
@@ -45,7 +46,7 @@ lambdaFunctionSucceededEventDetails
 
 -- | The JSON data output by the lambda function.
 lfsedOutput :: Lens' LambdaFunctionSucceededEventDetails (Maybe Text)
-lfsedOutput = lens _lfsedOutput (\ s a -> s{_lfsedOutput = a})
+lfsedOutput = lens _lfsedOutput (\ s a -> s{_lfsedOutput = a}) . mapping _Sensitive
 
 instance FromJSON LambdaFunctionSucceededEventDetails
          where

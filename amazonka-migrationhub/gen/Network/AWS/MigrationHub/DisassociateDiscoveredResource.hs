@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Disassociate an Application Discovery Service (ADS) discovered resource from a migration task.
+-- Disassociate an Application Discovery Service discovered resource from a migration task.
 --
 --
 module Network.AWS.MigrationHub.DisassociateDiscoveredResource
@@ -68,9 +68,9 @@ data DisassociateDiscoveredResource = DisassociateDiscoveredResource'{_ddrDryRun
 --
 -- * 'ddrProgressUpdateStream' - The name of the ProgressUpdateStream.
 --
--- * 'ddrMigrationTaskName' - The identifier given to the MigrationTask.
+-- * 'ddrMigrationTaskName' - The identifier given to the MigrationTask. /Do not store personal data in this field./ 
 --
--- * 'ddrConfigurationId' - ConfigurationId of the ADS resource to be disassociated.
+-- * 'ddrConfigurationId' - ConfigurationId of the Application Discovery Service resource to be disassociated.
 disassociateDiscoveredResource
     :: Text -- ^ 'ddrProgressUpdateStream'
     -> Text -- ^ 'ddrMigrationTaskName'
@@ -93,11 +93,11 @@ ddrDryRun = lens _ddrDryRun (\ s a -> s{_ddrDryRun = a})
 ddrProgressUpdateStream :: Lens' DisassociateDiscoveredResource Text
 ddrProgressUpdateStream = lens _ddrProgressUpdateStream (\ s a -> s{_ddrProgressUpdateStream = a})
 
--- | The identifier given to the MigrationTask.
+-- | The identifier given to the MigrationTask. /Do not store personal data in this field./ 
 ddrMigrationTaskName :: Lens' DisassociateDiscoveredResource Text
 ddrMigrationTaskName = lens _ddrMigrationTaskName (\ s a -> s{_ddrMigrationTaskName = a})
 
--- | ConfigurationId of the ADS resource to be disassociated.
+-- | ConfigurationId of the Application Discovery Service resource to be disassociated.
 ddrConfigurationId :: Lens' DisassociateDiscoveredResource Text
 ddrConfigurationId = lens _ddrConfigurationId (\ s a -> s{_ddrConfigurationId = a})
 

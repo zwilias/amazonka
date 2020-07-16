@@ -33,14 +33,14 @@ newtype PutItemInput = PutItemInput'{_piiTableName ::
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'piiTableName' - The table where the message data will be written
+-- * 'piiTableName' - The table where the message data will be written.
 putItemInput
     :: Text -- ^ 'piiTableName'
     -> PutItemInput
 putItemInput pTableName_
   = PutItemInput'{_piiTableName = pTableName_}
 
--- | The table where the message data will be written
+-- | The table where the message data will be written.
 piiTableName :: Lens' PutItemInput Text
 piiTableName = lens _piiTableName (\ s a -> s{_piiTableName = a})
 

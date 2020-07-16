@@ -18,7 +18,9 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Deletes a segment.
+-- Deletes a segment from an application.
+--
+--
 module Network.AWS.Pinpoint.DeleteSegment
     (
     -- * Creating a Request
@@ -53,9 +55,9 @@ data DeleteSegment = DeleteSegment'{_dsSegmentId ::
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dsSegmentId' - Undocumented member.
+-- * 'dsSegmentId' - The unique identifier for the segment.
 --
--- * 'dsApplicationId' - Undocumented member.
+-- * 'dsApplicationId' - The unique identifier for the application. This identifier is displayed as the __Project ID__ on the Amazon Pinpoint console.
 deleteSegment
     :: Text -- ^ 'dsSegmentId'
     -> Text -- ^ 'dsApplicationId'
@@ -64,11 +66,11 @@ deleteSegment pSegmentId_ pApplicationId_
   = DeleteSegment'{_dsSegmentId = pSegmentId_,
                    _dsApplicationId = pApplicationId_}
 
--- | Undocumented member.
+-- | The unique identifier for the segment.
 dsSegmentId :: Lens' DeleteSegment Text
 dsSegmentId = lens _dsSegmentId (\ s a -> s{_dsSegmentId = a})
 
--- | Undocumented member.
+-- | The unique identifier for the application. This identifier is displayed as the __Project ID__ on the Amazon Pinpoint console.
 dsApplicationId :: Lens' DeleteSegment Text
 dsApplicationId = lens _dsApplicationId (\ s a -> s{_dsApplicationId = a})
 

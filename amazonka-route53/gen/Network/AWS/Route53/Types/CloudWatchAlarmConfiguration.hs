@@ -55,7 +55,7 @@ data CloudWatchAlarmConfiguration = CloudWatchAlarmConfiguration'{_cwacDimension
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'cwacDimensions' - For the metric that the CloudWatch alarm is associated with, a complex type that contains information about the dimensions for the metric. For information, see <http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html Amazon CloudWatch Namespaces, Dimensions, and Metrics Reference> in the /Amazon CloudWatch User Guide/ .
+-- * 'cwacDimensions' - For the metric that the CloudWatch alarm is associated with, a complex type that contains information about the dimensions for the metric. For information, see <https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html Amazon CloudWatch Namespaces, Dimensions, and Metrics Reference> in the /Amazon CloudWatch User Guide/ .
 --
 -- * 'cwacEvaluationPeriods' - For the metric that the CloudWatch alarm is associated with, the number of periods that the metric is compared to the threshold.
 --
@@ -67,7 +67,7 @@ data CloudWatchAlarmConfiguration = CloudWatchAlarmConfiguration'{_cwacDimension
 --
 -- * 'cwacMetricName' - The name of the CloudWatch metric that the alarm is associated with.
 --
--- * 'cwacNamespace' - The namespace of the metric that the alarm is associated with. For more information, see <http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html Amazon CloudWatch Namespaces, Dimensions, and Metrics Reference> in the /Amazon CloudWatch User Guide/ .
+-- * 'cwacNamespace' - The namespace of the metric that the alarm is associated with. For more information, see <https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html Amazon CloudWatch Namespaces, Dimensions, and Metrics Reference> in the /Amazon CloudWatch User Guide/ .
 --
 -- * 'cwacStatistic' - For the metric that the CloudWatch alarm is associated with, the statistic that is applied to the metric.
 cloudWatchAlarmConfiguration
@@ -94,7 +94,7 @@ cloudWatchAlarmConfiguration pEvaluationPeriods_
                                   _cwacNamespace = pNamespace_,
                                   _cwacStatistic = pStatistic_}
 
--- | For the metric that the CloudWatch alarm is associated with, a complex type that contains information about the dimensions for the metric. For information, see <http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html Amazon CloudWatch Namespaces, Dimensions, and Metrics Reference> in the /Amazon CloudWatch User Guide/ .
+-- | For the metric that the CloudWatch alarm is associated with, a complex type that contains information about the dimensions for the metric. For information, see <https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html Amazon CloudWatch Namespaces, Dimensions, and Metrics Reference> in the /Amazon CloudWatch User Guide/ .
 cwacDimensions :: Lens' CloudWatchAlarmConfiguration [Dimension]
 cwacDimensions = lens _cwacDimensions (\ s a -> s{_cwacDimensions = a}) . _Default . _Coerce
 
@@ -118,7 +118,7 @@ cwacPeriod = lens _cwacPeriod (\ s a -> s{_cwacPeriod = a}) . _Nat
 cwacMetricName :: Lens' CloudWatchAlarmConfiguration Text
 cwacMetricName = lens _cwacMetricName (\ s a -> s{_cwacMetricName = a})
 
--- | The namespace of the metric that the alarm is associated with. For more information, see <http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html Amazon CloudWatch Namespaces, Dimensions, and Metrics Reference> in the /Amazon CloudWatch User Guide/ .
+-- | The namespace of the metric that the alarm is associated with. For more information, see <https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html Amazon CloudWatch Namespaces, Dimensions, and Metrics Reference> in the /Amazon CloudWatch User Guide/ .
 cwacNamespace :: Lens' CloudWatchAlarmConfiguration Text
 cwacNamespace = lens _cwacNamespace (\ s a -> s{_cwacNamespace = a})
 

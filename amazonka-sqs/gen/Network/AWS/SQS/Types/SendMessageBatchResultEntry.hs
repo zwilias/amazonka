@@ -28,6 +28,9 @@ import Network.AWS.Prelude
 data SendMessageBatchResultEntry = SendMessageBatchResultEntry'{_smbreSequenceNumber
                                                                 ::
                                                                 !(Maybe Text),
+                                                                _smbreMD5OfMessageSystemAttributes
+                                                                ::
+                                                                !(Maybe Text),
                                                                 _smbreMD5OfMessageAttributes
                                                                 ::
                                                                 !(Maybe Text),
@@ -46,6 +49,8 @@ data SendMessageBatchResultEntry = SendMessageBatchResultEntry'{_smbreSequenceNu
 --
 -- * 'smbreSequenceNumber' - This parameter applies only to FIFO (first-in-first-out) queues. The large, non-consecutive number that Amazon SQS assigns to each message. The length of @SequenceNumber@ is 128 bits. As @SequenceNumber@ continues to increase for a particular @MessageGroupId@ .
 --
+-- * 'smbreMD5OfMessageSystemAttributes' - An MD5 digest of the non-URL-encoded message system attribute string. You can use this attribute to verify that Amazon SQS received the message correctly. Amazon SQS URL-decodes the message before creating the MD5 digest. For information about MD5, see <https://www.ietf.org/rfc/rfc1321.txt RFC1321> .
+--
 -- * 'smbreMD5OfMessageAttributes' - An MD5 digest of the non-URL-encoded message attribute string. You can use this attribute to verify that Amazon SQS received the message correctly. Amazon SQS URL-decodes the message before creating the MD5 digest. For information about MD5, see <https://www.ietf.org/rfc/rfc1321.txt RFC1321> .
 --
 -- * 'smbreId' - An identifier for the message in this batch.
@@ -62,6 +67,7 @@ sendMessageBatchResultEntry pId_ pMessageId_
   pMD5OfMessageBody_
   = SendMessageBatchResultEntry'{_smbreSequenceNumber =
                                    Nothing,
+                                 _smbreMD5OfMessageSystemAttributes = Nothing,
                                  _smbreMD5OfMessageAttributes = Nothing,
                                  _smbreId = pId_, _smbreMessageId = pMessageId_,
                                  _smbreMD5OfMessageBody = pMD5OfMessageBody_}
@@ -69,6 +75,10 @@ sendMessageBatchResultEntry pId_ pMessageId_
 -- | This parameter applies only to FIFO (first-in-first-out) queues. The large, non-consecutive number that Amazon SQS assigns to each message. The length of @SequenceNumber@ is 128 bits. As @SequenceNumber@ continues to increase for a particular @MessageGroupId@ .
 smbreSequenceNumber :: Lens' SendMessageBatchResultEntry (Maybe Text)
 smbreSequenceNumber = lens _smbreSequenceNumber (\ s a -> s{_smbreSequenceNumber = a})
+
+-- | An MD5 digest of the non-URL-encoded message system attribute string. You can use this attribute to verify that Amazon SQS received the message correctly. Amazon SQS URL-decodes the message before creating the MD5 digest. For information about MD5, see <https://www.ietf.org/rfc/rfc1321.txt RFC1321> .
+smbreMD5OfMessageSystemAttributes :: Lens' SendMessageBatchResultEntry (Maybe Text)
+smbreMD5OfMessageSystemAttributes = lens _smbreMD5OfMessageSystemAttributes (\ s a -> s{_smbreMD5OfMessageSystemAttributes = a})
 
 -- | An MD5 digest of the non-URL-encoded message attribute string. You can use this attribute to verify that Amazon SQS received the message correctly. Amazon SQS URL-decodes the message before creating the MD5 digest. For information about MD5, see <https://www.ietf.org/rfc/rfc1321.txt RFC1321> .
 smbreMD5OfMessageAttributes :: Lens' SendMessageBatchResultEntry (Maybe Text)
@@ -90,7 +100,8 @@ instance FromXML SendMessageBatchResultEntry where
         parseXML x
           = SendMessageBatchResultEntry' <$>
               (x .@? "SequenceNumber") <*>
-                (x .@? "MD5OfMessageAttributes")
+                (x .@? "MD5OfMessageSystemAttributes")
+                <*> (x .@? "MD5OfMessageAttributes")
                 <*> (x .@ "Id")
                 <*> (x .@ "MessageId")
                 <*> (x .@ "MD5OfMessageBody")

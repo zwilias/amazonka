@@ -43,7 +43,7 @@ data TrustedAdvisorCheckRefreshStatus = TrustedAdvisorCheckRefreshStatus'{_tacrs
 --
 -- * 'tacrsCheckId' - The unique identifier for the Trusted Advisor check.
 --
--- * 'tacrsStatus' - The status of the Trusted Advisor check for which a refresh has been requested: "none", "enqueued", "processing", "success", or "abandoned".
+-- * 'tacrsStatus' - The status of the Trusted Advisor check for which a refresh has been requested:      * @none:@ The check is not refreshed or the non-success status exceeds the timeout     * @enqueued:@ The check refresh requests has entered the refresh queue     * @processing:@ The check refresh request is picked up by the rule processing engine     * @success:@ The check is successfully refreshed     * @abandoned:@ The check refresh has failed
 --
 -- * 'tacrsMillisUntilNextRefreshable' - The amount of time, in milliseconds, until the Trusted Advisor check is eligible for refresh.
 trustedAdvisorCheckRefreshStatus
@@ -63,7 +63,7 @@ trustedAdvisorCheckRefreshStatus pCheckId_ pStatus_
 tacrsCheckId :: Lens' TrustedAdvisorCheckRefreshStatus Text
 tacrsCheckId = lens _tacrsCheckId (\ s a -> s{_tacrsCheckId = a})
 
--- | The status of the Trusted Advisor check for which a refresh has been requested: "none", "enqueued", "processing", "success", or "abandoned".
+-- | The status of the Trusted Advisor check for which a refresh has been requested:      * @none:@ The check is not refreshed or the non-success status exceeds the timeout     * @enqueued:@ The check refresh requests has entered the refresh queue     * @processing:@ The check refresh request is picked up by the rule processing engine     * @success:@ The check is successfully refreshed     * @abandoned:@ The check refresh has failed
 tacrsStatus :: Lens' TrustedAdvisorCheckRefreshStatus Text
 tacrsStatus = lens _tacrsStatus (\ s a -> s{_tacrsStatus = a})
 

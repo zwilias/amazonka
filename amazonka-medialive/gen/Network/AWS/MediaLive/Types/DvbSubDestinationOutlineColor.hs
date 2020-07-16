@@ -31,7 +31,7 @@ module Network.AWS.MediaLive.Types.DvbSubDestinationOutlineColor (
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | Placeholder documentation for DvbSubDestinationOutlineColor
+-- | Dvb Sub Destination Outline Color
 data DvbSubDestinationOutlineColor = DvbSubDestinationOutlineColor' (CI
                                                                        Text)
                                        deriving (Eq, Ord, Read, Show, Data,

@@ -26,8 +26,9 @@ import Network.AWS.Prelude
 --
 --
 -- /See:/ 'location' smart constructor.
-data Location = Location'{_lJdbc ::
+data Location = Location'{_lDynamoDB ::
                           !(Maybe [CodeGenNodeArg]),
+                          _lJdbc :: !(Maybe [CodeGenNodeArg]),
                           _lS3 :: !(Maybe [CodeGenNodeArg])}
                   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -35,19 +36,26 @@ data Location = Location'{_lJdbc ::
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
+-- * 'lDynamoDB' - An Amazon DynamoDB table location.
+--
 -- * 'lJdbc' - A JDBC location.
 --
--- * 'lS3' - An Amazon S3 location.
+-- * 'lS3' - An Amazon Simple Storage Service (Amazon S3) location.
 location
     :: Location
 location
-  = Location'{_lJdbc = Nothing, _lS3 = Nothing}
+  = Location'{_lDynamoDB = Nothing, _lJdbc = Nothing,
+              _lS3 = Nothing}
+
+-- | An Amazon DynamoDB table location.
+lDynamoDB :: Lens' Location [CodeGenNodeArg]
+lDynamoDB = lens _lDynamoDB (\ s a -> s{_lDynamoDB = a}) . _Default . _Coerce
 
 -- | A JDBC location.
 lJdbc :: Lens' Location [CodeGenNodeArg]
 lJdbc = lens _lJdbc (\ s a -> s{_lJdbc = a}) . _Default . _Coerce
 
--- | An Amazon S3 location.
+-- | An Amazon Simple Storage Service (Amazon S3) location.
 lS3 :: Lens' Location [CodeGenNodeArg]
 lS3 = lens _lS3 (\ s a -> s{_lS3 = a}) . _Default . _Coerce
 
@@ -59,4 +67,5 @@ instance ToJSON Location where
         toJSON Location'{..}
           = object
               (catMaybes
-                 [("Jdbc" .=) <$> _lJdbc, ("S3" .=) <$> _lS3])
+                 [("DynamoDB" .=) <$> _lDynamoDB,
+                  ("Jdbc" .=) <$> _lJdbc, ("S3" .=) <$> _lS3])

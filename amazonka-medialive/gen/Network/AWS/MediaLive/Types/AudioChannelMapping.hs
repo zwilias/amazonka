@@ -21,7 +21,7 @@ import Network.AWS.Lens
 import Network.AWS.MediaLive.Types.InputChannelLevel
 import Network.AWS.Prelude
 
--- | Placeholder documentation for AudioChannelMapping
+-- | Audio Channel Mapping
 --
 -- /See:/ 'audioChannelMapping' smart constructor.
 data AudioChannelMapping = AudioChannelMapping'{_acmOutputChannel

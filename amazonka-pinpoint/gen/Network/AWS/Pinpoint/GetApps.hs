@@ -18,7 +18,9 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Returns information about your apps.
+-- Retrieves information about all the applications that are associated with your Amazon Pinpoint account.
+--
+--
 module Network.AWS.Pinpoint.GetApps
     (
     -- * Creating a Request
@@ -52,19 +54,19 @@ data GetApps = GetApps'{_gaToken :: !(Maybe Text),
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'gaToken' - Undocumented member.
+-- * 'gaToken' - The NextToken string that specifies which page of results to return in a paginated response.
 --
--- * 'gaPageSize' - Undocumented member.
+-- * 'gaPageSize' - The maximum number of items to include in each page of a paginated response. This parameter is not supported for application, campaign, and journey metrics.
 getApps
     :: GetApps
 getApps
   = GetApps'{_gaToken = Nothing, _gaPageSize = Nothing}
 
--- | Undocumented member.
+-- | The NextToken string that specifies which page of results to return in a paginated response.
 gaToken :: Lens' GetApps (Maybe Text)
 gaToken = lens _gaToken (\ s a -> s{_gaToken = a})
 
--- | Undocumented member.
+-- | The maximum number of items to include in each page of a paginated response. This parameter is not supported for application, campaign, and journey metrics.
 gaPageSize :: Lens' GetApps (Maybe Text)
 gaPageSize = lens _gaPageSize (\ s a -> s{_gaPageSize = a})
 

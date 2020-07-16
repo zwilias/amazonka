@@ -18,10 +18,10 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Deregisters a specified Amazon ECS cluster from a stack. For more information, see <http://docs.aws.amazon.com/opsworks/latest/userguide/workinglayers-ecscluster.html#workinglayers-ecscluster-delete Resource Management> .
+-- Deregisters a specified Amazon ECS cluster from a stack. For more information, see <https://docs.aws.amazon.com/opsworks/latest/userguide/workinglayers-ecscluster.html#workinglayers-ecscluster-delete Resource Management> .
 --
 --
--- __Required Permissions__ : To use this action, an IAM user must have a Manage permissions level for the stack or an attached policy that explicitly grants permissions. For more information on user permissions, see <http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html> .
+-- __Required Permissions__ : To use this action, an IAM user must have a Manage permissions level for the stack or an attached policy that explicitly grants permissions. For more information on user permissions, see <https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html> .
 --
 module Network.AWS.OpsWorks.DeregisterEcsCluster
     (
@@ -53,7 +53,7 @@ newtype DeregisterEcsCluster = DeregisterEcsCluster'{_decEcsClusterARN
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'decEcsClusterARN' - The cluster's ARN.
+-- * 'decEcsClusterARN' - The cluster's Amazon Resource Number (ARN).
 deregisterEcsCluster
     :: Text -- ^ 'decEcsClusterARN'
     -> DeregisterEcsCluster
@@ -61,7 +61,7 @@ deregisterEcsCluster pEcsClusterARN_
   = DeregisterEcsCluster'{_decEcsClusterARN =
                             pEcsClusterARN_}
 
--- | The cluster's ARN.
+-- | The cluster's Amazon Resource Number (ARN).
 decEcsClusterARN :: Lens' DeregisterEcsCluster Text
 decEcsClusterARN = lens _decEcsClusterARN (\ s a -> s{_decEcsClusterARN = a})
 

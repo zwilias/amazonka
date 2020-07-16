@@ -41,7 +41,7 @@ data ServiceChange = ServiceChange'{_scHealthCheckConfig
 --
 -- * 'scDescription' - A description for the service.
 --
--- * 'scDNSConfig' - A complex type that contains information about the records that you want Route 53 to create when you register an instance.
+-- * 'scDNSConfig' - A complex type that contains information about the Route 53 DNS records that you want AWS Cloud Map to create when you register an instance.
 serviceChange
     :: DNSConfigChange -- ^ 'scDNSConfig'
     -> ServiceChange
@@ -57,7 +57,7 @@ scHealthCheckConfig = lens _scHealthCheckConfig (\ s a -> s{_scHealthCheckConfig
 scDescription :: Lens' ServiceChange (Maybe Text)
 scDescription = lens _scDescription (\ s a -> s{_scDescription = a})
 
--- | A complex type that contains information about the records that you want Route 53 to create when you register an instance.
+-- | A complex type that contains information about the Route 53 DNS records that you want AWS Cloud Map to create when you register an instance.
 scDNSConfig :: Lens' ServiceChange DNSConfigChange
 scDNSConfig = lens _scDNSConfig (\ s a -> s{_scDNSConfig = a})
 

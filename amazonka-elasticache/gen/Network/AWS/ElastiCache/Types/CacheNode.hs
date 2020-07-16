@@ -30,17 +30,21 @@ import Network.AWS.Prelude
 --
 --     * Current generation: 
 --
--- __T2 node types:__ @cache.t2.micro@ , @cache.t2.small@ , @cache.t2.medium@ 
---
--- __M3 node types:__ @cache.m3.medium@ , @cache.m3.large@ , @cache.m3.xlarge@ , @cache.m3.2xlarge@ 
+-- __M5 node types:__ @cache.m5.large@ , @cache.m5.xlarge@ , @cache.m5.2xlarge@ , @cache.m5.4xlarge@ , @cache.m5.12xlarge@ , @cache.m5.24xlarge@ 
 --
 -- __M4 node types:__ @cache.m4.large@ , @cache.m4.xlarge@ , @cache.m4.2xlarge@ , @cache.m4.4xlarge@ , @cache.m4.10xlarge@ 
+--
+-- __T3 node types:__ @cache.t3.micro@ , @cache.t3.small@ , @cache.t3.medium@ 
+--
+-- __T2 node types:__ @cache.t2.micro@ , @cache.t2.small@ , @cache.t2.medium@ 
 --
 --     * Previous generation: (not recommended)
 --
 -- __T1 node types:__ @cache.t1.micro@ 
 --
 -- __M1 node types:__ @cache.m1.small@ , @cache.m1.medium@ , @cache.m1.large@ , @cache.m1.xlarge@ 
+--
+-- __M3 node types:__ @cache.m3.medium@ , @cache.m3.large@ , @cache.m3.xlarge@ , @cache.m3.2xlarge@ 
 --
 --
 --
@@ -56,29 +60,31 @@ import Network.AWS.Prelude
 --
 --     * Current generation: 
 --
--- __R3 node types:__ @cache.r3.large@ , @cache.r3.xlarge@ , @cache.r3.2xlarge@ , @cache.r3.4xlarge@ , @cache.r3.8xlarge@ 
+-- __R5 node types:__ @cache.r5.large@ , @cache.r5.xlarge@ , @cache.r5.2xlarge@ , @cache.r5.4xlarge@ , @cache.r5.12xlarge@ , @cache.r5.24xlarge@ 
+--
+-- __R4 node types:__ @cache.r4.large@ , @cache.r4.xlarge@ , @cache.r4.2xlarge@ , @cache.r4.4xlarge@ , @cache.r4.8xlarge@ , @cache.r4.16xlarge@ 
 --
 --     * Previous generation: (not recommended)
 --
 -- __M2 node types:__ @cache.m2.xlarge@ , @cache.m2.2xlarge@ , @cache.m2.4xlarge@ 
 --
+-- __R3 node types:__ @cache.r3.large@ , @cache.r3.xlarge@ , @cache.r3.2xlarge@ , @cache.r3.4xlarge@ , @cache.r3.8xlarge@ 
 --
 --
 --
 --
--- __Notes:__ 
 --
---     * All T2 instances are created in an Amazon Virtual Private Cloud (Amazon VPC).
+-- __Additional node type info__ 
 --
---     * Redis (cluster mode disabled): Redis backup/restore is not supported on T1 and T2 instances. 
+--     * All current generation instance types are created in Amazon VPC by default.
 --
---     * Redis (cluster mode enabled): Backup/restore is not supported on T1 instances.
+--     * Redis append-only files (AOF) are not supported for T1 or T2 instances.
 --
---     * Redis Append-only files (AOF) functionality is not supported for T1 or T2 instances.
+--     * Redis Multi-AZ with automatic failover is not supported on T1 instances.
+--
+--     * Redis configuration variables @appendonly@ and @appendfsync@ are not supported on Redis version 2.8.22 and later.
 --
 --
---
--- For a complete listing of node types and specifications, see <http://aws.amazon.com/elasticache/details Amazon ElastiCache Product Features and Details> and either <http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/CacheParameterGroups.Memcached.html#ParameterGroups.Memcached.NodeSpecific Cache Node Type-Specific Parameters for Memcached> or <http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/CacheParameterGroups.Redis.html#ParameterGroups.Redis.NodeSpecific Cache Node Type-Specific Parameters for Redis> .
 --
 --
 -- /See:/ 'cacheNode' smart constructor.
@@ -106,7 +112,7 @@ data CacheNode = CacheNode'{_cnSourceCacheNodeId ::
 --
 -- * 'cnCacheNodeId' - The cache node identifier. A node ID is a numeric identifier (0001, 0002, etc.). The combination of cluster ID and node ID uniquely identifies every cache node used in a customer's AWS account.
 --
--- * 'cnCacheNodeStatus' - The current state of this cache node.
+-- * 'cnCacheNodeStatus' - The current state of this cache node, one of the following values: @available@ , @creating@ , @rebooting@ , or @deleting@ .
 --
 -- * 'cnEndpoint' - The hostname for connecting to this cache node.
 cacheNode
@@ -139,7 +145,7 @@ cnCustomerAvailabilityZone = lens _cnCustomerAvailabilityZone (\ s a -> s{_cnCus
 cnCacheNodeId :: Lens' CacheNode (Maybe Text)
 cnCacheNodeId = lens _cnCacheNodeId (\ s a -> s{_cnCacheNodeId = a})
 
--- | The current state of this cache node.
+-- | The current state of this cache node, one of the following values: @available@ , @creating@ , @rebooting@ , or @deleting@ .
 cnCacheNodeStatus :: Lens' CacheNode (Maybe Text)
 cnCacheNodeStatus = lens _cnCacheNodeStatus (\ s a -> s{_cnCacheNodeStatus = a})
 

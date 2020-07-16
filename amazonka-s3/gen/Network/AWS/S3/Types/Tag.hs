@@ -21,7 +21,11 @@ import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.S3.Internal
 
--- | /See:/ 'tag' smart constructor.
+-- | A container of a key value name pair.
+--
+--
+--
+-- /See:/ 'tag' smart constructor.
 data Tag = Tag'{_tagKey :: !ObjectKey,
                 _tagValue :: !Text}
              deriving (Eq, Read, Show, Data, Typeable, Generic)

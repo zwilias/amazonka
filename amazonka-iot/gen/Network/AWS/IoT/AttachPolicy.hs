@@ -54,7 +54,7 @@ data AttachPolicy = AttachPolicy'{_apPolicyName ::
 --
 -- * 'apPolicyName' - The name of the policy to attach.
 --
--- * 'apTarget' - The identity to which the policy is attached.
+-- * 'apTarget' - The <https://docs.aws.amazon.com/iot/latest/developerguide/iot-security-identity.html identity> to which the policy is attached.
 attachPolicy
     :: Text -- ^ 'apPolicyName'
     -> Text -- ^ 'apTarget'
@@ -67,7 +67,7 @@ attachPolicy pPolicyName_ pTarget_
 apPolicyName :: Lens' AttachPolicy Text
 apPolicyName = lens _apPolicyName (\ s a -> s{_apPolicyName = a})
 
--- | The identity to which the policy is attached.
+-- | The <https://docs.aws.amazon.com/iot/latest/developerguide/iot-security-identity.html identity> to which the policy is attached.
 apTarget :: Lens' AttachPolicy Text
 apTarget = lens _apTarget (\ s a -> s{_apTarget = a})
 

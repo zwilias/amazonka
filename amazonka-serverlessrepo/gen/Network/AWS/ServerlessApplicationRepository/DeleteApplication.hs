@@ -50,7 +50,7 @@ newtype DeleteApplication = DeleteApplication'{_daApplicationId
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'daApplicationId' - The ID of the application to get.
+-- * 'daApplicationId' - The Amazon Resource Name (ARN) of the application.
 deleteApplication
     :: Text -- ^ 'daApplicationId'
     -> DeleteApplication
@@ -58,7 +58,7 @@ deleteApplication pApplicationId_
   = DeleteApplication'{_daApplicationId =
                          pApplicationId_}
 
--- | The ID of the application to get.
+-- | The Amazon Resource Name (ARN) of the application.
 daApplicationId :: Lens' DeleteApplication Text
 daApplicationId = lens _daApplicationId (\ s a -> s{_daApplicationId = a})
 

@@ -27,7 +27,6 @@ module Network.AWS.GuardDuty.Types.Feedback (
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | Finding Feedback Value
 data Feedback = Feedback' (CI Text)
                   deriving (Eq, Ord, Read, Show, Data, Typeable,
                             Generic)

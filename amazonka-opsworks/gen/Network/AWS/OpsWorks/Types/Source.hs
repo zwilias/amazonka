@@ -21,7 +21,7 @@ import Network.AWS.Lens
 import Network.AWS.OpsWorks.Types.SourceType
 import Network.AWS.Prelude
 
--- | Contains the information required to retrieve an app or cookbook from a repository. For more information, see <http://docs.aws.amazon.com/opsworks/latest/userguide/workingapps-creating.html Creating Apps> or <http://docs.aws.amazon.com/opsworks/latest/userguide/workingcookbook.html Custom Recipes and Cookbooks> .
+-- | Contains the information required to retrieve an app or cookbook from a repository. For more information, see <https://docs.aws.amazon.com/opsworks/latest/userguide/workingapps-creating.html Creating Apps> or <https://docs.aws.amazon.com/opsworks/latest/userguide/workingcookbook.html Custom Recipes and Cookbooks> .
 --
 --
 --
@@ -44,7 +44,7 @@ data Source = Source'{_sURL :: !(Maybe Text),
 --
 -- * 'sSSHKey' - In requests, the repository's SSH key. In responses, AWS OpsWorks Stacks returns @*****FILTERED*****@ instead of the actual value.
 --
--- * 'sPassword' - When included in a request, the parameter depends on the repository type.     * For Amazon S3 bundles, set @Password@ to the appropriate IAM secret access key.     * For HTTP bundles and Subversion repositories, set @Password@ to the password. For more information on how to safely handle IAM credentials, see <http://docs.aws.amazon.com/general/latest/gr/aws-access-keys-best-practices.html http://docs.aws.amazon.com/general/latest/gr/aws-access-keys-best-practices.html> . In responses, AWS OpsWorks Stacks returns @*****FILTERED*****@ instead of the actual value.
+-- * 'sPassword' - When included in a request, the parameter depends on the repository type.     * For Amazon S3 bundles, set @Password@ to the appropriate IAM secret access key.     * For HTTP bundles and Subversion repositories, set @Password@ to the password. For more information on how to safely handle IAM credentials, see <https://docs.aws.amazon.com/general/latest/gr/aws-access-keys-best-practices.html https://docs.aws.amazon.com/general/latest/gr/aws-access-keys-best-practices.html> . In responses, AWS OpsWorks Stacks returns @*****FILTERED*****@ instead of the actual value.
 --
 -- * 'sType' - The repository type.
 --
@@ -68,7 +68,7 @@ sUsername = lens _sUsername (\ s a -> s{_sUsername = a})
 sSSHKey :: Lens' Source (Maybe Text)
 sSSHKey = lens _sSSHKey (\ s a -> s{_sSSHKey = a})
 
--- | When included in a request, the parameter depends on the repository type.     * For Amazon S3 bundles, set @Password@ to the appropriate IAM secret access key.     * For HTTP bundles and Subversion repositories, set @Password@ to the password. For more information on how to safely handle IAM credentials, see <http://docs.aws.amazon.com/general/latest/gr/aws-access-keys-best-practices.html http://docs.aws.amazon.com/general/latest/gr/aws-access-keys-best-practices.html> . In responses, AWS OpsWorks Stacks returns @*****FILTERED*****@ instead of the actual value.
+-- | When included in a request, the parameter depends on the repository type.     * For Amazon S3 bundles, set @Password@ to the appropriate IAM secret access key.     * For HTTP bundles and Subversion repositories, set @Password@ to the password. For more information on how to safely handle IAM credentials, see <https://docs.aws.amazon.com/general/latest/gr/aws-access-keys-best-practices.html https://docs.aws.amazon.com/general/latest/gr/aws-access-keys-best-practices.html> . In responses, AWS OpsWorks Stacks returns @*****FILTERED*****@ instead of the actual value.
 sPassword :: Lens' Source (Maybe Text)
 sPassword = lens _sPassword (\ s a -> s{_sPassword = a})
 

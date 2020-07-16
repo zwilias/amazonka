@@ -18,7 +18,9 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Get an email channel
+-- Retrieves information about the status and settings of the email channel for an application.
+--
+--
 module Network.AWS.Pinpoint.GetEmailChannel
     (
     -- * Creating a Request
@@ -51,7 +53,7 @@ newtype GetEmailChannel = GetEmailChannel'{_gecApplicationId
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'gecApplicationId' - Undocumented member.
+-- * 'gecApplicationId' - The unique identifier for the application. This identifier is displayed as the __Project ID__ on the Amazon Pinpoint console.
 getEmailChannel
     :: Text -- ^ 'gecApplicationId'
     -> GetEmailChannel
@@ -59,7 +61,7 @@ getEmailChannel pApplicationId_
   = GetEmailChannel'{_gecApplicationId =
                        pApplicationId_}
 
--- | Undocumented member.
+-- | The unique identifier for the application. This identifier is displayed as the __Project ID__ on the Amazon Pinpoint console.
 gecApplicationId :: Lens' GetEmailChannel Text
 gecApplicationId = lens _gecApplicationId (\ s a -> s{_gecApplicationId = a})
 

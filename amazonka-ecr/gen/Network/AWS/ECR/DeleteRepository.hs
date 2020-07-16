@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Deletes an existing image repository. If a repository contains images, you must use the @force@ option to delete it.
+-- Deletes a repository. If the repository contains images, you must either delete all images in the repository or use the @force@ option to delete the repository.
 --
 --
 module Network.AWS.ECR.DeleteRepository

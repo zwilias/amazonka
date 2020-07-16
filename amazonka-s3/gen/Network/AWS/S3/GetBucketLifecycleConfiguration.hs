@@ -18,7 +18,35 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Returns the lifecycle configuration information set on the bucket.
+-- Returns the lifecycle configuration information set on the bucket. For information about lifecycle configuration, see <https://docs.aws.amazon.com/AmazonS3/latest/dev/object-lifecycle-mgmt.html Object Lifecycle Management> .
+--
+--
+-- To use this operation, you must have permission to perform the @s3:GetLifecycleConfiguration@ action. The bucket owner has this permission, by default. The bucket owner can grant this permission to others. For more information about permissions, see <https://docs.aws.amazon.com/AmazonS3/latest/dev/using-with-s3-actions.html#using-with-s3-actions-related-to-bucket-subresources Permissions Related to Bucket Subresource Operations> and <https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-access-control.html Managing Access Permissions to Your Amazon S3 Resources> .
+--
+-- @GetBucketLifecycleConfiguration@ has the following special error:
+--
+--     * Error code: @NoSuchLifecycleConfiguration@ 
+--
+--     * Description: The lifecycle configuration does not exist.
+--
+--     * HTTP Status Code: 404 Not Found
+--
+--     * SOAP Fault Code Prefix: Client
+--
+--
+--
+--
+--
+-- The following operations are related to @DeleteBucketMetricsConfiguration@ :
+--
+--     * 'GetBucketLifecycle' 
+--
+--     * 'PutBucketLifecycle' 
+--
+--     * 'DeleteBucketLifecycle' 
+--
+--
+--
 module Network.AWS.S3.GetBucketLifecycleConfiguration
     (
     -- * Creating a Request
@@ -53,7 +81,7 @@ newtype GetBucketLifecycleConfiguration = GetBucketLifecycleConfiguration'{_gblc
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'gblcBucket' - Undocumented member.
+-- * 'gblcBucket' - The name of the bucket for which to get the lifecycle information.
 getBucketLifecycleConfiguration
     :: BucketName -- ^ 'gblcBucket'
     -> GetBucketLifecycleConfiguration
@@ -61,7 +89,7 @@ getBucketLifecycleConfiguration pBucket_
   = GetBucketLifecycleConfiguration'{_gblcBucket =
                                        pBucket_}
 
--- | Undocumented member.
+-- | The name of the bucket for which to get the lifecycle information.
 gblcBucket :: Lens' GetBucketLifecycleConfiguration BucketName
 gblcBucket = lens _gblcBucket (\ s a -> s{_gblcBucket = a})
 
@@ -109,7 +137,7 @@ data GetBucketLifecycleConfigurationResponse = GetBucketLifecycleConfigurationRe
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'gblcrsRules' - Undocumented member.
+-- * 'gblcrsRules' - Container for a lifecycle rule.
 --
 -- * 'gblcrsResponseStatus' - -- | The response status code.
 getBucketLifecycleConfigurationResponse
@@ -122,7 +150,7 @@ getBucketLifecycleConfigurationResponse
                                              _gblcrsResponseStatus =
                                                pResponseStatus_}
 
--- | Undocumented member.
+-- | Container for a lifecycle rule.
 gblcrsRules :: Lens' GetBucketLifecycleConfigurationResponse [LifecycleRule]
 gblcrsRules = lens _gblcrsRules (\ s a -> s{_gblcrsRules = a}) . _Default . _Coerce
 

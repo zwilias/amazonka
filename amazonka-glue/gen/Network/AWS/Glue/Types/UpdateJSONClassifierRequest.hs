@@ -37,7 +37,7 @@ data UpdateJSONClassifierRequest = UpdateJSONClassifierRequest'{_ujcrJSONPath
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'ujcrJSONPath' - A @JsonPath@ string defining the JSON data for the classifier to classify. AWS Glue supports a subset of JsonPath, as described in <https://docs.aws.amazon.com/glue/latest/dg/custom-classifier.html#custom-classifier-json Writing JsonPath Custom Classifiers> .
+-- * 'ujcrJSONPath' - A @JsonPath@ string defining the JSON data for the classifier to classify. AWS Glue supports a subset of @JsonPath@ , as described in <https://docs.aws.amazon.com/glue/latest/dg/custom-classifier.html#custom-classifier-json Writing JsonPath Custom Classifiers> .
 --
 -- * 'ujcrName' - The name of the classifier.
 updateJSONClassifierRequest
@@ -48,7 +48,7 @@ updateJSONClassifierRequest pName_
                                    Nothing,
                                  _ujcrName = pName_}
 
--- | A @JsonPath@ string defining the JSON data for the classifier to classify. AWS Glue supports a subset of JsonPath, as described in <https://docs.aws.amazon.com/glue/latest/dg/custom-classifier.html#custom-classifier-json Writing JsonPath Custom Classifiers> .
+-- | A @JsonPath@ string defining the JSON data for the classifier to classify. AWS Glue supports a subset of @JsonPath@ , as described in <https://docs.aws.amazon.com/glue/latest/dg/custom-classifier.html#custom-classifier-json Writing JsonPath Custom Classifiers> .
 ujcrJSONPath :: Lens' UpdateJSONClassifierRequest (Maybe Text)
 ujcrJSONPath = lens _ujcrJSONPath (\ s a -> s{_ujcrJSONPath = a})
 

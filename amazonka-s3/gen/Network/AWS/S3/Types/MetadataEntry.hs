@@ -23,6 +23,8 @@ import Network.AWS.S3.Internal
 
 -- | A metadata key-value pair to store with an object.
 --
+--
+--
 -- /See:/ 'metadataEntry' smart constructor.
 data MetadataEntry = MetadataEntry'{_meValue ::
                                     !(Maybe Text),
@@ -33,20 +35,20 @@ data MetadataEntry = MetadataEntry'{_meValue ::
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'meValue' - Undocumented member.
+-- * 'meValue' - Value of the Object.
 --
--- * 'meName' - Undocumented member.
+-- * 'meName' - Name of the Object.
 metadataEntry
     :: MetadataEntry
 metadataEntry
   = MetadataEntry'{_meValue = Nothing,
                    _meName = Nothing}
 
--- | Undocumented member.
+-- | Value of the Object.
 meValue :: Lens' MetadataEntry (Maybe Text)
 meValue = lens _meValue (\ s a -> s{_meValue = a})
 
--- | Undocumented member.
+-- | Name of the Object.
 meName :: Lens' MetadataEntry (Maybe Text)
 meName = lens _meName (\ s a -> s{_meName = a})
 

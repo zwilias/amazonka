@@ -62,9 +62,16 @@ library
 
     other-modules:
           Network.AWS.ResourceGroups.Types.Group
+        , Network.AWS.ResourceGroups.Types.GroupFilter
+        , Network.AWS.ResourceGroups.Types.GroupFilterName
+        , Network.AWS.ResourceGroups.Types.GroupIdentifier
         , Network.AWS.ResourceGroups.Types.GroupQuery
         , Network.AWS.ResourceGroups.Types.Product
+        , Network.AWS.ResourceGroups.Types.QueryError
+        , Network.AWS.ResourceGroups.Types.QueryErrorCode
         , Network.AWS.ResourceGroups.Types.QueryType
+        , Network.AWS.ResourceGroups.Types.ResourceFilter
+        , Network.AWS.ResourceGroups.Types.ResourceFilterName
         , Network.AWS.ResourceGroups.Types.ResourceIdentifier
         , Network.AWS.ResourceGroups.Types.ResourceQuery
 

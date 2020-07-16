@@ -27,7 +27,7 @@ module Network.AWS.MediaLive.Types.SmoothGroupEventStopBehavior (
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | Placeholder documentation for SmoothGroupEventStopBehavior
+-- | Smooth Group Event Stop Behavior
 data SmoothGroupEventStopBehavior = SmoothGroupEventStopBehavior' (CI
                                                                      Text)
                                       deriving (Eq, Ord, Read, Show, Data,

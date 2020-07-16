@@ -23,7 +23,7 @@
 --
 -- Amazon Kinesis Analytics reads reference data (that is, an Amazon S3 object) and creates an in-application table within your application. In the request, you provide the source (S3 bucket name and object key name), name of the in-application table to create, and the necessary mapping information that describes how data in Amazon S3 object maps to columns in the resulting in-application table.
 --
--- For conceptual information, see <http://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-it-works-input.html Configuring Application Input> . For the limits on data sources you can add to your application, see <http://docs.aws.amazon.com/kinesisanalytics/latest/dev/limits.html Limits> . 
+-- For conceptual information, see <https://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-it-works-input.html Configuring Application Input> . For the limits on data sources you can add to your application, see <https://docs.aws.amazon.com/kinesisanalytics/latest/dev/limits.html Limits> . 
 --
 -- This operation requires permissions to perform the @kinesisanalytics:AddApplicationOutput@ action. 
 --
@@ -74,7 +74,7 @@ data AddApplicationReferenceDataSource = AddApplicationReferenceDataSource'{_aar
 --
 -- * 'aardsApplicationName' - Name of an existing application.
 --
--- * 'aardsCurrentApplicationVersionId' - Version of the application for which you are adding the reference data source. You can use the 'DescribeApplication' operation to get the current application version. If the version specified is not the current version, the @ConcurrentModificationException@ is returned.
+-- * 'aardsCurrentApplicationVersionId' - Version of the application for which you are adding the reference data source. You can use the <https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_DescribeApplication.html DescribeApplication> operation to get the current application version. If the version specified is not the current version, the @ConcurrentModificationException@ is returned.
 --
 -- * 'aardsReferenceDataSource' - The reference data source can be an object in your Amazon S3 bucket. Amazon Kinesis Analytics reads the object and copies the data into the in-application table that is created. You provide an S3 bucket, object key name, and the resulting in-application table that is created. You must also provide an IAM role with the necessary permissions that Amazon Kinesis Analytics can assume to read the object from your S3 bucket on your behalf.
 addApplicationReferenceDataSource
@@ -95,7 +95,7 @@ addApplicationReferenceDataSource pApplicationName_
 aardsApplicationName :: Lens' AddApplicationReferenceDataSource Text
 aardsApplicationName = lens _aardsApplicationName (\ s a -> s{_aardsApplicationName = a})
 
--- | Version of the application for which you are adding the reference data source. You can use the 'DescribeApplication' operation to get the current application version. If the version specified is not the current version, the @ConcurrentModificationException@ is returned.
+-- | Version of the application for which you are adding the reference data source. You can use the <https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_DescribeApplication.html DescribeApplication> operation to get the current application version. If the version specified is not the current version, the @ConcurrentModificationException@ is returned.
 aardsCurrentApplicationVersionId :: Lens' AddApplicationReferenceDataSource Natural
 aardsCurrentApplicationVersionId = lens _aardsCurrentApplicationVersionId (\ s a -> s{_aardsCurrentApplicationVersionId = a}) . _Nat
 

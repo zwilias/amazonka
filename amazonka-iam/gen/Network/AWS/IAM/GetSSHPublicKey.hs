@@ -21,7 +21,7 @@
 -- Retrieves the specified SSH public key, including metadata about the key.
 --
 --
--- The SSH public key retrieved by this operation is used only for authenticating the associated IAM user to an AWS CodeCommit repository. For more information about using SSH keys to authenticate to an AWS CodeCommit repository, see <http://docs.aws.amazon.com/codecommit/latest/userguide/setting-up-credentials-ssh.html Set up AWS CodeCommit for SSH Connections> in the /AWS CodeCommit User Guide/ .
+-- The SSH public key retrieved by this operation is used only for authenticating the associated IAM user to an AWS CodeCommit repository. For more information about using SSH keys to authenticate to an AWS CodeCommit repository, see <https://docs.aws.amazon.com/codecommit/latest/userguide/setting-up-credentials-ssh.html Set up AWS CodeCommit for SSH Connections> in the /AWS CodeCommit User Guide/ .
 --
 module Network.AWS.IAM.GetSSHPublicKey
     (
@@ -59,9 +59,9 @@ data GetSSHPublicKey = GetSSHPublicKey'{_gspkUserName
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'gspkUserName' - The name of the IAM user associated with the SSH public key. This parameter allows (per its <http://wikipedia.org/wiki/regex regex pattern> ) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
+-- * 'gspkUserName' - The name of the IAM user associated with the SSH public key. This parameter allows (through its <http://wikipedia.org/wiki/regex regex pattern> ) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
 --
--- * 'gspkSSHPublicKeyId' - The unique identifier for the SSH public key. This parameter allows (per its <http://wikipedia.org/wiki/regex regex pattern> ) a string of characters that can consist of any upper or lowercased letter or digit.
+-- * 'gspkSSHPublicKeyId' - The unique identifier for the SSH public key. This parameter allows (through its <http://wikipedia.org/wiki/regex regex pattern> ) a string of characters that can consist of any upper or lowercased letter or digit.
 --
 -- * 'gspkEncoding' - Specifies the public key encoding format to use in the response. To retrieve the public key in ssh-rsa format, use @SSH@ . To retrieve the public key in PEM format, use @PEM@ .
 getSSHPublicKey
@@ -75,11 +75,11 @@ getSSHPublicKey pUserName_ pSSHPublicKeyId_
                      _gspkSSHPublicKeyId = pSSHPublicKeyId_,
                      _gspkEncoding = pEncoding_}
 
--- | The name of the IAM user associated with the SSH public key. This parameter allows (per its <http://wikipedia.org/wiki/regex regex pattern> ) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
+-- | The name of the IAM user associated with the SSH public key. This parameter allows (through its <http://wikipedia.org/wiki/regex regex pattern> ) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
 gspkUserName :: Lens' GetSSHPublicKey Text
 gspkUserName = lens _gspkUserName (\ s a -> s{_gspkUserName = a})
 
--- | The unique identifier for the SSH public key. This parameter allows (per its <http://wikipedia.org/wiki/regex regex pattern> ) a string of characters that can consist of any upper or lowercased letter or digit.
+-- | The unique identifier for the SSH public key. This parameter allows (through its <http://wikipedia.org/wiki/regex regex pattern> ) a string of characters that can consist of any upper or lowercased letter or digit.
 gspkSSHPublicKeyId :: Lens' GetSSHPublicKey Text
 gspkSSHPublicKeyId = lens _gspkSSHPublicKeyId (\ s a -> s{_gspkSSHPublicKeyId = a})
 

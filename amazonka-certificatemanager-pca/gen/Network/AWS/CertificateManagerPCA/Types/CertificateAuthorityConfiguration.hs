@@ -23,7 +23,7 @@ import Network.AWS.CertificateManagerPCA.Types.SigningAlgorithm
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | Contains configuration information for your private certificate authority (CA). This includes information about the class of public key algorithm and the key pair that your private CA creates when it issues a certificate, the signature algorithm it uses used when issuing certificates, and its X.500 distinguished name. You must specify this information when you call the 'CreateCertificateAuthority' function. 
+-- | Contains configuration information for your private certificate authority (CA). This includes information about the class of public key algorithm and the key pair that your private CA creates when it issues a certificate. It also includes the signature algorithm that it uses when issuing certificates, and its X.500 distinguished name. You must specify this information when you call the 'CreateCertificateAuthority' action. 
 --
 --
 --
@@ -44,7 +44,7 @@ data CertificateAuthorityConfiguration = CertificateAuthorityConfiguration'{_cac
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'cacKeyAlgorithm' - Type of the public key algorithm and size, in bits, of the key pair that your key pair creates when it issues a certificate.
+-- * 'cacKeyAlgorithm' - Type of the public key algorithm and size, in bits, of the key pair that your CA creates when it issues a certificate. When you create a subordinate CA, you must use a key algorithm supported by the parent CA.
 --
 -- * 'cacSigningAlgorithm' - Name of the algorithm your private CA uses to sign certificate requests.
 --
@@ -62,7 +62,7 @@ certificateAuthorityConfiguration pKeyAlgorithm_
                                          pSigningAlgorithm_,
                                        _cacSubject = pSubject_}
 
--- | Type of the public key algorithm and size, in bits, of the key pair that your key pair creates when it issues a certificate.
+-- | Type of the public key algorithm and size, in bits, of the key pair that your CA creates when it issues a certificate. When you create a subordinate CA, you must use a key algorithm supported by the parent CA.
 cacKeyAlgorithm :: Lens' CertificateAuthorityConfiguration KeyAlgorithm
 cacKeyAlgorithm = lens _cacKeyAlgorithm (\ s a -> s{_cacKeyAlgorithm = a})
 

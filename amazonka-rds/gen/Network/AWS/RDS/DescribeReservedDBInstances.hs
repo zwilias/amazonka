@@ -31,6 +31,7 @@ module Network.AWS.RDS.DescribeReservedDBInstances
     -- * Request Lenses
     , drdiProductDescription
     , drdiFilters
+    , drdiLeaseId
     , drdiReservedDBInstanceId
     , drdiDBInstanceClass
     , drdiMarker
@@ -68,6 +69,8 @@ data DescribeReservedDBInstances = DescribeReservedDBInstances'{_drdiProductDesc
                                                                 _drdiFilters ::
                                                                 !(Maybe
                                                                     [Filter]),
+                                                                _drdiLeaseId ::
+                                                                !(Maybe Text),
                                                                 _drdiReservedDBInstanceId
                                                                 ::
                                                                 !(Maybe Text),
@@ -97,7 +100,9 @@ data DescribeReservedDBInstances = DescribeReservedDBInstances'{_drdiProductDesc
 --
 -- * 'drdiProductDescription' - The product description filter value. Specify this parameter to show only those reservations matching the specified product description.
 --
--- * 'drdiFilters' - This parameter is not currently supported.
+-- * 'drdiFilters' - This parameter isn't currently supported.
+--
+-- * 'drdiLeaseId' - The lease identifier filter value. Specify this parameter to show only the reservation that matches the specified lease ID.
 --
 -- * 'drdiReservedDBInstanceId' - The reserved DB instance identifier filter value. Specify this parameter to show only the reservation that matches the specified reservation ID.
 --
@@ -105,9 +110,9 @@ data DescribeReservedDBInstances = DescribeReservedDBInstances'{_drdiProductDesc
 --
 -- * 'drdiMarker' - An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by @MaxRecords@ . 
 --
--- * 'drdiMaxRecords' - The maximum number of records to include in the response. If more than the @MaxRecords@ value is available, a pagination token called a marker is included in the response so that the following results can be retrieved.  Default: 100 Constraints: Minimum 20, maximum 100.
+-- * 'drdiMaxRecords' - The maximum number of records to include in the response. If more than the @MaxRecords@ value is available, a pagination token called a marker is included in the response so you can retrieve the remaining results.  Default: 100 Constraints: Minimum 20, maximum 100.
 --
--- * 'drdiMultiAZ' - The Multi-AZ filter value. Specify this parameter to show only those reservations matching the specified Multi-AZ parameter.
+-- * 'drdiMultiAZ' - A value that indicates whether to show only those reservations that support Multi-AZ.
 --
 -- * 'drdiReservedDBInstancesOfferingId' - The offering identifier filter value. Specify this parameter to show only purchased reservations matching the specified offering identifier.
 --
@@ -119,7 +124,7 @@ describeReservedDBInstances
 describeReservedDBInstances
   = DescribeReservedDBInstances'{_drdiProductDescription
                                    = Nothing,
-                                 _drdiFilters = Nothing,
+                                 _drdiFilters = Nothing, _drdiLeaseId = Nothing,
                                  _drdiReservedDBInstanceId = Nothing,
                                  _drdiDBInstanceClass = Nothing,
                                  _drdiMarker = Nothing,
@@ -133,9 +138,13 @@ describeReservedDBInstances
 drdiProductDescription :: Lens' DescribeReservedDBInstances (Maybe Text)
 drdiProductDescription = lens _drdiProductDescription (\ s a -> s{_drdiProductDescription = a})
 
--- | This parameter is not currently supported.
+-- | This parameter isn't currently supported.
 drdiFilters :: Lens' DescribeReservedDBInstances [Filter]
 drdiFilters = lens _drdiFilters (\ s a -> s{_drdiFilters = a}) . _Default . _Coerce
+
+-- | The lease identifier filter value. Specify this parameter to show only the reservation that matches the specified lease ID.
+drdiLeaseId :: Lens' DescribeReservedDBInstances (Maybe Text)
+drdiLeaseId = lens _drdiLeaseId (\ s a -> s{_drdiLeaseId = a})
 
 -- | The reserved DB instance identifier filter value. Specify this parameter to show only the reservation that matches the specified reservation ID.
 drdiReservedDBInstanceId :: Lens' DescribeReservedDBInstances (Maybe Text)
@@ -149,11 +158,11 @@ drdiDBInstanceClass = lens _drdiDBInstanceClass (\ s a -> s{_drdiDBInstanceClass
 drdiMarker :: Lens' DescribeReservedDBInstances (Maybe Text)
 drdiMarker = lens _drdiMarker (\ s a -> s{_drdiMarker = a})
 
--- | The maximum number of records to include in the response. If more than the @MaxRecords@ value is available, a pagination token called a marker is included in the response so that the following results can be retrieved.  Default: 100 Constraints: Minimum 20, maximum 100.
+-- | The maximum number of records to include in the response. If more than the @MaxRecords@ value is available, a pagination token called a marker is included in the response so you can retrieve the remaining results.  Default: 100 Constraints: Minimum 20, maximum 100.
 drdiMaxRecords :: Lens' DescribeReservedDBInstances (Maybe Int)
 drdiMaxRecords = lens _drdiMaxRecords (\ s a -> s{_drdiMaxRecords = a})
 
--- | The Multi-AZ filter value. Specify this parameter to show only those reservations matching the specified Multi-AZ parameter.
+-- | A value that indicates whether to show only those reservations that support Multi-AZ.
 drdiMultiAZ :: Lens' DescribeReservedDBInstances (Maybe Bool)
 drdiMultiAZ = lens _drdiMultiAZ (\ s a -> s{_drdiMultiAZ = a})
 
@@ -209,6 +218,7 @@ instance ToQuery DescribeReservedDBInstances where
                "ProductDescription" =: _drdiProductDescription,
                "Filters" =:
                  toQuery (toQueryList "Filter" <$> _drdiFilters),
+               "LeaseId" =: _drdiLeaseId,
                "ReservedDBInstanceId" =: _drdiReservedDBInstanceId,
                "DBInstanceClass" =: _drdiDBInstanceClass,
                "Marker" =: _drdiMarker,
@@ -219,7 +229,7 @@ instance ToQuery DescribeReservedDBInstances where
                "OfferingType" =: _drdiOfferingType,
                "Duration" =: _drdiDuration]
 
--- | Contains the result of a successful invocation of the 'DescribeReservedDBInstances' action. 
+-- | Contains the result of a successful invocation of the @DescribeReservedDBInstances@ action. 
 --
 --
 --

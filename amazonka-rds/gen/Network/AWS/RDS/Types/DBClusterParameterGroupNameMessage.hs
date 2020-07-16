@@ -36,14 +36,14 @@ newtype DBClusterParameterGroupNameMessage = DBClusterParameterGroupNameMessage'
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dcpgnmDBClusterParameterGroupName' - The name of the DB cluster parameter group. Constraints:     * Must be 1 to 255 letters or numbers.     * First character must be a letter     * Cannot end with a hyphen or contain two consecutive hyphens
+-- * 'dcpgnmDBClusterParameterGroupName' - The name of the DB cluster parameter group. Constraints:     * Must be 1 to 255 letters or numbers.     * First character must be a letter     * Can't end with a hyphen or contain two consecutive hyphens
 dbClusterParameterGroupNameMessage
     :: DBClusterParameterGroupNameMessage
 dbClusterParameterGroupNameMessage
   = DBClusterParameterGroupNameMessage'{_dcpgnmDBClusterParameterGroupName
                                           = Nothing}
 
--- | The name of the DB cluster parameter group. Constraints:     * Must be 1 to 255 letters or numbers.     * First character must be a letter     * Cannot end with a hyphen or contain two consecutive hyphens
+-- | The name of the DB cluster parameter group. Constraints:     * Must be 1 to 255 letters or numbers.     * First character must be a letter     * Can't end with a hyphen or contain two consecutive hyphens
 dcpgnmDBClusterParameterGroupName :: Lens' DBClusterParameterGroupNameMessage (Maybe Text)
 dcpgnmDBClusterParameterGroupName = lens _dcpgnmDBClusterParameterGroupName (\ s a -> s{_dcpgnmDBClusterParameterGroupName = a})
 

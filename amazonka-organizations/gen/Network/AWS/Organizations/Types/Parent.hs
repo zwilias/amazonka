@@ -34,14 +34,14 @@ data Parent = Parent'{_pId :: !(Maybe Text),
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'pId' - The unique identifier (ID) of the parent entity. The <http://wikipedia.org/wiki/regex regex pattern> for a parent ID string requires one of the following:     * Root: a string that begins with "r-" followed by from 4 to 32 lower-case letters or digits.     * Organizational unit (OU): a string that begins with "ou-" followed by from 4 to 32 lower-case letters or digits (the ID of the root that the OU is in) followed by a second "-" dash and from 8 to 32 additional lower-case letters or digits.
+-- * 'pId' - The unique identifier (ID) of the parent entity. The <http://wikipedia.org/wiki/regex regex pattern> for a parent ID string requires one of the following:     * Root: A string that begins with "r-" followed by from 4 to 32 lower-case letters or digits.     * Organizational unit (OU): A string that begins with "ou-" followed by from 4 to 32 lower-case letters or digits (the ID of the root that the OU is in). This string is followed by a second "-" dash and from 8 to 32 additional lower-case letters or digits.
 --
 -- * 'pType' - The type of the parent entity.
 parent
     :: Parent
 parent = Parent'{_pId = Nothing, _pType = Nothing}
 
--- | The unique identifier (ID) of the parent entity. The <http://wikipedia.org/wiki/regex regex pattern> for a parent ID string requires one of the following:     * Root: a string that begins with "r-" followed by from 4 to 32 lower-case letters or digits.     * Organizational unit (OU): a string that begins with "ou-" followed by from 4 to 32 lower-case letters or digits (the ID of the root that the OU is in) followed by a second "-" dash and from 8 to 32 additional lower-case letters or digits.
+-- | The unique identifier (ID) of the parent entity. The <http://wikipedia.org/wiki/regex regex pattern> for a parent ID string requires one of the following:     * Root: A string that begins with "r-" followed by from 4 to 32 lower-case letters or digits.     * Organizational unit (OU): A string that begins with "ou-" followed by from 4 to 32 lower-case letters or digits (the ID of the root that the OU is in). This string is followed by a second "-" dash and from 8 to 32 additional lower-case letters or digits.
 pId :: Lens' Parent (Maybe Text)
 pId = lens _pId (\ s a -> s{_pId = a})
 

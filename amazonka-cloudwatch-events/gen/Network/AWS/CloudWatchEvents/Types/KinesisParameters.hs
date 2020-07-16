@@ -20,7 +20,7 @@ module Network.AWS.CloudWatchEvents.Types.KinesisParameters where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | This object enables you to specify a JSON path to extract from the event and use as the partition key for the Amazon Kinesis data stream so that you can control the shard that the event goes to. If you don't include this parameter, the default is to use the @eventId@ as the partition key.
+-- | This object enables you to specify a JSON path to extract from the event and use as the partition key for the Amazon Kinesis data stream, so that you can control the shard to which the event goes. If you do not include this parameter, the default is to use the @eventId@ as the partition key.
 --
 --
 --

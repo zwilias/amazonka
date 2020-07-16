@@ -21,8 +21,12 @@ import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.S3.Internal
 
--- | /See:/ 'bucket' smart constructor.
-data Bucket = Bucket'{_bCreationDate :: !RFC822,
+-- | In terms of implementation, a Bucket is a resource. An Amazon S3 bucket name is globally unique, and the namespace is shared by all AWS accounts. 
+--
+--
+--
+-- /See:/ 'bucket' smart constructor.
+data Bucket = Bucket'{_bCreationDate :: !ISO8601,
                       _bName :: !BucketName}
                 deriving (Eq, Read, Show, Data, Typeable, Generic)
 

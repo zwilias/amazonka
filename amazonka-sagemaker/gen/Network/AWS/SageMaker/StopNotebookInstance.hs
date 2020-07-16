@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Terminates the ML compute instance. Before terminating the instance, Amazon SageMaker disconnects the ML storage volume from it. Amazon SageMaker preserves the ML storage volume. 
+-- Terminates the ML compute instance. Before terminating the instance, Amazon SageMaker disconnects the ML storage volume from it. Amazon SageMaker preserves the ML storage volume. Amazon SageMaker stops charging you for the ML compute instance when you call @StopNotebookInstance@ .
 --
 --
 -- To access data on the ML storage volume for a notebook instance that has been terminated, call the @StartNotebookInstance@ API. @StartNotebookInstance@ launches another ML compute instance, configures it, and attaches the preserved ML storage volume so you can continue your work. 

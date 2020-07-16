@@ -23,7 +23,7 @@ import Network.AWS.Prelude
 -- | Contains the details of an Amazon RDS DB cluster parameter group. 
 --
 --
--- This data type is used as a response element in the 'DescribeDBClusterParameterGroups' action. 
+-- This data type is used as a response element in the @DescribeDBClusterParameterGroups@ action. 
 --
 --
 -- /See:/ 'dbClusterParameterGroup' smart constructor.

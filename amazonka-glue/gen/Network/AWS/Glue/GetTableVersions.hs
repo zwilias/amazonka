@@ -65,7 +65,7 @@ data GetTableVersions = GetTableVersions'{_gtvsCatalogId
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'gtvsCatalogId' - The ID of the Data Catalog where the tables reside. If none is supplied, the AWS account ID is used by default.
+-- * 'gtvsCatalogId' - The ID of the Data Catalog where the tables reside. If none is provided, the AWS account ID is used by default.
 --
 -- * 'gtvsNextToken' - A continuation token, if this is not the first call.
 --
@@ -84,7 +84,7 @@ getTableVersions pDatabaseName_ pTableName_
                       _gtvsDatabaseName = pDatabaseName_,
                       _gtvsTableName = pTableName_}
 
--- | The ID of the Data Catalog where the tables reside. If none is supplied, the AWS account ID is used by default.
+-- | The ID of the Data Catalog where the tables reside. If none is provided, the AWS account ID is used by default.
 gtvsCatalogId :: Lens' GetTableVersions (Maybe Text)
 gtvsCatalogId = lens _gtvsCatalogId (\ s a -> s{_gtvsCatalogId = a})
 

@@ -19,29 +19,29 @@
 module Network.AWS.MediaConvert.Types.HlsKeyProviderType (
   HlsKeyProviderType (
     ..
-    , Speke
-    , StaticKey
+    , HKPTSpeke
+    , HKPTStaticKey
     )
   ) where
 
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | Indicates which type of key provider is used for encryption.
+-- | Specify whether your DRM encryption key is static or from a key provider that follows the SPEKE standard. For more information about SPEKE, see https://docs.aws.amazon.com/speke/latest/documentation/what-is-speke.html.
 data HlsKeyProviderType = HlsKeyProviderType' (CI
                                                  Text)
                             deriving (Eq, Ord, Read, Show, Data, Typeable,
                                       Generic)
 
-pattern Speke :: HlsKeyProviderType
-pattern Speke = HlsKeyProviderType' "SPEKE"
+pattern HKPTSpeke :: HlsKeyProviderType
+pattern HKPTSpeke = HlsKeyProviderType' "SPEKE"
 
-pattern StaticKey :: HlsKeyProviderType
-pattern StaticKey = HlsKeyProviderType' "STATIC_KEY"
+pattern HKPTStaticKey :: HlsKeyProviderType
+pattern HKPTStaticKey = HlsKeyProviderType' "STATIC_KEY"
 
 {-# COMPLETE
-  Speke,
-  StaticKey,
+  HKPTSpeke,
+  HKPTStaticKey,
   HlsKeyProviderType' #-}
 
 instance FromText HlsKeyProviderType where
@@ -56,20 +56,20 @@ instance ToText HlsKeyProviderType where
 --   fromEnum is a partial function, and will error on values unknown at generation time.
 instance Enum HlsKeyProviderType where
     toEnum i = case i of
-        0 -> Speke
-        1 -> StaticKey
+        0 -> HKPTSpeke
+        1 -> HKPTStaticKey
         _ -> (error . showText) $ "Unknown index for HlsKeyProviderType: " <> toText i
     fromEnum x = case x of
-        Speke -> 0
-        StaticKey -> 1
+        HKPTSpeke -> 0
+        HKPTStaticKey -> 1
         HlsKeyProviderType' name -> (error . showText) $ "Unknown HlsKeyProviderType: " <> original name
 
 -- | Represents the bounds of /known/ $HlsKeyProviderType.
 --   AWS may have added more since the source was generated.
 --   This instance exists only for backward compatibility.
 instance Bounded HlsKeyProviderType where
-    minBound = Speke
-    maxBound = StaticKey
+    minBound = HKPTSpeke
+    maxBound = HKPTStaticKey
 
 instance Hashable     HlsKeyProviderType
 instance NFData       HlsKeyProviderType

@@ -27,7 +27,7 @@ module Network.AWS.MediaConvert.Types.AntiAlias (
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | Enable Anti-alias (AntiAlias) to enhance sharp edges in video output when your input resolution is much larger than your output resolution. Default is enabled.
+-- | The anti-alias filter is automatically applied to all outputs. The service no longer accepts the value DISABLED for AntiAlias. If you specify that in your job, the service will ignore the setting.
 data AntiAlias = AntiAlias' (CI Text)
                    deriving (Eq, Ord, Read, Show, Data, Typeable,
                              Generic)

@@ -21,6 +21,8 @@
 -- Adds public ports to an Amazon Lightsail instance.
 --
 --
+-- The @open instance public ports@ operation supports tag-based access control via resource tags applied to the resource identified by @instance name@ . For more information, see the <https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags Lightsail Dev Guide> .
+--
 module Network.AWS.Lightsail.OpenInstancePublicPorts
     (
     -- * Creating a Request
@@ -128,7 +130,7 @@ data OpenInstancePublicPortsResponse = OpenInstancePublicPortsResponse'{_oipprsO
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'oipprsOperation' - An array of key-value pairs containing information about the request operation.
+-- * 'oipprsOperation' - An array of objects that describe the result of the action, such as the status of the request, the time stamp of the request, and the resources affected by the request.
 --
 -- * 'oipprsResponseStatus' - -- | The response status code.
 openInstancePublicPortsResponse
@@ -139,7 +141,7 @@ openInstancePublicPortsResponse pResponseStatus_
                                        Nothing,
                                      _oipprsResponseStatus = pResponseStatus_}
 
--- | An array of key-value pairs containing information about the request operation.
+-- | An array of objects that describe the result of the action, such as the status of the request, the time stamp of the request, and the resources affected by the request.
 oipprsOperation :: Lens' OpenInstancePublicPortsResponse (Maybe Operation)
 oipprsOperation = lens _oipprsOperation (\ s a -> s{_oipprsOperation = a})
 

@@ -22,7 +22,11 @@ import Network.AWS.Prelude
 import Network.AWS.S3.Internal
 import Network.AWS.S3.Types.AnalyticsS3ExportFileFormat
 
--- | /See:/ 'analyticsS3BucketDestination' smart constructor.
+-- | Contains information about where to publish the analytics results.
+--
+--
+--
+-- /See:/ 'analyticsS3BucketDestination' smart constructor.
 data AnalyticsS3BucketDestination = AnalyticsS3BucketDestination'{_asbdBucketAccountId
                                                                   ::
                                                                   !(Maybe Text),
@@ -41,11 +45,11 @@ data AnalyticsS3BucketDestination = AnalyticsS3BucketDestination'{_asbdBucketAcc
 --
 -- * 'asbdBucketAccountId' - The account ID that owns the destination bucket. If no account ID is provided, the owner will not be validated prior to exporting data.
 --
--- * 'asbdPrefix' - The prefix to use when exporting data. The exported data begins with this prefix.
+-- * 'asbdPrefix' - The prefix to use when exporting data. The prefix is prepended to all results.
 --
--- * 'asbdFormat' - The file format used when exporting data to Amazon S3.
+-- * 'asbdFormat' - Specifies the file format used when exporting data to Amazon S3.
 --
--- * 'asbdBucket' - The Amazon resource name (ARN) of the bucket to which data is exported.
+-- * 'asbdBucket' - The Amazon Resource Name (ARN) of the bucket to which data is exported.
 analyticsS3BucketDestination
     :: AnalyticsS3ExportFileFormat -- ^ 'asbdFormat'
     -> BucketName -- ^ 'asbdBucket'
@@ -60,15 +64,15 @@ analyticsS3BucketDestination pFormat_ pBucket_
 asbdBucketAccountId :: Lens' AnalyticsS3BucketDestination (Maybe Text)
 asbdBucketAccountId = lens _asbdBucketAccountId (\ s a -> s{_asbdBucketAccountId = a})
 
--- | The prefix to use when exporting data. The exported data begins with this prefix.
+-- | The prefix to use when exporting data. The prefix is prepended to all results.
 asbdPrefix :: Lens' AnalyticsS3BucketDestination (Maybe Text)
 asbdPrefix = lens _asbdPrefix (\ s a -> s{_asbdPrefix = a})
 
--- | The file format used when exporting data to Amazon S3.
+-- | Specifies the file format used when exporting data to Amazon S3.
 asbdFormat :: Lens' AnalyticsS3BucketDestination AnalyticsS3ExportFileFormat
 asbdFormat = lens _asbdFormat (\ s a -> s{_asbdFormat = a})
 
--- | The Amazon resource name (ARN) of the bucket to which data is exported.
+-- | The Amazon Resource Name (ARN) of the bucket to which data is exported.
 asbdBucket :: Lens' AnalyticsS3BucketDestination BucketName
 asbdBucket = lens _asbdBucket (\ s a -> s{_asbdBucket = a})
 

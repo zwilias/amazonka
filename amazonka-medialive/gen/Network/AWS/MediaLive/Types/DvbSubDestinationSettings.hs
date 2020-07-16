@@ -27,7 +27,7 @@ import Network.AWS.MediaLive.Types.DvbSubDestinationTeletextGridControl
 import Network.AWS.MediaLive.Types.InputLocation
 import Network.AWS.Prelude
 
--- | Placeholder documentation for DvbSubDestinationSettings
+-- | Dvb Sub Destination Settings
 --
 -- /See:/ 'dvbSubDestinationSettings' smart constructor.
 data DvbSubDestinationSettings = DvbSubDestinationSettings'{_dsdsBackgroundOpacity

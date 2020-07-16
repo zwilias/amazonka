@@ -27,7 +27,7 @@ module Network.AWS.MediaLive.Types.HlsProgramDateTime (
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | Placeholder documentation for HlsProgramDateTime
+-- | Hls Program Date Time
 data HlsProgramDateTime = HlsProgramDateTime' (CI
                                                  Text)
                             deriving (Eq, Ord, Read, Show, Data, Typeable,

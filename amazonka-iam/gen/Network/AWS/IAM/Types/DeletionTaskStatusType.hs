@@ -19,10 +19,10 @@
 module Network.AWS.IAM.Types.DeletionTaskStatusType (
   DeletionTaskStatusType (
     ..
-    , Failed
-    , InProgress
-    , NotStarted
-    , Succeeded
+    , DTSTFailed
+    , DTSTInProgress
+    , DTSTNotStarted
+    , DTSTSucceeded
     )
   ) where
 
@@ -34,23 +34,23 @@ data DeletionTaskStatusType = DeletionTaskStatusType' (CI
                                 deriving (Eq, Ord, Read, Show, Data, Typeable,
                                           Generic)
 
-pattern Failed :: DeletionTaskStatusType
-pattern Failed = DeletionTaskStatusType' "FAILED"
+pattern DTSTFailed :: DeletionTaskStatusType
+pattern DTSTFailed = DeletionTaskStatusType' "FAILED"
 
-pattern InProgress :: DeletionTaskStatusType
-pattern InProgress = DeletionTaskStatusType' "IN_PROGRESS"
+pattern DTSTInProgress :: DeletionTaskStatusType
+pattern DTSTInProgress = DeletionTaskStatusType' "IN_PROGRESS"
 
-pattern NotStarted :: DeletionTaskStatusType
-pattern NotStarted = DeletionTaskStatusType' "NOT_STARTED"
+pattern DTSTNotStarted :: DeletionTaskStatusType
+pattern DTSTNotStarted = DeletionTaskStatusType' "NOT_STARTED"
 
-pattern Succeeded :: DeletionTaskStatusType
-pattern Succeeded = DeletionTaskStatusType' "SUCCEEDED"
+pattern DTSTSucceeded :: DeletionTaskStatusType
+pattern DTSTSucceeded = DeletionTaskStatusType' "SUCCEEDED"
 
 {-# COMPLETE
-  Failed,
-  InProgress,
-  NotStarted,
-  Succeeded,
+  DTSTFailed,
+  DTSTInProgress,
+  DTSTNotStarted,
+  DTSTSucceeded,
   DeletionTaskStatusType' #-}
 
 instance FromText DeletionTaskStatusType where
@@ -65,24 +65,24 @@ instance ToText DeletionTaskStatusType where
 --   fromEnum is a partial function, and will error on values unknown at generation time.
 instance Enum DeletionTaskStatusType where
     toEnum i = case i of
-        0 -> Failed
-        1 -> InProgress
-        2 -> NotStarted
-        3 -> Succeeded
+        0 -> DTSTFailed
+        1 -> DTSTInProgress
+        2 -> DTSTNotStarted
+        3 -> DTSTSucceeded
         _ -> (error . showText) $ "Unknown index for DeletionTaskStatusType: " <> toText i
     fromEnum x = case x of
-        Failed -> 0
-        InProgress -> 1
-        NotStarted -> 2
-        Succeeded -> 3
+        DTSTFailed -> 0
+        DTSTInProgress -> 1
+        DTSTNotStarted -> 2
+        DTSTSucceeded -> 3
         DeletionTaskStatusType' name -> (error . showText) $ "Unknown DeletionTaskStatusType: " <> original name
 
 -- | Represents the bounds of /known/ $DeletionTaskStatusType.
 --   AWS may have added more since the source was generated.
 --   This instance exists only for backward compatibility.
 instance Bounded DeletionTaskStatusType where
-    minBound = Failed
-    maxBound = Succeeded
+    minBound = DTSTFailed
+    maxBound = DTSTSucceeded
 
 instance Hashable     DeletionTaskStatusType
 instance NFData       DeletionTaskStatusType

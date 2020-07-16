@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- An SaaS partner can use this operation to list details about a partner event source that they have created.
+-- An SaaS partner can use this operation to list details about a partner event source that they have created. AWS customers do not use this operation. Instead, AWS customers can use 'DescribeEventSource' to see details about a partner event source that is shared with them.
 --
 --
 module Network.AWS.CloudWatchEvents.DescribePartnerEventSource

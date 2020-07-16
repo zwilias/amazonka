@@ -25,7 +25,7 @@ import Network.AWS.Prelude
 --
 -- The region for the S3 bucket containing the S3 object must match the region you use for Amazon Rekognition operations.
 --
--- For Amazon Rekognition to process an S3 object, the user must have permission to access the S3 object. For more information, see 'manage-access-resource-policies' . 
+-- For Amazon Rekognition to process an S3 object, the user must have permission to access the S3 object. For more information, see Resource-Based Policies in the Amazon Rekognition Developer Guide. 
 --
 --
 -- /See:/ 's3Object' smart constructor.
@@ -60,6 +60,14 @@ soName = lens _soName (\ s a -> s{_soName = a})
 -- | If the bucket is versioning enabled, you can specify the object version. 
 soVersion :: Lens' S3Object (Maybe Text)
 soVersion = lens _soVersion (\ s a -> s{_soVersion = a})
+
+instance FromJSON S3Object where
+        parseJSON
+          = withObject "S3Object"
+              (\ x ->
+                 S3Object' <$>
+                   (x .:? "Bucket") <*> (x .:? "Name") <*>
+                     (x .:? "Version"))
 
 instance Hashable S3Object where
 

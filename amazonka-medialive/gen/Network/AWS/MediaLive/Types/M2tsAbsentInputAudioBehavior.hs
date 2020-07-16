@@ -27,7 +27,7 @@ module Network.AWS.MediaLive.Types.M2tsAbsentInputAudioBehavior (
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | Placeholder documentation for M2tsAbsentInputAudioBehavior
+-- | M2ts Absent Input Audio Behavior
 data M2tsAbsentInputAudioBehavior = M2tsAbsentInputAudioBehavior' (CI
                                                                      Text)
                                       deriving (Eq, Ord, Read, Show, Data,

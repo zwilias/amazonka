@@ -21,7 +21,11 @@ import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.S3.Internal
 
--- | /See:/ 'requestProgress' smart constructor.
+-- | Container for specifying if periodic @QueryProgress@ messages should be sent.
+--
+--
+--
+-- /See:/ 'requestProgress' smart constructor.
 newtype RequestProgress = RequestProgress'{_rpEnabled
                                            :: Maybe Bool}
                             deriving (Eq, Read, Show, Data, Typeable, Generic)

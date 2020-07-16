@@ -53,7 +53,7 @@
 --
 --
 --
--- In addition, Amazon Lex also returns your application-specific @sessionAttributes@ . For more information, see <http://docs.aws.amazon.com/lex/latest/dg/context-mgmt.html Managing Conversation Context> . 
+-- In addition, Amazon Lex also returns your application-specific @sessionAttributes@ . For more information, see <https://docs.aws.amazon.com/lex/latest/dg/context-mgmt.html Managing Conversation Context> . 
 --
 module Network.AWS.LexRuntime.PostContent
     (
@@ -74,12 +74,14 @@ module Network.AWS.LexRuntime.PostContent
     , postContentResponse
     , PostContentResponse
     -- * Response Lenses
+    , pcrsSentimentResponse
     , pcrsSlots
     , pcrsIntentName
     , pcrsDialogState
     , pcrsInputTranscript
     , pcrsMessageFormat
     , pcrsMessage
+    , pcrsSessionId
     , pcrsSlotToElicit
     , pcrsContentType
     , pcrsSessionAttributes
@@ -110,11 +112,11 @@ data PostContent = PostContent'{_pcAccept ::
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'pcAccept' - You pass this value as the @Accept@ HTTP header.  The message Amazon Lex returns in the response can be either text or speech based on the @Accept@ HTTP header value in the request.      * If the value is @text/plain; charset=utf-8@ , Amazon Lex returns text in the response.      * If the value begins with @audio/@ , Amazon Lex returns speech in the response. Amazon Lex uses Amazon Polly to generate the speech (using the configuration you specified in the @Accept@ header). For example, if you specify @audio/mpeg@ as the value, Amazon Lex returns speech in the MPEG format. The following are the accepted values:     * audio/mpeg     * audio/ogg     * audio/pcm     * text/plain; charset=utf-8     * audio/* (defaults to mpeg)
+-- * 'pcAccept' - You pass this value as the @Accept@ HTTP header.  The message Amazon Lex returns in the response can be either text or speech based on the @Accept@ HTTP header value in the request.      * If the value is @text/plain; charset=utf-8@ , Amazon Lex returns text in the response.      * If the value begins with @audio/@ , Amazon Lex returns speech in the response. Amazon Lex uses Amazon Polly to generate the speech (using the configuration you specified in the @Accept@ header). For example, if you specify @audio/mpeg@ as the value, Amazon Lex returns speech in the MPEG format.     * If the value is @audio/pcm@ , the speech returned is @audio/pcm@ in 16-bit, little endian format.      * The following are the accepted values:     * audio/mpeg     * audio/ogg     * audio/pcm     * text/plain; charset=utf-8     * audio/* (defaults to mpeg)
 --
--- * 'pcRequestAttributes' - You pass this value as the @x-amz-lex-request-attributes@ HTTP header. Request-specific information passed between Amazon Lex and a client application. The value must be a JSON serialized and base64 encoded map with string keys and values. The total size of the @requestAttributes@ and @sessionAttributes@ headers is limited to 12 KB. The namespace @x-amz-lex:@ is reserved for special attributes. Don't create any request attributes with the prefix @x-amz-lex:@ . For more information, see <http://docs.aws.amazon.com/lex/latest/dg/context-mgmt.html#context-mgmt-request-attribs Setting Request Attributes> .
+-- * 'pcRequestAttributes' - You pass this value as the @x-amz-lex-request-attributes@ HTTP header. Request-specific information passed between Amazon Lex and a client application. The value must be a JSON serialized and base64 encoded map with string keys and values. The total size of the @requestAttributes@ and @sessionAttributes@ headers is limited to 12 KB. The namespace @x-amz-lex:@ is reserved for special attributes. Don't create any request attributes with the prefix @x-amz-lex:@ . For more information, see <https://docs.aws.amazon.com/lex/latest/dg/context-mgmt.html#context-mgmt-request-attribs Setting Request Attributes> .
 --
--- * 'pcSessionAttributes' - You pass this value as the @x-amz-lex-session-attributes@ HTTP header. Application-specific information passed between Amazon Lex and a client application. The value must be a JSON serialized and base64 encoded map with string keys and values. The total size of the @sessionAttributes@ and @requestAttributes@ headers is limited to 12 KB. For more information, see <http://docs.aws.amazon.com/lex/latest/dg/context-mgmt.html#context-mgmt-session-attribs Setting Session Attributes> .
+-- * 'pcSessionAttributes' - You pass this value as the @x-amz-lex-session-attributes@ HTTP header. Application-specific information passed between Amazon Lex and a client application. The value must be a JSON serialized and base64 encoded map with string keys and values. The total size of the @sessionAttributes@ and @requestAttributes@ headers is limited to 12 KB. For more information, see <https://docs.aws.amazon.com/lex/latest/dg/context-mgmt.html#context-mgmt-session-attribs Setting Session Attributes> .
 --
 -- * 'pcBotName' - Name of the Amazon Lex bot.
 --
@@ -141,15 +143,15 @@ postContent pBotName_ pBotAlias_ pUserId_
                  _pcUserId = pUserId_, _pcContentType = pContentType_,
                  _pcInputStream = pInputStream_}
 
--- | You pass this value as the @Accept@ HTTP header.  The message Amazon Lex returns in the response can be either text or speech based on the @Accept@ HTTP header value in the request.      * If the value is @text/plain; charset=utf-8@ , Amazon Lex returns text in the response.      * If the value begins with @audio/@ , Amazon Lex returns speech in the response. Amazon Lex uses Amazon Polly to generate the speech (using the configuration you specified in the @Accept@ header). For example, if you specify @audio/mpeg@ as the value, Amazon Lex returns speech in the MPEG format. The following are the accepted values:     * audio/mpeg     * audio/ogg     * audio/pcm     * text/plain; charset=utf-8     * audio/* (defaults to mpeg)
+-- | You pass this value as the @Accept@ HTTP header.  The message Amazon Lex returns in the response can be either text or speech based on the @Accept@ HTTP header value in the request.      * If the value is @text/plain; charset=utf-8@ , Amazon Lex returns text in the response.      * If the value begins with @audio/@ , Amazon Lex returns speech in the response. Amazon Lex uses Amazon Polly to generate the speech (using the configuration you specified in the @Accept@ header). For example, if you specify @audio/mpeg@ as the value, Amazon Lex returns speech in the MPEG format.     * If the value is @audio/pcm@ , the speech returned is @audio/pcm@ in 16-bit, little endian format.      * The following are the accepted values:     * audio/mpeg     * audio/ogg     * audio/pcm     * text/plain; charset=utf-8     * audio/* (defaults to mpeg)
 pcAccept :: Lens' PostContent (Maybe Text)
 pcAccept = lens _pcAccept (\ s a -> s{_pcAccept = a})
 
--- | You pass this value as the @x-amz-lex-request-attributes@ HTTP header. Request-specific information passed between Amazon Lex and a client application. The value must be a JSON serialized and base64 encoded map with string keys and values. The total size of the @requestAttributes@ and @sessionAttributes@ headers is limited to 12 KB. The namespace @x-amz-lex:@ is reserved for special attributes. Don't create any request attributes with the prefix @x-amz-lex:@ . For more information, see <http://docs.aws.amazon.com/lex/latest/dg/context-mgmt.html#context-mgmt-request-attribs Setting Request Attributes> .
+-- | You pass this value as the @x-amz-lex-request-attributes@ HTTP header. Request-specific information passed between Amazon Lex and a client application. The value must be a JSON serialized and base64 encoded map with string keys and values. The total size of the @requestAttributes@ and @sessionAttributes@ headers is limited to 12 KB. The namespace @x-amz-lex:@ is reserved for special attributes. Don't create any request attributes with the prefix @x-amz-lex:@ . For more information, see <https://docs.aws.amazon.com/lex/latest/dg/context-mgmt.html#context-mgmt-request-attribs Setting Request Attributes> .
 pcRequestAttributes :: Lens' PostContent (Maybe Text)
 pcRequestAttributes = lens _pcRequestAttributes (\ s a -> s{_pcRequestAttributes = a}) . mapping _Sensitive
 
--- | You pass this value as the @x-amz-lex-session-attributes@ HTTP header. Application-specific information passed between Amazon Lex and a client application. The value must be a JSON serialized and base64 encoded map with string keys and values. The total size of the @sessionAttributes@ and @requestAttributes@ headers is limited to 12 KB. For more information, see <http://docs.aws.amazon.com/lex/latest/dg/context-mgmt.html#context-mgmt-session-attribs Setting Session Attributes> .
+-- | You pass this value as the @x-amz-lex-session-attributes@ HTTP header. Application-specific information passed between Amazon Lex and a client application. The value must be a JSON serialized and base64 encoded map with string keys and values. The total size of the @sessionAttributes@ and @requestAttributes@ headers is limited to 12 KB. For more information, see <https://docs.aws.amazon.com/lex/latest/dg/context-mgmt.html#context-mgmt-session-attribs Setting Session Attributes> .
 pcSessionAttributes :: Lens' PostContent (Maybe Text)
 pcSessionAttributes = lens _pcSessionAttributes (\ s a -> s{_pcSessionAttributes = a}) . mapping _Sensitive
 
@@ -180,12 +182,14 @@ instance AWSRequest PostContent where
           = receiveBody
               (\ s h x ->
                  PostContentResponse' <$>
-                   (h .#? "x-amz-lex-slots") <*>
-                     (h .#? "x-amz-lex-intent-name")
+                   (h .#? "x-amz-lex-sentiment") <*>
+                     (h .#? "x-amz-lex-slots")
+                     <*> (h .#? "x-amz-lex-intent-name")
                      <*> (h .#? "x-amz-lex-dialog-state")
                      <*> (h .#? "x-amz-lex-input-transcript")
                      <*> (h .#? "x-amz-lex-message-format")
                      <*> (h .#? "x-amz-lex-message")
+                     <*> (h .#? "x-amz-lex-session-id")
                      <*> (h .#? "x-amz-lex-slot-to-elicit")
                      <*> (h .#? "Content-Type")
                      <*> (h .#? "x-amz-lex-session-attributes")
@@ -216,8 +220,9 @@ instance ToQuery PostContent where
         toQuery = const mempty
 
 -- | /See:/ 'postContentResponse' smart constructor.
-data PostContentResponse = PostContentResponse'{_pcrsSlots
+data PostContentResponse = PostContentResponse'{_pcrsSentimentResponse
                                                 :: !(Maybe Text),
+                                                _pcrsSlots :: !(Maybe Text),
                                                 _pcrsIntentName ::
                                                 !(Maybe Text),
                                                 _pcrsDialogState ::
@@ -228,6 +233,7 @@ data PostContentResponse = PostContentResponse'{_pcrsSlots
                                                 !(Maybe MessageFormatType),
                                                 _pcrsMessage ::
                                                 !(Maybe (Sensitive Text)),
+                                                _pcrsSessionId :: !(Maybe Text),
                                                 _pcrsSlotToElicit ::
                                                 !(Maybe Text),
                                                 _pcrsContentType ::
@@ -242,7 +248,9 @@ data PostContentResponse = PostContentResponse'{_pcrsSlots
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'pcrsSlots' - Map of zero or more intent slots (name/value pairs) Amazon Lex detected from the user input during the conversation. Amazon Lex creates a resolution list containing likely values for a slot. The value that it returns is determined by the @valueSelectionStrategy@ selected when the slot type was created or updated. If @valueSelectionStrategy@ is set to @ORIGINAL_VALUE@ , the value provided by the user is returned, if the user value is similar to the slot values. If @valueSelectionStrategy@ is set to @TOP_RESOLUTION@ Amazon Lex returns the first value in the resolution list or, if there is no resolution list, null. If you don't specify a @valueSelectionStrategy@ , the default is @ORIGINAL_VALUE@ .
+-- * 'pcrsSentimentResponse' - The sentiment expressed in and utterance. When the bot is configured to send utterances to Amazon Comprehend for sentiment analysis, this field contains the result of the analysis.
+--
+-- * 'pcrsSlots' - Map of zero or more intent slots (name/value pairs) Amazon Lex detected from the user input during the conversation. The field is base-64 encoded. Amazon Lex creates a resolution list containing likely values for a slot. The value that it returns is determined by the @valueSelectionStrategy@ selected when the slot type was created or updated. If @valueSelectionStrategy@ is set to @ORIGINAL_VALUE@ , the value provided by the user is returned, if the user value is similar to the slot values. If @valueSelectionStrategy@ is set to @TOP_RESOLUTION@ Amazon Lex returns the first value in the resolution list or, if there is no resolution list, null. If you don't specify a @valueSelectionStrategy@ , the default is @ORIGINAL_VALUE@ .
 --
 -- * 'pcrsIntentName' - Current user intent that Amazon Lex is aware of.
 --
@@ -252,7 +260,9 @@ data PostContentResponse = PostContentResponse'{_pcrsSlots
 --
 -- * 'pcrsMessageFormat' - The format of the response message. One of the following values:     * @PlainText@ - The message contains plain UTF-8 text.     * @CustomPayload@ - The message is a custom format for the client.     * @SSML@ - The message contains text formatted for voice output.     * @Composite@ - The message contains an escaped JSON object containing one or more messages from the groups that messages were assigned to when the intent was created.
 --
--- * 'pcrsMessage' - The message to convey to the user. The message can come from the bot's configuration or from a Lambda function. If the intent is not configured with a Lambda function, or if the Lambda function returned @Delegate@ as the @dialogAction.type@ its response, Amazon Lex decides on the next course of action and selects an appropriate message from the bot's configuration based on the current interaction context. For example, if Amazon Lex isn't able to understand user input, it uses a clarification prompt message. When you create an intent you can assign messages to groups. When messages are assigned to groups Amazon Lex returns one message from each group in the response. The message field is an escaped JSON string containing the messages. For more information about the structure of the JSON string returned, see 'msg-prompts-formats' . If the Lambda function returns a message, Amazon Lex passes it to the client in its response.
+-- * 'pcrsMessage' - The message to convey to the user. The message can come from the bot's configuration or from a Lambda function. If the intent is not configured with a Lambda function, or if the Lambda function returned @Delegate@ as the @dialogAction.type@ in its response, Amazon Lex decides on the next course of action and selects an appropriate message from the bot's configuration based on the current interaction context. For example, if Amazon Lex isn't able to understand user input, it uses a clarification prompt message. When you create an intent you can assign messages to groups. When messages are assigned to groups Amazon Lex returns one message from each group in the response. The message field is an escaped JSON string containing the messages. For more information about the structure of the JSON string returned, see 'msg-prompts-formats' . If the Lambda function returns a message, Amazon Lex passes it to the client in its response.
+--
+-- * 'pcrsSessionId' - The unique identifier for the session.
 --
 -- * 'pcrsSlotToElicit' - If the @dialogState@ value is @ElicitSlot@ , returns the name of the slot for which Amazon Lex is eliciting a value. 
 --
@@ -268,18 +278,24 @@ postContentResponse
     -> RsBody -- ^ 'pcrsAudioStream'
     -> PostContentResponse
 postContentResponse pResponseStatus_ pAudioStream_
-  = PostContentResponse'{_pcrsSlots = Nothing,
-                         _pcrsIntentName = Nothing,
+  = PostContentResponse'{_pcrsSentimentResponse =
+                           Nothing,
+                         _pcrsSlots = Nothing, _pcrsIntentName = Nothing,
                          _pcrsDialogState = Nothing,
                          _pcrsInputTranscript = Nothing,
                          _pcrsMessageFormat = Nothing, _pcrsMessage = Nothing,
+                         _pcrsSessionId = Nothing,
                          _pcrsSlotToElicit = Nothing,
                          _pcrsContentType = Nothing,
                          _pcrsSessionAttributes = Nothing,
                          _pcrsResponseStatus = pResponseStatus_,
                          _pcrsAudioStream = pAudioStream_}
 
--- | Map of zero or more intent slots (name/value pairs) Amazon Lex detected from the user input during the conversation. Amazon Lex creates a resolution list containing likely values for a slot. The value that it returns is determined by the @valueSelectionStrategy@ selected when the slot type was created or updated. If @valueSelectionStrategy@ is set to @ORIGINAL_VALUE@ , the value provided by the user is returned, if the user value is similar to the slot values. If @valueSelectionStrategy@ is set to @TOP_RESOLUTION@ Amazon Lex returns the first value in the resolution list or, if there is no resolution list, null. If you don't specify a @valueSelectionStrategy@ , the default is @ORIGINAL_VALUE@ .
+-- | The sentiment expressed in and utterance. When the bot is configured to send utterances to Amazon Comprehend for sentiment analysis, this field contains the result of the analysis.
+pcrsSentimentResponse :: Lens' PostContentResponse (Maybe Text)
+pcrsSentimentResponse = lens _pcrsSentimentResponse (\ s a -> s{_pcrsSentimentResponse = a})
+
+-- | Map of zero or more intent slots (name/value pairs) Amazon Lex detected from the user input during the conversation. The field is base-64 encoded. Amazon Lex creates a resolution list containing likely values for a slot. The value that it returns is determined by the @valueSelectionStrategy@ selected when the slot type was created or updated. If @valueSelectionStrategy@ is set to @ORIGINAL_VALUE@ , the value provided by the user is returned, if the user value is similar to the slot values. If @valueSelectionStrategy@ is set to @TOP_RESOLUTION@ Amazon Lex returns the first value in the resolution list or, if there is no resolution list, null. If you don't specify a @valueSelectionStrategy@ , the default is @ORIGINAL_VALUE@ .
 pcrsSlots :: Lens' PostContentResponse (Maybe Text)
 pcrsSlots = lens _pcrsSlots (\ s a -> s{_pcrsSlots = a})
 
@@ -299,9 +315,13 @@ pcrsInputTranscript = lens _pcrsInputTranscript (\ s a -> s{_pcrsInputTranscript
 pcrsMessageFormat :: Lens' PostContentResponse (Maybe MessageFormatType)
 pcrsMessageFormat = lens _pcrsMessageFormat (\ s a -> s{_pcrsMessageFormat = a})
 
--- | The message to convey to the user. The message can come from the bot's configuration or from a Lambda function. If the intent is not configured with a Lambda function, or if the Lambda function returned @Delegate@ as the @dialogAction.type@ its response, Amazon Lex decides on the next course of action and selects an appropriate message from the bot's configuration based on the current interaction context. For example, if Amazon Lex isn't able to understand user input, it uses a clarification prompt message. When you create an intent you can assign messages to groups. When messages are assigned to groups Amazon Lex returns one message from each group in the response. The message field is an escaped JSON string containing the messages. For more information about the structure of the JSON string returned, see 'msg-prompts-formats' . If the Lambda function returns a message, Amazon Lex passes it to the client in its response.
+-- | The message to convey to the user. The message can come from the bot's configuration or from a Lambda function. If the intent is not configured with a Lambda function, or if the Lambda function returned @Delegate@ as the @dialogAction.type@ in its response, Amazon Lex decides on the next course of action and selects an appropriate message from the bot's configuration based on the current interaction context. For example, if Amazon Lex isn't able to understand user input, it uses a clarification prompt message. When you create an intent you can assign messages to groups. When messages are assigned to groups Amazon Lex returns one message from each group in the response. The message field is an escaped JSON string containing the messages. For more information about the structure of the JSON string returned, see 'msg-prompts-formats' . If the Lambda function returns a message, Amazon Lex passes it to the client in its response.
 pcrsMessage :: Lens' PostContentResponse (Maybe Text)
 pcrsMessage = lens _pcrsMessage (\ s a -> s{_pcrsMessage = a}) . mapping _Sensitive
+
+-- | The unique identifier for the session.
+pcrsSessionId :: Lens' PostContentResponse (Maybe Text)
+pcrsSessionId = lens _pcrsSessionId (\ s a -> s{_pcrsSessionId = a})
 
 -- | If the @dialogState@ value is @ElicitSlot@ , returns the name of the slot for which Amazon Lex is eliciting a value. 
 pcrsSlotToElicit :: Lens' PostContentResponse (Maybe Text)

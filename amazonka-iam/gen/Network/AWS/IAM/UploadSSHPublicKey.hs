@@ -21,7 +21,7 @@
 -- Uploads an SSH public key and associates it with the specified IAM user.
 --
 --
--- The SSH public key uploaded by this operation can be used only for authenticating the associated IAM user to an AWS CodeCommit repository. For more information about using SSH keys to authenticate to an AWS CodeCommit repository, see <http://docs.aws.amazon.com/codecommit/latest/userguide/setting-up-credentials-ssh.html Set up AWS CodeCommit for SSH Connections> in the /AWS CodeCommit User Guide/ .
+-- The SSH public key uploaded by this operation can be used only for authenticating the associated IAM user to an AWS CodeCommit repository. For more information about using SSH keys to authenticate to an AWS CodeCommit repository, see <https://docs.aws.amazon.com/codecommit/latest/userguide/setting-up-credentials-ssh.html Set up AWS CodeCommit for SSH Connections> in the /AWS CodeCommit User Guide/ .
 --
 module Network.AWS.IAM.UploadSSHPublicKey
     (
@@ -57,9 +57,9 @@ data UploadSSHPublicKey = UploadSSHPublicKey'{_usshpkUserName
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'usshpkUserName' - The name of the IAM user to associate the SSH public key with. This parameter allows (per its <http://wikipedia.org/wiki/regex regex pattern> ) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
+-- * 'usshpkUserName' - The name of the IAM user to associate the SSH public key with. This parameter allows (through its <http://wikipedia.org/wiki/regex regex pattern> ) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
 --
--- * 'usshpkSSHPublicKeyBody' - The SSH public key. The public key must be encoded in ssh-rsa format or PEM format. The <http://wikipedia.org/wiki/regex regex pattern> used to validate this parameter is a string of characters consisting of the following:     * Any printable ASCII character ranging from the space character (\u0020) through the end of the ASCII character range     * The printable characters in the Basic Latin and Latin-1 Supplement character set (through \u00FF)     * The special characters tab (\u0009), line feed (\u000A), and carriage return (\u000D)
+-- * 'usshpkSSHPublicKeyBody' - The SSH public key. The public key must be encoded in ssh-rsa format or PEM format. The minimum bit-length of the public key is 2048 bits. For example, you can generate a 2048-bit key, and the resulting PEM file is 1679 bytes long. The <http://wikipedia.org/wiki/regex regex pattern> used to validate this parameter is a string of characters consisting of the following:     * Any printable ASCII character ranging from the space character (@\u0020@ ) through the end of the ASCII character range     * The printable characters in the Basic Latin and Latin-1 Supplement character set (through @\u00FF@ )     * The special characters tab (@\u0009@ ), line feed (@\u000A@ ), and carriage return (@\u000D@ )
 uploadSSHPublicKey
     :: Text -- ^ 'usshpkUserName'
     -> Text -- ^ 'usshpkSSHPublicKeyBody'
@@ -68,11 +68,11 @@ uploadSSHPublicKey pUserName_ pSSHPublicKeyBody_
   = UploadSSHPublicKey'{_usshpkUserName = pUserName_,
                         _usshpkSSHPublicKeyBody = pSSHPublicKeyBody_}
 
--- | The name of the IAM user to associate the SSH public key with. This parameter allows (per its <http://wikipedia.org/wiki/regex regex pattern> ) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
+-- | The name of the IAM user to associate the SSH public key with. This parameter allows (through its <http://wikipedia.org/wiki/regex regex pattern> ) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
 usshpkUserName :: Lens' UploadSSHPublicKey Text
 usshpkUserName = lens _usshpkUserName (\ s a -> s{_usshpkUserName = a})
 
--- | The SSH public key. The public key must be encoded in ssh-rsa format or PEM format. The <http://wikipedia.org/wiki/regex regex pattern> used to validate this parameter is a string of characters consisting of the following:     * Any printable ASCII character ranging from the space character (\u0020) through the end of the ASCII character range     * The printable characters in the Basic Latin and Latin-1 Supplement character set (through \u00FF)     * The special characters tab (\u0009), line feed (\u000A), and carriage return (\u000D)
+-- | The SSH public key. The public key must be encoded in ssh-rsa format or PEM format. The minimum bit-length of the public key is 2048 bits. For example, you can generate a 2048-bit key, and the resulting PEM file is 1679 bytes long. The <http://wikipedia.org/wiki/regex regex pattern> used to validate this parameter is a string of characters consisting of the following:     * Any printable ASCII character ranging from the space character (@\u0020@ ) through the end of the ASCII character range     * The printable characters in the Basic Latin and Latin-1 Supplement character set (through @\u00FF@ )     * The special characters tab (@\u0009@ ), line feed (@\u000A@ ), and carriage return (@\u000D@ )
 usshpkSSHPublicKeyBody :: Lens' UploadSSHPublicKey Text
 usshpkSSHPublicKeyBody = lens _usshpkSSHPublicKeyBody (\ s a -> s{_usshpkSSHPublicKeyBody = a})
 

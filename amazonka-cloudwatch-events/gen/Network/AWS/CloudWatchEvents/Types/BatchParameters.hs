@@ -39,7 +39,7 @@ data BatchParameters = BatchParameters'{_bpRetryStrategy
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'bpRetryStrategy' - The retry strategy to use for failed jobs if the target is an AWS Batch job. The retry strategy is the number of times to retry the failed job execution. Valid values are 1–10. When you specify a retry strategy here, it overrides the retry strategy defined in the job definition.
+-- * 'bpRetryStrategy' - The retry strategy to use for failed jobs, if the target is an AWS Batch job. The retry strategy is the number of times to retry the failed job execution. Valid values are 1–10. When you specify a retry strategy here, it overrides the retry strategy defined in the job definition.
 --
 -- * 'bpArrayProperties' - The array properties for the submitted job, such as the size of the array. The array size can be between 2 and 10,000. If you specify array properties for a job, it becomes an array job. This parameter is used only if the target is an AWS Batch job.
 --
@@ -56,7 +56,7 @@ batchParameters pJobDefinition_ pJobName_
                      _bpJobDefinition = pJobDefinition_,
                      _bpJobName = pJobName_}
 
--- | The retry strategy to use for failed jobs if the target is an AWS Batch job. The retry strategy is the number of times to retry the failed job execution. Valid values are 1–10. When you specify a retry strategy here, it overrides the retry strategy defined in the job definition.
+-- | The retry strategy to use for failed jobs, if the target is an AWS Batch job. The retry strategy is the number of times to retry the failed job execution. Valid values are 1–10. When you specify a retry strategy here, it overrides the retry strategy defined in the job definition.
 bpRetryStrategy :: Lens' BatchParameters (Maybe BatchRetryStrategy)
 bpRetryStrategy = lens _bpRetryStrategy (\ s a -> s{_bpRetryStrategy = a})
 

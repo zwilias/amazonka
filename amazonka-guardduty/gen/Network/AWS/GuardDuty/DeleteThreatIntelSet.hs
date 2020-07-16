@@ -18,15 +18,17 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Deletes ThreatIntelSet specified by the ThreatIntelSet ID.
+-- Deletes the ThreatIntelSet specified by the ThreatIntelSet ID.
+--
+--
 module Network.AWS.GuardDuty.DeleteThreatIntelSet
     (
     -- * Creating a Request
       deleteThreatIntelSet
     , DeleteThreatIntelSet
     -- * Request Lenses
-    , dtisThreatIntelSetId
     , dtisDetectorId
+    , dtisThreatIntelSetId
 
     -- * Destructuring the Response
     , deleteThreatIntelSetResponse
@@ -43,34 +45,35 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deleteThreatIntelSet' smart constructor.
-data DeleteThreatIntelSet = DeleteThreatIntelSet'{_dtisThreatIntelSetId
+data DeleteThreatIntelSet = DeleteThreatIntelSet'{_dtisDetectorId
                                                   :: !Text,
-                                                  _dtisDetectorId :: !Text}
+                                                  _dtisThreatIntelSetId ::
+                                                  !Text}
                               deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteThreatIntelSet' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dtisThreatIntelSetId' - The unique ID that specifies the ThreatIntelSet that you want to delete.
+-- * 'dtisDetectorId' - The unique ID of the detector that the threatIntelSet is associated with.
 --
--- * 'dtisDetectorId' - The detectorID that specifies the GuardDuty service whose ThreatIntelSet you want to delete.
+-- * 'dtisThreatIntelSetId' - The unique ID of the threatIntelSet that you want to delete.
 deleteThreatIntelSet
-    :: Text -- ^ 'dtisThreatIntelSetId'
-    -> Text -- ^ 'dtisDetectorId'
+    :: Text -- ^ 'dtisDetectorId'
+    -> Text -- ^ 'dtisThreatIntelSetId'
     -> DeleteThreatIntelSet
-deleteThreatIntelSet pThreatIntelSetId_ pDetectorId_
-  = DeleteThreatIntelSet'{_dtisThreatIntelSetId =
-                            pThreatIntelSetId_,
-                          _dtisDetectorId = pDetectorId_}
+deleteThreatIntelSet pDetectorId_ pThreatIntelSetId_
+  = DeleteThreatIntelSet'{_dtisDetectorId =
+                            pDetectorId_,
+                          _dtisThreatIntelSetId = pThreatIntelSetId_}
 
--- | The unique ID that specifies the ThreatIntelSet that you want to delete.
-dtisThreatIntelSetId :: Lens' DeleteThreatIntelSet Text
-dtisThreatIntelSetId = lens _dtisThreatIntelSetId (\ s a -> s{_dtisThreatIntelSetId = a})
-
--- | The detectorID that specifies the GuardDuty service whose ThreatIntelSet you want to delete.
+-- | The unique ID of the detector that the threatIntelSet is associated with.
 dtisDetectorId :: Lens' DeleteThreatIntelSet Text
 dtisDetectorId = lens _dtisDetectorId (\ s a -> s{_dtisDetectorId = a})
+
+-- | The unique ID of the threatIntelSet that you want to delete.
+dtisThreatIntelSetId :: Lens' DeleteThreatIntelSet Text
+dtisThreatIntelSetId = lens _dtisThreatIntelSetId (\ s a -> s{_dtisThreatIntelSetId = a})
 
 instance AWSRequest DeleteThreatIntelSet where
         type Rs DeleteThreatIntelSet =

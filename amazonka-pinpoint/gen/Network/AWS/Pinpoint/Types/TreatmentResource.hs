@@ -19,90 +19,119 @@ module Network.AWS.Pinpoint.Types.TreatmentResource where
 
 import Network.AWS.Lens
 import Network.AWS.Pinpoint.Types.CampaignState
+import Network.AWS.Pinpoint.Types.CustomDeliveryConfiguration
 import Network.AWS.Pinpoint.Types.MessageConfiguration
 import Network.AWS.Pinpoint.Types.Schedule
+import Network.AWS.Pinpoint.Types.TemplateConfiguration
 import Network.AWS.Prelude
 
--- | Treatment resource
+-- | Specifies the settings for a campaign treatment. A /treatment/ is a variation of a campaign that's used for A/B testing of a campaign.
+--
+--
 --
 -- /See:/ 'treatmentResource' smart constructor.
-data TreatmentResource = TreatmentResource'{_trState
-                                            :: !(Maybe CampaignState),
+data TreatmentResource = TreatmentResource'{_trCustomDeliveryConfiguration
+                                            ::
+                                            !(Maybe
+                                                CustomDeliveryConfiguration),
+                                            _trState :: !(Maybe CampaignState),
                                             _trSchedule :: !(Maybe Schedule),
+                                            _trTemplateConfiguration ::
+                                            !(Maybe TemplateConfiguration),
                                             _trTreatmentName :: !(Maybe Text),
-                                            _trSizePercent :: !(Maybe Int),
                                             _trTreatmentDescription ::
                                             !(Maybe Text),
-                                            _trId :: !(Maybe Text),
                                             _trMessageConfiguration ::
-                                            !(Maybe MessageConfiguration)}
+                                            !(Maybe MessageConfiguration),
+                                            _trId :: !Text,
+                                            _trSizePercent :: !Int}
                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'TreatmentResource' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'trState' - The treatment status.
+-- * 'trCustomDeliveryConfiguration' - The delivery configuration settings for sending the treatment through a custom channel. This object is required if the MessageConfiguration object for the treatment specifies a CustomMessage object.
 --
--- * 'trSchedule' - The campaign schedule.
+-- * 'trState' - The current status of the treatment.
 --
--- * 'trTreatmentName' - The custom name of a variation of the campaign used for A/B testing.
+-- * 'trSchedule' - The schedule settings for the treatment.
 --
--- * 'trSizePercent' - The allocated percentage of users for this treatment.
+-- * 'trTemplateConfiguration' - The message template to use for the treatment.
 --
--- * 'trTreatmentDescription' - A custom description for the treatment.
+-- * 'trTreatmentName' - The custom name of the treatment.
 --
--- * 'trId' - The unique treatment ID.
+-- * 'trTreatmentDescription' - The custom description of the treatment.
 --
--- * 'trMessageConfiguration' - The message configuration settings.
+-- * 'trMessageConfiguration' - The message configuration settings for the treatment.
+--
+-- * 'trId' - The unique identifier for the treatment.
+--
+-- * 'trSizePercent' - The allocated percentage of users (segment members) that the treatment is sent to.
 treatmentResource
-    :: TreatmentResource
-treatmentResource
-  = TreatmentResource'{_trState = Nothing,
-                       _trSchedule = Nothing, _trTreatmentName = Nothing,
-                       _trSizePercent = Nothing,
-                       _trTreatmentDescription = Nothing, _trId = Nothing,
-                       _trMessageConfiguration = Nothing}
+    :: Text -- ^ 'trId'
+    -> Int -- ^ 'trSizePercent'
+    -> TreatmentResource
+treatmentResource pId_ pSizePercent_
+  = TreatmentResource'{_trCustomDeliveryConfiguration =
+                         Nothing,
+                       _trState = Nothing, _trSchedule = Nothing,
+                       _trTemplateConfiguration = Nothing,
+                       _trTreatmentName = Nothing,
+                       _trTreatmentDescription = Nothing,
+                       _trMessageConfiguration = Nothing, _trId = pId_,
+                       _trSizePercent = pSizePercent_}
 
--- | The treatment status.
+-- | The delivery configuration settings for sending the treatment through a custom channel. This object is required if the MessageConfiguration object for the treatment specifies a CustomMessage object.
+trCustomDeliveryConfiguration :: Lens' TreatmentResource (Maybe CustomDeliveryConfiguration)
+trCustomDeliveryConfiguration = lens _trCustomDeliveryConfiguration (\ s a -> s{_trCustomDeliveryConfiguration = a})
+
+-- | The current status of the treatment.
 trState :: Lens' TreatmentResource (Maybe CampaignState)
 trState = lens _trState (\ s a -> s{_trState = a})
 
--- | The campaign schedule.
+-- | The schedule settings for the treatment.
 trSchedule :: Lens' TreatmentResource (Maybe Schedule)
 trSchedule = lens _trSchedule (\ s a -> s{_trSchedule = a})
 
--- | The custom name of a variation of the campaign used for A/B testing.
+-- | The message template to use for the treatment.
+trTemplateConfiguration :: Lens' TreatmentResource (Maybe TemplateConfiguration)
+trTemplateConfiguration = lens _trTemplateConfiguration (\ s a -> s{_trTemplateConfiguration = a})
+
+-- | The custom name of the treatment.
 trTreatmentName :: Lens' TreatmentResource (Maybe Text)
 trTreatmentName = lens _trTreatmentName (\ s a -> s{_trTreatmentName = a})
 
--- | The allocated percentage of users for this treatment.
-trSizePercent :: Lens' TreatmentResource (Maybe Int)
-trSizePercent = lens _trSizePercent (\ s a -> s{_trSizePercent = a})
-
--- | A custom description for the treatment.
+-- | The custom description of the treatment.
 trTreatmentDescription :: Lens' TreatmentResource (Maybe Text)
 trTreatmentDescription = lens _trTreatmentDescription (\ s a -> s{_trTreatmentDescription = a})
 
--- | The unique treatment ID.
-trId :: Lens' TreatmentResource (Maybe Text)
-trId = lens _trId (\ s a -> s{_trId = a})
-
--- | The message configuration settings.
+-- | The message configuration settings for the treatment.
 trMessageConfiguration :: Lens' TreatmentResource (Maybe MessageConfiguration)
 trMessageConfiguration = lens _trMessageConfiguration (\ s a -> s{_trMessageConfiguration = a})
+
+-- | The unique identifier for the treatment.
+trId :: Lens' TreatmentResource Text
+trId = lens _trId (\ s a -> s{_trId = a})
+
+-- | The allocated percentage of users (segment members) that the treatment is sent to.
+trSizePercent :: Lens' TreatmentResource Int
+trSizePercent = lens _trSizePercent (\ s a -> s{_trSizePercent = a})
 
 instance FromJSON TreatmentResource where
         parseJSON
           = withObject "TreatmentResource"
               (\ x ->
                  TreatmentResource' <$>
-                   (x .:? "State") <*> (x .:? "Schedule") <*>
-                     (x .:? "TreatmentName")
-                     <*> (x .:? "SizePercent")
+                   (x .:? "CustomDeliveryConfiguration") <*>
+                     (x .:? "State")
+                     <*> (x .:? "Schedule")
+                     <*> (x .:? "TemplateConfiguration")
+                     <*> (x .:? "TreatmentName")
                      <*> (x .:? "TreatmentDescription")
-                     <*> (x .:? "Id")
-                     <*> (x .:? "MessageConfiguration"))
+                     <*> (x .:? "MessageConfiguration")
+                     <*> (x .: "Id")
+                     <*> (x .: "SizePercent"))
 
 instance Hashable TreatmentResource where
 

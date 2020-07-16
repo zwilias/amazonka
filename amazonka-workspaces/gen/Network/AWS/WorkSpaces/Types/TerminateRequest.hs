@@ -20,7 +20,7 @@ module Network.AWS.WorkSpaces.Types.TerminateRequest where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | Information used to terminate a WorkSpace.
+-- | Describes the information used to terminate a WorkSpace.
 --
 --
 --
@@ -33,14 +33,14 @@ newtype TerminateRequest = TerminateRequest'{_trWorkspaceId
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'trWorkspaceId' - The ID of the WorkSpace.
+-- * 'trWorkspaceId' - The identifier of the WorkSpace.
 terminateRequest
     :: Text -- ^ 'trWorkspaceId'
     -> TerminateRequest
 terminateRequest pWorkspaceId_
   = TerminateRequest'{_trWorkspaceId = pWorkspaceId_}
 
--- | The ID of the WorkSpace.
+-- | The identifier of the WorkSpace.
 trWorkspaceId :: Lens' TerminateRequest Text
 trWorkspaceId = lens _trWorkspaceId (\ s a -> s{_trWorkspaceId = a})
 

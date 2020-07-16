@@ -26,6 +26,7 @@ module Network.AWS.IoTJobsData.Types.JobExecutionStatus (
     , Rejected
     , Removed
     , Succeeded
+    , TimedOut
     )
   ) where
 
@@ -58,6 +59,9 @@ pattern Removed = JobExecutionStatus' "REMOVED"
 pattern Succeeded :: JobExecutionStatus
 pattern Succeeded = JobExecutionStatus' "SUCCEEDED"
 
+pattern TimedOut :: JobExecutionStatus
+pattern TimedOut = JobExecutionStatus' "TIMED_OUT"
+
 {-# COMPLETE
   Canceled,
   Failed,
@@ -66,6 +70,7 @@ pattern Succeeded = JobExecutionStatus' "SUCCEEDED"
   Rejected,
   Removed,
   Succeeded,
+  TimedOut,
   JobExecutionStatus' #-}
 
 instance FromText JobExecutionStatus where
@@ -87,6 +92,7 @@ instance Enum JobExecutionStatus where
         4 -> Rejected
         5 -> Removed
         6 -> Succeeded
+        7 -> TimedOut
         _ -> (error . showText) $ "Unknown index for JobExecutionStatus: " <> toText i
     fromEnum x = case x of
         Canceled -> 0
@@ -96,6 +102,7 @@ instance Enum JobExecutionStatus where
         Rejected -> 4
         Removed -> 5
         Succeeded -> 6
+        TimedOut -> 7
         JobExecutionStatus' name -> (error . showText) $ "Unknown JobExecutionStatus: " <> original name
 
 -- | Represents the bounds of /known/ $JobExecutionStatus.
@@ -103,7 +110,7 @@ instance Enum JobExecutionStatus where
 --   This instance exists only for backward compatibility.
 instance Bounded JobExecutionStatus where
     minBound = Canceled
-    maxBound = Succeeded
+    maxBound = TimedOut
 
 instance Hashable     JobExecutionStatus
 instance NFData       JobExecutionStatus

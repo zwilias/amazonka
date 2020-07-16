@@ -62,7 +62,7 @@ data SetTopicAttributes = SetTopicAttributes'{_staAttributeValue
 --
 -- * 'staTopicARN' - The ARN of the topic to modify.
 --
--- * 'staAttributeName' - The name of the attribute you want to set. Only a subset of the topic's attributes are mutable. Valid values: @Policy@ | @DisplayName@ | @DeliveryPolicy@ 
+-- * 'staAttributeName' - A map of attributes with their corresponding values. The following lists the names, descriptions, and values of the special request parameters that the @SetTopicAttributes@ action uses:     * @DeliveryPolicy@ – The policy that defines how Amazon SNS retries failed deliveries to HTTP/S endpoints.     * @DisplayName@ – The display name to use for a topic with SMS subscriptions.     * @Policy@ – The policy that defines who can access your topic. By default, only the topic owner can publish or subscribe to the topic. The following attribute applies only to <https://docs.aws.amazon.com/sns/latest/dg/sns-server-side-encryption.html server-side-encryption> :     * @KmsMasterKeyId@ - The ID of an AWS-managed customer master key (CMK) for Amazon SNS or a custom CMK. For more information, see <https://docs.aws.amazon.com/sns/latest/dg/sns-server-side-encryption.html#sse-key-terms Key Terms> . For more examples, see <https://docs.aws.amazon.com/kms/latest/APIReference/API_DescribeKey.html#API_DescribeKey_RequestParameters KeyId> in the /AWS Key Management Service API Reference/ . 
 setTopicAttributes
     :: Text -- ^ 'staTopicARN'
     -> Text -- ^ 'staAttributeName'
@@ -80,7 +80,7 @@ staAttributeValue = lens _staAttributeValue (\ s a -> s{_staAttributeValue = a})
 staTopicARN :: Lens' SetTopicAttributes Text
 staTopicARN = lens _staTopicARN (\ s a -> s{_staTopicARN = a})
 
--- | The name of the attribute you want to set. Only a subset of the topic's attributes are mutable. Valid values: @Policy@ | @DisplayName@ | @DeliveryPolicy@ 
+-- | A map of attributes with their corresponding values. The following lists the names, descriptions, and values of the special request parameters that the @SetTopicAttributes@ action uses:     * @DeliveryPolicy@ – The policy that defines how Amazon SNS retries failed deliveries to HTTP/S endpoints.     * @DisplayName@ – The display name to use for a topic with SMS subscriptions.     * @Policy@ – The policy that defines who can access your topic. By default, only the topic owner can publish or subscribe to the topic. The following attribute applies only to <https://docs.aws.amazon.com/sns/latest/dg/sns-server-side-encryption.html server-side-encryption> :     * @KmsMasterKeyId@ - The ID of an AWS-managed customer master key (CMK) for Amazon SNS or a custom CMK. For more information, see <https://docs.aws.amazon.com/sns/latest/dg/sns-server-side-encryption.html#sse-key-terms Key Terms> . For more examples, see <https://docs.aws.amazon.com/kms/latest/APIReference/API_DescribeKey.html#API_DescribeKey_RequestParameters KeyId> in the /AWS Key Management Service API Reference/ . 
 staAttributeName :: Lens' SetTopicAttributes Text
 staAttributeName = lens _staAttributeName (\ s a -> s{_staAttributeName = a})
 

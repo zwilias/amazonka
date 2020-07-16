@@ -20,14 +20,14 @@ module Network.AWS.MediaConvert.Types.StaticKeyProvider where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | Settings for use with a SPEKE key provider.
+-- | Use these settings to set up encryption with a static key provider.
 --
 -- /See:/ 'staticKeyProvider' smart constructor.
-data StaticKeyProvider = StaticKeyProvider'{_sStaticKeyValue
+data StaticKeyProvider = StaticKeyProvider'{_skpStaticKeyValue
                                             :: !(Maybe Text),
-                                            _sURL :: !(Maybe Text),
-                                            _sKeyFormat :: !(Maybe Text),
-                                            _sKeyFormatVersions ::
+                                            _skpURL :: !(Maybe Text),
+                                            _skpKeyFormat :: !(Maybe Text),
+                                            _skpKeyFormatVersions ::
                                             !(Maybe Text)}
                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -35,35 +35,35 @@ data StaticKeyProvider = StaticKeyProvider'{_sStaticKeyValue
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'sStaticKeyValue' - Relates to DRM implementation. Use a 32-character hexidecimal string to specify Key Value (StaticKeyValue).
+-- * 'skpStaticKeyValue' - Relates to DRM implementation. Use a 32-character hexidecimal string to specify Key Value (StaticKeyValue).
 --
--- * 'sURL' - Relates to DRM implementation. The location of the license server used for protecting content.
+-- * 'skpURL' - Relates to DRM implementation. The location of the license server used for protecting content.
 --
--- * 'sKeyFormat' - Relates to DRM implementation. Sets the value of the KEYFORMAT attribute. Must be 'identity' or a reverse DNS string. May be omitted to indicate an implicit value of 'identity'.
+-- * 'skpKeyFormat' - Relates to DRM implementation. Sets the value of the KEYFORMAT attribute. Must be 'identity' or a reverse DNS string. May be omitted to indicate an implicit value of 'identity'.
 --
--- * 'sKeyFormatVersions' - Relates to DRM implementation. Either a single positive integer version value or a slash delimited list of version values (1/2/3).
+-- * 'skpKeyFormatVersions' - Relates to DRM implementation. Either a single positive integer version value or a slash delimited list of version values (1/2/3).
 staticKeyProvider
     :: StaticKeyProvider
 staticKeyProvider
-  = StaticKeyProvider'{_sStaticKeyValue = Nothing,
-                       _sURL = Nothing, _sKeyFormat = Nothing,
-                       _sKeyFormatVersions = Nothing}
+  = StaticKeyProvider'{_skpStaticKeyValue = Nothing,
+                       _skpURL = Nothing, _skpKeyFormat = Nothing,
+                       _skpKeyFormatVersions = Nothing}
 
 -- | Relates to DRM implementation. Use a 32-character hexidecimal string to specify Key Value (StaticKeyValue).
-sStaticKeyValue :: Lens' StaticKeyProvider (Maybe Text)
-sStaticKeyValue = lens _sStaticKeyValue (\ s a -> s{_sStaticKeyValue = a})
+skpStaticKeyValue :: Lens' StaticKeyProvider (Maybe Text)
+skpStaticKeyValue = lens _skpStaticKeyValue (\ s a -> s{_skpStaticKeyValue = a})
 
 -- | Relates to DRM implementation. The location of the license server used for protecting content.
-sURL :: Lens' StaticKeyProvider (Maybe Text)
-sURL = lens _sURL (\ s a -> s{_sURL = a})
+skpURL :: Lens' StaticKeyProvider (Maybe Text)
+skpURL = lens _skpURL (\ s a -> s{_skpURL = a})
 
 -- | Relates to DRM implementation. Sets the value of the KEYFORMAT attribute. Must be 'identity' or a reverse DNS string. May be omitted to indicate an implicit value of 'identity'.
-sKeyFormat :: Lens' StaticKeyProvider (Maybe Text)
-sKeyFormat = lens _sKeyFormat (\ s a -> s{_sKeyFormat = a})
+skpKeyFormat :: Lens' StaticKeyProvider (Maybe Text)
+skpKeyFormat = lens _skpKeyFormat (\ s a -> s{_skpKeyFormat = a})
 
 -- | Relates to DRM implementation. Either a single positive integer version value or a slash delimited list of version values (1/2/3).
-sKeyFormatVersions :: Lens' StaticKeyProvider (Maybe Text)
-sKeyFormatVersions = lens _sKeyFormatVersions (\ s a -> s{_sKeyFormatVersions = a})
+skpKeyFormatVersions :: Lens' StaticKeyProvider (Maybe Text)
+skpKeyFormatVersions = lens _skpKeyFormatVersions (\ s a -> s{_skpKeyFormatVersions = a})
 
 instance FromJSON StaticKeyProvider where
         parseJSON
@@ -82,7 +82,7 @@ instance ToJSON StaticKeyProvider where
         toJSON StaticKeyProvider'{..}
           = object
               (catMaybes
-                 [("staticKeyValue" .=) <$> _sStaticKeyValue,
-                  ("url" .=) <$> _sURL,
-                  ("keyFormat" .=) <$> _sKeyFormat,
-                  ("keyFormatVersions" .=) <$> _sKeyFormatVersions])
+                 [("staticKeyValue" .=) <$> _skpStaticKeyValue,
+                  ("url" .=) <$> _skpURL,
+                  ("keyFormat" .=) <$> _skpKeyFormat,
+                  ("keyFormatVersions" .=) <$> _skpKeyFormatVersions])

@@ -24,7 +24,7 @@ import Network.AWS.Prelude
 -- | Information about a listener.
 --
 --
--- For information about the protocols and the ports supported by Elastic Load Balancing, see <http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-listener-config.html Listeners for Your Classic Load Balancer> in the /Classic Load Balancer Guide/ .
+-- For information about the protocols and the ports supported by Elastic Load Balancing, see <http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-listener-config.html Listeners for Your Classic Load Balancer> in the /Classic Load Balancers Guide/ .
 --
 --
 -- /See:/ 'listener' smart constructor.

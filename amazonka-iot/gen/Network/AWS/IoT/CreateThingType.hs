@@ -28,6 +28,7 @@ module Network.AWS.IoT.CreateThingType
     , CreateThingType
     -- * Request Lenses
     , cttThingTypeProperties
+    , cttTags
     , cttThingTypeName
 
     -- * Destructuring the Response
@@ -54,6 +55,7 @@ import Network.AWS.Response
 -- /See:/ 'createThingType' smart constructor.
 data CreateThingType = CreateThingType'{_cttThingTypeProperties
                                         :: !(Maybe ThingTypeProperties),
+                                        _cttTags :: !(Maybe [Tag]),
                                         _cttThingTypeName :: !Text}
                          deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -63,17 +65,24 @@ data CreateThingType = CreateThingType'{_cttThingTypeProperties
 --
 -- * 'cttThingTypeProperties' - The ThingTypeProperties for the thing type to create. It contains information about the new thing type including a description, and a list of searchable thing attribute names.
 --
+-- * 'cttTags' - Metadata which can be used to manage the thing type.
+--
 -- * 'cttThingTypeName' - The name of the thing type.
 createThingType
     :: Text -- ^ 'cttThingTypeName'
     -> CreateThingType
 createThingType pThingTypeName_
   = CreateThingType'{_cttThingTypeProperties = Nothing,
+                     _cttTags = Nothing,
                      _cttThingTypeName = pThingTypeName_}
 
 -- | The ThingTypeProperties for the thing type to create. It contains information about the new thing type including a description, and a list of searchable thing attribute names.
 cttThingTypeProperties :: Lens' CreateThingType (Maybe ThingTypeProperties)
 cttThingTypeProperties = lens _cttThingTypeProperties (\ s a -> s{_cttThingTypeProperties = a})
+
+-- | Metadata which can be used to manage the thing type.
+cttTags :: Lens' CreateThingType [Tag]
+cttTags = lens _cttTags (\ s a -> s{_cttTags = a}) . _Default . _Coerce
 
 -- | The name of the thing type.
 cttThingTypeName :: Lens' CreateThingType Text
@@ -102,7 +111,8 @@ instance ToJSON CreateThingType where
           = object
               (catMaybes
                  [("thingTypeProperties" .=) <$>
-                    _cttThingTypeProperties])
+                    _cttThingTypeProperties,
+                  ("tags" .=) <$> _cttTags])
 
 instance ToPath CreateThingType where
         toPath CreateThingType'{..}

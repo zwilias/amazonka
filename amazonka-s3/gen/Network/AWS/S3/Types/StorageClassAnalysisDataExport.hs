@@ -23,7 +23,11 @@ import Network.AWS.S3.Internal
 import Network.AWS.S3.Types.AnalyticsExportDestination
 import Network.AWS.S3.Types.StorageClassAnalysisSchemaVersion
 
--- | /See:/ 'storageClassAnalysisDataExport' smart constructor.
+-- | Container for data related to the storage class analysis for an Amazon S3 bucket for export.
+--
+--
+--
+-- /See:/ 'storageClassAnalysisDataExport' smart constructor.
 data StorageClassAnalysisDataExport = StorageClassAnalysisDataExport'{_scadeOutputSchemaVersion
                                                                       ::
                                                                       !StorageClassAnalysisSchemaVersion,
@@ -37,7 +41,7 @@ data StorageClassAnalysisDataExport = StorageClassAnalysisDataExport'{_scadeOutp
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'scadeOutputSchemaVersion' - The version of the output schema to use when exporting data. Must be V_1.
+-- * 'scadeOutputSchemaVersion' - The version of the output schema to use when exporting data. Must be @V_1@ .
 --
 -- * 'scadeDestination' - The place to store the data for an analysis.
 storageClassAnalysisDataExport
@@ -50,7 +54,7 @@ storageClassAnalysisDataExport pOutputSchemaVersion_
                                       = pOutputSchemaVersion_,
                                     _scadeDestination = pDestination_}
 
--- | The version of the output schema to use when exporting data. Must be V_1.
+-- | The version of the output schema to use when exporting data. Must be @V_1@ .
 scadeOutputSchemaVersion :: Lens' StorageClassAnalysisDataExport StorageClassAnalysisSchemaVersion
 scadeOutputSchemaVersion = lens _scadeOutputSchemaVersion (\ s a -> s{_scadeOutputSchemaVersion = a})
 

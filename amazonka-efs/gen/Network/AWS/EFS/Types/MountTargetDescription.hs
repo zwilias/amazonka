@@ -28,6 +28,10 @@ import Network.AWS.Prelude
 -- /See:/ 'mountTargetDescription' smart constructor.
 data MountTargetDescription = MountTargetDescription'{_mtdIPAddress
                                                       :: !(Maybe Text),
+                                                      _mtdAvailabilityZoneId ::
+                                                      !(Maybe Text),
+                                                      _mtdAvailabilityZoneName
+                                                      :: !(Maybe Text),
                                                       _mtdNetworkInterfaceId ::
                                                       !(Maybe Text),
                                                       _mtdOwnerId ::
@@ -45,17 +49,21 @@ data MountTargetDescription = MountTargetDescription'{_mtdIPAddress
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'mtdIPAddress' - Address at which the file system may be mounted via the mount target.
+-- * 'mtdIPAddress' - Address at which the file system can be mounted by using the mount target.
 --
--- * 'mtdNetworkInterfaceId' - ID of the network interface that Amazon EFS created when it created the mount target.
+-- * 'mtdAvailabilityZoneId' - The unique and consistent identifier of the Availability Zone (AZ) that the mount target resides in. For example, @use1-az1@ is an AZ ID for the us-east-1 Region and it has the same location in every AWS account.
+--
+-- * 'mtdAvailabilityZoneName' - The name of the Availability Zone (AZ) that the mount target resides in. AZs are independently mapped to names for each AWS account. For example, the Availability Zone @us-east-1a@ for your AWS account might not be the same location as @us-east-1a@ for another AWS account.
+--
+-- * 'mtdNetworkInterfaceId' - The ID of the network interface that Amazon EFS created when it created the mount target.
 --
 -- * 'mtdOwnerId' - AWS account ID that owns the resource.
 --
 -- * 'mtdMountTargetId' - System-assigned mount target ID.
 --
--- * 'mtdFileSystemId' - ID of the file system for which the mount target is intended.
+-- * 'mtdFileSystemId' - The ID of the file system for which the mount target is intended.
 --
--- * 'mtdSubnetId' - ID of the mount target's subnet.
+-- * 'mtdSubnetId' - The ID of the mount target's subnet.
 --
 -- * 'mtdLifeCycleState' - Lifecycle state of the mount target.
 mountTargetDescription
@@ -67,6 +75,8 @@ mountTargetDescription
 mountTargetDescription pMountTargetId_ pFileSystemId_
   pSubnetId_ pLifeCycleState_
   = MountTargetDescription'{_mtdIPAddress = Nothing,
+                            _mtdAvailabilityZoneId = Nothing,
+                            _mtdAvailabilityZoneName = Nothing,
                             _mtdNetworkInterfaceId = Nothing,
                             _mtdOwnerId = Nothing,
                             _mtdMountTargetId = pMountTargetId_,
@@ -74,11 +84,19 @@ mountTargetDescription pMountTargetId_ pFileSystemId_
                             _mtdSubnetId = pSubnetId_,
                             _mtdLifeCycleState = pLifeCycleState_}
 
--- | Address at which the file system may be mounted via the mount target.
+-- | Address at which the file system can be mounted by using the mount target.
 mtdIPAddress :: Lens' MountTargetDescription (Maybe Text)
 mtdIPAddress = lens _mtdIPAddress (\ s a -> s{_mtdIPAddress = a})
 
--- | ID of the network interface that Amazon EFS created when it created the mount target.
+-- | The unique and consistent identifier of the Availability Zone (AZ) that the mount target resides in. For example, @use1-az1@ is an AZ ID for the us-east-1 Region and it has the same location in every AWS account.
+mtdAvailabilityZoneId :: Lens' MountTargetDescription (Maybe Text)
+mtdAvailabilityZoneId = lens _mtdAvailabilityZoneId (\ s a -> s{_mtdAvailabilityZoneId = a})
+
+-- | The name of the Availability Zone (AZ) that the mount target resides in. AZs are independently mapped to names for each AWS account. For example, the Availability Zone @us-east-1a@ for your AWS account might not be the same location as @us-east-1a@ for another AWS account.
+mtdAvailabilityZoneName :: Lens' MountTargetDescription (Maybe Text)
+mtdAvailabilityZoneName = lens _mtdAvailabilityZoneName (\ s a -> s{_mtdAvailabilityZoneName = a})
+
+-- | The ID of the network interface that Amazon EFS created when it created the mount target.
 mtdNetworkInterfaceId :: Lens' MountTargetDescription (Maybe Text)
 mtdNetworkInterfaceId = lens _mtdNetworkInterfaceId (\ s a -> s{_mtdNetworkInterfaceId = a})
 
@@ -90,11 +108,11 @@ mtdOwnerId = lens _mtdOwnerId (\ s a -> s{_mtdOwnerId = a})
 mtdMountTargetId :: Lens' MountTargetDescription Text
 mtdMountTargetId = lens _mtdMountTargetId (\ s a -> s{_mtdMountTargetId = a})
 
--- | ID of the file system for which the mount target is intended.
+-- | The ID of the file system for which the mount target is intended.
 mtdFileSystemId :: Lens' MountTargetDescription Text
 mtdFileSystemId = lens _mtdFileSystemId (\ s a -> s{_mtdFileSystemId = a})
 
--- | ID of the mount target's subnet.
+-- | The ID of the mount target's subnet.
 mtdSubnetId :: Lens' MountTargetDescription Text
 mtdSubnetId = lens _mtdSubnetId (\ s a -> s{_mtdSubnetId = a})
 
@@ -107,7 +125,9 @@ instance FromJSON MountTargetDescription where
           = withObject "MountTargetDescription"
               (\ x ->
                  MountTargetDescription' <$>
-                   (x .:? "IpAddress") <*> (x .:? "NetworkInterfaceId")
+                   (x .:? "IpAddress") <*> (x .:? "AvailabilityZoneId")
+                     <*> (x .:? "AvailabilityZoneName")
+                     <*> (x .:? "NetworkInterfaceId")
                      <*> (x .:? "OwnerId")
                      <*> (x .: "MountTargetId")
                      <*> (x .: "FileSystemId")

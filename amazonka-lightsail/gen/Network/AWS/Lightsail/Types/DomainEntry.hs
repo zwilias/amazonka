@@ -46,7 +46,7 @@ data DomainEntry = DomainEntry'{_deIsAlias ::
 --
 -- * 'deOptions' - (Deprecated) The options for the domain entry.
 --
--- * 'deType' - The type of domain entry (e.g., @SOA@ or @NS@ ).
+-- * 'deType' - The type of domain entry, such as address (A), canonical name (CNAME), mail exchanger (MX), name server (NS), start of authority (SOA), service locator (SRV), or text (TXT). The following domain entry types can be used:     * @A@      * @CNAME@      * @MX@      * @NS@      * @SOA@      * @SRV@      * @TXT@ 
 --
 -- * 'deTarget' - The target AWS name server (e.g., @ns-111.awsdns-22.com.@ ). For Lightsail load balancers, the value looks like @ab1234c56789c6b86aba6fb203d443bc-123456789.us-east-2.elb.amazonaws.com@ . Be sure to also set @isAlias@ to @true@ when setting up an A record for a load balancer.
 domainEntry
@@ -73,7 +73,7 @@ deId = lens _deId (\ s a -> s{_deId = a})
 deOptions :: Lens' DomainEntry (HashMap Text Text)
 deOptions = lens _deOptions (\ s a -> s{_deOptions = a}) . _Default . _Map
 
--- | The type of domain entry (e.g., @SOA@ or @NS@ ).
+-- | The type of domain entry, such as address (A), canonical name (CNAME), mail exchanger (MX), name server (NS), start of authority (SOA), service locator (SRV), or text (TXT). The following domain entry types can be used:     * @A@      * @CNAME@      * @MX@      * @NS@      * @SOA@      * @SRV@      * @TXT@ 
 deType :: Lens' DomainEntry (Maybe Text)
 deType = lens _deType (\ s a -> s{_deType = a})
 

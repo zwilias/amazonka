@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Deletes the specified policy from your organization. Before you perform this operation, you must first detach the policy from all OUs, roots, and accounts.
+-- Deletes the specified policy from your organization. Before you perform this operation, you must first detach the policy from all organizational units (OUs), roots, and accounts.
 --
 --
 -- This operation can be called only from the organization's master account.
@@ -52,14 +52,14 @@ newtype DeletePolicy = DeletePolicy'{_dPolicyId ::
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dPolicyId' - The unique identifier (ID) of the policy that you want to delete. You can get the ID from the 'ListPolicies' or 'ListPoliciesForTarget' operations. The <http://wikipedia.org/wiki/regex regex pattern> for a policy ID string requires "p-" followed by from 8 to 128 lower-case letters or digits.
+-- * 'dPolicyId' - The unique identifier (ID) of the policy that you want to delete. You can get the ID from the 'ListPolicies' or 'ListPoliciesForTarget' operations. The <http://wikipedia.org/wiki/regex regex pattern> for a policy ID string requires "p-" followed by from 8 to 128 lowercase or uppercase letters, digits, or the underscore character (_).
 deletePolicy
     :: Text -- ^ 'dPolicyId'
     -> DeletePolicy
 deletePolicy pPolicyId_
   = DeletePolicy'{_dPolicyId = pPolicyId_}
 
--- | The unique identifier (ID) of the policy that you want to delete. You can get the ID from the 'ListPolicies' or 'ListPoliciesForTarget' operations. The <http://wikipedia.org/wiki/regex regex pattern> for a policy ID string requires "p-" followed by from 8 to 128 lower-case letters or digits.
+-- | The unique identifier (ID) of the policy that you want to delete. You can get the ID from the 'ListPolicies' or 'ListPoliciesForTarget' operations. The <http://wikipedia.org/wiki/regex regex pattern> for a policy ID string requires "p-" followed by from 8 to 128 lowercase or uppercase letters, digits, or the underscore character (_).
 dPolicyId :: Lens' DeletePolicy Text
 dPolicyId = lens _dPolicyId (\ s a -> s{_dPolicyId = a})
 

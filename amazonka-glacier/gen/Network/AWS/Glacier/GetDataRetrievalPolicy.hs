@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- This operation returns the current data retrieval policy for the account and region specified in the GET request. For more information about data retrieval policies, see <http://docs.aws.amazon.com/amazonglacier/latest/dev/data-retrieval-policy.html Amazon Glacier Data Retrieval Policies> .
+-- This operation returns the current data retrieval policy for the account and region specified in the GET request. For more information about data retrieval policies, see <https://docs.aws.amazon.com/amazonglacier/latest/dev/data-retrieval-policy.html Amazon Glacier Data Retrieval Policies> .
 --
 --
 module Network.AWS.Glacier.GetDataRetrievalPolicy
@@ -96,7 +96,7 @@ instance ToPath GetDataRetrievalPolicy where
 instance ToQuery GetDataRetrievalPolicy where
         toQuery = const mempty
 
--- | Contains the Amazon Glacier response to the @GetDataRetrievalPolicy@ request.
+-- | Contains the Amazon S3 Glacier response to the @GetDataRetrievalPolicy@ request.
 --
 --
 --

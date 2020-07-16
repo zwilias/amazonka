@@ -36,7 +36,7 @@ module Network.AWS.MediaLive.Types.FixedAfd (
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | Placeholder documentation for FixedAfd
+-- | Fixed Afd
 data FixedAfd = FixedAfd' (CI Text)
                   deriving (Eq, Ord, Read, Show, Data, Typeable,
                             Generic)

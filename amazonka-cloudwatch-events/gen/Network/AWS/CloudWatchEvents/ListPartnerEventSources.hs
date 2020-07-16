@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- An SaaS partner can use this operation to list all the partner event source names that they have created.
+-- An SaaS partner can use this operation to list all the partner event source names that they have created. This operation is not used by AWS customers.
 --
 --
 module Network.AWS.CloudWatchEvents.ListPartnerEventSources
@@ -63,7 +63,7 @@ data ListPartnerEventSources = ListPartnerEventSources'{_lpesNextToken
 --
 -- * 'lpesNextToken' - The token returned by a previous call to this operation. Specifying this retrieves the next set of results.
 --
--- * 'lpesLimit' - pecifying this limits the number of results returned by this operation. The operation also returns a @NextToken@ that you can use in a subsequent operation to retrieve the next set of results.
+-- * 'lpesLimit' - pecifying this limits the number of results returned by this operation. The operation also returns a NextToken which you can use in a subsequent operation to retrieve the next set of results.
 --
 -- * 'lpesNamePrefix' - If you specify this, the results are limited to only those partner event sources that start with the string you specify.
 listPartnerEventSources
@@ -78,7 +78,7 @@ listPartnerEventSources pNamePrefix_
 lpesNextToken :: Lens' ListPartnerEventSources (Maybe Text)
 lpesNextToken = lens _lpesNextToken (\ s a -> s{_lpesNextToken = a})
 
--- | pecifying this limits the number of results returned by this operation. The operation also returns a @NextToken@ that you can use in a subsequent operation to retrieve the next set of results.
+-- | pecifying this limits the number of results returned by this operation. The operation also returns a NextToken which you can use in a subsequent operation to retrieve the next set of results.
 lpesLimit :: Lens' ListPartnerEventSources (Maybe Natural)
 lpesLimit = lens _lpesLimit (\ s a -> s{_lpesLimit = a}) . mapping _Nat
 

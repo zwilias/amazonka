@@ -22,17 +22,24 @@ import Network.AWS.Prelude
 import Network.AWS.S3.Internal
 import Network.AWS.S3.Types.AccessControlTranslation
 import Network.AWS.S3.Types.EncryptionConfiguration
+import Network.AWS.S3.Types.Metrics
+import Network.AWS.S3.Types.ReplicationTime
 import Network.AWS.S3.Types.StorageClass
 
--- | Container for replication destination information.
+-- | Specifies information about where to publish analysis or configuration results for an Amazon S3 bucket and S3 Replication Time Control (S3 RTC).
+--
+--
 --
 -- /See:/ 'destination' smart constructor.
-data Destination = Destination'{_dAccessControlTranslation
-                                :: !(Maybe AccessControlTranslation),
+data Destination = Destination'{_dMetrics ::
+                                !(Maybe Metrics),
+                                _dAccessControlTranslation ::
+                                !(Maybe AccessControlTranslation),
                                 _dAccount :: !(Maybe Text),
                                 _dStorageClass :: !(Maybe StorageClass),
                                 _dEncryptionConfiguration ::
                                 !(Maybe EncryptionConfiguration),
+                                _dReplicationTime :: !(Maybe ReplicationTime),
                                 _dBucket :: !BucketName}
                      deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -40,51 +47,66 @@ data Destination = Destination'{_dAccessControlTranslation
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dAccessControlTranslation' - Container for information regarding the access control for replicas.
+-- * 'dMetrics' - A container specifying replication metrics-related settings enabling metrics and Amazon S3 events for S3 Replication Time Control (S3 RTC). Must be specified together with a @ReplicationTime@ block. 
 --
--- * 'dAccount' - Account ID of the destination bucket. Currently this is only being verified if Access Control Translation is enabled
+-- * 'dAccessControlTranslation' - Specify this only in a cross-account scenario (where source and destination bucket owners are not the same), and you want to change replica ownership to the AWS account that owns the destination bucket. If this is not specified in the replication configuration, the replicas are owned by same AWS account that owns the source object.
 --
--- * 'dStorageClass' - The class of storage used to store the object.
+-- * 'dAccount' - Destination bucket owner account ID. In a cross-account scenario, if you direct Amazon S3 to change replica ownership to the AWS account that owns the destination bucket by specifying the @AccessControlTranslation@ property, this is the account ID of the destination bucket owner. For more information, see <https://docs.aws.amazon.com/AmazonS3/latest/dev/replication-change-owner.html Replication Additional Configuration: Changing the Replica Owner> in the /Amazon Simple Storage Service Developer Guide/ .
 --
--- * 'dEncryptionConfiguration' - Container for information regarding encryption based configuration for replicas.
+-- * 'dStorageClass' - The storage class to use when replicating objects, such as standard or reduced redundancy. By default, Amazon S3 uses the storage class of the source object to create the object replica.  For valid values, see the @StorageClass@ element of the <https://docs.aws.amazon.com/AmazonS3/latest/API/RESTBucketPUTreplication.html PUT Bucket replication> action in the /Amazon Simple Storage Service API Reference/ .
 --
--- * 'dBucket' - Amazon resource name (ARN) of the bucket where you want Amazon S3 to store replicas of the object identified by the rule.
+-- * 'dEncryptionConfiguration' - A container that provides information about encryption. If @SourceSelectionCriteria@ is specified, you must specify this element.
+--
+-- * 'dReplicationTime' - A container specifying S3 Replication Time Control (S3 RTC), including whether S3 RTC is enabled and the time when all objects and operations on objects must be replicated. Must be specified together with a @Metrics@ block. 
+--
+-- * 'dBucket' - The Amazon Resource Name (ARN) of the bucket where you want Amazon S3 to store the results.
 destination
     :: BucketName -- ^ 'dBucket'
     -> Destination
 destination pBucket_
-  = Destination'{_dAccessControlTranslation = Nothing,
+  = Destination'{_dMetrics = Nothing,
+                 _dAccessControlTranslation = Nothing,
                  _dAccount = Nothing, _dStorageClass = Nothing,
                  _dEncryptionConfiguration = Nothing,
-                 _dBucket = pBucket_}
+                 _dReplicationTime = Nothing, _dBucket = pBucket_}
 
--- | Container for information regarding the access control for replicas.
+-- | A container specifying replication metrics-related settings enabling metrics and Amazon S3 events for S3 Replication Time Control (S3 RTC). Must be specified together with a @ReplicationTime@ block. 
+dMetrics :: Lens' Destination (Maybe Metrics)
+dMetrics = lens _dMetrics (\ s a -> s{_dMetrics = a})
+
+-- | Specify this only in a cross-account scenario (where source and destination bucket owners are not the same), and you want to change replica ownership to the AWS account that owns the destination bucket. If this is not specified in the replication configuration, the replicas are owned by same AWS account that owns the source object.
 dAccessControlTranslation :: Lens' Destination (Maybe AccessControlTranslation)
 dAccessControlTranslation = lens _dAccessControlTranslation (\ s a -> s{_dAccessControlTranslation = a})
 
--- | Account ID of the destination bucket. Currently this is only being verified if Access Control Translation is enabled
+-- | Destination bucket owner account ID. In a cross-account scenario, if you direct Amazon S3 to change replica ownership to the AWS account that owns the destination bucket by specifying the @AccessControlTranslation@ property, this is the account ID of the destination bucket owner. For more information, see <https://docs.aws.amazon.com/AmazonS3/latest/dev/replication-change-owner.html Replication Additional Configuration: Changing the Replica Owner> in the /Amazon Simple Storage Service Developer Guide/ .
 dAccount :: Lens' Destination (Maybe Text)
 dAccount = lens _dAccount (\ s a -> s{_dAccount = a})
 
--- | The class of storage used to store the object.
+-- | The storage class to use when replicating objects, such as standard or reduced redundancy. By default, Amazon S3 uses the storage class of the source object to create the object replica.  For valid values, see the @StorageClass@ element of the <https://docs.aws.amazon.com/AmazonS3/latest/API/RESTBucketPUTreplication.html PUT Bucket replication> action in the /Amazon Simple Storage Service API Reference/ .
 dStorageClass :: Lens' Destination (Maybe StorageClass)
 dStorageClass = lens _dStorageClass (\ s a -> s{_dStorageClass = a})
 
--- | Container for information regarding encryption based configuration for replicas.
+-- | A container that provides information about encryption. If @SourceSelectionCriteria@ is specified, you must specify this element.
 dEncryptionConfiguration :: Lens' Destination (Maybe EncryptionConfiguration)
 dEncryptionConfiguration = lens _dEncryptionConfiguration (\ s a -> s{_dEncryptionConfiguration = a})
 
--- | Amazon resource name (ARN) of the bucket where you want Amazon S3 to store replicas of the object identified by the rule.
+-- | A container specifying S3 Replication Time Control (S3 RTC), including whether S3 RTC is enabled and the time when all objects and operations on objects must be replicated. Must be specified together with a @Metrics@ block. 
+dReplicationTime :: Lens' Destination (Maybe ReplicationTime)
+dReplicationTime = lens _dReplicationTime (\ s a -> s{_dReplicationTime = a})
+
+-- | The Amazon Resource Name (ARN) of the bucket where you want Amazon S3 to store the results.
 dBucket :: Lens' Destination BucketName
 dBucket = lens _dBucket (\ s a -> s{_dBucket = a})
 
 instance FromXML Destination where
         parseXML x
           = Destination' <$>
-              (x .@? "AccessControlTranslation") <*>
-                (x .@? "Account")
+              (x .@? "Metrics") <*>
+                (x .@? "AccessControlTranslation")
+                <*> (x .@? "Account")
                 <*> (x .@? "StorageClass")
                 <*> (x .@? "EncryptionConfiguration")
+                <*> (x .@? "ReplicationTime")
                 <*> (x .@ "Bucket")
 
 instance Hashable Destination where
@@ -94,10 +116,12 @@ instance NFData Destination where
 instance ToXML Destination where
         toXML Destination'{..}
           = mconcat
-              ["AccessControlTranslation" @=
+              ["Metrics" @= _dMetrics,
+               "AccessControlTranslation" @=
                  _dAccessControlTranslation,
                "Account" @= _dAccount,
                "StorageClass" @= _dStorageClass,
                "EncryptionConfiguration" @=
                  _dEncryptionConfiguration,
+               "ReplicationTime" @= _dReplicationTime,
                "Bucket" @= _dBucket]

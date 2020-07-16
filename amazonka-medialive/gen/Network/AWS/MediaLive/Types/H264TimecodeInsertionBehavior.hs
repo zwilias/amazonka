@@ -19,29 +19,29 @@
 module Network.AWS.MediaLive.Types.H264TimecodeInsertionBehavior (
   H264TimecodeInsertionBehavior (
     ..
-    , HTIBDisabled
-    , HTIBPicTimingSei
+    , H26Disabled
+    , H26PicTimingSei
     )
   ) where
 
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | Placeholder documentation for H264TimecodeInsertionBehavior
+-- | H264 Timecode Insertion Behavior
 data H264TimecodeInsertionBehavior = H264TimecodeInsertionBehavior' (CI
                                                                        Text)
                                        deriving (Eq, Ord, Read, Show, Data,
                                                  Typeable, Generic)
 
-pattern HTIBDisabled :: H264TimecodeInsertionBehavior
-pattern HTIBDisabled = H264TimecodeInsertionBehavior' "DISABLED"
+pattern H26Disabled :: H264TimecodeInsertionBehavior
+pattern H26Disabled = H264TimecodeInsertionBehavior' "DISABLED"
 
-pattern HTIBPicTimingSei :: H264TimecodeInsertionBehavior
-pattern HTIBPicTimingSei = H264TimecodeInsertionBehavior' "PIC_TIMING_SEI"
+pattern H26PicTimingSei :: H264TimecodeInsertionBehavior
+pattern H26PicTimingSei = H264TimecodeInsertionBehavior' "PIC_TIMING_SEI"
 
 {-# COMPLETE
-  HTIBDisabled,
-  HTIBPicTimingSei,
+  H26Disabled,
+  H26PicTimingSei,
   H264TimecodeInsertionBehavior' #-}
 
 instance FromText H264TimecodeInsertionBehavior where
@@ -56,20 +56,20 @@ instance ToText H264TimecodeInsertionBehavior where
 --   fromEnum is a partial function, and will error on values unknown at generation time.
 instance Enum H264TimecodeInsertionBehavior where
     toEnum i = case i of
-        0 -> HTIBDisabled
-        1 -> HTIBPicTimingSei
+        0 -> H26Disabled
+        1 -> H26PicTimingSei
         _ -> (error . showText) $ "Unknown index for H264TimecodeInsertionBehavior: " <> toText i
     fromEnum x = case x of
-        HTIBDisabled -> 0
-        HTIBPicTimingSei -> 1
+        H26Disabled -> 0
+        H26PicTimingSei -> 1
         H264TimecodeInsertionBehavior' name -> (error . showText) $ "Unknown H264TimecodeInsertionBehavior: " <> original name
 
 -- | Represents the bounds of /known/ $H264TimecodeInsertionBehavior.
 --   AWS may have added more since the source was generated.
 --   This instance exists only for backward compatibility.
 instance Bounded H264TimecodeInsertionBehavior where
-    minBound = HTIBDisabled
-    maxBound = HTIBPicTimingSei
+    minBound = H26Disabled
+    maxBound = H26PicTimingSei
 
 instance Hashable     H264TimecodeInsertionBehavior
 instance NFData       H264TimecodeInsertionBehavior

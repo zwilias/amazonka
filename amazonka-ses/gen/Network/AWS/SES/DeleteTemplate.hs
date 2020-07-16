@@ -45,7 +45,7 @@ import Network.AWS.Response
 import Network.AWS.SES.Types
 import Network.AWS.SES.Types.Product
 
--- | Represents a request to delete an email template. For more information, see the <http://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-personalized-email-api.html Amazon SES Developer Guide> .
+-- | Represents a request to delete an email template. For more information, see the <https://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-personalized-email-api.html Amazon SES Developer Guide> .
 --
 --
 --

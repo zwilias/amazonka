@@ -18,9 +18,11 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Lists the tasks in a Maintenance Window.
+-- Lists the tasks in a maintenance window.
 --
 --
+--
+-- This operation returns paginated results.
 module Network.AWS.SSM.DescribeMaintenanceWindowTasks
     (
     -- * Creating a Request
@@ -42,6 +44,7 @@ module Network.AWS.SSM.DescribeMaintenanceWindowTasks
     ) where
 
 import Network.AWS.Lens
+import Network.AWS.Pager
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
@@ -76,7 +79,7 @@ data DescribeMaintenanceWindowTasks = DescribeMaintenanceWindowTasks'{_dFilters
 --
 -- * 'dMaxResults' - The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.
 --
--- * 'dWindowId' - The ID of the Maintenance Window whose tasks should be retrieved.
+-- * 'dWindowId' - The ID of the maintenance window whose tasks should be retrieved.
 describeMaintenanceWindowTasks
     :: Text -- ^ 'dWindowId'
     -> DescribeMaintenanceWindowTasks
@@ -99,9 +102,17 @@ dNextToken = lens _dNextToken (\ s a -> s{_dNextToken = a})
 dMaxResults :: Lens' DescribeMaintenanceWindowTasks (Maybe Natural)
 dMaxResults = lens _dMaxResults (\ s a -> s{_dMaxResults = a}) . mapping _Nat
 
--- | The ID of the Maintenance Window whose tasks should be retrieved.
+-- | The ID of the maintenance window whose tasks should be retrieved.
 dWindowId :: Lens' DescribeMaintenanceWindowTasks Text
 dWindowId = lens _dWindowId (\ s a -> s{_dWindowId = a})
+
+instance AWSPager DescribeMaintenanceWindowTasks
+         where
+        page rq rs
+          | stop (rs ^. dmwtsrsNextToken) = Nothing
+          | stop (rs ^. dmwtsrsTasks) = Nothing
+          | otherwise =
+            Just $ rq & dNextToken .~ rs ^. dmwtsrsNextToken
 
 instance AWSRequest DescribeMaintenanceWindowTasks
          where
@@ -165,7 +176,7 @@ data DescribeMaintenanceWindowTasksResponse = DescribeMaintenanceWindowTasksResp
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dmwtsrsTasks' - Information about the tasks in the Maintenance Window.
+-- * 'dmwtsrsTasks' - Information about the tasks in the maintenance window.
 --
 -- * 'dmwtsrsNextToken' - The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.
 --
@@ -181,7 +192,7 @@ describeMaintenanceWindowTasksResponse
                                             _dmwtsrsResponseStatus =
                                               pResponseStatus_}
 
--- | Information about the tasks in the Maintenance Window.
+-- | Information about the tasks in the maintenance window.
 dmwtsrsTasks :: Lens' DescribeMaintenanceWindowTasksResponse [MaintenanceWindowTask]
 dmwtsrsTasks = lens _dmwtsrsTasks (\ s a -> s{_dmwtsrsTasks = a}) . _Default . _Coerce
 

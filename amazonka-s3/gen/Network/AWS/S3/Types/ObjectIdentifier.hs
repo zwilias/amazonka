@@ -21,7 +21,11 @@ import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.S3.Internal
 
--- | /See:/ 'objectIdentifier' smart constructor.
+-- | Object Identifier is unique value to identify objects.
+--
+--
+--
+-- /See:/ 'objectIdentifier' smart constructor.
 data ObjectIdentifier = ObjectIdentifier'{_oiVersionId
                                           :: !(Maybe ObjectVersionId),
                                           _oiKey :: !ObjectKey}

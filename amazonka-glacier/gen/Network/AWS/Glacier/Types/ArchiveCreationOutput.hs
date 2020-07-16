@@ -20,10 +20,10 @@ module Network.AWS.Glacier.Types.ArchiveCreationOutput where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | Contains the Amazon Glacier response to your request.
+-- | Contains the Amazon S3 Glacier response to your request.
 --
 --
--- For information about the underlying REST API, see <http://docs.aws.amazon.com/amazonglacier/latest/dev/api-archive-post.html Upload Archive> . For conceptual information, see <http://docs.aws.amazon.com/amazonglacier/latest/dev/working-with-archives.html Working with Archives in Amazon Glacier> .
+-- For information about the underlying REST API, see <https://docs.aws.amazon.com/amazonglacier/latest/dev/api-archive-post.html Upload Archive> . For conceptual information, see <https://docs.aws.amazon.com/amazonglacier/latest/dev/working-with-archives.html Working with Archives in Amazon S3 Glacier> .
 --
 --
 -- /See:/ 'archiveCreationOutput' smart constructor.
@@ -42,7 +42,7 @@ data ArchiveCreationOutput = ArchiveCreationOutput'{_acoArchiveId
 --
 -- * 'acoArchiveId' - The ID of the archive. This value is also included as part of the location.
 --
--- * 'acoChecksum' - The checksum of the archive computed by Amazon Glacier.
+-- * 'acoChecksum' - The checksum of the archive computed by Amazon S3 Glacier.
 --
 -- * 'acoLocation' - The relative URI path of the newly added archive resource.
 archiveCreationOutput
@@ -55,7 +55,7 @@ archiveCreationOutput
 acoArchiveId :: Lens' ArchiveCreationOutput (Maybe Text)
 acoArchiveId = lens _acoArchiveId (\ s a -> s{_acoArchiveId = a})
 
--- | The checksum of the archive computed by Amazon Glacier.
+-- | The checksum of the archive computed by Amazon S3 Glacier.
 acoChecksum :: Lens' ArchiveCreationOutput (Maybe Text)
 acoChecksum = lens _acoChecksum (\ s a -> s{_acoChecksum = a})
 

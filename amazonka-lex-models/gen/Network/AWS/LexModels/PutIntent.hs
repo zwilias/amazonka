@@ -139,7 +139,7 @@ data PutIntent = PutIntent'{_piFulfillmentActivity ::
 --
 -- * 'piConfirmationPrompt' - Prompts the user to confirm the intent. This question should have a yes or no answer. Amazon Lex uses this prompt to ensure that the user acknowledges that the intent is ready for fulfillment. For example, with the @OrderPizza@ intent, you might want to confirm that the order is correct before placing it. For other intents, such as intents that simply respond to user questions, you might not need to ask the user for confirmation before providing the information. 
 --
--- * 'piCreateVersion' - Undocumented member.
+-- * 'piCreateVersion' - When set to @true@ a new numbered version of the intent is created. This is the same as calling the @CreateIntentVersion@ operation. If you do not specify @createVersion@ , the default is @false@ .
 --
 -- * 'piDialogCodeHook' - Specifies a Lambda function to invoke for each user input. You can invoke this Lambda function to personalize user interaction.  For example, suppose your bot determines that the user is John. Your Lambda function might retrieve John's information from a backend database and prepopulate some of the values. For example, if you find that John is gluten intolerant, you might set the corresponding intent slot, @GlutenIntolerant@ , to true. You might find John's phone number and set the corresponding session attribute. 
 --
@@ -198,7 +198,7 @@ piFollowUpPrompt = lens _piFollowUpPrompt (\ s a -> s{_piFollowUpPrompt = a})
 piConfirmationPrompt :: Lens' PutIntent (Maybe Prompt)
 piConfirmationPrompt = lens _piConfirmationPrompt (\ s a -> s{_piConfirmationPrompt = a})
 
--- | Undocumented member.
+-- | When set to @true@ a new numbered version of the intent is created. This is the same as calling the @CreateIntentVersion@ operation. If you do not specify @createVersion@ , the default is @false@ .
 piCreateVersion :: Lens' PutIntent (Maybe Bool)
 piCreateVersion = lens _piCreateVersion (\ s a -> s{_piCreateVersion = a})
 
@@ -337,7 +337,7 @@ data PutIntentResponse = PutIntentResponse'{_pirsFulfillmentActivity
 --
 -- * 'pirsConfirmationPrompt' - If defined in the intent, Amazon Lex prompts the user to confirm the intent before fulfilling it.
 --
--- * 'pirsCreateVersion' - Undocumented member.
+-- * 'pirsCreateVersion' - @True@ if a new version of the intent was created. If the @createVersion@ field was not specified in the request, the @createVersion@ field is set to false in the response.
 --
 -- * 'pirsDialogCodeHook' - If defined in the intent, Amazon Lex invokes this Lambda function for each user input.
 --
@@ -418,7 +418,7 @@ pirsLastUpdatedDate = lens _pirsLastUpdatedDate (\ s a -> s{_pirsLastUpdatedDate
 pirsConfirmationPrompt :: Lens' PutIntentResponse (Maybe Prompt)
 pirsConfirmationPrompt = lens _pirsConfirmationPrompt (\ s a -> s{_pirsConfirmationPrompt = a})
 
--- | Undocumented member.
+-- | @True@ if a new version of the intent was created. If the @createVersion@ field was not specified in the request, the @createVersion@ field is set to false in the response.
 pirsCreateVersion :: Lens' PutIntentResponse (Maybe Bool)
 pirsCreateVersion = lens _pirsCreateVersion (\ s a -> s{_pirsCreateVersion = a})
 

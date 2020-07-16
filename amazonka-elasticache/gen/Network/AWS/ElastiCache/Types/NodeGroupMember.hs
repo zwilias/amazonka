@@ -45,9 +45,9 @@ data NodeGroupMember = NodeGroupMember'{_ngmCacheClusterId
 --
 -- * 'ngmPreferredAvailabilityZone' - The name of the Availability Zone in which the node is located.
 --
--- * 'ngmCurrentRole' - The role that is currently assigned to the node - @primary@ or @replica@ .
+-- * 'ngmCurrentRole' - The role that is currently assigned to the node - @primary@ or @replica@ . This member is only applicable for Redis (cluster mode disabled) replication groups.
 --
--- * 'ngmReadEndpoint' - Undocumented member.
+-- * 'ngmReadEndpoint' - The information required for client programs to connect to a node for read operations. The read endpoint is only applicable on Redis (cluster mode disabled) clusters.
 nodeGroupMember
     :: NodeGroupMember
 nodeGroupMember
@@ -69,11 +69,11 @@ ngmCacheNodeId = lens _ngmCacheNodeId (\ s a -> s{_ngmCacheNodeId = a})
 ngmPreferredAvailabilityZone :: Lens' NodeGroupMember (Maybe Text)
 ngmPreferredAvailabilityZone = lens _ngmPreferredAvailabilityZone (\ s a -> s{_ngmPreferredAvailabilityZone = a})
 
--- | The role that is currently assigned to the node - @primary@ or @replica@ .
+-- | The role that is currently assigned to the node - @primary@ or @replica@ . This member is only applicable for Redis (cluster mode disabled) replication groups.
 ngmCurrentRole :: Lens' NodeGroupMember (Maybe Text)
 ngmCurrentRole = lens _ngmCurrentRole (\ s a -> s{_ngmCurrentRole = a})
 
--- | Undocumented member.
+-- | The information required for client programs to connect to a node for read operations. The read endpoint is only applicable on Redis (cluster mode disabled) clusters.
 ngmReadEndpoint :: Lens' NodeGroupMember (Maybe Endpoint)
 ngmReadEndpoint = lens _ngmReadEndpoint (\ s a -> s{_ngmReadEndpoint = a})
 

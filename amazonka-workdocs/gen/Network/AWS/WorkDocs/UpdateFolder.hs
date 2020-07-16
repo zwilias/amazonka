@@ -62,7 +62,7 @@ data UpdateFolder = UpdateFolder'{_ufParentFolderId
 --
 -- * 'ufParentFolderId' - The ID of the parent folder.
 --
--- * 'ufAuthenticationToken' - Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.
+-- * 'ufAuthenticationToken' - Amazon WorkDocs authentication token. Not required when using AWS administrator credentials to access the API.
 --
 -- * 'ufName' - The name of the folder.
 --
@@ -81,7 +81,7 @@ updateFolder pFolderId_
 ufParentFolderId :: Lens' UpdateFolder (Maybe Text)
 ufParentFolderId = lens _ufParentFolderId (\ s a -> s{_ufParentFolderId = a})
 
--- | Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.
+-- | Amazon WorkDocs authentication token. Not required when using AWS administrator credentials to access the API.
 ufAuthenticationToken :: Lens' UpdateFolder (Maybe Text)
 ufAuthenticationToken = lens _ufAuthenticationToken (\ s a -> s{_ufAuthenticationToken = a}) . mapping _Sensitive
 

@@ -18,9 +18,11 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Describes the groups specified by query.
+-- Describes the groups specified by the query. Groups are defined by the underlying Active Directory.
 --
 --
+--
+-- This operation returns paginated results.
 module Network.AWS.WorkDocs.DescribeGroups
     (
     -- * Creating a Request
@@ -43,6 +45,7 @@ module Network.AWS.WorkDocs.DescribeGroups
     ) where
 
 import Network.AWS.Lens
+import Network.AWS.Pager
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
@@ -62,7 +65,7 @@ data DescribeGroups = DescribeGroups'{_dgAuthenticationToken
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dgAuthenticationToken' - Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.
+-- * 'dgAuthenticationToken' - Amazon WorkDocs authentication token. Not required when using AWS administrator credentials to access the API.
 --
 -- * 'dgMarker' - The marker for the next set of results. (You received this marker from a previous call.)
 --
@@ -80,7 +83,7 @@ describeGroups pSearchQuery_
                     _dgOrganizationId = Nothing,
                     _dgSearchQuery = _Sensitive # pSearchQuery_}
 
--- | Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.
+-- | Amazon WorkDocs authentication token. Not required when using AWS administrator credentials to access the API.
 dgAuthenticationToken :: Lens' DescribeGroups (Maybe Text)
 dgAuthenticationToken = lens _dgAuthenticationToken (\ s a -> s{_dgAuthenticationToken = a}) . mapping _Sensitive
 
@@ -99,6 +102,13 @@ dgOrganizationId = lens _dgOrganizationId (\ s a -> s{_dgOrganizationId = a})
 -- | A query to describe groups by group name.
 dgSearchQuery :: Lens' DescribeGroups Text
 dgSearchQuery = lens _dgSearchQuery (\ s a -> s{_dgSearchQuery = a}) . _Sensitive
+
+instance AWSPager DescribeGroups where
+        page rq rs
+          | stop (rs ^. dgrsMarker) = Nothing
+          | stop (rs ^. dgrsGroups) = Nothing
+          | otherwise =
+            Just $ rq & dgMarker .~ rs ^. dgrsMarker
 
 instance AWSRequest DescribeGroups where
         type Rs DescribeGroups = DescribeGroupsResponse

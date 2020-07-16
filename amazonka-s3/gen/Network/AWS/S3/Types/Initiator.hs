@@ -21,7 +21,11 @@ import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.S3.Internal
 
--- | /See:/ 'initiator' smart constructor.
+-- | Container element that identifies who initiated the multipart upload. 
+--
+--
+--
+-- /See:/ 'initiator' smart constructor.
 data Initiator = Initiator'{_iDisplayName ::
                             !(Maybe Text),
                             _iId :: !(Maybe Text)}

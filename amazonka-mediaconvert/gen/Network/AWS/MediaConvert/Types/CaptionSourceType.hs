@@ -22,8 +22,11 @@ module Network.AWS.MediaConvert.Types.CaptionSourceType (
     , CSTAncillary
     , CSTDvbSub
     , CSTEmbedded
+    , CSTImsc
     , CSTNullSource
+    , CSTSCTE20
     , CSTScc
+    , CSTSmi
     , CSTSrt
     , CSTStl
     , CSTTeletext
@@ -48,11 +51,20 @@ pattern CSTDvbSub = CaptionSourceType' "DVB_SUB"
 pattern CSTEmbedded :: CaptionSourceType
 pattern CSTEmbedded = CaptionSourceType' "EMBEDDED"
 
+pattern CSTImsc :: CaptionSourceType
+pattern CSTImsc = CaptionSourceType' "IMSC"
+
 pattern CSTNullSource :: CaptionSourceType
 pattern CSTNullSource = CaptionSourceType' "NULL_SOURCE"
 
+pattern CSTSCTE20 :: CaptionSourceType
+pattern CSTSCTE20 = CaptionSourceType' "SCTE20"
+
 pattern CSTScc :: CaptionSourceType
 pattern CSTScc = CaptionSourceType' "SCC"
+
+pattern CSTSmi :: CaptionSourceType
+pattern CSTSmi = CaptionSourceType' "SMI"
 
 pattern CSTSrt :: CaptionSourceType
 pattern CSTSrt = CaptionSourceType' "SRT"
@@ -70,8 +82,11 @@ pattern CSTTtml = CaptionSourceType' "TTML"
   CSTAncillary,
   CSTDvbSub,
   CSTEmbedded,
+  CSTImsc,
   CSTNullSource,
+  CSTSCTE20,
   CSTScc,
+  CSTSmi,
   CSTSrt,
   CSTStl,
   CSTTeletext,
@@ -93,23 +108,29 @@ instance Enum CaptionSourceType where
         0 -> CSTAncillary
         1 -> CSTDvbSub
         2 -> CSTEmbedded
-        3 -> CSTNullSource
-        4 -> CSTScc
-        5 -> CSTSrt
-        6 -> CSTStl
-        7 -> CSTTeletext
-        8 -> CSTTtml
+        3 -> CSTImsc
+        4 -> CSTNullSource
+        5 -> CSTSCTE20
+        6 -> CSTScc
+        7 -> CSTSmi
+        8 -> CSTSrt
+        9 -> CSTStl
+        10 -> CSTTeletext
+        11 -> CSTTtml
         _ -> (error . showText) $ "Unknown index for CaptionSourceType: " <> toText i
     fromEnum x = case x of
         CSTAncillary -> 0
         CSTDvbSub -> 1
         CSTEmbedded -> 2
-        CSTNullSource -> 3
-        CSTScc -> 4
-        CSTSrt -> 5
-        CSTStl -> 6
-        CSTTeletext -> 7
-        CSTTtml -> 8
+        CSTImsc -> 3
+        CSTNullSource -> 4
+        CSTSCTE20 -> 5
+        CSTScc -> 6
+        CSTSmi -> 7
+        CSTSrt -> 8
+        CSTStl -> 9
+        CSTTeletext -> 10
+        CSTTtml -> 11
         CaptionSourceType' name -> (error . showText) $ "Unknown CaptionSourceType: " <> original name
 
 -- | Represents the bounds of /known/ $CaptionSourceType.

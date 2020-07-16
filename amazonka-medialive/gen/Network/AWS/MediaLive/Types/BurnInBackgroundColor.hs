@@ -28,7 +28,7 @@ module Network.AWS.MediaLive.Types.BurnInBackgroundColor (
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | Placeholder documentation for BurnInBackgroundColor
+-- | Burn In Background Color
 data BurnInBackgroundColor = BurnInBackgroundColor' (CI
                                                        Text)
                                deriving (Eq, Ord, Read, Show, Data, Typeable,

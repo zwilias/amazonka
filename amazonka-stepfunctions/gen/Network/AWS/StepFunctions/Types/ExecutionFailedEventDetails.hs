@@ -27,10 +27,14 @@ import Network.AWS.Prelude
 -- /See:/ 'executionFailedEventDetails' smart constructor.
 data ExecutionFailedEventDetails = ExecutionFailedEventDetails'{_efedError
                                                                 ::
-                                                                !(Maybe Text),
+                                                                !(Maybe
+                                                                    (Sensitive
+                                                                       Text)),
                                                                 _efedCause ::
-                                                                !(Maybe Text)}
-                                     deriving (Eq, Read, Show, Data, Typeable,
+                                                                !(Maybe
+                                                                    (Sensitive
+                                                                       Text))}
+                                     deriving (Eq, Show, Data, Typeable,
                                                Generic)
 
 -- | Creates a value of 'ExecutionFailedEventDetails' with the minimum fields required to make a request.
@@ -48,11 +52,11 @@ executionFailedEventDetails
 
 -- | The error code of the failure.
 efedError :: Lens' ExecutionFailedEventDetails (Maybe Text)
-efedError = lens _efedError (\ s a -> s{_efedError = a})
+efedError = lens _efedError (\ s a -> s{_efedError = a}) . mapping _Sensitive
 
 -- | A more detailed explanation of the cause of the failure.
 efedCause :: Lens' ExecutionFailedEventDetails (Maybe Text)
-efedCause = lens _efedCause (\ s a -> s{_efedCause = a})
+efedCause = lens _efedCause (\ s a -> s{_efedCause = a}) . mapping _Sensitive
 
 instance FromJSON ExecutionFailedEventDetails where
         parseJSON

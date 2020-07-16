@@ -15,7 +15,7 @@
 --
 -- Welcome to the AWS Certificate Manager (ACM) API documentation.
 --
--- You can use ACM to manage SSL/TLS certificates for your AWS-based websites and applications. For general information about using ACM, see the <http://docs.aws.amazon.com/acm/latest/userguide/ /AWS Certificate Manager User Guide/ > .
+-- You can use ACM to manage SSL/TLS certificates for your AWS-based websites and applications. For general information about using ACM, see the <https://docs.aws.amazon.com/acm/latest/userguide/ /AWS Certificate Manager User Guide/ > .
 --
 module Network.AWS.CertificateManager
     (
@@ -25,8 +25,14 @@ module Network.AWS.CertificateManager
     -- * Errors
     -- $errors
 
+    -- ** TagPolicyException
+    , _TagPolicyException
+
     -- ** InvalidDomainValidationOptionsException
     , _InvalidDomainValidationOptionsException
+
+    -- ** InvalidParameterException
+    , _InvalidParameterException
 
     -- ** InvalidTagException
     , _InvalidTagException
@@ -39,6 +45,9 @@ module Network.AWS.CertificateManager
 
     -- ** TooManyTagsException
     , _TooManyTagsException
+
+    -- ** InvalidArgsException
+    , _InvalidArgsException
 
     -- ** ResourceNotFoundException
     , _ResourceNotFoundException
@@ -54,6 +63,9 @@ module Network.AWS.CertificateManager
 
     -- * Waiters
     -- $waiters
+
+    -- ** CertificateValidated
+    , certificateValidated
 
     -- * Operations
     -- $operations
@@ -90,6 +102,9 @@ module Network.AWS.CertificateManager
 
     -- ** DescribeCertificate 
     , module Network.AWS.CertificateManager.DescribeCertificate
+
+    -- ** RenewCertificate 
+    , module Network.AWS.CertificateManager.RenewCertificate
 
     -- ** ExportCertificate 
     , module Network.AWS.CertificateManager.ExportCertificate
@@ -213,8 +228,10 @@ module Network.AWS.CertificateManager
     -- ** RenewalSummary
     , RenewalSummary
     , renewalSummary
+    , rsRenewalStatusReason
     , rsRenewalStatus
     , rsDomainValidationOptions
+    , rsUpdatedAt
 
     -- ** ResourceRecord
     , ResourceRecord
@@ -239,6 +256,7 @@ import Network.AWS.CertificateManager.ImportCertificate
 import Network.AWS.CertificateManager.ListCertificates
 import Network.AWS.CertificateManager.ListTagsForCertificate
 import Network.AWS.CertificateManager.RemoveTagsFromCertificate
+import Network.AWS.CertificateManager.RenewCertificate
 import Network.AWS.CertificateManager.RequestCertificate
 import Network.AWS.CertificateManager.ResendValidationEmail
 import Network.AWS.CertificateManager.Types

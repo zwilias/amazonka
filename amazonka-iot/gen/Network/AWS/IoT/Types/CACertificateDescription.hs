@@ -19,6 +19,7 @@ module Network.AWS.IoT.Types.CACertificateDescription where
 
 import Network.AWS.IoT.Types.AutoRegistrationStatus
 import Network.AWS.IoT.Types.CACertificateStatus
+import Network.AWS.IoT.Types.CertificateValidity
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
@@ -41,6 +42,9 @@ data CACertificateDescription = CACertificateDescription'{_cacdStatus
                                                           !(Maybe Text),
                                                           _cacdCertificateId ::
                                                           !(Maybe Text),
+                                                          _cacdValidity ::
+                                                          !(Maybe
+                                                              CertificateValidity),
                                                           _cacdAutoRegistrationStatus
                                                           ::
                                                           !(Maybe
@@ -70,6 +74,8 @@ data CACertificateDescription = CACertificateDescription'{_cacdStatus
 --
 -- * 'cacdCertificateId' - The CA certificate ID.
 --
+-- * 'cacdValidity' - When the CA certificate is valid.
+--
 -- * 'cacdAutoRegistrationStatus' - Whether the CA certificate configured for auto registration of device certificates. Valid values are "ENABLE" and "DISABLE"
 --
 -- * 'cacdCreationDate' - The date the CA certificate was created.
@@ -86,6 +92,7 @@ cACertificateDescription
                               _cacdCertificatePem = Nothing,
                               _cacdCertificateARN = Nothing,
                               _cacdCertificateId = Nothing,
+                              _cacdValidity = Nothing,
                               _cacdAutoRegistrationStatus = Nothing,
                               _cacdCreationDate = Nothing,
                               _cacdGenerationId = Nothing,
@@ -115,6 +122,10 @@ cacdCertificateARN = lens _cacdCertificateARN (\ s a -> s{_cacdCertificateARN = 
 cacdCertificateId :: Lens' CACertificateDescription (Maybe Text)
 cacdCertificateId = lens _cacdCertificateId (\ s a -> s{_cacdCertificateId = a})
 
+-- | When the CA certificate is valid.
+cacdValidity :: Lens' CACertificateDescription (Maybe CertificateValidity)
+cacdValidity = lens _cacdValidity (\ s a -> s{_cacdValidity = a})
+
 -- | Whether the CA certificate configured for auto registration of device certificates. Valid values are "ENABLE" and "DISABLE"
 cacdAutoRegistrationStatus :: Lens' CACertificateDescription (Maybe AutoRegistrationStatus)
 cacdAutoRegistrationStatus = lens _cacdAutoRegistrationStatus (\ s a -> s{_cacdAutoRegistrationStatus = a})
@@ -141,6 +152,7 @@ instance FromJSON CACertificateDescription where
                      <*> (x .:? "certificatePem")
                      <*> (x .:? "certificateArn")
                      <*> (x .:? "certificateId")
+                     <*> (x .:? "validity")
                      <*> (x .:? "autoRegistrationStatus")
                      <*> (x .:? "creationDate")
                      <*> (x .:? "generationId")

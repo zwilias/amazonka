@@ -42,7 +42,7 @@ module Network.AWS.MediaLive.Types.H264Level (
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | Placeholder documentation for H264Level
+-- | H264 Level
 data H264Level = H264Level' (CI Text)
                    deriving (Eq, Ord, Read, Show, Data, Typeable,
                              Generic)

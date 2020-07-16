@@ -46,7 +46,7 @@ import Network.AWS.Response
 import Network.AWS.StorageGateway.Types
 import Network.AWS.StorageGateway.Types.Product
 
--- | A JSON object containing the of the gateway to start.
+-- | A JSON object containing the Amazon Resource Name (ARN) of the gateway to start.
 --
 --
 --
@@ -104,7 +104,7 @@ instance ToPath StartGateway where
 instance ToQuery StartGateway where
         toQuery = const mempty
 
--- | A JSON object containing the of the gateway that was restarted.
+-- | A JSON object containing the Amazon Resource Name (ARN) of the gateway that was restarted.
 --
 --
 --

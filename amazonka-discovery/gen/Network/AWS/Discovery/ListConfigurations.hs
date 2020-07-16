@@ -18,9 +18,11 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Retrieves a list of configuration items according to criteria that you specify in a filter. The filter criteria identifies the relationship requirements.
+-- Retrieves a list of configuration items as specified by the value passed to the required parameter @configurationType@ . Optional filtering may be applied to refine search results.
 --
 --
+--
+-- This operation returns paginated results.
 module Network.AWS.Discovery.ListConfigurations
     (
     -- * Creating a Request
@@ -45,6 +47,7 @@ module Network.AWS.Discovery.ListConfigurations
 import Network.AWS.Discovery.Types
 import Network.AWS.Discovery.Types.Product
 import Network.AWS.Lens
+import Network.AWS.Pager
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
@@ -63,9 +66,9 @@ data ListConfigurations = ListConfigurations'{_lcOrderBy
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'lcOrderBy' - Certain filter criteria return output that can be sorted in ascending or descending order. For a list of output characteristics for each filter, see <http://docs.aws.amazon.com/application-discovery/latest/APIReference/discovery-api-queries.html#ListConfigurations Using the ListConfigurations Action> .
+-- * 'lcOrderBy' - Certain filter criteria return output that can be sorted in ascending or descending order. For a list of output characteristics for each filter, see <https://docs.aws.amazon.com/application-discovery/latest/userguide/discovery-api-queries.html#ListConfigurations Using the ListConfigurations Action> in the /AWS Application Discovery Service User Guide/ .
 --
--- * 'lcFilters' - You can filter the request using various logical operators and a /key/ -/value/ format. For example:  @{"key": "serverType", "value": "webServer"}@  For a complete list of filter options and guidance about using them with this action, see <http://docs.aws.amazon.com/application-discovery/latest/APIReference/discovery-api-queries.html#ListConfigurations Querying Discovered Configuration Items> . 
+-- * 'lcFilters' - You can filter the request using various logical operators and a /key/ -/value/ format. For example:  @{"key": "serverType", "value": "webServer"}@  For a complete list of filter options and guidance about using them with this action, see <https://docs.aws.amazon.com/application-discovery/latest/userguide/discovery-api-queries.html#ListConfigurations Using the ListConfigurations Action> in the /AWS Application Discovery Service User Guide/ .
 --
 -- * 'lcNextToken' - Token to retrieve the next set of results. For example, if a previous call to ListConfigurations returned 100 items, but you set @ListConfigurationsRequest$maxResults@ to 10, you received a set of 10 results along with a token. Use that token in this query to get the next set of 10.
 --
@@ -81,11 +84,11 @@ listConfigurations pConfigurationType_
                         _lcMaxResults = Nothing,
                         _lcConfigurationType = pConfigurationType_}
 
--- | Certain filter criteria return output that can be sorted in ascending or descending order. For a list of output characteristics for each filter, see <http://docs.aws.amazon.com/application-discovery/latest/APIReference/discovery-api-queries.html#ListConfigurations Using the ListConfigurations Action> .
+-- | Certain filter criteria return output that can be sorted in ascending or descending order. For a list of output characteristics for each filter, see <https://docs.aws.amazon.com/application-discovery/latest/userguide/discovery-api-queries.html#ListConfigurations Using the ListConfigurations Action> in the /AWS Application Discovery Service User Guide/ .
 lcOrderBy :: Lens' ListConfigurations [OrderByElement]
 lcOrderBy = lens _lcOrderBy (\ s a -> s{_lcOrderBy = a}) . _Default . _Coerce
 
--- | You can filter the request using various logical operators and a /key/ -/value/ format. For example:  @{"key": "serverType", "value": "webServer"}@  For a complete list of filter options and guidance about using them with this action, see <http://docs.aws.amazon.com/application-discovery/latest/APIReference/discovery-api-queries.html#ListConfigurations Querying Discovered Configuration Items> . 
+-- | You can filter the request using various logical operators and a /key/ -/value/ format. For example:  @{"key": "serverType", "value": "webServer"}@  For a complete list of filter options and guidance about using them with this action, see <https://docs.aws.amazon.com/application-discovery/latest/userguide/discovery-api-queries.html#ListConfigurations Using the ListConfigurations Action> in the /AWS Application Discovery Service User Guide/ .
 lcFilters :: Lens' ListConfigurations [Filter]
 lcFilters = lens _lcFilters (\ s a -> s{_lcFilters = a}) . _Default . _Coerce
 
@@ -100,6 +103,13 @@ lcMaxResults = lens _lcMaxResults (\ s a -> s{_lcMaxResults = a})
 -- | A valid configuration identified by Application Discovery Service. 
 lcConfigurationType :: Lens' ListConfigurations ConfigurationItemType
 lcConfigurationType = lens _lcConfigurationType (\ s a -> s{_lcConfigurationType = a})
+
+instance AWSPager ListConfigurations where
+        page rq rs
+          | stop (rs ^. lcrsNextToken) = Nothing
+          | stop (rs ^. lcrsConfigurations) = Nothing
+          | otherwise =
+            Just $ rq & lcNextToken .~ rs ^. lcrsNextToken
 
 instance AWSRequest ListConfigurations where
         type Rs ListConfigurations =

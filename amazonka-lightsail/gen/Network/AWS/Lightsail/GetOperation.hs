@@ -107,7 +107,7 @@ data GetOperationResponse = GetOperationResponse'{_gorsOperation
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'gorsOperation' - An array of key-value pairs containing information about the results of your get operation request.
+-- * 'gorsOperation' - An array of objects that describe the result of the action, such as the status of the request, the time stamp of the request, and the resources affected by the request.
 --
 -- * 'gorsResponseStatus' - -- | The response status code.
 getOperationResponse
@@ -117,7 +117,7 @@ getOperationResponse pResponseStatus_
   = GetOperationResponse'{_gorsOperation = Nothing,
                           _gorsResponseStatus = pResponseStatus_}
 
--- | An array of key-value pairs containing information about the results of your get operation request.
+-- | An array of objects that describe the result of the action, such as the status of the request, the time stamp of the request, and the resources affected by the request.
 gorsOperation :: Lens' GetOperationResponse (Maybe Operation)
 gorsOperation = lens _gorsOperation (\ s a -> s{_gorsOperation = a})
 

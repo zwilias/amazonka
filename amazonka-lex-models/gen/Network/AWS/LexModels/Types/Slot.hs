@@ -18,6 +18,7 @@
 module Network.AWS.LexModels.Types.Slot where
 
 import Network.AWS.Lens
+import Network.AWS.LexModels.Types.ObfuscationSetting
 import Network.AWS.LexModels.Types.Prompt
 import Network.AWS.LexModels.Types.SlotConstraint
 import Network.AWS.Prelude
@@ -31,6 +32,7 @@ data Slot = Slot'{_sSlotType :: !(Maybe Text),
                   _sValueElicitationPrompt :: !(Maybe Prompt),
                   _sResponseCard :: !(Maybe Text),
                   _sPriority :: !(Maybe Nat),
+                  _sObfuscationSetting :: !(Maybe ObfuscationSetting),
                   _sSlotTypeVersion :: !(Maybe Text),
                   _sSampleUtterances :: !(Maybe [Text]),
                   _sDescription :: !(Maybe Text), _sName :: !Text,
@@ -49,6 +51,8 @@ data Slot = Slot'{_sSlotType :: !(Maybe Text),
 --
 -- * 'sPriority' - Directs Lex the order in which to elicit this slot value from the user. For example, if the intent has two slots with priorities 1 and 2, AWS Lex first elicits a value for the slot with priority 1. If multiple slots share the same priority, the order in which Lex elicits values is arbitrary.
 --
+-- * 'sObfuscationSetting' - Determines whether a slot is obfuscated in conversation logs and stored utterances. When you obfuscate a slot, the value is replaced by the slot name in curly braces ({}). For example, if the slot name is "full_name", obfuscated values are replaced with "{full_name}". For more information, see <https://docs.aws.amazon.com/lex/latest/dg/how-obfuscate.html Slot Obfuscation > . 
+--
 -- * 'sSlotTypeVersion' - The version of the slot type.
 --
 -- * 'sSampleUtterances' - If you know a specific pattern with which users might respond to an Amazon Lex request for a slot value, you can provide those utterances to improve accuracy. This is optional. In most cases, Amazon Lex is capable of understanding user utterances. 
@@ -66,6 +70,7 @@ slot pName_ pSlotConstraint_
   = Slot'{_sSlotType = Nothing,
           _sValueElicitationPrompt = Nothing,
           _sResponseCard = Nothing, _sPriority = Nothing,
+          _sObfuscationSetting = Nothing,
           _sSlotTypeVersion = Nothing,
           _sSampleUtterances = Nothing,
           _sDescription = Nothing, _sName = pName_,
@@ -86,6 +91,10 @@ sResponseCard = lens _sResponseCard (\ s a -> s{_sResponseCard = a})
 -- | Directs Lex the order in which to elicit this slot value from the user. For example, if the intent has two slots with priorities 1 and 2, AWS Lex first elicits a value for the slot with priority 1. If multiple slots share the same priority, the order in which Lex elicits values is arbitrary.
 sPriority :: Lens' Slot (Maybe Natural)
 sPriority = lens _sPriority (\ s a -> s{_sPriority = a}) . mapping _Nat
+
+-- | Determines whether a slot is obfuscated in conversation logs and stored utterances. When you obfuscate a slot, the value is replaced by the slot name in curly braces ({}). For example, if the slot name is "full_name", obfuscated values are replaced with "{full_name}". For more information, see <https://docs.aws.amazon.com/lex/latest/dg/how-obfuscate.html Slot Obfuscation > . 
+sObfuscationSetting :: Lens' Slot (Maybe ObfuscationSetting)
+sObfuscationSetting = lens _sObfuscationSetting (\ s a -> s{_sObfuscationSetting = a})
 
 -- | The version of the slot type.
 sSlotTypeVersion :: Lens' Slot (Maybe Text)
@@ -116,6 +125,7 @@ instance FromJSON Slot where
                      (x .:? "valueElicitationPrompt")
                      <*> (x .:? "responseCard")
                      <*> (x .:? "priority")
+                     <*> (x .:? "obfuscationSetting")
                      <*> (x .:? "slotTypeVersion")
                      <*> (x .:? "sampleUtterances" .!= mempty)
                      <*> (x .:? "description")
@@ -135,6 +145,7 @@ instance ToJSON Slot where
                     _sValueElicitationPrompt,
                   ("responseCard" .=) <$> _sResponseCard,
                   ("priority" .=) <$> _sPriority,
+                  ("obfuscationSetting" .=) <$> _sObfuscationSetting,
                   ("slotTypeVersion" .=) <$> _sSlotTypeVersion,
                   ("sampleUtterances" .=) <$> _sSampleUtterances,
                   ("description" .=) <$> _sDescription,

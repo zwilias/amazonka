@@ -21,7 +21,7 @@ import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Support.Types.Category
 
--- | Information about an AWS service returned by the 'DescribeServices' operation. 
+-- | Information about an AWS service returned by the 'DescribeServices' operation.
 --
 --
 --

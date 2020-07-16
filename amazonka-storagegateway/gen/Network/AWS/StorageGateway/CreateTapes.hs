@@ -27,6 +27,10 @@ module Network.AWS.StorageGateway.CreateTapes
       createTapes
     , CreateTapes
     -- * Request Lenses
+    , ctKMSKey
+    , ctKMSEncrypted
+    , ctPoolId
+    , ctTags
     , ctGatewayARN
     , ctTapeSizeInBytes
     , ctClientToken
@@ -53,8 +57,12 @@ import Network.AWS.StorageGateway.Types.Product
 --
 --
 -- /See:/ 'createTapes' smart constructor.
-data CreateTapes = CreateTapes'{_ctGatewayARN ::
-                                !Text,
+data CreateTapes = CreateTapes'{_ctKMSKey ::
+                                !(Maybe Text),
+                                _ctKMSEncrypted :: !(Maybe Bool),
+                                _ctPoolId :: !(Maybe Text),
+                                _ctTags :: !(Maybe [Tag]),
+                                _ctGatewayARN :: !Text,
                                 _ctTapeSizeInBytes :: !Integer,
                                 _ctClientToken :: !Text,
                                 _ctNumTapesToCreate :: !Nat,
@@ -65,7 +73,15 @@ data CreateTapes = CreateTapes'{_ctGatewayARN ::
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'ctGatewayARN' - The unique Amazon Resource Name (ARN) that represents the gateway to associate the virtual tapes with. Use the 'ListGateways' operation to return a list of gateways for your account and region.
+-- * 'ctKMSKey' - The Amazon Resource Name (ARN) of the AWS KMS key used for Amazon S3 server-side encryption. This value can only be set when KMSEncrypted is true. Optional.
+--
+-- * 'ctKMSEncrypted' - True to use Amazon S3 server-side encryption with your own AWS KMS key, or false to use a key managed by Amazon S3. Optional.
+--
+-- * 'ctPoolId' - The ID of the pool that you want to add your tape to for archiving. The tape in this pool is archived in the S3 storage class that is associated with the pool. When you use your backup application to eject the tape, the tape is archived directly into the storage class (S3 Glacier or S3 Glacier Deep Archive) that corresponds to the pool. Valid values: "GLACIER", "DEEP_ARCHIVE"
+--
+-- * 'ctTags' - A list of up to 50 tags that can be assigned to a virtual tape. Each tag is a key-value pair.
+--
+-- * 'ctGatewayARN' - The unique Amazon Resource Name (ARN) that represents the gateway to associate the virtual tapes with. Use the 'ListGateways' operation to return a list of gateways for your account and AWS Region.
 --
 -- * 'ctTapeSizeInBytes' - The size, in bytes, of the virtual tapes that you want to create.
 --
@@ -83,13 +99,31 @@ createTapes
     -> CreateTapes
 createTapes pGatewayARN_ pTapeSizeInBytes_
   pClientToken_ pNumTapesToCreate_ pTapeBarcodePrefix_
-  = CreateTapes'{_ctGatewayARN = pGatewayARN_,
+  = CreateTapes'{_ctKMSKey = Nothing,
+                 _ctKMSEncrypted = Nothing, _ctPoolId = Nothing,
+                 _ctTags = Nothing, _ctGatewayARN = pGatewayARN_,
                  _ctTapeSizeInBytes = pTapeSizeInBytes_,
                  _ctClientToken = pClientToken_,
                  _ctNumTapesToCreate = _Nat # pNumTapesToCreate_,
                  _ctTapeBarcodePrefix = pTapeBarcodePrefix_}
 
--- | The unique Amazon Resource Name (ARN) that represents the gateway to associate the virtual tapes with. Use the 'ListGateways' operation to return a list of gateways for your account and region.
+-- | The Amazon Resource Name (ARN) of the AWS KMS key used for Amazon S3 server-side encryption. This value can only be set when KMSEncrypted is true. Optional.
+ctKMSKey :: Lens' CreateTapes (Maybe Text)
+ctKMSKey = lens _ctKMSKey (\ s a -> s{_ctKMSKey = a})
+
+-- | True to use Amazon S3 server-side encryption with your own AWS KMS key, or false to use a key managed by Amazon S3. Optional.
+ctKMSEncrypted :: Lens' CreateTapes (Maybe Bool)
+ctKMSEncrypted = lens _ctKMSEncrypted (\ s a -> s{_ctKMSEncrypted = a})
+
+-- | The ID of the pool that you want to add your tape to for archiving. The tape in this pool is archived in the S3 storage class that is associated with the pool. When you use your backup application to eject the tape, the tape is archived directly into the storage class (S3 Glacier or S3 Glacier Deep Archive) that corresponds to the pool. Valid values: "GLACIER", "DEEP_ARCHIVE"
+ctPoolId :: Lens' CreateTapes (Maybe Text)
+ctPoolId = lens _ctPoolId (\ s a -> s{_ctPoolId = a})
+
+-- | A list of up to 50 tags that can be assigned to a virtual tape. Each tag is a key-value pair.
+ctTags :: Lens' CreateTapes [Tag]
+ctTags = lens _ctTags (\ s a -> s{_ctTags = a}) . _Default . _Coerce
+
+-- | The unique Amazon Resource Name (ARN) that represents the gateway to associate the virtual tapes with. Use the 'ListGateways' operation to return a list of gateways for your account and AWS Region.
 ctGatewayARN :: Lens' CreateTapes Text
 ctGatewayARN = lens _ctGatewayARN (\ s a -> s{_ctGatewayARN = a})
 
@@ -137,7 +171,10 @@ instance ToJSON CreateTapes where
         toJSON CreateTapes'{..}
           = object
               (catMaybes
-                 [Just ("GatewayARN" .= _ctGatewayARN),
+                 [("KMSKey" .=) <$> _ctKMSKey,
+                  ("KMSEncrypted" .=) <$> _ctKMSEncrypted,
+                  ("PoolId" .=) <$> _ctPoolId, ("Tags" .=) <$> _ctTags,
+                  Just ("GatewayARN" .= _ctGatewayARN),
                   Just ("TapeSizeInBytes" .= _ctTapeSizeInBytes),
                   Just ("ClientToken" .= _ctClientToken),
                   Just ("NumTapesToCreate" .= _ctNumTapesToCreate),

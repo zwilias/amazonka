@@ -18,7 +18,9 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Used to get information about your segments.
+-- Retrieves information about the configuration, dimension, and other settings for all the segments that are associated with an application.
+--
+--
 module Network.AWS.Pinpoint.GetSegments
     (
     -- * Creating a Request
@@ -55,11 +57,11 @@ data GetSegments = GetSegments'{_gssToken ::
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'gssToken' - The NextToken string returned on a previous page that you use to get the next page of results in a paginated response.
+-- * 'gssToken' - The NextToken string that specifies which page of results to return in a paginated response.
 --
--- * 'gssPageSize' - The number of entries you want on each page in the response.
+-- * 'gssPageSize' - The maximum number of items to include in each page of a paginated response. This parameter is not supported for application, campaign, and journey metrics.
 --
--- * 'gssApplicationId' - Undocumented member.
+-- * 'gssApplicationId' - The unique identifier for the application. This identifier is displayed as the __Project ID__ on the Amazon Pinpoint console.
 getSegments
     :: Text -- ^ 'gssApplicationId'
     -> GetSegments
@@ -68,15 +70,15 @@ getSegments pApplicationId_
                  _gssPageSize = Nothing,
                  _gssApplicationId = pApplicationId_}
 
--- | The NextToken string returned on a previous page that you use to get the next page of results in a paginated response.
+-- | The NextToken string that specifies which page of results to return in a paginated response.
 gssToken :: Lens' GetSegments (Maybe Text)
 gssToken = lens _gssToken (\ s a -> s{_gssToken = a})
 
--- | The number of entries you want on each page in the response.
+-- | The maximum number of items to include in each page of a paginated response. This parameter is not supported for application, campaign, and journey metrics.
 gssPageSize :: Lens' GetSegments (Maybe Text)
 gssPageSize = lens _gssPageSize (\ s a -> s{_gssPageSize = a})
 
--- | Undocumented member.
+-- | The unique identifier for the application. This identifier is displayed as the __Project ID__ on the Amazon Pinpoint console.
 gssApplicationId :: Lens' GetSegments Text
 gssApplicationId = lens _gssApplicationId (\ s a -> s{_gssApplicationId = a})
 

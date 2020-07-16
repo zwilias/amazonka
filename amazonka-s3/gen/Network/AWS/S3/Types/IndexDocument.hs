@@ -21,7 +21,11 @@ import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.S3.Internal
 
--- | /See:/ 'indexDocument' smart constructor.
+-- | Container for the @Suffix@ element.
+--
+--
+--
+-- /See:/ 'indexDocument' smart constructor.
 newtype IndexDocument = IndexDocument'{_idSuffix ::
                                        Text}
                           deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -30,14 +34,14 @@ newtype IndexDocument = IndexDocument'{_idSuffix ::
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'idSuffix' - A suffix that is appended to a request that is for a directory on the website endpoint (e.g. if the suffix is index.html and you make a request to samplebucket/images/ the data that is returned will be for the object with the key name images/index.html) The suffix must not be empty and must not include a slash character.
+-- * 'idSuffix' - A suffix that is appended to a request that is for a directory on the website endpoint (for example,if the suffix is index.html and you make a request to samplebucket/images/ the data that is returned will be for the object with the key name images/index.html) The suffix must not be empty and must not include a slash character.
 indexDocument
     :: Text -- ^ 'idSuffix'
     -> IndexDocument
 indexDocument pSuffix_
   = IndexDocument'{_idSuffix = pSuffix_}
 
--- | A suffix that is appended to a request that is for a directory on the website endpoint (e.g. if the suffix is index.html and you make a request to samplebucket/images/ the data that is returned will be for the object with the key name images/index.html) The suffix must not be empty and must not include a slash character.
+-- | A suffix that is appended to a request that is for a directory on the website endpoint (for example,if the suffix is index.html and you make a request to samplebucket/images/ the data that is returned will be for the object with the key name images/index.html) The suffix must not be empty and must not include a slash character.
 idSuffix :: Lens' IndexDocument Text
 idSuffix = lens _idSuffix (\ s a -> s{_idSuffix = a})
 

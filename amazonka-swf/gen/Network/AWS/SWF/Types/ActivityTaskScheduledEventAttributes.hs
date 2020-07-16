@@ -82,7 +82,7 @@ data ActivityTaskScheduledEventAttributes = ActivityTaskScheduledEventAttributes
 --
 -- * 'atseaInput' - The input provided to the activity task.
 --
--- * 'atseaTaskPriority' - The priority to assign to the scheduled activity task. If set, this overrides any default priority value that was assigned when the activity type was registered. Valid values are integers that range from Java's @Integer.MIN_VALUE@ (-2147483648) to @Integer.MAX_VALUE@ (2147483647). Higher numbers indicate higher priority. For more information about setting task priority, see <http://docs.aws.amazon.com/amazonswf/latest/developerguide/programming-priority.html Setting Task Priority> in the /Amazon SWF Developer Guide/ .
+-- * 'atseaTaskPriority' - The priority to assign to the scheduled activity task. If set, this overrides any default priority value that was assigned when the activity type was registered. Valid values are integers that range from Java's @Integer.MIN_VALUE@ (-2147483648) to @Integer.MAX_VALUE@ (2147483647). Higher numbers indicate higher priority. For more information about setting task priority, see <https://docs.aws.amazon.com/amazonswf/latest/developerguide/programming-priority.html Setting Task Priority> in the /Amazon SWF Developer Guide/ .
 --
 -- * 'atseaScheduleToStartTimeout' - The maximum amount of time the activity task can wait to be assigned to a worker.
 --
@@ -136,7 +136,7 @@ atseaScheduleToCloseTimeout = lens _atseaScheduleToCloseTimeout (\ s a -> s{_ats
 atseaInput :: Lens' ActivityTaskScheduledEventAttributes (Maybe Text)
 atseaInput = lens _atseaInput (\ s a -> s{_atseaInput = a})
 
--- | The priority to assign to the scheduled activity task. If set, this overrides any default priority value that was assigned when the activity type was registered. Valid values are integers that range from Java's @Integer.MIN_VALUE@ (-2147483648) to @Integer.MAX_VALUE@ (2147483647). Higher numbers indicate higher priority. For more information about setting task priority, see <http://docs.aws.amazon.com/amazonswf/latest/developerguide/programming-priority.html Setting Task Priority> in the /Amazon SWF Developer Guide/ .
+-- | The priority to assign to the scheduled activity task. If set, this overrides any default priority value that was assigned when the activity type was registered. Valid values are integers that range from Java's @Integer.MIN_VALUE@ (-2147483648) to @Integer.MAX_VALUE@ (2147483647). Higher numbers indicate higher priority. For more information about setting task priority, see <https://docs.aws.amazon.com/amazonswf/latest/developerguide/programming-priority.html Setting Task Priority> in the /Amazon SWF Developer Guide/ .
 atseaTaskPriority :: Lens' ActivityTaskScheduledEventAttributes (Maybe Text)
 atseaTaskPriority = lens _atseaTaskPriority (\ s a -> s{_atseaTaskPriority = a})
 

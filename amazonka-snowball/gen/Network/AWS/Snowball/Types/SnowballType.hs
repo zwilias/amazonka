@@ -20,6 +20,9 @@ module Network.AWS.Snowball.Types.SnowballType (
   SnowballType (
     ..
     , Edge
+    , EdgeC
+    , EdgeCg
+    , EdgeS
     , Standard
     )
   ) where
@@ -34,11 +37,23 @@ data SnowballType = SnowballType' (CI Text)
 pattern Edge :: SnowballType
 pattern Edge = SnowballType' "EDGE"
 
+pattern EdgeC :: SnowballType
+pattern EdgeC = SnowballType' "EDGE_C"
+
+pattern EdgeCg :: SnowballType
+pattern EdgeCg = SnowballType' "EDGE_CG"
+
+pattern EdgeS :: SnowballType
+pattern EdgeS = SnowballType' "EDGE_S"
+
 pattern Standard :: SnowballType
 pattern Standard = SnowballType' "STANDARD"
 
 {-# COMPLETE
   Edge,
+  EdgeC,
+  EdgeCg,
+  EdgeS,
   Standard,
   SnowballType' #-}
 
@@ -55,11 +70,17 @@ instance ToText SnowballType where
 instance Enum SnowballType where
     toEnum i = case i of
         0 -> Edge
-        1 -> Standard
+        1 -> EdgeC
+        2 -> EdgeCg
+        3 -> EdgeS
+        4 -> Standard
         _ -> (error . showText) $ "Unknown index for SnowballType: " <> toText i
     fromEnum x = case x of
         Edge -> 0
-        Standard -> 1
+        EdgeC -> 1
+        EdgeCg -> 2
+        EdgeS -> 3
+        Standard -> 4
         SnowballType' name -> (error . showText) $ "Unknown SnowballType: " <> original name
 
 -- | Represents the bounds of /known/ $SnowballType.

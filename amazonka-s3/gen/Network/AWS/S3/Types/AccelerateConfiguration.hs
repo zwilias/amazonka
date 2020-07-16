@@ -22,7 +22,11 @@ import Network.AWS.Prelude
 import Network.AWS.S3.Internal
 import Network.AWS.S3.Types.BucketAccelerateStatus
 
--- | /See:/ 'accelerateConfiguration' smart constructor.
+-- | Configures the transfer acceleration state for an Amazon S3 bucket. For more information, see <https://docs.aws.amazon.com/AmazonS3/latest/dev/transfer-acceleration.html Amazon S3 Transfer Acceleration> in the /Amazon Simple Storage Service Developer Guide/ .
+--
+--
+--
+-- /See:/ 'accelerateConfiguration' smart constructor.
 newtype AccelerateConfiguration = AccelerateConfiguration'{_acStatus
                                                            ::
                                                            Maybe
@@ -34,13 +38,13 @@ newtype AccelerateConfiguration = AccelerateConfiguration'{_acStatus
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'acStatus' - The accelerate configuration of the bucket.
+-- * 'acStatus' - Specifies the transfer acceleration status of the bucket.
 accelerateConfiguration
     :: AccelerateConfiguration
 accelerateConfiguration
   = AccelerateConfiguration'{_acStatus = Nothing}
 
--- | The accelerate configuration of the bucket.
+-- | Specifies the transfer acceleration status of the bucket.
 acStatus :: Lens' AccelerateConfiguration (Maybe BucketAccelerateStatus)
 acStatus = lens _acStatus (\ s a -> s{_acStatus = a})
 

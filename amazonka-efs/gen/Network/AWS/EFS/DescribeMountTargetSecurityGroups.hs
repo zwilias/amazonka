@@ -67,7 +67,7 @@ newtype DescribeMountTargetSecurityGroups = DescribeMountTargetSecurityGroups'{_
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dmtsgMountTargetId' - ID of the mount target whose security groups you want to retrieve.
+-- * 'dmtsgMountTargetId' - The ID of the mount target whose security groups you want to retrieve.
 describeMountTargetSecurityGroups
     :: Text -- ^ 'dmtsgMountTargetId'
     -> DescribeMountTargetSecurityGroups
@@ -75,7 +75,7 @@ describeMountTargetSecurityGroups pMountTargetId_
   = DescribeMountTargetSecurityGroups'{_dmtsgMountTargetId
                                          = pMountTargetId_}
 
--- | ID of the mount target whose security groups you want to retrieve.
+-- | The ID of the mount target whose security groups you want to retrieve.
 dmtsgMountTargetId :: Lens' DescribeMountTargetSecurityGroups Text
 dmtsgMountTargetId = lens _dmtsgMountTargetId (\ s a -> s{_dmtsgMountTargetId = a})
 
@@ -129,7 +129,7 @@ data DescribeMountTargetSecurityGroupsResponse = DescribeMountTargetSecurityGrou
 --
 -- * 'dmtsgrsResponseStatus' - -- | The response status code.
 --
--- * 'dmtsgrsSecurityGroups' - Array of security groups.
+-- * 'dmtsgrsSecurityGroups' - An array of security groups.
 describeMountTargetSecurityGroupsResponse
     :: Int -- ^ 'dmtsgrsResponseStatus'
     -> DescribeMountTargetSecurityGroupsResponse
@@ -143,7 +143,7 @@ describeMountTargetSecurityGroupsResponse
 dmtsgrsResponseStatus :: Lens' DescribeMountTargetSecurityGroupsResponse Int
 dmtsgrsResponseStatus = lens _dmtsgrsResponseStatus (\ s a -> s{_dmtsgrsResponseStatus = a})
 
--- | Array of security groups.
+-- | An array of security groups.
 dmtsgrsSecurityGroups :: Lens' DescribeMountTargetSecurityGroupsResponse [Text]
 dmtsgrsSecurityGroups = lens _dmtsgrsSecurityGroups (\ s a -> s{_dmtsgrsSecurityGroups = a}) . _Coerce
 

@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Retrieves the password policy for the AWS account. For more information about using a password policy, go to <http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_ManagingPasswordPolicies.html Managing an IAM Password Policy> .
+-- Retrieves the password policy for the AWS account. For more information about using a password policy, go to <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_ManagingPasswordPolicies.html Managing an IAM Password Policy> .
 --
 --
 module Network.AWS.IAM.GetAccountPasswordPolicy

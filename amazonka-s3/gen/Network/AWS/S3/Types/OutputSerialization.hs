@@ -25,6 +25,8 @@ import Network.AWS.S3.Types.JSONOutput
 
 -- | Describes how results of the Select job are serialized.
 --
+--
+--
 -- /See:/ 'outputSerialization' smart constructor.
 data OutputSerialization = OutputSerialization'{_osJSON
                                                 :: !(Maybe JSONOutput),

@@ -33,9 +33,9 @@ module Network.AWS.Snowball.GetSnowballUsage
     , getSnowballUsageResponse
     , GetSnowballUsageResponse
     -- * Response Lenses
-    , gsursSnowballsInUse
-    , gsursSnowballLimit
-    , gsursResponseStatus
+    , grsSnowballsInUse
+    , grsSnowballLimit
+    , grsResponseStatus
     ) where
 
 import Network.AWS.Lens
@@ -89,12 +89,12 @@ instance ToQuery GetSnowballUsage where
         toQuery = const mempty
 
 -- | /See:/ 'getSnowballUsageResponse' smart constructor.
-data GetSnowballUsageResponse = GetSnowballUsageResponse'{_gsursSnowballsInUse
+data GetSnowballUsageResponse = GetSnowballUsageResponse'{_grsSnowballsInUse
                                                           :: !(Maybe Int),
-                                                          _gsursSnowballLimit ::
+                                                          _grsSnowballLimit ::
                                                           !(Maybe Int),
-                                                          _gsursResponseStatus
-                                                          :: !Int}
+                                                          _grsResponseStatus ::
+                                                          !Int}
                                   deriving (Eq, Read, Show, Data, Typeable,
                                             Generic)
 
@@ -102,30 +102,30 @@ data GetSnowballUsageResponse = GetSnowballUsageResponse'{_gsursSnowballsInUse
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'gsursSnowballsInUse' - The number of Snowballs that this account is currently using.
+-- * 'grsSnowballsInUse' - The number of Snowballs that this account is currently using.
 --
--- * 'gsursSnowballLimit' - The service limit for number of Snowballs this account can have at once. The default service limit is 1 (one).
+-- * 'grsSnowballLimit' - The service limit for number of Snowballs this account can have at once. The default service limit is 1 (one).
 --
--- * 'gsursResponseStatus' - -- | The response status code.
+-- * 'grsResponseStatus' - -- | The response status code.
 getSnowballUsageResponse
-    :: Int -- ^ 'gsursResponseStatus'
+    :: Int -- ^ 'grsResponseStatus'
     -> GetSnowballUsageResponse
 getSnowballUsageResponse pResponseStatus_
-  = GetSnowballUsageResponse'{_gsursSnowballsInUse =
+  = GetSnowballUsageResponse'{_grsSnowballsInUse =
                                 Nothing,
-                              _gsursSnowballLimit = Nothing,
-                              _gsursResponseStatus = pResponseStatus_}
+                              _grsSnowballLimit = Nothing,
+                              _grsResponseStatus = pResponseStatus_}
 
 -- | The number of Snowballs that this account is currently using.
-gsursSnowballsInUse :: Lens' GetSnowballUsageResponse (Maybe Int)
-gsursSnowballsInUse = lens _gsursSnowballsInUse (\ s a -> s{_gsursSnowballsInUse = a})
+grsSnowballsInUse :: Lens' GetSnowballUsageResponse (Maybe Int)
+grsSnowballsInUse = lens _grsSnowballsInUse (\ s a -> s{_grsSnowballsInUse = a})
 
 -- | The service limit for number of Snowballs this account can have at once. The default service limit is 1 (one).
-gsursSnowballLimit :: Lens' GetSnowballUsageResponse (Maybe Int)
-gsursSnowballLimit = lens _gsursSnowballLimit (\ s a -> s{_gsursSnowballLimit = a})
+grsSnowballLimit :: Lens' GetSnowballUsageResponse (Maybe Int)
+grsSnowballLimit = lens _grsSnowballLimit (\ s a -> s{_grsSnowballLimit = a})
 
 -- | -- | The response status code.
-gsursResponseStatus :: Lens' GetSnowballUsageResponse Int
-gsursResponseStatus = lens _gsursResponseStatus (\ s a -> s{_gsursResponseStatus = a})
+grsResponseStatus :: Lens' GetSnowballUsageResponse Int
+grsResponseStatus = lens _grsResponseStatus (\ s a -> s{_grsResponseStatus = a})
 
 instance NFData GetSnowballUsageResponse where

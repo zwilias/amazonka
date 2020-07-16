@@ -28,7 +28,9 @@ module Network.AWS.AlexaBusiness.UpdateContact
     , UpdateContact
     -- * Request Lenses
     , ucLastName
+    , ucPhoneNumbers
     , ucPhoneNumber
+    , ucSipAddresses
     , ucFirstName
     , ucDisplayName
     , ucContactARN
@@ -50,11 +52,13 @@ import Network.AWS.Response
 -- | /See:/ 'updateContact' smart constructor.
 data UpdateContact = UpdateContact'{_ucLastName ::
                                     !(Maybe Text),
-                                    _ucPhoneNumber :: !(Maybe Text),
+                                    _ucPhoneNumbers :: !(Maybe [PhoneNumber]),
+                                    _ucPhoneNumber :: !(Maybe (Sensitive Text)),
+                                    _ucSipAddresses :: !(Maybe [SipAddress]),
                                     _ucFirstName :: !(Maybe Text),
                                     _ucDisplayName :: !(Maybe Text),
                                     _ucContactARN :: !Text}
-                       deriving (Eq, Read, Show, Data, Typeable, Generic)
+                       deriving (Eq, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UpdateContact' with the minimum fields required to make a request.
 --
@@ -62,7 +66,11 @@ data UpdateContact = UpdateContact'{_ucLastName ::
 --
 -- * 'ucLastName' - The updated last name of the contact.
 --
--- * 'ucPhoneNumber' - The updated phone number of the contact.
+-- * 'ucPhoneNumbers' - The list of phone numbers for the contact.
+--
+-- * 'ucPhoneNumber' - The updated phone number of the contact. The phone number type defaults to WORK. You can either specify PhoneNumber or PhoneNumbers. We recommend that you use PhoneNumbers, which lets you specify the phone number type and multiple numbers.
+--
+-- * 'ucSipAddresses' - The list of SIP addresses for the contact.
 --
 -- * 'ucFirstName' - The updated first name of the contact.
 --
@@ -74,7 +82,8 @@ updateContact
     -> UpdateContact
 updateContact pContactARN_
   = UpdateContact'{_ucLastName = Nothing,
-                   _ucPhoneNumber = Nothing, _ucFirstName = Nothing,
+                   _ucPhoneNumbers = Nothing, _ucPhoneNumber = Nothing,
+                   _ucSipAddresses = Nothing, _ucFirstName = Nothing,
                    _ucDisplayName = Nothing,
                    _ucContactARN = pContactARN_}
 
@@ -82,9 +91,17 @@ updateContact pContactARN_
 ucLastName :: Lens' UpdateContact (Maybe Text)
 ucLastName = lens _ucLastName (\ s a -> s{_ucLastName = a})
 
--- | The updated phone number of the contact.
+-- | The list of phone numbers for the contact.
+ucPhoneNumbers :: Lens' UpdateContact [PhoneNumber]
+ucPhoneNumbers = lens _ucPhoneNumbers (\ s a -> s{_ucPhoneNumbers = a}) . _Default . _Coerce
+
+-- | The updated phone number of the contact. The phone number type defaults to WORK. You can either specify PhoneNumber or PhoneNumbers. We recommend that you use PhoneNumbers, which lets you specify the phone number type and multiple numbers.
 ucPhoneNumber :: Lens' UpdateContact (Maybe Text)
-ucPhoneNumber = lens _ucPhoneNumber (\ s a -> s{_ucPhoneNumber = a})
+ucPhoneNumber = lens _ucPhoneNumber (\ s a -> s{_ucPhoneNumber = a}) . mapping _Sensitive
+
+-- | The list of SIP addresses for the contact.
+ucSipAddresses :: Lens' UpdateContact [SipAddress]
+ucSipAddresses = lens _ucSipAddresses (\ s a -> s{_ucSipAddresses = a}) . _Default . _Coerce
 
 -- | The updated first name of the contact.
 ucFirstName :: Lens' UpdateContact (Maybe Text)
@@ -124,7 +141,9 @@ instance ToJSON UpdateContact where
           = object
               (catMaybes
                  [("LastName" .=) <$> _ucLastName,
+                  ("PhoneNumbers" .=) <$> _ucPhoneNumbers,
                   ("PhoneNumber" .=) <$> _ucPhoneNumber,
+                  ("SipAddresses" .=) <$> _ucSipAddresses,
                   ("FirstName" .=) <$> _ucFirstName,
                   ("DisplayName" .=) <$> _ucDisplayName,
                   Just ("ContactArn" .= _ucContactARN)])

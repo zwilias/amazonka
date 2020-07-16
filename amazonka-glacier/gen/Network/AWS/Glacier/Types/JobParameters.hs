@@ -58,7 +58,7 @@ data JobParameters = JobParameters'{_jpArchiveId ::
 --
 -- * 'jpInventoryRetrievalParameters' - Input parameters used for range inventory retrieval.
 --
--- * 'jpSNSTopic' - The Amazon SNS topic ARN to which Amazon Glacier sends a notification when the job is completed and the output is ready for you to download. The specified topic publishes the notification to its subscribers. The SNS topic must exist.
+-- * 'jpSNSTopic' - The Amazon SNS topic ARN to which Amazon S3 Glacier sends a notification when the job is completed and the output is ready for you to download. The specified topic publishes the notification to its subscribers. The SNS topic must exist.
 --
 -- * 'jpOutputLocation' - Contains information about the location where the select job results are stored.
 --
@@ -98,7 +98,7 @@ jpRetrievalByteRange = lens _jpRetrievalByteRange (\ s a -> s{_jpRetrievalByteRa
 jpInventoryRetrievalParameters :: Lens' JobParameters (Maybe InventoryRetrievalJobInput)
 jpInventoryRetrievalParameters = lens _jpInventoryRetrievalParameters (\ s a -> s{_jpInventoryRetrievalParameters = a})
 
--- | The Amazon SNS topic ARN to which Amazon Glacier sends a notification when the job is completed and the output is ready for you to download. The specified topic publishes the notification to its subscribers. The SNS topic must exist.
+-- | The Amazon SNS topic ARN to which Amazon S3 Glacier sends a notification when the job is completed and the output is ready for you to download. The specified topic publishes the notification to its subscribers. The SNS topic must exist.
 jpSNSTopic :: Lens' JobParameters (Maybe Text)
 jpSNSTopic = lens _jpSNSTopic (\ s a -> s{_jpSNSTopic = a})
 

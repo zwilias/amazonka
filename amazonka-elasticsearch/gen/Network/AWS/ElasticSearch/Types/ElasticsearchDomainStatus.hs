@@ -17,12 +17,16 @@
 --
 module Network.AWS.ElasticSearch.Types.ElasticsearchDomainStatus where
 
+import Network.AWS.ElasticSearch.Types.AdvancedSecurityOptions
 import Network.AWS.ElasticSearch.Types.CognitoOptions
+import Network.AWS.ElasticSearch.Types.DomainEndpointOptions
 import Network.AWS.ElasticSearch.Types.EBSOptions
 import Network.AWS.ElasticSearch.Types.ElasticsearchClusterConfig
 import Network.AWS.ElasticSearch.Types.EncryptionAtRestOptions
 import Network.AWS.ElasticSearch.Types.LogPublishingOption
 import Network.AWS.ElasticSearch.Types.LogType
+import Network.AWS.ElasticSearch.Types.NodeToNodeEncryptionOptions
+import Network.AWS.ElasticSearch.Types.ServiceSoftwareOptions
 import Network.AWS.ElasticSearch.Types.SnapshotOptions
 import Network.AWS.ElasticSearch.Types.VPCDerivedInfo
 import Network.AWS.Lens
@@ -36,13 +40,25 @@ import Network.AWS.Prelude
 data ElasticsearchDomainStatus = ElasticsearchDomainStatus'{_edsEBSOptions
                                                             ::
                                                             !(Maybe EBSOptions),
+                                                            _edsNodeToNodeEncryptionOptions
+                                                            ::
+                                                            !(Maybe
+                                                                NodeToNodeEncryptionOptions),
                                                             _edsAccessPolicies
                                                             :: !(Maybe Text),
+                                                            _edsServiceSoftwareOptions
+                                                            ::
+                                                            !(Maybe
+                                                                ServiceSoftwareOptions),
                                                             _edsLogPublishingOptions
                                                             ::
                                                             !(Maybe
                                                                 (Map LogType
                                                                    LogPublishingOption)),
+                                                            _edsAdvancedSecurityOptions
+                                                            ::
+                                                            !(Maybe
+                                                                AdvancedSecurityOptions),
                                                             _edsCreated ::
                                                             !(Maybe Bool),
                                                             _edsSnapshotOptions
@@ -66,10 +82,16 @@ data ElasticsearchDomainStatus = ElasticsearchDomainStatus'{_edsEBSOptions
                                                             !(Maybe
                                                                 (Map Text
                                                                    Text)),
+                                                            _edsDomainEndpointOptions
+                                                            ::
+                                                            !(Maybe
+                                                                DomainEndpointOptions),
                                                             _edsProcessing ::
                                                             !(Maybe Bool),
                                                             _edsEndpoint ::
                                                             !(Maybe Text),
+                                                            _edsUpgradeProcessing
+                                                            :: !(Maybe Bool),
                                                             _edsAdvancedOptions
                                                             ::
                                                             !(Maybe
@@ -94,9 +116,15 @@ data ElasticsearchDomainStatus = ElasticsearchDomainStatus'{_edsEBSOptions
 --
 -- * 'edsEBSOptions' - The @EBSOptions@ for the specified domain. See <http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html#es-createdomain-configure-ebs Configuring EBS-based Storage> for more information.
 --
+-- * 'edsNodeToNodeEncryptionOptions' - Specifies the status of the @NodeToNodeEncryptionOptions@ .
+--
 -- * 'edsAccessPolicies' - IAM access policy as a JSON-formatted string.
 --
+-- * 'edsServiceSoftwareOptions' - The current status of the Elasticsearch domain's service software.
+--
 -- * 'edsLogPublishingOptions' - Log publishing options for the given domain.
+--
+-- * 'edsAdvancedSecurityOptions' - The current status of the Elasticsearch domain's advanced security options.
 --
 -- * 'edsCreated' - The domain creation status. @True@ if the creation of an Elasticsearch domain is complete. @False@ if domain creation is still in progress.
 --
@@ -112,9 +140,13 @@ data ElasticsearchDomainStatus = ElasticsearchDomainStatus'{_edsEBSOptions
 --
 -- * 'edsEndpoints' - Map containing the Elasticsearch domain endpoints used to submit index and search requests. Example @key, value@ : @'vpc','vpc-endpoint-h2dsd34efgyghrtguk5gt6j2foh4.us-east-1.es.amazonaws.com'@ .
 --
+-- * 'edsDomainEndpointOptions' - The current status of the Elasticsearch domain's endpoint options.
+--
 -- * 'edsProcessing' - The status of the Elasticsearch domain configuration. @True@ if Amazon Elasticsearch Service is processing configuration changes. @False@ if the configuration is active.
 --
 -- * 'edsEndpoint' - The Elasticsearch domain endpoint that you use to submit index and search requests.
+--
+-- * 'edsUpgradeProcessing' - The status of an Elasticsearch domain version upgrade. @True@ if Amazon Elasticsearch Service is undergoing a version upgrade. @False@ if the configuration is active.
 --
 -- * 'edsAdvancedOptions' - Specifies the status of the @AdvancedOptions@ 
 --
@@ -137,15 +169,20 @@ elasticsearchDomainStatus pDomainId_ pDomainName_
   pARN_ pElasticsearchClusterConfig_
   = ElasticsearchDomainStatus'{_edsEBSOptions =
                                  Nothing,
+                               _edsNodeToNodeEncryptionOptions = Nothing,
                                _edsAccessPolicies = Nothing,
+                               _edsServiceSoftwareOptions = Nothing,
                                _edsLogPublishingOptions = Nothing,
+                               _edsAdvancedSecurityOptions = Nothing,
                                _edsCreated = Nothing,
                                _edsSnapshotOptions = Nothing,
                                _edsCognitoOptions = Nothing,
                                _edsEncryptionAtRestOptions = Nothing,
                                _edsDeleted = Nothing, _edsVPCOptions = Nothing,
                                _edsEndpoints = Nothing,
+                               _edsDomainEndpointOptions = Nothing,
                                _edsProcessing = Nothing, _edsEndpoint = Nothing,
+                               _edsUpgradeProcessing = Nothing,
                                _edsAdvancedOptions = Nothing,
                                _edsElasticsearchVersion = Nothing,
                                _edsDomainId = pDomainId_,
@@ -157,13 +194,25 @@ elasticsearchDomainStatus pDomainId_ pDomainName_
 edsEBSOptions :: Lens' ElasticsearchDomainStatus (Maybe EBSOptions)
 edsEBSOptions = lens _edsEBSOptions (\ s a -> s{_edsEBSOptions = a})
 
+-- | Specifies the status of the @NodeToNodeEncryptionOptions@ .
+edsNodeToNodeEncryptionOptions :: Lens' ElasticsearchDomainStatus (Maybe NodeToNodeEncryptionOptions)
+edsNodeToNodeEncryptionOptions = lens _edsNodeToNodeEncryptionOptions (\ s a -> s{_edsNodeToNodeEncryptionOptions = a})
+
 -- | IAM access policy as a JSON-formatted string.
 edsAccessPolicies :: Lens' ElasticsearchDomainStatus (Maybe Text)
 edsAccessPolicies = lens _edsAccessPolicies (\ s a -> s{_edsAccessPolicies = a})
 
+-- | The current status of the Elasticsearch domain's service software.
+edsServiceSoftwareOptions :: Lens' ElasticsearchDomainStatus (Maybe ServiceSoftwareOptions)
+edsServiceSoftwareOptions = lens _edsServiceSoftwareOptions (\ s a -> s{_edsServiceSoftwareOptions = a})
+
 -- | Log publishing options for the given domain.
 edsLogPublishingOptions :: Lens' ElasticsearchDomainStatus (HashMap LogType LogPublishingOption)
 edsLogPublishingOptions = lens _edsLogPublishingOptions (\ s a -> s{_edsLogPublishingOptions = a}) . _Default . _Map
+
+-- | The current status of the Elasticsearch domain's advanced security options.
+edsAdvancedSecurityOptions :: Lens' ElasticsearchDomainStatus (Maybe AdvancedSecurityOptions)
+edsAdvancedSecurityOptions = lens _edsAdvancedSecurityOptions (\ s a -> s{_edsAdvancedSecurityOptions = a})
 
 -- | The domain creation status. @True@ if the creation of an Elasticsearch domain is complete. @False@ if domain creation is still in progress.
 edsCreated :: Lens' ElasticsearchDomainStatus (Maybe Bool)
@@ -193,6 +242,10 @@ edsVPCOptions = lens _edsVPCOptions (\ s a -> s{_edsVPCOptions = a})
 edsEndpoints :: Lens' ElasticsearchDomainStatus (HashMap Text Text)
 edsEndpoints = lens _edsEndpoints (\ s a -> s{_edsEndpoints = a}) . _Default . _Map
 
+-- | The current status of the Elasticsearch domain's endpoint options.
+edsDomainEndpointOptions :: Lens' ElasticsearchDomainStatus (Maybe DomainEndpointOptions)
+edsDomainEndpointOptions = lens _edsDomainEndpointOptions (\ s a -> s{_edsDomainEndpointOptions = a})
+
 -- | The status of the Elasticsearch domain configuration. @True@ if Amazon Elasticsearch Service is processing configuration changes. @False@ if the configuration is active.
 edsProcessing :: Lens' ElasticsearchDomainStatus (Maybe Bool)
 edsProcessing = lens _edsProcessing (\ s a -> s{_edsProcessing = a})
@@ -200,6 +253,10 @@ edsProcessing = lens _edsProcessing (\ s a -> s{_edsProcessing = a})
 -- | The Elasticsearch domain endpoint that you use to submit index and search requests.
 edsEndpoint :: Lens' ElasticsearchDomainStatus (Maybe Text)
 edsEndpoint = lens _edsEndpoint (\ s a -> s{_edsEndpoint = a})
+
+-- | The status of an Elasticsearch domain version upgrade. @True@ if Amazon Elasticsearch Service is undergoing a version upgrade. @False@ if the configuration is active.
+edsUpgradeProcessing :: Lens' ElasticsearchDomainStatus (Maybe Bool)
+edsUpgradeProcessing = lens _edsUpgradeProcessing (\ s a -> s{_edsUpgradeProcessing = a})
 
 -- | Specifies the status of the @AdvancedOptions@ 
 edsAdvancedOptions :: Lens' ElasticsearchDomainStatus (HashMap Text Text)
@@ -230,8 +287,12 @@ instance FromJSON ElasticsearchDomainStatus where
           = withObject "ElasticsearchDomainStatus"
               (\ x ->
                  ElasticsearchDomainStatus' <$>
-                   (x .:? "EBSOptions") <*> (x .:? "AccessPolicies") <*>
-                     (x .:? "LogPublishingOptions" .!= mempty)
+                   (x .:? "EBSOptions") <*>
+                     (x .:? "NodeToNodeEncryptionOptions")
+                     <*> (x .:? "AccessPolicies")
+                     <*> (x .:? "ServiceSoftwareOptions")
+                     <*> (x .:? "LogPublishingOptions" .!= mempty)
+                     <*> (x .:? "AdvancedSecurityOptions")
                      <*> (x .:? "Created")
                      <*> (x .:? "SnapshotOptions")
                      <*> (x .:? "CognitoOptions")
@@ -239,8 +300,10 @@ instance FromJSON ElasticsearchDomainStatus where
                      <*> (x .:? "Deleted")
                      <*> (x .:? "VPCOptions")
                      <*> (x .:? "Endpoints" .!= mempty)
+                     <*> (x .:? "DomainEndpointOptions")
                      <*> (x .:? "Processing")
                      <*> (x .:? "Endpoint")
+                     <*> (x .:? "UpgradeProcessing")
                      <*> (x .:? "AdvancedOptions" .!= mempty)
                      <*> (x .:? "ElasticsearchVersion")
                      <*> (x .: "DomainId")

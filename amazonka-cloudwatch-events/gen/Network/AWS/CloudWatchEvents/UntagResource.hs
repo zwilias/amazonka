@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Removes one or more tags from the specified EventBridge resource. In EventBridge, rules can be tagged.
+-- Removes one or more tags from the specified EventBridge resource. In CloudWatch Events, rules and event buses can be tagged.
 --
 --
 module Network.AWS.CloudWatchEvents.UntagResource
@@ -54,7 +54,7 @@ data UntagResource = UntagResource'{_urResourceARN ::
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'urResourceARN' - The ARN of the rule that you're removing tags from.
+-- * 'urResourceARN' - The ARN of the EventBridge resource from which you are removing tags.
 --
 -- * 'urTagKeys' - The list of tag keys to remove from the resource.
 untagResource
@@ -64,7 +64,7 @@ untagResource pResourceARN_
   = UntagResource'{_urResourceARN = pResourceARN_,
                    _urTagKeys = mempty}
 
--- | The ARN of the rule that you're removing tags from.
+-- | The ARN of the EventBridge resource from which you are removing tags.
 urResourceARN :: Lens' UntagResource Text
 urResourceARN = lens _urResourceARN (\ s a -> s{_urResourceARN = a})
 

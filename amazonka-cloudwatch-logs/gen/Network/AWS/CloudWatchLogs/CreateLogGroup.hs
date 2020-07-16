@@ -21,7 +21,7 @@
 -- Creates a log group with the specified name.
 --
 --
--- You can create up to 5000 log groups per account.
+-- You can create up to 20,000 log groups per account.
 --
 -- You must use the following guidelines when naming a log group:
 --
@@ -29,7 +29,7 @@
 --
 --     * Log group names can be between 1 and 512 characters long.
 --
---     * Log group names consist of the following characters: a-z, A-Z, 0-9, '_' (underscore), '-' (hyphen), '/' (forward slash), and '.' (period).
+--     * Log group names consist of the following characters: a-z, A-Z, 0-9, '_' (underscore), '-' (hyphen), '/' (forward slash), '.' (period), and '#' (number sign)
 --
 --
 --
@@ -70,7 +70,7 @@ data CreateLogGroup = CreateLogGroup'{_clgKmsKeyId ::
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'clgKmsKeyId' - The Amazon Resource Name (ARN) of the CMK to use when encrypting log data. For more information, see <http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-kms Amazon Resource Names - AWS Key Management Service (AWS KMS)> .
+-- * 'clgKmsKeyId' - The Amazon Resource Name (ARN) of the CMK to use when encrypting log data. For more information, see <https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-kms Amazon Resource Names - AWS Key Management Service (AWS KMS)> .
 --
 -- * 'clgTags' - The key-value pairs to use for the tags.
 --
@@ -83,7 +83,7 @@ createLogGroup pLogGroupName_
                     _clgTags = Nothing,
                     _clgLogGroupName = pLogGroupName_}
 
--- | The Amazon Resource Name (ARN) of the CMK to use when encrypting log data. For more information, see <http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-kms Amazon Resource Names - AWS Key Management Service (AWS KMS)> .
+-- | The Amazon Resource Name (ARN) of the CMK to use when encrypting log data. For more information, see <https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-kms Amazon Resource Names - AWS Key Management Service (AWS KMS)> .
 clgKmsKeyId :: Lens' CreateLogGroup (Maybe Text)
 clgKmsKeyId = lens _clgKmsKeyId (\ s a -> s{_clgKmsKeyId = a})
 

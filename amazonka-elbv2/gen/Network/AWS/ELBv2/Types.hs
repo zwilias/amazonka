@@ -19,9 +19,11 @@ module Network.AWS.ELBv2.Types
     , _InvalidSchemeException
     , _SSLPolicyNotFoundException
     , _TooManyRegistrationsForTargetIdException
+    , _TooManyActionsException
     , _TooManyRulesException
     , _TargetGroupAssociationLimitException
     , _OperationNotPermittedException
+    , _InvalidLoadBalancerActionException
     , _TargetGroupNotFoundException
     , _RuleNotFoundException
     , _TooManyTargetsException
@@ -35,6 +37,7 @@ module Network.AWS.ELBv2.Types
     , _DuplicateListenerException
     , _LoadBalancerNotFoundException
     , _AvailabilityZoneNotSupportedException
+    , _TooManyUniqueTargetGroupsPerLoadBalancerException
     , _IncompatibleProtocolsException
     , _InvalidSubnetException
     , _TooManyListenersException
@@ -53,6 +56,12 @@ module Network.AWS.ELBv2.Types
     -- * ActionTypeEnum
     , ActionTypeEnum (..)
 
+    -- * AuthenticateCognitoActionConditionalBehaviorEnum
+    , AuthenticateCognitoActionConditionalBehaviorEnum (..)
+
+    -- * AuthenticateOidcActionConditionalBehaviorEnum
+    , AuthenticateOidcActionConditionalBehaviorEnum (..)
+
     -- * IPAddressType
     , IPAddressType (..)
 
@@ -68,6 +77,9 @@ module Network.AWS.ELBv2.Types
     -- * ProtocolEnum
     , ProtocolEnum (..)
 
+    -- * RedirectActionStatusCodeEnum
+    , RedirectActionStatusCodeEnum (..)
+
     -- * TargetHealthReasonEnum
     , TargetHealthReasonEnum (..)
 
@@ -80,8 +92,42 @@ module Network.AWS.ELBv2.Types
     -- * Action
     , Action
     , action
-    , aType
+    , aFixedResponseConfig
     , aTargetGroupARN
+    , aForwardConfig
+    , aRedirectConfig
+    , aAuthenticateCognitoConfig
+    , aOrder
+    , aAuthenticateOidcConfig
+    , aType
+
+    -- * AuthenticateCognitoActionConfig
+    , AuthenticateCognitoActionConfig
+    , authenticateCognitoActionConfig
+    , acacAuthenticationRequestExtraParams
+    , acacScope
+    , acacOnUnauthenticatedRequest
+    , acacSessionCookieName
+    , acacSessionTimeout
+    , acacUserPoolARN
+    , acacUserPoolClientId
+    , acacUserPoolDomain
+
+    -- * AuthenticateOidcActionConfig
+    , AuthenticateOidcActionConfig
+    , authenticateOidcActionConfig
+    , aoacClientSecret
+    , aoacUseExistingClientSecret
+    , aoacAuthenticationRequestExtraParams
+    , aoacScope
+    , aoacOnUnauthenticatedRequest
+    , aoacSessionCookieName
+    , aoacSessionTimeout
+    , aoacIssuer
+    , aoacAuthorizationEndpoint
+    , aoacTokenEndpoint
+    , aoacUserInfoEndpoint
+    , aoacClientId
 
     -- * AvailabilityZone
     , AvailabilityZone
@@ -101,6 +147,35 @@ module Network.AWS.ELBv2.Types
     , cipher
     , cPriority
     , cName
+
+    -- * FixedResponseActionConfig
+    , FixedResponseActionConfig
+    , fixedResponseActionConfig
+    , fracMessageBody
+    , fracContentType
+    , fracStatusCode
+
+    -- * ForwardActionConfig
+    , ForwardActionConfig
+    , forwardActionConfig
+    , facTargetGroups
+    , facTargetGroupStickinessConfig
+
+    -- * HTTPHeaderConditionConfig
+    , HTTPHeaderConditionConfig
+    , hTTPHeaderConditionConfig
+    , httphccValues
+    , httphccHTTPHeaderName
+
+    -- * HTTPRequestMethodConditionConfig
+    , HTTPRequestMethodConditionConfig
+    , hTTPRequestMethodConditionConfig
+    , httprmccValues
+
+    -- * HostHeaderConditionConfig
+    , HostHeaderConditionConfig
+    , hostHeaderConditionConfig
+    , hhccValues
 
     -- * Limit
     , Limit
@@ -140,6 +215,7 @@ module Network.AWS.ELBv2.Types
     , loadBalancerAddress
     , lbaIPAddress
     , lbaAllocationId
+    , lbaPrivateIPv4Address
 
     -- * LoadBalancerAttribute
     , LoadBalancerAttribute
@@ -158,6 +234,32 @@ module Network.AWS.ELBv2.Types
     , matcher
     , mHTTPCode
 
+    -- * PathPatternConditionConfig
+    , PathPatternConditionConfig
+    , pathPatternConditionConfig
+    , ppccValues
+
+    -- * QueryStringConditionConfig
+    , QueryStringConditionConfig
+    , queryStringConditionConfig
+    , qsccValues
+
+    -- * QueryStringKeyValuePair
+    , QueryStringKeyValuePair
+    , queryStringKeyValuePair
+    , qskvpValue
+    , qskvpKey
+
+    -- * RedirectActionConfig
+    , RedirectActionConfig
+    , redirectActionConfig
+    , racPath
+    , racProtocol
+    , racQuery
+    , racHost
+    , racPort
+    , racStatusCode
+
     -- * Rule
     , Rule
     , rule
@@ -171,7 +273,13 @@ module Network.AWS.ELBv2.Types
     , RuleCondition
     , ruleCondition
     , rcField
+    , rcHTTPHeaderConfig
+    , rcHostHeaderConfig
     , rcValues
+    , rcSourceIPConfig
+    , rcHTTPRequestMethodConfig
+    , rcPathPatternConfig
+    , rcQueryStringConfig
 
     -- * RulePriorityPair
     , RulePriorityPair
@@ -186,10 +294,16 @@ module Network.AWS.ELBv2.Types
     , spName
     , spSSLProtocols
 
+    -- * SourceIPConditionConfig
+    , SourceIPConditionConfig
+    , sourceIPConditionConfig
+    , siccValues
+
     -- * SubnetMapping
     , SubnetMapping
     , subnetMapping
     , smAllocationId
+    , smPrivateIPv4Address
     , smSubnetId
 
     -- * Tag
@@ -216,6 +330,7 @@ module Network.AWS.ELBv2.Types
     , targetGroup
     , tgMatcher
     , tgHealthCheckPath
+    , tgHealthCheckEnabled
     , tgUnhealthyThresholdCount
     , tgVPCId
     , tgTargetGroupARN
@@ -236,6 +351,18 @@ module Network.AWS.ELBv2.Types
     , tgaValue
     , tgaKey
 
+    -- * TargetGroupStickinessConfig
+    , TargetGroupStickinessConfig
+    , targetGroupStickinessConfig
+    , tgscEnabled
+    , tgscDurationSeconds
+
+    -- * TargetGroupTuple
+    , TargetGroupTuple
+    , targetGroupTuple
+    , tgtWeight
+    , tgtTargetGroupARN
+
     -- * TargetHealth
     , TargetHealth
     , targetHealth
@@ -255,18 +382,28 @@ import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Sign.V4
 import Network.AWS.ELBv2.Types.ActionTypeEnum
+import Network.AWS.ELBv2.Types.AuthenticateCognitoActionConditionalBehaviorEnum
+import Network.AWS.ELBv2.Types.AuthenticateOidcActionConditionalBehaviorEnum
 import Network.AWS.ELBv2.Types.IPAddressType
 import Network.AWS.ELBv2.Types.LoadBalancerSchemeEnum
 import Network.AWS.ELBv2.Types.LoadBalancerStateEnum
 import Network.AWS.ELBv2.Types.LoadBalancerTypeEnum
 import Network.AWS.ELBv2.Types.ProtocolEnum
+import Network.AWS.ELBv2.Types.RedirectActionStatusCodeEnum
 import Network.AWS.ELBv2.Types.TargetHealthReasonEnum
 import Network.AWS.ELBv2.Types.TargetHealthStateEnum
 import Network.AWS.ELBv2.Types.TargetTypeEnum
 import Network.AWS.ELBv2.Types.Action
+import Network.AWS.ELBv2.Types.AuthenticateCognitoActionConfig
+import Network.AWS.ELBv2.Types.AuthenticateOidcActionConfig
 import Network.AWS.ELBv2.Types.AvailabilityZone
 import Network.AWS.ELBv2.Types.Certificate
 import Network.AWS.ELBv2.Types.Cipher
+import Network.AWS.ELBv2.Types.FixedResponseActionConfig
+import Network.AWS.ELBv2.Types.ForwardActionConfig
+import Network.AWS.ELBv2.Types.HTTPHeaderConditionConfig
+import Network.AWS.ELBv2.Types.HTTPRequestMethodConditionConfig
+import Network.AWS.ELBv2.Types.HostHeaderConditionConfig
 import Network.AWS.ELBv2.Types.Limit
 import Network.AWS.ELBv2.Types.Listener
 import Network.AWS.ELBv2.Types.LoadBalancer
@@ -274,16 +411,23 @@ import Network.AWS.ELBv2.Types.LoadBalancerAddress
 import Network.AWS.ELBv2.Types.LoadBalancerAttribute
 import Network.AWS.ELBv2.Types.LoadBalancerState
 import Network.AWS.ELBv2.Types.Matcher
+import Network.AWS.ELBv2.Types.PathPatternConditionConfig
+import Network.AWS.ELBv2.Types.QueryStringConditionConfig
+import Network.AWS.ELBv2.Types.QueryStringKeyValuePair
+import Network.AWS.ELBv2.Types.RedirectActionConfig
 import Network.AWS.ELBv2.Types.Rule
 import Network.AWS.ELBv2.Types.RuleCondition
 import Network.AWS.ELBv2.Types.RulePriorityPair
 import Network.AWS.ELBv2.Types.SSLPolicy
+import Network.AWS.ELBv2.Types.SourceIPConditionConfig
 import Network.AWS.ELBv2.Types.SubnetMapping
 import Network.AWS.ELBv2.Types.Tag
 import Network.AWS.ELBv2.Types.TagDescription
 import Network.AWS.ELBv2.Types.TargetDescription
 import Network.AWS.ELBv2.Types.TargetGroup
 import Network.AWS.ELBv2.Types.TargetGroupAttribute
+import Network.AWS.ELBv2.Types.TargetGroupStickinessConfig
+import Network.AWS.ELBv2.Types.TargetGroupTuple
 import Network.AWS.ELBv2.Types.TargetHealth
 import Network.AWS.ELBv2.Types.TargetHealthDescription
 
@@ -309,6 +453,11 @@ eLBv2
             = Just "throttling_exception"
           | has (hasCode "Throttling" . hasStatus 400) e =
             Just "throttling"
+          | has
+              (hasCode "ProvisionedThroughputExceededException" .
+                 hasStatus 400)
+              e
+            = Just "throughput_exceeded"
           | has (hasStatus 504) e = Just "gateway_timeout"
           | has
               (hasCode "RequestThrottledException" . hasStatus 400)
@@ -345,6 +494,14 @@ _TooManyRegistrationsForTargetIdException
       "TooManyRegistrationsForTargetId"
       . hasStatus 400
 
+-- | You've reached the limit on the number of actions per rule.
+--
+--
+_TooManyActionsException :: AsError a => Getting (First ServiceError) a ServiceError
+_TooManyActionsException
+  = _MatchServiceError eLBv2 "TooManyActions" .
+      hasStatus 400
+
 -- | You've reached the limit on the number of rules per load balancer.
 --
 --
@@ -369,6 +526,15 @@ _OperationNotPermittedException :: AsError a => Getting (First ServiceError) a S
 _OperationNotPermittedException
   = _MatchServiceError eLBv2 "OperationNotPermitted" .
       hasStatus 400
+
+-- | The requested action is not valid.
+--
+--
+_InvalidLoadBalancerActionException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidLoadBalancerActionException
+  = _MatchServiceError eLBv2
+      "InvalidLoadBalancerAction"
+      . hasStatus 400
 
 -- | The specified target group does not exist.
 --
@@ -473,6 +639,15 @@ _AvailabilityZoneNotSupportedException :: AsError a => Getting (First ServiceErr
 _AvailabilityZoneNotSupportedException
   = _MatchServiceError eLBv2
       "AvailabilityZoneNotSupported"
+      . hasStatus 400
+
+-- | You've reached the limit on the number of unique target groups per load balancer across all listeners. If a target group is used by multiple actions for a load balancer, it is counted as only one use.
+--
+--
+_TooManyUniqueTargetGroupsPerLoadBalancerException :: AsError a => Getting (First ServiceError) a ServiceError
+_TooManyUniqueTargetGroupsPerLoadBalancerException
+  = _MatchServiceError eLBv2
+      "TooManyUniqueTargetGroupsPerLoadBalancer"
       . hasStatus 400
 
 -- | The specified configuration is not valid with this protocol.

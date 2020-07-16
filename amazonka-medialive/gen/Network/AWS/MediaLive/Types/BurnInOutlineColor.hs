@@ -31,7 +31,7 @@ module Network.AWS.MediaLive.Types.BurnInOutlineColor (
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | Placeholder documentation for BurnInOutlineColor
+-- | Burn In Outline Color
 data BurnInOutlineColor = BurnInOutlineColor' (CI
                                                  Text)
                             deriving (Eq, Ord, Read, Show, Data, Typeable,

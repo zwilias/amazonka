@@ -18,12 +18,12 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Adds a streaming source to your Amazon Kinesis application. For conceptual information, see <http://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-it-works-input.html Configuring Application Input> . 
+-- Adds a streaming source to your Amazon Kinesis application. For conceptual information, see <https://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-it-works-input.html Configuring Application Input> . 
 --
 --
--- You can add a streaming source either when you create an application or you can use this operation to add a streaming source after you create an application. For more information, see 'CreateApplication' .
+-- You can add a streaming source either when you create an application or you can use this operation to add a streaming source after you create an application. For more information, see <https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_CreateApplication.html CreateApplication> .
 --
--- Any configuration update, including adding a streaming source using this operation, results in a new version of the application. You can use the 'DescribeApplication' operation to find the current application version. 
+-- Any configuration update, including adding a streaming source using this operation, results in a new version of the application. You can use the <https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_DescribeApplication.html DescribeApplication> operation to find the current application version. 
 --
 -- This operation requires permissions to perform the @kinesisanalytics:AddApplicationInput@ action.
 --
@@ -69,9 +69,9 @@ data AddApplicationInput = AddApplicationInput'{_aaiApplicationName
 --
 -- * 'aaiApplicationName' - Name of your existing Amazon Kinesis Analytics application to which you want to add the streaming source.
 --
--- * 'aaiCurrentApplicationVersionId' - Current version of your Amazon Kinesis Analytics application. You can use the 'DescribeApplication' operation to find the current application version.
+-- * 'aaiCurrentApplicationVersionId' - Current version of your Amazon Kinesis Analytics application. You can use the <https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_DescribeApplication.html DescribeApplication> operation to find the current application version.
 --
--- * 'aaiInput' - The 'Input' to add.
+-- * 'aaiInput' - The <https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_Input.html Input> to add.
 addApplicationInput
     :: Text -- ^ 'aaiApplicationName'
     -> Natural -- ^ 'aaiCurrentApplicationVersionId'
@@ -89,11 +89,11 @@ addApplicationInput pApplicationName_
 aaiApplicationName :: Lens' AddApplicationInput Text
 aaiApplicationName = lens _aaiApplicationName (\ s a -> s{_aaiApplicationName = a})
 
--- | Current version of your Amazon Kinesis Analytics application. You can use the 'DescribeApplication' operation to find the current application version.
+-- | Current version of your Amazon Kinesis Analytics application. You can use the <https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_DescribeApplication.html DescribeApplication> operation to find the current application version.
 aaiCurrentApplicationVersionId :: Lens' AddApplicationInput Natural
 aaiCurrentApplicationVersionId = lens _aaiCurrentApplicationVersionId (\ s a -> s{_aaiCurrentApplicationVersionId = a}) . _Nat
 
--- | The 'Input' to add.
+-- | The <https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_Input.html Input> to add.
 aaiInput :: Lens' AddApplicationInput Input
 aaiInput = lens _aaiInput (\ s a -> s{_aaiInput = a})
 

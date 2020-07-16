@@ -18,7 +18,9 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Creates or updates an import job.
+-- Creates an import job for an application.
+--
+--
 module Network.AWS.Pinpoint.CreateImportJob
     (
     -- * Creating a Request
@@ -54,7 +56,7 @@ data CreateImportJob = CreateImportJob'{_cijApplicationId
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'cijApplicationId' - Undocumented member.
+-- * 'cijApplicationId' - The unique identifier for the application. This identifier is displayed as the __Project ID__ on the Amazon Pinpoint console.
 --
 -- * 'cijImportJobRequest' - Undocumented member.
 createImportJob
@@ -66,7 +68,7 @@ createImportJob pApplicationId_ pImportJobRequest_
                        pApplicationId_,
                      _cijImportJobRequest = pImportJobRequest_}
 
--- | Undocumented member.
+-- | The unique identifier for the application. This identifier is displayed as the __Project ID__ on the Amazon Pinpoint console.
 cijApplicationId :: Lens' CreateImportJob Text
 cijApplicationId = lens _cijApplicationId (\ s a -> s{_cijApplicationId = a})
 

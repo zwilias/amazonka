@@ -20,11 +20,12 @@ module Network.AWS.RDS.Types.OrderableDBInstanceOption where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.RDS.Types.AvailabilityZone
+import Network.AWS.RDS.Types.AvailableProcessorFeature
 
 -- | Contains a list of available options for a DB instance.
 --
 --
--- This data type is used as a response element in the 'DescribeOrderableDBInstanceOptions' action. 
+-- This data type is used as a response element in the @DescribeOrderableDBInstanceOptions@ action. 
 --
 --
 -- /See:/ 'orderableDBInstanceOption' smart constructor.
@@ -40,12 +41,22 @@ data OrderableDBInstanceOption = OrderableDBInstanceOption'{_odioEngineVersion
                                                             :: !(Maybe Bool),
                                                             _odioMaxStorageSize
                                                             :: !(Maybe Int),
+                                                            _odioSupportedEngineModes
+                                                            :: !(Maybe [Text]),
+                                                            _odioAvailabilityZoneGroup
+                                                            :: !(Maybe Text),
+                                                            _odioAvailableProcessorFeatures
+                                                            ::
+                                                            !(Maybe
+                                                                [AvailableProcessorFeature]),
                                                             _odioEngine ::
                                                             !(Maybe Text),
                                                             _odioMinStorageSize
                                                             :: !(Maybe Int),
                                                             _odioSupportsIOPS ::
                                                             !(Maybe Bool),
+                                                            _odioSupportsKerberosAuthentication
+                                                            :: !(Maybe Bool),
                                                             _odioSupportsPerformanceInsights
                                                             :: !(Maybe Bool),
                                                             _odioDBInstanceClass
@@ -56,6 +67,8 @@ data OrderableDBInstanceOption = OrderableDBInstanceOption'{_odioEngineVersion
                                                             ::
                                                             !(Maybe
                                                                 [AvailabilityZone]),
+                                                            _odioSupportsStorageAutoscaling
+                                                            :: !(Maybe Bool),
                                                             _odioSupportsStorageEncryption
                                                             :: !(Maybe Bool),
                                                             _odioReadReplicaCapable
@@ -89,11 +102,19 @@ data OrderableDBInstanceOption = OrderableDBInstanceOption'{_odioEngineVersion
 --
 -- * 'odioMaxStorageSize' - Maximum storage size for a DB instance.
 --
+-- * 'odioSupportedEngineModes' - A list of the supported DB engine modes.
+--
+-- * 'odioAvailabilityZoneGroup' - The Availability Zone group for a DB instance.
+--
+-- * 'odioAvailableProcessorFeatures' - A list of the available processor features for the DB instance class of a DB instance.
+--
 -- * 'odioEngine' - The engine type of a DB instance.
 --
 -- * 'odioMinStorageSize' - Minimum storage size for a DB instance.
 --
 -- * 'odioSupportsIOPS' - Indicates whether a DB instance supports provisioned IOPS.
+--
+-- * 'odioSupportsKerberosAuthentication' - Whether a DB instance supports Kerberos Authentication.
 --
 -- * 'odioSupportsPerformanceInsights' - True if a DB instance supports Performance Insights, otherwise false.
 --
@@ -103,9 +124,11 @@ data OrderableDBInstanceOption = OrderableDBInstanceOption'{_odioEngineVersion
 --
 -- * 'odioAvailabilityZones' - A list of Availability Zones for a DB instance.
 --
+-- * 'odioSupportsStorageAutoscaling' - Whether Amazon RDS can automatically scale storage for DB instances that use the specified DB instance class.
+--
 -- * 'odioSupportsStorageEncryption' - Indicates whether a DB instance supports encrypted storage.
 --
--- * 'odioReadReplicaCapable' - Indicates whether a DB instance can have a Read Replica.
+-- * 'odioReadReplicaCapable' - Indicates whether a DB instance can have a read replica.
 --
 -- * 'odioMaxIOPSPerGib' - Maximum provisioned IOPS per GiB for a DB instance.
 --
@@ -126,13 +149,18 @@ orderableDBInstanceOption
                                _odioMinIOPSPerDBInstance = Nothing,
                                _odioMultiAZCapable = Nothing,
                                _odioMaxStorageSize = Nothing,
+                               _odioSupportedEngineModes = Nothing,
+                               _odioAvailabilityZoneGroup = Nothing,
+                               _odioAvailableProcessorFeatures = Nothing,
                                _odioEngine = Nothing,
                                _odioMinStorageSize = Nothing,
                                _odioSupportsIOPS = Nothing,
+                               _odioSupportsKerberosAuthentication = Nothing,
                                _odioSupportsPerformanceInsights = Nothing,
                                _odioDBInstanceClass = Nothing,
                                _odioLicenseModel = Nothing,
                                _odioAvailabilityZones = Nothing,
+                               _odioSupportsStorageAutoscaling = Nothing,
                                _odioSupportsStorageEncryption = Nothing,
                                _odioReadReplicaCapable = Nothing,
                                _odioMaxIOPSPerGib = Nothing, _odioVPC = Nothing,
@@ -164,6 +192,18 @@ odioMultiAZCapable = lens _odioMultiAZCapable (\ s a -> s{_odioMultiAZCapable = 
 odioMaxStorageSize :: Lens' OrderableDBInstanceOption (Maybe Int)
 odioMaxStorageSize = lens _odioMaxStorageSize (\ s a -> s{_odioMaxStorageSize = a})
 
+-- | A list of the supported DB engine modes.
+odioSupportedEngineModes :: Lens' OrderableDBInstanceOption [Text]
+odioSupportedEngineModes = lens _odioSupportedEngineModes (\ s a -> s{_odioSupportedEngineModes = a}) . _Default . _Coerce
+
+-- | The Availability Zone group for a DB instance.
+odioAvailabilityZoneGroup :: Lens' OrderableDBInstanceOption (Maybe Text)
+odioAvailabilityZoneGroup = lens _odioAvailabilityZoneGroup (\ s a -> s{_odioAvailabilityZoneGroup = a})
+
+-- | A list of the available processor features for the DB instance class of a DB instance.
+odioAvailableProcessorFeatures :: Lens' OrderableDBInstanceOption [AvailableProcessorFeature]
+odioAvailableProcessorFeatures = lens _odioAvailableProcessorFeatures (\ s a -> s{_odioAvailableProcessorFeatures = a}) . _Default . _Coerce
+
 -- | The engine type of a DB instance.
 odioEngine :: Lens' OrderableDBInstanceOption (Maybe Text)
 odioEngine = lens _odioEngine (\ s a -> s{_odioEngine = a})
@@ -175,6 +215,10 @@ odioMinStorageSize = lens _odioMinStorageSize (\ s a -> s{_odioMinStorageSize = 
 -- | Indicates whether a DB instance supports provisioned IOPS.
 odioSupportsIOPS :: Lens' OrderableDBInstanceOption (Maybe Bool)
 odioSupportsIOPS = lens _odioSupportsIOPS (\ s a -> s{_odioSupportsIOPS = a})
+
+-- | Whether a DB instance supports Kerberos Authentication.
+odioSupportsKerberosAuthentication :: Lens' OrderableDBInstanceOption (Maybe Bool)
+odioSupportsKerberosAuthentication = lens _odioSupportsKerberosAuthentication (\ s a -> s{_odioSupportsKerberosAuthentication = a})
 
 -- | True if a DB instance supports Performance Insights, otherwise false.
 odioSupportsPerformanceInsights :: Lens' OrderableDBInstanceOption (Maybe Bool)
@@ -192,11 +236,15 @@ odioLicenseModel = lens _odioLicenseModel (\ s a -> s{_odioLicenseModel = a})
 odioAvailabilityZones :: Lens' OrderableDBInstanceOption [AvailabilityZone]
 odioAvailabilityZones = lens _odioAvailabilityZones (\ s a -> s{_odioAvailabilityZones = a}) . _Default . _Coerce
 
+-- | Whether Amazon RDS can automatically scale storage for DB instances that use the specified DB instance class.
+odioSupportsStorageAutoscaling :: Lens' OrderableDBInstanceOption (Maybe Bool)
+odioSupportsStorageAutoscaling = lens _odioSupportsStorageAutoscaling (\ s a -> s{_odioSupportsStorageAutoscaling = a})
+
 -- | Indicates whether a DB instance supports encrypted storage.
 odioSupportsStorageEncryption :: Lens' OrderableDBInstanceOption (Maybe Bool)
 odioSupportsStorageEncryption = lens _odioSupportsStorageEncryption (\ s a -> s{_odioSupportsStorageEncryption = a})
 
--- | Indicates whether a DB instance can have a Read Replica.
+-- | Indicates whether a DB instance can have a read replica.
 odioReadReplicaCapable :: Lens' OrderableDBInstanceOption (Maybe Bool)
 odioReadReplicaCapable = lens _odioReadReplicaCapable (\ s a -> s{_odioReadReplicaCapable = a})
 
@@ -228,15 +276,24 @@ instance FromXML OrderableDBInstanceOption where
                 <*> (x .@? "MinIopsPerDbInstance")
                 <*> (x .@? "MultiAZCapable")
                 <*> (x .@? "MaxStorageSize")
+                <*>
+                (x .@? "SupportedEngineModes" .!@ mempty >>=
+                   may (parseXMLList "member"))
+                <*> (x .@? "AvailabilityZoneGroup")
+                <*>
+                (x .@? "AvailableProcessorFeatures" .!@ mempty >>=
+                   may (parseXMLList "AvailableProcessorFeature"))
                 <*> (x .@? "Engine")
                 <*> (x .@? "MinStorageSize")
                 <*> (x .@? "SupportsIops")
+                <*> (x .@? "SupportsKerberosAuthentication")
                 <*> (x .@? "SupportsPerformanceInsights")
                 <*> (x .@? "DBInstanceClass")
                 <*> (x .@? "LicenseModel")
                 <*>
                 (x .@? "AvailabilityZones" .!@ mempty >>=
                    may (parseXMLList "AvailabilityZone"))
+                <*> (x .@? "SupportsStorageAutoscaling")
                 <*> (x .@? "SupportsStorageEncryption")
                 <*> (x .@? "ReadReplicaCapable")
                 <*> (x .@? "MaxIopsPerGib")

@@ -30,9 +30,11 @@ module Network.AWS.SageMaker.ListNotebookInstances
     , ListNotebookInstances
     -- * Request Lenses
     , lniNameContains
+    , lniDefaultCodeRepositoryContains
     , lniLastModifiedTimeBefore
     , lniNotebookInstanceLifecycleConfigNameContains
     , lniCreationTimeAfter
+    , lniAdditionalCodeRepositoryEquals
     , lniNextToken
     , lniSortOrder
     , lniLastModifiedTimeAfter
@@ -61,12 +63,16 @@ import Network.AWS.SageMaker.Types.Product
 -- | /See:/ 'listNotebookInstances' smart constructor.
 data ListNotebookInstances = ListNotebookInstances'{_lniNameContains
                                                     :: !(Maybe Text),
+                                                    _lniDefaultCodeRepositoryContains
+                                                    :: !(Maybe Text),
                                                     _lniLastModifiedTimeBefore
                                                     :: !(Maybe POSIX),
                                                     _lniNotebookInstanceLifecycleConfigNameContains
                                                     :: !(Maybe Text),
                                                     _lniCreationTimeAfter ::
                                                     !(Maybe POSIX),
+                                                    _lniAdditionalCodeRepositoryEquals
+                                                    :: !(Maybe Text),
                                                     _lniNextToken ::
                                                     !(Maybe Text),
                                                     _lniSortOrder ::
@@ -93,11 +99,15 @@ data ListNotebookInstances = ListNotebookInstances'{_lniNameContains
 --
 -- * 'lniNameContains' - A string in the notebook instances' name. This filter returns only notebook instances whose name contains the specified string.
 --
+-- * 'lniDefaultCodeRepositoryContains' - A string in the name or URL of a Git repository associated with this notebook instance. This filter returns only notebook instances associated with a git repository with a name that contains the specified string.
+--
 -- * 'lniLastModifiedTimeBefore' - A filter that returns only notebook instances that were modified before the specified time (timestamp).
 --
 -- * 'lniNotebookInstanceLifecycleConfigNameContains' - A string in the name of a notebook instances lifecycle configuration associated with this notebook instance. This filter returns only notebook instances associated with a lifecycle configuration with a name that contains the specified string.
 --
 -- * 'lniCreationTimeAfter' - A filter that returns only notebook instances that were created after the specified time (timestamp).
+--
+-- * 'lniAdditionalCodeRepositoryEquals' - A filter that returns only notebook instances with associated with the specified git repository.
 --
 -- * 'lniNextToken' - If the previous call to the @ListNotebookInstances@ is truncated, the response includes a @NextToken@ . You can use this token in your subsequent @ListNotebookInstances@ request to fetch the next set of notebook instances. 
 --
@@ -116,10 +126,12 @@ listNotebookInstances
     :: ListNotebookInstances
 listNotebookInstances
   = ListNotebookInstances'{_lniNameContains = Nothing,
+                           _lniDefaultCodeRepositoryContains = Nothing,
                            _lniLastModifiedTimeBefore = Nothing,
                            _lniNotebookInstanceLifecycleConfigNameContains =
                              Nothing,
                            _lniCreationTimeAfter = Nothing,
+                           _lniAdditionalCodeRepositoryEquals = Nothing,
                            _lniNextToken = Nothing, _lniSortOrder = Nothing,
                            _lniLastModifiedTimeAfter = Nothing,
                            _lniCreationTimeBefore = Nothing,
@@ -129,6 +141,10 @@ listNotebookInstances
 -- | A string in the notebook instances' name. This filter returns only notebook instances whose name contains the specified string.
 lniNameContains :: Lens' ListNotebookInstances (Maybe Text)
 lniNameContains = lens _lniNameContains (\ s a -> s{_lniNameContains = a})
+
+-- | A string in the name or URL of a Git repository associated with this notebook instance. This filter returns only notebook instances associated with a git repository with a name that contains the specified string.
+lniDefaultCodeRepositoryContains :: Lens' ListNotebookInstances (Maybe Text)
+lniDefaultCodeRepositoryContains = lens _lniDefaultCodeRepositoryContains (\ s a -> s{_lniDefaultCodeRepositoryContains = a})
 
 -- | A filter that returns only notebook instances that were modified before the specified time (timestamp).
 lniLastModifiedTimeBefore :: Lens' ListNotebookInstances (Maybe UTCTime)
@@ -141,6 +157,10 @@ lniNotebookInstanceLifecycleConfigNameContains = lens _lniNotebookInstanceLifecy
 -- | A filter that returns only notebook instances that were created after the specified time (timestamp).
 lniCreationTimeAfter :: Lens' ListNotebookInstances (Maybe UTCTime)
 lniCreationTimeAfter = lens _lniCreationTimeAfter (\ s a -> s{_lniCreationTimeAfter = a}) . mapping _Time
+
+-- | A filter that returns only notebook instances with associated with the specified git repository.
+lniAdditionalCodeRepositoryEquals :: Lens' ListNotebookInstances (Maybe Text)
+lniAdditionalCodeRepositoryEquals = lens _lniAdditionalCodeRepositoryEquals (\ s a -> s{_lniAdditionalCodeRepositoryEquals = a})
 
 -- | If the previous call to the @ListNotebookInstances@ is truncated, the response includes a @NextToken@ . You can use this token in your subsequent @ListNotebookInstances@ request to fetch the next set of notebook instances. 
 lniNextToken :: Lens' ListNotebookInstances (Maybe Text)
@@ -207,11 +227,15 @@ instance ToJSON ListNotebookInstances where
           = object
               (catMaybes
                  [("NameContains" .=) <$> _lniNameContains,
+                  ("DefaultCodeRepositoryContains" .=) <$>
+                    _lniDefaultCodeRepositoryContains,
                   ("LastModifiedTimeBefore" .=) <$>
                     _lniLastModifiedTimeBefore,
                   ("NotebookInstanceLifecycleConfigNameContains" .=)
                     <$> _lniNotebookInstanceLifecycleConfigNameContains,
                   ("CreationTimeAfter" .=) <$> _lniCreationTimeAfter,
+                  ("AdditionalCodeRepositoryEquals" .=) <$>
+                    _lniAdditionalCodeRepositoryEquals,
                   ("NextToken" .=) <$> _lniNextToken,
                   ("SortOrder" .=) <$> _lniSortOrder,
                   ("LastModifiedTimeAfter" .=) <$>

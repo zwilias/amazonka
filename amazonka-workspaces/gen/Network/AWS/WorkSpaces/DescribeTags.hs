@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Describes the specified tags for the specified WorkSpace.
+-- Describes the specified tags for the specified WorkSpaces resource.
 --
 --
 module Network.AWS.WorkSpaces.DescribeTags
@@ -53,14 +53,14 @@ newtype DescribeTags = DescribeTags'{_dtResourceId ::
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dtResourceId' - The ID of the WorkSpace. To find this ID, use 'DescribeWorkspaces' .
+-- * 'dtResourceId' - The identifier of the WorkSpaces resource. The supported resource types are WorkSpaces, registered directories, images, custom bundles, and IP access control groups.
 describeTags
     :: Text -- ^ 'dtResourceId'
     -> DescribeTags
 describeTags pResourceId_
   = DescribeTags'{_dtResourceId = pResourceId_}
 
--- | The ID of the WorkSpace. To find this ID, use 'DescribeWorkspaces' .
+-- | The identifier of the WorkSpaces resource. The supported resource types are WorkSpaces, registered directories, images, custom bundles, and IP access control groups.
 dtResourceId :: Lens' DescribeTags Text
 dtResourceId = lens _dtResourceId (\ s a -> s{_dtResourceId = a})
 

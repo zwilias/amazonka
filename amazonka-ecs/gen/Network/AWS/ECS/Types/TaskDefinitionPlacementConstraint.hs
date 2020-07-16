@@ -21,12 +21,8 @@ import Network.AWS.ECS.Types.TaskDefinitionPlacementConstraintType
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | An object representing a constraint on task placement in the task definition.
+-- | An object representing a constraint on task placement in the task definition. For more information, see <https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-placement-constraints.html Task Placement Constraints> in the /Amazon Elastic Container Service Developer Guide/ .
 --
---
--- If you are using the Fargate launch type, task placement constraints are not supported.
---
--- For more information, see <http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-placement-constraints.html Task Placement Constraints> in the /Amazon Elastic Container Service Developer Guide/ .
 --
 --
 -- /See:/ 'taskDefinitionPlacementConstraint' smart constructor.
@@ -45,9 +41,9 @@ data TaskDefinitionPlacementConstraint = TaskDefinitionPlacementConstraint'{_tdp
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'tdpcExpression' - A cluster query language expression to apply to the constraint. For more information, see <http://docs.aws.amazon.com/AmazonECS/latest/developerguide/cluster-query-language.html Cluster Query Language> in the /Amazon Elastic Container Service Developer Guide/ .
+-- * 'tdpcExpression' - A cluster query language expression to apply to the constraint. For more information, see <https://docs.aws.amazon.com/AmazonECS/latest/developerguide/cluster-query-language.html Cluster Query Language> in the /Amazon Elastic Container Service Developer Guide/ .
 --
--- * 'tdpcType' - The type of constraint. The @DistinctInstance@ constraint ensures that each task in a particular group is running on a different container instance. The @MemberOf@ constraint restricts selection to be from a group of valid candidates.
+-- * 'tdpcType' - The type of constraint. The @MemberOf@ constraint restricts selection to be from a group of valid candidates.
 taskDefinitionPlacementConstraint
     :: TaskDefinitionPlacementConstraint
 taskDefinitionPlacementConstraint
@@ -55,11 +51,11 @@ taskDefinitionPlacementConstraint
                                          = Nothing,
                                        _tdpcType = Nothing}
 
--- | A cluster query language expression to apply to the constraint. For more information, see <http://docs.aws.amazon.com/AmazonECS/latest/developerguide/cluster-query-language.html Cluster Query Language> in the /Amazon Elastic Container Service Developer Guide/ .
+-- | A cluster query language expression to apply to the constraint. For more information, see <https://docs.aws.amazon.com/AmazonECS/latest/developerguide/cluster-query-language.html Cluster Query Language> in the /Amazon Elastic Container Service Developer Guide/ .
 tdpcExpression :: Lens' TaskDefinitionPlacementConstraint (Maybe Text)
 tdpcExpression = lens _tdpcExpression (\ s a -> s{_tdpcExpression = a})
 
--- | The type of constraint. The @DistinctInstance@ constraint ensures that each task in a particular group is running on a different container instance. The @MemberOf@ constraint restricts selection to be from a group of valid candidates.
+-- | The type of constraint. The @MemberOf@ constraint restricts selection to be from a group of valid candidates.
 tdpcType :: Lens' TaskDefinitionPlacementConstraint (Maybe TaskDefinitionPlacementConstraintType)
 tdpcType = lens _tdpcType (\ s a -> s{_tdpcType = a})
 

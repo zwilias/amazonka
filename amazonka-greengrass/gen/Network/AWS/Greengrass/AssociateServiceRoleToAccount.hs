@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Associates a role with your account. AWS Greengrass will use the role to access your Lambda functions and AWS IoT resources. This is necessary for deployments to succeed. The role must have at least minimum permissions in the policy ''AWSGreengrassResourceAccessRolePolicy''.
+-- Associates a role with your account. AWS IoT Greengrass will use the role to access your Lambda functions and AWS IoT resources. This is necessary for deployments to succeed. The role must have at least minimum permissions in the policy ''AWSGreengrassResourceAccessRolePolicy''.
 module Network.AWS.Greengrass.AssociateServiceRoleToAccount
     (
     -- * Creating a Request
@@ -44,9 +44,7 @@ import Network.AWS.Response
 
 -- | /See:/ 'associateServiceRoleToAccount' smart constructor.
 newtype AssociateServiceRoleToAccount = AssociateServiceRoleToAccount'{_asrtaRoleARN
-                                                                       ::
-                                                                       Maybe
-                                                                         Text}
+                                                                       :: Text}
                                           deriving (Eq, Read, Show, Data,
                                                     Typeable, Generic)
 
@@ -56,13 +54,14 @@ newtype AssociateServiceRoleToAccount = AssociateServiceRoleToAccount'{_asrtaRol
 --
 -- * 'asrtaRoleARN' - The ARN of the service role you wish to associate with your account.
 associateServiceRoleToAccount
-    :: AssociateServiceRoleToAccount
-associateServiceRoleToAccount
+    :: Text -- ^ 'asrtaRoleARN'
+    -> AssociateServiceRoleToAccount
+associateServiceRoleToAccount pRoleARN_
   = AssociateServiceRoleToAccount'{_asrtaRoleARN =
-                                     Nothing}
+                                     pRoleARN_}
 
 -- | The ARN of the service role you wish to associate with your account.
-asrtaRoleARN :: Lens' AssociateServiceRoleToAccount (Maybe Text)
+asrtaRoleARN :: Lens' AssociateServiceRoleToAccount Text
 asrtaRoleARN = lens _asrtaRoleARN (\ s a -> s{_asrtaRoleARN = a})
 
 instance AWSRequest AssociateServiceRoleToAccount
@@ -91,7 +90,7 @@ instance ToHeaders AssociateServiceRoleToAccount
 instance ToJSON AssociateServiceRoleToAccount where
         toJSON AssociateServiceRoleToAccount'{..}
           = object
-              (catMaybes [("RoleArn" .=) <$> _asrtaRoleARN])
+              (catMaybes [Just ("RoleArn" .= _asrtaRoleARN)])
 
 instance ToPath AssociateServiceRoleToAccount where
         toPath = const "/greengrass/servicerole"

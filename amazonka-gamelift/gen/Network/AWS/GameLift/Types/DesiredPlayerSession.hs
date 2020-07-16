@@ -36,7 +36,7 @@ data DesiredPlayerSession = DesiredPlayerSession'{_dpsPlayerData
 --
 -- * 'dpsPlayerData' - Developer-defined information related to a player. Amazon GameLift does not use this data, so it can be formatted as needed for use in the game.
 --
--- * 'dpsPlayerId' - Unique identifier for a player to associate with the player session.
+-- * 'dpsPlayerId' - A unique identifier for a player to associate with the player session.
 desiredPlayerSession
     :: DesiredPlayerSession
 desiredPlayerSession
@@ -47,7 +47,7 @@ desiredPlayerSession
 dpsPlayerData :: Lens' DesiredPlayerSession (Maybe Text)
 dpsPlayerData = lens _dpsPlayerData (\ s a -> s{_dpsPlayerData = a})
 
--- | Unique identifier for a player to associate with the player session.
+-- | A unique identifier for a player to associate with the player session.
 dpsPlayerId :: Lens' DesiredPlayerSession (Maybe Text)
 dpsPlayerId = lens _dpsPlayerId (\ s a -> s{_dpsPlayerId = a})
 

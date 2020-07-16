@@ -27,7 +27,7 @@ module Network.AWS.MediaLive.Types.M2tsSegmentationStyle (
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | Placeholder documentation for M2tsSegmentationStyle
+-- | M2ts Segmentation Style
 data M2tsSegmentationStyle = M2tsSegmentationStyle' (CI
                                                        Text)
                                deriving (Eq, Ord, Read, Show, Data, Typeable,

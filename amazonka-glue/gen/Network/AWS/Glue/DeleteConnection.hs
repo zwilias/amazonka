@@ -54,7 +54,7 @@ data DeleteConnection = DeleteConnection'{_dcCatalogId
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dcCatalogId' - The ID of the Data Catalog in which the connection resides. If none is supplied, the AWS account ID is used by default.
+-- * 'dcCatalogId' - The ID of the Data Catalog in which the connection resides. If none is provided, the AWS account ID is used by default.
 --
 -- * 'dcConnectionName' - The name of the connection to delete.
 deleteConnection
@@ -64,7 +64,7 @@ deleteConnection pConnectionName_
   = DeleteConnection'{_dcCatalogId = Nothing,
                       _dcConnectionName = pConnectionName_}
 
--- | The ID of the Data Catalog in which the connection resides. If none is supplied, the AWS account ID is used by default.
+-- | The ID of the Data Catalog in which the connection resides. If none is provided, the AWS account ID is used by default.
 dcCatalogId :: Lens' DeleteConnection (Maybe Text)
 dcCatalogId = lens _dcCatalogId (\ s a -> s{_dcCatalogId = a})
 

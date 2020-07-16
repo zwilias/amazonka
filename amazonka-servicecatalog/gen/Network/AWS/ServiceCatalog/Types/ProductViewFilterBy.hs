@@ -19,10 +19,10 @@
 module Network.AWS.ServiceCatalog.Types.ProductViewFilterBy (
   ProductViewFilterBy (
     ..
-    , FullTextSearch
-    , Owner
-    , ProductType
-    , SourceProductId
+    , PVFBFullTextSearch
+    , PVFBOwner
+    , PVFBProductType
+    , PVFBSourceProductId
     )
   ) where
 
@@ -34,23 +34,23 @@ data ProductViewFilterBy = ProductViewFilterBy' (CI
                              deriving (Eq, Ord, Read, Show, Data, Typeable,
                                        Generic)
 
-pattern FullTextSearch :: ProductViewFilterBy
-pattern FullTextSearch = ProductViewFilterBy' "FullTextSearch"
+pattern PVFBFullTextSearch :: ProductViewFilterBy
+pattern PVFBFullTextSearch = ProductViewFilterBy' "FullTextSearch"
 
-pattern Owner :: ProductViewFilterBy
-pattern Owner = ProductViewFilterBy' "Owner"
+pattern PVFBOwner :: ProductViewFilterBy
+pattern PVFBOwner = ProductViewFilterBy' "Owner"
 
-pattern ProductType :: ProductViewFilterBy
-pattern ProductType = ProductViewFilterBy' "ProductType"
+pattern PVFBProductType :: ProductViewFilterBy
+pattern PVFBProductType = ProductViewFilterBy' "ProductType"
 
-pattern SourceProductId :: ProductViewFilterBy
-pattern SourceProductId = ProductViewFilterBy' "SourceProductId"
+pattern PVFBSourceProductId :: ProductViewFilterBy
+pattern PVFBSourceProductId = ProductViewFilterBy' "SourceProductId"
 
 {-# COMPLETE
-  FullTextSearch,
-  Owner,
-  ProductType,
-  SourceProductId,
+  PVFBFullTextSearch,
+  PVFBOwner,
+  PVFBProductType,
+  PVFBSourceProductId,
   ProductViewFilterBy' #-}
 
 instance FromText ProductViewFilterBy where
@@ -65,24 +65,24 @@ instance ToText ProductViewFilterBy where
 --   fromEnum is a partial function, and will error on values unknown at generation time.
 instance Enum ProductViewFilterBy where
     toEnum i = case i of
-        0 -> FullTextSearch
-        1 -> Owner
-        2 -> ProductType
-        3 -> SourceProductId
+        0 -> PVFBFullTextSearch
+        1 -> PVFBOwner
+        2 -> PVFBProductType
+        3 -> PVFBSourceProductId
         _ -> (error . showText) $ "Unknown index for ProductViewFilterBy: " <> toText i
     fromEnum x = case x of
-        FullTextSearch -> 0
-        Owner -> 1
-        ProductType -> 2
-        SourceProductId -> 3
+        PVFBFullTextSearch -> 0
+        PVFBOwner -> 1
+        PVFBProductType -> 2
+        PVFBSourceProductId -> 3
         ProductViewFilterBy' name -> (error . showText) $ "Unknown ProductViewFilterBy: " <> original name
 
 -- | Represents the bounds of /known/ $ProductViewFilterBy.
 --   AWS may have added more since the source was generated.
 --   This instance exists only for backward compatibility.
 instance Bounded ProductViewFilterBy where
-    minBound = FullTextSearch
-    maxBound = SourceProductId
+    minBound = PVFBFullTextSearch
+    maxBound = PVFBSourceProductId
 
 instance Hashable     ProductViewFilterBy
 instance NFData       ProductViewFilterBy

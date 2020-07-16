@@ -31,7 +31,7 @@ module Network.AWS.MediaLive.Types.Eac3DrcLine (
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | Placeholder documentation for Eac3DrcLine
+-- | Eac3 Drc Line
 data Eac3DrcLine = Eac3DrcLine' (CI Text)
                      deriving (Eq, Ord, Read, Show, Data, Typeable,
                                Generic)

@@ -20,35 +20,38 @@ module Network.AWS.Pinpoint.Types.WriteEventStream where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | Request to save an EventStream.
+-- | Specifies the Amazon Resource Name (ARN) of an event stream to publish events to and the AWS Identity and Access Management (IAM) role to use when publishing those events.
+--
+--
 --
 -- /See:/ 'writeEventStream' smart constructor.
-data WriteEventStream = WriteEventStream'{_wesDestinationStreamARN
-                                          :: !(Maybe Text),
-                                          _wesRoleARN :: !(Maybe Text)}
+data WriteEventStream = WriteEventStream'{_wesRoleARN
+                                          :: !Text,
+                                          _wesDestinationStreamARN :: !Text}
                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'WriteEventStream' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'wesDestinationStreamARN' - The Amazon Resource Name (ARN) of the Amazon Kinesis stream or Firehose delivery stream to which you want to publish events.  Firehose ARN: arn:aws:firehose:REGION:ACCOUNT_ID:deliverystream/STREAM_NAME  Kinesis ARN: arn:aws:kinesis:REGION:ACCOUNT_ID:stream/STREAM_NAME
+-- * 'wesRoleARN' - The AWS Identity and Access Management (IAM) role that authorizes Amazon Pinpoint to publish event data to the stream in your AWS account.
 --
--- * 'wesRoleARN' - The IAM role that authorizes Amazon Pinpoint to publish events to the stream in your account.
+-- * 'wesDestinationStreamARN' - The Amazon Resource Name (ARN) of the Amazon Kinesis data stream or Amazon Kinesis Data Firehose delivery stream that you want to publish event data to. For a Kinesis data stream, the ARN format is: arn:aws:kinesis:<replaceable>region:<replaceable>account-id:stream/<replaceable>stream_name For a Kinesis Data Firehose delivery stream, the ARN format is: arn:aws:firehose:<replaceable>region:<replaceable>account-id:deliverystream/<replaceable>stream_name
 writeEventStream
-    :: WriteEventStream
-writeEventStream
-  = WriteEventStream'{_wesDestinationStreamARN =
-                        Nothing,
-                      _wesRoleARN = Nothing}
+    :: Text -- ^ 'wesRoleARN'
+    -> Text -- ^ 'wesDestinationStreamARN'
+    -> WriteEventStream
+writeEventStream pRoleARN_ pDestinationStreamARN_
+  = WriteEventStream'{_wesRoleARN = pRoleARN_,
+                      _wesDestinationStreamARN = pDestinationStreamARN_}
 
--- | The Amazon Resource Name (ARN) of the Amazon Kinesis stream or Firehose delivery stream to which you want to publish events.  Firehose ARN: arn:aws:firehose:REGION:ACCOUNT_ID:deliverystream/STREAM_NAME  Kinesis ARN: arn:aws:kinesis:REGION:ACCOUNT_ID:stream/STREAM_NAME
-wesDestinationStreamARN :: Lens' WriteEventStream (Maybe Text)
-wesDestinationStreamARN = lens _wesDestinationStreamARN (\ s a -> s{_wesDestinationStreamARN = a})
-
--- | The IAM role that authorizes Amazon Pinpoint to publish events to the stream in your account.
-wesRoleARN :: Lens' WriteEventStream (Maybe Text)
+-- | The AWS Identity and Access Management (IAM) role that authorizes Amazon Pinpoint to publish event data to the stream in your AWS account.
+wesRoleARN :: Lens' WriteEventStream Text
 wesRoleARN = lens _wesRoleARN (\ s a -> s{_wesRoleARN = a})
+
+-- | The Amazon Resource Name (ARN) of the Amazon Kinesis data stream or Amazon Kinesis Data Firehose delivery stream that you want to publish event data to. For a Kinesis data stream, the ARN format is: arn:aws:kinesis:<replaceable>region:<replaceable>account-id:stream/<replaceable>stream_name For a Kinesis Data Firehose delivery stream, the ARN format is: arn:aws:firehose:<replaceable>region:<replaceable>account-id:deliverystream/<replaceable>stream_name
+wesDestinationStreamARN :: Lens' WriteEventStream Text
+wesDestinationStreamARN = lens _wesDestinationStreamARN (\ s a -> s{_wesDestinationStreamARN = a})
 
 instance Hashable WriteEventStream where
 
@@ -58,6 +61,7 @@ instance ToJSON WriteEventStream where
         toJSON WriteEventStream'{..}
           = object
               (catMaybes
-                 [("DestinationStreamArn" .=) <$>
-                    _wesDestinationStreamARN,
-                  ("RoleArn" .=) <$> _wesRoleARN])
+                 [Just ("RoleArn" .= _wesRoleARN),
+                  Just
+                    ("DestinationStreamArn" .=
+                       _wesDestinationStreamARN)])

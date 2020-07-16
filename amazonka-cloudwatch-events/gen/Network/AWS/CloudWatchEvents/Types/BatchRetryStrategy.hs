@@ -20,7 +20,7 @@ module Network.AWS.CloudWatchEvents.Types.BatchRetryStrategy where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | The retry strategy to use for failed jobs if the target is an AWS Batch job. If you specify a retry strategy here, it overrides the retry strategy defined in the job definition.
+-- | The retry strategy to use for failed jobs, if the target is an AWS Batch job. If you specify a retry strategy here, it overrides the retry strategy defined in the job definition.
 --
 --
 --

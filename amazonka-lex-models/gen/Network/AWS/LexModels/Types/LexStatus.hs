@@ -23,6 +23,7 @@ module Network.AWS.LexModels.Types.LexStatus (
     , LSFailed
     , LSNotBuilt
     , LSReady
+    , LSReadyBasicTesting
     )
   ) where
 
@@ -45,11 +46,15 @@ pattern LSNotBuilt = LexStatus' "NOT_BUILT"
 pattern LSReady :: LexStatus
 pattern LSReady = LexStatus' "READY"
 
+pattern LSReadyBasicTesting :: LexStatus
+pattern LSReadyBasicTesting = LexStatus' "READY_BASIC_TESTING"
+
 {-# COMPLETE
   LSBuilding,
   LSFailed,
   LSNotBuilt,
   LSReady,
+  LSReadyBasicTesting,
   LexStatus' #-}
 
 instance FromText LexStatus where
@@ -68,12 +73,14 @@ instance Enum LexStatus where
         1 -> LSFailed
         2 -> LSNotBuilt
         3 -> LSReady
+        4 -> LSReadyBasicTesting
         _ -> (error . showText) $ "Unknown index for LexStatus: " <> toText i
     fromEnum x = case x of
         LSBuilding -> 0
         LSFailed -> 1
         LSNotBuilt -> 2
         LSReady -> 3
+        LSReadyBasicTesting -> 4
         LexStatus' name -> (error . showText) $ "Unknown LexStatus: " <> original name
 
 -- | Represents the bounds of /known/ $LexStatus.
@@ -81,7 +88,7 @@ instance Enum LexStatus where
 --   This instance exists only for backward compatibility.
 instance Bounded LexStatus where
     minBound = LSBuilding
-    maxBound = LSReady
+    maxBound = LSReadyBasicTesting
 
 instance Hashable     LexStatus
 instance NFData       LexStatus

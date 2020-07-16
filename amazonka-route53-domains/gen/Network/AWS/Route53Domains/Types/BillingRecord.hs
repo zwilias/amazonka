@@ -42,7 +42,7 @@ data BillingRecord = BillingRecord'{_brOperation ::
 --
 -- * 'brInvoiceId' - The ID of the invoice that is associated with the billing record.
 --
--- * 'brDomainName' - The name of the domain that the billing record applies to. If the domain name contains characters other than a-z, 0-9, and - (hyphen), such as an internationalized domain name, then this value is in Punycode. For more information, see <http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DomainNameFormat.html DNS Domain Name Format> in the /Amazon Route 53 Developer Guidezzz/ .
+-- * 'brDomainName' - The name of the domain that the billing record applies to. If the domain name contains characters other than a-z, 0-9, and - (hyphen), such as an internationalized domain name, then this value is in Punycode. For more information, see <https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DomainNameFormat.html DNS Domain Name Format> in the /Amazon Route 53 Developer Guide/ .
 --
 -- * 'brBillDate' - The date that the operation was billed, in Unix format.
 --
@@ -62,7 +62,7 @@ brOperation = lens _brOperation (\ s a -> s{_brOperation = a})
 brInvoiceId :: Lens' BillingRecord (Maybe Text)
 brInvoiceId = lens _brInvoiceId (\ s a -> s{_brInvoiceId = a})
 
--- | The name of the domain that the billing record applies to. If the domain name contains characters other than a-z, 0-9, and - (hyphen), such as an internationalized domain name, then this value is in Punycode. For more information, see <http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DomainNameFormat.html DNS Domain Name Format> in the /Amazon Route 53 Developer Guidezzz/ .
+-- | The name of the domain that the billing record applies to. If the domain name contains characters other than a-z, 0-9, and - (hyphen), such as an internationalized domain name, then this value is in Punycode. For more information, see <https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DomainNameFormat.html DNS Domain Name Format> in the /Amazon Route 53 Developer Guide/ .
 brDomainName :: Lens' BillingRecord (Maybe Text)
 brDomainName = lens _brDomainName (\ s a -> s{_brDomainName = a})
 

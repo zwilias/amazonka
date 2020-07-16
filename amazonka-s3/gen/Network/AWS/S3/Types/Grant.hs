@@ -23,7 +23,11 @@ import Network.AWS.S3.Internal
 import Network.AWS.S3.Types.Grantee
 import Network.AWS.S3.Types.Permission
 
--- | /See:/ 'grant' smart constructor.
+-- | Container for grant information.
+--
+--
+--
+-- /See:/ 'grant' smart constructor.
 data Grant = Grant'{_gPermission ::
                     !(Maybe Permission),
                     _gGrantee :: !(Maybe Grantee)}
@@ -35,7 +39,7 @@ data Grant = Grant'{_gPermission ::
 --
 -- * 'gPermission' - Specifies the permission given to the grantee.
 --
--- * 'gGrantee' - Undocumented member.
+-- * 'gGrantee' - The person being granted permissions.
 grant
     :: Grant
 grant
@@ -45,7 +49,7 @@ grant
 gPermission :: Lens' Grant (Maybe Permission)
 gPermission = lens _gPermission (\ s a -> s{_gPermission = a})
 
--- | Undocumented member.
+-- | The person being granted permissions.
 gGrantee :: Lens' Grant (Maybe Grantee)
 gGrantee = lens _gGrantee (\ s a -> s{_gGrantee = a})
 

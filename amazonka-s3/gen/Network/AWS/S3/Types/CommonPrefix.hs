@@ -21,7 +21,11 @@ import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.S3.Internal
 
--- | /See:/ 'commonPrefix' smart constructor.
+-- | Container for all (if there are any) keys between Prefix and the next occurrence of the string specified by a delimiter. CommonPrefixes lists keys that act like subdirectories in the directory specified by Prefix. For example, if the prefix is notes/ and the delimiter is a slash (/) as in notes/summer/july, the common prefix is notes/summer/. 
+--
+--
+--
+-- /See:/ 'commonPrefix' smart constructor.
 newtype CommonPrefix = CommonPrefix'{_cpPrefix ::
                                      Maybe Text}
                          deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -30,12 +34,12 @@ newtype CommonPrefix = CommonPrefix'{_cpPrefix ::
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'cpPrefix' - Undocumented member.
+-- * 'cpPrefix' - Container for the specified common prefix.
 commonPrefix
     :: CommonPrefix
 commonPrefix = CommonPrefix'{_cpPrefix = Nothing}
 
--- | Undocumented member.
+-- | Container for the specified common prefix.
 cpPrefix :: Lens' CommonPrefix (Maybe Text)
 cpPrefix = lens _cpPrefix (\ s a -> s{_cpPrefix = a})
 

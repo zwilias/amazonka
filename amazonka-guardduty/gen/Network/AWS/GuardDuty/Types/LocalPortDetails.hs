@@ -20,7 +20,9 @@ module Network.AWS.GuardDuty.Types.LocalPortDetails where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | Local port information of the connection.
+-- | Contains information about the port for the local connection.
+--
+--
 --
 -- /See:/ 'localPortDetails' smart constructor.
 data LocalPortDetails = LocalPortDetails'{_lpdPortName
@@ -32,20 +34,20 @@ data LocalPortDetails = LocalPortDetails'{_lpdPortName
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'lpdPortName' - Port name of the local connection.
+-- * 'lpdPortName' - The port name of the local connection.
 --
--- * 'lpdPort' - Port number of the local connection.
+-- * 'lpdPort' - The port number of the local connection.
 localPortDetails
     :: LocalPortDetails
 localPortDetails
   = LocalPortDetails'{_lpdPortName = Nothing,
                       _lpdPort = Nothing}
 
--- | Port name of the local connection.
+-- | The port name of the local connection.
 lpdPortName :: Lens' LocalPortDetails (Maybe Text)
 lpdPortName = lens _lpdPortName (\ s a -> s{_lpdPortName = a})
 
--- | Port number of the local connection.
+-- | The port number of the local connection.
 lpdPort :: Lens' LocalPortDetails (Maybe Int)
 lpdPort = lens _lpdPort (\ s a -> s{_lpdPort = a})
 

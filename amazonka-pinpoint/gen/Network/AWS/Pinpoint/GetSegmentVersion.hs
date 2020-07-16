@@ -18,7 +18,9 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Returns information about a segment version.
+-- Retrieves information about the configuration, dimension, and other settings for a specific version of a segment that's associated with an application.
+--
+--
 module Network.AWS.Pinpoint.GetSegmentVersion
     (
     -- * Creating a Request
@@ -55,11 +57,11 @@ data GetSegmentVersion = GetSegmentVersion'{_gSegmentId
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'gSegmentId' - Undocumented member.
+-- * 'gSegmentId' - The unique identifier for the segment.
 --
--- * 'gVersion' - Undocumented member.
+-- * 'gVersion' - The unique version number (Version property) for the campaign version.
 --
--- * 'gApplicationId' - Undocumented member.
+-- * 'gApplicationId' - The unique identifier for the application. This identifier is displayed as the __Project ID__ on the Amazon Pinpoint console.
 getSegmentVersion
     :: Text -- ^ 'gSegmentId'
     -> Text -- ^ 'gVersion'
@@ -71,15 +73,15 @@ getSegmentVersion pSegmentId_ pVersion_
                        _gVersion = pVersion_,
                        _gApplicationId = pApplicationId_}
 
--- | Undocumented member.
+-- | The unique identifier for the segment.
 gSegmentId :: Lens' GetSegmentVersion Text
 gSegmentId = lens _gSegmentId (\ s a -> s{_gSegmentId = a})
 
--- | Undocumented member.
+-- | The unique version number (Version property) for the campaign version.
 gVersion :: Lens' GetSegmentVersion Text
 gVersion = lens _gVersion (\ s a -> s{_gVersion = a})
 
--- | Undocumented member.
+-- | The unique identifier for the application. This identifier is displayed as the __Project ID__ on the Amazon Pinpoint console.
 gApplicationId :: Lens' GetSegmentVersion Text
 gApplicationId = lens _gApplicationId (\ s a -> s{_gApplicationId = a})
 

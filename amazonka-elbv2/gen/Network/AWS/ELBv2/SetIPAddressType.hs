@@ -21,8 +21,6 @@
 -- Sets the type of IP addresses used by the subnets of the specified Application Load Balancer or Network Load Balancer.
 --
 --
--- Note that Network Load Balancers must use @ipv4@ .
---
 module Network.AWS.ELBv2.SetIPAddressType
     (
     -- * Creating a Request
@@ -59,7 +57,7 @@ data SetIPAddressType = SetIPAddressType'{_siatLoadBalancerARN
 --
 -- * 'siatLoadBalancerARN' - The Amazon Resource Name (ARN) of the load balancer.
 --
--- * 'siatIPAddressType' - The IP address type. The possible values are @ipv4@ (for IPv4 addresses) and @dualstack@ (for IPv4 and IPv6 addresses). Internal load balancers must use @ipv4@ .
+-- * 'siatIPAddressType' - The IP address type. The possible values are @ipv4@ (for IPv4 addresses) and @dualstack@ (for IPv4 and IPv6 addresses). Internal load balancers must use @ipv4@ . Network Load Balancers must use @ipv4@ .
 setIPAddressType
     :: Text -- ^ 'siatLoadBalancerARN'
     -> IPAddressType -- ^ 'siatIPAddressType'
@@ -73,7 +71,7 @@ setIPAddressType pLoadBalancerARN_ pIPAddressType_
 siatLoadBalancerARN :: Lens' SetIPAddressType Text
 siatLoadBalancerARN = lens _siatLoadBalancerARN (\ s a -> s{_siatLoadBalancerARN = a})
 
--- | The IP address type. The possible values are @ipv4@ (for IPv4 addresses) and @dualstack@ (for IPv4 and IPv6 addresses). Internal load balancers must use @ipv4@ .
+-- | The IP address type. The possible values are @ipv4@ (for IPv4 addresses) and @dualstack@ (for IPv4 and IPv6 addresses). Internal load balancers must use @ipv4@ . Network Load Balancers must use @ipv4@ .
 siatIPAddressType :: Lens' SetIPAddressType IPAddressType
 siatIPAddressType = lens _siatIPAddressType (\ s a -> s{_siatIPAddressType = a})
 

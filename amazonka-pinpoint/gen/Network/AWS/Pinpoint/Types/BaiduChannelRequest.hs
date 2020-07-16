@@ -20,41 +20,45 @@ module Network.AWS.Pinpoint.Types.BaiduChannelRequest where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | Baidu Cloud Push credentials
+-- | Specifies the status and settings of the Baidu (Baidu Cloud Push) channel for an application.
+--
+--
 --
 -- /See:/ 'baiduChannelRequest' smart constructor.
-data BaiduChannelRequest = BaiduChannelRequest'{_bcrAPIKey
-                                                :: !(Maybe Text),
-                                                _bcrEnabled :: !(Maybe Bool),
-                                                _bcrSecretKey :: !(Maybe Text)}
+data BaiduChannelRequest = BaiduChannelRequest'{_bcrEnabled
+                                                :: !(Maybe Bool),
+                                                _bcrSecretKey :: !Text,
+                                                _bcrAPIKey :: !Text}
                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'BaiduChannelRequest' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'bcrAPIKey' - Platform credential API key from Baidu.
+-- * 'bcrEnabled' - Specifies whether to enable the Baidu channel for the application.
 --
--- * 'bcrEnabled' - If the channel is enabled for sending messages.
+-- * 'bcrSecretKey' - The secret key that you received from the Baidu Cloud Push service to communicate with the service.
 --
--- * 'bcrSecretKey' - Platform credential Secret key from Baidu.
+-- * 'bcrAPIKey' - The API key that you received from the Baidu Cloud Push service to communicate with the service.
 baiduChannelRequest
-    :: BaiduChannelRequest
-baiduChannelRequest
-  = BaiduChannelRequest'{_bcrAPIKey = Nothing,
-                         _bcrEnabled = Nothing, _bcrSecretKey = Nothing}
+    :: Text -- ^ 'bcrSecretKey'
+    -> Text -- ^ 'bcrAPIKey'
+    -> BaiduChannelRequest
+baiduChannelRequest pSecretKey_ pAPIKey_
+  = BaiduChannelRequest'{_bcrEnabled = Nothing,
+                         _bcrSecretKey = pSecretKey_, _bcrAPIKey = pAPIKey_}
 
--- | Platform credential API key from Baidu.
-bcrAPIKey :: Lens' BaiduChannelRequest (Maybe Text)
-bcrAPIKey = lens _bcrAPIKey (\ s a -> s{_bcrAPIKey = a})
-
--- | If the channel is enabled for sending messages.
+-- | Specifies whether to enable the Baidu channel for the application.
 bcrEnabled :: Lens' BaiduChannelRequest (Maybe Bool)
 bcrEnabled = lens _bcrEnabled (\ s a -> s{_bcrEnabled = a})
 
--- | Platform credential Secret key from Baidu.
-bcrSecretKey :: Lens' BaiduChannelRequest (Maybe Text)
+-- | The secret key that you received from the Baidu Cloud Push service to communicate with the service.
+bcrSecretKey :: Lens' BaiduChannelRequest Text
 bcrSecretKey = lens _bcrSecretKey (\ s a -> s{_bcrSecretKey = a})
+
+-- | The API key that you received from the Baidu Cloud Push service to communicate with the service.
+bcrAPIKey :: Lens' BaiduChannelRequest Text
+bcrAPIKey = lens _bcrAPIKey (\ s a -> s{_bcrAPIKey = a})
 
 instance Hashable BaiduChannelRequest where
 
@@ -64,6 +68,6 @@ instance ToJSON BaiduChannelRequest where
         toJSON BaiduChannelRequest'{..}
           = object
               (catMaybes
-                 [("ApiKey" .=) <$> _bcrAPIKey,
-                  ("Enabled" .=) <$> _bcrEnabled,
-                  ("SecretKey" .=) <$> _bcrSecretKey])
+                 [("Enabled" .=) <$> _bcrEnabled,
+                  Just ("SecretKey" .= _bcrSecretKey),
+                  Just ("ApiKey" .= _bcrAPIKey)])

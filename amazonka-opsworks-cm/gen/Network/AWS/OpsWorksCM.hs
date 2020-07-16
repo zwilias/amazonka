@@ -13,13 +13,13 @@
 --
 -- __AWS OpsWorks CM__ 
 --
--- AWS OpsWorks for configuration management (CM) is a service that runs and manages configuration management servers. 
+-- AWS OpsWorks for configuration management (CM) is a service that runs and manages configuration management servers. You can use AWS OpsWorks CM to create and manage AWS OpsWorks for Chef Automate and AWS OpsWorks for Puppet Enterprise servers, and add or remove nodes for the servers to manage.
 --
 -- __Glossary of terms__ 
 --
 --     * __Server__ : A configuration management server that can be highly-available. The configuration management server runs on an Amazon Elastic Compute Cloud (EC2) instance, and may use various other AWS services, such as Amazon Relational Database Service (RDS) and Elastic Load Balancing. A server is a generic abstraction over the configuration manager that you want to use, much like Amazon RDS. In AWS OpsWorks CM, you do not start or stop servers. After you create servers, they continue to run until they are deleted.
 --
---     * __Engine__ : The engine is the specific configuration manager that you want to use. Valid values in this release include @Chef@ and @Puppet@ .
+--     * __Engine__ : The engine is the specific configuration manager that you want to use. Valid values in this release include @ChefAutomate@ and @Puppet@ .
 --
 --     * __Backup__ : This is an application-level backup of the data that the configuration manager stores. AWS OpsWorks CM creates an S3 bucket for backups when you launch the first server. A backup maintains a snapshot of a server's configuration-related attributes at the time the backup starts.
 --
@@ -35,7 +35,19 @@
 --
 --     * opsworks-cm.us-east-1.amazonaws.com
 --
+--     * opsworks-cm.us-east-2.amazonaws.com
+--
+--     * opsworks-cm.us-west-1.amazonaws.com
+--
 --     * opsworks-cm.us-west-2.amazonaws.com
+--
+--     * opsworks-cm.ap-northeast-1.amazonaws.com
+--
+--     * opsworks-cm.ap-southeast-1.amazonaws.com
+--
+--     * opsworks-cm.ap-southeast-2.amazonaws.com
+--
+--     * opsworks-cm.eu-central-1.amazonaws.com
 --
 --     * opsworks-cm.eu-west-1.amazonaws.com
 --
@@ -92,11 +104,14 @@ module Network.AWS.OpsWorksCM
     -- ** DeleteBackup 
     , module Network.AWS.OpsWorksCM.DeleteBackup
 
-    -- ** DescribeEvents 
+    -- ** DescribeEvents (Paginated)
     , module Network.AWS.OpsWorksCM.DescribeEvents
 
     -- ** DisassociateNode 
     , module Network.AWS.OpsWorksCM.DisassociateNode
+
+    -- ** ListTagsForResource (Paginated)
+    , module Network.AWS.OpsWorksCM.ListTagsForResource
 
     -- ** CreateBackup 
     , module Network.AWS.OpsWorksCM.CreateBackup
@@ -107,7 +122,7 @@ module Network.AWS.OpsWorksCM
     -- ** StartMaintenance 
     , module Network.AWS.OpsWorksCM.StartMaintenance
 
-    -- ** DescribeBackups 
+    -- ** DescribeBackups (Paginated)
     , module Network.AWS.OpsWorksCM.DescribeBackups
 
     -- ** CreateServer 
@@ -119,11 +134,20 @@ module Network.AWS.OpsWorksCM
     -- ** DescribeNodeAssociationStatus 
     , module Network.AWS.OpsWorksCM.DescribeNodeAssociationStatus
 
+    -- ** TagResource 
+    , module Network.AWS.OpsWorksCM.TagResource
+
     -- ** DescribeAccountAttributes 
     , module Network.AWS.OpsWorksCM.DescribeAccountAttributes
 
-    -- ** DescribeServers 
+    -- ** UntagResource 
+    , module Network.AWS.OpsWorksCM.UntagResource
+
+    -- ** DescribeServers (Paginated)
     , module Network.AWS.OpsWorksCM.DescribeServers
+
+    -- ** ExportServerEngineAttribute 
+    , module Network.AWS.OpsWorksCM.ExportServerEngineAttribute
 
     -- * Types
 
@@ -198,6 +222,7 @@ module Network.AWS.OpsWorksCM
     , sKeyPair
     , sCreatedAt
     , sServerARN
+    , sCustomDomain
     , sEngine
     , sMaintenanceStatus
     , sInstanceType
@@ -217,6 +242,12 @@ module Network.AWS.OpsWorksCM
     , seServerName
     , seCreatedAt
     , seMessage
+
+    -- ** Tag
+    , Tag
+    , tag
+    , tagKey
+    , tagValue
     ) where
 
 import Network.AWS.OpsWorksCM.AssociateNode
@@ -230,9 +261,13 @@ import Network.AWS.OpsWorksCM.DescribeEvents
 import Network.AWS.OpsWorksCM.DescribeNodeAssociationStatus
 import Network.AWS.OpsWorksCM.DescribeServers
 import Network.AWS.OpsWorksCM.DisassociateNode
+import Network.AWS.OpsWorksCM.ExportServerEngineAttribute
+import Network.AWS.OpsWorksCM.ListTagsForResource
 import Network.AWS.OpsWorksCM.RestoreServer
 import Network.AWS.OpsWorksCM.StartMaintenance
+import Network.AWS.OpsWorksCM.TagResource
 import Network.AWS.OpsWorksCM.Types
+import Network.AWS.OpsWorksCM.UntagResource
 import Network.AWS.OpsWorksCM.UpdateServer
 import Network.AWS.OpsWorksCM.UpdateServerEngineAttributes
 import Network.AWS.OpsWorksCM.Waiters

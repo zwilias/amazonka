@@ -25,8 +25,8 @@ import Network.AWS.Prelude
 --
 -- /See:/ 'resource' smart constructor.
 data Resource = Resource'{_rResourceDataContainer ::
-                          !(Maybe ResourceDataContainer),
-                          _rName :: !(Maybe Text), _rId :: !(Maybe Text)}
+                          !ResourceDataContainer,
+                          _rId :: !Text, _rName :: !Text}
                   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'Resource' with the minimum fields required to make a request.
@@ -35,34 +35,38 @@ data Resource = Resource'{_rResourceDataContainer ::
 --
 -- * 'rResourceDataContainer' - A container of data for all resource types.
 --
--- * 'rName' - The descriptive resource name, which is displayed on the Greengrass console. Max length 128 characters with pattern ''[a-zA-Z0-9:_-]+''. This must be unique within a Greengrass group.
---
 -- * 'rId' - The resource ID, used to refer to a resource in the Lambda function configuration. Max length is 128 characters with pattern ''[a-zA-Z0-9:_-]+''. This must be unique within a Greengrass group.
+--
+-- * 'rName' - The descriptive resource name, which is displayed on the AWS IoT Greengrass console. Max length 128 characters with pattern ''[a-zA-Z0-9:_-]+''. This must be unique within a Greengrass group.
 resource
-    :: Resource
-resource
-  = Resource'{_rResourceDataContainer = Nothing,
-              _rName = Nothing, _rId = Nothing}
+    :: ResourceDataContainer -- ^ 'rResourceDataContainer'
+    -> Text -- ^ 'rId'
+    -> Text -- ^ 'rName'
+    -> Resource
+resource pResourceDataContainer_ pId_ pName_
+  = Resource'{_rResourceDataContainer =
+                pResourceDataContainer_,
+              _rId = pId_, _rName = pName_}
 
 -- | A container of data for all resource types.
-rResourceDataContainer :: Lens' Resource (Maybe ResourceDataContainer)
+rResourceDataContainer :: Lens' Resource ResourceDataContainer
 rResourceDataContainer = lens _rResourceDataContainer (\ s a -> s{_rResourceDataContainer = a})
 
--- | The descriptive resource name, which is displayed on the Greengrass console. Max length 128 characters with pattern ''[a-zA-Z0-9:_-]+''. This must be unique within a Greengrass group.
-rName :: Lens' Resource (Maybe Text)
-rName = lens _rName (\ s a -> s{_rName = a})
-
 -- | The resource ID, used to refer to a resource in the Lambda function configuration. Max length is 128 characters with pattern ''[a-zA-Z0-9:_-]+''. This must be unique within a Greengrass group.
-rId :: Lens' Resource (Maybe Text)
+rId :: Lens' Resource Text
 rId = lens _rId (\ s a -> s{_rId = a})
+
+-- | The descriptive resource name, which is displayed on the AWS IoT Greengrass console. Max length 128 characters with pattern ''[a-zA-Z0-9:_-]+''. This must be unique within a Greengrass group.
+rName :: Lens' Resource Text
+rName = lens _rName (\ s a -> s{_rName = a})
 
 instance FromJSON Resource where
         parseJSON
           = withObject "Resource"
               (\ x ->
                  Resource' <$>
-                   (x .:? "ResourceDataContainer") <*> (x .:? "Name")
-                     <*> (x .:? "Id"))
+                   (x .: "ResourceDataContainer") <*> (x .: "Id") <*>
+                     (x .: "Name"))
 
 instance Hashable Resource where
 
@@ -72,6 +76,6 @@ instance ToJSON Resource where
         toJSON Resource'{..}
           = object
               (catMaybes
-                 [("ResourceDataContainer" .=) <$>
-                    _rResourceDataContainer,
-                  ("Name" .=) <$> _rName, ("Id" .=) <$> _rId])
+                 [Just
+                    ("ResourceDataContainer" .= _rResourceDataContainer),
+                  Just ("Id" .= _rId), Just ("Name" .= _rName)])

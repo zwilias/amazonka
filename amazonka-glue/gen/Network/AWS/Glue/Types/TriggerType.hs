@@ -19,9 +19,9 @@
 module Network.AWS.Glue.Types.TriggerType (
   TriggerType (
     ..
-    , TTConditional
-    , TTOnDemand
-    , TTScheduled
+    , Conditional
+    , OnDemand
+    , Scheduled
     )
   ) where
 
@@ -32,19 +32,19 @@ data TriggerType = TriggerType' (CI Text)
                      deriving (Eq, Ord, Read, Show, Data, Typeable,
                                Generic)
 
-pattern TTConditional :: TriggerType
-pattern TTConditional = TriggerType' "CONDITIONAL"
+pattern Conditional :: TriggerType
+pattern Conditional = TriggerType' "CONDITIONAL"
 
-pattern TTOnDemand :: TriggerType
-pattern TTOnDemand = TriggerType' "ON_DEMAND"
+pattern OnDemand :: TriggerType
+pattern OnDemand = TriggerType' "ON_DEMAND"
 
-pattern TTScheduled :: TriggerType
-pattern TTScheduled = TriggerType' "SCHEDULED"
+pattern Scheduled :: TriggerType
+pattern Scheduled = TriggerType' "SCHEDULED"
 
 {-# COMPLETE
-  TTConditional,
-  TTOnDemand,
-  TTScheduled,
+  Conditional,
+  OnDemand,
+  Scheduled,
   TriggerType' #-}
 
 instance FromText TriggerType where
@@ -59,22 +59,22 @@ instance ToText TriggerType where
 --   fromEnum is a partial function, and will error on values unknown at generation time.
 instance Enum TriggerType where
     toEnum i = case i of
-        0 -> TTConditional
-        1 -> TTOnDemand
-        2 -> TTScheduled
+        0 -> Conditional
+        1 -> OnDemand
+        2 -> Scheduled
         _ -> (error . showText) $ "Unknown index for TriggerType: " <> toText i
     fromEnum x = case x of
-        TTConditional -> 0
-        TTOnDemand -> 1
-        TTScheduled -> 2
+        Conditional -> 0
+        OnDemand -> 1
+        Scheduled -> 2
         TriggerType' name -> (error . showText) $ "Unknown TriggerType: " <> original name
 
 -- | Represents the bounds of /known/ $TriggerType.
 --   AWS may have added more since the source was generated.
 --   This instance exists only for backward compatibility.
 instance Bounded TriggerType where
-    minBound = TTConditional
-    maxBound = TTScheduled
+    minBound = Conditional
+    maxBound = Scheduled
 
 instance Hashable     TriggerType
 instance NFData       TriggerType

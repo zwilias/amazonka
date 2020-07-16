@@ -20,7 +20,9 @@ module Network.AWS.Pinpoint.Types.CampaignLimits where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | Campaign Limits are used to limit the number of messages that can be sent to a user.
+-- | For a campaign, specifies limits on the messages that the campaign can send. For an application, specifies the default limits for messages that campaigns and journeys in the application can send.
+--
+--
 --
 -- /See:/ 'campaignLimits' smart constructor.
 data CampaignLimits = CampaignLimits'{_clMessagesPerSecond
@@ -34,13 +36,13 @@ data CampaignLimits = CampaignLimits'{_clMessagesPerSecond
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'clMessagesPerSecond' - The number of messages that the campaign can send per second. The minimum value is 50, and the maximum is 20000.
+-- * 'clMessagesPerSecond' - The maximum number of messages that a campaign can send each second. For an application, this value specifies the default limit for the number of messages that campaigns and journeys can send each second. The minimum value is 50. The maximum value is 20,000.
 --
--- * 'clDaily' - The maximum number of messages that the campaign can send daily.
+-- * 'clDaily' - The maximum number of messages that a campaign can send to a single endpoint during a 24-hour period. For an application, this value specifies the default limit for the number of messages that campaigns and journeys can send to a single endpoint during a 24-hour period. The maximum value is 100.
 --
--- * 'clTotal' - The maximum total number of messages that the campaign can send.
+-- * 'clTotal' - The maximum number of messages that a campaign can send to a single endpoint during the course of the campaign. If a campaign recurs, this setting applies to all runs of the campaign. The maximum value is 100.
 --
--- * 'clMaximumDuration' - The length of time (in seconds) that the campaign can run before it ends and message deliveries stop. This duration begins at the scheduled start time for the campaign. The minimum value is 60.
+-- * 'clMaximumDuration' - The maximum amount of time, in seconds, that a campaign can attempt to deliver a message after the scheduled start time for the campaign. The minimum value is 60 seconds.
 campaignLimits
     :: CampaignLimits
 campaignLimits
@@ -48,19 +50,19 @@ campaignLimits
                     _clDaily = Nothing, _clTotal = Nothing,
                     _clMaximumDuration = Nothing}
 
--- | The number of messages that the campaign can send per second. The minimum value is 50, and the maximum is 20000.
+-- | The maximum number of messages that a campaign can send each second. For an application, this value specifies the default limit for the number of messages that campaigns and journeys can send each second. The minimum value is 50. The maximum value is 20,000.
 clMessagesPerSecond :: Lens' CampaignLimits (Maybe Int)
 clMessagesPerSecond = lens _clMessagesPerSecond (\ s a -> s{_clMessagesPerSecond = a})
 
--- | The maximum number of messages that the campaign can send daily.
+-- | The maximum number of messages that a campaign can send to a single endpoint during a 24-hour period. For an application, this value specifies the default limit for the number of messages that campaigns and journeys can send to a single endpoint during a 24-hour period. The maximum value is 100.
 clDaily :: Lens' CampaignLimits (Maybe Int)
 clDaily = lens _clDaily (\ s a -> s{_clDaily = a})
 
--- | The maximum total number of messages that the campaign can send.
+-- | The maximum number of messages that a campaign can send to a single endpoint during the course of the campaign. If a campaign recurs, this setting applies to all runs of the campaign. The maximum value is 100.
 clTotal :: Lens' CampaignLimits (Maybe Int)
 clTotal = lens _clTotal (\ s a -> s{_clTotal = a})
 
--- | The length of time (in seconds) that the campaign can run before it ends and message deliveries stop. This duration begins at the scheduled start time for the campaign. The minimum value is 60.
+-- | The maximum amount of time, in seconds, that a campaign can attempt to deliver a message after the scheduled start time for the campaign. The minimum value is 60 seconds.
 clMaximumDuration :: Lens' CampaignLimits (Maybe Int)
 clMaximumDuration = lens _clMaximumDuration (\ s a -> s{_clMaximumDuration = a})
 

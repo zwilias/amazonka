@@ -21,7 +21,9 @@ import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.S3.Internal
 
--- | Specifies the days since the initiation of an Incomplete Multipart Upload that Lifecycle will wait before permanently removing all parts of the upload.
+-- | Specifies the days since the initiation of an incomplete multipart upload that Amazon S3 will wait before permanently removing all parts of the upload. For more information, see <https://docs.aws.amazon.com/AmazonS3/latest/dev/mpuoverview.html#mpu-abort-incomplete-mpu-lifecycle-config Aborting Incomplete Multipart Uploads Using a Bucket Lifecycle Policy> in the /Amazon Simple Storage Service Developer Guide/ .
+--
+--
 --
 -- /See:/ 'abortIncompleteMultipartUpload' smart constructor.
 newtype AbortIncompleteMultipartUpload = AbortIncompleteMultipartUpload'{_aimuDaysAfterInitiation
@@ -35,14 +37,14 @@ newtype AbortIncompleteMultipartUpload = AbortIncompleteMultipartUpload'{_aimuDa
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'aimuDaysAfterInitiation' - Indicates the number of days that must pass since initiation for Lifecycle to abort an Incomplete Multipart Upload.
+-- * 'aimuDaysAfterInitiation' - Specifies the number of days after which Amazon S3 aborts an incomplete multipart upload.
 abortIncompleteMultipartUpload
     :: AbortIncompleteMultipartUpload
 abortIncompleteMultipartUpload
   = AbortIncompleteMultipartUpload'{_aimuDaysAfterInitiation
                                       = Nothing}
 
--- | Indicates the number of days that must pass since initiation for Lifecycle to abort an Incomplete Multipart Upload.
+-- | Specifies the number of days after which Amazon S3 aborts an incomplete multipart upload.
 aimuDaysAfterInitiation :: Lens' AbortIncompleteMultipartUpload (Maybe Int)
 aimuDaysAfterInitiation = lens _aimuDaysAfterInitiation (\ s a -> s{_aimuDaysAfterInitiation = a})
 

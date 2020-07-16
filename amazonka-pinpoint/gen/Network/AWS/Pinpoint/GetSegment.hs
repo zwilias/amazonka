@@ -18,7 +18,9 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Returns information about a segment.
+-- Retrieves information about the configuration, dimension, and other settings for a specific segment that's associated with an application.
+--
+--
 module Network.AWS.Pinpoint.GetSegment
     (
     -- * Creating a Request
@@ -52,9 +54,9 @@ data GetSegment = GetSegment'{_gsSegmentId :: !Text,
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'gsSegmentId' - Undocumented member.
+-- * 'gsSegmentId' - The unique identifier for the segment.
 --
--- * 'gsApplicationId' - Undocumented member.
+-- * 'gsApplicationId' - The unique identifier for the application. This identifier is displayed as the __Project ID__ on the Amazon Pinpoint console.
 getSegment
     :: Text -- ^ 'gsSegmentId'
     -> Text -- ^ 'gsApplicationId'
@@ -63,11 +65,11 @@ getSegment pSegmentId_ pApplicationId_
   = GetSegment'{_gsSegmentId = pSegmentId_,
                 _gsApplicationId = pApplicationId_}
 
--- | Undocumented member.
+-- | The unique identifier for the segment.
 gsSegmentId :: Lens' GetSegment Text
 gsSegmentId = lens _gsSegmentId (\ s a -> s{_gsSegmentId = a})
 
--- | Undocumented member.
+-- | The unique identifier for the application. This identifier is displayed as the __Project ID__ on the Amazon Pinpoint console.
 gsApplicationId :: Lens' GetSegment Text
 gsApplicationId = lens _gsApplicationId (\ s a -> s{_gsApplicationId = a})
 

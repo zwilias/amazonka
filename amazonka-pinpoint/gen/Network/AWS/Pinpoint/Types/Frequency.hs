@@ -20,6 +20,7 @@ module Network.AWS.Pinpoint.Types.Frequency (
   Frequency (
     ..
     , Daily
+    , Event
     , Hourly
     , Monthly
     , Once
@@ -37,6 +38,9 @@ data Frequency = Frequency' (CI Text)
 pattern Daily :: Frequency
 pattern Daily = Frequency' "DAILY"
 
+pattern Event :: Frequency
+pattern Event = Frequency' "EVENT"
+
 pattern Hourly :: Frequency
 pattern Hourly = Frequency' "HOURLY"
 
@@ -51,6 +55,7 @@ pattern Weekly = Frequency' "WEEKLY"
 
 {-# COMPLETE
   Daily,
+  Event,
   Hourly,
   Monthly,
   Once,
@@ -70,17 +75,19 @@ instance ToText Frequency where
 instance Enum Frequency where
     toEnum i = case i of
         0 -> Daily
-        1 -> Hourly
-        2 -> Monthly
-        3 -> Once
-        4 -> Weekly
+        1 -> Event
+        2 -> Hourly
+        3 -> Monthly
+        4 -> Once
+        5 -> Weekly
         _ -> (error . showText) $ "Unknown index for Frequency: " <> toText i
     fromEnum x = case x of
         Daily -> 0
-        Hourly -> 1
-        Monthly -> 2
-        Once -> 3
-        Weekly -> 4
+        Event -> 1
+        Hourly -> 2
+        Monthly -> 3
+        Once -> 4
+        Weekly -> 5
         Frequency' name -> (error . showText) $ "Unknown Frequency: " <> original name
 
 -- | Represents the bounds of /known/ $Frequency.

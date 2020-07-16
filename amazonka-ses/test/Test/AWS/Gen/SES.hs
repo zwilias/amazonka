@@ -46,6 +46,9 @@ import Test.AWS.SES.Internal
 --         , requestGetSendQuota $
 --             getSendQuota
 --
+--         , requestPutConfigurationSetDeliveryOptions $
+--             putConfigurationSetDeliveryOptions
+--
 --         , requestDescribeConfigurationSet $
 --             describeConfigurationSet
 --
@@ -258,6 +261,9 @@ import Test.AWS.SES.Internal
 --
 --         , responseGetSendQuota $
 --             getSendQuotaResponse
+--
+--         , responsePutConfigurationSetDeliveryOptions $
+--             putConfigurationSetDeliveryOptionsResponse
 --
 --         , responseDescribeConfigurationSet $
 --             describeConfigurationSetResponse
@@ -485,6 +491,11 @@ requestGetSendQuota :: GetSendQuota -> TestTree
 requestGetSendQuota = req
     "GetSendQuota"
     "fixture/GetSendQuota.yaml"
+
+requestPutConfigurationSetDeliveryOptions :: PutConfigurationSetDeliveryOptions -> TestTree
+requestPutConfigurationSetDeliveryOptions = req
+    "PutConfigurationSetDeliveryOptions"
+    "fixture/PutConfigurationSetDeliveryOptions.yaml"
 
 requestDescribeConfigurationSet :: DescribeConfigurationSet -> TestTree
 requestDescribeConfigurationSet = req
@@ -849,6 +860,13 @@ responseGetSendQuota = res
     "fixture/GetSendQuotaResponse.proto"
     ses
     (Proxy :: Proxy GetSendQuota)
+
+responsePutConfigurationSetDeliveryOptions :: PutConfigurationSetDeliveryOptionsResponse -> TestTree
+responsePutConfigurationSetDeliveryOptions = res
+    "PutConfigurationSetDeliveryOptionsResponse"
+    "fixture/PutConfigurationSetDeliveryOptionsResponse.proto"
+    ses
+    (Proxy :: Proxy PutConfigurationSetDeliveryOptions)
 
 responseDescribeConfigurationSet :: DescribeConfigurationSetResponse -> TestTree
 responseDescribeConfigurationSet = res

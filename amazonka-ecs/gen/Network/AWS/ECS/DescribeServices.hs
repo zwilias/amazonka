@@ -27,6 +27,7 @@ module Network.AWS.ECS.DescribeServices
       describeServices
     , DescribeServices
     -- * Request Lenses
+    , dInclude
     , dCluster
     , dServices
 
@@ -47,8 +48,9 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeServices' smart constructor.
-data DescribeServices = DescribeServices'{_dCluster
-                                          :: !(Maybe Text),
+data DescribeServices = DescribeServices'{_dInclude
+                                          :: !(Maybe [ServiceField]),
+                                          _dCluster :: !(Maybe Text),
                                           _dServices :: ![Text]}
                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -56,16 +58,22 @@ data DescribeServices = DescribeServices'{_dCluster
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dCluster' - The short name or full Amazon Resource Name (ARN)the cluster that hosts the service to describe. If you do not specify a cluster, the default cluster is assumed.
+-- * 'dInclude' - Specifies whether you want to see the resource tags for the service. If @TAGS@ is specified, the tags are included in the response. If this field is omitted, tags are not included in the response.
+--
+-- * 'dCluster' - The short name or full Amazon Resource Name (ARN)the cluster that hosts the service to describe. If you do not specify a cluster, the default cluster is assumed. This parameter is required if the service or services you are describing were launched in any cluster other than the default cluster.
 --
 -- * 'dServices' - A list of services to describe. You may specify up to 10 services to describe in a single operation.
 describeServices
     :: DescribeServices
 describeServices
-  = DescribeServices'{_dCluster = Nothing,
-                      _dServices = mempty}
+  = DescribeServices'{_dInclude = Nothing,
+                      _dCluster = Nothing, _dServices = mempty}
 
--- | The short name or full Amazon Resource Name (ARN)the cluster that hosts the service to describe. If you do not specify a cluster, the default cluster is assumed.
+-- | Specifies whether you want to see the resource tags for the service. If @TAGS@ is specified, the tags are included in the response. If this field is omitted, tags are not included in the response.
+dInclude :: Lens' DescribeServices [ServiceField]
+dInclude = lens _dInclude (\ s a -> s{_dInclude = a}) . _Default . _Coerce
+
+-- | The short name or full Amazon Resource Name (ARN)the cluster that hosts the service to describe. If you do not specify a cluster, the default cluster is assumed. This parameter is required if the service or services you are describing were launched in any cluster other than the default cluster.
 dCluster :: Lens' DescribeServices (Maybe Text)
 dCluster = lens _dCluster (\ s a -> s{_dCluster = a})
 
@@ -102,7 +110,8 @@ instance ToJSON DescribeServices where
         toJSON DescribeServices'{..}
           = object
               (catMaybes
-                 [("cluster" .=) <$> _dCluster,
+                 [("include" .=) <$> _dInclude,
+                  ("cluster" .=) <$> _dCluster,
                   Just ("services" .= _dServices)])
 
 instance ToPath DescribeServices where

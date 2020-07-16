@@ -22,7 +22,7 @@ import Network.AWS.MediaLive.Types.Scte35SpliceInsert
 import Network.AWS.MediaLive.Types.Scte35TimeSignalApos
 import Network.AWS.Prelude
 
--- | Placeholder documentation for AvailSettings
+-- | Avail Settings
 --
 -- /See:/ 'availSettings' smart constructor.
 data AvailSettings = AvailSettings'{_asScte35SpliceInsert

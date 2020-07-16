@@ -19,103 +19,103 @@
 module Network.AWS.MediaConvert.Types.H264CodecLevel (
   H264CodecLevel (
     ..
-    , HCLAuto
-    , HCLLevel1
-    , HCLLevel11
-    , HCLLevel12
-    , HCLLevel13
-    , HCLLevel2
-    , HCLLevel21
-    , HCLLevel22
-    , HCLLevel3
-    , HCLLevel31
-    , HCLLevel32
-    , HCLLevel4
-    , HCLLevel41
-    , HCLLevel42
-    , HCLLevel5
-    , HCLLevel51
-    , HCLLevel52
+    , HAuto
+    , HLevel1
+    , HLevel11
+    , HLevel12
+    , HLevel13
+    , HLevel2
+    , HLevel21
+    , HLevel22
+    , HLevel3
+    , HLevel31
+    , HLevel32
+    , HLevel4
+    , HLevel41
+    , HLevel42
+    , HLevel5
+    , HLevel51
+    , HLevel52
     )
   ) where
 
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | H.264 Level.
+-- | Specify an H.264 level that is consistent with your output video settings. If you aren't sure what level to specify, choose Auto (AUTO).
 data H264CodecLevel = H264CodecLevel' (CI Text)
                         deriving (Eq, Ord, Read, Show, Data, Typeable,
                                   Generic)
 
-pattern HCLAuto :: H264CodecLevel
-pattern HCLAuto = H264CodecLevel' "AUTO"
+pattern HAuto :: H264CodecLevel
+pattern HAuto = H264CodecLevel' "AUTO"
 
-pattern HCLLevel1 :: H264CodecLevel
-pattern HCLLevel1 = H264CodecLevel' "LEVEL_1"
+pattern HLevel1 :: H264CodecLevel
+pattern HLevel1 = H264CodecLevel' "LEVEL_1"
 
-pattern HCLLevel11 :: H264CodecLevel
-pattern HCLLevel11 = H264CodecLevel' "LEVEL_1_1"
+pattern HLevel11 :: H264CodecLevel
+pattern HLevel11 = H264CodecLevel' "LEVEL_1_1"
 
-pattern HCLLevel12 :: H264CodecLevel
-pattern HCLLevel12 = H264CodecLevel' "LEVEL_1_2"
+pattern HLevel12 :: H264CodecLevel
+pattern HLevel12 = H264CodecLevel' "LEVEL_1_2"
 
-pattern HCLLevel13 :: H264CodecLevel
-pattern HCLLevel13 = H264CodecLevel' "LEVEL_1_3"
+pattern HLevel13 :: H264CodecLevel
+pattern HLevel13 = H264CodecLevel' "LEVEL_1_3"
 
-pattern HCLLevel2 :: H264CodecLevel
-pattern HCLLevel2 = H264CodecLevel' "LEVEL_2"
+pattern HLevel2 :: H264CodecLevel
+pattern HLevel2 = H264CodecLevel' "LEVEL_2"
 
-pattern HCLLevel21 :: H264CodecLevel
-pattern HCLLevel21 = H264CodecLevel' "LEVEL_2_1"
+pattern HLevel21 :: H264CodecLevel
+pattern HLevel21 = H264CodecLevel' "LEVEL_2_1"
 
-pattern HCLLevel22 :: H264CodecLevel
-pattern HCLLevel22 = H264CodecLevel' "LEVEL_2_2"
+pattern HLevel22 :: H264CodecLevel
+pattern HLevel22 = H264CodecLevel' "LEVEL_2_2"
 
-pattern HCLLevel3 :: H264CodecLevel
-pattern HCLLevel3 = H264CodecLevel' "LEVEL_3"
+pattern HLevel3 :: H264CodecLevel
+pattern HLevel3 = H264CodecLevel' "LEVEL_3"
 
-pattern HCLLevel31 :: H264CodecLevel
-pattern HCLLevel31 = H264CodecLevel' "LEVEL_3_1"
+pattern HLevel31 :: H264CodecLevel
+pattern HLevel31 = H264CodecLevel' "LEVEL_3_1"
 
-pattern HCLLevel32 :: H264CodecLevel
-pattern HCLLevel32 = H264CodecLevel' "LEVEL_3_2"
+pattern HLevel32 :: H264CodecLevel
+pattern HLevel32 = H264CodecLevel' "LEVEL_3_2"
 
-pattern HCLLevel4 :: H264CodecLevel
-pattern HCLLevel4 = H264CodecLevel' "LEVEL_4"
+pattern HLevel4 :: H264CodecLevel
+pattern HLevel4 = H264CodecLevel' "LEVEL_4"
 
-pattern HCLLevel41 :: H264CodecLevel
-pattern HCLLevel41 = H264CodecLevel' "LEVEL_4_1"
+pattern HLevel41 :: H264CodecLevel
+pattern HLevel41 = H264CodecLevel' "LEVEL_4_1"
 
-pattern HCLLevel42 :: H264CodecLevel
-pattern HCLLevel42 = H264CodecLevel' "LEVEL_4_2"
+pattern HLevel42 :: H264CodecLevel
+pattern HLevel42 = H264CodecLevel' "LEVEL_4_2"
 
-pattern HCLLevel5 :: H264CodecLevel
-pattern HCLLevel5 = H264CodecLevel' "LEVEL_5"
+pattern HLevel5 :: H264CodecLevel
+pattern HLevel5 = H264CodecLevel' "LEVEL_5"
 
-pattern HCLLevel51 :: H264CodecLevel
-pattern HCLLevel51 = H264CodecLevel' "LEVEL_5_1"
+pattern HLevel51 :: H264CodecLevel
+pattern HLevel51 = H264CodecLevel' "LEVEL_5_1"
 
-pattern HCLLevel52 :: H264CodecLevel
-pattern HCLLevel52 = H264CodecLevel' "LEVEL_5_2"
+pattern HLevel52 :: H264CodecLevel
+pattern HLevel52 = H264CodecLevel' "LEVEL_5_2"
 
 {-# COMPLETE
-  HCLAuto,
-  HCLLevel1,
-  HCLLevel11,
-  HCLLevel12,
-  HCLLevel13,
-  HCLLevel2,
-  HCLLevel21,
-  HCLLevel22,
-  HCLLevel3,
-  HCLLevel31,
-  HCLLevel32,
-  HCLLevel4,
-  HCLLevel41,
-  HCLLevel42,
-  HCLLevel5,
-  HCLLevel51,
-  HCLLevel52,
+  HAuto,
+  HLevel1,
+  HLevel11,
+  HLevel12,
+  HLevel13,
+  HLevel2,
+  HLevel21,
+  HLevel22,
+  HLevel3,
+  HLevel31,
+  HLevel32,
+  HLevel4,
+  HLevel41,
+  HLevel42,
+  HLevel5,
+  HLevel51,
+  HLevel52,
   H264CodecLevel' #-}
 
 instance FromText H264CodecLevel where
@@ -130,50 +130,50 @@ instance ToText H264CodecLevel where
 --   fromEnum is a partial function, and will error on values unknown at generation time.
 instance Enum H264CodecLevel where
     toEnum i = case i of
-        0 -> HCLAuto
-        1 -> HCLLevel1
-        2 -> HCLLevel11
-        3 -> HCLLevel12
-        4 -> HCLLevel13
-        5 -> HCLLevel2
-        6 -> HCLLevel21
-        7 -> HCLLevel22
-        8 -> HCLLevel3
-        9 -> HCLLevel31
-        10 -> HCLLevel32
-        11 -> HCLLevel4
-        12 -> HCLLevel41
-        13 -> HCLLevel42
-        14 -> HCLLevel5
-        15 -> HCLLevel51
-        16 -> HCLLevel52
+        0 -> HAuto
+        1 -> HLevel1
+        2 -> HLevel11
+        3 -> HLevel12
+        4 -> HLevel13
+        5 -> HLevel2
+        6 -> HLevel21
+        7 -> HLevel22
+        8 -> HLevel3
+        9 -> HLevel31
+        10 -> HLevel32
+        11 -> HLevel4
+        12 -> HLevel41
+        13 -> HLevel42
+        14 -> HLevel5
+        15 -> HLevel51
+        16 -> HLevel52
         _ -> (error . showText) $ "Unknown index for H264CodecLevel: " <> toText i
     fromEnum x = case x of
-        HCLAuto -> 0
-        HCLLevel1 -> 1
-        HCLLevel11 -> 2
-        HCLLevel12 -> 3
-        HCLLevel13 -> 4
-        HCLLevel2 -> 5
-        HCLLevel21 -> 6
-        HCLLevel22 -> 7
-        HCLLevel3 -> 8
-        HCLLevel31 -> 9
-        HCLLevel32 -> 10
-        HCLLevel4 -> 11
-        HCLLevel41 -> 12
-        HCLLevel42 -> 13
-        HCLLevel5 -> 14
-        HCLLevel51 -> 15
-        HCLLevel52 -> 16
+        HAuto -> 0
+        HLevel1 -> 1
+        HLevel11 -> 2
+        HLevel12 -> 3
+        HLevel13 -> 4
+        HLevel2 -> 5
+        HLevel21 -> 6
+        HLevel22 -> 7
+        HLevel3 -> 8
+        HLevel31 -> 9
+        HLevel32 -> 10
+        HLevel4 -> 11
+        HLevel41 -> 12
+        HLevel42 -> 13
+        HLevel5 -> 14
+        HLevel51 -> 15
+        HLevel52 -> 16
         H264CodecLevel' name -> (error . showText) $ "Unknown H264CodecLevel: " <> original name
 
 -- | Represents the bounds of /known/ $H264CodecLevel.
 --   AWS may have added more since the source was generated.
 --   This instance exists only for backward compatibility.
 instance Bounded H264CodecLevel where
-    minBound = HCLAuto
-    maxBound = HCLLevel52
+    minBound = HAuto
+    maxBound = HLevel52
 
 instance Hashable     H264CodecLevel
 instance NFData       H264CodecLevel

@@ -24,8 +24,9 @@ import Network.AWS.Prelude
 -- | Caption Language Mapping
 --
 -- /See:/ 'hlsCaptionLanguageMapping' smart constructor.
-data HlsCaptionLanguageMapping = HlsCaptionLanguageMapping'{_hclmLanguageCode
-                                                            ::
+data HlsCaptionLanguageMapping = HlsCaptionLanguageMapping'{_hclmCustomLanguageCode
+                                                            :: !(Maybe Text),
+                                                            _hclmLanguageCode ::
                                                             !(Maybe
                                                                 LanguageCode),
                                                             _hclmLanguageDescription
@@ -39,7 +40,9 @@ data HlsCaptionLanguageMapping = HlsCaptionLanguageMapping'{_hclmLanguageCode
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'hclmLanguageCode' - Undocumented member.
+-- * 'hclmCustomLanguageCode' - Specify the language for this captions channel, using the ISO 639-2 or ISO 639-3 three-letter language code
+--
+-- * 'hclmLanguageCode' - Specify the language, using the ISO 639-2 three-letter code listed at https://www.loc.gov/standards/iso639-2/php/code_list.php.
 --
 -- * 'hclmLanguageDescription' - Caption language description.
 --
@@ -47,12 +50,17 @@ data HlsCaptionLanguageMapping = HlsCaptionLanguageMapping'{_hclmLanguageCode
 hlsCaptionLanguageMapping
     :: HlsCaptionLanguageMapping
 hlsCaptionLanguageMapping
-  = HlsCaptionLanguageMapping'{_hclmLanguageCode =
-                                 Nothing,
+  = HlsCaptionLanguageMapping'{_hclmCustomLanguageCode
+                                 = Nothing,
+                               _hclmLanguageCode = Nothing,
                                _hclmLanguageDescription = Nothing,
                                _hclmCaptionChannel = Nothing}
 
--- | Undocumented member.
+-- | Specify the language for this captions channel, using the ISO 639-2 or ISO 639-3 three-letter language code
+hclmCustomLanguageCode :: Lens' HlsCaptionLanguageMapping (Maybe Text)
+hclmCustomLanguageCode = lens _hclmCustomLanguageCode (\ s a -> s{_hclmCustomLanguageCode = a})
+
+-- | Specify the language, using the ISO 639-2 three-letter code listed at https://www.loc.gov/standards/iso639-2/php/code_list.php.
 hclmLanguageCode :: Lens' HlsCaptionLanguageMapping (Maybe LanguageCode)
 hclmLanguageCode = lens _hclmLanguageCode (\ s a -> s{_hclmLanguageCode = a})
 
@@ -69,8 +77,9 @@ instance FromJSON HlsCaptionLanguageMapping where
           = withObject "HlsCaptionLanguageMapping"
               (\ x ->
                  HlsCaptionLanguageMapping' <$>
-                   (x .:? "languageCode") <*>
-                     (x .:? "languageDescription")
+                   (x .:? "customLanguageCode") <*>
+                     (x .:? "languageCode")
+                     <*> (x .:? "languageDescription")
                      <*> (x .:? "captionChannel"))
 
 instance Hashable HlsCaptionLanguageMapping where
@@ -81,7 +90,9 @@ instance ToJSON HlsCaptionLanguageMapping where
         toJSON HlsCaptionLanguageMapping'{..}
           = object
               (catMaybes
-                 [("languageCode" .=) <$> _hclmLanguageCode,
+                 [("customLanguageCode" .=) <$>
+                    _hclmCustomLanguageCode,
+                  ("languageCode" .=) <$> _hclmLanguageCode,
                   ("languageDescription" .=) <$>
                     _hclmLanguageDescription,
                   ("captionChannel" .=) <$> _hclmCaptionChannel])

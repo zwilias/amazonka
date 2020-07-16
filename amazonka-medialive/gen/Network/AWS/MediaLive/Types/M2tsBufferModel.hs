@@ -27,7 +27,7 @@ module Network.AWS.MediaLive.Types.M2tsBufferModel (
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | Placeholder documentation for M2tsBufferModel
+-- | M2ts Buffer Model
 data M2tsBufferModel = M2tsBufferModel' (CI Text)
                          deriving (Eq, Ord, Read, Show, Data, Typeable,
                                    Generic)

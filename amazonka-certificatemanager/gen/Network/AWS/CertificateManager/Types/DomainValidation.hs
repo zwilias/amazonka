@@ -48,7 +48,7 @@ data DomainValidation = DomainValidation'{_dvValidationEmails
 --
 -- * 'dvValidationMethod' - Specifies the domain validation method.
 --
--- * 'dvResourceRecord' - Contains the CNAME record that you add to your DNS database for domain validation. For more information, see <http://docs.aws.amazon.com/acm/latest/userguide/gs-acm-validate-dns.html Use DNS to Validate Domain Ownership> .
+-- * 'dvResourceRecord' - Contains the CNAME record that you add to your DNS database for domain validation. For more information, see <https://docs.aws.amazon.com/acm/latest/userguide/gs-acm-validate-dns.html Use DNS to Validate Domain Ownership> . Note: The CNAME information that you need does not include the name of your domain. If you include  your domain name in the DNS database CNAME record, validation fails.  For example, if the name is "_a79865eb4cd1a6ab990a45779b4e0b96.yourdomain.com", only "_a79865eb4cd1a6ab990a45779b4e0b96" must be used.
 --
 -- * 'dvValidationStatus' - The validation status of the domain name. This can be one of the following values:     * @PENDING_VALIDATION@      * SUCCESS     * FAILED
 --
@@ -74,7 +74,7 @@ dvValidationEmails = lens _dvValidationEmails (\ s a -> s{_dvValidationEmails = 
 dvValidationMethod :: Lens' DomainValidation (Maybe ValidationMethod)
 dvValidationMethod = lens _dvValidationMethod (\ s a -> s{_dvValidationMethod = a})
 
--- | Contains the CNAME record that you add to your DNS database for domain validation. For more information, see <http://docs.aws.amazon.com/acm/latest/userguide/gs-acm-validate-dns.html Use DNS to Validate Domain Ownership> .
+-- | Contains the CNAME record that you add to your DNS database for domain validation. For more information, see <https://docs.aws.amazon.com/acm/latest/userguide/gs-acm-validate-dns.html Use DNS to Validate Domain Ownership> . Note: The CNAME information that you need does not include the name of your domain. If you include  your domain name in the DNS database CNAME record, validation fails.  For example, if the name is "_a79865eb4cd1a6ab990a45779b4e0b96.yourdomain.com", only "_a79865eb4cd1a6ab990a45779b4e0b96" must be used.
 dvResourceRecord :: Lens' DomainValidation (Maybe ResourceRecord)
 dvResourceRecord = lens _dvResourceRecord (\ s a -> s{_dvResourceRecord = a})
 

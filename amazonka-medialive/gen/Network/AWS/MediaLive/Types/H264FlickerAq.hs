@@ -27,7 +27,7 @@ module Network.AWS.MediaLive.Types.H264FlickerAq (
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | Placeholder documentation for H264FlickerAq
+-- | H264 Flicker Aq
 data H264FlickerAq = H264FlickerAq' (CI Text)
                        deriving (Eq, Ord, Read, Show, Data, Typeable,
                                  Generic)

@@ -48,7 +48,7 @@ data JobListEntry = JobListEntry'{_jleJobType ::
 --
 -- * 'jleJobState' - The current state of this job.
 --
--- * 'jleSnowballType' - The type of appliance used with this job.
+-- * 'jleSnowballType' - The type of device used with this job.
 --
 -- * 'jleCreationDate' - The creation date for this job.
 --
@@ -76,7 +76,7 @@ jleJobId = lens _jleJobId (\ s a -> s{_jleJobId = a})
 jleJobState :: Lens' JobListEntry (Maybe JobState)
 jleJobState = lens _jleJobState (\ s a -> s{_jleJobState = a})
 
--- | The type of appliance used with this job.
+-- | The type of device used with this job.
 jleSnowballType :: Lens' JobListEntry (Maybe SnowballType)
 jleSnowballType = lens _jleSnowballType (\ s a -> s{_jleSnowballType = a})
 

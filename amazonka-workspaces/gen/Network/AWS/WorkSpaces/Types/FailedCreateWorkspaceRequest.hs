@@ -21,7 +21,7 @@ import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.WorkSpaces.Types.WorkspaceRequest
 
--- | Information about a WorkSpace that could not be created.
+-- | Describes a WorkSpace that cannot be created.
 --
 --
 --
@@ -45,9 +45,9 @@ data FailedCreateWorkspaceRequest = FailedCreateWorkspaceRequest'{_fcwrWorkspace
 --
 -- * 'fcwrWorkspaceRequest' - Information about the WorkSpace.
 --
--- * 'fcwrErrorCode' - The error code.
+-- * 'fcwrErrorCode' - The error code that is returned if the WorkSpace cannot be created.
 --
--- * 'fcwrErrorMessage' - The textual error message.
+-- * 'fcwrErrorMessage' - The text of the error message that is returned if the WorkSpace cannot be created.
 failedCreateWorkspaceRequest
     :: FailedCreateWorkspaceRequest
 failedCreateWorkspaceRequest
@@ -60,11 +60,11 @@ failedCreateWorkspaceRequest
 fcwrWorkspaceRequest :: Lens' FailedCreateWorkspaceRequest (Maybe WorkspaceRequest)
 fcwrWorkspaceRequest = lens _fcwrWorkspaceRequest (\ s a -> s{_fcwrWorkspaceRequest = a})
 
--- | The error code.
+-- | The error code that is returned if the WorkSpace cannot be created.
 fcwrErrorCode :: Lens' FailedCreateWorkspaceRequest (Maybe Text)
 fcwrErrorCode = lens _fcwrErrorCode (\ s a -> s{_fcwrErrorCode = a})
 
--- | The textual error message.
+-- | The text of the error message that is returned if the WorkSpace cannot be created.
 fcwrErrorMessage :: Lens' FailedCreateWorkspaceRequest (Maybe Text)
 fcwrErrorMessage = lens _fcwrErrorMessage (\ s a -> s{_fcwrErrorMessage = a})
 

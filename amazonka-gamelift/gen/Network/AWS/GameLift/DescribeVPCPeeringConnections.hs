@@ -23,8 +23,6 @@
 --
 -- To retrieve connection information, call this operation from the AWS account that is used to manage the Amazon GameLift fleets. Specify a fleet ID or leave the parameter empty to retrieve all connection records. If successful, the retrieved information includes both active and pending connections. Active connections identify the IpV4 CIDR block that the VPC uses to connect. 
 --
--- VPC peering connection operations include:
---
 --     * 'CreateVpcPeeringAuthorization' 
 --
 --     * 'DescribeVpcPeeringAuthorizations' 
@@ -78,14 +76,14 @@ newtype DescribeVPCPeeringConnections = DescribeVPCPeeringConnections'{_dvpcpcFl
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dvpcpcFleetId' - Unique identifier for a fleet.
+-- * 'dvpcpcFleetId' - A unique identifier for a fleet. You can use either the fleet ID or ARN value.
 describeVPCPeeringConnections
     :: DescribeVPCPeeringConnections
 describeVPCPeeringConnections
   = DescribeVPCPeeringConnections'{_dvpcpcFleetId =
                                      Nothing}
 
--- | Unique identifier for a fleet.
+-- | A unique identifier for a fleet. You can use either the fleet ID or ARN value.
 dvpcpcFleetId :: Lens' DescribeVPCPeeringConnections (Maybe Text)
 dvpcpcFleetId = lens _dvpcpcFleetId (\ s a -> s{_dvpcpcFleetId = a})
 
@@ -146,7 +144,7 @@ data DescribeVPCPeeringConnectionsResponse = DescribeVPCPeeringConnectionsRespon
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dvpcpcrsVPCPeeringConnections' - Collection of VPC peering connection records that match the request.
+-- * 'dvpcpcrsVPCPeeringConnections' - A collection of VPC peering connection records that match the request.
 --
 -- * 'dvpcpcrsResponseStatus' - -- | The response status code.
 describeVPCPeeringConnectionsResponse
@@ -159,7 +157,7 @@ describeVPCPeeringConnectionsResponse
                                            _dvpcpcrsResponseStatus =
                                              pResponseStatus_}
 
--- | Collection of VPC peering connection records that match the request.
+-- | A collection of VPC peering connection records that match the request.
 dvpcpcrsVPCPeeringConnections :: Lens' DescribeVPCPeeringConnectionsResponse [VPCPeeringConnection]
 dvpcpcrsVPCPeeringConnections = lens _dvpcpcrsVPCPeeringConnections (\ s a -> s{_dvpcpcrsVPCPeeringConnections = a}) . _Default . _Coerce
 

@@ -20,7 +20,7 @@ module Network.AWS.RDS.Types.DBClusterBacktrack where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | This data type is used as a response element in the 'DescribeDBClusterBacktracks' action.
+-- | This data type is used as a response element in the @DescribeDBClusterBacktracks@ action.
 --
 --
 --

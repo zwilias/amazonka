@@ -82,7 +82,7 @@ data ConfigurationSettingsDescription = ConfigurationSettingsDescription'{_csdTe
 --
 -- * 'csdDateCreated' - The date (in UTC time) when this configuration set was created.
 --
--- * 'csdPlatformARN' - The ARN of the platform.
+-- * 'csdPlatformARN' - The ARN of the platform version.
 --
 -- * 'csdEnvironmentName' - If not @null@ , the name of the environment for this configuration set. 
 --
@@ -124,7 +124,7 @@ csdDateUpdated = lens _csdDateUpdated (\ s a -> s{_csdDateUpdated = a}) . mappin
 csdDateCreated :: Lens' ConfigurationSettingsDescription (Maybe UTCTime)
 csdDateCreated = lens _csdDateCreated (\ s a -> s{_csdDateCreated = a}) . mapping _Time
 
--- | The ARN of the platform.
+-- | The ARN of the platform version.
 csdPlatformARN :: Lens' ConfigurationSettingsDescription (Maybe Text)
 csdPlatformARN = lens _csdPlatformARN (\ s a -> s{_csdPlatformARN = a})
 

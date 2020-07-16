@@ -34,7 +34,7 @@ import Network.AWS.MediaLive.Types.Eac3SurroundExMode
 import Network.AWS.MediaLive.Types.Eac3SurroundMode
 import Network.AWS.Prelude
 
--- | Placeholder documentation for Eac3Settings
+-- | Eac3 Settings
 --
 -- /See:/ 'eac3Settings' smart constructor.
 data Eac3Settings = Eac3Settings'{_esStereoDownmix ::

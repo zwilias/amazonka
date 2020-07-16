@@ -39,7 +39,7 @@ data EngineDefaults = EngineDefaults'{_edCacheParameterGroupFamily
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'edCacheParameterGroupFamily' - Specifies the name of the cache parameter group family to which the engine default parameters apply. Valid values are: @memcached1.4@ | @redis2.6@ | @redis2.8@ | @redis3.2@ 
+-- * 'edCacheParameterGroupFamily' - Specifies the name of the cache parameter group family to which the engine default parameters apply. Valid values are: @memcached1.4@ | @memcached1.5@ | @redis2.6@ | @redis2.8@ | @redis3.2@ | @redis4.0@ | @redis5.0@ | 
 --
 -- * 'edCacheNodeTypeSpecificParameters' - A list of parameters specific to a particular cache node type. Each element in the list contains detailed information about one parameter.
 --
@@ -54,7 +54,7 @@ engineDefaults
                     _edCacheNodeTypeSpecificParameters = Nothing,
                     _edMarker = Nothing, _edParameters = Nothing}
 
--- | Specifies the name of the cache parameter group family to which the engine default parameters apply. Valid values are: @memcached1.4@ | @redis2.6@ | @redis2.8@ | @redis3.2@ 
+-- | Specifies the name of the cache parameter group family to which the engine default parameters apply. Valid values are: @memcached1.4@ | @memcached1.5@ | @redis2.6@ | @redis2.8@ | @redis3.2@ | @redis4.0@ | @redis5.0@ | 
 edCacheParameterGroupFamily :: Lens' EngineDefaults (Maybe Text)
 edCacheParameterGroupFamily = lens _edCacheParameterGroupFamily (\ s a -> s{_edCacheParameterGroupFamily = a})
 

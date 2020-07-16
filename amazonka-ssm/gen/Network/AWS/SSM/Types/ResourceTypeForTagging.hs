@@ -22,6 +22,7 @@ module Network.AWS.SSM.Types.ResourceTypeForTagging (
     , RTFTDocument
     , RTFTMaintenanceWindow
     , RTFTManagedInstance
+    , RTFTOpsItem
     , RTFTParameter
     , RTFTPatchBaseline
     )
@@ -44,6 +45,9 @@ pattern RTFTMaintenanceWindow = ResourceTypeForTagging' "MaintenanceWindow"
 pattern RTFTManagedInstance :: ResourceTypeForTagging
 pattern RTFTManagedInstance = ResourceTypeForTagging' "ManagedInstance"
 
+pattern RTFTOpsItem :: ResourceTypeForTagging
+pattern RTFTOpsItem = ResourceTypeForTagging' "OpsItem"
+
 pattern RTFTParameter :: ResourceTypeForTagging
 pattern RTFTParameter = ResourceTypeForTagging' "Parameter"
 
@@ -54,6 +58,7 @@ pattern RTFTPatchBaseline = ResourceTypeForTagging' "PatchBaseline"
   RTFTDocument,
   RTFTMaintenanceWindow,
   RTFTManagedInstance,
+  RTFTOpsItem,
   RTFTParameter,
   RTFTPatchBaseline,
   ResourceTypeForTagging' #-}
@@ -73,15 +78,17 @@ instance Enum ResourceTypeForTagging where
         0 -> RTFTDocument
         1 -> RTFTMaintenanceWindow
         2 -> RTFTManagedInstance
-        3 -> RTFTParameter
-        4 -> RTFTPatchBaseline
+        3 -> RTFTOpsItem
+        4 -> RTFTParameter
+        5 -> RTFTPatchBaseline
         _ -> (error . showText) $ "Unknown index for ResourceTypeForTagging: " <> toText i
     fromEnum x = case x of
         RTFTDocument -> 0
         RTFTMaintenanceWindow -> 1
         RTFTManagedInstance -> 2
-        RTFTParameter -> 3
-        RTFTPatchBaseline -> 4
+        RTFTOpsItem -> 3
+        RTFTParameter -> 4
+        RTFTPatchBaseline -> 5
         ResourceTypeForTagging' name -> (error . showText) $ "Unknown ResourceTypeForTagging: " <> original name
 
 -- | Represents the bounds of /known/ $ResourceTypeForTagging.

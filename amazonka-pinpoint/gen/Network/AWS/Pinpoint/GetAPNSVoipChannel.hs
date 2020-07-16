@@ -18,7 +18,9 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Get an APNS VoIP channel
+-- Retrieves information about the status and settings of the APNs VoIP channel for an application.
+--
+--
 module Network.AWS.Pinpoint.GetAPNSVoipChannel
     (
     -- * Creating a Request
@@ -52,7 +54,7 @@ newtype GetAPNSVoipChannel = GetAPNSVoipChannel'{_gavcApplicationId
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'gavcApplicationId' - Undocumented member.
+-- * 'gavcApplicationId' - The unique identifier for the application. This identifier is displayed as the __Project ID__ on the Amazon Pinpoint console.
 getAPNSVoipChannel
     :: Text -- ^ 'gavcApplicationId'
     -> GetAPNSVoipChannel
@@ -60,7 +62,7 @@ getAPNSVoipChannel pApplicationId_
   = GetAPNSVoipChannel'{_gavcApplicationId =
                           pApplicationId_}
 
--- | Undocumented member.
+-- | The unique identifier for the application. This identifier is displayed as the __Project ID__ on the Amazon Pinpoint console.
 gavcApplicationId :: Lens' GetAPNSVoipChannel Text
 gavcApplicationId = lens _gavcApplicationId (\ s a -> s{_gavcApplicationId = a})
 

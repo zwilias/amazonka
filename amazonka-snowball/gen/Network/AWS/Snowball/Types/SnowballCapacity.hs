@@ -21,8 +21,10 @@ module Network.AWS.Snowball.Types.SnowballCapacity (
     ..
     , NoPreference
     , T100
+    , T42
     , T50
     , T80
+    , T98
     )
   ) where
 
@@ -39,17 +41,25 @@ pattern NoPreference = SnowballCapacity' "NoPreference"
 pattern T100 :: SnowballCapacity
 pattern T100 = SnowballCapacity' "T100"
 
+pattern T42 :: SnowballCapacity
+pattern T42 = SnowballCapacity' "T42"
+
 pattern T50 :: SnowballCapacity
 pattern T50 = SnowballCapacity' "T50"
 
 pattern T80 :: SnowballCapacity
 pattern T80 = SnowballCapacity' "T80"
 
+pattern T98 :: SnowballCapacity
+pattern T98 = SnowballCapacity' "T98"
+
 {-# COMPLETE
   NoPreference,
   T100,
+  T42,
   T50,
   T80,
+  T98,
   SnowballCapacity' #-}
 
 instance FromText SnowballCapacity where
@@ -66,14 +76,18 @@ instance Enum SnowballCapacity where
     toEnum i = case i of
         0 -> NoPreference
         1 -> T100
-        2 -> T50
-        3 -> T80
+        2 -> T42
+        3 -> T50
+        4 -> T80
+        5 -> T98
         _ -> (error . showText) $ "Unknown index for SnowballCapacity: " <> toText i
     fromEnum x = case x of
         NoPreference -> 0
         T100 -> 1
-        T50 -> 2
-        T80 -> 3
+        T42 -> 2
+        T50 -> 3
+        T80 -> 4
+        T98 -> 5
         SnowballCapacity' name -> (error . showText) $ "Unknown SnowballCapacity: " <> original name
 
 -- | Represents the bounds of /known/ $SnowballCapacity.
@@ -81,7 +95,7 @@ instance Enum SnowballCapacity where
 --   This instance exists only for backward compatibility.
 instance Bounded SnowballCapacity where
     minBound = NoPreference
-    maxBound = T80
+    maxBound = T98
 
 instance Hashable     SnowballCapacity
 instance NFData       SnowballCapacity

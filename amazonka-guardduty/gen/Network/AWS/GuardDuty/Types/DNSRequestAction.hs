@@ -20,7 +20,9 @@ module Network.AWS.GuardDuty.Types.DNSRequestAction where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | Information about the DNS_REQUEST action described in this finding.
+-- | Contains information about the DNS_REQUEST action described in this finding.
+--
+--
 --
 -- /See:/ 'dnsRequestAction' smart constructor.
 newtype DNSRequestAction = DNSRequestAction'{_draDomain
@@ -31,13 +33,13 @@ newtype DNSRequestAction = DNSRequestAction'{_draDomain
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'draDomain' - Domain information for the DNS request.
+-- * 'draDomain' - The domain information for the API request.
 dnsRequestAction
     :: DNSRequestAction
 dnsRequestAction
   = DNSRequestAction'{_draDomain = Nothing}
 
--- | Domain information for the DNS request.
+-- | The domain information for the API request.
 draDomain :: Lens' DNSRequestAction (Maybe Text)
 draDomain = lens _draDomain (\ s a -> s{_draDomain = a})
 

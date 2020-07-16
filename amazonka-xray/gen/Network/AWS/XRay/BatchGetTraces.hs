@@ -60,7 +60,7 @@ data BatchGetTraces = BatchGetTraces'{_bgtNextToken
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'bgtNextToken' - Pagination token. Not used.
+-- * 'bgtNextToken' - Pagination token.
 --
 -- * 'bgtTraceIds' - Specify the trace IDs of requests for which to retrieve segments.
 batchGetTraces
@@ -69,7 +69,7 @@ batchGetTraces
   = BatchGetTraces'{_bgtNextToken = Nothing,
                     _bgtTraceIds = mempty}
 
--- | Pagination token. Not used.
+-- | Pagination token.
 bgtNextToken :: Lens' BatchGetTraces (Maybe Text)
 bgtNextToken = lens _bgtNextToken (\ s a -> s{_bgtNextToken = a})
 
@@ -131,7 +131,7 @@ data BatchGetTracesResponse = BatchGetTracesResponse'{_bgtrsNextToken
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'bgtrsNextToken' - Pagination token. Not used.
+-- * 'bgtrsNextToken' - Pagination token.
 --
 -- * 'bgtrsTraces' - Full traces for the specified requests.
 --
@@ -147,7 +147,7 @@ batchGetTracesResponse pResponseStatus_
                             _bgtrsUnprocessedTraceIds = Nothing,
                             _bgtrsResponseStatus = pResponseStatus_}
 
--- | Pagination token. Not used.
+-- | Pagination token.
 bgtrsNextToken :: Lens' BatchGetTracesResponse (Maybe Text)
 bgtrsNextToken = lens _bgtrsNextToken (\ s a -> s{_bgtrsNextToken = a})
 

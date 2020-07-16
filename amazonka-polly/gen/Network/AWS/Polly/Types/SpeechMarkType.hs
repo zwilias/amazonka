@@ -91,3 +91,6 @@ instance ToHeader     SpeechMarkType
 
 instance ToJSON SpeechMarkType where
     toJSON = toJSONText
+
+instance FromJSON SpeechMarkType where
+    parseJSON = parseJSONText "SpeechMarkType"

@@ -21,7 +21,7 @@ import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.RDS.Types.AvailabilityZone
 
--- | This data type is used as a response element in the 'DescribeDBSubnetGroups' action. 
+-- | This data type is used as a response element in the @DescribeDBSubnetGroups@ action. 
 --
 --
 --

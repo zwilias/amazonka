@@ -19,9 +19,10 @@
 module Network.AWS.CloudFormation.Types.StackSetOperationAction (
   StackSetOperationAction (
     ..
-    , SSOACreate
-    , SSOADelete
-    , SSOAUpdate
+    , Create
+    , Delete
+    , DetectDrift
+    , Update
     )
   ) where
 
@@ -33,19 +34,23 @@ data StackSetOperationAction = StackSetOperationAction' (CI
                                  deriving (Eq, Ord, Read, Show, Data, Typeable,
                                            Generic)
 
-pattern SSOACreate :: StackSetOperationAction
-pattern SSOACreate = StackSetOperationAction' "CREATE"
+pattern Create :: StackSetOperationAction
+pattern Create = StackSetOperationAction' "CREATE"
 
-pattern SSOADelete :: StackSetOperationAction
-pattern SSOADelete = StackSetOperationAction' "DELETE"
+pattern Delete :: StackSetOperationAction
+pattern Delete = StackSetOperationAction' "DELETE"
 
-pattern SSOAUpdate :: StackSetOperationAction
-pattern SSOAUpdate = StackSetOperationAction' "UPDATE"
+pattern DetectDrift :: StackSetOperationAction
+pattern DetectDrift = StackSetOperationAction' "DETECT_DRIFT"
+
+pattern Update :: StackSetOperationAction
+pattern Update = StackSetOperationAction' "UPDATE"
 
 {-# COMPLETE
-  SSOACreate,
-  SSOADelete,
-  SSOAUpdate,
+  Create,
+  Delete,
+  DetectDrift,
+  Update,
   StackSetOperationAction' #-}
 
 instance FromText StackSetOperationAction where
@@ -60,22 +65,24 @@ instance ToText StackSetOperationAction where
 --   fromEnum is a partial function, and will error on values unknown at generation time.
 instance Enum StackSetOperationAction where
     toEnum i = case i of
-        0 -> SSOACreate
-        1 -> SSOADelete
-        2 -> SSOAUpdate
+        0 -> Create
+        1 -> Delete
+        2 -> DetectDrift
+        3 -> Update
         _ -> (error . showText) $ "Unknown index for StackSetOperationAction: " <> toText i
     fromEnum x = case x of
-        SSOACreate -> 0
-        SSOADelete -> 1
-        SSOAUpdate -> 2
+        Create -> 0
+        Delete -> 1
+        DetectDrift -> 2
+        Update -> 3
         StackSetOperationAction' name -> (error . showText) $ "Unknown StackSetOperationAction: " <> original name
 
 -- | Represents the bounds of /known/ $StackSetOperationAction.
 --   AWS may have added more since the source was generated.
 --   This instance exists only for backward compatibility.
 instance Bounded StackSetOperationAction where
-    minBound = SSOACreate
-    maxBound = SSOAUpdate
+    minBound = Create
+    maxBound = Update
 
 instance Hashable     StackSetOperationAction
 instance NFData       StackSetOperationAction

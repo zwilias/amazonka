@@ -27,7 +27,7 @@ module Network.AWS.MediaLive.Types.Scte20Convert608To708 (
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | Placeholder documentation for Scte20Convert608To708
+-- | Scte20 Convert608 To708
 data Scte20Convert608To708 = Scte20Convert608To708' (CI
                                                        Text)
                                deriving (Eq, Ord, Read, Show, Data, Typeable,

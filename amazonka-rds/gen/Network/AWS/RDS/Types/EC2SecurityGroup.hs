@@ -23,11 +23,11 @@ import Network.AWS.Prelude
 -- | This data type is used as a response element in the following actions:
 --
 --
---     * 'AuthorizeDBSecurityGroupIngress' 
+--     * @AuthorizeDBSecurityGroupIngress@ 
 --
---     * 'DescribeDBSecurityGroups' 
+--     * @DescribeDBSecurityGroups@ 
 --
---     * 'RevokeDBSecurityGroupIngress' 
+--     * @RevokeDBSecurityGroupIngress@ 
 --
 --
 --

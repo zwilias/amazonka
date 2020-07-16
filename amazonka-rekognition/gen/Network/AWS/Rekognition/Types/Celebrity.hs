@@ -21,7 +21,7 @@ import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Rekognition.Types.ComparedFace
 
--- | Provides information about a celebrity recognized by the operation.
+-- | Provides information about a celebrity recognized by the 'RecognizeCelebrities' operation.
 --
 --
 --
@@ -37,7 +37,7 @@ data Celebrity = Celebrity'{_cMatchConfidence ::
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'cMatchConfidence' - The confidence, in percentage, that Rekognition has that the recognized face is the celebrity.
+-- * 'cMatchConfidence' - The confidence, in percentage, that Amazon Rekognition has that the recognized face is the celebrity.
 --
 -- * 'cURLs' - An array of URLs pointing to additional information about the celebrity. If there is no additional information about the celebrity, this list is empty.
 --
@@ -53,7 +53,7 @@ celebrity
                _cURLs = Nothing, _cName = Nothing, _cId = Nothing,
                _cFace = Nothing}
 
--- | The confidence, in percentage, that Rekognition has that the recognized face is the celebrity.
+-- | The confidence, in percentage, that Amazon Rekognition has that the recognized face is the celebrity.
 cMatchConfidence :: Lens' Celebrity (Maybe Double)
 cMatchConfidence = lens _cMatchConfidence (\ s a -> s{_cMatchConfidence = a})
 

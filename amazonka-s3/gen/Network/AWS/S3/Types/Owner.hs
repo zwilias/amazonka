@@ -21,7 +21,11 @@ import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.S3.Internal
 
--- | /See:/ 'owner' smart constructor.
+-- | Container for the owner's display name and ID.
+--
+--
+--
+-- /See:/ 'owner' smart constructor.
 data Owner = Owner'{_oDisplayName :: !(Maybe Text),
                     _oId :: !(Maybe Text)}
                deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -30,19 +34,19 @@ data Owner = Owner'{_oDisplayName :: !(Maybe Text),
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'oDisplayName' - Undocumented member.
+-- * 'oDisplayName' - Container for the display name of the owner.
 --
--- * 'oId' - Undocumented member.
+-- * 'oId' - Container for the ID of the owner.
 owner
     :: Owner
 owner
   = Owner'{_oDisplayName = Nothing, _oId = Nothing}
 
--- | Undocumented member.
+-- | Container for the display name of the owner.
 oDisplayName :: Lens' Owner (Maybe Text)
 oDisplayName = lens _oDisplayName (\ s a -> s{_oDisplayName = a})
 
--- | Undocumented member.
+-- | Container for the ID of the owner.
 oId :: Lens' Owner (Maybe Text)
 oId = lens _oId (\ s a -> s{_oId = a})
 

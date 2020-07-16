@@ -21,6 +21,8 @@
 -- Lists OTA updates.
 --
 --
+--
+-- This operation returns paginated results.
 module Network.AWS.IoT.ListOTAUpdates
     (
     -- * Creating a Request
@@ -43,6 +45,7 @@ module Network.AWS.IoT.ListOTAUpdates
 import Network.AWS.IoT.Types
 import Network.AWS.IoT.Types.Product
 import Network.AWS.Lens
+import Network.AWS.Pager
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
@@ -82,6 +85,13 @@ lotauOtaUpdateStatus = lens _lotauOtaUpdateStatus (\ s a -> s{_lotauOtaUpdateSta
 -- | The maximum number of results to return at one time.
 lotauMaxResults :: Lens' ListOTAUpdates (Maybe Natural)
 lotauMaxResults = lens _lotauMaxResults (\ s a -> s{_lotauMaxResults = a}) . mapping _Nat
+
+instance AWSPager ListOTAUpdates where
+        page rq rs
+          | stop (rs ^. lotaursNextToken) = Nothing
+          | stop (rs ^. lotaursOtaUpdates) = Nothing
+          | otherwise =
+            Just $ rq & lotauNextToken .~ rs ^. lotaursNextToken
 
 instance AWSRequest ListOTAUpdates where
         type Rs ListOTAUpdates = ListOTAUpdatesResponse

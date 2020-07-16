@@ -18,7 +18,9 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Update an APNS sandbox channel
+-- Enables the APNs sandbox channel for an application or updates the status and settings of the APNs sandbox channel for an application.
+--
+--
 module Network.AWS.Pinpoint.UpdateAPNSSandboxChannel
     (
     -- * Creating a Request
@@ -56,7 +58,7 @@ data UpdateAPNSSandboxChannel = UpdateAPNSSandboxChannel'{_uascApplicationId
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'uascApplicationId' - Undocumented member.
+-- * 'uascApplicationId' - The unique identifier for the application. This identifier is displayed as the __Project ID__ on the Amazon Pinpoint console.
 --
 -- * 'uascAPNSSandboxChannelRequest' - Undocumented member.
 updateAPNSSandboxChannel
@@ -70,7 +72,7 @@ updateAPNSSandboxChannel pApplicationId_
                               _uascAPNSSandboxChannelRequest =
                                 pAPNSSandboxChannelRequest_}
 
--- | Undocumented member.
+-- | The unique identifier for the application. This identifier is displayed as the __Project ID__ on the Amazon Pinpoint console.
 uascApplicationId :: Lens' UpdateAPNSSandboxChannel Text
 uascApplicationId = lens _uascApplicationId (\ s a -> s{_uascApplicationId = a})
 

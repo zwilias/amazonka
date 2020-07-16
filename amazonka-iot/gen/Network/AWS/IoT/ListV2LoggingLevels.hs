@@ -21,6 +21,8 @@
 -- Lists logging levels.
 --
 --
+--
+-- This operation returns paginated results.
 module Network.AWS.IoT.ListV2LoggingLevels
     (
     -- * Creating a Request
@@ -43,6 +45,7 @@ module Network.AWS.IoT.ListV2LoggingLevels
 import Network.AWS.IoT.Types
 import Network.AWS.IoT.Types.Product
 import Network.AWS.Lens
+import Network.AWS.Pager
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
@@ -80,6 +83,14 @@ lvllNextToken = lens _lvllNextToken (\ s a -> s{_lvllNextToken = a})
 -- | The maximum number of results to return at one time.
 lvllMaxResults :: Lens' ListV2LoggingLevels (Maybe Natural)
 lvllMaxResults = lens _lvllMaxResults (\ s a -> s{_lvllMaxResults = a}) . mapping _Nat
+
+instance AWSPager ListV2LoggingLevels where
+        page rq rs
+          | stop (rs ^. lvllrsNextToken) = Nothing
+          | stop (rs ^. lvllrsLogTargetConfigurations) =
+            Nothing
+          | otherwise =
+            Just $ rq & lvllNextToken .~ rs ^. lvllrsNextToken
 
 instance AWSRequest ListV2LoggingLevels where
         type Rs ListV2LoggingLevels =

@@ -35,18 +35,18 @@ data OrganizationalUnit = OrganizationalUnit'{_ouARN
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'ouARN' - The Amazon Resource Name (ARN) of this OU. For more information about ARNs in Organizations, see <http://docs.aws.amazon.com/organizations/latest/userguide/orgs_permissions.html#orgs-permissions-arns ARN Formats Supported by Organizations> in the /AWS Organizations User Guide/ .
+-- * 'ouARN' - The Amazon Resource Name (ARN) of this OU. For more information about ARNs in Organizations, see <https://docs.aws.amazon.com/organizations/latest/userguide/orgs_permissions.html#orgs-permissions-arns ARN Formats Supported by Organizations> in the /AWS Organizations User Guide/ .
 --
 -- * 'ouName' - The friendly name of this OU. The <http://wikipedia.org/wiki/regex regex pattern> that is used to validate this parameter is a string of any of the characters in the ASCII character range.
 --
--- * 'ouId' - The unique identifier (ID) associated with this OU. The <http://wikipedia.org/wiki/regex regex pattern> for an organizational unit ID string requires "ou-" followed by from 4 to 32 lower-case letters or digits (the ID of the root that contains the OU) followed by a second "-" dash and from 8 to 32 additional lower-case letters or digits.
+-- * 'ouId' - The unique identifier (ID) associated with this OU. The <http://wikipedia.org/wiki/regex regex pattern> for an organizational unit ID string requires "ou-" followed by from 4 to 32 lower-case letters or digits (the ID of the root that contains the OU). This string is followed by a second "-" dash and from 8 to 32 additional lower-case letters or digits.
 organizationalUnit
     :: OrganizationalUnit
 organizationalUnit
   = OrganizationalUnit'{_ouARN = Nothing,
                         _ouName = Nothing, _ouId = Nothing}
 
--- | The Amazon Resource Name (ARN) of this OU. For more information about ARNs in Organizations, see <http://docs.aws.amazon.com/organizations/latest/userguide/orgs_permissions.html#orgs-permissions-arns ARN Formats Supported by Organizations> in the /AWS Organizations User Guide/ .
+-- | The Amazon Resource Name (ARN) of this OU. For more information about ARNs in Organizations, see <https://docs.aws.amazon.com/organizations/latest/userguide/orgs_permissions.html#orgs-permissions-arns ARN Formats Supported by Organizations> in the /AWS Organizations User Guide/ .
 ouARN :: Lens' OrganizationalUnit (Maybe Text)
 ouARN = lens _ouARN (\ s a -> s{_ouARN = a})
 
@@ -54,7 +54,7 @@ ouARN = lens _ouARN (\ s a -> s{_ouARN = a})
 ouName :: Lens' OrganizationalUnit (Maybe Text)
 ouName = lens _ouName (\ s a -> s{_ouName = a})
 
--- | The unique identifier (ID) associated with this OU. The <http://wikipedia.org/wiki/regex regex pattern> for an organizational unit ID string requires "ou-" followed by from 4 to 32 lower-case letters or digits (the ID of the root that contains the OU) followed by a second "-" dash and from 8 to 32 additional lower-case letters or digits.
+-- | The unique identifier (ID) associated with this OU. The <http://wikipedia.org/wiki/regex regex pattern> for an organizational unit ID string requires "ou-" followed by from 4 to 32 lower-case letters or digits (the ID of the root that contains the OU). This string is followed by a second "-" dash and from 8 to 32 additional lower-case letters or digits.
 ouId :: Lens' OrganizationalUnit (Maybe Text)
 ouId = lens _ouId (\ s a -> s{_ouId = a})
 

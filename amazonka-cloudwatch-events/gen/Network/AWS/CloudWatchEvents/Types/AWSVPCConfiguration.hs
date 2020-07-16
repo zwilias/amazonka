@@ -21,7 +21,7 @@ import Network.AWS.CloudWatchEvents.Types.AssignPublicIP
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | This structure specifies the VPC subnets and security groups for the task and whether a public IP address is to be used. This structure is relevant only for ECS tasks that use the @awsvpc@ network mode.
+-- | This structure specifies the VPC subnets and security groups for the task, and whether a public IP address is to be used. This structure is relevant only for ECS tasks that use the @awsvpc@ network mode.
 --
 --
 --
@@ -37,7 +37,7 @@ data AWSVPCConfiguration = AWSVPCConfiguration'{_avcSecurityGroups
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'avcSecurityGroups' - Specifies the security groups associated with the task. These security groups must all be in the same VPC. You can specify as many as five security groups. If you don't specify a security group, the default security group for the VPC is used.
+-- * 'avcSecurityGroups' - Specifies the security groups associated with the task. These security groups must all be in the same VPC. You can specify as many as five security groups. If you do not specify a security group, the default security group for the VPC is used.
 --
 -- * 'avcAssignPublicIP' - Specifies whether the task's elastic network interface receives a public IP address. You can specify @ENABLED@ only when @LaunchType@ in @EcsParameters@ is set to @FARGATE@ .
 --
@@ -48,7 +48,7 @@ awsVPCConfiguration
   = AWSVPCConfiguration'{_avcSecurityGroups = Nothing,
                          _avcAssignPublicIP = Nothing, _avcSubnets = mempty}
 
--- | Specifies the security groups associated with the task. These security groups must all be in the same VPC. You can specify as many as five security groups. If you don't specify a security group, the default security group for the VPC is used.
+-- | Specifies the security groups associated with the task. These security groups must all be in the same VPC. You can specify as many as five security groups. If you do not specify a security group, the default security group for the VPC is used.
 avcSecurityGroups :: Lens' AWSVPCConfiguration [Text]
 avcSecurityGroups = lens _avcSecurityGroups (\ s a -> s{_avcSecurityGroups = a}) . _Default . _Coerce
 

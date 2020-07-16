@@ -21,7 +21,7 @@
 -- Deletes the specified pronunciation lexicon stored in an AWS Region. A lexicon which has been deleted is not available for speech synthesis, nor is it possible to retrieve it using either the @GetLexicon@ or @ListLexicon@ APIs.
 --
 --
--- For more information, see <http://docs.aws.amazon.com/polly/latest/dg/managing-lexicons.html Managing Lexicons> .
+-- For more information, see <https://docs.aws.amazon.com/polly/latest/dg/managing-lexicons.html Managing Lexicons> .
 --
 module Network.AWS.Polly.DeleteLexicon
     (

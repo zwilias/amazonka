@@ -24,6 +24,7 @@ module Network.AWS.SQS.Types.Product (
     module Network.AWS.SQS.Types.DeleteMessageBatchResultEntry,
     module Network.AWS.SQS.Types.Message,
     module Network.AWS.SQS.Types.MessageAttributeValue,
+    module Network.AWS.SQS.Types.MessageSystemAttributeValue,
     module Network.AWS.SQS.Types.SendMessageBatchRequestEntry,
     module Network.AWS.SQS.Types.SendMessageBatchResultEntry
   ) where
@@ -37,5 +38,6 @@ import Network.AWS.SQS.Types.DeleteMessageBatchRequestEntry
 import Network.AWS.SQS.Types.DeleteMessageBatchResultEntry
 import Network.AWS.SQS.Types.Message
 import Network.AWS.SQS.Types.MessageAttributeValue
+import Network.AWS.SQS.Types.MessageSystemAttributeValue
 import Network.AWS.SQS.Types.SendMessageBatchRequestEntry
 import Network.AWS.SQS.Types.SendMessageBatchResultEntry

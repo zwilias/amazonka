@@ -21,7 +21,7 @@ import Network.AWS.Lens
 import Network.AWS.MediaLive.Types.HlsWebdavHTTPTransferMode
 import Network.AWS.Prelude
 
--- | Placeholder documentation for HlsWebdavSettings
+-- | Hls Webdav Settings
 --
 -- /See:/ 'hlsWebdavSettings' smart constructor.
 data HlsWebdavSettings = HlsWebdavSettings'{_hwsHTTPTransferMode

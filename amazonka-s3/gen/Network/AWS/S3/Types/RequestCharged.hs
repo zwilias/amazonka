@@ -28,6 +28,8 @@ import Network.AWS.Prelude
 import Network.AWS.S3.Internal
 
 -- | If present, indicates that the requester was successfully charged for the request.
+--
+--
 data RequestCharged = RequestCharged' (CI Text)
                         deriving (Eq, Ord, Read, Show, Data, Typeable,
                                   Generic)

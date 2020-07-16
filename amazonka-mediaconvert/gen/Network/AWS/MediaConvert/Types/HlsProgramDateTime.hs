@@ -19,8 +19,8 @@
 module Network.AWS.MediaConvert.Types.HlsProgramDateTime (
   HlsProgramDateTime (
     ..
-    , Exclude
-    , Include
+    , HPDTExclude
+    , HPDTInclude
     )
   ) where
 
@@ -33,15 +33,15 @@ data HlsProgramDateTime = HlsProgramDateTime' (CI
                             deriving (Eq, Ord, Read, Show, Data, Typeable,
                                       Generic)
 
-pattern Exclude :: HlsProgramDateTime
-pattern Exclude = HlsProgramDateTime' "EXCLUDE"
+pattern HPDTExclude :: HlsProgramDateTime
+pattern HPDTExclude = HlsProgramDateTime' "EXCLUDE"
 
-pattern Include :: HlsProgramDateTime
-pattern Include = HlsProgramDateTime' "INCLUDE"
+pattern HPDTInclude :: HlsProgramDateTime
+pattern HPDTInclude = HlsProgramDateTime' "INCLUDE"
 
 {-# COMPLETE
-  Exclude,
-  Include,
+  HPDTExclude,
+  HPDTInclude,
   HlsProgramDateTime' #-}
 
 instance FromText HlsProgramDateTime where
@@ -56,20 +56,20 @@ instance ToText HlsProgramDateTime where
 --   fromEnum is a partial function, and will error on values unknown at generation time.
 instance Enum HlsProgramDateTime where
     toEnum i = case i of
-        0 -> Exclude
-        1 -> Include
+        0 -> HPDTExclude
+        1 -> HPDTInclude
         _ -> (error . showText) $ "Unknown index for HlsProgramDateTime: " <> toText i
     fromEnum x = case x of
-        Exclude -> 0
-        Include -> 1
+        HPDTExclude -> 0
+        HPDTInclude -> 1
         HlsProgramDateTime' name -> (error . showText) $ "Unknown HlsProgramDateTime: " <> original name
 
 -- | Represents the bounds of /known/ $HlsProgramDateTime.
 --   AWS may have added more since the source was generated.
 --   This instance exists only for backward compatibility.
 instance Bounded HlsProgramDateTime where
-    minBound = Exclude
-    maxBound = Include
+    minBound = HPDTExclude
+    maxBound = HPDTInclude
 
 instance Hashable     HlsProgramDateTime
 instance NFData       HlsProgramDateTime

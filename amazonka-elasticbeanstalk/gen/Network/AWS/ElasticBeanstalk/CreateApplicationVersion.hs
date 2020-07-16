@@ -41,6 +41,7 @@ module Network.AWS.ElasticBeanstalk.CreateApplicationVersion
     , cavSourceBuildInformation
     , cavDescription
     , cavBuildConfiguration
+    , cavTags
     , cavApplicationName
     , cavVersionLabel
 
@@ -79,6 +80,8 @@ data CreateApplicationVersion = CreateApplicationVersion'{_cavProcess
                                                           ::
                                                           !(Maybe
                                                               BuildConfiguration),
+                                                          _cavTags ::
+                                                          !(Maybe [Tag]),
                                                           _cavApplicationName ::
                                                           !Text,
                                                           _cavVersionLabel ::
@@ -90,7 +93,7 @@ data CreateApplicationVersion = CreateApplicationVersion'{_cavProcess
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'cavProcess' - Preprocesses and validates the environment manifest (@env.yaml@ ) and configuration files (@*.config@ files in the @.ebextensions@ folder) in the source bundle. Validating configuration files can identify issues prior to deploying the application version to an environment.
+-- * 'cavProcess' - Pre-processes and validates the environment manifest (@env.yaml@ ) and configuration files (@*.config@ files in the @.ebextensions@ folder) in the source bundle. Validating configuration files can identify issues prior to deploying the application version to an environment. You must turn processing on for application versions that you create using AWS CodeBuild or AWS CodeCommit. For application versions built from a source bundle in Amazon S3, processing is optional.
 --
 -- * 'cavSourceBundle' - The Amazon S3 bucket and key that identify the location of the source bundle for this version. Specify a source bundle in S3 or a commit in an AWS CodeCommit repository (with @SourceBuildInformation@ ), but not both. If neither @SourceBundle@ nor @SourceBuildInformation@ are provided, Elastic Beanstalk uses a sample application.
 --
@@ -98,9 +101,11 @@ data CreateApplicationVersion = CreateApplicationVersion'{_cavProcess
 --
 -- * 'cavSourceBuildInformation' - Specify a commit in an AWS CodeCommit Git repository to use as the source code for the application version.
 --
--- * 'cavDescription' - Describes this version.
+-- * 'cavDescription' - A description of this application version.
 --
 -- * 'cavBuildConfiguration' - Settings for an AWS CodeBuild build.
+--
+-- * 'cavTags' - Specifies the tags applied to the application version. Elastic Beanstalk applies these tags only to the application version. Environments that use the application version don't inherit the tags.
 --
 -- * 'cavApplicationName' - The name of the application. If no application is found with this name, and @AutoCreateApplication@ is @false@ , returns an @InvalidParameterValue@ error. 
 --
@@ -117,10 +122,11 @@ createApplicationVersion pApplicationName_
                               _cavSourceBuildInformation = Nothing,
                               _cavDescription = Nothing,
                               _cavBuildConfiguration = Nothing,
+                              _cavTags = Nothing,
                               _cavApplicationName = pApplicationName_,
                               _cavVersionLabel = pVersionLabel_}
 
--- | Preprocesses and validates the environment manifest (@env.yaml@ ) and configuration files (@*.config@ files in the @.ebextensions@ folder) in the source bundle. Validating configuration files can identify issues prior to deploying the application version to an environment.
+-- | Pre-processes and validates the environment manifest (@env.yaml@ ) and configuration files (@*.config@ files in the @.ebextensions@ folder) in the source bundle. Validating configuration files can identify issues prior to deploying the application version to an environment. You must turn processing on for application versions that you create using AWS CodeBuild or AWS CodeCommit. For application versions built from a source bundle in Amazon S3, processing is optional.
 cavProcess :: Lens' CreateApplicationVersion (Maybe Bool)
 cavProcess = lens _cavProcess (\ s a -> s{_cavProcess = a})
 
@@ -136,13 +142,17 @@ cavAutoCreateApplication = lens _cavAutoCreateApplication (\ s a -> s{_cavAutoCr
 cavSourceBuildInformation :: Lens' CreateApplicationVersion (Maybe SourceBuildInformation)
 cavSourceBuildInformation = lens _cavSourceBuildInformation (\ s a -> s{_cavSourceBuildInformation = a})
 
--- | Describes this version.
+-- | A description of this application version.
 cavDescription :: Lens' CreateApplicationVersion (Maybe Text)
 cavDescription = lens _cavDescription (\ s a -> s{_cavDescription = a})
 
 -- | Settings for an AWS CodeBuild build.
 cavBuildConfiguration :: Lens' CreateApplicationVersion (Maybe BuildConfiguration)
 cavBuildConfiguration = lens _cavBuildConfiguration (\ s a -> s{_cavBuildConfiguration = a})
+
+-- | Specifies the tags applied to the application version. Elastic Beanstalk applies these tags only to the application version. Environments that use the application version don't inherit the tags.
+cavTags :: Lens' CreateApplicationVersion [Tag]
+cavTags = lens _cavTags (\ s a -> s{_cavTags = a}) . _Default . _Coerce
 
 -- | The name of the application. If no application is found with this name, and @AutoCreateApplication@ is @false@ , returns an @InvalidParameterValue@ error. 
 cavApplicationName :: Lens' CreateApplicationVersion Text
@@ -183,5 +193,7 @@ instance ToQuery CreateApplicationVersion where
                  _cavSourceBuildInformation,
                "Description" =: _cavDescription,
                "BuildConfiguration" =: _cavBuildConfiguration,
+               "Tags" =:
+                 toQuery (toQueryList "member" <$> _cavTags),
                "ApplicationName" =: _cavApplicationName,
                "VersionLabel" =: _cavVersionLabel]

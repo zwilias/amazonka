@@ -20,6 +20,7 @@ module Network.AWS.CloudFormation.Types.StackSetOperationStatus (
   StackSetOperationStatus (
     ..
     , SSOSFailed
+    , SSOSQueued
     , SSOSRunning
     , SSOSStopped
     , SSOSStopping
@@ -38,6 +39,9 @@ data StackSetOperationStatus = StackSetOperationStatus' (CI
 pattern SSOSFailed :: StackSetOperationStatus
 pattern SSOSFailed = StackSetOperationStatus' "FAILED"
 
+pattern SSOSQueued :: StackSetOperationStatus
+pattern SSOSQueued = StackSetOperationStatus' "QUEUED"
+
 pattern SSOSRunning :: StackSetOperationStatus
 pattern SSOSRunning = StackSetOperationStatus' "RUNNING"
 
@@ -52,6 +56,7 @@ pattern SSOSSucceeded = StackSetOperationStatus' "SUCCEEDED"
 
 {-# COMPLETE
   SSOSFailed,
+  SSOSQueued,
   SSOSRunning,
   SSOSStopped,
   SSOSStopping,
@@ -71,17 +76,19 @@ instance ToText StackSetOperationStatus where
 instance Enum StackSetOperationStatus where
     toEnum i = case i of
         0 -> SSOSFailed
-        1 -> SSOSRunning
-        2 -> SSOSStopped
-        3 -> SSOSStopping
-        4 -> SSOSSucceeded
+        1 -> SSOSQueued
+        2 -> SSOSRunning
+        3 -> SSOSStopped
+        4 -> SSOSStopping
+        5 -> SSOSSucceeded
         _ -> (error . showText) $ "Unknown index for StackSetOperationStatus: " <> toText i
     fromEnum x = case x of
         SSOSFailed -> 0
-        SSOSRunning -> 1
-        SSOSStopped -> 2
-        SSOSStopping -> 3
-        SSOSSucceeded -> 4
+        SSOSQueued -> 1
+        SSOSRunning -> 2
+        SSOSStopped -> 3
+        SSOSStopping -> 4
+        SSOSSucceeded -> 5
         StackSetOperationStatus' name -> (error . showText) $ "Unknown StackSetOperationStatus: " <> original name
 
 -- | Represents the bounds of /known/ $StackSetOperationStatus.

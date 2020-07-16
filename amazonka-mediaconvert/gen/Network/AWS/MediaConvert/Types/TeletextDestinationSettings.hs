@@ -18,27 +18,39 @@
 module Network.AWS.MediaConvert.Types.TeletextDestinationSettings where
 
 import Network.AWS.Lens
+import Network.AWS.MediaConvert.Types.TeletextPageType
 import Network.AWS.Prelude
 
 -- | Settings for Teletext caption output
 --
 -- /See:/ 'teletextDestinationSettings' smart constructor.
-newtype TeletextDestinationSettings = TeletextDestinationSettings'{_tdsPageNumber
-                                                                   ::
-                                                                   Maybe Text}
-                                        deriving (Eq, Read, Show, Data,
-                                                  Typeable, Generic)
+data TeletextDestinationSettings = TeletextDestinationSettings'{_tdsPageTypes
+                                                                ::
+                                                                !(Maybe
+                                                                    [TeletextPageType]),
+                                                                _tdsPageNumber
+                                                                ::
+                                                                !(Maybe Text)}
+                                     deriving (Eq, Read, Show, Data, Typeable,
+                                               Generic)
 
 -- | Creates a value of 'TeletextDestinationSettings' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
+-- * 'tdsPageTypes' - Specify the page types for this Teletext page. If you don't specify a value here, the service sets the page type to the default value Subtitle (PAGE_TYPE_SUBTITLE). If you pass through the entire set of Teletext data, don't use this field. When you pass through a set of Teletext pages, your output has the same page types as your input.
+--
 -- * 'tdsPageNumber' - Set pageNumber to the Teletext page number for the destination captions for this output. This value must be a three-digit hexadecimal string; strings ending in -FF are invalid. If you are passing through the entire set of Teletext data, do not use this field.
 teletextDestinationSettings
     :: TeletextDestinationSettings
 teletextDestinationSettings
-  = TeletextDestinationSettings'{_tdsPageNumber =
-                                   Nothing}
+  = TeletextDestinationSettings'{_tdsPageTypes =
+                                   Nothing,
+                                 _tdsPageNumber = Nothing}
+
+-- | Specify the page types for this Teletext page. If you don't specify a value here, the service sets the page type to the default value Subtitle (PAGE_TYPE_SUBTITLE). If you pass through the entire set of Teletext data, don't use this field. When you pass through a set of Teletext pages, your output has the same page types as your input.
+tdsPageTypes :: Lens' TeletextDestinationSettings [TeletextPageType]
+tdsPageTypes = lens _tdsPageTypes (\ s a -> s{_tdsPageTypes = a}) . _Default . _Coerce
 
 -- | Set pageNumber to the Teletext page number for the destination captions for this output. This value must be a three-digit hexadecimal string; strings ending in -FF are invalid. If you are passing through the entire set of Teletext data, do not use this field.
 tdsPageNumber :: Lens' TeletextDestinationSettings (Maybe Text)
@@ -49,7 +61,8 @@ instance FromJSON TeletextDestinationSettings where
           = withObject "TeletextDestinationSettings"
               (\ x ->
                  TeletextDestinationSettings' <$>
-                   (x .:? "pageNumber"))
+                   (x .:? "pageTypes" .!= mempty) <*>
+                     (x .:? "pageNumber"))
 
 instance Hashable TeletextDestinationSettings where
 
@@ -58,4 +71,6 @@ instance NFData TeletextDestinationSettings where
 instance ToJSON TeletextDestinationSettings where
         toJSON TeletextDestinationSettings'{..}
           = object
-              (catMaybes [("pageNumber" .=) <$> _tdsPageNumber])
+              (catMaybes
+                 [("pageTypes" .=) <$> _tdsPageTypes,
+                  ("pageNumber" .=) <$> _tdsPageNumber])

@@ -122,7 +122,7 @@ data AttachStaticIPResponse = AttachStaticIPResponse'{_asiprsOperations
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'asiprsOperations' - An array of key-value pairs containing information about your API operations.
+-- * 'asiprsOperations' - An array of objects that describe the result of the action, such as the status of the request, the time stamp of the request, and the resources affected by the request.
 --
 -- * 'asiprsResponseStatus' - -- | The response status code.
 attachStaticIPResponse
@@ -133,7 +133,7 @@ attachStaticIPResponse pResponseStatus_
                               Nothing,
                             _asiprsResponseStatus = pResponseStatus_}
 
--- | An array of key-value pairs containing information about your API operations.
+-- | An array of objects that describe the result of the action, such as the status of the request, the time stamp of the request, and the resources affected by the request.
 asiprsOperations :: Lens' AttachStaticIPResponse [Operation]
 asiprsOperations = lens _asiprsOperations (\ s a -> s{_asiprsOperations = a}) . _Default . _Coerce
 

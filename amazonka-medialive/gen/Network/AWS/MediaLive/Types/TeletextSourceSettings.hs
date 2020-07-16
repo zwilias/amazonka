@@ -20,7 +20,7 @@ module Network.AWS.MediaLive.Types.TeletextSourceSettings where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | Placeholder documentation for TeletextSourceSettings
+-- | Teletext Source Settings
 --
 -- /See:/ 'teletextSourceSettings' smart constructor.
 newtype TeletextSourceSettings = TeletextSourceSettings'{_tssPageNumber

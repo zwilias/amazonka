@@ -20,15 +20,22 @@ module Network.AWS.Glue.Types.ConnectionPropertyKey (
   ConnectionPropertyKey (
     ..
     , ConfigFiles
+    , ConnectionURL
+    , CustomJdbcCert
+    , CustomJdbcCertString
+    , EncryptedPassword
     , Host
     , InstanceId
     , JdbcConnectionURL
     , JdbcDriverClassName
     , JdbcDriverJARURI
+    , JdbcEnforceSSL
     , JdbcEngine
     , JdbcEngineVersion
+    , KafkaBootstrapServers
     , Password
     , Port
+    , SkipCustomJdbcCertValidation
     , Username
     )
   ) where
@@ -43,6 +50,18 @@ data ConnectionPropertyKey = ConnectionPropertyKey' (CI
 
 pattern ConfigFiles :: ConnectionPropertyKey
 pattern ConfigFiles = ConnectionPropertyKey' "CONFIG_FILES"
+
+pattern ConnectionURL :: ConnectionPropertyKey
+pattern ConnectionURL = ConnectionPropertyKey' "CONNECTION_URL"
+
+pattern CustomJdbcCert :: ConnectionPropertyKey
+pattern CustomJdbcCert = ConnectionPropertyKey' "CUSTOM_JDBC_CERT"
+
+pattern CustomJdbcCertString :: ConnectionPropertyKey
+pattern CustomJdbcCertString = ConnectionPropertyKey' "CUSTOM_JDBC_CERT_STRING"
+
+pattern EncryptedPassword :: ConnectionPropertyKey
+pattern EncryptedPassword = ConnectionPropertyKey' "ENCRYPTED_PASSWORD"
 
 pattern Host :: ConnectionPropertyKey
 pattern Host = ConnectionPropertyKey' "HOST"
@@ -59,11 +78,17 @@ pattern JdbcDriverClassName = ConnectionPropertyKey' "JDBC_DRIVER_CLASS_NAME"
 pattern JdbcDriverJARURI :: ConnectionPropertyKey
 pattern JdbcDriverJARURI = ConnectionPropertyKey' "JDBC_DRIVER_JAR_URI"
 
+pattern JdbcEnforceSSL :: ConnectionPropertyKey
+pattern JdbcEnforceSSL = ConnectionPropertyKey' "JDBC_ENFORCE_SSL"
+
 pattern JdbcEngine :: ConnectionPropertyKey
 pattern JdbcEngine = ConnectionPropertyKey' "JDBC_ENGINE"
 
 pattern JdbcEngineVersion :: ConnectionPropertyKey
 pattern JdbcEngineVersion = ConnectionPropertyKey' "JDBC_ENGINE_VERSION"
+
+pattern KafkaBootstrapServers :: ConnectionPropertyKey
+pattern KafkaBootstrapServers = ConnectionPropertyKey' "KAFKA_BOOTSTRAP_SERVERS"
 
 pattern Password :: ConnectionPropertyKey
 pattern Password = ConnectionPropertyKey' "PASSWORD"
@@ -71,20 +96,30 @@ pattern Password = ConnectionPropertyKey' "PASSWORD"
 pattern Port :: ConnectionPropertyKey
 pattern Port = ConnectionPropertyKey' "PORT"
 
+pattern SkipCustomJdbcCertValidation :: ConnectionPropertyKey
+pattern SkipCustomJdbcCertValidation = ConnectionPropertyKey' "SKIP_CUSTOM_JDBC_CERT_VALIDATION"
+
 pattern Username :: ConnectionPropertyKey
 pattern Username = ConnectionPropertyKey' "USERNAME"
 
 {-# COMPLETE
   ConfigFiles,
+  ConnectionURL,
+  CustomJdbcCert,
+  CustomJdbcCertString,
+  EncryptedPassword,
   Host,
   InstanceId,
   JdbcConnectionURL,
   JdbcDriverClassName,
   JdbcDriverJARURI,
+  JdbcEnforceSSL,
   JdbcEngine,
   JdbcEngineVersion,
+  KafkaBootstrapServers,
   Password,
   Port,
+  SkipCustomJdbcCertValidation,
   Username,
   ConnectionPropertyKey' #-}
 
@@ -101,29 +136,43 @@ instance ToText ConnectionPropertyKey where
 instance Enum ConnectionPropertyKey where
     toEnum i = case i of
         0 -> ConfigFiles
-        1 -> Host
-        2 -> InstanceId
-        3 -> JdbcConnectionURL
-        4 -> JdbcDriverClassName
-        5 -> JdbcDriverJARURI
-        6 -> JdbcEngine
-        7 -> JdbcEngineVersion
-        8 -> Password
-        9 -> Port
-        10 -> Username
+        1 -> ConnectionURL
+        2 -> CustomJdbcCert
+        3 -> CustomJdbcCertString
+        4 -> EncryptedPassword
+        5 -> Host
+        6 -> InstanceId
+        7 -> JdbcConnectionURL
+        8 -> JdbcDriverClassName
+        9 -> JdbcDriverJARURI
+        10 -> JdbcEnforceSSL
+        11 -> JdbcEngine
+        12 -> JdbcEngineVersion
+        13 -> KafkaBootstrapServers
+        14 -> Password
+        15 -> Port
+        16 -> SkipCustomJdbcCertValidation
+        17 -> Username
         _ -> (error . showText) $ "Unknown index for ConnectionPropertyKey: " <> toText i
     fromEnum x = case x of
         ConfigFiles -> 0
-        Host -> 1
-        InstanceId -> 2
-        JdbcConnectionURL -> 3
-        JdbcDriverClassName -> 4
-        JdbcDriverJARURI -> 5
-        JdbcEngine -> 6
-        JdbcEngineVersion -> 7
-        Password -> 8
-        Port -> 9
-        Username -> 10
+        ConnectionURL -> 1
+        CustomJdbcCert -> 2
+        CustomJdbcCertString -> 3
+        EncryptedPassword -> 4
+        Host -> 5
+        InstanceId -> 6
+        JdbcConnectionURL -> 7
+        JdbcDriverClassName -> 8
+        JdbcDriverJARURI -> 9
+        JdbcEnforceSSL -> 10
+        JdbcEngine -> 11
+        JdbcEngineVersion -> 12
+        KafkaBootstrapServers -> 13
+        Password -> 14
+        Port -> 15
+        SkipCustomJdbcCertValidation -> 16
+        Username -> 17
         ConnectionPropertyKey' name -> (error . showText) $ "Unknown ConnectionPropertyKey: " <> original name
 
 -- | Represents the bounds of /known/ $ConnectionPropertyKey.

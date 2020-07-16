@@ -27,7 +27,7 @@ module Network.AWS.MediaLive.Types.HlsCodecSpecification (
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | Placeholder documentation for HlsCodecSpecification
+-- | Hls Codec Specification
 data HlsCodecSpecification = HlsCodecSpecification' (CI
                                                        Text)
                                deriving (Eq, Ord, Read, Show, Data, Typeable,

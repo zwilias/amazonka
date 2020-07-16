@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- This operation lists all the tags attached to a vault. The operation returns an empty map if there are no tags. For more information about tags, see <http://docs.aws.amazon.com/amazonglacier/latest/dev/tagging.html Tagging Amazon Glacier Resources> .
+-- This operation lists all the tags attached to a vault. The operation returns an empty map if there are no tags. For more information about tags, see <https://docs.aws.amazon.com/amazonglacier/latest/dev/tagging.html Tagging Amazon S3 Glacier Resources> .
 --
 --
 module Network.AWS.Glacier.ListTagsForVault
@@ -59,7 +59,7 @@ data ListTagsForVault = ListTagsForVault'{_ltfvAccountId
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'ltfvAccountId' - The @AccountId@ value is the AWS account ID of the account that owns the vault. You can either specify an AWS account ID or optionally a single '@-@ ' (hyphen), in which case Amazon Glacier uses the AWS account ID associated with the credentials used to sign the request. If you use an account ID, do not include any hyphens ('-') in the ID.
+-- * 'ltfvAccountId' - The @AccountId@ value is the AWS account ID of the account that owns the vault. You can either specify an AWS account ID or optionally a single '@-@ ' (hyphen), in which case Amazon S3 Glacier uses the AWS account ID associated with the credentials used to sign the request. If you use an account ID, do not include any hyphens ('-') in the ID.
 --
 -- * 'ltfvVaultName' - The name of the vault.
 listTagsForVault
@@ -70,7 +70,7 @@ listTagsForVault pAccountId_ pVaultName_
   = ListTagsForVault'{_ltfvAccountId = pAccountId_,
                       _ltfvVaultName = pVaultName_}
 
--- | The @AccountId@ value is the AWS account ID of the account that owns the vault. You can either specify an AWS account ID or optionally a single '@-@ ' (hyphen), in which case Amazon Glacier uses the AWS account ID associated with the credentials used to sign the request. If you use an account ID, do not include any hyphens ('-') in the ID.
+-- | The @AccountId@ value is the AWS account ID of the account that owns the vault. You can either specify an AWS account ID or optionally a single '@-@ ' (hyphen), in which case Amazon S3 Glacier uses the AWS account ID associated with the credentials used to sign the request. If you use an account ID, do not include any hyphens ('-') in the ID.
 ltfvAccountId :: Lens' ListTagsForVault Text
 ltfvAccountId = lens _ltfvAccountId (\ s a -> s{_ltfvAccountId = a})
 
@@ -103,7 +103,7 @@ instance ToPath ListTagsForVault where
 instance ToQuery ListTagsForVault where
         toQuery = const mempty
 
--- | Contains the Amazon Glacier response to your request.
+-- | Contains the Amazon S3 Glacier response to your request.
 --
 --
 --

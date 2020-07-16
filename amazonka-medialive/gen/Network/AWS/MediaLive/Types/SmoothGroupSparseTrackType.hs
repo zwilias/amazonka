@@ -21,13 +21,14 @@ module Network.AWS.MediaLive.Types.SmoothGroupSparseTrackType (
     ..
     , SGSTTNone
     , SGSTTScte35
+    , SGSTTScte35WithoutSegmentation
     )
   ) where
 
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | Placeholder documentation for SmoothGroupSparseTrackType
+-- | Smooth Group Sparse Track Type
 data SmoothGroupSparseTrackType = SmoothGroupSparseTrackType' (CI
                                                                  Text)
                                     deriving (Eq, Ord, Read, Show, Data,
@@ -39,9 +40,13 @@ pattern SGSTTNone = SmoothGroupSparseTrackType' "NONE"
 pattern SGSTTScte35 :: SmoothGroupSparseTrackType
 pattern SGSTTScte35 = SmoothGroupSparseTrackType' "SCTE_35"
 
+pattern SGSTTScte35WithoutSegmentation :: SmoothGroupSparseTrackType
+pattern SGSTTScte35WithoutSegmentation = SmoothGroupSparseTrackType' "SCTE_35_WITHOUT_SEGMENTATION"
+
 {-# COMPLETE
   SGSTTNone,
   SGSTTScte35,
+  SGSTTScte35WithoutSegmentation,
   SmoothGroupSparseTrackType' #-}
 
 instance FromText SmoothGroupSparseTrackType where
@@ -58,10 +63,12 @@ instance Enum SmoothGroupSparseTrackType where
     toEnum i = case i of
         0 -> SGSTTNone
         1 -> SGSTTScte35
+        2 -> SGSTTScte35WithoutSegmentation
         _ -> (error . showText) $ "Unknown index for SmoothGroupSparseTrackType: " <> toText i
     fromEnum x = case x of
         SGSTTNone -> 0
         SGSTTScte35 -> 1
+        SGSTTScte35WithoutSegmentation -> 2
         SmoothGroupSparseTrackType' name -> (error . showText) $ "Unknown SmoothGroupSparseTrackType: " <> original name
 
 -- | Represents the bounds of /known/ $SmoothGroupSparseTrackType.
@@ -69,7 +76,7 @@ instance Enum SmoothGroupSparseTrackType where
 --   This instance exists only for backward compatibility.
 instance Bounded SmoothGroupSparseTrackType where
     minBound = SGSTTNone
-    maxBound = SGSTTScte35
+    maxBound = SGSTTScte35WithoutSegmentation
 
 instance Hashable     SmoothGroupSparseTrackType
 instance NFData       SmoothGroupSparseTrackType

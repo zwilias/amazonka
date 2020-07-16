@@ -21,7 +21,7 @@ import Network.AWS.Lens
 import Network.AWS.MediaLive.Types.M3u8Settings
 import Network.AWS.Prelude
 
--- | Placeholder documentation for StandardHlsSettings
+-- | Standard Hls Settings
 --
 -- /See:/ 'standardHlsSettings' smart constructor.
 data StandardHlsSettings = StandardHlsSettings'{_shsAudioRenditionSets

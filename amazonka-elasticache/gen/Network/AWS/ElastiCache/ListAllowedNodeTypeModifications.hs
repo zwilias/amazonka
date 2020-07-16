@@ -18,10 +18,10 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Lists all available node types that you can scale your Redis cluster's or replication group's current node type up to.
+-- Lists all available node types that you can scale your Redis cluster's or replication group's current node type.
 --
 --
--- When you use the @ModifyCacheCluster@ or @ModifyReplicationGroup@ operations to scale up your cluster or replication group, the value of the @CacheNodeType@ parameter must be one of the node types returned by this operation.
+-- When you use the @ModifyCacheCluster@ or @ModifyReplicationGroup@ operations to scale your cluster or replication group, the value of the @CacheNodeType@ parameter must be one of the node types returned by this operation.
 --
 module Network.AWS.ElastiCache.ListAllowedNodeTypeModifications
     (
@@ -37,6 +37,7 @@ module Network.AWS.ElastiCache.ListAllowedNodeTypeModifications
     , ListAllowedNodeTypeModificationsResponse
     -- * Response Lenses
     , lantmrsScaleUpModifications
+    , lantmrsScaleDownModifications
     , lantmrsResponseStatus
     ) where
 
@@ -97,6 +98,9 @@ instance AWSRequest ListAllowedNodeTypeModifications
                  ListAllowedNodeTypeModificationsResponse' <$>
                    (x .@? "ScaleUpModifications" .!@ mempty >>=
                       may (parseXMLList "member"))
+                     <*>
+                     (x .@? "ScaleDownModifications" .!@ mempty >>=
+                        may (parseXMLList "member"))
                      <*> (pure (fromEnum s)))
 
 instance Hashable ListAllowedNodeTypeModifications
@@ -132,6 +136,10 @@ data ListAllowedNodeTypeModificationsResponse = ListAllowedNodeTypeModifications
                                                                                           ::
                                                                                           !(Maybe
                                                                                               [Text]),
+                                                                                          _lantmrsScaleDownModifications
+                                                                                          ::
+                                                                                          !(Maybe
+                                                                                              [Text]),
                                                                                           _lantmrsResponseStatus
                                                                                           ::
                                                                                           !Int}
@@ -145,6 +153,8 @@ data ListAllowedNodeTypeModificationsResponse = ListAllowedNodeTypeModifications
 --
 -- * 'lantmrsScaleUpModifications' - A string list, each element of which specifies a cache node type which you can use to scale your cluster or replication group. When scaling up a Redis cluster or replication group using @ModifyCacheCluster@ or @ModifyReplicationGroup@ , use a value from this list for the @CacheNodeType@ parameter.
 --
+-- * 'lantmrsScaleDownModifications' - A string list, each element of which specifies a cache node type which you can use to scale your cluster or replication group. When scaling down a Redis cluster or replication group using ModifyCacheCluster or ModifyReplicationGroup, use a value from this list for the CacheNodeType parameter. 
+--
 -- * 'lantmrsResponseStatus' - -- | The response status code.
 listAllowedNodeTypeModificationsResponse
     :: Int -- ^ 'lantmrsResponseStatus'
@@ -153,12 +163,18 @@ listAllowedNodeTypeModificationsResponse
   pResponseStatus_
   = ListAllowedNodeTypeModificationsResponse'{_lantmrsScaleUpModifications
                                                 = Nothing,
+                                              _lantmrsScaleDownModifications =
+                                                Nothing,
                                               _lantmrsResponseStatus =
                                                 pResponseStatus_}
 
 -- | A string list, each element of which specifies a cache node type which you can use to scale your cluster or replication group. When scaling up a Redis cluster or replication group using @ModifyCacheCluster@ or @ModifyReplicationGroup@ , use a value from this list for the @CacheNodeType@ parameter.
 lantmrsScaleUpModifications :: Lens' ListAllowedNodeTypeModificationsResponse [Text]
 lantmrsScaleUpModifications = lens _lantmrsScaleUpModifications (\ s a -> s{_lantmrsScaleUpModifications = a}) . _Default . _Coerce
+
+-- | A string list, each element of which specifies a cache node type which you can use to scale your cluster or replication group. When scaling down a Redis cluster or replication group using ModifyCacheCluster or ModifyReplicationGroup, use a value from this list for the CacheNodeType parameter. 
+lantmrsScaleDownModifications :: Lens' ListAllowedNodeTypeModificationsResponse [Text]
+lantmrsScaleDownModifications = lens _lantmrsScaleDownModifications (\ s a -> s{_lantmrsScaleDownModifications = a}) . _Default . _Coerce
 
 -- | -- | The response status code.
 lantmrsResponseStatus :: Lens' ListAllowedNodeTypeModificationsResponse Int

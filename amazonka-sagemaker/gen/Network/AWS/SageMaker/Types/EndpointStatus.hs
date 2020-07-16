@@ -19,13 +19,14 @@
 module Network.AWS.SageMaker.Types.EndpointStatus (
   EndpointStatus (
     ..
-    , Creating
-    , Deleting
-    , Failed
-    , InService
-    , OutOfService
-    , RollingBack
-    , Updating
+    , ESCreating
+    , ESDeleting
+    , ESFailed
+    , ESInService
+    , ESOutOfService
+    , ESRollingBack
+    , ESSystemUpdating
+    , ESUpdating
     )
   ) where
 
@@ -36,35 +37,39 @@ data EndpointStatus = EndpointStatus' (CI Text)
                         deriving (Eq, Ord, Read, Show, Data, Typeable,
                                   Generic)
 
-pattern Creating :: EndpointStatus
-pattern Creating = EndpointStatus' "Creating"
+pattern ESCreating :: EndpointStatus
+pattern ESCreating = EndpointStatus' "Creating"
 
-pattern Deleting :: EndpointStatus
-pattern Deleting = EndpointStatus' "Deleting"
+pattern ESDeleting :: EndpointStatus
+pattern ESDeleting = EndpointStatus' "Deleting"
 
-pattern Failed :: EndpointStatus
-pattern Failed = EndpointStatus' "Failed"
+pattern ESFailed :: EndpointStatus
+pattern ESFailed = EndpointStatus' "Failed"
 
-pattern InService :: EndpointStatus
-pattern InService = EndpointStatus' "InService"
+pattern ESInService :: EndpointStatus
+pattern ESInService = EndpointStatus' "InService"
 
-pattern OutOfService :: EndpointStatus
-pattern OutOfService = EndpointStatus' "OutOfService"
+pattern ESOutOfService :: EndpointStatus
+pattern ESOutOfService = EndpointStatus' "OutOfService"
 
-pattern RollingBack :: EndpointStatus
-pattern RollingBack = EndpointStatus' "RollingBack"
+pattern ESRollingBack :: EndpointStatus
+pattern ESRollingBack = EndpointStatus' "RollingBack"
 
-pattern Updating :: EndpointStatus
-pattern Updating = EndpointStatus' "Updating"
+pattern ESSystemUpdating :: EndpointStatus
+pattern ESSystemUpdating = EndpointStatus' "SystemUpdating"
+
+pattern ESUpdating :: EndpointStatus
+pattern ESUpdating = EndpointStatus' "Updating"
 
 {-# COMPLETE
-  Creating,
-  Deleting,
-  Failed,
-  InService,
-  OutOfService,
-  RollingBack,
-  Updating,
+  ESCreating,
+  ESDeleting,
+  ESFailed,
+  ESInService,
+  ESOutOfService,
+  ESRollingBack,
+  ESSystemUpdating,
+  ESUpdating,
   EndpointStatus' #-}
 
 instance FromText EndpointStatus where
@@ -79,30 +84,32 @@ instance ToText EndpointStatus where
 --   fromEnum is a partial function, and will error on values unknown at generation time.
 instance Enum EndpointStatus where
     toEnum i = case i of
-        0 -> Creating
-        1 -> Deleting
-        2 -> Failed
-        3 -> InService
-        4 -> OutOfService
-        5 -> RollingBack
-        6 -> Updating
+        0 -> ESCreating
+        1 -> ESDeleting
+        2 -> ESFailed
+        3 -> ESInService
+        4 -> ESOutOfService
+        5 -> ESRollingBack
+        6 -> ESSystemUpdating
+        7 -> ESUpdating
         _ -> (error . showText) $ "Unknown index for EndpointStatus: " <> toText i
     fromEnum x = case x of
-        Creating -> 0
-        Deleting -> 1
-        Failed -> 2
-        InService -> 3
-        OutOfService -> 4
-        RollingBack -> 5
-        Updating -> 6
+        ESCreating -> 0
+        ESDeleting -> 1
+        ESFailed -> 2
+        ESInService -> 3
+        ESOutOfService -> 4
+        ESRollingBack -> 5
+        ESSystemUpdating -> 6
+        ESUpdating -> 7
         EndpointStatus' name -> (error . showText) $ "Unknown EndpointStatus: " <> original name
 
 -- | Represents the bounds of /known/ $EndpointStatus.
 --   AWS may have added more since the source was generated.
 --   This instance exists only for backward compatibility.
 instance Bounded EndpointStatus where
-    minBound = Creating
-    maxBound = Updating
+    minBound = ESCreating
+    maxBound = ESUpdating
 
 instance Hashable     EndpointStatus
 instance NFData       EndpointStatus

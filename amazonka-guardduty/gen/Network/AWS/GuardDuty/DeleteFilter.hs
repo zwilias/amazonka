@@ -19,6 +19,8 @@
 -- Portability : non-portable (GHC extensions)
 --
 -- Deletes the filter specified by the filter name.
+--
+--
 module Network.AWS.GuardDuty.DeleteFilter
     (
     -- * Creating a Request
@@ -52,9 +54,9 @@ data DeleteFilter = DeleteFilter'{_dfDetectorId ::
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dfDetectorId' - The unique ID that specifies the detector where you want to delete a filter.
+-- * 'dfDetectorId' - The unique ID of the detector that the filter is associated with.
 --
--- * 'dfFilterName' - The name of the filter.
+-- * 'dfFilterName' - The name of the filter that you want to delete.
 deleteFilter
     :: Text -- ^ 'dfDetectorId'
     -> Text -- ^ 'dfFilterName'
@@ -63,11 +65,11 @@ deleteFilter pDetectorId_ pFilterName_
   = DeleteFilter'{_dfDetectorId = pDetectorId_,
                   _dfFilterName = pFilterName_}
 
--- | The unique ID that specifies the detector where you want to delete a filter.
+-- | The unique ID of the detector that the filter is associated with.
 dfDetectorId :: Lens' DeleteFilter Text
 dfDetectorId = lens _dfDetectorId (\ s a -> s{_dfDetectorId = a})
 
--- | The name of the filter.
+-- | The name of the filter that you want to delete.
 dfFilterName :: Lens' DeleteFilter Text
 dfFilterName = lens _dfFilterName (\ s a -> s{_dfFilterName = a})
 

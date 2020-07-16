@@ -20,34 +20,37 @@ module Network.AWS.Pinpoint.Types.GCMChannelRequest where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | Google Cloud Messaging credentials
+-- | Specifies the status and settings of the GCM channel for an application. This channel enables Amazon Pinpoint to send push notifications through the Firebase Cloud Messaging (FCM), formerly Google Cloud Messaging (GCM), service.
+--
+--
 --
 -- /See:/ 'gcmChannelRequest' smart constructor.
-data GCMChannelRequest = GCMChannelRequest'{_gcrAPIKey
-                                            :: !(Maybe Text),
-                                            _gcrEnabled :: !(Maybe Bool)}
+data GCMChannelRequest = GCMChannelRequest'{_gcrEnabled
+                                            :: !(Maybe Bool),
+                                            _gcrAPIKey :: !Text}
                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GCMChannelRequest' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'gcrAPIKey' - Platform credential API key from Google.
+-- * 'gcrEnabled' - Specifies whether to enable the GCM channel for the application.
 --
--- * 'gcrEnabled' - If the channel is enabled for sending messages.
+-- * 'gcrAPIKey' - The Web API Key, also referred to as an /API_KEY/ or /server key/ , that you received from Google to communicate with Google services.
 gcmChannelRequest
-    :: GCMChannelRequest
-gcmChannelRequest
-  = GCMChannelRequest'{_gcrAPIKey = Nothing,
-                       _gcrEnabled = Nothing}
+    :: Text -- ^ 'gcrAPIKey'
+    -> GCMChannelRequest
+gcmChannelRequest pAPIKey_
+  = GCMChannelRequest'{_gcrEnabled = Nothing,
+                       _gcrAPIKey = pAPIKey_}
 
--- | Platform credential API key from Google.
-gcrAPIKey :: Lens' GCMChannelRequest (Maybe Text)
-gcrAPIKey = lens _gcrAPIKey (\ s a -> s{_gcrAPIKey = a})
-
--- | If the channel is enabled for sending messages.
+-- | Specifies whether to enable the GCM channel for the application.
 gcrEnabled :: Lens' GCMChannelRequest (Maybe Bool)
 gcrEnabled = lens _gcrEnabled (\ s a -> s{_gcrEnabled = a})
+
+-- | The Web API Key, also referred to as an /API_KEY/ or /server key/ , that you received from Google to communicate with Google services.
+gcrAPIKey :: Lens' GCMChannelRequest Text
+gcrAPIKey = lens _gcrAPIKey (\ s a -> s{_gcrAPIKey = a})
 
 instance Hashable GCMChannelRequest where
 
@@ -57,5 +60,5 @@ instance ToJSON GCMChannelRequest where
         toJSON GCMChannelRequest'{..}
           = object
               (catMaybes
-                 [("ApiKey" .=) <$> _gcrAPIKey,
-                  ("Enabled" .=) <$> _gcrEnabled])
+                 [("Enabled" .=) <$> _gcrEnabled,
+                  Just ("ApiKey" .= _gcrAPIKey)])

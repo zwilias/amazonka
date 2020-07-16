@@ -26,10 +26,11 @@ import Network.AWS.Prelude
 --
 -- /See:/ 'stateEnteredEventDetails' smart constructor.
 data StateEnteredEventDetails = StateEnteredEventDetails'{_sInput
-                                                          :: !(Maybe Text),
+                                                          ::
+                                                          !(Maybe
+                                                              (Sensitive Text)),
                                                           _sName :: !Text}
-                                  deriving (Eq, Read, Show, Data, Typeable,
-                                            Generic)
+                                  deriving (Eq, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'StateEnteredEventDetails' with the minimum fields required to make a request.
 --
@@ -47,7 +48,7 @@ stateEnteredEventDetails pName_
 
 -- | The string that contains the JSON input data for the state.
 sInput :: Lens' StateEnteredEventDetails (Maybe Text)
-sInput = lens _sInput (\ s a -> s{_sInput = a})
+sInput = lens _sInput (\ s a -> s{_sInput = a}) . mapping _Sensitive
 
 -- | The name of the state.
 sName :: Lens' StateEnteredEventDetails Text

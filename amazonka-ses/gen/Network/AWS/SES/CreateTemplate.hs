@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Creates an email template. Email templates enable you to send personalized email to one or more destinations in a single API operation. For more information, see the <http://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-personalized-email-api.html Amazon SES Developer Guide> .
+-- Creates an email template. Email templates enable you to send personalized email to one or more destinations in a single API operation. For more information, see the <https://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-personalized-email-api.html Amazon SES Developer Guide> .
 --
 --
 -- You can execute this operation no more than once per second.
@@ -45,7 +45,7 @@ import Network.AWS.Response
 import Network.AWS.SES.Types
 import Network.AWS.SES.Types.Product
 
--- | Represents a request to create an email template. For more information, see the <http://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-personalized-email-api.html Amazon SES Developer Guide> .
+-- | Represents a request to create an email template. For more information, see the <https://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-personalized-email-api.html Amazon SES Developer Guide> .
 --
 --
 --

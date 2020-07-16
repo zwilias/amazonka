@@ -64,7 +64,7 @@ data UpdateApplication = UpdateApplication'{_uaApplicationName
 --
 -- * 'uaApplicationName' - Name of the Amazon Kinesis Analytics application to update.
 --
--- * 'uaCurrentApplicationVersionId' - The current application version ID. You can use the 'DescribeApplication' operation to get this value.
+-- * 'uaCurrentApplicationVersionId' - The current application version ID. You can use the <https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_DescribeApplication.html DescribeApplication> operation to get this value.
 --
 -- * 'uaApplicationUpdate' - Describes application updates.
 updateApplication
@@ -84,7 +84,7 @@ updateApplication pApplicationName_
 uaApplicationName :: Lens' UpdateApplication Text
 uaApplicationName = lens _uaApplicationName (\ s a -> s{_uaApplicationName = a})
 
--- | The current application version ID. You can use the 'DescribeApplication' operation to get this value.
+-- | The current application version ID. You can use the <https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_DescribeApplication.html DescribeApplication> operation to get this value.
 uaCurrentApplicationVersionId :: Lens' UpdateApplication Natural
 uaCurrentApplicationVersionId = lens _uaCurrentApplicationVersionId (\ s a -> s{_uaCurrentApplicationVersionId = a}) . _Nat
 

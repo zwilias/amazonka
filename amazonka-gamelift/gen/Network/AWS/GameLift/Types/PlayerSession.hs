@@ -26,8 +26,6 @@ import Network.AWS.Prelude
 --
 -- When a player disconnects, the player session status changes to @COMPLETED@ . Once the session ends, the player session object is retained for 30 days and then removed.
 --
--- Player-session-related operations include:
---
 --     * 'CreatePlayerSession' 
 --
 --     * 'CreatePlayerSessions' 
@@ -53,11 +51,13 @@ data PlayerSession = PlayerSession'{_psCreationTime
                                     _psStatus :: !(Maybe PlayerSessionStatus),
                                     _psIPAddress :: !(Maybe Text),
                                     _psGameSessionId :: !(Maybe Text),
+                                    _psFleetARN :: !(Maybe Text),
                                     _psTerminationTime :: !(Maybe POSIX),
                                     _psPlayerSessionId :: !(Maybe Text),
                                     _psFleetId :: !(Maybe Text),
                                     _psPlayerData :: !(Maybe Text),
                                     _psPlayerId :: !(Maybe Text),
+                                    _psDNSName :: !(Maybe Text),
                                     _psPort :: !(Maybe Nat)}
                        deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -69,19 +69,23 @@ data PlayerSession = PlayerSession'{_psCreationTime
 --
 -- * 'psStatus' - Current status of the player session. Possible player session statuses include the following:     * __RESERVED__ -- The player session request has been received, but the player has not yet connected to the server process and/or been validated.      * __ACTIVE__ -- The player has been validated by the server process and is currently connected.     * __COMPLETED__ -- The player connection has been dropped.     * __TIMEDOUT__ -- A player session request was received, but the player did not connect and/or was not validated within the timeout limit (60 seconds).
 --
--- * 'psIPAddress' - IP address of the game session. To connect to a Amazon GameLift game server, an app needs both the IP address and port number.
+-- * 'psIPAddress' - IP address of the instance that is running the game session. When connecting to a Amazon GameLift game server, a client needs to reference an IP address (or DNS name) and port number.
 --
--- * 'psGameSessionId' - Unique identifier for the game session that the player session is connected to.
+-- * 'psGameSessionId' - A unique identifier for the game session that the player session is connected to.
+--
+-- * 'psFleetARN' - The Amazon Resource Name (<https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html ARN> ) associated with the GameLift fleet that the player's game session is running on. 
 --
 -- * 'psTerminationTime' - Time stamp indicating when this data object was terminated. Format is a number expressed in Unix time as milliseconds (for example "1469498468.057").
 --
--- * 'psPlayerSessionId' - Unique identifier for a player session.
+-- * 'psPlayerSessionId' - A unique identifier for a player session.
 --
--- * 'psFleetId' - Unique identifier for a fleet that the player's game session is running on.
+-- * 'psFleetId' - A unique identifier for a fleet that the player's game session is running on.
 --
 -- * 'psPlayerData' - Developer-defined information related to a player. Amazon GameLift does not use this data, so it can be formatted as needed for use in the game. 
 --
--- * 'psPlayerId' - Unique identifier for a player that is associated with this player session.
+-- * 'psPlayerId' - A unique identifier for a player that is associated with this player session.
+--
+-- * 'psDNSName' - DNS identifier assigned to the instance that is running the game session. Values have the following format:     * TLS-enabled fleets: @<unique identifier>.<region identifier>.amazongamelift.com@ .     * Non-TLS-enabled fleets: @ec2-<unique identifier>.compute.amazonaws.com@ . (See <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-instance-addressing.html#concepts-public-addresses Amazon EC2 Instance IP Addressing> .) When connecting to a game session that is running on a TLS-enabled fleet, you must use the DNS name, not the IP address.
 --
 -- * 'psPort' - Port number for the game session. To connect to a Amazon GameLift server process, an app needs both the IP address and port number.
 playerSession
@@ -89,11 +93,11 @@ playerSession
 playerSession
   = PlayerSession'{_psCreationTime = Nothing,
                    _psStatus = Nothing, _psIPAddress = Nothing,
-                   _psGameSessionId = Nothing,
+                   _psGameSessionId = Nothing, _psFleetARN = Nothing,
                    _psTerminationTime = Nothing,
                    _psPlayerSessionId = Nothing, _psFleetId = Nothing,
                    _psPlayerData = Nothing, _psPlayerId = Nothing,
-                   _psPort = Nothing}
+                   _psDNSName = Nothing, _psPort = Nothing}
 
 -- | Time stamp indicating when this data object was created. Format is a number expressed in Unix time as milliseconds (for example "1469498468.057").
 psCreationTime :: Lens' PlayerSession (Maybe UTCTime)
@@ -103,23 +107,27 @@ psCreationTime = lens _psCreationTime (\ s a -> s{_psCreationTime = a}) . mappin
 psStatus :: Lens' PlayerSession (Maybe PlayerSessionStatus)
 psStatus = lens _psStatus (\ s a -> s{_psStatus = a})
 
--- | IP address of the game session. To connect to a Amazon GameLift game server, an app needs both the IP address and port number.
+-- | IP address of the instance that is running the game session. When connecting to a Amazon GameLift game server, a client needs to reference an IP address (or DNS name) and port number.
 psIPAddress :: Lens' PlayerSession (Maybe Text)
 psIPAddress = lens _psIPAddress (\ s a -> s{_psIPAddress = a})
 
--- | Unique identifier for the game session that the player session is connected to.
+-- | A unique identifier for the game session that the player session is connected to.
 psGameSessionId :: Lens' PlayerSession (Maybe Text)
 psGameSessionId = lens _psGameSessionId (\ s a -> s{_psGameSessionId = a})
+
+-- | The Amazon Resource Name (<https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html ARN> ) associated with the GameLift fleet that the player's game session is running on. 
+psFleetARN :: Lens' PlayerSession (Maybe Text)
+psFleetARN = lens _psFleetARN (\ s a -> s{_psFleetARN = a})
 
 -- | Time stamp indicating when this data object was terminated. Format is a number expressed in Unix time as milliseconds (for example "1469498468.057").
 psTerminationTime :: Lens' PlayerSession (Maybe UTCTime)
 psTerminationTime = lens _psTerminationTime (\ s a -> s{_psTerminationTime = a}) . mapping _Time
 
--- | Unique identifier for a player session.
+-- | A unique identifier for a player session.
 psPlayerSessionId :: Lens' PlayerSession (Maybe Text)
 psPlayerSessionId = lens _psPlayerSessionId (\ s a -> s{_psPlayerSessionId = a})
 
--- | Unique identifier for a fleet that the player's game session is running on.
+-- | A unique identifier for a fleet that the player's game session is running on.
 psFleetId :: Lens' PlayerSession (Maybe Text)
 psFleetId = lens _psFleetId (\ s a -> s{_psFleetId = a})
 
@@ -127,9 +135,13 @@ psFleetId = lens _psFleetId (\ s a -> s{_psFleetId = a})
 psPlayerData :: Lens' PlayerSession (Maybe Text)
 psPlayerData = lens _psPlayerData (\ s a -> s{_psPlayerData = a})
 
--- | Unique identifier for a player that is associated with this player session.
+-- | A unique identifier for a player that is associated with this player session.
 psPlayerId :: Lens' PlayerSession (Maybe Text)
 psPlayerId = lens _psPlayerId (\ s a -> s{_psPlayerId = a})
+
+-- | DNS identifier assigned to the instance that is running the game session. Values have the following format:     * TLS-enabled fleets: @<unique identifier>.<region identifier>.amazongamelift.com@ .     * Non-TLS-enabled fleets: @ec2-<unique identifier>.compute.amazonaws.com@ . (See <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-instance-addressing.html#concepts-public-addresses Amazon EC2 Instance IP Addressing> .) When connecting to a game session that is running on a TLS-enabled fleet, you must use the DNS name, not the IP address.
+psDNSName :: Lens' PlayerSession (Maybe Text)
+psDNSName = lens _psDNSName (\ s a -> s{_psDNSName = a})
 
 -- | Port number for the game session. To connect to a Amazon GameLift server process, an app needs both the IP address and port number.
 psPort :: Lens' PlayerSession (Maybe Natural)
@@ -143,11 +155,13 @@ instance FromJSON PlayerSession where
                    (x .:? "CreationTime") <*> (x .:? "Status") <*>
                      (x .:? "IpAddress")
                      <*> (x .:? "GameSessionId")
+                     <*> (x .:? "FleetArn")
                      <*> (x .:? "TerminationTime")
                      <*> (x .:? "PlayerSessionId")
                      <*> (x .:? "FleetId")
                      <*> (x .:? "PlayerData")
                      <*> (x .:? "PlayerId")
+                     <*> (x .:? "DnsName")
                      <*> (x .:? "Port"))
 
 instance Hashable PlayerSession where

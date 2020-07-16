@@ -21,6 +21,8 @@
 -- Lists the attributes for Amazon ECS resources within a specified target type and cluster. When you specify a target type and cluster, @ListAttributes@ returns a list of attribute objects, one for each attribute on each resource. You can filter the list of results to a single attribute name to only return results that have that name. You can also filter the results by attribute name and value, for example, to see which container instances in a cluster are running a Linux AMI (@ecs.os-type=linux@ ). 
 --
 --
+--
+-- This operation returns paginated results.
 module Network.AWS.ECS.ListAttributes
     (
     -- * Creating a Request
@@ -46,6 +48,7 @@ module Network.AWS.ECS.ListAttributes
 import Network.AWS.ECS.Types
 import Network.AWS.ECS.Types.Product
 import Network.AWS.Lens
+import Network.AWS.Pager
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
@@ -68,7 +71,7 @@ data ListAttributes = ListAttributes'{_laAttributeValue
 --
 -- * 'laCluster' - The short name or full Amazon Resource Name (ARN) of the cluster to list attributes. If you do not specify a cluster, the default cluster is assumed.
 --
--- * 'laNextToken' - The @nextToken@ value returned from a previous paginated @ListAttributes@ request where @maxResults@ was used and the results exceeded the value of that parameter. Pagination continues from the end of the previous results that returned the @nextToken@ value.
+-- * 'laNextToken' - The @nextToken@ value returned from a @ListAttributes@ request indicating that more results are available to fulfill the request and further calls will be needed. If @maxResults@ was provided, it is possible the number of results to be fewer than @maxResults@ .
 --
 -- * 'laAttributeName' - The name of the attribute with which to filter the results. 
 --
@@ -92,7 +95,7 @@ laAttributeValue = lens _laAttributeValue (\ s a -> s{_laAttributeValue = a})
 laCluster :: Lens' ListAttributes (Maybe Text)
 laCluster = lens _laCluster (\ s a -> s{_laCluster = a})
 
--- | The @nextToken@ value returned from a previous paginated @ListAttributes@ request where @maxResults@ was used and the results exceeded the value of that parameter. Pagination continues from the end of the previous results that returned the @nextToken@ value.
+-- | The @nextToken@ value returned from a @ListAttributes@ request indicating that more results are available to fulfill the request and further calls will be needed. If @maxResults@ was provided, it is possible the number of results to be fewer than @maxResults@ .
 laNextToken :: Lens' ListAttributes (Maybe Text)
 laNextToken = lens _laNextToken (\ s a -> s{_laNextToken = a})
 
@@ -107,6 +110,13 @@ laMaxResults = lens _laMaxResults (\ s a -> s{_laMaxResults = a})
 -- | The type of the target with which to list attributes.
 laTargetType :: Lens' ListAttributes TargetType
 laTargetType = lens _laTargetType (\ s a -> s{_laTargetType = a})
+
+instance AWSPager ListAttributes where
+        page rq rs
+          | stop (rs ^. larsNextToken) = Nothing
+          | stop (rs ^. larsAttributes) = Nothing
+          | otherwise =
+            Just $ rq & laNextToken .~ rs ^. larsNextToken
 
 instance AWSRequest ListAttributes where
         type Rs ListAttributes = ListAttributesResponse

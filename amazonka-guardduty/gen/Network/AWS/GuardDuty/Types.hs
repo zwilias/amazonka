@@ -19,6 +19,12 @@ module Network.AWS.GuardDuty.Types
     , _InternalServerErrorException
     , _BadRequestException
 
+    -- * AdminStatus
+    , AdminStatus (..)
+
+    -- * DestinationType
+    , DestinationType (..)
+
     -- * DetectorStatus
     , DetectorStatus (..)
 
@@ -27,6 +33,9 @@ module Network.AWS.GuardDuty.Types
 
     -- * FilterAction
     , FilterAction (..)
+
+    -- * FindingPublishingFrequency
+    , FindingPublishingFrequency (..)
 
     -- * FindingStatisticType
     , FindingStatisticType (..)
@@ -39,6 +48,9 @@ module Network.AWS.GuardDuty.Types
 
     -- * OrderBy
     , OrderBy (..)
+
+    -- * PublishingStatus
+    , PublishingStatus (..)
 
     -- * ThreatIntelSetFormat
     , ThreatIntelSetFormat (..)
@@ -66,8 +78,8 @@ module Network.AWS.GuardDuty.Types
     -- * AccountDetail
     , AccountDetail
     , accountDetail
-    , adEmail
     , adAccountId
+    , adEmail
 
     -- * Action
     , Action
@@ -78,6 +90,12 @@ module Network.AWS.GuardDuty.Types
     , aDNSRequestAction
     , aAWSAPICallAction
 
+    -- * AdminAccount
+    , AdminAccount
+    , adminAccount
+    , aaAdminAccountId
+    , aaAdminStatus
+
     -- * City
     , City
     , city
@@ -87,11 +105,17 @@ module Network.AWS.GuardDuty.Types
     , Condition
     , condition
     , cEQ
+    , cLessThan
     , cLte
+    , cGreaterThanOrEqual
+    , cLessThanOrEqual
     , cGT
+    , cEquals
     , cNeq
+    , cNotEquals
     , cLT
     , cGte
+    , cGreaterThan
 
     -- * Country
     , Country
@@ -104,9 +128,28 @@ module Network.AWS.GuardDuty.Types
     , dnsRequestAction
     , draDomain
 
+    -- * Destination
+    , Destination
+    , destination
+    , dDestinationId
+    , dDestinationType
+    , dStatus
+
+    -- * DestinationProperties
+    , DestinationProperties
+    , destinationProperties
+    , dpKMSKeyARN
+    , dpDestinationARN
+
     -- * DomainDetails
     , DomainDetails
     , domainDetails
+    , ddDomain
+
+    -- * Evidence
+    , Evidence
+    , evidence
+    , eThreatIntelligenceDetails
 
     -- * Finding
     , Finding
@@ -117,15 +160,15 @@ module Network.AWS.GuardDuty.Types
     , fTitle
     , fDescription
     , fAccountId
-    , fSchemaVersion
-    , fCreatedAt
-    , fResource
-    , fSeverity
-    , fUpdatedAt
-    , fType
-    , fRegion
-    , fId
     , fARN
+    , fCreatedAt
+    , fId
+    , fRegion
+    , fResource
+    , fSchemaVersion
+    , fSeverity
+    , fType
+    , fUpdatedAt
 
     -- * FindingCriteria
     , FindingCriteria
@@ -156,6 +199,7 @@ module Network.AWS.GuardDuty.Types
     , idPlatform
     , idLaunchTime
     , idNetworkInterfaces
+    , idOutpostARN
     , idInstanceType
     , idAvailabilityZone
     , idIAMInstanceProfile
@@ -172,6 +216,11 @@ module Network.AWS.GuardDuty.Types
     , iRelationshipStatus
     , iInvitationId
     , iAccountId
+
+    -- * LocalIPDetails
+    , LocalIPDetails
+    , localIPDetails
+    , lidIPAddressV4
 
     -- * LocalPortDetails
     , LocalPortDetails
@@ -192,17 +241,18 @@ module Network.AWS.GuardDuty.Types
     , member
     , mInvitedAt
     , mDetectorId
-    , mEmail
     , mAccountId
     , mMasterId
-    , mUpdatedAt
+    , mEmail
     , mRelationshipStatus
+    , mUpdatedAt
 
     -- * NetworkConnectionAction
     , NetworkConnectionAction
     , networkConnectionAction
     , ncaRemoteIPDetails
     , ncaProtocol
+    , ncaLocalIPDetails
     , ncaRemotePortDetails
     , ncaBlocked
     , ncaConnectionDirection
@@ -240,6 +290,7 @@ module Network.AWS.GuardDuty.Types
     , PortProbeDetail
     , portProbeDetail
     , ppdRemoteIPDetails
+    , ppdLocalIPDetails
     , ppdLocalPortDetails
 
     -- * PrivateIPAddressDetails
@@ -291,6 +342,7 @@ module Network.AWS.GuardDuty.Types
     , siDetectorId
     , siServiceName
     , siUserFeedback
+    , siEvidence
     , siEventLastSeen
     , siResourceRole
     , siArchived
@@ -307,6 +359,12 @@ module Network.AWS.GuardDuty.Types
     , tagValue
     , tagKey
 
+    -- * ThreatIntelligenceDetail
+    , ThreatIntelligenceDetail
+    , threatIntelligenceDetail
+    , tidThreatNames
+    , tidThreatListName
+
     -- * UnprocessedAccount
     , UnprocessedAccount
     , unprocessedAccount
@@ -317,24 +375,32 @@ module Network.AWS.GuardDuty.Types
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Sign.V4
+import Network.AWS.GuardDuty.Types.AdminStatus
+import Network.AWS.GuardDuty.Types.DestinationType
 import Network.AWS.GuardDuty.Types.DetectorStatus
 import Network.AWS.GuardDuty.Types.Feedback
 import Network.AWS.GuardDuty.Types.FilterAction
+import Network.AWS.GuardDuty.Types.FindingPublishingFrequency
 import Network.AWS.GuardDuty.Types.FindingStatisticType
 import Network.AWS.GuardDuty.Types.IPSetFormat
 import Network.AWS.GuardDuty.Types.IPSetStatus
 import Network.AWS.GuardDuty.Types.OrderBy
+import Network.AWS.GuardDuty.Types.PublishingStatus
 import Network.AWS.GuardDuty.Types.ThreatIntelSetFormat
 import Network.AWS.GuardDuty.Types.ThreatIntelSetStatus
 import Network.AWS.GuardDuty.Types.AWSAPICallAction
 import Network.AWS.GuardDuty.Types.AccessKeyDetails
 import Network.AWS.GuardDuty.Types.AccountDetail
 import Network.AWS.GuardDuty.Types.Action
+import Network.AWS.GuardDuty.Types.AdminAccount
 import Network.AWS.GuardDuty.Types.City
 import Network.AWS.GuardDuty.Types.Condition
 import Network.AWS.GuardDuty.Types.Country
 import Network.AWS.GuardDuty.Types.DNSRequestAction
+import Network.AWS.GuardDuty.Types.Destination
+import Network.AWS.GuardDuty.Types.DestinationProperties
 import Network.AWS.GuardDuty.Types.DomainDetails
+import Network.AWS.GuardDuty.Types.Evidence
 import Network.AWS.GuardDuty.Types.Finding
 import Network.AWS.GuardDuty.Types.FindingCriteria
 import Network.AWS.GuardDuty.Types.FindingStatistics
@@ -342,6 +408,7 @@ import Network.AWS.GuardDuty.Types.GeoLocation
 import Network.AWS.GuardDuty.Types.IAMInstanceProfile
 import Network.AWS.GuardDuty.Types.InstanceDetails
 import Network.AWS.GuardDuty.Types.Invitation
+import Network.AWS.GuardDuty.Types.LocalIPDetails
 import Network.AWS.GuardDuty.Types.LocalPortDetails
 import Network.AWS.GuardDuty.Types.Master
 import Network.AWS.GuardDuty.Types.Member
@@ -359,6 +426,7 @@ import Network.AWS.GuardDuty.Types.SecurityGroup
 import Network.AWS.GuardDuty.Types.ServiceInfo
 import Network.AWS.GuardDuty.Types.SortCriteria
 import Network.AWS.GuardDuty.Types.Tag
+import Network.AWS.GuardDuty.Types.ThreatIntelligenceDetail
 import Network.AWS.GuardDuty.Types.UnprocessedAccount
 
 -- | API version @2017-11-28@ of the Amazon GuardDuty SDK configuration.
@@ -383,6 +451,11 @@ guardDuty
             = Just "throttling_exception"
           | has (hasCode "Throttling" . hasStatus 400) e =
             Just "throttling"
+          | has
+              (hasCode "ProvisionedThroughputExceededException" .
+                 hasStatus 400)
+              e
+            = Just "throughput_exceeded"
           | has (hasStatus 504) e = Just "gateway_timeout"
           | has
               (hasCode "RequestThrottledException" . hasStatus 400)
@@ -394,14 +467,18 @@ guardDuty
           | has (hasStatus 509) e = Just "limit_exceeded"
           | otherwise = Nothing
 
--- | Error response object.
+-- | An internal server error exception object.
+--
+--
 _InternalServerErrorException :: AsError a => Getting (First ServiceError) a ServiceError
 _InternalServerErrorException
   = _MatchServiceError guardDuty
       "InternalServerErrorException"
       . hasStatus 500
 
--- | Error response object.
+-- | A bad request exception object.
+--
+--
 _BadRequestException :: AsError a => Getting (First ServiceError) a ServiceError
 _BadRequestException
   = _MatchServiceError guardDuty "BadRequestException"

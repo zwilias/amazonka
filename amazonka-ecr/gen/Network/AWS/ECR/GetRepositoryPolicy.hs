@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Retrieves the repository policy for a specified repository.
+-- Retrieves the repository policy for the specified repository.
 --
 --
 module Network.AWS.ECR.GetRepositoryPolicy

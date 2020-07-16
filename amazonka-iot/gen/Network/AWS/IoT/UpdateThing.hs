@@ -73,7 +73,7 @@ data UpdateThing = UpdateThing'{_utRemoveThingType ::
 --
 -- * 'utAttributePayload' - A list of thing attributes, a JSON string containing name-value pairs. For example: @{\"attributes\":{\"name1\":\"value2\"}}@  This data is used to add new attributes or update existing attributes.
 --
--- * 'utThingName' - The name of the thing to update.
+-- * 'utThingName' - The name of the thing to update. You can't change a thing's name. To change a thing's name, you must create a new thing, give it the new name, and then delete the old thing.
 updateThing
     :: Text -- ^ 'utThingName'
     -> UpdateThing
@@ -100,7 +100,7 @@ utExpectedVersion = lens _utExpectedVersion (\ s a -> s{_utExpectedVersion = a})
 utAttributePayload :: Lens' UpdateThing (Maybe AttributePayload)
 utAttributePayload = lens _utAttributePayload (\ s a -> s{_utAttributePayload = a})
 
--- | The name of the thing to update.
+-- | The name of the thing to update. You can't change a thing's name. To change a thing's name, you must create a new thing, give it the new name, and then delete the old thing.
 utThingName :: Lens' UpdateThing Text
 utThingName = lens _utThingName (\ s a -> s{_utThingName = a})
 

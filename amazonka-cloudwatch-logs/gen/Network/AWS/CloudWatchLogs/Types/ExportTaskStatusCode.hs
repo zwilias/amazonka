@@ -19,12 +19,12 @@
 module Network.AWS.CloudWatchLogs.Types.ExportTaskStatusCode (
   ExportTaskStatusCode (
     ..
-    , Cancelled
-    , Completed
-    , Failed
-    , Pending
-    , PendingCancel
-    , Running
+    , ETSCCancelled
+    , ETSCCompleted
+    , ETSCFailed
+    , ETSCPending
+    , ETSCPendingCancel
+    , ETSCRunning
     )
   ) where
 
@@ -36,31 +36,31 @@ data ExportTaskStatusCode = ExportTaskStatusCode' (CI
                               deriving (Eq, Ord, Read, Show, Data, Typeable,
                                         Generic)
 
-pattern Cancelled :: ExportTaskStatusCode
-pattern Cancelled = ExportTaskStatusCode' "CANCELLED"
+pattern ETSCCancelled :: ExportTaskStatusCode
+pattern ETSCCancelled = ExportTaskStatusCode' "CANCELLED"
 
-pattern Completed :: ExportTaskStatusCode
-pattern Completed = ExportTaskStatusCode' "COMPLETED"
+pattern ETSCCompleted :: ExportTaskStatusCode
+pattern ETSCCompleted = ExportTaskStatusCode' "COMPLETED"
 
-pattern Failed :: ExportTaskStatusCode
-pattern Failed = ExportTaskStatusCode' "FAILED"
+pattern ETSCFailed :: ExportTaskStatusCode
+pattern ETSCFailed = ExportTaskStatusCode' "FAILED"
 
-pattern Pending :: ExportTaskStatusCode
-pattern Pending = ExportTaskStatusCode' "PENDING"
+pattern ETSCPending :: ExportTaskStatusCode
+pattern ETSCPending = ExportTaskStatusCode' "PENDING"
 
-pattern PendingCancel :: ExportTaskStatusCode
-pattern PendingCancel = ExportTaskStatusCode' "PENDING_CANCEL"
+pattern ETSCPendingCancel :: ExportTaskStatusCode
+pattern ETSCPendingCancel = ExportTaskStatusCode' "PENDING_CANCEL"
 
-pattern Running :: ExportTaskStatusCode
-pattern Running = ExportTaskStatusCode' "RUNNING"
+pattern ETSCRunning :: ExportTaskStatusCode
+pattern ETSCRunning = ExportTaskStatusCode' "RUNNING"
 
 {-# COMPLETE
-  Cancelled,
-  Completed,
-  Failed,
-  Pending,
-  PendingCancel,
-  Running,
+  ETSCCancelled,
+  ETSCCompleted,
+  ETSCFailed,
+  ETSCPending,
+  ETSCPendingCancel,
+  ETSCRunning,
   ExportTaskStatusCode' #-}
 
 instance FromText ExportTaskStatusCode where
@@ -75,28 +75,28 @@ instance ToText ExportTaskStatusCode where
 --   fromEnum is a partial function, and will error on values unknown at generation time.
 instance Enum ExportTaskStatusCode where
     toEnum i = case i of
-        0 -> Cancelled
-        1 -> Completed
-        2 -> Failed
-        3 -> Pending
-        4 -> PendingCancel
-        5 -> Running
+        0 -> ETSCCancelled
+        1 -> ETSCCompleted
+        2 -> ETSCFailed
+        3 -> ETSCPending
+        4 -> ETSCPendingCancel
+        5 -> ETSCRunning
         _ -> (error . showText) $ "Unknown index for ExportTaskStatusCode: " <> toText i
     fromEnum x = case x of
-        Cancelled -> 0
-        Completed -> 1
-        Failed -> 2
-        Pending -> 3
-        PendingCancel -> 4
-        Running -> 5
+        ETSCCancelled -> 0
+        ETSCCompleted -> 1
+        ETSCFailed -> 2
+        ETSCPending -> 3
+        ETSCPendingCancel -> 4
+        ETSCRunning -> 5
         ExportTaskStatusCode' name -> (error . showText) $ "Unknown ExportTaskStatusCode: " <> original name
 
 -- | Represents the bounds of /known/ $ExportTaskStatusCode.
 --   AWS may have added more since the source was generated.
 --   This instance exists only for backward compatibility.
 instance Bounded ExportTaskStatusCode where
-    minBound = Cancelled
-    maxBound = Running
+    minBound = ETSCCancelled
+    maxBound = ETSCRunning
 
 instance Hashable     ExportTaskStatusCode
 instance NFData       ExportTaskStatusCode

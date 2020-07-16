@@ -77,7 +77,7 @@ data UpdateUser = UpdateUser'{_uuGivenName ::
 --
 -- * 'uuLocale' - The locale of the user.
 --
--- * 'uuAuthenticationToken' - Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.
+-- * 'uuAuthenticationToken' - Amazon WorkDocs authentication token. Not required when using AWS administrator credentials to access the API.
 --
 -- * 'uuStorageRule' - The amount of storage for the user.
 --
@@ -112,7 +112,7 @@ uuGrantPoweruserPrivileges = lens _uuGrantPoweruserPrivileges (\ s a -> s{_uuGra
 uuLocale :: Lens' UpdateUser (Maybe LocaleType)
 uuLocale = lens _uuLocale (\ s a -> s{_uuLocale = a})
 
--- | Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.
+-- | Amazon WorkDocs authentication token. Not required when using AWS administrator credentials to access the API.
 uuAuthenticationToken :: Lens' UpdateUser (Maybe Text)
 uuAuthenticationToken = lens _uuAuthenticationToken (\ s a -> s{_uuAuthenticationToken = a}) . mapping _Sensitive
 

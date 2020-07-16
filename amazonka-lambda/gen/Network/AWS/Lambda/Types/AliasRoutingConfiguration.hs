@@ -20,7 +20,7 @@ module Network.AWS.Lambda.Types.AliasRoutingConfiguration where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | The parent object that implements what percentage of traffic will invoke each function version. For more information, see 'lambda-traffic-shifting-using-aliases' .
+-- | The <https://docs.aws.amazon.com/lambda/latest/dg/lambda-traffic-shifting-using-aliases.html traffic-shifting> configuration of a Lambda function alias.
 --
 --
 --
@@ -37,14 +37,14 @@ newtype AliasRoutingConfiguration = AliasRoutingConfiguration'{_arcAdditionalVer
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'arcAdditionalVersionWeights' - Set this value to dictate what percentage of traffic will invoke the updated function version. If set to an empty string, 100 percent of traffic will invoke @function-version@ . For more information, see 'lambda-traffic-shifting-using-aliases' .
+-- * 'arcAdditionalVersionWeights' - The name of the second alias, and the percentage of traffic that's routed to it.
 aliasRoutingConfiguration
     :: AliasRoutingConfiguration
 aliasRoutingConfiguration
   = AliasRoutingConfiguration'{_arcAdditionalVersionWeights
                                  = Nothing}
 
--- | Set this value to dictate what percentage of traffic will invoke the updated function version. If set to an empty string, 100 percent of traffic will invoke @function-version@ . For more information, see 'lambda-traffic-shifting-using-aliases' .
+-- | The name of the second alias, and the percentage of traffic that's routed to it.
 arcAdditionalVersionWeights :: Lens' AliasRoutingConfiguration (HashMap Text Double)
 arcAdditionalVersionWeights = lens _arcAdditionalVersionWeights (\ s a -> s{_arcAdditionalVersionWeights = a}) . _Default . _Map
 

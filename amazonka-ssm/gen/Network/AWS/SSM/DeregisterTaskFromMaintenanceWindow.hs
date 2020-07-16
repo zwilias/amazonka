@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Removes a task from a Maintenance Window.
+-- Removes a task from a maintenance window.
 --
 --
 module Network.AWS.SSM.DeregisterTaskFromMaintenanceWindow
@@ -60,9 +60,9 @@ data DeregisterTaskFromMaintenanceWindow = DeregisterTaskFromMaintenanceWindow'{
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'derWindowId' - The ID of the Maintenance Window the task should be removed from.
+-- * 'derWindowId' - The ID of the maintenance window the task should be removed from.
 --
--- * 'derWindowTaskId' - The ID of the task to remove from the Maintenance Window.
+-- * 'derWindowTaskId' - The ID of the task to remove from the maintenance window.
 deregisterTaskFromMaintenanceWindow
     :: Text -- ^ 'derWindowId'
     -> Text -- ^ 'derWindowTaskId'
@@ -73,11 +73,11 @@ deregisterTaskFromMaintenanceWindow pWindowId_
                                            pWindowId_,
                                          _derWindowTaskId = pWindowTaskId_}
 
--- | The ID of the Maintenance Window the task should be removed from.
+-- | The ID of the maintenance window the task should be removed from.
 derWindowId :: Lens' DeregisterTaskFromMaintenanceWindow Text
 derWindowId = lens _derWindowId (\ s a -> s{_derWindowId = a})
 
--- | The ID of the task to remove from the Maintenance Window.
+-- | The ID of the task to remove from the maintenance window.
 derWindowTaskId :: Lens' DeregisterTaskFromMaintenanceWindow Text
 derWindowTaskId = lens _derWindowTaskId (\ s a -> s{_derWindowTaskId = a})
 
@@ -148,9 +148,9 @@ data DeregisterTaskFromMaintenanceWindowResponse = DeregisterTaskFromMaintenance
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'derrsWindowTaskId' - The ID of the task removed from the Maintenance Window.
+-- * 'derrsWindowTaskId' - The ID of the task removed from the maintenance window.
 --
--- * 'derrsWindowId' - The ID of the Maintenance Window the task was removed from.
+-- * 'derrsWindowId' - The ID of the maintenance window the task was removed from.
 --
 -- * 'derrsResponseStatus' - -- | The response status code.
 deregisterTaskFromMaintenanceWindowResponse
@@ -164,11 +164,11 @@ deregisterTaskFromMaintenanceWindowResponse
                                                  _derrsResponseStatus =
                                                    pResponseStatus_}
 
--- | The ID of the task removed from the Maintenance Window.
+-- | The ID of the task removed from the maintenance window.
 derrsWindowTaskId :: Lens' DeregisterTaskFromMaintenanceWindowResponse (Maybe Text)
 derrsWindowTaskId = lens _derrsWindowTaskId (\ s a -> s{_derrsWindowTaskId = a})
 
--- | The ID of the Maintenance Window the task was removed from.
+-- | The ID of the maintenance window the task was removed from.
 derrsWindowId :: Lens' DeregisterTaskFromMaintenanceWindowResponse (Maybe Text)
 derrsWindowId = lens _derrsWindowId (\ s a -> s{_derrsWindowId = a})
 

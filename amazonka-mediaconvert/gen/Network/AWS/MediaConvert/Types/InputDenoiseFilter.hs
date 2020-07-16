@@ -19,8 +19,8 @@
 module Network.AWS.MediaConvert.Types.InputDenoiseFilter (
   InputDenoiseFilter (
     ..
-    , IDFDisabled
-    , IDFEnabled
+    , IDisabled
+    , IEnabled
     )
   ) where
 
@@ -33,15 +33,15 @@ data InputDenoiseFilter = InputDenoiseFilter' (CI
                             deriving (Eq, Ord, Read, Show, Data, Typeable,
                                       Generic)
 
-pattern IDFDisabled :: InputDenoiseFilter
-pattern IDFDisabled = InputDenoiseFilter' "DISABLED"
+pattern IDisabled :: InputDenoiseFilter
+pattern IDisabled = InputDenoiseFilter' "DISABLED"
 
-pattern IDFEnabled :: InputDenoiseFilter
-pattern IDFEnabled = InputDenoiseFilter' "ENABLED"
+pattern IEnabled :: InputDenoiseFilter
+pattern IEnabled = InputDenoiseFilter' "ENABLED"
 
 {-# COMPLETE
-  IDFDisabled,
-  IDFEnabled,
+  IDisabled,
+  IEnabled,
   InputDenoiseFilter' #-}
 
 instance FromText InputDenoiseFilter where
@@ -56,20 +56,20 @@ instance ToText InputDenoiseFilter where
 --   fromEnum is a partial function, and will error on values unknown at generation time.
 instance Enum InputDenoiseFilter where
     toEnum i = case i of
-        0 -> IDFDisabled
-        1 -> IDFEnabled
+        0 -> IDisabled
+        1 -> IEnabled
         _ -> (error . showText) $ "Unknown index for InputDenoiseFilter: " <> toText i
     fromEnum x = case x of
-        IDFDisabled -> 0
-        IDFEnabled -> 1
+        IDisabled -> 0
+        IEnabled -> 1
         InputDenoiseFilter' name -> (error . showText) $ "Unknown InputDenoiseFilter: " <> original name
 
 -- | Represents the bounds of /known/ $InputDenoiseFilter.
 --   AWS may have added more since the source was generated.
 --   This instance exists only for backward compatibility.
 instance Bounded InputDenoiseFilter where
-    minBound = IDFDisabled
-    maxBound = IDFEnabled
+    minBound = IDisabled
+    maxBound = IEnabled
 
 instance Hashable     InputDenoiseFilter
 instance NFData       InputDenoiseFilter

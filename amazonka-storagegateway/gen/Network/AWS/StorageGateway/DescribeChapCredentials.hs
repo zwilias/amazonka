@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Returns an array of Challenge-Handshake Authentication Protocol (CHAP) credentials information for a specified iSCSI target, one for each target-initiator pair.
+-- Returns an array of Challenge-Handshake Authentication Protocol (CHAP) credentials information for a specified iSCSI target, one for each target-initiator pair. This operation is supported in the volume and tape gateway types.
 --
 --
 module Network.AWS.StorageGateway.DescribeChapCredentials
@@ -117,8 +117,8 @@ data DescribeChapCredentialsResponse = DescribeChapCredentialsResponse'{_dccrsCh
                                                                             [ChapInfo]),
                                                                         _dccrsResponseStatus
                                                                         :: !Int}
-                                         deriving (Eq, Read, Show, Data,
-                                                   Typeable, Generic)
+                                         deriving (Eq, Show, Data, Typeable,
+                                                   Generic)
 
 -- | Creates a value of 'DescribeChapCredentialsResponse' with the minimum fields required to make a request.
 --

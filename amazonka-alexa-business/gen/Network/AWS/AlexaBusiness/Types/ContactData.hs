@@ -17,6 +17,8 @@
 --
 module Network.AWS.AlexaBusiness.Types.ContactData where
 
+import Network.AWS.AlexaBusiness.Types.PhoneNumber
+import Network.AWS.AlexaBusiness.Types.SipAddress
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
@@ -28,10 +30,12 @@ import Network.AWS.Prelude
 data ContactData = ContactData'{_cdLastName ::
                                 !(Maybe Text),
                                 _cdContactARN :: !(Maybe Text),
-                                _cdPhoneNumber :: !(Maybe Text),
+                                _cdPhoneNumbers :: !(Maybe [PhoneNumber]),
+                                _cdPhoneNumber :: !(Maybe (Sensitive Text)),
+                                _cdSipAddresses :: !(Maybe [SipAddress]),
                                 _cdFirstName :: !(Maybe Text),
                                 _cdDisplayName :: !(Maybe Text)}
-                     deriving (Eq, Read, Show, Data, Typeable, Generic)
+                     deriving (Eq, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ContactData' with the minimum fields required to make a request.
 --
@@ -41,7 +45,11 @@ data ContactData = ContactData'{_cdLastName ::
 --
 -- * 'cdContactARN' - The ARN of the contact.
 --
--- * 'cdPhoneNumber' - The phone number of the contact.
+-- * 'cdPhoneNumbers' - The list of phone numbers for the contact.
+--
+-- * 'cdPhoneNumber' - The phone number of the contact. The phone number type defaults to WORK. You can specify PhoneNumber or PhoneNumbers. We recommend that you use PhoneNumbers, which lets you specify the phone number type and multiple numbers.
+--
+-- * 'cdSipAddresses' - The list of SIP addresses for the contact.
 --
 -- * 'cdFirstName' - The first name of the contact, used to call the contact on the device.
 --
@@ -50,7 +58,8 @@ contactData
     :: ContactData
 contactData
   = ContactData'{_cdLastName = Nothing,
-                 _cdContactARN = Nothing, _cdPhoneNumber = Nothing,
+                 _cdContactARN = Nothing, _cdPhoneNumbers = Nothing,
+                 _cdPhoneNumber = Nothing, _cdSipAddresses = Nothing,
                  _cdFirstName = Nothing, _cdDisplayName = Nothing}
 
 -- | The last name of the contact, used to call the contact on the device.
@@ -61,9 +70,17 @@ cdLastName = lens _cdLastName (\ s a -> s{_cdLastName = a})
 cdContactARN :: Lens' ContactData (Maybe Text)
 cdContactARN = lens _cdContactARN (\ s a -> s{_cdContactARN = a})
 
--- | The phone number of the contact.
+-- | The list of phone numbers for the contact.
+cdPhoneNumbers :: Lens' ContactData [PhoneNumber]
+cdPhoneNumbers = lens _cdPhoneNumbers (\ s a -> s{_cdPhoneNumbers = a}) . _Default . _Coerce
+
+-- | The phone number of the contact. The phone number type defaults to WORK. You can specify PhoneNumber or PhoneNumbers. We recommend that you use PhoneNumbers, which lets you specify the phone number type and multiple numbers.
 cdPhoneNumber :: Lens' ContactData (Maybe Text)
-cdPhoneNumber = lens _cdPhoneNumber (\ s a -> s{_cdPhoneNumber = a})
+cdPhoneNumber = lens _cdPhoneNumber (\ s a -> s{_cdPhoneNumber = a}) . mapping _Sensitive
+
+-- | The list of SIP addresses for the contact.
+cdSipAddresses :: Lens' ContactData [SipAddress]
+cdSipAddresses = lens _cdSipAddresses (\ s a -> s{_cdSipAddresses = a}) . _Default . _Coerce
 
 -- | The first name of the contact, used to call the contact on the device.
 cdFirstName :: Lens' ContactData (Maybe Text)
@@ -79,7 +96,9 @@ instance FromJSON ContactData where
               (\ x ->
                  ContactData' <$>
                    (x .:? "LastName") <*> (x .:? "ContactArn") <*>
-                     (x .:? "PhoneNumber")
+                     (x .:? "PhoneNumbers" .!= mempty)
+                     <*> (x .:? "PhoneNumber")
+                     <*> (x .:? "SipAddresses" .!= mempty)
                      <*> (x .:? "FirstName")
                      <*> (x .:? "DisplayName"))
 

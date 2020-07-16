@@ -21,7 +21,7 @@ import Network.AWS.Glue.Types.ResourceType
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | URIs for function resources.
+-- | The URIs for function resources.
 --
 --
 --

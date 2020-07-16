@@ -40,7 +40,7 @@ data UserPendingChanges = UserPendingChanges'{_upcGroups
 --
 -- * 'upcConsoleAccess' - Enables access to the the ActiveMQ Web Console for the ActiveMQ user.
 --
--- * 'upcPendingChange' - Required. The type of change pending for the ActiveMQ user. Possible values: CREATE, UPDATE, DELETE
+-- * 'upcPendingChange' - Required. The type of change pending for the ActiveMQ user.
 userPendingChanges
     :: UserPendingChanges
 userPendingChanges
@@ -56,7 +56,7 @@ upcGroups = lens _upcGroups (\ s a -> s{_upcGroups = a}) . _Default . _Coerce
 upcConsoleAccess :: Lens' UserPendingChanges (Maybe Bool)
 upcConsoleAccess = lens _upcConsoleAccess (\ s a -> s{_upcConsoleAccess = a})
 
--- | Required. The type of change pending for the ActiveMQ user. Possible values: CREATE, UPDATE, DELETE
+-- | Required. The type of change pending for the ActiveMQ user.
 upcPendingChange :: Lens' UserPendingChanges (Maybe ChangeType)
 upcPendingChange = lens _upcPendingChange (\ s a -> s{_upcPendingChange = a})
 

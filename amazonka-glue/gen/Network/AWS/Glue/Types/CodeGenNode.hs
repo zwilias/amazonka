@@ -40,7 +40,7 @@ data CodeGenNode = CodeGenNode'{_cgnLineNumber ::
 --
 -- * 'cgnId' - A node identifier that is unique within the node's graph.
 --
--- * 'cgnNodeType' - The type of node this is.
+-- * 'cgnNodeType' - The type of node that this is.
 --
 -- * 'cgnArgs' - Properties of the node, in the form of name-value pairs.
 codeGenNode
@@ -60,7 +60,7 @@ cgnLineNumber = lens _cgnLineNumber (\ s a -> s{_cgnLineNumber = a})
 cgnId :: Lens' CodeGenNode Text
 cgnId = lens _cgnId (\ s a -> s{_cgnId = a})
 
--- | The type of node this is.
+-- | The type of node that this is.
 cgnNodeType :: Lens' CodeGenNode Text
 cgnNodeType = lens _cgnNodeType (\ s a -> s{_cgnNodeType = a})
 

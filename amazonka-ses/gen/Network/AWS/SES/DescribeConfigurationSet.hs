@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Returns the details of the specified configuration set. For information about using configuration sets, see the <http://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html Amazon SES Developer Guide> .
+-- Returns the details of the specified configuration set. For information about using configuration sets, see the <https://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html Amazon SES Developer Guide> .
 --
 --
 -- You can execute this operation no more than once per second.
@@ -36,6 +36,7 @@ module Network.AWS.SES.DescribeConfigurationSet
     , describeConfigurationSetResponse
     , DescribeConfigurationSetResponse
     -- * Response Lenses
+    , dcsrsDeliveryOptions
     , dcsrsTrackingOptions
     , dcsrsConfigurationSet
     , dcsrsReputationOptions
@@ -50,7 +51,7 @@ import Network.AWS.Response
 import Network.AWS.SES.Types
 import Network.AWS.SES.Types.Product
 
--- | Represents a request to return the details of a configuration set. Configuration sets enable you to publish email sending events. For information about using configuration sets, see the <http://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html Amazon SES Developer Guide> .
+-- | Represents a request to return the details of a configuration set. Configuration sets enable you to publish email sending events. For information about using configuration sets, see the <https://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html Amazon SES Developer Guide> .
 --
 --
 --
@@ -95,8 +96,9 @@ instance AWSRequest DescribeConfigurationSet where
           = receiveXMLWrapper "DescribeConfigurationSetResult"
               (\ s h x ->
                  DescribeConfigurationSetResponse' <$>
-                   (x .@? "TrackingOptions") <*>
-                     (x .@? "ConfigurationSet")
+                   (x .@? "DeliveryOptions") <*>
+                     (x .@? "TrackingOptions")
+                     <*> (x .@? "ConfigurationSet")
                      <*> (x .@? "ReputationOptions")
                      <*>
                      (x .@? "EventDestinations" .!@ mempty >>=
@@ -125,12 +127,16 @@ instance ToQuery DescribeConfigurationSet where
                       _dcsConfigurationSetAttributeNames),
                "ConfigurationSetName" =: _dcsConfigurationSetName]
 
--- | Represents the details of a configuration set. Configuration sets enable you to publish email sending events. For information about using configuration sets, see the <http://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html Amazon SES Developer Guide> .
+-- | Represents the details of a configuration set. Configuration sets enable you to publish email sending events. For information about using configuration sets, see the <https://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html Amazon SES Developer Guide> .
 --
 --
 --
 -- /See:/ 'describeConfigurationSetResponse' smart constructor.
-data DescribeConfigurationSetResponse = DescribeConfigurationSetResponse'{_dcsrsTrackingOptions
+data DescribeConfigurationSetResponse = DescribeConfigurationSetResponse'{_dcsrsDeliveryOptions
+                                                                          ::
+                                                                          !(Maybe
+                                                                              DeliveryOptions),
+                                                                          _dcsrsTrackingOptions
                                                                           ::
                                                                           !(Maybe
                                                                               TrackingOptions),
@@ -156,6 +162,8 @@ data DescribeConfigurationSetResponse = DescribeConfigurationSetResponse'{_dcsrs
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
+-- * 'dcsrsDeliveryOptions' - Undocumented member.
+--
 -- * 'dcsrsTrackingOptions' - The name of the custom open and click tracking domain associated with the configuration set.
 --
 -- * 'dcsrsConfigurationSet' - The configuration set object associated with the specified configuration set.
@@ -169,12 +177,17 @@ describeConfigurationSetResponse
     :: Int -- ^ 'dcsrsResponseStatus'
     -> DescribeConfigurationSetResponse
 describeConfigurationSetResponse pResponseStatus_
-  = DescribeConfigurationSetResponse'{_dcsrsTrackingOptions
+  = DescribeConfigurationSetResponse'{_dcsrsDeliveryOptions
                                         = Nothing,
+                                      _dcsrsTrackingOptions = Nothing,
                                       _dcsrsConfigurationSet = Nothing,
                                       _dcsrsReputationOptions = Nothing,
                                       _dcsrsEventDestinations = Nothing,
                                       _dcsrsResponseStatus = pResponseStatus_}
+
+-- | Undocumented member.
+dcsrsDeliveryOptions :: Lens' DescribeConfigurationSetResponse (Maybe DeliveryOptions)
+dcsrsDeliveryOptions = lens _dcsrsDeliveryOptions (\ s a -> s{_dcsrsDeliveryOptions = a})
 
 -- | The name of the custom open and click tracking domain associated with the configuration set.
 dcsrsTrackingOptions :: Lens' DescribeConfigurationSetResponse (Maybe TrackingOptions)

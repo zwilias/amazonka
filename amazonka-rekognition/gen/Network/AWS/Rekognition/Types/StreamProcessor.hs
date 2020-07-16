@@ -21,7 +21,7 @@ import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Rekognition.Types.StreamProcessorStatus
 
--- | An object that recognizes faces in a streaming video. An Amazon Rekognition stream processor is created by a call to . The request parameters for @CreateStreamProcessor@ describe the Kinesis video stream source for the streaming video, face recognition parameters, and where to stream the analysis resullts. 
+-- | An object that recognizes faces in a streaming video. An Amazon Rekognition stream processor is created by a call to 'CreateStreamProcessor' . The request parameters for @CreateStreamProcessor@ describe the Kinesis video stream source for the streaming video, face recognition parameters, and where to stream the analysis resullts. 
 --
 --
 --

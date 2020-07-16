@@ -51,13 +51,13 @@ data PutPartnerEventsRequestEntry = PutPartnerEventsRequestEntry'{_ppereTime
 --
 -- * 'ppereTime' - The date and time of the event.
 --
--- * 'ppereDetailType' - A free-form string used to decide which fields to expect in the event detail.
+-- * 'ppereDetailType' - A free-form string used to decide what fields to expect in the event detail.
 --
--- * 'ppereResources' - AWS resources, identified by Amazon Resource Name (ARN), that the event primarily concerns. Any number, including zero, can be present.
+-- * 'ppereResources' - AWS resources, identified by Amazon Resource Name (ARN), which the event primarily concerns. Any number, including zero, may be present.
 --
 -- * 'ppereSource' - The event source that is generating the evntry.
 --
--- * 'ppereDetail' - A valid JSON string. There is no other schema imposed. The JSON string can contain fields and nested subobjects.
+-- * 'ppereDetail' - A valid JSON string. There is no other schema imposed. The JSON string may contain fields and nested subobjects.
 putPartnerEventsRequestEntry
     :: PutPartnerEventsRequestEntry
 putPartnerEventsRequestEntry
@@ -71,11 +71,11 @@ putPartnerEventsRequestEntry
 ppereTime :: Lens' PutPartnerEventsRequestEntry (Maybe UTCTime)
 ppereTime = lens _ppereTime (\ s a -> s{_ppereTime = a}) . mapping _Time
 
--- | A free-form string used to decide which fields to expect in the event detail.
+-- | A free-form string used to decide what fields to expect in the event detail.
 ppereDetailType :: Lens' PutPartnerEventsRequestEntry (Maybe Text)
 ppereDetailType = lens _ppereDetailType (\ s a -> s{_ppereDetailType = a})
 
--- | AWS resources, identified by Amazon Resource Name (ARN), that the event primarily concerns. Any number, including zero, can be present.
+-- | AWS resources, identified by Amazon Resource Name (ARN), which the event primarily concerns. Any number, including zero, may be present.
 ppereResources :: Lens' PutPartnerEventsRequestEntry [Text]
 ppereResources = lens _ppereResources (\ s a -> s{_ppereResources = a}) . _Default . _Coerce
 
@@ -83,7 +83,7 @@ ppereResources = lens _ppereResources (\ s a -> s{_ppereResources = a}) . _Defau
 ppereSource :: Lens' PutPartnerEventsRequestEntry (Maybe Text)
 ppereSource = lens _ppereSource (\ s a -> s{_ppereSource = a})
 
--- | A valid JSON string. There is no other schema imposed. The JSON string can contain fields and nested subobjects.
+-- | A valid JSON string. There is no other schema imposed. The JSON string may contain fields and nested subobjects.
 ppereDetail :: Lens' PutPartnerEventsRequestEntry (Maybe Text)
 ppereDetail = lens _ppereDetail (\ s a -> s{_ppereDetail = a})
 

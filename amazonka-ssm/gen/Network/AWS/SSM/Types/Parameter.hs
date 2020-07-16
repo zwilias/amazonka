@@ -21,12 +21,16 @@ import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.SSM.Types.ParameterType
 
--- | An Amazon EC2 Systems Manager parameter in Parameter Store.
+-- | An Systems Manager parameter in Parameter Store.
 --
 --
 --
 -- /See:/ 'parameter' smart constructor.
-data Parameter = Parameter'{_pValue :: !(Maybe Text),
+data Parameter = Parameter'{_pLastModifiedDate ::
+                            !(Maybe POSIX),
+                            _pSelector :: !(Maybe Text), _pARN :: !(Maybe Text),
+                            _pValue :: !(Maybe Text),
+                            _pSourceResult :: !(Maybe Text),
                             _pName :: !(Maybe Text),
                             _pVersion :: !(Maybe Integer),
                             _pType :: !(Maybe ParameterType)}
@@ -36,22 +40,49 @@ data Parameter = Parameter'{_pValue :: !(Maybe Text),
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
+-- * 'pLastModifiedDate' - Date the parameter was last changed or updated and the parameter version was created.
+--
+-- * 'pSelector' - Either the version number or the label used to retrieve the parameter value. Specify selectors by using one of the following formats: parameter_name:version parameter_name:label
+--
+-- * 'pARN' - The Amazon Resource Name (ARN) of the parameter.
+--
 -- * 'pValue' - The parameter value.
+--
+-- * 'pSourceResult' - Applies to parameters that reference information in other AWS services. SourceResult is the raw result or response from the source.
 --
 -- * 'pName' - The name of the parameter.
 --
 -- * 'pVersion' - The parameter version.
 --
--- * 'pType' - The type of parameter. Valid values include the following: String, String list, Secure string.
+-- * 'pType' - The type of parameter. Valid values include the following: @String@ , @StringList@ , and @SecureString@ .
 parameter
     :: Parameter
 parameter
-  = Parameter'{_pValue = Nothing, _pName = Nothing,
-               _pVersion = Nothing, _pType = Nothing}
+  = Parameter'{_pLastModifiedDate = Nothing,
+               _pSelector = Nothing, _pARN = Nothing,
+               _pValue = Nothing, _pSourceResult = Nothing,
+               _pName = Nothing, _pVersion = Nothing,
+               _pType = Nothing}
+
+-- | Date the parameter was last changed or updated and the parameter version was created.
+pLastModifiedDate :: Lens' Parameter (Maybe UTCTime)
+pLastModifiedDate = lens _pLastModifiedDate (\ s a -> s{_pLastModifiedDate = a}) . mapping _Time
+
+-- | Either the version number or the label used to retrieve the parameter value. Specify selectors by using one of the following formats: parameter_name:version parameter_name:label
+pSelector :: Lens' Parameter (Maybe Text)
+pSelector = lens _pSelector (\ s a -> s{_pSelector = a})
+
+-- | The Amazon Resource Name (ARN) of the parameter.
+pARN :: Lens' Parameter (Maybe Text)
+pARN = lens _pARN (\ s a -> s{_pARN = a})
 
 -- | The parameter value.
 pValue :: Lens' Parameter (Maybe Text)
 pValue = lens _pValue (\ s a -> s{_pValue = a})
+
+-- | Applies to parameters that reference information in other AWS services. SourceResult is the raw result or response from the source.
+pSourceResult :: Lens' Parameter (Maybe Text)
+pSourceResult = lens _pSourceResult (\ s a -> s{_pSourceResult = a})
 
 -- | The name of the parameter.
 pName :: Lens' Parameter (Maybe Text)
@@ -61,7 +92,7 @@ pName = lens _pName (\ s a -> s{_pName = a})
 pVersion :: Lens' Parameter (Maybe Integer)
 pVersion = lens _pVersion (\ s a -> s{_pVersion = a})
 
--- | The type of parameter. Valid values include the following: String, String list, Secure string.
+-- | The type of parameter. Valid values include the following: @String@ , @StringList@ , and @SecureString@ .
 pType :: Lens' Parameter (Maybe ParameterType)
 pType = lens _pType (\ s a -> s{_pType = a})
 
@@ -70,8 +101,12 @@ instance FromJSON Parameter where
           = withObject "Parameter"
               (\ x ->
                  Parameter' <$>
-                   (x .:? "Value") <*> (x .:? "Name") <*>
-                     (x .:? "Version")
+                   (x .:? "LastModifiedDate") <*> (x .:? "Selector") <*>
+                     (x .:? "ARN")
+                     <*> (x .:? "Value")
+                     <*> (x .:? "SourceResult")
+                     <*> (x .:? "Name")
+                     <*> (x .:? "Version")
                      <*> (x .:? "Type"))
 
 instance Hashable Parameter where

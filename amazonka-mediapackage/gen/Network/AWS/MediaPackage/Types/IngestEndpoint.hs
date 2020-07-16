@@ -26,7 +26,8 @@ import Network.AWS.Prelude
 data IngestEndpoint = IngestEndpoint'{_ieURL ::
                                       !(Maybe Text),
                                       _ieUsername :: !(Maybe Text),
-                                      _iePassword :: !(Maybe Text)}
+                                      _iePassword :: !(Maybe Text),
+                                      _ieId :: !(Maybe Text)}
                         deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'IngestEndpoint' with the minimum fields required to make a request.
@@ -38,11 +39,14 @@ data IngestEndpoint = IngestEndpoint'{_ieURL ::
 -- * 'ieUsername' - The system generated username for ingest authentication.
 --
 -- * 'iePassword' - The system generated password for ingest authentication.
+--
+-- * 'ieId' - The system generated unique identifier for the IngestEndpoint
 ingestEndpoint
     :: IngestEndpoint
 ingestEndpoint
   = IngestEndpoint'{_ieURL = Nothing,
-                    _ieUsername = Nothing, _iePassword = Nothing}
+                    _ieUsername = Nothing, _iePassword = Nothing,
+                    _ieId = Nothing}
 
 -- | The ingest URL to which the source stream should be sent.
 ieURL :: Lens' IngestEndpoint (Maybe Text)
@@ -56,13 +60,18 @@ ieUsername = lens _ieUsername (\ s a -> s{_ieUsername = a})
 iePassword :: Lens' IngestEndpoint (Maybe Text)
 iePassword = lens _iePassword (\ s a -> s{_iePassword = a})
 
+-- | The system generated unique identifier for the IngestEndpoint
+ieId :: Lens' IngestEndpoint (Maybe Text)
+ieId = lens _ieId (\ s a -> s{_ieId = a})
+
 instance FromJSON IngestEndpoint where
         parseJSON
           = withObject "IngestEndpoint"
               (\ x ->
                  IngestEndpoint' <$>
                    (x .:? "url") <*> (x .:? "username") <*>
-                     (x .:? "password"))
+                     (x .:? "password")
+                     <*> (x .:? "id"))
 
 instance Hashable IngestEndpoint where
 

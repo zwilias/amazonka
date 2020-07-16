@@ -18,16 +18,16 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Creates a new case in the AWS Support Center. This operation is modeled on the behavior of the AWS Support Center <https://console.aws.amazon.com/support/home#/case/create Create Case> page. Its parameters require you to specify the following information: 
+-- Creates a new case in the AWS Support Center. This operation is modeled on the behavior of the AWS Support Center <https://console.aws.amazon.com/support/home#/case/create Create Case> page. Its parameters require you to specify the following information:
 --
 --
---     * __issueType.__ The type of issue for the case. You can specify either "customer-service" or "technical." If you do not indicate a value, the default is "technical." 
+--     * __issueType.__ The type of issue for the case. You can specify either "customer-service" or "technical." If you do not indicate a value, the default is "technical."
 --
---     * __serviceCode.__ The code for an AWS service. You obtain the @serviceCode@ by calling 'DescribeServices' . 
+--     * __serviceCode.__ The code for an AWS service. You can get the possible @serviceCode@ values by calling 'DescribeServices' .
 --
---     * __categoryCode.__ The category for the service defined for the @serviceCode@ value. You also obtain the category code for a service by calling 'DescribeServices' . Each AWS service defines its own set of category codes. 
+--     * __categoryCode.__ The category for the service defined for the @serviceCode@ value. You also get the category code for a service by calling 'DescribeServices' . Each AWS service defines its own set of category codes.
 --
---     * __severityCode.__ A value that indicates the urgency of the case, which in turn determines the response time according to your service level agreement with AWS Support. You obtain the SeverityCode by calling 'DescribeSeverityLevels' .
+--     * __severityCode.__ A value that indicates the urgency of the case, which in turn determines the response time according to your service level agreement with AWS Support. You can get the possible @severityCode@ values by calling 'DescribeSeverityLevels' . For more information about the meaning of the codes, see 'SeverityLevel' and <https://docs.aws.amazon.com/awssupport/latest/user/getting-started.html#choosing-severity Choosing a Severity> .
 --
 --     * __subject.__ The __Subject__ field on the AWS Support Center <https://console.aws.amazon.com/support/home#/case/create Create Case> page.
 --
@@ -41,7 +41,7 @@
 --
 --
 --
--- A successful 'CreateCase' request returns an AWS Support case number. Case numbers are used by the 'DescribeCases' operation to retrieve existing AWS Support cases. 
+-- A successful 'CreateCase' request returns an AWS Support case number. Case numbers are used by the 'DescribeCases' operation to retrieve existing AWS Support cases.
 --
 module Network.AWS.Support.CreateCase
     (
@@ -74,11 +74,7 @@ import Network.AWS.Response
 import Network.AWS.Support.Types
 import Network.AWS.Support.Types.Product
 
--- | 
---
---
---
--- /See:/ 'createCase' smart constructor.
+-- | /See:/ 'createCase' smart constructor.
 data CreateCase = CreateCase'{_ccSeverityCode ::
                               !(Maybe Text),
                               _ccIssueType :: !(Maybe Text),
@@ -202,7 +198,7 @@ instance ToPath CreateCase where
 instance ToQuery CreateCase where
         toQuery = const mempty
 
--- | The AWS Support case ID returned by a successful completion of the 'CreateCase' operation. 
+-- | The AWS Support case ID returned by a successful completion of the 'CreateCase' operation.
 --
 --
 --

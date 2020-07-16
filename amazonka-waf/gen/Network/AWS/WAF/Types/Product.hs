@@ -22,6 +22,7 @@ module Network.AWS.WAF.Types.Product (
     module Network.AWS.WAF.Types.ByteMatchSetSummary,
     module Network.AWS.WAF.Types.ByteMatchSetUpdate,
     module Network.AWS.WAF.Types.ByteMatchTuple,
+    module Network.AWS.WAF.Types.ExcludedRule,
     module Network.AWS.WAF.Types.FieldToMatch,
     module Network.AWS.WAF.Types.GeoMatchConstraint,
     module Network.AWS.WAF.Types.GeoMatchSet,
@@ -33,6 +34,7 @@ module Network.AWS.WAF.Types.Product (
     module Network.AWS.WAF.Types.IPSetDescriptor,
     module Network.AWS.WAF.Types.IPSetSummary,
     module Network.AWS.WAF.Types.IPSetUpdate,
+    module Network.AWS.WAF.Types.LoggingConfiguration,
     module Network.AWS.WAF.Types.Predicate,
     module Network.AWS.WAF.Types.RateBasedRule,
     module Network.AWS.WAF.Types.RegexMatchSet,
@@ -58,6 +60,8 @@ module Network.AWS.WAF.Types.Product (
     module Network.AWS.WAF.Types.SqlInjectionMatchSetUpdate,
     module Network.AWS.WAF.Types.SqlInjectionMatchTuple,
     module Network.AWS.WAF.Types.SubscribedRuleGroupSummary,
+    module Network.AWS.WAF.Types.Tag,
+    module Network.AWS.WAF.Types.TagInfoForResource,
     module Network.AWS.WAF.Types.TimeWindow,
     module Network.AWS.WAF.Types.WafAction,
     module Network.AWS.WAF.Types.WafOverrideAction,
@@ -77,6 +81,7 @@ import Network.AWS.WAF.Types.ByteMatchSet
 import Network.AWS.WAF.Types.ByteMatchSetSummary
 import Network.AWS.WAF.Types.ByteMatchSetUpdate
 import Network.AWS.WAF.Types.ByteMatchTuple
+import Network.AWS.WAF.Types.ExcludedRule
 import Network.AWS.WAF.Types.FieldToMatch
 import Network.AWS.WAF.Types.GeoMatchConstraint
 import Network.AWS.WAF.Types.GeoMatchSet
@@ -88,6 +93,7 @@ import Network.AWS.WAF.Types.IPSet
 import Network.AWS.WAF.Types.IPSetDescriptor
 import Network.AWS.WAF.Types.IPSetSummary
 import Network.AWS.WAF.Types.IPSetUpdate
+import Network.AWS.WAF.Types.LoggingConfiguration
 import Network.AWS.WAF.Types.Predicate
 import Network.AWS.WAF.Types.RateBasedRule
 import Network.AWS.WAF.Types.RegexMatchSet
@@ -113,6 +119,8 @@ import Network.AWS.WAF.Types.SqlInjectionMatchSetSummary
 import Network.AWS.WAF.Types.SqlInjectionMatchSetUpdate
 import Network.AWS.WAF.Types.SqlInjectionMatchTuple
 import Network.AWS.WAF.Types.SubscribedRuleGroupSummary
+import Network.AWS.WAF.Types.Tag
+import Network.AWS.WAF.Types.TagInfoForResource
 import Network.AWS.WAF.Types.TimeWindow
 import Network.AWS.WAF.Types.WafAction
 import Network.AWS.WAF.Types.WafOverrideAction

@@ -36,7 +36,7 @@ data KinesisFirehoseInput = KinesisFirehoseInput'{_kfiResourceARN
 --
 -- * 'kfiResourceARN' - ARN of the input delivery stream.
 --
--- * 'kfiRoleARN' - ARN of the IAM role that Amazon Kinesis Analytics can assume to access the stream on your behalf. You need to make sure the role has necessary permissions to access the stream.
+-- * 'kfiRoleARN' - ARN of the IAM role that Amazon Kinesis Analytics can assume to access the stream on your behalf. You need to make sure that the role has the necessary permissions to access the stream.
 kinesisFirehoseInput
     :: Text -- ^ 'kfiResourceARN'
     -> Text -- ^ 'kfiRoleARN'
@@ -50,7 +50,7 @@ kinesisFirehoseInput pResourceARN_ pRoleARN_
 kfiResourceARN :: Lens' KinesisFirehoseInput Text
 kfiResourceARN = lens _kfiResourceARN (\ s a -> s{_kfiResourceARN = a})
 
--- | ARN of the IAM role that Amazon Kinesis Analytics can assume to access the stream on your behalf. You need to make sure the role has necessary permissions to access the stream.
+-- | ARN of the IAM role that Amazon Kinesis Analytics can assume to access the stream on your behalf. You need to make sure that the role has the necessary permissions to access the stream.
 kfiRoleARN :: Lens' KinesisFirehoseInput Text
 kfiRoleARN = lens _kfiRoleARN (\ s a -> s{_kfiRoleARN = a})
 

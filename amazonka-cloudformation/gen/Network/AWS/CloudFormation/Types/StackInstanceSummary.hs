@@ -17,6 +17,7 @@
 --
 module Network.AWS.CloudFormation.Types.StackInstanceSummary where
 
+import Network.AWS.CloudFormation.Types.StackDriftStatus
 import Network.AWS.CloudFormation.Types.StackInstanceStatus
 import Network.AWS.Lens
 import Network.AWS.Prelude
@@ -29,7 +30,13 @@ import Network.AWS.Prelude
 data StackInstanceSummary = StackInstanceSummary'{_sisStatus
                                                   ::
                                                   !(Maybe StackInstanceStatus),
+                                                  _sisLastDriftCheckTimestamp ::
+                                                  !(Maybe ISO8601),
                                                   _sisAccount :: !(Maybe Text),
+                                                  _sisDriftStatus ::
+                                                  !(Maybe StackDriftStatus),
+                                                  _sisOrganizationalUnitId ::
+                                                  !(Maybe Text),
                                                   _sisRegion :: !(Maybe Text),
                                                   _sisStatusReason ::
                                                   !(Maybe Text),
@@ -44,9 +51,15 @@ data StackInstanceSummary = StackInstanceSummary'{_sisStatus
 --
 -- * 'sisStatus' - The status of the stack instance, in terms of its synchronization with its associated stack set.     * @INOPERABLE@ : A @DeleteStackInstances@ operation has failed and left the stack in an unstable state. Stacks in this state are excluded from further @UpdateStackSet@ operations. You might need to perform a @DeleteStackInstances@ operation, with @RetainStacks@ set to @true@ , to delete the stack instance, and then delete the stack manually.     * @OUTDATED@ : The stack isn't currently up to date with the stack set because:     * The associated stack failed during a @CreateStackSet@ or @UpdateStackSet@ operation.      * The stack was part of a @CreateStackSet@ or @UpdateStackSet@ operation that failed or was stopped before the stack was created or updated.      * @CURRENT@ : The stack is currently up to date with the stack set.
 --
--- * 'sisAccount' - The name of the AWS account that the stack instance is associated with.
+-- * 'sisLastDriftCheckTimestamp' - Most recent time when CloudFormation performed a drift detection operation on the stack instance. This value will be @NULL@ for any stack instance on which drift detection has not yet been performed.
 --
--- * 'sisRegion' - The name of the AWS region that the stack instance is associated with.
+-- * 'sisAccount' - [@Self-managed@ permissions] The name of the AWS account that the stack instance is associated with.
+--
+-- * 'sisDriftStatus' - Status of the stack instance's actual configuration compared to the expected template and parameter configuration of the stack set to which it belongs.      * @DRIFTED@ : The stack differs from the expected template and parameter configuration of the stack set to which it belongs. A stack instance is considered to have drifted if one or more of the resources in the associated stack have drifted.     * @NOT_CHECKED@ : AWS CloudFormation has not checked if the stack instance differs from its expected stack set configuration.     * @IN_SYNC@ : The stack instance's actual configuration matches its expected stack set configuration.     * @UNKNOWN@ : This value is reserved for future use.
+--
+-- * 'sisOrganizationalUnitId' - Reserved for internal use. No data returned.
+--
+-- * 'sisRegion' - The name of the AWS Region that the stack instance is associated with.
 --
 -- * 'sisStatusReason' - The explanation for the specific status code assigned to this stack instance.
 --
@@ -57,19 +70,33 @@ stackInstanceSummary
     :: StackInstanceSummary
 stackInstanceSummary
   = StackInstanceSummary'{_sisStatus = Nothing,
-                          _sisAccount = Nothing, _sisRegion = Nothing,
-                          _sisStatusReason = Nothing, _sisStackId = Nothing,
-                          _sisStackSetId = Nothing}
+                          _sisLastDriftCheckTimestamp = Nothing,
+                          _sisAccount = Nothing, _sisDriftStatus = Nothing,
+                          _sisOrganizationalUnitId = Nothing,
+                          _sisRegion = Nothing, _sisStatusReason = Nothing,
+                          _sisStackId = Nothing, _sisStackSetId = Nothing}
 
 -- | The status of the stack instance, in terms of its synchronization with its associated stack set.     * @INOPERABLE@ : A @DeleteStackInstances@ operation has failed and left the stack in an unstable state. Stacks in this state are excluded from further @UpdateStackSet@ operations. You might need to perform a @DeleteStackInstances@ operation, with @RetainStacks@ set to @true@ , to delete the stack instance, and then delete the stack manually.     * @OUTDATED@ : The stack isn't currently up to date with the stack set because:     * The associated stack failed during a @CreateStackSet@ or @UpdateStackSet@ operation.      * The stack was part of a @CreateStackSet@ or @UpdateStackSet@ operation that failed or was stopped before the stack was created or updated.      * @CURRENT@ : The stack is currently up to date with the stack set.
 sisStatus :: Lens' StackInstanceSummary (Maybe StackInstanceStatus)
 sisStatus = lens _sisStatus (\ s a -> s{_sisStatus = a})
 
--- | The name of the AWS account that the stack instance is associated with.
+-- | Most recent time when CloudFormation performed a drift detection operation on the stack instance. This value will be @NULL@ for any stack instance on which drift detection has not yet been performed.
+sisLastDriftCheckTimestamp :: Lens' StackInstanceSummary (Maybe UTCTime)
+sisLastDriftCheckTimestamp = lens _sisLastDriftCheckTimestamp (\ s a -> s{_sisLastDriftCheckTimestamp = a}) . mapping _Time
+
+-- | [@Self-managed@ permissions] The name of the AWS account that the stack instance is associated with.
 sisAccount :: Lens' StackInstanceSummary (Maybe Text)
 sisAccount = lens _sisAccount (\ s a -> s{_sisAccount = a})
 
--- | The name of the AWS region that the stack instance is associated with.
+-- | Status of the stack instance's actual configuration compared to the expected template and parameter configuration of the stack set to which it belongs.      * @DRIFTED@ : The stack differs from the expected template and parameter configuration of the stack set to which it belongs. A stack instance is considered to have drifted if one or more of the resources in the associated stack have drifted.     * @NOT_CHECKED@ : AWS CloudFormation has not checked if the stack instance differs from its expected stack set configuration.     * @IN_SYNC@ : The stack instance's actual configuration matches its expected stack set configuration.     * @UNKNOWN@ : This value is reserved for future use.
+sisDriftStatus :: Lens' StackInstanceSummary (Maybe StackDriftStatus)
+sisDriftStatus = lens _sisDriftStatus (\ s a -> s{_sisDriftStatus = a})
+
+-- | Reserved for internal use. No data returned.
+sisOrganizationalUnitId :: Lens' StackInstanceSummary (Maybe Text)
+sisOrganizationalUnitId = lens _sisOrganizationalUnitId (\ s a -> s{_sisOrganizationalUnitId = a})
+
+-- | The name of the AWS Region that the stack instance is associated with.
 sisRegion :: Lens' StackInstanceSummary (Maybe Text)
 sisRegion = lens _sisRegion (\ s a -> s{_sisRegion = a})
 
@@ -88,8 +115,12 @@ sisStackSetId = lens _sisStackSetId (\ s a -> s{_sisStackSetId = a})
 instance FromXML StackInstanceSummary where
         parseXML x
           = StackInstanceSummary' <$>
-              (x .@? "Status") <*> (x .@? "Account") <*>
-                (x .@? "Region")
+              (x .@? "Status") <*>
+                (x .@? "LastDriftCheckTimestamp")
+                <*> (x .@? "Account")
+                <*> (x .@? "DriftStatus")
+                <*> (x .@? "OrganizationalUnitId")
+                <*> (x .@? "Region")
                 <*> (x .@? "StatusReason")
                 <*> (x .@? "StackId")
                 <*> (x .@? "StackSetId")

@@ -36,6 +36,7 @@ module Network.AWS.MediaLive.DescribeInputSecurityGroup
     , desrsInputs
     , desrsId
     , desrsWhitelistRules
+    , desrsTags
     , desrsResponseStatus
     ) where
 
@@ -82,6 +83,7 @@ instance AWSRequest DescribeInputSecurityGroup where
                      (x .?> "inputs" .!@ mempty)
                      <*> (x .?> "id")
                      <*> (x .?> "whitelistRules" .!@ mempty)
+                     <*> (x .?> "tags" .!@ mempty)
                      <*> (pure (fromEnum s)))
 
 instance Hashable DescribeInputSecurityGroup where
@@ -127,6 +129,12 @@ data DescribeInputSecurityGroupResponse = DescribeInputSecurityGroupResponse'{_d
                                                                               ::
                                                                               !(Maybe
                                                                                   [InputWhitelistRule]),
+                                                                              _desrsTags
+                                                                              ::
+                                                                              !(Maybe
+                                                                                  (Map
+                                                                                     Text
+                                                                                     Text)),
                                                                               _desrsResponseStatus
                                                                               ::
                                                                               !Int}
@@ -147,6 +155,8 @@ data DescribeInputSecurityGroupResponse = DescribeInputSecurityGroupResponse'{_d
 --
 -- * 'desrsWhitelistRules' - Whitelist rules and their sync status
 --
+-- * 'desrsTags' - A collection of key-value pairs.
+--
 -- * 'desrsResponseStatus' - -- | The response status code.
 describeInputSecurityGroupResponse
     :: Int -- ^ 'desrsResponseStatus'
@@ -158,6 +168,7 @@ describeInputSecurityGroupResponse pResponseStatus_
                                         _desrsInputs = Nothing,
                                         _desrsId = Nothing,
                                         _desrsWhitelistRules = Nothing,
+                                        _desrsTags = Nothing,
                                         _desrsResponseStatus = pResponseStatus_}
 
 -- | The current state of the Input Security Group.
@@ -179,6 +190,10 @@ desrsId = lens _desrsId (\ s a -> s{_desrsId = a})
 -- | Whitelist rules and their sync status
 desrsWhitelistRules :: Lens' DescribeInputSecurityGroupResponse [InputWhitelistRule]
 desrsWhitelistRules = lens _desrsWhitelistRules (\ s a -> s{_desrsWhitelistRules = a}) . _Default . _Coerce
+
+-- | A collection of key-value pairs.
+desrsTags :: Lens' DescribeInputSecurityGroupResponse (HashMap Text Text)
+desrsTags = lens _desrsTags (\ s a -> s{_desrsTags = a}) . _Default . _Map
 
 -- | -- | The response status code.
 desrsResponseStatus :: Lens' DescribeInputSecurityGroupResponse Int

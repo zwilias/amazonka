@@ -56,10 +56,12 @@ library
         , Network.AWS.WAF.CreateSizeConstraintSet
         , Network.AWS.WAF.CreateSqlInjectionMatchSet
         , Network.AWS.WAF.CreateWebACL
+        , Network.AWS.WAF.CreateWebACLMigrationStack
         , Network.AWS.WAF.CreateXSSMatchSet
         , Network.AWS.WAF.DeleteByteMatchSet
         , Network.AWS.WAF.DeleteGeoMatchSet
         , Network.AWS.WAF.DeleteIPSet
+        , Network.AWS.WAF.DeleteLoggingConfiguration
         , Network.AWS.WAF.DeletePermissionPolicy
         , Network.AWS.WAF.DeleteRateBasedRule
         , Network.AWS.WAF.DeleteRegexMatchSet
@@ -75,6 +77,7 @@ library
         , Network.AWS.WAF.GetChangeTokenStatus
         , Network.AWS.WAF.GetGeoMatchSet
         , Network.AWS.WAF.GetIPSet
+        , Network.AWS.WAF.GetLoggingConfiguration
         , Network.AWS.WAF.GetPermissionPolicy
         , Network.AWS.WAF.GetRateBasedRule
         , Network.AWS.WAF.GetRateBasedRuleManagedKeys
@@ -91,6 +94,7 @@ library
         , Network.AWS.WAF.ListByteMatchSets
         , Network.AWS.WAF.ListGeoMatchSets
         , Network.AWS.WAF.ListIPSets
+        , Network.AWS.WAF.ListLoggingConfigurations
         , Network.AWS.WAF.ListRateBasedRules
         , Network.AWS.WAF.ListRegexMatchSets
         , Network.AWS.WAF.ListRegexPatternSets
@@ -99,10 +103,14 @@ library
         , Network.AWS.WAF.ListSizeConstraintSets
         , Network.AWS.WAF.ListSqlInjectionMatchSets
         , Network.AWS.WAF.ListSubscribedRuleGroups
+        , Network.AWS.WAF.ListTagsForResource
         , Network.AWS.WAF.ListWebACLs
         , Network.AWS.WAF.ListXSSMatchSets
+        , Network.AWS.WAF.PutLoggingConfiguration
         , Network.AWS.WAF.PutPermissionPolicy
+        , Network.AWS.WAF.TagResource
         , Network.AWS.WAF.Types
+        , Network.AWS.WAF.UntagResource
         , Network.AWS.WAF.UpdateByteMatchSet
         , Network.AWS.WAF.UpdateGeoMatchSet
         , Network.AWS.WAF.UpdateIPSet
@@ -126,6 +134,7 @@ library
         , Network.AWS.WAF.Types.ChangeAction
         , Network.AWS.WAF.Types.ChangeTokenStatus
         , Network.AWS.WAF.Types.ComparisonOperator
+        , Network.AWS.WAF.Types.ExcludedRule
         , Network.AWS.WAF.Types.FieldToMatch
         , Network.AWS.WAF.Types.GeoMatchConstraint
         , Network.AWS.WAF.Types.GeoMatchConstraintType
@@ -140,6 +149,7 @@ library
         , Network.AWS.WAF.Types.IPSetDescriptorType
         , Network.AWS.WAF.Types.IPSetSummary
         , Network.AWS.WAF.Types.IPSetUpdate
+        , Network.AWS.WAF.Types.LoggingConfiguration
         , Network.AWS.WAF.Types.MatchFieldType
         , Network.AWS.WAF.Types.PositionalConstraint
         , Network.AWS.WAF.Types.Predicate
@@ -170,6 +180,8 @@ library
         , Network.AWS.WAF.Types.SqlInjectionMatchSetUpdate
         , Network.AWS.WAF.Types.SqlInjectionMatchTuple
         , Network.AWS.WAF.Types.SubscribedRuleGroupSummary
+        , Network.AWS.WAF.Types.Tag
+        , Network.AWS.WAF.Types.TagInfoForResource
         , Network.AWS.WAF.Types.TextTransformation
         , Network.AWS.WAF.Types.TimeWindow
         , Network.AWS.WAF.Types.WafAction

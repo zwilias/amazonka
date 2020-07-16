@@ -21,6 +21,8 @@
 -- Deletes a specific domain entry.
 --
 --
+-- The @delete domain entry@ operation supports tag-based access control via resource tags applied to the resource identified by @domain name@ . For more information, see the <https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags Lightsail Dev Guide> .
+--
 module Network.AWS.Lightsail.DeleteDomainEntry
     (
     -- * Creating a Request
@@ -123,7 +125,7 @@ data DeleteDomainEntryResponse = DeleteDomainEntryResponse'{_ddersOperation
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'ddersOperation' - An array of key-value pairs containing information about the results of your delete domain entry request.
+-- * 'ddersOperation' - An array of objects that describe the result of the action, such as the status of the request, the time stamp of the request, and the resources affected by the request.
 --
 -- * 'ddersResponseStatus' - -- | The response status code.
 deleteDomainEntryResponse
@@ -134,7 +136,7 @@ deleteDomainEntryResponse pResponseStatus_
                                  Nothing,
                                _ddersResponseStatus = pResponseStatus_}
 
--- | An array of key-value pairs containing information about the results of your delete domain entry request.
+-- | An array of objects that describe the result of the action, such as the status of the request, the time stamp of the request, and the resources affected by the request.
 ddersOperation :: Lens' DeleteDomainEntryResponse (Maybe Operation)
 ddersOperation = lens _ddersOperation (\ s a -> s{_ddersOperation = a})
 

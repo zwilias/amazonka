@@ -38,7 +38,7 @@ data EventDetailsErrorItem = EventDetailsErrorItem'{_edeiEventARN
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'edeiEventARN' - The unique identifier for the event. Format: @arn:aws:health:/event-region/ ::event//EVENT_TYPE_PLUS_ID/ @ . Example: @arn:aws:health:us-east-1::event/AWS_EC2_MAINTENANCE_5331@ 
+-- * 'edeiEventARN' - The unique identifier for the event. Format: @arn:aws:health:/event-region/ ::event//SERVICE/ //EVENT_TYPE_CODE/ //EVENT_TYPE_PLUS_ID/ @ . Example: @Example: arn:aws:health:us-east-1::event/EC2/EC2_INSTANCE_RETIREMENT_SCHEDULED/EC2_INSTANCE_RETIREMENT_SCHEDULED_ABC123-DEF456@ 
 --
 -- * 'edeiErrorName' - The name of the error.
 --
@@ -50,7 +50,7 @@ eventDetailsErrorItem
                            _edeiErrorName = Nothing,
                            _edeiErrorMessage = Nothing}
 
--- | The unique identifier for the event. Format: @arn:aws:health:/event-region/ ::event//EVENT_TYPE_PLUS_ID/ @ . Example: @arn:aws:health:us-east-1::event/AWS_EC2_MAINTENANCE_5331@ 
+-- | The unique identifier for the event. Format: @arn:aws:health:/event-region/ ::event//SERVICE/ //EVENT_TYPE_CODE/ //EVENT_TYPE_PLUS_ID/ @ . Example: @Example: arn:aws:health:us-east-1::event/EC2/EC2_INSTANCE_RETIREMENT_SCHEDULED/EC2_INSTANCE_RETIREMENT_SCHEDULED_ABC123-DEF456@ 
 edeiEventARN :: Lens' EventDetailsErrorItem (Maybe Text)
 edeiEventARN = lens _edeiEventARN (\ s a -> s{_edeiEventARN = a})
 

@@ -24,21 +24,22 @@ import Network.AWS.MediaConvert.Types.BurninSubtitleFontColor
 import Network.AWS.MediaConvert.Types.BurninSubtitleOutlineColor
 import Network.AWS.MediaConvert.Types.BurninSubtitleShadowColor
 import Network.AWS.MediaConvert.Types.BurninSubtitleTeletextSpacing
+import Network.AWS.MediaConvert.Types.FontScript
 import Network.AWS.Prelude
 
 -- | Burn-In Destination Settings.
 --
 -- /See:/ 'burninDestinationSettings' smart constructor.
 data BurninDestinationSettings = BurninDestinationSettings'{_bdsBackgroundOpacity
-                                                            :: !(Maybe Int),
+                                                            :: !(Maybe Nat),
                                                             _bdsFontOpacity ::
-                                                            !(Maybe Int),
+                                                            !(Maybe Nat),
                                                             _bdsShadowYOffset ::
                                                             !(Maybe Int),
                                                             _bdsFontResolution
-                                                            :: !(Maybe Int),
+                                                            :: !(Maybe Nat),
                                                             _bdsYPosition ::
-                                                            !(Maybe Int),
+                                                            !(Maybe Nat),
                                                             _bdsBackgroundColor
                                                             ::
                                                             !(Maybe
@@ -46,23 +47,25 @@ data BurninDestinationSettings = BurninDestinationSettings'{_bdsBackgroundOpacit
                                                             _bdsShadowXOffset ::
                                                             !(Maybe Int),
                                                             _bdsFontSize ::
-                                                            !(Maybe Int),
+                                                            !(Maybe Nat),
                                                             _bdsXPosition ::
-                                                            !(Maybe Int),
+                                                            !(Maybe Nat),
                                                             _bdsTeletextSpacing
                                                             ::
                                                             !(Maybe
                                                                 BurninSubtitleTeletextSpacing),
+                                                            _bdsFontScript ::
+                                                            !(Maybe FontScript),
                                                             _bdsAlignment ::
                                                             !(Maybe
                                                                 BurninSubtitleAlignment),
                                                             _bdsShadowOpacity ::
-                                                            !(Maybe Int),
+                                                            !(Maybe Nat),
                                                             _bdsOutlineColor ::
                                                             !(Maybe
                                                                 BurninSubtitleOutlineColor),
                                                             _bdsOutlineSize ::
-                                                            !(Maybe Int),
+                                                            !(Maybe Nat),
                                                             _bdsShadowColor ::
                                                             !(Maybe
                                                                 BurninSubtitleShadowColor),
@@ -86,7 +89,7 @@ data BurninDestinationSettings = BurninDestinationSettings'{_bdsBackgroundOpacit
 --
 -- * 'bdsYPosition' - Specifies the vertical position of the caption relative to the top of the output in pixels. A value of 10 would result in the captions starting 10 pixels from the top of the output. If no explicit y_position is provided, the caption will be positioned towards the bottom of the output. This option is not valid for source captions that are STL, 608/embedded or teletext. These source settings are already pre-defined by the caption stream. All burn-in and DVB-Sub font settings must match.
 --
--- * 'bdsBackgroundColor' - Undocumented member.
+-- * 'bdsBackgroundColor' - Specifies the color of the rectangle behind the captions. All burn-in and DVB-Sub font settings must match.
 --
 -- * 'bdsShadowXOffset' - Specifies the horizontal offset of the shadow relative to the captions in pixels. A value of -2 would result in a shadow offset 2 pixels to the left. All burn-in and DVB-Sub font settings must match.
 --
@@ -94,19 +97,21 @@ data BurninDestinationSettings = BurninDestinationSettings'{_bdsBackgroundOpacit
 --
 -- * 'bdsXPosition' - Specifies the horizontal position of the caption relative to the left side of the output in pixels. A value of 10 would result in the captions starting 10 pixels from the left of the output. If no explicit x_position is provided, the horizontal caption position will be determined by the alignment parameter. This option is not valid for source captions that are STL, 608/embedded or teletext. These source settings are already pre-defined by the caption stream. All burn-in and DVB-Sub font settings must match.
 --
--- * 'bdsTeletextSpacing' - Undocumented member.
+-- * 'bdsTeletextSpacing' - Only applies to jobs with input captions in Teletext or STL formats. Specify whether the spacing between letters in your captions is set by the captions grid or varies depending on letter width. Choose fixed grid to conform to the spacing specified in the captions file more accurately. Choose proportional to make the text easier to read if the captions are closed caption.
 --
--- * 'bdsAlignment' - Undocumented member.
+-- * 'bdsFontScript' - Provide the font script, using an ISO 15924 script code, if the LanguageCode is not sufficient for determining the script type. Where LanguageCode or CustomLanguageCode is sufficient, use "AUTOMATIC" or leave unset. This is used to help determine the appropriate font for rendering burn-in captions.
+--
+-- * 'bdsAlignment' - If no explicit x_position or y_position is provided, setting alignment to centered will place the captions at the bottom center of the output. Similarly, setting a left alignment will align captions to the bottom left of the output. If x and y positions are given in conjunction with the alignment parameter, the font will be justified (either left or centered) relative to those coordinates. This option is not valid for source captions that are STL, 608/embedded or teletext. These source settings are already pre-defined by the caption stream. All burn-in and DVB-Sub font settings must match.
 --
 -- * 'bdsShadowOpacity' - Specifies the opacity of the shadow. 255 is opaque; 0 is transparent. Leaving this parameter blank is equivalent to setting it to 0 (transparent). All burn-in and DVB-Sub font settings must match.
 --
--- * 'bdsOutlineColor' - Undocumented member.
+-- * 'bdsOutlineColor' - Specifies font outline color. This option is not valid for source captions that are either 608/embedded or teletext. These source settings are already pre-defined by the caption stream. All burn-in and DVB-Sub font settings must match.
 --
 -- * 'bdsOutlineSize' - Specifies font outline size in pixels. This option is not valid for source captions that are either 608/embedded or teletext. These source settings are already pre-defined by the caption stream. All burn-in and DVB-Sub font settings must match.
 --
--- * 'bdsShadowColor' - Undocumented member.
+-- * 'bdsShadowColor' - Specifies the color of the shadow cast by the captions. All burn-in and DVB-Sub font settings must match.
 --
--- * 'bdsFontColor' - Undocumented member.
+-- * 'bdsFontColor' - Specifies the color of the burned-in captions. This option is not valid for source captions that are STL, 608/embedded or teletext. These source settings are already pre-defined by the caption stream. All burn-in and DVB-Sub font settings must match.
 burninDestinationSettings
     :: BurninDestinationSettings
 burninDestinationSettings
@@ -120,6 +125,7 @@ burninDestinationSettings
                                _bdsShadowXOffset = Nothing,
                                _bdsFontSize = Nothing, _bdsXPosition = Nothing,
                                _bdsTeletextSpacing = Nothing,
+                               _bdsFontScript = Nothing,
                                _bdsAlignment = Nothing,
                                _bdsShadowOpacity = Nothing,
                                _bdsOutlineColor = Nothing,
@@ -128,26 +134,26 @@ burninDestinationSettings
                                _bdsFontColor = Nothing}
 
 -- | Specifies the opacity of the background rectangle. 255 is opaque; 0 is transparent. Leaving this parameter blank is equivalent to setting it to 0 (transparent). All burn-in and DVB-Sub font settings must match.
-bdsBackgroundOpacity :: Lens' BurninDestinationSettings (Maybe Int)
-bdsBackgroundOpacity = lens _bdsBackgroundOpacity (\ s a -> s{_bdsBackgroundOpacity = a})
+bdsBackgroundOpacity :: Lens' BurninDestinationSettings (Maybe Natural)
+bdsBackgroundOpacity = lens _bdsBackgroundOpacity (\ s a -> s{_bdsBackgroundOpacity = a}) . mapping _Nat
 
 -- | Specifies the opacity of the burned-in captions. 255 is opaque; 0 is transparent. All burn-in and DVB-Sub font settings must match.
-bdsFontOpacity :: Lens' BurninDestinationSettings (Maybe Int)
-bdsFontOpacity = lens _bdsFontOpacity (\ s a -> s{_bdsFontOpacity = a})
+bdsFontOpacity :: Lens' BurninDestinationSettings (Maybe Natural)
+bdsFontOpacity = lens _bdsFontOpacity (\ s a -> s{_bdsFontOpacity = a}) . mapping _Nat
 
 -- | Specifies the vertical offset of the shadow relative to the captions in pixels. A value of -2 would result in a shadow offset 2 pixels above the text. All burn-in and DVB-Sub font settings must match.
 bdsShadowYOffset :: Lens' BurninDestinationSettings (Maybe Int)
 bdsShadowYOffset = lens _bdsShadowYOffset (\ s a -> s{_bdsShadowYOffset = a})
 
 -- | Font resolution in DPI (dots per inch); default is 96 dpi. All burn-in and DVB-Sub font settings must match.
-bdsFontResolution :: Lens' BurninDestinationSettings (Maybe Int)
-bdsFontResolution = lens _bdsFontResolution (\ s a -> s{_bdsFontResolution = a})
+bdsFontResolution :: Lens' BurninDestinationSettings (Maybe Natural)
+bdsFontResolution = lens _bdsFontResolution (\ s a -> s{_bdsFontResolution = a}) . mapping _Nat
 
 -- | Specifies the vertical position of the caption relative to the top of the output in pixels. A value of 10 would result in the captions starting 10 pixels from the top of the output. If no explicit y_position is provided, the caption will be positioned towards the bottom of the output. This option is not valid for source captions that are STL, 608/embedded or teletext. These source settings are already pre-defined by the caption stream. All burn-in and DVB-Sub font settings must match.
-bdsYPosition :: Lens' BurninDestinationSettings (Maybe Int)
-bdsYPosition = lens _bdsYPosition (\ s a -> s{_bdsYPosition = a})
+bdsYPosition :: Lens' BurninDestinationSettings (Maybe Natural)
+bdsYPosition = lens _bdsYPosition (\ s a -> s{_bdsYPosition = a}) . mapping _Nat
 
--- | Undocumented member.
+-- | Specifies the color of the rectangle behind the captions. All burn-in and DVB-Sub font settings must match.
 bdsBackgroundColor :: Lens' BurninDestinationSettings (Maybe BurninSubtitleBackgroundColor)
 bdsBackgroundColor = lens _bdsBackgroundColor (\ s a -> s{_bdsBackgroundColor = a})
 
@@ -156,38 +162,42 @@ bdsShadowXOffset :: Lens' BurninDestinationSettings (Maybe Int)
 bdsShadowXOffset = lens _bdsShadowXOffset (\ s a -> s{_bdsShadowXOffset = a})
 
 -- | A positive integer indicates the exact font size in points. Set to 0 for automatic font size selection. All burn-in and DVB-Sub font settings must match.
-bdsFontSize :: Lens' BurninDestinationSettings (Maybe Int)
-bdsFontSize = lens _bdsFontSize (\ s a -> s{_bdsFontSize = a})
+bdsFontSize :: Lens' BurninDestinationSettings (Maybe Natural)
+bdsFontSize = lens _bdsFontSize (\ s a -> s{_bdsFontSize = a}) . mapping _Nat
 
 -- | Specifies the horizontal position of the caption relative to the left side of the output in pixels. A value of 10 would result in the captions starting 10 pixels from the left of the output. If no explicit x_position is provided, the horizontal caption position will be determined by the alignment parameter. This option is not valid for source captions that are STL, 608/embedded or teletext. These source settings are already pre-defined by the caption stream. All burn-in and DVB-Sub font settings must match.
-bdsXPosition :: Lens' BurninDestinationSettings (Maybe Int)
-bdsXPosition = lens _bdsXPosition (\ s a -> s{_bdsXPosition = a})
+bdsXPosition :: Lens' BurninDestinationSettings (Maybe Natural)
+bdsXPosition = lens _bdsXPosition (\ s a -> s{_bdsXPosition = a}) . mapping _Nat
 
--- | Undocumented member.
+-- | Only applies to jobs with input captions in Teletext or STL formats. Specify whether the spacing between letters in your captions is set by the captions grid or varies depending on letter width. Choose fixed grid to conform to the spacing specified in the captions file more accurately. Choose proportional to make the text easier to read if the captions are closed caption.
 bdsTeletextSpacing :: Lens' BurninDestinationSettings (Maybe BurninSubtitleTeletextSpacing)
 bdsTeletextSpacing = lens _bdsTeletextSpacing (\ s a -> s{_bdsTeletextSpacing = a})
 
--- | Undocumented member.
+-- | Provide the font script, using an ISO 15924 script code, if the LanguageCode is not sufficient for determining the script type. Where LanguageCode or CustomLanguageCode is sufficient, use "AUTOMATIC" or leave unset. This is used to help determine the appropriate font for rendering burn-in captions.
+bdsFontScript :: Lens' BurninDestinationSettings (Maybe FontScript)
+bdsFontScript = lens _bdsFontScript (\ s a -> s{_bdsFontScript = a})
+
+-- | If no explicit x_position or y_position is provided, setting alignment to centered will place the captions at the bottom center of the output. Similarly, setting a left alignment will align captions to the bottom left of the output. If x and y positions are given in conjunction with the alignment parameter, the font will be justified (either left or centered) relative to those coordinates. This option is not valid for source captions that are STL, 608/embedded or teletext. These source settings are already pre-defined by the caption stream. All burn-in and DVB-Sub font settings must match.
 bdsAlignment :: Lens' BurninDestinationSettings (Maybe BurninSubtitleAlignment)
 bdsAlignment = lens _bdsAlignment (\ s a -> s{_bdsAlignment = a})
 
 -- | Specifies the opacity of the shadow. 255 is opaque; 0 is transparent. Leaving this parameter blank is equivalent to setting it to 0 (transparent). All burn-in and DVB-Sub font settings must match.
-bdsShadowOpacity :: Lens' BurninDestinationSettings (Maybe Int)
-bdsShadowOpacity = lens _bdsShadowOpacity (\ s a -> s{_bdsShadowOpacity = a})
+bdsShadowOpacity :: Lens' BurninDestinationSettings (Maybe Natural)
+bdsShadowOpacity = lens _bdsShadowOpacity (\ s a -> s{_bdsShadowOpacity = a}) . mapping _Nat
 
--- | Undocumented member.
+-- | Specifies font outline color. This option is not valid for source captions that are either 608/embedded or teletext. These source settings are already pre-defined by the caption stream. All burn-in and DVB-Sub font settings must match.
 bdsOutlineColor :: Lens' BurninDestinationSettings (Maybe BurninSubtitleOutlineColor)
 bdsOutlineColor = lens _bdsOutlineColor (\ s a -> s{_bdsOutlineColor = a})
 
 -- | Specifies font outline size in pixels. This option is not valid for source captions that are either 608/embedded or teletext. These source settings are already pre-defined by the caption stream. All burn-in and DVB-Sub font settings must match.
-bdsOutlineSize :: Lens' BurninDestinationSettings (Maybe Int)
-bdsOutlineSize = lens _bdsOutlineSize (\ s a -> s{_bdsOutlineSize = a})
+bdsOutlineSize :: Lens' BurninDestinationSettings (Maybe Natural)
+bdsOutlineSize = lens _bdsOutlineSize (\ s a -> s{_bdsOutlineSize = a}) . mapping _Nat
 
--- | Undocumented member.
+-- | Specifies the color of the shadow cast by the captions. All burn-in and DVB-Sub font settings must match.
 bdsShadowColor :: Lens' BurninDestinationSettings (Maybe BurninSubtitleShadowColor)
 bdsShadowColor = lens _bdsShadowColor (\ s a -> s{_bdsShadowColor = a})
 
--- | Undocumented member.
+-- | Specifies the color of the burned-in captions. This option is not valid for source captions that are STL, 608/embedded or teletext. These source settings are already pre-defined by the caption stream. All burn-in and DVB-Sub font settings must match.
 bdsFontColor :: Lens' BurninDestinationSettings (Maybe BurninSubtitleFontColor)
 bdsFontColor = lens _bdsFontColor (\ s a -> s{_bdsFontColor = a})
 
@@ -205,6 +215,7 @@ instance FromJSON BurninDestinationSettings where
                      <*> (x .:? "fontSize")
                      <*> (x .:? "xPosition")
                      <*> (x .:? "teletextSpacing")
+                     <*> (x .:? "fontScript")
                      <*> (x .:? "alignment")
                      <*> (x .:? "shadowOpacity")
                      <*> (x .:? "outlineColor")
@@ -230,6 +241,7 @@ instance ToJSON BurninDestinationSettings where
                   ("fontSize" .=) <$> _bdsFontSize,
                   ("xPosition" .=) <$> _bdsXPosition,
                   ("teletextSpacing" .=) <$> _bdsTeletextSpacing,
+                  ("fontScript" .=) <$> _bdsFontScript,
                   ("alignment" .=) <$> _bdsAlignment,
                   ("shadowOpacity" .=) <$> _bdsShadowOpacity,
                   ("outlineColor" .=) <$> _bdsOutlineColor,

@@ -21,10 +21,10 @@ import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.RDS.Types.DBClusterSnapshotAttribute
 
--- | Contains the results of a successful call to the 'DescribeDBClusterSnapshotAttributes' API action.
+-- | Contains the results of a successful call to the @DescribeDBClusterSnapshotAttributes@ API action.
 --
 --
--- Manual DB cluster snapshot attributes are used to authorize other AWS accounts to copy or restore a manual DB cluster snapshot. For more information, see the 'ModifyDBClusterSnapshotAttribute' API action.
+-- Manual DB cluster snapshot attributes are used to authorize other AWS accounts to copy or restore a manual DB cluster snapshot. For more information, see the @ModifyDBClusterSnapshotAttribute@ API action.
 --
 --
 -- /See:/ 'dbClusterSnapshotAttributesResult' smart constructor.

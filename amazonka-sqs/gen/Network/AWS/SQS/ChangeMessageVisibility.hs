@@ -18,16 +18,28 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Changes the visibility timeout of a specified message in a queue to a new value. The maximum allowed timeout value is 12 hours. Thus, you can't extend the timeout of a message in an existing queue to more than a total visibility timeout of 12 hours. For more information, see <http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-visibility-timeout.html Visibility Timeout> in the /Amazon Simple Queue Service Developer Guide/ .
+-- Changes the visibility timeout of a specified message in a queue to a new value. The default visibility timeout for a message is 30 seconds. The minimum is 0 seconds. The maximum is 12 hours. For more information, see <https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-visibility-timeout.html Visibility Timeout> in the /Amazon Simple Queue Service Developer Guide/ .
 --
 --
--- For example, you have a message with a visibility timeout of 5 minutes. After 3 minutes, you call @ChangeMessageVisiblity@ with a timeout of 10 minutes. At that time, the timeout for the message is extended by 10 minutes beyond the time of the @ChangeMessageVisibility@ action. This results in a total visibility timeout of 13 minutes. You can continue to call the @ChangeMessageVisibility@ to extend the visibility timeout to a maximum of 12 hours. If you try to extend the visibility timeout beyond 12 hours, your request is rejected.
+-- For example, you have a message with a visibility timeout of 5 minutes. After 3 minutes, you call @ChangeMessageVisibility@ with a timeout of 10 minutes. You can continue to call @ChangeMessageVisibility@ to extend the visibility timeout to the maximum allowed time. If you try to extend the visibility timeout beyond the maximum, your request is rejected.
 --
--- A message is considered to be /in flight/ after it's received from a queue by a consumer, but not yet deleted from the queue.
+-- An Amazon SQS message has three basic states:
 --
--- For standard queues, there can be a maximum of 120,000 inflight messages per queue. If you reach this limit, Amazon SQS returns the @OverLimit@ error message. To avoid reaching the limit, you should delete messages from the queue after they're processed. You can also increase the number of queues you use to process your messages.
+--     * Sent to a queue by a producer.
 --
--- For FIFO queues, there can be a maximum of 20,000 inflight messages per queue. If you reach this limit, Amazon SQS returns no error messages.
+--     * Received from the queue by a consumer.
+--
+--     * Deleted from the queue.
+--
+--
+--
+-- A message is considered to be /stored/ after it is sent to a queue by a producer, but not yet received from the queue by a consumer (that is, between states 1 and 2). There is no limit to the number of stored messages. A message is considered to be /in flight/ after it is received from a queue by a consumer, but not yet deleted from the queue (that is, between states 2 and 3). There is a limit to the number of inflight messages.
+--
+-- Limits that apply to inflight messages are unrelated to the /unlimited/ number of stored messages.
+--
+-- For most standard queues (depending on queue traffic and message backlog), there can be a maximum of approximately 120,000 inflight messages (received from a queue by a consumer, but not yet deleted from the queue). If you reach this limit, Amazon SQS returns the @OverLimit@ error message. To avoid reaching the limit, you should delete messages from the queue after they're processed. You can also increase the number of queues you use to process your messages. To request a limit increase, <https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-sqs file a support request> .
+--
+-- For FIFO queues, there can be a maximum of 20,000 inflight messages (received from a queue by a consumer, but not yet deleted from the queue). If you reach this limit, Amazon SQS returns no error messages.
 --
 -- /Important:/ If you attempt to set the @VisibilityTimeout@ to a value greater than the maximum time left, Amazon SQS returns an error. Amazon SQS doesn't automatically recalculate and increase the timeout to the maximum remaining time.
 --
@@ -69,7 +81,7 @@ data ChangeMessageVisibility = ChangeMessageVisibility'{_cmvQueueURL
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'cmvQueueURL' - The URL of the Amazon SQS queue whose message's visibility is changed. Queue URLs are case-sensitive.
+-- * 'cmvQueueURL' - The URL of the Amazon SQS queue whose message's visibility is changed. Queue URLs and names are case-sensitive.
 --
 -- * 'cmvReceiptHandle' - The receipt handle associated with the message whose visibility timeout is changed. This parameter is returned by the @'ReceiveMessage' @ action.
 --
@@ -85,7 +97,7 @@ changeMessageVisibility pQueueURL_ pReceiptHandle_
                              _cmvReceiptHandle = pReceiptHandle_,
                              _cmvVisibilityTimeout = pVisibilityTimeout_}
 
--- | The URL of the Amazon SQS queue whose message's visibility is changed. Queue URLs are case-sensitive.
+-- | The URL of the Amazon SQS queue whose message's visibility is changed. Queue URLs and names are case-sensitive.
 cmvQueueURL :: Lens' ChangeMessageVisibility Text
 cmvQueueURL = lens _cmvQueueURL (\ s a -> s{_cmvQueueURL = a})
 

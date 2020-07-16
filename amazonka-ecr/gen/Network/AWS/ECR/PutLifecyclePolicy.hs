@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Creates or updates a lifecycle policy. For information about lifecycle policy syntax, see <http://docs.aws.amazon.com/AmazonECR/latest/userguide/LifecyclePolicies.html Lifecycle Policy Template> .
+-- Creates or updates the lifecycle policy for the specified repository. For more information, see <https://docs.aws.amazon.com/AmazonECR/latest/userguide/LifecyclePolicies.html Lifecycle Policy Template> .
 --
 --
 module Network.AWS.ECR.PutLifecyclePolicy

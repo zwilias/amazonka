@@ -21,6 +21,7 @@ import Network.AWS.ECS.Types.AgentUpdateStatus
 import Network.AWS.ECS.Types.Attachment
 import Network.AWS.ECS.Types.Attribute
 import Network.AWS.ECS.Types.Resource
+import Network.AWS.ECS.Types.Tag
 import Network.AWS.ECS.Types.VersionInfo
 import Network.AWS.Lens
 import Network.AWS.Prelude
@@ -51,7 +52,11 @@ data ContainerInstance = ContainerInstance'{_ciStatus
                                             _ciVersion :: !(Maybe Integer),
                                             _ciPendingTasksCount ::
                                             !(Maybe Int),
+                                            _ciCapacityProviderName ::
+                                            !(Maybe Text),
                                             _ciRegisteredAt :: !(Maybe POSIX),
+                                            _ciStatusReason :: !(Maybe Text),
+                                            _ciTags :: !(Maybe [Tag]),
                                             _ciRegisteredResources ::
                                             !(Maybe [Resource])}
                            deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -60,19 +65,19 @@ data ContainerInstance = ContainerInstance'{_ciStatus
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'ciStatus' - The status of the container instance. The valid values are @ACTIVE@ , @INACTIVE@ , or @DRAINING@ . @ACTIVE@ indicates that the container instance can accept tasks. @DRAINING@ indicates that new tasks are not placed on the container instance and any service tasks running on the container instance are removed if possible. For more information, see <http://docs.aws.amazon.com/AmazonECS/latest/developerguide/container-instance-draining.html Container Instance Draining> in the /Amazon Elastic Container Service Developer Guide/ .
+-- * 'ciStatus' - The status of the container instance. The valid values are @REGISTERING@ , @REGISTRATION_FAILED@ , @ACTIVE@ , @INACTIVE@ , @DEREGISTERING@ , or @DRAINING@ . If your account has opted in to the @awsvpcTrunking@ account setting, then any newly registered container instance will transition to a @REGISTERING@ status while the trunk elastic network interface is provisioned for the instance. If the registration fails, the instance will transition to a @REGISTRATION_FAILED@ status. You can describe the container instance and see the reason for failure in the @statusReason@ parameter. Once the container instance is terminated, the instance transitions to a @DEREGISTERING@ status while the trunk elastic network interface is deprovisioned. The instance then transitions to an @INACTIVE@ status. The @ACTIVE@ status indicates that the container instance can accept tasks. The @DRAINING@ indicates that new tasks are not placed on the container instance and any service tasks running on the container instance are removed if possible. For more information, see <https://docs.aws.amazon.com/AmazonECS/latest/developerguide/container-instance-draining.html Container Instance Draining> in the /Amazon Elastic Container Service Developer Guide/ .
 --
--- * 'ciAttachments' - The Elastic Network Interfaces associated with the container instance.
+-- * 'ciAttachments' - The resources attached to a container instance, such as elastic network interfaces.
 --
 -- * 'ciRunningTasksCount' - The number of tasks on the container instance that are in the @RUNNING@ status.
 --
--- * 'ciRemainingResources' - For CPU and memory resource types, this parameter describes the remaining CPU and memory on the that has not already been allocated to tasks (and is therefore available for new tasks). For port resource types, this parameter describes the ports that were reserved by the Amazon ECS container agent (at instance registration time) and any task containers that have reserved port mappings on the host (with the @host@ or @bridge@ network mode). Any port that is not specified here is available for new tasks.
+-- * 'ciRemainingResources' - For CPU and memory resource types, this parameter describes the remaining CPU and memory that has not already been allocated to tasks and is therefore available for new tasks. For port resource types, this parameter describes the ports that were reserved by the Amazon ECS container agent (at instance registration time) and any task containers that have reserved port mappings on the host (with the @host@ or @bridge@ network mode). Any port that is not specified here is available for new tasks.
 --
 -- * 'ciEc2InstanceId' - The EC2 instance ID of the container instance.
 --
--- * 'ciContainerInstanceARN' - The Amazon Resource Name (ARN) of the container instance. The ARN contains the @arn:aws:ecs@ namespace, followed by the region of the container instance, the AWS account ID of the container instance owner, the @container-instance@ namespace, and then the container instance ID. For example, @arn:aws:ecs:/region/ :/aws_account_id/ :container-instance//container_instance_ID/ @ .
+-- * 'ciContainerInstanceARN' - The Amazon Resource Name (ARN) of the container instance. The ARN contains the @arn:aws:ecs@ namespace, followed by the Region of the container instance, the AWS account ID of the container instance owner, the @container-instance@ namespace, and then the container instance ID. For example, @arn:aws:ecs:region:aws_account_id:container-instance/container_instance_ID@ .
 --
--- * 'ciAgentConnected' - This parameter returns @true@ if the agent is connected to Amazon ECS. Registered instances with an agent that may be unhealthy or stopped return @false@ . Instances without a connected agent can't accept placement requests.
+-- * 'ciAgentConnected' - This parameter returns @true@ if the agent is connected to Amazon ECS. Registered instances with an agent that may be unhealthy or stopped return @false@ . Only instances connected to an agent can accept placement requests.
 --
 -- * 'ciVersionInfo' - The version information for the Amazon ECS container agent and Docker daemon running on the container instance.
 --
@@ -84,9 +89,15 @@ data ContainerInstance = ContainerInstance'{_ciStatus
 --
 -- * 'ciPendingTasksCount' - The number of tasks on the container instance that are in the @PENDING@ status.
 --
--- * 'ciRegisteredAt' - The Unix time stamp for when the container instance was registered.
+-- * 'ciCapacityProviderName' - The capacity provider associated with the container instance.
 --
--- * 'ciRegisteredResources' - For CPU and memory resource types, this parameter describes the amount of each resource that was available on the container instance when the container agent registered it with Amazon ECS; this value represents the total amount of CPU and memory that can be allocated on this container instance to tasks. For port resource types, this parameter describes the ports that were reserved by the Amazon ECS container agent when it registered the container instance with Amazon ECS.
+-- * 'ciRegisteredAt' - The Unix timestamp for when the container instance was registered.
+--
+-- * 'ciStatusReason' - The reason that the container instance reached its current status.
+--
+-- * 'ciTags' - The metadata that you apply to the container instance to help you categorize and organize them. Each tag consists of a key and an optional value, both of which you define. The following basic restrictions apply to tags:     * Maximum number of tags per resource - 50     * For each resource, each tag key must be unique, and each tag key can have only one value.     * Maximum key length - 128 Unicode characters in UTF-8     * Maximum value length - 256 Unicode characters in UTF-8     * If your tagging schema is used across multiple services and resources, remember that other services may have restrictions on allowed characters. Generally allowed characters are: letters, numbers, and spaces representable in UTF-8, and the following characters: + - = . _ : / @.     * Tag keys and values are case-sensitive.     * Do not use @aws:@ , @AWS:@ , or any upper or lowercase combination of such as a prefix for either keys or values as it is reserved for AWS use. You cannot edit or delete tag keys or values with this prefix. Tags with this prefix do not count against your tags per resource limit.
+--
+-- * 'ciRegisteredResources' - For CPU and memory resource types, this parameter describes the amount of each resource that was available on the container instance when the container agent registered it with Amazon ECS. This value represents the total amount of CPU and memory that can be allocated on this container instance to tasks. For port resource types, this parameter describes the ports that were reserved by the Amazon ECS container agent when it registered the container instance with Amazon ECS.
 containerInstance
     :: ContainerInstance
 containerInstance
@@ -101,14 +112,15 @@ containerInstance
                        _ciAgentUpdateStatus = Nothing,
                        _ciAttributes = Nothing, _ciVersion = Nothing,
                        _ciPendingTasksCount = Nothing,
-                       _ciRegisteredAt = Nothing,
-                       _ciRegisteredResources = Nothing}
+                       _ciCapacityProviderName = Nothing,
+                       _ciRegisteredAt = Nothing, _ciStatusReason = Nothing,
+                       _ciTags = Nothing, _ciRegisteredResources = Nothing}
 
--- | The status of the container instance. The valid values are @ACTIVE@ , @INACTIVE@ , or @DRAINING@ . @ACTIVE@ indicates that the container instance can accept tasks. @DRAINING@ indicates that new tasks are not placed on the container instance and any service tasks running on the container instance are removed if possible. For more information, see <http://docs.aws.amazon.com/AmazonECS/latest/developerguide/container-instance-draining.html Container Instance Draining> in the /Amazon Elastic Container Service Developer Guide/ .
+-- | The status of the container instance. The valid values are @REGISTERING@ , @REGISTRATION_FAILED@ , @ACTIVE@ , @INACTIVE@ , @DEREGISTERING@ , or @DRAINING@ . If your account has opted in to the @awsvpcTrunking@ account setting, then any newly registered container instance will transition to a @REGISTERING@ status while the trunk elastic network interface is provisioned for the instance. If the registration fails, the instance will transition to a @REGISTRATION_FAILED@ status. You can describe the container instance and see the reason for failure in the @statusReason@ parameter. Once the container instance is terminated, the instance transitions to a @DEREGISTERING@ status while the trunk elastic network interface is deprovisioned. The instance then transitions to an @INACTIVE@ status. The @ACTIVE@ status indicates that the container instance can accept tasks. The @DRAINING@ indicates that new tasks are not placed on the container instance and any service tasks running on the container instance are removed if possible. For more information, see <https://docs.aws.amazon.com/AmazonECS/latest/developerguide/container-instance-draining.html Container Instance Draining> in the /Amazon Elastic Container Service Developer Guide/ .
 ciStatus :: Lens' ContainerInstance (Maybe Text)
 ciStatus = lens _ciStatus (\ s a -> s{_ciStatus = a})
 
--- | The Elastic Network Interfaces associated with the container instance.
+-- | The resources attached to a container instance, such as elastic network interfaces.
 ciAttachments :: Lens' ContainerInstance [Attachment]
 ciAttachments = lens _ciAttachments (\ s a -> s{_ciAttachments = a}) . _Default . _Coerce
 
@@ -116,7 +128,7 @@ ciAttachments = lens _ciAttachments (\ s a -> s{_ciAttachments = a}) . _Default 
 ciRunningTasksCount :: Lens' ContainerInstance (Maybe Int)
 ciRunningTasksCount = lens _ciRunningTasksCount (\ s a -> s{_ciRunningTasksCount = a})
 
--- | For CPU and memory resource types, this parameter describes the remaining CPU and memory on the that has not already been allocated to tasks (and is therefore available for new tasks). For port resource types, this parameter describes the ports that were reserved by the Amazon ECS container agent (at instance registration time) and any task containers that have reserved port mappings on the host (with the @host@ or @bridge@ network mode). Any port that is not specified here is available for new tasks.
+-- | For CPU and memory resource types, this parameter describes the remaining CPU and memory that has not already been allocated to tasks and is therefore available for new tasks. For port resource types, this parameter describes the ports that were reserved by the Amazon ECS container agent (at instance registration time) and any task containers that have reserved port mappings on the host (with the @host@ or @bridge@ network mode). Any port that is not specified here is available for new tasks.
 ciRemainingResources :: Lens' ContainerInstance [Resource]
 ciRemainingResources = lens _ciRemainingResources (\ s a -> s{_ciRemainingResources = a}) . _Default . _Coerce
 
@@ -124,11 +136,11 @@ ciRemainingResources = lens _ciRemainingResources (\ s a -> s{_ciRemainingResour
 ciEc2InstanceId :: Lens' ContainerInstance (Maybe Text)
 ciEc2InstanceId = lens _ciEc2InstanceId (\ s a -> s{_ciEc2InstanceId = a})
 
--- | The Amazon Resource Name (ARN) of the container instance. The ARN contains the @arn:aws:ecs@ namespace, followed by the region of the container instance, the AWS account ID of the container instance owner, the @container-instance@ namespace, and then the container instance ID. For example, @arn:aws:ecs:/region/ :/aws_account_id/ :container-instance//container_instance_ID/ @ .
+-- | The Amazon Resource Name (ARN) of the container instance. The ARN contains the @arn:aws:ecs@ namespace, followed by the Region of the container instance, the AWS account ID of the container instance owner, the @container-instance@ namespace, and then the container instance ID. For example, @arn:aws:ecs:region:aws_account_id:container-instance/container_instance_ID@ .
 ciContainerInstanceARN :: Lens' ContainerInstance (Maybe Text)
 ciContainerInstanceARN = lens _ciContainerInstanceARN (\ s a -> s{_ciContainerInstanceARN = a})
 
--- | This parameter returns @true@ if the agent is connected to Amazon ECS. Registered instances with an agent that may be unhealthy or stopped return @false@ . Instances without a connected agent can't accept placement requests.
+-- | This parameter returns @true@ if the agent is connected to Amazon ECS. Registered instances with an agent that may be unhealthy or stopped return @false@ . Only instances connected to an agent can accept placement requests.
 ciAgentConnected :: Lens' ContainerInstance (Maybe Bool)
 ciAgentConnected = lens _ciAgentConnected (\ s a -> s{_ciAgentConnected = a})
 
@@ -152,11 +164,23 @@ ciVersion = lens _ciVersion (\ s a -> s{_ciVersion = a})
 ciPendingTasksCount :: Lens' ContainerInstance (Maybe Int)
 ciPendingTasksCount = lens _ciPendingTasksCount (\ s a -> s{_ciPendingTasksCount = a})
 
--- | The Unix time stamp for when the container instance was registered.
+-- | The capacity provider associated with the container instance.
+ciCapacityProviderName :: Lens' ContainerInstance (Maybe Text)
+ciCapacityProviderName = lens _ciCapacityProviderName (\ s a -> s{_ciCapacityProviderName = a})
+
+-- | The Unix timestamp for when the container instance was registered.
 ciRegisteredAt :: Lens' ContainerInstance (Maybe UTCTime)
 ciRegisteredAt = lens _ciRegisteredAt (\ s a -> s{_ciRegisteredAt = a}) . mapping _Time
 
--- | For CPU and memory resource types, this parameter describes the amount of each resource that was available on the container instance when the container agent registered it with Amazon ECS; this value represents the total amount of CPU and memory that can be allocated on this container instance to tasks. For port resource types, this parameter describes the ports that were reserved by the Amazon ECS container agent when it registered the container instance with Amazon ECS.
+-- | The reason that the container instance reached its current status.
+ciStatusReason :: Lens' ContainerInstance (Maybe Text)
+ciStatusReason = lens _ciStatusReason (\ s a -> s{_ciStatusReason = a})
+
+-- | The metadata that you apply to the container instance to help you categorize and organize them. Each tag consists of a key and an optional value, both of which you define. The following basic restrictions apply to tags:     * Maximum number of tags per resource - 50     * For each resource, each tag key must be unique, and each tag key can have only one value.     * Maximum key length - 128 Unicode characters in UTF-8     * Maximum value length - 256 Unicode characters in UTF-8     * If your tagging schema is used across multiple services and resources, remember that other services may have restrictions on allowed characters. Generally allowed characters are: letters, numbers, and spaces representable in UTF-8, and the following characters: + - = . _ : / @.     * Tag keys and values are case-sensitive.     * Do not use @aws:@ , @AWS:@ , or any upper or lowercase combination of such as a prefix for either keys or values as it is reserved for AWS use. You cannot edit or delete tag keys or values with this prefix. Tags with this prefix do not count against your tags per resource limit.
+ciTags :: Lens' ContainerInstance [Tag]
+ciTags = lens _ciTags (\ s a -> s{_ciTags = a}) . _Default . _Coerce
+
+-- | For CPU and memory resource types, this parameter describes the amount of each resource that was available on the container instance when the container agent registered it with Amazon ECS. This value represents the total amount of CPU and memory that can be allocated on this container instance to tasks. For port resource types, this parameter describes the ports that were reserved by the Amazon ECS container agent when it registered the container instance with Amazon ECS.
 ciRegisteredResources :: Lens' ContainerInstance [Resource]
 ciRegisteredResources = lens _ciRegisteredResources (\ s a -> s{_ciRegisteredResources = a}) . _Default . _Coerce
 
@@ -176,7 +200,10 @@ instance FromJSON ContainerInstance where
                      <*> (x .:? "attributes" .!= mempty)
                      <*> (x .:? "version")
                      <*> (x .:? "pendingTasksCount")
+                     <*> (x .:? "capacityProviderName")
                      <*> (x .:? "registeredAt")
+                     <*> (x .:? "statusReason")
+                     <*> (x .:? "tags" .!= mempty)
                      <*> (x .:? "registeredResources" .!= mempty))
 
 instance Hashable ContainerInstance where

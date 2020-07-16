@@ -83,7 +83,7 @@ data DescribeUsers = DescribeUsers'{_duInclude ::
 --
 -- * 'duUserIds' - The IDs of the users.
 --
--- * 'duAuthenticationToken' - Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.
+-- * 'duAuthenticationToken' - Amazon WorkDocs authentication token. Not required when using AWS administrator credentials to access the API.
 --
 -- * 'duSort' - The sorting criteria.
 --
@@ -116,7 +116,7 @@ duInclude = lens _duInclude (\ s a -> s{_duInclude = a})
 duUserIds :: Lens' DescribeUsers (Maybe Text)
 duUserIds = lens _duUserIds (\ s a -> s{_duUserIds = a})
 
--- | Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.
+-- | Amazon WorkDocs authentication token. Not required when using AWS administrator credentials to access the API.
 duAuthenticationToken :: Lens' DescribeUsers (Maybe Text)
 duAuthenticationToken = lens _duAuthenticationToken (\ s a -> s{_duAuthenticationToken = a}) . mapping _Sensitive
 

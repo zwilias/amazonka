@@ -24,7 +24,7 @@ import Network.AWS.Prelude
 --
 -- /See:/ 'dvbSubSourceSettings' smart constructor.
 newtype DvbSubSourceSettings = DvbSubSourceSettings'{_dsssPid
-                                                     :: Maybe Int}
+                                                     :: Maybe Nat}
                                  deriving (Eq, Read, Show, Data, Typeable,
                                            Generic)
 
@@ -39,8 +39,8 @@ dvbSubSourceSettings
   = DvbSubSourceSettings'{_dsssPid = Nothing}
 
 -- | When using DVB-Sub with Burn-In or SMPTE-TT, use this PID for the source content. Unused for DVB-Sub passthrough. All DVB-Sub content is passed through, regardless of selectors.
-dsssPid :: Lens' DvbSubSourceSettings (Maybe Int)
-dsssPid = lens _dsssPid (\ s a -> s{_dsssPid = a})
+dsssPid :: Lens' DvbSubSourceSettings (Maybe Natural)
+dsssPid = lens _dsssPid (\ s a -> s{_dsssPid = a}) . mapping _Nat
 
 instance FromJSON DvbSubSourceSettings where
         parseJSON

@@ -39,11 +39,11 @@ data NotificationConfig = NotificationConfig'{_ncNotificationEvents
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'ncNotificationEvents' - The different events for which you can receive notifications. These events include the following: All (events), InProgress, Success, TimedOut, Cancelled, Failed. To learn more about these events, see <http://docs.aws.amazon.com/systems-manager/latest/userguide/monitor-commands.html Setting Up Events and Notifications> in the /AWS Systems Manager User Guide/ .
+-- * 'ncNotificationEvents' - The different events for which you can receive notifications. These events include the following: All (events), InProgress, Success, TimedOut, Cancelled, Failed. To learn more about these events, see <https://docs.aws.amazon.com/systems-manager/latest/userguide/monitoring-sns-notifications.html Monitoring Systems Manager status changes using Amazon SNS notifications> in the /AWS Systems Manager User Guide/ .
 --
 -- * 'ncNotificationType' - Command: Receive notification when the status of a command changes. Invocation: For commands sent to multiple instances, receive notification on a per-instance basis when the status of a command changes. 
 --
--- * 'ncNotificationARN' - An Amazon Resource Name (ARN) for a Simple Notification Service (SNS) topic. Run Command pushes notifications about command status changes to this topic.
+-- * 'ncNotificationARN' - An Amazon Resource Name (ARN) for an Amazon Simple Notification Service (Amazon SNS) topic. Run Command pushes notifications about command status changes to this topic.
 notificationConfig
     :: NotificationConfig
 notificationConfig
@@ -52,7 +52,7 @@ notificationConfig
                         _ncNotificationType = Nothing,
                         _ncNotificationARN = Nothing}
 
--- | The different events for which you can receive notifications. These events include the following: All (events), InProgress, Success, TimedOut, Cancelled, Failed. To learn more about these events, see <http://docs.aws.amazon.com/systems-manager/latest/userguide/monitor-commands.html Setting Up Events and Notifications> in the /AWS Systems Manager User Guide/ .
+-- | The different events for which you can receive notifications. These events include the following: All (events), InProgress, Success, TimedOut, Cancelled, Failed. To learn more about these events, see <https://docs.aws.amazon.com/systems-manager/latest/userguide/monitoring-sns-notifications.html Monitoring Systems Manager status changes using Amazon SNS notifications> in the /AWS Systems Manager User Guide/ .
 ncNotificationEvents :: Lens' NotificationConfig [NotificationEvent]
 ncNotificationEvents = lens _ncNotificationEvents (\ s a -> s{_ncNotificationEvents = a}) . _Default . _Coerce
 
@@ -60,7 +60,7 @@ ncNotificationEvents = lens _ncNotificationEvents (\ s a -> s{_ncNotificationEve
 ncNotificationType :: Lens' NotificationConfig (Maybe NotificationType)
 ncNotificationType = lens _ncNotificationType (\ s a -> s{_ncNotificationType = a})
 
--- | An Amazon Resource Name (ARN) for a Simple Notification Service (SNS) topic. Run Command pushes notifications about command status changes to this topic.
+-- | An Amazon Resource Name (ARN) for an Amazon Simple Notification Service (Amazon SNS) topic. Run Command pushes notifications about command status changes to this topic.
 ncNotificationARN :: Lens' NotificationConfig (Maybe Text)
 ncNotificationARN = lens _ncNotificationARN (\ s a -> s{_ncNotificationARN = a})
 

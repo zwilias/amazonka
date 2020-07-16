@@ -20,7 +20,7 @@ module Network.AWS.Lambda.Types.FunctionCode where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | The code for the Lambda function.
+-- | The code for the Lambda function. You can specify either an object in Amazon S3, or upload a deployment package directly.
 --
 --
 --
@@ -36,13 +36,13 @@ data FunctionCode = FunctionCode'{_fcS3ObjectVersion
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'fcS3ObjectVersion' - The Amazon S3 object (the deployment package) version you want to upload.
+-- * 'fcS3ObjectVersion' - For versioned objects, the version of the deployment package object to use.
 --
--- * 'fcS3Key' - The Amazon S3 object (the deployment package) key name you want to upload.
+-- * 'fcS3Key' - The Amazon S3 key of the deployment package.
 --
--- * 'fcZipFile' - The contents of your zip file containing your deployment package. If you are using the web API directly, the contents of the zip file must be base64-encoded. If you are using the AWS SDKs or the AWS CLI, the SDKs or CLI will do the encoding for you. For more information about creating a .zip file, see <http://docs.aws.amazon.com/lambda/latest/dg/intro-permission-model.html#lambda-intro-execution-role.html Execution Permissions> in the __AWS Lambda Developer Guide__ . -- /Note:/ This 'Lens' automatically encodes and decodes Base64 data. The underlying isomorphism will encode to Base64 representation during serialisation, and decode from Base64 representation during deserialisation. This 'Lens' accepts and returns only raw unencoded data.
+-- * 'fcZipFile' - The base64-encoded contents of the deployment package. AWS SDK and AWS CLI clients handle the encoding for you.-- /Note:/ This 'Lens' automatically encodes and decodes Base64 data. The underlying isomorphism will encode to Base64 representation during serialisation, and decode from Base64 representation during deserialisation. This 'Lens' accepts and returns only raw unencoded data.
 --
--- * 'fcS3Bucket' - Amazon S3 bucket name where the .zip file containing your deployment package is stored. This bucket must reside in the same AWS region where you are creating the Lambda function.
+-- * 'fcS3Bucket' - An Amazon S3 bucket in the same AWS Region as your function. The bucket can be in a different AWS account.
 functionCode
     :: FunctionCode
 functionCode
@@ -50,19 +50,19 @@ functionCode
                   _fcS3Key = Nothing, _fcZipFile = Nothing,
                   _fcS3Bucket = Nothing}
 
--- | The Amazon S3 object (the deployment package) version you want to upload.
+-- | For versioned objects, the version of the deployment package object to use.
 fcS3ObjectVersion :: Lens' FunctionCode (Maybe Text)
 fcS3ObjectVersion = lens _fcS3ObjectVersion (\ s a -> s{_fcS3ObjectVersion = a})
 
--- | The Amazon S3 object (the deployment package) key name you want to upload.
+-- | The Amazon S3 key of the deployment package.
 fcS3Key :: Lens' FunctionCode (Maybe Text)
 fcS3Key = lens _fcS3Key (\ s a -> s{_fcS3Key = a})
 
--- | The contents of your zip file containing your deployment package. If you are using the web API directly, the contents of the zip file must be base64-encoded. If you are using the AWS SDKs or the AWS CLI, the SDKs or CLI will do the encoding for you. For more information about creating a .zip file, see <http://docs.aws.amazon.com/lambda/latest/dg/intro-permission-model.html#lambda-intro-execution-role.html Execution Permissions> in the __AWS Lambda Developer Guide__ . -- /Note:/ This 'Lens' automatically encodes and decodes Base64 data. The underlying isomorphism will encode to Base64 representation during serialisation, and decode from Base64 representation during deserialisation. This 'Lens' accepts and returns only raw unencoded data.
+-- | The base64-encoded contents of the deployment package. AWS SDK and AWS CLI clients handle the encoding for you.-- /Note:/ This 'Lens' automatically encodes and decodes Base64 data. The underlying isomorphism will encode to Base64 representation during serialisation, and decode from Base64 representation during deserialisation. This 'Lens' accepts and returns only raw unencoded data.
 fcZipFile :: Lens' FunctionCode (Maybe ByteString)
 fcZipFile = lens _fcZipFile (\ s a -> s{_fcZipFile = a}) . mapping (_Sensitive . _Base64)
 
--- | Amazon S3 bucket name where the .zip file containing your deployment package is stored. This bucket must reside in the same AWS region where you are creating the Lambda function.
+-- | An Amazon S3 bucket in the same AWS Region as your function. The bucket can be in a different AWS account.
 fcS3Bucket :: Lens' FunctionCode (Maybe Text)
 fcS3Bucket = lens _fcS3Bucket (\ s a -> s{_fcS3Bucket = a})
 

@@ -38,6 +38,8 @@ module Network.AWS.ServiceCatalog.UpdateProvisionedProduct
     , uppProvisioningParameters
     , uppProvisionedProductId
     , uppProductId
+    , uppTags
+    , uppProvisioningPreferences
     , uppUpdateToken
 
     -- * Destructuring the Response
@@ -72,6 +74,12 @@ data UpdateProvisionedProduct = UpdateProvisionedProduct'{_uppProvisionedProduct
                                                           :: !(Maybe Text),
                                                           _uppProductId ::
                                                           !(Maybe Text),
+                                                          _uppTags ::
+                                                          !(Maybe [Tag]),
+                                                          _uppProvisioningPreferences
+                                                          ::
+                                                          !(Maybe
+                                                              UpdateProvisioningPreferences),
                                                           _uppUpdateToken ::
                                                           !Text}
                                   deriving (Eq, Read, Show, Data, Typeable,
@@ -81,7 +89,7 @@ data UpdateProvisionedProduct = UpdateProvisionedProduct'{_uppProvisionedProduct
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'uppProvisionedProductName' - The updated name of the provisioned product. You cannot specify both @ProvisionedProductName@ and @ProvisionedProductId@ .
+-- * 'uppProvisionedProductName' - The name of the provisioned product. You cannot specify both @ProvisionedProductName@ and @ProvisionedProductId@ .
 --
 -- * 'uppProvisioningArtifactId' - The identifier of the provisioning artifact.
 --
@@ -93,7 +101,11 @@ data UpdateProvisionedProduct = UpdateProvisionedProduct'{_uppProvisionedProduct
 --
 -- * 'uppProvisionedProductId' - The identifier of the provisioned product. You cannot specify both @ProvisionedProductName@ and @ProvisionedProductId@ .
 --
--- * 'uppProductId' - The identifier of the provisioned product.
+-- * 'uppProductId' - The identifier of the product.
+--
+-- * 'uppTags' - One or more tags. Requires the product to have @RESOURCE_UPDATE@ constraint with @TagUpdatesOnProvisionedProduct@ set to @ALLOWED@ to allow tag updates.
+--
+-- * 'uppProvisioningPreferences' - An object that contains information about the provisioning preferences for a stack set.
 --
 -- * 'uppUpdateToken' - The idempotency token that uniquely identifies the provisioning update request.
 updateProvisionedProduct
@@ -107,10 +119,11 @@ updateProvisionedProduct pUpdateToken_
                               _uppPathId = Nothing,
                               _uppProvisioningParameters = Nothing,
                               _uppProvisionedProductId = Nothing,
-                              _uppProductId = Nothing,
+                              _uppProductId = Nothing, _uppTags = Nothing,
+                              _uppProvisioningPreferences = Nothing,
                               _uppUpdateToken = pUpdateToken_}
 
--- | The updated name of the provisioned product. You cannot specify both @ProvisionedProductName@ and @ProvisionedProductId@ .
+-- | The name of the provisioned product. You cannot specify both @ProvisionedProductName@ and @ProvisionedProductId@ .
 uppProvisionedProductName :: Lens' UpdateProvisionedProduct (Maybe Text)
 uppProvisionedProductName = lens _uppProvisionedProductName (\ s a -> s{_uppProvisionedProductName = a})
 
@@ -134,9 +147,17 @@ uppProvisioningParameters = lens _uppProvisioningParameters (\ s a -> s{_uppProv
 uppProvisionedProductId :: Lens' UpdateProvisionedProduct (Maybe Text)
 uppProvisionedProductId = lens _uppProvisionedProductId (\ s a -> s{_uppProvisionedProductId = a})
 
--- | The identifier of the provisioned product.
+-- | The identifier of the product.
 uppProductId :: Lens' UpdateProvisionedProduct (Maybe Text)
 uppProductId = lens _uppProductId (\ s a -> s{_uppProductId = a})
+
+-- | One or more tags. Requires the product to have @RESOURCE_UPDATE@ constraint with @TagUpdatesOnProvisionedProduct@ set to @ALLOWED@ to allow tag updates.
+uppTags :: Lens' UpdateProvisionedProduct [Tag]
+uppTags = lens _uppTags (\ s a -> s{_uppTags = a}) . _Default . _Coerce
+
+-- | An object that contains information about the provisioning preferences for a stack set.
+uppProvisioningPreferences :: Lens' UpdateProvisionedProduct (Maybe UpdateProvisioningPreferences)
+uppProvisioningPreferences = lens _uppProvisioningPreferences (\ s a -> s{_uppProvisioningPreferences = a})
 
 -- | The idempotency token that uniquely identifies the provisioning update request.
 uppUpdateToken :: Lens' UpdateProvisionedProduct Text
@@ -181,6 +202,9 @@ instance ToJSON UpdateProvisionedProduct where
                   ("ProvisionedProductId" .=) <$>
                     _uppProvisionedProductId,
                   ("ProductId" .=) <$> _uppProductId,
+                  ("Tags" .=) <$> _uppTags,
+                  ("ProvisioningPreferences" .=) <$>
+                    _uppProvisioningPreferences,
                   Just ("UpdateToken" .= _uppUpdateToken)])
 
 instance ToPath UpdateProvisionedProduct where

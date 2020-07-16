@@ -20,7 +20,7 @@ module Network.AWS.Rekognition.Types.KinesisDataStream where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | The Kinesis data stream Amazon Rekognition to which the analysis results of a Amazon Rekognition stream processor are streamed. For more information, see .
+-- | The Kinesis data stream Amazon Rekognition to which the analysis results of a Amazon Rekognition stream processor are streamed. For more information, see CreateStreamProcessor in the Amazon Rekognition Developer Guide.
 --
 --
 --

@@ -17,6 +17,7 @@
 --
 module Network.AWS.Glue.Types.Condition where
 
+import Network.AWS.Glue.Types.CrawlState
 import Network.AWS.Glue.Types.JobRunState
 import Network.AWS.Glue.Types.LogicalOperator
 import Network.AWS.Lens
@@ -27,32 +28,43 @@ import Network.AWS.Prelude
 --
 --
 -- /See:/ 'condition' smart constructor.
-data Condition = Condition'{_cState ::
-                            !(Maybe JobRunState),
+data Condition = Condition'{_cCrawlState ::
+                            !(Maybe CrawlState),
+                            _cState :: !(Maybe JobRunState),
                             _cJobName :: !(Maybe Text),
-                            _cLogicalOperator :: !(Maybe LogicalOperator)}
+                            _cLogicalOperator :: !(Maybe LogicalOperator),
+                            _cCrawlerName :: !(Maybe Text)}
                    deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'Condition' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'cState' - The condition state. Currently, the values supported are SUCCEEDED, STOPPED, TIMEOUT and FAILED.
+-- * 'cCrawlState' - The state of the crawler to which this condition applies.
 --
--- * 'cJobName' - The name of the Job to whose JobRuns this condition applies and on which this trigger waits.
+-- * 'cState' - The condition state. Currently, the values supported are @SUCCEEDED@ , @STOPPED@ , @TIMEOUT@ , and @FAILED@ .
+--
+-- * 'cJobName' - The name of the job whose @JobRuns@ this condition applies to, and on which this trigger waits.
 --
 -- * 'cLogicalOperator' - A logical operator.
+--
+-- * 'cCrawlerName' - The name of the crawler to which this condition applies.
 condition
     :: Condition
 condition
-  = Condition'{_cState = Nothing, _cJobName = Nothing,
-               _cLogicalOperator = Nothing}
+  = Condition'{_cCrawlState = Nothing,
+               _cState = Nothing, _cJobName = Nothing,
+               _cLogicalOperator = Nothing, _cCrawlerName = Nothing}
 
--- | The condition state. Currently, the values supported are SUCCEEDED, STOPPED, TIMEOUT and FAILED.
+-- | The state of the crawler to which this condition applies.
+cCrawlState :: Lens' Condition (Maybe CrawlState)
+cCrawlState = lens _cCrawlState (\ s a -> s{_cCrawlState = a})
+
+-- | The condition state. Currently, the values supported are @SUCCEEDED@ , @STOPPED@ , @TIMEOUT@ , and @FAILED@ .
 cState :: Lens' Condition (Maybe JobRunState)
 cState = lens _cState (\ s a -> s{_cState = a})
 
--- | The name of the Job to whose JobRuns this condition applies and on which this trigger waits.
+-- | The name of the job whose @JobRuns@ this condition applies to, and on which this trigger waits.
 cJobName :: Lens' Condition (Maybe Text)
 cJobName = lens _cJobName (\ s a -> s{_cJobName = a})
 
@@ -60,13 +72,19 @@ cJobName = lens _cJobName (\ s a -> s{_cJobName = a})
 cLogicalOperator :: Lens' Condition (Maybe LogicalOperator)
 cLogicalOperator = lens _cLogicalOperator (\ s a -> s{_cLogicalOperator = a})
 
+-- | The name of the crawler to which this condition applies.
+cCrawlerName :: Lens' Condition (Maybe Text)
+cCrawlerName = lens _cCrawlerName (\ s a -> s{_cCrawlerName = a})
+
 instance FromJSON Condition where
         parseJSON
           = withObject "Condition"
               (\ x ->
                  Condition' <$>
-                   (x .:? "State") <*> (x .:? "JobName") <*>
-                     (x .:? "LogicalOperator"))
+                   (x .:? "CrawlState") <*> (x .:? "State") <*>
+                     (x .:? "JobName")
+                     <*> (x .:? "LogicalOperator")
+                     <*> (x .:? "CrawlerName"))
 
 instance Hashable Condition where
 
@@ -76,6 +94,8 @@ instance ToJSON Condition where
         toJSON Condition'{..}
           = object
               (catMaybes
-                 [("State" .=) <$> _cState,
+                 [("CrawlState" .=) <$> _cCrawlState,
+                  ("State" .=) <$> _cState,
                   ("JobName" .=) <$> _cJobName,
-                  ("LogicalOperator" .=) <$> _cLogicalOperator])
+                  ("LogicalOperator" .=) <$> _cLogicalOperator,
+                  ("CrawlerName" .=) <$> _cCrawlerName])

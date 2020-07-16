@@ -30,10 +30,12 @@ module Network.AWS.ElasticSearch.UpdateElasticsearchDomainConfig
     , uedcEBSOptions
     , uedcAccessPolicies
     , uedcLogPublishingOptions
+    , uedcAdvancedSecurityOptions
     , uedcElasticsearchClusterConfig
     , uedcSnapshotOptions
     , uedcCognitoOptions
     , uedcVPCOptions
+    , uedcDomainEndpointOptions
     , uedcAdvancedOptions
     , uedcDomainName
 
@@ -71,6 +73,10 @@ data UpdateElasticsearchDomainConfig = UpdateElasticsearchDomainConfig'{_uedcEBS
                                                                             (Map
                                                                                LogType
                                                                                LogPublishingOption)),
+                                                                        _uedcAdvancedSecurityOptions
+                                                                        ::
+                                                                        !(Maybe
+                                                                            AdvancedSecurityOptionsInput),
                                                                         _uedcElasticsearchClusterConfig
                                                                         ::
                                                                         !(Maybe
@@ -87,6 +93,10 @@ data UpdateElasticsearchDomainConfig = UpdateElasticsearchDomainConfig'{_uedcEBS
                                                                         ::
                                                                         !(Maybe
                                                                             VPCOptions),
+                                                                        _uedcDomainEndpointOptions
+                                                                        ::
+                                                                        !(Maybe
+                                                                            DomainEndpointOptions),
                                                                         _uedcAdvancedOptions
                                                                         ::
                                                                         !(Maybe
@@ -96,8 +106,8 @@ data UpdateElasticsearchDomainConfig = UpdateElasticsearchDomainConfig'{_uedcEBS
                                                                         _uedcDomainName
                                                                         ::
                                                                         !Text}
-                                         deriving (Eq, Read, Show, Data,
-                                                   Typeable, Generic)
+                                         deriving (Eq, Show, Data, Typeable,
+                                                   Generic)
 
 -- | Creates a value of 'UpdateElasticsearchDomainConfig' with the minimum fields required to make a request.
 --
@@ -109,6 +119,8 @@ data UpdateElasticsearchDomainConfig = UpdateElasticsearchDomainConfig'{_uedcEBS
 --
 -- * 'uedcLogPublishingOptions' - Map of @LogType@ and @LogPublishingOption@ , each containing options to publish a given type of Elasticsearch log.
 --
+-- * 'uedcAdvancedSecurityOptions' - Specifies advanced security options.
+--
 -- * 'uedcElasticsearchClusterConfig' - The type and number of instances to instantiate for the domain cluster.
 --
 -- * 'uedcSnapshotOptions' - Option to set the time, in UTC format, for the daily automated snapshot. Default value is @0@ hours. 
@@ -116,6 +128,8 @@ data UpdateElasticsearchDomainConfig = UpdateElasticsearchDomainConfig'{_uedcEBS
 -- * 'uedcCognitoOptions' - Options to specify the Cognito user and identity pools for Kibana authentication. For more information, see <http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-cognito-auth.html Amazon Cognito Authentication for Kibana> .
 --
 -- * 'uedcVPCOptions' - Options to specify the subnets and security groups for VPC endpoint. For more information, see <http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-vpc.html#es-creating-vpc Creating a VPC> in /VPC Endpoints for Amazon Elasticsearch Service Domains/ 
+--
+-- * 'uedcDomainEndpointOptions' - Options to specify configuration that will be applied to the domain endpoint.
 --
 -- * 'uedcAdvancedOptions' - Modifies the advanced option to allow references to indices in an HTTP request body. Must be @false@ when configuring access to individual sub-resources. By default, the value is @true@ . See <http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html#es-createdomain-configure-advanced-options Configuration Advanced Options> for more information.
 --
@@ -128,10 +142,12 @@ updateElasticsearchDomainConfig pDomainName_
                                        Nothing,
                                      _uedcAccessPolicies = Nothing,
                                      _uedcLogPublishingOptions = Nothing,
+                                     _uedcAdvancedSecurityOptions = Nothing,
                                      _uedcElasticsearchClusterConfig = Nothing,
                                      _uedcSnapshotOptions = Nothing,
                                      _uedcCognitoOptions = Nothing,
                                      _uedcVPCOptions = Nothing,
+                                     _uedcDomainEndpointOptions = Nothing,
                                      _uedcAdvancedOptions = Nothing,
                                      _uedcDomainName = pDomainName_}
 
@@ -146,6 +162,10 @@ uedcAccessPolicies = lens _uedcAccessPolicies (\ s a -> s{_uedcAccessPolicies = 
 -- | Map of @LogType@ and @LogPublishingOption@ , each containing options to publish a given type of Elasticsearch log.
 uedcLogPublishingOptions :: Lens' UpdateElasticsearchDomainConfig (HashMap LogType LogPublishingOption)
 uedcLogPublishingOptions = lens _uedcLogPublishingOptions (\ s a -> s{_uedcLogPublishingOptions = a}) . _Default . _Map
+
+-- | Specifies advanced security options.
+uedcAdvancedSecurityOptions :: Lens' UpdateElasticsearchDomainConfig (Maybe AdvancedSecurityOptionsInput)
+uedcAdvancedSecurityOptions = lens _uedcAdvancedSecurityOptions (\ s a -> s{_uedcAdvancedSecurityOptions = a})
 
 -- | The type and number of instances to instantiate for the domain cluster.
 uedcElasticsearchClusterConfig :: Lens' UpdateElasticsearchDomainConfig (Maybe ElasticsearchClusterConfig)
@@ -162,6 +182,10 @@ uedcCognitoOptions = lens _uedcCognitoOptions (\ s a -> s{_uedcCognitoOptions = 
 -- | Options to specify the subnets and security groups for VPC endpoint. For more information, see <http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-vpc.html#es-creating-vpc Creating a VPC> in /VPC Endpoints for Amazon Elasticsearch Service Domains/ 
 uedcVPCOptions :: Lens' UpdateElasticsearchDomainConfig (Maybe VPCOptions)
 uedcVPCOptions = lens _uedcVPCOptions (\ s a -> s{_uedcVPCOptions = a})
+
+-- | Options to specify configuration that will be applied to the domain endpoint.
+uedcDomainEndpointOptions :: Lens' UpdateElasticsearchDomainConfig (Maybe DomainEndpointOptions)
+uedcDomainEndpointOptions = lens _uedcDomainEndpointOptions (\ s a -> s{_uedcDomainEndpointOptions = a})
 
 -- | Modifies the advanced option to allow references to indices in an HTTP request body. Must be @false@ when configuring access to individual sub-resources. By default, the value is @true@ . See <http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html#es-createdomain-configure-advanced-options Configuration Advanced Options> for more information.
 uedcAdvancedOptions :: Lens' UpdateElasticsearchDomainConfig (HashMap Text Text)
@@ -199,11 +223,15 @@ instance ToJSON UpdateElasticsearchDomainConfig where
                   ("AccessPolicies" .=) <$> _uedcAccessPolicies,
                   ("LogPublishingOptions" .=) <$>
                     _uedcLogPublishingOptions,
+                  ("AdvancedSecurityOptions" .=) <$>
+                    _uedcAdvancedSecurityOptions,
                   ("ElasticsearchClusterConfig" .=) <$>
                     _uedcElasticsearchClusterConfig,
                   ("SnapshotOptions" .=) <$> _uedcSnapshotOptions,
                   ("CognitoOptions" .=) <$> _uedcCognitoOptions,
                   ("VPCOptions" .=) <$> _uedcVPCOptions,
+                  ("DomainEndpointOptions" .=) <$>
+                    _uedcDomainEndpointOptions,
                   ("AdvancedOptions" .=) <$> _uedcAdvancedOptions])
 
 instance ToPath UpdateElasticsearchDomainConfig where

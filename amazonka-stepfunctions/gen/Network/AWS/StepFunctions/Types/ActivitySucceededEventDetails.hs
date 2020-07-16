@@ -20,7 +20,7 @@ module Network.AWS.StepFunctions.Types.ActivitySucceededEventDetails where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | Contains details about an activity which successfully terminated during an execution.
+-- | Contains details about an activity that successfully terminated during an execution.
 --
 --
 --
@@ -28,9 +28,10 @@ import Network.AWS.Prelude
 newtype ActivitySucceededEventDetails = ActivitySucceededEventDetails'{_asedOutput
                                                                        ::
                                                                        Maybe
-                                                                         Text}
-                                          deriving (Eq, Read, Show, Data,
-                                                    Typeable, Generic)
+                                                                         (Sensitive
+                                                                            Text)}
+                                          deriving (Eq, Show, Data, Typeable,
+                                                    Generic)
 
 -- | Creates a value of 'ActivitySucceededEventDetails' with the minimum fields required to make a request.
 --
@@ -45,7 +46,7 @@ activitySucceededEventDetails
 
 -- | The JSON data output by the activity task.
 asedOutput :: Lens' ActivitySucceededEventDetails (Maybe Text)
-asedOutput = lens _asedOutput (\ s a -> s{_asedOutput = a})
+asedOutput = lens _asedOutput (\ s a -> s{_asedOutput = a}) . mapping _Sensitive
 
 instance FromJSON ActivitySucceededEventDetails where
         parseJSON

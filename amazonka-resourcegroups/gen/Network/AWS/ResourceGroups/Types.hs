@@ -24,8 +24,17 @@ module Network.AWS.ResourceGroups.Types
     , _MethodNotAllowedException
     , _NotFoundException
 
+    -- * GroupFilterName
+    , GroupFilterName (..)
+
+    -- * QueryErrorCode
+    , QueryErrorCode (..)
+
     -- * QueryType
     , QueryType (..)
+
+    -- * ResourceFilterName
+    , ResourceFilterName (..)
 
     -- * Group
     , Group
@@ -34,11 +43,35 @@ module Network.AWS.ResourceGroups.Types
     , gGroupARN
     , gName
 
+    -- * GroupFilter
+    , GroupFilter
+    , groupFilter
+    , gfName
+    , gfValues
+
+    -- * GroupIdentifier
+    , GroupIdentifier
+    , groupIdentifier
+    , giGroupARN
+    , giGroupName
+
     -- * GroupQuery
     , GroupQuery
     , groupQuery
     , gqGroupName
     , gqResourceQuery
+
+    -- * QueryError
+    , QueryError
+    , queryError
+    , qeErrorCode
+    , qeMessage
+
+    -- * ResourceFilter
+    , ResourceFilter
+    , resourceFilter
+    , rfName
+    , rfValues
 
     -- * ResourceIdentifier
     , ResourceIdentifier
@@ -56,9 +89,16 @@ module Network.AWS.ResourceGroups.Types
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Sign.V4
+import Network.AWS.ResourceGroups.Types.GroupFilterName
+import Network.AWS.ResourceGroups.Types.QueryErrorCode
 import Network.AWS.ResourceGroups.Types.QueryType
+import Network.AWS.ResourceGroups.Types.ResourceFilterName
 import Network.AWS.ResourceGroups.Types.Group
+import Network.AWS.ResourceGroups.Types.GroupFilter
+import Network.AWS.ResourceGroups.Types.GroupIdentifier
 import Network.AWS.ResourceGroups.Types.GroupQuery
+import Network.AWS.ResourceGroups.Types.QueryError
+import Network.AWS.ResourceGroups.Types.ResourceFilter
 import Network.AWS.ResourceGroups.Types.ResourceIdentifier
 import Network.AWS.ResourceGroups.Types.ResourceQuery
 
@@ -85,6 +125,11 @@ resourceGroups
             = Just "throttling_exception"
           | has (hasCode "Throttling" . hasStatus 400) e =
             Just "throttling"
+          | has
+              (hasCode "ProvisionedThroughputExceededException" .
+                 hasStatus 400)
+              e
+            = Just "throughput_exceeded"
           | has (hasStatus 504) e = Just "gateway_timeout"
           | has
               (hasCode "RequestThrottledException" . hasStatus 400)

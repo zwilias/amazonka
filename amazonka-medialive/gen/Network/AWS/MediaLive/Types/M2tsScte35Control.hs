@@ -27,7 +27,7 @@ module Network.AWS.MediaLive.Types.M2tsScte35Control (
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | Placeholder documentation for M2tsScte35Control
+-- | M2ts Scte35 Control
 data M2tsScte35Control = M2tsScte35Control' (CI Text)
                            deriving (Eq, Ord, Read, Show, Data, Typeable,
                                      Generic)

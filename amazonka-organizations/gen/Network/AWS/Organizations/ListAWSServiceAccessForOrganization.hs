@@ -21,9 +21,9 @@
 -- Returns a list of the AWS services that you enabled to integrate with your organization. After a service on this list creates the resources that it requires for the integration, it can perform operations on your organization and its accounts.
 --
 --
--- For more information about integrating other services with AWS Organizations, including the list of services that currently work with Organizations, see <http://docs.aws.amazon.com/organizations/latest/userguide/orgs_integrate_services.html Integrating AWS Organizations with Other AWS Services> in the /AWS Organizations User Guide/ .
+-- For more information about integrating other services with AWS Organizations, including the list of services that currently work with Organizations, see <http://docs.aws.amazon.com/organizations/latest/userguide/orgs_integrate_services.html Integrating AWS Organizations with Other AWS Services> in the /AWS Organizations User Guide./ 
 --
--- This operation can be called only from the organization's master account.
+-- This operation can be called only from the organization's master account or by a member account that is a delegated administrator for an AWS service.
 --
 --
 -- This operation returns paginated results.
@@ -69,9 +69,9 @@ data ListAWSServiceAccessForOrganization = ListAWSServiceAccessForOrganization'{
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'lasafoNextToken' - Use this parameter if you receive a @NextToken@ response in a previous request that indicates that there is more output available. Set it to the value of the previous call's @NextToken@ response to indicate where the output should continue from.
+-- * 'lasafoNextToken' - The parameter for receiving additional results if you receive a @NextToken@ response in a previous request. A @NextToken@ response indicates that more output is available. Set this parameter to the value of the previous call's @NextToken@ response to indicate where the output should continue from.
 --
--- * 'lasafoMaxResults' - (Optional) Use this to limit the number of results you want included in the response. If you do not include this parameter, it defaults to a value that is specific to the operation. If additional items exist beyond the maximum you specify, the @NextToken@ response element is present and has a value (is not null). Include that value as the @NextToken@ request parameter in the next call to the operation to get the next part of the results. Note that Organizations might return fewer results than the maximum even when there are more results available. You should check @NextToken@ after every operation to ensure that you receive all of the results.
+-- * 'lasafoMaxResults' - The total number of results that you want included on each page of the response. If you do not include this parameter, it defaults to a value that is specific to the operation. If additional items exist beyond the maximum you specify, the @NextToken@ response element is present and has a value (is not null). Include that value as the @NextToken@ request parameter in the next call to the operation to get the next part of the results. Note that Organizations might return fewer results than the maximum even when there are more results available. You should check @NextToken@ after every operation to ensure that you receive all of the results.
 listAWSServiceAccessForOrganization
     :: ListAWSServiceAccessForOrganization
 listAWSServiceAccessForOrganization
@@ -79,11 +79,11 @@ listAWSServiceAccessForOrganization
                                            = Nothing,
                                          _lasafoMaxResults = Nothing}
 
--- | Use this parameter if you receive a @NextToken@ response in a previous request that indicates that there is more output available. Set it to the value of the previous call's @NextToken@ response to indicate where the output should continue from.
+-- | The parameter for receiving additional results if you receive a @NextToken@ response in a previous request. A @NextToken@ response indicates that more output is available. Set this parameter to the value of the previous call's @NextToken@ response to indicate where the output should continue from.
 lasafoNextToken :: Lens' ListAWSServiceAccessForOrganization (Maybe Text)
 lasafoNextToken = lens _lasafoNextToken (\ s a -> s{_lasafoNextToken = a})
 
--- | (Optional) Use this to limit the number of results you want included in the response. If you do not include this parameter, it defaults to a value that is specific to the operation. If additional items exist beyond the maximum you specify, the @NextToken@ response element is present and has a value (is not null). Include that value as the @NextToken@ request parameter in the next call to the operation to get the next part of the results. Note that Organizations might return fewer results than the maximum even when there are more results available. You should check @NextToken@ after every operation to ensure that you receive all of the results.
+-- | The total number of results that you want included on each page of the response. If you do not include this parameter, it defaults to a value that is specific to the operation. If additional items exist beyond the maximum you specify, the @NextToken@ response element is present and has a value (is not null). Include that value as the @NextToken@ request parameter in the next call to the operation to get the next part of the results. Note that Organizations might return fewer results than the maximum even when there are more results available. You should check @NextToken@ after every operation to ensure that you receive all of the results.
 lasafoMaxResults :: Lens' ListAWSServiceAccessForOrganization (Maybe Natural)
 lasafoMaxResults = lens _lasafoMaxResults (\ s a -> s{_lasafoMaxResults = a}) . mapping _Nat
 
@@ -165,7 +165,7 @@ data ListAWSServiceAccessForOrganizationResponse = ListAWSServiceAccessForOrgani
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'lasaforsNextToken' - If present, this value indicates that there is more output available than is included in the current response. Use this value in the @NextToken@ request parameter in a subsequent call to the operation to get the next part of the output. You should repeat this until the @NextToken@ response element comes back as @null@ .
+-- * 'lasaforsNextToken' - If present, indicates that more output is available than is included in the current response. Use this value in the @NextToken@ request parameter in a subsequent call to the operation to get the next part of the output. You should repeat this until the @NextToken@ response element comes back as @null@ .
 --
 -- * 'lasaforsEnabledServicePrincipals' - A list of the service principals for the services that are enabled to integrate with your organization. Each principal is a structure that includes the name and the date that it was enabled for integration with AWS Organizations.
 --
@@ -182,7 +182,7 @@ listAWSServiceAccessForOrganizationResponse
                                                  _lasaforsResponseStatus =
                                                    pResponseStatus_}
 
--- | If present, this value indicates that there is more output available than is included in the current response. Use this value in the @NextToken@ request parameter in a subsequent call to the operation to get the next part of the output. You should repeat this until the @NextToken@ response element comes back as @null@ .
+-- | If present, indicates that more output is available than is included in the current response. Use this value in the @NextToken@ request parameter in a subsequent call to the operation to get the next part of the output. You should repeat this until the @NextToken@ response element comes back as @null@ .
 lasaforsNextToken :: Lens' ListAWSServiceAccessForOrganizationResponse (Maybe Text)
 lasaforsNextToken = lens _lasaforsNextToken (\ s a -> s{_lasaforsNextToken = a})
 

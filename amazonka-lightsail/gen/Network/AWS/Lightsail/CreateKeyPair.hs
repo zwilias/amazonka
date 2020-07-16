@@ -18,8 +18,10 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Creates sn SSH key pair.
+-- Creates an SSH key pair.
 --
+--
+-- The @create key pair@ operation supports tag-based access control via request tags. For more information, see the <https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags Lightsail Dev Guide> .
 --
 module Network.AWS.Lightsail.CreateKeyPair
     (
@@ -27,6 +29,7 @@ module Network.AWS.Lightsail.CreateKeyPair
       createKeyPair
     , CreateKeyPair
     -- * Request Lenses
+    , ckpTags
     , ckpKeyPairName
 
     -- * Destructuring the Response
@@ -48,20 +51,28 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createKeyPair' smart constructor.
-newtype CreateKeyPair = CreateKeyPair'{_ckpKeyPairName
-                                       :: Text}
-                          deriving (Eq, Read, Show, Data, Typeable, Generic)
+data CreateKeyPair = CreateKeyPair'{_ckpTags ::
+                                    !(Maybe [Tag]),
+                                    _ckpKeyPairName :: !Text}
+                       deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateKeyPair' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'ckpTags' - The tag keys and optional values to add to the resource during create. To tag a resource after it has been created, see the @tag resource@ operation.
 --
 -- * 'ckpKeyPairName' - The name for your new key pair.
 createKeyPair
     :: Text -- ^ 'ckpKeyPairName'
     -> CreateKeyPair
 createKeyPair pKeyPairName_
-  = CreateKeyPair'{_ckpKeyPairName = pKeyPairName_}
+  = CreateKeyPair'{_ckpTags = Nothing,
+                   _ckpKeyPairName = pKeyPairName_}
+
+-- | The tag keys and optional values to add to the resource during create. To tag a resource after it has been created, see the @tag resource@ operation.
+ckpTags :: Lens' CreateKeyPair [Tag]
+ckpTags = lens _ckpTags (\ s a -> s{_ckpTags = a}) . _Default . _Coerce
 
 -- | The name for your new key pair.
 ckpKeyPairName :: Lens' CreateKeyPair Text
@@ -95,7 +106,9 @@ instance ToHeaders CreateKeyPair where
 instance ToJSON CreateKeyPair where
         toJSON CreateKeyPair'{..}
           = object
-              (catMaybes [Just ("keyPairName" .= _ckpKeyPairName)])
+              (catMaybes
+                 [("tags" .=) <$> _ckpTags,
+                  Just ("keyPairName" .= _ckpKeyPairName)])
 
 instance ToPath CreateKeyPair where
         toPath = const "/"
@@ -123,7 +136,7 @@ data CreateKeyPairResponse = CreateKeyPairResponse'{_ckprsKeyPair
 --
 -- * 'ckprsKeyPair' - An array of key-value pairs containing information about the new key pair you just created.
 --
--- * 'ckprsOperation' - An array of key-value pairs containing information about the results of your create key pair request.
+-- * 'ckprsOperation' - An array of objects that describe the result of the action, such as the status of the request, the time stamp of the request, and the resources affected by the request.
 --
 -- * 'ckprsPublicKeyBase64' - A base64-encoded public key of the @ssh-rsa@ type.
 --
@@ -144,7 +157,7 @@ createKeyPairResponse pResponseStatus_
 ckprsKeyPair :: Lens' CreateKeyPairResponse (Maybe KeyPair)
 ckprsKeyPair = lens _ckprsKeyPair (\ s a -> s{_ckprsKeyPair = a})
 
--- | An array of key-value pairs containing information about the results of your create key pair request.
+-- | An array of objects that describe the result of the action, such as the status of the request, the time stamp of the request, and the resources affected by the request.
 ckprsOperation :: Lens' CreateKeyPairResponse (Maybe Operation)
 ckprsOperation = lens _ckprsOperation (\ s a -> s{_ckprsOperation = a})
 

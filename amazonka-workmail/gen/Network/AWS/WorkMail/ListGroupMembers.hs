@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Returns an overview of the members of a group.
+-- Returns an overview of the members of a group. Users and groups can be members of a group.
 --
 --
 --
@@ -69,7 +69,7 @@ data ListGroupMembers = ListGroupMembers'{_lgmNextToken
 --
 -- * 'lgmOrganizationId' - The identifier for the organization under which the group exists.
 --
--- * 'lgmGroupId' - The identifier for the group to which the members are associated.
+-- * 'lgmGroupId' - The identifier for the group to which the members (users or groups) are associated.
 listGroupMembers
     :: Text -- ^ 'lgmOrganizationId'
     -> Text -- ^ 'lgmGroupId'
@@ -92,7 +92,7 @@ lgmMaxResults = lens _lgmMaxResults (\ s a -> s{_lgmMaxResults = a}) . mapping _
 lgmOrganizationId :: Lens' ListGroupMembers Text
 lgmOrganizationId = lens _lgmOrganizationId (\ s a -> s{_lgmOrganizationId = a})
 
--- | The identifier for the group to which the members are associated.
+-- | The identifier for the group to which the members (users or groups) are associated.
 lgmGroupId :: Lens' ListGroupMembers Text
 lgmGroupId = lens _lgmGroupId (\ s a -> s{_lgmGroupId = a})
 

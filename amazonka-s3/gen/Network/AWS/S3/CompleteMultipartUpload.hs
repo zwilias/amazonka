@@ -19,6 +19,68 @@
 -- Portability : non-portable (GHC extensions)
 --
 -- Completes a multipart upload by assembling previously uploaded parts.
+--
+--
+-- You first initiate the multipart upload and then upload all parts using the 'UploadPart' operation. After successfully uploading all relevant parts of an upload, you call this operation to complete the upload. Upon receiving this request, Amazon S3 concatenates all the parts in ascending order by part number to create a new object. In the Complete Multipart Upload request, you must provide the parts list. You must ensure that the parts list is complete. This operation concatenates the parts that you provide in the list. For each part in the list, you must provide the part number and the @ETag@ value, returned after that part was uploaded.
+--
+-- Processing of a Complete Multipart Upload request could take several minutes to complete. After Amazon S3 begins processing the request, it sends an HTTP response header that specifies a 200 OK response. While processing is in progress, Amazon S3 periodically sends white space characters to keep the connection from timing out. Because a request could fail after the initial 200 OK response has been sent, it is important that you check the response body to determine whether the request succeeded.
+--
+-- Note that if @CompleteMultipartUpload@ fails, applications should be prepared to retry the failed requests. For more information, see <https://docs.aws.amazon.com/AmazonS3/latest/dev/ErrorBestPractices.html Amazon S3 Error Best Practices> .
+--
+-- For more information about multipart uploads, see <https://docs.aws.amazon.com/AmazonS3/latest/dev/uploadobjusingmpu.html Uploading Objects Using Multipart Upload> .
+--
+-- For information about permissions required to use the multipart upload API, see <https://docs.aws.amazon.com/AmazonS3/latest/dev/mpuAndPermissions.html Multipart Upload API and Permissions> .
+--
+-- @GetBucketLifecycle@ has the following special errors:
+--
+--     * Error code: @EntityTooSmall@ 
+--
+--     * Description: Your proposed upload is smaller than the minimum allowed object size. Each part must be at least 5 MB in size, except the last part.
+--
+--     * 400 Bad Request
+--
+--
+--
+--     * Error code: @InvalidPart@ 
+--
+--     * Description: One or more of the specified parts could not be found. The part might not have been uploaded, or the specified entity tag might not have matched the part's entity tag.
+--
+--     * 400 Bad Request
+--
+--
+--
+--     * Error code: @InvalidPartOrder@ 
+--
+--     * Description: The list of parts was not in ascending order. The parts list must be specified in order by part number.
+--
+--     * 400 Bad Request
+--
+--
+--
+--     * Error code: @NoSuchUpload@ 
+--
+--     * Description: The specified multipart upload does not exist. The upload ID might be invalid, or the multipart upload might have been aborted or completed.
+--
+--     * 404 Not Found
+--
+--
+--
+--
+--
+-- The following operations are related to @DeleteBucketMetricsConfiguration@ :
+--
+--     * 'CreateMultipartUpload' 
+--
+--     * 'UploadPart' 
+--
+--     * 'AbortMultipartUpload' 
+--
+--     * 'ListParts' 
+--
+--     * 'ListMultipartUploads' 
+--
+--
+--
 module Network.AWS.S3.CompleteMultipartUpload
     (
     -- * Creating a Request
@@ -73,13 +135,13 @@ data CompleteMultipartUpload = CompleteMultipartUpload'{_cRequestPayer
 --
 -- * 'cRequestPayer' - Undocumented member.
 --
--- * 'cMultipartUpload' - Undocumented member.
+-- * 'cMultipartUpload' - The container for the multipart upload request information.
 --
--- * 'cBucket' - Undocumented member.
+-- * 'cBucket' - Name of the bucket to which the multipart upload was initiated.
 --
--- * 'cKey' - Undocumented member.
+-- * 'cKey' - Object key for which the multipart upload was initiated.
 --
--- * 'cUploadId' - Undocumented member.
+-- * 'cUploadId' - ID for the initiated multipart upload.
 completeMultipartUpload
     :: BucketName -- ^ 'cBucket'
     -> ObjectKey -- ^ 'cKey'
@@ -94,19 +156,19 @@ completeMultipartUpload pBucket_ pKey_ pUploadId_
 cRequestPayer :: Lens' CompleteMultipartUpload (Maybe RequestPayer)
 cRequestPayer = lens _cRequestPayer (\ s a -> s{_cRequestPayer = a})
 
--- | Undocumented member.
+-- | The container for the multipart upload request information.
 cMultipartUpload :: Lens' CompleteMultipartUpload (Maybe CompletedMultipartUpload)
 cMultipartUpload = lens _cMultipartUpload (\ s a -> s{_cMultipartUpload = a})
 
--- | Undocumented member.
+-- | Name of the bucket to which the multipart upload was initiated.
 cBucket :: Lens' CompleteMultipartUpload BucketName
 cBucket = lens _cBucket (\ s a -> s{_cBucket = a})
 
--- | Undocumented member.
+-- | Object key for which the multipart upload was initiated.
 cKey :: Lens' CompleteMultipartUpload ObjectKey
 cKey = lens _cKey (\ s a -> s{_cKey = a})
 
--- | Undocumented member.
+-- | ID for the initiated multipart upload.
 cUploadId :: Lens' CompleteMultipartUpload Text
 cUploadId = lens _cUploadId (\ s a -> s{_cUploadId = a})
 
@@ -201,21 +263,21 @@ data CompleteMultipartUploadResponse = CompleteMultipartUploadResponse'{_crsRequ
 --
 -- * 'crsRequestCharged' - Undocumented member.
 --
--- * 'crsETag' - Entity tag of the object.
+-- * 'crsETag' - Entity tag that identifies the newly created object's data. Objects with different object data will have different entity tags. The entity tag is an opaque string. The entity tag may or may not be an MD5 digest of the object data. If the entity tag is not an MD5 digest of the object data, it will contain one or more nonhexadecimal characters and/or will consist of less than 32 or more than 32 hexadecimal digits.
 --
--- * 'crsVersionId' - Version of the object.
+-- * 'crsVersionId' - Version ID of the newly created object, in case the bucket has versioning turned on.
 --
--- * 'crsLocation' - Undocumented member.
+-- * 'crsLocation' - The URI that identifies the newly created object.
 --
 -- * 'crsExpiration' - If the object expiration is configured, this will contain the expiration date (expiry-date) and rule ID (rule-id). The value of rule-id is URL encoded.
 --
--- * 'crsBucket' - Undocumented member.
+-- * 'crsBucket' - The name of the bucket that contains the newly created object.
 --
--- * 'crsKey' - Undocumented member.
+-- * 'crsKey' - The object key of the newly created object.
 --
--- * 'crsSSEKMSKeyId' - If present, specifies the ID of the AWS Key Management Service (KMS) master encryption key that was used for the object.
+-- * 'crsSSEKMSKeyId' - If present, specifies the ID of the AWS Key Management Service (AWS KMS) symmetric customer managed customer master key (CMK) that was used for the object.
 --
--- * 'crsServerSideEncryption' - The Server-side encryption algorithm used when storing this object in S3 (e.g., AES256, aws:kms).
+-- * 'crsServerSideEncryption' - If you specified server-side encryption either with an Amazon S3-managed encryption key or an AWS KMS customer master key (CMK) in your initiate multipart upload request, the response includes this header. It confirms the encryption algorithm that Amazon S3 used to encrypt the object.
 --
 -- * 'crsResponseStatus' - -- | The response status code.
 completeMultipartUploadResponse
@@ -237,15 +299,15 @@ completeMultipartUploadResponse pResponseStatus_
 crsRequestCharged :: Lens' CompleteMultipartUploadResponse (Maybe RequestCharged)
 crsRequestCharged = lens _crsRequestCharged (\ s a -> s{_crsRequestCharged = a})
 
--- | Entity tag of the object.
+-- | Entity tag that identifies the newly created object's data. Objects with different object data will have different entity tags. The entity tag is an opaque string. The entity tag may or may not be an MD5 digest of the object data. If the entity tag is not an MD5 digest of the object data, it will contain one or more nonhexadecimal characters and/or will consist of less than 32 or more than 32 hexadecimal digits.
 crsETag :: Lens' CompleteMultipartUploadResponse (Maybe ETag)
 crsETag = lens _crsETag (\ s a -> s{_crsETag = a})
 
--- | Version of the object.
+-- | Version ID of the newly created object, in case the bucket has versioning turned on.
 crsVersionId :: Lens' CompleteMultipartUploadResponse (Maybe ObjectVersionId)
 crsVersionId = lens _crsVersionId (\ s a -> s{_crsVersionId = a})
 
--- | Undocumented member.
+-- | The URI that identifies the newly created object.
 crsLocation :: Lens' CompleteMultipartUploadResponse (Maybe Text)
 crsLocation = lens _crsLocation (\ s a -> s{_crsLocation = a})
 
@@ -253,19 +315,19 @@ crsLocation = lens _crsLocation (\ s a -> s{_crsLocation = a})
 crsExpiration :: Lens' CompleteMultipartUploadResponse (Maybe Text)
 crsExpiration = lens _crsExpiration (\ s a -> s{_crsExpiration = a})
 
--- | Undocumented member.
+-- | The name of the bucket that contains the newly created object.
 crsBucket :: Lens' CompleteMultipartUploadResponse (Maybe BucketName)
 crsBucket = lens _crsBucket (\ s a -> s{_crsBucket = a})
 
--- | Undocumented member.
+-- | The object key of the newly created object.
 crsKey :: Lens' CompleteMultipartUploadResponse (Maybe ObjectKey)
 crsKey = lens _crsKey (\ s a -> s{_crsKey = a})
 
--- | If present, specifies the ID of the AWS Key Management Service (KMS) master encryption key that was used for the object.
+-- | If present, specifies the ID of the AWS Key Management Service (AWS KMS) symmetric customer managed customer master key (CMK) that was used for the object.
 crsSSEKMSKeyId :: Lens' CompleteMultipartUploadResponse (Maybe Text)
 crsSSEKMSKeyId = lens _crsSSEKMSKeyId (\ s a -> s{_crsSSEKMSKeyId = a}) . mapping _Sensitive
 
--- | The Server-side encryption algorithm used when storing this object in S3 (e.g., AES256, aws:kms).
+-- | If you specified server-side encryption either with an Amazon S3-managed encryption key or an AWS KMS customer master key (CMK) in your initiate multipart upload request, the response includes this header. It confirms the encryption algorithm that Amazon S3 used to encrypt the object.
 crsServerSideEncryption :: Lens' CompleteMultipartUploadResponse (Maybe ServerSideEncryption)
 crsServerSideEncryption = lens _crsServerSideEncryption (\ s a -> s{_crsServerSideEncryption = a})
 

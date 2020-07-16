@@ -32,11 +32,15 @@ data Snapshot = Snapshot'{_sStatus :: !(Maybe Text),
                           _sRestorableNodeTypes :: !(Maybe [Text]),
                           _sAccountsWithRestoreAccess ::
                           !(Maybe [AccountWithRestoreAccess]),
+                          _sManualSnapshotRetentionPeriod :: !(Maybe Int),
                           _sEnhancedVPCRouting :: !(Maybe Bool),
                           _sSnapshotIdentifier :: !(Maybe Text),
                           _sEncryptedWithHSM :: !(Maybe Bool),
                           _sMasterUsername :: !(Maybe Text),
                           _sSourceRegion :: !(Maybe Text),
+                          _sMaintenanceTrackName :: !(Maybe Text),
+                          _sSnapshotRetentionStartTime :: !(Maybe ISO8601),
+                          _sManualSnapshotRemainingDays :: !(Maybe Int),
                           _sVPCId :: !(Maybe Text),
                           _sBackupProgressInMegaBytes :: !(Maybe Double),
                           _sEncrypted :: !(Maybe Bool),
@@ -65,13 +69,15 @@ data Snapshot = Snapshot'{_sStatus :: !(Maybe Text),
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'sStatus' - The snapshot status. The value of the status depends on the API operation used.      * 'CreateClusterSnapshot' and 'CopyClusterSnapshot' returns status as "creating".      * 'DescribeClusterSnapshots' returns status as "creating", "available", "final snapshot", or "failed".     * 'DeleteClusterSnapshot' returns status as "deleted".
+-- * 'sStatus' - The snapshot status. The value of the status depends on the API operation used:      * 'CreateClusterSnapshot' and 'CopyClusterSnapshot' returns status as "creating".      * 'DescribeClusterSnapshots' returns status as "creating", "available", "final snapshot", or "failed".     * 'DeleteClusterSnapshot' returns status as "deleted".
 --
 -- * 'sRestorableNodeTypes' - The list of node types that this cluster snapshot is able to restore into.
 --
 -- * 'sAccountsWithRestoreAccess' - A list of the AWS customer accounts authorized to restore the snapshot. Returns @null@ if no accounts are authorized. Visible only to the snapshot owner. 
 --
--- * 'sEnhancedVPCRouting' - An option that specifies whether to create the cluster with enhanced VPC routing enabled. To create a cluster that uses enhanced VPC routing, the cluster must be in a VPC. For more information, see <http://docs.aws.amazon.com/redshift/latest/mgmt/enhanced-vpc-routing.html Enhanced VPC Routing> in the Amazon Redshift Cluster Management Guide. If this option is @true@ , enhanced VPC routing is enabled.  Default: false
+-- * 'sManualSnapshotRetentionPeriod' - The number of days that a manual snapshot is retained. If the value is -1, the manual snapshot is retained indefinitely.  The value must be either -1 or an integer between 1 and 3,653.
+--
+-- * 'sEnhancedVPCRouting' - An option that specifies whether to create the cluster with enhanced VPC routing enabled. To create a cluster that uses enhanced VPC routing, the cluster must be in a VPC. For more information, see <https://docs.aws.amazon.com/redshift/latest/mgmt/enhanced-vpc-routing.html Enhanced VPC Routing> in the Amazon Redshift Cluster Management Guide. If this option is @true@ , enhanced VPC routing is enabled.  Default: false
 --
 -- * 'sSnapshotIdentifier' - The snapshot identifier that is provided in the request.
 --
@@ -80,6 +86,12 @@ data Snapshot = Snapshot'{_sStatus :: !(Maybe Text),
 -- * 'sMasterUsername' - The master user name for the cluster.
 --
 -- * 'sSourceRegion' - The source region from which the snapshot was copied.
+--
+-- * 'sMaintenanceTrackName' - The name of the maintenance track for the snapshot.
+--
+-- * 'sSnapshotRetentionStartTime' - A timestamp representing the start of the retention period for the snapshot.
+--
+-- * 'sManualSnapshotRemainingDays' - The number of days until a manual snapshot will pass its retention period.
 --
 -- * 'sVPCId' - The VPC identifier of the cluster if the snapshot is from a cluster in a VPC. Otherwise, this field is not in the output.
 --
@@ -91,7 +103,7 @@ data Snapshot = Snapshot'{_sStatus :: !(Maybe Text),
 --
 -- * 'sNumberOfNodes' - The number of nodes in the cluster.
 --
--- * 'sSnapshotType' - The snapshot type. Snapshots created using 'CreateClusterSnapshot' and 'CopyClusterSnapshot' will be of type "manual". 
+-- * 'sSnapshotType' - The snapshot type. Snapshots created using 'CreateClusterSnapshot' and 'CopyClusterSnapshot' are of type "manual". 
 --
 -- * 'sKMSKeyId' - The AWS Key Management Service (KMS) key ID of the encryption key that was used to encrypt data in the cluster from which the snapshot was taken.
 --
@@ -99,7 +111,7 @@ data Snapshot = Snapshot'{_sStatus :: !(Maybe Text),
 --
 -- * 'sCurrentBackupRateInMegaBytesPerSecond' - The number of megabytes per second being transferred to the snapshot backup. Returns @0@ for a completed backup. 
 --
--- * 'sSnapshotCreateTime' - The time (UTC) when Amazon Redshift began the snapshot. A snapshot contains a copy of the cluster data as of this exact time.
+-- * 'sSnapshotCreateTime' - The time (in UTC format) when Amazon Redshift began the snapshot. A snapshot contains a copy of the cluster data as of this exact time.
 --
 -- * 'sClusterVersion' - The version ID of the Amazon Redshift engine that is running on the cluster.
 --
@@ -128,10 +140,14 @@ snapshot
   = Snapshot'{_sStatus = Nothing,
               _sRestorableNodeTypes = Nothing,
               _sAccountsWithRestoreAccess = Nothing,
+              _sManualSnapshotRetentionPeriod = Nothing,
               _sEnhancedVPCRouting = Nothing,
               _sSnapshotIdentifier = Nothing,
               _sEncryptedWithHSM = Nothing,
               _sMasterUsername = Nothing, _sSourceRegion = Nothing,
+              _sMaintenanceTrackName = Nothing,
+              _sSnapshotRetentionStartTime = Nothing,
+              _sManualSnapshotRemainingDays = Nothing,
               _sVPCId = Nothing,
               _sBackupProgressInMegaBytes = Nothing,
               _sEncrypted = Nothing, _sClusterIdentifier = Nothing,
@@ -149,7 +165,7 @@ snapshot
               _sTotalBackupSizeInMegaBytes = Nothing,
               _sDBName = Nothing}
 
--- | The snapshot status. The value of the status depends on the API operation used.      * 'CreateClusterSnapshot' and 'CopyClusterSnapshot' returns status as "creating".      * 'DescribeClusterSnapshots' returns status as "creating", "available", "final snapshot", or "failed".     * 'DeleteClusterSnapshot' returns status as "deleted".
+-- | The snapshot status. The value of the status depends on the API operation used:      * 'CreateClusterSnapshot' and 'CopyClusterSnapshot' returns status as "creating".      * 'DescribeClusterSnapshots' returns status as "creating", "available", "final snapshot", or "failed".     * 'DeleteClusterSnapshot' returns status as "deleted".
 sStatus :: Lens' Snapshot (Maybe Text)
 sStatus = lens _sStatus (\ s a -> s{_sStatus = a})
 
@@ -161,7 +177,11 @@ sRestorableNodeTypes = lens _sRestorableNodeTypes (\ s a -> s{_sRestorableNodeTy
 sAccountsWithRestoreAccess :: Lens' Snapshot [AccountWithRestoreAccess]
 sAccountsWithRestoreAccess = lens _sAccountsWithRestoreAccess (\ s a -> s{_sAccountsWithRestoreAccess = a}) . _Default . _Coerce
 
--- | An option that specifies whether to create the cluster with enhanced VPC routing enabled. To create a cluster that uses enhanced VPC routing, the cluster must be in a VPC. For more information, see <http://docs.aws.amazon.com/redshift/latest/mgmt/enhanced-vpc-routing.html Enhanced VPC Routing> in the Amazon Redshift Cluster Management Guide. If this option is @true@ , enhanced VPC routing is enabled.  Default: false
+-- | The number of days that a manual snapshot is retained. If the value is -1, the manual snapshot is retained indefinitely.  The value must be either -1 or an integer between 1 and 3,653.
+sManualSnapshotRetentionPeriod :: Lens' Snapshot (Maybe Int)
+sManualSnapshotRetentionPeriod = lens _sManualSnapshotRetentionPeriod (\ s a -> s{_sManualSnapshotRetentionPeriod = a})
+
+-- | An option that specifies whether to create the cluster with enhanced VPC routing enabled. To create a cluster that uses enhanced VPC routing, the cluster must be in a VPC. For more information, see <https://docs.aws.amazon.com/redshift/latest/mgmt/enhanced-vpc-routing.html Enhanced VPC Routing> in the Amazon Redshift Cluster Management Guide. If this option is @true@ , enhanced VPC routing is enabled.  Default: false
 sEnhancedVPCRouting :: Lens' Snapshot (Maybe Bool)
 sEnhancedVPCRouting = lens _sEnhancedVPCRouting (\ s a -> s{_sEnhancedVPCRouting = a})
 
@@ -180,6 +200,18 @@ sMasterUsername = lens _sMasterUsername (\ s a -> s{_sMasterUsername = a})
 -- | The source region from which the snapshot was copied.
 sSourceRegion :: Lens' Snapshot (Maybe Text)
 sSourceRegion = lens _sSourceRegion (\ s a -> s{_sSourceRegion = a})
+
+-- | The name of the maintenance track for the snapshot.
+sMaintenanceTrackName :: Lens' Snapshot (Maybe Text)
+sMaintenanceTrackName = lens _sMaintenanceTrackName (\ s a -> s{_sMaintenanceTrackName = a})
+
+-- | A timestamp representing the start of the retention period for the snapshot.
+sSnapshotRetentionStartTime :: Lens' Snapshot (Maybe UTCTime)
+sSnapshotRetentionStartTime = lens _sSnapshotRetentionStartTime (\ s a -> s{_sSnapshotRetentionStartTime = a}) . mapping _Time
+
+-- | The number of days until a manual snapshot will pass its retention period.
+sManualSnapshotRemainingDays :: Lens' Snapshot (Maybe Int)
+sManualSnapshotRemainingDays = lens _sManualSnapshotRemainingDays (\ s a -> s{_sManualSnapshotRemainingDays = a})
 
 -- | The VPC identifier of the cluster if the snapshot is from a cluster in a VPC. Otherwise, this field is not in the output.
 sVPCId :: Lens' Snapshot (Maybe Text)
@@ -201,7 +233,7 @@ sClusterIdentifier = lens _sClusterIdentifier (\ s a -> s{_sClusterIdentifier = 
 sNumberOfNodes :: Lens' Snapshot (Maybe Int)
 sNumberOfNodes = lens _sNumberOfNodes (\ s a -> s{_sNumberOfNodes = a})
 
--- | The snapshot type. Snapshots created using 'CreateClusterSnapshot' and 'CopyClusterSnapshot' will be of type "manual". 
+-- | The snapshot type. Snapshots created using 'CreateClusterSnapshot' and 'CopyClusterSnapshot' are of type "manual". 
 sSnapshotType :: Lens' Snapshot (Maybe Text)
 sSnapshotType = lens _sSnapshotType (\ s a -> s{_sSnapshotType = a})
 
@@ -217,7 +249,7 @@ sAvailabilityZone = lens _sAvailabilityZone (\ s a -> s{_sAvailabilityZone = a})
 sCurrentBackupRateInMegaBytesPerSecond :: Lens' Snapshot (Maybe Double)
 sCurrentBackupRateInMegaBytesPerSecond = lens _sCurrentBackupRateInMegaBytesPerSecond (\ s a -> s{_sCurrentBackupRateInMegaBytesPerSecond = a})
 
--- | The time (UTC) when Amazon Redshift began the snapshot. A snapshot contains a copy of the cluster data as of this exact time.
+-- | The time (in UTC format) when Amazon Redshift began the snapshot. A snapshot contains a copy of the cluster data as of this exact time.
 sSnapshotCreateTime :: Lens' Snapshot (Maybe UTCTime)
 sSnapshotCreateTime = lens _sSnapshotCreateTime (\ s a -> s{_sSnapshotCreateTime = a}) . mapping _Time
 
@@ -274,11 +306,15 @@ instance FromXML Snapshot where
                 <*>
                 (x .@? "AccountsWithRestoreAccess" .!@ mempty >>=
                    may (parseXMLList "AccountWithRestoreAccess"))
+                <*> (x .@? "ManualSnapshotRetentionPeriod")
                 <*> (x .@? "EnhancedVpcRouting")
                 <*> (x .@? "SnapshotIdentifier")
                 <*> (x .@? "EncryptedWithHSM")
                 <*> (x .@? "MasterUsername")
                 <*> (x .@? "SourceRegion")
+                <*> (x .@? "MaintenanceTrackName")
+                <*> (x .@? "SnapshotRetentionStartTime")
+                <*> (x .@? "ManualSnapshotRemainingDays")
                 <*> (x .@? "VpcId")
                 <*> (x .@? "BackupProgressInMegaBytes")
                 <*> (x .@? "Encrypted")

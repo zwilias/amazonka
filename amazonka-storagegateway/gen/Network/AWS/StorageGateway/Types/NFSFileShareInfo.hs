@@ -21,6 +21,7 @@ import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.StorageGateway.Types.NFSFileShareDefaults
 import Network.AWS.StorageGateway.Types.ObjectACL
+import Network.AWS.StorageGateway.Types.Tag
 
 -- | The Unix file permissions and ownership information assigned, by default, to native S3 objects when file gateway discovers them in S3 buckets. This operation is only supported in file gateways.
 --
@@ -49,7 +50,8 @@ data NFSFileShareInfo = NFSFileShareInfo'{_nfsfsiFileShareStatus
                                           !(Maybe (List1 Text)),
                                           _nfsfsiGuessMIMETypeEnabled ::
                                           !(Maybe Bool),
-                                          _nfsfsiReadOnly :: !(Maybe Bool)}
+                                          _nfsfsiReadOnly :: !(Maybe Bool),
+                                          _nfsfsiTags :: !(Maybe [Tag])}
                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'NFSFileShareInfo' with the minimum fields required to make a request.
@@ -66,19 +68,19 @@ data NFSFileShareInfo = NFSFileShareInfo'{_nfsfsiFileShareStatus
 --
 -- * 'nfsfsiObjectACL' - Undocumented member.
 --
--- * 'nfsfsiKMSEncrypted' - True to use Amazon S3 server side encryption with your own KMS key, or false to use a key managed by Amazon S3. Optional. 
+-- * 'nfsfsiKMSEncrypted' - True to use Amazon S3 server-side encryption with your own AWS KMS key, or false to use a key managed by Amazon S3. Optional. 
 --
 -- * 'nfsfsiFileShareId' - Undocumented member.
 --
 -- * 'nfsfsiFileShareARN' - Undocumented member.
 --
--- * 'nfsfsiDefaultStorageClass' - The default storage class for objects put into an Amazon S3 bucket by file gateway. Possible values are S3_STANDARD or S3_STANDARD_IA. If this field is not populated, the default value S3_STANDARD is used. Optional.
+-- * 'nfsfsiDefaultStorageClass' - The default storage class for objects put into an Amazon S3 bucket by the file gateway. Possible values are @S3_STANDARD@ , @S3_STANDARD_IA@ , or @S3_ONEZONE_IA@ . If this field is not populated, the default value @S3_STANDARD@ is used. Optional.
 --
 -- * 'nfsfsiRole' - Undocumented member.
 --
 -- * 'nfsfsiSquash' - Undocumented member.
 --
--- * 'nfsfsiRequesterPays' - Sets who pays the cost of the request and the data download from the Amazon S3 bucket. Set this value to true if you want the requester to pay instead of the bucket owner, and otherwise to false.
+-- * 'nfsfsiRequesterPays' - A value that sets who pays the cost of the request and the cost associated with data download from the S3 bucket. If this value is set to true, the requester pays the costs. Otherwise the S3 bucket owner pays. However, the S3 bucket owner always pays the cost of storing data.
 --
 -- * 'nfsfsiNFSFileShareDefaults' - Undocumented member.
 --
@@ -86,9 +88,11 @@ data NFSFileShareInfo = NFSFileShareInfo'{_nfsfsiFileShareStatus
 --
 -- * 'nfsfsiClientList' - Undocumented member.
 --
--- * 'nfsfsiGuessMIMETypeEnabled' - Enables guessing of the MIME type for uploaded objects based on file extensions. Set this value to true to enable MIME type guessing, and otherwise to false. The default value is true.
+-- * 'nfsfsiGuessMIMETypeEnabled' - A value that enables guessing of the MIME type for uploaded objects based on file extensions. Set this value to true to enable MIME type guessing, and otherwise to false. The default value is true.
 --
--- * 'nfsfsiReadOnly' - Sets the write status of a file share. This value is true if the write status is read-only, and otherwise false.
+-- * 'nfsfsiReadOnly' - A value that sets the write status of a file share. This value is true if the write status is read-only, and otherwise false.
+--
+-- * 'nfsfsiTags' - A list of up to 50 tags assigned to the NFS file share, sorted alphabetically by key name. Each tag is a key-value pair. For a gateway with more than 10 tags assigned, you can view all tags using the @ListTagsForResource@ API operation.
 nFSFileShareInfo
     :: NFSFileShareInfo
 nFSFileShareInfo
@@ -105,7 +109,7 @@ nFSFileShareInfo
                       _nfsfsiLocationARN = Nothing,
                       _nfsfsiClientList = Nothing,
                       _nfsfsiGuessMIMETypeEnabled = Nothing,
-                      _nfsfsiReadOnly = Nothing}
+                      _nfsfsiReadOnly = Nothing, _nfsfsiTags = Nothing}
 
 -- | Undocumented member.
 nfsfsiFileShareStatus :: Lens' NFSFileShareInfo (Maybe Text)
@@ -127,7 +131,7 @@ nfsfsiPath = lens _nfsfsiPath (\ s a -> s{_nfsfsiPath = a})
 nfsfsiObjectACL :: Lens' NFSFileShareInfo (Maybe ObjectACL)
 nfsfsiObjectACL = lens _nfsfsiObjectACL (\ s a -> s{_nfsfsiObjectACL = a})
 
--- | True to use Amazon S3 server side encryption with your own KMS key, or false to use a key managed by Amazon S3. Optional. 
+-- | True to use Amazon S3 server-side encryption with your own AWS KMS key, or false to use a key managed by Amazon S3. Optional. 
 nfsfsiKMSEncrypted :: Lens' NFSFileShareInfo (Maybe Bool)
 nfsfsiKMSEncrypted = lens _nfsfsiKMSEncrypted (\ s a -> s{_nfsfsiKMSEncrypted = a})
 
@@ -139,7 +143,7 @@ nfsfsiFileShareId = lens _nfsfsiFileShareId (\ s a -> s{_nfsfsiFileShareId = a})
 nfsfsiFileShareARN :: Lens' NFSFileShareInfo (Maybe Text)
 nfsfsiFileShareARN = lens _nfsfsiFileShareARN (\ s a -> s{_nfsfsiFileShareARN = a})
 
--- | The default storage class for objects put into an Amazon S3 bucket by file gateway. Possible values are S3_STANDARD or S3_STANDARD_IA. If this field is not populated, the default value S3_STANDARD is used. Optional.
+-- | The default storage class for objects put into an Amazon S3 bucket by the file gateway. Possible values are @S3_STANDARD@ , @S3_STANDARD_IA@ , or @S3_ONEZONE_IA@ . If this field is not populated, the default value @S3_STANDARD@ is used. Optional.
 nfsfsiDefaultStorageClass :: Lens' NFSFileShareInfo (Maybe Text)
 nfsfsiDefaultStorageClass = lens _nfsfsiDefaultStorageClass (\ s a -> s{_nfsfsiDefaultStorageClass = a})
 
@@ -151,7 +155,7 @@ nfsfsiRole = lens _nfsfsiRole (\ s a -> s{_nfsfsiRole = a})
 nfsfsiSquash :: Lens' NFSFileShareInfo (Maybe Text)
 nfsfsiSquash = lens _nfsfsiSquash (\ s a -> s{_nfsfsiSquash = a})
 
--- | Sets who pays the cost of the request and the data download from the Amazon S3 bucket. Set this value to true if you want the requester to pay instead of the bucket owner, and otherwise to false.
+-- | A value that sets who pays the cost of the request and the cost associated with data download from the S3 bucket. If this value is set to true, the requester pays the costs. Otherwise the S3 bucket owner pays. However, the S3 bucket owner always pays the cost of storing data.
 nfsfsiRequesterPays :: Lens' NFSFileShareInfo (Maybe Bool)
 nfsfsiRequesterPays = lens _nfsfsiRequesterPays (\ s a -> s{_nfsfsiRequesterPays = a})
 
@@ -167,13 +171,17 @@ nfsfsiLocationARN = lens _nfsfsiLocationARN (\ s a -> s{_nfsfsiLocationARN = a})
 nfsfsiClientList :: Lens' NFSFileShareInfo (Maybe (NonEmpty Text))
 nfsfsiClientList = lens _nfsfsiClientList (\ s a -> s{_nfsfsiClientList = a}) . mapping _List1
 
--- | Enables guessing of the MIME type for uploaded objects based on file extensions. Set this value to true to enable MIME type guessing, and otherwise to false. The default value is true.
+-- | A value that enables guessing of the MIME type for uploaded objects based on file extensions. Set this value to true to enable MIME type guessing, and otherwise to false. The default value is true.
 nfsfsiGuessMIMETypeEnabled :: Lens' NFSFileShareInfo (Maybe Bool)
 nfsfsiGuessMIMETypeEnabled = lens _nfsfsiGuessMIMETypeEnabled (\ s a -> s{_nfsfsiGuessMIMETypeEnabled = a})
 
--- | Sets the write status of a file share. This value is true if the write status is read-only, and otherwise false.
+-- | A value that sets the write status of a file share. This value is true if the write status is read-only, and otherwise false.
 nfsfsiReadOnly :: Lens' NFSFileShareInfo (Maybe Bool)
 nfsfsiReadOnly = lens _nfsfsiReadOnly (\ s a -> s{_nfsfsiReadOnly = a})
+
+-- | A list of up to 50 tags assigned to the NFS file share, sorted alphabetically by key name. Each tag is a key-value pair. For a gateway with more than 10 tags assigned, you can view all tags using the @ListTagsForResource@ API operation.
+nfsfsiTags :: Lens' NFSFileShareInfo [Tag]
+nfsfsiTags = lens _nfsfsiTags (\ s a -> s{_nfsfsiTags = a}) . _Default . _Coerce
 
 instance FromJSON NFSFileShareInfo where
         parseJSON
@@ -195,7 +203,8 @@ instance FromJSON NFSFileShareInfo where
                      <*> (x .:? "LocationARN")
                      <*> (x .:? "ClientList")
                      <*> (x .:? "GuessMIMETypeEnabled")
-                     <*> (x .:? "ReadOnly"))
+                     <*> (x .:? "ReadOnly")
+                     <*> (x .:? "Tags" .!= mempty))
 
 instance Hashable NFSFileShareInfo where
 

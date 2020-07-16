@@ -21,6 +21,8 @@
 -- Describes the state machine associated with a specific execution.
 --
 --
+-- This API action is not supported by @EXPRESS@ state machines.
+--
 module Network.AWS.StepFunctions.DescribeStateMachineForExecution
     (
     -- * Creating a Request
@@ -33,6 +35,7 @@ module Network.AWS.StepFunctions.DescribeStateMachineForExecution
     , describeStateMachineForExecutionResponse
     , DescribeStateMachineForExecutionResponse
     -- * Response Lenses
+    , dsmfersLoggingConfiguration
     , dsmfersResponseStatus
     , dsmfersStateMachineARN
     , dsmfersName
@@ -80,8 +83,10 @@ instance AWSRequest DescribeStateMachineForExecution
           = receiveJSON
               (\ s h x ->
                  DescribeStateMachineForExecutionResponse' <$>
-                   (pure (fromEnum s)) <*> (x .:> "stateMachineArn") <*>
-                     (x .:> "name")
+                   (x .?> "loggingConfiguration") <*>
+                     (pure (fromEnum s))
+                     <*> (x .:> "stateMachineArn")
+                     <*> (x .:> "name")
                      <*> (x .:> "definition")
                      <*> (x .:> "roleArn")
                      <*> (x .:> "updateDate"))
@@ -119,7 +124,11 @@ instance ToQuery DescribeStateMachineForExecution
         toQuery = const mempty
 
 -- | /See:/ 'describeStateMachineForExecutionResponse' smart constructor.
-data DescribeStateMachineForExecutionResponse = DescribeStateMachineForExecutionResponse'{_dsmfersResponseStatus
+data DescribeStateMachineForExecutionResponse = DescribeStateMachineForExecutionResponse'{_dsmfersLoggingConfiguration
+                                                                                          ::
+                                                                                          !(Maybe
+                                                                                              LoggingConfiguration),
+                                                                                          _dsmfersResponseStatus
                                                                                           ::
                                                                                           !Int,
                                                                                           _dsmfersStateMachineARN
@@ -130,20 +139,22 @@ data DescribeStateMachineForExecutionResponse = DescribeStateMachineForExecution
                                                                                           !Text,
                                                                                           _dsmfersDefinition
                                                                                           ::
-                                                                                          !Text,
+                                                                                          !(Sensitive
+                                                                                              Text),
                                                                                           _dsmfersRoleARN
                                                                                           ::
                                                                                           !Text,
                                                                                           _dsmfersUpdateDate
                                                                                           ::
                                                                                           !POSIX}
-                                                  deriving (Eq, Read, Show,
-                                                            Data, Typeable,
-                                                            Generic)
+                                                  deriving (Eq, Show, Data,
+                                                            Typeable, Generic)
 
 -- | Creates a value of 'DescribeStateMachineForExecutionResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'dsmfersLoggingConfiguration' - Undocumented member.
 --
 -- * 'dsmfersResponseStatus' - -- | The response status code.
 --
@@ -151,7 +162,7 @@ data DescribeStateMachineForExecutionResponse = DescribeStateMachineForExecution
 --
 -- * 'dsmfersName' - The name of the state machine associated with the execution.
 --
--- * 'dsmfersDefinition' - The Amazon States Language definition of the state machine.
+-- * 'dsmfersDefinition' - The Amazon States Language definition of the state machine. See <https://docs.aws.amazon.com/step-functions/latest/dg/concepts-amazon-states-language.html Amazon States Language> .
 --
 -- * 'dsmfersRoleARN' - The Amazon Resource Name (ARN) of the IAM role of the State Machine for the execution. 
 --
@@ -167,15 +178,22 @@ describeStateMachineForExecutionResponse
 describeStateMachineForExecutionResponse
   pResponseStatus_ pStateMachineARN_ pName_
   pDefinition_ pRoleARN_ pUpdateDate_
-  = DescribeStateMachineForExecutionResponse'{_dsmfersResponseStatus
-                                                = pResponseStatus_,
+  = DescribeStateMachineForExecutionResponse'{_dsmfersLoggingConfiguration
+                                                = Nothing,
+                                              _dsmfersResponseStatus =
+                                                pResponseStatus_,
                                               _dsmfersStateMachineARN =
                                                 pStateMachineARN_,
                                               _dsmfersName = pName_,
-                                              _dsmfersDefinition = pDefinition_,
+                                              _dsmfersDefinition =
+                                                _Sensitive # pDefinition_,
                                               _dsmfersRoleARN = pRoleARN_,
                                               _dsmfersUpdateDate =
                                                 _Time # pUpdateDate_}
+
+-- | Undocumented member.
+dsmfersLoggingConfiguration :: Lens' DescribeStateMachineForExecutionResponse (Maybe LoggingConfiguration)
+dsmfersLoggingConfiguration = lens _dsmfersLoggingConfiguration (\ s a -> s{_dsmfersLoggingConfiguration = a})
 
 -- | -- | The response status code.
 dsmfersResponseStatus :: Lens' DescribeStateMachineForExecutionResponse Int
@@ -189,9 +207,9 @@ dsmfersStateMachineARN = lens _dsmfersStateMachineARN (\ s a -> s{_dsmfersStateM
 dsmfersName :: Lens' DescribeStateMachineForExecutionResponse Text
 dsmfersName = lens _dsmfersName (\ s a -> s{_dsmfersName = a})
 
--- | The Amazon States Language definition of the state machine.
+-- | The Amazon States Language definition of the state machine. See <https://docs.aws.amazon.com/step-functions/latest/dg/concepts-amazon-states-language.html Amazon States Language> .
 dsmfersDefinition :: Lens' DescribeStateMachineForExecutionResponse Text
-dsmfersDefinition = lens _dsmfersDefinition (\ s a -> s{_dsmfersDefinition = a})
+dsmfersDefinition = lens _dsmfersDefinition (\ s a -> s{_dsmfersDefinition = a}) . _Sensitive
 
 -- | The Amazon Resource Name (ARN) of the IAM role of the State Machine for the execution. 
 dsmfersRoleARN :: Lens' DescribeStateMachineForExecutionResponse Text

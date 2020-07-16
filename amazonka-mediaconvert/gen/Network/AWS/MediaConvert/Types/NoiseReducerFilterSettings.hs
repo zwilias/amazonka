@@ -24,7 +24,7 @@ import Network.AWS.Prelude
 --
 -- /See:/ 'noiseReducerFilterSettings' smart constructor.
 newtype NoiseReducerFilterSettings = NoiseReducerFilterSettings'{_nrfsStrength
-                                                                 :: Maybe Int}
+                                                                 :: Maybe Nat}
                                        deriving (Eq, Read, Show, Data, Typeable,
                                                  Generic)
 
@@ -40,8 +40,8 @@ noiseReducerFilterSettings
                                   Nothing}
 
 -- | Relative strength of noise reducing filter. Higher values produce stronger filtering.
-nrfsStrength :: Lens' NoiseReducerFilterSettings (Maybe Int)
-nrfsStrength = lens _nrfsStrength (\ s a -> s{_nrfsStrength = a})
+nrfsStrength :: Lens' NoiseReducerFilterSettings (Maybe Natural)
+nrfsStrength = lens _nrfsStrength (\ s a -> s{_nrfsStrength = a}) . mapping _Nat
 
 instance FromJSON NoiseReducerFilterSettings where
         parseJSON

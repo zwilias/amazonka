@@ -31,7 +31,7 @@ module Network.AWS.Greengrass.DeleteCoreDefinition
     , deleteCoreDefinitionResponse
     , DeleteCoreDefinitionResponse
     -- * Response Lenses
-    , dcdrsResponseStatus
+    , drsResponseStatus
     ) where
 
 import Network.AWS.Greengrass.Types
@@ -94,7 +94,7 @@ instance ToQuery DeleteCoreDefinition where
         toQuery = const mempty
 
 -- | /See:/ 'deleteCoreDefinitionResponse' smart constructor.
-newtype DeleteCoreDefinitionResponse = DeleteCoreDefinitionResponse'{_dcdrsResponseStatus
+newtype DeleteCoreDefinitionResponse = DeleteCoreDefinitionResponse'{_drsResponseStatus
                                                                      :: Int}
                                          deriving (Eq, Read, Show, Data,
                                                    Typeable, Generic)
@@ -103,16 +103,16 @@ newtype DeleteCoreDefinitionResponse = DeleteCoreDefinitionResponse'{_dcdrsRespo
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dcdrsResponseStatus' - -- | The response status code.
+-- * 'drsResponseStatus' - -- | The response status code.
 deleteCoreDefinitionResponse
-    :: Int -- ^ 'dcdrsResponseStatus'
+    :: Int -- ^ 'drsResponseStatus'
     -> DeleteCoreDefinitionResponse
 deleteCoreDefinitionResponse pResponseStatus_
-  = DeleteCoreDefinitionResponse'{_dcdrsResponseStatus
-                                    = pResponseStatus_}
+  = DeleteCoreDefinitionResponse'{_drsResponseStatus =
+                                    pResponseStatus_}
 
 -- | -- | The response status code.
-dcdrsResponseStatus :: Lens' DeleteCoreDefinitionResponse Int
-dcdrsResponseStatus = lens _dcdrsResponseStatus (\ s a -> s{_dcdrsResponseStatus = a})
+drsResponseStatus :: Lens' DeleteCoreDefinitionResponse Int
+drsResponseStatus = lens _drsResponseStatus (\ s a -> s{_drsResponseStatus = a})
 
 instance NFData DeleteCoreDefinitionResponse where

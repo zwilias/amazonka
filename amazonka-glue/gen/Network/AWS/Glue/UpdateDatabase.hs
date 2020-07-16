@@ -56,7 +56,7 @@ data UpdateDatabase = UpdateDatabase'{_udCatalogId ::
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'udCatalogId' - The ID of the Data Catalog in which the metadata database resides. If none is supplied, the AWS account ID is used by default.
+-- * 'udCatalogId' - The ID of the Data Catalog in which the metadata database resides. If none is provided, the AWS account ID is used by default.
 --
 -- * 'udName' - The name of the database to update in the catalog. For Hive compatibility, this is folded to lowercase.
 --
@@ -69,7 +69,7 @@ updateDatabase pName_ pDatabaseInput_
   = UpdateDatabase'{_udCatalogId = Nothing,
                     _udName = pName_, _udDatabaseInput = pDatabaseInput_}
 
--- | The ID of the Data Catalog in which the metadata database resides. If none is supplied, the AWS account ID is used by default.
+-- | The ID of the Data Catalog in which the metadata database resides. If none is provided, the AWS account ID is used by default.
 udCatalogId :: Lens' UpdateDatabase (Maybe Text)
 udCatalogId = lens _udCatalogId (\ s a -> s{_udCatalogId = a})
 

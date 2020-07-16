@@ -21,7 +21,7 @@ import Network.AWS.Lens
 import Network.AWS.MediaLive.Types.Mp2CodingMode
 import Network.AWS.Prelude
 
--- | Placeholder documentation for Mp2Settings
+-- | Mp2 Settings
 --
 -- /See:/ 'mp2Settings' smart constructor.
 data Mp2Settings = Mp2Settings'{_mCodingMode ::

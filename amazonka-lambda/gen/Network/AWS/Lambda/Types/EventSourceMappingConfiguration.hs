@@ -17,10 +17,11 @@
 --
 module Network.AWS.Lambda.Types.EventSourceMappingConfiguration where
 
+import Network.AWS.Lambda.Types.DestinationConfig
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | Describes mapping between an Amazon Kinesis stream and a Lambda function.
+-- | A mapping between an AWS resource and an AWS Lambda function. See 'CreateEventSourceMapping' for details.
 --
 --
 --
@@ -37,14 +38,26 @@ data EventSourceMappingConfiguration = EventSourceMappingConfiguration'{_esmcEve
                                                                         ::
                                                                         !(Maybe
                                                                             Text),
+                                                                        _esmcBisectBatchOnFunctionError
+                                                                        ::
+                                                                        !(Maybe
+                                                                            Bool),
                                                                         _esmcUUId
                                                                         ::
                                                                         !(Maybe
                                                                             Text),
+                                                                        _esmcParallelizationFactor
+                                                                        ::
+                                                                        !(Maybe
+                                                                            Nat),
                                                                         _esmcLastProcessingResult
                                                                         ::
                                                                         !(Maybe
                                                                             Text),
+                                                                        _esmcMaximumRetryAttempts
+                                                                        ::
+                                                                        !(Maybe
+                                                                            Nat),
                                                                         _esmcBatchSize
                                                                         ::
                                                                         !(Maybe
@@ -53,10 +66,22 @@ data EventSourceMappingConfiguration = EventSourceMappingConfiguration'{_esmcEve
                                                                         ::
                                                                         !(Maybe
                                                                             Text),
+                                                                        _esmcMaximumBatchingWindowInSeconds
+                                                                        ::
+                                                                        !(Maybe
+                                                                            Nat),
+                                                                        _esmcMaximumRecordAgeInSeconds
+                                                                        ::
+                                                                        !(Maybe
+                                                                            Nat),
                                                                         _esmcLastModified
                                                                         ::
                                                                         !(Maybe
-                                                                            POSIX)}
+                                                                            POSIX),
+                                                                        _esmcDestinationConfig
+                                                                        ::
+                                                                        !(Maybe
+                                                                            DestinationConfig)}
                                          deriving (Eq, Read, Show, Data,
                                                    Typeable, Generic)
 
@@ -64,21 +89,33 @@ data EventSourceMappingConfiguration = EventSourceMappingConfiguration'{_esmcEve
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'esmcEventSourceARN' - The Amazon Resource Name (ARN) of the Amazon Kinesis stream that is the source of events.
+-- * 'esmcEventSourceARN' - The Amazon Resource Name (ARN) of the event source.
 --
--- * 'esmcState' - The state of the event source mapping. It can be @Creating@ , @Enabled@ , @Disabled@ , @Enabling@ , @Disabling@ , @Updating@ , or @Deleting@ .
+-- * 'esmcState' - The state of the event source mapping. It can be one of the following: @Creating@ , @Enabling@ , @Enabled@ , @Disabling@ , @Disabled@ , @Updating@ , or @Deleting@ .
 --
--- * 'esmcFunctionARN' - The Lambda function to invoke when AWS Lambda detects an event on the stream.
+-- * 'esmcFunctionARN' - The ARN of the Lambda function.
 --
--- * 'esmcUUId' - The AWS Lambda assigned opaque identifier for the mapping.
+-- * 'esmcBisectBatchOnFunctionError' - (Streams) If the function returns an error, split the batch in two and retry.
+--
+-- * 'esmcUUId' - The identifier of the event source mapping.
+--
+-- * 'esmcParallelizationFactor' - (Streams) The number of batches to process from each shard concurrently.
 --
 -- * 'esmcLastProcessingResult' - The result of the last AWS Lambda invocation of your Lambda function.
 --
--- * 'esmcBatchSize' - The largest number of records that AWS Lambda will retrieve from your event source at the time of invoking your function. Your function receives an event with all the retrieved records.
+-- * 'esmcMaximumRetryAttempts' - (Streams) The maximum number of times to retry when the function returns an error.
 --
--- * 'esmcStateTransitionReason' - The reason the event source mapping is in its current state. It is either user-requested or an AWS Lambda-initiated state transition.
+-- * 'esmcBatchSize' - The maximum number of items to retrieve in a single batch.
 --
--- * 'esmcLastModified' - The UTC time string indicating the last time the event mapping was updated.
+-- * 'esmcStateTransitionReason' - Indicates whether the last change to the event source mapping was made by a user, or by the Lambda service.
+--
+-- * 'esmcMaximumBatchingWindowInSeconds' - (Streams) The maximum amount of time to gather records before invoking the function, in seconds.
+--
+-- * 'esmcMaximumRecordAgeInSeconds' - (Streams) The maximum age of a record that Lambda sends to a function for processing.
+--
+-- * 'esmcLastModified' - The date that the event source mapping was last updated, or its state changed.
+--
+-- * 'esmcDestinationConfig' - (Streams) An Amazon SQS queue or Amazon SNS topic destination for discarded records.
 eventSourceMappingConfiguration
     :: EventSourceMappingConfiguration
 eventSourceMappingConfiguration
@@ -86,43 +123,74 @@ eventSourceMappingConfiguration
                                        = Nothing,
                                      _esmcState = Nothing,
                                      _esmcFunctionARN = Nothing,
+                                     _esmcBisectBatchOnFunctionError = Nothing,
                                      _esmcUUId = Nothing,
+                                     _esmcParallelizationFactor = Nothing,
                                      _esmcLastProcessingResult = Nothing,
+                                     _esmcMaximumRetryAttempts = Nothing,
                                      _esmcBatchSize = Nothing,
                                      _esmcStateTransitionReason = Nothing,
-                                     _esmcLastModified = Nothing}
+                                     _esmcMaximumBatchingWindowInSeconds =
+                                       Nothing,
+                                     _esmcMaximumRecordAgeInSeconds = Nothing,
+                                     _esmcLastModified = Nothing,
+                                     _esmcDestinationConfig = Nothing}
 
--- | The Amazon Resource Name (ARN) of the Amazon Kinesis stream that is the source of events.
+-- | The Amazon Resource Name (ARN) of the event source.
 esmcEventSourceARN :: Lens' EventSourceMappingConfiguration (Maybe Text)
 esmcEventSourceARN = lens _esmcEventSourceARN (\ s a -> s{_esmcEventSourceARN = a})
 
--- | The state of the event source mapping. It can be @Creating@ , @Enabled@ , @Disabled@ , @Enabling@ , @Disabling@ , @Updating@ , or @Deleting@ .
+-- | The state of the event source mapping. It can be one of the following: @Creating@ , @Enabling@ , @Enabled@ , @Disabling@ , @Disabled@ , @Updating@ , or @Deleting@ .
 esmcState :: Lens' EventSourceMappingConfiguration (Maybe Text)
 esmcState = lens _esmcState (\ s a -> s{_esmcState = a})
 
--- | The Lambda function to invoke when AWS Lambda detects an event on the stream.
+-- | The ARN of the Lambda function.
 esmcFunctionARN :: Lens' EventSourceMappingConfiguration (Maybe Text)
 esmcFunctionARN = lens _esmcFunctionARN (\ s a -> s{_esmcFunctionARN = a})
 
--- | The AWS Lambda assigned opaque identifier for the mapping.
+-- | (Streams) If the function returns an error, split the batch in two and retry.
+esmcBisectBatchOnFunctionError :: Lens' EventSourceMappingConfiguration (Maybe Bool)
+esmcBisectBatchOnFunctionError = lens _esmcBisectBatchOnFunctionError (\ s a -> s{_esmcBisectBatchOnFunctionError = a})
+
+-- | The identifier of the event source mapping.
 esmcUUId :: Lens' EventSourceMappingConfiguration (Maybe Text)
 esmcUUId = lens _esmcUUId (\ s a -> s{_esmcUUId = a})
+
+-- | (Streams) The number of batches to process from each shard concurrently.
+esmcParallelizationFactor :: Lens' EventSourceMappingConfiguration (Maybe Natural)
+esmcParallelizationFactor = lens _esmcParallelizationFactor (\ s a -> s{_esmcParallelizationFactor = a}) . mapping _Nat
 
 -- | The result of the last AWS Lambda invocation of your Lambda function.
 esmcLastProcessingResult :: Lens' EventSourceMappingConfiguration (Maybe Text)
 esmcLastProcessingResult = lens _esmcLastProcessingResult (\ s a -> s{_esmcLastProcessingResult = a})
 
--- | The largest number of records that AWS Lambda will retrieve from your event source at the time of invoking your function. Your function receives an event with all the retrieved records.
+-- | (Streams) The maximum number of times to retry when the function returns an error.
+esmcMaximumRetryAttempts :: Lens' EventSourceMappingConfiguration (Maybe Natural)
+esmcMaximumRetryAttempts = lens _esmcMaximumRetryAttempts (\ s a -> s{_esmcMaximumRetryAttempts = a}) . mapping _Nat
+
+-- | The maximum number of items to retrieve in a single batch.
 esmcBatchSize :: Lens' EventSourceMappingConfiguration (Maybe Natural)
 esmcBatchSize = lens _esmcBatchSize (\ s a -> s{_esmcBatchSize = a}) . mapping _Nat
 
--- | The reason the event source mapping is in its current state. It is either user-requested or an AWS Lambda-initiated state transition.
+-- | Indicates whether the last change to the event source mapping was made by a user, or by the Lambda service.
 esmcStateTransitionReason :: Lens' EventSourceMappingConfiguration (Maybe Text)
 esmcStateTransitionReason = lens _esmcStateTransitionReason (\ s a -> s{_esmcStateTransitionReason = a})
 
--- | The UTC time string indicating the last time the event mapping was updated.
+-- | (Streams) The maximum amount of time to gather records before invoking the function, in seconds.
+esmcMaximumBatchingWindowInSeconds :: Lens' EventSourceMappingConfiguration (Maybe Natural)
+esmcMaximumBatchingWindowInSeconds = lens _esmcMaximumBatchingWindowInSeconds (\ s a -> s{_esmcMaximumBatchingWindowInSeconds = a}) . mapping _Nat
+
+-- | (Streams) The maximum age of a record that Lambda sends to a function for processing.
+esmcMaximumRecordAgeInSeconds :: Lens' EventSourceMappingConfiguration (Maybe Natural)
+esmcMaximumRecordAgeInSeconds = lens _esmcMaximumRecordAgeInSeconds (\ s a -> s{_esmcMaximumRecordAgeInSeconds = a}) . mapping _Nat
+
+-- | The date that the event source mapping was last updated, or its state changed.
 esmcLastModified :: Lens' EventSourceMappingConfiguration (Maybe UTCTime)
 esmcLastModified = lens _esmcLastModified (\ s a -> s{_esmcLastModified = a}) . mapping _Time
+
+-- | (Streams) An Amazon SQS queue or Amazon SNS topic destination for discarded records.
+esmcDestinationConfig :: Lens' EventSourceMappingConfiguration (Maybe DestinationConfig)
+esmcDestinationConfig = lens _esmcDestinationConfig (\ s a -> s{_esmcDestinationConfig = a})
 
 instance FromJSON EventSourceMappingConfiguration
          where
@@ -132,11 +200,17 @@ instance FromJSON EventSourceMappingConfiguration
                  EventSourceMappingConfiguration' <$>
                    (x .:? "EventSourceArn") <*> (x .:? "State") <*>
                      (x .:? "FunctionArn")
+                     <*> (x .:? "BisectBatchOnFunctionError")
                      <*> (x .:? "UUID")
+                     <*> (x .:? "ParallelizationFactor")
                      <*> (x .:? "LastProcessingResult")
+                     <*> (x .:? "MaximumRetryAttempts")
                      <*> (x .:? "BatchSize")
                      <*> (x .:? "StateTransitionReason")
-                     <*> (x .:? "LastModified"))
+                     <*> (x .:? "MaximumBatchingWindowInSeconds")
+                     <*> (x .:? "MaximumRecordAgeInSeconds")
+                     <*> (x .:? "LastModified")
+                     <*> (x .:? "DestinationConfig"))
 
 instance Hashable EventSourceMappingConfiguration
          where

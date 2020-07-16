@@ -22,7 +22,9 @@ import Network.AWS.Prelude
 import Network.AWS.S3.Internal
 import Network.AWS.S3.Types.SseKMSEncryptedObjects
 
--- | Container for filters that define which source objects should be replicated.
+-- | A container that describes additional filters for identifying the source objects that you want to replicate. You can choose to enable or disable the replication of these objects. Currently, Amazon S3 supports only the filter that you can specify for objects created with server-side encryption using a customer master key (CMK) stored in AWS Key Management Service (SSE-KMS).
+--
+--
 --
 -- /See:/ 'sourceSelectionCriteria' smart constructor.
 newtype SourceSelectionCriteria = SourceSelectionCriteria'{_sscSseKMSEncryptedObjects
@@ -36,14 +38,14 @@ newtype SourceSelectionCriteria = SourceSelectionCriteria'{_sscSseKMSEncryptedOb
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'sscSseKMSEncryptedObjects' - Container for filter information of selection of KMS Encrypted S3 objects.
+-- * 'sscSseKMSEncryptedObjects' - A container for filter information for the selection of Amazon S3 objects encrypted with AWS KMS. If you include @SourceSelectionCriteria@ in the replication configuration, this element is required. 
 sourceSelectionCriteria
     :: SourceSelectionCriteria
 sourceSelectionCriteria
   = SourceSelectionCriteria'{_sscSseKMSEncryptedObjects
                                = Nothing}
 
--- | Container for filter information of selection of KMS Encrypted S3 objects.
+-- | A container for filter information for the selection of Amazon S3 objects encrypted with AWS KMS. If you include @SourceSelectionCriteria@ in the replication configuration, this element is required. 
 sscSseKMSEncryptedObjects :: Lens' SourceSelectionCriteria (Maybe SseKMSEncryptedObjects)
 sscSseKMSEncryptedObjects = lens _sscSseKMSEncryptedObjects (\ s a -> s{_sscSseKMSEncryptedObjects = a})
 

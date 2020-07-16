@@ -20,7 +20,7 @@ module Network.AWS.WorkSpaces.Types.FailedWorkspaceChangeRequest where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | Information about a WorkSpace that could not be rebooted ('RebootWorkspaces' ), rebuilt ('RebuildWorkspaces' ), terminated ('TerminateWorkspaces' ), started ('StartWorkspaces' ), or stopped ('StopWorkspaces' ).
+-- | Describes a WorkSpace that could not be rebooted. ('RebootWorkspaces' ), rebuilt ('RebuildWorkspaces' ), restored ('RestoreWorkspace' ), terminated ('TerminateWorkspaces' ), started ('StartWorkspaces' ), or stopped ('StopWorkspaces' ).
 --
 --
 --
@@ -41,11 +41,11 @@ data FailedWorkspaceChangeRequest = FailedWorkspaceChangeRequest'{_fwcrErrorCode
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'fwcrErrorCode' - The error code.
+-- * 'fwcrErrorCode' - The error code that is returned if the WorkSpace cannot be rebooted.
 --
 -- * 'fwcrWorkspaceId' - The identifier of the WorkSpace.
 --
--- * 'fwcrErrorMessage' - The textual error message.
+-- * 'fwcrErrorMessage' - The text of the error message that is returned if the WorkSpace cannot be rebooted.
 failedWorkspaceChangeRequest
     :: FailedWorkspaceChangeRequest
 failedWorkspaceChangeRequest
@@ -54,7 +54,7 @@ failedWorkspaceChangeRequest
                                   _fwcrWorkspaceId = Nothing,
                                   _fwcrErrorMessage = Nothing}
 
--- | The error code.
+-- | The error code that is returned if the WorkSpace cannot be rebooted.
 fwcrErrorCode :: Lens' FailedWorkspaceChangeRequest (Maybe Text)
 fwcrErrorCode = lens _fwcrErrorCode (\ s a -> s{_fwcrErrorCode = a})
 
@@ -62,7 +62,7 @@ fwcrErrorCode = lens _fwcrErrorCode (\ s a -> s{_fwcrErrorCode = a})
 fwcrWorkspaceId :: Lens' FailedWorkspaceChangeRequest (Maybe Text)
 fwcrWorkspaceId = lens _fwcrWorkspaceId (\ s a -> s{_fwcrWorkspaceId = a})
 
--- | The textual error message.
+-- | The text of the error message that is returned if the WorkSpace cannot be rebooted.
 fwcrErrorMessage :: Lens' FailedWorkspaceChangeRequest (Maybe Text)
 fwcrErrorMessage = lens _fwcrErrorMessage (\ s a -> s{_fwcrErrorMessage = a})
 

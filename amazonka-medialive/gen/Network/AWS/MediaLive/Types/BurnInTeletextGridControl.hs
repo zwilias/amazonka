@@ -27,7 +27,7 @@ module Network.AWS.MediaLive.Types.BurnInTeletextGridControl (
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | Placeholder documentation for BurnInTeletextGridControl
+-- | Burn In Teletext Grid Control
 data BurnInTeletextGridControl = BurnInTeletextGridControl' (CI
                                                                Text)
                                    deriving (Eq, Ord, Read, Show, Data,

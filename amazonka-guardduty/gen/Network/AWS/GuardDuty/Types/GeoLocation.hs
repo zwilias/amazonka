@@ -20,7 +20,9 @@ module Network.AWS.GuardDuty.Types.GeoLocation where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | Location information of the remote IP address.
+-- | Contains information about the location of the remote IP address.
+--
+--
 --
 -- /See:/ 'geoLocation' smart constructor.
 data GeoLocation = GeoLocation'{_glLat ::
@@ -32,19 +34,19 @@ data GeoLocation = GeoLocation'{_glLat ::
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'glLat' - Latitude information of remote IP address.
+-- * 'glLat' - The latitude information of the remote IP address.
 --
--- * 'glLon' - Longitude information of remote IP address.
+-- * 'glLon' - The longitude information of the remote IP address.
 geoLocation
     :: GeoLocation
 geoLocation
   = GeoLocation'{_glLat = Nothing, _glLon = Nothing}
 
--- | Latitude information of remote IP address.
+-- | The latitude information of the remote IP address.
 glLat :: Lens' GeoLocation (Maybe Double)
 glLat = lens _glLat (\ s a -> s{_glLat = a})
 
--- | Longitude information of remote IP address.
+-- | The longitude information of the remote IP address.
 glLon :: Lens' GeoLocation (Maybe Double)
 glLon = lens _glLon (\ s a -> s{_glLon = a})
 

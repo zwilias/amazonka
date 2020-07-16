@@ -44,7 +44,7 @@ data RuleGroup = RuleGroup'{_rgMetricName ::
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'rgMetricName' - A friendly name or description for the metrics for this @RuleGroup@ . The name can contain only alphanumeric characters (A-Z, a-z, 0-9); the name can't contain whitespace. You can't change the name of the metric after you create the @RuleGroup@ .
+-- * 'rgMetricName' - A friendly name or description for the metrics for this @RuleGroup@ . The name can contain only alphanumeric characters (A-Z, a-z, 0-9), with maximum length 128 and minimum length one. It can't contain whitespace or metric names reserved for AWS WAF, including "All" and "Default_Action." You can't change the name of the metric after you create the @RuleGroup@ .
 --
 -- * 'rgName' - The friendly name or description for the @RuleGroup@ . You can't change the name of a @RuleGroup@ after you create it.
 --
@@ -56,7 +56,7 @@ ruleGroup pRuleGroupId_
   = RuleGroup'{_rgMetricName = Nothing,
                _rgName = Nothing, _rgRuleGroupId = pRuleGroupId_}
 
--- | A friendly name or description for the metrics for this @RuleGroup@ . The name can contain only alphanumeric characters (A-Z, a-z, 0-9); the name can't contain whitespace. You can't change the name of the metric after you create the @RuleGroup@ .
+-- | A friendly name or description for the metrics for this @RuleGroup@ . The name can contain only alphanumeric characters (A-Z, a-z, 0-9), with maximum length 128 and minimum length one. It can't contain whitespace or metric names reserved for AWS WAF, including "All" and "Default_Action." You can't change the name of the metric after you create the @RuleGroup@ .
 rgMetricName :: Lens' RuleGroup (Maybe Text)
 rgMetricName = lens _rgMetricName (\ s a -> s{_rgMetricName = a})
 

@@ -21,7 +21,7 @@ import Network.AWS.Firehose.Types.Deserializer
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | Specifies the deserializer you want to use to convert the format of the input data.
+-- | Specifies the deserializer you want to use to convert the format of the input data. This parameter is required if @Enabled@ is set to true.
 --
 --
 --

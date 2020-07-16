@@ -27,7 +27,10 @@ module Network.AWS.ServiceCatalog.ListPortfolioAccess
       listPortfolioAccess
     , ListPortfolioAccess
     -- * Request Lenses
+    , lOrganizationParentId
     , lAcceptLanguage
+    , lPageToken
+    , lPageSize
     , lPortfolioId
 
     -- * Destructuring the Response
@@ -47,8 +50,12 @@ import Network.AWS.ServiceCatalog.Types
 import Network.AWS.ServiceCatalog.Types.Product
 
 -- | /See:/ 'listPortfolioAccess' smart constructor.
-data ListPortfolioAccess = ListPortfolioAccess'{_lAcceptLanguage
+data ListPortfolioAccess = ListPortfolioAccess'{_lOrganizationParentId
                                                 :: !(Maybe Text),
+                                                _lAcceptLanguage ::
+                                                !(Maybe Text),
+                                                _lPageToken :: !(Maybe Text),
+                                                _lPageSize :: !(Maybe Nat),
                                                 _lPortfolioId :: !Text}
                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -56,19 +63,39 @@ data ListPortfolioAccess = ListPortfolioAccess'{_lAcceptLanguage
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
+-- * 'lOrganizationParentId' - The ID of an organization node the portfolio is shared with. All children of this node with an inherited portfolio share will be returned.
+--
 -- * 'lAcceptLanguage' - The language code.     * @en@ - English (default)     * @jp@ - Japanese     * @zh@ - Chinese
+--
+-- * 'lPageToken' - The page token for the next set of results. To retrieve the first set of results, use null.
+--
+-- * 'lPageSize' - The maximum number of items to return with this call.
 --
 -- * 'lPortfolioId' - The portfolio identifier.
 listPortfolioAccess
     :: Text -- ^ 'lPortfolioId'
     -> ListPortfolioAccess
 listPortfolioAccess pPortfolioId_
-  = ListPortfolioAccess'{_lAcceptLanguage = Nothing,
-                         _lPortfolioId = pPortfolioId_}
+  = ListPortfolioAccess'{_lOrganizationParentId =
+                           Nothing,
+                         _lAcceptLanguage = Nothing, _lPageToken = Nothing,
+                         _lPageSize = Nothing, _lPortfolioId = pPortfolioId_}
+
+-- | The ID of an organization node the portfolio is shared with. All children of this node with an inherited portfolio share will be returned.
+lOrganizationParentId :: Lens' ListPortfolioAccess (Maybe Text)
+lOrganizationParentId = lens _lOrganizationParentId (\ s a -> s{_lOrganizationParentId = a})
 
 -- | The language code.     * @en@ - English (default)     * @jp@ - Japanese     * @zh@ - Chinese
 lAcceptLanguage :: Lens' ListPortfolioAccess (Maybe Text)
 lAcceptLanguage = lens _lAcceptLanguage (\ s a -> s{_lAcceptLanguage = a})
+
+-- | The page token for the next set of results. To retrieve the first set of results, use null.
+lPageToken :: Lens' ListPortfolioAccess (Maybe Text)
+lPageToken = lens _lPageToken (\ s a -> s{_lPageToken = a})
+
+-- | The maximum number of items to return with this call.
+lPageSize :: Lens' ListPortfolioAccess (Maybe Natural)
+lPageSize = lens _lPageSize (\ s a -> s{_lPageSize = a}) . mapping _Nat
 
 -- | The portfolio identifier.
 lPortfolioId :: Lens' ListPortfolioAccess Text
@@ -104,7 +131,11 @@ instance ToJSON ListPortfolioAccess where
         toJSON ListPortfolioAccess'{..}
           = object
               (catMaybes
-                 [("AcceptLanguage" .=) <$> _lAcceptLanguage,
+                 [("OrganizationParentId" .=) <$>
+                    _lOrganizationParentId,
+                  ("AcceptLanguage" .=) <$> _lAcceptLanguage,
+                  ("PageToken" .=) <$> _lPageToken,
+                  ("PageSize" .=) <$> _lPageSize,
                   Just ("PortfolioId" .= _lPortfolioId)])
 
 instance ToPath ListPortfolioAccess where

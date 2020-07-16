@@ -21,7 +21,7 @@ import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Route53Domains.Types.Transferable
 
--- | A complex type that contains information about whether the specified domain can be transferred to Amazon Route 53.
+-- | A complex type that contains information about whether the specified domain can be transferred to Route 53.
 --
 --
 --

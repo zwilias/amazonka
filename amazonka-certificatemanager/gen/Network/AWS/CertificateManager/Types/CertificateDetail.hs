@@ -85,7 +85,7 @@ data CertificateDetail = CertificateDetail'{_cdSubject
 --
 -- * 'cdStatus' - The status of the certificate.
 --
--- * 'cdFailureReason' - The reason the certificate request failed. This value exists only when the certificate status is @FAILED@ . For more information, see <http://docs.aws.amazon.com/acm/latest/userguide/troubleshooting.html#troubleshooting-failed Certificate Request Failed> in the /AWS Certificate Manager User Guide/ . 
+-- * 'cdFailureReason' - The reason the certificate request failed. This value exists only when the certificate status is @FAILED@ . For more information, see <https://docs.aws.amazon.com/acm/latest/userguide/troubleshooting.html#troubleshooting-failed Certificate Request Failed> in the /AWS Certificate Manager User Guide/ . 
 --
 -- * 'cdSubjectAlternativeNames' - One or more domain names (subject alternative names) included in the certificate. This list contains the domain names that are bound to the public key that is contained in the certificate. The subject alternative names include the canonical domain name (CN) of the certificate and additional domain names that can be used to connect to the website. 
 --
@@ -93,11 +93,11 @@ data CertificateDetail = CertificateDetail'{_cdSubject
 --
 -- * 'cdCreatedAt' - The time at which the certificate was requested. This value exists only when the certificate type is @AMAZON_ISSUED@ . 
 --
--- * 'cdCertificateARN' - The Amazon Resource Name (ARN) of the certificate. For more information about ARNs, see <http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html Amazon Resource Names (ARNs) and AWS Service Namespaces> in the /AWS General Reference/ .
+-- * 'cdCertificateARN' - The Amazon Resource Name (ARN) of the certificate. For more information about ARNs, see <https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html Amazon Resource Names (ARNs) and AWS Service Namespaces> in the /AWS General Reference/ .
 --
 -- * 'cdSerial' - The serial number of the certificate.
 --
--- * 'cdRenewalEligibility' - Specifies whether the certificate is eligible for renewal.
+-- * 'cdRenewalEligibility' - Specifies whether the certificate is eligible for renewal. At this time, only exported private certificates can be renewed with the 'RenewCertificate' command.
 --
 -- * 'cdExtendedKeyUsages' - Contains a list of Extended Key Usage X.509 v3 extension objects. Each object specifies a purpose for which the certificate public key can be used and consists of a name and an object identifier (OID). 
 --
@@ -113,11 +113,11 @@ data CertificateDetail = CertificateDetail'{_cdSubject
 --
 -- * 'cdDomainName' - The fully qualified domain name for the certificate, such as www.example.com or example.com.
 --
--- * 'cdRenewalSummary' - Contains information about the status of ACM's <http://docs.aws.amazon.com/acm/latest/userguide/acm-renewal.html managed renewal> for the certificate. This field exists only when the certificate type is @AMAZON_ISSUED@ .
+-- * 'cdRenewalSummary' - Contains information about the status of ACM's <https://docs.aws.amazon.com/acm/latest/userguide/acm-renewal.html managed renewal> for the certificate. This field exists only when the certificate type is @AMAZON_ISSUED@ .
 --
 -- * 'cdKeyAlgorithm' - The algorithm that was used to generate the public-private key pair.
 --
--- * 'cdType' - The source of the certificate. For certificates provided by ACM, this value is @AMAZON_ISSUED@ . For certificates that you imported with 'ImportCertificate' , this value is @IMPORTED@ . ACM does not provide <http://docs.aws.amazon.com/acm/latest/userguide/acm-renewal.html managed renewal> for imported certificates. For more information about the differences between certificates that you import and those that ACM provides, see <http://docs.aws.amazon.com/acm/latest/userguide/import-certificate.html Importing Certificates> in the /AWS Certificate Manager User Guide/ . 
+-- * 'cdType' - The source of the certificate. For certificates provided by ACM, this value is @AMAZON_ISSUED@ . For certificates that you imported with 'ImportCertificate' , this value is @IMPORTED@ . ACM does not provide <https://docs.aws.amazon.com/acm/latest/userguide/acm-renewal.html managed renewal> for imported certificates. For more information about the differences between certificates that you import and those that ACM provides, see <https://docs.aws.amazon.com/acm/latest/userguide/import-certificate.html Importing Certificates> in the /AWS Certificate Manager User Guide/ . 
 --
 -- * 'cdOptions' - Value that specifies whether to add the certificate to a transparency log. Certificate transparency makes it possible to detect SSL certificates that have been mistakenly or maliciously issued. A browser might respond to certificate that has not been logged by showing an error message. The logs are cryptographically secure. 
 --
@@ -161,7 +161,7 @@ cdSubject = lens _cdSubject (\ s a -> s{_cdSubject = a})
 cdStatus :: Lens' CertificateDetail (Maybe CertificateStatus)
 cdStatus = lens _cdStatus (\ s a -> s{_cdStatus = a})
 
--- | The reason the certificate request failed. This value exists only when the certificate status is @FAILED@ . For more information, see <http://docs.aws.amazon.com/acm/latest/userguide/troubleshooting.html#troubleshooting-failed Certificate Request Failed> in the /AWS Certificate Manager User Guide/ . 
+-- | The reason the certificate request failed. This value exists only when the certificate status is @FAILED@ . For more information, see <https://docs.aws.amazon.com/acm/latest/userguide/troubleshooting.html#troubleshooting-failed Certificate Request Failed> in the /AWS Certificate Manager User Guide/ . 
 cdFailureReason :: Lens' CertificateDetail (Maybe FailureReason)
 cdFailureReason = lens _cdFailureReason (\ s a -> s{_cdFailureReason = a})
 
@@ -177,7 +177,7 @@ cdInUseBy = lens _cdInUseBy (\ s a -> s{_cdInUseBy = a}) . _Default . _Coerce
 cdCreatedAt :: Lens' CertificateDetail (Maybe UTCTime)
 cdCreatedAt = lens _cdCreatedAt (\ s a -> s{_cdCreatedAt = a}) . mapping _Time
 
--- | The Amazon Resource Name (ARN) of the certificate. For more information about ARNs, see <http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html Amazon Resource Names (ARNs) and AWS Service Namespaces> in the /AWS General Reference/ .
+-- | The Amazon Resource Name (ARN) of the certificate. For more information about ARNs, see <https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html Amazon Resource Names (ARNs) and AWS Service Namespaces> in the /AWS General Reference/ .
 cdCertificateARN :: Lens' CertificateDetail (Maybe Text)
 cdCertificateARN = lens _cdCertificateARN (\ s a -> s{_cdCertificateARN = a})
 
@@ -185,7 +185,7 @@ cdCertificateARN = lens _cdCertificateARN (\ s a -> s{_cdCertificateARN = a})
 cdSerial :: Lens' CertificateDetail (Maybe Text)
 cdSerial = lens _cdSerial (\ s a -> s{_cdSerial = a})
 
--- | Specifies whether the certificate is eligible for renewal.
+-- | Specifies whether the certificate is eligible for renewal. At this time, only exported private certificates can be renewed with the 'RenewCertificate' command.
 cdRenewalEligibility :: Lens' CertificateDetail (Maybe RenewalEligibility)
 cdRenewalEligibility = lens _cdRenewalEligibility (\ s a -> s{_cdRenewalEligibility = a})
 
@@ -217,7 +217,7 @@ cdRevocationReason = lens _cdRevocationReason (\ s a -> s{_cdRevocationReason = 
 cdDomainName :: Lens' CertificateDetail (Maybe Text)
 cdDomainName = lens _cdDomainName (\ s a -> s{_cdDomainName = a})
 
--- | Contains information about the status of ACM's <http://docs.aws.amazon.com/acm/latest/userguide/acm-renewal.html managed renewal> for the certificate. This field exists only when the certificate type is @AMAZON_ISSUED@ .
+-- | Contains information about the status of ACM's <https://docs.aws.amazon.com/acm/latest/userguide/acm-renewal.html managed renewal> for the certificate. This field exists only when the certificate type is @AMAZON_ISSUED@ .
 cdRenewalSummary :: Lens' CertificateDetail (Maybe RenewalSummary)
 cdRenewalSummary = lens _cdRenewalSummary (\ s a -> s{_cdRenewalSummary = a})
 
@@ -225,7 +225,7 @@ cdRenewalSummary = lens _cdRenewalSummary (\ s a -> s{_cdRenewalSummary = a})
 cdKeyAlgorithm :: Lens' CertificateDetail (Maybe KeyAlgorithm)
 cdKeyAlgorithm = lens _cdKeyAlgorithm (\ s a -> s{_cdKeyAlgorithm = a})
 
--- | The source of the certificate. For certificates provided by ACM, this value is @AMAZON_ISSUED@ . For certificates that you imported with 'ImportCertificate' , this value is @IMPORTED@ . ACM does not provide <http://docs.aws.amazon.com/acm/latest/userguide/acm-renewal.html managed renewal> for imported certificates. For more information about the differences between certificates that you import and those that ACM provides, see <http://docs.aws.amazon.com/acm/latest/userguide/import-certificate.html Importing Certificates> in the /AWS Certificate Manager User Guide/ . 
+-- | The source of the certificate. For certificates provided by ACM, this value is @AMAZON_ISSUED@ . For certificates that you imported with 'ImportCertificate' , this value is @IMPORTED@ . ACM does not provide <https://docs.aws.amazon.com/acm/latest/userguide/acm-renewal.html managed renewal> for imported certificates. For more information about the differences between certificates that you import and those that ACM provides, see <https://docs.aws.amazon.com/acm/latest/userguide/import-certificate.html Importing Certificates> in the /AWS Certificate Manager User Guide/ . 
 cdType :: Lens' CertificateDetail (Maybe CertificateType)
 cdType = lens _cdType (\ s a -> s{_cdType = a})
 

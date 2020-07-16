@@ -21,7 +21,11 @@ import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.S3.Internal
 
--- | /See:/ 'inventoryFilter' smart constructor.
+-- | Specifies an inventory filter. The inventory only includes objects that meet the filter's criteria.
+--
+--
+--
+-- /See:/ 'inventoryFilter' smart constructor.
 newtype InventoryFilter = InventoryFilter'{_ifPrefix
                                            :: Text}
                             deriving (Eq, Read, Show, Data, Typeable, Generic)

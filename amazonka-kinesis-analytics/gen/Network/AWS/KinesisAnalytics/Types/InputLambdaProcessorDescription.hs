@@ -20,7 +20,7 @@ module Network.AWS.KinesisAnalytics.Types.InputLambdaProcessorDescription where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | An object that contains the Amazon Resource Name (ARN) of the <https://aws.amazon.com/documentation/lambda/ AWS Lambda> function that is used to preprocess records in the stream, and the ARN of the IAM role that is used to access the AWS Lambda expression.
+-- | An object that contains the Amazon Resource Name (ARN) of the <https://docs.aws.amazon.com/lambda/ AWS Lambda> function that is used to preprocess records in the stream, and the ARN of the IAM role that is used to access the AWS Lambda expression.
 --
 --
 --
@@ -40,7 +40,7 @@ data InputLambdaProcessorDescription = InputLambdaProcessorDescription'{_ilpdRes
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'ilpdResourceARN' - The ARN of the <https://aws.amazon.com/documentation/lambda/ AWS Lambda> function that is used to preprocess the records in the stream.
+-- * 'ilpdResourceARN' - The ARN of the <https://docs.aws.amazon.com/lambda/ AWS Lambda> function that is used to preprocess the records in the stream.
 --
 -- * 'ilpdRoleARN' - The ARN of the IAM role that is used to access the AWS Lambda function.
 inputLambdaProcessorDescription
@@ -50,7 +50,7 @@ inputLambdaProcessorDescription
                                        Nothing,
                                      _ilpdRoleARN = Nothing}
 
--- | The ARN of the <https://aws.amazon.com/documentation/lambda/ AWS Lambda> function that is used to preprocess the records in the stream.
+-- | The ARN of the <https://docs.aws.amazon.com/lambda/ AWS Lambda> function that is used to preprocess the records in the stream.
 ilpdResourceARN :: Lens' InputLambdaProcessorDescription (Maybe Text)
 ilpdResourceARN = lens _ilpdResourceARN (\ s a -> s{_ilpdResourceARN = a})
 

@@ -21,8 +21,10 @@
 -- Describes the specified policies or all policies used for SSL negotiation.
 --
 --
--- For more information, see <http://docs.aws.amazon.com/elasticloadbalancing/latest/application/create-https-listener.html#describe-ssl-policies Security Policies> in the /Application Load Balancers Guide/ .
+-- For more information, see <https://docs.aws.amazon.com/elasticloadbalancing/latest/application/create-https-listener.html#describe-ssl-policies Security Policies> in the /Application Load Balancers Guide/ .
 --
+--
+-- This operation returns paginated results.
 module Network.AWS.ELBv2.DescribeSSLPolicies
     (
     -- * Creating a Request
@@ -45,6 +47,7 @@ module Network.AWS.ELBv2.DescribeSSLPolicies
 import Network.AWS.ELBv2.Types
 import Network.AWS.ELBv2.Types.Product
 import Network.AWS.Lens
+import Network.AWS.Pager
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
@@ -82,6 +85,13 @@ dspMarker = lens _dspMarker (\ s a -> s{_dspMarker = a})
 -- | The maximum number of results to return with this call.
 dspPageSize :: Lens' DescribeSSLPolicies (Maybe Natural)
 dspPageSize = lens _dspPageSize (\ s a -> s{_dspPageSize = a}) . mapping _Nat
+
+instance AWSPager DescribeSSLPolicies where
+        page rq rs
+          | stop (rs ^. dsprsNextMarker) = Nothing
+          | stop (rs ^. dsprsSSLPolicies) = Nothing
+          | otherwise =
+            Just $ rq & dspMarker .~ rs ^. dsprsNextMarker
 
 instance AWSRequest DescribeSSLPolicies where
         type Rs DescribeSSLPolicies =
@@ -132,9 +142,9 @@ data DescribeSSLPoliciesResponse = DescribeSSLPoliciesResponse'{_dsprsSSLPolicie
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dsprsSSLPolicies' - Information about the policies.
+-- * 'dsprsSSLPolicies' - Information about the security policies.
 --
--- * 'dsprsNextMarker' - The marker to use when requesting the next set of results. If there are no additional results, the string is empty.
+-- * 'dsprsNextMarker' - If there are additional results, this is the marker for the next set of results. Otherwise, this is null.
 --
 -- * 'dsprsResponseStatus' - -- | The response status code.
 describeSSLPoliciesResponse
@@ -146,11 +156,11 @@ describeSSLPoliciesResponse pResponseStatus_
                                  _dsprsNextMarker = Nothing,
                                  _dsprsResponseStatus = pResponseStatus_}
 
--- | Information about the policies.
+-- | Information about the security policies.
 dsprsSSLPolicies :: Lens' DescribeSSLPoliciesResponse [SSLPolicy]
 dsprsSSLPolicies = lens _dsprsSSLPolicies (\ s a -> s{_dsprsSSLPolicies = a}) . _Default . _Coerce
 
--- | The marker to use when requesting the next set of results. If there are no additional results, the string is empty.
+-- | If there are additional results, this is the marker for the next set of results. Otherwise, this is null.
 dsprsNextMarker :: Lens' DescribeSSLPoliciesResponse (Maybe Text)
 dsprsNextMarker = lens _dsprsNextMarker (\ s a -> s{_dsprsNextMarker = a})
 

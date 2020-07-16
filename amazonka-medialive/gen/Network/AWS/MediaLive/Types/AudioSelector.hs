@@ -21,7 +21,7 @@ import Network.AWS.Lens
 import Network.AWS.MediaLive.Types.AudioSelectorSettings
 import Network.AWS.Prelude
 
--- | Placeholder documentation for AudioSelector
+-- | Audio Selector
 --
 -- /See:/ 'audioSelector' smart constructor.
 data AudioSelector = AudioSelector'{_asSelectorSettings

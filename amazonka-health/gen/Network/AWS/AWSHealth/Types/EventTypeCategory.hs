@@ -20,6 +20,7 @@ module Network.AWS.AWSHealth.Types.EventTypeCategory (
   EventTypeCategory (
     ..
     , AccountNotification
+    , Investigation
     , Issue
     , ScheduledChange
     )
@@ -35,6 +36,9 @@ data EventTypeCategory = EventTypeCategory' (CI Text)
 pattern AccountNotification :: EventTypeCategory
 pattern AccountNotification = EventTypeCategory' "accountNotification"
 
+pattern Investigation :: EventTypeCategory
+pattern Investigation = EventTypeCategory' "investigation"
+
 pattern Issue :: EventTypeCategory
 pattern Issue = EventTypeCategory' "issue"
 
@@ -43,6 +47,7 @@ pattern ScheduledChange = EventTypeCategory' "scheduledChange"
 
 {-# COMPLETE
   AccountNotification,
+  Investigation,
   Issue,
   ScheduledChange,
   EventTypeCategory' #-}
@@ -60,13 +65,15 @@ instance ToText EventTypeCategory where
 instance Enum EventTypeCategory where
     toEnum i = case i of
         0 -> AccountNotification
-        1 -> Issue
-        2 -> ScheduledChange
+        1 -> Investigation
+        2 -> Issue
+        3 -> ScheduledChange
         _ -> (error . showText) $ "Unknown index for EventTypeCategory: " <> toText i
     fromEnum x = case x of
         AccountNotification -> 0
-        Issue -> 1
-        ScheduledChange -> 2
+        Investigation -> 1
+        Issue -> 2
+        ScheduledChange -> 3
         EventTypeCategory' name -> (error . showText) $ "Unknown EventTypeCategory: " <> original name
 
 -- | Represents the bounds of /known/ $EventTypeCategory.

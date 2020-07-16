@@ -21,7 +21,9 @@ import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.S3.Internal
 
--- | Container for information regarding encryption based configuration for replicas.
+-- | Specifies encryption-related information for an Amazon S3 bucket that is a destination for replicated objects.
+--
+--
 --
 -- /See:/ 'encryptionConfiguration' smart constructor.
 newtype EncryptionConfiguration = EncryptionConfiguration'{_ecReplicaKMSKeyId
@@ -33,14 +35,14 @@ newtype EncryptionConfiguration = EncryptionConfiguration'{_ecReplicaKMSKeyId
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'ecReplicaKMSKeyId' - The id of the KMS key used to encrypt the replica object.
+-- * 'ecReplicaKMSKeyId' - Specifies the ID (Key ARN or Alias ARN) of the customer managed customer master key (CMK) stored in AWS Key Management Service (KMS) for the destination bucket. Amazon S3 uses this key to encrypt replica objects. Amazon S3 only supports symmetric customer managed CMKs. For more information, see <https://docs.aws.amazon.com/kms/latest/developerguide/symmetric-asymmetric.html Using Symmetric and Asymmetric Keys> in the /AWS Key Management Service Developer Guide/ .
 encryptionConfiguration
     :: EncryptionConfiguration
 encryptionConfiguration
   = EncryptionConfiguration'{_ecReplicaKMSKeyId =
                                Nothing}
 
--- | The id of the KMS key used to encrypt the replica object.
+-- | Specifies the ID (Key ARN or Alias ARN) of the customer managed customer master key (CMK) stored in AWS Key Management Service (KMS) for the destination bucket. Amazon S3 uses this key to encrypt replica objects. Amazon S3 only supports symmetric customer managed CMKs. For more information, see <https://docs.aws.amazon.com/kms/latest/developerguide/symmetric-asymmetric.html Using Symmetric and Asymmetric Keys> in the /AWS Key Management Service Developer Guide/ .
 ecReplicaKMSKeyId :: Lens' EncryptionConfiguration (Maybe Text)
 ecReplicaKMSKeyId = lens _ecReplicaKMSKeyId (\ s a -> s{_ecReplicaKMSKeyId = a})
 

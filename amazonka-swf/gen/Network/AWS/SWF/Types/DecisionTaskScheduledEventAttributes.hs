@@ -44,7 +44,7 @@ data DecisionTaskScheduledEventAttributes = DecisionTaskScheduledEventAttributes
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dtseaTaskPriority' - A task priority that, if set, specifies the priority for this decision task. Valid values are integers that range from Java's @Integer.MIN_VALUE@ (-2147483648) to @Integer.MAX_VALUE@ (2147483647). Higher numbers indicate higher priority. For more information about setting task priority, see <http://docs.aws.amazon.com/amazonswf/latest/developerguide/programming-priority.html Setting Task Priority> in the /Amazon SWF Developer Guide/ .
+-- * 'dtseaTaskPriority' - A task priority that, if set, specifies the priority for this decision task. Valid values are integers that range from Java's @Integer.MIN_VALUE@ (-2147483648) to @Integer.MAX_VALUE@ (2147483647). Higher numbers indicate higher priority. For more information about setting task priority, see <https://docs.aws.amazon.com/amazonswf/latest/developerguide/programming-priority.html Setting Task Priority> in the /Amazon SWF Developer Guide/ .
 --
 -- * 'dtseaStartToCloseTimeout' - The maximum duration for this decision task. The task is considered timed out if it doesn't completed within this duration. The duration is specified in seconds, an integer greater than or equal to @0@ . You can use @NONE@ to specify unlimited duration.
 --
@@ -58,7 +58,7 @@ decisionTaskScheduledEventAttributes pTaskList_
                                           _dtseaStartToCloseTimeout = Nothing,
                                           _dtseaTaskList = pTaskList_}
 
--- | A task priority that, if set, specifies the priority for this decision task. Valid values are integers that range from Java's @Integer.MIN_VALUE@ (-2147483648) to @Integer.MAX_VALUE@ (2147483647). Higher numbers indicate higher priority. For more information about setting task priority, see <http://docs.aws.amazon.com/amazonswf/latest/developerguide/programming-priority.html Setting Task Priority> in the /Amazon SWF Developer Guide/ .
+-- | A task priority that, if set, specifies the priority for this decision task. Valid values are integers that range from Java's @Integer.MIN_VALUE@ (-2147483648) to @Integer.MAX_VALUE@ (2147483647). Higher numbers indicate higher priority. For more information about setting task priority, see <https://docs.aws.amazon.com/amazonswf/latest/developerguide/programming-priority.html Setting Task Priority> in the /Amazon SWF Developer Guide/ .
 dtseaTaskPriority :: Lens' DecisionTaskScheduledEventAttributes (Maybe Text)
 dtseaTaskPriority = lens _dtseaTaskPriority (\ s a -> s{_dtseaTaskPriority = a})
 

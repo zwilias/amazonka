@@ -35,7 +35,7 @@ data Root = Root'{_rARN :: !(Maybe Text),
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'rARN' - The Amazon Resource Name (ARN) of the root. For more information about ARNs in Organizations, see <http://docs.aws.amazon.com/organizations/latest/userguide/orgs_permissions.html#orgs-permissions-arns ARN Formats Supported by Organizations> in the /AWS Organizations User Guide/ .
+-- * 'rARN' - The Amazon Resource Name (ARN) of the root. For more information about ARNs in Organizations, see <https://docs.aws.amazon.com/organizations/latest/userguide/orgs_permissions.html#orgs-permissions-arns ARN Formats Supported by Organizations> in the /AWS Organizations User Guide/ .
 --
 -- * 'rName' - The friendly name of the root. The <http://wikipedia.org/wiki/regex regex pattern> that is used to validate this parameter is a string of any of the characters in the ASCII character range.
 --
@@ -48,7 +48,7 @@ root
   = Root'{_rARN = Nothing, _rName = Nothing,
           _rId = Nothing, _rPolicyTypes = Nothing}
 
--- | The Amazon Resource Name (ARN) of the root. For more information about ARNs in Organizations, see <http://docs.aws.amazon.com/organizations/latest/userguide/orgs_permissions.html#orgs-permissions-arns ARN Formats Supported by Organizations> in the /AWS Organizations User Guide/ .
+-- | The Amazon Resource Name (ARN) of the root. For more information about ARNs in Organizations, see <https://docs.aws.amazon.com/organizations/latest/userguide/orgs_permissions.html#orgs-permissions-arns ARN Formats Supported by Organizations> in the /AWS Organizations User Guide/ .
 rARN :: Lens' Root (Maybe Text)
 rARN = lens _rARN (\ s a -> s{_rARN = a})
 

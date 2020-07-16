@@ -20,7 +20,7 @@ module Network.AWS.ElasticBeanstalk.Types.InstanceHealthSummary where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | Represents summary information about the health of an instance. For more information, see <http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/health-enhanced-status.html Health Colors and Statuses> .
+-- | Represents summary information about the health of an instance. For more information, see <https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/health-enhanced-status.html Health Colors and Statuses> .
 --
 --
 --

@@ -22,52 +22,55 @@ import Network.AWS.Pinpoint.Types.EndpointMessageResult
 import Network.AWS.Pinpoint.Types.MessageResult
 import Network.AWS.Prelude
 
--- | Send message response.
+-- | Provides information about the results of a request to send a message to an endpoint address.
+--
+--
 --
 -- /See:/ 'messageResponse' smart constructor.
 data MessageResponse = MessageResponse'{_mRequestId
                                         :: !(Maybe Text),
                                         _mResult ::
                                         !(Maybe (Map Text MessageResult)),
-                                        _mApplicationId :: !(Maybe Text),
                                         _mEndpointResult ::
                                         !(Maybe
-                                            (Map Text EndpointMessageResult))}
+                                            (Map Text EndpointMessageResult)),
+                                        _mApplicationId :: !Text}
                          deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'MessageResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'mRequestId' - Original request Id for which this message was delivered.
+-- * 'mRequestId' - The identifier for the original request that the message was delivered for.
 --
--- * 'mResult' - A map containing a multi part response for each address, with the address as the key(Email address, phone number or push token) and the result as the value.
+-- * 'mResult' - A map that contains a multipart response for each address (email address, phone number, or push notification token) that the message was sent to. In the map, the address is the key and the result is the value.
 --
--- * 'mApplicationId' - Application id of the message.
+-- * 'mEndpointResult' - A map that contains a multipart response for each address that the message was sent to. In the map, the endpoint ID is the key and the result is the value.
 --
--- * 'mEndpointResult' - A map containing a multi part response for each address, with the endpointId as the key and the result as the value.
+-- * 'mApplicationId' - The unique identifier for the application that was used to send the message.
 messageResponse
-    :: MessageResponse
-messageResponse
+    :: Text -- ^ 'mApplicationId'
+    -> MessageResponse
+messageResponse pApplicationId_
   = MessageResponse'{_mRequestId = Nothing,
-                     _mResult = Nothing, _mApplicationId = Nothing,
-                     _mEndpointResult = Nothing}
+                     _mResult = Nothing, _mEndpointResult = Nothing,
+                     _mApplicationId = pApplicationId_}
 
--- | Original request Id for which this message was delivered.
+-- | The identifier for the original request that the message was delivered for.
 mRequestId :: Lens' MessageResponse (Maybe Text)
 mRequestId = lens _mRequestId (\ s a -> s{_mRequestId = a})
 
--- | A map containing a multi part response for each address, with the address as the key(Email address, phone number or push token) and the result as the value.
+-- | A map that contains a multipart response for each address (email address, phone number, or push notification token) that the message was sent to. In the map, the address is the key and the result is the value.
 mResult :: Lens' MessageResponse (HashMap Text MessageResult)
 mResult = lens _mResult (\ s a -> s{_mResult = a}) . _Default . _Map
 
--- | Application id of the message.
-mApplicationId :: Lens' MessageResponse (Maybe Text)
-mApplicationId = lens _mApplicationId (\ s a -> s{_mApplicationId = a})
-
--- | A map containing a multi part response for each address, with the endpointId as the key and the result as the value.
+-- | A map that contains a multipart response for each address that the message was sent to. In the map, the endpoint ID is the key and the result is the value.
 mEndpointResult :: Lens' MessageResponse (HashMap Text EndpointMessageResult)
 mEndpointResult = lens _mEndpointResult (\ s a -> s{_mEndpointResult = a}) . _Default . _Map
+
+-- | The unique identifier for the application that was used to send the message.
+mApplicationId :: Lens' MessageResponse Text
+mApplicationId = lens _mApplicationId (\ s a -> s{_mApplicationId = a})
 
 instance FromJSON MessageResponse where
         parseJSON
@@ -75,8 +78,8 @@ instance FromJSON MessageResponse where
               (\ x ->
                  MessageResponse' <$>
                    (x .:? "RequestId") <*> (x .:? "Result" .!= mempty)
-                     <*> (x .:? "ApplicationId")
-                     <*> (x .:? "EndpointResult" .!= mempty))
+                     <*> (x .:? "EndpointResult" .!= mempty)
+                     <*> (x .: "ApplicationId"))
 
 instance Hashable MessageResponse where
 

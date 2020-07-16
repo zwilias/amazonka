@@ -62,13 +62,13 @@ data BatchDeleteTableVersion = BatchDeleteTableVersion'{_bdtvCatalogId
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'bdtvCatalogId' - The ID of the Data Catalog where the tables reside. If none is supplied, the AWS account ID is used by default.
+-- * 'bdtvCatalogId' - The ID of the Data Catalog where the tables reside. If none is provided, the AWS account ID is used by default.
 --
 -- * 'bdtvDatabaseName' - The database in the catalog in which the table resides. For Hive compatibility, this name is entirely lowercase.
 --
 -- * 'bdtvTableName' - The name of the table. For Hive compatibility, this name is entirely lowercase.
 --
--- * 'bdtvVersionIds' - A list of the IDs of versions to be deleted.
+-- * 'bdtvVersionIds' - A list of the IDs of versions to be deleted. A @VersionId@ is a string representation of an integer. Each version is incremented by 1.
 batchDeleteTableVersion
     :: Text -- ^ 'bdtvDatabaseName'
     -> Text -- ^ 'bdtvTableName'
@@ -79,7 +79,7 @@ batchDeleteTableVersion pDatabaseName_ pTableName_
                              _bdtvTableName = pTableName_,
                              _bdtvVersionIds = mempty}
 
--- | The ID of the Data Catalog where the tables reside. If none is supplied, the AWS account ID is used by default.
+-- | The ID of the Data Catalog where the tables reside. If none is provided, the AWS account ID is used by default.
 bdtvCatalogId :: Lens' BatchDeleteTableVersion (Maybe Text)
 bdtvCatalogId = lens _bdtvCatalogId (\ s a -> s{_bdtvCatalogId = a})
 
@@ -91,7 +91,7 @@ bdtvDatabaseName = lens _bdtvDatabaseName (\ s a -> s{_bdtvDatabaseName = a})
 bdtvTableName :: Lens' BatchDeleteTableVersion Text
 bdtvTableName = lens _bdtvTableName (\ s a -> s{_bdtvTableName = a})
 
--- | A list of the IDs of versions to be deleted.
+-- | A list of the IDs of versions to be deleted. A @VersionId@ is a string representation of an integer. Each version is incremented by 1.
 bdtvVersionIds :: Lens' BatchDeleteTableVersion [Text]
 bdtvVersionIds = lens _bdtvVersionIds (\ s a -> s{_bdtvVersionIds = a}) . _Coerce
 

@@ -125,7 +125,7 @@ data DisableDomainTransferLockResponse = DisableDomainTransferLockResponse'{_ddt
 --
 -- * 'ddtlrsResponseStatus' - -- | The response status code.
 --
--- * 'ddtlrsOperationId' - Identifier for tracking the progress of the request. To use this ID to query the operation status, use 'GetOperationDetail' .
+-- * 'ddtlrsOperationId' - Identifier for tracking the progress of the request. To query the operation status, use <https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_GetOperationDetail.html GetOperationDetail> .
 disableDomainTransferLockResponse
     :: Int -- ^ 'ddtlrsResponseStatus'
     -> Text -- ^ 'ddtlrsOperationId'
@@ -140,7 +140,7 @@ disableDomainTransferLockResponse pResponseStatus_
 ddtlrsResponseStatus :: Lens' DisableDomainTransferLockResponse Int
 ddtlrsResponseStatus = lens _ddtlrsResponseStatus (\ s a -> s{_ddtlrsResponseStatus = a})
 
--- | Identifier for tracking the progress of the request. To use this ID to query the operation status, use 'GetOperationDetail' .
+-- | Identifier for tracking the progress of the request. To query the operation status, use <https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_GetOperationDetail.html GetOperationDetail> .
 ddtlrsOperationId :: Lens' DisableDomainTransferLockResponse Text
 ddtlrsOperationId = lens _ddtlrsOperationId (\ s a -> s{_ddtlrsOperationId = a})
 

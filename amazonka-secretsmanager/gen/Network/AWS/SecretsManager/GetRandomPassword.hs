@@ -48,8 +48,8 @@ module Network.AWS.SecretsManager.GetRandomPassword
     , getRandomPasswordResponse
     , GetRandomPasswordResponse
     -- * Response Lenses
-    , grprsRandomPassword
-    , grprsResponseStatus
+    , grsRandomPassword
+    , grsResponseStatus
     ) where
 
 import Network.AWS.Lens
@@ -88,7 +88,7 @@ data GetRandomPassword = GetRandomPassword'{_grpIncludeSpace
 --
 -- * 'grpExcludeCharacters' - A string that includes characters that should not be included in the generated password. The default is that all characters from the included sets can be used.
 --
--- * 'grpExcludePunctuation' - Specifies that the generated password should not include punctuation characters. The default if you do not include this switch parameter is that punctuation characters can be included.
+-- * 'grpExcludePunctuation' - Specifies that the generated password should not include punctuation characters. The default if you do not include this switch parameter is that punctuation characters can be included. The following are the punctuation characters that /can/ be included in the generated password if you don't explicitly exclude them with @ExcludeCharacters@ or @ExcludePunctuation@ : @! " # $ % & ' ( ) * + , - . / : ; < = > ? @ [ \ ] ^ _ ` { | } ~@ 
 --
 -- * 'grpRequireEachIncludedType' - A boolean value that specifies whether the generated password must include at least one of every allowed character type. The default value is @True@ and the operation requires at least one of every character type.
 --
@@ -123,7 +123,7 @@ grpExcludeLowercase = lens _grpExcludeLowercase (\ s a -> s{_grpExcludeLowercase
 grpExcludeCharacters :: Lens' GetRandomPassword (Maybe Text)
 grpExcludeCharacters = lens _grpExcludeCharacters (\ s a -> s{_grpExcludeCharacters = a})
 
--- | Specifies that the generated password should not include punctuation characters. The default if you do not include this switch parameter is that punctuation characters can be included.
+-- | Specifies that the generated password should not include punctuation characters. The default if you do not include this switch parameter is that punctuation characters can be included. The following are the punctuation characters that /can/ be included in the generated password if you don't explicitly exclude them with @ExcludeCharacters@ or @ExcludePunctuation@ : @! " # $ % & ' ( ) * + , - . / : ; < = > ? @ [ \ ] ^ _ ` { | } ~@ 
 grpExcludePunctuation :: Lens' GetRandomPassword (Maybe Bool)
 grpExcludePunctuation = lens _grpExcludePunctuation (\ s a -> s{_grpExcludePunctuation = a})
 
@@ -182,34 +182,36 @@ instance ToQuery GetRandomPassword where
         toQuery = const mempty
 
 -- | /See:/ 'getRandomPasswordResponse' smart constructor.
-data GetRandomPasswordResponse = GetRandomPasswordResponse'{_grprsRandomPassword
-                                                            :: !(Maybe Text),
-                                                            _grprsResponseStatus
+data GetRandomPasswordResponse = GetRandomPasswordResponse'{_grsRandomPassword
+                                                            ::
+                                                            !(Maybe
+                                                                (Sensitive
+                                                                   Text)),
+                                                            _grsResponseStatus
                                                             :: !Int}
-                                   deriving (Eq, Read, Show, Data, Typeable,
-                                             Generic)
+                                   deriving (Eq, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetRandomPasswordResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'grprsRandomPassword' - A string with the generated password.
+-- * 'grsRandomPassword' - A string with the generated password.
 --
--- * 'grprsResponseStatus' - -- | The response status code.
+-- * 'grsResponseStatus' - -- | The response status code.
 getRandomPasswordResponse
-    :: Int -- ^ 'grprsResponseStatus'
+    :: Int -- ^ 'grsResponseStatus'
     -> GetRandomPasswordResponse
 getRandomPasswordResponse pResponseStatus_
-  = GetRandomPasswordResponse'{_grprsRandomPassword =
+  = GetRandomPasswordResponse'{_grsRandomPassword =
                                  Nothing,
-                               _grprsResponseStatus = pResponseStatus_}
+                               _grsResponseStatus = pResponseStatus_}
 
 -- | A string with the generated password.
-grprsRandomPassword :: Lens' GetRandomPasswordResponse (Maybe Text)
-grprsRandomPassword = lens _grprsRandomPassword (\ s a -> s{_grprsRandomPassword = a})
+grsRandomPassword :: Lens' GetRandomPasswordResponse (Maybe Text)
+grsRandomPassword = lens _grsRandomPassword (\ s a -> s{_grsRandomPassword = a}) . mapping _Sensitive
 
 -- | -- | The response status code.
-grprsResponseStatus :: Lens' GetRandomPasswordResponse Int
-grprsResponseStatus = lens _grprsResponseStatus (\ s a -> s{_grprsResponseStatus = a})
+grsResponseStatus :: Lens' GetRandomPasswordResponse Int
+grsResponseStatus = lens _grsResponseStatus (\ s a -> s{_grsResponseStatus = a})
 
 instance NFData GetRandomPasswordResponse where

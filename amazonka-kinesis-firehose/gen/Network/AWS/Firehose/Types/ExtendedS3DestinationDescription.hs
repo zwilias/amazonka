@@ -49,6 +49,10 @@ data ExtendedS3DestinationDescription = ExtendedS3DestinationDescription'{_esddS
                                                                           ::
                                                                           !(Maybe
                                                                               CloudWatchLoggingOptions),
+                                                                          _esddErrorOutputPrefix
+                                                                          ::
+                                                                          !(Maybe
+                                                                              Text),
                                                                           _esddDataFormatConversionConfiguration
                                                                           ::
                                                                           !(Maybe
@@ -83,9 +87,11 @@ data ExtendedS3DestinationDescription = ExtendedS3DestinationDescription'{_esddS
 --
 -- * 'esddS3BackupDescription' - The configuration for backup in Amazon S3.
 --
--- * 'esddPrefix' - The "YYYY/MM/DD/HH" time format prefix is automatically used for delivered Amazon S3 files. You can specify an extra prefix to be added in front of the time format prefix. If the prefix ends with a slash, it appears as a folder in the S3 bucket. For more information, see <http://docs.aws.amazon.com/firehose/latest/dev/basic-deliver.html#s3-object-name Amazon S3 Object Name Format> in the /Amazon Kinesis Data Firehose Developer Guide/ .
+-- * 'esddPrefix' - The "YYYY/MM/DD/HH" time format prefix is automatically used for delivered Amazon S3 files. You can also specify a custom prefix, as described in <https://docs.aws.amazon.com/firehose/latest/dev/s3-prefixes.html Custom Prefixes for Amazon S3 Objects> .
 --
 -- * 'esddCloudWatchLoggingOptions' - The Amazon CloudWatch logging options for your delivery stream.
+--
+-- * 'esddErrorOutputPrefix' - A prefix that Kinesis Data Firehose evaluates and adds to failed records before writing them to S3. This prefix appears immediately following the bucket name. For information about how to specify this prefix, see <https://docs.aws.amazon.com/firehose/latest/dev/s3-prefixes.html Custom Prefixes for Amazon S3 Objects> .
 --
 -- * 'esddDataFormatConversionConfiguration' - The serializer, deserializer, and schema for converting data from the JSON format to the Parquet or ORC format before writing it to Amazon S3.
 --
@@ -115,6 +121,7 @@ extendedS3DestinationDescription pRoleARN_
                                       _esddS3BackupDescription = Nothing,
                                       _esddPrefix = Nothing,
                                       _esddCloudWatchLoggingOptions = Nothing,
+                                      _esddErrorOutputPrefix = Nothing,
                                       _esddDataFormatConversionConfiguration =
                                         Nothing,
                                       _esddProcessingConfiguration = Nothing,
@@ -134,13 +141,17 @@ esddS3BackupMode = lens _esddS3BackupMode (\ s a -> s{_esddS3BackupMode = a})
 esddS3BackupDescription :: Lens' ExtendedS3DestinationDescription (Maybe S3DestinationDescription)
 esddS3BackupDescription = lens _esddS3BackupDescription (\ s a -> s{_esddS3BackupDescription = a})
 
--- | The "YYYY/MM/DD/HH" time format prefix is automatically used for delivered Amazon S3 files. You can specify an extra prefix to be added in front of the time format prefix. If the prefix ends with a slash, it appears as a folder in the S3 bucket. For more information, see <http://docs.aws.amazon.com/firehose/latest/dev/basic-deliver.html#s3-object-name Amazon S3 Object Name Format> in the /Amazon Kinesis Data Firehose Developer Guide/ .
+-- | The "YYYY/MM/DD/HH" time format prefix is automatically used for delivered Amazon S3 files. You can also specify a custom prefix, as described in <https://docs.aws.amazon.com/firehose/latest/dev/s3-prefixes.html Custom Prefixes for Amazon S3 Objects> .
 esddPrefix :: Lens' ExtendedS3DestinationDescription (Maybe Text)
 esddPrefix = lens _esddPrefix (\ s a -> s{_esddPrefix = a})
 
 -- | The Amazon CloudWatch logging options for your delivery stream.
 esddCloudWatchLoggingOptions :: Lens' ExtendedS3DestinationDescription (Maybe CloudWatchLoggingOptions)
 esddCloudWatchLoggingOptions = lens _esddCloudWatchLoggingOptions (\ s a -> s{_esddCloudWatchLoggingOptions = a})
+
+-- | A prefix that Kinesis Data Firehose evaluates and adds to failed records before writing them to S3. This prefix appears immediately following the bucket name. For information about how to specify this prefix, see <https://docs.aws.amazon.com/firehose/latest/dev/s3-prefixes.html Custom Prefixes for Amazon S3 Objects> .
+esddErrorOutputPrefix :: Lens' ExtendedS3DestinationDescription (Maybe Text)
+esddErrorOutputPrefix = lens _esddErrorOutputPrefix (\ s a -> s{_esddErrorOutputPrefix = a})
 
 -- | The serializer, deserializer, and schema for converting data from the JSON format to the Parquet or ORC format before writing it to Amazon S3.
 esddDataFormatConversionConfiguration :: Lens' ExtendedS3DestinationDescription (Maybe DataFormatConversionConfiguration)
@@ -180,6 +191,7 @@ instance FromJSON ExtendedS3DestinationDescription
                      (x .:? "S3BackupDescription")
                      <*> (x .:? "Prefix")
                      <*> (x .:? "CloudWatchLoggingOptions")
+                     <*> (x .:? "ErrorOutputPrefix")
                      <*> (x .:? "DataFormatConversionConfiguration")
                      <*> (x .:? "ProcessingConfiguration")
                      <*> (x .: "RoleARN")

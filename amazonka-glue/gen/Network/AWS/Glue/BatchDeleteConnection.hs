@@ -58,7 +58,7 @@ data BatchDeleteConnection = BatchDeleteConnection'{_bdcCatalogId
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'bdcCatalogId' - The ID of the Data Catalog in which the connections reside. If none is supplied, the AWS account ID is used by default.
+-- * 'bdcCatalogId' - The ID of the Data Catalog in which the connections reside. If none is provided, the AWS account ID is used by default.
 --
 -- * 'bdcConnectionNameList' - A list of names of the connections to delete.
 batchDeleteConnection
@@ -67,7 +67,7 @@ batchDeleteConnection
   = BatchDeleteConnection'{_bdcCatalogId = Nothing,
                            _bdcConnectionNameList = mempty}
 
--- | The ID of the Data Catalog in which the connections reside. If none is supplied, the AWS account ID is used by default.
+-- | The ID of the Data Catalog in which the connections reside. If none is provided, the AWS account ID is used by default.
 bdcCatalogId :: Lens' BatchDeleteConnection (Maybe Text)
 bdcCatalogId = lens _bdcCatalogId (\ s a -> s{_bdcCatalogId = a})
 

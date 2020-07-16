@@ -23,7 +23,11 @@ import Network.AWS.S3.Internal
 import Network.AWS.S3.Types.MetricsAndOperator
 import Network.AWS.S3.Types.Tag
 
--- | /See:/ 'metricsFilter' smart constructor.
+-- | Specifies a metrics configuration filter. The metrics configuration only includes objects that meet the filter's criteria. A filter must be a prefix, a tag, or a conjunction (MetricsAndOperator).
+--
+--
+--
+-- /See:/ 'metricsFilter' smart constructor.
 data MetricsFilter = MetricsFilter'{_mfTag ::
                                     !(Maybe Tag),
                                     _mfPrefix :: !(Maybe Text),

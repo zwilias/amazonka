@@ -71,11 +71,11 @@ data DescribeDBSecurityGroups = DescribeDBSecurityGroups'{_ddbsgFilters
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'ddbsgFilters' - This parameter is not currently supported.
+-- * 'ddbsgFilters' - This parameter isn't currently supported.
 --
 -- * 'ddbsgMarker' - An optional pagination token provided by a previous @DescribeDBSecurityGroups@ request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by @MaxRecords@ . 
 --
--- * 'ddbsgMaxRecords' - The maximum number of records to include in the response. If more records exist than the specified @MaxRecords@ value, a pagination token called a marker is included in the response so that the remaining results can be retrieved.  Default: 100 Constraints: Minimum 20, maximum 100.
+-- * 'ddbsgMaxRecords' - The maximum number of records to include in the response. If more records exist than the specified @MaxRecords@ value, a pagination token called a marker is included in the response so that you can retrieve the remaining results.  Default: 100 Constraints: Minimum 20, maximum 100.
 --
 -- * 'ddbsgDBSecurityGroupName' - The name of the DB security group to return details for.
 describeDBSecurityGroups
@@ -86,7 +86,7 @@ describeDBSecurityGroups
                               _ddbsgMaxRecords = Nothing,
                               _ddbsgDBSecurityGroupName = Nothing}
 
--- | This parameter is not currently supported.
+-- | This parameter isn't currently supported.
 ddbsgFilters :: Lens' DescribeDBSecurityGroups [Filter]
 ddbsgFilters = lens _ddbsgFilters (\ s a -> s{_ddbsgFilters = a}) . _Default . _Coerce
 
@@ -94,7 +94,7 @@ ddbsgFilters = lens _ddbsgFilters (\ s a -> s{_ddbsgFilters = a}) . _Default . _
 ddbsgMarker :: Lens' DescribeDBSecurityGroups (Maybe Text)
 ddbsgMarker = lens _ddbsgMarker (\ s a -> s{_ddbsgMarker = a})
 
--- | The maximum number of records to include in the response. If more records exist than the specified @MaxRecords@ value, a pagination token called a marker is included in the response so that the remaining results can be retrieved.  Default: 100 Constraints: Minimum 20, maximum 100.
+-- | The maximum number of records to include in the response. If more records exist than the specified @MaxRecords@ value, a pagination token called a marker is included in the response so that you can retrieve the remaining results.  Default: 100 Constraints: Minimum 20, maximum 100.
 ddbsgMaxRecords :: Lens' DescribeDBSecurityGroups (Maybe Int)
 ddbsgMaxRecords = lens _ddbsgMaxRecords (\ s a -> s{_ddbsgMaxRecords = a})
 
@@ -144,7 +144,7 @@ instance ToQuery DescribeDBSecurityGroups where
                "MaxRecords" =: _ddbsgMaxRecords,
                "DBSecurityGroupName" =: _ddbsgDBSecurityGroupName]
 
--- | Contains the result of a successful invocation of the 'DescribeDBSecurityGroups' action. 
+-- | Contains the result of a successful invocation of the @DescribeDBSecurityGroups@ action. 
 --
 --
 --
@@ -167,7 +167,7 @@ data DescribeDBSecurityGroupsResponse = DescribeDBSecurityGroupsResponse'{_ddbsg
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'ddbsgrsDBSecurityGroups' - A list of 'DBSecurityGroup' instances. 
+-- * 'ddbsgrsDBSecurityGroups' - A list of @DBSecurityGroup@ instances. 
 --
 -- * 'ddbsgrsMarker' - An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by @MaxRecords@ . 
 --
@@ -181,7 +181,7 @@ describeDBSecurityGroupsResponse pResponseStatus_
                                       _ddbsgrsMarker = Nothing,
                                       _ddbsgrsResponseStatus = pResponseStatus_}
 
--- | A list of 'DBSecurityGroup' instances. 
+-- | A list of @DBSecurityGroup@ instances. 
 ddbsgrsDBSecurityGroups :: Lens' DescribeDBSecurityGroupsResponse [DBSecurityGroup]
 ddbsgrsDBSecurityGroups = lens _ddbsgrsDBSecurityGroups (\ s a -> s{_ddbsgrsDBSecurityGroups = a}) . _Default . _Coerce
 

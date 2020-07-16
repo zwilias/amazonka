@@ -18,10 +18,10 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Returns the tags applied to an AWS Elastic Beanstalk resource. The response contains a list of tag key-value pairs.
+-- Return the tags applied to an AWS Elastic Beanstalk resource. The response contains a list of tag key-value pairs.
 --
 --
--- Currently, Elastic Beanstalk only supports tagging of Elastic Beanstalk environments. For details about environment tagging, see <http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/using-features.tagging.html Tagging Resources in Your Elastic Beanstalk Environment> .
+-- Elastic Beanstalk supports tagging of all of its resources. For details about resource tagging, see <https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/applications-tagging-resources.html Tagging Application Resources> .
 --
 module Network.AWS.ElasticBeanstalk.ListTagsForResource
     (
@@ -57,7 +57,7 @@ newtype ListTagsForResource = ListTagsForResource'{_ltfrResourceARN
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'ltfrResourceARN' - The Amazon Resource Name (ARN) of the resouce for which a tag list is requested. Must be the ARN of an Elastic Beanstalk environment.
+-- * 'ltfrResourceARN' - The Amazon Resource Name (ARN) of the resouce for which a tag list is requested. Must be the ARN of an Elastic Beanstalk resource.
 listTagsForResource
     :: Text -- ^ 'ltfrResourceARN'
     -> ListTagsForResource
@@ -65,7 +65,7 @@ listTagsForResource pResourceARN_
   = ListTagsForResource'{_ltfrResourceARN =
                            pResourceARN_}
 
--- | The Amazon Resource Name (ARN) of the resouce for which a tag list is requested. Must be the ARN of an Elastic Beanstalk environment.
+-- | The Amazon Resource Name (ARN) of the resouce for which a tag list is requested. Must be the ARN of an Elastic Beanstalk resource.
 ltfrResourceARN :: Lens' ListTagsForResource Text
 ltfrResourceARN = lens _ltfrResourceARN (\ s a -> s{_ltfrResourceARN = a})
 
@@ -117,7 +117,7 @@ data ListTagsForResourceResponse = ListTagsForResourceResponse'{_ltfrrsResourceT
 --
 -- * 'ltfrrsResourceTags' - A list of tag key-value pairs.
 --
--- * 'ltfrrsResourceARN' - The Amazon Resource Name (ARN) of the resouce for which a tag list was requested.
+-- * 'ltfrrsResourceARN' - The Amazon Resource Name (ARN) of the resource for which a tag list was requested.
 --
 -- * 'ltfrrsResponseStatus' - -- | The response status code.
 listTagsForResourceResponse
@@ -133,7 +133,7 @@ listTagsForResourceResponse pResponseStatus_
 ltfrrsResourceTags :: Lens' ListTagsForResourceResponse [Tag]
 ltfrrsResourceTags = lens _ltfrrsResourceTags (\ s a -> s{_ltfrrsResourceTags = a}) . _Default . _Coerce
 
--- | The Amazon Resource Name (ARN) of the resouce for which a tag list was requested.
+-- | The Amazon Resource Name (ARN) of the resource for which a tag list was requested.
 ltfrrsResourceARN :: Lens' ListTagsForResourceResponse (Maybe Text)
 ltfrrsResourceARN = lens _ltfrrsResourceARN (\ s a -> s{_ltfrrsResourceARN = a})
 

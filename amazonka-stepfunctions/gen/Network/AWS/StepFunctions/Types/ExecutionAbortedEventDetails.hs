@@ -27,10 +27,14 @@ import Network.AWS.Prelude
 -- /See:/ 'executionAbortedEventDetails' smart constructor.
 data ExecutionAbortedEventDetails = ExecutionAbortedEventDetails'{_eaedError
                                                                   ::
-                                                                  !(Maybe Text),
+                                                                  !(Maybe
+                                                                      (Sensitive
+                                                                         Text)),
                                                                   _eaedCause ::
-                                                                  !(Maybe Text)}
-                                      deriving (Eq, Read, Show, Data, Typeable,
+                                                                  !(Maybe
+                                                                      (Sensitive
+                                                                         Text))}
+                                      deriving (Eq, Show, Data, Typeable,
                                                 Generic)
 
 -- | Creates a value of 'ExecutionAbortedEventDetails' with the minimum fields required to make a request.
@@ -48,11 +52,11 @@ executionAbortedEventDetails
 
 -- | The error code of the failure.
 eaedError :: Lens' ExecutionAbortedEventDetails (Maybe Text)
-eaedError = lens _eaedError (\ s a -> s{_eaedError = a})
+eaedError = lens _eaedError (\ s a -> s{_eaedError = a}) . mapping _Sensitive
 
 -- | A more detailed explanation of the cause of the failure.
 eaedCause :: Lens' ExecutionAbortedEventDetails (Maybe Text)
-eaedCause = lens _eaedCause (\ s a -> s{_eaedCause = a})
+eaedCause = lens _eaedCause (\ s a -> s{_eaedCause = a}) . mapping _Sensitive
 
 instance FromJSON ExecutionAbortedEventDetails where
         parseJSON

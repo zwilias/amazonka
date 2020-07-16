@@ -28,7 +28,7 @@ module Network.AWS.MediaLive.Types.DvbSubDestinationAlignment (
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | Placeholder documentation for DvbSubDestinationAlignment
+-- | Dvb Sub Destination Alignment
 data DvbSubDestinationAlignment = DvbSubDestinationAlignment' (CI
                                                                  Text)
                                     deriving (Eq, Ord, Read, Show, Data,

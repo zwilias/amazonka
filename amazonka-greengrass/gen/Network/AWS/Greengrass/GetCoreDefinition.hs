@@ -38,6 +38,7 @@ module Network.AWS.Greengrass.GetCoreDefinition
     , gcdrsId
     , gcdrsLatestVersion
     , gcdrsLastUpdatedTimestamp
+    , gcdrsTags
     , gcdrsResponseStatus
     ) where
 
@@ -82,6 +83,7 @@ instance AWSRequest GetCoreDefinition where
                      <*> (x .?> "Id")
                      <*> (x .?> "LatestVersion")
                      <*> (x .?> "LastUpdatedTimestamp")
+                     <*> (x .?> "tags" .!@ mempty)
                      <*> (pure (fromEnum s)))
 
 instance Hashable GetCoreDefinition where
@@ -119,6 +121,10 @@ data GetCoreDefinitionResponse = GetCoreDefinitionResponse'{_gcdrsLatestVersionA
                                                             :: !(Maybe Text),
                                                             _gcdrsLastUpdatedTimestamp
                                                             :: !(Maybe Text),
+                                                            _gcdrsTags ::
+                                                            !(Maybe
+                                                                (Map Text
+                                                                   Text)),
                                                             _gcdrsResponseStatus
                                                             :: !Int}
                                    deriving (Eq, Read, Show, Data, Typeable,
@@ -128,7 +134,7 @@ data GetCoreDefinitionResponse = GetCoreDefinitionResponse'{_gcdrsLatestVersionA
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'gcdrsLatestVersionARN' - The ARN of the latest version of the definition.
+-- * 'gcdrsLatestVersionARN' - The ARN of the latest version associated with the definition.
 --
 -- * 'gcdrsARN' - The ARN of the definition.
 --
@@ -138,9 +144,11 @@ data GetCoreDefinitionResponse = GetCoreDefinitionResponse'{_gcdrsLatestVersionA
 --
 -- * 'gcdrsId' - The ID of the definition.
 --
--- * 'gcdrsLatestVersion' - The latest version of the definition.
+-- * 'gcdrsLatestVersion' - The ID of the latest version associated with the definition.
 --
 -- * 'gcdrsLastUpdatedTimestamp' - The time, in milliseconds since the epoch, when the definition was last updated.
+--
+-- * 'gcdrsTags' - Tag(s) attached to the resource arn.
 --
 -- * 'gcdrsResponseStatus' - -- | The response status code.
 getCoreDefinitionResponse
@@ -154,9 +162,10 @@ getCoreDefinitionResponse pResponseStatus_
                                _gcdrsId = Nothing,
                                _gcdrsLatestVersion = Nothing,
                                _gcdrsLastUpdatedTimestamp = Nothing,
+                               _gcdrsTags = Nothing,
                                _gcdrsResponseStatus = pResponseStatus_}
 
--- | The ARN of the latest version of the definition.
+-- | The ARN of the latest version associated with the definition.
 gcdrsLatestVersionARN :: Lens' GetCoreDefinitionResponse (Maybe Text)
 gcdrsLatestVersionARN = lens _gcdrsLatestVersionARN (\ s a -> s{_gcdrsLatestVersionARN = a})
 
@@ -176,13 +185,17 @@ gcdrsCreationTimestamp = lens _gcdrsCreationTimestamp (\ s a -> s{_gcdrsCreation
 gcdrsId :: Lens' GetCoreDefinitionResponse (Maybe Text)
 gcdrsId = lens _gcdrsId (\ s a -> s{_gcdrsId = a})
 
--- | The latest version of the definition.
+-- | The ID of the latest version associated with the definition.
 gcdrsLatestVersion :: Lens' GetCoreDefinitionResponse (Maybe Text)
 gcdrsLatestVersion = lens _gcdrsLatestVersion (\ s a -> s{_gcdrsLatestVersion = a})
 
 -- | The time, in milliseconds since the epoch, when the definition was last updated.
 gcdrsLastUpdatedTimestamp :: Lens' GetCoreDefinitionResponse (Maybe Text)
 gcdrsLastUpdatedTimestamp = lens _gcdrsLastUpdatedTimestamp (\ s a -> s{_gcdrsLastUpdatedTimestamp = a})
+
+-- | Tag(s) attached to the resource arn.
+gcdrsTags :: Lens' GetCoreDefinitionResponse (HashMap Text Text)
+gcdrsTags = lens _gcdrsTags (\ s a -> s{_gcdrsTags = a}) . _Default . _Map
 
 -- | -- | The response status code.
 gcdrsResponseStatus :: Lens' GetCoreDefinitionResponse Int

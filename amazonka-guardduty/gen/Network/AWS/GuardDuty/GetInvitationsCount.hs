@@ -19,6 +19,8 @@
 -- Portability : non-portable (GHC extensions)
 --
 -- Returns the count of all GuardDuty membership invitations that were sent to the current member account except the currently accepted invitation.
+--
+--
 module Network.AWS.GuardDuty.GetInvitationsCount
     (
     -- * Creating a Request

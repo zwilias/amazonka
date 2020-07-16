@@ -31,6 +31,7 @@ import Network.AWS.Prelude
 data TargetGroup = TargetGroup'{_tgMatcher ::
                                 !(Maybe Matcher),
                                 _tgHealthCheckPath :: !(Maybe Text),
+                                _tgHealthCheckEnabled :: !(Maybe Bool),
                                 _tgUnhealthyThresholdCount :: !(Maybe Nat),
                                 _tgVPCId :: !(Maybe Text),
                                 _tgTargetGroupARN :: !(Maybe Text),
@@ -53,6 +54,8 @@ data TargetGroup = TargetGroup'{_tgMatcher ::
 -- * 'tgMatcher' - The HTTP codes to use when checking for a successful response from a target.
 --
 -- * 'tgHealthCheckPath' - The destination for the health check request.
+--
+-- * 'tgHealthCheckEnabled' - Indicates whether health checks are enabled.
 --
 -- * 'tgUnhealthyThresholdCount' - The number of consecutive health check failures required before considering the target unhealthy.
 --
@@ -78,12 +81,13 @@ data TargetGroup = TargetGroup'{_tgMatcher ::
 --
 -- * 'tgTargetGroupName' - The name of the target group.
 --
--- * 'tgPort' - The port on which the targets are listening.
+-- * 'tgPort' - The port on which the targets are listening. Not used if the target is a Lambda function.
 targetGroup
     :: TargetGroup
 targetGroup
   = TargetGroup'{_tgMatcher = Nothing,
                  _tgHealthCheckPath = Nothing,
+                 _tgHealthCheckEnabled = Nothing,
                  _tgUnhealthyThresholdCount = Nothing,
                  _tgVPCId = Nothing, _tgTargetGroupARN = Nothing,
                  _tgProtocol = Nothing,
@@ -103,6 +107,10 @@ tgMatcher = lens _tgMatcher (\ s a -> s{_tgMatcher = a})
 -- | The destination for the health check request.
 tgHealthCheckPath :: Lens' TargetGroup (Maybe Text)
 tgHealthCheckPath = lens _tgHealthCheckPath (\ s a -> s{_tgHealthCheckPath = a})
+
+-- | Indicates whether health checks are enabled.
+tgHealthCheckEnabled :: Lens' TargetGroup (Maybe Bool)
+tgHealthCheckEnabled = lens _tgHealthCheckEnabled (\ s a -> s{_tgHealthCheckEnabled = a})
 
 -- | The number of consecutive health check failures required before considering the target unhealthy.
 tgUnhealthyThresholdCount :: Lens' TargetGroup (Maybe Natural)
@@ -152,7 +160,7 @@ tgHealthCheckPort = lens _tgHealthCheckPort (\ s a -> s{_tgHealthCheckPort = a})
 tgTargetGroupName :: Lens' TargetGroup (Maybe Text)
 tgTargetGroupName = lens _tgTargetGroupName (\ s a -> s{_tgTargetGroupName = a})
 
--- | The port on which the targets are listening.
+-- | The port on which the targets are listening. Not used if the target is a Lambda function.
 tgPort :: Lens' TargetGroup (Maybe Natural)
 tgPort = lens _tgPort (\ s a -> s{_tgPort = a}) . mapping _Nat
 
@@ -160,7 +168,8 @@ instance FromXML TargetGroup where
         parseXML x
           = TargetGroup' <$>
               (x .@? "Matcher") <*> (x .@? "HealthCheckPath") <*>
-                (x .@? "UnhealthyThresholdCount")
+                (x .@? "HealthCheckEnabled")
+                <*> (x .@? "UnhealthyThresholdCount")
                 <*> (x .@? "VpcId")
                 <*> (x .@? "TargetGroupArn")
                 <*> (x .@? "Protocol")

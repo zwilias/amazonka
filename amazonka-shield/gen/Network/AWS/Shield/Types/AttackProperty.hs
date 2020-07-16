@@ -43,11 +43,11 @@ data AttackProperty = AttackProperty'{_apAttackLayer
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'apAttackLayer' - The type of DDoS event that was observed. @NETWORK@ indicates layer 3 and layer 4 events and @APPLICATION@ indicates layer 7 events.
+-- * 'apAttackLayer' - The type of distributed denial of service (DDoS) event that was observed. @NETWORK@ indicates layer 3 and layer 4 events and @APPLICATION@ indicates layer 7 events.
 --
 -- * 'apTopContributors' - The array of 'Contributor' objects that includes the top five contributors to an attack. 
 --
--- * 'apAttackPropertyIdentifier' - Defines the DDoS attack property information that is provided.
+-- * 'apAttackPropertyIdentifier' - Defines the DDoS attack property information that is provided. The @WORDPRESS_PINGBACK_REFLECTOR@ and @WORDPRESS_PINGBACK_SOURCE@ values are valid only for WordPress reflective pingback DDoS attacks.
 --
 -- * 'apTotal' - The total contributions made to this attack by all contributors, not just the five listed in the @TopContributors@ list.
 --
@@ -60,7 +60,7 @@ attackProperty
                     _apAttackPropertyIdentifier = Nothing,
                     _apTotal = Nothing, _apUnit = Nothing}
 
--- | The type of DDoS event that was observed. @NETWORK@ indicates layer 3 and layer 4 events and @APPLICATION@ indicates layer 7 events.
+-- | The type of distributed denial of service (DDoS) event that was observed. @NETWORK@ indicates layer 3 and layer 4 events and @APPLICATION@ indicates layer 7 events.
 apAttackLayer :: Lens' AttackProperty (Maybe AttackLayer)
 apAttackLayer = lens _apAttackLayer (\ s a -> s{_apAttackLayer = a})
 
@@ -68,7 +68,7 @@ apAttackLayer = lens _apAttackLayer (\ s a -> s{_apAttackLayer = a})
 apTopContributors :: Lens' AttackProperty [Contributor]
 apTopContributors = lens _apTopContributors (\ s a -> s{_apTopContributors = a}) . _Default . _Coerce
 
--- | Defines the DDoS attack property information that is provided.
+-- | Defines the DDoS attack property information that is provided. The @WORDPRESS_PINGBACK_REFLECTOR@ and @WORDPRESS_PINGBACK_SOURCE@ values are valid only for WordPress reflective pingback DDoS attacks.
 apAttackPropertyIdentifier :: Lens' AttackProperty (Maybe AttackPropertyIdentifier)
 apAttackPropertyIdentifier = lens _apAttackPropertyIdentifier (\ s a -> s{_apAttackPropertyIdentifier = a})
 

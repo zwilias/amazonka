@@ -19,6 +19,9 @@
 module Network.AWS.SMS.Types.ConnectorCapability (
   ConnectorCapability (
     ..
+    , CCHypervManager
+    , CCScvmm
+    , CCSnapshotBatching
     , CCVsphere
     )
   ) where
@@ -26,16 +29,27 @@ module Network.AWS.SMS.Types.ConnectorCapability (
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | Capabilities for a Connector
 data ConnectorCapability = ConnectorCapability' (CI
                                                    Text)
                              deriving (Eq, Ord, Read, Show, Data, Typeable,
                                        Generic)
 
+pattern CCHypervManager :: ConnectorCapability
+pattern CCHypervManager = ConnectorCapability' "HYPERV-MANAGER"
+
+pattern CCScvmm :: ConnectorCapability
+pattern CCScvmm = ConnectorCapability' "SCVMM"
+
+pattern CCSnapshotBatching :: ConnectorCapability
+pattern CCSnapshotBatching = ConnectorCapability' "SNAPSHOT_BATCHING"
+
 pattern CCVsphere :: ConnectorCapability
 pattern CCVsphere = ConnectorCapability' "VSPHERE"
 
 {-# COMPLETE
+  CCHypervManager,
+  CCScvmm,
+  CCSnapshotBatching,
   CCVsphere,
   ConnectorCapability' #-}
 
@@ -51,17 +65,23 @@ instance ToText ConnectorCapability where
 --   fromEnum is a partial function, and will error on values unknown at generation time.
 instance Enum ConnectorCapability where
     toEnum i = case i of
-        0 -> CCVsphere
+        0 -> CCHypervManager
+        1 -> CCScvmm
+        2 -> CCSnapshotBatching
+        3 -> CCVsphere
         _ -> (error . showText) $ "Unknown index for ConnectorCapability: " <> toText i
     fromEnum x = case x of
-        CCVsphere -> 0
+        CCHypervManager -> 0
+        CCScvmm -> 1
+        CCSnapshotBatching -> 2
+        CCVsphere -> 3
         ConnectorCapability' name -> (error . showText) $ "Unknown ConnectorCapability: " <> original name
 
 -- | Represents the bounds of /known/ $ConnectorCapability.
 --   AWS may have added more since the source was generated.
 --   This instance exists only for backward compatibility.
 instance Bounded ConnectorCapability where
-    minBound = CCVsphere
+    minBound = CCHypervManager
     maxBound = CCVsphere
 
 instance Hashable     ConnectorCapability

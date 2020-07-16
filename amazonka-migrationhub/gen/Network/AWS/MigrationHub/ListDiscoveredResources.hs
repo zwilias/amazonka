@@ -21,6 +21,8 @@
 -- Lists discovered resources associated with the given @MigrationTask@ .
 --
 --
+--
+-- This operation returns paginated results.
 module Network.AWS.MigrationHub.ListDiscoveredResources
     (
     -- * Creating a Request
@@ -44,6 +46,7 @@ module Network.AWS.MigrationHub.ListDiscoveredResources
 import Network.AWS.Lens
 import Network.AWS.MigrationHub.Types
 import Network.AWS.MigrationHub.Types.Product
+import Network.AWS.Pager
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
@@ -70,7 +73,7 @@ data ListDiscoveredResources = ListDiscoveredResources'{_ldrNextToken
 --
 -- * 'ldrProgressUpdateStream' - The name of the ProgressUpdateStream.
 --
--- * 'ldrMigrationTaskName' - The name of the MigrationTask.
+-- * 'ldrMigrationTaskName' - The name of the MigrationTask. /Do not store personal data in this field./ 
 listDiscoveredResources
     :: Text -- ^ 'ldrProgressUpdateStream'
     -> Text -- ^ 'ldrMigrationTaskName'
@@ -94,9 +97,16 @@ ldrMaxResults = lens _ldrMaxResults (\ s a -> s{_ldrMaxResults = a}) . mapping _
 ldrProgressUpdateStream :: Lens' ListDiscoveredResources Text
 ldrProgressUpdateStream = lens _ldrProgressUpdateStream (\ s a -> s{_ldrProgressUpdateStream = a})
 
--- | The name of the MigrationTask.
+-- | The name of the MigrationTask. /Do not store personal data in this field./ 
 ldrMigrationTaskName :: Lens' ListDiscoveredResources Text
 ldrMigrationTaskName = lens _ldrMigrationTaskName (\ s a -> s{_ldrMigrationTaskName = a})
+
+instance AWSPager ListDiscoveredResources where
+        page rq rs
+          | stop (rs ^. ldrrsNextToken) = Nothing
+          | stop (rs ^. ldrrsDiscoveredResourceList) = Nothing
+          | otherwise =
+            Just $ rq & ldrNextToken .~ rs ^. ldrrsNextToken
 
 instance AWSRequest ListDiscoveredResources where
         type Rs ListDiscoveredResources =

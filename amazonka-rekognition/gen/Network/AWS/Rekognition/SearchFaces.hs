@@ -23,7 +23,7 @@
 --
 -- The operation response returns an array of faces that match, ordered by similarity score with the highest similarity first. More specifically, it is an array of metadata for each face match that is found. Along with the metadata, the response also includes a @confidence@ value for each face match, indicating the confidence that the specific face matches the input face. 
 --
--- For an example, see 'search-face-with-id-procedure' .
+-- For an example, see Searching for a Face Using Its Face ID in the Amazon Rekognition Developer Guide.
 --
 -- This operation requires permissions to perform the @rekognition:SearchFaces@ action.
 --
@@ -66,7 +66,7 @@ data SearchFaces = SearchFaces'{_sfFaceMatchThreshold
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'sfFaceMatchThreshold' - Optional value specifying the minimum confidence in the face match to return. For example, don't return any matches where confidence in matches is less than 70%.
+-- * 'sfFaceMatchThreshold' - Optional value specifying the minimum confidence in the face match to return. For example, don't return any matches where confidence in matches is less than 70%. The default value is 80%. 
 --
 -- * 'sfMaxFaces' - Maximum number of faces to return. The operation returns the maximum number of faces with the highest confidence in the match.
 --
@@ -83,7 +83,7 @@ searchFaces pCollectionId_ pFaceId_
                  _sfCollectionId = pCollectionId_,
                  _sfFaceId = pFaceId_}
 
--- | Optional value specifying the minimum confidence in the face match to return. For example, don't return any matches where confidence in matches is less than 70%.
+-- | Optional value specifying the minimum confidence in the face match to return. For example, don't return any matches where confidence in matches is less than 70%. The default value is 80%. 
 sfFaceMatchThreshold :: Lens' SearchFaces (Maybe Double)
 sfFaceMatchThreshold = lens _sfFaceMatchThreshold (\ s a -> s{_sfFaceMatchThreshold = a})
 

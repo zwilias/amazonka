@@ -29,6 +29,7 @@ module Network.AWS.IAM.Types
     , _CredentialReportNotReadyException
     , _ServiceNotSupportedException
     , _PolicyEvaluationException
+    , _ReportGenerationLimitExceededException
     , _UnrecognizedPublicKeyEncodingException
     , _PolicyNotAttachableException
     , _InvalidInputException
@@ -36,6 +37,7 @@ module Network.AWS.IAM.Types
     , _CredentialReportExpiredException
     , _EntityAlreadyExistsException
     , _ServiceFailureException
+    , _ConcurrentModificationException
     , _MalformedPolicyDocumentException
     , _LimitExceededException
     , _PasswordPolicyViolationException
@@ -57,8 +59,20 @@ module Network.AWS.IAM.Types
     -- * EntityType
     , EntityType (..)
 
+    -- * GlobalEndpointTokenVersion
+    , GlobalEndpointTokenVersion (..)
+
+    -- * JobStatusType
+    , JobStatusType (..)
+
+    -- * PermissionsBoundaryAttachmentType
+    , PermissionsBoundaryAttachmentType (..)
+
     -- * PolicyEvaluationDecisionType
     , PolicyEvaluationDecisionType (..)
+
+    -- * PolicyOwnerEntityType
+    , PolicyOwnerEntityType (..)
 
     -- * PolicyScopeType
     , PolicyScopeType (..)
@@ -66,17 +80,36 @@ module Network.AWS.IAM.Types
     -- * PolicySourceType
     , PolicySourceType (..)
 
+    -- * PolicyType
+    , PolicyType (..)
+
+    -- * PolicyUsageType
+    , PolicyUsageType (..)
+
     -- * ReportFormatType
     , ReportFormatType (..)
 
     -- * ReportStateType
     , ReportStateType (..)
 
+    -- * SortKeyType
+    , SortKeyType (..)
+
     -- * StatusType
     , StatusType (..)
 
     -- * SummaryKeyType
     , SummaryKeyType (..)
+
+    -- * AccessDetail
+    , AccessDetail
+    , accessDetail
+    , adEntityPath
+    , adRegion
+    , adLastAuthenticatedTime
+    , adTotalAuthenticatedEntities
+    , adServiceName
+    , adServiceNamespace
 
     -- * AccessKeyInfo
     , AccessKeyInfo
@@ -102,6 +135,12 @@ module Network.AWS.IAM.Types
     , akmUserName
     , akmAccessKeyId
 
+    -- * AttachedPermissionsBoundary
+    , AttachedPermissionsBoundary
+    , attachedPermissionsBoundary
+    , apbPermissionsBoundaryType
+    , apbPermissionsBoundaryARN
+
     -- * AttachedPolicy
     , AttachedPolicy
     , attachedPolicy
@@ -121,6 +160,27 @@ module Network.AWS.IAM.Types
     , dtfrtRoleUsageList
     , dtfrtReason
 
+    -- * EntityDetails
+    , EntityDetails
+    , entityDetails
+    , edLastAuthenticated
+    , edEntityInfo
+
+    -- * EntityInfo
+    , EntityInfo
+    , entityInfo
+    , eiPath
+    , eiARN
+    , eiName
+    , eiType
+    , eiId
+
+    -- * ErrorDetails
+    , ErrorDetails
+    , errorDetails
+    , edMessage
+    , edCode
+
     -- * EvaluationResult
     , EvaluationResult
     , evaluationResult
@@ -129,6 +189,7 @@ module Network.AWS.IAM.Types
     , erResourceSpecificResults
     , erEvalResourceName
     , erMissingContextValues
+    , erPermissionsBoundaryDecisionDetail
     , erOrganizationsDecisionDetail
     , erEvalActionName
     , erEvalDecision
@@ -168,6 +229,12 @@ module Network.AWS.IAM.Types
     , ipCreateDate
     , ipRoles
 
+    -- * ListPoliciesGrantingServiceAccessEntry
+    , ListPoliciesGrantingServiceAccessEntry
+    , listPoliciesGrantingServiceAccessEntry
+    , lpgsaeServiceNamespace
+    , lpgsaePolicies
+
     -- * LoginProfile
     , LoginProfile
     , loginProfile
@@ -193,6 +260,7 @@ module Network.AWS.IAM.Types
     , mpdPolicyVersionList
     , mpdCreateDate
     , mpdIsAttachable
+    , mpdPermissionsBoundaryUsageCount
     , mpdDefaultVersionId
     , mpdAttachmentCount
     , mpdDescription
@@ -221,6 +289,11 @@ module Network.AWS.IAM.Types
     , ppRequireUppercaseCharacters
     , ppAllowUsersToChangePassword
 
+    -- * PermissionsBoundaryDecisionDetail
+    , PermissionsBoundaryDecisionDetail
+    , permissionsBoundaryDecisionDetail
+    , pbddAllowedByPermissionsBoundary
+
     -- * Policy
     , Policy
     , policy
@@ -231,6 +304,7 @@ module Network.AWS.IAM.Types
     , pPath
     , pCreateDate
     , pIsAttachable
+    , pPermissionsBoundaryUsageCount
     , pDefaultVersionId
     , pAttachmentCount
     , pDescription
@@ -240,6 +314,15 @@ module Network.AWS.IAM.Types
     , policyDetail
     , pdPolicyDocument
     , pdPolicyName
+
+    -- * PolicyGrantingServiceAccess
+    , PolicyGrantingServiceAccess
+    , policyGrantingServiceAccess
+    , pgsaEntityName
+    , pgsaEntityType
+    , pgsaPolicyARN
+    , pgsaPolicyName
+    , pgsaPolicyType
 
     -- * PolicyGroup
     , PolicyGroup
@@ -279,6 +362,7 @@ module Network.AWS.IAM.Types
     , rsrMatchedStatements
     , rsrEvalDecisionDetails
     , rsrMissingContextValues
+    , rsrPermissionsBoundaryDecisionDetail
     , rsrEvalResourceName
     , rsrEvalResourceDecision
 
@@ -287,7 +371,10 @@ module Network.AWS.IAM.Types
     , role'
     , rMaxSessionDuration
     , rAssumeRolePolicyDocument
+    , rRoleLastUsed
+    , rPermissionsBoundary
     , rDescription
+    , rTags
     , rPath
     , rRoleName
     , rRoleId
@@ -304,8 +391,17 @@ module Network.AWS.IAM.Types
     , rdCreateDate
     , rdRoleName
     , rdRoleId
+    , rdRoleLastUsed
+    , rdPermissionsBoundary
     , rdRolePolicyList
+    , rdTags
     , rdAttachedManagedPolicies
+
+    -- * RoleLastUsed
+    , RoleLastUsed
+    , roleLastUsed
+    , rluLastUsedDate
+    , rluRegion
 
     -- * RoleUsageType
     , RoleUsageType
@@ -355,6 +451,15 @@ module Network.AWS.IAM.Types
     , scmServerCertificateId
     , scmARN
 
+    -- * ServiceLastAccessed
+    , ServiceLastAccessed
+    , serviceLastAccessed
+    , slaLastAuthenticated
+    , slaLastAuthenticatedEntity
+    , slaTotalAuthenticatedEntities
+    , slaServiceName
+    , slaServiceNamespace
+
     -- * ServiceSpecificCredential
     , ServiceSpecificCredential
     , serviceSpecificCredential
@@ -400,10 +505,18 @@ module Network.AWS.IAM.Types
     , sEndPosition
     , sStartPosition
 
+    -- * Tag
+    , Tag
+    , tag
+    , tagKey
+    , tagValue
+
     -- * User
     , User
     , user
     , uPasswordLastUsed
+    , uPermissionsBoundary
+    , uTags
     , uPath
     , uUserName
     , uUserId
@@ -419,7 +532,9 @@ module Network.AWS.IAM.Types
     , udCreateDate
     , udUserName
     , udUserId
+    , udPermissionsBoundary
     , udUserPolicyList
+    , udTags
     , udAttachedManagedPolicies
 
     -- * VirtualMFADevice
@@ -440,32 +555,47 @@ import Network.AWS.IAM.Types.ContextKeyTypeEnum
 import Network.AWS.IAM.Types.DeletionTaskStatusType
 import Network.AWS.IAM.Types.EncodingType
 import Network.AWS.IAM.Types.EntityType
+import Network.AWS.IAM.Types.GlobalEndpointTokenVersion
+import Network.AWS.IAM.Types.JobStatusType
+import Network.AWS.IAM.Types.PermissionsBoundaryAttachmentType
 import Network.AWS.IAM.Types.PolicyEvaluationDecisionType
+import Network.AWS.IAM.Types.PolicyOwnerEntityType
 import Network.AWS.IAM.Types.PolicyScopeType
 import Network.AWS.IAM.Types.PolicySourceType
+import Network.AWS.IAM.Types.PolicyType
+import Network.AWS.IAM.Types.PolicyUsageType
 import Network.AWS.IAM.Types.ReportFormatType
 import Network.AWS.IAM.Types.ReportStateType
+import Network.AWS.IAM.Types.SortKeyType
 import Network.AWS.IAM.Types.StatusType
 import Network.AWS.IAM.Types.SummaryKeyType
+import Network.AWS.IAM.Types.AccessDetail
 import Network.AWS.IAM.Types.AccessKeyInfo
 import Network.AWS.IAM.Types.AccessKeyLastUsed
 import Network.AWS.IAM.Types.AccessKeyMetadata
+import Network.AWS.IAM.Types.AttachedPermissionsBoundary
 import Network.AWS.IAM.Types.AttachedPolicy
 import Network.AWS.IAM.Types.ContextEntry
 import Network.AWS.IAM.Types.DeletionTaskFailureReasonType
+import Network.AWS.IAM.Types.EntityDetails
+import Network.AWS.IAM.Types.EntityInfo
+import Network.AWS.IAM.Types.ErrorDetails
 import Network.AWS.IAM.Types.EvaluationResult
 import Network.AWS.IAM.Types.GetContextKeysForPolicyResponse
 import Network.AWS.IAM.Types.Group
 import Network.AWS.IAM.Types.GroupDetail
 import Network.AWS.IAM.Types.InstanceProfile
+import Network.AWS.IAM.Types.ListPoliciesGrantingServiceAccessEntry
 import Network.AWS.IAM.Types.LoginProfile
 import Network.AWS.IAM.Types.MFADevice
 import Network.AWS.IAM.Types.ManagedPolicyDetail
 import Network.AWS.IAM.Types.OpenIdConnectProviderListEntry
 import Network.AWS.IAM.Types.OrganizationsDecisionDetail
 import Network.AWS.IAM.Types.PasswordPolicy
+import Network.AWS.IAM.Types.PermissionsBoundaryDecisionDetail
 import Network.AWS.IAM.Types.Policy
 import Network.AWS.IAM.Types.PolicyDetail
+import Network.AWS.IAM.Types.PolicyGrantingServiceAccess
 import Network.AWS.IAM.Types.PolicyGroup
 import Network.AWS.IAM.Types.PolicyRole
 import Network.AWS.IAM.Types.PolicyUser
@@ -474,17 +604,20 @@ import Network.AWS.IAM.Types.Position
 import Network.AWS.IAM.Types.ResourceSpecificResult
 import Network.AWS.IAM.Types.Role
 import Network.AWS.IAM.Types.RoleDetail
+import Network.AWS.IAM.Types.RoleLastUsed
 import Network.AWS.IAM.Types.RoleUsageType
 import Network.AWS.IAM.Types.SAMLProviderListEntry
 import Network.AWS.IAM.Types.SSHPublicKey
 import Network.AWS.IAM.Types.SSHPublicKeyMetadata
 import Network.AWS.IAM.Types.ServerCertificate
 import Network.AWS.IAM.Types.ServerCertificateMetadata
+import Network.AWS.IAM.Types.ServiceLastAccessed
 import Network.AWS.IAM.Types.ServiceSpecificCredential
 import Network.AWS.IAM.Types.ServiceSpecificCredentialMetadata
 import Network.AWS.IAM.Types.SigningCertificate
 import Network.AWS.IAM.Types.SimulatePolicyResponse
 import Network.AWS.IAM.Types.Statement
+import Network.AWS.IAM.Types.Tag
 import Network.AWS.IAM.Types.User
 import Network.AWS.IAM.Types.UserDetail
 import Network.AWS.IAM.Types.VirtualMFADevice
@@ -510,6 +643,11 @@ iam
             = Just "throttling_exception"
           | has (hasCode "Throttling" . hasStatus 400) e =
             Just "throttling"
+          | has
+              (hasCode "ProvisionedThroughputExceededException" .
+                 hasStatus 400)
+              e
+            = Just "throughput_exceeded"
           | has (hasStatus 504) e = Just "gateway_timeout"
           | has
               (hasCode "RequestThrottledException" . hasStatus 400)
@@ -546,7 +684,7 @@ _InvalidAuthenticationCodeException
   = _MatchServiceError iam "InvalidAuthenticationCode"
       . hasStatus 403
 
--- | The request was rejected because it referenced an entity that does not exist. The error message describes the entity.
+-- | The request was rejected because it referenced a resource entity that does not exist. The error message describes the resource.
 --
 --
 _NoSuchEntityException :: AsError a => Getting (First ServiceError) a ServiceError
@@ -626,6 +764,15 @@ _PolicyEvaluationException
   = _MatchServiceError iam "PolicyEvaluation" .
       hasStatus 500
 
+-- | The request failed because the maximum number of concurrent requests for this account are already running.
+--
+--
+_ReportGenerationLimitExceededException :: AsError a => Getting (First ServiceError) a ServiceError
+_ReportGenerationLimitExceededException
+  = _MatchServiceError iam
+      "ReportGenerationLimitExceeded"
+      . hasStatus 409
+
 -- | The request was rejected because the public key encoding format is unsupported or unrecognized.
 --
 --
@@ -659,7 +806,7 @@ _InvalidPublicKeyException
   = _MatchServiceError iam "InvalidPublicKey" .
       hasStatus 400
 
--- | The request was rejected because the most recent credential report has expired. To generate a new credential report, use 'GenerateCredentialReport' . For more information about credential report expiration, see <http://docs.aws.amazon.com/IAM/latest/UserGuide/credential-reports.html Getting Credential Reports> in the /IAM User Guide/ .
+-- | The request was rejected because the most recent credential report has expired. To generate a new credential report, use 'GenerateCredentialReport' . For more information about credential report expiration, see <https://docs.aws.amazon.com/IAM/latest/UserGuide/credential-reports.html Getting Credential Reports> in the /IAM User Guide/ .
 --
 --
 _CredentialReportExpiredException :: AsError a => Getting (First ServiceError) a ServiceError
@@ -682,6 +829,14 @@ _ServiceFailureException :: AsError a => Getting (First ServiceError) a ServiceE
 _ServiceFailureException
   = _MatchServiceError iam "ServiceFailure" .
       hasStatus 500
+
+-- | The request was rejected because multiple requests to change this object were submitted simultaneously. Wait a few minutes and submit your request again.
+--
+--
+_ConcurrentModificationException :: AsError a => Getting (First ServiceError) a ServiceError
+_ConcurrentModificationException
+  = _MatchServiceError iam "ConcurrentModification" .
+      hasStatus 409
 
 -- | The request was rejected because the policy document was malformed. The error message describes the specific error.
 --

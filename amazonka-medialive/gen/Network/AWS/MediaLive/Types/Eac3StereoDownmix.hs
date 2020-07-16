@@ -29,7 +29,7 @@ module Network.AWS.MediaLive.Types.Eac3StereoDownmix (
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | Placeholder documentation for Eac3StereoDownmix
+-- | Eac3 Stereo Downmix
 data Eac3StereoDownmix = Eac3StereoDownmix' (CI Text)
                            deriving (Eq, Ord, Read, Show, Data, Typeable,
                                      Generic)

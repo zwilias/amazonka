@@ -18,10 +18,18 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Retrieves utilization statistics for one or more fleets. You can request utilization data for all fleets, or specify a list of one or more fleet IDs. When requesting multiple fleets, use the pagination parameters to retrieve results as a set of sequential pages. If successful, a 'FleetUtilization' object is returned for each requested fleet ID. When specifying a list of fleet IDs, utilization objects are returned only for fleets that currently exist. 
+-- Retrieves utilization statistics for one or more fleets. These statistics provide insight into how available hosting resources are currently being used. To get statistics on available hosting resources, see 'DescribeFleetCapacity' .
 --
 --
--- Fleet-related operations include:
+-- You can request utilization data for all fleets, or specify a list of one or more fleet IDs. When requesting multiple fleets, use the pagination parameters to retrieve results as a set of sequential pages. If successful, a 'FleetUtilization' object is returned for each requested fleet ID, unless the fleet identifier is not found. 
+--
+-- __Learn more__ 
+--
+-- <https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html Setting up GameLift Fleets> 
+--
+-- <https://docs.aws.amazon.com/gamelift/latest/developerguide/monitoring-cloudwatch.html#gamelift-metrics-fleet GameLift Metrics for Fleets> 
+--
+-- __Related operations__ 
 --
 --     * 'CreateFleet' 
 --
@@ -47,28 +55,14 @@
 --
 --
 --
---     * Update fleets:
---
 --     * 'UpdateFleetAttributes' 
 --
---     * 'UpdateFleetCapacity' 
---
---     * 'UpdateFleetPortSettings' 
---
---     * 'UpdateRuntimeConfiguration' 
---
---
---
---     * Manage fleet actions:
---
---     * 'StartFleetActions' 
---
---     * 'StopFleetActions' 
+--     * 'StartFleetActions' or 'StopFleetActions' 
 --
 --
 --
 --
---
+-- This operation returns paginated results.
 module Network.AWS.GameLift.DescribeFleetUtilization
     (
     -- * Creating a Request
@@ -91,6 +85,7 @@ module Network.AWS.GameLift.DescribeFleetUtilization
 import Network.AWS.GameLift.Types
 import Network.AWS.GameLift.Types.Product
 import Network.AWS.Lens
+import Network.AWS.Pager
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
@@ -115,9 +110,9 @@ data DescribeFleetUtilization = DescribeFleetUtilization'{_dfuNextToken
 --
 -- * 'dfuNextToken' - Token that indicates the start of the next sequential page of results. Use the token that is returned with a previous call to this action. To start at the beginning of the result set, do not specify a value. This parameter is ignored when the request specifies one or a list of fleet IDs.
 --
--- * 'dfuLimit' - Maximum number of results to return. Use this parameter with @NextToken@ to get results as a set of sequential pages. This parameter is ignored when the request specifies one or a list of fleet IDs.
+-- * 'dfuLimit' - The maximum number of results to return. Use this parameter with @NextToken@ to get results as a set of sequential pages. This parameter is ignored when the request specifies one or a list of fleet IDs.
 --
--- * 'dfuFleetIds' - Unique identifier for a fleet(s) to retrieve utilization data for. To request utilization data for all fleets, leave this parameter empty.
+-- * 'dfuFleetIds' - A unique identifier for a fleet(s) to retrieve utilization data for. You can use either the fleet ID or ARN value. To retrieve attributes for all current fleets, do not include this parameter. If the list of fleet identifiers includes fleets that don't currently exist, the request succeeds but no attributes for that fleet are returned.
 describeFleetUtilization
     :: DescribeFleetUtilization
 describeFleetUtilization
@@ -128,13 +123,20 @@ describeFleetUtilization
 dfuNextToken :: Lens' DescribeFleetUtilization (Maybe Text)
 dfuNextToken = lens _dfuNextToken (\ s a -> s{_dfuNextToken = a})
 
--- | Maximum number of results to return. Use this parameter with @NextToken@ to get results as a set of sequential pages. This parameter is ignored when the request specifies one or a list of fleet IDs.
+-- | The maximum number of results to return. Use this parameter with @NextToken@ to get results as a set of sequential pages. This parameter is ignored when the request specifies one or a list of fleet IDs.
 dfuLimit :: Lens' DescribeFleetUtilization (Maybe Natural)
 dfuLimit = lens _dfuLimit (\ s a -> s{_dfuLimit = a}) . mapping _Nat
 
--- | Unique identifier for a fleet(s) to retrieve utilization data for. To request utilization data for all fleets, leave this parameter empty.
+-- | A unique identifier for a fleet(s) to retrieve utilization data for. You can use either the fleet ID or ARN value. To retrieve attributes for all current fleets, do not include this parameter. If the list of fleet identifiers includes fleets that don't currently exist, the request succeeds but no attributes for that fleet are returned.
 dfuFleetIds :: Lens' DescribeFleetUtilization (Maybe (NonEmpty Text))
 dfuFleetIds = lens _dfuFleetIds (\ s a -> s{_dfuFleetIds = a}) . mapping _List1
+
+instance AWSPager DescribeFleetUtilization where
+        page rq rs
+          | stop (rs ^. dfursNextToken) = Nothing
+          | stop (rs ^. dfursFleetUtilization) = Nothing
+          | otherwise =
+            Just $ rq & dfuNextToken .~ rs ^. dfursNextToken
 
 instance AWSRequest DescribeFleetUtilization where
         type Rs DescribeFleetUtilization =
@@ -200,7 +202,7 @@ data DescribeFleetUtilizationResponse = DescribeFleetUtilizationResponse'{_dfurs
 --
 -- * 'dfursNextToken' - Token that indicates where to resume retrieving results on the next call to this action. If no token is returned, these results represent the end of the list.
 --
--- * 'dfursFleetUtilization' - Collection of objects containing utilization information for each requested fleet ID.
+-- * 'dfursFleetUtilization' - A collection of objects containing utilization information for each requested fleet ID.
 --
 -- * 'dfursResponseStatus' - -- | The response status code.
 describeFleetUtilizationResponse
@@ -216,7 +218,7 @@ describeFleetUtilizationResponse pResponseStatus_
 dfursNextToken :: Lens' DescribeFleetUtilizationResponse (Maybe Text)
 dfursNextToken = lens _dfursNextToken (\ s a -> s{_dfursNextToken = a})
 
--- | Collection of objects containing utilization information for each requested fleet ID.
+-- | A collection of objects containing utilization information for each requested fleet ID.
 dfursFleetUtilization :: Lens' DescribeFleetUtilizationResponse [FleetUtilization]
 dfursFleetUtilization = lens _dfursFleetUtilization (\ s a -> s{_dfursFleetUtilization = a}) . _Default . _Coerce
 

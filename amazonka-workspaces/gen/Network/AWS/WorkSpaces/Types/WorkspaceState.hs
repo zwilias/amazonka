@@ -27,6 +27,7 @@ module Network.AWS.WorkSpaces.Types.WorkspaceState (
     , WSPending
     , WSRebooting
     , WSRebuilding
+    , WSRestoring
     , WSStarting
     , WSStopped
     , WSStopping
@@ -69,6 +70,9 @@ pattern WSRebooting = WorkspaceState' "REBOOTING"
 pattern WSRebuilding :: WorkspaceState
 pattern WSRebuilding = WorkspaceState' "REBUILDING"
 
+pattern WSRestoring :: WorkspaceState
+pattern WSRestoring = WorkspaceState' "RESTORING"
+
 pattern WSStarting :: WorkspaceState
 pattern WSStarting = WorkspaceState' "STARTING"
 
@@ -102,6 +106,7 @@ pattern WSUpdating = WorkspaceState' "UPDATING"
   WSPending,
   WSRebooting,
   WSRebuilding,
+  WSRestoring,
   WSStarting,
   WSStopped,
   WSStopping,
@@ -132,14 +137,15 @@ instance Enum WorkspaceState where
         5 -> WSPending
         6 -> WSRebooting
         7 -> WSRebuilding
-        8 -> WSStarting
-        9 -> WSStopped
-        10 -> WSStopping
-        11 -> WSSuspended
-        12 -> WSTerminated
-        13 -> WSTerminating
-        14 -> WSUnhealthy
-        15 -> WSUpdating
+        8 -> WSRestoring
+        9 -> WSStarting
+        10 -> WSStopped
+        11 -> WSStopping
+        12 -> WSSuspended
+        13 -> WSTerminated
+        14 -> WSTerminating
+        15 -> WSUnhealthy
+        16 -> WSUpdating
         _ -> (error . showText) $ "Unknown index for WorkspaceState: " <> toText i
     fromEnum x = case x of
         WSAdminMaintenance -> 0
@@ -150,14 +156,15 @@ instance Enum WorkspaceState where
         WSPending -> 5
         WSRebooting -> 6
         WSRebuilding -> 7
-        WSStarting -> 8
-        WSStopped -> 9
-        WSStopping -> 10
-        WSSuspended -> 11
-        WSTerminated -> 12
-        WSTerminating -> 13
-        WSUnhealthy -> 14
-        WSUpdating -> 15
+        WSRestoring -> 8
+        WSStarting -> 9
+        WSStopped -> 10
+        WSStopping -> 11
+        WSSuspended -> 12
+        WSTerminated -> 13
+        WSTerminating -> 14
+        WSUnhealthy -> 15
+        WSUpdating -> 16
         WorkspaceState' name -> (error . showText) $ "Unknown WorkspaceState: " <> original name
 
 -- | Represents the bounds of /known/ $WorkspaceState.

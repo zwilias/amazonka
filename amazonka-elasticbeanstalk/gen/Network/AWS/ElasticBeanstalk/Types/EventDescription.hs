@@ -50,7 +50,7 @@ data EventDescription = EventDescription'{_edRequestId
 --
 -- * 'edVersionLabel' - The release label for the application version associated with this event.
 --
--- * 'edPlatformARN' - The ARN of the platform.
+-- * 'edPlatformARN' - The ARN of the platform version.
 --
 -- * 'edEnvironmentName' - The name of the environment associated with this event.
 --
@@ -85,7 +85,7 @@ edSeverity = lens _edSeverity (\ s a -> s{_edSeverity = a})
 edVersionLabel :: Lens' EventDescription (Maybe Text)
 edVersionLabel = lens _edVersionLabel (\ s a -> s{_edVersionLabel = a})
 
--- | The ARN of the platform.
+-- | The ARN of the platform version.
 edPlatformARN :: Lens' EventDescription (Maybe Text)
 edPlatformARN = lens _edPlatformARN (\ s a -> s{_edPlatformARN = a})
 

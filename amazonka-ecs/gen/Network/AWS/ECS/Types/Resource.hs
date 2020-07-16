@@ -45,7 +45,7 @@ data Resource = Resource'{_rStringSetValue ::
 --
 -- * 'rLongValue' - When the @longValue@ type is set, the value of the resource must be an extended precision floating-point type.
 --
--- * 'rName' - The name of the resource, such as @cpu@ , @memory@ , @ports@ , or a user-defined resource.
+-- * 'rName' - The name of the resource, such as @CPU@ , @MEMORY@ , @PORTS@ , @PORTS_UDP@ , or a user-defined resource.
 --
 -- * 'rType' - The type of the resource, such as @INTEGER@ , @DOUBLE@ , @LONG@ , or @STRINGSET@ .
 resource
@@ -72,7 +72,7 @@ rDoubleValue = lens _rDoubleValue (\ s a -> s{_rDoubleValue = a})
 rLongValue :: Lens' Resource (Maybe Integer)
 rLongValue = lens _rLongValue (\ s a -> s{_rLongValue = a})
 
--- | The name of the resource, such as @cpu@ , @memory@ , @ports@ , or a user-defined resource.
+-- | The name of the resource, such as @CPU@ , @MEMORY@ , @PORTS@ , @PORTS_UDP@ , or a user-defined resource.
 rName :: Lens' Resource (Maybe Text)
 rName = lens _rName (\ s a -> s{_rName = a})
 

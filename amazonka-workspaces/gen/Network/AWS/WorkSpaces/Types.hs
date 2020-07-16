@@ -18,6 +18,7 @@ module Network.AWS.WorkSpaces.Types
     -- * Errors
     , _InvalidResourceStateException
     , _ResourceAssociatedException
+    , _WorkspacesDefaultRoleNotFoundException
     , _InvalidParameterValuesException
     , _UnsupportedWorkspaceConfigurationException
     , _ResourceCreationFailedException
@@ -28,6 +29,10 @@ module Network.AWS.WorkSpaces.Types
     , _ResourceLimitExceededException
     , _OperationInProgressException
     , _ResourceUnavailableException
+    , _UnsupportedNetworkConfigurationException
+
+    -- * AccessPropertyValue
+    , AccessPropertyValue (..)
 
     -- * Compute
     , Compute (..)
@@ -35,11 +40,26 @@ module Network.AWS.WorkSpaces.Types
     -- * ConnectionState
     , ConnectionState (..)
 
+    -- * DedicatedTenancyModificationStateEnum
+    , DedicatedTenancyModificationStateEnum (..)
+
+    -- * DedicatedTenancySupportEnum
+    , DedicatedTenancySupportEnum (..)
+
+    -- * DedicatedTenancySupportResultEnum
+    , DedicatedTenancySupportResultEnum (..)
+
     -- * ModificationResourceEnum
     , ModificationResourceEnum (..)
 
     -- * ModificationStateEnum
     , ModificationStateEnum (..)
+
+    -- * OperatingSystemType
+    , OperatingSystemType (..)
+
+    -- * ReconnectEnum
+    , ReconnectEnum (..)
 
     -- * RunningMode
     , RunningMode (..)
@@ -47,14 +67,47 @@ module Network.AWS.WorkSpaces.Types
     -- * TargetWorkspaceState
     , TargetWorkspaceState (..)
 
+    -- * Tenancy
+    , Tenancy (..)
+
     -- * WorkspaceDirectoryState
     , WorkspaceDirectoryState (..)
 
     -- * WorkspaceDirectoryType
     , WorkspaceDirectoryType (..)
 
+    -- * WorkspaceImageIngestionProcess
+    , WorkspaceImageIngestionProcess (..)
+
+    -- * WorkspaceImageRequiredTenancy
+    , WorkspaceImageRequiredTenancy (..)
+
+    -- * WorkspaceImageState
+    , WorkspaceImageState (..)
+
     -- * WorkspaceState
     , WorkspaceState (..)
+
+    -- * AccountModification
+    , AccountModification
+    , accountModification
+    , amStartTime
+    , amDedicatedTenancySupport
+    , amModificationState
+    , amDedicatedTenancyManagementCidrRange
+    , amErrorCode
+    , amErrorMessage
+
+    -- * ClientProperties
+    , ClientProperties
+    , clientProperties
+    , cpReconnectEnabled
+
+    -- * ClientPropertiesResult
+    , ClientPropertiesResult
+    , clientPropertiesResult
+    , cprResourceId
+    , cprClientProperties
 
     -- * ComputeType
     , ComputeType
@@ -67,6 +120,7 @@ module Network.AWS.WorkSpaces.Types
     , dwcpCustomSecurityGroupId
     , dwcpUserEnabledAsLocalAdministrator
     , dwcpEnableWorkDocs
+    , dwcpEnableMaintenanceMode
     , dwcpEnableInternetAccess
     , dwcpDefaultOu
 
@@ -96,6 +150,11 @@ module Network.AWS.WorkSpaces.Types
     , msState
     , msResource
 
+    -- * OperatingSystem
+    , OperatingSystem
+    , operatingSystem
+    , osType
+
     -- * RebootRequest
     , RebootRequest
     , rebootRequest
@@ -110,6 +169,20 @@ module Network.AWS.WorkSpaces.Types
     , RootStorage
     , rootStorage
     , rsCapacity
+
+    -- * SelfservicePermissions
+    , SelfservicePermissions
+    , selfservicePermissions
+    , spRestartWorkspace
+    , spChangeComputeType
+    , spSwitchRunningMode
+    , spRebuildWorkspace
+    , spIncreaseVolumeSize
+
+    -- * Snapshot
+    , Snapshot
+    , snapshot
+    , sSnapshotTime
 
     -- * StartRequest
     , StartRequest
@@ -156,13 +229,26 @@ module Network.AWS.WorkSpaces.Types
     , wUserVolumeEncryptionEnabled
     , wErrorMessage
 
+    -- * WorkspaceAccessProperties
+    , WorkspaceAccessProperties
+    , workspaceAccessProperties
+    , wapDeviceTypeWindows
+    , wapDeviceTypeWeb
+    , wapDeviceTypeAndroid
+    , wapDeviceTypeOSx
+    , wapDeviceTypeChromeOS
+    , wapDeviceTypeIos
+    , wapDeviceTypeZeroClient
+
     -- * WorkspaceBundle
     , WorkspaceBundle
     , workspaceBundle
+    , wbLastUpdatedTime
     , wbBundleId
     , wbOwner
     , wbRootStorage
     , wbName
+    , wbImageId
     , wbComputeType
     , wbUserStorage
     , wbDescription
@@ -174,6 +260,15 @@ module Network.AWS.WorkSpaces.Types
     , wcsConnectionStateCheckTimestamp
     , wcsWorkspaceId
     , wcsConnectionState
+
+    -- * WorkspaceCreationProperties
+    , WorkspaceCreationProperties
+    , workspaceCreationProperties
+    , wcpCustomSecurityGroupId
+    , wcpUserEnabledAsLocalAdministrator
+    , wcpEnableMaintenanceMode
+    , wcpEnableInternetAccess
+    , wcpDefaultOu
 
     -- * WorkspaceDirectory
     , WorkspaceDirectory
@@ -188,9 +283,24 @@ module Network.AWS.WorkSpaces.Types
     , wdAlias
     , wdWorkspaceSecurityGroupId
     , wdDirectoryType
+    , wdTenancy
     , wdWorkspaceCreationProperties
     , wdDNSIPAddresses
+    , wdWorkspaceAccessProperties
     , wdDirectoryName
+    , wdSelfservicePermissions
+
+    -- * WorkspaceImage
+    , WorkspaceImage
+    , workspaceImage
+    , wiState
+    , wiOperatingSystem
+    , wiRequiredTenancy
+    , wiName
+    , wiImageId
+    , wiErrorCode
+    , wiErrorMessage
+    , wiDescription
 
     -- * WorkspaceProperties
     , WorkspaceProperties
@@ -225,33 +335,52 @@ module Network.AWS.WorkSpaces.Types
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Sign.V4
+import Network.AWS.WorkSpaces.Types.AccessPropertyValue
 import Network.AWS.WorkSpaces.Types.Compute
 import Network.AWS.WorkSpaces.Types.ConnectionState
+import Network.AWS.WorkSpaces.Types.DedicatedTenancyModificationStateEnum
+import Network.AWS.WorkSpaces.Types.DedicatedTenancySupportEnum
+import Network.AWS.WorkSpaces.Types.DedicatedTenancySupportResultEnum
 import Network.AWS.WorkSpaces.Types.ModificationResourceEnum
 import Network.AWS.WorkSpaces.Types.ModificationStateEnum
+import Network.AWS.WorkSpaces.Types.OperatingSystemType
+import Network.AWS.WorkSpaces.Types.ReconnectEnum
 import Network.AWS.WorkSpaces.Types.RunningMode
 import Network.AWS.WorkSpaces.Types.TargetWorkspaceState
+import Network.AWS.WorkSpaces.Types.Tenancy
 import Network.AWS.WorkSpaces.Types.WorkspaceDirectoryState
 import Network.AWS.WorkSpaces.Types.WorkspaceDirectoryType
+import Network.AWS.WorkSpaces.Types.WorkspaceImageIngestionProcess
+import Network.AWS.WorkSpaces.Types.WorkspaceImageRequiredTenancy
+import Network.AWS.WorkSpaces.Types.WorkspaceImageState
 import Network.AWS.WorkSpaces.Types.WorkspaceState
+import Network.AWS.WorkSpaces.Types.AccountModification
+import Network.AWS.WorkSpaces.Types.ClientProperties
+import Network.AWS.WorkSpaces.Types.ClientPropertiesResult
 import Network.AWS.WorkSpaces.Types.ComputeType
 import Network.AWS.WorkSpaces.Types.DefaultWorkspaceCreationProperties
 import Network.AWS.WorkSpaces.Types.FailedCreateWorkspaceRequest
 import Network.AWS.WorkSpaces.Types.FailedWorkspaceChangeRequest
 import Network.AWS.WorkSpaces.Types.IPRuleItem
 import Network.AWS.WorkSpaces.Types.ModificationState
+import Network.AWS.WorkSpaces.Types.OperatingSystem
 import Network.AWS.WorkSpaces.Types.RebootRequest
 import Network.AWS.WorkSpaces.Types.RebuildRequest
 import Network.AWS.WorkSpaces.Types.RootStorage
+import Network.AWS.WorkSpaces.Types.SelfservicePermissions
+import Network.AWS.WorkSpaces.Types.Snapshot
 import Network.AWS.WorkSpaces.Types.StartRequest
 import Network.AWS.WorkSpaces.Types.StopRequest
 import Network.AWS.WorkSpaces.Types.Tag
 import Network.AWS.WorkSpaces.Types.TerminateRequest
 import Network.AWS.WorkSpaces.Types.UserStorage
 import Network.AWS.WorkSpaces.Types.Workspace
+import Network.AWS.WorkSpaces.Types.WorkspaceAccessProperties
 import Network.AWS.WorkSpaces.Types.WorkspaceBundle
 import Network.AWS.WorkSpaces.Types.WorkspaceConnectionStatus
+import Network.AWS.WorkSpaces.Types.WorkspaceCreationProperties
 import Network.AWS.WorkSpaces.Types.WorkspaceDirectory
+import Network.AWS.WorkSpaces.Types.WorkspaceImage
 import Network.AWS.WorkSpaces.Types.WorkspaceProperties
 import Network.AWS.WorkSpaces.Types.WorkspaceRequest
 import Network.AWS.WorkSpaces.Types.WorkspacesIPGroup
@@ -279,6 +408,11 @@ workSpaces
             = Just "throttling_exception"
           | has (hasCode "Throttling" . hasStatus 400) e =
             Just "throttling"
+          | has
+              (hasCode "ProvisionedThroughputExceededException" .
+                 hasStatus 400)
+              e
+            = Just "throughput_exceeded"
           | has (hasStatus 504) e = Just "gateway_timeout"
           | has
               (hasCode "RequestThrottledException" . hasStatus 400)
@@ -306,6 +440,14 @@ _ResourceAssociatedException
   = _MatchServiceError workSpaces
       "ResourceAssociatedException"
 
+-- | The workspaces_DefaultRole role could not be found. If this is the first time you are registering a directory, you will need to create the workspaces_DefaultRole role before you can register a directory. For more information, see <https://docs.aws.amazon.com/workspaces/latest/adminguide/workspaces-access-control.html#create-default-role Creating the workspaces_DefaultRole Role> .
+--
+--
+_WorkspacesDefaultRoleNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
+_WorkspacesDefaultRoleNotFoundException
+  = _MatchServiceError workSpaces
+      "WorkspacesDefaultRoleNotFoundException"
+
 -- | One or more parameter values are not valid.
 --
 --
@@ -314,7 +456,7 @@ _InvalidParameterValuesException
   = _MatchServiceError workSpaces
       "InvalidParameterValuesException"
 
--- | The configuration of this WorkSpace is not supported for this operation. For more information, see the <http://docs.aws.amazon.com/workspaces/latest/adminguide/ Amazon WorkSpaces Administration Guide> . 
+-- | The configuration of this WorkSpace is not supported for this operation. For more information, see <https://docs.aws.amazon.com/workspaces/latest/adminguide/required-service-components.html Required Configuration and Service Components for WorkSpaces > .
 --
 --
 _UnsupportedWorkspaceConfigurationException :: AsError a => Getting (First ServiceError) a ServiceError
@@ -385,3 +527,11 @@ _ResourceUnavailableException :: AsError a => Getting (First ServiceError) a Ser
 _ResourceUnavailableException
   = _MatchServiceError workSpaces
       "ResourceUnavailableException"
+
+-- | The configuration of this network is not supported for this operation, or your network configuration conflicts with the Amazon WorkSpaces management network IP range. For more information, see <https://docs.aws.amazon.com/workspaces/latest/adminguide/amazon-workspaces-vpc.html Configure a VPC for Amazon WorkSpaces> .
+--
+--
+_UnsupportedNetworkConfigurationException :: AsError a => Getting (First ServiceError) a ServiceError
+_UnsupportedNetworkConfigurationException
+  = _MatchServiceError workSpaces
+      "UnsupportedNetworkConfigurationException"

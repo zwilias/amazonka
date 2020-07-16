@@ -27,7 +27,7 @@ module Network.AWS.MediaLive.Types.HlsEncryptionType (
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | Placeholder documentation for HlsEncryptionType
+-- | Hls Encryption Type
 data HlsEncryptionType = HlsEncryptionType' (CI Text)
                            deriving (Eq, Ord, Read, Show, Data, Typeable,
                                      Generic)

@@ -58,7 +58,7 @@ data GetFolder = GetFolder'{_gfAuthenticationToken ::
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'gfAuthenticationToken' - Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.
+-- * 'gfAuthenticationToken' - Amazon WorkDocs authentication token. Not required when using AWS administrator credentials to access the API.
 --
 -- * 'gfIncludeCustomMetadata' - Set to TRUE to include custom metadata in the response.
 --
@@ -71,7 +71,7 @@ getFolder pFolderId_
                _gfIncludeCustomMetadata = Nothing,
                _gfFolderId = pFolderId_}
 
--- | Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.
+-- | Amazon WorkDocs authentication token. Not required when using AWS administrator credentials to access the API.
 gfAuthenticationToken :: Lens' GetFolder (Maybe Text)
 gfAuthenticationToken = lens _gfAuthenticationToken (\ s a -> s{_gfAuthenticationToken = a}) . mapping _Sensitive
 

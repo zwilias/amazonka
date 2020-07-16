@@ -24,7 +24,9 @@ import Network.AWS.S3.Types.LambdaFunctionConfiguration
 import Network.AWS.S3.Types.QueueConfiguration
 import Network.AWS.S3.Types.TopicConfiguration
 
--- | Container for specifying the notification configuration of the bucket. If this element is empty, notifications are turned off on the bucket.
+-- | A container for specifying the notification configuration of the bucket. If this element is empty, notifications are turned off for the bucket.
+--
+--
 --
 -- /See:/ 'notificationConfiguration' smart constructor.
 data NotificationConfiguration = NotificationConfiguration'{_ncQueueConfigurations
@@ -46,11 +48,11 @@ data NotificationConfiguration = NotificationConfiguration'{_ncQueueConfiguratio
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'ncQueueConfigurations' - Undocumented member.
+-- * 'ncQueueConfigurations' - The Amazon Simple Queue Service queues to publish messages to and the events for which to publish messages.
 --
--- * 'ncTopicConfigurations' - Undocumented member.
+-- * 'ncTopicConfigurations' - The topic to which notifications are sent and the events for which notifications are generated.
 --
--- * 'ncLambdaFunctionConfigurations' - Undocumented member.
+-- * 'ncLambdaFunctionConfigurations' - Describes the AWS Lambda functions to invoke and the events for which to invoke them.
 notificationConfiguration
     :: NotificationConfiguration
 notificationConfiguration
@@ -59,15 +61,15 @@ notificationConfiguration
                                _ncTopicConfigurations = Nothing,
                                _ncLambdaFunctionConfigurations = Nothing}
 
--- | Undocumented member.
+-- | The Amazon Simple Queue Service queues to publish messages to and the events for which to publish messages.
 ncQueueConfigurations :: Lens' NotificationConfiguration [QueueConfiguration]
 ncQueueConfigurations = lens _ncQueueConfigurations (\ s a -> s{_ncQueueConfigurations = a}) . _Default . _Coerce
 
--- | Undocumented member.
+-- | The topic to which notifications are sent and the events for which notifications are generated.
 ncTopicConfigurations :: Lens' NotificationConfiguration [TopicConfiguration]
 ncTopicConfigurations = lens _ncTopicConfigurations (\ s a -> s{_ncTopicConfigurations = a}) . _Default . _Coerce
 
--- | Undocumented member.
+-- | Describes the AWS Lambda functions to invoke and the events for which to invoke them.
 ncLambdaFunctionConfigurations :: Lens' NotificationConfiguration [LambdaFunctionConfiguration]
 ncLambdaFunctionConfigurations = lens _ncLambdaFunctionConfigurations (\ s a -> s{_ncLambdaFunctionConfigurations = a}) . _Default . _Coerce
 

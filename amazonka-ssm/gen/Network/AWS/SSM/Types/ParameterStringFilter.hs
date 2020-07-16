@@ -23,6 +23,14 @@ import Network.AWS.Prelude
 -- | One or more filters. Use a filter to return a more specific list of results.
 --
 --
+-- /Important:/ The @ParameterStringFilter@ object is used by the 'DescribeParameters' and 'GetParametersByPath' API actions. However, not all of the pattern values listed for @Key@ can be used with both actions.
+--
+-- For @DescribeActions@ , all of the listed patterns are valid, with the exception of @Label@ .
+--
+-- For @GetParametersByPath@ , the following patterns listed for @Key@ are not valid: @Name@ , @Path@ , and @Tier@ .
+--
+-- For examples of CLI commands demonstrating valid parameter filter constructions, see <https://docs.aws.amazon.com/systems-manager/latest/userguide/parameter-search.html Searching for Systems Manager parameters> in the /AWS Systems Manager User Guide/ .
+--
 --
 -- /See:/ 'parameterStringFilter' smart constructor.
 data ParameterStringFilter = ParameterStringFilter'{_psfValues
@@ -38,7 +46,7 @@ data ParameterStringFilter = ParameterStringFilter'{_psfValues
 --
 -- * 'psfValues' - The value you want to search for.
 --
--- * 'psfOption' - Valid options are Equals and BeginsWith. For Path filter, valid options are Recursive and OneLevel.
+-- * 'psfOption' - For all filters used with 'DescribeParameters' , valid options include @Equals@ and @BeginsWith@ . The @Name@ filter additionally supports the @Contains@ option. (Exception: For filters using the key @Path@ , valid options include @Recursive@ and @OneLevel@ .) For filters used with 'GetParametersByPath' , valid options include @Equals@ and @BeginsWith@ . (Exception: For filters using the key @Label@ , the only valid option is @Equals@ .)
 --
 -- * 'psfKey' - The name of the filter.
 parameterStringFilter
@@ -52,7 +60,7 @@ parameterStringFilter pKey_
 psfValues :: Lens' ParameterStringFilter (Maybe (NonEmpty Text))
 psfValues = lens _psfValues (\ s a -> s{_psfValues = a}) . mapping _List1
 
--- | Valid options are Equals and BeginsWith. For Path filter, valid options are Recursive and OneLevel.
+-- | For all filters used with 'DescribeParameters' , valid options include @Equals@ and @BeginsWith@ . The @Name@ filter additionally supports the @Contains@ option. (Exception: For filters using the key @Path@ , valid options include @Recursive@ and @OneLevel@ .) For filters used with 'GetParametersByPath' , valid options include @Equals@ and @BeginsWith@ . (Exception: For filters using the key @Label@ , the only valid option is @Equals@ .)
 psfOption :: Lens' ParameterStringFilter (Maybe Text)
 psfOption = lens _psfOption (\ s a -> s{_psfOption = a})
 

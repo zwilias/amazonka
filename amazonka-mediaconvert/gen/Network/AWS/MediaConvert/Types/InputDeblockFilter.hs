@@ -19,8 +19,8 @@
 module Network.AWS.MediaConvert.Types.InputDeblockFilter (
   InputDeblockFilter (
     ..
-    , Disabled
-    , Enabled
+    , IDFDisabled
+    , IDFEnabled
     )
   ) where
 
@@ -33,15 +33,15 @@ data InputDeblockFilter = InputDeblockFilter' (CI
                             deriving (Eq, Ord, Read, Show, Data, Typeable,
                                       Generic)
 
-pattern Disabled :: InputDeblockFilter
-pattern Disabled = InputDeblockFilter' "DISABLED"
+pattern IDFDisabled :: InputDeblockFilter
+pattern IDFDisabled = InputDeblockFilter' "DISABLED"
 
-pattern Enabled :: InputDeblockFilter
-pattern Enabled = InputDeblockFilter' "ENABLED"
+pattern IDFEnabled :: InputDeblockFilter
+pattern IDFEnabled = InputDeblockFilter' "ENABLED"
 
 {-# COMPLETE
-  Disabled,
-  Enabled,
+  IDFDisabled,
+  IDFEnabled,
   InputDeblockFilter' #-}
 
 instance FromText InputDeblockFilter where
@@ -56,20 +56,20 @@ instance ToText InputDeblockFilter where
 --   fromEnum is a partial function, and will error on values unknown at generation time.
 instance Enum InputDeblockFilter where
     toEnum i = case i of
-        0 -> Disabled
-        1 -> Enabled
+        0 -> IDFDisabled
+        1 -> IDFEnabled
         _ -> (error . showText) $ "Unknown index for InputDeblockFilter: " <> toText i
     fromEnum x = case x of
-        Disabled -> 0
-        Enabled -> 1
+        IDFDisabled -> 0
+        IDFEnabled -> 1
         InputDeblockFilter' name -> (error . showText) $ "Unknown InputDeblockFilter: " <> original name
 
 -- | Represents the bounds of /known/ $InputDeblockFilter.
 --   AWS may have added more since the source was generated.
 --   This instance exists only for backward compatibility.
 instance Bounded InputDeblockFilter where
-    minBound = Disabled
-    maxBound = Enabled
+    minBound = IDFDisabled
+    maxBound = IDFEnabled
 
 instance Hashable     InputDeblockFilter
 instance NFData       InputDeblockFilter

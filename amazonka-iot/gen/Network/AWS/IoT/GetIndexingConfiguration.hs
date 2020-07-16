@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Gets the search configuration.
+-- Gets the indexing configuration.
 --
 --
 module Network.AWS.IoT.GetIndexingConfiguration
@@ -31,6 +31,7 @@ module Network.AWS.IoT.GetIndexingConfiguration
     , getIndexingConfigurationResponse
     , GetIndexingConfigurationResponse
     -- * Response Lenses
+    , gicrsThingGroupIndexingConfiguration
     , gicrsThingIndexingConfiguration
     , gicrsResponseStatus
     ) where
@@ -61,8 +62,9 @@ instance AWSRequest GetIndexingConfiguration where
           = receiveJSON
               (\ s h x ->
                  GetIndexingConfigurationResponse' <$>
-                   (x .?> "thingIndexingConfiguration") <*>
-                     (pure (fromEnum s)))
+                   (x .?> "thingGroupIndexingConfiguration") <*>
+                     (x .?> "thingIndexingConfiguration")
+                     <*> (pure (fromEnum s)))
 
 instance Hashable GetIndexingConfiguration where
 
@@ -78,7 +80,11 @@ instance ToQuery GetIndexingConfiguration where
         toQuery = const mempty
 
 -- | /See:/ 'getIndexingConfigurationResponse' smart constructor.
-data GetIndexingConfigurationResponse = GetIndexingConfigurationResponse'{_gicrsThingIndexingConfiguration
+data GetIndexingConfigurationResponse = GetIndexingConfigurationResponse'{_gicrsThingGroupIndexingConfiguration
+                                                                          ::
+                                                                          !(Maybe
+                                                                              ThingGroupIndexingConfiguration),
+                                                                          _gicrsThingIndexingConfiguration
                                                                           ::
                                                                           !(Maybe
                                                                               ThingIndexingConfiguration),
@@ -92,6 +98,8 @@ data GetIndexingConfigurationResponse = GetIndexingConfigurationResponse'{_gicrs
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
+-- * 'gicrsThingGroupIndexingConfiguration' - The index configuration.
+--
 -- * 'gicrsThingIndexingConfiguration' - Thing indexing configuration.
 --
 -- * 'gicrsResponseStatus' - -- | The response status code.
@@ -99,9 +107,15 @@ getIndexingConfigurationResponse
     :: Int -- ^ 'gicrsResponseStatus'
     -> GetIndexingConfigurationResponse
 getIndexingConfigurationResponse pResponseStatus_
-  = GetIndexingConfigurationResponse'{_gicrsThingIndexingConfiguration
+  = GetIndexingConfigurationResponse'{_gicrsThingGroupIndexingConfiguration
                                         = Nothing,
+                                      _gicrsThingIndexingConfiguration =
+                                        Nothing,
                                       _gicrsResponseStatus = pResponseStatus_}
+
+-- | The index configuration.
+gicrsThingGroupIndexingConfiguration :: Lens' GetIndexingConfigurationResponse (Maybe ThingGroupIndexingConfiguration)
+gicrsThingGroupIndexingConfiguration = lens _gicrsThingGroupIndexingConfiguration (\ s a -> s{_gicrsThingGroupIndexingConfiguration = a})
 
 -- | Thing indexing configuration.
 gicrsThingIndexingConfiguration :: Lens' GetIndexingConfigurationResponse (Maybe ThingIndexingConfiguration)

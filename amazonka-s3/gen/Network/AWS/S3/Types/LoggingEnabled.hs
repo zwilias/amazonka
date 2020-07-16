@@ -22,7 +22,9 @@ import Network.AWS.Prelude
 import Network.AWS.S3.Internal
 import Network.AWS.S3.Types.TargetGrant
 
--- | Container for logging information. Presence of this element indicates that logging is enabled. Parameters TargetBucket and TargetPrefix are required in this case.
+-- | Describes where logs are stored and the prefix that Amazon S3 assigns to all log object keys for a bucket. For more information, see <https://docs.aws.amazon.com/AmazonS3/latest/API/RESTBucketPUTlogging.html PUT Bucket logging> in the /Amazon Simple Storage Service API Reference/ .
+--
+--
 --
 -- /See:/ 'loggingEnabled' smart constructor.
 data LoggingEnabled = LoggingEnabled'{_leTargetGrants
@@ -35,11 +37,11 @@ data LoggingEnabled = LoggingEnabled'{_leTargetGrants
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'leTargetGrants' - Undocumented member.
+-- * 'leTargetGrants' - Container for granting information.
 --
--- * 'leTargetBucket' - Specifies the bucket where you want Amazon S3 to store server access logs. You can have your logs delivered to any bucket that you own, including the same bucket that is being logged. You can also configure multiple buckets to deliver their logs to the same target bucket. In this case you should choose a different TargetPrefix for each source bucket so that the delivered log files can be distinguished by key.
+-- * 'leTargetBucket' - Specifies the bucket where you want Amazon S3 to store server access logs. You can have your logs delivered to any bucket that you own, including the same bucket that is being logged. You can also configure multiple buckets to deliver their logs to the same target bucket. In this case, you should choose a different @TargetPrefix@ for each source bucket so that the delivered log files can be distinguished by key.
 --
--- * 'leTargetPrefix' - This element lets you specify a prefix for the keys that the log files will be stored under.
+-- * 'leTargetPrefix' - A prefix for all log object keys. If you store log files from multiple Amazon S3 buckets in a single bucket, you can use a prefix to distinguish which log files came from which bucket.
 loggingEnabled
     :: Text -- ^ 'leTargetBucket'
     -> Text -- ^ 'leTargetPrefix'
@@ -49,15 +51,15 @@ loggingEnabled pTargetBucket_ pTargetPrefix_
                     _leTargetBucket = pTargetBucket_,
                     _leTargetPrefix = pTargetPrefix_}
 
--- | Undocumented member.
+-- | Container for granting information.
 leTargetGrants :: Lens' LoggingEnabled [TargetGrant]
 leTargetGrants = lens _leTargetGrants (\ s a -> s{_leTargetGrants = a}) . _Default . _Coerce
 
--- | Specifies the bucket where you want Amazon S3 to store server access logs. You can have your logs delivered to any bucket that you own, including the same bucket that is being logged. You can also configure multiple buckets to deliver their logs to the same target bucket. In this case you should choose a different TargetPrefix for each source bucket so that the delivered log files can be distinguished by key.
+-- | Specifies the bucket where you want Amazon S3 to store server access logs. You can have your logs delivered to any bucket that you own, including the same bucket that is being logged. You can also configure multiple buckets to deliver their logs to the same target bucket. In this case, you should choose a different @TargetPrefix@ for each source bucket so that the delivered log files can be distinguished by key.
 leTargetBucket :: Lens' LoggingEnabled Text
 leTargetBucket = lens _leTargetBucket (\ s a -> s{_leTargetBucket = a})
 
--- | This element lets you specify a prefix for the keys that the log files will be stored under.
+-- | A prefix for all log object keys. If you store log files from multiple Amazon S3 buckets in a single bucket, you can use a prefix to distinguish which log files came from which bucket.
 leTargetPrefix :: Lens' LoggingEnabled Text
 leTargetPrefix = lens _leTargetPrefix (\ s a -> s{_leTargetPrefix = a})
 

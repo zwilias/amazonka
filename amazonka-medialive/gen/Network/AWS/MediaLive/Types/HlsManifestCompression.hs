@@ -27,7 +27,7 @@ module Network.AWS.MediaLive.Types.HlsManifestCompression (
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | Placeholder documentation for HlsManifestCompression
+-- | Hls Manifest Compression
 data HlsManifestCompression = HlsManifestCompression' (CI
                                                          Text)
                                 deriving (Eq, Ord, Read, Show, Data, Typeable,

@@ -26,7 +26,6 @@ module Network.AWS.GuardDuty.Types.FindingStatisticType (
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | The types of finding statistics.
 data FindingStatisticType = FindingStatisticType' (CI
                                                      Text)
                               deriving (Eq, Ord, Read, Show, Data, Typeable,

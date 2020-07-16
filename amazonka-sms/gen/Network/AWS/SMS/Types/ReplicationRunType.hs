@@ -27,7 +27,6 @@ module Network.AWS.SMS.Types.ReplicationRunType (
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | Type of Replication Run
 data ReplicationRunType = ReplicationRunType' (CI
                                                  Text)
                             deriving (Eq, Ord, Read, Show, Data, Typeable,

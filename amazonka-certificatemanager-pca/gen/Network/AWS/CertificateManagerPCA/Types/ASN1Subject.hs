@@ -20,7 +20,7 @@ module Network.AWS.CertificateManagerPCA.Types.ASN1Subject where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | Contains information about the certificate subject. The certificate can be one issued by your private certificate authority (CA) or it can be your private CA certificate. The __Subject__ field in the certificate identifies the entity that owns or controls the public key in the certificate. The entity can be a user, computer, device, or service. The __Subject__ must contain an X.500 distinguished name (DN). A DN is a sequence of relative distinguished names (RDNs). The RDNs are separated by commas in the certificate. The DN must be unique for each for each entity, but your private CA can issue more than one certificate with the same DN to the same entity. 
+-- | Contains information about the certificate subject. The certificate can be one issued by your private certificate authority (CA) or it can be your private CA certificate. The __Subject__ field in the certificate identifies the entity that owns or controls the public key in the certificate. The entity can be a user, computer, device, or service. The __Subject__ must contain an X.500 distinguished name (DN). A DN is a sequence of relative distinguished names (RDNs). The RDNs are separated by commas in the certificate. The DN must be unique for each entity, but your private CA can issue more than one certificate with the same DN to the same entity. 
 --
 --
 --
@@ -54,7 +54,7 @@ data ASN1Subject = ASN1Subject'{_asGivenName ::
 --
 -- * 'asOrganizationalUnit' - A subdivision or unit of the organization (such as sales or finance) with which the certificate subject is affiliated.
 --
--- * 'asCountry' - Two digit code that specifies the country in which the certificate subject located.
+-- * 'asCountry' - Two-digit code that specifies the country in which the certificate subject located.
 --
 -- * 'asGenerationQualifier' - Typically a qualifier appended to the name of an individual. Examples include Jr. for junior, Sr. for senior, and III for third.
 --
@@ -64,13 +64,13 @@ data ASN1Subject = ASN1Subject'{_asGivenName ::
 --
 -- * 'asInitials' - Concatenation that typically contains the first letter of the __GivenName__ , the first letter of the middle name if one exists, and the first letter of the __SurName__ .
 --
--- * 'asTitle' - A title such as Mr. or Ms. which is pre-pended to the name to refer formally to the certificate subject.
+-- * 'asTitle' - A title such as Mr. or Ms., which is pre-pended to the name to refer formally to the certificate subject.
 --
 -- * 'asOrganization' - Legal name of the organization with which the certificate subject is affiliated. 
 --
 -- * 'asSerialNumber' - The certificate serial number.
 --
--- * 'asSurname' - Family name. In the US and the UK for example, the surname of an individual is ordered last. In Asian cultures the surname is typically ordered first.
+-- * 'asSurname' - Family name. In the US and the UK, for example, the surname of an individual is ordered last. In Asian cultures the surname is typically ordered first.
 --
 -- * 'asDistinguishedNameQualifier' - Disambiguating information for the certificate subject.
 asn1Subject
@@ -103,7 +103,7 @@ asCommonName = lens _asCommonName (\ s a -> s{_asCommonName = a})
 asOrganizationalUnit :: Lens' ASN1Subject (Maybe Text)
 asOrganizationalUnit = lens _asOrganizationalUnit (\ s a -> s{_asOrganizationalUnit = a})
 
--- | Two digit code that specifies the country in which the certificate subject located.
+-- | Two-digit code that specifies the country in which the certificate subject located.
 asCountry :: Lens' ASN1Subject (Maybe Text)
 asCountry = lens _asCountry (\ s a -> s{_asCountry = a})
 
@@ -123,7 +123,7 @@ asPseudonym = lens _asPseudonym (\ s a -> s{_asPseudonym = a})
 asInitials :: Lens' ASN1Subject (Maybe Text)
 asInitials = lens _asInitials (\ s a -> s{_asInitials = a})
 
--- | A title such as Mr. or Ms. which is pre-pended to the name to refer formally to the certificate subject.
+-- | A title such as Mr. or Ms., which is pre-pended to the name to refer formally to the certificate subject.
 asTitle :: Lens' ASN1Subject (Maybe Text)
 asTitle = lens _asTitle (\ s a -> s{_asTitle = a})
 
@@ -135,7 +135,7 @@ asOrganization = lens _asOrganization (\ s a -> s{_asOrganization = a})
 asSerialNumber :: Lens' ASN1Subject (Maybe Text)
 asSerialNumber = lens _asSerialNumber (\ s a -> s{_asSerialNumber = a})
 
--- | Family name. In the US and the UK for example, the surname of an individual is ordered last. In Asian cultures the surname is typically ordered first.
+-- | Family name. In the US and the UK, for example, the surname of an individual is ordered last. In Asian cultures the surname is typically ordered first.
 asSurname :: Lens' ASN1Subject (Maybe Text)
 asSurname = lens _asSurname (\ s a -> s{_asSurname = a})
 

@@ -20,7 +20,7 @@ module Network.AWS.Lambda.Types.EnvironmentError where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | The parent object that contains error information associated with your configuration settings.
+-- | Error messages for environment variables that couldn't be applied.
 --
 --
 --
@@ -35,20 +35,20 @@ data EnvironmentError = EnvironmentError'{_eeErrorCode
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'eeErrorCode' - The error code returned by the environment error object.
+-- * 'eeErrorCode' - The error code.
 --
--- * 'eeMessage' - The message returned by the environment error object.
+-- * 'eeMessage' - The error message.
 environmentError
     :: EnvironmentError
 environmentError
   = EnvironmentError'{_eeErrorCode = Nothing,
                       _eeMessage = Nothing}
 
--- | The error code returned by the environment error object.
+-- | The error code.
 eeErrorCode :: Lens' EnvironmentError (Maybe Text)
 eeErrorCode = lens _eeErrorCode (\ s a -> s{_eeErrorCode = a})
 
--- | The message returned by the environment error object.
+-- | The error message.
 eeMessage :: Lens' EnvironmentError (Maybe Text)
 eeMessage = lens _eeMessage (\ s a -> s{_eeMessage = a}) . mapping _Sensitive
 

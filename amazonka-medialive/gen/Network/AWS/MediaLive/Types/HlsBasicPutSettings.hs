@@ -20,7 +20,7 @@ module Network.AWS.MediaLive.Types.HlsBasicPutSettings where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | Placeholder documentation for HlsBasicPutSettings
+-- | Hls Basic Put Settings
 --
 -- /See:/ 'hlsBasicPutSettings' smart constructor.
 data HlsBasicPutSettings = HlsBasicPutSettings'{_hbpsNumRetries

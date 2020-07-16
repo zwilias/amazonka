@@ -58,7 +58,7 @@ data InventoryRetrievalJobDescription = InventoryRetrievalJobDescription'{_irjdF
 --
 -- * 'irjdStartDate' - The start of the date range in Universal Coordinated Time (UTC) for vault inventory retrieval that includes archives created on or after this date. This value should be a string in the ISO 8601 date format, for example @2013-03-20T17:03:43Z@ .
 --
--- * 'irjdMarker' - An opaque string that represents where to continue pagination of the vault inventory retrieval results. You use the marker in a new __InitiateJob__ request to obtain additional inventory items. If there are no more inventory items, this value is @null@ . For more information, see <http://docs.aws.amazon.com/amazonglacier/latest/dev/api-initiate-job-post.html#api-initiate-job-post-vault-inventory-list-filtering Range Inventory Retrieval> .
+-- * 'irjdMarker' - An opaque string that represents where to continue pagination of the vault inventory retrieval results. You use the marker in a new __InitiateJob__ request to obtain additional inventory items. If there are no more inventory items, this value is @null@ . For more information, see <https://docs.aws.amazon.com/amazonglacier/latest/dev/api-initiate-job-post.html#api-initiate-job-post-vault-inventory-list-filtering Range Inventory Retrieval> .
 --
 -- * 'irjdLimit' - The maximum number of inventory items returned per vault inventory retrieval request. This limit is set when initiating the job with the a __InitiateJob__ request. 
 inventoryRetrievalJobDescription
@@ -83,7 +83,7 @@ irjdEndDate = lens _irjdEndDate (\ s a -> s{_irjdEndDate = a})
 irjdStartDate :: Lens' InventoryRetrievalJobDescription (Maybe Text)
 irjdStartDate = lens _irjdStartDate (\ s a -> s{_irjdStartDate = a})
 
--- | An opaque string that represents where to continue pagination of the vault inventory retrieval results. You use the marker in a new __InitiateJob__ request to obtain additional inventory items. If there are no more inventory items, this value is @null@ . For more information, see <http://docs.aws.amazon.com/amazonglacier/latest/dev/api-initiate-job-post.html#api-initiate-job-post-vault-inventory-list-filtering Range Inventory Retrieval> .
+-- | An opaque string that represents where to continue pagination of the vault inventory retrieval results. You use the marker in a new __InitiateJob__ request to obtain additional inventory items. If there are no more inventory items, this value is @null@ . For more information, see <https://docs.aws.amazon.com/amazonglacier/latest/dev/api-initiate-job-post.html#api-initiate-job-post-vault-inventory-list-filtering Range Inventory Retrieval> .
 irjdMarker :: Lens' InventoryRetrievalJobDescription (Maybe Text)
 irjdMarker = lens _irjdMarker (\ s a -> s{_irjdMarker = a})
 

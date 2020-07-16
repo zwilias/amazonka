@@ -62,7 +62,7 @@ data ListEventSources = ListEventSources'{_lesNextToken
 --
 -- * 'lesNamePrefix' - Specifying this limits the results to only those partner event sources with names that start with the specified prefix.
 --
--- * 'lesLimit' - Specifying this limits the number of results returned by this operation. The operation also returns a @NextToken@ that you can use in a subsequent operation to retrieve the next set of results.
+-- * 'lesLimit' - Specifying this limits the number of results returned by this operation. The operation also returns a NextToken which you can use in a subsequent operation to retrieve the next set of results.
 listEventSources
     :: ListEventSources
 listEventSources
@@ -77,7 +77,7 @@ lesNextToken = lens _lesNextToken (\ s a -> s{_lesNextToken = a})
 lesNamePrefix :: Lens' ListEventSources (Maybe Text)
 lesNamePrefix = lens _lesNamePrefix (\ s a -> s{_lesNamePrefix = a})
 
--- | Specifying this limits the number of results returned by this operation. The operation also returns a @NextToken@ that you can use in a subsequent operation to retrieve the next set of results.
+-- | Specifying this limits the number of results returned by this operation. The operation also returns a NextToken which you can use in a subsequent operation to retrieve the next set of results.
 lesLimit :: Lens' ListEventSources (Maybe Natural)
 lesLimit = lens _lesLimit (\ s a -> s{_lesLimit = a}) . mapping _Nat
 

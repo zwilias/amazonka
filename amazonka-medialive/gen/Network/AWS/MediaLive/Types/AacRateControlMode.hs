@@ -27,7 +27,7 @@ module Network.AWS.MediaLive.Types.AacRateControlMode (
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | Placeholder documentation for AacRateControlMode
+-- | Aac Rate Control Mode
 data AacRateControlMode = AacRateControlMode' (CI
                                                  Text)
                             deriving (Eq, Ord, Read, Show, Data, Typeable,

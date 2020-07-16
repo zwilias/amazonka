@@ -20,6 +20,7 @@ module Network.AWS.SSM.Types.OperatingSystem (
   OperatingSystem (
     ..
     , AmazonLinux
+    , AmazonLinux2
     , Centos
     , RedhatEnterpriseLinux
     , Suse
@@ -38,6 +39,9 @@ data OperatingSystem = OperatingSystem' (CI Text)
 pattern AmazonLinux :: OperatingSystem
 pattern AmazonLinux = OperatingSystem' "AMAZON_LINUX"
 
+pattern AmazonLinux2 :: OperatingSystem
+pattern AmazonLinux2 = OperatingSystem' "AMAZON_LINUX_2"
+
 pattern Centos :: OperatingSystem
 pattern Centos = OperatingSystem' "CENTOS"
 
@@ -55,6 +59,7 @@ pattern Windows = OperatingSystem' "WINDOWS"
 
 {-# COMPLETE
   AmazonLinux,
+  AmazonLinux2,
   Centos,
   RedhatEnterpriseLinux,
   Suse,
@@ -75,19 +80,21 @@ instance ToText OperatingSystem where
 instance Enum OperatingSystem where
     toEnum i = case i of
         0 -> AmazonLinux
-        1 -> Centos
-        2 -> RedhatEnterpriseLinux
-        3 -> Suse
-        4 -> Ubuntu
-        5 -> Windows
+        1 -> AmazonLinux2
+        2 -> Centos
+        3 -> RedhatEnterpriseLinux
+        4 -> Suse
+        5 -> Ubuntu
+        6 -> Windows
         _ -> (error . showText) $ "Unknown index for OperatingSystem: " <> toText i
     fromEnum x = case x of
         AmazonLinux -> 0
-        Centos -> 1
-        RedhatEnterpriseLinux -> 2
-        Suse -> 3
-        Ubuntu -> 4
-        Windows -> 5
+        AmazonLinux2 -> 1
+        Centos -> 2
+        RedhatEnterpriseLinux -> 3
+        Suse -> 4
+        Ubuntu -> 5
+        Windows -> 6
         OperatingSystem' name -> (error . showText) $ "Unknown OperatingSystem: " <> original name
 
 -- | Represents the bounds of /known/ $OperatingSystem.

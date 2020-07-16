@@ -18,10 +18,26 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Aborts a multipart upload.
+-- This operation aborts a multipart upload. After a multipart upload is aborted, no additional parts can be uploaded using that upload ID. The storage consumed by any previously uploaded parts will be freed. However, if any part uploads are currently in progress, those part uploads might or might not succeed. As a result, it might be necessary to abort a given multipart upload multiple times in order to completely free all storage consumed by all parts. 
 --
 --
--- To verify that all parts have been removed, so you don't get charged for the part storage, you should call the List Parts operation and ensure the parts list is empty.
+-- To verify that all parts have been removed, so you don't get charged for the part storage, you should call the 'ListParts' operation and ensure that the parts list is empty.
+--
+-- For information about permissions required to use the multipart upload API, see <https://docs.aws.amazon.com/AmazonS3/latest/dev/mpuAndPermissions.html Multipart Upload API and Permissions> .
+--
+-- The following operations are related to @AbortMultipartUpload@ :
+--
+--     * 'CreateMultipartUpload' 
+--
+--     * 'UploadPart' 
+--
+--     * 'CompleteMultipartUpload' 
+--
+--     * 'ListParts' 
+--
+--     * 'ListMultipartUploads' 
+--
+--
 --
 module Network.AWS.S3.AbortMultipartUpload
     (
@@ -63,11 +79,11 @@ data AbortMultipartUpload = AbortMultipartUpload'{_amuRequestPayer
 --
 -- * 'amuRequestPayer' - Undocumented member.
 --
--- * 'amuBucket' - Undocumented member.
+-- * 'amuBucket' - The bucket name to which the upload was taking place.  When using this API with an access point, you must direct requests to the access point hostname. The access point hostname takes the form /AccessPointName/ -/AccountId/ .s3-accesspoint./Region/ .amazonaws.com. When using this operation using an access point through the AWS SDKs, you provide the access point ARN in place of the bucket name. For more information about access point ARNs, see <https://docs.aws.amazon.com/AmazonS3/latest/dev/using-access-points.html Using Access Points> in the /Amazon Simple Storage Service Developer Guide/ .
 --
--- * 'amuKey' - Undocumented member.
+-- * 'amuKey' - Key of the object for which the multipart upload was initiated.
 --
--- * 'amuUploadId' - Undocumented member.
+-- * 'amuUploadId' - Upload ID that identifies the multipart upload.
 abortMultipartUpload
     :: BucketName -- ^ 'amuBucket'
     -> ObjectKey -- ^ 'amuKey'
@@ -82,15 +98,15 @@ abortMultipartUpload pBucket_ pKey_ pUploadId_
 amuRequestPayer :: Lens' AbortMultipartUpload (Maybe RequestPayer)
 amuRequestPayer = lens _amuRequestPayer (\ s a -> s{_amuRequestPayer = a})
 
--- | Undocumented member.
+-- | The bucket name to which the upload was taking place.  When using this API with an access point, you must direct requests to the access point hostname. The access point hostname takes the form /AccessPointName/ -/AccountId/ .s3-accesspoint./Region/ .amazonaws.com. When using this operation using an access point through the AWS SDKs, you provide the access point ARN in place of the bucket name. For more information about access point ARNs, see <https://docs.aws.amazon.com/AmazonS3/latest/dev/using-access-points.html Using Access Points> in the /Amazon Simple Storage Service Developer Guide/ .
 amuBucket :: Lens' AbortMultipartUpload BucketName
 amuBucket = lens _amuBucket (\ s a -> s{_amuBucket = a})
 
--- | Undocumented member.
+-- | Key of the object for which the multipart upload was initiated.
 amuKey :: Lens' AbortMultipartUpload ObjectKey
 amuKey = lens _amuKey (\ s a -> s{_amuKey = a})
 
--- | Undocumented member.
+-- | Upload ID that identifies the multipart upload.
 amuUploadId :: Lens' AbortMultipartUpload Text
 amuUploadId = lens _amuUploadId (\ s a -> s{_amuUploadId = a})
 

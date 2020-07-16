@@ -17,18 +17,43 @@
 -- Portability : non-portable (GHC extensions)
 --
 module Network.AWS.IoT.Types.Product (
+    module Network.AWS.IoT.Types.AWSJobExecutionsRolloutConfig,
+    module Network.AWS.IoT.Types.AWSJobPresignedURLConfig,
+    module Network.AWS.IoT.Types.AbortConfig,
+    module Network.AWS.IoT.Types.AbortCriteria,
     module Network.AWS.IoT.Types.Action,
+    module Network.AWS.IoT.Types.ActiveViolation,
+    module Network.AWS.IoT.Types.AddThingsToThingGroupParams,
+    module Network.AWS.IoT.Types.AlertTarget,
     module Network.AWS.IoT.Types.Allowed,
+    module Network.AWS.IoT.Types.AssetPropertyTimestamp,
+    module Network.AWS.IoT.Types.AssetPropertyValue,
+    module Network.AWS.IoT.Types.AssetPropertyVariant,
     module Network.AWS.IoT.Types.AttributePayload,
+    module Network.AWS.IoT.Types.AuditCheckConfiguration,
+    module Network.AWS.IoT.Types.AuditCheckDetails,
+    module Network.AWS.IoT.Types.AuditFinding,
+    module Network.AWS.IoT.Types.AuditMitigationActionExecutionMetadata,
+    module Network.AWS.IoT.Types.AuditMitigationActionsTaskMetadata,
+    module Network.AWS.IoT.Types.AuditMitigationActionsTaskTarget,
+    module Network.AWS.IoT.Types.AuditNotificationTarget,
+    module Network.AWS.IoT.Types.AuditTaskMetadata,
     module Network.AWS.IoT.Types.AuthInfo,
     module Network.AWS.IoT.Types.AuthResult,
+    module Network.AWS.IoT.Types.AuthorizerConfig,
     module Network.AWS.IoT.Types.AuthorizerDescription,
     module Network.AWS.IoT.Types.AuthorizerSummary,
+    module Network.AWS.IoT.Types.Behavior,
+    module Network.AWS.IoT.Types.BehaviorCriteria,
+    module Network.AWS.IoT.Types.BillingGroupMetadata,
+    module Network.AWS.IoT.Types.BillingGroupProperties,
     module Network.AWS.IoT.Types.CACertificate,
     module Network.AWS.IoT.Types.CACertificateDescription,
     module Network.AWS.IoT.Types.Certificate,
     module Network.AWS.IoT.Types.CertificateDescription,
+    module Network.AWS.IoT.Types.CertificateValidity,
     module Network.AWS.IoT.Types.CloudwatchAlarmAction,
+    module Network.AWS.IoT.Types.CloudwatchLogsAction,
     module Network.AWS.IoT.Types.CloudwatchMetricAction,
     module Network.AWS.IoT.Types.CodeSigning,
     module Network.AWS.IoT.Types.CodeSigningCertificateChain,
@@ -36,16 +61,31 @@ module Network.AWS.IoT.Types.Product (
     module Network.AWS.IoT.Types.Configuration,
     module Network.AWS.IoT.Types.CustomCodeSigning,
     module Network.AWS.IoT.Types.Denied,
+    module Network.AWS.IoT.Types.Destination,
+    module Network.AWS.IoT.Types.DomainConfigurationSummary,
     module Network.AWS.IoT.Types.DynamoDBAction,
     module Network.AWS.IoT.Types.DynamoDBv2Action,
     module Network.AWS.IoT.Types.EffectivePolicy,
     module Network.AWS.IoT.Types.ElasticsearchAction,
+    module Network.AWS.IoT.Types.EnableIOTLoggingParams,
     module Network.AWS.IoT.Types.ErrorInfo,
     module Network.AWS.IoT.Types.ExplicitDeny,
+    module Network.AWS.IoT.Types.ExponentialRolloutRate,
+    module Network.AWS.IoT.Types.Field,
+    module Network.AWS.IoT.Types.FileLocation,
     module Network.AWS.IoT.Types.FirehoseAction,
     module Network.AWS.IoT.Types.GroupNameAndARN,
+    module Network.AWS.IoT.Types.HTTPAction,
+    module Network.AWS.IoT.Types.HTTPActionHeader,
+    module Network.AWS.IoT.Types.HTTPAuthorization,
+    module Network.AWS.IoT.Types.HTTPContext,
+    module Network.AWS.IoT.Types.HTTPURLDestinationConfiguration,
+    module Network.AWS.IoT.Types.HTTPURLDestinationProperties,
+    module Network.AWS.IoT.Types.HTTPURLDestinationSummary,
     module Network.AWS.IoT.Types.ImplicitDeny,
     module Network.AWS.IoT.Types.IotAnalyticsAction,
+    module Network.AWS.IoT.Types.IotEventsAction,
+    module Network.AWS.IoT.Types.IotSiteWiseAction,
     module Network.AWS.IoT.Types.Job,
     module Network.AWS.IoT.Types.JobExecution,
     module Network.AWS.IoT.Types.JobExecutionStatusDetails,
@@ -61,52 +101,123 @@ module Network.AWS.IoT.Types.Product (
     module Network.AWS.IoT.Types.LogTarget,
     module Network.AWS.IoT.Types.LogTargetConfiguration,
     module Network.AWS.IoT.Types.LoggingOptionsPayload,
+    module Network.AWS.IoT.Types.MetricDimension,
+    module Network.AWS.IoT.Types.MetricToRetain,
+    module Network.AWS.IoT.Types.MetricValue,
+    module Network.AWS.IoT.Types.MitigationAction,
+    module Network.AWS.IoT.Types.MitigationActionIdentifier,
+    module Network.AWS.IoT.Types.MitigationActionParams,
+    module Network.AWS.IoT.Types.MqttContext,
+    module Network.AWS.IoT.Types.NonCompliantResource,
     module Network.AWS.IoT.Types.OTAUpdateFile,
     module Network.AWS.IoT.Types.OTAUpdateInfo,
     module Network.AWS.IoT.Types.OTAUpdateSummary,
     module Network.AWS.IoT.Types.OutgoingCertificate,
+    module Network.AWS.IoT.Types.PercentPair,
     module Network.AWS.IoT.Types.Policy,
     module Network.AWS.IoT.Types.PolicyVersion,
+    module Network.AWS.IoT.Types.PolicyVersionIdentifier,
     module Network.AWS.IoT.Types.PresignedURLConfig,
+    module Network.AWS.IoT.Types.ProvisioningHook,
+    module Network.AWS.IoT.Types.ProvisioningTemplateSummary,
+    module Network.AWS.IoT.Types.ProvisioningTemplateVersionSummary,
+    module Network.AWS.IoT.Types.PublishFindingToSNSParams,
+    module Network.AWS.IoT.Types.PutAssetPropertyValueEntry,
     module Network.AWS.IoT.Types.PutItemInput,
+    module Network.AWS.IoT.Types.RateIncreaseCriteria,
     module Network.AWS.IoT.Types.RegistrationConfig,
+    module Network.AWS.IoT.Types.RelatedResource,
+    module Network.AWS.IoT.Types.ReplaceDefaultPolicyVersionParams,
     module Network.AWS.IoT.Types.RepublishAction,
+    module Network.AWS.IoT.Types.ResourceIdentifier,
     module Network.AWS.IoT.Types.RoleAliasDescription,
     module Network.AWS.IoT.Types.S3Action,
+    module Network.AWS.IoT.Types.S3Destination,
     module Network.AWS.IoT.Types.S3Location,
     module Network.AWS.IoT.Types.SNSAction,
     module Network.AWS.IoT.Types.SalesforceAction,
+    module Network.AWS.IoT.Types.ScheduledAuditMetadata,
+    module Network.AWS.IoT.Types.SecurityProfileIdentifier,
+    module Network.AWS.IoT.Types.SecurityProfileTarget,
+    module Network.AWS.IoT.Types.SecurityProfileTargetMapping,
+    module Network.AWS.IoT.Types.ServerCertificateSummary,
+    module Network.AWS.IoT.Types.SigV4Authorization,
+    module Network.AWS.IoT.Types.SigningProfileParameter,
     module Network.AWS.IoT.Types.SqsAction,
+    module Network.AWS.IoT.Types.StartSigningJobParameter,
+    module Network.AWS.IoT.Types.StatisticalThreshold,
+    module Network.AWS.IoT.Types.Statistics,
+    module Network.AWS.IoT.Types.StepFunctionsAction,
     module Network.AWS.IoT.Types.Stream,
     module Network.AWS.IoT.Types.StreamFile,
     module Network.AWS.IoT.Types.StreamInfo,
     module Network.AWS.IoT.Types.StreamSummary,
+    module Network.AWS.IoT.Types.TLSContext,
+    module Network.AWS.IoT.Types.Tag,
+    module Network.AWS.IoT.Types.TaskStatistics,
+    module Network.AWS.IoT.Types.TaskStatisticsForAuditCheck,
     module Network.AWS.IoT.Types.ThingAttribute,
+    module Network.AWS.IoT.Types.ThingConnectivity,
     module Network.AWS.IoT.Types.ThingDocument,
+    module Network.AWS.IoT.Types.ThingGroupDocument,
+    module Network.AWS.IoT.Types.ThingGroupIndexingConfiguration,
     module Network.AWS.IoT.Types.ThingGroupMetadata,
     module Network.AWS.IoT.Types.ThingGroupProperties,
     module Network.AWS.IoT.Types.ThingIndexingConfiguration,
     module Network.AWS.IoT.Types.ThingTypeDefinition,
     module Network.AWS.IoT.Types.ThingTypeMetadata,
     module Network.AWS.IoT.Types.ThingTypeProperties,
+    module Network.AWS.IoT.Types.TimeoutConfig,
     module Network.AWS.IoT.Types.TopicRule,
+    module Network.AWS.IoT.Types.TopicRuleDestination,
+    module Network.AWS.IoT.Types.TopicRuleDestinationConfiguration,
+    module Network.AWS.IoT.Types.TopicRuleDestinationSummary,
     module Network.AWS.IoT.Types.TopicRuleListItem,
     module Network.AWS.IoT.Types.TopicRulePayload,
-    module Network.AWS.IoT.Types.TransferData
+    module Network.AWS.IoT.Types.TransferData,
+    module Network.AWS.IoT.Types.UpdateCACertificateParams,
+    module Network.AWS.IoT.Types.UpdateDeviceCertificateParams,
+    module Network.AWS.IoT.Types.ValidationError,
+    module Network.AWS.IoT.Types.ViolationEvent
   ) where
 
+import Network.AWS.IoT.Types.AWSJobExecutionsRolloutConfig
+import Network.AWS.IoT.Types.AWSJobPresignedURLConfig
+import Network.AWS.IoT.Types.AbortConfig
+import Network.AWS.IoT.Types.AbortCriteria
 import Network.AWS.IoT.Types.Action
+import Network.AWS.IoT.Types.ActiveViolation
+import Network.AWS.IoT.Types.AddThingsToThingGroupParams
+import Network.AWS.IoT.Types.AlertTarget
 import Network.AWS.IoT.Types.Allowed
+import Network.AWS.IoT.Types.AssetPropertyTimestamp
+import Network.AWS.IoT.Types.AssetPropertyValue
+import Network.AWS.IoT.Types.AssetPropertyVariant
 import Network.AWS.IoT.Types.AttributePayload
+import Network.AWS.IoT.Types.AuditCheckConfiguration
+import Network.AWS.IoT.Types.AuditCheckDetails
+import Network.AWS.IoT.Types.AuditFinding
+import Network.AWS.IoT.Types.AuditMitigationActionExecutionMetadata
+import Network.AWS.IoT.Types.AuditMitigationActionsTaskMetadata
+import Network.AWS.IoT.Types.AuditMitigationActionsTaskTarget
+import Network.AWS.IoT.Types.AuditNotificationTarget
+import Network.AWS.IoT.Types.AuditTaskMetadata
 import Network.AWS.IoT.Types.AuthInfo
 import Network.AWS.IoT.Types.AuthResult
+import Network.AWS.IoT.Types.AuthorizerConfig
 import Network.AWS.IoT.Types.AuthorizerDescription
 import Network.AWS.IoT.Types.AuthorizerSummary
+import Network.AWS.IoT.Types.Behavior
+import Network.AWS.IoT.Types.BehaviorCriteria
+import Network.AWS.IoT.Types.BillingGroupMetadata
+import Network.AWS.IoT.Types.BillingGroupProperties
 import Network.AWS.IoT.Types.CACertificate
 import Network.AWS.IoT.Types.CACertificateDescription
 import Network.AWS.IoT.Types.Certificate
 import Network.AWS.IoT.Types.CertificateDescription
+import Network.AWS.IoT.Types.CertificateValidity
 import Network.AWS.IoT.Types.CloudwatchAlarmAction
+import Network.AWS.IoT.Types.CloudwatchLogsAction
 import Network.AWS.IoT.Types.CloudwatchMetricAction
 import Network.AWS.IoT.Types.CodeSigning
 import Network.AWS.IoT.Types.CodeSigningCertificateChain
@@ -114,16 +225,31 @@ import Network.AWS.IoT.Types.CodeSigningSignature
 import Network.AWS.IoT.Types.Configuration
 import Network.AWS.IoT.Types.CustomCodeSigning
 import Network.AWS.IoT.Types.Denied
+import Network.AWS.IoT.Types.Destination
+import Network.AWS.IoT.Types.DomainConfigurationSummary
 import Network.AWS.IoT.Types.DynamoDBAction
 import Network.AWS.IoT.Types.DynamoDBv2Action
 import Network.AWS.IoT.Types.EffectivePolicy
 import Network.AWS.IoT.Types.ElasticsearchAction
+import Network.AWS.IoT.Types.EnableIOTLoggingParams
 import Network.AWS.IoT.Types.ErrorInfo
 import Network.AWS.IoT.Types.ExplicitDeny
+import Network.AWS.IoT.Types.ExponentialRolloutRate
+import Network.AWS.IoT.Types.Field
+import Network.AWS.IoT.Types.FileLocation
 import Network.AWS.IoT.Types.FirehoseAction
 import Network.AWS.IoT.Types.GroupNameAndARN
+import Network.AWS.IoT.Types.HTTPAction
+import Network.AWS.IoT.Types.HTTPActionHeader
+import Network.AWS.IoT.Types.HTTPAuthorization
+import Network.AWS.IoT.Types.HTTPContext
+import Network.AWS.IoT.Types.HTTPURLDestinationConfiguration
+import Network.AWS.IoT.Types.HTTPURLDestinationProperties
+import Network.AWS.IoT.Types.HTTPURLDestinationSummary
 import Network.AWS.IoT.Types.ImplicitDeny
 import Network.AWS.IoT.Types.IotAnalyticsAction
+import Network.AWS.IoT.Types.IotEventsAction
+import Network.AWS.IoT.Types.IotSiteWiseAction
 import Network.AWS.IoT.Types.Job
 import Network.AWS.IoT.Types.JobExecution
 import Network.AWS.IoT.Types.JobExecutionStatusDetails
@@ -139,37 +265,83 @@ import Network.AWS.IoT.Types.LambdaAction
 import Network.AWS.IoT.Types.LogTarget
 import Network.AWS.IoT.Types.LogTargetConfiguration
 import Network.AWS.IoT.Types.LoggingOptionsPayload
+import Network.AWS.IoT.Types.MetricDimension
+import Network.AWS.IoT.Types.MetricToRetain
+import Network.AWS.IoT.Types.MetricValue
+import Network.AWS.IoT.Types.MitigationAction
+import Network.AWS.IoT.Types.MitigationActionIdentifier
+import Network.AWS.IoT.Types.MitigationActionParams
+import Network.AWS.IoT.Types.MqttContext
+import Network.AWS.IoT.Types.NonCompliantResource
 import Network.AWS.IoT.Types.OTAUpdateFile
 import Network.AWS.IoT.Types.OTAUpdateInfo
 import Network.AWS.IoT.Types.OTAUpdateSummary
 import Network.AWS.IoT.Types.OutgoingCertificate
+import Network.AWS.IoT.Types.PercentPair
 import Network.AWS.IoT.Types.Policy
 import Network.AWS.IoT.Types.PolicyVersion
+import Network.AWS.IoT.Types.PolicyVersionIdentifier
 import Network.AWS.IoT.Types.PresignedURLConfig
+import Network.AWS.IoT.Types.ProvisioningHook
+import Network.AWS.IoT.Types.ProvisioningTemplateSummary
+import Network.AWS.IoT.Types.ProvisioningTemplateVersionSummary
+import Network.AWS.IoT.Types.PublishFindingToSNSParams
+import Network.AWS.IoT.Types.PutAssetPropertyValueEntry
 import Network.AWS.IoT.Types.PutItemInput
+import Network.AWS.IoT.Types.RateIncreaseCriteria
 import Network.AWS.IoT.Types.RegistrationConfig
+import Network.AWS.IoT.Types.RelatedResource
+import Network.AWS.IoT.Types.ReplaceDefaultPolicyVersionParams
 import Network.AWS.IoT.Types.RepublishAction
+import Network.AWS.IoT.Types.ResourceIdentifier
 import Network.AWS.IoT.Types.RoleAliasDescription
 import Network.AWS.IoT.Types.S3Action
+import Network.AWS.IoT.Types.S3Destination
 import Network.AWS.IoT.Types.S3Location
 import Network.AWS.IoT.Types.SNSAction
 import Network.AWS.IoT.Types.SalesforceAction
+import Network.AWS.IoT.Types.ScheduledAuditMetadata
+import Network.AWS.IoT.Types.SecurityProfileIdentifier
+import Network.AWS.IoT.Types.SecurityProfileTarget
+import Network.AWS.IoT.Types.SecurityProfileTargetMapping
+import Network.AWS.IoT.Types.ServerCertificateSummary
+import Network.AWS.IoT.Types.SigV4Authorization
+import Network.AWS.IoT.Types.SigningProfileParameter
 import Network.AWS.IoT.Types.SqsAction
+import Network.AWS.IoT.Types.StartSigningJobParameter
+import Network.AWS.IoT.Types.StatisticalThreshold
+import Network.AWS.IoT.Types.Statistics
+import Network.AWS.IoT.Types.StepFunctionsAction
 import Network.AWS.IoT.Types.Stream
 import Network.AWS.IoT.Types.StreamFile
 import Network.AWS.IoT.Types.StreamInfo
 import Network.AWS.IoT.Types.StreamSummary
+import Network.AWS.IoT.Types.TLSContext
+import Network.AWS.IoT.Types.Tag
+import Network.AWS.IoT.Types.TaskStatistics
+import Network.AWS.IoT.Types.TaskStatisticsForAuditCheck
 import Network.AWS.IoT.Types.ThingAttribute
+import Network.AWS.IoT.Types.ThingConnectivity
 import Network.AWS.IoT.Types.ThingDocument
+import Network.AWS.IoT.Types.ThingGroupDocument
+import Network.AWS.IoT.Types.ThingGroupIndexingConfiguration
 import Network.AWS.IoT.Types.ThingGroupMetadata
 import Network.AWS.IoT.Types.ThingGroupProperties
 import Network.AWS.IoT.Types.ThingIndexingConfiguration
 import Network.AWS.IoT.Types.ThingTypeDefinition
 import Network.AWS.IoT.Types.ThingTypeMetadata
 import Network.AWS.IoT.Types.ThingTypeProperties
+import Network.AWS.IoT.Types.TimeoutConfig
 import Network.AWS.IoT.Types.TopicRule
+import Network.AWS.IoT.Types.TopicRuleDestination
+import Network.AWS.IoT.Types.TopicRuleDestinationConfiguration
+import Network.AWS.IoT.Types.TopicRuleDestinationSummary
 import Network.AWS.IoT.Types.TopicRuleListItem
 import Network.AWS.IoT.Types.TopicRulePayload
 import Network.AWS.IoT.Types.TransferData
+import Network.AWS.IoT.Types.UpdateCACertificateParams
+import Network.AWS.IoT.Types.UpdateDeviceCertificateParams
+import Network.AWS.IoT.Types.ValidationError
+import Network.AWS.IoT.Types.ViolationEvent
 import Network.AWS.Lens
 import Network.AWS.Prelude

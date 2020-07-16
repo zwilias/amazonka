@@ -20,6 +20,7 @@ module Network.AWS.Greengrass.Types.UpdateTargetsOperatingSystem (
   UpdateTargetsOperatingSystem (
     ..
     , AmazonLinux
+    , Openwrt
     , Raspbian
     , Ubuntu
     )
@@ -37,6 +38,9 @@ data UpdateTargetsOperatingSystem = UpdateTargetsOperatingSystem' (CI
 pattern AmazonLinux :: UpdateTargetsOperatingSystem
 pattern AmazonLinux = UpdateTargetsOperatingSystem' "amazon_linux"
 
+pattern Openwrt :: UpdateTargetsOperatingSystem
+pattern Openwrt = UpdateTargetsOperatingSystem' "openwrt"
+
 pattern Raspbian :: UpdateTargetsOperatingSystem
 pattern Raspbian = UpdateTargetsOperatingSystem' "raspbian"
 
@@ -45,6 +49,7 @@ pattern Ubuntu = UpdateTargetsOperatingSystem' "ubuntu"
 
 {-# COMPLETE
   AmazonLinux,
+  Openwrt,
   Raspbian,
   Ubuntu,
   UpdateTargetsOperatingSystem' #-}
@@ -62,13 +67,15 @@ instance ToText UpdateTargetsOperatingSystem where
 instance Enum UpdateTargetsOperatingSystem where
     toEnum i = case i of
         0 -> AmazonLinux
-        1 -> Raspbian
-        2 -> Ubuntu
+        1 -> Openwrt
+        2 -> Raspbian
+        3 -> Ubuntu
         _ -> (error . showText) $ "Unknown index for UpdateTargetsOperatingSystem: " <> toText i
     fromEnum x = case x of
         AmazonLinux -> 0
-        Raspbian -> 1
-        Ubuntu -> 2
+        Openwrt -> 1
+        Raspbian -> 2
+        Ubuntu -> 3
         UpdateTargetsOperatingSystem' name -> (error . showText) $ "Unknown UpdateTargetsOperatingSystem: " <> original name
 
 -- | Represents the bounds of /known/ $UpdateTargetsOperatingSystem.

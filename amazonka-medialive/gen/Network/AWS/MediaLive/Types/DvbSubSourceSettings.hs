@@ -20,7 +20,7 @@ module Network.AWS.MediaLive.Types.DvbSubSourceSettings where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | Placeholder documentation for DvbSubSourceSettings
+-- | Dvb Sub Source Settings
 --
 -- /See:/ 'dvbSubSourceSettings' smart constructor.
 newtype DvbSubSourceSettings = DvbSubSourceSettings'{_dsssPid

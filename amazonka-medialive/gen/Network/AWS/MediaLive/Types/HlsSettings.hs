@@ -19,14 +19,17 @@ module Network.AWS.MediaLive.Types.HlsSettings where
 
 import Network.AWS.Lens
 import Network.AWS.MediaLive.Types.AudioOnlyHlsSettings
+import Network.AWS.MediaLive.Types.Fmp4HlsSettings
 import Network.AWS.MediaLive.Types.StandardHlsSettings
 import Network.AWS.Prelude
 
--- | Placeholder documentation for HlsSettings
+-- | Hls Settings
 --
 -- /See:/ 'hlsSettings' smart constructor.
-data HlsSettings = HlsSettings'{_hsAudioOnlyHlsSettings
-                                :: !(Maybe AudioOnlyHlsSettings),
+data HlsSettings = HlsSettings'{_hsFmp4HlsSettings ::
+                                !(Maybe Fmp4HlsSettings),
+                                _hsAudioOnlyHlsSettings ::
+                                !(Maybe AudioOnlyHlsSettings),
                                 _hsStandardHlsSettings ::
                                 !(Maybe StandardHlsSettings)}
                      deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -35,14 +38,21 @@ data HlsSettings = HlsSettings'{_hsAudioOnlyHlsSettings
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
+-- * 'hsFmp4HlsSettings' - Undocumented member.
+--
 -- * 'hsAudioOnlyHlsSettings' - Undocumented member.
 --
 -- * 'hsStandardHlsSettings' - Undocumented member.
 hlsSettings
     :: HlsSettings
 hlsSettings
-  = HlsSettings'{_hsAudioOnlyHlsSettings = Nothing,
+  = HlsSettings'{_hsFmp4HlsSettings = Nothing,
+                 _hsAudioOnlyHlsSettings = Nothing,
                  _hsStandardHlsSettings = Nothing}
+
+-- | Undocumented member.
+hsFmp4HlsSettings :: Lens' HlsSettings (Maybe Fmp4HlsSettings)
+hsFmp4HlsSettings = lens _hsFmp4HlsSettings (\ s a -> s{_hsFmp4HlsSettings = a})
 
 -- | Undocumented member.
 hsAudioOnlyHlsSettings :: Lens' HlsSettings (Maybe AudioOnlyHlsSettings)
@@ -57,8 +67,9 @@ instance FromJSON HlsSettings where
           = withObject "HlsSettings"
               (\ x ->
                  HlsSettings' <$>
-                   (x .:? "audioOnlyHlsSettings") <*>
-                     (x .:? "standardHlsSettings"))
+                   (x .:? "fmp4HlsSettings") <*>
+                     (x .:? "audioOnlyHlsSettings")
+                     <*> (x .:? "standardHlsSettings"))
 
 instance Hashable HlsSettings where
 
@@ -68,7 +79,8 @@ instance ToJSON HlsSettings where
         toJSON HlsSettings'{..}
           = object
               (catMaybes
-                 [("audioOnlyHlsSettings" .=) <$>
+                 [("fmp4HlsSettings" .=) <$> _hsFmp4HlsSettings,
+                  ("audioOnlyHlsSettings" .=) <$>
                     _hsAudioOnlyHlsSettings,
                   ("standardHlsSettings" .=) <$>
                     _hsStandardHlsSettings])

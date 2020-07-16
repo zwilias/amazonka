@@ -27,10 +27,12 @@ import Network.AWS.Prelude
 -- /See:/ 'tape' smart constructor.
 data Tape = Tape'{_tTapeBarcode :: !(Maybe Text),
                   _tTapeStatus :: !(Maybe Text),
+                  _tKMSKey :: !(Maybe Text),
                   _tTapeARN :: !(Maybe Text),
                   _tProgress :: !(Maybe Double),
                   _tTapeSizeInBytes :: !(Maybe Integer),
                   _tVTLDevice :: !(Maybe Text),
+                  _tPoolId :: !(Maybe Text),
                   _tTapeUsedInBytes :: !(Maybe Integer),
                   _tTapeCreatedDate :: !(Maybe POSIX)}
               deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -43,6 +45,8 @@ data Tape = Tape'{_tTapeBarcode :: !(Maybe Text),
 --
 -- * 'tTapeStatus' - The current state of the virtual tape.
 --
+-- * 'tKMSKey' - Undocumented member.
+--
 -- * 'tTapeARN' - The Amazon Resource Name (ARN) of the virtual tape.
 --
 -- * 'tProgress' - For archiving virtual tapes, indicates how much data remains to be uploaded before archiving is complete. Range: 0 (not started) to 100 (complete).
@@ -51,6 +55,8 @@ data Tape = Tape'{_tTapeBarcode :: !(Maybe Text),
 --
 -- * 'tVTLDevice' - The virtual tape library (VTL) device that the virtual tape is associated with.
 --
+-- * 'tPoolId' - The ID of the pool that contains tapes that will be archived. The tapes in this pool are archived in the S3 storage class that is associated with the pool. When you use your backup application to eject the tape, the tape is archived directly into the storage class (S3 Glacier or S# Glacier Deep Archive) that corresponds to the pool. Valid values: "GLACIER", "DEEP_ARCHIVE"
+--
 -- * 'tTapeUsedInBytes' - The size, in bytes, of data stored on the virtual tape.
 --
 -- * 'tTapeCreatedDate' - The date the virtual tape was created.
@@ -58,9 +64,10 @@ tape
     :: Tape
 tape
   = Tape'{_tTapeBarcode = Nothing,
-          _tTapeStatus = Nothing, _tTapeARN = Nothing,
-          _tProgress = Nothing, _tTapeSizeInBytes = Nothing,
-          _tVTLDevice = Nothing, _tTapeUsedInBytes = Nothing,
+          _tTapeStatus = Nothing, _tKMSKey = Nothing,
+          _tTapeARN = Nothing, _tProgress = Nothing,
+          _tTapeSizeInBytes = Nothing, _tVTLDevice = Nothing,
+          _tPoolId = Nothing, _tTapeUsedInBytes = Nothing,
           _tTapeCreatedDate = Nothing}
 
 -- | The barcode that identifies a specific virtual tape.
@@ -70,6 +77,10 @@ tTapeBarcode = lens _tTapeBarcode (\ s a -> s{_tTapeBarcode = a})
 -- | The current state of the virtual tape.
 tTapeStatus :: Lens' Tape (Maybe Text)
 tTapeStatus = lens _tTapeStatus (\ s a -> s{_tTapeStatus = a})
+
+-- | Undocumented member.
+tKMSKey :: Lens' Tape (Maybe Text)
+tKMSKey = lens _tKMSKey (\ s a -> s{_tKMSKey = a})
 
 -- | The Amazon Resource Name (ARN) of the virtual tape.
 tTapeARN :: Lens' Tape (Maybe Text)
@@ -87,6 +98,10 @@ tTapeSizeInBytes = lens _tTapeSizeInBytes (\ s a -> s{_tTapeSizeInBytes = a})
 tVTLDevice :: Lens' Tape (Maybe Text)
 tVTLDevice = lens _tVTLDevice (\ s a -> s{_tVTLDevice = a})
 
+-- | The ID of the pool that contains tapes that will be archived. The tapes in this pool are archived in the S3 storage class that is associated with the pool. When you use your backup application to eject the tape, the tape is archived directly into the storage class (S3 Glacier or S# Glacier Deep Archive) that corresponds to the pool. Valid values: "GLACIER", "DEEP_ARCHIVE"
+tPoolId :: Lens' Tape (Maybe Text)
+tPoolId = lens _tPoolId (\ s a -> s{_tPoolId = a})
+
 -- | The size, in bytes, of data stored on the virtual tape.
 tTapeUsedInBytes :: Lens' Tape (Maybe Integer)
 tTapeUsedInBytes = lens _tTapeUsedInBytes (\ s a -> s{_tTapeUsedInBytes = a})
@@ -101,10 +116,12 @@ instance FromJSON Tape where
               (\ x ->
                  Tape' <$>
                    (x .:? "TapeBarcode") <*> (x .:? "TapeStatus") <*>
-                     (x .:? "TapeARN")
+                     (x .:? "KMSKey")
+                     <*> (x .:? "TapeARN")
                      <*> (x .:? "Progress")
                      <*> (x .:? "TapeSizeInBytes")
                      <*> (x .:? "VTLDevice")
+                     <*> (x .:? "PoolId")
                      <*> (x .:? "TapeUsedInBytes")
                      <*> (x .:? "TapeCreatedDate"))
 

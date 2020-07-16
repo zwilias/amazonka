@@ -54,7 +54,7 @@ data MaintenanceWindowTaskInvocationParameters = MaintenanceWindowTaskInvocation
 --
 -- * 'mwtipAutomation' - The parameters for an AUTOMATION task type.
 --
--- * 'mwtipStepFunctions' - The parameters for a STEP_FUNCTION task type.
+-- * 'mwtipStepFunctions' - The parameters for a STEP_FUNCTIONS task type.
 --
 -- * 'mwtipRunCommand' - The parameters for a RUN_COMMAND task type.
 --
@@ -72,7 +72,7 @@ maintenanceWindowTaskInvocationParameters
 mwtipAutomation :: Lens' MaintenanceWindowTaskInvocationParameters (Maybe MaintenanceWindowAutomationParameters)
 mwtipAutomation = lens _mwtipAutomation (\ s a -> s{_mwtipAutomation = a})
 
--- | The parameters for a STEP_FUNCTION task type.
+-- | The parameters for a STEP_FUNCTIONS task type.
 mwtipStepFunctions :: Lens' MaintenanceWindowTaskInvocationParameters (Maybe MaintenanceWindowStepFunctionsParameters)
 mwtipStepFunctions = lens _mwtipStepFunctions (\ s a -> s{_mwtipStepFunctions = a})
 

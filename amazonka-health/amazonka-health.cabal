@@ -45,12 +45,19 @@ library
 
     exposed-modules:
           Network.AWS.AWSHealth
+        , Network.AWS.AWSHealth.DescribeAffectedAccountsForOrganization
         , Network.AWS.AWSHealth.DescribeAffectedEntities
+        , Network.AWS.AWSHealth.DescribeAffectedEntitiesForOrganization
         , Network.AWS.AWSHealth.DescribeEntityAggregates
         , Network.AWS.AWSHealth.DescribeEventAggregates
         , Network.AWS.AWSHealth.DescribeEventDetails
+        , Network.AWS.AWSHealth.DescribeEventDetailsForOrganization
         , Network.AWS.AWSHealth.DescribeEventTypes
         , Network.AWS.AWSHealth.DescribeEvents
+        , Network.AWS.AWSHealth.DescribeEventsForOrganization
+        , Network.AWS.AWSHealth.DescribeHealthServiceStatusForOrganization
+        , Network.AWS.AWSHealth.DisableHealthServiceAccessForOrganization
+        , Network.AWS.AWSHealth.EnableHealthServiceAccessForOrganization
         , Network.AWS.AWSHealth.Types
         , Network.AWS.AWSHealth.Waiters
 
@@ -61,6 +68,7 @@ library
         , Network.AWS.AWSHealth.Types.EntityFilter
         , Network.AWS.AWSHealth.Types.EntityStatusCode
         , Network.AWS.AWSHealth.Types.Event
+        , Network.AWS.AWSHealth.Types.EventAccountFilter
         , Network.AWS.AWSHealth.Types.EventAggregate
         , Network.AWS.AWSHealth.Types.EventAggregateField
         , Network.AWS.AWSHealth.Types.EventDescription
@@ -71,6 +79,11 @@ library
         , Network.AWS.AWSHealth.Types.EventType
         , Network.AWS.AWSHealth.Types.EventTypeCategory
         , Network.AWS.AWSHealth.Types.EventTypeFilter
+        , Network.AWS.AWSHealth.Types.OrganizationAffectedEntitiesErrorItem
+        , Network.AWS.AWSHealth.Types.OrganizationEvent
+        , Network.AWS.AWSHealth.Types.OrganizationEventDetails
+        , Network.AWS.AWSHealth.Types.OrganizationEventDetailsErrorItem
+        , Network.AWS.AWSHealth.Types.OrganizationEventFilter
         , Network.AWS.AWSHealth.Types.Product
 
     build-depends:

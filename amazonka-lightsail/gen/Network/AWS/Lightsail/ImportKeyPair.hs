@@ -121,7 +121,7 @@ data ImportKeyPairResponse = ImportKeyPairResponse'{_ikprsOperation
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'ikprsOperation' - An array of key-value pairs containing information about the request operation.
+-- * 'ikprsOperation' - An array of objects that describe the result of the action, such as the status of the request, the time stamp of the request, and the resources affected by the request.
 --
 -- * 'ikprsResponseStatus' - -- | The response status code.
 importKeyPairResponse
@@ -131,7 +131,7 @@ importKeyPairResponse pResponseStatus_
   = ImportKeyPairResponse'{_ikprsOperation = Nothing,
                            _ikprsResponseStatus = pResponseStatus_}
 
--- | An array of key-value pairs containing information about the request operation.
+-- | An array of objects that describe the result of the action, such as the status of the request, the time stamp of the request, and the resources affected by the request.
 ikprsOperation :: Lens' ImportKeyPairResponse (Maybe Operation)
 ikprsOperation = lens _ikprsOperation (\ s a -> s{_ikprsOperation = a})
 

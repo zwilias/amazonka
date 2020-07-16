@@ -63,7 +63,7 @@ data GetDocumentVersion = GetDocumentVersion'{_gdvAuthenticationToken
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'gdvAuthenticationToken' - Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.
+-- * 'gdvAuthenticationToken' - Amazon WorkDocs authentication token. Not required when using AWS administrator credentials to access the API.
 --
 -- * 'gdvIncludeCustomMetadata' - Set this to TRUE to include custom metadata in the response.
 --
@@ -83,7 +83,7 @@ getDocumentVersion pDocumentId_ pVersionId_
                         _gdvFields = Nothing, _gdvDocumentId = pDocumentId_,
                         _gdvVersionId = pVersionId_}
 
--- | Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.
+-- | Amazon WorkDocs authentication token. Not required when using AWS administrator credentials to access the API.
 gdvAuthenticationToken :: Lens' GetDocumentVersion (Maybe Text)
 gdvAuthenticationToken = lens _gdvAuthenticationToken (\ s a -> s{_gdvAuthenticationToken = a}) . mapping _Sensitive
 

@@ -28,7 +28,7 @@ module Network.AWS.MediaLive.Types.SmoothGroupEventIdMode (
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | Placeholder documentation for SmoothGroupEventIdMode
+-- | Smooth Group Event Id Mode
 data SmoothGroupEventIdMode = SmoothGroupEventIdMode' (CI
                                                          Text)
                                 deriving (Eq, Ord, Read, Show, Data, Typeable,

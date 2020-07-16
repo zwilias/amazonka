@@ -26,7 +26,7 @@ module Network.AWS.MediaLive.Types.HlsMediaStoreStorageClass (
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | Placeholder documentation for HlsMediaStoreStorageClass
+-- | Hls Media Store Storage Class
 data HlsMediaStoreStorageClass = HlsMediaStoreStorageClass' (CI
                                                                Text)
                                    deriving (Eq, Ord, Read, Show, Data,

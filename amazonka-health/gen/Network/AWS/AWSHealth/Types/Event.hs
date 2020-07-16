@@ -22,7 +22,7 @@ import Network.AWS.AWSHealth.Types.EventTypeCategory
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | Summary information about an event, returned by the 'DescribeEvents' operation. The 'DescribeEventDetails' operation also returns this information, as well as the 'EventDescription' and additional event metadata.
+-- | Summary information about an AWS Health event.
 --
 --
 --
@@ -45,7 +45,7 @@ data Event = Event'{_eLastUpdatedTime ::
 --
 -- * 'eLastUpdatedTime' - The most recent date and time that the event was updated.
 --
--- * 'eArn' - The unique identifier for the event. Format: @arn:aws:health:/event-region/ ::event//EVENT_TYPE_PLUS_ID/ @ . Example: @arn:aws:health:us-east-1::event/AWS_EC2_MAINTENANCE_5331@ 
+-- * 'eArn' - The unique identifier for the event. Format: @arn:aws:health:/event-region/ ::event//SERVICE/ //EVENT_TYPE_CODE/ //EVENT_TYPE_PLUS_ID/ @ . Example: @Example: arn:aws:health:us-east-1::event/EC2/EC2_INSTANCE_RETIREMENT_SCHEDULED/EC2_INSTANCE_RETIREMENT_SCHEDULED_ABC123-DEF456@ 
 --
 -- * 'eService' - The AWS service that is affected by the event. For example, @EC2@ , @RDS@ .
 --
@@ -53,7 +53,7 @@ data Event = Event'{_eLastUpdatedTime ::
 --
 -- * 'eEventTypeCode' - The unique identifier for the event type. The format is @AWS_/SERVICE/ _/DESCRIPTION/ @ ; for example, @AWS_EC2_SYSTEM_MAINTENANCE_EVENT@ .
 --
--- * 'eEventTypeCategory' - The 
+-- * 'eEventTypeCategory' - The category of the event. Possible values are @issue@ , @scheduledChange@ , and @accountNotification@ .
 --
 -- * 'eAvailabilityZone' - The AWS Availability Zone of the event. For example, us-east-1a.
 --
@@ -76,7 +76,7 @@ event
 eLastUpdatedTime :: Lens' Event (Maybe UTCTime)
 eLastUpdatedTime = lens _eLastUpdatedTime (\ s a -> s{_eLastUpdatedTime = a}) . mapping _Time
 
--- | The unique identifier for the event. Format: @arn:aws:health:/event-region/ ::event//EVENT_TYPE_PLUS_ID/ @ . Example: @arn:aws:health:us-east-1::event/AWS_EC2_MAINTENANCE_5331@ 
+-- | The unique identifier for the event. Format: @arn:aws:health:/event-region/ ::event//SERVICE/ //EVENT_TYPE_CODE/ //EVENT_TYPE_PLUS_ID/ @ . Example: @Example: arn:aws:health:us-east-1::event/EC2/EC2_INSTANCE_RETIREMENT_SCHEDULED/EC2_INSTANCE_RETIREMENT_SCHEDULED_ABC123-DEF456@ 
 eArn :: Lens' Event (Maybe Text)
 eArn = lens _eArn (\ s a -> s{_eArn = a})
 
@@ -92,7 +92,7 @@ eStartTime = lens _eStartTime (\ s a -> s{_eStartTime = a}) . mapping _Time
 eEventTypeCode :: Lens' Event (Maybe Text)
 eEventTypeCode = lens _eEventTypeCode (\ s a -> s{_eEventTypeCode = a})
 
--- | The 
+-- | The category of the event. Possible values are @issue@ , @scheduledChange@ , and @accountNotification@ .
 eEventTypeCategory :: Lens' Event (Maybe EventTypeCategory)
 eEventTypeCategory = lens _eEventTypeCategory (\ s a -> s{_eEventTypeCategory = a})
 

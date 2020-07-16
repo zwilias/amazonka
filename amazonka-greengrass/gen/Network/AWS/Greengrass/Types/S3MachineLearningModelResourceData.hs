@@ -17,13 +17,18 @@
 --
 module Network.AWS.Greengrass.Types.S3MachineLearningModelResourceData where
 
+import Network.AWS.Greengrass.Types.ResourceDownloadOwnerSetting
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | Attributes that define an S3 machine learning resource.
+-- | Attributes that define an Amazon S3 machine learning resource.
 --
 -- /See:/ 's3MachineLearningModelResourceData' smart constructor.
-data S3MachineLearningModelResourceData = S3MachineLearningModelResourceData'{_smlmrdDestinationPath
+data S3MachineLearningModelResourceData = S3MachineLearningModelResourceData'{_smlmrdOwnerSetting
+                                                                              ::
+                                                                              !(Maybe
+                                                                                  ResourceDownloadOwnerSetting),
+                                                                              _smlmrdDestinationPath
                                                                               ::
                                                                               !(Maybe
                                                                                   Text),
@@ -38,15 +43,22 @@ data S3MachineLearningModelResourceData = S3MachineLearningModelResourceData'{_s
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
+-- * 'smlmrdOwnerSetting' - Undocumented member.
+--
 -- * 'smlmrdDestinationPath' - The absolute local path of the resource inside the Lambda environment.
 --
 -- * 'smlmrdS3URI' - The URI of the source model in an S3 bucket. The model package must be in tar.gz or .zip format.
 s3MachineLearningModelResourceData
     :: S3MachineLearningModelResourceData
 s3MachineLearningModelResourceData
-  = S3MachineLearningModelResourceData'{_smlmrdDestinationPath
+  = S3MachineLearningModelResourceData'{_smlmrdOwnerSetting
                                           = Nothing,
+                                        _smlmrdDestinationPath = Nothing,
                                         _smlmrdS3URI = Nothing}
+
+-- | Undocumented member.
+smlmrdOwnerSetting :: Lens' S3MachineLearningModelResourceData (Maybe ResourceDownloadOwnerSetting)
+smlmrdOwnerSetting = lens _smlmrdOwnerSetting (\ s a -> s{_smlmrdOwnerSetting = a})
 
 -- | The absolute local path of the resource inside the Lambda environment.
 smlmrdDestinationPath :: Lens' S3MachineLearningModelResourceData (Maybe Text)
@@ -62,7 +74,8 @@ instance FromJSON S3MachineLearningModelResourceData
           = withObject "S3MachineLearningModelResourceData"
               (\ x ->
                  S3MachineLearningModelResourceData' <$>
-                   (x .:? "DestinationPath") <*> (x .:? "S3Uri"))
+                   (x .:? "OwnerSetting") <*> (x .:? "DestinationPath")
+                     <*> (x .:? "S3Uri"))
 
 instance Hashable S3MachineLearningModelResourceData
          where
@@ -75,5 +88,6 @@ instance ToJSON S3MachineLearningModelResourceData
         toJSON S3MachineLearningModelResourceData'{..}
           = object
               (catMaybes
-                 [("DestinationPath" .=) <$> _smlmrdDestinationPath,
+                 [("OwnerSetting" .=) <$> _smlmrdOwnerSetting,
+                  ("DestinationPath" .=) <$> _smlmrdDestinationPath,
                   ("S3Uri" .=) <$> _smlmrdS3URI])

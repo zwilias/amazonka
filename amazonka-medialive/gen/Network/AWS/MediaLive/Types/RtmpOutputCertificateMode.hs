@@ -27,7 +27,7 @@ module Network.AWS.MediaLive.Types.RtmpOutputCertificateMode (
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | Placeholder documentation for RtmpOutputCertificateMode
+-- | Rtmp Output Certificate Mode
 data RtmpOutputCertificateMode = RtmpOutputCertificateMode' (CI
                                                                Text)
                                    deriving (Eq, Ord, Read, Show, Data,

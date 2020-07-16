@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Displays the tags associated with an EventBridge resource. In EventBridge, rules can be tagged.
+-- Displays the tags associated with an EventBridge resource. In EventBridge, rules and event buses can be tagged.
 --
 --
 module Network.AWS.CloudWatchEvents.ListTagsForResource
@@ -54,7 +54,7 @@ newtype ListTagsForResource = ListTagsForResource'{_ltfrResourceARN
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'ltfrResourceARN' - The ARN of the rule for which you want to view tags.
+-- * 'ltfrResourceARN' - The ARN of the EventBridge resource for which you want to view tags.
 listTagsForResource
     :: Text -- ^ 'ltfrResourceARN'
     -> ListTagsForResource
@@ -62,7 +62,7 @@ listTagsForResource pResourceARN_
   = ListTagsForResource'{_ltfrResourceARN =
                            pResourceARN_}
 
--- | The ARN of the rule for which you want to view tags.
+-- | The ARN of the EventBridge resource for which you want to view tags.
 ltfrResourceARN :: Lens' ListTagsForResource Text
 ltfrResourceARN = lens _ltfrResourceARN (\ s a -> s{_ltfrResourceARN = a})
 
@@ -114,7 +114,7 @@ data ListTagsForResourceResponse = ListTagsForResourceResponse'{_ltfrrsTags
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'ltfrrsTags' - The list of tag keys and values associated with the rule that you specified.
+-- * 'ltfrrsTags' - The list of tag keys and values associated with the resource you specified
 --
 -- * 'ltfrrsResponseStatus' - -- | The response status code.
 listTagsForResourceResponse
@@ -124,7 +124,7 @@ listTagsForResourceResponse pResponseStatus_
   = ListTagsForResourceResponse'{_ltfrrsTags = Nothing,
                                  _ltfrrsResponseStatus = pResponseStatus_}
 
--- | The list of tag keys and values associated with the rule that you specified.
+-- | The list of tag keys and values associated with the resource you specified
 ltfrrsTags :: Lens' ListTagsForResourceResponse [Tag]
 ltfrrsTags = lens _ltfrrsTags (\ s a -> s{_ltfrrsTags = a}) . _Default . _Coerce
 

@@ -28,7 +28,7 @@ module Network.AWS.MediaLive.Types.TimecodeConfigSource (
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | Placeholder documentation for TimecodeConfigSource
+-- | Timecode Config Source
 data TimecodeConfigSource = TimecodeConfigSource' (CI
                                                      Text)
                               deriving (Eq, Ord, Read, Show, Data, Typeable,

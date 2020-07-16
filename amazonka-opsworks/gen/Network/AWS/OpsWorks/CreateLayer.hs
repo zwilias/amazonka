@@ -18,10 +18,10 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Creates a layer. For more information, see <http://docs.aws.amazon.com/opsworks/latest/userguide/workinglayers-basics-create.html How to Create a Layer> .
+-- Creates a layer. For more information, see <https://docs.aws.amazon.com/opsworks/latest/userguide/workinglayers-basics-create.html How to Create a Layer> .
 --
 --
--- __Required Permissions__ : To use this action, an IAM user must have a Manage permissions level for the stack, or an attached policy that explicitly grants permissions. For more information on user permissions, see <http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html Managing User Permissions> .
+-- __Required Permissions__ : To use this action, an IAM user must have a Manage permissions level for the stack, or an attached policy that explicitly grants permissions. For more information on user permissions, see <https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html Managing User Permissions> .
 --
 module Network.AWS.OpsWorks.CreateLayer
     (
@@ -91,7 +91,7 @@ data CreateLayer = CreateLayer'{_clCustomInstanceProfileARN
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'clCustomInstanceProfileARN' - The ARN of an IAM profile to be used for the layer's EC2 instances. For more information about IAM ARNs, see <http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html Using Identifiers> .
+-- * 'clCustomInstanceProfileARN' - The ARN of an IAM profile to be used for the layer's EC2 instances. For more information about IAM ARNs, see <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html Using Identifiers> .
 --
 -- * 'clCustomSecurityGroupIds' - An array containing the layer custom security group IDs.
 --
@@ -103,7 +103,7 @@ data CreateLayer = CreateLayer'{_clCustomInstanceProfileARN
 --
 -- * 'clCustomRecipes' - A @LayerCustomRecipes@ object that specifies the layer custom recipes.
 --
--- * 'clCustomJSON' - A JSON-formatted string containing custom stack configuration and deployment attributes to be installed on the layer's instances. For more information, see <http://docs.aws.amazon.com/opsworks/latest/userguide/workingcookbook-json-override.html Using Custom JSON> . This feature is supported as of version 1.7.42 of the AWS CLI. 
+-- * 'clCustomJSON' - A JSON-formatted string containing custom stack configuration and deployment attributes to be installed on the layer's instances. For more information, see <https://docs.aws.amazon.com/opsworks/latest/userguide/workingcookbook-json-override.html Using Custom JSON> . This feature is supported as of version 1.7.42 of the AWS CLI. 
 --
 -- * 'clVolumeConfigurations' - A @VolumeConfigurations@ object that describes the layer's Amazon EBS volumes.
 --
@@ -113,11 +113,11 @@ data CreateLayer = CreateLayer'{_clCustomInstanceProfileARN
 --
 -- * 'clAttributes' - One or more user-defined key-value pairs to be added to the stack attributes. To create a cluster layer, set the @EcsClusterArn@ attribute to the cluster's ARN.
 --
--- * 'clAutoAssignPublicIPs' - For stacks that are running in a VPC, whether to automatically assign a public IP address to the layer's instances. For more information, see <http://docs.aws.amazon.com/opsworks/latest/userguide/workinglayers-basics-edit.html How to Edit a Layer> .
+-- * 'clAutoAssignPublicIPs' - For stacks that are running in a VPC, whether to automatically assign a public IP address to the layer's instances. For more information, see <https://docs.aws.amazon.com/opsworks/latest/userguide/workinglayers-basics-edit.html How to Edit a Layer> .
 --
 -- * 'clUseEBSOptimizedInstances' - Whether to use Amazon EBS-optimized instances.
 --
--- * 'clAutoAssignElasticIPs' - Whether to automatically assign an <http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html Elastic IP address> to the layer's instances. For more information, see <http://docs.aws.amazon.com/opsworks/latest/userguide/workinglayers-basics-edit.html How to Edit a Layer> .
+-- * 'clAutoAssignElasticIPs' - Whether to automatically assign an <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html Elastic IP address> to the layer's instances. For more information, see <https://docs.aws.amazon.com/opsworks/latest/userguide/workinglayers-basics-edit.html How to Edit a Layer> .
 --
 -- * 'clStackId' - The layer stack ID.
 --
@@ -125,7 +125,7 @@ data CreateLayer = CreateLayer'{_clCustomInstanceProfileARN
 --
 -- * 'clName' - The layer name, which is used by the console.
 --
--- * 'clShortname' - For custom layers only, use this parameter to specify the layer's short name, which is used internally by AWS OpsWorks Stacks and by Chef recipes. The short name is also used as the name for the directory where your app files are installed. It can have a maximum of 200 characters, which are limited to the alphanumeric characters, '-', '_', and '.'. The built-in layers' short names are defined by AWS OpsWorks Stacks. For more information, see the <http://docs.aws.amazon.com/opsworks/latest/userguide/layers.html Layer Reference> .
+-- * 'clShortname' - For custom layers only, use this parameter to specify the layer's short name, which is used internally by AWS OpsWorks Stacks and by Chef recipes. The short name is also used as the name for the directory where your app files are installed. It can have a maximum of 200 characters, which are limited to the alphanumeric characters, '-', '_', and '.'. The built-in layers' short names are defined by AWS OpsWorks Stacks. For more information, see the <https://docs.aws.amazon.com/opsworks/latest/userguide/layers.html Layer Reference> .
 createLayer
     :: Text -- ^ 'clStackId'
     -> LayerType -- ^ 'clType'
@@ -148,7 +148,7 @@ createLayer pStackId_ pType_ pName_ pShortname_
                  _clStackId = pStackId_, _clType = pType_,
                  _clName = pName_, _clShortname = pShortname_}
 
--- | The ARN of an IAM profile to be used for the layer's EC2 instances. For more information about IAM ARNs, see <http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html Using Identifiers> .
+-- | The ARN of an IAM profile to be used for the layer's EC2 instances. For more information about IAM ARNs, see <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html Using Identifiers> .
 clCustomInstanceProfileARN :: Lens' CreateLayer (Maybe Text)
 clCustomInstanceProfileARN = lens _clCustomInstanceProfileARN (\ s a -> s{_clCustomInstanceProfileARN = a})
 
@@ -172,7 +172,7 @@ clLifecycleEventConfiguration = lens _clLifecycleEventConfiguration (\ s a -> s{
 clCustomRecipes :: Lens' CreateLayer (Maybe Recipes)
 clCustomRecipes = lens _clCustomRecipes (\ s a -> s{_clCustomRecipes = a})
 
--- | A JSON-formatted string containing custom stack configuration and deployment attributes to be installed on the layer's instances. For more information, see <http://docs.aws.amazon.com/opsworks/latest/userguide/workingcookbook-json-override.html Using Custom JSON> . This feature is supported as of version 1.7.42 of the AWS CLI. 
+-- | A JSON-formatted string containing custom stack configuration and deployment attributes to be installed on the layer's instances. For more information, see <https://docs.aws.amazon.com/opsworks/latest/userguide/workingcookbook-json-override.html Using Custom JSON> . This feature is supported as of version 1.7.42 of the AWS CLI. 
 clCustomJSON :: Lens' CreateLayer (Maybe Text)
 clCustomJSON = lens _clCustomJSON (\ s a -> s{_clCustomJSON = a})
 
@@ -192,7 +192,7 @@ clPackages = lens _clPackages (\ s a -> s{_clPackages = a}) . _Default . _Coerce
 clAttributes :: Lens' CreateLayer (HashMap LayerAttributesKeys (Maybe Text))
 clAttributes = lens _clAttributes (\ s a -> s{_clAttributes = a}) . _Default . _Map
 
--- | For stacks that are running in a VPC, whether to automatically assign a public IP address to the layer's instances. For more information, see <http://docs.aws.amazon.com/opsworks/latest/userguide/workinglayers-basics-edit.html How to Edit a Layer> .
+-- | For stacks that are running in a VPC, whether to automatically assign a public IP address to the layer's instances. For more information, see <https://docs.aws.amazon.com/opsworks/latest/userguide/workinglayers-basics-edit.html How to Edit a Layer> .
 clAutoAssignPublicIPs :: Lens' CreateLayer (Maybe Bool)
 clAutoAssignPublicIPs = lens _clAutoAssignPublicIPs (\ s a -> s{_clAutoAssignPublicIPs = a})
 
@@ -200,7 +200,7 @@ clAutoAssignPublicIPs = lens _clAutoAssignPublicIPs (\ s a -> s{_clAutoAssignPub
 clUseEBSOptimizedInstances :: Lens' CreateLayer (Maybe Bool)
 clUseEBSOptimizedInstances = lens _clUseEBSOptimizedInstances (\ s a -> s{_clUseEBSOptimizedInstances = a})
 
--- | Whether to automatically assign an <http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html Elastic IP address> to the layer's instances. For more information, see <http://docs.aws.amazon.com/opsworks/latest/userguide/workinglayers-basics-edit.html How to Edit a Layer> .
+-- | Whether to automatically assign an <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html Elastic IP address> to the layer's instances. For more information, see <https://docs.aws.amazon.com/opsworks/latest/userguide/workinglayers-basics-edit.html How to Edit a Layer> .
 clAutoAssignElasticIPs :: Lens' CreateLayer (Maybe Bool)
 clAutoAssignElasticIPs = lens _clAutoAssignElasticIPs (\ s a -> s{_clAutoAssignElasticIPs = a})
 
@@ -216,7 +216,7 @@ clType = lens _clType (\ s a -> s{_clType = a})
 clName :: Lens' CreateLayer Text
 clName = lens _clName (\ s a -> s{_clName = a})
 
--- | For custom layers only, use this parameter to specify the layer's short name, which is used internally by AWS OpsWorks Stacks and by Chef recipes. The short name is also used as the name for the directory where your app files are installed. It can have a maximum of 200 characters, which are limited to the alphanumeric characters, '-', '_', and '.'. The built-in layers' short names are defined by AWS OpsWorks Stacks. For more information, see the <http://docs.aws.amazon.com/opsworks/latest/userguide/layers.html Layer Reference> .
+-- | For custom layers only, use this parameter to specify the layer's short name, which is used internally by AWS OpsWorks Stacks and by Chef recipes. The short name is also used as the name for the directory where your app files are installed. It can have a maximum of 200 characters, which are limited to the alphanumeric characters, '-', '_', and '.'. The built-in layers' short names are defined by AWS OpsWorks Stacks. For more information, see the <https://docs.aws.amazon.com/opsworks/latest/userguide/layers.html Layer Reference> .
 clShortname :: Lens' CreateLayer Text
 clShortname = lens _clShortname (\ s a -> s{_clShortname = a})
 

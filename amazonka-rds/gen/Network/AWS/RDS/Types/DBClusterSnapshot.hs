@@ -23,7 +23,7 @@ import Network.AWS.Prelude
 -- | Contains the details for an Amazon RDS DB cluster snapshot 
 --
 --
--- This data type is used as a response element in the 'DescribeDBClusterSnapshots' action. 
+-- This data type is used as a response element in the @DescribeDBClusterSnapshots@ action. 
 --
 --
 -- /See:/ 'dbClusterSnapshot' smart constructor.
@@ -86,7 +86,7 @@ data DBClusterSnapshot = DBClusterSnapshot'{_dcsEngineVersion
 --
 -- * 'dcsLicenseModel' - Provides the license model information for this DB cluster snapshot.
 --
--- * 'dcsAvailabilityZones' - Provides the list of EC2 Availability Zones that instances in the DB cluster snapshot can be restored in.
+-- * 'dcsAvailabilityZones' - Provides the list of Availability Zones (AZs) where instances in the DB cluster snapshot can be restored.
 --
 -- * 'dcsSnapshotType' - Provides the type of the DB cluster snapshot.
 --
@@ -167,7 +167,7 @@ dcsEngine = lens _dcsEngine (\ s a -> s{_dcsEngine = a})
 dcsLicenseModel :: Lens' DBClusterSnapshot (Maybe Text)
 dcsLicenseModel = lens _dcsLicenseModel (\ s a -> s{_dcsLicenseModel = a})
 
--- | Provides the list of EC2 Availability Zones that instances in the DB cluster snapshot can be restored in.
+-- | Provides the list of Availability Zones (AZs) where instances in the DB cluster snapshot can be restored.
 dcsAvailabilityZones :: Lens' DBClusterSnapshot [Text]
 dcsAvailabilityZones = lens _dcsAvailabilityZones (\ s a -> s{_dcsAvailabilityZones = a}) . _Default . _Coerce
 

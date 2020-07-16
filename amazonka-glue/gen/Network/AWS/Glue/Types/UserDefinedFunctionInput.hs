@@ -22,7 +22,7 @@ import Network.AWS.Glue.Types.ResourceURI
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | A structure used to create or updata a user-defined function.
+-- | A structure used to create or update a user-defined function.
 --
 --
 --

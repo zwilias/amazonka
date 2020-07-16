@@ -23,7 +23,11 @@ import Network.AWS.S3.Internal
 import Network.AWS.S3.Types.BucketVersioningStatus
 import Network.AWS.S3.Types.MFADelete
 
--- | /See:/ 'versioningConfiguration' smart constructor.
+-- | Describes the versioning state of an Amazon S3 bucket. For more information, see <https://docs.aws.amazon.com/AmazonS3/latest/API/RESTBucketPUTVersioningStatus.html PUT Bucket versioning> in the /Amazon Simple Storage Service API Reference/ .
+--
+--
+--
+-- /See:/ 'versioningConfiguration' smart constructor.
 data VersioningConfiguration = VersioningConfiguration'{_vcStatus
                                                         ::
                                                         !(Maybe

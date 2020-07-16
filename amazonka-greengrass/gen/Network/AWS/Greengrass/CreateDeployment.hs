@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Creates a deployment.
+-- Creates a deployment. ''CreateDeployment'' requests are idempotent with respect to the ''X-Amzn-Client-Token'' token and the request parameters.
 module Network.AWS.Greengrass.CreateDeployment
     (
     -- * Creating a Request
@@ -27,9 +27,9 @@ module Network.AWS.Greengrass.CreateDeployment
     -- * Request Lenses
     , cdDeploymentId
     , cdAmznClientToken
-    , cdDeploymentType
     , cdGroupVersionId
     , cdGroupId
+    , cdDeploymentType
 
     -- * Destructuring the Response
     , createDeploymentResponse
@@ -51,10 +51,9 @@ import Network.AWS.Response
 data CreateDeployment = CreateDeployment'{_cdDeploymentId
                                           :: !(Maybe Text),
                                           _cdAmznClientToken :: !(Maybe Text),
-                                          _cdDeploymentType ::
-                                          !(Maybe DeploymentType),
                                           _cdGroupVersionId :: !(Maybe Text),
-                                          _cdGroupId :: !Text}
+                                          _cdGroupId :: !Text,
+                                          _cdDeploymentType :: !DeploymentType}
                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateDeployment' with the minimum fields required to make a request.
@@ -65,19 +64,20 @@ data CreateDeployment = CreateDeployment'{_cdDeploymentId
 --
 -- * 'cdAmznClientToken' - A client token used to correlate requests and responses.
 --
--- * 'cdDeploymentType' - The type of deployment. When used in ''CreateDeployment'', only ''NewDeployment'' and ''Redeployment'' are valid.
---
 -- * 'cdGroupVersionId' - The ID of the group version to be deployed.
 --
--- * 'cdGroupId' - The ID of the AWS Greengrass group.
+-- * 'cdGroupId' - The ID of the Greengrass group.
+--
+-- * 'cdDeploymentType' - The type of deployment. When used for ''CreateDeployment'', only ''NewDeployment'' and ''Redeployment'' are valid.
 createDeployment
     :: Text -- ^ 'cdGroupId'
+    -> DeploymentType -- ^ 'cdDeploymentType'
     -> CreateDeployment
-createDeployment pGroupId_
+createDeployment pGroupId_ pDeploymentType_
   = CreateDeployment'{_cdDeploymentId = Nothing,
                       _cdAmznClientToken = Nothing,
-                      _cdDeploymentType = Nothing,
-                      _cdGroupVersionId = Nothing, _cdGroupId = pGroupId_}
+                      _cdGroupVersionId = Nothing, _cdGroupId = pGroupId_,
+                      _cdDeploymentType = pDeploymentType_}
 
 -- | The ID of the deployment if you wish to redeploy a previous deployment.
 cdDeploymentId :: Lens' CreateDeployment (Maybe Text)
@@ -87,17 +87,17 @@ cdDeploymentId = lens _cdDeploymentId (\ s a -> s{_cdDeploymentId = a})
 cdAmznClientToken :: Lens' CreateDeployment (Maybe Text)
 cdAmznClientToken = lens _cdAmznClientToken (\ s a -> s{_cdAmznClientToken = a})
 
--- | The type of deployment. When used in ''CreateDeployment'', only ''NewDeployment'' and ''Redeployment'' are valid.
-cdDeploymentType :: Lens' CreateDeployment (Maybe DeploymentType)
-cdDeploymentType = lens _cdDeploymentType (\ s a -> s{_cdDeploymentType = a})
-
 -- | The ID of the group version to be deployed.
 cdGroupVersionId :: Lens' CreateDeployment (Maybe Text)
 cdGroupVersionId = lens _cdGroupVersionId (\ s a -> s{_cdGroupVersionId = a})
 
--- | The ID of the AWS Greengrass group.
+-- | The ID of the Greengrass group.
 cdGroupId :: Lens' CreateDeployment Text
 cdGroupId = lens _cdGroupId (\ s a -> s{_cdGroupId = a})
+
+-- | The type of deployment. When used for ''CreateDeployment'', only ''NewDeployment'' and ''Redeployment'' are valid.
+cdDeploymentType :: Lens' CreateDeployment DeploymentType
+cdDeploymentType = lens _cdDeploymentType (\ s a -> s{_cdDeploymentType = a})
 
 instance AWSRequest CreateDeployment where
         type Rs CreateDeployment = CreateDeploymentResponse
@@ -125,8 +125,8 @@ instance ToJSON CreateDeployment where
           = object
               (catMaybes
                  [("DeploymentId" .=) <$> _cdDeploymentId,
-                  ("DeploymentType" .=) <$> _cdDeploymentType,
-                  ("GroupVersionId" .=) <$> _cdGroupVersionId])
+                  ("GroupVersionId" .=) <$> _cdGroupVersionId,
+                  Just ("DeploymentType" .= _cdDeploymentType)])
 
 instance ToPath CreateDeployment where
         toPath CreateDeployment'{..}

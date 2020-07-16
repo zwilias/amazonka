@@ -57,7 +57,7 @@ data GetDeploymentStatus = GetDeploymentStatus'{_gdsGroupId
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'gdsGroupId' - The ID of the AWS Greengrass group.
+-- * 'gdsGroupId' - The ID of the Greengrass group.
 --
 -- * 'gdsDeploymentId' - The ID of the deployment.
 getDeploymentStatus
@@ -68,7 +68,7 @@ getDeploymentStatus pGroupId_ pDeploymentId_
   = GetDeploymentStatus'{_gdsGroupId = pGroupId_,
                          _gdsDeploymentId = pDeploymentId_}
 
--- | The ID of the AWS Greengrass group.
+-- | The ID of the Greengrass group.
 gdsGroupId :: Lens' GetDeploymentStatus Text
 gdsGroupId = lens _gdsGroupId (\ s a -> s{_gdsGroupId = a})
 
@@ -142,7 +142,7 @@ data GetDeploymentStatusResponse = GetDeploymentStatusResponse'{_gdsrsDeployment
 --
 -- * 'gdsrsErrorDetails' - Error details
 --
--- * 'gdsrsDeploymentStatus' - The status of the deployment.
+-- * 'gdsrsDeploymentStatus' - The status of the deployment: ''InProgress'', ''Building'', ''Success'', or ''Failure''.
 --
 -- * 'gdsrsUpdatedAt' - The time, in milliseconds since the epoch, when the deployment status was updated.
 --
@@ -169,7 +169,7 @@ gdsrsDeploymentType = lens _gdsrsDeploymentType (\ s a -> s{_gdsrsDeploymentType
 gdsrsErrorDetails :: Lens' GetDeploymentStatusResponse [ErrorDetail]
 gdsrsErrorDetails = lens _gdsrsErrorDetails (\ s a -> s{_gdsrsErrorDetails = a}) . _Default . _Coerce
 
--- | The status of the deployment.
+-- | The status of the deployment: ''InProgress'', ''Building'', ''Success'', or ''Failure''.
 gdsrsDeploymentStatus :: Lens' GetDeploymentStatusResponse (Maybe Text)
 gdsrsDeploymentStatus = lens _gdsrsDeploymentStatus (\ s a -> s{_gdsrsDeploymentStatus = a})
 

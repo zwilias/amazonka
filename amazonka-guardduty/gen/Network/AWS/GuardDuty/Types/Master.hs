@@ -20,7 +20,9 @@ module Network.AWS.GuardDuty.Types.Master where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | Contains details about the master account.
+-- | Contains information about the master account and invitation.
+--
+--
 --
 -- /See:/ 'master' smart constructor.
 data Master = Master'{_masInvitedAt :: !(Maybe Text),
@@ -33,13 +35,13 @@ data Master = Master'{_masInvitedAt :: !(Maybe Text),
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'masInvitedAt' - Timestamp at which the invitation was sent
+-- * 'masInvitedAt' - The timestamp when the invitation was sent.
 --
 -- * 'masRelationshipStatus' - The status of the relationship between the master and member accounts.
 --
--- * 'masInvitationId' - This value is used to validate the master account to the member account.
+-- * 'masInvitationId' - The value used to validate the master account to the member account.
 --
--- * 'masAccountId' - Master account ID
+-- * 'masAccountId' - The ID of the account used as the master account.
 master
     :: Master
 master
@@ -47,7 +49,7 @@ master
             _masRelationshipStatus = Nothing,
             _masInvitationId = Nothing, _masAccountId = Nothing}
 
--- | Timestamp at which the invitation was sent
+-- | The timestamp when the invitation was sent.
 masInvitedAt :: Lens' Master (Maybe Text)
 masInvitedAt = lens _masInvitedAt (\ s a -> s{_masInvitedAt = a})
 
@@ -55,11 +57,11 @@ masInvitedAt = lens _masInvitedAt (\ s a -> s{_masInvitedAt = a})
 masRelationshipStatus :: Lens' Master (Maybe Text)
 masRelationshipStatus = lens _masRelationshipStatus (\ s a -> s{_masRelationshipStatus = a})
 
--- | This value is used to validate the master account to the member account.
+-- | The value used to validate the master account to the member account.
 masInvitationId :: Lens' Master (Maybe Text)
 masInvitationId = lens _masInvitationId (\ s a -> s{_masInvitationId = a})
 
--- | Master account ID
+-- | The ID of the account used as the master account.
 masAccountId :: Lens' Master (Maybe Text)
 masAccountId = lens _masAccountId (\ s a -> s{_masAccountId = a})
 

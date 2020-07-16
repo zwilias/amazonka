@@ -19,8 +19,8 @@
 module Network.AWS.SageMaker.Types.DirectInternetAccess (
   DirectInternetAccess (
     ..
-    , Disabled
-    , Enabled
+    , DIADisabled
+    , DIAEnabled
     )
   ) where
 
@@ -32,15 +32,15 @@ data DirectInternetAccess = DirectInternetAccess' (CI
                               deriving (Eq, Ord, Read, Show, Data, Typeable,
                                         Generic)
 
-pattern Disabled :: DirectInternetAccess
-pattern Disabled = DirectInternetAccess' "Disabled"
+pattern DIADisabled :: DirectInternetAccess
+pattern DIADisabled = DirectInternetAccess' "Disabled"
 
-pattern Enabled :: DirectInternetAccess
-pattern Enabled = DirectInternetAccess' "Enabled"
+pattern DIAEnabled :: DirectInternetAccess
+pattern DIAEnabled = DirectInternetAccess' "Enabled"
 
 {-# COMPLETE
-  Disabled,
-  Enabled,
+  DIADisabled,
+  DIAEnabled,
   DirectInternetAccess' #-}
 
 instance FromText DirectInternetAccess where
@@ -55,20 +55,20 @@ instance ToText DirectInternetAccess where
 --   fromEnum is a partial function, and will error on values unknown at generation time.
 instance Enum DirectInternetAccess where
     toEnum i = case i of
-        0 -> Disabled
-        1 -> Enabled
+        0 -> DIADisabled
+        1 -> DIAEnabled
         _ -> (error . showText) $ "Unknown index for DirectInternetAccess: " <> toText i
     fromEnum x = case x of
-        Disabled -> 0
-        Enabled -> 1
+        DIADisabled -> 0
+        DIAEnabled -> 1
         DirectInternetAccess' name -> (error . showText) $ "Unknown DirectInternetAccess: " <> original name
 
 -- | Represents the bounds of /known/ $DirectInternetAccess.
 --   AWS may have added more since the source was generated.
 --   This instance exists only for backward compatibility.
 instance Bounded DirectInternetAccess where
-    minBound = Disabled
-    maxBound = Enabled
+    minBound = DIADisabled
+    maxBound = DIAEnabled
 
 instance Hashable     DirectInternetAccess
 instance NFData       DirectInternetAccess

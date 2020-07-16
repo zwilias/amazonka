@@ -30,12 +30,14 @@ import Network.AWS.Prelude
 -- /See:/ 'profileData' smart constructor.
 data ProfileData = ProfileData'{_pdDistanceUnit ::
                                 !(Maybe DistanceUnit),
+                                _pdLocale :: !(Maybe Text),
                                 _pdAddress :: !(Maybe Text),
                                 _pdProfileARN :: !(Maybe Text),
                                 _pdWakeWord :: !(Maybe WakeWord),
                                 _pdProfileName :: !(Maybe Text),
                                 _pdTemperatureUnit :: !(Maybe TemperatureUnit),
-                                _pdTimezone :: !(Maybe Text)}
+                                _pdTimezone :: !(Maybe Text),
+                                _pdIsDefault :: !(Maybe Bool)}
                      deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ProfileData' with the minimum fields required to make a request.
@@ -43,6 +45,8 @@ data ProfileData = ProfileData'{_pdDistanceUnit ::
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'pdDistanceUnit' - The distance unit of a room profile.
+--
+-- * 'pdLocale' - The locale of a room profile. (This is currently available only to a limited preview audience.)
 --
 -- * 'pdAddress' - The address of a room profile.
 --
@@ -54,18 +58,26 @@ data ProfileData = ProfileData'{_pdDistanceUnit ::
 --
 -- * 'pdTemperatureUnit' - The temperature unit of a room profile.
 --
--- * 'pdTimezone' - The timezone of a room profile.
+-- * 'pdTimezone' - The time zone of a room profile.
+--
+-- * 'pdIsDefault' - Retrieves if the profile data is default or not.
 profileData
     :: ProfileData
 profileData
   = ProfileData'{_pdDistanceUnit = Nothing,
-                 _pdAddress = Nothing, _pdProfileARN = Nothing,
-                 _pdWakeWord = Nothing, _pdProfileName = Nothing,
-                 _pdTemperatureUnit = Nothing, _pdTimezone = Nothing}
+                 _pdLocale = Nothing, _pdAddress = Nothing,
+                 _pdProfileARN = Nothing, _pdWakeWord = Nothing,
+                 _pdProfileName = Nothing,
+                 _pdTemperatureUnit = Nothing, _pdTimezone = Nothing,
+                 _pdIsDefault = Nothing}
 
 -- | The distance unit of a room profile.
 pdDistanceUnit :: Lens' ProfileData (Maybe DistanceUnit)
 pdDistanceUnit = lens _pdDistanceUnit (\ s a -> s{_pdDistanceUnit = a})
+
+-- | The locale of a room profile. (This is currently available only to a limited preview audience.)
+pdLocale :: Lens' ProfileData (Maybe Text)
+pdLocale = lens _pdLocale (\ s a -> s{_pdLocale = a})
 
 -- | The address of a room profile.
 pdAddress :: Lens' ProfileData (Maybe Text)
@@ -87,21 +99,27 @@ pdProfileName = lens _pdProfileName (\ s a -> s{_pdProfileName = a})
 pdTemperatureUnit :: Lens' ProfileData (Maybe TemperatureUnit)
 pdTemperatureUnit = lens _pdTemperatureUnit (\ s a -> s{_pdTemperatureUnit = a})
 
--- | The timezone of a room profile.
+-- | The time zone of a room profile.
 pdTimezone :: Lens' ProfileData (Maybe Text)
 pdTimezone = lens _pdTimezone (\ s a -> s{_pdTimezone = a})
+
+-- | Retrieves if the profile data is default or not.
+pdIsDefault :: Lens' ProfileData (Maybe Bool)
+pdIsDefault = lens _pdIsDefault (\ s a -> s{_pdIsDefault = a})
 
 instance FromJSON ProfileData where
         parseJSON
           = withObject "ProfileData"
               (\ x ->
                  ProfileData' <$>
-                   (x .:? "DistanceUnit") <*> (x .:? "Address") <*>
-                     (x .:? "ProfileArn")
+                   (x .:? "DistanceUnit") <*> (x .:? "Locale") <*>
+                     (x .:? "Address")
+                     <*> (x .:? "ProfileArn")
                      <*> (x .:? "WakeWord")
                      <*> (x .:? "ProfileName")
                      <*> (x .:? "TemperatureUnit")
-                     <*> (x .:? "Timezone"))
+                     <*> (x .:? "Timezone")
+                     <*> (x .:? "IsDefault"))
 
 instance Hashable ProfileData where
 

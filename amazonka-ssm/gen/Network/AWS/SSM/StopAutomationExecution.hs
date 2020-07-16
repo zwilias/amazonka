@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Stop an Automation that is currently executing.
+-- Stop an Automation that is currently running.
 --
 --
 module Network.AWS.SSM.StopAutomationExecution

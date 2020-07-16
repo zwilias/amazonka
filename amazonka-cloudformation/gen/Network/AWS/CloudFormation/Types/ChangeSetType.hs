@@ -19,8 +19,9 @@
 module Network.AWS.CloudFormation.Types.ChangeSetType (
   ChangeSetType (
     ..
-    , Create
-    , Update
+    , CSTCreate
+    , CSTImport
+    , CSTUpdate
     )
   ) where
 
@@ -31,15 +32,19 @@ data ChangeSetType = ChangeSetType' (CI Text)
                        deriving (Eq, Ord, Read, Show, Data, Typeable,
                                  Generic)
 
-pattern Create :: ChangeSetType
-pattern Create = ChangeSetType' "CREATE"
+pattern CSTCreate :: ChangeSetType
+pattern CSTCreate = ChangeSetType' "CREATE"
 
-pattern Update :: ChangeSetType
-pattern Update = ChangeSetType' "UPDATE"
+pattern CSTImport :: ChangeSetType
+pattern CSTImport = ChangeSetType' "IMPORT"
+
+pattern CSTUpdate :: ChangeSetType
+pattern CSTUpdate = ChangeSetType' "UPDATE"
 
 {-# COMPLETE
-  Create,
-  Update,
+  CSTCreate,
+  CSTImport,
+  CSTUpdate,
   ChangeSetType' #-}
 
 instance FromText ChangeSetType where
@@ -54,20 +59,22 @@ instance ToText ChangeSetType where
 --   fromEnum is a partial function, and will error on values unknown at generation time.
 instance Enum ChangeSetType where
     toEnum i = case i of
-        0 -> Create
-        1 -> Update
+        0 -> CSTCreate
+        1 -> CSTImport
+        2 -> CSTUpdate
         _ -> (error . showText) $ "Unknown index for ChangeSetType: " <> toText i
     fromEnum x = case x of
-        Create -> 0
-        Update -> 1
+        CSTCreate -> 0
+        CSTImport -> 1
+        CSTUpdate -> 2
         ChangeSetType' name -> (error . showText) $ "Unknown ChangeSetType: " <> original name
 
 -- | Represents the bounds of /known/ $ChangeSetType.
 --   AWS may have added more since the source was generated.
 --   This instance exists only for backward compatibility.
 instance Bounded ChangeSetType where
-    minBound = Create
-    maxBound = Update
+    minBound = CSTCreate
+    maxBound = CSTUpdate
 
 instance Hashable     ChangeSetType
 instance NFData       ChangeSetType

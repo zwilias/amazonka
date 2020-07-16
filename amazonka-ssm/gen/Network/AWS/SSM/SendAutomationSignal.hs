@@ -57,11 +57,11 @@ data SendAutomationSignal = SendAutomationSignal'{_sasPayload
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'sasPayload' - The data sent with the signal. The data schema depends on the type of signal used in the request. 
+-- * 'sasPayload' - The data sent with the signal. The data schema depends on the type of signal used in the request. For @Approve@ and @Reject@ signal types, the payload is an optional comment that you can send with the signal type. For example: @Comment="Looks good"@  For @StartStep@ and @Resume@ signal types, you must send the name of the Automation step to start or resume as the payload. For example: @StepName="step1"@  For the @StopStep@ signal type, you must send the step execution ID as the payload. For example: @StepExecutionId="97fff367-fc5a-4299-aed8-0123456789ab"@ 
 --
 -- * 'sasAutomationExecutionId' - The unique identifier for an existing Automation execution that you want to send the signal to.
 --
--- * 'sasSignalType' - The type of signal. Valid signal types include the following: Approve and Reject 
+-- * 'sasSignalType' - The type of signal to send to an Automation execution. 
 sendAutomationSignal
     :: Text -- ^ 'sasAutomationExecutionId'
     -> SignalType -- ^ 'sasSignalType'
@@ -72,7 +72,7 @@ sendAutomationSignal pAutomationExecutionId_
                           _sasAutomationExecutionId = pAutomationExecutionId_,
                           _sasSignalType = pSignalType_}
 
--- | The data sent with the signal. The data schema depends on the type of signal used in the request. 
+-- | The data sent with the signal. The data schema depends on the type of signal used in the request. For @Approve@ and @Reject@ signal types, the payload is an optional comment that you can send with the signal type. For example: @Comment="Looks good"@  For @StartStep@ and @Resume@ signal types, you must send the name of the Automation step to start or resume as the payload. For example: @StepName="step1"@  For the @StopStep@ signal type, you must send the step execution ID as the payload. For example: @StepExecutionId="97fff367-fc5a-4299-aed8-0123456789ab"@ 
 sasPayload :: Lens' SendAutomationSignal (HashMap Text [Text])
 sasPayload = lens _sasPayload (\ s a -> s{_sasPayload = a}) . _Default . _Map
 
@@ -80,7 +80,7 @@ sasPayload = lens _sasPayload (\ s a -> s{_sasPayload = a}) . _Default . _Map
 sasAutomationExecutionId :: Lens' SendAutomationSignal Text
 sasAutomationExecutionId = lens _sasAutomationExecutionId (\ s a -> s{_sasAutomationExecutionId = a})
 
--- | The type of signal. Valid signal types include the following: Approve and Reject 
+-- | The type of signal to send to an Automation execution. 
 sasSignalType :: Lens' SendAutomationSignal SignalType
 sasSignalType = lens _sasSignalType (\ s a -> s{_sasSignalType = a})
 

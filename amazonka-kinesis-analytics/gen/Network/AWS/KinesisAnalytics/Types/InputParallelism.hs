@@ -20,7 +20,7 @@ module Network.AWS.KinesisAnalytics.Types.InputParallelism where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | Describes the number of in-application streams to create for a given streaming source. For information about parallelism, see <http://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-it-works-input.html Configuring Application Input> . 
+-- | Describes the number of in-application streams to create for a given streaming source. For information about parallelism, see <https://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-it-works-input.html Configuring Application Input> . 
 --
 --
 --
@@ -33,13 +33,13 @@ newtype InputParallelism = InputParallelism'{_ipCount
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'ipCount' - Number of in-application streams to create. For more information, see <http://docs.aws.amazon.com/kinesisanalytics/latest/dev/limits.html Limits> . 
+-- * 'ipCount' - Number of in-application streams to create. For more information, see <https://docs.aws.amazon.com/kinesisanalytics/latest/dev/limits.html Limits> . 
 inputParallelism
     :: InputParallelism
 inputParallelism
   = InputParallelism'{_ipCount = Nothing}
 
--- | Number of in-application streams to create. For more information, see <http://docs.aws.amazon.com/kinesisanalytics/latest/dev/limits.html Limits> . 
+-- | Number of in-application streams to create. For more information, see <https://docs.aws.amazon.com/kinesisanalytics/latest/dev/limits.html Limits> . 
 ipCount :: Lens' InputParallelism (Maybe Natural)
 ipCount = lens _ipCount (\ s a -> s{_ipCount = a}) . mapping _Nat
 

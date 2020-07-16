@@ -13,7 +13,7 @@
 --
 -- __Amazon Simple Email Service__ 
 --
--- This is the API Reference for <https://aws.amazon.com/ses/ Amazon Simple Email Service> (Amazon SES). This documentation is intended to be used in conjunction with the <http://docs.aws.amazon.com/ses/latest/DeveloperGuide/Welcome.html Amazon SES Developer Guide> . 
+-- This document contains reference information for the <https://aws.amazon.com/ses/ Amazon Simple Email Service> (Amazon SES) API, version 2010-12-01. This document is best used in conjunction with the <https://docs.aws.amazon.com/ses/latest/DeveloperGuide/Welcome.html Amazon SES Developer Guide> . 
 --
 module Network.AWS.SES
     (
@@ -79,6 +79,9 @@ module Network.AWS.SES
 
     -- ** InvalidRenderingParameterException
     , _InvalidRenderingParameterException
+
+    -- ** InvalidDeliveryOptionsException
+    , _InvalidDeliveryOptionsException
 
     -- ** InvalidCloudWatchDestinationException
     , _InvalidCloudWatchDestinationException
@@ -146,6 +149,9 @@ module Network.AWS.SES
     -- ** GetSendQuota 
     , module Network.AWS.SES.GetSendQuota
 
+    -- ** PutConfigurationSetDeliveryOptions 
+    , module Network.AWS.SES.PutConfigurationSetDeliveryOptions
+
     -- ** DescribeConfigurationSet 
     , module Network.AWS.SES.DescribeConfigurationSet
 
@@ -200,7 +206,7 @@ module Network.AWS.SES
     -- ** SetIdentityFeedbackForwardingEnabled 
     , module Network.AWS.SES.SetIdentityFeedbackForwardingEnabled
 
-    -- ** ListConfigurationSets 
+    -- ** ListConfigurationSets (Paginated)
     , module Network.AWS.SES.ListConfigurationSets
 
     -- ** DeleteConfigurationSet 
@@ -212,7 +218,7 @@ module Network.AWS.SES
     -- ** GetIdentityPolicies 
     , module Network.AWS.SES.GetIdentityPolicies
 
-    -- ** ListTemplates 
+    -- ** ListTemplates (Paginated)
     , module Network.AWS.SES.ListTemplates
 
     -- ** VerifyDomainIdentity 
@@ -227,7 +233,7 @@ module Network.AWS.SES
     -- ** ReorderReceiptRuleSet 
     , module Network.AWS.SES.ReorderReceiptRuleSet
 
-    -- ** ListReceiptRuleSets 
+    -- ** ListReceiptRuleSets (Paginated)
     , module Network.AWS.SES.ListReceiptRuleSets
 
     -- ** DeleteReceiptRuleSet 
@@ -462,6 +468,11 @@ module Network.AWS.SES
     , cvetFailureRedirectionURL
     , cvetTemplateSubject
     , cvetSuccessRedirectionURL
+
+    -- ** DeliveryOptions
+    , DeliveryOptions
+    , deliveryOptions
+    , doTLSPolicy
 
     -- ** Destination
     , Destination
@@ -713,6 +724,7 @@ import Network.AWS.SES.ListReceiptFilters
 import Network.AWS.SES.ListReceiptRuleSets
 import Network.AWS.SES.ListTemplates
 import Network.AWS.SES.ListVerifiedEmailAddresses
+import Network.AWS.SES.PutConfigurationSetDeliveryOptions
 import Network.AWS.SES.PutIdentityPolicy
 import Network.AWS.SES.ReorderReceiptRuleSet
 import Network.AWS.SES.SendBounce

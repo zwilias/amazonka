@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Attaches the specified principal to the specified thing.
+-- Attaches the specified principal to the specified thing. A principal can be X.509 certificates, IAM users, groups, and roles, Amazon Cognito identities or federated identities.
 --
 --
 module Network.AWS.IoT.AttachThingPrincipal
@@ -60,7 +60,7 @@ data AttachThingPrincipal = AttachThingPrincipal'{_atpThingName
 --
 -- * 'atpThingName' - The name of the thing.
 --
--- * 'atpPrincipal' - The principal, such as a certificate or other credential.
+-- * 'atpPrincipal' - The principal, which can be a certificate ARN (as returned from the CreateCertificate operation) or an Amazon Cognito ID.
 attachThingPrincipal
     :: Text -- ^ 'atpThingName'
     -> Text -- ^ 'atpPrincipal'
@@ -73,7 +73,7 @@ attachThingPrincipal pThingName_ pPrincipal_
 atpThingName :: Lens' AttachThingPrincipal Text
 atpThingName = lens _atpThingName (\ s a -> s{_atpThingName = a})
 
--- | The principal, such as a certificate or other credential.
+-- | The principal, which can be a certificate ARN (as returned from the CreateCertificate operation) or an Amazon Cognito ID.
 atpPrincipal :: Lens' AttachThingPrincipal Text
 atpPrincipal = lens _atpPrincipal (\ s a -> s{_atpPrincipal = a})
 

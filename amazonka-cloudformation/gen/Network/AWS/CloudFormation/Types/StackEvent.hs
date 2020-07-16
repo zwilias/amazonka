@@ -46,7 +46,7 @@ data StackEvent = StackEvent'{_seLogicalResourceId ::
 --
 -- * 'sePhysicalResourceId' - The name or unique identifier associated with the physical instance of the resource.
 --
--- * 'seResourceType' - Type of resource. (For more information, go to <http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html AWS Resource Types Reference> in the AWS CloudFormation User Guide.)
+-- * 'seResourceType' - Type of resource. (For more information, go to <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html AWS Resource Types Reference> in the AWS CloudFormation User Guide.)
 --
 -- * 'seResourceStatusReason' - Success/failure message associated with the resource.
 --
@@ -90,7 +90,7 @@ seLogicalResourceId = lens _seLogicalResourceId (\ s a -> s{_seLogicalResourceId
 sePhysicalResourceId :: Lens' StackEvent (Maybe Text)
 sePhysicalResourceId = lens _sePhysicalResourceId (\ s a -> s{_sePhysicalResourceId = a})
 
--- | Type of resource. (For more information, go to <http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html AWS Resource Types Reference> in the AWS CloudFormation User Guide.)
+-- | Type of resource. (For more information, go to <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html AWS Resource Types Reference> in the AWS CloudFormation User Guide.)
 seResourceType :: Lens' StackEvent (Maybe Text)
 seResourceType = lens _seResourceType (\ s a -> s{_seResourceType = a})
 

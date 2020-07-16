@@ -40,7 +40,7 @@ data CloudwatchMetricAction = CloudwatchMetricAction'{_cmaMetricTimestamp
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'cmaMetricTimestamp' - An optional <http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/cloudwatch_concepts.html#about_timestamp Unix timestamp> .
+-- * 'cmaMetricTimestamp' - An optional <https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/cloudwatch_concepts.html#about_timestamp Unix timestamp> .
 --
 -- * 'cmaRoleARN' - The IAM role that allows access to the CloudWatch metric.
 --
@@ -50,7 +50,7 @@ data CloudwatchMetricAction = CloudwatchMetricAction'{_cmaMetricTimestamp
 --
 -- * 'cmaMetricValue' - The CloudWatch metric value.
 --
--- * 'cmaMetricUnit' - The <http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/cloudwatch_concepts.html#Unit metric unit> supported by CloudWatch.
+-- * 'cmaMetricUnit' - The <https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/cloudwatch_concepts.html#Unit metric unit> supported by CloudWatch.
 cloudwatchMetricAction
     :: Text -- ^ 'cmaRoleARN'
     -> Text -- ^ 'cmaMetricNamespace'
@@ -68,7 +68,7 @@ cloudwatchMetricAction pRoleARN_ pMetricNamespace_
                             _cmaMetricValue = pMetricValue_,
                             _cmaMetricUnit = pMetricUnit_}
 
--- | An optional <http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/cloudwatch_concepts.html#about_timestamp Unix timestamp> .
+-- | An optional <https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/cloudwatch_concepts.html#about_timestamp Unix timestamp> .
 cmaMetricTimestamp :: Lens' CloudwatchMetricAction (Maybe Text)
 cmaMetricTimestamp = lens _cmaMetricTimestamp (\ s a -> s{_cmaMetricTimestamp = a})
 
@@ -88,7 +88,7 @@ cmaMetricName = lens _cmaMetricName (\ s a -> s{_cmaMetricName = a})
 cmaMetricValue :: Lens' CloudwatchMetricAction Text
 cmaMetricValue = lens _cmaMetricValue (\ s a -> s{_cmaMetricValue = a})
 
--- | The <http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/cloudwatch_concepts.html#Unit metric unit> supported by CloudWatch.
+-- | The <https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/cloudwatch_concepts.html#Unit metric unit> supported by CloudWatch.
 cmaMetricUnit :: Lens' CloudwatchMetricAction Text
 cmaMetricUnit = lens _cmaMetricUnit (\ s a -> s{_cmaMetricUnit = a})
 

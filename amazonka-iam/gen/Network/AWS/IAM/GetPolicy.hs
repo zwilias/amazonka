@@ -23,7 +23,7 @@
 --
 -- This API retrieves information about managed policies. To retrieve information about an inline policy that is embedded with an IAM user, group, or role, use the 'GetUserPolicy' , 'GetGroupPolicy' , or 'GetRolePolicy' API.
 --
--- For more information about policies, see <http://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html Managed Policies and Inline Policies> in the /IAM User Guide/ .
+-- For more information about policies, see <https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html Managed Policies and Inline Policies> in the /IAM User Guide/ .
 --
 module Network.AWS.IAM.GetPolicy
     (
@@ -56,14 +56,14 @@ newtype GetPolicy = GetPolicy'{_gpPolicyARN :: Text}
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'gpPolicyARN' - The Amazon Resource Name (ARN) of the managed policy that you want information about. For more information about ARNs, see <http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html Amazon Resource Names (ARNs) and AWS Service Namespaces> in the /AWS General Reference/ .
+-- * 'gpPolicyARN' - The Amazon Resource Name (ARN) of the managed policy that you want information about. For more information about ARNs, see <https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html Amazon Resource Names (ARNs) and AWS Service Namespaces> in the /AWS General Reference/ .
 getPolicy
     :: Text -- ^ 'gpPolicyARN'
     -> GetPolicy
 getPolicy pPolicyARN_
   = GetPolicy'{_gpPolicyARN = pPolicyARN_}
 
--- | The Amazon Resource Name (ARN) of the managed policy that you want information about. For more information about ARNs, see <http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html Amazon Resource Names (ARNs) and AWS Service Namespaces> in the /AWS General Reference/ .
+-- | The Amazon Resource Name (ARN) of the managed policy that you want information about. For more information about ARNs, see <https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html Amazon Resource Names (ARNs) and AWS Service Namespaces> in the /AWS General Reference/ .
 gpPolicyARN :: Lens' GetPolicy Text
 gpPolicyARN = lens _gpPolicyARN (\ s a -> s{_gpPolicyARN = a})
 

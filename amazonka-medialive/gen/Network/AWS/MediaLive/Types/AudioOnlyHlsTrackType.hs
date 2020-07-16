@@ -29,7 +29,7 @@ module Network.AWS.MediaLive.Types.AudioOnlyHlsTrackType (
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | Placeholder documentation for AudioOnlyHlsTrackType
+-- | Audio Only Hls Track Type
 data AudioOnlyHlsTrackType = AudioOnlyHlsTrackType' (CI
                                                        Text)
                                deriving (Eq, Ord, Read, Show, Data, Typeable,

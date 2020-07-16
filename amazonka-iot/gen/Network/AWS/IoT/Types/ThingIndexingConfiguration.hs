@@ -17,35 +17,68 @@
 --
 module Network.AWS.IoT.Types.ThingIndexingConfiguration where
 
+import Network.AWS.IoT.Types.Field
+import Network.AWS.IoT.Types.ThingConnectivityIndexingMode
 import Network.AWS.IoT.Types.ThingIndexingMode
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | Thing indexing configuration.
+-- | The thing indexing configuration. For more information, see <https://docs.aws.amazon.com/iot/latest/developerguide/managing-index.html Managing Thing Indexing> .
 --
 --
 --
 -- /See:/ 'thingIndexingConfiguration' smart constructor.
-newtype ThingIndexingConfiguration = ThingIndexingConfiguration'{_ticThingIndexingMode
-                                                                 ::
-                                                                 Maybe
-                                                                   ThingIndexingMode}
-                                       deriving (Eq, Read, Show, Data, Typeable,
-                                                 Generic)
+data ThingIndexingConfiguration = ThingIndexingConfiguration'{_ticManagedFields
+                                                              ::
+                                                              !(Maybe [Field]),
+                                                              _ticThingConnectivityIndexingMode
+                                                              ::
+                                                              !(Maybe
+                                                                  ThingConnectivityIndexingMode),
+                                                              _ticCustomFields
+                                                              ::
+                                                              !(Maybe [Field]),
+                                                              _ticThingIndexingMode
+                                                              ::
+                                                              !ThingIndexingMode}
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
 
 -- | Creates a value of 'ThingIndexingConfiguration' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'ticThingIndexingMode' - Thing indexing mode. Valid values are:      * REGISTRY – Your thing index will contain only registry data.     * REGISTRY_AND_SHADOW - Your thing index will contain registry and shadow data.     * OFF - Thing indexing is disabled.
+-- * 'ticManagedFields' - Contains fields that are indexed and whose types are already known by the Fleet Indexing service.
+--
+-- * 'ticThingConnectivityIndexingMode' - Thing connectivity indexing mode. Valid values are:      * STATUS – Your thing index contains connectivity status. To enable thing connectivity indexing, thingIndexMode must not be set to OFF.     * OFF - Thing connectivity status indexing is disabled.
+--
+-- * 'ticCustomFields' - Contains custom field names and their data type.
+--
+-- * 'ticThingIndexingMode' - Thing indexing mode. Valid values are:     * REGISTRY – Your thing index contains registry data only.     * REGISTRY_AND_SHADOW - Your thing index contains registry and shadow data.     * OFF - Thing indexing is disabled.
 thingIndexingConfiguration
-    :: ThingIndexingConfiguration
-thingIndexingConfiguration
-  = ThingIndexingConfiguration'{_ticThingIndexingMode =
-                                  Nothing}
+    :: ThingIndexingMode -- ^ 'ticThingIndexingMode'
+    -> ThingIndexingConfiguration
+thingIndexingConfiguration pThingIndexingMode_
+  = ThingIndexingConfiguration'{_ticManagedFields =
+                                  Nothing,
+                                _ticThingConnectivityIndexingMode = Nothing,
+                                _ticCustomFields = Nothing,
+                                _ticThingIndexingMode = pThingIndexingMode_}
 
--- | Thing indexing mode. Valid values are:      * REGISTRY – Your thing index will contain only registry data.     * REGISTRY_AND_SHADOW - Your thing index will contain registry and shadow data.     * OFF - Thing indexing is disabled.
-ticThingIndexingMode :: Lens' ThingIndexingConfiguration (Maybe ThingIndexingMode)
+-- | Contains fields that are indexed and whose types are already known by the Fleet Indexing service.
+ticManagedFields :: Lens' ThingIndexingConfiguration [Field]
+ticManagedFields = lens _ticManagedFields (\ s a -> s{_ticManagedFields = a}) . _Default . _Coerce
+
+-- | Thing connectivity indexing mode. Valid values are:      * STATUS – Your thing index contains connectivity status. To enable thing connectivity indexing, thingIndexMode must not be set to OFF.     * OFF - Thing connectivity status indexing is disabled.
+ticThingConnectivityIndexingMode :: Lens' ThingIndexingConfiguration (Maybe ThingConnectivityIndexingMode)
+ticThingConnectivityIndexingMode = lens _ticThingConnectivityIndexingMode (\ s a -> s{_ticThingConnectivityIndexingMode = a})
+
+-- | Contains custom field names and their data type.
+ticCustomFields :: Lens' ThingIndexingConfiguration [Field]
+ticCustomFields = lens _ticCustomFields (\ s a -> s{_ticCustomFields = a}) . _Default . _Coerce
+
+-- | Thing indexing mode. Valid values are:     * REGISTRY – Your thing index contains registry data only.     * REGISTRY_AND_SHADOW - Your thing index contains registry and shadow data.     * OFF - Thing indexing is disabled.
+ticThingIndexingMode :: Lens' ThingIndexingConfiguration ThingIndexingMode
 ticThingIndexingMode = lens _ticThingIndexingMode (\ s a -> s{_ticThingIndexingMode = a})
 
 instance FromJSON ThingIndexingConfiguration where
@@ -53,7 +86,10 @@ instance FromJSON ThingIndexingConfiguration where
           = withObject "ThingIndexingConfiguration"
               (\ x ->
                  ThingIndexingConfiguration' <$>
-                   (x .:? "thingIndexingMode"))
+                   (x .:? "managedFields" .!= mempty) <*>
+                     (x .:? "thingConnectivityIndexingMode")
+                     <*> (x .:? "customFields" .!= mempty)
+                     <*> (x .: "thingIndexingMode"))
 
 instance Hashable ThingIndexingConfiguration where
 
@@ -63,4 +99,8 @@ instance ToJSON ThingIndexingConfiguration where
         toJSON ThingIndexingConfiguration'{..}
           = object
               (catMaybes
-                 [("thingIndexingMode" .=) <$> _ticThingIndexingMode])
+                 [("managedFields" .=) <$> _ticManagedFields,
+                  ("thingConnectivityIndexingMode" .=) <$>
+                    _ticThingConnectivityIndexingMode,
+                  ("customFields" .=) <$> _ticCustomFields,
+                  Just ("thingIndexingMode" .= _ticThingIndexingMode)])

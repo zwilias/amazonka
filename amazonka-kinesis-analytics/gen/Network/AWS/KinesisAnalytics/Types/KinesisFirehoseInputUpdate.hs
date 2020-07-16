@@ -36,7 +36,7 @@ data KinesisFirehoseInputUpdate = KinesisFirehoseInputUpdate'{_kfiuRoleARNUpdate
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'kfiuRoleARNUpdate' - ARN of the IAM role that Amazon Kinesis Analytics can assume to access the stream on your behalf. You need to grant necessary permissions to this role.
+-- * 'kfiuRoleARNUpdate' - ARN of the IAM role that Amazon Kinesis Analytics can assume to access the stream on your behalf. You need to grant the necessary permissions to this role.
 --
 -- * 'kfiuResourceARNUpdate' - Amazon Resource Name (ARN) of the input Amazon Kinesis Firehose delivery stream to read.
 kinesisFirehoseInputUpdate
@@ -46,7 +46,7 @@ kinesisFirehoseInputUpdate
                                   Nothing,
                                 _kfiuResourceARNUpdate = Nothing}
 
--- | ARN of the IAM role that Amazon Kinesis Analytics can assume to access the stream on your behalf. You need to grant necessary permissions to this role.
+-- | ARN of the IAM role that Amazon Kinesis Analytics can assume to access the stream on your behalf. You need to grant the necessary permissions to this role.
 kfiuRoleARNUpdate :: Lens' KinesisFirehoseInputUpdate (Maybe Text)
 kfiuRoleARNUpdate = lens _kfiuRoleARNUpdate (\ s a -> s{_kfiuRoleARNUpdate = a})
 

@@ -37,6 +37,7 @@ module Network.AWS.IAM.ListEntitiesForPolicy
     , lefpEntityFilter
     , lefpMarker
     , lefpMaxItems
+    , lefpPolicyUsageFilter
     , lefpPolicyARN
 
     -- * Destructuring the Response
@@ -68,6 +69,8 @@ data ListEntitiesForPolicy = ListEntitiesForPolicy'{_lefpPathPrefix
                                                     !(Maybe Text),
                                                     _lefpMaxItems ::
                                                     !(Maybe Nat),
+                                                    _lefpPolicyUsageFilter ::
+                                                    !(Maybe PolicyUsageType),
                                                     _lefpPolicyARN :: !Text}
                                deriving (Eq, Read, Show, Data, Typeable,
                                          Generic)
@@ -76,15 +79,17 @@ data ListEntitiesForPolicy = ListEntitiesForPolicy'{_lefpPathPrefix
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'lefpPathPrefix' - The path prefix for filtering the results. This parameter is optional. If it is not included, it defaults to a slash (/), listing all entities. This parameter allows (per its <http://wikipedia.org/wiki/regex regex pattern> ) a string of characters consisting of either a forward slash (/) by itself or a string that must begin and end with forward slashes. In addition, it can contain any ASCII character from the ! (\u0021) through the DEL character (\u007F), including most punctuation characters, digits, and upper and lowercased letters.
+-- * 'lefpPathPrefix' - The path prefix for filtering the results. This parameter is optional. If it is not included, it defaults to a slash (/), listing all entities. This parameter allows (through its <http://wikipedia.org/wiki/regex regex pattern> ) a string of characters consisting of either a forward slash (/) by itself or a string that must begin and end with forward slashes. In addition, it can contain any ASCII character from the ! (@\u0021@ ) through the DEL character (@\u007F@ ), including most punctuation characters, digits, and upper and lowercased letters.
 --
 -- * 'lefpEntityFilter' - The entity type to use for filtering the results. For example, when @EntityFilter@ is @Role@ , only the roles that are attached to the specified policy are returned. This parameter is optional. If it is not included, all attached entities (users, groups, and roles) are returned. The argument for this parameter must be one of the valid values listed below.
 --
 -- * 'lefpMarker' - Use this parameter only when paginating results and only after you receive a response indicating that the results are truncated. Set it to the value of the @Marker@ element in the response that you received to indicate where the next call should start.
 --
--- * 'lefpMaxItems' - (Optional) Use this only when paginating results to indicate the maximum number of items you want in the response. If additional items exist beyond the maximum you specify, the @IsTruncated@ response element is @true@ . If you do not include this parameter, it defaults to 100. Note that IAM might return fewer results, even when there are more results available. In that case, the @IsTruncated@ response element returns @true@ and @Marker@ contains a value to include in the subsequent call that tells the service where to continue from.
+-- * 'lefpMaxItems' - Use this only when paginating results to indicate the maximum number of items you want in the response. If additional items exist beyond the maximum you specify, the @IsTruncated@ response element is @true@ . If you do not include this parameter, the number of items defaults to 100. Note that IAM might return fewer results, even when there are more results available. In that case, the @IsTruncated@ response element returns @true@ , and @Marker@ contains a value to include in the subsequent call that tells the service where to continue from.
 --
--- * 'lefpPolicyARN' - The Amazon Resource Name (ARN) of the IAM policy for which you want the versions. For more information about ARNs, see <http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html Amazon Resource Names (ARNs) and AWS Service Namespaces> in the /AWS General Reference/ .
+-- * 'lefpPolicyUsageFilter' - The policy usage method to use for filtering the results. To list only permissions policies, set @PolicyUsageFilter@ to @PermissionsPolicy@ . To list only the policies used to set permissions boundaries, set the value to @PermissionsBoundary@ . This parameter is optional. If it is not included, all policies are returned. 
+--
+-- * 'lefpPolicyARN' - The Amazon Resource Name (ARN) of the IAM policy for which you want the versions. For more information about ARNs, see <https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html Amazon Resource Names (ARNs) and AWS Service Namespaces> in the /AWS General Reference/ .
 listEntitiesForPolicy
     :: Text -- ^ 'lefpPolicyARN'
     -> ListEntitiesForPolicy
@@ -92,9 +97,10 @@ listEntitiesForPolicy pPolicyARN_
   = ListEntitiesForPolicy'{_lefpPathPrefix = Nothing,
                            _lefpEntityFilter = Nothing, _lefpMarker = Nothing,
                            _lefpMaxItems = Nothing,
+                           _lefpPolicyUsageFilter = Nothing,
                            _lefpPolicyARN = pPolicyARN_}
 
--- | The path prefix for filtering the results. This parameter is optional. If it is not included, it defaults to a slash (/), listing all entities. This parameter allows (per its <http://wikipedia.org/wiki/regex regex pattern> ) a string of characters consisting of either a forward slash (/) by itself or a string that must begin and end with forward slashes. In addition, it can contain any ASCII character from the ! (\u0021) through the DEL character (\u007F), including most punctuation characters, digits, and upper and lowercased letters.
+-- | The path prefix for filtering the results. This parameter is optional. If it is not included, it defaults to a slash (/), listing all entities. This parameter allows (through its <http://wikipedia.org/wiki/regex regex pattern> ) a string of characters consisting of either a forward slash (/) by itself or a string that must begin and end with forward slashes. In addition, it can contain any ASCII character from the ! (@\u0021@ ) through the DEL character (@\u007F@ ), including most punctuation characters, digits, and upper and lowercased letters.
 lefpPathPrefix :: Lens' ListEntitiesForPolicy (Maybe Text)
 lefpPathPrefix = lens _lefpPathPrefix (\ s a -> s{_lefpPathPrefix = a})
 
@@ -106,11 +112,15 @@ lefpEntityFilter = lens _lefpEntityFilter (\ s a -> s{_lefpEntityFilter = a})
 lefpMarker :: Lens' ListEntitiesForPolicy (Maybe Text)
 lefpMarker = lens _lefpMarker (\ s a -> s{_lefpMarker = a})
 
--- | (Optional) Use this only when paginating results to indicate the maximum number of items you want in the response. If additional items exist beyond the maximum you specify, the @IsTruncated@ response element is @true@ . If you do not include this parameter, it defaults to 100. Note that IAM might return fewer results, even when there are more results available. In that case, the @IsTruncated@ response element returns @true@ and @Marker@ contains a value to include in the subsequent call that tells the service where to continue from.
+-- | Use this only when paginating results to indicate the maximum number of items you want in the response. If additional items exist beyond the maximum you specify, the @IsTruncated@ response element is @true@ . If you do not include this parameter, the number of items defaults to 100. Note that IAM might return fewer results, even when there are more results available. In that case, the @IsTruncated@ response element returns @true@ , and @Marker@ contains a value to include in the subsequent call that tells the service where to continue from.
 lefpMaxItems :: Lens' ListEntitiesForPolicy (Maybe Natural)
 lefpMaxItems = lens _lefpMaxItems (\ s a -> s{_lefpMaxItems = a}) . mapping _Nat
 
--- | The Amazon Resource Name (ARN) of the IAM policy for which you want the versions. For more information about ARNs, see <http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html Amazon Resource Names (ARNs) and AWS Service Namespaces> in the /AWS General Reference/ .
+-- | The policy usage method to use for filtering the results. To list only permissions policies, set @PolicyUsageFilter@ to @PermissionsPolicy@ . To list only the policies used to set permissions boundaries, set the value to @PermissionsBoundary@ . This parameter is optional. If it is not included, all policies are returned. 
+lefpPolicyUsageFilter :: Lens' ListEntitiesForPolicy (Maybe PolicyUsageType)
+lefpPolicyUsageFilter = lens _lefpPolicyUsageFilter (\ s a -> s{_lefpPolicyUsageFilter = a})
+
+-- | The Amazon Resource Name (ARN) of the IAM policy for which you want the versions. For more information about ARNs, see <https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html Amazon Resource Names (ARNs) and AWS Service Namespaces> in the /AWS General Reference/ .
 lefpPolicyARN :: Lens' ListEntitiesForPolicy Text
 lefpPolicyARN = lens _lefpPolicyARN (\ s a -> s{_lefpPolicyARN = a})
 
@@ -159,6 +169,7 @@ instance ToQuery ListEntitiesForPolicy where
                "PathPrefix" =: _lefpPathPrefix,
                "EntityFilter" =: _lefpEntityFilter,
                "Marker" =: _lefpMarker, "MaxItems" =: _lefpMaxItems,
+               "PolicyUsageFilter" =: _lefpPolicyUsageFilter,
                "PolicyArn" =: _lefpPolicyARN]
 
 -- | Contains the response to a successful 'ListEntitiesForPolicy' request. 
@@ -203,7 +214,7 @@ data ListEntitiesForPolicyResponse = ListEntitiesForPolicyResponse'{_lefprsPolic
 --
 -- * 'lefprsPolicyUsers' - A list of IAM users that the policy is attached to.
 --
--- * 'lefprsIsTruncated' - A flag that indicates whether there are more items to return. If your results were truncated, you can make a subsequent pagination request using the @Marker@ request parameter to retrieve more items. Note that IAM might return fewer than the @MaxItems@ number of results even when there are more results available. We recommend that you check @IsTruncated@ after every call to ensure that you receive all of your results.
+-- * 'lefprsIsTruncated' - A flag that indicates whether there are more items to return. If your results were truncated, you can make a subsequent pagination request using the @Marker@ request parameter to retrieve more items. Note that IAM might return fewer than the @MaxItems@ number of results even when there are more results available. We recommend that you check @IsTruncated@ after every call to ensure that you receive all your results.
 --
 -- * 'lefprsResponseStatus' - -- | The response status code.
 listEntitiesForPolicyResponse
@@ -234,7 +245,7 @@ lefprsMarker = lens _lefprsMarker (\ s a -> s{_lefprsMarker = a})
 lefprsPolicyUsers :: Lens' ListEntitiesForPolicyResponse [PolicyUser]
 lefprsPolicyUsers = lens _lefprsPolicyUsers (\ s a -> s{_lefprsPolicyUsers = a}) . _Default . _Coerce
 
--- | A flag that indicates whether there are more items to return. If your results were truncated, you can make a subsequent pagination request using the @Marker@ request parameter to retrieve more items. Note that IAM might return fewer than the @MaxItems@ number of results even when there are more results available. We recommend that you check @IsTruncated@ after every call to ensure that you receive all of your results.
+-- | A flag that indicates whether there are more items to return. If your results were truncated, you can make a subsequent pagination request using the @Marker@ request parameter to retrieve more items. Note that IAM might return fewer than the @MaxItems@ number of results even when there are more results available. We recommend that you check @IsTruncated@ after every call to ensure that you receive all your results.
 lefprsIsTruncated :: Lens' ListEntitiesForPolicyResponse (Maybe Bool)
 lefprsIsTruncated = lens _lefprsIsTruncated (\ s a -> s{_lefprsIsTruncated = a})
 

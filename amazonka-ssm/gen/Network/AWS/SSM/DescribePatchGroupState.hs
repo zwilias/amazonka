@@ -37,6 +37,9 @@ module Network.AWS.SSM.DescribePatchGroupState
     , dpgsrsInstancesWithInstalledOtherPatches
     , dpgsrsInstancesWithNotApplicablePatches
     , dpgsrsInstancesWithInstalledPatches
+    , dpgsrsInstancesWithInstalledRejectedPatches
+    , dpgsrsInstancesWithInstalledPendingRebootPatches
+    , dpgsrsInstancesWithUnreportedNotApplicablePatches
     , dpgsrsInstances
     , dpgsrsInstancesWithFailedPatches
     , dpgsrsResponseStatus
@@ -83,6 +86,11 @@ instance AWSRequest DescribePatchGroupState where
                      (x .?> "InstancesWithInstalledOtherPatches")
                      <*> (x .?> "InstancesWithNotApplicablePatches")
                      <*> (x .?> "InstancesWithInstalledPatches")
+                     <*> (x .?> "InstancesWithInstalledRejectedPatches")
+                     <*>
+                     (x .?> "InstancesWithInstalledPendingRebootPatches")
+                     <*>
+                     (x .?> "InstancesWithUnreportedNotApplicablePatches")
                      <*> (x .?> "Instances")
                      <*> (x .?> "InstancesWithFailedPatches")
                      <*> (pure (fromEnum s)))
@@ -128,6 +136,18 @@ data DescribePatchGroupStateResponse = DescribePatchGroupStateResponse'{_dpgsrsI
                                                                         ::
                                                                         !(Maybe
                                                                             Int),
+                                                                        _dpgsrsInstancesWithInstalledRejectedPatches
+                                                                        ::
+                                                                        !(Maybe
+                                                                            Int),
+                                                                        _dpgsrsInstancesWithInstalledPendingRebootPatches
+                                                                        ::
+                                                                        !(Maybe
+                                                                            Int),
+                                                                        _dpgsrsInstancesWithUnreportedNotApplicablePatches
+                                                                        ::
+                                                                        !(Maybe
+                                                                            Int),
                                                                         _dpgsrsInstances
                                                                         ::
                                                                         !(Maybe
@@ -153,6 +173,12 @@ data DescribePatchGroupStateResponse = DescribePatchGroupStateResponse'{_dpgsrsI
 --
 -- * 'dpgsrsInstancesWithInstalledPatches' - The number of instances with installed patches.
 --
+-- * 'dpgsrsInstancesWithInstalledRejectedPatches' - The number of instances with patches installed that are specified in a RejectedPatches list. Patches with a status of /INSTALLED_REJECTED/ were typically installed before they were added to a RejectedPatches list.
+--
+-- * 'dpgsrsInstancesWithInstalledPendingRebootPatches' - The number of instances with patches installed by Patch Manager that have not been rebooted after the patch installation. The status of these instances is NON_COMPLIANT.
+--
+-- * 'dpgsrsInstancesWithUnreportedNotApplicablePatches' - The number of instances with @NotApplicable@ patches beyond the supported limit, which are not reported by name to Systems Manager Inventory.
+--
 -- * 'dpgsrsInstances' - The number of instances in the patch group.
 --
 -- * 'dpgsrsInstancesWithFailedPatches' - The number of instances with patches from the patch baseline that failed to install.
@@ -170,6 +196,12 @@ describePatchGroupStateResponse pResponseStatus_
                                        Nothing,
                                      _dpgsrsInstancesWithInstalledPatches =
                                        Nothing,
+                                     _dpgsrsInstancesWithInstalledRejectedPatches
+                                       = Nothing,
+                                     _dpgsrsInstancesWithInstalledPendingRebootPatches
+                                       = Nothing,
+                                     _dpgsrsInstancesWithUnreportedNotApplicablePatches
+                                       = Nothing,
                                      _dpgsrsInstances = Nothing,
                                      _dpgsrsInstancesWithFailedPatches =
                                        Nothing,
@@ -190,6 +222,18 @@ dpgsrsInstancesWithNotApplicablePatches = lens _dpgsrsInstancesWithNotApplicable
 -- | The number of instances with installed patches.
 dpgsrsInstancesWithInstalledPatches :: Lens' DescribePatchGroupStateResponse (Maybe Int)
 dpgsrsInstancesWithInstalledPatches = lens _dpgsrsInstancesWithInstalledPatches (\ s a -> s{_dpgsrsInstancesWithInstalledPatches = a})
+
+-- | The number of instances with patches installed that are specified in a RejectedPatches list. Patches with a status of /INSTALLED_REJECTED/ were typically installed before they were added to a RejectedPatches list.
+dpgsrsInstancesWithInstalledRejectedPatches :: Lens' DescribePatchGroupStateResponse (Maybe Int)
+dpgsrsInstancesWithInstalledRejectedPatches = lens _dpgsrsInstancesWithInstalledRejectedPatches (\ s a -> s{_dpgsrsInstancesWithInstalledRejectedPatches = a})
+
+-- | The number of instances with patches installed by Patch Manager that have not been rebooted after the patch installation. The status of these instances is NON_COMPLIANT.
+dpgsrsInstancesWithInstalledPendingRebootPatches :: Lens' DescribePatchGroupStateResponse (Maybe Int)
+dpgsrsInstancesWithInstalledPendingRebootPatches = lens _dpgsrsInstancesWithInstalledPendingRebootPatches (\ s a -> s{_dpgsrsInstancesWithInstalledPendingRebootPatches = a})
+
+-- | The number of instances with @NotApplicable@ patches beyond the supported limit, which are not reported by name to Systems Manager Inventory.
+dpgsrsInstancesWithUnreportedNotApplicablePatches :: Lens' DescribePatchGroupStateResponse (Maybe Int)
+dpgsrsInstancesWithUnreportedNotApplicablePatches = lens _dpgsrsInstancesWithUnreportedNotApplicablePatches (\ s a -> s{_dpgsrsInstancesWithUnreportedNotApplicablePatches = a})
 
 -- | The number of instances in the patch group.
 dpgsrsInstances :: Lens' DescribePatchGroupStateResponse (Maybe Int)

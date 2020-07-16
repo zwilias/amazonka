@@ -18,6 +18,7 @@
 module Network.AWS.Lightsail.Types.InstanceAccessDetails where
 
 import Network.AWS.Lens
+import Network.AWS.Lightsail.Types.HostKeyAttributes
 import Network.AWS.Lightsail.Types.InstanceAccessProtocol
 import Network.AWS.Lightsail.Types.PasswordData
 import Network.AWS.Prelude
@@ -27,8 +28,12 @@ import Network.AWS.Prelude
 --
 --
 -- /See:/ 'instanceAccessDetails' smart constructor.
-data InstanceAccessDetails = InstanceAccessDetails'{_iadCertKey
-                                                    :: !(Maybe Text),
+data InstanceAccessDetails = InstanceAccessDetails'{_iadHostKeys
+                                                    ::
+                                                    !(Maybe
+                                                        [HostKeyAttributes]),
+                                                    _iadCertKey ::
+                                                    !(Maybe Text),
                                                     _iadIpAddress ::
                                                     !(Maybe Text),
                                                     _iadPrivateKey ::
@@ -53,6 +58,8 @@ data InstanceAccessDetails = InstanceAccessDetails'{_iadCertKey
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
+-- * 'iadHostKeys' - Describes the public SSH host keys or the RDP certificate.
+--
 -- * 'iadCertKey' - For SSH access, the public key to use when accessing your instance For OpenSSH clients (e.g., command line SSH), you should save this value to @tempkey-cert.pub@ .
 --
 -- * 'iadIpAddress' - The public IP address of the Amazon Lightsail instance.
@@ -73,11 +80,16 @@ data InstanceAccessDetails = InstanceAccessDetails'{_iadCertKey
 instanceAccessDetails
     :: InstanceAccessDetails
 instanceAccessDetails
-  = InstanceAccessDetails'{_iadCertKey = Nothing,
-                           _iadIpAddress = Nothing, _iadPrivateKey = Nothing,
-                           _iadExpiresAt = Nothing, _iadUsername = Nothing,
-                           _iadProtocol = Nothing, _iadPasswordData = Nothing,
-                           _iadPassword = Nothing, _iadInstanceName = Nothing}
+  = InstanceAccessDetails'{_iadHostKeys = Nothing,
+                           _iadCertKey = Nothing, _iadIpAddress = Nothing,
+                           _iadPrivateKey = Nothing, _iadExpiresAt = Nothing,
+                           _iadUsername = Nothing, _iadProtocol = Nothing,
+                           _iadPasswordData = Nothing, _iadPassword = Nothing,
+                           _iadInstanceName = Nothing}
+
+-- | Describes the public SSH host keys or the RDP certificate.
+iadHostKeys :: Lens' InstanceAccessDetails [HostKeyAttributes]
+iadHostKeys = lens _iadHostKeys (\ s a -> s{_iadHostKeys = a}) . _Default . _Coerce
 
 -- | For SSH access, the public key to use when accessing your instance For OpenSSH clients (e.g., command line SSH), you should save this value to @tempkey-cert.pub@ .
 iadCertKey :: Lens' InstanceAccessDetails (Maybe Text)
@@ -120,8 +132,9 @@ instance FromJSON InstanceAccessDetails where
           = withObject "InstanceAccessDetails"
               (\ x ->
                  InstanceAccessDetails' <$>
-                   (x .:? "certKey") <*> (x .:? "ipAddress") <*>
-                     (x .:? "privateKey")
+                   (x .:? "hostKeys" .!= mempty) <*> (x .:? "certKey")
+                     <*> (x .:? "ipAddress")
+                     <*> (x .:? "privateKey")
                      <*> (x .:? "expiresAt")
                      <*> (x .:? "username")
                      <*> (x .:? "protocol")

@@ -21,7 +21,11 @@ import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.S3.Internal
 
--- | /See:/ 'progress' smart constructor.
+-- | This data type contains information about progress of an operation.
+--
+--
+--
+-- /See:/ 'progress' smart constructor.
 data Progress = Progress'{_pBytesReturned ::
                           !(Maybe Integer),
                           _pBytesScanned :: !(Maybe Integer),
@@ -32,26 +36,26 @@ data Progress = Progress'{_pBytesReturned ::
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'pBytesReturned' - Current number of bytes of records payload data returned.
+-- * 'pBytesReturned' - The current number of bytes of records payload data returned.
 --
--- * 'pBytesScanned' - Current number of object bytes scanned.
+-- * 'pBytesScanned' - The current number of object bytes scanned.
 --
--- * 'pBytesProcessed' - Current number of uncompressed object bytes processed.
+-- * 'pBytesProcessed' - The current number of uncompressed object bytes processed.
 progress
     :: Progress
 progress
   = Progress'{_pBytesReturned = Nothing,
               _pBytesScanned = Nothing, _pBytesProcessed = Nothing}
 
--- | Current number of bytes of records payload data returned.
+-- | The current number of bytes of records payload data returned.
 pBytesReturned :: Lens' Progress (Maybe Integer)
 pBytesReturned = lens _pBytesReturned (\ s a -> s{_pBytesReturned = a})
 
--- | Current number of object bytes scanned.
+-- | The current number of object bytes scanned.
 pBytesScanned :: Lens' Progress (Maybe Integer)
 pBytesScanned = lens _pBytesScanned (\ s a -> s{_pBytesScanned = a})
 
--- | Current number of uncompressed object bytes processed.
+-- | The current number of uncompressed object bytes processed.
 pBytesProcessed :: Lens' Progress (Maybe Integer)
 pBytesProcessed = lens _pBytesProcessed (\ s a -> s{_pBytesProcessed = a})
 

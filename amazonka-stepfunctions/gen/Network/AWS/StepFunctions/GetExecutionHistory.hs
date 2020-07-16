@@ -21,7 +21,9 @@
 -- Returns the history of the specified execution as a list of events. By default, the results are returned in ascending order of the @timeStamp@ of the events. Use the @reverseOrder@ parameter to get the latest events first.
 --
 --
--- If a @nextToken@ is returned by a previous call, there are more results available. To retrieve the next page of results, make the call again using the returned token in @nextToken@ . Keep all other arguments unchanged.
+-- If @nextToken@ is returned, there are more results available. The value of @nextToken@ is a unique pagination token for each page. Make the call again using the returned token to retrieve the next page. Keep all other arguments unchanged. Each pagination token expires after 24 hours. Using an expired pagination token will return an /HTTP 400 InvalidToken/ error.
+--
+-- This API action is not supported by @EXPRESS@ state machines.
 --
 --
 -- This operation returns paginated results.
@@ -67,9 +69,9 @@ data GetExecutionHistory = GetExecutionHistory'{_gehReverseOrder
 --
 -- * 'gehReverseOrder' - Lists events in descending order of their @timeStamp@ .
 --
--- * 'gehNextToken' - If a @nextToken@ is returned by a previous call, there are more results available. To retrieve the next page of results, make the call again using the returned token in @nextToken@ . Keep all other arguments unchanged. The configured @maxResults@ determines how many results can be returned in a single call.
+-- * 'gehNextToken' - If @nextToken@ is returned, there are more results available. The value of @nextToken@ is a unique pagination token for each page. Make the call again using the returned token to retrieve the next page. Keep all other arguments unchanged. Each pagination token expires after 24 hours. Using an expired pagination token will return an /HTTP 400 InvalidToken/ error.
 --
--- * 'gehMaxResults' - The maximum number of results that are returned per call. You can use @nextToken@ to obtain further pages of results. The default is 100 and the maximum allowed page size is 100. A value of 0 uses the default. This is only an upper limit. The actual number of results returned per call might be fewer than the specified maximum.
+-- * 'gehMaxResults' - The maximum number of results that are returned per call. You can use @nextToken@ to obtain further pages of results. The default is 100 and the maximum allowed page size is 1000. A value of 0 uses the default. This is only an upper limit. The actual number of results returned per call might be fewer than the specified maximum.
 --
 -- * 'gehExecutionARN' - The Amazon Resource Name (ARN) of the execution.
 getExecutionHistory
@@ -84,11 +86,11 @@ getExecutionHistory pExecutionARN_
 gehReverseOrder :: Lens' GetExecutionHistory (Maybe Bool)
 gehReverseOrder = lens _gehReverseOrder (\ s a -> s{_gehReverseOrder = a})
 
--- | If a @nextToken@ is returned by a previous call, there are more results available. To retrieve the next page of results, make the call again using the returned token in @nextToken@ . Keep all other arguments unchanged. The configured @maxResults@ determines how many results can be returned in a single call.
+-- | If @nextToken@ is returned, there are more results available. The value of @nextToken@ is a unique pagination token for each page. Make the call again using the returned token to retrieve the next page. Keep all other arguments unchanged. Each pagination token expires after 24 hours. Using an expired pagination token will return an /HTTP 400 InvalidToken/ error.
 gehNextToken :: Lens' GetExecutionHistory (Maybe Text)
 gehNextToken = lens _gehNextToken (\ s a -> s{_gehNextToken = a})
 
--- | The maximum number of results that are returned per call. You can use @nextToken@ to obtain further pages of results. The default is 100 and the maximum allowed page size is 100. A value of 0 uses the default. This is only an upper limit. The actual number of results returned per call might be fewer than the specified maximum.
+-- | The maximum number of results that are returned per call. You can use @nextToken@ to obtain further pages of results. The default is 100 and the maximum allowed page size is 1000. A value of 0 uses the default. This is only an upper limit. The actual number of results returned per call might be fewer than the specified maximum.
 gehMaxResults :: Lens' GetExecutionHistory (Maybe Natural)
 gehMaxResults = lens _gehMaxResults (\ s a -> s{_gehMaxResults = a}) . mapping _Nat
 
@@ -151,14 +153,14 @@ data GetExecutionHistoryResponse = GetExecutionHistoryResponse'{_gehrsNextToken
                                                                 :: !Int,
                                                                 _gehrsEvents ::
                                                                 ![HistoryEvent]}
-                                     deriving (Eq, Read, Show, Data, Typeable,
+                                     deriving (Eq, Show, Data, Typeable,
                                                Generic)
 
 -- | Creates a value of 'GetExecutionHistoryResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'gehrsNextToken' - If a @nextToken@ is returned by a previous call, there are more results available. To retrieve the next page of results, make the call again using the returned token in @nextToken@ . Keep all other arguments unchanged. The configured @maxResults@ determines how many results can be returned in a single call.
+-- * 'gehrsNextToken' - If @nextToken@ is returned, there are more results available. The value of @nextToken@ is a unique pagination token for each page. Make the call again using the returned token to retrieve the next page. Keep all other arguments unchanged. Each pagination token expires after 24 hours. Using an expired pagination token will return an /HTTP 400 InvalidToken/ error.
 --
 -- * 'gehrsResponseStatus' - -- | The response status code.
 --
@@ -172,7 +174,7 @@ getExecutionHistoryResponse pResponseStatus_
                                  _gehrsResponseStatus = pResponseStatus_,
                                  _gehrsEvents = mempty}
 
--- | If a @nextToken@ is returned by a previous call, there are more results available. To retrieve the next page of results, make the call again using the returned token in @nextToken@ . Keep all other arguments unchanged. The configured @maxResults@ determines how many results can be returned in a single call.
+-- | If @nextToken@ is returned, there are more results available. The value of @nextToken@ is a unique pagination token for each page. Make the call again using the returned token to retrieve the next page. Keep all other arguments unchanged. Each pagination token expires after 24 hours. Using an expired pagination token will return an /HTTP 400 InvalidToken/ error.
 gehrsNextToken :: Lens' GetExecutionHistoryResponse (Maybe Text)
 gehrsNextToken = lens _gehrsNextToken (\ s a -> s{_gehrsNextToken = a})
 

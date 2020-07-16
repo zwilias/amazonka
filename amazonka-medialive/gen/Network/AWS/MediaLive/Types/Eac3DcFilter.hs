@@ -27,7 +27,7 @@ module Network.AWS.MediaLive.Types.Eac3DcFilter (
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | Placeholder documentation for Eac3DcFilter
+-- | Eac3 Dc Filter
 data Eac3DcFilter = Eac3DcFilter' (CI Text)
                       deriving (Eq, Ord, Read, Show, Data, Typeable,
                                 Generic)

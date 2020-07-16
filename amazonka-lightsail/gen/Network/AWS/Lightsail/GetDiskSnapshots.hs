@@ -21,8 +21,8 @@
 -- Returns information about all block storage disk snapshots in your AWS account and region.
 --
 --
--- If you are describing a long list of disk snapshots, you can paginate the output to make the list more manageable. You can use the pageToken and nextPageToken values to retrieve the next items in the list.
 --
+-- This operation returns paginated results.
 module Network.AWS.Lightsail.GetDiskSnapshots
     (
     -- * Creating a Request
@@ -43,6 +43,7 @@ module Network.AWS.Lightsail.GetDiskSnapshots
 import Network.AWS.Lens
 import Network.AWS.Lightsail.Types
 import Network.AWS.Lightsail.Types.Product
+import Network.AWS.Pager
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
@@ -56,15 +57,22 @@ newtype GetDiskSnapshots = GetDiskSnapshots'{_gdsPageToken
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'gdsPageToken' - A token used for advancing to the next page of results from your GetDiskSnapshots request.
+-- * 'gdsPageToken' - The token to advance to the next page of results from your request. To get a page token, perform an initial @GetDiskSnapshots@ request. If your results are paginated, the response will return a next page token that you can specify as the page token in a subsequent request.
 getDiskSnapshots
     :: GetDiskSnapshots
 getDiskSnapshots
   = GetDiskSnapshots'{_gdsPageToken = Nothing}
 
--- | A token used for advancing to the next page of results from your GetDiskSnapshots request.
+-- | The token to advance to the next page of results from your request. To get a page token, perform an initial @GetDiskSnapshots@ request. If your results are paginated, the response will return a next page token that you can specify as the page token in a subsequent request.
 gdsPageToken :: Lens' GetDiskSnapshots (Maybe Text)
 gdsPageToken = lens _gdsPageToken (\ s a -> s{_gdsPageToken = a})
+
+instance AWSPager GetDiskSnapshots where
+        page rq rs
+          | stop (rs ^. gdssrsNextPageToken) = Nothing
+          | stop (rs ^. gdssrsDiskSnapshots) = Nothing
+          | otherwise =
+            Just $ rq & gdsPageToken .~ rs ^. gdssrsNextPageToken
 
 instance AWSRequest GetDiskSnapshots where
         type Rs GetDiskSnapshots = GetDiskSnapshotsResponse
@@ -118,7 +126,7 @@ data GetDiskSnapshotsResponse = GetDiskSnapshotsResponse'{_gdssrsNextPageToken
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'gdssrsNextPageToken' - A token used for advancing to the next page of results from your GetDiskSnapshots request.
+-- * 'gdssrsNextPageToken' - The token to advance to the next page of resutls from your request. A next page token is not returned if there are no more results to display. To get the next page of results, perform another @GetDiskSnapshots@ request and specify the next page token using the @pageToken@ parameter.
 --
 -- * 'gdssrsDiskSnapshots' - An array of objects containing information about all block storage disk snapshots.
 --
@@ -132,7 +140,7 @@ getDiskSnapshotsResponse pResponseStatus_
                               _gdssrsDiskSnapshots = Nothing,
                               _gdssrsResponseStatus = pResponseStatus_}
 
--- | A token used for advancing to the next page of results from your GetDiskSnapshots request.
+-- | The token to advance to the next page of resutls from your request. A next page token is not returned if there are no more results to display. To get the next page of results, perform another @GetDiskSnapshots@ request and specify the next page token using the @pageToken@ parameter.
 gdssrsNextPageToken :: Lens' GetDiskSnapshotsResponse (Maybe Text)
 gdssrsNextPageToken = lens _gdssrsNextPageToken (\ s a -> s{_gdssrsNextPageToken = a})
 

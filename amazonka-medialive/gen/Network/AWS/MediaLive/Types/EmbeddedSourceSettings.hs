@@ -22,7 +22,7 @@ import Network.AWS.MediaLive.Types.EmbeddedConvert608To708
 import Network.AWS.MediaLive.Types.EmbeddedScte20Detection
 import Network.AWS.Prelude
 
--- | Placeholder documentation for EmbeddedSourceSettings
+-- | Embedded Source Settings
 --
 -- /See:/ 'embeddedSourceSettings' smart constructor.
 data EmbeddedSourceSettings = EmbeddedSourceSettings'{_essConvert608To708

@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Retrieves all Databases defined in a given Data Catalog.
+-- Retrieves all databases defined in a given Data Catalog.
 --
 --
 --
@@ -61,7 +61,7 @@ data GetDatabases = GetDatabases'{_gdCatalogId ::
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'gdCatalogId' - The ID of the Data Catalog from which to retrieve @Databases@ . If none is supplied, the AWS account ID is used by default.
+-- * 'gdCatalogId' - The ID of the Data Catalog from which to retrieve @Databases@ . If none is provided, the AWS account ID is used by default.
 --
 -- * 'gdNextToken' - A continuation token, if this is a continuation call.
 --
@@ -72,7 +72,7 @@ getDatabases
   = GetDatabases'{_gdCatalogId = Nothing,
                   _gdNextToken = Nothing, _gdMaxResults = Nothing}
 
--- | The ID of the Data Catalog from which to retrieve @Databases@ . If none is supplied, the AWS account ID is used by default.
+-- | The ID of the Data Catalog from which to retrieve @Databases@ . If none is provided, the AWS account ID is used by default.
 gdCatalogId :: Lens' GetDatabases (Maybe Text)
 gdCatalogId = lens _gdCatalogId (\ s a -> s{_gdCatalogId = a})
 

@@ -18,6 +18,8 @@
 module Network.AWS.ElasticSearch.Types.ElasticsearchClusterConfig where
 
 import Network.AWS.ElasticSearch.Types.ESPartitionInstanceType
+import Network.AWS.ElasticSearch.Types.ESWarmPartitionInstanceType
+import Network.AWS.ElasticSearch.Types.ZoneAwarenessConfig
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
@@ -41,7 +43,18 @@ data ElasticsearchClusterConfig = ElasticsearchClusterConfig'{_eccDedicatedMaste
                                                               _eccInstanceType
                                                               ::
                                                               !(Maybe
-                                                                  ESPartitionInstanceType)}
+                                                                  ESPartitionInstanceType),
+                                                              _eccWarmEnabled ::
+                                                              !(Maybe Bool),
+                                                              _eccZoneAwarenessConfig
+                                                              ::
+                                                              !(Maybe
+                                                                  ZoneAwarenessConfig),
+                                                              _eccWarmCount ::
+                                                              !(Maybe Int),
+                                                              _eccWarmType ::
+                                                              !(Maybe
+                                                                  ESWarmPartitionInstanceType)}
                                     deriving (Eq, Read, Show, Data, Typeable,
                                               Generic)
 
@@ -59,7 +72,15 @@ data ElasticsearchClusterConfig = ElasticsearchClusterConfig'{_eccDedicatedMaste
 --
 -- * 'eccZoneAwarenessEnabled' - A boolean value to indicate whether zone awareness is enabled. See <http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-managedomains.html#es-managedomains-zoneawareness About Zone Awareness> for more information.
 --
--- * 'eccInstanceType' - The instance type for an Elasticsearch cluster.
+-- * 'eccInstanceType' - The instance type for an Elasticsearch cluster. UltraWarm instance types are not supported for data instances.
+--
+-- * 'eccWarmEnabled' - True to enable warm storage.
+--
+-- * 'eccZoneAwarenessConfig' - Specifies the zone awareness configuration for a domain when zone awareness is enabled.
+--
+-- * 'eccWarmCount' - The number of warm nodes in the cluster.
+--
+-- * 'eccWarmType' - The instance type for the Elasticsearch cluster's warm nodes.
 elasticsearchClusterConfig
     :: ElasticsearchClusterConfig
 elasticsearchClusterConfig
@@ -69,7 +90,10 @@ elasticsearchClusterConfig
                                 _eccDedicatedMasterEnabled = Nothing,
                                 _eccInstanceCount = Nothing,
                                 _eccZoneAwarenessEnabled = Nothing,
-                                _eccInstanceType = Nothing}
+                                _eccInstanceType = Nothing,
+                                _eccWarmEnabled = Nothing,
+                                _eccZoneAwarenessConfig = Nothing,
+                                _eccWarmCount = Nothing, _eccWarmType = Nothing}
 
 -- | Total number of dedicated master nodes, active and on standby, for the cluster.
 eccDedicatedMasterCount :: Lens' ElasticsearchClusterConfig (Maybe Int)
@@ -91,9 +115,25 @@ eccInstanceCount = lens _eccInstanceCount (\ s a -> s{_eccInstanceCount = a})
 eccZoneAwarenessEnabled :: Lens' ElasticsearchClusterConfig (Maybe Bool)
 eccZoneAwarenessEnabled = lens _eccZoneAwarenessEnabled (\ s a -> s{_eccZoneAwarenessEnabled = a})
 
--- | The instance type for an Elasticsearch cluster.
+-- | The instance type for an Elasticsearch cluster. UltraWarm instance types are not supported for data instances.
 eccInstanceType :: Lens' ElasticsearchClusterConfig (Maybe ESPartitionInstanceType)
 eccInstanceType = lens _eccInstanceType (\ s a -> s{_eccInstanceType = a})
+
+-- | True to enable warm storage.
+eccWarmEnabled :: Lens' ElasticsearchClusterConfig (Maybe Bool)
+eccWarmEnabled = lens _eccWarmEnabled (\ s a -> s{_eccWarmEnabled = a})
+
+-- | Specifies the zone awareness configuration for a domain when zone awareness is enabled.
+eccZoneAwarenessConfig :: Lens' ElasticsearchClusterConfig (Maybe ZoneAwarenessConfig)
+eccZoneAwarenessConfig = lens _eccZoneAwarenessConfig (\ s a -> s{_eccZoneAwarenessConfig = a})
+
+-- | The number of warm nodes in the cluster.
+eccWarmCount :: Lens' ElasticsearchClusterConfig (Maybe Int)
+eccWarmCount = lens _eccWarmCount (\ s a -> s{_eccWarmCount = a})
+
+-- | The instance type for the Elasticsearch cluster's warm nodes.
+eccWarmType :: Lens' ElasticsearchClusterConfig (Maybe ESWarmPartitionInstanceType)
+eccWarmType = lens _eccWarmType (\ s a -> s{_eccWarmType = a})
 
 instance FromJSON ElasticsearchClusterConfig where
         parseJSON
@@ -105,7 +145,11 @@ instance FromJSON ElasticsearchClusterConfig where
                      <*> (x .:? "DedicatedMasterEnabled")
                      <*> (x .:? "InstanceCount")
                      <*> (x .:? "ZoneAwarenessEnabled")
-                     <*> (x .:? "InstanceType"))
+                     <*> (x .:? "InstanceType")
+                     <*> (x .:? "WarmEnabled")
+                     <*> (x .:? "ZoneAwarenessConfig")
+                     <*> (x .:? "WarmCount")
+                     <*> (x .:? "WarmType"))
 
 instance Hashable ElasticsearchClusterConfig where
 
@@ -124,4 +168,9 @@ instance ToJSON ElasticsearchClusterConfig where
                   ("InstanceCount" .=) <$> _eccInstanceCount,
                   ("ZoneAwarenessEnabled" .=) <$>
                     _eccZoneAwarenessEnabled,
-                  ("InstanceType" .=) <$> _eccInstanceType])
+                  ("InstanceType" .=) <$> _eccInstanceType,
+                  ("WarmEnabled" .=) <$> _eccWarmEnabled,
+                  ("ZoneAwarenessConfig" .=) <$>
+                    _eccZoneAwarenessConfig,
+                  ("WarmCount" .=) <$> _eccWarmCount,
+                  ("WarmType" .=) <$> _eccWarmType])

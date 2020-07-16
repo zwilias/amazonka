@@ -29,9 +29,9 @@ module Network.AWS.Glue.GetTriggers
       getTriggers
     , GetTriggers
     -- * Request Lenses
-    , gtsNextToken
-    , gtsMaxResults
-    , gtsDependentJobName
+    , gtNextToken
+    , gtMaxResults
+    , gtDependentJobName
 
     -- * Destructuring the Response
     , getTriggersResponse
@@ -51,46 +51,46 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getTriggers' smart constructor.
-data GetTriggers = GetTriggers'{_gtsNextToken ::
+data GetTriggers = GetTriggers'{_gtNextToken ::
                                 !(Maybe Text),
-                                _gtsMaxResults :: !(Maybe Nat),
-                                _gtsDependentJobName :: !(Maybe Text)}
+                                _gtMaxResults :: !(Maybe Nat),
+                                _gtDependentJobName :: !(Maybe Text)}
                      deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetTriggers' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'gtsNextToken' - A continuation token, if this is a continuation call.
+-- * 'gtNextToken' - A continuation token, if this is a continuation call.
 --
--- * 'gtsMaxResults' - The maximum size of the response.
+-- * 'gtMaxResults' - The maximum size of the response.
 --
--- * 'gtsDependentJobName' - The name of the job for which to retrieve triggers. The trigger that can start this job will be returned, and if there is no such trigger, all triggers will be returned.
+-- * 'gtDependentJobName' - The name of the job to retrieve triggers for. The trigger that can start this job is returned, and if there is no such trigger, all triggers are returned.
 getTriggers
     :: GetTriggers
 getTriggers
-  = GetTriggers'{_gtsNextToken = Nothing,
-                 _gtsMaxResults = Nothing,
-                 _gtsDependentJobName = Nothing}
+  = GetTriggers'{_gtNextToken = Nothing,
+                 _gtMaxResults = Nothing,
+                 _gtDependentJobName = Nothing}
 
 -- | A continuation token, if this is a continuation call.
-gtsNextToken :: Lens' GetTriggers (Maybe Text)
-gtsNextToken = lens _gtsNextToken (\ s a -> s{_gtsNextToken = a})
+gtNextToken :: Lens' GetTriggers (Maybe Text)
+gtNextToken = lens _gtNextToken (\ s a -> s{_gtNextToken = a})
 
 -- | The maximum size of the response.
-gtsMaxResults :: Lens' GetTriggers (Maybe Natural)
-gtsMaxResults = lens _gtsMaxResults (\ s a -> s{_gtsMaxResults = a}) . mapping _Nat
+gtMaxResults :: Lens' GetTriggers (Maybe Natural)
+gtMaxResults = lens _gtMaxResults (\ s a -> s{_gtMaxResults = a}) . mapping _Nat
 
--- | The name of the job for which to retrieve triggers. The trigger that can start this job will be returned, and if there is no such trigger, all triggers will be returned.
-gtsDependentJobName :: Lens' GetTriggers (Maybe Text)
-gtsDependentJobName = lens _gtsDependentJobName (\ s a -> s{_gtsDependentJobName = a})
+-- | The name of the job to retrieve triggers for. The trigger that can start this job is returned, and if there is no such trigger, all triggers are returned.
+gtDependentJobName :: Lens' GetTriggers (Maybe Text)
+gtDependentJobName = lens _gtDependentJobName (\ s a -> s{_gtDependentJobName = a})
 
 instance AWSPager GetTriggers where
         page rq rs
           | stop (rs ^. gttrggrsrsNextToken) = Nothing
           | stop (rs ^. gttrggrsrsTriggers) = Nothing
           | otherwise =
-            Just $ rq & gtsNextToken .~ rs ^. gttrggrsrsNextToken
+            Just $ rq & gtNextToken .~ rs ^. gttrggrsrsNextToken
 
 instance AWSRequest GetTriggers where
         type Rs GetTriggers = GetTriggersResponse
@@ -119,9 +119,9 @@ instance ToJSON GetTriggers where
         toJSON GetTriggers'{..}
           = object
               (catMaybes
-                 [("NextToken" .=) <$> _gtsNextToken,
-                  ("MaxResults" .=) <$> _gtsMaxResults,
-                  ("DependentJobName" .=) <$> _gtsDependentJobName])
+                 [("NextToken" .=) <$> _gtNextToken,
+                  ("MaxResults" .=) <$> _gtMaxResults,
+                  ("DependentJobName" .=) <$> _gtDependentJobName])
 
 instance ToPath GetTriggers where
         toPath = const "/"

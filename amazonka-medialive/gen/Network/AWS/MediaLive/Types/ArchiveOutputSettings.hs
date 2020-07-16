@@ -21,7 +21,7 @@ import Network.AWS.Lens
 import Network.AWS.MediaLive.Types.ArchiveContainerSettings
 import Network.AWS.Prelude
 
--- | Placeholder documentation for ArchiveOutputSettings
+-- | Archive Output Settings
 --
 -- /See:/ 'archiveOutputSettings' smart constructor.
 data ArchiveOutputSettings = ArchiveOutputSettings'{_aosExtension

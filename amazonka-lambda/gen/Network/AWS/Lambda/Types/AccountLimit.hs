@@ -20,7 +20,7 @@ module Network.AWS.Lambda.Types.AccountLimit where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | Provides limits of code size and concurrency associated with the current account and region.
+-- | Limits that are related to concurrency and storage. All file and storage sizes are in bytes.
 --
 --
 --
@@ -38,15 +38,15 @@ data AccountLimit = AccountLimit'{_alConcurrentExecutions
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'alConcurrentExecutions' - Number of simultaneous executions of your function per region. For more information or to request a limit increase for concurrent executions, see <http://docs.aws.amazon.com/lambda/latest/dg/concurrent-executions.html Lambda Function Concurrent Executions> . The default limit is 1000.
+-- * 'alConcurrentExecutions' - The maximum number of simultaneous function executions.
 --
--- * 'alTotalCodeSize' - Maximum size, in bytes, of a code package you can upload per region. The default size is 75 GB. 
+-- * 'alTotalCodeSize' - The amount of storage space that you can use for all deployment packages and layer archives.
 --
--- * 'alUnreservedConcurrentExecutions' - The number of concurrent executions available to functions that do not have concurrency limits set. For more information, see 'concurrent-executions' .
+-- * 'alUnreservedConcurrentExecutions' - The maximum number of simultaneous function executions, minus the capacity that's reserved for individual functions with 'PutFunctionConcurrency' .
 --
--- * 'alCodeSizeUnzipped' - Size, in bytes, of code/dependencies that you can zip into a deployment package (uncompressed zip/jar size) for uploading. The default limit is 250 MB.
+-- * 'alCodeSizeUnzipped' - The maximum size of a function's deployment package and layers when they're extracted.
 --
--- * 'alCodeSizeZipped' - Size, in bytes, of a single zipped code/dependencies package you can upload for your Lambda function(.zip/.jar file). Try using Amazon S3 for uploading larger files. Default limit is 50 MB.
+-- * 'alCodeSizeZipped' - The maximum size of a deployment package when it's uploaded directly to AWS Lambda. Use Amazon S3 for larger files.
 accountLimit
     :: AccountLimit
 accountLimit
@@ -56,23 +56,23 @@ accountLimit
                   _alCodeSizeUnzipped = Nothing,
                   _alCodeSizeZipped = Nothing}
 
--- | Number of simultaneous executions of your function per region. For more information or to request a limit increase for concurrent executions, see <http://docs.aws.amazon.com/lambda/latest/dg/concurrent-executions.html Lambda Function Concurrent Executions> . The default limit is 1000.
+-- | The maximum number of simultaneous function executions.
 alConcurrentExecutions :: Lens' AccountLimit (Maybe Int)
 alConcurrentExecutions = lens _alConcurrentExecutions (\ s a -> s{_alConcurrentExecutions = a})
 
--- | Maximum size, in bytes, of a code package you can upload per region. The default size is 75 GB. 
+-- | The amount of storage space that you can use for all deployment packages and layer archives.
 alTotalCodeSize :: Lens' AccountLimit (Maybe Integer)
 alTotalCodeSize = lens _alTotalCodeSize (\ s a -> s{_alTotalCodeSize = a})
 
--- | The number of concurrent executions available to functions that do not have concurrency limits set. For more information, see 'concurrent-executions' .
+-- | The maximum number of simultaneous function executions, minus the capacity that's reserved for individual functions with 'PutFunctionConcurrency' .
 alUnreservedConcurrentExecutions :: Lens' AccountLimit (Maybe Natural)
 alUnreservedConcurrentExecutions = lens _alUnreservedConcurrentExecutions (\ s a -> s{_alUnreservedConcurrentExecutions = a}) . mapping _Nat
 
--- | Size, in bytes, of code/dependencies that you can zip into a deployment package (uncompressed zip/jar size) for uploading. The default limit is 250 MB.
+-- | The maximum size of a function's deployment package and layers when they're extracted.
 alCodeSizeUnzipped :: Lens' AccountLimit (Maybe Integer)
 alCodeSizeUnzipped = lens _alCodeSizeUnzipped (\ s a -> s{_alCodeSizeUnzipped = a})
 
--- | Size, in bytes, of a single zipped code/dependencies package you can upload for your Lambda function(.zip/.jar file). Try using Amazon S3 for uploading larger files. Default limit is 50 MB.
+-- | The maximum size of a deployment package when it's uploaded directly to AWS Lambda. Use Amazon S3 for larger files.
 alCodeSizeZipped :: Lens' AccountLimit (Maybe Integer)
 alCodeSizeZipped = lens _alCodeSizeZipped (\ s a -> s{_alCodeSizeZipped = a})
 

@@ -28,7 +28,7 @@ module Network.AWS.MediaLive.Types.AfdSignaling (
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | Placeholder documentation for AfdSignaling
+-- | Afd Signaling
 data AfdSignaling = AfdSignaling' (CI Text)
                       deriving (Eq, Ord, Read, Show, Data, Typeable,
                                 Generic)

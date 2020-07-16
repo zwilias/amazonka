@@ -23,13 +23,13 @@ import Network.AWS.Prelude
 -- | This data type is used as a response element in the following actions:
 --
 --
---     * 'ModifyDBInstance' 
+--     * @ModifyDBInstance@ 
 --
---     * 'RebootDBInstance' 
+--     * @RebootDBInstance@ 
 --
---     * 'RestoreDBInstanceFromDBSnapshot' 
+--     * @RestoreDBInstanceFromDBSnapshot@ 
 --
---     * 'RestoreDBInstanceToPointInTime' 
+--     * @RestoreDBInstanceToPointInTime@ 
 --
 --
 --

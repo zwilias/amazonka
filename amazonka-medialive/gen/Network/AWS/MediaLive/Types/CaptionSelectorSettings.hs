@@ -26,7 +26,7 @@ import Network.AWS.MediaLive.Types.Scte27SourceSettings
 import Network.AWS.MediaLive.Types.TeletextSourceSettings
 import Network.AWS.Prelude
 
--- | Placeholder documentation for CaptionSelectorSettings
+-- | Caption Selector Settings
 --
 -- /See:/ 'captionSelectorSettings' smart constructor.
 data CaptionSelectorSettings = CaptionSelectorSettings'{_cssTeletextSourceSettings

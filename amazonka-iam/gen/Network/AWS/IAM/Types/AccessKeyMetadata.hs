@@ -40,7 +40,7 @@ data AccessKeyMetadata = AccessKeyMetadata'{_akmStatus
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'akmStatus' - The status of the access key. @Active@ means the key is valid for API calls; @Inactive@ means it is not.
+-- * 'akmStatus' - The status of the access key. @Active@ means that the key is valid for API calls; @Inactive@ means it is not.
 --
 -- * 'akmCreateDate' - The date when the access key was created.
 --
@@ -54,7 +54,7 @@ accessKeyMetadata
                        _akmCreateDate = Nothing, _akmUserName = Nothing,
                        _akmAccessKeyId = Nothing}
 
--- | The status of the access key. @Active@ means the key is valid for API calls; @Inactive@ means it is not.
+-- | The status of the access key. @Active@ means that the key is valid for API calls; @Inactive@ means it is not.
 akmStatus :: Lens' AccessKeyMetadata (Maybe StatusType)
 akmStatus = lens _akmStatus (\ s a -> s{_akmStatus = a})
 

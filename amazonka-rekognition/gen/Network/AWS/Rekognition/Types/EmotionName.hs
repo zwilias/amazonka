@@ -23,6 +23,7 @@ module Network.AWS.Rekognition.Types.EmotionName (
     , Calm
     , Confused
     , Disgusted
+    , Fear
     , Happy
     , Sad
     , Surprised
@@ -49,6 +50,9 @@ pattern Confused = EmotionName' "CONFUSED"
 pattern Disgusted :: EmotionName
 pattern Disgusted = EmotionName' "DISGUSTED"
 
+pattern Fear :: EmotionName
+pattern Fear = EmotionName' "FEAR"
+
 pattern Happy :: EmotionName
 pattern Happy = EmotionName' "HAPPY"
 
@@ -66,6 +70,7 @@ pattern Unknown = EmotionName' "UNKNOWN"
   Calm,
   Confused,
   Disgusted,
+  Fear,
   Happy,
   Sad,
   Surprised,
@@ -88,20 +93,22 @@ instance Enum EmotionName where
         1 -> Calm
         2 -> Confused
         3 -> Disgusted
-        4 -> Happy
-        5 -> Sad
-        6 -> Surprised
-        7 -> Unknown
+        4 -> Fear
+        5 -> Happy
+        6 -> Sad
+        7 -> Surprised
+        8 -> Unknown
         _ -> (error . showText) $ "Unknown index for EmotionName: " <> toText i
     fromEnum x = case x of
         Angry -> 0
         Calm -> 1
         Confused -> 2
         Disgusted -> 3
-        Happy -> 4
-        Sad -> 5
-        Surprised -> 6
-        Unknown -> 7
+        Fear -> 4
+        Happy -> 5
+        Sad -> 6
+        Surprised -> 7
+        Unknown -> 8
         EmotionName' name -> (error . showText) $ "Unknown EmotionName: " <> original name
 
 -- | Represents the bounds of /known/ $EmotionName.

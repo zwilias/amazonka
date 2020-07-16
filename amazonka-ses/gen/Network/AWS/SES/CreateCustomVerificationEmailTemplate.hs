@@ -86,7 +86,7 @@ data CreateCustomVerificationEmailTemplate = CreateCustomVerificationEmailTempla
 --
 -- * 'ccvetTemplateSubject' - The subject line of the custom verification email.
 --
--- * 'ccvetTemplateContent' - The content of the custom verification email. The total size of the email must be less than 10 MB. The message body may contain HTML, with some limitations. For more information, see <http://docs.aws.amazon.com/ses/latest/DeveloperGuide/custom-verification-emails.html#custom-verification-emails-faq Custom Verification Email Frequently Asked Questions> in the /Amazon SES Developer Guide/ .
+-- * 'ccvetTemplateContent' - The content of the custom verification email. The total size of the email must be less than 10 MB. The message body may contain HTML, with some limitations. For more information, see <https://docs.aws.amazon.com/ses/latest/DeveloperGuide/custom-verification-emails.html#custom-verification-emails-faq Custom Verification Email Frequently Asked Questions> in the /Amazon SES Developer Guide/ .
 --
 -- * 'ccvetSuccessRedirectionURL' - The URL that the recipient of the verification email is sent to if his or her address is successfully verified.
 --
@@ -128,7 +128,7 @@ ccvetFromEmailAddress = lens _ccvetFromEmailAddress (\ s a -> s{_ccvetFromEmailA
 ccvetTemplateSubject :: Lens' CreateCustomVerificationEmailTemplate Text
 ccvetTemplateSubject = lens _ccvetTemplateSubject (\ s a -> s{_ccvetTemplateSubject = a})
 
--- | The content of the custom verification email. The total size of the email must be less than 10 MB. The message body may contain HTML, with some limitations. For more information, see <http://docs.aws.amazon.com/ses/latest/DeveloperGuide/custom-verification-emails.html#custom-verification-emails-faq Custom Verification Email Frequently Asked Questions> in the /Amazon SES Developer Guide/ .
+-- | The content of the custom verification email. The total size of the email must be less than 10 MB. The message body may contain HTML, with some limitations. For more information, see <https://docs.aws.amazon.com/ses/latest/DeveloperGuide/custom-verification-emails.html#custom-verification-emails-faq Custom Verification Email Frequently Asked Questions> in the /Amazon SES Developer Guide/ .
 ccvetTemplateContent :: Lens' CreateCustomVerificationEmailTemplate Text
 ccvetTemplateContent = lens _ccvetTemplateContent (\ s a -> s{_ccvetTemplateContent = a})
 

@@ -59,7 +59,7 @@ data GetTraceGraph = GetTraceGraph'{_gtgNextToken ::
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'gtgNextToken' - Pagination token. Not used.
+-- * 'gtgNextToken' - Pagination token.
 --
 -- * 'gtgTraceIds' - Trace IDs of requests for which to generate a service graph.
 getTraceGraph
@@ -68,7 +68,7 @@ getTraceGraph
   = GetTraceGraph'{_gtgNextToken = Nothing,
                    _gtgTraceIds = mempty}
 
--- | Pagination token. Not used.
+-- | Pagination token.
 gtgNextToken :: Lens' GetTraceGraph (Maybe Text)
 gtgNextToken = lens _gtgNextToken (\ s a -> s{_gtgNextToken = a})
 
@@ -127,7 +127,7 @@ data GetTraceGraphResponse = GetTraceGraphResponse'{_gtgrsNextToken
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'gtgrsNextToken' - Pagination token. Not used.
+-- * 'gtgrsNextToken' - Pagination token.
 --
 -- * 'gtgrsServices' - The services that have processed one of the specified requests.
 --
@@ -140,7 +140,7 @@ getTraceGraphResponse pResponseStatus_
                            _gtgrsServices = Nothing,
                            _gtgrsResponseStatus = pResponseStatus_}
 
--- | Pagination token. Not used.
+-- | Pagination token.
 gtgrsNextToken :: Lens' GetTraceGraphResponse (Maybe Text)
 gtgrsNextToken = lens _gtgrsNextToken (\ s a -> s{_gtgrsNextToken = a})
 

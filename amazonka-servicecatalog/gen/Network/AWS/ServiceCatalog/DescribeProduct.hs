@@ -36,6 +36,7 @@ module Network.AWS.ServiceCatalog.DescribeProduct
     -- * Response Lenses
     , dscrbprdctrsProductViewSummary
     , dscrbprdctrsProvisioningArtifacts
+    , dscrbprdctrsBudgets
     , dscrbprdctrsResponseStatus
     ) where
 
@@ -83,6 +84,7 @@ instance AWSRequest DescribeProduct where
                  DescribeProductResponse' <$>
                    (x .?> "ProductViewSummary") <*>
                      (x .?> "ProvisioningArtifacts" .!@ mempty)
+                     <*> (x .?> "Budgets" .!@ mempty)
                      <*> (pure (fromEnum s)))
 
 instance Hashable DescribeProduct where
@@ -121,6 +123,8 @@ data DescribeProductResponse = DescribeProductResponse'{_dscrbprdctrsProductView
                                                         ::
                                                         !(Maybe
                                                             [ProvisioningArtifact]),
+                                                        _dscrbprdctrsBudgets ::
+                                                        !(Maybe [BudgetDetail]),
                                                         _dscrbprdctrsResponseStatus
                                                         :: !Int}
                                  deriving (Eq, Read, Show, Data, Typeable,
@@ -134,6 +138,8 @@ data DescribeProductResponse = DescribeProductResponse'{_dscrbprdctrsProductView
 --
 -- * 'dscrbprdctrsProvisioningArtifacts' - Information about the provisioning artifacts for the specified product.
 --
+-- * 'dscrbprdctrsBudgets' - Information about the associated budgets.
+--
 -- * 'dscrbprdctrsResponseStatus' - -- | The response status code.
 describeProductResponse
     :: Int -- ^ 'dscrbprdctrsResponseStatus'
@@ -142,6 +148,7 @@ describeProductResponse pResponseStatus_
   = DescribeProductResponse'{_dscrbprdctrsProductViewSummary
                                = Nothing,
                              _dscrbprdctrsProvisioningArtifacts = Nothing,
+                             _dscrbprdctrsBudgets = Nothing,
                              _dscrbprdctrsResponseStatus = pResponseStatus_}
 
 -- | Summary information about the product view.
@@ -151,6 +158,10 @@ dscrbprdctrsProductViewSummary = lens _dscrbprdctrsProductViewSummary (\ s a -> 
 -- | Information about the provisioning artifacts for the specified product.
 dscrbprdctrsProvisioningArtifacts :: Lens' DescribeProductResponse [ProvisioningArtifact]
 dscrbprdctrsProvisioningArtifacts = lens _dscrbprdctrsProvisioningArtifacts (\ s a -> s{_dscrbprdctrsProvisioningArtifacts = a}) . _Default . _Coerce
+
+-- | Information about the associated budgets.
+dscrbprdctrsBudgets :: Lens' DescribeProductResponse [BudgetDetail]
+dscrbprdctrsBudgets = lens _dscrbprdctrsBudgets (\ s a -> s{_dscrbprdctrsBudgets = a}) . _Default . _Coerce
 
 -- | -- | The response status code.
 dscrbprdctrsResponseStatus :: Lens' DescribeProductResponse Int

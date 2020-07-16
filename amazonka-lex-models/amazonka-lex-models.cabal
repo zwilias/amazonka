@@ -76,12 +76,15 @@ library
         , Network.AWS.LexModels.GetSlotTypeVersions
         , Network.AWS.LexModels.GetSlotTypes
         , Network.AWS.LexModels.GetUtterancesView
+        , Network.AWS.LexModels.ListTagsForResource
         , Network.AWS.LexModels.PutBot
         , Network.AWS.LexModels.PutBotAlias
         , Network.AWS.LexModels.PutIntent
         , Network.AWS.LexModels.PutSlotType
         , Network.AWS.LexModels.StartImport
+        , Network.AWS.LexModels.TagResource
         , Network.AWS.LexModels.Types
+        , Network.AWS.LexModels.UntagResource
         , Network.AWS.LexModels.Waiters
 
     other-modules:
@@ -95,6 +98,9 @@ library
         , Network.AWS.LexModels.Types.ChannelType
         , Network.AWS.LexModels.Types.CodeHook
         , Network.AWS.LexModels.Types.ContentType
+        , Network.AWS.LexModels.Types.ConversationLogsRequest
+        , Network.AWS.LexModels.Types.ConversationLogsResponse
+        , Network.AWS.LexModels.Types.Destination
         , Network.AWS.LexModels.Types.EnumerationValue
         , Network.AWS.LexModels.Types.ExportStatus
         , Network.AWS.LexModels.Types.ExportType
@@ -106,18 +112,25 @@ library
         , Network.AWS.LexModels.Types.IntentMetadata
         , Network.AWS.LexModels.Types.LexStatus
         , Network.AWS.LexModels.Types.Locale
+        , Network.AWS.LexModels.Types.LogSettingsRequest
+        , Network.AWS.LexModels.Types.LogSettingsResponse
+        , Network.AWS.LexModels.Types.LogType
         , Network.AWS.LexModels.Types.MergeStrategy
         , Network.AWS.LexModels.Types.Message
+        , Network.AWS.LexModels.Types.ObfuscationSetting
         , Network.AWS.LexModels.Types.ProcessBehavior
         , Network.AWS.LexModels.Types.Product
         , Network.AWS.LexModels.Types.Prompt
         , Network.AWS.LexModels.Types.ResourceType
         , Network.AWS.LexModels.Types.Slot
         , Network.AWS.LexModels.Types.SlotConstraint
+        , Network.AWS.LexModels.Types.SlotTypeConfiguration
         , Network.AWS.LexModels.Types.SlotTypeMetadata
+        , Network.AWS.LexModels.Types.SlotTypeRegexConfiguration
         , Network.AWS.LexModels.Types.SlotValueSelectionStrategy
         , Network.AWS.LexModels.Types.Statement
         , Network.AWS.LexModels.Types.StatusType
+        , Network.AWS.LexModels.Types.Tag
         , Network.AWS.LexModels.Types.UtteranceData
         , Network.AWS.LexModels.Types.UtteranceList
 

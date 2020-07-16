@@ -27,7 +27,7 @@ module Network.AWS.MediaLive.Types.Scte35SpliceInsertNoRegionalBlackoutBehavior 
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | Placeholder documentation for Scte35SpliceInsertNoRegionalBlackoutBehavior
+-- | Scte35 Splice Insert No Regional Blackout Behavior
 data Scte35SpliceInsertNoRegionalBlackoutBehavior = Scte35SpliceInsertNoRegionalBlackoutBehavior' (CI
                                                                                                      Text)
                                                       deriving (Eq, Ord, Read,

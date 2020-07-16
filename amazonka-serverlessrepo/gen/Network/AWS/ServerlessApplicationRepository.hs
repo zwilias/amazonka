@@ -78,20 +78,32 @@ module Network.AWS.ServerlessApplicationRepository
     -- ** CreateApplicationVersion 
     , module Network.AWS.ServerlessApplicationRepository.CreateApplicationVersion
 
+    -- ** UnshareApplication 
+    , module Network.AWS.ServerlessApplicationRepository.UnshareApplication
+
     -- ** DeleteApplication 
     , module Network.AWS.ServerlessApplicationRepository.DeleteApplication
 
     -- ** UpdateApplication 
     , module Network.AWS.ServerlessApplicationRepository.UpdateApplication
 
+    -- ** CreateCloudFormationTemplate 
+    , module Network.AWS.ServerlessApplicationRepository.CreateCloudFormationTemplate
+
     -- ** CreateApplication 
     , module Network.AWS.ServerlessApplicationRepository.CreateApplication
 
-    -- ** ListApplicationVersions 
+    -- ** ListApplicationDependencies (Paginated)
+    , module Network.AWS.ServerlessApplicationRepository.ListApplicationDependencies
+
+    -- ** ListApplicationVersions (Paginated)
     , module Network.AWS.ServerlessApplicationRepository.ListApplicationVersions
 
     -- ** GetApplication 
     , module Network.AWS.ServerlessApplicationRepository.GetApplication
+
+    -- ** GetCloudFormationTemplate 
+    , module Network.AWS.ServerlessApplicationRepository.GetCloudFormationTemplate
 
     -- ** CreateCloudFormationChangeSet 
     , module Network.AWS.ServerlessApplicationRepository.CreateCloudFormationChangeSet
@@ -99,15 +111,28 @@ module Network.AWS.ServerlessApplicationRepository
     -- ** PutApplicationPolicy 
     , module Network.AWS.ServerlessApplicationRepository.PutApplicationPolicy
 
-    -- ** ListApplications 
+    -- ** ListApplications (Paginated)
     , module Network.AWS.ServerlessApplicationRepository.ListApplications
 
     -- * Types
+
+    -- ** Capability
+    , Capability (..)
+
+    -- ** RepoStatus
+    , RepoStatus (..)
+
+    -- ** ApplicationDependencySummary
+    , ApplicationDependencySummary
+    , applicationDependencySummary
+    , adsApplicationId
+    , adsSemanticVersion
 
     -- ** ApplicationPolicyStatement
     , ApplicationPolicyStatement
     , applicationPolicyStatement
     , apsStatementId
+    , apsPrincipalOrgIds
     , apsPrincipals
     , apsActions
 
@@ -146,13 +171,34 @@ module Network.AWS.ServerlessApplicationRepository
     , pvValue
     , pvName
 
+    -- ** RollbackConfiguration
+    , RollbackConfiguration
+    , rollbackConfiguration
+    , rcRollbackTriggers
+    , rcMonitoringTimeInMinutes
+
+    -- ** RollbackTrigger
+    , RollbackTrigger
+    , rollbackTrigger
+    , rtType
+    , rtARN
+
+    -- ** Tag
+    , Tag
+    , tag
+    , tagValue
+    , tagKey
+
     -- ** Version
     , Version
     , version
     , vSourceCodeURL
+    , vSourceCodeArchiveURL
     , vTemplateURL
     , vParameterDefinitions
+    , vResourcesSupported
     , vCreationTime
+    , vRequiredCapabilities
     , vApplicationId
     , vSemanticVersion
 
@@ -168,13 +214,17 @@ module Network.AWS.ServerlessApplicationRepository
 import Network.AWS.ServerlessApplicationRepository.CreateApplication
 import Network.AWS.ServerlessApplicationRepository.CreateApplicationVersion
 import Network.AWS.ServerlessApplicationRepository.CreateCloudFormationChangeSet
+import Network.AWS.ServerlessApplicationRepository.CreateCloudFormationTemplate
 import Network.AWS.ServerlessApplicationRepository.DeleteApplication
 import Network.AWS.ServerlessApplicationRepository.GetApplication
 import Network.AWS.ServerlessApplicationRepository.GetApplicationPolicy
+import Network.AWS.ServerlessApplicationRepository.GetCloudFormationTemplate
+import Network.AWS.ServerlessApplicationRepository.ListApplicationDependencies
 import Network.AWS.ServerlessApplicationRepository.ListApplicationVersions
 import Network.AWS.ServerlessApplicationRepository.ListApplications
 import Network.AWS.ServerlessApplicationRepository.PutApplicationPolicy
 import Network.AWS.ServerlessApplicationRepository.Types
+import Network.AWS.ServerlessApplicationRepository.UnshareApplication
 import Network.AWS.ServerlessApplicationRepository.UpdateApplication
 import Network.AWS.ServerlessApplicationRepository.Waiters
 

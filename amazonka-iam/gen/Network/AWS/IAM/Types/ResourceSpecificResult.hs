@@ -17,6 +17,7 @@
 --
 module Network.AWS.IAM.Types.ResourceSpecificResult where
 
+import Network.AWS.IAM.Types.PermissionsBoundaryDecisionDetail
 import Network.AWS.IAM.Types.PolicyEvaluationDecisionType
 import Network.AWS.IAM.Types.Statement
 import Network.AWS.Lens
@@ -37,6 +38,10 @@ data ResourceSpecificResult = ResourceSpecificResult'{_rsrMatchedStatements
                                                              PolicyEvaluationDecisionType)),
                                                       _rsrMissingContextValues
                                                       :: !(Maybe [Text]),
+                                                      _rsrPermissionsBoundaryDecisionDetail
+                                                      ::
+                                                      !(Maybe
+                                                          PermissionsBoundaryDecisionDetail),
                                                       _rsrEvalResourceName ::
                                                       !Text,
                                                       _rsrEvalResourceDecision
@@ -49,11 +54,13 @@ data ResourceSpecificResult = ResourceSpecificResult'{_rsrMatchedStatements
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'rsrMatchedStatements' - A list of the statements in the input policies that determine the result for this part of the simulation. Remember that even if multiple statements allow the operation on the resource, if /any/ statement denies that operation, then the explicit deny overrides any allow, and the deny statement is the only entry included in the result.
+-- * 'rsrMatchedStatements' - A list of the statements in the input policies that determine the result for this part of the simulation. Remember that even if multiple statements allow the operation on the resource, if /any/ statement denies that operation, then the explicit deny overrides any allow. In addition, the deny statement is the only entry included in the result.
 --
--- * 'rsrEvalDecisionDetails' - Additional details about the results of the evaluation decision. When there are both IAM policies and resource policies, this parameter explains how each set of policies contributes to the final evaluation decision. When simulating cross-account access to a resource, both the resource-based policy and the caller's IAM policy must grant access.
+-- * 'rsrEvalDecisionDetails' - Additional details about the results of the evaluation decision on a single resource. This parameter is returned only for cross-account simulations. This parameter explains how each policy type contributes to the resource-specific evaluation decision.
 --
 -- * 'rsrMissingContextValues' - A list of context keys that are required by the included input policies but that were not provided by one of the input parameters. This list is used when a list of ARNs is included in the @ResourceArns@ parameter instead of "*". If you do not specify individual resources, by setting @ResourceArns@ to "*" or by not including the @ResourceArns@ parameter, then any missing context values are instead included under the @EvaluationResults@ section. To discover the context keys used by a set of policies, you can call 'GetContextKeysForCustomPolicy' or 'GetContextKeysForPrincipalPolicy' .
+--
+-- * 'rsrPermissionsBoundaryDecisionDetail' - Contains information about the effect that a permissions boundary has on a policy simulation when that boundary is applied to an IAM entity.
 --
 -- * 'rsrEvalResourceName' - The name of the simulated resource, in Amazon Resource Name (ARN) format.
 --
@@ -68,20 +75,25 @@ resourceSpecificResult pEvalResourceName_
                               Nothing,
                             _rsrEvalDecisionDetails = Nothing,
                             _rsrMissingContextValues = Nothing,
+                            _rsrPermissionsBoundaryDecisionDetail = Nothing,
                             _rsrEvalResourceName = pEvalResourceName_,
                             _rsrEvalResourceDecision = pEvalResourceDecision_}
 
--- | A list of the statements in the input policies that determine the result for this part of the simulation. Remember that even if multiple statements allow the operation on the resource, if /any/ statement denies that operation, then the explicit deny overrides any allow, and the deny statement is the only entry included in the result.
+-- | A list of the statements in the input policies that determine the result for this part of the simulation. Remember that even if multiple statements allow the operation on the resource, if /any/ statement denies that operation, then the explicit deny overrides any allow. In addition, the deny statement is the only entry included in the result.
 rsrMatchedStatements :: Lens' ResourceSpecificResult [Statement]
 rsrMatchedStatements = lens _rsrMatchedStatements (\ s a -> s{_rsrMatchedStatements = a}) . _Default . _Coerce
 
--- | Additional details about the results of the evaluation decision. When there are both IAM policies and resource policies, this parameter explains how each set of policies contributes to the final evaluation decision. When simulating cross-account access to a resource, both the resource-based policy and the caller's IAM policy must grant access.
+-- | Additional details about the results of the evaluation decision on a single resource. This parameter is returned only for cross-account simulations. This parameter explains how each policy type contributes to the resource-specific evaluation decision.
 rsrEvalDecisionDetails :: Lens' ResourceSpecificResult (HashMap Text PolicyEvaluationDecisionType)
 rsrEvalDecisionDetails = lens _rsrEvalDecisionDetails (\ s a -> s{_rsrEvalDecisionDetails = a}) . _Default . _Map
 
 -- | A list of context keys that are required by the included input policies but that were not provided by one of the input parameters. This list is used when a list of ARNs is included in the @ResourceArns@ parameter instead of "*". If you do not specify individual resources, by setting @ResourceArns@ to "*" or by not including the @ResourceArns@ parameter, then any missing context values are instead included under the @EvaluationResults@ section. To discover the context keys used by a set of policies, you can call 'GetContextKeysForCustomPolicy' or 'GetContextKeysForPrincipalPolicy' .
 rsrMissingContextValues :: Lens' ResourceSpecificResult [Text]
 rsrMissingContextValues = lens _rsrMissingContextValues (\ s a -> s{_rsrMissingContextValues = a}) . _Default . _Coerce
+
+-- | Contains information about the effect that a permissions boundary has on a policy simulation when that boundary is applied to an IAM entity.
+rsrPermissionsBoundaryDecisionDetail :: Lens' ResourceSpecificResult (Maybe PermissionsBoundaryDecisionDetail)
+rsrPermissionsBoundaryDecisionDetail = lens _rsrPermissionsBoundaryDecisionDetail (\ s a -> s{_rsrPermissionsBoundaryDecisionDetail = a})
 
 -- | The name of the simulated resource, in Amazon Resource Name (ARN) format.
 rsrEvalResourceName :: Lens' ResourceSpecificResult Text
@@ -102,6 +114,7 @@ instance FromXML ResourceSpecificResult where
                 <*>
                 (x .@? "MissingContextValues" .!@ mempty >>=
                    may (parseXMLList "member"))
+                <*> (x .@? "PermissionsBoundaryDecisionDetail")
                 <*> (x .@ "EvalResourceName")
                 <*> (x .@ "EvalResourceDecision")
 

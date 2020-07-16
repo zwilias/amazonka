@@ -46,10 +46,22 @@ module Network.AWS.MediaStore
     -- * Operations
     -- $operations
 
+    -- ** StopAccessLogging 
+    , module Network.AWS.MediaStore.StopAccessLogging
+
+    -- ** PutLifecyclePolicy 
+    , module Network.AWS.MediaStore.PutLifecyclePolicy
+
+    -- ** DeleteLifecyclePolicy 
+    , module Network.AWS.MediaStore.DeleteLifecyclePolicy
+
+    -- ** ListTagsForResource 
+    , module Network.AWS.MediaStore.ListTagsForResource
+
     -- ** CreateContainer 
     , module Network.AWS.MediaStore.CreateContainer
 
-    -- ** ListContainers 
+    -- ** ListContainers (Paginated)
     , module Network.AWS.MediaStore.ListContainers
 
     -- ** DeleteContainer 
@@ -61,11 +73,32 @@ module Network.AWS.MediaStore
     -- ** DeleteCORSPolicy 
     , module Network.AWS.MediaStore.DeleteCORSPolicy
 
+    -- ** StartAccessLogging 
+    , module Network.AWS.MediaStore.StartAccessLogging
+
     -- ** DescribeContainer 
     , module Network.AWS.MediaStore.DescribeContainer
 
+    -- ** GetMetricPolicy 
+    , module Network.AWS.MediaStore.GetMetricPolicy
+
+    -- ** DeleteMetricPolicy 
+    , module Network.AWS.MediaStore.DeleteMetricPolicy
+
+    -- ** PutMetricPolicy 
+    , module Network.AWS.MediaStore.PutMetricPolicy
+
+    -- ** GetLifecyclePolicy 
+    , module Network.AWS.MediaStore.GetLifecyclePolicy
+
+    -- ** TagResource 
+    , module Network.AWS.MediaStore.TagResource
+
     -- ** GetCORSPolicy 
     , module Network.AWS.MediaStore.GetCORSPolicy
+
+    -- ** UntagResource 
+    , module Network.AWS.MediaStore.UntagResource
 
     -- ** DeleteContainerPolicy 
     , module Network.AWS.MediaStore.DeleteContainerPolicy
@@ -78,6 +111,9 @@ module Network.AWS.MediaStore
 
     -- * Types
 
+    -- ** ContainerLevelMetrics
+    , ContainerLevelMetrics (..)
+
     -- ** ContainerStatus
     , ContainerStatus (..)
 
@@ -89,31 +125,61 @@ module Network.AWS.MediaStore
     , corsRule
     , crAllowedMethods
     , crMaxAgeSeconds
-    , crAllowedHeaders
-    , crAllowedOrigins
     , crExposeHeaders
+    , crAllowedOrigins
+    , crAllowedHeaders
 
     -- ** Container
     , Container
     , container
     , cCreationTime
     , cStatus
+    , cAccessLoggingEnabled
     , cARN
     , cName
     , cEndpoint
+
+    -- ** MetricPolicy
+    , MetricPolicy
+    , metricPolicy
+    , mpMetricPolicyRules
+    , mpContainerLevelMetrics
+
+    -- ** MetricPolicyRule
+    , MetricPolicyRule
+    , metricPolicyRule
+    , mprObjectGroup
+    , mprObjectGroupName
+
+    -- ** Tag
+    , Tag
+    , tag
+    , tagValue
+    , tagKey
     ) where
 
 import Network.AWS.MediaStore.CreateContainer
 import Network.AWS.MediaStore.DeleteCORSPolicy
 import Network.AWS.MediaStore.DeleteContainer
 import Network.AWS.MediaStore.DeleteContainerPolicy
+import Network.AWS.MediaStore.DeleteLifecyclePolicy
+import Network.AWS.MediaStore.DeleteMetricPolicy
 import Network.AWS.MediaStore.DescribeContainer
 import Network.AWS.MediaStore.GetCORSPolicy
 import Network.AWS.MediaStore.GetContainerPolicy
+import Network.AWS.MediaStore.GetLifecyclePolicy
+import Network.AWS.MediaStore.GetMetricPolicy
 import Network.AWS.MediaStore.ListContainers
+import Network.AWS.MediaStore.ListTagsForResource
 import Network.AWS.MediaStore.PutCORSPolicy
 import Network.AWS.MediaStore.PutContainerPolicy
+import Network.AWS.MediaStore.PutLifecyclePolicy
+import Network.AWS.MediaStore.PutMetricPolicy
+import Network.AWS.MediaStore.StartAccessLogging
+import Network.AWS.MediaStore.StopAccessLogging
+import Network.AWS.MediaStore.TagResource
 import Network.AWS.MediaStore.Types
+import Network.AWS.MediaStore.UntagResource
 import Network.AWS.MediaStore.Waiters
 
 {- $errors

@@ -24,6 +24,8 @@ import Network.AWS.S3.Types.Tag
 
 -- | This is used in a Lifecycle Rule Filter to apply a logical AND to two or more predicates. The Lifecycle Rule will apply to any object matching all of the predicates configured inside the And operator.
 --
+--
+--
 -- /See:/ 'lifecycleRuleAndOperator' smart constructor.
 data LifecycleRuleAndOperator = LifecycleRuleAndOperator'{_lraoPrefix
                                                           :: !(Maybe Text),
@@ -36,7 +38,7 @@ data LifecycleRuleAndOperator = LifecycleRuleAndOperator'{_lraoPrefix
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'lraoPrefix' - Undocumented member.
+-- * 'lraoPrefix' - Prefix identifying one or more objects to which the rule applies.
 --
 -- * 'lraoTags' - All of these tags must exist in the object's tag set in order for the rule to apply.
 lifecycleRuleAndOperator
@@ -45,7 +47,7 @@ lifecycleRuleAndOperator
   = LifecycleRuleAndOperator'{_lraoPrefix = Nothing,
                               _lraoTags = Nothing}
 
--- | Undocumented member.
+-- | Prefix identifying one or more objects to which the rule applies.
 lraoPrefix :: Lens' LifecycleRuleAndOperator (Maybe Text)
 lraoPrefix = lens _lraoPrefix (\ s a -> s{_lraoPrefix = a})
 

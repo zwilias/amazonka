@@ -86,7 +86,7 @@ data CacheNodeTypeSpecificParameter = CacheNodeTypeSpecificParameter'{_cntspCach
 --
 -- * 'cntspDescription' - A description of the parameter.
 --
--- * 'cntspChangeType' - Indicates whether a change to the parameter is applied immediately or requires a reboot for the change to be applied. You can force a reboot or wait until the next maintenance window's reboot. For more information, see <http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/Clusters.Rebooting.html Rebooting a Cluster> .
+-- * 'cntspChangeType' - Indicates whether a change to the parameter is applied immediately or requires a reboot for the change to be applied. You can force a reboot or wait until the next maintenance window's reboot. For more information, see <https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Clusters.Rebooting.html Rebooting a Cluster> .
 cacheNodeTypeSpecificParameter
     :: CacheNodeTypeSpecificParameter
 cacheNodeTypeSpecificParameter
@@ -133,7 +133,7 @@ cntspParameterName = lens _cntspParameterName (\ s a -> s{_cntspParameterName = 
 cntspDescription :: Lens' CacheNodeTypeSpecificParameter (Maybe Text)
 cntspDescription = lens _cntspDescription (\ s a -> s{_cntspDescription = a})
 
--- | Indicates whether a change to the parameter is applied immediately or requires a reboot for the change to be applied. You can force a reboot or wait until the next maintenance window's reboot. For more information, see <http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/Clusters.Rebooting.html Rebooting a Cluster> .
+-- | Indicates whether a change to the parameter is applied immediately or requires a reboot for the change to be applied. You can force a reboot or wait until the next maintenance window's reboot. For more information, see <https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Clusters.Rebooting.html Rebooting a Cluster> .
 cntspChangeType :: Lens' CacheNodeTypeSpecificParameter (Maybe ChangeType)
 cntspChangeType = lens _cntspChangeType (\ s a -> s{_cntspChangeType = a})
 

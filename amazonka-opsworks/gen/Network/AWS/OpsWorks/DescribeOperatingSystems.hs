@@ -106,7 +106,7 @@ data DescribeOperatingSystemsResponse = DescribeOperatingSystemsResponse'{_dosrs
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dosrsOperatingSystems' - Undocumented member.
+-- * 'dosrsOperatingSystems' - Contains information in response to a @DescribeOperatingSystems@ request.
 --
 -- * 'dosrsResponseStatus' - -- | The response status code.
 describeOperatingSystemsResponse
@@ -117,7 +117,7 @@ describeOperatingSystemsResponse pResponseStatus_
                                         = Nothing,
                                       _dosrsResponseStatus = pResponseStatus_}
 
--- | Undocumented member.
+-- | Contains information in response to a @DescribeOperatingSystems@ request.
 dosrsOperatingSystems :: Lens' DescribeOperatingSystemsResponse [OperatingSystem]
 dosrsOperatingSystems = lens _dosrsOperatingSystems (\ s a -> s{_dosrsOperatingSystems = a}) . _Default . _Coerce
 

@@ -27,7 +27,7 @@ module Network.AWS.MediaLive.Types.AacSpec (
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | Placeholder documentation for AacSpec
+-- | Aac Spec
 data AacSpec = AacSpec' (CI Text)
                  deriving (Eq, Ord, Read, Show, Data, Typeable,
                            Generic)

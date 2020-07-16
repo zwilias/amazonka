@@ -20,7 +20,9 @@ module Network.AWS.Pinpoint.Types.MessageBody where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | Simple message object.
+-- | Provides information about an API request or response.
+--
+--
 --
 -- /See:/ 'messageBody' smart constructor.
 data MessageBody = MessageBody'{_mbRequestId ::
@@ -32,20 +34,20 @@ data MessageBody = MessageBody'{_mbRequestId ::
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'mbRequestId' - The unique message body ID.
+-- * 'mbRequestId' - The unique identifier for the request or response.
 --
--- * 'mbMessage' - The error message returned from the API.
+-- * 'mbMessage' - The message that's returned from the API.
 messageBody
     :: MessageBody
 messageBody
   = MessageBody'{_mbRequestId = Nothing,
                  _mbMessage = Nothing}
 
--- | The unique message body ID.
+-- | The unique identifier for the request or response.
 mbRequestId :: Lens' MessageBody (Maybe Text)
 mbRequestId = lens _mbRequestId (\ s a -> s{_mbRequestId = a})
 
--- | The error message returned from the API.
+-- | The message that's returned from the API.
 mbMessage :: Lens' MessageBody (Maybe Text)
 mbMessage = lens _mbMessage (\ s a -> s{_mbMessage = a})
 

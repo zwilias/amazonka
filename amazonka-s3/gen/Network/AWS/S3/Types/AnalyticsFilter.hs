@@ -23,7 +23,11 @@ import Network.AWS.S3.Internal
 import Network.AWS.S3.Types.AnalyticsAndOperator
 import Network.AWS.S3.Types.Tag
 
--- | /See:/ 'analyticsFilter' smart constructor.
+-- | The filter used to describe a set of objects for analyses. A filter must have exactly one prefix, one tag, or one conjunction (AnalyticsAndOperator). If no filter is provided, all objects will be considered in any analysis.
+--
+--
+--
+-- /See:/ 'analyticsFilter' smart constructor.
 data AnalyticsFilter = AnalyticsFilter'{_afTag ::
                                         !(Maybe Tag),
                                         _afPrefix :: !(Maybe Text),

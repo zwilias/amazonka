@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Creates a group that can be used in Amazon WorkMail by calling the RegisterToWorkMail operation.
+-- Creates a group that can be used in Amazon WorkMail by calling the 'RegisterToWorkMail' operation.
 --
 --
 module Network.AWS.WorkMail.CreateGroup
@@ -119,7 +119,7 @@ data CreateGroupResponse = CreateGroupResponse'{_cgrsGroupId
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'cgrsGroupId' - The ID of the group.
+-- * 'cgrsGroupId' - The identifier of the group.
 --
 -- * 'cgrsResponseStatus' - -- | The response status code.
 createGroupResponse
@@ -129,7 +129,7 @@ createGroupResponse pResponseStatus_
   = CreateGroupResponse'{_cgrsGroupId = Nothing,
                          _cgrsResponseStatus = pResponseStatus_}
 
--- | The ID of the group.
+-- | The identifier of the group.
 cgrsGroupId :: Lens' CreateGroupResponse (Maybe Text)
 cgrsGroupId = lens _cgrsGroupId (\ s a -> s{_cgrsGroupId = a})
 

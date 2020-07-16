@@ -18,11 +18,13 @@
 module Network.AWS.Lightsail.Types.Instance where
 
 import Network.AWS.Lens
+import Network.AWS.Lightsail.Types.AddOn
 import Network.AWS.Lightsail.Types.InstanceHardware
 import Network.AWS.Lightsail.Types.InstanceNetworking
 import Network.AWS.Lightsail.Types.InstanceState
 import Network.AWS.Lightsail.Types.ResourceLocation
 import Network.AWS.Lightsail.Types.ResourceType
+import Network.AWS.Lightsail.Types.Tag
 import Network.AWS.Prelude
 
 -- | Describes an instance (a virtual private server).
@@ -38,6 +40,7 @@ data Instance = Instance'{_iState ::
                           _iCreatedAt :: !(Maybe POSIX),
                           _iLocation :: !(Maybe ResourceLocation),
                           _iSshKeyName :: !(Maybe Text),
+                          _iAddOns :: !(Maybe [AddOn]),
                           _iUsername :: !(Maybe Text),
                           _iNetworking :: !(Maybe InstanceNetworking),
                           _iBundleId :: !(Maybe Text), _iName :: !(Maybe Text),
@@ -47,7 +50,8 @@ data Instance = Instance'{_iState ::
                           _iBlueprintName :: !(Maybe Text),
                           _iIsStaticIP :: !(Maybe Bool),
                           _iPublicIPAddress :: !(Maybe Text),
-                          _iHardware :: !(Maybe InstanceHardware)}
+                          _iHardware :: !(Maybe InstanceHardware),
+                          _iTags :: !(Maybe [Tag])}
                   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'Instance' with the minimum fields required to make a request.
@@ -64,9 +68,11 @@ data Instance = Instance'{_iState ::
 --
 -- * 'iCreatedAt' - The timestamp when the instance was created (e.g., @1479734909.17@ ).
 --
--- * 'iLocation' - The region name and availability zone where the instance is located.
+-- * 'iLocation' - The region name and Availability Zone where the instance is located.
 --
 -- * 'iSshKeyName' - The name of the SSH key being used to connect to the instance (e.g., @LightsailDefaultKeyPair@ ).
+--
+-- * 'iAddOns' - An array of objects representing the add-ons enabled on the instance.
 --
 -- * 'iUsername' - The user name for connecting to the instance (e.g., @ec2-user@ ).
 --
@@ -89,6 +95,8 @@ data Instance = Instance'{_iState ::
 -- * 'iPublicIPAddress' - The public IP address of the instance.
 --
 -- * 'iHardware' - The size of the vCPU and the amount of RAM for the instance.
+--
+-- * 'iTags' - The tag keys and optional values for the resource. For more information about tags in Lightsail, see the <https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-tags Lightsail Dev Guide> .
 instance'
     :: Instance
 instance'
@@ -96,12 +104,14 @@ instance'
               _iIpv6Address = Nothing, _iResourceType = Nothing,
               _iArn = Nothing, _iCreatedAt = Nothing,
               _iLocation = Nothing, _iSshKeyName = Nothing,
-              _iUsername = Nothing, _iNetworking = Nothing,
-              _iBundleId = Nothing, _iName = Nothing,
-              _iSupportCode = Nothing, _iBlueprintId = Nothing,
+              _iAddOns = Nothing, _iUsername = Nothing,
+              _iNetworking = Nothing, _iBundleId = Nothing,
+              _iName = Nothing, _iSupportCode = Nothing,
+              _iBlueprintId = Nothing,
               _iPrivateIPAddress = Nothing,
               _iBlueprintName = Nothing, _iIsStaticIP = Nothing,
-              _iPublicIPAddress = Nothing, _iHardware = Nothing}
+              _iPublicIPAddress = Nothing, _iHardware = Nothing,
+              _iTags = Nothing}
 
 -- | The status code and the state (e.g., @running@ ) for the instance.
 iState :: Lens' Instance (Maybe InstanceState)
@@ -123,13 +133,17 @@ iArn = lens _iArn (\ s a -> s{_iArn = a})
 iCreatedAt :: Lens' Instance (Maybe UTCTime)
 iCreatedAt = lens _iCreatedAt (\ s a -> s{_iCreatedAt = a}) . mapping _Time
 
--- | The region name and availability zone where the instance is located.
+-- | The region name and Availability Zone where the instance is located.
 iLocation :: Lens' Instance (Maybe ResourceLocation)
 iLocation = lens _iLocation (\ s a -> s{_iLocation = a})
 
 -- | The name of the SSH key being used to connect to the instance (e.g., @LightsailDefaultKeyPair@ ).
 iSshKeyName :: Lens' Instance (Maybe Text)
 iSshKeyName = lens _iSshKeyName (\ s a -> s{_iSshKeyName = a})
+
+-- | An array of objects representing the add-ons enabled on the instance.
+iAddOns :: Lens' Instance [AddOn]
+iAddOns = lens _iAddOns (\ s a -> s{_iAddOns = a}) . _Default . _Coerce
 
 -- | The user name for connecting to the instance (e.g., @ec2-user@ ).
 iUsername :: Lens' Instance (Maybe Text)
@@ -175,6 +189,10 @@ iPublicIPAddress = lens _iPublicIPAddress (\ s a -> s{_iPublicIPAddress = a})
 iHardware :: Lens' Instance (Maybe InstanceHardware)
 iHardware = lens _iHardware (\ s a -> s{_iHardware = a})
 
+-- | The tag keys and optional values for the resource. For more information about tags in Lightsail, see the <https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-tags Lightsail Dev Guide> .
+iTags :: Lens' Instance [Tag]
+iTags = lens _iTags (\ s a -> s{_iTags = a}) . _Default . _Coerce
+
 instance FromJSON Instance where
         parseJSON
           = withObject "Instance"
@@ -186,6 +204,7 @@ instance FromJSON Instance where
                      <*> (x .:? "createdAt")
                      <*> (x .:? "location")
                      <*> (x .:? "sshKeyName")
+                     <*> (x .:? "addOns" .!= mempty)
                      <*> (x .:? "username")
                      <*> (x .:? "networking")
                      <*> (x .:? "bundleId")
@@ -196,7 +215,8 @@ instance FromJSON Instance where
                      <*> (x .:? "blueprintName")
                      <*> (x .:? "isStaticIp")
                      <*> (x .:? "publicIpAddress")
-                     <*> (x .:? "hardware"))
+                     <*> (x .:? "hardware")
+                     <*> (x .:? "tags" .!= mempty))
 
 instance Hashable Instance where
 

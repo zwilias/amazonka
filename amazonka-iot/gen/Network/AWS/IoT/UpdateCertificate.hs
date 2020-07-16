@@ -62,7 +62,7 @@ data UpdateCertificate = UpdateCertificate'{_ucCertificateId
 --
 -- * 'ucCertificateId' - The ID of the certificate. (The last part of the certificate ARN contains the certificate ID.)
 --
--- * 'ucNewStatus' - The new status. __Note:__ Setting the status to PENDING_TRANSFER will result in an exception being thrown. PENDING_TRANSFER is a status used internally by AWS IoT. It is not intended for developer use. __Note:__ The status value REGISTER_INACTIVE is deprecated and should not be used.
+-- * 'ucNewStatus' - The new status. __Note:__ Setting the status to PENDING_TRANSFER or PENDING_ACTIVATION will result in an exception being thrown. PENDING_TRANSFER and PENDING_ACTIVATION are statuses used internally by AWS IoT. They are not intended for developer use. __Note:__ The status value REGISTER_INACTIVE is deprecated and should not be used.
 updateCertificate
     :: Text -- ^ 'ucCertificateId'
     -> CertificateStatus -- ^ 'ucNewStatus'
@@ -76,7 +76,7 @@ updateCertificate pCertificateId_ pNewStatus_
 ucCertificateId :: Lens' UpdateCertificate Text
 ucCertificateId = lens _ucCertificateId (\ s a -> s{_ucCertificateId = a})
 
--- | The new status. __Note:__ Setting the status to PENDING_TRANSFER will result in an exception being thrown. PENDING_TRANSFER is a status used internally by AWS IoT. It is not intended for developer use. __Note:__ The status value REGISTER_INACTIVE is deprecated and should not be used.
+-- | The new status. __Note:__ Setting the status to PENDING_TRANSFER or PENDING_ACTIVATION will result in an exception being thrown. PENDING_TRANSFER and PENDING_ACTIVATION are statuses used internally by AWS IoT. They are not intended for developer use. __Note:__ The status value REGISTER_INACTIVE is deprecated and should not be used.
 ucNewStatus :: Lens' UpdateCertificate CertificateStatus
 ucNewStatus = lens _ucNewStatus (\ s a -> s{_ucNewStatus = a})
 

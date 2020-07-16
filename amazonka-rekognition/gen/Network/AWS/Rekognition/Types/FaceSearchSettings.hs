@@ -20,7 +20,7 @@ module Network.AWS.Rekognition.Types.FaceSearchSettings where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | Input face recognition parameters for an Amazon Rekognition stream processor. @FaceRecognitionSettings@ is a request parameter for .
+-- | Input face recognition parameters for an Amazon Rekognition stream processor. @FaceRecognitionSettings@ is a request parameter for 'CreateStreamProcessor' .
 --
 --
 --
@@ -34,7 +34,7 @@ data FaceSearchSettings = FaceSearchSettings'{_fssFaceMatchThreshold
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'fssFaceMatchThreshold' - Minimum face match confidence score that must be met to return a result for a recognized face. Default is 70. 0 is the lowest confidence. 100 is the highest confidence.
+-- * 'fssFaceMatchThreshold' - Minimum face match confidence score that must be met to return a result for a recognized face. Default is 80. 0 is the lowest confidence. 100 is the highest confidence.
 --
 -- * 'fssCollectionId' - The ID of a collection that contains faces that you want to search for.
 faceSearchSettings
@@ -44,7 +44,7 @@ faceSearchSettings
                           Nothing,
                         _fssCollectionId = Nothing}
 
--- | Minimum face match confidence score that must be met to return a result for a recognized face. Default is 70. 0 is the lowest confidence. 100 is the highest confidence.
+-- | Minimum face match confidence score that must be met to return a result for a recognized face. Default is 80. 0 is the lowest confidence. 100 is the highest confidence.
 fssFaceMatchThreshold :: Lens' FaceSearchSettings (Maybe Double)
 fssFaceMatchThreshold = lens _fssFaceMatchThreshold (\ s a -> s{_fssFaceMatchThreshold = a})
 

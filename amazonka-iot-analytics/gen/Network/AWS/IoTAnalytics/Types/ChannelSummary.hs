@@ -18,6 +18,7 @@
 module Network.AWS.IoTAnalytics.Types.ChannelSummary where
 
 import Network.AWS.IoTAnalytics.Types.ChannelStatus
+import Network.AWS.IoTAnalytics.Types.ChannelStorageSummary
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
@@ -30,6 +31,8 @@ data ChannelSummary = ChannelSummary'{_csCreationTime
                                       :: !(Maybe POSIX),
                                       _csStatus :: !(Maybe ChannelStatus),
                                       _csChannelName :: !(Maybe Text),
+                                      _csChannelStorage ::
+                                      !(Maybe ChannelStorageSummary),
                                       _csLastUpdateTime :: !(Maybe POSIX)}
                         deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -43,12 +46,15 @@ data ChannelSummary = ChannelSummary'{_csCreationTime
 --
 -- * 'csChannelName' - The name of the channel.
 --
+-- * 'csChannelStorage' - Where channel data is stored.
+--
 -- * 'csLastUpdateTime' - The last time the channel was updated.
 channelSummary
     :: ChannelSummary
 channelSummary
   = ChannelSummary'{_csCreationTime = Nothing,
                     _csStatus = Nothing, _csChannelName = Nothing,
+                    _csChannelStorage = Nothing,
                     _csLastUpdateTime = Nothing}
 
 -- | When the channel was created.
@@ -63,6 +69,10 @@ csStatus = lens _csStatus (\ s a -> s{_csStatus = a})
 csChannelName :: Lens' ChannelSummary (Maybe Text)
 csChannelName = lens _csChannelName (\ s a -> s{_csChannelName = a})
 
+-- | Where channel data is stored.
+csChannelStorage :: Lens' ChannelSummary (Maybe ChannelStorageSummary)
+csChannelStorage = lens _csChannelStorage (\ s a -> s{_csChannelStorage = a})
+
 -- | The last time the channel was updated.
 csLastUpdateTime :: Lens' ChannelSummary (Maybe UTCTime)
 csLastUpdateTime = lens _csLastUpdateTime (\ s a -> s{_csLastUpdateTime = a}) . mapping _Time
@@ -74,6 +84,7 @@ instance FromJSON ChannelSummary where
                  ChannelSummary' <$>
                    (x .:? "creationTime") <*> (x .:? "status") <*>
                      (x .:? "channelName")
+                     <*> (x .:? "channelStorage")
                      <*> (x .:? "lastUpdateTime"))
 
 instance Hashable ChannelSummary where

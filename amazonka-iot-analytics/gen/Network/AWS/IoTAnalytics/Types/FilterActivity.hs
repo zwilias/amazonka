@@ -38,7 +38,7 @@ data FilterActivity = FilterActivity'{_faNext ::
 --
 -- * 'faName' - The name of the 'filter' activity.
 --
--- * 'faFilter' - An expression that looks like an SQL WHERE clause that must return a Boolean value.
+-- * 'faFilter' - An expression that looks like a SQL WHERE clause that must return a Boolean value.
 filterActivity
     :: Text -- ^ 'faName'
     -> Text -- ^ 'faFilter'
@@ -55,7 +55,7 @@ faNext = lens _faNext (\ s a -> s{_faNext = a})
 faName :: Lens' FilterActivity Text
 faName = lens _faName (\ s a -> s{_faName = a})
 
--- | An expression that looks like an SQL WHERE clause that must return a Boolean value.
+-- | An expression that looks like a SQL WHERE clause that must return a Boolean value.
 faFilter :: Lens' FilterActivity Text
 faFilter = lens _faFilter (\ s a -> s{_faFilter = a})
 

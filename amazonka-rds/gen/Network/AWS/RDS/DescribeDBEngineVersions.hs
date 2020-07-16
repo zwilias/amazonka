@@ -32,6 +32,7 @@ module Network.AWS.RDS.DescribeDBEngineVersions
     , ddevEngineVersion
     , ddevListSupportedTimezones
     , ddevDefaultOnly
+    , ddevIncludeAll
     , ddevFilters
     , ddevEngine
     , ddevDBParameterGroupFamily
@@ -63,6 +64,8 @@ data DescribeDBEngineVersions = DescribeDBEngineVersions'{_ddevEngineVersion
                                                           :: !(Maybe Bool),
                                                           _ddevDefaultOnly ::
                                                           !(Maybe Bool),
+                                                          _ddevIncludeAll ::
+                                                          !(Maybe Bool),
                                                           _ddevFilters ::
                                                           !(Maybe [Filter]),
                                                           _ddevEngine ::
@@ -84,21 +87,23 @@ data DescribeDBEngineVersions = DescribeDBEngineVersions'{_ddevEngineVersion
 --
 -- * 'ddevEngineVersion' - The database engine version to return. Example: @5.1.49@ 
 --
--- * 'ddevListSupportedTimezones' - If this parameter is specified and the requested engine supports the @TimeZone@ parameter for @CreateDBInstance@ , the response includes a list of supported time zones for each engine version. 
+-- * 'ddevListSupportedTimezones' - A value that indicates whether to list the supported time zones for each engine version. If this parameter is enabled and the requested engine supports the @TimeZone@ parameter for @CreateDBInstance@ , the response includes a list of supported time zones for each engine version. 
 --
--- * 'ddevDefaultOnly' - Indicates that only the default version of the specified engine or engine and major version combination is returned.
+-- * 'ddevDefaultOnly' - A value that indicates whether only the default version of the specified engine or engine and major version combination is returned.
 --
--- * 'ddevFilters' - This parameter is not currently supported.
+-- * 'ddevIncludeAll' - A value that indicates whether to include engine versions that aren't available in the list. The default is to list only available engine versions.
+--
+-- * 'ddevFilters' - This parameter isn't currently supported.
 --
 -- * 'ddevEngine' - The database engine to return.
 --
 -- * 'ddevDBParameterGroupFamily' - The name of a specific DB parameter group family to return details for. Constraints:     * If supplied, must match an existing DBParameterGroupFamily.
 --
--- * 'ddevListSupportedCharacterSets' - If this parameter is specified and the requested engine supports the @CharacterSetName@ parameter for @CreateDBInstance@ , the response includes a list of supported character sets for each engine version. 
+-- * 'ddevListSupportedCharacterSets' - A value that indicates whether to list the supported character sets for each engine version. If this parameter is enabled and the requested engine supports the @CharacterSetName@ parameter for @CreateDBInstance@ , the response includes a list of supported character sets for each engine version. 
 --
 -- * 'ddevMarker' - An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by @MaxRecords@ . 
 --
--- * 'ddevMaxRecords' - The maximum number of records to include in the response. If more than the @MaxRecords@ value is available, a pagination token called a marker is included in the response so that the following results can be retrieved.  Default: 100 Constraints: Minimum 20, maximum 100.
+-- * 'ddevMaxRecords' - The maximum number of records to include in the response. If more than the @MaxRecords@ value is available, a pagination token called a marker is included in the response so you can retrieve the remaining results.  Default: 100 Constraints: Minimum 20, maximum 100.
 describeDBEngineVersions
     :: DescribeDBEngineVersions
 describeDBEngineVersions
@@ -106,7 +111,8 @@ describeDBEngineVersions
                                 Nothing,
                               _ddevListSupportedTimezones = Nothing,
                               _ddevDefaultOnly = Nothing,
-                              _ddevFilters = Nothing, _ddevEngine = Nothing,
+                              _ddevIncludeAll = Nothing, _ddevFilters = Nothing,
+                              _ddevEngine = Nothing,
                               _ddevDBParameterGroupFamily = Nothing,
                               _ddevListSupportedCharacterSets = Nothing,
                               _ddevMarker = Nothing, _ddevMaxRecords = Nothing}
@@ -115,15 +121,19 @@ describeDBEngineVersions
 ddevEngineVersion :: Lens' DescribeDBEngineVersions (Maybe Text)
 ddevEngineVersion = lens _ddevEngineVersion (\ s a -> s{_ddevEngineVersion = a})
 
--- | If this parameter is specified and the requested engine supports the @TimeZone@ parameter for @CreateDBInstance@ , the response includes a list of supported time zones for each engine version. 
+-- | A value that indicates whether to list the supported time zones for each engine version. If this parameter is enabled and the requested engine supports the @TimeZone@ parameter for @CreateDBInstance@ , the response includes a list of supported time zones for each engine version. 
 ddevListSupportedTimezones :: Lens' DescribeDBEngineVersions (Maybe Bool)
 ddevListSupportedTimezones = lens _ddevListSupportedTimezones (\ s a -> s{_ddevListSupportedTimezones = a})
 
--- | Indicates that only the default version of the specified engine or engine and major version combination is returned.
+-- | A value that indicates whether only the default version of the specified engine or engine and major version combination is returned.
 ddevDefaultOnly :: Lens' DescribeDBEngineVersions (Maybe Bool)
 ddevDefaultOnly = lens _ddevDefaultOnly (\ s a -> s{_ddevDefaultOnly = a})
 
--- | This parameter is not currently supported.
+-- | A value that indicates whether to include engine versions that aren't available in the list. The default is to list only available engine versions.
+ddevIncludeAll :: Lens' DescribeDBEngineVersions (Maybe Bool)
+ddevIncludeAll = lens _ddevIncludeAll (\ s a -> s{_ddevIncludeAll = a})
+
+-- | This parameter isn't currently supported.
 ddevFilters :: Lens' DescribeDBEngineVersions [Filter]
 ddevFilters = lens _ddevFilters (\ s a -> s{_ddevFilters = a}) . _Default . _Coerce
 
@@ -135,7 +145,7 @@ ddevEngine = lens _ddevEngine (\ s a -> s{_ddevEngine = a})
 ddevDBParameterGroupFamily :: Lens' DescribeDBEngineVersions (Maybe Text)
 ddevDBParameterGroupFamily = lens _ddevDBParameterGroupFamily (\ s a -> s{_ddevDBParameterGroupFamily = a})
 
--- | If this parameter is specified and the requested engine supports the @CharacterSetName@ parameter for @CreateDBInstance@ , the response includes a list of supported character sets for each engine version. 
+-- | A value that indicates whether to list the supported character sets for each engine version. If this parameter is enabled and the requested engine supports the @CharacterSetName@ parameter for @CreateDBInstance@ , the response includes a list of supported character sets for each engine version. 
 ddevListSupportedCharacterSets :: Lens' DescribeDBEngineVersions (Maybe Bool)
 ddevListSupportedCharacterSets = lens _ddevListSupportedCharacterSets (\ s a -> s{_ddevListSupportedCharacterSets = a})
 
@@ -143,7 +153,7 @@ ddevListSupportedCharacterSets = lens _ddevListSupportedCharacterSets (\ s a -> 
 ddevMarker :: Lens' DescribeDBEngineVersions (Maybe Text)
 ddevMarker = lens _ddevMarker (\ s a -> s{_ddevMarker = a})
 
--- | The maximum number of records to include in the response. If more than the @MaxRecords@ value is available, a pagination token called a marker is included in the response so that the following results can be retrieved.  Default: 100 Constraints: Minimum 20, maximum 100.
+-- | The maximum number of records to include in the response. If more than the @MaxRecords@ value is available, a pagination token called a marker is included in the response so you can retrieve the remaining results.  Default: 100 Constraints: Minimum 20, maximum 100.
 ddevMaxRecords :: Lens' DescribeDBEngineVersions (Maybe Int)
 ddevMaxRecords = lens _ddevMaxRecords (\ s a -> s{_ddevMaxRecords = a})
 
@@ -187,6 +197,7 @@ instance ToQuery DescribeDBEngineVersions where
                "ListSupportedTimezones" =:
                  _ddevListSupportedTimezones,
                "DefaultOnly" =: _ddevDefaultOnly,
+               "IncludeAll" =: _ddevIncludeAll,
                "Filters" =:
                  toQuery (toQueryList "Filter" <$> _ddevFilters),
                "Engine" =: _ddevEngine,
@@ -197,7 +208,7 @@ instance ToQuery DescribeDBEngineVersions where
                "Marker" =: _ddevMarker,
                "MaxRecords" =: _ddevMaxRecords]
 
--- | Contains the result of a successful invocation of the 'DescribeDBEngineVersions' action. 
+-- | Contains the result of a successful invocation of the @DescribeDBEngineVersions@ action. 
 --
 --
 --

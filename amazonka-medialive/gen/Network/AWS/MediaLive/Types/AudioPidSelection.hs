@@ -20,7 +20,7 @@ module Network.AWS.MediaLive.Types.AudioPidSelection where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | Placeholder documentation for AudioPidSelection
+-- | Audio Pid Selection
 --
 -- /See:/ 'audioPidSelection' smart constructor.
 newtype AudioPidSelection = AudioPidSelection'{_apsPid

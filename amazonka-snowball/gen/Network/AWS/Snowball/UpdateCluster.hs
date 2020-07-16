@@ -79,7 +79,7 @@ data UpdateCluster = UpdateCluster'{_ucNotification
 --
 -- * 'ucDescription' - The updated description of this cluster.
 --
--- * 'ucRoleARN' - The new role Amazon Resource Name (ARN) that you want to associate with this cluster. To create a role ARN, use the <http://docs.aws.amazon.com/IAM/latest/APIReference/API_CreateRole.html CreateRole> API action in AWS Identity and Access Management (IAM).
+-- * 'ucRoleARN' - The new role Amazon Resource Name (ARN) that you want to associate with this cluster. To create a role ARN, use the <https://docs.aws.amazon.com/IAM/latest/APIReference/API_CreateRole.html CreateRole> API action in AWS Identity and Access Management (IAM).
 --
 -- * 'ucClusterId' - The cluster ID of the cluster that you want to update, for example @CID123e4567-e89b-12d3-a456-426655440000@ .
 updateCluster
@@ -116,7 +116,7 @@ ucResources = lens _ucResources (\ s a -> s{_ucResources = a})
 ucDescription :: Lens' UpdateCluster (Maybe Text)
 ucDescription = lens _ucDescription (\ s a -> s{_ucDescription = a})
 
--- | The new role Amazon Resource Name (ARN) that you want to associate with this cluster. To create a role ARN, use the <http://docs.aws.amazon.com/IAM/latest/APIReference/API_CreateRole.html CreateRole> API action in AWS Identity and Access Management (IAM).
+-- | The new role Amazon Resource Name (ARN) that you want to associate with this cluster. To create a role ARN, use the <https://docs.aws.amazon.com/IAM/latest/APIReference/API_CreateRole.html CreateRole> API action in AWS Identity and Access Management (IAM).
 ucRoleARN :: Lens' UpdateCluster (Maybe Text)
 ucRoleARN = lens _ucRoleARN (\ s a -> s{_ucRoleARN = a})
 

@@ -38,7 +38,7 @@ data RoleUsageType = RoleUsageType'{_rutResources ::
 --
 -- * 'rutResources' - The name of the resource that is using the service-linked role.
 --
--- * 'rutRegion' - The name of the region where the service-linked role is being used.
+-- * 'rutRegion' - The name of the Region where the service-linked role is being used.
 roleUsageType
     :: RoleUsageType
 roleUsageType
@@ -49,7 +49,7 @@ roleUsageType
 rutResources :: Lens' RoleUsageType [Text]
 rutResources = lens _rutResources (\ s a -> s{_rutResources = a}) . _Default . _Coerce
 
--- | The name of the region where the service-linked role is being used.
+-- | The name of the Region where the service-linked role is being used.
 rutRegion :: Lens' RoleUsageType (Maybe Text)
 rutRegion = lens _rutRegion (\ s a -> s{_rutRegion = a})
 

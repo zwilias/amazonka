@@ -21,7 +21,7 @@ import Network.AWS.Glue.Types.ConnectionType
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | Filters the connection definitions returned by the @GetConnections@ API.
+-- | Filters the connection definitions that are returned by the @GetConnections@ API operation.
 --
 --
 --

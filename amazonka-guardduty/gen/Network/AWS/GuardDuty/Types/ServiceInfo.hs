@@ -18,10 +18,13 @@
 module Network.AWS.GuardDuty.Types.ServiceInfo where
 
 import Network.AWS.GuardDuty.Types.Action
+import Network.AWS.GuardDuty.Types.Evidence
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | Additional information assigned to the generated finding by GuardDuty.
+-- | Contains additional information about the generated finding.
+--
+--
 --
 -- /See:/ 'serviceInfo' smart constructor.
 data ServiceInfo = ServiceInfo'{_siCount ::
@@ -31,6 +34,7 @@ data ServiceInfo = ServiceInfo'{_siCount ::
                                 _siDetectorId :: !(Maybe Text),
                                 _siServiceName :: !(Maybe Text),
                                 _siUserFeedback :: !(Maybe Text),
+                                _siEvidence :: !(Maybe Evidence),
                                 _siEventLastSeen :: !(Maybe Text),
                                 _siResourceRole :: !(Maybe Text),
                                 _siArchived :: !(Maybe Bool)}
@@ -40,21 +44,23 @@ data ServiceInfo = ServiceInfo'{_siCount ::
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'siCount' - Total count of the occurrences of this finding type.
+-- * 'siCount' - The total count of the occurrences of this finding type.
 --
--- * 'siEventFirstSeen' - First seen timestamp of the activity that prompted GuardDuty to generate this finding.
+-- * 'siEventFirstSeen' - The first-seen timestamp of the activity that prompted GuardDuty to generate this finding.
 --
--- * 'siAction' - Information about the activity described in a finding.
+-- * 'siAction' - Information about the activity that is described in a finding.
 --
--- * 'siDetectorId' - Detector ID for the GuardDuty service.
+-- * 'siDetectorId' - The detector ID for the GuardDuty service.
 --
 -- * 'siServiceName' - The name of the AWS service (GuardDuty) that generated a finding.
 --
--- * 'siUserFeedback' - Feedback left about the finding.
+-- * 'siUserFeedback' - Feedback that was submitted about the finding.
 --
--- * 'siEventLastSeen' - Last seen timestamp of the activity that prompted GuardDuty to generate this finding.
+-- * 'siEvidence' - An evidence object associated with the service.
 --
--- * 'siResourceRole' - Resource role information for this finding.
+-- * 'siEventLastSeen' - The last-seen timestamp of the activity that prompted GuardDuty to generate this finding.
+--
+-- * 'siResourceRole' - The resource role information for this finding.
 --
 -- * 'siArchived' - Indicates whether this finding is archived.
 serviceInfo
@@ -63,23 +69,23 @@ serviceInfo
   = ServiceInfo'{_siCount = Nothing,
                  _siEventFirstSeen = Nothing, _siAction = Nothing,
                  _siDetectorId = Nothing, _siServiceName = Nothing,
-                 _siUserFeedback = Nothing,
+                 _siUserFeedback = Nothing, _siEvidence = Nothing,
                  _siEventLastSeen = Nothing,
                  _siResourceRole = Nothing, _siArchived = Nothing}
 
--- | Total count of the occurrences of this finding type.
+-- | The total count of the occurrences of this finding type.
 siCount :: Lens' ServiceInfo (Maybe Int)
 siCount = lens _siCount (\ s a -> s{_siCount = a})
 
--- | First seen timestamp of the activity that prompted GuardDuty to generate this finding.
+-- | The first-seen timestamp of the activity that prompted GuardDuty to generate this finding.
 siEventFirstSeen :: Lens' ServiceInfo (Maybe Text)
 siEventFirstSeen = lens _siEventFirstSeen (\ s a -> s{_siEventFirstSeen = a})
 
--- | Information about the activity described in a finding.
+-- | Information about the activity that is described in a finding.
 siAction :: Lens' ServiceInfo (Maybe Action)
 siAction = lens _siAction (\ s a -> s{_siAction = a})
 
--- | Detector ID for the GuardDuty service.
+-- | The detector ID for the GuardDuty service.
 siDetectorId :: Lens' ServiceInfo (Maybe Text)
 siDetectorId = lens _siDetectorId (\ s a -> s{_siDetectorId = a})
 
@@ -87,15 +93,19 @@ siDetectorId = lens _siDetectorId (\ s a -> s{_siDetectorId = a})
 siServiceName :: Lens' ServiceInfo (Maybe Text)
 siServiceName = lens _siServiceName (\ s a -> s{_siServiceName = a})
 
--- | Feedback left about the finding.
+-- | Feedback that was submitted about the finding.
 siUserFeedback :: Lens' ServiceInfo (Maybe Text)
 siUserFeedback = lens _siUserFeedback (\ s a -> s{_siUserFeedback = a})
 
--- | Last seen timestamp of the activity that prompted GuardDuty to generate this finding.
+-- | An evidence object associated with the service.
+siEvidence :: Lens' ServiceInfo (Maybe Evidence)
+siEvidence = lens _siEvidence (\ s a -> s{_siEvidence = a})
+
+-- | The last-seen timestamp of the activity that prompted GuardDuty to generate this finding.
 siEventLastSeen :: Lens' ServiceInfo (Maybe Text)
 siEventLastSeen = lens _siEventLastSeen (\ s a -> s{_siEventLastSeen = a})
 
--- | Resource role information for this finding.
+-- | The resource role information for this finding.
 siResourceRole :: Lens' ServiceInfo (Maybe Text)
 siResourceRole = lens _siResourceRole (\ s a -> s{_siResourceRole = a})
 
@@ -113,6 +123,7 @@ instance FromJSON ServiceInfo where
                      <*> (x .:? "detectorId")
                      <*> (x .:? "serviceName")
                      <*> (x .:? "userFeedback")
+                     <*> (x .:? "evidence")
                      <*> (x .:? "eventLastSeen")
                      <*> (x .:? "resourceRole")
                      <*> (x .:? "archived"))

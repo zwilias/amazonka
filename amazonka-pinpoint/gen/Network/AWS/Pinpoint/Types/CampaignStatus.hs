@@ -20,6 +20,7 @@ module Network.AWS.Pinpoint.Types.CampaignStatus (
   CampaignStatus (
     ..
     , Completed
+    , Deleted
     , Executing
     , Paused
     , PendingNextRun
@@ -37,6 +38,9 @@ data CampaignStatus = CampaignStatus' (CI Text)
 pattern Completed :: CampaignStatus
 pattern Completed = CampaignStatus' "COMPLETED"
 
+pattern Deleted :: CampaignStatus
+pattern Deleted = CampaignStatus' "DELETED"
+
 pattern Executing :: CampaignStatus
 pattern Executing = CampaignStatus' "EXECUTING"
 
@@ -51,6 +55,7 @@ pattern Scheduled = CampaignStatus' "SCHEDULED"
 
 {-# COMPLETE
   Completed,
+  Deleted,
   Executing,
   Paused,
   PendingNextRun,
@@ -70,17 +75,19 @@ instance ToText CampaignStatus where
 instance Enum CampaignStatus where
     toEnum i = case i of
         0 -> Completed
-        1 -> Executing
-        2 -> Paused
-        3 -> PendingNextRun
-        4 -> Scheduled
+        1 -> Deleted
+        2 -> Executing
+        3 -> Paused
+        4 -> PendingNextRun
+        5 -> Scheduled
         _ -> (error . showText) $ "Unknown index for CampaignStatus: " <> toText i
     fromEnum x = case x of
         Completed -> 0
-        Executing -> 1
-        Paused -> 2
-        PendingNextRun -> 3
-        Scheduled -> 4
+        Deleted -> 1
+        Executing -> 2
+        Paused -> 3
+        PendingNextRun -> 4
+        Scheduled -> 5
         CampaignStatus' name -> (error . showText) $ "Unknown CampaignStatus: " <> original name
 
 -- | Represents the bounds of /known/ $CampaignStatus.

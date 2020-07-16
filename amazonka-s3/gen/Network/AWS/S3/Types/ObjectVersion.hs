@@ -23,7 +23,11 @@ import Network.AWS.S3.Internal
 import Network.AWS.S3.Types.ObjectVersionStorageClass
 import Network.AWS.S3.Types.Owner
 
--- | /See:/ 'objectVersion' smart constructor.
+-- | The version of an object.
+--
+--
+--
+-- /See:/ 'objectVersion' smart constructor.
 data ObjectVersion = ObjectVersion'{_ovETag ::
                                     !(Maybe ETag),
                                     _ovVersionId :: !(Maybe ObjectVersionId),
@@ -33,14 +37,14 @@ data ObjectVersion = ObjectVersion'{_ovETag ::
                                     _ovKey :: !(Maybe ObjectKey),
                                     _ovStorageClass ::
                                     !(Maybe ObjectVersionStorageClass),
-                                    _ovLastModified :: !(Maybe RFC822)}
+                                    _ovLastModified :: !(Maybe ISO8601)}
                        deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ObjectVersion' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'ovETag' - Undocumented member.
+-- * 'ovETag' - The entity tag is an MD5 hash of that version of the object.
 --
 -- * 'ovVersionId' - Version ID of an object.
 --
@@ -48,7 +52,7 @@ data ObjectVersion = ObjectVersion'{_ovETag ::
 --
 -- * 'ovIsLatest' - Specifies whether the object is (true) or is not (false) the latest version of an object.
 --
--- * 'ovOwner' - Undocumented member.
+-- * 'ovOwner' - Specifies the owner of the object.
 --
 -- * 'ovKey' - The object key.
 --
@@ -64,7 +68,7 @@ objectVersion
                    _ovKey = Nothing, _ovStorageClass = Nothing,
                    _ovLastModified = Nothing}
 
--- | Undocumented member.
+-- | The entity tag is an MD5 hash of that version of the object.
 ovETag :: Lens' ObjectVersion (Maybe ETag)
 ovETag = lens _ovETag (\ s a -> s{_ovETag = a})
 
@@ -80,7 +84,7 @@ ovSize = lens _ovSize (\ s a -> s{_ovSize = a})
 ovIsLatest :: Lens' ObjectVersion (Maybe Bool)
 ovIsLatest = lens _ovIsLatest (\ s a -> s{_ovIsLatest = a})
 
--- | Undocumented member.
+-- | Specifies the owner of the object.
 ovOwner :: Lens' ObjectVersion (Maybe Owner)
 ovOwner = lens _ovOwner (\ s a -> s{_ovOwner = a})
 

@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Imports an existing Athena Data Catalog to AWS Glue
+-- Imports an existing Amazon Athena Data Catalog to AWS Glue
 --
 --
 module Network.AWS.Glue.ImportCatalogToGlue

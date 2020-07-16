@@ -21,7 +21,7 @@ import Network.AWS.Lens
 import Network.AWS.MediaLive.Types.AvailSettings
 import Network.AWS.Prelude
 
--- | Placeholder documentation for AvailConfiguration
+-- | Avail Configuration
 --
 -- /See:/ 'availConfiguration' smart constructor.
 newtype AvailConfiguration = AvailConfiguration'{_acAvailSettings

@@ -21,7 +21,7 @@ import Network.AWS.IoTAnalytics.Types.DatasetContentState
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | The state of the data set and the reason it is in this state.
+-- | The state of the data set contents and the reason they are in this state.
 --
 --
 --
@@ -36,20 +36,20 @@ data DatasetContentStatus = DatasetContentStatus'{_dcsState
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dcsState' - The state of the data set. Can be one of "CREATING", "SUCCEEDED" or "FAILED".
+-- * 'dcsState' - The state of the data set contents. Can be one of "READY", "CREATING", "SUCCEEDED" or "FAILED".
 --
--- * 'dcsReason' - The reason the data set is in this state.
+-- * 'dcsReason' - The reason the data set contents are in this state.
 datasetContentStatus
     :: DatasetContentStatus
 datasetContentStatus
   = DatasetContentStatus'{_dcsState = Nothing,
                           _dcsReason = Nothing}
 
--- | The state of the data set. Can be one of "CREATING", "SUCCEEDED" or "FAILED".
+-- | The state of the data set contents. Can be one of "READY", "CREATING", "SUCCEEDED" or "FAILED".
 dcsState :: Lens' DatasetContentStatus (Maybe DatasetContentState)
 dcsState = lens _dcsState (\ s a -> s{_dcsState = a})
 
--- | The reason the data set is in this state.
+-- | The reason the data set contents are in this state.
 dcsReason :: Lens' DatasetContentStatus (Maybe Text)
 dcsReason = lens _dcsReason (\ s a -> s{_dcsReason = a})
 

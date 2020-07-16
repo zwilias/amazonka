@@ -18,7 +18,7 @@
 module Network.AWS.IoT.Types.OTAUpdateFile where
 
 import Network.AWS.IoT.Types.CodeSigning
-import Network.AWS.IoT.Types.Stream
+import Network.AWS.IoT.Types.FileLocation
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
@@ -27,11 +27,11 @@ import Network.AWS.Prelude
 --
 --
 -- /See:/ 'oTAUpdateFile' smart constructor.
-data OTAUpdateFile = OTAUpdateFile'{_otaufFileVersion
-                                    :: !(Maybe Text),
+data OTAUpdateFile = OTAUpdateFile'{_otaufFileLocation
+                                    :: !(Maybe FileLocation),
+                                    _otaufFileVersion :: !(Maybe Text),
                                     _otaufAttributes ::
                                     !(Maybe (Map Text Text)),
-                                    _otaufFileSource :: !(Maybe Stream),
                                     _otaufCodeSigning :: !(Maybe CodeSigning),
                                     _otaufFileName :: !(Maybe Text)}
                        deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -40,11 +40,11 @@ data OTAUpdateFile = OTAUpdateFile'{_otaufFileVersion
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
+-- * 'otaufFileLocation' - The location of the updated firmware.
+--
 -- * 'otaufFileVersion' - The file version.
 --
 -- * 'otaufAttributes' - A list of name/attribute pairs.
---
--- * 'otaufFileSource' - The source of the file.
 --
 -- * 'otaufCodeSigning' - The code signing method of the file.
 --
@@ -52,11 +52,15 @@ data OTAUpdateFile = OTAUpdateFile'{_otaufFileVersion
 oTAUpdateFile
     :: OTAUpdateFile
 oTAUpdateFile
-  = OTAUpdateFile'{_otaufFileVersion = Nothing,
+  = OTAUpdateFile'{_otaufFileLocation = Nothing,
+                   _otaufFileVersion = Nothing,
                    _otaufAttributes = Nothing,
-                   _otaufFileSource = Nothing,
                    _otaufCodeSigning = Nothing,
                    _otaufFileName = Nothing}
+
+-- | The location of the updated firmware.
+otaufFileLocation :: Lens' OTAUpdateFile (Maybe FileLocation)
+otaufFileLocation = lens _otaufFileLocation (\ s a -> s{_otaufFileLocation = a})
 
 -- | The file version.
 otaufFileVersion :: Lens' OTAUpdateFile (Maybe Text)
@@ -65,10 +69,6 @@ otaufFileVersion = lens _otaufFileVersion (\ s a -> s{_otaufFileVersion = a})
 -- | A list of name/attribute pairs.
 otaufAttributes :: Lens' OTAUpdateFile (HashMap Text Text)
 otaufAttributes = lens _otaufAttributes (\ s a -> s{_otaufAttributes = a}) . _Default . _Map
-
--- | The source of the file.
-otaufFileSource :: Lens' OTAUpdateFile (Maybe Stream)
-otaufFileSource = lens _otaufFileSource (\ s a -> s{_otaufFileSource = a})
 
 -- | The code signing method of the file.
 otaufCodeSigning :: Lens' OTAUpdateFile (Maybe CodeSigning)
@@ -83,9 +83,8 @@ instance FromJSON OTAUpdateFile where
           = withObject "OTAUpdateFile"
               (\ x ->
                  OTAUpdateFile' <$>
-                   (x .:? "fileVersion") <*>
+                   (x .:? "fileLocation") <*> (x .:? "fileVersion") <*>
                      (x .:? "attributes" .!= mempty)
-                     <*> (x .:? "fileSource")
                      <*> (x .:? "codeSigning")
                      <*> (x .:? "fileName"))
 
@@ -97,8 +96,8 @@ instance ToJSON OTAUpdateFile where
         toJSON OTAUpdateFile'{..}
           = object
               (catMaybes
-                 [("fileVersion" .=) <$> _otaufFileVersion,
+                 [("fileLocation" .=) <$> _otaufFileLocation,
+                  ("fileVersion" .=) <$> _otaufFileVersion,
                   ("attributes" .=) <$> _otaufAttributes,
-                  ("fileSource" .=) <$> _otaufFileSource,
                   ("codeSigning" .=) <$> _otaufCodeSigning,
                   ("fileName" .=) <$> _otaufFileName])

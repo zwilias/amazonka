@@ -27,6 +27,7 @@ module Network.AWS.ECS.DescribeTasks
       describeTasks
     , DescribeTasks
     -- * Request Lenses
+    , dtInclude
     , dtCluster
     , dtTasks
 
@@ -47,8 +48,9 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeTasks' smart constructor.
-data DescribeTasks = DescribeTasks'{_dtCluster ::
-                                    !(Maybe Text),
+data DescribeTasks = DescribeTasks'{_dtInclude ::
+                                    !(Maybe [TaskField]),
+                                    _dtCluster :: !(Maybe Text),
                                     _dtTasks :: ![Text]}
                        deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -56,16 +58,22 @@ data DescribeTasks = DescribeTasks'{_dtCluster ::
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dtCluster' - The short name or full Amazon Resource Name (ARN) of the cluster that hosts the task to describe. If you do not specify a cluster, the default cluster is assumed.
+-- * 'dtInclude' - Specifies whether you want to see the resource tags for the task. If @TAGS@ is specified, the tags are included in the response. If this field is omitted, tags are not included in the response.
+--
+-- * 'dtCluster' - The short name or full Amazon Resource Name (ARN) of the cluster that hosts the task or tasks to describe. If you do not specify a cluster, the default cluster is assumed. This parameter is required if the task or tasks you are describing were launched in any cluster other than the default cluster.
 --
 -- * 'dtTasks' - A list of up to 100 task IDs or full ARN entries.
 describeTasks
     :: DescribeTasks
 describeTasks
-  = DescribeTasks'{_dtCluster = Nothing,
-                   _dtTasks = mempty}
+  = DescribeTasks'{_dtInclude = Nothing,
+                   _dtCluster = Nothing, _dtTasks = mempty}
 
--- | The short name or full Amazon Resource Name (ARN) of the cluster that hosts the task to describe. If you do not specify a cluster, the default cluster is assumed.
+-- | Specifies whether you want to see the resource tags for the task. If @TAGS@ is specified, the tags are included in the response. If this field is omitted, tags are not included in the response.
+dtInclude :: Lens' DescribeTasks [TaskField]
+dtInclude = lens _dtInclude (\ s a -> s{_dtInclude = a}) . _Default . _Coerce
+
+-- | The short name or full Amazon Resource Name (ARN) of the cluster that hosts the task or tasks to describe. If you do not specify a cluster, the default cluster is assumed. This parameter is required if the task or tasks you are describing were launched in any cluster other than the default cluster.
 dtCluster :: Lens' DescribeTasks (Maybe Text)
 dtCluster = lens _dtCluster (\ s a -> s{_dtCluster = a})
 
@@ -102,7 +110,8 @@ instance ToJSON DescribeTasks where
         toJSON DescribeTasks'{..}
           = object
               (catMaybes
-                 [("cluster" .=) <$> _dtCluster,
+                 [("include" .=) <$> _dtInclude,
+                  ("cluster" .=) <$> _dtCluster,
                   Just ("tasks" .= _dtTasks)])
 
 instance ToPath DescribeTasks where

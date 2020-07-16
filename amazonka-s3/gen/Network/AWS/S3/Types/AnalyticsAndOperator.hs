@@ -22,7 +22,11 @@ import Network.AWS.Prelude
 import Network.AWS.S3.Internal
 import Network.AWS.S3.Types.Tag
 
--- | /See:/ 'analyticsAndOperator' smart constructor.
+-- | A conjunction (logical AND) of predicates, which is used in evaluating a metrics filter. The operator must have at least two predicates in any combination, and an object must match all of the predicates for the filter to apply.
+--
+--
+--
+-- /See:/ 'analyticsAndOperator' smart constructor.
 data AnalyticsAndOperator = AnalyticsAndOperator'{_aaoPrefix
                                                   :: !(Maybe Text),
                                                   _aaoTags :: !(Maybe [Tag])}
@@ -32,7 +36,7 @@ data AnalyticsAndOperator = AnalyticsAndOperator'{_aaoPrefix
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'aaoPrefix' - The prefix to use when evaluating an AND predicate.
+-- * 'aaoPrefix' - The prefix to use when evaluating an AND predicate: The prefix that an object must have to be included in the metrics results.
 --
 -- * 'aaoTags' - The list of tags to use when evaluating an AND predicate.
 analyticsAndOperator
@@ -41,7 +45,7 @@ analyticsAndOperator
   = AnalyticsAndOperator'{_aaoPrefix = Nothing,
                           _aaoTags = Nothing}
 
--- | The prefix to use when evaluating an AND predicate.
+-- | The prefix to use when evaluating an AND predicate: The prefix that an object must have to be included in the metrics results.
 aaoPrefix :: Lens' AnalyticsAndOperator (Maybe Text)
 aaoPrefix = lens _aaoPrefix (\ s a -> s{_aaoPrefix = a})
 

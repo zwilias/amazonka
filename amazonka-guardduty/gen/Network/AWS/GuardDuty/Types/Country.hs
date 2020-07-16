@@ -20,7 +20,9 @@ module Network.AWS.GuardDuty.Types.Country where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | Country information of the remote IP address.
+-- | Contains information about the country where the remote IP address is located.
+--
+--
 --
 -- /See:/ 'country' smart constructor.
 data Country = Country'{_cCountryName ::
@@ -32,20 +34,20 @@ data Country = Country'{_cCountryName ::
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'cCountryName' - Country name of the remote IP address.
+-- * 'cCountryName' - The country name of the remote IP address.
 --
--- * 'cCountryCode' - Country code of the remote IP address.
+-- * 'cCountryCode' - The country code of the remote IP address.
 country
     :: Country
 country
   = Country'{_cCountryName = Nothing,
              _cCountryCode = Nothing}
 
--- | Country name of the remote IP address.
+-- | The country name of the remote IP address.
 cCountryName :: Lens' Country (Maybe Text)
 cCountryName = lens _cCountryName (\ s a -> s{_cCountryName = a})
 
--- | Country code of the remote IP address.
+-- | The country code of the remote IP address.
 cCountryCode :: Lens' Country (Maybe Text)
 cCountryCode = lens _cCountryCode (\ s a -> s{_cCountryCode = a})
 

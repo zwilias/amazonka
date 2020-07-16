@@ -35,6 +35,8 @@ data S3DestinationDescription = S3DestinationDescription'{_s3Prefix
                                                           ::
                                                           !(Maybe
                                                               CloudWatchLoggingOptions),
+                                                          _s3ErrorOutputPrefix
+                                                          :: !(Maybe Text),
                                                           _s3RoleARN :: !Text,
                                                           _s3BucketARN :: !Text,
                                                           _s3BufferingHints ::
@@ -51,9 +53,11 @@ data S3DestinationDescription = S3DestinationDescription'{_s3Prefix
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 's3Prefix' - The "YYYY/MM/DD/HH" time format prefix is automatically used for delivered Amazon S3 files. You can specify an extra prefix to be added in front of the time format prefix. If the prefix ends with a slash, it appears as a folder in the S3 bucket. For more information, see <http://docs.aws.amazon.com/firehose/latest/dev/basic-deliver.html#s3-object-name Amazon S3 Object Name Format> in the /Amazon Kinesis Data Firehose Developer Guide/ .
+-- * 's3Prefix' - The "YYYY/MM/DD/HH" time format prefix is automatically used for delivered Amazon S3 files. You can also specify a custom prefix, as described in <https://docs.aws.amazon.com/firehose/latest/dev/s3-prefixes.html Custom Prefixes for Amazon S3 Objects> .
 --
 -- * 's3CloudWatchLoggingOptions' - The Amazon CloudWatch logging options for your delivery stream.
+--
+-- * 's3ErrorOutputPrefix' - A prefix that Kinesis Data Firehose evaluates and adds to failed records before writing them to S3. This prefix appears immediately following the bucket name. For information about how to specify this prefix, see <https://docs.aws.amazon.com/firehose/latest/dev/s3-prefixes.html Custom Prefixes for Amazon S3 Objects> .
 --
 -- * 's3RoleARN' - The Amazon Resource Name (ARN) of the AWS credentials. For more information, see <https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html Amazon Resource Names (ARNs) and AWS Service Namespaces> .
 --
@@ -76,6 +80,7 @@ s3DestinationDescription pRoleARN_ pBucketARN_
   pEncryptionConfiguration_
   = S3DestinationDescription'{_s3Prefix = Nothing,
                               _s3CloudWatchLoggingOptions = Nothing,
+                              _s3ErrorOutputPrefix = Nothing,
                               _s3RoleARN = pRoleARN_,
                               _s3BucketARN = pBucketARN_,
                               _s3BufferingHints = pBufferingHints_,
@@ -83,13 +88,17 @@ s3DestinationDescription pRoleARN_ pBucketARN_
                               _s3EncryptionConfiguration =
                                 pEncryptionConfiguration_}
 
--- | The "YYYY/MM/DD/HH" time format prefix is automatically used for delivered Amazon S3 files. You can specify an extra prefix to be added in front of the time format prefix. If the prefix ends with a slash, it appears as a folder in the S3 bucket. For more information, see <http://docs.aws.amazon.com/firehose/latest/dev/basic-deliver.html#s3-object-name Amazon S3 Object Name Format> in the /Amazon Kinesis Data Firehose Developer Guide/ .
+-- | The "YYYY/MM/DD/HH" time format prefix is automatically used for delivered Amazon S3 files. You can also specify a custom prefix, as described in <https://docs.aws.amazon.com/firehose/latest/dev/s3-prefixes.html Custom Prefixes for Amazon S3 Objects> .
 s3Prefix :: Lens' S3DestinationDescription (Maybe Text)
 s3Prefix = lens _s3Prefix (\ s a -> s{_s3Prefix = a})
 
 -- | The Amazon CloudWatch logging options for your delivery stream.
 s3CloudWatchLoggingOptions :: Lens' S3DestinationDescription (Maybe CloudWatchLoggingOptions)
 s3CloudWatchLoggingOptions = lens _s3CloudWatchLoggingOptions (\ s a -> s{_s3CloudWatchLoggingOptions = a})
+
+-- | A prefix that Kinesis Data Firehose evaluates and adds to failed records before writing them to S3. This prefix appears immediately following the bucket name. For information about how to specify this prefix, see <https://docs.aws.amazon.com/firehose/latest/dev/s3-prefixes.html Custom Prefixes for Amazon S3 Objects> .
+s3ErrorOutputPrefix :: Lens' S3DestinationDescription (Maybe Text)
+s3ErrorOutputPrefix = lens _s3ErrorOutputPrefix (\ s a -> s{_s3ErrorOutputPrefix = a})
 
 -- | The Amazon Resource Name (ARN) of the AWS credentials. For more information, see <https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html Amazon Resource Names (ARNs) and AWS Service Namespaces> .
 s3RoleARN :: Lens' S3DestinationDescription Text
@@ -118,6 +127,7 @@ instance FromJSON S3DestinationDescription where
                  S3DestinationDescription' <$>
                    (x .:? "Prefix") <*>
                      (x .:? "CloudWatchLoggingOptions")
+                     <*> (x .:? "ErrorOutputPrefix")
                      <*> (x .: "RoleARN")
                      <*> (x .: "BucketARN")
                      <*> (x .: "BufferingHints")

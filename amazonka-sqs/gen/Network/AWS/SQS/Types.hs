@@ -36,6 +36,9 @@ module Network.AWS.SQS.Types
     -- * MessageAttribute
     , MessageAttribute (..)
 
+    -- * MessageSystemAttributeNameForSends
+    , MessageSystemAttributeNameForSends (..)
+
     -- * QueueAttributeName
     , QueueAttributeName (..)
 
@@ -90,11 +93,21 @@ module Network.AWS.SQS.Types
     , mavBinaryListValues
     , mavDataType
 
+    -- * MessageSystemAttributeValue
+    , MessageSystemAttributeValue
+    , messageSystemAttributeValue
+    , msavBinaryValue
+    , msavStringListValues
+    , msavStringValue
+    , msavBinaryListValues
+    , msavDataType
+
     -- * SendMessageBatchRequestEntry
     , SendMessageBatchRequestEntry
     , sendMessageBatchRequestEntry
     , sMessageAttributes
     , sDelaySeconds
+    , sMessageSystemAttributes
     , sMessageDeduplicationId
     , sMessageGroupId
     , sId
@@ -104,6 +117,7 @@ module Network.AWS.SQS.Types
     , SendMessageBatchResultEntry
     , sendMessageBatchResultEntry
     , smbreSequenceNumber
+    , smbreMD5OfMessageSystemAttributes
     , smbreMD5OfMessageAttributes
     , smbreId
     , smbreMessageId
@@ -114,6 +128,7 @@ import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Sign.V4
 import Network.AWS.SQS.Types.MessageAttribute
+import Network.AWS.SQS.Types.MessageSystemAttributeNameForSends
 import Network.AWS.SQS.Types.QueueAttributeName
 import Network.AWS.SQS.Types.BatchResultErrorEntry
 import Network.AWS.SQS.Types.ChangeMessageVisibilityBatchRequestEntry
@@ -122,6 +137,7 @@ import Network.AWS.SQS.Types.DeleteMessageBatchRequestEntry
 import Network.AWS.SQS.Types.DeleteMessageBatchResultEntry
 import Network.AWS.SQS.Types.Message
 import Network.AWS.SQS.Types.MessageAttributeValue
+import Network.AWS.SQS.Types.MessageSystemAttributeValue
 import Network.AWS.SQS.Types.SendMessageBatchRequestEntry
 import Network.AWS.SQS.Types.SendMessageBatchResultEntry
 
@@ -148,6 +164,11 @@ sqs
             = Just "throttling_exception"
           | has (hasCode "Throttling" . hasStatus 400) e =
             Just "throttling"
+          | has
+              (hasCode "ProvisionedThroughputExceededException" .
+                 hasStatus 400)
+              e
+            = Just "throughput_exceeded"
           | has (hasStatus 504) e = Just "gateway_timeout"
           | has
               (hasCode "RequestThrottledException" . hasStatus 400)
@@ -159,7 +180,7 @@ sqs
           | has (hasStatus 509) e = Just "limit_exceeded"
           | otherwise = Nothing
 
--- | The action that you requested would violate a limit. For example, @ReceiveMessage@ returns this error if the maximum number of inflight messages is reached. @'AddPermission' @ returns this error if the maximum number of permissions for the queue is reached.
+-- | The specified action violates a limit. For example, @ReceiveMessage@ returns this error if the maximum number of inflight messages is reached and @AddPermission@ returns this error if the maximum number of permissions for the queue is reached.
 --
 --
 _OverLimit :: AsError a => Getting (First ServiceError) a ServiceError
@@ -175,14 +196,14 @@ _BatchRequestTooLong
       "AWS.SimpleQueueService.BatchRequestTooLong"
       . hasStatus 400
 
--- | The receipt handle provided isn't valid.
+-- | The specified receipt handle isn't valid.
 --
 --
 _ReceiptHandleIsInvalid :: AsError a => Getting (First ServiceError) a ServiceError
 _ReceiptHandleIsInvalid
   = _MatchServiceError sqs "ReceiptHandleIsInvalid"
 
--- | The queue referred to doesn't exist.
+-- | The specified queue doesn't exist.
 --
 --
 _QueueDoesNotExist :: AsError a => Getting (First ServiceError) a ServiceError
@@ -234,7 +255,7 @@ _UnsupportedOperation
       "AWS.SimpleQueueService.UnsupportedOperation"
       . hasStatus 400
 
--- | You must wait 60 seconds after deleting a queue before you can create another one with the same name.
+-- | You must wait 60 seconds after deleting a queue before you can create another queue with the same name.
 --
 --
 _QueueDeletedRecently :: AsError a => Getting (First ServiceError) a ServiceError
@@ -243,14 +264,14 @@ _QueueDeletedRecently
       "AWS.SimpleQueueService.QueueDeletedRecently"
       . hasStatus 400
 
--- | The attribute referred to doesn't exist.
+-- | The specified attribute doesn't exist.
 --
 --
 _InvalidAttributeName :: AsError a => Getting (First ServiceError) a ServiceError
 _InvalidAttributeName
   = _MatchServiceError sqs "InvalidAttributeName"
 
--- | The receipt handle isn't valid for the current version.
+-- | The specified receipt handle isn't valid for the current version.
 --
 --
 _InvalidIdFormat :: AsError a => Getting (First ServiceError) a ServiceError
@@ -275,7 +296,7 @@ _BatchEntryIdsNotDistinct
       "AWS.SimpleQueueService.BatchEntryIdsNotDistinct"
       . hasStatus 400
 
--- | The message referred to isn't in flight.
+-- | The specified message isn't in flight.
 --
 --
 _MessageNotInflight :: AsError a => Getting (First ServiceError) a ServiceError
@@ -284,7 +305,7 @@ _MessageNotInflight
       "AWS.SimpleQueueService.MessageNotInflight"
       . hasStatus 400
 
--- | A queue already exists with this name. Amazon SQS returns this error only if the request includes attributes whose values differ from those of the existing queue.
+-- | A queue with this name already exists. Amazon SQS returns this error only if the request includes attributes whose values differ from those of the existing queue.
 --
 --
 _QueueNameExists :: AsError a => Getting (First ServiceError) a ServiceError

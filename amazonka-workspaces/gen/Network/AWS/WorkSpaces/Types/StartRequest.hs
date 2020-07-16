@@ -33,12 +33,12 @@ newtype StartRequest = StartRequest'{_sWorkspaceId ::
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'sWorkspaceId' - The ID of the WorkSpace.
+-- * 'sWorkspaceId' - The identifier of the WorkSpace.
 startRequest
     :: StartRequest
 startRequest = StartRequest'{_sWorkspaceId = Nothing}
 
--- | The ID of the WorkSpace.
+-- | The identifier of the WorkSpace.
 sWorkspaceId :: Lens' StartRequest (Maybe Text)
 sWorkspaceId = lens _sWorkspaceId (\ s a -> s{_sWorkspaceId = a})
 

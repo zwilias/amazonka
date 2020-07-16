@@ -19,6 +19,7 @@ module Network.AWS.SSM.Types.Activation where
 
 import Network.AWS.Lens
 import Network.AWS.Prelude
+import Network.AWS.SSM.Types.Tag
 
 -- | An activation registers one or more on-premises servers or virtual machines (VMs) with AWS so that you can configure those servers or VMs using Run Command. A server or VM that has been registered with AWS is called a managed instance.
 --
@@ -33,6 +34,7 @@ data Activation = Activation'{_aExpired ::
                               _aRegistrationLimit :: !(Maybe Nat),
                               _aExpirationDate :: !(Maybe POSIX),
                               _aDescription :: !(Maybe Text),
+                              _aTags :: !(Maybe [Tag]),
                               _aRegistrationsCount :: !(Maybe Nat),
                               _aIAMRole :: !(Maybe Text)}
                     deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -55,6 +57,8 @@ data Activation = Activation'{_aExpired ::
 --
 -- * 'aDescription' - A user defined description of the activation.
 --
+-- * 'aTags' - Tags assigned to the activation.
+--
 -- * 'aRegistrationsCount' - The number of managed instances already registered with this activation.
 --
 -- * 'aIAMRole' - The Amazon Identity and Access Management (IAM) role to assign to the managed instance.
@@ -66,7 +70,8 @@ activation
                 _aActivationId = Nothing, _aCreatedDate = Nothing,
                 _aRegistrationLimit = Nothing,
                 _aExpirationDate = Nothing, _aDescription = Nothing,
-                _aRegistrationsCount = Nothing, _aIAMRole = Nothing}
+                _aTags = Nothing, _aRegistrationsCount = Nothing,
+                _aIAMRole = Nothing}
 
 -- | Whether or not the activation is expired.
 aExpired :: Lens' Activation (Maybe Bool)
@@ -96,6 +101,10 @@ aExpirationDate = lens _aExpirationDate (\ s a -> s{_aExpirationDate = a}) . map
 aDescription :: Lens' Activation (Maybe Text)
 aDescription = lens _aDescription (\ s a -> s{_aDescription = a})
 
+-- | Tags assigned to the activation.
+aTags :: Lens' Activation [Tag]
+aTags = lens _aTags (\ s a -> s{_aTags = a}) . _Default . _Coerce
+
 -- | The number of managed instances already registered with this activation.
 aRegistrationsCount :: Lens' Activation (Maybe Natural)
 aRegistrationsCount = lens _aRegistrationsCount (\ s a -> s{_aRegistrationsCount = a}) . mapping _Nat
@@ -115,6 +124,7 @@ instance FromJSON Activation where
                      <*> (x .:? "RegistrationLimit")
                      <*> (x .:? "ExpirationDate")
                      <*> (x .:? "Description")
+                     <*> (x .:? "Tags" .!= mempty)
                      <*> (x .:? "RegistrationsCount")
                      <*> (x .:? "IamRole"))
 

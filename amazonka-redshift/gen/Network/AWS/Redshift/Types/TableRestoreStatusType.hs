@@ -19,11 +19,11 @@
 module Network.AWS.Redshift.Types.TableRestoreStatusType (
   TableRestoreStatusType (
     ..
-    , Canceled
-    , Failed
-    , InProgress
-    , Pending
-    , Succeeded
+    , TRSTCanceled
+    , TRSTFailed
+    , TRSTInProgress
+    , TRSTPending
+    , TRSTSucceeded
     )
   ) where
 
@@ -36,27 +36,27 @@ data TableRestoreStatusType = TableRestoreStatusType' (CI
                                 deriving (Eq, Ord, Read, Show, Data, Typeable,
                                           Generic)
 
-pattern Canceled :: TableRestoreStatusType
-pattern Canceled = TableRestoreStatusType' "CANCELED"
+pattern TRSTCanceled :: TableRestoreStatusType
+pattern TRSTCanceled = TableRestoreStatusType' "CANCELED"
 
-pattern Failed :: TableRestoreStatusType
-pattern Failed = TableRestoreStatusType' "FAILED"
+pattern TRSTFailed :: TableRestoreStatusType
+pattern TRSTFailed = TableRestoreStatusType' "FAILED"
 
-pattern InProgress :: TableRestoreStatusType
-pattern InProgress = TableRestoreStatusType' "IN_PROGRESS"
+pattern TRSTInProgress :: TableRestoreStatusType
+pattern TRSTInProgress = TableRestoreStatusType' "IN_PROGRESS"
 
-pattern Pending :: TableRestoreStatusType
-pattern Pending = TableRestoreStatusType' "PENDING"
+pattern TRSTPending :: TableRestoreStatusType
+pattern TRSTPending = TableRestoreStatusType' "PENDING"
 
-pattern Succeeded :: TableRestoreStatusType
-pattern Succeeded = TableRestoreStatusType' "SUCCEEDED"
+pattern TRSTSucceeded :: TableRestoreStatusType
+pattern TRSTSucceeded = TableRestoreStatusType' "SUCCEEDED"
 
 {-# COMPLETE
-  Canceled,
-  Failed,
-  InProgress,
-  Pending,
-  Succeeded,
+  TRSTCanceled,
+  TRSTFailed,
+  TRSTInProgress,
+  TRSTPending,
+  TRSTSucceeded,
   TableRestoreStatusType' #-}
 
 instance FromText TableRestoreStatusType where
@@ -71,26 +71,26 @@ instance ToText TableRestoreStatusType where
 --   fromEnum is a partial function, and will error on values unknown at generation time.
 instance Enum TableRestoreStatusType where
     toEnum i = case i of
-        0 -> Canceled
-        1 -> Failed
-        2 -> InProgress
-        3 -> Pending
-        4 -> Succeeded
+        0 -> TRSTCanceled
+        1 -> TRSTFailed
+        2 -> TRSTInProgress
+        3 -> TRSTPending
+        4 -> TRSTSucceeded
         _ -> (error . showText) $ "Unknown index for TableRestoreStatusType: " <> toText i
     fromEnum x = case x of
-        Canceled -> 0
-        Failed -> 1
-        InProgress -> 2
-        Pending -> 3
-        Succeeded -> 4
+        TRSTCanceled -> 0
+        TRSTFailed -> 1
+        TRSTInProgress -> 2
+        TRSTPending -> 3
+        TRSTSucceeded -> 4
         TableRestoreStatusType' name -> (error . showText) $ "Unknown TableRestoreStatusType: " <> original name
 
 -- | Represents the bounds of /known/ $TableRestoreStatusType.
 --   AWS may have added more since the source was generated.
 --   This instance exists only for backward compatibility.
 instance Bounded TableRestoreStatusType where
-    minBound = Canceled
-    maxBound = Succeeded
+    minBound = TRSTCanceled
+    maxBound = TRSTSucceeded
 
 instance Hashable     TableRestoreStatusType
 instance NFData       TableRestoreStatusType

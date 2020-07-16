@@ -20,6 +20,7 @@ module Network.AWS.CloudFormation.Types.ChangeAction (
   ChangeAction (
     ..
     , Add
+    , Import
     , Modify
     , Remove
     )
@@ -35,6 +36,9 @@ data ChangeAction = ChangeAction' (CI Text)
 pattern Add :: ChangeAction
 pattern Add = ChangeAction' "Add"
 
+pattern Import :: ChangeAction
+pattern Import = ChangeAction' "Import"
+
 pattern Modify :: ChangeAction
 pattern Modify = ChangeAction' "Modify"
 
@@ -43,6 +47,7 @@ pattern Remove = ChangeAction' "Remove"
 
 {-# COMPLETE
   Add,
+  Import,
   Modify,
   Remove,
   ChangeAction' #-}
@@ -60,13 +65,15 @@ instance ToText ChangeAction where
 instance Enum ChangeAction where
     toEnum i = case i of
         0 -> Add
-        1 -> Modify
-        2 -> Remove
+        1 -> Import
+        2 -> Modify
+        3 -> Remove
         _ -> (error . showText) $ "Unknown index for ChangeAction: " <> toText i
     fromEnum x = case x of
         Add -> 0
-        Modify -> 1
-        Remove -> 2
+        Import -> 1
+        Modify -> 2
+        Remove -> 3
         ChangeAction' name -> (error . showText) $ "Unknown ChangeAction: " <> original name
 
 -- | Represents the bounds of /known/ $ChangeAction.

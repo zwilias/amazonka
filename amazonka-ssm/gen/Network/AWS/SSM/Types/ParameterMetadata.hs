@@ -19,9 +19,11 @@ module Network.AWS.SSM.Types.ParameterMetadata where
 
 import Network.AWS.Lens
 import Network.AWS.Prelude
+import Network.AWS.SSM.Types.ParameterInlinePolicy
+import Network.AWS.SSM.Types.ParameterTier
 import Network.AWS.SSM.Types.ParameterType
 
--- | Metada includes information like the ARN of the last user and the date/time the parameter was last used.
+-- | Metadata includes information like the ARN of the last user and the date/time the parameter was last used.
 --
 --
 --
@@ -30,12 +32,15 @@ data ParameterMetadata = ParameterMetadata'{_pmLastModifiedDate
                                             :: !(Maybe POSIX),
                                             _pmKeyId :: !(Maybe Text),
                                             _pmName :: !(Maybe Text),
+                                            _pmTier :: !(Maybe ParameterTier),
                                             _pmVersion :: !(Maybe Integer),
                                             _pmLastModifiedUser ::
                                             !(Maybe Text),
                                             _pmAllowedPattern :: !(Maybe Text),
                                             _pmType :: !(Maybe ParameterType),
-                                            _pmDescription :: !(Maybe Text)}
+                                            _pmDescription :: !(Maybe Text),
+                                            _pmPolicies ::
+                                            !(Maybe [ParameterInlinePolicy])}
                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ParameterMetadata' with the minimum fields required to make a request.
@@ -48,23 +53,28 @@ data ParameterMetadata = ParameterMetadata'{_pmLastModifiedDate
 --
 -- * 'pmName' - The parameter name.
 --
+-- * 'pmTier' - The parameter tier.
+--
 -- * 'pmVersion' - The parameter version.
 --
 -- * 'pmLastModifiedUser' - Amazon Resource Name (ARN) of the AWS user who last changed the parameter.
 --
 -- * 'pmAllowedPattern' - A parameter name can include only the following letters and symbols. a-zA-Z0-9_.-
 --
--- * 'pmType' - The type of parameter. Valid parameter types include the following: String, String list, Secure string.
+-- * 'pmType' - The type of parameter. Valid parameter types include the following: @String@ , @StringList@ , and @SecureString@ .
 --
 -- * 'pmDescription' - Description of the parameter actions.
+--
+-- * 'pmPolicies' - A list of policies associated with a parameter.
 parameterMetadata
     :: ParameterMetadata
 parameterMetadata
   = ParameterMetadata'{_pmLastModifiedDate = Nothing,
                        _pmKeyId = Nothing, _pmName = Nothing,
-                       _pmVersion = Nothing, _pmLastModifiedUser = Nothing,
+                       _pmTier = Nothing, _pmVersion = Nothing,
+                       _pmLastModifiedUser = Nothing,
                        _pmAllowedPattern = Nothing, _pmType = Nothing,
-                       _pmDescription = Nothing}
+                       _pmDescription = Nothing, _pmPolicies = Nothing}
 
 -- | Date the parameter was last changed or updated.
 pmLastModifiedDate :: Lens' ParameterMetadata (Maybe UTCTime)
@@ -78,6 +88,10 @@ pmKeyId = lens _pmKeyId (\ s a -> s{_pmKeyId = a})
 pmName :: Lens' ParameterMetadata (Maybe Text)
 pmName = lens _pmName (\ s a -> s{_pmName = a})
 
+-- | The parameter tier.
+pmTier :: Lens' ParameterMetadata (Maybe ParameterTier)
+pmTier = lens _pmTier (\ s a -> s{_pmTier = a})
+
 -- | The parameter version.
 pmVersion :: Lens' ParameterMetadata (Maybe Integer)
 pmVersion = lens _pmVersion (\ s a -> s{_pmVersion = a})
@@ -90,13 +104,17 @@ pmLastModifiedUser = lens _pmLastModifiedUser (\ s a -> s{_pmLastModifiedUser = 
 pmAllowedPattern :: Lens' ParameterMetadata (Maybe Text)
 pmAllowedPattern = lens _pmAllowedPattern (\ s a -> s{_pmAllowedPattern = a})
 
--- | The type of parameter. Valid parameter types include the following: String, String list, Secure string.
+-- | The type of parameter. Valid parameter types include the following: @String@ , @StringList@ , and @SecureString@ .
 pmType :: Lens' ParameterMetadata (Maybe ParameterType)
 pmType = lens _pmType (\ s a -> s{_pmType = a})
 
 -- | Description of the parameter actions.
 pmDescription :: Lens' ParameterMetadata (Maybe Text)
 pmDescription = lens _pmDescription (\ s a -> s{_pmDescription = a})
+
+-- | A list of policies associated with a parameter.
+pmPolicies :: Lens' ParameterMetadata [ParameterInlinePolicy]
+pmPolicies = lens _pmPolicies (\ s a -> s{_pmPolicies = a}) . _Default . _Coerce
 
 instance FromJSON ParameterMetadata where
         parseJSON
@@ -105,11 +123,13 @@ instance FromJSON ParameterMetadata where
                  ParameterMetadata' <$>
                    (x .:? "LastModifiedDate") <*> (x .:? "KeyId") <*>
                      (x .:? "Name")
+                     <*> (x .:? "Tier")
                      <*> (x .:? "Version")
                      <*> (x .:? "LastModifiedUser")
                      <*> (x .:? "AllowedPattern")
                      <*> (x .:? "Type")
-                     <*> (x .:? "Description"))
+                     <*> (x .:? "Description")
+                     <*> (x .:? "Policies" .!= mempty))
 
 instance Hashable ParameterMetadata where
 

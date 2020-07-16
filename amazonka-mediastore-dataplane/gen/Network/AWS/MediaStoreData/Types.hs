@@ -27,6 +27,9 @@ module Network.AWS.MediaStoreData.Types
     -- * StorageClass
     , StorageClass (..)
 
+    -- * UploadAvailability
+    , UploadAvailability (..)
+
     -- * Item
     , Item
     , item
@@ -43,6 +46,7 @@ import Network.AWS.Prelude
 import Network.AWS.Sign.V4
 import Network.AWS.MediaStoreData.Types.ItemType
 import Network.AWS.MediaStoreData.Types.StorageClass
+import Network.AWS.MediaStoreData.Types.UploadAvailability
 import Network.AWS.MediaStoreData.Types.Item
 
 -- | API version @2017-09-01@ of the Amazon Elemental MediaStore Data Plane SDK configuration.
@@ -68,6 +72,11 @@ mediaStoreData
             = Just "throttling_exception"
           | has (hasCode "Throttling" . hasStatus 400) e =
             Just "throttling"
+          | has
+              (hasCode "ProvisionedThroughputExceededException" .
+                 hasStatus 400)
+              e
+            = Just "throughput_exceeded"
           | has (hasStatus 504) e = Just "gateway_timeout"
           | has
               (hasCode "RequestThrottledException" . hasStatus 400)

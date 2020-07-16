@@ -21,6 +21,8 @@
 -- Lists all of the streams in your AWS account.
 --
 --
+--
+-- This operation returns paginated results.
 module Network.AWS.IoT.ListStreams
     (
     -- * Creating a Request
@@ -43,6 +45,7 @@ module Network.AWS.IoT.ListStreams
 import Network.AWS.IoT.Types
 import Network.AWS.IoT.Types.Product
 import Network.AWS.Lens
+import Network.AWS.Pager
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
@@ -80,6 +83,13 @@ lsAscendingOrder = lens _lsAscendingOrder (\ s a -> s{_lsAscendingOrder = a})
 -- | The maximum number of results to return at a time.
 lsMaxResults :: Lens' ListStreams (Maybe Natural)
 lsMaxResults = lens _lsMaxResults (\ s a -> s{_lsMaxResults = a}) . mapping _Nat
+
+instance AWSPager ListStreams where
+        page rq rs
+          | stop (rs ^. lsrsNextToken) = Nothing
+          | stop (rs ^. lsrsStreams) = Nothing
+          | otherwise =
+            Just $ rq & lsNextToken .~ rs ^. lsrsNextToken
 
 instance AWSRequest ListStreams where
         type Rs ListStreams = ListStreamsResponse

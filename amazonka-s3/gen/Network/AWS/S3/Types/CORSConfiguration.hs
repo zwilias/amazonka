@@ -22,7 +22,11 @@ import Network.AWS.Prelude
 import Network.AWS.S3.Internal
 import Network.AWS.S3.Types.CORSRule
 
--- | /See:/ 'corsConfiguration' smart constructor.
+-- | Describes the cross-origin access configuration for objects in an Amazon S3 bucket. For more information, see <https://docs.aws.amazon.com/AmazonS3/latest/dev/cors.html Enabling Cross-Origin Resource Sharing> in the /Amazon Simple Storage Service Developer Guide/ .
+--
+--
+--
+-- /See:/ 'corsConfiguration' smart constructor.
 newtype CORSConfiguration = CORSConfiguration'{_ccCORSRules
                                                :: [CORSRule]}
                               deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -31,13 +35,13 @@ newtype CORSConfiguration = CORSConfiguration'{_ccCORSRules
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'ccCORSRules' - Undocumented member.
+-- * 'ccCORSRules' - A set of origins and methods (cross-origin access that you want to allow). You can add up to 100 rules to the configuration.
 corsConfiguration
     :: CORSConfiguration
 corsConfiguration
   = CORSConfiguration'{_ccCORSRules = mempty}
 
--- | Undocumented member.
+-- | A set of origins and methods (cross-origin access that you want to allow). You can add up to 100 rules to the configuration.
 ccCORSRules :: Lens' CORSConfiguration [CORSRule]
 ccCORSRules = lens _ccCORSRules (\ s a -> s{_ccCORSRules = a}) . _Coerce
 

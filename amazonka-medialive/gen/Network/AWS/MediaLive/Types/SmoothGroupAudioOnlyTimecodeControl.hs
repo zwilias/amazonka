@@ -27,7 +27,7 @@ module Network.AWS.MediaLive.Types.SmoothGroupAudioOnlyTimecodeControl (
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | Placeholder documentation for SmoothGroupAudioOnlyTimecodeControl
+-- | Smooth Group Audio Only Timecode Control
 data SmoothGroupAudioOnlyTimecodeControl = SmoothGroupAudioOnlyTimecodeControl' (CI
                                                                                    Text)
                                              deriving (Eq, Ord, Read, Show,

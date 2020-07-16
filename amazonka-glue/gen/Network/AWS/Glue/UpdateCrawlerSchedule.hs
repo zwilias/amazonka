@@ -55,9 +55,9 @@ data UpdateCrawlerSchedule = UpdateCrawlerSchedule'{_ucsSchedule
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'ucsSchedule' - The updated @cron@ expression used to specify the schedule (see <http://docs.aws.amazon.com/glue/latest/dg/monitor-data-warehouse-schedule.html Time-Based Schedules for Jobs and Crawlers> . For example, to run something every day at 12:15 UTC, you would specify: @cron(15 12 * * ? *)@ .
+-- * 'ucsSchedule' - The updated @cron@ expression used to specify the schedule. For more information, see <http://docs.aws.amazon.com/glue/latest/dg/monitor-data-warehouse-schedule.html Time-Based Schedules for Jobs and Crawlers> . For example, to run something every day at 12:15 UTC, specify @cron(15 12 * * ? *)@ .
 --
--- * 'ucsCrawlerName' - Name of the crawler whose schedule to update.
+-- * 'ucsCrawlerName' - The name of the crawler whose schedule to update.
 updateCrawlerSchedule
     :: Text -- ^ 'ucsCrawlerName'
     -> UpdateCrawlerSchedule
@@ -65,11 +65,11 @@ updateCrawlerSchedule pCrawlerName_
   = UpdateCrawlerSchedule'{_ucsSchedule = Nothing,
                            _ucsCrawlerName = pCrawlerName_}
 
--- | The updated @cron@ expression used to specify the schedule (see <http://docs.aws.amazon.com/glue/latest/dg/monitor-data-warehouse-schedule.html Time-Based Schedules for Jobs and Crawlers> . For example, to run something every day at 12:15 UTC, you would specify: @cron(15 12 * * ? *)@ .
+-- | The updated @cron@ expression used to specify the schedule. For more information, see <http://docs.aws.amazon.com/glue/latest/dg/monitor-data-warehouse-schedule.html Time-Based Schedules for Jobs and Crawlers> . For example, to run something every day at 12:15 UTC, specify @cron(15 12 * * ? *)@ .
 ucsSchedule :: Lens' UpdateCrawlerSchedule (Maybe Text)
 ucsSchedule = lens _ucsSchedule (\ s a -> s{_ucsSchedule = a})
 
--- | Name of the crawler whose schedule to update.
+-- | The name of the crawler whose schedule to update.
 ucsCrawlerName :: Lens' UpdateCrawlerSchedule Text
 ucsCrawlerName = lens _ucsCrawlerName (\ s a -> s{_ucsCrawlerName = a})
 

@@ -21,6 +21,8 @@
 -- Updates a domain recordset after it is created.
 --
 --
+-- The @update domain entry@ operation supports tag-based access control via resource tags applied to the resource identified by @domain name@ . For more information, see the <https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags Lightsail Dev Guide> .
+--
 module Network.AWS.Lightsail.UpdateDomainEntry
     (
     -- * Creating a Request
@@ -125,7 +127,7 @@ data UpdateDomainEntryResponse = UpdateDomainEntryResponse'{_udersOperations
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'udersOperations' - An array of key-value pairs containing information about the request operation.
+-- * 'udersOperations' - An array of objects that describe the result of the action, such as the status of the request, the time stamp of the request, and the resources affected by the request.
 --
 -- * 'udersResponseStatus' - -- | The response status code.
 updateDomainEntryResponse
@@ -136,7 +138,7 @@ updateDomainEntryResponse pResponseStatus_
                                  Nothing,
                                _udersResponseStatus = pResponseStatus_}
 
--- | An array of key-value pairs containing information about the request operation.
+-- | An array of objects that describe the result of the action, such as the status of the request, the time stamp of the request, and the resources affected by the request.
 udersOperations :: Lens' UpdateDomainEntryResponse [Operation]
 udersOperations = lens _udersOperations (\ s a -> s{_udersOperations = a}) . _Default . _Coerce
 

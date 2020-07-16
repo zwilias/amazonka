@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Adds a member to the resource's set of delegates.
+-- Adds a member (user or group) to the resource's set of delegates.
 --
 --
 module Network.AWS.WorkMail.AssociateDelegateToResource
@@ -61,7 +61,7 @@ data AssociateDelegateToResource = AssociateDelegateToResource'{_adtrOrganizatio
 --
 -- * 'adtrOrganizationId' - The organization under which the resource exists.
 --
--- * 'adtrResourceId' - The resource for which members are associated.
+-- * 'adtrResourceId' - The resource for which members (users or groups) are associated.
 --
 -- * 'adtrEntityId' - The member (user or group) to associate to the resource.
 associateDelegateToResource
@@ -80,7 +80,7 @@ associateDelegateToResource pOrganizationId_
 adtrOrganizationId :: Lens' AssociateDelegateToResource Text
 adtrOrganizationId = lens _adtrOrganizationId (\ s a -> s{_adtrOrganizationId = a})
 
--- | The resource for which members are associated.
+-- | The resource for which members (users or groups) are associated.
 adtrResourceId :: Lens' AssociateDelegateToResource Text
 adtrResourceId = lens _adtrResourceId (\ s a -> s{_adtrResourceId = a})
 

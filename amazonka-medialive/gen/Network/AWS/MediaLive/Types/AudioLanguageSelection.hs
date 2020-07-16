@@ -21,7 +21,7 @@ import Network.AWS.Lens
 import Network.AWS.MediaLive.Types.AudioLanguageSelectionPolicy
 import Network.AWS.Prelude
 
--- | Placeholder documentation for AudioLanguageSelection
+-- | Audio Language Selection
 --
 -- /See:/ 'audioLanguageSelection' smart constructor.
 data AudioLanguageSelection = AudioLanguageSelection'{_alsLanguageSelectionPolicy

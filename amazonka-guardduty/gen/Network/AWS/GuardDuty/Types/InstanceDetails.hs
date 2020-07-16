@@ -24,7 +24,9 @@ import Network.AWS.GuardDuty.Types.Tag
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | The information about the EC2 instance associated with the activity that prompted GuardDuty to generate a finding.
+-- | Contains information about the details of an instance.
+--
+--
 --
 -- /See:/ 'instanceDetails' smart constructor.
 data InstanceDetails = InstanceDetails'{_idInstanceId
@@ -33,6 +35,7 @@ data InstanceDetails = InstanceDetails'{_idInstanceId
                                         _idLaunchTime :: !(Maybe Text),
                                         _idNetworkInterfaces ::
                                         !(Maybe [NetworkInterface]),
+                                        _idOutpostARN :: !(Maybe Text),
                                         _idInstanceType :: !(Maybe Text),
                                         _idAvailabilityZone :: !(Maybe Text),
                                         _idIAMInstanceProfile ::
@@ -55,13 +58,15 @@ data InstanceDetails = InstanceDetails'{_idInstanceId
 --
 -- * 'idLaunchTime' - The launch time of the EC2 instance.
 --
--- * 'idNetworkInterfaces' - The network interface information of the EC2 instance.
+-- * 'idNetworkInterfaces' - The elastic network interface information of the EC2 instance.
+--
+-- * 'idOutpostARN' - The Amazon Resource Name (ARN) of the AWS Outpost. Only applicable to AWS Outposts instances.
 --
 -- * 'idInstanceType' - The type of the EC2 instance.
 --
--- * 'idAvailabilityZone' - The availability zone of the EC2 instance.
+-- * 'idAvailabilityZone' - The Availability Zone of the EC2 instance.
 --
--- * 'idIAMInstanceProfile' - Undocumented member.
+-- * 'idIAMInstanceProfile' - The profile information of the EC2 instance.
 --
 -- * 'idImageId' - The image ID of the EC2 instance.
 --
@@ -78,7 +83,7 @@ instanceDetails
   = InstanceDetails'{_idInstanceId = Nothing,
                      _idPlatform = Nothing, _idLaunchTime = Nothing,
                      _idNetworkInterfaces = Nothing,
-                     _idInstanceType = Nothing,
+                     _idOutpostARN = Nothing, _idInstanceType = Nothing,
                      _idAvailabilityZone = Nothing,
                      _idIAMInstanceProfile = Nothing,
                      _idImageId = Nothing, _idProductCodes = Nothing,
@@ -97,19 +102,23 @@ idPlatform = lens _idPlatform (\ s a -> s{_idPlatform = a})
 idLaunchTime :: Lens' InstanceDetails (Maybe Text)
 idLaunchTime = lens _idLaunchTime (\ s a -> s{_idLaunchTime = a})
 
--- | The network interface information of the EC2 instance.
+-- | The elastic network interface information of the EC2 instance.
 idNetworkInterfaces :: Lens' InstanceDetails [NetworkInterface]
 idNetworkInterfaces = lens _idNetworkInterfaces (\ s a -> s{_idNetworkInterfaces = a}) . _Default . _Coerce
+
+-- | The Amazon Resource Name (ARN) of the AWS Outpost. Only applicable to AWS Outposts instances.
+idOutpostARN :: Lens' InstanceDetails (Maybe Text)
+idOutpostARN = lens _idOutpostARN (\ s a -> s{_idOutpostARN = a})
 
 -- | The type of the EC2 instance.
 idInstanceType :: Lens' InstanceDetails (Maybe Text)
 idInstanceType = lens _idInstanceType (\ s a -> s{_idInstanceType = a})
 
--- | The availability zone of the EC2 instance.
+-- | The Availability Zone of the EC2 instance.
 idAvailabilityZone :: Lens' InstanceDetails (Maybe Text)
 idAvailabilityZone = lens _idAvailabilityZone (\ s a -> s{_idAvailabilityZone = a})
 
--- | Undocumented member.
+-- | The profile information of the EC2 instance.
 idIAMInstanceProfile :: Lens' InstanceDetails (Maybe IAMInstanceProfile)
 idIAMInstanceProfile = lens _idIAMInstanceProfile (\ s a -> s{_idIAMInstanceProfile = a})
 
@@ -141,6 +150,7 @@ instance FromJSON InstanceDetails where
                    (x .:? "instanceId") <*> (x .:? "platform") <*>
                      (x .:? "launchTime")
                      <*> (x .:? "networkInterfaces" .!= mempty)
+                     <*> (x .:? "outpostArn")
                      <*> (x .:? "instanceType")
                      <*> (x .:? "availabilityZone")
                      <*> (x .:? "iamInstanceProfile")

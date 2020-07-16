@@ -54,7 +54,7 @@ data UpdateGroup = UpdateGroup'{_ugName ::
 --
 -- * 'ugName' - The name of the definition.
 --
--- * 'ugGroupId' - The ID of the AWS Greengrass group.
+-- * 'ugGroupId' - The ID of the Greengrass group.
 updateGroup
     :: Text -- ^ 'ugGroupId'
     -> UpdateGroup
@@ -66,7 +66,7 @@ updateGroup pGroupId_
 ugName :: Lens' UpdateGroup (Maybe Text)
 ugName = lens _ugName (\ s a -> s{_ugName = a})
 
--- | The ID of the AWS Greengrass group.
+-- | The ID of the Greengrass group.
 ugGroupId :: Lens' UpdateGroup Text
 ugGroupId = lens _ugGroupId (\ s a -> s{_ugGroupId = a})
 

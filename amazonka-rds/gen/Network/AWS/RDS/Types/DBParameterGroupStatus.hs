@@ -25,17 +25,17 @@ import Network.AWS.Prelude
 --
 -- This data type is used as a response element in the following actions:
 --
---     * 'CreateDBInstance' 
+--     * @CreateDBInstance@ 
 --
---     * 'CreateDBInstanceReadReplica' 
+--     * @CreateDBInstanceReadReplica@ 
 --
---     * 'DeleteDBInstance' 
+--     * @DeleteDBInstance@ 
 --
---     * 'ModifyDBInstance' 
+--     * @ModifyDBInstance@ 
 --
---     * 'RebootDBInstance' 
+--     * @RebootDBInstance@ 
 --
---     * 'RestoreDBInstanceFromDBSnapshot' 
+--     * @RestoreDBInstanceFromDBSnapshot@ 
 --
 --
 --
@@ -52,7 +52,7 @@ data DBParameterGroupStatus = DBParameterGroupStatus'{_dpgsDBParameterGroupName
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dpgsDBParameterGroupName' - The name of the DP parameter group.
+-- * 'dpgsDBParameterGroupName' - The name of the DB parameter group.
 --
 -- * 'dpgsParameterApplyStatus' - The status of parameter updates.
 dbParameterGroupStatus
@@ -62,7 +62,7 @@ dbParameterGroupStatus
                               Nothing,
                             _dpgsParameterApplyStatus = Nothing}
 
--- | The name of the DP parameter group.
+-- | The name of the DB parameter group.
 dpgsDBParameterGroupName :: Lens' DBParameterGroupStatus (Maybe Text)
 dpgsDBParameterGroupName = lens _dpgsDBParameterGroupName (\ s a -> s{_dpgsDBParameterGroupName = a})
 

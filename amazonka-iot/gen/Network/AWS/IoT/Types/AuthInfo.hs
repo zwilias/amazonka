@@ -26,39 +26,39 @@ import Network.AWS.Prelude
 --
 --
 -- /See:/ 'authInfo' smart constructor.
-data AuthInfo = AuthInfo'{_aiResources ::
-                          !(Maybe [Text]),
-                          _aiActionType :: !(Maybe ActionType)}
+data AuthInfo = AuthInfo'{_aiActionType ::
+                          !(Maybe ActionType),
+                          _aiResources :: ![Text]}
                   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'AuthInfo' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'aiResources' - The resources for which the principal is being authorized to perform the specified action.
---
 -- * 'aiActionType' - The type of action for which the principal is being authorized.
+--
+-- * 'aiResources' - The resources for which the principal is being authorized to perform the specified action.
 authInfo
     :: AuthInfo
 authInfo
-  = AuthInfo'{_aiResources = Nothing,
-              _aiActionType = Nothing}
-
--- | The resources for which the principal is being authorized to perform the specified action.
-aiResources :: Lens' AuthInfo [Text]
-aiResources = lens _aiResources (\ s a -> s{_aiResources = a}) . _Default . _Coerce
+  = AuthInfo'{_aiActionType = Nothing,
+              _aiResources = mempty}
 
 -- | The type of action for which the principal is being authorized.
 aiActionType :: Lens' AuthInfo (Maybe ActionType)
 aiActionType = lens _aiActionType (\ s a -> s{_aiActionType = a})
+
+-- | The resources for which the principal is being authorized to perform the specified action.
+aiResources :: Lens' AuthInfo [Text]
+aiResources = lens _aiResources (\ s a -> s{_aiResources = a}) . _Coerce
 
 instance FromJSON AuthInfo where
         parseJSON
           = withObject "AuthInfo"
               (\ x ->
                  AuthInfo' <$>
-                   (x .:? "resources" .!= mempty) <*>
-                     (x .:? "actionType"))
+                   (x .:? "actionType") <*>
+                     (x .:? "resources" .!= mempty))
 
 instance Hashable AuthInfo where
 
@@ -68,5 +68,5 @@ instance ToJSON AuthInfo where
         toJSON AuthInfo'{..}
           = object
               (catMaybes
-                 [("resources" .=) <$> _aiResources,
-                  ("actionType" .=) <$> _aiActionType])
+                 [("actionType" .=) <$> _aiActionType,
+                  Just ("resources" .= _aiResources)])

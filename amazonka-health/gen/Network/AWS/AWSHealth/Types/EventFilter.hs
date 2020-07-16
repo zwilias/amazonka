@@ -51,11 +51,11 @@ data EventFilter = EventFilter'{_efEventARNs ::
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'efEventARNs' - A list of event ARNs (unique identifiers). For example: @"arn:aws:health:us-east-1::event/AWS_EC2_MAINTENANCE_5331", "arn:aws:health:us-west-1::event/AWS_EBS_LOST_VOLUME_xyz"@ 
+-- * 'efEventARNs' - A list of event ARNs (unique identifiers). For example: @"arn:aws:health:us-east-1::event/EC2/EC2_INSTANCE_RETIREMENT_SCHEDULED/EC2_INSTANCE_RETIREMENT_SCHEDULED_ABC123-CDE456", "arn:aws:health:us-west-1::event/EBS/AWS_EBS_LOST_VOLUME/AWS_EBS_LOST_VOLUME_CHI789_JKL101"@ 
 --
 -- * 'efEventTypeCategories' - A list of event type category codes (@issue@ , @scheduledChange@ , or @accountNotification@ ).
 --
--- * 'efEventTypeCodes' - A list of unique identifiers for event types. For example, @"AWS_EC2_SYSTEM_MAINTENANCE_EVENT","AWS_RDS_MAINTENANCE_SCHEDULED"@ 
+-- * 'efEventTypeCodes' - A list of unique identifiers for event types. For example, @"AWS_EC2_SYSTEM_MAINTENANCE_EVENT","AWS_RDS_MAINTENANCE_SCHEDULED".@ 
 --
 -- * 'efRegions' - A list of AWS regions.
 --
@@ -88,7 +88,7 @@ eventFilter
                  _efStartTimes = Nothing, _efServices = Nothing,
                  _efTags = Nothing, _efLastUpdatedTimes = Nothing}
 
--- | A list of event ARNs (unique identifiers). For example: @"arn:aws:health:us-east-1::event/AWS_EC2_MAINTENANCE_5331", "arn:aws:health:us-west-1::event/AWS_EBS_LOST_VOLUME_xyz"@ 
+-- | A list of event ARNs (unique identifiers). For example: @"arn:aws:health:us-east-1::event/EC2/EC2_INSTANCE_RETIREMENT_SCHEDULED/EC2_INSTANCE_RETIREMENT_SCHEDULED_ABC123-CDE456", "arn:aws:health:us-west-1::event/EBS/AWS_EBS_LOST_VOLUME/AWS_EBS_LOST_VOLUME_CHI789_JKL101"@ 
 efEventARNs :: Lens' EventFilter (Maybe (NonEmpty Text))
 efEventARNs = lens _efEventARNs (\ s a -> s{_efEventARNs = a}) . mapping _List1
 
@@ -96,7 +96,7 @@ efEventARNs = lens _efEventARNs (\ s a -> s{_efEventARNs = a}) . mapping _List1
 efEventTypeCategories :: Lens' EventFilter (Maybe (NonEmpty EventTypeCategory))
 efEventTypeCategories = lens _efEventTypeCategories (\ s a -> s{_efEventTypeCategories = a}) . mapping _List1
 
--- | A list of unique identifiers for event types. For example, @"AWS_EC2_SYSTEM_MAINTENANCE_EVENT","AWS_RDS_MAINTENANCE_SCHEDULED"@ 
+-- | A list of unique identifiers for event types. For example, @"AWS_EC2_SYSTEM_MAINTENANCE_EVENT","AWS_RDS_MAINTENANCE_SCHEDULED".@ 
 efEventTypeCodes :: Lens' EventFilter (Maybe (NonEmpty Text))
 efEventTypeCodes = lens _efEventTypeCodes (\ s a -> s{_efEventTypeCodes = a}) . mapping _List1
 

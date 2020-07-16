@@ -18,7 +18,9 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Delete an email channel
+-- Disables the email channel for an application and deletes any existing settings for the channel.
+--
+--
 module Network.AWS.Pinpoint.DeleteEmailChannel
     (
     -- * Creating a Request
@@ -52,7 +54,7 @@ newtype DeleteEmailChannel = DeleteEmailChannel'{_decApplicationId
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'decApplicationId' - Undocumented member.
+-- * 'decApplicationId' - The unique identifier for the application. This identifier is displayed as the __Project ID__ on the Amazon Pinpoint console.
 deleteEmailChannel
     :: Text -- ^ 'decApplicationId'
     -> DeleteEmailChannel
@@ -60,7 +62,7 @@ deleteEmailChannel pApplicationId_
   = DeleteEmailChannel'{_decApplicationId =
                           pApplicationId_}
 
--- | Undocumented member.
+-- | The unique identifier for the application. This identifier is displayed as the __Project ID__ on the Amazon Pinpoint console.
 decApplicationId :: Lens' DeleteEmailChannel Text
 decApplicationId = lens _decApplicationId (\ s a -> s{_decApplicationId = a})
 

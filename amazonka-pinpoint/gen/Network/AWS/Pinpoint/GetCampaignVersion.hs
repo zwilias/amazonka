@@ -18,7 +18,9 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Returns information about a specific version of a campaign.
+-- Retrieves information about the status, configuration, and other settings for a specific version of a campaign.
+--
+--
 module Network.AWS.Pinpoint.GetCampaignVersion
     (
     -- * Creating a Request
@@ -56,11 +58,11 @@ data GetCampaignVersion = GetCampaignVersion'{_gtcmpgnvrsnVersion
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'gtcmpgnvrsnVersion' - Undocumented member.
+-- * 'gtcmpgnvrsnVersion' - The unique version number (Version property) for the campaign version.
 --
--- * 'gtcmpgnvrsnApplicationId' - Undocumented member.
+-- * 'gtcmpgnvrsnApplicationId' - The unique identifier for the application. This identifier is displayed as the __Project ID__ on the Amazon Pinpoint console.
 --
--- * 'gtcmpgnvrsnCampaignId' - Undocumented member.
+-- * 'gtcmpgnvrsnCampaignId' - The unique identifier for the campaign.
 getCampaignVersion
     :: Text -- ^ 'gtcmpgnvrsnVersion'
     -> Text -- ^ 'gtcmpgnvrsnApplicationId'
@@ -73,15 +75,15 @@ getCampaignVersion pVersion_ pApplicationId_
                         _gtcmpgnvrsnApplicationId = pApplicationId_,
                         _gtcmpgnvrsnCampaignId = pCampaignId_}
 
--- | Undocumented member.
+-- | The unique version number (Version property) for the campaign version.
 gtcmpgnvrsnVersion :: Lens' GetCampaignVersion Text
 gtcmpgnvrsnVersion = lens _gtcmpgnvrsnVersion (\ s a -> s{_gtcmpgnvrsnVersion = a})
 
--- | Undocumented member.
+-- | The unique identifier for the application. This identifier is displayed as the __Project ID__ on the Amazon Pinpoint console.
 gtcmpgnvrsnApplicationId :: Lens' GetCampaignVersion Text
 gtcmpgnvrsnApplicationId = lens _gtcmpgnvrsnApplicationId (\ s a -> s{_gtcmpgnvrsnApplicationId = a})
 
--- | Undocumented member.
+-- | The unique identifier for the campaign.
 gtcmpgnvrsnCampaignId :: Lens' GetCampaignVersion Text
 gtcmpgnvrsnCampaignId = lens _gtcmpgnvrsnCampaignId (\ s a -> s{_gtcmpgnvrsnCampaignId = a})
 

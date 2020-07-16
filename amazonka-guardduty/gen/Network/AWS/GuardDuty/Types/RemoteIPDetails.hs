@@ -24,7 +24,9 @@ import Network.AWS.GuardDuty.Types.Organization
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | Remote IP information of the connection.
+-- | Contains information about the remote IP address of the connection.
+--
+--
 --
 -- /See:/ 'remoteIPDetails' smart constructor.
 data RemoteIPDetails = RemoteIPDetails'{_ridCountry
@@ -40,15 +42,15 @@ data RemoteIPDetails = RemoteIPDetails'{_ridCountry
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'ridCountry' - Country code of the remote IP address.
+-- * 'ridCountry' - The country code of the remote IP address.
 --
--- * 'ridCity' - City information of the remote IP address.
+-- * 'ridCity' - The city information of the remote IP address.
 --
--- * 'ridIPAddressV4' - IPV4 remote address of the connection.
+-- * 'ridIPAddressV4' - The IPv4 remote address of the connection.
 --
--- * 'ridGeoLocation' - Location information of the remote IP address.
+-- * 'ridGeoLocation' - The location information of the remote IP address.
 --
--- * 'ridOrganization' - ISP Organization information of the remote IP address.
+-- * 'ridOrganization' - The ISP organization information of the remote IP address.
 remoteIPDetails
     :: RemoteIPDetails
 remoteIPDetails
@@ -57,23 +59,23 @@ remoteIPDetails
                      _ridGeoLocation = Nothing,
                      _ridOrganization = Nothing}
 
--- | Country code of the remote IP address.
+-- | The country code of the remote IP address.
 ridCountry :: Lens' RemoteIPDetails (Maybe Country)
 ridCountry = lens _ridCountry (\ s a -> s{_ridCountry = a})
 
--- | City information of the remote IP address.
+-- | The city information of the remote IP address.
 ridCity :: Lens' RemoteIPDetails (Maybe City)
 ridCity = lens _ridCity (\ s a -> s{_ridCity = a})
 
--- | IPV4 remote address of the connection.
+-- | The IPv4 remote address of the connection.
 ridIPAddressV4 :: Lens' RemoteIPDetails (Maybe Text)
 ridIPAddressV4 = lens _ridIPAddressV4 (\ s a -> s{_ridIPAddressV4 = a})
 
--- | Location information of the remote IP address.
+-- | The location information of the remote IP address.
 ridGeoLocation :: Lens' RemoteIPDetails (Maybe GeoLocation)
 ridGeoLocation = lens _ridGeoLocation (\ s a -> s{_ridGeoLocation = a})
 
--- | ISP Organization information of the remote IP address.
+-- | The ISP organization information of the remote IP address.
 ridOrganization :: Lens' RemoteIPDetails (Maybe Organization)
 ridOrganization = lens _ridOrganization (\ s a -> s{_ridOrganization = a})
 

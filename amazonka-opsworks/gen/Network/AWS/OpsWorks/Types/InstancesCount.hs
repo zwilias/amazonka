@@ -66,7 +66,7 @@ data InstancesCount = InstancesCount'{_icTerminating
 --
 -- * 'icRequested' - The number of instances with @requested@ status.
 --
--- * 'icStopFailed' - Undocumented member.
+-- * 'icStopFailed' - The number of instances with @stop_failed@ status.
 --
 -- * 'icBooting' - The number of instances with @booting@ status.
 --
@@ -134,7 +134,7 @@ icRunningSetup = lens _icRunningSetup (\ s a -> s{_icRunningSetup = a})
 icRequested :: Lens' InstancesCount (Maybe Int)
 icRequested = lens _icRequested (\ s a -> s{_icRequested = a})
 
--- | Undocumented member.
+-- | The number of instances with @stop_failed@ status.
 icStopFailed :: Lens' InstancesCount (Maybe Int)
 icStopFailed = lens _icStopFailed (\ s a -> s{_icStopFailed = a})
 

@@ -19,13 +19,13 @@
 module Network.AWS.Glue.Types.JobRunState (
   JobRunState (
     ..
-    , Failed
-    , Running
-    , Starting
-    , Stopped
-    , Stopping
-    , Succeeded
-    , Timeout
+    , JRSFailed
+    , JRSRunning
+    , JRSStarting
+    , JRSStopped
+    , JRSStopping
+    , JRSSucceeded
+    , JRSTimeout
     )
   ) where
 
@@ -36,35 +36,35 @@ data JobRunState = JobRunState' (CI Text)
                      deriving (Eq, Ord, Read, Show, Data, Typeable,
                                Generic)
 
-pattern Failed :: JobRunState
-pattern Failed = JobRunState' "FAILED"
+pattern JRSFailed :: JobRunState
+pattern JRSFailed = JobRunState' "FAILED"
 
-pattern Running :: JobRunState
-pattern Running = JobRunState' "RUNNING"
+pattern JRSRunning :: JobRunState
+pattern JRSRunning = JobRunState' "RUNNING"
 
-pattern Starting :: JobRunState
-pattern Starting = JobRunState' "STARTING"
+pattern JRSStarting :: JobRunState
+pattern JRSStarting = JobRunState' "STARTING"
 
-pattern Stopped :: JobRunState
-pattern Stopped = JobRunState' "STOPPED"
+pattern JRSStopped :: JobRunState
+pattern JRSStopped = JobRunState' "STOPPED"
 
-pattern Stopping :: JobRunState
-pattern Stopping = JobRunState' "STOPPING"
+pattern JRSStopping :: JobRunState
+pattern JRSStopping = JobRunState' "STOPPING"
 
-pattern Succeeded :: JobRunState
-pattern Succeeded = JobRunState' "SUCCEEDED"
+pattern JRSSucceeded :: JobRunState
+pattern JRSSucceeded = JobRunState' "SUCCEEDED"
 
-pattern Timeout :: JobRunState
-pattern Timeout = JobRunState' "TIMEOUT"
+pattern JRSTimeout :: JobRunState
+pattern JRSTimeout = JobRunState' "TIMEOUT"
 
 {-# COMPLETE
-  Failed,
-  Running,
-  Starting,
-  Stopped,
-  Stopping,
-  Succeeded,
-  Timeout,
+  JRSFailed,
+  JRSRunning,
+  JRSStarting,
+  JRSStopped,
+  JRSStopping,
+  JRSSucceeded,
+  JRSTimeout,
   JobRunState' #-}
 
 instance FromText JobRunState where
@@ -79,30 +79,30 @@ instance ToText JobRunState where
 --   fromEnum is a partial function, and will error on values unknown at generation time.
 instance Enum JobRunState where
     toEnum i = case i of
-        0 -> Failed
-        1 -> Running
-        2 -> Starting
-        3 -> Stopped
-        4 -> Stopping
-        5 -> Succeeded
-        6 -> Timeout
+        0 -> JRSFailed
+        1 -> JRSRunning
+        2 -> JRSStarting
+        3 -> JRSStopped
+        4 -> JRSStopping
+        5 -> JRSSucceeded
+        6 -> JRSTimeout
         _ -> (error . showText) $ "Unknown index for JobRunState: " <> toText i
     fromEnum x = case x of
-        Failed -> 0
-        Running -> 1
-        Starting -> 2
-        Stopped -> 3
-        Stopping -> 4
-        Succeeded -> 5
-        Timeout -> 6
+        JRSFailed -> 0
+        JRSRunning -> 1
+        JRSStarting -> 2
+        JRSStopped -> 3
+        JRSStopping -> 4
+        JRSSucceeded -> 5
+        JRSTimeout -> 6
         JobRunState' name -> (error . showText) $ "Unknown JobRunState: " <> original name
 
 -- | Represents the bounds of /known/ $JobRunState.
 --   AWS may have added more since the source was generated.
 --   This instance exists only for backward compatibility.
 instance Bounded JobRunState where
-    minBound = Failed
-    maxBound = Timeout
+    minBound = JRSFailed
+    maxBound = JRSTimeout
 
 instance Hashable     JobRunState
 instance NFData       JobRunState

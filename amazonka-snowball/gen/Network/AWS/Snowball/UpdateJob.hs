@@ -77,11 +77,11 @@ data UpdateJob = UpdateJob'{_ujNotification ::
 --
 -- * 'ujShippingOption' - The updated shipping option value of this job's 'ShippingDetails' object.
 --
--- * 'ujResources' - The updated 'S3Resource' object (for a single Amazon S3 bucket or key range), or the updated 'JobResource' object (for multiple buckets or key ranges). 
+-- * 'ujResources' - The updated @JobResource@ object, or the updated 'JobResource' object. 
 --
 -- * 'ujDescription' - The updated description of this job's 'JobMetadata' object.
 --
--- * 'ujRoleARN' - The new role Amazon Resource Name (ARN) that you want to associate with this job. To create a role ARN, use the <http://docs.aws.amazon.com/IAM/latest/APIReference/API_CreateRole.html CreateRole> AWS Identity and Access Management (IAM) API action.
+-- * 'ujRoleARN' - The new role Amazon Resource Name (ARN) that you want to associate with this job. To create a role ARN, use the <https://docs.aws.amazon.com/IAM/latest/APIReference/API_CreateRole.html CreateRole> AWS Identity and Access Management (IAM) API action.
 --
 -- * 'ujSnowballCapacityPreference' - The updated @SnowballCapacityPreference@ of this job's 'JobMetadata' object. The 50 TB Snowballs are only available in the US regions.
 --
@@ -114,7 +114,7 @@ ujAddressId = lens _ujAddressId (\ s a -> s{_ujAddressId = a})
 ujShippingOption :: Lens' UpdateJob (Maybe ShippingOption)
 ujShippingOption = lens _ujShippingOption (\ s a -> s{_ujShippingOption = a})
 
--- | The updated 'S3Resource' object (for a single Amazon S3 bucket or key range), or the updated 'JobResource' object (for multiple buckets or key ranges). 
+-- | The updated @JobResource@ object, or the updated 'JobResource' object. 
 ujResources :: Lens' UpdateJob (Maybe JobResource)
 ujResources = lens _ujResources (\ s a -> s{_ujResources = a})
 
@@ -122,7 +122,7 @@ ujResources = lens _ujResources (\ s a -> s{_ujResources = a})
 ujDescription :: Lens' UpdateJob (Maybe Text)
 ujDescription = lens _ujDescription (\ s a -> s{_ujDescription = a})
 
--- | The new role Amazon Resource Name (ARN) that you want to associate with this job. To create a role ARN, use the <http://docs.aws.amazon.com/IAM/latest/APIReference/API_CreateRole.html CreateRole> AWS Identity and Access Management (IAM) API action.
+-- | The new role Amazon Resource Name (ARN) that you want to associate with this job. To create a role ARN, use the <https://docs.aws.amazon.com/IAM/latest/APIReference/API_CreateRole.html CreateRole> AWS Identity and Access Management (IAM) API action.
 ujRoleARN :: Lens' UpdateJob (Maybe Text)
 ujRoleARN = lens _ujRoleARN (\ s a -> s{_ujRoleARN = a})
 

@@ -37,6 +37,8 @@ data JobProcessDetails = JobProcessDetails'{_jpdNumberOfRemovedThings
                                             !(Maybe Int),
                                             _jpdNumberOfCanceledThings ::
                                             !(Maybe Int),
+                                            _jpdNumberOfTimedOutThings ::
+                                            !(Maybe Int),
                                             _jpdNumberOfRejectedThings ::
                                             !(Maybe Int),
                                             _jpdProcessingTargets ::
@@ -59,9 +61,11 @@ data JobProcessDetails = JobProcessDetails'{_jpdNumberOfRemovedThings
 --
 -- * 'jpdNumberOfCanceledThings' - The number of things that cancelled the job.
 --
+-- * 'jpdNumberOfTimedOutThings' - The number of things whose job execution status is @TIMED_OUT@ .
+--
 -- * 'jpdNumberOfRejectedThings' - The number of things that rejected the job.
 --
--- * 'jpdProcessingTargets' - The devices on which the job is executing.
+-- * 'jpdProcessingTargets' - The target devices to which the job execution is being rolled out. This value will be null after the job execution has finished rolling out to all the target devices.
 jobProcessDetails
     :: JobProcessDetails
 jobProcessDetails
@@ -72,6 +76,7 @@ jobProcessDetails
                        _jpdNumberOfSucceededThings = Nothing,
                        _jpdNumberOfInProgressThings = Nothing,
                        _jpdNumberOfCanceledThings = Nothing,
+                       _jpdNumberOfTimedOutThings = Nothing,
                        _jpdNumberOfRejectedThings = Nothing,
                        _jpdProcessingTargets = Nothing}
 
@@ -99,11 +104,15 @@ jpdNumberOfInProgressThings = lens _jpdNumberOfInProgressThings (\ s a -> s{_jpd
 jpdNumberOfCanceledThings :: Lens' JobProcessDetails (Maybe Int)
 jpdNumberOfCanceledThings = lens _jpdNumberOfCanceledThings (\ s a -> s{_jpdNumberOfCanceledThings = a})
 
+-- | The number of things whose job execution status is @TIMED_OUT@ .
+jpdNumberOfTimedOutThings :: Lens' JobProcessDetails (Maybe Int)
+jpdNumberOfTimedOutThings = lens _jpdNumberOfTimedOutThings (\ s a -> s{_jpdNumberOfTimedOutThings = a})
+
 -- | The number of things that rejected the job.
 jpdNumberOfRejectedThings :: Lens' JobProcessDetails (Maybe Int)
 jpdNumberOfRejectedThings = lens _jpdNumberOfRejectedThings (\ s a -> s{_jpdNumberOfRejectedThings = a})
 
--- | The devices on which the job is executing.
+-- | The target devices to which the job execution is being rolled out. This value will be null after the job execution has finished rolling out to all the target devices.
 jpdProcessingTargets :: Lens' JobProcessDetails [Text]
 jpdProcessingTargets = lens _jpdProcessingTargets (\ s a -> s{_jpdProcessingTargets = a}) . _Default . _Coerce
 
@@ -118,6 +127,7 @@ instance FromJSON JobProcessDetails where
                      <*> (x .:? "numberOfSucceededThings")
                      <*> (x .:? "numberOfInProgressThings")
                      <*> (x .:? "numberOfCanceledThings")
+                     <*> (x .:? "numberOfTimedOutThings")
                      <*> (x .:? "numberOfRejectedThings")
                      <*> (x .:? "processingTargets" .!= mempty))
 

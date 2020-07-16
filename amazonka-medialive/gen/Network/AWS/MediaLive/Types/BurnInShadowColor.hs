@@ -28,7 +28,7 @@ module Network.AWS.MediaLive.Types.BurnInShadowColor (
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | Placeholder documentation for BurnInShadowColor
+-- | Burn In Shadow Color
 data BurnInShadowColor = BurnInShadowColor' (CI Text)
                            deriving (Eq, Ord, Read, Show, Data, Typeable,
                                      Generic)

@@ -27,7 +27,9 @@ import Network.AWS.Prelude
 -- /See:/ 'certificate' smart constructor.
 data Certificate = Certificate'{_cCertificateType ::
                                 !(Maybe Text),
+                                _cCustomerOverride :: !(Maybe Bool),
                                 _cCertificateARN :: !(Maybe Text),
+                                _cCustomerOverrideValidTill :: !(Maybe ISO8601),
                                 _cValidTill :: !(Maybe ISO8601),
                                 _cCertificateIdentifier :: !(Maybe Text),
                                 _cThumbprint :: !(Maybe Text),
@@ -40,7 +42,11 @@ data Certificate = Certificate'{_cCertificateType ::
 --
 -- * 'cCertificateType' - The type of the certificate.
 --
+-- * 'cCustomerOverride' - Whether there is an override for the default certificate identifier.
+--
 -- * 'cCertificateARN' - The Amazon Resource Name (ARN) for the certificate.
+--
+-- * 'cCustomerOverrideValidTill' - If there is an override for the default certificate identifier, when the override expires.
 --
 -- * 'cValidTill' - The final date that the certificate continues to be valid.
 --
@@ -53,7 +59,10 @@ certificate
     :: Certificate
 certificate
   = Certificate'{_cCertificateType = Nothing,
-                 _cCertificateARN = Nothing, _cValidTill = Nothing,
+                 _cCustomerOverride = Nothing,
+                 _cCertificateARN = Nothing,
+                 _cCustomerOverrideValidTill = Nothing,
+                 _cValidTill = Nothing,
                  _cCertificateIdentifier = Nothing,
                  _cThumbprint = Nothing, _cValidFrom = Nothing}
 
@@ -61,9 +70,17 @@ certificate
 cCertificateType :: Lens' Certificate (Maybe Text)
 cCertificateType = lens _cCertificateType (\ s a -> s{_cCertificateType = a})
 
+-- | Whether there is an override for the default certificate identifier.
+cCustomerOverride :: Lens' Certificate (Maybe Bool)
+cCustomerOverride = lens _cCustomerOverride (\ s a -> s{_cCustomerOverride = a})
+
 -- | The Amazon Resource Name (ARN) for the certificate.
 cCertificateARN :: Lens' Certificate (Maybe Text)
 cCertificateARN = lens _cCertificateARN (\ s a -> s{_cCertificateARN = a})
+
+-- | If there is an override for the default certificate identifier, when the override expires.
+cCustomerOverrideValidTill :: Lens' Certificate (Maybe UTCTime)
+cCustomerOverrideValidTill = lens _cCustomerOverrideValidTill (\ s a -> s{_cCustomerOverrideValidTill = a}) . mapping _Time
 
 -- | The final date that the certificate continues to be valid.
 cValidTill :: Lens' Certificate (Maybe UTCTime)
@@ -85,7 +102,9 @@ instance FromXML Certificate where
         parseXML x
           = Certificate' <$>
               (x .@? "CertificateType") <*>
-                (x .@? "CertificateArn")
+                (x .@? "CustomerOverride")
+                <*> (x .@? "CertificateArn")
+                <*> (x .@? "CustomerOverrideValidTill")
                 <*> (x .@? "ValidTill")
                 <*> (x .@? "CertificateIdentifier")
                 <*> (x .@? "Thumbprint")

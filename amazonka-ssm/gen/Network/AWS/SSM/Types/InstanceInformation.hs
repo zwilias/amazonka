@@ -73,7 +73,7 @@ data InstanceInformation = InstanceInformation'{_iiInstanceId
 --
 -- * 'iiInstanceId' - The instance ID. 
 --
--- * 'iiPingStatus' - Connection status of the SSM Agent. 
+-- * 'iiPingStatus' - Connection status of SSM Agent. 
 --
 -- * 'iiIPAddress' - The IP address of the managed instance.
 --
@@ -83,9 +83,9 @@ data InstanceInformation = InstanceInformation'{_iiInstanceId
 --
 -- * 'iiPlatformVersion' - The version of the OS platform running on your instance. 
 --
--- * 'iiIsLatestVersion' - Indicates whether latest version of the SSM Agent is running on your instance. Some older versions of Windows Server use the EC2Config service to process SSM requests. For this reason, this field does not indicate whether or not the latest version is installed on Windows managed instances.
+-- * 'iiIsLatestVersion' - Indicates whether the latest version of SSM Agent is running on your Linux Managed Instance. This field does not indicate whether or not the latest version is installed on Windows managed instances, because some older versions of Windows Server use the EC2Config service to process SSM requests.
 --
--- * 'iiAgentVersion' - The version of the SSM Agent running on your Linux instance. 
+-- * 'iiAgentVersion' - The version of SSM Agent running on your Linux instance. 
 --
 -- * 'iiLastPingDateTime' - The date and time when agent last pinged Systems Manager service. 
 --
@@ -101,13 +101,13 @@ data InstanceInformation = InstanceInformation'{_iiInstanceId
 --
 -- * 'iiAssociationStatus' - The status of the association.
 --
--- * 'iiLastAssociationExecutionDate' - The date the association was last executed.
+-- * 'iiLastAssociationExecutionDate' - The date the association was last run.
 --
 -- * 'iiPlatformName' - The name of the operating system platform running on your instance. 
 --
 -- * 'iiComputerName' - The fully qualified host name of the managed instance.
 --
--- * 'iiIAMRole' - The Amazon Identity and Access Management (IAM) role assigned to EC2 instances or managed instances. 
+-- * 'iiIAMRole' - The Amazon Identity and Access Management (IAM) role assigned to the on-premises Systems Manager managed instances. This call does not return the IAM role for EC2 instances. 
 instanceInformation
     :: InstanceInformation
 instanceInformation
@@ -132,7 +132,7 @@ instanceInformation
 iiInstanceId :: Lens' InstanceInformation (Maybe Text)
 iiInstanceId = lens _iiInstanceId (\ s a -> s{_iiInstanceId = a})
 
--- | Connection status of the SSM Agent. 
+-- | Connection status of SSM Agent. 
 iiPingStatus :: Lens' InstanceInformation (Maybe PingStatus)
 iiPingStatus = lens _iiPingStatus (\ s a -> s{_iiPingStatus = a})
 
@@ -152,11 +152,11 @@ iiRegistrationDate = lens _iiRegistrationDate (\ s a -> s{_iiRegistrationDate = 
 iiPlatformVersion :: Lens' InstanceInformation (Maybe Text)
 iiPlatformVersion = lens _iiPlatformVersion (\ s a -> s{_iiPlatformVersion = a})
 
--- | Indicates whether latest version of the SSM Agent is running on your instance. Some older versions of Windows Server use the EC2Config service to process SSM requests. For this reason, this field does not indicate whether or not the latest version is installed on Windows managed instances.
+-- | Indicates whether the latest version of SSM Agent is running on your Linux Managed Instance. This field does not indicate whether or not the latest version is installed on Windows managed instances, because some older versions of Windows Server use the EC2Config service to process SSM requests.
 iiIsLatestVersion :: Lens' InstanceInformation (Maybe Bool)
 iiIsLatestVersion = lens _iiIsLatestVersion (\ s a -> s{_iiIsLatestVersion = a})
 
--- | The version of the SSM Agent running on your Linux instance. 
+-- | The version of SSM Agent running on your Linux instance. 
 iiAgentVersion :: Lens' InstanceInformation (Maybe Text)
 iiAgentVersion = lens _iiAgentVersion (\ s a -> s{_iiAgentVersion = a})
 
@@ -188,7 +188,7 @@ iiAssociationOverview = lens _iiAssociationOverview (\ s a -> s{_iiAssociationOv
 iiAssociationStatus :: Lens' InstanceInformation (Maybe Text)
 iiAssociationStatus = lens _iiAssociationStatus (\ s a -> s{_iiAssociationStatus = a})
 
--- | The date the association was last executed.
+-- | The date the association was last run.
 iiLastAssociationExecutionDate :: Lens' InstanceInformation (Maybe UTCTime)
 iiLastAssociationExecutionDate = lens _iiLastAssociationExecutionDate (\ s a -> s{_iiLastAssociationExecutionDate = a}) . mapping _Time
 
@@ -200,7 +200,7 @@ iiPlatformName = lens _iiPlatformName (\ s a -> s{_iiPlatformName = a})
 iiComputerName :: Lens' InstanceInformation (Maybe Text)
 iiComputerName = lens _iiComputerName (\ s a -> s{_iiComputerName = a})
 
--- | The Amazon Identity and Access Management (IAM) role assigned to EC2 instances or managed instances. 
+-- | The Amazon Identity and Access Management (IAM) role assigned to the on-premises Systems Manager managed instances. This call does not return the IAM role for EC2 instances. 
 iiIAMRole :: Lens' InstanceInformation (Maybe Text)
 iiIAMRole = lens _iiIAMRole (\ s a -> s{_iiIAMRole = a})
 

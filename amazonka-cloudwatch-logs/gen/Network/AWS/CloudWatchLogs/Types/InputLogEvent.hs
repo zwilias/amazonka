@@ -34,7 +34,7 @@ data InputLogEvent = InputLogEvent'{_ileTimestamp ::
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'ileTimestamp' - The time the event occurred, expressed as the number of milliseconds fter Jan 1, 1970 00:00:00 UTC.
+-- * 'ileTimestamp' - The time the event occurred, expressed as the number of milliseconds after Jan 1, 1970 00:00:00 UTC.
 --
 -- * 'ileMessage' - The raw event message.
 inputLogEvent
@@ -45,7 +45,7 @@ inputLogEvent pTimestamp_ pMessage_
   = InputLogEvent'{_ileTimestamp = _Nat # pTimestamp_,
                    _ileMessage = pMessage_}
 
--- | The time the event occurred, expressed as the number of milliseconds fter Jan 1, 1970 00:00:00 UTC.
+-- | The time the event occurred, expressed as the number of milliseconds after Jan 1, 1970 00:00:00 UTC.
 ileTimestamp :: Lens' InputLogEvent Natural
 ileTimestamp = lens _ileTimestamp (\ s a -> s{_ileTimestamp = a}) . _Nat
 

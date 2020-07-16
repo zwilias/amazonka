@@ -20,7 +20,7 @@ module Network.AWS.CloudWatchEvents.Types.Tag where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | A key-value pair associated with an AWS resource. In EventBridge, rules support tagging.
+-- | A key-value pair associated with an AWS resource. In EventBridge, rules and event buses support tagging.
 --
 --
 --
@@ -32,7 +32,7 @@ data Tag = Tag'{_tagKey :: !Text, _tagValue :: !Text}
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'tagKey' - A string that you can use to assign a value. The combination of tag keys and values can help you organize and categorize your resources.
+-- * 'tagKey' - A string you can use to assign a value. The combination of tag keys and values can help you organize and categorize your resources.
 --
 -- * 'tagValue' - The value for the specified tag key.
 tag
@@ -42,7 +42,7 @@ tag
 tag pKey_ pValue_
   = Tag'{_tagKey = pKey_, _tagValue = pValue_}
 
--- | A string that you can use to assign a value. The combination of tag keys and values can help you organize and categorize your resources.
+-- | A string you can use to assign a value. The combination of tag keys and values can help you organize and categorize your resources.
 tagKey :: Lens' Tag Text
 tagKey = lens _tagKey (\ s a -> s{_tagKey = a})
 

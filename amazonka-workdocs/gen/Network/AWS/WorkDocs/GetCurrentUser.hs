@@ -21,6 +21,8 @@
 -- Retrieves details of the current user for whom the authentication token was generated. This is not a valid action for SigV4 (administrative API) clients.
 --
 --
+-- This action requires an authentication token. To get an authentication token, register an application with Amazon WorkDocs. For more information, see <https://docs.aws.amazon.com/workdocs/latest/developerguide/wd-auth-user.html Authentication and Access Control for User Applications> in the /Amazon WorkDocs Developer Guide/ .
+--
 module Network.AWS.WorkDocs.GetCurrentUser
     (
     -- * Creating a Request
@@ -53,7 +55,7 @@ newtype GetCurrentUser = GetCurrentUser'{_gcuAuthenticationToken
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'gcuAuthenticationToken' - Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.
+-- * 'gcuAuthenticationToken' - Amazon WorkDocs authentication token.
 getCurrentUser
     :: Text -- ^ 'gcuAuthenticationToken'
     -> GetCurrentUser
@@ -61,7 +63,7 @@ getCurrentUser pAuthenticationToken_
   = GetCurrentUser'{_gcuAuthenticationToken =
                       _Sensitive # pAuthenticationToken_}
 
--- | Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.
+-- | Amazon WorkDocs authentication token.
 gcuAuthenticationToken :: Lens' GetCurrentUser Text
 gcuAuthenticationToken = lens _gcuAuthenticationToken (\ s a -> s{_gcuAuthenticationToken = a}) . _Sensitive
 

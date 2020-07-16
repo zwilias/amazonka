@@ -20,7 +20,7 @@ module Network.AWS.RDS.Types.DBParameterGroupNameMessage where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | Contains the result of a successful invocation of the 'ModifyDBParameterGroup' or 'ResetDBParameterGroup' action. 
+-- | Contains the result of a successful invocation of the @ModifyDBParameterGroup@ or @ResetDBParameterGroup@ action. 
 --
 --
 --

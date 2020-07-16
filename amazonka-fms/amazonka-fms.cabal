@@ -53,15 +53,23 @@ library
         , Network.AWS.FMS.GetComplianceDetail
         , Network.AWS.FMS.GetNotificationChannel
         , Network.AWS.FMS.GetPolicy
+        , Network.AWS.FMS.GetProtectionStatus
         , Network.AWS.FMS.ListComplianceStatus
+        , Network.AWS.FMS.ListMemberAccounts
         , Network.AWS.FMS.ListPolicies
+        , Network.AWS.FMS.ListTagsForResource
         , Network.AWS.FMS.PutNotificationChannel
         , Network.AWS.FMS.PutPolicy
+        , Network.AWS.FMS.TagResource
         , Network.AWS.FMS.Types
+        , Network.AWS.FMS.UntagResource
         , Network.AWS.FMS.Waiters
 
     other-modules:
-          Network.AWS.FMS.Types.ComplianceViolator
+          Network.AWS.FMS.Types.AccountRoleStatus
+        , Network.AWS.FMS.Types.ComplianceViolator
+        , Network.AWS.FMS.Types.CustomerPolicyScopeIdType
+        , Network.AWS.FMS.Types.DependentServiceName
         , Network.AWS.FMS.Types.EvaluationResult
         , Network.AWS.FMS.Types.Policy
         , Network.AWS.FMS.Types.PolicyComplianceDetail
@@ -72,6 +80,7 @@ library
         , Network.AWS.FMS.Types.ResourceTag
         , Network.AWS.FMS.Types.SecurityServicePolicyData
         , Network.AWS.FMS.Types.SecurityServiceType
+        , Network.AWS.FMS.Types.Tag
         , Network.AWS.FMS.Types.ViolationReason
 
     build-depends:

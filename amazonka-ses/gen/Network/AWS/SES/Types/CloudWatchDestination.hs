@@ -24,7 +24,7 @@ import Network.AWS.SES.Types.CloudWatchDimensionConfiguration
 -- | Contains information associated with an Amazon CloudWatch event destination to which email sending events are published.
 --
 --
--- Event destinations, such as Amazon CloudWatch, are associated with configuration sets, which enable you to publish email sending events. For information about using configuration sets, see the <http://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html Amazon SES Developer Guide> .
+-- Event destinations, such as Amazon CloudWatch, are associated with configuration sets, which enable you to publish email sending events. For information about using configuration sets, see the <https://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html Amazon SES Developer Guide> .
 --
 --
 -- /See:/ 'cloudWatchDestination' smart constructor.

@@ -22,7 +22,11 @@ import Network.AWS.Prelude
 import Network.AWS.S3.Internal
 import Network.AWS.S3.Types.Tier
 
--- | /See:/ 'glacierJobParameters' smart constructor.
+-- | Container for Glacier job parameters.
+--
+--
+--
+-- /See:/ 'glacierJobParameters' smart constructor.
 newtype GlacierJobParameters = GlacierJobParameters'{_gjpTier
                                                      :: Tier}
                                  deriving (Eq, Read, Show, Data, Typeable,

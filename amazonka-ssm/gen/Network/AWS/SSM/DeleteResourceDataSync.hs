@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Deletes a Resource Data Sync configuration. After the configuration is deleted, changes to inventory data on managed instances are no longer synced with the target Amazon S3 bucket. Deleting a sync configuration does not delete data in the target Amazon S3 bucket.
+-- Deletes a Resource Data Sync configuration. After the configuration is deleted, changes to data on managed instances are no longer synced to or from the target. Deleting a sync configuration does not delete data.
 --
 --
 module Network.AWS.SSM.DeleteResourceDataSync
@@ -27,6 +27,7 @@ module Network.AWS.SSM.DeleteResourceDataSync
       deleteResourceDataSync
     , DeleteResourceDataSync
     -- * Request Lenses
+    , drdsSyncType
     , drdsSyncName
 
     -- * Destructuring the Response
@@ -44,21 +45,29 @@ import Network.AWS.SSM.Types
 import Network.AWS.SSM.Types.Product
 
 -- | /See:/ 'deleteResourceDataSync' smart constructor.
-newtype DeleteResourceDataSync = DeleteResourceDataSync'{_drdsSyncName
-                                                         :: Text}
-                                   deriving (Eq, Read, Show, Data, Typeable,
-                                             Generic)
+data DeleteResourceDataSync = DeleteResourceDataSync'{_drdsSyncType
+                                                      :: !(Maybe Text),
+                                                      _drdsSyncName :: !Text}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'DeleteResourceDataSync' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'drdsSyncType' - Specify the type of resource data sync to delete.
 --
 -- * 'drdsSyncName' - The name of the configuration to delete.
 deleteResourceDataSync
     :: Text -- ^ 'drdsSyncName'
     -> DeleteResourceDataSync
 deleteResourceDataSync pSyncName_
-  = DeleteResourceDataSync'{_drdsSyncName = pSyncName_}
+  = DeleteResourceDataSync'{_drdsSyncType = Nothing,
+                            _drdsSyncName = pSyncName_}
+
+-- | Specify the type of resource data sync to delete.
+drdsSyncType :: Lens' DeleteResourceDataSync (Maybe Text)
+drdsSyncType = lens _drdsSyncType (\ s a -> s{_drdsSyncType = a})
 
 -- | The name of the configuration to delete.
 drdsSyncName :: Lens' DeleteResourceDataSync Text
@@ -90,7 +99,9 @@ instance ToHeaders DeleteResourceDataSync where
 instance ToJSON DeleteResourceDataSync where
         toJSON DeleteResourceDataSync'{..}
           = object
-              (catMaybes [Just ("SyncName" .= _drdsSyncName)])
+              (catMaybes
+                 [("SyncType" .=) <$> _drdsSyncType,
+                  Just ("SyncName" .= _drdsSyncName)])
 
 instance ToPath DeleteResourceDataSync where
         toPath = const "/"

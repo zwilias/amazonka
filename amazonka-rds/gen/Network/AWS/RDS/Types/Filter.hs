@@ -25,13 +25,15 @@ import Network.AWS.Prelude
 --
 -- The following actions can be filtered:
 --
---     * 'DescribeDBClusterBacktracks' 
+--     * @DescribeDBClusterBacktracks@ 
 --
---     * 'DescribeDBClusters' 
+--     * @DescribeDBClusterEndpoints@ 
 --
---     * 'DescribeDBInstances' 
+--     * @DescribeDBClusters@ 
 --
---     * 'DescribePendingMaintenanceActions' 
+--     * @DescribeDBInstances@ 
+--
+--     * @DescribePendingMaintenanceActions@ 
 --
 --
 --

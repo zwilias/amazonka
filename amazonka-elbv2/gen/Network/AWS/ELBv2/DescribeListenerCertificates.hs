@@ -18,9 +18,15 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Describes the certificates for the specified secure listener.
+-- Describes the default certificate and the certificate list for the specified HTTPS or TLS listener.
 --
 --
+-- If the default certificate is also in the certificate list, it appears twice in the results (once with @IsDefault@ set to true and once with @IsDefault@ set to false).
+--
+-- For more information, see <https://docs.aws.amazon.com/elasticloadbalancing/latest/application/create-https-listener.html#https-listener-certificates SSL Certificates> in the /Application Load Balancers Guide/ .
+--
+--
+-- This operation returns paginated results.
 module Network.AWS.ELBv2.DescribeListenerCertificates
     (
     -- * Creating a Request
@@ -43,6 +49,7 @@ module Network.AWS.ELBv2.DescribeListenerCertificates
 import Network.AWS.ELBv2.Types
 import Network.AWS.ELBv2.Types.Product
 import Network.AWS.Lens
+import Network.AWS.Pager
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
@@ -87,6 +94,13 @@ dlcPageSize = lens _dlcPageSize (\ s a -> s{_dlcPageSize = a}) . mapping _Nat
 -- | The Amazon Resource Names (ARN) of the listener.
 dlcListenerARN :: Lens' DescribeListenerCertificates Text
 dlcListenerARN = lens _dlcListenerARN (\ s a -> s{_dlcListenerARN = a})
+
+instance AWSPager DescribeListenerCertificates where
+        page rq rs
+          | stop (rs ^. dlcrsNextMarker) = Nothing
+          | stop (rs ^. dlcrsCertificates) = Nothing
+          | otherwise =
+            Just $ rq & dlcMarker .~ rs ^. dlcrsNextMarker
 
 instance AWSRequest DescribeListenerCertificates
          where
@@ -143,7 +157,7 @@ data DescribeListenerCertificatesResponse = DescribeListenerCertificatesResponse
 --
 -- * 'dlcrsCertificates' - Information about the certificates.
 --
--- * 'dlcrsNextMarker' - The marker to use when requesting the next set of results. If there are no additional results, the string is empty.
+-- * 'dlcrsNextMarker' - If there are additional results, this is the marker for the next set of results. Otherwise, this is null.
 --
 -- * 'dlcrsResponseStatus' - -- | The response status code.
 describeListenerCertificatesResponse
@@ -160,7 +174,7 @@ describeListenerCertificatesResponse pResponseStatus_
 dlcrsCertificates :: Lens' DescribeListenerCertificatesResponse [Certificate]
 dlcrsCertificates = lens _dlcrsCertificates (\ s a -> s{_dlcrsCertificates = a}) . _Default . _Coerce
 
--- | The marker to use when requesting the next set of results. If there are no additional results, the string is empty.
+-- | If there are additional results, this is the marker for the next set of results. Otherwise, this is null.
 dlcrsNextMarker :: Lens' DescribeListenerCertificatesResponse (Maybe Text)
 dlcrsNextMarker = lens _dlcrsNextMarker (\ s a -> s{_dlcrsNextMarker = a})
 

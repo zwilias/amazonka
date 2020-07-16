@@ -21,7 +21,9 @@ import Network.AWS.Lens
 import Network.AWS.Pinpoint.Types.SetDimension
 import Network.AWS.Prelude
 
--- | Segment demographic dimensions
+-- | Specifies demographic-based dimension settings for including or excluding endpoints from a segment. These settings derive from characteristics of endpoint devices, such as platform, make, and model.
+--
+--
 --
 -- /See:/ 'segmentDemographics' smart constructor.
 data SegmentDemographics = SegmentDemographics'{_sdPlatform

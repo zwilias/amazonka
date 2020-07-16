@@ -28,7 +28,7 @@ module Network.AWS.MediaConvert.Types.AfdSignaling (
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | This setting only applies to H.264 and MPEG2 outputs. Use Insert AFD signaling (AfdSignaling) to whether there are AFD values in the output video data and what those values are. * Choose None to remove all AFD values from this output. * Choose Fixed to ignore input AFD values and instead encode the value specified in the job. * Choose Auto to calculate output AFD values based on the input AFD scaler data.
+-- | This setting only applies to H.264, H.265, and MPEG2 outputs. Use Insert AFD signaling (AfdSignaling) to specify whether the service includes AFD values in the output video data and what those values are. * Choose None to remove all AFD values from this output. * Choose Fixed to ignore input AFD values and instead encode the value specified in the job. * Choose Auto to calculate output AFD values based on the input AFD scaler data.
 data AfdSignaling = AfdSignaling' (CI Text)
                       deriving (Eq, Ord, Read, Show, Data, Typeable,
                                 Generic)

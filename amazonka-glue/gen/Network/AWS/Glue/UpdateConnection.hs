@@ -57,7 +57,7 @@ data UpdateConnection = UpdateConnection'{_ucCatalogId
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'ucCatalogId' - The ID of the Data Catalog in which the connection resides. If none is supplied, the AWS account ID is used by default.
+-- * 'ucCatalogId' - The ID of the Data Catalog in which the connection resides. If none is provided, the AWS account ID is used by default.
 --
 -- * 'ucName' - The name of the connection definition to update.
 --
@@ -71,7 +71,7 @@ updateConnection pName_ pConnectionInput_
                       _ucName = pName_,
                       _ucConnectionInput = pConnectionInput_}
 
--- | The ID of the Data Catalog in which the connection resides. If none is supplied, the AWS account ID is used by default.
+-- | The ID of the Data Catalog in which the connection resides. If none is provided, the AWS account ID is used by default.
 ucCatalogId :: Lens' UpdateConnection (Maybe Text)
 ucCatalogId = lens _ucCatalogId (\ s a -> s{_ucCatalogId = a})
 

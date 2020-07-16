@@ -65,7 +65,7 @@ import Network.AWS.SWF.Types.StartTimerDecisionAttributes
 --
 -- __Access Control__ 
 --
--- If you grant permission to use @RespondDecisionTaskCompleted@ , you can use IAM policies to express permissions for the list of decisions returned by this action as if they were members of the API. Treating decisions as a pseudo API maintains a uniform conceptual model and helps keep policies readable. For details and example IAM policies, see <http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html Using IAM to Manage Access to Amazon SWF Workflows> in the /Amazon SWF Developer Guide/ .
+-- If you grant permission to use @RespondDecisionTaskCompleted@ , you can use IAM policies to express permissions for the list of decisions returned by this action as if they were members of the API. Treating decisions as a pseudo API maintains a uniform conceptual model and helps keep policies readable. For details and example IAM policies, see <https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html Using IAM to Manage Access to Amazon SWF Workflows> in the /Amazon SWF Developer Guide/ .
 --
 -- __Decision Failure__ 
 --
@@ -79,7 +79,7 @@ import Network.AWS.SWF.Types.StartTimerDecisionAttributes
 --
 --
 --
--- One of the following events might be added to the history to indicate an error. The event attribute's @cause@ parameter indicates the cause. If @cause@ is set to @OPERATION_NOT_PERMITTED@ , the decision failed because it lacked sufficient permissions. For details and example IAM policies, see <http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html Using IAM to Manage Access to Amazon SWF Workflows> in the /Amazon SWF Developer Guide/ .
+-- One of the following events might be added to the history to indicate an error. The event attribute's @cause@ parameter indicates the cause. If @cause@ is set to @OPERATION_NOT_PERMITTED@ , the decision failed because it lacked sufficient permissions. For details and example IAM policies, see <https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html Using IAM to Manage Access to Amazon SWF Workflows> in the /Amazon SWF Developer Guide/ .
 --
 --     * @ScheduleActivityTaskFailed@ – A @ScheduleActivityTask@ decision failed. This could happen if the activity type specified in the decision isn't registered, is in a deprecated state, or the decision isn't properly configured.
 --

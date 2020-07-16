@@ -27,7 +27,7 @@ module Network.AWS.MediaLive.Types.RtmpCacheFullBehavior (
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | Placeholder documentation for RtmpCacheFullBehavior
+-- | Rtmp Cache Full Behavior
 data RtmpCacheFullBehavior = RtmpCacheFullBehavior' (CI
                                                        Text)
                                deriving (Eq, Ord, Read, Show, Data, Typeable,

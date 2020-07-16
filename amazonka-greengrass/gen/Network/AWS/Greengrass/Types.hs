@@ -19,11 +19,17 @@ module Network.AWS.Greengrass.Types
     , _InternalServerErrorException
     , _BadRequestException
 
+    -- * BulkDeploymentStatus
+    , BulkDeploymentStatus (..)
+
     -- * DeploymentType
     , DeploymentType (..)
 
     -- * EncodingType
     , EncodingType (..)
+
+    -- * FunctionIsolationMode
+    , FunctionIsolationMode (..)
 
     -- * LoggerComponent
     , LoggerComponent (..)
@@ -49,6 +55,32 @@ module Network.AWS.Greengrass.Types
     -- * UpdateTargetsOperatingSystem
     , UpdateTargetsOperatingSystem (..)
 
+    -- * BulkDeployment
+    , BulkDeployment
+    , bulkDeployment
+    , bdBulkDeploymentARN
+    , bdBulkDeploymentId
+    , bdCreatedAt
+
+    -- * BulkDeploymentMetrics
+    , BulkDeploymentMetrics
+    , bulkDeploymentMetrics
+    , bdmRecordsProcessed
+    , bdmRetryAttempts
+    , bdmInvalidInputRecords
+
+    -- * BulkDeploymentResult
+    , BulkDeploymentResult
+    , bulkDeploymentResult
+    , bdrDeploymentId
+    , bdrDeploymentARN
+    , bdrCreatedAt
+    , bdrDeploymentType
+    , bdrErrorDetails
+    , bdrGroupARN
+    , bdrDeploymentStatus
+    , bdrErrorMessage
+
     -- * ConnectivityInfo
     , ConnectivityInfo
     , connectivityInfo
@@ -57,13 +89,25 @@ module Network.AWS.Greengrass.Types
     , ciMetadata
     , ciHostAddress
 
+    -- * Connector
+    , Connector
+    , connector
+    , conParameters
+    , conConnectorARN
+    , conId
+
+    -- * ConnectorDefinitionVersion
+    , ConnectorDefinitionVersion
+    , connectorDefinitionVersion
+    , cdvConnectors
+
     -- * Core
     , Core
     , core
-    , cCertificateARN
-    , cThingARN
     , cSyncShadow
+    , cThingARN
     , cId
+    , cCertificateARN
 
     -- * CoreDefinitionVersion
     , CoreDefinitionVersion
@@ -78,6 +122,7 @@ module Network.AWS.Greengrass.Types
     , diName
     , diCreationTimestamp
     , diId
+    , diTags
     , diLatestVersion
     , diLastUpdatedTimestamp
 
@@ -93,10 +138,10 @@ module Network.AWS.Greengrass.Types
     -- * Device
     , Device
     , device
-    , dCertificateARN
-    , dThingARN
     , dSyncShadow
+    , dThingARN
     , dId
+    , dCertificateARN
 
     -- * DeviceDefinitionVersion
     , DeviceDefinitionVersion
@@ -131,22 +176,47 @@ module Network.AWS.Greengrass.Types
     , FunctionConfigurationEnvironment
     , functionConfigurationEnvironment
     , fceVariables
+    , fceExecution
     , fceResourceAccessPolicies
     , fceAccessSysfs
+
+    -- * FunctionDefaultConfig
+    , FunctionDefaultConfig
+    , functionDefaultConfig
+    , fdcExecution
+
+    -- * FunctionDefaultExecutionConfig
+    , FunctionDefaultExecutionConfig
+    , functionDefaultExecutionConfig
+    , fdecRunAs
+    , fdecIsolationMode
 
     -- * FunctionDefinitionVersion
     , FunctionDefinitionVersion
     , functionDefinitionVersion
+    , fdvDefaultConfig
     , fdvFunctions
+
+    -- * FunctionExecutionConfig
+    , FunctionExecutionConfig
+    , functionExecutionConfig
+    , fecRunAs
+    , fecIsolationMode
+
+    -- * FunctionRunAsConfig
+    , FunctionRunAsConfig
+    , functionRunAsConfig
+    , fracUid
+    , fracGid
 
     -- * GreengrassLogger
     , GreengrassLogger
     , greengrassLogger
     , glSpace
-    , glComponent
-    , glId
     , glType
     , glLevel
+    , glId
+    , glComponent
 
     -- * GroupCertificateAuthorityProperties
     , GroupCertificateAuthorityProperties
@@ -180,6 +250,7 @@ module Network.AWS.Greengrass.Types
     , gvDeviceDefinitionVersionARN
     , gvFunctionDefinitionVersionARN
     , gvLoggerDefinitionVersionARN
+    , gvConnectorDefinitionVersionARN
 
     -- * LocalDeviceResourceData
     , LocalDeviceResourceData
@@ -203,14 +274,14 @@ module Network.AWS.Greengrass.Types
     , Resource
     , resource
     , rResourceDataContainer
-    , rName
     , rId
+    , rName
 
     -- * ResourceAccessPolicy
     , ResourceAccessPolicy
     , resourceAccessPolicy
-    , rapResourceId
     , rapPermission
+    , rapResourceId
 
     -- * ResourceDataContainer
     , ResourceDataContainer
@@ -219,31 +290,46 @@ module Network.AWS.Greengrass.Types
     , rdcSageMakerMachineLearningModelResourceData
     , rdcLocalVolumeResourceData
     , rdcLocalDeviceResourceData
+    , rdcSecretsManagerSecretResourceData
 
     -- * ResourceDefinitionVersion
     , ResourceDefinitionVersion
     , resourceDefinitionVersion
     , rdvResources
 
+    -- * ResourceDownloadOwnerSetting
+    , ResourceDownloadOwnerSetting
+    , resourceDownloadOwnerSetting
+    , rdosGroupOwner
+    , rdosGroupPermission
+
     -- * S3MachineLearningModelResourceData
     , S3MachineLearningModelResourceData
     , s3MachineLearningModelResourceData
+    , smlmrdOwnerSetting
     , smlmrdDestinationPath
     , smlmrdS3URI
 
     -- * SageMakerMachineLearningModelResourceData
     , SageMakerMachineLearningModelResourceData
     , sageMakerMachineLearningModelResourceData
+    , smmlmrdOwnerSetting
     , smmlmrdSageMakerJobARN
     , smmlmrdDestinationPath
+
+    -- * SecretsManagerSecretResourceData
+    , SecretsManagerSecretResourceData
+    , secretsManagerSecretResourceData
+    , smsrdAdditionalStagingLabelsToDownload
+    , smsrdARN
 
     -- * Subscription
     , Subscription
     , subscription
+    , sTarget
+    , sId
     , sSubject
     , sSource
-    , sId
-    , sTarget
 
     -- * SubscriptionDefinitionVersion
     , SubscriptionDefinitionVersion
@@ -262,8 +348,10 @@ module Network.AWS.Greengrass.Types
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Sign.V4
+import Network.AWS.Greengrass.Types.BulkDeploymentStatus
 import Network.AWS.Greengrass.Types.DeploymentType
 import Network.AWS.Greengrass.Types.EncodingType
+import Network.AWS.Greengrass.Types.FunctionIsolationMode
 import Network.AWS.Greengrass.Types.LoggerComponent
 import Network.AWS.Greengrass.Types.LoggerLevel
 import Network.AWS.Greengrass.Types.LoggerType
@@ -272,7 +360,12 @@ import Network.AWS.Greengrass.Types.SoftwareToUpdate
 import Network.AWS.Greengrass.Types.UpdateAgentLogLevel
 import Network.AWS.Greengrass.Types.UpdateTargetsArchitecture
 import Network.AWS.Greengrass.Types.UpdateTargetsOperatingSystem
+import Network.AWS.Greengrass.Types.BulkDeployment
+import Network.AWS.Greengrass.Types.BulkDeploymentMetrics
+import Network.AWS.Greengrass.Types.BulkDeploymentResult
 import Network.AWS.Greengrass.Types.ConnectivityInfo
+import Network.AWS.Greengrass.Types.Connector
+import Network.AWS.Greengrass.Types.ConnectorDefinitionVersion
 import Network.AWS.Greengrass.Types.Core
 import Network.AWS.Greengrass.Types.CoreDefinitionVersion
 import Network.AWS.Greengrass.Types.DefinitionInformation
@@ -283,7 +376,11 @@ import Network.AWS.Greengrass.Types.ErrorDetail
 import Network.AWS.Greengrass.Types.Function
 import Network.AWS.Greengrass.Types.FunctionConfiguration
 import Network.AWS.Greengrass.Types.FunctionConfigurationEnvironment
+import Network.AWS.Greengrass.Types.FunctionDefaultConfig
+import Network.AWS.Greengrass.Types.FunctionDefaultExecutionConfig
 import Network.AWS.Greengrass.Types.FunctionDefinitionVersion
+import Network.AWS.Greengrass.Types.FunctionExecutionConfig
+import Network.AWS.Greengrass.Types.FunctionRunAsConfig
 import Network.AWS.Greengrass.Types.GreengrassLogger
 import Network.AWS.Greengrass.Types.GroupCertificateAuthorityProperties
 import Network.AWS.Greengrass.Types.GroupInformation
@@ -296,8 +393,10 @@ import Network.AWS.Greengrass.Types.Resource
 import Network.AWS.Greengrass.Types.ResourceAccessPolicy
 import Network.AWS.Greengrass.Types.ResourceDataContainer
 import Network.AWS.Greengrass.Types.ResourceDefinitionVersion
+import Network.AWS.Greengrass.Types.ResourceDownloadOwnerSetting
 import Network.AWS.Greengrass.Types.S3MachineLearningModelResourceData
 import Network.AWS.Greengrass.Types.SageMakerMachineLearningModelResourceData
+import Network.AWS.Greengrass.Types.SecretsManagerSecretResourceData
 import Network.AWS.Greengrass.Types.Subscription
 import Network.AWS.Greengrass.Types.SubscriptionDefinitionVersion
 import Network.AWS.Greengrass.Types.VersionInformation
@@ -325,6 +424,11 @@ greengrass
             = Just "throttling_exception"
           | has (hasCode "Throttling" . hasStatus 400) e =
             Just "throttling"
+          | has
+              (hasCode "ProvisionedThroughputExceededException" .
+                 hasStatus 400)
+              e
+            = Just "throughput_exceeded"
           | has (hasStatus 504) e = Just "gateway_timeout"
           | has
               (hasCode "RequestThrottledException" . hasStatus 400)

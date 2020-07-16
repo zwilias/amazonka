@@ -97,7 +97,7 @@ data GetPresetResponse = GetPresetResponse'{_gprsPreset
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'gprsPreset' - Undocumented member.
+-- * 'gprsPreset' - A preset is a collection of preconfigured media conversion settings that you want MediaConvert to apply to the output during the conversion process.
 --
 -- * 'gprsResponseStatus' - -- | The response status code.
 getPresetResponse
@@ -107,7 +107,7 @@ getPresetResponse pResponseStatus_
   = GetPresetResponse'{_gprsPreset = Nothing,
                        _gprsResponseStatus = pResponseStatus_}
 
--- | Undocumented member.
+-- | A preset is a collection of preconfigured media conversion settings that you want MediaConvert to apply to the output during the conversion process.
 gprsPreset :: Lens' GetPresetResponse (Maybe Preset)
 gprsPreset = lens _gprsPreset (\ s a -> s{_gprsPreset = a})
 

@@ -18,12 +18,18 @@
 --
 module Network.AWS.LexRuntime.Types.Product (
     module Network.AWS.LexRuntime.Types.Button,
+    module Network.AWS.LexRuntime.Types.DialogAction,
     module Network.AWS.LexRuntime.Types.GenericAttachment,
-    module Network.AWS.LexRuntime.Types.ResponseCard
+    module Network.AWS.LexRuntime.Types.IntentSummary,
+    module Network.AWS.LexRuntime.Types.ResponseCard,
+    module Network.AWS.LexRuntime.Types.SentimentResponse
   ) where
 
 import Network.AWS.Lens
 import Network.AWS.LexRuntime.Types.Button
+import Network.AWS.LexRuntime.Types.DialogAction
 import Network.AWS.LexRuntime.Types.GenericAttachment
+import Network.AWS.LexRuntime.Types.IntentSummary
 import Network.AWS.LexRuntime.Types.ResponseCard
+import Network.AWS.LexRuntime.Types.SentimentResponse
 import Network.AWS.Prelude

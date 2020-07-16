@@ -33,12 +33,16 @@ module Network.AWS.IoT.DescribeThingGroup
     , describeThingGroupResponse
     , DescribeThingGroupResponse
     -- * Response Lenses
+    , dtgrsStatus
+    , dtgrsQueryVersion
     , dtgrsThingGroupARN
     , dtgrsThingGroupId
     , dtgrsThingGroupMetadata
     , dtgrsThingGroupName
+    , dtgrsQueryString
     , dtgrsVersion
     , dtgrsThingGroupProperties
+    , dtgrsIndexName
     , dtgrsResponseStatus
     ) where
 
@@ -79,11 +83,15 @@ instance AWSRequest DescribeThingGroup where
           = receiveJSON
               (\ s h x ->
                  DescribeThingGroupResponse' <$>
-                   (x .?> "thingGroupArn") <*> (x .?> "thingGroupId")
+                   (x .?> "status") <*> (x .?> "queryVersion") <*>
+                     (x .?> "thingGroupArn")
+                     <*> (x .?> "thingGroupId")
                      <*> (x .?> "thingGroupMetadata")
                      <*> (x .?> "thingGroupName")
+                     <*> (x .?> "queryString")
                      <*> (x .?> "version")
                      <*> (x .?> "thingGroupProperties")
+                     <*> (x .?> "indexName")
                      <*> (pure (fromEnum s)))
 
 instance Hashable DescribeThingGroup where
@@ -101,7 +109,13 @@ instance ToQuery DescribeThingGroup where
         toQuery = const mempty
 
 -- | /See:/ 'describeThingGroupResponse' smart constructor.
-data DescribeThingGroupResponse = DescribeThingGroupResponse'{_dtgrsThingGroupARN
+data DescribeThingGroupResponse = DescribeThingGroupResponse'{_dtgrsStatus
+                                                              ::
+                                                              !(Maybe
+                                                                  DynamicGroupStatus),
+                                                              _dtgrsQueryVersion
+                                                              :: !(Maybe Text),
+                                                              _dtgrsThingGroupARN
                                                               :: !(Maybe Text),
                                                               _dtgrsThingGroupId
                                                               :: !(Maybe Text),
@@ -111,12 +125,16 @@ data DescribeThingGroupResponse = DescribeThingGroupResponse'{_dtgrsThingGroupAR
                                                                   ThingGroupMetadata),
                                                               _dtgrsThingGroupName
                                                               :: !(Maybe Text),
+                                                              _dtgrsQueryString
+                                                              :: !(Maybe Text),
                                                               _dtgrsVersion ::
                                                               !(Maybe Integer),
                                                               _dtgrsThingGroupProperties
                                                               ::
                                                               !(Maybe
                                                                   ThingGroupProperties),
+                                                              _dtgrsIndexName ::
+                                                              !(Maybe Text),
                                                               _dtgrsResponseStatus
                                                               :: !Int}
                                     deriving (Eq, Read, Show, Data, Typeable,
@@ -126,6 +144,10 @@ data DescribeThingGroupResponse = DescribeThingGroupResponse'{_dtgrsThingGroupAR
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
+-- * 'dtgrsStatus' - The dynamic thing group status.
+--
+-- * 'dtgrsQueryVersion' - The dynamic thing group query version.
+--
 -- * 'dtgrsThingGroupARN' - The thing group ARN.
 --
 -- * 'dtgrsThingGroupId' - The thing group ID.
@@ -134,23 +156,38 @@ data DescribeThingGroupResponse = DescribeThingGroupResponse'{_dtgrsThingGroupAR
 --
 -- * 'dtgrsThingGroupName' - The name of the thing group.
 --
+-- * 'dtgrsQueryString' - The dynamic thing group search query string.
+--
 -- * 'dtgrsVersion' - The version of the thing group.
 --
 -- * 'dtgrsThingGroupProperties' - The thing group properties.
+--
+-- * 'dtgrsIndexName' - The dynamic thing group index name.
 --
 -- * 'dtgrsResponseStatus' - -- | The response status code.
 describeThingGroupResponse
     :: Int -- ^ 'dtgrsResponseStatus'
     -> DescribeThingGroupResponse
 describeThingGroupResponse pResponseStatus_
-  = DescribeThingGroupResponse'{_dtgrsThingGroupARN =
-                                  Nothing,
+  = DescribeThingGroupResponse'{_dtgrsStatus = Nothing,
+                                _dtgrsQueryVersion = Nothing,
+                                _dtgrsThingGroupARN = Nothing,
                                 _dtgrsThingGroupId = Nothing,
                                 _dtgrsThingGroupMetadata = Nothing,
                                 _dtgrsThingGroupName = Nothing,
+                                _dtgrsQueryString = Nothing,
                                 _dtgrsVersion = Nothing,
                                 _dtgrsThingGroupProperties = Nothing,
+                                _dtgrsIndexName = Nothing,
                                 _dtgrsResponseStatus = pResponseStatus_}
+
+-- | The dynamic thing group status.
+dtgrsStatus :: Lens' DescribeThingGroupResponse (Maybe DynamicGroupStatus)
+dtgrsStatus = lens _dtgrsStatus (\ s a -> s{_dtgrsStatus = a})
+
+-- | The dynamic thing group query version.
+dtgrsQueryVersion :: Lens' DescribeThingGroupResponse (Maybe Text)
+dtgrsQueryVersion = lens _dtgrsQueryVersion (\ s a -> s{_dtgrsQueryVersion = a})
 
 -- | The thing group ARN.
 dtgrsThingGroupARN :: Lens' DescribeThingGroupResponse (Maybe Text)
@@ -168,6 +205,10 @@ dtgrsThingGroupMetadata = lens _dtgrsThingGroupMetadata (\ s a -> s{_dtgrsThingG
 dtgrsThingGroupName :: Lens' DescribeThingGroupResponse (Maybe Text)
 dtgrsThingGroupName = lens _dtgrsThingGroupName (\ s a -> s{_dtgrsThingGroupName = a})
 
+-- | The dynamic thing group search query string.
+dtgrsQueryString :: Lens' DescribeThingGroupResponse (Maybe Text)
+dtgrsQueryString = lens _dtgrsQueryString (\ s a -> s{_dtgrsQueryString = a})
+
 -- | The version of the thing group.
 dtgrsVersion :: Lens' DescribeThingGroupResponse (Maybe Integer)
 dtgrsVersion = lens _dtgrsVersion (\ s a -> s{_dtgrsVersion = a})
@@ -175,6 +216,10 @@ dtgrsVersion = lens _dtgrsVersion (\ s a -> s{_dtgrsVersion = a})
 -- | The thing group properties.
 dtgrsThingGroupProperties :: Lens' DescribeThingGroupResponse (Maybe ThingGroupProperties)
 dtgrsThingGroupProperties = lens _dtgrsThingGroupProperties (\ s a -> s{_dtgrsThingGroupProperties = a})
+
+-- | The dynamic thing group index name.
+dtgrsIndexName :: Lens' DescribeThingGroupResponse (Maybe Text)
+dtgrsIndexName = lens _dtgrsIndexName (\ s a -> s{_dtgrsIndexName = a})
 
 -- | -- | The response status code.
 dtgrsResponseStatus :: Lens' DescribeThingGroupResponse Int

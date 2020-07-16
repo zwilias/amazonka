@@ -20,12 +20,16 @@ module Network.AWS.Discovery.Types.Product (
     module Network.AWS.Discovery.Types.AgentConfigurationStatus,
     module Network.AWS.Discovery.Types.AgentInfo,
     module Network.AWS.Discovery.Types.AgentNetworkInfo,
+    module Network.AWS.Discovery.Types.BatchDeleteImportDataError,
     module Network.AWS.Discovery.Types.ConfigurationTag,
+    module Network.AWS.Discovery.Types.ContinuousExportDescription,
     module Network.AWS.Discovery.Types.CustomerAgentInfo,
     module Network.AWS.Discovery.Types.CustomerConnectorInfo,
     module Network.AWS.Discovery.Types.ExportFilter,
     module Network.AWS.Discovery.Types.ExportInfo,
     module Network.AWS.Discovery.Types.Filter,
+    module Network.AWS.Discovery.Types.ImportTask,
+    module Network.AWS.Discovery.Types.ImportTaskFilter,
     module Network.AWS.Discovery.Types.NeighborConnectionDetail,
     module Network.AWS.Discovery.Types.OrderByElement,
     module Network.AWS.Discovery.Types.Tag,
@@ -35,12 +39,16 @@ module Network.AWS.Discovery.Types.Product (
 import Network.AWS.Discovery.Types.AgentConfigurationStatus
 import Network.AWS.Discovery.Types.AgentInfo
 import Network.AWS.Discovery.Types.AgentNetworkInfo
+import Network.AWS.Discovery.Types.BatchDeleteImportDataError
 import Network.AWS.Discovery.Types.ConfigurationTag
+import Network.AWS.Discovery.Types.ContinuousExportDescription
 import Network.AWS.Discovery.Types.CustomerAgentInfo
 import Network.AWS.Discovery.Types.CustomerConnectorInfo
 import Network.AWS.Discovery.Types.ExportFilter
 import Network.AWS.Discovery.Types.ExportInfo
 import Network.AWS.Discovery.Types.Filter
+import Network.AWS.Discovery.Types.ImportTask
+import Network.AWS.Discovery.Types.ImportTaskFilter
 import Network.AWS.Discovery.Types.NeighborConnectionDetail
 import Network.AWS.Discovery.Types.OrderByElement
 import Network.AWS.Discovery.Types.Tag

@@ -19,6 +19,7 @@
 module Network.AWS.ResourceGroups.Types.QueryType (
   QueryType (
     ..
+    , CloudformationStack10
     , TagFilters10
     )
   ) where
@@ -30,10 +31,14 @@ data QueryType = QueryType' (CI Text)
                    deriving (Eq, Ord, Read, Show, Data, Typeable,
                              Generic)
 
+pattern CloudformationStack10 :: QueryType
+pattern CloudformationStack10 = QueryType' "CLOUDFORMATION_STACK_1_0"
+
 pattern TagFilters10 :: QueryType
 pattern TagFilters10 = QueryType' "TAG_FILTERS_1_0"
 
 {-# COMPLETE
+  CloudformationStack10,
   TagFilters10,
   QueryType' #-}
 
@@ -49,17 +54,19 @@ instance ToText QueryType where
 --   fromEnum is a partial function, and will error on values unknown at generation time.
 instance Enum QueryType where
     toEnum i = case i of
-        0 -> TagFilters10
+        0 -> CloudformationStack10
+        1 -> TagFilters10
         _ -> (error . showText) $ "Unknown index for QueryType: " <> toText i
     fromEnum x = case x of
-        TagFilters10 -> 0
+        CloudformationStack10 -> 0
+        TagFilters10 -> 1
         QueryType' name -> (error . showText) $ "Unknown QueryType: " <> original name
 
 -- | Represents the bounds of /known/ $QueryType.
 --   AWS may have added more since the source was generated.
 --   This instance exists only for backward compatibility.
 instance Bounded QueryType where
-    minBound = TagFilters10
+    minBound = CloudformationStack10
     maxBound = TagFilters10
 
 instance Hashable     QueryType

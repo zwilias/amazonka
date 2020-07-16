@@ -47,7 +47,7 @@ data ReferenceDataSourceDescription = ReferenceDataSourceDescription'{_rdsdRefer
 --
 -- * 'rdsdReferenceSchema' - Describes the format of the data in the streaming source, and how each data element maps to corresponding columns created in the in-application stream.
 --
--- * 'rdsdReferenceId' - ID of the reference data source. This is the ID that Amazon Kinesis Analytics assigns when you add the reference data source to your application using the 'AddApplicationReferenceDataSource' operation.
+-- * 'rdsdReferenceId' - ID of the reference data source. This is the ID that Amazon Kinesis Analytics assigns when you add the reference data source to your application using the <https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_AddApplicationReferenceDataSource.html AddApplicationReferenceDataSource> operation.
 --
 -- * 'rdsdTableName' - The in-application table name created by the specific reference data source configuration.
 --
@@ -70,7 +70,7 @@ referenceDataSourceDescription pReferenceId_
 rdsdReferenceSchema :: Lens' ReferenceDataSourceDescription (Maybe SourceSchema)
 rdsdReferenceSchema = lens _rdsdReferenceSchema (\ s a -> s{_rdsdReferenceSchema = a})
 
--- | ID of the reference data source. This is the ID that Amazon Kinesis Analytics assigns when you add the reference data source to your application using the 'AddApplicationReferenceDataSource' operation.
+-- | ID of the reference data source. This is the ID that Amazon Kinesis Analytics assigns when you add the reference data source to your application using the <https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_AddApplicationReferenceDataSource.html AddApplicationReferenceDataSource> operation.
 rdsdReferenceId :: Lens' ReferenceDataSourceDescription Text
 rdsdReferenceId = lens _rdsdReferenceId (\ s a -> s{_rdsdReferenceId = a})
 

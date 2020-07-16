@@ -23,7 +23,7 @@ import Network.AWS.MediaLive.Types.BlackoutSlateState
 import Network.AWS.MediaLive.Types.InputLocation
 import Network.AWS.Prelude
 
--- | Placeholder documentation for BlackoutSlate
+-- | Blackout Slate
 --
 -- /See:/ 'blackoutSlate' smart constructor.
 data BlackoutSlate = BlackoutSlate'{_bsNetworkEndBlackoutImage

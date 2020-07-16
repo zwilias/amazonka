@@ -23,7 +23,7 @@
 --
 -- When sharing snapshots with other AWS accounts, @DescribeDBClusterSnapshotAttributes@ returns the @restore@ attribute and a list of IDs for the AWS accounts that are authorized to copy or restore the manual DB cluster snapshot. If @all@ is included in the list of values for the @restore@ attribute, then the manual DB cluster snapshot is public and can be copied or restored by all AWS accounts.
 --
--- To add or remove access for an AWS account to copy or restore a manual DB cluster snapshot, or to make the manual DB cluster snapshot public or private, use the 'ModifyDBClusterSnapshotAttribute' API action.
+-- To add or remove access for an AWS account to copy or restore a manual DB cluster snapshot, or to make the manual DB cluster snapshot public or private, use the @ModifyDBClusterSnapshotAttribute@ API action.
 --
 module Network.AWS.RDS.DescribeDBClusterSnapshotAttributes
     (

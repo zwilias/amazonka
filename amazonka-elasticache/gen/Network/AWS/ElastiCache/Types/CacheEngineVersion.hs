@@ -42,7 +42,7 @@ data CacheEngineVersion = CacheEngineVersion'{_cevEngineVersion
 --
 -- * 'cevEngineVersion' - The version number of the cache engine.
 --
--- * 'cevCacheParameterGroupFamily' - The name of the cache parameter group family associated with this cache engine. Valid values are: @memcached1.4@ | @redis2.6@ | @redis2.8@ | @redis3.2@ 
+-- * 'cevCacheParameterGroupFamily' - The name of the cache parameter group family associated with this cache engine. Valid values are: @memcached1.4@ | @memcached1.5@ | @redis2.6@ | @redis2.8@ | @redis3.2@ | @redis4.0@ | @redis5.0@ | 
 --
 -- * 'cevCacheEngineDescription' - The description of the cache engine.
 --
@@ -62,7 +62,7 @@ cacheEngineVersion
 cevEngineVersion :: Lens' CacheEngineVersion (Maybe Text)
 cevEngineVersion = lens _cevEngineVersion (\ s a -> s{_cevEngineVersion = a})
 
--- | The name of the cache parameter group family associated with this cache engine. Valid values are: @memcached1.4@ | @redis2.6@ | @redis2.8@ | @redis3.2@ 
+-- | The name of the cache parameter group family associated with this cache engine. Valid values are: @memcached1.4@ | @memcached1.5@ | @redis2.6@ | @redis2.8@ | @redis3.2@ | @redis4.0@ | @redis5.0@ | 
 cevCacheParameterGroupFamily :: Lens' CacheEngineVersion (Maybe Text)
 cevCacheParameterGroupFamily = lens _cevCacheParameterGroupFamily (\ s a -> s{_cevCacheParameterGroupFamily = a})
 

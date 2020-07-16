@@ -21,7 +21,7 @@
 -- Creates a 'RateBasedRule' . The @RateBasedRule@ contains a @RateLimit@ , which specifies the maximum number of requests that AWS WAF allows from a specified IP address in a five-minute period. The @RateBasedRule@ also contains the @IPSet@ objects, @ByteMatchSet@ objects, and other predicates that identify the requests that you want to count or block if these requests exceed the @RateLimit@ .
 --
 --
--- If you add more than one predicate to a @RateBasedRule@ , a request not only must exceed the @RateLimit@ , but it also must match all the specifications to be counted or blocked. For example, suppose you add the following to a @RateBasedRule@ :
+-- If you add more than one predicate to a @RateBasedRule@ , a request not only must exceed the @RateLimit@ , but it also must match all the conditions to be counted or blocked. For example, suppose you add the following to a @RateBasedRule@ :
 --
 --     * An @IPSet@ that matches the IP address @192.0.2.44/32@ 
 --
@@ -29,9 +29,9 @@
 --
 --
 --
--- Further, you specify a @RateLimit@ of 15,000.
+-- Further, you specify a @RateLimit@ of 1,000.
 --
--- You then add the @RateBasedRule@ to a @WebACL@ and specify that you want to block requests that meet the conditions in the rule. For a request to be blocked, it must come from the IP address 192.0.2.44 /and/ the @User-Agent@ header in the request must contain the value @BadBot@ . Further, requests that match these two conditions must be received at a rate of more than 15,000 requests every five minutes. If both conditions are met and the rate is exceeded, AWS WAF blocks the requests. If the rate drops below 15,000 for a five-minute period, AWS WAF no longer blocks the requests.
+-- You then add the @RateBasedRule@ to a @WebACL@ and specify that you want to block requests that meet the conditions in the rule. For a request to be blocked, it must come from the IP address 192.0.2.44 /and/ the @User-Agent@ header in the request must contain the value @BadBot@ . Further, requests that match these two conditions must be received at a rate of more than 1,000 requests every five minutes. If both conditions are met and the rate is exceeded, AWS WAF blocks the requests. If the rate drops below 1,000 for a five-minute period, AWS WAF no longer blocks the requests.
 --
 -- As a second example, suppose you want to limit requests to a particular page on your site. To do this, you could add the following to a @RateBasedRule@ :
 --
@@ -43,7 +43,7 @@
 --
 --
 --
--- Further, you specify a @RateLimit@ of 15,000.
+-- Further, you specify a @RateLimit@ of 1,000.
 --
 -- By adding this @RateBasedRule@ to a @WebACL@ , you could limit requests to your login page without affecting the rest of your site.
 --
@@ -63,7 +63,7 @@
 --
 --
 --
--- For more information about how to use the AWS WAF API to allow or block HTTP requests, see the <http://docs.aws.amazon.com/waf/latest/developerguide/ AWS WAF Developer Guide> .
+-- For more information about how to use the AWS WAF API to allow or block HTTP requests, see the <https://docs.aws.amazon.com/waf/latest/developerguide/ AWS WAF Developer Guide> .
 --
 module Network.AWS.WAFRegional.CreateRateBasedRule
     (
@@ -71,6 +71,7 @@ module Network.AWS.WAFRegional.CreateRateBasedRule
       createRateBasedRule
     , CreateRateBasedRule
     -- * Request Lenses
+    , crbrTags
     , crbrName
     , crbrMetricName
     , crbrRateKey
@@ -94,8 +95,9 @@ import Network.AWS.WAFRegional.Types
 import Network.AWS.WAFRegional.Types.Product
 
 -- | /See:/ 'createRateBasedRule' smart constructor.
-data CreateRateBasedRule = CreateRateBasedRule'{_crbrName
-                                                :: !Text,
+data CreateRateBasedRule = CreateRateBasedRule'{_crbrTags
+                                                :: !(Maybe (List1 Tag)),
+                                                _crbrName :: !Text,
                                                 _crbrMetricName :: !Text,
                                                 _crbrRateKey :: !RateKey,
                                                 _crbrRateLimit :: !Nat,
@@ -106,9 +108,11 @@ data CreateRateBasedRule = CreateRateBasedRule'{_crbrName
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
+-- * 'crbrTags' - 
+--
 -- * 'crbrName' - A friendly name or description of the 'RateBasedRule' . You can't change the name of a @RateBasedRule@ after you create it.
 --
--- * 'crbrMetricName' - A friendly name or description for the metrics for this @RateBasedRule@ . The name can contain only alphanumeric characters (A-Z, a-z, 0-9); the name can't contain whitespace. You can't change the name of the metric after you create the @RateBasedRule@ .
+-- * 'crbrMetricName' - A friendly name or description for the metrics for this @RateBasedRule@ . The name can contain only alphanumeric characters (A-Z, a-z, 0-9), with maximum length 128 and minimum length one. It can't contain whitespace or metric names reserved for AWS WAF, including "All" and "Default_Action." You can't change the name of the metric after you create the @RateBasedRule@ .
 --
 -- * 'crbrRateKey' - The field that AWS WAF uses to determine if requests are likely arriving from a single source and thus subject to rate monitoring. The only valid value for @RateKey@ is @IP@ . @IP@ indicates that requests that arrive from the same IP address are subject to the @RateLimit@ that is specified in the @RateBasedRule@ .
 --
@@ -124,17 +128,21 @@ createRateBasedRule
     -> CreateRateBasedRule
 createRateBasedRule pName_ pMetricName_ pRateKey_
   pRateLimit_ pChangeToken_
-  = CreateRateBasedRule'{_crbrName = pName_,
-                         _crbrMetricName = pMetricName_,
+  = CreateRateBasedRule'{_crbrTags = Nothing,
+                         _crbrName = pName_, _crbrMetricName = pMetricName_,
                          _crbrRateKey = pRateKey_,
                          _crbrRateLimit = _Nat # pRateLimit_,
                          _crbrChangeToken = pChangeToken_}
+
+-- | 
+crbrTags :: Lens' CreateRateBasedRule (Maybe (NonEmpty Tag))
+crbrTags = lens _crbrTags (\ s a -> s{_crbrTags = a}) . mapping _List1
 
 -- | A friendly name or description of the 'RateBasedRule' . You can't change the name of a @RateBasedRule@ after you create it.
 crbrName :: Lens' CreateRateBasedRule Text
 crbrName = lens _crbrName (\ s a -> s{_crbrName = a})
 
--- | A friendly name or description for the metrics for this @RateBasedRule@ . The name can contain only alphanumeric characters (A-Z, a-z, 0-9); the name can't contain whitespace. You can't change the name of the metric after you create the @RateBasedRule@ .
+-- | A friendly name or description for the metrics for this @RateBasedRule@ . The name can contain only alphanumeric characters (A-Z, a-z, 0-9), with maximum length 128 and minimum length one. It can't contain whitespace or metric names reserved for AWS WAF, including "All" and "Default_Action." You can't change the name of the metric after you create the @RateBasedRule@ .
 crbrMetricName :: Lens' CreateRateBasedRule Text
 crbrMetricName = lens _crbrMetricName (\ s a -> s{_crbrMetricName = a})
 
@@ -179,7 +187,8 @@ instance ToJSON CreateRateBasedRule where
         toJSON CreateRateBasedRule'{..}
           = object
               (catMaybes
-                 [Just ("Name" .= _crbrName),
+                 [("Tags" .=) <$> _crbrTags,
+                  Just ("Name" .= _crbrName),
                   Just ("MetricName" .= _crbrMetricName),
                   Just ("RateKey" .= _crbrRateKey),
                   Just ("RateLimit" .= _crbrRateLimit),

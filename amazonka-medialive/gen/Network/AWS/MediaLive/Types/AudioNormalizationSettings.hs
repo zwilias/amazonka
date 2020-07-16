@@ -22,7 +22,7 @@ import Network.AWS.MediaLive.Types.AudioNormalizationAlgorithm
 import Network.AWS.MediaLive.Types.AudioNormalizationAlgorithmControl
 import Network.AWS.Prelude
 
--- | Placeholder documentation for AudioNormalizationSettings
+-- | Audio Normalization Settings
 --
 -- /See:/ 'audioNormalizationSettings' smart constructor.
 data AudioNormalizationSettings = AudioNormalizationSettings'{_ansAlgorithmControl

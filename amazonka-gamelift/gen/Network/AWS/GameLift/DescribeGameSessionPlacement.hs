@@ -21,8 +21,6 @@
 -- Retrieves properties and current status of a game session placement request. To get game session placement details, specify the placement ID. If successful, a 'GameSessionPlacement' object is returned.
 --
 --
--- Game-session-related operations include:
---
 --     * 'CreateGameSession' 
 --
 --     * 'DescribeGameSessions' 
@@ -84,7 +82,7 @@ newtype DescribeGameSessionPlacement = DescribeGameSessionPlacement'{_dgspPlacem
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dgspPlacementId' - Unique identifier for a game session placement to retrieve.
+-- * 'dgspPlacementId' - A unique identifier for a game session placement to retrieve.
 describeGameSessionPlacement
     :: Text -- ^ 'dgspPlacementId'
     -> DescribeGameSessionPlacement
@@ -92,7 +90,7 @@ describeGameSessionPlacement pPlacementId_
   = DescribeGameSessionPlacement'{_dgspPlacementId =
                                     pPlacementId_}
 
--- | Unique identifier for a game session placement to retrieve.
+-- | A unique identifier for a game session placement to retrieve.
 dgspPlacementId :: Lens' DescribeGameSessionPlacement Text
 dgspPlacementId = lens _dgspPlacementId (\ s a -> s{_dgspPlacementId = a})
 

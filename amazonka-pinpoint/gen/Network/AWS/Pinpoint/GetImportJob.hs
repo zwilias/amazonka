@@ -18,7 +18,9 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Returns information about an import job.
+-- Retrieves information about the status and settings of a specific import job for an application.
+--
+--
 module Network.AWS.Pinpoint.GetImportJob
     (
     -- * Creating a Request
@@ -53,9 +55,9 @@ data GetImportJob = GetImportJob'{_gijApplicationId
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'gijApplicationId' - Undocumented member.
+-- * 'gijApplicationId' - The unique identifier for the application. This identifier is displayed as the __Project ID__ on the Amazon Pinpoint console.
 --
--- * 'gijJobId' - Undocumented member.
+-- * 'gijJobId' - The unique identifier for the job.
 getImportJob
     :: Text -- ^ 'gijApplicationId'
     -> Text -- ^ 'gijJobId'
@@ -64,11 +66,11 @@ getImportJob pApplicationId_ pJobId_
   = GetImportJob'{_gijApplicationId = pApplicationId_,
                   _gijJobId = pJobId_}
 
--- | Undocumented member.
+-- | The unique identifier for the application. This identifier is displayed as the __Project ID__ on the Amazon Pinpoint console.
 gijApplicationId :: Lens' GetImportJob Text
 gijApplicationId = lens _gijApplicationId (\ s a -> s{_gijApplicationId = a})
 
--- | Undocumented member.
+-- | The unique identifier for the job.
 gijJobId :: Lens' GetImportJob Text
 gijJobId = lens _gijJobId (\ s a -> s{_gijJobId = a})
 

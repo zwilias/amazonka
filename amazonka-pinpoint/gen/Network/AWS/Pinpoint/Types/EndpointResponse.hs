@@ -24,135 +24,139 @@ import Network.AWS.Pinpoint.Types.EndpointLocation
 import Network.AWS.Pinpoint.Types.EndpointUser
 import Network.AWS.Prelude
 
--- | Endpoint response
+-- | Provides information about the channel type and other settings for an endpoint.
+--
+--
 --
 -- /See:/ 'endpointResponse' smart constructor.
-data EndpointResponse = EndpointResponse'{_eRequestId
+data EndpointResponse = EndpointResponse'{_endRequestId
                                           :: !(Maybe Text),
-                                          _eMetrics ::
+                                          _endMetrics ::
                                           !(Maybe (Map Text Double)),
-                                          _eLocation ::
+                                          _endLocation ::
                                           !(Maybe EndpointLocation),
-                                          _eDemographic ::
+                                          _endDemographic ::
                                           !(Maybe EndpointDemographic),
-                                          _eCohortId :: !(Maybe Text),
-                                          _eAddress :: !(Maybe Text),
-                                          _eEffectiveDate :: !(Maybe Text),
-                                          _eUser :: !(Maybe EndpointUser),
-                                          _eApplicationId :: !(Maybe Text),
-                                          _eAttributes ::
+                                          _endCohortId :: !(Maybe Text),
+                                          _endAddress :: !(Maybe Text),
+                                          _endEffectiveDate :: !(Maybe Text),
+                                          _endUser :: !(Maybe EndpointUser),
+                                          _endApplicationId :: !(Maybe Text),
+                                          _endAttributes ::
                                           !(Maybe (Map Text [Text])),
-                                          _eEndpointStatus :: !(Maybe Text),
-                                          _eOptOut :: !(Maybe Text),
-                                          _eId :: !(Maybe Text),
-                                          _eCreationDate :: !(Maybe Text),
-                                          _eChannelType :: !(Maybe ChannelType)}
+                                          _endEndpointStatus :: !(Maybe Text),
+                                          _endOptOut :: !(Maybe Text),
+                                          _endId :: !(Maybe Text),
+                                          _endCreationDate :: !(Maybe Text),
+                                          _endChannelType ::
+                                          !(Maybe ChannelType)}
                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'EndpointResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'eRequestId' - The unique ID for the most recent request to update the endpoint.
+-- * 'endRequestId' - The unique identifier for the most recent request to update the endpoint.
 --
--- * 'eMetrics' - Custom metrics that your app reports to Amazon Pinpoint.
+-- * 'endMetrics' - One or more custom metrics that your app reports to Amazon Pinpoint for the endpoint.
 --
--- * 'eLocation' - The endpoint location attributes.
+-- * 'endLocation' - The geographic information for the endpoint.
 --
--- * 'eDemographic' - The endpoint demographic attributes.
+-- * 'endDemographic' - The demographic information for the endpoint, such as the time zone and platform.
 --
--- * 'eCohortId' - A number from 0 - 99 that represents the cohort the endpoint is assigned to. Endpoints are grouped into cohorts randomly, and each cohort contains approximately 1 percent of the endpoints for an app. Amazon Pinpoint assigns cohorts to the holdout or treatment allocations for a campaign.
+-- * 'endCohortId' - A number from 0-99 that represents the cohort that the endpoint is assigned to. Endpoints are grouped into cohorts randomly, and each cohort contains approximately 1 percent of the endpoints for an application. Amazon Pinpoint assigns cohorts to the holdout or treatment allocations for campaigns.
 --
--- * 'eAddress' - The address or token of the endpoint as provided by your push provider (e.g. DeviceToken or RegistrationId).
+-- * 'endAddress' - The destination address for messages or push notifications that you send to the endpoint. The address varies by channel. For example, the address for a push-notification channel is typically the token provided by a push notification service, such as an Apple Push Notification service (APNs) device token or a Firebase Cloud Messaging (FCM) registration token. The address for the SMS channel is a phone number in E.164 format, such as +12065550100. The address for the email channel is an email address.
 --
--- * 'eEffectiveDate' - The last time the endpoint was updated. Provided in ISO 8601 format.
+-- * 'endEffectiveDate' - The date and time, in ISO 8601 format, when the endpoint was last updated.
 --
--- * 'eUser' - Custom user-specific attributes that your app reports to Amazon Pinpoint.
+-- * 'endUser' - One or more custom user attributes that your app reports to Amazon Pinpoint for the user who's associated with the endpoint.
 --
--- * 'eApplicationId' - The ID of the application associated with the endpoint.
+-- * 'endApplicationId' - The unique identifier for the application that's associated with the endpoint.
 --
--- * 'eAttributes' - Custom attributes that describe the endpoint by associating a name with an array of values. For example, an attribute named "interests" might have the values ["science", "politics", "travel"]. You can use these attributes as selection criteria when you create a segment of users to engage with a messaging campaign. The following characters are not recommended in attribute names: # : ? \ /. The Amazon Pinpoint console does not display attributes that include these characters in the name. This limitation does not apply to attribute values.
+-- * 'endAttributes' - One or more custom attributes that describe the endpoint by associating a name with an array of values. For example, the value of a custom attribute named Interests might be: ["Science", "Music", "Travel"]. You can use these attributes as filter criteria when you create segments.
 --
--- * 'eEndpointStatus' - The endpoint status. Can be either ACTIVE or INACTIVE. Will be set to INACTIVE if a delivery fails. Will be set to ACTIVE if the address is updated.
+-- * 'endEndpointStatus' - Specifies whether messages or push notifications are sent to the endpoint. Possible values are: ACTIVE, messages are sent to the endpoint; and, INACTIVE, messages aren’t sent to the endpoint. Amazon Pinpoint automatically sets this value to ACTIVE when you create an endpoint or update an existing endpoint. Amazon Pinpoint automatically sets this value to INACTIVE if you update another endpoint that has the same address specified by the Address property.
 --
--- * 'eOptOut' - Indicates whether a user has opted out of receiving messages with one of the following values: ALL - User has opted out of all messages. NONE - Users has not opted out and receives all messages.
+-- * 'endOptOut' - Specifies whether the user who's associated with the endpoint has opted out of receiving messages and push notifications from you. Possible values are: ALL, the user has opted out and doesn't want to receive any messages or push notifications; and, NONE, the user hasn't opted out and wants to receive all messages and push notifications.
 --
--- * 'eId' - The unique ID that you assigned to the endpoint. The ID should be a globally unique identifier (GUID) to ensure that it is unique compared to all other endpoints for the application.
+-- * 'endId' - The unique identifier that you assigned to the endpoint. The identifier should be a globally unique identifier (GUID) to ensure that it doesn't conflict with other endpoint identifiers that are associated with the application.
 --
--- * 'eCreationDate' - The last time the endpoint was created. Provided in ISO 8601 format.
+-- * 'endCreationDate' - The date and time, in ISO 8601 format, when the endpoint was created.
 --
--- * 'eChannelType' - The channel type. Valid values: GCM | APNS | APNS_SANDBOX | APNS_VOIP | APNS_VOIP_SANDBOX | ADM | SMS | EMAIL | BAIDU
+-- * 'endChannelType' - The channel that's used when sending messages or push notifications to the endpoint.
 endpointResponse
     :: EndpointResponse
 endpointResponse
-  = EndpointResponse'{_eRequestId = Nothing,
-                      _eMetrics = Nothing, _eLocation = Nothing,
-                      _eDemographic = Nothing, _eCohortId = Nothing,
-                      _eAddress = Nothing, _eEffectiveDate = Nothing,
-                      _eUser = Nothing, _eApplicationId = Nothing,
-                      _eAttributes = Nothing, _eEndpointStatus = Nothing,
-                      _eOptOut = Nothing, _eId = Nothing,
-                      _eCreationDate = Nothing, _eChannelType = Nothing}
+  = EndpointResponse'{_endRequestId = Nothing,
+                      _endMetrics = Nothing, _endLocation = Nothing,
+                      _endDemographic = Nothing, _endCohortId = Nothing,
+                      _endAddress = Nothing, _endEffectiveDate = Nothing,
+                      _endUser = Nothing, _endApplicationId = Nothing,
+                      _endAttributes = Nothing,
+                      _endEndpointStatus = Nothing, _endOptOut = Nothing,
+                      _endId = Nothing, _endCreationDate = Nothing,
+                      _endChannelType = Nothing}
 
--- | The unique ID for the most recent request to update the endpoint.
-eRequestId :: Lens' EndpointResponse (Maybe Text)
-eRequestId = lens _eRequestId (\ s a -> s{_eRequestId = a})
+-- | The unique identifier for the most recent request to update the endpoint.
+endRequestId :: Lens' EndpointResponse (Maybe Text)
+endRequestId = lens _endRequestId (\ s a -> s{_endRequestId = a})
 
--- | Custom metrics that your app reports to Amazon Pinpoint.
-eMetrics :: Lens' EndpointResponse (HashMap Text Double)
-eMetrics = lens _eMetrics (\ s a -> s{_eMetrics = a}) . _Default . _Map
+-- | One or more custom metrics that your app reports to Amazon Pinpoint for the endpoint.
+endMetrics :: Lens' EndpointResponse (HashMap Text Double)
+endMetrics = lens _endMetrics (\ s a -> s{_endMetrics = a}) . _Default . _Map
 
--- | The endpoint location attributes.
-eLocation :: Lens' EndpointResponse (Maybe EndpointLocation)
-eLocation = lens _eLocation (\ s a -> s{_eLocation = a})
+-- | The geographic information for the endpoint.
+endLocation :: Lens' EndpointResponse (Maybe EndpointLocation)
+endLocation = lens _endLocation (\ s a -> s{_endLocation = a})
 
--- | The endpoint demographic attributes.
-eDemographic :: Lens' EndpointResponse (Maybe EndpointDemographic)
-eDemographic = lens _eDemographic (\ s a -> s{_eDemographic = a})
+-- | The demographic information for the endpoint, such as the time zone and platform.
+endDemographic :: Lens' EndpointResponse (Maybe EndpointDemographic)
+endDemographic = lens _endDemographic (\ s a -> s{_endDemographic = a})
 
--- | A number from 0 - 99 that represents the cohort the endpoint is assigned to. Endpoints are grouped into cohorts randomly, and each cohort contains approximately 1 percent of the endpoints for an app. Amazon Pinpoint assigns cohorts to the holdout or treatment allocations for a campaign.
-eCohortId :: Lens' EndpointResponse (Maybe Text)
-eCohortId = lens _eCohortId (\ s a -> s{_eCohortId = a})
+-- | A number from 0-99 that represents the cohort that the endpoint is assigned to. Endpoints are grouped into cohorts randomly, and each cohort contains approximately 1 percent of the endpoints for an application. Amazon Pinpoint assigns cohorts to the holdout or treatment allocations for campaigns.
+endCohortId :: Lens' EndpointResponse (Maybe Text)
+endCohortId = lens _endCohortId (\ s a -> s{_endCohortId = a})
 
--- | The address or token of the endpoint as provided by your push provider (e.g. DeviceToken or RegistrationId).
-eAddress :: Lens' EndpointResponse (Maybe Text)
-eAddress = lens _eAddress (\ s a -> s{_eAddress = a})
+-- | The destination address for messages or push notifications that you send to the endpoint. The address varies by channel. For example, the address for a push-notification channel is typically the token provided by a push notification service, such as an Apple Push Notification service (APNs) device token or a Firebase Cloud Messaging (FCM) registration token. The address for the SMS channel is a phone number in E.164 format, such as +12065550100. The address for the email channel is an email address.
+endAddress :: Lens' EndpointResponse (Maybe Text)
+endAddress = lens _endAddress (\ s a -> s{_endAddress = a})
 
--- | The last time the endpoint was updated. Provided in ISO 8601 format.
-eEffectiveDate :: Lens' EndpointResponse (Maybe Text)
-eEffectiveDate = lens _eEffectiveDate (\ s a -> s{_eEffectiveDate = a})
+-- | The date and time, in ISO 8601 format, when the endpoint was last updated.
+endEffectiveDate :: Lens' EndpointResponse (Maybe Text)
+endEffectiveDate = lens _endEffectiveDate (\ s a -> s{_endEffectiveDate = a})
 
--- | Custom user-specific attributes that your app reports to Amazon Pinpoint.
-eUser :: Lens' EndpointResponse (Maybe EndpointUser)
-eUser = lens _eUser (\ s a -> s{_eUser = a})
+-- | One or more custom user attributes that your app reports to Amazon Pinpoint for the user who's associated with the endpoint.
+endUser :: Lens' EndpointResponse (Maybe EndpointUser)
+endUser = lens _endUser (\ s a -> s{_endUser = a})
 
--- | The ID of the application associated with the endpoint.
-eApplicationId :: Lens' EndpointResponse (Maybe Text)
-eApplicationId = lens _eApplicationId (\ s a -> s{_eApplicationId = a})
+-- | The unique identifier for the application that's associated with the endpoint.
+endApplicationId :: Lens' EndpointResponse (Maybe Text)
+endApplicationId = lens _endApplicationId (\ s a -> s{_endApplicationId = a})
 
--- | Custom attributes that describe the endpoint by associating a name with an array of values. For example, an attribute named "interests" might have the values ["science", "politics", "travel"]. You can use these attributes as selection criteria when you create a segment of users to engage with a messaging campaign. The following characters are not recommended in attribute names: # : ? \ /. The Amazon Pinpoint console does not display attributes that include these characters in the name. This limitation does not apply to attribute values.
-eAttributes :: Lens' EndpointResponse (HashMap Text [Text])
-eAttributes = lens _eAttributes (\ s a -> s{_eAttributes = a}) . _Default . _Map
+-- | One or more custom attributes that describe the endpoint by associating a name with an array of values. For example, the value of a custom attribute named Interests might be: ["Science", "Music", "Travel"]. You can use these attributes as filter criteria when you create segments.
+endAttributes :: Lens' EndpointResponse (HashMap Text [Text])
+endAttributes = lens _endAttributes (\ s a -> s{_endAttributes = a}) . _Default . _Map
 
--- | The endpoint status. Can be either ACTIVE or INACTIVE. Will be set to INACTIVE if a delivery fails. Will be set to ACTIVE if the address is updated.
-eEndpointStatus :: Lens' EndpointResponse (Maybe Text)
-eEndpointStatus = lens _eEndpointStatus (\ s a -> s{_eEndpointStatus = a})
+-- | Specifies whether messages or push notifications are sent to the endpoint. Possible values are: ACTIVE, messages are sent to the endpoint; and, INACTIVE, messages aren’t sent to the endpoint. Amazon Pinpoint automatically sets this value to ACTIVE when you create an endpoint or update an existing endpoint. Amazon Pinpoint automatically sets this value to INACTIVE if you update another endpoint that has the same address specified by the Address property.
+endEndpointStatus :: Lens' EndpointResponse (Maybe Text)
+endEndpointStatus = lens _endEndpointStatus (\ s a -> s{_endEndpointStatus = a})
 
--- | Indicates whether a user has opted out of receiving messages with one of the following values: ALL - User has opted out of all messages. NONE - Users has not opted out and receives all messages.
-eOptOut :: Lens' EndpointResponse (Maybe Text)
-eOptOut = lens _eOptOut (\ s a -> s{_eOptOut = a})
+-- | Specifies whether the user who's associated with the endpoint has opted out of receiving messages and push notifications from you. Possible values are: ALL, the user has opted out and doesn't want to receive any messages or push notifications; and, NONE, the user hasn't opted out and wants to receive all messages and push notifications.
+endOptOut :: Lens' EndpointResponse (Maybe Text)
+endOptOut = lens _endOptOut (\ s a -> s{_endOptOut = a})
 
--- | The unique ID that you assigned to the endpoint. The ID should be a globally unique identifier (GUID) to ensure that it is unique compared to all other endpoints for the application.
-eId :: Lens' EndpointResponse (Maybe Text)
-eId = lens _eId (\ s a -> s{_eId = a})
+-- | The unique identifier that you assigned to the endpoint. The identifier should be a globally unique identifier (GUID) to ensure that it doesn't conflict with other endpoint identifiers that are associated with the application.
+endId :: Lens' EndpointResponse (Maybe Text)
+endId = lens _endId (\ s a -> s{_endId = a})
 
--- | The last time the endpoint was created. Provided in ISO 8601 format.
-eCreationDate :: Lens' EndpointResponse (Maybe Text)
-eCreationDate = lens _eCreationDate (\ s a -> s{_eCreationDate = a})
+-- | The date and time, in ISO 8601 format, when the endpoint was created.
+endCreationDate :: Lens' EndpointResponse (Maybe Text)
+endCreationDate = lens _endCreationDate (\ s a -> s{_endCreationDate = a})
 
--- | The channel type. Valid values: GCM | APNS | APNS_SANDBOX | APNS_VOIP | APNS_VOIP_SANDBOX | ADM | SMS | EMAIL | BAIDU
-eChannelType :: Lens' EndpointResponse (Maybe ChannelType)
-eChannelType = lens _eChannelType (\ s a -> s{_eChannelType = a})
+-- | The channel that's used when sending messages or push notifications to the endpoint.
+endChannelType :: Lens' EndpointResponse (Maybe ChannelType)
+endChannelType = lens _endChannelType (\ s a -> s{_endChannelType = a})
 
 instance FromJSON EndpointResponse where
         parseJSON

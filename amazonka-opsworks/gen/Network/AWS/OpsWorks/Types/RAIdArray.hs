@@ -59,7 +59,7 @@ data RAIdArray = RAIdArray'{_raiaInstanceId ::
 --
 -- * 'raiaNumberOfDisks' - The number of disks in the array.
 --
--- * 'raiaAvailabilityZone' - The array's Availability Zone. For more information, see <http://docs.aws.amazon.com/general/latest/gr/rande.html Regions and Endpoints> .
+-- * 'raiaAvailabilityZone' - The array's Availability Zone. For more information, see <https://docs.aws.amazon.com/general/latest/gr/rande.html Regions and Endpoints> .
 --
 -- * 'raiaName' - The array name.
 --
@@ -110,7 +110,7 @@ raiaDevice = lens _raiaDevice (\ s a -> s{_raiaDevice = a})
 raiaNumberOfDisks :: Lens' RAIdArray (Maybe Int)
 raiaNumberOfDisks = lens _raiaNumberOfDisks (\ s a -> s{_raiaNumberOfDisks = a})
 
--- | The array's Availability Zone. For more information, see <http://docs.aws.amazon.com/general/latest/gr/rande.html Regions and Endpoints> .
+-- | The array's Availability Zone. For more information, see <https://docs.aws.amazon.com/general/latest/gr/rande.html Regions and Endpoints> .
 raiaAvailabilityZone :: Lens' RAIdArray (Maybe Text)
 raiaAvailabilityZone = lens _raiaAvailabilityZone (\ s a -> s{_raiaAvailabilityZone = a})
 

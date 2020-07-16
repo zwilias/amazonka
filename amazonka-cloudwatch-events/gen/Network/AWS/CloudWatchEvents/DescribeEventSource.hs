@@ -137,7 +137,7 @@ data DescribeEventSourceResponse = DescribeEventSourceResponse'{_desrsCreationTi
 --
 -- * 'desrsCreationTime' - The date and time that the event source was created.
 --
--- * 'desrsState' - The state of the event source. If it's @ACTIVE@ , you have already created a matching event bus for this event source, and that event bus is active. If it's @PENDING@ , either you haven't yet created a matching event bus, or that event bus is deactivated. If it's @DELETED@ , you have created a matching event bus, but the event source has since been deleted.
+-- * 'desrsState' - The state of the event source. If it is ACTIVE, you have already created a matching event bus for this event source, and that event bus is active. If it is PENDING, either you haven't yet created a matching event bus, or that event bus is deactivated. If it is DELETED, you have created a matching event bus, but the event source has since been deleted.
 --
 -- * 'desrsARN' - The ARN of the partner event source.
 --
@@ -145,7 +145,7 @@ data DescribeEventSourceResponse = DescribeEventSourceResponse'{_desrsCreationTi
 --
 -- * 'desrsName' - The name of the partner event source.
 --
--- * 'desrsExpirationTime' - The date and time that the event source will expire if you don't create a matching event bus.
+-- * 'desrsExpirationTime' - The date and time that the event source will expire if you do not create a matching event bus.
 --
 -- * 'desrsResponseStatus' - -- | The response status code.
 describeEventSourceResponse
@@ -164,7 +164,7 @@ describeEventSourceResponse pResponseStatus_
 desrsCreationTime :: Lens' DescribeEventSourceResponse (Maybe UTCTime)
 desrsCreationTime = lens _desrsCreationTime (\ s a -> s{_desrsCreationTime = a}) . mapping _Time
 
--- | The state of the event source. If it's @ACTIVE@ , you have already created a matching event bus for this event source, and that event bus is active. If it's @PENDING@ , either you haven't yet created a matching event bus, or that event bus is deactivated. If it's @DELETED@ , you have created a matching event bus, but the event source has since been deleted.
+-- | The state of the event source. If it is ACTIVE, you have already created a matching event bus for this event source, and that event bus is active. If it is PENDING, either you haven't yet created a matching event bus, or that event bus is deactivated. If it is DELETED, you have created a matching event bus, but the event source has since been deleted.
 desrsState :: Lens' DescribeEventSourceResponse (Maybe EventSourceState)
 desrsState = lens _desrsState (\ s a -> s{_desrsState = a})
 
@@ -180,7 +180,7 @@ desrsCreatedBy = lens _desrsCreatedBy (\ s a -> s{_desrsCreatedBy = a})
 desrsName :: Lens' DescribeEventSourceResponse (Maybe Text)
 desrsName = lens _desrsName (\ s a -> s{_desrsName = a})
 
--- | The date and time that the event source will expire if you don't create a matching event bus.
+-- | The date and time that the event source will expire if you do not create a matching event bus.
 desrsExpirationTime :: Lens' DescribeEventSourceResponse (Maybe UTCTime)
 desrsExpirationTime = lens _desrsExpirationTime (\ s a -> s{_desrsExpirationTime = a}) . mapping _Time
 

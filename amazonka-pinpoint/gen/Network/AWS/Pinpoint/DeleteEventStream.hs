@@ -18,7 +18,9 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Deletes the event stream for an app.
+-- Deletes the event stream for an application.
+--
+--
 module Network.AWS.Pinpoint.DeleteEventStream
     (
     -- * Creating a Request
@@ -42,9 +44,7 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
--- | DeleteEventStream Request
---
--- /See:/ 'deleteEventStream' smart constructor.
+-- | /See:/ 'deleteEventStream' smart constructor.
 newtype DeleteEventStream = DeleteEventStream'{_desApplicationId
                                                :: Text}
                               deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -53,7 +53,7 @@ newtype DeleteEventStream = DeleteEventStream'{_desApplicationId
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'desApplicationId' - ApplicationId
+-- * 'desApplicationId' - The unique identifier for the application. This identifier is displayed as the __Project ID__ on the Amazon Pinpoint console.
 deleteEventStream
     :: Text -- ^ 'desApplicationId'
     -> DeleteEventStream
@@ -61,7 +61,7 @@ deleteEventStream pApplicationId_
   = DeleteEventStream'{_desApplicationId =
                          pApplicationId_}
 
--- | ApplicationId
+-- | The unique identifier for the application. This identifier is displayed as the __Project ID__ on the Amazon Pinpoint console.
 desApplicationId :: Lens' DeleteEventStream Text
 desApplicationId = lens _desApplicationId (\ s a -> s{_desApplicationId = a})
 

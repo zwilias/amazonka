@@ -22,7 +22,9 @@ import Network.AWS.Prelude
 import Network.AWS.S3.Internal
 import Network.AWS.S3.Types.SseKMSEncryptedObjectsStatus
 
--- | Container for filter information of selection of KMS Encrypted S3 objects.
+-- | A container for filter information for the selection of S3 objects encrypted with AWS KMS.
+--
+--
 --
 -- /See:/ 'sseKMSEncryptedObjects' smart constructor.
 newtype SseKMSEncryptedObjects = SseKMSEncryptedObjects'{_skeoStatus
@@ -35,14 +37,14 @@ newtype SseKMSEncryptedObjects = SseKMSEncryptedObjects'{_skeoStatus
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'skeoStatus' - The replication for KMS encrypted S3 objects is disabled if status is not Enabled.
+-- * 'skeoStatus' - Specifies whether Amazon S3 replicates objects created with server-side encryption using a customer master key (CMK) stored in AWS Key Management Service.
 sseKMSEncryptedObjects
     :: SseKMSEncryptedObjectsStatus -- ^ 'skeoStatus'
     -> SseKMSEncryptedObjects
 sseKMSEncryptedObjects pStatus_
   = SseKMSEncryptedObjects'{_skeoStatus = pStatus_}
 
--- | The replication for KMS encrypted S3 objects is disabled if status is not Enabled.
+-- | Specifies whether Amazon S3 replicates objects created with server-side encryption using a customer master key (CMK) stored in AWS Key Management Service.
 skeoStatus :: Lens' SseKMSEncryptedObjects SseKMSEncryptedObjectsStatus
 skeoStatus = lens _skeoStatus (\ s a -> s{_skeoStatus = a})
 

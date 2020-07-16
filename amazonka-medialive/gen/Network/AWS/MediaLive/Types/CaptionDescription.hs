@@ -21,7 +21,7 @@ import Network.AWS.Lens
 import Network.AWS.MediaLive.Types.CaptionDestinationSettings
 import Network.AWS.Prelude
 
--- | Output groups for this Live Event. Output groups contain information about where streams should be distributed.
+-- | Caption Description
 --
 -- /See:/ 'captionDescription' smart constructor.
 data CaptionDescription = CaptionDescription'{_cdLanguageCode

@@ -35,6 +35,8 @@
 --
 -- If both tag keys and values are omitted from the request, resources are returned regardless of whether they have tag keys or values associated with them.
 --
+--
+-- This operation returns paginated results.
 module Network.AWS.Redshift.DescribeTags
     (
     -- * Creating a Request
@@ -58,6 +60,7 @@ module Network.AWS.Redshift.DescribeTags
     ) where
 
 import Network.AWS.Lens
+import Network.AWS.Pager
 import Network.AWS.Prelude
 import Network.AWS.Redshift.Types
 import Network.AWS.Redshift.Types.Product
@@ -84,9 +87,9 @@ data DescribeTags = DescribeTags'{_dtTagValues ::
 --
 -- * 'dtTagValues' - A tag value or values for which you want to return all matching resources that are associated with the specified value or values. For example, suppose that you have resources tagged with values called @admin@ and @test@ . If you specify both of these tag values in the request, Amazon Redshift returns a response with all resources that have either or both of these tag values associated with them.
 --
--- * 'dtResourceType' - The type of resource with which you want to view tags. Valid resource types are:      * Cluster     * CIDR/IP     * EC2 security group     * Snapshot     * Cluster security group     * Subnet group     * HSM connection     * HSM certificate     * Parameter group     * Snapshot copy grant For more information about Amazon Redshift resource types and constructing ARNs, go to <http://docs.aws.amazon.com/redshift/latest/mgmt/redshift-iam-access-control-overview.html#redshift-iam-access-control-specify-actions Specifying Policy Elements: Actions, Effects, Resources, and Principals> in the Amazon Redshift Cluster Management Guide. 
+-- * 'dtResourceType' - The type of resource with which you want to view tags. Valid resource types are:      * Cluster     * CIDR/IP     * EC2 security group     * Snapshot     * Cluster security group     * Subnet group     * HSM connection     * HSM certificate     * Parameter group     * Snapshot copy grant For more information about Amazon Redshift resource types and constructing ARNs, go to <https://docs.aws.amazon.com/redshift/latest/mgmt/redshift-iam-access-control-overview.html#redshift-iam-access-control-specify-actions Specifying Policy Elements: Actions, Effects, Resources, and Principals> in the Amazon Redshift Cluster Management Guide. 
 --
--- * 'dtResourceName' - The Amazon Resource Name (ARN) for which you want to describe the tag or tags. For example, @arn:aws:redshift:us-east-1:123456789:cluster:t1@ . 
+-- * 'dtResourceName' - The Amazon Resource Name (ARN) for which you want to describe the tag or tags. For example, @arn:aws:redshift:us-east-2:123456789:cluster:t1@ . 
 --
 -- * 'dtTagKeys' - A tag key or keys for which you want to return all matching resources that are associated with the specified key or keys. For example, suppose that you have resources tagged with keys called @owner@ and @environment@ . If you specify both of these tag keys in the request, Amazon Redshift returns a response with all resources that have either or both of these tag keys associated with them.
 --
@@ -105,11 +108,11 @@ describeTags
 dtTagValues :: Lens' DescribeTags [Text]
 dtTagValues = lens _dtTagValues (\ s a -> s{_dtTagValues = a}) . _Default . _Coerce
 
--- | The type of resource with which you want to view tags. Valid resource types are:      * Cluster     * CIDR/IP     * EC2 security group     * Snapshot     * Cluster security group     * Subnet group     * HSM connection     * HSM certificate     * Parameter group     * Snapshot copy grant For more information about Amazon Redshift resource types and constructing ARNs, go to <http://docs.aws.amazon.com/redshift/latest/mgmt/redshift-iam-access-control-overview.html#redshift-iam-access-control-specify-actions Specifying Policy Elements: Actions, Effects, Resources, and Principals> in the Amazon Redshift Cluster Management Guide. 
+-- | The type of resource with which you want to view tags. Valid resource types are:      * Cluster     * CIDR/IP     * EC2 security group     * Snapshot     * Cluster security group     * Subnet group     * HSM connection     * HSM certificate     * Parameter group     * Snapshot copy grant For more information about Amazon Redshift resource types and constructing ARNs, go to <https://docs.aws.amazon.com/redshift/latest/mgmt/redshift-iam-access-control-overview.html#redshift-iam-access-control-specify-actions Specifying Policy Elements: Actions, Effects, Resources, and Principals> in the Amazon Redshift Cluster Management Guide. 
 dtResourceType :: Lens' DescribeTags (Maybe Text)
 dtResourceType = lens _dtResourceType (\ s a -> s{_dtResourceType = a})
 
--- | The Amazon Resource Name (ARN) for which you want to describe the tag or tags. For example, @arn:aws:redshift:us-east-1:123456789:cluster:t1@ . 
+-- | The Amazon Resource Name (ARN) for which you want to describe the tag or tags. For example, @arn:aws:redshift:us-east-2:123456789:cluster:t1@ . 
 dtResourceName :: Lens' DescribeTags (Maybe Text)
 dtResourceName = lens _dtResourceName (\ s a -> s{_dtResourceName = a})
 
@@ -124,6 +127,13 @@ dtMarker = lens _dtMarker (\ s a -> s{_dtMarker = a})
 -- | The maximum number or response records to return in each call. If the number of remaining response records exceeds the specified @MaxRecords@ value, a value is returned in a @marker@ field of the response. You can retrieve the next set of records by retrying the command with the returned @marker@ value. 
 dtMaxRecords :: Lens' DescribeTags (Maybe Int)
 dtMaxRecords = lens _dtMaxRecords (\ s a -> s{_dtMaxRecords = a})
+
+instance AWSPager DescribeTags where
+        page rq rs
+          | stop (rs ^. dtrsMarker) = Nothing
+          | stop (rs ^. dtrsTaggedResources) = Nothing
+          | otherwise =
+            Just $ rq & dtMarker .~ rs ^. dtrsMarker
 
 instance AWSRequest DescribeTags where
         type Rs DescribeTags = DescribeTagsResponse

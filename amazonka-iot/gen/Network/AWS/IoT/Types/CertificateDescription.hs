@@ -17,7 +17,9 @@
 --
 module Network.AWS.IoT.Types.CertificateDescription where
 
+import Network.AWS.IoT.Types.CertificateMode
 import Network.AWS.IoT.Types.CertificateStatus
+import Network.AWS.IoT.Types.CertificateValidity
 import Network.AWS.IoT.Types.TransferData
 import Network.AWS.Lens
 import Network.AWS.Prelude
@@ -45,6 +47,11 @@ data CertificateDescription = CertificateDescription'{_cdStatus
                                                       !(Maybe Text),
                                                       _cdCertificateId ::
                                                       !(Maybe Text),
+                                                      _cdCertificateMode ::
+                                                      !(Maybe CertificateMode),
+                                                      _cdValidity ::
+                                                      !(Maybe
+                                                          CertificateValidity),
                                                       _cdCreationDate ::
                                                       !(Maybe POSIX),
                                                       _cdGenerationId ::
@@ -76,6 +83,10 @@ data CertificateDescription = CertificateDescription'{_cdStatus
 --
 -- * 'cdCertificateId' - The ID of the certificate.
 --
+-- * 'cdCertificateMode' - The mode of the certificate.
+--
+-- * 'cdValidity' - When the certificate is valid.
+--
 -- * 'cdCreationDate' - The date and time the certificate was created.
 --
 -- * 'cdGenerationId' - The generation ID of the certificate.
@@ -93,6 +104,7 @@ certificateDescription
                             _cdCertificatePem = Nothing,
                             _cdCertificateARN = Nothing,
                             _cdCertificateId = Nothing,
+                            _cdCertificateMode = Nothing, _cdValidity = Nothing,
                             _cdCreationDate = Nothing,
                             _cdGenerationId = Nothing,
                             _cdTransferData = Nothing,
@@ -130,6 +142,14 @@ cdCertificateARN = lens _cdCertificateARN (\ s a -> s{_cdCertificateARN = a})
 cdCertificateId :: Lens' CertificateDescription (Maybe Text)
 cdCertificateId = lens _cdCertificateId (\ s a -> s{_cdCertificateId = a})
 
+-- | The mode of the certificate.
+cdCertificateMode :: Lens' CertificateDescription (Maybe CertificateMode)
+cdCertificateMode = lens _cdCertificateMode (\ s a -> s{_cdCertificateMode = a})
+
+-- | When the certificate is valid.
+cdValidity :: Lens' CertificateDescription (Maybe CertificateValidity)
+cdValidity = lens _cdValidity (\ s a -> s{_cdValidity = a})
+
 -- | The date and time the certificate was created.
 cdCreationDate :: Lens' CertificateDescription (Maybe UTCTime)
 cdCreationDate = lens _cdCreationDate (\ s a -> s{_cdCreationDate = a}) . mapping _Time
@@ -158,6 +178,8 @@ instance FromJSON CertificateDescription where
                      <*> (x .:? "certificatePem")
                      <*> (x .:? "certificateArn")
                      <*> (x .:? "certificateId")
+                     <*> (x .:? "certificateMode")
+                     <*> (x .:? "validity")
                      <*> (x .:? "creationDate")
                      <*> (x .:? "generationId")
                      <*> (x .:? "transferData")

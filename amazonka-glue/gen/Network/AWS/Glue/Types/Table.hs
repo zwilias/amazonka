@@ -28,6 +28,7 @@ import Network.AWS.Prelude
 --
 -- /See:/ 'table' smart constructor.
 data Table = Table'{_tRetention :: !(Maybe Nat),
+                    _tIsRegisteredWithLakeFormation :: !(Maybe Bool),
                     _tCreatedBy :: !(Maybe Text),
                     _tTableType :: !(Maybe Text),
                     _tOwner :: !(Maybe Text),
@@ -48,42 +49,45 @@ data Table = Table'{_tRetention :: !(Maybe Nat),
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'tRetention' - Retention time for this table.
+-- * 'tRetention' - The retention time for this table.
 --
--- * 'tCreatedBy' - Person or entity who created the table.
+-- * 'tIsRegisteredWithLakeFormation' - Indicates whether the table has been registered with AWS Lake Formation.
+--
+-- * 'tCreatedBy' - The person or entity who created the table.
 --
 -- * 'tTableType' - The type of this table (@EXTERNAL_TABLE@ , @VIRTUAL_VIEW@ , etc.).
 --
--- * 'tOwner' - Owner of the table.
+-- * 'tOwner' - The owner of the table.
 --
 -- * 'tViewOriginalText' - If the table is a view, the original text of the view; otherwise @null@ .
 --
--- * 'tUpdateTime' - Last time the table was updated.
+-- * 'tUpdateTime' - The last time that the table was updated.
 --
 -- * 'tViewExpandedText' - If the table is a view, the expanded text of the view; otherwise @null@ .
 --
--- * 'tLastAnalyzedTime' - Last time column statistics were computed for this table.
+-- * 'tLastAnalyzedTime' - The last time that column statistics were computed for this table.
 --
 -- * 'tStorageDescriptor' - A storage descriptor containing information about the physical storage of this table.
 --
--- * 'tDatabaseName' - Name of the metadata database where the table metadata resides. For Hive compatibility, this must be all lowercase.
+-- * 'tDatabaseName' - The name of the database where the table metadata resides. For Hive compatibility, this must be all lowercase.
 --
--- * 'tParameters' - Properties associated with this table, as a list of key-value pairs.
+-- * 'tParameters' - These key-value pairs define properties associated with the table.
 --
--- * 'tLastAccessTime' - Last time the table was accessed. This is usually taken from HDFS, and may not be reliable.
+-- * 'tLastAccessTime' - The last time that the table was accessed. This is usually taken from HDFS, and might not be reliable.
 --
--- * 'tDescription' - Description of the table.
+-- * 'tDescription' - A description of the table.
 --
--- * 'tPartitionKeys' - A list of columns by which the table is partitioned. Only primitive types are supported as partition keys.
+-- * 'tPartitionKeys' - A list of columns by which the table is partitioned. Only primitive types are supported as partition keys. When you create a table used by Amazon Athena, and you do not specify any @partitionKeys@ , you must at least set the value of @partitionKeys@ to an empty list. For example: @"PartitionKeys": []@ 
 --
--- * 'tCreateTime' - Time when the table definition was created in the Data Catalog.
+-- * 'tCreateTime' - The time when the table definition was created in the Data Catalog.
 --
--- * 'tName' - Name of the table. For Hive compatibility, this must be entirely lowercase.
+-- * 'tName' - The table name. For Hive compatibility, this must be entirely lowercase.
 table
     :: Text -- ^ 'tName'
     -> Table
 table pName_
   = Table'{_tRetention = Nothing,
+           _tIsRegisteredWithLakeFormation = Nothing,
            _tCreatedBy = Nothing, _tTableType = Nothing,
            _tOwner = Nothing, _tViewOriginalText = Nothing,
            _tUpdateTime = Nothing, _tViewExpandedText = Nothing,
@@ -94,11 +98,15 @@ table pName_
            _tPartitionKeys = Nothing, _tCreateTime = Nothing,
            _tName = pName_}
 
--- | Retention time for this table.
+-- | The retention time for this table.
 tRetention :: Lens' Table (Maybe Natural)
 tRetention = lens _tRetention (\ s a -> s{_tRetention = a}) . mapping _Nat
 
--- | Person or entity who created the table.
+-- | Indicates whether the table has been registered with AWS Lake Formation.
+tIsRegisteredWithLakeFormation :: Lens' Table (Maybe Bool)
+tIsRegisteredWithLakeFormation = lens _tIsRegisteredWithLakeFormation (\ s a -> s{_tIsRegisteredWithLakeFormation = a})
+
+-- | The person or entity who created the table.
 tCreatedBy :: Lens' Table (Maybe Text)
 tCreatedBy = lens _tCreatedBy (\ s a -> s{_tCreatedBy = a})
 
@@ -106,7 +114,7 @@ tCreatedBy = lens _tCreatedBy (\ s a -> s{_tCreatedBy = a})
 tTableType :: Lens' Table (Maybe Text)
 tTableType = lens _tTableType (\ s a -> s{_tTableType = a})
 
--- | Owner of the table.
+-- | The owner of the table.
 tOwner :: Lens' Table (Maybe Text)
 tOwner = lens _tOwner (\ s a -> s{_tOwner = a})
 
@@ -114,7 +122,7 @@ tOwner = lens _tOwner (\ s a -> s{_tOwner = a})
 tViewOriginalText :: Lens' Table (Maybe Text)
 tViewOriginalText = lens _tViewOriginalText (\ s a -> s{_tViewOriginalText = a})
 
--- | Last time the table was updated.
+-- | The last time that the table was updated.
 tUpdateTime :: Lens' Table (Maybe UTCTime)
 tUpdateTime = lens _tUpdateTime (\ s a -> s{_tUpdateTime = a}) . mapping _Time
 
@@ -122,7 +130,7 @@ tUpdateTime = lens _tUpdateTime (\ s a -> s{_tUpdateTime = a}) . mapping _Time
 tViewExpandedText :: Lens' Table (Maybe Text)
 tViewExpandedText = lens _tViewExpandedText (\ s a -> s{_tViewExpandedText = a})
 
--- | Last time column statistics were computed for this table.
+-- | The last time that column statistics were computed for this table.
 tLastAnalyzedTime :: Lens' Table (Maybe UTCTime)
 tLastAnalyzedTime = lens _tLastAnalyzedTime (\ s a -> s{_tLastAnalyzedTime = a}) . mapping _Time
 
@@ -130,31 +138,31 @@ tLastAnalyzedTime = lens _tLastAnalyzedTime (\ s a -> s{_tLastAnalyzedTime = a})
 tStorageDescriptor :: Lens' Table (Maybe StorageDescriptor)
 tStorageDescriptor = lens _tStorageDescriptor (\ s a -> s{_tStorageDescriptor = a})
 
--- | Name of the metadata database where the table metadata resides. For Hive compatibility, this must be all lowercase.
+-- | The name of the database where the table metadata resides. For Hive compatibility, this must be all lowercase.
 tDatabaseName :: Lens' Table (Maybe Text)
 tDatabaseName = lens _tDatabaseName (\ s a -> s{_tDatabaseName = a})
 
--- | Properties associated with this table, as a list of key-value pairs.
+-- | These key-value pairs define properties associated with the table.
 tParameters :: Lens' Table (HashMap Text Text)
 tParameters = lens _tParameters (\ s a -> s{_tParameters = a}) . _Default . _Map
 
--- | Last time the table was accessed. This is usually taken from HDFS, and may not be reliable.
+-- | The last time that the table was accessed. This is usually taken from HDFS, and might not be reliable.
 tLastAccessTime :: Lens' Table (Maybe UTCTime)
 tLastAccessTime = lens _tLastAccessTime (\ s a -> s{_tLastAccessTime = a}) . mapping _Time
 
--- | Description of the table.
+-- | A description of the table.
 tDescription :: Lens' Table (Maybe Text)
 tDescription = lens _tDescription (\ s a -> s{_tDescription = a})
 
--- | A list of columns by which the table is partitioned. Only primitive types are supported as partition keys.
+-- | A list of columns by which the table is partitioned. Only primitive types are supported as partition keys. When you create a table used by Amazon Athena, and you do not specify any @partitionKeys@ , you must at least set the value of @partitionKeys@ to an empty list. For example: @"PartitionKeys": []@ 
 tPartitionKeys :: Lens' Table [Column]
 tPartitionKeys = lens _tPartitionKeys (\ s a -> s{_tPartitionKeys = a}) . _Default . _Coerce
 
--- | Time when the table definition was created in the Data Catalog.
+-- | The time when the table definition was created in the Data Catalog.
 tCreateTime :: Lens' Table (Maybe UTCTime)
 tCreateTime = lens _tCreateTime (\ s a -> s{_tCreateTime = a}) . mapping _Time
 
--- | Name of the table. For Hive compatibility, this must be entirely lowercase.
+-- | The table name. For Hive compatibility, this must be entirely lowercase.
 tName :: Lens' Table Text
 tName = lens _tName (\ s a -> s{_tName = a})
 
@@ -163,8 +171,10 @@ instance FromJSON Table where
           = withObject "Table"
               (\ x ->
                  Table' <$>
-                   (x .:? "Retention") <*> (x .:? "CreatedBy") <*>
-                     (x .:? "TableType")
+                   (x .:? "Retention") <*>
+                     (x .:? "IsRegisteredWithLakeFormation")
+                     <*> (x .:? "CreatedBy")
+                     <*> (x .:? "TableType")
                      <*> (x .:? "Owner")
                      <*> (x .:? "ViewOriginalText")
                      <*> (x .:? "UpdateTime")

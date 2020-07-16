@@ -20,7 +20,7 @@ module Network.AWS.SSM.Types.LoggingInfo where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | Information about an Amazon S3 bucket to write instance-level logs to.
+-- | Information about an S3 bucket to write instance-level logs to.
 --
 --
 --
@@ -34,11 +34,11 @@ data LoggingInfo = LoggingInfo'{_liS3KeyPrefix ::
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'liS3KeyPrefix' - (Optional) The Amazon S3 bucket subfolder. 
+-- * 'liS3KeyPrefix' - (Optional) The S3 bucket subfolder. 
 --
--- * 'liS3BucketName' - The name of an Amazon S3 bucket where execution logs are stored .
+-- * 'liS3BucketName' - The name of an S3 bucket where execution logs are stored .
 --
--- * 'liS3Region' - The region where the Amazon S3 bucket is located.
+-- * 'liS3Region' - The Region where the S3 bucket is located.
 loggingInfo
     :: Text -- ^ 'liS3BucketName'
     -> Text -- ^ 'liS3Region'
@@ -48,15 +48,15 @@ loggingInfo pS3BucketName_ pS3Region_
                  _liS3BucketName = pS3BucketName_,
                  _liS3Region = pS3Region_}
 
--- | (Optional) The Amazon S3 bucket subfolder. 
+-- | (Optional) The S3 bucket subfolder. 
 liS3KeyPrefix :: Lens' LoggingInfo (Maybe Text)
 liS3KeyPrefix = lens _liS3KeyPrefix (\ s a -> s{_liS3KeyPrefix = a})
 
--- | The name of an Amazon S3 bucket where execution logs are stored .
+-- | The name of an S3 bucket where execution logs are stored .
 liS3BucketName :: Lens' LoggingInfo Text
 liS3BucketName = lens _liS3BucketName (\ s a -> s{_liS3BucketName = a})
 
--- | The region where the Amazon S3 bucket is located.
+-- | The Region where the S3 bucket is located.
 liS3Region :: Lens' LoggingInfo Text
 liS3Region = lens _liS3Region (\ s a -> s{_liS3Region = a})
 

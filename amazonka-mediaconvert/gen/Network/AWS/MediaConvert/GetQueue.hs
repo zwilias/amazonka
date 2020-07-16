@@ -50,13 +50,13 @@ newtype GetQueue = GetQueue'{_gqName :: Text}
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'gqName' - The name of the queue.
+-- * 'gqName' - The name of the queue that you want information about.
 getQueue
     :: Text -- ^ 'gqName'
     -> GetQueue
 getQueue pName_ = GetQueue'{_gqName = pName_}
 
--- | The name of the queue.
+-- | The name of the queue that you want information about.
 gqName :: Lens' GetQueue Text
 gqName = lens _gqName (\ s a -> s{_gqName = a})
 
@@ -97,7 +97,7 @@ data GetQueueResponse = GetQueueResponse'{_gqrsQueue
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'gqrsQueue' - Undocumented member.
+-- * 'gqrsQueue' - You can use queues to manage the resources that are available to your AWS account for running multiple transcoding jobs at the same time. If you don't specify a queue, the service sends all jobs through the default queue. For more information, see https://docs.aws.amazon.com/mediaconvert/latest/ug/working-with-queues.html.
 --
 -- * 'gqrsResponseStatus' - -- | The response status code.
 getQueueResponse
@@ -107,7 +107,7 @@ getQueueResponse pResponseStatus_
   = GetQueueResponse'{_gqrsQueue = Nothing,
                       _gqrsResponseStatus = pResponseStatus_}
 
--- | Undocumented member.
+-- | You can use queues to manage the resources that are available to your AWS account for running multiple transcoding jobs at the same time. If you don't specify a queue, the service sends all jobs through the default queue. For more information, see https://docs.aws.amazon.com/mediaconvert/latest/ug/working-with-queues.html.
 gqrsQueue :: Lens' GetQueueResponse (Maybe Queue)
 gqrsQueue = lens _gqrsQueue (\ s a -> s{_gqrsQueue = a})
 

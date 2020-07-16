@@ -20,6 +20,7 @@ module Network.AWS.Greengrass.Types.UpdateTargetsArchitecture (
   UpdateTargetsArchitecture (
     ..
     , AARCH64
+    , Armv6l
     , Armv7l
     , X86_64
     )
@@ -37,6 +38,9 @@ data UpdateTargetsArchitecture = UpdateTargetsArchitecture' (CI
 pattern AARCH64 :: UpdateTargetsArchitecture
 pattern AARCH64 = UpdateTargetsArchitecture' "aarch64"
 
+pattern Armv6l :: UpdateTargetsArchitecture
+pattern Armv6l = UpdateTargetsArchitecture' "armv6l"
+
 pattern Armv7l :: UpdateTargetsArchitecture
 pattern Armv7l = UpdateTargetsArchitecture' "armv7l"
 
@@ -45,6 +49,7 @@ pattern X86_64 = UpdateTargetsArchitecture' "x86_64"
 
 {-# COMPLETE
   AARCH64,
+  Armv6l,
   Armv7l,
   X86_64,
   UpdateTargetsArchitecture' #-}
@@ -62,13 +67,15 @@ instance ToText UpdateTargetsArchitecture where
 instance Enum UpdateTargetsArchitecture where
     toEnum i = case i of
         0 -> AARCH64
-        1 -> Armv7l
-        2 -> X86_64
+        1 -> Armv6l
+        2 -> Armv7l
+        3 -> X86_64
         _ -> (error . showText) $ "Unknown index for UpdateTargetsArchitecture: " <> toText i
     fromEnum x = case x of
         AARCH64 -> 0
-        Armv7l -> 1
-        X86_64 -> 2
+        Armv6l -> 1
+        Armv7l -> 2
+        X86_64 -> 3
         UpdateTargetsArchitecture' name -> (error . showText) $ "Unknown UpdateTargetsArchitecture: " <> original name
 
 -- | Represents the bounds of /known/ $UpdateTargetsArchitecture.

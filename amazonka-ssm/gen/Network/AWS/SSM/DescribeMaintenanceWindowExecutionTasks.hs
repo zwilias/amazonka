@@ -18,9 +18,11 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- For a given Maintenance Window execution, lists the tasks that were executed.
+-- For a given maintenance window execution, lists the tasks that were run.
 --
 --
+--
+-- This operation returns paginated results.
 module Network.AWS.SSM.DescribeMaintenanceWindowExecutionTasks
     (
     -- * Creating a Request
@@ -42,6 +44,7 @@ module Network.AWS.SSM.DescribeMaintenanceWindowExecutionTasks
     ) where
 
 import Network.AWS.Lens
+import Network.AWS.Pager
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
@@ -77,7 +80,7 @@ data DescribeMaintenanceWindowExecutionTasks = DescribeMaintenanceWindowExecutio
 --
 -- * 'dmwetMaxResults' - The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.
 --
--- * 'dmwetWindowExecutionId' - The ID of the Maintenance Window execution whose task executions should be retrieved.
+-- * 'dmwetWindowExecutionId' - The ID of the maintenance window execution whose task executions should be retrieved.
 describeMaintenanceWindowExecutionTasks
     :: Text -- ^ 'dmwetWindowExecutionId'
     -> DescribeMaintenanceWindowExecutionTasks
@@ -102,9 +105,19 @@ dmwetNextToken = lens _dmwetNextToken (\ s a -> s{_dmwetNextToken = a})
 dmwetMaxResults :: Lens' DescribeMaintenanceWindowExecutionTasks (Maybe Natural)
 dmwetMaxResults = lens _dmwetMaxResults (\ s a -> s{_dmwetMaxResults = a}) . mapping _Nat
 
--- | The ID of the Maintenance Window execution whose task executions should be retrieved.
+-- | The ID of the maintenance window execution whose task executions should be retrieved.
 dmwetWindowExecutionId :: Lens' DescribeMaintenanceWindowExecutionTasks Text
 dmwetWindowExecutionId = lens _dmwetWindowExecutionId (\ s a -> s{_dmwetWindowExecutionId = a})
+
+instance AWSPager
+           DescribeMaintenanceWindowExecutionTasks
+         where
+        page rq rs
+          | stop (rs ^. dmwetrsNextToken) = Nothing
+          | stop (rs ^. dmwetrsWindowExecutionTaskIdentities) =
+            Nothing
+          | otherwise =
+            Just $ rq & dmwetNextToken .~ rs ^. dmwetrsNextToken
 
 instance AWSRequest
            DescribeMaintenanceWindowExecutionTasks

@@ -35,6 +35,7 @@ module Network.AWS.MQ.UpdateConfiguration
     -- * Response Lenses
     , ucrsARN
     , ucrsLatestRevision
+    , ucrsCreated
     , ucrsWarnings
     , ucrsName
     , ucrsId
@@ -95,7 +96,8 @@ instance AWSRequest UpdateConfiguration where
               (\ s h x ->
                  UpdateConfigurationResponse' <$>
                    (x .?> "arn") <*> (x .?> "latestRevision") <*>
-                     (x .?> "warnings" .!@ mempty)
+                     (x .?> "created")
+                     <*> (x .?> "warnings" .!@ mempty)
                      <*> (x .?> "name")
                      <*> (x .?> "id")
                      <*> (pure (fromEnum s)))
@@ -134,6 +136,8 @@ data UpdateConfigurationResponse = UpdateConfigurationResponse'{_ucrsARN
                                                                 ::
                                                                 !(Maybe
                                                                     ConfigurationRevision),
+                                                                _ucrsCreated ::
+                                                                !(Maybe POSIX),
                                                                 _ucrsWarnings ::
                                                                 !(Maybe
                                                                     [SanitizationWarning]),
@@ -154,6 +158,8 @@ data UpdateConfigurationResponse = UpdateConfigurationResponse'{_ucrsARN
 --
 -- * 'ucrsLatestRevision' - The latest revision of the configuration.
 --
+-- * 'ucrsCreated' - Required. The date and time of the configuration.
+--
 -- * 'ucrsWarnings' - The list of the first 20 warnings about the configuration XML elements or attributes that were sanitized.
 --
 -- * 'ucrsName' - Required. The name of the configuration. This value can contain only alphanumeric characters, dashes, periods, underscores, and tildes (- . _ ~). This value must be 1-150 characters long.
@@ -167,6 +173,7 @@ updateConfigurationResponse
 updateConfigurationResponse pResponseStatus_
   = UpdateConfigurationResponse'{_ucrsARN = Nothing,
                                  _ucrsLatestRevision = Nothing,
+                                 _ucrsCreated = Nothing,
                                  _ucrsWarnings = Nothing, _ucrsName = Nothing,
                                  _ucrsId = Nothing,
                                  _ucrsResponseStatus = pResponseStatus_}
@@ -178,6 +185,10 @@ ucrsARN = lens _ucrsARN (\ s a -> s{_ucrsARN = a})
 -- | The latest revision of the configuration.
 ucrsLatestRevision :: Lens' UpdateConfigurationResponse (Maybe ConfigurationRevision)
 ucrsLatestRevision = lens _ucrsLatestRevision (\ s a -> s{_ucrsLatestRevision = a})
+
+-- | Required. The date and time of the configuration.
+ucrsCreated :: Lens' UpdateConfigurationResponse (Maybe UTCTime)
+ucrsCreated = lens _ucrsCreated (\ s a -> s{_ucrsCreated = a}) . mapping _Time
 
 -- | The list of the first 20 warnings about the configuration XML elements or attributes that were sanitized.
 ucrsWarnings :: Lens' UpdateConfigurationResponse [SanitizationWarning]

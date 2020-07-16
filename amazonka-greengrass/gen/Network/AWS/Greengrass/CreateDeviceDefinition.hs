@@ -28,6 +28,7 @@ module Network.AWS.Greengrass.CreateDeviceDefinition
     , cddAmznClientToken
     , cddInitialVersion
     , cddName
+    , cddTags
 
     -- * Destructuring the Response
     , createDeviceDefinitionResponse
@@ -56,7 +57,9 @@ data CreateDeviceDefinition = CreateDeviceDefinition'{_cddAmznClientToken
                                                       _cddInitialVersion ::
                                                       !(Maybe
                                                           DeviceDefinitionVersion),
-                                                      _cddName :: !(Maybe Text)}
+                                                      _cddName :: !(Maybe Text),
+                                                      _cddTags ::
+                                                      !(Maybe (Map Text Text))}
                                 deriving (Eq, Read, Show, Data, Typeable,
                                           Generic)
 
@@ -69,12 +72,15 @@ data CreateDeviceDefinition = CreateDeviceDefinition'{_cddAmznClientToken
 -- * 'cddInitialVersion' - Information about the initial version of the device definition.
 --
 -- * 'cddName' - The name of the device definition.
+--
+-- * 'cddTags' - Tag(s) to add to the new resource.
 createDeviceDefinition
     :: CreateDeviceDefinition
 createDeviceDefinition
   = CreateDeviceDefinition'{_cddAmznClientToken =
                               Nothing,
-                            _cddInitialVersion = Nothing, _cddName = Nothing}
+                            _cddInitialVersion = Nothing, _cddName = Nothing,
+                            _cddTags = Nothing}
 
 -- | A client token used to correlate requests and responses.
 cddAmznClientToken :: Lens' CreateDeviceDefinition (Maybe Text)
@@ -87,6 +93,10 @@ cddInitialVersion = lens _cddInitialVersion (\ s a -> s{_cddInitialVersion = a})
 -- | The name of the device definition.
 cddName :: Lens' CreateDeviceDefinition (Maybe Text)
 cddName = lens _cddName (\ s a -> s{_cddName = a})
+
+-- | Tag(s) to add to the new resource.
+cddTags :: Lens' CreateDeviceDefinition (HashMap Text Text)
+cddTags = lens _cddTags (\ s a -> s{_cddTags = a}) . _Default . _Map
 
 instance AWSRequest CreateDeviceDefinition where
         type Rs CreateDeviceDefinition =
@@ -120,7 +130,7 @@ instance ToJSON CreateDeviceDefinition where
           = object
               (catMaybes
                  [("InitialVersion" .=) <$> _cddInitialVersion,
-                  ("Name" .=) <$> _cddName])
+                  ("Name" .=) <$> _cddName, ("tags" .=) <$> _cddTags])
 
 instance ToPath CreateDeviceDefinition where
         toPath = const "/greengrass/definition/devices"
@@ -166,7 +176,7 @@ data CreateDeviceDefinitionResponse = CreateDeviceDefinitionResponse'{_cddrsLate
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'cddrsLatestVersionARN' - The ARN of the latest version of the definition.
+-- * 'cddrsLatestVersionARN' - The ARN of the latest version associated with the definition.
 --
 -- * 'cddrsARN' - The ARN of the definition.
 --
@@ -176,7 +186,7 @@ data CreateDeviceDefinitionResponse = CreateDeviceDefinitionResponse'{_cddrsLate
 --
 -- * 'cddrsId' - The ID of the definition.
 --
--- * 'cddrsLatestVersion' - The latest version of the definition.
+-- * 'cddrsLatestVersion' - The ID of the latest version associated with the definition.
 --
 -- * 'cddrsLastUpdatedTimestamp' - The time, in milliseconds since the epoch, when the definition was last updated.
 --
@@ -194,7 +204,7 @@ createDeviceDefinitionResponse pResponseStatus_
                                     _cddrsLastUpdatedTimestamp = Nothing,
                                     _cddrsResponseStatus = pResponseStatus_}
 
--- | The ARN of the latest version of the definition.
+-- | The ARN of the latest version associated with the definition.
 cddrsLatestVersionARN :: Lens' CreateDeviceDefinitionResponse (Maybe Text)
 cddrsLatestVersionARN = lens _cddrsLatestVersionARN (\ s a -> s{_cddrsLatestVersionARN = a})
 
@@ -214,7 +224,7 @@ cddrsCreationTimestamp = lens _cddrsCreationTimestamp (\ s a -> s{_cddrsCreation
 cddrsId :: Lens' CreateDeviceDefinitionResponse (Maybe Text)
 cddrsId = lens _cddrsId (\ s a -> s{_cddrsId = a})
 
--- | The latest version of the definition.
+-- | The ID of the latest version associated with the definition.
 cddrsLatestVersion :: Lens' CreateDeviceDefinitionResponse (Maybe Text)
 cddrsLatestVersion = lens _cddrsLatestVersion (\ s a -> s{_cddrsLatestVersion = a})
 

@@ -20,7 +20,7 @@ module Network.AWS.MediaLive.Types.SmpteTtDestinationSettings where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | Placeholder documentation for SmpteTtDestinationSettings
+-- | Smpte Tt Destination Settings
 --
 -- /See:/ 'smpteTtDestinationSettings' smart constructor.
 data SmpteTtDestinationSettings = SmpteTtDestinationSettings'

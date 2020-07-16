@@ -20,7 +20,7 @@ module Network.AWS.RDS.Types.OptionVersion where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | The version for an option. Option group option versions are returned by the 'DescribeOptionGroupOptions' action.
+-- | The version for an option. Option group option versions are returned by the @DescribeOptionGroupOptions@ action.
 --
 --
 --

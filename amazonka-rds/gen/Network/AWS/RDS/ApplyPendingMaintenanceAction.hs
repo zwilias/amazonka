@@ -64,9 +64,9 @@ data ApplyPendingMaintenanceAction = ApplyPendingMaintenanceAction'{_apmaResourc
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'apmaResourceIdentifier' - The RDS Amazon Resource Name (ARN) of the resource that the pending maintenance action applies to. For information about creating an ARN, see <http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing Constructing an RDS Amazon Resource Name (ARN)> .
+-- * 'apmaResourceIdentifier' - The RDS Amazon Resource Name (ARN) of the resource that the pending maintenance action applies to. For information about creating an ARN, see <https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing Constructing an RDS Amazon Resource Name (ARN)> .
 --
--- * 'apmaApplyAction' - The pending maintenance action to apply to this resource. Valid values: @system-update@ , @db-upgrade@ 
+-- * 'apmaApplyAction' - The pending maintenance action to apply to this resource. Valid values: @system-update@ , @db-upgrade@ , @hardware-maintenance@ , @ca-certificate-rotation@ 
 --
 -- * 'apmaOptInType' - A value that specifies the type of opt-in request, or undoes an opt-in request. An opt-in request of type @immediate@ can't be undone. Valid values:     * @immediate@ - Apply the maintenance action immediately.     * @next-maintenance@ - Apply the maintenance action during the next maintenance window for the resource.     * @undo-opt-in@ - Cancel any existing @next-maintenance@ opt-in requests.
 applyPendingMaintenanceAction
@@ -81,11 +81,11 @@ applyPendingMaintenanceAction pResourceIdentifier_
                                    _apmaApplyAction = pApplyAction_,
                                    _apmaOptInType = pOptInType_}
 
--- | The RDS Amazon Resource Name (ARN) of the resource that the pending maintenance action applies to. For information about creating an ARN, see <http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing Constructing an RDS Amazon Resource Name (ARN)> .
+-- | The RDS Amazon Resource Name (ARN) of the resource that the pending maintenance action applies to. For information about creating an ARN, see <https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing Constructing an RDS Amazon Resource Name (ARN)> .
 apmaResourceIdentifier :: Lens' ApplyPendingMaintenanceAction Text
 apmaResourceIdentifier = lens _apmaResourceIdentifier (\ s a -> s{_apmaResourceIdentifier = a})
 
--- | The pending maintenance action to apply to this resource. Valid values: @system-update@ , @db-upgrade@ 
+-- | The pending maintenance action to apply to this resource. Valid values: @system-update@ , @db-upgrade@ , @hardware-maintenance@ , @ca-certificate-rotation@ 
 apmaApplyAction :: Lens' ApplyPendingMaintenanceAction Text
 apmaApplyAction = lens _apmaApplyAction (\ s a -> s{_apmaApplyAction = a})
 

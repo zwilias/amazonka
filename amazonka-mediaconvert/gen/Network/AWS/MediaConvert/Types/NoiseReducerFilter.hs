@@ -26,13 +26,14 @@ module Network.AWS.MediaConvert.Types.NoiseReducerFilter (
     , Mean
     , Sharpen
     , Spatial
+    , Temporal
     )
   ) where
 
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | Use Noise reducer filter (NoiseReducerFilter) to select one of the following spatial image filtering functions. To use this setting, you must also enable Noise reducer (NoiseReducer). * Bilateral is an edge preserving noise reduction filter * Mean (softest), Gaussian, Lanczos, and Sharpen (sharpest) are convolution filters * Conserve is a min/max noise reduction filter * Spatial is frequency-domain filter based on JND principles.
+-- | Use Noise reducer filter (NoiseReducerFilter) to select one of the following spatial image filtering functions. To use this setting, you must also enable Noise reducer (NoiseReducer). * Bilateral preserves edges while reducing noise. * Mean (softest), Gaussian, Lanczos, and Sharpen (sharpest) do convolution filtering. * Conserve does min/max noise reduction. * Spatial does frequency-domain filtering based on JND principles. * Temporal optimizes video quality for complex motion.
 data NoiseReducerFilter = NoiseReducerFilter' (CI
                                                  Text)
                             deriving (Eq, Ord, Read, Show, Data, Typeable,
@@ -59,6 +60,9 @@ pattern Sharpen = NoiseReducerFilter' "SHARPEN"
 pattern Spatial :: NoiseReducerFilter
 pattern Spatial = NoiseReducerFilter' "SPATIAL"
 
+pattern Temporal :: NoiseReducerFilter
+pattern Temporal = NoiseReducerFilter' "TEMPORAL"
+
 {-# COMPLETE
   Bilateral,
   Conserve,
@@ -67,6 +71,7 @@ pattern Spatial = NoiseReducerFilter' "SPATIAL"
   Mean,
   Sharpen,
   Spatial,
+  Temporal,
   NoiseReducerFilter' #-}
 
 instance FromText NoiseReducerFilter where
@@ -88,6 +93,7 @@ instance Enum NoiseReducerFilter where
         4 -> Mean
         5 -> Sharpen
         6 -> Spatial
+        7 -> Temporal
         _ -> (error . showText) $ "Unknown index for NoiseReducerFilter: " <> toText i
     fromEnum x = case x of
         Bilateral -> 0
@@ -97,6 +103,7 @@ instance Enum NoiseReducerFilter where
         Mean -> 4
         Sharpen -> 5
         Spatial -> 6
+        Temporal -> 7
         NoiseReducerFilter' name -> (error . showText) $ "Unknown NoiseReducerFilter: " <> original name
 
 -- | Represents the bounds of /known/ $NoiseReducerFilter.
@@ -104,7 +111,7 @@ instance Enum NoiseReducerFilter where
 --   This instance exists only for backward compatibility.
 instance Bounded NoiseReducerFilter where
     minBound = Bilateral
-    maxBound = Spatial
+    maxBound = Temporal
 
 instance Hashable     NoiseReducerFilter
 instance NFData       NoiseReducerFilter

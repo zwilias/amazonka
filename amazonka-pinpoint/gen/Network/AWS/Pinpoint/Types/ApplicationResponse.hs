@@ -20,41 +20,62 @@ module Network.AWS.Pinpoint.Types.ApplicationResponse where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | Application Response.
+-- | Provides information about an application.
+--
+--
 --
 -- /See:/ 'applicationResponse' smart constructor.
-data ApplicationResponse = ApplicationResponse'{_appName
-                                                :: !(Maybe Text),
-                                                _appId :: !(Maybe Text)}
+data ApplicationResponse = ApplicationResponse'{_appTags
+                                                :: !(Maybe (Map Text Text)),
+                                                _appId :: !Text,
+                                                _appARN :: !Text,
+                                                _appName :: !Text}
                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ApplicationResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'appName' - The display name of the application.
+-- * 'appTags' - A string-to-string map of key-value pairs that identifies the tags that are associated with the application. Each tag consists of a required tag key and an associated tag value.
 --
--- * 'appId' - The unique application ID.
+-- * 'appId' - The unique identifier for the application. This identifier is displayed as the __Project ID__ on the Amazon Pinpoint console.
+--
+-- * 'appARN' - The Amazon Resource Name (ARN) of the application.
+--
+-- * 'appName' - The display name of the application. This name is displayed as the __Project name__ on the Amazon Pinpoint console.
 applicationResponse
-    :: ApplicationResponse
-applicationResponse
-  = ApplicationResponse'{_appName = Nothing,
-                         _appId = Nothing}
+    :: Text -- ^ 'appId'
+    -> Text -- ^ 'appARN'
+    -> Text -- ^ 'appName'
+    -> ApplicationResponse
+applicationResponse pId_ pARN_ pName_
+  = ApplicationResponse'{_appTags = Nothing,
+                         _appId = pId_, _appARN = pARN_, _appName = pName_}
 
--- | The display name of the application.
-appName :: Lens' ApplicationResponse (Maybe Text)
-appName = lens _appName (\ s a -> s{_appName = a})
+-- | A string-to-string map of key-value pairs that identifies the tags that are associated with the application. Each tag consists of a required tag key and an associated tag value.
+appTags :: Lens' ApplicationResponse (HashMap Text Text)
+appTags = lens _appTags (\ s a -> s{_appTags = a}) . _Default . _Map
 
--- | The unique application ID.
-appId :: Lens' ApplicationResponse (Maybe Text)
+-- | The unique identifier for the application. This identifier is displayed as the __Project ID__ on the Amazon Pinpoint console.
+appId :: Lens' ApplicationResponse Text
 appId = lens _appId (\ s a -> s{_appId = a})
+
+-- | The Amazon Resource Name (ARN) of the application.
+appARN :: Lens' ApplicationResponse Text
+appARN = lens _appARN (\ s a -> s{_appARN = a})
+
+-- | The display name of the application. This name is displayed as the __Project name__ on the Amazon Pinpoint console.
+appName :: Lens' ApplicationResponse Text
+appName = lens _appName (\ s a -> s{_appName = a})
 
 instance FromJSON ApplicationResponse where
         parseJSON
           = withObject "ApplicationResponse"
               (\ x ->
                  ApplicationResponse' <$>
-                   (x .:? "Name") <*> (x .:? "Id"))
+                   (x .:? "tags" .!= mempty) <*> (x .: "Id") <*>
+                     (x .: "Arn")
+                     <*> (x .: "Name"))
 
 instance Hashable ApplicationResponse where
 

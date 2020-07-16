@@ -27,7 +27,7 @@ module Network.AWS.MediaLive.Types.AuthenticationScheme (
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | Placeholder documentation for AuthenticationScheme
+-- | Authentication Scheme
 data AuthenticationScheme = AuthenticationScheme' (CI
                                                      Text)
                               deriving (Eq, Ord, Read, Show, Data, Typeable,

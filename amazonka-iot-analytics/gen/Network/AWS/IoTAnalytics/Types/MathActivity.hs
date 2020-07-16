@@ -39,7 +39,7 @@ data MathActivity = MathActivity'{_maNext ::
 --
 -- * 'maName' - The name of the 'math' activity.
 --
--- * 'maAttribute' - The name of the attribute that will contain the result of the math operation.
+-- * 'maAttribute' - The name of the attribute that contains the result of the math operation.
 --
 -- * 'maMath' - An expression that uses one or more existing attributes and must return an integer value.
 mathActivity
@@ -59,7 +59,7 @@ maNext = lens _maNext (\ s a -> s{_maNext = a})
 maName :: Lens' MathActivity Text
 maName = lens _maName (\ s a -> s{_maName = a})
 
--- | The name of the attribute that will contain the result of the math operation.
+-- | The name of the attribute that contains the result of the math operation.
 maAttribute :: Lens' MathActivity Text
 maAttribute = lens _maAttribute (\ s a -> s{_maAttribute = a})
 

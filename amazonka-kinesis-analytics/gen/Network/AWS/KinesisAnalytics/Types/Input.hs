@@ -25,7 +25,7 @@ import Network.AWS.KinesisAnalytics.Types.SourceSchema
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | When you configure the application input, you specify the streaming source, the in-application stream name that is created, and the mapping between the two. For more information, see <http://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-it-works-input.html Configuring Application Input> . 
+-- | When you configure the application input, you specify the streaming source, the in-application stream name that is created, and the mapping between the two. For more information, see <https://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-it-works-input.html Configuring Application Input> . 
 --
 --
 --
@@ -46,9 +46,9 @@ data Input = Input'{_iInputParallelism ::
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'iInputParallelism' - Describes the number of in-application streams to create.  Data from your source is routed to these in-application input streams. (see <http://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-it-works-input.html Configuring Application Input> .
+-- * 'iInputParallelism' - Describes the number of in-application streams to create.  Data from your source is routed to these in-application input streams. (see <https://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-it-works-input.html Configuring Application Input> .
 --
--- * 'iInputProcessingConfiguration' - The 'InputProcessingConfiguration' for the input. An input processor transforms records as they are received from the stream, before the application's SQL code executes. Currently, the only input processing configuration available is 'InputLambdaProcessor' .
+-- * 'iInputProcessingConfiguration' - The <https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_InputProcessingConfiguration.html InputProcessingConfiguration> for the input. An input processor transforms records as they are received from the stream, before the application's SQL code executes. Currently, the only input processing configuration available is <https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_InputLambdaProcessor.html InputLambdaProcessor> .
 --
 -- * 'iKinesisStreamsInput' - If the streaming source is an Amazon Kinesis stream, identifies the stream's Amazon Resource Name (ARN) and an IAM role that enables Amazon Kinesis Analytics to access the stream on your behalf. Note: Either @KinesisStreamsInput@ or @KinesisFirehoseInput@ is required.
 --
@@ -69,11 +69,11 @@ input pNamePrefix_ pInputSchema_
            _iNamePrefix = pNamePrefix_,
            _iInputSchema = pInputSchema_}
 
--- | Describes the number of in-application streams to create.  Data from your source is routed to these in-application input streams. (see <http://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-it-works-input.html Configuring Application Input> .
+-- | Describes the number of in-application streams to create.  Data from your source is routed to these in-application input streams. (see <https://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-it-works-input.html Configuring Application Input> .
 iInputParallelism :: Lens' Input (Maybe InputParallelism)
 iInputParallelism = lens _iInputParallelism (\ s a -> s{_iInputParallelism = a})
 
--- | The 'InputProcessingConfiguration' for the input. An input processor transforms records as they are received from the stream, before the application's SQL code executes. Currently, the only input processing configuration available is 'InputLambdaProcessor' .
+-- | The <https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_InputProcessingConfiguration.html InputProcessingConfiguration> for the input. An input processor transforms records as they are received from the stream, before the application's SQL code executes. Currently, the only input processing configuration available is <https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_InputLambdaProcessor.html InputLambdaProcessor> .
 iInputProcessingConfiguration :: Lens' Input (Maybe InputProcessingConfiguration)
 iInputProcessingConfiguration = lens _iInputProcessingConfiguration (\ s a -> s{_iInputProcessingConfiguration = a})
 

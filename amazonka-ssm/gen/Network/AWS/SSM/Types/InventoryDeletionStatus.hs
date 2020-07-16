@@ -19,8 +19,8 @@
 module Network.AWS.SSM.Types.InventoryDeletionStatus (
   InventoryDeletionStatus (
     ..
-    , Complete
-    , InProgress
+    , IDSComplete
+    , IDSInProgress
     )
   ) where
 
@@ -32,15 +32,15 @@ data InventoryDeletionStatus = InventoryDeletionStatus' (CI
                                  deriving (Eq, Ord, Read, Show, Data, Typeable,
                                            Generic)
 
-pattern Complete :: InventoryDeletionStatus
-pattern Complete = InventoryDeletionStatus' "Complete"
+pattern IDSComplete :: InventoryDeletionStatus
+pattern IDSComplete = InventoryDeletionStatus' "Complete"
 
-pattern InProgress :: InventoryDeletionStatus
-pattern InProgress = InventoryDeletionStatus' "InProgress"
+pattern IDSInProgress :: InventoryDeletionStatus
+pattern IDSInProgress = InventoryDeletionStatus' "InProgress"
 
 {-# COMPLETE
-  Complete,
-  InProgress,
+  IDSComplete,
+  IDSInProgress,
   InventoryDeletionStatus' #-}
 
 instance FromText InventoryDeletionStatus where
@@ -55,20 +55,20 @@ instance ToText InventoryDeletionStatus where
 --   fromEnum is a partial function, and will error on values unknown at generation time.
 instance Enum InventoryDeletionStatus where
     toEnum i = case i of
-        0 -> Complete
-        1 -> InProgress
+        0 -> IDSComplete
+        1 -> IDSInProgress
         _ -> (error . showText) $ "Unknown index for InventoryDeletionStatus: " <> toText i
     fromEnum x = case x of
-        Complete -> 0
-        InProgress -> 1
+        IDSComplete -> 0
+        IDSInProgress -> 1
         InventoryDeletionStatus' name -> (error . showText) $ "Unknown InventoryDeletionStatus: " <> original name
 
 -- | Represents the bounds of /known/ $InventoryDeletionStatus.
 --   AWS may have added more since the source was generated.
 --   This instance exists only for backward compatibility.
 instance Bounded InventoryDeletionStatus where
-    minBound = Complete
-    maxBound = InProgress
+    minBound = IDSComplete
+    maxBound = IDSInProgress
 
 instance Hashable     InventoryDeletionStatus
 instance NFData       InventoryDeletionStatus

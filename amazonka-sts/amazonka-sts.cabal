@@ -49,6 +49,7 @@ library
         , Network.AWS.STS.AssumeRoleWithSAML
         , Network.AWS.STS.AssumeRoleWithWebIdentity
         , Network.AWS.STS.DecodeAuthorizationMessage
+        , Network.AWS.STS.GetAccessKeyInfo
         , Network.AWS.STS.GetCallerIdentity
         , Network.AWS.STS.GetFederationToken
         , Network.AWS.STS.GetSessionToken
@@ -58,7 +59,9 @@ library
     other-modules:
           Network.AWS.STS.Types.AssumedRoleUser
         , Network.AWS.STS.Types.FederatedUser
+        , Network.AWS.STS.Types.PolicyDescriptorType
         , Network.AWS.STS.Types.Product
+        , Network.AWS.STS.Types.Tag
 
     build-depends:
           amazonka-core == 1.6.1.*

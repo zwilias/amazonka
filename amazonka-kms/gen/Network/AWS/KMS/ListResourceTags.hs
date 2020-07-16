@@ -139,7 +139,7 @@ data ListResourceTagsResponse = ListResourceTagsResponse'{_lrtrsTruncated
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'lrtrsTruncated' - A flag that indicates whether there are more items in the list. When this value is true, the list in this response is truncated. To get more items, pass the value of the @NextMarker@ element in this response to the @Marker@ parameter in a subsequent request.
+-- * 'lrtrsTruncated' - A flag that indicates whether there are more items in the list. When this value is true, the list in this response is truncated. To get more items, pass the value of the @NextMarker@ element in thisresponse to the @Marker@ parameter in a subsequent request.
 --
 -- * 'lrtrsNextMarker' - When @Truncated@ is true, this element is present and contains the value to use for the @Marker@ parameter in a subsequent request. Do not assume or infer any information from this value.
 --
@@ -155,7 +155,7 @@ listResourceTagsResponse pResponseStatus_
                               _lrtrsNextMarker = Nothing, _lrtrsTags = Nothing,
                               _lrtrsResponseStatus = pResponseStatus_}
 
--- | A flag that indicates whether there are more items in the list. When this value is true, the list in this response is truncated. To get more items, pass the value of the @NextMarker@ element in this response to the @Marker@ parameter in a subsequent request.
+-- | A flag that indicates whether there are more items in the list. When this value is true, the list in this response is truncated. To get more items, pass the value of the @NextMarker@ element in thisresponse to the @Marker@ parameter in a subsequent request.
 lrtrsTruncated :: Lens' ListResourceTagsResponse (Maybe Bool)
 lrtrsTruncated = lens _lrtrsTruncated (\ s a -> s{_lrtrsTruncated = a})
 

@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Modifies an existing classifier (a @GrokClassifier@ , @XMLClassifier@ , or @JsonClassifier@ , depending on which field is present).
+-- Modifies an existing classifier (a @GrokClassifier@ , an @XMLClassifier@ , a @JsonClassifier@ , or a @CsvClassifier@ , depending on which field is present).
 --
 --
 module Network.AWS.Glue.UpdateClassifier
@@ -29,6 +29,7 @@ module Network.AWS.Glue.UpdateClassifier
     -- * Request Lenses
     , ucGrokClassifier
     , ucXMLClassifier
+    , ucCSVClassifier
     , ucJSONClassifier
 
     -- * Destructuring the Response
@@ -51,6 +52,8 @@ data UpdateClassifier = UpdateClassifier'{_ucGrokClassifier
                                           !(Maybe UpdateGrokClassifierRequest),
                                           _ucXMLClassifier ::
                                           !(Maybe UpdateXMLClassifierRequest),
+                                          _ucCSVClassifier ::
+                                          !(Maybe UpdateCSVClassifierRequest),
                                           _ucJSONClassifier ::
                                           !(Maybe UpdateJSONClassifierRequest)}
                           deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -63,12 +66,15 @@ data UpdateClassifier = UpdateClassifier'{_ucGrokClassifier
 --
 -- * 'ucXMLClassifier' - An @XMLClassifier@ object with updated fields.
 --
+-- * 'ucCSVClassifier' - A @CsvClassifier@ object with updated fields.
+--
 -- * 'ucJSONClassifier' - A @JsonClassifier@ object with updated fields.
 updateClassifier
     :: UpdateClassifier
 updateClassifier
   = UpdateClassifier'{_ucGrokClassifier = Nothing,
                       _ucXMLClassifier = Nothing,
+                      _ucCSVClassifier = Nothing,
                       _ucJSONClassifier = Nothing}
 
 -- | A @GrokClassifier@ object with updated fields.
@@ -78,6 +84,10 @@ ucGrokClassifier = lens _ucGrokClassifier (\ s a -> s{_ucGrokClassifier = a})
 -- | An @XMLClassifier@ object with updated fields.
 ucXMLClassifier :: Lens' UpdateClassifier (Maybe UpdateXMLClassifierRequest)
 ucXMLClassifier = lens _ucXMLClassifier (\ s a -> s{_ucXMLClassifier = a})
+
+-- | A @CsvClassifier@ object with updated fields.
+ucCSVClassifier :: Lens' UpdateClassifier (Maybe UpdateCSVClassifierRequest)
+ucCSVClassifier = lens _ucCSVClassifier (\ s a -> s{_ucCSVClassifier = a})
 
 -- | A @JsonClassifier@ object with updated fields.
 ucJSONClassifier :: Lens' UpdateClassifier (Maybe UpdateJSONClassifierRequest)
@@ -110,6 +120,7 @@ instance ToJSON UpdateClassifier where
               (catMaybes
                  [("GrokClassifier" .=) <$> _ucGrokClassifier,
                   ("XMLClassifier" .=) <$> _ucXMLClassifier,
+                  ("CsvClassifier" .=) <$> _ucCSVClassifier,
                   ("JsonClassifier" .=) <$> _ucJSONClassifier])
 
 instance ToPath UpdateClassifier where

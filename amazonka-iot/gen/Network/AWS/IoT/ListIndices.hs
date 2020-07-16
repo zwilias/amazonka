@@ -21,6 +21,8 @@
 -- Lists the search indices.
 --
 --
+--
+-- This operation returns paginated results.
 module Network.AWS.IoT.ListIndices
     (
     -- * Creating a Request
@@ -42,6 +44,7 @@ module Network.AWS.IoT.ListIndices
 import Network.AWS.IoT.Types
 import Network.AWS.IoT.Types.Product
 import Network.AWS.Lens
+import Network.AWS.Pager
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
@@ -56,7 +59,7 @@ data ListIndices = ListIndices'{_liNextToken ::
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'liNextToken' - The token used to get the next set of results, or __null__ if there are no additional results.
+-- * 'liNextToken' - The token used to get the next set of results, or @null@ if there are no additional results.
 --
 -- * 'liMaxResults' - The maximum number of results to return at one time.
 listIndices
@@ -65,13 +68,20 @@ listIndices
   = ListIndices'{_liNextToken = Nothing,
                  _liMaxResults = Nothing}
 
--- | The token used to get the next set of results, or __null__ if there are no additional results.
+-- | The token used to get the next set of results, or @null@ if there are no additional results.
 liNextToken :: Lens' ListIndices (Maybe Text)
 liNextToken = lens _liNextToken (\ s a -> s{_liNextToken = a})
 
 -- | The maximum number of results to return at one time.
 liMaxResults :: Lens' ListIndices (Maybe Natural)
 liMaxResults = lens _liMaxResults (\ s a -> s{_liMaxResults = a}) . mapping _Nat
+
+instance AWSPager ListIndices where
+        page rq rs
+          | stop (rs ^. lirsNextToken) = Nothing
+          | stop (rs ^. lirsIndexNames) = Nothing
+          | otherwise =
+            Just $ rq & liNextToken .~ rs ^. lirsNextToken
 
 instance AWSRequest ListIndices where
         type Rs ListIndices = ListIndicesResponse
@@ -112,7 +122,7 @@ data ListIndicesResponse = ListIndicesResponse'{_lirsNextToken
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'lirsNextToken' - The token used to get the next set of results, or __null__ if there are no additional results.
+-- * 'lirsNextToken' - The token used to get the next set of results, or @null@ if there are no additional results.
 --
 -- * 'lirsIndexNames' - The index names.
 --
@@ -125,7 +135,7 @@ listIndicesResponse pResponseStatus_
                          _lirsIndexNames = Nothing,
                          _lirsResponseStatus = pResponseStatus_}
 
--- | The token used to get the next set of results, or __null__ if there are no additional results.
+-- | The token used to get the next set of results, or @null@ if there are no additional results.
 lirsNextToken :: Lens' ListIndicesResponse (Maybe Text)
 lirsNextToken = lens _lirsNextToken (\ s a -> s{_lirsNextToken = a})
 

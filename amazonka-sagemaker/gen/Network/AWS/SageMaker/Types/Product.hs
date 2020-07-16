@@ -18,48 +18,420 @@
 --
 module Network.AWS.SageMaker.Types.Product (
     module Network.AWS.SageMaker.Types.AlgorithmSpecification,
+    module Network.AWS.SageMaker.Types.AlgorithmStatusDetails,
+    module Network.AWS.SageMaker.Types.AlgorithmStatusItem,
+    module Network.AWS.SageMaker.Types.AlgorithmSummary,
+    module Network.AWS.SageMaker.Types.AlgorithmValidationProfile,
+    module Network.AWS.SageMaker.Types.AlgorithmValidationSpecification,
+    module Network.AWS.SageMaker.Types.AnnotationConsolidationConfig,
+    module Network.AWS.SageMaker.Types.AppDetails,
+    module Network.AWS.SageMaker.Types.AppSpecification,
+    module Network.AWS.SageMaker.Types.AutoMLCandidate,
+    module Network.AWS.SageMaker.Types.AutoMLCandidateStep,
+    module Network.AWS.SageMaker.Types.AutoMLChannel,
+    module Network.AWS.SageMaker.Types.AutoMLContainerDefinition,
+    module Network.AWS.SageMaker.Types.AutoMLDataSource,
+    module Network.AWS.SageMaker.Types.AutoMLJobArtifacts,
+    module Network.AWS.SageMaker.Types.AutoMLJobCompletionCriteria,
+    module Network.AWS.SageMaker.Types.AutoMLJobConfig,
+    module Network.AWS.SageMaker.Types.AutoMLJobObjective,
+    module Network.AWS.SageMaker.Types.AutoMLJobSummary,
+    module Network.AWS.SageMaker.Types.AutoMLOutputDataConfig,
+    module Network.AWS.SageMaker.Types.AutoMLS3DataSource,
+    module Network.AWS.SageMaker.Types.AutoMLSecurityConfig,
+    module Network.AWS.SageMaker.Types.CaptureContentTypeHeader,
+    module Network.AWS.SageMaker.Types.CaptureOption,
+    module Network.AWS.SageMaker.Types.CategoricalParameterRange,
+    module Network.AWS.SageMaker.Types.CategoricalParameterRangeSpecification,
     module Network.AWS.SageMaker.Types.Channel,
+    module Network.AWS.SageMaker.Types.ChannelSpecification,
+    module Network.AWS.SageMaker.Types.CheckpointConfig,
+    module Network.AWS.SageMaker.Types.CodeRepositorySummary,
+    module Network.AWS.SageMaker.Types.CognitoMemberDefinition,
+    module Network.AWS.SageMaker.Types.CollectionConfiguration,
+    module Network.AWS.SageMaker.Types.CompilationJobSummary,
     module Network.AWS.SageMaker.Types.ContainerDefinition,
+    module Network.AWS.SageMaker.Types.ContinuousParameterRange,
+    module Network.AWS.SageMaker.Types.ContinuousParameterRangeSpecification,
+    module Network.AWS.SageMaker.Types.DataCaptureConfig,
+    module Network.AWS.SageMaker.Types.DataCaptureConfigSummary,
+    module Network.AWS.SageMaker.Types.DataProcessing,
     module Network.AWS.SageMaker.Types.DataSource,
+    module Network.AWS.SageMaker.Types.DebugHookConfig,
+    module Network.AWS.SageMaker.Types.DebugRuleConfiguration,
+    module Network.AWS.SageMaker.Types.DebugRuleEvaluationStatus,
+    module Network.AWS.SageMaker.Types.DeployedImage,
     module Network.AWS.SageMaker.Types.DesiredWeightAndCapacity,
+    module Network.AWS.SageMaker.Types.DomainDetails,
     module Network.AWS.SageMaker.Types.EndpointConfigSummary,
+    module Network.AWS.SageMaker.Types.EndpointInput,
     module Network.AWS.SageMaker.Types.EndpointSummary,
+    module Network.AWS.SageMaker.Types.Experiment,
+    module Network.AWS.SageMaker.Types.ExperimentConfig,
+    module Network.AWS.SageMaker.Types.ExperimentSource,
+    module Network.AWS.SageMaker.Types.ExperimentSummary,
+    module Network.AWS.SageMaker.Types.FileSystemDataSource,
+    module Network.AWS.SageMaker.Types.Filter,
+    module Network.AWS.SageMaker.Types.FinalAutoMLJobObjectiveMetric,
+    module Network.AWS.SageMaker.Types.FinalHyperParameterTuningJobObjectiveMetric,
+    module Network.AWS.SageMaker.Types.FlowDefinitionOutputConfig,
+    module Network.AWS.SageMaker.Types.FlowDefinitionSummary,
+    module Network.AWS.SageMaker.Types.GitConfig,
+    module Network.AWS.SageMaker.Types.GitConfigForUpdate,
+    module Network.AWS.SageMaker.Types.HumanLoopActivationConditionsConfig,
+    module Network.AWS.SageMaker.Types.HumanLoopActivationConfig,
+    module Network.AWS.SageMaker.Types.HumanLoopConfig,
+    module Network.AWS.SageMaker.Types.HumanLoopRequestSource,
+    module Network.AWS.SageMaker.Types.HumanTaskConfig,
+    module Network.AWS.SageMaker.Types.HumanTaskUiSummary,
+    module Network.AWS.SageMaker.Types.HyperParameterAlgorithmSpecification,
+    module Network.AWS.SageMaker.Types.HyperParameterSpecification,
+    module Network.AWS.SageMaker.Types.HyperParameterTrainingJobDefinition,
+    module Network.AWS.SageMaker.Types.HyperParameterTrainingJobSummary,
+    module Network.AWS.SageMaker.Types.HyperParameterTuningJobConfig,
+    module Network.AWS.SageMaker.Types.HyperParameterTuningJobObjective,
+    module Network.AWS.SageMaker.Types.HyperParameterTuningJobSummary,
+    module Network.AWS.SageMaker.Types.HyperParameterTuningJobWarmStartConfig,
+    module Network.AWS.SageMaker.Types.InferenceSpecification,
+    module Network.AWS.SageMaker.Types.InputConfig,
+    module Network.AWS.SageMaker.Types.IntegerParameterRange,
+    module Network.AWS.SageMaker.Types.IntegerParameterRangeSpecification,
+    module Network.AWS.SageMaker.Types.JupyterServerAppSettings,
+    module Network.AWS.SageMaker.Types.KernelGatewayAppSettings,
+    module Network.AWS.SageMaker.Types.LabelCounters,
+    module Network.AWS.SageMaker.Types.LabelCountersForWorkteam,
+    module Network.AWS.SageMaker.Types.LabelingJobAlgorithmsConfig,
+    module Network.AWS.SageMaker.Types.LabelingJobDataAttributes,
+    module Network.AWS.SageMaker.Types.LabelingJobDataSource,
+    module Network.AWS.SageMaker.Types.LabelingJobForWorkteamSummary,
+    module Network.AWS.SageMaker.Types.LabelingJobInputConfig,
+    module Network.AWS.SageMaker.Types.LabelingJobOutput,
+    module Network.AWS.SageMaker.Types.LabelingJobOutputConfig,
+    module Network.AWS.SageMaker.Types.LabelingJobResourceConfig,
+    module Network.AWS.SageMaker.Types.LabelingJobS3DataSource,
+    module Network.AWS.SageMaker.Types.LabelingJobStoppingConditions,
+    module Network.AWS.SageMaker.Types.LabelingJobSummary,
+    module Network.AWS.SageMaker.Types.MemberDefinition,
+    module Network.AWS.SageMaker.Types.MetricData,
+    module Network.AWS.SageMaker.Types.MetricDefinition,
     module Network.AWS.SageMaker.Types.ModelArtifacts,
+    module Network.AWS.SageMaker.Types.ModelPackageContainerDefinition,
+    module Network.AWS.SageMaker.Types.ModelPackageStatusDetails,
+    module Network.AWS.SageMaker.Types.ModelPackageStatusItem,
+    module Network.AWS.SageMaker.Types.ModelPackageSummary,
+    module Network.AWS.SageMaker.Types.ModelPackageValidationProfile,
+    module Network.AWS.SageMaker.Types.ModelPackageValidationSpecification,
     module Network.AWS.SageMaker.Types.ModelSummary,
+    module Network.AWS.SageMaker.Types.MonitoringAppSpecification,
+    module Network.AWS.SageMaker.Types.MonitoringBaselineConfig,
+    module Network.AWS.SageMaker.Types.MonitoringClusterConfig,
+    module Network.AWS.SageMaker.Types.MonitoringConstraintsResource,
+    module Network.AWS.SageMaker.Types.MonitoringExecutionSummary,
+    module Network.AWS.SageMaker.Types.MonitoringInput,
+    module Network.AWS.SageMaker.Types.MonitoringJobDefinition,
+    module Network.AWS.SageMaker.Types.MonitoringOutput,
+    module Network.AWS.SageMaker.Types.MonitoringOutputConfig,
+    module Network.AWS.SageMaker.Types.MonitoringResources,
+    module Network.AWS.SageMaker.Types.MonitoringS3Output,
+    module Network.AWS.SageMaker.Types.MonitoringScheduleConfig,
+    module Network.AWS.SageMaker.Types.MonitoringScheduleSummary,
+    module Network.AWS.SageMaker.Types.MonitoringStatisticsResource,
+    module Network.AWS.SageMaker.Types.MonitoringStoppingCondition,
+    module Network.AWS.SageMaker.Types.NestedFilters,
+    module Network.AWS.SageMaker.Types.NetworkConfig,
     module Network.AWS.SageMaker.Types.NotebookInstanceLifecycleConfigSummary,
     module Network.AWS.SageMaker.Types.NotebookInstanceLifecycleHook,
     module Network.AWS.SageMaker.Types.NotebookInstanceSummary,
+    module Network.AWS.SageMaker.Types.NotificationConfiguration,
+    module Network.AWS.SageMaker.Types.ObjectiveStatusCounters,
+    module Network.AWS.SageMaker.Types.OutputConfig,
     module Network.AWS.SageMaker.Types.OutputDataConfig,
+    module Network.AWS.SageMaker.Types.ParameterRange,
+    module Network.AWS.SageMaker.Types.ParameterRanges,
+    module Network.AWS.SageMaker.Types.Parent,
+    module Network.AWS.SageMaker.Types.ParentHyperParameterTuningJob,
+    module Network.AWS.SageMaker.Types.ProcessingClusterConfig,
+    module Network.AWS.SageMaker.Types.ProcessingInput,
+    module Network.AWS.SageMaker.Types.ProcessingJob,
+    module Network.AWS.SageMaker.Types.ProcessingJobSummary,
+    module Network.AWS.SageMaker.Types.ProcessingOutput,
+    module Network.AWS.SageMaker.Types.ProcessingOutputConfig,
+    module Network.AWS.SageMaker.Types.ProcessingResources,
+    module Network.AWS.SageMaker.Types.ProcessingS3Input,
+    module Network.AWS.SageMaker.Types.ProcessingS3Output,
+    module Network.AWS.SageMaker.Types.ProcessingStoppingCondition,
     module Network.AWS.SageMaker.Types.ProductionVariant,
     module Network.AWS.SageMaker.Types.ProductionVariantSummary,
+    module Network.AWS.SageMaker.Types.PropertyNameQuery,
+    module Network.AWS.SageMaker.Types.PropertyNameSuggestion,
+    module Network.AWS.SageMaker.Types.PublicWorkforceTaskPrice,
+    module Network.AWS.SageMaker.Types.RenderableTask,
+    module Network.AWS.SageMaker.Types.RenderingError,
+    module Network.AWS.SageMaker.Types.ResolvedAttributes,
     module Network.AWS.SageMaker.Types.ResourceConfig,
+    module Network.AWS.SageMaker.Types.ResourceLimits,
+    module Network.AWS.SageMaker.Types.ResourceSpec,
+    module Network.AWS.SageMaker.Types.RetentionPolicy,
     module Network.AWS.SageMaker.Types.S3DataSource,
+    module Network.AWS.SageMaker.Types.ScheduleConfig,
+    module Network.AWS.SageMaker.Types.SearchExpression,
+    module Network.AWS.SageMaker.Types.SearchRecord,
+    module Network.AWS.SageMaker.Types.SecondaryStatusTransition,
+    module Network.AWS.SageMaker.Types.SharingSettings,
+    module Network.AWS.SageMaker.Types.ShuffleConfig,
+    module Network.AWS.SageMaker.Types.SourceAlgorithm,
+    module Network.AWS.SageMaker.Types.SourceAlgorithmSpecification,
+    module Network.AWS.SageMaker.Types.SourceIPConfig,
     module Network.AWS.SageMaker.Types.StoppingCondition,
+    module Network.AWS.SageMaker.Types.SubscribedWorkteam,
+    module Network.AWS.SageMaker.Types.SuggestionQuery,
     module Network.AWS.SageMaker.Types.Tag,
+    module Network.AWS.SageMaker.Types.TensorBoardAppSettings,
+    module Network.AWS.SageMaker.Types.TensorBoardOutputConfig,
+    module Network.AWS.SageMaker.Types.TrainingJob,
+    module Network.AWS.SageMaker.Types.TrainingJobDefinition,
+    module Network.AWS.SageMaker.Types.TrainingJobStatusCounters,
     module Network.AWS.SageMaker.Types.TrainingJobSummary,
-    module Network.AWS.SageMaker.Types.VPCConfig
+    module Network.AWS.SageMaker.Types.TrainingSpecification,
+    module Network.AWS.SageMaker.Types.TransformDataSource,
+    module Network.AWS.SageMaker.Types.TransformInput,
+    module Network.AWS.SageMaker.Types.TransformJobDefinition,
+    module Network.AWS.SageMaker.Types.TransformJobSummary,
+    module Network.AWS.SageMaker.Types.TransformOutput,
+    module Network.AWS.SageMaker.Types.TransformResources,
+    module Network.AWS.SageMaker.Types.TransformS3DataSource,
+    module Network.AWS.SageMaker.Types.Trial,
+    module Network.AWS.SageMaker.Types.TrialComponent,
+    module Network.AWS.SageMaker.Types.TrialComponentArtifact,
+    module Network.AWS.SageMaker.Types.TrialComponentMetricSummary,
+    module Network.AWS.SageMaker.Types.TrialComponentParameterValue,
+    module Network.AWS.SageMaker.Types.TrialComponentSimpleSummary,
+    module Network.AWS.SageMaker.Types.TrialComponentSource,
+    module Network.AWS.SageMaker.Types.TrialComponentSourceDetail,
+    module Network.AWS.SageMaker.Types.TrialComponentStatus,
+    module Network.AWS.SageMaker.Types.TrialComponentSummary,
+    module Network.AWS.SageMaker.Types.TrialSource,
+    module Network.AWS.SageMaker.Types.TrialSummary,
+    module Network.AWS.SageMaker.Types.TuningJobCompletionCriteria,
+    module Network.AWS.SageMaker.Types.USD,
+    module Network.AWS.SageMaker.Types.UiConfig,
+    module Network.AWS.SageMaker.Types.UiTemplate,
+    module Network.AWS.SageMaker.Types.UiTemplateInfo,
+    module Network.AWS.SageMaker.Types.UserContext,
+    module Network.AWS.SageMaker.Types.UserProfileDetails,
+    module Network.AWS.SageMaker.Types.UserSettings,
+    module Network.AWS.SageMaker.Types.VPCConfig,
+    module Network.AWS.SageMaker.Types.VariantProperty,
+    module Network.AWS.SageMaker.Types.Workforce,
+    module Network.AWS.SageMaker.Types.Workteam
   ) where
 
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.SageMaker.Types.AlgorithmSpecification
+import Network.AWS.SageMaker.Types.AlgorithmStatusDetails
+import Network.AWS.SageMaker.Types.AlgorithmStatusItem
+import Network.AWS.SageMaker.Types.AlgorithmSummary
+import Network.AWS.SageMaker.Types.AlgorithmValidationProfile
+import Network.AWS.SageMaker.Types.AlgorithmValidationSpecification
+import Network.AWS.SageMaker.Types.AnnotationConsolidationConfig
+import Network.AWS.SageMaker.Types.AppDetails
+import Network.AWS.SageMaker.Types.AppSpecification
+import Network.AWS.SageMaker.Types.AutoMLCandidate
+import Network.AWS.SageMaker.Types.AutoMLCandidateStep
+import Network.AWS.SageMaker.Types.AutoMLChannel
+import Network.AWS.SageMaker.Types.AutoMLContainerDefinition
+import Network.AWS.SageMaker.Types.AutoMLDataSource
+import Network.AWS.SageMaker.Types.AutoMLJobArtifacts
+import Network.AWS.SageMaker.Types.AutoMLJobCompletionCriteria
+import Network.AWS.SageMaker.Types.AutoMLJobConfig
+import Network.AWS.SageMaker.Types.AutoMLJobObjective
+import Network.AWS.SageMaker.Types.AutoMLJobSummary
+import Network.AWS.SageMaker.Types.AutoMLOutputDataConfig
+import Network.AWS.SageMaker.Types.AutoMLS3DataSource
+import Network.AWS.SageMaker.Types.AutoMLSecurityConfig
+import Network.AWS.SageMaker.Types.CaptureContentTypeHeader
+import Network.AWS.SageMaker.Types.CaptureOption
+import Network.AWS.SageMaker.Types.CategoricalParameterRange
+import Network.AWS.SageMaker.Types.CategoricalParameterRangeSpecification
 import Network.AWS.SageMaker.Types.Channel
+import Network.AWS.SageMaker.Types.ChannelSpecification
+import Network.AWS.SageMaker.Types.CheckpointConfig
+import Network.AWS.SageMaker.Types.CodeRepositorySummary
+import Network.AWS.SageMaker.Types.CognitoMemberDefinition
+import Network.AWS.SageMaker.Types.CollectionConfiguration
+import Network.AWS.SageMaker.Types.CompilationJobSummary
 import Network.AWS.SageMaker.Types.ContainerDefinition
+import Network.AWS.SageMaker.Types.ContinuousParameterRange
+import Network.AWS.SageMaker.Types.ContinuousParameterRangeSpecification
+import Network.AWS.SageMaker.Types.DataCaptureConfig
+import Network.AWS.SageMaker.Types.DataCaptureConfigSummary
+import Network.AWS.SageMaker.Types.DataProcessing
 import Network.AWS.SageMaker.Types.DataSource
+import Network.AWS.SageMaker.Types.DebugHookConfig
+import Network.AWS.SageMaker.Types.DebugRuleConfiguration
+import Network.AWS.SageMaker.Types.DebugRuleEvaluationStatus
+import Network.AWS.SageMaker.Types.DeployedImage
 import Network.AWS.SageMaker.Types.DesiredWeightAndCapacity
+import Network.AWS.SageMaker.Types.DomainDetails
 import Network.AWS.SageMaker.Types.EndpointConfigSummary
+import Network.AWS.SageMaker.Types.EndpointInput
 import Network.AWS.SageMaker.Types.EndpointSummary
+import Network.AWS.SageMaker.Types.Experiment
+import Network.AWS.SageMaker.Types.ExperimentConfig
+import Network.AWS.SageMaker.Types.ExperimentSource
+import Network.AWS.SageMaker.Types.ExperimentSummary
+import Network.AWS.SageMaker.Types.FileSystemDataSource
+import Network.AWS.SageMaker.Types.Filter
+import Network.AWS.SageMaker.Types.FinalAutoMLJobObjectiveMetric
+import Network.AWS.SageMaker.Types.FinalHyperParameterTuningJobObjectiveMetric
+import Network.AWS.SageMaker.Types.FlowDefinitionOutputConfig
+import Network.AWS.SageMaker.Types.FlowDefinitionSummary
+import Network.AWS.SageMaker.Types.GitConfig
+import Network.AWS.SageMaker.Types.GitConfigForUpdate
+import Network.AWS.SageMaker.Types.HumanLoopActivationConditionsConfig
+import Network.AWS.SageMaker.Types.HumanLoopActivationConfig
+import Network.AWS.SageMaker.Types.HumanLoopConfig
+import Network.AWS.SageMaker.Types.HumanLoopRequestSource
+import Network.AWS.SageMaker.Types.HumanTaskConfig
+import Network.AWS.SageMaker.Types.HumanTaskUiSummary
+import Network.AWS.SageMaker.Types.HyperParameterAlgorithmSpecification
+import Network.AWS.SageMaker.Types.HyperParameterSpecification
+import Network.AWS.SageMaker.Types.HyperParameterTrainingJobDefinition
+import Network.AWS.SageMaker.Types.HyperParameterTrainingJobSummary
+import Network.AWS.SageMaker.Types.HyperParameterTuningJobConfig
+import Network.AWS.SageMaker.Types.HyperParameterTuningJobObjective
+import Network.AWS.SageMaker.Types.HyperParameterTuningJobSummary
+import Network.AWS.SageMaker.Types.HyperParameterTuningJobWarmStartConfig
+import Network.AWS.SageMaker.Types.InferenceSpecification
+import Network.AWS.SageMaker.Types.InputConfig
+import Network.AWS.SageMaker.Types.IntegerParameterRange
+import Network.AWS.SageMaker.Types.IntegerParameterRangeSpecification
+import Network.AWS.SageMaker.Types.JupyterServerAppSettings
+import Network.AWS.SageMaker.Types.KernelGatewayAppSettings
+import Network.AWS.SageMaker.Types.LabelCounters
+import Network.AWS.SageMaker.Types.LabelCountersForWorkteam
+import Network.AWS.SageMaker.Types.LabelingJobAlgorithmsConfig
+import Network.AWS.SageMaker.Types.LabelingJobDataAttributes
+import Network.AWS.SageMaker.Types.LabelingJobDataSource
+import Network.AWS.SageMaker.Types.LabelingJobForWorkteamSummary
+import Network.AWS.SageMaker.Types.LabelingJobInputConfig
+import Network.AWS.SageMaker.Types.LabelingJobOutput
+import Network.AWS.SageMaker.Types.LabelingJobOutputConfig
+import Network.AWS.SageMaker.Types.LabelingJobResourceConfig
+import Network.AWS.SageMaker.Types.LabelingJobS3DataSource
+import Network.AWS.SageMaker.Types.LabelingJobStoppingConditions
+import Network.AWS.SageMaker.Types.LabelingJobSummary
+import Network.AWS.SageMaker.Types.MemberDefinition
+import Network.AWS.SageMaker.Types.MetricData
+import Network.AWS.SageMaker.Types.MetricDefinition
 import Network.AWS.SageMaker.Types.ModelArtifacts
+import Network.AWS.SageMaker.Types.ModelPackageContainerDefinition
+import Network.AWS.SageMaker.Types.ModelPackageStatusDetails
+import Network.AWS.SageMaker.Types.ModelPackageStatusItem
+import Network.AWS.SageMaker.Types.ModelPackageSummary
+import Network.AWS.SageMaker.Types.ModelPackageValidationProfile
+import Network.AWS.SageMaker.Types.ModelPackageValidationSpecification
 import Network.AWS.SageMaker.Types.ModelSummary
+import Network.AWS.SageMaker.Types.MonitoringAppSpecification
+import Network.AWS.SageMaker.Types.MonitoringBaselineConfig
+import Network.AWS.SageMaker.Types.MonitoringClusterConfig
+import Network.AWS.SageMaker.Types.MonitoringConstraintsResource
+import Network.AWS.SageMaker.Types.MonitoringExecutionSummary
+import Network.AWS.SageMaker.Types.MonitoringInput
+import Network.AWS.SageMaker.Types.MonitoringJobDefinition
+import Network.AWS.SageMaker.Types.MonitoringOutput
+import Network.AWS.SageMaker.Types.MonitoringOutputConfig
+import Network.AWS.SageMaker.Types.MonitoringResources
+import Network.AWS.SageMaker.Types.MonitoringS3Output
+import Network.AWS.SageMaker.Types.MonitoringScheduleConfig
+import Network.AWS.SageMaker.Types.MonitoringScheduleSummary
+import Network.AWS.SageMaker.Types.MonitoringStatisticsResource
+import Network.AWS.SageMaker.Types.MonitoringStoppingCondition
+import Network.AWS.SageMaker.Types.NestedFilters
+import Network.AWS.SageMaker.Types.NetworkConfig
 import Network.AWS.SageMaker.Types.NotebookInstanceLifecycleConfigSummary
 import Network.AWS.SageMaker.Types.NotebookInstanceLifecycleHook
 import Network.AWS.SageMaker.Types.NotebookInstanceSummary
+import Network.AWS.SageMaker.Types.NotificationConfiguration
+import Network.AWS.SageMaker.Types.ObjectiveStatusCounters
+import Network.AWS.SageMaker.Types.OutputConfig
 import Network.AWS.SageMaker.Types.OutputDataConfig
+import Network.AWS.SageMaker.Types.ParameterRange
+import Network.AWS.SageMaker.Types.ParameterRanges
+import Network.AWS.SageMaker.Types.Parent
+import Network.AWS.SageMaker.Types.ParentHyperParameterTuningJob
+import Network.AWS.SageMaker.Types.ProcessingClusterConfig
+import Network.AWS.SageMaker.Types.ProcessingInput
+import Network.AWS.SageMaker.Types.ProcessingJob
+import Network.AWS.SageMaker.Types.ProcessingJobSummary
+import Network.AWS.SageMaker.Types.ProcessingOutput
+import Network.AWS.SageMaker.Types.ProcessingOutputConfig
+import Network.AWS.SageMaker.Types.ProcessingResources
+import Network.AWS.SageMaker.Types.ProcessingS3Input
+import Network.AWS.SageMaker.Types.ProcessingS3Output
+import Network.AWS.SageMaker.Types.ProcessingStoppingCondition
 import Network.AWS.SageMaker.Types.ProductionVariant
 import Network.AWS.SageMaker.Types.ProductionVariantSummary
+import Network.AWS.SageMaker.Types.PropertyNameQuery
+import Network.AWS.SageMaker.Types.PropertyNameSuggestion
+import Network.AWS.SageMaker.Types.PublicWorkforceTaskPrice
+import Network.AWS.SageMaker.Types.RenderableTask
+import Network.AWS.SageMaker.Types.RenderingError
+import Network.AWS.SageMaker.Types.ResolvedAttributes
 import Network.AWS.SageMaker.Types.ResourceConfig
+import Network.AWS.SageMaker.Types.ResourceLimits
+import Network.AWS.SageMaker.Types.ResourceSpec
+import Network.AWS.SageMaker.Types.RetentionPolicy
 import Network.AWS.SageMaker.Types.S3DataSource
+import Network.AWS.SageMaker.Types.ScheduleConfig
+import Network.AWS.SageMaker.Types.SearchExpression
+import Network.AWS.SageMaker.Types.SearchRecord
+import Network.AWS.SageMaker.Types.SecondaryStatusTransition
+import Network.AWS.SageMaker.Types.SharingSettings
+import Network.AWS.SageMaker.Types.ShuffleConfig
+import Network.AWS.SageMaker.Types.SourceAlgorithm
+import Network.AWS.SageMaker.Types.SourceAlgorithmSpecification
+import Network.AWS.SageMaker.Types.SourceIPConfig
 import Network.AWS.SageMaker.Types.StoppingCondition
+import Network.AWS.SageMaker.Types.SubscribedWorkteam
+import Network.AWS.SageMaker.Types.SuggestionQuery
 import Network.AWS.SageMaker.Types.Tag
+import Network.AWS.SageMaker.Types.TensorBoardAppSettings
+import Network.AWS.SageMaker.Types.TensorBoardOutputConfig
+import Network.AWS.SageMaker.Types.TrainingJob
+import Network.AWS.SageMaker.Types.TrainingJobDefinition
+import Network.AWS.SageMaker.Types.TrainingJobStatusCounters
 import Network.AWS.SageMaker.Types.TrainingJobSummary
+import Network.AWS.SageMaker.Types.TrainingSpecification
+import Network.AWS.SageMaker.Types.TransformDataSource
+import Network.AWS.SageMaker.Types.TransformInput
+import Network.AWS.SageMaker.Types.TransformJobDefinition
+import Network.AWS.SageMaker.Types.TransformJobSummary
+import Network.AWS.SageMaker.Types.TransformOutput
+import Network.AWS.SageMaker.Types.TransformResources
+import Network.AWS.SageMaker.Types.TransformS3DataSource
+import Network.AWS.SageMaker.Types.Trial
+import Network.AWS.SageMaker.Types.TrialComponent
+import Network.AWS.SageMaker.Types.TrialComponentArtifact
+import Network.AWS.SageMaker.Types.TrialComponentMetricSummary
+import Network.AWS.SageMaker.Types.TrialComponentParameterValue
+import Network.AWS.SageMaker.Types.TrialComponentSimpleSummary
+import Network.AWS.SageMaker.Types.TrialComponentSource
+import Network.AWS.SageMaker.Types.TrialComponentSourceDetail
+import Network.AWS.SageMaker.Types.TrialComponentStatus
+import Network.AWS.SageMaker.Types.TrialComponentSummary
+import Network.AWS.SageMaker.Types.TrialSource
+import Network.AWS.SageMaker.Types.TrialSummary
+import Network.AWS.SageMaker.Types.TuningJobCompletionCriteria
+import Network.AWS.SageMaker.Types.USD
+import Network.AWS.SageMaker.Types.UiConfig
+import Network.AWS.SageMaker.Types.UiTemplate
+import Network.AWS.SageMaker.Types.UiTemplateInfo
+import Network.AWS.SageMaker.Types.UserContext
+import Network.AWS.SageMaker.Types.UserProfileDetails
+import Network.AWS.SageMaker.Types.UserSettings
 import Network.AWS.SageMaker.Types.VPCConfig
+import Network.AWS.SageMaker.Types.VariantProperty
+import Network.AWS.SageMaker.Types.Workforce
+import Network.AWS.SageMaker.Types.Workteam

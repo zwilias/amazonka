@@ -28,7 +28,8 @@ import Network.AWS.Prelude
 data LambdaFunctionScheduledEventDetails = LambdaFunctionScheduledEventDetails'{_lfsedInput
                                                                                 ::
                                                                                 !(Maybe
-                                                                                    Text),
+                                                                                    (Sensitive
+                                                                                       Text)),
                                                                                 _lfsedTimeoutInSeconds
                                                                                 ::
                                                                                 !(Maybe
@@ -36,8 +37,8 @@ data LambdaFunctionScheduledEventDetails = LambdaFunctionScheduledEventDetails'{
                                                                                 _lfsedResource
                                                                                 ::
                                                                                 !Text}
-                                             deriving (Eq, Read, Show, Data,
-                                                       Typeable, Generic)
+                                             deriving (Eq, Show, Data, Typeable,
+                                                       Generic)
 
 -- | Creates a value of 'LambdaFunctionScheduledEventDetails' with the minimum fields required to make a request.
 --
@@ -59,7 +60,7 @@ lambdaFunctionScheduledEventDetails pResource_
 
 -- | The JSON data input to the lambda function.
 lfsedInput :: Lens' LambdaFunctionScheduledEventDetails (Maybe Text)
-lfsedInput = lens _lfsedInput (\ s a -> s{_lfsedInput = a})
+lfsedInput = lens _lfsedInput (\ s a -> s{_lfsedInput = a}) . mapping _Sensitive
 
 -- | The maximum allowed duration of the lambda function.
 lfsedTimeoutInSeconds :: Lens' LambdaFunctionScheduledEventDetails (Maybe Integer)

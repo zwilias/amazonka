@@ -31,7 +31,6 @@ module Network.AWS.GuardDuty.Types.ThreatIntelSetFormat (
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | The format of the threatIntelSet.
 data ThreatIntelSetFormat = ThreatIntelSetFormat' (CI
                                                      Text)
                               deriving (Eq, Ord, Read, Show, Data, Typeable,

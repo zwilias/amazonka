@@ -35,14 +35,14 @@ newtype MsSmoothEncryptionSettings = MsSmoothEncryptionSettings'{_msesSpekeKeyPr
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'msesSpekeKeyProvider' - Undocumented member.
+-- * 'msesSpekeKeyProvider' - If your output group type is HLS, DASH, or Microsoft Smooth, use these settings when doing DRM encryption with a SPEKE-compliant key provider.  If your output group type is CMAF, use the SpekeKeyProviderCmaf settings instead.
 msSmoothEncryptionSettings
     :: MsSmoothEncryptionSettings
 msSmoothEncryptionSettings
   = MsSmoothEncryptionSettings'{_msesSpekeKeyProvider =
                                   Nothing}
 
--- | Undocumented member.
+-- | If your output group type is HLS, DASH, or Microsoft Smooth, use these settings when doing DRM encryption with a SPEKE-compliant key provider.  If your output group type is CMAF, use the SpekeKeyProviderCmaf settings instead.
 msesSpekeKeyProvider :: Lens' MsSmoothEncryptionSettings (Maybe SpekeKeyProvider)
 msesSpekeKeyProvider = lens _msesSpekeKeyProvider (\ s a -> s{_msesSpekeKeyProvider = a})
 

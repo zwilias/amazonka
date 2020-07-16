@@ -19,6 +19,8 @@ module Network.AWS.MediaPackage.Types.HlsPackage where
 
 import Network.AWS.Lens
 import Network.AWS.MediaPackage.Types.AdMarkers
+import Network.AWS.MediaPackage.Types.AdTriggersElement
+import Network.AWS.MediaPackage.Types.AdsOnDeliveryRestrictions
 import Network.AWS.MediaPackage.Types.HlsEncryption
 import Network.AWS.MediaPackage.Types.PlaylistType
 import Network.AWS.MediaPackage.Types.StreamSelection
@@ -27,8 +29,9 @@ import Network.AWS.Prelude
 -- | An HTTP Live Streaming (HLS) packaging configuration.
 --
 -- /See:/ 'hlsPackage' smart constructor.
-data HlsPackage = HlsPackage'{_hpUseAudioRenditionGroup
-                              :: !(Maybe Bool),
+data HlsPackage = HlsPackage'{_hpAdsOnDeliveryRestrictions
+                              :: !(Maybe AdsOnDeliveryRestrictions),
+                              _hpUseAudioRenditionGroup :: !(Maybe Bool),
                               _hpPlaylistType :: !(Maybe PlaylistType),
                               _hpSegmentDurationSeconds :: !(Maybe Int),
                               _hpProgramDateTimeIntervalSeconds :: !(Maybe Int),
@@ -36,12 +39,15 @@ data HlsPackage = HlsPackage'{_hpUseAudioRenditionGroup
                               _hpAdMarkers :: !(Maybe AdMarkers),
                               _hpEncryption :: !(Maybe HlsEncryption),
                               _hpIncludeIframeOnlyStream :: !(Maybe Bool),
+                              _hpAdTriggers :: !(Maybe [AdTriggersElement]),
                               _hpPlaylistWindowSeconds :: !(Maybe Int)}
                     deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'HlsPackage' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'hpAdsOnDeliveryRestrictions' - Undocumented member.
 --
 -- * 'hpUseAudioRenditionGroup' - When enabled, audio streams will be placed in rendition groups in the output.
 --
@@ -59,18 +65,26 @@ data HlsPackage = HlsPackage'{_hpUseAudioRenditionGroup
 --
 -- * 'hpIncludeIframeOnlyStream' - When enabled, an I-Frame only stream will be included in the output.
 --
+-- * 'hpAdTriggers' - Undocumented member.
+--
 -- * 'hpPlaylistWindowSeconds' - Time window (in seconds) contained in each parent manifest.
 hlsPackage
     :: HlsPackage
 hlsPackage
-  = HlsPackage'{_hpUseAudioRenditionGroup = Nothing,
+  = HlsPackage'{_hpAdsOnDeliveryRestrictions = Nothing,
+                _hpUseAudioRenditionGroup = Nothing,
                 _hpPlaylistType = Nothing,
                 _hpSegmentDurationSeconds = Nothing,
                 _hpProgramDateTimeIntervalSeconds = Nothing,
                 _hpStreamSelection = Nothing, _hpAdMarkers = Nothing,
                 _hpEncryption = Nothing,
                 _hpIncludeIframeOnlyStream = Nothing,
+                _hpAdTriggers = Nothing,
                 _hpPlaylistWindowSeconds = Nothing}
+
+-- | Undocumented member.
+hpAdsOnDeliveryRestrictions :: Lens' HlsPackage (Maybe AdsOnDeliveryRestrictions)
+hpAdsOnDeliveryRestrictions = lens _hpAdsOnDeliveryRestrictions (\ s a -> s{_hpAdsOnDeliveryRestrictions = a})
 
 -- | When enabled, audio streams will be placed in rendition groups in the output.
 hpUseAudioRenditionGroup :: Lens' HlsPackage (Maybe Bool)
@@ -104,6 +118,10 @@ hpEncryption = lens _hpEncryption (\ s a -> s{_hpEncryption = a})
 hpIncludeIframeOnlyStream :: Lens' HlsPackage (Maybe Bool)
 hpIncludeIframeOnlyStream = lens _hpIncludeIframeOnlyStream (\ s a -> s{_hpIncludeIframeOnlyStream = a})
 
+-- | Undocumented member.
+hpAdTriggers :: Lens' HlsPackage [AdTriggersElement]
+hpAdTriggers = lens _hpAdTriggers (\ s a -> s{_hpAdTriggers = a}) . _Default . _Coerce
+
 -- | Time window (in seconds) contained in each parent manifest.
 hpPlaylistWindowSeconds :: Lens' HlsPackage (Maybe Int)
 hpPlaylistWindowSeconds = lens _hpPlaylistWindowSeconds (\ s a -> s{_hpPlaylistWindowSeconds = a})
@@ -113,14 +131,16 @@ instance FromJSON HlsPackage where
           = withObject "HlsPackage"
               (\ x ->
                  HlsPackage' <$>
-                   (x .:? "useAudioRenditionGroup") <*>
-                     (x .:? "playlistType")
+                   (x .:? "adsOnDeliveryRestrictions") <*>
+                     (x .:? "useAudioRenditionGroup")
+                     <*> (x .:? "playlistType")
                      <*> (x .:? "segmentDurationSeconds")
                      <*> (x .:? "programDateTimeIntervalSeconds")
                      <*> (x .:? "streamSelection")
                      <*> (x .:? "adMarkers")
                      <*> (x .:? "encryption")
                      <*> (x .:? "includeIframeOnlyStream")
+                     <*> (x .:? "adTriggers" .!= mempty)
                      <*> (x .:? "playlistWindowSeconds"))
 
 instance Hashable HlsPackage where
@@ -131,7 +151,9 @@ instance ToJSON HlsPackage where
         toJSON HlsPackage'{..}
           = object
               (catMaybes
-                 [("useAudioRenditionGroup" .=) <$>
+                 [("adsOnDeliveryRestrictions" .=) <$>
+                    _hpAdsOnDeliveryRestrictions,
+                  ("useAudioRenditionGroup" .=) <$>
                     _hpUseAudioRenditionGroup,
                   ("playlistType" .=) <$> _hpPlaylistType,
                   ("segmentDurationSeconds" .=) <$>
@@ -143,5 +165,6 @@ instance ToJSON HlsPackage where
                   ("encryption" .=) <$> _hpEncryption,
                   ("includeIframeOnlyStream" .=) <$>
                     _hpIncludeIframeOnlyStream,
+                  ("adTriggers" .=) <$> _hpAdTriggers,
                   ("playlistWindowSeconds" .=) <$>
                     _hpPlaylistWindowSeconds])

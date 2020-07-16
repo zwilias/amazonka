@@ -47,11 +47,11 @@ data Output = Output'{_oCaptionDescriptions ::
 --
 -- * 'oExtension' - Use Extension (Extension) to specify the file extension for outputs in File output groups. If you do not specify a value, the service will use default extensions by container type as follows * MPEG-2 transport stream, m2ts * Quicktime, mov * MXF container, mxf * MPEG-4 container, mp4 * No Container, the service will use codec extensions (e.g. AAC, H265, H265, AC3)
 --
--- * 'oVideoDescription' - (VideoDescription) contains a group of video encoding settings. The specific video settings depend on the video codec you choose when you specify a value for Video codec (codec). Include one instance of (VideoDescription) per output.
+-- * 'oVideoDescription' - (VideoDescription) contains a group of video encoding settings. The specific video settings depend on the video codec that you choose when you specify a value for Video codec (codec). Include one instance of (VideoDescription) per output.
 --
--- * 'oContainerSettings' - Undocumented member.
+-- * 'oContainerSettings' - Container specific settings.
 --
--- * 'oOutputSettings' - Undocumented member.
+-- * 'oOutputSettings' - Specific settings for this type of output.
 --
 -- * 'oPreset' - Use Preset (Preset) to specifiy a preset for your transcoding settings. Provide the system or custom preset name. You can specify either Preset (Preset) or Container settings (ContainerSettings), but not both.
 --
@@ -76,15 +76,15 @@ oCaptionDescriptions = lens _oCaptionDescriptions (\ s a -> s{_oCaptionDescripti
 oExtension :: Lens' Output (Maybe Text)
 oExtension = lens _oExtension (\ s a -> s{_oExtension = a})
 
--- | (VideoDescription) contains a group of video encoding settings. The specific video settings depend on the video codec you choose when you specify a value for Video codec (codec). Include one instance of (VideoDescription) per output.
+-- | (VideoDescription) contains a group of video encoding settings. The specific video settings depend on the video codec that you choose when you specify a value for Video codec (codec). Include one instance of (VideoDescription) per output.
 oVideoDescription :: Lens' Output (Maybe VideoDescription)
 oVideoDescription = lens _oVideoDescription (\ s a -> s{_oVideoDescription = a})
 
--- | Undocumented member.
+-- | Container specific settings.
 oContainerSettings :: Lens' Output (Maybe ContainerSettings)
 oContainerSettings = lens _oContainerSettings (\ s a -> s{_oContainerSettings = a})
 
--- | Undocumented member.
+-- | Specific settings for this type of output.
 oOutputSettings :: Lens' Output (Maybe OutputSettings)
 oOutputSettings = lens _oOutputSettings (\ s a -> s{_oOutputSettings = a})
 

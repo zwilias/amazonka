@@ -27,6 +27,7 @@ module Network.AWS.SSM.ModifyDocumentPermission
       modifyDocumentPermission
     , ModifyDocumentPermission
     -- * Request Lenses
+    , mdpSharedDocumentVersion
     , mdpAccountIdsToAdd
     , mdpAccountIdsToRemove
     , mdpName
@@ -47,8 +48,10 @@ import Network.AWS.SSM.Types
 import Network.AWS.SSM.Types.Product
 
 -- | /See:/ 'modifyDocumentPermission' smart constructor.
-data ModifyDocumentPermission = ModifyDocumentPermission'{_mdpAccountIdsToAdd
-                                                          :: !(Maybe [Text]),
+data ModifyDocumentPermission = ModifyDocumentPermission'{_mdpSharedDocumentVersion
+                                                          :: !(Maybe Text),
+                                                          _mdpAccountIdsToAdd ::
+                                                          !(Maybe [Text]),
                                                           _mdpAccountIdsToRemove
                                                           :: !(Maybe [Text]),
                                                           _mdpName :: !Text,
@@ -60,6 +63,8 @@ data ModifyDocumentPermission = ModifyDocumentPermission'{_mdpAccountIdsToAdd
 -- | Creates a value of 'ModifyDocumentPermission' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'mdpSharedDocumentVersion' - (Optional) The version of the document to share. If it's not specified, the system choose the @Default@ version to share.
 --
 -- * 'mdpAccountIdsToAdd' - The AWS user accounts that should have access to the document. The account IDs can either be a group of account IDs or /All/ .
 --
@@ -73,11 +78,16 @@ modifyDocumentPermission
     -> DocumentPermissionType -- ^ 'mdpPermissionType'
     -> ModifyDocumentPermission
 modifyDocumentPermission pName_ pPermissionType_
-  = ModifyDocumentPermission'{_mdpAccountIdsToAdd =
-                                Nothing,
+  = ModifyDocumentPermission'{_mdpSharedDocumentVersion
+                                = Nothing,
+                              _mdpAccountIdsToAdd = Nothing,
                               _mdpAccountIdsToRemove = Nothing,
                               _mdpName = pName_,
                               _mdpPermissionType = pPermissionType_}
+
+-- | (Optional) The version of the document to share. If it's not specified, the system choose the @Default@ version to share.
+mdpSharedDocumentVersion :: Lens' ModifyDocumentPermission (Maybe Text)
+mdpSharedDocumentVersion = lens _mdpSharedDocumentVersion (\ s a -> s{_mdpSharedDocumentVersion = a})
 
 -- | The AWS user accounts that should have access to the document. The account IDs can either be a group of account IDs or /All/ .
 mdpAccountIdsToAdd :: Lens' ModifyDocumentPermission [Text]
@@ -122,7 +132,9 @@ instance ToJSON ModifyDocumentPermission where
         toJSON ModifyDocumentPermission'{..}
           = object
               (catMaybes
-                 [("AccountIdsToAdd" .=) <$> _mdpAccountIdsToAdd,
+                 [("SharedDocumentVersion" .=) <$>
+                    _mdpSharedDocumentVersion,
+                  ("AccountIdsToAdd" .=) <$> _mdpAccountIdsToAdd,
                   ("AccountIdsToRemove" .=) <$> _mdpAccountIdsToRemove,
                   Just ("Name" .= _mdpName),
                   Just ("PermissionType" .= _mdpPermissionType)])

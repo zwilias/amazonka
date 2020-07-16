@@ -38,6 +38,7 @@ data SecretListEntry = SecretListEntry'{_sleLastChangedDate
                                         _sleRotationEnabled :: !(Maybe Bool),
                                         _sleKMSKeyId :: !(Maybe Text),
                                         _sleName :: !(Maybe Text),
+                                        _sleOwningService :: !(Maybe Text),
                                         _sleLastRotatedDate :: !(Maybe POSIX),
                                         _sleLastAccessedDate :: !(Maybe POSIX),
                                         _sleDescription :: !(Maybe Text),
@@ -51,7 +52,7 @@ data SecretListEntry = SecretListEntry'{_sleLastChangedDate
 --
 -- * 'sleLastChangedDate' - The last date and time that this secret was modified in any way.
 --
--- * 'sleARN' - The Amazon Resource Name (ARN) of the secret. For more information about ARNs in Secrets Manager, see <http://docs.aws.amazon.com/http:/docs.aws.amazon.com/secretsmanager/latest/userguide/reference_iam-permissions.html#iam-resources Policy Resources> in the /AWS Secrets Manager User Guide/ .
+-- * 'sleARN' - The Amazon Resource Name (ARN) of the secret. For more information about ARNs in Secrets Manager, see <https://docs.aws.amazon.com/secretsmanager/latest/userguide/reference_iam-permissions.html#iam-resources Policy Resources> in the /AWS Secrets Manager User Guide/ .
 --
 -- * 'sleSecretVersionsToStages' - A list of all of the currently assigned @SecretVersionStage@ staging labels and the @SecretVersionId@ that each is attached to. Staging labels are used to keep track of the different versions during the rotation process.
 --
@@ -59,11 +60,13 @@ data SecretListEntry = SecretListEntry'{_sleLastChangedDate
 --
 -- * 'sleDeletedDate' - The date and time on which this secret was deleted. Not present on active secrets. The secret can be recovered until the number of days in the recovery window has passed, as specified in the @RecoveryWindowInDays@ parameter of the 'DeleteSecret' operation.
 --
--- * 'sleRotationEnabled' - Indicated whether automatic, scheduled rotation is enabled for this secret.
+-- * 'sleRotationEnabled' - Indicates whether automatic, scheduled rotation is enabled for this secret.
 --
 -- * 'sleKMSKeyId' - The ARN or alias of the AWS KMS customer master key (CMK) that's used to encrypt the @SecretString@ and @SecretBinary@ fields in each version of the secret. If you don't provide a key, then Secrets Manager defaults to encrypting the secret fields with the default KMS CMK (the one named @awssecretsmanager@ ) for this account.
 --
 -- * 'sleName' - The friendly name of the secret. You can use forward slashes in the name to represent a path hierarchy. For example, @/prod/databases/dbserver1@ could represent the secret for a server named @dbserver1@ in the folder @databases@ in the folder @prod@ . 
+--
+-- * 'sleOwningService' - Returns the name of the service that created the secret.
 --
 -- * 'sleLastRotatedDate' - The last date and time that the rotation process for this secret was invoked.
 --
@@ -84,6 +87,7 @@ secretListEntry
                      _sleDeletedDate = Nothing,
                      _sleRotationEnabled = Nothing,
                      _sleKMSKeyId = Nothing, _sleName = Nothing,
+                     _sleOwningService = Nothing,
                      _sleLastRotatedDate = Nothing,
                      _sleLastAccessedDate = Nothing,
                      _sleDescription = Nothing,
@@ -93,7 +97,7 @@ secretListEntry
 sleLastChangedDate :: Lens' SecretListEntry (Maybe UTCTime)
 sleLastChangedDate = lens _sleLastChangedDate (\ s a -> s{_sleLastChangedDate = a}) . mapping _Time
 
--- | The Amazon Resource Name (ARN) of the secret. For more information about ARNs in Secrets Manager, see <http://docs.aws.amazon.com/http:/docs.aws.amazon.com/secretsmanager/latest/userguide/reference_iam-permissions.html#iam-resources Policy Resources> in the /AWS Secrets Manager User Guide/ .
+-- | The Amazon Resource Name (ARN) of the secret. For more information about ARNs in Secrets Manager, see <https://docs.aws.amazon.com/secretsmanager/latest/userguide/reference_iam-permissions.html#iam-resources Policy Resources> in the /AWS Secrets Manager User Guide/ .
 sleARN :: Lens' SecretListEntry (Maybe Text)
 sleARN = lens _sleARN (\ s a -> s{_sleARN = a})
 
@@ -109,7 +113,7 @@ sleRotationRules = lens _sleRotationRules (\ s a -> s{_sleRotationRules = a})
 sleDeletedDate :: Lens' SecretListEntry (Maybe UTCTime)
 sleDeletedDate = lens _sleDeletedDate (\ s a -> s{_sleDeletedDate = a}) . mapping _Time
 
--- | Indicated whether automatic, scheduled rotation is enabled for this secret.
+-- | Indicates whether automatic, scheduled rotation is enabled for this secret.
 sleRotationEnabled :: Lens' SecretListEntry (Maybe Bool)
 sleRotationEnabled = lens _sleRotationEnabled (\ s a -> s{_sleRotationEnabled = a})
 
@@ -120,6 +124,10 @@ sleKMSKeyId = lens _sleKMSKeyId (\ s a -> s{_sleKMSKeyId = a})
 -- | The friendly name of the secret. You can use forward slashes in the name to represent a path hierarchy. For example, @/prod/databases/dbserver1@ could represent the secret for a server named @dbserver1@ in the folder @databases@ in the folder @prod@ . 
 sleName :: Lens' SecretListEntry (Maybe Text)
 sleName = lens _sleName (\ s a -> s{_sleName = a})
+
+-- | Returns the name of the service that created the secret.
+sleOwningService :: Lens' SecretListEntry (Maybe Text)
+sleOwningService = lens _sleOwningService (\ s a -> s{_sleOwningService = a})
 
 -- | The last date and time that the rotation process for this secret was invoked.
 sleLastRotatedDate :: Lens' SecretListEntry (Maybe UTCTime)
@@ -153,6 +161,7 @@ instance FromJSON SecretListEntry where
                      <*> (x .:? "RotationEnabled")
                      <*> (x .:? "KmsKeyId")
                      <*> (x .:? "Name")
+                     <*> (x .:? "OwningService")
                      <*> (x .:? "LastRotatedDate")
                      <*> (x .:? "LastAccessedDate")
                      <*> (x .:? "Description")

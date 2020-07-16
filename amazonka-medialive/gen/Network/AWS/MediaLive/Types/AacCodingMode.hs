@@ -30,7 +30,7 @@ module Network.AWS.MediaLive.Types.AacCodingMode (
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | Placeholder documentation for AacCodingMode
+-- | Aac Coding Mode
 data AacCodingMode = AacCodingMode' (CI Text)
                        deriving (Eq, Ord, Read, Show, Data, Typeable,
                                  Generic)

@@ -27,7 +27,7 @@ module Network.AWS.MediaLive.Types.InputLossActionForMsSmoothOut (
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | Placeholder documentation for InputLossActionForMsSmoothOut
+-- | Input Loss Action For Ms Smooth Out
 data InputLossActionForMsSmoothOut = InputLossActionForMsSmoothOut' (CI
                                                                        Text)
                                        deriving (Eq, Ord, Read, Show, Data,

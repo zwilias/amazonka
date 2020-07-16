@@ -19,9 +19,9 @@
 module Network.AWS.KMS.Types.AlgorithmSpec (
   AlgorithmSpec (
     ..
-    , RsaesOaepSha1
-    , RsaesOaepSha256
-    , RsaesPKCS1V15
+    , ASRsaesOaepSha1
+    , ASRsaesOaepSha256
+    , ASRsaesPKCS1V15
     )
   ) where
 
@@ -32,19 +32,19 @@ data AlgorithmSpec = AlgorithmSpec' (CI Text)
                        deriving (Eq, Ord, Read, Show, Data, Typeable,
                                  Generic)
 
-pattern RsaesOaepSha1 :: AlgorithmSpec
-pattern RsaesOaepSha1 = AlgorithmSpec' "RSAES_OAEP_SHA_1"
+pattern ASRsaesOaepSha1 :: AlgorithmSpec
+pattern ASRsaesOaepSha1 = AlgorithmSpec' "RSAES_OAEP_SHA_1"
 
-pattern RsaesOaepSha256 :: AlgorithmSpec
-pattern RsaesOaepSha256 = AlgorithmSpec' "RSAES_OAEP_SHA_256"
+pattern ASRsaesOaepSha256 :: AlgorithmSpec
+pattern ASRsaesOaepSha256 = AlgorithmSpec' "RSAES_OAEP_SHA_256"
 
-pattern RsaesPKCS1V15 :: AlgorithmSpec
-pattern RsaesPKCS1V15 = AlgorithmSpec' "RSAES_PKCS1_V1_5"
+pattern ASRsaesPKCS1V15 :: AlgorithmSpec
+pattern ASRsaesPKCS1V15 = AlgorithmSpec' "RSAES_PKCS1_V1_5"
 
 {-# COMPLETE
-  RsaesOaepSha1,
-  RsaesOaepSha256,
-  RsaesPKCS1V15,
+  ASRsaesOaepSha1,
+  ASRsaesOaepSha256,
+  ASRsaesPKCS1V15,
   AlgorithmSpec' #-}
 
 instance FromText AlgorithmSpec where
@@ -59,22 +59,22 @@ instance ToText AlgorithmSpec where
 --   fromEnum is a partial function, and will error on values unknown at generation time.
 instance Enum AlgorithmSpec where
     toEnum i = case i of
-        0 -> RsaesOaepSha1
-        1 -> RsaesOaepSha256
-        2 -> RsaesPKCS1V15
+        0 -> ASRsaesOaepSha1
+        1 -> ASRsaesOaepSha256
+        2 -> ASRsaesPKCS1V15
         _ -> (error . showText) $ "Unknown index for AlgorithmSpec: " <> toText i
     fromEnum x = case x of
-        RsaesOaepSha1 -> 0
-        RsaesOaepSha256 -> 1
-        RsaesPKCS1V15 -> 2
+        ASRsaesOaepSha1 -> 0
+        ASRsaesOaepSha256 -> 1
+        ASRsaesPKCS1V15 -> 2
         AlgorithmSpec' name -> (error . showText) $ "Unknown AlgorithmSpec: " <> original name
 
 -- | Represents the bounds of /known/ $AlgorithmSpec.
 --   AWS may have added more since the source was generated.
 --   This instance exists only for backward compatibility.
 instance Bounded AlgorithmSpec where
-    minBound = RsaesOaepSha1
-    maxBound = RsaesPKCS1V15
+    minBound = ASRsaesOaepSha1
+    maxBound = ASRsaesPKCS1V15
 
 instance Hashable     AlgorithmSpec
 instance NFData       AlgorithmSpec

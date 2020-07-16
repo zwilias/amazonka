@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Retrieves information about when the specified access key was last used. The information includes the date and time of last use, along with the AWS service and region that were specified in the last request made with that key.
+-- Retrieves information about when the specified access key was last used. The information includes the date and time of last use, along with the AWS service and Region that were specified in the last request made with that key.
 --
 --
 module Network.AWS.IAM.GetAccessKeyLastUsed
@@ -55,7 +55,7 @@ newtype GetAccessKeyLastUsed = GetAccessKeyLastUsed'{_gakluAccessKeyId
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'gakluAccessKeyId' - The identifier of an access key. This parameter allows (per its <http://wikipedia.org/wiki/regex regex pattern> ) a string of characters that can consist of any upper or lowercased letter or digit.
+-- * 'gakluAccessKeyId' - The identifier of an access key. This parameter allows (through its <http://wikipedia.org/wiki/regex regex pattern> ) a string of characters that can consist of any upper or lowercased letter or digit.
 getAccessKeyLastUsed
     :: AccessKey -- ^ 'gakluAccessKeyId'
     -> GetAccessKeyLastUsed
@@ -63,7 +63,7 @@ getAccessKeyLastUsed pAccessKeyId_
   = GetAccessKeyLastUsed'{_gakluAccessKeyId =
                             pAccessKeyId_}
 
--- | The identifier of an access key. This parameter allows (per its <http://wikipedia.org/wiki/regex regex pattern> ) a string of characters that can consist of any upper or lowercased letter or digit.
+-- | The identifier of an access key. This parameter allows (through its <http://wikipedia.org/wiki/regex regex pattern> ) a string of characters that can consist of any upper or lowercased letter or digit.
 gakluAccessKeyId :: Lens' GetAccessKeyLastUsed AccessKey
 gakluAccessKeyId = lens _gakluAccessKeyId (\ s a -> s{_gakluAccessKeyId = a})
 

@@ -21,7 +21,9 @@ import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.S3.Internal
 
--- | Specifies the use of SSE-S3 to encrypt delievered Inventory reports.
+-- | Specifies the use of SSE-S3 to encrypt delivered inventory reports.
+--
+--
 --
 -- /See:/ 'sSES3' smart constructor.
 data SSES3 = SSES3'

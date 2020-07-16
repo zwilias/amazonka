@@ -19,12 +19,12 @@
 module Network.AWS.MediaConvert.Types.H265AdaptiveQuantization (
   H265AdaptiveQuantization (
     ..
-    , High
-    , Higher
-    , Low
-    , Max
-    , Medium
-    , Off
+    , HAQHigh
+    , HAQHigher
+    , HAQLow
+    , HAQMax
+    , HAQMedium
+    , HAQOff
     )
   ) where
 
@@ -37,31 +37,31 @@ data H265AdaptiveQuantization = H265AdaptiveQuantization' (CI
                                   deriving (Eq, Ord, Read, Show, Data, Typeable,
                                             Generic)
 
-pattern High :: H265AdaptiveQuantization
-pattern High = H265AdaptiveQuantization' "HIGH"
+pattern HAQHigh :: H265AdaptiveQuantization
+pattern HAQHigh = H265AdaptiveQuantization' "HIGH"
 
-pattern Higher :: H265AdaptiveQuantization
-pattern Higher = H265AdaptiveQuantization' "HIGHER"
+pattern HAQHigher :: H265AdaptiveQuantization
+pattern HAQHigher = H265AdaptiveQuantization' "HIGHER"
 
-pattern Low :: H265AdaptiveQuantization
-pattern Low = H265AdaptiveQuantization' "LOW"
+pattern HAQLow :: H265AdaptiveQuantization
+pattern HAQLow = H265AdaptiveQuantization' "LOW"
 
-pattern Max :: H265AdaptiveQuantization
-pattern Max = H265AdaptiveQuantization' "MAX"
+pattern HAQMax :: H265AdaptiveQuantization
+pattern HAQMax = H265AdaptiveQuantization' "MAX"
 
-pattern Medium :: H265AdaptiveQuantization
-pattern Medium = H265AdaptiveQuantization' "MEDIUM"
+pattern HAQMedium :: H265AdaptiveQuantization
+pattern HAQMedium = H265AdaptiveQuantization' "MEDIUM"
 
-pattern Off :: H265AdaptiveQuantization
-pattern Off = H265AdaptiveQuantization' "OFF"
+pattern HAQOff :: H265AdaptiveQuantization
+pattern HAQOff = H265AdaptiveQuantization' "OFF"
 
 {-# COMPLETE
-  High,
-  Higher,
-  Low,
-  Max,
-  Medium,
-  Off,
+  HAQHigh,
+  HAQHigher,
+  HAQLow,
+  HAQMax,
+  HAQMedium,
+  HAQOff,
   H265AdaptiveQuantization' #-}
 
 instance FromText H265AdaptiveQuantization where
@@ -76,28 +76,28 @@ instance ToText H265AdaptiveQuantization where
 --   fromEnum is a partial function, and will error on values unknown at generation time.
 instance Enum H265AdaptiveQuantization where
     toEnum i = case i of
-        0 -> High
-        1 -> Higher
-        2 -> Low
-        3 -> Max
-        4 -> Medium
-        5 -> Off
+        0 -> HAQHigh
+        1 -> HAQHigher
+        2 -> HAQLow
+        3 -> HAQMax
+        4 -> HAQMedium
+        5 -> HAQOff
         _ -> (error . showText) $ "Unknown index for H265AdaptiveQuantization: " <> toText i
     fromEnum x = case x of
-        High -> 0
-        Higher -> 1
-        Low -> 2
-        Max -> 3
-        Medium -> 4
-        Off -> 5
+        HAQHigh -> 0
+        HAQHigher -> 1
+        HAQLow -> 2
+        HAQMax -> 3
+        HAQMedium -> 4
+        HAQOff -> 5
         H265AdaptiveQuantization' name -> (error . showText) $ "Unknown H265AdaptiveQuantization: " <> original name
 
 -- | Represents the bounds of /known/ $H265AdaptiveQuantization.
 --   AWS may have added more since the source was generated.
 --   This instance exists only for backward compatibility.
 instance Bounded H265AdaptiveQuantization where
-    minBound = High
-    maxBound = Off
+    minBound = HAQHigh
+    maxBound = HAQOff
 
 instance Hashable     H265AdaptiveQuantization
 instance NFData       H265AdaptiveQuantization

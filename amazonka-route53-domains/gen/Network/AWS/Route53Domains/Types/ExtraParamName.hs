@@ -27,6 +27,8 @@ module Network.AWS.Route53Domains.Types.ExtraParamName (
     , BirthDepartment
     , BrandNumber
     , CaBusinessEntityType
+    , CaLegalRepresentative
+    , CaLegalRepresentativeCapacity
     , CaLegalType
     , DocumentNumber
     , DunsNumber
@@ -37,6 +39,7 @@ module Network.AWS.Route53Domains.Types.ExtraParamName (
     , FiIdNumber
     , FiNationality
     , FiOrganizationType
+    , ItNationality
     , ItPin
     , ItRegistrantEntityType
     , RuPassportData
@@ -79,6 +82,12 @@ pattern BrandNumber = ExtraParamName' "BRAND_NUMBER"
 pattern CaBusinessEntityType :: ExtraParamName
 pattern CaBusinessEntityType = ExtraParamName' "CA_BUSINESS_ENTITY_TYPE"
 
+pattern CaLegalRepresentative :: ExtraParamName
+pattern CaLegalRepresentative = ExtraParamName' "CA_LEGAL_REPRESENTATIVE"
+
+pattern CaLegalRepresentativeCapacity :: ExtraParamName
+pattern CaLegalRepresentativeCapacity = ExtraParamName' "CA_LEGAL_REPRESENTATIVE_CAPACITY"
+
 pattern CaLegalType :: ExtraParamName
 pattern CaLegalType = ExtraParamName' "CA_LEGAL_TYPE"
 
@@ -108,6 +117,9 @@ pattern FiNationality = ExtraParamName' "FI_NATIONALITY"
 
 pattern FiOrganizationType :: ExtraParamName
 pattern FiOrganizationType = ExtraParamName' "FI_ORGANIZATION_TYPE"
+
+pattern ItNationality :: ExtraParamName
+pattern ItNationality = ExtraParamName' "IT_NATIONALITY"
 
 pattern ItPin :: ExtraParamName
 pattern ItPin = ExtraParamName' "IT_PIN"
@@ -142,6 +154,8 @@ pattern VatNumber = ExtraParamName' "VAT_NUMBER"
   BirthDepartment,
   BrandNumber,
   CaBusinessEntityType,
+  CaLegalRepresentative,
+  CaLegalRepresentativeCapacity,
   CaLegalType,
   DocumentNumber,
   DunsNumber,
@@ -152,6 +166,7 @@ pattern VatNumber = ExtraParamName' "VAT_NUMBER"
   FiIdNumber,
   FiNationality,
   FiOrganizationType,
+  ItNationality,
   ItPin,
   ItRegistrantEntityType,
   RuPassportData,
@@ -182,24 +197,27 @@ instance Enum ExtraParamName where
         5 -> BirthDepartment
         6 -> BrandNumber
         7 -> CaBusinessEntityType
-        8 -> CaLegalType
-        9 -> DocumentNumber
-        10 -> DunsNumber
-        11 -> EsIdentification
-        12 -> EsIdentificationType
-        13 -> EsLegalForm
-        14 -> FiBusinessNumber
-        15 -> FiIdNumber
-        16 -> FiNationality
-        17 -> FiOrganizationType
-        18 -> ItPin
-        19 -> ItRegistrantEntityType
-        20 -> RuPassportData
-        21 -> SeIdNumber
-        22 -> SgIdNumber
-        23 -> UkCompanyNumber
-        24 -> UkContactType
-        25 -> VatNumber
+        8 -> CaLegalRepresentative
+        9 -> CaLegalRepresentativeCapacity
+        10 -> CaLegalType
+        11 -> DocumentNumber
+        12 -> DunsNumber
+        13 -> EsIdentification
+        14 -> EsIdentificationType
+        15 -> EsLegalForm
+        16 -> FiBusinessNumber
+        17 -> FiIdNumber
+        18 -> FiNationality
+        19 -> FiOrganizationType
+        20 -> ItNationality
+        21 -> ItPin
+        22 -> ItRegistrantEntityType
+        23 -> RuPassportData
+        24 -> SeIdNumber
+        25 -> SgIdNumber
+        26 -> UkCompanyNumber
+        27 -> UkContactType
+        28 -> VatNumber
         _ -> (error . showText) $ "Unknown index for ExtraParamName: " <> toText i
     fromEnum x = case x of
         AuIdNumber -> 0
@@ -210,24 +228,27 @@ instance Enum ExtraParamName where
         BirthDepartment -> 5
         BrandNumber -> 6
         CaBusinessEntityType -> 7
-        CaLegalType -> 8
-        DocumentNumber -> 9
-        DunsNumber -> 10
-        EsIdentification -> 11
-        EsIdentificationType -> 12
-        EsLegalForm -> 13
-        FiBusinessNumber -> 14
-        FiIdNumber -> 15
-        FiNationality -> 16
-        FiOrganizationType -> 17
-        ItPin -> 18
-        ItRegistrantEntityType -> 19
-        RuPassportData -> 20
-        SeIdNumber -> 21
-        SgIdNumber -> 22
-        UkCompanyNumber -> 23
-        UkContactType -> 24
-        VatNumber -> 25
+        CaLegalRepresentative -> 8
+        CaLegalRepresentativeCapacity -> 9
+        CaLegalType -> 10
+        DocumentNumber -> 11
+        DunsNumber -> 12
+        EsIdentification -> 13
+        EsIdentificationType -> 14
+        EsLegalForm -> 15
+        FiBusinessNumber -> 16
+        FiIdNumber -> 17
+        FiNationality -> 18
+        FiOrganizationType -> 19
+        ItNationality -> 20
+        ItPin -> 21
+        ItRegistrantEntityType -> 22
+        RuPassportData -> 23
+        SeIdNumber -> 24
+        SgIdNumber -> 25
+        UkCompanyNumber -> 26
+        UkContactType -> 27
+        VatNumber -> 28
         ExtraParamName' name -> (error . showText) $ "Unknown ExtraParamName: " <> original name
 
 -- | Represents the bounds of /known/ $ExtraParamName.

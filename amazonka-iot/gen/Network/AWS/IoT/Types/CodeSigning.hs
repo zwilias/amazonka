@@ -18,6 +18,7 @@
 module Network.AWS.IoT.Types.CodeSigning where
 
 import Network.AWS.IoT.Types.CustomCodeSigning
+import Network.AWS.IoT.Types.StartSigningJobParameter
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
@@ -28,6 +29,8 @@ import Network.AWS.Prelude
 -- /See:/ 'codeSigning' smart constructor.
 data CodeSigning = CodeSigning'{_csCustomCodeSigning
                                 :: !(Maybe CustomCodeSigning),
+                                _csStartSigningJobParameter ::
+                                !(Maybe StartSigningJobParameter),
                                 _csAwsSignerJobId :: !(Maybe Text)}
                      deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -37,16 +40,23 @@ data CodeSigning = CodeSigning'{_csCustomCodeSigning
 --
 -- * 'csCustomCodeSigning' - A custom method for code signing a file.
 --
+-- * 'csStartSigningJobParameter' - Describes the code-signing job.
+--
 -- * 'csAwsSignerJobId' - The ID of the AWSSignerJob which was created to sign the file.
 codeSigning
     :: CodeSigning
 codeSigning
   = CodeSigning'{_csCustomCodeSigning = Nothing,
+                 _csStartSigningJobParameter = Nothing,
                  _csAwsSignerJobId = Nothing}
 
 -- | A custom method for code signing a file.
 csCustomCodeSigning :: Lens' CodeSigning (Maybe CustomCodeSigning)
 csCustomCodeSigning = lens _csCustomCodeSigning (\ s a -> s{_csCustomCodeSigning = a})
+
+-- | Describes the code-signing job.
+csStartSigningJobParameter :: Lens' CodeSigning (Maybe StartSigningJobParameter)
+csStartSigningJobParameter = lens _csStartSigningJobParameter (\ s a -> s{_csStartSigningJobParameter = a})
 
 -- | The ID of the AWSSignerJob which was created to sign the file.
 csAwsSignerJobId :: Lens' CodeSigning (Maybe Text)
@@ -58,7 +68,8 @@ instance FromJSON CodeSigning where
               (\ x ->
                  CodeSigning' <$>
                    (x .:? "customCodeSigning") <*>
-                     (x .:? "awsSignerJobId"))
+                     (x .:? "startSigningJobParameter")
+                     <*> (x .:? "awsSignerJobId"))
 
 instance Hashable CodeSigning where
 
@@ -69,4 +80,6 @@ instance ToJSON CodeSigning where
           = object
               (catMaybes
                  [("customCodeSigning" .=) <$> _csCustomCodeSigning,
+                  ("startSigningJobParameter" .=) <$>
+                    _csStartSigningJobParameter,
                   ("awsSignerJobId" .=) <$> _csAwsSignerJobId])

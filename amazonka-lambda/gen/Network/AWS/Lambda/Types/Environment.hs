@@ -20,7 +20,7 @@ module Network.AWS.Lambda.Types.Environment where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | The parent object that contains your environment's configuration settings.
+-- | A function's environment variable settings.
 --
 --
 --
@@ -34,12 +34,12 @@ newtype Environment = Environment'{_eVariables ::
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'eVariables' - The key-value pairs that represent your environment's configuration settings.
+-- * 'eVariables' - Environment variable key-value pairs.
 environment
     :: Environment
 environment = Environment'{_eVariables = Nothing}
 
--- | The key-value pairs that represent your environment's configuration settings.
+-- | Environment variable key-value pairs.
 eVariables :: Lens' Environment (Maybe (HashMap Text Text))
 eVariables = lens _eVariables (\ s a -> s{_eVariables = a}) . mapping (_Sensitive . _Map)
 

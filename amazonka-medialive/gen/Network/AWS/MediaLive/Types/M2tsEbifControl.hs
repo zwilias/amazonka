@@ -27,7 +27,7 @@ module Network.AWS.MediaLive.Types.M2tsEbifControl (
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | Placeholder documentation for M2tsEbifControl
+-- | M2ts Ebif Control
 data M2tsEbifControl = M2tsEbifControl' (CI Text)
                          deriving (Eq, Ord, Read, Show, Data, Typeable,
                                    Generic)

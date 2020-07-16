@@ -48,7 +48,7 @@ data PatchComplianceData = PatchComplianceData'{_pcdTitle
 --
 -- * 'pcdSeverity' - The severity of the patch (for example, Critical, Important, Moderate).
 --
--- * 'pcdState' - The state of the patch on the instance (INSTALLED, INSTALLED_OTHER, MISSING, NOT_APPLICABLE or FAILED).
+-- * 'pcdState' - The state of the patch on the instance, such as INSTALLED or FAILED. For descriptions of each patch state, see <https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-compliance-about.html#sysman-compliance-monitor-patch About patch compliance> in the /AWS Systems Manager User Guide/ .
 --
 -- * 'pcdInstalledTime' - The date/time the patch was installed on the instance. Note that not all operating systems provide this level of information.
 patchComplianceData
@@ -83,7 +83,7 @@ pcdClassification = lens _pcdClassification (\ s a -> s{_pcdClassification = a})
 pcdSeverity :: Lens' PatchComplianceData Text
 pcdSeverity = lens _pcdSeverity (\ s a -> s{_pcdSeverity = a})
 
--- | The state of the patch on the instance (INSTALLED, INSTALLED_OTHER, MISSING, NOT_APPLICABLE or FAILED).
+-- | The state of the patch on the instance, such as INSTALLED or FAILED. For descriptions of each patch state, see <https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-compliance-about.html#sysman-compliance-monitor-patch About patch compliance> in the /AWS Systems Manager User Guide/ .
 pcdState :: Lens' PatchComplianceData PatchComplianceDataState
 pcdState = lens _pcdState (\ s a -> s{_pcdState = a})
 

@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Modifies a task assigned to a Maintenance Window. You can't change the task type, but you can change the following values:
+-- Modifies a task assigned to a maintenance window. You can't change the task type, but you can change the following values:
 --
 --
 --     * TaskARN. For example, you can change a RUN_COMMAND task from AWS-RunPowerShellScript to AWS-RunShellScript.
@@ -137,7 +137,7 @@ data UpdateMaintenanceWindowTask = UpdateMaintenanceWindowTask'{_umwtServiceRole
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'umwtServiceRoleARN' - The IAM service role ARN to modify. The system assumes this role during task execution. 
+-- * 'umwtServiceRoleARN' - The ARN of the IAM service role for Systems Manager to assume when running a maintenance window task. If you do not specify a service role ARN, Systems Manager uses your account's service-linked role. If no service-linked role for Systems Manager exists in your account, it is created when you run @RegisterTaskWithMaintenanceWindow@ . For more information, see the following topics in the in the /AWS Systems Manager User Guide/ :     * <https://docs.aws.amazon.com/systems-manager/latest/userguide/using-service-linked-roles.html#slr-permissions Using service-linked roles for Systems Manager>      * <https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-maintenance-permissions.html#maintenance-window-tasks-service-role Should I use a service-linked role or a custom service role to run maintenance window tasks? > 
 --
 -- * 'umwtReplace' - If True, then all fields that are required by the RegisterTaskWithMaintenanceWndow action are also required for this API request. Optional fields that are not specified are set to null.
 --
@@ -161,7 +161,7 @@ data UpdateMaintenanceWindowTask = UpdateMaintenanceWindowTask'{_umwtServiceRole
 --
 -- * 'umwtMaxConcurrency' - The new @MaxConcurrency@ value you want to specify. @MaxConcurrency@ is the number of targets that are allowed to run this task in parallel.
 --
--- * 'umwtWindowId' - The Maintenance Window ID that contains the task to modify.
+-- * 'umwtWindowId' - The maintenance window ID that contains the task to modify.
 --
 -- * 'umwtWindowTaskId' - The task ID to modify.
 updateMaintenanceWindowTask
@@ -184,7 +184,7 @@ updateMaintenanceWindowTask pWindowId_ pWindowTaskId_
                                  _umwtWindowId = pWindowId_,
                                  _umwtWindowTaskId = pWindowTaskId_}
 
--- | The IAM service role ARN to modify. The system assumes this role during task execution. 
+-- | The ARN of the IAM service role for Systems Manager to assume when running a maintenance window task. If you do not specify a service role ARN, Systems Manager uses your account's service-linked role. If no service-linked role for Systems Manager exists in your account, it is created when you run @RegisterTaskWithMaintenanceWindow@ . For more information, see the following topics in the in the /AWS Systems Manager User Guide/ :     * <https://docs.aws.amazon.com/systems-manager/latest/userguide/using-service-linked-roles.html#slr-permissions Using service-linked roles for Systems Manager>      * <https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-maintenance-permissions.html#maintenance-window-tasks-service-role Should I use a service-linked role or a custom service role to run maintenance window tasks? > 
 umwtServiceRoleARN :: Lens' UpdateMaintenanceWindowTask (Maybe Text)
 umwtServiceRoleARN = lens _umwtServiceRoleARN (\ s a -> s{_umwtServiceRoleARN = a})
 
@@ -232,7 +232,7 @@ umwtDescription = lens _umwtDescription (\ s a -> s{_umwtDescription = a}) . map
 umwtMaxConcurrency :: Lens' UpdateMaintenanceWindowTask (Maybe Text)
 umwtMaxConcurrency = lens _umwtMaxConcurrency (\ s a -> s{_umwtMaxConcurrency = a})
 
--- | The Maintenance Window ID that contains the task to modify.
+-- | The maintenance window ID that contains the task to modify.
 umwtWindowId :: Lens' UpdateMaintenanceWindowTask Text
 umwtWindowId = lens _umwtWindowId (\ s a -> s{_umwtWindowId = a})
 
@@ -370,9 +370,9 @@ data UpdateMaintenanceWindowTaskResponse = UpdateMaintenanceWindowTaskResponse'{
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'umwtrsServiceRoleARN' - The updated service role ARN value.
+-- * 'umwtrsServiceRoleARN' - The ARN of the IAM service role to use to publish Amazon Simple Notification Service (Amazon SNS) notifications for maintenance window Run Command tasks.
 --
--- * 'umwtrsWindowTaskId' - The task ID of the Maintenance Window that was updated.
+-- * 'umwtrsWindowTaskId' - The task ID of the maintenance window that was updated.
 --
 -- * 'umwtrsTaskParameters' - The updated parameter values.
 --
@@ -394,7 +394,7 @@ data UpdateMaintenanceWindowTaskResponse = UpdateMaintenanceWindowTaskResponse'{
 --
 -- * 'umwtrsMaxConcurrency' - The updated MaxConcurrency value.
 --
--- * 'umwtrsWindowId' - The ID of the Maintenance Window that was updated.
+-- * 'umwtrsWindowId' - The ID of the maintenance window that was updated.
 --
 -- * 'umwtrsResponseStatus' - -- | The response status code.
 updateMaintenanceWindowTaskResponse
@@ -419,11 +419,11 @@ updateMaintenanceWindowTaskResponse pResponseStatus_
                                          _umwtrsResponseStatus =
                                            pResponseStatus_}
 
--- | The updated service role ARN value.
+-- | The ARN of the IAM service role to use to publish Amazon Simple Notification Service (Amazon SNS) notifications for maintenance window Run Command tasks.
 umwtrsServiceRoleARN :: Lens' UpdateMaintenanceWindowTaskResponse (Maybe Text)
 umwtrsServiceRoleARN = lens _umwtrsServiceRoleARN (\ s a -> s{_umwtrsServiceRoleARN = a})
 
--- | The task ID of the Maintenance Window that was updated.
+-- | The task ID of the maintenance window that was updated.
 umwtrsWindowTaskId :: Lens' UpdateMaintenanceWindowTaskResponse (Maybe Text)
 umwtrsWindowTaskId = lens _umwtrsWindowTaskId (\ s a -> s{_umwtrsWindowTaskId = a})
 
@@ -467,7 +467,7 @@ umwtrsDescription = lens _umwtrsDescription (\ s a -> s{_umwtrsDescription = a})
 umwtrsMaxConcurrency :: Lens' UpdateMaintenanceWindowTaskResponse (Maybe Text)
 umwtrsMaxConcurrency = lens _umwtrsMaxConcurrency (\ s a -> s{_umwtrsMaxConcurrency = a})
 
--- | The ID of the Maintenance Window that was updated.
+-- | The ID of the maintenance window that was updated.
 umwtrsWindowId :: Lens' UpdateMaintenanceWindowTaskResponse (Maybe Text)
 umwtrsWindowId = lens _umwtrsWindowId (\ s a -> s{_umwtrsWindowId = a})
 

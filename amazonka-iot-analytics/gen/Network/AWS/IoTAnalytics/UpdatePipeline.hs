@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Updates the settings of a pipeline.
+-- Updates the settings of a pipeline. You must specify both a @channel@ and a @datastore@ activity and, optionally, as many as 23 additional activities in the @pipelineActivities@ array.
 --
 --
 module Network.AWS.IoTAnalytics.UpdatePipeline
@@ -55,7 +55,7 @@ data UpdatePipeline = UpdatePipeline'{_upPipelineName
 --
 -- * 'upPipelineName' - The name of the pipeline to update.
 --
--- * 'upPipelineActivities' - A list of "PipelineActivity" objects. The list can be 1-25 __PipelineActivity__ objects. Activities perform transformations on your messages, such as removing, renaming or adding message attributes; filtering messages based on attribute values; invoking your Lambda functions on messages for advanced processing; or performing mathematical transformations to normalize device data.
+-- * 'upPipelineActivities' - A list of "PipelineActivity" objects. Activities perform transformations on your messages, such as removing, renaming or adding message attributes; filtering messages based on attribute values; invoking your Lambda functions on messages for advanced processing; or performing mathematical transformations to normalize device data. The list can be 2-25 __PipelineActivity__ objects and must contain both a @channel@ and a @datastore@ activity. Each entry in the list must contain only one activity, for example: @pipelineActivities = [ { "channel": { ... } }, { "lambda": { ... } }, ... ]@ 
 updatePipeline
     :: Text -- ^ 'upPipelineName'
     -> NonEmpty PipelineActivity -- ^ 'upPipelineActivities'
@@ -69,7 +69,7 @@ updatePipeline pPipelineName_ pPipelineActivities_
 upPipelineName :: Lens' UpdatePipeline Text
 upPipelineName = lens _upPipelineName (\ s a -> s{_upPipelineName = a})
 
--- | A list of "PipelineActivity" objects. The list can be 1-25 __PipelineActivity__ objects. Activities perform transformations on your messages, such as removing, renaming or adding message attributes; filtering messages based on attribute values; invoking your Lambda functions on messages for advanced processing; or performing mathematical transformations to normalize device data.
+-- | A list of "PipelineActivity" objects. Activities perform transformations on your messages, such as removing, renaming or adding message attributes; filtering messages based on attribute values; invoking your Lambda functions on messages for advanced processing; or performing mathematical transformations to normalize device data. The list can be 2-25 __PipelineActivity__ objects and must contain both a @channel@ and a @datastore@ activity. Each entry in the list must contain only one activity, for example: @pipelineActivities = [ { "channel": { ... } }, { "lambda": { ... } }, ... ]@ 
 upPipelineActivities :: Lens' UpdatePipeline (NonEmpty PipelineActivity)
 upPipelineActivities = lens _upPipelineActivities (\ s a -> s{_upPipelineActivities = a}) . _List1
 

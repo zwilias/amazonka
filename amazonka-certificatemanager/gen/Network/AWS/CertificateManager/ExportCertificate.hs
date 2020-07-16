@@ -18,10 +18,10 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Exports a private certificate issued by a private certificate authority (CA) for use anywhere. You can export the certificate, the certificate chain, and the encrypted private key associated with the public key embedded in the certificate. You must store the private key securely. The private key is a 2048 bit RSA key. You must provide a passphrase for the private key when exporting it. You can use the following OpenSSL command to decrypt it later. Provide the passphrase when prompted. 
+-- Exports a private certificate issued by a private certificate authority (CA) for use anywhere. The exported file contains the certificate, the certificate chain, and the encrypted private 2048-bit RSA key associated with the public key that is embedded in the certificate. For security, you must assign a passphrase for the private key when exporting it. 
 --
 --
--- @openssl rsa -in encrypted_key.pem -out decrypted_key.pem@ 
+-- For information about exporting and formatting a certificate using the ACM console or CLI, see <https://docs.aws.amazon.com/acm/latest/userguide/gs-acm-export-private.html Export a Private Certificate> .
 --
 module Network.AWS.CertificateManager.ExportCertificate
     (
@@ -136,7 +136,7 @@ data ExportCertificateResponse = ExportCertificateResponse'{_ecrsPrivateKey
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'ecrsPrivateKey' - The PEM-encoded private key associated with the public key in the certificate.
+-- * 'ecrsPrivateKey' - The encrypted private key associated with the public key in the certificate. The key is output in PKCS #8 format and is base64 PEM-encoded. 
 --
 -- * 'ecrsCertificate' - The base64 PEM-encoded certificate.
 --
@@ -153,7 +153,7 @@ exportCertificateResponse pResponseStatus_
                                _ecrsCertificateChain = Nothing,
                                _ecrsResponseStatus = pResponseStatus_}
 
--- | The PEM-encoded private key associated with the public key in the certificate.
+-- | The encrypted private key associated with the public key in the certificate. The key is output in PKCS #8 format and is base64 PEM-encoded. 
 ecrsPrivateKey :: Lens' ExportCertificateResponse (Maybe Text)
 ecrsPrivateKey = lens _ecrsPrivateKey (\ s a -> s{_ecrsPrivateKey = a}) . mapping _Sensitive
 

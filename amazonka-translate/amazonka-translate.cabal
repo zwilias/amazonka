@@ -45,12 +45,35 @@ library
 
     exposed-modules:
           Network.AWS.Translate
+        , Network.AWS.Translate.DeleteTerminology
+        , Network.AWS.Translate.DescribeTextTranslationJob
+        , Network.AWS.Translate.GetTerminology
+        , Network.AWS.Translate.ImportTerminology
+        , Network.AWS.Translate.ListTerminologies
+        , Network.AWS.Translate.ListTextTranslationJobs
+        , Network.AWS.Translate.StartTextTranslationJob
+        , Network.AWS.Translate.StopTextTranslationJob
         , Network.AWS.Translate.TranslateText
         , Network.AWS.Translate.Types
         , Network.AWS.Translate.Waiters
 
     other-modules:
-          Network.AWS.Translate.Types.Product
+          Network.AWS.Translate.Types.AppliedTerminology
+        , Network.AWS.Translate.Types.EncryptionKey
+        , Network.AWS.Translate.Types.EncryptionKeyType
+        , Network.AWS.Translate.Types.InputDataConfig
+        , Network.AWS.Translate.Types.JobDetails
+        , Network.AWS.Translate.Types.JobStatus
+        , Network.AWS.Translate.Types.MergeStrategy
+        , Network.AWS.Translate.Types.OutputDataConfig
+        , Network.AWS.Translate.Types.Product
+        , Network.AWS.Translate.Types.Term
+        , Network.AWS.Translate.Types.TerminologyData
+        , Network.AWS.Translate.Types.TerminologyDataFormat
+        , Network.AWS.Translate.Types.TerminologyDataLocation
+        , Network.AWS.Translate.Types.TerminologyProperties
+        , Network.AWS.Translate.Types.TextTranslationJobFilter
+        , Network.AWS.Translate.Types.TextTranslationJobProperties
 
     build-depends:
           amazonka-core == 1.6.1.*

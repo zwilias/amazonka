@@ -19,6 +19,8 @@
 -- Portability : non-portable (GHC extensions)
 --
 -- Disassociates the current GuardDuty member account from its master account.
+--
+--
 module Network.AWS.GuardDuty.DisassociateFromMasterAccount
     (
     -- * Creating a Request

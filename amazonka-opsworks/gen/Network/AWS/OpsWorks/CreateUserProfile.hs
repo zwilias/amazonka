@@ -21,7 +21,7 @@
 -- Creates a new user profile.
 --
 --
--- __Required Permissions__ : To use this action, an IAM user must have an attached policy that explicitly grants permissions. For more information on user permissions, see <http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html Managing User Permissions> .
+-- __Required Permissions__ : To use this action, an IAM user must have an attached policy that explicitly grants permissions. For more information about user permissions, see <https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html Managing User Permissions> .
 --
 module Network.AWS.OpsWorks.CreateUserProfile
     (
@@ -61,7 +61,7 @@ data CreateUserProfile = CreateUserProfile'{_cupAllowSelfManagement
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'cupAllowSelfManagement' - Whether users can specify their own SSH public key through the My Settings page. For more information, see <http://docs.aws.amazon.com/opsworks/latest/userguide/security-settingsshkey.html Setting an IAM User's Public SSH Key> .
+-- * 'cupAllowSelfManagement' - Whether users can specify their own SSH public key through the My Settings page. For more information, see <https://docs.aws.amazon.com/opsworks/latest/userguide/security-settingsshkey.html Setting an IAM User's Public SSH Key> .
 --
 -- * 'cupSSHPublicKey' - The user's public SSH key.
 --
@@ -78,7 +78,7 @@ createUserProfile pIAMUserARN_
                        _cupSSHUsername = Nothing,
                        _cupIAMUserARN = pIAMUserARN_}
 
--- | Whether users can specify their own SSH public key through the My Settings page. For more information, see <http://docs.aws.amazon.com/opsworks/latest/userguide/security-settingsshkey.html Setting an IAM User's Public SSH Key> .
+-- | Whether users can specify their own SSH public key through the My Settings page. For more information, see <https://docs.aws.amazon.com/opsworks/latest/userguide/security-settingsshkey.html Setting an IAM User's Public SSH Key> .
 cupAllowSelfManagement :: Lens' CreateUserProfile (Maybe Bool)
 cupAllowSelfManagement = lens _cupAllowSelfManagement (\ s a -> s{_cupAllowSelfManagement = a})
 

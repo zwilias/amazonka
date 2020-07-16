@@ -27,7 +27,7 @@ module Network.AWS.MediaLive.Types.H264Syntax (
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | Placeholder documentation for H264Syntax
+-- | H264 Syntax
 data H264Syntax = H264Syntax' (CI Text)
                     deriving (Eq, Ord, Read, Show, Data, Typeable,
                               Generic)

@@ -75,7 +75,7 @@ data DescribeOptionGroups = DescribeOptionGroups'{_dogFilters
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dogFilters' - This parameter is not currently supported.
+-- * 'dogFilters' - This parameter isn't currently supported.
 --
 -- * 'dogEngineName' - Filters the list of option groups to only include groups associated with a specific database engine.
 --
@@ -83,9 +83,9 @@ data DescribeOptionGroups = DescribeOptionGroups'{_dogFilters
 --
 -- * 'dogMarker' - An optional pagination token provided by a previous DescribeOptionGroups request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by @MaxRecords@ . 
 --
--- * 'dogMaxRecords' - The maximum number of records to include in the response. If more records exist than the specified @MaxRecords@ value, a pagination token called a marker is included in the response so that the remaining results can be retrieved.  Default: 100 Constraints: Minimum 20, maximum 100.
+-- * 'dogMaxRecords' - The maximum number of records to include in the response. If more records exist than the specified @MaxRecords@ value, a pagination token called a marker is included in the response so that you can retrieve the remaining results.  Default: 100 Constraints: Minimum 20, maximum 100.
 --
--- * 'dogOptionGroupName' - The name of the option group to describe. Cannot be supplied together with EngineName or MajorEngineVersion.
+-- * 'dogOptionGroupName' - The name of the option group to describe. Can't be supplied together with EngineName or MajorEngineVersion.
 describeOptionGroups
     :: DescribeOptionGroups
 describeOptionGroups
@@ -95,7 +95,7 @@ describeOptionGroups
                           _dogMarker = Nothing, _dogMaxRecords = Nothing,
                           _dogOptionGroupName = Nothing}
 
--- | This parameter is not currently supported.
+-- | This parameter isn't currently supported.
 dogFilters :: Lens' DescribeOptionGroups [Filter]
 dogFilters = lens _dogFilters (\ s a -> s{_dogFilters = a}) . _Default . _Coerce
 
@@ -111,11 +111,11 @@ dogMajorEngineVersion = lens _dogMajorEngineVersion (\ s a -> s{_dogMajorEngineV
 dogMarker :: Lens' DescribeOptionGroups (Maybe Text)
 dogMarker = lens _dogMarker (\ s a -> s{_dogMarker = a})
 
--- | The maximum number of records to include in the response. If more records exist than the specified @MaxRecords@ value, a pagination token called a marker is included in the response so that the remaining results can be retrieved.  Default: 100 Constraints: Minimum 20, maximum 100.
+-- | The maximum number of records to include in the response. If more records exist than the specified @MaxRecords@ value, a pagination token called a marker is included in the response so that you can retrieve the remaining results.  Default: 100 Constraints: Minimum 20, maximum 100.
 dogMaxRecords :: Lens' DescribeOptionGroups (Maybe Int)
 dogMaxRecords = lens _dogMaxRecords (\ s a -> s{_dogMaxRecords = a})
 
--- | The name of the option group to describe. Cannot be supplied together with EngineName or MajorEngineVersion.
+-- | The name of the option group to describe. Can't be supplied together with EngineName or MajorEngineVersion.
 dogOptionGroupName :: Lens' DescribeOptionGroups (Maybe Text)
 dogOptionGroupName = lens _dogOptionGroupName (\ s a -> s{_dogOptionGroupName = a})
 

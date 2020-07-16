@@ -19,28 +19,28 @@
 module Network.AWS.MediaLive.Types.H264ColorMetadata (
   H264ColorMetadata (
     ..
-    , Ignore
-    , Insert
+    , HIgnore
+    , HInsert
     )
   ) where
 
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | Placeholder documentation for H264ColorMetadata
+-- | H264 Color Metadata
 data H264ColorMetadata = H264ColorMetadata' (CI Text)
                            deriving (Eq, Ord, Read, Show, Data, Typeable,
                                      Generic)
 
-pattern Ignore :: H264ColorMetadata
-pattern Ignore = H264ColorMetadata' "IGNORE"
+pattern HIgnore :: H264ColorMetadata
+pattern HIgnore = H264ColorMetadata' "IGNORE"
 
-pattern Insert :: H264ColorMetadata
-pattern Insert = H264ColorMetadata' "INSERT"
+pattern HInsert :: H264ColorMetadata
+pattern HInsert = H264ColorMetadata' "INSERT"
 
 {-# COMPLETE
-  Ignore,
-  Insert,
+  HIgnore,
+  HInsert,
   H264ColorMetadata' #-}
 
 instance FromText H264ColorMetadata where
@@ -55,20 +55,20 @@ instance ToText H264ColorMetadata where
 --   fromEnum is a partial function, and will error on values unknown at generation time.
 instance Enum H264ColorMetadata where
     toEnum i = case i of
-        0 -> Ignore
-        1 -> Insert
+        0 -> HIgnore
+        1 -> HInsert
         _ -> (error . showText) $ "Unknown index for H264ColorMetadata: " <> toText i
     fromEnum x = case x of
-        Ignore -> 0
-        Insert -> 1
+        HIgnore -> 0
+        HInsert -> 1
         H264ColorMetadata' name -> (error . showText) $ "Unknown H264ColorMetadata: " <> original name
 
 -- | Represents the bounds of /known/ $H264ColorMetadata.
 --   AWS may have added more since the source was generated.
 --   This instance exists only for backward compatibility.
 instance Bounded H264ColorMetadata where
-    minBound = Ignore
-    maxBound = Insert
+    minBound = HIgnore
+    maxBound = HInsert
 
 instance Hashable     H264ColorMetadata
 instance NFData       H264ColorMetadata

@@ -61,6 +61,7 @@ module Network.AWS.SecretsManager.DescribeSecret
     , drsKMSKeyId
     , drsName
     , drsVersionIdsToStages
+    , drsOwningService
     , drsLastRotatedDate
     , drsLastAccessedDate
     , drsDescription
@@ -110,6 +111,7 @@ instance AWSRequest DescribeSecret where
                      <*> (x .?> "KmsKeyId")
                      <*> (x .?> "Name")
                      <*> (x .?> "VersionIdsToStages" .!@ mempty)
+                     <*> (x .?> "OwningService")
                      <*> (x .?> "LastRotatedDate")
                      <*> (x .?> "LastAccessedDate")
                      <*> (x .?> "Description")
@@ -159,6 +161,8 @@ data DescribeSecretResponse = DescribeSecretResponse'{_drsLastChangedDate
                                                       !(Maybe
                                                           (Map Text
                                                              (List1 Text))),
+                                                      _drsOwningService ::
+                                                      !(Maybe Text),
                                                       _drsLastRotatedDate ::
                                                       !(Maybe POSIX),
                                                       _drsLastAccessedDate ::
@@ -188,13 +192,15 @@ data DescribeSecretResponse = DescribeSecretResponse'{_drsLastChangedDate
 --
 -- * 'drsRotationEnabled' - Specifies whether automatic rotation is enabled for this secret. To enable rotation, use 'RotateSecret' with @AutomaticallyRotateAfterDays@ set to a value greater than 0. To disable rotation, use 'CancelRotateSecret' .
 --
--- * 'drsKMSKeyId' - The ARN or alias of the AWS KMS customer master key (CMK) that's used to encrypt the @SecretString@ or @SecretBinary@ fields in each version of the secret. If you don't provide a key, then Secrets Manager defaults to encrypting the secret fields with the default KMS CMK (the one named @awssecretsmanager@ ) for this account.
+-- * 'drsKMSKeyId' - The ARN or alias of the AWS KMS customer master key (CMK) that's used to encrypt the @SecretString@ or @SecretBinary@ fields in each version of the secret. If you don't provide a key, then Secrets Manager defaults to encrypting the secret fields with the default AWS KMS CMK (the one named @awssecretsmanager@ ) for this account.
 --
 -- * 'drsName' - The user-provided friendly name of the secret.
 --
--- * 'drsVersionIdsToStages' - A list of all of the currently assigned @VersionStage@ staging labels and the @SecretVersionId@ that each is attached to. Staging labels are used to keep track of the different versions during the rotation process.
+-- * 'drsVersionIdsToStages' - A list of all of the currently assigned @VersionStage@ staging labels and the @VersionId@ that each is attached to. Staging labels are used to keep track of the different versions during the rotation process.
 --
--- * 'drsLastRotatedDate' - The last date and time that the Secrets Manager rotation process for this secret was invoked.
+-- * 'drsOwningService' - Returns the name of the service that created this secret.
+--
+-- * 'drsLastRotatedDate' - The most recent date and time that the Secrets Manager rotation process was successfully completed. This value is null if the secret has never rotated.
 --
 -- * 'drsLastAccessedDate' - The last date that this secret was accessed. This value is truncated to midnight of the date and therefore shows only the date, not the time.
 --
@@ -216,6 +222,7 @@ describeSecretResponse pResponseStatus_
                             _drsRotationEnabled = Nothing,
                             _drsKMSKeyId = Nothing, _drsName = Nothing,
                             _drsVersionIdsToStages = Nothing,
+                            _drsOwningService = Nothing,
                             _drsLastRotatedDate = Nothing,
                             _drsLastAccessedDate = Nothing,
                             _drsDescription = Nothing,
@@ -242,7 +249,7 @@ drsDeletedDate = lens _drsDeletedDate (\ s a -> s{_drsDeletedDate = a}) . mappin
 drsRotationEnabled :: Lens' DescribeSecretResponse (Maybe Bool)
 drsRotationEnabled = lens _drsRotationEnabled (\ s a -> s{_drsRotationEnabled = a})
 
--- | The ARN or alias of the AWS KMS customer master key (CMK) that's used to encrypt the @SecretString@ or @SecretBinary@ fields in each version of the secret. If you don't provide a key, then Secrets Manager defaults to encrypting the secret fields with the default KMS CMK (the one named @awssecretsmanager@ ) for this account.
+-- | The ARN or alias of the AWS KMS customer master key (CMK) that's used to encrypt the @SecretString@ or @SecretBinary@ fields in each version of the secret. If you don't provide a key, then Secrets Manager defaults to encrypting the secret fields with the default AWS KMS CMK (the one named @awssecretsmanager@ ) for this account.
 drsKMSKeyId :: Lens' DescribeSecretResponse (Maybe Text)
 drsKMSKeyId = lens _drsKMSKeyId (\ s a -> s{_drsKMSKeyId = a})
 
@@ -250,11 +257,15 @@ drsKMSKeyId = lens _drsKMSKeyId (\ s a -> s{_drsKMSKeyId = a})
 drsName :: Lens' DescribeSecretResponse (Maybe Text)
 drsName = lens _drsName (\ s a -> s{_drsName = a})
 
--- | A list of all of the currently assigned @VersionStage@ staging labels and the @SecretVersionId@ that each is attached to. Staging labels are used to keep track of the different versions during the rotation process.
+-- | A list of all of the currently assigned @VersionStage@ staging labels and the @VersionId@ that each is attached to. Staging labels are used to keep track of the different versions during the rotation process.
 drsVersionIdsToStages :: Lens' DescribeSecretResponse (HashMap Text (NonEmpty Text))
 drsVersionIdsToStages = lens _drsVersionIdsToStages (\ s a -> s{_drsVersionIdsToStages = a}) . _Default . _Map
 
--- | The last date and time that the Secrets Manager rotation process for this secret was invoked.
+-- | Returns the name of the service that created this secret.
+drsOwningService :: Lens' DescribeSecretResponse (Maybe Text)
+drsOwningService = lens _drsOwningService (\ s a -> s{_drsOwningService = a})
+
+-- | The most recent date and time that the Secrets Manager rotation process was successfully completed. This value is null if the secret has never rotated.
 drsLastRotatedDate :: Lens' DescribeSecretResponse (Maybe UTCTime)
 drsLastRotatedDate = lens _drsLastRotatedDate (\ s a -> s{_drsLastRotatedDate = a}) . mapping _Time
 

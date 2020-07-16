@@ -56,7 +56,7 @@ data AuthorizeIPRules = AuthorizeIPRules'{_airGroupId
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'airGroupId' - The ID of the group.
+-- * 'airGroupId' - The identifier of the group.
 --
 -- * 'airUserRules' - The rules to add to the group.
 authorizeIPRules
@@ -66,7 +66,7 @@ authorizeIPRules pGroupId_
   = AuthorizeIPRules'{_airGroupId = pGroupId_,
                       _airUserRules = mempty}
 
--- | The ID of the group.
+-- | The identifier of the group.
 airGroupId :: Lens' AuthorizeIPRules Text
 airGroupId = lens _airGroupId (\ s a -> s{_airGroupId = a})
 

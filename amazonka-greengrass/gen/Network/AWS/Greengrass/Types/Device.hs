@@ -23,54 +23,56 @@ import Network.AWS.Prelude
 -- | Information about a device.
 --
 -- /See:/ 'device' smart constructor.
-data Device = Device'{_dCertificateARN ::
-                      !(Maybe Text),
-                      _dThingARN :: !(Maybe Text),
-                      _dSyncShadow :: !(Maybe Bool), _dId :: !(Maybe Text)}
+data Device = Device'{_dSyncShadow :: !(Maybe Bool),
+                      _dThingARN :: !Text, _dId :: !Text,
+                      _dCertificateARN :: !Text}
                 deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'Device' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dCertificateARN' - The ARN of the certificate associated with the device.
+-- * 'dSyncShadow' - If true, the device's local shadow will be automatically synced with the cloud.
 --
 -- * 'dThingARN' - The thing ARN of the device.
 --
--- * 'dSyncShadow' - If true, the device's local shadow will be automatically synced with the cloud.
+-- * 'dId' - A descriptive or arbitrary ID for the device. This value must be unique within the device definition version. Max length is 128 characters with pattern ''[a-zA-Z0-9:_-]+''.
 --
--- * 'dId' - The ID of the device.
+-- * 'dCertificateARN' - The ARN of the certificate associated with the device.
 device
-    :: Device
-device
-  = Device'{_dCertificateARN = Nothing,
-            _dThingARN = Nothing, _dSyncShadow = Nothing,
-            _dId = Nothing}
-
--- | The ARN of the certificate associated with the device.
-dCertificateARN :: Lens' Device (Maybe Text)
-dCertificateARN = lens _dCertificateARN (\ s a -> s{_dCertificateARN = a})
-
--- | The thing ARN of the device.
-dThingARN :: Lens' Device (Maybe Text)
-dThingARN = lens _dThingARN (\ s a -> s{_dThingARN = a})
+    :: Text -- ^ 'dThingARN'
+    -> Text -- ^ 'dId'
+    -> Text -- ^ 'dCertificateARN'
+    -> Device
+device pThingARN_ pId_ pCertificateARN_
+  = Device'{_dSyncShadow = Nothing,
+            _dThingARN = pThingARN_, _dId = pId_,
+            _dCertificateARN = pCertificateARN_}
 
 -- | If true, the device's local shadow will be automatically synced with the cloud.
 dSyncShadow :: Lens' Device (Maybe Bool)
 dSyncShadow = lens _dSyncShadow (\ s a -> s{_dSyncShadow = a})
 
--- | The ID of the device.
-dId :: Lens' Device (Maybe Text)
+-- | The thing ARN of the device.
+dThingARN :: Lens' Device Text
+dThingARN = lens _dThingARN (\ s a -> s{_dThingARN = a})
+
+-- | A descriptive or arbitrary ID for the device. This value must be unique within the device definition version. Max length is 128 characters with pattern ''[a-zA-Z0-9:_-]+''.
+dId :: Lens' Device Text
 dId = lens _dId (\ s a -> s{_dId = a})
+
+-- | The ARN of the certificate associated with the device.
+dCertificateARN :: Lens' Device Text
+dCertificateARN = lens _dCertificateARN (\ s a -> s{_dCertificateARN = a})
 
 instance FromJSON Device where
         parseJSON
           = withObject "Device"
               (\ x ->
                  Device' <$>
-                   (x .:? "CertificateArn") <*> (x .:? "ThingArn") <*>
-                     (x .:? "SyncShadow")
-                     <*> (x .:? "Id"))
+                   (x .:? "SyncShadow") <*> (x .: "ThingArn") <*>
+                     (x .: "Id")
+                     <*> (x .: "CertificateArn"))
 
 instance Hashable Device where
 
@@ -80,7 +82,6 @@ instance ToJSON Device where
         toJSON Device'{..}
           = object
               (catMaybes
-                 [("CertificateArn" .=) <$> _dCertificateARN,
-                  ("ThingArn" .=) <$> _dThingARN,
-                  ("SyncShadow" .=) <$> _dSyncShadow,
-                  ("Id" .=) <$> _dId])
+                 [("SyncShadow" .=) <$> _dSyncShadow,
+                  Just ("ThingArn" .= _dThingARN), Just ("Id" .= _dId),
+                  Just ("CertificateArn" .= _dCertificateARN)])

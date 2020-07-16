@@ -22,7 +22,7 @@ import Network.AWS.Prelude
 import Network.AWS.Route53.Internal
 import Network.AWS.Route53.Types.CloudWatchRegion
 
--- | A complex type that identifies the CloudWatch alarm that you want Amazon Route 53 health checkers to use to determine whether this health check is healthy.
+-- | A complex type that identifies the CloudWatch alarm that you want Amazon Route 53 health checkers to use to determine whether the specified health check is healthy.
 --
 --
 --
@@ -36,7 +36,7 @@ data AlarmIdentifier = AlarmIdentifier'{_aiRegion ::
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'aiRegion' - A complex type that identifies the CloudWatch alarm that you want Amazon Route 53 health checkers to use to determine whether this health check is healthy. For the current list of CloudWatch regions, see <http://docs.aws.amazon.com/general/latest/gr/rande.html#cw_region Amazon CloudWatch> in the /AWS Regions and Endpoints/ chapter of the /Amazon Web Services General Reference/ .
+-- * 'aiRegion' - For the CloudWatch alarm that you want Route 53 health checkers to use to determine whether this health check is healthy, the region that the alarm was created in. For the current list of CloudWatch regions, see <https://docs.aws.amazon.com/general/latest/gr/rande.html#cw_region Amazon CloudWatch> in the /AWS Service Endpoints/ chapter of the /Amazon Web Services General Reference/ .
 --
 -- * 'aiName' - The name of the CloudWatch alarm that you want Amazon Route 53 health checkers to use to determine whether this health check is healthy.
 alarmIdentifier
@@ -47,7 +47,7 @@ alarmIdentifier pRegion_ pName_
   = AlarmIdentifier'{_aiRegion = pRegion_,
                      _aiName = pName_}
 
--- | A complex type that identifies the CloudWatch alarm that you want Amazon Route 53 health checkers to use to determine whether this health check is healthy. For the current list of CloudWatch regions, see <http://docs.aws.amazon.com/general/latest/gr/rande.html#cw_region Amazon CloudWatch> in the /AWS Regions and Endpoints/ chapter of the /Amazon Web Services General Reference/ .
+-- | For the CloudWatch alarm that you want Route 53 health checkers to use to determine whether this health check is healthy, the region that the alarm was created in. For the current list of CloudWatch regions, see <https://docs.aws.amazon.com/general/latest/gr/rande.html#cw_region Amazon CloudWatch> in the /AWS Service Endpoints/ chapter of the /Amazon Web Services General Reference/ .
 aiRegion :: Lens' AlarmIdentifier CloudWatchRegion
 aiRegion = lens _aiRegion (\ s a -> s{_aiRegion = a})
 

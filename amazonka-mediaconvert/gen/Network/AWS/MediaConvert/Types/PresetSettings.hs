@@ -43,9 +43,9 @@ data PresetSettings = PresetSettings'{_psCaptionDescriptions
 --
 -- * 'psCaptionDescriptions' - Caption settings for this preset. There can be multiple caption settings in a single output.
 --
--- * 'psVideoDescription' - (VideoDescription) contains a group of video encoding settings. The specific video settings depend on the video codec you choose when you specify a value for Video codec (codec). Include one instance of (VideoDescription) per output.
+-- * 'psVideoDescription' - (VideoDescription) contains a group of video encoding settings. The specific video settings depend on the video codec that you choose when you specify a value for Video codec (codec). Include one instance of (VideoDescription) per output.
 --
--- * 'psContainerSettings' - Undocumented member.
+-- * 'psContainerSettings' - Container specific settings.
 --
 -- * 'psAudioDescriptions' - (AudioDescriptions) contains groups of audio encoding settings organized by audio codec. Include one instance of (AudioDescriptions) per output. (AudioDescriptions) can contain multiple groups of encoding settings.
 presetSettings
@@ -60,11 +60,11 @@ presetSettings
 psCaptionDescriptions :: Lens' PresetSettings [CaptionDescriptionPreset]
 psCaptionDescriptions = lens _psCaptionDescriptions (\ s a -> s{_psCaptionDescriptions = a}) . _Default . _Coerce
 
--- | (VideoDescription) contains a group of video encoding settings. The specific video settings depend on the video codec you choose when you specify a value for Video codec (codec). Include one instance of (VideoDescription) per output.
+-- | (VideoDescription) contains a group of video encoding settings. The specific video settings depend on the video codec that you choose when you specify a value for Video codec (codec). Include one instance of (VideoDescription) per output.
 psVideoDescription :: Lens' PresetSettings (Maybe VideoDescription)
 psVideoDescription = lens _psVideoDescription (\ s a -> s{_psVideoDescription = a})
 
--- | Undocumented member.
+-- | Container specific settings.
 psContainerSettings :: Lens' PresetSettings (Maybe ContainerSettings)
 psContainerSettings = lens _psContainerSettings (\ s a -> s{_psContainerSettings = a})
 

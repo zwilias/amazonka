@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Creates an alias for your AWS account. For information about using an AWS account alias, see <http://docs.aws.amazon.com/IAM/latest/UserGuide/AccountAlias.html Using an Alias for Your AWS Account ID> in the /IAM User Guide/ .
+-- Creates an alias for your AWS account. For information about using an AWS account alias, see <https://docs.aws.amazon.com/IAM/latest/UserGuide/AccountAlias.html Using an Alias for Your AWS Account ID> in the /IAM User Guide/ .
 --
 --
 module Network.AWS.IAM.CreateAccountAlias
@@ -51,7 +51,7 @@ newtype CreateAccountAlias = CreateAccountAlias'{_caaAccountAlias
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'caaAccountAlias' - The account alias to create. This parameter allows (per its <http://wikipedia.org/wiki/regex regex pattern> ) a string of characters consisting of lowercase letters, digits, and dashes. You cannot start or finish with a dash, nor can you have two dashes in a row.
+-- * 'caaAccountAlias' - The account alias to create. This parameter allows (through its <http://wikipedia.org/wiki/regex regex pattern> ) a string of characters consisting of lowercase letters, digits, and dashes. You cannot start or finish with a dash, nor can you have two dashes in a row.
 createAccountAlias
     :: Text -- ^ 'caaAccountAlias'
     -> CreateAccountAlias
@@ -59,7 +59,7 @@ createAccountAlias pAccountAlias_
   = CreateAccountAlias'{_caaAccountAlias =
                           pAccountAlias_}
 
--- | The account alias to create. This parameter allows (per its <http://wikipedia.org/wiki/regex regex pattern> ) a string of characters consisting of lowercase letters, digits, and dashes. You cannot start or finish with a dash, nor can you have two dashes in a row.
+-- | The account alias to create. This parameter allows (through its <http://wikipedia.org/wiki/regex regex pattern> ) a string of characters consisting of lowercase letters, digits, and dashes. You cannot start or finish with a dash, nor can you have two dashes in a row.
 caaAccountAlias :: Lens' CreateAccountAlias Text
 caaAccountAlias = lens _caaAccountAlias (\ s a -> s{_caaAccountAlias = a})
 

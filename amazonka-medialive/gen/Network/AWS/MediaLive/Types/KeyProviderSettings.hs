@@ -21,7 +21,7 @@ import Network.AWS.Lens
 import Network.AWS.MediaLive.Types.StaticKeySettings
 import Network.AWS.Prelude
 
--- | Placeholder documentation for KeyProviderSettings
+-- | Key Provider Settings
 --
 -- /See:/ 'keyProviderSettings' smart constructor.
 newtype KeyProviderSettings = KeyProviderSettings'{_kpsStaticKeySettings

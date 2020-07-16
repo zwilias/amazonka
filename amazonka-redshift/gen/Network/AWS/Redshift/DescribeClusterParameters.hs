@@ -23,7 +23,7 @@
 --
 -- You can specify /source/ filter to retrieve parameters of only specific type. For example, to retrieve parameters that were modified by a user action such as from 'ModifyClusterParameterGroup' , you can specify /source/ equal to /user/ .
 --
--- For more information about parameters and parameter groups, go to <http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-parameter-groups.html Amazon Redshift Parameter Groups> in the /Amazon Redshift Cluster Management Guide/ .
+-- For more information about parameters and parameter groups, go to <https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-parameter-groups.html Amazon Redshift Parameter Groups> in the /Amazon Redshift Cluster Management Guide/ .
 --
 --
 -- This operation returns paginated results.

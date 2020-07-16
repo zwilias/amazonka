@@ -27,8 +27,10 @@ import Network.AWS.Prelude
 --
 --
 -- /See:/ 'deviceStatusInfo' smart constructor.
-data DeviceStatusInfo = DeviceStatusInfo'{_dsiDeviceStatusDetails
-                                          :: !(Maybe [DeviceStatusDetail]),
+data DeviceStatusInfo = DeviceStatusInfo'{_dsiConnectionStatusUpdatedTime
+                                          :: !(Maybe POSIX),
+                                          _dsiDeviceStatusDetails ::
+                                          !(Maybe [DeviceStatusDetail]),
                                           _dsiConnectionStatus ::
                                           !(Maybe ConnectionStatus)}
                           deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -37,15 +39,22 @@ data DeviceStatusInfo = DeviceStatusInfo'{_dsiDeviceStatusDetails
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
+-- * 'dsiConnectionStatusUpdatedTime' - The time (in epoch) when the device connection status changed.
+--
 -- * 'dsiDeviceStatusDetails' - One or more device status detail descriptions.
 --
 -- * 'dsiConnectionStatus' - The latest available information about the connection status of a device. 
 deviceStatusInfo
     :: DeviceStatusInfo
 deviceStatusInfo
-  = DeviceStatusInfo'{_dsiDeviceStatusDetails =
+  = DeviceStatusInfo'{_dsiConnectionStatusUpdatedTime =
                         Nothing,
+                      _dsiDeviceStatusDetails = Nothing,
                       _dsiConnectionStatus = Nothing}
+
+-- | The time (in epoch) when the device connection status changed.
+dsiConnectionStatusUpdatedTime :: Lens' DeviceStatusInfo (Maybe UTCTime)
+dsiConnectionStatusUpdatedTime = lens _dsiConnectionStatusUpdatedTime (\ s a -> s{_dsiConnectionStatusUpdatedTime = a}) . mapping _Time
 
 -- | One or more device status detail descriptions.
 dsiDeviceStatusDetails :: Lens' DeviceStatusInfo [DeviceStatusDetail]
@@ -60,8 +69,9 @@ instance FromJSON DeviceStatusInfo where
           = withObject "DeviceStatusInfo"
               (\ x ->
                  DeviceStatusInfo' <$>
-                   (x .:? "DeviceStatusDetails" .!= mempty) <*>
-                     (x .:? "ConnectionStatus"))
+                   (x .:? "ConnectionStatusUpdatedTime") <*>
+                     (x .:? "DeviceStatusDetails" .!= mempty)
+                     <*> (x .:? "ConnectionStatus"))
 
 instance Hashable DeviceStatusInfo where
 

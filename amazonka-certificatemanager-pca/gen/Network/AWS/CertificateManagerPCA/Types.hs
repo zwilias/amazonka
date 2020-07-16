@@ -18,6 +18,7 @@ module Network.AWS.CertificateManagerPCA.Types
     -- * Errors
     , _MalformedCertificateException
     , _MalformedCSRException
+    , _InvalidRequestException
     , _InvalidTagException
     , _RequestInProgressException
     , _InvalidStateException
@@ -29,9 +30,13 @@ module Network.AWS.CertificateManagerPCA.Types
     , _RequestFailedException
     , _RequestAlreadyProcessedException
     , _InvalidNextTokenException
+    , _PermissionAlreadyExistsException
     , _ConcurrentModificationException
     , _LimitExceededException
     , _InvalidPolicyException
+
+    -- * ActionType
+    , ActionType (..)
 
     -- * AuditReportResponseFormat
     , AuditReportResponseFormat (..)
@@ -88,6 +93,7 @@ module Network.AWS.CertificateManagerPCA.Types
     , caCreatedAt
     , caSerial
     , caNotBefore
+    , caRestorableUntil
     , caType
     , caRevocationConfiguration
     , caLastStateChangeAt
@@ -107,6 +113,16 @@ module Network.AWS.CertificateManagerPCA.Types
     , ccExpirationInDays
     , ccS3BucketName
     , ccEnabled
+
+    -- * Permission
+    , Permission
+    , permission
+    , pSourceAccount
+    , pActions
+    , pCreatedAt
+    , pPrincipal
+    , pPolicy
+    , pCertificateAuthorityARN
 
     -- * RevocationConfiguration
     , RevocationConfiguration
@@ -129,6 +145,7 @@ module Network.AWS.CertificateManagerPCA.Types
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Sign.V4
+import Network.AWS.CertificateManagerPCA.Types.ActionType
 import Network.AWS.CertificateManagerPCA.Types.AuditReportResponseFormat
 import Network.AWS.CertificateManagerPCA.Types.AuditReportStatus
 import Network.AWS.CertificateManagerPCA.Types.CertificateAuthorityStatus
@@ -142,6 +159,7 @@ import Network.AWS.CertificateManagerPCA.Types.ASN1Subject
 import Network.AWS.CertificateManagerPCA.Types.CertificateAuthority
 import Network.AWS.CertificateManagerPCA.Types.CertificateAuthorityConfiguration
 import Network.AWS.CertificateManagerPCA.Types.CrlConfiguration
+import Network.AWS.CertificateManagerPCA.Types.Permission
 import Network.AWS.CertificateManagerPCA.Types.RevocationConfiguration
 import Network.AWS.CertificateManagerPCA.Types.Tag
 import Network.AWS.CertificateManagerPCA.Types.Validity
@@ -169,6 +187,11 @@ certificateManagerPCA
             = Just "throttling_exception"
           | has (hasCode "Throttling" . hasStatus 400) e =
             Just "throttling"
+          | has
+              (hasCode "ProvisionedThroughputExceededException" .
+                 hasStatus 400)
+              e
+            = Just "throughput_exceeded"
           | has (hasStatus 504) e = Just "gateway_timeout"
           | has
               (hasCode "RequestThrottledException" . hasStatus 400)
@@ -196,6 +219,14 @@ _MalformedCSRException
   = _MatchServiceError certificateManagerPCA
       "MalformedCSRException"
 
+-- | The request action cannot be performed or is prohibited.
+--
+--
+_InvalidRequestException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidRequestException
+  = _MatchServiceError certificateManagerPCA
+      "InvalidRequestException"
+
 -- | The tag associated with the CA is not valid. The invalid argument is contained in the message field.
 --
 --
@@ -212,7 +243,7 @@ _RequestInProgressException
   = _MatchServiceError certificateManagerPCA
       "RequestInProgressException"
 
--- | The private CA is in a state during which a report cannot be generated.
+-- | The private CA is in a state during which a report or certificate cannot be generated.
 --
 --
 _InvalidStateException :: AsError a => Getting (First ServiceError) a ServiceError
@@ -284,6 +315,14 @@ _InvalidNextTokenException
   = _MatchServiceError certificateManagerPCA
       "InvalidNextTokenException"
 
+-- | The designated permission has already been given to the user.
+--
+--
+_PermissionAlreadyExistsException :: AsError a => Getting (First ServiceError) a ServiceError
+_PermissionAlreadyExistsException
+  = _MatchServiceError certificateManagerPCA
+      "PermissionAlreadyExistsException"
+
 -- | A previous update to your private CA is still ongoing.
 --
 --
@@ -292,7 +331,7 @@ _ConcurrentModificationException
   = _MatchServiceError certificateManagerPCA
       "ConcurrentModificationException"
 
--- | An ACM PCA limit has been exceeded. See the exception message returned to determine the limit that was exceeded.
+-- | An ACM Private CA limit has been exceeded. See the exception message returned to determine the limit that was exceeded.
 --
 --
 _LimitExceededException :: AsError a => Getting (First ServiceError) a ServiceError
@@ -300,7 +339,7 @@ _LimitExceededException
   = _MatchServiceError certificateManagerPCA
       "LimitExceededException"
 
--- | The S3 bucket policy is not valid. The policy must give ACM PCA rights to read from and write to the bucket and find the bucket location.
+-- | The S3 bucket policy is not valid. The policy must give ACM Private CA rights to read from and write to the bucket and find the bucket location.
 --
 --
 _InvalidPolicyException :: AsError a => Getting (First ServiceError) a ServiceError

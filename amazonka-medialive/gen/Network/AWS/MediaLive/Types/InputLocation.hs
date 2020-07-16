@@ -20,7 +20,7 @@ module Network.AWS.MediaLive.Types.InputLocation where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | Placeholder documentation for InputLocation
+-- | Input Location
 --
 -- /See:/ 'inputLocation' smart constructor.
 data InputLocation = InputLocation'{_ilUsername ::

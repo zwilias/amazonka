@@ -21,7 +21,7 @@
 -- Lists the account creation requests that match the specified status that is currently being tracked for the organization.
 --
 --
--- This operation can be called only from the organization's master account.
+-- This operation can be called only from the organization's master account or by a member account that is a delegated administrator for an AWS service.
 --
 --
 -- This operation returns paginated results.
@@ -68,11 +68,11 @@ data ListCreateAccountStatus = ListCreateAccountStatus'{_lcasStates
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'lcasStates' - A list of one or more states that you want included in the response. If this parameter is not present, then all requests are included in the response.
+-- * 'lcasStates' - A list of one or more states that you want included in the response. If this parameter isn't present, all requests are included in the response.
 --
--- * 'lcasNextToken' - Use this parameter if you receive a @NextToken@ response in a previous request that indicates that there is more output available. Set it to the value of the previous call's @NextToken@ response to indicate where the output should continue from.
+-- * 'lcasNextToken' - The parameter for receiving additional results if you receive a @NextToken@ response in a previous request. A @NextToken@ response indicates that more output is available. Set this parameter to the value of the previous call's @NextToken@ response to indicate where the output should continue from.
 --
--- * 'lcasMaxResults' - (Optional) Use this to limit the number of results you want included in the response. If you do not include this parameter, it defaults to a value that is specific to the operation. If additional items exist beyond the maximum you specify, the @NextToken@ response element is present and has a value (is not null). Include that value as the @NextToken@ request parameter in the next call to the operation to get the next part of the results. Note that Organizations might return fewer results than the maximum even when there are more results available. You should check @NextToken@ after every operation to ensure that you receive all of the results.
+-- * 'lcasMaxResults' - The total number of results that you want included on each page of the response. If you do not include this parameter, it defaults to a value that is specific to the operation. If additional items exist beyond the maximum you specify, the @NextToken@ response element is present and has a value (is not null). Include that value as the @NextToken@ request parameter in the next call to the operation to get the next part of the results. Note that Organizations might return fewer results than the maximum even when there are more results available. You should check @NextToken@ after every operation to ensure that you receive all of the results.
 listCreateAccountStatus
     :: ListCreateAccountStatus
 listCreateAccountStatus
@@ -80,15 +80,15 @@ listCreateAccountStatus
                              _lcasNextToken = Nothing,
                              _lcasMaxResults = Nothing}
 
--- | A list of one or more states that you want included in the response. If this parameter is not present, then all requests are included in the response.
+-- | A list of one or more states that you want included in the response. If this parameter isn't present, all requests are included in the response.
 lcasStates :: Lens' ListCreateAccountStatus [CreateAccountState]
 lcasStates = lens _lcasStates (\ s a -> s{_lcasStates = a}) . _Default . _Coerce
 
--- | Use this parameter if you receive a @NextToken@ response in a previous request that indicates that there is more output available. Set it to the value of the previous call's @NextToken@ response to indicate where the output should continue from.
+-- | The parameter for receiving additional results if you receive a @NextToken@ response in a previous request. A @NextToken@ response indicates that more output is available. Set this parameter to the value of the previous call's @NextToken@ response to indicate where the output should continue from.
 lcasNextToken :: Lens' ListCreateAccountStatus (Maybe Text)
 lcasNextToken = lens _lcasNextToken (\ s a -> s{_lcasNextToken = a})
 
--- | (Optional) Use this to limit the number of results you want included in the response. If you do not include this parameter, it defaults to a value that is specific to the operation. If additional items exist beyond the maximum you specify, the @NextToken@ response element is present and has a value (is not null). Include that value as the @NextToken@ request parameter in the next call to the operation to get the next part of the results. Note that Organizations might return fewer results than the maximum even when there are more results available. You should check @NextToken@ after every operation to ensure that you receive all of the results.
+-- | The total number of results that you want included on each page of the response. If you do not include this parameter, it defaults to a value that is specific to the operation. If additional items exist beyond the maximum you specify, the @NextToken@ response element is present and has a value (is not null). Include that value as the @NextToken@ request parameter in the next call to the operation to get the next part of the results. Note that Organizations might return fewer results than the maximum even when there are more results available. You should check @NextToken@ after every operation to ensure that you receive all of the results.
 lcasMaxResults :: Lens' ListCreateAccountStatus (Maybe Natural)
 lcasMaxResults = lens _lcasMaxResults (\ s a -> s{_lcasMaxResults = a}) . mapping _Nat
 
@@ -159,7 +159,7 @@ data ListCreateAccountStatusResponse = ListCreateAccountStatusResponse'{_lcasrsC
 --
 -- * 'lcasrsCreateAccountStatuses' - A list of objects with details about the requests. Certain elements, such as the accountId number, are present in the output only after the account has been successfully created.
 --
--- * 'lcasrsNextToken' - If present, this value indicates that there is more output available than is included in the current response. Use this value in the @NextToken@ request parameter in a subsequent call to the operation to get the next part of the output. You should repeat this until the @NextToken@ response element comes back as @null@ .
+-- * 'lcasrsNextToken' - If present, indicates that more output is available than is included in the current response. Use this value in the @NextToken@ request parameter in a subsequent call to the operation to get the next part of the output. You should repeat this until the @NextToken@ response element comes back as @null@ .
 --
 -- * 'lcasrsResponseStatus' - -- | The response status code.
 listCreateAccountStatusResponse
@@ -175,7 +175,7 @@ listCreateAccountStatusResponse pResponseStatus_
 lcasrsCreateAccountStatuses :: Lens' ListCreateAccountStatusResponse [CreateAccountStatus]
 lcasrsCreateAccountStatuses = lens _lcasrsCreateAccountStatuses (\ s a -> s{_lcasrsCreateAccountStatuses = a}) . _Default . _Coerce
 
--- | If present, this value indicates that there is more output available than is included in the current response. Use this value in the @NextToken@ request parameter in a subsequent call to the operation to get the next part of the output. You should repeat this until the @NextToken@ response element comes back as @null@ .
+-- | If present, indicates that more output is available than is included in the current response. Use this value in the @NextToken@ request parameter in a subsequent call to the operation to get the next part of the output. You should repeat this until the @NextToken@ response element comes back as @null@ .
 lcasrsNextToken :: Lens' ListCreateAccountStatusResponse (Maybe Text)
 lcasrsNextToken = lens _lcasrsNextToken (\ s a -> s{_lcasrsNextToken = a})
 

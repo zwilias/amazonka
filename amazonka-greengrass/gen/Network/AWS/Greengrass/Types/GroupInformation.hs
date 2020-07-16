@@ -38,7 +38,7 @@ data GroupInformation = GroupInformation'{_giLatestVersionARN
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'giLatestVersionARN' - The ARN of the latest version of the group.
+-- * 'giLatestVersionARN' - The ARN of the latest version associated with the group.
 --
 -- * 'giARN' - The ARN of the group.
 --
@@ -48,7 +48,7 @@ data GroupInformation = GroupInformation'{_giLatestVersionARN
 --
 -- * 'giId' - The ID of the group.
 --
--- * 'giLatestVersion' - The latest version of the group.
+-- * 'giLatestVersion' - The ID of the latest version associated with the group.
 --
 -- * 'giLastUpdatedTimestamp' - The time, in milliseconds since the epoch, when the group was last updated.
 groupInformation
@@ -60,7 +60,7 @@ groupInformation
                       _giLatestVersion = Nothing,
                       _giLastUpdatedTimestamp = Nothing}
 
--- | The ARN of the latest version of the group.
+-- | The ARN of the latest version associated with the group.
 giLatestVersionARN :: Lens' GroupInformation (Maybe Text)
 giLatestVersionARN = lens _giLatestVersionARN (\ s a -> s{_giLatestVersionARN = a})
 
@@ -80,7 +80,7 @@ giCreationTimestamp = lens _giCreationTimestamp (\ s a -> s{_giCreationTimestamp
 giId :: Lens' GroupInformation (Maybe Text)
 giId = lens _giId (\ s a -> s{_giId = a})
 
--- | The latest version of the group.
+-- | The ID of the latest version associated with the group.
 giLatestVersion :: Lens' GroupInformation (Maybe Text)
 giLatestVersion = lens _giLatestVersion (\ s a -> s{_giLatestVersion = a})
 

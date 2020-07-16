@@ -27,7 +27,7 @@ module Network.AWS.MediaLive.Types.Eac3PassthroughControl (
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | Placeholder documentation for Eac3PassthroughControl
+-- | Eac3 Passthrough Control
 data Eac3PassthroughControl = Eac3PassthroughControl' (CI
                                                          Text)
                                 deriving (Eq, Ord, Read, Show, Data, Typeable,

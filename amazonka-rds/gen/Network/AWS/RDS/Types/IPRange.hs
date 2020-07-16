@@ -20,7 +20,7 @@ module Network.AWS.RDS.Types.IPRange where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | This data type is used as a response element in the 'DescribeDBSecurityGroups' action. 
+-- | This data type is used as a response element in the @DescribeDBSecurityGroups@ action. 
 --
 --
 --

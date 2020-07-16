@@ -23,17 +23,15 @@
 --
 --     * Storage gateways of all types
 --
+--     * Storage volumes
 --
+--     * Virtual tapes
 --
---     * Storage Volumes
---
---
---
---     * Virtual Tapes
+--     * NFS and SMB file shares
 --
 --
 --
--- You can create a maximum of 10 tags for each resource. Virtual tapes and storage volumes that are recovered to a new gateway maintain their tags.
+-- You can create a maximum of 50 tags for each resource. Virtual tapes and storage volumes that are recovered to a new gateway maintain their tags.
 --
 module Network.AWS.StorageGateway.AddTagsToResource
     (

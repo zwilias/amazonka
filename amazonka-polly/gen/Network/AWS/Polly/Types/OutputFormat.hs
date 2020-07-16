@@ -91,3 +91,6 @@ instance ToHeader     OutputFormat
 
 instance ToJSON OutputFormat where
     toJSON = toJSONText
+
+instance FromJSON OutputFormat where
+    parseJSON = parseJSONText "OutputFormat"

@@ -19,29 +19,29 @@
 module Network.AWS.MediaLive.Types.M3u8TimedMetadataBehavior (
   M3u8TimedMetadataBehavior (
     ..
-    , MNoPassthrough
-    , MPassthrough
+    , M3uNoPassthrough
+    , M3uPassthrough
     )
   ) where
 
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | Placeholder documentation for M3u8TimedMetadataBehavior
+-- | M3u8 Timed Metadata Behavior
 data M3u8TimedMetadataBehavior = M3u8TimedMetadataBehavior' (CI
                                                                Text)
                                    deriving (Eq, Ord, Read, Show, Data,
                                              Typeable, Generic)
 
-pattern MNoPassthrough :: M3u8TimedMetadataBehavior
-pattern MNoPassthrough = M3u8TimedMetadataBehavior' "NO_PASSTHROUGH"
+pattern M3uNoPassthrough :: M3u8TimedMetadataBehavior
+pattern M3uNoPassthrough = M3u8TimedMetadataBehavior' "NO_PASSTHROUGH"
 
-pattern MPassthrough :: M3u8TimedMetadataBehavior
-pattern MPassthrough = M3u8TimedMetadataBehavior' "PASSTHROUGH"
+pattern M3uPassthrough :: M3u8TimedMetadataBehavior
+pattern M3uPassthrough = M3u8TimedMetadataBehavior' "PASSTHROUGH"
 
 {-# COMPLETE
-  MNoPassthrough,
-  MPassthrough,
+  M3uNoPassthrough,
+  M3uPassthrough,
   M3u8TimedMetadataBehavior' #-}
 
 instance FromText M3u8TimedMetadataBehavior where
@@ -56,20 +56,20 @@ instance ToText M3u8TimedMetadataBehavior where
 --   fromEnum is a partial function, and will error on values unknown at generation time.
 instance Enum M3u8TimedMetadataBehavior where
     toEnum i = case i of
-        0 -> MNoPassthrough
-        1 -> MPassthrough
+        0 -> M3uNoPassthrough
+        1 -> M3uPassthrough
         _ -> (error . showText) $ "Unknown index for M3u8TimedMetadataBehavior: " <> toText i
     fromEnum x = case x of
-        MNoPassthrough -> 0
-        MPassthrough -> 1
+        M3uNoPassthrough -> 0
+        M3uPassthrough -> 1
         M3u8TimedMetadataBehavior' name -> (error . showText) $ "Unknown M3u8TimedMetadataBehavior: " <> original name
 
 -- | Represents the bounds of /known/ $M3u8TimedMetadataBehavior.
 --   AWS may have added more since the source was generated.
 --   This instance exists only for backward compatibility.
 instance Bounded M3u8TimedMetadataBehavior where
-    minBound = MNoPassthrough
-    maxBound = MPassthrough
+    minBound = M3uNoPassthrough
+    maxBound = M3uPassthrough
 
 instance Hashable     M3u8TimedMetadataBehavior
 instance NFData       M3u8TimedMetadataBehavior

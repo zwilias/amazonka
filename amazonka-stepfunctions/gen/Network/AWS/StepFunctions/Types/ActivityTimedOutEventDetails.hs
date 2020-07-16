@@ -20,17 +20,21 @@ module Network.AWS.StepFunctions.Types.ActivityTimedOutEventDetails where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | Contains details about an activity timeout which occurred during an execution.
+-- | Contains details about an activity timeout that occurred during an execution.
 --
 --
 --
 -- /See:/ 'activityTimedOutEventDetails' smart constructor.
 data ActivityTimedOutEventDetails = ActivityTimedOutEventDetails'{_atoedError
                                                                   ::
-                                                                  !(Maybe Text),
+                                                                  !(Maybe
+                                                                      (Sensitive
+                                                                         Text)),
                                                                   _atoedCause ::
-                                                                  !(Maybe Text)}
-                                      deriving (Eq, Read, Show, Data, Typeable,
+                                                                  !(Maybe
+                                                                      (Sensitive
+                                                                         Text))}
+                                      deriving (Eq, Show, Data, Typeable,
                                                 Generic)
 
 -- | Creates a value of 'ActivityTimedOutEventDetails' with the minimum fields required to make a request.
@@ -49,11 +53,11 @@ activityTimedOutEventDetails
 
 -- | The error code of the failure.
 atoedError :: Lens' ActivityTimedOutEventDetails (Maybe Text)
-atoedError = lens _atoedError (\ s a -> s{_atoedError = a})
+atoedError = lens _atoedError (\ s a -> s{_atoedError = a}) . mapping _Sensitive
 
 -- | A more detailed explanation of the cause of the timeout.
 atoedCause :: Lens' ActivityTimedOutEventDetails (Maybe Text)
-atoedCause = lens _atoedCause (\ s a -> s{_atoedCause = a})
+atoedCause = lens _atoedCause (\ s a -> s{_atoedCause = a}) . mapping _Sensitive
 
 instance FromJSON ActivityTimedOutEventDetails where
         parseJSON

@@ -22,7 +22,11 @@ import Network.AWS.Prelude
 import Network.AWS.S3.Internal
 import Network.AWS.S3.Types.InventoryS3BucketDestination
 
--- | /See:/ 'inventoryDestination' smart constructor.
+-- | Specifies the inventory configuration for an Amazon S3 bucket.
+--
+--
+--
+-- /See:/ 'inventoryDestination' smart constructor.
 newtype InventoryDestination = InventoryDestination'{_idS3BucketDestination
                                                      ::
                                                      InventoryS3BucketDestination}

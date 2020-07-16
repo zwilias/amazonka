@@ -28,7 +28,7 @@ module Network.AWS.MediaLive.Types.HlsTimedMetadataId3Frame (
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | Placeholder documentation for HlsTimedMetadataId3Frame
+-- | Hls Timed Metadata Id3 Frame
 data HlsTimedMetadataId3Frame = HlsTimedMetadataId3Frame' (CI
                                                              Text)
                                   deriving (Eq, Ord, Read, Show, Data, Typeable,

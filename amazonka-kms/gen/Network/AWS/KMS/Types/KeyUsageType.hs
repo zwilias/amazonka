@@ -20,6 +20,7 @@ module Network.AWS.KMS.Types.KeyUsageType (
   KeyUsageType (
     ..
     , EncryptDecrypt
+    , SignVerify
     )
   ) where
 
@@ -33,8 +34,12 @@ data KeyUsageType = KeyUsageType' (CI Text)
 pattern EncryptDecrypt :: KeyUsageType
 pattern EncryptDecrypt = KeyUsageType' "ENCRYPT_DECRYPT"
 
+pattern SignVerify :: KeyUsageType
+pattern SignVerify = KeyUsageType' "SIGN_VERIFY"
+
 {-# COMPLETE
   EncryptDecrypt,
+  SignVerify,
   KeyUsageType' #-}
 
 instance FromText KeyUsageType where
@@ -50,9 +55,11 @@ instance ToText KeyUsageType where
 instance Enum KeyUsageType where
     toEnum i = case i of
         0 -> EncryptDecrypt
+        1 -> SignVerify
         _ -> (error . showText) $ "Unknown index for KeyUsageType: " <> toText i
     fromEnum x = case x of
         EncryptDecrypt -> 0
+        SignVerify -> 1
         KeyUsageType' name -> (error . showText) $ "Unknown KeyUsageType: " <> original name
 
 -- | Represents the bounds of /known/ $KeyUsageType.
@@ -60,7 +67,7 @@ instance Enum KeyUsageType where
 --   This instance exists only for backward compatibility.
 instance Bounded KeyUsageType where
     minBound = EncryptDecrypt
-    maxBound = EncryptDecrypt
+    maxBound = SignVerify
 
 instance Hashable     KeyUsageType
 instance NFData       KeyUsageType

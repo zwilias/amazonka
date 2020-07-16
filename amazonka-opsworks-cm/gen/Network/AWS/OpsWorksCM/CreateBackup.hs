@@ -34,6 +34,7 @@ module Network.AWS.OpsWorksCM.CreateBackup
     , CreateBackup
     -- * Request Lenses
     , cbDescription
+    , cbTags
     , cbServerName
 
     -- * Destructuring the Response
@@ -54,6 +55,7 @@ import Network.AWS.Response
 -- | /See:/ 'createBackup' smart constructor.
 data CreateBackup = CreateBackup'{_cbDescription ::
                                   !(Maybe Text),
+                                  _cbTags :: !(Maybe [Tag]),
                                   _cbServerName :: !Text}
                       deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -63,17 +65,23 @@ data CreateBackup = CreateBackup'{_cbDescription ::
 --
 -- * 'cbDescription' - A user-defined description of the backup. 
 --
+-- * 'cbTags' - A map that contains tag keys and tag values to attach to an AWS OpsWorks-CM server backup.     * The key cannot be empty.     * The key can be a maximum of 127 characters, and can contain only Unicode letters, numbers, or separators, or the following special characters: @+ - = . _ : /@      * The value can be a maximum 255 characters, and contain only Unicode letters, numbers, or separators, or the following special characters: @+ - = . _ : /@      * Leading and trailing white spaces are trimmed from both the key and value.     * A maximum of 50 user-applied tags is allowed for tag-supported AWS OpsWorks-CM resources.
+--
 -- * 'cbServerName' - The name of the server that you want to back up. 
 createBackup
     :: Text -- ^ 'cbServerName'
     -> CreateBackup
 createBackup pServerName_
   = CreateBackup'{_cbDescription = Nothing,
-                  _cbServerName = pServerName_}
+                  _cbTags = Nothing, _cbServerName = pServerName_}
 
 -- | A user-defined description of the backup. 
 cbDescription :: Lens' CreateBackup (Maybe Text)
 cbDescription = lens _cbDescription (\ s a -> s{_cbDescription = a})
+
+-- | A map that contains tag keys and tag values to attach to an AWS OpsWorks-CM server backup.     * The key cannot be empty.     * The key can be a maximum of 127 characters, and can contain only Unicode letters, numbers, or separators, or the following special characters: @+ - = . _ : /@      * The value can be a maximum 255 characters, and contain only Unicode letters, numbers, or separators, or the following special characters: @+ - = . _ : /@      * Leading and trailing white spaces are trimmed from both the key and value.     * A maximum of 50 user-applied tags is allowed for tag-supported AWS OpsWorks-CM resources.
+cbTags :: Lens' CreateBackup [Tag]
+cbTags = lens _cbTags (\ s a -> s{_cbTags = a}) . _Default . _Coerce
 
 -- | The name of the server that you want to back up. 
 cbServerName :: Lens' CreateBackup Text
@@ -107,6 +115,7 @@ instance ToJSON CreateBackup where
           = object
               (catMaybes
                  [("Description" .=) <$> _cbDescription,
+                  ("Tags" .=) <$> _cbTags,
                   Just ("ServerName" .= _cbServerName)])
 
 instance ToPath CreateBackup where

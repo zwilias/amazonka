@@ -78,6 +78,7 @@ library
         , Network.AWS.WorkDocs.GetDocumentVersion
         , Network.AWS.WorkDocs.GetFolder
         , Network.AWS.WorkDocs.GetFolderPath
+        , Network.AWS.WorkDocs.GetResources
         , Network.AWS.WorkDocs.InitiateDocumentVersionUpload
         , Network.AWS.WorkDocs.RemoveAllResourcePermissions
         , Network.AWS.WorkDocs.RemoveResourcePermission
@@ -113,6 +114,7 @@ library
         , Network.AWS.WorkDocs.Types.Principal
         , Network.AWS.WorkDocs.Types.PrincipalType
         , Network.AWS.WorkDocs.Types.Product
+        , Network.AWS.WorkDocs.Types.ResourceCollectionType
         , Network.AWS.WorkDocs.Types.ResourceMetadata
         , Network.AWS.WorkDocs.Types.ResourcePath
         , Network.AWS.WorkDocs.Types.ResourcePathComponent

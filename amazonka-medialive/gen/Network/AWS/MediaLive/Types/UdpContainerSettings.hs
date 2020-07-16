@@ -21,7 +21,7 @@ import Network.AWS.Lens
 import Network.AWS.MediaLive.Types.M2tsSettings
 import Network.AWS.Prelude
 
--- | Placeholder documentation for UdpContainerSettings
+-- | Udp Container Settings
 --
 -- /See:/ 'udpContainerSettings' smart constructor.
 newtype UdpContainerSettings = UdpContainerSettings'{_ucsM2tsSettings

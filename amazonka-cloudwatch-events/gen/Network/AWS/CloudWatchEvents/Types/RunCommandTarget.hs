@@ -20,7 +20,7 @@ module Network.AWS.CloudWatchEvents.Types.RunCommandTarget where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | Information about the EC2 instances that are to be sent the command, specified as key-value pairs. Each @RunCommandTarget@ block can include only one key, but this key can specify multiple values.
+-- | Information about the EC2 instances that are to be sent the command, specified as key-value pairs. Each @RunCommandTarget@ block can include only one key, but this key may specify multiple values.
 --
 --
 --

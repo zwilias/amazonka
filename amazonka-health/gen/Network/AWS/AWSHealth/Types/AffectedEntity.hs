@@ -29,6 +29,7 @@ import Network.AWS.Prelude
 data AffectedEntity = AffectedEntity'{_aeLastUpdatedTime
                                       :: !(Maybe POSIX),
                                       _aeEntityValue :: !(Maybe Text),
+                                      _aeEntityURL :: !(Maybe Text),
                                       _aeAwsAccountId :: !(Maybe Text),
                                       _aeEventARN :: !(Maybe Text),
                                       _aeEntityARN :: !(Maybe Text),
@@ -45,9 +46,11 @@ data AffectedEntity = AffectedEntity'{_aeLastUpdatedTime
 --
 -- * 'aeEntityValue' - The ID of the affected entity.
 --
+-- * 'aeEntityURL' - The URL of the affected entity.
+--
 -- * 'aeAwsAccountId' - The 12-digit AWS account number that contains the affected entity.
 --
--- * 'aeEventARN' - The unique identifier for the event. Format: @arn:aws:health:/event-region/ ::event//EVENT_TYPE_PLUS_ID/ @ . Example: @arn:aws:health:us-east-1::event/AWS_EC2_MAINTENANCE_5331@ 
+-- * 'aeEventARN' - The unique identifier for the event. Format: @arn:aws:health:/event-region/ ::event//SERVICE/ //EVENT_TYPE_CODE/ //EVENT_TYPE_PLUS_ID/ @ . Example: @Example: arn:aws:health:us-east-1::event/EC2/EC2_INSTANCE_RETIREMENT_SCHEDULED/EC2_INSTANCE_RETIREMENT_SCHEDULED_ABC123-DEF456@ 
 --
 -- * 'aeEntityARN' - The unique identifier for the entity. Format: @arn:aws:health:/entity-region/ :/aws-account/ :entity//entity-id/ @ . Example: @arn:aws:health:us-east-1:111222333444:entity/AVh5GGT7ul1arKr1sE1K@ 
 --
@@ -58,9 +61,10 @@ affectedEntity
     :: AffectedEntity
 affectedEntity
   = AffectedEntity'{_aeLastUpdatedTime = Nothing,
-                    _aeEntityValue = Nothing, _aeAwsAccountId = Nothing,
-                    _aeEventARN = Nothing, _aeEntityARN = Nothing,
-                    _aeTags = Nothing, _aeStatusCode = Nothing}
+                    _aeEntityValue = Nothing, _aeEntityURL = Nothing,
+                    _aeAwsAccountId = Nothing, _aeEventARN = Nothing,
+                    _aeEntityARN = Nothing, _aeTags = Nothing,
+                    _aeStatusCode = Nothing}
 
 -- | The most recent time that the entity was updated.
 aeLastUpdatedTime :: Lens' AffectedEntity (Maybe UTCTime)
@@ -70,11 +74,15 @@ aeLastUpdatedTime = lens _aeLastUpdatedTime (\ s a -> s{_aeLastUpdatedTime = a})
 aeEntityValue :: Lens' AffectedEntity (Maybe Text)
 aeEntityValue = lens _aeEntityValue (\ s a -> s{_aeEntityValue = a})
 
+-- | The URL of the affected entity.
+aeEntityURL :: Lens' AffectedEntity (Maybe Text)
+aeEntityURL = lens _aeEntityURL (\ s a -> s{_aeEntityURL = a})
+
 -- | The 12-digit AWS account number that contains the affected entity.
 aeAwsAccountId :: Lens' AffectedEntity (Maybe Text)
 aeAwsAccountId = lens _aeAwsAccountId (\ s a -> s{_aeAwsAccountId = a})
 
--- | The unique identifier for the event. Format: @arn:aws:health:/event-region/ ::event//EVENT_TYPE_PLUS_ID/ @ . Example: @arn:aws:health:us-east-1::event/AWS_EC2_MAINTENANCE_5331@ 
+-- | The unique identifier for the event. Format: @arn:aws:health:/event-region/ ::event//SERVICE/ //EVENT_TYPE_CODE/ //EVENT_TYPE_PLUS_ID/ @ . Example: @Example: arn:aws:health:us-east-1::event/EC2/EC2_INSTANCE_RETIREMENT_SCHEDULED/EC2_INSTANCE_RETIREMENT_SCHEDULED_ABC123-DEF456@ 
 aeEventARN :: Lens' AffectedEntity (Maybe Text)
 aeEventARN = lens _aeEventARN (\ s a -> s{_aeEventARN = a})
 
@@ -96,6 +104,7 @@ instance FromJSON AffectedEntity where
               (\ x ->
                  AffectedEntity' <$>
                    (x .:? "lastUpdatedTime") <*> (x .:? "entityValue")
+                     <*> (x .:? "entityUrl")
                      <*> (x .:? "awsAccountId")
                      <*> (x .:? "eventArn")
                      <*> (x .:? "entityArn")

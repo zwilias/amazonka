@@ -36,7 +36,7 @@ data FederatedUser = FederatedUser'{_fuFederatedUserId
 --
 -- * 'fuFederatedUserId' - The string that identifies the federated user associated with the credentials, similar to the unique ID of an IAM user.
 --
--- * 'fuARN' - The ARN that specifies the federated user that is associated with the credentials. For more information about ARNs and how to use them in policies, see <http://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html IAM Identifiers> in /Using IAM/ . 
+-- * 'fuARN' - The ARN that specifies the federated user that is associated with the credentials. For more information about ARNs and how to use them in policies, see <https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html IAM Identifiers> in the /IAM User Guide/ . 
 federatedUser
     :: Text -- ^ 'fuFederatedUserId'
     -> Text -- ^ 'fuARN'
@@ -50,7 +50,7 @@ federatedUser pFederatedUserId_ pARN_
 fuFederatedUserId :: Lens' FederatedUser Text
 fuFederatedUserId = lens _fuFederatedUserId (\ s a -> s{_fuFederatedUserId = a})
 
--- | The ARN that specifies the federated user that is associated with the credentials. For more information about ARNs and how to use them in policies, see <http://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html IAM Identifiers> in /Using IAM/ . 
+-- | The ARN that specifies the federated user that is associated with the credentials. For more information about ARNs and how to use them in policies, see <https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html IAM Identifiers> in the /IAM User Guide/ . 
 fuARN :: Lens' FederatedUser Text
 fuARN = lens _fuARN (\ s a -> s{_fuARN = a})
 

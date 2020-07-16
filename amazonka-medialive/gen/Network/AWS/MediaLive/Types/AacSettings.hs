@@ -27,7 +27,7 @@ import Network.AWS.MediaLive.Types.AacSpec
 import Network.AWS.MediaLive.Types.AacVbrQuality
 import Network.AWS.Prelude
 
--- | Placeholder documentation for AacSettings
+-- | Aac Settings
 --
 -- /See:/ 'aacSettings' smart constructor.
 data AacSettings = AacSettings'{_aRawFormat ::

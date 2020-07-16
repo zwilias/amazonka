@@ -18,12 +18,14 @@
 module Network.AWS.Lightsail.Types.Disk where
 
 import Network.AWS.Lens
+import Network.AWS.Lightsail.Types.AddOn
 import Network.AWS.Lightsail.Types.DiskState
 import Network.AWS.Lightsail.Types.ResourceLocation
 import Network.AWS.Lightsail.Types.ResourceType
+import Network.AWS.Lightsail.Types.Tag
 import Network.AWS.Prelude
 
--- | Describes a system disk or an block storage disk.
+-- | Describes a system disk or a block storage disk.
 --
 --
 --
@@ -35,12 +37,13 @@ data Disk = Disk'{_dState :: !(Maybe DiskState),
                   _dLocation :: !(Maybe ResourceLocation),
                   _dIops :: !(Maybe Int),
                   _dIsAttached :: !(Maybe Bool),
+                  _dAddOns :: !(Maybe [AddOn]),
                   _dAttachmentState :: !(Maybe Text),
                   _dName :: !(Maybe Text), _dSizeInGb :: !(Maybe Int),
                   _dSupportCode :: !(Maybe Text),
                   _dIsSystemDisk :: !(Maybe Bool),
                   _dAttachedTo :: !(Maybe Text),
-                  _dGbInUse :: !(Maybe Int)}
+                  _dGbInUse :: !(Maybe Int), _dTags :: !(Maybe [Tag])}
               deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'Disk' with the minimum fields required to make a request.
@@ -63,6 +66,8 @@ data Disk = Disk'{_dState :: !(Maybe DiskState),
 --
 -- * 'dIsAttached' - A Boolean value indicating whether the disk is attached.
 --
+-- * 'dAddOns' - An array of objects representing the add-ons enabled on the disk.
+--
 -- * 'dAttachmentState' - (Deprecated) The attachment state of the disk.
 --
 -- * 'dName' - The unique name of the disk.
@@ -76,6 +81,8 @@ data Disk = Disk'{_dState :: !(Maybe DiskState),
 -- * 'dAttachedTo' - The resources to which the disk is attached.
 --
 -- * 'dGbInUse' - (Deprecated) The number of GB in use by the disk.
+--
+-- * 'dTags' - The tag keys and optional values for the resource. For more information about tags in Lightsail, see the <https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-tags Lightsail Dev Guide> .
 disk
     :: Disk
 disk
@@ -83,10 +90,11 @@ disk
           _dArn = Nothing, _dPath = Nothing,
           _dCreatedAt = Nothing, _dLocation = Nothing,
           _dIops = Nothing, _dIsAttached = Nothing,
-          _dAttachmentState = Nothing, _dName = Nothing,
-          _dSizeInGb = Nothing, _dSupportCode = Nothing,
-          _dIsSystemDisk = Nothing, _dAttachedTo = Nothing,
-          _dGbInUse = Nothing}
+          _dAddOns = Nothing, _dAttachmentState = Nothing,
+          _dName = Nothing, _dSizeInGb = Nothing,
+          _dSupportCode = Nothing, _dIsSystemDisk = Nothing,
+          _dAttachedTo = Nothing, _dGbInUse = Nothing,
+          _dTags = Nothing}
 
 -- | Describes the status of the disk.
 dState :: Lens' Disk (Maybe DiskState)
@@ -120,6 +128,10 @@ dIops = lens _dIops (\ s a -> s{_dIops = a})
 dIsAttached :: Lens' Disk (Maybe Bool)
 dIsAttached = lens _dIsAttached (\ s a -> s{_dIsAttached = a})
 
+-- | An array of objects representing the add-ons enabled on the disk.
+dAddOns :: Lens' Disk [AddOn]
+dAddOns = lens _dAddOns (\ s a -> s{_dAddOns = a}) . _Default . _Coerce
+
 -- | (Deprecated) The attachment state of the disk.
 dAttachmentState :: Lens' Disk (Maybe Text)
 dAttachmentState = lens _dAttachmentState (\ s a -> s{_dAttachmentState = a})
@@ -148,6 +160,10 @@ dAttachedTo = lens _dAttachedTo (\ s a -> s{_dAttachedTo = a})
 dGbInUse :: Lens' Disk (Maybe Int)
 dGbInUse = lens _dGbInUse (\ s a -> s{_dGbInUse = a})
 
+-- | The tag keys and optional values for the resource. For more information about tags in Lightsail, see the <https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-tags Lightsail Dev Guide> .
+dTags :: Lens' Disk [Tag]
+dTags = lens _dTags (\ s a -> s{_dTags = a}) . _Default . _Coerce
+
 instance FromJSON Disk where
         parseJSON
           = withObject "Disk"
@@ -160,13 +176,15 @@ instance FromJSON Disk where
                      <*> (x .:? "location")
                      <*> (x .:? "iops")
                      <*> (x .:? "isAttached")
+                     <*> (x .:? "addOns" .!= mempty)
                      <*> (x .:? "attachmentState")
                      <*> (x .:? "name")
                      <*> (x .:? "sizeInGb")
                      <*> (x .:? "supportCode")
                      <*> (x .:? "isSystemDisk")
                      <*> (x .:? "attachedTo")
-                     <*> (x .:? "gbInUse"))
+                     <*> (x .:? "gbInUse")
+                     <*> (x .:? "tags" .!= mempty))
 
 instance Hashable Disk where
 

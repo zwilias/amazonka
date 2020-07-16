@@ -21,7 +21,11 @@
 -- Updates settings for a game session queue, which determines how new game session requests in the queue are processed. To update settings, specify the queue name to be updated and provide the new settings. When updating destinations, provide a complete list of destinations. 
 --
 --
--- Queue-related operations include:
+-- __Learn more__ 
+--
+-- <https://docs.aws.amazon.com/gamelift/latest/developerguide/queues-intro.html Using Multi-Region Queues> 
+--
+-- __Related operations__ 
 --
 --     * 'CreateGameSessionQueue' 
 --
@@ -81,13 +85,13 @@ data UpdateGameSessionQueue = UpdateGameSessionQueue'{_ugsqPlayerLatencyPolicies
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'ugsqPlayerLatencyPolicies' - Collection of latency policies to apply when processing game sessions placement requests with player latency information. Multiple policies are evaluated in order of the maximum latency value, starting with the lowest latency values. With just one policy, it is enforced at the start of the game session placement for the duration period. With multiple policies, each policy is enforced consecutively for its duration period. For example, a queue might enforce a 60-second policy followed by a 120-second policy, and then no policy for the remainder of the placement. When updating policies, provide a complete collection of policies.
+-- * 'ugsqPlayerLatencyPolicies' - A collection of latency policies to apply when processing game sessions placement requests with player latency information. Multiple policies are evaluated in order of the maximum latency value, starting with the lowest latency values. With just one policy, the policy is enforced at the start of the game session placement for the duration period. With multiple policies, each policy is enforced consecutively for its duration period. For example, a queue might enforce a 60-second policy followed by a 120-second policy, and then no policy for the remainder of the placement. When updating policies, provide a complete collection of policies.
 --
--- * 'ugsqTimeoutInSeconds' - Maximum time, in seconds, that a new game session placement request remains in the queue. When a request exceeds this time, the game session placement changes to a @TIMED_OUT@ status.
+-- * 'ugsqTimeoutInSeconds' - The maximum time, in seconds, that a new game session placement request remains in the queue. When a request exceeds this time, the game session placement changes to a @TIMED_OUT@ status.
 --
--- * 'ugsqDestinations' - List of fleets that can be used to fulfill game session placement requests in the queue. Fleets are identified by either a fleet ARN or a fleet alias ARN. Destinations are listed in default preference order. When updating this list, provide a complete list of destinations.
+-- * 'ugsqDestinations' - A list of fleets that can be used to fulfill game session placement requests in the queue. Fleets are identified by either a fleet ARN or a fleet alias ARN. Destinations are listed in default preference order. When updating this list, provide a complete list of destinations.
 --
--- * 'ugsqName' - Descriptive label that is associated with game session queue. Queue names must be unique within each region.
+-- * 'ugsqName' - A descriptive label that is associated with game session queue. Queue names must be unique within each Region. You can use either the queue ID or ARN value. 
 updateGameSessionQueue
     :: Text -- ^ 'ugsqName'
     -> UpdateGameSessionQueue
@@ -97,19 +101,19 @@ updateGameSessionQueue pName_
                             _ugsqTimeoutInSeconds = Nothing,
                             _ugsqDestinations = Nothing, _ugsqName = pName_}
 
--- | Collection of latency policies to apply when processing game sessions placement requests with player latency information. Multiple policies are evaluated in order of the maximum latency value, starting with the lowest latency values. With just one policy, it is enforced at the start of the game session placement for the duration period. With multiple policies, each policy is enforced consecutively for its duration period. For example, a queue might enforce a 60-second policy followed by a 120-second policy, and then no policy for the remainder of the placement. When updating policies, provide a complete collection of policies.
+-- | A collection of latency policies to apply when processing game sessions placement requests with player latency information. Multiple policies are evaluated in order of the maximum latency value, starting with the lowest latency values. With just one policy, the policy is enforced at the start of the game session placement for the duration period. With multiple policies, each policy is enforced consecutively for its duration period. For example, a queue might enforce a 60-second policy followed by a 120-second policy, and then no policy for the remainder of the placement. When updating policies, provide a complete collection of policies.
 ugsqPlayerLatencyPolicies :: Lens' UpdateGameSessionQueue [PlayerLatencyPolicy]
 ugsqPlayerLatencyPolicies = lens _ugsqPlayerLatencyPolicies (\ s a -> s{_ugsqPlayerLatencyPolicies = a}) . _Default . _Coerce
 
--- | Maximum time, in seconds, that a new game session placement request remains in the queue. When a request exceeds this time, the game session placement changes to a @TIMED_OUT@ status.
+-- | The maximum time, in seconds, that a new game session placement request remains in the queue. When a request exceeds this time, the game session placement changes to a @TIMED_OUT@ status.
 ugsqTimeoutInSeconds :: Lens' UpdateGameSessionQueue (Maybe Natural)
 ugsqTimeoutInSeconds = lens _ugsqTimeoutInSeconds (\ s a -> s{_ugsqTimeoutInSeconds = a}) . mapping _Nat
 
--- | List of fleets that can be used to fulfill game session placement requests in the queue. Fleets are identified by either a fleet ARN or a fleet alias ARN. Destinations are listed in default preference order. When updating this list, provide a complete list of destinations.
+-- | A list of fleets that can be used to fulfill game session placement requests in the queue. Fleets are identified by either a fleet ARN or a fleet alias ARN. Destinations are listed in default preference order. When updating this list, provide a complete list of destinations.
 ugsqDestinations :: Lens' UpdateGameSessionQueue [GameSessionQueueDestination]
 ugsqDestinations = lens _ugsqDestinations (\ s a -> s{_ugsqDestinations = a}) . _Default . _Coerce
 
--- | Descriptive label that is associated with game session queue. Queue names must be unique within each region.
+-- | A descriptive label that is associated with game session queue. Queue names must be unique within each Region. You can use either the queue ID or ARN value. 
 ugsqName :: Lens' UpdateGameSessionQueue Text
 ugsqName = lens _ugsqName (\ s a -> s{_ugsqName = a})
 
@@ -170,7 +174,7 @@ data UpdateGameSessionQueueResponse = UpdateGameSessionQueueResponse'{_ugsqrsGam
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'ugsqrsGameSessionQueue' - Object that describes the newly updated game session queue.
+-- * 'ugsqrsGameSessionQueue' - An object that describes the newly updated game session queue.
 --
 -- * 'ugsqrsResponseStatus' - -- | The response status code.
 updateGameSessionQueueResponse
@@ -181,7 +185,7 @@ updateGameSessionQueueResponse pResponseStatus_
                                       = Nothing,
                                     _ugsqrsResponseStatus = pResponseStatus_}
 
--- | Object that describes the newly updated game session queue.
+-- | An object that describes the newly updated game session queue.
 ugsqrsGameSessionQueue :: Lens' UpdateGameSessionQueueResponse (Maybe GameSessionQueue)
 ugsqrsGameSessionQueue = lens _ugsqrsGameSessionQueue (\ s a -> s{_ugsqrsGameSessionQueue = a})
 

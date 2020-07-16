@@ -21,7 +21,11 @@ import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.S3.Internal
 
--- | /See:/ 'corsRule' smart constructor.
+-- | Specifies a cross-origin access rule for an Amazon S3 bucket.
+--
+--
+--
+-- /See:/ 'corsRule' smart constructor.
 data CORSRule = CORSRule'{_crMaxAgeSeconds ::
                           !(Maybe Int),
                           _crAllowedHeaders :: !(Maybe [Text]),
@@ -36,11 +40,11 @@ data CORSRule = CORSRule'{_crMaxAgeSeconds ::
 --
 -- * 'crMaxAgeSeconds' - The time in seconds that your browser is to cache the preflight response for the specified resource.
 --
--- * 'crAllowedHeaders' - Specifies which headers are allowed in a pre-flight OPTIONS request.
+-- * 'crAllowedHeaders' - Headers that are specified in the @Access-Control-Request-Headers@ header. These headers are allowed in a preflight OPTIONS request. In response to any preflight OPTIONS request, Amazon S3 returns any requested headers that are allowed.
 --
--- * 'crExposeHeaders' - One or more headers in the response that you want customers to be able to access from their applications (for example, from a JavaScript XMLHttpRequest object).
+-- * 'crExposeHeaders' - One or more headers in the response that you want customers to be able to access from their applications (for example, from a JavaScript @XMLHttpRequest@ object).
 --
--- * 'crAllowedMethods' - Identifies HTTP methods that the domain/origin specified in the rule is allowed to execute.
+-- * 'crAllowedMethods' - An HTTP method that you allow the origin to execute. Valid values are @GET@ , @PUT@ , @HEAD@ , @POST@ , and @DELETE@ .
 --
 -- * 'crAllowedOrigins' - One or more origins you want customers to be able to access the bucket from.
 corsRule
@@ -56,15 +60,15 @@ corsRule
 crMaxAgeSeconds :: Lens' CORSRule (Maybe Int)
 crMaxAgeSeconds = lens _crMaxAgeSeconds (\ s a -> s{_crMaxAgeSeconds = a})
 
--- | Specifies which headers are allowed in a pre-flight OPTIONS request.
+-- | Headers that are specified in the @Access-Control-Request-Headers@ header. These headers are allowed in a preflight OPTIONS request. In response to any preflight OPTIONS request, Amazon S3 returns any requested headers that are allowed.
 crAllowedHeaders :: Lens' CORSRule [Text]
 crAllowedHeaders = lens _crAllowedHeaders (\ s a -> s{_crAllowedHeaders = a}) . _Default . _Coerce
 
--- | One or more headers in the response that you want customers to be able to access from their applications (for example, from a JavaScript XMLHttpRequest object).
+-- | One or more headers in the response that you want customers to be able to access from their applications (for example, from a JavaScript @XMLHttpRequest@ object).
 crExposeHeaders :: Lens' CORSRule [Text]
 crExposeHeaders = lens _crExposeHeaders (\ s a -> s{_crExposeHeaders = a}) . _Default . _Coerce
 
--- | Identifies HTTP methods that the domain/origin specified in the rule is allowed to execute.
+-- | An HTTP method that you allow the origin to execute. Valid values are @GET@ , @PUT@ , @HEAD@ , @POST@ , and @DELETE@ .
 crAllowedMethods :: Lens' CORSRule [Text]
 crAllowedMethods = lens _crAllowedMethods (\ s a -> s{_crAllowedMethods = a}) . _Coerce
 

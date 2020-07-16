@@ -39,13 +39,13 @@ data Fragment = Fragment'{_fFragmentLengthInMilliseconds
 --
 -- * 'fFragmentLengthInMilliseconds' - The playback duration or other time value associated with the fragment.
 --
--- * 'fServerTimestamp' - The time stamp from the AWS server corresponding to the fragment.
+-- * 'fServerTimestamp' - The timestamp from the AWS server corresponding to the fragment.
 --
 -- * 'fFragmentSizeInBytes' - The total fragment size, including information about the fragment and contained media data.
 --
--- * 'fFragmentNumber' - The index value of the fragment.
+-- * 'fFragmentNumber' - The unique identifier of the fragment. This value monotonically increases based on the ingestion order.
 --
--- * 'fProducerTimestamp' - The time stamp from the producer corresponding to the fragment.
+-- * 'fProducerTimestamp' - The timestamp from the producer corresponding to the fragment.
 fragment
     :: Fragment
 fragment
@@ -59,7 +59,7 @@ fragment
 fFragmentLengthInMilliseconds :: Lens' Fragment (Maybe Integer)
 fFragmentLengthInMilliseconds = lens _fFragmentLengthInMilliseconds (\ s a -> s{_fFragmentLengthInMilliseconds = a})
 
--- | The time stamp from the AWS server corresponding to the fragment.
+-- | The timestamp from the AWS server corresponding to the fragment.
 fServerTimestamp :: Lens' Fragment (Maybe UTCTime)
 fServerTimestamp = lens _fServerTimestamp (\ s a -> s{_fServerTimestamp = a}) . mapping _Time
 
@@ -67,11 +67,11 @@ fServerTimestamp = lens _fServerTimestamp (\ s a -> s{_fServerTimestamp = a}) . 
 fFragmentSizeInBytes :: Lens' Fragment (Maybe Integer)
 fFragmentSizeInBytes = lens _fFragmentSizeInBytes (\ s a -> s{_fFragmentSizeInBytes = a})
 
--- | The index value of the fragment.
+-- | The unique identifier of the fragment. This value monotonically increases based on the ingestion order.
 fFragmentNumber :: Lens' Fragment (Maybe Text)
 fFragmentNumber = lens _fFragmentNumber (\ s a -> s{_fFragmentNumber = a})
 
--- | The time stamp from the producer corresponding to the fragment.
+-- | The timestamp from the producer corresponding to the fragment.
 fProducerTimestamp :: Lens' Fragment (Maybe UTCTime)
 fProducerTimestamp = lens _fProducerTimestamp (\ s a -> s{_fProducerTimestamp = a}) . mapping _Time
 

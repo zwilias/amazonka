@@ -22,6 +22,7 @@ module Network.AWS.SecretsManager.Types
     , _InvalidRequestException
     , _ResourceNotFoundException
     , _ResourceExistsException
+    , _PreconditionNotMetException
     , _InvalidNextTokenException
     , _MalformedPolicyDocumentException
     , _EncryptionFailure
@@ -43,6 +44,7 @@ module Network.AWS.SecretsManager.Types
     , sleRotationEnabled
     , sleKMSKeyId
     , sleName
+    , sleOwningService
     , sleLastRotatedDate
     , sleLastAccessedDate
     , sleDescription
@@ -95,6 +97,11 @@ secretsManager
             = Just "throttling_exception"
           | has (hasCode "Throttling" . hasStatus 400) e =
             Just "throttling"
+          | has
+              (hasCode "ProvisionedThroughputExceededException" .
+                 hasStatus 400)
+              e
+            = Just "throughput_exceeded"
           | has (hasStatus 504) e = Just "gateway_timeout"
           | has
               (hasCode "RequestThrottledException" . hasStatus 400)
@@ -130,7 +137,15 @@ _InvalidParameterException
   = _MatchServiceError secretsManager
       "InvalidParameterException"
 
--- | You provided a parameter value that is not valid for the current state of the resource. For example, if you try to enable rotation on a secret, you must already have a Lambda function ARN configured or included as a parameter in this call.
+-- | You provided a parameter value that is not valid for the current state of the resource.
+--
+--
+-- Possible causes:
+--
+--     * You tried to perform the operation on a secret that's currently marked deleted.
+--
+--     * You tried to enable rotation on a secret that doesn't already have a Lambda function ARN configured and you didn't include such an ARN as a parameter in this call. 
+--
 --
 --
 _InvalidRequestException :: AsError a => Getting (First ServiceError) a ServiceError
@@ -153,6 +168,14 @@ _ResourceExistsException :: AsError a => Getting (First ServiceError) a ServiceE
 _ResourceExistsException
   = _MatchServiceError secretsManager
       "ResourceExistsException"
+
+-- | The request failed because you did not complete all the prerequisite steps.
+--
+--
+_PreconditionNotMetException :: AsError a => Getting (First ServiceError) a ServiceError
+_PreconditionNotMetException
+  = _MatchServiceError secretsManager
+      "PreconditionNotMetException"
 
 -- | You provided an invalid @NextToken@ value.
 --

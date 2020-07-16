@@ -27,7 +27,7 @@ module Network.AWS.MediaLive.Types.Eac3MetadataControl (
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | Placeholder documentation for Eac3MetadataControl
+-- | Eac3 Metadata Control
 data Eac3MetadataControl = Eac3MetadataControl' (CI
                                                    Text)
                              deriving (Eq, Ord, Read, Show, Data, Typeable,

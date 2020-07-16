@@ -18,10 +18,30 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Suspends activity on a fleet. Currently, this operation is used to stop a fleet's auto-scaling activity. It is used to temporarily stop scaling events triggered by the fleet's scaling policies. The policies can be retained and auto-scaling activity can be restarted using 'StartFleetActions' . You can view a fleet's stopped actions using 'DescribeFleetAttributes' .
+-- Suspends activity on a fleet. Currently, this operation is used to stop a fleet's auto-scaling activity. It is used to temporarily stop triggering scaling events. The policies can be retained and auto-scaling activity can be restarted using 'StartFleetActions' . You can view a fleet's stopped actions using 'DescribeFleetAttributes' .
 --
 --
--- To stop fleet actions, specify the fleet ID and the type of actions to suspend. When auto-scaling fleet actions are stopped, Amazon GameLift no longer initiates scaling events except to maintain the fleet's desired instances setting ('FleetCapacity' . Changes to the fleet's capacity must be done manually using 'UpdateFleetCapacity' . 
+-- To stop fleet actions, specify the fleet ID and the type of actions to suspend. When auto-scaling fleet actions are stopped, Amazon GameLift no longer initiates scaling events except in response to manual changes using 'UpdateFleetCapacity' . 
+--
+-- __Learn more__ 
+--
+-- <https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html Setting up GameLift Fleets> 
+--
+-- __Related operations__ 
+--
+--     * 'CreateFleet' 
+--
+--     * 'ListFleets' 
+--
+--     * 'DeleteFleet' 
+--
+--     * 'DescribeFleetAttributes' 
+--
+--     * 'UpdateFleetAttributes' 
+--
+--     * 'StartFleetActions' or 'StopFleetActions' 
+--
+--
 --
 module Network.AWS.GameLift.StopFleetActions
     (
@@ -56,7 +76,7 @@ data StopFleetActions = StopFleetActions'{_sFleetId
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'sFleetId' - Unique identifier for a fleet
+-- * 'sFleetId' - A unique identifier for a fleet to stop actions on. You can use either the fleet ID or ARN value.
 --
 -- * 'sActions' - List of actions to suspend on the fleet. 
 stopFleetActions
@@ -67,7 +87,7 @@ stopFleetActions pFleetId_ pActions_
   = StopFleetActions'{_sFleetId = pFleetId_,
                       _sActions = _List1 # pActions_}
 
--- | Unique identifier for a fleet
+-- | A unique identifier for a fleet to stop actions on. You can use either the fleet ID or ARN value.
 sFleetId :: Lens' StopFleetActions Text
 sFleetId = lens _sFleetId (\ s a -> s{_sFleetId = a})
 

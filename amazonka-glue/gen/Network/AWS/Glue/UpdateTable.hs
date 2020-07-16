@@ -58,9 +58,9 @@ data UpdateTable = UpdateTable'{_utSkipArchive ::
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'utSkipArchive' - By default, @UpdateTable@ always creates an archived version of the table before updating it. If @skipArchive@ is set to true, however, @UpdateTable@ does not create the archived version.
+-- * 'utSkipArchive' - By default, @UpdateTable@ always creates an archived version of the table before updating it. However, if @skipArchive@ is set to true, @UpdateTable@ does not create the archived version.
 --
--- * 'utCatalogId' - The ID of the Data Catalog where the table resides. If none is supplied, the AWS account ID is used by default.
+-- * 'utCatalogId' - The ID of the Data Catalog where the table resides. If none is provided, the AWS account ID is used by default.
 --
 -- * 'utDatabaseName' - The name of the catalog database in which the table resides. For Hive compatibility, this name is entirely lowercase.
 --
@@ -75,11 +75,11 @@ updateTable pDatabaseName_ pTableInput_
                  _utDatabaseName = pDatabaseName_,
                  _utTableInput = pTableInput_}
 
--- | By default, @UpdateTable@ always creates an archived version of the table before updating it. If @skipArchive@ is set to true, however, @UpdateTable@ does not create the archived version.
+-- | By default, @UpdateTable@ always creates an archived version of the table before updating it. However, if @skipArchive@ is set to true, @UpdateTable@ does not create the archived version.
 utSkipArchive :: Lens' UpdateTable (Maybe Bool)
 utSkipArchive = lens _utSkipArchive (\ s a -> s{_utSkipArchive = a})
 
--- | The ID of the Data Catalog where the table resides. If none is supplied, the AWS account ID is used by default.
+-- | The ID of the Data Catalog where the table resides. If none is provided, the AWS account ID is used by default.
 utCatalogId :: Lens' UpdateTable (Maybe Text)
 utCatalogId = lens _utCatalogId (\ s a -> s{_utCatalogId = a})
 

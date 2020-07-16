@@ -21,7 +21,7 @@ import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.SSM.Types.MaintenanceWindowExecutionStatus
 
--- | Describes the information about an execution of a Maintenance Window. 
+-- | Describes the information about an execution of a maintenance window. 
 --
 --
 --
@@ -51,13 +51,13 @@ data MaintenanceWindowExecution = MaintenanceWindowExecution'{_mweStatus
 --
 -- * 'mweStartTime' - The time the execution started.
 --
--- * 'mweWindowExecutionId' - The ID of the Maintenance Window execution.
+-- * 'mweWindowExecutionId' - The ID of the maintenance window execution.
 --
 -- * 'mweStatusDetails' - The details explaining the Status. Only available for certain status values.
 --
 -- * 'mweEndTime' - The time the execution finished.
 --
--- * 'mweWindowId' - The ID of the Maintenance Window.
+-- * 'mweWindowId' - The ID of the maintenance window.
 maintenanceWindowExecution
     :: MaintenanceWindowExecution
 maintenanceWindowExecution
@@ -75,7 +75,7 @@ mweStatus = lens _mweStatus (\ s a -> s{_mweStatus = a})
 mweStartTime :: Lens' MaintenanceWindowExecution (Maybe UTCTime)
 mweStartTime = lens _mweStartTime (\ s a -> s{_mweStartTime = a}) . mapping _Time
 
--- | The ID of the Maintenance Window execution.
+-- | The ID of the maintenance window execution.
 mweWindowExecutionId :: Lens' MaintenanceWindowExecution (Maybe Text)
 mweWindowExecutionId = lens _mweWindowExecutionId (\ s a -> s{_mweWindowExecutionId = a})
 
@@ -87,7 +87,7 @@ mweStatusDetails = lens _mweStatusDetails (\ s a -> s{_mweStatusDetails = a})
 mweEndTime :: Lens' MaintenanceWindowExecution (Maybe UTCTime)
 mweEndTime = lens _mweEndTime (\ s a -> s{_mweEndTime = a}) . mapping _Time
 
--- | The ID of the Maintenance Window.
+-- | The ID of the maintenance window.
 mweWindowId :: Lens' MaintenanceWindowExecution (Maybe Text)
 mweWindowId = lens _mweWindowId (\ s a -> s{_mweWindowId = a})
 

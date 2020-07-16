@@ -19,14 +19,14 @@
 module Network.AWS.Glue.Types.TriggerState (
   TriggerState (
     ..
-    , Activated
-    , Activating
-    , Created
-    , Creating
-    , Deactivated
-    , Deactivating
-    , Deleting
-    , Updating
+    , TSActivated
+    , TSActivating
+    , TSCreated
+    , TSCreating
+    , TSDeactivated
+    , TSDeactivating
+    , TSDeleting
+    , TSUpdating
     )
   ) where
 
@@ -37,39 +37,39 @@ data TriggerState = TriggerState' (CI Text)
                       deriving (Eq, Ord, Read, Show, Data, Typeable,
                                 Generic)
 
-pattern Activated :: TriggerState
-pattern Activated = TriggerState' "ACTIVATED"
+pattern TSActivated :: TriggerState
+pattern TSActivated = TriggerState' "ACTIVATED"
 
-pattern Activating :: TriggerState
-pattern Activating = TriggerState' "ACTIVATING"
+pattern TSActivating :: TriggerState
+pattern TSActivating = TriggerState' "ACTIVATING"
 
-pattern Created :: TriggerState
-pattern Created = TriggerState' "CREATED"
+pattern TSCreated :: TriggerState
+pattern TSCreated = TriggerState' "CREATED"
 
-pattern Creating :: TriggerState
-pattern Creating = TriggerState' "CREATING"
+pattern TSCreating :: TriggerState
+pattern TSCreating = TriggerState' "CREATING"
 
-pattern Deactivated :: TriggerState
-pattern Deactivated = TriggerState' "DEACTIVATED"
+pattern TSDeactivated :: TriggerState
+pattern TSDeactivated = TriggerState' "DEACTIVATED"
 
-pattern Deactivating :: TriggerState
-pattern Deactivating = TriggerState' "DEACTIVATING"
+pattern TSDeactivating :: TriggerState
+pattern TSDeactivating = TriggerState' "DEACTIVATING"
 
-pattern Deleting :: TriggerState
-pattern Deleting = TriggerState' "DELETING"
+pattern TSDeleting :: TriggerState
+pattern TSDeleting = TriggerState' "DELETING"
 
-pattern Updating :: TriggerState
-pattern Updating = TriggerState' "UPDATING"
+pattern TSUpdating :: TriggerState
+pattern TSUpdating = TriggerState' "UPDATING"
 
 {-# COMPLETE
-  Activated,
-  Activating,
-  Created,
-  Creating,
-  Deactivated,
-  Deactivating,
-  Deleting,
-  Updating,
+  TSActivated,
+  TSActivating,
+  TSCreated,
+  TSCreating,
+  TSDeactivated,
+  TSDeactivating,
+  TSDeleting,
+  TSUpdating,
   TriggerState' #-}
 
 instance FromText TriggerState where
@@ -84,32 +84,32 @@ instance ToText TriggerState where
 --   fromEnum is a partial function, and will error on values unknown at generation time.
 instance Enum TriggerState where
     toEnum i = case i of
-        0 -> Activated
-        1 -> Activating
-        2 -> Created
-        3 -> Creating
-        4 -> Deactivated
-        5 -> Deactivating
-        6 -> Deleting
-        7 -> Updating
+        0 -> TSActivated
+        1 -> TSActivating
+        2 -> TSCreated
+        3 -> TSCreating
+        4 -> TSDeactivated
+        5 -> TSDeactivating
+        6 -> TSDeleting
+        7 -> TSUpdating
         _ -> (error . showText) $ "Unknown index for TriggerState: " <> toText i
     fromEnum x = case x of
-        Activated -> 0
-        Activating -> 1
-        Created -> 2
-        Creating -> 3
-        Deactivated -> 4
-        Deactivating -> 5
-        Deleting -> 6
-        Updating -> 7
+        TSActivated -> 0
+        TSActivating -> 1
+        TSCreated -> 2
+        TSCreating -> 3
+        TSDeactivated -> 4
+        TSDeactivating -> 5
+        TSDeleting -> 6
+        TSUpdating -> 7
         TriggerState' name -> (error . showText) $ "Unknown TriggerState: " <> original name
 
 -- | Represents the bounds of /known/ $TriggerState.
 --   AWS may have added more since the source was generated.
 --   This instance exists only for backward compatibility.
 instance Bounded TriggerState where
-    minBound = Activated
-    maxBound = Updating
+    minBound = TSActivated
+    maxBound = TSUpdating
 
 instance Hashable     TriggerState
 instance NFData       TriggerState

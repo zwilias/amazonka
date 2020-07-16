@@ -21,6 +21,7 @@ import Network.AWS.Lens
 import Network.AWS.MediaConvert.Types.HlsEncryptionType
 import Network.AWS.MediaConvert.Types.HlsInitializationVectorInManifest
 import Network.AWS.MediaConvert.Types.HlsKeyProviderType
+import Network.AWS.MediaConvert.Types.HlsOfflineEncrypted
 import Network.AWS.MediaConvert.Types.SpekeKeyProvider
 import Network.AWS.MediaConvert.Types.StaticKeyProvider
 import Network.AWS.Prelude
@@ -28,8 +29,11 @@ import Network.AWS.Prelude
 -- | Settings for HLS encryption
 --
 -- /See:/ 'hlsEncryptionSettings' smart constructor.
-data HlsEncryptionSettings = HlsEncryptionSettings'{_hesEncryptionMethod
+data HlsEncryptionSettings = HlsEncryptionSettings'{_hesOfflineEncrypted
                                                     ::
+                                                    !(Maybe
+                                                        HlsOfflineEncrypted),
+                                                    _hesEncryptionMethod ::
                                                     !(Maybe HlsEncryptionType),
                                                     _hesConstantInitializationVector
                                                     :: !(Maybe Text),
@@ -50,28 +54,35 @@ data HlsEncryptionSettings = HlsEncryptionSettings'{_hesEncryptionMethod
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'hesEncryptionMethod' - Undocumented member.
+-- * 'hesOfflineEncrypted' - Enable this setting to insert the EXT-X-SESSION-KEY element into the master playlist. This allows for offline Apple HLS FairPlay content protection.
+--
+-- * 'hesEncryptionMethod' - Encrypts the segments with the given encryption scheme. Leave blank to disable. Selecting 'Disabled' in the web interface also disables encryption.
 --
 -- * 'hesConstantInitializationVector' - This is a 128-bit, 16-byte hex value represented by a 32-character text string. If this parameter is not set then the Initialization Vector will follow the segment number by default.
 --
--- * 'hesType' - Undocumented member.
+-- * 'hesType' - Specify whether your DRM encryption key is static or from a key provider that follows the SPEKE standard. For more information about SPEKE, see https://docs.aws.amazon.com/speke/latest/documentation/what-is-speke.html.
 --
--- * 'hesStaticKeyProvider' - Undocumented member.
+-- * 'hesStaticKeyProvider' - Use these settings to set up encryption with a static key provider.
 --
--- * 'hesSpekeKeyProvider' - Undocumented member.
+-- * 'hesSpekeKeyProvider' - If your output group type is HLS, DASH, or Microsoft Smooth, use these settings when doing DRM encryption with a SPEKE-compliant key provider.  If your output group type is CMAF, use the SpekeKeyProviderCmaf settings instead.
 --
--- * 'hesInitializationVectorInManifest' - Undocumented member.
+-- * 'hesInitializationVectorInManifest' - The Initialization Vector is a 128-bit number used in conjunction with the key for encrypting blocks. If set to INCLUDE, Initialization Vector is listed in the manifest. Otherwise Initialization Vector is not in the manifest.
 hlsEncryptionSettings
     :: HlsEncryptionSettings
 hlsEncryptionSettings
-  = HlsEncryptionSettings'{_hesEncryptionMethod =
+  = HlsEncryptionSettings'{_hesOfflineEncrypted =
                              Nothing,
+                           _hesEncryptionMethod = Nothing,
                            _hesConstantInitializationVector = Nothing,
                            _hesType = Nothing, _hesStaticKeyProvider = Nothing,
                            _hesSpekeKeyProvider = Nothing,
                            _hesInitializationVectorInManifest = Nothing}
 
--- | Undocumented member.
+-- | Enable this setting to insert the EXT-X-SESSION-KEY element into the master playlist. This allows for offline Apple HLS FairPlay content protection.
+hesOfflineEncrypted :: Lens' HlsEncryptionSettings (Maybe HlsOfflineEncrypted)
+hesOfflineEncrypted = lens _hesOfflineEncrypted (\ s a -> s{_hesOfflineEncrypted = a})
+
+-- | Encrypts the segments with the given encryption scheme. Leave blank to disable. Selecting 'Disabled' in the web interface also disables encryption.
 hesEncryptionMethod :: Lens' HlsEncryptionSettings (Maybe HlsEncryptionType)
 hesEncryptionMethod = lens _hesEncryptionMethod (\ s a -> s{_hesEncryptionMethod = a})
 
@@ -79,19 +90,19 @@ hesEncryptionMethod = lens _hesEncryptionMethod (\ s a -> s{_hesEncryptionMethod
 hesConstantInitializationVector :: Lens' HlsEncryptionSettings (Maybe Text)
 hesConstantInitializationVector = lens _hesConstantInitializationVector (\ s a -> s{_hesConstantInitializationVector = a})
 
--- | Undocumented member.
+-- | Specify whether your DRM encryption key is static or from a key provider that follows the SPEKE standard. For more information about SPEKE, see https://docs.aws.amazon.com/speke/latest/documentation/what-is-speke.html.
 hesType :: Lens' HlsEncryptionSettings (Maybe HlsKeyProviderType)
 hesType = lens _hesType (\ s a -> s{_hesType = a})
 
--- | Undocumented member.
+-- | Use these settings to set up encryption with a static key provider.
 hesStaticKeyProvider :: Lens' HlsEncryptionSettings (Maybe StaticKeyProvider)
 hesStaticKeyProvider = lens _hesStaticKeyProvider (\ s a -> s{_hesStaticKeyProvider = a})
 
--- | Undocumented member.
+-- | If your output group type is HLS, DASH, or Microsoft Smooth, use these settings when doing DRM encryption with a SPEKE-compliant key provider.  If your output group type is CMAF, use the SpekeKeyProviderCmaf settings instead.
 hesSpekeKeyProvider :: Lens' HlsEncryptionSettings (Maybe SpekeKeyProvider)
 hesSpekeKeyProvider = lens _hesSpekeKeyProvider (\ s a -> s{_hesSpekeKeyProvider = a})
 
--- | Undocumented member.
+-- | The Initialization Vector is a 128-bit number used in conjunction with the key for encrypting blocks. If set to INCLUDE, Initialization Vector is listed in the manifest. Otherwise Initialization Vector is not in the manifest.
 hesInitializationVectorInManifest :: Lens' HlsEncryptionSettings (Maybe HlsInitializationVectorInManifest)
 hesInitializationVectorInManifest = lens _hesInitializationVectorInManifest (\ s a -> s{_hesInitializationVectorInManifest = a})
 
@@ -100,8 +111,9 @@ instance FromJSON HlsEncryptionSettings where
           = withObject "HlsEncryptionSettings"
               (\ x ->
                  HlsEncryptionSettings' <$>
-                   (x .:? "encryptionMethod") <*>
-                     (x .:? "constantInitializationVector")
+                   (x .:? "offlineEncrypted") <*>
+                     (x .:? "encryptionMethod")
+                     <*> (x .:? "constantInitializationVector")
                      <*> (x .:? "type")
                      <*> (x .:? "staticKeyProvider")
                      <*> (x .:? "spekeKeyProvider")
@@ -115,7 +127,8 @@ instance ToJSON HlsEncryptionSettings where
         toJSON HlsEncryptionSettings'{..}
           = object
               (catMaybes
-                 [("encryptionMethod" .=) <$> _hesEncryptionMethod,
+                 [("offlineEncrypted" .=) <$> _hesOfflineEncrypted,
+                  ("encryptionMethod" .=) <$> _hesEncryptionMethod,
                   ("constantInitializationVector" .=) <$>
                     _hesConstantInitializationVector,
                   ("type" .=) <$> _hesType,

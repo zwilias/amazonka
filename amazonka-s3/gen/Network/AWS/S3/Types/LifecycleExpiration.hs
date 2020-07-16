@@ -21,10 +21,14 @@ import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.S3.Internal
 
--- | /See:/ 'lifecycleExpiration' smart constructor.
+-- | Container for the expiration for the lifecycle of the object.
+--
+--
+--
+-- /See:/ 'lifecycleExpiration' smart constructor.
 data LifecycleExpiration = LifecycleExpiration'{_leDays
                                                 :: !(Maybe Int),
-                                                _leDate :: !(Maybe RFC822),
+                                                _leDate :: !(Maybe ISO8601),
                                                 _leExpiredObjectDeleteMarker ::
                                                 !(Maybe Bool)}
                              deriving (Eq, Read, Show, Data, Typeable, Generic)

@@ -63,7 +63,7 @@ data GetAssessmentReport = GetAssessmentReport'{_garAssessmentRunARN
 --
 -- * 'garReportFileFormat' - Specifies the file format (html or pdf) of the assessment report that you want to generate.
 --
--- * 'garReportType' - Specifies the type of the assessment report that you want to generate. There are two types of assessment reports: a finding report and a full report. For more information, see <http://docs.aws.amazon.com/inspector/latest/userguide/inspector_reports.html Assessment Reports> . 
+-- * 'garReportType' - Specifies the type of the assessment report that you want to generate. There are two types of assessment reports: a finding report and a full report. For more information, see <https://docs.aws.amazon.com/inspector/latest/userguide/inspector_reports.html Assessment Reports> . 
 getAssessmentReport
     :: Text -- ^ 'garAssessmentRunARN'
     -> ReportFileFormat -- ^ 'garReportFileFormat'
@@ -84,7 +84,7 @@ garAssessmentRunARN = lens _garAssessmentRunARN (\ s a -> s{_garAssessmentRunARN
 garReportFileFormat :: Lens' GetAssessmentReport ReportFileFormat
 garReportFileFormat = lens _garReportFileFormat (\ s a -> s{_garReportFileFormat = a})
 
--- | Specifies the type of the assessment report that you want to generate. There are two types of assessment reports: a finding report and a full report. For more information, see <http://docs.aws.amazon.com/inspector/latest/userguide/inspector_reports.html Assessment Reports> . 
+-- | Specifies the type of the assessment report that you want to generate. There are two types of assessment reports: a finding report and a full report. For more information, see <https://docs.aws.amazon.com/inspector/latest/userguide/inspector_reports.html Assessment Reports> . 
 garReportType :: Lens' GetAssessmentReport ReportType
 garReportType = lens _garReportType (\ s a -> s{_garReportType = a})
 

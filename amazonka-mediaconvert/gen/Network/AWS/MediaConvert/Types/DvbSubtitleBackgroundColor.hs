@@ -19,9 +19,9 @@
 module Network.AWS.MediaConvert.Types.DvbSubtitleBackgroundColor (
   DvbSubtitleBackgroundColor (
     ..
-    , DSBCBlack
-    , DSBCNone
-    , DSBCWhite
+    , Black
+    , None
+    , White
     )
   ) where
 
@@ -36,19 +36,19 @@ data DvbSubtitleBackgroundColor = DvbSubtitleBackgroundColor' (CI
                                     deriving (Eq, Ord, Read, Show, Data,
                                               Typeable, Generic)
 
-pattern DSBCBlack :: DvbSubtitleBackgroundColor
-pattern DSBCBlack = DvbSubtitleBackgroundColor' "BLACK"
+pattern Black :: DvbSubtitleBackgroundColor
+pattern Black = DvbSubtitleBackgroundColor' "BLACK"
 
-pattern DSBCNone :: DvbSubtitleBackgroundColor
-pattern DSBCNone = DvbSubtitleBackgroundColor' "NONE"
+pattern None :: DvbSubtitleBackgroundColor
+pattern None = DvbSubtitleBackgroundColor' "NONE"
 
-pattern DSBCWhite :: DvbSubtitleBackgroundColor
-pattern DSBCWhite = DvbSubtitleBackgroundColor' "WHITE"
+pattern White :: DvbSubtitleBackgroundColor
+pattern White = DvbSubtitleBackgroundColor' "WHITE"
 
 {-# COMPLETE
-  DSBCBlack,
-  DSBCNone,
-  DSBCWhite,
+  Black,
+  None,
+  White,
   DvbSubtitleBackgroundColor' #-}
 
 instance FromText DvbSubtitleBackgroundColor where
@@ -63,22 +63,22 @@ instance ToText DvbSubtitleBackgroundColor where
 --   fromEnum is a partial function, and will error on values unknown at generation time.
 instance Enum DvbSubtitleBackgroundColor where
     toEnum i = case i of
-        0 -> DSBCBlack
-        1 -> DSBCNone
-        2 -> DSBCWhite
+        0 -> Black
+        1 -> None
+        2 -> White
         _ -> (error . showText) $ "Unknown index for DvbSubtitleBackgroundColor: " <> toText i
     fromEnum x = case x of
-        DSBCBlack -> 0
-        DSBCNone -> 1
-        DSBCWhite -> 2
+        Black -> 0
+        None -> 1
+        White -> 2
         DvbSubtitleBackgroundColor' name -> (error . showText) $ "Unknown DvbSubtitleBackgroundColor: " <> original name
 
 -- | Represents the bounds of /known/ $DvbSubtitleBackgroundColor.
 --   AWS may have added more since the source was generated.
 --   This instance exists only for backward compatibility.
 instance Bounded DvbSubtitleBackgroundColor where
-    minBound = DSBCBlack
-    maxBound = DSBCWhite
+    minBound = Black
+    maxBound = White
 
 instance Hashable     DvbSubtitleBackgroundColor
 instance NFData       DvbSubtitleBackgroundColor

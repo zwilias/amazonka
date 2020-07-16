@@ -21,7 +21,7 @@ import Network.AWS.GameLift.Types.IPProtocol
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | A range of IP addresses and port settings that allow inbound traffic to connect to server processes on Amazon GameLift. Each game session hosted on a fleet is assigned a unique combination of IP address and port number, which must fall into the fleet's allowed ranges. This combination is included in the 'GameSession' object. 
+-- | A range of IP addresses and port settings that allow inbound traffic to connect to server processes on an Amazon GameLift hosting resource. New game sessions that are started on the fleet are assigned an IP address/port number combination, which must fall into the fleet's allowed ranges. For fleets created with a custom game server, the ranges reflect the server's game session assignments. For Realtime Servers fleets, Amazon GameLift automatically opens two port ranges, one for TCP messaging and one for UDP for use by the Realtime servers.
 --
 --
 --
@@ -36,13 +36,13 @@ data IPPermission = IPPermission'{_ipFromPort ::
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'ipFromPort' - Starting value for a range of allowed port numbers.
+-- * 'ipFromPort' - A starting value for a range of allowed port numbers.
 --
--- * 'ipToPort' - Ending value for a range of allowed port numbers. Port numbers are end-inclusive. This value must be higher than @FromPort@ .
+-- * 'ipToPort' - An ending value for a range of allowed port numbers. Port numbers are end-inclusive. This value must be higher than @FromPort@ .
 --
--- * 'ipIPRange' - Range of allowed IP addresses. This value must be expressed in CIDR notation. Example: "@000.000.000.000/[subnet mask]@ " or optionally the shortened version "@0.0.0.0/[subnet mask]@ ".
+-- * 'ipIPRange' - A range of allowed IP addresses. This value must be expressed in CIDR notation. Example: "@000.000.000.000/[subnet mask]@ " or optionally the shortened version "@0.0.0.0/[subnet mask]@ ".
 --
--- * 'ipProtocol' - Network communication protocol used by the fleet.
+-- * 'ipProtocol' - The network communication protocol used by the fleet.
 ipPermission
     :: Natural -- ^ 'ipFromPort'
     -> Natural -- ^ 'ipToPort'
@@ -54,19 +54,19 @@ ipPermission pFromPort_ pToPort_ pIPRange_ pProtocol_
                   _ipToPort = _Nat # pToPort_, _ipIPRange = pIPRange_,
                   _ipProtocol = pProtocol_}
 
--- | Starting value for a range of allowed port numbers.
+-- | A starting value for a range of allowed port numbers.
 ipFromPort :: Lens' IPPermission Natural
 ipFromPort = lens _ipFromPort (\ s a -> s{_ipFromPort = a}) . _Nat
 
--- | Ending value for a range of allowed port numbers. Port numbers are end-inclusive. This value must be higher than @FromPort@ .
+-- | An ending value for a range of allowed port numbers. Port numbers are end-inclusive. This value must be higher than @FromPort@ .
 ipToPort :: Lens' IPPermission Natural
 ipToPort = lens _ipToPort (\ s a -> s{_ipToPort = a}) . _Nat
 
--- | Range of allowed IP addresses. This value must be expressed in CIDR notation. Example: "@000.000.000.000/[subnet mask]@ " or optionally the shortened version "@0.0.0.0/[subnet mask]@ ".
+-- | A range of allowed IP addresses. This value must be expressed in CIDR notation. Example: "@000.000.000.000/[subnet mask]@ " or optionally the shortened version "@0.0.0.0/[subnet mask]@ ".
 ipIPRange :: Lens' IPPermission Text
 ipIPRange = lens _ipIPRange (\ s a -> s{_ipIPRange = a})
 
--- | Network communication protocol used by the fleet.
+-- | The network communication protocol used by the fleet.
 ipProtocol :: Lens' IPPermission IPProtocol
 ipProtocol = lens _ipProtocol (\ s a -> s{_ipProtocol = a})
 

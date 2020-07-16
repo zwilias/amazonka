@@ -22,7 +22,9 @@ module Network.AWS.Polly.Types.VoiceId (
     , Aditi
     , Amy
     , Astrid
+    , Bianca
     , Brian
+    , Camila
     , Carla
     , Carmen
     , Celine
@@ -48,14 +50,18 @@ module Network.AWS.Polly.Types.VoiceId (
     , Karl
     , Kendra
     , Kimberly
+    , Lea
     , Liv
     , Lotte
+    , Lucia
+    , Lupe
     , Mads
     , Maja
     , Marlene
     , Mathieu
     , Matthew
     , Maxim
+    , Mia
     , Miguel
     , Mizuki
     , Naja
@@ -71,6 +77,8 @@ module Network.AWS.Polly.Types.VoiceId (
     , Tatyana
     , Vicki
     , Vitoria
+    , Zeina
+    , Zhiyu
     )
   ) where
 
@@ -90,8 +98,14 @@ pattern Amy = VoiceId' "Amy"
 pattern Astrid :: VoiceId
 pattern Astrid = VoiceId' "Astrid"
 
+pattern Bianca :: VoiceId
+pattern Bianca = VoiceId' "Bianca"
+
 pattern Brian :: VoiceId
 pattern Brian = VoiceId' "Brian"
+
+pattern Camila :: VoiceId
+pattern Camila = VoiceId' "Camila"
 
 pattern Carla :: VoiceId
 pattern Carla = VoiceId' "Carla"
@@ -168,11 +182,20 @@ pattern Kendra = VoiceId' "Kendra"
 pattern Kimberly :: VoiceId
 pattern Kimberly = VoiceId' "Kimberly"
 
+pattern Lea :: VoiceId
+pattern Lea = VoiceId' "Lea"
+
 pattern Liv :: VoiceId
 pattern Liv = VoiceId' "Liv"
 
 pattern Lotte :: VoiceId
 pattern Lotte = VoiceId' "Lotte"
+
+pattern Lucia :: VoiceId
+pattern Lucia = VoiceId' "Lucia"
+
+pattern Lupe :: VoiceId
+pattern Lupe = VoiceId' "Lupe"
 
 pattern Mads :: VoiceId
 pattern Mads = VoiceId' "Mads"
@@ -191,6 +214,9 @@ pattern Matthew = VoiceId' "Matthew"
 
 pattern Maxim :: VoiceId
 pattern Maxim = VoiceId' "Maxim"
+
+pattern Mia :: VoiceId
+pattern Mia = VoiceId' "Mia"
 
 pattern Miguel :: VoiceId
 pattern Miguel = VoiceId' "Miguel"
@@ -237,11 +263,19 @@ pattern Vicki = VoiceId' "Vicki"
 pattern Vitoria :: VoiceId
 pattern Vitoria = VoiceId' "Vitoria"
 
+pattern Zeina :: VoiceId
+pattern Zeina = VoiceId' "Zeina"
+
+pattern Zhiyu :: VoiceId
+pattern Zhiyu = VoiceId' "Zhiyu"
+
 {-# COMPLETE
   Aditi,
   Amy,
   Astrid,
+  Bianca,
   Brian,
+  Camila,
   Carla,
   Carmen,
   Celine,
@@ -267,14 +301,18 @@ pattern Vitoria = VoiceId' "Vitoria"
   Karl,
   Kendra,
   Kimberly,
+  Lea,
   Liv,
   Lotte,
+  Lucia,
+  Lupe,
   Mads,
   Maja,
   Marlene,
   Mathieu,
   Matthew,
   Maxim,
+  Mia,
   Miguel,
   Mizuki,
   Naja,
@@ -290,6 +328,8 @@ pattern Vitoria = VoiceId' "Vitoria"
   Tatyana,
   Vicki,
   Vitoria,
+  Zeina,
+  Zhiyu,
   VoiceId' #-}
 
 instance FromText VoiceId where
@@ -307,109 +347,125 @@ instance Enum VoiceId where
         0 -> Aditi
         1 -> Amy
         2 -> Astrid
-        3 -> Brian
-        4 -> Carla
-        5 -> Carmen
-        6 -> Celine
-        7 -> Chantal
-        8 -> Conchita
-        9 -> Cristiano
-        10 -> Dora
-        11 -> Emma
-        12 -> Enrique
-        13 -> Ewa
-        14 -> Filiz
-        15 -> Geraint
-        16 -> Giorgio
-        17 -> Gwyneth
-        18 -> Hans
-        19 -> Ines
-        20 -> Ivy
-        21 -> Jacek
-        22 -> Jan
-        23 -> Joanna
-        24 -> Joey
-        25 -> Justin
-        26 -> Karl
-        27 -> Kendra
-        28 -> Kimberly
-        29 -> Liv
-        30 -> Lotte
-        31 -> Mads
-        32 -> Maja
-        33 -> Marlene
-        34 -> Mathieu
-        35 -> Matthew
-        36 -> Maxim
-        37 -> Miguel
-        38 -> Mizuki
-        39 -> Naja
-        40 -> Nicole
-        41 -> Penelope
-        42 -> Raveena
-        43 -> Ricardo
-        44 -> Ruben
-        45 -> Russell
-        46 -> Salli
-        47 -> Seoyeon
-        48 -> Takumi
-        49 -> Tatyana
-        50 -> Vicki
-        51 -> Vitoria
+        3 -> Bianca
+        4 -> Brian
+        5 -> Camila
+        6 -> Carla
+        7 -> Carmen
+        8 -> Celine
+        9 -> Chantal
+        10 -> Conchita
+        11 -> Cristiano
+        12 -> Dora
+        13 -> Emma
+        14 -> Enrique
+        15 -> Ewa
+        16 -> Filiz
+        17 -> Geraint
+        18 -> Giorgio
+        19 -> Gwyneth
+        20 -> Hans
+        21 -> Ines
+        22 -> Ivy
+        23 -> Jacek
+        24 -> Jan
+        25 -> Joanna
+        26 -> Joey
+        27 -> Justin
+        28 -> Karl
+        29 -> Kendra
+        30 -> Kimberly
+        31 -> Lea
+        32 -> Liv
+        33 -> Lotte
+        34 -> Lucia
+        35 -> Lupe
+        36 -> Mads
+        37 -> Maja
+        38 -> Marlene
+        39 -> Mathieu
+        40 -> Matthew
+        41 -> Maxim
+        42 -> Mia
+        43 -> Miguel
+        44 -> Mizuki
+        45 -> Naja
+        46 -> Nicole
+        47 -> Penelope
+        48 -> Raveena
+        49 -> Ricardo
+        50 -> Ruben
+        51 -> Russell
+        52 -> Salli
+        53 -> Seoyeon
+        54 -> Takumi
+        55 -> Tatyana
+        56 -> Vicki
+        57 -> Vitoria
+        58 -> Zeina
+        59 -> Zhiyu
         _ -> (error . showText) $ "Unknown index for VoiceId: " <> toText i
     fromEnum x = case x of
         Aditi -> 0
         Amy -> 1
         Astrid -> 2
-        Brian -> 3
-        Carla -> 4
-        Carmen -> 5
-        Celine -> 6
-        Chantal -> 7
-        Conchita -> 8
-        Cristiano -> 9
-        Dora -> 10
-        Emma -> 11
-        Enrique -> 12
-        Ewa -> 13
-        Filiz -> 14
-        Geraint -> 15
-        Giorgio -> 16
-        Gwyneth -> 17
-        Hans -> 18
-        Ines -> 19
-        Ivy -> 20
-        Jacek -> 21
-        Jan -> 22
-        Joanna -> 23
-        Joey -> 24
-        Justin -> 25
-        Karl -> 26
-        Kendra -> 27
-        Kimberly -> 28
-        Liv -> 29
-        Lotte -> 30
-        Mads -> 31
-        Maja -> 32
-        Marlene -> 33
-        Mathieu -> 34
-        Matthew -> 35
-        Maxim -> 36
-        Miguel -> 37
-        Mizuki -> 38
-        Naja -> 39
-        Nicole -> 40
-        Penelope -> 41
-        Raveena -> 42
-        Ricardo -> 43
-        Ruben -> 44
-        Russell -> 45
-        Salli -> 46
-        Seoyeon -> 47
-        Takumi -> 48
-        Tatyana -> 49
-        Vicki -> 50
-        Vitoria -> 51
+        Bianca -> 3
+        Brian -> 4
+        Camila -> 5
+        Carla -> 6
+        Carmen -> 7
+        Celine -> 8
+        Chantal -> 9
+        Conchita -> 10
+        Cristiano -> 11
+        Dora -> 12
+        Emma -> 13
+        Enrique -> 14
+        Ewa -> 15
+        Filiz -> 16
+        Geraint -> 17
+        Giorgio -> 18
+        Gwyneth -> 19
+        Hans -> 20
+        Ines -> 21
+        Ivy -> 22
+        Jacek -> 23
+        Jan -> 24
+        Joanna -> 25
+        Joey -> 26
+        Justin -> 27
+        Karl -> 28
+        Kendra -> 29
+        Kimberly -> 30
+        Lea -> 31
+        Liv -> 32
+        Lotte -> 33
+        Lucia -> 34
+        Lupe -> 35
+        Mads -> 36
+        Maja -> 37
+        Marlene -> 38
+        Mathieu -> 39
+        Matthew -> 40
+        Maxim -> 41
+        Mia -> 42
+        Miguel -> 43
+        Mizuki -> 44
+        Naja -> 45
+        Nicole -> 46
+        Penelope -> 47
+        Raveena -> 48
+        Ricardo -> 49
+        Ruben -> 50
+        Russell -> 51
+        Salli -> 52
+        Seoyeon -> 53
+        Takumi -> 54
+        Tatyana -> 55
+        Vicki -> 56
+        Vitoria -> 57
+        Zeina -> 58
+        Zhiyu -> 59
         VoiceId' name -> (error . showText) $ "Unknown VoiceId: " <> original name
 
 -- | Represents the bounds of /known/ $VoiceId.
@@ -417,7 +473,7 @@ instance Enum VoiceId where
 --   This instance exists only for backward compatibility.
 instance Bounded VoiceId where
     minBound = Aditi
-    maxBound = Vitoria
+    maxBound = Zhiyu
 
 instance Hashable     VoiceId
 instance NFData       VoiceId

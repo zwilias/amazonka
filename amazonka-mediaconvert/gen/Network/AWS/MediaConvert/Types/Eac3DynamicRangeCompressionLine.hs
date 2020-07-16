@@ -31,7 +31,7 @@ module Network.AWS.MediaConvert.Types.Eac3DynamicRangeCompressionLine (
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | Enables Dynamic Range Compression that restricts the absolute peak level for a signal.
+-- | Specify the absolute peak level for a signal with dynamic range compression.
 data Eac3DynamicRangeCompressionLine = Eac3DynamicRangeCompressionLine' (CI
                                                                            Text)
                                          deriving (Eq, Ord, Read, Show, Data,

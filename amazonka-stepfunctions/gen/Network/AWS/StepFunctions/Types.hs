@@ -24,15 +24,19 @@ module Network.AWS.StepFunctions.Types
     , _InvalidDefinition
     , _MissingRequiredParameter
     , _ExecutionDoesNotExist
+    , _StateMachineTypeNotSupported
     , _TaskDoesNotExist
     , _StateMachineDeleting
+    , _TooManyTags
     , _ActivityDoesNotExist
     , _ActivityLimitExceeded
     , _ActivityWorkerLimitExceeded
+    , _InvalidLoggingConfiguration
     , _TaskTimedOut
     , _ExecutionLimitExceeded
     , _ExecutionAlreadyExists
     , _StateMachineDoesNotExist
+    , _ResourceNotFound
     , _InvalidOutput
     , _InvalidName
 
@@ -42,8 +46,14 @@ module Network.AWS.StepFunctions.Types
     -- * HistoryEventType
     , HistoryEventType (..)
 
+    -- * LogLevel
+    , LogLevel (..)
+
     -- * StateMachineStatus
     , StateMachineStatus (..)
+
+    -- * StateMachineType
+    , StateMachineType (..)
 
     -- * ActivityFailedEventDetails
     , ActivityFailedEventDetails
@@ -88,6 +98,11 @@ module Network.AWS.StepFunctions.Types
     , atoedError
     , atoedCause
 
+    -- * CloudWatchLogsLogGroup
+    , CloudWatchLogsLogGroup
+    , cloudWatchLogsLogGroup
+    , cwllgLogGroupARN
+
     -- * ExecutionAbortedEventDetails
     , ExecutionAbortedEventDetails
     , executionAbortedEventDetails
@@ -130,17 +145,28 @@ module Network.AWS.StepFunctions.Types
     -- * HistoryEvent
     , HistoryEvent
     , historyEvent
+    , heMapStateStartedEventDetails
+    , heTaskSubmitFailedEventDetails
+    , heTaskStartedEventDetails
     , heActivityStartedEventDetails
+    , heTaskSubmittedEventDetails
     , heLambdaFunctionStartFailedEventDetails
+    , heTaskStartFailedEventDetails
     , heStateExitedEventDetails
     , heLambdaFunctionSucceededEventDetails
+    , heTaskSucceededEventDetails
     , heActivitySucceededEventDetails
+    , heMapIterationAbortedEventDetails
+    , heMapIterationSucceededEventDetails
+    , heMapIterationStartedEventDetails
     , heLambdaFunctionTimedOutEventDetails
+    , heTaskTimedOutEventDetails
     , heActivityTimedOutEventDetails
     , heExecutionFailedEventDetails
     , heExecutionAbortedEventDetails
     , heExecutionSucceededEventDetails
     , heLambdaFunctionScheduledEventDetails
+    , heTaskScheduledEventDetails
     , heActivityScheduledEventDetails
     , heExecutionStartedEventDetails
     , heActivityScheduleFailedEventDetails
@@ -148,8 +174,10 @@ module Network.AWS.StepFunctions.Types
     , heStateEnteredEventDetails
     , hePreviousEventId
     , heActivityFailedEventDetails
+    , heTaskFailedEventDetails
     , heLambdaFunctionFailedEventDetails
     , heExecutionTimedOutEventDetails
+    , heMapIterationFailedEventDetails
     , heTimestamp
     , heType
     , heId
@@ -190,6 +218,29 @@ module Network.AWS.StepFunctions.Types
     , lftoedError
     , lftoedCause
 
+    -- * LogDestination
+    , LogDestination
+    , logDestination
+    , ldCloudWatchLogsLogGroup
+
+    -- * LoggingConfiguration
+    , LoggingConfiguration
+    , loggingConfiguration
+    , lcIncludeExecutionData
+    , lcDestinations
+    , lcLevel
+
+    -- * MapIterationEventDetails
+    , MapIterationEventDetails
+    , mapIterationEventDetails
+    , miedName
+    , miedIndex
+
+    -- * MapStateStartedEventDetails
+    , MapStateStartedEventDetails
+    , mapStateStartedEventDetails
+    , mssedLength
+
     -- * StateEnteredEventDetails
     , StateEnteredEventDetails
     , stateEnteredEventDetails
@@ -207,7 +258,75 @@ module Network.AWS.StepFunctions.Types
     , stateMachineListItem
     , smliStateMachineARN
     , smliName
+    , smliType
     , smliCreationDate
+
+    -- * Tag
+    , Tag
+    , tag
+    , tagValue
+    , tagKey
+
+    -- * TaskFailedEventDetails
+    , TaskFailedEventDetails
+    , taskFailedEventDetails
+    , tfedError
+    , tfedCause
+    , tfedResourceType
+    , tfedResource
+
+    -- * TaskScheduledEventDetails
+    , TaskScheduledEventDetails
+    , taskScheduledEventDetails
+    , tasTimeoutInSeconds
+    , tasResourceType
+    , tasResource
+    , tasRegion
+    , tasParameters
+
+    -- * TaskStartFailedEventDetails
+    , TaskStartFailedEventDetails
+    , taskStartFailedEventDetails
+    , tsfedsError
+    , tsfedsCause
+    , tsfedsResourceType
+    , tsfedsResource
+
+    -- * TaskStartedEventDetails
+    , TaskStartedEventDetails
+    , taskStartedEventDetails
+    , tsedResourceType
+    , tsedResource
+
+    -- * TaskSubmitFailedEventDetails
+    , TaskSubmitFailedEventDetails
+    , taskSubmitFailedEventDetails
+    , tsfedError
+    , tsfedCause
+    , tsfedResourceType
+    , tsfedResource
+
+    -- * TaskSubmittedEventDetails
+    , TaskSubmittedEventDetails
+    , taskSubmittedEventDetails
+    , tOutput
+    , tResourceType
+    , tResource
+
+    -- * TaskSucceededEventDetails
+    , TaskSucceededEventDetails
+    , taskSucceededEventDetails
+    , tsedsOutput
+    , tsedsResourceType
+    , tsedsResource
+
+    -- * TaskTimedOutEventDetails
+    , TaskTimedOutEventDetails
+    , taskTimedOutEventDetails
+    , ttoedError
+    , ttoedCause
+    , ttoedResourceType
+    , ttoedResource
     ) where
 
 import Network.AWS.Lens
@@ -215,7 +334,9 @@ import Network.AWS.Prelude
 import Network.AWS.Sign.V4
 import Network.AWS.StepFunctions.Types.ExecutionStatus
 import Network.AWS.StepFunctions.Types.HistoryEventType
+import Network.AWS.StepFunctions.Types.LogLevel
 import Network.AWS.StepFunctions.Types.StateMachineStatus
+import Network.AWS.StepFunctions.Types.StateMachineType
 import Network.AWS.StepFunctions.Types.ActivityFailedEventDetails
 import Network.AWS.StepFunctions.Types.ActivityListItem
 import Network.AWS.StepFunctions.Types.ActivityScheduleFailedEventDetails
@@ -223,6 +344,7 @@ import Network.AWS.StepFunctions.Types.ActivityScheduledEventDetails
 import Network.AWS.StepFunctions.Types.ActivityStartedEventDetails
 import Network.AWS.StepFunctions.Types.ActivitySucceededEventDetails
 import Network.AWS.StepFunctions.Types.ActivityTimedOutEventDetails
+import Network.AWS.StepFunctions.Types.CloudWatchLogsLogGroup
 import Network.AWS.StepFunctions.Types.ExecutionAbortedEventDetails
 import Network.AWS.StepFunctions.Types.ExecutionFailedEventDetails
 import Network.AWS.StepFunctions.Types.ExecutionListItem
@@ -236,9 +358,22 @@ import Network.AWS.StepFunctions.Types.LambdaFunctionScheduledEventDetails
 import Network.AWS.StepFunctions.Types.LambdaFunctionStartFailedEventDetails
 import Network.AWS.StepFunctions.Types.LambdaFunctionSucceededEventDetails
 import Network.AWS.StepFunctions.Types.LambdaFunctionTimedOutEventDetails
+import Network.AWS.StepFunctions.Types.LogDestination
+import Network.AWS.StepFunctions.Types.LoggingConfiguration
+import Network.AWS.StepFunctions.Types.MapIterationEventDetails
+import Network.AWS.StepFunctions.Types.MapStateStartedEventDetails
 import Network.AWS.StepFunctions.Types.StateEnteredEventDetails
 import Network.AWS.StepFunctions.Types.StateExitedEventDetails
 import Network.AWS.StepFunctions.Types.StateMachineListItem
+import Network.AWS.StepFunctions.Types.Tag
+import Network.AWS.StepFunctions.Types.TaskFailedEventDetails
+import Network.AWS.StepFunctions.Types.TaskScheduledEventDetails
+import Network.AWS.StepFunctions.Types.TaskStartFailedEventDetails
+import Network.AWS.StepFunctions.Types.TaskStartedEventDetails
+import Network.AWS.StepFunctions.Types.TaskSubmitFailedEventDetails
+import Network.AWS.StepFunctions.Types.TaskSubmittedEventDetails
+import Network.AWS.StepFunctions.Types.TaskSucceededEventDetails
+import Network.AWS.StepFunctions.Types.TaskTimedOutEventDetails
 
 -- | API version @2016-11-23@ of the Amazon Step Functions SDK configuration.
 stepFunctions :: Service
@@ -263,6 +398,11 @@ stepFunctions
             = Just "throttling_exception"
           | has (hasCode "Throttling" . hasStatus 400) e =
             Just "throttling"
+          | has
+              (hasCode "ProvisionedThroughputExceededException" .
+                 hasStatus 400)
+              e
+            = Just "throughput_exceeded"
           | has (hasStatus 504) e = Just "gateway_timeout"
           | has
               (hasCode "RequestThrottledException" . hasStatus 400)
@@ -336,6 +476,14 @@ _ExecutionDoesNotExist
   = _MatchServiceError stepFunctions
       "ExecutionDoesNotExist"
 
+-- | 
+--
+--
+_StateMachineTypeNotSupported :: AsError a => Getting (First ServiceError) a ServiceError
+_StateMachineTypeNotSupported
+  = _MatchServiceError stepFunctions
+      "StateMachineTypeNotSupported"
+
 -- | Prism for TaskDoesNotExist' errors.
 _TaskDoesNotExist :: AsError a => Getting (First ServiceError) a ServiceError
 _TaskDoesNotExist
@@ -348,6 +496,13 @@ _StateMachineDeleting :: AsError a => Getting (First ServiceError) a ServiceErro
 _StateMachineDeleting
   = _MatchServiceError stepFunctions
       "StateMachineDeleting"
+
+-- | You've exceeded the number of tags allowed for a resource. See the <https://docs.aws.amazon.com/step-functions/latest/dg/limits.html Limits Topic> in the AWS Step Functions Developer Guide.
+--
+--
+_TooManyTags :: AsError a => Getting (First ServiceError) a ServiceError
+_TooManyTags
+  = _MatchServiceError stepFunctions "TooManyTags"
 
 -- | The specified activity does not exist.
 --
@@ -372,6 +527,14 @@ _ActivityWorkerLimitExceeded :: AsError a => Getting (First ServiceError) a Serv
 _ActivityWorkerLimitExceeded
   = _MatchServiceError stepFunctions
       "ActivityWorkerLimitExceeded"
+
+-- | 
+--
+--
+_InvalidLoggingConfiguration :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidLoggingConfiguration
+  = _MatchServiceError stepFunctions
+      "InvalidLoggingConfiguration"
 
 -- | Prism for TaskTimedOut' errors.
 _TaskTimedOut :: AsError a => Getting (First ServiceError) a ServiceError
@@ -401,6 +564,13 @@ _StateMachineDoesNotExist :: AsError a => Getting (First ServiceError) a Service
 _StateMachineDoesNotExist
   = _MatchServiceError stepFunctions
       "StateMachineDoesNotExist"
+
+-- | Could not find the referenced resource. Only state machine and activity ARNs are supported.
+--
+--
+_ResourceNotFound :: AsError a => Getting (First ServiceError) a ServiceError
+_ResourceNotFound
+  = _MatchServiceError stepFunctions "ResourceNotFound"
 
 -- | The provided JSON output data is invalid.
 --

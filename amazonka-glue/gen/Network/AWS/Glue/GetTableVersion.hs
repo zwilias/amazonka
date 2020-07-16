@@ -59,9 +59,9 @@ data GetTableVersion = GetTableVersion'{_gtvVersionId
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'gtvVersionId' - The ID value of the table version to be retrieved.
+-- * 'gtvVersionId' - The ID value of the table version to be retrieved. A @VersionID@ is a string representation of an integer. Each version is incremented by 1. 
 --
--- * 'gtvCatalogId' - The ID of the Data Catalog where the tables reside. If none is supplied, the AWS account ID is used by default.
+-- * 'gtvCatalogId' - The ID of the Data Catalog where the tables reside. If none is provided, the AWS account ID is used by default.
 --
 -- * 'gtvDatabaseName' - The database in the catalog in which the table resides. For Hive compatibility, this name is entirely lowercase.
 --
@@ -76,11 +76,11 @@ getTableVersion pDatabaseName_ pTableName_
                      _gtvDatabaseName = pDatabaseName_,
                      _gtvTableName = pTableName_}
 
--- | The ID value of the table version to be retrieved.
+-- | The ID value of the table version to be retrieved. A @VersionID@ is a string representation of an integer. Each version is incremented by 1. 
 gtvVersionId :: Lens' GetTableVersion (Maybe Text)
 gtvVersionId = lens _gtvVersionId (\ s a -> s{_gtvVersionId = a})
 
--- | The ID of the Data Catalog where the tables reside. If none is supplied, the AWS account ID is used by default.
+-- | The ID of the Data Catalog where the tables reside. If none is provided, the AWS account ID is used by default.
 gtvCatalogId :: Lens' GetTableVersion (Maybe Text)
 gtvCatalogId = lens _gtvCatalogId (\ s a -> s{_gtvCatalogId = a})
 

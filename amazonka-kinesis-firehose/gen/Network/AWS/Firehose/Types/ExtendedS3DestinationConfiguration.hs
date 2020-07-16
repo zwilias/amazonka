@@ -49,6 +49,10 @@ data ExtendedS3DestinationConfiguration = ExtendedS3DestinationConfiguration'{_e
                                                                               ::
                                                                               !(Maybe
                                                                                   S3DestinationConfiguration),
+                                                                              _esdcErrorOutputPrefix
+                                                                              ::
+                                                                              !(Maybe
+                                                                                  Text),
                                                                               _esdcEncryptionConfiguration
                                                                               ::
                                                                               !(Maybe
@@ -84,11 +88,13 @@ data ExtendedS3DestinationConfiguration = ExtendedS3DestinationConfiguration'{_e
 --
 -- * 'esdcS3BackupMode' - The Amazon S3 backup mode.
 --
--- * 'esdcPrefix' - The "YYYY/MM/DD/HH" time format prefix is automatically used for delivered Amazon S3 files. You can specify an extra prefix to be added in front of the time format prefix. If the prefix ends with a slash, it appears as a folder in the S3 bucket. For more information, see <http://docs.aws.amazon.com/firehose/latest/dev/basic-deliver.html#s3-object-name Amazon S3 Object Name Format> in the /Amazon Kinesis Data Firehose Developer Guide/ .
+-- * 'esdcPrefix' - The "YYYY/MM/DD/HH" time format prefix is automatically used for delivered Amazon S3 files. You can also specify a custom prefix, as described in <https://docs.aws.amazon.com/firehose/latest/dev/s3-prefixes.html Custom Prefixes for Amazon S3 Objects> .
 --
 -- * 'esdcCloudWatchLoggingOptions' - The Amazon CloudWatch logging options for your delivery stream.
 --
 -- * 'esdcS3BackupConfiguration' - The configuration for backup in Amazon S3.
+--
+-- * 'esdcErrorOutputPrefix' - A prefix that Kinesis Data Firehose evaluates and adds to failed records before writing them to S3. This prefix appears immediately following the bucket name. For information about how to specify this prefix, see <https://docs.aws.amazon.com/firehose/latest/dev/s3-prefixes.html Custom Prefixes for Amazon S3 Objects> .
 --
 -- * 'esdcEncryptionConfiguration' - The encryption configuration. If no value is specified, the default is no encryption.
 --
@@ -114,6 +120,7 @@ extendedS3DestinationConfiguration pRoleARN_
                                         _esdcPrefix = Nothing,
                                         _esdcCloudWatchLoggingOptions = Nothing,
                                         _esdcS3BackupConfiguration = Nothing,
+                                        _esdcErrorOutputPrefix = Nothing,
                                         _esdcEncryptionConfiguration = Nothing,
                                         _esdcCompressionFormat = Nothing,
                                         _esdcBufferingHints = Nothing,
@@ -127,7 +134,7 @@ extendedS3DestinationConfiguration pRoleARN_
 esdcS3BackupMode :: Lens' ExtendedS3DestinationConfiguration (Maybe S3BackupMode)
 esdcS3BackupMode = lens _esdcS3BackupMode (\ s a -> s{_esdcS3BackupMode = a})
 
--- | The "YYYY/MM/DD/HH" time format prefix is automatically used for delivered Amazon S3 files. You can specify an extra prefix to be added in front of the time format prefix. If the prefix ends with a slash, it appears as a folder in the S3 bucket. For more information, see <http://docs.aws.amazon.com/firehose/latest/dev/basic-deliver.html#s3-object-name Amazon S3 Object Name Format> in the /Amazon Kinesis Data Firehose Developer Guide/ .
+-- | The "YYYY/MM/DD/HH" time format prefix is automatically used for delivered Amazon S3 files. You can also specify a custom prefix, as described in <https://docs.aws.amazon.com/firehose/latest/dev/s3-prefixes.html Custom Prefixes for Amazon S3 Objects> .
 esdcPrefix :: Lens' ExtendedS3DestinationConfiguration (Maybe Text)
 esdcPrefix = lens _esdcPrefix (\ s a -> s{_esdcPrefix = a})
 
@@ -138,6 +145,10 @@ esdcCloudWatchLoggingOptions = lens _esdcCloudWatchLoggingOptions (\ s a -> s{_e
 -- | The configuration for backup in Amazon S3.
 esdcS3BackupConfiguration :: Lens' ExtendedS3DestinationConfiguration (Maybe S3DestinationConfiguration)
 esdcS3BackupConfiguration = lens _esdcS3BackupConfiguration (\ s a -> s{_esdcS3BackupConfiguration = a})
+
+-- | A prefix that Kinesis Data Firehose evaluates and adds to failed records before writing them to S3. This prefix appears immediately following the bucket name. For information about how to specify this prefix, see <https://docs.aws.amazon.com/firehose/latest/dev/s3-prefixes.html Custom Prefixes for Amazon S3 Objects> .
+esdcErrorOutputPrefix :: Lens' ExtendedS3DestinationConfiguration (Maybe Text)
+esdcErrorOutputPrefix = lens _esdcErrorOutputPrefix (\ s a -> s{_esdcErrorOutputPrefix = a})
 
 -- | The encryption configuration. If no value is specified, the default is no encryption.
 esdcEncryptionConfiguration :: Lens' ExtendedS3DestinationConfiguration (Maybe EncryptionConfiguration)
@@ -184,6 +195,7 @@ instance ToJSON ExtendedS3DestinationConfiguration
                     _esdcCloudWatchLoggingOptions,
                   ("S3BackupConfiguration" .=) <$>
                     _esdcS3BackupConfiguration,
+                  ("ErrorOutputPrefix" .=) <$> _esdcErrorOutputPrefix,
                   ("EncryptionConfiguration" .=) <$>
                     _esdcEncryptionConfiguration,
                   ("CompressionFormat" .=) <$> _esdcCompressionFormat,

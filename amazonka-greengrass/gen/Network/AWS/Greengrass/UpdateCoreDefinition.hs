@@ -32,7 +32,7 @@ module Network.AWS.Greengrass.UpdateCoreDefinition
     , updateCoreDefinitionResponse
     , UpdateCoreDefinitionResponse
     -- * Response Lenses
-    , ucdrsResponseStatus
+    , ursResponseStatus
     ) where
 
 import Network.AWS.Greengrass.Types
@@ -105,7 +105,7 @@ instance ToQuery UpdateCoreDefinition where
         toQuery = const mempty
 
 -- | /See:/ 'updateCoreDefinitionResponse' smart constructor.
-newtype UpdateCoreDefinitionResponse = UpdateCoreDefinitionResponse'{_ucdrsResponseStatus
+newtype UpdateCoreDefinitionResponse = UpdateCoreDefinitionResponse'{_ursResponseStatus
                                                                      :: Int}
                                          deriving (Eq, Read, Show, Data,
                                                    Typeable, Generic)
@@ -114,16 +114,16 @@ newtype UpdateCoreDefinitionResponse = UpdateCoreDefinitionResponse'{_ucdrsRespo
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'ucdrsResponseStatus' - -- | The response status code.
+-- * 'ursResponseStatus' - -- | The response status code.
 updateCoreDefinitionResponse
-    :: Int -- ^ 'ucdrsResponseStatus'
+    :: Int -- ^ 'ursResponseStatus'
     -> UpdateCoreDefinitionResponse
 updateCoreDefinitionResponse pResponseStatus_
-  = UpdateCoreDefinitionResponse'{_ucdrsResponseStatus
-                                    = pResponseStatus_}
+  = UpdateCoreDefinitionResponse'{_ursResponseStatus =
+                                    pResponseStatus_}
 
 -- | -- | The response status code.
-ucdrsResponseStatus :: Lens' UpdateCoreDefinitionResponse Int
-ucdrsResponseStatus = lens _ucdrsResponseStatus (\ s a -> s{_ucdrsResponseStatus = a})
+ursResponseStatus :: Lens' UpdateCoreDefinitionResponse Int
+ursResponseStatus = lens _ursResponseStatus (\ s a -> s{_ursResponseStatus = a})
 
 instance NFData UpdateCoreDefinitionResponse where

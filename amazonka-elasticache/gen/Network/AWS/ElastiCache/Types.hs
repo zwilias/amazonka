@@ -17,9 +17,12 @@ module Network.AWS.ElastiCache.Types
 
     -- * Errors
     , _CacheParameterGroupNotFoundFault
+    , _ReplicationGroupAlreadyUnderMigrationFault
+    , _ReplicationGroupNotUnderMigrationFault
     , _InvalidSnapshotStateFault
     , _InsufficientCacheClusterCapacityFault
     , _SnapshotNotFoundFault
+    , _ServiceUpdateNotFoundFault
     , _ClusterQuotaForCustomerExceededFault
     , _CacheSecurityGroupQuotaExceededFault
     , _InvalidSubnet
@@ -36,7 +39,10 @@ module Network.AWS.ElastiCache.Types
     , _CacheSecurityGroupNotFoundFault
     , _InvalidParameterValueException
     , _CacheSubnetGroupInUse
+    , _InvalidGlobalReplicationGroupStateFault
     , _SnapshotFeatureNotSupportedFault
+    , _ServiceLinkedRoleNotFoundFault
+    , _InvalidKMSKeyFault
     , _ReservedCacheNodeNotFoundFault
     , _InvalidCacheSecurityGroupStateFault
     , _NodeGroupNotFoundFault
@@ -56,8 +62,11 @@ module Network.AWS.ElastiCache.Types
     , _InvalidReplicationGroupStateFault
     , _TestFailoverNotAvailableFault
     , _CacheSubnetGroupAlreadyExistsFault
+    , _GlobalReplicationGroupAlreadyExistsFault
     , _CacheSubnetGroupNotFoundFault
+    , _GlobalReplicationGroupNotFoundFault
     , _CacheSecurityGroupAlreadyExistsFault
+    , _NoOperationFault
     , _InvalidParameterCombinationException
     , _CacheParameterGroupAlreadyExistsFault
     , _APICallRateForCustomerExceededFault
@@ -66,17 +75,44 @@ module Network.AWS.ElastiCache.Types
     -- * AZMode
     , AZMode (..)
 
+    -- * AuthTokenUpdateStatus
+    , AuthTokenUpdateStatus (..)
+
+    -- * AuthTokenUpdateStrategyType
+    , AuthTokenUpdateStrategyType (..)
+
     -- * AutomaticFailoverStatus
     , AutomaticFailoverStatus (..)
 
     -- * ChangeType
     , ChangeType (..)
 
+    -- * NodeUpdateInitiatedBy
+    , NodeUpdateInitiatedBy (..)
+
+    -- * NodeUpdateStatus
+    , NodeUpdateStatus (..)
+
     -- * PendingAutomaticFailoverStatus
     , PendingAutomaticFailoverStatus (..)
 
+    -- * ServiceUpdateSeverity
+    , ServiceUpdateSeverity (..)
+
+    -- * ServiceUpdateStatus
+    , ServiceUpdateStatus (..)
+
+    -- * ServiceUpdateType
+    , ServiceUpdateType (..)
+
+    -- * SlaMet
+    , SlaMet (..)
+
     -- * SourceType
     , SourceType (..)
+
+    -- * UpdateActionStatus
+    , UpdateActionStatus (..)
 
     -- * AvailabilityZone
     , AvailabilityZone
@@ -86,6 +122,7 @@ module Network.AWS.ElastiCache.Types
     -- * CacheCluster
     , CacheCluster
     , cacheCluster
+    , ccAuthTokenLastModifiedDate
     , ccEngineVersion
     , ccCacheNodeType
     , ccCacheNodes
@@ -151,11 +188,24 @@ module Network.AWS.ElastiCache.Types
     , cntsvCacheNodeType
     , cntsvValue
 
+    -- * CacheNodeUpdateStatus
+    , CacheNodeUpdateStatus
+    , cacheNodeUpdateStatus
+    , cnusNodeUpdateEndDate
+    , cnusNodeUpdateInitiatedBy
+    , cnusNodeUpdateStatusModifiedDate
+    , cnusCacheNodeId
+    , cnusNodeUpdateInitiatedDate
+    , cnusNodeUpdateStartDate
+    , cnusNodeUpdateStatus
+    , cnusNodeDeletionDate
+
     -- * CacheParameterGroup
     , CacheParameterGroup
     , cacheParameterGroup
     , cpgCacheParameterGroupFamily
     , cpgCacheParameterGroupName
+    , cpgIsGlobal
     , cpgDescription
 
     -- * CacheParameterGroupNameMessage
@@ -192,6 +242,19 @@ module Network.AWS.ElastiCache.Types
     , csgCacheSubnetGroupName
     , csgCacheSubnetGroupDescription
 
+    -- * ConfigureShard
+    , ConfigureShard
+    , configureShard
+    , csPreferredAvailabilityZones
+    , csNodeGroupId
+    , csNewReplicaCount
+
+    -- * CustomerNodeEndpoint
+    , CustomerNodeEndpoint
+    , customerNodeEndpoint
+    , cneAddress
+    , cnePort
+
     -- * EC2SecurityGroup
     , EC2SecurityGroup
     , ec2SecurityGroup
@@ -221,6 +284,43 @@ module Network.AWS.ElastiCache.Types
     , eDate
     , eMessage
 
+    -- * GlobalNodeGroup
+    , GlobalNodeGroup
+    , globalNodeGroup
+    , gngSlots
+    , gngGlobalNodeGroupId
+
+    -- * GlobalReplicationGroup
+    , GlobalReplicationGroup
+    , globalReplicationGroup
+    , grgEngineVersion
+    , grgStatus
+    , grgCacheNodeType
+    , grgClusterEnabled
+    , grgAtRestEncryptionEnabled
+    , grgTransitEncryptionEnabled
+    , grgMembers
+    , grgEngine
+    , grgAuthTokenEnabled
+    , grgGlobalNodeGroups
+    , grgGlobalReplicationGroupId
+    , grgGlobalReplicationGroupDescription
+
+    -- * GlobalReplicationGroupInfo
+    , GlobalReplicationGroupInfo
+    , globalReplicationGroupInfo
+    , grgiGlobalReplicationGroupMemberRole
+    , grgiGlobalReplicationGroupId
+
+    -- * GlobalReplicationGroupMember
+    , GlobalReplicationGroupMember
+    , globalReplicationGroupMember
+    , grgmStatus
+    , grgmReplicationGroupRegion
+    , grgmRole
+    , grgmReplicationGroupId
+    , grgmAutomaticFailover
+
     -- * NodeGroup
     , NodeGroup
     , nodeGroup
@@ -229,6 +329,7 @@ module Network.AWS.ElastiCache.Types
     , ngSlots
     , ngNodeGroupMembers
     , ngNodeGroupId
+    , ngReaderEndpoint
 
     -- * NodeGroupConfiguration
     , NodeGroupConfiguration
@@ -237,6 +338,7 @@ module Network.AWS.ElastiCache.Types
     , ngcReplicaCount
     , ngcPrimaryAvailabilityZone
     , ngcReplicaAvailabilityZones
+    , ngcNodeGroupId
 
     -- * NodeGroupMember
     , NodeGroupMember
@@ -246,6 +348,25 @@ module Network.AWS.ElastiCache.Types
     , ngmPreferredAvailabilityZone
     , ngmCurrentRole
     , ngmReadEndpoint
+
+    -- * NodeGroupMemberUpdateStatus
+    , NodeGroupMemberUpdateStatus
+    , nodeGroupMemberUpdateStatus
+    , ngmusNodeUpdateEndDate
+    , ngmusNodeUpdateInitiatedBy
+    , ngmusNodeUpdateStatusModifiedDate
+    , ngmusCacheClusterId
+    , ngmusCacheNodeId
+    , ngmusNodeUpdateInitiatedDate
+    , ngmusNodeUpdateStartDate
+    , ngmusNodeUpdateStatus
+    , ngmusNodeDeletionDate
+
+    -- * NodeGroupUpdateStatus
+    , NodeGroupUpdateStatus
+    , nodeGroupUpdateStatus
+    , ngusNodeGroupMemberUpdateStatus
+    , ngusNodeGroupId
 
     -- * NodeSnapshot
     , NodeSnapshot
@@ -288,8 +409,17 @@ module Network.AWS.ElastiCache.Types
     , pendingModifiedValues
     , pmvEngineVersion
     , pmvCacheNodeType
+    , pmvAuthTokenStatus
     , pmvCacheNodeIdsToRemove
     , pmvNumCacheNodes
+
+    -- * ProcessedUpdateAction
+    , ProcessedUpdateAction
+    , processedUpdateAction
+    , puaCacheClusterId
+    , puaServiceUpdateName
+    , puaUpdateActionStatus
+    , puaReplicationGroupId
 
     -- * RecurringCharge
     , RecurringCharge
@@ -297,9 +427,17 @@ module Network.AWS.ElastiCache.Types
     , rcRecurringChargeFrequency
     , rcRecurringChargeAmount
 
+    -- * RegionalConfiguration
+    , RegionalConfiguration
+    , regionalConfiguration
+    , rcReplicationGroupId
+    , rcReplicationGroupRegion
+    , rcReshardingConfiguration
+
     -- * ReplicationGroup
     , ReplicationGroup
     , replicationGroup
+    , rgAuthTokenLastModifiedDate
     , rgStatus
     , rgCacheNodeType
     , rgNodeGroups
@@ -311,15 +449,18 @@ module Network.AWS.ElastiCache.Types
     , rgConfigurationEndpoint
     , rgAuthTokenEnabled
     , rgMemberClusters
+    , rgKMSKeyId
     , rgSnapshotRetentionLimit
     , rgDescription
     , rgReplicationGroupId
     , rgPendingModifiedValues
+    , rgGlobalReplicationGroupInfo
     , rgAutomaticFailover
 
     -- * ReplicationGroupPendingModifiedValues
     , ReplicationGroupPendingModifiedValues
     , replicationGroupPendingModifiedValues
+    , rgpmvAuthTokenStatus
     , rgpmvResharding
     , rgpmvPrimaryClusterId
     , rgpmvAutomaticFailoverStatus
@@ -331,6 +472,7 @@ module Network.AWS.ElastiCache.Types
     , rcnState
     , rcnStartTime
     , rcnProductDescription
+    , rcnReservationARN
     , rcnCacheNodeCount
     , rcnReservedCacheNodeId
     , rcnRecurringCharges
@@ -356,6 +498,7 @@ module Network.AWS.ElastiCache.Types
     , ReshardingConfiguration
     , reshardingConfiguration
     , rcPreferredAvailabilityZones
+    , rcNodeGroupId
 
     -- * ReshardingStatus
     , ReshardingStatus
@@ -367,6 +510,22 @@ module Network.AWS.ElastiCache.Types
     , securityGroupMembership
     , sgmStatus
     , sgmSecurityGroupId
+
+    -- * ServiceUpdate
+    , ServiceUpdate
+    , serviceUpdate
+    , suEngineVersion
+    , suServiceUpdateType
+    , suServiceUpdateName
+    , suEngine
+    , suServiceUpdateReleaseDate
+    , suAutoUpdateAfterRecommendedApplyByDate
+    , suServiceUpdateSeverity
+    , suServiceUpdateEndDate
+    , suServiceUpdateDescription
+    , suServiceUpdateRecommendedApplyByDate
+    , suServiceUpdateStatus
+    , suEstimatedUpdateTime
 
     -- * SlotMigration
     , SlotMigration
@@ -389,6 +548,7 @@ module Network.AWS.ElastiCache.Types
     , sEngine
     , sPreferredMaintenanceWindow
     , sTopicARN
+    , sKMSKeyId
     , sNodeSnapshots
     , sCacheSubnetGroupName
     , sPreferredAvailabilityZone
@@ -417,41 +577,103 @@ module Network.AWS.ElastiCache.Types
     , TagListMessage
     , tagListMessage
     , tlmTagList
+
+    -- * TimeRangeFilter
+    , TimeRangeFilter
+    , timeRangeFilter
+    , trfStartTime
+    , trfEndTime
+
+    -- * UnprocessedUpdateAction
+    , UnprocessedUpdateAction
+    , unprocessedUpdateAction
+    , uuaCacheClusterId
+    , uuaServiceUpdateName
+    , uuaErrorType
+    , uuaErrorMessage
+    , uuaReplicationGroupId
+
+    -- * UpdateAction
+    , UpdateAction
+    , updateAction
+    , uaServiceUpdateType
+    , uaSlaMet
+    , uaCacheClusterId
+    , uaServiceUpdateName
+    , uaUpdateActionStatus
+    , uaEngine
+    , uaNodesUpdated
+    , uaUpdateActionStatusModifiedDate
+    , uaServiceUpdateReleaseDate
+    , uaCacheNodeUpdateStatus
+    , uaServiceUpdateSeverity
+    , uaNodeGroupUpdateStatus
+    , uaServiceUpdateRecommendedApplyByDate
+    , uaUpdateActionAvailableDate
+    , uaServiceUpdateStatus
+    , uaEstimatedUpdateTime
+    , uaReplicationGroupId
+
+    -- * UpdateActionResultsMessage
+    , UpdateActionResultsMessage
+    , updateActionResultsMessage
+    , uarmUnprocessedUpdateActions
+    , uarmProcessedUpdateActions
     ) where
 
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Sign.V4
 import Network.AWS.ElastiCache.Types.AZMode
+import Network.AWS.ElastiCache.Types.AuthTokenUpdateStatus
+import Network.AWS.ElastiCache.Types.AuthTokenUpdateStrategyType
 import Network.AWS.ElastiCache.Types.AutomaticFailoverStatus
 import Network.AWS.ElastiCache.Types.ChangeType
+import Network.AWS.ElastiCache.Types.NodeUpdateInitiatedBy
+import Network.AWS.ElastiCache.Types.NodeUpdateStatus
 import Network.AWS.ElastiCache.Types.PendingAutomaticFailoverStatus
+import Network.AWS.ElastiCache.Types.ServiceUpdateSeverity
+import Network.AWS.ElastiCache.Types.ServiceUpdateStatus
+import Network.AWS.ElastiCache.Types.ServiceUpdateType
+import Network.AWS.ElastiCache.Types.SlaMet
 import Network.AWS.ElastiCache.Types.SourceType
+import Network.AWS.ElastiCache.Types.UpdateActionStatus
 import Network.AWS.ElastiCache.Types.AvailabilityZone
 import Network.AWS.ElastiCache.Types.CacheCluster
 import Network.AWS.ElastiCache.Types.CacheEngineVersion
 import Network.AWS.ElastiCache.Types.CacheNode
 import Network.AWS.ElastiCache.Types.CacheNodeTypeSpecificParameter
 import Network.AWS.ElastiCache.Types.CacheNodeTypeSpecificValue
+import Network.AWS.ElastiCache.Types.CacheNodeUpdateStatus
 import Network.AWS.ElastiCache.Types.CacheParameterGroup
 import Network.AWS.ElastiCache.Types.CacheParameterGroupNameMessage
 import Network.AWS.ElastiCache.Types.CacheParameterGroupStatus
 import Network.AWS.ElastiCache.Types.CacheSecurityGroup
 import Network.AWS.ElastiCache.Types.CacheSecurityGroupMembership
 import Network.AWS.ElastiCache.Types.CacheSubnetGroup
+import Network.AWS.ElastiCache.Types.ConfigureShard
+import Network.AWS.ElastiCache.Types.CustomerNodeEndpoint
 import Network.AWS.ElastiCache.Types.EC2SecurityGroup
 import Network.AWS.ElastiCache.Types.Endpoint
 import Network.AWS.ElastiCache.Types.EngineDefaults
 import Network.AWS.ElastiCache.Types.Event
+import Network.AWS.ElastiCache.Types.GlobalNodeGroup
+import Network.AWS.ElastiCache.Types.GlobalReplicationGroup
+import Network.AWS.ElastiCache.Types.GlobalReplicationGroupInfo
+import Network.AWS.ElastiCache.Types.GlobalReplicationGroupMember
 import Network.AWS.ElastiCache.Types.NodeGroup
 import Network.AWS.ElastiCache.Types.NodeGroupConfiguration
 import Network.AWS.ElastiCache.Types.NodeGroupMember
+import Network.AWS.ElastiCache.Types.NodeGroupMemberUpdateStatus
+import Network.AWS.ElastiCache.Types.NodeGroupUpdateStatus
 import Network.AWS.ElastiCache.Types.NodeSnapshot
 import Network.AWS.ElastiCache.Types.NotificationConfiguration
 import Network.AWS.ElastiCache.Types.Parameter
 import Network.AWS.ElastiCache.Types.ParameterNameValue
 import Network.AWS.ElastiCache.Types.PendingModifiedValues
+import Network.AWS.ElastiCache.Types.ProcessedUpdateAction
 import Network.AWS.ElastiCache.Types.RecurringCharge
+import Network.AWS.ElastiCache.Types.RegionalConfiguration
 import Network.AWS.ElastiCache.Types.ReplicationGroup
 import Network.AWS.ElastiCache.Types.ReplicationGroupPendingModifiedValues
 import Network.AWS.ElastiCache.Types.ReservedCacheNode
@@ -459,11 +681,16 @@ import Network.AWS.ElastiCache.Types.ReservedCacheNodesOffering
 import Network.AWS.ElastiCache.Types.ReshardingConfiguration
 import Network.AWS.ElastiCache.Types.ReshardingStatus
 import Network.AWS.ElastiCache.Types.SecurityGroupMembership
+import Network.AWS.ElastiCache.Types.ServiceUpdate
 import Network.AWS.ElastiCache.Types.SlotMigration
 import Network.AWS.ElastiCache.Types.Snapshot
 import Network.AWS.ElastiCache.Types.Subnet
 import Network.AWS.ElastiCache.Types.Tag
 import Network.AWS.ElastiCache.Types.TagListMessage
+import Network.AWS.ElastiCache.Types.TimeRangeFilter
+import Network.AWS.ElastiCache.Types.UnprocessedUpdateAction
+import Network.AWS.ElastiCache.Types.UpdateAction
+import Network.AWS.ElastiCache.Types.UpdateActionResultsMessage
 
 -- | API version @2015-02-02@ of the Amazon ElastiCache SDK configuration.
 elastiCache :: Service
@@ -488,6 +715,11 @@ elastiCache
             = Just "throttling_exception"
           | has (hasCode "Throttling" . hasStatus 400) e =
             Just "throttling"
+          | has
+              (hasCode "ProvisionedThroughputExceededException" .
+                 hasStatus 400)
+              e
+            = Just "throughput_exceeded"
           | has (hasStatus 504) e = Just "gateway_timeout"
           | has
               (hasCode "RequestThrottledException" . hasStatus 400)
@@ -508,6 +740,24 @@ _CacheParameterGroupNotFoundFault
       "CacheParameterGroupNotFound"
       . hasStatus 404
 
+-- | The targeted replication group is not available. 
+--
+--
+_ReplicationGroupAlreadyUnderMigrationFault :: AsError a => Getting (First ServiceError) a ServiceError
+_ReplicationGroupAlreadyUnderMigrationFault
+  = _MatchServiceError elastiCache
+      "ReplicationGroupAlreadyUnderMigrationFault"
+      . hasStatus 400
+
+-- | The designated replication group is not available for data migration.
+--
+--
+_ReplicationGroupNotUnderMigrationFault :: AsError a => Getting (First ServiceError) a ServiceError
+_ReplicationGroupNotUnderMigrationFault
+  = _MatchServiceError elastiCache
+      "ReplicationGroupNotUnderMigrationFault"
+      . hasStatus 400
+
 -- | The current state of the snapshot does not allow the requested operation to occur.
 --
 --
@@ -517,7 +767,7 @@ _InvalidSnapshotStateFault
       "InvalidSnapshotState"
       . hasStatus 400
 
--- | The requested cache node type is not available in the specified Availability Zone.
+-- | The requested cache node type is not available in the specified Availability Zone. For more information, see <http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/ErrorMessages.html#ErrorMessages.INSUFFICIENT_CACHE_CLUSTER_CAPACITY InsufficientCacheClusterCapacity> in the ElastiCache User Guide.
 --
 --
 _InsufficientCacheClusterCapacityFault :: AsError a => Getting (First ServiceError) a ServiceError
@@ -533,6 +783,15 @@ _SnapshotNotFoundFault :: AsError a => Getting (First ServiceError) a ServiceErr
 _SnapshotNotFoundFault
   = _MatchServiceError elastiCache
       "SnapshotNotFoundFault"
+      . hasStatus 404
+
+-- | The service update doesn't exist
+--
+--
+_ServiceUpdateNotFoundFault :: AsError a => Getting (First ServiceError) a ServiceError
+_ServiceUpdateNotFoundFault
+  = _MatchServiceError elastiCache
+      "ServiceUpdateNotFoundFault"
       . hasStatus 404
 
 -- | The request cannot be processed because it would exceed the allowed number of clusters per customer.
@@ -606,7 +865,7 @@ _ReservedCacheNodesOfferingNotFoundFault
       "ReservedCacheNodesOfferingNotFound"
       . hasStatus 404
 
--- | The request cannot be processed because it would exceed the maximum allowed number of node groups (shards) in a single replication group. The default maximum is 15
+-- | The request cannot be processed because it would exceed the maximum allowed number of node groups (shards) in a single replication group. The default maximum is 90
 --
 --
 _NodeGroupsPerReplicationGroupQuotaExceededFault :: AsError a => Getting (First ServiceError) a ServiceError
@@ -678,6 +937,15 @@ _CacheSubnetGroupInUse
       "CacheSubnetGroupInUse"
       . hasStatus 400
 
+-- | The Global Datastore is not available
+--
+--
+_InvalidGlobalReplicationGroupStateFault :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidGlobalReplicationGroupStateFault
+  = _MatchServiceError elastiCache
+      "InvalidGlobalReplicationGroupState"
+      . hasStatus 400
+
 -- | You attempted one of the following operations:
 --
 --
@@ -693,6 +961,23 @@ _SnapshotFeatureNotSupportedFault :: AsError a => Getting (First ServiceError) a
 _SnapshotFeatureNotSupportedFault
   = _MatchServiceError elastiCache
       "SnapshotFeatureNotSupportedFault"
+      . hasStatus 400
+
+-- | The specified service linked role (SLR) was not found.
+--
+--
+_ServiceLinkedRoleNotFoundFault :: AsError a => Getting (First ServiceError) a ServiceError
+_ServiceLinkedRoleNotFoundFault
+  = _MatchServiceError elastiCache
+      "ServiceLinkedRoleNotFoundFault"
+      . hasStatus 400
+
+-- | The KMS key supplied is not valid.
+--
+--
+_InvalidKMSKeyFault :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidKMSKeyFault
+  = _MatchServiceError elastiCache "InvalidKMSKeyFault"
       . hasStatus 400
 
 -- | The requested reserved cache node was not found.
@@ -845,7 +1130,9 @@ _InvalidReplicationGroupStateFault
       "InvalidReplicationGroupState"
       . hasStatus 400
 
--- | Prism for TestFailoverNotAvailableFault' errors.
+-- | The @TestFailover@ action is not available.
+--
+--
 _TestFailoverNotAvailableFault :: AsError a => Getting (First ServiceError) a ServiceError
 _TestFailoverNotAvailableFault
   = _MatchServiceError elastiCache
@@ -861,6 +1148,15 @@ _CacheSubnetGroupAlreadyExistsFault
       "CacheSubnetGroupAlreadyExists"
       . hasStatus 400
 
+-- | The Global Datastore name already exists.
+--
+--
+_GlobalReplicationGroupAlreadyExistsFault :: AsError a => Getting (First ServiceError) a ServiceError
+_GlobalReplicationGroupAlreadyExistsFault
+  = _MatchServiceError elastiCache
+      "GlobalReplicationGroupAlreadyExistsFault"
+      . hasStatus 400
+
 -- | The requested cache subnet group name does not refer to an existing cache subnet group.
 --
 --
@@ -870,6 +1166,15 @@ _CacheSubnetGroupNotFoundFault
       "CacheSubnetGroupNotFoundFault"
       . hasStatus 400
 
+-- | The Global Datastore does not exist
+--
+--
+_GlobalReplicationGroupNotFoundFault :: AsError a => Getting (First ServiceError) a ServiceError
+_GlobalReplicationGroupNotFoundFault
+  = _MatchServiceError elastiCache
+      "GlobalReplicationGroupNotFoundFault"
+      . hasStatus 404
+
 -- | A cache security group with the specified name already exists.
 --
 --
@@ -878,6 +1183,14 @@ _CacheSecurityGroupAlreadyExistsFault
   = _MatchServiceError elastiCache
       "CacheSecurityGroupAlreadyExists"
       . hasStatus 400
+
+-- | The operation was not performed because no changes were required.
+--
+--
+_NoOperationFault :: AsError a => Getting (First ServiceError) a ServiceError
+_NoOperationFault
+  = _MatchServiceError elastiCache "NoOperationFault" .
+      hasStatus 400
 
 -- | Two or more incompatible parameters were specified.
 --

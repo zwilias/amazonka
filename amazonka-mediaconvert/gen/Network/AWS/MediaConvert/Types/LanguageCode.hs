@@ -216,7 +216,7 @@ module Network.AWS.MediaConvert.Types.LanguageCode (
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | Code to specify the language, following the specification "ISO 639-2 three-digit code":http://www.loc.gov/standards/iso639-2/
+-- | Specify the language, using the ISO 639-2 three-letter code listed at https://www.loc.gov/standards/iso639-2/php/code_list.php.
 data LanguageCode = LanguageCode' (CI Text)
                       deriving (Eq, Ord, Read, Show, Data, Typeable,
                                 Generic)

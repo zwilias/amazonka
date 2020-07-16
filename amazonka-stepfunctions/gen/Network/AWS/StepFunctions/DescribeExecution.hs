@@ -21,6 +21,8 @@
 -- Describes an execution.
 --
 --
+-- This API action is not supported by @EXPRESS@ state machines.
+--
 module Network.AWS.StepFunctions.DescribeExecution
     (
     -- * Creating a Request
@@ -119,7 +121,9 @@ data DescribeExecutionResponse = DescribeExecutionResponse'{_dersStopDate
                                                             _dersName ::
                                                             !(Maybe Text),
                                                             _dersOutput ::
-                                                            !(Maybe Text),
+                                                            !(Maybe
+                                                                (Sensitive
+                                                                   Text)),
                                                             _dersResponseStatus
                                                             :: !Int,
                                                             _dersExecutionARN ::
@@ -130,9 +134,9 @@ data DescribeExecutionResponse = DescribeExecutionResponse'{_dersStopDate
                                                             !ExecutionStatus,
                                                             _dersStartDate ::
                                                             !POSIX,
-                                                            _dersInput :: !Text}
-                                   deriving (Eq, Read, Show, Data, Typeable,
-                                             Generic)
+                                                            _dersInput ::
+                                                            !(Sensitive Text)}
+                                   deriving (Eq, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DescribeExecutionResponse' with the minimum fields required to make a request.
 --
@@ -140,13 +144,13 @@ data DescribeExecutionResponse = DescribeExecutionResponse'{_dersStopDate
 --
 -- * 'dersStopDate' - If the execution has already ended, the date the execution stopped.
 --
--- * 'dersName' - The name of the execution. A name must /not/ contain:     * whitespace     * brackets @< > { } [ ]@      * wildcard characters @? *@      * special characters @" # % \ ^ | ~ ` $ & , ; : /@      * control characters (@U+0000-001F@ , @U+007F-009F@ )
+-- * 'dersName' - The name of the execution. A name must /not/ contain:     * white space     * brackets @< > { } [ ]@      * wildcard characters @? *@      * special characters @" # % \ ^ | ~ ` $ & , ; : /@      * control characters (@U+0000-001F@ , @U+007F-009F@ ) To enable logging with CloudWatch Logs, the name should only contain 0-9, A-Z, a-z, - and _.
 --
 -- * 'dersOutput' - The JSON output data of the execution.
 --
 -- * 'dersResponseStatus' - -- | The response status code.
 --
--- * 'dersExecutionARN' - The Amazon Resource Name (ARN) that identifies the execution.
+-- * 'dersExecutionARN' - The Amazon Resource Name (ARN) that id entifies the execution.
 --
 -- * 'dersStateMachineARN' - The Amazon Resource Name (ARN) of the executed stated machine.
 --
@@ -173,25 +177,25 @@ describeExecutionResponse pResponseStatus_
                                _dersStateMachineARN = pStateMachineARN_,
                                _dersStatus = pStatus_,
                                _dersStartDate = _Time # pStartDate_,
-                               _dersInput = pInput_}
+                               _dersInput = _Sensitive # pInput_}
 
 -- | If the execution has already ended, the date the execution stopped.
 dersStopDate :: Lens' DescribeExecutionResponse (Maybe UTCTime)
 dersStopDate = lens _dersStopDate (\ s a -> s{_dersStopDate = a}) . mapping _Time
 
--- | The name of the execution. A name must /not/ contain:     * whitespace     * brackets @< > { } [ ]@      * wildcard characters @? *@      * special characters @" # % \ ^ | ~ ` $ & , ; : /@      * control characters (@U+0000-001F@ , @U+007F-009F@ )
+-- | The name of the execution. A name must /not/ contain:     * white space     * brackets @< > { } [ ]@      * wildcard characters @? *@      * special characters @" # % \ ^ | ~ ` $ & , ; : /@      * control characters (@U+0000-001F@ , @U+007F-009F@ ) To enable logging with CloudWatch Logs, the name should only contain 0-9, A-Z, a-z, - and _.
 dersName :: Lens' DescribeExecutionResponse (Maybe Text)
 dersName = lens _dersName (\ s a -> s{_dersName = a})
 
 -- | The JSON output data of the execution.
 dersOutput :: Lens' DescribeExecutionResponse (Maybe Text)
-dersOutput = lens _dersOutput (\ s a -> s{_dersOutput = a})
+dersOutput = lens _dersOutput (\ s a -> s{_dersOutput = a}) . mapping _Sensitive
 
 -- | -- | The response status code.
 dersResponseStatus :: Lens' DescribeExecutionResponse Int
 dersResponseStatus = lens _dersResponseStatus (\ s a -> s{_dersResponseStatus = a})
 
--- | The Amazon Resource Name (ARN) that identifies the execution.
+-- | The Amazon Resource Name (ARN) that id entifies the execution.
 dersExecutionARN :: Lens' DescribeExecutionResponse Text
 dersExecutionARN = lens _dersExecutionARN (\ s a -> s{_dersExecutionARN = a})
 
@@ -209,6 +213,6 @@ dersStartDate = lens _dersStartDate (\ s a -> s{_dersStartDate = a}) . _Time
 
 -- | The string that contains the JSON input data of the execution.
 dersInput :: Lens' DescribeExecutionResponse Text
-dersInput = lens _dersInput (\ s a -> s{_dersInput = a})
+dersInput = lens _dersInput (\ s a -> s{_dersInput = a}) . _Sensitive
 
 instance NFData DescribeExecutionResponse where

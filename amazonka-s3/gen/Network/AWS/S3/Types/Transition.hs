@@ -22,9 +22,13 @@ import Network.AWS.Prelude
 import Network.AWS.S3.Internal
 import Network.AWS.S3.Types.TransitionStorageClass
 
--- | /See:/ 'transition' smart constructor.
+-- | Specifies when an object transitions to a specified storage class.
+--
+--
+--
+-- /See:/ 'transition' smart constructor.
 data Transition = Transition'{_tDays :: !(Maybe Int),
-                              _tDate :: !(Maybe RFC822),
+                              _tDate :: !(Maybe ISO8601),
                               _tStorageClass :: !(Maybe TransitionStorageClass)}
                     deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -32,26 +36,26 @@ data Transition = Transition'{_tDays :: !(Maybe Int),
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'tDays' - Indicates the lifetime, in days, of the objects that are subject to the rule. The value must be a non-zero positive integer.
+-- * 'tDays' - Indicates the number of days after creation when objects are transitioned to the specified storage class. The value must be a positive integer.
 --
--- * 'tDate' - Indicates at what date the object is to be moved or deleted. Should be in GMT ISO 8601 Format.
+-- * 'tDate' - Indicates when objects are transitioned to the specified storage class. The date value must be in ISO 8601 format. The time is always midnight UTC.
 --
--- * 'tStorageClass' - The class of storage used to store the object.
+-- * 'tStorageClass' - The storage class to which you want the object to transition.
 transition
     :: Transition
 transition
   = Transition'{_tDays = Nothing, _tDate = Nothing,
                 _tStorageClass = Nothing}
 
--- | Indicates the lifetime, in days, of the objects that are subject to the rule. The value must be a non-zero positive integer.
+-- | Indicates the number of days after creation when objects are transitioned to the specified storage class. The value must be a positive integer.
 tDays :: Lens' Transition (Maybe Int)
 tDays = lens _tDays (\ s a -> s{_tDays = a})
 
--- | Indicates at what date the object is to be moved or deleted. Should be in GMT ISO 8601 Format.
+-- | Indicates when objects are transitioned to the specified storage class. The date value must be in ISO 8601 format. The time is always midnight UTC.
 tDate :: Lens' Transition (Maybe UTCTime)
 tDate = lens _tDate (\ s a -> s{_tDate = a}) . mapping _Time
 
--- | The class of storage used to store the object.
+-- | The storage class to which you want the object to transition.
 tStorageClass :: Lens' Transition (Maybe TransitionStorageClass)
 tStorageClass = lens _tStorageClass (\ s a -> s{_tStorageClass = a})
 

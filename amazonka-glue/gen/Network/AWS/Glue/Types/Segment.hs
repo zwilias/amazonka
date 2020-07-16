@@ -33,9 +33,9 @@ data Segment = Segment'{_sSegmentNumber :: !Nat,
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'sSegmentNumber' - The zero-based index number of the this segment. For example, if the total number of segments is 4, SegmentNumber values will range from zero through three.
+-- * 'sSegmentNumber' - The zero-based index number of the segment. For example, if the total number of segments is 4, @SegmentNumber@ values range from 0 through 3.
 --
--- * 'sTotalSegments' - The total numer of segments.
+-- * 'sTotalSegments' - The total number of segments.
 segment
     :: Natural -- ^ 'sSegmentNumber'
     -> Natural -- ^ 'sTotalSegments'
@@ -44,11 +44,11 @@ segment pSegmentNumber_ pTotalSegments_
   = Segment'{_sSegmentNumber = _Nat # pSegmentNumber_,
              _sTotalSegments = _Nat # pTotalSegments_}
 
--- | The zero-based index number of the this segment. For example, if the total number of segments is 4, SegmentNumber values will range from zero through three.
+-- | The zero-based index number of the segment. For example, if the total number of segments is 4, @SegmentNumber@ values range from 0 through 3.
 sSegmentNumber :: Lens' Segment Natural
 sSegmentNumber = lens _sSegmentNumber (\ s a -> s{_sSegmentNumber = a}) . _Nat
 
--- | The total numer of segments.
+-- | The total number of segments.
 sTotalSegments :: Lens' Segment Natural
 sTotalSegments = lens _sTotalSegments (\ s a -> s{_sTotalSegments = a}) . _Nat
 

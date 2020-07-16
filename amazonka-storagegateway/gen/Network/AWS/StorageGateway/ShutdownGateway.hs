@@ -23,7 +23,7 @@
 --
 -- The operation shuts down the gateway service component running in the gateway's virtual machine (VM) and not the host VM.
 --
--- After the gateway is shutdown, you cannot call any other API except 'StartGateway' , 'DescribeGatewayInformation' , and 'ListGateways' . For more information, see 'ActivateGateway' . Your applications cannot read from or write to the gateway's storage volumes, and there are no snapshots taken.
+-- After the gateway is shutdown, you cannot call any other API except 'StartGateway' , 'DescribeGatewayInformation' and 'ListGateways' . For more information, see 'ActivateGateway' . Your applications cannot read from or write to the gateway's storage volumes, and there are no snapshots taken.
 --
 -- If do not intend to use the gateway again, you must delete the gateway (using 'DeleteGateway' ) to no longer pay software charges associated with the gateway.
 --
@@ -50,7 +50,7 @@ import Network.AWS.Response
 import Network.AWS.StorageGateway.Types
 import Network.AWS.StorageGateway.Types.Product
 
--- | A JSON object containing the of the gateway to shut down.
+-- | A JSON object containing the Amazon Resource Name (ARN) of the gateway to shut down.
 --
 --
 --
@@ -108,7 +108,7 @@ instance ToPath ShutdownGateway where
 instance ToQuery ShutdownGateway where
         toQuery = const mempty
 
--- | A JSON object containing the of the gateway that was shut down.
+-- | A JSON object containing the Amazon Resource Name (ARN) of the gateway that was shut down.
 --
 --
 --

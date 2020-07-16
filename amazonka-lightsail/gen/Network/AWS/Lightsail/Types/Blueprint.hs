@@ -65,7 +65,7 @@ data Blueprint = Blueprint'{_bVersionCode ::
 --
 -- * 'bType' - The type of the blueprint (e.g., @os@ or @app@ ).
 --
--- * 'bIsActive' - A Boolean value indicating whether the blueprint is active. When you update your blueprints, you will inactivate old blueprints and keep the most recent versions active.
+-- * 'bIsActive' - A Boolean value indicating whether the blueprint is active. Inactive blueprints are listed to support customers with existing instances but are not necessarily available for launch of new instances. Blueprints are marked inactive when they become outdated due to operating system updates or new application releases.
 --
 -- * 'bDescription' - The description of the blueprint.
 blueprint
@@ -119,7 +119,7 @@ bBlueprintId = lens _bBlueprintId (\ s a -> s{_bBlueprintId = a})
 bType :: Lens' Blueprint (Maybe BlueprintType)
 bType = lens _bType (\ s a -> s{_bType = a})
 
--- | A Boolean value indicating whether the blueprint is active. When you update your blueprints, you will inactivate old blueprints and keep the most recent versions active.
+-- | A Boolean value indicating whether the blueprint is active. Inactive blueprints are listed to support customers with existing instances but are not necessarily available for launch of new instances. Blueprints are marked inactive when they become outdated due to operating system updates or new application releases.
 bIsActive :: Lens' Blueprint (Maybe Bool)
 bIsActive = lens _bIsActive (\ s a -> s{_bIsActive = a})
 

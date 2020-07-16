@@ -75,7 +75,7 @@ data ApplicationVersionDescription = ApplicationVersionDescription'{_avdStatus
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'avdStatus' - The processing status of the application version.
+-- * 'avdStatus' - The processing status of the application version. Reflects the state of the application version during its creation. Many of the values are only applicable if you specified @True@ for the @Process@ parameter of the @CreateApplicationVersion@ action. The following list describes the possible values.     * @Unprocessed@ – Application version wasn't pre-processed or validated. Elastic Beanstalk will validate configuration files during deployment of the application version to an environment.     * @Processing@ – Elastic Beanstalk is currently processing the application version.     * @Building@ – Application version is currently undergoing an AWS CodeBuild build.     * @Processed@ – Elastic Beanstalk was successfully pre-processed and validated.     * @Failed@ – Either the AWS CodeBuild build failed or configuration files didn't pass validation. This application version isn't usable.
 --
 -- * 'avdSourceBundle' - The storage location of the application version's source bundle in Amazon S3.
 --
@@ -109,7 +109,7 @@ applicationVersionDescription
                                    _avdBuildARN = Nothing,
                                    _avdDescription = Nothing}
 
--- | The processing status of the application version.
+-- | The processing status of the application version. Reflects the state of the application version during its creation. Many of the values are only applicable if you specified @True@ for the @Process@ parameter of the @CreateApplicationVersion@ action. The following list describes the possible values.     * @Unprocessed@ – Application version wasn't pre-processed or validated. Elastic Beanstalk will validate configuration files during deployment of the application version to an environment.     * @Processing@ – Elastic Beanstalk is currently processing the application version.     * @Building@ – Application version is currently undergoing an AWS CodeBuild build.     * @Processed@ – Elastic Beanstalk was successfully pre-processed and validated.     * @Failed@ – Either the AWS CodeBuild build failed or configuration files didn't pass validation. This application version isn't usable.
 avdStatus :: Lens' ApplicationVersionDescription (Maybe ApplicationVersionStatus)
 avdStatus = lens _avdStatus (\ s a -> s{_avdStatus = a})
 

@@ -18,7 +18,9 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Get an APNS VoIPSandbox channel
+-- Retrieves information about the status and settings of the APNs VoIP sandbox channel for an application.
+--
+--
 module Network.AWS.Pinpoint.GetAPNSVoipSandboxChannel
     (
     -- * Creating a Request
@@ -52,7 +54,7 @@ newtype GetAPNSVoipSandboxChannel = GetAPNSVoipSandboxChannel'{_gavscApplication
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'gavscApplicationId' - Undocumented member.
+-- * 'gavscApplicationId' - The unique identifier for the application. This identifier is displayed as the __Project ID__ on the Amazon Pinpoint console.
 getAPNSVoipSandboxChannel
     :: Text -- ^ 'gavscApplicationId'
     -> GetAPNSVoipSandboxChannel
@@ -60,7 +62,7 @@ getAPNSVoipSandboxChannel pApplicationId_
   = GetAPNSVoipSandboxChannel'{_gavscApplicationId =
                                  pApplicationId_}
 
--- | Undocumented member.
+-- | The unique identifier for the application. This identifier is displayed as the __Project ID__ on the Amazon Pinpoint console.
 gavscApplicationId :: Lens' GetAPNSVoipSandboxChannel Text
 gavscApplicationId = lens _gavscApplicationId (\ s a -> s{_gavscApplicationId = a})
 

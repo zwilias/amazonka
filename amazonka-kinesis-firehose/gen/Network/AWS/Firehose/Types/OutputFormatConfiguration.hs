@@ -21,7 +21,7 @@ import Network.AWS.Firehose.Types.Serializer
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | Specifies the serializer that you want Kinesis Data Firehose to use to convert the format of your data before it writes it to Amazon S3.
+-- | Specifies the serializer that you want Kinesis Data Firehose to use to convert the format of your data before it writes it to Amazon S3. This parameter is required if @Enabled@ is set to true.
 --
 --
 --

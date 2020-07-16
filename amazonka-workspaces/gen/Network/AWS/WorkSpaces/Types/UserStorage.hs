@@ -20,7 +20,7 @@ module Network.AWS.WorkSpaces.Types.UserStorage where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | Information about the user storage for a WorkSpace bundle.
+-- | Describes the user storage for a WorkSpace bundle.
 --
 --
 --

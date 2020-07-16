@@ -31,7 +31,6 @@ module Network.AWS.GuardDuty.Types.IPSetFormat (
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | The format of the ipSet.
 data IPSetFormat = IPSetFormat' (CI Text)
                      deriving (Eq, Ord, Read, Show, Data, Typeable,
                                Generic)

@@ -18,7 +18,9 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Returns information about an app.
+-- Retrieves information about an application.
+--
+--
 module Network.AWS.Pinpoint.GetApp
     (
     -- * Creating a Request
@@ -50,14 +52,14 @@ newtype GetApp = GetApp'{_gaApplicationId :: Text}
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'gaApplicationId' - Undocumented member.
+-- * 'gaApplicationId' - The unique identifier for the application. This identifier is displayed as the __Project ID__ on the Amazon Pinpoint console.
 getApp
     :: Text -- ^ 'gaApplicationId'
     -> GetApp
 getApp pApplicationId_
   = GetApp'{_gaApplicationId = pApplicationId_}
 
--- | Undocumented member.
+-- | The unique identifier for the application. This identifier is displayed as the __Project ID__ on the Amazon Pinpoint console.
 gaApplicationId :: Lens' GetApp Text
 gaApplicationId = lens _gaApplicationId (\ s a -> s{_gaApplicationId = a})
 

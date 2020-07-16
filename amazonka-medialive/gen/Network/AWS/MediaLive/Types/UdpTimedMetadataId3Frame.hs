@@ -28,7 +28,7 @@ module Network.AWS.MediaLive.Types.UdpTimedMetadataId3Frame (
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | Placeholder documentation for UdpTimedMetadataId3Frame
+-- | Udp Timed Metadata Id3 Frame
 data UdpTimedMetadataId3Frame = UdpTimedMetadataId3Frame' (CI
                                                              Text)
                                   deriving (Eq, Ord, Read, Show, Data, Typeable,

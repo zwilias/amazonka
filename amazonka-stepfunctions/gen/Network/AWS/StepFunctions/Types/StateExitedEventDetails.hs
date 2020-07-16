@@ -26,10 +26,11 @@ import Network.AWS.Prelude
 --
 -- /See:/ 'stateExitedEventDetails' smart constructor.
 data StateExitedEventDetails = StateExitedEventDetails'{_seedOutput
-                                                        :: !(Maybe Text),
+                                                        ::
+                                                        !(Maybe
+                                                            (Sensitive Text)),
                                                         _seedName :: !Text}
-                                 deriving (Eq, Read, Show, Data, Typeable,
-                                           Generic)
+                                 deriving (Eq, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'StateExitedEventDetails' with the minimum fields required to make a request.
 --
@@ -37,7 +38,7 @@ data StateExitedEventDetails = StateExitedEventDetails'{_seedOutput
 --
 -- * 'seedOutput' - The JSON output data of the state.
 --
--- * 'seedName' - The name of the state. A name must /not/ contain:     * whitespace     * brackets @< > { } [ ]@      * wildcard characters @? *@      * special characters @" # % \ ^ | ~ ` $ & , ; : /@      * control characters (@U+0000-001F@ , @U+007F-009F@ )
+-- * 'seedName' - The name of the state. A name must /not/ contain:     * white space     * brackets @< > { } [ ]@      * wildcard characters @? *@      * special characters @" # % \ ^ | ~ ` $ & , ; : /@      * control characters (@U+0000-001F@ , @U+007F-009F@ ) To enable logging with CloudWatch Logs, the name should only contain 0-9, A-Z, a-z, - and _.
 stateExitedEventDetails
     :: Text -- ^ 'seedName'
     -> StateExitedEventDetails
@@ -47,9 +48,9 @@ stateExitedEventDetails pName_
 
 -- | The JSON output data of the state.
 seedOutput :: Lens' StateExitedEventDetails (Maybe Text)
-seedOutput = lens _seedOutput (\ s a -> s{_seedOutput = a})
+seedOutput = lens _seedOutput (\ s a -> s{_seedOutput = a}) . mapping _Sensitive
 
--- | The name of the state. A name must /not/ contain:     * whitespace     * brackets @< > { } [ ]@      * wildcard characters @? *@      * special characters @" # % \ ^ | ~ ` $ & , ; : /@      * control characters (@U+0000-001F@ , @U+007F-009F@ )
+-- | The name of the state. A name must /not/ contain:     * white space     * brackets @< > { } [ ]@      * wildcard characters @? *@      * special characters @" # % \ ^ | ~ ` $ & , ; : /@      * control characters (@U+0000-001F@ , @U+007F-009F@ ) To enable logging with CloudWatch Logs, the name should only contain 0-9, A-Z, a-z, - and _.
 seedName :: Lens' StateExitedEventDetails Text
 seedName = lens _seedName (\ s a -> s{_seedName = a})
 

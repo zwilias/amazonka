@@ -84,7 +84,7 @@ data DescribeFolderContents = DescribeFolderContents'{_dfcsInclude
 --
 -- * 'dfcsInclude' - The contents to include. Specify "INITIALIZED" to include initialized documents.
 --
--- * 'dfcsAuthenticationToken' - Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.
+-- * 'dfcsAuthenticationToken' - Amazon WorkDocs authentication token. Not required when using AWS administrator credentials to access the API.
 --
 -- * 'dfcsSort' - The sorting criteria.
 --
@@ -111,7 +111,7 @@ describeFolderContents pFolderId_
 dfcsInclude :: Lens' DescribeFolderContents (Maybe Text)
 dfcsInclude = lens _dfcsInclude (\ s a -> s{_dfcsInclude = a})
 
--- | Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.
+-- | Amazon WorkDocs authentication token. Not required when using AWS administrator credentials to access the API.
 dfcsAuthenticationToken :: Lens' DescribeFolderContents (Maybe Text)
 dfcsAuthenticationToken = lens _dfcsAuthenticationToken (\ s a -> s{_dfcsAuthenticationToken = a}) . mapping _Sensitive
 

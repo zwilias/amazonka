@@ -18,7 +18,9 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Deletes the GCM channel for an app.
+-- Disables the GCM channel for an application and deletes any existing settings for the channel.
+--
+--
 module Network.AWS.Pinpoint.DeleteGCMChannel
     (
     -- * Creating a Request
@@ -51,7 +53,7 @@ newtype DeleteGCMChannel = DeleteGCMChannel'{_dgcApplicationId
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dgcApplicationId' - Undocumented member.
+-- * 'dgcApplicationId' - The unique identifier for the application. This identifier is displayed as the __Project ID__ on the Amazon Pinpoint console.
 deleteGCMChannel
     :: Text -- ^ 'dgcApplicationId'
     -> DeleteGCMChannel
@@ -59,7 +61,7 @@ deleteGCMChannel pApplicationId_
   = DeleteGCMChannel'{_dgcApplicationId =
                         pApplicationId_}
 
--- | Undocumented member.
+-- | The unique identifier for the application. This identifier is displayed as the __Project ID__ on the Amazon Pinpoint console.
 dgcApplicationId :: Lens' DeleteGCMChannel Text
 dgcApplicationId = lens _dgcApplicationId (\ s a -> s{_dgcApplicationId = a})
 

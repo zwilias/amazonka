@@ -18,7 +18,9 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Update an APNS VoIP channel
+-- Enables the APNs VoIP channel for an application or updates the status and settings of the APNs VoIP channel for an application.
+--
+--
 module Network.AWS.Pinpoint.UpdateAPNSVoipChannel
     (
     -- * Creating a Request
@@ -55,7 +57,7 @@ data UpdateAPNSVoipChannel = UpdateAPNSVoipChannel'{_uavcApplicationId
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'uavcApplicationId' - Undocumented member.
+-- * 'uavcApplicationId' - The unique identifier for the application. This identifier is displayed as the __Project ID__ on the Amazon Pinpoint console.
 --
 -- * 'uavcAPNSVoipChannelRequest' - Undocumented member.
 updateAPNSVoipChannel
@@ -69,7 +71,7 @@ updateAPNSVoipChannel pApplicationId_
                            _uavcAPNSVoipChannelRequest =
                              pAPNSVoipChannelRequest_}
 
--- | Undocumented member.
+-- | The unique identifier for the application. This identifier is displayed as the __Project ID__ on the Amazon Pinpoint console.
 uavcApplicationId :: Lens' UpdateAPNSVoipChannel Text
 uavcApplicationId = lens _uavcApplicationId (\ s a -> s{_uavcApplicationId = a})
 

@@ -21,10 +21,14 @@ import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.S3.Internal
 
--- | /See:/ 'copyPartResult' smart constructor.
+-- | Container for all response elements.
+--
+--
+--
+-- /See:/ 'copyPartResult' smart constructor.
 data CopyPartResult = CopyPartResult'{_cprETag ::
                                       !(Maybe ETag),
-                                      _cprLastModified :: !(Maybe RFC822)}
+                                      _cprLastModified :: !(Maybe ISO8601)}
                         deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CopyPartResult' with the minimum fields required to make a request.

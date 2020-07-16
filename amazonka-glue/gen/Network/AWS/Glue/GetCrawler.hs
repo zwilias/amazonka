@@ -53,14 +53,14 @@ newtype GetCrawler = GetCrawler'{_gtcrwlrName ::
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'gtcrwlrName' - Name of the crawler to retrieve metadata for.
+-- * 'gtcrwlrName' - The name of the crawler to retrieve metadata for.
 getCrawler
     :: Text -- ^ 'gtcrwlrName'
     -> GetCrawler
 getCrawler pName_
   = GetCrawler'{_gtcrwlrName = pName_}
 
--- | Name of the crawler to retrieve metadata for.
+-- | The name of the crawler to retrieve metadata for.
 gtcrwlrName :: Lens' GetCrawler Text
 gtcrwlrName = lens _gtcrwlrName (\ s a -> s{_gtcrwlrName = a})
 

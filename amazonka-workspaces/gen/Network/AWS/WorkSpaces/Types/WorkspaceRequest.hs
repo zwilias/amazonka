@@ -22,7 +22,7 @@ import Network.AWS.Prelude
 import Network.AWS.WorkSpaces.Types.Tag
 import Network.AWS.WorkSpaces.Types.WorkspaceProperties
 
--- | Information used to create a WorkSpace.
+-- | Describes the information used to create a WorkSpace.
 --
 --
 --
@@ -49,7 +49,7 @@ data WorkspaceRequest = WorkspaceRequest'{_wrWorkspaceProperties
 --
 -- * 'wrRootVolumeEncryptionEnabled' - Indicates whether the data stored on the root volume is encrypted.
 --
--- * 'wrVolumeEncryptionKey' - The KMS key used to encrypt data stored on your WorkSpace.
+-- * 'wrVolumeEncryptionKey' - The symmetric AWS KMS customer master key (CMK) used to encrypt data stored on your WorkSpace. Amazon WorkSpaces does not support asymmetric CMKs.
 --
 -- * 'wrUserVolumeEncryptionEnabled' - Indicates whether the data stored on the user volume is encrypted.
 --
@@ -57,7 +57,7 @@ data WorkspaceRequest = WorkspaceRequest'{_wrWorkspaceProperties
 --
 -- * 'wrDirectoryId' - The identifier of the AWS Directory Service directory for the WorkSpace. You can use 'DescribeWorkspaceDirectories' to list the available directories.
 --
--- * 'wrUserName' - The username of the user for the WorkSpace. This username must exist in the AWS Directory Service directory for the WorkSpace.
+-- * 'wrUserName' - The user name of the user for the WorkSpace. This user name must exist in the AWS Directory Service directory for the WorkSpace.
 --
 -- * 'wrBundleId' - The identifier of the bundle for the WorkSpace. You can use 'DescribeWorkspaceBundles' to list the available bundles.
 workspaceRequest
@@ -81,7 +81,7 @@ wrWorkspaceProperties = lens _wrWorkspaceProperties (\ s a -> s{_wrWorkspaceProp
 wrRootVolumeEncryptionEnabled :: Lens' WorkspaceRequest (Maybe Bool)
 wrRootVolumeEncryptionEnabled = lens _wrRootVolumeEncryptionEnabled (\ s a -> s{_wrRootVolumeEncryptionEnabled = a})
 
--- | The KMS key used to encrypt data stored on your WorkSpace.
+-- | The symmetric AWS KMS customer master key (CMK) used to encrypt data stored on your WorkSpace. Amazon WorkSpaces does not support asymmetric CMKs.
 wrVolumeEncryptionKey :: Lens' WorkspaceRequest (Maybe Text)
 wrVolumeEncryptionKey = lens _wrVolumeEncryptionKey (\ s a -> s{_wrVolumeEncryptionKey = a})
 
@@ -97,7 +97,7 @@ wrTags = lens _wrTags (\ s a -> s{_wrTags = a}) . _Default . _Coerce
 wrDirectoryId :: Lens' WorkspaceRequest Text
 wrDirectoryId = lens _wrDirectoryId (\ s a -> s{_wrDirectoryId = a})
 
--- | The username of the user for the WorkSpace. This username must exist in the AWS Directory Service directory for the WorkSpace.
+-- | The user name of the user for the WorkSpace. This user name must exist in the AWS Directory Service directory for the WorkSpace.
 wrUserName :: Lens' WorkspaceRequest Text
 wrUserName = lens _wrUserName (\ s a -> s{_wrUserName = a})
 

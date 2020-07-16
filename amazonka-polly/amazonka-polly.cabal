@@ -48,14 +48,18 @@ library
         , Network.AWS.Polly.DeleteLexicon
         , Network.AWS.Polly.DescribeVoices
         , Network.AWS.Polly.GetLexicon
+        , Network.AWS.Polly.GetSpeechSynthesisTask
         , Network.AWS.Polly.ListLexicons
+        , Network.AWS.Polly.ListSpeechSynthesisTasks
         , Network.AWS.Polly.PutLexicon
+        , Network.AWS.Polly.StartSpeechSynthesisTask
         , Network.AWS.Polly.SynthesizeSpeech
         , Network.AWS.Polly.Types
         , Network.AWS.Polly.Waiters
 
     other-modules:
-          Network.AWS.Polly.Types.Gender
+          Network.AWS.Polly.Types.Engine
+        , Network.AWS.Polly.Types.Gender
         , Network.AWS.Polly.Types.LanguageCode
         , Network.AWS.Polly.Types.Lexicon
         , Network.AWS.Polly.Types.LexiconAttributes
@@ -63,6 +67,8 @@ library
         , Network.AWS.Polly.Types.OutputFormat
         , Network.AWS.Polly.Types.Product
         , Network.AWS.Polly.Types.SpeechMarkType
+        , Network.AWS.Polly.Types.SynthesisTask
+        , Network.AWS.Polly.Types.TaskStatus
         , Network.AWS.Polly.Types.TextType
         , Network.AWS.Polly.Types.Voice
         , Network.AWS.Polly.Types.VoiceId

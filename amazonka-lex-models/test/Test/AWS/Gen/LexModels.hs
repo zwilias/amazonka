@@ -40,6 +40,9 @@ import Test.AWS.LexModels.Internal
 --         , requestCreateSlotTypeVersion $
 --             createSlotTypeVersion
 --
+--         , requestListTagsForResource $
+--             listTagsForResource
+--
 --         , requestGetIntent $
 --             getIntent
 --
@@ -124,11 +127,17 @@ import Test.AWS.LexModels.Internal
 --         , requestGetBuiltinSlotTypes $
 --             getBuiltinSlotTypes
 --
+--         , requestTagResource $
+--             tagResource
+--
 --         , requestGetUtterancesView $
 --             getUtterancesView
 --
 --         , requestGetSlotTypeVersions $
 --             getSlotTypeVersions
+--
+--         , requestUntagResource $
+--             untagResource
 --
 --         , requestGetIntents $
 --             getIntents
@@ -150,6 +159,9 @@ import Test.AWS.LexModels.Internal
 --
 --         , responseCreateSlotTypeVersion $
 --             createSlotTypeVersionResponse
+--
+--         , responseListTagsForResource $
+--             listTagsForResourceResponse
 --
 --         , responseGetIntent $
 --             getIntentResponse
@@ -235,11 +247,17 @@ import Test.AWS.LexModels.Internal
 --         , responseGetBuiltinSlotTypes $
 --             getBuiltinSlotTypesResponse
 --
+--         , responseTagResource $
+--             tagResourceResponse
+--
 --         , responseGetUtterancesView $
 --             getUtterancesViewResponse
 --
 --         , responseGetSlotTypeVersions $
 --             getSlotTypeVersionsResponse
+--
+--         , responseUntagResource $
+--             untagResourceResponse
 --
 --         , responseGetIntents $
 --             getIntentsResponse
@@ -271,6 +289,11 @@ requestCreateSlotTypeVersion :: CreateSlotTypeVersion -> TestTree
 requestCreateSlotTypeVersion = req
     "CreateSlotTypeVersion"
     "fixture/CreateSlotTypeVersion.yaml"
+
+requestListTagsForResource :: ListTagsForResource -> TestTree
+requestListTagsForResource = req
+    "ListTagsForResource"
+    "fixture/ListTagsForResource.yaml"
 
 requestGetIntent :: GetIntent -> TestTree
 requestGetIntent = req
@@ -412,6 +435,11 @@ requestGetBuiltinSlotTypes = req
     "GetBuiltinSlotTypes"
     "fixture/GetBuiltinSlotTypes.yaml"
 
+requestTagResource :: TagResource -> TestTree
+requestTagResource = req
+    "TagResource"
+    "fixture/TagResource.yaml"
+
 requestGetUtterancesView :: GetUtterancesView -> TestTree
 requestGetUtterancesView = req
     "GetUtterancesView"
@@ -421,6 +449,11 @@ requestGetSlotTypeVersions :: GetSlotTypeVersions -> TestTree
 requestGetSlotTypeVersions = req
     "GetSlotTypeVersions"
     "fixture/GetSlotTypeVersions.yaml"
+
+requestUntagResource :: UntagResource -> TestTree
+requestUntagResource = req
+    "UntagResource"
+    "fixture/UntagResource.yaml"
 
 requestGetIntents :: GetIntents -> TestTree
 requestGetIntents = req
@@ -461,6 +494,13 @@ responseCreateSlotTypeVersion = res
     "fixture/CreateSlotTypeVersionResponse.proto"
     lexModels
     (Proxy :: Proxy CreateSlotTypeVersion)
+
+responseListTagsForResource :: ListTagsForResourceResponse -> TestTree
+responseListTagsForResource = res
+    "ListTagsForResourceResponse"
+    "fixture/ListTagsForResourceResponse.proto"
+    lexModels
+    (Proxy :: Proxy ListTagsForResource)
 
 responseGetIntent :: GetIntentResponse -> TestTree
 responseGetIntent = res
@@ -658,6 +698,13 @@ responseGetBuiltinSlotTypes = res
     lexModels
     (Proxy :: Proxy GetBuiltinSlotTypes)
 
+responseTagResource :: TagResourceResponse -> TestTree
+responseTagResource = res
+    "TagResourceResponse"
+    "fixture/TagResourceResponse.proto"
+    lexModels
+    (Proxy :: Proxy TagResource)
+
 responseGetUtterancesView :: GetUtterancesViewResponse -> TestTree
 responseGetUtterancesView = res
     "GetUtterancesViewResponse"
@@ -671,6 +718,13 @@ responseGetSlotTypeVersions = res
     "fixture/GetSlotTypeVersionsResponse.proto"
     lexModels
     (Proxy :: Proxy GetSlotTypeVersions)
+
+responseUntagResource :: UntagResourceResponse -> TestTree
+responseUntagResource = res
+    "UntagResourceResponse"
+    "fixture/UntagResourceResponse.proto"
+    lexModels
+    (Proxy :: Proxy UntagResource)
 
 responseGetIntents :: GetIntentsResponse -> TestTree
 responseGetIntents = res

@@ -26,6 +26,7 @@ module Network.AWS.Greengrass.CreateFunctionDefinitionVersion
     , CreateFunctionDefinitionVersion
     -- * Request Lenses
     , cfdvAmznClientToken
+    , cfdvDefaultConfig
     , cfdvFunctions
     , cfdvFunctionDefinitionId
 
@@ -54,6 +55,10 @@ data CreateFunctionDefinitionVersion = CreateFunctionDefinitionVersion'{_cfdvAmz
                                                                         ::
                                                                         !(Maybe
                                                                             Text),
+                                                                        _cfdvDefaultConfig
+                                                                        ::
+                                                                        !(Maybe
+                                                                            FunctionDefaultConfig),
                                                                         _cfdvFunctions
                                                                         ::
                                                                         !(Maybe
@@ -70,6 +75,8 @@ data CreateFunctionDefinitionVersion = CreateFunctionDefinitionVersion'{_cfdvAmz
 --
 -- * 'cfdvAmznClientToken' - A client token used to correlate requests and responses.
 --
+-- * 'cfdvDefaultConfig' - The default configuration that applies to all Lambda functions in this function definition version. Individual Lambda functions can override these settings.
+--
 -- * 'cfdvFunctions' - A list of Lambda functions in this function definition version.
 --
 -- * 'cfdvFunctionDefinitionId' - The ID of the Lambda function definition.
@@ -80,6 +87,7 @@ createFunctionDefinitionVersion
   pFunctionDefinitionId_
   = CreateFunctionDefinitionVersion'{_cfdvAmznClientToken
                                        = Nothing,
+                                     _cfdvDefaultConfig = Nothing,
                                      _cfdvFunctions = Nothing,
                                      _cfdvFunctionDefinitionId =
                                        pFunctionDefinitionId_}
@@ -87,6 +95,10 @@ createFunctionDefinitionVersion
 -- | A client token used to correlate requests and responses.
 cfdvAmznClientToken :: Lens' CreateFunctionDefinitionVersion (Maybe Text)
 cfdvAmznClientToken = lens _cfdvAmznClientToken (\ s a -> s{_cfdvAmznClientToken = a})
+
+-- | The default configuration that applies to all Lambda functions in this function definition version. Individual Lambda functions can override these settings.
+cfdvDefaultConfig :: Lens' CreateFunctionDefinitionVersion (Maybe FunctionDefaultConfig)
+cfdvDefaultConfig = lens _cfdvDefaultConfig (\ s a -> s{_cfdvDefaultConfig = a})
 
 -- | A list of Lambda functions in this function definition version.
 cfdvFunctions :: Lens' CreateFunctionDefinitionVersion [Function]
@@ -126,7 +138,9 @@ instance ToHeaders CreateFunctionDefinitionVersion
 instance ToJSON CreateFunctionDefinitionVersion where
         toJSON CreateFunctionDefinitionVersion'{..}
           = object
-              (catMaybes [("Functions" .=) <$> _cfdvFunctions])
+              (catMaybes
+                 [("DefaultConfig" .=) <$> _cfdvDefaultConfig,
+                  ("Functions" .=) <$> _cfdvFunctions])
 
 instance ToPath CreateFunctionDefinitionVersion where
         toPath CreateFunctionDefinitionVersion'{..}
@@ -169,9 +183,9 @@ data CreateFunctionDefinitionVersionResponse = CreateFunctionDefinitionVersionRe
 --
 -- * 'cfdvrsCreationTimestamp' - The time, in milliseconds since the epoch, when the version was created.
 --
--- * 'cfdvrsVersion' - The unique ID of the version.
+-- * 'cfdvrsVersion' - The ID of the version.
 --
--- * 'cfdvrsId' - The ID of the version.
+-- * 'cfdvrsId' - The ID of the parent definition that the version is associated with.
 --
 -- * 'cfdvrsResponseStatus' - -- | The response status code.
 createFunctionDefinitionVersionResponse
@@ -195,11 +209,11 @@ cfdvrsARN = lens _cfdvrsARN (\ s a -> s{_cfdvrsARN = a})
 cfdvrsCreationTimestamp :: Lens' CreateFunctionDefinitionVersionResponse (Maybe Text)
 cfdvrsCreationTimestamp = lens _cfdvrsCreationTimestamp (\ s a -> s{_cfdvrsCreationTimestamp = a})
 
--- | The unique ID of the version.
+-- | The ID of the version.
 cfdvrsVersion :: Lens' CreateFunctionDefinitionVersionResponse (Maybe Text)
 cfdvrsVersion = lens _cfdvrsVersion (\ s a -> s{_cfdvrsVersion = a})
 
--- | The ID of the version.
+-- | The ID of the parent definition that the version is associated with.
 cfdvrsId :: Lens' CreateFunctionDefinitionVersionResponse (Maybe Text)
 cfdvrsId = lens _cfdvrsId (\ s a -> s{_cfdvrsId = a})
 

@@ -35,7 +35,7 @@ data VPC = VPC'{_vpcVPCRegion :: !(Maybe VPCRegion),
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'vpcVPCRegion' - (Private hosted zones only) The region in which you created an Amazon VPC.
+-- * 'vpcVPCRegion' - (Private hosted zones only) The region that an Amazon VPC was created in.
 --
 -- * 'vpcVPCId' - Undocumented member.
 vpc
@@ -43,7 +43,7 @@ vpc
 vpc
   = VPC'{_vpcVPCRegion = Nothing, _vpcVPCId = Nothing}
 
--- | (Private hosted zones only) The region in which you created an Amazon VPC.
+-- | (Private hosted zones only) The region that an Amazon VPC was created in.
 vpcVPCRegion :: Lens' VPC (Maybe VPCRegion)
 vpcVPCRegion = lens _vpcVPCRegion (\ s a -> s{_vpcVPCRegion = a})
 

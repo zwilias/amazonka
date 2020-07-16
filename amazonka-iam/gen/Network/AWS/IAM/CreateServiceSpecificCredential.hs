@@ -27,7 +27,7 @@
 --
 -- You can reset the password to a new service-generated value by calling 'ResetServiceSpecificCredential' .
 --
--- For more information about service-specific credentials, see <http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_ssh-keys.html Using IAM with AWS CodeCommit: Git Credentials, SSH Keys, and AWS Access Keys> in the /IAM User Guide/ .
+-- For more information about service-specific credentials, see <https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_ssh-keys.html Using IAM with AWS CodeCommit: Git Credentials, SSH Keys, and AWS Access Keys> in the /IAM User Guide/ .
 --
 module Network.AWS.IAM.CreateServiceSpecificCredential
     (
@@ -67,7 +67,7 @@ data CreateServiceSpecificCredential = CreateServiceSpecificCredential'{_csscUse
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'csscUserName' - The name of the IAM user that is to be associated with the credentials. The new service-specific credentials have the same permissions as the associated user except that they can be used only to access the specified service. This parameter allows (per its <http://wikipedia.org/wiki/regex regex pattern> ) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
+-- * 'csscUserName' - The name of the IAM user that is to be associated with the credentials. The new service-specific credentials have the same permissions as the associated user except that they can be used only to access the specified service. This parameter allows (through its <http://wikipedia.org/wiki/regex regex pattern> ) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
 --
 -- * 'csscServiceName' - The name of the AWS service that is to be associated with the credentials. The service you specify here is the only service that can be accessed using these credentials.
 createServiceSpecificCredential
@@ -80,7 +80,7 @@ createServiceSpecificCredential pUserName_
                                        pUserName_,
                                      _csscServiceName = pServiceName_}
 
--- | The name of the IAM user that is to be associated with the credentials. The new service-specific credentials have the same permissions as the associated user except that they can be used only to access the specified service. This parameter allows (per its <http://wikipedia.org/wiki/regex regex pattern> ) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
+-- | The name of the IAM user that is to be associated with the credentials. The new service-specific credentials have the same permissions as the associated user except that they can be used only to access the specified service. This parameter allows (through its <http://wikipedia.org/wiki/regex regex pattern> ) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
 csscUserName :: Lens' CreateServiceSpecificCredential Text
 csscUserName = lens _csscUserName (\ s a -> s{_csscUserName = a})
 
@@ -138,7 +138,7 @@ data CreateServiceSpecificCredentialResponse = CreateServiceSpecificCredentialRe
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'csscrsServiceSpecificCredential' - A structure that contains information about the newly created service-specific credential. /Important:/ This is the only time that the password for this credential set is available. It cannot be recovered later. Instead, you will have to reset the password with 'ResetServiceSpecificCredential' .
+-- * 'csscrsServiceSpecificCredential' - A structure that contains information about the newly created service-specific credential. /Important:/ This is the only time that the password for this credential set is available. It cannot be recovered later. Instead, you must reset the password with 'ResetServiceSpecificCredential' .
 --
 -- * 'csscrsResponseStatus' - -- | The response status code.
 createServiceSpecificCredentialResponse
@@ -151,7 +151,7 @@ createServiceSpecificCredentialResponse
                                              _csscrsResponseStatus =
                                                pResponseStatus_}
 
--- | A structure that contains information about the newly created service-specific credential. /Important:/ This is the only time that the password for this credential set is available. It cannot be recovered later. Instead, you will have to reset the password with 'ResetServiceSpecificCredential' .
+-- | A structure that contains information about the newly created service-specific credential. /Important:/ This is the only time that the password for this credential set is available. It cannot be recovered later. Instead, you must reset the password with 'ResetServiceSpecificCredential' .
 csscrsServiceSpecificCredential :: Lens' CreateServiceSpecificCredentialResponse (Maybe ServiceSpecificCredential)
 csscrsServiceSpecificCredential = lens _csscrsServiceSpecificCredential (\ s a -> s{_csscrsServiceSpecificCredential = a})
 

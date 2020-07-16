@@ -26,6 +26,7 @@ module Network.AWS.SSM.Types.AssociationFilterKey (
     , AFKLastExecutedAfter
     , AFKLastExecutedBefore
     , AFKName
+    , AFKResourceGroupName
     )
   ) where
 
@@ -58,6 +59,9 @@ pattern AFKLastExecutedBefore = AssociationFilterKey' "LastExecutedBefore"
 pattern AFKName :: AssociationFilterKey
 pattern AFKName = AssociationFilterKey' "Name"
 
+pattern AFKResourceGroupName :: AssociationFilterKey
+pattern AFKResourceGroupName = AssociationFilterKey' "ResourceGroupName"
+
 {-# COMPLETE
   AFKAssociationId,
   AFKAssociationName,
@@ -66,6 +70,7 @@ pattern AFKName = AssociationFilterKey' "Name"
   AFKLastExecutedAfter,
   AFKLastExecutedBefore,
   AFKName,
+  AFKResourceGroupName,
   AssociationFilterKey' #-}
 
 instance FromText AssociationFilterKey where
@@ -87,6 +92,7 @@ instance Enum AssociationFilterKey where
         4 -> AFKLastExecutedAfter
         5 -> AFKLastExecutedBefore
         6 -> AFKName
+        7 -> AFKResourceGroupName
         _ -> (error . showText) $ "Unknown index for AssociationFilterKey: " <> toText i
     fromEnum x = case x of
         AFKAssociationId -> 0
@@ -96,6 +102,7 @@ instance Enum AssociationFilterKey where
         AFKLastExecutedAfter -> 4
         AFKLastExecutedBefore -> 5
         AFKName -> 6
+        AFKResourceGroupName -> 7
         AssociationFilterKey' name -> (error . showText) $ "Unknown AssociationFilterKey: " <> original name
 
 -- | Represents the bounds of /known/ $AssociationFilterKey.
@@ -103,7 +110,7 @@ instance Enum AssociationFilterKey where
 --   This instance exists only for backward compatibility.
 instance Bounded AssociationFilterKey where
     minBound = AFKAssociationId
-    maxBound = AFKName
+    maxBound = AFKResourceGroupName
 
 instance Hashable     AssociationFilterKey
 instance NFData       AssociationFilterKey

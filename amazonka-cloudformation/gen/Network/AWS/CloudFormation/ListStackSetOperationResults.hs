@@ -21,6 +21,8 @@
 -- Returns summary information about the results of a stack set operation. 
 --
 --
+--
+-- This operation returns paginated results.
 module Network.AWS.CloudFormation.ListStackSetOperationResults
     (
     -- * Creating a Request
@@ -44,6 +46,7 @@ module Network.AWS.CloudFormation.ListStackSetOperationResults
 import Network.AWS.CloudFormation.Types
 import Network.AWS.CloudFormation.Types.Product
 import Network.AWS.Lens
+import Network.AWS.Pager
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
@@ -100,6 +103,13 @@ lssorStackSetName = lens _lssorStackSetName (\ s a -> s{_lssorStackSetName = a})
 -- | The ID of the stack set operation.
 lssorOperationId :: Lens' ListStackSetOperationResults Text
 lssorOperationId = lens _lssorOperationId (\ s a -> s{_lssorOperationId = a})
+
+instance AWSPager ListStackSetOperationResults where
+        page rq rs
+          | stop (rs ^. lssorrsNextToken) = Nothing
+          | stop (rs ^. lssorrsSummaries) = Nothing
+          | otherwise =
+            Just $ rq & lssorNextToken .~ rs ^. lssorrsNextToken
 
 instance AWSRequest ListStackSetOperationResults
          where
@@ -158,7 +168,7 @@ data ListStackSetOperationResultsResponse = ListStackSetOperationResultsResponse
 --
 -- * 'lssorrsNextToken' - If the request doesn't return all results, @NextToken@ is set to a token. To retrieve the next set of results, call @ListOperationResults@ again and assign that token to the request object's @NextToken@ parameter. If there are no remaining results, @NextToken@ is set to @null@ .
 --
--- * 'lssorrsSummaries' - A list of @StackSetOperationResultSummary@ structures that contain information about the specified operation results, for accounts and regions that are included in the operation.
+-- * 'lssorrsSummaries' - A list of @StackSetOperationResultSummary@ structures that contain information about the specified operation results, for accounts and Regions that are included in the operation.
 --
 -- * 'lssorrsResponseStatus' - -- | The response status code.
 listStackSetOperationResultsResponse
@@ -175,7 +185,7 @@ listStackSetOperationResultsResponse pResponseStatus_
 lssorrsNextToken :: Lens' ListStackSetOperationResultsResponse (Maybe Text)
 lssorrsNextToken = lens _lssorrsNextToken (\ s a -> s{_lssorrsNextToken = a})
 
--- | A list of @StackSetOperationResultSummary@ structures that contain information about the specified operation results, for accounts and regions that are included in the operation.
+-- | A list of @StackSetOperationResultSummary@ structures that contain information about the specified operation results, for accounts and Regions that are included in the operation.
 lssorrsSummaries :: Lens' ListStackSetOperationResultsResponse [StackSetOperationResultSummary]
 lssorrsSummaries = lens _lssorrsSummaries (\ s a -> s{_lssorrsSummaries = a}) . _Default . _Coerce
 

@@ -43,6 +43,9 @@ data ExtendedS3DestinationUpdate = ExtendedS3DestinationUpdate'{_esduS3BackupMod
                                                                 ::
                                                                 !(Maybe
                                                                     CloudWatchLoggingOptions),
+                                                                _esduErrorOutputPrefix
+                                                                ::
+                                                                !(Maybe Text),
                                                                 _esduS3BackupUpdate
                                                                 ::
                                                                 !(Maybe
@@ -81,9 +84,11 @@ data ExtendedS3DestinationUpdate = ExtendedS3DestinationUpdate'{_esduS3BackupMod
 --
 -- * 'esduS3BackupMode' - Enables or disables Amazon S3 backup mode.
 --
--- * 'esduPrefix' - The "YYYY/MM/DD/HH" time format prefix is automatically used for delivered Amazon S3 files. You can specify an extra prefix to be added in front of the time format prefix. If the prefix ends with a slash, it appears as a folder in the S3 bucket. For more information, see <http://docs.aws.amazon.com/firehose/latest/dev/basic-deliver.html#s3-object-name Amazon S3 Object Name Format> in the /Amazon Kinesis Data Firehose Developer Guide/ .
+-- * 'esduPrefix' - The "YYYY/MM/DD/HH" time format prefix is automatically used for delivered Amazon S3 files. You can also specify a custom prefix, as described in <https://docs.aws.amazon.com/firehose/latest/dev/s3-prefixes.html Custom Prefixes for Amazon S3 Objects> .
 --
 -- * 'esduCloudWatchLoggingOptions' - The Amazon CloudWatch logging options for your delivery stream.
+--
+-- * 'esduErrorOutputPrefix' - A prefix that Kinesis Data Firehose evaluates and adds to failed records before writing them to S3. This prefix appears immediately following the bucket name. For information about how to specify this prefix, see <https://docs.aws.amazon.com/firehose/latest/dev/s3-prefixes.html Custom Prefixes for Amazon S3 Objects> .
 --
 -- * 'esduS3BackupUpdate' - The Amazon S3 destination for backup.
 --
@@ -107,6 +112,7 @@ extendedS3DestinationUpdate
                                    Nothing,
                                  _esduPrefix = Nothing,
                                  _esduCloudWatchLoggingOptions = Nothing,
+                                 _esduErrorOutputPrefix = Nothing,
                                  _esduS3BackupUpdate = Nothing,
                                  _esduEncryptionConfiguration = Nothing,
                                  _esduCompressionFormat = Nothing,
@@ -121,13 +127,17 @@ extendedS3DestinationUpdate
 esduS3BackupMode :: Lens' ExtendedS3DestinationUpdate (Maybe S3BackupMode)
 esduS3BackupMode = lens _esduS3BackupMode (\ s a -> s{_esduS3BackupMode = a})
 
--- | The "YYYY/MM/DD/HH" time format prefix is automatically used for delivered Amazon S3 files. You can specify an extra prefix to be added in front of the time format prefix. If the prefix ends with a slash, it appears as a folder in the S3 bucket. For more information, see <http://docs.aws.amazon.com/firehose/latest/dev/basic-deliver.html#s3-object-name Amazon S3 Object Name Format> in the /Amazon Kinesis Data Firehose Developer Guide/ .
+-- | The "YYYY/MM/DD/HH" time format prefix is automatically used for delivered Amazon S3 files. You can also specify a custom prefix, as described in <https://docs.aws.amazon.com/firehose/latest/dev/s3-prefixes.html Custom Prefixes for Amazon S3 Objects> .
 esduPrefix :: Lens' ExtendedS3DestinationUpdate (Maybe Text)
 esduPrefix = lens _esduPrefix (\ s a -> s{_esduPrefix = a})
 
 -- | The Amazon CloudWatch logging options for your delivery stream.
 esduCloudWatchLoggingOptions :: Lens' ExtendedS3DestinationUpdate (Maybe CloudWatchLoggingOptions)
 esduCloudWatchLoggingOptions = lens _esduCloudWatchLoggingOptions (\ s a -> s{_esduCloudWatchLoggingOptions = a})
+
+-- | A prefix that Kinesis Data Firehose evaluates and adds to failed records before writing them to S3. This prefix appears immediately following the bucket name. For information about how to specify this prefix, see <https://docs.aws.amazon.com/firehose/latest/dev/s3-prefixes.html Custom Prefixes for Amazon S3 Objects> .
+esduErrorOutputPrefix :: Lens' ExtendedS3DestinationUpdate (Maybe Text)
+esduErrorOutputPrefix = lens _esduErrorOutputPrefix (\ s a -> s{_esduErrorOutputPrefix = a})
 
 -- | The Amazon S3 destination for backup.
 esduS3BackupUpdate :: Lens' ExtendedS3DestinationUpdate (Maybe S3DestinationUpdate)
@@ -173,6 +183,7 @@ instance ToJSON ExtendedS3DestinationUpdate where
                   ("Prefix" .=) <$> _esduPrefix,
                   ("CloudWatchLoggingOptions" .=) <$>
                     _esduCloudWatchLoggingOptions,
+                  ("ErrorOutputPrefix" .=) <$> _esduErrorOutputPrefix,
                   ("S3BackupUpdate" .=) <$> _esduS3BackupUpdate,
                   ("EncryptionConfiguration" .=) <$>
                     _esduEncryptionConfiguration,

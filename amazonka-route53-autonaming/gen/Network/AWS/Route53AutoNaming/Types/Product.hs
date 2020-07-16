@@ -21,6 +21,8 @@ module Network.AWS.Route53AutoNaming.Types.Product (
     module Network.AWS.Route53AutoNaming.Types.DNSConfigChange,
     module Network.AWS.Route53AutoNaming.Types.DNSProperties,
     module Network.AWS.Route53AutoNaming.Types.DNSRecord,
+    module Network.AWS.Route53AutoNaming.Types.HTTPInstanceSummary,
+    module Network.AWS.Route53AutoNaming.Types.HTTPProperties,
     module Network.AWS.Route53AutoNaming.Types.HealthCheckConfig,
     module Network.AWS.Route53AutoNaming.Types.HealthCheckCustomConfig,
     module Network.AWS.Route53AutoNaming.Types.Instance,
@@ -44,6 +46,8 @@ import Network.AWS.Route53AutoNaming.Types.DNSConfig
 import Network.AWS.Route53AutoNaming.Types.DNSConfigChange
 import Network.AWS.Route53AutoNaming.Types.DNSProperties
 import Network.AWS.Route53AutoNaming.Types.DNSRecord
+import Network.AWS.Route53AutoNaming.Types.HTTPInstanceSummary
+import Network.AWS.Route53AutoNaming.Types.HTTPProperties
 import Network.AWS.Route53AutoNaming.Types.HealthCheckConfig
 import Network.AWS.Route53AutoNaming.Types.HealthCheckCustomConfig
 import Network.AWS.Route53AutoNaming.Types.Instance

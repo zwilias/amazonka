@@ -55,7 +55,7 @@ newtype GetSAMLProvider = GetSAMLProvider'{_gsamlpSAMLProviderARN
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'gsamlpSAMLProviderARN' - The Amazon Resource Name (ARN) of the SAML provider resource object in IAM to get information about. For more information about ARNs, see <http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html Amazon Resource Names (ARNs) and AWS Service Namespaces> in the /AWS General Reference/ .
+-- * 'gsamlpSAMLProviderARN' - The Amazon Resource Name (ARN) of the SAML provider resource object in IAM to get information about. For more information about ARNs, see <https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html Amazon Resource Names (ARNs) and AWS Service Namespaces> in the /AWS General Reference/ .
 getSAMLProvider
     :: Text -- ^ 'gsamlpSAMLProviderARN'
     -> GetSAMLProvider
@@ -63,7 +63,7 @@ getSAMLProvider pSAMLProviderARN_
   = GetSAMLProvider'{_gsamlpSAMLProviderARN =
                        pSAMLProviderARN_}
 
--- | The Amazon Resource Name (ARN) of the SAML provider resource object in IAM to get information about. For more information about ARNs, see <http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html Amazon Resource Names (ARNs) and AWS Service Namespaces> in the /AWS General Reference/ .
+-- | The Amazon Resource Name (ARN) of the SAML provider resource object in IAM to get information about. For more information about ARNs, see <https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html Amazon Resource Names (ARNs) and AWS Service Namespaces> in the /AWS General Reference/ .
 gsamlpSAMLProviderARN :: Lens' GetSAMLProvider Text
 gsamlpSAMLProviderARN = lens _gsamlpSAMLProviderARN (\ s a -> s{_gsamlpSAMLProviderARN = a})
 

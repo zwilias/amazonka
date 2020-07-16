@@ -22,7 +22,9 @@ import Network.AWS.Prelude
 import Network.AWS.SMS.Types.ServerType
 import Network.AWS.SMS.Types.VMServer
 
--- | Object representing a server
+-- | Represents a server.
+--
+--
 --
 -- /See:/ 'server' smart constructor.
 data Server = Server'{_sServerType ::
@@ -37,15 +39,15 @@ data Server = Server'{_sServerType ::
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'sServerType' - Undocumented member.
+-- * 'sServerType' - The type of server.
 --
--- * 'sServerId' - Undocumented member.
+-- * 'sServerId' - The identifier of the server.
 --
--- * 'sReplicationJobTerminated' - Undocumented member.
+-- * 'sReplicationJobTerminated' - Indicates whether the replication job is deleted or failed.
 --
--- * 'sVmServer' - Undocumented member.
+-- * 'sVmServer' - Information about the VM server.
 --
--- * 'sReplicationJobId' - Undocumented member.
+-- * 'sReplicationJobId' - The identifier of the replication job.
 server
     :: Server
 server
@@ -54,23 +56,23 @@ server
             _sReplicationJobTerminated = Nothing,
             _sVmServer = Nothing, _sReplicationJobId = Nothing}
 
--- | Undocumented member.
+-- | The type of server.
 sServerType :: Lens' Server (Maybe ServerType)
 sServerType = lens _sServerType (\ s a -> s{_sServerType = a})
 
--- | Undocumented member.
+-- | The identifier of the server.
 sServerId :: Lens' Server (Maybe Text)
 sServerId = lens _sServerId (\ s a -> s{_sServerId = a})
 
--- | Undocumented member.
+-- | Indicates whether the replication job is deleted or failed.
 sReplicationJobTerminated :: Lens' Server (Maybe Bool)
 sReplicationJobTerminated = lens _sReplicationJobTerminated (\ s a -> s{_sReplicationJobTerminated = a})
 
--- | Undocumented member.
+-- | Information about the VM server.
 sVmServer :: Lens' Server (Maybe VMServer)
 sVmServer = lens _sVmServer (\ s a -> s{_sVmServer = a})
 
--- | Undocumented member.
+-- | The identifier of the replication job.
 sReplicationJobId :: Lens' Server (Maybe Text)
 sReplicationJobId = lens _sReplicationJobId (\ s a -> s{_sReplicationJobId = a})
 
@@ -87,3 +89,14 @@ instance FromJSON Server where
 instance Hashable Server where
 
 instance NFData Server where
+
+instance ToJSON Server where
+        toJSON Server'{..}
+          = object
+              (catMaybes
+                 [("serverType" .=) <$> _sServerType,
+                  ("serverId" .=) <$> _sServerId,
+                  ("replicationJobTerminated" .=) <$>
+                    _sReplicationJobTerminated,
+                  ("vmServer" .=) <$> _sVmServer,
+                  ("replicationJobId" .=) <$> _sReplicationJobId])

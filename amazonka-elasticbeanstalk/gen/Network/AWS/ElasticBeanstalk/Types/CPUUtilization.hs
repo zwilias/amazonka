@@ -30,6 +30,7 @@ data CPUUtilization = CPUUtilization'{_cuSoftIRQ ::
                                       _cuIdle :: !(Maybe Double),
                                       _cuIRQ :: !(Maybe Double),
                                       _cuSystem :: !(Maybe Double),
+                                      _cuPrivileged :: !(Maybe Double),
                                       _cuUser :: !(Maybe Double),
                                       _cuIOWait :: !(Maybe Double),
                                       _cuNice :: !(Maybe Double)}
@@ -39,28 +40,31 @@ data CPUUtilization = CPUUtilization'{_cuSoftIRQ ::
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'cuSoftIRQ' - Percentage of time that the CPU has spent in the @SoftIRQ@ state over the last 10 seconds.
+-- * 'cuSoftIRQ' - Available on Linux environments only. Percentage of time that the CPU has spent in the @SoftIRQ@ state over the last 10 seconds.
 --
 -- * 'cuIdle' - Percentage of time that the CPU has spent in the @Idle@ state over the last 10 seconds.
 --
--- * 'cuIRQ' - Percentage of time that the CPU has spent in the @IRQ@ state over the last 10 seconds.
+-- * 'cuIRQ' - Available on Linux environments only. Percentage of time that the CPU has spent in the @IRQ@ state over the last 10 seconds.
 --
--- * 'cuSystem' - Percentage of time that the CPU has spent in the @System@ state over the last 10 seconds.
+-- * 'cuSystem' - Available on Linux environments only. Percentage of time that the CPU has spent in the @System@ state over the last 10 seconds.
+--
+-- * 'cuPrivileged' - Available on Windows environments only. Percentage of time that the CPU has spent in the @Privileged@ state over the last 10 seconds.
 --
 -- * 'cuUser' - Percentage of time that the CPU has spent in the @User@ state over the last 10 seconds.
 --
--- * 'cuIOWait' - Percentage of time that the CPU has spent in the @I/O Wait@ state over the last 10 seconds.
+-- * 'cuIOWait' - Available on Linux environments only. Percentage of time that the CPU has spent in the @I/O Wait@ state over the last 10 seconds.
 --
--- * 'cuNice' - Percentage of time that the CPU has spent in the @Nice@ state over the last 10 seconds.
+-- * 'cuNice' - Available on Linux environments only. Percentage of time that the CPU has spent in the @Nice@ state over the last 10 seconds.
 cpuUtilization
     :: CPUUtilization
 cpuUtilization
   = CPUUtilization'{_cuSoftIRQ = Nothing,
                     _cuIdle = Nothing, _cuIRQ = Nothing,
-                    _cuSystem = Nothing, _cuUser = Nothing,
-                    _cuIOWait = Nothing, _cuNice = Nothing}
+                    _cuSystem = Nothing, _cuPrivileged = Nothing,
+                    _cuUser = Nothing, _cuIOWait = Nothing,
+                    _cuNice = Nothing}
 
--- | Percentage of time that the CPU has spent in the @SoftIRQ@ state over the last 10 seconds.
+-- | Available on Linux environments only. Percentage of time that the CPU has spent in the @SoftIRQ@ state over the last 10 seconds.
 cuSoftIRQ :: Lens' CPUUtilization (Maybe Double)
 cuSoftIRQ = lens _cuSoftIRQ (\ s a -> s{_cuSoftIRQ = a})
 
@@ -68,23 +72,27 @@ cuSoftIRQ = lens _cuSoftIRQ (\ s a -> s{_cuSoftIRQ = a})
 cuIdle :: Lens' CPUUtilization (Maybe Double)
 cuIdle = lens _cuIdle (\ s a -> s{_cuIdle = a})
 
--- | Percentage of time that the CPU has spent in the @IRQ@ state over the last 10 seconds.
+-- | Available on Linux environments only. Percentage of time that the CPU has spent in the @IRQ@ state over the last 10 seconds.
 cuIRQ :: Lens' CPUUtilization (Maybe Double)
 cuIRQ = lens _cuIRQ (\ s a -> s{_cuIRQ = a})
 
--- | Percentage of time that the CPU has spent in the @System@ state over the last 10 seconds.
+-- | Available on Linux environments only. Percentage of time that the CPU has spent in the @System@ state over the last 10 seconds.
 cuSystem :: Lens' CPUUtilization (Maybe Double)
 cuSystem = lens _cuSystem (\ s a -> s{_cuSystem = a})
+
+-- | Available on Windows environments only. Percentage of time that the CPU has spent in the @Privileged@ state over the last 10 seconds.
+cuPrivileged :: Lens' CPUUtilization (Maybe Double)
+cuPrivileged = lens _cuPrivileged (\ s a -> s{_cuPrivileged = a})
 
 -- | Percentage of time that the CPU has spent in the @User@ state over the last 10 seconds.
 cuUser :: Lens' CPUUtilization (Maybe Double)
 cuUser = lens _cuUser (\ s a -> s{_cuUser = a})
 
--- | Percentage of time that the CPU has spent in the @I/O Wait@ state over the last 10 seconds.
+-- | Available on Linux environments only. Percentage of time that the CPU has spent in the @I/O Wait@ state over the last 10 seconds.
 cuIOWait :: Lens' CPUUtilization (Maybe Double)
 cuIOWait = lens _cuIOWait (\ s a -> s{_cuIOWait = a})
 
--- | Percentage of time that the CPU has spent in the @Nice@ state over the last 10 seconds.
+-- | Available on Linux environments only. Percentage of time that the CPU has spent in the @Nice@ state over the last 10 seconds.
 cuNice :: Lens' CPUUtilization (Maybe Double)
 cuNice = lens _cuNice (\ s a -> s{_cuNice = a})
 
@@ -94,6 +102,7 @@ instance FromXML CPUUtilization where
               (x .@? "SoftIRQ") <*> (x .@? "Idle") <*>
                 (x .@? "IRQ")
                 <*> (x .@? "System")
+                <*> (x .@? "Privileged")
                 <*> (x .@? "User")
                 <*> (x .@? "IOWait")
                 <*> (x .@? "Nice")

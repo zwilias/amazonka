@@ -18,7 +18,17 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Sets the request payment configuration for a bucket. By default, the bucket owner pays for downloads from the bucket. This configuration parameter enables the bucket owner (only) to specify that the person requesting the download will be charged for the download. Documentation on requester pays buckets can be found at http://docs.aws.amazon.com/AmazonS3/latest/dev/RequesterPaysBuckets.html
+-- Sets the request payment configuration for a bucket. By default, the bucket owner pays for downloads from the bucket. This configuration parameter enables the bucket owner (only) to specify that the person requesting the download will be charged for the download. For more information, see <https://docs.aws.amazon.com/AmazonS3/latest/dev/RequesterPaysBuckets.html Requester Pays Buckets> .
+--
+--
+-- The following operations are related to @PutBucketRequestPayment@ :
+--
+--     * 'CreateBucket' 
+--
+--     * 'GetBucketRequestPayment' 
+--
+--
+--
 module Network.AWS.S3.PutBucketRequestPayment
     (
     -- * Creating a Request
@@ -56,11 +66,11 @@ data PutBucketRequestPayment = PutBucketRequestPayment'{_pbrpContentMD5
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'pbrpContentMD5' - Undocumented member.
+-- * 'pbrpContentMD5' - >The base64-encoded 128-bit MD5 digest of the data. You must use this header as a message integrity check to verify that the request body was not corrupted in transit. For more information, see <http://www.ietf.org/rfc/rfc1864.txt RFC 1864> .
 --
--- * 'pbrpBucket' - Undocumented member.
+-- * 'pbrpBucket' - The bucket name.
 --
--- * 'pbrpRequestPaymentConfiguration' - Undocumented member.
+-- * 'pbrpRequestPaymentConfiguration' - Container for Payer.
 putBucketRequestPayment
     :: BucketName -- ^ 'pbrpBucket'
     -> RequestPaymentConfiguration -- ^ 'pbrpRequestPaymentConfiguration'
@@ -72,15 +82,15 @@ putBucketRequestPayment pBucket_
                              _pbrpRequestPaymentConfiguration =
                                pRequestPaymentConfiguration_}
 
--- | Undocumented member.
+-- | >The base64-encoded 128-bit MD5 digest of the data. You must use this header as a message integrity check to verify that the request body was not corrupted in transit. For more information, see <http://www.ietf.org/rfc/rfc1864.txt RFC 1864> .
 pbrpContentMD5 :: Lens' PutBucketRequestPayment (Maybe Text)
 pbrpContentMD5 = lens _pbrpContentMD5 (\ s a -> s{_pbrpContentMD5 = a})
 
--- | Undocumented member.
+-- | The bucket name.
 pbrpBucket :: Lens' PutBucketRequestPayment BucketName
 pbrpBucket = lens _pbrpBucket (\ s a -> s{_pbrpBucket = a})
 
--- | Undocumented member.
+-- | Container for Payer.
 pbrpRequestPaymentConfiguration :: Lens' PutBucketRequestPayment RequestPaymentConfiguration
 pbrpRequestPaymentConfiguration = lens _pbrpRequestPaymentConfiguration (\ s a -> s{_pbrpRequestPaymentConfiguration = a})
 

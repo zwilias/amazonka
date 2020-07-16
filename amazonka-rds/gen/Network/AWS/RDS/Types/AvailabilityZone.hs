@@ -23,11 +23,7 @@ import Network.AWS.Prelude
 -- | Contains Availability Zone information.
 --
 --
--- This data type is used as an element in the following data type:
---
---     * 'OrderableDBInstanceOption' 
---
---
+-- This data type is used as an element in the @OrderableDBInstanceOption@ data type.
 --
 --
 -- /See:/ 'availabilityZone' smart constructor.
@@ -39,13 +35,13 @@ newtype AvailabilityZone = AvailabilityZone'{_azName
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'azName' - The name of the availability zone.
+-- * 'azName' - The name of the Availability Zone.
 availabilityZone
     :: AvailabilityZone
 availabilityZone
   = AvailabilityZone'{_azName = Nothing}
 
--- | The name of the availability zone.
+-- | The name of the Availability Zone.
 azName :: Lens' AvailabilityZone (Maybe Text)
 azName = lens _azName (\ s a -> s{_azName = a})
 

@@ -20,7 +20,7 @@ module Network.AWS.IAM.Types.OrganizationsDecisionDetail where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | Contains information about AWS Organizations's effect on a policy simulation.
+-- | Contains information about the effect that Organizations has on a policy simulation.
 --
 --
 --
@@ -35,14 +35,14 @@ newtype OrganizationsDecisionDetail = OrganizationsDecisionDetail'{_oddAllowedBy
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'oddAllowedByOrganizations' - Specifies whether the simulated operation is allowed by the AWS Organizations service control policies that impact the simulated user's account.
+-- * 'oddAllowedByOrganizations' - Specifies whether the simulated operation is allowed by the Organizations service control policies that impact the simulated user's account.
 organizationsDecisionDetail
     :: OrganizationsDecisionDetail
 organizationsDecisionDetail
   = OrganizationsDecisionDetail'{_oddAllowedByOrganizations
                                    = Nothing}
 
--- | Specifies whether the simulated operation is allowed by the AWS Organizations service control policies that impact the simulated user's account.
+-- | Specifies whether the simulated operation is allowed by the Organizations service control policies that impact the simulated user's account.
 oddAllowedByOrganizations :: Lens' OrganizationsDecisionDetail (Maybe Bool)
 oddAllowedByOrganizations = lens _oddAllowedByOrganizations (\ s a -> s{_oddAllowedByOrganizations = a})
 

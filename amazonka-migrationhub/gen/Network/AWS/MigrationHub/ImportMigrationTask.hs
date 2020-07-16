@@ -61,9 +61,9 @@ data ImportMigrationTask = ImportMigrationTask'{_imtDryRun
 --
 -- * 'imtDryRun' - Optional boolean flag to indicate whether any effect should take place. Used to test if the caller has permission to make the call.
 --
--- * 'imtProgressUpdateStream' - The name of the ProgressUpdateStream. 
+-- * 'imtProgressUpdateStream' - The name of the ProgressUpdateStream. >
 --
--- * 'imtMigrationTaskName' - Unique identifier that references the migration task.
+-- * 'imtMigrationTaskName' - Unique identifier that references the migration task. /Do not store personal data in this field./ 
 importMigrationTask
     :: Text -- ^ 'imtProgressUpdateStream'
     -> Text -- ^ 'imtMigrationTaskName'
@@ -78,11 +78,11 @@ importMigrationTask pProgressUpdateStream_
 imtDryRun :: Lens' ImportMigrationTask (Maybe Bool)
 imtDryRun = lens _imtDryRun (\ s a -> s{_imtDryRun = a})
 
--- | The name of the ProgressUpdateStream. 
+-- | The name of the ProgressUpdateStream. >
 imtProgressUpdateStream :: Lens' ImportMigrationTask Text
 imtProgressUpdateStream = lens _imtProgressUpdateStream (\ s a -> s{_imtProgressUpdateStream = a})
 
--- | Unique identifier that references the migration task.
+-- | Unique identifier that references the migration task. /Do not store personal data in this field./ 
 imtMigrationTaskName :: Lens' ImportMigrationTask Text
 imtMigrationTaskName = lens _imtMigrationTaskName (\ s a -> s{_imtMigrationTaskName = a})
 

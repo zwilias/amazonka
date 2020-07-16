@@ -27,7 +27,7 @@ module Network.AWS.MediaLive.Types.M2tsTimedMetadataBehavior (
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | Placeholder documentation for M2tsTimedMetadataBehavior
+-- | M2ts Timed Metadata Behavior
 data M2tsTimedMetadataBehavior = M2tsTimedMetadataBehavior' (CI
                                                                Text)
                                    deriving (Eq, Ord, Read, Show, Data,

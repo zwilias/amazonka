@@ -79,7 +79,7 @@ data NotifyMigrationTaskState = NotifyMigrationTaskState'{_nmtsDryRun
 --
 -- * 'nmtsProgressUpdateStream' - The name of the ProgressUpdateStream. 
 --
--- * 'nmtsMigrationTaskName' - Unique identifier that references the migration task.
+-- * 'nmtsMigrationTaskName' - Unique identifier that references the migration task. /Do not store personal data in this field./ 
 --
 -- * 'nmtsTask' - Information about the task's progress and status.
 --
@@ -113,7 +113,7 @@ nmtsDryRun = lens _nmtsDryRun (\ s a -> s{_nmtsDryRun = a})
 nmtsProgressUpdateStream :: Lens' NotifyMigrationTaskState Text
 nmtsProgressUpdateStream = lens _nmtsProgressUpdateStream (\ s a -> s{_nmtsProgressUpdateStream = a})
 
--- | Unique identifier that references the migration task.
+-- | Unique identifier that references the migration task. /Do not store personal data in this field./ 
 nmtsMigrationTaskName :: Lens' NotifyMigrationTaskState Text
 nmtsMigrationTaskName = lens _nmtsMigrationTaskName (\ s a -> s{_nmtsMigrationTaskName = a})
 

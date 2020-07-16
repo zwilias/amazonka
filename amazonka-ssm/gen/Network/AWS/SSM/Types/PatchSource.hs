@@ -38,7 +38,7 @@ data PatchSource = PatchSource'{_psName :: !Text,
 --
 -- * 'psProducts' - The specific operating system versions a patch repository applies to, such as "Ubuntu16.04", "AmazonLinux2016.09", "RedhatEnterpriseLinux7.2" or "Suse12.7". For lists of supported product values, see 'PatchFilter' .
 --
--- * 'psConfiguration' - The value of the yum repo configuration. For example: @cachedir=/var/cache/yum/$basesearch@  @> releasever@  @keepcache=0@  @debualevel=2@ 
+-- * 'psConfiguration' - The value of the yum repo configuration. For example: @[main]@  @cachedir=/var/cache/yum/$basesearch$releasever@  @keepcache=0@  @debuglevel=2@ 
 patchSource
     :: Text -- ^ 'psName'
     -> NonEmpty Text -- ^ 'psProducts'
@@ -57,7 +57,7 @@ psName = lens _psName (\ s a -> s{_psName = a})
 psProducts :: Lens' PatchSource (NonEmpty Text)
 psProducts = lens _psProducts (\ s a -> s{_psProducts = a}) . _List1
 
--- | The value of the yum repo configuration. For example: @cachedir=/var/cache/yum/$basesearch@  @> releasever@  @keepcache=0@  @debualevel=2@ 
+-- | The value of the yum repo configuration. For example: @[main]@  @cachedir=/var/cache/yum/$basesearch$releasever@  @keepcache=0@  @debuglevel=2@ 
 psConfiguration :: Lens' PatchSource Text
 psConfiguration = lens _psConfiguration (\ s a -> s{_psConfiguration = a}) . _Sensitive
 

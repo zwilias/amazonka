@@ -24,18 +24,21 @@ import Network.AWS.MediaLive.Types.AvailConfiguration
 import Network.AWS.MediaLive.Types.BlackoutSlate
 import Network.AWS.MediaLive.Types.CaptionDescription
 import Network.AWS.MediaLive.Types.GlobalConfiguration
+import Network.AWS.MediaLive.Types.NielsenConfiguration
 import Network.AWS.MediaLive.Types.OutputGroup
 import Network.AWS.MediaLive.Types.TimecodeConfig
 import Network.AWS.MediaLive.Types.VideoDescription
 import Network.AWS.Prelude
 
--- | Placeholder documentation for EncoderSettings
+-- | Encoder Settings
 --
 -- /See:/ 'encoderSettings' smart constructor.
 data EncoderSettings = EncoderSettings'{_esCaptionDescriptions
                                         :: !(Maybe [CaptionDescription]),
                                         _esAvailConfiguration ::
                                         !(Maybe AvailConfiguration),
+                                        _esNielsenConfiguration ::
+                                        !(Maybe NielsenConfiguration),
                                         _esAvailBlanking ::
                                         !(Maybe AvailBlanking),
                                         _esGlobalConfiguration ::
@@ -58,6 +61,8 @@ data EncoderSettings = EncoderSettings'{_esCaptionDescriptions
 --
 -- * 'esAvailConfiguration' - Event-wide configuration settings for ad avail insertion.
 --
+-- * 'esNielsenConfiguration' - Nielsen configuration settings.
+--
 -- * 'esAvailBlanking' - Settings for ad avail blanking.
 --
 -- * 'esGlobalConfiguration' - Configuration settings that apply to the event as a whole.
@@ -77,6 +82,7 @@ encoderSettings
 encoderSettings pTimecodeConfig_
   = EncoderSettings'{_esCaptionDescriptions = Nothing,
                      _esAvailConfiguration = Nothing,
+                     _esNielsenConfiguration = Nothing,
                      _esAvailBlanking = Nothing,
                      _esGlobalConfiguration = Nothing,
                      _esBlackoutSlate = Nothing,
@@ -92,6 +98,10 @@ esCaptionDescriptions = lens _esCaptionDescriptions (\ s a -> s{_esCaptionDescri
 -- | Event-wide configuration settings for ad avail insertion.
 esAvailConfiguration :: Lens' EncoderSettings (Maybe AvailConfiguration)
 esAvailConfiguration = lens _esAvailConfiguration (\ s a -> s{_esAvailConfiguration = a})
+
+-- | Nielsen configuration settings.
+esNielsenConfiguration :: Lens' EncoderSettings (Maybe NielsenConfiguration)
+esNielsenConfiguration = lens _esNielsenConfiguration (\ s a -> s{_esNielsenConfiguration = a})
 
 -- | Settings for ad avail blanking.
 esAvailBlanking :: Lens' EncoderSettings (Maybe AvailBlanking)
@@ -128,6 +138,7 @@ instance FromJSON EncoderSettings where
                  EncoderSettings' <$>
                    (x .:? "captionDescriptions" .!= mempty) <*>
                      (x .:? "availConfiguration")
+                     <*> (x .:? "nielsenConfiguration")
                      <*> (x .:? "availBlanking")
                      <*> (x .:? "globalConfiguration")
                      <*> (x .:? "blackoutSlate")
@@ -147,6 +158,8 @@ instance ToJSON EncoderSettings where
                  [("captionDescriptions" .=) <$>
                     _esCaptionDescriptions,
                   ("availConfiguration" .=) <$> _esAvailConfiguration,
+                  ("nielsenConfiguration" .=) <$>
+                    _esNielsenConfiguration,
                   ("availBlanking" .=) <$> _esAvailBlanking,
                   ("globalConfiguration" .=) <$>
                     _esGlobalConfiguration,

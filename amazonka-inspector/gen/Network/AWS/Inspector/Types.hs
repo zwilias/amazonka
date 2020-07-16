@@ -19,11 +19,13 @@ module Network.AWS.Inspector.Types
     , _NoSuchEntityException
     , _InvalidCrossAccountRoleException
     , _AccessDeniedException
+    , _PreviewGenerationInProgressException
     , _InvalidInputException
     , _InternalException
     , _AssessmentRunInProgressException
     , _AgentsAlreadyRunningAssessmentException
     , _LimitExceededException
+    , _ServiceTemporarilyUnavailableException
     , _UnsupportedFeatureException
 
     -- * AgentHealth
@@ -50,6 +52,9 @@ module Network.AWS.Inspector.Types
     -- * Locale
     , Locale (..)
 
+    -- * PreviewStatus
+    , PreviewStatus (..)
+
     -- * ReportFileFormat
     , ReportFileFormat (..)
 
@@ -58,6 +63,9 @@ module Network.AWS.Inspector.Types
 
     -- * ReportType
     , ReportType (..)
+
+    -- * ScopeType
+    , ScopeType (..)
 
     -- * Severity
     , Severity (..)
@@ -143,9 +151,9 @@ module Network.AWS.Inspector.Types
     -- * AssessmentTarget
     , AssessmentTarget
     , assessmentTarget
+    , aResourceGroupARN
     , aArn
     , aName
-    , aResourceGroupARN
     , aCreatedAt
     , aUpdatedAt
 
@@ -179,9 +187,11 @@ module Network.AWS.Inspector.Types
     , assetAttributes
     , aaHostname
     , aaAutoScalingGroup
+    , aaNetworkInterfaces
     , aaIpv4Addresses
     , aaAgentId
     , aaAmiId
+    , aaTags
     , aaSchemaVersion
 
     -- * Attribute
@@ -201,6 +211,25 @@ module Network.AWS.Inspector.Types
     , eventSubscription
     , esEvent
     , esSubscribedAt
+
+    -- * Exclusion
+    , Exclusion
+    , exclusion
+    , eAttributes
+    , eArn
+    , eTitle
+    , eDescription
+    , eRecommendation
+    , eScopes
+
+    -- * ExclusionPreview
+    , ExclusionPreview
+    , exclusionPreview
+    , epAttributes
+    , epTitle
+    , epDescription
+    , epRecommendation
+    , epScopes
 
     -- * FailedItemDetails
     , FailedItemDetails
@@ -249,6 +278,26 @@ module Network.AWS.Inspector.Types
     , isaAssessmentRunARN
     , isaSchemaVersion
 
+    -- * NetworkInterface
+    , NetworkInterface
+    , networkInterface
+    , niPrivateIPAddresses
+    , niPublicDNSName
+    , niSecurityGroups
+    , niVpcId
+    , niSubnetId
+    , niNetworkInterfaceId
+    , niPrivateIPAddress
+    , niPublicIP
+    , niPrivateDNSName
+    , niIpv6Addresses
+
+    -- * PrivateIP
+    , PrivateIP
+    , privateIP
+    , piPrivateIPAddress
+    , piPrivateDNSName
+
     -- * ResourceGroup
     , ResourceGroup
     , resourceGroup
@@ -270,6 +319,18 @@ module Network.AWS.Inspector.Types
     , rpName
     , rpVersion
     , rpProvider
+
+    -- * Scope
+    , Scope
+    , scope
+    , sValue
+    , sKey
+
+    -- * SecurityGroup
+    , SecurityGroup
+    , securityGroup
+    , sgGroupId
+    , sgGroupName
 
     -- * Subscription
     , Subscription
@@ -309,9 +370,11 @@ import Network.AWS.Inspector.Types.AssetType
 import Network.AWS.Inspector.Types.FailedItemErrorCode
 import Network.AWS.Inspector.Types.InspectorEvent
 import Network.AWS.Inspector.Types.Locale
+import Network.AWS.Inspector.Types.PreviewStatus
 import Network.AWS.Inspector.Types.ReportFileFormat
 import Network.AWS.Inspector.Types.ReportStatus
 import Network.AWS.Inspector.Types.ReportType
+import Network.AWS.Inspector.Types.ScopeType
 import Network.AWS.Inspector.Types.Severity
 import Network.AWS.Inspector.Types.StopAction
 import Network.AWS.Inspector.Types.AgentFilter
@@ -329,13 +392,19 @@ import Network.AWS.Inspector.Types.AssetAttributes
 import Network.AWS.Inspector.Types.Attribute
 import Network.AWS.Inspector.Types.DurationRange
 import Network.AWS.Inspector.Types.EventSubscription
+import Network.AWS.Inspector.Types.Exclusion
+import Network.AWS.Inspector.Types.ExclusionPreview
 import Network.AWS.Inspector.Types.FailedItemDetails
 import Network.AWS.Inspector.Types.Finding
 import Network.AWS.Inspector.Types.FindingFilter
 import Network.AWS.Inspector.Types.InspectorServiceAttributes
+import Network.AWS.Inspector.Types.NetworkInterface
+import Network.AWS.Inspector.Types.PrivateIP
 import Network.AWS.Inspector.Types.ResourceGroup
 import Network.AWS.Inspector.Types.ResourceGroupTag
 import Network.AWS.Inspector.Types.RulesPackage
+import Network.AWS.Inspector.Types.Scope
+import Network.AWS.Inspector.Types.SecurityGroup
 import Network.AWS.Inspector.Types.Subscription
 import Network.AWS.Inspector.Types.Tag
 import Network.AWS.Inspector.Types.TelemetryMetadata
@@ -363,6 +432,11 @@ inspector
             = Just "throttling_exception"
           | has (hasCode "Throttling" . hasStatus 400) e =
             Just "throttling"
+          | has
+              (hasCode "ProvisionedThroughputExceededException" .
+                 hasStatus 400)
+              e
+            = Just "throughput_exceeded"
           | has (hasStatus 504) e = Just "gateway_timeout"
           | has
               (hasCode "RequestThrottledException" . hasStatus 400)
@@ -397,6 +471,14 @@ _AccessDeniedException :: AsError a => Getting (First ServiceError) a ServiceErr
 _AccessDeniedException
   = _MatchServiceError inspector
       "AccessDeniedException"
+
+-- | The request is rejected. The specified assessment template is currently generating an exclusions preview.
+--
+--
+_PreviewGenerationInProgressException :: AsError a => Getting (First ServiceError) a ServiceError
+_PreviewGenerationInProgressException
+  = _MatchServiceError inspector
+      "PreviewGenerationInProgressException"
 
 -- | The request was rejected because an invalid or out-of-range value was supplied for an input parameter.
 --
@@ -436,6 +518,14 @@ _LimitExceededException :: AsError a => Getting (First ServiceError) a ServiceEr
 _LimitExceededException
   = _MatchServiceError inspector
       "LimitExceededException"
+
+-- | The serice is temporary unavailable.
+--
+--
+_ServiceTemporarilyUnavailableException :: AsError a => Getting (First ServiceError) a ServiceError
+_ServiceTemporarilyUnavailableException
+  = _MatchServiceError inspector
+      "ServiceTemporarilyUnavailableException"
 
 -- | Used by the 'GetAssessmentReport' API. The request was rejected because you tried to generate a report for an assessment run that existed before reporting was supported in Amazon Inspector. You can only generate reports for assessment runs that took place or will take place after generating reports in Amazon Inspector became available.
 --

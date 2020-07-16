@@ -17,6 +17,7 @@ module Network.AWS.RDS.Waiters where
 
 import Network.AWS.Lens
 import Network.AWS.Prelude
+import Network.AWS.RDS.DescribeDBClusterSnapshots
 import Network.AWS.RDS.DescribeDBInstances
 import Network.AWS.RDS.DescribeDBInstances
 import Network.AWS.RDS.DescribeDBSnapshots
@@ -149,4 +150,41 @@ dbSnapshotAvailable
             matchAny "incompatible-parameters" AcceptFailure
               (folding (concatOf (ddsrsDBSnapshots . to toList)) .
                  dsStatus . _Just
+                 . to toTextCI)]}
+
+-- | Polls 'Network.AWS.RDS.DescribeDBClusterSnapshots' every 30 seconds until a successful state is reached. An error is returned after 60 failed checks.
+dbClusterSnapshotAvailable :: Wait DescribeDBClusterSnapshots
+dbClusterSnapshotAvailable
+  = Wait{_waitName = "DBClusterSnapshotAvailable",
+         _waitAttempts = 60, _waitDelay = 30,
+         _waitAcceptors =
+           [matchAll "available" AcceptSuccess
+              (folding
+                 (concatOf (ddbcsrsDBClusterSnapshots . to toList))
+                 . dcsStatus . _Just
+                 . to toTextCI),
+            matchAny "deleted" AcceptFailure
+              (folding
+                 (concatOf (ddbcsrsDBClusterSnapshots . to toList))
+                 . dcsStatus . _Just
+                 . to toTextCI),
+            matchAny "deleting" AcceptFailure
+              (folding
+                 (concatOf (ddbcsrsDBClusterSnapshots . to toList))
+                 . dcsStatus . _Just
+                 . to toTextCI),
+            matchAny "failed" AcceptFailure
+              (folding
+                 (concatOf (ddbcsrsDBClusterSnapshots . to toList))
+                 . dcsStatus . _Just
+                 . to toTextCI),
+            matchAny "incompatible-restore" AcceptFailure
+              (folding
+                 (concatOf (ddbcsrsDBClusterSnapshots . to toList))
+                 . dcsStatus . _Just
+                 . to toTextCI),
+            matchAny "incompatible-parameters" AcceptFailure
+              (folding
+                 (concatOf (ddbcsrsDBClusterSnapshots . to toList))
+                 . dcsStatus . _Just
                  . to toTextCI)]}

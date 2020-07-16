@@ -17,6 +17,7 @@
 --
 module Network.AWS.IoT.Types.ThingDocument where
 
+import Network.AWS.IoT.Types.ThingConnectivity
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
@@ -30,6 +31,8 @@ data ThingDocument = ThingDocument'{_tdThingGroupNames
                                     _tdThingTypeName :: !(Maybe Text),
                                     _tdShadow :: !(Maybe Text),
                                     _tdAttributes :: !(Maybe (Map Text Text)),
+                                    _tdConnectivity ::
+                                    !(Maybe ThingConnectivity),
                                     _tdThingName :: !(Maybe Text),
                                     _tdThingId :: !(Maybe Text)}
                        deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -46,6 +49,8 @@ data ThingDocument = ThingDocument'{_tdThingGroupNames
 --
 -- * 'tdAttributes' - The attributes.
 --
+-- * 'tdConnectivity' - Indicates whether the thing is connected to the AWS IoT service.
+--
 -- * 'tdThingName' - The thing name.
 --
 -- * 'tdThingId' - The thing ID.
@@ -54,8 +59,8 @@ thingDocument
 thingDocument
   = ThingDocument'{_tdThingGroupNames = Nothing,
                    _tdThingTypeName = Nothing, _tdShadow = Nothing,
-                   _tdAttributes = Nothing, _tdThingName = Nothing,
-                   _tdThingId = Nothing}
+                   _tdAttributes = Nothing, _tdConnectivity = Nothing,
+                   _tdThingName = Nothing, _tdThingId = Nothing}
 
 -- | Thing group names.
 tdThingGroupNames :: Lens' ThingDocument [Text]
@@ -72,6 +77,10 @@ tdShadow = lens _tdShadow (\ s a -> s{_tdShadow = a})
 -- | The attributes.
 tdAttributes :: Lens' ThingDocument (HashMap Text Text)
 tdAttributes = lens _tdAttributes (\ s a -> s{_tdAttributes = a}) . _Default . _Map
+
+-- | Indicates whether the thing is connected to the AWS IoT service.
+tdConnectivity :: Lens' ThingDocument (Maybe ThingConnectivity)
+tdConnectivity = lens _tdConnectivity (\ s a -> s{_tdConnectivity = a})
 
 -- | The thing name.
 tdThingName :: Lens' ThingDocument (Maybe Text)
@@ -90,6 +99,7 @@ instance FromJSON ThingDocument where
                      (x .:? "thingTypeName")
                      <*> (x .:? "shadow")
                      <*> (x .:? "attributes" .!= mempty)
+                     <*> (x .:? "connectivity")
                      <*> (x .:? "thingName")
                      <*> (x .:? "thingId"))
 

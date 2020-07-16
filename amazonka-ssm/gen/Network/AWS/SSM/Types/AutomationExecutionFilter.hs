@@ -26,10 +26,10 @@ import Network.AWS.SSM.Types.AutomationExecutionFilterKey
 --
 --
 -- /See:/ 'automationExecutionFilter' smart constructor.
-data AutomationExecutionFilter = AutomationExecutionFilter'{_aefKey
+data AutomationExecutionFilter = AutomationExecutionFilter'{_autKey
                                                             ::
                                                             !AutomationExecutionFilterKey,
-                                                            _aefValues ::
+                                                            _autValues ::
                                                             !(List1 Text)}
                                    deriving (Eq, Read, Show, Data, Typeable,
                                              Generic)
@@ -38,24 +38,24 @@ data AutomationExecutionFilter = AutomationExecutionFilter'{_aefKey
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'aefKey' - One or more keys to limit the results. Valid filter keys include the following: DocumentNamePrefix, ExecutionStatus, ExecutionId, ParentExecutionId, CurrentAction, StartTimeBefore, StartTimeAfter.
+-- * 'autKey' - One or more keys to limit the results. Valid filter keys include the following: DocumentNamePrefix, ExecutionStatus, ExecutionId, ParentExecutionId, CurrentAction, StartTimeBefore, StartTimeAfter.
 --
--- * 'aefValues' - The values used to limit the execution information associated with the filter's key.
+-- * 'autValues' - The values used to limit the execution information associated with the filter's key.
 automationExecutionFilter
-    :: AutomationExecutionFilterKey -- ^ 'aefKey'
-    -> NonEmpty Text -- ^ 'aefValues'
+    :: AutomationExecutionFilterKey -- ^ 'autKey'
+    -> NonEmpty Text -- ^ 'autValues'
     -> AutomationExecutionFilter
 automationExecutionFilter pKey_ pValues_
-  = AutomationExecutionFilter'{_aefKey = pKey_,
-                               _aefValues = _List1 # pValues_}
+  = AutomationExecutionFilter'{_autKey = pKey_,
+                               _autValues = _List1 # pValues_}
 
 -- | One or more keys to limit the results. Valid filter keys include the following: DocumentNamePrefix, ExecutionStatus, ExecutionId, ParentExecutionId, CurrentAction, StartTimeBefore, StartTimeAfter.
-aefKey :: Lens' AutomationExecutionFilter AutomationExecutionFilterKey
-aefKey = lens _aefKey (\ s a -> s{_aefKey = a})
+autKey :: Lens' AutomationExecutionFilter AutomationExecutionFilterKey
+autKey = lens _autKey (\ s a -> s{_autKey = a})
 
 -- | The values used to limit the execution information associated with the filter's key.
-aefValues :: Lens' AutomationExecutionFilter (NonEmpty Text)
-aefValues = lens _aefValues (\ s a -> s{_aefValues = a}) . _List1
+autValues :: Lens' AutomationExecutionFilter (NonEmpty Text)
+autValues = lens _autValues (\ s a -> s{_autValues = a}) . _List1
 
 instance Hashable AutomationExecutionFilter where
 
@@ -65,5 +65,5 @@ instance ToJSON AutomationExecutionFilter where
         toJSON AutomationExecutionFilter'{..}
           = object
               (catMaybes
-                 [Just ("Key" .= _aefKey),
-                  Just ("Values" .= _aefValues)])
+                 [Just ("Key" .= _autKey),
+                  Just ("Values" .= _autValues)])

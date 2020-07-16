@@ -69,7 +69,7 @@ data RegisterCertificate = RegisterCertificate'{_rcStatus
 --
 -- * 'rcCaCertificatePem' - The CA certificate used to sign the device certificate being registered.
 --
--- * 'rcSetAsActive' - A boolean value that specifies if the CA certificate is set to active.
+-- * 'rcSetAsActive' - A boolean value that specifies if the certificate is set to active.
 --
 -- * 'rcCertificatePem' - The certificate data, in PEM format.
 registerCertificate
@@ -89,7 +89,7 @@ rcStatus = lens _rcStatus (\ s a -> s{_rcStatus = a})
 rcCaCertificatePem :: Lens' RegisterCertificate (Maybe Text)
 rcCaCertificatePem = lens _rcCaCertificatePem (\ s a -> s{_rcCaCertificatePem = a})
 
--- | A boolean value that specifies if the CA certificate is set to active.
+-- | A boolean value that specifies if the certificate is set to active.
 rcSetAsActive :: Lens' RegisterCertificate (Maybe Bool)
 rcSetAsActive = lens _rcSetAsActive (\ s a -> s{_rcSetAsActive = a})
 

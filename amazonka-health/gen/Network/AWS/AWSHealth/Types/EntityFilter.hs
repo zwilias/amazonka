@@ -51,7 +51,7 @@ data EntityFilter = EntityFilter'{_eStatusCodes ::
 --
 -- * 'eLastUpdatedTimes' - A list of the most recent dates and times that the entity was updated.
 --
--- * 'eEventARNs' - A list of event ARNs (unique identifiers). For example: @"arn:aws:health:us-east-1::event/AWS_EC2_MAINTENANCE_5331", "arn:aws:health:us-west-1::event/AWS_EBS_LOST_VOLUME_xyz"@ 
+-- * 'eEventARNs' - A list of event ARNs (unique identifiers). For example: @"arn:aws:health:us-east-1::event/EC2/EC2_INSTANCE_RETIREMENT_SCHEDULED/EC2_INSTANCE_RETIREMENT_SCHEDULED_ABC123-CDE456", "arn:aws:health:us-west-1::event/EBS/AWS_EBS_LOST_VOLUME/AWS_EBS_LOST_VOLUME_CHI789_JKL101"@ 
 entityFilter
     :: NonEmpty Text -- ^ 'eEventARNs'
     -> EntityFilter
@@ -81,7 +81,7 @@ eTags = lens _eTags (\ s a -> s{_eTags = a}) . _Default . _Coerce
 eLastUpdatedTimes :: Lens' EntityFilter (Maybe (NonEmpty DateTimeRange))
 eLastUpdatedTimes = lens _eLastUpdatedTimes (\ s a -> s{_eLastUpdatedTimes = a}) . mapping _List1
 
--- | A list of event ARNs (unique identifiers). For example: @"arn:aws:health:us-east-1::event/AWS_EC2_MAINTENANCE_5331", "arn:aws:health:us-west-1::event/AWS_EBS_LOST_VOLUME_xyz"@ 
+-- | A list of event ARNs (unique identifiers). For example: @"arn:aws:health:us-east-1::event/EC2/EC2_INSTANCE_RETIREMENT_SCHEDULED/EC2_INSTANCE_RETIREMENT_SCHEDULED_ABC123-CDE456", "arn:aws:health:us-west-1::event/EBS/AWS_EBS_LOST_VOLUME/AWS_EBS_LOST_VOLUME_CHI789_JKL101"@ 
 eEventARNs :: Lens' EntityFilter (NonEmpty Text)
 eEventARNs = lens _eEventARNs (\ s a -> s{_eEventARNs = a}) . _List1
 

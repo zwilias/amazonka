@@ -26,7 +26,7 @@ import Network.AWS.MediaLive.Types.AudioType
 import Network.AWS.MediaLive.Types.RemixSettings
 import Network.AWS.Prelude
 
--- | Placeholder documentation for AudioDescription
+-- | Audio Description
 --
 -- /See:/ 'audioDescription' smart constructor.
 data AudioDescription = AudioDescription'{_adLanguageCode

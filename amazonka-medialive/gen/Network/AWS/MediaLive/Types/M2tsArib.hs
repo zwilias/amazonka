@@ -27,7 +27,7 @@ module Network.AWS.MediaLive.Types.M2tsArib (
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | Placeholder documentation for M2tsArib
+-- | M2ts Arib
 data M2tsArib = M2tsArib' (CI Text)
                   deriving (Eq, Ord, Read, Show, Data, Typeable,
                             Generic)

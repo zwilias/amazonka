@@ -20,7 +20,7 @@ module Network.AWS.MediaLive.Types.AribDestinationSettings where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | Placeholder documentation for AribDestinationSettings
+-- | Arib Destination Settings
 --
 -- /See:/ 'aribDestinationSettings' smart constructor.
 data AribDestinationSettings = AribDestinationSettings'

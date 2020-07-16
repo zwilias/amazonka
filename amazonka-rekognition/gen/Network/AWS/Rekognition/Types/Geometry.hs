@@ -22,7 +22,7 @@ import Network.AWS.Prelude
 import Network.AWS.Rekognition.Types.BoundingBox
 import Network.AWS.Rekognition.Types.Point
 
--- | Information about where text detected by is located on an image.
+-- | Information about where an object ('DetectCustomLabels' ) or text ('DetectText' ) is located on an image.
 --
 --
 --
@@ -36,20 +36,20 @@ data Geometry = Geometry'{_gBoundingBox ::
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'gBoundingBox' - An axis-aligned coarse representation of the detected text's location on the image.
+-- * 'gBoundingBox' - An axis-aligned coarse representation of the detected item's location on the image.
 --
--- * 'gPolygon' - Within the bounding box, a fine-grained polygon around the detected text.
+-- * 'gPolygon' - Within the bounding box, a fine-grained polygon around the detected item.
 geometry
     :: Geometry
 geometry
   = Geometry'{_gBoundingBox = Nothing,
               _gPolygon = Nothing}
 
--- | An axis-aligned coarse representation of the detected text's location on the image.
+-- | An axis-aligned coarse representation of the detected item's location on the image.
 gBoundingBox :: Lens' Geometry (Maybe BoundingBox)
 gBoundingBox = lens _gBoundingBox (\ s a -> s{_gBoundingBox = a})
 
--- | Within the bounding box, a fine-grained polygon around the detected text.
+-- | Within the bounding box, a fine-grained polygon around the detected item.
 gPolygon :: Lens' Geometry [Point]
 gPolygon = lens _gPolygon (\ s a -> s{_gPolygon = a}) . _Default . _Coerce
 

@@ -26,7 +26,6 @@ module Network.AWS.SMS.Types.ServerType (
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | Type of server.
 data ServerType = ServerType' (CI Text)
                     deriving (Eq, Ord, Read, Show, Data, Typeable,
                               Generic)
@@ -68,6 +67,9 @@ instance NFData       ServerType
 instance ToByteString ServerType
 instance ToQuery      ServerType
 instance ToHeader     ServerType
+
+instance ToJSON ServerType where
+    toJSON = toJSONText
 
 instance FromJSON ServerType where
     parseJSON = parseJSONText "ServerType"

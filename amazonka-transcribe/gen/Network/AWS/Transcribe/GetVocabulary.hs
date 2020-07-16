@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Gets information about a vocabulary.
+-- Gets information about a vocabulary. 
 --
 --
 module Network.AWS.Transcribe.GetVocabulary

@@ -21,7 +21,7 @@ import Network.AWS.CloudWatchEvents.Types.RunCommandTarget
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | This parameter contains the criteria (either @InstanceIds@ or a tag) used to specify which EC2 instances are to be sent the command. 
+-- | This parameter contains the criteria (either InstanceIds or a tag) used to specify which EC2 instances are to be sent the command. 
 --
 --
 --
@@ -35,7 +35,7 @@ newtype RunCommandParameters = RunCommandParameters'{_rcpRunCommandTargets
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'rcpRunCommandTargets' - Currently, we support including only one @RunCommandTarget@ block, which specifies either an array of @InstanceIds@ or a tag.
+-- * 'rcpRunCommandTargets' - Currently, we support including only one RunCommandTarget block, which specifies either an array of InstanceIds or a tag.
 runCommandParameters
     :: NonEmpty RunCommandTarget -- ^ 'rcpRunCommandTargets'
     -> RunCommandParameters
@@ -43,7 +43,7 @@ runCommandParameters pRunCommandTargets_
   = RunCommandParameters'{_rcpRunCommandTargets =
                             _List1 # pRunCommandTargets_}
 
--- | Currently, we support including only one @RunCommandTarget@ block, which specifies either an array of @InstanceIds@ or a tag.
+-- | Currently, we support including only one RunCommandTarget block, which specifies either an array of InstanceIds or a tag.
 rcpRunCommandTargets :: Lens' RunCommandParameters (NonEmpty RunCommandTarget)
 rcpRunCommandTargets = lens _rcpRunCommandTargets (\ s a -> s{_rcpRunCommandTargets = a}) . _List1
 

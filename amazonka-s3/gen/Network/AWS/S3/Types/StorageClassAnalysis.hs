@@ -22,7 +22,11 @@ import Network.AWS.Prelude
 import Network.AWS.S3.Internal
 import Network.AWS.S3.Types.StorageClassAnalysisDataExport
 
--- | /See:/ 'storageClassAnalysis' smart constructor.
+-- | Specifies data related to access patterns to be collected and made available to analyze the tradeoffs between different storage classes for an Amazon S3 bucket.
+--
+--
+--
+-- /See:/ 'storageClassAnalysis' smart constructor.
 newtype StorageClassAnalysis = StorageClassAnalysis'{_scaDataExport
                                                      ::
                                                      Maybe
@@ -34,13 +38,13 @@ newtype StorageClassAnalysis = StorageClassAnalysis'{_scaDataExport
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'scaDataExport' - A container used to describe how data related to the storage class analysis should be exported.
+-- * 'scaDataExport' - Specifies how data related to the storage class analysis for an Amazon S3 bucket should be exported.
 storageClassAnalysis
     :: StorageClassAnalysis
 storageClassAnalysis
   = StorageClassAnalysis'{_scaDataExport = Nothing}
 
--- | A container used to describe how data related to the storage class analysis should be exported.
+-- | Specifies how data related to the storage class analysis for an Amazon S3 bucket should be exported.
 scaDataExport :: Lens' StorageClassAnalysis (Maybe StorageClassAnalysisDataExport)
 scaDataExport = lens _scaDataExport (\ s a -> s{_scaDataExport = a})
 

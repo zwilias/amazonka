@@ -20,7 +20,10 @@ module Network.AWS.ECS.Types.ContainerInstanceStatus (
   ContainerInstanceStatus (
     ..
     , Active
+    , Deregistering
     , Draining
+    , Registering
+    , RegistrationFailed
     )
   ) where
 
@@ -35,12 +38,24 @@ data ContainerInstanceStatus = ContainerInstanceStatus' (CI
 pattern Active :: ContainerInstanceStatus
 pattern Active = ContainerInstanceStatus' "ACTIVE"
 
+pattern Deregistering :: ContainerInstanceStatus
+pattern Deregistering = ContainerInstanceStatus' "DEREGISTERING"
+
 pattern Draining :: ContainerInstanceStatus
 pattern Draining = ContainerInstanceStatus' "DRAINING"
 
+pattern Registering :: ContainerInstanceStatus
+pattern Registering = ContainerInstanceStatus' "REGISTERING"
+
+pattern RegistrationFailed :: ContainerInstanceStatus
+pattern RegistrationFailed = ContainerInstanceStatus' "REGISTRATION_FAILED"
+
 {-# COMPLETE
   Active,
+  Deregistering,
   Draining,
+  Registering,
+  RegistrationFailed,
   ContainerInstanceStatus' #-}
 
 instance FromText ContainerInstanceStatus where
@@ -56,11 +71,17 @@ instance ToText ContainerInstanceStatus where
 instance Enum ContainerInstanceStatus where
     toEnum i = case i of
         0 -> Active
-        1 -> Draining
+        1 -> Deregistering
+        2 -> Draining
+        3 -> Registering
+        4 -> RegistrationFailed
         _ -> (error . showText) $ "Unknown index for ContainerInstanceStatus: " <> toText i
     fromEnum x = case x of
         Active -> 0
-        Draining -> 1
+        Deregistering -> 1
+        Draining -> 2
+        Registering -> 3
+        RegistrationFailed -> 4
         ContainerInstanceStatus' name -> (error . showText) $ "Unknown ContainerInstanceStatus: " <> original name
 
 -- | Represents the bounds of /known/ $ContainerInstanceStatus.
@@ -68,7 +89,7 @@ instance Enum ContainerInstanceStatus where
 --   This instance exists only for backward compatibility.
 instance Bounded ContainerInstanceStatus where
     minBound = Active
-    maxBound = Draining
+    maxBound = RegistrationFailed
 
 instance Hashable     ContainerInstanceStatus
 instance NFData       ContainerInstanceStatus

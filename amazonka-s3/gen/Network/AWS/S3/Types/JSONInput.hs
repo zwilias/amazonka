@@ -22,7 +22,11 @@ import Network.AWS.Prelude
 import Network.AWS.S3.Internal
 import Network.AWS.S3.Types.JSONType
 
--- | /See:/ 'jsonInput' smart constructor.
+-- | Specifies JSON as object's input serialization format.
+--
+--
+--
+-- /See:/ 'jsonInput' smart constructor.
 newtype JSONInput = JSONInput'{_jiType ::
                                Maybe JSONType}
                       deriving (Eq, Read, Show, Data, Typeable, Generic)

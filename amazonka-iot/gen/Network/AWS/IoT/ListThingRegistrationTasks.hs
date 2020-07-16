@@ -21,6 +21,8 @@
 -- List bulk thing provisioning tasks.
 --
 --
+--
+-- This operation returns paginated results.
 module Network.AWS.IoT.ListThingRegistrationTasks
     (
     -- * Creating a Request
@@ -43,6 +45,7 @@ module Network.AWS.IoT.ListThingRegistrationTasks
 import Network.AWS.IoT.Types
 import Network.AWS.IoT.Types.Product
 import Network.AWS.Lens
+import Network.AWS.Pager
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
@@ -65,7 +68,7 @@ data ListThingRegistrationTasks = ListThingRegistrationTasks'{_ltrtStatus
 --
 -- * 'ltrtStatus' - The status of the bulk thing provisioning task.
 --
--- * 'ltrtNextToken' - The token used to get the next set of results, or __null__ if there are no additional results.
+-- * 'ltrtNextToken' - The token to retrieve the next set of results.
 --
 -- * 'ltrtMaxResults' - The maximum number of results to return at one time.
 listThingRegistrationTasks
@@ -79,13 +82,20 @@ listThingRegistrationTasks
 ltrtStatus :: Lens' ListThingRegistrationTasks (Maybe TaskStatus)
 ltrtStatus = lens _ltrtStatus (\ s a -> s{_ltrtStatus = a})
 
--- | The token used to get the next set of results, or __null__ if there are no additional results.
+-- | The token to retrieve the next set of results.
 ltrtNextToken :: Lens' ListThingRegistrationTasks (Maybe Text)
 ltrtNextToken = lens _ltrtNextToken (\ s a -> s{_ltrtNextToken = a})
 
 -- | The maximum number of results to return at one time.
 ltrtMaxResults :: Lens' ListThingRegistrationTasks (Maybe Natural)
 ltrtMaxResults = lens _ltrtMaxResults (\ s a -> s{_ltrtMaxResults = a}) . mapping _Nat
+
+instance AWSPager ListThingRegistrationTasks where
+        page rq rs
+          | stop (rs ^. ltrtrsNextToken) = Nothing
+          | stop (rs ^. ltrtrsTaskIds) = Nothing
+          | otherwise =
+            Just $ rq & ltrtNextToken .~ rs ^. ltrtrsNextToken
 
 instance AWSRequest ListThingRegistrationTasks where
         type Rs ListThingRegistrationTasks =

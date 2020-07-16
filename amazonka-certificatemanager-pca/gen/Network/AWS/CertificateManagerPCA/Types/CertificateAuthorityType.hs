@@ -19,6 +19,7 @@
 module Network.AWS.CertificateManagerPCA.Types.CertificateAuthorityType (
   CertificateAuthorityType (
     ..
+    , Root
     , Subordinate
     )
   ) where
@@ -31,10 +32,14 @@ data CertificateAuthorityType = CertificateAuthorityType' (CI
                                   deriving (Eq, Ord, Read, Show, Data, Typeable,
                                             Generic)
 
+pattern Root :: CertificateAuthorityType
+pattern Root = CertificateAuthorityType' "ROOT"
+
 pattern Subordinate :: CertificateAuthorityType
 pattern Subordinate = CertificateAuthorityType' "SUBORDINATE"
 
 {-# COMPLETE
+  Root,
   Subordinate,
   CertificateAuthorityType' #-}
 
@@ -50,17 +55,19 @@ instance ToText CertificateAuthorityType where
 --   fromEnum is a partial function, and will error on values unknown at generation time.
 instance Enum CertificateAuthorityType where
     toEnum i = case i of
-        0 -> Subordinate
+        0 -> Root
+        1 -> Subordinate
         _ -> (error . showText) $ "Unknown index for CertificateAuthorityType: " <> toText i
     fromEnum x = case x of
-        Subordinate -> 0
+        Root -> 0
+        Subordinate -> 1
         CertificateAuthorityType' name -> (error . showText) $ "Unknown CertificateAuthorityType: " <> original name
 
 -- | Represents the bounds of /known/ $CertificateAuthorityType.
 --   AWS may have added more since the source was generated.
 --   This instance exists only for backward compatibility.
 instance Bounded CertificateAuthorityType where
-    minBound = Subordinate
+    minBound = Root
     maxBound = Subordinate
 
 instance Hashable     CertificateAuthorityType

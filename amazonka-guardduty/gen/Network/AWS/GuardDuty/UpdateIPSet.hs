@@ -19,6 +19,8 @@
 -- Portability : non-portable (GHC extensions)
 --
 -- Updates the IPSet specified by the IPSet ID.
+--
+--
 module Network.AWS.GuardDuty.UpdateIPSet
     (
     -- * Creating a Request
@@ -45,9 +47,7 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
--- | UpdateIPSet request body.
---
--- /See:/ 'updateIPSet' smart constructor.
+-- | /See:/ 'updateIPSet' smart constructor.
 data UpdateIPSet = UpdateIPSet'{_uisLocation ::
                                 !(Maybe Text),
                                 _uisActivate :: !(Maybe Bool),
@@ -59,9 +59,9 @@ data UpdateIPSet = UpdateIPSet'{_uisLocation ::
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'uisLocation' - The updated URI of the file that contains the IPSet. For example (https://s3.us-west-2.amazonaws.com/my-bucket/my-object-key).
+-- * 'uisLocation' - The updated URI of the file that contains the IPSet. For example: https://s3.us-west-2.amazonaws.com/my-bucket/my-object-key.
 --
--- * 'uisActivate' - The updated boolean value that specifies whether the IPSet is active or not.
+-- * 'uisActivate' - The updated Boolean value that specifies whether the IPSet is active or not.
 --
 -- * 'uisName' - The unique ID that specifies the IPSet that you want to update.
 --
@@ -78,11 +78,11 @@ updateIPSet pDetectorId_ pIPSetId_
                  _uisDetectorId = pDetectorId_,
                  _uisIPSetId = pIPSetId_}
 
--- | The updated URI of the file that contains the IPSet. For example (https://s3.us-west-2.amazonaws.com/my-bucket/my-object-key).
+-- | The updated URI of the file that contains the IPSet. For example: https://s3.us-west-2.amazonaws.com/my-bucket/my-object-key.
 uisLocation :: Lens' UpdateIPSet (Maybe Text)
 uisLocation = lens _uisLocation (\ s a -> s{_uisLocation = a})
 
--- | The updated boolean value that specifies whether the IPSet is active or not.
+-- | The updated Boolean value that specifies whether the IPSet is active or not.
 uisActivate :: Lens' UpdateIPSet (Maybe Bool)
 uisActivate = lens _uisActivate (\ s a -> s{_uisActivate = a})
 

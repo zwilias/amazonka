@@ -21,7 +21,11 @@ import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.S3.Internal
 
--- | /See:/ 'completedPart' smart constructor.
+-- | Details of the parts that were uploaded.
+--
+--
+--
+-- /See:/ 'completedPart' smart constructor.
 data CompletedPart = CompletedPart'{_cpPartNumber ::
                                     !Int,
                                     _cpETag :: !ETag}

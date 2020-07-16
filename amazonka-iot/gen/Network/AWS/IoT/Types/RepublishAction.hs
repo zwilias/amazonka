@@ -25,14 +25,16 @@ import Network.AWS.Prelude
 --
 --
 -- /See:/ 'republishAction' smart constructor.
-data RepublishAction = RepublishAction'{_raRoleARN ::
-                                        !Text,
-                                        _raTopic :: !Text}
+data RepublishAction = RepublishAction'{_raQos ::
+                                        !(Maybe Nat),
+                                        _raRoleARN :: !Text, _raTopic :: !Text}
                          deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'RepublishAction' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'raQos' - The Quality of Service (QoS) level to use when republishing messages. The default value is 0.
 --
 -- * 'raRoleARN' - The ARN of the IAM role that grants access.
 --
@@ -42,8 +44,12 @@ republishAction
     -> Text -- ^ 'raTopic'
     -> RepublishAction
 republishAction pRoleARN_ pTopic_
-  = RepublishAction'{_raRoleARN = pRoleARN_,
-                     _raTopic = pTopic_}
+  = RepublishAction'{_raQos = Nothing,
+                     _raRoleARN = pRoleARN_, _raTopic = pTopic_}
+
+-- | The Quality of Service (QoS) level to use when republishing messages. The default value is 0.
+raQos :: Lens' RepublishAction (Maybe Natural)
+raQos = lens _raQos (\ s a -> s{_raQos = a}) . mapping _Nat
 
 -- | The ARN of the IAM role that grants access.
 raRoleARN :: Lens' RepublishAction Text
@@ -58,7 +64,8 @@ instance FromJSON RepublishAction where
           = withObject "RepublishAction"
               (\ x ->
                  RepublishAction' <$>
-                   (x .: "roleArn") <*> (x .: "topic"))
+                   (x .:? "qos") <*> (x .: "roleArn") <*>
+                     (x .: "topic"))
 
 instance Hashable RepublishAction where
 
@@ -68,5 +75,6 @@ instance ToJSON RepublishAction where
         toJSON RepublishAction'{..}
           = object
               (catMaybes
-                 [Just ("roleArn" .= _raRoleARN),
+                 [("qos" .=) <$> _raQos,
+                  Just ("roleArn" .= _raRoleARN),
                   Just ("topic" .= _raTopic)])

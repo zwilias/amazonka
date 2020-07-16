@@ -18,6 +18,7 @@
 module Network.AWS.Polly.Types.Voice where
 
 import Network.AWS.Lens
+import Network.AWS.Polly.Types.Engine
 import Network.AWS.Polly.Types.Gender
 import Network.AWS.Polly.Types.LanguageCode
 import Network.AWS.Polly.Types.VoiceId
@@ -32,7 +33,9 @@ data Voice = Voice'{_vLanguageCode ::
                     !(Maybe LanguageCode),
                     _vLanguageName :: !(Maybe Text),
                     _vGender :: !(Maybe Gender), _vName :: !(Maybe Text),
-                    _vId :: !(Maybe VoiceId)}
+                    _vId :: !(Maybe VoiceId),
+                    _vAdditionalLanguageCodes :: !(Maybe [LanguageCode]),
+                    _vSupportedEngines :: !(Maybe [Engine])}
                deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'Voice' with the minimum fields required to make a request.
@@ -48,12 +51,18 @@ data Voice = Voice'{_vLanguageCode ::
 -- * 'vName' - Name of the voice (for example, Salli, Kendra, etc.). This provides a human readable voice name that you might display in your application.
 --
 -- * 'vId' - Amazon Polly assigned voice ID. This is the ID that you specify when calling the @SynthesizeSpeech@ operation.
+--
+-- * 'vAdditionalLanguageCodes' - Additional codes for languages available for the specified voice in addition to its default language.  For example, the default language for Aditi is Indian English (en-IN) because it was first used for that language. Since Aditi is bilingual and fluent in both Indian English and Hindi, this parameter would show the code @hi-IN@ .
+--
+-- * 'vSupportedEngines' - Specifies which engines (@standard@ or @neural@ ) that are supported by a given voice.
 voice
     :: Voice
 voice
   = Voice'{_vLanguageCode = Nothing,
            _vLanguageName = Nothing, _vGender = Nothing,
-           _vName = Nothing, _vId = Nothing}
+           _vName = Nothing, _vId = Nothing,
+           _vAdditionalLanguageCodes = Nothing,
+           _vSupportedEngines = Nothing}
 
 -- | Language code of the voice.
 vLanguageCode :: Lens' Voice (Maybe LanguageCode)
@@ -75,6 +84,14 @@ vName = lens _vName (\ s a -> s{_vName = a})
 vId :: Lens' Voice (Maybe VoiceId)
 vId = lens _vId (\ s a -> s{_vId = a})
 
+-- | Additional codes for languages available for the specified voice in addition to its default language.  For example, the default language for Aditi is Indian English (en-IN) because it was first used for that language. Since Aditi is bilingual and fluent in both Indian English and Hindi, this parameter would show the code @hi-IN@ .
+vAdditionalLanguageCodes :: Lens' Voice [LanguageCode]
+vAdditionalLanguageCodes = lens _vAdditionalLanguageCodes (\ s a -> s{_vAdditionalLanguageCodes = a}) . _Default . _Coerce
+
+-- | Specifies which engines (@standard@ or @neural@ ) that are supported by a given voice.
+vSupportedEngines :: Lens' Voice [Engine]
+vSupportedEngines = lens _vSupportedEngines (\ s a -> s{_vSupportedEngines = a}) . _Default . _Coerce
+
 instance FromJSON Voice where
         parseJSON
           = withObject "Voice"
@@ -83,7 +100,9 @@ instance FromJSON Voice where
                    (x .:? "LanguageCode") <*> (x .:? "LanguageName") <*>
                      (x .:? "Gender")
                      <*> (x .:? "Name")
-                     <*> (x .:? "Id"))
+                     <*> (x .:? "Id")
+                     <*> (x .:? "AdditionalLanguageCodes" .!= mempty)
+                     <*> (x .:? "SupportedEngines" .!= mempty))
 
 instance Hashable Voice where
 

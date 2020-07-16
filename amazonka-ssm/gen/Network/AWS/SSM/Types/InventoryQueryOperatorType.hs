@@ -19,11 +19,12 @@
 module Network.AWS.SSM.Types.InventoryQueryOperatorType (
   InventoryQueryOperatorType (
     ..
-    , BeginWith
-    , Equal
-    , GreaterThan
-    , LessThan
-    , NotEqual
+    , IQOTBeginWith
+    , IQOTEqual
+    , IQOTExists
+    , IQOTGreaterThan
+    , IQOTLessThan
+    , IQOTNotEqual
     )
   ) where
 
@@ -35,27 +36,31 @@ data InventoryQueryOperatorType = InventoryQueryOperatorType' (CI
                                     deriving (Eq, Ord, Read, Show, Data,
                                               Typeable, Generic)
 
-pattern BeginWith :: InventoryQueryOperatorType
-pattern BeginWith = InventoryQueryOperatorType' "BeginWith"
+pattern IQOTBeginWith :: InventoryQueryOperatorType
+pattern IQOTBeginWith = InventoryQueryOperatorType' "BeginWith"
 
-pattern Equal :: InventoryQueryOperatorType
-pattern Equal = InventoryQueryOperatorType' "Equal"
+pattern IQOTEqual :: InventoryQueryOperatorType
+pattern IQOTEqual = InventoryQueryOperatorType' "Equal"
 
-pattern GreaterThan :: InventoryQueryOperatorType
-pattern GreaterThan = InventoryQueryOperatorType' "GreaterThan"
+pattern IQOTExists :: InventoryQueryOperatorType
+pattern IQOTExists = InventoryQueryOperatorType' "Exists"
 
-pattern LessThan :: InventoryQueryOperatorType
-pattern LessThan = InventoryQueryOperatorType' "LessThan"
+pattern IQOTGreaterThan :: InventoryQueryOperatorType
+pattern IQOTGreaterThan = InventoryQueryOperatorType' "GreaterThan"
 
-pattern NotEqual :: InventoryQueryOperatorType
-pattern NotEqual = InventoryQueryOperatorType' "NotEqual"
+pattern IQOTLessThan :: InventoryQueryOperatorType
+pattern IQOTLessThan = InventoryQueryOperatorType' "LessThan"
+
+pattern IQOTNotEqual :: InventoryQueryOperatorType
+pattern IQOTNotEqual = InventoryQueryOperatorType' "NotEqual"
 
 {-# COMPLETE
-  BeginWith,
-  Equal,
-  GreaterThan,
-  LessThan,
-  NotEqual,
+  IQOTBeginWith,
+  IQOTEqual,
+  IQOTExists,
+  IQOTGreaterThan,
+  IQOTLessThan,
+  IQOTNotEqual,
   InventoryQueryOperatorType' #-}
 
 instance FromText InventoryQueryOperatorType where
@@ -70,26 +75,28 @@ instance ToText InventoryQueryOperatorType where
 --   fromEnum is a partial function, and will error on values unknown at generation time.
 instance Enum InventoryQueryOperatorType where
     toEnum i = case i of
-        0 -> BeginWith
-        1 -> Equal
-        2 -> GreaterThan
-        3 -> LessThan
-        4 -> NotEqual
+        0 -> IQOTBeginWith
+        1 -> IQOTEqual
+        2 -> IQOTExists
+        3 -> IQOTGreaterThan
+        4 -> IQOTLessThan
+        5 -> IQOTNotEqual
         _ -> (error . showText) $ "Unknown index for InventoryQueryOperatorType: " <> toText i
     fromEnum x = case x of
-        BeginWith -> 0
-        Equal -> 1
-        GreaterThan -> 2
-        LessThan -> 3
-        NotEqual -> 4
+        IQOTBeginWith -> 0
+        IQOTEqual -> 1
+        IQOTExists -> 2
+        IQOTGreaterThan -> 3
+        IQOTLessThan -> 4
+        IQOTNotEqual -> 5
         InventoryQueryOperatorType' name -> (error . showText) $ "Unknown InventoryQueryOperatorType: " <> original name
 
 -- | Represents the bounds of /known/ $InventoryQueryOperatorType.
 --   AWS may have added more since the source was generated.
 --   This instance exists only for backward compatibility.
 instance Bounded InventoryQueryOperatorType where
-    minBound = BeginWith
-    maxBound = NotEqual
+    minBound = IQOTBeginWith
+    maxBound = IQOTNotEqual
 
 instance Hashable     InventoryQueryOperatorType
 instance NFData       InventoryQueryOperatorType

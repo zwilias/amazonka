@@ -38,6 +38,7 @@ module Network.AWS.Greengrass.GetLoggerDefinition
     , gldrsId
     , gldrsLatestVersion
     , gldrsLastUpdatedTimestamp
+    , gldrsTags
     , gldrsResponseStatus
     ) where
 
@@ -84,6 +85,7 @@ instance AWSRequest GetLoggerDefinition where
                      <*> (x .?> "Id")
                      <*> (x .?> "LatestVersion")
                      <*> (x .?> "LastUpdatedTimestamp")
+                     <*> (x .?> "tags" .!@ mempty)
                      <*> (pure (fromEnum s)))
 
 instance Hashable GetLoggerDefinition where
@@ -125,6 +127,10 @@ data GetLoggerDefinitionResponse = GetLoggerDefinitionResponse'{_gldrsLatestVers
                                                                 _gldrsLastUpdatedTimestamp
                                                                 ::
                                                                 !(Maybe Text),
+                                                                _gldrsTags ::
+                                                                !(Maybe
+                                                                    (Map Text
+                                                                       Text)),
                                                                 _gldrsResponseStatus
                                                                 :: !Int}
                                      deriving (Eq, Read, Show, Data, Typeable,
@@ -134,7 +140,7 @@ data GetLoggerDefinitionResponse = GetLoggerDefinitionResponse'{_gldrsLatestVers
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'gldrsLatestVersionARN' - The ARN of the latest version of the definition.
+-- * 'gldrsLatestVersionARN' - The ARN of the latest version associated with the definition.
 --
 -- * 'gldrsARN' - The ARN of the definition.
 --
@@ -144,9 +150,11 @@ data GetLoggerDefinitionResponse = GetLoggerDefinitionResponse'{_gldrsLatestVers
 --
 -- * 'gldrsId' - The ID of the definition.
 --
--- * 'gldrsLatestVersion' - The latest version of the definition.
+-- * 'gldrsLatestVersion' - The ID of the latest version associated with the definition.
 --
 -- * 'gldrsLastUpdatedTimestamp' - The time, in milliseconds since the epoch, when the definition was last updated.
+--
+-- * 'gldrsTags' - Tag(s) attached to the resource arn.
 --
 -- * 'gldrsResponseStatus' - -- | The response status code.
 getLoggerDefinitionResponse
@@ -160,9 +168,10 @@ getLoggerDefinitionResponse pResponseStatus_
                                  _gldrsId = Nothing,
                                  _gldrsLatestVersion = Nothing,
                                  _gldrsLastUpdatedTimestamp = Nothing,
+                                 _gldrsTags = Nothing,
                                  _gldrsResponseStatus = pResponseStatus_}
 
--- | The ARN of the latest version of the definition.
+-- | The ARN of the latest version associated with the definition.
 gldrsLatestVersionARN :: Lens' GetLoggerDefinitionResponse (Maybe Text)
 gldrsLatestVersionARN = lens _gldrsLatestVersionARN (\ s a -> s{_gldrsLatestVersionARN = a})
 
@@ -182,13 +191,17 @@ gldrsCreationTimestamp = lens _gldrsCreationTimestamp (\ s a -> s{_gldrsCreation
 gldrsId :: Lens' GetLoggerDefinitionResponse (Maybe Text)
 gldrsId = lens _gldrsId (\ s a -> s{_gldrsId = a})
 
--- | The latest version of the definition.
+-- | The ID of the latest version associated with the definition.
 gldrsLatestVersion :: Lens' GetLoggerDefinitionResponse (Maybe Text)
 gldrsLatestVersion = lens _gldrsLatestVersion (\ s a -> s{_gldrsLatestVersion = a})
 
 -- | The time, in milliseconds since the epoch, when the definition was last updated.
 gldrsLastUpdatedTimestamp :: Lens' GetLoggerDefinitionResponse (Maybe Text)
 gldrsLastUpdatedTimestamp = lens _gldrsLastUpdatedTimestamp (\ s a -> s{_gldrsLastUpdatedTimestamp = a})
+
+-- | Tag(s) attached to the resource arn.
+gldrsTags :: Lens' GetLoggerDefinitionResponse (HashMap Text Text)
+gldrsTags = lens _gldrsTags (\ s a -> s{_gldrsTags = a}) . _Default . _Map
 
 -- | -- | The response status code.
 gldrsResponseStatus :: Lens' GetLoggerDefinitionResponse Int

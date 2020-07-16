@@ -18,10 +18,14 @@
 --
 module Network.AWS.STS.Types.Product (
     module Network.AWS.STS.Types.AssumedRoleUser,
-    module Network.AWS.STS.Types.FederatedUser
+    module Network.AWS.STS.Types.FederatedUser,
+    module Network.AWS.STS.Types.PolicyDescriptorType,
+    module Network.AWS.STS.Types.Tag
   ) where
 
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.STS.Types.AssumedRoleUser
 import Network.AWS.STS.Types.FederatedUser
+import Network.AWS.STS.Types.PolicyDescriptorType
+import Network.AWS.STS.Types.Tag

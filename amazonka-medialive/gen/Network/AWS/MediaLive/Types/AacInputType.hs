@@ -27,7 +27,7 @@ module Network.AWS.MediaLive.Types.AacInputType (
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | Placeholder documentation for AacInputType
+-- | Aac Input Type
 data AacInputType = AacInputType' (CI Text)
                       deriving (Eq, Ord, Read, Show, Data, Typeable,
                                 Generic)

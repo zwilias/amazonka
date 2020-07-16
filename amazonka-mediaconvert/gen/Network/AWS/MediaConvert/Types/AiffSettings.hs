@@ -24,9 +24,9 @@ import Network.AWS.Prelude
 --
 -- /See:/ 'aiffSettings' smart constructor.
 data AiffSettings = AiffSettings'{_asBitDepth ::
-                                  !(Maybe Int),
-                                  _asChannels :: !(Maybe Int),
-                                  _asSampleRate :: !(Maybe Int)}
+                                  !(Maybe Nat),
+                                  _asChannels :: !(Maybe Nat),
+                                  _asSampleRate :: !(Maybe Nat)}
                       deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'AiffSettings' with the minimum fields required to make a request.
@@ -35,7 +35,7 @@ data AiffSettings = AiffSettings'{_asBitDepth ::
 --
 -- * 'asBitDepth' - Specify Bit depth (BitDepth), in bits per sample, to choose the encoding quality for this audio track.
 --
--- * 'asChannels' - Set Channels to specify the number of channels in this output audio track. Choosing Mono in the console will give you 1 output channel; choosing Stereo will give you 2. In the API, valid values are 1 and 2.
+-- * 'asChannels' - Specify the number of channels in this output audio track. Valid values are 1 and even numbers up to 64. For example, 1, 2, 4, 6, and so on, up to 64.
 --
 -- * 'asSampleRate' - Sample rate in hz.
 aiffSettings
@@ -45,16 +45,16 @@ aiffSettings
                   _asChannels = Nothing, _asSampleRate = Nothing}
 
 -- | Specify Bit depth (BitDepth), in bits per sample, to choose the encoding quality for this audio track.
-asBitDepth :: Lens' AiffSettings (Maybe Int)
-asBitDepth = lens _asBitDepth (\ s a -> s{_asBitDepth = a})
+asBitDepth :: Lens' AiffSettings (Maybe Natural)
+asBitDepth = lens _asBitDepth (\ s a -> s{_asBitDepth = a}) . mapping _Nat
 
--- | Set Channels to specify the number of channels in this output audio track. Choosing Mono in the console will give you 1 output channel; choosing Stereo will give you 2. In the API, valid values are 1 and 2.
-asChannels :: Lens' AiffSettings (Maybe Int)
-asChannels = lens _asChannels (\ s a -> s{_asChannels = a})
+-- | Specify the number of channels in this output audio track. Valid values are 1 and even numbers up to 64. For example, 1, 2, 4, 6, and so on, up to 64.
+asChannels :: Lens' AiffSettings (Maybe Natural)
+asChannels = lens _asChannels (\ s a -> s{_asChannels = a}) . mapping _Nat
 
 -- | Sample rate in hz.
-asSampleRate :: Lens' AiffSettings (Maybe Int)
-asSampleRate = lens _asSampleRate (\ s a -> s{_asSampleRate = a})
+asSampleRate :: Lens' AiffSettings (Maybe Natural)
+asSampleRate = lens _asSampleRate (\ s a -> s{_asSampleRate = a}) . mapping _Nat
 
 instance FromJSON AiffSettings where
         parseJSON

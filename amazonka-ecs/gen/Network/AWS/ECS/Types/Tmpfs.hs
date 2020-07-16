@@ -34,11 +34,11 @@ data Tmpfs = Tmpfs'{_tMountOptions ::
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'tMountOptions' - The list of tmpfs volume mount options. Valid values: @"defaults" | "ro" | "rw" | "suid" | "nosuid" | "dev" | "nodev" | "exec" | "noexec" | "sync" | "async" | "dirsync" | "remount" | "mand" | "nomand" | "atime" | "noatime" | "diratime" | "nodiratime" | "bind" | "rbind" | "unbindable" | "runbindable" | "private" | "rprivate" | "shared" | "rshared" | "slave" | "rslave" | "relatime" | "norelatime" | "strictatime" | "nostrictatime"@ 
+-- * 'tMountOptions' - The list of tmpfs volume mount options. Valid values: @"defaults" | "ro" | "rw" | "suid" | "nosuid" | "dev" | "nodev" | "exec" | "noexec" | "sync" | "async" | "dirsync" | "remount" | "mand" | "nomand" | "atime" | "noatime" | "diratime" | "nodiratime" | "bind" | "rbind" | "unbindable" | "runbindable" | "private" | "rprivate" | "shared" | "rshared" | "slave" | "rslave" | "relatime" | "norelatime" | "strictatime" | "nostrictatime" | "mode" | "uid" | "gid" | "nr_inodes" | "nr_blocks" | "mpol"@ 
 --
--- * 'tContainerPath' - The absolute file path where the tmpfs volume will be mounted.
+-- * 'tContainerPath' - The absolute file path where the tmpfs volume is to be mounted.
 --
--- * 'tSize' - The size of the tmpfs volume.
+-- * 'tSize' - The size (in MiB) of the tmpfs volume.
 tmpfs
     :: Text -- ^ 'tContainerPath'
     -> Int -- ^ 'tSize'
@@ -47,15 +47,15 @@ tmpfs pContainerPath_ pSize_
   = Tmpfs'{_tMountOptions = Nothing,
            _tContainerPath = pContainerPath_, _tSize = pSize_}
 
--- | The list of tmpfs volume mount options. Valid values: @"defaults" | "ro" | "rw" | "suid" | "nosuid" | "dev" | "nodev" | "exec" | "noexec" | "sync" | "async" | "dirsync" | "remount" | "mand" | "nomand" | "atime" | "noatime" | "diratime" | "nodiratime" | "bind" | "rbind" | "unbindable" | "runbindable" | "private" | "rprivate" | "shared" | "rshared" | "slave" | "rslave" | "relatime" | "norelatime" | "strictatime" | "nostrictatime"@ 
+-- | The list of tmpfs volume mount options. Valid values: @"defaults" | "ro" | "rw" | "suid" | "nosuid" | "dev" | "nodev" | "exec" | "noexec" | "sync" | "async" | "dirsync" | "remount" | "mand" | "nomand" | "atime" | "noatime" | "diratime" | "nodiratime" | "bind" | "rbind" | "unbindable" | "runbindable" | "private" | "rprivate" | "shared" | "rshared" | "slave" | "rslave" | "relatime" | "norelatime" | "strictatime" | "nostrictatime" | "mode" | "uid" | "gid" | "nr_inodes" | "nr_blocks" | "mpol"@ 
 tMountOptions :: Lens' Tmpfs [Text]
 tMountOptions = lens _tMountOptions (\ s a -> s{_tMountOptions = a}) . _Default . _Coerce
 
--- | The absolute file path where the tmpfs volume will be mounted.
+-- | The absolute file path where the tmpfs volume is to be mounted.
 tContainerPath :: Lens' Tmpfs Text
 tContainerPath = lens _tContainerPath (\ s a -> s{_tContainerPath = a})
 
--- | The size of the tmpfs volume.
+-- | The size (in MiB) of the tmpfs volume.
 tSize :: Lens' Tmpfs Int
 tSize = lens _tSize (\ s a -> s{_tSize = a})
 

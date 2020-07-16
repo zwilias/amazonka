@@ -21,30 +21,34 @@ import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.S3.Internal
 
--- | /See:/ 'copyObjectResult' smart constructor.
+-- | Container for all response elements.
+--
+--
+--
+-- /See:/ 'copyObjectResult' smart constructor.
 data CopyObjectResult = CopyObjectResult'{_corETag ::
                                           !(Maybe ETag),
-                                          _corLastModified :: !(Maybe RFC822)}
+                                          _corLastModified :: !(Maybe ISO8601)}
                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CopyObjectResult' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'corETag' - Undocumented member.
+-- * 'corETag' - Returns the ETag of the new object. The ETag reflects only changes to the contents of an object, not its metadata. The source and destination ETag is identical for a successfully copied object.
 --
--- * 'corLastModified' - Undocumented member.
+-- * 'corLastModified' - Returns the date that the object was last modified.
 copyObjectResult
     :: CopyObjectResult
 copyObjectResult
   = CopyObjectResult'{_corETag = Nothing,
                       _corLastModified = Nothing}
 
--- | Undocumented member.
+-- | Returns the ETag of the new object. The ETag reflects only changes to the contents of an object, not its metadata. The source and destination ETag is identical for a successfully copied object.
 corETag :: Lens' CopyObjectResult (Maybe ETag)
 corETag = lens _corETag (\ s a -> s{_corETag = a})
 
--- | Undocumented member.
+-- | Returns the date that the object was last modified.
 corLastModified :: Lens' CopyObjectResult (Maybe UTCTime)
 corLastModified = lens _corLastModified (\ s a -> s{_corLastModified = a}) . mapping _Time
 

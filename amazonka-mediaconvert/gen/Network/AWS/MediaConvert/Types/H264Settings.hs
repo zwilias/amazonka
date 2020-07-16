@@ -21,6 +21,7 @@ import Network.AWS.Lens
 import Network.AWS.MediaConvert.Types.H264AdaptiveQuantization
 import Network.AWS.MediaConvert.Types.H264CodecLevel
 import Network.AWS.MediaConvert.Types.H264CodecProfile
+import Network.AWS.MediaConvert.Types.H264DynamicSubGop
 import Network.AWS.MediaConvert.Types.H264EntropyEncoding
 import Network.AWS.MediaConvert.Types.H264FieldEncoding
 import Network.AWS.MediaConvert.Types.H264FlickerAdaptiveQuantization
@@ -31,6 +32,7 @@ import Network.AWS.MediaConvert.Types.H264GopSizeUnits
 import Network.AWS.MediaConvert.Types.H264InterlaceMode
 import Network.AWS.MediaConvert.Types.H264ParControl
 import Network.AWS.MediaConvert.Types.H264QualityTuningLevel
+import Network.AWS.MediaConvert.Types.H264QvbrSettings
 import Network.AWS.MediaConvert.Types.H264RateControlMode
 import Network.AWS.MediaConvert.Types.H264RepeatPps
 import Network.AWS.MediaConvert.Types.H264SceneChangeDetect
@@ -45,55 +47,61 @@ import Network.AWS.Prelude
 -- | Required when you set (Codec) under (VideoDescription)>(CodecSettings) to the value H_264.
 --
 -- /See:/ 'h264Settings' smart constructor.
-data H264Settings = H264Settings'{_hUnregisteredSeiTimecode
+data H264Settings = H264Settings'{_hssUnregisteredSeiTimecode
                                   :: !(Maybe H264UnregisteredSeiTimecode),
-                                  _hQualityTuningLevel ::
+                                  _hssQualityTuningLevel ::
                                   !(Maybe H264QualityTuningLevel),
-                                  _hTemporalAdaptiveQuantization ::
+                                  _hssTemporalAdaptiveQuantization ::
                                   !(Maybe H264TemporalAdaptiveQuantization),
-                                  _hSceneChangeDetect ::
+                                  _hssSceneChangeDetect ::
                                   !(Maybe H264SceneChangeDetect),
-                                  _hHrdBufferInitialFillPercentage ::
-                                  !(Maybe Int),
-                                  _hSlowPal :: !(Maybe H264SlowPal),
-                                  _hParNumerator :: !(Maybe Int),
-                                  _hGopSize :: !(Maybe Double),
-                                  _hNumberBFramesBetweenReferenceFrames ::
-                                  !(Maybe Int),
-                                  _hGopSizeUnits :: !(Maybe H264GopSizeUnits),
-                                  _hHrdBufferSize :: !(Maybe Int),
-                                  _hSlices :: !(Maybe Int),
-                                  _hRateControlMode ::
+                                  _hssHrdBufferInitialFillPercentage ::
+                                  !(Maybe Nat),
+                                  _hssSlowPal :: !(Maybe H264SlowPal),
+                                  _hssParNumerator :: !(Maybe Nat),
+                                  _hssGopSize :: !(Maybe Double),
+                                  _hssNumberBFramesBetweenReferenceFrames ::
+                                  !(Maybe Nat),
+                                  _hssGopSizeUnits :: !(Maybe H264GopSizeUnits),
+                                  _hssHrdBufferSize :: !(Maybe Nat),
+                                  _hssSlices :: !(Maybe Nat),
+                                  _hssRateControlMode ::
                                   !(Maybe H264RateControlMode),
-                                  _hNumberReferenceFrames :: !(Maybe Int),
-                                  _hTelecine :: !(Maybe H264Telecine),
-                                  _hMinIInterval :: !(Maybe Int),
-                                  _hInterlaceMode :: !(Maybe H264InterlaceMode),
-                                  _hParControl :: !(Maybe H264ParControl),
-                                  _hRepeatPps :: !(Maybe H264RepeatPps),
-                                  _hFlickerAdaptiveQuantization ::
+                                  _hssNumberReferenceFrames :: !(Maybe Nat),
+                                  _hssTelecine :: !(Maybe H264Telecine),
+                                  _hssDynamicSubGop ::
+                                  !(Maybe H264DynamicSubGop),
+                                  _hssMinIInterval :: !(Maybe Nat),
+                                  _hssInterlaceMode ::
+                                  !(Maybe H264InterlaceMode),
+                                  _hssParControl :: !(Maybe H264ParControl),
+                                  _hssRepeatPps :: !(Maybe H264RepeatPps),
+                                  _hssFlickerAdaptiveQuantization ::
                                   !(Maybe H264FlickerAdaptiveQuantization),
-                                  _hSoftness :: !(Maybe Int),
-                                  _hCodecProfile :: !(Maybe H264CodecProfile),
-                                  _hBitrate :: !(Maybe Int),
-                                  _hFramerateDenominator :: !(Maybe Int),
-                                  _hFramerateConversionAlgorithm ::
+                                  _hssQvbrSettings :: !(Maybe H264QvbrSettings),
+                                  _hssSoftness :: !(Maybe Nat),
+                                  _hssCodecProfile :: !(Maybe H264CodecProfile),
+                                  _hssBitrate :: !(Maybe Nat),
+                                  _hssFramerateDenominator :: !(Maybe Nat),
+                                  _hssFramerateConversionAlgorithm ::
                                   !(Maybe H264FramerateConversionAlgorithm),
-                                  _hCodecLevel :: !(Maybe H264CodecLevel),
-                                  _hEntropyEncoding ::
+                                  _hssCodecLevel :: !(Maybe H264CodecLevel),
+                                  _hssEntropyEncoding ::
                                   !(Maybe H264EntropyEncoding),
-                                  _hFramerateControl ::
+                                  _hssFramerateControl ::
                                   !(Maybe H264FramerateControl),
-                                  _hAdaptiveQuantization ::
+                                  _hssAdaptiveQuantization ::
                                   !(Maybe H264AdaptiveQuantization),
-                                  _hFramerateNumerator :: !(Maybe Int),
-                                  _hGopBReference :: !(Maybe H264GopBReference),
-                                  _hMaxBitrate :: !(Maybe Int),
-                                  _hSyntax :: !(Maybe H264Syntax),
-                                  _hFieldEncoding :: !(Maybe H264FieldEncoding),
-                                  _hGopClosedCadence :: !(Maybe Int),
-                                  _hParDenominator :: !(Maybe Int),
-                                  _hSpatialAdaptiveQuantization ::
+                                  _hssFramerateNumerator :: !(Maybe Nat),
+                                  _hssGopBReference ::
+                                  !(Maybe H264GopBReference),
+                                  _hssMaxBitrate :: !(Maybe Nat),
+                                  _hssSyntax :: !(Maybe H264Syntax),
+                                  _hssFieldEncoding ::
+                                  !(Maybe H264FieldEncoding),
+                                  _hssGopClosedCadence :: !(Maybe Nat),
+                                  _hssParDenominator :: !(Maybe Nat),
+                                  _hssSpatialAdaptiveQuantization ::
                                   !(Maybe H264SpatialAdaptiveQuantization)}
                       deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -101,258 +109,275 @@ data H264Settings = H264Settings'{_hUnregisteredSeiTimecode
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'hUnregisteredSeiTimecode' - Undocumented member.
+-- * 'hssUnregisteredSeiTimecode' - Inserts timecode for each frame as 4 bytes of an unregistered SEI message.
 --
--- * 'hQualityTuningLevel' - Undocumented member.
+-- * 'hssQualityTuningLevel' - Use Quality tuning level (H264QualityTuningLevel) to specifiy whether to use fast single-pass, high-quality singlepass, or high-quality multipass video encoding.
 --
--- * 'hTemporalAdaptiveQuantization' - Undocumented member.
+-- * 'hssTemporalAdaptiveQuantization' - Adjust quantization within each frame based on temporal variation of content complexity.
 --
--- * 'hSceneChangeDetect' - Undocumented member.
+-- * 'hssSceneChangeDetect' - Enable this setting to insert I-frames at scene changes that the service automatically detects. This improves video quality and is enabled by default. If this output uses QVBR, choose Transition detection (TRANSITION_DETECTION) for further video quality improvement. For more information about QVBR, see https://docs.aws.amazon.com/console/mediaconvert/cbr-vbr-qvbr.
 --
--- * 'hHrdBufferInitialFillPercentage' - Percentage of the buffer that should initially be filled (HRD buffer model).
+-- * 'hssHrdBufferInitialFillPercentage' - Percentage of the buffer that should initially be filled (HRD buffer model).
 --
--- * 'hSlowPal' - Undocumented member.
+-- * 'hssSlowPal' - Enables Slow PAL rate conversion. 23.976fps and 24fps input is relabeled as 25fps, and audio is sped up correspondingly.
 --
--- * 'hParNumerator' - Pixel Aspect Ratio numerator.
+-- * 'hssParNumerator' - Pixel Aspect Ratio numerator.
 --
--- * 'hGopSize' - GOP Length (keyframe interval) in frames or seconds. Must be greater than zero.
+-- * 'hssGopSize' - GOP Length (keyframe interval) in frames or seconds. Must be greater than zero.
 --
--- * 'hNumberBFramesBetweenReferenceFrames' - Number of B-frames between reference frames.
+-- * 'hssNumberBFramesBetweenReferenceFrames' - Number of B-frames between reference frames.
 --
--- * 'hGopSizeUnits' - Undocumented member.
+-- * 'hssGopSizeUnits' - Indicates if the GOP Size in H264 is specified in frames or seconds. If seconds the system will convert the GOP Size into a frame count at run time.
 --
--- * 'hHrdBufferSize' - Size of buffer (HRD buffer model). Five megabits can be entered as 5000000 or 5m. Five hundred kilobits can be entered as 500000 or 0.5m.
+-- * 'hssHrdBufferSize' - Size of buffer (HRD buffer model) in bits. For example, enter five megabits as 5000000.
 --
--- * 'hSlices' - Number of slices per picture. Must be less than or equal to the number of macroblock rows for progressive pictures, and less than or equal to half the number of macroblock rows for interlaced pictures.
+-- * 'hssSlices' - Number of slices per picture. Must be less than or equal to the number of macroblock rows for progressive pictures, and less than or equal to half the number of macroblock rows for interlaced pictures.
 --
--- * 'hRateControlMode' - Undocumented member.
+-- * 'hssRateControlMode' - Use this setting to specify whether this output has a variable bitrate (VBR), constant bitrate (CBR) or quality-defined variable bitrate (QVBR).
 --
--- * 'hNumberReferenceFrames' - Number of reference frames to use. The encoder may use more than requested if using B-frames and/or interlaced encoding.
+-- * 'hssNumberReferenceFrames' - Number of reference frames to use. The encoder may use more than requested if using B-frames and/or interlaced encoding.
 --
--- * 'hTelecine' - Undocumented member.
+-- * 'hssTelecine' - This field applies only if the Streams > Advanced > Framerate (framerate) field  is set to 29.970. This field works with the Streams > Advanced > Preprocessors > Deinterlacer  field (deinterlace_mode) and the Streams > Advanced > Interlaced Mode field (interlace_mode)  to identify the scan type for the output: Progressive, Interlaced, Hard Telecine or Soft Telecine. - Hard: produces 29.97i output from 23.976 input. - Soft: produces 23.976; the player converts this output to 29.97i.
 --
--- * 'hMinIInterval' - Enforces separation between repeated (cadence) I-frames and I-frames inserted by Scene Change Detection. If a scene change I-frame is within I-interval frames of a cadence I-frame, the GOP is shrunk and/or stretched to the scene change I-frame. GOP stretch requires enabling lookahead as well as setting I-interval. The normal cadence resumes for the next GOP. This setting is only used when Scene Change Detect is enabled. Note: Maximum GOP stretch = GOP size + Min-I-interval - 1
+-- * 'hssDynamicSubGop' - Choose Adaptive to improve subjective video quality for high-motion content. This will cause the service to use fewer B-frames (which infer information based on other frames) for high-motion portions of the video and more B-frames for low-motion portions. The maximum number of B-frames is limited by the value you provide for the setting B frames between reference frames (numberBFramesBetweenReferenceFrames).
 --
--- * 'hInterlaceMode' - Undocumented member.
+-- * 'hssMinIInterval' - Enforces separation between repeated (cadence) I-frames and I-frames inserted by Scene Change Detection. If a scene change I-frame is within I-interval frames of a cadence I-frame, the GOP is shrunk and/or stretched to the scene change I-frame. GOP stretch requires enabling lookahead as well as setting I-interval. The normal cadence resumes for the next GOP. This setting is only used when Scene Change Detect is enabled. Note: Maximum GOP stretch = GOP size + Min-I-interval - 1
 --
--- * 'hParControl' - Undocumented member.
+-- * 'hssInterlaceMode' - Use Interlace mode (InterlaceMode) to choose the scan line type for the output. * Top Field First (TOP_FIELD) and Bottom Field First (BOTTOM_FIELD) produce interlaced output with the entire output having the same field polarity (top or bottom first). * Follow, Default Top (FOLLOW_TOP_FIELD) and Follow, Default Bottom (FOLLOW_BOTTOM_FIELD) use the same field polarity as the source. Therefore, behavior depends on the input scan type, as follows.   - If the source is interlaced, the output will be interlaced with the same polarity as the source (it will follow the source). The output could therefore be a mix of "top field first" and "bottom field first".   - If the source is progressive, the output will be interlaced with "top field first" or "bottom field first" polarity, depending on which of the Follow options you chose.
 --
--- * 'hRepeatPps' - Undocumented member.
+-- * 'hssParControl' - Using the API, enable ParFollowSource if you want the service to use the pixel aspect ratio from the input. Using the console, do this by choosing Follow source for Pixel aspect ratio.
 --
--- * 'hFlickerAdaptiveQuantization' - Undocumented member.
+-- * 'hssRepeatPps' - Places a PPS header on each encoded picture, even if repeated.
 --
--- * 'hSoftness' - Softness. Selects quantizer matrix, larger values reduce high-frequency content in the encoded image.
+-- * 'hssFlickerAdaptiveQuantization' - Adjust quantization within each frame to reduce flicker or 'pop' on I-frames.
 --
--- * 'hCodecProfile' - Undocumented member.
+-- * 'hssQvbrSettings' - Settings for quality-defined variable bitrate encoding with the H.264 codec. Required when you set Rate control mode to QVBR. Not valid when you set Rate control mode to a value other than QVBR, or when you don't define Rate control mode.
 --
--- * 'hBitrate' - Average bitrate in bits/second. Required for VBR, CBR, and ABR. Five megabits can be entered as 5000000 or 5m. Five hundred kilobits can be entered as 500000 or 0.5m. For MS Smooth outputs, bitrates must be unique when rounded down to the nearest multiple of 1000.
+-- * 'hssSoftness' - Softness. Selects quantizer matrix, larger values reduce high-frequency content in the encoded image.
 --
--- * 'hFramerateDenominator' - When you use the API for transcode jobs that use framerate conversion, specify the framerate as a fraction. For example,  24000 / 1001 = 23.976 fps. Use FramerateDenominator to specify the denominator of this fraction. In this example, use 1001 for the value of FramerateDenominator. When you use the console for transcode jobs that use framerate conversion, provide the value as a decimal number for Framerate. In this example, specify 23.976.
+-- * 'hssCodecProfile' - H.264 Profile. High 4:2:2 and 10-bit profiles are only available with the AVC-I License.
 --
--- * 'hFramerateConversionAlgorithm' - Undocumented member.
+-- * 'hssBitrate' - Specify the average bitrate in bits per second. Required for VBR and CBR. For MS Smooth outputs, bitrates must be unique when rounded down to the nearest multiple of 1000.
 --
--- * 'hCodecLevel' - Undocumented member.
+-- * 'hssFramerateDenominator' - When you use the API for transcode jobs that use frame rate conversion, specify the frame rate as a fraction. For example,  24000 / 1001 = 23.976 fps. Use FramerateDenominator to specify the denominator of this fraction. In this example, use 1001 for the value of FramerateDenominator. When you use the console for transcode jobs that use frame rate conversion, provide the value as a decimal number for Framerate. In this example, specify 23.976.
 --
--- * 'hEntropyEncoding' - Undocumented member.
+-- * 'hssFramerateConversionAlgorithm' - When set to INTERPOLATE, produces smoother motion during frame rate conversion.
 --
--- * 'hFramerateControl' - Undocumented member.
+-- * 'hssCodecLevel' - Specify an H.264 level that is consistent with your output video settings. If you aren't sure what level to specify, choose Auto (AUTO).
 --
--- * 'hAdaptiveQuantization' - Undocumented member.
+-- * 'hssEntropyEncoding' - Entropy encoding mode. Use CABAC (must be in Main or High profile) or CAVLC.
 --
--- * 'hFramerateNumerator' - Framerate numerator - framerate is a fraction, e.g. 24000 / 1001 = 23.976 fps.
+-- * 'hssFramerateControl' - If you are using the console, use the Framerate setting to specify the frame rate for this output. If you want to keep the same frame rate as the input video, choose Follow source. If you want to do frame rate conversion, choose a frame rate from the dropdown list or choose Custom. The framerates shown in the dropdown list are decimal approximations of fractions. If you choose Custom, specify your frame rate as a fraction. If you are creating your transcoding job specification as a JSON file without the console, use FramerateControl to specify which value the service uses for the frame rate for this output. Choose INITIALIZE_FROM_SOURCE if you want the service to use the frame rate from the input. Choose SPECIFIED if you want the service to use the frame rate you specify in the settings FramerateNumerator and FramerateDenominator.
 --
--- * 'hGopBReference' - Undocumented member.
+-- * 'hssAdaptiveQuantization' - Adaptive quantization. Allows intra-frame quantizers to vary to improve visual quality.
 --
--- * 'hMaxBitrate' - Maximum bitrate in bits/second (for VBR mode only). Five megabits can be entered as 5000000 or 5m. Five hundred kilobits can be entered as 500000 or 0.5m.
+-- * 'hssFramerateNumerator' - Frame rate numerator - frame rate is a fraction, e.g. 24000 / 1001 = 23.976 fps.
 --
--- * 'hSyntax' - Undocumented member.
+-- * 'hssGopBReference' - If enable, use reference B frames for GOP structures that have B frames > 1.
 --
--- * 'hFieldEncoding' - Undocumented member.
+-- * 'hssMaxBitrate' - Maximum bitrate in bits/second. For example, enter five megabits per second as 5000000. Required when Rate control mode is QVBR.
 --
--- * 'hGopClosedCadence' - Frequency of closed GOPs. In streaming applications, it is recommended that this be set to 1 so a decoder joining mid-stream will receive an IDR frame as quickly as possible. Setting this value to 0 will break output segmenting.
+-- * 'hssSyntax' - Produces a bitstream compliant with SMPTE RP-2027.
 --
--- * 'hParDenominator' - Pixel Aspect Ratio denominator.
+-- * 'hssFieldEncoding' - Choosing FORCE_FIELD disables PAFF encoding for interlaced outputs.
 --
--- * 'hSpatialAdaptiveQuantization' - Undocumented member.
+-- * 'hssGopClosedCadence' - Frequency of closed GOPs. In streaming applications, it is recommended that this be set to 1 so a decoder joining mid-stream will receive an IDR frame as quickly as possible. Setting this value to 0 will break output segmenting.
+--
+-- * 'hssParDenominator' - Pixel Aspect Ratio denominator.
+--
+-- * 'hssSpatialAdaptiveQuantization' - Adjust quantization within each frame based on spatial variation of content complexity.
 h264Settings
     :: H264Settings
 h264Settings
-  = H264Settings'{_hUnregisteredSeiTimecode = Nothing,
-                  _hQualityTuningLevel = Nothing,
-                  _hTemporalAdaptiveQuantization = Nothing,
-                  _hSceneChangeDetect = Nothing,
-                  _hHrdBufferInitialFillPercentage = Nothing,
-                  _hSlowPal = Nothing, _hParNumerator = Nothing,
-                  _hGopSize = Nothing,
-                  _hNumberBFramesBetweenReferenceFrames = Nothing,
-                  _hGopSizeUnits = Nothing, _hHrdBufferSize = Nothing,
-                  _hSlices = Nothing, _hRateControlMode = Nothing,
-                  _hNumberReferenceFrames = Nothing,
-                  _hTelecine = Nothing, _hMinIInterval = Nothing,
-                  _hInterlaceMode = Nothing, _hParControl = Nothing,
-                  _hRepeatPps = Nothing,
-                  _hFlickerAdaptiveQuantization = Nothing,
-                  _hSoftness = Nothing, _hCodecProfile = Nothing,
-                  _hBitrate = Nothing,
-                  _hFramerateDenominator = Nothing,
-                  _hFramerateConversionAlgorithm = Nothing,
-                  _hCodecLevel = Nothing, _hEntropyEncoding = Nothing,
-                  _hFramerateControl = Nothing,
-                  _hAdaptiveQuantization = Nothing,
-                  _hFramerateNumerator = Nothing,
-                  _hGopBReference = Nothing, _hMaxBitrate = Nothing,
-                  _hSyntax = Nothing, _hFieldEncoding = Nothing,
-                  _hGopClosedCadence = Nothing,
-                  _hParDenominator = Nothing,
-                  _hSpatialAdaptiveQuantization = Nothing}
+  = H264Settings'{_hssUnregisteredSeiTimecode =
+                    Nothing,
+                  _hssQualityTuningLevel = Nothing,
+                  _hssTemporalAdaptiveQuantization = Nothing,
+                  _hssSceneChangeDetect = Nothing,
+                  _hssHrdBufferInitialFillPercentage = Nothing,
+                  _hssSlowPal = Nothing, _hssParNumerator = Nothing,
+                  _hssGopSize = Nothing,
+                  _hssNumberBFramesBetweenReferenceFrames = Nothing,
+                  _hssGopSizeUnits = Nothing,
+                  _hssHrdBufferSize = Nothing, _hssSlices = Nothing,
+                  _hssRateControlMode = Nothing,
+                  _hssNumberReferenceFrames = Nothing,
+                  _hssTelecine = Nothing, _hssDynamicSubGop = Nothing,
+                  _hssMinIInterval = Nothing,
+                  _hssInterlaceMode = Nothing,
+                  _hssParControl = Nothing, _hssRepeatPps = Nothing,
+                  _hssFlickerAdaptiveQuantization = Nothing,
+                  _hssQvbrSettings = Nothing, _hssSoftness = Nothing,
+                  _hssCodecProfile = Nothing, _hssBitrate = Nothing,
+                  _hssFramerateDenominator = Nothing,
+                  _hssFramerateConversionAlgorithm = Nothing,
+                  _hssCodecLevel = Nothing,
+                  _hssEntropyEncoding = Nothing,
+                  _hssFramerateControl = Nothing,
+                  _hssAdaptiveQuantization = Nothing,
+                  _hssFramerateNumerator = Nothing,
+                  _hssGopBReference = Nothing,
+                  _hssMaxBitrate = Nothing, _hssSyntax = Nothing,
+                  _hssFieldEncoding = Nothing,
+                  _hssGopClosedCadence = Nothing,
+                  _hssParDenominator = Nothing,
+                  _hssSpatialAdaptiveQuantization = Nothing}
 
--- | Undocumented member.
-hUnregisteredSeiTimecode :: Lens' H264Settings (Maybe H264UnregisteredSeiTimecode)
-hUnregisteredSeiTimecode = lens _hUnregisteredSeiTimecode (\ s a -> s{_hUnregisteredSeiTimecode = a})
+-- | Inserts timecode for each frame as 4 bytes of an unregistered SEI message.
+hssUnregisteredSeiTimecode :: Lens' H264Settings (Maybe H264UnregisteredSeiTimecode)
+hssUnregisteredSeiTimecode = lens _hssUnregisteredSeiTimecode (\ s a -> s{_hssUnregisteredSeiTimecode = a})
 
--- | Undocumented member.
-hQualityTuningLevel :: Lens' H264Settings (Maybe H264QualityTuningLevel)
-hQualityTuningLevel = lens _hQualityTuningLevel (\ s a -> s{_hQualityTuningLevel = a})
+-- | Use Quality tuning level (H264QualityTuningLevel) to specifiy whether to use fast single-pass, high-quality singlepass, or high-quality multipass video encoding.
+hssQualityTuningLevel :: Lens' H264Settings (Maybe H264QualityTuningLevel)
+hssQualityTuningLevel = lens _hssQualityTuningLevel (\ s a -> s{_hssQualityTuningLevel = a})
 
--- | Undocumented member.
-hTemporalAdaptiveQuantization :: Lens' H264Settings (Maybe H264TemporalAdaptiveQuantization)
-hTemporalAdaptiveQuantization = lens _hTemporalAdaptiveQuantization (\ s a -> s{_hTemporalAdaptiveQuantization = a})
+-- | Adjust quantization within each frame based on temporal variation of content complexity.
+hssTemporalAdaptiveQuantization :: Lens' H264Settings (Maybe H264TemporalAdaptiveQuantization)
+hssTemporalAdaptiveQuantization = lens _hssTemporalAdaptiveQuantization (\ s a -> s{_hssTemporalAdaptiveQuantization = a})
 
--- | Undocumented member.
-hSceneChangeDetect :: Lens' H264Settings (Maybe H264SceneChangeDetect)
-hSceneChangeDetect = lens _hSceneChangeDetect (\ s a -> s{_hSceneChangeDetect = a})
+-- | Enable this setting to insert I-frames at scene changes that the service automatically detects. This improves video quality and is enabled by default. If this output uses QVBR, choose Transition detection (TRANSITION_DETECTION) for further video quality improvement. For more information about QVBR, see https://docs.aws.amazon.com/console/mediaconvert/cbr-vbr-qvbr.
+hssSceneChangeDetect :: Lens' H264Settings (Maybe H264SceneChangeDetect)
+hssSceneChangeDetect = lens _hssSceneChangeDetect (\ s a -> s{_hssSceneChangeDetect = a})
 
 -- | Percentage of the buffer that should initially be filled (HRD buffer model).
-hHrdBufferInitialFillPercentage :: Lens' H264Settings (Maybe Int)
-hHrdBufferInitialFillPercentage = lens _hHrdBufferInitialFillPercentage (\ s a -> s{_hHrdBufferInitialFillPercentage = a})
+hssHrdBufferInitialFillPercentage :: Lens' H264Settings (Maybe Natural)
+hssHrdBufferInitialFillPercentage = lens _hssHrdBufferInitialFillPercentage (\ s a -> s{_hssHrdBufferInitialFillPercentage = a}) . mapping _Nat
 
--- | Undocumented member.
-hSlowPal :: Lens' H264Settings (Maybe H264SlowPal)
-hSlowPal = lens _hSlowPal (\ s a -> s{_hSlowPal = a})
+-- | Enables Slow PAL rate conversion. 23.976fps and 24fps input is relabeled as 25fps, and audio is sped up correspondingly.
+hssSlowPal :: Lens' H264Settings (Maybe H264SlowPal)
+hssSlowPal = lens _hssSlowPal (\ s a -> s{_hssSlowPal = a})
 
 -- | Pixel Aspect Ratio numerator.
-hParNumerator :: Lens' H264Settings (Maybe Int)
-hParNumerator = lens _hParNumerator (\ s a -> s{_hParNumerator = a})
+hssParNumerator :: Lens' H264Settings (Maybe Natural)
+hssParNumerator = lens _hssParNumerator (\ s a -> s{_hssParNumerator = a}) . mapping _Nat
 
 -- | GOP Length (keyframe interval) in frames or seconds. Must be greater than zero.
-hGopSize :: Lens' H264Settings (Maybe Double)
-hGopSize = lens _hGopSize (\ s a -> s{_hGopSize = a})
+hssGopSize :: Lens' H264Settings (Maybe Double)
+hssGopSize = lens _hssGopSize (\ s a -> s{_hssGopSize = a})
 
 -- | Number of B-frames between reference frames.
-hNumberBFramesBetweenReferenceFrames :: Lens' H264Settings (Maybe Int)
-hNumberBFramesBetweenReferenceFrames = lens _hNumberBFramesBetweenReferenceFrames (\ s a -> s{_hNumberBFramesBetweenReferenceFrames = a})
+hssNumberBFramesBetweenReferenceFrames :: Lens' H264Settings (Maybe Natural)
+hssNumberBFramesBetweenReferenceFrames = lens _hssNumberBFramesBetweenReferenceFrames (\ s a -> s{_hssNumberBFramesBetweenReferenceFrames = a}) . mapping _Nat
 
--- | Undocumented member.
-hGopSizeUnits :: Lens' H264Settings (Maybe H264GopSizeUnits)
-hGopSizeUnits = lens _hGopSizeUnits (\ s a -> s{_hGopSizeUnits = a})
+-- | Indicates if the GOP Size in H264 is specified in frames or seconds. If seconds the system will convert the GOP Size into a frame count at run time.
+hssGopSizeUnits :: Lens' H264Settings (Maybe H264GopSizeUnits)
+hssGopSizeUnits = lens _hssGopSizeUnits (\ s a -> s{_hssGopSizeUnits = a})
 
--- | Size of buffer (HRD buffer model). Five megabits can be entered as 5000000 or 5m. Five hundred kilobits can be entered as 500000 or 0.5m.
-hHrdBufferSize :: Lens' H264Settings (Maybe Int)
-hHrdBufferSize = lens _hHrdBufferSize (\ s a -> s{_hHrdBufferSize = a})
+-- | Size of buffer (HRD buffer model) in bits. For example, enter five megabits as 5000000.
+hssHrdBufferSize :: Lens' H264Settings (Maybe Natural)
+hssHrdBufferSize = lens _hssHrdBufferSize (\ s a -> s{_hssHrdBufferSize = a}) . mapping _Nat
 
 -- | Number of slices per picture. Must be less than or equal to the number of macroblock rows for progressive pictures, and less than or equal to half the number of macroblock rows for interlaced pictures.
-hSlices :: Lens' H264Settings (Maybe Int)
-hSlices = lens _hSlices (\ s a -> s{_hSlices = a})
+hssSlices :: Lens' H264Settings (Maybe Natural)
+hssSlices = lens _hssSlices (\ s a -> s{_hssSlices = a}) . mapping _Nat
 
--- | Undocumented member.
-hRateControlMode :: Lens' H264Settings (Maybe H264RateControlMode)
-hRateControlMode = lens _hRateControlMode (\ s a -> s{_hRateControlMode = a})
+-- | Use this setting to specify whether this output has a variable bitrate (VBR), constant bitrate (CBR) or quality-defined variable bitrate (QVBR).
+hssRateControlMode :: Lens' H264Settings (Maybe H264RateControlMode)
+hssRateControlMode = lens _hssRateControlMode (\ s a -> s{_hssRateControlMode = a})
 
 -- | Number of reference frames to use. The encoder may use more than requested if using B-frames and/or interlaced encoding.
-hNumberReferenceFrames :: Lens' H264Settings (Maybe Int)
-hNumberReferenceFrames = lens _hNumberReferenceFrames (\ s a -> s{_hNumberReferenceFrames = a})
+hssNumberReferenceFrames :: Lens' H264Settings (Maybe Natural)
+hssNumberReferenceFrames = lens _hssNumberReferenceFrames (\ s a -> s{_hssNumberReferenceFrames = a}) . mapping _Nat
 
--- | Undocumented member.
-hTelecine :: Lens' H264Settings (Maybe H264Telecine)
-hTelecine = lens _hTelecine (\ s a -> s{_hTelecine = a})
+-- | This field applies only if the Streams > Advanced > Framerate (framerate) field  is set to 29.970. This field works with the Streams > Advanced > Preprocessors > Deinterlacer  field (deinterlace_mode) and the Streams > Advanced > Interlaced Mode field (interlace_mode)  to identify the scan type for the output: Progressive, Interlaced, Hard Telecine or Soft Telecine. - Hard: produces 29.97i output from 23.976 input. - Soft: produces 23.976; the player converts this output to 29.97i.
+hssTelecine :: Lens' H264Settings (Maybe H264Telecine)
+hssTelecine = lens _hssTelecine (\ s a -> s{_hssTelecine = a})
+
+-- | Choose Adaptive to improve subjective video quality for high-motion content. This will cause the service to use fewer B-frames (which infer information based on other frames) for high-motion portions of the video and more B-frames for low-motion portions. The maximum number of B-frames is limited by the value you provide for the setting B frames between reference frames (numberBFramesBetweenReferenceFrames).
+hssDynamicSubGop :: Lens' H264Settings (Maybe H264DynamicSubGop)
+hssDynamicSubGop = lens _hssDynamicSubGop (\ s a -> s{_hssDynamicSubGop = a})
 
 -- | Enforces separation between repeated (cadence) I-frames and I-frames inserted by Scene Change Detection. If a scene change I-frame is within I-interval frames of a cadence I-frame, the GOP is shrunk and/or stretched to the scene change I-frame. GOP stretch requires enabling lookahead as well as setting I-interval. The normal cadence resumes for the next GOP. This setting is only used when Scene Change Detect is enabled. Note: Maximum GOP stretch = GOP size + Min-I-interval - 1
-hMinIInterval :: Lens' H264Settings (Maybe Int)
-hMinIInterval = lens _hMinIInterval (\ s a -> s{_hMinIInterval = a})
+hssMinIInterval :: Lens' H264Settings (Maybe Natural)
+hssMinIInterval = lens _hssMinIInterval (\ s a -> s{_hssMinIInterval = a}) . mapping _Nat
 
--- | Undocumented member.
-hInterlaceMode :: Lens' H264Settings (Maybe H264InterlaceMode)
-hInterlaceMode = lens _hInterlaceMode (\ s a -> s{_hInterlaceMode = a})
+-- | Use Interlace mode (InterlaceMode) to choose the scan line type for the output. * Top Field First (TOP_FIELD) and Bottom Field First (BOTTOM_FIELD) produce interlaced output with the entire output having the same field polarity (top or bottom first). * Follow, Default Top (FOLLOW_TOP_FIELD) and Follow, Default Bottom (FOLLOW_BOTTOM_FIELD) use the same field polarity as the source. Therefore, behavior depends on the input scan type, as follows.   - If the source is interlaced, the output will be interlaced with the same polarity as the source (it will follow the source). The output could therefore be a mix of "top field first" and "bottom field first".   - If the source is progressive, the output will be interlaced with "top field first" or "bottom field first" polarity, depending on which of the Follow options you chose.
+hssInterlaceMode :: Lens' H264Settings (Maybe H264InterlaceMode)
+hssInterlaceMode = lens _hssInterlaceMode (\ s a -> s{_hssInterlaceMode = a})
 
--- | Undocumented member.
-hParControl :: Lens' H264Settings (Maybe H264ParControl)
-hParControl = lens _hParControl (\ s a -> s{_hParControl = a})
+-- | Using the API, enable ParFollowSource if you want the service to use the pixel aspect ratio from the input. Using the console, do this by choosing Follow source for Pixel aspect ratio.
+hssParControl :: Lens' H264Settings (Maybe H264ParControl)
+hssParControl = lens _hssParControl (\ s a -> s{_hssParControl = a})
 
--- | Undocumented member.
-hRepeatPps :: Lens' H264Settings (Maybe H264RepeatPps)
-hRepeatPps = lens _hRepeatPps (\ s a -> s{_hRepeatPps = a})
+-- | Places a PPS header on each encoded picture, even if repeated.
+hssRepeatPps :: Lens' H264Settings (Maybe H264RepeatPps)
+hssRepeatPps = lens _hssRepeatPps (\ s a -> s{_hssRepeatPps = a})
 
--- | Undocumented member.
-hFlickerAdaptiveQuantization :: Lens' H264Settings (Maybe H264FlickerAdaptiveQuantization)
-hFlickerAdaptiveQuantization = lens _hFlickerAdaptiveQuantization (\ s a -> s{_hFlickerAdaptiveQuantization = a})
+-- | Adjust quantization within each frame to reduce flicker or 'pop' on I-frames.
+hssFlickerAdaptiveQuantization :: Lens' H264Settings (Maybe H264FlickerAdaptiveQuantization)
+hssFlickerAdaptiveQuantization = lens _hssFlickerAdaptiveQuantization (\ s a -> s{_hssFlickerAdaptiveQuantization = a})
+
+-- | Settings for quality-defined variable bitrate encoding with the H.264 codec. Required when you set Rate control mode to QVBR. Not valid when you set Rate control mode to a value other than QVBR, or when you don't define Rate control mode.
+hssQvbrSettings :: Lens' H264Settings (Maybe H264QvbrSettings)
+hssQvbrSettings = lens _hssQvbrSettings (\ s a -> s{_hssQvbrSettings = a})
 
 -- | Softness. Selects quantizer matrix, larger values reduce high-frequency content in the encoded image.
-hSoftness :: Lens' H264Settings (Maybe Int)
-hSoftness = lens _hSoftness (\ s a -> s{_hSoftness = a})
+hssSoftness :: Lens' H264Settings (Maybe Natural)
+hssSoftness = lens _hssSoftness (\ s a -> s{_hssSoftness = a}) . mapping _Nat
 
--- | Undocumented member.
-hCodecProfile :: Lens' H264Settings (Maybe H264CodecProfile)
-hCodecProfile = lens _hCodecProfile (\ s a -> s{_hCodecProfile = a})
+-- | H.264 Profile. High 4:2:2 and 10-bit profiles are only available with the AVC-I License.
+hssCodecProfile :: Lens' H264Settings (Maybe H264CodecProfile)
+hssCodecProfile = lens _hssCodecProfile (\ s a -> s{_hssCodecProfile = a})
 
--- | Average bitrate in bits/second. Required for VBR, CBR, and ABR. Five megabits can be entered as 5000000 or 5m. Five hundred kilobits can be entered as 500000 or 0.5m. For MS Smooth outputs, bitrates must be unique when rounded down to the nearest multiple of 1000.
-hBitrate :: Lens' H264Settings (Maybe Int)
-hBitrate = lens _hBitrate (\ s a -> s{_hBitrate = a})
+-- | Specify the average bitrate in bits per second. Required for VBR and CBR. For MS Smooth outputs, bitrates must be unique when rounded down to the nearest multiple of 1000.
+hssBitrate :: Lens' H264Settings (Maybe Natural)
+hssBitrate = lens _hssBitrate (\ s a -> s{_hssBitrate = a}) . mapping _Nat
 
--- | When you use the API for transcode jobs that use framerate conversion, specify the framerate as a fraction. For example,  24000 / 1001 = 23.976 fps. Use FramerateDenominator to specify the denominator of this fraction. In this example, use 1001 for the value of FramerateDenominator. When you use the console for transcode jobs that use framerate conversion, provide the value as a decimal number for Framerate. In this example, specify 23.976.
-hFramerateDenominator :: Lens' H264Settings (Maybe Int)
-hFramerateDenominator = lens _hFramerateDenominator (\ s a -> s{_hFramerateDenominator = a})
+-- | When you use the API for transcode jobs that use frame rate conversion, specify the frame rate as a fraction. For example,  24000 / 1001 = 23.976 fps. Use FramerateDenominator to specify the denominator of this fraction. In this example, use 1001 for the value of FramerateDenominator. When you use the console for transcode jobs that use frame rate conversion, provide the value as a decimal number for Framerate. In this example, specify 23.976.
+hssFramerateDenominator :: Lens' H264Settings (Maybe Natural)
+hssFramerateDenominator = lens _hssFramerateDenominator (\ s a -> s{_hssFramerateDenominator = a}) . mapping _Nat
 
--- | Undocumented member.
-hFramerateConversionAlgorithm :: Lens' H264Settings (Maybe H264FramerateConversionAlgorithm)
-hFramerateConversionAlgorithm = lens _hFramerateConversionAlgorithm (\ s a -> s{_hFramerateConversionAlgorithm = a})
+-- | When set to INTERPOLATE, produces smoother motion during frame rate conversion.
+hssFramerateConversionAlgorithm :: Lens' H264Settings (Maybe H264FramerateConversionAlgorithm)
+hssFramerateConversionAlgorithm = lens _hssFramerateConversionAlgorithm (\ s a -> s{_hssFramerateConversionAlgorithm = a})
 
--- | Undocumented member.
-hCodecLevel :: Lens' H264Settings (Maybe H264CodecLevel)
-hCodecLevel = lens _hCodecLevel (\ s a -> s{_hCodecLevel = a})
+-- | Specify an H.264 level that is consistent with your output video settings. If you aren't sure what level to specify, choose Auto (AUTO).
+hssCodecLevel :: Lens' H264Settings (Maybe H264CodecLevel)
+hssCodecLevel = lens _hssCodecLevel (\ s a -> s{_hssCodecLevel = a})
 
--- | Undocumented member.
-hEntropyEncoding :: Lens' H264Settings (Maybe H264EntropyEncoding)
-hEntropyEncoding = lens _hEntropyEncoding (\ s a -> s{_hEntropyEncoding = a})
+-- | Entropy encoding mode. Use CABAC (must be in Main or High profile) or CAVLC.
+hssEntropyEncoding :: Lens' H264Settings (Maybe H264EntropyEncoding)
+hssEntropyEncoding = lens _hssEntropyEncoding (\ s a -> s{_hssEntropyEncoding = a})
 
--- | Undocumented member.
-hFramerateControl :: Lens' H264Settings (Maybe H264FramerateControl)
-hFramerateControl = lens _hFramerateControl (\ s a -> s{_hFramerateControl = a})
+-- | If you are using the console, use the Framerate setting to specify the frame rate for this output. If you want to keep the same frame rate as the input video, choose Follow source. If you want to do frame rate conversion, choose a frame rate from the dropdown list or choose Custom. The framerates shown in the dropdown list are decimal approximations of fractions. If you choose Custom, specify your frame rate as a fraction. If you are creating your transcoding job specification as a JSON file without the console, use FramerateControl to specify which value the service uses for the frame rate for this output. Choose INITIALIZE_FROM_SOURCE if you want the service to use the frame rate from the input. Choose SPECIFIED if you want the service to use the frame rate you specify in the settings FramerateNumerator and FramerateDenominator.
+hssFramerateControl :: Lens' H264Settings (Maybe H264FramerateControl)
+hssFramerateControl = lens _hssFramerateControl (\ s a -> s{_hssFramerateControl = a})
 
--- | Undocumented member.
-hAdaptiveQuantization :: Lens' H264Settings (Maybe H264AdaptiveQuantization)
-hAdaptiveQuantization = lens _hAdaptiveQuantization (\ s a -> s{_hAdaptiveQuantization = a})
+-- | Adaptive quantization. Allows intra-frame quantizers to vary to improve visual quality.
+hssAdaptiveQuantization :: Lens' H264Settings (Maybe H264AdaptiveQuantization)
+hssAdaptiveQuantization = lens _hssAdaptiveQuantization (\ s a -> s{_hssAdaptiveQuantization = a})
 
--- | Framerate numerator - framerate is a fraction, e.g. 24000 / 1001 = 23.976 fps.
-hFramerateNumerator :: Lens' H264Settings (Maybe Int)
-hFramerateNumerator = lens _hFramerateNumerator (\ s a -> s{_hFramerateNumerator = a})
+-- | Frame rate numerator - frame rate is a fraction, e.g. 24000 / 1001 = 23.976 fps.
+hssFramerateNumerator :: Lens' H264Settings (Maybe Natural)
+hssFramerateNumerator = lens _hssFramerateNumerator (\ s a -> s{_hssFramerateNumerator = a}) . mapping _Nat
 
--- | Undocumented member.
-hGopBReference :: Lens' H264Settings (Maybe H264GopBReference)
-hGopBReference = lens _hGopBReference (\ s a -> s{_hGopBReference = a})
+-- | If enable, use reference B frames for GOP structures that have B frames > 1.
+hssGopBReference :: Lens' H264Settings (Maybe H264GopBReference)
+hssGopBReference = lens _hssGopBReference (\ s a -> s{_hssGopBReference = a})
 
--- | Maximum bitrate in bits/second (for VBR mode only). Five megabits can be entered as 5000000 or 5m. Five hundred kilobits can be entered as 500000 or 0.5m.
-hMaxBitrate :: Lens' H264Settings (Maybe Int)
-hMaxBitrate = lens _hMaxBitrate (\ s a -> s{_hMaxBitrate = a})
+-- | Maximum bitrate in bits/second. For example, enter five megabits per second as 5000000. Required when Rate control mode is QVBR.
+hssMaxBitrate :: Lens' H264Settings (Maybe Natural)
+hssMaxBitrate = lens _hssMaxBitrate (\ s a -> s{_hssMaxBitrate = a}) . mapping _Nat
 
--- | Undocumented member.
-hSyntax :: Lens' H264Settings (Maybe H264Syntax)
-hSyntax = lens _hSyntax (\ s a -> s{_hSyntax = a})
+-- | Produces a bitstream compliant with SMPTE RP-2027.
+hssSyntax :: Lens' H264Settings (Maybe H264Syntax)
+hssSyntax = lens _hssSyntax (\ s a -> s{_hssSyntax = a})
 
--- | Undocumented member.
-hFieldEncoding :: Lens' H264Settings (Maybe H264FieldEncoding)
-hFieldEncoding = lens _hFieldEncoding (\ s a -> s{_hFieldEncoding = a})
+-- | Choosing FORCE_FIELD disables PAFF encoding for interlaced outputs.
+hssFieldEncoding :: Lens' H264Settings (Maybe H264FieldEncoding)
+hssFieldEncoding = lens _hssFieldEncoding (\ s a -> s{_hssFieldEncoding = a})
 
 -- | Frequency of closed GOPs. In streaming applications, it is recommended that this be set to 1 so a decoder joining mid-stream will receive an IDR frame as quickly as possible. Setting this value to 0 will break output segmenting.
-hGopClosedCadence :: Lens' H264Settings (Maybe Int)
-hGopClosedCadence = lens _hGopClosedCadence (\ s a -> s{_hGopClosedCadence = a})
+hssGopClosedCadence :: Lens' H264Settings (Maybe Natural)
+hssGopClosedCadence = lens _hssGopClosedCadence (\ s a -> s{_hssGopClosedCadence = a}) . mapping _Nat
 
 -- | Pixel Aspect Ratio denominator.
-hParDenominator :: Lens' H264Settings (Maybe Int)
-hParDenominator = lens _hParDenominator (\ s a -> s{_hParDenominator = a})
+hssParDenominator :: Lens' H264Settings (Maybe Natural)
+hssParDenominator = lens _hssParDenominator (\ s a -> s{_hssParDenominator = a}) . mapping _Nat
 
--- | Undocumented member.
-hSpatialAdaptiveQuantization :: Lens' H264Settings (Maybe H264SpatialAdaptiveQuantization)
-hSpatialAdaptiveQuantization = lens _hSpatialAdaptiveQuantization (\ s a -> s{_hSpatialAdaptiveQuantization = a})
+-- | Adjust quantization within each frame based on spatial variation of content complexity.
+hssSpatialAdaptiveQuantization :: Lens' H264Settings (Maybe H264SpatialAdaptiveQuantization)
+hssSpatialAdaptiveQuantization = lens _hssSpatialAdaptiveQuantization (\ s a -> s{_hssSpatialAdaptiveQuantization = a})
 
 instance FromJSON H264Settings where
         parseJSON
@@ -374,11 +399,13 @@ instance FromJSON H264Settings where
                      <*> (x .:? "rateControlMode")
                      <*> (x .:? "numberReferenceFrames")
                      <*> (x .:? "telecine")
+                     <*> (x .:? "dynamicSubGop")
                      <*> (x .:? "minIInterval")
                      <*> (x .:? "interlaceMode")
                      <*> (x .:? "parControl")
                      <*> (x .:? "repeatPps")
                      <*> (x .:? "flickerAdaptiveQuantization")
+                     <*> (x .:? "qvbrSettings")
                      <*> (x .:? "softness")
                      <*> (x .:? "codecProfile")
                      <*> (x .:? "bitrate")
@@ -406,49 +433,51 @@ instance ToJSON H264Settings where
           = object
               (catMaybes
                  [("unregisteredSeiTimecode" .=) <$>
-                    _hUnregisteredSeiTimecode,
-                  ("qualityTuningLevel" .=) <$> _hQualityTuningLevel,
+                    _hssUnregisteredSeiTimecode,
+                  ("qualityTuningLevel" .=) <$> _hssQualityTuningLevel,
                   ("temporalAdaptiveQuantization" .=) <$>
-                    _hTemporalAdaptiveQuantization,
-                  ("sceneChangeDetect" .=) <$> _hSceneChangeDetect,
+                    _hssTemporalAdaptiveQuantization,
+                  ("sceneChangeDetect" .=) <$> _hssSceneChangeDetect,
                   ("hrdBufferInitialFillPercentage" .=) <$>
-                    _hHrdBufferInitialFillPercentage,
-                  ("slowPal" .=) <$> _hSlowPal,
-                  ("parNumerator" .=) <$> _hParNumerator,
-                  ("gopSize" .=) <$> _hGopSize,
+                    _hssHrdBufferInitialFillPercentage,
+                  ("slowPal" .=) <$> _hssSlowPal,
+                  ("parNumerator" .=) <$> _hssParNumerator,
+                  ("gopSize" .=) <$> _hssGopSize,
                   ("numberBFramesBetweenReferenceFrames" .=) <$>
-                    _hNumberBFramesBetweenReferenceFrames,
-                  ("gopSizeUnits" .=) <$> _hGopSizeUnits,
-                  ("hrdBufferSize" .=) <$> _hHrdBufferSize,
-                  ("slices" .=) <$> _hSlices,
-                  ("rateControlMode" .=) <$> _hRateControlMode,
+                    _hssNumberBFramesBetweenReferenceFrames,
+                  ("gopSizeUnits" .=) <$> _hssGopSizeUnits,
+                  ("hrdBufferSize" .=) <$> _hssHrdBufferSize,
+                  ("slices" .=) <$> _hssSlices,
+                  ("rateControlMode" .=) <$> _hssRateControlMode,
                   ("numberReferenceFrames" .=) <$>
-                    _hNumberReferenceFrames,
-                  ("telecine" .=) <$> _hTelecine,
-                  ("minIInterval" .=) <$> _hMinIInterval,
-                  ("interlaceMode" .=) <$> _hInterlaceMode,
-                  ("parControl" .=) <$> _hParControl,
-                  ("repeatPps" .=) <$> _hRepeatPps,
+                    _hssNumberReferenceFrames,
+                  ("telecine" .=) <$> _hssTelecine,
+                  ("dynamicSubGop" .=) <$> _hssDynamicSubGop,
+                  ("minIInterval" .=) <$> _hssMinIInterval,
+                  ("interlaceMode" .=) <$> _hssInterlaceMode,
+                  ("parControl" .=) <$> _hssParControl,
+                  ("repeatPps" .=) <$> _hssRepeatPps,
                   ("flickerAdaptiveQuantization" .=) <$>
-                    _hFlickerAdaptiveQuantization,
-                  ("softness" .=) <$> _hSoftness,
-                  ("codecProfile" .=) <$> _hCodecProfile,
-                  ("bitrate" .=) <$> _hBitrate,
+                    _hssFlickerAdaptiveQuantization,
+                  ("qvbrSettings" .=) <$> _hssQvbrSettings,
+                  ("softness" .=) <$> _hssSoftness,
+                  ("codecProfile" .=) <$> _hssCodecProfile,
+                  ("bitrate" .=) <$> _hssBitrate,
                   ("framerateDenominator" .=) <$>
-                    _hFramerateDenominator,
+                    _hssFramerateDenominator,
                   ("framerateConversionAlgorithm" .=) <$>
-                    _hFramerateConversionAlgorithm,
-                  ("codecLevel" .=) <$> _hCodecLevel,
-                  ("entropyEncoding" .=) <$> _hEntropyEncoding,
-                  ("framerateControl" .=) <$> _hFramerateControl,
+                    _hssFramerateConversionAlgorithm,
+                  ("codecLevel" .=) <$> _hssCodecLevel,
+                  ("entropyEncoding" .=) <$> _hssEntropyEncoding,
+                  ("framerateControl" .=) <$> _hssFramerateControl,
                   ("adaptiveQuantization" .=) <$>
-                    _hAdaptiveQuantization,
-                  ("framerateNumerator" .=) <$> _hFramerateNumerator,
-                  ("gopBReference" .=) <$> _hGopBReference,
-                  ("maxBitrate" .=) <$> _hMaxBitrate,
-                  ("syntax" .=) <$> _hSyntax,
-                  ("fieldEncoding" .=) <$> _hFieldEncoding,
-                  ("gopClosedCadence" .=) <$> _hGopClosedCadence,
-                  ("parDenominator" .=) <$> _hParDenominator,
+                    _hssAdaptiveQuantization,
+                  ("framerateNumerator" .=) <$> _hssFramerateNumerator,
+                  ("gopBReference" .=) <$> _hssGopBReference,
+                  ("maxBitrate" .=) <$> _hssMaxBitrate,
+                  ("syntax" .=) <$> _hssSyntax,
+                  ("fieldEncoding" .=) <$> _hssFieldEncoding,
+                  ("gopClosedCadence" .=) <$> _hssGopClosedCadence,
+                  ("parDenominator" .=) <$> _hssParDenominator,
                   ("spatialAdaptiveQuantization" .=) <$>
-                    _hSpatialAdaptiveQuantization])
+                    _hssSpatialAdaptiveQuantization])

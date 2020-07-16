@@ -45,6 +45,8 @@ library
 
     exposed-modules:
           Network.AWS.Route53Domains
+        , Network.AWS.Route53Domains.AcceptDomainTransferFromAnotherAWSAccount
+        , Network.AWS.Route53Domains.CancelDomainTransferToAnotherAWSAccount
         , Network.AWS.Route53Domains.CheckDomainAvailability
         , Network.AWS.Route53Domains.CheckDomainTransferability
         , Network.AWS.Route53Domains.DeleteTagsForDomain
@@ -60,10 +62,12 @@ library
         , Network.AWS.Route53Domains.ListOperations
         , Network.AWS.Route53Domains.ListTagsForDomain
         , Network.AWS.Route53Domains.RegisterDomain
+        , Network.AWS.Route53Domains.RejectDomainTransferFromAnotherAWSAccount
         , Network.AWS.Route53Domains.RenewDomain
         , Network.AWS.Route53Domains.ResendContactReachabilityEmail
         , Network.AWS.Route53Domains.RetrieveDomainAuthCode
         , Network.AWS.Route53Domains.TransferDomain
+        , Network.AWS.Route53Domains.TransferDomainToAnotherAWSAccount
         , Network.AWS.Route53Domains.Types
         , Network.AWS.Route53Domains.UpdateDomainContact
         , Network.AWS.Route53Domains.UpdateDomainContactPrivacy

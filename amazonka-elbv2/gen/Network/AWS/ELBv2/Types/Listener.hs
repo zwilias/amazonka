@@ -42,7 +42,7 @@ data Listener = Listener'{_lSSLPolicy ::
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'lSSLPolicy' - The security policy that defines which ciphers and protocols are supported. The default is the current predefined security policy.
+-- * 'lSSLPolicy' - [HTTPS or TLS listener] The security policy that defines which protocols and ciphers are supported.
 --
 -- * 'lListenerARN' - The Amazon Resource Name (ARN) of the listener.
 --
@@ -50,7 +50,7 @@ data Listener = Listener'{_lSSLPolicy ::
 --
 -- * 'lDefaultActions' - The default actions for the listener.
 --
--- * 'lCertificates' - The SSL server certificate. You must provide a certificate if the protocol is HTTPS.
+-- * 'lCertificates' - [HTTPS or TLS listener] The default certificate for the listener.
 --
 -- * 'lLoadBalancerARN' - The Amazon Resource Name (ARN) of the load balancer.
 --
@@ -63,7 +63,7 @@ listener
               _lDefaultActions = Nothing, _lCertificates = Nothing,
               _lLoadBalancerARN = Nothing, _lPort = Nothing}
 
--- | The security policy that defines which ciphers and protocols are supported. The default is the current predefined security policy.
+-- | [HTTPS or TLS listener] The security policy that defines which protocols and ciphers are supported.
 lSSLPolicy :: Lens' Listener (Maybe Text)
 lSSLPolicy = lens _lSSLPolicy (\ s a -> s{_lSSLPolicy = a})
 
@@ -79,7 +79,7 @@ lProtocol = lens _lProtocol (\ s a -> s{_lProtocol = a})
 lDefaultActions :: Lens' Listener [Action]
 lDefaultActions = lens _lDefaultActions (\ s a -> s{_lDefaultActions = a}) . _Default . _Coerce
 
--- | The SSL server certificate. You must provide a certificate if the protocol is HTTPS.
+-- | [HTTPS or TLS listener] The default certificate for the listener.
 lCertificates :: Lens' Listener [Certificate]
 lCertificates = lens _lCertificates (\ s a -> s{_lCertificates = a}) . _Default . _Coerce
 

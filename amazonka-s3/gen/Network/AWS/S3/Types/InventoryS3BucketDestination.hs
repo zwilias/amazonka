@@ -23,7 +23,11 @@ import Network.AWS.S3.Internal
 import Network.AWS.S3.Types.InventoryEncryption
 import Network.AWS.S3.Types.InventoryFormat
 
--- | /See:/ 'inventoryS3BucketDestination' smart constructor.
+-- | Contains the bucket name, file format, bucket owner (optional), and prefix (optional) where inventory results are published.
+--
+--
+--
+-- /See:/ 'inventoryS3BucketDestination' smart constructor.
 data InventoryS3BucketDestination = InventoryS3BucketDestination'{_isbdPrefix
                                                                   ::
                                                                   !(Maybe Text),
@@ -51,7 +55,7 @@ data InventoryS3BucketDestination = InventoryS3BucketDestination'{_isbdPrefix
 --
 -- * 'isbdEncryption' - Contains the type of server-side encryption used to encrypt the inventory results.
 --
--- * 'isbdBucket' - The Amazon resource name (ARN) of the bucket where inventory results will be published.
+-- * 'isbdBucket' - The Amazon Resource Name (ARN) of the bucket where inventory results will be published.
 --
 -- * 'isbdFormat' - Specifies the output format of the inventory results.
 inventoryS3BucketDestination
@@ -78,7 +82,7 @@ isbdAccountId = lens _isbdAccountId (\ s a -> s{_isbdAccountId = a})
 isbdEncryption :: Lens' InventoryS3BucketDestination (Maybe InventoryEncryption)
 isbdEncryption = lens _isbdEncryption (\ s a -> s{_isbdEncryption = a})
 
--- | The Amazon resource name (ARN) of the bucket where inventory results will be published.
+-- | The Amazon Resource Name (ARN) of the bucket where inventory results will be published.
 isbdBucket :: Lens' InventoryS3BucketDestination BucketName
 isbdBucket = lens _isbdBucket (\ s a -> s{_isbdBucket = a})
 

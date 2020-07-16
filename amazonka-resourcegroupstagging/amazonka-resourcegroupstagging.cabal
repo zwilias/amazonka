@@ -45,21 +45,28 @@ library
 
     exposed-modules:
           Network.AWS.ResourceGroupsTagging
+        , Network.AWS.ResourceGroupsTagging.DescribeReportCreation
+        , Network.AWS.ResourceGroupsTagging.GetComplianceSummary
         , Network.AWS.ResourceGroupsTagging.GetResources
         , Network.AWS.ResourceGroupsTagging.GetTagKeys
         , Network.AWS.ResourceGroupsTagging.GetTagValues
+        , Network.AWS.ResourceGroupsTagging.StartReportCreation
         , Network.AWS.ResourceGroupsTagging.TagResources
         , Network.AWS.ResourceGroupsTagging.Types
         , Network.AWS.ResourceGroupsTagging.UntagResources
         , Network.AWS.ResourceGroupsTagging.Waiters
 
     other-modules:
-          Network.AWS.ResourceGroupsTagging.Types.FailureInfo
+          Network.AWS.ResourceGroupsTagging.Types.ComplianceDetails
+        , Network.AWS.ResourceGroupsTagging.Types.FailureInfo
+        , Network.AWS.ResourceGroupsTagging.Types.GroupByAttribute
         , Network.AWS.ResourceGroupsTagging.Types.Product
         , Network.AWS.ResourceGroupsTagging.Types.ResourceErrorCode
         , Network.AWS.ResourceGroupsTagging.Types.ResourceTagMapping
+        , Network.AWS.ResourceGroupsTagging.Types.Summary
         , Network.AWS.ResourceGroupsTagging.Types.Tag
         , Network.AWS.ResourceGroupsTagging.Types.TagFilter
+        , Network.AWS.ResourceGroupsTagging.Types.TargetIdType
 
     build-depends:
           amazonka-core == 1.6.1.*

@@ -25,7 +25,7 @@ import Network.AWS.Prelude
 --
 -- This data type is used as a response element in the 'CreatePolicyVersion' , 'GetPolicyVersion' , 'ListPolicyVersions' , and 'GetAccountAuthorizationDetails' operations. 
 --
--- For more information about managed policies, refer to <http://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html Managed Policies and Inline Policies> in the /Using IAM/ guide. 
+-- For more information about managed policies, refer to <https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html Managed Policies and Inline Policies> in the /IAM User Guide/ . 
 --
 --
 -- /See:/ 'policyVersion' smart constructor.

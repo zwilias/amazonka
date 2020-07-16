@@ -58,13 +58,13 @@ data DeleteTableVersion = DeleteTableVersion'{_dtvCatalogId
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dtvCatalogId' - The ID of the Data Catalog where the tables reside. If none is supplied, the AWS account ID is used by default.
+-- * 'dtvCatalogId' - The ID of the Data Catalog where the tables reside. If none is provided, the AWS account ID is used by default.
 --
 -- * 'dtvDatabaseName' - The database in the catalog in which the table resides. For Hive compatibility, this name is entirely lowercase.
 --
 -- * 'dtvTableName' - The name of the table. For Hive compatibility, this name is entirely lowercase.
 --
--- * 'dtvVersionId' - The ID of the table version to be deleted.
+-- * 'dtvVersionId' - The ID of the table version to be deleted. A @VersionID@ is a string representation of an integer. Each version is incremented by 1.
 deleteTableVersion
     :: Text -- ^ 'dtvDatabaseName'
     -> Text -- ^ 'dtvTableName'
@@ -77,7 +77,7 @@ deleteTableVersion pDatabaseName_ pTableName_
                         _dtvTableName = pTableName_,
                         _dtvVersionId = pVersionId_}
 
--- | The ID of the Data Catalog where the tables reside. If none is supplied, the AWS account ID is used by default.
+-- | The ID of the Data Catalog where the tables reside. If none is provided, the AWS account ID is used by default.
 dtvCatalogId :: Lens' DeleteTableVersion (Maybe Text)
 dtvCatalogId = lens _dtvCatalogId (\ s a -> s{_dtvCatalogId = a})
 
@@ -89,7 +89,7 @@ dtvDatabaseName = lens _dtvDatabaseName (\ s a -> s{_dtvDatabaseName = a})
 dtvTableName :: Lens' DeleteTableVersion Text
 dtvTableName = lens _dtvTableName (\ s a -> s{_dtvTableName = a})
 
--- | The ID of the table version to be deleted.
+-- | The ID of the table version to be deleted. A @VersionID@ is a string representation of an integer. Each version is incremented by 1.
 dtvVersionId :: Lens' DeleteTableVersion Text
 dtvVersionId = lens _dtvVersionId (\ s a -> s{_dtvVersionId = a})
 

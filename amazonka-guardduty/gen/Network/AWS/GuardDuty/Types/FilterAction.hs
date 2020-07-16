@@ -27,7 +27,6 @@ module Network.AWS.GuardDuty.Types.FilterAction (
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | The action associated with a filter.
 data FilterAction = FilterAction' (CI Text)
                       deriving (Eq, Ord, Read, Show, Data, Typeable,
                                 Generic)

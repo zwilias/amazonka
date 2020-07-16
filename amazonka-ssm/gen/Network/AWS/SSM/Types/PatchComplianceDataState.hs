@@ -22,6 +22,8 @@ module Network.AWS.SSM.Types.PatchComplianceDataState (
     , Failed
     , Installed
     , InstalledOther
+    , InstalledPendingReboot
+    , InstalledRejected
     , Missing
     , NotApplicable
     )
@@ -44,6 +46,12 @@ pattern Installed = PatchComplianceDataState' "INSTALLED"
 pattern InstalledOther :: PatchComplianceDataState
 pattern InstalledOther = PatchComplianceDataState' "INSTALLED_OTHER"
 
+pattern InstalledPendingReboot :: PatchComplianceDataState
+pattern InstalledPendingReboot = PatchComplianceDataState' "INSTALLED_PENDING_REBOOT"
+
+pattern InstalledRejected :: PatchComplianceDataState
+pattern InstalledRejected = PatchComplianceDataState' "INSTALLED_REJECTED"
+
 pattern Missing :: PatchComplianceDataState
 pattern Missing = PatchComplianceDataState' "MISSING"
 
@@ -54,6 +62,8 @@ pattern NotApplicable = PatchComplianceDataState' "NOT_APPLICABLE"
   Failed,
   Installed,
   InstalledOther,
+  InstalledPendingReboot,
+  InstalledRejected,
   Missing,
   NotApplicable,
   PatchComplianceDataState' #-}
@@ -73,15 +83,19 @@ instance Enum PatchComplianceDataState where
         0 -> Failed
         1 -> Installed
         2 -> InstalledOther
-        3 -> Missing
-        4 -> NotApplicable
+        3 -> InstalledPendingReboot
+        4 -> InstalledRejected
+        5 -> Missing
+        6 -> NotApplicable
         _ -> (error . showText) $ "Unknown index for PatchComplianceDataState: " <> toText i
     fromEnum x = case x of
         Failed -> 0
         Installed -> 1
         InstalledOther -> 2
-        Missing -> 3
-        NotApplicable -> 4
+        InstalledPendingReboot -> 3
+        InstalledRejected -> 4
+        Missing -> 5
+        NotApplicable -> 6
         PatchComplianceDataState' name -> (error . showText) $ "Unknown PatchComplianceDataState: " <> original name
 
 -- | Represents the bounds of /known/ $PatchComplianceDataState.

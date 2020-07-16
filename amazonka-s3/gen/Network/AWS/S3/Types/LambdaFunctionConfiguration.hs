@@ -23,7 +23,9 @@ import Network.AWS.S3.Internal
 import Network.AWS.S3.Types.Event
 import Network.AWS.S3.Types.NotificationConfigurationFilter
 
--- | Container for specifying the AWS Lambda notification configuration.
+-- | A container for specifying the configuration for AWS Lambda notifications.
+--
+--
 --
 -- /See:/ 'lambdaFunctionConfiguration' smart constructor.
 data LambdaFunctionConfiguration = LambdaFunctionConfiguration'{_lfcId
@@ -47,9 +49,9 @@ data LambdaFunctionConfiguration = LambdaFunctionConfiguration'{_lfcId
 --
 -- * 'lfcFilter' - Undocumented member.
 --
--- * 'lfcLambdaFunctionARN' - Lambda cloud function ARN that Amazon S3 can invoke when it detects events of the specified type.
+-- * 'lfcLambdaFunctionARN' - The Amazon Resource Name (ARN) of the AWS Lambda function that Amazon S3 invokes when the specified event type occurs.
 --
--- * 'lfcEvents' - Undocumented member.
+-- * 'lfcEvents' - The Amazon S3 bucket event for which to invoke the AWS Lambda function. For more information, see <https://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html Supported Event Types> in the /Amazon Simple Storage Service Developer Guide/ .
 lambdaFunctionConfiguration
     :: Text -- ^ 'lfcLambdaFunctionARN'
     -> LambdaFunctionConfiguration
@@ -67,11 +69,11 @@ lfcId = lens _lfcId (\ s a -> s{_lfcId = a})
 lfcFilter :: Lens' LambdaFunctionConfiguration (Maybe NotificationConfigurationFilter)
 lfcFilter = lens _lfcFilter (\ s a -> s{_lfcFilter = a})
 
--- | Lambda cloud function ARN that Amazon S3 can invoke when it detects events of the specified type.
+-- | The Amazon Resource Name (ARN) of the AWS Lambda function that Amazon S3 invokes when the specified event type occurs.
 lfcLambdaFunctionARN :: Lens' LambdaFunctionConfiguration Text
 lfcLambdaFunctionARN = lens _lfcLambdaFunctionARN (\ s a -> s{_lfcLambdaFunctionARN = a})
 
--- | Undocumented member.
+-- | The Amazon S3 bucket event for which to invoke the AWS Lambda function. For more information, see <https://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html Supported Event Types> in the /Amazon Simple Storage Service Developer Guide/ .
 lfcEvents :: Lens' LambdaFunctionConfiguration [Event]
 lfcEvents = lens _lfcEvents (\ s a -> s{_lfcEvents = a}) . _Coerce
 

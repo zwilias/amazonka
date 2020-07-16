@@ -48,7 +48,7 @@ data TrafficPolicy = TrafficPolicy'{_tpComment ::
 --
 -- * 'tpType' - The DNS type of the resource record sets that Amazon Route 53 creates when you use a traffic policy to create a traffic policy instance.
 --
--- * 'tpDocument' - The definition of a traffic policy in JSON format. You specify the JSON document to use for a new traffic policy in the @CreateTrafficPolicy@ request. For more information about the JSON format, see <http://docs.aws.amazon.com/Route53/latest/APIReference/api-policies-traffic-policy-document-format.html Traffic Policy Document Format> .
+-- * 'tpDocument' - The definition of a traffic policy in JSON format. You specify the JSON document to use for a new traffic policy in the @CreateTrafficPolicy@ request. For more information about the JSON format, see <https://docs.aws.amazon.com/Route53/latest/APIReference/api-policies-traffic-policy-document-format.html Traffic Policy Document Format> .
 trafficPolicy
     :: Text -- ^ 'tpId'
     -> Natural -- ^ 'tpVersion'
@@ -81,7 +81,7 @@ tpName = lens _tpName (\ s a -> s{_tpName = a})
 tpType :: Lens' TrafficPolicy RecordType
 tpType = lens _tpType (\ s a -> s{_tpType = a})
 
--- | The definition of a traffic policy in JSON format. You specify the JSON document to use for a new traffic policy in the @CreateTrafficPolicy@ request. For more information about the JSON format, see <http://docs.aws.amazon.com/Route53/latest/APIReference/api-policies-traffic-policy-document-format.html Traffic Policy Document Format> .
+-- | The definition of a traffic policy in JSON format. You specify the JSON document to use for a new traffic policy in the @CreateTrafficPolicy@ request. For more information about the JSON format, see <https://docs.aws.amazon.com/Route53/latest/APIReference/api-policies-traffic-policy-document-format.html Traffic Policy Document Format> .
 tpDocument :: Lens' TrafficPolicy Text
 tpDocument = lens _tpDocument (\ s a -> s{_tpDocument = a})
 

@@ -23,7 +23,11 @@ import Network.AWS.S3.Internal
 import Network.AWS.S3.Types.Grant
 import Network.AWS.S3.Types.Owner
 
--- | /See:/ 'accessControlPolicy' smart constructor.
+-- | Contains the elements that set the ACL permissions for an object per grantee.
+--
+--
+--
+-- /See:/ 'accessControlPolicy' smart constructor.
 data AccessControlPolicy = AccessControlPolicy'{_acpGrants
                                                 :: !(Maybe [Grant]),
                                                 _acpOwner :: !(Maybe Owner)}
@@ -35,7 +39,7 @@ data AccessControlPolicy = AccessControlPolicy'{_acpGrants
 --
 -- * 'acpGrants' - A list of grants.
 --
--- * 'acpOwner' - Undocumented member.
+-- * 'acpOwner' - Container for the bucket owner's display name and ID.
 accessControlPolicy
     :: AccessControlPolicy
 accessControlPolicy
@@ -46,7 +50,7 @@ accessControlPolicy
 acpGrants :: Lens' AccessControlPolicy [Grant]
 acpGrants = lens _acpGrants (\ s a -> s{_acpGrants = a}) . _Default . _Coerce
 
--- | Undocumented member.
+-- | Container for the bucket owner's display name and ID.
 acpOwner :: Lens' AccessControlPolicy (Maybe Owner)
 acpOwner = lens _acpOwner (\ s a -> s{_acpOwner = a})
 

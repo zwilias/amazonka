@@ -18,8 +18,10 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Describes one or more of your instances. You can use this to get information about instances like the operating system platform, the SSM Agent version (Linux), status etc. If you specify one or more instance IDs, it returns information for those instances. If you do not specify instance IDs, it returns information for all your instances. If you specify an instance ID that is not valid or an instance that you do not own, you receive an error. 
+-- Describes one or more of your instances, including information about the operating system platform, the version of SSM Agent installed on the instance, instance status, and so on.
 --
+--
+-- If you specify one or more instance IDs, it returns information for those instances. If you do not specify instance IDs, it returns information for all your instances. If you specify an instance ID that is not valid or an instance that you do not own, you receive an error.
 --
 --
 -- This operation returns paginated results.
@@ -70,9 +72,9 @@ data DescribeInstanceInformation = DescribeInstanceInformation'{_diiInstanceInfo
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'diiInstanceInformationFilterList' - One or more filters. Use a filter to return a more specific list of instances.
+-- * 'diiInstanceInformationFilterList' - This is a legacy method. We recommend that you don't use this method. Instead, use the @Filters@ data type. @Filters@ enables you to return instance information by filtering based on tags applied to managed instances.
 --
--- * 'diiFilters' - One or more filters. Use a filter to return a more specific list of instances.
+-- * 'diiFilters' - One or more filters. Use a filter to return a more specific list of instances. You can filter based on tags applied to EC2 instances. Use this @Filters@ data type instead of @InstanceInformationFilterList@ , which is deprecated.
 --
 -- * 'diiNextToken' - The token for the next set of items to return. (You received this token from a previous call.)
 --
@@ -85,11 +87,11 @@ describeInstanceInformation
                                  _diiFilters = Nothing, _diiNextToken = Nothing,
                                  _diiMaxResults = Nothing}
 
--- | One or more filters. Use a filter to return a more specific list of instances.
+-- | This is a legacy method. We recommend that you don't use this method. Instead, use the @Filters@ data type. @Filters@ enables you to return instance information by filtering based on tags applied to managed instances.
 diiInstanceInformationFilterList :: Lens' DescribeInstanceInformation [InstanceInformationFilter]
 diiInstanceInformationFilterList = lens _diiInstanceInformationFilterList (\ s a -> s{_diiInstanceInformationFilterList = a}) . _Default . _Coerce
 
--- | One or more filters. Use a filter to return a more specific list of instances.
+-- | One or more filters. Use a filter to return a more specific list of instances. You can filter based on tags applied to EC2 instances. Use this @Filters@ data type instead of @InstanceInformationFilterList@ , which is deprecated.
 diiFilters :: Lens' DescribeInstanceInformation [InstanceInformationStringFilter]
 diiFilters = lens _diiFilters (\ s a -> s{_diiFilters = a}) . _Default . _Coerce
 

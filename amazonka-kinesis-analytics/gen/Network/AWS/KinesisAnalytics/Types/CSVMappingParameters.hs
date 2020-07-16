@@ -23,9 +23,9 @@ import Network.AWS.Prelude
 -- | Provides additional mapping information when the record format uses delimiters, such as CSV. For example, the following sample records use CSV format, where the records use the /'\n'/ as the row delimiter and a comma (",") as the column delimiter: 
 --
 --
--- @"name1", "address1" @ 
+-- @"name1", "address1"@ 
 --
--- @"name2, "address2"@ 
+-- @"name2", "address2"@ 
 --
 --
 -- /See:/ 'csvMappingParameters' smart constructor.

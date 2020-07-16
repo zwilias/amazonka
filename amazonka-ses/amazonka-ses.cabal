@@ -87,6 +87,7 @@ library
         , Network.AWS.SES.ListReceiptRuleSets
         , Network.AWS.SES.ListTemplates
         , Network.AWS.SES.ListVerifiedEmailAddresses
+        , Network.AWS.SES.PutConfigurationSetDeliveryOptions
         , Network.AWS.SES.PutIdentityPolicy
         , Network.AWS.SES.ReorderReceiptRuleSet
         , Network.AWS.SES.SendBounce
@@ -135,6 +136,7 @@ library
         , Network.AWS.SES.Types.Content
         , Network.AWS.SES.Types.CustomMailFromStatus
         , Network.AWS.SES.Types.CustomVerificationEmailTemplate
+        , Network.AWS.SES.Types.DeliveryOptions
         , Network.AWS.SES.Types.Destination
         , Network.AWS.SES.Types.DimensionValueSource
         , Network.AWS.SES.Types.DsnAction

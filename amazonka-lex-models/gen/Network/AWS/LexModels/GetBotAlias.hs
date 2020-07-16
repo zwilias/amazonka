@@ -41,6 +41,7 @@ module Network.AWS.LexModels.GetBotAlias
     , gbasrsBotName
     , gbasrsCreatedDate
     , gbasrsName
+    , gbasrsConversationLogs
     , gbasrsLastUpdatedDate
     , gbasrsDescription
     , gbasrsResponseStatus
@@ -92,6 +93,7 @@ instance AWSRequest GetBotAlias where
                      (x .?> "botName")
                      <*> (x .?> "createdDate")
                      <*> (x .?> "name")
+                     <*> (x .?> "conversationLogs")
                      <*> (x .?> "lastUpdatedDate")
                      <*> (x .?> "description")
                      <*> (pure (fromEnum s)))
@@ -125,6 +127,9 @@ data GetBotAliasResponse = GetBotAliasResponse'{_gbasrsChecksum
                                                 _gbasrsCreatedDate ::
                                                 !(Maybe POSIX),
                                                 _gbasrsName :: !(Maybe Text),
+                                                _gbasrsConversationLogs ::
+                                                !(Maybe
+                                                    ConversationLogsResponse),
                                                 _gbasrsLastUpdatedDate ::
                                                 !(Maybe POSIX),
                                                 _gbasrsDescription ::
@@ -146,6 +151,8 @@ data GetBotAliasResponse = GetBotAliasResponse'{_gbasrsChecksum
 --
 -- * 'gbasrsName' - The name of the bot alias.
 --
+-- * 'gbasrsConversationLogs' - The settings that determine how Amazon Lex uses conversation logs for the alias.
+--
 -- * 'gbasrsLastUpdatedDate' - The date that the bot alias was updated. When you create a resource, the creation date and the last updated date are the same.
 --
 -- * 'gbasrsDescription' - A description of the bot alias.
@@ -159,6 +166,7 @@ getBotAliasResponse pResponseStatus_
                          _gbasrsBotVersion = Nothing,
                          _gbasrsBotName = Nothing,
                          _gbasrsCreatedDate = Nothing, _gbasrsName = Nothing,
+                         _gbasrsConversationLogs = Nothing,
                          _gbasrsLastUpdatedDate = Nothing,
                          _gbasrsDescription = Nothing,
                          _gbasrsResponseStatus = pResponseStatus_}
@@ -182,6 +190,10 @@ gbasrsCreatedDate = lens _gbasrsCreatedDate (\ s a -> s{_gbasrsCreatedDate = a})
 -- | The name of the bot alias.
 gbasrsName :: Lens' GetBotAliasResponse (Maybe Text)
 gbasrsName = lens _gbasrsName (\ s a -> s{_gbasrsName = a})
+
+-- | The settings that determine how Amazon Lex uses conversation logs for the alias.
+gbasrsConversationLogs :: Lens' GetBotAliasResponse (Maybe ConversationLogsResponse)
+gbasrsConversationLogs = lens _gbasrsConversationLogs (\ s a -> s{_gbasrsConversationLogs = a})
 
 -- | The date that the bot alias was updated. When you create a resource, the creation date and the last updated date are the same.
 gbasrsLastUpdatedDate :: Lens' GetBotAliasResponse (Maybe UTCTime)

@@ -39,7 +39,7 @@ data ReferenceDataSource = ReferenceDataSource'{_rdsS3ReferenceDataSource
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'rdsS3ReferenceDataSource' - Identifies the S3 bucket and object that contains the reference data. Also identifies the IAM role Amazon Kinesis Analytics can assume to read this object on your behalf. An Amazon Kinesis Analytics application loads reference data only once. If the data changes, you call the 'UpdateApplication' operation to trigger reloading of data into your application. 
+-- * 'rdsS3ReferenceDataSource' - Identifies the S3 bucket and object that contains the reference data. Also identifies the IAM role Amazon Kinesis Analytics can assume to read this object on your behalf. An Amazon Kinesis Analytics application loads reference data only once. If the data changes, you call the @UpdateApplication@ operation to trigger reloading of data into your application. 
 --
 -- * 'rdsTableName' - Name of the in-application table to create.
 --
@@ -54,7 +54,7 @@ referenceDataSource pTableName_ pReferenceSchema_
                          _rdsTableName = pTableName_,
                          _rdsReferenceSchema = pReferenceSchema_}
 
--- | Identifies the S3 bucket and object that contains the reference data. Also identifies the IAM role Amazon Kinesis Analytics can assume to read this object on your behalf. An Amazon Kinesis Analytics application loads reference data only once. If the data changes, you call the 'UpdateApplication' operation to trigger reloading of data into your application. 
+-- | Identifies the S3 bucket and object that contains the reference data. Also identifies the IAM role Amazon Kinesis Analytics can assume to read this object on your behalf. An Amazon Kinesis Analytics application loads reference data only once. If the data changes, you call the @UpdateApplication@ operation to trigger reloading of data into your application. 
 rdsS3ReferenceDataSource :: Lens' ReferenceDataSource (Maybe S3ReferenceDataSource)
 rdsS3ReferenceDataSource = lens _rdsS3ReferenceDataSource (\ s a -> s{_rdsS3ReferenceDataSource = a})
 

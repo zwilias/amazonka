@@ -20,7 +20,7 @@ module Network.AWS.SSM.Types.MaintenanceWindowFilter where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | Filter used in the request.
+-- | Filter used in the request. Supported filter keys are Name and Enabled.
 --
 --
 --

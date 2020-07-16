@@ -74,7 +74,7 @@ data ProvisionedProductAttribute = ProvisionedProductAttribute'{_ppaIdempotencyT
 --
 -- * 'ppaIdempotencyToken' - A unique identifier that you provide to ensure idempotency. If multiple requests differ only by the idempotency token, the same response is returned for each repeated request.
 --
--- * 'ppaStatus' - The current status of the provisioned product.     * @AVAILABLE@ - Stable state, ready to perform any operation. The most recent operation succeeded and completed.     * @UNDER_CHANGE@ - Transitive state, operations performed might not have valid results. Wait for an @AVAILABLE@ status before performing operations.     * @TAINTED@ - Stable state, ready to perform any operation. The stack has completed the requested operation but is not exactly what was requested. For example, a request to update to a new version failed and the stack rolled back to the current version.     * @ERROR@ - An unexpected error occurred, the provisioned product exists but the stack is not running. For example, CloudFormation received a parameter value that was not valid and could not launch the stack.
+-- * 'ppaStatus' - The current status of the provisioned product.     * @AVAILABLE@ - Stable state, ready to perform any operation. The most recent operation succeeded and completed.     * @UNDER_CHANGE@ - Transitive state. Operations performed might not have valid results. Wait for an @AVAILABLE@ status before performing operations.     * @TAINTED@ - Stable state, ready to perform any operation. The stack has completed the requested operation but is not exactly what was requested. For example, a request to update to a new version failed and the stack rolled back to the current version.     * @ERROR@ - An unexpected error occurred. The provisioned product exists but the stack is not running. For example, CloudFormation received a parameter value that was not valid and could not launch the stack.     * @PLAN_IN_PROGRESS@ - Transitive state. The plan operations were performed to provision a new product, but resources have not yet been created. After reviewing the list of resources to be created, execute the plan. Wait for an @AVAILABLE@ status before performing operations.
 --
 -- * 'ppaProvisioningArtifactId' - The identifier of the provisioning artifact.
 --
@@ -94,7 +94,7 @@ data ProvisionedProductAttribute = ProvisionedProductAttribute'{_ppaIdempotencyT
 --
 -- * 'ppaId' - The identifier of the provisioned product.
 --
--- * 'ppaType' - The type of provisioned product. The supported value is @CFN_STACK@ .
+-- * 'ppaType' - The type of provisioned product. The supported values are @CFN_STACK@ and @CFN_STACKSET@ .
 --
 -- * 'ppaPhysicalId' - The assigned identifier for the resource, such as an EC2 instance ID or an S3 bucket name.
 --
@@ -120,7 +120,7 @@ provisionedProductAttribute
 ppaIdempotencyToken :: Lens' ProvisionedProductAttribute (Maybe Text)
 ppaIdempotencyToken = lens _ppaIdempotencyToken (\ s a -> s{_ppaIdempotencyToken = a})
 
--- | The current status of the provisioned product.     * @AVAILABLE@ - Stable state, ready to perform any operation. The most recent operation succeeded and completed.     * @UNDER_CHANGE@ - Transitive state, operations performed might not have valid results. Wait for an @AVAILABLE@ status before performing operations.     * @TAINTED@ - Stable state, ready to perform any operation. The stack has completed the requested operation but is not exactly what was requested. For example, a request to update to a new version failed and the stack rolled back to the current version.     * @ERROR@ - An unexpected error occurred, the provisioned product exists but the stack is not running. For example, CloudFormation received a parameter value that was not valid and could not launch the stack.
+-- | The current status of the provisioned product.     * @AVAILABLE@ - Stable state, ready to perform any operation. The most recent operation succeeded and completed.     * @UNDER_CHANGE@ - Transitive state. Operations performed might not have valid results. Wait for an @AVAILABLE@ status before performing operations.     * @TAINTED@ - Stable state, ready to perform any operation. The stack has completed the requested operation but is not exactly what was requested. For example, a request to update to a new version failed and the stack rolled back to the current version.     * @ERROR@ - An unexpected error occurred. The provisioned product exists but the stack is not running. For example, CloudFormation received a parameter value that was not valid and could not launch the stack.     * @PLAN_IN_PROGRESS@ - Transitive state. The plan operations were performed to provision a new product, but resources have not yet been created. After reviewing the list of resources to be created, execute the plan. Wait for an @AVAILABLE@ status before performing operations.
 ppaStatus :: Lens' ProvisionedProductAttribute (Maybe ProvisionedProductStatus)
 ppaStatus = lens _ppaStatus (\ s a -> s{_ppaStatus = a})
 
@@ -160,7 +160,7 @@ ppaUserARNSession = lens _ppaUserARNSession (\ s a -> s{_ppaUserARNSession = a})
 ppaId :: Lens' ProvisionedProductAttribute (Maybe Text)
 ppaId = lens _ppaId (\ s a -> s{_ppaId = a})
 
--- | The type of provisioned product. The supported value is @CFN_STACK@ .
+-- | The type of provisioned product. The supported values are @CFN_STACK@ and @CFN_STACKSET@ .
 ppaType :: Lens' ProvisionedProductAttribute (Maybe Text)
 ppaType = lens _ppaType (\ s a -> s{_ppaType = a})
 

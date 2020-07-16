@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Retrieves IDs and metadata for traces available for a specified time frame using an optional filter. To get the full traces, pass the trace IDs to @BatchGetTraces@ .
+-- Retrieves IDs and annotations for traces available for a specified time frame using an optional filter. To get the full traces, pass the trace IDs to @BatchGetTraces@ .
 --
 --
 -- A filter expression can target traced requests that hit specific service nodes or edges, have errors, or come from a known user. For example, the following filter expression targets traces that pass through @api.example.com@ :
@@ -29,7 +29,7 @@
 --
 -- @annotation.account = "12345"@ 
 --
--- For a full list of indexed fields and keywords that you can use in filter expressions, see <http://docs.aws.amazon.com/xray/latest/devguide/xray-console-filters.html Using Filter Expressions> in the /AWS X-Ray Developer Guide/ .
+-- For a full list of indexed fields and keywords that you can use in filter expressions, see <https://docs.aws.amazon.com/xray/latest/devguide/xray-console-filters.html Using Filter Expressions> in the /AWS X-Ray Developer Guide/ .
 --
 --
 -- This operation returns paginated results.
@@ -41,6 +41,8 @@ module Network.AWS.XRay.GetTraceSummaries
     -- * Request Lenses
     , gtsFilterExpression
     , gtsNextToken
+    , gtsTimeRangeType
+    , gtsSamplingStrategy
     , gtsSampling
     , gtsStartTime
     , gtsEndTime
@@ -68,6 +70,10 @@ import Network.AWS.XRay.Types.Product
 data GetTraceSummaries = GetTraceSummaries'{_gtsFilterExpression
                                             :: !(Maybe Text),
                                             _gtsNextToken :: !(Maybe Text),
+                                            _gtsTimeRangeType ::
+                                            !(Maybe TimeRangeType),
+                                            _gtsSamplingStrategy ::
+                                            !(Maybe SamplingStrategy),
                                             _gtsSampling :: !(Maybe Bool),
                                             _gtsStartTime :: !POSIX,
                                             _gtsEndTime :: !POSIX}
@@ -81,6 +87,10 @@ data GetTraceSummaries = GetTraceSummaries'{_gtsFilterExpression
 --
 -- * 'gtsNextToken' - Specify the pagination token returned by a previous request to retrieve the next page of results.
 --
+-- * 'gtsTimeRangeType' - A parameter to indicate whether to query trace summaries by TraceId or Event time.
+--
+-- * 'gtsSamplingStrategy' - A paramater to indicate whether to enable sampling on trace summaries. Input parameters are Name and Value.
+--
 -- * 'gtsSampling' - Set to @true@ to get summaries for only a subset of available traces.
 --
 -- * 'gtsStartTime' - The start of the time frame for which to retrieve traces.
@@ -92,7 +102,9 @@ getTraceSummaries
     -> GetTraceSummaries
 getTraceSummaries pStartTime_ pEndTime_
   = GetTraceSummaries'{_gtsFilterExpression = Nothing,
-                       _gtsNextToken = Nothing, _gtsSampling = Nothing,
+                       _gtsNextToken = Nothing, _gtsTimeRangeType = Nothing,
+                       _gtsSamplingStrategy = Nothing,
+                       _gtsSampling = Nothing,
                        _gtsStartTime = _Time # pStartTime_,
                        _gtsEndTime = _Time # pEndTime_}
 
@@ -103,6 +115,14 @@ gtsFilterExpression = lens _gtsFilterExpression (\ s a -> s{_gtsFilterExpression
 -- | Specify the pagination token returned by a previous request to retrieve the next page of results.
 gtsNextToken :: Lens' GetTraceSummaries (Maybe Text)
 gtsNextToken = lens _gtsNextToken (\ s a -> s{_gtsNextToken = a})
+
+-- | A parameter to indicate whether to query trace summaries by TraceId or Event time.
+gtsTimeRangeType :: Lens' GetTraceSummaries (Maybe TimeRangeType)
+gtsTimeRangeType = lens _gtsTimeRangeType (\ s a -> s{_gtsTimeRangeType = a})
+
+-- | A paramater to indicate whether to enable sampling on trace summaries. Input parameters are Name and Value.
+gtsSamplingStrategy :: Lens' GetTraceSummaries (Maybe SamplingStrategy)
+gtsSamplingStrategy = lens _gtsSamplingStrategy (\ s a -> s{_gtsSamplingStrategy = a})
 
 -- | Set to @true@ to get summaries for only a subset of available traces.
 gtsSampling :: Lens' GetTraceSummaries (Maybe Bool)
@@ -149,6 +169,8 @@ instance ToJSON GetTraceSummaries where
               (catMaybes
                  [("FilterExpression" .=) <$> _gtsFilterExpression,
                   ("NextToken" .=) <$> _gtsNextToken,
+                  ("TimeRangeType" .=) <$> _gtsTimeRangeType,
+                  ("SamplingStrategy" .=) <$> _gtsSamplingStrategy,
                   ("Sampling" .=) <$> _gtsSampling,
                   Just ("StartTime" .= _gtsStartTime),
                   Just ("EndTime" .= _gtsEndTime)])
@@ -185,7 +207,7 @@ data GetTraceSummariesResponse = GetTraceSummariesResponse'{_gtsrsTracesProcesse
 --
 -- * 'gtsrsApproximateTime' - The start time of this page of results.
 --
--- * 'gtsrsTraceSummaries' - Trace IDs and metadata for traces that were found in the specified time frame.
+-- * 'gtsrsTraceSummaries' - Trace IDs and annotations for traces that were found in the specified time frame.
 --
 -- * 'gtsrsResponseStatus' - -- | The response status code.
 getTraceSummariesResponse
@@ -211,7 +233,7 @@ gtsrsNextToken = lens _gtsrsNextToken (\ s a -> s{_gtsrsNextToken = a})
 gtsrsApproximateTime :: Lens' GetTraceSummariesResponse (Maybe UTCTime)
 gtsrsApproximateTime = lens _gtsrsApproximateTime (\ s a -> s{_gtsrsApproximateTime = a}) . mapping _Time
 
--- | Trace IDs and metadata for traces that were found in the specified time frame.
+-- | Trace IDs and annotations for traces that were found in the specified time frame.
 gtsrsTraceSummaries :: Lens' GetTraceSummariesResponse [TraceSummary]
 gtsrsTraceSummaries = lens _gtsrsTraceSummaries (\ s a -> s{_gtsrsTraceSummaries = a}) . _Default . _Coerce
 

@@ -23,7 +23,7 @@ import Network.AWS.Prelude
 -- | When included in a receipt rule, this action adds a header to the received email.
 --
 --
--- For information about adding a header using a receipt rule, see the <http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-action-add-header.html Amazon SES Developer Guide> .
+-- For information about adding a header using a receipt rule, see the <https://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-action-add-header.html Amazon SES Developer Guide> .
 --
 --
 -- /See:/ 'addHeaderAction' smart constructor.

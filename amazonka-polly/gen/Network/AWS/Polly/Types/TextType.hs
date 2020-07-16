@@ -77,3 +77,6 @@ instance ToHeader     TextType
 
 instance ToJSON TextType where
     toJSON = toJSONText
+
+instance FromJSON TextType where
+    parseJSON = parseJSONText "TextType"

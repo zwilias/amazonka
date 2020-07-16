@@ -18,7 +18,9 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Delete an APNS VoIP sandbox channel
+-- Disables the APNs VoIP sandbox channel for an application and deletes any existing settings for the channel.
+--
+--
 module Network.AWS.Pinpoint.DeleteAPNSVoipSandboxChannel
     (
     -- * Creating a Request
@@ -52,7 +54,7 @@ newtype DeleteAPNSVoipSandboxChannel = DeleteAPNSVoipSandboxChannel'{_davscAppli
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'davscApplicationId' - Undocumented member.
+-- * 'davscApplicationId' - The unique identifier for the application. This identifier is displayed as the __Project ID__ on the Amazon Pinpoint console.
 deleteAPNSVoipSandboxChannel
     :: Text -- ^ 'davscApplicationId'
     -> DeleteAPNSVoipSandboxChannel
@@ -60,7 +62,7 @@ deleteAPNSVoipSandboxChannel pApplicationId_
   = DeleteAPNSVoipSandboxChannel'{_davscApplicationId =
                                     pApplicationId_}
 
--- | Undocumented member.
+-- | The unique identifier for the application. This identifier is displayed as the __Project ID__ on the Amazon Pinpoint console.
 davscApplicationId :: Lens' DeleteAPNSVoipSandboxChannel Text
 davscApplicationId = lens _davscApplicationId (\ s a -> s{_davscApplicationId = a})
 

@@ -28,6 +28,7 @@ module Network.AWS.IoT.CreateRoleAlias
     , CreateRoleAlias
     -- * Request Lenses
     , craCredentialDurationSeconds
+    , craTags
     , craRoleAlias
     , craRoleARN
 
@@ -50,6 +51,7 @@ import Network.AWS.Response
 -- | /See:/ 'createRoleAlias' smart constructor.
 data CreateRoleAlias = CreateRoleAlias'{_craCredentialDurationSeconds
                                         :: !(Maybe Nat),
+                                        _craTags :: !(Maybe [Tag]),
                                         _craRoleAlias :: !Text,
                                         _craRoleARN :: !Text}
                          deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -59,6 +61,8 @@ data CreateRoleAlias = CreateRoleAlias'{_craCredentialDurationSeconds
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'craCredentialDurationSeconds' - How long (in seconds) the credentials will be valid.
+--
+-- * 'craTags' - Metadata which can be used to manage the role alias.
 --
 -- * 'craRoleAlias' - The role alias that points to a role ARN. This allows you to change the role without having to update the device.
 --
@@ -70,11 +74,16 @@ createRoleAlias
 createRoleAlias pRoleAlias_ pRoleARN_
   = CreateRoleAlias'{_craCredentialDurationSeconds =
                        Nothing,
-                     _craRoleAlias = pRoleAlias_, _craRoleARN = pRoleARN_}
+                     _craTags = Nothing, _craRoleAlias = pRoleAlias_,
+                     _craRoleARN = pRoleARN_}
 
 -- | How long (in seconds) the credentials will be valid.
 craCredentialDurationSeconds :: Lens' CreateRoleAlias (Maybe Natural)
 craCredentialDurationSeconds = lens _craCredentialDurationSeconds (\ s a -> s{_craCredentialDurationSeconds = a}) . mapping _Nat
+
+-- | Metadata which can be used to manage the role alias.
+craTags :: Lens' CreateRoleAlias [Tag]
+craTags = lens _craTags (\ s a -> s{_craTags = a}) . _Default . _Coerce
 
 -- | The role alias that points to a role ARN. This allows you to change the role without having to update the device.
 craRoleAlias :: Lens' CreateRoleAlias Text
@@ -107,6 +116,7 @@ instance ToJSON CreateRoleAlias where
               (catMaybes
                  [("credentialDurationSeconds" .=) <$>
                     _craCredentialDurationSeconds,
+                  ("tags" .=) <$> _craTags,
                   Just ("roleArn" .= _craRoleARN)])
 
 instance ToPath CreateRoleAlias where

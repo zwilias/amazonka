@@ -18,10 +18,10 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- An AWS customer uses this operation to temporarily stop receiving events from the specified partner event source. The matching event bus isn't deleted. 
+-- You can use this operation to temporarily stop receiving events from the specified partner event source. The matching event bus is not deleted. 
 --
 --
--- When you deactivate a partner event source, the source goes into @PENDING@ state. If it remains in @PENDING@ state for more than two weeks, it's deleted.
+-- When you deactivate a partner event source, the source goes into PENDING state. If it remains in PENDING state for more than two weeks, it is deleted.
 --
 -- To activate a deactivated partner event source, use 'ActivateEventSource' .
 --

@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Retrieves the specified lifecycle policy.
+-- Retrieves the lifecycle policy for the specified repository.
 --
 --
 module Network.AWS.ECR.GetLifecyclePolicy

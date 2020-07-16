@@ -21,7 +21,9 @@ import Network.AWS.Lens
 import Network.AWS.Pinpoint.Types.Action
 import Network.AWS.Prelude
 
--- | ADM Message.
+-- | Specifies the settings for a one-time message that's sent directly to an endpoint through the ADM (Amazon Device Messaging) channel.
+--
+--
 --
 -- /See:/ 'aDMMessage' smart constructor.
 data ADMMessage = ADMMessage'{_admmSubstitutions ::
@@ -47,37 +49,37 @@ data ADMMessage = ADMMessage'{_admmSubstitutions ::
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'admmSubstitutions' - Default message substitutions. Can be overridden by individual address substitutions.
+-- * 'admmSubstitutions' - The default message variables to use in the notification message. You can override the default variables with individual address variables.
 --
--- * 'admmExpiresAfter' - Optional. Number of seconds ADM should retain the message if the device is offline
+-- * 'admmExpiresAfter' - The amount of time, in seconds, that ADM should store the message if the recipient's device is offline. Amazon Pinpoint specifies this value in the expiresAfter parameter when it sends the notification message to ADM.
 --
--- * 'admmMD5' - Optional. Base-64-encoded MD5 checksum of the data parameter. Used to verify data integrity
+-- * 'admmMD5' - The base64-encoded, MD5 checksum of the value specified by the Data property. ADM uses the MD5 value to verify the integrity of the data.
 --
--- * 'admmSilentPush' - Indicates if the message should display on the users device. Silent pushes can be used for Remote Configuration and Phone Home use cases.
+-- * 'admmSilentPush' - Specifies whether the notification is a silent push notification, which is a push notification that doesn't display on a recipient's device. Silent push notifications can be used for cases such as updating an app's configuration or supporting phone home functionality.
 --
--- * 'admmImageIconURL' - The URL that points to an image used as the large icon to the notification content view.
+-- * 'admmImageIconURL' - The URL of the large icon image to display in the content view of the push notification.
 --
--- * 'admmRawContent' - The Raw JSON formatted string to be used as the payload. This value overrides the message.
+-- * 'admmRawContent' - The raw, JSON-formatted string to use as the payload for the notification message. If specified, this value overrides all other content for the message.
 --
--- * 'admmData' - The data payload used for a silent push. This payload is added to the notifications' data.pinpoint.jsonBody' object
+-- * 'admmData' - The JSON data payload to use for the push notification, if the notification is a silent push notification. This payload is added to the data.pinpoint.jsonBody object of the notification.
 --
--- * 'admmSmallImageIconURL' - The URL that points to an image used as the small icon for the notification which will be used to represent the notification in the status bar and content view
+-- * 'admmSmallImageIconURL' - The URL of the small icon image to display in the status bar and the content view of the push notification.
 --
--- * 'admmBody' - The message body of the notification, the email body or the text message.
+-- * 'admmBody' - The body of the notification message.
 --
--- * 'admmURL' - The URL to open in the user's mobile browser. Used if the value for Action is URL.
+-- * 'admmURL' - The URL to open in the recipient's default mobile browser, if a recipient taps the push notification and the value of the Action property is URL.
 --
--- * 'admmSound' - Indicates a sound to play when the device receives the notification. Supports default, or the filename of a sound resource bundled in the app. Android sound files must reside in /res/raw/
+-- * 'admmSound' - The sound to play when the recipient receives the push notification. You can use the default stream or specify the file name of a sound resource that's bundled in your app. On an Android platform, the sound file must reside in /res/raw/.
 --
--- * 'admmAction' - The action that occurs if the user taps a push notification delivered by the campaign: OPEN_APP - Your app launches, or it becomes the foreground app if it has been sent to the background. This is the default action. DEEP_LINK - Uses deep linking features in iOS and Android to open your app and display a designated user interface within the app. URL - The default mobile browser on the user's device launches and opens a web page at the URL you specify. Possible values include: OPEN_APP | DEEP_LINK | URL
+-- * 'admmAction' - The action to occur if the recipient taps the push notification. Valid values are:     * OPEN_APP - Your app opens or it becomes the foreground app if it was sent to the background. This is the default action.     * DEEP_LINK - Your app opens and displays a designated user interface in the app. This action uses the deep-linking features of the Android platform.     * URL - The default mobile browser on the recipient's device opens and loads the web page at a URL that you specify.
 --
--- * 'admmImageURL' - The URL that points to an image used in the push notification.
+-- * 'admmImageURL' - The URL of an image to display in the push notification.
 --
--- * 'admmConsolidationKey' - Optional. Arbitrary string used to indicate multiple messages are logically the same and that ADM is allowed to drop previously enqueued messages in favor of this one.
+-- * 'admmConsolidationKey' - An arbitrary string that indicates that multiple messages are logically the same and that Amazon Device Messaging (ADM) can drop previously enqueued messages in favor of this message.
 --
--- * 'admmTitle' - The message title that displays above the message on the user's device.
+-- * 'admmTitle' - The title to display above the notification message on the recipient's device.
 --
--- * 'admmIconReference' - The icon image name of the asset saved in your application.
+-- * 'admmIconReference' - The icon image name of the asset saved in your app.
 aDMMessage
     :: ADMMessage
 aDMMessage
@@ -93,67 +95,67 @@ aDMMessage
                 _admmConsolidationKey = Nothing,
                 _admmTitle = Nothing, _admmIconReference = Nothing}
 
--- | Default message substitutions. Can be overridden by individual address substitutions.
+-- | The default message variables to use in the notification message. You can override the default variables with individual address variables.
 admmSubstitutions :: Lens' ADMMessage (HashMap Text [Text])
 admmSubstitutions = lens _admmSubstitutions (\ s a -> s{_admmSubstitutions = a}) . _Default . _Map
 
--- | Optional. Number of seconds ADM should retain the message if the device is offline
+-- | The amount of time, in seconds, that ADM should store the message if the recipient's device is offline. Amazon Pinpoint specifies this value in the expiresAfter parameter when it sends the notification message to ADM.
 admmExpiresAfter :: Lens' ADMMessage (Maybe Text)
 admmExpiresAfter = lens _admmExpiresAfter (\ s a -> s{_admmExpiresAfter = a})
 
--- | Optional. Base-64-encoded MD5 checksum of the data parameter. Used to verify data integrity
+-- | The base64-encoded, MD5 checksum of the value specified by the Data property. ADM uses the MD5 value to verify the integrity of the data.
 admmMD5 :: Lens' ADMMessage (Maybe Text)
 admmMD5 = lens _admmMD5 (\ s a -> s{_admmMD5 = a})
 
--- | Indicates if the message should display on the users device. Silent pushes can be used for Remote Configuration and Phone Home use cases.
+-- | Specifies whether the notification is a silent push notification, which is a push notification that doesn't display on a recipient's device. Silent push notifications can be used for cases such as updating an app's configuration or supporting phone home functionality.
 admmSilentPush :: Lens' ADMMessage (Maybe Bool)
 admmSilentPush = lens _admmSilentPush (\ s a -> s{_admmSilentPush = a})
 
--- | The URL that points to an image used as the large icon to the notification content view.
+-- | The URL of the large icon image to display in the content view of the push notification.
 admmImageIconURL :: Lens' ADMMessage (Maybe Text)
 admmImageIconURL = lens _admmImageIconURL (\ s a -> s{_admmImageIconURL = a})
 
--- | The Raw JSON formatted string to be used as the payload. This value overrides the message.
+-- | The raw, JSON-formatted string to use as the payload for the notification message. If specified, this value overrides all other content for the message.
 admmRawContent :: Lens' ADMMessage (Maybe Text)
 admmRawContent = lens _admmRawContent (\ s a -> s{_admmRawContent = a})
 
--- | The data payload used for a silent push. This payload is added to the notifications' data.pinpoint.jsonBody' object
+-- | The JSON data payload to use for the push notification, if the notification is a silent push notification. This payload is added to the data.pinpoint.jsonBody object of the notification.
 admmData :: Lens' ADMMessage (HashMap Text Text)
 admmData = lens _admmData (\ s a -> s{_admmData = a}) . _Default . _Map
 
--- | The URL that points to an image used as the small icon for the notification which will be used to represent the notification in the status bar and content view
+-- | The URL of the small icon image to display in the status bar and the content view of the push notification.
 admmSmallImageIconURL :: Lens' ADMMessage (Maybe Text)
 admmSmallImageIconURL = lens _admmSmallImageIconURL (\ s a -> s{_admmSmallImageIconURL = a})
 
--- | The message body of the notification, the email body or the text message.
+-- | The body of the notification message.
 admmBody :: Lens' ADMMessage (Maybe Text)
 admmBody = lens _admmBody (\ s a -> s{_admmBody = a})
 
--- | The URL to open in the user's mobile browser. Used if the value for Action is URL.
+-- | The URL to open in the recipient's default mobile browser, if a recipient taps the push notification and the value of the Action property is URL.
 admmURL :: Lens' ADMMessage (Maybe Text)
 admmURL = lens _admmURL (\ s a -> s{_admmURL = a})
 
--- | Indicates a sound to play when the device receives the notification. Supports default, or the filename of a sound resource bundled in the app. Android sound files must reside in /res/raw/
+-- | The sound to play when the recipient receives the push notification. You can use the default stream or specify the file name of a sound resource that's bundled in your app. On an Android platform, the sound file must reside in /res/raw/.
 admmSound :: Lens' ADMMessage (Maybe Text)
 admmSound = lens _admmSound (\ s a -> s{_admmSound = a})
 
--- | The action that occurs if the user taps a push notification delivered by the campaign: OPEN_APP - Your app launches, or it becomes the foreground app if it has been sent to the background. This is the default action. DEEP_LINK - Uses deep linking features in iOS and Android to open your app and display a designated user interface within the app. URL - The default mobile browser on the user's device launches and opens a web page at the URL you specify. Possible values include: OPEN_APP | DEEP_LINK | URL
+-- | The action to occur if the recipient taps the push notification. Valid values are:     * OPEN_APP - Your app opens or it becomes the foreground app if it was sent to the background. This is the default action.     * DEEP_LINK - Your app opens and displays a designated user interface in the app. This action uses the deep-linking features of the Android platform.     * URL - The default mobile browser on the recipient's device opens and loads the web page at a URL that you specify.
 admmAction :: Lens' ADMMessage (Maybe Action)
 admmAction = lens _admmAction (\ s a -> s{_admmAction = a})
 
--- | The URL that points to an image used in the push notification.
+-- | The URL of an image to display in the push notification.
 admmImageURL :: Lens' ADMMessage (Maybe Text)
 admmImageURL = lens _admmImageURL (\ s a -> s{_admmImageURL = a})
 
--- | Optional. Arbitrary string used to indicate multiple messages are logically the same and that ADM is allowed to drop previously enqueued messages in favor of this one.
+-- | An arbitrary string that indicates that multiple messages are logically the same and that Amazon Device Messaging (ADM) can drop previously enqueued messages in favor of this message.
 admmConsolidationKey :: Lens' ADMMessage (Maybe Text)
 admmConsolidationKey = lens _admmConsolidationKey (\ s a -> s{_admmConsolidationKey = a})
 
--- | The message title that displays above the message on the user's device.
+-- | The title to display above the notification message on the recipient's device.
 admmTitle :: Lens' ADMMessage (Maybe Text)
 admmTitle = lens _admmTitle (\ s a -> s{_admmTitle = a})
 
--- | The icon image name of the asset saved in your application.
+-- | The icon image name of the asset saved in your app.
 admmIconReference :: Lens' ADMMessage (Maybe Text)
 admmIconReference = lens _admmIconReference (\ s a -> s{_admmIconReference = a})
 

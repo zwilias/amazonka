@@ -33,12 +33,12 @@ newtype Schedule = Schedule'{_sExpression ::
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'sExpression' - The expression that defines when to trigger an update. For more information, see <https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/ScheduledEvents.html Schedule Expressions for Rules> in the Amazon CloudWatch documentation.
+-- * 'sExpression' - The expression that defines when to trigger an update. For more information, see <https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/ScheduledEvents.html Schedule Expressions for Rules> in the Amazon CloudWatch Events User Guide.
 schedule
     :: Schedule
 schedule = Schedule'{_sExpression = Nothing}
 
--- | The expression that defines when to trigger an update. For more information, see <https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/ScheduledEvents.html Schedule Expressions for Rules> in the Amazon CloudWatch documentation.
+-- | The expression that defines when to trigger an update. For more information, see <https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/ScheduledEvents.html Schedule Expressions for Rules> in the Amazon CloudWatch Events User Guide.
 sExpression :: Lens' Schedule (Maybe Text)
 sExpression = lens _sExpression (\ s a -> s{_sExpression = a})
 

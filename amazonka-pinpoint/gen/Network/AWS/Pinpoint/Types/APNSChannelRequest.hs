@@ -20,7 +20,9 @@ module Network.AWS.Pinpoint.Types.APNSChannelRequest where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | Apple Push Notification Service channel definition.
+-- | Specifies the status and settings of the APNs (Apple Push Notification service) channel for an application.
+--
+--
 --
 -- /See:/ 'apnsChannelRequest' smart constructor.
 data APNSChannelRequest = APNSChannelRequest'{_acrTokenKey
@@ -39,21 +41,21 @@ data APNSChannelRequest = APNSChannelRequest'{_acrTokenKey
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'acrTokenKey' - The token key used for APNs Tokens.
+-- * 'acrTokenKey' - The authentication key to use for APNs tokens.
 --
--- * 'acrPrivateKey' - The certificate private key.
+-- * 'acrPrivateKey' - The private key for the APNs client certificate that you want Amazon Pinpoint to use to communicate with APNs.
 --
--- * 'acrEnabled' - If the channel is enabled for sending messages.
+-- * 'acrEnabled' - Specifies whether to enable the APNs channel for the application.
 --
--- * 'acrTeamId' - The team id used for APNs Tokens.
+-- * 'acrTeamId' - The identifier that's assigned to your Apple developer account team. This identifier is used for APNs tokens.
 --
--- * 'acrBundleId' - The bundle id used for APNs Tokens.
+-- * 'acrBundleId' - The bundle identifier that's assigned to your iOS app. This identifier is used for APNs tokens.
 --
--- * 'acrDefaultAuthenticationMethod' - The default authentication method used for APNs.
+-- * 'acrDefaultAuthenticationMethod' - The default authentication method that you want Amazon Pinpoint to use when authenticating with APNs, key or certificate.
 --
--- * 'acrCertificate' - The distribution certificate from Apple.
+-- * 'acrCertificate' - The APNs client certificate that you received from Apple, if you want Amazon Pinpoint to communicate with APNs by using an APNs certificate.
 --
--- * 'acrTokenKeyId' - The token key used for APNs Tokens.
+-- * 'acrTokenKeyId' - The key identifier that's assigned to your APNs signing key, if you want Amazon Pinpoint to communicate with APNs by using APNs tokens.
 apnsChannelRequest
     :: APNSChannelRequest
 apnsChannelRequest
@@ -63,35 +65,35 @@ apnsChannelRequest
                         _acrDefaultAuthenticationMethod = Nothing,
                         _acrCertificate = Nothing, _acrTokenKeyId = Nothing}
 
--- | The token key used for APNs Tokens.
+-- | The authentication key to use for APNs tokens.
 acrTokenKey :: Lens' APNSChannelRequest (Maybe Text)
 acrTokenKey = lens _acrTokenKey (\ s a -> s{_acrTokenKey = a})
 
--- | The certificate private key.
+-- | The private key for the APNs client certificate that you want Amazon Pinpoint to use to communicate with APNs.
 acrPrivateKey :: Lens' APNSChannelRequest (Maybe Text)
 acrPrivateKey = lens _acrPrivateKey (\ s a -> s{_acrPrivateKey = a})
 
--- | If the channel is enabled for sending messages.
+-- | Specifies whether to enable the APNs channel for the application.
 acrEnabled :: Lens' APNSChannelRequest (Maybe Bool)
 acrEnabled = lens _acrEnabled (\ s a -> s{_acrEnabled = a})
 
--- | The team id used for APNs Tokens.
+-- | The identifier that's assigned to your Apple developer account team. This identifier is used for APNs tokens.
 acrTeamId :: Lens' APNSChannelRequest (Maybe Text)
 acrTeamId = lens _acrTeamId (\ s a -> s{_acrTeamId = a})
 
--- | The bundle id used for APNs Tokens.
+-- | The bundle identifier that's assigned to your iOS app. This identifier is used for APNs tokens.
 acrBundleId :: Lens' APNSChannelRequest (Maybe Text)
 acrBundleId = lens _acrBundleId (\ s a -> s{_acrBundleId = a})
 
--- | The default authentication method used for APNs.
+-- | The default authentication method that you want Amazon Pinpoint to use when authenticating with APNs, key or certificate.
 acrDefaultAuthenticationMethod :: Lens' APNSChannelRequest (Maybe Text)
 acrDefaultAuthenticationMethod = lens _acrDefaultAuthenticationMethod (\ s a -> s{_acrDefaultAuthenticationMethod = a})
 
--- | The distribution certificate from Apple.
+-- | The APNs client certificate that you received from Apple, if you want Amazon Pinpoint to communicate with APNs by using an APNs certificate.
 acrCertificate :: Lens' APNSChannelRequest (Maybe Text)
 acrCertificate = lens _acrCertificate (\ s a -> s{_acrCertificate = a})
 
--- | The token key used for APNs Tokens.
+-- | The key identifier that's assigned to your APNs signing key, if you want Amazon Pinpoint to communicate with APNs by using APNs tokens.
 acrTokenKeyId :: Lens' APNSChannelRequest (Maybe Text)
 acrTokenKeyId = lens _acrTokenKeyId (\ s a -> s{_acrTokenKeyId = a})
 

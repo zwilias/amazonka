@@ -21,7 +21,9 @@ import Network.AWS.GuardDuty.Types.Condition
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | Represents the criteria used for querying findings.
+-- | Contains information about the criteria used for querying findings.
+--
+--
 --
 -- /See:/ 'findingCriteria' smart constructor.
 newtype FindingCriteria = FindingCriteria'{_fcCriterion

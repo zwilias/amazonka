@@ -21,6 +21,8 @@
 -- Detaches a stopped block storage disk from a Lightsail instance. Make sure to unmount any file systems on the device within your operating system before stopping the instance and detaching the disk.
 --
 --
+-- The @detach disk@ operation supports tag-based access control via resource tags applied to the resource identified by @disk name@ . For more information, see the <https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags Lightsail Dev Guide> .
+--
 module Network.AWS.Lightsail.DetachDisk
     (
     -- * Creating a Request
@@ -107,7 +109,7 @@ data DetachDiskResponse = DetachDiskResponse'{_ddrsOperations
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'ddrsOperations' - An object describing the API operations.
+-- * 'ddrsOperations' - An array of objects that describe the result of the action, such as the status of the request, the time stamp of the request, and the resources affected by the request.
 --
 -- * 'ddrsResponseStatus' - -- | The response status code.
 detachDiskResponse
@@ -117,7 +119,7 @@ detachDiskResponse pResponseStatus_
   = DetachDiskResponse'{_ddrsOperations = Nothing,
                         _ddrsResponseStatus = pResponseStatus_}
 
--- | An object describing the API operations.
+-- | An array of objects that describe the result of the action, such as the status of the request, the time stamp of the request, and the resources affected by the request.
 ddrsOperations :: Lens' DetachDiskResponse [Operation]
 ddrsOperations = lens _ddrsOperations (\ s a -> s{_ddrsOperations = a}) . _Default . _Coerce
 

@@ -27,7 +27,7 @@ module Network.AWS.MediaLive.Types.HlsWebdavHTTPTransferMode (
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | Placeholder documentation for HlsWebdavHttpTransferMode
+-- | Hls Webdav Http Transfer Mode
 data HlsWebdavHTTPTransferMode = HlsWebdavHTTPTransferMode' (CI
                                                                Text)
                                    deriving (Eq, Ord, Read, Show, Data,

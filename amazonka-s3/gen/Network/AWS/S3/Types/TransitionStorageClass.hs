@@ -19,7 +19,9 @@
 module Network.AWS.S3.Types.TransitionStorageClass (
   TransitionStorageClass (
     ..
+    , TSCDeepArchive
     , TSCGlacier
+    , TSCIntelligentTiering
     , TSCOnezoneIA
     , TSCStandardIA
     )
@@ -34,8 +36,14 @@ data TransitionStorageClass = TransitionStorageClass' (CI
                                 deriving (Eq, Ord, Read, Show, Data, Typeable,
                                           Generic)
 
+pattern TSCDeepArchive :: TransitionStorageClass
+pattern TSCDeepArchive = TransitionStorageClass' "DEEP_ARCHIVE"
+
 pattern TSCGlacier :: TransitionStorageClass
 pattern TSCGlacier = TransitionStorageClass' "GLACIER"
+
+pattern TSCIntelligentTiering :: TransitionStorageClass
+pattern TSCIntelligentTiering = TransitionStorageClass' "INTELLIGENT_TIERING"
 
 pattern TSCOnezoneIA :: TransitionStorageClass
 pattern TSCOnezoneIA = TransitionStorageClass' "ONEZONE_IA"
@@ -44,7 +52,9 @@ pattern TSCStandardIA :: TransitionStorageClass
 pattern TSCStandardIA = TransitionStorageClass' "STANDARD_IA"
 
 {-# COMPLETE
+  TSCDeepArchive,
   TSCGlacier,
+  TSCIntelligentTiering,
   TSCOnezoneIA,
   TSCStandardIA,
   TransitionStorageClass' #-}
@@ -61,21 +71,25 @@ instance ToText TransitionStorageClass where
 --   fromEnum is a partial function, and will error on values unknown at generation time.
 instance Enum TransitionStorageClass where
     toEnum i = case i of
-        0 -> TSCGlacier
-        1 -> TSCOnezoneIA
-        2 -> TSCStandardIA
+        0 -> TSCDeepArchive
+        1 -> TSCGlacier
+        2 -> TSCIntelligentTiering
+        3 -> TSCOnezoneIA
+        4 -> TSCStandardIA
         _ -> (error . showText) $ "Unknown index for TransitionStorageClass: " <> toText i
     fromEnum x = case x of
-        TSCGlacier -> 0
-        TSCOnezoneIA -> 1
-        TSCStandardIA -> 2
+        TSCDeepArchive -> 0
+        TSCGlacier -> 1
+        TSCIntelligentTiering -> 2
+        TSCOnezoneIA -> 3
+        TSCStandardIA -> 4
         TransitionStorageClass' name -> (error . showText) $ "Unknown TransitionStorageClass: " <> original name
 
 -- | Represents the bounds of /known/ $TransitionStorageClass.
 --   AWS may have added more since the source was generated.
 --   This instance exists only for backward compatibility.
 instance Bounded TransitionStorageClass where
-    minBound = TSCGlacier
+    minBound = TSCDeepArchive
     maxBound = TSCStandardIA
 
 instance Hashable     TransitionStorageClass

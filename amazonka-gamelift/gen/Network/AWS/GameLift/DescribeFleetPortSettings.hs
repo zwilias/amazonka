@@ -18,10 +18,16 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Retrieves the inbound connection permissions for a fleet. Connection permissions include a range of IP addresses and port settings that incoming traffic can use to access server processes in the fleet. To get a fleet's inbound connection permissions, specify a fleet ID. If successful, a collection of 'IpPermission' objects is returned for the requested fleet ID. If the requested fleet has been deleted, the result set is empty.
+-- Retrieves a fleet's inbound connection permissions. Connection permissions specify the range of IP addresses and port settings that incoming traffic can use to access server processes in the fleet. Game sessions that are running on instances in the fleet use connections that fall in this range. 
 --
 --
--- Fleet-related operations include:
+-- To get a fleet's inbound connection permissions, specify the fleet's unique identifier. If successful, a collection of 'IpPermission' objects is returned for the requested fleet ID. If the requested fleet has been deleted, the result set is empty.
+--
+-- __Learn more__ 
+--
+-- <https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html Setting up GameLift Fleets> 
+--
+-- __Related operations__ 
 --
 --     * 'CreateFleet' 
 --
@@ -47,25 +53,9 @@
 --
 --
 --
---     * Update fleets:
---
 --     * 'UpdateFleetAttributes' 
 --
---     * 'UpdateFleetCapacity' 
---
---     * 'UpdateFleetPortSettings' 
---
---     * 'UpdateRuntimeConfiguration' 
---
---
---
---     * Manage fleet actions:
---
---     * 'StartFleetActions' 
---
---     * 'StopFleetActions' 
---
---
+--     * 'StartFleetActions' or 'StopFleetActions' 
 --
 --
 --
@@ -106,7 +96,7 @@ newtype DescribeFleetPortSettings = DescribeFleetPortSettings'{_dfpsFleetId
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dfpsFleetId' - Unique identifier for a fleet to retrieve port settings for.
+-- * 'dfpsFleetId' - A unique identifier for a fleet to retrieve port settings for. You can use either the fleet ID or ARN value.
 describeFleetPortSettings
     :: Text -- ^ 'dfpsFleetId'
     -> DescribeFleetPortSettings
@@ -114,7 +104,7 @@ describeFleetPortSettings pFleetId_
   = DescribeFleetPortSettings'{_dfpsFleetId =
                                  pFleetId_}
 
--- | Unique identifier for a fleet to retrieve port settings for.
+-- | A unique identifier for a fleet to retrieve port settings for. You can use either the fleet ID or ARN value.
 dfpsFleetId :: Lens' DescribeFleetPortSettings Text
 dfpsFleetId = lens _dfpsFleetId (\ s a -> s{_dfpsFleetId = a})
 
@@ -172,7 +162,7 @@ data DescribeFleetPortSettingsResponse = DescribeFleetPortSettingsResponse'{_dfp
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dfpsrsInboundPermissions' - Object that contains port settings for the requested fleet ID.
+-- * 'dfpsrsInboundPermissions' - The port settings for the requested fleet ID.
 --
 -- * 'dfpsrsResponseStatus' - -- | The response status code.
 describeFleetPortSettingsResponse
@@ -183,7 +173,7 @@ describeFleetPortSettingsResponse pResponseStatus_
                                          = Nothing,
                                        _dfpsrsResponseStatus = pResponseStatus_}
 
--- | Object that contains port settings for the requested fleet ID.
+-- | The port settings for the requested fleet ID.
 dfpsrsInboundPermissions :: Lens' DescribeFleetPortSettingsResponse [IPPermission]
 dfpsrsInboundPermissions = lens _dfpsrsInboundPermissions (\ s a -> s{_dfpsrsInboundPermissions = a}) . _Default . _Coerce
 

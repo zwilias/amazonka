@@ -22,7 +22,9 @@ import Network.AWS.Prelude
 import Network.AWS.S3.Internal
 import Network.AWS.S3.Types.ServerSideEncryption
 
--- | Describes the default server-side encryption to apply to new objects in the bucket. If Put Object request does not specify any server-side encryption, this default encryption will be applied.
+-- | Describes the default server-side encryption to apply to new objects in the bucket. If a PUT Object request doesn't specify any server-side encryption, this default encryption will be applied. For more information, see <https://docs.aws.amazon.com/AmazonS3/latest/API/RESTBucketPUTencryption.html PUT Bucket encryption> in the /Amazon Simple Storage Service API Reference/ .
+--
+--
 --
 -- /See:/ 'serverSideEncryptionByDefault' smart constructor.
 data ServerSideEncryptionByDefault = ServerSideEncryptionByDefault'{_ssebdKMSMasterKeyId
@@ -40,7 +42,7 @@ data ServerSideEncryptionByDefault = ServerSideEncryptionByDefault'{_ssebdKMSMas
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'ssebdKMSMasterKeyId' - KMS master key ID to use for the default encryption. This parameter is allowed if SSEAlgorithm is aws:kms.
+-- * 'ssebdKMSMasterKeyId' - KMS master key ID to use for the default encryption. This parameter is allowed if and only if @SSEAlgorithm@ is set to @aws:kms@ .
 --
 -- * 'ssebdSSEAlgorithm' - Server-side encryption algorithm to use for the default encryption.
 serverSideEncryptionByDefault
@@ -51,7 +53,7 @@ serverSideEncryptionByDefault pSSEAlgorithm_
                                      = Nothing,
                                    _ssebdSSEAlgorithm = pSSEAlgorithm_}
 
--- | KMS master key ID to use for the default encryption. This parameter is allowed if SSEAlgorithm is aws:kms.
+-- | KMS master key ID to use for the default encryption. This parameter is allowed if and only if @SSEAlgorithm@ is set to @aws:kms@ .
 ssebdKMSMasterKeyId :: Lens' ServerSideEncryptionByDefault (Maybe Text)
 ssebdKMSMasterKeyId = lens _ssebdKMSMasterKeyId (\ s a -> s{_ssebdKMSMasterKeyId = a}) . mapping _Sensitive
 

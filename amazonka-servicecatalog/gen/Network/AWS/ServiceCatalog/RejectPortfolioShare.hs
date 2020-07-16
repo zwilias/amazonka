@@ -27,6 +27,7 @@ module Network.AWS.ServiceCatalog.RejectPortfolioShare
       rejectPortfolioShare
     , RejectPortfolioShare
     -- * Request Lenses
+    , rpsPortfolioShareType
     , rpsAcceptLanguage
     , rpsPortfolioId
 
@@ -45,14 +46,19 @@ import Network.AWS.ServiceCatalog.Types
 import Network.AWS.ServiceCatalog.Types.Product
 
 -- | /See:/ 'rejectPortfolioShare' smart constructor.
-data RejectPortfolioShare = RejectPortfolioShare'{_rpsAcceptLanguage
-                                                  :: !(Maybe Text),
+data RejectPortfolioShare = RejectPortfolioShare'{_rpsPortfolioShareType
+                                                  ::
+                                                  !(Maybe PortfolioShareType),
+                                                  _rpsAcceptLanguage ::
+                                                  !(Maybe Text),
                                                   _rpsPortfolioId :: !Text}
                               deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'RejectPortfolioShare' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'rpsPortfolioShareType' - The type of shared portfolios to reject. The default is to reject imported portfolios.     * @AWS_ORGANIZATIONS@ - Reject portfolios shared by the master account of your organization.     * @IMPORTED@ - Reject imported portfolios.     * @AWS_SERVICECATALOG@ - Not supported. (Throws ResourceNotFoundException.) For example, @aws servicecatalog reject-portfolio-share --portfolio-id "port-2qwzkwxt3y5fk" --portfolio-share-type AWS_ORGANIZATIONS@ 
 --
 -- * 'rpsAcceptLanguage' - The language code.     * @en@ - English (default)     * @jp@ - Japanese     * @zh@ - Chinese
 --
@@ -61,8 +67,14 @@ rejectPortfolioShare
     :: Text -- ^ 'rpsPortfolioId'
     -> RejectPortfolioShare
 rejectPortfolioShare pPortfolioId_
-  = RejectPortfolioShare'{_rpsAcceptLanguage = Nothing,
+  = RejectPortfolioShare'{_rpsPortfolioShareType =
+                            Nothing,
+                          _rpsAcceptLanguage = Nothing,
                           _rpsPortfolioId = pPortfolioId_}
+
+-- | The type of shared portfolios to reject. The default is to reject imported portfolios.     * @AWS_ORGANIZATIONS@ - Reject portfolios shared by the master account of your organization.     * @IMPORTED@ - Reject imported portfolios.     * @AWS_SERVICECATALOG@ - Not supported. (Throws ResourceNotFoundException.) For example, @aws servicecatalog reject-portfolio-share --portfolio-id "port-2qwzkwxt3y5fk" --portfolio-share-type AWS_ORGANIZATIONS@ 
+rpsPortfolioShareType :: Lens' RejectPortfolioShare (Maybe PortfolioShareType)
+rpsPortfolioShareType = lens _rpsPortfolioShareType (\ s a -> s{_rpsPortfolioShareType = a})
 
 -- | The language code.     * @en@ - English (default)     * @jp@ - Japanese     * @zh@ - Chinese
 rpsAcceptLanguage :: Lens' RejectPortfolioShare (Maybe Text)
@@ -100,7 +112,9 @@ instance ToJSON RejectPortfolioShare where
         toJSON RejectPortfolioShare'{..}
           = object
               (catMaybes
-                 [("AcceptLanguage" .=) <$> _rpsAcceptLanguage,
+                 [("PortfolioShareType" .=) <$>
+                    _rpsPortfolioShareType,
+                  ("AcceptLanguage" .=) <$> _rpsAcceptLanguage,
                   Just ("PortfolioId" .= _rpsPortfolioId)])
 
 instance ToPath RejectPortfolioShare where

@@ -28,11 +28,10 @@ import Network.AWS.Prelude
 -- /See:/ 'greengrassLogger' smart constructor.
 data GreengrassLogger = GreengrassLogger'{_glSpace ::
                                           !(Maybe Int),
-                                          _glComponent ::
-                                          !(Maybe LoggerComponent),
-                                          _glId :: !(Maybe Text),
-                                          _glType :: !(Maybe LoggerType),
-                                          _glLevel :: !(Maybe LoggerLevel)}
+                                          _glType :: !LoggerType,
+                                          _glLevel :: !LoggerLevel,
+                                          _glId :: !Text,
+                                          _glComponent :: !LoggerComponent}
                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GreengrassLogger' with the minimum fields required to make a request.
@@ -41,49 +40,52 @@ data GreengrassLogger = GreengrassLogger'{_glSpace ::
 --
 -- * 'glSpace' - The amount of file space, in KB, to use if the local file system is used for logging purposes.
 --
--- * 'glComponent' - The component that will be subject to logging.
---
--- * 'glId' - The id of the logger.
---
 -- * 'glType' - The type of log output which will be used.
 --
 -- * 'glLevel' - The level of the logs.
+--
+-- * 'glId' - A descriptive or arbitrary ID for the logger. This value must be unique within the logger definition version. Max length is 128 characters with pattern ''[a-zA-Z0-9:_-]+''.
+--
+-- * 'glComponent' - The component that will be subject to logging.
 greengrassLogger
-    :: GreengrassLogger
-greengrassLogger
+    :: LoggerType -- ^ 'glType'
+    -> LoggerLevel -- ^ 'glLevel'
+    -> Text -- ^ 'glId'
+    -> LoggerComponent -- ^ 'glComponent'
+    -> GreengrassLogger
+greengrassLogger pType_ pLevel_ pId_ pComponent_
   = GreengrassLogger'{_glSpace = Nothing,
-                      _glComponent = Nothing, _glId = Nothing,
-                      _glType = Nothing, _glLevel = Nothing}
+                      _glType = pType_, _glLevel = pLevel_, _glId = pId_,
+                      _glComponent = pComponent_}
 
 -- | The amount of file space, in KB, to use if the local file system is used for logging purposes.
 glSpace :: Lens' GreengrassLogger (Maybe Int)
 glSpace = lens _glSpace (\ s a -> s{_glSpace = a})
 
--- | The component that will be subject to logging.
-glComponent :: Lens' GreengrassLogger (Maybe LoggerComponent)
-glComponent = lens _glComponent (\ s a -> s{_glComponent = a})
-
--- | The id of the logger.
-glId :: Lens' GreengrassLogger (Maybe Text)
-glId = lens _glId (\ s a -> s{_glId = a})
-
 -- | The type of log output which will be used.
-glType :: Lens' GreengrassLogger (Maybe LoggerType)
+glType :: Lens' GreengrassLogger LoggerType
 glType = lens _glType (\ s a -> s{_glType = a})
 
 -- | The level of the logs.
-glLevel :: Lens' GreengrassLogger (Maybe LoggerLevel)
+glLevel :: Lens' GreengrassLogger LoggerLevel
 glLevel = lens _glLevel (\ s a -> s{_glLevel = a})
+
+-- | A descriptive or arbitrary ID for the logger. This value must be unique within the logger definition version. Max length is 128 characters with pattern ''[a-zA-Z0-9:_-]+''.
+glId :: Lens' GreengrassLogger Text
+glId = lens _glId (\ s a -> s{_glId = a})
+
+-- | The component that will be subject to logging.
+glComponent :: Lens' GreengrassLogger LoggerComponent
+glComponent = lens _glComponent (\ s a -> s{_glComponent = a})
 
 instance FromJSON GreengrassLogger where
         parseJSON
           = withObject "GreengrassLogger"
               (\ x ->
                  GreengrassLogger' <$>
-                   (x .:? "Space") <*> (x .:? "Component") <*>
-                     (x .:? "Id")
-                     <*> (x .:? "Type")
-                     <*> (x .:? "Level"))
+                   (x .:? "Space") <*> (x .: "Type") <*> (x .: "Level")
+                     <*> (x .: "Id")
+                     <*> (x .: "Component"))
 
 instance Hashable GreengrassLogger where
 
@@ -93,7 +95,6 @@ instance ToJSON GreengrassLogger where
         toJSON GreengrassLogger'{..}
           = object
               (catMaybes
-                 [("Space" .=) <$> _glSpace,
-                  ("Component" .=) <$> _glComponent,
-                  ("Id" .=) <$> _glId, ("Type" .=) <$> _glType,
-                  ("Level" .=) <$> _glLevel])
+                 [("Space" .=) <$> _glSpace, Just ("Type" .= _glType),
+                  Just ("Level" .= _glLevel), Just ("Id" .= _glId),
+                  Just ("Component" .= _glComponent)])

@@ -20,6 +20,7 @@ module Network.AWS.AlexaBusiness.Types.DeviceStatus (
   DeviceStatus (
     ..
     , Deregistered
+    , Failed
     , Pending
     , Ready
     , WasOffline
@@ -36,6 +37,9 @@ data DeviceStatus = DeviceStatus' (CI Text)
 pattern Deregistered :: DeviceStatus
 pattern Deregistered = DeviceStatus' "DEREGISTERED"
 
+pattern Failed :: DeviceStatus
+pattern Failed = DeviceStatus' "FAILED"
+
 pattern Pending :: DeviceStatus
 pattern Pending = DeviceStatus' "PENDING"
 
@@ -47,6 +51,7 @@ pattern WasOffline = DeviceStatus' "WAS_OFFLINE"
 
 {-# COMPLETE
   Deregistered,
+  Failed,
   Pending,
   Ready,
   WasOffline,
@@ -65,15 +70,17 @@ instance ToText DeviceStatus where
 instance Enum DeviceStatus where
     toEnum i = case i of
         0 -> Deregistered
-        1 -> Pending
-        2 -> Ready
-        3 -> WasOffline
+        1 -> Failed
+        2 -> Pending
+        3 -> Ready
+        4 -> WasOffline
         _ -> (error . showText) $ "Unknown index for DeviceStatus: " <> toText i
     fromEnum x = case x of
         Deregistered -> 0
-        Pending -> 1
-        Ready -> 2
-        WasOffline -> 3
+        Failed -> 1
+        Pending -> 2
+        Ready -> 3
+        WasOffline -> 4
         DeviceStatus' name -> (error . showText) $ "Unknown DeviceStatus: " <> original name
 
 -- | Represents the bounds of /known/ $DeviceStatus.

@@ -27,7 +27,7 @@ module Network.AWS.MediaLive.Types.GlobalConfigurationInputEndAction (
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | Placeholder documentation for GlobalConfigurationInputEndAction
+-- | Global Configuration Input End Action
 data GlobalConfigurationInputEndAction = GlobalConfigurationInputEndAction' (CI
                                                                                Text)
                                            deriving (Eq, Ord, Read, Show, Data,

@@ -18,13 +18,16 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Updates an Amazon GuardDuty detector specified by the detectorId.
+-- Updates the Amazon GuardDuty detector specified by the detectorId.
+--
+--
 module Network.AWS.GuardDuty.UpdateDetector
     (
     -- * Creating a Request
       updateDetector
     , UpdateDetector
     -- * Request Lenses
+    , udFindingPublishingFrequency
     , udEnable
     , udDetectorId
 
@@ -42,11 +45,10 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
--- | UpdateDetector request body.
---
--- /See:/ 'updateDetector' smart constructor.
-data UpdateDetector = UpdateDetector'{_udEnable ::
-                                      !(Maybe Bool),
+-- | /See:/ 'updateDetector' smart constructor.
+data UpdateDetector = UpdateDetector'{_udFindingPublishingFrequency
+                                      :: !(Maybe FindingPublishingFrequency),
+                                      _udEnable :: !(Maybe Bool),
                                       _udDetectorId :: !Text}
                         deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -54,21 +56,28 @@ data UpdateDetector = UpdateDetector'{_udEnable ::
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'udEnable' - Updated boolean value for the detector that specifies whether the detector is enabled.
+-- * 'udFindingPublishingFrequency' - An enum value that specifies how frequently findings are exported, such as to CloudWatch Events.
 --
--- * 'udDetectorId' - The unique ID of the detector that you want to update.
+-- * 'udEnable' - Specifies whether the detector is enabled or not enabled.
+--
+-- * 'udDetectorId' - The unique ID of the detector to update.
 updateDetector
     :: Text -- ^ 'udDetectorId'
     -> UpdateDetector
 updateDetector pDetectorId_
-  = UpdateDetector'{_udEnable = Nothing,
-                    _udDetectorId = pDetectorId_}
+  = UpdateDetector'{_udFindingPublishingFrequency =
+                      Nothing,
+                    _udEnable = Nothing, _udDetectorId = pDetectorId_}
 
--- | Updated boolean value for the detector that specifies whether the detector is enabled.
+-- | An enum value that specifies how frequently findings are exported, such as to CloudWatch Events.
+udFindingPublishingFrequency :: Lens' UpdateDetector (Maybe FindingPublishingFrequency)
+udFindingPublishingFrequency = lens _udFindingPublishingFrequency (\ s a -> s{_udFindingPublishingFrequency = a})
+
+-- | Specifies whether the detector is enabled or not enabled.
 udEnable :: Lens' UpdateDetector (Maybe Bool)
 udEnable = lens _udEnable (\ s a -> s{_udEnable = a})
 
--- | The unique ID of the detector that you want to update.
+-- | The unique ID of the detector to update.
 udDetectorId :: Lens' UpdateDetector Text
 udDetectorId = lens _udDetectorId (\ s a -> s{_udDetectorId = a})
 
@@ -93,7 +102,11 @@ instance ToHeaders UpdateDetector where
 
 instance ToJSON UpdateDetector where
         toJSON UpdateDetector'{..}
-          = object (catMaybes [("enable" .=) <$> _udEnable])
+          = object
+              (catMaybes
+                 [("findingPublishingFrequency" .=) <$>
+                    _udFindingPublishingFrequency,
+                  ("enable" .=) <$> _udEnable])
 
 instance ToPath UpdateDetector where
         toPath UpdateDetector'{..}

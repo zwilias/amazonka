@@ -37,7 +37,7 @@ data InputConfiguration = InputConfiguration'{_icId
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'icId' - Input source ID. You can get this ID by calling the 'DescribeApplication' operation.
+-- * 'icId' - Input source ID. You can get this ID by calling the <https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_DescribeApplication.html DescribeApplication> operation.
 --
 -- * 'icInputStartingPositionConfiguration' - Point at which you want the application to start processing records from the streaming source.
 inputConfiguration
@@ -50,7 +50,7 @@ inputConfiguration pId_
                         _icInputStartingPositionConfiguration =
                           pInputStartingPositionConfiguration_}
 
--- | Input source ID. You can get this ID by calling the 'DescribeApplication' operation.
+-- | Input source ID. You can get this ID by calling the <https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_DescribeApplication.html DescribeApplication> operation.
 icId :: Lens' InputConfiguration Text
 icId = lens _icId (\ s a -> s{_icId = a})
 

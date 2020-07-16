@@ -23,51 +23,17 @@ import Network.AWS.Prelude
 -- | Current status of fleet utilization, including the number of game and player sessions being hosted.
 --
 --
--- Fleet-related operations include:
---
 --     * 'CreateFleet' 
 --
 --     * 'ListFleets' 
 --
 --     * 'DeleteFleet' 
 --
---     * Describe fleets:
---
 --     * 'DescribeFleetAttributes' 
---
---     * 'DescribeFleetCapacity' 
---
---     * 'DescribeFleetPortSettings' 
---
---     * 'DescribeFleetUtilization' 
---
---     * 'DescribeRuntimeConfiguration' 
---
---     * 'DescribeEC2InstanceLimits' 
---
---     * 'DescribeFleetEvents' 
---
---
---
---     * Update fleets:
 --
 --     * 'UpdateFleetAttributes' 
 --
---     * 'UpdateFleetCapacity' 
---
---     * 'UpdateFleetPortSettings' 
---
---     * 'UpdateRuntimeConfiguration' 
---
---
---
---     * Manage fleet actions:
---
---     * 'StartFleetActions' 
---
---     * 'StopFleetActions' 
---
---
+--     * 'StartFleetActions' or 'StopFleetActions' 
 --
 --
 --
@@ -90,11 +56,11 @@ data FleetUtilization = FleetUtilization'{_fuActiveGameSessionCount
 --
 -- * 'fuActiveGameSessionCount' - Number of active game sessions currently being hosted on all instances in the fleet.
 --
--- * 'fuMaximumPlayerSessionCount' - Maximum players allowed across all game sessions currently being hosted on all instances in the fleet.
+-- * 'fuMaximumPlayerSessionCount' - The maximum number of players allowed across all game sessions currently being hosted on all instances in the fleet.
 --
 -- * 'fuCurrentPlayerSessionCount' - Number of active player sessions currently being hosted on all instances in the fleet.
 --
--- * 'fuFleetId' - Unique identifier for a fleet.
+-- * 'fuFleetId' - A unique identifier for a fleet.
 --
 -- * 'fuActiveServerProcessCount' - Number of server processes in an @ACTIVE@ status currently running across all instances in the fleet
 fleetUtilization
@@ -111,7 +77,7 @@ fleetUtilization
 fuActiveGameSessionCount :: Lens' FleetUtilization (Maybe Natural)
 fuActiveGameSessionCount = lens _fuActiveGameSessionCount (\ s a -> s{_fuActiveGameSessionCount = a}) . mapping _Nat
 
--- | Maximum players allowed across all game sessions currently being hosted on all instances in the fleet.
+-- | The maximum number of players allowed across all game sessions currently being hosted on all instances in the fleet.
 fuMaximumPlayerSessionCount :: Lens' FleetUtilization (Maybe Natural)
 fuMaximumPlayerSessionCount = lens _fuMaximumPlayerSessionCount (\ s a -> s{_fuMaximumPlayerSessionCount = a}) . mapping _Nat
 
@@ -119,7 +85,7 @@ fuMaximumPlayerSessionCount = lens _fuMaximumPlayerSessionCount (\ s a -> s{_fuM
 fuCurrentPlayerSessionCount :: Lens' FleetUtilization (Maybe Natural)
 fuCurrentPlayerSessionCount = lens _fuCurrentPlayerSessionCount (\ s a -> s{_fuCurrentPlayerSessionCount = a}) . mapping _Nat
 
--- | Unique identifier for a fleet.
+-- | A unique identifier for a fleet.
 fuFleetId :: Lens' FleetUtilization (Maybe Text)
 fuFleetId = lens _fuFleetId (\ s a -> s{_fuFleetId = a})
 

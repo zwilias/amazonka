@@ -56,7 +56,7 @@ data RemoveTagsFromCertificate = RemoveTagsFromCertificate'{_rtfcCertificateARN
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'rtfcCertificateARN' - String that contains the ARN of the ACM Certificate with one or more tags that you want to remove. This must be of the form: @arn:aws:acm:region:123456789012:certificate/12345678-1234-1234-1234-123456789012@  For more information about ARNs, see <http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html Amazon Resource Names (ARNs) and AWS Service Namespaces> . 
+-- * 'rtfcCertificateARN' - String that contains the ARN of the ACM Certificate with one or more tags that you want to remove. This must be of the form: @arn:aws:acm:region:123456789012:certificate/12345678-1234-1234-1234-123456789012@  For more information about ARNs, see <https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html Amazon Resource Names (ARNs) and AWS Service Namespaces> . 
 --
 -- * 'rtfcTags' - The key-value pair that defines the tag to remove.
 removeTagsFromCertificate
@@ -68,7 +68,7 @@ removeTagsFromCertificate pCertificateARN_ pTags_
                                  pCertificateARN_,
                                _rtfcTags = _List1 # pTags_}
 
--- | String that contains the ARN of the ACM Certificate with one or more tags that you want to remove. This must be of the form: @arn:aws:acm:region:123456789012:certificate/12345678-1234-1234-1234-123456789012@  For more information about ARNs, see <http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html Amazon Resource Names (ARNs) and AWS Service Namespaces> . 
+-- | String that contains the ARN of the ACM Certificate with one or more tags that you want to remove. This must be of the form: @arn:aws:acm:region:123456789012:certificate/12345678-1234-1234-1234-123456789012@  For more information about ARNs, see <https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html Amazon Resource Names (ARNs) and AWS Service Namespaces> . 
 rtfcCertificateARN :: Lens' RemoveTagsFromCertificate Text
 rtfcCertificateARN = lens _rtfcCertificateARN (\ s a -> s{_rtfcCertificateARN = a})
 

@@ -19,10 +19,10 @@
 module Network.AWS.ECR.Types.LifecyclePolicyPreviewStatus (
   LifecyclePolicyPreviewStatus (
     ..
-    , Complete
-    , Expired
-    , Failed
-    , InProgress
+    , LPPSComplete
+    , LPPSExpired
+    , LPPSFailed
+    , LPPSInProgress
     )
   ) where
 
@@ -34,23 +34,23 @@ data LifecyclePolicyPreviewStatus = LifecyclePolicyPreviewStatus' (CI
                                       deriving (Eq, Ord, Read, Show, Data,
                                                 Typeable, Generic)
 
-pattern Complete :: LifecyclePolicyPreviewStatus
-pattern Complete = LifecyclePolicyPreviewStatus' "COMPLETE"
+pattern LPPSComplete :: LifecyclePolicyPreviewStatus
+pattern LPPSComplete = LifecyclePolicyPreviewStatus' "COMPLETE"
 
-pattern Expired :: LifecyclePolicyPreviewStatus
-pattern Expired = LifecyclePolicyPreviewStatus' "EXPIRED"
+pattern LPPSExpired :: LifecyclePolicyPreviewStatus
+pattern LPPSExpired = LifecyclePolicyPreviewStatus' "EXPIRED"
 
-pattern Failed :: LifecyclePolicyPreviewStatus
-pattern Failed = LifecyclePolicyPreviewStatus' "FAILED"
+pattern LPPSFailed :: LifecyclePolicyPreviewStatus
+pattern LPPSFailed = LifecyclePolicyPreviewStatus' "FAILED"
 
-pattern InProgress :: LifecyclePolicyPreviewStatus
-pattern InProgress = LifecyclePolicyPreviewStatus' "IN_PROGRESS"
+pattern LPPSInProgress :: LifecyclePolicyPreviewStatus
+pattern LPPSInProgress = LifecyclePolicyPreviewStatus' "IN_PROGRESS"
 
 {-# COMPLETE
-  Complete,
-  Expired,
-  Failed,
-  InProgress,
+  LPPSComplete,
+  LPPSExpired,
+  LPPSFailed,
+  LPPSInProgress,
   LifecyclePolicyPreviewStatus' #-}
 
 instance FromText LifecyclePolicyPreviewStatus where
@@ -65,24 +65,24 @@ instance ToText LifecyclePolicyPreviewStatus where
 --   fromEnum is a partial function, and will error on values unknown at generation time.
 instance Enum LifecyclePolicyPreviewStatus where
     toEnum i = case i of
-        0 -> Complete
-        1 -> Expired
-        2 -> Failed
-        3 -> InProgress
+        0 -> LPPSComplete
+        1 -> LPPSExpired
+        2 -> LPPSFailed
+        3 -> LPPSInProgress
         _ -> (error . showText) $ "Unknown index for LifecyclePolicyPreviewStatus: " <> toText i
     fromEnum x = case x of
-        Complete -> 0
-        Expired -> 1
-        Failed -> 2
-        InProgress -> 3
+        LPPSComplete -> 0
+        LPPSExpired -> 1
+        LPPSFailed -> 2
+        LPPSInProgress -> 3
         LifecyclePolicyPreviewStatus' name -> (error . showText) $ "Unknown LifecyclePolicyPreviewStatus: " <> original name
 
 -- | Represents the bounds of /known/ $LifecyclePolicyPreviewStatus.
 --   AWS may have added more since the source was generated.
 --   This instance exists only for backward compatibility.
 instance Bounded LifecyclePolicyPreviewStatus where
-    minBound = Complete
-    maxBound = InProgress
+    minBound = LPPSComplete
+    maxBound = LPPSInProgress
 
 instance Hashable     LifecyclePolicyPreviewStatus
 instance NFData       LifecyclePolicyPreviewStatus

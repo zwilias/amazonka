@@ -28,6 +28,7 @@ module Network.AWS.Greengrass.CreateLoggerDefinition
     , cldAmznClientToken
     , cldInitialVersion
     , cldName
+    , cldTags
 
     -- * Destructuring the Response
     , createLoggerDefinitionResponse
@@ -56,7 +57,9 @@ data CreateLoggerDefinition = CreateLoggerDefinition'{_cldAmznClientToken
                                                       _cldInitialVersion ::
                                                       !(Maybe
                                                           LoggerDefinitionVersion),
-                                                      _cldName :: !(Maybe Text)}
+                                                      _cldName :: !(Maybe Text),
+                                                      _cldTags ::
+                                                      !(Maybe (Map Text Text))}
                                 deriving (Eq, Read, Show, Data, Typeable,
                                           Generic)
 
@@ -69,12 +72,15 @@ data CreateLoggerDefinition = CreateLoggerDefinition'{_cldAmznClientToken
 -- * 'cldInitialVersion' - Information about the initial version of the logger definition.
 --
 -- * 'cldName' - The name of the logger definition.
+--
+-- * 'cldTags' - Tag(s) to add to the new resource.
 createLoggerDefinition
     :: CreateLoggerDefinition
 createLoggerDefinition
   = CreateLoggerDefinition'{_cldAmznClientToken =
                               Nothing,
-                            _cldInitialVersion = Nothing, _cldName = Nothing}
+                            _cldInitialVersion = Nothing, _cldName = Nothing,
+                            _cldTags = Nothing}
 
 -- | A client token used to correlate requests and responses.
 cldAmznClientToken :: Lens' CreateLoggerDefinition (Maybe Text)
@@ -87,6 +93,10 @@ cldInitialVersion = lens _cldInitialVersion (\ s a -> s{_cldInitialVersion = a})
 -- | The name of the logger definition.
 cldName :: Lens' CreateLoggerDefinition (Maybe Text)
 cldName = lens _cldName (\ s a -> s{_cldName = a})
+
+-- | Tag(s) to add to the new resource.
+cldTags :: Lens' CreateLoggerDefinition (HashMap Text Text)
+cldTags = lens _cldTags (\ s a -> s{_cldTags = a}) . _Default . _Map
 
 instance AWSRequest CreateLoggerDefinition where
         type Rs CreateLoggerDefinition =
@@ -120,7 +130,7 @@ instance ToJSON CreateLoggerDefinition where
           = object
               (catMaybes
                  [("InitialVersion" .=) <$> _cldInitialVersion,
-                  ("Name" .=) <$> _cldName])
+                  ("Name" .=) <$> _cldName, ("tags" .=) <$> _cldTags])
 
 instance ToPath CreateLoggerDefinition where
         toPath = const "/greengrass/definition/loggers"
@@ -166,7 +176,7 @@ data CreateLoggerDefinitionResponse = CreateLoggerDefinitionResponse'{_cldrsLate
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'cldrsLatestVersionARN' - The ARN of the latest version of the definition.
+-- * 'cldrsLatestVersionARN' - The ARN of the latest version associated with the definition.
 --
 -- * 'cldrsARN' - The ARN of the definition.
 --
@@ -176,7 +186,7 @@ data CreateLoggerDefinitionResponse = CreateLoggerDefinitionResponse'{_cldrsLate
 --
 -- * 'cldrsId' - The ID of the definition.
 --
--- * 'cldrsLatestVersion' - The latest version of the definition.
+-- * 'cldrsLatestVersion' - The ID of the latest version associated with the definition.
 --
 -- * 'cldrsLastUpdatedTimestamp' - The time, in milliseconds since the epoch, when the definition was last updated.
 --
@@ -194,7 +204,7 @@ createLoggerDefinitionResponse pResponseStatus_
                                     _cldrsLastUpdatedTimestamp = Nothing,
                                     _cldrsResponseStatus = pResponseStatus_}
 
--- | The ARN of the latest version of the definition.
+-- | The ARN of the latest version associated with the definition.
 cldrsLatestVersionARN :: Lens' CreateLoggerDefinitionResponse (Maybe Text)
 cldrsLatestVersionARN = lens _cldrsLatestVersionARN (\ s a -> s{_cldrsLatestVersionARN = a})
 
@@ -214,7 +224,7 @@ cldrsCreationTimestamp = lens _cldrsCreationTimestamp (\ s a -> s{_cldrsCreation
 cldrsId :: Lens' CreateLoggerDefinitionResponse (Maybe Text)
 cldrsId = lens _cldrsId (\ s a -> s{_cldrsId = a})
 
--- | The latest version of the definition.
+-- | The ID of the latest version associated with the definition.
 cldrsLatestVersion :: Lens' CreateLoggerDefinitionResponse (Maybe Text)
 cldrsLatestVersion = lens _cldrsLatestVersion (\ s a -> s{_cldrsLatestVersion = a})
 

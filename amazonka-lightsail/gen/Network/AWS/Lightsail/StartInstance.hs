@@ -18,8 +18,10 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Starts a specific Amazon Lightsail instance from a stopped state. To restart an instance, use the reboot instance operation.
+-- Starts a specific Amazon Lightsail instance from a stopped state. To restart an instance, use the @reboot instance@ operation.
 --
+--
+-- The @start instance@ operation supports tag-based access control via resource tags applied to the resource identified by @instance name@ . For more information, see the <https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags Lightsail Dev Guide> .
 --
 module Network.AWS.Lightsail.StartInstance
     (
@@ -109,7 +111,7 @@ data StartInstanceResponse = StartInstanceResponse'{_srsOperations
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'srsOperations' - An array of key-value pairs containing information about the request operation.
+-- * 'srsOperations' - An array of objects that describe the result of the action, such as the status of the request, the time stamp of the request, and the resources affected by the request.
 --
 -- * 'srsResponseStatus' - -- | The response status code.
 startInstanceResponse
@@ -119,7 +121,7 @@ startInstanceResponse pResponseStatus_
   = StartInstanceResponse'{_srsOperations = Nothing,
                            _srsResponseStatus = pResponseStatus_}
 
--- | An array of key-value pairs containing information about the request operation.
+-- | An array of objects that describe the result of the action, such as the status of the request, the time stamp of the request, and the resources affected by the request.
 srsOperations :: Lens' StartInstanceResponse [Operation]
 srsOperations = lens _srsOperations (\ s a -> s{_srsOperations = a}) . _Default . _Coerce
 

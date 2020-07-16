@@ -23,7 +23,9 @@ import Network.AWS.S3.Internal
 import Network.AWS.S3.Types.LifecycleRuleAndOperator
 import Network.AWS.S3.Types.Tag
 
--- | The Filter is used to identify objects that a Lifecycle Rule applies to. A Filter must have exactly one of Prefix, Tag, or And specified.
+-- | The @Filter@ is used to identify objects that a Lifecycle Rule applies to. A @Filter@ must have exactly one of @Prefix@ , @Tag@ , or @And@ specified.
+--
+--
 --
 -- /See:/ 'lifecycleRuleFilter' smart constructor.
 data LifecycleRuleFilter = LifecycleRuleFilter'{_lrfTag

@@ -92,7 +92,7 @@ data Instance = Instance'{_iPrivateDNS ::
 --
 -- * 'iVirtualizationType' - The instance's virtualization type: @paravirtual@ or @hvm@ .
 --
--- * 'iInstanceProfileARN' - The ARN of the instance's IAM profile. For more information about IAM ARNs, see <http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html Using Identifiers> .
+-- * 'iInstanceProfileARN' - The ARN of the instance's IAM profile. For more information about IAM ARNs, see <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html Using Identifiers> .
 --
 -- * 'iPlatform' - The instance's platform.
 --
@@ -104,7 +104,7 @@ data Instance = Instance'{_iPrivateDNS ::
 --
 -- * 'iEcsClusterARN' - For container instances, the Amazon ECS cluster's ARN.
 --
--- * 'iARN' - Undocumented member.
+-- * 'iARN' - The instance's Amazon Resource Number (ARN).
 --
 -- * 'iCreatedAt' - The time that the instance was created.
 --
@@ -126,11 +126,11 @@ data Instance = Instance'{_iPrivateDNS ::
 --
 -- * 'iEBSOptimized' - Whether this is an Amazon EBS-optimized instance.
 --
--- * 'iElasticIP' - The instance <http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html Elastic IP address > .
+-- * 'iElasticIP' - The instance <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html Elastic IP address > .
 --
 -- * 'iOS' - The instance's operating system.
 --
--- * 'iAvailabilityZone' - The instance Availability Zone. For more information, see <http://docs.aws.amazon.com/general/latest/gr/rande.html Regions and Endpoints> .
+-- * 'iAvailabilityZone' - The instance Availability Zone. For more information, see <https://docs.aws.amazon.com/general/latest/gr/rande.html Regions and Endpoints> .
 --
 -- * 'iLastServiceErrorId' - The ID of the last service error. For more information, call 'DescribeServiceErrors' .
 --
@@ -144,7 +144,7 @@ data Instance = Instance'{_iPrivateDNS ::
 --
 -- * 'iPublicDNS' - The instance public DNS name.
 --
--- * 'iAMIId' - A custom AMI ID to be used to create the instance. For more information, see <http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-custom-ami.html Instances> 
+-- * 'iAMIId' - A custom AMI ID to be used to create the instance. For more information, see <https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-custom-ami.html Instances> 
 --
 -- * 'iPublicIP' - The instance public IP address.
 --
@@ -154,7 +154,7 @@ data Instance = Instance'{_iPrivateDNS ::
 --
 -- * 'iStackId' - The stack ID.
 --
--- * 'iRootDeviceType' - The instance's root device type. For more information, see <http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ComponentsAMIs.html#storage-for-the-root-device Storage for the Root Device> .
+-- * 'iRootDeviceType' - The instance's root device type. For more information, see <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ComponentsAMIs.html#storage-for-the-root-device Storage for the Root Device> .
 --
 -- * 'iEcsContainerInstanceARN' - For container instances, the instance's ARN.
 --
@@ -218,7 +218,7 @@ iInstallUpdatesOnBoot = lens _iInstallUpdatesOnBoot (\ s a -> s{_iInstallUpdates
 iVirtualizationType :: Lens' Instance (Maybe VirtualizationType)
 iVirtualizationType = lens _iVirtualizationType (\ s a -> s{_iVirtualizationType = a})
 
--- | The ARN of the instance's IAM profile. For more information about IAM ARNs, see <http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html Using Identifiers> .
+-- | The ARN of the instance's IAM profile. For more information about IAM ARNs, see <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html Using Identifiers> .
 iInstanceProfileARN :: Lens' Instance (Maybe Text)
 iInstanceProfileARN = lens _iInstanceProfileARN (\ s a -> s{_iInstanceProfileARN = a})
 
@@ -242,7 +242,7 @@ iSecurityGroupIds = lens _iSecurityGroupIds (\ s a -> s{_iSecurityGroupIds = a})
 iEcsClusterARN :: Lens' Instance (Maybe Text)
 iEcsClusterARN = lens _iEcsClusterARN (\ s a -> s{_iEcsClusterARN = a})
 
--- | Undocumented member.
+-- | The instance's Amazon Resource Number (ARN).
 iARN :: Lens' Instance (Maybe Text)
 iARN = lens _iARN (\ s a -> s{_iARN = a})
 
@@ -286,7 +286,7 @@ iInstanceType = lens _iInstanceType (\ s a -> s{_iInstanceType = a})
 iEBSOptimized :: Lens' Instance (Maybe Bool)
 iEBSOptimized = lens _iEBSOptimized (\ s a -> s{_iEBSOptimized = a})
 
--- | The instance <http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html Elastic IP address > .
+-- | The instance <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html Elastic IP address > .
 iElasticIP :: Lens' Instance (Maybe Text)
 iElasticIP = lens _iElasticIP (\ s a -> s{_iElasticIP = a})
 
@@ -294,7 +294,7 @@ iElasticIP = lens _iElasticIP (\ s a -> s{_iElasticIP = a})
 iOS :: Lens' Instance (Maybe Text)
 iOS = lens _iOS (\ s a -> s{_iOS = a})
 
--- | The instance Availability Zone. For more information, see <http://docs.aws.amazon.com/general/latest/gr/rande.html Regions and Endpoints> .
+-- | The instance Availability Zone. For more information, see <https://docs.aws.amazon.com/general/latest/gr/rande.html Regions and Endpoints> .
 iAvailabilityZone :: Lens' Instance (Maybe Text)
 iAvailabilityZone = lens _iAvailabilityZone (\ s a -> s{_iAvailabilityZone = a})
 
@@ -322,7 +322,7 @@ iArchitecture = lens _iArchitecture (\ s a -> s{_iArchitecture = a})
 iPublicDNS :: Lens' Instance (Maybe Text)
 iPublicDNS = lens _iPublicDNS (\ s a -> s{_iPublicDNS = a})
 
--- | A custom AMI ID to be used to create the instance. For more information, see <http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-custom-ami.html Instances> 
+-- | A custom AMI ID to be used to create the instance. For more information, see <https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-custom-ami.html Instances> 
 iAMIId :: Lens' Instance (Maybe Text)
 iAMIId = lens _iAMIId (\ s a -> s{_iAMIId = a})
 
@@ -342,7 +342,7 @@ iRegisteredBy = lens _iRegisteredBy (\ s a -> s{_iRegisteredBy = a})
 iStackId :: Lens' Instance (Maybe Text)
 iStackId = lens _iStackId (\ s a -> s{_iStackId = a})
 
--- | The instance's root device type. For more information, see <http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ComponentsAMIs.html#storage-for-the-root-device Storage for the Root Device> .
+-- | The instance's root device type. For more information, see <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ComponentsAMIs.html#storage-for-the-root-device Storage for the Root Device> .
 iRootDeviceType :: Lens' Instance (Maybe RootDeviceType)
 iRootDeviceType = lens _iRootDeviceType (\ s a -> s{_iRootDeviceType = a})
 

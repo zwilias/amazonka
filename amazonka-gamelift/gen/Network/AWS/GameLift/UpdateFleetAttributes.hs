@@ -21,7 +21,11 @@
 -- Updates fleet properties, including name and description, for a fleet. To update metadata, specify the fleet ID and the property values that you want to change. If successful, the fleet ID for the updated fleet is returned.
 --
 --
--- Fleet-related operations include:
+-- __Learn more__ 
+--
+-- <https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html Setting up GameLift Fleets> 
+--
+-- __Related operations__ 
 --
 --     * 'CreateFleet' 
 --
@@ -29,23 +33,7 @@
 --
 --     * 'DeleteFleet' 
 --
---     * Describe fleets:
---
 --     * 'DescribeFleetAttributes' 
---
---     * 'DescribeFleetCapacity' 
---
---     * 'DescribeFleetPortSettings' 
---
---     * 'DescribeFleetUtilization' 
---
---     * 'DescribeRuntimeConfiguration' 
---
---     * 'DescribeEC2InstanceLimits' 
---
---     * 'DescribeFleetEvents' 
---
---
 --
 --     * Update fleets:
 --
@@ -59,13 +47,7 @@
 --
 --
 --
---     * Manage fleet actions:
---
---     * 'StartFleetActions' 
---
---     * 'StopFleetActions' 
---
---
+--     * 'StartFleetActions' or 'StopFleetActions' 
 --
 --
 --
@@ -124,7 +106,7 @@ data UpdateFleetAttributes = UpdateFleetAttributes'{_ufaNewGameSessionProtection
 --
 -- * 'ufaNewGameSessionProtectionPolicy' - Game session protection policy to apply to all new instances created in this fleet. Instances that already exist are not affected. You can set protection for individual instances using 'UpdateGameSession' .     * __NoProtection__ -- The game session can be terminated during a scale-down event.     * __FullProtection__ -- If the game session is in an @ACTIVE@ status, it cannot be terminated during a scale-down event.
 --
--- * 'ufaName' - Descriptive label that is associated with a fleet. Fleet names do not need to be unique.
+-- * 'ufaName' - A descriptive label that is associated with a fleet. Fleet names do not need to be unique.
 --
 -- * 'ufaMetricGroups' - Names of metric groups to include this fleet in. Amazon CloudWatch uses a fleet metric group is to aggregate metrics from multiple fleets. Use an existing metric group name to add this fleet to the group. Or use a new name to create a new metric group. A fleet can only be included in one metric group at a time.
 --
@@ -132,7 +114,7 @@ data UpdateFleetAttributes = UpdateFleetAttributes'{_ufaNewGameSessionProtection
 --
 -- * 'ufaResourceCreationLimitPolicy' - Policy that limits the number of game sessions an individual player can create over a span of time. 
 --
--- * 'ufaFleetId' - Unique identifier for a fleet to update attribute metadata for.
+-- * 'ufaFleetId' - A unique identifier for a fleet to update attribute metadata for. You can use either the fleet ID or ARN value.
 updateFleetAttributes
     :: Text -- ^ 'ufaFleetId'
     -> UpdateFleetAttributes
@@ -148,7 +130,7 @@ updateFleetAttributes pFleetId_
 ufaNewGameSessionProtectionPolicy :: Lens' UpdateFleetAttributes (Maybe ProtectionPolicy)
 ufaNewGameSessionProtectionPolicy = lens _ufaNewGameSessionProtectionPolicy (\ s a -> s{_ufaNewGameSessionProtectionPolicy = a})
 
--- | Descriptive label that is associated with a fleet. Fleet names do not need to be unique.
+-- | A descriptive label that is associated with a fleet. Fleet names do not need to be unique.
 ufaName :: Lens' UpdateFleetAttributes (Maybe Text)
 ufaName = lens _ufaName (\ s a -> s{_ufaName = a})
 
@@ -164,7 +146,7 @@ ufaDescription = lens _ufaDescription (\ s a -> s{_ufaDescription = a})
 ufaResourceCreationLimitPolicy :: Lens' UpdateFleetAttributes (Maybe ResourceCreationLimitPolicy)
 ufaResourceCreationLimitPolicy = lens _ufaResourceCreationLimitPolicy (\ s a -> s{_ufaResourceCreationLimitPolicy = a})
 
--- | Unique identifier for a fleet to update attribute metadata for.
+-- | A unique identifier for a fleet to update attribute metadata for. You can use either the fleet ID or ARN value.
 ufaFleetId :: Lens' UpdateFleetAttributes Text
 ufaFleetId = lens _ufaFleetId (\ s a -> s{_ufaFleetId = a})
 
@@ -228,7 +210,7 @@ data UpdateFleetAttributesResponse = UpdateFleetAttributesResponse'{_ufarsFleetI
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'ufarsFleetId' - Unique identifier for a fleet that was updated.
+-- * 'ufarsFleetId' - A unique identifier for a fleet that was updated. Use either the fleet ID or ARN value.
 --
 -- * 'ufarsResponseStatus' - -- | The response status code.
 updateFleetAttributesResponse
@@ -239,7 +221,7 @@ updateFleetAttributesResponse pResponseStatus_
                                      Nothing,
                                    _ufarsResponseStatus = pResponseStatus_}
 
--- | Unique identifier for a fleet that was updated.
+-- | A unique identifier for a fleet that was updated. Use either the fleet ID or ARN value.
 ufarsFleetId :: Lens' UpdateFleetAttributesResponse (Maybe Text)
 ufarsFleetId = lens _ufarsFleetId (\ s a -> s{_ufarsFleetId = a})
 

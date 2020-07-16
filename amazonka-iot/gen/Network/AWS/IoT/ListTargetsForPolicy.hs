@@ -21,6 +21,8 @@
 -- List targets for the specified policy.
 --
 --
+--
+-- This operation returns paginated results.
 module Network.AWS.IoT.ListTargetsForPolicy
     (
     -- * Creating a Request
@@ -43,6 +45,7 @@ module Network.AWS.IoT.ListTargetsForPolicy
 import Network.AWS.IoT.Types
 import Network.AWS.IoT.Types.Product
 import Network.AWS.Lens
+import Network.AWS.Pager
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
@@ -82,6 +85,13 @@ ltfpPageSize = lens _ltfpPageSize (\ s a -> s{_ltfpPageSize = a}) . mapping _Nat
 -- | The policy name.
 ltfpPolicyName :: Lens' ListTargetsForPolicy Text
 ltfpPolicyName = lens _ltfpPolicyName (\ s a -> s{_ltfpPolicyName = a})
+
+instance AWSPager ListTargetsForPolicy where
+        page rq rs
+          | stop (rs ^. ltfprsNextMarker) = Nothing
+          | stop (rs ^. ltfprsTargets) = Nothing
+          | otherwise =
+            Just $ rq & ltfpMarker .~ rs ^. ltfprsNextMarker
 
 instance AWSRequest ListTargetsForPolicy where
         type Rs ListTargetsForPolicy =

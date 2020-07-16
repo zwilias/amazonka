@@ -17,16 +17,21 @@
 --
 module Network.AWS.GuardDuty.Types.PortProbeDetail where
 
+import Network.AWS.GuardDuty.Types.LocalIPDetails
 import Network.AWS.GuardDuty.Types.LocalPortDetails
 import Network.AWS.GuardDuty.Types.RemoteIPDetails
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | Details about the port probe finding.
+-- | Contains information about the port probe details.
+--
+--
 --
 -- /See:/ 'portProbeDetail' smart constructor.
 data PortProbeDetail = PortProbeDetail'{_ppdRemoteIPDetails
                                         :: !(Maybe RemoteIPDetails),
+                                        _ppdLocalIPDetails ::
+                                        !(Maybe LocalIPDetails),
                                         _ppdLocalPortDetails ::
                                         !(Maybe LocalPortDetails)}
                          deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -35,20 +40,27 @@ data PortProbeDetail = PortProbeDetail'{_ppdRemoteIPDetails
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'ppdRemoteIPDetails' - Remote IP information of the connection.
+-- * 'ppdRemoteIPDetails' - The remote IP information of the connection.
 --
--- * 'ppdLocalPortDetails' - Local port information of the connection.
+-- * 'ppdLocalIPDetails' - The local IP information of the connection.
+--
+-- * 'ppdLocalPortDetails' - The local port information of the connection.
 portProbeDetail
     :: PortProbeDetail
 portProbeDetail
   = PortProbeDetail'{_ppdRemoteIPDetails = Nothing,
+                     _ppdLocalIPDetails = Nothing,
                      _ppdLocalPortDetails = Nothing}
 
--- | Remote IP information of the connection.
+-- | The remote IP information of the connection.
 ppdRemoteIPDetails :: Lens' PortProbeDetail (Maybe RemoteIPDetails)
 ppdRemoteIPDetails = lens _ppdRemoteIPDetails (\ s a -> s{_ppdRemoteIPDetails = a})
 
--- | Local port information of the connection.
+-- | The local IP information of the connection.
+ppdLocalIPDetails :: Lens' PortProbeDetail (Maybe LocalIPDetails)
+ppdLocalIPDetails = lens _ppdLocalIPDetails (\ s a -> s{_ppdLocalIPDetails = a})
+
+-- | The local port information of the connection.
 ppdLocalPortDetails :: Lens' PortProbeDetail (Maybe LocalPortDetails)
 ppdLocalPortDetails = lens _ppdLocalPortDetails (\ s a -> s{_ppdLocalPortDetails = a})
 
@@ -58,7 +70,8 @@ instance FromJSON PortProbeDetail where
               (\ x ->
                  PortProbeDetail' <$>
                    (x .:? "remoteIpDetails") <*>
-                     (x .:? "localPortDetails"))
+                     (x .:? "localIpDetails")
+                     <*> (x .:? "localPortDetails"))
 
 instance Hashable PortProbeDetail where
 

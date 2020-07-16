@@ -51,13 +51,13 @@ data DataFormatConversionConfiguration = DataFormatConversionConfiguration'{_dfc
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dfccOutputFormatConfiguration' - Specifies the serializer that you want Kinesis Data Firehose to use to convert the format of your data to the Parquet or ORC format.
+-- * 'dfccOutputFormatConfiguration' - Specifies the serializer that you want Kinesis Data Firehose to use to convert the format of your data to the Parquet or ORC format. This parameter is required if @Enabled@ is set to true.
 --
 -- * 'dfccEnabled' - Defaults to @true@ . Set it to @false@ if you want to disable format conversion while preserving the configuration details.
 --
--- * 'dfccSchemaConfiguration' - Specifies the AWS Glue Data Catalog table that contains the column information.
+-- * 'dfccSchemaConfiguration' - Specifies the AWS Glue Data Catalog table that contains the column information. This parameter is required if @Enabled@ is set to true.
 --
--- * 'dfccInputFormatConfiguration' - Specifies the deserializer that you want Kinesis Data Firehose to use to convert the format of your data from JSON.
+-- * 'dfccInputFormatConfiguration' - Specifies the deserializer that you want Kinesis Data Firehose to use to convert the format of your data from JSON. This parameter is required if @Enabled@ is set to true.
 dataFormatConversionConfiguration
     :: DataFormatConversionConfiguration
 dataFormatConversionConfiguration
@@ -67,7 +67,7 @@ dataFormatConversionConfiguration
                                        _dfccSchemaConfiguration = Nothing,
                                        _dfccInputFormatConfiguration = Nothing}
 
--- | Specifies the serializer that you want Kinesis Data Firehose to use to convert the format of your data to the Parquet or ORC format.
+-- | Specifies the serializer that you want Kinesis Data Firehose to use to convert the format of your data to the Parquet or ORC format. This parameter is required if @Enabled@ is set to true.
 dfccOutputFormatConfiguration :: Lens' DataFormatConversionConfiguration (Maybe OutputFormatConfiguration)
 dfccOutputFormatConfiguration = lens _dfccOutputFormatConfiguration (\ s a -> s{_dfccOutputFormatConfiguration = a})
 
@@ -75,11 +75,11 @@ dfccOutputFormatConfiguration = lens _dfccOutputFormatConfiguration (\ s a -> s{
 dfccEnabled :: Lens' DataFormatConversionConfiguration (Maybe Bool)
 dfccEnabled = lens _dfccEnabled (\ s a -> s{_dfccEnabled = a})
 
--- | Specifies the AWS Glue Data Catalog table that contains the column information.
+-- | Specifies the AWS Glue Data Catalog table that contains the column information. This parameter is required if @Enabled@ is set to true.
 dfccSchemaConfiguration :: Lens' DataFormatConversionConfiguration (Maybe SchemaConfiguration)
 dfccSchemaConfiguration = lens _dfccSchemaConfiguration (\ s a -> s{_dfccSchemaConfiguration = a})
 
--- | Specifies the deserializer that you want Kinesis Data Firehose to use to convert the format of your data from JSON.
+-- | Specifies the deserializer that you want Kinesis Data Firehose to use to convert the format of your data from JSON. This parameter is required if @Enabled@ is set to true.
 dfccInputFormatConfiguration :: Lens' DataFormatConversionConfiguration (Maybe InputFormatConfiguration)
 dfccInputFormatConfiguration = lens _dfccInputFormatConfiguration (\ s a -> s{_dfccInputFormatConfiguration = a})
 

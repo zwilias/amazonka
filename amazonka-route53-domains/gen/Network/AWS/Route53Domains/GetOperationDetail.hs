@@ -49,7 +49,7 @@ import Network.AWS.Response
 import Network.AWS.Route53Domains.Types
 import Network.AWS.Route53Domains.Types.Product
 
--- | The 'GetOperationDetail' request includes the following element.
+-- | The <https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_GetOperationDetail.html GetOperationDetail> request includes the following element.
 --
 --
 --
@@ -63,7 +63,7 @@ newtype GetOperationDetail = GetOperationDetail'{_godOperationId
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'godOperationId' - The identifier for the operation for which you want to get the status. Amazon Route 53 returned the identifier in the response to the original request.
+-- * 'godOperationId' - The identifier for the operation for which you want to get the status. Route 53 returned the identifier in the response to the original request.
 getOperationDetail
     :: Text -- ^ 'godOperationId'
     -> GetOperationDetail
@@ -71,7 +71,7 @@ getOperationDetail pOperationId_
   = GetOperationDetail'{_godOperationId =
                           pOperationId_}
 
--- | The identifier for the operation for which you want to get the status. Amazon Route 53 returned the identifier in the response to the original request.
+-- | The identifier for the operation for which you want to get the status. Route 53 returned the identifier in the response to the original request.
 godOperationId :: Lens' GetOperationDetail Text
 godOperationId = lens _godOperationId (\ s a -> s{_godOperationId = a})
 

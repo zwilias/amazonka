@@ -26,6 +26,7 @@ module Network.AWS.MediaLive.UpdateInputSecurityGroup
     , UpdateInputSecurityGroup
     -- * Request Lenses
     , uisgWhitelistRules
+    , uisgTags
     , uisgInputSecurityGroupId
 
     -- * Destructuring the Response
@@ -50,6 +51,9 @@ data UpdateInputSecurityGroup = UpdateInputSecurityGroup'{_uisgWhitelistRules
                                                           ::
                                                           !(Maybe
                                                               [InputWhitelistRuleCidr]),
+                                                          _uisgTags ::
+                                                          !(Maybe
+                                                              (Map Text Text)),
                                                           _uisgInputSecurityGroupId
                                                           :: !Text}
                                   deriving (Eq, Read, Show, Data, Typeable,
@@ -61,6 +65,8 @@ data UpdateInputSecurityGroup = UpdateInputSecurityGroup'{_uisgWhitelistRules
 --
 -- * 'uisgWhitelistRules' - List of IPv4 CIDR addresses to whitelist
 --
+-- * 'uisgTags' - A collection of key-value pairs.
+--
 -- * 'uisgInputSecurityGroupId' - The id of the Input Security Group to update.
 updateInputSecurityGroup
     :: Text -- ^ 'uisgInputSecurityGroupId'
@@ -68,12 +74,17 @@ updateInputSecurityGroup
 updateInputSecurityGroup pInputSecurityGroupId_
   = UpdateInputSecurityGroup'{_uisgWhitelistRules =
                                 Nothing,
+                              _uisgTags = Nothing,
                               _uisgInputSecurityGroupId =
                                 pInputSecurityGroupId_}
 
 -- | List of IPv4 CIDR addresses to whitelist
 uisgWhitelistRules :: Lens' UpdateInputSecurityGroup [InputWhitelistRuleCidr]
 uisgWhitelistRules = lens _uisgWhitelistRules (\ s a -> s{_uisgWhitelistRules = a}) . _Default . _Coerce
+
+-- | A collection of key-value pairs.
+uisgTags :: Lens' UpdateInputSecurityGroup (HashMap Text Text)
+uisgTags = lens _uisgTags (\ s a -> s{_uisgTags = a}) . _Default . _Map
 
 -- | The id of the Input Security Group to update.
 uisgInputSecurityGroupId :: Lens' UpdateInputSecurityGroup Text
@@ -104,7 +115,8 @@ instance ToJSON UpdateInputSecurityGroup where
         toJSON UpdateInputSecurityGroup'{..}
           = object
               (catMaybes
-                 [("whitelistRules" .=) <$> _uisgWhitelistRules])
+                 [("whitelistRules" .=) <$> _uisgWhitelistRules,
+                  ("tags" .=) <$> _uisgTags])
 
 instance ToPath UpdateInputSecurityGroup where
         toPath UpdateInputSecurityGroup'{..}

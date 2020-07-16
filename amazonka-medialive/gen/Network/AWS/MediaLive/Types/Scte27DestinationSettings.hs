@@ -20,7 +20,7 @@ module Network.AWS.MediaLive.Types.Scte27DestinationSettings where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | Placeholder documentation for Scte27DestinationSettings
+-- | Scte27 Destination Settings
 --
 -- /See:/ 'scte27DestinationSettings' smart constructor.
 data Scte27DestinationSettings = Scte27DestinationSettings'

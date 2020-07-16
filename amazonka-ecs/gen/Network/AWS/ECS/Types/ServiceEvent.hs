@@ -35,7 +35,7 @@ data ServiceEvent = ServiceEvent'{_seCreatedAt ::
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'seCreatedAt' - The Unix time stamp for when the event was triggered.
+-- * 'seCreatedAt' - The Unix timestamp for when the event was triggered.
 --
 -- * 'seId' - The ID string of the event.
 --
@@ -46,7 +46,7 @@ serviceEvent
   = ServiceEvent'{_seCreatedAt = Nothing,
                   _seId = Nothing, _seMessage = Nothing}
 
--- | The Unix time stamp for when the event was triggered.
+-- | The Unix timestamp for when the event was triggered.
 seCreatedAt :: Lens' ServiceEvent (Maybe UTCTime)
 seCreatedAt = lens _seCreatedAt (\ s a -> s{_seCreatedAt = a}) . mapping _Time
 

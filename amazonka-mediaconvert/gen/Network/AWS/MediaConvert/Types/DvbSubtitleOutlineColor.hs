@@ -19,12 +19,12 @@
 module Network.AWS.MediaConvert.Types.DvbSubtitleOutlineColor (
   DvbSubtitleOutlineColor (
     ..
-    , Black
-    , Blue
-    , Green
-    , Red
-    , White
-    , Yellow
+    , DSOCBlack
+    , DSOCBlue
+    , DSOCGreen
+    , DSOCRed
+    , DSOCWhite
+    , DSOCYellow
     )
   ) where
 
@@ -37,31 +37,31 @@ data DvbSubtitleOutlineColor = DvbSubtitleOutlineColor' (CI
                                  deriving (Eq, Ord, Read, Show, Data, Typeable,
                                            Generic)
 
-pattern Black :: DvbSubtitleOutlineColor
-pattern Black = DvbSubtitleOutlineColor' "BLACK"
+pattern DSOCBlack :: DvbSubtitleOutlineColor
+pattern DSOCBlack = DvbSubtitleOutlineColor' "BLACK"
 
-pattern Blue :: DvbSubtitleOutlineColor
-pattern Blue = DvbSubtitleOutlineColor' "BLUE"
+pattern DSOCBlue :: DvbSubtitleOutlineColor
+pattern DSOCBlue = DvbSubtitleOutlineColor' "BLUE"
 
-pattern Green :: DvbSubtitleOutlineColor
-pattern Green = DvbSubtitleOutlineColor' "GREEN"
+pattern DSOCGreen :: DvbSubtitleOutlineColor
+pattern DSOCGreen = DvbSubtitleOutlineColor' "GREEN"
 
-pattern Red :: DvbSubtitleOutlineColor
-pattern Red = DvbSubtitleOutlineColor' "RED"
+pattern DSOCRed :: DvbSubtitleOutlineColor
+pattern DSOCRed = DvbSubtitleOutlineColor' "RED"
 
-pattern White :: DvbSubtitleOutlineColor
-pattern White = DvbSubtitleOutlineColor' "WHITE"
+pattern DSOCWhite :: DvbSubtitleOutlineColor
+pattern DSOCWhite = DvbSubtitleOutlineColor' "WHITE"
 
-pattern Yellow :: DvbSubtitleOutlineColor
-pattern Yellow = DvbSubtitleOutlineColor' "YELLOW"
+pattern DSOCYellow :: DvbSubtitleOutlineColor
+pattern DSOCYellow = DvbSubtitleOutlineColor' "YELLOW"
 
 {-# COMPLETE
-  Black,
-  Blue,
-  Green,
-  Red,
-  White,
-  Yellow,
+  DSOCBlack,
+  DSOCBlue,
+  DSOCGreen,
+  DSOCRed,
+  DSOCWhite,
+  DSOCYellow,
   DvbSubtitleOutlineColor' #-}
 
 instance FromText DvbSubtitleOutlineColor where
@@ -76,28 +76,28 @@ instance ToText DvbSubtitleOutlineColor where
 --   fromEnum is a partial function, and will error on values unknown at generation time.
 instance Enum DvbSubtitleOutlineColor where
     toEnum i = case i of
-        0 -> Black
-        1 -> Blue
-        2 -> Green
-        3 -> Red
-        4 -> White
-        5 -> Yellow
+        0 -> DSOCBlack
+        1 -> DSOCBlue
+        2 -> DSOCGreen
+        3 -> DSOCRed
+        4 -> DSOCWhite
+        5 -> DSOCYellow
         _ -> (error . showText) $ "Unknown index for DvbSubtitleOutlineColor: " <> toText i
     fromEnum x = case x of
-        Black -> 0
-        Blue -> 1
-        Green -> 2
-        Red -> 3
-        White -> 4
-        Yellow -> 5
+        DSOCBlack -> 0
+        DSOCBlue -> 1
+        DSOCGreen -> 2
+        DSOCRed -> 3
+        DSOCWhite -> 4
+        DSOCYellow -> 5
         DvbSubtitleOutlineColor' name -> (error . showText) $ "Unknown DvbSubtitleOutlineColor: " <> original name
 
 -- | Represents the bounds of /known/ $DvbSubtitleOutlineColor.
 --   AWS may have added more since the source was generated.
 --   This instance exists only for backward compatibility.
 instance Bounded DvbSubtitleOutlineColor where
-    minBound = Black
-    maxBound = Yellow
+    minBound = DSOCBlack
+    maxBound = DSOCYellow
 
 instance Hashable     DvbSubtitleOutlineColor
 instance NFData       DvbSubtitleOutlineColor

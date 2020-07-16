@@ -27,7 +27,7 @@ module Network.AWS.MediaLive.Types.HlsStreamInfResolution (
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | Placeholder documentation for HlsStreamInfResolution
+-- | Hls Stream Inf Resolution
 data HlsStreamInfResolution = HlsStreamInfResolution' (CI
                                                          Text)
                                 deriving (Eq, Ord, Read, Show, Data, Typeable,

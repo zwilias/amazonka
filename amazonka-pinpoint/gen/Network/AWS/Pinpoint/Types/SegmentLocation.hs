@@ -18,34 +18,48 @@
 module Network.AWS.Pinpoint.Types.SegmentLocation where
 
 import Network.AWS.Lens
+import Network.AWS.Pinpoint.Types.GPSPointDimension
 import Network.AWS.Pinpoint.Types.SetDimension
 import Network.AWS.Prelude
 
--- | Segment location dimensions
+-- | Specifies geographical dimension settings for a segment.
+--
+--
 --
 -- /See:/ 'segmentLocation' smart constructor.
-newtype SegmentLocation = SegmentLocation'{_slCountry
-                                           :: Maybe SetDimension}
-                            deriving (Eq, Read, Show, Data, Typeable, Generic)
+data SegmentLocation = SegmentLocation'{_slCountry ::
+                                        !(Maybe SetDimension),
+                                        _slGPSPoint ::
+                                        !(Maybe GPSPointDimension)}
+                         deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'SegmentLocation' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'slCountry' - The country filter according to ISO 3166-1 Alpha-2 codes.
+-- * 'slCountry' - The country or region code, in ISO 3166-1 alpha-2 format, for the segment.
+--
+-- * 'slGPSPoint' - The GPS location and range for the segment.
 segmentLocation
     :: SegmentLocation
 segmentLocation
-  = SegmentLocation'{_slCountry = Nothing}
+  = SegmentLocation'{_slCountry = Nothing,
+                     _slGPSPoint = Nothing}
 
--- | The country filter according to ISO 3166-1 Alpha-2 codes.
+-- | The country or region code, in ISO 3166-1 alpha-2 format, for the segment.
 slCountry :: Lens' SegmentLocation (Maybe SetDimension)
 slCountry = lens _slCountry (\ s a -> s{_slCountry = a})
+
+-- | The GPS location and range for the segment.
+slGPSPoint :: Lens' SegmentLocation (Maybe GPSPointDimension)
+slGPSPoint = lens _slGPSPoint (\ s a -> s{_slGPSPoint = a})
 
 instance FromJSON SegmentLocation where
         parseJSON
           = withObject "SegmentLocation"
-              (\ x -> SegmentLocation' <$> (x .:? "Country"))
+              (\ x ->
+                 SegmentLocation' <$>
+                   (x .:? "Country") <*> (x .:? "GPSPoint"))
 
 instance Hashable SegmentLocation where
 
@@ -53,4 +67,7 @@ instance NFData SegmentLocation where
 
 instance ToJSON SegmentLocation where
         toJSON SegmentLocation'{..}
-          = object (catMaybes [("Country" .=) <$> _slCountry])
+          = object
+              (catMaybes
+                 [("Country" .=) <$> _slCountry,
+                  ("GPSPoint" .=) <$> _slGPSPoint])

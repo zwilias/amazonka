@@ -18,9 +18,11 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Lists the targets registered with the Maintenance Window.
+-- Lists the targets registered with the maintenance window.
 --
 --
+--
+-- This operation returns paginated results.
 module Network.AWS.SSM.DescribeMaintenanceWindowTargets
     (
     -- * Creating a Request
@@ -42,6 +44,7 @@ module Network.AWS.SSM.DescribeMaintenanceWindowTargets
     ) where
 
 import Network.AWS.Lens
+import Network.AWS.Pager
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
@@ -77,7 +80,7 @@ data DescribeMaintenanceWindowTargets = DescribeMaintenanceWindowTargets'{_dmwtF
 --
 -- * 'dmwtMaxResults' - The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.
 --
--- * 'dmwtWindowId' - The ID of the Maintenance Window whose targets should be retrieved.
+-- * 'dmwtWindowId' - The ID of the maintenance window whose targets should be retrieved.
 describeMaintenanceWindowTargets
     :: Text -- ^ 'dmwtWindowId'
     -> DescribeMaintenanceWindowTargets
@@ -100,9 +103,17 @@ dmwtNextToken = lens _dmwtNextToken (\ s a -> s{_dmwtNextToken = a})
 dmwtMaxResults :: Lens' DescribeMaintenanceWindowTargets (Maybe Natural)
 dmwtMaxResults = lens _dmwtMaxResults (\ s a -> s{_dmwtMaxResults = a}) . mapping _Nat
 
--- | The ID of the Maintenance Window whose targets should be retrieved.
+-- | The ID of the maintenance window whose targets should be retrieved.
 dmwtWindowId :: Lens' DescribeMaintenanceWindowTargets Text
 dmwtWindowId = lens _dmwtWindowId (\ s a -> s{_dmwtWindowId = a})
+
+instance AWSPager DescribeMaintenanceWindowTargets
+         where
+        page rq rs
+          | stop (rs ^. dmwtrsNextToken) = Nothing
+          | stop (rs ^. dmwtrsTargets) = Nothing
+          | otherwise =
+            Just $ rq & dmwtNextToken .~ rs ^. dmwtrsNextToken
 
 instance AWSRequest DescribeMaintenanceWindowTargets
          where
@@ -172,7 +183,7 @@ data DescribeMaintenanceWindowTargetsResponse = DescribeMaintenanceWindowTargets
 --
 -- * 'dmwtrsNextToken' - The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.
 --
--- * 'dmwtrsTargets' - Information about the targets in the Maintenance Window.
+-- * 'dmwtrsTargets' - Information about the targets in the maintenance window.
 --
 -- * 'dmwtrsResponseStatus' - -- | The response status code.
 describeMaintenanceWindowTargetsResponse
@@ -190,7 +201,7 @@ describeMaintenanceWindowTargetsResponse
 dmwtrsNextToken :: Lens' DescribeMaintenanceWindowTargetsResponse (Maybe Text)
 dmwtrsNextToken = lens _dmwtrsNextToken (\ s a -> s{_dmwtrsNextToken = a})
 
--- | Information about the targets in the Maintenance Window.
+-- | Information about the targets in the maintenance window.
 dmwtrsTargets :: Lens' DescribeMaintenanceWindowTargetsResponse [MaintenanceWindowTarget]
 dmwtrsTargets = lens _dmwtrsTargets (\ s a -> s{_dmwtrsTargets = a}) . _Default . _Coerce
 

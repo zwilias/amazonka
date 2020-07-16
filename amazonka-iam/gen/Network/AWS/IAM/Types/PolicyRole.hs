@@ -25,7 +25,7 @@ import Network.AWS.Prelude
 --
 -- This data type is used as a response element in the 'ListEntitiesForPolicy' operation. 
 --
--- For more information about managed policies, refer to <http://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html Managed Policies and Inline Policies> in the /Using IAM/ guide. 
+-- For more information about managed policies, refer to <https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html Managed Policies and Inline Policies> in the /IAM User Guide/ . 
 --
 --
 -- /See:/ 'policyRole' smart constructor.
@@ -40,7 +40,7 @@ data PolicyRole = PolicyRole'{_prRoleName ::
 --
 -- * 'prRoleName' - The name (friendly name, not ARN) identifying the role.
 --
--- * 'prRoleId' - The stable and unique string identifying the role. For more information about IDs, see <http://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html IAM Identifiers> in the /IAM User Guide/ .
+-- * 'prRoleId' - The stable and unique string identifying the role. For more information about IDs, see <https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html IAM Identifiers> in the /IAM User Guide/ .
 policyRole
     :: PolicyRole
 policyRole
@@ -51,7 +51,7 @@ policyRole
 prRoleName :: Lens' PolicyRole (Maybe Text)
 prRoleName = lens _prRoleName (\ s a -> s{_prRoleName = a})
 
--- | The stable and unique string identifying the role. For more information about IDs, see <http://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html IAM Identifiers> in the /IAM User Guide/ .
+-- | The stable and unique string identifying the role. For more information about IDs, see <https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html IAM Identifiers> in the /IAM User Guide/ .
 prRoleId :: Lens' PolicyRole (Maybe Text)
 prRoleId = lens _prRoleId (\ s a -> s{_prRoleId = a})
 

@@ -40,6 +40,16 @@ module Network.AWS.StepFunctions.Types.HistoryEventType (
     , LambdaFunctionStarted
     , LambdaFunctionSucceeded
     , LambdaFunctionTimedOut
+    , MapIterationAborted
+    , MapIterationFailed
+    , MapIterationStarted
+    , MapIterationSucceeded
+    , MapStateAborted
+    , MapStateEntered
+    , MapStateExited
+    , MapStateFailed
+    , MapStateStarted
+    , MapStateSucceeded
     , ParallelStateAborted
     , ParallelStateEntered
     , ParallelStateExited
@@ -50,9 +60,17 @@ module Network.AWS.StepFunctions.Types.HistoryEventType (
     , PassStateExited
     , SucceedStateEntered
     , SucceedStateExited
+    , TaskFailed
+    , TaskScheduled
+    , TaskStartFailed
+    , TaskStarted
     , TaskStateAborted
     , TaskStateEntered
     , TaskStateExited
+    , TaskSubmitFailed
+    , TaskSubmitted
+    , TaskSucceeded
+    , TaskTimedOut
     , WaitStateAborted
     , WaitStateEntered
     , WaitStateExited
@@ -129,6 +147,36 @@ pattern LambdaFunctionSucceeded = HistoryEventType' "LambdaFunctionSucceeded"
 pattern LambdaFunctionTimedOut :: HistoryEventType
 pattern LambdaFunctionTimedOut = HistoryEventType' "LambdaFunctionTimedOut"
 
+pattern MapIterationAborted :: HistoryEventType
+pattern MapIterationAborted = HistoryEventType' "MapIterationAborted"
+
+pattern MapIterationFailed :: HistoryEventType
+pattern MapIterationFailed = HistoryEventType' "MapIterationFailed"
+
+pattern MapIterationStarted :: HistoryEventType
+pattern MapIterationStarted = HistoryEventType' "MapIterationStarted"
+
+pattern MapIterationSucceeded :: HistoryEventType
+pattern MapIterationSucceeded = HistoryEventType' "MapIterationSucceeded"
+
+pattern MapStateAborted :: HistoryEventType
+pattern MapStateAborted = HistoryEventType' "MapStateAborted"
+
+pattern MapStateEntered :: HistoryEventType
+pattern MapStateEntered = HistoryEventType' "MapStateEntered"
+
+pattern MapStateExited :: HistoryEventType
+pattern MapStateExited = HistoryEventType' "MapStateExited"
+
+pattern MapStateFailed :: HistoryEventType
+pattern MapStateFailed = HistoryEventType' "MapStateFailed"
+
+pattern MapStateStarted :: HistoryEventType
+pattern MapStateStarted = HistoryEventType' "MapStateStarted"
+
+pattern MapStateSucceeded :: HistoryEventType
+pattern MapStateSucceeded = HistoryEventType' "MapStateSucceeded"
+
 pattern ParallelStateAborted :: HistoryEventType
 pattern ParallelStateAborted = HistoryEventType' "ParallelStateAborted"
 
@@ -159,6 +207,18 @@ pattern SucceedStateEntered = HistoryEventType' "SucceedStateEntered"
 pattern SucceedStateExited :: HistoryEventType
 pattern SucceedStateExited = HistoryEventType' "SucceedStateExited"
 
+pattern TaskFailed :: HistoryEventType
+pattern TaskFailed = HistoryEventType' "TaskFailed"
+
+pattern TaskScheduled :: HistoryEventType
+pattern TaskScheduled = HistoryEventType' "TaskScheduled"
+
+pattern TaskStartFailed :: HistoryEventType
+pattern TaskStartFailed = HistoryEventType' "TaskStartFailed"
+
+pattern TaskStarted :: HistoryEventType
+pattern TaskStarted = HistoryEventType' "TaskStarted"
+
 pattern TaskStateAborted :: HistoryEventType
 pattern TaskStateAborted = HistoryEventType' "TaskStateAborted"
 
@@ -167,6 +227,18 @@ pattern TaskStateEntered = HistoryEventType' "TaskStateEntered"
 
 pattern TaskStateExited :: HistoryEventType
 pattern TaskStateExited = HistoryEventType' "TaskStateExited"
+
+pattern TaskSubmitFailed :: HistoryEventType
+pattern TaskSubmitFailed = HistoryEventType' "TaskSubmitFailed"
+
+pattern TaskSubmitted :: HistoryEventType
+pattern TaskSubmitted = HistoryEventType' "TaskSubmitted"
+
+pattern TaskSucceeded :: HistoryEventType
+pattern TaskSucceeded = HistoryEventType' "TaskSucceeded"
+
+pattern TaskTimedOut :: HistoryEventType
+pattern TaskTimedOut = HistoryEventType' "TaskTimedOut"
 
 pattern WaitStateAborted :: HistoryEventType
 pattern WaitStateAborted = HistoryEventType' "WaitStateAborted"
@@ -199,6 +271,16 @@ pattern WaitStateExited = HistoryEventType' "WaitStateExited"
   LambdaFunctionStarted,
   LambdaFunctionSucceeded,
   LambdaFunctionTimedOut,
+  MapIterationAborted,
+  MapIterationFailed,
+  MapIterationStarted,
+  MapIterationSucceeded,
+  MapStateAborted,
+  MapStateEntered,
+  MapStateExited,
+  MapStateFailed,
+  MapStateStarted,
+  MapStateSucceeded,
   ParallelStateAborted,
   ParallelStateEntered,
   ParallelStateExited,
@@ -209,9 +291,17 @@ pattern WaitStateExited = HistoryEventType' "WaitStateExited"
   PassStateExited,
   SucceedStateEntered,
   SucceedStateExited,
+  TaskFailed,
+  TaskScheduled,
+  TaskStartFailed,
+  TaskStarted,
   TaskStateAborted,
   TaskStateEntered,
   TaskStateExited,
+  TaskSubmitFailed,
+  TaskSubmitted,
+  TaskSucceeded,
+  TaskTimedOut,
   WaitStateAborted,
   WaitStateEntered,
   WaitStateExited,
@@ -250,22 +340,40 @@ instance Enum HistoryEventType where
         18 -> LambdaFunctionStarted
         19 -> LambdaFunctionSucceeded
         20 -> LambdaFunctionTimedOut
-        21 -> ParallelStateAborted
-        22 -> ParallelStateEntered
-        23 -> ParallelStateExited
-        24 -> ParallelStateFailed
-        25 -> ParallelStateStarted
-        26 -> ParallelStateSucceeded
-        27 -> PassStateEntered
-        28 -> PassStateExited
-        29 -> SucceedStateEntered
-        30 -> SucceedStateExited
-        31 -> TaskStateAborted
-        32 -> TaskStateEntered
-        33 -> TaskStateExited
-        34 -> WaitStateAborted
-        35 -> WaitStateEntered
-        36 -> WaitStateExited
+        21 -> MapIterationAborted
+        22 -> MapIterationFailed
+        23 -> MapIterationStarted
+        24 -> MapIterationSucceeded
+        25 -> MapStateAborted
+        26 -> MapStateEntered
+        27 -> MapStateExited
+        28 -> MapStateFailed
+        29 -> MapStateStarted
+        30 -> MapStateSucceeded
+        31 -> ParallelStateAborted
+        32 -> ParallelStateEntered
+        33 -> ParallelStateExited
+        34 -> ParallelStateFailed
+        35 -> ParallelStateStarted
+        36 -> ParallelStateSucceeded
+        37 -> PassStateEntered
+        38 -> PassStateExited
+        39 -> SucceedStateEntered
+        40 -> SucceedStateExited
+        41 -> TaskFailed
+        42 -> TaskScheduled
+        43 -> TaskStartFailed
+        44 -> TaskStarted
+        45 -> TaskStateAborted
+        46 -> TaskStateEntered
+        47 -> TaskStateExited
+        48 -> TaskSubmitFailed
+        49 -> TaskSubmitted
+        50 -> TaskSucceeded
+        51 -> TaskTimedOut
+        52 -> WaitStateAborted
+        53 -> WaitStateEntered
+        54 -> WaitStateExited
         _ -> (error . showText) $ "Unknown index for HistoryEventType: " <> toText i
     fromEnum x = case x of
         ActivityFailed -> 0
@@ -289,22 +397,40 @@ instance Enum HistoryEventType where
         LambdaFunctionStarted -> 18
         LambdaFunctionSucceeded -> 19
         LambdaFunctionTimedOut -> 20
-        ParallelStateAborted -> 21
-        ParallelStateEntered -> 22
-        ParallelStateExited -> 23
-        ParallelStateFailed -> 24
-        ParallelStateStarted -> 25
-        ParallelStateSucceeded -> 26
-        PassStateEntered -> 27
-        PassStateExited -> 28
-        SucceedStateEntered -> 29
-        SucceedStateExited -> 30
-        TaskStateAborted -> 31
-        TaskStateEntered -> 32
-        TaskStateExited -> 33
-        WaitStateAborted -> 34
-        WaitStateEntered -> 35
-        WaitStateExited -> 36
+        MapIterationAborted -> 21
+        MapIterationFailed -> 22
+        MapIterationStarted -> 23
+        MapIterationSucceeded -> 24
+        MapStateAborted -> 25
+        MapStateEntered -> 26
+        MapStateExited -> 27
+        MapStateFailed -> 28
+        MapStateStarted -> 29
+        MapStateSucceeded -> 30
+        ParallelStateAborted -> 31
+        ParallelStateEntered -> 32
+        ParallelStateExited -> 33
+        ParallelStateFailed -> 34
+        ParallelStateStarted -> 35
+        ParallelStateSucceeded -> 36
+        PassStateEntered -> 37
+        PassStateExited -> 38
+        SucceedStateEntered -> 39
+        SucceedStateExited -> 40
+        TaskFailed -> 41
+        TaskScheduled -> 42
+        TaskStartFailed -> 43
+        TaskStarted -> 44
+        TaskStateAborted -> 45
+        TaskStateEntered -> 46
+        TaskStateExited -> 47
+        TaskSubmitFailed -> 48
+        TaskSubmitted -> 49
+        TaskSucceeded -> 50
+        TaskTimedOut -> 51
+        WaitStateAborted -> 52
+        WaitStateEntered -> 53
+        WaitStateExited -> 54
         HistoryEventType' name -> (error . showText) $ "Unknown HistoryEventType: " <> original name
 
 -- | Represents the bounds of /known/ $HistoryEventType.

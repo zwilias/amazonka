@@ -21,7 +21,7 @@ import Network.AWS.Lens
 import Network.AWS.MediaLive.Types.AudioChannelMapping
 import Network.AWS.Prelude
 
--- | Placeholder documentation for RemixSettings
+-- | Remix Settings
 --
 -- /See:/ 'remixSettings' smart constructor.
 data RemixSettings = RemixSettings'{_rsChannelsIn ::

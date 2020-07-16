@@ -27,16 +27,17 @@ module Network.AWS.Greengrass.CreateSoftwareUpdateJob
     -- * Request Lenses
     , csujUpdateAgentLogLevel
     , csujAmznClientToken
-    , csujSoftwareToUpdate
-    , csujUpdateTargetsOperatingSystem
     , csujS3URLSignerRole
-    , csujUpdateTargets
     , csujUpdateTargetsArchitecture
+    , csujSoftwareToUpdate
+    , csujUpdateTargets
+    , csujUpdateTargetsOperatingSystem
 
     -- * Destructuring the Response
     , createSoftwareUpdateJobResponse
     , CreateSoftwareUpdateJobResponse
     -- * Response Lenses
+    , csujrsPlatformSoftwareVersion
     , csujrsIotJobARN
     , csujrsIotJobId
     , csujrsResponseStatus
@@ -56,21 +57,18 @@ data CreateSoftwareUpdateJob = CreateSoftwareUpdateJob'{_csujUpdateAgentLogLevel
                                                             UpdateAgentLogLevel),
                                                         _csujAmznClientToken ::
                                                         !(Maybe Text),
-                                                        _csujSoftwareToUpdate ::
-                                                        !(Maybe
-                                                            SoftwareToUpdate),
-                                                        _csujUpdateTargetsOperatingSystem
-                                                        ::
-                                                        !(Maybe
-                                                            UpdateTargetsOperatingSystem),
                                                         _csujS3URLSignerRole ::
-                                                        !(Maybe Text),
-                                                        _csujUpdateTargets ::
-                                                        !(Maybe [Text]),
+                                                        !Text,
                                                         _csujUpdateTargetsArchitecture
                                                         ::
-                                                        !(Maybe
-                                                            UpdateTargetsArchitecture)}
+                                                        !UpdateTargetsArchitecture,
+                                                        _csujSoftwareToUpdate ::
+                                                        !SoftwareToUpdate,
+                                                        _csujUpdateTargets ::
+                                                        ![Text],
+                                                        _csujUpdateTargetsOperatingSystem
+                                                        ::
+                                                        !UpdateTargetsOperatingSystem}
                                  deriving (Eq, Read, Show, Data, Typeable,
                                            Generic)
 
@@ -82,26 +80,34 @@ data CreateSoftwareUpdateJob = CreateSoftwareUpdateJob'{_csujUpdateAgentLogLevel
 --
 -- * 'csujAmznClientToken' - A client token used to correlate requests and responses.
 --
--- * 'csujSoftwareToUpdate' - Undocumented member.
---
--- * 'csujUpdateTargetsOperatingSystem' - Undocumented member.
---
 -- * 'csujS3URLSignerRole' - Undocumented member.
+--
+-- * 'csujUpdateTargetsArchitecture' - Undocumented member.
+--
+-- * 'csujSoftwareToUpdate' - Undocumented member.
 --
 -- * 'csujUpdateTargets' - Undocumented member.
 --
--- * 'csujUpdateTargetsArchitecture' - Undocumented member.
+-- * 'csujUpdateTargetsOperatingSystem' - Undocumented member.
 createSoftwareUpdateJob
-    :: CreateSoftwareUpdateJob
-createSoftwareUpdateJob
+    :: Text -- ^ 'csujS3URLSignerRole'
+    -> UpdateTargetsArchitecture -- ^ 'csujUpdateTargetsArchitecture'
+    -> SoftwareToUpdate -- ^ 'csujSoftwareToUpdate'
+    -> UpdateTargetsOperatingSystem -- ^ 'csujUpdateTargetsOperatingSystem'
+    -> CreateSoftwareUpdateJob
+createSoftwareUpdateJob pS3URLSignerRole_
+  pUpdateTargetsArchitecture_ pSoftwareToUpdate_
+  pUpdateTargetsOperatingSystem_
   = CreateSoftwareUpdateJob'{_csujUpdateAgentLogLevel =
                                Nothing,
                              _csujAmznClientToken = Nothing,
-                             _csujSoftwareToUpdate = Nothing,
-                             _csujUpdateTargetsOperatingSystem = Nothing,
-                             _csujS3URLSignerRole = Nothing,
-                             _csujUpdateTargets = Nothing,
-                             _csujUpdateTargetsArchitecture = Nothing}
+                             _csujS3URLSignerRole = pS3URLSignerRole_,
+                             _csujUpdateTargetsArchitecture =
+                               pUpdateTargetsArchitecture_,
+                             _csujSoftwareToUpdate = pSoftwareToUpdate_,
+                             _csujUpdateTargets = mempty,
+                             _csujUpdateTargetsOperatingSystem =
+                               pUpdateTargetsOperatingSystem_}
 
 -- | Undocumented member.
 csujUpdateAgentLogLevel :: Lens' CreateSoftwareUpdateJob (Maybe UpdateAgentLogLevel)
@@ -112,24 +118,24 @@ csujAmznClientToken :: Lens' CreateSoftwareUpdateJob (Maybe Text)
 csujAmznClientToken = lens _csujAmznClientToken (\ s a -> s{_csujAmznClientToken = a})
 
 -- | Undocumented member.
-csujSoftwareToUpdate :: Lens' CreateSoftwareUpdateJob (Maybe SoftwareToUpdate)
-csujSoftwareToUpdate = lens _csujSoftwareToUpdate (\ s a -> s{_csujSoftwareToUpdate = a})
-
--- | Undocumented member.
-csujUpdateTargetsOperatingSystem :: Lens' CreateSoftwareUpdateJob (Maybe UpdateTargetsOperatingSystem)
-csujUpdateTargetsOperatingSystem = lens _csujUpdateTargetsOperatingSystem (\ s a -> s{_csujUpdateTargetsOperatingSystem = a})
-
--- | Undocumented member.
-csujS3URLSignerRole :: Lens' CreateSoftwareUpdateJob (Maybe Text)
+csujS3URLSignerRole :: Lens' CreateSoftwareUpdateJob Text
 csujS3URLSignerRole = lens _csujS3URLSignerRole (\ s a -> s{_csujS3URLSignerRole = a})
 
 -- | Undocumented member.
-csujUpdateTargets :: Lens' CreateSoftwareUpdateJob [Text]
-csujUpdateTargets = lens _csujUpdateTargets (\ s a -> s{_csujUpdateTargets = a}) . _Default . _Coerce
+csujUpdateTargetsArchitecture :: Lens' CreateSoftwareUpdateJob UpdateTargetsArchitecture
+csujUpdateTargetsArchitecture = lens _csujUpdateTargetsArchitecture (\ s a -> s{_csujUpdateTargetsArchitecture = a})
 
 -- | Undocumented member.
-csujUpdateTargetsArchitecture :: Lens' CreateSoftwareUpdateJob (Maybe UpdateTargetsArchitecture)
-csujUpdateTargetsArchitecture = lens _csujUpdateTargetsArchitecture (\ s a -> s{_csujUpdateTargetsArchitecture = a})
+csujSoftwareToUpdate :: Lens' CreateSoftwareUpdateJob SoftwareToUpdate
+csujSoftwareToUpdate = lens _csujSoftwareToUpdate (\ s a -> s{_csujSoftwareToUpdate = a})
+
+-- | Undocumented member.
+csujUpdateTargets :: Lens' CreateSoftwareUpdateJob [Text]
+csujUpdateTargets = lens _csujUpdateTargets (\ s a -> s{_csujUpdateTargets = a}) . _Coerce
+
+-- | Undocumented member.
+csujUpdateTargetsOperatingSystem :: Lens' CreateSoftwareUpdateJob UpdateTargetsOperatingSystem
+csujUpdateTargetsOperatingSystem = lens _csujUpdateTargetsOperatingSystem (\ s a -> s{_csujUpdateTargetsOperatingSystem = a})
 
 instance AWSRequest CreateSoftwareUpdateJob where
         type Rs CreateSoftwareUpdateJob =
@@ -139,8 +145,10 @@ instance AWSRequest CreateSoftwareUpdateJob where
           = receiveJSON
               (\ s h x ->
                  CreateSoftwareUpdateJobResponse' <$>
-                   (x .?> "IotJobArn") <*> (x .?> "IotJobId") <*>
-                     (pure (fromEnum s)))
+                   (x .?> "PlatformSoftwareVersion") <*>
+                     (x .?> "IotJobArn")
+                     <*> (x .?> "IotJobId")
+                     <*> (pure (fromEnum s)))
 
 instance Hashable CreateSoftwareUpdateJob where
 
@@ -159,13 +167,15 @@ instance ToJSON CreateSoftwareUpdateJob where
               (catMaybes
                  [("UpdateAgentLogLevel" .=) <$>
                     _csujUpdateAgentLogLevel,
-                  ("SoftwareToUpdate" .=) <$> _csujSoftwareToUpdate,
-                  ("UpdateTargetsOperatingSystem" .=) <$>
-                    _csujUpdateTargetsOperatingSystem,
-                  ("S3UrlSignerRole" .=) <$> _csujS3URLSignerRole,
-                  ("UpdateTargets" .=) <$> _csujUpdateTargets,
-                  ("UpdateTargetsArchitecture" .=) <$>
-                    _csujUpdateTargetsArchitecture])
+                  Just ("S3UrlSignerRole" .= _csujS3URLSignerRole),
+                  Just
+                    ("UpdateTargetsArchitecture" .=
+                       _csujUpdateTargetsArchitecture),
+                  Just ("SoftwareToUpdate" .= _csujSoftwareToUpdate),
+                  Just ("UpdateTargets" .= _csujUpdateTargets),
+                  Just
+                    ("UpdateTargetsOperatingSystem" .=
+                       _csujUpdateTargetsOperatingSystem)])
 
 instance ToPath CreateSoftwareUpdateJob where
         toPath = const "/greengrass/updates"
@@ -174,7 +184,11 @@ instance ToQuery CreateSoftwareUpdateJob where
         toQuery = const mempty
 
 -- | /See:/ 'createSoftwareUpdateJobResponse' smart constructor.
-data CreateSoftwareUpdateJobResponse = CreateSoftwareUpdateJobResponse'{_csujrsIotJobARN
+data CreateSoftwareUpdateJobResponse = CreateSoftwareUpdateJobResponse'{_csujrsPlatformSoftwareVersion
+                                                                        ::
+                                                                        !(Maybe
+                                                                            Text),
+                                                                        _csujrsIotJobARN
                                                                         ::
                                                                         !(Maybe
                                                                             Text),
@@ -191,6 +205,8 @@ data CreateSoftwareUpdateJobResponse = CreateSoftwareUpdateJobResponse'{_csujrsI
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
+-- * 'csujrsPlatformSoftwareVersion' - The software version installed on the device or devices after the update.
+--
 -- * 'csujrsIotJobARN' - The IoT Job ARN corresponding to this update.
 --
 -- * 'csujrsIotJobId' - The IoT Job Id corresponding to this update.
@@ -200,10 +216,15 @@ createSoftwareUpdateJobResponse
     :: Int -- ^ 'csujrsResponseStatus'
     -> CreateSoftwareUpdateJobResponse
 createSoftwareUpdateJobResponse pResponseStatus_
-  = CreateSoftwareUpdateJobResponse'{_csujrsIotJobARN =
-                                       Nothing,
+  = CreateSoftwareUpdateJobResponse'{_csujrsPlatformSoftwareVersion
+                                       = Nothing,
+                                     _csujrsIotJobARN = Nothing,
                                      _csujrsIotJobId = Nothing,
                                      _csujrsResponseStatus = pResponseStatus_}
+
+-- | The software version installed on the device or devices after the update.
+csujrsPlatformSoftwareVersion :: Lens' CreateSoftwareUpdateJobResponse (Maybe Text)
+csujrsPlatformSoftwareVersion = lens _csujrsPlatformSoftwareVersion (\ s a -> s{_csujrsPlatformSoftwareVersion = a})
 
 -- | The IoT Job ARN corresponding to this update.
 csujrsIotJobARN :: Lens' CreateSoftwareUpdateJobResponse (Maybe Text)

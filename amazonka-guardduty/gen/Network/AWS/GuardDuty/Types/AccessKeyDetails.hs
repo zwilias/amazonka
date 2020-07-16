@@ -20,7 +20,9 @@ module Network.AWS.GuardDuty.Types.AccessKeyDetails where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | The IAM access key details (IAM user information) of a user that engaged in the activity that prompted GuardDuty to generate a finding.
+-- | Contains information about the access keys.
+--
+--
 --
 -- /See:/ 'accessKeyDetails' smart constructor.
 data AccessKeyDetails = AccessKeyDetails'{_akdPrincipalId
@@ -38,7 +40,7 @@ data AccessKeyDetails = AccessKeyDetails'{_akdPrincipalId
 --
 -- * 'akdUserName' - The name of the user.
 --
--- * 'akdAccessKeyId' - Access key ID of the user.
+-- * 'akdAccessKeyId' - The access key ID of the user.
 --
 -- * 'akdUserType' - The type of the user.
 accessKeyDetails
@@ -56,7 +58,7 @@ akdPrincipalId = lens _akdPrincipalId (\ s a -> s{_akdPrincipalId = a})
 akdUserName :: Lens' AccessKeyDetails (Maybe Text)
 akdUserName = lens _akdUserName (\ s a -> s{_akdUserName = a})
 
--- | Access key ID of the user.
+-- | The access key ID of the user.
 akdAccessKeyId :: Lens' AccessKeyDetails (Maybe Text)
 akdAccessKeyId = lens _akdAccessKeyId (\ s a -> s{_akdAccessKeyId = a})
 

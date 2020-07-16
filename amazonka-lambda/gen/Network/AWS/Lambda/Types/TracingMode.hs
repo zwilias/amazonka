@@ -19,8 +19,8 @@
 module Network.AWS.Lambda.Types.TracingMode (
   TracingMode (
     ..
-    , Active
-    , PassThrough
+    , TMActive
+    , TMPassThrough
     )
   ) where
 
@@ -31,15 +31,15 @@ data TracingMode = TracingMode' (CI Text)
                      deriving (Eq, Ord, Read, Show, Data, Typeable,
                                Generic)
 
-pattern Active :: TracingMode
-pattern Active = TracingMode' "Active"
+pattern TMActive :: TracingMode
+pattern TMActive = TracingMode' "Active"
 
-pattern PassThrough :: TracingMode
-pattern PassThrough = TracingMode' "PassThrough"
+pattern TMPassThrough :: TracingMode
+pattern TMPassThrough = TracingMode' "PassThrough"
 
 {-# COMPLETE
-  Active,
-  PassThrough,
+  TMActive,
+  TMPassThrough,
   TracingMode' #-}
 
 instance FromText TracingMode where
@@ -54,20 +54,20 @@ instance ToText TracingMode where
 --   fromEnum is a partial function, and will error on values unknown at generation time.
 instance Enum TracingMode where
     toEnum i = case i of
-        0 -> Active
-        1 -> PassThrough
+        0 -> TMActive
+        1 -> TMPassThrough
         _ -> (error . showText) $ "Unknown index for TracingMode: " <> toText i
     fromEnum x = case x of
-        Active -> 0
-        PassThrough -> 1
+        TMActive -> 0
+        TMPassThrough -> 1
         TracingMode' name -> (error . showText) $ "Unknown TracingMode: " <> original name
 
 -- | Represents the bounds of /known/ $TracingMode.
 --   AWS may have added more since the source was generated.
 --   This instance exists only for backward compatibility.
 instance Bounded TracingMode where
-    minBound = Active
-    maxBound = PassThrough
+    minBound = TMActive
+    maxBound = TMPassThrough
 
 instance Hashable     TracingMode
 instance NFData       TracingMode

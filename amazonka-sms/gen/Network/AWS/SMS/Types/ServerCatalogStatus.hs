@@ -19,44 +19,43 @@
 module Network.AWS.SMS.Types.ServerCatalogStatus (
   ServerCatalogStatus (
     ..
-    , Available
-    , Deleted
-    , Expired
-    , Importing
-    , NotImported
+    , SCSAvailable
+    , SCSDeleted
+    , SCSExpired
+    , SCSImporting
+    , SCSNotImported
     )
   ) where
 
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | Status of Server catalog
 data ServerCatalogStatus = ServerCatalogStatus' (CI
                                                    Text)
                              deriving (Eq, Ord, Read, Show, Data, Typeable,
                                        Generic)
 
-pattern Available :: ServerCatalogStatus
-pattern Available = ServerCatalogStatus' "AVAILABLE"
+pattern SCSAvailable :: ServerCatalogStatus
+pattern SCSAvailable = ServerCatalogStatus' "AVAILABLE"
 
-pattern Deleted :: ServerCatalogStatus
-pattern Deleted = ServerCatalogStatus' "DELETED"
+pattern SCSDeleted :: ServerCatalogStatus
+pattern SCSDeleted = ServerCatalogStatus' "DELETED"
 
-pattern Expired :: ServerCatalogStatus
-pattern Expired = ServerCatalogStatus' "EXPIRED"
+pattern SCSExpired :: ServerCatalogStatus
+pattern SCSExpired = ServerCatalogStatus' "EXPIRED"
 
-pattern Importing :: ServerCatalogStatus
-pattern Importing = ServerCatalogStatus' "IMPORTING"
+pattern SCSImporting :: ServerCatalogStatus
+pattern SCSImporting = ServerCatalogStatus' "IMPORTING"
 
-pattern NotImported :: ServerCatalogStatus
-pattern NotImported = ServerCatalogStatus' "NOT_IMPORTED"
+pattern SCSNotImported :: ServerCatalogStatus
+pattern SCSNotImported = ServerCatalogStatus' "NOT_IMPORTED"
 
 {-# COMPLETE
-  Available,
-  Deleted,
-  Expired,
-  Importing,
-  NotImported,
+  SCSAvailable,
+  SCSDeleted,
+  SCSExpired,
+  SCSImporting,
+  SCSNotImported,
   ServerCatalogStatus' #-}
 
 instance FromText ServerCatalogStatus where
@@ -71,26 +70,26 @@ instance ToText ServerCatalogStatus where
 --   fromEnum is a partial function, and will error on values unknown at generation time.
 instance Enum ServerCatalogStatus where
     toEnum i = case i of
-        0 -> Available
-        1 -> Deleted
-        2 -> Expired
-        3 -> Importing
-        4 -> NotImported
+        0 -> SCSAvailable
+        1 -> SCSDeleted
+        2 -> SCSExpired
+        3 -> SCSImporting
+        4 -> SCSNotImported
         _ -> (error . showText) $ "Unknown index for ServerCatalogStatus: " <> toText i
     fromEnum x = case x of
-        Available -> 0
-        Deleted -> 1
-        Expired -> 2
-        Importing -> 3
-        NotImported -> 4
+        SCSAvailable -> 0
+        SCSDeleted -> 1
+        SCSExpired -> 2
+        SCSImporting -> 3
+        SCSNotImported -> 4
         ServerCatalogStatus' name -> (error . showText) $ "Unknown ServerCatalogStatus: " <> original name
 
 -- | Represents the bounds of /known/ $ServerCatalogStatus.
 --   AWS may have added more since the source was generated.
 --   This instance exists only for backward compatibility.
 instance Bounded ServerCatalogStatus where
-    minBound = Available
-    maxBound = NotImported
+    minBound = SCSAvailable
+    maxBound = SCSNotImported
 
 instance Hashable     ServerCatalogStatus
 instance NFData       ServerCatalogStatus

@@ -19,6 +19,7 @@ module Network.AWS.StorageGateway.Types.FileShareInfo where
 
 import Network.AWS.Lens
 import Network.AWS.Prelude
+import Network.AWS.StorageGateway.Types.FileShareType
 
 -- | Describes a file share.
 --
@@ -29,7 +30,8 @@ data FileShareInfo = FileShareInfo'{_fsiFileShareStatus
                                     :: !(Maybe Text),
                                     _fsiGatewayARN :: !(Maybe Text),
                                     _fsiFileShareId :: !(Maybe Text),
-                                    _fsiFileShareARN :: !(Maybe Text)}
+                                    _fsiFileShareARN :: !(Maybe Text),
+                                    _fsiFileShareType :: !(Maybe FileShareType)}
                        deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'FileShareInfo' with the minimum fields required to make a request.
@@ -43,12 +45,15 @@ data FileShareInfo = FileShareInfo'{_fsiFileShareStatus
 -- * 'fsiFileShareId' - Undocumented member.
 --
 -- * 'fsiFileShareARN' - Undocumented member.
+--
+-- * 'fsiFileShareType' - Undocumented member.
 fileShareInfo
     :: FileShareInfo
 fileShareInfo
   = FileShareInfo'{_fsiFileShareStatus = Nothing,
                    _fsiGatewayARN = Nothing, _fsiFileShareId = Nothing,
-                   _fsiFileShareARN = Nothing}
+                   _fsiFileShareARN = Nothing,
+                   _fsiFileShareType = Nothing}
 
 -- | Undocumented member.
 fsiFileShareStatus :: Lens' FileShareInfo (Maybe Text)
@@ -66,6 +71,10 @@ fsiFileShareId = lens _fsiFileShareId (\ s a -> s{_fsiFileShareId = a})
 fsiFileShareARN :: Lens' FileShareInfo (Maybe Text)
 fsiFileShareARN = lens _fsiFileShareARN (\ s a -> s{_fsiFileShareARN = a})
 
+-- | Undocumented member.
+fsiFileShareType :: Lens' FileShareInfo (Maybe FileShareType)
+fsiFileShareType = lens _fsiFileShareType (\ s a -> s{_fsiFileShareType = a})
+
 instance FromJSON FileShareInfo where
         parseJSON
           = withObject "FileShareInfo"
@@ -73,7 +82,8 @@ instance FromJSON FileShareInfo where
                  FileShareInfo' <$>
                    (x .:? "FileShareStatus") <*> (x .:? "GatewayARN")
                      <*> (x .:? "FileShareId")
-                     <*> (x .:? "FileShareARN"))
+                     <*> (x .:? "FileShareARN")
+                     <*> (x .:? "FileShareType"))
 
 instance Hashable FileShareInfo where
 

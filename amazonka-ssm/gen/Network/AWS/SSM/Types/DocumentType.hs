@@ -19,9 +19,15 @@
 module Network.AWS.SSM.Types.DocumentType (
   DocumentType (
     ..
+    , DTApplicationConfiguration
+    , DTApplicationConfigurationSchema
     , DTAutomation
+    , DTChangeCalendar
     , DTCommand
+    , DTDeploymentStrategy
+    , DTPackage
     , DTPolicy
+    , DTSession
     )
   ) where
 
@@ -32,19 +38,43 @@ data DocumentType = DocumentType' (CI Text)
                       deriving (Eq, Ord, Read, Show, Data, Typeable,
                                 Generic)
 
+pattern DTApplicationConfiguration :: DocumentType
+pattern DTApplicationConfiguration = DocumentType' "ApplicationConfiguration"
+
+pattern DTApplicationConfigurationSchema :: DocumentType
+pattern DTApplicationConfigurationSchema = DocumentType' "ApplicationConfigurationSchema"
+
 pattern DTAutomation :: DocumentType
 pattern DTAutomation = DocumentType' "Automation"
+
+pattern DTChangeCalendar :: DocumentType
+pattern DTChangeCalendar = DocumentType' "ChangeCalendar"
 
 pattern DTCommand :: DocumentType
 pattern DTCommand = DocumentType' "Command"
 
+pattern DTDeploymentStrategy :: DocumentType
+pattern DTDeploymentStrategy = DocumentType' "DeploymentStrategy"
+
+pattern DTPackage :: DocumentType
+pattern DTPackage = DocumentType' "Package"
+
 pattern DTPolicy :: DocumentType
 pattern DTPolicy = DocumentType' "Policy"
 
+pattern DTSession :: DocumentType
+pattern DTSession = DocumentType' "Session"
+
 {-# COMPLETE
+  DTApplicationConfiguration,
+  DTApplicationConfigurationSchema,
   DTAutomation,
+  DTChangeCalendar,
   DTCommand,
+  DTDeploymentStrategy,
+  DTPackage,
   DTPolicy,
+  DTSession,
   DocumentType' #-}
 
 instance FromText DocumentType where
@@ -59,22 +89,34 @@ instance ToText DocumentType where
 --   fromEnum is a partial function, and will error on values unknown at generation time.
 instance Enum DocumentType where
     toEnum i = case i of
-        0 -> DTAutomation
-        1 -> DTCommand
-        2 -> DTPolicy
+        0 -> DTApplicationConfiguration
+        1 -> DTApplicationConfigurationSchema
+        2 -> DTAutomation
+        3 -> DTChangeCalendar
+        4 -> DTCommand
+        5 -> DTDeploymentStrategy
+        6 -> DTPackage
+        7 -> DTPolicy
+        8 -> DTSession
         _ -> (error . showText) $ "Unknown index for DocumentType: " <> toText i
     fromEnum x = case x of
-        DTAutomation -> 0
-        DTCommand -> 1
-        DTPolicy -> 2
+        DTApplicationConfiguration -> 0
+        DTApplicationConfigurationSchema -> 1
+        DTAutomation -> 2
+        DTChangeCalendar -> 3
+        DTCommand -> 4
+        DTDeploymentStrategy -> 5
+        DTPackage -> 6
+        DTPolicy -> 7
+        DTSession -> 8
         DocumentType' name -> (error . showText) $ "Unknown DocumentType: " <> original name
 
 -- | Represents the bounds of /known/ $DocumentType.
 --   AWS may have added more since the source was generated.
 --   This instance exists only for backward compatibility.
 instance Bounded DocumentType where
-    minBound = DTAutomation
-    maxBound = DTPolicy
+    minBound = DTApplicationConfiguration
+    maxBound = DTSession
 
 instance Hashable     DocumentType
 instance NFData       DocumentType

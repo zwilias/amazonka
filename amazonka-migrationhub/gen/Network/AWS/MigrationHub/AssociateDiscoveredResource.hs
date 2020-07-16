@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Associates a discovered resource ID from Application Discovery Service (ADS) with a migration task.
+-- Associates a discovered resource ID from Application Discovery Service with a migration task.
 --
 --
 module Network.AWS.MigrationHub.AssociateDiscoveredResource
@@ -68,7 +68,7 @@ data AssociateDiscoveredResource = AssociateDiscoveredResource'{_adrDryRun
 --
 -- * 'adrProgressUpdateStream' - The name of the ProgressUpdateStream.
 --
--- * 'adrMigrationTaskName' - The identifier given to the MigrationTask.
+-- * 'adrMigrationTaskName' - The identifier given to the MigrationTask. /Do not store personal data in this field./ 
 --
 -- * 'adrDiscoveredResource' - Object representing a Resource.
 associateDiscoveredResource
@@ -92,7 +92,7 @@ adrDryRun = lens _adrDryRun (\ s a -> s{_adrDryRun = a})
 adrProgressUpdateStream :: Lens' AssociateDiscoveredResource Text
 adrProgressUpdateStream = lens _adrProgressUpdateStream (\ s a -> s{_adrProgressUpdateStream = a})
 
--- | The identifier given to the MigrationTask.
+-- | The identifier given to the MigrationTask. /Do not store personal data in this field./ 
 adrMigrationTaskName :: Lens' AssociateDiscoveredResource Text
 adrMigrationTaskName = lens _adrMigrationTaskName (\ s a -> s{_adrMigrationTaskName = a})
 

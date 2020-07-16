@@ -35,6 +35,8 @@ data S3DestinationConfiguration = S3DestinationConfiguration'{_sdcPrefix
                                                               ::
                                                               !(Maybe
                                                                   CloudWatchLoggingOptions),
+                                                              _sdcErrorOutputPrefix
+                                                              :: !(Maybe Text),
                                                               _sdcEncryptionConfiguration
                                                               ::
                                                               !(Maybe
@@ -58,9 +60,11 @@ data S3DestinationConfiguration = S3DestinationConfiguration'{_sdcPrefix
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'sdcPrefix' - The "YYYY/MM/DD/HH" time format prefix is automatically used for delivered Amazon S3 files. You can specify an extra prefix to be added in front of the time format prefix. If the prefix ends with a slash, it appears as a folder in the S3 bucket. For more information, see <http://docs.aws.amazon.com/firehose/latest/dev/basic-deliver.html#s3-object-name Amazon S3 Object Name Format> in the /Amazon Kinesis Data Firehose Developer Guide/ .
+-- * 'sdcPrefix' - The "YYYY/MM/DD/HH" time format prefix is automatically used for delivered Amazon S3 files. You can also specify a custom prefix, as described in <https://docs.aws.amazon.com/firehose/latest/dev/s3-prefixes.html Custom Prefixes for Amazon S3 Objects> .
 --
 -- * 'sdcCloudWatchLoggingOptions' - The CloudWatch logging options for your delivery stream.
+--
+-- * 'sdcErrorOutputPrefix' - A prefix that Kinesis Data Firehose evaluates and adds to failed records before writing them to S3. This prefix appears immediately following the bucket name. For information about how to specify this prefix, see <https://docs.aws.amazon.com/firehose/latest/dev/s3-prefixes.html Custom Prefixes for Amazon S3 Objects> .
 --
 -- * 'sdcEncryptionConfiguration' - The encryption configuration. If no value is specified, the default is no encryption.
 --
@@ -78,19 +82,24 @@ s3DestinationConfiguration
 s3DestinationConfiguration pRoleARN_ pBucketARN_
   = S3DestinationConfiguration'{_sdcPrefix = Nothing,
                                 _sdcCloudWatchLoggingOptions = Nothing,
+                                _sdcErrorOutputPrefix = Nothing,
                                 _sdcEncryptionConfiguration = Nothing,
                                 _sdcCompressionFormat = Nothing,
                                 _sdcBufferingHints = Nothing,
                                 _sdcRoleARN = pRoleARN_,
                                 _sdcBucketARN = pBucketARN_}
 
--- | The "YYYY/MM/DD/HH" time format prefix is automatically used for delivered Amazon S3 files. You can specify an extra prefix to be added in front of the time format prefix. If the prefix ends with a slash, it appears as a folder in the S3 bucket. For more information, see <http://docs.aws.amazon.com/firehose/latest/dev/basic-deliver.html#s3-object-name Amazon S3 Object Name Format> in the /Amazon Kinesis Data Firehose Developer Guide/ .
+-- | The "YYYY/MM/DD/HH" time format prefix is automatically used for delivered Amazon S3 files. You can also specify a custom prefix, as described in <https://docs.aws.amazon.com/firehose/latest/dev/s3-prefixes.html Custom Prefixes for Amazon S3 Objects> .
 sdcPrefix :: Lens' S3DestinationConfiguration (Maybe Text)
 sdcPrefix = lens _sdcPrefix (\ s a -> s{_sdcPrefix = a})
 
 -- | The CloudWatch logging options for your delivery stream.
 sdcCloudWatchLoggingOptions :: Lens' S3DestinationConfiguration (Maybe CloudWatchLoggingOptions)
 sdcCloudWatchLoggingOptions = lens _sdcCloudWatchLoggingOptions (\ s a -> s{_sdcCloudWatchLoggingOptions = a})
+
+-- | A prefix that Kinesis Data Firehose evaluates and adds to failed records before writing them to S3. This prefix appears immediately following the bucket name. For information about how to specify this prefix, see <https://docs.aws.amazon.com/firehose/latest/dev/s3-prefixes.html Custom Prefixes for Amazon S3 Objects> .
+sdcErrorOutputPrefix :: Lens' S3DestinationConfiguration (Maybe Text)
+sdcErrorOutputPrefix = lens _sdcErrorOutputPrefix (\ s a -> s{_sdcErrorOutputPrefix = a})
 
 -- | The encryption configuration. If no value is specified, the default is no encryption.
 sdcEncryptionConfiguration :: Lens' S3DestinationConfiguration (Maybe EncryptionConfiguration)
@@ -123,6 +132,7 @@ instance ToJSON S3DestinationConfiguration where
                  [("Prefix" .=) <$> _sdcPrefix,
                   ("CloudWatchLoggingOptions" .=) <$>
                     _sdcCloudWatchLoggingOptions,
+                  ("ErrorOutputPrefix" .=) <$> _sdcErrorOutputPrefix,
                   ("EncryptionConfiguration" .=) <$>
                     _sdcEncryptionConfiguration,
                   ("CompressionFormat" .=) <$> _sdcCompressionFormat,

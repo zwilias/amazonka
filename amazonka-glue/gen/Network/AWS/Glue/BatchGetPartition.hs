@@ -150,7 +150,7 @@ data BatchGetPartitionResponse = BatchGetPartitionResponse'{_bgprsUnprocessedKey
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'bgprsUnprocessedKeys' - A list of the partition values in the request for which partions were not returned.
+-- * 'bgprsUnprocessedKeys' - A list of the partition values in the request for which partitions were not returned.
 --
 -- * 'bgprsPartitions' - A list of the requested partitions.
 --
@@ -164,7 +164,7 @@ batchGetPartitionResponse pResponseStatus_
                                _bgprsPartitions = Nothing,
                                _bgprsResponseStatus = pResponseStatus_}
 
--- | A list of the partition values in the request for which partions were not returned.
+-- | A list of the partition values in the request for which partitions were not returned.
 bgprsUnprocessedKeys :: Lens' BatchGetPartitionResponse [PartitionValueList]
 bgprsUnprocessedKeys = lens _bgprsUnprocessedKeys (\ s a -> s{_bgprsUnprocessedKeys = a}) . _Default . _Coerce
 

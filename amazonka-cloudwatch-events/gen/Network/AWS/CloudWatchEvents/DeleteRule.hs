@@ -25,7 +25,7 @@
 --
 -- When you delete a rule, incoming events might continue to match to the deleted rule. Allow a short period of time for changes to take effect.
 --
--- Managed rules are rules created and managed by another AWS service on your behalf. These rules are created by those other AWS services to support functionality in those services. You can delete these rules using the @Force@ option, but you should do so only if you're sure that the other service isn't still using that rule.
+-- Managed rules are rules created and managed by another AWS service on your behalf. These rules are created by those other AWS services to support functionality in those services. You can delete these rules using the @Force@ option, but you should do so only if you are sure the other service is not still using that rule.
 --
 module Network.AWS.CloudWatchEvents.DeleteRule
     (

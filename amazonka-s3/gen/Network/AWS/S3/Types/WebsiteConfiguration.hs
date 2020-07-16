@@ -25,7 +25,11 @@ import Network.AWS.S3.Types.IndexDocument
 import Network.AWS.S3.Types.RedirectAllRequestsTo
 import Network.AWS.S3.Types.RoutingRule
 
--- | /See:/ 'websiteConfiguration' smart constructor.
+-- | Specifies website configuration parameters for an Amazon S3 bucket.
+--
+--
+--
+-- /See:/ 'websiteConfiguration' smart constructor.
 data WebsiteConfiguration = WebsiteConfiguration'{_wcRedirectAllRequestsTo
                                                   ::
                                                   !(Maybe
@@ -42,13 +46,13 @@ data WebsiteConfiguration = WebsiteConfiguration'{_wcRedirectAllRequestsTo
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'wcRedirectAllRequestsTo' - Undocumented member.
+-- * 'wcRedirectAllRequestsTo' - The redirect behavior for every request to this bucket's website endpoint. /Important:/ If you specify this property, you can't specify any other property.
 --
--- * 'wcErrorDocument' - Undocumented member.
+-- * 'wcErrorDocument' - The name of the error document for the website.
 --
--- * 'wcIndexDocument' - Undocumented member.
+-- * 'wcIndexDocument' - The name of the index document for the website.
 --
--- * 'wcRoutingRules' - Undocumented member.
+-- * 'wcRoutingRules' - Rules that define when a redirect is applied and the redirect behavior.
 websiteConfiguration
     :: WebsiteConfiguration
 websiteConfiguration
@@ -58,19 +62,19 @@ websiteConfiguration
                           _wcIndexDocument = Nothing,
                           _wcRoutingRules = Nothing}
 
--- | Undocumented member.
+-- | The redirect behavior for every request to this bucket's website endpoint. /Important:/ If you specify this property, you can't specify any other property.
 wcRedirectAllRequestsTo :: Lens' WebsiteConfiguration (Maybe RedirectAllRequestsTo)
 wcRedirectAllRequestsTo = lens _wcRedirectAllRequestsTo (\ s a -> s{_wcRedirectAllRequestsTo = a})
 
--- | Undocumented member.
+-- | The name of the error document for the website.
 wcErrorDocument :: Lens' WebsiteConfiguration (Maybe ErrorDocument)
 wcErrorDocument = lens _wcErrorDocument (\ s a -> s{_wcErrorDocument = a})
 
--- | Undocumented member.
+-- | The name of the index document for the website.
 wcIndexDocument :: Lens' WebsiteConfiguration (Maybe IndexDocument)
 wcIndexDocument = lens _wcIndexDocument (\ s a -> s{_wcIndexDocument = a})
 
--- | Undocumented member.
+-- | Rules that define when a redirect is applied and the redirect behavior.
 wcRoutingRules :: Lens' WebsiteConfiguration [RoutingRule]
 wcRoutingRules = lens _wcRoutingRules (\ s a -> s{_wcRoutingRules = a}) . _Default . _Coerce
 

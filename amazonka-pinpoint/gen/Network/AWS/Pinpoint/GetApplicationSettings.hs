@@ -18,7 +18,9 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Used to request the settings for an app.
+-- Retrieves information about the settings for an application.
+--
+--
 module Network.AWS.Pinpoint.GetApplicationSettings
     (
     -- * Creating a Request
@@ -52,7 +54,7 @@ newtype GetApplicationSettings = GetApplicationSettings'{_gasApplicationId
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'gasApplicationId' - Undocumented member.
+-- * 'gasApplicationId' - The unique identifier for the application. This identifier is displayed as the __Project ID__ on the Amazon Pinpoint console.
 getApplicationSettings
     :: Text -- ^ 'gasApplicationId'
     -> GetApplicationSettings
@@ -60,7 +62,7 @@ getApplicationSettings pApplicationId_
   = GetApplicationSettings'{_gasApplicationId =
                               pApplicationId_}
 
--- | Undocumented member.
+-- | The unique identifier for the application. This identifier is displayed as the __Project ID__ on the Amazon Pinpoint console.
 gasApplicationId :: Lens' GetApplicationSettings Text
 gasApplicationId = lens _gasApplicationId (\ s a -> s{_gasApplicationId = a})
 

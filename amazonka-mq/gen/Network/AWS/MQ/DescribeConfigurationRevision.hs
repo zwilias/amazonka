@@ -34,6 +34,7 @@ module Network.AWS.MQ.DescribeConfigurationRevision
     -- * Response Lenses
     , dcrrsConfigurationId
     , dcrrsData
+    , dcrrsCreated
     , dcrrsDescription
     , dcrrsResponseStatus
     ) where
@@ -88,7 +89,8 @@ instance AWSRequest DescribeConfigurationRevision
               (\ s h x ->
                  DescribeConfigurationRevisionResponse' <$>
                    (x .?> "configurationId") <*> (x .?> "data") <*>
-                     (x .?> "description")
+                     (x .?> "created")
+                     <*> (x .?> "description")
                      <*> (pure (fromEnum s)))
 
 instance Hashable DescribeConfigurationRevision where
@@ -121,6 +123,10 @@ data DescribeConfigurationRevisionResponse = DescribeConfigurationRevisionRespon
                                                                                     ::
                                                                                     !(Maybe
                                                                                         Text),
+                                                                                    _dcrrsCreated
+                                                                                    ::
+                                                                                    !(Maybe
+                                                                                        POSIX),
                                                                                     _dcrrsDescription
                                                                                     ::
                                                                                     !(Maybe
@@ -139,6 +145,8 @@ data DescribeConfigurationRevisionResponse = DescribeConfigurationRevisionRespon
 --
 -- * 'dcrrsData' - Required. The base64-encoded XML configuration.
 --
+-- * 'dcrrsCreated' - Required. The date and time of the configuration.
+--
 -- * 'dcrrsDescription' - The description of the configuration.
 --
 -- * 'dcrrsResponseStatus' - -- | The response status code.
@@ -150,6 +158,7 @@ describeConfigurationRevisionResponse
   = DescribeConfigurationRevisionResponse'{_dcrrsConfigurationId
                                              = Nothing,
                                            _dcrrsData = Nothing,
+                                           _dcrrsCreated = Nothing,
                                            _dcrrsDescription = Nothing,
                                            _dcrrsResponseStatus =
                                              pResponseStatus_}
@@ -161,6 +170,10 @@ dcrrsConfigurationId = lens _dcrrsConfigurationId (\ s a -> s{_dcrrsConfiguratio
 -- | Required. The base64-encoded XML configuration.
 dcrrsData :: Lens' DescribeConfigurationRevisionResponse (Maybe Text)
 dcrrsData = lens _dcrrsData (\ s a -> s{_dcrrsData = a})
+
+-- | Required. The date and time of the configuration.
+dcrrsCreated :: Lens' DescribeConfigurationRevisionResponse (Maybe UTCTime)
+dcrrsCreated = lens _dcrrsCreated (\ s a -> s{_dcrrsCreated = a}) . mapping _Time
 
 -- | The description of the configuration.
 dcrrsDescription :: Lens' DescribeConfigurationRevisionResponse (Maybe Text)

@@ -23,7 +23,7 @@
 --
 -- Rebooting a DB instance restarts the database engine service. Rebooting a DB instance results in a momentary outage, during which the DB instance status is set to rebooting. 
 --
--- For more information about rebooting, see <http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_RebootInstance.html Rebooting a DB Instance> . 
+-- For more information about rebooting, see <https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_RebootInstance.html Rebooting a DB Instance> in the /Amazon RDS User Guide./ 
 --
 module Network.AWS.RDS.RebootDBInstance
     (
@@ -63,7 +63,7 @@ data RebootDBInstance = RebootDBInstance'{_rdiForceFailover
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'rdiForceFailover' - When @true@ , the reboot is conducted through a MultiAZ failover.  Constraint: You can't specify @true@ if the instance is not configured for MultiAZ.
+-- * 'rdiForceFailover' - A value that indicates whether the reboot is conducted through a Multi-AZ failover.  Constraint: You can't enable force failover if the instance isn't configured for Multi-AZ.
 --
 -- * 'rdiDBInstanceIdentifier' - The DB instance identifier. This parameter is stored as a lowercase string. Constraints:     * Must match the identifier of an existing DBInstance.
 rebootDBInstance
@@ -73,7 +73,7 @@ rebootDBInstance pDBInstanceIdentifier_
   = RebootDBInstance'{_rdiForceFailover = Nothing,
                       _rdiDBInstanceIdentifier = pDBInstanceIdentifier_}
 
--- | When @true@ , the reboot is conducted through a MultiAZ failover.  Constraint: You can't specify @true@ if the instance is not configured for MultiAZ.
+-- | A value that indicates whether the reboot is conducted through a Multi-AZ failover.  Constraint: You can't enable force failover if the instance isn't configured for Multi-AZ.
 rdiForceFailover :: Lens' RebootDBInstance (Maybe Bool)
 rdiForceFailover = lens _rdiForceFailover (\ s a -> s{_rdiForceFailover = a})
 

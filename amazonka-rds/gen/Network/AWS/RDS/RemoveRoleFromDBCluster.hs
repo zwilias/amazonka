@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Disassociates an Identity and Access Management (IAM) role from an Aurora DB cluster. For more information, see <http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Aurora.Authorizing.AWSServices.html Authorizing Amazon Aurora to Access Other AWS Services On Your Behalf> .
+-- Disassociates an AWS Identity and Access Management (IAM) role from an Amazon Aurora DB cluster. For more information, see <https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/AuroraMySQL.Integrating.Authorizing.html Authorizing Amazon Aurora MySQL to Access Other AWS Services on Your Behalf > in the /Amazon Aurora User Guide/ .
 --
 --
 module Network.AWS.RDS.RemoveRoleFromDBCluster
@@ -27,6 +27,7 @@ module Network.AWS.RDS.RemoveRoleFromDBCluster
       removeRoleFromDBCluster
     , RemoveRoleFromDBCluster
     -- * Request Lenses
+    , rrfdcFeatureName
     , rrfdcDBClusterIdentifier
     , rrfdcRoleARN
 
@@ -43,7 +44,9 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'removeRoleFromDBCluster' smart constructor.
-data RemoveRoleFromDBCluster = RemoveRoleFromDBCluster'{_rrfdcDBClusterIdentifier
+data RemoveRoleFromDBCluster = RemoveRoleFromDBCluster'{_rrfdcFeatureName
+                                                        :: !(Maybe Text),
+                                                        _rrfdcDBClusterIdentifier
                                                         :: !Text,
                                                         _rrfdcRoleARN :: !Text}
                                  deriving (Eq, Read, Show, Data, Typeable,
@@ -52,6 +55,8 @@ data RemoveRoleFromDBCluster = RemoveRoleFromDBCluster'{_rrfdcDBClusterIdentifie
 -- | Creates a value of 'RemoveRoleFromDBCluster' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'rrfdcFeatureName' - The name of the feature for the DB cluster that the IAM role is to be disassociated from. For the list of supported feature names, see 'DBEngineVersion' .
 --
 -- * 'rrfdcDBClusterIdentifier' - The name of the DB cluster to disassociate the IAM role from.
 --
@@ -62,9 +67,14 @@ removeRoleFromDBCluster
     -> RemoveRoleFromDBCluster
 removeRoleFromDBCluster pDBClusterIdentifier_
   pRoleARN_
-  = RemoveRoleFromDBCluster'{_rrfdcDBClusterIdentifier
-                               = pDBClusterIdentifier_,
+  = RemoveRoleFromDBCluster'{_rrfdcFeatureName =
+                               Nothing,
+                             _rrfdcDBClusterIdentifier = pDBClusterIdentifier_,
                              _rrfdcRoleARN = pRoleARN_}
+
+-- | The name of the feature for the DB cluster that the IAM role is to be disassociated from. For the list of supported feature names, see 'DBEngineVersion' .
+rrfdcFeatureName :: Lens' RemoveRoleFromDBCluster (Maybe Text)
+rrfdcFeatureName = lens _rrfdcFeatureName (\ s a -> s{_rrfdcFeatureName = a})
 
 -- | The name of the DB cluster to disassociate the IAM role from.
 rrfdcDBClusterIdentifier :: Lens' RemoveRoleFromDBCluster Text
@@ -97,6 +107,7 @@ instance ToQuery RemoveRoleFromDBCluster where
               ["Action" =:
                  ("RemoveRoleFromDBCluster" :: ByteString),
                "Version" =: ("2014-10-31" :: ByteString),
+               "FeatureName" =: _rrfdcFeatureName,
                "DBClusterIdentifier" =: _rrfdcDBClusterIdentifier,
                "RoleArn" =: _rrfdcRoleARN]
 

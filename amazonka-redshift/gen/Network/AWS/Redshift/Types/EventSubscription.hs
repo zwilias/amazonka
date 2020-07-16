@@ -56,9 +56,9 @@ data EventSubscription = EventSubscription'{_esStatus
 --
 -- * 'esSNSTopicARN' - The Amazon Resource Name (ARN) of the Amazon SNS topic used by the event notification subscription.
 --
--- * 'esEnabled' - A Boolean value indicating whether the subscription is enabled. @true@ indicates the subscription is enabled.
+-- * 'esEnabled' - A boolean value indicating whether the subscription is enabled; @true@ indicates that the subscription is enabled.
 --
--- * 'esSourceType' - The source type of the events returned the Amazon Redshift event notification, such as cluster, or cluster-snapshot.
+-- * 'esSourceType' - The source type of the events returned by the Amazon Redshift event notification, such as cluster, cluster-snapshot, cluster-parameter-group, cluster-security-group, or scheduled-action. 
 --
 -- * 'esSeverity' - The event severity specified in the Amazon Redshift event notification subscription. Values: ERROR, INFO
 --
@@ -97,11 +97,11 @@ esCustSubscriptionId = lens _esCustSubscriptionId (\ s a -> s{_esCustSubscriptio
 esSNSTopicARN :: Lens' EventSubscription (Maybe Text)
 esSNSTopicARN = lens _esSNSTopicARN (\ s a -> s{_esSNSTopicARN = a})
 
--- | A Boolean value indicating whether the subscription is enabled. @true@ indicates the subscription is enabled.
+-- | A boolean value indicating whether the subscription is enabled; @true@ indicates that the subscription is enabled.
 esEnabled :: Lens' EventSubscription (Maybe Bool)
 esEnabled = lens _esEnabled (\ s a -> s{_esEnabled = a})
 
--- | The source type of the events returned the Amazon Redshift event notification, such as cluster, or cluster-snapshot.
+-- | The source type of the events returned by the Amazon Redshift event notification, such as cluster, cluster-snapshot, cluster-parameter-group, cluster-security-group, or scheduled-action. 
 esSourceType :: Lens' EventSubscription (Maybe Text)
 esSourceType = lens _esSourceType (\ s a -> s{_esSourceType = a})
 

@@ -21,7 +21,7 @@ import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Rekognition.Types.S3Object
 
--- | Video file stored in an Amazon S3 bucket. Amazon Rekognition video start operations such as use @Video@ to specify a video for analysis. The supported file formats are .mp4, .mov and .avi.
+-- | Video file stored in an Amazon S3 bucket. Amazon Rekognition video start operations such as 'StartLabelDetection' use @Video@ to specify a video for analysis. The supported file formats are .mp4, .mov and .avi.
 --
 --
 --

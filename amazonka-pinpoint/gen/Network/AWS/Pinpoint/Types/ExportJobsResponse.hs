@@ -21,35 +21,36 @@ import Network.AWS.Lens
 import Network.AWS.Pinpoint.Types.ExportJobResponse
 import Network.AWS.Prelude
 
--- | Export job list.
+-- | Provides information about all the export jobs that are associated with an application or segment. An export job is a job that exports endpoint definitions to a file.
+--
+--
 --
 -- /See:/ 'exportJobsResponse' smart constructor.
 data ExportJobsResponse = ExportJobsResponse'{_ejNextToken
                                               :: !(Maybe Text),
-                                              _ejItem ::
-                                              !(Maybe [ExportJobResponse])}
+                                              _ejItem :: ![ExportJobResponse]}
                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ExportJobsResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'ejNextToken' - The string that you use in a subsequent request to get the next page of results in a paginated response.
+-- * 'ejNextToken' - The string to use in a subsequent request to get the next page of results in a paginated response. This value is null if there are no additional pages.
 --
--- * 'ejItem' - A list of export jobs for the application.
+-- * 'ejItem' - An array of responses, one for each export job that's associated with the application (Export Jobs resource) or segment (Segment Export Jobs resource).
 exportJobsResponse
     :: ExportJobsResponse
 exportJobsResponse
   = ExportJobsResponse'{_ejNextToken = Nothing,
-                        _ejItem = Nothing}
+                        _ejItem = mempty}
 
--- | The string that you use in a subsequent request to get the next page of results in a paginated response.
+-- | The string to use in a subsequent request to get the next page of results in a paginated response. This value is null if there are no additional pages.
 ejNextToken :: Lens' ExportJobsResponse (Maybe Text)
 ejNextToken = lens _ejNextToken (\ s a -> s{_ejNextToken = a})
 
--- | A list of export jobs for the application.
+-- | An array of responses, one for each export job that's associated with the application (Export Jobs resource) or segment (Segment Export Jobs resource).
 ejItem :: Lens' ExportJobsResponse [ExportJobResponse]
-ejItem = lens _ejItem (\ s a -> s{_ejItem = a}) . _Default . _Coerce
+ejItem = lens _ejItem (\ s a -> s{_ejItem = a}) . _Coerce
 
 instance FromJSON ExportJobsResponse where
         parseJSON

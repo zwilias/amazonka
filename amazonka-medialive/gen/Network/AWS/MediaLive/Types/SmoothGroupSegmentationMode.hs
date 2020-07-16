@@ -27,7 +27,7 @@ module Network.AWS.MediaLive.Types.SmoothGroupSegmentationMode (
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | Placeholder documentation for SmoothGroupSegmentationMode
+-- | Smooth Group Segmentation Mode
 data SmoothGroupSegmentationMode = SmoothGroupSegmentationMode' (CI
                                                                    Text)
                                      deriving (Eq, Ord, Read, Show, Data,

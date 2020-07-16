@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Adds an 'InputProcessingConfiguration' to an application. An input processor preprocesses records on the input stream before the application's SQL code executes. Currently, the only input processor available is <https://aws.amazon.com/documentation/lambda/ AWS Lambda> .
+-- Adds an <https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_InputProcessingConfiguration.html InputProcessingConfiguration> to an application. An input processor preprocesses records on the input stream before the application's SQL code executes. Currently, the only input processor available is <https://docs.aws.amazon.com/lambda/ AWS Lambda> .
 --
 --
 module Network.AWS.KinesisAnalytics.AddApplicationInputProcessingConfiguration
@@ -69,11 +69,11 @@ data AddApplicationInputProcessingConfiguration = AddApplicationInputProcessingC
 --
 -- * 'aaipcApplicationName' - Name of the application to which you want to add the input processing configuration.
 --
--- * 'aaipcCurrentApplicationVersionId' - Version of the application to which you want to add the input processing configuration. You can use the 'DescribeApplication' operation to get the current application version. If the version specified is not the current version, the @ConcurrentModificationException@ is returned.
+-- * 'aaipcCurrentApplicationVersionId' - Version of the application to which you want to add the input processing configuration. You can use the <https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_DescribeApplication.html DescribeApplication> operation to get the current application version. If the version specified is not the current version, the @ConcurrentModificationException@ is returned.
 --
--- * 'aaipcInputId' - The ID of the input configuration to add the input processing configuration to. You can get a list of the input IDs for an application using the 'DescribeApplication' operation.
+-- * 'aaipcInputId' - The ID of the input configuration to add the input processing configuration to. You can get a list of the input IDs for an application using the <https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_DescribeApplication.html DescribeApplication> operation.
 --
--- * 'aaipcInputProcessingConfiguration' - The 'InputProcessingConfiguration' to add to the application.
+-- * 'aaipcInputProcessingConfiguration' - The <https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_InputProcessingConfiguration.html InputProcessingConfiguration> to add to the application.
 addApplicationInputProcessingConfiguration
     :: Text -- ^ 'aaipcApplicationName'
     -> Natural -- ^ 'aaipcCurrentApplicationVersionId'
@@ -98,15 +98,15 @@ addApplicationInputProcessingConfiguration
 aaipcApplicationName :: Lens' AddApplicationInputProcessingConfiguration Text
 aaipcApplicationName = lens _aaipcApplicationName (\ s a -> s{_aaipcApplicationName = a})
 
--- | Version of the application to which you want to add the input processing configuration. You can use the 'DescribeApplication' operation to get the current application version. If the version specified is not the current version, the @ConcurrentModificationException@ is returned.
+-- | Version of the application to which you want to add the input processing configuration. You can use the <https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_DescribeApplication.html DescribeApplication> operation to get the current application version. If the version specified is not the current version, the @ConcurrentModificationException@ is returned.
 aaipcCurrentApplicationVersionId :: Lens' AddApplicationInputProcessingConfiguration Natural
 aaipcCurrentApplicationVersionId = lens _aaipcCurrentApplicationVersionId (\ s a -> s{_aaipcCurrentApplicationVersionId = a}) . _Nat
 
--- | The ID of the input configuration to add the input processing configuration to. You can get a list of the input IDs for an application using the 'DescribeApplication' operation.
+-- | The ID of the input configuration to add the input processing configuration to. You can get a list of the input IDs for an application using the <https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_DescribeApplication.html DescribeApplication> operation.
 aaipcInputId :: Lens' AddApplicationInputProcessingConfiguration Text
 aaipcInputId = lens _aaipcInputId (\ s a -> s{_aaipcInputId = a})
 
--- | The 'InputProcessingConfiguration' to add to the application.
+-- | The <https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_InputProcessingConfiguration.html InputProcessingConfiguration> to add to the application.
 aaipcInputProcessingConfiguration :: Lens' AddApplicationInputProcessingConfiguration InputProcessingConfiguration
 aaipcInputProcessingConfiguration = lens _aaipcInputProcessingConfiguration (\ s a -> s{_aaipcInputProcessingConfiguration = a})
 

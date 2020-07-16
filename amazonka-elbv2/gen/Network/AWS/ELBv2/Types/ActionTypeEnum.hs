@@ -19,7 +19,11 @@
 module Network.AWS.ELBv2.Types.ActionTypeEnum (
   ActionTypeEnum (
     ..
+    , AuthenticateCognito
+    , AuthenticateOidc
+    , FixedResponse
     , Forward
+    , Redirect
     )
   ) where
 
@@ -30,11 +34,27 @@ data ActionTypeEnum = ActionTypeEnum' (CI Text)
                         deriving (Eq, Ord, Read, Show, Data, Typeable,
                                   Generic)
 
+pattern AuthenticateCognito :: ActionTypeEnum
+pattern AuthenticateCognito = ActionTypeEnum' "authenticate-cognito"
+
+pattern AuthenticateOidc :: ActionTypeEnum
+pattern AuthenticateOidc = ActionTypeEnum' "authenticate-oidc"
+
+pattern FixedResponse :: ActionTypeEnum
+pattern FixedResponse = ActionTypeEnum' "fixed-response"
+
 pattern Forward :: ActionTypeEnum
 pattern Forward = ActionTypeEnum' "forward"
 
+pattern Redirect :: ActionTypeEnum
+pattern Redirect = ActionTypeEnum' "redirect"
+
 {-# COMPLETE
+  AuthenticateCognito,
+  AuthenticateOidc,
+  FixedResponse,
   Forward,
+  Redirect,
   ActionTypeEnum' #-}
 
 instance FromText ActionTypeEnum where
@@ -49,18 +69,26 @@ instance ToText ActionTypeEnum where
 --   fromEnum is a partial function, and will error on values unknown at generation time.
 instance Enum ActionTypeEnum where
     toEnum i = case i of
-        0 -> Forward
+        0 -> AuthenticateCognito
+        1 -> AuthenticateOidc
+        2 -> FixedResponse
+        3 -> Forward
+        4 -> Redirect
         _ -> (error . showText) $ "Unknown index for ActionTypeEnum: " <> toText i
     fromEnum x = case x of
-        Forward -> 0
+        AuthenticateCognito -> 0
+        AuthenticateOidc -> 1
+        FixedResponse -> 2
+        Forward -> 3
+        Redirect -> 4
         ActionTypeEnum' name -> (error . showText) $ "Unknown ActionTypeEnum: " <> original name
 
 -- | Represents the bounds of /known/ $ActionTypeEnum.
 --   AWS may have added more since the source was generated.
 --   This instance exists only for backward compatibility.
 instance Bounded ActionTypeEnum where
-    minBound = Forward
-    maxBound = Forward
+    minBound = AuthenticateCognito
+    maxBound = Redirect
 
 instance Hashable     ActionTypeEnum
 instance NFData       ActionTypeEnum

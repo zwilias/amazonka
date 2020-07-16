@@ -24,7 +24,7 @@ import Network.AWS.SES.Types.DimensionValueSource
 -- | Contains the dimension configuration to use when you publish email sending events to Amazon CloudWatch.
 --
 --
--- For information about publishing email sending events to Amazon CloudWatch, see the <http://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html Amazon SES Developer Guide> .
+-- For information about publishing email sending events to Amazon CloudWatch, see the <https://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html Amazon SES Developer Guide> .
 --
 --
 -- /See:/ 'cloudWatchDimensionConfiguration' smart constructor.

@@ -21,13 +21,17 @@ import Network.AWS.Lens
 import Network.AWS.MediaConvert.Types.NoiseReducerFilter
 import Network.AWS.MediaConvert.Types.NoiseReducerFilterSettings
 import Network.AWS.MediaConvert.Types.NoiseReducerSpatialFilterSettings
+import Network.AWS.MediaConvert.Types.NoiseReducerTemporalFilterSettings
 import Network.AWS.Prelude
 
 -- | Enable the Noise reducer (NoiseReducer) feature to remove noise from your video output if necessary. Enable or disable this feature for each output individually. This setting is disabled by default. When you enable Noise reducer (NoiseReducer), you must also select a value for Noise reducer filter (NoiseReducerFilter).
 --
 -- /See:/ 'noiseReducer' smart constructor.
-data NoiseReducer = NoiseReducer'{_nrSpatialFilterSettings
-                                  :: !(Maybe NoiseReducerSpatialFilterSettings),
+data NoiseReducer = NoiseReducer'{_nrTemporalFilterSettings
+                                  ::
+                                  !(Maybe NoiseReducerTemporalFilterSettings),
+                                  _nrSpatialFilterSettings ::
+                                  !(Maybe NoiseReducerSpatialFilterSettings),
                                   _nrFilterSettings ::
                                   !(Maybe NoiseReducerFilterSettings),
                                   _nrFilter :: !(Maybe NoiseReducerFilter)}
@@ -37,26 +41,33 @@ data NoiseReducer = NoiseReducer'{_nrSpatialFilterSettings
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'nrSpatialFilterSettings' - Undocumented member.
+-- * 'nrTemporalFilterSettings' - Noise reducer filter settings for temporal filter.
 --
--- * 'nrFilterSettings' - Undocumented member.
+-- * 'nrSpatialFilterSettings' - Noise reducer filter settings for spatial filter.
 --
--- * 'nrFilter' - Undocumented member.
+-- * 'nrFilterSettings' - Settings for a noise reducer filter
+--
+-- * 'nrFilter' - Use Noise reducer filter (NoiseReducerFilter) to select one of the following spatial image filtering functions. To use this setting, you must also enable Noise reducer (NoiseReducer). * Bilateral preserves edges while reducing noise. * Mean (softest), Gaussian, Lanczos, and Sharpen (sharpest) do convolution filtering. * Conserve does min/max noise reduction. * Spatial does frequency-domain filtering based on JND principles. * Temporal optimizes video quality for complex motion.
 noiseReducer
     :: NoiseReducer
 noiseReducer
-  = NoiseReducer'{_nrSpatialFilterSettings = Nothing,
+  = NoiseReducer'{_nrTemporalFilterSettings = Nothing,
+                  _nrSpatialFilterSettings = Nothing,
                   _nrFilterSettings = Nothing, _nrFilter = Nothing}
 
--- | Undocumented member.
+-- | Noise reducer filter settings for temporal filter.
+nrTemporalFilterSettings :: Lens' NoiseReducer (Maybe NoiseReducerTemporalFilterSettings)
+nrTemporalFilterSettings = lens _nrTemporalFilterSettings (\ s a -> s{_nrTemporalFilterSettings = a})
+
+-- | Noise reducer filter settings for spatial filter.
 nrSpatialFilterSettings :: Lens' NoiseReducer (Maybe NoiseReducerSpatialFilterSettings)
 nrSpatialFilterSettings = lens _nrSpatialFilterSettings (\ s a -> s{_nrSpatialFilterSettings = a})
 
--- | Undocumented member.
+-- | Settings for a noise reducer filter
 nrFilterSettings :: Lens' NoiseReducer (Maybe NoiseReducerFilterSettings)
 nrFilterSettings = lens _nrFilterSettings (\ s a -> s{_nrFilterSettings = a})
 
--- | Undocumented member.
+-- | Use Noise reducer filter (NoiseReducerFilter) to select one of the following spatial image filtering functions. To use this setting, you must also enable Noise reducer (NoiseReducer). * Bilateral preserves edges while reducing noise. * Mean (softest), Gaussian, Lanczos, and Sharpen (sharpest) do convolution filtering. * Conserve does min/max noise reduction. * Spatial does frequency-domain filtering based on JND principles. * Temporal optimizes video quality for complex motion.
 nrFilter :: Lens' NoiseReducer (Maybe NoiseReducerFilter)
 nrFilter = lens _nrFilter (\ s a -> s{_nrFilter = a})
 
@@ -65,8 +76,9 @@ instance FromJSON NoiseReducer where
           = withObject "NoiseReducer"
               (\ x ->
                  NoiseReducer' <$>
-                   (x .:? "spatialFilterSettings") <*>
-                     (x .:? "filterSettings")
+                   (x .:? "temporalFilterSettings") <*>
+                     (x .:? "spatialFilterSettings")
+                     <*> (x .:? "filterSettings")
                      <*> (x .:? "filter"))
 
 instance Hashable NoiseReducer where
@@ -77,7 +89,9 @@ instance ToJSON NoiseReducer where
         toJSON NoiseReducer'{..}
           = object
               (catMaybes
-                 [("spatialFilterSettings" .=) <$>
+                 [("temporalFilterSettings" .=) <$>
+                    _nrTemporalFilterSettings,
+                  ("spatialFilterSettings" .=) <$>
                     _nrSpatialFilterSettings,
                   ("filterSettings" .=) <$> _nrFilterSettings,
                   ("filter" .=) <$> _nrFilter])

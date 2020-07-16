@@ -27,9 +27,9 @@ module Network.AWS.Glue.CreateTable
       createTable
     , CreateTable
     -- * Request Lenses
-    , ctCatalogId
-    , ctDatabaseName
-    , ctTableInput
+    , cCatalogId
+    , cDatabaseName
+    , cTableInput
 
     -- * Destructuring the Response
     , createTableResponse
@@ -46,41 +46,41 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createTable' smart constructor.
-data CreateTable = CreateTable'{_ctCatalogId ::
+data CreateTable = CreateTable'{_cCatalogId ::
                                 !(Maybe Text),
-                                _ctDatabaseName :: !Text,
-                                _ctTableInput :: !TableInput}
+                                _cDatabaseName :: !Text,
+                                _cTableInput :: !TableInput}
                      deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateTable' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'ctCatalogId' - The ID of the Data Catalog in which to create the @Table@ . If none is supplied, the AWS account ID is used by default.
+-- * 'cCatalogId' - The ID of the Data Catalog in which to create the @Table@ . If none is supplied, the AWS account ID is used by default.
 --
--- * 'ctDatabaseName' - The catalog database in which to create the new table. For Hive compatibility, this name is entirely lowercase.
+-- * 'cDatabaseName' - The catalog database in which to create the new table. For Hive compatibility, this name is entirely lowercase.
 --
--- * 'ctTableInput' - The @TableInput@ object that defines the metadata table to create in the catalog.
+-- * 'cTableInput' - The @TableInput@ object that defines the metadata table to create in the catalog.
 createTable
-    :: Text -- ^ 'ctDatabaseName'
-    -> TableInput -- ^ 'ctTableInput'
+    :: Text -- ^ 'cDatabaseName'
+    -> TableInput -- ^ 'cTableInput'
     -> CreateTable
 createTable pDatabaseName_ pTableInput_
-  = CreateTable'{_ctCatalogId = Nothing,
-                 _ctDatabaseName = pDatabaseName_,
-                 _ctTableInput = pTableInput_}
+  = CreateTable'{_cCatalogId = Nothing,
+                 _cDatabaseName = pDatabaseName_,
+                 _cTableInput = pTableInput_}
 
 -- | The ID of the Data Catalog in which to create the @Table@ . If none is supplied, the AWS account ID is used by default.
-ctCatalogId :: Lens' CreateTable (Maybe Text)
-ctCatalogId = lens _ctCatalogId (\ s a -> s{_ctCatalogId = a})
+cCatalogId :: Lens' CreateTable (Maybe Text)
+cCatalogId = lens _cCatalogId (\ s a -> s{_cCatalogId = a})
 
 -- | The catalog database in which to create the new table. For Hive compatibility, this name is entirely lowercase.
-ctDatabaseName :: Lens' CreateTable Text
-ctDatabaseName = lens _ctDatabaseName (\ s a -> s{_ctDatabaseName = a})
+cDatabaseName :: Lens' CreateTable Text
+cDatabaseName = lens _cDatabaseName (\ s a -> s{_cDatabaseName = a})
 
 -- | The @TableInput@ object that defines the metadata table to create in the catalog.
-ctTableInput :: Lens' CreateTable TableInput
-ctTableInput = lens _ctTableInput (\ s a -> s{_ctTableInput = a})
+cTableInput :: Lens' CreateTable TableInput
+cTableInput = lens _cTableInput (\ s a -> s{_cTableInput = a})
 
 instance AWSRequest CreateTable where
         type Rs CreateTable = CreateTableResponse
@@ -107,9 +107,9 @@ instance ToJSON CreateTable where
         toJSON CreateTable'{..}
           = object
               (catMaybes
-                 [("CatalogId" .=) <$> _ctCatalogId,
-                  Just ("DatabaseName" .= _ctDatabaseName),
-                  Just ("TableInput" .= _ctTableInput)])
+                 [("CatalogId" .=) <$> _cCatalogId,
+                  Just ("DatabaseName" .= _cDatabaseName),
+                  Just ("TableInput" .= _cTableInput)])
 
 instance ToPath CreateTable where
         toPath = const "/"

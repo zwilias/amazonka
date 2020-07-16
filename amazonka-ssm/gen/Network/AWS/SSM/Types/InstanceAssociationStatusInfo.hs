@@ -88,7 +88,7 @@ data InstanceAssociationStatusInfo = InstanceAssociationStatusInfo'{_iasiAssocia
 --
 -- * 'iasiStatus' - Status information about the instance association.
 --
--- * 'iasiOutputURL' - A URL for an Amazon S3 bucket where you want to store the results of this request.
+-- * 'iasiOutputURL' - A URL for an S3 bucket where you want to store the results of this request.
 --
 -- * 'iasiExecutionSummary' - Summary information about association execution.
 --
@@ -96,11 +96,11 @@ data InstanceAssociationStatusInfo = InstanceAssociationStatusInfo'{_iasiAssocia
 --
 -- * 'iasiErrorCode' - An error code returned by the request to create the association.
 --
--- * 'iasiDocumentVersion' - The association document verions.
+-- * 'iasiDocumentVersion' - The association document versions.
 --
 -- * 'iasiAssociationVersion' - The version of the association applied to the instance.
 --
--- * 'iasiExecutionDate' - The date the instance association executed. 
+-- * 'iasiExecutionDate' - The date the instance association ran. 
 --
 -- * 'iasiAssociationName' - The name of the association applied to the instance.
 instanceAssociationStatusInfo
@@ -136,7 +136,7 @@ iasiDetailedStatus = lens _iasiDetailedStatus (\ s a -> s{_iasiDetailedStatus = 
 iasiStatus :: Lens' InstanceAssociationStatusInfo (Maybe Text)
 iasiStatus = lens _iasiStatus (\ s a -> s{_iasiStatus = a})
 
--- | A URL for an Amazon S3 bucket where you want to store the results of this request.
+-- | A URL for an S3 bucket where you want to store the results of this request.
 iasiOutputURL :: Lens' InstanceAssociationStatusInfo (Maybe InstanceAssociationOutputURL)
 iasiOutputURL = lens _iasiOutputURL (\ s a -> s{_iasiOutputURL = a})
 
@@ -152,7 +152,7 @@ iasiName = lens _iasiName (\ s a -> s{_iasiName = a})
 iasiErrorCode :: Lens' InstanceAssociationStatusInfo (Maybe Text)
 iasiErrorCode = lens _iasiErrorCode (\ s a -> s{_iasiErrorCode = a})
 
--- | The association document verions.
+-- | The association document versions.
 iasiDocumentVersion :: Lens' InstanceAssociationStatusInfo (Maybe Text)
 iasiDocumentVersion = lens _iasiDocumentVersion (\ s a -> s{_iasiDocumentVersion = a})
 
@@ -160,7 +160,7 @@ iasiDocumentVersion = lens _iasiDocumentVersion (\ s a -> s{_iasiDocumentVersion
 iasiAssociationVersion :: Lens' InstanceAssociationStatusInfo (Maybe Text)
 iasiAssociationVersion = lens _iasiAssociationVersion (\ s a -> s{_iasiAssociationVersion = a})
 
--- | The date the instance association executed. 
+-- | The date the instance association ran. 
 iasiExecutionDate :: Lens' InstanceAssociationStatusInfo (Maybe UTCTime)
 iasiExecutionDate = lens _iasiExecutionDate (\ s a -> s{_iasiExecutionDate = a}) . mapping _Time
 

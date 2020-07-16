@@ -18,10 +18,12 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Updates the description of a customer master key (CMK). To see the decription of a CMK, use 'DescribeKey' . 
+-- Updates the description of a customer master key (CMK). To see the description of a CMK, use 'DescribeKey' . 
 --
 --
 -- You cannot perform this operation on a CMK in a different AWS account.
+--
+-- The CMK that you use for this operation must be in a compatible key state. For details, see <https://docs.aws.amazon.com/kms/latest/developerguide/key-state.html How Key State Affects Use of a Customer Master Key> in the /AWS Key Management Service Developer Guide/ .
 --
 module Network.AWS.KMS.UpdateKeyDescription
     (

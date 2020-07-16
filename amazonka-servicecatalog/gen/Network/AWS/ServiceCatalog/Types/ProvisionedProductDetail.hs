@@ -31,6 +31,8 @@ data ProvisionedProductDetail = ProvisionedProductDetail'{_ppdIdempotencyToken
                                                           _ppdStatus ::
                                                           !(Maybe
                                                               ProvisionedProductStatus),
+                                                          _ppdProvisioningArtifactId
+                                                          :: !(Maybe Text),
                                                           _ppdARN ::
                                                           !(Maybe Text),
                                                           _ppdCreatedTime ::
@@ -44,6 +46,8 @@ data ProvisionedProductDetail = ProvisionedProductDetail'{_ppdIdempotencyToken
                                                           _ppdId ::
                                                           !(Maybe Text),
                                                           _ppdType ::
+                                                          !(Maybe Text),
+                                                          _ppdProductId ::
                                                           !(Maybe Text)}
                                   deriving (Eq, Read, Show, Data, Typeable,
                                             Generic)
@@ -54,7 +58,9 @@ data ProvisionedProductDetail = ProvisionedProductDetail'{_ppdIdempotencyToken
 --
 -- * 'ppdIdempotencyToken' - A unique identifier that you provide to ensure idempotency. If multiple requests differ only by the idempotency token, the same response is returned for each repeated request.
 --
--- * 'ppdStatus' - The current status of the provisioned product.     * @AVAILABLE@ - Stable state, ready to perform any operation. The most recent operation succeeded and completed.     * @UNDER_CHANGE@ - Transitive state, operations performed might not have valid results. Wait for an @AVAILABLE@ status before performing operations.     * @TAINTED@ - Stable state, ready to perform any operation. The stack has completed the requested operation but is not exactly what was requested. For example, a request to update to a new version failed and the stack rolled back to the current version.     * @ERROR@ - An unexpected error occurred, the provisioned product exists but the stack is not running. For example, CloudFormation received a parameter value that was not valid and could not launch the stack.
+-- * 'ppdStatus' - The current status of the provisioned product.     * @AVAILABLE@ - Stable state, ready to perform any operation. The most recent operation succeeded and completed.     * @UNDER_CHANGE@ - Transitive state. Operations performed might not have valid results. Wait for an @AVAILABLE@ status before performing operations.     * @TAINTED@ - Stable state, ready to perform any operation. The stack has completed the requested operation but is not exactly what was requested. For example, a request to update to a new version failed and the stack rolled back to the current version.     * @ERROR@ - An unexpected error occurred. The provisioned product exists but the stack is not running. For example, CloudFormation received a parameter value that was not valid and could not launch the stack.     * @PLAN_IN_PROGRESS@ - Transitive state. The plan operations were performed to provision a new product, but resources have not yet been created. After reviewing the list of resources to be created, execute the plan. Wait for an @AVAILABLE@ status before performing operations.
+--
+-- * 'ppdProvisioningArtifactId' - The identifier of the provisioning artifact. For example, @pa-4abcdjnxjj6ne@ .
 --
 -- * 'ppdARN' - The ARN of the provisioned product.
 --
@@ -68,25 +74,32 @@ data ProvisionedProductDetail = ProvisionedProductDetail'{_ppdIdempotencyToken
 --
 -- * 'ppdId' - The identifier of the provisioned product.
 --
--- * 'ppdType' - The type of provisioned product. The supported value is @CFN_STACK@ .
+-- * 'ppdType' - The type of provisioned product. The supported values are @CFN_STACK@ and @CFN_STACKSET@ .
+--
+-- * 'ppdProductId' - The product identifier. For example, @prod-abcdzk7xy33qa@ .
 provisionedProductDetail
     :: ProvisionedProductDetail
 provisionedProductDetail
   = ProvisionedProductDetail'{_ppdIdempotencyToken =
                                 Nothing,
-                              _ppdStatus = Nothing, _ppdARN = Nothing,
-                              _ppdCreatedTime = Nothing,
+                              _ppdStatus = Nothing,
+                              _ppdProvisioningArtifactId = Nothing,
+                              _ppdARN = Nothing, _ppdCreatedTime = Nothing,
                               _ppdStatusMessage = Nothing, _ppdName = Nothing,
                               _ppdLastRecordId = Nothing, _ppdId = Nothing,
-                              _ppdType = Nothing}
+                              _ppdType = Nothing, _ppdProductId = Nothing}
 
 -- | A unique identifier that you provide to ensure idempotency. If multiple requests differ only by the idempotency token, the same response is returned for each repeated request.
 ppdIdempotencyToken :: Lens' ProvisionedProductDetail (Maybe Text)
 ppdIdempotencyToken = lens _ppdIdempotencyToken (\ s a -> s{_ppdIdempotencyToken = a})
 
--- | The current status of the provisioned product.     * @AVAILABLE@ - Stable state, ready to perform any operation. The most recent operation succeeded and completed.     * @UNDER_CHANGE@ - Transitive state, operations performed might not have valid results. Wait for an @AVAILABLE@ status before performing operations.     * @TAINTED@ - Stable state, ready to perform any operation. The stack has completed the requested operation but is not exactly what was requested. For example, a request to update to a new version failed and the stack rolled back to the current version.     * @ERROR@ - An unexpected error occurred, the provisioned product exists but the stack is not running. For example, CloudFormation received a parameter value that was not valid and could not launch the stack.
+-- | The current status of the provisioned product.     * @AVAILABLE@ - Stable state, ready to perform any operation. The most recent operation succeeded and completed.     * @UNDER_CHANGE@ - Transitive state. Operations performed might not have valid results. Wait for an @AVAILABLE@ status before performing operations.     * @TAINTED@ - Stable state, ready to perform any operation. The stack has completed the requested operation but is not exactly what was requested. For example, a request to update to a new version failed and the stack rolled back to the current version.     * @ERROR@ - An unexpected error occurred. The provisioned product exists but the stack is not running. For example, CloudFormation received a parameter value that was not valid and could not launch the stack.     * @PLAN_IN_PROGRESS@ - Transitive state. The plan operations were performed to provision a new product, but resources have not yet been created. After reviewing the list of resources to be created, execute the plan. Wait for an @AVAILABLE@ status before performing operations.
 ppdStatus :: Lens' ProvisionedProductDetail (Maybe ProvisionedProductStatus)
 ppdStatus = lens _ppdStatus (\ s a -> s{_ppdStatus = a})
+
+-- | The identifier of the provisioning artifact. For example, @pa-4abcdjnxjj6ne@ .
+ppdProvisioningArtifactId :: Lens' ProvisionedProductDetail (Maybe Text)
+ppdProvisioningArtifactId = lens _ppdProvisioningArtifactId (\ s a -> s{_ppdProvisioningArtifactId = a})
 
 -- | The ARN of the provisioned product.
 ppdARN :: Lens' ProvisionedProductDetail (Maybe Text)
@@ -112,9 +125,13 @@ ppdLastRecordId = lens _ppdLastRecordId (\ s a -> s{_ppdLastRecordId = a})
 ppdId :: Lens' ProvisionedProductDetail (Maybe Text)
 ppdId = lens _ppdId (\ s a -> s{_ppdId = a})
 
--- | The type of provisioned product. The supported value is @CFN_STACK@ .
+-- | The type of provisioned product. The supported values are @CFN_STACK@ and @CFN_STACKSET@ .
 ppdType :: Lens' ProvisionedProductDetail (Maybe Text)
 ppdType = lens _ppdType (\ s a -> s{_ppdType = a})
+
+-- | The product identifier. For example, @prod-abcdzk7xy33qa@ .
+ppdProductId :: Lens' ProvisionedProductDetail (Maybe Text)
+ppdProductId = lens _ppdProductId (\ s a -> s{_ppdProductId = a})
 
 instance FromJSON ProvisionedProductDetail where
         parseJSON
@@ -122,13 +139,15 @@ instance FromJSON ProvisionedProductDetail where
               (\ x ->
                  ProvisionedProductDetail' <$>
                    (x .:? "IdempotencyToken") <*> (x .:? "Status") <*>
-                     (x .:? "Arn")
+                     (x .:? "ProvisioningArtifactId")
+                     <*> (x .:? "Arn")
                      <*> (x .:? "CreatedTime")
                      <*> (x .:? "StatusMessage")
                      <*> (x .:? "Name")
                      <*> (x .:? "LastRecordId")
                      <*> (x .:? "Id")
-                     <*> (x .:? "Type"))
+                     <*> (x .:? "Type")
+                     <*> (x .:? "ProductId"))
 
 instance Hashable ProvisionedProductDetail where
 

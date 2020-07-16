@@ -21,6 +21,8 @@
 -- Describes the specified listeners or the listeners for the specified Application Load Balancer or Network Load Balancer. You must specify either a load balancer or one or more listeners.
 --
 --
+-- For an HTTPS or TLS listener, the output includes the default certificate for the listener. To describe the certificate list for the listener, use 'DescribeListenerCertificates' .
+--
 --
 -- This operation returns paginated results.
 module Network.AWS.ELBv2.DescribeListeners
@@ -146,7 +148,7 @@ data DescribeListenersResponse = DescribeListenersResponse'{_dlsrsNextMarker
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dlsrsNextMarker' - The marker to use when requesting the next set of results. If there are no additional results, the string is empty.
+-- * 'dlsrsNextMarker' - If there are additional results, this is the marker for the next set of results. Otherwise, this is null.
 --
 -- * 'dlsrsListeners' - Information about the listeners.
 --
@@ -160,7 +162,7 @@ describeListenersResponse pResponseStatus_
                                _dlsrsListeners = Nothing,
                                _dlsrsResponseStatus = pResponseStatus_}
 
--- | The marker to use when requesting the next set of results. If there are no additional results, the string is empty.
+-- | If there are additional results, this is the marker for the next set of results. Otherwise, this is null.
 dlsrsNextMarker :: Lens' DescribeListenersResponse (Maybe Text)
 dlsrsNextMarker = lens _dlsrsNextMarker (\ s a -> s{_dlsrsNextMarker = a})
 

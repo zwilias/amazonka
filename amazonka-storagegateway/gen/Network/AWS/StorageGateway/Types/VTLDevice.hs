@@ -40,13 +40,13 @@ data VTLDevice = VTLDevice'{_vtldDeviceiSCSIAttributes
 --
 -- * 'vtldDeviceiSCSIAttributes' - A list of iSCSI information about a VTL device.
 --
--- * 'vtldVTLDeviceVendor' - Undocumented member.
+-- * 'vtldVTLDeviceVendor' - Specifies the vendor of the device that the VTL device object emulates.
 --
 -- * 'vtldVTLDeviceARN' - Specifies the unique Amazon Resource Name (ARN) of the device (tape drive or media changer).
 --
--- * 'vtldVTLDeviceType' - Undocumented member.
+-- * 'vtldVTLDeviceType' - Specifies the type of device that the VTL device emulates.
 --
--- * 'vtldVTLDeviceProductIdentifier' - Undocumented member.
+-- * 'vtldVTLDeviceProductIdentifier' - Specifies the model number of device that the VTL device emulates.
 vTLDevice
     :: VTLDevice
 vTLDevice
@@ -60,7 +60,7 @@ vTLDevice
 vtldDeviceiSCSIAttributes :: Lens' VTLDevice (Maybe DeviceiSCSIAttributes)
 vtldDeviceiSCSIAttributes = lens _vtldDeviceiSCSIAttributes (\ s a -> s{_vtldDeviceiSCSIAttributes = a})
 
--- | Undocumented member.
+-- | Specifies the vendor of the device that the VTL device object emulates.
 vtldVTLDeviceVendor :: Lens' VTLDevice (Maybe Text)
 vtldVTLDeviceVendor = lens _vtldVTLDeviceVendor (\ s a -> s{_vtldVTLDeviceVendor = a})
 
@@ -68,11 +68,11 @@ vtldVTLDeviceVendor = lens _vtldVTLDeviceVendor (\ s a -> s{_vtldVTLDeviceVendor
 vtldVTLDeviceARN :: Lens' VTLDevice (Maybe Text)
 vtldVTLDeviceARN = lens _vtldVTLDeviceARN (\ s a -> s{_vtldVTLDeviceARN = a})
 
--- | Undocumented member.
+-- | Specifies the type of device that the VTL device emulates.
 vtldVTLDeviceType :: Lens' VTLDevice (Maybe Text)
 vtldVTLDeviceType = lens _vtldVTLDeviceType (\ s a -> s{_vtldVTLDeviceType = a})
 
--- | Undocumented member.
+-- | Specifies the model number of device that the VTL device emulates.
 vtldVTLDeviceProductIdentifier :: Lens' VTLDevice (Maybe Text)
 vtldVTLDeviceProductIdentifier = lens _vtldVTLDeviceProductIdentifier (\ s a -> s{_vtldVTLDeviceProductIdentifier = a})
 

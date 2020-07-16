@@ -19,6 +19,7 @@
 module Network.AWS.SES.Types.ConfigurationSetAttribute (
   ConfigurationSetAttribute (
     ..
+    , DeliveryOptions
     , EventDestinations
     , ReputationOptions
     , TrackingOptions
@@ -33,6 +34,9 @@ data ConfigurationSetAttribute = ConfigurationSetAttribute' (CI
                                    deriving (Eq, Ord, Read, Show, Data,
                                              Typeable, Generic)
 
+pattern DeliveryOptions :: ConfigurationSetAttribute
+pattern DeliveryOptions = ConfigurationSetAttribute' "deliveryOptions"
+
 pattern EventDestinations :: ConfigurationSetAttribute
 pattern EventDestinations = ConfigurationSetAttribute' "eventDestinations"
 
@@ -43,6 +47,7 @@ pattern TrackingOptions :: ConfigurationSetAttribute
 pattern TrackingOptions = ConfigurationSetAttribute' "trackingOptions"
 
 {-# COMPLETE
+  DeliveryOptions,
   EventDestinations,
   ReputationOptions,
   TrackingOptions,
@@ -60,21 +65,23 @@ instance ToText ConfigurationSetAttribute where
 --   fromEnum is a partial function, and will error on values unknown at generation time.
 instance Enum ConfigurationSetAttribute where
     toEnum i = case i of
-        0 -> EventDestinations
-        1 -> ReputationOptions
-        2 -> TrackingOptions
+        0 -> DeliveryOptions
+        1 -> EventDestinations
+        2 -> ReputationOptions
+        3 -> TrackingOptions
         _ -> (error . showText) $ "Unknown index for ConfigurationSetAttribute: " <> toText i
     fromEnum x = case x of
-        EventDestinations -> 0
-        ReputationOptions -> 1
-        TrackingOptions -> 2
+        DeliveryOptions -> 0
+        EventDestinations -> 1
+        ReputationOptions -> 2
+        TrackingOptions -> 3
         ConfigurationSetAttribute' name -> (error . showText) $ "Unknown ConfigurationSetAttribute: " <> original name
 
 -- | Represents the bounds of /known/ $ConfigurationSetAttribute.
 --   AWS may have added more since the source was generated.
 --   This instance exists only for backward compatibility.
 instance Bounded ConfigurationSetAttribute where
-    minBound = EventDestinations
+    minBound = DeliveryOptions
     maxBound = TrackingOptions
 
 instance Hashable     ConfigurationSetAttribute

@@ -29,7 +29,7 @@ module Network.AWS.MediaLive.Types.Ac3CodingMode (
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | Placeholder documentation for Ac3CodingMode
+-- | Ac3 Coding Mode
 data Ac3CodingMode = Ac3CodingMode' (CI Text)
                        deriving (Eq, Ord, Read, Show, Data, Typeable,
                                  Generic)

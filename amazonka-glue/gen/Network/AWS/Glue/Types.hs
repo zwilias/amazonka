@@ -28,13 +28,28 @@ module Network.AWS.Glue.Types
     , _AccessDeniedException
     , _CrawlerRunningException
     , _ValidationException
+    , _MLTransformNotReadyException
     , _CrawlerNotRunningException
     , _VersionMismatchException
+    , _GlueEncryptionException
     , _InvalidInputException
+    , _ConditionCheckFailureException
     , _ConcurrentModificationException
     , _EntityNotFoundException
     , _OperationTimeoutException
     , _AlreadyExistsException
+
+    -- * CSVHeaderOption
+    , CSVHeaderOption (..)
+
+    -- * CatalogEncryptionMode
+    , CatalogEncryptionMode (..)
+
+    -- * CloudWatchEncryptionMode
+    , CloudWatchEncryptionMode (..)
+
+    -- * Comparator
+    , Comparator (..)
 
     -- * ConnectionPropertyKey
     , ConnectionPropertyKey (..)
@@ -42,11 +57,20 @@ module Network.AWS.Glue.Types
     -- * ConnectionType
     , ConnectionType (..)
 
+    -- * CrawlState
+    , CrawlState (..)
+
     -- * CrawlerState
     , CrawlerState (..)
 
     -- * DeleteBehavior
     , DeleteBehavior (..)
+
+    -- * ExistCondition
+    , ExistCondition (..)
+
+    -- * JobBookmarksEncryptionMode
+    , JobBookmarksEncryptionMode (..)
 
     -- * JobRunState
     , JobRunState (..)
@@ -63,14 +87,47 @@ module Network.AWS.Glue.Types
     -- * LogicalOperator
     , LogicalOperator (..)
 
+    -- * NodeType
+    , NodeType (..)
+
+    -- * Permission
+    , Permission (..)
+
     -- * PrincipalType
     , PrincipalType (..)
 
     -- * ResourceType
     , ResourceType (..)
 
+    -- * S3EncryptionMode
+    , S3EncryptionMode (..)
+
     -- * ScheduleState
     , ScheduleState (..)
+
+    -- * Sort
+    , Sort (..)
+
+    -- * SortDirectionType
+    , SortDirectionType (..)
+
+    -- * TaskRunSortColumnType
+    , TaskRunSortColumnType (..)
+
+    -- * TaskStatusType
+    , TaskStatusType (..)
+
+    -- * TaskType
+    , TaskType (..)
+
+    -- * TransformSortColumnType
+    , TransformSortColumnType (..)
+
+    -- * TransformStatusType
+    , TransformStatusType (..)
+
+    -- * TransformType
+    , TransformType (..)
 
     -- * TriggerState
     , TriggerState (..)
@@ -81,12 +138,21 @@ module Network.AWS.Glue.Types
     -- * UpdateBehavior
     , UpdateBehavior (..)
 
+    -- * WorkerType
+    , WorkerType (..)
+
+    -- * WorkflowRunStatus
+    , WorkflowRunStatus (..)
+
     -- * Action
     , Action
     , action
+    , aNotificationProperty
     , aArguments
     , aJobName
+    , aSecurityConfiguration
     , aTimeout
+    , aCrawlerName
 
     -- * BatchStopJobRunError
     , BatchStopJobRunError
@@ -101,6 +167,20 @@ module Network.AWS.Glue.Types
     , bsjrssJobName
     , bsjrssJobRunId
 
+    -- * CSVClassifier
+    , CSVClassifier
+    , csvClassifier
+    , ccCreationTime
+    , ccQuoteSymbol
+    , ccContainsHeader
+    , ccLastUpdated
+    , ccDisableValueTrimming
+    , ccHeader
+    , ccVersion
+    , ccAllowSingleColumn
+    , ccDelimiter
+    , ccName
+
     -- * CatalogEntry
     , CatalogEntry
     , catalogEntry
@@ -114,12 +194,25 @@ module Network.AWS.Glue.Types
     , cisImportTime
     , cisImportCompleted
 
+    -- * CatalogTarget
+    , CatalogTarget
+    , catalogTarget
+    , ctDatabaseName
+    , ctTables
+
     -- * Classifier
     , Classifier
     , classifier
     , cGrokClassifier
     , cXMLClassifier
+    , cCSVClassifier
     , cJSONClassifier
+
+    -- * CloudWatchEncryption
+    , CloudWatchEncryption
+    , cloudWatchEncryption
+    , cweCloudWatchEncryptionMode
+    , cweKMSKeyARN
 
     -- * CodeGenEdge
     , CodeGenEdge
@@ -146,6 +239,7 @@ module Network.AWS.Glue.Types
     -- * Column
     , Column
     , column
+    , cParameters
     , cType
     , cComment
     , cName
@@ -153,9 +247,19 @@ module Network.AWS.Glue.Types
     -- * Condition
     , Condition
     , condition
+    , cCrawlState
     , cState
     , cJobName
     , cLogicalOperator
+    , cCrawlerName
+
+    -- * ConfusionMatrix
+    , ConfusionMatrix
+    , confusionMatrix
+    , cmNumTrueNegatives
+    , cmNumFalseNegatives
+    , cmNumTruePositives
+    , cmNumFalsePositives
 
     -- * Connection
     , Connection
@@ -180,30 +284,47 @@ module Network.AWS.Glue.Types
     , ciConnectionType
     , ciConnectionProperties
 
+    -- * ConnectionPasswordEncryption
+    , ConnectionPasswordEncryption
+    , connectionPasswordEncryption
+    , cpeAWSKMSKeyId
+    , cpeReturnConnectionPasswordEncrypted
+
     -- * ConnectionsList
     , ConnectionsList
     , connectionsList
     , clConnections
 
+    -- * Crawl
+    , Crawl
+    , crawl
+    , craCompletedOn
+    , craState
+    , craStartedOn
+    , craLogStream
+    , craLogGroup
+    , craErrorMessage
+
     -- * Crawler
     , Crawler
     , crawler
-    , craCreationTime
-    , craState
-    , craSchemaChangePolicy
-    , craLastUpdated
-    , craSchedule
-    , craLastCrawl
-    , craCrawlElapsedTime
-    , craClassifiers
-    , craRole
-    , craName
-    , craTargets
-    , craVersion
-    , craDatabaseName
-    , craConfiguration
-    , craTablePrefix
-    , craDescription
+    , crwlrCreationTime
+    , crwlrState
+    , crwlrSchemaChangePolicy
+    , crwlrLastUpdated
+    , crwlrSchedule
+    , crwlrLastCrawl
+    , crwlrCrawlElapsedTime
+    , crwlrClassifiers
+    , crwlrRole
+    , crwlrName
+    , crwlrTargets
+    , crwlrVersion
+    , crwlrDatabaseName
+    , crwlrCrawlerSecurityConfiguration
+    , crwlrConfiguration
+    , crwlrTablePrefix
+    , crwlrDescription
 
     -- * CrawlerMetrics
     , CrawlerMetrics
@@ -217,11 +338,29 @@ module Network.AWS.Glue.Types
     , cmTablesUpdated
     , cmCrawlerName
 
+    -- * CrawlerNodeDetails
+    , CrawlerNodeDetails
+    , crawlerNodeDetails
+    , cndCrawls
+
     -- * CrawlerTargets
     , CrawlerTargets
     , crawlerTargets
+    , ctDynamoDBTargets
     , ctS3Targets
+    , ctCatalogTargets
     , ctJdbcTargets
+
+    -- * CreateCSVClassifierRequest
+    , CreateCSVClassifierRequest
+    , createCSVClassifierRequest
+    , cccrQuoteSymbol
+    , cccrContainsHeader
+    , cccrDisableValueTrimming
+    , cccrHeader
+    , cccrAllowSingleColumn
+    , cccrDelimiter
+    , cccrName
 
     -- * CreateGrokClassifierRequest
     , CreateGrokClassifierRequest
@@ -244,6 +383,17 @@ module Network.AWS.Glue.Types
     , cxcrClassification
     , cxcrName
 
+    -- * DataCatalogEncryptionSettings
+    , DataCatalogEncryptionSettings
+    , dataCatalogEncryptionSettings
+    , dcesEncryptionAtRest
+    , dcesConnectionPasswordEncryption
+
+    -- * DataLakePrincipal
+    , DataLakePrincipal
+    , dataLakePrincipal
+    , dlpDataLakePrincipalIdentifier
+
     -- * Database
     , Database
     , database
@@ -251,6 +401,7 @@ module Network.AWS.Glue.Types
     , dParameters
     , dDescription
     , dCreateTime
+    , dCreateTableDefaultPermissions
     , dName
 
     -- * DatabaseInput
@@ -259,6 +410,7 @@ module Network.AWS.Glue.Types
     , diLocationURI
     , diParameters
     , diDescription
+    , diCreateTableDefaultPermissions
     , diName
 
     -- * DevEndpoint
@@ -267,14 +419,20 @@ module Network.AWS.Glue.Types
     , deStatus
     , deFailureReason
     , deEndpointName
+    , deNumberOfWorkers
     , deExtraPythonLibsS3Path
     , deLastUpdateStatus
     , deSecurityGroupIds
     , deLastModifiedTimestamp
+    , dePublicKeys
     , deVPCId
+    , deArguments
     , dePrivateAddress
+    , deWorkerType
+    , deSecurityConfiguration
     , dePublicKey
     , deSubnetId
+    , deGlueVersion
     , deNumberOfNodes
     , dePublicAddress
     , deAvailabilityZone
@@ -290,22 +448,89 @@ module Network.AWS.Glue.Types
     , declExtraPythonLibsS3Path
     , declExtraJARsS3Path
 
+    -- * DynamoDBTarget
+    , DynamoDBTarget
+    , dynamoDBTarget
+    , ddtPath
+
+    -- * Edge
+    , Edge
+    , edge
+    , eSourceId
+    , eDestinationId
+
+    -- * EncryptionAtRest
+    , EncryptionAtRest
+    , encryptionAtRest
+    , earSseAWSKMSKeyId
+    , earCatalogEncryptionMode
+
+    -- * EncryptionConfiguration
+    , EncryptionConfiguration
+    , encryptionConfiguration
+    , ecS3Encryption
+    , ecJobBookmarksEncryption
+    , ecCloudWatchEncryption
+
     -- * ErrorDetail
     , ErrorDetail
     , errorDetail
     , edErrorCode
     , edErrorMessage
 
+    -- * EvaluationMetrics
+    , EvaluationMetrics
+    , evaluationMetrics
+    , emFindMatchesMetrics
+    , emTransformType
+
     -- * ExecutionProperty
     , ExecutionProperty
     , executionProperty
     , epMaxConcurrentRuns
+
+    -- * ExportLabelsTaskRunProperties
+    , ExportLabelsTaskRunProperties
+    , exportLabelsTaskRunProperties
+    , eltrpOutputS3Path
+
+    -- * FindMatchesMetrics
+    , FindMatchesMetrics
+    , findMatchesMetrics
+    , fmmF1
+    , fmmAreaUnderPRCurve
+    , fmmRecall
+    , fmmPrecision
+    , fmmConfusionMatrix
+
+    -- * FindMatchesParameters
+    , FindMatchesParameters
+    , findMatchesParameters
+    , fmpEnforceProvidedLabels
+    , fmpAccuracyCostTradeoff
+    , fmpPrecisionRecallTradeoff
+    , fmpPrimaryKeyColumnName
+
+    -- * FindMatchesTaskRunProperties
+    , FindMatchesTaskRunProperties
+    , findMatchesTaskRunProperties
+    , fmtrpJobId
+    , fmtrpJobName
+    , fmtrpJobRunId
 
     -- * GetConnectionsFilter
     , GetConnectionsFilter
     , getConnectionsFilter
     , gcfMatchCriteria
     , gcfConnectionType
+
+    -- * GlueTable
+    , GlueTable
+    , glueTable
+    , gtCatalogId
+    , gtConnectionName
+    , gtDatabaseName
+    , gtTableName
 
     -- * GrokClassifier
     , GrokClassifier
@@ -317,6 +542,12 @@ module Network.AWS.Glue.Types
     , gcName
     , gcClassification
     , gcGrokPattern
+
+    -- * ImportLabelsTaskRunProperties
+    , ImportLabelsTaskRunProperties
+    , importLabelsTaskRunProperties
+    , iltrpReplace
+    , iltrpInputS3Path
 
     -- * JSONClassifier
     , JSONClassifier
@@ -337,15 +568,22 @@ module Network.AWS.Glue.Types
     -- * Job
     , Job
     , job
+    , jNumberOfWorkers
     , jCommand
+    , jNotificationProperty
     , jLastModifiedOn
     , jConnections
+    , jWorkerType
+    , jSecurityConfiguration
+    , jGlueVersion
+    , jNonOverridableArguments
     , jRole
     , jName
     , jLogURI
     , jMaxRetries
     , jExecutionProperty
     , jAllocatedCapacity
+    , jMaxCapacity
     , jTimeout
     , jDefaultArguments
     , jDescription
@@ -356,48 +594,81 @@ module Network.AWS.Glue.Types
     , jobBookmarkEntry
     , jbeJobName
     , jbeRun
+    , jbeRunId
     , jbeVersion
+    , jbePreviousRunId
     , jbeAttempt
     , jbeJobBookmark
+
+    -- * JobBookmarksEncryption
+    , JobBookmarksEncryption
+    , jobBookmarksEncryption
+    , jbeJobBookmarksEncryptionMode
+    , jbeKMSKeyARN
 
     -- * JobCommand
     , JobCommand
     , jobCommand
     , jobScriptLocation
+    , jobPythonVersion
     , jobName
+
+    -- * JobNodeDetails
+    , JobNodeDetails
+    , jobNodeDetails
+    , jndJobRuns
 
     -- * JobRun
     , JobRun
     , jobRun
     , jrCompletedOn
+    , jrNumberOfWorkers
     , jrTriggerName
+    , jrNotificationProperty
     , jrLastModifiedOn
     , jrArguments
     , jrJobName
     , jrStartedOn
+    , jrWorkerType
+    , jrSecurityConfiguration
+    , jrGlueVersion
     , jrJobRunState
+    , jrLogGroupName
     , jrExecutionTime
     , jrPredecessorRuns
     , jrPreviousRunId
     , jrId
     , jrAttempt
     , jrAllocatedCapacity
+    , jrMaxCapacity
     , jrTimeout
     , jrErrorMessage
 
     -- * JobUpdate
     , JobUpdate
     , jobUpdate
+    , juNumberOfWorkers
     , juCommand
+    , juNotificationProperty
     , juConnections
+    , juWorkerType
+    , juSecurityConfiguration
+    , juGlueVersion
+    , juNonOverridableArguments
     , juRole
     , juLogURI
     , juMaxRetries
     , juExecutionProperty
     , juAllocatedCapacity
+    , juMaxCapacity
     , juTimeout
     , juDefaultArguments
     , juDescription
+
+    -- * LabelingSetGenerationTaskRunProperties
+    , LabelingSetGenerationTaskRunProperties
+    , labelingSetGenerationTaskRunProperties
+    , lsgtrpOutputS3Path
 
     -- * LastCrawlInfo
     , LastCrawlInfo
@@ -412,8 +683,31 @@ module Network.AWS.Glue.Types
     -- * Location
     , Location
     , location
+    , lDynamoDB
     , lJdbc
     , lS3
+
+    -- * MLTransform
+    , MLTransform
+    , mLTransform
+    , mltStatus
+    , mltNumberOfWorkers
+    , mltLastModifiedOn
+    , mltLabelCount
+    , mltWorkerType
+    , mltInputRecordTables
+    , mltGlueVersion
+    , mltEvaluationMetrics
+    , mltSchema
+    , mltRole
+    , mltName
+    , mltParameters
+    , mltMaxRetries
+    , mltMaxCapacity
+    , mltTimeout
+    , mltDescription
+    , mltCreatedOn
+    , mltTransformId
 
     -- * MappingEntry
     , MappingEntry
@@ -424,6 +718,21 @@ module Network.AWS.Glue.Types
     , meTargetType
     , meTargetPath
     , meSourcePath
+
+    -- * Node
+    , Node
+    , node
+    , nTriggerDetails
+    , nUniqueId
+    , nCrawlerDetails
+    , nName
+    , nJobDetails
+    , nType
+
+    -- * NotificationProperty
+    , NotificationProperty
+    , notificationProperty
+    , npNotifyDelayAfter
 
     -- * Order
     , Order
@@ -482,11 +791,30 @@ module Network.AWS.Glue.Types
     , pLogical
     , pConditions
 
+    -- * PrincipalPermissions
+    , PrincipalPermissions
+    , principalPermissions
+    , ppPrincipal
+    , ppPermissions
+
+    -- * PropertyPredicate
+    , PropertyPredicate
+    , propertyPredicate
+    , ppValue
+    , ppKey
+    , ppComparator
+
     -- * ResourceURI
     , ResourceURI
     , resourceURI
     , ruResourceType
     , ruURI
+
+    -- * S3Encryption
+    , S3Encryption
+    , s3Encryption
+    , seS3EncryptionMode
+    , seKMSKeyARN
 
     -- * S3Target
     , S3Target
@@ -505,6 +833,19 @@ module Network.AWS.Glue.Types
     , schemaChangePolicy
     , scpDeleteBehavior
     , scpUpdateBehavior
+
+    -- * SchemaColumn
+    , SchemaColumn
+    , schemaColumn
+    , sName
+    , sDataType
+
+    -- * SecurityConfiguration
+    , SecurityConfiguration
+    , securityConfiguration
+    , secName
+    , secEncryptionConfiguration
+    , secCreatedTimeStamp
 
     -- * Segment
     , Segment
@@ -526,6 +867,12 @@ module Network.AWS.Glue.Types
     , siSkewedColumnValues
     , siSkewedColumnNames
 
+    -- * SortCriterion
+    , SortCriterion
+    , sortCriterion
+    , scSort
+    , scFieldName
+
     -- * StorageDescriptor
     , StorageDescriptor
     , storageDescriptor
@@ -546,6 +893,7 @@ module Network.AWS.Glue.Types
     , Table
     , table
     , tRetention
+    , tIsRegisteredWithLakeFormation
     , tCreatedBy
     , tTableType
     , tOwner
@@ -597,9 +945,72 @@ module Network.AWS.Glue.Types
     , tveTableName
     , tveErrorDetail
 
+    -- * TaskRun
+    , TaskRun
+    , taskRun
+    , trCompletedOn
+    , trStatus
+    , trLastModifiedOn
+    , trErrorString
+    , trStartedOn
+    , trLogGroupName
+    , trExecutionTime
+    , trProperties
+    , trTransformId
+    , trTaskRunId
+
+    -- * TaskRunFilterCriteria
+    , TaskRunFilterCriteria
+    , taskRunFilterCriteria
+    , trfcStatus
+    , trfcStartedAfter
+    , trfcStartedBefore
+    , trfcTaskRunType
+
+    -- * TaskRunProperties
+    , TaskRunProperties
+    , taskRunProperties
+    , trpTaskType
+    , trpExportLabelsTaskRunProperties
+    , trpLabelingSetGenerationTaskRunProperties
+    , trpFindMatchesTaskRunProperties
+    , trpImportLabelsTaskRunProperties
+
+    -- * TaskRunSortCriteria
+    , TaskRunSortCriteria
+    , taskRunSortCriteria
+    , trscColumn
+    , trscSortDirection
+
+    -- * TransformFilterCriteria
+    , TransformFilterCriteria
+    , transformFilterCriteria
+    , tfcCreatedAfter
+    , tfcStatus
+    , tfcLastModifiedAfter
+    , tfcLastModifiedBefore
+    , tfcGlueVersion
+    , tfcSchema
+    , tfcTransformType
+    , tfcName
+    , tfcCreatedBefore
+
+    -- * TransformParameters
+    , TransformParameters
+    , transformParameters
+    , tpFindMatchesParameters
+    , tpTransformType
+
+    -- * TransformSortCriteria
+    , TransformSortCriteria
+    , transformSortCriteria
+    , tscColumn
+    , tscSortDirection
+
     -- * Trigger
     , Trigger
     , trigger
+    , triWorkflowName
     , triState
     , triActions
     , triSchedule
@@ -609,6 +1020,11 @@ module Network.AWS.Glue.Types
     , triType
     , triDescription
 
+    -- * TriggerNodeDetails
+    , TriggerNodeDetails
+    , triggerNodeDetails
+    , tndTrigger
+
     -- * TriggerUpdate
     , TriggerUpdate
     , triggerUpdate
@@ -617,6 +1033,17 @@ module Network.AWS.Glue.Types
     , tuPredicate
     , tuName
     , tuDescription
+
+    -- * UpdateCSVClassifierRequest
+    , UpdateCSVClassifierRequest
+    , updateCSVClassifierRequest
+    , uccrQuoteSymbol
+    , uccrContainsHeader
+    , uccrDisableValueTrimming
+    , uccrHeader
+    , uccrAllowSingleColumn
+    , uccrDelimiter
+    , uccrName
 
     -- * UpdateGrokClassifierRequest
     , UpdateGrokClassifierRequest
@@ -658,6 +1085,45 @@ module Network.AWS.Glue.Types
     , udfiOwnerType
     , udfiClassName
 
+    -- * Workflow
+    , Workflow
+    , workflow
+    , wGraph
+    , wLastModifiedOn
+    , wDefaultRunProperties
+    , wName
+    , wLastRun
+    , wDescription
+    , wCreatedOn
+
+    -- * WorkflowGraph
+    , WorkflowGraph
+    , workflowGraph
+    , wgEdges
+    , wgNodes
+
+    -- * WorkflowRun
+    , WorkflowRun
+    , workflowRun
+    , wrCompletedOn
+    , wrStatus
+    , wrGraph
+    , wrStartedOn
+    , wrWorkflowRunId
+    , wrName
+    , wrStatistics
+    , wrWorkflowRunProperties
+
+    -- * WorkflowRunStatistics
+    , WorkflowRunStatistics
+    , workflowRunStatistics
+    , wrsRunningActions
+    , wrsStoppedActions
+    , wrsTotalActions
+    , wrsFailedActions
+    , wrsTimeoutActions
+    , wrsSucceededActions
+
     -- * XMLClassifier
     , XMLClassifier
     , xmlClassifier
@@ -672,59 +1138,106 @@ module Network.AWS.Glue.Types
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Sign.V4
+import Network.AWS.Glue.Types.CSVHeaderOption
+import Network.AWS.Glue.Types.CatalogEncryptionMode
+import Network.AWS.Glue.Types.CloudWatchEncryptionMode
+import Network.AWS.Glue.Types.Comparator
 import Network.AWS.Glue.Types.ConnectionPropertyKey
 import Network.AWS.Glue.Types.ConnectionType
+import Network.AWS.Glue.Types.CrawlState
 import Network.AWS.Glue.Types.CrawlerState
 import Network.AWS.Glue.Types.DeleteBehavior
+import Network.AWS.Glue.Types.ExistCondition
+import Network.AWS.Glue.Types.JobBookmarksEncryptionMode
 import Network.AWS.Glue.Types.JobRunState
 import Network.AWS.Glue.Types.Language
 import Network.AWS.Glue.Types.LastCrawlStatus
 import Network.AWS.Glue.Types.Logical
 import Network.AWS.Glue.Types.LogicalOperator
+import Network.AWS.Glue.Types.NodeType
+import Network.AWS.Glue.Types.Permission
 import Network.AWS.Glue.Types.PrincipalType
 import Network.AWS.Glue.Types.ResourceType
+import Network.AWS.Glue.Types.S3EncryptionMode
 import Network.AWS.Glue.Types.ScheduleState
+import Network.AWS.Glue.Types.Sort
+import Network.AWS.Glue.Types.SortDirectionType
+import Network.AWS.Glue.Types.TaskRunSortColumnType
+import Network.AWS.Glue.Types.TaskStatusType
+import Network.AWS.Glue.Types.TaskType
+import Network.AWS.Glue.Types.TransformSortColumnType
+import Network.AWS.Glue.Types.TransformStatusType
+import Network.AWS.Glue.Types.TransformType
 import Network.AWS.Glue.Types.TriggerState
 import Network.AWS.Glue.Types.TriggerType
 import Network.AWS.Glue.Types.UpdateBehavior
+import Network.AWS.Glue.Types.WorkerType
+import Network.AWS.Glue.Types.WorkflowRunStatus
 import Network.AWS.Glue.Types.Action
 import Network.AWS.Glue.Types.BatchStopJobRunError
 import Network.AWS.Glue.Types.BatchStopJobRunSuccessfulSubmission
+import Network.AWS.Glue.Types.CSVClassifier
 import Network.AWS.Glue.Types.CatalogEntry
 import Network.AWS.Glue.Types.CatalogImportStatus
+import Network.AWS.Glue.Types.CatalogTarget
 import Network.AWS.Glue.Types.Classifier
+import Network.AWS.Glue.Types.CloudWatchEncryption
 import Network.AWS.Glue.Types.CodeGenEdge
 import Network.AWS.Glue.Types.CodeGenNode
 import Network.AWS.Glue.Types.CodeGenNodeArg
 import Network.AWS.Glue.Types.Column
 import Network.AWS.Glue.Types.Condition
+import Network.AWS.Glue.Types.ConfusionMatrix
 import Network.AWS.Glue.Types.Connection
 import Network.AWS.Glue.Types.ConnectionInput
+import Network.AWS.Glue.Types.ConnectionPasswordEncryption
 import Network.AWS.Glue.Types.ConnectionsList
+import Network.AWS.Glue.Types.Crawl
 import Network.AWS.Glue.Types.Crawler
 import Network.AWS.Glue.Types.CrawlerMetrics
+import Network.AWS.Glue.Types.CrawlerNodeDetails
 import Network.AWS.Glue.Types.CrawlerTargets
+import Network.AWS.Glue.Types.CreateCSVClassifierRequest
 import Network.AWS.Glue.Types.CreateGrokClassifierRequest
 import Network.AWS.Glue.Types.CreateJSONClassifierRequest
 import Network.AWS.Glue.Types.CreateXMLClassifierRequest
+import Network.AWS.Glue.Types.DataCatalogEncryptionSettings
+import Network.AWS.Glue.Types.DataLakePrincipal
 import Network.AWS.Glue.Types.Database
 import Network.AWS.Glue.Types.DatabaseInput
 import Network.AWS.Glue.Types.DevEndpoint
 import Network.AWS.Glue.Types.DevEndpointCustomLibraries
+import Network.AWS.Glue.Types.DynamoDBTarget
+import Network.AWS.Glue.Types.Edge
+import Network.AWS.Glue.Types.EncryptionAtRest
+import Network.AWS.Glue.Types.EncryptionConfiguration
 import Network.AWS.Glue.Types.ErrorDetail
+import Network.AWS.Glue.Types.EvaluationMetrics
 import Network.AWS.Glue.Types.ExecutionProperty
+import Network.AWS.Glue.Types.ExportLabelsTaskRunProperties
+import Network.AWS.Glue.Types.FindMatchesMetrics
+import Network.AWS.Glue.Types.FindMatchesParameters
+import Network.AWS.Glue.Types.FindMatchesTaskRunProperties
 import Network.AWS.Glue.Types.GetConnectionsFilter
+import Network.AWS.Glue.Types.GlueTable
 import Network.AWS.Glue.Types.GrokClassifier
+import Network.AWS.Glue.Types.ImportLabelsTaskRunProperties
 import Network.AWS.Glue.Types.JSONClassifier
 import Network.AWS.Glue.Types.JdbcTarget
 import Network.AWS.Glue.Types.Job
 import Network.AWS.Glue.Types.JobBookmarkEntry
+import Network.AWS.Glue.Types.JobBookmarksEncryption
 import Network.AWS.Glue.Types.JobCommand
+import Network.AWS.Glue.Types.JobNodeDetails
 import Network.AWS.Glue.Types.JobRun
 import Network.AWS.Glue.Types.JobUpdate
+import Network.AWS.Glue.Types.LabelingSetGenerationTaskRunProperties
 import Network.AWS.Glue.Types.LastCrawlInfo
 import Network.AWS.Glue.Types.Location
+import Network.AWS.Glue.Types.MLTransform
 import Network.AWS.Glue.Types.MappingEntry
+import Network.AWS.Glue.Types.Node
+import Network.AWS.Glue.Types.NotificationProperty
 import Network.AWS.Glue.Types.Order
 import Network.AWS.Glue.Types.Partition
 import Network.AWS.Glue.Types.PartitionError
@@ -733,26 +1246,45 @@ import Network.AWS.Glue.Types.PartitionValueList
 import Network.AWS.Glue.Types.PhysicalConnectionRequirements
 import Network.AWS.Glue.Types.Predecessor
 import Network.AWS.Glue.Types.Predicate
+import Network.AWS.Glue.Types.PrincipalPermissions
+import Network.AWS.Glue.Types.PropertyPredicate
 import Network.AWS.Glue.Types.ResourceURI
+import Network.AWS.Glue.Types.S3Encryption
 import Network.AWS.Glue.Types.S3Target
 import Network.AWS.Glue.Types.Schedule
 import Network.AWS.Glue.Types.SchemaChangePolicy
+import Network.AWS.Glue.Types.SchemaColumn
+import Network.AWS.Glue.Types.SecurityConfiguration
 import Network.AWS.Glue.Types.Segment
 import Network.AWS.Glue.Types.SerDeInfo
 import Network.AWS.Glue.Types.SkewedInfo
+import Network.AWS.Glue.Types.SortCriterion
 import Network.AWS.Glue.Types.StorageDescriptor
 import Network.AWS.Glue.Types.Table
 import Network.AWS.Glue.Types.TableError
 import Network.AWS.Glue.Types.TableInput
 import Network.AWS.Glue.Types.TableVersion
 import Network.AWS.Glue.Types.TableVersionError
+import Network.AWS.Glue.Types.TaskRun
+import Network.AWS.Glue.Types.TaskRunFilterCriteria
+import Network.AWS.Glue.Types.TaskRunProperties
+import Network.AWS.Glue.Types.TaskRunSortCriteria
+import Network.AWS.Glue.Types.TransformFilterCriteria
+import Network.AWS.Glue.Types.TransformParameters
+import Network.AWS.Glue.Types.TransformSortCriteria
 import Network.AWS.Glue.Types.Trigger
+import Network.AWS.Glue.Types.TriggerNodeDetails
 import Network.AWS.Glue.Types.TriggerUpdate
+import Network.AWS.Glue.Types.UpdateCSVClassifierRequest
 import Network.AWS.Glue.Types.UpdateGrokClassifierRequest
 import Network.AWS.Glue.Types.UpdateJSONClassifierRequest
 import Network.AWS.Glue.Types.UpdateXMLClassifierRequest
 import Network.AWS.Glue.Types.UserDefinedFunction
 import Network.AWS.Glue.Types.UserDefinedFunctionInput
+import Network.AWS.Glue.Types.Workflow
+import Network.AWS.Glue.Types.WorkflowGraph
+import Network.AWS.Glue.Types.WorkflowRun
+import Network.AWS.Glue.Types.WorkflowRunStatistics
 import Network.AWS.Glue.Types.XMLClassifier
 
 -- | API version @2017-03-31@ of the Amazon Glue SDK configuration.
@@ -776,6 +1308,11 @@ glue
             = Just "throttling_exception"
           | has (hasCode "Throttling" . hasStatus 400) e =
             Just "throttling"
+          | has
+              (hasCode "ProvisionedThroughputExceededException" .
+                 hasStatus 400)
+              e
+            = Just "throughput_exceeded"
           | has (hasStatus 504) e = Just "gateway_timeout"
           | has
               (hasCode "RequestThrottledException" . hasStatus 400)
@@ -876,6 +1413,14 @@ _ValidationException :: AsError a => Getting (First ServiceError) a ServiceError
 _ValidationException
   = _MatchServiceError glue "ValidationException"
 
+-- | The machine learning transform is not ready to run.
+--
+--
+_MLTransformNotReadyException :: AsError a => Getting (First ServiceError) a ServiceError
+_MLTransformNotReadyException
+  = _MatchServiceError glue
+      "MLTransformNotReadyException"
+
 -- | The specified crawler is not running.
 --
 --
@@ -891,12 +1436,27 @@ _VersionMismatchException :: AsError a => Getting (First ServiceError) a Service
 _VersionMismatchException
   = _MatchServiceError glue "VersionMismatchException"
 
+-- | An encryption operation failed.
+--
+--
+_GlueEncryptionException :: AsError a => Getting (First ServiceError) a ServiceError
+_GlueEncryptionException
+  = _MatchServiceError glue "GlueEncryptionException"
+
 -- | The input provided was not valid.
 --
 --
 _InvalidInputException :: AsError a => Getting (First ServiceError) a ServiceError
 _InvalidInputException
   = _MatchServiceError glue "InvalidInputException"
+
+-- | A specified condition was not satisfied.
+--
+--
+_ConditionCheckFailureException :: AsError a => Getting (First ServiceError) a ServiceError
+_ConditionCheckFailureException
+  = _MatchServiceError glue
+      "ConditionCheckFailureException"
 
 -- | Two processes are trying to modify a resource simultaneously.
 --

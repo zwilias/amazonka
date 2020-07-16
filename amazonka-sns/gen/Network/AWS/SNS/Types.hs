@@ -16,16 +16,29 @@ module Network.AWS.SNS.Types
       sns
 
     -- * Errors
+    , _InvalidSecurityException
+    , _TagPolicyException
+    , _KMSDisabledException
     , _InvalidParameterException
     , _AuthorizationErrorException
     , _InvalidParameterValueException
     , _EndpointDisabledException
+    , _KMSNotFoundException
+    , _ResourceNotFoundException
     , _ThrottledException
+    , _TagLimitExceededException
     , _TopicLimitExceededException
+    , _ConcurrentAccessException
     , _InternalErrorException
+    , _KMSOptInRequired
+    , _StaleTagException
     , _SubscriptionLimitExceededException
     , _PlatformApplicationDisabledException
+    , _KMSThrottlingException
     , _NotFoundException
+    , _KMSInvalidStateException
+    , _KMSAccessDeniedException
+    , _FilterPolicyLimitExceededException
 
     -- * Endpoint
     , Endpoint
@@ -55,6 +68,12 @@ module Network.AWS.SNS.Types
     , sEndpoint
     , sSubscriptionARN
 
+    -- * Tag
+    , Tag
+    , tag
+    , tagKey
+    , tagValue
+
     -- * Topic
     , Topic
     , topic
@@ -68,6 +87,7 @@ import Network.AWS.SNS.Types.Endpoint
 import Network.AWS.SNS.Types.MessageAttributeValue
 import Network.AWS.SNS.Types.PlatformApplication
 import Network.AWS.SNS.Types.Subscription
+import Network.AWS.SNS.Types.Tag
 import Network.AWS.SNS.Types.Topic
 
 -- | API version @2010-03-31@ of the Amazon Simple Notification Service SDK configuration.
@@ -91,6 +111,11 @@ sns
             = Just "throttling_exception"
           | has (hasCode "Throttling" . hasStatus 400) e =
             Just "throttling"
+          | has
+              (hasCode "ProvisionedThroughputExceededException" .
+                 hasStatus 400)
+              e
+            = Just "throughput_exceeded"
           | has (hasStatus 504) e = Just "gateway_timeout"
           | has
               (hasCode "RequestThrottledException" . hasStatus 400)
@@ -101,6 +126,29 @@ sns
           | has (hasStatus 500) e = Just "general_server_error"
           | has (hasStatus 509) e = Just "limit_exceeded"
           | otherwise = Nothing
+
+-- | The credential signature isn't valid. You must use an HTTPS endpoint and sign your request using Signature Version 4.
+--
+--
+_InvalidSecurityException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidSecurityException
+  = _MatchServiceError sns "InvalidSecurity" .
+      hasStatus 403
+
+-- | The request doesn't comply with the IAM tag policy. Correct your request and then retry it.
+--
+--
+_TagPolicyException :: AsError a => Getting (First ServiceError) a ServiceError
+_TagPolicyException
+  = _MatchServiceError sns "TagPolicy" . hasStatus 400
+
+-- | The request was rejected because the specified customer master key (CMK) isn't enabled.
+--
+--
+_KMSDisabledException :: AsError a => Getting (First ServiceError) a ServiceError
+_KMSDisabledException
+  = _MatchServiceError sns "KMSDisabled" .
+      hasStatus 400
 
 -- | Indicates that a request parameter does not comply with the associated constraints.
 --
@@ -134,12 +182,36 @@ _EndpointDisabledException
   = _MatchServiceError sns "EndpointDisabled" .
       hasStatus 400
 
+-- | The request was rejected because the specified entity or resource can't be found.
+--
+--
+_KMSNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
+_KMSNotFoundException
+  = _MatchServiceError sns "KMSNotFound" .
+      hasStatus 400
+
+-- | Can't tag resource. Verify that the topic exists.
+--
+--
+_ResourceNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
+_ResourceNotFoundException
+  = _MatchServiceError sns "ResourceNotFound" .
+      hasStatus 404
+
 -- | Indicates that the rate at which requests have been submitted for this action exceeds the limit for your account.
 --
 --
 _ThrottledException :: AsError a => Getting (First ServiceError) a ServiceError
 _ThrottledException
   = _MatchServiceError sns "Throttled" . hasStatus 429
+
+-- | Can't add more than 50 tags to a topic.
+--
+--
+_TagLimitExceededException :: AsError a => Getting (First ServiceError) a ServiceError
+_TagLimitExceededException
+  = _MatchServiceError sns "TagLimitExceeded" .
+      hasStatus 400
 
 -- | Indicates that the customer already owns the maximum allowed number of topics.
 --
@@ -149,6 +221,14 @@ _TopicLimitExceededException
   = _MatchServiceError sns "TopicLimitExceeded" .
       hasStatus 403
 
+-- | Can't perform multiple operations on a tag simultaneously. Perform the operations sequentially.
+--
+--
+_ConcurrentAccessException :: AsError a => Getting (First ServiceError) a ServiceError
+_ConcurrentAccessException
+  = _MatchServiceError sns "ConcurrentAccess" .
+      hasStatus 400
+
 -- | Indicates an internal service error.
 --
 --
@@ -156,6 +236,21 @@ _InternalErrorException :: AsError a => Getting (First ServiceError) a ServiceEr
 _InternalErrorException
   = _MatchServiceError sns "InternalError" .
       hasStatus 500
+
+-- | The AWS access key ID needs a subscription for the service.
+--
+--
+_KMSOptInRequired :: AsError a => Getting (First ServiceError) a ServiceError
+_KMSOptInRequired
+  = _MatchServiceError sns "KMSOptInRequired" .
+      hasStatus 403
+
+-- | A tag has been added to a resource with the same ARN as a deleted resource. Wait a short while and then retry the operation.
+--
+--
+_StaleTagException :: AsError a => Getting (First ServiceError) a ServiceError
+_StaleTagException
+  = _MatchServiceError sns "StaleTag" . hasStatus 400
 
 -- | Indicates that the customer already owns the maximum allowed number of subscriptions.
 --
@@ -174,9 +269,41 @@ _PlatformApplicationDisabledException
       "PlatformApplicationDisabled"
       . hasStatus 400
 
+-- | The request was denied due to request throttling. For more information about throttling, see <https://docs.aws.amazon.com/kms/latest/developerguide/limits.html#requests-per-second Limits> in the /AWS Key Management Service Developer Guide./ 
+--
+--
+_KMSThrottlingException :: AsError a => Getting (First ServiceError) a ServiceError
+_KMSThrottlingException
+  = _MatchServiceError sns "KMSThrottling" .
+      hasStatus 400
+
 -- | Indicates that the requested resource does not exist.
 --
 --
 _NotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
 _NotFoundException
   = _MatchServiceError sns "NotFound" . hasStatus 404
+
+-- | The request was rejected because the state of the specified resource isn't valid for this request. For more information, see <https://docs.aws.amazon.com/kms/latest/developerguide/key-state.html How Key State Affects Use of a Customer Master Key> in the /AWS Key Management Service Developer Guide/ .
+--
+--
+_KMSInvalidStateException :: AsError a => Getting (First ServiceError) a ServiceError
+_KMSInvalidStateException
+  = _MatchServiceError sns "KMSInvalidState" .
+      hasStatus 400
+
+-- | The ciphertext references a key that doesn't exist or that you don't have access to.
+--
+--
+_KMSAccessDeniedException :: AsError a => Getting (First ServiceError) a ServiceError
+_KMSAccessDeniedException
+  = _MatchServiceError sns "KMSAccessDenied" .
+      hasStatus 400
+
+-- | Indicates that the number of filter polices in your AWS account exceeds the limit. To add more filter polices, submit an SNS Limit Increase case in the AWS Support Center.
+--
+--
+_FilterPolicyLimitExceededException :: AsError a => Getting (First ServiceError) a ServiceError
+_FilterPolicyLimitExceededException
+  = _MatchServiceError sns "FilterPolicyLimitExceeded"
+      . hasStatus 403

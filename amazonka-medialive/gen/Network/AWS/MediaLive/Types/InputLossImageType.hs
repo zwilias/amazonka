@@ -27,7 +27,7 @@ module Network.AWS.MediaLive.Types.InputLossImageType (
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | Placeholder documentation for InputLossImageType
+-- | Input Loss Image Type
 data InputLossImageType = InputLossImageType' (CI
                                                  Text)
                             deriving (Eq, Ord, Read, Show, Data, Typeable,

@@ -21,6 +21,7 @@ module Network.AWS.SNS.Types.Product (
     module Network.AWS.SNS.Types.MessageAttributeValue,
     module Network.AWS.SNS.Types.PlatformApplication,
     module Network.AWS.SNS.Types.Subscription,
+    module Network.AWS.SNS.Types.Tag,
     module Network.AWS.SNS.Types.Topic
   ) where
 
@@ -30,4 +31,5 @@ import Network.AWS.SNS.Types.Endpoint
 import Network.AWS.SNS.Types.MessageAttributeValue
 import Network.AWS.SNS.Types.PlatformApplication
 import Network.AWS.SNS.Types.Subscription
+import Network.AWS.SNS.Types.Tag
 import Network.AWS.SNS.Types.Topic

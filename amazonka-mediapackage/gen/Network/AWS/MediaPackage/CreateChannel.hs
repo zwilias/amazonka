@@ -26,6 +26,7 @@ module Network.AWS.MediaPackage.CreateChannel
     , CreateChannel
     -- * Request Lenses
     , ccDescription
+    , ccTags
     , ccId
 
     -- * Destructuring the Response
@@ -36,6 +37,7 @@ module Network.AWS.MediaPackage.CreateChannel
     , ccrsARN
     , ccrsId
     , ccrsDescription
+    , ccrsTags
     , ccrsResponseStatus
     ) where
 
@@ -51,6 +53,7 @@ import Network.AWS.Response
 -- /See:/ 'createChannel' smart constructor.
 data CreateChannel = CreateChannel'{_ccDescription ::
                                     !(Maybe Text),
+                                    _ccTags :: !(Maybe (Map Text Text)),
                                     _ccId :: !Text}
                        deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -60,17 +63,23 @@ data CreateChannel = CreateChannel'{_ccDescription ::
 --
 -- * 'ccDescription' - A short text description of the Channel.
 --
+-- * 'ccTags' - Undocumented member.
+--
 -- * 'ccId' - The ID of the Channel. The ID must be unique within the region and it cannot be changed after a Channel is created.
 createChannel
     :: Text -- ^ 'ccId'
     -> CreateChannel
 createChannel pId_
   = CreateChannel'{_ccDescription = Nothing,
-                   _ccId = pId_}
+                   _ccTags = Nothing, _ccId = pId_}
 
 -- | A short text description of the Channel.
 ccDescription :: Lens' CreateChannel (Maybe Text)
 ccDescription = lens _ccDescription (\ s a -> s{_ccDescription = a})
+
+-- | Undocumented member.
+ccTags :: Lens' CreateChannel (HashMap Text Text)
+ccTags = lens _ccTags (\ s a -> s{_ccTags = a}) . _Default . _Map
 
 -- | The ID of the Channel. The ID must be unique within the region and it cannot be changed after a Channel is created.
 ccId :: Lens' CreateChannel Text
@@ -86,6 +95,7 @@ instance AWSRequest CreateChannel where
                    (x .?> "hlsIngest") <*> (x .?> "arn") <*>
                      (x .?> "id")
                      <*> (x .?> "description")
+                     <*> (x .?> "tags" .!@ mempty)
                      <*> (pure (fromEnum s)))
 
 instance Hashable CreateChannel where
@@ -104,7 +114,7 @@ instance ToJSON CreateChannel where
           = object
               (catMaybes
                  [("description" .=) <$> _ccDescription,
-                  Just ("id" .= _ccId)])
+                  ("tags" .=) <$> _ccTags, Just ("id" .= _ccId)])
 
 instance ToPath CreateChannel where
         toPath = const "/channels"
@@ -119,6 +129,8 @@ data CreateChannelResponse = CreateChannelResponse'{_ccrsHlsIngest
                                                     _ccrsId :: !(Maybe Text),
                                                     _ccrsDescription ::
                                                     !(Maybe Text),
+                                                    _ccrsTags ::
+                                                    !(Maybe (Map Text Text)),
                                                     _ccrsResponseStatus :: !Int}
                                deriving (Eq, Read, Show, Data, Typeable,
                                          Generic)
@@ -135,6 +147,8 @@ data CreateChannelResponse = CreateChannelResponse'{_ccrsHlsIngest
 --
 -- * 'ccrsDescription' - A short text description of the Channel.
 --
+-- * 'ccrsTags' - Undocumented member.
+--
 -- * 'ccrsResponseStatus' - -- | The response status code.
 createChannelResponse
     :: Int -- ^ 'ccrsResponseStatus'
@@ -142,7 +156,7 @@ createChannelResponse
 createChannelResponse pResponseStatus_
   = CreateChannelResponse'{_ccrsHlsIngest = Nothing,
                            _ccrsARN = Nothing, _ccrsId = Nothing,
-                           _ccrsDescription = Nothing,
+                           _ccrsDescription = Nothing, _ccrsTags = Nothing,
                            _ccrsResponseStatus = pResponseStatus_}
 
 -- | Undocumented member.
@@ -160,6 +174,10 @@ ccrsId = lens _ccrsId (\ s a -> s{_ccrsId = a})
 -- | A short text description of the Channel.
 ccrsDescription :: Lens' CreateChannelResponse (Maybe Text)
 ccrsDescription = lens _ccrsDescription (\ s a -> s{_ccrsDescription = a})
+
+-- | Undocumented member.
+ccrsTags :: Lens' CreateChannelResponse (HashMap Text Text)
+ccrsTags = lens _ccrsTags (\ s a -> s{_ccrsTags = a}) . _Default . _Map
 
 -- | -- | The response status code.
 ccrsResponseStatus :: Lens' CreateChannelResponse Int

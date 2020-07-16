@@ -18,7 +18,9 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Used to create or update a segment.
+-- Creates a new segment for an application or updates the configuration, dimension, and other settings for an existing segment that's associated with an application.
+--
+--
 module Network.AWS.Pinpoint.CreateSegment
     (
     -- * Creating a Request
@@ -54,7 +56,7 @@ data CreateSegment = CreateSegment'{_csApplicationId
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'csApplicationId' - Undocumented member.
+-- * 'csApplicationId' - The unique identifier for the application. This identifier is displayed as the __Project ID__ on the Amazon Pinpoint console.
 --
 -- * 'csWriteSegmentRequest' - Undocumented member.
 createSegment
@@ -65,7 +67,7 @@ createSegment pApplicationId_ pWriteSegmentRequest_
   = CreateSegment'{_csApplicationId = pApplicationId_,
                    _csWriteSegmentRequest = pWriteSegmentRequest_}
 
--- | Undocumented member.
+-- | The unique identifier for the application. This identifier is displayed as the __Project ID__ on the Amazon Pinpoint console.
 csApplicationId :: Lens' CreateSegment Text
 csApplicationId = lens _csApplicationId (\ s a -> s{_csApplicationId = a})
 

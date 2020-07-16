@@ -21,7 +21,8 @@ module Network.AWS.OpsWorksCM.Types.Product (
     module Network.AWS.OpsWorksCM.Types.Backup,
     module Network.AWS.OpsWorksCM.Types.EngineAttribute,
     module Network.AWS.OpsWorksCM.Types.Server,
-    module Network.AWS.OpsWorksCM.Types.ServerEvent
+    module Network.AWS.OpsWorksCM.Types.ServerEvent,
+    module Network.AWS.OpsWorksCM.Types.Tag
   ) where
 
 import Network.AWS.Lens
@@ -30,4 +31,5 @@ import Network.AWS.OpsWorksCM.Types.Backup
 import Network.AWS.OpsWorksCM.Types.EngineAttribute
 import Network.AWS.OpsWorksCM.Types.Server
 import Network.AWS.OpsWorksCM.Types.ServerEvent
+import Network.AWS.OpsWorksCM.Types.Tag
 import Network.AWS.Prelude

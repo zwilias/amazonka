@@ -20,6 +20,7 @@ module Network.AWS.SSM.Types.DocumentIdentifier where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.SSM.Types.DocumentFormat
+import Network.AWS.SSM.Types.DocumentRequires
 import Network.AWS.SSM.Types.DocumentType
 import Network.AWS.SSM.Types.PlatformType
 import Network.AWS.SSM.Types.Tag
@@ -31,6 +32,7 @@ import Network.AWS.SSM.Types.Tag
 -- /See:/ 'documentIdentifier' smart constructor.
 data DocumentIdentifier = DocumentIdentifier'{_diDocumentType
                                               :: !(Maybe DocumentType),
+                                              _diVersionName :: !(Maybe Text),
                                               _diSchemaVersion :: !(Maybe Text),
                                               _diTargetType :: !(Maybe Text),
                                               _diOwner :: !(Maybe Text),
@@ -41,6 +43,8 @@ data DocumentIdentifier = DocumentIdentifier'{_diDocumentType
                                               _diName :: !(Maybe Text),
                                               _diDocumentVersion ::
                                               !(Maybe Text),
+                                              _diRequires ::
+                                              !(Maybe (List1 DocumentRequires)),
                                               _diTags :: !(Maybe [Tag])}
                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -50,9 +54,11 @@ data DocumentIdentifier = DocumentIdentifier'{_diDocumentType
 --
 -- * 'diDocumentType' - The document type.
 --
+-- * 'diVersionName' - An optional field specifying the version of the artifact associated with the document. For example, "Release 12, Update 6". This value is unique across all versions of a document, and cannot be changed.
+--
 -- * 'diSchemaVersion' - The schema version.
 --
--- * 'diTargetType' - The target type which defines the kinds of resources the document can run on. For example, /AWS::EC2::Instance. For a list of valid resource types, see <http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html AWS Resource Types Reference> in the /AWS CloudFormation User Guide/ . 
+-- * 'diTargetType' - The target type which defines the kinds of resources the document can run on. For example, /AWS::EC2::Instance. For a list of valid resource types, see <http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html AWS resource and property types reference> in the /AWS CloudFormation User Guide/ . 
 --
 -- * 'diOwner' - The AWS user account that created the document.
 --
@@ -64,25 +70,33 @@ data DocumentIdentifier = DocumentIdentifier'{_diDocumentType
 --
 -- * 'diDocumentVersion' - The document version.
 --
+-- * 'diRequires' - A list of SSM documents required by a document. For example, an @ApplicationConfiguration@ document requires an @ApplicationConfigurationSchema@ document.
+--
 -- * 'diTags' - The tags, or metadata, that have been applied to the document.
 documentIdentifier
     :: DocumentIdentifier
 documentIdentifier
   = DocumentIdentifier'{_diDocumentType = Nothing,
-                        _diSchemaVersion = Nothing, _diTargetType = Nothing,
-                        _diOwner = Nothing, _diPlatformTypes = Nothing,
+                        _diVersionName = Nothing, _diSchemaVersion = Nothing,
+                        _diTargetType = Nothing, _diOwner = Nothing,
+                        _diPlatformTypes = Nothing,
                         _diDocumentFormat = Nothing, _diName = Nothing,
-                        _diDocumentVersion = Nothing, _diTags = Nothing}
+                        _diDocumentVersion = Nothing, _diRequires = Nothing,
+                        _diTags = Nothing}
 
 -- | The document type.
 diDocumentType :: Lens' DocumentIdentifier (Maybe DocumentType)
 diDocumentType = lens _diDocumentType (\ s a -> s{_diDocumentType = a})
 
+-- | An optional field specifying the version of the artifact associated with the document. For example, "Release 12, Update 6". This value is unique across all versions of a document, and cannot be changed.
+diVersionName :: Lens' DocumentIdentifier (Maybe Text)
+diVersionName = lens _diVersionName (\ s a -> s{_diVersionName = a})
+
 -- | The schema version.
 diSchemaVersion :: Lens' DocumentIdentifier (Maybe Text)
 diSchemaVersion = lens _diSchemaVersion (\ s a -> s{_diSchemaVersion = a})
 
--- | The target type which defines the kinds of resources the document can run on. For example, /AWS::EC2::Instance. For a list of valid resource types, see <http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html AWS Resource Types Reference> in the /AWS CloudFormation User Guide/ . 
+-- | The target type which defines the kinds of resources the document can run on. For example, /AWS::EC2::Instance. For a list of valid resource types, see <http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html AWS resource and property types reference> in the /AWS CloudFormation User Guide/ . 
 diTargetType :: Lens' DocumentIdentifier (Maybe Text)
 diTargetType = lens _diTargetType (\ s a -> s{_diTargetType = a})
 
@@ -106,6 +120,10 @@ diName = lens _diName (\ s a -> s{_diName = a})
 diDocumentVersion :: Lens' DocumentIdentifier (Maybe Text)
 diDocumentVersion = lens _diDocumentVersion (\ s a -> s{_diDocumentVersion = a})
 
+-- | A list of SSM documents required by a document. For example, an @ApplicationConfiguration@ document requires an @ApplicationConfigurationSchema@ document.
+diRequires :: Lens' DocumentIdentifier (Maybe (NonEmpty DocumentRequires))
+diRequires = lens _diRequires (\ s a -> s{_diRequires = a}) . mapping _List1
+
 -- | The tags, or metadata, that have been applied to the document.
 diTags :: Lens' DocumentIdentifier [Tag]
 diTags = lens _diTags (\ s a -> s{_diTags = a}) . _Default . _Coerce
@@ -115,13 +133,15 @@ instance FromJSON DocumentIdentifier where
           = withObject "DocumentIdentifier"
               (\ x ->
                  DocumentIdentifier' <$>
-                   (x .:? "DocumentType") <*> (x .:? "SchemaVersion")
+                   (x .:? "DocumentType") <*> (x .:? "VersionName") <*>
+                     (x .:? "SchemaVersion")
                      <*> (x .:? "TargetType")
                      <*> (x .:? "Owner")
                      <*> (x .:? "PlatformTypes" .!= mempty)
                      <*> (x .:? "DocumentFormat")
                      <*> (x .:? "Name")
                      <*> (x .:? "DocumentVersion")
+                     <*> (x .:? "Requires")
                      <*> (x .:? "Tags" .!= mempty))
 
 instance Hashable DocumentIdentifier where

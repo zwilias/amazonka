@@ -21,7 +21,11 @@ import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.S3.Internal
 
--- | /See:/ 'jsonOutput' smart constructor.
+-- | Specifies JSON as request's output serialization format.
+--
+--
+--
+-- /See:/ 'jsonOutput' smart constructor.
 newtype JSONOutput = JSONOutput'{_joRecordDelimiter
                                  :: Maybe Text}
                        deriving (Eq, Read, Show, Data, Typeable, Generic)

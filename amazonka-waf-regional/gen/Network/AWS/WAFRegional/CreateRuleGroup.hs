@@ -31,7 +31,7 @@
 --
 --
 --
--- For more information about how to use the AWS WAF API to allow or block HTTP requests, see the <http://docs.aws.amazon.com/waf/latest/developerguide/ AWS WAF Developer Guide> .
+-- For more information about how to use the AWS WAF API to allow or block HTTP requests, see the <https://docs.aws.amazon.com/waf/latest/developerguide/ AWS WAF Developer Guide> .
 --
 module Network.AWS.WAFRegional.CreateRuleGroup
     (
@@ -39,6 +39,7 @@ module Network.AWS.WAFRegional.CreateRuleGroup
       createRuleGroup
     , CreateRuleGroup
     -- * Request Lenses
+    , crgTags
     , crgName
     , crgMetricName
     , crgChangeToken
@@ -60,8 +61,9 @@ import Network.AWS.WAFRegional.Types
 import Network.AWS.WAFRegional.Types.Product
 
 -- | /See:/ 'createRuleGroup' smart constructor.
-data CreateRuleGroup = CreateRuleGroup'{_crgName ::
-                                        !Text,
+data CreateRuleGroup = CreateRuleGroup'{_crgTags ::
+                                        !(Maybe (List1 Tag)),
+                                        _crgName :: !Text,
                                         _crgMetricName :: !Text,
                                         _crgChangeToken :: !Text}
                          deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -70,9 +72,11 @@ data CreateRuleGroup = CreateRuleGroup'{_crgName ::
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
+-- * 'crgTags' - 
+--
 -- * 'crgName' - A friendly name or description of the 'RuleGroup' . You can't change @Name@ after you create a @RuleGroup@ .
 --
--- * 'crgMetricName' - A friendly name or description for the metrics for this @RuleGroup@ . The name can contain only alphanumeric characters (A-Z, a-z, 0-9); the name can't contain whitespace. You can't change the name of the metric after you create the @RuleGroup@ .
+-- * 'crgMetricName' - A friendly name or description for the metrics for this @RuleGroup@ . The name can contain only alphanumeric characters (A-Z, a-z, 0-9), with maximum length 128 and minimum length one. It can't contain whitespace or metric names reserved for AWS WAF, including "All" and "Default_Action." You can't change the name of the metric after you create the @RuleGroup@ .
 --
 -- * 'crgChangeToken' - The value returned by the most recent call to 'GetChangeToken' .
 createRuleGroup
@@ -81,15 +85,19 @@ createRuleGroup
     -> Text -- ^ 'crgChangeToken'
     -> CreateRuleGroup
 createRuleGroup pName_ pMetricName_ pChangeToken_
-  = CreateRuleGroup'{_crgName = pName_,
-                     _crgMetricName = pMetricName_,
+  = CreateRuleGroup'{_crgTags = Nothing,
+                     _crgName = pName_, _crgMetricName = pMetricName_,
                      _crgChangeToken = pChangeToken_}
+
+-- | 
+crgTags :: Lens' CreateRuleGroup (Maybe (NonEmpty Tag))
+crgTags = lens _crgTags (\ s a -> s{_crgTags = a}) . mapping _List1
 
 -- | A friendly name or description of the 'RuleGroup' . You can't change @Name@ after you create a @RuleGroup@ .
 crgName :: Lens' CreateRuleGroup Text
 crgName = lens _crgName (\ s a -> s{_crgName = a})
 
--- | A friendly name or description for the metrics for this @RuleGroup@ . The name can contain only alphanumeric characters (A-Z, a-z, 0-9); the name can't contain whitespace. You can't change the name of the metric after you create the @RuleGroup@ .
+-- | A friendly name or description for the metrics for this @RuleGroup@ . The name can contain only alphanumeric characters (A-Z, a-z, 0-9), with maximum length 128 and minimum length one. It can't contain whitespace or metric names reserved for AWS WAF, including "All" and "Default_Action." You can't change the name of the metric after you create the @RuleGroup@ .
 crgMetricName :: Lens' CreateRuleGroup Text
 crgMetricName = lens _crgMetricName (\ s a -> s{_crgMetricName = a})
 
@@ -125,7 +133,7 @@ instance ToJSON CreateRuleGroup where
         toJSON CreateRuleGroup'{..}
           = object
               (catMaybes
-                 [Just ("Name" .= _crgName),
+                 [("Tags" .=) <$> _crgTags, Just ("Name" .= _crgName),
                   Just ("MetricName" .= _crgMetricName),
                   Just ("ChangeToken" .= _crgChangeToken)])
 

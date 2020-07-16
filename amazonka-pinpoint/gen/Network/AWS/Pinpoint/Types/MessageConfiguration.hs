@@ -18,12 +18,15 @@
 module Network.AWS.Pinpoint.Types.MessageConfiguration where
 
 import Network.AWS.Lens
+import Network.AWS.Pinpoint.Types.CampaignCustomMessage
 import Network.AWS.Pinpoint.Types.CampaignEmailMessage
 import Network.AWS.Pinpoint.Types.CampaignSmsMessage
 import Network.AWS.Pinpoint.Types.Message
 import Network.AWS.Prelude
 
--- | Message configuration for a campaign.
+-- | Specifies the message configuration settings for a campaign.
+--
+--
 --
 -- /See:/ 'messageConfiguration' smart constructor.
 data MessageConfiguration = MessageConfiguration'{_mcAPNSMessage
@@ -32,6 +35,9 @@ data MessageConfiguration = MessageConfiguration'{_mcAPNSMessage
                                                   !(Maybe Message),
                                                   _mcDefaultMessage ::
                                                   !(Maybe Message),
+                                                  _mcCustomMessage ::
+                                                  !(Maybe
+                                                      CampaignCustomMessage),
                                                   _mcADMMessage ::
                                                   !(Maybe Message),
                                                   _mcSMSMessage ::
@@ -46,52 +52,59 @@ data MessageConfiguration = MessageConfiguration'{_mcAPNSMessage
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'mcAPNSMessage' - The message that the campaign delivers to APNS channels. Overrides the default message.
+-- * 'mcAPNSMessage' - The message that the campaign sends through the APNs (Apple Push Notification service) channel. If specified, this message overrides the default message.
 --
--- * 'mcGCMMessage' - The message that the campaign delivers to GCM channels. Overrides the default message.
+-- * 'mcGCMMessage' - The message that the campaign sends through the GCM channel, which enables Amazon Pinpoint to send push notifications through the Firebase Cloud Messaging (FCM), formerly Google Cloud Messaging (GCM), service. If specified, this message overrides the default message.
 --
--- * 'mcDefaultMessage' - The default message for all channels.
+-- * 'mcDefaultMessage' - The default message that the campaign sends through all the channels that are configured for the campaign.
 --
--- * 'mcADMMessage' - The message that the campaign delivers to ADM channels. Overrides the default message.
+-- * 'mcCustomMessage' - The message that the campaign sends through a custom channel, as specified by the delivery configuration (CustomDeliveryConfiguration) settings for the campaign. If specified, this message overrides the default message.
 --
--- * 'mcSMSMessage' - The SMS message configuration.
+-- * 'mcADMMessage' - The message that the campaign sends through the ADM (Amazon Device Messaging) channel. If specified, this message overrides the default message.
 --
--- * 'mcEmailMessage' - The email message configuration.
+-- * 'mcSMSMessage' - The message that the campaign sends through the SMS channel. If specified, this message overrides the default message.
 --
--- * 'mcBaiduMessage' - The message that the campaign delivers to Baidu channels. Overrides the default message.
+-- * 'mcEmailMessage' - The message that the campaign sends through the email channel. If specified, this message overrides the default message.
+--
+-- * 'mcBaiduMessage' - The message that the campaign sends through the Baidu (Baidu Cloud Push) channel. If specified, this message overrides the default message.
 messageConfiguration
     :: MessageConfiguration
 messageConfiguration
   = MessageConfiguration'{_mcAPNSMessage = Nothing,
                           _mcGCMMessage = Nothing, _mcDefaultMessage = Nothing,
-                          _mcADMMessage = Nothing, _mcSMSMessage = Nothing,
-                          _mcEmailMessage = Nothing, _mcBaiduMessage = Nothing}
+                          _mcCustomMessage = Nothing, _mcADMMessage = Nothing,
+                          _mcSMSMessage = Nothing, _mcEmailMessage = Nothing,
+                          _mcBaiduMessage = Nothing}
 
--- | The message that the campaign delivers to APNS channels. Overrides the default message.
+-- | The message that the campaign sends through the APNs (Apple Push Notification service) channel. If specified, this message overrides the default message.
 mcAPNSMessage :: Lens' MessageConfiguration (Maybe Message)
 mcAPNSMessage = lens _mcAPNSMessage (\ s a -> s{_mcAPNSMessage = a})
 
--- | The message that the campaign delivers to GCM channels. Overrides the default message.
+-- | The message that the campaign sends through the GCM channel, which enables Amazon Pinpoint to send push notifications through the Firebase Cloud Messaging (FCM), formerly Google Cloud Messaging (GCM), service. If specified, this message overrides the default message.
 mcGCMMessage :: Lens' MessageConfiguration (Maybe Message)
 mcGCMMessage = lens _mcGCMMessage (\ s a -> s{_mcGCMMessage = a})
 
--- | The default message for all channels.
+-- | The default message that the campaign sends through all the channels that are configured for the campaign.
 mcDefaultMessage :: Lens' MessageConfiguration (Maybe Message)
 mcDefaultMessage = lens _mcDefaultMessage (\ s a -> s{_mcDefaultMessage = a})
 
--- | The message that the campaign delivers to ADM channels. Overrides the default message.
+-- | The message that the campaign sends through a custom channel, as specified by the delivery configuration (CustomDeliveryConfiguration) settings for the campaign. If specified, this message overrides the default message.
+mcCustomMessage :: Lens' MessageConfiguration (Maybe CampaignCustomMessage)
+mcCustomMessage = lens _mcCustomMessage (\ s a -> s{_mcCustomMessage = a})
+
+-- | The message that the campaign sends through the ADM (Amazon Device Messaging) channel. If specified, this message overrides the default message.
 mcADMMessage :: Lens' MessageConfiguration (Maybe Message)
 mcADMMessage = lens _mcADMMessage (\ s a -> s{_mcADMMessage = a})
 
--- | The SMS message configuration.
+-- | The message that the campaign sends through the SMS channel. If specified, this message overrides the default message.
 mcSMSMessage :: Lens' MessageConfiguration (Maybe CampaignSmsMessage)
 mcSMSMessage = lens _mcSMSMessage (\ s a -> s{_mcSMSMessage = a})
 
--- | The email message configuration.
+-- | The message that the campaign sends through the email channel. If specified, this message overrides the default message.
 mcEmailMessage :: Lens' MessageConfiguration (Maybe CampaignEmailMessage)
 mcEmailMessage = lens _mcEmailMessage (\ s a -> s{_mcEmailMessage = a})
 
--- | The message that the campaign delivers to Baidu channels. Overrides the default message.
+-- | The message that the campaign sends through the Baidu (Baidu Cloud Push) channel. If specified, this message overrides the default message.
 mcBaiduMessage :: Lens' MessageConfiguration (Maybe Message)
 mcBaiduMessage = lens _mcBaiduMessage (\ s a -> s{_mcBaiduMessage = a})
 
@@ -102,6 +115,7 @@ instance FromJSON MessageConfiguration where
                  MessageConfiguration' <$>
                    (x .:? "APNSMessage") <*> (x .:? "GCMMessage") <*>
                      (x .:? "DefaultMessage")
+                     <*> (x .:? "CustomMessage")
                      <*> (x .:? "ADMMessage")
                      <*> (x .:? "SMSMessage")
                      <*> (x .:? "EmailMessage")
@@ -118,6 +132,7 @@ instance ToJSON MessageConfiguration where
                  [("APNSMessage" .=) <$> _mcAPNSMessage,
                   ("GCMMessage" .=) <$> _mcGCMMessage,
                   ("DefaultMessage" .=) <$> _mcDefaultMessage,
+                  ("CustomMessage" .=) <$> _mcCustomMessage,
                   ("ADMMessage" .=) <$> _mcADMMessage,
                   ("SMSMessage" .=) <$> _mcSMSMessage,
                   ("EmailMessage" .=) <$> _mcEmailMessage,

@@ -18,12 +18,14 @@ module Network.AWS.MigrationHub.Types
     -- * Errors
     , _DryRunOperation
     , _PolicyErrorException
+    , _HomeRegionNotSetException
     , _AccessDeniedException
     , _UnauthorizedOperation
     , _ResourceNotFoundException
     , _ServiceUnavailableException
     , _InvalidInputException
     , _InternalServerError
+    , _ThrottlingException
 
     -- * ApplicationStatus
     , ApplicationStatus (..)
@@ -33,6 +35,13 @@ module Network.AWS.MigrationHub.Types
 
     -- * ResourceAttributeType
     , ResourceAttributeType (..)
+
+    -- * ApplicationState
+    , ApplicationState
+    , applicationState
+    , asLastUpdatedTime
+    , asApplicationId
+    , asApplicationStatus
 
     -- * CreatedArtifact
     , CreatedArtifact
@@ -90,6 +99,7 @@ import Network.AWS.Sign.V4
 import Network.AWS.MigrationHub.Types.ApplicationStatus
 import Network.AWS.MigrationHub.Types.MigrationStatus
 import Network.AWS.MigrationHub.Types.ResourceAttributeType
+import Network.AWS.MigrationHub.Types.ApplicationState
 import Network.AWS.MigrationHub.Types.CreatedArtifact
 import Network.AWS.MigrationHub.Types.DiscoveredResource
 import Network.AWS.MigrationHub.Types.MigrationTask
@@ -121,6 +131,11 @@ migrationHub
             = Just "throttling_exception"
           | has (hasCode "Throttling" . hasStatus 400) e =
             Just "throttling"
+          | has
+              (hasCode "ProvisionedThroughputExceededException" .
+                 hasStatus 400)
+              e
+            = Just "throughput_exceeded"
           | has (hasStatus 504) e = Just "gateway_timeout"
           | has
               (hasCode "RequestThrottledException" . hasStatus 400)
@@ -139,13 +154,21 @@ _DryRunOperation :: AsError a => Getting (First ServiceError) a ServiceError
 _DryRunOperation
   = _MatchServiceError migrationHub "DryRunOperation"
 
--- | Exception raised when there are problems accessing ADS (Application Discovery Service); most likely due to a misconfigured policy or the @migrationhub-discovery@ role is missing or not configured correctly.
+-- | Exception raised when there are problems accessing Application Discovery Service (Application Discovery Service); most likely due to a misconfigured policy or the @migrationhub-discovery@ role is missing or not configured correctly.
 --
 --
 _PolicyErrorException :: AsError a => Getting (First ServiceError) a ServiceError
 _PolicyErrorException
   = _MatchServiceError migrationHub
       "PolicyErrorException"
+
+-- | The home region is not set. Set the home region to continue.
+--
+--
+_HomeRegionNotSetException :: AsError a => Getting (First ServiceError) a ServiceError
+_HomeRegionNotSetException
+  = _MatchServiceError migrationHub
+      "HomeRegionNotSetException"
 
 -- | You do not have sufficient access to perform this action.
 --
@@ -163,7 +186,7 @@ _UnauthorizedOperation
   = _MatchServiceError migrationHub
       "UnauthorizedOperation"
 
--- | Exception raised when the request references a resource (ADS configuration, update stream, migration task, etc.) that does not exist in ADS (Application Discovery Service) or in Migration Hub's repository.
+-- | Exception raised when the request references a resource (Application Discovery Service configuration, update stream, migration task, etc.) that does not exist in Application Discovery Service (Application Discovery Service) or in Migration Hub's repository.
 --
 --
 _ResourceNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
@@ -187,10 +210,18 @@ _InvalidInputException
   = _MatchServiceError migrationHub
       "InvalidInputException"
 
--- | Exception raised when there is an internal, configuration, or dependency error encountered.
+-- | Exception raised when an internal, configuration, or dependency error is encountered.
 --
 --
 _InternalServerError :: AsError a => Getting (First ServiceError) a ServiceError
 _InternalServerError
   = _MatchServiceError migrationHub
       "InternalServerError"
+
+-- | The request was denied due to request throttling.
+--
+--
+_ThrottlingException :: AsError a => Getting (First ServiceError) a ServiceError
+_ThrottlingException
+  = _MatchServiceError migrationHub
+      "ThrottlingException"

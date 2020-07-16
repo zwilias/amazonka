@@ -21,7 +21,11 @@ import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.S3.Internal
 
--- | /See:/ 'errorDocument' smart constructor.
+-- | The error information.
+--
+--
+--
+-- /See:/ 'errorDocument' smart constructor.
 newtype ErrorDocument = ErrorDocument'{_edKey ::
                                        ObjectKey}
                           deriving (Eq, Read, Show, Data, Typeable, Generic)

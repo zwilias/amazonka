@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Deletes a Maintenance Window.
+-- Deletes a maintenance window.
 --
 --
 module Network.AWS.SSM.DeleteMaintenanceWindow
@@ -54,14 +54,14 @@ newtype DeleteMaintenanceWindow = DeleteMaintenanceWindow'{_dmwWindowId
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dmwWindowId' - The ID of the Maintenance Window to delete.
+-- * 'dmwWindowId' - The ID of the maintenance window to delete.
 deleteMaintenanceWindow
     :: Text -- ^ 'dmwWindowId'
     -> DeleteMaintenanceWindow
 deleteMaintenanceWindow pWindowId_
   = DeleteMaintenanceWindow'{_dmwWindowId = pWindowId_}
 
--- | The ID of the Maintenance Window to delete.
+-- | The ID of the maintenance window to delete.
 dmwWindowId :: Lens' DeleteMaintenanceWindow Text
 dmwWindowId = lens _dmwWindowId (\ s a -> s{_dmwWindowId = a})
 
@@ -113,7 +113,7 @@ data DeleteMaintenanceWindowResponse = DeleteMaintenanceWindowResponse'{_dmwrsWi
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dmwrsWindowId' - The ID of the deleted Maintenance Window.
+-- * 'dmwrsWindowId' - The ID of the deleted maintenance window.
 --
 -- * 'dmwrsResponseStatus' - -- | The response status code.
 deleteMaintenanceWindowResponse
@@ -124,7 +124,7 @@ deleteMaintenanceWindowResponse pResponseStatus_
                                        Nothing,
                                      _dmwrsResponseStatus = pResponseStatus_}
 
--- | The ID of the deleted Maintenance Window.
+-- | The ID of the deleted maintenance window.
 dmwrsWindowId :: Lens' DeleteMaintenanceWindowResponse (Maybe Text)
 dmwrsWindowId = lens _dmwrsWindowId (\ s a -> s{_dmwrsWindowId = a})
 

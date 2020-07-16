@@ -59,6 +59,9 @@ module Network.AWS.Route53Domains
     -- ** GetOperationDetail 
     , module Network.AWS.Route53Domains.GetOperationDetail
 
+    -- ** RejectDomainTransferFromAnotherAWSAccount 
+    , module Network.AWS.Route53Domains.RejectDomainTransferFromAnotherAWSAccount
+
     -- ** EnableDomainAutoRenew 
     , module Network.AWS.Route53Domains.EnableDomainAutoRenew
 
@@ -71,7 +74,7 @@ module Network.AWS.Route53Domains
     -- ** RenewDomain 
     , module Network.AWS.Route53Domains.RenewDomain
 
-    -- ** ViewBilling 
+    -- ** ViewBilling (Paginated)
     , module Network.AWS.Route53Domains.ViewBilling
 
     -- ** UpdateDomainContact 
@@ -91,6 +94,12 @@ module Network.AWS.Route53Domains
 
     -- ** CheckDomainAvailability 
     , module Network.AWS.Route53Domains.CheckDomainAvailability
+
+    -- ** TransferDomainToAnotherAWSAccount 
+    , module Network.AWS.Route53Domains.TransferDomainToAnotherAWSAccount
+
+    -- ** AcceptDomainTransferFromAnotherAWSAccount 
+    , module Network.AWS.Route53Domains.AcceptDomainTransferFromAnotherAWSAccount
 
     -- ** GetContactReachabilityStatus 
     , module Network.AWS.Route53Domains.GetContactReachabilityStatus
@@ -115,6 +124,9 @@ module Network.AWS.Route53Domains
 
     -- ** ListDomains (Paginated)
     , module Network.AWS.Route53Domains.ListDomains
+
+    -- ** CancelDomainTransferToAnotherAWSAccount 
+    , module Network.AWS.Route53Domains.CancelDomainTransferToAnotherAWSAccount
 
     -- * Types
 
@@ -215,6 +227,8 @@ module Network.AWS.Route53Domains
     , tagKey
     ) where
 
+import Network.AWS.Route53Domains.AcceptDomainTransferFromAnotherAWSAccount
+import Network.AWS.Route53Domains.CancelDomainTransferToAnotherAWSAccount
 import Network.AWS.Route53Domains.CheckDomainAvailability
 import Network.AWS.Route53Domains.CheckDomainTransferability
 import Network.AWS.Route53Domains.DeleteTagsForDomain
@@ -230,10 +244,12 @@ import Network.AWS.Route53Domains.ListDomains
 import Network.AWS.Route53Domains.ListOperations
 import Network.AWS.Route53Domains.ListTagsForDomain
 import Network.AWS.Route53Domains.RegisterDomain
+import Network.AWS.Route53Domains.RejectDomainTransferFromAnotherAWSAccount
 import Network.AWS.Route53Domains.RenewDomain
 import Network.AWS.Route53Domains.ResendContactReachabilityEmail
 import Network.AWS.Route53Domains.RetrieveDomainAuthCode
 import Network.AWS.Route53Domains.TransferDomain
+import Network.AWS.Route53Domains.TransferDomainToAnotherAWSAccount
 import Network.AWS.Route53Domains.Types
 import Network.AWS.Route53Domains.UpdateDomainContact
 import Network.AWS.Route53Domains.UpdateDomainContactPrivacy

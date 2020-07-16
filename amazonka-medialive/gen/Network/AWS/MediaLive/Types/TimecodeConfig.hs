@@ -21,7 +21,7 @@ import Network.AWS.Lens
 import Network.AWS.MediaLive.Types.TimecodeConfigSource
 import Network.AWS.Prelude
 
--- | Placeholder documentation for TimecodeConfig
+-- | Timecode Config
 --
 -- /See:/ 'timecodeConfig' smart constructor.
 data TimecodeConfig = TimecodeConfig'{_tcSyncThreshold

@@ -26,8 +26,23 @@ module Network.AWS.MediaPackage.Types
     -- * AdMarkers
     , AdMarkers (..)
 
+    -- * AdTriggersElement
+    , AdTriggersElement (..)
+
+    -- * AdsOnDeliveryRestrictions
+    , AdsOnDeliveryRestrictions (..)
+
     -- * EncryptionMethod
     , EncryptionMethod (..)
+
+    -- * ManifestLayout
+    , ManifestLayout (..)
+
+    -- * Origination
+    , Origination (..)
+
+    -- * PeriodTriggersElement
+    , PeriodTriggersElement (..)
 
     -- * PlaylistType
     , PlaylistType (..)
@@ -35,8 +50,20 @@ module Network.AWS.MediaPackage.Types
     -- * Profile
     , Profile (..)
 
+    -- * SegmentTemplateFormat
+    , SegmentTemplateFormat (..)
+
     -- * StreamOrder
     , StreamOrder (..)
+
+    -- * TaskStatus
+    , TaskStatus (..)
+
+    -- * Authorization
+    , Authorization
+    , authorization
+    , aSecretsRoleARN
+    , aCdnIdentifierSecret
 
     -- * Channel
     , Channel
@@ -45,6 +72,7 @@ module Network.AWS.MediaPackage.Types
     , cARN
     , cId
     , cDescription
+    , cTags
 
     -- * CmafEncryption
     , CmafEncryption
@@ -79,14 +107,32 @@ module Network.AWS.MediaPackage.Types
     -- * DashPackage
     , DashPackage
     , dashPackage
+    , dpAdsOnDeliveryRestrictions
     , dpMinBufferTimeSeconds
+    , dpSegmentTemplateFormat
     , dpProfile
     , dpSegmentDurationSeconds
     , dpStreamSelection
     , dpEncryption
     , dpMinUpdatePeriodSeconds
+    , dpManifestLayout
     , dpSuggestedPresentationDelaySeconds
     , dpManifestWindowSeconds
+    , dpAdTriggers
+    , dpPeriodTriggers
+
+    -- * HarvestJob
+    , HarvestJob
+    , harvestJob
+    , hjStatus
+    , hjOriginEndpointId
+    , hjStartTime
+    , hjARN
+    , hjCreatedAt
+    , hjChannelId
+    , hjS3Destination
+    , hjEndTime
+    , hjId
 
     -- * HlsEncryption
     , HlsEncryption
@@ -117,17 +163,20 @@ module Network.AWS.MediaPackage.Types
     -- * HlsManifestCreateOrUpdateParameters
     , HlsManifestCreateOrUpdateParameters
     , hlsManifestCreateOrUpdateParameters
+    , hmcoupAdsOnDeliveryRestrictions
     , hmcoupManifestName
     , hmcoupPlaylistType
     , hmcoupProgramDateTimeIntervalSeconds
     , hmcoupAdMarkers
     , hmcoupIncludeIframeOnlyStream
+    , hmcoupAdTriggers
     , hmcoupPlaylistWindowSeconds
     , hmcoupId
 
     -- * HlsPackage
     , HlsPackage
     , hlsPackage
+    , hpAdsOnDeliveryRestrictions
     , hpUseAudioRenditionGroup
     , hpPlaylistType
     , hpSegmentDurationSeconds
@@ -136,6 +185,7 @@ module Network.AWS.MediaPackage.Types
     , hpAdMarkers
     , hpEncryption
     , hpIncludeIframeOnlyStream
+    , hpAdTriggers
     , hpPlaylistWindowSeconds
 
     -- * IngestEndpoint
@@ -144,6 +194,7 @@ module Network.AWS.MediaPackage.Types
     , ieURL
     , ieUsername
     , iePassword
+    , ieId
 
     -- * MssEncryption
     , MssEncryption
@@ -166,6 +217,7 @@ module Network.AWS.MediaPackage.Types
     , oeARN
     , oeManifestName
     , oeURL
+    , oeAuthorization
     , oeChannelId
     , oeStartoverWindowSeconds
     , oeDashPackage
@@ -174,14 +226,24 @@ module Network.AWS.MediaPackage.Types
     , oeTimeDelaySeconds
     , oeCmafPackage
     , oeDescription
+    , oeTags
+    , oeOrigination
+
+    -- * S3Destination
+    , S3Destination
+    , s3Destination
+    , sdManifestKey
+    , sdBucketName
+    , sdRoleARN
 
     -- * SpekeKeyProvider
     , SpekeKeyProvider
     , spekeKeyProvider
-    , skpURL
+    , skpCertificateARN
     , skpResourceId
-    , skpRoleARN
     , skpSystemIds
+    , skpURL
+    , skpRoleARN
 
     -- * StreamSelection
     , StreamSelection
@@ -195,16 +257,25 @@ import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Sign.V4
 import Network.AWS.MediaPackage.Types.AdMarkers
+import Network.AWS.MediaPackage.Types.AdTriggersElement
+import Network.AWS.MediaPackage.Types.AdsOnDeliveryRestrictions
 import Network.AWS.MediaPackage.Types.EncryptionMethod
+import Network.AWS.MediaPackage.Types.ManifestLayout
+import Network.AWS.MediaPackage.Types.Origination
+import Network.AWS.MediaPackage.Types.PeriodTriggersElement
 import Network.AWS.MediaPackage.Types.PlaylistType
 import Network.AWS.MediaPackage.Types.Profile
+import Network.AWS.MediaPackage.Types.SegmentTemplateFormat
 import Network.AWS.MediaPackage.Types.StreamOrder
+import Network.AWS.MediaPackage.Types.TaskStatus
+import Network.AWS.MediaPackage.Types.Authorization
 import Network.AWS.MediaPackage.Types.Channel
 import Network.AWS.MediaPackage.Types.CmafEncryption
 import Network.AWS.MediaPackage.Types.CmafPackage
 import Network.AWS.MediaPackage.Types.CmafPackageCreateOrUpdateParameters
 import Network.AWS.MediaPackage.Types.DashEncryption
 import Network.AWS.MediaPackage.Types.DashPackage
+import Network.AWS.MediaPackage.Types.HarvestJob
 import Network.AWS.MediaPackage.Types.HlsEncryption
 import Network.AWS.MediaPackage.Types.HlsIngest
 import Network.AWS.MediaPackage.Types.HlsManifest
@@ -214,6 +285,7 @@ import Network.AWS.MediaPackage.Types.IngestEndpoint
 import Network.AWS.MediaPackage.Types.MssEncryption
 import Network.AWS.MediaPackage.Types.MssPackage
 import Network.AWS.MediaPackage.Types.OriginEndpoint
+import Network.AWS.MediaPackage.Types.S3Destination
 import Network.AWS.MediaPackage.Types.SpekeKeyProvider
 import Network.AWS.MediaPackage.Types.StreamSelection
 
@@ -240,6 +312,11 @@ mediaPackage
             = Just "throttling_exception"
           | has (hasCode "Throttling" . hasStatus 400) e =
             Just "throttling"
+          | has
+              (hasCode "ProvisionedThroughputExceededException" .
+                 hasStatus 400)
+              e
+            = Just "throughput_exceeded"
           | has (hasStatus 504) e = Just "gateway_timeout"
           | has
               (hasCode "RequestThrottledException" . hasStatus 400)

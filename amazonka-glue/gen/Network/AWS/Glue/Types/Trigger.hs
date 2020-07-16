@@ -29,8 +29,9 @@ import Network.AWS.Prelude
 --
 --
 -- /See:/ 'trigger' smart constructor.
-data Trigger = Trigger'{_triState ::
-                        !(Maybe TriggerState),
+data Trigger = Trigger'{_triWorkflowName ::
+                        !(Maybe Text),
+                        _triState :: !(Maybe TriggerState),
                         _triActions :: !(Maybe [Action]),
                         _triSchedule :: !(Maybe Text),
                         _triPredicate :: !(Maybe Predicate),
@@ -43,15 +44,17 @@ data Trigger = Trigger'{_triState ::
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
+-- * 'triWorkflowName' - The name of the workflow associated with the trigger.
+--
 -- * 'triState' - The current state of the trigger.
 --
 -- * 'triActions' - The actions initiated by this trigger.
 --
--- * 'triSchedule' - A @cron@ expression used to specify the schedule (see <http://docs.aws.amazon.com/glue/latest/dg/monitor-data-warehouse-schedule.html Time-Based Schedules for Jobs and Crawlers> . For example, to run something every day at 12:15 UTC, you would specify: @cron(15 12 * * ? *)@ .
+-- * 'triSchedule' - A @cron@ expression used to specify the schedule (see <https://docs.aws.amazon.com/glue/latest/dg/monitor-data-warehouse-schedule.html Time-Based Schedules for Jobs and Crawlers> . For example, to run something every day at 12:15 UTC, you would specify: @cron(15 12 * * ? *)@ .
 --
 -- * 'triPredicate' - The predicate of this trigger, which defines when it will fire.
 --
--- * 'triName' - Name of the trigger.
+-- * 'triName' - The name of the trigger.
 --
 -- * 'triId' - Reserved for future use.
 --
@@ -61,11 +64,15 @@ data Trigger = Trigger'{_triState ::
 trigger
     :: Trigger
 trigger
-  = Trigger'{_triState = Nothing,
-             _triActions = Nothing, _triSchedule = Nothing,
-             _triPredicate = Nothing, _triName = Nothing,
-             _triId = Nothing, _triType = Nothing,
-             _triDescription = Nothing}
+  = Trigger'{_triWorkflowName = Nothing,
+             _triState = Nothing, _triActions = Nothing,
+             _triSchedule = Nothing, _triPredicate = Nothing,
+             _triName = Nothing, _triId = Nothing,
+             _triType = Nothing, _triDescription = Nothing}
+
+-- | The name of the workflow associated with the trigger.
+triWorkflowName :: Lens' Trigger (Maybe Text)
+triWorkflowName = lens _triWorkflowName (\ s a -> s{_triWorkflowName = a})
 
 -- | The current state of the trigger.
 triState :: Lens' Trigger (Maybe TriggerState)
@@ -75,7 +82,7 @@ triState = lens _triState (\ s a -> s{_triState = a})
 triActions :: Lens' Trigger [Action]
 triActions = lens _triActions (\ s a -> s{_triActions = a}) . _Default . _Coerce
 
--- | A @cron@ expression used to specify the schedule (see <http://docs.aws.amazon.com/glue/latest/dg/monitor-data-warehouse-schedule.html Time-Based Schedules for Jobs and Crawlers> . For example, to run something every day at 12:15 UTC, you would specify: @cron(15 12 * * ? *)@ .
+-- | A @cron@ expression used to specify the schedule (see <https://docs.aws.amazon.com/glue/latest/dg/monitor-data-warehouse-schedule.html Time-Based Schedules for Jobs and Crawlers> . For example, to run something every day at 12:15 UTC, you would specify: @cron(15 12 * * ? *)@ .
 triSchedule :: Lens' Trigger (Maybe Text)
 triSchedule = lens _triSchedule (\ s a -> s{_triSchedule = a})
 
@@ -83,7 +90,7 @@ triSchedule = lens _triSchedule (\ s a -> s{_triSchedule = a})
 triPredicate :: Lens' Trigger (Maybe Predicate)
 triPredicate = lens _triPredicate (\ s a -> s{_triPredicate = a})
 
--- | Name of the trigger.
+-- | The name of the trigger.
 triName :: Lens' Trigger (Maybe Text)
 triName = lens _triName (\ s a -> s{_triName = a})
 
@@ -104,8 +111,9 @@ instance FromJSON Trigger where
           = withObject "Trigger"
               (\ x ->
                  Trigger' <$>
-                   (x .:? "State") <*> (x .:? "Actions" .!= mempty) <*>
-                     (x .:? "Schedule")
+                   (x .:? "WorkflowName") <*> (x .:? "State") <*>
+                     (x .:? "Actions" .!= mempty)
+                     <*> (x .:? "Schedule")
                      <*> (x .:? "Predicate")
                      <*> (x .:? "Name")
                      <*> (x .:? "Id")

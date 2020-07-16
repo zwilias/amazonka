@@ -77,11 +77,11 @@ data DescribeEngineDefaultParameters = DescribeEngineDefaultParameters'{_dedpFil
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dedpFilters' - This parameter is not currently supported.
+-- * 'dedpFilters' - This parameter isn't currently supported.
 --
 -- * 'dedpMarker' - An optional pagination token provided by a previous @DescribeEngineDefaultParameters@ request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by @MaxRecords@ . 
 --
--- * 'dedpMaxRecords' - The maximum number of records to include in the response. If more records exist than the specified @MaxRecords@ value, a pagination token called a marker is included in the response so that the remaining results can be retrieved.  Default: 100 Constraints: Minimum 20, maximum 100.
+-- * 'dedpMaxRecords' - The maximum number of records to include in the response. If more records exist than the specified @MaxRecords@ value, a pagination token called a marker is included in the response so you can retrieve the remaining results.  Default: 100 Constraints: Minimum 20, maximum 100.
 --
 -- * 'dedpDBParameterGroupFamily' - The name of the DB parameter group family.
 describeEngineDefaultParameters
@@ -96,7 +96,7 @@ describeEngineDefaultParameters
                                      _dedpDBParameterGroupFamily =
                                        pDBParameterGroupFamily_}
 
--- | This parameter is not currently supported.
+-- | This parameter isn't currently supported.
 dedpFilters :: Lens' DescribeEngineDefaultParameters [Filter]
 dedpFilters = lens _dedpFilters (\ s a -> s{_dedpFilters = a}) . _Default . _Coerce
 
@@ -104,7 +104,7 @@ dedpFilters = lens _dedpFilters (\ s a -> s{_dedpFilters = a}) . _Default . _Coe
 dedpMarker :: Lens' DescribeEngineDefaultParameters (Maybe Text)
 dedpMarker = lens _dedpMarker (\ s a -> s{_dedpMarker = a})
 
--- | The maximum number of records to include in the response. If more records exist than the specified @MaxRecords@ value, a pagination token called a marker is included in the response so that the remaining results can be retrieved.  Default: 100 Constraints: Minimum 20, maximum 100.
+-- | The maximum number of records to include in the response. If more records exist than the specified @MaxRecords@ value, a pagination token called a marker is included in the response so you can retrieve the remaining results.  Default: 100 Constraints: Minimum 20, maximum 100.
 dedpMaxRecords :: Lens' DescribeEngineDefaultParameters (Maybe Int)
 dedpMaxRecords = lens _dedpMaxRecords (\ s a -> s{_dedpMaxRecords = a})
 

@@ -21,6 +21,8 @@
 -- Sets the logging options.
 --
 --
+-- NOTE: use of this command is not recommended. Use @SetV2LoggingOptions@ instead.
+--
 module Network.AWS.IoT.SetLoggingOptions
     (
     -- * Creating a Request

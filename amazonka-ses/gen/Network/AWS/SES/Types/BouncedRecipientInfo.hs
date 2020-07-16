@@ -25,7 +25,7 @@ import Network.AWS.SES.Types.RecipientDsnFields
 -- | Recipient-related information to include in the Delivery Status Notification (DSN) when an email that Amazon SES receives on your behalf bounces.
 --
 --
--- For information about receiving email through Amazon SES, see the <http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email.html Amazon SES Developer Guide> .
+-- For information about receiving email through Amazon SES, see the <https://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email.html Amazon SES Developer Guide> .
 --
 --
 -- /See:/ 'bouncedRecipientInfo' smart constructor.
@@ -46,7 +46,7 @@ data BouncedRecipientInfo = BouncedRecipientInfo'{_briBounceType
 --
 -- * 'briRecipientDsnFields' - Recipient-related DSN fields, most of which would normally be filled in automatically when provided with a @BounceType@ . You must provide either this parameter or @BounceType@ .
 --
--- * 'briRecipientARN' - This parameter is used only for sending authorization. It is the ARN of the identity that is associated with the sending authorization policy that permits you to receive email for the recipient of the bounced email. For more information about sending authorization, see the <http://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html Amazon SES Developer Guide> .
+-- * 'briRecipientARN' - This parameter is used only for sending authorization. It is the ARN of the identity that is associated with the sending authorization policy that permits you to receive email for the recipient of the bounced email. For more information about sending authorization, see the <https://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html Amazon SES Developer Guide> .
 --
 -- * 'briRecipient' - The email address of the recipient of the bounced email.
 bouncedRecipientInfo
@@ -66,7 +66,7 @@ briBounceType = lens _briBounceType (\ s a -> s{_briBounceType = a})
 briRecipientDsnFields :: Lens' BouncedRecipientInfo (Maybe RecipientDsnFields)
 briRecipientDsnFields = lens _briRecipientDsnFields (\ s a -> s{_briRecipientDsnFields = a})
 
--- | This parameter is used only for sending authorization. It is the ARN of the identity that is associated with the sending authorization policy that permits you to receive email for the recipient of the bounced email. For more information about sending authorization, see the <http://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html Amazon SES Developer Guide> .
+-- | This parameter is used only for sending authorization. It is the ARN of the identity that is associated with the sending authorization policy that permits you to receive email for the recipient of the bounced email. For more information about sending authorization, see the <https://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html Amazon SES Developer Guide> .
 briRecipientARN :: Lens' BouncedRecipientInfo (Maybe Text)
 briRecipientARN = lens _briRecipientARN (\ s a -> s{_briRecipientARN = a})
 

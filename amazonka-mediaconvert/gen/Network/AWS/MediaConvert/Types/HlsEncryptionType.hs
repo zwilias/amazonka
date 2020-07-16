@@ -19,8 +19,8 @@
 module Network.AWS.MediaConvert.Types.HlsEncryptionType (
   HlsEncryptionType (
     ..
-    , AES128
-    , SampleAES
+    , HETAES128
+    , HETSampleAES
     )
   ) where
 
@@ -32,15 +32,15 @@ data HlsEncryptionType = HlsEncryptionType' (CI Text)
                            deriving (Eq, Ord, Read, Show, Data, Typeable,
                                      Generic)
 
-pattern AES128 :: HlsEncryptionType
-pattern AES128 = HlsEncryptionType' "AES128"
+pattern HETAES128 :: HlsEncryptionType
+pattern HETAES128 = HlsEncryptionType' "AES128"
 
-pattern SampleAES :: HlsEncryptionType
-pattern SampleAES = HlsEncryptionType' "SAMPLE_AES"
+pattern HETSampleAES :: HlsEncryptionType
+pattern HETSampleAES = HlsEncryptionType' "SAMPLE_AES"
 
 {-# COMPLETE
-  AES128,
-  SampleAES,
+  HETAES128,
+  HETSampleAES,
   HlsEncryptionType' #-}
 
 instance FromText HlsEncryptionType where
@@ -55,20 +55,20 @@ instance ToText HlsEncryptionType where
 --   fromEnum is a partial function, and will error on values unknown at generation time.
 instance Enum HlsEncryptionType where
     toEnum i = case i of
-        0 -> AES128
-        1 -> SampleAES
+        0 -> HETAES128
+        1 -> HETSampleAES
         _ -> (error . showText) $ "Unknown index for HlsEncryptionType: " <> toText i
     fromEnum x = case x of
-        AES128 -> 0
-        SampleAES -> 1
+        HETAES128 -> 0
+        HETSampleAES -> 1
         HlsEncryptionType' name -> (error . showText) $ "Unknown HlsEncryptionType: " <> original name
 
 -- | Represents the bounds of /known/ $HlsEncryptionType.
 --   AWS may have added more since the source was generated.
 --   This instance exists only for backward compatibility.
 instance Bounded HlsEncryptionType where
-    minBound = AES128
-    maxBound = SampleAES
+    minBound = HETAES128
+    maxBound = HETSampleAES
 
 instance Hashable     HlsEncryptionType
 instance NFData       HlsEncryptionType

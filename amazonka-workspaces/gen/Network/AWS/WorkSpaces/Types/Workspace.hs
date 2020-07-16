@@ -23,7 +23,7 @@ import Network.AWS.WorkSpaces.Types.ModificationState
 import Network.AWS.WorkSpaces.Types.WorkspaceProperties
 import Network.AWS.WorkSpaces.Types.WorkspaceState
 
--- | Information about a WorkSpace.
+-- | Describes a WorkSpace.
 --
 --
 --
@@ -70,9 +70,9 @@ data Workspace = Workspace'{_wDirectoryId ::
 --
 -- * 'wRootVolumeEncryptionEnabled' - Indicates whether the data stored on the root volume is encrypted.
 --
--- * 'wErrorCode' - If the WorkSpace could not be created, contains the error code.
+-- * 'wErrorCode' - The error code that is returned if the WorkSpace cannot be created.
 --
--- * 'wVolumeEncryptionKey' - The KMS key used to encrypt data stored on your WorkSpace.
+-- * 'wVolumeEncryptionKey' - The symmetric AWS KMS customer master key (CMK) used to encrypt data stored on your WorkSpace. Amazon WorkSpaces does not support asymmetric CMKs.
 --
 -- * 'wComputerName' - The name of the WorkSpace, as seen by the operating system.
 --
@@ -80,7 +80,7 @@ data Workspace = Workspace'{_wDirectoryId ::
 --
 -- * 'wUserVolumeEncryptionEnabled' - Indicates whether the data stored on the user volume is encrypted.
 --
--- * 'wErrorMessage' - If the WorkSpace could not be created, contains a textual error message that describes the failure.
+-- * 'wErrorMessage' - The text of the error message that is returned if the WorkSpace cannot be created.
 workspace
     :: Workspace
 workspace
@@ -132,11 +132,11 @@ wWorkspaceProperties = lens _wWorkspaceProperties (\ s a -> s{_wWorkspacePropert
 wRootVolumeEncryptionEnabled :: Lens' Workspace (Maybe Bool)
 wRootVolumeEncryptionEnabled = lens _wRootVolumeEncryptionEnabled (\ s a -> s{_wRootVolumeEncryptionEnabled = a})
 
--- | If the WorkSpace could not be created, contains the error code.
+-- | The error code that is returned if the WorkSpace cannot be created.
 wErrorCode :: Lens' Workspace (Maybe Text)
 wErrorCode = lens _wErrorCode (\ s a -> s{_wErrorCode = a})
 
--- | The KMS key used to encrypt data stored on your WorkSpace.
+-- | The symmetric AWS KMS customer master key (CMK) used to encrypt data stored on your WorkSpace. Amazon WorkSpaces does not support asymmetric CMKs.
 wVolumeEncryptionKey :: Lens' Workspace (Maybe Text)
 wVolumeEncryptionKey = lens _wVolumeEncryptionKey (\ s a -> s{_wVolumeEncryptionKey = a})
 
@@ -152,7 +152,7 @@ wWorkspaceId = lens _wWorkspaceId (\ s a -> s{_wWorkspaceId = a})
 wUserVolumeEncryptionEnabled :: Lens' Workspace (Maybe Bool)
 wUserVolumeEncryptionEnabled = lens _wUserVolumeEncryptionEnabled (\ s a -> s{_wUserVolumeEncryptionEnabled = a})
 
--- | If the WorkSpace could not be created, contains a textual error message that describes the failure.
+-- | The text of the error message that is returned if the WorkSpace cannot be created.
 wErrorMessage :: Lens' Workspace (Maybe Text)
 wErrorMessage = lens _wErrorMessage (\ s a -> s{_wErrorMessage = a})
 

@@ -18,7 +18,9 @@
 module Network.AWS.MediaConvert.Types.HlsGroupSettings where
 
 import Network.AWS.Lens
+import Network.AWS.MediaConvert.Types.DestinationSettings
 import Network.AWS.MediaConvert.Types.HlsAdMarkers
+import Network.AWS.MediaConvert.Types.HlsAdditionalManifest
 import Network.AWS.MediaConvert.Types.HlsCaptionLanguageMapping
 import Network.AWS.MediaConvert.Types.HlsCaptionLanguageSetting
 import Network.AWS.MediaConvert.Types.HlsClientCache
@@ -44,21 +46,27 @@ data HlsGroupSettings = HlsGroupSettings'{_hgsDirectoryStructure
                                           _hgsDestination :: !(Maybe Text),
                                           _hgsTimedMetadataId3Period ::
                                           !(Maybe Int),
-                                          _hgsMinSegmentLength :: !(Maybe Int),
+                                          _hgsAdditionalManifests ::
+                                          !(Maybe [HlsAdditionalManifest]),
+                                          _hgsMinSegmentLength :: !(Maybe Nat),
                                           _hgsProgramDateTime ::
                                           !(Maybe HlsProgramDateTime),
                                           _hgsProgramDateTimePeriod ::
-                                          !(Maybe Int),
+                                          !(Maybe Nat),
                                           _hgsCodecSpecification ::
                                           !(Maybe HlsCodecSpecification),
                                           _hgsCaptionLanguageMappings ::
                                           !(Maybe [HlsCaptionLanguageMapping]),
                                           _hgsBaseURL :: !(Maybe Text),
+                                          _hgsDestinationSettings ::
+                                          !(Maybe DestinationSettings),
+                                          _hgsMinFinalSegmentLength ::
+                                          !(Maybe Double),
                                           _hgsAdMarkers ::
                                           !(Maybe [HlsAdMarkers]),
                                           _hgsEncryption ::
                                           !(Maybe HlsEncryptionSettings),
-                                          _hgsSegmentLength :: !(Maybe Int),
+                                          _hgsSegmentLength :: !(Maybe Nat),
                                           _hgsTimedMetadataId3Frame ::
                                           !(Maybe HlsTimedMetadataId3Frame),
                                           _hgsOutputSelection ::
@@ -66,7 +74,7 @@ data HlsGroupSettings = HlsGroupSettings'{_hgsDirectoryStructure
                                           _hgsCaptionLanguageSetting ::
                                           !(Maybe HlsCaptionLanguageSetting),
                                           _hgsSegmentsPerSubdirectory ::
-                                          !(Maybe Int),
+                                          !(Maybe Nat),
                                           _hgsManifestDurationFormat ::
                                           !(Maybe HlsManifestDurationFormat),
                                           _hgsClientCache ::
@@ -83,49 +91,55 @@ data HlsGroupSettings = HlsGroupSettings'{_hgsDirectoryStructure
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'hgsDirectoryStructure' - Undocumented member.
+-- * 'hgsDirectoryStructure' - Indicates whether segments should be placed in subdirectories.
 --
--- * 'hgsSegmentControl' - Undocumented member.
+-- * 'hgsSegmentControl' - When set to SINGLE_FILE, emits program as a single media resource (.ts) file, uses #EXT-X-BYTERANGE tags to index segment for playback.
 --
 -- * 'hgsDestination' - Use Destination (Destination) to specify the S3 output location and the output filename base. Destination accepts format identifiers. If you do not specify the base filename in the URI, the service will use the filename of the input file. If your job has multiple inputs, the service uses the filename of the first input file.
 --
 -- * 'hgsTimedMetadataId3Period' - Timed Metadata interval in seconds.
 --
+-- * 'hgsAdditionalManifests' - By default, the service creates one top-level .m3u8 HLS manifest for each HLS output group in your job. This default manifest references every output in the output group. To create additional top-level manifests that reference a subset of the outputs in the output group, specify a list of them here.
+--
 -- * 'hgsMinSegmentLength' - When set, Minimum Segment Size is enforced by looking ahead and back within the specified range for a nearby avail and extending the segment size if needed.
 --
--- * 'hgsProgramDateTime' - Undocumented member.
+-- * 'hgsProgramDateTime' - Includes or excludes EXT-X-PROGRAM-DATE-TIME tag in .m3u8 manifest files. The value is calculated as follows: either the program date and time are initialized using the input timecode source, or the time is initialized using the input timecode source and the date is initialized using the timestamp_offset.
 --
 -- * 'hgsProgramDateTimePeriod' - Period of insertion of EXT-X-PROGRAM-DATE-TIME entry, in seconds.
 --
--- * 'hgsCodecSpecification' - Undocumented member.
+-- * 'hgsCodecSpecification' - Specification to use (RFC-6381 or the default RFC-4281) during m3u8 playlist generation.
 --
 -- * 'hgsCaptionLanguageMappings' - Language to be used on Caption outputs
 --
 -- * 'hgsBaseURL' - A partial URI prefix that will be prepended to each output in the media .m3u8 file. Can be used if base manifest is delivered from a different URL than the main .m3u8 file.
 --
--- * 'hgsAdMarkers' - Choose one or more ad marker types to pass SCTE35 signals through to this group of Apple HLS outputs.
+-- * 'hgsDestinationSettings' - Settings associated with the destination. Will vary based on the type of destination
+--
+-- * 'hgsMinFinalSegmentLength' - Keep this setting at the default value of 0, unless you are troubleshooting a problem with how devices play back the end of your video asset. If you know that player devices are hanging on the final segment of your video because the length of your final segment is too short, use this setting to specify a minimum final segment length, in seconds. Choose a value that is greater than or equal to 1 and less than your segment length. When you specify a value for this setting, the encoder will combine any final segment that is shorter than the length that you specify with the previous segment. For example, your segment length is 3 seconds and your final segment is .5 seconds without a minimum final segment length; when you set the minimum final segment length to 1, your final segment is 3.5 seconds.
+--
+-- * 'hgsAdMarkers' - Choose one or more ad marker types to decorate your Apple HLS manifest. This setting does not determine whether SCTE-35 markers appear in the outputs themselves.
 --
 -- * 'hgsEncryption' - DRM settings.
 --
 -- * 'hgsSegmentLength' - Length of MPEG-2 Transport Stream segments to create (in seconds). Note that segments will end on the next keyframe after this number of seconds, so actual segment length may be longer.
 --
--- * 'hgsTimedMetadataId3Frame' - Undocumented member.
+-- * 'hgsTimedMetadataId3Frame' - Indicates ID3 frame that has the timecode.
 --
--- * 'hgsOutputSelection' - Undocumented member.
+-- * 'hgsOutputSelection' - Indicates whether the .m3u8 manifest file should be generated for this HLS output group.
 --
--- * 'hgsCaptionLanguageSetting' - Undocumented member.
+-- * 'hgsCaptionLanguageSetting' - Applies only to 608 Embedded output captions. Insert: Include CLOSED-CAPTIONS lines in the manifest. Specify at least one language in the CC1 Language Code field. One CLOSED-CAPTION line is added for each Language Code you specify. Make sure to specify the languages in the order in which they appear in the original source (if the source is embedded format) or the order of the caption selectors (if the source is other than embedded). Otherwise, languages in the manifest will not match up properly with the output captions. None: Include CLOSED-CAPTIONS=NONE line in the manifest. Omit: Omit any CLOSED-CAPTIONS line from the manifest.
 --
 -- * 'hgsSegmentsPerSubdirectory' - Number of segments to write to a subdirectory before starting a new one. directoryStructure must be SINGLE_DIRECTORY for this setting to have an effect.
 --
--- * 'hgsManifestDurationFormat' - Undocumented member.
+-- * 'hgsManifestDurationFormat' - Indicates whether the output manifest should use floating point values for segment duration.
 --
--- * 'hgsClientCache' - Undocumented member.
+-- * 'hgsClientCache' - When set to ENABLED, sets #EXT-X-ALLOW-CACHE:no tag, which prevents client from saving media segments for later replay.
 --
 -- * 'hgsTimestampDeltaMilliseconds' - Provides an extra millisecond delta offset to fine tune the timestamps.
 --
--- * 'hgsStreamInfResolution' - Undocumented member.
+-- * 'hgsStreamInfResolution' - Include or exclude RESOLUTION attribute for video in EXT-X-STREAM-INF tag of variant manifest.
 --
--- * 'hgsManifestCompression' - Undocumented member.
+-- * 'hgsManifestCompression' - When set to GZIP, compresses HLS playlist.
 hlsGroupSettings
     :: HlsGroupSettings
 hlsGroupSettings
@@ -133,13 +147,16 @@ hlsGroupSettings
                       _hgsSegmentControl = Nothing,
                       _hgsDestination = Nothing,
                       _hgsTimedMetadataId3Period = Nothing,
+                      _hgsAdditionalManifests = Nothing,
                       _hgsMinSegmentLength = Nothing,
                       _hgsProgramDateTime = Nothing,
                       _hgsProgramDateTimePeriod = Nothing,
                       _hgsCodecSpecification = Nothing,
                       _hgsCaptionLanguageMappings = Nothing,
-                      _hgsBaseURL = Nothing, _hgsAdMarkers = Nothing,
-                      _hgsEncryption = Nothing,
+                      _hgsBaseURL = Nothing,
+                      _hgsDestinationSettings = Nothing,
+                      _hgsMinFinalSegmentLength = Nothing,
+                      _hgsAdMarkers = Nothing, _hgsEncryption = Nothing,
                       _hgsSegmentLength = Nothing,
                       _hgsTimedMetadataId3Frame = Nothing,
                       _hgsOutputSelection = Nothing,
@@ -151,11 +168,11 @@ hlsGroupSettings
                       _hgsStreamInfResolution = Nothing,
                       _hgsManifestCompression = Nothing}
 
--- | Undocumented member.
+-- | Indicates whether segments should be placed in subdirectories.
 hgsDirectoryStructure :: Lens' HlsGroupSettings (Maybe HlsDirectoryStructure)
 hgsDirectoryStructure = lens _hgsDirectoryStructure (\ s a -> s{_hgsDirectoryStructure = a})
 
--- | Undocumented member.
+-- | When set to SINGLE_FILE, emits program as a single media resource (.ts) file, uses #EXT-X-BYTERANGE tags to index segment for playback.
 hgsSegmentControl :: Lens' HlsGroupSettings (Maybe HlsSegmentControl)
 hgsSegmentControl = lens _hgsSegmentControl (\ s a -> s{_hgsSegmentControl = a})
 
@@ -167,19 +184,23 @@ hgsDestination = lens _hgsDestination (\ s a -> s{_hgsDestination = a})
 hgsTimedMetadataId3Period :: Lens' HlsGroupSettings (Maybe Int)
 hgsTimedMetadataId3Period = lens _hgsTimedMetadataId3Period (\ s a -> s{_hgsTimedMetadataId3Period = a})
 
--- | When set, Minimum Segment Size is enforced by looking ahead and back within the specified range for a nearby avail and extending the segment size if needed.
-hgsMinSegmentLength :: Lens' HlsGroupSettings (Maybe Int)
-hgsMinSegmentLength = lens _hgsMinSegmentLength (\ s a -> s{_hgsMinSegmentLength = a})
+-- | By default, the service creates one top-level .m3u8 HLS manifest for each HLS output group in your job. This default manifest references every output in the output group. To create additional top-level manifests that reference a subset of the outputs in the output group, specify a list of them here.
+hgsAdditionalManifests :: Lens' HlsGroupSettings [HlsAdditionalManifest]
+hgsAdditionalManifests = lens _hgsAdditionalManifests (\ s a -> s{_hgsAdditionalManifests = a}) . _Default . _Coerce
 
--- | Undocumented member.
+-- | When set, Minimum Segment Size is enforced by looking ahead and back within the specified range for a nearby avail and extending the segment size if needed.
+hgsMinSegmentLength :: Lens' HlsGroupSettings (Maybe Natural)
+hgsMinSegmentLength = lens _hgsMinSegmentLength (\ s a -> s{_hgsMinSegmentLength = a}) . mapping _Nat
+
+-- | Includes or excludes EXT-X-PROGRAM-DATE-TIME tag in .m3u8 manifest files. The value is calculated as follows: either the program date and time are initialized using the input timecode source, or the time is initialized using the input timecode source and the date is initialized using the timestamp_offset.
 hgsProgramDateTime :: Lens' HlsGroupSettings (Maybe HlsProgramDateTime)
 hgsProgramDateTime = lens _hgsProgramDateTime (\ s a -> s{_hgsProgramDateTime = a})
 
 -- | Period of insertion of EXT-X-PROGRAM-DATE-TIME entry, in seconds.
-hgsProgramDateTimePeriod :: Lens' HlsGroupSettings (Maybe Int)
-hgsProgramDateTimePeriod = lens _hgsProgramDateTimePeriod (\ s a -> s{_hgsProgramDateTimePeriod = a})
+hgsProgramDateTimePeriod :: Lens' HlsGroupSettings (Maybe Natural)
+hgsProgramDateTimePeriod = lens _hgsProgramDateTimePeriod (\ s a -> s{_hgsProgramDateTimePeriod = a}) . mapping _Nat
 
--- | Undocumented member.
+-- | Specification to use (RFC-6381 or the default RFC-4281) during m3u8 playlist generation.
 hgsCodecSpecification :: Lens' HlsGroupSettings (Maybe HlsCodecSpecification)
 hgsCodecSpecification = lens _hgsCodecSpecification (\ s a -> s{_hgsCodecSpecification = a})
 
@@ -191,7 +212,15 @@ hgsCaptionLanguageMappings = lens _hgsCaptionLanguageMappings (\ s a -> s{_hgsCa
 hgsBaseURL :: Lens' HlsGroupSettings (Maybe Text)
 hgsBaseURL = lens _hgsBaseURL (\ s a -> s{_hgsBaseURL = a})
 
--- | Choose one or more ad marker types to pass SCTE35 signals through to this group of Apple HLS outputs.
+-- | Settings associated with the destination. Will vary based on the type of destination
+hgsDestinationSettings :: Lens' HlsGroupSettings (Maybe DestinationSettings)
+hgsDestinationSettings = lens _hgsDestinationSettings (\ s a -> s{_hgsDestinationSettings = a})
+
+-- | Keep this setting at the default value of 0, unless you are troubleshooting a problem with how devices play back the end of your video asset. If you know that player devices are hanging on the final segment of your video because the length of your final segment is too short, use this setting to specify a minimum final segment length, in seconds. Choose a value that is greater than or equal to 1 and less than your segment length. When you specify a value for this setting, the encoder will combine any final segment that is shorter than the length that you specify with the previous segment. For example, your segment length is 3 seconds and your final segment is .5 seconds without a minimum final segment length; when you set the minimum final segment length to 1, your final segment is 3.5 seconds.
+hgsMinFinalSegmentLength :: Lens' HlsGroupSettings (Maybe Double)
+hgsMinFinalSegmentLength = lens _hgsMinFinalSegmentLength (\ s a -> s{_hgsMinFinalSegmentLength = a})
+
+-- | Choose one or more ad marker types to decorate your Apple HLS manifest. This setting does not determine whether SCTE-35 markers appear in the outputs themselves.
 hgsAdMarkers :: Lens' HlsGroupSettings [HlsAdMarkers]
 hgsAdMarkers = lens _hgsAdMarkers (\ s a -> s{_hgsAdMarkers = a}) . _Default . _Coerce
 
@@ -200,30 +229,30 @@ hgsEncryption :: Lens' HlsGroupSettings (Maybe HlsEncryptionSettings)
 hgsEncryption = lens _hgsEncryption (\ s a -> s{_hgsEncryption = a})
 
 -- | Length of MPEG-2 Transport Stream segments to create (in seconds). Note that segments will end on the next keyframe after this number of seconds, so actual segment length may be longer.
-hgsSegmentLength :: Lens' HlsGroupSettings (Maybe Int)
-hgsSegmentLength = lens _hgsSegmentLength (\ s a -> s{_hgsSegmentLength = a})
+hgsSegmentLength :: Lens' HlsGroupSettings (Maybe Natural)
+hgsSegmentLength = lens _hgsSegmentLength (\ s a -> s{_hgsSegmentLength = a}) . mapping _Nat
 
--- | Undocumented member.
+-- | Indicates ID3 frame that has the timecode.
 hgsTimedMetadataId3Frame :: Lens' HlsGroupSettings (Maybe HlsTimedMetadataId3Frame)
 hgsTimedMetadataId3Frame = lens _hgsTimedMetadataId3Frame (\ s a -> s{_hgsTimedMetadataId3Frame = a})
 
--- | Undocumented member.
+-- | Indicates whether the .m3u8 manifest file should be generated for this HLS output group.
 hgsOutputSelection :: Lens' HlsGroupSettings (Maybe HlsOutputSelection)
 hgsOutputSelection = lens _hgsOutputSelection (\ s a -> s{_hgsOutputSelection = a})
 
--- | Undocumented member.
+-- | Applies only to 608 Embedded output captions. Insert: Include CLOSED-CAPTIONS lines in the manifest. Specify at least one language in the CC1 Language Code field. One CLOSED-CAPTION line is added for each Language Code you specify. Make sure to specify the languages in the order in which they appear in the original source (if the source is embedded format) or the order of the caption selectors (if the source is other than embedded). Otherwise, languages in the manifest will not match up properly with the output captions. None: Include CLOSED-CAPTIONS=NONE line in the manifest. Omit: Omit any CLOSED-CAPTIONS line from the manifest.
 hgsCaptionLanguageSetting :: Lens' HlsGroupSettings (Maybe HlsCaptionLanguageSetting)
 hgsCaptionLanguageSetting = lens _hgsCaptionLanguageSetting (\ s a -> s{_hgsCaptionLanguageSetting = a})
 
 -- | Number of segments to write to a subdirectory before starting a new one. directoryStructure must be SINGLE_DIRECTORY for this setting to have an effect.
-hgsSegmentsPerSubdirectory :: Lens' HlsGroupSettings (Maybe Int)
-hgsSegmentsPerSubdirectory = lens _hgsSegmentsPerSubdirectory (\ s a -> s{_hgsSegmentsPerSubdirectory = a})
+hgsSegmentsPerSubdirectory :: Lens' HlsGroupSettings (Maybe Natural)
+hgsSegmentsPerSubdirectory = lens _hgsSegmentsPerSubdirectory (\ s a -> s{_hgsSegmentsPerSubdirectory = a}) . mapping _Nat
 
--- | Undocumented member.
+-- | Indicates whether the output manifest should use floating point values for segment duration.
 hgsManifestDurationFormat :: Lens' HlsGroupSettings (Maybe HlsManifestDurationFormat)
 hgsManifestDurationFormat = lens _hgsManifestDurationFormat (\ s a -> s{_hgsManifestDurationFormat = a})
 
--- | Undocumented member.
+-- | When set to ENABLED, sets #EXT-X-ALLOW-CACHE:no tag, which prevents client from saving media segments for later replay.
 hgsClientCache :: Lens' HlsGroupSettings (Maybe HlsClientCache)
 hgsClientCache = lens _hgsClientCache (\ s a -> s{_hgsClientCache = a})
 
@@ -231,11 +260,11 @@ hgsClientCache = lens _hgsClientCache (\ s a -> s{_hgsClientCache = a})
 hgsTimestampDeltaMilliseconds :: Lens' HlsGroupSettings (Maybe Int)
 hgsTimestampDeltaMilliseconds = lens _hgsTimestampDeltaMilliseconds (\ s a -> s{_hgsTimestampDeltaMilliseconds = a})
 
--- | Undocumented member.
+-- | Include or exclude RESOLUTION attribute for video in EXT-X-STREAM-INF tag of variant manifest.
 hgsStreamInfResolution :: Lens' HlsGroupSettings (Maybe HlsStreamInfResolution)
 hgsStreamInfResolution = lens _hgsStreamInfResolution (\ s a -> s{_hgsStreamInfResolution = a})
 
--- | Undocumented member.
+-- | When set to GZIP, compresses HLS playlist.
 hgsManifestCompression :: Lens' HlsGroupSettings (Maybe HlsManifestCompression)
 hgsManifestCompression = lens _hgsManifestCompression (\ s a -> s{_hgsManifestCompression = a})
 
@@ -248,12 +277,15 @@ instance FromJSON HlsGroupSettings where
                      (x .:? "segmentControl")
                      <*> (x .:? "destination")
                      <*> (x .:? "timedMetadataId3Period")
+                     <*> (x .:? "additionalManifests" .!= mempty)
                      <*> (x .:? "minSegmentLength")
                      <*> (x .:? "programDateTime")
                      <*> (x .:? "programDateTimePeriod")
                      <*> (x .:? "codecSpecification")
                      <*> (x .:? "captionLanguageMappings" .!= mempty)
                      <*> (x .:? "baseUrl")
+                     <*> (x .:? "destinationSettings")
+                     <*> (x .:? "minFinalSegmentLength")
                      <*> (x .:? "adMarkers" .!= mempty)
                      <*> (x .:? "encryption")
                      <*> (x .:? "segmentLength")
@@ -281,6 +313,8 @@ instance ToJSON HlsGroupSettings where
                   ("destination" .=) <$> _hgsDestination,
                   ("timedMetadataId3Period" .=) <$>
                     _hgsTimedMetadataId3Period,
+                  ("additionalManifests" .=) <$>
+                    _hgsAdditionalManifests,
                   ("minSegmentLength" .=) <$> _hgsMinSegmentLength,
                   ("programDateTime" .=) <$> _hgsProgramDateTime,
                   ("programDateTimePeriod" .=) <$>
@@ -289,6 +323,10 @@ instance ToJSON HlsGroupSettings where
                   ("captionLanguageMappings" .=) <$>
                     _hgsCaptionLanguageMappings,
                   ("baseUrl" .=) <$> _hgsBaseURL,
+                  ("destinationSettings" .=) <$>
+                    _hgsDestinationSettings,
+                  ("minFinalSegmentLength" .=) <$>
+                    _hgsMinFinalSegmentLength,
                   ("adMarkers" .=) <$> _hgsAdMarkers,
                   ("encryption" .=) <$> _hgsEncryption,
                   ("segmentLength" .=) <$> _hgsSegmentLength,

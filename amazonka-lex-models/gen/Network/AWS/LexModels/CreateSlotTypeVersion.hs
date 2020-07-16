@@ -38,6 +38,8 @@ module Network.AWS.LexModels.CreateSlotTypeVersion
     , createSlotTypeVersionResponse
     , CreateSlotTypeVersionResponse
     -- * Response Lenses
+    , cstvrsParentSlotTypeSignature
+    , cstvrsSlotTypeConfigurations
     , cstvrsChecksum
     , cstvrsValueSelectionStrategy
     , cstvrsCreatedDate
@@ -93,14 +95,16 @@ instance AWSRequest CreateSlotTypeVersion where
           = receiveJSON
               (\ s h x ->
                  CreateSlotTypeVersionResponse' <$>
-                   (x .?> "checksum") <*>
-                     (x .?> "valueSelectionStrategy")
+                   (x .?> "parentSlotTypeSignature") <*>
+                     (x .?> "slotTypeConfigurations" .!@ mempty)
+                     <*> (x .?> "checksum")
+                     <*> (x .?> "valueSelectionStrategy")
                      <*> (x .?> "createdDate")
                      <*> (x .?> "name")
                      <*> (x .?> "version")
                      <*> (x .?> "lastUpdatedDate")
                      <*> (x .?> "description")
-                     <*> (x .?> "enumerationValues")
+                     <*> (x .?> "enumerationValues" .!@ mempty)
                      <*> (pure (fromEnum s)))
 
 instance Hashable CreateSlotTypeVersion where
@@ -128,7 +132,15 @@ instance ToQuery CreateSlotTypeVersion where
         toQuery = const mempty
 
 -- | /See:/ 'createSlotTypeVersionResponse' smart constructor.
-data CreateSlotTypeVersionResponse = CreateSlotTypeVersionResponse'{_cstvrsChecksum
+data CreateSlotTypeVersionResponse = CreateSlotTypeVersionResponse'{_cstvrsParentSlotTypeSignature
+                                                                    ::
+                                                                    !(Maybe
+                                                                        Text),
+                                                                    _cstvrsSlotTypeConfigurations
+                                                                    ::
+                                                                    !(Maybe
+                                                                        [SlotTypeConfiguration]),
+                                                                    _cstvrsChecksum
                                                                     ::
                                                                     !(Maybe
                                                                         Text),
@@ -159,8 +171,7 @@ data CreateSlotTypeVersionResponse = CreateSlotTypeVersionResponse'{_cstvrsCheck
                                                                     _cstvrsEnumerationValues
                                                                     ::
                                                                     !(Maybe
-                                                                        (List1
-                                                                           EnumerationValue)),
+                                                                        [EnumerationValue]),
                                                                     _cstvrsResponseStatus
                                                                     :: !Int}
                                        deriving (Eq, Read, Show, Data, Typeable,
@@ -169,6 +180,10 @@ data CreateSlotTypeVersionResponse = CreateSlotTypeVersionResponse'{_cstvrsCheck
 -- | Creates a value of 'CreateSlotTypeVersionResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'cstvrsParentSlotTypeSignature' - The built-in slot type used a the parent of the slot type.
+--
+-- * 'cstvrsSlotTypeConfigurations' - Configuration information that extends the parent built-in slot type.
 --
 -- * 'cstvrsChecksum' - Checksum of the @> LATEST@ version of the slot type.
 --
@@ -191,8 +206,10 @@ createSlotTypeVersionResponse
     :: Int -- ^ 'cstvrsResponseStatus'
     -> CreateSlotTypeVersionResponse
 createSlotTypeVersionResponse pResponseStatus_
-  = CreateSlotTypeVersionResponse'{_cstvrsChecksum =
-                                     Nothing,
+  = CreateSlotTypeVersionResponse'{_cstvrsParentSlotTypeSignature
+                                     = Nothing,
+                                   _cstvrsSlotTypeConfigurations = Nothing,
+                                   _cstvrsChecksum = Nothing,
                                    _cstvrsValueSelectionStrategy = Nothing,
                                    _cstvrsCreatedDate = Nothing,
                                    _cstvrsName = Nothing,
@@ -201,6 +218,14 @@ createSlotTypeVersionResponse pResponseStatus_
                                    _cstvrsDescription = Nothing,
                                    _cstvrsEnumerationValues = Nothing,
                                    _cstvrsResponseStatus = pResponseStatus_}
+
+-- | The built-in slot type used a the parent of the slot type.
+cstvrsParentSlotTypeSignature :: Lens' CreateSlotTypeVersionResponse (Maybe Text)
+cstvrsParentSlotTypeSignature = lens _cstvrsParentSlotTypeSignature (\ s a -> s{_cstvrsParentSlotTypeSignature = a})
+
+-- | Configuration information that extends the parent built-in slot type.
+cstvrsSlotTypeConfigurations :: Lens' CreateSlotTypeVersionResponse [SlotTypeConfiguration]
+cstvrsSlotTypeConfigurations = lens _cstvrsSlotTypeConfigurations (\ s a -> s{_cstvrsSlotTypeConfigurations = a}) . _Default . _Coerce
 
 -- | Checksum of the @> LATEST@ version of the slot type.
 cstvrsChecksum :: Lens' CreateSlotTypeVersionResponse (Maybe Text)
@@ -231,8 +256,8 @@ cstvrsDescription :: Lens' CreateSlotTypeVersionResponse (Maybe Text)
 cstvrsDescription = lens _cstvrsDescription (\ s a -> s{_cstvrsDescription = a})
 
 -- | A list of @EnumerationValue@ objects that defines the values that the slot type can take.
-cstvrsEnumerationValues :: Lens' CreateSlotTypeVersionResponse (Maybe (NonEmpty EnumerationValue))
-cstvrsEnumerationValues = lens _cstvrsEnumerationValues (\ s a -> s{_cstvrsEnumerationValues = a}) . mapping _List1
+cstvrsEnumerationValues :: Lens' CreateSlotTypeVersionResponse [EnumerationValue]
+cstvrsEnumerationValues = lens _cstvrsEnumerationValues (\ s a -> s{_cstvrsEnumerationValues = a}) . _Default . _Coerce
 
 -- | -- | The response status code.
 cstvrsResponseStatus :: Lens' CreateSlotTypeVersionResponse Int

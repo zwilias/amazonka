@@ -23,7 +23,7 @@ import Network.AWS.Prelude
 -- | Contains the topic ARN associated with an Amazon Simple Notification Service (Amazon SNS) event destination.
 --
 --
--- Event destinations, such as Amazon SNS, are associated with configuration sets, which enable you to publish email sending events. For information about using configuration sets, see the <http://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html Amazon SES Developer Guide> .
+-- Event destinations, such as Amazon SNS, are associated with configuration sets, which enable you to publish email sending events. For information about using configuration sets, see the <https://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html Amazon SES Developer Guide> .
 --
 --
 -- /See:/ 'snsDestination' smart constructor.
@@ -35,14 +35,14 @@ newtype SNSDestination = SNSDestination'{_sdTopicARN
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'sdTopicARN' - The ARN of the Amazon SNS topic that email sending events will be published to. An example of an Amazon SNS topic ARN is @arn:aws:sns:us-west-2:123456789012:MyTopic@ . For more information about Amazon SNS topics, see the <http://docs.aws.amazon.com/sns/latest/dg/CreateTopic.html Amazon SNS Developer Guide> .
+-- * 'sdTopicARN' - The ARN of the Amazon SNS topic that email sending events will be published to. An example of an Amazon SNS topic ARN is @arn:aws:sns:us-west-2:123456789012:MyTopic@ . For more information about Amazon SNS topics, see the <https://docs.aws.amazon.com/sns/latest/dg/CreateTopic.html Amazon SNS Developer Guide> .
 snsDestination
     :: Text -- ^ 'sdTopicARN'
     -> SNSDestination
 snsDestination pTopicARN_
   = SNSDestination'{_sdTopicARN = pTopicARN_}
 
--- | The ARN of the Amazon SNS topic that email sending events will be published to. An example of an Amazon SNS topic ARN is @arn:aws:sns:us-west-2:123456789012:MyTopic@ . For more information about Amazon SNS topics, see the <http://docs.aws.amazon.com/sns/latest/dg/CreateTopic.html Amazon SNS Developer Guide> .
+-- | The ARN of the Amazon SNS topic that email sending events will be published to. An example of an Amazon SNS topic ARN is @arn:aws:sns:us-west-2:123456789012:MyTopic@ . For more information about Amazon SNS topics, see the <https://docs.aws.amazon.com/sns/latest/dg/CreateTopic.html Amazon SNS Developer Guide> .
 sdTopicARN :: Lens' SNSDestination Text
 sdTopicARN = lens _sdTopicARN (\ s a -> s{_sdTopicARN = a})
 

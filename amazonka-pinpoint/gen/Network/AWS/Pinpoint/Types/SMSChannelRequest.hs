@@ -20,7 +20,9 @@ module Network.AWS.Pinpoint.Types.SMSChannelRequest where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | SMS Channel Request
+-- | Specifies the status and settings of the SMS channel for an application.
+--
+--
 --
 -- /See:/ 'sMSChannelRequest' smart constructor.
 data SMSChannelRequest = SMSChannelRequest'{_smscrShortCode
@@ -33,26 +35,26 @@ data SMSChannelRequest = SMSChannelRequest'{_smscrShortCode
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'smscrShortCode' - ShortCode registered with phone provider.
+-- * 'smscrShortCode' - The registered short code that you want to use when you send messages through the SMS channel.
 --
--- * 'smscrEnabled' - If the channel is enabled for sending messages.
+-- * 'smscrEnabled' - Specifies whether to enable the SMS channel for the application.
 --
--- * 'smscrSenderId' - Sender identifier of your messages.
+-- * 'smscrSenderId' - The identity that you want to display on recipients' devices when they receive messages from the SMS channel.
 sMSChannelRequest
     :: SMSChannelRequest
 sMSChannelRequest
   = SMSChannelRequest'{_smscrShortCode = Nothing,
                        _smscrEnabled = Nothing, _smscrSenderId = Nothing}
 
--- | ShortCode registered with phone provider.
+-- | The registered short code that you want to use when you send messages through the SMS channel.
 smscrShortCode :: Lens' SMSChannelRequest (Maybe Text)
 smscrShortCode = lens _smscrShortCode (\ s a -> s{_smscrShortCode = a})
 
--- | If the channel is enabled for sending messages.
+-- | Specifies whether to enable the SMS channel for the application.
 smscrEnabled :: Lens' SMSChannelRequest (Maybe Bool)
 smscrEnabled = lens _smscrEnabled (\ s a -> s{_smscrEnabled = a})
 
--- | Sender identifier of your messages.
+-- | The identity that you want to display on recipients' devices when they receive messages from the SMS channel.
 smscrSenderId :: Lens' SMSChannelRequest (Maybe Text)
 smscrSenderId = lens _smscrSenderId (\ s a -> s{_smscrSenderId = a})
 

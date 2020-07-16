@@ -31,25 +31,31 @@ data JobExecution = JobExecution'{_jeStatus ::
                                   !(Maybe JobExecutionStatus),
                                   _jeJobId :: !(Maybe Text),
                                   _jeLastUpdatedAt :: !(Maybe POSIX),
+                                  _jeApproximateSecondsBeforeTimedOut ::
+                                  !(Maybe Integer),
                                   _jeQueuedAt :: !(Maybe POSIX),
                                   _jeStatusDetails ::
                                   !(Maybe JobExecutionStatusDetails),
                                   _jeThingARN :: !(Maybe Text),
                                   _jeExecutionNumber :: !(Maybe Integer),
-                                  _jeStartedAt :: !(Maybe POSIX)}
+                                  _jeVersionNumber :: !(Maybe Integer),
+                                  _jeStartedAt :: !(Maybe POSIX),
+                                  _jeForceCanceled :: !(Maybe Bool)}
                       deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'JobExecution' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'jeStatus' - The status of the job execution (IN_PROGRESS, QUEUED, FAILED, SUCCESS, CANCELED, or REJECTED).
+-- * 'jeStatus' - The status of the job execution (IN_PROGRESS, QUEUED, FAILED, SUCCEEDED, TIMED_OUT, CANCELED, or REJECTED).
 --
 -- * 'jeJobId' - The unique identifier you assigned to the job when it was created.
 --
--- * 'jeLastUpdatedAt' - The time, in milliseconds since the epoch, when the job execution was last updated.
+-- * 'jeLastUpdatedAt' - The time, in seconds since the epoch, when the job execution was last updated.
 --
--- * 'jeQueuedAt' - The time, in milliseconds since the epoch, when the job execution was queued.
+-- * 'jeApproximateSecondsBeforeTimedOut' - The estimated number of seconds that remain before the job execution status will be changed to @TIMED_OUT@ . The timeout interval can be anywhere between 1 minute and 7 days (1 to 10080 minutes). The actual job execution timeout can occur up to 60 seconds later than the estimated duration. This value will not be included if the job execution has reached a terminal status.
+--
+-- * 'jeQueuedAt' - The time, in seconds since the epoch, when the job execution was queued.
 --
 -- * 'jeStatusDetails' - A collection of name/value pairs that describe the status of the job execution.
 --
@@ -57,17 +63,23 @@ data JobExecution = JobExecution'{_jeStatus ::
 --
 -- * 'jeExecutionNumber' - A string (consisting of the digits "0" through "9") which identifies this particular job execution on this particular device. It can be used in commands which return or update job execution information. 
 --
--- * 'jeStartedAt' - The time, in milliseconds since the epoch, when the job execution started.
+-- * 'jeVersionNumber' - The version of the job execution. Job execution versions are incremented each time they are updated by a device.
+--
+-- * 'jeStartedAt' - The time, in seconds since the epoch, when the job execution started.
+--
+-- * 'jeForceCanceled' - Will be @true@ if the job execution was canceled with the optional @force@ parameter set to @true@ .
 jobExecution
     :: JobExecution
 jobExecution
   = JobExecution'{_jeStatus = Nothing,
                   _jeJobId = Nothing, _jeLastUpdatedAt = Nothing,
+                  _jeApproximateSecondsBeforeTimedOut = Nothing,
                   _jeQueuedAt = Nothing, _jeStatusDetails = Nothing,
                   _jeThingARN = Nothing, _jeExecutionNumber = Nothing,
-                  _jeStartedAt = Nothing}
+                  _jeVersionNumber = Nothing, _jeStartedAt = Nothing,
+                  _jeForceCanceled = Nothing}
 
--- | The status of the job execution (IN_PROGRESS, QUEUED, FAILED, SUCCESS, CANCELED, or REJECTED).
+-- | The status of the job execution (IN_PROGRESS, QUEUED, FAILED, SUCCEEDED, TIMED_OUT, CANCELED, or REJECTED).
 jeStatus :: Lens' JobExecution (Maybe JobExecutionStatus)
 jeStatus = lens _jeStatus (\ s a -> s{_jeStatus = a})
 
@@ -75,11 +87,15 @@ jeStatus = lens _jeStatus (\ s a -> s{_jeStatus = a})
 jeJobId :: Lens' JobExecution (Maybe Text)
 jeJobId = lens _jeJobId (\ s a -> s{_jeJobId = a})
 
--- | The time, in milliseconds since the epoch, when the job execution was last updated.
+-- | The time, in seconds since the epoch, when the job execution was last updated.
 jeLastUpdatedAt :: Lens' JobExecution (Maybe UTCTime)
 jeLastUpdatedAt = lens _jeLastUpdatedAt (\ s a -> s{_jeLastUpdatedAt = a}) . mapping _Time
 
--- | The time, in milliseconds since the epoch, when the job execution was queued.
+-- | The estimated number of seconds that remain before the job execution status will be changed to @TIMED_OUT@ . The timeout interval can be anywhere between 1 minute and 7 days (1 to 10080 minutes). The actual job execution timeout can occur up to 60 seconds later than the estimated duration. This value will not be included if the job execution has reached a terminal status.
+jeApproximateSecondsBeforeTimedOut :: Lens' JobExecution (Maybe Integer)
+jeApproximateSecondsBeforeTimedOut = lens _jeApproximateSecondsBeforeTimedOut (\ s a -> s{_jeApproximateSecondsBeforeTimedOut = a})
+
+-- | The time, in seconds since the epoch, when the job execution was queued.
 jeQueuedAt :: Lens' JobExecution (Maybe UTCTime)
 jeQueuedAt = lens _jeQueuedAt (\ s a -> s{_jeQueuedAt = a}) . mapping _Time
 
@@ -95,9 +111,17 @@ jeThingARN = lens _jeThingARN (\ s a -> s{_jeThingARN = a})
 jeExecutionNumber :: Lens' JobExecution (Maybe Integer)
 jeExecutionNumber = lens _jeExecutionNumber (\ s a -> s{_jeExecutionNumber = a})
 
--- | The time, in milliseconds since the epoch, when the job execution started.
+-- | The version of the job execution. Job execution versions are incremented each time they are updated by a device.
+jeVersionNumber :: Lens' JobExecution (Maybe Integer)
+jeVersionNumber = lens _jeVersionNumber (\ s a -> s{_jeVersionNumber = a})
+
+-- | The time, in seconds since the epoch, when the job execution started.
 jeStartedAt :: Lens' JobExecution (Maybe UTCTime)
 jeStartedAt = lens _jeStartedAt (\ s a -> s{_jeStartedAt = a}) . mapping _Time
+
+-- | Will be @true@ if the job execution was canceled with the optional @force@ parameter set to @true@ .
+jeForceCanceled :: Lens' JobExecution (Maybe Bool)
+jeForceCanceled = lens _jeForceCanceled (\ s a -> s{_jeForceCanceled = a})
 
 instance FromJSON JobExecution where
         parseJSON
@@ -106,11 +130,14 @@ instance FromJSON JobExecution where
                  JobExecution' <$>
                    (x .:? "status") <*> (x .:? "jobId") <*>
                      (x .:? "lastUpdatedAt")
+                     <*> (x .:? "approximateSecondsBeforeTimedOut")
                      <*> (x .:? "queuedAt")
                      <*> (x .:? "statusDetails")
                      <*> (x .:? "thingArn")
                      <*> (x .:? "executionNumber")
-                     <*> (x .:? "startedAt"))
+                     <*> (x .:? "versionNumber")
+                     <*> (x .:? "startedAt")
+                     <*> (x .:? "forceCanceled"))
 
 instance Hashable JobExecution where
 

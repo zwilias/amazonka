@@ -23,16 +23,18 @@ import Network.AWS.WorkSpaces.Types.ComputeType
 import Network.AWS.WorkSpaces.Types.RootStorage
 import Network.AWS.WorkSpaces.Types.UserStorage
 
--- | Information about a WorkSpace bundle.
+-- | Describes a WorkSpace bundle.
 --
 --
 --
 -- /See:/ 'workspaceBundle' smart constructor.
-data WorkspaceBundle = WorkspaceBundle'{_wbBundleId
-                                        :: !(Maybe Text),
+data WorkspaceBundle = WorkspaceBundle'{_wbLastUpdatedTime
+                                        :: !(Maybe POSIX),
+                                        _wbBundleId :: !(Maybe Text),
                                         _wbOwner :: !(Maybe Text),
                                         _wbRootStorage :: !(Maybe RootStorage),
                                         _wbName :: !(Maybe Text),
+                                        _wbImageId :: !(Maybe Text),
                                         _wbComputeType :: !(Maybe ComputeType),
                                         _wbUserStorage :: !(Maybe UserStorage),
                                         _wbDescription :: !(Maybe Text)}
@@ -42,6 +44,8 @@ data WorkspaceBundle = WorkspaceBundle'{_wbBundleId
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
+-- * 'wbLastUpdatedTime' - The last time that the bundle was updated.
+--
 -- * 'wbBundleId' - The bundle identifier.
 --
 -- * 'wbOwner' - The owner of the bundle. This is the account identifier of the owner, or @AMAZON@ if the bundle is provided by AWS.
@@ -49,6 +53,8 @@ data WorkspaceBundle = WorkspaceBundle'{_wbBundleId
 -- * 'wbRootStorage' - The size of the root volume.
 --
 -- * 'wbName' - The name of the bundle.
+--
+-- * 'wbImageId' - The image identifier of the bundle.
 --
 -- * 'wbComputeType' - The compute type. For more information, see <http://aws.amazon.com/workspaces/details/#Amazon_WorkSpaces_Bundles Amazon WorkSpaces Bundles> .
 --
@@ -58,10 +64,15 @@ data WorkspaceBundle = WorkspaceBundle'{_wbBundleId
 workspaceBundle
     :: WorkspaceBundle
 workspaceBundle
-  = WorkspaceBundle'{_wbBundleId = Nothing,
-                     _wbOwner = Nothing, _wbRootStorage = Nothing,
-                     _wbName = Nothing, _wbComputeType = Nothing,
+  = WorkspaceBundle'{_wbLastUpdatedTime = Nothing,
+                     _wbBundleId = Nothing, _wbOwner = Nothing,
+                     _wbRootStorage = Nothing, _wbName = Nothing,
+                     _wbImageId = Nothing, _wbComputeType = Nothing,
                      _wbUserStorage = Nothing, _wbDescription = Nothing}
+
+-- | The last time that the bundle was updated.
+wbLastUpdatedTime :: Lens' WorkspaceBundle (Maybe UTCTime)
+wbLastUpdatedTime = lens _wbLastUpdatedTime (\ s a -> s{_wbLastUpdatedTime = a}) . mapping _Time
 
 -- | The bundle identifier.
 wbBundleId :: Lens' WorkspaceBundle (Maybe Text)
@@ -78,6 +89,10 @@ wbRootStorage = lens _wbRootStorage (\ s a -> s{_wbRootStorage = a})
 -- | The name of the bundle.
 wbName :: Lens' WorkspaceBundle (Maybe Text)
 wbName = lens _wbName (\ s a -> s{_wbName = a})
+
+-- | The image identifier of the bundle.
+wbImageId :: Lens' WorkspaceBundle (Maybe Text)
+wbImageId = lens _wbImageId (\ s a -> s{_wbImageId = a})
 
 -- | The compute type. For more information, see <http://aws.amazon.com/workspaces/details/#Amazon_WorkSpaces_Bundles Amazon WorkSpaces Bundles> .
 wbComputeType :: Lens' WorkspaceBundle (Maybe ComputeType)
@@ -96,9 +111,11 @@ instance FromJSON WorkspaceBundle where
           = withObject "WorkspaceBundle"
               (\ x ->
                  WorkspaceBundle' <$>
-                   (x .:? "BundleId") <*> (x .:? "Owner") <*>
-                     (x .:? "RootStorage")
+                   (x .:? "LastUpdatedTime") <*> (x .:? "BundleId") <*>
+                     (x .:? "Owner")
+                     <*> (x .:? "RootStorage")
                      <*> (x .:? "Name")
+                     <*> (x .:? "ImageId")
                      <*> (x .:? "ComputeType")
                      <*> (x .:? "UserStorage")
                      <*> (x .:? "Description"))

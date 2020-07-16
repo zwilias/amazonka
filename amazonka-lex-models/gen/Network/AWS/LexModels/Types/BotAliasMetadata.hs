@@ -18,6 +18,7 @@
 module Network.AWS.LexModels.Types.BotAliasMetadata where
 
 import Network.AWS.Lens
+import Network.AWS.LexModels.Types.ConversationLogsResponse
 import Network.AWS.Prelude
 
 -- | Provides information about a bot alias.
@@ -31,6 +32,8 @@ data BotAliasMetadata = BotAliasMetadata'{_bamChecksum
                                           _bamBotName :: !(Maybe Text),
                                           _bamCreatedDate :: !(Maybe POSIX),
                                           _bamName :: !(Maybe Text),
+                                          _bamConversationLogs ::
+                                          !(Maybe ConversationLogsResponse),
                                           _bamLastUpdatedDate :: !(Maybe POSIX),
                                           _bamDescription :: !(Maybe Text)}
                           deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -49,6 +52,8 @@ data BotAliasMetadata = BotAliasMetadata'{_bamChecksum
 --
 -- * 'bamName' - The name of the bot alias.
 --
+-- * 'bamConversationLogs' - Settings that determine how Amazon Lex uses conversation logs for the alias.
+--
 -- * 'bamLastUpdatedDate' - The date that the bot alias was updated. When you create a resource, the creation date and last updated date are the same.
 --
 -- * 'bamDescription' - A description of the bot alias.
@@ -58,6 +63,7 @@ botAliasMetadata
   = BotAliasMetadata'{_bamChecksum = Nothing,
                       _bamBotVersion = Nothing, _bamBotName = Nothing,
                       _bamCreatedDate = Nothing, _bamName = Nothing,
+                      _bamConversationLogs = Nothing,
                       _bamLastUpdatedDate = Nothing,
                       _bamDescription = Nothing}
 
@@ -81,6 +87,10 @@ bamCreatedDate = lens _bamCreatedDate (\ s a -> s{_bamCreatedDate = a}) . mappin
 bamName :: Lens' BotAliasMetadata (Maybe Text)
 bamName = lens _bamName (\ s a -> s{_bamName = a})
 
+-- | Settings that determine how Amazon Lex uses conversation logs for the alias.
+bamConversationLogs :: Lens' BotAliasMetadata (Maybe ConversationLogsResponse)
+bamConversationLogs = lens _bamConversationLogs (\ s a -> s{_bamConversationLogs = a})
+
 -- | The date that the bot alias was updated. When you create a resource, the creation date and last updated date are the same.
 bamLastUpdatedDate :: Lens' BotAliasMetadata (Maybe UTCTime)
 bamLastUpdatedDate = lens _bamLastUpdatedDate (\ s a -> s{_bamLastUpdatedDate = a}) . mapping _Time
@@ -98,6 +108,7 @@ instance FromJSON BotAliasMetadata where
                      (x .:? "botName")
                      <*> (x .:? "createdDate")
                      <*> (x .:? "name")
+                     <*> (x .:? "conversationLogs")
                      <*> (x .:? "lastUpdatedDate")
                      <*> (x .:? "description"))
 

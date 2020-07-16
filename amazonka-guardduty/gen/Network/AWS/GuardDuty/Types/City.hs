@@ -20,7 +20,9 @@ module Network.AWS.GuardDuty.Types.City where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | City information of the remote IP address.
+-- | Contains information about the city associated with the IP address.
+--
+--
 --
 -- /See:/ 'city' smart constructor.
 newtype City = City'{_cCityName :: Maybe Text}
@@ -30,12 +32,12 @@ newtype City = City'{_cCityName :: Maybe Text}
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'cCityName' - City name of the remote IP address.
+-- * 'cCityName' - The city name of the remote IP address.
 city
     :: City
 city = City'{_cCityName = Nothing}
 
--- | City name of the remote IP address.
+-- | The city name of the remote IP address.
 cCityName :: Lens' City (Maybe Text)
 cCityName = lens _cCityName (\ s a -> s{_cCityName = a})
 

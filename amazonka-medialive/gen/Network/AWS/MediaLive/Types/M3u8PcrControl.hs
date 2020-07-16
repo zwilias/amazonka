@@ -27,7 +27,7 @@ module Network.AWS.MediaLive.Types.M3u8PcrControl (
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | Placeholder documentation for M3u8PcrControl
+-- | M3u8 Pcr Control
 data M3u8PcrControl = M3u8PcrControl' (CI Text)
                         deriving (Eq, Ord, Read, Show, Data, Typeable,
                                   Generic)

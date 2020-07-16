@@ -42,7 +42,7 @@ data StepSummary = StepSummary'{_ssStatus ::
 --
 -- * 'ssStatus' - The current execution status details of the cluster step.
 --
--- * 'ssActionOnFailure' - This specifies what action to take when the cluster step fails. Possible values are TERMINATE_CLUSTER, CANCEL_AND_WAIT, and CONTINUE.
+-- * 'ssActionOnFailure' - The action to take when the cluster step fails. Possible values are TERMINATE_CLUSTER, CANCEL_AND_WAIT, and CONTINUE. TERMINATE_JOB_FLOW is available for backward compatibility. We recommend using TERMINATE_CLUSTER instead.
 --
 -- * 'ssConfig' - The Hadoop job configuration of the cluster step.
 --
@@ -60,7 +60,7 @@ stepSummary
 ssStatus :: Lens' StepSummary (Maybe StepStatus)
 ssStatus = lens _ssStatus (\ s a -> s{_ssStatus = a})
 
--- | This specifies what action to take when the cluster step fails. Possible values are TERMINATE_CLUSTER, CANCEL_AND_WAIT, and CONTINUE.
+-- | The action to take when the cluster step fails. Possible values are TERMINATE_CLUSTER, CANCEL_AND_WAIT, and CONTINUE. TERMINATE_JOB_FLOW is available for backward compatibility. We recommend using TERMINATE_CLUSTER instead.
 ssActionOnFailure :: Lens' StepSummary (Maybe ActionOnFailure)
 ssActionOnFailure = lens _ssActionOnFailure (\ s a -> s{_ssActionOnFailure = a})
 

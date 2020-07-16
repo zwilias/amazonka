@@ -27,7 +27,7 @@ module Network.AWS.MediaLive.Types.FecOutputIncludeFec (
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | Placeholder documentation for FecOutputIncludeFec
+-- | Fec Output Include Fec
 data FecOutputIncludeFec = FecOutputIncludeFec' (CI
                                                    Text)
                              deriving (Eq, Ord, Read, Show, Data, Typeable,

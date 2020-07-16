@@ -20,7 +20,7 @@ module Network.AWS.KinesisAnalytics.Types.S3Configuration where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | Provides a description of an Amazon S3 data source, including the Amazon Resource Name (ARN) of the S3 bucket, the ARN of the IAM role that is used to access the bucket, and the name of the S3 object that contains the data.
+-- | Provides a description of an Amazon S3 data source, including the Amazon Resource Name (ARN) of the S3 bucket, the ARN of the IAM role that is used to access the bucket, and the name of the Amazon S3 object that contains the data.
 --
 --
 --

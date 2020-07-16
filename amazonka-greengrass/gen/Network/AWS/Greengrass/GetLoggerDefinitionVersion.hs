@@ -25,6 +25,7 @@ module Network.AWS.Greengrass.GetLoggerDefinitionVersion
       getLoggerDefinitionVersion
     , GetLoggerDefinitionVersion
     -- * Request Lenses
+    , gldvNextToken
     , gldvLoggerDefinitionVersionId
     , gldvLoggerDefinitionId
 
@@ -48,7 +49,9 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getLoggerDefinitionVersion' smart constructor.
-data GetLoggerDefinitionVersion = GetLoggerDefinitionVersion'{_gldvLoggerDefinitionVersionId
+data GetLoggerDefinitionVersion = GetLoggerDefinitionVersion'{_gldvNextToken
+                                                              :: !(Maybe Text),
+                                                              _gldvLoggerDefinitionVersionId
                                                               :: !Text,
                                                               _gldvLoggerDefinitionId
                                                               :: !Text}
@@ -59,7 +62,9 @@ data GetLoggerDefinitionVersion = GetLoggerDefinitionVersion'{_gldvLoggerDefinit
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'gldvLoggerDefinitionVersionId' - The ID of the logger definition version.
+-- * 'gldvNextToken' - The token for the next set of results, or ''null'' if there are no additional results.
+--
+-- * 'gldvLoggerDefinitionVersionId' - The ID of the logger definition version. This value maps to the ''Version'' property of the corresponding ''VersionInformation'' object, which is returned by ''ListLoggerDefinitionVersions'' requests. If the version is the last one that was associated with a logger definition, the value also maps to the ''LatestVersion'' property of the corresponding ''DefinitionInformation'' object.
 --
 -- * 'gldvLoggerDefinitionId' - The ID of the logger definition.
 getLoggerDefinitionVersion
@@ -68,11 +73,17 @@ getLoggerDefinitionVersion
     -> GetLoggerDefinitionVersion
 getLoggerDefinitionVersion
   pLoggerDefinitionVersionId_ pLoggerDefinitionId_
-  = GetLoggerDefinitionVersion'{_gldvLoggerDefinitionVersionId
-                                  = pLoggerDefinitionVersionId_,
+  = GetLoggerDefinitionVersion'{_gldvNextToken =
+                                  Nothing,
+                                _gldvLoggerDefinitionVersionId =
+                                  pLoggerDefinitionVersionId_,
                                 _gldvLoggerDefinitionId = pLoggerDefinitionId_}
 
--- | The ID of the logger definition version.
+-- | The token for the next set of results, or ''null'' if there are no additional results.
+gldvNextToken :: Lens' GetLoggerDefinitionVersion (Maybe Text)
+gldvNextToken = lens _gldvNextToken (\ s a -> s{_gldvNextToken = a})
+
+-- | The ID of the logger definition version. This value maps to the ''Version'' property of the corresponding ''VersionInformation'' object, which is returned by ''ListLoggerDefinitionVersions'' requests. If the version is the last one that was associated with a logger definition, the value also maps to the ''LatestVersion'' property of the corresponding ''DefinitionInformation'' object.
 gldvLoggerDefinitionVersionId :: Lens' GetLoggerDefinitionVersion Text
 gldvLoggerDefinitionVersionId = lens _gldvLoggerDefinitionVersionId (\ s a -> s{_gldvLoggerDefinitionVersionId = a})
 
@@ -113,7 +124,8 @@ instance ToPath GetLoggerDefinitionVersion where
                toBS _gldvLoggerDefinitionVersionId]
 
 instance ToQuery GetLoggerDefinitionVersion where
-        toQuery = const mempty
+        toQuery GetLoggerDefinitionVersion'{..}
+          = mconcat ["NextToken" =: _gldvNextToken]
 
 -- | /See:/ 'getLoggerDefinitionVersionResponse' smart constructor.
 data GetLoggerDefinitionVersionResponse = GetLoggerDefinitionVersionResponse'{_gldvrsDefinition

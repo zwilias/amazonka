@@ -20,7 +20,7 @@ module Network.AWS.Organizations.Types.EnabledServicePrincipal where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | A structure that contains details of a service principal that is enabled to integrate with AWS Organizations.
+-- | A structure that contains details of a service principal that represents an AWS service that is enabled to integrate with AWS Organizations.
 --
 --
 --

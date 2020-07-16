@@ -35,20 +35,20 @@ data TableVersion = TableVersion'{_tvVersionId ::
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'tvVersionId' - The ID value that identifies this table version.
+-- * 'tvVersionId' - The ID value that identifies this table version. A @VersionId@ is a string representation of an integer. Each version is incremented by 1.
 --
--- * 'tvTable' - The table in question
+-- * 'tvTable' - The table in question.
 tableVersion
     :: TableVersion
 tableVersion
   = TableVersion'{_tvVersionId = Nothing,
                   _tvTable = Nothing}
 
--- | The ID value that identifies this table version.
+-- | The ID value that identifies this table version. A @VersionId@ is a string representation of an integer. Each version is incremented by 1.
 tvVersionId :: Lens' TableVersion (Maybe Text)
 tvVersionId = lens _tvVersionId (\ s a -> s{_tvVersionId = a})
 
--- | The table in question
+-- | The table in question.
 tvTable :: Lens' TableVersion (Maybe Table)
 tvTable = lens _tvTable (\ s a -> s{_tvTable = a})
 

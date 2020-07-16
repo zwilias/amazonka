@@ -89,5 +89,8 @@ instance ToByteString MessageFormatType
 instance ToQuery      MessageFormatType
 instance ToHeader     MessageFormatType
 
+instance ToJSON MessageFormatType where
+    toJSON = toJSONText
+
 instance FromJSON MessageFormatType where
     parseJSON = parseJSONText "MessageFormatType"

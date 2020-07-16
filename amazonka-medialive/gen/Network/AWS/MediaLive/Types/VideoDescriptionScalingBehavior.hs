@@ -27,7 +27,7 @@ module Network.AWS.MediaLive.Types.VideoDescriptionScalingBehavior (
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | Placeholder documentation for VideoDescriptionScalingBehavior
+-- | Video Description Scaling Behavior
 data VideoDescriptionScalingBehavior = VideoDescriptionScalingBehavior' (CI
                                                                            Text)
                                          deriving (Eq, Ord, Read, Show, Data,

@@ -21,7 +21,7 @@ import Network.AWS.KinesisAnalytics.Types.InputLambdaProcessorUpdate
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | Describes updates to an 'InputProcessingConfiguration' . 
+-- | Describes updates to an <https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_InputProcessingConfiguration.html InputProcessingConfiguration> . 
 --
 --
 --
@@ -36,7 +36,7 @@ newtype InputProcessingConfigurationUpdate = InputProcessingConfigurationUpdate'
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'ipcuInputLambdaProcessorUpdate' - Provides update information for an 'InputLambdaProcessor' .
+-- * 'ipcuInputLambdaProcessorUpdate' - Provides update information for an <https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_InputLambdaProcessor.html InputLambdaProcessor> .
 inputProcessingConfigurationUpdate
     :: InputLambdaProcessorUpdate -- ^ 'ipcuInputLambdaProcessorUpdate'
     -> InputProcessingConfigurationUpdate
@@ -45,7 +45,7 @@ inputProcessingConfigurationUpdate
   = InputProcessingConfigurationUpdate'{_ipcuInputLambdaProcessorUpdate
                                           = pInputLambdaProcessorUpdate_}
 
--- | Provides update information for an 'InputLambdaProcessor' .
+-- | Provides update information for an <https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_InputLambdaProcessor.html InputLambdaProcessor> .
 ipcuInputLambdaProcessorUpdate :: Lens' InputProcessingConfigurationUpdate InputLambdaProcessorUpdate
 ipcuInputLambdaProcessorUpdate = lens _ipcuInputLambdaProcessorUpdate (\ s a -> s{_ipcuInputLambdaProcessorUpdate = a})
 

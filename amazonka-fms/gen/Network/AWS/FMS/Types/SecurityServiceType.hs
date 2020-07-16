@@ -19,6 +19,11 @@
 module Network.AWS.FMS.Types.SecurityServiceType (
   SecurityServiceType (
     ..
+    , SecurityGroupsCommon
+    , SecurityGroupsContentAudit
+    , SecurityGroupsUsageAudit
+    , ShieldAdvanced
+    , WAFV2
     , Waf
     )
   ) where
@@ -31,10 +36,30 @@ data SecurityServiceType = SecurityServiceType' (CI
                              deriving (Eq, Ord, Read, Show, Data, Typeable,
                                        Generic)
 
+pattern SecurityGroupsCommon :: SecurityServiceType
+pattern SecurityGroupsCommon = SecurityServiceType' "SECURITY_GROUPS_COMMON"
+
+pattern SecurityGroupsContentAudit :: SecurityServiceType
+pattern SecurityGroupsContentAudit = SecurityServiceType' "SECURITY_GROUPS_CONTENT_AUDIT"
+
+pattern SecurityGroupsUsageAudit :: SecurityServiceType
+pattern SecurityGroupsUsageAudit = SecurityServiceType' "SECURITY_GROUPS_USAGE_AUDIT"
+
+pattern ShieldAdvanced :: SecurityServiceType
+pattern ShieldAdvanced = SecurityServiceType' "SHIELD_ADVANCED"
+
+pattern WAFV2 :: SecurityServiceType
+pattern WAFV2 = SecurityServiceType' "WAFV2"
+
 pattern Waf :: SecurityServiceType
 pattern Waf = SecurityServiceType' "WAF"
 
 {-# COMPLETE
+  SecurityGroupsCommon,
+  SecurityGroupsContentAudit,
+  SecurityGroupsUsageAudit,
+  ShieldAdvanced,
+  WAFV2,
   Waf,
   SecurityServiceType' #-}
 
@@ -50,17 +75,27 @@ instance ToText SecurityServiceType where
 --   fromEnum is a partial function, and will error on values unknown at generation time.
 instance Enum SecurityServiceType where
     toEnum i = case i of
-        0 -> Waf
+        0 -> SecurityGroupsCommon
+        1 -> SecurityGroupsContentAudit
+        2 -> SecurityGroupsUsageAudit
+        3 -> ShieldAdvanced
+        4 -> WAFV2
+        5 -> Waf
         _ -> (error . showText) $ "Unknown index for SecurityServiceType: " <> toText i
     fromEnum x = case x of
-        Waf -> 0
+        SecurityGroupsCommon -> 0
+        SecurityGroupsContentAudit -> 1
+        SecurityGroupsUsageAudit -> 2
+        ShieldAdvanced -> 3
+        WAFV2 -> 4
+        Waf -> 5
         SecurityServiceType' name -> (error . showText) $ "Unknown SecurityServiceType: " <> original name
 
 -- | Represents the bounds of /known/ $SecurityServiceType.
 --   AWS may have added more since the source was generated.
 --   This instance exists only for backward compatibility.
 instance Bounded SecurityServiceType where
-    minBound = Waf
+    minBound = SecurityGroupsCommon
     maxBound = Waf
 
 instance Hashable     SecurityServiceType

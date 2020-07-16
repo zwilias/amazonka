@@ -23,7 +23,7 @@ import Network.AWS.OpsWorks.Types.CloudWatchLogsInitialPosition
 import Network.AWS.OpsWorks.Types.CloudWatchLogsTimeZone
 import Network.AWS.Prelude
 
--- | Describes the Amazon CloudWatch logs configuration for a layer. For detailed information about members of this data type, see the <http://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/AgentReference.html CloudWatch Logs Agent Reference> .
+-- | Describes the Amazon CloudWatch logs configuration for a layer. For detailed information about members of this data type, see the <https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/AgentReference.html CloudWatch Logs Agent Reference> .
 --
 --
 --
@@ -74,7 +74,7 @@ data CloudWatchLogsLogStream = CloudWatchLogsLogStream'{_cwllsBatchCount
 --
 -- * 'cwllsInitialPosition' - Specifies where to start to read data (start_of_file or end_of_file). The default is start_of_file. This setting is only used if there is no state persisted for that log stream.
 --
--- * 'cwllsDatetimeFormat' - Specifies how the time stamp is extracted from logs. For more information, see the <http://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/AgentReference.html CloudWatch Logs Agent Reference> .
+-- * 'cwllsDatetimeFormat' - Specifies how the time stamp is extracted from logs. For more information, see the <https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/AgentReference.html CloudWatch Logs Agent Reference> .
 --
 -- * 'cwllsEncoding' - Specifies the encoding of the log file so that the file can be read correctly. The default is @utf_8@ . Encodings supported by Python @codecs.decode()@ can be used here.
 --
@@ -124,7 +124,7 @@ cwllsMultiLineStartPattern = lens _cwllsMultiLineStartPattern (\ s a -> s{_cwlls
 cwllsInitialPosition :: Lens' CloudWatchLogsLogStream (Maybe CloudWatchLogsInitialPosition)
 cwllsInitialPosition = lens _cwllsInitialPosition (\ s a -> s{_cwllsInitialPosition = a})
 
--- | Specifies how the time stamp is extracted from logs. For more information, see the <http://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/AgentReference.html CloudWatch Logs Agent Reference> .
+-- | Specifies how the time stamp is extracted from logs. For more information, see the <https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/AgentReference.html CloudWatch Logs Agent Reference> .
 cwllsDatetimeFormat :: Lens' CloudWatchLogsLogStream (Maybe Text)
 cwllsDatetimeFormat = lens _cwllsDatetimeFormat (\ s a -> s{_cwllsDatetimeFormat = a})
 

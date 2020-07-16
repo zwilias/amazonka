@@ -23,7 +23,9 @@ import Network.AWS.S3.Internal
 import Network.AWS.S3.Types.Event
 import Network.AWS.S3.Types.NotificationConfigurationFilter
 
--- | Container for specifying the configuration when you want Amazon S3 to publish events to an Amazon Simple Notification Service (Amazon SNS) topic.
+-- | A container for specifying the configuration for publication of messages to an Amazon Simple Notification Service (Amazon SNS) topic when Amazon S3 detects specified events.
+--
+--
 --
 -- /See:/ 'topicConfiguration' smart constructor.
 data TopicConfiguration = TopicConfiguration'{_tcId
@@ -43,9 +45,9 @@ data TopicConfiguration = TopicConfiguration'{_tcId
 --
 -- * 'tcFilter' - Undocumented member.
 --
--- * 'tcTopicARN' - Amazon SNS topic ARN to which Amazon S3 will publish a message when it detects events of specified type.
+-- * 'tcTopicARN' - The Amazon Resource Name (ARN) of the Amazon SNS topic to which Amazon S3 publishes a message when it detects events of the specified type.
 --
--- * 'tcEvents' - Undocumented member.
+-- * 'tcEvents' - The Amazon S3 bucket event about which to send notifications. For more information, see <https://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html Supported Event Types> in the /Amazon Simple Storage Service Developer Guide/ .
 topicConfiguration
     :: Text -- ^ 'tcTopicARN'
     -> TopicConfiguration
@@ -62,11 +64,11 @@ tcId = lens _tcId (\ s a -> s{_tcId = a})
 tcFilter :: Lens' TopicConfiguration (Maybe NotificationConfigurationFilter)
 tcFilter = lens _tcFilter (\ s a -> s{_tcFilter = a})
 
--- | Amazon SNS topic ARN to which Amazon S3 will publish a message when it detects events of specified type.
+-- | The Amazon Resource Name (ARN) of the Amazon SNS topic to which Amazon S3 publishes a message when it detects events of the specified type.
 tcTopicARN :: Lens' TopicConfiguration Text
 tcTopicARN = lens _tcTopicARN (\ s a -> s{_tcTopicARN = a})
 
--- | Undocumented member.
+-- | The Amazon S3 bucket event about which to send notifications. For more information, see <https://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html Supported Event Types> in the /Amazon Simple Storage Service Developer Guide/ .
 tcEvents :: Lens' TopicConfiguration [Event]
 tcEvents = lens _tcEvents (\ s a -> s{_tcEvents = a}) . _Coerce
 

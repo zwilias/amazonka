@@ -37,7 +37,7 @@ data SanitizationWarning = SanitizationWarning'{_swReason
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'swReason' - Required. The reason for which the XML elements or attributes were sanitized. Possible values: DISALLOWED_ELEMENT_REMOVED, DISALLOWED_ATTRIBUTE_REMOVED, INVALID_ATTRIBUTE_VALUE_REMOVED DISALLOWED_ELEMENT_REMOVED shows that the provided element isn't allowed and has been removed. DISALLOWED_ATTRIBUTE_REMOVED shows that the provided attribute isn't allowed and has been removed. INVALID_ATTRIBUTE_VALUE_REMOVED shows that the provided value for the attribute isn't allowed and has been removed.
+-- * 'swReason' - Required. The reason for which the XML elements or attributes were sanitized.
 --
 -- * 'swAttributeName' - The name of the XML attribute that has been sanitized.
 --
@@ -48,7 +48,7 @@ sanitizationWarning
   = SanitizationWarning'{_swReason = Nothing,
                          _swAttributeName = Nothing, _swElementName = Nothing}
 
--- | Required. The reason for which the XML elements or attributes were sanitized. Possible values: DISALLOWED_ELEMENT_REMOVED, DISALLOWED_ATTRIBUTE_REMOVED, INVALID_ATTRIBUTE_VALUE_REMOVED DISALLOWED_ELEMENT_REMOVED shows that the provided element isn't allowed and has been removed. DISALLOWED_ATTRIBUTE_REMOVED shows that the provided attribute isn't allowed and has been removed. INVALID_ATTRIBUTE_VALUE_REMOVED shows that the provided value for the attribute isn't allowed and has been removed.
+-- | Required. The reason for which the XML elements or attributes were sanitized.
 swReason :: Lens' SanitizationWarning (Maybe SanitizationWarningReason)
 swReason = lens _swReason (\ s a -> s{_swReason = a})
 

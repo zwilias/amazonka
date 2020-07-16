@@ -44,13 +44,13 @@ data Group = Group'{_gPath :: !Text,
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'gPath' - The path to the group. For more information about paths, see <http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html IAM Identifiers> in the /Using IAM/ guide. 
+-- * 'gPath' - The path to the group. For more information about paths, see <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html IAM Identifiers> in the /IAM User Guide/ . 
 --
 -- * 'gGroupName' - The friendly name that identifies the group.
 --
--- * 'gGroupId' - The stable and unique string identifying the group. For more information about IDs, see <http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html IAM Identifiers> in the /Using IAM/ guide. 
+-- * 'gGroupId' - The stable and unique string identifying the group. For more information about IDs, see <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html IAM Identifiers> in the /IAM User Guide/ . 
 --
--- * 'gARN' - The Amazon Resource Name (ARN) specifying the group. For more information about ARNs and how to use them in policies, see <http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html IAM Identifiers> in the /Using IAM/ guide. 
+-- * 'gARN' - The Amazon Resource Name (ARN) specifying the group. For more information about ARNs and how to use them in policies, see <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html IAM Identifiers> in the /IAM User Guide/ . 
 --
 -- * 'gCreateDate' - The date and time, in <http://www.iso.org/iso/iso8601 ISO 8601 date-time format> , when the group was created.
 group'
@@ -66,7 +66,7 @@ group' pPath_ pGroupName_ pGroupId_ pARN_
            _gGroupId = pGroupId_, _gARN = pARN_,
            _gCreateDate = _Time # pCreateDate_}
 
--- | The path to the group. For more information about paths, see <http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html IAM Identifiers> in the /Using IAM/ guide. 
+-- | The path to the group. For more information about paths, see <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html IAM Identifiers> in the /IAM User Guide/ . 
 gPath :: Lens' Group Text
 gPath = lens _gPath (\ s a -> s{_gPath = a})
 
@@ -74,11 +74,11 @@ gPath = lens _gPath (\ s a -> s{_gPath = a})
 gGroupName :: Lens' Group Text
 gGroupName = lens _gGroupName (\ s a -> s{_gGroupName = a})
 
--- | The stable and unique string identifying the group. For more information about IDs, see <http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html IAM Identifiers> in the /Using IAM/ guide. 
+-- | The stable and unique string identifying the group. For more information about IDs, see <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html IAM Identifiers> in the /IAM User Guide/ . 
 gGroupId :: Lens' Group Text
 gGroupId = lens _gGroupId (\ s a -> s{_gGroupId = a})
 
--- | The Amazon Resource Name (ARN) specifying the group. For more information about ARNs and how to use them in policies, see <http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html IAM Identifiers> in the /Using IAM/ guide. 
+-- | The Amazon Resource Name (ARN) specifying the group. For more information about ARNs and how to use them in policies, see <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html IAM Identifiers> in the /IAM User Guide/ . 
 gARN :: Lens' Group Text
 gARN = lens _gARN (\ s a -> s{_gARN = a})
 

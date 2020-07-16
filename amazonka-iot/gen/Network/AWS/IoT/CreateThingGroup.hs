@@ -29,6 +29,7 @@ module Network.AWS.IoT.CreateThingGroup
     -- * Request Lenses
     , ctgParentGroupName
     , ctgThingGroupProperties
+    , ctgTags
     , ctgThingGroupName
 
     -- * Destructuring the Response
@@ -53,6 +54,7 @@ data CreateThingGroup = CreateThingGroup'{_ctgParentGroupName
                                           :: !(Maybe Text),
                                           _ctgThingGroupProperties ::
                                           !(Maybe ThingGroupProperties),
+                                          _ctgTags :: !(Maybe [Tag]),
                                           _ctgThingGroupName :: !Text}
                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -64,6 +66,8 @@ data CreateThingGroup = CreateThingGroup'{_ctgParentGroupName
 --
 -- * 'ctgThingGroupProperties' - The thing group properties.
 --
+-- * 'ctgTags' - Metadata which can be used to manage the thing group.
+--
 -- * 'ctgThingGroupName' - The thing group name to create.
 createThingGroup
     :: Text -- ^ 'ctgThingGroupName'
@@ -71,6 +75,7 @@ createThingGroup
 createThingGroup pThingGroupName_
   = CreateThingGroup'{_ctgParentGroupName = Nothing,
                       _ctgThingGroupProperties = Nothing,
+                      _ctgTags = Nothing,
                       _ctgThingGroupName = pThingGroupName_}
 
 -- | The name of the parent thing group.
@@ -80,6 +85,10 @@ ctgParentGroupName = lens _ctgParentGroupName (\ s a -> s{_ctgParentGroupName = 
 -- | The thing group properties.
 ctgThingGroupProperties :: Lens' CreateThingGroup (Maybe ThingGroupProperties)
 ctgThingGroupProperties = lens _ctgThingGroupProperties (\ s a -> s{_ctgThingGroupProperties = a})
+
+-- | Metadata which can be used to manage the thing group.
+ctgTags :: Lens' CreateThingGroup [Tag]
+ctgTags = lens _ctgTags (\ s a -> s{_ctgTags = a}) . _Default . _Coerce
 
 -- | The thing group name to create.
 ctgThingGroupName :: Lens' CreateThingGroup Text
@@ -109,7 +118,8 @@ instance ToJSON CreateThingGroup where
               (catMaybes
                  [("parentGroupName" .=) <$> _ctgParentGroupName,
                   ("thingGroupProperties" .=) <$>
-                    _ctgThingGroupProperties])
+                    _ctgThingGroupProperties,
+                  ("tags" .=) <$> _ctgTags])
 
 instance ToPath CreateThingGroup where
         toPath CreateThingGroup'{..}

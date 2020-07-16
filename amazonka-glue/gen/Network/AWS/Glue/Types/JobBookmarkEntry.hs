@@ -20,7 +20,7 @@ module Network.AWS.Glue.Types.JobBookmarkEntry where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | Defines a point which a job can resume processing.
+-- | Defines a point that a job can resume processing.
 --
 --
 --
@@ -28,7 +28,9 @@ import Network.AWS.Prelude
 data JobBookmarkEntry = JobBookmarkEntry'{_jbeJobName
                                           :: !(Maybe Text),
                                           _jbeRun :: !(Maybe Int),
+                                          _jbeRunId :: !(Maybe Text),
                                           _jbeVersion :: !(Maybe Int),
+                                          _jbePreviousRunId :: !(Maybe Text),
                                           _jbeAttempt :: !(Maybe Int),
                                           _jbeJobBookmark :: !(Maybe Text)}
                           deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -37,11 +39,15 @@ data JobBookmarkEntry = JobBookmarkEntry'{_jbeJobName
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'jbeJobName' - Name of the job in question.
+-- * 'jbeJobName' - The name of the job in question.
 --
 -- * 'jbeRun' - The run ID number.
 --
--- * 'jbeVersion' - Version of the job.
+-- * 'jbeRunId' - The run ID number.
+--
+-- * 'jbeVersion' - The version of the job.
+--
+-- * 'jbePreviousRunId' - The unique run identifier associated with the previous job run.
 --
 -- * 'jbeAttempt' - The attempt ID number.
 --
@@ -50,10 +56,11 @@ jobBookmarkEntry
     :: JobBookmarkEntry
 jobBookmarkEntry
   = JobBookmarkEntry'{_jbeJobName = Nothing,
-                      _jbeRun = Nothing, _jbeVersion = Nothing,
+                      _jbeRun = Nothing, _jbeRunId = Nothing,
+                      _jbeVersion = Nothing, _jbePreviousRunId = Nothing,
                       _jbeAttempt = Nothing, _jbeJobBookmark = Nothing}
 
--- | Name of the job in question.
+-- | The name of the job in question.
 jbeJobName :: Lens' JobBookmarkEntry (Maybe Text)
 jbeJobName = lens _jbeJobName (\ s a -> s{_jbeJobName = a})
 
@@ -61,9 +68,17 @@ jbeJobName = lens _jbeJobName (\ s a -> s{_jbeJobName = a})
 jbeRun :: Lens' JobBookmarkEntry (Maybe Int)
 jbeRun = lens _jbeRun (\ s a -> s{_jbeRun = a})
 
--- | Version of the job.
+-- | The run ID number.
+jbeRunId :: Lens' JobBookmarkEntry (Maybe Text)
+jbeRunId = lens _jbeRunId (\ s a -> s{_jbeRunId = a})
+
+-- | The version of the job.
 jbeVersion :: Lens' JobBookmarkEntry (Maybe Int)
 jbeVersion = lens _jbeVersion (\ s a -> s{_jbeVersion = a})
+
+-- | The unique run identifier associated with the previous job run.
+jbePreviousRunId :: Lens' JobBookmarkEntry (Maybe Text)
+jbePreviousRunId = lens _jbePreviousRunId (\ s a -> s{_jbePreviousRunId = a})
 
 -- | The attempt ID number.
 jbeAttempt :: Lens' JobBookmarkEntry (Maybe Int)
@@ -79,7 +94,9 @@ instance FromJSON JobBookmarkEntry where
               (\ x ->
                  JobBookmarkEntry' <$>
                    (x .:? "JobName") <*> (x .:? "Run") <*>
-                     (x .:? "Version")
+                     (x .:? "RunId")
+                     <*> (x .:? "Version")
+                     <*> (x .:? "PreviousRunId")
                      <*> (x .:? "Attempt")
                      <*> (x .:? "JobBookmark"))
 

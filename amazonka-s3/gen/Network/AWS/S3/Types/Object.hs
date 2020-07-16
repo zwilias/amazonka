@@ -23,28 +23,32 @@ import Network.AWS.S3.Internal
 import Network.AWS.S3.Types.ObjectStorageClass
 import Network.AWS.S3.Types.Owner
 
--- | /See:/ 'object'' smart constructor.
+-- | An object consists of data and its descriptive metadata.
+--
+--
+--
+-- /See:/ 'object'' smart constructor.
 data Object = Object'{_oOwner :: !(Maybe Owner),
                       _oETag :: !ETag, _oSize :: !Int, _oKey :: !ObjectKey,
                       _oStorageClass :: !ObjectStorageClass,
-                      _oLastModified :: !RFC822}
+                      _oLastModified :: !ISO8601}
                 deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'Object' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'oOwner' - Undocumented member.
+-- * 'oOwner' - The owner of the object
 --
--- * 'oETag' - Undocumented member.
+-- * 'oETag' - The entity tag is an MD5 hash of the object. ETag reflects only changes to the contents of an object, not its metadata.
 --
--- * 'oSize' - Undocumented member.
+-- * 'oSize' - Size in bytes of the object
 --
--- * 'oKey' - Undocumented member.
+-- * 'oKey' - The name that you assign to an object. You use the object key to retrieve the object.
 --
 -- * 'oStorageClass' - The class of storage used to store the object.
 --
--- * 'oLastModified' - Undocumented member.
+-- * 'oLastModified' - The date the Object was Last Modified
 object'
     :: ETag -- ^ 'oETag'
     -> Int -- ^ 'oSize'
@@ -59,19 +63,19 @@ object' pETag_ pSize_ pKey_ pStorageClass_
             _oStorageClass = pStorageClass_,
             _oLastModified = _Time # pLastModified_}
 
--- | Undocumented member.
+-- | The owner of the object
 oOwner :: Lens' Object (Maybe Owner)
 oOwner = lens _oOwner (\ s a -> s{_oOwner = a})
 
--- | Undocumented member.
+-- | The entity tag is an MD5 hash of the object. ETag reflects only changes to the contents of an object, not its metadata.
 oETag :: Lens' Object ETag
 oETag = lens _oETag (\ s a -> s{_oETag = a})
 
--- | Undocumented member.
+-- | Size in bytes of the object
 oSize :: Lens' Object Int
 oSize = lens _oSize (\ s a -> s{_oSize = a})
 
--- | Undocumented member.
+-- | The name that you assign to an object. You use the object key to retrieve the object.
 oKey :: Lens' Object ObjectKey
 oKey = lens _oKey (\ s a -> s{_oKey = a})
 
@@ -79,7 +83,7 @@ oKey = lens _oKey (\ s a -> s{_oKey = a})
 oStorageClass :: Lens' Object ObjectStorageClass
 oStorageClass = lens _oStorageClass (\ s a -> s{_oStorageClass = a})
 
--- | Undocumented member.
+-- | The date the Object was Last Modified
 oLastModified :: Lens' Object UTCTime
 oLastModified = lens _oLastModified (\ s a -> s{_oLastModified = a}) . _Time
 

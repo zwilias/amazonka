@@ -57,7 +57,7 @@ data StartMaintenance = StartMaintenance'{_smEngineAttributes
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'smEngineAttributes' - Engine attributes that are specific to the server on which you want to run maintenance. 
+-- * 'smEngineAttributes' - Engine attributes that are specific to the server on which you want to run maintenance. __Attributes accepted in a StartMaintenance request for Chef__      * @CHEF_MAJOR_UPGRADE@ : If a Chef Automate server is eligible for upgrade to Chef Automate 2, add this engine attribute to a @StartMaintenance@ request and set the value to @true@ to upgrade the server to Chef Automate 2. For more information, see <https://docs.aws.amazon.com/opsworks/latest/userguide/opscm-a2upgrade.html Upgrade an AWS OpsWorks for Chef Automate Server to Chef Automate 2> . 
 --
 -- * 'smServerName' - The name of the server on which to run maintenance. 
 startMaintenance
@@ -67,7 +67,7 @@ startMaintenance pServerName_
   = StartMaintenance'{_smEngineAttributes = Nothing,
                       _smServerName = pServerName_}
 
--- | Engine attributes that are specific to the server on which you want to run maintenance. 
+-- | Engine attributes that are specific to the server on which you want to run maintenance. __Attributes accepted in a StartMaintenance request for Chef__      * @CHEF_MAJOR_UPGRADE@ : If a Chef Automate server is eligible for upgrade to Chef Automate 2, add this engine attribute to a @StartMaintenance@ request and set the value to @true@ to upgrade the server to Chef Automate 2. For more information, see <https://docs.aws.amazon.com/opsworks/latest/userguide/opscm-a2upgrade.html Upgrade an AWS OpsWorks for Chef Automate Server to Chef Automate 2> . 
 smEngineAttributes :: Lens' StartMaintenance [EngineAttribute]
 smEngineAttributes = lens _smEngineAttributes (\ s a -> s{_smEngineAttributes = a}) . _Default . _Coerce
 

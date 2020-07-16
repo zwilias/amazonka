@@ -42,6 +42,8 @@ data MatchmakingTicket = MatchmakingTicket'{_mtStatus
                                             !(Maybe Nat),
                                             _mtStatusMessage :: !(Maybe Text),
                                             _mtEndTime :: !(Maybe POSIX),
+                                            _mtConfigurationARN ::
+                                            !(Maybe Text),
                                             _mtStatusReason :: !(Maybe Text),
                                             _mtPlayers :: !(Maybe [Player])}
                            deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -50,7 +52,7 @@ data MatchmakingTicket = MatchmakingTicket'{_mtStatus
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'mtStatus' - Current status of the matchmaking request.     * __QUEUED__ -- The matchmaking request has been received and is currently waiting to be processed.     * __SEARCHING__ -- The matchmaking request is currently being processed.      * __REQUIRES_ACCEPTANCE__ -- A match has been proposed and the players must accept the match (see 'AcceptMatch' ). This status is used only with requests that use a matchmaking configuration with a player acceptance requirement.     * __PLACING__ -- The FlexMatch engine has matched players and is in the process of placing a new game session for the match.     * __COMPLETED__ -- Players have been matched and a game session is ready to host the players. A ticket in this state contains the necessary connection information for players.     * __FAILED__ -- The matchmaking request was not completed. Tickets with players who fail to accept a proposed match are placed in @FAILED@ status.     * __CANCELLED__ -- The matchmaking request was canceled with a call to 'StopMatchmaking' .     * __TIMED_OUT__ -- The matchmaking request was not successful within the duration specified in the matchmaking configuration. 
+-- * 'mtStatus' - Current status of the matchmaking request.     * __QUEUED__ -- The matchmaking request has been received and is currently waiting to be processed.     * __SEARCHING__ -- The matchmaking request is currently being processed.      * __REQUIRES_ACCEPTANCE__ -- A match has been proposed and the players must accept the match (see 'AcceptMatch' ). This status is used only with requests that use a matchmaking configuration with a player acceptance requirement.     * __PLACING__ -- The FlexMatch engine has matched players and is in the process of placing a new game session for the match.     * __COMPLETED__ -- Players have been matched and a game session is ready to host the players. A ticket in this state contains the necessary connection information for players.     * __FAILED__ -- The matchmaking request was not completed.     * __CANCELLED__ -- The matchmaking request was canceled. This may be the result of a call to 'StopMatchmaking' or a proposed match that one or more players failed to accept.     * __TIMED_OUT__ -- The matchmaking request was not successful within the duration specified in the matchmaking configuration. 
 --
 -- * 'mtConfigurationName' - Name of the 'MatchmakingConfiguration' that is used with this ticket. Matchmaking configurations determine how players are grouped into a match and how a new game session is created for the match.
 --
@@ -58,13 +60,15 @@ data MatchmakingTicket = MatchmakingTicket'{_mtStatus
 --
 -- * 'mtGameSessionConnectionInfo' - Identifier and connection information of the game session created for the match. This information is added to the ticket only after the matchmaking request has been successfully completed.
 --
--- * 'mtTicketId' - Unique identifier for a matchmaking ticket.
+-- * 'mtTicketId' - A unique identifier for a matchmaking ticket.
 --
 -- * 'mtEstimatedWaitTime' - Average amount of time (in seconds) that players are currently waiting for a match. If there is not enough recent data, this property may be empty.
 --
 -- * 'mtStatusMessage' - Additional information about the current status.
 --
 -- * 'mtEndTime' - Time stamp indicating when this matchmaking request stopped being processed due to success, failure, or cancellation. Format is a number expressed in Unix time as milliseconds (for example "1469498468.057").
+--
+-- * 'mtConfigurationARN' - The Amazon Resource Name (<https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html ARN> ) associated with the GameLift matchmaking configuration resource that is used with this ticket.
 --
 -- * 'mtStatusReason' - Code to explain the current status. For example, a status reason may indicate when a ticket has returned to @SEARCHING@ status after a proposed match fails to receive player acceptances.
 --
@@ -79,9 +83,10 @@ matchmakingTicket
                        _mtTicketId = Nothing,
                        _mtEstimatedWaitTime = Nothing,
                        _mtStatusMessage = Nothing, _mtEndTime = Nothing,
+                       _mtConfigurationARN = Nothing,
                        _mtStatusReason = Nothing, _mtPlayers = Nothing}
 
--- | Current status of the matchmaking request.     * __QUEUED__ -- The matchmaking request has been received and is currently waiting to be processed.     * __SEARCHING__ -- The matchmaking request is currently being processed.      * __REQUIRES_ACCEPTANCE__ -- A match has been proposed and the players must accept the match (see 'AcceptMatch' ). This status is used only with requests that use a matchmaking configuration with a player acceptance requirement.     * __PLACING__ -- The FlexMatch engine has matched players and is in the process of placing a new game session for the match.     * __COMPLETED__ -- Players have been matched and a game session is ready to host the players. A ticket in this state contains the necessary connection information for players.     * __FAILED__ -- The matchmaking request was not completed. Tickets with players who fail to accept a proposed match are placed in @FAILED@ status.     * __CANCELLED__ -- The matchmaking request was canceled with a call to 'StopMatchmaking' .     * __TIMED_OUT__ -- The matchmaking request was not successful within the duration specified in the matchmaking configuration. 
+-- | Current status of the matchmaking request.     * __QUEUED__ -- The matchmaking request has been received and is currently waiting to be processed.     * __SEARCHING__ -- The matchmaking request is currently being processed.      * __REQUIRES_ACCEPTANCE__ -- A match has been proposed and the players must accept the match (see 'AcceptMatch' ). This status is used only with requests that use a matchmaking configuration with a player acceptance requirement.     * __PLACING__ -- The FlexMatch engine has matched players and is in the process of placing a new game session for the match.     * __COMPLETED__ -- Players have been matched and a game session is ready to host the players. A ticket in this state contains the necessary connection information for players.     * __FAILED__ -- The matchmaking request was not completed.     * __CANCELLED__ -- The matchmaking request was canceled. This may be the result of a call to 'StopMatchmaking' or a proposed match that one or more players failed to accept.     * __TIMED_OUT__ -- The matchmaking request was not successful within the duration specified in the matchmaking configuration. 
 mtStatus :: Lens' MatchmakingTicket (Maybe MatchmakingConfigurationStatus)
 mtStatus = lens _mtStatus (\ s a -> s{_mtStatus = a})
 
@@ -97,7 +102,7 @@ mtStartTime = lens _mtStartTime (\ s a -> s{_mtStartTime = a}) . mapping _Time
 mtGameSessionConnectionInfo :: Lens' MatchmakingTicket (Maybe GameSessionConnectionInfo)
 mtGameSessionConnectionInfo = lens _mtGameSessionConnectionInfo (\ s a -> s{_mtGameSessionConnectionInfo = a})
 
--- | Unique identifier for a matchmaking ticket.
+-- | A unique identifier for a matchmaking ticket.
 mtTicketId :: Lens' MatchmakingTicket (Maybe Text)
 mtTicketId = lens _mtTicketId (\ s a -> s{_mtTicketId = a})
 
@@ -112,6 +117,10 @@ mtStatusMessage = lens _mtStatusMessage (\ s a -> s{_mtStatusMessage = a})
 -- | Time stamp indicating when this matchmaking request stopped being processed due to success, failure, or cancellation. Format is a number expressed in Unix time as milliseconds (for example "1469498468.057").
 mtEndTime :: Lens' MatchmakingTicket (Maybe UTCTime)
 mtEndTime = lens _mtEndTime (\ s a -> s{_mtEndTime = a}) . mapping _Time
+
+-- | The Amazon Resource Name (<https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html ARN> ) associated with the GameLift matchmaking configuration resource that is used with this ticket.
+mtConfigurationARN :: Lens' MatchmakingTicket (Maybe Text)
+mtConfigurationARN = lens _mtConfigurationARN (\ s a -> s{_mtConfigurationARN = a})
 
 -- | Code to explain the current status. For example, a status reason may indicate when a ticket has returned to @SEARCHING@ status after a proposed match fails to receive player acceptances.
 mtStatusReason :: Lens' MatchmakingTicket (Maybe Text)
@@ -133,6 +142,7 @@ instance FromJSON MatchmakingTicket where
                      <*> (x .:? "EstimatedWaitTime")
                      <*> (x .:? "StatusMessage")
                      <*> (x .:? "EndTime")
+                     <*> (x .:? "ConfigurationArn")
                      <*> (x .:? "StatusReason")
                      <*> (x .:? "Players" .!= mempty))
 

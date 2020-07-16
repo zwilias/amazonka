@@ -28,7 +28,7 @@ module Network.AWS.MediaLive.Types.DvbSubDestinationShadowColor (
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | Placeholder documentation for DvbSubDestinationShadowColor
+-- | Dvb Sub Destination Shadow Color
 data DvbSubDestinationShadowColor = DvbSubDestinationShadowColor' (CI
                                                                      Text)
                                       deriving (Eq, Ord, Read, Show, Data,

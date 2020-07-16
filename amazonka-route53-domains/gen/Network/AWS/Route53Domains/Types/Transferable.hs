@@ -28,14 +28,14 @@ module Network.AWS.Route53Domains.Types.Transferable (
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | Whether the domain name can be transferred to Amazon Route 53.
+-- | Whether the domain name can be transferred to Route 53.
 --
 --
 -- Valid values:
 --
---     * TRANSFERABLE    * The domain name can be transferred to Amazon Route 53.
+--     * TRANSFERABLE    * The domain name can be transferred to Route 53.
 --
---     * UNTRANSFERRABLE    * The domain name can't be transferred to Amazon Route 53.
+--     * UNTRANSFERRABLE    * The domain name can't be transferred to Route 53.
 --
 --     * DONT_KNOW    * Reserved for future use.
 --

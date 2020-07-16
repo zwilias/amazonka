@@ -52,7 +52,7 @@ data ReservedNodeOffering = ReservedNodeOffering'{_rnoReservedNodeOfferingType
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'rnoReservedNodeOfferingType' - Undocumented member.
+-- * 'rnoReservedNodeOfferingType' - 
 --
 -- * 'rnoCurrencyCode' - The currency code for the compute nodes offering.
 --
@@ -81,7 +81,7 @@ reservedNodeOffering
                           _rnoNodeType = Nothing, _rnoFixedPrice = Nothing,
                           _rnoDuration = Nothing}
 
--- | Undocumented member.
+-- | 
 rnoReservedNodeOfferingType :: Lens' ReservedNodeOffering (Maybe ReservedNodeOfferingType)
 rnoReservedNodeOfferingType = lens _rnoReservedNodeOfferingType (\ s a -> s{_rnoReservedNodeOfferingType = a})
 

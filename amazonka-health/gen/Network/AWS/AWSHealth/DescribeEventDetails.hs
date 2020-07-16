@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Returns detailed information about one or more specified events. Information includes standard event data (region, service, etc., as returned by 'DescribeEvents' ), a detailed event description, and possible additional metadata that depends upon the nature of the event. Affected entities are not included; to retrieve those, use the 'DescribeAffectedEntities' operation.
+-- Returns detailed information about one or more specified events. Information includes standard event data (region, service, and so on, as returned by 'DescribeEvents' ), a detailed event description, and possible additional metadata that depends upon the nature of the event. Affected entities are not included; to retrieve those, use the 'DescribeAffectedEntities' operation.
 --
 --
 -- If a specified event cannot be retrieved, an error message is returned for that event.
@@ -61,7 +61,7 @@ data DescribeEventDetails = DescribeEventDetails'{_dedLocale
 --
 -- * 'dedLocale' - The locale (language) to return information in. English (en) is the default and the only supported value at this time.
 --
--- * 'dedEventARNs' - A list of event ARNs (unique identifiers). For example: @"arn:aws:health:us-east-1::event/AWS_EC2_MAINTENANCE_5331", "arn:aws:health:us-west-1::event/AWS_EBS_LOST_VOLUME_xyz"@ 
+-- * 'dedEventARNs' - A list of event ARNs (unique identifiers). For example: @"arn:aws:health:us-east-1::event/EC2/EC2_INSTANCE_RETIREMENT_SCHEDULED/EC2_INSTANCE_RETIREMENT_SCHEDULED_ABC123-CDE456", "arn:aws:health:us-west-1::event/EBS/AWS_EBS_LOST_VOLUME/AWS_EBS_LOST_VOLUME_CHI789_JKL101"@ 
 describeEventDetails
     :: NonEmpty Text -- ^ 'dedEventARNs'
     -> DescribeEventDetails
@@ -73,7 +73,7 @@ describeEventDetails pEventARNs_
 dedLocale :: Lens' DescribeEventDetails (Maybe Text)
 dedLocale = lens _dedLocale (\ s a -> s{_dedLocale = a})
 
--- | A list of event ARNs (unique identifiers). For example: @"arn:aws:health:us-east-1::event/AWS_EC2_MAINTENANCE_5331", "arn:aws:health:us-west-1::event/AWS_EBS_LOST_VOLUME_xyz"@ 
+-- | A list of event ARNs (unique identifiers). For example: @"arn:aws:health:us-east-1::event/EC2/EC2_INSTANCE_RETIREMENT_SCHEDULED/EC2_INSTANCE_RETIREMENT_SCHEDULED_ABC123-CDE456", "arn:aws:health:us-west-1::event/EBS/AWS_EBS_LOST_VOLUME/AWS_EBS_LOST_VOLUME_CHI789_JKL101"@ 
 dedEventARNs :: Lens' DescribeEventDetails (NonEmpty Text)
 dedEventARNs = lens _dedEventARNs (\ s a -> s{_dedEventARNs = a}) . _List1
 

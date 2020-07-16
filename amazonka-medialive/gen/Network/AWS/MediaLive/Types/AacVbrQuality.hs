@@ -29,7 +29,7 @@ module Network.AWS.MediaLive.Types.AacVbrQuality (
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | Placeholder documentation for AacVbrQuality
+-- | Aac Vbr Quality
 data AacVbrQuality = AacVbrQuality' (CI Text)
                        deriving (Eq, Ord, Read, Show, Data, Typeable,
                                  Generic)

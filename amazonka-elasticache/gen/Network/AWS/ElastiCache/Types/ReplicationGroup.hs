@@ -19,6 +19,7 @@ module Network.AWS.ElastiCache.Types.ReplicationGroup where
 
 import Network.AWS.ElastiCache.Types.AutomaticFailoverStatus
 import Network.AWS.ElastiCache.Types.Endpoint
+import Network.AWS.ElastiCache.Types.GlobalReplicationGroupInfo
 import Network.AWS.ElastiCache.Types.NodeGroup
 import Network.AWS.ElastiCache.Types.ReplicationGroupPendingModifiedValues
 import Network.AWS.Lens
@@ -29,8 +30,9 @@ import Network.AWS.Prelude
 --
 --
 -- /See:/ 'replicationGroup' smart constructor.
-data ReplicationGroup = ReplicationGroup'{_rgStatus
-                                          :: !(Maybe Text),
+data ReplicationGroup = ReplicationGroup'{_rgAuthTokenLastModifiedDate
+                                          :: !(Maybe ISO8601),
+                                          _rgStatus :: !(Maybe Text),
                                           _rgCacheNodeType :: !(Maybe Text),
                                           _rgNodeGroups :: !(Maybe [NodeGroup]),
                                           _rgSnapshottingClusterId ::
@@ -45,6 +47,7 @@ data ReplicationGroup = ReplicationGroup'{_rgStatus
                                           !(Maybe Endpoint),
                                           _rgAuthTokenEnabled :: !(Maybe Bool),
                                           _rgMemberClusters :: !(Maybe [Text]),
+                                          _rgKMSKeyId :: !(Maybe Text),
                                           _rgSnapshotRetentionLimit ::
                                           !(Maybe Int),
                                           _rgDescription :: !(Maybe Text),
@@ -53,6 +56,8 @@ data ReplicationGroup = ReplicationGroup'{_rgStatus
                                           _rgPendingModifiedValues ::
                                           !(Maybe
                                               ReplicationGroupPendingModifiedValues),
+                                          _rgGlobalReplicationGroupInfo ::
+                                          !(Maybe GlobalReplicationGroupInfo),
                                           _rgAutomaticFailover ::
                                           !(Maybe AutomaticFailoverStatus)}
                           deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -60,6 +65,8 @@ data ReplicationGroup = ReplicationGroup'{_rgStatus
 -- | Creates a value of 'ReplicationGroup' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'rgAuthTokenLastModifiedDate' - The date the auth token was last modified
 --
 -- * 'rgStatus' - The current state of this replication group - @creating@ , @available@ , @modifying@ , @deleting@ , @create-failed@ , @snapshotting@ .
 --
@@ -71,9 +78,9 @@ data ReplicationGroup = ReplicationGroup'{_rgStatus
 --
 -- * 'rgClusterEnabled' - A flag indicating whether or not this replication group is cluster enabled; i.e., whether its data can be partitioned across multiple shards (API/CLI: node groups). Valid values: @true@ | @false@ 
 --
--- * 'rgAtRestEncryptionEnabled' - A flag that enables encryption at-rest when set to @true@ . You cannot modify the value of @AtRestEncryptionEnabled@ after the cluster is created. To enable encryption at-rest on a cluster you must set @AtRestEncryptionEnabled@ to @true@ when you create a cluster. Default: @false@ 
+-- * 'rgAtRestEncryptionEnabled' - A flag that enables encryption at-rest when set to @true@ . You cannot modify the value of @AtRestEncryptionEnabled@ after the cluster is created. To enable encryption at-rest on a cluster you must set @AtRestEncryptionEnabled@ to @true@ when you create a cluster. __Required:__ Only available when creating a replication group in an Amazon VPC using redis version @3.2.6@ , @4.x@ or later. Default: @false@ 
 --
--- * 'rgTransitEncryptionEnabled' - A flag that enables in-transit encryption when set to @true@ . You cannot modify the value of @TransitEncryptionEnabled@ after the cluster is created. To enable in-transit encryption on a cluster you must set @TransitEncryptionEnabled@ to @true@ when you create a cluster. Default: @false@ 
+-- * 'rgTransitEncryptionEnabled' - A flag that enables in-transit encryption when set to @true@ . You cannot modify the value of @TransitEncryptionEnabled@ after the cluster is created. To enable in-transit encryption on a cluster you must set @TransitEncryptionEnabled@ to @true@ when you create a cluster. __Required:__ Only available when creating a replication group in an Amazon VPC using redis version @3.2.6@ , @4.x@ or later. Default: @false@ 
 --
 -- * 'rgSnapshotWindow' - The daily time range (in UTC) during which ElastiCache begins taking a daily snapshot of your node group (shard). Example: @05:00-09:00@  If you do not specify this parameter, ElastiCache automatically chooses an appropriate time range.
 --
@@ -81,7 +88,9 @@ data ReplicationGroup = ReplicationGroup'{_rgStatus
 --
 -- * 'rgAuthTokenEnabled' - A flag that enables using an @AuthToken@ (password) when issuing Redis commands. Default: @false@ 
 --
--- * 'rgMemberClusters' - The identifiers of all the nodes that are part of this replication group.
+-- * 'rgMemberClusters' - The names of all the cache clusters that are part of this replication group.
+--
+-- * 'rgKMSKeyId' - The ID of the KMS key used to encrypt the disk in the cluster.
 --
 -- * 'rgSnapshotRetentionLimit' - The number of days for which ElastiCache retains automatic cluster snapshots before deleting them. For example, if you set @SnapshotRetentionLimit@ to 5, a snapshot that was taken today is retained for 5 days before being deleted. /Important:/ If the value of @SnapshotRetentionLimit@ is set to zero (0), backups are turned off.
 --
@@ -91,12 +100,16 @@ data ReplicationGroup = ReplicationGroup'{_rgStatus
 --
 -- * 'rgPendingModifiedValues' - A group of settings to be applied to the replication group, either immediately or during the next maintenance window.
 --
--- * 'rgAutomaticFailover' - Indicates the status of Multi-AZ with automatic failover for this Redis replication group. Amazon ElastiCache for Redis does not support Multi-AZ with automatic failover on:     * Redis versions earlier than 2.8.6.     * Redis (cluster mode disabled): T1 and T2 cache node types.     * Redis (cluster mode enabled): T1 node types.
+-- * 'rgGlobalReplicationGroupInfo' - The name of the Global Datastore and role of this replication group in the Global Datastore.
+--
+-- * 'rgAutomaticFailover' - Indicates the status of Multi-AZ with automatic failover for this Redis replication group. Amazon ElastiCache for Redis does not support Multi-AZ with automatic failover on:     * Redis versions earlier than 2.8.6.     * Redis (cluster mode disabled): T1 node types.     * Redis (cluster mode enabled): T1 node types.
 replicationGroup
     :: ReplicationGroup
 replicationGroup
-  = ReplicationGroup'{_rgStatus = Nothing,
-                      _rgCacheNodeType = Nothing, _rgNodeGroups = Nothing,
+  = ReplicationGroup'{_rgAuthTokenLastModifiedDate =
+                        Nothing,
+                      _rgStatus = Nothing, _rgCacheNodeType = Nothing,
+                      _rgNodeGroups = Nothing,
                       _rgSnapshottingClusterId = Nothing,
                       _rgClusterEnabled = Nothing,
                       _rgAtRestEncryptionEnabled = Nothing,
@@ -104,12 +117,17 @@ replicationGroup
                       _rgSnapshotWindow = Nothing,
                       _rgConfigurationEndpoint = Nothing,
                       _rgAuthTokenEnabled = Nothing,
-                      _rgMemberClusters = Nothing,
+                      _rgMemberClusters = Nothing, _rgKMSKeyId = Nothing,
                       _rgSnapshotRetentionLimit = Nothing,
                       _rgDescription = Nothing,
                       _rgReplicationGroupId = Nothing,
                       _rgPendingModifiedValues = Nothing,
+                      _rgGlobalReplicationGroupInfo = Nothing,
                       _rgAutomaticFailover = Nothing}
+
+-- | The date the auth token was last modified
+rgAuthTokenLastModifiedDate :: Lens' ReplicationGroup (Maybe UTCTime)
+rgAuthTokenLastModifiedDate = lens _rgAuthTokenLastModifiedDate (\ s a -> s{_rgAuthTokenLastModifiedDate = a}) . mapping _Time
 
 -- | The current state of this replication group - @creating@ , @available@ , @modifying@ , @deleting@ , @create-failed@ , @snapshotting@ .
 rgStatus :: Lens' ReplicationGroup (Maybe Text)
@@ -131,11 +149,11 @@ rgSnapshottingClusterId = lens _rgSnapshottingClusterId (\ s a -> s{_rgSnapshott
 rgClusterEnabled :: Lens' ReplicationGroup (Maybe Bool)
 rgClusterEnabled = lens _rgClusterEnabled (\ s a -> s{_rgClusterEnabled = a})
 
--- | A flag that enables encryption at-rest when set to @true@ . You cannot modify the value of @AtRestEncryptionEnabled@ after the cluster is created. To enable encryption at-rest on a cluster you must set @AtRestEncryptionEnabled@ to @true@ when you create a cluster. Default: @false@ 
+-- | A flag that enables encryption at-rest when set to @true@ . You cannot modify the value of @AtRestEncryptionEnabled@ after the cluster is created. To enable encryption at-rest on a cluster you must set @AtRestEncryptionEnabled@ to @true@ when you create a cluster. __Required:__ Only available when creating a replication group in an Amazon VPC using redis version @3.2.6@ , @4.x@ or later. Default: @false@ 
 rgAtRestEncryptionEnabled :: Lens' ReplicationGroup (Maybe Bool)
 rgAtRestEncryptionEnabled = lens _rgAtRestEncryptionEnabled (\ s a -> s{_rgAtRestEncryptionEnabled = a})
 
--- | A flag that enables in-transit encryption when set to @true@ . You cannot modify the value of @TransitEncryptionEnabled@ after the cluster is created. To enable in-transit encryption on a cluster you must set @TransitEncryptionEnabled@ to @true@ when you create a cluster. Default: @false@ 
+-- | A flag that enables in-transit encryption when set to @true@ . You cannot modify the value of @TransitEncryptionEnabled@ after the cluster is created. To enable in-transit encryption on a cluster you must set @TransitEncryptionEnabled@ to @true@ when you create a cluster. __Required:__ Only available when creating a replication group in an Amazon VPC using redis version @3.2.6@ , @4.x@ or later. Default: @false@ 
 rgTransitEncryptionEnabled :: Lens' ReplicationGroup (Maybe Bool)
 rgTransitEncryptionEnabled = lens _rgTransitEncryptionEnabled (\ s a -> s{_rgTransitEncryptionEnabled = a})
 
@@ -151,9 +169,13 @@ rgConfigurationEndpoint = lens _rgConfigurationEndpoint (\ s a -> s{_rgConfigura
 rgAuthTokenEnabled :: Lens' ReplicationGroup (Maybe Bool)
 rgAuthTokenEnabled = lens _rgAuthTokenEnabled (\ s a -> s{_rgAuthTokenEnabled = a})
 
--- | The identifiers of all the nodes that are part of this replication group.
+-- | The names of all the cache clusters that are part of this replication group.
 rgMemberClusters :: Lens' ReplicationGroup [Text]
 rgMemberClusters = lens _rgMemberClusters (\ s a -> s{_rgMemberClusters = a}) . _Default . _Coerce
+
+-- | The ID of the KMS key used to encrypt the disk in the cluster.
+rgKMSKeyId :: Lens' ReplicationGroup (Maybe Text)
+rgKMSKeyId = lens _rgKMSKeyId (\ s a -> s{_rgKMSKeyId = a})
 
 -- | The number of days for which ElastiCache retains automatic cluster snapshots before deleting them. For example, if you set @SnapshotRetentionLimit@ to 5, a snapshot that was taken today is retained for 5 days before being deleted. /Important:/ If the value of @SnapshotRetentionLimit@ is set to zero (0), backups are turned off.
 rgSnapshotRetentionLimit :: Lens' ReplicationGroup (Maybe Int)
@@ -171,14 +193,21 @@ rgReplicationGroupId = lens _rgReplicationGroupId (\ s a -> s{_rgReplicationGrou
 rgPendingModifiedValues :: Lens' ReplicationGroup (Maybe ReplicationGroupPendingModifiedValues)
 rgPendingModifiedValues = lens _rgPendingModifiedValues (\ s a -> s{_rgPendingModifiedValues = a})
 
--- | Indicates the status of Multi-AZ with automatic failover for this Redis replication group. Amazon ElastiCache for Redis does not support Multi-AZ with automatic failover on:     * Redis versions earlier than 2.8.6.     * Redis (cluster mode disabled): T1 and T2 cache node types.     * Redis (cluster mode enabled): T1 node types.
+-- | The name of the Global Datastore and role of this replication group in the Global Datastore.
+rgGlobalReplicationGroupInfo :: Lens' ReplicationGroup (Maybe GlobalReplicationGroupInfo)
+rgGlobalReplicationGroupInfo = lens _rgGlobalReplicationGroupInfo (\ s a -> s{_rgGlobalReplicationGroupInfo = a})
+
+-- | Indicates the status of Multi-AZ with automatic failover for this Redis replication group. Amazon ElastiCache for Redis does not support Multi-AZ with automatic failover on:     * Redis versions earlier than 2.8.6.     * Redis (cluster mode disabled): T1 node types.     * Redis (cluster mode enabled): T1 node types.
 rgAutomaticFailover :: Lens' ReplicationGroup (Maybe AutomaticFailoverStatus)
 rgAutomaticFailover = lens _rgAutomaticFailover (\ s a -> s{_rgAutomaticFailover = a})
 
 instance FromXML ReplicationGroup where
         parseXML x
           = ReplicationGroup' <$>
-              (x .@? "Status") <*> (x .@? "CacheNodeType") <*>
+              (x .@? "AuthTokenLastModifiedDate") <*>
+                (x .@? "Status")
+                <*> (x .@? "CacheNodeType")
+                <*>
                 (x .@? "NodeGroups" .!@ mempty >>=
                    may (parseXMLList "NodeGroup"))
                 <*> (x .@? "SnapshottingClusterId")
@@ -191,10 +220,12 @@ instance FromXML ReplicationGroup where
                 <*>
                 (x .@? "MemberClusters" .!@ mempty >>=
                    may (parseXMLList "ClusterId"))
+                <*> (x .@? "KmsKeyId")
                 <*> (x .@? "SnapshotRetentionLimit")
                 <*> (x .@? "Description")
                 <*> (x .@? "ReplicationGroupId")
                 <*> (x .@? "PendingModifiedValues")
+                <*> (x .@? "GlobalReplicationGroupInfo")
                 <*> (x .@? "AutomaticFailover")
 
 instance Hashable ReplicationGroup where

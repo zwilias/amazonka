@@ -19,6 +19,7 @@
 module Network.AWS.ElasticSearch.Types.LogType (
   LogType (
     ..
+    , EsApplicationLogs
     , IndexSlowLogs
     , SearchSlowLogs
     )
@@ -27,7 +28,7 @@ module Network.AWS.ElasticSearch.Types.LogType (
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | Type of Log File, it can be one of the following:     * INDEX_SLOW_LOGS: Index slow logs contains insert requests that took more time than configured index query log threshold to execute.    * SEARCH_SLOW_LOGS: Search slow logs contains search queries that took more time than configured search query log threshold to execute.
+-- | Type of Log File, it can be one of the following:     * INDEX_SLOW_LOGS: Index slow logs contain insert requests that took more time than configured index query log threshold to execute.    * SEARCH_SLOW_LOGS: Search slow logs contain search queries that took more time than configured search query log threshold to execute.    * ES_APPLICATION_LOGS: Elasticsearch application logs contain information about errors and warnings raised during the operation of the service and can be useful for troubleshooting.
 --
 --
 --
@@ -36,6 +37,9 @@ data LogType = LogType' (CI Text)
                  deriving (Eq, Ord, Read, Show, Data, Typeable,
                            Generic)
 
+pattern EsApplicationLogs :: LogType
+pattern EsApplicationLogs = LogType' "ES_APPLICATION_LOGS"
+
 pattern IndexSlowLogs :: LogType
 pattern IndexSlowLogs = LogType' "INDEX_SLOW_LOGS"
 
@@ -43,6 +47,7 @@ pattern SearchSlowLogs :: LogType
 pattern SearchSlowLogs = LogType' "SEARCH_SLOW_LOGS"
 
 {-# COMPLETE
+  EsApplicationLogs,
   IndexSlowLogs,
   SearchSlowLogs,
   LogType' #-}
@@ -59,19 +64,21 @@ instance ToText LogType where
 --   fromEnum is a partial function, and will error on values unknown at generation time.
 instance Enum LogType where
     toEnum i = case i of
-        0 -> IndexSlowLogs
-        1 -> SearchSlowLogs
+        0 -> EsApplicationLogs
+        1 -> IndexSlowLogs
+        2 -> SearchSlowLogs
         _ -> (error . showText) $ "Unknown index for LogType: " <> toText i
     fromEnum x = case x of
-        IndexSlowLogs -> 0
-        SearchSlowLogs -> 1
+        EsApplicationLogs -> 0
+        IndexSlowLogs -> 1
+        SearchSlowLogs -> 2
         LogType' name -> (error . showText) $ "Unknown LogType: " <> original name
 
 -- | Represents the bounds of /known/ $LogType.
 --   AWS may have added more since the source was generated.
 --   This instance exists only for backward compatibility.
 instance Bounded LogType where
-    minBound = IndexSlowLogs
+    minBound = EsApplicationLogs
     maxBound = SearchSlowLogs
 
 instance Hashable     LogType

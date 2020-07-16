@@ -27,7 +27,7 @@ module Network.AWS.MediaLive.Types.HlsSegmentationMode (
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | Placeholder documentation for HlsSegmentationMode
+-- | Hls Segmentation Mode
 data HlsSegmentationMode = HlsSegmentationMode' (CI
                                                    Text)
                              deriving (Eq, Ord, Read, Show, Data, Typeable,

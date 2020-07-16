@@ -25,6 +25,7 @@ import Network.AWS.Snowball.Types.JobType
 import Network.AWS.Snowball.Types.Notification
 import Network.AWS.Snowball.Types.ShippingOption
 import Network.AWS.Snowball.Types.SnowballType
+import Network.AWS.Snowball.Types.TaxDocuments
 
 -- | Contains metadata about a specific cluster.
 --
@@ -48,6 +49,8 @@ data ClusterMetadata = ClusterMetadata'{_cmJobType ::
                                         _cmClusterId :: !(Maybe Text),
                                         _cmCreationDate :: !(Maybe POSIX),
                                         _cmDescription :: !(Maybe Text),
+                                        _cmTaxDocuments ::
+                                        !(Maybe TaxDocuments),
                                         _cmRoleARN :: !(Maybe Text)}
                          deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -57,7 +60,7 @@ data ClusterMetadata = ClusterMetadata'{_cmJobType ::
 --
 -- * 'cmJobType' - The type of job for this cluster. Currently, the only job type supported for clusters is @LOCAL_USE@ .
 --
--- * 'cmKMSKeyARN' - The @KmsKeyARN@ Amazon Resource Name (ARN) associated with this cluster. This ARN was created using the <http://docs.aws.amazon.com/kms/latest/APIReference/API_CreateKey.html CreateKey> API action in AWS Key Management Service (AWS KMS).
+-- * 'cmKMSKeyARN' - The @KmsKeyARN@ Amazon Resource Name (ARN) associated with this cluster. This ARN was created using the <https://docs.aws.amazon.com/kms/latest/APIReference/API_CreateKey.html CreateKey> API action in AWS Key Management Service (AWS KMS).
 --
 -- * 'cmClusterState' - The current status of the cluster.
 --
@@ -67,9 +70,9 @@ data ClusterMetadata = ClusterMetadata'{_cmJobType ::
 --
 -- * 'cmAddressId' - The automatically generated ID for a specific address.
 --
--- * 'cmSnowballType' - The type of AWS Snowball appliance to use for this cluster. Currently, the only supported appliance type for cluster jobs is @EDGE@ .
+-- * 'cmSnowballType' - The type of AWS Snowball device to use for this cluster. Currently, the only supported device type for cluster jobs is @EDGE@ . For more information, see <https://docs.aws.amazon.com/snowball/latest/developer-guide/device-differences.html Snowball Edge Device Options> in the Snowball Edge Developer Guide.
 --
--- * 'cmShippingOption' - The shipping speed for each node in this cluster. This speed doesn't dictate how soon you'll get each Snowball Edge appliance, rather it represents how quickly each appliance moves to its destination while in transit. Regional shipping speeds are as follows:     * In Australia, you have access to express shipping. Typically, appliances shipped express are delivered in about a day.     * In the European Union (EU), you have access to express shipping. Typically, Snowball Edges shipped express are delivered in about a day. In addition, most countries in the EU have access to standard shipping, which typically takes less than a week, one way.     * In India, Snowball Edges are delivered in one to seven days.     * In the US, you have access to one-day shipping and two-day shipping.
+-- * 'cmShippingOption' - The shipping speed for each node in this cluster. This speed doesn't dictate how soon you'll get each Snowball Edge device, rather it represents how quickly each device moves to its destination while in transit. Regional shipping speeds are as follows:     * In Australia, you have access to express shipping. Typically, devices shipped express are delivered in about a day.     * In the European Union (EU), you have access to express shipping. Typically, Snowball Edges shipped express are delivered in about a day. In addition, most countries in the EU have access to standard shipping, which typically takes less than a week, one way.     * In India, Snowball Edges are delivered in one to seven days.     * In the US, you have access to one-day shipping and two-day shipping.
 --
 -- * 'cmResources' - The arrays of 'JobResource' objects that can include updated 'S3Resource' objects or 'LambdaResource' objects.
 --
@@ -79,7 +82,9 @@ data ClusterMetadata = ClusterMetadata'{_cmJobType ::
 --
 -- * 'cmDescription' - The optional description of the cluster.
 --
--- * 'cmRoleARN' - The role ARN associated with this cluster. This ARN was created using the <http://docs.aws.amazon.com/IAM/latest/APIReference/API_CreateRole.html CreateRole> API action in AWS Identity and Access Management (IAM).
+-- * 'cmTaxDocuments' - The tax documents required in your AWS Region.
+--
+-- * 'cmRoleARN' - The role ARN associated with this cluster. This ARN was created using the <https://docs.aws.amazon.com/IAM/latest/APIReference/API_CreateRole.html CreateRole> API action in AWS Identity and Access Management (IAM).
 clusterMetadata
     :: ClusterMetadata
 clusterMetadata
@@ -90,13 +95,14 @@ clusterMetadata
                      _cmAddressId = Nothing, _cmSnowballType = Nothing,
                      _cmShippingOption = Nothing, _cmResources = Nothing,
                      _cmClusterId = Nothing, _cmCreationDate = Nothing,
-                     _cmDescription = Nothing, _cmRoleARN = Nothing}
+                     _cmDescription = Nothing, _cmTaxDocuments = Nothing,
+                     _cmRoleARN = Nothing}
 
 -- | The type of job for this cluster. Currently, the only job type supported for clusters is @LOCAL_USE@ .
 cmJobType :: Lens' ClusterMetadata (Maybe JobType)
 cmJobType = lens _cmJobType (\ s a -> s{_cmJobType = a})
 
--- | The @KmsKeyARN@ Amazon Resource Name (ARN) associated with this cluster. This ARN was created using the <http://docs.aws.amazon.com/kms/latest/APIReference/API_CreateKey.html CreateKey> API action in AWS Key Management Service (AWS KMS).
+-- | The @KmsKeyARN@ Amazon Resource Name (ARN) associated with this cluster. This ARN was created using the <https://docs.aws.amazon.com/kms/latest/APIReference/API_CreateKey.html CreateKey> API action in AWS Key Management Service (AWS KMS).
 cmKMSKeyARN :: Lens' ClusterMetadata (Maybe Text)
 cmKMSKeyARN = lens _cmKMSKeyARN (\ s a -> s{_cmKMSKeyARN = a})
 
@@ -116,11 +122,11 @@ cmForwardingAddressId = lens _cmForwardingAddressId (\ s a -> s{_cmForwardingAdd
 cmAddressId :: Lens' ClusterMetadata (Maybe Text)
 cmAddressId = lens _cmAddressId (\ s a -> s{_cmAddressId = a})
 
--- | The type of AWS Snowball appliance to use for this cluster. Currently, the only supported appliance type for cluster jobs is @EDGE@ .
+-- | The type of AWS Snowball device to use for this cluster. Currently, the only supported device type for cluster jobs is @EDGE@ . For more information, see <https://docs.aws.amazon.com/snowball/latest/developer-guide/device-differences.html Snowball Edge Device Options> in the Snowball Edge Developer Guide.
 cmSnowballType :: Lens' ClusterMetadata (Maybe SnowballType)
 cmSnowballType = lens _cmSnowballType (\ s a -> s{_cmSnowballType = a})
 
--- | The shipping speed for each node in this cluster. This speed doesn't dictate how soon you'll get each Snowball Edge appliance, rather it represents how quickly each appliance moves to its destination while in transit. Regional shipping speeds are as follows:     * In Australia, you have access to express shipping. Typically, appliances shipped express are delivered in about a day.     * In the European Union (EU), you have access to express shipping. Typically, Snowball Edges shipped express are delivered in about a day. In addition, most countries in the EU have access to standard shipping, which typically takes less than a week, one way.     * In India, Snowball Edges are delivered in one to seven days.     * In the US, you have access to one-day shipping and two-day shipping.
+-- | The shipping speed for each node in this cluster. This speed doesn't dictate how soon you'll get each Snowball Edge device, rather it represents how quickly each device moves to its destination while in transit. Regional shipping speeds are as follows:     * In Australia, you have access to express shipping. Typically, devices shipped express are delivered in about a day.     * In the European Union (EU), you have access to express shipping. Typically, Snowball Edges shipped express are delivered in about a day. In addition, most countries in the EU have access to standard shipping, which typically takes less than a week, one way.     * In India, Snowball Edges are delivered in one to seven days.     * In the US, you have access to one-day shipping and two-day shipping.
 cmShippingOption :: Lens' ClusterMetadata (Maybe ShippingOption)
 cmShippingOption = lens _cmShippingOption (\ s a -> s{_cmShippingOption = a})
 
@@ -140,7 +146,11 @@ cmCreationDate = lens _cmCreationDate (\ s a -> s{_cmCreationDate = a}) . mappin
 cmDescription :: Lens' ClusterMetadata (Maybe Text)
 cmDescription = lens _cmDescription (\ s a -> s{_cmDescription = a})
 
--- | The role ARN associated with this cluster. This ARN was created using the <http://docs.aws.amazon.com/IAM/latest/APIReference/API_CreateRole.html CreateRole> API action in AWS Identity and Access Management (IAM).
+-- | The tax documents required in your AWS Region.
+cmTaxDocuments :: Lens' ClusterMetadata (Maybe TaxDocuments)
+cmTaxDocuments = lens _cmTaxDocuments (\ s a -> s{_cmTaxDocuments = a})
+
+-- | The role ARN associated with this cluster. This ARN was created using the <https://docs.aws.amazon.com/IAM/latest/APIReference/API_CreateRole.html CreateRole> API action in AWS Identity and Access Management (IAM).
 cmRoleARN :: Lens' ClusterMetadata (Maybe Text)
 cmRoleARN = lens _cmRoleARN (\ s a -> s{_cmRoleARN = a})
 
@@ -160,6 +170,7 @@ instance FromJSON ClusterMetadata where
                      <*> (x .:? "ClusterId")
                      <*> (x .:? "CreationDate")
                      <*> (x .:? "Description")
+                     <*> (x .:? "TaxDocuments")
                      <*> (x .:? "RoleARN"))
 
 instance Hashable ClusterMetadata where

@@ -19,6 +19,9 @@
 module Network.AWS.S3.Types.StorageClass (
   StorageClass (
     ..
+    , DeepArchive
+    , Glacier
+    , IntelligentTiering
     , OnezoneIA
     , ReducedRedundancy
     , Standard
@@ -34,6 +37,15 @@ data StorageClass = StorageClass' (CI Text)
                       deriving (Eq, Ord, Read, Show, Data, Typeable,
                                 Generic)
 
+pattern DeepArchive :: StorageClass
+pattern DeepArchive = StorageClass' "DEEP_ARCHIVE"
+
+pattern Glacier :: StorageClass
+pattern Glacier = StorageClass' "GLACIER"
+
+pattern IntelligentTiering :: StorageClass
+pattern IntelligentTiering = StorageClass' "INTELLIGENT_TIERING"
+
 pattern OnezoneIA :: StorageClass
 pattern OnezoneIA = StorageClass' "ONEZONE_IA"
 
@@ -47,6 +59,9 @@ pattern StandardIA :: StorageClass
 pattern StandardIA = StorageClass' "STANDARD_IA"
 
 {-# COMPLETE
+  DeepArchive,
+  Glacier,
+  IntelligentTiering,
   OnezoneIA,
   ReducedRedundancy,
   Standard,
@@ -65,23 +80,29 @@ instance ToText StorageClass where
 --   fromEnum is a partial function, and will error on values unknown at generation time.
 instance Enum StorageClass where
     toEnum i = case i of
-        0 -> OnezoneIA
-        1 -> ReducedRedundancy
-        2 -> Standard
-        3 -> StandardIA
+        0 -> DeepArchive
+        1 -> Glacier
+        2 -> IntelligentTiering
+        3 -> OnezoneIA
+        4 -> ReducedRedundancy
+        5 -> Standard
+        6 -> StandardIA
         _ -> (error . showText) $ "Unknown index for StorageClass: " <> toText i
     fromEnum x = case x of
-        OnezoneIA -> 0
-        ReducedRedundancy -> 1
-        Standard -> 2
-        StandardIA -> 3
+        DeepArchive -> 0
+        Glacier -> 1
+        IntelligentTiering -> 2
+        OnezoneIA -> 3
+        ReducedRedundancy -> 4
+        Standard -> 5
+        StandardIA -> 6
         StorageClass' name -> (error . showText) $ "Unknown StorageClass: " <> original name
 
 -- | Represents the bounds of /known/ $StorageClass.
 --   AWS may have added more since the source was generated.
 --   This instance exists only for backward compatibility.
 instance Bounded StorageClass where
-    minBound = OnezoneIA
+    minBound = DeepArchive
     maxBound = StandardIA
 
 instance Hashable     StorageClass

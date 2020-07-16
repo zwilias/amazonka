@@ -23,6 +23,8 @@ import Network.AWS.Prelude
 -- | The configuration setting for the log types to be enabled for export to CloudWatch Logs for a specific DB instance or DB cluster.
 --
 --
+-- The @EnableLogTypes@ and @DisableLogTypes@ arrays determine which logs will be exported (or not exported) to CloudWatch Logs. The values within these arrays depend on the DB engine being used. For more information, see <https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_LogAccess.html#USER_LogAccess.Procedural.UploadtoCloudWatch Publishing Database Logs to Amazon CloudWatch Logs > in the /Amazon RDS User Guide/ .
+--
 --
 -- /See:/ 'cloudwatchLogsExportConfiguration' smart constructor.
 data CloudwatchLogsExportConfiguration = CloudwatchLogsExportConfiguration'{_clecDisableLogTypes

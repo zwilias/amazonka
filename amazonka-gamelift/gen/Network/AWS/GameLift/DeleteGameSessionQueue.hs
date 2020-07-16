@@ -21,7 +21,11 @@
 -- Deletes a game session queue. This action means that any 'StartGameSessionPlacement' requests that reference this queue will fail. To delete a queue, specify the queue name.
 --
 --
--- Queue-related operations include:
+-- __Learn more__ 
+--
+-- <https://docs.aws.amazon.com/gamelift/latest/developerguide/queues-intro.html Using Multi-Region Queues> 
+--
+-- __Related operations__ 
 --
 --     * 'CreateGameSessionQueue' 
 --
@@ -55,7 +59,7 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
--- | Represents the input for a request action.
+-- | Represents the input for a request action. 
 --
 --
 --
@@ -69,14 +73,14 @@ newtype DeleteGameSessionQueue = DeleteGameSessionQueue'{_dgsqName
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dgsqName' - Descriptive label that is associated with game session queue. Queue names must be unique within each region.
+-- * 'dgsqName' - A descriptive label that is associated with game session queue. Queue names must be unique within each Region. You can use either the queue ID or ARN value. 
 deleteGameSessionQueue
     :: Text -- ^ 'dgsqName'
     -> DeleteGameSessionQueue
 deleteGameSessionQueue pName_
   = DeleteGameSessionQueue'{_dgsqName = pName_}
 
--- | Descriptive label that is associated with game session queue. Queue names must be unique within each region.
+-- | A descriptive label that is associated with game session queue. Queue names must be unique within each Region. You can use either the queue ID or ARN value. 
 dgsqName :: Lens' DeleteGameSessionQueue Text
 dgsqName = lens _dgsqName (\ s a -> s{_dgsqName = a})
 

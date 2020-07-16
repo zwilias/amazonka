@@ -18,10 +18,14 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Retrieves properties for a build. To request a build record, specify a build ID. If successful, an object containing the build properties is returned.
+-- Retrieves properties for a custom game build. To request a build resource, specify a build ID. If successful, an object containing the build properties is returned.
 --
 --
--- Build-related operations include:
+-- __Learn more__ 
+--
+-- <https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-build-intro.html Upload a Custom Server Build> 
+--
+-- __Related operations__ 
 --
 --     * 'CreateBuild' 
 --
@@ -71,14 +75,14 @@ newtype DescribeBuild = DescribeBuild'{_dBuildId ::
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dBuildId' - Unique identifier for a build to retrieve properties for.
+-- * 'dBuildId' - A unique identifier for a build to retrieve properties for. You can use either the build ID or ARN value. 
 describeBuild
     :: Text -- ^ 'dBuildId'
     -> DescribeBuild
 describeBuild pBuildId_
   = DescribeBuild'{_dBuildId = pBuildId_}
 
--- | Unique identifier for a build to retrieve properties for.
+-- | A unique identifier for a build to retrieve properties for. You can use either the build ID or ARN value. 
 dBuildId :: Lens' DescribeBuild Text
 dBuildId = lens _dBuildId (\ s a -> s{_dBuildId = a})
 

@@ -33,7 +33,7 @@
 --
 --
 --
--- If the caller doesn't have sufficient permissions to invoke the action, or the parameter values fall outside the specified constraints, the action fails. The associated event attribute's @cause@ parameter is set to @OPERATION_NOT_PERMITTED@ . For details and example IAM policies, see <http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html Using IAM to Manage Access to Amazon SWF Workflows> in the /Amazon SWF Developer Guide/ .
+-- If the caller doesn't have sufficient permissions to invoke the action, or the parameter values fall outside the specified constraints, the action fails. The associated event attribute's @cause@ parameter is set to @OPERATION_NOT_PERMITTED@ . For details and example IAM policies, see <https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html Using IAM to Manage Access to Amazon SWF Workflows> in the /Amazon SWF Developer Guide/ .
 --
 --
 -- This operation returns paginated results.
@@ -77,11 +77,11 @@ data ListDomains = ListDomains'{_ldNextPageToken ::
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'ldNextPageToken' - If a @NextPageToken@ was returned by a previous call, there are more results available. To retrieve the next page of results, make the call again using the returned token in @nextPageToken@ . Keep all other arguments unchanged. The configured @maximumPageSize@ determines how many results can be returned in a single call.
+-- * 'ldNextPageToken' - If @NextPageToken@ is returned there are more results available. The value of @NextPageToken@ is a unique pagination token for each page. Make the call again using the returned token to retrieve the next page. Keep all other arguments unchanged. Each pagination token expires after 60 seconds. Using an expired pagination token will return a @400@ error: "@Specified token has exceeded its maximum lifetime@ ".  The configured @maximumPageSize@ determines how many results can be returned in a single call. 
 --
 -- * 'ldReverseOrder' - When set to @true@ , returns the results in reverse order. By default, the results are returned in ascending alphabetical order by @name@ of the domains.
 --
--- * 'ldMaximumPageSize' - The maximum number of results that are returned per call. @nextPageToken@ can be used to obtain futher pages of results. The default is 1000, which is the maximum allowed page size. You can, however, specify a page size /smaller/ than the maximum. This is an upper limit only; the actual number of results returned per call may be fewer than the specified maximum.
+-- * 'ldMaximumPageSize' - The maximum number of results that are returned per call. Use @nextPageToken@ to obtain further pages of results. 
 --
 -- * 'ldRegistrationStatus' - Specifies the registration status of the domains to list.
 listDomains
@@ -93,7 +93,7 @@ listDomains pRegistrationStatus_
                  _ldMaximumPageSize = Nothing,
                  _ldRegistrationStatus = pRegistrationStatus_}
 
--- | If a @NextPageToken@ was returned by a previous call, there are more results available. To retrieve the next page of results, make the call again using the returned token in @nextPageToken@ . Keep all other arguments unchanged. The configured @maximumPageSize@ determines how many results can be returned in a single call.
+-- | If @NextPageToken@ is returned there are more results available. The value of @NextPageToken@ is a unique pagination token for each page. Make the call again using the returned token to retrieve the next page. Keep all other arguments unchanged. Each pagination token expires after 60 seconds. Using an expired pagination token will return a @400@ error: "@Specified token has exceeded its maximum lifetime@ ".  The configured @maximumPageSize@ determines how many results can be returned in a single call. 
 ldNextPageToken :: Lens' ListDomains (Maybe Text)
 ldNextPageToken = lens _ldNextPageToken (\ s a -> s{_ldNextPageToken = a})
 
@@ -101,7 +101,7 @@ ldNextPageToken = lens _ldNextPageToken (\ s a -> s{_ldNextPageToken = a})
 ldReverseOrder :: Lens' ListDomains (Maybe Bool)
 ldReverseOrder = lens _ldReverseOrder (\ s a -> s{_ldReverseOrder = a})
 
--- | The maximum number of results that are returned per call. @nextPageToken@ can be used to obtain futher pages of results. The default is 1000, which is the maximum allowed page size. You can, however, specify a page size /smaller/ than the maximum. This is an upper limit only; the actual number of results returned per call may be fewer than the specified maximum.
+-- | The maximum number of results that are returned per call. Use @nextPageToken@ to obtain further pages of results. 
 ldMaximumPageSize :: Lens' ListDomains (Maybe Natural)
 ldMaximumPageSize = lens _ldMaximumPageSize (\ s a -> s{_ldMaximumPageSize = a}) . mapping _Nat
 

@@ -18,6 +18,7 @@
 module Network.AWS.CloudFormation.Types.StackResourceSummary where
 
 import Network.AWS.CloudFormation.Types.ResourceStatus
+import Network.AWS.CloudFormation.Types.StackResourceDriftInformationSummary
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
@@ -30,6 +31,9 @@ data StackResourceSummary = StackResourceSummary'{_srsPhysicalResourceId
                                                   :: !(Maybe Text),
                                                   _srsResourceStatusReason ::
                                                   !(Maybe Text),
+                                                  _srsDriftInformation ::
+                                                  !(Maybe
+                                                      StackResourceDriftInformationSummary),
                                                   _srsLogicalResourceId ::
                                                   !Text,
                                                   _srsResourceType :: !Text,
@@ -47,9 +51,11 @@ data StackResourceSummary = StackResourceSummary'{_srsPhysicalResourceId
 --
 -- * 'srsResourceStatusReason' - Success/failure message associated with the resource.
 --
+-- * 'srsDriftInformation' - Information about whether the resource's actual configuration differs, or has /drifted/ , from its expected configuration, as defined in the stack template and any values specified as template parameters. For more information, see <http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-stack-drift.html Detecting Unregulated Configuration Changes to Stacks and Resources> .
+--
 -- * 'srsLogicalResourceId' - The logical name of the resource specified in the template.
 --
--- * 'srsResourceType' - Type of resource. (For more information, go to <http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html AWS Resource Types Reference> in the AWS CloudFormation User Guide.)
+-- * 'srsResourceType' - Type of resource. (For more information, go to <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html AWS Resource Types Reference> in the AWS CloudFormation User Guide.)
 --
 -- * 'srsLastUpdatedTimestamp' - Time the status was updated.
 --
@@ -66,6 +72,7 @@ stackResourceSummary pLogicalResourceId_
   = StackResourceSummary'{_srsPhysicalResourceId =
                             Nothing,
                           _srsResourceStatusReason = Nothing,
+                          _srsDriftInformation = Nothing,
                           _srsLogicalResourceId = pLogicalResourceId_,
                           _srsResourceType = pResourceType_,
                           _srsLastUpdatedTimestamp =
@@ -80,11 +87,15 @@ srsPhysicalResourceId = lens _srsPhysicalResourceId (\ s a -> s{_srsPhysicalReso
 srsResourceStatusReason :: Lens' StackResourceSummary (Maybe Text)
 srsResourceStatusReason = lens _srsResourceStatusReason (\ s a -> s{_srsResourceStatusReason = a})
 
+-- | Information about whether the resource's actual configuration differs, or has /drifted/ , from its expected configuration, as defined in the stack template and any values specified as template parameters. For more information, see <http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-stack-drift.html Detecting Unregulated Configuration Changes to Stacks and Resources> .
+srsDriftInformation :: Lens' StackResourceSummary (Maybe StackResourceDriftInformationSummary)
+srsDriftInformation = lens _srsDriftInformation (\ s a -> s{_srsDriftInformation = a})
+
 -- | The logical name of the resource specified in the template.
 srsLogicalResourceId :: Lens' StackResourceSummary Text
 srsLogicalResourceId = lens _srsLogicalResourceId (\ s a -> s{_srsLogicalResourceId = a})
 
--- | Type of resource. (For more information, go to <http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html AWS Resource Types Reference> in the AWS CloudFormation User Guide.)
+-- | Type of resource. (For more information, go to <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html AWS Resource Types Reference> in the AWS CloudFormation User Guide.)
 srsResourceType :: Lens' StackResourceSummary Text
 srsResourceType = lens _srsResourceType (\ s a -> s{_srsResourceType = a})
 
@@ -101,6 +112,7 @@ instance FromXML StackResourceSummary where
           = StackResourceSummary' <$>
               (x .@? "PhysicalResourceId") <*>
                 (x .@? "ResourceStatusReason")
+                <*> (x .@? "DriftInformation")
                 <*> (x .@ "LogicalResourceId")
                 <*> (x .@ "ResourceType")
                 <*> (x .@ "LastUpdatedTimestamp")

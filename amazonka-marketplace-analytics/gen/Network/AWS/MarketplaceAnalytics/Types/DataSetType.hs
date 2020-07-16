@@ -31,13 +31,17 @@ module Network.AWS.MarketplaceAnalytics.Types.DataSetType (
     , DailyBusinessNewProductSubscribers
     , DailyBusinessUsageByInstanceType
     , DisbursedAmountByAgeOfDisbursedFunds
+    , DisbursedAmountByAgeOfPastDueFunds
     , DisbursedAmountByAgeOfUncollectedFunds
     , DisbursedAmountByCustomerGeo
     , DisbursedAmountByInstanceHours
     , DisbursedAmountByProduct
     , DisbursedAmountByProductWithUncollectedFunds
+    , DisbursedAmountByUncollectedFundsBreakdown
     , MonthlyRevenueAnnualSubscriptions
     , MonthlyRevenueBillingAndRevenueData
+    , MonthlyRevenueFieldDemonstrationUsage
+    , MonthlyRevenueFlexiblePaymentSchedule
     , SalesCompensationBilledRevenue
     , UsSalesAndUseTaxRecords
     )
@@ -86,6 +90,9 @@ pattern DailyBusinessUsageByInstanceType = DataSetType' "daily_business_usage_by
 pattern DisbursedAmountByAgeOfDisbursedFunds :: DataSetType
 pattern DisbursedAmountByAgeOfDisbursedFunds = DataSetType' "disbursed_amount_by_age_of_disbursed_funds"
 
+pattern DisbursedAmountByAgeOfPastDueFunds :: DataSetType
+pattern DisbursedAmountByAgeOfPastDueFunds = DataSetType' "disbursed_amount_by_age_of_past_due_funds"
+
 pattern DisbursedAmountByAgeOfUncollectedFunds :: DataSetType
 pattern DisbursedAmountByAgeOfUncollectedFunds = DataSetType' "disbursed_amount_by_age_of_uncollected_funds"
 
@@ -101,11 +108,20 @@ pattern DisbursedAmountByProduct = DataSetType' "disbursed_amount_by_product"
 pattern DisbursedAmountByProductWithUncollectedFunds :: DataSetType
 pattern DisbursedAmountByProductWithUncollectedFunds = DataSetType' "disbursed_amount_by_product_with_uncollected_funds"
 
+pattern DisbursedAmountByUncollectedFundsBreakdown :: DataSetType
+pattern DisbursedAmountByUncollectedFundsBreakdown = DataSetType' "disbursed_amount_by_uncollected_funds_breakdown"
+
 pattern MonthlyRevenueAnnualSubscriptions :: DataSetType
 pattern MonthlyRevenueAnnualSubscriptions = DataSetType' "monthly_revenue_annual_subscriptions"
 
 pattern MonthlyRevenueBillingAndRevenueData :: DataSetType
 pattern MonthlyRevenueBillingAndRevenueData = DataSetType' "monthly_revenue_billing_and_revenue_data"
+
+pattern MonthlyRevenueFieldDemonstrationUsage :: DataSetType
+pattern MonthlyRevenueFieldDemonstrationUsage = DataSetType' "monthly_revenue_field_demonstration_usage"
+
+pattern MonthlyRevenueFlexiblePaymentSchedule :: DataSetType
+pattern MonthlyRevenueFlexiblePaymentSchedule = DataSetType' "monthly_revenue_flexible_payment_schedule"
 
 pattern SalesCompensationBilledRevenue :: DataSetType
 pattern SalesCompensationBilledRevenue = DataSetType' "sales_compensation_billed_revenue"
@@ -126,13 +142,17 @@ pattern UsSalesAndUseTaxRecords = DataSetType' "us_sales_and_use_tax_records"
   DailyBusinessNewProductSubscribers,
   DailyBusinessUsageByInstanceType,
   DisbursedAmountByAgeOfDisbursedFunds,
+  DisbursedAmountByAgeOfPastDueFunds,
   DisbursedAmountByAgeOfUncollectedFunds,
   DisbursedAmountByCustomerGeo,
   DisbursedAmountByInstanceHours,
   DisbursedAmountByProduct,
   DisbursedAmountByProductWithUncollectedFunds,
+  DisbursedAmountByUncollectedFundsBreakdown,
   MonthlyRevenueAnnualSubscriptions,
   MonthlyRevenueBillingAndRevenueData,
+  MonthlyRevenueFieldDemonstrationUsage,
+  MonthlyRevenueFlexiblePaymentSchedule,
   SalesCompensationBilledRevenue,
   UsSalesAndUseTaxRecords,
   DataSetType' #-}
@@ -161,15 +181,19 @@ instance Enum DataSetType where
         9 -> DailyBusinessNewProductSubscribers
         10 -> DailyBusinessUsageByInstanceType
         11 -> DisbursedAmountByAgeOfDisbursedFunds
-        12 -> DisbursedAmountByAgeOfUncollectedFunds
-        13 -> DisbursedAmountByCustomerGeo
-        14 -> DisbursedAmountByInstanceHours
-        15 -> DisbursedAmountByProduct
-        16 -> DisbursedAmountByProductWithUncollectedFunds
-        17 -> MonthlyRevenueAnnualSubscriptions
-        18 -> MonthlyRevenueBillingAndRevenueData
-        19 -> SalesCompensationBilledRevenue
-        20 -> UsSalesAndUseTaxRecords
+        12 -> DisbursedAmountByAgeOfPastDueFunds
+        13 -> DisbursedAmountByAgeOfUncollectedFunds
+        14 -> DisbursedAmountByCustomerGeo
+        15 -> DisbursedAmountByInstanceHours
+        16 -> DisbursedAmountByProduct
+        17 -> DisbursedAmountByProductWithUncollectedFunds
+        18 -> DisbursedAmountByUncollectedFundsBreakdown
+        19 -> MonthlyRevenueAnnualSubscriptions
+        20 -> MonthlyRevenueBillingAndRevenueData
+        21 -> MonthlyRevenueFieldDemonstrationUsage
+        22 -> MonthlyRevenueFlexiblePaymentSchedule
+        23 -> SalesCompensationBilledRevenue
+        24 -> UsSalesAndUseTaxRecords
         _ -> (error . showText) $ "Unknown index for DataSetType: " <> toText i
     fromEnum x = case x of
         CustomerProfileByGeography -> 0
@@ -184,15 +208,19 @@ instance Enum DataSetType where
         DailyBusinessNewProductSubscribers -> 9
         DailyBusinessUsageByInstanceType -> 10
         DisbursedAmountByAgeOfDisbursedFunds -> 11
-        DisbursedAmountByAgeOfUncollectedFunds -> 12
-        DisbursedAmountByCustomerGeo -> 13
-        DisbursedAmountByInstanceHours -> 14
-        DisbursedAmountByProduct -> 15
-        DisbursedAmountByProductWithUncollectedFunds -> 16
-        MonthlyRevenueAnnualSubscriptions -> 17
-        MonthlyRevenueBillingAndRevenueData -> 18
-        SalesCompensationBilledRevenue -> 19
-        UsSalesAndUseTaxRecords -> 20
+        DisbursedAmountByAgeOfPastDueFunds -> 12
+        DisbursedAmountByAgeOfUncollectedFunds -> 13
+        DisbursedAmountByCustomerGeo -> 14
+        DisbursedAmountByInstanceHours -> 15
+        DisbursedAmountByProduct -> 16
+        DisbursedAmountByProductWithUncollectedFunds -> 17
+        DisbursedAmountByUncollectedFundsBreakdown -> 18
+        MonthlyRevenueAnnualSubscriptions -> 19
+        MonthlyRevenueBillingAndRevenueData -> 20
+        MonthlyRevenueFieldDemonstrationUsage -> 21
+        MonthlyRevenueFlexiblePaymentSchedule -> 22
+        SalesCompensationBilledRevenue -> 23
+        UsSalesAndUseTaxRecords -> 24
         DataSetType' name -> (error . showText) $ "Unknown DataSetType: " <> original name
 
 -- | Represents the bounds of /known/ $DataSetType.

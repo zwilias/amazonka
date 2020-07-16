@@ -20,7 +20,7 @@ module Network.AWS.Lambda.Types.FunctionCodeLocation where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | The object for the Lambda function location.
+-- | Details about a function's deployment package.
 --
 --
 --
@@ -35,20 +35,20 @@ data FunctionCodeLocation = FunctionCodeLocation'{_fclLocation
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'fclLocation' - The presigned URL you can use to download the function's .zip file that you previously uploaded. The URL is valid for up to 10 minutes.
+-- * 'fclLocation' - A presigned URL that you can use to download the deployment package.
 --
--- * 'fclRepositoryType' - The repository from which you can download the function.
+-- * 'fclRepositoryType' - The service that's hosting the file.
 functionCodeLocation
     :: FunctionCodeLocation
 functionCodeLocation
   = FunctionCodeLocation'{_fclLocation = Nothing,
                           _fclRepositoryType = Nothing}
 
--- | The presigned URL you can use to download the function's .zip file that you previously uploaded. The URL is valid for up to 10 minutes.
+-- | A presigned URL that you can use to download the deployment package.
 fclLocation :: Lens' FunctionCodeLocation (Maybe Text)
 fclLocation = lens _fclLocation (\ s a -> s{_fclLocation = a})
 
--- | The repository from which you can download the function.
+-- | The service that's hosting the file.
 fclRepositoryType :: Lens' FunctionCodeLocation (Maybe Text)
 fclRepositoryType = lens _fclRepositoryType (\ s a -> s{_fclRepositoryType = a})
 

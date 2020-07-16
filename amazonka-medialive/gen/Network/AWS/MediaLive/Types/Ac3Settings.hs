@@ -25,7 +25,7 @@ import Network.AWS.MediaLive.Types.Ac3LfeFilter
 import Network.AWS.MediaLive.Types.Ac3MetadataControl
 import Network.AWS.Prelude
 
--- | Placeholder documentation for Ac3Settings
+-- | Ac3 Settings
 --
 -- /See:/ 'ac3Settings' smart constructor.
 data Ac3Settings = Ac3Settings'{_asLfeFilter ::

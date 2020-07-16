@@ -20,7 +20,9 @@ module Network.AWS.Pinpoint.Types.EndpointDemographic where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | Endpoint demographic data
+-- | Specifies demographic information about an endpoint, such as the applicable time zone and platform.
+--
+--
 --
 -- /See:/ 'endpointDemographic' smart constructor.
 data EndpointDemographic = EndpointDemographic'{_edPlatform
@@ -40,21 +42,21 @@ data EndpointDemographic = EndpointDemographic'{_edPlatform
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'edPlatform' - The endpoint platform, such as ios or android.
+-- * 'edPlatform' - The platform of the endpoint device, such as ios.
 --
--- * 'edPlatformVersion' - The endpoint platform version.
+-- * 'edPlatformVersion' - The platform version of the endpoint device.
 --
--- * 'edLocale' - The endpoint locale in the following format: The ISO 639-1 alpha-2 code, followed by an underscore, followed by an ISO 3166-1 alpha-2 value.
+-- * 'edLocale' - The locale of the endpoint, in the following format: the ISO 639-1 alpha-2 code, followed by an underscore (_), followed by an ISO 3166-1 alpha-2 value.
 --
--- * 'edAppVersion' - The version of the application associated with the endpoint.
+-- * 'edAppVersion' - The version of the app that's associated with the endpoint.
 --
--- * 'edModel' - The endpoint model, such as iPhone.
+-- * 'edModel' - The model name or number of the endpoint device, such as iPhone or SM-G900F.
 --
--- * 'edMake' - The endpoint make, such as such as Apple or Samsung.
+-- * 'edMake' - The manufacturer of the endpoint device, such as apple or samsung.
 --
--- * 'edModelVersion' - The endpoint model version.
+-- * 'edModelVersion' - The model version of the endpoint device.
 --
--- * 'edTimezone' - The timezone of the endpoint. Specified as a tz database value, such as Americas/Los_Angeles.
+-- * 'edTimezone' - The time zone of the endpoint, specified as a tz database name value, such as America/Los_Angeles.
 endpointDemographic
     :: EndpointDemographic
 endpointDemographic
@@ -64,35 +66,35 @@ endpointDemographic
                          _edMake = Nothing, _edModelVersion = Nothing,
                          _edTimezone = Nothing}
 
--- | The endpoint platform, such as ios or android.
+-- | The platform of the endpoint device, such as ios.
 edPlatform :: Lens' EndpointDemographic (Maybe Text)
 edPlatform = lens _edPlatform (\ s a -> s{_edPlatform = a})
 
--- | The endpoint platform version.
+-- | The platform version of the endpoint device.
 edPlatformVersion :: Lens' EndpointDemographic (Maybe Text)
 edPlatformVersion = lens _edPlatformVersion (\ s a -> s{_edPlatformVersion = a})
 
--- | The endpoint locale in the following format: The ISO 639-1 alpha-2 code, followed by an underscore, followed by an ISO 3166-1 alpha-2 value.
+-- | The locale of the endpoint, in the following format: the ISO 639-1 alpha-2 code, followed by an underscore (_), followed by an ISO 3166-1 alpha-2 value.
 edLocale :: Lens' EndpointDemographic (Maybe Text)
 edLocale = lens _edLocale (\ s a -> s{_edLocale = a})
 
--- | The version of the application associated with the endpoint.
+-- | The version of the app that's associated with the endpoint.
 edAppVersion :: Lens' EndpointDemographic (Maybe Text)
 edAppVersion = lens _edAppVersion (\ s a -> s{_edAppVersion = a})
 
--- | The endpoint model, such as iPhone.
+-- | The model name or number of the endpoint device, such as iPhone or SM-G900F.
 edModel :: Lens' EndpointDemographic (Maybe Text)
 edModel = lens _edModel (\ s a -> s{_edModel = a})
 
--- | The endpoint make, such as such as Apple or Samsung.
+-- | The manufacturer of the endpoint device, such as apple or samsung.
 edMake :: Lens' EndpointDemographic (Maybe Text)
 edMake = lens _edMake (\ s a -> s{_edMake = a})
 
--- | The endpoint model version.
+-- | The model version of the endpoint device.
 edModelVersion :: Lens' EndpointDemographic (Maybe Text)
 edModelVersion = lens _edModelVersion (\ s a -> s{_edModelVersion = a})
 
--- | The timezone of the endpoint. Specified as a tz database value, such as Americas/Los_Angeles.
+-- | The time zone of the endpoint, specified as a tz database name value, such as America/Los_Angeles.
 edTimezone :: Lens' EndpointDemographic (Maybe Text)
 edTimezone = lens _edTimezone (\ s a -> s{_edTimezone = a})
 

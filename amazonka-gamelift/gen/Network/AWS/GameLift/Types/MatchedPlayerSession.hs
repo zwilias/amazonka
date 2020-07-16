@@ -36,9 +36,9 @@ data MatchedPlayerSession = MatchedPlayerSession'{_mpsPlayerSessionId
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'mpsPlayerSessionId' - Unique identifier for a player session
+-- * 'mpsPlayerSessionId' - A unique identifier for a player session
 --
--- * 'mpsPlayerId' - Unique identifier for a player 
+-- * 'mpsPlayerId' - A unique identifier for a player 
 matchedPlayerSession
     :: MatchedPlayerSession
 matchedPlayerSession
@@ -46,11 +46,11 @@ matchedPlayerSession
                             Nothing,
                           _mpsPlayerId = Nothing}
 
--- | Unique identifier for a player session
+-- | A unique identifier for a player session
 mpsPlayerSessionId :: Lens' MatchedPlayerSession (Maybe Text)
 mpsPlayerSessionId = lens _mpsPlayerSessionId (\ s a -> s{_mpsPlayerSessionId = a})
 
--- | Unique identifier for a player 
+-- | A unique identifier for a player 
 mpsPlayerId :: Lens' MatchedPlayerSession (Maybe Text)
 mpsPlayerId = lens _mpsPlayerId (\ s a -> s{_mpsPlayerId = a})
 

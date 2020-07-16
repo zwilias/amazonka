@@ -21,7 +21,7 @@ import Network.AWS.GameLift.Types.EC2InstanceType
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | Maximum number of instances allowed based on the Amazon Elastic Compute Cloud (Amazon EC2) instance type. Instance limits can be retrieved by calling 'DescribeEC2InstanceLimits' .
+-- | The maximum number of instances allowed based on the Amazon Elastic Compute Cloud (Amazon EC2) instance type. Instance limits can be retrieved by calling 'DescribeEC2InstanceLimits' .
 --
 --
 --

@@ -28,6 +28,7 @@ module Network.AWS.SES.Types.Product (
     module Network.AWS.SES.Types.ConfigurationSet,
     module Network.AWS.SES.Types.Content,
     module Network.AWS.SES.Types.CustomVerificationEmailTemplate,
+    module Network.AWS.SES.Types.DeliveryOptions,
     module Network.AWS.SES.Types.Destination,
     module Network.AWS.SES.Types.EventDestination,
     module Network.AWS.SES.Types.ExtensionField,
@@ -72,6 +73,7 @@ import Network.AWS.SES.Types.CloudWatchDimensionConfiguration
 import Network.AWS.SES.Types.ConfigurationSet
 import Network.AWS.SES.Types.Content
 import Network.AWS.SES.Types.CustomVerificationEmailTemplate
+import Network.AWS.SES.Types.DeliveryOptions
 import Network.AWS.SES.Types.Destination
 import Network.AWS.SES.Types.EventDestination
 import Network.AWS.SES.Types.ExtensionField

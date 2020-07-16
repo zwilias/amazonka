@@ -29,6 +29,7 @@ module Network.AWS.IoT.CreatePolicy
       createPolicy
     , CreatePolicy
     -- * Request Lenses
+    , cpTags
     , cpPolicyName
     , cpPolicyDocument
 
@@ -55,14 +56,17 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'createPolicy' smart constructor.
-data CreatePolicy = CreatePolicy'{_cpPolicyName ::
-                                  !Text,
+data CreatePolicy = CreatePolicy'{_cpTags ::
+                                  !(Maybe [Tag]),
+                                  _cpPolicyName :: !Text,
                                   _cpPolicyDocument :: !Text}
                       deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreatePolicy' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'cpTags' - Metadata which can be used to manage the policy.
 --
 -- * 'cpPolicyName' - The policy name.
 --
@@ -72,8 +76,13 @@ createPolicy
     -> Text -- ^ 'cpPolicyDocument'
     -> CreatePolicy
 createPolicy pPolicyName_ pPolicyDocument_
-  = CreatePolicy'{_cpPolicyName = pPolicyName_,
+  = CreatePolicy'{_cpTags = Nothing,
+                  _cpPolicyName = pPolicyName_,
                   _cpPolicyDocument = pPolicyDocument_}
+
+-- | Metadata which can be used to manage the policy.
+cpTags :: Lens' CreatePolicy [Tag]
+cpTags = lens _cpTags (\ s a -> s{_cpTags = a}) . _Default . _Coerce
 
 -- | The policy name.
 cpPolicyName :: Lens' CreatePolicy Text
@@ -106,7 +115,8 @@ instance ToJSON CreatePolicy where
         toJSON CreatePolicy'{..}
           = object
               (catMaybes
-                 [Just ("policyDocument" .= _cpPolicyDocument)])
+                 [("tags" .=) <$> _cpTags,
+                  Just ("policyDocument" .= _cpPolicyDocument)])
 
 instance ToPath CreatePolicy where
         toPath CreatePolicy'{..}

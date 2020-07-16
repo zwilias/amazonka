@@ -36,6 +36,8 @@ module Network.AWS.LexModels.GetSlotType
     , getSlotTypeResponse
     , GetSlotTypeResponse
     -- * Response Lenses
+    , gtslttyprsParentSlotTypeSignature
+    , gtslttyprsSlotTypeConfigurations
     , gtslttyprsChecksum
     , gtslttyprsValueSelectionStrategy
     , gtslttyprsCreatedDate
@@ -89,14 +91,16 @@ instance AWSRequest GetSlotType where
           = receiveJSON
               (\ s h x ->
                  GetSlotTypeResponse' <$>
-                   (x .?> "checksum") <*>
-                     (x .?> "valueSelectionStrategy")
+                   (x .?> "parentSlotTypeSignature") <*>
+                     (x .?> "slotTypeConfigurations" .!@ mempty)
+                     <*> (x .?> "checksum")
+                     <*> (x .?> "valueSelectionStrategy")
                      <*> (x .?> "createdDate")
                      <*> (x .?> "name")
                      <*> (x .?> "version")
                      <*> (x .?> "lastUpdatedDate")
                      <*> (x .?> "description")
-                     <*> (x .?> "enumerationValues")
+                     <*> (x .?> "enumerationValues" .!@ mempty)
                      <*> (pure (fromEnum s)))
 
 instance Hashable GetSlotType where
@@ -120,8 +124,14 @@ instance ToQuery GetSlotType where
         toQuery = const mempty
 
 -- | /See:/ 'getSlotTypeResponse' smart constructor.
-data GetSlotTypeResponse = GetSlotTypeResponse'{_gtslttyprsChecksum
+data GetSlotTypeResponse = GetSlotTypeResponse'{_gtslttyprsParentSlotTypeSignature
                                                 :: !(Maybe Text),
+                                                _gtslttyprsSlotTypeConfigurations
+                                                ::
+                                                !(Maybe
+                                                    [SlotTypeConfiguration]),
+                                                _gtslttyprsChecksum ::
+                                                !(Maybe Text),
                                                 _gtslttyprsValueSelectionStrategy
                                                 ::
                                                 !(Maybe
@@ -137,8 +147,7 @@ data GetSlotTypeResponse = GetSlotTypeResponse'{_gtslttyprsChecksum
                                                 _gtslttyprsDescription ::
                                                 !(Maybe Text),
                                                 _gtslttyprsEnumerationValues ::
-                                                !(Maybe
-                                                    (List1 EnumerationValue)),
+                                                !(Maybe [EnumerationValue]),
                                                 _gtslttyprsResponseStatus ::
                                                 !Int}
                              deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -146,6 +155,10 @@ data GetSlotTypeResponse = GetSlotTypeResponse'{_gtslttyprsChecksum
 -- | Creates a value of 'GetSlotTypeResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'gtslttyprsParentSlotTypeSignature' - The built-in slot type used as a parent for the slot type.
+--
+-- * 'gtslttyprsSlotTypeConfigurations' - Configuration information that extends the parent built-in slot type.
 --
 -- * 'gtslttyprsChecksum' - Checksum of the @> LATEST@ version of the slot type.
 --
@@ -168,7 +181,10 @@ getSlotTypeResponse
     :: Int -- ^ 'gtslttyprsResponseStatus'
     -> GetSlotTypeResponse
 getSlotTypeResponse pResponseStatus_
-  = GetSlotTypeResponse'{_gtslttyprsChecksum = Nothing,
+  = GetSlotTypeResponse'{_gtslttyprsParentSlotTypeSignature
+                           = Nothing,
+                         _gtslttyprsSlotTypeConfigurations = Nothing,
+                         _gtslttyprsChecksum = Nothing,
                          _gtslttyprsValueSelectionStrategy = Nothing,
                          _gtslttyprsCreatedDate = Nothing,
                          _gtslttyprsName = Nothing,
@@ -177,6 +193,14 @@ getSlotTypeResponse pResponseStatus_
                          _gtslttyprsDescription = Nothing,
                          _gtslttyprsEnumerationValues = Nothing,
                          _gtslttyprsResponseStatus = pResponseStatus_}
+
+-- | The built-in slot type used as a parent for the slot type.
+gtslttyprsParentSlotTypeSignature :: Lens' GetSlotTypeResponse (Maybe Text)
+gtslttyprsParentSlotTypeSignature = lens _gtslttyprsParentSlotTypeSignature (\ s a -> s{_gtslttyprsParentSlotTypeSignature = a})
+
+-- | Configuration information that extends the parent built-in slot type.
+gtslttyprsSlotTypeConfigurations :: Lens' GetSlotTypeResponse [SlotTypeConfiguration]
+gtslttyprsSlotTypeConfigurations = lens _gtslttyprsSlotTypeConfigurations (\ s a -> s{_gtslttyprsSlotTypeConfigurations = a}) . _Default . _Coerce
 
 -- | Checksum of the @> LATEST@ version of the slot type.
 gtslttyprsChecksum :: Lens' GetSlotTypeResponse (Maybe Text)
@@ -207,8 +231,8 @@ gtslttyprsDescription :: Lens' GetSlotTypeResponse (Maybe Text)
 gtslttyprsDescription = lens _gtslttyprsDescription (\ s a -> s{_gtslttyprsDescription = a})
 
 -- | A list of @EnumerationValue@ objects that defines the values that the slot type can take.
-gtslttyprsEnumerationValues :: Lens' GetSlotTypeResponse (Maybe (NonEmpty EnumerationValue))
-gtslttyprsEnumerationValues = lens _gtslttyprsEnumerationValues (\ s a -> s{_gtslttyprsEnumerationValues = a}) . mapping _List1
+gtslttyprsEnumerationValues :: Lens' GetSlotTypeResponse [EnumerationValue]
+gtslttyprsEnumerationValues = lens _gtslttyprsEnumerationValues (\ s a -> s{_gtslttyprsEnumerationValues = a}) . _Default . _Coerce
 
 -- | -- | The response status code.
 gtslttyprsResponseStatus :: Lens' GetSlotTypeResponse Int

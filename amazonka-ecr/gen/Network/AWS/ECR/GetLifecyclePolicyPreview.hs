@@ -18,9 +18,11 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Retrieves the results of the specified lifecycle policy preview request.
+-- Retrieves the results of the lifecycle policy preview request for the specified repository.
 --
 --
+--
+-- This operation returns paginated results.
 module Network.AWS.ECR.GetLifecyclePolicyPreview
     (
     -- * Creating a Request
@@ -51,6 +53,7 @@ module Network.AWS.ECR.GetLifecyclePolicyPreview
 import Network.AWS.ECR.Types
 import Network.AWS.ECR.Types.Product
 import Network.AWS.Lens
+import Network.AWS.Pager
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
@@ -85,7 +88,7 @@ data GetLifecyclePolicyPreview = GetLifecyclePolicyPreview'{_glppRegistryId
 --
 -- * 'glppFilter' - An optional parameter that filters results based on image tag status and all tags, if tagged.
 --
--- * 'glppMaxResults' - The maximum number of repository results returned by @GetLifecyclePolicyPreviewRequest@ in  paginated output. When this parameter is used, @GetLifecyclePolicyPreviewRequest@ only returns  @maxResults@ results in a single page along with a @nextToken@ response element. The remaining results of the initial request can be seen by sending  another @GetLifecyclePolicyPreviewRequest@ request with the returned @nextToken@ value. This value can be between 1 and 100. If this  parameter is not used, then @GetLifecyclePolicyPreviewRequest@ returns up to  100 results and a @nextToken@ value, if  applicable. This option cannot be used when you specify images with @imageIds@ .
+-- * 'glppMaxResults' - The maximum number of repository results returned by @GetLifecyclePolicyPreviewRequest@ in  paginated output. When this parameter is used, @GetLifecyclePolicyPreviewRequest@ only returns  @maxResults@ results in a single page along with a @nextToken@ response element. The remaining results of the initial request can be seen by sending  another @GetLifecyclePolicyPreviewRequest@ request with the returned @nextToken@ value. This value can be between 1 and 1000. If this  parameter is not used, then @GetLifecyclePolicyPreviewRequest@ returns up to  100 results and a @nextToken@ value, if  applicable. This option cannot be used when you specify images with @imageIds@ .
 --
 -- * 'glppRepositoryName' - The name of the repository.
 getLifecyclePolicyPreview
@@ -115,13 +118,20 @@ glppNextToken = lens _glppNextToken (\ s a -> s{_glppNextToken = a})
 glppFilter :: Lens' GetLifecyclePolicyPreview (Maybe LifecyclePolicyPreviewFilter)
 glppFilter = lens _glppFilter (\ s a -> s{_glppFilter = a})
 
--- | The maximum number of repository results returned by @GetLifecyclePolicyPreviewRequest@ in  paginated output. When this parameter is used, @GetLifecyclePolicyPreviewRequest@ only returns  @maxResults@ results in a single page along with a @nextToken@ response element. The remaining results of the initial request can be seen by sending  another @GetLifecyclePolicyPreviewRequest@ request with the returned @nextToken@ value. This value can be between 1 and 100. If this  parameter is not used, then @GetLifecyclePolicyPreviewRequest@ returns up to  100 results and a @nextToken@ value, if  applicable. This option cannot be used when you specify images with @imageIds@ .
+-- | The maximum number of repository results returned by @GetLifecyclePolicyPreviewRequest@ in  paginated output. When this parameter is used, @GetLifecyclePolicyPreviewRequest@ only returns  @maxResults@ results in a single page along with a @nextToken@ response element. The remaining results of the initial request can be seen by sending  another @GetLifecyclePolicyPreviewRequest@ request with the returned @nextToken@ value. This value can be between 1 and 1000. If this  parameter is not used, then @GetLifecyclePolicyPreviewRequest@ returns up to  100 results and a @nextToken@ value, if  applicable. This option cannot be used when you specify images with @imageIds@ .
 glppMaxResults :: Lens' GetLifecyclePolicyPreview (Maybe Natural)
 glppMaxResults = lens _glppMaxResults (\ s a -> s{_glppMaxResults = a}) . mapping _Nat
 
 -- | The name of the repository.
 glppRepositoryName :: Lens' GetLifecyclePolicyPreview Text
 glppRepositoryName = lens _glppRepositoryName (\ s a -> s{_glppRepositoryName = a})
+
+instance AWSPager GetLifecyclePolicyPreview where
+        page rq rs
+          | stop (rs ^. glpprsNextToken) = Nothing
+          | stop (rs ^. glpprsPreviewResults) = Nothing
+          | otherwise =
+            Just $ rq & glppNextToken .~ rs ^. glpprsNextToken
 
 instance AWSRequest GetLifecyclePolicyPreview where
         type Rs GetLifecyclePolicyPreview =

@@ -20,10 +20,8 @@ module Network.AWS.GameLift.Types.PlayerLatencyPolicy where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | Queue setting that determines the highest latency allowed for individual players when placing a game session. When a latency policy is in force, a game session cannot be placed at any destination in a region where a player is reporting latency higher than the cap. Latency policies are only enforced when the placement request contains player latency information.
+-- | Queue setting that determines the highest latency allowed for individual players when placing a game session. When a latency policy is in force, a game session cannot be placed with any fleet in a Region where a player reports latency higher than the cap. Latency policies are only enforced when the placement request contains player latency information.
 --
---
--- Queue-related operations include:
 --
 --     * 'CreateGameSessionQueue' 
 --

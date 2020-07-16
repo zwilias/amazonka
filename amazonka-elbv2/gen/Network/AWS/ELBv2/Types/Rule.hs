@@ -40,9 +40,9 @@ data Rule = Rule'{_rPriority :: !(Maybe Text),
 --
 -- * 'rPriority' - The priority.
 --
--- * 'rActions' - The actions.
+-- * 'rActions' - The actions. Each rule must include exactly one of the following types of actions: @forward@ , @redirect@ , or @fixed-response@ , and it must be the last action to be performed.
 --
--- * 'rConditions' - The conditions.
+-- * 'rConditions' - The conditions. Each rule can include zero or one of the following conditions: @http-request-method@ , @host-header@ , @path-pattern@ , and @source-ip@ , and zero or more of the following conditions: @http-header@ and @query-string@ .
 --
 -- * 'rRuleARN' - The Amazon Resource Name (ARN) of the rule.
 --
@@ -58,11 +58,11 @@ rule
 rPriority :: Lens' Rule (Maybe Text)
 rPriority = lens _rPriority (\ s a -> s{_rPriority = a})
 
--- | The actions.
+-- | The actions. Each rule must include exactly one of the following types of actions: @forward@ , @redirect@ , or @fixed-response@ , and it must be the last action to be performed.
 rActions :: Lens' Rule [Action]
 rActions = lens _rActions (\ s a -> s{_rActions = a}) . _Default . _Coerce
 
--- | The conditions.
+-- | The conditions. Each rule can include zero or one of the following conditions: @http-request-method@ , @host-header@ , @path-pattern@ , and @source-ip@ , and zero or more of the following conditions: @http-header@ and @query-string@ .
 rConditions :: Lens' Rule [RuleCondition]
 rConditions = lens _rConditions (\ s a -> s{_rConditions = a}) . _Default . _Coerce
 

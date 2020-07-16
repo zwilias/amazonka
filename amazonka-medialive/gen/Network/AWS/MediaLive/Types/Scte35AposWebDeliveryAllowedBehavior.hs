@@ -27,7 +27,7 @@ module Network.AWS.MediaLive.Types.Scte35AposWebDeliveryAllowedBehavior (
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | Placeholder documentation for Scte35AposWebDeliveryAllowedBehavior
+-- | Scte35 Apos Web Delivery Allowed Behavior
 data Scte35AposWebDeliveryAllowedBehavior = Scte35AposWebDeliveryAllowedBehavior' (CI
                                                                                      Text)
                                               deriving (Eq, Ord, Read, Show,

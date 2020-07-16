@@ -27,7 +27,6 @@ module Network.AWS.SMS.Types.LicenseType (
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | The license type to be used for the Amazon Machine Image (AMI) created after a successful ReplicationRun.
 data LicenseType = LicenseType' (CI Text)
                      deriving (Eq, Ord, Read, Show, Data, Typeable,
                                Generic)

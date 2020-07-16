@@ -20,7 +20,7 @@ module Network.AWS.Rekognition.Types.KinesisVideoStream where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | Kinesis video stream stream that provides the source streaming video for a Rekognition Video stream processor. For more information, see .
+-- | Kinesis video stream stream that provides the source streaming video for a Amazon Rekognition Video stream processor. For more information, see CreateStreamProcessor in the Amazon Rekognition Developer Guide.
 --
 --
 --

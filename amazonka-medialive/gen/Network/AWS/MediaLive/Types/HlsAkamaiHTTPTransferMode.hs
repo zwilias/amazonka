@@ -27,7 +27,7 @@ module Network.AWS.MediaLive.Types.HlsAkamaiHTTPTransferMode (
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | Placeholder documentation for HlsAkamaiHttpTransferMode
+-- | Hls Akamai Http Transfer Mode
 data HlsAkamaiHTTPTransferMode = HlsAkamaiHTTPTransferMode' (CI
                                                                Text)
                                    deriving (Eq, Ord, Read, Show, Data,

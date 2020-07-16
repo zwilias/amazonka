@@ -20,7 +20,7 @@ module Network.AWS.RDS.Types.DomainMembership where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | An Active Directory Domain membership record associated with the DB instance.
+-- | An Active Directory Domain membership record associated with the DB instance or cluster.
 --
 --
 --
@@ -36,7 +36,7 @@ data DomainMembership = DomainMembership'{_dmStatus
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dmStatus' - The status of the DB instance's Active Directory Domain membership, such as joined, pending-join, failed etc).
+-- * 'dmStatus' - The status of the Active Directory Domain membership for the DB instance or cluster. Values include joined, pending-join, failed, and so on.
 --
 -- * 'dmFQDN' - The fully qualified domain name of the Active Directory Domain.
 --
@@ -50,7 +50,7 @@ domainMembership
                       _dmFQDN = Nothing, _dmDomain = Nothing,
                       _dmIAMRoleName = Nothing}
 
--- | The status of the DB instance's Active Directory Domain membership, such as joined, pending-join, failed etc).
+-- | The status of the Active Directory Domain membership for the DB instance or cluster. Values include joined, pending-join, failed, and so on.
 dmStatus :: Lens' DomainMembership (Maybe Text)
 dmStatus = lens _dmStatus (\ s a -> s{_dmStatus = a})
 

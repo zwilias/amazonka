@@ -20,11 +20,13 @@ module Network.AWS.Pinpoint.Types.EmailChannelResponse where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | Email Channel Response.
+-- | Provides information about the status and settings of the email channel for an application.
+--
+--
 --
 -- /See:/ 'emailChannelResponse' smart constructor.
-data EmailChannelResponse = EmailChannelResponse'{_ecPlatform
-                                                  :: !(Maybe Text),
+data EmailChannelResponse = EmailChannelResponse'{_ecMessagesPerSecond
+                                                  :: !(Maybe Int),
                                                   _ecLastModifiedDate ::
                                                   !(Maybe Text),
                                                   _ecEnabled :: !(Maybe Bool),
@@ -35,6 +37,8 @@ data EmailChannelResponse = EmailChannelResponse'{_ecPlatform
                                                   _ecApplicationId ::
                                                   !(Maybe Text),
                                                   _ecVersion :: !(Maybe Int),
+                                                  _ecConfigurationSet ::
+                                                  !(Maybe Text),
                                                   _ecId :: !(Maybe Text),
                                                   _ecCreationDate ::
                                                   !(Maybe Text),
@@ -43,118 +47,138 @@ data EmailChannelResponse = EmailChannelResponse'{_ecPlatform
                                                   _ecIdentity :: !(Maybe Text),
                                                   _ecHasCredential ::
                                                   !(Maybe Bool),
-                                                  _ecRoleARN :: !(Maybe Text)}
+                                                  _ecRoleARN :: !(Maybe Text),
+                                                  _ecPlatform :: !Text}
                               deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'EmailChannelResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'ecPlatform' - Platform type. Will be "EMAIL"
+-- * 'ecMessagesPerSecond' - The maximum number of emails that can be sent through the channel each second.
 --
--- * 'ecLastModifiedDate' - Last date this was updated
+-- * 'ecLastModifiedDate' - The date and time, in ISO 8601 format, when the email channel was last modified.
 --
--- * 'ecEnabled' - If the channel is enabled for sending messages.
+-- * 'ecEnabled' - Specifies whether the email channel is enabled for the application.
 --
--- * 'ecFromAddress' - The email address used to send emails from.
+-- * 'ecFromAddress' - The verified email address that email is sent from when you send email through the channel.
 --
--- * 'ecIsArchived' - Is this channel archived
+-- * 'ecIsArchived' - Specifies whether the email channel is archived.
 --
--- * 'ecApplicationId' - The unique ID of the application to which the email channel belongs.
+-- * 'ecApplicationId' - The unique identifier for the application that the email channel applies to.
 --
--- * 'ecVersion' - Version of channel
+-- * 'ecVersion' - The current version of the email channel.
 --
--- * 'ecId' - Channel ID. Not used, only for backwards compatibility.
+-- * 'ecConfigurationSet' - The <https://docs.aws.amazon.com/ses/latest/APIReference/API_ConfigurationSet.html Amazon SES configuration set> that's applied to messages that are sent through the channel.
 --
--- * 'ecCreationDate' - The date that the settings were last updated in ISO 8601 format.
+-- * 'ecId' - (Deprecated) An identifier for the email channel. This property is retained only for backward compatibility.
 --
--- * 'ecLastModifiedBy' - Who last updated this entry
+-- * 'ecCreationDate' - The date and time, in ISO 8601 format, when the email channel was enabled.
 --
--- * 'ecIdentity' - The ARN of an identity verified with SES.
+-- * 'ecLastModifiedBy' - The user who last modified the email channel.
 --
--- * 'ecHasCredential' - If the channel is registered with a credential for authentication.
+-- * 'ecIdentity' - The Amazon Resource Name (ARN) of the identity, verified with Amazon Simple Email Service (Amazon SES), that's used when you send email through the channel.
 --
--- * 'ecRoleARN' - The ARN of an IAM Role used to submit events to Mobile Analytics' event ingestion service
+-- * 'ecHasCredential' - (Not used) This property is retained only for backward compatibility.
+--
+-- * 'ecRoleARN' - The ARN of the AWS Identity and Access Management (IAM) role that Amazon Pinpoint uses to submit email-related event data for the channel.
+--
+-- * 'ecPlatform' - The type of messaging or notification platform for the channel. For the email channel, this value is EMAIL.
 emailChannelResponse
-    :: EmailChannelResponse
-emailChannelResponse
-  = EmailChannelResponse'{_ecPlatform = Nothing,
+    :: Text -- ^ 'ecPlatform'
+    -> EmailChannelResponse
+emailChannelResponse pPlatform_
+  = EmailChannelResponse'{_ecMessagesPerSecond =
+                            Nothing,
                           _ecLastModifiedDate = Nothing, _ecEnabled = Nothing,
                           _ecFromAddress = Nothing, _ecIsArchived = Nothing,
                           _ecApplicationId = Nothing, _ecVersion = Nothing,
-                          _ecId = Nothing, _ecCreationDate = Nothing,
+                          _ecConfigurationSet = Nothing, _ecId = Nothing,
+                          _ecCreationDate = Nothing,
                           _ecLastModifiedBy = Nothing, _ecIdentity = Nothing,
-                          _ecHasCredential = Nothing, _ecRoleARN = Nothing}
+                          _ecHasCredential = Nothing, _ecRoleARN = Nothing,
+                          _ecPlatform = pPlatform_}
 
--- | Platform type. Will be "EMAIL"
-ecPlatform :: Lens' EmailChannelResponse (Maybe Text)
-ecPlatform = lens _ecPlatform (\ s a -> s{_ecPlatform = a})
+-- | The maximum number of emails that can be sent through the channel each second.
+ecMessagesPerSecond :: Lens' EmailChannelResponse (Maybe Int)
+ecMessagesPerSecond = lens _ecMessagesPerSecond (\ s a -> s{_ecMessagesPerSecond = a})
 
--- | Last date this was updated
+-- | The date and time, in ISO 8601 format, when the email channel was last modified.
 ecLastModifiedDate :: Lens' EmailChannelResponse (Maybe Text)
 ecLastModifiedDate = lens _ecLastModifiedDate (\ s a -> s{_ecLastModifiedDate = a})
 
--- | If the channel is enabled for sending messages.
+-- | Specifies whether the email channel is enabled for the application.
 ecEnabled :: Lens' EmailChannelResponse (Maybe Bool)
 ecEnabled = lens _ecEnabled (\ s a -> s{_ecEnabled = a})
 
--- | The email address used to send emails from.
+-- | The verified email address that email is sent from when you send email through the channel.
 ecFromAddress :: Lens' EmailChannelResponse (Maybe Text)
 ecFromAddress = lens _ecFromAddress (\ s a -> s{_ecFromAddress = a})
 
--- | Is this channel archived
+-- | Specifies whether the email channel is archived.
 ecIsArchived :: Lens' EmailChannelResponse (Maybe Bool)
 ecIsArchived = lens _ecIsArchived (\ s a -> s{_ecIsArchived = a})
 
--- | The unique ID of the application to which the email channel belongs.
+-- | The unique identifier for the application that the email channel applies to.
 ecApplicationId :: Lens' EmailChannelResponse (Maybe Text)
 ecApplicationId = lens _ecApplicationId (\ s a -> s{_ecApplicationId = a})
 
--- | Version of channel
+-- | The current version of the email channel.
 ecVersion :: Lens' EmailChannelResponse (Maybe Int)
 ecVersion = lens _ecVersion (\ s a -> s{_ecVersion = a})
 
--- | Channel ID. Not used, only for backwards compatibility.
+-- | The <https://docs.aws.amazon.com/ses/latest/APIReference/API_ConfigurationSet.html Amazon SES configuration set> that's applied to messages that are sent through the channel.
+ecConfigurationSet :: Lens' EmailChannelResponse (Maybe Text)
+ecConfigurationSet = lens _ecConfigurationSet (\ s a -> s{_ecConfigurationSet = a})
+
+-- | (Deprecated) An identifier for the email channel. This property is retained only for backward compatibility.
 ecId :: Lens' EmailChannelResponse (Maybe Text)
 ecId = lens _ecId (\ s a -> s{_ecId = a})
 
--- | The date that the settings were last updated in ISO 8601 format.
+-- | The date and time, in ISO 8601 format, when the email channel was enabled.
 ecCreationDate :: Lens' EmailChannelResponse (Maybe Text)
 ecCreationDate = lens _ecCreationDate (\ s a -> s{_ecCreationDate = a})
 
--- | Who last updated this entry
+-- | The user who last modified the email channel.
 ecLastModifiedBy :: Lens' EmailChannelResponse (Maybe Text)
 ecLastModifiedBy = lens _ecLastModifiedBy (\ s a -> s{_ecLastModifiedBy = a})
 
--- | The ARN of an identity verified with SES.
+-- | The Amazon Resource Name (ARN) of the identity, verified with Amazon Simple Email Service (Amazon SES), that's used when you send email through the channel.
 ecIdentity :: Lens' EmailChannelResponse (Maybe Text)
 ecIdentity = lens _ecIdentity (\ s a -> s{_ecIdentity = a})
 
--- | If the channel is registered with a credential for authentication.
+-- | (Not used) This property is retained only for backward compatibility.
 ecHasCredential :: Lens' EmailChannelResponse (Maybe Bool)
 ecHasCredential = lens _ecHasCredential (\ s a -> s{_ecHasCredential = a})
 
--- | The ARN of an IAM Role used to submit events to Mobile Analytics' event ingestion service
+-- | The ARN of the AWS Identity and Access Management (IAM) role that Amazon Pinpoint uses to submit email-related event data for the channel.
 ecRoleARN :: Lens' EmailChannelResponse (Maybe Text)
 ecRoleARN = lens _ecRoleARN (\ s a -> s{_ecRoleARN = a})
+
+-- | The type of messaging or notification platform for the channel. For the email channel, this value is EMAIL.
+ecPlatform :: Lens' EmailChannelResponse Text
+ecPlatform = lens _ecPlatform (\ s a -> s{_ecPlatform = a})
 
 instance FromJSON EmailChannelResponse where
         parseJSON
           = withObject "EmailChannelResponse"
               (\ x ->
                  EmailChannelResponse' <$>
-                   (x .:? "Platform") <*> (x .:? "LastModifiedDate") <*>
-                     (x .:? "Enabled")
+                   (x .:? "MessagesPerSecond") <*>
+                     (x .:? "LastModifiedDate")
+                     <*> (x .:? "Enabled")
                      <*> (x .:? "FromAddress")
                      <*> (x .:? "IsArchived")
                      <*> (x .:? "ApplicationId")
                      <*> (x .:? "Version")
+                     <*> (x .:? "ConfigurationSet")
                      <*> (x .:? "Id")
                      <*> (x .:? "CreationDate")
                      <*> (x .:? "LastModifiedBy")
                      <*> (x .:? "Identity")
                      <*> (x .:? "HasCredential")
-                     <*> (x .:? "RoleArn"))
+                     <*> (x .:? "RoleArn")
+                     <*> (x .: "Platform"))
 
 instance Hashable EmailChannelResponse where
 

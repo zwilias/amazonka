@@ -46,9 +46,9 @@ data OperatingSystem = OperatingSystem'{_osReportedVersion
 --
 -- * 'osSupported' - Indicates that an operating system is not supported for new instances.
 --
--- * 'osName' - The name of the operating system, such as @Amazon Linux 2017.09@ .
+-- * 'osName' - The name of the operating system, such as @Amazon Linux 2018.03@ .
 --
--- * 'osId' - The ID of a supported operating system, such as @Amazon Linux 2017.09@ .
+-- * 'osId' - The ID of a supported operating system, such as @Amazon Linux 2018.03@ .
 --
 -- * 'osConfigurationManagers' - Supported configuration manager name and versions for an AWS OpsWorks Stacks operating system.
 --
@@ -71,11 +71,11 @@ osReportedVersion = lens _osReportedVersion (\ s a -> s{_osReportedVersion = a})
 osSupported :: Lens' OperatingSystem (Maybe Bool)
 osSupported = lens _osSupported (\ s a -> s{_osSupported = a})
 
--- | The name of the operating system, such as @Amazon Linux 2017.09@ .
+-- | The name of the operating system, such as @Amazon Linux 2018.03@ .
 osName :: Lens' OperatingSystem (Maybe Text)
 osName = lens _osName (\ s a -> s{_osName = a})
 
--- | The ID of a supported operating system, such as @Amazon Linux 2017.09@ .
+-- | The ID of a supported operating system, such as @Amazon Linux 2018.03@ .
 osId :: Lens' OperatingSystem (Maybe Text)
 osId = lens _osId (\ s a -> s{_osId = a})
 

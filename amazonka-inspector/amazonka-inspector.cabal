@@ -48,6 +48,7 @@ library
         , Network.AWS.Inspector.AddAttributesToFindings
         , Network.AWS.Inspector.CreateAssessmentTarget
         , Network.AWS.Inspector.CreateAssessmentTemplate
+        , Network.AWS.Inspector.CreateExclusionsPreview
         , Network.AWS.Inspector.CreateResourceGroup
         , Network.AWS.Inspector.DeleteAssessmentRun
         , Network.AWS.Inspector.DeleteAssessmentTarget
@@ -56,16 +57,19 @@ library
         , Network.AWS.Inspector.DescribeAssessmentTargets
         , Network.AWS.Inspector.DescribeAssessmentTemplates
         , Network.AWS.Inspector.DescribeCrossAccountAccessRole
+        , Network.AWS.Inspector.DescribeExclusions
         , Network.AWS.Inspector.DescribeFindings
         , Network.AWS.Inspector.DescribeResourceGroups
         , Network.AWS.Inspector.DescribeRulesPackages
         , Network.AWS.Inspector.GetAssessmentReport
+        , Network.AWS.Inspector.GetExclusionsPreview
         , Network.AWS.Inspector.GetTelemetryMetadata
         , Network.AWS.Inspector.ListAssessmentRunAgents
         , Network.AWS.Inspector.ListAssessmentRuns
         , Network.AWS.Inspector.ListAssessmentTargets
         , Network.AWS.Inspector.ListAssessmentTemplates
         , Network.AWS.Inspector.ListEventSubscriptions
+        , Network.AWS.Inspector.ListExclusions
         , Network.AWS.Inspector.ListFindings
         , Network.AWS.Inspector.ListRulesPackages
         , Network.AWS.Inspector.ListTagsForResource
@@ -102,6 +106,8 @@ library
         , Network.AWS.Inspector.Types.Attribute
         , Network.AWS.Inspector.Types.DurationRange
         , Network.AWS.Inspector.Types.EventSubscription
+        , Network.AWS.Inspector.Types.Exclusion
+        , Network.AWS.Inspector.Types.ExclusionPreview
         , Network.AWS.Inspector.Types.FailedItemDetails
         , Network.AWS.Inspector.Types.FailedItemErrorCode
         , Network.AWS.Inspector.Types.Finding
@@ -109,6 +115,9 @@ library
         , Network.AWS.Inspector.Types.InspectorEvent
         , Network.AWS.Inspector.Types.InspectorServiceAttributes
         , Network.AWS.Inspector.Types.Locale
+        , Network.AWS.Inspector.Types.NetworkInterface
+        , Network.AWS.Inspector.Types.PreviewStatus
+        , Network.AWS.Inspector.Types.PrivateIP
         , Network.AWS.Inspector.Types.Product
         , Network.AWS.Inspector.Types.ReportFileFormat
         , Network.AWS.Inspector.Types.ReportStatus
@@ -116,6 +125,9 @@ library
         , Network.AWS.Inspector.Types.ResourceGroup
         , Network.AWS.Inspector.Types.ResourceGroupTag
         , Network.AWS.Inspector.Types.RulesPackage
+        , Network.AWS.Inspector.Types.Scope
+        , Network.AWS.Inspector.Types.ScopeType
+        , Network.AWS.Inspector.Types.SecurityGroup
         , Network.AWS.Inspector.Types.Severity
         , Network.AWS.Inspector.Types.StopAction
         , Network.AWS.Inspector.Types.Subscription

@@ -27,7 +27,7 @@ module Network.AWS.MediaLive.Types.M2tsKlv (
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | Placeholder documentation for M2tsKlv
+-- | M2ts Klv
 data M2tsKlv = M2tsKlv' (CI Text)
                  deriving (Eq, Ord, Read, Show, Data, Typeable,
                            Generic)

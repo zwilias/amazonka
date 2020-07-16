@@ -20,7 +20,7 @@ module Network.AWS.MediaLive.Types.VideoSelectorProgramId where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | Placeholder documentation for VideoSelectorProgramId
+-- | Video Selector Program Id
 --
 -- /See:/ 'videoSelectorProgramId' smart constructor.
 newtype VideoSelectorProgramId = VideoSelectorProgramId'{_vspiProgramId

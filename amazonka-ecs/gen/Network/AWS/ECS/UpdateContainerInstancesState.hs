@@ -21,7 +21,9 @@
 -- Modifies the status of an Amazon ECS container instance.
 --
 --
--- You can change the status of a container instance to @DRAINING@ to manually remove an instance from a cluster, for example to perform system updates, update the Docker daemon, or scale down the cluster size. 
+-- Once a container instance has reached an @ACTIVE@ state, you can change the status of a container instance to @DRAINING@ to manually remove an instance from a cluster, for example to perform system updates, update the Docker daemon, or scale down the cluster size.
+--
+-- /Important:/ A container instance cannot be changed to @DRAINING@ until it has reached an @ACTIVE@ status. If the instance is in any other status, an error will be received.
 --
 -- When you set a container instance to @DRAINING@ , Amazon ECS prevents new tasks from being scheduled for placement on the container instance and replacement service tasks are started on other container instances in the cluster if the resources are available. Service tasks on the container instance that are in the @PENDING@ state are stopped immediately.
 --
@@ -29,15 +31,15 @@
 --
 --     * If @minimumHealthyPercent@ is below 100%, the scheduler can ignore @desiredCount@ temporarily during task replacement. For example, @desiredCount@ is four tasks, a minimum of 50% allows the scheduler to stop two existing tasks before starting two new tasks. If the minimum is 100%, the service scheduler can't remove existing tasks until the replacement tasks are considered healthy. Tasks for services that do not use a load balancer are considered healthy if they are in the @RUNNING@ state. Tasks for services that use a load balancer are considered healthy if they are in the @RUNNING@ state and the container instance they are hosted on is reported as healthy by the load balancer.
 --
---     * The @maximumPercent@ parameter represents an upper limit on the number of running tasks during task replacement, which enables you to define the replacement batch size. For example, if @desiredCount@ of four tasks, a maximum of 200% starts four new tasks before stopping the four tasks to be drained (provided that the cluster resources required to do this are available). If the maximum is 100%, then replacement tasks can't start until the draining tasks have stopped.
+--     * The @maximumPercent@ parameter represents an upper limit on the number of running tasks during task replacement, which enables you to define the replacement batch size. For example, if @desiredCount@ is four tasks, a maximum of 200% starts four new tasks before stopping the four tasks to be drained, provided that the cluster resources required to do this are available. If the maximum is 100%, then replacement tasks can't start until the draining tasks have stopped.
 --
 --
 --
--- Any @PENDING@ or @RUNNING@ tasks that do not belong to a service are not affected; you must wait for them to finish or stop them manually.
+-- Any @PENDING@ or @RUNNING@ tasks that do not belong to a service are not affected. You must wait for them to finish or stop them manually.
 --
 -- A container instance has completed draining when it has no more @RUNNING@ tasks. You can verify this using 'ListTasks' .
 --
--- When you set a container instance to @ACTIVE@ , the Amazon ECS scheduler can begin scheduling tasks on the instance again.
+-- When a container instance has been drained, you can set a container instance to @ACTIVE@ status and once it has reached that status the Amazon ECS scheduler can begin scheduling tasks on the instance again.
 --
 module Network.AWS.ECS.UpdateContainerInstancesState
     (
@@ -86,7 +88,7 @@ data UpdateContainerInstancesState = UpdateContainerInstancesState'{_ucisCluster
 --
 -- * 'ucisContainerInstances' - A list of container instance IDs or full ARN entries.
 --
--- * 'ucisStatus' - The container instance state with which to update the container instance.
+-- * 'ucisStatus' - The container instance state with which to update the container instance. The only valid values for this action are @ACTIVE@ and @DRAINING@ . A container instance can only be updated to @DRAINING@ status once it has reached an @ACTIVE@ state. If a container instance is in @REGISTERING@ , @DEREGISTERING@ , or @REGISTRATION_FAILED@ state you can describe the container instance but will be unable to update the container instance state.
 updateContainerInstancesState
     :: ContainerInstanceStatus -- ^ 'ucisStatus'
     -> UpdateContainerInstancesState
@@ -104,7 +106,7 @@ ucisCluster = lens _ucisCluster (\ s a -> s{_ucisCluster = a})
 ucisContainerInstances :: Lens' UpdateContainerInstancesState [Text]
 ucisContainerInstances = lens _ucisContainerInstances (\ s a -> s{_ucisContainerInstances = a}) . _Coerce
 
--- | The container instance state with which to update the container instance.
+-- | The container instance state with which to update the container instance. The only valid values for this action are @ACTIVE@ and @DRAINING@ . A container instance can only be updated to @DRAINING@ status once it has reached an @ACTIVE@ state. If a container instance is in @REGISTERING@ , @DEREGISTERING@ , or @REGISTRATION_FAILED@ state you can describe the container instance but will be unable to update the container instance state.
 ucisStatus :: Lens' UpdateContainerInstancesState ContainerInstanceStatus
 ucisStatus = lens _ucisStatus (\ s a -> s{_ucisStatus = a})
 

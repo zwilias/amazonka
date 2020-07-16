@@ -20,7 +20,7 @@ module Network.AWS.MediaLive.Types.RtmpCaptionInfoDestinationSettings where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | Placeholder documentation for RtmpCaptionInfoDestinationSettings
+-- | Rtmp Caption Info Destination Settings
 --
 -- /See:/ 'rtmpCaptionInfoDestinationSettings' smart constructor.
 data RtmpCaptionInfoDestinationSettings = RtmpCaptionInfoDestinationSettings'

@@ -27,7 +27,7 @@ module Network.AWS.MediaLive.Types.InputSourceEndBehavior (
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | Placeholder documentation for InputSourceEndBehavior
+-- | Input Source End Behavior
 data InputSourceEndBehavior = InputSourceEndBehavior' (CI
                                                          Text)
                                 deriving (Eq, Ord, Read, Show, Data, Typeable,

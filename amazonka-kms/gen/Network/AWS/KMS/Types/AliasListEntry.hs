@@ -37,7 +37,7 @@ data AliasListEntry = AliasListEntry'{_aleTargetKeyId
 --
 -- * 'aleTargetKeyId' - String that contains the key identifier referred to by the alias.
 --
--- * 'aleAliasName' - String that contains the alias.
+-- * 'aleAliasName' - String that contains the alias. This value begins with @alias/@ .
 --
 -- * 'aleAliasARN' - String that contains the key ARN.
 aliasListEntry
@@ -50,7 +50,7 @@ aliasListEntry
 aleTargetKeyId :: Lens' AliasListEntry (Maybe Text)
 aleTargetKeyId = lens _aleTargetKeyId (\ s a -> s{_aleTargetKeyId = a})
 
--- | String that contains the alias.
+-- | String that contains the alias. This value begins with @alias/@ .
 aleAliasName :: Lens' AliasListEntry (Maybe Text)
 aleAliasName = lens _aleAliasName (\ s a -> s{_aleAliasName = a})
 

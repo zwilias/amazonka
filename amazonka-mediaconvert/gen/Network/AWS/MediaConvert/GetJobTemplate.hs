@@ -102,7 +102,7 @@ data GetJobTemplateResponse = GetJobTemplateResponse'{_gjtrsJobTemplate
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'gjtrsJobTemplate' - Undocumented member.
+-- * 'gjtrsJobTemplate' - A job template is a pre-made set of encoding instructions that you can use to quickly create a job.
 --
 -- * 'gjtrsResponseStatus' - -- | The response status code.
 getJobTemplateResponse
@@ -113,7 +113,7 @@ getJobTemplateResponse pResponseStatus_
                               Nothing,
                             _gjtrsResponseStatus = pResponseStatus_}
 
--- | Undocumented member.
+-- | A job template is a pre-made set of encoding instructions that you can use to quickly create a job.
 gjtrsJobTemplate :: Lens' GetJobTemplateResponse (Maybe JobTemplate)
 gjtrsJobTemplate = lens _gjtrsJobTemplate (\ s a -> s{_gjtrsJobTemplate = a})
 

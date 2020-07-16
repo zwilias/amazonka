@@ -27,6 +27,7 @@ module Network.AWS.ECS.RegisterContainerInstance
       registerContainerInstance
     , RegisterContainerInstance
     -- * Request Lenses
+    , rciPlatformDevices
     , rciInstanceIdentityDocumentSignature
     , rciCluster
     , rciInstanceIdentityDocument
@@ -34,6 +35,7 @@ module Network.AWS.ECS.RegisterContainerInstance
     , rciVersionInfo
     , rciAttributes
     , rciTotalResources
+    , rciTags
 
     -- * Destructuring the Response
     , registerContainerInstanceResponse
@@ -51,7 +53,11 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'registerContainerInstance' smart constructor.
-data RegisterContainerInstance = RegisterContainerInstance'{_rciInstanceIdentityDocumentSignature
+data RegisterContainerInstance = RegisterContainerInstance'{_rciPlatformDevices
+                                                            ::
+                                                            !(Maybe
+                                                                [PlatformDevice]),
+                                                            _rciInstanceIdentityDocumentSignature
                                                             :: !(Maybe Text),
                                                             _rciCluster ::
                                                             !(Maybe Text),
@@ -67,13 +73,17 @@ data RegisterContainerInstance = RegisterContainerInstance'{_rciInstanceIdentity
                                                                 [Attribute]),
                                                             _rciTotalResources
                                                             ::
-                                                            !(Maybe [Resource])}
+                                                            !(Maybe [Resource]),
+                                                            _rciTags ::
+                                                            !(Maybe [Tag])}
                                    deriving (Eq, Read, Show, Data, Typeable,
                                              Generic)
 
 -- | Creates a value of 'RegisterContainerInstance' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'rciPlatformDevices' - The devices that are available on the container instance. The only supported device type is a GPU.
 --
 -- * 'rciInstanceIdentityDocumentSignature' - The instance identity document signature for the EC2 instance to register. This signature can be found by running the following command from the instance: @curl http://169.254.169.254/latest/dynamic/instance-identity/signature/@ 
 --
@@ -88,17 +98,24 @@ data RegisterContainerInstance = RegisterContainerInstance'{_rciInstanceIdentity
 -- * 'rciAttributes' - The container instance attributes that this container instance supports.
 --
 -- * 'rciTotalResources' - The resources available on the instance.
+--
+-- * 'rciTags' - The metadata that you apply to the container instance to help you categorize and organize them. Each tag consists of a key and an optional value, both of which you define. The following basic restrictions apply to tags:     * Maximum number of tags per resource - 50     * For each resource, each tag key must be unique, and each tag key can have only one value.     * Maximum key length - 128 Unicode characters in UTF-8     * Maximum value length - 256 Unicode characters in UTF-8     * If your tagging schema is used across multiple services and resources, remember that other services may have restrictions on allowed characters. Generally allowed characters are: letters, numbers, and spaces representable in UTF-8, and the following characters: + - = . _ : / @.     * Tag keys and values are case-sensitive.     * Do not use @aws:@ , @AWS:@ , or any upper or lowercase combination of such as a prefix for either keys or values as it is reserved for AWS use. You cannot edit or delete tag keys or values with this prefix. Tags with this prefix do not count against your tags per resource limit.
 registerContainerInstance
     :: RegisterContainerInstance
 registerContainerInstance
-  = RegisterContainerInstance'{_rciInstanceIdentityDocumentSignature
-                                 = Nothing,
+  = RegisterContainerInstance'{_rciPlatformDevices =
+                                 Nothing,
+                               _rciInstanceIdentityDocumentSignature = Nothing,
                                _rciCluster = Nothing,
                                _rciInstanceIdentityDocument = Nothing,
                                _rciContainerInstanceARN = Nothing,
                                _rciVersionInfo = Nothing,
                                _rciAttributes = Nothing,
-                               _rciTotalResources = Nothing}
+                               _rciTotalResources = Nothing, _rciTags = Nothing}
+
+-- | The devices that are available on the container instance. The only supported device type is a GPU.
+rciPlatformDevices :: Lens' RegisterContainerInstance [PlatformDevice]
+rciPlatformDevices = lens _rciPlatformDevices (\ s a -> s{_rciPlatformDevices = a}) . _Default . _Coerce
 
 -- | The instance identity document signature for the EC2 instance to register. This signature can be found by running the following command from the instance: @curl http://169.254.169.254/latest/dynamic/instance-identity/signature/@ 
 rciInstanceIdentityDocumentSignature :: Lens' RegisterContainerInstance (Maybe Text)
@@ -128,6 +145,10 @@ rciAttributes = lens _rciAttributes (\ s a -> s{_rciAttributes = a}) . _Default 
 rciTotalResources :: Lens' RegisterContainerInstance [Resource]
 rciTotalResources = lens _rciTotalResources (\ s a -> s{_rciTotalResources = a}) . _Default . _Coerce
 
+-- | The metadata that you apply to the container instance to help you categorize and organize them. Each tag consists of a key and an optional value, both of which you define. The following basic restrictions apply to tags:     * Maximum number of tags per resource - 50     * For each resource, each tag key must be unique, and each tag key can have only one value.     * Maximum key length - 128 Unicode characters in UTF-8     * Maximum value length - 256 Unicode characters in UTF-8     * If your tagging schema is used across multiple services and resources, remember that other services may have restrictions on allowed characters. Generally allowed characters are: letters, numbers, and spaces representable in UTF-8, and the following characters: + - = . _ : / @.     * Tag keys and values are case-sensitive.     * Do not use @aws:@ , @AWS:@ , or any upper or lowercase combination of such as a prefix for either keys or values as it is reserved for AWS use. You cannot edit or delete tag keys or values with this prefix. Tags with this prefix do not count against your tags per resource limit.
+rciTags :: Lens' RegisterContainerInstance [Tag]
+rciTags = lens _rciTags (\ s a -> s{_rciTags = a}) . _Default . _Coerce
+
 instance AWSRequest RegisterContainerInstance where
         type Rs RegisterContainerInstance =
              RegisterContainerInstanceResponse
@@ -156,7 +177,8 @@ instance ToJSON RegisterContainerInstance where
         toJSON RegisterContainerInstance'{..}
           = object
               (catMaybes
-                 [("instanceIdentityDocumentSignature" .=) <$>
+                 [("platformDevices" .=) <$> _rciPlatformDevices,
+                  ("instanceIdentityDocumentSignature" .=) <$>
                     _rciInstanceIdentityDocumentSignature,
                   ("cluster" .=) <$> _rciCluster,
                   ("instanceIdentityDocument" .=) <$>
@@ -165,7 +187,8 @@ instance ToJSON RegisterContainerInstance where
                     _rciContainerInstanceARN,
                   ("versionInfo" .=) <$> _rciVersionInfo,
                   ("attributes" .=) <$> _rciAttributes,
-                  ("totalResources" .=) <$> _rciTotalResources])
+                  ("totalResources" .=) <$> _rciTotalResources,
+                  ("tags" .=) <$> _rciTags])
 
 instance ToPath RegisterContainerInstance where
         toPath = const "/"

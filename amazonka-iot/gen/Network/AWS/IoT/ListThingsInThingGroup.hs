@@ -21,6 +21,8 @@
 -- Lists the things in the specified group.
 --
 --
+--
+-- This operation returns paginated results.
 module Network.AWS.IoT.ListThingsInThingGroup
     (
     -- * Creating a Request
@@ -44,6 +46,7 @@ module Network.AWS.IoT.ListThingsInThingGroup
 import Network.AWS.IoT.Types
 import Network.AWS.IoT.Types.Product
 import Network.AWS.Lens
+import Network.AWS.Pager
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
@@ -64,7 +67,7 @@ data ListThingsInThingGroup = ListThingsInThingGroup'{_ltitgNextToken
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'ltitgNextToken' - The token used to get the next set of results, or __null__ if there are no additional results.
+-- * 'ltitgNextToken' - The token to retrieve the next set of results.
 --
 -- * 'ltitgRecursive' - When true, list things in this thing group and in all child groups as well.
 --
@@ -80,7 +83,7 @@ listThingsInThingGroup pThingGroupName_
                             _ltitgMaxResults = Nothing,
                             _ltitgThingGroupName = pThingGroupName_}
 
--- | The token used to get the next set of results, or __null__ if there are no additional results.
+-- | The token to retrieve the next set of results.
 ltitgNextToken :: Lens' ListThingsInThingGroup (Maybe Text)
 ltitgNextToken = lens _ltitgNextToken (\ s a -> s{_ltitgNextToken = a})
 
@@ -95,6 +98,13 @@ ltitgMaxResults = lens _ltitgMaxResults (\ s a -> s{_ltitgMaxResults = a}) . map
 -- | The thing group name.
 ltitgThingGroupName :: Lens' ListThingsInThingGroup Text
 ltitgThingGroupName = lens _ltitgThingGroupName (\ s a -> s{_ltitgThingGroupName = a})
+
+instance AWSPager ListThingsInThingGroup where
+        page rq rs
+          | stop (rs ^. ltitgrsNextToken) = Nothing
+          | stop (rs ^. ltitgrsThings) = Nothing
+          | otherwise =
+            Just $ rq & ltitgNextToken .~ rs ^. ltitgrsNextToken
 
 instance AWSRequest ListThingsInThingGroup where
         type Rs ListThingsInThingGroup =

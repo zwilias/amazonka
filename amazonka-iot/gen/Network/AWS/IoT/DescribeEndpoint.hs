@@ -57,13 +57,13 @@ newtype DescribeEndpoint = DescribeEndpoint'{_deEndpointType
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'deEndpointType' - The endpoint type.
+-- * 'deEndpointType' - The endpoint type. Valid endpoint types include:     * @iot:Data@ - Returns a VeriSign signed data endpoint.     * @iot:Data-ATS@ - Returns an ATS signed data endpoint.     * @iot:CredentialProvider@ - Returns an AWS IoT credentials provider API endpoint.     * @iot:Jobs@ - Returns an AWS IoT device management Jobs API endpoint. We strongly recommend that customers use the newer @iot:Data-ATS@ endpoint type to avoid issues related to the widespread distrust of Symantec certificate authorities.
 describeEndpoint
     :: DescribeEndpoint
 describeEndpoint
   = DescribeEndpoint'{_deEndpointType = Nothing}
 
--- | The endpoint type.
+-- | The endpoint type. Valid endpoint types include:     * @iot:Data@ - Returns a VeriSign signed data endpoint.     * @iot:Data-ATS@ - Returns an ATS signed data endpoint.     * @iot:CredentialProvider@ - Returns an AWS IoT credentials provider API endpoint.     * @iot:Jobs@ - Returns an AWS IoT device management Jobs API endpoint. We strongly recommend that customers use the newer @iot:Data-ATS@ endpoint type to avoid issues related to the widespread distrust of Symantec certificate authorities.
 deEndpointType :: Lens' DescribeEndpoint (Maybe Text)
 deEndpointType = lens _deEndpointType (\ s a -> s{_deEndpointType = a})
 

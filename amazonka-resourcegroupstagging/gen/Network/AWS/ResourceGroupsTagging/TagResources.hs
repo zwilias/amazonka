@@ -21,13 +21,13 @@
 -- Applies one or more tags to the specified resources. Note the following:
 --
 --
---     * Not all resources can have tags. For a list of resources that support tagging, see <http://docs.aws.amazon.com/awsconsolehelpdocs/latest/gsg/supported-resources.html Supported Resources> in the /AWS Resource Groups and Tag Editor User Guide/ .
+--     * Not all resources can have tags. For a list of services that support tagging, see <http://docs.aws.amazon.com/resourcegroupstagging/latest/APIReference/Welcome.html this list> .
 --
---     * Each resource can have up to 50 tags. For other limits, see <http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html#tag-restrictions Tag Restrictions> in the /Amazon EC2 User Guide for Linux Instances/ .
+--     * Each resource can have up to 50 tags. For other limits, see <http://docs.aws.amazon.com/general/latest/gr/aws_tagging.html#tag-conventions Tag Naming and Usage Conventions> in the /AWS General Reference./ 
 --
---     * You can only tag resources that are located in the specified region for the AWS account.
+--     * You can only tag resources that are located in the specified Region for the AWS account.
 --
---     * To add tags to a resource, you need the necessary permissions for the service that the resource belongs to as well as permissions for adding tags. For more information, see <http://docs.aws.amazon.com/awsconsolehelpdocs/latest/gsg/obtaining-permissions-for-tagging.html Obtaining Permissions for Tagging> in the /AWS Resource Groups and Tag Editor User Guide/ .
+--     * To add tags to a resource, you need the necessary permissions for the service that the resource belongs to as well as permissions for adding tags. For more information, see <http://docs.aws.amazon.com/resourcegroupstagging/latest/APIReference/Welcome.html this list> .
 --
 --
 --
@@ -133,7 +133,7 @@ data TagResourcesResponse = TagResourcesResponse'{_trrsFailedResourcesMap
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'trrsFailedResourcesMap' - Details of resources that could not be tagged. An error code, status code, and error message are returned for each failed item.
+-- * 'trrsFailedResourcesMap' - A map containing a key-value pair for each failed item that couldn't be tagged. The key is the ARN of the failed resource. The value is a @FailureInfo@ object that contains an error code, a status code, and an error message. If there are no errors, the @FailedResourcesMap@ is empty.
 --
 -- * 'trrsResponseStatus' - -- | The response status code.
 tagResourcesResponse
@@ -144,7 +144,7 @@ tagResourcesResponse pResponseStatus_
                             Nothing,
                           _trrsResponseStatus = pResponseStatus_}
 
--- | Details of resources that could not be tagged. An error code, status code, and error message are returned for each failed item.
+-- | A map containing a key-value pair for each failed item that couldn't be tagged. The key is the ARN of the failed resource. The value is a @FailureInfo@ object that contains an error code, a status code, and an error message. If there are no errors, the @FailedResourcesMap@ is empty.
 trrsFailedResourcesMap :: Lens' TagResourcesResponse (HashMap Text FailureInfo)
 trrsFailedResourcesMap = lens _trrsFailedResourcesMap (\ s a -> s{_trrsFailedResourcesMap = a}) . _Default . _Map
 

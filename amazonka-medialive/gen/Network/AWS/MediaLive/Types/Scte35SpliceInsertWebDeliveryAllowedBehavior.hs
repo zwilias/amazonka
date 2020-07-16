@@ -27,7 +27,7 @@ module Network.AWS.MediaLive.Types.Scte35SpliceInsertWebDeliveryAllowedBehavior 
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | Placeholder documentation for Scte35SpliceInsertWebDeliveryAllowedBehavior
+-- | Scte35 Splice Insert Web Delivery Allowed Behavior
 data Scte35SpliceInsertWebDeliveryAllowedBehavior = Scte35SpliceInsertWebDeliveryAllowedBehavior' (CI
                                                                                                      Text)
                                                       deriving (Eq, Ord, Read,

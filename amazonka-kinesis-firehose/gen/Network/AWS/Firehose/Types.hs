@@ -21,10 +21,17 @@ module Network.AWS.Firehose.Types
     , _InvalidArgumentException
     , _ConcurrentModificationException
     , _LimitExceededException
+    , _InvalidKMSResourceException
     , _ResourceInUseException
 
     -- * CompressionFormat
     , CompressionFormat (..)
+
+    -- * DeliveryStreamEncryptionStatus
+    , DeliveryStreamEncryptionStatus (..)
+
+    -- * DeliveryStreamFailureType
+    , DeliveryStreamFailureType (..)
 
     -- * DeliveryStreamStatus
     , DeliveryStreamStatus (..)
@@ -40,6 +47,9 @@ module Network.AWS.Firehose.Types
 
     -- * HECEndpointType
     , HECEndpointType (..)
+
+    -- * KeyType
+    , KeyType (..)
 
     -- * NoEncryptionConfig
     , NoEncryptionConfig (..)
@@ -102,6 +112,8 @@ module Network.AWS.Firehose.Types
     -- * DeliveryStreamDescription
     , DeliveryStreamDescription
     , deliveryStreamDescription
+    , dsdFailureDescription
+    , dsdDeliveryStreamEncryptionConfiguration
     , dsdCreateTimestamp
     , dsdSource
     , dsdLastUpdateTimestamp
@@ -112,6 +124,20 @@ module Network.AWS.Firehose.Types
     , dsdVersionId
     , dsdDestinations
     , dsdHasMoreDestinations
+
+    -- * DeliveryStreamEncryptionConfiguration
+    , DeliveryStreamEncryptionConfiguration
+    , deliveryStreamEncryptionConfiguration
+    , dsecStatus
+    , dsecKeyType
+    , dsecKeyARN
+    , dsecFailureDescription
+
+    -- * DeliveryStreamEncryptionConfigurationInput
+    , DeliveryStreamEncryptionConfigurationInput
+    , deliveryStreamEncryptionConfigurationInput
+    , dseciKeyARN
+    , dseciKeyType
 
     -- * Deserializer
     , Deserializer
@@ -139,15 +165,17 @@ module Network.AWS.Firehose.Types
     , ElasticsearchDestinationConfiguration
     , elasticsearchDestinationConfiguration
     , edcIndexRotationPeriod
+    , edcTypeName
     , edcS3BackupMode
+    , edcDomainARN
     , edcCloudWatchLoggingOptions
+    , edcVPCConfiguration
     , edcBufferingHints
     , edcRetryOptions
     , edcProcessingConfiguration
+    , edcClusterEndpoint
     , edcRoleARN
-    , edcDomainARN
     , edcIndexName
-    , edcTypeName
     , edcS3Configuration
 
     -- * ElasticsearchDestinationDescription
@@ -157,12 +185,14 @@ module Network.AWS.Firehose.Types
     , eddTypeName
     , eddS3BackupMode
     , eddDomainARN
+    , eddVPCConfigurationDescription
     , eddCloudWatchLoggingOptions
     , eddS3DestinationDescription
     , eddBufferingHints
     , eddRetryOptions
     , eddProcessingConfiguration
     , eddRoleARN
+    , eddClusterEndpoint
     , eddIndexName
 
     -- * ElasticsearchDestinationUpdate
@@ -177,6 +207,7 @@ module Network.AWS.Firehose.Types
     , eduRetryOptions
     , eduProcessingConfiguration
     , eduRoleARN
+    , eduClusterEndpoint
     , eduIndexName
 
     -- * ElasticsearchRetryOptions
@@ -197,6 +228,7 @@ module Network.AWS.Firehose.Types
     , esdcPrefix
     , esdcCloudWatchLoggingOptions
     , esdcS3BackupConfiguration
+    , esdcErrorOutputPrefix
     , esdcEncryptionConfiguration
     , esdcCompressionFormat
     , esdcBufferingHints
@@ -212,6 +244,7 @@ module Network.AWS.Firehose.Types
     , esddS3BackupDescription
     , esddPrefix
     , esddCloudWatchLoggingOptions
+    , esddErrorOutputPrefix
     , esddDataFormatConversionConfiguration
     , esddProcessingConfiguration
     , esddRoleARN
@@ -226,6 +259,7 @@ module Network.AWS.Firehose.Types
     , esduS3BackupMode
     , esduPrefix
     , esduCloudWatchLoggingOptions
+    , esduErrorOutputPrefix
     , esduS3BackupUpdate
     , esduEncryptionConfiguration
     , esduCompressionFormat
@@ -234,6 +268,12 @@ module Network.AWS.Firehose.Types
     , esduBucketARN
     , esduProcessingConfiguration
     , esduRoleARN
+
+    -- * FailureDescription
+    , FailureDescription
+    , failureDescription
+    , fdType
+    , fdDetails
 
     -- * HiveJSONSerDe
     , HiveJSONSerDe
@@ -383,6 +423,7 @@ module Network.AWS.Firehose.Types
     , s3DestinationConfiguration
     , sdcPrefix
     , sdcCloudWatchLoggingOptions
+    , sdcErrorOutputPrefix
     , sdcEncryptionConfiguration
     , sdcCompressionFormat
     , sdcBufferingHints
@@ -394,6 +435,7 @@ module Network.AWS.Firehose.Types
     , s3DestinationDescription
     , s3Prefix
     , s3CloudWatchLoggingOptions
+    , s3ErrorOutputPrefix
     , s3RoleARN
     , s3BucketARN
     , s3BufferingHints
@@ -405,6 +447,7 @@ module Network.AWS.Firehose.Types
     , s3DestinationUpdate
     , sPrefix
     , sCloudWatchLoggingOptions
+    , sErrorOutputPrefix
     , sEncryptionConfiguration
     , sCompressionFormat
     , sBufferingHints
@@ -481,17 +524,35 @@ module Network.AWS.Firehose.Types
     , tag
     , tagValue
     , tagKey
+
+    -- * VPCConfiguration
+    , VPCConfiguration
+    , vpcConfiguration
+    , vcSubnetIds
+    , vcRoleARN
+    , vcSecurityGroupIds
+
+    -- * VPCConfigurationDescription
+    , VPCConfigurationDescription
+    , vpcConfigurationDescription
+    , vcdSubnetIds
+    , vcdRoleARN
+    , vcdSecurityGroupIds
+    , vcdVPCId
     ) where
 
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Sign.V4
 import Network.AWS.Firehose.Types.CompressionFormat
+import Network.AWS.Firehose.Types.DeliveryStreamEncryptionStatus
+import Network.AWS.Firehose.Types.DeliveryStreamFailureType
 import Network.AWS.Firehose.Types.DeliveryStreamStatus
 import Network.AWS.Firehose.Types.DeliveryStreamType
 import Network.AWS.Firehose.Types.ElasticsearchIndexRotationPeriod
 import Network.AWS.Firehose.Types.ElasticsearchS3BackupMode
 import Network.AWS.Firehose.Types.HECEndpointType
+import Network.AWS.Firehose.Types.KeyType
 import Network.AWS.Firehose.Types.NoEncryptionConfig
 import Network.AWS.Firehose.Types.OrcCompression
 import Network.AWS.Firehose.Types.OrcFormatVersion
@@ -507,6 +568,8 @@ import Network.AWS.Firehose.Types.CloudWatchLoggingOptions
 import Network.AWS.Firehose.Types.CopyCommand
 import Network.AWS.Firehose.Types.DataFormatConversionConfiguration
 import Network.AWS.Firehose.Types.DeliveryStreamDescription
+import Network.AWS.Firehose.Types.DeliveryStreamEncryptionConfiguration
+import Network.AWS.Firehose.Types.DeliveryStreamEncryptionConfigurationInput
 import Network.AWS.Firehose.Types.Deserializer
 import Network.AWS.Firehose.Types.DestinationDescription
 import Network.AWS.Firehose.Types.ElasticsearchBufferingHints
@@ -518,6 +581,7 @@ import Network.AWS.Firehose.Types.EncryptionConfiguration
 import Network.AWS.Firehose.Types.ExtendedS3DestinationConfiguration
 import Network.AWS.Firehose.Types.ExtendedS3DestinationDescription
 import Network.AWS.Firehose.Types.ExtendedS3DestinationUpdate
+import Network.AWS.Firehose.Types.FailureDescription
 import Network.AWS.Firehose.Types.HiveJSONSerDe
 import Network.AWS.Firehose.Types.InputFormatConfiguration
 import Network.AWS.Firehose.Types.KMSEncryptionConfig
@@ -547,6 +611,8 @@ import Network.AWS.Firehose.Types.SplunkDestinationDescription
 import Network.AWS.Firehose.Types.SplunkDestinationUpdate
 import Network.AWS.Firehose.Types.SplunkRetryOptions
 import Network.AWS.Firehose.Types.Tag
+import Network.AWS.Firehose.Types.VPCConfiguration
+import Network.AWS.Firehose.Types.VPCConfigurationDescription
 
 -- | API version @2015-08-04@ of the Amazon Kinesis Firehose SDK configuration.
 firehose :: Service
@@ -570,6 +636,11 @@ firehose
             = Just "throttling_exception"
           | has (hasCode "Throttling" . hasStatus 400) e =
             Just "throttling"
+          | has
+              (hasCode "ProvisionedThroughputExceededException" .
+                 hasStatus 400)
+              e
+            = Just "throughput_exceeded"
           | has (hasStatus 504) e = Just "gateway_timeout"
           | has
               (hasCode "RequestThrottledException" . hasStatus 400)
@@ -589,7 +660,7 @@ _ResourceNotFoundException
   = _MatchServiceError firehose
       "ResourceNotFoundException"
 
--- | The service is unavailable. Back off and retry the operation. If you continue to see the exception, throughput limits for the delivery stream may have been exceeded. For more information about limits and how to request an increase, see <http://docs.aws.amazon.com/firehose/latest/dev/limits.html Amazon Kinesis Data Firehose Limits> .
+-- | The service is unavailable. Back off and retry the operation. If you continue to see the exception, throughput limits for the delivery stream may have been exceeded. For more information about limits and how to request an increase, see <https://docs.aws.amazon.com/firehose/latest/dev/limits.html Amazon Kinesis Data Firehose Limits> .
 --
 --
 _ServiceUnavailableException :: AsError a => Getting (First ServiceError) a ServiceError
@@ -605,7 +676,7 @@ _InvalidArgumentException
   = _MatchServiceError firehose
       "InvalidArgumentException"
 
--- | Another modification has already happened. Fetch __VersionId__ again and use it to update the destination.
+-- | Another modification has already happened. Fetch @VersionId@ again and use it to update the destination.
 --
 --
 _ConcurrentModificationException :: AsError a => Getting (First ServiceError) a ServiceError
@@ -620,6 +691,14 @@ _LimitExceededException :: AsError a => Getting (First ServiceError) a ServiceEr
 _LimitExceededException
   = _MatchServiceError firehose
       "LimitExceededException"
+
+-- | Kinesis Data Firehose throws this exception when an attempt to put records or to start or stop delivery stream encryption fails. This happens when the KMS service throws one of the following exception types: @AccessDeniedException@ , @InvalidStateException@ , @DisabledException@ , or @NotFoundException@ .
+--
+--
+_InvalidKMSResourceException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidKMSResourceException
+  = _MatchServiceError firehose
+      "InvalidKMSResourceException"
 
 -- | The resource is already in use and not available for this operation.
 --

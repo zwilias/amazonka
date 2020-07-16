@@ -97,7 +97,7 @@ data InitiateDocumentVersionUpload = InitiateDocumentVersionUpload'{_idvuDocumen
 --
 -- * 'idvuContentCreatedTimestamp' - The timestamp when the content of the document was originally created.
 --
--- * 'idvuAuthenticationToken' - Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.
+-- * 'idvuAuthenticationToken' - Amazon WorkDocs authentication token. Not required when using AWS administrator credentials to access the API.
 --
 -- * 'idvuName' - The name of the document.
 --
@@ -129,7 +129,7 @@ idvuDocumentSizeInBytes = lens _idvuDocumentSizeInBytes (\ s a -> s{_idvuDocumen
 idvuContentCreatedTimestamp :: Lens' InitiateDocumentVersionUpload (Maybe UTCTime)
 idvuContentCreatedTimestamp = lens _idvuContentCreatedTimestamp (\ s a -> s{_idvuContentCreatedTimestamp = a}) . mapping _Time
 
--- | Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.
+-- | Amazon WorkDocs authentication token. Not required when using AWS administrator credentials to access the API.
 idvuAuthenticationToken :: Lens' InitiateDocumentVersionUpload (Maybe Text)
 idvuAuthenticationToken = lens _idvuAuthenticationToken (\ s a -> s{_idvuAuthenticationToken = a}) . mapping _Sensitive
 

@@ -41,6 +41,7 @@ module Network.AWS.LexModels.GetBot
     , gbrsAbortStatement
     , gbrsIntents
     , gbrsChecksum
+    , gbrsDetectSentiment
     , gbrsLocale
     , gbrsCreatedDate
     , gbrsName
@@ -100,6 +101,7 @@ instance AWSRequest GetBot where
                      (x .?> "abortStatement")
                      <*> (x .?> "intents" .!@ mempty)
                      <*> (x .?> "checksum")
+                     <*> (x .?> "detectSentiment")
                      <*> (x .?> "locale")
                      <*> (x .?> "createdDate")
                      <*> (x .?> "name")
@@ -139,6 +141,7 @@ data GetBotResponse = GetBotResponse'{_gbrsFailureReason
                                       _gbrsAbortStatement :: !(Maybe Statement),
                                       _gbrsIntents :: !(Maybe [Intent]),
                                       _gbrsChecksum :: !(Maybe Text),
+                                      _gbrsDetectSentiment :: !(Maybe Bool),
                                       _gbrsLocale :: !(Maybe Locale),
                                       _gbrsCreatedDate :: !(Maybe POSIX),
                                       _gbrsName :: !(Maybe Text),
@@ -160,13 +163,15 @@ data GetBotResponse = GetBotResponse'{_gbrsFailureReason
 --
 -- * 'gbrsFailureReason' - If @status@ is @FAILED@ , Amazon Lex explains why it failed to build the bot.
 --
--- * 'gbrsStatus' - The status of the bot. If the bot is ready to run, the status is @READY@ . If there was a problem with building the bot, the status is @FAILED@ and the @failureReason@ explains why the bot did not build. If the bot was saved but not built, the status is @NOT BUILT@ .
+-- * 'gbrsStatus' - The status of the bot.  When the status is @BUILDING@ Amazon Lex is building the bot for testing and use. If the status of the bot is @READY_BASIC_TESTING@ , you can test the bot using the exact utterances specified in the bot's intents. When the bot is ready for full testing or to run, the status is @READY@ . If there was a problem with building the bot, the status is @FAILED@ and the @failureReason@ field explains why the bot did not build. If the bot was saved but not built, the status is @NOT_BUILT@ .
 --
 -- * 'gbrsAbortStatement' - The message that Amazon Lex returns when the user elects to end the conversation without completing it. For more information, see 'PutBot' .
 --
 -- * 'gbrsIntents' - An array of @intent@ objects. For more information, see 'PutBot' .
 --
 -- * 'gbrsChecksum' - Checksum of the bot used to identify a specific revision of the bot's @> LATEST@ version.
+--
+-- * 'gbrsDetectSentiment' - Indicates whether user utterances should be sent to Amazon Comprehend for sentiment analysis.
 --
 -- * 'gbrsLocale' - The target locale for the bot. 
 --
@@ -196,6 +201,7 @@ getBotResponse pResponseStatus_
   = GetBotResponse'{_gbrsFailureReason = Nothing,
                     _gbrsStatus = Nothing, _gbrsAbortStatement = Nothing,
                     _gbrsIntents = Nothing, _gbrsChecksum = Nothing,
+                    _gbrsDetectSentiment = Nothing,
                     _gbrsLocale = Nothing, _gbrsCreatedDate = Nothing,
                     _gbrsName = Nothing, _gbrsVersion = Nothing,
                     _gbrsIdleSessionTTLInSeconds = Nothing,
@@ -210,7 +216,7 @@ getBotResponse pResponseStatus_
 gbrsFailureReason :: Lens' GetBotResponse (Maybe Text)
 gbrsFailureReason = lens _gbrsFailureReason (\ s a -> s{_gbrsFailureReason = a})
 
--- | The status of the bot. If the bot is ready to run, the status is @READY@ . If there was a problem with building the bot, the status is @FAILED@ and the @failureReason@ explains why the bot did not build. If the bot was saved but not built, the status is @NOT BUILT@ .
+-- | The status of the bot.  When the status is @BUILDING@ Amazon Lex is building the bot for testing and use. If the status of the bot is @READY_BASIC_TESTING@ , you can test the bot using the exact utterances specified in the bot's intents. When the bot is ready for full testing or to run, the status is @READY@ . If there was a problem with building the bot, the status is @FAILED@ and the @failureReason@ field explains why the bot did not build. If the bot was saved but not built, the status is @NOT_BUILT@ .
 gbrsStatus :: Lens' GetBotResponse (Maybe LexStatus)
 gbrsStatus = lens _gbrsStatus (\ s a -> s{_gbrsStatus = a})
 
@@ -225,6 +231,10 @@ gbrsIntents = lens _gbrsIntents (\ s a -> s{_gbrsIntents = a}) . _Default . _Coe
 -- | Checksum of the bot used to identify a specific revision of the bot's @> LATEST@ version.
 gbrsChecksum :: Lens' GetBotResponse (Maybe Text)
 gbrsChecksum = lens _gbrsChecksum (\ s a -> s{_gbrsChecksum = a})
+
+-- | Indicates whether user utterances should be sent to Amazon Comprehend for sentiment analysis.
+gbrsDetectSentiment :: Lens' GetBotResponse (Maybe Bool)
+gbrsDetectSentiment = lens _gbrsDetectSentiment (\ s a -> s{_gbrsDetectSentiment = a})
 
 -- | The target locale for the bot. 
 gbrsLocale :: Lens' GetBotResponse (Maybe Locale)

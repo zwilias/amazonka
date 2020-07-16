@@ -58,7 +58,7 @@ data GetUserDefinedFunction = GetUserDefinedFunction'{_getCatalogId
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'getCatalogId' - The ID of the Data Catalog where the function to be retrieved is located. If none is supplied, the AWS account ID is used by default.
+-- * 'getCatalogId' - The ID of the Data Catalog where the function to be retrieved is located. If none is provided, the AWS account ID is used by default.
 --
 -- * 'getDatabaseName' - The name of the catalog database where the function is located.
 --
@@ -72,7 +72,7 @@ getUserDefinedFunction pDatabaseName_ pFunctionName_
                             _getDatabaseName = pDatabaseName_,
                             _getFunctionName = pFunctionName_}
 
--- | The ID of the Data Catalog where the function to be retrieved is located. If none is supplied, the AWS account ID is used by default.
+-- | The ID of the Data Catalog where the function to be retrieved is located. If none is provided, the AWS account ID is used by default.
 getCatalogId :: Lens' GetUserDefinedFunction (Maybe Text)
 getCatalogId = lens _getCatalogId (\ s a -> s{_getCatalogId = a})
 

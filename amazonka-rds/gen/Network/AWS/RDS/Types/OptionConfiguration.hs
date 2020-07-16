@@ -44,9 +44,9 @@ data OptionConfiguration = OptionConfiguration'{_ocOptionSettings
 --
 -- * 'ocOptionSettings' - The option settings to include in an option group.
 --
--- * 'ocVPCSecurityGroupMemberships' - A list of VpcSecurityGroupMemebrship name strings used for this option.
+-- * 'ocVPCSecurityGroupMemberships' - A list of VpcSecurityGroupMembership name strings used for this option.
 --
--- * 'ocDBSecurityGroupMemberships' - A list of DBSecurityGroupMemebrship name strings used for this option.
+-- * 'ocDBSecurityGroupMemberships' - A list of DBSecurityGroupMembership name strings used for this option.
 --
 -- * 'ocOptionVersion' - The version for the option.
 --
@@ -67,11 +67,11 @@ optionConfiguration pOptionName_
 ocOptionSettings :: Lens' OptionConfiguration [OptionSetting]
 ocOptionSettings = lens _ocOptionSettings (\ s a -> s{_ocOptionSettings = a}) . _Default . _Coerce
 
--- | A list of VpcSecurityGroupMemebrship name strings used for this option.
+-- | A list of VpcSecurityGroupMembership name strings used for this option.
 ocVPCSecurityGroupMemberships :: Lens' OptionConfiguration [Text]
 ocVPCSecurityGroupMemberships = lens _ocVPCSecurityGroupMemberships (\ s a -> s{_ocVPCSecurityGroupMemberships = a}) . _Default . _Coerce
 
--- | A list of DBSecurityGroupMemebrship name strings used for this option.
+-- | A list of DBSecurityGroupMembership name strings used for this option.
 ocDBSecurityGroupMemberships :: Lens' OptionConfiguration [Text]
 ocDBSecurityGroupMemberships = lens _ocDBSecurityGroupMemberships (\ s a -> s{_ocDBSecurityGroupMemberships = a}) . _Default . _Coerce
 

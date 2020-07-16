@@ -35,6 +35,7 @@ module Network.AWS.SSM.DescribeDocumentPermission
     , DescribeDocumentPermissionResponse
     -- * Response Lenses
     , ddprsAccountIds
+    , ddprsAccountSharingInfoList
     , ddprsResponseStatus
     ) where
 
@@ -86,7 +87,8 @@ instance AWSRequest DescribeDocumentPermission where
               (\ s h x ->
                  DescribeDocumentPermissionResponse' <$>
                    (x .?> "AccountIds" .!@ mempty) <*>
-                     (pure (fromEnum s)))
+                     (x .?> "AccountSharingInfoList" .!@ mempty)
+                     <*> (pure (fromEnum s)))
 
 instance Hashable DescribeDocumentPermission where
 
@@ -120,6 +122,10 @@ data DescribeDocumentPermissionResponse = DescribeDocumentPermissionResponse'{_d
                                                                               ::
                                                                               !(Maybe
                                                                                   [Text]),
+                                                                              _ddprsAccountSharingInfoList
+                                                                              ::
+                                                                              !(Maybe
+                                                                                  [AccountSharingInfo]),
                                                                               _ddprsResponseStatus
                                                                               ::
                                                                               !Int}
@@ -132,6 +138,8 @@ data DescribeDocumentPermissionResponse = DescribeDocumentPermissionResponse'{_d
 --
 -- * 'ddprsAccountIds' - The account IDs that have permission to use this document. The ID can be either an AWS account or /All/ .
 --
+-- * 'ddprsAccountSharingInfoList' - A list of AWS accounts where the current document is shared and the version shared with each account.
+--
 -- * 'ddprsResponseStatus' - -- | The response status code.
 describeDocumentPermissionResponse
     :: Int -- ^ 'ddprsResponseStatus'
@@ -139,11 +147,16 @@ describeDocumentPermissionResponse
 describeDocumentPermissionResponse pResponseStatus_
   = DescribeDocumentPermissionResponse'{_ddprsAccountIds
                                           = Nothing,
+                                        _ddprsAccountSharingInfoList = Nothing,
                                         _ddprsResponseStatus = pResponseStatus_}
 
 -- | The account IDs that have permission to use this document. The ID can be either an AWS account or /All/ .
 ddprsAccountIds :: Lens' DescribeDocumentPermissionResponse [Text]
 ddprsAccountIds = lens _ddprsAccountIds (\ s a -> s{_ddprsAccountIds = a}) . _Default . _Coerce
+
+-- | A list of AWS accounts where the current document is shared and the version shared with each account.
+ddprsAccountSharingInfoList :: Lens' DescribeDocumentPermissionResponse [AccountSharingInfo]
+ddprsAccountSharingInfoList = lens _ddprsAccountSharingInfoList (\ s a -> s{_ddprsAccountSharingInfoList = a}) . _Default . _Coerce
 
 -- | -- | The response status code.
 ddprsResponseStatus :: Lens' DescribeDocumentPermissionResponse Int

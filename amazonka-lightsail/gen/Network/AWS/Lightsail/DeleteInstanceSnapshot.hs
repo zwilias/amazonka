@@ -21,6 +21,8 @@
 -- Deletes a specific snapshot of a virtual private server (or /instance/ ).
 --
 --
+-- The @delete instance snapshot@ operation supports tag-based access control via resource tags applied to the resource identified by @instance snapshot name@ . For more information, see the <https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags Lightsail Dev Guide> .
+--
 module Network.AWS.Lightsail.DeleteInstanceSnapshot
     (
     -- * Creating a Request
@@ -119,7 +121,7 @@ data DeleteInstanceSnapshotResponse = DeleteInstanceSnapshotResponse'{_disrsOper
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'disrsOperations' - An array of key-value pairs containing information about the results of your delete instance snapshot request.
+-- * 'disrsOperations' - An array of objects that describe the result of the action, such as the status of the request, the time stamp of the request, and the resources affected by the request.
 --
 -- * 'disrsResponseStatus' - -- | The response status code.
 deleteInstanceSnapshotResponse
@@ -130,7 +132,7 @@ deleteInstanceSnapshotResponse pResponseStatus_
                                       Nothing,
                                     _disrsResponseStatus = pResponseStatus_}
 
--- | An array of key-value pairs containing information about the results of your delete instance snapshot request.
+-- | An array of objects that describe the result of the action, such as the status of the request, the time stamp of the request, and the resources affected by the request.
 disrsOperations :: Lens' DeleteInstanceSnapshotResponse [Operation]
 disrsOperations = lens _disrsOperations (\ s a -> s{_disrsOperations = a}) . _Default . _Coerce
 

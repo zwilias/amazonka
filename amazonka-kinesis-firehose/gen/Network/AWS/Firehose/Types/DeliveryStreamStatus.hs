@@ -21,7 +21,9 @@ module Network.AWS.Firehose.Types.DeliveryStreamStatus (
     ..
     , Active
     , Creating
+    , CreatingFailed
     , Deleting
+    , DeletingFailed
     )
   ) where
 
@@ -39,13 +41,21 @@ pattern Active = DeliveryStreamStatus' "ACTIVE"
 pattern Creating :: DeliveryStreamStatus
 pattern Creating = DeliveryStreamStatus' "CREATING"
 
+pattern CreatingFailed :: DeliveryStreamStatus
+pattern CreatingFailed = DeliveryStreamStatus' "CREATING_FAILED"
+
 pattern Deleting :: DeliveryStreamStatus
 pattern Deleting = DeliveryStreamStatus' "DELETING"
+
+pattern DeletingFailed :: DeliveryStreamStatus
+pattern DeletingFailed = DeliveryStreamStatus' "DELETING_FAILED"
 
 {-# COMPLETE
   Active,
   Creating,
+  CreatingFailed,
   Deleting,
+  DeletingFailed,
   DeliveryStreamStatus' #-}
 
 instance FromText DeliveryStreamStatus where
@@ -62,12 +72,16 @@ instance Enum DeliveryStreamStatus where
     toEnum i = case i of
         0 -> Active
         1 -> Creating
-        2 -> Deleting
+        2 -> CreatingFailed
+        3 -> Deleting
+        4 -> DeletingFailed
         _ -> (error . showText) $ "Unknown index for DeliveryStreamStatus: " <> toText i
     fromEnum x = case x of
         Active -> 0
         Creating -> 1
-        Deleting -> 2
+        CreatingFailed -> 2
+        Deleting -> 3
+        DeletingFailed -> 4
         DeliveryStreamStatus' name -> (error . showText) $ "Unknown DeliveryStreamStatus: " <> original name
 
 -- | Represents the bounds of /known/ $DeliveryStreamStatus.
@@ -75,7 +89,7 @@ instance Enum DeliveryStreamStatus where
 --   This instance exists only for backward compatibility.
 instance Bounded DeliveryStreamStatus where
     minBound = Active
-    maxBound = Deleting
+    maxBound = DeletingFailed
 
 instance Hashable     DeliveryStreamStatus
 instance NFData       DeliveryStreamStatus

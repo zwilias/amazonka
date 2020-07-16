@@ -27,7 +27,7 @@ module Network.AWS.MediaLive.Types.SmoothGroupStreamManifestBehavior (
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | Placeholder documentation for SmoothGroupStreamManifestBehavior
+-- | Smooth Group Stream Manifest Behavior
 data SmoothGroupStreamManifestBehavior = SmoothGroupStreamManifestBehavior' (CI
                                                                                Text)
                                            deriving (Eq, Ord, Read, Show, Data,

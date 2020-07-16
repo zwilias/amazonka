@@ -32,7 +32,6 @@ module Network.AWS.SMS.Types.ReplicationRunState (
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | Current state of Replication Run
 data ReplicationRunState = ReplicationRunState' (CI
                                                    Text)
                              deriving (Eq, Ord, Read, Show, Data, Typeable,

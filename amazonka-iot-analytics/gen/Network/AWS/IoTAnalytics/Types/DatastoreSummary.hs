@@ -18,6 +18,7 @@
 module Network.AWS.IoTAnalytics.Types.DatastoreSummary where
 
 import Network.AWS.IoTAnalytics.Types.DatastoreStatus
+import Network.AWS.IoTAnalytics.Types.DatastoreStorageSummary
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
@@ -30,7 +31,9 @@ data DatastoreSummary = DatastoreSummary'{_dsCreationTime
                                           :: !(Maybe POSIX),
                                           _dsStatus :: !(Maybe DatastoreStatus),
                                           _dsDatastoreName :: !(Maybe Text),
-                                          _dsLastUpdateTime :: !(Maybe POSIX)}
+                                          _dsLastUpdateTime :: !(Maybe POSIX),
+                                          _dsDatastoreStorage ::
+                                          !(Maybe DatastoreStorageSummary)}
                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DatastoreSummary' with the minimum fields required to make a request.
@@ -44,12 +47,15 @@ data DatastoreSummary = DatastoreSummary'{_dsCreationTime
 -- * 'dsDatastoreName' - The name of the data store.
 --
 -- * 'dsLastUpdateTime' - The last time the data store was updated.
+--
+-- * 'dsDatastoreStorage' - Where data store data is stored.
 datastoreSummary
     :: DatastoreSummary
 datastoreSummary
   = DatastoreSummary'{_dsCreationTime = Nothing,
                       _dsStatus = Nothing, _dsDatastoreName = Nothing,
-                      _dsLastUpdateTime = Nothing}
+                      _dsLastUpdateTime = Nothing,
+                      _dsDatastoreStorage = Nothing}
 
 -- | When the data store was created.
 dsCreationTime :: Lens' DatastoreSummary (Maybe UTCTime)
@@ -67,6 +73,10 @@ dsDatastoreName = lens _dsDatastoreName (\ s a -> s{_dsDatastoreName = a})
 dsLastUpdateTime :: Lens' DatastoreSummary (Maybe UTCTime)
 dsLastUpdateTime = lens _dsLastUpdateTime (\ s a -> s{_dsLastUpdateTime = a}) . mapping _Time
 
+-- | Where data store data is stored.
+dsDatastoreStorage :: Lens' DatastoreSummary (Maybe DatastoreStorageSummary)
+dsDatastoreStorage = lens _dsDatastoreStorage (\ s a -> s{_dsDatastoreStorage = a})
+
 instance FromJSON DatastoreSummary where
         parseJSON
           = withObject "DatastoreSummary"
@@ -74,7 +84,8 @@ instance FromJSON DatastoreSummary where
                  DatastoreSummary' <$>
                    (x .:? "creationTime") <*> (x .:? "status") <*>
                      (x .:? "datastoreName")
-                     <*> (x .:? "lastUpdateTime"))
+                     <*> (x .:? "lastUpdateTime")
+                     <*> (x .:? "datastoreStorage"))
 
 instance Hashable DatastoreSummary where
 

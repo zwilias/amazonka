@@ -23,13 +23,18 @@ import Network.AWS.S3.Internal
 import Network.AWS.S3.Types.CSVInput
 import Network.AWS.S3.Types.CompressionType
 import Network.AWS.S3.Types.JSONInput
+import Network.AWS.S3.Types.ParquetInput
 
 -- | Describes the serialization format of the object.
+--
+--
 --
 -- /See:/ 'inputSerialization' smart constructor.
 data InputSerialization = InputSerialization'{_isJSON
                                               :: !(Maybe JSONInput),
                                               _isCSV :: !(Maybe CSVInput),
+                                              _isParquet ::
+                                              !(Maybe ParquetInput),
                                               _isCompressionType ::
                                               !(Maybe CompressionType)}
                             deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -42,12 +47,15 @@ data InputSerialization = InputSerialization'{_isJSON
 --
 -- * 'isCSV' - Describes the serialization of a CSV-encoded object.
 --
--- * 'isCompressionType' - Specifies object's compression format. Valid values: NONE, GZIP. Default Value: NONE.
+-- * 'isParquet' - Specifies Parquet as object's input serialization format.
+--
+-- * 'isCompressionType' - Specifies object's compression format. Valid values: NONE, GZIP, BZIP2. Default Value: NONE.
 inputSerialization
     :: InputSerialization
 inputSerialization
   = InputSerialization'{_isJSON = Nothing,
-                        _isCSV = Nothing, _isCompressionType = Nothing}
+                        _isCSV = Nothing, _isParquet = Nothing,
+                        _isCompressionType = Nothing}
 
 -- | Specifies JSON as object's input serialization format.
 isJSON :: Lens' InputSerialization (Maybe JSONInput)
@@ -57,7 +65,11 @@ isJSON = lens _isJSON (\ s a -> s{_isJSON = a})
 isCSV :: Lens' InputSerialization (Maybe CSVInput)
 isCSV = lens _isCSV (\ s a -> s{_isCSV = a})
 
--- | Specifies object's compression format. Valid values: NONE, GZIP. Default Value: NONE.
+-- | Specifies Parquet as object's input serialization format.
+isParquet :: Lens' InputSerialization (Maybe ParquetInput)
+isParquet = lens _isParquet (\ s a -> s{_isParquet = a})
+
+-- | Specifies object's compression format. Valid values: NONE, GZIP, BZIP2. Default Value: NONE.
 isCompressionType :: Lens' InputSerialization (Maybe CompressionType)
 isCompressionType = lens _isCompressionType (\ s a -> s{_isCompressionType = a})
 
@@ -69,4 +81,5 @@ instance ToXML InputSerialization where
         toXML InputSerialization'{..}
           = mconcat
               ["JSON" @= _isJSON, "CSV" @= _isCSV,
+               "Parquet" @= _isParquet,
                "CompressionType" @= _isCompressionType]

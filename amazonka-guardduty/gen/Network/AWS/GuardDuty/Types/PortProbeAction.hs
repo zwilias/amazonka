@@ -21,7 +21,9 @@ import Network.AWS.GuardDuty.Types.PortProbeDetail
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | Information about the PORT_PROBE action described in this finding.
+-- | Contains information about the PORT_PROBE action described in the finding.
+--
+--
 --
 -- /See:/ 'portProbeAction' smart constructor.
 data PortProbeAction = PortProbeAction'{_ppaPortProbeDetails
@@ -33,20 +35,20 @@ data PortProbeAction = PortProbeAction'{_ppaPortProbeDetails
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'ppaPortProbeDetails' - A list of port probe details objects.
+-- * 'ppaPortProbeDetails' - A list of objects related to port probe details.
 --
--- * 'ppaBlocked' - Port probe blocked information.
+-- * 'ppaBlocked' - Indicates whether EC2 blocked the port probe to the instance, such as with an ACL.
 portProbeAction
     :: PortProbeAction
 portProbeAction
   = PortProbeAction'{_ppaPortProbeDetails = Nothing,
                      _ppaBlocked = Nothing}
 
--- | A list of port probe details objects.
+-- | A list of objects related to port probe details.
 ppaPortProbeDetails :: Lens' PortProbeAction [PortProbeDetail]
 ppaPortProbeDetails = lens _ppaPortProbeDetails (\ s a -> s{_ppaPortProbeDetails = a}) . _Default . _Coerce
 
--- | Port probe blocked information.
+-- | Indicates whether EC2 blocked the port probe to the instance, such as with an ACL.
 ppaBlocked :: Lens' PortProbeAction (Maybe Bool)
 ppaBlocked = lens _ppaBlocked (\ s a -> s{_ppaBlocked = a})
 

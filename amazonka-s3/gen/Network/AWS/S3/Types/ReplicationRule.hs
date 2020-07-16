@@ -20,18 +20,29 @@ module Network.AWS.S3.Types.ReplicationRule where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.S3.Internal
+import Network.AWS.S3.Types.DeleteMarkerReplication
 import Network.AWS.S3.Types.Destination
+import Network.AWS.S3.Types.ExistingObjectReplication
+import Network.AWS.S3.Types.ReplicationRuleFilter
 import Network.AWS.S3.Types.ReplicationRuleStatus
 import Network.AWS.S3.Types.SourceSelectionCriteria
 
--- | Container for information about a particular replication rule.
+-- | Specifies which Amazon S3 objects to replicate and where to store the replicas.
+--
+--
 --
 -- /See:/ 'replicationRule' smart constructor.
-data ReplicationRule = ReplicationRule'{_rrId ::
-                                        !(Maybe Text),
+data ReplicationRule = ReplicationRule'{_rrDeleteMarkerReplication
+                                        :: !(Maybe DeleteMarkerReplication),
+                                        _rrPriority :: !(Maybe Int),
+                                        _rrPrefix :: !(Maybe Text),
+                                        _rrExistingObjectReplication ::
+                                        !(Maybe ExistingObjectReplication),
+                                        _rrId :: !(Maybe Text),
+                                        _rrFilter ::
+                                        !(Maybe ReplicationRuleFilter),
                                         _rrSourceSelectionCriteria ::
                                         !(Maybe SourceSelectionCriteria),
-                                        _rrPrefix :: !Text,
                                         _rrStatus :: !ReplicationRuleStatus,
                                         _rrDestination :: !Destination}
                          deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -40,51 +51,82 @@ data ReplicationRule = ReplicationRule'{_rrId ::
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'rrId' - Unique identifier for the rule. The value cannot be longer than 255 characters.
+-- * 'rrDeleteMarkerReplication' - Undocumented member.
 --
--- * 'rrSourceSelectionCriteria' - Container for filters that define which source objects should be replicated.
+-- * 'rrPriority' - The priority associated with the rule. If you specify multiple rules in a replication configuration, Amazon S3 prioritizes the rules to prevent conflicts when filtering. If two or more rules identify the same object based on a specified filter, the rule with higher priority takes precedence. For example:     * Same object quality prefix-based filter criteria if prefixes you specified in multiple rules overlap      * Same object qualify tag-based filter criteria specified in multiple rules For more information, see < https://docs.aws.amazon.com/AmazonS3/latest/dev/replication.html Replication> in the /Amazon Simple Storage Service Developer Guide/ .
 --
--- * 'rrPrefix' - Object keyname prefix identifying one or more objects to which the rule applies. Maximum prefix length can be up to 1,024 characters. Overlapping prefixes are not supported.
+-- * 'rrPrefix' - An object key name prefix that identifies the object or objects to which the rule applies. The maximum prefix length is 1,024 characters. To include all objects in a bucket, specify an empty string. 
 --
--- * 'rrStatus' - The rule is ignored if status is not Enabled.
+-- * 'rrExistingObjectReplication' - 
 --
--- * 'rrDestination' - Container for replication destination information.
+-- * 'rrId' - A unique identifier for the rule. The maximum value is 255 characters.
+--
+-- * 'rrFilter' - Undocumented member.
+--
+-- * 'rrSourceSelectionCriteria' - A container that describes additional filters for identifying the source objects that you want to replicate. You can choose to enable or disable the replication of these objects. Currently, Amazon S3 supports only the filter that you can specify for objects created with server-side encryption using a customer master key (CMK) stored in AWS Key Management Service (SSE-KMS).
+--
+-- * 'rrStatus' - Specifies whether the rule is enabled.
+--
+-- * 'rrDestination' - A container for information about the replication destination and its configurations including enabling the S3 Replication Time Control (S3 RTC).
 replicationRule
-    :: Text -- ^ 'rrPrefix'
-    -> ReplicationRuleStatus -- ^ 'rrStatus'
+    :: ReplicationRuleStatus -- ^ 'rrStatus'
     -> Destination -- ^ 'rrDestination'
     -> ReplicationRule
-replicationRule pPrefix_ pStatus_ pDestination_
-  = ReplicationRule'{_rrId = Nothing,
+replicationRule pStatus_ pDestination_
+  = ReplicationRule'{_rrDeleteMarkerReplication =
+                       Nothing,
+                     _rrPriority = Nothing, _rrPrefix = Nothing,
+                     _rrExistingObjectReplication = Nothing,
+                     _rrId = Nothing, _rrFilter = Nothing,
                      _rrSourceSelectionCriteria = Nothing,
-                     _rrPrefix = pPrefix_, _rrStatus = pStatus_,
-                     _rrDestination = pDestination_}
+                     _rrStatus = pStatus_, _rrDestination = pDestination_}
 
--- | Unique identifier for the rule. The value cannot be longer than 255 characters.
+-- | Undocumented member.
+rrDeleteMarkerReplication :: Lens' ReplicationRule (Maybe DeleteMarkerReplication)
+rrDeleteMarkerReplication = lens _rrDeleteMarkerReplication (\ s a -> s{_rrDeleteMarkerReplication = a})
+
+-- | The priority associated with the rule. If you specify multiple rules in a replication configuration, Amazon S3 prioritizes the rules to prevent conflicts when filtering. If two or more rules identify the same object based on a specified filter, the rule with higher priority takes precedence. For example:     * Same object quality prefix-based filter criteria if prefixes you specified in multiple rules overlap      * Same object qualify tag-based filter criteria specified in multiple rules For more information, see < https://docs.aws.amazon.com/AmazonS3/latest/dev/replication.html Replication> in the /Amazon Simple Storage Service Developer Guide/ .
+rrPriority :: Lens' ReplicationRule (Maybe Int)
+rrPriority = lens _rrPriority (\ s a -> s{_rrPriority = a})
+
+-- | An object key name prefix that identifies the object or objects to which the rule applies. The maximum prefix length is 1,024 characters. To include all objects in a bucket, specify an empty string. 
+rrPrefix :: Lens' ReplicationRule (Maybe Text)
+rrPrefix = lens _rrPrefix (\ s a -> s{_rrPrefix = a})
+
+-- | 
+rrExistingObjectReplication :: Lens' ReplicationRule (Maybe ExistingObjectReplication)
+rrExistingObjectReplication = lens _rrExistingObjectReplication (\ s a -> s{_rrExistingObjectReplication = a})
+
+-- | A unique identifier for the rule. The maximum value is 255 characters.
 rrId :: Lens' ReplicationRule (Maybe Text)
 rrId = lens _rrId (\ s a -> s{_rrId = a})
 
--- | Container for filters that define which source objects should be replicated.
+-- | Undocumented member.
+rrFilter :: Lens' ReplicationRule (Maybe ReplicationRuleFilter)
+rrFilter = lens _rrFilter (\ s a -> s{_rrFilter = a})
+
+-- | A container that describes additional filters for identifying the source objects that you want to replicate. You can choose to enable or disable the replication of these objects. Currently, Amazon S3 supports only the filter that you can specify for objects created with server-side encryption using a customer master key (CMK) stored in AWS Key Management Service (SSE-KMS).
 rrSourceSelectionCriteria :: Lens' ReplicationRule (Maybe SourceSelectionCriteria)
 rrSourceSelectionCriteria = lens _rrSourceSelectionCriteria (\ s a -> s{_rrSourceSelectionCriteria = a})
 
--- | Object keyname prefix identifying one or more objects to which the rule applies. Maximum prefix length can be up to 1,024 characters. Overlapping prefixes are not supported.
-rrPrefix :: Lens' ReplicationRule Text
-rrPrefix = lens _rrPrefix (\ s a -> s{_rrPrefix = a})
-
--- | The rule is ignored if status is not Enabled.
+-- | Specifies whether the rule is enabled.
 rrStatus :: Lens' ReplicationRule ReplicationRuleStatus
 rrStatus = lens _rrStatus (\ s a -> s{_rrStatus = a})
 
--- | Container for replication destination information.
+-- | A container for information about the replication destination and its configurations including enabling the S3 Replication Time Control (S3 RTC).
 rrDestination :: Lens' ReplicationRule Destination
 rrDestination = lens _rrDestination (\ s a -> s{_rrDestination = a})
 
 instance FromXML ReplicationRule where
         parseXML x
           = ReplicationRule' <$>
-              (x .@? "ID") <*> (x .@? "SourceSelectionCriteria")
-                <*> (x .@ "Prefix")
+              (x .@? "DeleteMarkerReplication") <*>
+                (x .@? "Priority")
+                <*> (x .@? "Prefix")
+                <*> (x .@? "ExistingObjectReplication")
+                <*> (x .@? "ID")
+                <*> (x .@? "Filter")
+                <*> (x .@? "SourceSelectionCriteria")
                 <*> (x .@ "Status")
                 <*> (x .@ "Destination")
 
@@ -95,8 +137,13 @@ instance NFData ReplicationRule where
 instance ToXML ReplicationRule where
         toXML ReplicationRule'{..}
           = mconcat
-              ["ID" @= _rrId,
+              ["DeleteMarkerReplication" @=
+                 _rrDeleteMarkerReplication,
+               "Priority" @= _rrPriority, "Prefix" @= _rrPrefix,
+               "ExistingObjectReplication" @=
+                 _rrExistingObjectReplication,
+               "ID" @= _rrId, "Filter" @= _rrFilter,
                "SourceSelectionCriteria" @=
                  _rrSourceSelectionCriteria,
-               "Prefix" @= _rrPrefix, "Status" @= _rrStatus,
+               "Status" @= _rrStatus,
                "Destination" @= _rrDestination]

@@ -16,6 +16,7 @@ module Network.AWS.Kinesis.Types
       kinesis
 
     -- * Errors
+    , _InternalFailureException
     , _KMSDisabledException
     , _KMSNotFoundException
     , _ProvisionedThroughputExceededException
@@ -29,6 +30,9 @@ module Network.AWS.Kinesis.Types
     , _KMSAccessDeniedException
     , _LimitExceededException
     , _ResourceInUseException
+
+    -- * ConsumerStatus
+    , ConsumerStatus (..)
 
     -- * EncryptionType
     , EncryptionType (..)
@@ -44,6 +48,23 @@ module Network.AWS.Kinesis.Types
 
     -- * StreamStatus
     , StreamStatus (..)
+
+    -- * Consumer
+    , Consumer
+    , consumer
+    , cConsumerName
+    , cConsumerARN
+    , cConsumerStatus
+    , cConsumerCreationTimestamp
+
+    -- * ConsumerDescription
+    , ConsumerDescription
+    , consumerDescription
+    , cdConsumerName
+    , cdConsumerARN
+    , cdConsumerStatus
+    , cdConsumerCreationTimestamp
+    , cdStreamARN
 
     -- * EnhancedMetrics
     , EnhancedMetrics
@@ -62,6 +83,41 @@ module Network.AWS.Kinesis.Types
     , hashKeyRange
     , hkrStartingHashKey
     , hkrEndingHashKey
+
+    -- * InternalFailureException
+    , InternalFailureException
+    , internalFailureException
+    , ifeMessage
+
+    -- * KMSAccessDeniedException
+    , KMSAccessDeniedException
+    , kmsAccessDeniedException
+    , kadeMessage
+
+    -- * KMSDisabledException
+    , KMSDisabledException
+    , kmsDisabledException
+    , kdeMessage
+
+    -- * KMSInvalidStateException
+    , KMSInvalidStateException
+    , kmsInvalidStateException
+    , kiseMessage
+
+    -- * KMSNotFoundException
+    , KMSNotFoundException
+    , kmsNotFoundException
+    , knfeMessage
+
+    -- * KMSOptInRequired
+    , KMSOptInRequired
+    , kmsOptInRequired
+    , koirMessage
+
+    -- * KMSThrottlingException
+    , KMSThrottlingException
+    , kmsThrottlingException
+    , kteMessage
 
     -- * PutRecordsRequestEntry
     , PutRecordsRequestEntry
@@ -87,6 +143,16 @@ module Network.AWS.Kinesis.Types
     , rData
     , rPartitionKey
 
+    -- * ResourceInUseException
+    , ResourceInUseException
+    , resourceInUseException
+    , riueMessage
+
+    -- * ResourceNotFoundException
+    , ResourceNotFoundException
+    , resourceNotFoundException
+    , rnfeMessage
+
     -- * SequenceNumberRange
     , SequenceNumberRange
     , sequenceNumberRange
@@ -101,6 +167,13 @@ module Network.AWS.Kinesis.Types
     , sShardId
     , sHashKeyRange
     , sSequenceNumberRange
+
+    -- * StartingPosition
+    , StartingPosition
+    , startingPosition
+    , spSequenceNumber
+    , spTimestamp
+    , spType
 
     -- * StreamDescription
     , StreamDescription
@@ -121,6 +194,7 @@ module Network.AWS.Kinesis.Types
     , streamDescriptionSummary
     , sdsEncryptionType
     , sdsKeyId
+    , sdsConsumerCount
     , sdsStreamName
     , sdsStreamARN
     , sdsStreamStatus
@@ -128,6 +202,27 @@ module Network.AWS.Kinesis.Types
     , sdsStreamCreationTimestamp
     , sdsEnhancedMonitoring
     , sdsOpenShardCount
+
+    -- * SubscribeToShardEvent
+    , SubscribeToShardEvent
+    , subscribeToShardEvent
+    , stseRecords
+    , stseContinuationSequenceNumber
+    , stseMillisBehindLatest
+
+    -- * SubscribeToShardEventStream
+    , SubscribeToShardEventStream
+    , subscribeToShardEventStream
+    , stsesKMSInvalidStateException
+    , stsesKMSThrottlingException
+    , stsesKMSOptInRequired
+    , stsesKMSNotFoundException
+    , stsesKMSDisabledException
+    , stsesInternalFailureException
+    , stsesResourceNotFoundException
+    , stsesKMSAccessDeniedException
+    , stsesResourceInUseException
+    , stsesSubscribeToShardEvent
 
     -- * Tag
     , Tag
@@ -139,21 +234,36 @@ module Network.AWS.Kinesis.Types
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Sign.V4
+import Network.AWS.Kinesis.Types.ConsumerStatus
 import Network.AWS.Kinesis.Types.EncryptionType
 import Network.AWS.Kinesis.Types.MetricsName
 import Network.AWS.Kinesis.Types.ScalingType
 import Network.AWS.Kinesis.Types.ShardIteratorType
 import Network.AWS.Kinesis.Types.StreamStatus
+import Network.AWS.Kinesis.Types.Consumer
+import Network.AWS.Kinesis.Types.ConsumerDescription
 import Network.AWS.Kinesis.Types.EnhancedMetrics
 import Network.AWS.Kinesis.Types.EnhancedMonitoringOutput
 import Network.AWS.Kinesis.Types.HashKeyRange
+import Network.AWS.Kinesis.Types.InternalFailureException
+import Network.AWS.Kinesis.Types.KMSAccessDeniedException
+import Network.AWS.Kinesis.Types.KMSDisabledException
+import Network.AWS.Kinesis.Types.KMSInvalidStateException
+import Network.AWS.Kinesis.Types.KMSNotFoundException
+import Network.AWS.Kinesis.Types.KMSOptInRequired
+import Network.AWS.Kinesis.Types.KMSThrottlingException
 import Network.AWS.Kinesis.Types.PutRecordsRequestEntry
 import Network.AWS.Kinesis.Types.PutRecordsResultEntry
 import Network.AWS.Kinesis.Types.Record
+import Network.AWS.Kinesis.Types.ResourceInUseException
+import Network.AWS.Kinesis.Types.ResourceNotFoundException
 import Network.AWS.Kinesis.Types.SequenceNumberRange
 import Network.AWS.Kinesis.Types.Shard
+import Network.AWS.Kinesis.Types.StartingPosition
 import Network.AWS.Kinesis.Types.StreamDescription
 import Network.AWS.Kinesis.Types.StreamDescriptionSummary
+import Network.AWS.Kinesis.Types.SubscribeToShardEvent
+import Network.AWS.Kinesis.Types.SubscribeToShardEventStream
 import Network.AWS.Kinesis.Types.Tag
 
 -- | API version @2013-12-02@ of the Amazon Kinesis SDK configuration.
@@ -172,12 +282,21 @@ kinesis
           | has (hasCode "ThrottledException" . hasStatus 400)
               e
             = Just "throttled_exception"
+          | has
+              (hasCode "LimitExceededException" . hasStatus 400)
+              e
+            = Just "request_limit_exceeded"
           | has (hasStatus 429) e = Just "too_many_requests"
           | has (hasCode "ThrottlingException" . hasStatus 400)
               e
             = Just "throttling_exception"
           | has (hasCode "Throttling" . hasStatus 400) e =
             Just "throttling"
+          | has
+              (hasCode "ProvisionedThroughputExceededException" .
+                 hasStatus 400)
+              e
+            = Just "throughput_exceeded"
           | has (hasStatus 504) e = Just "gateway_timeout"
           | has
               (hasCode "RequestThrottledException" . hasStatus 400)
@@ -188,6 +307,12 @@ kinesis
           | has (hasStatus 500) e = Just "general_server_error"
           | has (hasStatus 509) e = Just "limit_exceeded"
           | otherwise = Nothing
+
+-- | Prism for InternalFailureException' errors.
+_InternalFailureException :: AsError a => Getting (First ServiceError) a ServiceError
+_InternalFailureException
+  = _MatchServiceError kinesis
+      "InternalFailureException"
 
 -- | The request was rejected because the specified customer master key (CMK) isn't enabled.
 --
@@ -249,7 +374,7 @@ _KMSThrottlingException :: AsError a => Getting (First ServiceError) a ServiceEr
 _KMSThrottlingException
   = _MatchServiceError kinesis "KMSThrottlingException"
 
--- | The pagination token passed to the @ListShards@ operation is expired. For more information, see 'ListShardsInput$NextToken' .
+-- | The pagination token passed to the operation is expired.
 --
 --
 _ExpiredNextTokenException :: AsError a => Getting (First ServiceError) a ServiceError

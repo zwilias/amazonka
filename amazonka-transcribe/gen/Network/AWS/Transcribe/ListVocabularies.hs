@@ -62,7 +62,7 @@ data ListVocabularies = ListVocabularies'{_lvNameContains
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'lvNameContains' - When specified, the vocabularies returned in the list are limited to vocabularies whose name contains the specified string. The search is case-insensitive, @ListVocabularies@ will return both "vocabularyname" and "VocabularyName" in the response list.
+-- * 'lvNameContains' - When specified, the vocabularies returned in the list are limited to vocabularies whose name contains the specified string. The search is case-insensitive, @ListVocabularies@ returns both "vocabularyname" and "VocabularyName" in the response list.
 --
 -- * 'lvNextToken' - If the result of the previous request to @ListVocabularies@ was truncated, include the @NextToken@ to fetch the next set of jobs.
 --
@@ -76,7 +76,7 @@ listVocabularies
                       _lvNextToken = Nothing, _lvStateEquals = Nothing,
                       _lvMaxResults = Nothing}
 
--- | When specified, the vocabularies returned in the list are limited to vocabularies whose name contains the specified string. The search is case-insensitive, @ListVocabularies@ will return both "vocabularyname" and "VocabularyName" in the response list.
+-- | When specified, the vocabularies returned in the list are limited to vocabularies whose name contains the specified string. The search is case-insensitive, @ListVocabularies@ returns both "vocabularyname" and "VocabularyName" in the response list.
 lvNameContains :: Lens' ListVocabularies (Maybe Text)
 lvNameContains = lens _lvNameContains (\ s a -> s{_lvNameContains = a})
 
@@ -139,7 +139,7 @@ data ListVocabulariesResponse = ListVocabulariesResponse'{_lvrsVocabularies
                                                               [VocabularyInfo]),
                                                           _lvrsStatus ::
                                                           !(Maybe
-                                                              TranscriptionJobStatus),
+                                                              VocabularyState),
                                                           _lvrsNextToken ::
                                                           !(Maybe Text),
                                                           _lvrsResponseStatus ::
@@ -172,7 +172,7 @@ lvrsVocabularies :: Lens' ListVocabulariesResponse [VocabularyInfo]
 lvrsVocabularies = lens _lvrsVocabularies (\ s a -> s{_lvrsVocabularies = a}) . _Default . _Coerce
 
 -- | The requested vocabulary state.
-lvrsStatus :: Lens' ListVocabulariesResponse (Maybe TranscriptionJobStatus)
+lvrsStatus :: Lens' ListVocabulariesResponse (Maybe VocabularyState)
 lvrsStatus = lens _lvrsStatus (\ s a -> s{_lvrsStatus = a})
 
 -- | The @ListVocabularies@ operation returns a page of vocabularies at a time. The maximum size of the page is set by the @MaxResults@ parameter. If there are more jobs in the list than the page size, Amazon Transcribe returns the @NextPage@ token. Include the token in the next request to the @ListVocabularies@ operation to return in the next page of jobs.

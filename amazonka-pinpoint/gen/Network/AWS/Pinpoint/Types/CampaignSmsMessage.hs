@@ -21,7 +21,9 @@ import Network.AWS.Lens
 import Network.AWS.Pinpoint.Types.MessageType
 import Network.AWS.Prelude
 
--- | SMS message configuration.
+-- | Specifies the content and settings for an SMS message that's sent to recipients of a campaign.
+--
+--
 --
 -- /See:/ 'campaignSmsMessage' smart constructor.
 data CampaignSmsMessage = CampaignSmsMessage'{_csmBody
@@ -35,26 +37,26 @@ data CampaignSmsMessage = CampaignSmsMessage'{_csmBody
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'csmBody' - The SMS text body.
+-- * 'csmBody' - The body of the SMS message.
 --
--- * 'csmMessageType' - Is this is a transactional SMS message, otherwise a promotional message.
+-- * 'csmMessageType' - The type of SMS message. Valid values are: TRANSACTIONAL, the message is critical or time-sensitive, such as a one-time password that supports a customer transaction; and, PROMOTIONAL, the message isn't critical or time-sensitive, such as a marketing message.
 --
--- * 'csmSenderId' - Sender ID of sent message.
+-- * 'csmSenderId' - The sender ID to display on recipients' devices when they receive the SMS message.
 campaignSmsMessage
     :: CampaignSmsMessage
 campaignSmsMessage
   = CampaignSmsMessage'{_csmBody = Nothing,
                         _csmMessageType = Nothing, _csmSenderId = Nothing}
 
--- | The SMS text body.
+-- | The body of the SMS message.
 csmBody :: Lens' CampaignSmsMessage (Maybe Text)
 csmBody = lens _csmBody (\ s a -> s{_csmBody = a})
 
--- | Is this is a transactional SMS message, otherwise a promotional message.
+-- | The type of SMS message. Valid values are: TRANSACTIONAL, the message is critical or time-sensitive, such as a one-time password that supports a customer transaction; and, PROMOTIONAL, the message isn't critical or time-sensitive, such as a marketing message.
 csmMessageType :: Lens' CampaignSmsMessage (Maybe MessageType)
 csmMessageType = lens _csmMessageType (\ s a -> s{_csmMessageType = a})
 
--- | Sender ID of sent message.
+-- | The sender ID to display on recipients' devices when they receive the SMS message.
 csmSenderId :: Lens' CampaignSmsMessage (Maybe Text)
 csmSenderId = lens _csmSenderId (\ s a -> s{_csmSenderId = a})
 

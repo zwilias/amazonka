@@ -161,7 +161,7 @@ data UpdateDomainContactResponse = UpdateDomainContactResponse'{_udcrsResponseSt
 --
 -- * 'udcrsResponseStatus' - -- | The response status code.
 --
--- * 'udcrsOperationId' - Identifier for tracking the progress of the request. To use this ID to query the operation status, use 'GetOperationDetail' .
+-- * 'udcrsOperationId' - Identifier for tracking the progress of the request. To query the operation status, use <https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_GetOperationDetail.html GetOperationDetail> .
 updateDomainContactResponse
     :: Int -- ^ 'udcrsResponseStatus'
     -> Text -- ^ 'udcrsOperationId'
@@ -176,7 +176,7 @@ updateDomainContactResponse pResponseStatus_
 udcrsResponseStatus :: Lens' UpdateDomainContactResponse Int
 udcrsResponseStatus = lens _udcrsResponseStatus (\ s a -> s{_udcrsResponseStatus = a})
 
--- | Identifier for tracking the progress of the request. To use this ID to query the operation status, use 'GetOperationDetail' .
+-- | Identifier for tracking the progress of the request. To query the operation status, use <https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_GetOperationDetail.html GetOperationDetail> .
 udcrsOperationId :: Lens' UpdateDomainContactResponse Text
 udcrsOperationId = lens _udcrsOperationId (\ s a -> s{_udcrsOperationId = a})
 

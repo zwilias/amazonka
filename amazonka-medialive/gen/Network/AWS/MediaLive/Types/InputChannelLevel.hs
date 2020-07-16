@@ -20,7 +20,7 @@ module Network.AWS.MediaLive.Types.InputChannelLevel where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | Placeholder documentation for InputChannelLevel
+-- | Input Channel Level
 --
 -- /See:/ 'inputChannelLevel' smart constructor.
 data InputChannelLevel = InputChannelLevel'{_iclInputChannel

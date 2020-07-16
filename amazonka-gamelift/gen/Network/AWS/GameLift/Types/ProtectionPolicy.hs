@@ -19,8 +19,8 @@
 module Network.AWS.GameLift.Types.ProtectionPolicy (
   ProtectionPolicy (
     ..
-    , FullProtection
-    , NoProtection
+    , PPFullProtection
+    , PPNoProtection
     )
   ) where
 
@@ -31,15 +31,15 @@ data ProtectionPolicy = ProtectionPolicy' (CI Text)
                           deriving (Eq, Ord, Read, Show, Data, Typeable,
                                     Generic)
 
-pattern FullProtection :: ProtectionPolicy
-pattern FullProtection = ProtectionPolicy' "FullProtection"
+pattern PPFullProtection :: ProtectionPolicy
+pattern PPFullProtection = ProtectionPolicy' "FullProtection"
 
-pattern NoProtection :: ProtectionPolicy
-pattern NoProtection = ProtectionPolicy' "NoProtection"
+pattern PPNoProtection :: ProtectionPolicy
+pattern PPNoProtection = ProtectionPolicy' "NoProtection"
 
 {-# COMPLETE
-  FullProtection,
-  NoProtection,
+  PPFullProtection,
+  PPNoProtection,
   ProtectionPolicy' #-}
 
 instance FromText ProtectionPolicy where
@@ -54,20 +54,20 @@ instance ToText ProtectionPolicy where
 --   fromEnum is a partial function, and will error on values unknown at generation time.
 instance Enum ProtectionPolicy where
     toEnum i = case i of
-        0 -> FullProtection
-        1 -> NoProtection
+        0 -> PPFullProtection
+        1 -> PPNoProtection
         _ -> (error . showText) $ "Unknown index for ProtectionPolicy: " <> toText i
     fromEnum x = case x of
-        FullProtection -> 0
-        NoProtection -> 1
+        PPFullProtection -> 0
+        PPNoProtection -> 1
         ProtectionPolicy' name -> (error . showText) $ "Unknown ProtectionPolicy: " <> original name
 
 -- | Represents the bounds of /known/ $ProtectionPolicy.
 --   AWS may have added more since the source was generated.
 --   This instance exists only for backward compatibility.
 instance Bounded ProtectionPolicy where
-    minBound = FullProtection
-    maxBound = NoProtection
+    minBound = PPFullProtection
+    maxBound = PPNoProtection
 
 instance Hashable     ProtectionPolicy
 instance NFData       ProtectionPolicy

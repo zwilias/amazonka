@@ -51,6 +51,7 @@ library
         , Network.AWS.WorkMail.CreateGroup
         , Network.AWS.WorkMail.CreateResource
         , Network.AWS.WorkMail.CreateUser
+        , Network.AWS.WorkMail.DeleteAccessControlRule
         , Network.AWS.WorkMail.DeleteAlias
         , Network.AWS.WorkMail.DeleteGroup
         , Network.AWS.WorkMail.DeleteMailboxPermissions
@@ -63,6 +64,9 @@ library
         , Network.AWS.WorkMail.DescribeUser
         , Network.AWS.WorkMail.DisassociateDelegateFromResource
         , Network.AWS.WorkMail.DisassociateMemberFromGroup
+        , Network.AWS.WorkMail.GetAccessControlEffect
+        , Network.AWS.WorkMail.GetMailboxDetails
+        , Network.AWS.WorkMail.ListAccessControlRules
         , Network.AWS.WorkMail.ListAliases
         , Network.AWS.WorkMail.ListGroupMembers
         , Network.AWS.WorkMail.ListGroups
@@ -70,17 +74,24 @@ library
         , Network.AWS.WorkMail.ListOrganizations
         , Network.AWS.WorkMail.ListResourceDelegates
         , Network.AWS.WorkMail.ListResources
+        , Network.AWS.WorkMail.ListTagsForResource
         , Network.AWS.WorkMail.ListUsers
+        , Network.AWS.WorkMail.PutAccessControlRule
         , Network.AWS.WorkMail.PutMailboxPermissions
         , Network.AWS.WorkMail.RegisterToWorkMail
         , Network.AWS.WorkMail.ResetPassword
+        , Network.AWS.WorkMail.TagResource
         , Network.AWS.WorkMail.Types
+        , Network.AWS.WorkMail.UntagResource
+        , Network.AWS.WorkMail.UpdateMailboxQuota
         , Network.AWS.WorkMail.UpdatePrimaryEmailAddress
         , Network.AWS.WorkMail.UpdateResource
         , Network.AWS.WorkMail.Waiters
 
     other-modules:
-          Network.AWS.WorkMail.Types.BookingOptions
+          Network.AWS.WorkMail.Types.AccessControlRule
+        , Network.AWS.WorkMail.Types.AccessControlRuleEffect
+        , Network.AWS.WorkMail.Types.BookingOptions
         , Network.AWS.WorkMail.Types.Delegate
         , Network.AWS.WorkMail.Types.EntityState
         , Network.AWS.WorkMail.Types.Group
@@ -92,6 +103,7 @@ library
         , Network.AWS.WorkMail.Types.Product
         , Network.AWS.WorkMail.Types.Resource
         , Network.AWS.WorkMail.Types.ResourceType
+        , Network.AWS.WorkMail.Types.Tag
         , Network.AWS.WorkMail.Types.User
         , Network.AWS.WorkMail.Types.UserRole
 

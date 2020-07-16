@@ -28,9 +28,10 @@ import Network.AWS.Prelude
 newtype ExecutionSucceededEventDetails = ExecutionSucceededEventDetails'{_esedOutput
                                                                          ::
                                                                          Maybe
-                                                                           Text}
-                                           deriving (Eq, Read, Show, Data,
-                                                     Typeable, Generic)
+                                                                           (Sensitive
+                                                                              Text)}
+                                           deriving (Eq, Show, Data, Typeable,
+                                                     Generic)
 
 -- | Creates a value of 'ExecutionSucceededEventDetails' with the minimum fields required to make a request.
 --
@@ -45,7 +46,7 @@ executionSucceededEventDetails
 
 -- | The JSON data output by the execution.
 esedOutput :: Lens' ExecutionSucceededEventDetails (Maybe Text)
-esedOutput = lens _esedOutput (\ s a -> s{_esedOutput = a})
+esedOutput = lens _esedOutput (\ s a -> s{_esedOutput = a}) . mapping _Sensitive
 
 instance FromJSON ExecutionSucceededEventDetails
          where

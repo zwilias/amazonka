@@ -29,6 +29,7 @@ data CacheParameterGroup = CacheParameterGroup'{_cpgCacheParameterGroupFamily
                                                 :: !(Maybe Text),
                                                 _cpgCacheParameterGroupName ::
                                                 !(Maybe Text),
+                                                _cpgIsGlobal :: !(Maybe Bool),
                                                 _cpgDescription ::
                                                 !(Maybe Text)}
                              deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -37,9 +38,11 @@ data CacheParameterGroup = CacheParameterGroup'{_cpgCacheParameterGroupFamily
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'cpgCacheParameterGroupFamily' - The name of the cache parameter group family that this cache parameter group is compatible with. Valid values are: @memcached1.4@ | @redis2.6@ | @redis2.8@ | @redis3.2@ 
+-- * 'cpgCacheParameterGroupFamily' - The name of the cache parameter group family that this cache parameter group is compatible with. Valid values are: @memcached1.4@ | @memcached1.5@ | @redis2.6@ | @redis2.8@ | @redis3.2@ | @redis4.0@ | @redis5.0@ | 
 --
 -- * 'cpgCacheParameterGroupName' - The name of the cache parameter group.
+--
+-- * 'cpgIsGlobal' - Indicates whether the parameter group is associated with a Global Datastore
 --
 -- * 'cpgDescription' - The description for this cache parameter group.
 cacheParameterGroup
@@ -48,15 +51,19 @@ cacheParameterGroup
   = CacheParameterGroup'{_cpgCacheParameterGroupFamily
                            = Nothing,
                          _cpgCacheParameterGroupName = Nothing,
-                         _cpgDescription = Nothing}
+                         _cpgIsGlobal = Nothing, _cpgDescription = Nothing}
 
--- | The name of the cache parameter group family that this cache parameter group is compatible with. Valid values are: @memcached1.4@ | @redis2.6@ | @redis2.8@ | @redis3.2@ 
+-- | The name of the cache parameter group family that this cache parameter group is compatible with. Valid values are: @memcached1.4@ | @memcached1.5@ | @redis2.6@ | @redis2.8@ | @redis3.2@ | @redis4.0@ | @redis5.0@ | 
 cpgCacheParameterGroupFamily :: Lens' CacheParameterGroup (Maybe Text)
 cpgCacheParameterGroupFamily = lens _cpgCacheParameterGroupFamily (\ s a -> s{_cpgCacheParameterGroupFamily = a})
 
 -- | The name of the cache parameter group.
 cpgCacheParameterGroupName :: Lens' CacheParameterGroup (Maybe Text)
 cpgCacheParameterGroupName = lens _cpgCacheParameterGroupName (\ s a -> s{_cpgCacheParameterGroupName = a})
+
+-- | Indicates whether the parameter group is associated with a Global Datastore
+cpgIsGlobal :: Lens' CacheParameterGroup (Maybe Bool)
+cpgIsGlobal = lens _cpgIsGlobal (\ s a -> s{_cpgIsGlobal = a})
 
 -- | The description for this cache parameter group.
 cpgDescription :: Lens' CacheParameterGroup (Maybe Text)
@@ -67,6 +74,7 @@ instance FromXML CacheParameterGroup where
           = CacheParameterGroup' <$>
               (x .@? "CacheParameterGroupFamily") <*>
                 (x .@? "CacheParameterGroupName")
+                <*> (x .@? "IsGlobal")
                 <*> (x .@? "Description")
 
 instance Hashable CacheParameterGroup where

@@ -18,9 +18,11 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Lists the tags that have been added to the specified resource. This operation is only supported in the cached volume, stored volume and tape gateway type.
+-- Lists the tags that have been added to the specified resource. This operation is supported in storage gateways of all types.
 --
 --
+--
+-- This operation returns paginated results.
 module Network.AWS.StorageGateway.ListTagsForResource
     (
     -- * Creating a Request
@@ -42,6 +44,7 @@ module Network.AWS.StorageGateway.ListTagsForResource
     ) where
 
 import Network.AWS.Lens
+import Network.AWS.Pager
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
@@ -87,6 +90,13 @@ ltfrLimit = lens _ltfrLimit (\ s a -> s{_ltfrLimit = a}) . mapping _Nat
 -- | The Amazon Resource Name (ARN) of the resource for which you want to list tags.
 ltfrResourceARN :: Lens' ListTagsForResource Text
 ltfrResourceARN = lens _ltfrResourceARN (\ s a -> s{_ltfrResourceARN = a})
+
+instance AWSPager ListTagsForResource where
+        page rq rs
+          | stop (rs ^. ltfrrsMarker) = Nothing
+          | stop (rs ^. ltfrrsTags) = Nothing
+          | otherwise =
+            Just $ rq & ltfrMarker .~ rs ^. ltfrrsMarker
 
 instance AWSRequest ListTagsForResource where
         type Rs ListTagsForResource =

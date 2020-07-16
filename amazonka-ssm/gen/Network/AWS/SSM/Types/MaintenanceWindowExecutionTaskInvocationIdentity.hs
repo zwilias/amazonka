@@ -22,7 +22,7 @@ import Network.AWS.Prelude
 import Network.AWS.SSM.Types.MaintenanceWindowExecutionStatus
 import Network.AWS.SSM.Types.MaintenanceWindowTaskType
 
--- | Describes the information about a task invocation for a particular target as part of a task execution performed as part of a Maintenance Window execution.
+-- | Describes the information about a task invocation for a particular target as part of a task execution performed as part of a maintenance window execution.
 --
 --
 --
@@ -90,25 +90,25 @@ data MaintenanceWindowExecutionTaskInvocationIdentity = MaintenanceWindowExecuti
 --
 -- * 'mwetiiExecutionId' - The ID of the action performed in the service that actually handled the task invocation. If the task type is RUN_COMMAND, this value is the command ID.
 --
--- * 'mwetiiTaskExecutionId' - The ID of the specific task execution in the Maintenance Window execution.
+-- * 'mwetiiTaskExecutionId' - The ID of the specific task execution in the maintenance window execution.
 --
 -- * 'mwetiiStartTime' - The time the invocation started.
 --
 -- * 'mwetiiInvocationId' - The ID of the task invocation.
 --
--- * 'mwetiiOwnerInformation' - User-provided value that was specified when the target was registered with the Maintenance Window. This was also included in any CloudWatch events raised during the task invocation.
+-- * 'mwetiiOwnerInformation' - User-provided value that was specified when the target was registered with the maintenance window. This was also included in any CloudWatch events raised during the task invocation.
 --
 -- * 'mwetiiTaskType' - The task type.
 --
--- * 'mwetiiWindowTargetId' - The ID of the target definition in this Maintenance Window the invocation was performed for.
+-- * 'mwetiiWindowTargetId' - The ID of the target definition in this maintenance window the invocation was performed for.
 --
--- * 'mwetiiWindowExecutionId' - The ID of the Maintenance Window execution that ran the task.
+-- * 'mwetiiWindowExecutionId' - The ID of the maintenance window execution that ran the task.
 --
 -- * 'mwetiiStatusDetails' - The details explaining the status of the task invocation. Only available for certain Status values. 
 --
 -- * 'mwetiiEndTime' - The time the invocation finished.
 --
--- * 'mwetiiParameters' - The parameters that were provided for the invocation when it was executed.
+-- * 'mwetiiParameters' - The parameters that were provided for the invocation when it was run.
 maintenanceWindowExecutionTaskInvocationIdentity
     :: MaintenanceWindowExecutionTaskInvocationIdentity
 maintenanceWindowExecutionTaskInvocationIdentity
@@ -143,7 +143,7 @@ mwetiiStatus = lens _mwetiiStatus (\ s a -> s{_mwetiiStatus = a})
 mwetiiExecutionId :: Lens' MaintenanceWindowExecutionTaskInvocationIdentity (Maybe Text)
 mwetiiExecutionId = lens _mwetiiExecutionId (\ s a -> s{_mwetiiExecutionId = a})
 
--- | The ID of the specific task execution in the Maintenance Window execution.
+-- | The ID of the specific task execution in the maintenance window execution.
 mwetiiTaskExecutionId :: Lens' MaintenanceWindowExecutionTaskInvocationIdentity (Maybe Text)
 mwetiiTaskExecutionId = lens _mwetiiTaskExecutionId (\ s a -> s{_mwetiiTaskExecutionId = a})
 
@@ -155,7 +155,7 @@ mwetiiStartTime = lens _mwetiiStartTime (\ s a -> s{_mwetiiStartTime = a}) . map
 mwetiiInvocationId :: Lens' MaintenanceWindowExecutionTaskInvocationIdentity (Maybe Text)
 mwetiiInvocationId = lens _mwetiiInvocationId (\ s a -> s{_mwetiiInvocationId = a})
 
--- | User-provided value that was specified when the target was registered with the Maintenance Window. This was also included in any CloudWatch events raised during the task invocation.
+-- | User-provided value that was specified when the target was registered with the maintenance window. This was also included in any CloudWatch events raised during the task invocation.
 mwetiiOwnerInformation :: Lens' MaintenanceWindowExecutionTaskInvocationIdentity (Maybe Text)
 mwetiiOwnerInformation = lens _mwetiiOwnerInformation (\ s a -> s{_mwetiiOwnerInformation = a}) . mapping _Sensitive
 
@@ -163,11 +163,11 @@ mwetiiOwnerInformation = lens _mwetiiOwnerInformation (\ s a -> s{_mwetiiOwnerIn
 mwetiiTaskType :: Lens' MaintenanceWindowExecutionTaskInvocationIdentity (Maybe MaintenanceWindowTaskType)
 mwetiiTaskType = lens _mwetiiTaskType (\ s a -> s{_mwetiiTaskType = a})
 
--- | The ID of the target definition in this Maintenance Window the invocation was performed for.
+-- | The ID of the target definition in this maintenance window the invocation was performed for.
 mwetiiWindowTargetId :: Lens' MaintenanceWindowExecutionTaskInvocationIdentity (Maybe Text)
 mwetiiWindowTargetId = lens _mwetiiWindowTargetId (\ s a -> s{_mwetiiWindowTargetId = a})
 
--- | The ID of the Maintenance Window execution that ran the task.
+-- | The ID of the maintenance window execution that ran the task.
 mwetiiWindowExecutionId :: Lens' MaintenanceWindowExecutionTaskInvocationIdentity (Maybe Text)
 mwetiiWindowExecutionId = lens _mwetiiWindowExecutionId (\ s a -> s{_mwetiiWindowExecutionId = a})
 
@@ -179,7 +179,7 @@ mwetiiStatusDetails = lens _mwetiiStatusDetails (\ s a -> s{_mwetiiStatusDetails
 mwetiiEndTime :: Lens' MaintenanceWindowExecutionTaskInvocationIdentity (Maybe UTCTime)
 mwetiiEndTime = lens _mwetiiEndTime (\ s a -> s{_mwetiiEndTime = a}) . mapping _Time
 
--- | The parameters that were provided for the invocation when it was executed.
+-- | The parameters that were provided for the invocation when it was run.
 mwetiiParameters :: Lens' MaintenanceWindowExecutionTaskInvocationIdentity (Maybe Text)
 mwetiiParameters = lens _mwetiiParameters (\ s a -> s{_mwetiiParameters = a}) . mapping _Sensitive
 

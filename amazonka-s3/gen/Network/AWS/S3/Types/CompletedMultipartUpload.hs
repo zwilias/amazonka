@@ -22,7 +22,11 @@ import Network.AWS.Prelude
 import Network.AWS.S3.Internal
 import Network.AWS.S3.Types.CompletedPart
 
--- | /See:/ 'completedMultipartUpload' smart constructor.
+-- | The container for the completed multipart upload details.
+--
+--
+--
+-- /See:/ 'completedMultipartUpload' smart constructor.
 newtype CompletedMultipartUpload = CompletedMultipartUpload'{_cmuParts
                                                              ::
                                                              Maybe
@@ -35,13 +39,13 @@ newtype CompletedMultipartUpload = CompletedMultipartUpload'{_cmuParts
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'cmuParts' - Undocumented member.
+-- * 'cmuParts' - Array of CompletedPart data types.
 completedMultipartUpload
     :: CompletedMultipartUpload
 completedMultipartUpload
   = CompletedMultipartUpload'{_cmuParts = Nothing}
 
--- | Undocumented member.
+-- | Array of CompletedPart data types.
 cmuParts :: Lens' CompletedMultipartUpload (Maybe (NonEmpty CompletedPart))
 cmuParts = lens _cmuParts (\ s a -> s{_cmuParts = a}) . mapping _List1
 

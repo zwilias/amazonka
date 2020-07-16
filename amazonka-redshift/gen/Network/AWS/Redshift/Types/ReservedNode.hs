@@ -49,9 +49,9 @@ data ReservedNode = ReservedNode'{_rnReservedNodeOfferingType
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'rnReservedNodeOfferingType' - Undocumented member.
+-- * 'rnReservedNodeOfferingType' - 
 --
--- * 'rnState' - The state of the reserved compute node. Possible Values:     * pending-payment-This reserved node has recently been purchased, and the sale has been approved, but payment has not yet been confirmed.     * active-This reserved node is owned by the caller and is available for use.     * payment-failed-Payment failed for the purchase attempt.
+-- * 'rnState' - The state of the reserved compute node. Possible Values:     * pending-payment-This reserved node has recently been purchased, and the sale has been approved, but payment has not yet been confirmed.     * active-This reserved node is owned by the caller and is available for use.     * payment-failed-Payment failed for the purchase attempt.     * retired-The reserved node is no longer available.      * exchanging-The owner is exchanging the reserved node for another reserved node.
 --
 -- * 'rnCurrencyCode' - The currency code for the reserved cluster.
 --
@@ -88,11 +88,11 @@ reservedNode
                   _rnNodeType = Nothing, _rnFixedPrice = Nothing,
                   _rnDuration = Nothing}
 
--- | Undocumented member.
+-- | 
 rnReservedNodeOfferingType :: Lens' ReservedNode (Maybe ReservedNodeOfferingType)
 rnReservedNodeOfferingType = lens _rnReservedNodeOfferingType (\ s a -> s{_rnReservedNodeOfferingType = a})
 
--- | The state of the reserved compute node. Possible Values:     * pending-payment-This reserved node has recently been purchased, and the sale has been approved, but payment has not yet been confirmed.     * active-This reserved node is owned by the caller and is available for use.     * payment-failed-Payment failed for the purchase attempt.
+-- | The state of the reserved compute node. Possible Values:     * pending-payment-This reserved node has recently been purchased, and the sale has been approved, but payment has not yet been confirmed.     * active-This reserved node is owned by the caller and is available for use.     * payment-failed-Payment failed for the purchase attempt.     * retired-The reserved node is no longer available.      * exchanging-The owner is exchanging the reserved node for another reserved node.
 rnState :: Lens' ReservedNode (Maybe Text)
 rnState = lens _rnState (\ s a -> s{_rnState = a})
 

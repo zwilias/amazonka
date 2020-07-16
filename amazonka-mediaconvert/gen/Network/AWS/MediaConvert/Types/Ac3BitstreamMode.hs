@@ -19,58 +19,58 @@
 module Network.AWS.MediaConvert.Types.Ac3BitstreamMode (
   Ac3BitstreamMode (
     ..
-    , Commentary
-    , CompleteMain
-    , Dialogue
-    , Emergency
-    , HearingImpaired
-    , MusicAndEffects
-    , VisuallyImpaired
-    , VoiceOver
+    , ABMCommentary
+    , ABMCompleteMain
+    , ABMDialogue
+    , ABMEmergency
+    , ABMHearingImpaired
+    , ABMMusicAndEffects
+    , ABMVisuallyImpaired
+    , ABMVoiceOver
     )
   ) where
 
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | Specifies the "Bitstream Mode" (bsmod) for the emitted AC-3 stream. See ATSC A/52-2012 for background on these values.
+-- | Specify the bitstream mode for the AC-3 stream that the encoder emits. For more information about the AC3 bitstream mode, see ATSC A/52-2012 (Annex E).
 data Ac3BitstreamMode = Ac3BitstreamMode' (CI Text)
                           deriving (Eq, Ord, Read, Show, Data, Typeable,
                                     Generic)
 
-pattern Commentary :: Ac3BitstreamMode
-pattern Commentary = Ac3BitstreamMode' "COMMENTARY"
+pattern ABMCommentary :: Ac3BitstreamMode
+pattern ABMCommentary = Ac3BitstreamMode' "COMMENTARY"
 
-pattern CompleteMain :: Ac3BitstreamMode
-pattern CompleteMain = Ac3BitstreamMode' "COMPLETE_MAIN"
+pattern ABMCompleteMain :: Ac3BitstreamMode
+pattern ABMCompleteMain = Ac3BitstreamMode' "COMPLETE_MAIN"
 
-pattern Dialogue :: Ac3BitstreamMode
-pattern Dialogue = Ac3BitstreamMode' "DIALOGUE"
+pattern ABMDialogue :: Ac3BitstreamMode
+pattern ABMDialogue = Ac3BitstreamMode' "DIALOGUE"
 
-pattern Emergency :: Ac3BitstreamMode
-pattern Emergency = Ac3BitstreamMode' "EMERGENCY"
+pattern ABMEmergency :: Ac3BitstreamMode
+pattern ABMEmergency = Ac3BitstreamMode' "EMERGENCY"
 
-pattern HearingImpaired :: Ac3BitstreamMode
-pattern HearingImpaired = Ac3BitstreamMode' "HEARING_IMPAIRED"
+pattern ABMHearingImpaired :: Ac3BitstreamMode
+pattern ABMHearingImpaired = Ac3BitstreamMode' "HEARING_IMPAIRED"
 
-pattern MusicAndEffects :: Ac3BitstreamMode
-pattern MusicAndEffects = Ac3BitstreamMode' "MUSIC_AND_EFFECTS"
+pattern ABMMusicAndEffects :: Ac3BitstreamMode
+pattern ABMMusicAndEffects = Ac3BitstreamMode' "MUSIC_AND_EFFECTS"
 
-pattern VisuallyImpaired :: Ac3BitstreamMode
-pattern VisuallyImpaired = Ac3BitstreamMode' "VISUALLY_IMPAIRED"
+pattern ABMVisuallyImpaired :: Ac3BitstreamMode
+pattern ABMVisuallyImpaired = Ac3BitstreamMode' "VISUALLY_IMPAIRED"
 
-pattern VoiceOver :: Ac3BitstreamMode
-pattern VoiceOver = Ac3BitstreamMode' "VOICE_OVER"
+pattern ABMVoiceOver :: Ac3BitstreamMode
+pattern ABMVoiceOver = Ac3BitstreamMode' "VOICE_OVER"
 
 {-# COMPLETE
-  Commentary,
-  CompleteMain,
-  Dialogue,
-  Emergency,
-  HearingImpaired,
-  MusicAndEffects,
-  VisuallyImpaired,
-  VoiceOver,
+  ABMCommentary,
+  ABMCompleteMain,
+  ABMDialogue,
+  ABMEmergency,
+  ABMHearingImpaired,
+  ABMMusicAndEffects,
+  ABMVisuallyImpaired,
+  ABMVoiceOver,
   Ac3BitstreamMode' #-}
 
 instance FromText Ac3BitstreamMode where
@@ -85,32 +85,32 @@ instance ToText Ac3BitstreamMode where
 --   fromEnum is a partial function, and will error on values unknown at generation time.
 instance Enum Ac3BitstreamMode where
     toEnum i = case i of
-        0 -> Commentary
-        1 -> CompleteMain
-        2 -> Dialogue
-        3 -> Emergency
-        4 -> HearingImpaired
-        5 -> MusicAndEffects
-        6 -> VisuallyImpaired
-        7 -> VoiceOver
+        0 -> ABMCommentary
+        1 -> ABMCompleteMain
+        2 -> ABMDialogue
+        3 -> ABMEmergency
+        4 -> ABMHearingImpaired
+        5 -> ABMMusicAndEffects
+        6 -> ABMVisuallyImpaired
+        7 -> ABMVoiceOver
         _ -> (error . showText) $ "Unknown index for Ac3BitstreamMode: " <> toText i
     fromEnum x = case x of
-        Commentary -> 0
-        CompleteMain -> 1
-        Dialogue -> 2
-        Emergency -> 3
-        HearingImpaired -> 4
-        MusicAndEffects -> 5
-        VisuallyImpaired -> 6
-        VoiceOver -> 7
+        ABMCommentary -> 0
+        ABMCompleteMain -> 1
+        ABMDialogue -> 2
+        ABMEmergency -> 3
+        ABMHearingImpaired -> 4
+        ABMMusicAndEffects -> 5
+        ABMVisuallyImpaired -> 6
+        ABMVoiceOver -> 7
         Ac3BitstreamMode' name -> (error . showText) $ "Unknown Ac3BitstreamMode: " <> original name
 
 -- | Represents the bounds of /known/ $Ac3BitstreamMode.
 --   AWS may have added more since the source was generated.
 --   This instance exists only for backward compatibility.
 instance Bounded Ac3BitstreamMode where
-    minBound = Commentary
-    maxBound = VoiceOver
+    minBound = ABMCommentary
+    maxBound = ABMVoiceOver
 
 instance Hashable     Ac3BitstreamMode
 instance NFData       Ac3BitstreamMode

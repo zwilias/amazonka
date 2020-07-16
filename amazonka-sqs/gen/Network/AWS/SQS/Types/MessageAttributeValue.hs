@@ -51,7 +51,7 @@ data MessageAttributeValue = MessageAttributeValue'{_mavBinaryValue
 --
 -- * 'mavBinaryListValues' - Not implemented. Reserved for future use.
 --
--- * 'mavDataType' - Amazon SQS supports the following logical data types: @String@ , @Number@ , and @Binary@ . For the @Number@ data type, you must use @StringValue@ . You can also append custom labels. For more information, see <http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-message-attributes.html#message-attributes-data-types-validation Message Attribute Data Types and Validation> in the /Amazon Simple Queue Service Developer Guide/ .
+-- * 'mavDataType' - Amazon SQS supports the following logical data types: @String@ , @Number@ , and @Binary@ . For the @Number@ data type, you must use @StringValue@ . You can also append custom labels. For more information, see <https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-message-attributes.html Amazon SQS Message Attributes> in the /Amazon Simple Queue Service Developer Guide/ .
 messageAttributeValue
     :: Text -- ^ 'mavDataType'
     -> MessageAttributeValue
@@ -78,7 +78,7 @@ mavStringValue = lens _mavStringValue (\ s a -> s{_mavStringValue = a})
 mavBinaryListValues :: Lens' MessageAttributeValue [ByteString]
 mavBinaryListValues = lens _mavBinaryListValues (\ s a -> s{_mavBinaryListValues = a}) . _Default . _Coerce
 
--- | Amazon SQS supports the following logical data types: @String@ , @Number@ , and @Binary@ . For the @Number@ data type, you must use @StringValue@ . You can also append custom labels. For more information, see <http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-message-attributes.html#message-attributes-data-types-validation Message Attribute Data Types and Validation> in the /Amazon Simple Queue Service Developer Guide/ .
+-- | Amazon SQS supports the following logical data types: @String@ , @Number@ , and @Binary@ . For the @Number@ data type, you must use @StringValue@ . You can also append custom labels. For more information, see <https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-message-attributes.html Amazon SQS Message Attributes> in the /Amazon Simple Queue Service Developer Guide/ .
 mavDataType :: Lens' MessageAttributeValue Text
 mavDataType = lens _mavDataType (\ s a -> s{_mavDataType = a})
 

@@ -54,14 +54,14 @@ newtype DeleteAlias = DeleteAlias'{_daAliasName ::
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'daAliasName' - The alias to be deleted. The name must start with the word "alias" followed by a forward slash (alias/). Aliases that begin with "alias/aws" are reserved.
+-- * 'daAliasName' - The alias to be deleted. The alias name must begin with @alias/@ followed by the alias name, such as @alias/ExampleAlias@ .
 deleteAlias
     :: Text -- ^ 'daAliasName'
     -> DeleteAlias
 deleteAlias pAliasName_
   = DeleteAlias'{_daAliasName = pAliasName_}
 
--- | The alias to be deleted. The name must start with the word "alias" followed by a forward slash (alias/). Aliases that begin with "alias/aws" are reserved.
+-- | The alias to be deleted. The alias name must begin with @alias/@ followed by the alias name, such as @alias/ExampleAlias@ .
 daAliasName :: Lens' DeleteAlias Text
 daAliasName = lens _daAliasName (\ s a -> s{_daAliasName = a})
 

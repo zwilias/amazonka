@@ -21,7 +21,7 @@
 -- Describes the permissions for a specified stack.
 --
 --
--- __Required Permissions__ : To use this action, an IAM user must have a Manage permissions level for the stack, or an attached policy that explicitly grants permissions. For more information on user permissions, see <http://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html Managing User Permissions> .
+-- __Required Permissions__ : To use this action, an IAM user must have a Manage permissions level for the stack, or an attached policy that explicitly grants permissions. For more information on user permissions, see <https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html Managing User Permissions> .
 --
 module Network.AWS.OpsWorks.DescribePermissions
     (
@@ -57,7 +57,7 @@ data DescribePermissions = DescribePermissions'{_dpIAMUserARN
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dpIAMUserARN' - The user's IAM ARN. This can also be a federated user's ARN. For more information about IAM ARNs, see <http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html Using Identifiers> .
+-- * 'dpIAMUserARN' - The user's IAM ARN. This can also be a federated user's ARN. For more information about IAM ARNs, see <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html Using Identifiers> .
 --
 -- * 'dpStackId' - The stack ID.
 describePermissions
@@ -66,7 +66,7 @@ describePermissions
   = DescribePermissions'{_dpIAMUserARN = Nothing,
                          _dpStackId = Nothing}
 
--- | The user's IAM ARN. This can also be a federated user's ARN. For more information about IAM ARNs, see <http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html Using Identifiers> .
+-- | The user's IAM ARN. This can also be a federated user's ARN. For more information about IAM ARNs, see <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html Using Identifiers> .
 dpIAMUserARN :: Lens' DescribePermissions (Maybe Text)
 dpIAMUserARN = lens _dpIAMUserARN (\ s a -> s{_dpIAMUserARN = a})
 

@@ -18,10 +18,12 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Creates a delegation set (a group of four name servers) that can be reused by multiple hosted zones. If a hosted zoned ID is specified, @CreateReusableDelegationSet@ marks the delegation set associated with that zone as reusable.
+-- Creates a delegation set (a group of four name servers) that can be reused by multiple hosted zones that were created by the same AWS account. 
 --
 --
--- For information about using a reusable delegation set to configure white label name servers, see <http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/white-label-name-servers.html Configuring White Label Name Servers> .
+-- You can also create a reusable delegation set that uses the four name servers that are associated with an existing hosted zone. Specify the hosted zone ID in the @CreateReusableDelegationSet@ request.
+--
+-- For information about using a reusable delegation set to configure white label name servers, see <https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/white-label-name-servers.html Configuring White Label Name Servers> .
 --
 -- The process for migrating existing hosted zones to use a reusable delegation set is comparable to the process for configuring white label name servers. You need to perform the following steps:
 --

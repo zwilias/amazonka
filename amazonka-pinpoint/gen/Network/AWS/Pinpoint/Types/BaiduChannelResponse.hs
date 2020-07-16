@@ -20,16 +20,14 @@ module Network.AWS.Pinpoint.Types.BaiduChannelResponse where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | Baidu Cloud Messaging channel definition
+-- | Provides information about the status and settings of the Baidu (Baidu Cloud Push) channel for an application.
+--
+--
 --
 -- /See:/ 'baiduChannelResponse' smart constructor.
-data BaiduChannelResponse = BaiduChannelResponse'{_bcPlatform
+data BaiduChannelResponse = BaiduChannelResponse'{_bcLastModifiedDate
                                                   :: !(Maybe Text),
-                                                  _bcLastModifiedDate ::
-                                                  !(Maybe Text),
                                                   _bcEnabled :: !(Maybe Bool),
-                                                  _bcCredential ::
-                                                  !(Maybe Text),
                                                   _bcIsArchived ::
                                                   !(Maybe Bool),
                                                   _bcApplicationId ::
@@ -41,104 +39,110 @@ data BaiduChannelResponse = BaiduChannelResponse'{_bcPlatform
                                                   _bcLastModifiedBy ::
                                                   !(Maybe Text),
                                                   _bcHasCredential ::
-                                                  !(Maybe Bool)}
+                                                  !(Maybe Bool),
+                                                  _bcCredential :: !Text,
+                                                  _bcPlatform :: !Text}
                               deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'BaiduChannelResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'bcPlatform' - The platform type. Will be BAIDU
+-- * 'bcLastModifiedDate' - The date and time when the Baidu channel was last modified.
 --
--- * 'bcLastModifiedDate' - Last date this was updated
+-- * 'bcEnabled' - Specifies whether the Baidu channel is enabled for the application.
 --
--- * 'bcEnabled' - If the channel is enabled for sending messages.
+-- * 'bcIsArchived' - Specifies whether the Baidu channel is archived.
 --
--- * 'bcCredential' - The Baidu API key from Baidu.
+-- * 'bcApplicationId' - The unique identifier for the application that the Baidu channel applies to.
 --
--- * 'bcIsArchived' - Is this channel archived
+-- * 'bcVersion' - The current version of the Baidu channel.
 --
--- * 'bcApplicationId' - Application id
+-- * 'bcId' - (Deprecated) An identifier for the Baidu channel. This property is retained only for backward compatibility.
 --
--- * 'bcVersion' - Version of channel
+-- * 'bcCreationDate' - The date and time when the Baidu channel was enabled.
 --
--- * 'bcId' - Channel ID. Not used, only for backwards compatibility.
+-- * 'bcLastModifiedBy' - The user who last modified the Baidu channel.
 --
--- * 'bcCreationDate' - When was this segment created
+-- * 'bcHasCredential' - (Not used) This property is retained only for backward compatibility.
 --
--- * 'bcLastModifiedBy' - Who made the last change
+-- * 'bcCredential' - The API key that you received from the Baidu Cloud Push service to communicate with the service.
 --
--- * 'bcHasCredential' - Indicates whether the channel is configured with Baidu Cloud Push credentials. Amazon Pinpoint uses your credentials to authenticate push notifications with Baidu Cloud Push. Provide your credentials by setting the ApiKey and SecretKey attributes.
+-- * 'bcPlatform' - The type of messaging or notification platform for the channel. For the Baidu channel, this value is BAIDU.
 baiduChannelResponse
-    :: BaiduChannelResponse
-baiduChannelResponse
-  = BaiduChannelResponse'{_bcPlatform = Nothing,
-                          _bcLastModifiedDate = Nothing, _bcEnabled = Nothing,
-                          _bcCredential = Nothing, _bcIsArchived = Nothing,
+    :: Text -- ^ 'bcCredential'
+    -> Text -- ^ 'bcPlatform'
+    -> BaiduChannelResponse
+baiduChannelResponse pCredential_ pPlatform_
+  = BaiduChannelResponse'{_bcLastModifiedDate =
+                            Nothing,
+                          _bcEnabled = Nothing, _bcIsArchived = Nothing,
                           _bcApplicationId = Nothing, _bcVersion = Nothing,
                           _bcId = Nothing, _bcCreationDate = Nothing,
                           _bcLastModifiedBy = Nothing,
-                          _bcHasCredential = Nothing}
+                          _bcHasCredential = Nothing,
+                          _bcCredential = pCredential_,
+                          _bcPlatform = pPlatform_}
 
--- | The platform type. Will be BAIDU
-bcPlatform :: Lens' BaiduChannelResponse (Maybe Text)
-bcPlatform = lens _bcPlatform (\ s a -> s{_bcPlatform = a})
-
--- | Last date this was updated
+-- | The date and time when the Baidu channel was last modified.
 bcLastModifiedDate :: Lens' BaiduChannelResponse (Maybe Text)
 bcLastModifiedDate = lens _bcLastModifiedDate (\ s a -> s{_bcLastModifiedDate = a})
 
--- | If the channel is enabled for sending messages.
+-- | Specifies whether the Baidu channel is enabled for the application.
 bcEnabled :: Lens' BaiduChannelResponse (Maybe Bool)
 bcEnabled = lens _bcEnabled (\ s a -> s{_bcEnabled = a})
 
--- | The Baidu API key from Baidu.
-bcCredential :: Lens' BaiduChannelResponse (Maybe Text)
-bcCredential = lens _bcCredential (\ s a -> s{_bcCredential = a})
-
--- | Is this channel archived
+-- | Specifies whether the Baidu channel is archived.
 bcIsArchived :: Lens' BaiduChannelResponse (Maybe Bool)
 bcIsArchived = lens _bcIsArchived (\ s a -> s{_bcIsArchived = a})
 
--- | Application id
+-- | The unique identifier for the application that the Baidu channel applies to.
 bcApplicationId :: Lens' BaiduChannelResponse (Maybe Text)
 bcApplicationId = lens _bcApplicationId (\ s a -> s{_bcApplicationId = a})
 
--- | Version of channel
+-- | The current version of the Baidu channel.
 bcVersion :: Lens' BaiduChannelResponse (Maybe Int)
 bcVersion = lens _bcVersion (\ s a -> s{_bcVersion = a})
 
--- | Channel ID. Not used, only for backwards compatibility.
+-- | (Deprecated) An identifier for the Baidu channel. This property is retained only for backward compatibility.
 bcId :: Lens' BaiduChannelResponse (Maybe Text)
 bcId = lens _bcId (\ s a -> s{_bcId = a})
 
--- | When was this segment created
+-- | The date and time when the Baidu channel was enabled.
 bcCreationDate :: Lens' BaiduChannelResponse (Maybe Text)
 bcCreationDate = lens _bcCreationDate (\ s a -> s{_bcCreationDate = a})
 
--- | Who made the last change
+-- | The user who last modified the Baidu channel.
 bcLastModifiedBy :: Lens' BaiduChannelResponse (Maybe Text)
 bcLastModifiedBy = lens _bcLastModifiedBy (\ s a -> s{_bcLastModifiedBy = a})
 
--- | Indicates whether the channel is configured with Baidu Cloud Push credentials. Amazon Pinpoint uses your credentials to authenticate push notifications with Baidu Cloud Push. Provide your credentials by setting the ApiKey and SecretKey attributes.
+-- | (Not used) This property is retained only for backward compatibility.
 bcHasCredential :: Lens' BaiduChannelResponse (Maybe Bool)
 bcHasCredential = lens _bcHasCredential (\ s a -> s{_bcHasCredential = a})
+
+-- | The API key that you received from the Baidu Cloud Push service to communicate with the service.
+bcCredential :: Lens' BaiduChannelResponse Text
+bcCredential = lens _bcCredential (\ s a -> s{_bcCredential = a})
+
+-- | The type of messaging or notification platform for the channel. For the Baidu channel, this value is BAIDU.
+bcPlatform :: Lens' BaiduChannelResponse Text
+bcPlatform = lens _bcPlatform (\ s a -> s{_bcPlatform = a})
 
 instance FromJSON BaiduChannelResponse where
         parseJSON
           = withObject "BaiduChannelResponse"
               (\ x ->
                  BaiduChannelResponse' <$>
-                   (x .:? "Platform") <*> (x .:? "LastModifiedDate") <*>
-                     (x .:? "Enabled")
-                     <*> (x .:? "Credential")
-                     <*> (x .:? "IsArchived")
+                   (x .:? "LastModifiedDate") <*> (x .:? "Enabled") <*>
+                     (x .:? "IsArchived")
                      <*> (x .:? "ApplicationId")
                      <*> (x .:? "Version")
                      <*> (x .:? "Id")
                      <*> (x .:? "CreationDate")
                      <*> (x .:? "LastModifiedBy")
-                     <*> (x .:? "HasCredential"))
+                     <*> (x .:? "HasCredential")
+                     <*> (x .: "Credential")
+                     <*> (x .: "Platform"))
 
 instance Hashable BaiduChannelResponse where
 

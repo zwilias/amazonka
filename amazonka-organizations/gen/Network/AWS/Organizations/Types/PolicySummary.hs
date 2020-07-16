@@ -39,7 +39,7 @@ data PolicySummary = PolicySummary'{_psARN ::
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'psARN' - The Amazon Resource Name (ARN) of the policy. For more information about ARNs in Organizations, see <http://docs.aws.amazon.com/organizations/latest/userguide/orgs_permissions.html#orgs-permissions-arns ARN Formats Supported by Organizations> in the /AWS Organizations User Guide/ .
+-- * 'psARN' - The Amazon Resource Name (ARN) of the policy. For more information about ARNs in Organizations, see <https://docs.aws.amazon.com/organizations/latest/userguide/orgs_permissions.html#orgs-permissions-arns ARN Formats Supported by Organizations> in the /AWS Organizations User Guide/ .
 --
 -- * 'psName' - The friendly name of the policy. The <http://wikipedia.org/wiki/regex regex pattern> that is used to validate this parameter is a string of any of the characters in the ASCII character range.
 --
@@ -57,7 +57,7 @@ policySummary
                    _psId = Nothing, _psAWSManaged = Nothing,
                    _psType = Nothing, _psDescription = Nothing}
 
--- | The Amazon Resource Name (ARN) of the policy. For more information about ARNs in Organizations, see <http://docs.aws.amazon.com/organizations/latest/userguide/orgs_permissions.html#orgs-permissions-arns ARN Formats Supported by Organizations> in the /AWS Organizations User Guide/ .
+-- | The Amazon Resource Name (ARN) of the policy. For more information about ARNs in Organizations, see <https://docs.aws.amazon.com/organizations/latest/userguide/orgs_permissions.html#orgs-permissions-arns ARN Formats Supported by Organizations> in the /AWS Organizations User Guide/ .
 psARN :: Lens' PolicySummary (Maybe Text)
 psARN = lens _psARN (\ s a -> s{_psARN = a})
 

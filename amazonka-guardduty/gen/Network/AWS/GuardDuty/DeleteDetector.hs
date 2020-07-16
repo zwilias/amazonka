@@ -18,7 +18,9 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Deletes a Amazon GuardDuty detector specified by the detector ID.
+-- Deletes an Amazon GuardDuty detector that is specified by the detector ID.
+--
+--
 module Network.AWS.GuardDuty.DeleteDetector
     (
     -- * Creating a Request
@@ -50,14 +52,14 @@ newtype DeleteDetector = DeleteDetector'{_ddDetectorId
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'ddDetectorId' - The unique ID that specifies the detector that you want to delete.
+-- * 'ddDetectorId' - The unique ID of the detector that you want to delete.
 deleteDetector
     :: Text -- ^ 'ddDetectorId'
     -> DeleteDetector
 deleteDetector pDetectorId_
   = DeleteDetector'{_ddDetectorId = pDetectorId_}
 
--- | The unique ID that specifies the detector that you want to delete.
+-- | The unique ID of the detector that you want to delete.
 ddDetectorId :: Lens' DeleteDetector Text
 ddDetectorId = lens _ddDetectorId (\ s a -> s{_ddDetectorId = a})
 

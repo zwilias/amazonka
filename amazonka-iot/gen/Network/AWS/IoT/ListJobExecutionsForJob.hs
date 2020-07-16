@@ -21,6 +21,8 @@
 -- Lists the job executions for a job.
 --
 --
+--
+-- This operation returns paginated results.
 module Network.AWS.IoT.ListJobExecutionsForJob
     (
     -- * Creating a Request
@@ -44,6 +46,7 @@ module Network.AWS.IoT.ListJobExecutionsForJob
 import Network.AWS.IoT.Types
 import Network.AWS.IoT.Types.Product
 import Network.AWS.Lens
+import Network.AWS.Pager
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
@@ -95,6 +98,13 @@ ljefjMaxResults = lens _ljefjMaxResults (\ s a -> s{_ljefjMaxResults = a}) . map
 -- | The unique identifier you assigned to this job when it was created.
 ljefjJobId :: Lens' ListJobExecutionsForJob Text
 ljefjJobId = lens _ljefjJobId (\ s a -> s{_ljefjJobId = a})
+
+instance AWSPager ListJobExecutionsForJob where
+        page rq rs
+          | stop (rs ^. ljefjrsNextToken) = Nothing
+          | stop (rs ^. ljefjrsExecutionSummaries) = Nothing
+          | otherwise =
+            Just $ rq & ljefjNextToken .~ rs ^. ljefjrsNextToken
 
 instance AWSRequest ListJobExecutionsForJob where
         type Rs ListJobExecutionsForJob =

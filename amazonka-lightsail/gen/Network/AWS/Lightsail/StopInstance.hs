@@ -21,6 +21,8 @@
 -- Stops a specific Amazon Lightsail instance that is currently running.
 --
 --
+-- The @stop instance@ operation supports tag-based access control via resource tags applied to the resource identified by @instance name@ . For more information, see the <https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags Lightsail Dev Guide> .
+--
 module Network.AWS.Lightsail.StopInstance
     (
     -- * Creating a Request
@@ -119,7 +121,7 @@ data StopInstanceResponse = StopInstanceResponse'{_sirsOperations
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'sirsOperations' - An array of key-value pairs containing information about the request operation.
+-- * 'sirsOperations' - An array of objects that describe the result of the action, such as the status of the request, the time stamp of the request, and the resources affected by the request.
 --
 -- * 'sirsResponseStatus' - -- | The response status code.
 stopInstanceResponse
@@ -129,7 +131,7 @@ stopInstanceResponse pResponseStatus_
   = StopInstanceResponse'{_sirsOperations = Nothing,
                           _sirsResponseStatus = pResponseStatus_}
 
--- | An array of key-value pairs containing information about the request operation.
+-- | An array of objects that describe the result of the action, such as the status of the request, the time stamp of the request, and the resources affected by the request.
 sirsOperations :: Lens' StopInstanceResponse [Operation]
 sirsOperations = lens _sirsOperations (\ s a -> s{_sirsOperations = a}) . _Default . _Coerce
 

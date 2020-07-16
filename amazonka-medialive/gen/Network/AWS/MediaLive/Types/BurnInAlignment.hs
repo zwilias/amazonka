@@ -28,7 +28,7 @@ module Network.AWS.MediaLive.Types.BurnInAlignment (
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | Placeholder documentation for BurnInAlignment
+-- | Burn In Alignment
 data BurnInAlignment = BurnInAlignment' (CI Text)
                          deriving (Eq, Ord, Read, Show, Data, Typeable,
                                    Generic)

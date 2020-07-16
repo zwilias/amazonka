@@ -27,7 +27,7 @@ module Network.AWS.MediaLive.Types.M2tsEbpPlacement (
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | Placeholder documentation for M2tsEbpPlacement
+-- | M2ts Ebp Placement
 data M2tsEbpPlacement = M2tsEbpPlacement' (CI Text)
                           deriving (Eq, Ord, Read, Show, Data, Typeable,
                                     Generic)

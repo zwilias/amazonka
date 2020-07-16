@@ -81,7 +81,7 @@ data AuthorizeDBSecurityGroupIngress = AuthorizeDBSecurityGroupIngress'{_adsgiEC
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'adsgiEC2SecurityGroupOwnerId' - AWS account number of the owner of the EC2 security group specified in the @EC2SecurityGroupName@ parameter. The AWS Access Key ID is not an acceptable value. For VPC DB security groups, @EC2SecurityGroupId@ must be provided. Otherwise, @EC2SecurityGroupOwnerId@ and either @EC2SecurityGroupName@ or @EC2SecurityGroupId@ must be provided. 
+-- * 'adsgiEC2SecurityGroupOwnerId' - AWS account number of the owner of the EC2 security group specified in the @EC2SecurityGroupName@ parameter. The AWS access key ID isn't an acceptable value. For VPC DB security groups, @EC2SecurityGroupId@ must be provided. Otherwise, @EC2SecurityGroupOwnerId@ and either @EC2SecurityGroupName@ or @EC2SecurityGroupId@ must be provided. 
 --
 -- * 'adsgiEC2SecurityGroupName' - Name of the EC2 security group to authorize. For VPC DB security groups, @EC2SecurityGroupId@ must be provided. Otherwise, @EC2SecurityGroupOwnerId@ and either @EC2SecurityGroupName@ or @EC2SecurityGroupId@ must be provided. 
 --
@@ -102,7 +102,7 @@ authorizeDBSecurityGroupIngress pDBSecurityGroupName_
                                      _adsgiDBSecurityGroupName =
                                        pDBSecurityGroupName_}
 
--- | AWS account number of the owner of the EC2 security group specified in the @EC2SecurityGroupName@ parameter. The AWS Access Key ID is not an acceptable value. For VPC DB security groups, @EC2SecurityGroupId@ must be provided. Otherwise, @EC2SecurityGroupOwnerId@ and either @EC2SecurityGroupName@ or @EC2SecurityGroupId@ must be provided. 
+-- | AWS account number of the owner of the EC2 security group specified in the @EC2SecurityGroupName@ parameter. The AWS access key ID isn't an acceptable value. For VPC DB security groups, @EC2SecurityGroupId@ must be provided. Otherwise, @EC2SecurityGroupOwnerId@ and either @EC2SecurityGroupName@ or @EC2SecurityGroupId@ must be provided. 
 adsgiEC2SecurityGroupOwnerId :: Lens' AuthorizeDBSecurityGroupIngress (Maybe Text)
 adsgiEC2SecurityGroupOwnerId = lens _adsgiEC2SecurityGroupOwnerId (\ s a -> s{_adsgiEC2SecurityGroupOwnerId = a})
 

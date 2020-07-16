@@ -17,8 +17,15 @@ module Network.AWS.Polly.Types
 
     -- * Errors
     , _LexiconSizeExceededException
+    , _InvalidS3BucketException
+    , _SynthesisTaskNotFoundException
     , _TextLengthExceededException
+    , _EngineNotSupportedException
     , _UnsupportedPlsLanguageException
+    , _InvalidSNSTopicARNException
+    , _InvalidS3KeyException
+    , _LanguageNotSupportedException
+    , _InvalidTaskIdException
     , _MaxLexemeLengthExceededException
     , _SsmlMarksNotSupportedForTextTypeException
     , _MarksNotSupportedForFormatException
@@ -31,6 +38,9 @@ module Network.AWS.Polly.Types
     , _InvalidLexiconException
     , _LexiconNotFoundException
 
+    -- * Engine
+    , Engine (..)
+
     -- * Gender
     , Gender (..)
 
@@ -42,6 +52,9 @@ module Network.AWS.Polly.Types
 
     -- * SpeechMarkType
     , SpeechMarkType (..)
+
+    -- * TaskStatus
+    , TaskStatus (..)
 
     -- * TextType
     , TextType (..)
@@ -71,6 +84,25 @@ module Network.AWS.Polly.Types
     , ldAttributes
     , ldName
 
+    -- * SynthesisTask
+    , SynthesisTask
+    , synthesisTask
+    , stCreationTime
+    , stLanguageCode
+    , stSNSTopicARN
+    , stTaskStatusReason
+    , stTaskId
+    , stRequestCharacters
+    , stEngine
+    , stSpeechMarkTypes
+    , stSampleRate
+    , stOutputFormat
+    , stTextType
+    , stVoiceId
+    , stLexiconNames
+    , stTaskStatus
+    , stOutputURI
+
     -- * Voice
     , Voice
     , voice
@@ -79,20 +111,25 @@ module Network.AWS.Polly.Types
     , vGender
     , vName
     , vId
+    , vAdditionalLanguageCodes
+    , vSupportedEngines
     ) where
 
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Sign.V4
+import Network.AWS.Polly.Types.Engine
 import Network.AWS.Polly.Types.Gender
 import Network.AWS.Polly.Types.LanguageCode
 import Network.AWS.Polly.Types.OutputFormat
 import Network.AWS.Polly.Types.SpeechMarkType
+import Network.AWS.Polly.Types.TaskStatus
 import Network.AWS.Polly.Types.TextType
 import Network.AWS.Polly.Types.VoiceId
 import Network.AWS.Polly.Types.Lexicon
 import Network.AWS.Polly.Types.LexiconAttributes
 import Network.AWS.Polly.Types.LexiconDescription
+import Network.AWS.Polly.Types.SynthesisTask
 import Network.AWS.Polly.Types.Voice
 
 -- | API version @2016-06-10@ of the Amazon Polly SDK configuration.
@@ -117,6 +154,11 @@ polly
             = Just "throttling_exception"
           | has (hasCode "Throttling" . hasStatus 400) e =
             Just "throttling"
+          | has
+              (hasCode "ProvisionedThroughputExceededException" .
+                 hasStatus 400)
+              e
+            = Just "throughput_exceeded"
           | has (hasStatus 504) e = Just "gateway_timeout"
           | has
               (hasCode "RequestThrottledException" . hasStatus 400)
@@ -137,7 +179,24 @@ _LexiconSizeExceededException
       "LexiconSizeExceededException"
       . hasStatus 400
 
--- | The value of the "Text" parameter is longer than the accepted limits. The limit for input text is a maximum of 3000 characters total, of which no more than 1500 can be billed characters. SSML tags are not counted as billed characters.
+-- | The provided Amazon S3 bucket name is invalid. Please check your input with S3 bucket naming requirements and try again.
+--
+--
+_InvalidS3BucketException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidS3BucketException
+  = _MatchServiceError polly "InvalidS3BucketException"
+      . hasStatus 400
+
+-- | The Speech Synthesis task with requested Task ID cannot be found.
+--
+--
+_SynthesisTaskNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
+_SynthesisTaskNotFoundException
+  = _MatchServiceError polly
+      "SynthesisTaskNotFoundException"
+      . hasStatus 400
+
+-- | The value of the "Text" parameter is longer than the accepted limits. For the @SynthesizeSpeech@ API, the limit for input text is a maximum of 6000 characters total, of which no more than 3000 can be billed characters. For the @StartSpeechSynthesisTask@ API, the maximum is 200,000 characters, of which no more than 100,000 can be billed characters. SSML tags are not counted as billed characters.
 --
 --
 _TextLengthExceededException :: AsError a => Getting (First ServiceError) a ServiceError
@@ -146,7 +205,16 @@ _TextLengthExceededException
       "TextLengthExceededException"
       . hasStatus 400
 
--- | The language specified in the lexicon is unsupported. For a list of supported languages, see <http://docs.aws.amazon.com/polly/latest/dg/API_LexiconAttributes.html Lexicon Attributes> .
+-- | This engine is not compatible with the voice that you have designated. Choose a new voice that is compatible with the engine or change the engine and restart the operation.
+--
+--
+_EngineNotSupportedException :: AsError a => Getting (First ServiceError) a ServiceError
+_EngineNotSupportedException
+  = _MatchServiceError polly
+      "EngineNotSupportedException"
+      . hasStatus 400
+
+-- | The language specified in the lexicon is unsupported. For a list of supported languages, see <https://docs.aws.amazon.com/polly/latest/dg/API_LexiconAttributes.html Lexicon Attributes> .
 --
 --
 _UnsupportedPlsLanguageException :: AsError a => Getting (First ServiceError) a ServiceError
@@ -154,6 +222,40 @@ _UnsupportedPlsLanguageException
   = _MatchServiceError polly
       "UnsupportedPlsLanguageException"
       . hasStatus 400
+
+-- | The provided SNS topic ARN is invalid. Please provide a valid SNS topic ARN and try again.
+--
+--
+_InvalidSNSTopicARNException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidSNSTopicARNException
+  = _MatchServiceError polly
+      "InvalidSnsTopicArnException"
+      . hasStatus 400
+
+-- | The provided Amazon S3 key prefix is invalid. Please provide a valid S3 object key name.
+--
+--
+_InvalidS3KeyException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidS3KeyException
+  = _MatchServiceError polly "InvalidS3KeyException" .
+      hasStatus 400
+
+-- | The language specified is not currently supported by Amazon Polly in this capacity.
+--
+--
+_LanguageNotSupportedException :: AsError a => Getting (First ServiceError) a ServiceError
+_LanguageNotSupportedException
+  = _MatchServiceError polly
+      "LanguageNotSupportedException"
+      . hasStatus 400
+
+-- | The provided Task ID is not valid. Please provide a valid Task ID and try again.
+--
+--
+_InvalidTaskIdException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidTaskIdException
+  = _MatchServiceError polly "InvalidTaskIdException" .
+      hasStatus 400
 
 -- | The maximum size of the lexeme would be exceeded by this operation.
 --

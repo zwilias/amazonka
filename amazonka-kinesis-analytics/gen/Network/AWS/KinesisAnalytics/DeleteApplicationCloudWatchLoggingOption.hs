@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Deletes a CloudWatch log stream from an application. For more information about using CloudWatch log streams with Amazon Kinesis Analytics applications, see <http://docs.aws.amazon.com/kinesisanalytics/latest/dev/cloudwatch-logs.html Working with Amazon CloudWatch Logs> .
+-- Deletes a CloudWatch log stream from an application. For more information about using CloudWatch log streams with Amazon Kinesis Analytics applications, see <https://docs.aws.amazon.com/kinesisanalytics/latest/dev/cloudwatch-logs.html Working with Amazon CloudWatch Logs> .
 --
 --
 module Network.AWS.KinesisAnalytics.DeleteApplicationCloudWatchLoggingOption
@@ -67,7 +67,7 @@ data DeleteApplicationCloudWatchLoggingOption = DeleteApplicationCloudWatchLoggi
 --
 -- * 'dacwloCurrentApplicationVersionId' - The version ID of the Kinesis Analytics application.
 --
--- * 'dacwloCloudWatchLoggingOptionId' - The @CloudWatchLoggingOptionId@ of the CloudWatch logging option to delete. You can get the @CloudWatchLoggingOptionId@ by using the 'DescribeApplication' operation. 
+-- * 'dacwloCloudWatchLoggingOptionId' - The @CloudWatchLoggingOptionId@ of the CloudWatch logging option to delete. You can get the @CloudWatchLoggingOptionId@ by using the <https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_DescribeApplication.html DescribeApplication> operation. 
 deleteApplicationCloudWatchLoggingOption
     :: Text -- ^ 'dacwloApplicationName'
     -> Natural -- ^ 'dacwloCurrentApplicationVersionId'
@@ -93,7 +93,7 @@ dacwloApplicationName = lens _dacwloApplicationName (\ s a -> s{_dacwloApplicati
 dacwloCurrentApplicationVersionId :: Lens' DeleteApplicationCloudWatchLoggingOption Natural
 dacwloCurrentApplicationVersionId = lens _dacwloCurrentApplicationVersionId (\ s a -> s{_dacwloCurrentApplicationVersionId = a}) . _Nat
 
--- | The @CloudWatchLoggingOptionId@ of the CloudWatch logging option to delete. You can get the @CloudWatchLoggingOptionId@ by using the 'DescribeApplication' operation. 
+-- | The @CloudWatchLoggingOptionId@ of the CloudWatch logging option to delete. You can get the @CloudWatchLoggingOptionId@ by using the <https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_DescribeApplication.html DescribeApplication> operation. 
 dacwloCloudWatchLoggingOptionId :: Lens' DeleteApplicationCloudWatchLoggingOption Text
 dacwloCloudWatchLoggingOptionId = lens _dacwloCloudWatchLoggingOptionId (\ s a -> s{_dacwloCloudWatchLoggingOptionId = a})
 

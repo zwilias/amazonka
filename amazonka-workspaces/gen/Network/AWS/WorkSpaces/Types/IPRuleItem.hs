@@ -20,7 +20,7 @@ module Network.AWS.WorkSpaces.Types.IPRuleItem where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | Information about a rule for an IP access control group.
+-- | Describes a rule for an IP access control group.
 --
 --
 --

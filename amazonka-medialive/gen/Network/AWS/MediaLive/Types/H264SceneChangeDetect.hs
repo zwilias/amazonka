@@ -19,29 +19,29 @@
 module Network.AWS.MediaLive.Types.H264SceneChangeDetect (
   H264SceneChangeDetect (
     ..
-    , HSCDDisabled
-    , HSCDEnabled
+    , HDisabled
+    , HEnabled
     )
   ) where
 
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | Placeholder documentation for H264SceneChangeDetect
+-- | H264 Scene Change Detect
 data H264SceneChangeDetect = H264SceneChangeDetect' (CI
                                                        Text)
                                deriving (Eq, Ord, Read, Show, Data, Typeable,
                                          Generic)
 
-pattern HSCDDisabled :: H264SceneChangeDetect
-pattern HSCDDisabled = H264SceneChangeDetect' "DISABLED"
+pattern HDisabled :: H264SceneChangeDetect
+pattern HDisabled = H264SceneChangeDetect' "DISABLED"
 
-pattern HSCDEnabled :: H264SceneChangeDetect
-pattern HSCDEnabled = H264SceneChangeDetect' "ENABLED"
+pattern HEnabled :: H264SceneChangeDetect
+pattern HEnabled = H264SceneChangeDetect' "ENABLED"
 
 {-# COMPLETE
-  HSCDDisabled,
-  HSCDEnabled,
+  HDisabled,
+  HEnabled,
   H264SceneChangeDetect' #-}
 
 instance FromText H264SceneChangeDetect where
@@ -56,20 +56,20 @@ instance ToText H264SceneChangeDetect where
 --   fromEnum is a partial function, and will error on values unknown at generation time.
 instance Enum H264SceneChangeDetect where
     toEnum i = case i of
-        0 -> HSCDDisabled
-        1 -> HSCDEnabled
+        0 -> HDisabled
+        1 -> HEnabled
         _ -> (error . showText) $ "Unknown index for H264SceneChangeDetect: " <> toText i
     fromEnum x = case x of
-        HSCDDisabled -> 0
-        HSCDEnabled -> 1
+        HDisabled -> 0
+        HEnabled -> 1
         H264SceneChangeDetect' name -> (error . showText) $ "Unknown H264SceneChangeDetect: " <> original name
 
 -- | Represents the bounds of /known/ $H264SceneChangeDetect.
 --   AWS may have added more since the source was generated.
 --   This instance exists only for backward compatibility.
 instance Bounded H264SceneChangeDetect where
-    minBound = HSCDDisabled
-    maxBound = HSCDEnabled
+    minBound = HDisabled
+    maxBound = HEnabled
 
 instance Hashable     H264SceneChangeDetect
 instance NFData       H264SceneChangeDetect

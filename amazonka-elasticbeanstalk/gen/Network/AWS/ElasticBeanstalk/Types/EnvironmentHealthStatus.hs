@@ -25,6 +25,7 @@ module Network.AWS.ElasticBeanstalk.Types.EnvironmentHealthStatus (
     , EHSOK
     , EHSPending
     , EHSSevere
+    , EHSSuspended
     , EHSUnknown
     , EHSWarning
     )
@@ -56,6 +57,9 @@ pattern EHSPending = EnvironmentHealthStatus' "Pending"
 pattern EHSSevere :: EnvironmentHealthStatus
 pattern EHSSevere = EnvironmentHealthStatus' "Severe"
 
+pattern EHSSuspended :: EnvironmentHealthStatus
+pattern EHSSuspended = EnvironmentHealthStatus' "Suspended"
+
 pattern EHSUnknown :: EnvironmentHealthStatus
 pattern EHSUnknown = EnvironmentHealthStatus' "Unknown"
 
@@ -69,6 +73,7 @@ pattern EHSWarning = EnvironmentHealthStatus' "Warning"
   EHSOK,
   EHSPending,
   EHSSevere,
+  EHSSuspended,
   EHSUnknown,
   EHSWarning,
   EnvironmentHealthStatus' #-}
@@ -91,8 +96,9 @@ instance Enum EnvironmentHealthStatus where
         3 -> EHSOK
         4 -> EHSPending
         5 -> EHSSevere
-        6 -> EHSUnknown
-        7 -> EHSWarning
+        6 -> EHSSuspended
+        7 -> EHSUnknown
+        8 -> EHSWarning
         _ -> (error . showText) $ "Unknown index for EnvironmentHealthStatus: " <> toText i
     fromEnum x = case x of
         EHSDegraded -> 0
@@ -101,8 +107,9 @@ instance Enum EnvironmentHealthStatus where
         EHSOK -> 3
         EHSPending -> 4
         EHSSevere -> 5
-        EHSUnknown -> 6
-        EHSWarning -> 7
+        EHSSuspended -> 6
+        EHSUnknown -> 7
+        EHSWarning -> 8
         EnvironmentHealthStatus' name -> (error . showText) $ "Unknown EnvironmentHealthStatus: " <> original name
 
 -- | Represents the bounds of /known/ $EnvironmentHealthStatus.

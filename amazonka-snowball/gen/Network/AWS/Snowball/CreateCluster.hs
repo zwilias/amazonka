@@ -32,6 +32,7 @@ module Network.AWS.Snowball.CreateCluster
     , ccForwardingAddressId
     , ccSnowballType
     , ccDescription
+    , ccTaxDocuments
     , ccJobType
     , ccResources
     , ccAddressId
@@ -60,6 +61,7 @@ data CreateCluster = CreateCluster'{_ccKMSKeyARN ::
                                     _ccForwardingAddressId :: !(Maybe Text),
                                     _ccSnowballType :: !(Maybe SnowballType),
                                     _ccDescription :: !(Maybe Text),
+                                    _ccTaxDocuments :: !(Maybe TaxDocuments),
                                     _ccJobType :: !JobType,
                                     _ccResources :: !JobResource,
                                     _ccAddressId :: !Text, _ccRoleARN :: !Text,
@@ -70,15 +72,17 @@ data CreateCluster = CreateCluster'{_ccKMSKeyARN ::
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'ccKMSKeyARN' - The @KmsKeyARN@ value that you want to associate with this cluster. @KmsKeyARN@ values are created by using the <http://docs.aws.amazon.com/kms/latest/APIReference/API_CreateKey.html CreateKey> API action in AWS Key Management Service (AWS KMS). 
+-- * 'ccKMSKeyARN' - The @KmsKeyARN@ value that you want to associate with this cluster. @KmsKeyARN@ values are created by using the <https://docs.aws.amazon.com/kms/latest/APIReference/API_CreateKey.html CreateKey> API action in AWS Key Management Service (AWS KMS). 
 --
 -- * 'ccNotification' - The Amazon Simple Notification Service (Amazon SNS) notification settings for this cluster.
 --
 -- * 'ccForwardingAddressId' - The forwarding address ID for a cluster. This field is not supported in most regions.
 --
--- * 'ccSnowballType' - The type of AWS Snowball appliance to use for this cluster. Currently, the only supported appliance type for cluster jobs is @EDGE@ .
+-- * 'ccSnowballType' - The type of AWS Snowball device to use for this cluster. Currently, the only supported device type for cluster jobs is @EDGE@ . For more information, see <https://docs.aws.amazon.com/snowball/latest/developer-guide/device-differences.html Snowball Edge Device Options> in the Snowball Edge Developer Guide.
 --
 -- * 'ccDescription' - An optional description of this specific cluster, for example @Environmental Data Cluster-01@ .
+--
+-- * 'ccTaxDocuments' - The tax documents required in your AWS Region.
 --
 -- * 'ccJobType' - The type of job for this cluster. Currently, the only job type supported for clusters is @LOCAL_USE@ .
 --
@@ -86,9 +90,9 @@ data CreateCluster = CreateCluster'{_ccKMSKeyARN ::
 --
 -- * 'ccAddressId' - The ID for the address that you want the cluster shipped to.
 --
--- * 'ccRoleARN' - The @RoleARN@ that you want to associate with this cluster. @RoleArn@ values are created by using the <http://docs.aws.amazon.com/IAM/latest/APIReference/API_CreateRole.html CreateRole> API action in AWS Identity and Access Management (IAM).
+-- * 'ccRoleARN' - The @RoleARN@ that you want to associate with this cluster. @RoleArn@ values are created by using the <https://docs.aws.amazon.com/IAM/latest/APIReference/API_CreateRole.html CreateRole> API action in AWS Identity and Access Management (IAM).
 --
--- * 'ccShippingOption' - The shipping speed for each node in this cluster. This speed doesn't dictate how soon you'll get each Snowball Edge appliance, rather it represents how quickly each appliance moves to its destination while in transit. Regional shipping speeds are as follows:     * In Australia, you have access to express shipping. Typically, appliances shipped express are delivered in about a day.     * In the European Union (EU), you have access to express shipping. Typically, Snowball Edges shipped express are delivered in about a day. In addition, most countries in the EU have access to standard shipping, which typically takes less than a week, one way.     * In India, Snowball Edges are delivered in one to seven days.     * In the US, you have access to one-day shipping and two-day shipping.
+-- * 'ccShippingOption' - The shipping speed for each node in this cluster. This speed doesn't dictate how soon you'll get each Snowball Edge device, rather it represents how quickly each device moves to its destination while in transit. Regional shipping speeds are as follows:     * In Australia, you have access to express shipping. Typically, devices shipped express are delivered in about a day.     * In the European Union (EU), you have access to express shipping. Typically, Snowball Edges shipped express are delivered in about a day. In addition, most countries in the EU have access to standard shipping, which typically takes less than a week, one way.     * In India, Snowball Edges are delivered in one to seven days.     * In the US, you have access to one-day shipping and two-day shipping.
 createCluster
     :: JobType -- ^ 'ccJobType'
     -> JobResource -- ^ 'ccResources'
@@ -102,11 +106,12 @@ createCluster pJobType_ pResources_ pAddressId_
                    _ccNotification = Nothing,
                    _ccForwardingAddressId = Nothing,
                    _ccSnowballType = Nothing, _ccDescription = Nothing,
-                   _ccJobType = pJobType_, _ccResources = pResources_,
+                   _ccTaxDocuments = Nothing, _ccJobType = pJobType_,
+                   _ccResources = pResources_,
                    _ccAddressId = pAddressId_, _ccRoleARN = pRoleARN_,
                    _ccShippingOption = pShippingOption_}
 
--- | The @KmsKeyARN@ value that you want to associate with this cluster. @KmsKeyARN@ values are created by using the <http://docs.aws.amazon.com/kms/latest/APIReference/API_CreateKey.html CreateKey> API action in AWS Key Management Service (AWS KMS). 
+-- | The @KmsKeyARN@ value that you want to associate with this cluster. @KmsKeyARN@ values are created by using the <https://docs.aws.amazon.com/kms/latest/APIReference/API_CreateKey.html CreateKey> API action in AWS Key Management Service (AWS KMS). 
 ccKMSKeyARN :: Lens' CreateCluster (Maybe Text)
 ccKMSKeyARN = lens _ccKMSKeyARN (\ s a -> s{_ccKMSKeyARN = a})
 
@@ -118,13 +123,17 @@ ccNotification = lens _ccNotification (\ s a -> s{_ccNotification = a})
 ccForwardingAddressId :: Lens' CreateCluster (Maybe Text)
 ccForwardingAddressId = lens _ccForwardingAddressId (\ s a -> s{_ccForwardingAddressId = a})
 
--- | The type of AWS Snowball appliance to use for this cluster. Currently, the only supported appliance type for cluster jobs is @EDGE@ .
+-- | The type of AWS Snowball device to use for this cluster. Currently, the only supported device type for cluster jobs is @EDGE@ . For more information, see <https://docs.aws.amazon.com/snowball/latest/developer-guide/device-differences.html Snowball Edge Device Options> in the Snowball Edge Developer Guide.
 ccSnowballType :: Lens' CreateCluster (Maybe SnowballType)
 ccSnowballType = lens _ccSnowballType (\ s a -> s{_ccSnowballType = a})
 
 -- | An optional description of this specific cluster, for example @Environmental Data Cluster-01@ .
 ccDescription :: Lens' CreateCluster (Maybe Text)
 ccDescription = lens _ccDescription (\ s a -> s{_ccDescription = a})
+
+-- | The tax documents required in your AWS Region.
+ccTaxDocuments :: Lens' CreateCluster (Maybe TaxDocuments)
+ccTaxDocuments = lens _ccTaxDocuments (\ s a -> s{_ccTaxDocuments = a})
 
 -- | The type of job for this cluster. Currently, the only job type supported for clusters is @LOCAL_USE@ .
 ccJobType :: Lens' CreateCluster JobType
@@ -138,11 +147,11 @@ ccResources = lens _ccResources (\ s a -> s{_ccResources = a})
 ccAddressId :: Lens' CreateCluster Text
 ccAddressId = lens _ccAddressId (\ s a -> s{_ccAddressId = a})
 
--- | The @RoleARN@ that you want to associate with this cluster. @RoleArn@ values are created by using the <http://docs.aws.amazon.com/IAM/latest/APIReference/API_CreateRole.html CreateRole> API action in AWS Identity and Access Management (IAM).
+-- | The @RoleARN@ that you want to associate with this cluster. @RoleArn@ values are created by using the <https://docs.aws.amazon.com/IAM/latest/APIReference/API_CreateRole.html CreateRole> API action in AWS Identity and Access Management (IAM).
 ccRoleARN :: Lens' CreateCluster Text
 ccRoleARN = lens _ccRoleARN (\ s a -> s{_ccRoleARN = a})
 
--- | The shipping speed for each node in this cluster. This speed doesn't dictate how soon you'll get each Snowball Edge appliance, rather it represents how quickly each appliance moves to its destination while in transit. Regional shipping speeds are as follows:     * In Australia, you have access to express shipping. Typically, appliances shipped express are delivered in about a day.     * In the European Union (EU), you have access to express shipping. Typically, Snowball Edges shipped express are delivered in about a day. In addition, most countries in the EU have access to standard shipping, which typically takes less than a week, one way.     * In India, Snowball Edges are delivered in one to seven days.     * In the US, you have access to one-day shipping and two-day shipping.
+-- | The shipping speed for each node in this cluster. This speed doesn't dictate how soon you'll get each Snowball Edge device, rather it represents how quickly each device moves to its destination while in transit. Regional shipping speeds are as follows:     * In Australia, you have access to express shipping. Typically, devices shipped express are delivered in about a day.     * In the European Union (EU), you have access to express shipping. Typically, Snowball Edges shipped express are delivered in about a day. In addition, most countries in the EU have access to standard shipping, which typically takes less than a week, one way.     * In India, Snowball Edges are delivered in one to seven days.     * In the US, you have access to one-day shipping and two-day shipping.
 ccShippingOption :: Lens' CreateCluster ShippingOption
 ccShippingOption = lens _ccShippingOption (\ s a -> s{_ccShippingOption = a})
 
@@ -179,6 +188,7 @@ instance ToJSON CreateCluster where
                     _ccForwardingAddressId,
                   ("SnowballType" .=) <$> _ccSnowballType,
                   ("Description" .=) <$> _ccDescription,
+                  ("TaxDocuments" .=) <$> _ccTaxDocuments,
                   Just ("JobType" .= _ccJobType),
                   Just ("Resources" .= _ccResources),
                   Just ("AddressId" .= _ccAddressId),

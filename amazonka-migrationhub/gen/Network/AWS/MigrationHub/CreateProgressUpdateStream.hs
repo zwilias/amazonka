@@ -58,7 +58,7 @@ data CreateProgressUpdateStream = CreateProgressUpdateStream'{_cpusDryRun
 --
 -- * 'cpusDryRun' - Optional boolean flag to indicate whether any effect should take place. Used to test if the caller has permission to make the call.
 --
--- * 'cpusProgressUpdateStreamName' - The name of the ProgressUpdateStream. 
+-- * 'cpusProgressUpdateStreamName' - The name of the ProgressUpdateStream. /Do not store personal data in this field./ 
 createProgressUpdateStream
     :: Text -- ^ 'cpusProgressUpdateStreamName'
     -> CreateProgressUpdateStream
@@ -71,7 +71,7 @@ createProgressUpdateStream pProgressUpdateStreamName_
 cpusDryRun :: Lens' CreateProgressUpdateStream (Maybe Bool)
 cpusDryRun = lens _cpusDryRun (\ s a -> s{_cpusDryRun = a})
 
--- | The name of the ProgressUpdateStream. 
+-- | The name of the ProgressUpdateStream. /Do not store personal data in this field./ 
 cpusProgressUpdateStreamName :: Lens' CreateProgressUpdateStream Text
 cpusProgressUpdateStreamName = lens _cpusProgressUpdateStreamName (\ s a -> s{_cpusProgressUpdateStreamName = a})
 

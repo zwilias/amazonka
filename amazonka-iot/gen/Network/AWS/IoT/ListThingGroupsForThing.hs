@@ -21,6 +21,8 @@
 -- List the thing groups to which the specified thing belongs.
 --
 --
+--
+-- This operation returns paginated results.
 module Network.AWS.IoT.ListThingGroupsForThing
     (
     -- * Creating a Request
@@ -43,6 +45,7 @@ module Network.AWS.IoT.ListThingGroupsForThing
 import Network.AWS.IoT.Types
 import Network.AWS.IoT.Types.Product
 import Network.AWS.Lens
+import Network.AWS.Pager
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
@@ -61,7 +64,7 @@ data ListThingGroupsForThing = ListThingGroupsForThing'{_ltgftNextToken
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'ltgftNextToken' - The token used to get the next set of results, or __null__ if there are no additional results.
+-- * 'ltgftNextToken' - The token to retrieve the next set of results.
 --
 -- * 'ltgftMaxResults' - The maximum number of results to return at one time.
 --
@@ -74,7 +77,7 @@ listThingGroupsForThing pThingName_
                              _ltgftMaxResults = Nothing,
                              _ltgftThingName = pThingName_}
 
--- | The token used to get the next set of results, or __null__ if there are no additional results.
+-- | The token to retrieve the next set of results.
 ltgftNextToken :: Lens' ListThingGroupsForThing (Maybe Text)
 ltgftNextToken = lens _ltgftNextToken (\ s a -> s{_ltgftNextToken = a})
 
@@ -85,6 +88,13 @@ ltgftMaxResults = lens _ltgftMaxResults (\ s a -> s{_ltgftMaxResults = a}) . map
 -- | The thing name.
 ltgftThingName :: Lens' ListThingGroupsForThing Text
 ltgftThingName = lens _ltgftThingName (\ s a -> s{_ltgftThingName = a})
+
+instance AWSPager ListThingGroupsForThing where
+        page rq rs
+          | stop (rs ^. ltgftrsNextToken) = Nothing
+          | stop (rs ^. ltgftrsThingGroups) = Nothing
+          | otherwise =
+            Just $ rq & ltgftNextToken .~ rs ^. ltgftrsNextToken
 
 instance AWSRequest ListThingGroupsForThing where
         type Rs ListThingGroupsForThing =

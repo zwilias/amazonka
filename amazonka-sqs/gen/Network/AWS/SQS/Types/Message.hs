@@ -41,13 +41,13 @@ data Message = Message'{_mMessageAttributes ::
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'mMessageAttributes' - Each message attribute consists of a @Name@ , @Type@ , and @Value@ . For more information, see <http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-message-attributes.html#message-attributes-items-validation Message Attribute Items and Validation> in the /Amazon Simple Queue Service Developer Guide/ .
+-- * 'mMessageAttributes' - Each message attribute consists of a @Name@ , @Type@ , and @Value@ . For more information, see <https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-message-attributes.html Amazon SQS Message Attributes> in the /Amazon Simple Queue Service Developer Guide/ .
 --
 -- * 'mMD5OfBody' - An MD5 digest of the non-URL-encoded message body string.
 --
 -- * 'mBody' - The message's contents (not URL-encoded).
 --
--- * 'mAttributes' - @SenderId@ , @SentTimestamp@ , @ApproximateReceiveCount@ , and/or @ApproximateFirstReceiveTimestamp@ . @SentTimestamp@ and @ApproximateFirstReceiveTimestamp@ are each returned as an integer representing the <http://en.wikipedia.org/wiki/Unix_time epoch time> in milliseconds.
+-- * 'mAttributes' - A map of the attributes requested in @'ReceiveMessage' @ to their respective values. Supported attributes:     * @ApproximateReceiveCount@      * @ApproximateFirstReceiveTimestamp@      * @MessageDeduplicationId@      * @MessageGroupId@      * @SenderId@      * @SentTimestamp@      * @SequenceNumber@  @ApproximateFirstReceiveTimestamp@ and @SentTimestamp@ are each returned as an integer representing the <http://en.wikipedia.org/wiki/Unix_time epoch time> in milliseconds.
 --
 -- * 'mReceiptHandle' - An identifier associated with the act of receiving the message. A new receipt handle is returned every time you receive a message. When deleting a message, you provide the last received receipt handle to delete the message.
 --
@@ -63,7 +63,7 @@ message
              _mMessageId = Nothing,
              _mMD5OfMessageAttributes = Nothing}
 
--- | Each message attribute consists of a @Name@ , @Type@ , and @Value@ . For more information, see <http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-message-attributes.html#message-attributes-items-validation Message Attribute Items and Validation> in the /Amazon Simple Queue Service Developer Guide/ .
+-- | Each message attribute consists of a @Name@ , @Type@ , and @Value@ . For more information, see <https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-message-attributes.html Amazon SQS Message Attributes> in the /Amazon Simple Queue Service Developer Guide/ .
 mMessageAttributes :: Lens' Message (HashMap Text MessageAttributeValue)
 mMessageAttributes = lens _mMessageAttributes (\ s a -> s{_mMessageAttributes = a}) . _Default . _Map
 
@@ -75,7 +75,7 @@ mMD5OfBody = lens _mMD5OfBody (\ s a -> s{_mMD5OfBody = a})
 mBody :: Lens' Message (Maybe Text)
 mBody = lens _mBody (\ s a -> s{_mBody = a})
 
--- | @SenderId@ , @SentTimestamp@ , @ApproximateReceiveCount@ , and/or @ApproximateFirstReceiveTimestamp@ . @SentTimestamp@ and @ApproximateFirstReceiveTimestamp@ are each returned as an integer representing the <http://en.wikipedia.org/wiki/Unix_time epoch time> in milliseconds.
+-- | A map of the attributes requested in @'ReceiveMessage' @ to their respective values. Supported attributes:     * @ApproximateReceiveCount@      * @ApproximateFirstReceiveTimestamp@      * @MessageDeduplicationId@      * @MessageGroupId@      * @SenderId@      * @SentTimestamp@      * @SequenceNumber@  @ApproximateFirstReceiveTimestamp@ and @SentTimestamp@ are each returned as an integer representing the <http://en.wikipedia.org/wiki/Unix_time epoch time> in milliseconds.
 mAttributes :: Lens' Message (HashMap MessageAttribute Text)
 mAttributes = lens _mAttributes (\ s a -> s{_mAttributes = a}) . _Default . _Map
 

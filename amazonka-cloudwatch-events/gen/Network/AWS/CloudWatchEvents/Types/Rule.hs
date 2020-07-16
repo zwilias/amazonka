@@ -41,7 +41,7 @@ data Rule = Rule'{_rEventPattern :: !(Maybe Text),
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'rEventPattern' - The event pattern of the rule. For more information, see <https://docs.aws.amazon.com/eventbridge/latest/userguide/eventbridge-and-event-patterns.html Event Patterns> in the /Amazon EventBridge User Guide/ .
+-- * 'rEventPattern' - The event pattern of the rule. For more information, see <https://docs.aws.amazon.com/eventbridge/latest/userguide/eventbridge-and-event-patterns.html Events and Event Patterns> in the /Amazon EventBridge User Guide/ .
 --
 -- * 'rState' - The state of the rule.
 --
@@ -49,13 +49,13 @@ data Rule = Rule'{_rEventPattern :: !(Maybe Text),
 --
 -- * 'rEventBusName' - The event bus associated with the rule.
 --
--- * 'rScheduleExpression' - The scheduling expression: for example, @"cron(0 20 * * ? *)"@ or @"rate(5 minutes)"@ .
+-- * 'rScheduleExpression' - The scheduling expression. For example, "cron(0 20 * * ? *)", "rate(5 minutes)".
 --
 -- * 'rName' - The name of the rule.
 --
 -- * 'rDescription' - The description of the rule.
 --
--- * 'rManagedBy' - If an AWS service created the rule on behalf of your account, this field displays the principal name of the service that created the rule.
+-- * 'rManagedBy' - If the rule was created on behalf of your account by an AWS service, this field displays the principal name of the service that created the rule.
 --
 -- * 'rRoleARN' - The Amazon Resource Name (ARN) of the role that is used for target invocation.
 rule
@@ -67,7 +67,7 @@ rule
           _rDescription = Nothing, _rManagedBy = Nothing,
           _rRoleARN = Nothing}
 
--- | The event pattern of the rule. For more information, see <https://docs.aws.amazon.com/eventbridge/latest/userguide/eventbridge-and-event-patterns.html Event Patterns> in the /Amazon EventBridge User Guide/ .
+-- | The event pattern of the rule. For more information, see <https://docs.aws.amazon.com/eventbridge/latest/userguide/eventbridge-and-event-patterns.html Events and Event Patterns> in the /Amazon EventBridge User Guide/ .
 rEventPattern :: Lens' Rule (Maybe Text)
 rEventPattern = lens _rEventPattern (\ s a -> s{_rEventPattern = a})
 
@@ -83,7 +83,7 @@ rARN = lens _rARN (\ s a -> s{_rARN = a})
 rEventBusName :: Lens' Rule (Maybe Text)
 rEventBusName = lens _rEventBusName (\ s a -> s{_rEventBusName = a})
 
--- | The scheduling expression: for example, @"cron(0 20 * * ? *)"@ or @"rate(5 minutes)"@ .
+-- | The scheduling expression. For example, "cron(0 20 * * ? *)", "rate(5 minutes)".
 rScheduleExpression :: Lens' Rule (Maybe Text)
 rScheduleExpression = lens _rScheduleExpression (\ s a -> s{_rScheduleExpression = a})
 
@@ -95,7 +95,7 @@ rName = lens _rName (\ s a -> s{_rName = a})
 rDescription :: Lens' Rule (Maybe Text)
 rDescription = lens _rDescription (\ s a -> s{_rDescription = a})
 
--- | If an AWS service created the rule on behalf of your account, this field displays the principal name of the service that created the rule.
+-- | If the rule was created on behalf of your account by an AWS service, this field displays the principal name of the service that created the rule.
 rManagedBy :: Lens' Rule (Maybe Text)
 rManagedBy = lens _rManagedBy (\ s a -> s{_rManagedBy = a})
 

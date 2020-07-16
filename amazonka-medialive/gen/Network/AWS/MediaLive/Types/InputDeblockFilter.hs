@@ -27,7 +27,7 @@ module Network.AWS.MediaLive.Types.InputDeblockFilter (
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | Placeholder documentation for InputDeblockFilter
+-- | Input Deblock Filter
 data InputDeblockFilter = InputDeblockFilter' (CI
                                                  Text)
                             deriving (Eq, Ord, Read, Show, Data, Typeable,

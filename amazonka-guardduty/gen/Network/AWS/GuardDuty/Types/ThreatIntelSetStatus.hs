@@ -32,7 +32,6 @@ module Network.AWS.GuardDuty.Types.ThreatIntelSetStatus (
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | The status of threatIntelSet file uploaded.
 data ThreatIntelSetStatus = ThreatIntelSetStatus' (CI
                                                      Text)
                               deriving (Eq, Ord, Read, Show, Data, Typeable,

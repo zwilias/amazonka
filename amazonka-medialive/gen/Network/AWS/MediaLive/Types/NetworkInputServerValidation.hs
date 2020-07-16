@@ -27,7 +27,7 @@ module Network.AWS.MediaLive.Types.NetworkInputServerValidation (
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | Placeholder documentation for NetworkInputServerValidation
+-- | Network Input Server Validation
 data NetworkInputServerValidation = NetworkInputServerValidation' (CI
                                                                      Text)
                                       deriving (Eq, Ord, Read, Show, Data,

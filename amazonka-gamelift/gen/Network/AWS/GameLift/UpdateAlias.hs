@@ -21,8 +21,6 @@
 -- Updates properties for an alias. To update properties, specify the alias ID to be updated and provide the information to be changed. To reassign an alias to another fleet, provide an updated routing strategy. If successful, the updated alias record is returned.
 --
 --
--- Alias-related operations include:
---
 --     * 'CreateAlias' 
 --
 --     * 'ListAliases' 
@@ -79,13 +77,13 @@ data UpdateAlias = UpdateAlias'{_uaRoutingStrategy ::
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'uaRoutingStrategy' - Object that specifies the fleet and routing type to use for the alias.
+-- * 'uaRoutingStrategy' - The routing configuration, including routing type and fleet target, for the alias.
 --
--- * 'uaName' - Descriptive label that is associated with an alias. Alias names do not need to be unique.
+-- * 'uaName' - A descriptive label that is associated with an alias. Alias names do not need to be unique.
 --
--- * 'uaDescription' - Human-readable description of an alias.
+-- * 'uaDescription' - A human-readable description of the alias.
 --
--- * 'uaAliasId' - Unique identifier for a fleet alias. Specify the alias you want to update.
+-- * 'uaAliasId' - A unique identifier for the alias that you want to update. You can use either the alias ID or ARN value.
 updateAlias
     :: Text -- ^ 'uaAliasId'
     -> UpdateAlias
@@ -94,19 +92,19 @@ updateAlias pAliasId_
                  _uaName = Nothing, _uaDescription = Nothing,
                  _uaAliasId = pAliasId_}
 
--- | Object that specifies the fleet and routing type to use for the alias.
+-- | The routing configuration, including routing type and fleet target, for the alias.
 uaRoutingStrategy :: Lens' UpdateAlias (Maybe RoutingStrategy)
 uaRoutingStrategy = lens _uaRoutingStrategy (\ s a -> s{_uaRoutingStrategy = a})
 
--- | Descriptive label that is associated with an alias. Alias names do not need to be unique.
+-- | A descriptive label that is associated with an alias. Alias names do not need to be unique.
 uaName :: Lens' UpdateAlias (Maybe Text)
 uaName = lens _uaName (\ s a -> s{_uaName = a})
 
--- | Human-readable description of an alias.
+-- | A human-readable description of the alias.
 uaDescription :: Lens' UpdateAlias (Maybe Text)
 uaDescription = lens _uaDescription (\ s a -> s{_uaDescription = a})
 
--- | Unique identifier for a fleet alias. Specify the alias you want to update.
+-- | A unique identifier for the alias that you want to update. You can use either the alias ID or ARN value.
 uaAliasId :: Lens' UpdateAlias Text
 uaAliasId = lens _uaAliasId (\ s a -> s{_uaAliasId = a})
 
@@ -161,7 +159,7 @@ data UpdateAliasResponse = UpdateAliasResponse'{_uarsAlias
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'uarsAlias' - Object that contains the updated alias configuration.
+-- * 'uarsAlias' - The updated alias resource.
 --
 -- * 'uarsResponseStatus' - -- | The response status code.
 updateAliasResponse
@@ -171,7 +169,7 @@ updateAliasResponse pResponseStatus_
   = UpdateAliasResponse'{_uarsAlias = Nothing,
                          _uarsResponseStatus = pResponseStatus_}
 
--- | Object that contains the updated alias configuration.
+-- | The updated alias resource.
 uarsAlias :: Lens' UpdateAliasResponse (Maybe Alias)
 uarsAlias = lens _uarsAlias (\ s a -> s{_uarsAlias = a})
 

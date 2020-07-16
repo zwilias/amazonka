@@ -21,7 +21,9 @@ import Network.AWS.Lens
 import Network.AWS.Pinpoint.Types.MessageType
 import Network.AWS.Prelude
 
--- | SMS Message.
+-- | Specifies the default settings for a one-time SMS message that's sent directly to an endpoint.
+--
+--
 --
 -- /See:/ 'sMSMessage' smart constructor.
 data SMSMessage = SMSMessage'{_smsmSubstitutions ::
@@ -29,49 +31,64 @@ data SMSMessage = SMSMessage'{_smsmSubstitutions ::
                               _smsmOriginationNumber :: !(Maybe Text),
                               _smsmBody :: !(Maybe Text),
                               _smsmMessageType :: !(Maybe MessageType),
-                              _smsmSenderId :: !(Maybe Text)}
+                              _smsmSenderId :: !(Maybe Text),
+                              _smsmMediaURL :: !(Maybe Text),
+                              _smsmKeyword :: !(Maybe Text)}
                     deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'SMSMessage' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'smsmSubstitutions' - Default message substitutions. Can be overridden by individual address substitutions.
+-- * 'smsmSubstitutions' - The message variables to use in the SMS message. You can override the default variables with individual address variables.
 --
--- * 'smsmOriginationNumber' - The phone number that the SMS message originates from. Specify one of the dedicated long codes or short codes that you requested from AWS Support and that is assigned to your account. If this attribute is not specified, Amazon Pinpoint randomly assigns a long code.
+-- * 'smsmOriginationNumber' - The number to send the SMS message from. This value should be one of the dedicated long or short codes that's assigned to your AWS account. If you don't specify a long or short code, Amazon Pinpoint assigns a random long code to the SMS message and sends the message from that code.
 --
--- * 'smsmBody' - The message body of the notification, the email body or the text message.
+-- * 'smsmBody' - The body of the SMS message.
 --
--- * 'smsmMessageType' - Is this a transaction priority message or lower priority.
+-- * 'smsmMessageType' - The SMS message type. Valid values are: TRANSACTIONAL, the message is critical or time-sensitive, such as a one-time password that supports a customer transaction; and, PROMOTIONAL, the message is not critical or time-sensitive, such as a marketing message.
 --
--- * 'smsmSenderId' - The sender ID that is shown as the message sender on the recipient's device. Support for sender IDs varies by country or region.
+-- * 'smsmSenderId' - The sender ID to display as the sender of the message on a recipient's device. Support for sender IDs varies by country or region.
+--
+-- * 'smsmMediaURL' - The URL of an image or video to display in the SMS message.
+--
+-- * 'smsmKeyword' - The SMS program name that you provided to AWS Support when you requested your dedicated number.
 sMSMessage
     :: SMSMessage
 sMSMessage
   = SMSMessage'{_smsmSubstitutions = Nothing,
                 _smsmOriginationNumber = Nothing,
                 _smsmBody = Nothing, _smsmMessageType = Nothing,
-                _smsmSenderId = Nothing}
+                _smsmSenderId = Nothing, _smsmMediaURL = Nothing,
+                _smsmKeyword = Nothing}
 
--- | Default message substitutions. Can be overridden by individual address substitutions.
+-- | The message variables to use in the SMS message. You can override the default variables with individual address variables.
 smsmSubstitutions :: Lens' SMSMessage (HashMap Text [Text])
 smsmSubstitutions = lens _smsmSubstitutions (\ s a -> s{_smsmSubstitutions = a}) . _Default . _Map
 
--- | The phone number that the SMS message originates from. Specify one of the dedicated long codes or short codes that you requested from AWS Support and that is assigned to your account. If this attribute is not specified, Amazon Pinpoint randomly assigns a long code.
+-- | The number to send the SMS message from. This value should be one of the dedicated long or short codes that's assigned to your AWS account. If you don't specify a long or short code, Amazon Pinpoint assigns a random long code to the SMS message and sends the message from that code.
 smsmOriginationNumber :: Lens' SMSMessage (Maybe Text)
 smsmOriginationNumber = lens _smsmOriginationNumber (\ s a -> s{_smsmOriginationNumber = a})
 
--- | The message body of the notification, the email body or the text message.
+-- | The body of the SMS message.
 smsmBody :: Lens' SMSMessage (Maybe Text)
 smsmBody = lens _smsmBody (\ s a -> s{_smsmBody = a})
 
--- | Is this a transaction priority message or lower priority.
+-- | The SMS message type. Valid values are: TRANSACTIONAL, the message is critical or time-sensitive, such as a one-time password that supports a customer transaction; and, PROMOTIONAL, the message is not critical or time-sensitive, such as a marketing message.
 smsmMessageType :: Lens' SMSMessage (Maybe MessageType)
 smsmMessageType = lens _smsmMessageType (\ s a -> s{_smsmMessageType = a})
 
--- | The sender ID that is shown as the message sender on the recipient's device. Support for sender IDs varies by country or region.
+-- | The sender ID to display as the sender of the message on a recipient's device. Support for sender IDs varies by country or region.
 smsmSenderId :: Lens' SMSMessage (Maybe Text)
 smsmSenderId = lens _smsmSenderId (\ s a -> s{_smsmSenderId = a})
+
+-- | The URL of an image or video to display in the SMS message.
+smsmMediaURL :: Lens' SMSMessage (Maybe Text)
+smsmMediaURL = lens _smsmMediaURL (\ s a -> s{_smsmMediaURL = a})
+
+-- | The SMS program name that you provided to AWS Support when you requested your dedicated number.
+smsmKeyword :: Lens' SMSMessage (Maybe Text)
+smsmKeyword = lens _smsmKeyword (\ s a -> s{_smsmKeyword = a})
 
 instance Hashable SMSMessage where
 
@@ -85,4 +102,6 @@ instance ToJSON SMSMessage where
                   ("OriginationNumber" .=) <$> _smsmOriginationNumber,
                   ("Body" .=) <$> _smsmBody,
                   ("MessageType" .=) <$> _smsmMessageType,
-                  ("SenderId" .=) <$> _smsmSenderId])
+                  ("SenderId" .=) <$> _smsmSenderId,
+                  ("MediaUrl" .=) <$> _smsmMediaURL,
+                  ("Keyword" .=) <$> _smsmKeyword])

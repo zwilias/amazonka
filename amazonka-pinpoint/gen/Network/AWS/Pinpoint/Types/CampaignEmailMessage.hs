@@ -20,7 +20,9 @@ module Network.AWS.Pinpoint.Types.CampaignEmailMessage where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | The email message configuration.
+-- | Specifies the content and "From" address for an email message that's sent to recipients of a campaign.
+--
+--
 --
 -- /See:/ 'campaignEmailMessage' smart constructor.
 data CampaignEmailMessage = CampaignEmailMessage'{_cemBody
@@ -35,13 +37,13 @@ data CampaignEmailMessage = CampaignEmailMessage'{_cemBody
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'cemBody' - The email text body.
+-- * 'cemBody' - The body of the email for recipients whose email clients don't render HTML content.
 --
--- * 'cemFromAddress' - The email address used to send the email from. Defaults to use FromAddress specified in the Email Channel.
+-- * 'cemFromAddress' - The verified email address to send the email from. The default address is the FromAddress specified for the email channel for the application.
 --
--- * 'cemHTMLBody' - The email html body.
+-- * 'cemHTMLBody' - The body of the email, in HTML format, for recipients whose email clients render HTML content.
 --
--- * 'cemTitle' - The email title (Or subject).
+-- * 'cemTitle' - The subject line, or title, of the email.
 campaignEmailMessage
     :: CampaignEmailMessage
 campaignEmailMessage
@@ -49,19 +51,19 @@ campaignEmailMessage
                           _cemFromAddress = Nothing, _cemHTMLBody = Nothing,
                           _cemTitle = Nothing}
 
--- | The email text body.
+-- | The body of the email for recipients whose email clients don't render HTML content.
 cemBody :: Lens' CampaignEmailMessage (Maybe Text)
 cemBody = lens _cemBody (\ s a -> s{_cemBody = a})
 
--- | The email address used to send the email from. Defaults to use FromAddress specified in the Email Channel.
+-- | The verified email address to send the email from. The default address is the FromAddress specified for the email channel for the application.
 cemFromAddress :: Lens' CampaignEmailMessage (Maybe Text)
 cemFromAddress = lens _cemFromAddress (\ s a -> s{_cemFromAddress = a})
 
--- | The email html body.
+-- | The body of the email, in HTML format, for recipients whose email clients render HTML content.
 cemHTMLBody :: Lens' CampaignEmailMessage (Maybe Text)
 cemHTMLBody = lens _cemHTMLBody (\ s a -> s{_cemHTMLBody = a})
 
--- | The email title (Or subject).
+-- | The subject line, or title, of the email.
 cemTitle :: Lens' CampaignEmailMessage (Maybe Text)
 cemTitle = lens _cemTitle (\ s a -> s{_cemTitle = a})
 

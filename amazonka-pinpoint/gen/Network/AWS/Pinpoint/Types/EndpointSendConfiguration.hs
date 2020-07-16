@@ -20,7 +20,9 @@ module Network.AWS.Pinpoint.Types.EndpointSendConfiguration where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | Endpoint send configuration.
+-- | Specifies the content, including message variables and attributes, to use in a message that's sent directly to an endpoint.
+--
+--
 --
 -- /See:/ 'endpointSendConfiguration' smart constructor.
 data EndpointSendConfiguration = EndpointSendConfiguration'{_escSubstitutions
@@ -45,15 +47,15 @@ data EndpointSendConfiguration = EndpointSendConfiguration'{_escSubstitutions
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'escSubstitutions' - A map of substitution values for the message to be merged with the DefaultMessage's substitutions. Substitutions on this map take precedence over the all other substitutions.
+-- * 'escSubstitutions' - A map of the message variables to merge with the variables specified for the default message (DefaultMessage.Substitutions). The variables specified in this map take precedence over all other variables.
 --
--- * 'escTitleOverride' - Title override. If specified will override default title if applicable.
+-- * 'escTitleOverride' - The title or subject line of the message. If specified, this value overrides the default message title or subject line.
 --
--- * 'escContext' - A map of custom attributes to attributes to be attached to the message for this address. This payload is added to the push notification's 'data.pinpoint' object or added to the email/sms delivery receipt event attributes.
+-- * 'escContext' - A map of custom attributes to attach to the message for the address. Attribute names are case sensitive. For a push notification, this payload is added to the data.pinpoint object. For an email or text message, this payload is added to email/SMS delivery receipt event attributes.
 --
--- * 'escRawContent' - The Raw JSON formatted string to be used as the payload. This value overrides the message.
+-- * 'escRawContent' - The raw, JSON-formatted string to use as the payload for the message. If specified, this value overrides all other values for the message.
 --
--- * 'escBodyOverride' - Body override. If specified will override default body.
+-- * 'escBodyOverride' - The body of the message. If specified, this value overrides the default message body.
 endpointSendConfiguration
     :: EndpointSendConfiguration
 endpointSendConfiguration
@@ -63,23 +65,23 @@ endpointSendConfiguration
                                _escContext = Nothing, _escRawContent = Nothing,
                                _escBodyOverride = Nothing}
 
--- | A map of substitution values for the message to be merged with the DefaultMessage's substitutions. Substitutions on this map take precedence over the all other substitutions.
+-- | A map of the message variables to merge with the variables specified for the default message (DefaultMessage.Substitutions). The variables specified in this map take precedence over all other variables.
 escSubstitutions :: Lens' EndpointSendConfiguration (HashMap Text [Text])
 escSubstitutions = lens _escSubstitutions (\ s a -> s{_escSubstitutions = a}) . _Default . _Map
 
--- | Title override. If specified will override default title if applicable.
+-- | The title or subject line of the message. If specified, this value overrides the default message title or subject line.
 escTitleOverride :: Lens' EndpointSendConfiguration (Maybe Text)
 escTitleOverride = lens _escTitleOverride (\ s a -> s{_escTitleOverride = a})
 
--- | A map of custom attributes to attributes to be attached to the message for this address. This payload is added to the push notification's 'data.pinpoint' object or added to the email/sms delivery receipt event attributes.
+-- | A map of custom attributes to attach to the message for the address. Attribute names are case sensitive. For a push notification, this payload is added to the data.pinpoint object. For an email or text message, this payload is added to email/SMS delivery receipt event attributes.
 escContext :: Lens' EndpointSendConfiguration (HashMap Text Text)
 escContext = lens _escContext (\ s a -> s{_escContext = a}) . _Default . _Map
 
--- | The Raw JSON formatted string to be used as the payload. This value overrides the message.
+-- | The raw, JSON-formatted string to use as the payload for the message. If specified, this value overrides all other values for the message.
 escRawContent :: Lens' EndpointSendConfiguration (Maybe Text)
 escRawContent = lens _escRawContent (\ s a -> s{_escRawContent = a})
 
--- | Body override. If specified will override default body.
+-- | The body of the message. If specified, this value overrides the default message body.
 escBodyOverride :: Lens' EndpointSendConfiguration (Maybe Text)
 escBodyOverride = lens _escBodyOverride (\ s a -> s{_escBodyOverride = a})
 

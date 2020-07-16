@@ -20,6 +20,7 @@ module Network.AWS.ElasticBeanstalk.Types.EnvironmentResourceDescription where
 import Network.AWS.ElasticBeanstalk.Types.AutoScalingGroup
 import Network.AWS.ElasticBeanstalk.Types.Instance
 import Network.AWS.ElasticBeanstalk.Types.LaunchConfiguration
+import Network.AWS.ElasticBeanstalk.Types.LaunchTemplate
 import Network.AWS.ElasticBeanstalk.Types.LoadBalancer
 import Network.AWS.ElasticBeanstalk.Types.Queue
 import Network.AWS.ElasticBeanstalk.Types.Trigger
@@ -39,6 +40,10 @@ data EnvironmentResourceDescription = EnvironmentResourceDescription'{_erdQueues
                                                                       ::
                                                                       !(Maybe
                                                                           [Trigger]),
+                                                                      _erdLaunchTemplates
+                                                                      ::
+                                                                      !(Maybe
+                                                                          [LaunchTemplate]),
                                                                       _erdLoadBalancers
                                                                       ::
                                                                       !(Maybe
@@ -70,6 +75,8 @@ data EnvironmentResourceDescription = EnvironmentResourceDescription'{_erdQueues
 --
 -- * 'erdTriggers' - The @AutoScaling@ triggers in use by this environment. 
 --
+-- * 'erdLaunchTemplates' - The Amazon EC2 launch templates in use by this environment.
+--
 -- * 'erdLoadBalancers' - The LoadBalancers in use by this environment.
 --
 -- * 'erdEnvironmentName' - The name of the environment.
@@ -85,6 +92,7 @@ environmentResourceDescription
   = EnvironmentResourceDescription'{_erdQueues =
                                       Nothing,
                                     _erdTriggers = Nothing,
+                                    _erdLaunchTemplates = Nothing,
                                     _erdLoadBalancers = Nothing,
                                     _erdEnvironmentName = Nothing,
                                     _erdInstances = Nothing,
@@ -98,6 +106,10 @@ erdQueues = lens _erdQueues (\ s a -> s{_erdQueues = a}) . _Default . _Coerce
 -- | The @AutoScaling@ triggers in use by this environment. 
 erdTriggers :: Lens' EnvironmentResourceDescription [Trigger]
 erdTriggers = lens _erdTriggers (\ s a -> s{_erdTriggers = a}) . _Default . _Coerce
+
+-- | The Amazon EC2 launch templates in use by this environment.
+erdLaunchTemplates :: Lens' EnvironmentResourceDescription [LaunchTemplate]
+erdLaunchTemplates = lens _erdLaunchTemplates (\ s a -> s{_erdLaunchTemplates = a}) . _Default . _Coerce
 
 -- | The LoadBalancers in use by this environment.
 erdLoadBalancers :: Lens' EnvironmentResourceDescription [LoadBalancer]
@@ -126,6 +138,9 @@ instance FromXML EnvironmentResourceDescription where
                  may (parseXMLList "member"))
                 <*>
                 (x .@? "Triggers" .!@ mempty >>=
+                   may (parseXMLList "member"))
+                <*>
+                (x .@? "LaunchTemplates" .!@ mempty >>=
                    may (parseXMLList "member"))
                 <*>
                 (x .@? "LoadBalancers" .!@ mempty >>=

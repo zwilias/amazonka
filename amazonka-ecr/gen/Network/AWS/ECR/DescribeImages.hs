@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Returns metadata about the images in a repository, including image size, image tags, and creation date.
+-- Returns metadata about the images in a repository.
 --
 --
 --
@@ -76,9 +76,9 @@ data DescribeImages = DescribeImages'{_diRegistryId
 --
 -- * 'diFilter' - The filter key and value with which to filter your @DescribeImages@ results.
 --
--- * 'diMaxResults' - The maximum number of repository results returned by @DescribeImages@ in paginated output. When this parameter is used, @DescribeImages@ only returns @maxResults@ results in a single page along with a @nextToken@ response element. The remaining results of the initial request can be seen by sending another @DescribeImages@ request with the returned @nextToken@ value. This value can be between 1 and 100. If this parameter is not used, then @DescribeImages@ returns up to 100 results and a @nextToken@ value, if applicable. This option cannot be used when you specify images with @imageIds@ .
+-- * 'diMaxResults' - The maximum number of repository results returned by @DescribeImages@ in paginated output. When this parameter is used, @DescribeImages@ only returns @maxResults@ results in a single page along with a @nextToken@ response element. The remaining results of the initial request can be seen by sending another @DescribeImages@ request with the returned @nextToken@ value. This value can be between 1 and 1000. If this parameter is not used, then @DescribeImages@ returns up to 100 results and a @nextToken@ value, if applicable. This option cannot be used when you specify images with @imageIds@ .
 --
--- * 'diRepositoryName' - A list of repositories to describe. If this parameter is omitted, then all repositories in a registry are described.
+-- * 'diRepositoryName' - The repository that contains the images to describe.
 describeImages
     :: Text -- ^ 'diRepositoryName'
     -> DescribeImages
@@ -104,11 +104,11 @@ diNextToken = lens _diNextToken (\ s a -> s{_diNextToken = a})
 diFilter :: Lens' DescribeImages (Maybe DescribeImagesFilter)
 diFilter = lens _diFilter (\ s a -> s{_diFilter = a})
 
--- | The maximum number of repository results returned by @DescribeImages@ in paginated output. When this parameter is used, @DescribeImages@ only returns @maxResults@ results in a single page along with a @nextToken@ response element. The remaining results of the initial request can be seen by sending another @DescribeImages@ request with the returned @nextToken@ value. This value can be between 1 and 100. If this parameter is not used, then @DescribeImages@ returns up to 100 results and a @nextToken@ value, if applicable. This option cannot be used when you specify images with @imageIds@ .
+-- | The maximum number of repository results returned by @DescribeImages@ in paginated output. When this parameter is used, @DescribeImages@ only returns @maxResults@ results in a single page along with a @nextToken@ response element. The remaining results of the initial request can be seen by sending another @DescribeImages@ request with the returned @nextToken@ value. This value can be between 1 and 1000. If this parameter is not used, then @DescribeImages@ returns up to 100 results and a @nextToken@ value, if applicable. This option cannot be used when you specify images with @imageIds@ .
 diMaxResults :: Lens' DescribeImages (Maybe Natural)
 diMaxResults = lens _diMaxResults (\ s a -> s{_diMaxResults = a}) . mapping _Nat
 
--- | A list of repositories to describe. If this parameter is omitted, then all repositories in a registry are described.
+-- | The repository that contains the images to describe.
 diRepositoryName :: Lens' DescribeImages Text
 diRepositoryName = lens _diRepositoryName (\ s a -> s{_diRepositoryName = a})
 

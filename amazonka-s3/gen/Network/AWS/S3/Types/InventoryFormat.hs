@@ -21,6 +21,7 @@ module Network.AWS.S3.Types.InventoryFormat (
     ..
     , IFCSV
     , IFOrc
+    , IFParquet
     )
   ) where
 
@@ -38,9 +39,13 @@ pattern IFCSV = InventoryFormat' "CSV"
 pattern IFOrc :: InventoryFormat
 pattern IFOrc = InventoryFormat' "ORC"
 
+pattern IFParquet :: InventoryFormat
+pattern IFParquet = InventoryFormat' "Parquet"
+
 {-# COMPLETE
   IFCSV,
   IFOrc,
+  IFParquet,
   InventoryFormat' #-}
 
 instance FromText InventoryFormat where
@@ -57,10 +62,12 @@ instance Enum InventoryFormat where
     toEnum i = case i of
         0 -> IFCSV
         1 -> IFOrc
+        2 -> IFParquet
         _ -> (error . showText) $ "Unknown index for InventoryFormat: " <> toText i
     fromEnum x = case x of
         IFCSV -> 0
         IFOrc -> 1
+        IFParquet -> 2
         InventoryFormat' name -> (error . showText) $ "Unknown InventoryFormat: " <> original name
 
 -- | Represents the bounds of /known/ $InventoryFormat.
@@ -68,7 +75,7 @@ instance Enum InventoryFormat where
 --   This instance exists only for backward compatibility.
 instance Bounded InventoryFormat where
     minBound = IFCSV
-    maxBound = IFOrc
+    maxBound = IFParquet
 
 instance Hashable     InventoryFormat
 instance NFData       InventoryFormat

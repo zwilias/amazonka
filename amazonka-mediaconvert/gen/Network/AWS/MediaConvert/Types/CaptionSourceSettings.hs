@@ -24,9 +24,10 @@ import Network.AWS.MediaConvert.Types.DvbSubSourceSettings
 import Network.AWS.MediaConvert.Types.EmbeddedSourceSettings
 import Network.AWS.MediaConvert.Types.FileSourceSettings
 import Network.AWS.MediaConvert.Types.TeletextSourceSettings
+import Network.AWS.MediaConvert.Types.TrackSourceSettings
 import Network.AWS.Prelude
 
--- | Source settings (SourceSettings) contains the group of settings for captions in the input.
+-- | If your input captions are SCC, TTML, STL, SMI, SRT, or IMSC in an xml file, specify the URI of the input captions source file. If your input captions are IMSC in an IMF package, use TrackSourceSettings instead of FileSoureSettings.
 --
 -- /See:/ 'captionSourceSettings' smart constructor.
 data CaptionSourceSettings = CaptionSourceSettings'{_cssTeletextSourceSettings
@@ -40,6 +41,9 @@ data CaptionSourceSettings = CaptionSourceSettings'{_cssTeletextSourceSettings
                                                     _cssDvbSubSourceSettings ::
                                                     !(Maybe
                                                         DvbSubSourceSettings),
+                                                    _cssTrackSourceSettings ::
+                                                    !(Maybe
+                                                        TrackSourceSettings),
                                                     _cssAncillarySourceSettings
                                                     ::
                                                     !(Maybe
@@ -55,17 +59,19 @@ data CaptionSourceSettings = CaptionSourceSettings'{_cssTeletextSourceSettings
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'cssTeletextSourceSettings' - Undocumented member.
+-- * 'cssTeletextSourceSettings' - Settings specific to Teletext caption sources, including Page number.
 --
--- * 'cssSourceType' - Undocumented member.
+-- * 'cssSourceType' - Use Source (SourceType) to identify the format of your input captions.  The service cannot auto-detect caption format.
 --
--- * 'cssFileSourceSettings' - Undocumented member.
+-- * 'cssFileSourceSettings' - If your input captions are SCC, SMI, SRT, STL, TTML, or IMSC 1.1 in an xml file, specify the URI of the input caption source file. If your caption source is IMSC in an IMF package, use TrackSourceSettings instead of FileSoureSettings.
 --
--- * 'cssDvbSubSourceSettings' - Undocumented member.
+-- * 'cssDvbSubSourceSettings' - DVB Sub Source Settings
 --
--- * 'cssAncillarySourceSettings' - Undocumented member.
+-- * 'cssTrackSourceSettings' - Settings specific to caption sources that are specified by track number. Currently, this is only IMSC captions in an IMF package. If your caption source is IMSC 1.1 in a separate xml file, use FileSourceSettings instead of TrackSourceSettings.
 --
--- * 'cssEmbeddedSourceSettings' - Undocumented member.
+-- * 'cssAncillarySourceSettings' - Settings for ancillary captions source.
+--
+-- * 'cssEmbeddedSourceSettings' - Settings for embedded captions Source
 captionSourceSettings
     :: CaptionSourceSettings
 captionSourceSettings
@@ -74,30 +80,35 @@ captionSourceSettings
                            _cssSourceType = Nothing,
                            _cssFileSourceSettings = Nothing,
                            _cssDvbSubSourceSettings = Nothing,
+                           _cssTrackSourceSettings = Nothing,
                            _cssAncillarySourceSettings = Nothing,
                            _cssEmbeddedSourceSettings = Nothing}
 
--- | Undocumented member.
+-- | Settings specific to Teletext caption sources, including Page number.
 cssTeletextSourceSettings :: Lens' CaptionSourceSettings (Maybe TeletextSourceSettings)
 cssTeletextSourceSettings = lens _cssTeletextSourceSettings (\ s a -> s{_cssTeletextSourceSettings = a})
 
--- | Undocumented member.
+-- | Use Source (SourceType) to identify the format of your input captions.  The service cannot auto-detect caption format.
 cssSourceType :: Lens' CaptionSourceSettings (Maybe CaptionSourceType)
 cssSourceType = lens _cssSourceType (\ s a -> s{_cssSourceType = a})
 
--- | Undocumented member.
+-- | If your input captions are SCC, SMI, SRT, STL, TTML, or IMSC 1.1 in an xml file, specify the URI of the input caption source file. If your caption source is IMSC in an IMF package, use TrackSourceSettings instead of FileSoureSettings.
 cssFileSourceSettings :: Lens' CaptionSourceSettings (Maybe FileSourceSettings)
 cssFileSourceSettings = lens _cssFileSourceSettings (\ s a -> s{_cssFileSourceSettings = a})
 
--- | Undocumented member.
+-- | DVB Sub Source Settings
 cssDvbSubSourceSettings :: Lens' CaptionSourceSettings (Maybe DvbSubSourceSettings)
 cssDvbSubSourceSettings = lens _cssDvbSubSourceSettings (\ s a -> s{_cssDvbSubSourceSettings = a})
 
--- | Undocumented member.
+-- | Settings specific to caption sources that are specified by track number. Currently, this is only IMSC captions in an IMF package. If your caption source is IMSC 1.1 in a separate xml file, use FileSourceSettings instead of TrackSourceSettings.
+cssTrackSourceSettings :: Lens' CaptionSourceSettings (Maybe TrackSourceSettings)
+cssTrackSourceSettings = lens _cssTrackSourceSettings (\ s a -> s{_cssTrackSourceSettings = a})
+
+-- | Settings for ancillary captions source.
 cssAncillarySourceSettings :: Lens' CaptionSourceSettings (Maybe AncillarySourceSettings)
 cssAncillarySourceSettings = lens _cssAncillarySourceSettings (\ s a -> s{_cssAncillarySourceSettings = a})
 
--- | Undocumented member.
+-- | Settings for embedded captions Source
 cssEmbeddedSourceSettings :: Lens' CaptionSourceSettings (Maybe EmbeddedSourceSettings)
 cssEmbeddedSourceSettings = lens _cssEmbeddedSourceSettings (\ s a -> s{_cssEmbeddedSourceSettings = a})
 
@@ -110,6 +121,7 @@ instance FromJSON CaptionSourceSettings where
                      (x .:? "sourceType")
                      <*> (x .:? "fileSourceSettings")
                      <*> (x .:? "dvbSubSourceSettings")
+                     <*> (x .:? "trackSourceSettings")
                      <*> (x .:? "ancillarySourceSettings")
                      <*> (x .:? "embeddedSourceSettings"))
 
@@ -127,6 +139,8 @@ instance ToJSON CaptionSourceSettings where
                   ("fileSourceSettings" .=) <$> _cssFileSourceSettings,
                   ("dvbSubSourceSettings" .=) <$>
                     _cssDvbSubSourceSettings,
+                  ("trackSourceSettings" .=) <$>
+                    _cssTrackSourceSettings,
                   ("ancillarySourceSettings" .=) <$>
                     _cssAncillarySourceSettings,
                   ("embeddedSourceSettings" .=) <$>

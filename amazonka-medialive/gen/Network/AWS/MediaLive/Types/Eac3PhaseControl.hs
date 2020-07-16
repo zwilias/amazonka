@@ -27,7 +27,7 @@ module Network.AWS.MediaLive.Types.Eac3PhaseControl (
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | Placeholder documentation for Eac3PhaseControl
+-- | Eac3 Phase Control
 data Eac3PhaseControl = Eac3PhaseControl' (CI Text)
                           deriving (Eq, Ord, Read, Show, Data, Typeable,
                                     Generic)

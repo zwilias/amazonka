@@ -281,6 +281,11 @@ cloudWatchEvents
             = Just "throttling_exception"
           | has (hasCode "Throttling" . hasStatus 400) e =
             Just "throttling"
+          | has
+              (hasCode "ProvisionedThroughputExceededException" .
+                 hasStatus 400)
+              e
+            = Just "throughput_exceeded"
           | has (hasStatus 504) e = Just "gateway_timeout"
           | has
               (hasCode "RequestThrottledException" . hasStatus 400)
@@ -300,7 +305,7 @@ _PolicyLengthExceededException
   = _MatchServiceError cloudWatchEvents
       "PolicyLengthExceededException"
 
--- | The event pattern isn't valid.
+-- | The event pattern is not valid.
 --
 --
 _InvalidEventPatternException :: AsError a => Getting (First ServiceError) a ServiceError
@@ -308,7 +313,7 @@ _InvalidEventPatternException
   = _MatchServiceError cloudWatchEvents
       "InvalidEventPatternException"
 
--- | The specified state isn't a valid state for an event source.
+-- | The specified state is not a valid state for an event source.
 --
 --
 _InvalidStateException :: AsError a => Getting (First ServiceError) a ServiceError
@@ -316,7 +321,7 @@ _InvalidStateException
   = _MatchServiceError cloudWatchEvents
       "InvalidStateException"
 
--- | An entity that you specified doesn't exist.
+-- | An entity that you specified does not exist.
 --
 --
 _ResourceNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
@@ -324,7 +329,7 @@ _ResourceNotFoundException
   = _MatchServiceError cloudWatchEvents
       "ResourceNotFoundException"
 
--- | The resource that you're trying to create already exists.
+-- | The resource you are trying to create already exists.
 --
 --
 _ResourceAlreadyExistsException :: AsError a => Getting (First ServiceError) a ServiceError
@@ -340,7 +345,7 @@ _InternalException
   = _MatchServiceError cloudWatchEvents
       "InternalException"
 
--- | There is concurrent modification on a resource.
+-- | There is concurrent modification on a rule or target.
 --
 --
 _ConcurrentModificationException :: AsError a => Getting (First ServiceError) a ServiceError
@@ -348,7 +353,7 @@ _ConcurrentModificationException
   = _MatchServiceError cloudWatchEvents
       "ConcurrentModificationException"
 
--- | An AWS service created this rule on behalf of your account. That service manages it. If you see this error in response to @DeleteRule@ or @RemoveTargets@ , you can use the @Force@ parameter in those calls to delete the rule or remove targets from the rule. You can't modify these managed rules by using @DisableRule@ , @EnableRule@ , @PutTargets@ , @PutRule@ , @TagResource@ , or @UntagResource@ . 
+-- | This rule was created by an AWS service on behalf of your account. It is managed by that service. If you see this error in response to @DeleteRule@ or @RemoveTargets@ , you can use the @Force@ parameter in those calls to delete the rule or remove targets from the rule. You cannot modify these managed rules by using @DisableRule@ , @EnableRule@ , @PutTargets@ , @PutRule@ , @TagResource@ , or @UntagResource@ . 
 --
 --
 _ManagedRuleException :: AsError a => Getting (First ServiceError) a ServiceError
@@ -356,7 +361,7 @@ _ManagedRuleException
   = _MatchServiceError cloudWatchEvents
       "ManagedRuleException"
 
--- | You tried to create more resources than is allowed.
+-- | You tried to create more rules or add more targets to a rule than is allowed.
 --
 --
 _LimitExceededException :: AsError a => Getting (First ServiceError) a ServiceError

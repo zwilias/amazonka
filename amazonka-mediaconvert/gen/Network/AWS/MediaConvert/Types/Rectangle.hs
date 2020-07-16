@@ -23,43 +23,43 @@ import Network.AWS.Prelude
 -- | Use Rectangle to identify a specific area of the video frame.
 --
 -- /See:/ 'rectangle' smart constructor.
-data Rectangle = Rectangle'{_rHeight :: !(Maybe Int),
-                            _rWidth :: !(Maybe Int), _rX :: !(Maybe Int),
-                            _rY :: !(Maybe Int)}
+data Rectangle = Rectangle'{_rHeight :: !(Maybe Nat),
+                            _rWidth :: !(Maybe Nat), _rX :: !(Maybe Nat),
+                            _rY :: !(Maybe Nat)}
                    deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'Rectangle' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'rHeight' - Height of rectangle in pixels.
+-- * 'rHeight' - Height of rectangle in pixels. Specify only even numbers.
 --
--- * 'rWidth' - Width of rectangle in pixels.
+-- * 'rWidth' - Width of rectangle in pixels. Specify only even numbers.
 --
--- * 'rX' - The distance, in pixels, between the rectangle and the left edge of the video frame.
+-- * 'rX' - The distance, in pixels, between the rectangle and the left edge of the video frame. Specify only even numbers.
 --
--- * 'rY' - The distance, in pixels, between the rectangle and the top edge of the video frame.
+-- * 'rY' - The distance, in pixels, between the rectangle and the top edge of the video frame. Specify only even numbers.
 rectangle
     :: Rectangle
 rectangle
   = Rectangle'{_rHeight = Nothing, _rWidth = Nothing,
                _rX = Nothing, _rY = Nothing}
 
--- | Height of rectangle in pixels.
-rHeight :: Lens' Rectangle (Maybe Int)
-rHeight = lens _rHeight (\ s a -> s{_rHeight = a})
+-- | Height of rectangle in pixels. Specify only even numbers.
+rHeight :: Lens' Rectangle (Maybe Natural)
+rHeight = lens _rHeight (\ s a -> s{_rHeight = a}) . mapping _Nat
 
--- | Width of rectangle in pixels.
-rWidth :: Lens' Rectangle (Maybe Int)
-rWidth = lens _rWidth (\ s a -> s{_rWidth = a})
+-- | Width of rectangle in pixels. Specify only even numbers.
+rWidth :: Lens' Rectangle (Maybe Natural)
+rWidth = lens _rWidth (\ s a -> s{_rWidth = a}) . mapping _Nat
 
--- | The distance, in pixels, between the rectangle and the left edge of the video frame.
-rX :: Lens' Rectangle (Maybe Int)
-rX = lens _rX (\ s a -> s{_rX = a})
+-- | The distance, in pixels, between the rectangle and the left edge of the video frame. Specify only even numbers.
+rX :: Lens' Rectangle (Maybe Natural)
+rX = lens _rX (\ s a -> s{_rX = a}) . mapping _Nat
 
--- | The distance, in pixels, between the rectangle and the top edge of the video frame.
-rY :: Lens' Rectangle (Maybe Int)
-rY = lens _rY (\ s a -> s{_rY = a})
+-- | The distance, in pixels, between the rectangle and the top edge of the video frame. Specify only even numbers.
+rY :: Lens' Rectangle (Maybe Natural)
+rY = lens _rY (\ s a -> s{_rY = a}) . mapping _Nat
 
 instance FromJSON Rectangle where
         parseJSON

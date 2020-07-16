@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Promotes a Read Replica DB cluster to a standalone DB cluster.
+-- Promotes a read replica DB cluster to a standalone DB cluster.
 --
 --
 module Network.AWS.RDS.PromoteReadReplicaDBCluster
@@ -58,7 +58,7 @@ newtype PromoteReadReplicaDBCluster = PromoteReadReplicaDBCluster'{_prrdcDBClust
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'prrdcDBClusterIdentifier' - The identifier of the DB cluster Read Replica to promote. This parameter is not case-sensitive.  Constraints:     * Must match the identifier of an existing DBCluster Read Replica. Example: @my-cluster-replica1@ 
+-- * 'prrdcDBClusterIdentifier' - The identifier of the DB cluster read replica to promote. This parameter isn't case-sensitive.  Constraints:     * Must match the identifier of an existing DB cluster read replica. Example: @my-cluster-replica1@ 
 promoteReadReplicaDBCluster
     :: Text -- ^ 'prrdcDBClusterIdentifier'
     -> PromoteReadReplicaDBCluster
@@ -66,7 +66,7 @@ promoteReadReplicaDBCluster pDBClusterIdentifier_
   = PromoteReadReplicaDBCluster'{_prrdcDBClusterIdentifier
                                    = pDBClusterIdentifier_}
 
--- | The identifier of the DB cluster Read Replica to promote. This parameter is not case-sensitive.  Constraints:     * Must match the identifier of an existing DBCluster Read Replica. Example: @my-cluster-replica1@ 
+-- | The identifier of the DB cluster read replica to promote. This parameter isn't case-sensitive.  Constraints:     * Must match the identifier of an existing DB cluster read replica. Example: @my-cluster-replica1@ 
 prrdcDBClusterIdentifier :: Lens' PromoteReadReplicaDBCluster Text
 prrdcDBClusterIdentifier = lens _prrdcDBClusterIdentifier (\ s a -> s{_prrdcDBClusterIdentifier = a})
 

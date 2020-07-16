@@ -18,6 +18,8 @@ module Network.AWS.WorkDocs.Types
     -- * Errors
     , _FailedDependencyException
     , _TooManySubscriptionsException
+    , _InvalidCommentOperationException
+    , _RequestedEntityTooLargeException
     , _UnauthorizedResourceAccessException
     , _DocumentLockedForCommentsException
     , _DraftUploadOutOfSyncException
@@ -35,6 +37,7 @@ module Network.AWS.WorkDocs.Types
     , _CustomMetadataLimitExceededException
     , _IllegalUserStateException
     , _DeactivatingLastSystemUserException
+    , _ConflictingOperationException
     , _LimitExceededException
     , _InvalidPasswordException
     , _UnauthorizedOperationException
@@ -74,6 +77,9 @@ module Network.AWS.WorkDocs.Types
 
     -- * PrincipalType
     , PrincipalType (..)
+
+    -- * ResourceCollectionType
+    , ResourceCollectionType (..)
 
     -- * ResourceSortType
     , ResourceSortType (..)
@@ -118,6 +124,7 @@ module Network.AWS.WorkDocs.Types
     , Activity
     , activity
     , aResourceMetadata
+    , aIsIndirectActivity
     , aInitiator
     , aParticipants
     , aOriginalParent
@@ -257,6 +264,7 @@ module Network.AWS.WorkDocs.Types
     , shareResult
     , srStatus
     , srPrincipalId
+    , srInviteePrincipalId
     , srRole
     , srStatusMessage
     , srShareId
@@ -330,6 +338,7 @@ import Network.AWS.WorkDocs.Types.FolderContentType
 import Network.AWS.WorkDocs.Types.LocaleType
 import Network.AWS.WorkDocs.Types.OrderType
 import Network.AWS.WorkDocs.Types.PrincipalType
+import Network.AWS.WorkDocs.Types.ResourceCollectionType
 import Network.AWS.WorkDocs.Types.ResourceSortType
 import Network.AWS.WorkDocs.Types.ResourceStateType
 import Network.AWS.WorkDocs.Types.ResourceType
@@ -388,6 +397,11 @@ workDocs
             = Just "throttling_exception"
           | has (hasCode "Throttling" . hasStatus 400) e =
             Just "throttling"
+          | has
+              (hasCode "ProvisionedThroughputExceededException" .
+                 hasStatus 400)
+              e
+            = Just "throughput_exceeded"
           | has (hasStatus 504) e = Just "gateway_timeout"
           | has
               (hasCode "RequestThrottledException" . hasStatus 400)
@@ -416,6 +430,24 @@ _TooManySubscriptionsException
   = _MatchServiceError workDocs
       "TooManySubscriptionsException"
       . hasStatus 429
+
+-- | The requested operation is not allowed on the specified comment object.
+--
+--
+_InvalidCommentOperationException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidCommentOperationException
+  = _MatchServiceError workDocs
+      "InvalidCommentOperationException"
+      . hasStatus 409
+
+-- | The response is too large to return. The request must include a filter to reduce the size of the response.
+--
+--
+_RequestedEntityTooLargeException :: AsError a => Getting (First ServiceError) a ServiceError
+_RequestedEntityTooLargeException
+  = _MatchServiceError workDocs
+      "RequestedEntityTooLargeException"
+      . hasStatus 413
 
 -- | The caller does not have access to perform the action on the resource.
 --
@@ -568,6 +600,15 @@ _DeactivatingLastSystemUserException :: AsError a => Getting (First ServiceError
 _DeactivatingLastSystemUserException
   = _MatchServiceError workDocs
       "DeactivatingLastSystemUserException"
+      . hasStatus 409
+
+-- | Another operation is in progress on the resource that conflicts with the current operation.
+--
+--
+_ConflictingOperationException :: AsError a => Getting (First ServiceError) a ServiceError
+_ConflictingOperationException
+  = _MatchServiceError workDocs
+      "ConflictingOperationException"
       . hasStatus 409
 
 -- | The maximum of 100,000 folders under the parent folder has been exceeded.

@@ -20,6 +20,7 @@ module Network.AWS.Firehose.Types.CompressionFormat (
   CompressionFormat (
     ..
     , Gzip
+    , HadoopSnappy
     , Snappy
     , Uncompressed
     , Zip
@@ -36,6 +37,9 @@ data CompressionFormat = CompressionFormat' (CI Text)
 pattern Gzip :: CompressionFormat
 pattern Gzip = CompressionFormat' "GZIP"
 
+pattern HadoopSnappy :: CompressionFormat
+pattern HadoopSnappy = CompressionFormat' "HADOOP_SNAPPY"
+
 pattern Snappy :: CompressionFormat
 pattern Snappy = CompressionFormat' "Snappy"
 
@@ -47,6 +51,7 @@ pattern Zip = CompressionFormat' "ZIP"
 
 {-# COMPLETE
   Gzip,
+  HadoopSnappy,
   Snappy,
   Uncompressed,
   Zip,
@@ -65,15 +70,17 @@ instance ToText CompressionFormat where
 instance Enum CompressionFormat where
     toEnum i = case i of
         0 -> Gzip
-        1 -> Snappy
-        2 -> Uncompressed
-        3 -> Zip
+        1 -> HadoopSnappy
+        2 -> Snappy
+        3 -> Uncompressed
+        4 -> Zip
         _ -> (error . showText) $ "Unknown index for CompressionFormat: " <> toText i
     fromEnum x = case x of
         Gzip -> 0
-        Snappy -> 1
-        Uncompressed -> 2
-        Zip -> 3
+        HadoopSnappy -> 1
+        Snappy -> 2
+        Uncompressed -> 3
+        Zip -> 4
         CompressionFormat' name -> (error . showText) $ "Unknown CompressionFormat: " <> original name
 
 -- | Represents the bounds of /known/ $CompressionFormat.

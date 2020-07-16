@@ -40,6 +40,7 @@ module Network.AWS.Redshift.DescribeClusterSnapshots
     , dTagKeys
     , dClusterIdentifier
     , dSnapshotType
+    , dSortingEntities
     , dMarker
     , dMaxRecords
     , dEndTime
@@ -81,6 +82,9 @@ data DescribeClusterSnapshots = DescribeClusterSnapshots'{_dSnapshotIdentifier
                                                           !(Maybe Text),
                                                           _dSnapshotType ::
                                                           !(Maybe Text),
+                                                          _dSortingEntities ::
+                                                          !(Maybe
+                                                              [SnapshotSortingEntity]),
                                                           _dMarker ::
                                                           !(Maybe Text),
                                                           _dMaxRecords ::
@@ -100,15 +104,17 @@ data DescribeClusterSnapshots = DescribeClusterSnapshots'{_dSnapshotIdentifier
 --
 -- * 'dTagValues' - A tag value or values for which you want to return all matching cluster snapshots that are associated with the specified tag value or values. For example, suppose that you have snapshots that are tagged with values called @admin@ and @test@ . If you specify both of these tag values in the request, Amazon Redshift returns a response with the snapshots that have either or both of these tag values associated with them.
 --
--- * 'dClusterExists' - A value that indicates whether to return snapshots only for an existing cluster. Table-level restore can be performed only using a snapshot of an existing cluster, that is, a cluster that has not been deleted. If @ClusterExists@ is set to @true@ , @ClusterIdentifier@ is required.
+-- * 'dClusterExists' - A value that indicates whether to return snapshots only for an existing cluster. You can perform table-level restore only by using a snapshot of an existing cluster, that is, a cluster that has not been deleted. Values for this parameter work as follows:      * If @ClusterExists@ is set to @true@ , @ClusterIdentifier@ is required.     * If @ClusterExists@ is set to @false@ and @ClusterIdentifier@ isn't specified, all snapshots associated with deleted clusters (orphaned snapshots) are returned.      * If @ClusterExists@ is set to @false@ and @ClusterIdentifier@ is specified for a deleted cluster, snapshots associated with that cluster are returned.     * If @ClusterExists@ is set to @false@ and @ClusterIdentifier@ is specified for an existing cluster, no snapshots are returned. 
 --
 -- * 'dStartTime' - A value that requests only snapshots created at or after the specified time. The time value is specified in ISO 8601 format. For more information about ISO 8601, go to the <http://en.wikipedia.org/wiki/ISO_8601 ISO8601 Wikipedia page.>  Example: @2012-07-16T18:00:00Z@ 
 --
 -- * 'dTagKeys' - A tag key or keys for which you want to return all matching cluster snapshots that are associated with the specified key or keys. For example, suppose that you have snapshots that are tagged with keys called @owner@ and @environment@ . If you specify both of these tag keys in the request, Amazon Redshift returns a response with the snapshots that have either or both of these tag keys associated with them.
 --
--- * 'dClusterIdentifier' - The identifier of the cluster for which information about snapshots is requested.
+-- * 'dClusterIdentifier' - The identifier of the cluster which generated the requested snapshots.
 --
 -- * 'dSnapshotType' - The type of snapshots for which you are requesting information. By default, snapshots of all types are returned. Valid Values: @automated@ | @manual@ 
+--
+-- * 'dSortingEntities' - 
 --
 -- * 'dMarker' - An optional parameter that specifies the starting point to return a set of response records. When the results of a 'DescribeClusterSnapshots' request exceed the value specified in @MaxRecords@ , AWS returns a value in the @Marker@ field of the response. You can retrieve the next set of response records by providing the returned marker value in the @Marker@ parameter and retrying the request. 
 --
@@ -125,7 +131,8 @@ describeClusterSnapshots
                               _dTagValues = Nothing, _dClusterExists = Nothing,
                               _dStartTime = Nothing, _dTagKeys = Nothing,
                               _dClusterIdentifier = Nothing,
-                              _dSnapshotType = Nothing, _dMarker = Nothing,
+                              _dSnapshotType = Nothing,
+                              _dSortingEntities = Nothing, _dMarker = Nothing,
                               _dMaxRecords = Nothing, _dEndTime = Nothing,
                               _dOwnerAccount = Nothing}
 
@@ -137,7 +144,7 @@ dSnapshotIdentifier = lens _dSnapshotIdentifier (\ s a -> s{_dSnapshotIdentifier
 dTagValues :: Lens' DescribeClusterSnapshots [Text]
 dTagValues = lens _dTagValues (\ s a -> s{_dTagValues = a}) . _Default . _Coerce
 
--- | A value that indicates whether to return snapshots only for an existing cluster. Table-level restore can be performed only using a snapshot of an existing cluster, that is, a cluster that has not been deleted. If @ClusterExists@ is set to @true@ , @ClusterIdentifier@ is required.
+-- | A value that indicates whether to return snapshots only for an existing cluster. You can perform table-level restore only by using a snapshot of an existing cluster, that is, a cluster that has not been deleted. Values for this parameter work as follows:      * If @ClusterExists@ is set to @true@ , @ClusterIdentifier@ is required.     * If @ClusterExists@ is set to @false@ and @ClusterIdentifier@ isn't specified, all snapshots associated with deleted clusters (orphaned snapshots) are returned.      * If @ClusterExists@ is set to @false@ and @ClusterIdentifier@ is specified for a deleted cluster, snapshots associated with that cluster are returned.     * If @ClusterExists@ is set to @false@ and @ClusterIdentifier@ is specified for an existing cluster, no snapshots are returned. 
 dClusterExists :: Lens' DescribeClusterSnapshots (Maybe Bool)
 dClusterExists = lens _dClusterExists (\ s a -> s{_dClusterExists = a})
 
@@ -149,13 +156,17 @@ dStartTime = lens _dStartTime (\ s a -> s{_dStartTime = a}) . mapping _Time
 dTagKeys :: Lens' DescribeClusterSnapshots [Text]
 dTagKeys = lens _dTagKeys (\ s a -> s{_dTagKeys = a}) . _Default . _Coerce
 
--- | The identifier of the cluster for which information about snapshots is requested.
+-- | The identifier of the cluster which generated the requested snapshots.
 dClusterIdentifier :: Lens' DescribeClusterSnapshots (Maybe Text)
 dClusterIdentifier = lens _dClusterIdentifier (\ s a -> s{_dClusterIdentifier = a})
 
 -- | The type of snapshots for which you are requesting information. By default, snapshots of all types are returned. Valid Values: @automated@ | @manual@ 
 dSnapshotType :: Lens' DescribeClusterSnapshots (Maybe Text)
 dSnapshotType = lens _dSnapshotType (\ s a -> s{_dSnapshotType = a})
+
+-- | 
+dSortingEntities :: Lens' DescribeClusterSnapshots [SnapshotSortingEntity]
+dSortingEntities = lens _dSortingEntities (\ s a -> s{_dSortingEntities = a}) . _Default . _Coerce
 
 -- | An optional parameter that specifies the starting point to return a set of response records. When the results of a 'DescribeClusterSnapshots' request exceed the value specified in @MaxRecords@ , AWS returns a value in the @Marker@ field of the response. You can retrieve the next set of response records by providing the returned marker value in the @Marker@ parameter and retrying the request. 
 dMarker :: Lens' DescribeClusterSnapshots (Maybe Text)
@@ -218,6 +229,10 @@ instance ToQuery DescribeClusterSnapshots where
                  toQuery (toQueryList "TagKey" <$> _dTagKeys),
                "ClusterIdentifier" =: _dClusterIdentifier,
                "SnapshotType" =: _dSnapshotType,
+               "SortingEntities" =:
+                 toQuery
+                   (toQueryList "SnapshotSortingEntity" <$>
+                      _dSortingEntities),
                "Marker" =: _dMarker, "MaxRecords" =: _dMaxRecords,
                "EndTime" =: _dEndTime,
                "OwnerAccount" =: _dOwnerAccount]

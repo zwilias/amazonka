@@ -37,7 +37,7 @@ data StepConfig = StepConfig'{_scActionOnFailure ::
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'scActionOnFailure' - The action to take if the step fails.
+-- * 'scActionOnFailure' - The action to take when the cluster step fails. Possible values are TERMINATE_CLUSTER, CANCEL_AND_WAIT, and CONTINUE. TERMINATE_JOB_FLOW is provided for backward compatibility. We recommend using TERMINATE_CLUSTER instead.
 --
 -- * 'scName' - The name of the step.
 --
@@ -50,7 +50,7 @@ stepConfig pName_ pHadoopJARStep_
   = StepConfig'{_scActionOnFailure = Nothing,
                 _scName = pName_, _scHadoopJARStep = pHadoopJARStep_}
 
--- | The action to take if the step fails.
+-- | The action to take when the cluster step fails. Possible values are TERMINATE_CLUSTER, CANCEL_AND_WAIT, and CONTINUE. TERMINATE_JOB_FLOW is provided for backward compatibility. We recommend using TERMINATE_CLUSTER instead.
 scActionOnFailure :: Lens' StepConfig (Maybe ActionOnFailure)
 scActionOnFailure = lens _scActionOnFailure (\ s a -> s{_scActionOnFailure = a})
 

@@ -19,16 +19,18 @@ module Network.AWS.Snowball.Types.JobResource where
 
 import Network.AWS.Lens
 import Network.AWS.Prelude
+import Network.AWS.Snowball.Types.EC2AMIResource
 import Network.AWS.Snowball.Types.LambdaResource
 import Network.AWS.Snowball.Types.S3Resource
 
--- | Contains an array of @S3Resource@ objects. Each @S3Resource@ object represents an Amazon S3 bucket that your transferred data will be exported from or imported into.
+-- | Contains an array of AWS resource objects. Each object represents an Amazon S3 bucket, an AWS Lambda function, or an Amazon Machine Image (AMI) based on Amazon EC2 that is associated with a particular job.
 --
 --
 --
 -- /See:/ 'jobResource' smart constructor.
-data JobResource = JobResource'{_jrLambdaResources ::
-                                !(Maybe [LambdaResource]),
+data JobResource = JobResource'{_jrEC2AMIResources ::
+                                !(Maybe [EC2AMIResource]),
+                                _jrLambdaResources :: !(Maybe [LambdaResource]),
                                 _jrS3Resources :: !(Maybe [S3Resource])}
                      deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -36,14 +38,21 @@ data JobResource = JobResource'{_jrLambdaResources ::
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
+-- * 'jrEC2AMIResources' - The Amazon Machine Images (AMIs) associated with this job.
+--
 -- * 'jrLambdaResources' - The Python-language Lambda functions for this job.
 --
 -- * 'jrS3Resources' - An array of @S3Resource@ objects.
 jobResource
     :: JobResource
 jobResource
-  = JobResource'{_jrLambdaResources = Nothing,
+  = JobResource'{_jrEC2AMIResources = Nothing,
+                 _jrLambdaResources = Nothing,
                  _jrS3Resources = Nothing}
+
+-- | The Amazon Machine Images (AMIs) associated with this job.
+jrEC2AMIResources :: Lens' JobResource [EC2AMIResource]
+jrEC2AMIResources = lens _jrEC2AMIResources (\ s a -> s{_jrEC2AMIResources = a}) . _Default . _Coerce
 
 -- | The Python-language Lambda functions for this job.
 jrLambdaResources :: Lens' JobResource [LambdaResource]
@@ -58,8 +67,9 @@ instance FromJSON JobResource where
           = withObject "JobResource"
               (\ x ->
                  JobResource' <$>
-                   (x .:? "LambdaResources" .!= mempty) <*>
-                     (x .:? "S3Resources" .!= mempty))
+                   (x .:? "Ec2AmiResources" .!= mempty) <*>
+                     (x .:? "LambdaResources" .!= mempty)
+                     <*> (x .:? "S3Resources" .!= mempty))
 
 instance Hashable JobResource where
 
@@ -69,5 +79,6 @@ instance ToJSON JobResource where
         toJSON JobResource'{..}
           = object
               (catMaybes
-                 [("LambdaResources" .=) <$> _jrLambdaResources,
+                 [("Ec2AmiResources" .=) <$> _jrEC2AMIResources,
+                  ("LambdaResources" .=) <$> _jrLambdaResources,
                   ("S3Resources" .=) <$> _jrS3Resources])

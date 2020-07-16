@@ -33,7 +33,7 @@ module Network.AWS.MediaLive.Types.Ac3BitstreamMode (
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | Placeholder documentation for Ac3BitstreamMode
+-- | Ac3 Bitstream Mode
 data Ac3BitstreamMode = Ac3BitstreamMode' (CI Text)
                           deriving (Eq, Ord, Read, Show, Data, Typeable,
                                     Generic)

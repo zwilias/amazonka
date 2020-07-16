@@ -20,12 +20,12 @@ module Network.AWS.Pinpoint.Types.APNSSandboxChannelResponse where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | Apple Development Push Notification Service channel definition.
+-- | Provides information about the status and settings of the APNs (Apple Push Notification service) sandbox channel for an application.
+--
+--
 --
 -- /See:/ 'apnsSandboxChannelResponse' smart constructor.
-data APNSSandboxChannelResponse = APNSSandboxChannelResponse'{_ascPlatform
-                                                              :: !(Maybe Text),
-                                                              _ascLastModifiedDate
+data APNSSandboxChannelResponse = APNSSandboxChannelResponse'{_ascLastModifiedDate
                                                               :: !(Maybe Text),
                                                               _ascEnabled ::
                                                               !(Maybe Bool),
@@ -46,7 +46,9 @@ data APNSSandboxChannelResponse = APNSSandboxChannelResponse'{_ascPlatform
                                                               _ascLastModifiedBy
                                                               :: !(Maybe Text),
                                                               _ascHasCredential
-                                                              :: !(Maybe Bool)}
+                                                              :: !(Maybe Bool),
+                                                              _ascPlatform ::
+                                                              !Text}
                                     deriving (Eq, Read, Show, Data, Typeable,
                                               Generic)
 
@@ -54,34 +56,35 @@ data APNSSandboxChannelResponse = APNSSandboxChannelResponse'{_ascPlatform
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'ascPlatform' - The platform type. Will be APNS_SANDBOX.
+-- * 'ascLastModifiedDate' - The date and time when the APNs sandbox channel was last modified.
 --
--- * 'ascLastModifiedDate' - Last date this was updated
+-- * 'ascEnabled' - Specifies whether the APNs sandbox channel is enabled for the application.
 --
--- * 'ascEnabled' - If the channel is enabled for sending messages.
+-- * 'ascHasTokenKey' - Specifies whether the APNs sandbox channel is configured to communicate with APNs by using APNs tokens. To provide an authentication key for APNs tokens, set the TokenKey property of the channel.
 --
--- * 'ascHasTokenKey' - Indicates whether the channel is configured with a key for APNs token authentication. Provide a token key by setting the TokenKey attribute.
+-- * 'ascDefaultAuthenticationMethod' - The default authentication method that Amazon Pinpoint uses to authenticate with the APNs sandbox environment for this channel, key or certificate.
 --
--- * 'ascDefaultAuthenticationMethod' - The default authentication method used for APNs.
+-- * 'ascIsArchived' - Specifies whether the APNs sandbox channel is archived.
 --
--- * 'ascIsArchived' - Is this channel archived
+-- * 'ascApplicationId' - The unique identifier for the application that the APNs sandbox channel applies to.
 --
--- * 'ascApplicationId' - The ID of the application to which the channel applies.
+-- * 'ascVersion' - The current version of the APNs sandbox channel.
 --
--- * 'ascVersion' - Version of channel
+-- * 'ascId' - (Deprecated) An identifier for the APNs sandbox channel. This property is retained only for backward compatibility.
 --
--- * 'ascId' - Channel ID. Not used, only for backwards compatibility.
+-- * 'ascCreationDate' - The date and time when the APNs sandbox channel was enabled.
 --
--- * 'ascCreationDate' - When was this segment created
+-- * 'ascLastModifiedBy' - The user who last modified the APNs sandbox channel.
 --
--- * 'ascLastModifiedBy' - Who last updated this entry
+-- * 'ascHasCredential' - (Not used) This property is retained only for backward compatibility.
 --
--- * 'ascHasCredential' - Indicates whether the channel is configured with APNs credentials. Amazon Pinpoint uses your credentials to authenticate push notifications with APNs. To use APNs token authentication, set the BundleId, TeamId, TokenKey, and TokenKeyId attributes. To use certificate authentication, set the Certificate and PrivateKey attributes.
+-- * 'ascPlatform' - The type of messaging or notification platform for the channel. For the APNs sandbox channel, this value is APNS_SANDBOX.
 apnsSandboxChannelResponse
-    :: APNSSandboxChannelResponse
-apnsSandboxChannelResponse
-  = APNSSandboxChannelResponse'{_ascPlatform = Nothing,
-                                _ascLastModifiedDate = Nothing,
+    :: Text -- ^ 'ascPlatform'
+    -> APNSSandboxChannelResponse
+apnsSandboxChannelResponse pPlatform_
+  = APNSSandboxChannelResponse'{_ascLastModifiedDate =
+                                  Nothing,
                                 _ascEnabled = Nothing,
                                 _ascHasTokenKey = Nothing,
                                 _ascDefaultAuthenticationMethod = Nothing,
@@ -90,64 +93,64 @@ apnsSandboxChannelResponse
                                 _ascVersion = Nothing, _ascId = Nothing,
                                 _ascCreationDate = Nothing,
                                 _ascLastModifiedBy = Nothing,
-                                _ascHasCredential = Nothing}
+                                _ascHasCredential = Nothing,
+                                _ascPlatform = pPlatform_}
 
--- | The platform type. Will be APNS_SANDBOX.
-ascPlatform :: Lens' APNSSandboxChannelResponse (Maybe Text)
-ascPlatform = lens _ascPlatform (\ s a -> s{_ascPlatform = a})
-
--- | Last date this was updated
+-- | The date and time when the APNs sandbox channel was last modified.
 ascLastModifiedDate :: Lens' APNSSandboxChannelResponse (Maybe Text)
 ascLastModifiedDate = lens _ascLastModifiedDate (\ s a -> s{_ascLastModifiedDate = a})
 
--- | If the channel is enabled for sending messages.
+-- | Specifies whether the APNs sandbox channel is enabled for the application.
 ascEnabled :: Lens' APNSSandboxChannelResponse (Maybe Bool)
 ascEnabled = lens _ascEnabled (\ s a -> s{_ascEnabled = a})
 
--- | Indicates whether the channel is configured with a key for APNs token authentication. Provide a token key by setting the TokenKey attribute.
+-- | Specifies whether the APNs sandbox channel is configured to communicate with APNs by using APNs tokens. To provide an authentication key for APNs tokens, set the TokenKey property of the channel.
 ascHasTokenKey :: Lens' APNSSandboxChannelResponse (Maybe Bool)
 ascHasTokenKey = lens _ascHasTokenKey (\ s a -> s{_ascHasTokenKey = a})
 
--- | The default authentication method used for APNs.
+-- | The default authentication method that Amazon Pinpoint uses to authenticate with the APNs sandbox environment for this channel, key or certificate.
 ascDefaultAuthenticationMethod :: Lens' APNSSandboxChannelResponse (Maybe Text)
 ascDefaultAuthenticationMethod = lens _ascDefaultAuthenticationMethod (\ s a -> s{_ascDefaultAuthenticationMethod = a})
 
--- | Is this channel archived
+-- | Specifies whether the APNs sandbox channel is archived.
 ascIsArchived :: Lens' APNSSandboxChannelResponse (Maybe Bool)
 ascIsArchived = lens _ascIsArchived (\ s a -> s{_ascIsArchived = a})
 
--- | The ID of the application to which the channel applies.
+-- | The unique identifier for the application that the APNs sandbox channel applies to.
 ascApplicationId :: Lens' APNSSandboxChannelResponse (Maybe Text)
 ascApplicationId = lens _ascApplicationId (\ s a -> s{_ascApplicationId = a})
 
--- | Version of channel
+-- | The current version of the APNs sandbox channel.
 ascVersion :: Lens' APNSSandboxChannelResponse (Maybe Int)
 ascVersion = lens _ascVersion (\ s a -> s{_ascVersion = a})
 
--- | Channel ID. Not used, only for backwards compatibility.
+-- | (Deprecated) An identifier for the APNs sandbox channel. This property is retained only for backward compatibility.
 ascId :: Lens' APNSSandboxChannelResponse (Maybe Text)
 ascId = lens _ascId (\ s a -> s{_ascId = a})
 
--- | When was this segment created
+-- | The date and time when the APNs sandbox channel was enabled.
 ascCreationDate :: Lens' APNSSandboxChannelResponse (Maybe Text)
 ascCreationDate = lens _ascCreationDate (\ s a -> s{_ascCreationDate = a})
 
--- | Who last updated this entry
+-- | The user who last modified the APNs sandbox channel.
 ascLastModifiedBy :: Lens' APNSSandboxChannelResponse (Maybe Text)
 ascLastModifiedBy = lens _ascLastModifiedBy (\ s a -> s{_ascLastModifiedBy = a})
 
--- | Indicates whether the channel is configured with APNs credentials. Amazon Pinpoint uses your credentials to authenticate push notifications with APNs. To use APNs token authentication, set the BundleId, TeamId, TokenKey, and TokenKeyId attributes. To use certificate authentication, set the Certificate and PrivateKey attributes.
+-- | (Not used) This property is retained only for backward compatibility.
 ascHasCredential :: Lens' APNSSandboxChannelResponse (Maybe Bool)
 ascHasCredential = lens _ascHasCredential (\ s a -> s{_ascHasCredential = a})
+
+-- | The type of messaging or notification platform for the channel. For the APNs sandbox channel, this value is APNS_SANDBOX.
+ascPlatform :: Lens' APNSSandboxChannelResponse Text
+ascPlatform = lens _ascPlatform (\ s a -> s{_ascPlatform = a})
 
 instance FromJSON APNSSandboxChannelResponse where
         parseJSON
           = withObject "APNSSandboxChannelResponse"
               (\ x ->
                  APNSSandboxChannelResponse' <$>
-                   (x .:? "Platform") <*> (x .:? "LastModifiedDate") <*>
-                     (x .:? "Enabled")
-                     <*> (x .:? "HasTokenKey")
+                   (x .:? "LastModifiedDate") <*> (x .:? "Enabled") <*>
+                     (x .:? "HasTokenKey")
                      <*> (x .:? "DefaultAuthenticationMethod")
                      <*> (x .:? "IsArchived")
                      <*> (x .:? "ApplicationId")
@@ -155,7 +158,8 @@ instance FromJSON APNSSandboxChannelResponse where
                      <*> (x .:? "Id")
                      <*> (x .:? "CreationDate")
                      <*> (x .:? "LastModifiedBy")
-                     <*> (x .:? "HasCredential"))
+                     <*> (x .:? "HasCredential")
+                     <*> (x .: "Platform"))
 
 instance Hashable APNSSandboxChannelResponse where
 

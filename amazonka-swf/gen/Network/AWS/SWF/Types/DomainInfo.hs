@@ -26,15 +26,17 @@ import Network.AWS.SWF.Types.RegistrationStatus
 --
 --
 -- /See:/ 'domainInfo' smart constructor.
-data DomainInfo = DomainInfo'{_diDescription ::
+data DomainInfo = DomainInfo'{_diArn ::
                               !(Maybe Text),
-                              _diName :: !Text,
+                              _diDescription :: !(Maybe Text), _diName :: !Text,
                               _diStatus :: !RegistrationStatus}
                     deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DomainInfo' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'diArn' - The ARN of the domain.
 --
 -- * 'diDescription' - The description of the domain provided through 'RegisterDomain' .
 --
@@ -46,8 +48,13 @@ domainInfo
     -> RegistrationStatus -- ^ 'diStatus'
     -> DomainInfo
 domainInfo pName_ pStatus_
-  = DomainInfo'{_diDescription = Nothing,
-                _diName = pName_, _diStatus = pStatus_}
+  = DomainInfo'{_diArn = Nothing,
+                _diDescription = Nothing, _diName = pName_,
+                _diStatus = pStatus_}
+
+-- | The ARN of the domain.
+diArn :: Lens' DomainInfo (Maybe Text)
+diArn = lens _diArn (\ s a -> s{_diArn = a})
 
 -- | The description of the domain provided through 'RegisterDomain' .
 diDescription :: Lens' DomainInfo (Maybe Text)
@@ -66,8 +73,9 @@ instance FromJSON DomainInfo where
           = withObject "DomainInfo"
               (\ x ->
                  DomainInfo' <$>
-                   (x .:? "description") <*> (x .: "name") <*>
-                     (x .: "status"))
+                   (x .:? "arn") <*> (x .:? "description") <*>
+                     (x .: "name")
+                     <*> (x .: "status"))
 
 instance Hashable DomainInfo where
 

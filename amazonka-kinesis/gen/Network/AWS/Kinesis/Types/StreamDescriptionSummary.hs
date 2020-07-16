@@ -34,6 +34,8 @@ data StreamDescriptionSummary = StreamDescriptionSummary'{_sdsEncryptionType
                                                               EncryptionType),
                                                           _sdsKeyId ::
                                                           !(Maybe Text),
+                                                          _sdsConsumerCount ::
+                                                          !(Maybe Nat),
                                                           _sdsStreamName ::
                                                           !Text,
                                                           _sdsStreamARN ::
@@ -58,6 +60,8 @@ data StreamDescriptionSummary = StreamDescriptionSummary'{_sdsEncryptionType
 -- * 'sdsEncryptionType' - The encryption type used. This value is one of the following:     * @KMS@      * @NONE@ 
 --
 -- * 'sdsKeyId' - The GUID for the customer-managed AWS KMS key to use for encryption. This value can be a globally unique identifier, a fully specified ARN to either an alias or a key, or an alias name prefixed by "alias/".You can also use a master key owned by Kinesis Data Streams by specifying the alias @aws/kinesis@ .     * Key ARN example: @arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012@      * Alias ARN example: @arn:aws:kms:us-east-1:123456789012:alias/MyAliasName@      * Globally unique key ID example: @12345678-1234-1234-1234-123456789012@      * Alias name example: @alias/MyAliasName@      * Master key owned by Kinesis Data Streams: @alias/aws/kinesis@ 
+--
+-- * 'sdsConsumerCount' - The number of enhanced fan-out consumers registered with the stream.
 --
 -- * 'sdsStreamName' - The name of the stream being described.
 --
@@ -85,7 +89,7 @@ streamDescriptionSummary pStreamName_ pStreamARN_
   pStreamCreationTimestamp_ pOpenShardCount_
   = StreamDescriptionSummary'{_sdsEncryptionType =
                                 Nothing,
-                              _sdsKeyId = Nothing,
+                              _sdsKeyId = Nothing, _sdsConsumerCount = Nothing,
                               _sdsStreamName = pStreamName_,
                               _sdsStreamARN = pStreamARN_,
                               _sdsStreamStatus = pStreamStatus_,
@@ -103,6 +107,10 @@ sdsEncryptionType = lens _sdsEncryptionType (\ s a -> s{_sdsEncryptionType = a})
 -- | The GUID for the customer-managed AWS KMS key to use for encryption. This value can be a globally unique identifier, a fully specified ARN to either an alias or a key, or an alias name prefixed by "alias/".You can also use a master key owned by Kinesis Data Streams by specifying the alias @aws/kinesis@ .     * Key ARN example: @arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012@      * Alias ARN example: @arn:aws:kms:us-east-1:123456789012:alias/MyAliasName@      * Globally unique key ID example: @12345678-1234-1234-1234-123456789012@      * Alias name example: @alias/MyAliasName@      * Master key owned by Kinesis Data Streams: @alias/aws/kinesis@ 
 sdsKeyId :: Lens' StreamDescriptionSummary (Maybe Text)
 sdsKeyId = lens _sdsKeyId (\ s a -> s{_sdsKeyId = a})
+
+-- | The number of enhanced fan-out consumers registered with the stream.
+sdsConsumerCount :: Lens' StreamDescriptionSummary (Maybe Natural)
+sdsConsumerCount = lens _sdsConsumerCount (\ s a -> s{_sdsConsumerCount = a}) . mapping _Nat
 
 -- | The name of the stream being described.
 sdsStreamName :: Lens' StreamDescriptionSummary Text
@@ -138,7 +146,8 @@ instance FromJSON StreamDescriptionSummary where
               (\ x ->
                  StreamDescriptionSummary' <$>
                    (x .:? "EncryptionType") <*> (x .:? "KeyId") <*>
-                     (x .: "StreamName")
+                     (x .:? "ConsumerCount")
+                     <*> (x .: "StreamName")
                      <*> (x .: "StreamARN")
                      <*> (x .: "StreamStatus")
                      <*> (x .: "RetentionPeriodHours")

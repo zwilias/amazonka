@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Retrieves a multiple function definitions from the Data Catalog.
+-- Retrieves multiple function definitions from the Data Catalog.
 --
 --
 --
@@ -31,8 +31,8 @@ module Network.AWS.Glue.GetUserDefinedFunctions
     -- * Request Lenses
     , gudfCatalogId
     , gudfNextToken
-    , gudfMaxResults
     , gudfDatabaseName
+    , gudfMaxResults
     , gudfPattern
 
     -- * Destructuring the Response
@@ -57,10 +57,10 @@ data GetUserDefinedFunctions = GetUserDefinedFunctions'{_gudfCatalogId
                                                         :: !(Maybe Text),
                                                         _gudfNextToken ::
                                                         !(Maybe Text),
+                                                        _gudfDatabaseName ::
+                                                        !(Maybe Text),
                                                         _gudfMaxResults ::
                                                         !(Maybe Nat),
-                                                        _gudfDatabaseName ::
-                                                        !Text,
                                                         _gudfPattern :: !Text}
                                  deriving (Eq, Read, Show, Data, Typeable,
                                            Generic)
@@ -69,27 +69,26 @@ data GetUserDefinedFunctions = GetUserDefinedFunctions'{_gudfCatalogId
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'gudfCatalogId' - The ID of the Data Catalog where the functions to be retrieved are located. If none is supplied, the AWS account ID is used by default.
+-- * 'gudfCatalogId' - The ID of the Data Catalog where the functions to be retrieved are located. If none is provided, the AWS account ID is used by default.
 --
 -- * 'gudfNextToken' - A continuation token, if this is a continuation call.
 --
--- * 'gudfMaxResults' - The maximum number of functions to return in one response.
---
 -- * 'gudfDatabaseName' - The name of the catalog database where the functions are located.
+--
+-- * 'gudfMaxResults' - The maximum number of functions to return in one response.
 --
 -- * 'gudfPattern' - An optional function-name pattern string that filters the function definitions returned.
 getUserDefinedFunctions
-    :: Text -- ^ 'gudfDatabaseName'
-    -> Text -- ^ 'gudfPattern'
+    :: Text -- ^ 'gudfPattern'
     -> GetUserDefinedFunctions
-getUserDefinedFunctions pDatabaseName_ pPattern_
+getUserDefinedFunctions pPattern_
   = GetUserDefinedFunctions'{_gudfCatalogId = Nothing,
                              _gudfNextToken = Nothing,
+                             _gudfDatabaseName = Nothing,
                              _gudfMaxResults = Nothing,
-                             _gudfDatabaseName = pDatabaseName_,
                              _gudfPattern = pPattern_}
 
--- | The ID of the Data Catalog where the functions to be retrieved are located. If none is supplied, the AWS account ID is used by default.
+-- | The ID of the Data Catalog where the functions to be retrieved are located. If none is provided, the AWS account ID is used by default.
 gudfCatalogId :: Lens' GetUserDefinedFunctions (Maybe Text)
 gudfCatalogId = lens _gudfCatalogId (\ s a -> s{_gudfCatalogId = a})
 
@@ -97,13 +96,13 @@ gudfCatalogId = lens _gudfCatalogId (\ s a -> s{_gudfCatalogId = a})
 gudfNextToken :: Lens' GetUserDefinedFunctions (Maybe Text)
 gudfNextToken = lens _gudfNextToken (\ s a -> s{_gudfNextToken = a})
 
+-- | The name of the catalog database where the functions are located.
+gudfDatabaseName :: Lens' GetUserDefinedFunctions (Maybe Text)
+gudfDatabaseName = lens _gudfDatabaseName (\ s a -> s{_gudfDatabaseName = a})
+
 -- | The maximum number of functions to return in one response.
 gudfMaxResults :: Lens' GetUserDefinedFunctions (Maybe Natural)
 gudfMaxResults = lens _gudfMaxResults (\ s a -> s{_gudfMaxResults = a}) . mapping _Nat
-
--- | The name of the catalog database where the functions are located.
-gudfDatabaseName :: Lens' GetUserDefinedFunctions Text
-gudfDatabaseName = lens _gudfDatabaseName (\ s a -> s{_gudfDatabaseName = a})
 
 -- | An optional function-name pattern string that filters the function definitions returned.
 gudfPattern :: Lens' GetUserDefinedFunctions Text
@@ -147,8 +146,8 @@ instance ToJSON GetUserDefinedFunctions where
               (catMaybes
                  [("CatalogId" .=) <$> _gudfCatalogId,
                   ("NextToken" .=) <$> _gudfNextToken,
+                  ("DatabaseName" .=) <$> _gudfDatabaseName,
                   ("MaxResults" .=) <$> _gudfMaxResults,
-                  Just ("DatabaseName" .= _gudfDatabaseName),
                   Just ("Pattern" .= _gudfPattern)])
 
 instance ToPath GetUserDefinedFunctions where

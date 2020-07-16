@@ -31,6 +31,7 @@ module Network.AWS.Glue.GetConnections
     -- * Request Lenses
     , gcsCatalogId
     , gcsNextToken
+    , gcsHidePassword
     , gcsFilter
     , gcsMaxResults
 
@@ -55,6 +56,7 @@ import Network.AWS.Response
 data GetConnections = GetConnections'{_gcsCatalogId
                                       :: !(Maybe Text),
                                       _gcsNextToken :: !(Maybe Text),
+                                      _gcsHidePassword :: !(Maybe Bool),
                                       _gcsFilter ::
                                       !(Maybe GetConnectionsFilter),
                                       _gcsMaxResults :: !(Maybe Nat)}
@@ -64,21 +66,23 @@ data GetConnections = GetConnections'{_gcsCatalogId
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'gcsCatalogId' - The ID of the Data Catalog in which the connections reside. If none is supplied, the AWS account ID is used by default.
+-- * 'gcsCatalogId' - The ID of the Data Catalog in which the connections reside. If none is provided, the AWS account ID is used by default.
 --
 -- * 'gcsNextToken' - A continuation token, if this is a continuation call.
 --
--- * 'gcsFilter' - A filter that controls which connections will be returned.
+-- * 'gcsHidePassword' - Allows you to retrieve the connection metadata without returning the password. For instance, the AWS Glue console uses this flag to retrieve the connection, and does not display the password. Set this parameter when the caller might not have permission to use the AWS KMS key to decrypt the password, but it does have permission to access the rest of the connection properties.
+--
+-- * 'gcsFilter' - A filter that controls which connections are returned.
 --
 -- * 'gcsMaxResults' - The maximum number of connections to return in one response.
 getConnections
     :: GetConnections
 getConnections
   = GetConnections'{_gcsCatalogId = Nothing,
-                    _gcsNextToken = Nothing, _gcsFilter = Nothing,
-                    _gcsMaxResults = Nothing}
+                    _gcsNextToken = Nothing, _gcsHidePassword = Nothing,
+                    _gcsFilter = Nothing, _gcsMaxResults = Nothing}
 
--- | The ID of the Data Catalog in which the connections reside. If none is supplied, the AWS account ID is used by default.
+-- | The ID of the Data Catalog in which the connections reside. If none is provided, the AWS account ID is used by default.
 gcsCatalogId :: Lens' GetConnections (Maybe Text)
 gcsCatalogId = lens _gcsCatalogId (\ s a -> s{_gcsCatalogId = a})
 
@@ -86,7 +90,11 @@ gcsCatalogId = lens _gcsCatalogId (\ s a -> s{_gcsCatalogId = a})
 gcsNextToken :: Lens' GetConnections (Maybe Text)
 gcsNextToken = lens _gcsNextToken (\ s a -> s{_gcsNextToken = a})
 
--- | A filter that controls which connections will be returned.
+-- | Allows you to retrieve the connection metadata without returning the password. For instance, the AWS Glue console uses this flag to retrieve the connection, and does not display the password. Set this parameter when the caller might not have permission to use the AWS KMS key to decrypt the password, but it does have permission to access the rest of the connection properties.
+gcsHidePassword :: Lens' GetConnections (Maybe Bool)
+gcsHidePassword = lens _gcsHidePassword (\ s a -> s{_gcsHidePassword = a})
+
+-- | A filter that controls which connections are returned.
 gcsFilter :: Lens' GetConnections (Maybe GetConnectionsFilter)
 gcsFilter = lens _gcsFilter (\ s a -> s{_gcsFilter = a})
 
@@ -132,6 +140,7 @@ instance ToJSON GetConnections where
               (catMaybes
                  [("CatalogId" .=) <$> _gcsCatalogId,
                   ("NextToken" .=) <$> _gcsNextToken,
+                  ("HidePassword" .=) <$> _gcsHidePassword,
                   ("Filter" .=) <$> _gcsFilter,
                   ("MaxResults" .=) <$> _gcsMaxResults])
 

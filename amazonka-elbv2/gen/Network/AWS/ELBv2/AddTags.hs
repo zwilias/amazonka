@@ -59,7 +59,7 @@ data AddTags = AddTags'{_atResourceARNs :: ![Text],
 --
 -- * 'atResourceARNs' - The Amazon Resource Name (ARN) of the resource.
 --
--- * 'atTags' - The tags. Each resource can have a maximum of 10 tags.
+-- * 'atTags' - The tags.
 addTags
     :: NonEmpty Tag -- ^ 'atTags'
     -> AddTags
@@ -71,7 +71,7 @@ addTags pTags_
 atResourceARNs :: Lens' AddTags [Text]
 atResourceARNs = lens _atResourceARNs (\ s a -> s{_atResourceARNs = a}) . _Coerce
 
--- | The tags. Each resource can have a maximum of 10 tags.
+-- | The tags.
 atTags :: Lens' AddTags (NonEmpty Tag)
 atTags = lens _atTags (\ s a -> s{_atTags = a}) . _List1
 

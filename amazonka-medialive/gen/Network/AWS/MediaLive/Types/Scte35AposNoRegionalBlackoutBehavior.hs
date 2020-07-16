@@ -27,7 +27,7 @@ module Network.AWS.MediaLive.Types.Scte35AposNoRegionalBlackoutBehavior (
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | Placeholder documentation for Scte35AposNoRegionalBlackoutBehavior
+-- | Scte35 Apos No Regional Blackout Behavior
 data Scte35AposNoRegionalBlackoutBehavior = Scte35AposNoRegionalBlackoutBehavior' (CI
                                                                                      Text)
                                               deriving (Eq, Ord, Read, Show,

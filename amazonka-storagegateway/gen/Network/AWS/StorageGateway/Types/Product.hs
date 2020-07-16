@@ -17,6 +17,8 @@
 -- Portability : non-portable (GHC extensions)
 --
 module Network.AWS.StorageGateway.Types.Product (
+    module Network.AWS.StorageGateway.Types.AutomaticTapeCreationPolicyInfo,
+    module Network.AWS.StorageGateway.Types.AutomaticTapeCreationRule,
     module Network.AWS.StorageGateway.Types.CachediSCSIVolume,
     module Network.AWS.StorageGateway.Types.ChapInfo,
     module Network.AWS.StorageGateway.Types.DeviceiSCSIAttributes,
@@ -26,6 +28,7 @@ module Network.AWS.StorageGateway.Types.Product (
     module Network.AWS.StorageGateway.Types.NFSFileShareDefaults,
     module Network.AWS.StorageGateway.Types.NFSFileShareInfo,
     module Network.AWS.StorageGateway.Types.NetworkInterface,
+    module Network.AWS.StorageGateway.Types.SMBFileShareInfo,
     module Network.AWS.StorageGateway.Types.StorediSCSIVolume,
     module Network.AWS.StorageGateway.Types.Tag,
     module Network.AWS.StorageGateway.Types.Tape,
@@ -40,6 +43,8 @@ module Network.AWS.StorageGateway.Types.Product (
 
 import Network.AWS.Lens
 import Network.AWS.Prelude
+import Network.AWS.StorageGateway.Types.AutomaticTapeCreationPolicyInfo
+import Network.AWS.StorageGateway.Types.AutomaticTapeCreationRule
 import Network.AWS.StorageGateway.Types.CachediSCSIVolume
 import Network.AWS.StorageGateway.Types.ChapInfo
 import Network.AWS.StorageGateway.Types.DeviceiSCSIAttributes
@@ -49,6 +54,7 @@ import Network.AWS.StorageGateway.Types.GatewayInfo
 import Network.AWS.StorageGateway.Types.NFSFileShareDefaults
 import Network.AWS.StorageGateway.Types.NFSFileShareInfo
 import Network.AWS.StorageGateway.Types.NetworkInterface
+import Network.AWS.StorageGateway.Types.SMBFileShareInfo
 import Network.AWS.StorageGateway.Types.StorediSCSIVolume
 import Network.AWS.StorageGateway.Types.Tag
 import Network.AWS.StorageGateway.Types.Tape

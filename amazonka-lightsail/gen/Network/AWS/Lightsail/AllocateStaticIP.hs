@@ -114,7 +114,7 @@ data AllocateStaticIPResponse = AllocateStaticIPResponse'{_asirsOperations
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'asirsOperations' - An array of key-value pairs containing information about the static IP address you allocated.
+-- * 'asirsOperations' - An array of objects that describe the result of the action, such as the status of the request, the time stamp of the request, and the resources affected by the request.
 --
 -- * 'asirsResponseStatus' - -- | The response status code.
 allocateStaticIPResponse
@@ -125,7 +125,7 @@ allocateStaticIPResponse pResponseStatus_
                                 Nothing,
                               _asirsResponseStatus = pResponseStatus_}
 
--- | An array of key-value pairs containing information about the static IP address you allocated.
+-- | An array of objects that describe the result of the action, such as the status of the request, the time stamp of the request, and the resources affected by the request.
 asirsOperations :: Lens' AllocateStaticIPResponse [Operation]
 asirsOperations = lens _asirsOperations (\ s a -> s{_asirsOperations = a}) . _Default . _Coerce
 

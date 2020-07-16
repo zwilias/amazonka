@@ -19,33 +19,33 @@
 module Network.AWS.MediaLive.Types.AacProfile (
   AacProfile (
     ..
-    , HEV1
-    , HEV2
-    , LC
+    , APHEV1
+    , APHEV2
+    , APLC
     )
   ) where
 
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | Placeholder documentation for AacProfile
+-- | Aac Profile
 data AacProfile = AacProfile' (CI Text)
                     deriving (Eq, Ord, Read, Show, Data, Typeable,
                               Generic)
 
-pattern HEV1 :: AacProfile
-pattern HEV1 = AacProfile' "HEV1"
+pattern APHEV1 :: AacProfile
+pattern APHEV1 = AacProfile' "HEV1"
 
-pattern HEV2 :: AacProfile
-pattern HEV2 = AacProfile' "HEV2"
+pattern APHEV2 :: AacProfile
+pattern APHEV2 = AacProfile' "HEV2"
 
-pattern LC :: AacProfile
-pattern LC = AacProfile' "LC"
+pattern APLC :: AacProfile
+pattern APLC = AacProfile' "LC"
 
 {-# COMPLETE
-  HEV1,
-  HEV2,
-  LC,
+  APHEV1,
+  APHEV2,
+  APLC,
   AacProfile' #-}
 
 instance FromText AacProfile where
@@ -60,22 +60,22 @@ instance ToText AacProfile where
 --   fromEnum is a partial function, and will error on values unknown at generation time.
 instance Enum AacProfile where
     toEnum i = case i of
-        0 -> HEV1
-        1 -> HEV2
-        2 -> LC
+        0 -> APHEV1
+        1 -> APHEV2
+        2 -> APLC
         _ -> (error . showText) $ "Unknown index for AacProfile: " <> toText i
     fromEnum x = case x of
-        HEV1 -> 0
-        HEV2 -> 1
-        LC -> 2
+        APHEV1 -> 0
+        APHEV2 -> 1
+        APLC -> 2
         AacProfile' name -> (error . showText) $ "Unknown AacProfile: " <> original name
 
 -- | Represents the bounds of /known/ $AacProfile.
 --   AWS may have added more since the source was generated.
 --   This instance exists only for backward compatibility.
 instance Bounded AacProfile where
-    minBound = HEV1
-    maxBound = LC
+    minBound = APHEV1
+    maxBound = APLC
 
 instance Hashable     AacProfile
 instance NFData       AacProfile

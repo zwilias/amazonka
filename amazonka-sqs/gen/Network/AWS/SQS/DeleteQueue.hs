@@ -25,7 +25,7 @@
 --
 -- When you delete a queue, the deletion process takes up to 60 seconds. Requests you send involving that queue during the 60 seconds might succeed. For example, a @'SendMessage' @ request might succeed, but after 60 seconds the queue and the message you sent no longer exist.
 --
--- When you delete a queue, you must wait at least 60 seconds before creating a queue with the same name. 
+-- When you delete a queue, you must wait at least 60 seconds before creating a queue with the same name.
 --
 module Network.AWS.SQS.DeleteQueue
     (
@@ -60,14 +60,14 @@ newtype DeleteQueue = DeleteQueue'{_dqQueueURL ::
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dqQueueURL' - The URL of the Amazon SQS queue to delete. Queue URLs are case-sensitive.
+-- * 'dqQueueURL' - The URL of the Amazon SQS queue to delete. Queue URLs and names are case-sensitive.
 deleteQueue
     :: Text -- ^ 'dqQueueURL'
     -> DeleteQueue
 deleteQueue pQueueURL_
   = DeleteQueue'{_dqQueueURL = pQueueURL_}
 
--- | The URL of the Amazon SQS queue to delete. Queue URLs are case-sensitive.
+-- | The URL of the Amazon SQS queue to delete. Queue URLs and names are case-sensitive.
 dqQueueURL :: Lens' DeleteQueue Text
 dqQueueURL = lens _dqQueueURL (\ s a -> s{_dqQueueURL = a})
 

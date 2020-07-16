@@ -19,8 +19,8 @@
 module Network.AWS.MediaConvert.Types.Mpeg2Syntax (
   Mpeg2Syntax (
     ..
-    , MSD10
-    , MSDefault
+    , D10
+    , Default
     )
   ) where
 
@@ -32,15 +32,15 @@ data Mpeg2Syntax = Mpeg2Syntax' (CI Text)
                      deriving (Eq, Ord, Read, Show, Data, Typeable,
                                Generic)
 
-pattern MSD10 :: Mpeg2Syntax
-pattern MSD10 = Mpeg2Syntax' "D_10"
+pattern D10 :: Mpeg2Syntax
+pattern D10 = Mpeg2Syntax' "D_10"
 
-pattern MSDefault :: Mpeg2Syntax
-pattern MSDefault = Mpeg2Syntax' "DEFAULT"
+pattern Default :: Mpeg2Syntax
+pattern Default = Mpeg2Syntax' "DEFAULT"
 
 {-# COMPLETE
-  MSD10,
-  MSDefault,
+  D10,
+  Default,
   Mpeg2Syntax' #-}
 
 instance FromText Mpeg2Syntax where
@@ -55,20 +55,20 @@ instance ToText Mpeg2Syntax where
 --   fromEnum is a partial function, and will error on values unknown at generation time.
 instance Enum Mpeg2Syntax where
     toEnum i = case i of
-        0 -> MSD10
-        1 -> MSDefault
+        0 -> D10
+        1 -> Default
         _ -> (error . showText) $ "Unknown index for Mpeg2Syntax: " <> toText i
     fromEnum x = case x of
-        MSD10 -> 0
-        MSDefault -> 1
+        D10 -> 0
+        Default -> 1
         Mpeg2Syntax' name -> (error . showText) $ "Unknown Mpeg2Syntax: " <> original name
 
 -- | Represents the bounds of /known/ $Mpeg2Syntax.
 --   AWS may have added more since the source was generated.
 --   This instance exists only for backward compatibility.
 instance Bounded Mpeg2Syntax where
-    minBound = MSD10
-    maxBound = MSDefault
+    minBound = D10
+    maxBound = Default
 
 instance Hashable     Mpeg2Syntax
 instance NFData       Mpeg2Syntax

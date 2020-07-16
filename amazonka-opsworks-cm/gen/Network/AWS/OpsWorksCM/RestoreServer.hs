@@ -21,6 +21,8 @@
 -- Restores a backup to a server that is in a @CONNECTION_LOST@ , @HEALTHY@ , @RUNNING@ , @UNHEALTHY@ , or @TERMINATED@ state. When you run RestoreServer, the server's EC2 instance is deleted, and a new EC2 instance is configured. RestoreServer maintains the existing server endpoint, so configuration management of the server's client devices (nodes) should continue to work. 
 --
 --
+-- Restoring from a backup is performed by creating a new EC2 instance. If restoration is successful, and the server is in a @HEALTHY@ state, AWS OpsWorks CM switches traffic over to the new instance. After restoration is finished, the old EC2 instance is maintained in a @Running@ or @Stopped@ state, but is eventually terminated.
+--
 -- This operation is asynchronous. 
 --
 -- An @InvalidStateException@ is thrown when the server is not in a valid state. A @ResourceNotFoundException@ is thrown when the server does not exist. A @ValidationException@ is raised when parameters of the request are not valid. 
@@ -64,7 +66,7 @@ data RestoreServer = RestoreServer'{_rsKeyPair ::
 --
 -- * 'rsKeyPair' - The name of the key pair to set on the new EC2 instance. This can be helpful if the administrator no longer has the SSH key. 
 --
--- * 'rsInstanceType' - The type of the instance to create. Valid values must be specified in the following format: @^([cm][34]|t2).*@ For example, @m4.large@ . Valid values are @t2.medium@ , @m4.large@ , and @m4.2xlarge@ . If you do not specify this parameter, RestoreServer uses the instance type from the specified backup. 
+-- * 'rsInstanceType' - The type of instance to restore. Valid values must be specified in the following format: @^([cm][34]|t2).*@ For example, @m5.large@ . Valid values are @m5.large@ , @r5.xlarge@ , and @r5.2xlarge@ . If you do not specify this parameter, RestoreServer uses the instance type from the specified backup. 
 --
 -- * 'rsBackupId' - The ID of the backup that you want to use to restore a server. 
 --
@@ -82,7 +84,7 @@ restoreServer pBackupId_ pServerName_
 rsKeyPair :: Lens' RestoreServer (Maybe Text)
 rsKeyPair = lens _rsKeyPair (\ s a -> s{_rsKeyPair = a})
 
--- | The type of the instance to create. Valid values must be specified in the following format: @^([cm][34]|t2).*@ For example, @m4.large@ . Valid values are @t2.medium@ , @m4.large@ , and @m4.2xlarge@ . If you do not specify this parameter, RestoreServer uses the instance type from the specified backup. 
+-- | The type of instance to restore. Valid values must be specified in the following format: @^([cm][34]|t2).*@ For example, @m5.large@ . Valid values are @m5.large@ , @r5.xlarge@ , and @r5.2xlarge@ . If you do not specify this parameter, RestoreServer uses the instance type from the specified backup. 
 rsInstanceType :: Lens' RestoreServer (Maybe Text)
 rsInstanceType = lens _rsInstanceType (\ s a -> s{_rsInstanceType = a})
 

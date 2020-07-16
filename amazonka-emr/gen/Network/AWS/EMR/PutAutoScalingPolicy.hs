@@ -35,6 +35,7 @@ module Network.AWS.EMR.PutAutoScalingPolicy
     , putAutoScalingPolicyResponse
     , PutAutoScalingPolicyResponse
     -- * Response Lenses
+    , pasprsClusterARN
     , pasprsClusterId
     , pasprsAutoScalingPolicy
     , pasprsInstanceGroupId
@@ -96,7 +97,8 @@ instance AWSRequest PutAutoScalingPolicy where
           = receiveJSON
               (\ s h x ->
                  PutAutoScalingPolicyResponse' <$>
-                   (x .?> "ClusterId") <*> (x .?> "AutoScalingPolicy")
+                   (x .?> "ClusterArn") <*> (x .?> "ClusterId") <*>
+                     (x .?> "AutoScalingPolicy")
                      <*> (x .?> "InstanceGroupId")
                      <*> (pure (fromEnum s)))
 
@@ -130,7 +132,10 @@ instance ToQuery PutAutoScalingPolicy where
         toQuery = const mempty
 
 -- | /See:/ 'putAutoScalingPolicyResponse' smart constructor.
-data PutAutoScalingPolicyResponse = PutAutoScalingPolicyResponse'{_pasprsClusterId
+data PutAutoScalingPolicyResponse = PutAutoScalingPolicyResponse'{_pasprsClusterARN
+                                                                  ::
+                                                                  !(Maybe Text),
+                                                                  _pasprsClusterId
                                                                   ::
                                                                   !(Maybe Text),
                                                                   _pasprsAutoScalingPolicy
@@ -149,6 +154,8 @@ data PutAutoScalingPolicyResponse = PutAutoScalingPolicyResponse'{_pasprsCluster
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
+-- * 'pasprsClusterARN' - The Amazon Resource Name of the cluster.
+--
 -- * 'pasprsClusterId' - Specifies the ID of a cluster. The instance group to which the automatic scaling policy is applied is within this cluster.
 --
 -- * 'pasprsAutoScalingPolicy' - The automatic scaling policy definition.
@@ -160,11 +167,16 @@ putAutoScalingPolicyResponse
     :: Int -- ^ 'pasprsResponseStatus'
     -> PutAutoScalingPolicyResponse
 putAutoScalingPolicyResponse pResponseStatus_
-  = PutAutoScalingPolicyResponse'{_pasprsClusterId =
+  = PutAutoScalingPolicyResponse'{_pasprsClusterARN =
                                     Nothing,
+                                  _pasprsClusterId = Nothing,
                                   _pasprsAutoScalingPolicy = Nothing,
                                   _pasprsInstanceGroupId = Nothing,
                                   _pasprsResponseStatus = pResponseStatus_}
+
+-- | The Amazon Resource Name of the cluster.
+pasprsClusterARN :: Lens' PutAutoScalingPolicyResponse (Maybe Text)
+pasprsClusterARN = lens _pasprsClusterARN (\ s a -> s{_pasprsClusterARN = a})
 
 -- | Specifies the ID of a cluster. The instance group to which the automatic scaling policy is applied is within this cluster.
 pasprsClusterId :: Lens' PutAutoScalingPolicyResponse (Maybe Text)

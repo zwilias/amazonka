@@ -22,12 +22,14 @@ import Network.AWS.MediaConvert.Types.AacSettings
 import Network.AWS.MediaConvert.Types.Ac3Settings
 import Network.AWS.MediaConvert.Types.AiffSettings
 import Network.AWS.MediaConvert.Types.AudioCodec
+import Network.AWS.MediaConvert.Types.Eac3AtmosSettings
 import Network.AWS.MediaConvert.Types.Eac3Settings
 import Network.AWS.MediaConvert.Types.Mp2Settings
+import Network.AWS.MediaConvert.Types.Mp3Settings
 import Network.AWS.MediaConvert.Types.WavSettings
 import Network.AWS.Prelude
 
--- | Audio codec settings (CodecSettings) under (AudioDescriptions) contains the group of settings related to audio encoding. The settings in this group vary depending on the value you choose for Audio codec (Codec). For each codec enum you choose, define the corresponding settings object. The following lists the codec enum, settings object pairs. * AAC, AacSettings * MP2, Mp2Settings * WAV, WavSettings * AIFF, AiffSettings * AC3, Ac3Settings * EAC3, Eac3Settings
+-- | Audio codec settings (CodecSettings) under (AudioDescriptions) contains the group of settings related to audio encoding. The settings in this group vary depending on the value that you choose for Audio codec (Codec). For each codec enum that you choose, define the corresponding settings object. The following lists the codec enum, settings object pairs. * AAC, AacSettings * MP2, Mp2Settings * MP3, Mp3Settings * WAV, WavSettings * AIFF, AiffSettings * AC3, Ac3Settings * EAC3, Eac3Settings * EAC3_ATMOS, Eac3AtmosSettings
 --
 -- /See:/ 'audioCodecSettings' smart constructor.
 data AudioCodecSettings = AudioCodecSettings'{_acsAiffSettings
@@ -39,6 +41,10 @@ data AudioCodecSettings = AudioCodecSettings'{_acsAiffSettings
                                               !(Maybe Mp2Settings),
                                               _acsWavSettings ::
                                               !(Maybe WavSettings),
+                                              _acsEac3AtmosSettings ::
+                                              !(Maybe Eac3AtmosSettings),
+                                              _acsMp3Settings ::
+                                              !(Maybe Mp3Settings),
                                               _acsAacSettings ::
                                               !(Maybe AacSettings),
                                               _acsEac3Settings ::
@@ -49,53 +55,66 @@ data AudioCodecSettings = AudioCodecSettings'{_acsAiffSettings
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'acsAiffSettings' - Undocumented member.
+-- * 'acsAiffSettings' - Required when you set (Codec) under (AudioDescriptions)>(CodecSettings) to the value AIFF.
 --
--- * 'acsCodec' - Undocumented member.
+-- * 'acsCodec' - Type of Audio codec.
 --
--- * 'acsAc3Settings' - Undocumented member.
+-- * 'acsAc3Settings' - Required when you set (Codec) under (AudioDescriptions)>(CodecSettings) to the value AC3.
 --
--- * 'acsMp2Settings' - Undocumented member.
+-- * 'acsMp2Settings' - Required when you set (Codec) under (AudioDescriptions)>(CodecSettings) to the value MP2.
 --
--- * 'acsWavSettings' - Undocumented member.
+-- * 'acsWavSettings' - Required when you set (Codec) under (AudioDescriptions)>(CodecSettings) to the value WAV.
 --
--- * 'acsAacSettings' - Undocumented member.
+-- * 'acsEac3AtmosSettings' - Required when you set (Codec) under (AudioDescriptions)>(CodecSettings) to the value EAC3_ATMOS.
 --
--- * 'acsEac3Settings' - Undocumented member.
+-- * 'acsMp3Settings' - Required when you set Codec, under AudioDescriptions>CodecSettings, to the value MP3.
+--
+-- * 'acsAacSettings' - Required when you set (Codec) under (AudioDescriptions)>(CodecSettings) to the value AAC. The service accepts one of two mutually exclusive groups of AAC settings--VBR and CBR. To select one of these modes, set the value of Bitrate control mode (rateControlMode) to "VBR" or "CBR".  In VBR mode, you control the audio quality with the setting VBR quality (vbrQuality). In CBR mode, you use the setting Bitrate (bitrate). Defaults and valid values depend on the rate control mode.
+--
+-- * 'acsEac3Settings' - Required when you set (Codec) under (AudioDescriptions)>(CodecSettings) to the value EAC3.
 audioCodecSettings
     :: AudioCodecSettings
 audioCodecSettings
   = AudioCodecSettings'{_acsAiffSettings = Nothing,
                         _acsCodec = Nothing, _acsAc3Settings = Nothing,
                         _acsMp2Settings = Nothing, _acsWavSettings = Nothing,
-                        _acsAacSettings = Nothing,
+                        _acsEac3AtmosSettings = Nothing,
+                        _acsMp3Settings = Nothing, _acsAacSettings = Nothing,
                         _acsEac3Settings = Nothing}
 
--- | Undocumented member.
+-- | Required when you set (Codec) under (AudioDescriptions)>(CodecSettings) to the value AIFF.
 acsAiffSettings :: Lens' AudioCodecSettings (Maybe AiffSettings)
 acsAiffSettings = lens _acsAiffSettings (\ s a -> s{_acsAiffSettings = a})
 
--- | Undocumented member.
+-- | Type of Audio codec.
 acsCodec :: Lens' AudioCodecSettings (Maybe AudioCodec)
 acsCodec = lens _acsCodec (\ s a -> s{_acsCodec = a})
 
--- | Undocumented member.
+-- | Required when you set (Codec) under (AudioDescriptions)>(CodecSettings) to the value AC3.
 acsAc3Settings :: Lens' AudioCodecSettings (Maybe Ac3Settings)
 acsAc3Settings = lens _acsAc3Settings (\ s a -> s{_acsAc3Settings = a})
 
--- | Undocumented member.
+-- | Required when you set (Codec) under (AudioDescriptions)>(CodecSettings) to the value MP2.
 acsMp2Settings :: Lens' AudioCodecSettings (Maybe Mp2Settings)
 acsMp2Settings = lens _acsMp2Settings (\ s a -> s{_acsMp2Settings = a})
 
--- | Undocumented member.
+-- | Required when you set (Codec) under (AudioDescriptions)>(CodecSettings) to the value WAV.
 acsWavSettings :: Lens' AudioCodecSettings (Maybe WavSettings)
 acsWavSettings = lens _acsWavSettings (\ s a -> s{_acsWavSettings = a})
 
--- | Undocumented member.
+-- | Required when you set (Codec) under (AudioDescriptions)>(CodecSettings) to the value EAC3_ATMOS.
+acsEac3AtmosSettings :: Lens' AudioCodecSettings (Maybe Eac3AtmosSettings)
+acsEac3AtmosSettings = lens _acsEac3AtmosSettings (\ s a -> s{_acsEac3AtmosSettings = a})
+
+-- | Required when you set Codec, under AudioDescriptions>CodecSettings, to the value MP3.
+acsMp3Settings :: Lens' AudioCodecSettings (Maybe Mp3Settings)
+acsMp3Settings = lens _acsMp3Settings (\ s a -> s{_acsMp3Settings = a})
+
+-- | Required when you set (Codec) under (AudioDescriptions)>(CodecSettings) to the value AAC. The service accepts one of two mutually exclusive groups of AAC settings--VBR and CBR. To select one of these modes, set the value of Bitrate control mode (rateControlMode) to "VBR" or "CBR".  In VBR mode, you control the audio quality with the setting VBR quality (vbrQuality). In CBR mode, you use the setting Bitrate (bitrate). Defaults and valid values depend on the rate control mode.
 acsAacSettings :: Lens' AudioCodecSettings (Maybe AacSettings)
 acsAacSettings = lens _acsAacSettings (\ s a -> s{_acsAacSettings = a})
 
--- | Undocumented member.
+-- | Required when you set (Codec) under (AudioDescriptions)>(CodecSettings) to the value EAC3.
 acsEac3Settings :: Lens' AudioCodecSettings (Maybe Eac3Settings)
 acsEac3Settings = lens _acsEac3Settings (\ s a -> s{_acsEac3Settings = a})
 
@@ -108,6 +127,8 @@ instance FromJSON AudioCodecSettings where
                      (x .:? "ac3Settings")
                      <*> (x .:? "mp2Settings")
                      <*> (x .:? "wavSettings")
+                     <*> (x .:? "eac3AtmosSettings")
+                     <*> (x .:? "mp3Settings")
                      <*> (x .:? "aacSettings")
                      <*> (x .:? "eac3Settings"))
 
@@ -124,5 +145,7 @@ instance ToJSON AudioCodecSettings where
                   ("ac3Settings" .=) <$> _acsAc3Settings,
                   ("mp2Settings" .=) <$> _acsMp2Settings,
                   ("wavSettings" .=) <$> _acsWavSettings,
+                  ("eac3AtmosSettings" .=) <$> _acsEac3AtmosSettings,
+                  ("mp3Settings" .=) <$> _acsMp3Settings,
                   ("aacSettings" .=) <$> _acsAacSettings,
                   ("eac3Settings" .=) <$> _acsEac3Settings])

@@ -16,6 +16,8 @@
 module Network.AWS.IAM.Waiters where
 
 import Network.AWS.IAM.GetInstanceProfile
+import Network.AWS.IAM.GetPolicy
+import Network.AWS.IAM.GetRole
 import Network.AWS.IAM.GetUser
 import Network.AWS.IAM.Types
 import Network.AWS.Lens
@@ -36,6 +38,24 @@ userExists :: Wait GetUser
 userExists
   = Wait{_waitName = "UserExists", _waitAttempts = 20,
          _waitDelay = 1,
+         _waitAcceptors =
+           [matchStatus 200 AcceptSuccess,
+            matchError "NoSuchEntity" AcceptRetry]}
+
+-- | Polls 'Network.AWS.IAM.GetRole' every 1 seconds until a successful state is reached. An error is returned after 20 failed checks.
+roleExists :: Wait GetRole
+roleExists
+  = Wait{_waitName = "RoleExists", _waitAttempts = 20,
+         _waitDelay = 1,
+         _waitAcceptors =
+           [matchStatus 200 AcceptSuccess,
+            matchError "NoSuchEntity" AcceptRetry]}
+
+-- | Polls 'Network.AWS.IAM.GetPolicy' every 1 seconds until a successful state is reached. An error is returned after 20 failed checks.
+policyExists :: Wait GetPolicy
+policyExists
+  = Wait{_waitName = "PolicyExists",
+         _waitAttempts = 20, _waitDelay = 1,
          _waitAcceptors =
            [matchStatus 200 AcceptSuccess,
             matchError "NoSuchEntity" AcceptRetry]}

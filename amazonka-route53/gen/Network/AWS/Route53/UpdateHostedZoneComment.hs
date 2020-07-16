@@ -130,7 +130,7 @@ data UpdateHostedZoneCommentResponse = UpdateHostedZoneCommentResponse'{_uhzcrsR
 --
 -- * 'uhzcrsResponseStatus' - -- | The response status code.
 --
--- * 'uhzcrsHostedZone' - Undocumented member.
+-- * 'uhzcrsHostedZone' - A complex type that contains the response to the @UpdateHostedZoneComment@ request.
 updateHostedZoneCommentResponse
     :: Int -- ^ 'uhzcrsResponseStatus'
     -> HostedZone -- ^ 'uhzcrsHostedZone'
@@ -145,7 +145,7 @@ updateHostedZoneCommentResponse pResponseStatus_
 uhzcrsResponseStatus :: Lens' UpdateHostedZoneCommentResponse Int
 uhzcrsResponseStatus = lens _uhzcrsResponseStatus (\ s a -> s{_uhzcrsResponseStatus = a})
 
--- | Undocumented member.
+-- | A complex type that contains the response to the @UpdateHostedZoneComment@ request.
 uhzcrsHostedZone :: Lens' UpdateHostedZoneCommentResponse HostedZone
 uhzcrsHostedZone = lens _uhzcrsHostedZone (\ s a -> s{_uhzcrsHostedZone = a})
 

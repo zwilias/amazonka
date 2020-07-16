@@ -21,8 +21,12 @@ module Network.AWS.S3.Types.InventoryOptionalField (
     ..
     , FieldETag
     , FieldEncryptionStatus
+    , FieldIntelligentTieringAccessTier
     , FieldIsMultipartUploaded
     , FieldLastModifiedDate
+    , FieldObjectLockLegalHoldStatus
+    , FieldObjectLockMode
+    , FieldObjectLockRetainUntilDate
     , FieldReplicationStatus
     , FieldSize
     , FieldStorageClass
@@ -44,11 +48,23 @@ pattern FieldETag = InventoryOptionalField' "ETag"
 pattern FieldEncryptionStatus :: InventoryOptionalField
 pattern FieldEncryptionStatus = InventoryOptionalField' "EncryptionStatus"
 
+pattern FieldIntelligentTieringAccessTier :: InventoryOptionalField
+pattern FieldIntelligentTieringAccessTier = InventoryOptionalField' "IntelligentTieringAccessTier"
+
 pattern FieldIsMultipartUploaded :: InventoryOptionalField
 pattern FieldIsMultipartUploaded = InventoryOptionalField' "IsMultipartUploaded"
 
 pattern FieldLastModifiedDate :: InventoryOptionalField
 pattern FieldLastModifiedDate = InventoryOptionalField' "LastModifiedDate"
+
+pattern FieldObjectLockLegalHoldStatus :: InventoryOptionalField
+pattern FieldObjectLockLegalHoldStatus = InventoryOptionalField' "ObjectLockLegalHoldStatus"
+
+pattern FieldObjectLockMode :: InventoryOptionalField
+pattern FieldObjectLockMode = InventoryOptionalField' "ObjectLockMode"
+
+pattern FieldObjectLockRetainUntilDate :: InventoryOptionalField
+pattern FieldObjectLockRetainUntilDate = InventoryOptionalField' "ObjectLockRetainUntilDate"
 
 pattern FieldReplicationStatus :: InventoryOptionalField
 pattern FieldReplicationStatus = InventoryOptionalField' "ReplicationStatus"
@@ -62,8 +78,12 @@ pattern FieldStorageClass = InventoryOptionalField' "StorageClass"
 {-# COMPLETE
   FieldETag,
   FieldEncryptionStatus,
+  FieldIntelligentTieringAccessTier,
   FieldIsMultipartUploaded,
   FieldLastModifiedDate,
+  FieldObjectLockLegalHoldStatus,
+  FieldObjectLockMode,
+  FieldObjectLockRetainUntilDate,
   FieldReplicationStatus,
   FieldSize,
   FieldStorageClass,
@@ -83,20 +103,28 @@ instance Enum InventoryOptionalField where
     toEnum i = case i of
         0 -> FieldETag
         1 -> FieldEncryptionStatus
-        2 -> FieldIsMultipartUploaded
-        3 -> FieldLastModifiedDate
-        4 -> FieldReplicationStatus
-        5 -> FieldSize
-        6 -> FieldStorageClass
+        2 -> FieldIntelligentTieringAccessTier
+        3 -> FieldIsMultipartUploaded
+        4 -> FieldLastModifiedDate
+        5 -> FieldObjectLockLegalHoldStatus
+        6 -> FieldObjectLockMode
+        7 -> FieldObjectLockRetainUntilDate
+        8 -> FieldReplicationStatus
+        9 -> FieldSize
+        10 -> FieldStorageClass
         _ -> (error . showText) $ "Unknown index for InventoryOptionalField: " <> toText i
     fromEnum x = case x of
         FieldETag -> 0
         FieldEncryptionStatus -> 1
-        FieldIsMultipartUploaded -> 2
-        FieldLastModifiedDate -> 3
-        FieldReplicationStatus -> 4
-        FieldSize -> 5
-        FieldStorageClass -> 6
+        FieldIntelligentTieringAccessTier -> 2
+        FieldIsMultipartUploaded -> 3
+        FieldLastModifiedDate -> 4
+        FieldObjectLockLegalHoldStatus -> 5
+        FieldObjectLockMode -> 6
+        FieldObjectLockRetainUntilDate -> 7
+        FieldReplicationStatus -> 8
+        FieldSize -> 9
+        FieldStorageClass -> 10
         InventoryOptionalField' name -> (error . showText) $ "Unknown InventoryOptionalField: " <> original name
 
 -- | Represents the bounds of /known/ $InventoryOptionalField.

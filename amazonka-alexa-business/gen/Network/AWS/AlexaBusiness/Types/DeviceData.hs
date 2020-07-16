@@ -29,8 +29,11 @@ import Network.AWS.Prelude
 -- /See:/ 'deviceData' smart constructor.
 data DeviceData = DeviceData'{_ddDeviceStatus ::
                               !(Maybe DeviceStatus),
+                              _ddNetworkProfileName :: !(Maybe Text),
                               _ddDeviceStatusInfo :: !(Maybe DeviceStatusInfo),
+                              _ddCreatedTime :: !(Maybe POSIX),
                               _ddDeviceARN :: !(Maybe Text),
+                              _ddNetworkProfileARN :: !(Maybe Text),
                               _ddMACAddress :: !(Maybe Text),
                               _ddDeviceName :: !(Maybe Text),
                               _ddRoomARN :: !(Maybe Text),
@@ -46,9 +49,15 @@ data DeviceData = DeviceData'{_ddDeviceStatus ::
 --
 -- * 'ddDeviceStatus' - The status of a device.
 --
+-- * 'ddNetworkProfileName' - The name of the network profile associated with a device.
+--
 -- * 'ddDeviceStatusInfo' - Detailed information about a device's status.
 --
+-- * 'ddCreatedTime' - The time (in epoch) when the device data was created.
+--
 -- * 'ddDeviceARN' - The ARN of a device.
+--
+-- * 'ddNetworkProfileARN' - The ARN of the network profile associated with a device.
 --
 -- * 'ddMACAddress' - The MAC address of a device.
 --
@@ -67,10 +76,12 @@ deviceData
     :: DeviceData
 deviceData
   = DeviceData'{_ddDeviceStatus = Nothing,
+                _ddNetworkProfileName = Nothing,
                 _ddDeviceStatusInfo = Nothing,
-                _ddDeviceARN = Nothing, _ddMACAddress = Nothing,
-                _ddDeviceName = Nothing, _ddRoomARN = Nothing,
-                _ddSoftwareVersion = Nothing,
+                _ddCreatedTime = Nothing, _ddDeviceARN = Nothing,
+                _ddNetworkProfileARN = Nothing,
+                _ddMACAddress = Nothing, _ddDeviceName = Nothing,
+                _ddRoomARN = Nothing, _ddSoftwareVersion = Nothing,
                 _ddDeviceType = Nothing, _ddRoomName = Nothing,
                 _ddDeviceSerialNumber = Nothing}
 
@@ -78,13 +89,25 @@ deviceData
 ddDeviceStatus :: Lens' DeviceData (Maybe DeviceStatus)
 ddDeviceStatus = lens _ddDeviceStatus (\ s a -> s{_ddDeviceStatus = a})
 
+-- | The name of the network profile associated with a device.
+ddNetworkProfileName :: Lens' DeviceData (Maybe Text)
+ddNetworkProfileName = lens _ddNetworkProfileName (\ s a -> s{_ddNetworkProfileName = a})
+
 -- | Detailed information about a device's status.
 ddDeviceStatusInfo :: Lens' DeviceData (Maybe DeviceStatusInfo)
 ddDeviceStatusInfo = lens _ddDeviceStatusInfo (\ s a -> s{_ddDeviceStatusInfo = a})
 
+-- | The time (in epoch) when the device data was created.
+ddCreatedTime :: Lens' DeviceData (Maybe UTCTime)
+ddCreatedTime = lens _ddCreatedTime (\ s a -> s{_ddCreatedTime = a}) . mapping _Time
+
 -- | The ARN of a device.
 ddDeviceARN :: Lens' DeviceData (Maybe Text)
 ddDeviceARN = lens _ddDeviceARN (\ s a -> s{_ddDeviceARN = a})
+
+-- | The ARN of the network profile associated with a device.
+ddNetworkProfileARN :: Lens' DeviceData (Maybe Text)
+ddNetworkProfileARN = lens _ddNetworkProfileARN (\ s a -> s{_ddNetworkProfileARN = a})
 
 -- | The MAC address of a device.
 ddMACAddress :: Lens' DeviceData (Maybe Text)
@@ -119,8 +142,12 @@ instance FromJSON DeviceData where
           = withObject "DeviceData"
               (\ x ->
                  DeviceData' <$>
-                   (x .:? "DeviceStatus") <*> (x .:? "DeviceStatusInfo")
+                   (x .:? "DeviceStatus") <*>
+                     (x .:? "NetworkProfileName")
+                     <*> (x .:? "DeviceStatusInfo")
+                     <*> (x .:? "CreatedTime")
                      <*> (x .:? "DeviceArn")
+                     <*> (x .:? "NetworkProfileArn")
                      <*> (x .:? "MacAddress")
                      <*> (x .:? "DeviceName")
                      <*> (x .:? "RoomArn")

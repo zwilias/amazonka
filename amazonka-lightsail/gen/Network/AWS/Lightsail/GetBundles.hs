@@ -61,7 +61,7 @@ data GetBundles = GetBundles'{_gbsIncludeInactive ::
 --
 -- * 'gbsIncludeInactive' - A Boolean value that indicates whether to include inactive bundle results in your request.
 --
--- * 'gbsPageToken' - A token used for advancing to the next page of results from your get bundles request.
+-- * 'gbsPageToken' - The token to advance to the next page of results from your request. To get a page token, perform an initial @GetBundles@ request. If your results are paginated, the response will return a next page token that you can specify as the page token in a subsequent request.
 getBundles
     :: GetBundles
 getBundles
@@ -72,7 +72,7 @@ getBundles
 gbsIncludeInactive :: Lens' GetBundles (Maybe Bool)
 gbsIncludeInactive = lens _gbsIncludeInactive (\ s a -> s{_gbsIncludeInactive = a})
 
--- | A token used for advancing to the next page of results from your get bundles request.
+-- | The token to advance to the next page of results from your request. To get a page token, perform an initial @GetBundles@ request. If your results are paginated, the response will return a next page token that you can specify as the page token in a subsequent request.
 gbsPageToken :: Lens' GetBundles (Maybe Text)
 gbsPageToken = lens _gbsPageToken (\ s a -> s{_gbsPageToken = a})
 
@@ -131,7 +131,7 @@ data GetBundlesResponse = GetBundlesResponse'{_gbrsNextPageToken
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'gbrsNextPageToken' - A token used for advancing to the next page of results from your get active names request.
+-- * 'gbrsNextPageToken' - The token to advance to the next page of resutls from your request. A next page token is not returned if there are no more results to display. To get the next page of results, perform another @GetBundles@ request and specify the next page token using the @pageToken@ parameter.
 --
 -- * 'gbrsBundles' - An array of key-value pairs that contains information about the available bundles.
 --
@@ -144,7 +144,7 @@ getBundlesResponse pResponseStatus_
                         _gbrsBundles = Nothing,
                         _gbrsResponseStatus = pResponseStatus_}
 
--- | A token used for advancing to the next page of results from your get active names request.
+-- | The token to advance to the next page of resutls from your request. A next page token is not returned if there are no more results to display. To get the next page of results, perform another @GetBundles@ request and specify the next page token using the @pageToken@ parameter.
 gbrsNextPageToken :: Lens' GetBundlesResponse (Maybe Text)
 gbrsNextPageToken = lens _gbrsNextPageToken (\ s a -> s{_gbrsNextPageToken = a})
 

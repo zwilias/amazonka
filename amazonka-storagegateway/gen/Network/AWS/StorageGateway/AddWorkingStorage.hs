@@ -67,7 +67,7 @@ data AddWorkingStorage = AddWorkingStorage'{_awsGatewayARN
 --
 -- * 'awsGatewayARN' - Undocumented member.
 --
--- * 'awsDiskIds' - An array of strings that identify disks that are to be configured as working storage. Each string have a minimum length of 1 and maximum length of 300. You can get the disk IDs from the 'ListLocalDisks' API.
+-- * 'awsDiskIds' - An array of strings that identify disks that are to be configured as working storage. Each string has a minimum length of 1 and maximum length of 300. You can get the disk IDs from the 'ListLocalDisks' API.
 addWorkingStorage
     :: Text -- ^ 'awsGatewayARN'
     -> AddWorkingStorage
@@ -79,7 +79,7 @@ addWorkingStorage pGatewayARN_
 awsGatewayARN :: Lens' AddWorkingStorage Text
 awsGatewayARN = lens _awsGatewayARN (\ s a -> s{_awsGatewayARN = a})
 
--- | An array of strings that identify disks that are to be configured as working storage. Each string have a minimum length of 1 and maximum length of 300. You can get the disk IDs from the 'ListLocalDisks' API.
+-- | An array of strings that identify disks that are to be configured as working storage. Each string has a minimum length of 1 and maximum length of 300. You can get the disk IDs from the 'ListLocalDisks' API.
 awsDiskIds :: Lens' AddWorkingStorage [Text]
 awsDiskIds = lens _awsDiskIds (\ s a -> s{_awsDiskIds = a}) . _Coerce
 
@@ -119,7 +119,7 @@ instance ToPath AddWorkingStorage where
 instance ToQuery AddWorkingStorage where
         toQuery = const mempty
 
--- | A JSON object containing the of the gateway for which working storage was configured.
+-- | A JSON object containing the Amazon Resource Name (ARN) of the gateway for which working storage was configured.
 --
 --
 --

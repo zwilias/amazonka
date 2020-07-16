@@ -46,7 +46,7 @@ data ResourceTargetDefinition = ResourceTargetDefinition'{_rtdAttribute
 --
 -- * 'rtdAttribute' - Indicates which resource attribute is triggering this update, such as a change in the resource attribute's @Metadata@ , @Properties@ , or @Tags@ .
 --
--- * 'rtdRequiresRecreation' - If the @Attribute@ value is @Properties@ , indicates whether a change to this property causes the resource to be recreated. The value can be @Never@ , @Always@ , or @Conditionally@ . To determine the conditions for a @Conditionally@ recreation, see the update behavior for that <http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html property> in the AWS CloudFormation User Guide.
+-- * 'rtdRequiresRecreation' - If the @Attribute@ value is @Properties@ , indicates whether a change to this property causes the resource to be recreated. The value can be @Never@ , @Always@ , or @Conditionally@ . To determine the conditions for a @Conditionally@ recreation, see the update behavior for that <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html property> in the AWS CloudFormation User Guide.
 --
 -- * 'rtdName' - If the @Attribute@ value is @Properties@ , the name of the property. For all other attributes, the value is null.
 resourceTargetDefinition
@@ -60,7 +60,7 @@ resourceTargetDefinition
 rtdAttribute :: Lens' ResourceTargetDefinition (Maybe ResourceAttribute)
 rtdAttribute = lens _rtdAttribute (\ s a -> s{_rtdAttribute = a})
 
--- | If the @Attribute@ value is @Properties@ , indicates whether a change to this property causes the resource to be recreated. The value can be @Never@ , @Always@ , or @Conditionally@ . To determine the conditions for a @Conditionally@ recreation, see the update behavior for that <http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html property> in the AWS CloudFormation User Guide.
+-- | If the @Attribute@ value is @Properties@ , indicates whether a change to this property causes the resource to be recreated. The value can be @Never@ , @Always@ , or @Conditionally@ . To determine the conditions for a @Conditionally@ recreation, see the update behavior for that <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html property> in the AWS CloudFormation User Guide.
 rtdRequiresRecreation :: Lens' ResourceTargetDefinition (Maybe RequiresRecreation)
 rtdRequiresRecreation = lens _rtdRequiresRecreation (\ s a -> s{_rtdRequiresRecreation = a})
 

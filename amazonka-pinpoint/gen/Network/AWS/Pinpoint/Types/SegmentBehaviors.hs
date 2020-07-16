@@ -21,7 +21,9 @@ import Network.AWS.Lens
 import Network.AWS.Pinpoint.Types.RecencyDimension
 import Network.AWS.Prelude
 
--- | Segment behavior dimensions
+-- | Specifies dimension settings for including or excluding endpoints from a segment based on how recently an endpoint was active.
+--
+--
 --
 -- /See:/ 'segmentBehaviors' smart constructor.
 newtype SegmentBehaviors = SegmentBehaviors'{_sbRecency
@@ -32,13 +34,13 @@ newtype SegmentBehaviors = SegmentBehaviors'{_sbRecency
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'sbRecency' - The recency of use.
+-- * 'sbRecency' - The dimension settings that are based on how recently an endpoint was active.
 segmentBehaviors
     :: SegmentBehaviors
 segmentBehaviors
   = SegmentBehaviors'{_sbRecency = Nothing}
 
--- | The recency of use.
+-- | The dimension settings that are based on how recently an endpoint was active.
 sbRecency :: Lens' SegmentBehaviors (Maybe RecencyDimension)
 sbRecency = lens _sbRecency (\ s a -> s{_sbRecency = a})
 

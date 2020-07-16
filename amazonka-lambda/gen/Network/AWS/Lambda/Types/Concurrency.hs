@@ -29,14 +29,14 @@ newtype Concurrency = Concurrency'{_cReservedConcurrentExecutions
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'cReservedConcurrentExecutions' - The number of concurrent executions reserved for this function. For more information, see 'concurrent-executions' .
+-- * 'cReservedConcurrentExecutions' - The number of concurrent executions that are reserved for this function. For more information, see <https://docs.aws.amazon.com/lambda/latest/dg/concurrent-executions.html Managing Concurrency> .
 concurrency
     :: Concurrency
 concurrency
   = Concurrency'{_cReservedConcurrentExecutions =
                    Nothing}
 
--- | The number of concurrent executions reserved for this function. For more information, see 'concurrent-executions' .
+-- | The number of concurrent executions that are reserved for this function. For more information, see <https://docs.aws.amazon.com/lambda/latest/dg/concurrent-executions.html Managing Concurrency> .
 cReservedConcurrentExecutions :: Lens' Concurrency (Maybe Natural)
 cReservedConcurrentExecutions = lens _cReservedConcurrentExecutions (\ s a -> s{_cReservedConcurrentExecutions = a}) . mapping _Nat
 

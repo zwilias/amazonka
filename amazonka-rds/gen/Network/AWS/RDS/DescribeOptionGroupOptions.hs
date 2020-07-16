@@ -75,13 +75,13 @@ data DescribeOptionGroupOptions = DescribeOptionGroupOptions'{_dogoFilters
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dogoFilters' - This parameter is not currently supported.
+-- * 'dogoFilters' - This parameter isn't currently supported.
 --
 -- * 'dogoMajorEngineVersion' - If specified, filters the results to include only options for the specified major engine version.
 --
 -- * 'dogoMarker' - An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by @MaxRecords@ .
 --
--- * 'dogoMaxRecords' - The maximum number of records to include in the response. If more records exist than the specified @MaxRecords@ value, a pagination token called a marker is included in the response so that the remaining results can be retrieved.  Default: 100 Constraints: Minimum 20, maximum 100.
+-- * 'dogoMaxRecords' - The maximum number of records to include in the response. If more records exist than the specified @MaxRecords@ value, a pagination token called a marker is included in the response so that you can retrieve the remaining results.  Default: 100 Constraints: Minimum 20, maximum 100.
 --
 -- * 'dogoEngineName' - A required parameter. Options available for the given engine name are described.
 describeOptionGroupOptions
@@ -94,7 +94,7 @@ describeOptionGroupOptions pEngineName_
                                 _dogoMaxRecords = Nothing,
                                 _dogoEngineName = pEngineName_}
 
--- | This parameter is not currently supported.
+-- | This parameter isn't currently supported.
 dogoFilters :: Lens' DescribeOptionGroupOptions [Filter]
 dogoFilters = lens _dogoFilters (\ s a -> s{_dogoFilters = a}) . _Default . _Coerce
 
@@ -106,7 +106,7 @@ dogoMajorEngineVersion = lens _dogoMajorEngineVersion (\ s a -> s{_dogoMajorEngi
 dogoMarker :: Lens' DescribeOptionGroupOptions (Maybe Text)
 dogoMarker = lens _dogoMarker (\ s a -> s{_dogoMarker = a})
 
--- | The maximum number of records to include in the response. If more records exist than the specified @MaxRecords@ value, a pagination token called a marker is included in the response so that the remaining results can be retrieved.  Default: 100 Constraints: Minimum 20, maximum 100.
+-- | The maximum number of records to include in the response. If more records exist than the specified @MaxRecords@ value, a pagination token called a marker is included in the response so that you can retrieve the remaining results.  Default: 100 Constraints: Minimum 20, maximum 100.
 dogoMaxRecords :: Lens' DescribeOptionGroupOptions (Maybe Int)
 dogoMaxRecords = lens _dogoMaxRecords (\ s a -> s{_dogoMaxRecords = a})
 

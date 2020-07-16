@@ -27,6 +27,8 @@ module Network.AWS.Route53Domains.Types.OperationType (
     , DomainLock
     , EnableAutorenew
     , ExpireDomain
+    , InternalTransferInDomain
+    , InternalTransferOutDomain
     , PushDomain
     , RegisterDomain
     , RemoveDNSsec
@@ -69,6 +71,12 @@ pattern EnableAutorenew = OperationType' "ENABLE_AUTORENEW"
 pattern ExpireDomain :: OperationType
 pattern ExpireDomain = OperationType' "EXPIRE_DOMAIN"
 
+pattern InternalTransferInDomain :: OperationType
+pattern InternalTransferInDomain = OperationType' "INTERNAL_TRANSFER_IN_DOMAIN"
+
+pattern InternalTransferOutDomain :: OperationType
+pattern InternalTransferOutDomain = OperationType' "INTERNAL_TRANSFER_OUT_DOMAIN"
+
 pattern PushDomain :: OperationType
 pattern PushDomain = OperationType' "PUSH_DOMAIN"
 
@@ -102,6 +110,8 @@ pattern UpdateNameserver = OperationType' "UPDATE_NAMESERVER"
   DomainLock,
   EnableAutorenew,
   ExpireDomain,
+  InternalTransferInDomain,
+  InternalTransferOutDomain,
   PushDomain,
   RegisterDomain,
   RemoveDNSsec,
@@ -132,14 +142,16 @@ instance Enum OperationType where
         5 -> DomainLock
         6 -> EnableAutorenew
         7 -> ExpireDomain
-        8 -> PushDomain
-        9 -> RegisterDomain
-        10 -> RemoveDNSsec
-        11 -> RenewDomain
-        12 -> TransferInDomain
-        13 -> TransferOutDomain
-        14 -> UpdateDomainContact
-        15 -> UpdateNameserver
+        8 -> InternalTransferInDomain
+        9 -> InternalTransferOutDomain
+        10 -> PushDomain
+        11 -> RegisterDomain
+        12 -> RemoveDNSsec
+        13 -> RenewDomain
+        14 -> TransferInDomain
+        15 -> TransferOutDomain
+        16 -> UpdateDomainContact
+        17 -> UpdateNameserver
         _ -> (error . showText) $ "Unknown index for OperationType: " <> toText i
     fromEnum x = case x of
         AddDNSsec -> 0
@@ -150,14 +162,16 @@ instance Enum OperationType where
         DomainLock -> 5
         EnableAutorenew -> 6
         ExpireDomain -> 7
-        PushDomain -> 8
-        RegisterDomain -> 9
-        RemoveDNSsec -> 10
-        RenewDomain -> 11
-        TransferInDomain -> 12
-        TransferOutDomain -> 13
-        UpdateDomainContact -> 14
-        UpdateNameserver -> 15
+        InternalTransferInDomain -> 8
+        InternalTransferOutDomain -> 9
+        PushDomain -> 10
+        RegisterDomain -> 11
+        RemoveDNSsec -> 12
+        RenewDomain -> 13
+        TransferInDomain -> 14
+        TransferOutDomain -> 15
+        UpdateDomainContact -> 16
+        UpdateNameserver -> 17
         OperationType' name -> (error . showText) $ "Unknown OperationType: " <> original name
 
 -- | Represents the bounds of /known/ $OperationType.

@@ -55,7 +55,7 @@ data CloudWatchAlarmDefinition = CloudWatchAlarmDefinition'{_cwadEvaluationPerio
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'cwadEvaluationPeriods' - The number of periods, expressed in seconds using @Period@ , during which the alarm condition must exist before the alarm triggers automatic scaling activity. The default value is @1@ .
+-- * 'cwadEvaluationPeriods' - The number of periods, in five-minute increments, during which the alarm condition must exist before the alarm triggers automatic scaling activity. The default value is @1@ .
 --
 -- * 'cwadNamespace' - The namespace for the CloudWatch metric. The default is @AWS/ElasticMapReduce@ .
 --
@@ -90,7 +90,7 @@ cloudWatchAlarmDefinition pComparisonOperator_
                                _cwadPeriod = pPeriod_,
                                _cwadThreshold = pThreshold_}
 
--- | The number of periods, expressed in seconds using @Period@ , during which the alarm condition must exist before the alarm triggers automatic scaling activity. The default value is @1@ .
+-- | The number of periods, in five-minute increments, during which the alarm condition must exist before the alarm triggers automatic scaling activity. The default value is @1@ .
 cwadEvaluationPeriods :: Lens' CloudWatchAlarmDefinition (Maybe Int)
 cwadEvaluationPeriods = lens _cwadEvaluationPeriods (\ s a -> s{_cwadEvaluationPeriods = a})
 

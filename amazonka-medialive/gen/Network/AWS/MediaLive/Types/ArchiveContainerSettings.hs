@@ -21,7 +21,7 @@ import Network.AWS.Lens
 import Network.AWS.MediaLive.Types.M2tsSettings
 import Network.AWS.Prelude
 
--- | Placeholder documentation for ArchiveContainerSettings
+-- | Archive Container Settings
 --
 -- /See:/ 'archiveContainerSettings' smart constructor.
 newtype ArchiveContainerSettings = ArchiveContainerSettings'{_acsM2tsSettings

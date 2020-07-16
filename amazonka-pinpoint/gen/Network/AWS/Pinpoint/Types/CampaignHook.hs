@@ -21,7 +21,11 @@ import Network.AWS.Lens
 import Network.AWS.Pinpoint.Types.Mode
 import Network.AWS.Prelude
 
--- | /See:/ 'campaignHook' smart constructor.
+-- | Specifies settings for invoking an AWS Lambda function that customizes a segment for a campaign.
+--
+--
+--
+-- /See:/ 'campaignHook' smart constructor.
 data CampaignHook = CampaignHook'{_chLambdaFunctionName
                                   :: !(Maybe Text),
                                   _chMode :: !(Maybe Mode),
@@ -32,26 +36,26 @@ data CampaignHook = CampaignHook'{_chLambdaFunctionName
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'chLambdaFunctionName' - Lambda function name or arn to be called for delivery
+-- * 'chLambdaFunctionName' - The name or Amazon Resource Name (ARN) of the AWS Lambda function that Amazon Pinpoint invokes to customize a segment for a campaign.
 --
--- * 'chMode' - What mode Lambda should be invoked in.
+-- * 'chMode' - The mode that Amazon Pinpoint uses to invoke the AWS Lambda function. Possible values are:     * FILTER - Invoke the function to customize the segment that's used by a campaign.     * DELIVERY - (Deprecated) Previously, invoked the function to send a campaign through a custom channel. This functionality is not supported anymore. To send a campaign through a custom channel, use the CustomDeliveryConfiguration and CampaignCustomMessage objects of the campaign.
 --
--- * 'chWebURL' - Web URL to call for hook. If the URL has authentication specified it will be added as authentication to the request
+-- * 'chWebURL' - The web URL that Amazon Pinpoint calls to invoke the AWS Lambda function over HTTPS.
 campaignHook
     :: CampaignHook
 campaignHook
   = CampaignHook'{_chLambdaFunctionName = Nothing,
                   _chMode = Nothing, _chWebURL = Nothing}
 
--- | Lambda function name or arn to be called for delivery
+-- | The name or Amazon Resource Name (ARN) of the AWS Lambda function that Amazon Pinpoint invokes to customize a segment for a campaign.
 chLambdaFunctionName :: Lens' CampaignHook (Maybe Text)
 chLambdaFunctionName = lens _chLambdaFunctionName (\ s a -> s{_chLambdaFunctionName = a})
 
--- | What mode Lambda should be invoked in.
+-- | The mode that Amazon Pinpoint uses to invoke the AWS Lambda function. Possible values are:     * FILTER - Invoke the function to customize the segment that's used by a campaign.     * DELIVERY - (Deprecated) Previously, invoked the function to send a campaign through a custom channel. This functionality is not supported anymore. To send a campaign through a custom channel, use the CustomDeliveryConfiguration and CampaignCustomMessage objects of the campaign.
 chMode :: Lens' CampaignHook (Maybe Mode)
 chMode = lens _chMode (\ s a -> s{_chMode = a})
 
--- | Web URL to call for hook. If the URL has authentication specified it will be added as authentication to the request
+-- | The web URL that Amazon Pinpoint calls to invoke the AWS Lambda function over HTTPS.
 chWebURL :: Lens' CampaignHook (Maybe Text)
 chWebURL = lens _chWebURL (\ s a -> s{_chWebURL = a})
 

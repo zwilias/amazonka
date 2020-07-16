@@ -25,6 +25,7 @@ module Network.AWS.MediaLive.UpdateChannel
       updateChannel
     , UpdateChannel
     -- * Request Lenses
+    , ucLogLevel
     , ucInputSpecification
     , ucInputAttachments
     , ucDestinations
@@ -51,8 +52,10 @@ import Network.AWS.Response
 -- | A request to update a channel.
 --
 -- /See:/ 'updateChannel' smart constructor.
-data UpdateChannel = UpdateChannel'{_ucInputSpecification
-                                    :: !(Maybe InputSpecification),
+data UpdateChannel = UpdateChannel'{_ucLogLevel ::
+                                    !(Maybe LogLevel),
+                                    _ucInputSpecification ::
+                                    !(Maybe InputSpecification),
                                     _ucInputAttachments ::
                                     !(Maybe [InputAttachment]),
                                     _ucDestinations ::
@@ -67,6 +70,8 @@ data UpdateChannel = UpdateChannel'{_ucInputSpecification
 -- | Creates a value of 'UpdateChannel' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'ucLogLevel' - The log level to write to CloudWatch Logs.
 --
 -- * 'ucInputSpecification' - Specification of input for this channel (max. bitrate, resolution, codec, etc.)
 --
@@ -85,11 +90,16 @@ updateChannel
     :: Text -- ^ 'ucChannelId'
     -> UpdateChannel
 updateChannel pChannelId_
-  = UpdateChannel'{_ucInputSpecification = Nothing,
+  = UpdateChannel'{_ucLogLevel = Nothing,
+                   _ucInputSpecification = Nothing,
                    _ucInputAttachments = Nothing,
                    _ucDestinations = Nothing, _ucName = Nothing,
                    _ucEncoderSettings = Nothing, _ucRoleARN = Nothing,
                    _ucChannelId = pChannelId_}
+
+-- | The log level to write to CloudWatch Logs.
+ucLogLevel :: Lens' UpdateChannel (Maybe LogLevel)
+ucLogLevel = lens _ucLogLevel (\ s a -> s{_ucLogLevel = a})
 
 -- | Specification of input for this channel (max. bitrate, resolution, codec, etc.)
 ucInputSpecification :: Lens' UpdateChannel (Maybe InputSpecification)
@@ -143,7 +153,8 @@ instance ToJSON UpdateChannel where
         toJSON UpdateChannel'{..}
           = object
               (catMaybes
-                 [("inputSpecification" .=) <$> _ucInputSpecification,
+                 [("logLevel" .=) <$> _ucLogLevel,
+                  ("inputSpecification" .=) <$> _ucInputSpecification,
                   ("inputAttachments" .=) <$> _ucInputAttachments,
                   ("destinations" .=) <$> _ucDestinations,
                   ("name" .=) <$> _ucName,

@@ -20,26 +20,39 @@ module Network.AWS.Pinpoint.Types.CreateApplicationRequest where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | Application Request.
+-- | Specifies the display name of an application and the tags to associate with the application.
+--
+--
 --
 -- /See:/ 'createApplicationRequest' smart constructor.
-newtype CreateApplicationRequest = CreateApplicationRequest'{_carName
-                                                             :: Maybe Text}
-                                     deriving (Eq, Read, Show, Data, Typeable,
-                                               Generic)
+data CreateApplicationRequest = CreateApplicationRequest'{_carTags
+                                                          ::
+                                                          !(Maybe
+                                                              (Map Text Text)),
+                                                          _carName :: !Text}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'CreateApplicationRequest' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'carName' - The display name of the application. Used in the Amazon Pinpoint console.
+-- * 'carTags' - A string-to-string map of key-value pairs that defines the tags to associate with the application. Each tag consists of a required tag key and an associated tag value.
+--
+-- * 'carName' - The display name of the application. This name is displayed as the __Project name__ on the Amazon Pinpoint console.
 createApplicationRequest
-    :: CreateApplicationRequest
-createApplicationRequest
-  = CreateApplicationRequest'{_carName = Nothing}
+    :: Text -- ^ 'carName'
+    -> CreateApplicationRequest
+createApplicationRequest pName_
+  = CreateApplicationRequest'{_carTags = Nothing,
+                              _carName = pName_}
 
--- | The display name of the application. Used in the Amazon Pinpoint console.
-carName :: Lens' CreateApplicationRequest (Maybe Text)
+-- | A string-to-string map of key-value pairs that defines the tags to associate with the application. Each tag consists of a required tag key and an associated tag value.
+carTags :: Lens' CreateApplicationRequest (HashMap Text Text)
+carTags = lens _carTags (\ s a -> s{_carTags = a}) . _Default . _Map
+
+-- | The display name of the application. This name is displayed as the __Project name__ on the Amazon Pinpoint console.
+carName :: Lens' CreateApplicationRequest Text
 carName = lens _carName (\ s a -> s{_carName = a})
 
 instance Hashable CreateApplicationRequest where
@@ -48,4 +61,7 @@ instance NFData CreateApplicationRequest where
 
 instance ToJSON CreateApplicationRequest where
         toJSON CreateApplicationRequest'{..}
-          = object (catMaybes [("Name" .=) <$> _carName])
+          = object
+              (catMaybes
+                 [("tags" .=) <$> _carTags,
+                  Just ("Name" .= _carName)])

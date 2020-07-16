@@ -27,7 +27,7 @@ module Network.AWS.MediaLive.Types.AacRawFormat (
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | Placeholder documentation for AacRawFormat
+-- | Aac Raw Format
 data AacRawFormat = AacRawFormat' (CI Text)
                       deriving (Eq, Ord, Read, Show, Data, Typeable,
                                 Generic)

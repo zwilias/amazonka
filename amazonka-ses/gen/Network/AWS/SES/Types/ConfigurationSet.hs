@@ -23,7 +23,7 @@ import Network.AWS.Prelude
 -- | The name of the configuration set.
 --
 --
--- Configuration sets let you create groups of rules that you can apply to the emails you send using Amazon SES. For more information about using configuration sets, see <http://docs.aws.amazon.com/ses/latest/DeveloperGuide/using-configuration-sets.html Using Amazon SES Configuration Sets> in the <http://docs.aws.amazon.com/ses/latest/DeveloperGuide/ Amazon SES Developer Guide> .
+-- Configuration sets let you create groups of rules that you can apply to the emails you send using Amazon SES. For more information about using configuration sets, see <https://docs.aws.amazon.com/ses/latest/DeveloperGuide/using-configuration-sets.html Using Amazon SES Configuration Sets> in the <https://docs.aws.amazon.com/ses/latest/DeveloperGuide/ Amazon SES Developer Guide> .
 --
 --
 -- /See:/ 'configurationSet' smart constructor.

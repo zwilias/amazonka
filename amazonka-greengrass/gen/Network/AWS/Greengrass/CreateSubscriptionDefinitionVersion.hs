@@ -174,9 +174,9 @@ data CreateSubscriptionDefinitionVersionResponse = CreateSubscriptionDefinitionV
 --
 -- * 'csdvrsCreationTimestamp' - The time, in milliseconds since the epoch, when the version was created.
 --
--- * 'csdvrsVersion' - The unique ID of the version.
+-- * 'csdvrsVersion' - The ID of the version.
 --
--- * 'csdvrsId' - The ID of the version.
+-- * 'csdvrsId' - The ID of the parent definition that the version is associated with.
 --
 -- * 'csdvrsResponseStatus' - -- | The response status code.
 createSubscriptionDefinitionVersionResponse
@@ -201,11 +201,11 @@ csdvrsARN = lens _csdvrsARN (\ s a -> s{_csdvrsARN = a})
 csdvrsCreationTimestamp :: Lens' CreateSubscriptionDefinitionVersionResponse (Maybe Text)
 csdvrsCreationTimestamp = lens _csdvrsCreationTimestamp (\ s a -> s{_csdvrsCreationTimestamp = a})
 
--- | The unique ID of the version.
+-- | The ID of the version.
 csdvrsVersion :: Lens' CreateSubscriptionDefinitionVersionResponse (Maybe Text)
 csdvrsVersion = lens _csdvrsVersion (\ s a -> s{_csdvrsVersion = a})
 
--- | The ID of the version.
+-- | The ID of the parent definition that the version is associated with.
 csdvrsId :: Lens' CreateSubscriptionDefinitionVersionResponse (Maybe Text)
 csdvrsId = lens _csdvrsId (\ s a -> s{_csdvrsId = a})
 

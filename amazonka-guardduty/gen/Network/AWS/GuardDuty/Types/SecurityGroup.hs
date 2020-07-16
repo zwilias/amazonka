@@ -20,7 +20,9 @@ module Network.AWS.GuardDuty.Types.SecurityGroup where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | Security groups associated with the EC2 instance.
+-- | Contains information about the security groups associated with the EC2 instance.
+--
+--
 --
 -- /See:/ 'securityGroup' smart constructor.
 data SecurityGroup = SecurityGroup'{_sgGroupId ::
@@ -32,20 +34,20 @@ data SecurityGroup = SecurityGroup'{_sgGroupId ::
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'sgGroupId' - EC2 instance's security group ID.
+-- * 'sgGroupId' - The security group ID of the EC2 instance.
 --
--- * 'sgGroupName' - EC2 instance's security group name.
+-- * 'sgGroupName' - The security group name of the EC2 instance.
 securityGroup
     :: SecurityGroup
 securityGroup
   = SecurityGroup'{_sgGroupId = Nothing,
                    _sgGroupName = Nothing}
 
--- | EC2 instance's security group ID.
+-- | The security group ID of the EC2 instance.
 sgGroupId :: Lens' SecurityGroup (Maybe Text)
 sgGroupId = lens _sgGroupId (\ s a -> s{_sgGroupId = a})
 
--- | EC2 instance's security group name.
+-- | The security group name of the EC2 instance.
 sgGroupName :: Lens' SecurityGroup (Maybe Text)
 sgGroupName = lens _sgGroupName (\ s a -> s{_sgGroupName = a})
 

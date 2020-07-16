@@ -19,6 +19,7 @@ module Network.AWS.SageMaker.Types.ProductionVariantSummary where
 
 import Network.AWS.Lens
 import Network.AWS.Prelude
+import Network.AWS.SageMaker.Types.DeployedImage
 
 -- | Describes weight and capacities for a production variant associated with an endpoint. If you sent a request to the @UpdateEndpointWeightsAndCapacities@ API and the endpoint status is @Updating@ , you get different desired and current values. 
 --
@@ -33,6 +34,9 @@ data ProductionVariantSummary = ProductionVariantSummary'{_pvsDesiredInstanceCou
                                                           !(Maybe Double),
                                                           _pvsCurrentInstanceCount
                                                           :: !(Maybe Nat),
+                                                          _pvsDeployedImages ::
+                                                          !(Maybe
+                                                              [DeployedImage]),
                                                           _pvsVariantName ::
                                                           !Text}
                                   deriving (Eq, Read, Show, Data, Typeable,
@@ -50,6 +54,8 @@ data ProductionVariantSummary = ProductionVariantSummary'{_pvsDesiredInstanceCou
 --
 -- * 'pvsCurrentInstanceCount' - The number of instances associated with the variant.
 --
+-- * 'pvsDeployedImages' - An array of @DeployedImage@ objects that specify the Amazon EC2 Container Registry paths of the inference images deployed on instances of this @ProductionVariant@ .
+--
 -- * 'pvsVariantName' - The name of the variant.
 productionVariantSummary
     :: Text -- ^ 'pvsVariantName'
@@ -60,6 +66,7 @@ productionVariantSummary pVariantName_
                               _pvsDesiredWeight = Nothing,
                               _pvsCurrentWeight = Nothing,
                               _pvsCurrentInstanceCount = Nothing,
+                              _pvsDeployedImages = Nothing,
                               _pvsVariantName = pVariantName_}
 
 -- | The number of instances requested in the @UpdateEndpointWeightsAndCapacities@ request. 
@@ -78,6 +85,10 @@ pvsCurrentWeight = lens _pvsCurrentWeight (\ s a -> s{_pvsCurrentWeight = a})
 pvsCurrentInstanceCount :: Lens' ProductionVariantSummary (Maybe Natural)
 pvsCurrentInstanceCount = lens _pvsCurrentInstanceCount (\ s a -> s{_pvsCurrentInstanceCount = a}) . mapping _Nat
 
+-- | An array of @DeployedImage@ objects that specify the Amazon EC2 Container Registry paths of the inference images deployed on instances of this @ProductionVariant@ .
+pvsDeployedImages :: Lens' ProductionVariantSummary [DeployedImage]
+pvsDeployedImages = lens _pvsDeployedImages (\ s a -> s{_pvsDeployedImages = a}) . _Default . _Coerce
+
 -- | The name of the variant.
 pvsVariantName :: Lens' ProductionVariantSummary Text
 pvsVariantName = lens _pvsVariantName (\ s a -> s{_pvsVariantName = a})
@@ -91,6 +102,7 @@ instance FromJSON ProductionVariantSummary where
                      (x .:? "DesiredWeight")
                      <*> (x .:? "CurrentWeight")
                      <*> (x .:? "CurrentInstanceCount")
+                     <*> (x .:? "DeployedImages" .!= mempty)
                      <*> (x .: "VariantName"))
 
 instance Hashable ProductionVariantSummary where

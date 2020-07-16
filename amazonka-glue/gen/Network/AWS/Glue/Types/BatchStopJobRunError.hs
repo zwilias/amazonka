@@ -38,9 +38,9 @@ data BatchStopJobRunError = BatchStopJobRunError'{_bsjreJobName
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'bsjreJobName' - The name of the job definition used in the job run in question.
+-- * 'bsjreJobName' - The name of the job definition that is used in the job run in question.
 --
--- * 'bsjreJobRunId' - The JobRunId of the job run in question.
+-- * 'bsjreJobRunId' - The @JobRunId@ of the job run in question.
 --
 -- * 'bsjreErrorDetail' - Specifies details about the error that was encountered.
 batchStopJobRunError
@@ -50,11 +50,11 @@ batchStopJobRunError
                           _bsjreJobRunId = Nothing,
                           _bsjreErrorDetail = Nothing}
 
--- | The name of the job definition used in the job run in question.
+-- | The name of the job definition that is used in the job run in question.
 bsjreJobName :: Lens' BatchStopJobRunError (Maybe Text)
 bsjreJobName = lens _bsjreJobName (\ s a -> s{_bsjreJobName = a})
 
--- | The JobRunId of the job run in question.
+-- | The @JobRunId@ of the job run in question.
 bsjreJobRunId :: Lens' BatchStopJobRunError (Maybe Text)
 bsjreJobRunId = lens _bsjreJobRunId (\ s a -> s{_bsjreJobRunId = a})
 

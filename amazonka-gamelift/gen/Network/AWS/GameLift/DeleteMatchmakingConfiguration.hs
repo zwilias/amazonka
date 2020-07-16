@@ -21,7 +21,7 @@
 -- Permanently removes a FlexMatch matchmaking configuration. To delete, specify the configuration name. A matchmaking configuration cannot be deleted if it is being used in any active matchmaking tickets.
 --
 --
--- Operations related to match configurations and rule sets include:
+-- __Related operations__ 
 --
 --     * 'CreateMatchmakingConfiguration' 
 --
@@ -36,6 +36,8 @@
 --     * 'DescribeMatchmakingRuleSets' 
 --
 --     * 'ValidateMatchmakingRuleSet' 
+--
+--     * 'DeleteMatchmakingRuleSet' 
 --
 --
 --
@@ -76,14 +78,14 @@ newtype DeleteMatchmakingConfiguration = DeleteMatchmakingConfiguration'{_dmcNam
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dmcName' - Unique identifier for a matchmaking configuration
+-- * 'dmcName' - A unique identifier for a matchmaking configuration. You can use either the configuration name or ARN value.
 deleteMatchmakingConfiguration
     :: Text -- ^ 'dmcName'
     -> DeleteMatchmakingConfiguration
 deleteMatchmakingConfiguration pName_
   = DeleteMatchmakingConfiguration'{_dmcName = pName_}
 
--- | Unique identifier for a matchmaking configuration
+-- | A unique identifier for a matchmaking configuration. You can use either the configuration name or ARN value.
 dmcName :: Lens' DeleteMatchmakingConfiguration Text
 dmcName = lens _dmcName (\ s a -> s{_dmcName = a})
 

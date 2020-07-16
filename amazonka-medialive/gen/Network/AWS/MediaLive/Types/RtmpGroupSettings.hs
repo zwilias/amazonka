@@ -19,15 +19,19 @@ module Network.AWS.MediaLive.Types.RtmpGroupSettings where
 
 import Network.AWS.Lens
 import Network.AWS.MediaLive.Types.AuthenticationScheme
+import Network.AWS.MediaLive.Types.InputLossActionForRtmpOut
 import Network.AWS.MediaLive.Types.RtmpCacheFullBehavior
 import Network.AWS.MediaLive.Types.RtmpCaptionData
 import Network.AWS.Prelude
 
--- | Placeholder documentation for RtmpGroupSettings
+-- | Rtmp Group Settings
 --
 -- /See:/ 'rtmpGroupSettings' smart constructor.
-data RtmpGroupSettings = RtmpGroupSettings'{_rgsCaptionData
-                                            :: !(Maybe RtmpCaptionData),
+data RtmpGroupSettings = RtmpGroupSettings'{_rgsInputLossAction
+                                            ::
+                                            !(Maybe InputLossActionForRtmpOut),
+                                            _rgsCaptionData ::
+                                            !(Maybe RtmpCaptionData),
                                             _rgsRestartDelay :: !(Maybe Nat),
                                             _rgsAuthenticationScheme ::
                                             !(Maybe AuthenticationScheme),
@@ -39,6 +43,8 @@ data RtmpGroupSettings = RtmpGroupSettings'{_rgsCaptionData
 -- | Creates a value of 'RtmpGroupSettings' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'rgsInputLossAction' - Controls the behavior of this RTMP group if input becomes unavailable. - emitOutput: Emit a slate until input returns. - pauseOutput: Stop transmitting data until input returns. This does not close the underlying RTMP connection.
 --
 -- * 'rgsCaptionData' - Controls the types of data that passes to onCaptionInfo outputs.  If set to 'all' then 608 and 708 carried DTVCC data will be passed.  If set to 'field1AndField2608' then DTVCC data will be stripped out, but 608 data from both fields will be passed. If set to 'field1608' then only the data carried in 608 from field 1 video will be passed.
 --
@@ -52,11 +58,16 @@ data RtmpGroupSettings = RtmpGroupSettings'{_rgsCaptionData
 rtmpGroupSettings
     :: RtmpGroupSettings
 rtmpGroupSettings
-  = RtmpGroupSettings'{_rgsCaptionData = Nothing,
+  = RtmpGroupSettings'{_rgsInputLossAction = Nothing,
+                       _rgsCaptionData = Nothing,
                        _rgsRestartDelay = Nothing,
                        _rgsAuthenticationScheme = Nothing,
                        _rgsCacheLength = Nothing,
                        _rgsCacheFullBehavior = Nothing}
+
+-- | Controls the behavior of this RTMP group if input becomes unavailable. - emitOutput: Emit a slate until input returns. - pauseOutput: Stop transmitting data until input returns. This does not close the underlying RTMP connection.
+rgsInputLossAction :: Lens' RtmpGroupSettings (Maybe InputLossActionForRtmpOut)
+rgsInputLossAction = lens _rgsInputLossAction (\ s a -> s{_rgsInputLossAction = a})
 
 -- | Controls the types of data that passes to onCaptionInfo outputs.  If set to 'all' then 608 and 708 carried DTVCC data will be passed.  If set to 'field1AndField2608' then DTVCC data will be stripped out, but 608 data from both fields will be passed. If set to 'field1608' then only the data carried in 608 from field 1 video will be passed.
 rgsCaptionData :: Lens' RtmpGroupSettings (Maybe RtmpCaptionData)
@@ -83,8 +94,9 @@ instance FromJSON RtmpGroupSettings where
           = withObject "RtmpGroupSettings"
               (\ x ->
                  RtmpGroupSettings' <$>
-                   (x .:? "captionData") <*> (x .:? "restartDelay") <*>
-                     (x .:? "authenticationScheme")
+                   (x .:? "inputLossAction") <*> (x .:? "captionData")
+                     <*> (x .:? "restartDelay")
+                     <*> (x .:? "authenticationScheme")
                      <*> (x .:? "cacheLength")
                      <*> (x .:? "cacheFullBehavior"))
 
@@ -96,7 +108,8 @@ instance ToJSON RtmpGroupSettings where
         toJSON RtmpGroupSettings'{..}
           = object
               (catMaybes
-                 [("captionData" .=) <$> _rgsCaptionData,
+                 [("inputLossAction" .=) <$> _rgsInputLossAction,
+                  ("captionData" .=) <$> _rgsCaptionData,
                   ("restartDelay" .=) <$> _rgsRestartDelay,
                   ("authenticationScheme" .=) <$>
                     _rgsAuthenticationScheme,

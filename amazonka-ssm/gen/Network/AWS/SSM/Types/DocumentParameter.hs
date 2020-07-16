@@ -21,7 +21,7 @@ import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.SSM.Types.DocumentParameterType
 
--- | Parameters specified in a System Manager document that execute on the server when the command is run. 
+-- | Parameters specified in a System Manager document that run on the server when the command is run. 
 --
 --
 --

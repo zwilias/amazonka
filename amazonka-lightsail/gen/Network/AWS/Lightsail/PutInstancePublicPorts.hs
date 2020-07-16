@@ -21,6 +21,8 @@
 -- Sets the specified open ports for an Amazon Lightsail instance, and closes all ports for every protocol not included in the current request.
 --
 --
+-- The @put instance public ports@ operation supports tag-based access control via resource tags applied to the resource identified by @instance name@ . For more information, see the <https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags Lightsail Dev Guide> .
+--
 module Network.AWS.Lightsail.PutInstancePublicPorts
     (
     -- * Creating a Request
@@ -126,7 +128,7 @@ data PutInstancePublicPortsResponse = PutInstancePublicPortsResponse'{_pipprsOpe
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'pipprsOperation' - Describes metadata about the operation you just executed.
+-- * 'pipprsOperation' - An array of objects that describe the result of the action, such as the status of the request, the time stamp of the request, and the resources affected by the request.
 --
 -- * 'pipprsResponseStatus' - -- | The response status code.
 putInstancePublicPortsResponse
@@ -137,7 +139,7 @@ putInstancePublicPortsResponse pResponseStatus_
                                       Nothing,
                                     _pipprsResponseStatus = pResponseStatus_}
 
--- | Describes metadata about the operation you just executed.
+-- | An array of objects that describe the result of the action, such as the status of the request, the time stamp of the request, and the resources affected by the request.
 pipprsOperation :: Lens' PutInstancePublicPortsResponse (Maybe Operation)
 pipprsOperation = lens _pipprsOperation (\ s a -> s{_pipprsOperation = a})
 

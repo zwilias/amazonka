@@ -23,6 +23,9 @@ module Network.AWS.MediaStore.Types
     , _LimitExceededException
     , _CORSPolicyNotFoundException
 
+    -- * ContainerLevelMetrics
+    , ContainerLevelMetrics (..)
+
     -- * ContainerStatus
     , ContainerStatus (..)
 
@@ -34,27 +37,50 @@ module Network.AWS.MediaStore.Types
     , corsRule
     , crAllowedMethods
     , crMaxAgeSeconds
-    , crAllowedHeaders
-    , crAllowedOrigins
     , crExposeHeaders
+    , crAllowedOrigins
+    , crAllowedHeaders
 
     -- * Container
     , Container
     , container
     , cCreationTime
     , cStatus
+    , cAccessLoggingEnabled
     , cARN
     , cName
     , cEndpoint
+
+    -- * MetricPolicy
+    , MetricPolicy
+    , metricPolicy
+    , mpMetricPolicyRules
+    , mpContainerLevelMetrics
+
+    -- * MetricPolicyRule
+    , MetricPolicyRule
+    , metricPolicyRule
+    , mprObjectGroup
+    , mprObjectGroupName
+
+    -- * Tag
+    , Tag
+    , tag
+    , tagValue
+    , tagKey
     ) where
 
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Sign.V4
+import Network.AWS.MediaStore.Types.ContainerLevelMetrics
 import Network.AWS.MediaStore.Types.ContainerStatus
 import Network.AWS.MediaStore.Types.MethodName
 import Network.AWS.MediaStore.Types.CORSRule
 import Network.AWS.MediaStore.Types.Container
+import Network.AWS.MediaStore.Types.MetricPolicy
+import Network.AWS.MediaStore.Types.MetricPolicyRule
+import Network.AWS.MediaStore.Types.Tag
 
 -- | API version @2017-09-01@ of the Amazon Elemental MediaStore SDK configuration.
 mediaStore :: Service
@@ -79,6 +105,11 @@ mediaStore
             = Just "throttling_exception"
           | has (hasCode "Throttling" . hasStatus 400) e =
             Just "throttling"
+          | has
+              (hasCode "ProvisionedThroughputExceededException" .
+                 hasStatus 400)
+              e
+            = Just "throughput_exceeded"
           | has (hasStatus 504) e = Just "gateway_timeout"
           | has
               (hasCode "RequestThrottledException" . hasStatus 400)
@@ -90,7 +121,7 @@ mediaStore
           | has (hasStatus 509) e = Just "limit_exceeded"
           | otherwise = Nothing
 
--- | Could not perform an operation on a container that does not exist.
+-- | The container that you specified in the request does not exist.
 --
 --
 _ContainerNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
@@ -98,7 +129,7 @@ _ContainerNotFoundException
   = _MatchServiceError mediaStore
       "ContainerNotFoundException"
 
--- | Could not perform an operation on a policy that does not exist.
+-- | The policy that you specified in the request does not exist.
 --
 --
 _PolicyNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
@@ -113,7 +144,7 @@ _InternalServerError :: AsError a => Getting (First ServiceError) a ServiceError
 _InternalServerError
   = _MatchServiceError mediaStore "InternalServerError"
 
--- | Resource already exists or is being updated.
+-- | The container that you specified in the request already exists or is being updated.
 --
 --
 _ContainerInUseException :: AsError a => Getting (First ServiceError) a ServiceError
@@ -129,7 +160,7 @@ _LimitExceededException
   = _MatchServiceError mediaStore
       "LimitExceededException"
 
--- | Could not perform an operation on a policy that does not exist.
+-- | The CORS policy that you specified in the request does not exist.
 --
 --
 _CORSPolicyNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError

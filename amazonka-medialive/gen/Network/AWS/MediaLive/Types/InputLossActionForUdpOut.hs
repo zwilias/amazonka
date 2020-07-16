@@ -28,7 +28,7 @@ module Network.AWS.MediaLive.Types.InputLossActionForUdpOut (
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | Placeholder documentation for InputLossActionForUdpOut
+-- | Input Loss Action For Udp Out
 data InputLossActionForUdpOut = InputLossActionForUdpOut' (CI
                                                              Text)
                                   deriving (Eq, Ord, Read, Show, Data, Typeable,

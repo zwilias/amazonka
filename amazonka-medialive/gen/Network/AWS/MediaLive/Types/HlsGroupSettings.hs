@@ -26,6 +26,7 @@ import Network.AWS.MediaLive.Types.HlsClientCache
 import Network.AWS.MediaLive.Types.HlsCodecSpecification
 import Network.AWS.MediaLive.Types.HlsDirectoryStructure
 import Network.AWS.MediaLive.Types.HlsEncryptionType
+import Network.AWS.MediaLive.Types.HlsId3SegmentTaggingState
 import Network.AWS.MediaLive.Types.HlsIvInManifest
 import Network.AWS.MediaLive.Types.HlsIvSource
 import Network.AWS.MediaLive.Types.HlsManifestCompression
@@ -33,16 +34,18 @@ import Network.AWS.MediaLive.Types.HlsManifestDurationFormat
 import Network.AWS.MediaLive.Types.HlsMode
 import Network.AWS.MediaLive.Types.HlsOutputSelection
 import Network.AWS.MediaLive.Types.HlsProgramDateTime
+import Network.AWS.MediaLive.Types.HlsRedundantManifest
 import Network.AWS.MediaLive.Types.HlsSegmentationMode
 import Network.AWS.MediaLive.Types.HlsStreamInfResolution
 import Network.AWS.MediaLive.Types.HlsTimedMetadataId3Frame
 import Network.AWS.MediaLive.Types.HlsTsFileMode
+import Network.AWS.MediaLive.Types.IFrameOnlyPlaylistType
 import Network.AWS.MediaLive.Types.InputLossActionForHlsOut
 import Network.AWS.MediaLive.Types.KeyProviderSettings
 import Network.AWS.MediaLive.Types.OutputLocationRef
 import Network.AWS.Prelude
 
--- | Placeholder documentation for HlsGroupSettings
+-- | Hls Group Settings
 --
 -- /See:/ 'hlsGroupSettings' smart constructor.
 data HlsGroupSettings = HlsGroupSettings'{_hgsDirectoryStructure
@@ -56,6 +59,8 @@ data HlsGroupSettings = HlsGroupSettings'{_hgsDirectoryStructure
                                           _hgsTsFileMode ::
                                           !(Maybe HlsTsFileMode),
                                           _hgsMinSegmentLength :: !(Maybe Nat),
+                                          _hgsIFrameOnlyPlaylists ::
+                                          !(Maybe IFrameOnlyPlaylistType),
                                           _hgsProgramDateTime ::
                                           !(Maybe HlsProgramDateTime),
                                           _hgsIndexNSegments :: !(Maybe Nat),
@@ -78,6 +83,8 @@ data HlsGroupSettings = HlsGroupSettings'{_hgsDirectoryStructure
                                           !(Maybe [HlsAdMarkers]),
                                           _hgsKeyFormat :: !(Maybe Text),
                                           _hgsSegmentLength :: !(Maybe Nat),
+                                          _hgsHlsId3SegmentTagging ::
+                                          !(Maybe HlsId3SegmentTaggingState),
                                           _hgsTimedMetadataId3Frame ::
                                           !(Maybe HlsTimedMetadataId3Frame),
                                           _hgsBaseURLContent :: !(Maybe Text),
@@ -98,9 +105,13 @@ data HlsGroupSettings = HlsGroupSettings'{_hgsDirectoryStructure
                                           !(Maybe HlsClientCache),
                                           _hgsTimestampDeltaMilliseconds ::
                                           !(Maybe Nat),
+                                          _hgsBaseURLManifest1 :: !(Maybe Text),
+                                          _hgsRedundantManifest ::
+                                          !(Maybe HlsRedundantManifest),
                                           _hgsStreamInfResolution ::
                                           !(Maybe HlsStreamInfResolution),
                                           _hgsKeepSegments :: !(Maybe Nat),
+                                          _hgsBaseURLContent1 :: !(Maybe Text),
                                           _hgsManifestCompression ::
                                           !(Maybe HlsManifestCompression),
                                           _hgsDestination :: !OutputLocationRef}
@@ -118,13 +129,15 @@ data HlsGroupSettings = HlsGroupSettings'{_hgsDirectoryStructure
 --
 -- * 'hgsIvInManifest' - For use with encryptionType. The IV (Initialization Vector) is a 128-bit number used in conjunction with the key for encrypting blocks. If set to "include", IV is listed in the manifest, otherwise the IV is not in the manifest.
 --
--- * 'hgsTsFileMode' - When set to "singleFile", emits the program as a single media resource (.ts) file, and uses #EXT-X-BYTERANGE tags to index segment for playback. Playback of VOD mode content during event is not guaranteed due to HTTP server caching.
+-- * 'hgsTsFileMode' - SEGMENTEDFILES: Emit the program as segments - multiple .ts media files. SINGLEFILE: Applies only if Mode field is VOD. Emit the program as a single .ts media file. The media manifest includes #EXT-X-BYTERANGE tags to index segments for playback. A typical use for this value is when sending the output to AWS Elemental MediaConvert, which can accept only a single media file. Playback while the channel is running is not guaranteed due to HTTP server caching.
 --
 -- * 'hgsMinSegmentLength' - When set, minimumSegmentLength is enforced by looking ahead and back within the specified range for a nearby avail and extending the segment size if needed.
 --
+-- * 'hgsIFrameOnlyPlaylists' - DISABLED: Do not create an I-frame-only manifest, but do create the master and media manifests (according to the Output Selection field). STANDARD: Create an I-frame-only manifest for each output that contains video, as well as the other manifests (according to the Output Selection field). The I-frame manifest contains a #EXT-X-I-FRAMES-ONLY tag to indicate it is I-frame only, and one or more #EXT-X-BYTERANGE entries identifying the I-frame position. For example, #EXT-X-BYTERANGE:160364@1461888"
+--
 -- * 'hgsProgramDateTime' - Includes or excludes EXT-X-PROGRAM-DATE-TIME tag in .m3u8 manifest files. The value is calculated as follows: either the program date and time are initialized using the input timecode source, or the time is initialized using the input timecode source and the date is initialized using the timestampOffset.
 --
--- * 'hgsIndexNSegments' - If mode is "live", the number of segments to retain in the manifest (.m3u8) file. This number must be less than or equal to keepSegments. If mode is "vod", this parameter has no effect.
+-- * 'hgsIndexNSegments' - Applies only if Mode field is LIVE. Specifies the maximum number of segments in the media manifest file. After this maximum, older segments are removed from the media manifest. This number must be less than or equal to the Keep Segments field.
 --
 -- * 'hgsProgramDateTimePeriod' - Period of insertion of EXT-X-PROGRAM-DATE-TIME entry, in seconds.
 --
@@ -150,11 +163,13 @@ data HlsGroupSettings = HlsGroupSettings'{_hgsDirectoryStructure
 --
 -- * 'hgsSegmentLength' - Length of MPEG-2 Transport Stream segments to create (in seconds). Note that segments will end on the next keyframe after this number of seconds, so actual segment length may be longer.
 --
+-- * 'hgsHlsId3SegmentTagging' - State of HLS ID3 Segment Tagging
+--
 -- * 'hgsTimedMetadataId3Frame' - Indicates ID3 frame that has the timecode.
 --
 -- * 'hgsBaseURLContent' - A partial URI prefix that will be prepended to each output in the media .m3u8 file. Can be used if base manifest is delivered from a different URL than the main .m3u8 file.
 --
--- * 'hgsOutputSelection' - Generates the .m3u8 playlist file for this HLS output group. The segmentsOnly option will output segments without the .m3u8 file.
+-- * 'hgsOutputSelection' - MANIFESTSANDSEGMENTS: Generates manifests (master manifest, if applicable, and media manifests) for this output group. VARIANTMANIFESTSANDSEGMENTS: Generates media manifests for this output group, but not a master manifest. SEGMENTSONLY: Does not generate any manifests for this output group.
 --
 -- * 'hgsCaptionLanguageSetting' - Applies only to 608 Embedded output captions. insert: Include CLOSED-CAPTIONS lines in the manifest. Specify at least one language in the CC1 Language Code field. One CLOSED-CAPTION line is added for each Language Code you specify. Make sure to specify the languages in the order in which they appear in the original source (if the source is embedded format) or the order of the caption selectors (if the source is other than embedded). Otherwise, languages in the manifest will not match up properly with the output captions. none: Include CLOSED-CAPTIONS=NONE line in the manifest. omit: Omit any CLOSED-CAPTIONS line from the manifest.
 --
@@ -164,7 +179,7 @@ data HlsGroupSettings = HlsGroupSettings'{_hgsDirectoryStructure
 --
 -- * 'hgsIvSource' - For use with encryptionType. The IV (Initialization Vector) is a 128-bit number used in conjunction with the key for encrypting blocks. If this setting is "followsSegmentNumber", it will cause the IV to change every segment (to match the segment number). If this is set to "explicit", you must enter a constantIv value.
 --
--- * 'hgsSegmentationMode' - When set to useInputSegmentation, the output segment or fragment points are set by the RAI markers from the input streams.
+-- * 'hgsSegmentationMode' - useInputSegmentation has been deprecated. The configured segment size is always used.
 --
 -- * 'hgsKeyFormatVersions' - Either a single positive integer version value or a slash delimited list of version values (1/2/3).
 --
@@ -172,9 +187,15 @@ data HlsGroupSettings = HlsGroupSettings'{_hgsDirectoryStructure
 --
 -- * 'hgsTimestampDeltaMilliseconds' - Provides an extra millisecond delta offset to fine tune the timestamps.
 --
+-- * 'hgsBaseURLManifest1' - Optional. One value per output group. Complete this field only if you are completing Base URL manifest A, and the downstream system has notified you that the child manifest files for pipeline 1 of all outputs are in a location different from the child manifest files for pipeline 0.
+--
+-- * 'hgsRedundantManifest' - ENABLED: The master manifest (.m3u8 file) for each pipeline includes information about both pipelines: first its own media files, then the media files of the other pipeline. This feature allows playout device that support stale manifest detection to switch from one manifest to the other, when the current manifest seems to be stale. There are still two destinations and two master manifests, but both master manifests reference the media files from both pipelines. DISABLED: The master manifest (.m3u8 file) for each pipeline includes information about its own pipeline only. For an HLS output group with MediaPackage as the destination, the DISABLED behavior is always followed. MediaPackage regenerates the manifests it serves to players so a redundant manifest from MediaLive is irrelevant.
+--
 -- * 'hgsStreamInfResolution' - Include or exclude RESOLUTION attribute for video in EXT-X-STREAM-INF tag of variant manifest.
 --
--- * 'hgsKeepSegments' - If mode is "live", the number of TS segments to retain in the destination directory. If mode is "vod", this parameter has no effect.
+-- * 'hgsKeepSegments' - Applies only if Mode field is LIVE. Specifies the number of media segments (.ts files) to retain in the destination directory.
+--
+-- * 'hgsBaseURLContent1' - Optional. One value per output group. This field is required only if you are completing Base URL content A, and the downstream system has notified you that the media files for pipeline 1 of all outputs are in a location different from the media files for pipeline 0.
 --
 -- * 'hgsManifestCompression' - When set to gzip, compresses HLS playlist.
 --
@@ -188,6 +209,7 @@ hlsGroupSettings pDestination_
                       _hgsTimedMetadataId3Period = Nothing,
                       _hgsIvInManifest = Nothing, _hgsTsFileMode = Nothing,
                       _hgsMinSegmentLength = Nothing,
+                      _hgsIFrameOnlyPlaylists = Nothing,
                       _hgsProgramDateTime = Nothing,
                       _hgsIndexNSegments = Nothing,
                       _hgsProgramDateTimePeriod = Nothing,
@@ -200,6 +222,7 @@ hlsGroupSettings pDestination_
                       _hgsBaseURLManifest = Nothing,
                       _hgsAdMarkers = Nothing, _hgsKeyFormat = Nothing,
                       _hgsSegmentLength = Nothing,
+                      _hgsHlsId3SegmentTagging = Nothing,
                       _hgsTimedMetadataId3Frame = Nothing,
                       _hgsBaseURLContent = Nothing,
                       _hgsOutputSelection = Nothing,
@@ -211,8 +234,11 @@ hlsGroupSettings pDestination_
                       _hgsKeyFormatVersions = Nothing,
                       _hgsClientCache = Nothing,
                       _hgsTimestampDeltaMilliseconds = Nothing,
+                      _hgsBaseURLManifest1 = Nothing,
+                      _hgsRedundantManifest = Nothing,
                       _hgsStreamInfResolution = Nothing,
                       _hgsKeepSegments = Nothing,
+                      _hgsBaseURLContent1 = Nothing,
                       _hgsManifestCompression = Nothing,
                       _hgsDestination = pDestination_}
 
@@ -232,7 +258,7 @@ hgsTimedMetadataId3Period = lens _hgsTimedMetadataId3Period (\ s a -> s{_hgsTime
 hgsIvInManifest :: Lens' HlsGroupSettings (Maybe HlsIvInManifest)
 hgsIvInManifest = lens _hgsIvInManifest (\ s a -> s{_hgsIvInManifest = a})
 
--- | When set to "singleFile", emits the program as a single media resource (.ts) file, and uses #EXT-X-BYTERANGE tags to index segment for playback. Playback of VOD mode content during event is not guaranteed due to HTTP server caching.
+-- | SEGMENTEDFILES: Emit the program as segments - multiple .ts media files. SINGLEFILE: Applies only if Mode field is VOD. Emit the program as a single .ts media file. The media manifest includes #EXT-X-BYTERANGE tags to index segments for playback. A typical use for this value is when sending the output to AWS Elemental MediaConvert, which can accept only a single media file. Playback while the channel is running is not guaranteed due to HTTP server caching.
 hgsTsFileMode :: Lens' HlsGroupSettings (Maybe HlsTsFileMode)
 hgsTsFileMode = lens _hgsTsFileMode (\ s a -> s{_hgsTsFileMode = a})
 
@@ -240,11 +266,15 @@ hgsTsFileMode = lens _hgsTsFileMode (\ s a -> s{_hgsTsFileMode = a})
 hgsMinSegmentLength :: Lens' HlsGroupSettings (Maybe Natural)
 hgsMinSegmentLength = lens _hgsMinSegmentLength (\ s a -> s{_hgsMinSegmentLength = a}) . mapping _Nat
 
+-- | DISABLED: Do not create an I-frame-only manifest, but do create the master and media manifests (according to the Output Selection field). STANDARD: Create an I-frame-only manifest for each output that contains video, as well as the other manifests (according to the Output Selection field). The I-frame manifest contains a #EXT-X-I-FRAMES-ONLY tag to indicate it is I-frame only, and one or more #EXT-X-BYTERANGE entries identifying the I-frame position. For example, #EXT-X-BYTERANGE:160364@1461888"
+hgsIFrameOnlyPlaylists :: Lens' HlsGroupSettings (Maybe IFrameOnlyPlaylistType)
+hgsIFrameOnlyPlaylists = lens _hgsIFrameOnlyPlaylists (\ s a -> s{_hgsIFrameOnlyPlaylists = a})
+
 -- | Includes or excludes EXT-X-PROGRAM-DATE-TIME tag in .m3u8 manifest files. The value is calculated as follows: either the program date and time are initialized using the input timecode source, or the time is initialized using the input timecode source and the date is initialized using the timestampOffset.
 hgsProgramDateTime :: Lens' HlsGroupSettings (Maybe HlsProgramDateTime)
 hgsProgramDateTime = lens _hgsProgramDateTime (\ s a -> s{_hgsProgramDateTime = a})
 
--- | If mode is "live", the number of segments to retain in the manifest (.m3u8) file. This number must be less than or equal to keepSegments. If mode is "vod", this parameter has no effect.
+-- | Applies only if Mode field is LIVE. Specifies the maximum number of segments in the media manifest file. After this maximum, older segments are removed from the media manifest. This number must be less than or equal to the Keep Segments field.
 hgsIndexNSegments :: Lens' HlsGroupSettings (Maybe Natural)
 hgsIndexNSegments = lens _hgsIndexNSegments (\ s a -> s{_hgsIndexNSegments = a}) . mapping _Nat
 
@@ -296,6 +326,10 @@ hgsKeyFormat = lens _hgsKeyFormat (\ s a -> s{_hgsKeyFormat = a})
 hgsSegmentLength :: Lens' HlsGroupSettings (Maybe Natural)
 hgsSegmentLength = lens _hgsSegmentLength (\ s a -> s{_hgsSegmentLength = a}) . mapping _Nat
 
+-- | State of HLS ID3 Segment Tagging
+hgsHlsId3SegmentTagging :: Lens' HlsGroupSettings (Maybe HlsId3SegmentTaggingState)
+hgsHlsId3SegmentTagging = lens _hgsHlsId3SegmentTagging (\ s a -> s{_hgsHlsId3SegmentTagging = a})
+
 -- | Indicates ID3 frame that has the timecode.
 hgsTimedMetadataId3Frame :: Lens' HlsGroupSettings (Maybe HlsTimedMetadataId3Frame)
 hgsTimedMetadataId3Frame = lens _hgsTimedMetadataId3Frame (\ s a -> s{_hgsTimedMetadataId3Frame = a})
@@ -304,7 +338,7 @@ hgsTimedMetadataId3Frame = lens _hgsTimedMetadataId3Frame (\ s a -> s{_hgsTimedM
 hgsBaseURLContent :: Lens' HlsGroupSettings (Maybe Text)
 hgsBaseURLContent = lens _hgsBaseURLContent (\ s a -> s{_hgsBaseURLContent = a})
 
--- | Generates the .m3u8 playlist file for this HLS output group. The segmentsOnly option will output segments without the .m3u8 file.
+-- | MANIFESTSANDSEGMENTS: Generates manifests (master manifest, if applicable, and media manifests) for this output group. VARIANTMANIFESTSANDSEGMENTS: Generates media manifests for this output group, but not a master manifest. SEGMENTSONLY: Does not generate any manifests for this output group.
 hgsOutputSelection :: Lens' HlsGroupSettings (Maybe HlsOutputSelection)
 hgsOutputSelection = lens _hgsOutputSelection (\ s a -> s{_hgsOutputSelection = a})
 
@@ -324,7 +358,7 @@ hgsManifestDurationFormat = lens _hgsManifestDurationFormat (\ s a -> s{_hgsMani
 hgsIvSource :: Lens' HlsGroupSettings (Maybe HlsIvSource)
 hgsIvSource = lens _hgsIvSource (\ s a -> s{_hgsIvSource = a})
 
--- | When set to useInputSegmentation, the output segment or fragment points are set by the RAI markers from the input streams.
+-- | useInputSegmentation has been deprecated. The configured segment size is always used.
 hgsSegmentationMode :: Lens' HlsGroupSettings (Maybe HlsSegmentationMode)
 hgsSegmentationMode = lens _hgsSegmentationMode (\ s a -> s{_hgsSegmentationMode = a})
 
@@ -340,13 +374,25 @@ hgsClientCache = lens _hgsClientCache (\ s a -> s{_hgsClientCache = a})
 hgsTimestampDeltaMilliseconds :: Lens' HlsGroupSettings (Maybe Natural)
 hgsTimestampDeltaMilliseconds = lens _hgsTimestampDeltaMilliseconds (\ s a -> s{_hgsTimestampDeltaMilliseconds = a}) . mapping _Nat
 
+-- | Optional. One value per output group. Complete this field only if you are completing Base URL manifest A, and the downstream system has notified you that the child manifest files for pipeline 1 of all outputs are in a location different from the child manifest files for pipeline 0.
+hgsBaseURLManifest1 :: Lens' HlsGroupSettings (Maybe Text)
+hgsBaseURLManifest1 = lens _hgsBaseURLManifest1 (\ s a -> s{_hgsBaseURLManifest1 = a})
+
+-- | ENABLED: The master manifest (.m3u8 file) for each pipeline includes information about both pipelines: first its own media files, then the media files of the other pipeline. This feature allows playout device that support stale manifest detection to switch from one manifest to the other, when the current manifest seems to be stale. There are still two destinations and two master manifests, but both master manifests reference the media files from both pipelines. DISABLED: The master manifest (.m3u8 file) for each pipeline includes information about its own pipeline only. For an HLS output group with MediaPackage as the destination, the DISABLED behavior is always followed. MediaPackage regenerates the manifests it serves to players so a redundant manifest from MediaLive is irrelevant.
+hgsRedundantManifest :: Lens' HlsGroupSettings (Maybe HlsRedundantManifest)
+hgsRedundantManifest = lens _hgsRedundantManifest (\ s a -> s{_hgsRedundantManifest = a})
+
 -- | Include or exclude RESOLUTION attribute for video in EXT-X-STREAM-INF tag of variant manifest.
 hgsStreamInfResolution :: Lens' HlsGroupSettings (Maybe HlsStreamInfResolution)
 hgsStreamInfResolution = lens _hgsStreamInfResolution (\ s a -> s{_hgsStreamInfResolution = a})
 
--- | If mode is "live", the number of TS segments to retain in the destination directory. If mode is "vod", this parameter has no effect.
+-- | Applies only if Mode field is LIVE. Specifies the number of media segments (.ts files) to retain in the destination directory.
 hgsKeepSegments :: Lens' HlsGroupSettings (Maybe Natural)
 hgsKeepSegments = lens _hgsKeepSegments (\ s a -> s{_hgsKeepSegments = a}) . mapping _Nat
+
+-- | Optional. One value per output group. This field is required only if you are completing Base URL content A, and the downstream system has notified you that the media files for pipeline 1 of all outputs are in a location different from the media files for pipeline 0.
+hgsBaseURLContent1 :: Lens' HlsGroupSettings (Maybe Text)
+hgsBaseURLContent1 = lens _hgsBaseURLContent1 (\ s a -> s{_hgsBaseURLContent1 = a})
 
 -- | When set to gzip, compresses HLS playlist.
 hgsManifestCompression :: Lens' HlsGroupSettings (Maybe HlsManifestCompression)
@@ -367,6 +413,7 @@ instance FromJSON HlsGroupSettings where
                      <*> (x .:? "ivInManifest")
                      <*> (x .:? "tsFileMode")
                      <*> (x .:? "minSegmentLength")
+                     <*> (x .:? "iFrameOnlyPlaylists")
                      <*> (x .:? "programDateTime")
                      <*> (x .:? "indexNSegments")
                      <*> (x .:? "programDateTimePeriod")
@@ -381,6 +428,7 @@ instance FromJSON HlsGroupSettings where
                      <*> (x .:? "adMarkers" .!= mempty)
                      <*> (x .:? "keyFormat")
                      <*> (x .:? "segmentLength")
+                     <*> (x .:? "hlsId3SegmentTagging")
                      <*> (x .:? "timedMetadataId3Frame")
                      <*> (x .:? "baseUrlContent")
                      <*> (x .:? "outputSelection")
@@ -392,8 +440,11 @@ instance FromJSON HlsGroupSettings where
                      <*> (x .:? "keyFormatVersions")
                      <*> (x .:? "clientCache")
                      <*> (x .:? "timestampDeltaMilliseconds")
+                     <*> (x .:? "baseUrlManifest1")
+                     <*> (x .:? "redundantManifest")
                      <*> (x .:? "streamInfResolution")
                      <*> (x .:? "keepSegments")
+                     <*> (x .:? "baseUrlContent1")
                      <*> (x .:? "manifestCompression")
                      <*> (x .: "destination"))
 
@@ -413,6 +464,8 @@ instance ToJSON HlsGroupSettings where
                   ("ivInManifest" .=) <$> _hgsIvInManifest,
                   ("tsFileMode" .=) <$> _hgsTsFileMode,
                   ("minSegmentLength" .=) <$> _hgsMinSegmentLength,
+                  ("iFrameOnlyPlaylists" .=) <$>
+                    _hgsIFrameOnlyPlaylists,
                   ("programDateTime" .=) <$> _hgsProgramDateTime,
                   ("indexNSegments" .=) <$> _hgsIndexNSegments,
                   ("programDateTimePeriod" .=) <$>
@@ -430,6 +483,8 @@ instance ToJSON HlsGroupSettings where
                   ("adMarkers" .=) <$> _hgsAdMarkers,
                   ("keyFormat" .=) <$> _hgsKeyFormat,
                   ("segmentLength" .=) <$> _hgsSegmentLength,
+                  ("hlsId3SegmentTagging" .=) <$>
+                    _hgsHlsId3SegmentTagging,
                   ("timedMetadataId3Frame" .=) <$>
                     _hgsTimedMetadataId3Frame,
                   ("baseUrlContent" .=) <$> _hgsBaseURLContent,
@@ -446,9 +501,12 @@ instance ToJSON HlsGroupSettings where
                   ("clientCache" .=) <$> _hgsClientCache,
                   ("timestampDeltaMilliseconds" .=) <$>
                     _hgsTimestampDeltaMilliseconds,
+                  ("baseUrlManifest1" .=) <$> _hgsBaseURLManifest1,
+                  ("redundantManifest" .=) <$> _hgsRedundantManifest,
                   ("streamInfResolution" .=) <$>
                     _hgsStreamInfResolution,
                   ("keepSegments" .=) <$> _hgsKeepSegments,
+                  ("baseUrlContent1" .=) <$> _hgsBaseURLContent1,
                   ("manifestCompression" .=) <$>
                     _hgsManifestCompression,
                   Just ("destination" .= _hgsDestination)])

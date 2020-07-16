@@ -23,7 +23,19 @@
 --
 -- The response contains a 'TrustedAdvisorCheckRefreshStatus' object, which contains these fields:
 --
---     * __status.__ The refresh status of the check: "none", "enqueued", "processing", "success", or "abandoned".
+--     * __status.__ The refresh status of the check: 
+--
+--     * @none:@ The check is not refreshed or the non-success status exceeds the timeout
+--
+--     * @enqueued:@ The check refresh requests has entered the refresh queue
+--
+--     * @processing:@ The check refresh request is picked up by the rule processing engine
+--
+--     * @success:@ The check is successfully refreshed
+--
+--     * @abandoned:@ The check refresh has failed
+--
+--
 --
 --     * __millisUntilNextRefreshable.__ The amount of time, in milliseconds, until the check is eligible for refresh.
 --

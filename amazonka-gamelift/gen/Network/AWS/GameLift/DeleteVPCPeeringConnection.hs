@@ -23,8 +23,6 @@
 --
 -- Once a valid authorization exists, call this operation from the AWS account that is used to manage the Amazon GameLift fleets. Identify the connection to delete by the connection ID and fleet ID. If successful, the connection is removed. 
 --
--- VPC peering connection operations include:
---
 --     * 'CreateVpcPeeringAuthorization' 
 --
 --     * 'DescribeVpcPeeringAuthorizations' 
@@ -78,9 +76,9 @@ data DeleteVPCPeeringConnection = DeleteVPCPeeringConnection'{_dvpcFleetId
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dvpcFleetId' - Unique identifier for a fleet. This value must match the fleet ID referenced in the VPC peering connection record.
+-- * 'dvpcFleetId' - A unique identifier for a fleet. This fleet specified must match the fleet referenced in the VPC peering connection record. You can use either the fleet ID or ARN value.
 --
--- * 'dvpcVPCPeeringConnectionId' - Unique identifier for a VPC peering connection. This value is included in the 'VpcPeeringConnection' object, which can be retrieved by calling 'DescribeVpcPeeringConnections' .
+-- * 'dvpcVPCPeeringConnectionId' - A unique identifier for a VPC peering connection. This value is included in the 'VpcPeeringConnection' object, which can be retrieved by calling 'DescribeVpcPeeringConnections' .
 deleteVPCPeeringConnection
     :: Text -- ^ 'dvpcFleetId'
     -> Text -- ^ 'dvpcVPCPeeringConnectionId'
@@ -92,11 +90,11 @@ deleteVPCPeeringConnection pFleetId_
                                 _dvpcVPCPeeringConnectionId =
                                   pVPCPeeringConnectionId_}
 
--- | Unique identifier for a fleet. This value must match the fleet ID referenced in the VPC peering connection record.
+-- | A unique identifier for a fleet. This fleet specified must match the fleet referenced in the VPC peering connection record. You can use either the fleet ID or ARN value.
 dvpcFleetId :: Lens' DeleteVPCPeeringConnection Text
 dvpcFleetId = lens _dvpcFleetId (\ s a -> s{_dvpcFleetId = a})
 
--- | Unique identifier for a VPC peering connection. This value is included in the 'VpcPeeringConnection' object, which can be retrieved by calling 'DescribeVpcPeeringConnections' .
+-- | A unique identifier for a VPC peering connection. This value is included in the 'VpcPeeringConnection' object, which can be retrieved by calling 'DescribeVpcPeeringConnections' .
 dvpcVPCPeeringConnectionId :: Lens' DeleteVPCPeeringConnection Text
 dvpcVPCPeeringConnectionId = lens _dvpcVPCPeeringConnectionId (\ s a -> s{_dvpcVPCPeeringConnectionId = a})
 

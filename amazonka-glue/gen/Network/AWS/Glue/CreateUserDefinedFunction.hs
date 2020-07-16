@@ -60,7 +60,7 @@ data CreateUserDefinedFunction = CreateUserDefinedFunction'{_cudfCatalogId
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'cudfCatalogId' - The ID of the Data Catalog in which to create the function. If none is supplied, the AWS account ID is used by default.
+-- * 'cudfCatalogId' - The ID of the Data Catalog in which to create the function. If none is provided, the AWS account ID is used by default.
 --
 -- * 'cudfDatabaseName' - The name of the catalog database in which to create the function.
 --
@@ -76,7 +76,7 @@ createUserDefinedFunction pDatabaseName_
                                _cudfDatabaseName = pDatabaseName_,
                                _cudfFunctionInput = pFunctionInput_}
 
--- | The ID of the Data Catalog in which to create the function. If none is supplied, the AWS account ID is used by default.
+-- | The ID of the Data Catalog in which to create the function. If none is provided, the AWS account ID is used by default.
 cudfCatalogId :: Lens' CreateUserDefinedFunction (Maybe Text)
 cudfCatalogId = lens _cudfCatalogId (\ s a -> s{_cudfCatalogId = a})
 

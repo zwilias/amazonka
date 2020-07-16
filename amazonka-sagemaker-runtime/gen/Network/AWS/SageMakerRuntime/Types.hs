@@ -49,6 +49,11 @@ sageMakerRuntime
             = Just "throttling_exception"
           | has (hasCode "Throttling" . hasStatus 400) e =
             Just "throttling"
+          | has
+              (hasCode "ProvisionedThroughputExceededException" .
+                 hasStatus 400)
+              e
+            = Just "throughput_exceeded"
           | has (hasStatus 504) e = Just "gateway_timeout"
           | has
               (hasCode "RequestThrottledException" . hasStatus 400)
@@ -69,7 +74,7 @@ _ValidationError
       "ValidationError"
       . hasStatus 400
 
--- | Internal failure occurred. 
+-- | An internal failure occurred. 
 --
 --
 _InternalFailure :: AsError a => Getting (First ServiceError) a ServiceError
@@ -78,7 +83,7 @@ _InternalFailure
       "InternalFailure"
       . hasStatus 500
 
--- | Model (owned by the customer in the container) returned an error 500. 
+-- | Model (owned by the customer in the container) returned 4xx or 5xx error code. 
 --
 --
 _ModelError :: AsError a => Getting (First ServiceError) a ServiceError
@@ -86,7 +91,7 @@ _ModelError
   = _MatchServiceError sageMakerRuntime "ModelError" .
       hasStatus 424
 
--- | Service is unavailable. Try your call again. 
+-- | The service is unavailable. Try your call again. 
 --
 --
 _ServiceUnavailable :: AsError a => Getting (First ServiceError) a ServiceError

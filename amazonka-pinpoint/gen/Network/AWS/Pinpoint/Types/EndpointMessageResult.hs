@@ -21,19 +21,22 @@ import Network.AWS.Lens
 import Network.AWS.Pinpoint.Types.DeliveryStatus
 import Network.AWS.Prelude
 
--- | The result from sending a message to an endpoint.
+-- | Provides information about the delivery status and results of sending a message directly to an endpoint.
+--
+--
 --
 -- /See:/ 'endpointMessageResult' smart constructor.
-data EndpointMessageResult = EndpointMessageResult'{_emrDeliveryStatus
-                                                    :: !(Maybe DeliveryStatus),
-                                                    _emrAddress ::
-                                                    !(Maybe Text),
+data EndpointMessageResult = EndpointMessageResult'{_emrAddress
+                                                    :: !(Maybe Text),
                                                     _emrStatusMessage ::
                                                     !(Maybe Text),
                                                     _emrUpdatedToken ::
                                                     !(Maybe Text),
-                                                    _emrStatusCode ::
-                                                    !(Maybe Int)}
+                                                    _emrMessageId ::
+                                                    !(Maybe Text),
+                                                    _emrDeliveryStatus ::
+                                                    !DeliveryStatus,
+                                                    _emrStatusCode :: !Int}
                                deriving (Eq, Read, Show, Data, Typeable,
                                          Generic)
 
@@ -41,41 +44,50 @@ data EndpointMessageResult = EndpointMessageResult'{_emrDeliveryStatus
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'emrDeliveryStatus' - Delivery status of message.
+-- * 'emrAddress' - The endpoint address that the message was delivered to.
 --
--- * 'emrAddress' - Address that endpoint message was delivered to.
+-- * 'emrStatusMessage' - The status message for delivering the message.
 --
--- * 'emrStatusMessage' - Status message for message delivery.
+-- * 'emrUpdatedToken' - For push notifications that are sent through the GCM channel, specifies whether the endpoint's device registration token was updated as part of delivering the message.
 --
--- * 'emrUpdatedToken' - If token was updated as part of delivery. (This is GCM Specific)
+-- * 'emrMessageId' - The unique identifier for the message that was sent.
 --
--- * 'emrStatusCode' - Downstream service status code.
+-- * 'emrDeliveryStatus' - The delivery status of the message. Possible values are:     * DUPLICATE - The endpoint address is a duplicate of another endpoint address. Amazon Pinpoint won't attempt to send the message again.     * OPT_OUT - The user who's associated with the endpoint has opted out of receiving messages from you. Amazon Pinpoint won't attempt to send the message again.     * PERMANENT_FAILURE - An error occurred when delivering the message to the endpoint. Amazon Pinpoint won't attempt to send the message again.     * SUCCESSFUL - The message was successfully delivered to the endpoint.     * TEMPORARY_FAILURE - A temporary error occurred. Amazon Pinpoint won't attempt to send the message again.     * THROTTLED - Amazon Pinpoint throttled the operation to send the message to the endpoint.     * TIMEOUT - The message couldn't be sent within the timeout period.     * UNKNOWN_FAILURE - An unknown error occurred.
+--
+-- * 'emrStatusCode' - The downstream service status code for delivering the message.
 endpointMessageResult
-    :: EndpointMessageResult
-endpointMessageResult
-  = EndpointMessageResult'{_emrDeliveryStatus =
-                             Nothing,
-                           _emrAddress = Nothing, _emrStatusMessage = Nothing,
-                           _emrUpdatedToken = Nothing, _emrStatusCode = Nothing}
+    :: DeliveryStatus -- ^ 'emrDeliveryStatus'
+    -> Int -- ^ 'emrStatusCode'
+    -> EndpointMessageResult
+endpointMessageResult pDeliveryStatus_ pStatusCode_
+  = EndpointMessageResult'{_emrAddress = Nothing,
+                           _emrStatusMessage = Nothing,
+                           _emrUpdatedToken = Nothing, _emrMessageId = Nothing,
+                           _emrDeliveryStatus = pDeliveryStatus_,
+                           _emrStatusCode = pStatusCode_}
 
--- | Delivery status of message.
-emrDeliveryStatus :: Lens' EndpointMessageResult (Maybe DeliveryStatus)
-emrDeliveryStatus = lens _emrDeliveryStatus (\ s a -> s{_emrDeliveryStatus = a})
-
--- | Address that endpoint message was delivered to.
+-- | The endpoint address that the message was delivered to.
 emrAddress :: Lens' EndpointMessageResult (Maybe Text)
 emrAddress = lens _emrAddress (\ s a -> s{_emrAddress = a})
 
--- | Status message for message delivery.
+-- | The status message for delivering the message.
 emrStatusMessage :: Lens' EndpointMessageResult (Maybe Text)
 emrStatusMessage = lens _emrStatusMessage (\ s a -> s{_emrStatusMessage = a})
 
--- | If token was updated as part of delivery. (This is GCM Specific)
+-- | For push notifications that are sent through the GCM channel, specifies whether the endpoint's device registration token was updated as part of delivering the message.
 emrUpdatedToken :: Lens' EndpointMessageResult (Maybe Text)
 emrUpdatedToken = lens _emrUpdatedToken (\ s a -> s{_emrUpdatedToken = a})
 
--- | Downstream service status code.
-emrStatusCode :: Lens' EndpointMessageResult (Maybe Int)
+-- | The unique identifier for the message that was sent.
+emrMessageId :: Lens' EndpointMessageResult (Maybe Text)
+emrMessageId = lens _emrMessageId (\ s a -> s{_emrMessageId = a})
+
+-- | The delivery status of the message. Possible values are:     * DUPLICATE - The endpoint address is a duplicate of another endpoint address. Amazon Pinpoint won't attempt to send the message again.     * OPT_OUT - The user who's associated with the endpoint has opted out of receiving messages from you. Amazon Pinpoint won't attempt to send the message again.     * PERMANENT_FAILURE - An error occurred when delivering the message to the endpoint. Amazon Pinpoint won't attempt to send the message again.     * SUCCESSFUL - The message was successfully delivered to the endpoint.     * TEMPORARY_FAILURE - A temporary error occurred. Amazon Pinpoint won't attempt to send the message again.     * THROTTLED - Amazon Pinpoint throttled the operation to send the message to the endpoint.     * TIMEOUT - The message couldn't be sent within the timeout period.     * UNKNOWN_FAILURE - An unknown error occurred.
+emrDeliveryStatus :: Lens' EndpointMessageResult DeliveryStatus
+emrDeliveryStatus = lens _emrDeliveryStatus (\ s a -> s{_emrDeliveryStatus = a})
+
+-- | The downstream service status code for delivering the message.
+emrStatusCode :: Lens' EndpointMessageResult Int
 emrStatusCode = lens _emrStatusCode (\ s a -> s{_emrStatusCode = a})
 
 instance FromJSON EndpointMessageResult where
@@ -83,10 +95,11 @@ instance FromJSON EndpointMessageResult where
           = withObject "EndpointMessageResult"
               (\ x ->
                  EndpointMessageResult' <$>
-                   (x .:? "DeliveryStatus") <*> (x .:? "Address") <*>
-                     (x .:? "StatusMessage")
-                     <*> (x .:? "UpdatedToken")
-                     <*> (x .:? "StatusCode"))
+                   (x .:? "Address") <*> (x .:? "StatusMessage") <*>
+                     (x .:? "UpdatedToken")
+                     <*> (x .:? "MessageId")
+                     <*> (x .: "DeliveryStatus")
+                     <*> (x .: "StatusCode"))
 
 instance Hashable EndpointMessageResult where
 

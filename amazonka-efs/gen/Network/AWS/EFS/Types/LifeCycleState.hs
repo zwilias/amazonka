@@ -23,6 +23,7 @@ module Network.AWS.EFS.Types.LifeCycleState (
     , Creating
     , Deleted
     , Deleting
+    , Updating
     )
   ) where
 
@@ -45,11 +46,15 @@ pattern Deleted = LifeCycleState' "deleted"
 pattern Deleting :: LifeCycleState
 pattern Deleting = LifeCycleState' "deleting"
 
+pattern Updating :: LifeCycleState
+pattern Updating = LifeCycleState' "updating"
+
 {-# COMPLETE
   Available,
   Creating,
   Deleted,
   Deleting,
+  Updating,
   LifeCycleState' #-}
 
 instance FromText LifeCycleState where
@@ -68,12 +73,14 @@ instance Enum LifeCycleState where
         1 -> Creating
         2 -> Deleted
         3 -> Deleting
+        4 -> Updating
         _ -> (error . showText) $ "Unknown index for LifeCycleState: " <> toText i
     fromEnum x = case x of
         Available -> 0
         Creating -> 1
         Deleted -> 2
         Deleting -> 3
+        Updating -> 4
         LifeCycleState' name -> (error . showText) $ "Unknown LifeCycleState: " <> original name
 
 -- | Represents the bounds of /known/ $LifeCycleState.
@@ -81,7 +88,7 @@ instance Enum LifeCycleState where
 --   This instance exists only for backward compatibility.
 instance Bounded LifeCycleState where
     minBound = Available
-    maxBound = Deleting
+    maxBound = Updating
 
 instance Hashable     LifeCycleState
 instance NFData       LifeCycleState

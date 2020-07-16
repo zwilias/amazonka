@@ -20,7 +20,7 @@ module Network.AWS.WorkSpaces.Types.RootStorage where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | Information about the root volume for a WorkSpace bundle.
+-- | Describes the root volume for a WorkSpace bundle.
 --
 --
 --

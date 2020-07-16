@@ -27,7 +27,7 @@ module Network.AWS.MediaLive.Types.HlsIvInManifest (
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | Placeholder documentation for HlsIvInManifest
+-- | Hls Iv In Manifest
 data HlsIvInManifest = HlsIvInManifest' (CI Text)
                          deriving (Eq, Ord, Read, Show, Data, Typeable,
                                    Generic)

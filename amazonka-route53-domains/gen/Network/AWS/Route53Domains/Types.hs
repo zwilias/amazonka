@@ -164,6 +164,11 @@ route53Domains
             = Just "throttling_exception"
           | has (hasCode "Throttling" . hasStatus 400) e =
             Just "throttling"
+          | has
+              (hasCode "ProvisionedThroughputExceededException" .
+                 hasStatus 400)
+              e
+            = Just "throughput_exceeded"
           | has (hasStatus 504) e = Just "gateway_timeout"
           | has
               (hasCode "RequestThrottledException" . hasStatus 400)
@@ -198,7 +203,7 @@ _TLDRulesViolation
   = _MatchServiceError route53Domains
       "TLDRulesViolation"
 
--- | The requested item is not acceptable. For example, for an OperationId it might refer to the ID of an operation that is already completed. For a domain name, it might not be a valid domain name or belong to the requester account.
+-- | The requested item is not acceptable. For example, for APIs that accept a domain name, the request might specify a domain name that doesn't belong to the account that submitted the request. For @AcceptDomainTransferFromAnotherAwsAccount@ , the password might be invalid.
 --
 --
 _InvalidInput :: AsError a => Getting (First ServiceError) a ServiceError

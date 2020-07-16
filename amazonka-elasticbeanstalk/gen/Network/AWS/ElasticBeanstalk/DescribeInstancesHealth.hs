@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Retrives detailed information about the health of instances in your AWS Elastic Beanstalk. This operation requires <http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/health-enhanced.html enhanced health reporting> .
+-- Retrieves detailed information about the health of instances in your AWS Elastic Beanstalk. This operation requires <https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/health-enhanced.html enhanced health reporting> .
 --
 --
 module Network.AWS.ElasticBeanstalk.DescribeInstancesHealth
@@ -164,7 +164,7 @@ data DescribeInstancesHealthResponse = DescribeInstancesHealthResponse'{_dihrsIn
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dihrsInstanceHealthList' - Detailed health information about each instance.
+-- * 'dihrsInstanceHealthList' - Detailed health information about each instance. The output differs slightly between Linux and Windows environments. There is a difference in the members that are supported under the @<CPUUtilization>@ type.
 --
 -- * 'dihrsNextToken' - Pagination token for the next page of results, if available.
 --
@@ -181,7 +181,7 @@ describeInstancesHealthResponse pResponseStatus_
                                      _dihrsRefreshedAt = Nothing,
                                      _dihrsResponseStatus = pResponseStatus_}
 
--- | Detailed health information about each instance.
+-- | Detailed health information about each instance. The output differs slightly between Linux and Windows environments. There is a difference in the members that are supported under the @<CPUUtilization>@ type.
 dihrsInstanceHealthList :: Lens' DescribeInstancesHealthResponse [SingleInstanceHealth]
 dihrsInstanceHealthList = lens _dihrsInstanceHealthList (\ s a -> s{_dihrsInstanceHealthList = a}) . _Default . _Coerce
 

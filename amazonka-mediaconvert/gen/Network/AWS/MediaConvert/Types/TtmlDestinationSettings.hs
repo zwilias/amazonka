@@ -35,14 +35,14 @@ newtype TtmlDestinationSettings = TtmlDestinationSettings'{_tdsStylePassthrough
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'tdsStylePassthrough' - Undocumented member.
+-- * 'tdsStylePassthrough' - Pass through style and position information from a TTML-like input source (TTML, SMPTE-TT) to the TTML output.
 ttmlDestinationSettings
     :: TtmlDestinationSettings
 ttmlDestinationSettings
   = TtmlDestinationSettings'{_tdsStylePassthrough =
                                Nothing}
 
--- | Undocumented member.
+-- | Pass through style and position information from a TTML-like input source (TTML, SMPTE-TT) to the TTML output.
 tdsStylePassthrough :: Lens' TtmlDestinationSettings (Maybe TtmlStylePassthrough)
 tdsStylePassthrough = lens _tdsStylePassthrough (\ s a -> s{_tdsStylePassthrough = a})
 

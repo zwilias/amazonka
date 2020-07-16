@@ -26,6 +26,7 @@ module Network.AWS.IAM.Types.SummaryKeyType (
     , AttachedPoliciesPerGroupQuota
     , AttachedPoliciesPerRoleQuota
     , AttachedPoliciesPerUserQuota
+    , GlobalEndpointTokenVersion
     , GroupPolicySizeQuota
     , Groups
     , GroupsPerUserQuota
@@ -74,6 +75,9 @@ pattern AttachedPoliciesPerRoleQuota = SummaryKeyType' "AttachedPoliciesPerRoleQ
 
 pattern AttachedPoliciesPerUserQuota :: SummaryKeyType
 pattern AttachedPoliciesPerUserQuota = SummaryKeyType' "AttachedPoliciesPerUserQuota"
+
+pattern GlobalEndpointTokenVersion :: SummaryKeyType
+pattern GlobalEndpointTokenVersion = SummaryKeyType' "GlobalEndpointTokenVersion"
 
 pattern GroupPolicySizeQuota :: SummaryKeyType
 pattern GroupPolicySizeQuota = SummaryKeyType' "GroupPolicySizeQuota"
@@ -137,6 +141,7 @@ pattern VersionsPerPolicyQuota = SummaryKeyType' "VersionsPerPolicyQuota"
   AttachedPoliciesPerGroupQuota,
   AttachedPoliciesPerRoleQuota,
   AttachedPoliciesPerUserQuota,
+  GlobalEndpointTokenVersion,
   GroupPolicySizeQuota,
   Groups,
   GroupsPerUserQuota,
@@ -176,24 +181,25 @@ instance Enum SummaryKeyType where
         4 -> AttachedPoliciesPerGroupQuota
         5 -> AttachedPoliciesPerRoleQuota
         6 -> AttachedPoliciesPerUserQuota
-        7 -> GroupPolicySizeQuota
-        8 -> Groups
-        9 -> GroupsPerUserQuota
-        10 -> GroupsQuota
-        11 -> MFADevices
-        12 -> MFADevicesInUse
-        13 -> Policies
-        14 -> PoliciesQuota
-        15 -> PolicySizeQuota
-        16 -> PolicyVersionsInUse
-        17 -> PolicyVersionsInUseQuota
-        18 -> ServerCertificates
-        19 -> ServerCertificatesQuota
-        20 -> SigningCertificatesPerUserQuota
-        21 -> UserPolicySizeQuota
-        22 -> Users
-        23 -> UsersQuota
-        24 -> VersionsPerPolicyQuota
+        7 -> GlobalEndpointTokenVersion
+        8 -> GroupPolicySizeQuota
+        9 -> Groups
+        10 -> GroupsPerUserQuota
+        11 -> GroupsQuota
+        12 -> MFADevices
+        13 -> MFADevicesInUse
+        14 -> Policies
+        15 -> PoliciesQuota
+        16 -> PolicySizeQuota
+        17 -> PolicyVersionsInUse
+        18 -> PolicyVersionsInUseQuota
+        19 -> ServerCertificates
+        20 -> ServerCertificatesQuota
+        21 -> SigningCertificatesPerUserQuota
+        22 -> UserPolicySizeQuota
+        23 -> Users
+        24 -> UsersQuota
+        25 -> VersionsPerPolicyQuota
         _ -> (error . showText) $ "Unknown index for SummaryKeyType: " <> toText i
     fromEnum x = case x of
         AccessKeysPerUserQuota -> 0
@@ -203,24 +209,25 @@ instance Enum SummaryKeyType where
         AttachedPoliciesPerGroupQuota -> 4
         AttachedPoliciesPerRoleQuota -> 5
         AttachedPoliciesPerUserQuota -> 6
-        GroupPolicySizeQuota -> 7
-        Groups -> 8
-        GroupsPerUserQuota -> 9
-        GroupsQuota -> 10
-        MFADevices -> 11
-        MFADevicesInUse -> 12
-        Policies -> 13
-        PoliciesQuota -> 14
-        PolicySizeQuota -> 15
-        PolicyVersionsInUse -> 16
-        PolicyVersionsInUseQuota -> 17
-        ServerCertificates -> 18
-        ServerCertificatesQuota -> 19
-        SigningCertificatesPerUserQuota -> 20
-        UserPolicySizeQuota -> 21
-        Users -> 22
-        UsersQuota -> 23
-        VersionsPerPolicyQuota -> 24
+        GlobalEndpointTokenVersion -> 7
+        GroupPolicySizeQuota -> 8
+        Groups -> 9
+        GroupsPerUserQuota -> 10
+        GroupsQuota -> 11
+        MFADevices -> 12
+        MFADevicesInUse -> 13
+        Policies -> 14
+        PoliciesQuota -> 15
+        PolicySizeQuota -> 16
+        PolicyVersionsInUse -> 17
+        PolicyVersionsInUseQuota -> 18
+        ServerCertificates -> 19
+        ServerCertificatesQuota -> 20
+        SigningCertificatesPerUserQuota -> 21
+        UserPolicySizeQuota -> 22
+        Users -> 23
+        UsersQuota -> 24
+        VersionsPerPolicyQuota -> 25
         SummaryKeyType' name -> (error . showText) $ "Unknown SummaryKeyType: " <> original name
 
 -- | Represents the bounds of /known/ $SummaryKeyType.

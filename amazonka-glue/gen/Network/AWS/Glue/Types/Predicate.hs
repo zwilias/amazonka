@@ -36,7 +36,7 @@ data Predicate = Predicate'{_pLogical ::
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'pLogical' - Optional field if only one condition is listed. If multiple conditions are listed, then this field is required.
+-- * 'pLogical' - An optional field if only one condition is listed. If multiple conditions are listed, then this field is required.
 --
 -- * 'pConditions' - A list of the conditions that determine when the trigger will fire.
 predicate
@@ -45,7 +45,7 @@ predicate
   = Predicate'{_pLogical = Nothing,
                _pConditions = Nothing}
 
--- | Optional field if only one condition is listed. If multiple conditions are listed, then this field is required.
+-- | An optional field if only one condition is listed. If multiple conditions are listed, then this field is required.
 pLogical :: Lens' Predicate (Maybe Logical)
 pLogical = lens _pLogical (\ s a -> s{_pLogical = a})
 

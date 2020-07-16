@@ -41,15 +41,15 @@ data InstanceAccess = InstanceAccess'{_iaInstanceId
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'iaInstanceId' - Unique identifier for an instance being accessed.
+-- * 'iaInstanceId' - A unique identifier for an instance being accessed.
 --
--- * 'iaIPAddress' - IP address assigned to the instance.
+-- * 'iaIPAddress' - IP address that is assigned to the instance.
 --
 -- * 'iaOperatingSystem' - Operating system that is running on the instance.
 --
 -- * 'iaCredentials' - Credentials required to access the instance.
 --
--- * 'iaFleetId' - Unique identifier for a fleet containing the instance being accessed.
+-- * 'iaFleetId' - A unique identifier for a fleet containing the instance being accessed.
 instanceAccess
     :: InstanceAccess
 instanceAccess
@@ -57,11 +57,11 @@ instanceAccess
                     _iaIPAddress = Nothing, _iaOperatingSystem = Nothing,
                     _iaCredentials = Nothing, _iaFleetId = Nothing}
 
--- | Unique identifier for an instance being accessed.
+-- | A unique identifier for an instance being accessed.
 iaInstanceId :: Lens' InstanceAccess (Maybe Text)
 iaInstanceId = lens _iaInstanceId (\ s a -> s{_iaInstanceId = a})
 
--- | IP address assigned to the instance.
+-- | IP address that is assigned to the instance.
 iaIPAddress :: Lens' InstanceAccess (Maybe Text)
 iaIPAddress = lens _iaIPAddress (\ s a -> s{_iaIPAddress = a})
 
@@ -73,7 +73,7 @@ iaOperatingSystem = lens _iaOperatingSystem (\ s a -> s{_iaOperatingSystem = a})
 iaCredentials :: Lens' InstanceAccess (Maybe InstanceCredentials)
 iaCredentials = lens _iaCredentials (\ s a -> s{_iaCredentials = a}) . mapping _Sensitive
 
--- | Unique identifier for a fleet containing the instance being accessed.
+-- | A unique identifier for a fleet containing the instance being accessed.
 iaFleetId :: Lens' InstanceAccess (Maybe Text)
 iaFleetId = lens _iaFleetId (\ s a -> s{_iaFleetId = a})
 

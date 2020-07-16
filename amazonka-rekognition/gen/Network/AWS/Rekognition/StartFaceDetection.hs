@@ -21,7 +21,9 @@
 -- Starts asynchronous detection of faces in a stored video.
 --
 --
--- Rekognition Video can detect faces in a video stored in an Amazon S3 bucket. Use 'Video' to specify the bucket name and the filename of the video. @StartFaceDetection@ returns a job identifier (@JobId@ ) that you use to get the results of the operation. When face detection is finished, Rekognition Video publishes a completion status to the Amazon Simple Notification Service topic that you specify in @NotificationChannel@ . To get the results of the label detection operation, first check that the status value published to the Amazon SNS topic is @SUCCEEDED@ . If so, call and pass the job identifier (@JobId@ ) from the initial call to @StartFaceDetection@ . For more information, see 'faces-video' .
+-- Amazon Rekognition Video can detect faces in a video stored in an Amazon S3 bucket. Use 'Video' to specify the bucket name and the filename of the video. @StartFaceDetection@ returns a job identifier (@JobId@ ) that you use to get the results of the operation. When face detection is finished, Amazon Rekognition Video publishes a completion status to the Amazon Simple Notification Service topic that you specify in @NotificationChannel@ . To get the results of the face detection operation, first check that the status value published to the Amazon SNS topic is @SUCCEEDED@ . If so, call 'GetFaceDetection' and pass the job identifier (@JobId@ ) from the initial call to @StartFaceDetection@ .
+--
+-- For more information, see Detecting Faces in a Stored Video in the Amazon Rekognition Developer Guide.
 --
 module Network.AWS.Rekognition.StartFaceDetection
     (
@@ -66,9 +68,9 @@ data StartFaceDetection = StartFaceDetection'{_sfdJobTag
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'sfdJobTag' - Unique identifier you specify to identify the job in the completion status published to the Amazon Simple Notification Service topic. 
+-- * 'sfdJobTag' - An identifier you specify that's returned in the completion notification that's published to your Amazon Simple Notification Service topic. For example, you can use @JobTag@ to group related jobs and identify them in the completion notification.
 --
--- * 'sfdNotificationChannel' - The ARN of the Amazon SNS topic to which you want Rekognition Video to publish the completion status of the face detection operation.
+-- * 'sfdNotificationChannel' - The ARN of the Amazon SNS topic to which you want Amazon Rekognition Video to publish the completion status of the face detection operation.
 --
 -- * 'sfdClientRequestToken' - Idempotent token used to identify the start request. If you use the same token with multiple @StartFaceDetection@ requests, the same @JobId@ is returned. Use @ClientRequestToken@ to prevent the same job from being accidently started more than once. 
 --
@@ -84,11 +86,11 @@ startFaceDetection pVideo_
                         _sfdClientRequestToken = Nothing,
                         _sfdFaceAttributes = Nothing, _sfdVideo = pVideo_}
 
--- | Unique identifier you specify to identify the job in the completion status published to the Amazon Simple Notification Service topic. 
+-- | An identifier you specify that's returned in the completion notification that's published to your Amazon Simple Notification Service topic. For example, you can use @JobTag@ to group related jobs and identify them in the completion notification.
 sfdJobTag :: Lens' StartFaceDetection (Maybe Text)
 sfdJobTag = lens _sfdJobTag (\ s a -> s{_sfdJobTag = a})
 
--- | The ARN of the Amazon SNS topic to which you want Rekognition Video to publish the completion status of the face detection operation.
+-- | The ARN of the Amazon SNS topic to which you want Amazon Rekognition Video to publish the completion status of the face detection operation.
 sfdNotificationChannel :: Lens' StartFaceDetection (Maybe NotificationChannel)
 sfdNotificationChannel = lens _sfdNotificationChannel (\ s a -> s{_sfdNotificationChannel = a})
 

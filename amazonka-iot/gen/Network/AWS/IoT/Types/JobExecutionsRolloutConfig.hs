@@ -17,6 +17,7 @@
 --
 module Network.AWS.IoT.Types.JobExecutionsRolloutConfig where
 
+import Network.AWS.IoT.Types.ExponentialRolloutRate
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
@@ -25,21 +26,32 @@ import Network.AWS.Prelude
 --
 --
 -- /See:/ 'jobExecutionsRolloutConfig' smart constructor.
-newtype JobExecutionsRolloutConfig = JobExecutionsRolloutConfig'{_jercMaximumPerMinute
-                                                                 :: Maybe Nat}
-                                       deriving (Eq, Read, Show, Data, Typeable,
-                                                 Generic)
+data JobExecutionsRolloutConfig = JobExecutionsRolloutConfig'{_jercExponentialRate
+                                                              ::
+                                                              !(Maybe
+                                                                  ExponentialRolloutRate),
+                                                              _jercMaximumPerMinute
+                                                              :: !(Maybe Nat)}
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
 
 -- | Creates a value of 'JobExecutionsRolloutConfig' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
+-- * 'jercExponentialRate' - The rate of increase for a job rollout. This parameter allows you to define an exponential rate for a job rollout.
+--
 -- * 'jercMaximumPerMinute' - The maximum number of things that will be notified of a pending job, per minute. This parameter allows you to create a staged rollout.
 jobExecutionsRolloutConfig
     :: JobExecutionsRolloutConfig
 jobExecutionsRolloutConfig
-  = JobExecutionsRolloutConfig'{_jercMaximumPerMinute =
-                                  Nothing}
+  = JobExecutionsRolloutConfig'{_jercExponentialRate =
+                                  Nothing,
+                                _jercMaximumPerMinute = Nothing}
+
+-- | The rate of increase for a job rollout. This parameter allows you to define an exponential rate for a job rollout.
+jercExponentialRate :: Lens' JobExecutionsRolloutConfig (Maybe ExponentialRolloutRate)
+jercExponentialRate = lens _jercExponentialRate (\ s a -> s{_jercExponentialRate = a})
 
 -- | The maximum number of things that will be notified of a pending job, per minute. This parameter allows you to create a staged rollout.
 jercMaximumPerMinute :: Lens' JobExecutionsRolloutConfig (Maybe Natural)
@@ -50,7 +62,8 @@ instance FromJSON JobExecutionsRolloutConfig where
           = withObject "JobExecutionsRolloutConfig"
               (\ x ->
                  JobExecutionsRolloutConfig' <$>
-                   (x .:? "maximumPerMinute"))
+                   (x .:? "exponentialRate") <*>
+                     (x .:? "maximumPerMinute"))
 
 instance Hashable JobExecutionsRolloutConfig where
 
@@ -60,4 +73,5 @@ instance ToJSON JobExecutionsRolloutConfig where
         toJSON JobExecutionsRolloutConfig'{..}
           = object
               (catMaybes
-                 [("maximumPerMinute" .=) <$> _jercMaximumPerMinute])
+                 [("exponentialRate" .=) <$> _jercExponentialRate,
+                  ("maximumPerMinute" .=) <$> _jercMaximumPerMinute])

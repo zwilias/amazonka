@@ -28,6 +28,8 @@ import Network.AWS.Prelude
 -- /See:/ 'clusterSummary' smart constructor.
 data ClusterSummary = ClusterSummary'{_csStatus ::
                                       !(Maybe ClusterStatus),
+                                      _csClusterARN :: !(Maybe Text),
+                                      _csOutpostARN :: !(Maybe Text),
                                       _csNormalizedInstanceHours ::
                                       !(Maybe Int),
                                       _csName :: !(Maybe Text),
@@ -40,6 +42,10 @@ data ClusterSummary = ClusterSummary'{_csStatus ::
 --
 -- * 'csStatus' - The details about the current status of the cluster.
 --
+-- * 'csClusterARN' - The Amazon Resource Name of the cluster.
+--
+-- * 'csOutpostARN' - The Amazon Resource Name (ARN) of the Outpost where the cluster is launched. 
+--
 -- * 'csNormalizedInstanceHours' - An approximation of the cost of the cluster, represented in m1.small/hours. This value is incremented one time for every hour an m1.small instance runs. Larger instances are weighted more, so an EC2 instance that is roughly four times more expensive would result in the normalized instance hours being incremented by four. This result is only an approximation and does not reflect the actual billing rate.
 --
 -- * 'csName' - The name of the cluster.
@@ -49,12 +55,21 @@ clusterSummary
     :: ClusterSummary
 clusterSummary
   = ClusterSummary'{_csStatus = Nothing,
+                    _csClusterARN = Nothing, _csOutpostARN = Nothing,
                     _csNormalizedInstanceHours = Nothing,
                     _csName = Nothing, _csId = Nothing}
 
 -- | The details about the current status of the cluster.
 csStatus :: Lens' ClusterSummary (Maybe ClusterStatus)
 csStatus = lens _csStatus (\ s a -> s{_csStatus = a})
+
+-- | The Amazon Resource Name of the cluster.
+csClusterARN :: Lens' ClusterSummary (Maybe Text)
+csClusterARN = lens _csClusterARN (\ s a -> s{_csClusterARN = a})
+
+-- | The Amazon Resource Name (ARN) of the Outpost where the cluster is launched. 
+csOutpostARN :: Lens' ClusterSummary (Maybe Text)
+csOutpostARN = lens _csOutpostARN (\ s a -> s{_csOutpostARN = a})
 
 -- | An approximation of the cost of the cluster, represented in m1.small/hours. This value is incremented one time for every hour an m1.small instance runs. Larger instances are weighted more, so an EC2 instance that is roughly four times more expensive would result in the normalized instance hours being incremented by four. This result is only an approximation and does not reflect the actual billing rate.
 csNormalizedInstanceHours :: Lens' ClusterSummary (Maybe Int)
@@ -73,8 +88,9 @@ instance FromJSON ClusterSummary where
           = withObject "ClusterSummary"
               (\ x ->
                  ClusterSummary' <$>
-                   (x .:? "Status") <*>
-                     (x .:? "NormalizedInstanceHours")
+                   (x .:? "Status") <*> (x .:? "ClusterArn") <*>
+                     (x .:? "OutpostArn")
+                     <*> (x .:? "NormalizedInstanceHours")
                      <*> (x .:? "Name")
                      <*> (x .:? "Id"))
 

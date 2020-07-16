@@ -41,7 +41,7 @@ data CatalogImportStatus = CatalogImportStatus'{_cisImportedBy
 --
 -- * 'cisImportTime' - The time that the migration was started.
 --
--- * 'cisImportCompleted' - True if the migration has completed, or False otherwise.
+-- * 'cisImportCompleted' - @True@ if the migration has completed, or @False@ otherwise.
 catalogImportStatus
     :: CatalogImportStatus
 catalogImportStatus
@@ -57,7 +57,7 @@ cisImportedBy = lens _cisImportedBy (\ s a -> s{_cisImportedBy = a})
 cisImportTime :: Lens' CatalogImportStatus (Maybe UTCTime)
 cisImportTime = lens _cisImportTime (\ s a -> s{_cisImportTime = a}) . mapping _Time
 
--- | True if the migration has completed, or False otherwise.
+-- | @True@ if the migration has completed, or @False@ otherwise.
 cisImportCompleted :: Lens' CatalogImportStatus (Maybe Bool)
 cisImportCompleted = lens _cisImportCompleted (\ s a -> s{_cisImportCompleted = a})
 

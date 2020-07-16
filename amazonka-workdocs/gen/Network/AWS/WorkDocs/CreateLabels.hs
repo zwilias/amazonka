@@ -55,7 +55,7 @@ data CreateLabels = CreateLabels'{_clAuthenticationToken
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'clAuthenticationToken' - Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.
+-- * 'clAuthenticationToken' - Amazon WorkDocs authentication token. Not required when using AWS administrator credentials to access the API.
 --
 -- * 'clResourceId' - The ID of the resource.
 --
@@ -67,7 +67,7 @@ createLabels pResourceId_
   = CreateLabels'{_clAuthenticationToken = Nothing,
                   _clResourceId = pResourceId_, _clLabels = mempty}
 
--- | Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.
+-- | Amazon WorkDocs authentication token. Not required when using AWS administrator credentials to access the API.
 clAuthenticationToken :: Lens' CreateLabels (Maybe Text)
 clAuthenticationToken = lens _clAuthenticationToken (\ s a -> s{_clAuthenticationToken = a}) . mapping _Sensitive
 

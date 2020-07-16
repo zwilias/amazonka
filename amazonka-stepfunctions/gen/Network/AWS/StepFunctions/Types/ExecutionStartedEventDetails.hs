@@ -27,11 +27,13 @@ import Network.AWS.Prelude
 -- /See:/ 'executionStartedEventDetails' smart constructor.
 data ExecutionStartedEventDetails = ExecutionStartedEventDetails'{_esedInput
                                                                   ::
-                                                                  !(Maybe Text),
+                                                                  !(Maybe
+                                                                      (Sensitive
+                                                                         Text)),
                                                                   _esedRoleARN
                                                                   ::
                                                                   !(Maybe Text)}
-                                      deriving (Eq, Read, Show, Data, Typeable,
+                                      deriving (Eq, Show, Data, Typeable,
                                                 Generic)
 
 -- | Creates a value of 'ExecutionStartedEventDetails' with the minimum fields required to make a request.
@@ -49,7 +51,7 @@ executionStartedEventDetails
 
 -- | The JSON data input to the execution.
 esedInput :: Lens' ExecutionStartedEventDetails (Maybe Text)
-esedInput = lens _esedInput (\ s a -> s{_esedInput = a})
+esedInput = lens _esedInput (\ s a -> s{_esedInput = a}) . mapping _Sensitive
 
 -- | The Amazon Resource Name (ARN) of the IAM role used for executing AWS Lambda tasks.
 esedRoleARN :: Lens' ExecutionStartedEventDetails (Maybe Text)

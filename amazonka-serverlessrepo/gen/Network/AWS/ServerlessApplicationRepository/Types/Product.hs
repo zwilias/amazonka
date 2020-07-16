@@ -17,19 +17,27 @@
 -- Portability : non-portable (GHC extensions)
 --
 module Network.AWS.ServerlessApplicationRepository.Types.Product (
+    module Network.AWS.ServerlessApplicationRepository.Types.ApplicationDependencySummary,
     module Network.AWS.ServerlessApplicationRepository.Types.ApplicationPolicyStatement,
     module Network.AWS.ServerlessApplicationRepository.Types.ApplicationSummary,
     module Network.AWS.ServerlessApplicationRepository.Types.ParameterDefinition,
     module Network.AWS.ServerlessApplicationRepository.Types.ParameterValue,
+    module Network.AWS.ServerlessApplicationRepository.Types.RollbackConfiguration,
+    module Network.AWS.ServerlessApplicationRepository.Types.RollbackTrigger,
+    module Network.AWS.ServerlessApplicationRepository.Types.Tag,
     module Network.AWS.ServerlessApplicationRepository.Types.Version,
     module Network.AWS.ServerlessApplicationRepository.Types.VersionSummary
   ) where
 
 import Network.AWS.Lens
 import Network.AWS.Prelude
+import Network.AWS.ServerlessApplicationRepository.Types.ApplicationDependencySummary
 import Network.AWS.ServerlessApplicationRepository.Types.ApplicationPolicyStatement
 import Network.AWS.ServerlessApplicationRepository.Types.ApplicationSummary
 import Network.AWS.ServerlessApplicationRepository.Types.ParameterDefinition
 import Network.AWS.ServerlessApplicationRepository.Types.ParameterValue
+import Network.AWS.ServerlessApplicationRepository.Types.RollbackConfiguration
+import Network.AWS.ServerlessApplicationRepository.Types.RollbackTrigger
+import Network.AWS.ServerlessApplicationRepository.Types.Tag
 import Network.AWS.ServerlessApplicationRepository.Types.Version
 import Network.AWS.ServerlessApplicationRepository.Types.VersionSummary

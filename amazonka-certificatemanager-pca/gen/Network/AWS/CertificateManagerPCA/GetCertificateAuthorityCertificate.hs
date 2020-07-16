@@ -56,7 +56,7 @@ newtype GetCertificateAuthorityCertificate = GetCertificateAuthorityCertificate'
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'gcacCertificateAuthorityARN' - The Amazon Resource Name (ARN) of your private CA. This is of the form: @arn:aws:acm:/region/ :/account/ :certificate-authority//12345678-1234-1234-1234-123456789012/ @ . 
+-- * 'gcacCertificateAuthorityARN' - The Amazon Resource Name (ARN) of your private CA. This is of the form: @arn:aws:acm-pca:/region/ :/account/ :certificate-authority//12345678-1234-1234-1234-123456789012/ @ . 
 getCertificateAuthorityCertificate
     :: Text -- ^ 'gcacCertificateAuthorityARN'
     -> GetCertificateAuthorityCertificate
@@ -65,7 +65,7 @@ getCertificateAuthorityCertificate
   = GetCertificateAuthorityCertificate'{_gcacCertificateAuthorityARN
                                           = pCertificateAuthorityARN_}
 
--- | The Amazon Resource Name (ARN) of your private CA. This is of the form: @arn:aws:acm:/region/ :/account/ :certificate-authority//12345678-1234-1234-1234-123456789012/ @ . 
+-- | The Amazon Resource Name (ARN) of your private CA. This is of the form: @arn:aws:acm-pca:/region/ :/account/ :certificate-authority//12345678-1234-1234-1234-123456789012/ @ . 
 gcacCertificateAuthorityARN :: Lens' GetCertificateAuthorityCertificate Text
 gcacCertificateAuthorityARN = lens _gcacCertificateAuthorityARN (\ s a -> s{_gcacCertificateAuthorityARN = a})
 
@@ -138,7 +138,7 @@ data GetCertificateAuthorityCertificateResponse = GetCertificateAuthorityCertifi
 --
 -- * 'gcacrsCertificate' - Base64-encoded certificate authority (CA) certificate.
 --
--- * 'gcacrsCertificateChain' - Base64-encoded certificate chain that includes any intermediate certificates and chains up to root on-premises certificate that you used to sign your private CA certificate. The chain does not include your private CA certificate. 
+-- * 'gcacrsCertificateChain' - Base64-encoded certificate chain that includes any intermediate certificates and chains up to root on-premises certificate that you used to sign your private CA certificate. The chain does not include your private CA certificate. If this is a root CA, the value will be null.
 --
 -- * 'gcacrsResponseStatus' - -- | The response status code.
 getCertificateAuthorityCertificateResponse
@@ -157,7 +157,7 @@ getCertificateAuthorityCertificateResponse
 gcacrsCertificate :: Lens' GetCertificateAuthorityCertificateResponse (Maybe Text)
 gcacrsCertificate = lens _gcacrsCertificate (\ s a -> s{_gcacrsCertificate = a})
 
--- | Base64-encoded certificate chain that includes any intermediate certificates and chains up to root on-premises certificate that you used to sign your private CA certificate. The chain does not include your private CA certificate. 
+-- | Base64-encoded certificate chain that includes any intermediate certificates and chains up to root on-premises certificate that you used to sign your private CA certificate. The chain does not include your private CA certificate. If this is a root CA, the value will be null.
 gcacrsCertificateChain :: Lens' GetCertificateAuthorityCertificateResponse (Maybe Text)
 gcacrsCertificateChain = lens _gcacrsCertificateChain (\ s a -> s{_gcacrsCertificateChain = a})
 

@@ -17,13 +17,16 @@
 --
 module Network.AWS.GuardDuty.Types.NetworkConnectionAction where
 
+import Network.AWS.GuardDuty.Types.LocalIPDetails
 import Network.AWS.GuardDuty.Types.LocalPortDetails
 import Network.AWS.GuardDuty.Types.RemoteIPDetails
 import Network.AWS.GuardDuty.Types.RemotePortDetails
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | Information about the NETWORK_CONNECTION action described in this finding.
+-- | Contains information about the NETWORK_CONNECTION action described in the finding.
+--
+--
 --
 -- /See:/ 'networkConnectionAction' smart constructor.
 data NetworkConnectionAction = NetworkConnectionAction'{_ncaRemoteIPDetails
@@ -32,6 +35,8 @@ data NetworkConnectionAction = NetworkConnectionAction'{_ncaRemoteIPDetails
                                                             RemoteIPDetails),
                                                         _ncaProtocol ::
                                                         !(Maybe Text),
+                                                        _ncaLocalIPDetails ::
+                                                        !(Maybe LocalIPDetails),
                                                         _ncaRemotePortDetails ::
                                                         !(Maybe
                                                             RemotePortDetails),
@@ -49,49 +54,56 @@ data NetworkConnectionAction = NetworkConnectionAction'{_ncaRemoteIPDetails
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'ncaRemoteIPDetails' - Remote IP information of the connection.
+-- * 'ncaRemoteIPDetails' - The remote IP information of the connection.
 --
--- * 'ncaProtocol' - Network connection protocol.
+-- * 'ncaProtocol' - The network connection protocol.
 --
--- * 'ncaRemotePortDetails' - Remote port information of the connection.
+-- * 'ncaLocalIPDetails' - The local IP information of the connection.
 --
--- * 'ncaBlocked' - Network connection blocked information.
+-- * 'ncaRemotePortDetails' - The remote port information of the connection.
 --
--- * 'ncaConnectionDirection' - Network connection direction.
+-- * 'ncaBlocked' - Indicates whether EC2 blocked the network connection to your instance.
 --
--- * 'ncaLocalPortDetails' - Local port information of the connection.
+-- * 'ncaConnectionDirection' - The network connection direction.
+--
+-- * 'ncaLocalPortDetails' - The local port information of the connection.
 networkConnectionAction
     :: NetworkConnectionAction
 networkConnectionAction
   = NetworkConnectionAction'{_ncaRemoteIPDetails =
                                Nothing,
                              _ncaProtocol = Nothing,
+                             _ncaLocalIPDetails = Nothing,
                              _ncaRemotePortDetails = Nothing,
                              _ncaBlocked = Nothing,
                              _ncaConnectionDirection = Nothing,
                              _ncaLocalPortDetails = Nothing}
 
--- | Remote IP information of the connection.
+-- | The remote IP information of the connection.
 ncaRemoteIPDetails :: Lens' NetworkConnectionAction (Maybe RemoteIPDetails)
 ncaRemoteIPDetails = lens _ncaRemoteIPDetails (\ s a -> s{_ncaRemoteIPDetails = a})
 
--- | Network connection protocol.
+-- | The network connection protocol.
 ncaProtocol :: Lens' NetworkConnectionAction (Maybe Text)
 ncaProtocol = lens _ncaProtocol (\ s a -> s{_ncaProtocol = a})
 
--- | Remote port information of the connection.
+-- | The local IP information of the connection.
+ncaLocalIPDetails :: Lens' NetworkConnectionAction (Maybe LocalIPDetails)
+ncaLocalIPDetails = lens _ncaLocalIPDetails (\ s a -> s{_ncaLocalIPDetails = a})
+
+-- | The remote port information of the connection.
 ncaRemotePortDetails :: Lens' NetworkConnectionAction (Maybe RemotePortDetails)
 ncaRemotePortDetails = lens _ncaRemotePortDetails (\ s a -> s{_ncaRemotePortDetails = a})
 
--- | Network connection blocked information.
+-- | Indicates whether EC2 blocked the network connection to your instance.
 ncaBlocked :: Lens' NetworkConnectionAction (Maybe Bool)
 ncaBlocked = lens _ncaBlocked (\ s a -> s{_ncaBlocked = a})
 
--- | Network connection direction.
+-- | The network connection direction.
 ncaConnectionDirection :: Lens' NetworkConnectionAction (Maybe Text)
 ncaConnectionDirection = lens _ncaConnectionDirection (\ s a -> s{_ncaConnectionDirection = a})
 
--- | Local port information of the connection.
+-- | The local port information of the connection.
 ncaLocalPortDetails :: Lens' NetworkConnectionAction (Maybe LocalPortDetails)
 ncaLocalPortDetails = lens _ncaLocalPortDetails (\ s a -> s{_ncaLocalPortDetails = a})
 
@@ -101,7 +113,8 @@ instance FromJSON NetworkConnectionAction where
               (\ x ->
                  NetworkConnectionAction' <$>
                    (x .:? "remoteIpDetails") <*> (x .:? "protocol") <*>
-                     (x .:? "remotePortDetails")
+                     (x .:? "localIpDetails")
+                     <*> (x .:? "remotePortDetails")
                      <*> (x .:? "blocked")
                      <*> (x .:? "connectionDirection")
                      <*> (x .:? "localPortDetails"))

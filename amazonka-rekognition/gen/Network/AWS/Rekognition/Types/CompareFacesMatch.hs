@@ -21,7 +21,7 @@ import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Rekognition.Types.ComparedFace
 
--- | Provides information about a face in a target image that matches the source image face analysed by @CompareFaces@ . The @Face@ property contains the bounding box of the face in the target image. The @Similarity@ property is the confidence that the source image face matches the face in the bounding box.
+-- | Provides information about a face in a target image that matches the source image face analyzed by @CompareFaces@ . The @Face@ property contains the bounding box of the face in the target image. The @Similarity@ property is the confidence that the source image face matches the face in the bounding box.
 --
 --
 --

@@ -27,7 +27,7 @@ module Network.AWS.MediaLive.Types.AudioDescriptionLanguageCodeControl (
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | Placeholder documentation for AudioDescriptionLanguageCodeControl
+-- | Audio Description Language Code Control
 data AudioDescriptionLanguageCodeControl = AudioDescriptionLanguageCodeControl' (CI
                                                                                    Text)
                                              deriving (Eq, Ord, Read, Show,

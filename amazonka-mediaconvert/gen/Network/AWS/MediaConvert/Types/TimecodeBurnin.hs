@@ -26,7 +26,7 @@ import Network.AWS.Prelude
 -- /See:/ 'timecodeBurnin' smart constructor.
 data TimecodeBurnin = TimecodeBurnin'{_tbPrefix ::
                                       !(Maybe Text),
-                                      _tbFontSize :: !(Maybe Int),
+                                      _tbFontSize :: !(Maybe Nat),
                                       _tbPosition ::
                                       !(Maybe TimecodeBurninPosition)}
                         deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -39,7 +39,7 @@ data TimecodeBurnin = TimecodeBurnin'{_tbPrefix ::
 --
 -- * 'tbFontSize' - Use Font Size (FontSize) to set the font size of any burned-in timecode. Valid values are 10, 16, 32, 48.
 --
--- * 'tbPosition' - Undocumented member.
+-- * 'tbPosition' - Use Position (Position) under under Timecode burn-in (TimecodeBurnIn) to specify the location the burned-in timecode on output video.
 timecodeBurnin
     :: TimecodeBurnin
 timecodeBurnin
@@ -51,10 +51,10 @@ tbPrefix :: Lens' TimecodeBurnin (Maybe Text)
 tbPrefix = lens _tbPrefix (\ s a -> s{_tbPrefix = a})
 
 -- | Use Font Size (FontSize) to set the font size of any burned-in timecode. Valid values are 10, 16, 32, 48.
-tbFontSize :: Lens' TimecodeBurnin (Maybe Int)
-tbFontSize = lens _tbFontSize (\ s a -> s{_tbFontSize = a})
+tbFontSize :: Lens' TimecodeBurnin (Maybe Natural)
+tbFontSize = lens _tbFontSize (\ s a -> s{_tbFontSize = a}) . mapping _Nat
 
--- | Undocumented member.
+-- | Use Position (Position) under under Timecode burn-in (TimecodeBurnIn) to specify the location the burned-in timecode on output video.
 tbPosition :: Lens' TimecodeBurnin (Maybe TimecodeBurninPosition)
 tbPosition = lens _tbPosition (\ s a -> s{_tbPosition = a})
 

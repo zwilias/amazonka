@@ -22,6 +22,8 @@ module Network.AWS.Firehose.Types.Product (
     module Network.AWS.Firehose.Types.CopyCommand,
     module Network.AWS.Firehose.Types.DataFormatConversionConfiguration,
     module Network.AWS.Firehose.Types.DeliveryStreamDescription,
+    module Network.AWS.Firehose.Types.DeliveryStreamEncryptionConfiguration,
+    module Network.AWS.Firehose.Types.DeliveryStreamEncryptionConfigurationInput,
     module Network.AWS.Firehose.Types.Deserializer,
     module Network.AWS.Firehose.Types.DestinationDescription,
     module Network.AWS.Firehose.Types.ElasticsearchBufferingHints,
@@ -33,6 +35,7 @@ module Network.AWS.Firehose.Types.Product (
     module Network.AWS.Firehose.Types.ExtendedS3DestinationConfiguration,
     module Network.AWS.Firehose.Types.ExtendedS3DestinationDescription,
     module Network.AWS.Firehose.Types.ExtendedS3DestinationUpdate,
+    module Network.AWS.Firehose.Types.FailureDescription,
     module Network.AWS.Firehose.Types.HiveJSONSerDe,
     module Network.AWS.Firehose.Types.InputFormatConfiguration,
     module Network.AWS.Firehose.Types.KMSEncryptionConfig,
@@ -61,7 +64,9 @@ module Network.AWS.Firehose.Types.Product (
     module Network.AWS.Firehose.Types.SplunkDestinationDescription,
     module Network.AWS.Firehose.Types.SplunkDestinationUpdate,
     module Network.AWS.Firehose.Types.SplunkRetryOptions,
-    module Network.AWS.Firehose.Types.Tag
+    module Network.AWS.Firehose.Types.Tag,
+    module Network.AWS.Firehose.Types.VPCConfiguration,
+    module Network.AWS.Firehose.Types.VPCConfigurationDescription
   ) where
 
 import Network.AWS.Firehose.Types.BufferingHints
@@ -69,6 +74,8 @@ import Network.AWS.Firehose.Types.CloudWatchLoggingOptions
 import Network.AWS.Firehose.Types.CopyCommand
 import Network.AWS.Firehose.Types.DataFormatConversionConfiguration
 import Network.AWS.Firehose.Types.DeliveryStreamDescription
+import Network.AWS.Firehose.Types.DeliveryStreamEncryptionConfiguration
+import Network.AWS.Firehose.Types.DeliveryStreamEncryptionConfigurationInput
 import Network.AWS.Firehose.Types.Deserializer
 import Network.AWS.Firehose.Types.DestinationDescription
 import Network.AWS.Firehose.Types.ElasticsearchBufferingHints
@@ -80,6 +87,7 @@ import Network.AWS.Firehose.Types.EncryptionConfiguration
 import Network.AWS.Firehose.Types.ExtendedS3DestinationConfiguration
 import Network.AWS.Firehose.Types.ExtendedS3DestinationDescription
 import Network.AWS.Firehose.Types.ExtendedS3DestinationUpdate
+import Network.AWS.Firehose.Types.FailureDescription
 import Network.AWS.Firehose.Types.HiveJSONSerDe
 import Network.AWS.Firehose.Types.InputFormatConfiguration
 import Network.AWS.Firehose.Types.KMSEncryptionConfig
@@ -109,5 +117,7 @@ import Network.AWS.Firehose.Types.SplunkDestinationDescription
 import Network.AWS.Firehose.Types.SplunkDestinationUpdate
 import Network.AWS.Firehose.Types.SplunkRetryOptions
 import Network.AWS.Firehose.Types.Tag
+import Network.AWS.Firehose.Types.VPCConfiguration
+import Network.AWS.Firehose.Types.VPCConfigurationDescription
 import Network.AWS.Lens
 import Network.AWS.Prelude

@@ -18,7 +18,9 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Use to update the APNs channel for an app.
+-- Enables the APNs channel for an application or updates the status and settings of the APNs channel for an application.
+--
+--
 module Network.AWS.Pinpoint.UpdateAPNSChannel
     (
     -- * Creating a Request
@@ -54,7 +56,7 @@ data UpdateAPNSChannel = UpdateAPNSChannel'{_uacApplicationId
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'uacApplicationId' - Undocumented member.
+-- * 'uacApplicationId' - The unique identifier for the application. This identifier is displayed as the __Project ID__ on the Amazon Pinpoint console.
 --
 -- * 'uacAPNSChannelRequest' - Undocumented member.
 updateAPNSChannel
@@ -67,7 +69,7 @@ updateAPNSChannel pApplicationId_
                          pApplicationId_,
                        _uacAPNSChannelRequest = pAPNSChannelRequest_}
 
--- | Undocumented member.
+-- | The unique identifier for the application. This identifier is displayed as the __Project ID__ on the Amazon Pinpoint console.
 uacApplicationId :: Lens' UpdateAPNSChannel Text
 uacApplicationId = lens _uacApplicationId (\ s a -> s{_uacApplicationId = a})
 

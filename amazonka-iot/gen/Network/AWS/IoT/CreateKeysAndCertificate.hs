@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Creates a 2048-bit RSA key pair and issues an X.509 certificate using the issued public key.
+-- Creates a 2048-bit RSA key pair and issues an X.509 certificate using the issued public key. You can also call @CreateKeysAndCertificate@ over MQTT from a device, for more information, see <https://docs.aws.amazon.com/iot/latest/developerguide/provision-wo-cert.html#provision-mqtt-api Provisioning MQTT API> .
 --
 --
 -- __Note__ This is the only time AWS IoT issues the private key for this certificate, so it is important to keep it in a secure location.

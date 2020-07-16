@@ -34,7 +34,7 @@ data ConfigurationId = ConfigurationId'{_ciId ::
 --
 -- * 'ciId' - Required. The unique ID that Amazon MQ generates for the configuration.
 --
--- * 'ciRevision' - The Universally Unique Identifier (UUID) of the request.
+-- * 'ciRevision' - The revision number of the configuration.
 configurationId
     :: ConfigurationId
 configurationId
@@ -45,7 +45,7 @@ configurationId
 ciId :: Lens' ConfigurationId (Maybe Text)
 ciId = lens _ciId (\ s a -> s{_ciId = a})
 
--- | The Universally Unique Identifier (UUID) of the request.
+-- | The revision number of the configuration.
 ciRevision :: Lens' ConfigurationId (Maybe Int)
 ciRevision = lens _ciRevision (\ s a -> s{_ciRevision = a})
 

@@ -39,7 +39,7 @@ data AvailabilityZone = AvailabilityZone'{_azName ::
 --
 -- * 'azName' - The name of the availability zone.
 --
--- * 'azSupportedPlatforms' - Undocumented member.
+-- * 'azSupportedPlatforms' - 
 availabilityZone
     :: AvailabilityZone
 availabilityZone
@@ -50,7 +50,7 @@ availabilityZone
 azName :: Lens' AvailabilityZone (Maybe Text)
 azName = lens _azName (\ s a -> s{_azName = a})
 
--- | Undocumented member.
+-- | 
 azSupportedPlatforms :: Lens' AvailabilityZone [SupportedPlatform]
 azSupportedPlatforms = lens _azSupportedPlatforms (\ s a -> s{_azSupportedPlatforms = a}) . _Default . _Coerce
 

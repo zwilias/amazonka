@@ -22,7 +22,7 @@ import Network.AWS.MediaLive.Types.OutputLocationRef
 import Network.AWS.MediaLive.Types.RtmpOutputCertificateMode
 import Network.AWS.Prelude
 
--- | Placeholder documentation for RtmpOutputSettings
+-- | Rtmp Output Settings
 --
 -- /See:/ 'rtmpOutputSettings' smart constructor.
 data RtmpOutputSettings = RtmpOutputSettings'{_rosNumRetries

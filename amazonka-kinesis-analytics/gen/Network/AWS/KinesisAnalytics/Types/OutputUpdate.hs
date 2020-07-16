@@ -47,7 +47,7 @@ data OutputUpdate = OutputUpdate'{_ouKinesisStreamsOutputUpdate
 --
 -- * 'ouKinesisStreamsOutputUpdate' - Describes an Amazon Kinesis stream as the destination for the output.
 --
--- * 'ouDestinationSchemaUpdate' - Describes the data format when records are written to the destination. For more information, see <http://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-it-works-output.html Configuring Application Output> .
+-- * 'ouDestinationSchemaUpdate' - Describes the data format when records are written to the destination. For more information, see <https://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-it-works-output.html Configuring Application Output> .
 --
 -- * 'ouKinesisFirehoseOutputUpdate' - Describes an Amazon Kinesis Firehose delivery stream as the destination for the output.
 --
@@ -72,7 +72,7 @@ outputUpdate pOutputId_
 ouKinesisStreamsOutputUpdate :: Lens' OutputUpdate (Maybe KinesisStreamsOutputUpdate)
 ouKinesisStreamsOutputUpdate = lens _ouKinesisStreamsOutputUpdate (\ s a -> s{_ouKinesisStreamsOutputUpdate = a})
 
--- | Describes the data format when records are written to the destination. For more information, see <http://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-it-works-output.html Configuring Application Output> .
+-- | Describes the data format when records are written to the destination. For more information, see <https://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-it-works-output.html Configuring Application Output> .
 ouDestinationSchemaUpdate :: Lens' OutputUpdate (Maybe DestinationSchema)
 ouDestinationSchemaUpdate = lens _ouDestinationSchemaUpdate (\ s a -> s{_ouDestinationSchemaUpdate = a})
 

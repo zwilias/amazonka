@@ -30,7 +30,7 @@ module Network.AWS.MediaConvert.Types.Eac3BitstreamMode (
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | Specifies the "Bitstream Mode" (bsmod) for the emitted E-AC-3 stream. See ATSC A/52-2012 (Annex E) for background on these values.
+-- | Specify the bitstream mode for the E-AC-3 stream that the encoder emits. For more information about the EAC3 bitstream mode, see ATSC A/52-2012 (Annex E).
 data Eac3BitstreamMode = Eac3BitstreamMode' (CI Text)
                            deriving (Eq, Ord, Read, Show, Data, Typeable,
                                      Generic)

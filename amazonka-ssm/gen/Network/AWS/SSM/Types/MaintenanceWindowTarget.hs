@@ -22,7 +22,7 @@ import Network.AWS.Prelude
 import Network.AWS.SSM.Types.MaintenanceWindowResourceType
 import Network.AWS.SSM.Types.Target
 
--- | The target registered with the Maintenance Window.
+-- | The target registered with the maintenance window.
 --
 --
 --
@@ -50,19 +50,19 @@ data MaintenanceWindowTarget = MaintenanceWindowTarget'{_mResourceType
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'mResourceType' - The type of target.
+-- * 'mResourceType' - The type of target that is being registered with the maintenance window.
 --
--- * 'mOwnerInformation' - User-provided value that will be included in any CloudWatch events raised while running tasks for these targets in this Maintenance Window.
+-- * 'mOwnerInformation' - A user-provided value that will be included in any CloudWatch events that are raised while running tasks for these targets in this maintenance window.
 --
 -- * 'mWindowTargetId' - The ID of the target.
 --
--- * 'mName' - The target name.
+-- * 'mName' - The name for the maintenance window target.
 --
--- * 'mTargets' - The targets (either instances or tags). Instances are specified using Key=instanceids,Values=<instanceid1>,<instanceid2>. Tags are specified using Key=<tag name>,Values=<tag value>.
+-- * 'mTargets' - The targets, either instances or tags. Specify instances using the following format: @Key=instanceids,Values=<instanceid1>,<instanceid2>@  Tags are specified using the following format: @Key=<tag name>,Values=<tag value>@ .
 --
--- * 'mDescription' - A description of the target.
+-- * 'mDescription' - A description for the target.
 --
--- * 'mWindowId' - The Maintenance Window ID where the target is registered.
+-- * 'mWindowId' - The ID of the maintenance window to register the target with.
 maintenanceWindowTarget
     :: MaintenanceWindowTarget
 maintenanceWindowTarget
@@ -72,11 +72,11 @@ maintenanceWindowTarget
                              _mTargets = Nothing, _mDescription = Nothing,
                              _mWindowId = Nothing}
 
--- | The type of target.
+-- | The type of target that is being registered with the maintenance window.
 mResourceType :: Lens' MaintenanceWindowTarget (Maybe MaintenanceWindowResourceType)
 mResourceType = lens _mResourceType (\ s a -> s{_mResourceType = a})
 
--- | User-provided value that will be included in any CloudWatch events raised while running tasks for these targets in this Maintenance Window.
+-- | A user-provided value that will be included in any CloudWatch events that are raised while running tasks for these targets in this maintenance window.
 mOwnerInformation :: Lens' MaintenanceWindowTarget (Maybe Text)
 mOwnerInformation = lens _mOwnerInformation (\ s a -> s{_mOwnerInformation = a}) . mapping _Sensitive
 
@@ -84,19 +84,19 @@ mOwnerInformation = lens _mOwnerInformation (\ s a -> s{_mOwnerInformation = a})
 mWindowTargetId :: Lens' MaintenanceWindowTarget (Maybe Text)
 mWindowTargetId = lens _mWindowTargetId (\ s a -> s{_mWindowTargetId = a})
 
--- | The target name.
+-- | The name for the maintenance window target.
 mName :: Lens' MaintenanceWindowTarget (Maybe Text)
 mName = lens _mName (\ s a -> s{_mName = a})
 
--- | The targets (either instances or tags). Instances are specified using Key=instanceids,Values=<instanceid1>,<instanceid2>. Tags are specified using Key=<tag name>,Values=<tag value>.
+-- | The targets, either instances or tags. Specify instances using the following format: @Key=instanceids,Values=<instanceid1>,<instanceid2>@  Tags are specified using the following format: @Key=<tag name>,Values=<tag value>@ .
 mTargets :: Lens' MaintenanceWindowTarget [Target]
 mTargets = lens _mTargets (\ s a -> s{_mTargets = a}) . _Default . _Coerce
 
--- | A description of the target.
+-- | A description for the target.
 mDescription :: Lens' MaintenanceWindowTarget (Maybe Text)
 mDescription = lens _mDescription (\ s a -> s{_mDescription = a}) . mapping _Sensitive
 
--- | The Maintenance Window ID where the target is registered.
+-- | The ID of the maintenance window to register the target with.
 mWindowId :: Lens' MaintenanceWindowTarget (Maybe Text)
 mWindowId = lens _mWindowId (\ s a -> s{_mWindowId = a})
 

@@ -75,7 +75,7 @@ data DescribeAffectedEntities = DescribeAffectedEntities'{_daeLocale
 --
 -- * 'daeMaxResults' - The maximum number of items to return in one batch, between 10 and 100, inclusive.
 --
--- * 'daeFilter' - Values to narrow the results returned. At least one event ARN is required. 
+-- * 'daeFilter' - Values to narrow the results returned. At least one event ARN is required.
 describeAffectedEntities
     :: EntityFilter -- ^ 'daeFilter'
     -> DescribeAffectedEntities
@@ -96,7 +96,7 @@ daeNextToken = lens _daeNextToken (\ s a -> s{_daeNextToken = a})
 daeMaxResults :: Lens' DescribeAffectedEntities (Maybe Natural)
 daeMaxResults = lens _daeMaxResults (\ s a -> s{_daeMaxResults = a}) . mapping _Nat
 
--- | Values to narrow the results returned. At least one event ARN is required. 
+-- | Values to narrow the results returned. At least one event ARN is required.
 daeFilter :: Lens' DescribeAffectedEntities EntityFilter
 daeFilter = lens _daeFilter (\ s a -> s{_daeFilter = a})
 

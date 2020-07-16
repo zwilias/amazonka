@@ -171,7 +171,7 @@ data ListThingRegistrationTaskReportsResponse = ListThingRegistrationTaskReports
 --
 -- * 'ltrtrrsResourceLinks' - Links to the task resources.
 --
--- * 'ltrtrrsNextToken' - The token to retrieve the next set of results.
+-- * 'ltrtrrsNextToken' - The token used to get the next set of results, or __null__ if there are no additional results.
 --
 -- * 'ltrtrrsReportType' - The type of task report.
 --
@@ -192,7 +192,7 @@ listThingRegistrationTaskReportsResponse
 ltrtrrsResourceLinks :: Lens' ListThingRegistrationTaskReportsResponse [Text]
 ltrtrrsResourceLinks = lens _ltrtrrsResourceLinks (\ s a -> s{_ltrtrrsResourceLinks = a}) . _Default . _Coerce
 
--- | The token to retrieve the next set of results.
+-- | The token used to get the next set of results, or __null__ if there are no additional results.
 ltrtrrsNextToken :: Lens' ListThingRegistrationTaskReportsResponse (Maybe Text)
 ltrtrrsNextToken = lens _ltrtrrsNextToken (\ s a -> s{_ltrtrrsNextToken = a})
 

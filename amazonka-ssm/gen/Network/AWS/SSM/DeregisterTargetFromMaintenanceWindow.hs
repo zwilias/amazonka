@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Removes a target from a Maintenance Window.
+-- Removes a target from a maintenance window.
 --
 --
 module Network.AWS.SSM.DeregisterTargetFromMaintenanceWindow
@@ -65,9 +65,9 @@ data DeregisterTargetFromMaintenanceWindow = DeregisterTargetFromMaintenanceWind
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dtfmwSafe' - The system checks if the target is being referenced by a task. If the target is being referenced, the system returns an error and does not deregister the target from the Maintenance Window.
+-- * 'dtfmwSafe' - The system checks if the target is being referenced by a task. If the target is being referenced, the system returns an error and does not deregister the target from the maintenance window.
 --
--- * 'dtfmwWindowId' - The ID of the Maintenance Window the target should be removed from.
+-- * 'dtfmwWindowId' - The ID of the maintenance window the target should be removed from.
 --
 -- * 'dtfmwWindowTargetId' - The ID of the target definition to remove.
 deregisterTargetFromMaintenanceWindow
@@ -82,11 +82,11 @@ deregisterTargetFromMaintenanceWindow pWindowId_
                                            _dtfmwWindowTargetId =
                                              pWindowTargetId_}
 
--- | The system checks if the target is being referenced by a task. If the target is being referenced, the system returns an error and does not deregister the target from the Maintenance Window.
+-- | The system checks if the target is being referenced by a task. If the target is being referenced, the system returns an error and does not deregister the target from the maintenance window.
 dtfmwSafe :: Lens' DeregisterTargetFromMaintenanceWindow (Maybe Bool)
 dtfmwSafe = lens _dtfmwSafe (\ s a -> s{_dtfmwSafe = a})
 
--- | The ID of the Maintenance Window the target should be removed from.
+-- | The ID of the maintenance window the target should be removed from.
 dtfmwWindowId :: Lens' DeregisterTargetFromMaintenanceWindow Text
 dtfmwWindowId = lens _dtfmwWindowId (\ s a -> s{_dtfmwWindowId = a})
 
@@ -166,7 +166,7 @@ data DeregisterTargetFromMaintenanceWindowResponse = DeregisterTargetFromMainten
 --
 -- * 'dtfmwrsWindowTargetId' - The ID of the removed target definition.
 --
--- * 'dtfmwrsWindowId' - The ID of the Maintenance Window the target was removed from.
+-- * 'dtfmwrsWindowId' - The ID of the maintenance window the target was removed from.
 --
 -- * 'dtfmwrsResponseStatus' - -- | The response status code.
 deregisterTargetFromMaintenanceWindowResponse
@@ -184,7 +184,7 @@ deregisterTargetFromMaintenanceWindowResponse
 dtfmwrsWindowTargetId :: Lens' DeregisterTargetFromMaintenanceWindowResponse (Maybe Text)
 dtfmwrsWindowTargetId = lens _dtfmwrsWindowTargetId (\ s a -> s{_dtfmwrsWindowTargetId = a})
 
--- | The ID of the Maintenance Window the target was removed from.
+-- | The ID of the maintenance window the target was removed from.
 dtfmwrsWindowId :: Lens' DeregisterTargetFromMaintenanceWindowResponse (Maybe Text)
 dtfmwrsWindowId = lens _dtfmwrsWindowId (\ s a -> s{_dtfmwrsWindowId = a})
 

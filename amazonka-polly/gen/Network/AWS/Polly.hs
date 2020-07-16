@@ -27,11 +27,32 @@ module Network.AWS.Polly
     -- ** LexiconSizeExceededException
     , _LexiconSizeExceededException
 
+    -- ** InvalidS3BucketException
+    , _InvalidS3BucketException
+
+    -- ** SynthesisTaskNotFoundException
+    , _SynthesisTaskNotFoundException
+
     -- ** TextLengthExceededException
     , _TextLengthExceededException
 
+    -- ** EngineNotSupportedException
+    , _EngineNotSupportedException
+
     -- ** UnsupportedPlsLanguageException
     , _UnsupportedPlsLanguageException
+
+    -- ** InvalidSNSTopicARNException
+    , _InvalidSNSTopicARNException
+
+    -- ** InvalidS3KeyException
+    , _InvalidS3KeyException
+
+    -- ** LanguageNotSupportedException
+    , _LanguageNotSupportedException
+
+    -- ** InvalidTaskIdException
+    , _InvalidTaskIdException
 
     -- ** MaxLexemeLengthExceededException
     , _MaxLexemeLengthExceededException
@@ -75,14 +96,20 @@ module Network.AWS.Polly
     -- ** GetLexicon 
     , module Network.AWS.Polly.GetLexicon
 
+    -- ** GetSpeechSynthesisTask 
+    , module Network.AWS.Polly.GetSpeechSynthesisTask
+
     -- ** DescribeVoices (Paginated)
     , module Network.AWS.Polly.DescribeVoices
 
-    -- ** ListLexicons 
+    -- ** ListLexicons (Paginated)
     , module Network.AWS.Polly.ListLexicons
 
     -- ** SynthesizeSpeech 
     , module Network.AWS.Polly.SynthesizeSpeech
+
+    -- ** ListSpeechSynthesisTasks (Paginated)
+    , module Network.AWS.Polly.ListSpeechSynthesisTasks
 
     -- ** PutLexicon 
     , module Network.AWS.Polly.PutLexicon
@@ -90,7 +117,13 @@ module Network.AWS.Polly
     -- ** DeleteLexicon 
     , module Network.AWS.Polly.DeleteLexicon
 
+    -- ** StartSpeechSynthesisTask 
+    , module Network.AWS.Polly.StartSpeechSynthesisTask
+
     -- * Types
+
+    -- ** Engine
+    , Engine (..)
 
     -- ** Gender
     , Gender (..)
@@ -103,6 +136,9 @@ module Network.AWS.Polly
 
     -- ** SpeechMarkType
     , SpeechMarkType (..)
+
+    -- ** TaskStatus
+    , TaskStatus (..)
 
     -- ** TextType
     , TextType (..)
@@ -132,6 +168,25 @@ module Network.AWS.Polly
     , ldAttributes
     , ldName
 
+    -- ** SynthesisTask
+    , SynthesisTask
+    , synthesisTask
+    , stCreationTime
+    , stLanguageCode
+    , stSNSTopicARN
+    , stTaskStatusReason
+    , stTaskId
+    , stRequestCharacters
+    , stEngine
+    , stSpeechMarkTypes
+    , stSampleRate
+    , stOutputFormat
+    , stTextType
+    , stVoiceId
+    , stLexiconNames
+    , stTaskStatus
+    , stOutputURI
+
     -- ** Voice
     , Voice
     , voice
@@ -140,13 +195,18 @@ module Network.AWS.Polly
     , vGender
     , vName
     , vId
+    , vAdditionalLanguageCodes
+    , vSupportedEngines
     ) where
 
 import Network.AWS.Polly.DeleteLexicon
 import Network.AWS.Polly.DescribeVoices
 import Network.AWS.Polly.GetLexicon
+import Network.AWS.Polly.GetSpeechSynthesisTask
 import Network.AWS.Polly.ListLexicons
+import Network.AWS.Polly.ListSpeechSynthesisTasks
 import Network.AWS.Polly.PutLexicon
+import Network.AWS.Polly.StartSpeechSynthesisTask
 import Network.AWS.Polly.SynthesizeSpeech
 import Network.AWS.Polly.Types
 import Network.AWS.Polly.Waiters

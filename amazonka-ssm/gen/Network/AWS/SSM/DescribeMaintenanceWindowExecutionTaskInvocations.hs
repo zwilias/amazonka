@@ -18,9 +18,11 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Retrieves the individual task executions (one per target) for a particular task executed as part of a Maintenance Window execution.
+-- Retrieves the individual task executions (one per target) for a particular task run as part of a maintenance window execution.
 --
 --
+--
+-- This operation returns paginated results.
 module Network.AWS.SSM.DescribeMaintenanceWindowExecutionTaskInvocations
     (
     -- * Creating a Request
@@ -43,6 +45,7 @@ module Network.AWS.SSM.DescribeMaintenanceWindowExecutionTaskInvocations
     ) where
 
 import Network.AWS.Lens
+import Network.AWS.Pager
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
@@ -83,9 +86,9 @@ data DescribeMaintenanceWindowExecutionTaskInvocations = DescribeMaintenanceWind
 --
 -- * 'dmwetiMaxResults' - The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.
 --
--- * 'dmwetiWindowExecutionId' - The ID of the Maintenance Window execution the task is part of.
+-- * 'dmwetiWindowExecutionId' - The ID of the maintenance window execution the task is part of.
 --
--- * 'dmwetiTaskId' - The ID of the specific task in the Maintenance Window task that should be retrieved.
+-- * 'dmwetiTaskId' - The ID of the specific task in the maintenance window task that should be retrieved.
 describeMaintenanceWindowExecutionTaskInvocations
     :: Text -- ^ 'dmwetiWindowExecutionId'
     -> Text -- ^ 'dmwetiTaskId'
@@ -114,13 +117,26 @@ dmwetiNextToken = lens _dmwetiNextToken (\ s a -> s{_dmwetiNextToken = a})
 dmwetiMaxResults :: Lens' DescribeMaintenanceWindowExecutionTaskInvocations (Maybe Natural)
 dmwetiMaxResults = lens _dmwetiMaxResults (\ s a -> s{_dmwetiMaxResults = a}) . mapping _Nat
 
--- | The ID of the Maintenance Window execution the task is part of.
+-- | The ID of the maintenance window execution the task is part of.
 dmwetiWindowExecutionId :: Lens' DescribeMaintenanceWindowExecutionTaskInvocations Text
 dmwetiWindowExecutionId = lens _dmwetiWindowExecutionId (\ s a -> s{_dmwetiWindowExecutionId = a})
 
--- | The ID of the specific task in the Maintenance Window task that should be retrieved.
+-- | The ID of the specific task in the maintenance window task that should be retrieved.
 dmwetiTaskId :: Lens' DescribeMaintenanceWindowExecutionTaskInvocations Text
 dmwetiTaskId = lens _dmwetiTaskId (\ s a -> s{_dmwetiTaskId = a})
+
+instance AWSPager
+           DescribeMaintenanceWindowExecutionTaskInvocations
+         where
+        page rq rs
+          | stop (rs ^. dmwetirsNextToken) = Nothing
+          | stop
+              (rs ^.
+                 dmwetirsWindowExecutionTaskInvocationIdentities)
+            = Nothing
+          | otherwise =
+            Just $ rq &
+              dmwetiNextToken .~ rs ^. dmwetirsNextToken
 
 instance AWSRequest
            DescribeMaintenanceWindowExecutionTaskInvocations

@@ -18,7 +18,9 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Returns information about the GCM channel for an app.
+-- Retrieves information about the status and settings of the GCM channel for an application.
+--
+--
 module Network.AWS.Pinpoint.GetGCMChannel
     (
     -- * Creating a Request
@@ -51,14 +53,14 @@ newtype GetGCMChannel = GetGCMChannel'{_ggcApplicationId
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'ggcApplicationId' - Undocumented member.
+-- * 'ggcApplicationId' - The unique identifier for the application. This identifier is displayed as the __Project ID__ on the Amazon Pinpoint console.
 getGCMChannel
     :: Text -- ^ 'ggcApplicationId'
     -> GetGCMChannel
 getGCMChannel pApplicationId_
   = GetGCMChannel'{_ggcApplicationId = pApplicationId_}
 
--- | Undocumented member.
+-- | The unique identifier for the application. This identifier is displayed as the __Project ID__ on the Amazon Pinpoint console.
 ggcApplicationId :: Lens' GetGCMChannel Text
 ggcApplicationId = lens _ggcApplicationId (\ s a -> s{_ggcApplicationId = a})
 

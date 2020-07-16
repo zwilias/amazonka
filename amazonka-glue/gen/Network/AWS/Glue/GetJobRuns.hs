@@ -141,9 +141,9 @@ data GetJobRunsResponse = GetJobRunsResponse'{_gjrrsNextToken
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'gjrrsNextToken' - A continuation token, if not all reequested job runs have been returned.
+-- * 'gjrrsNextToken' - A continuation token, if not all requested job runs have been returned.
 --
--- * 'gjrrsJobRuns' - A list of job-run metatdata objects.
+-- * 'gjrrsJobRuns' - A list of job-run metadata objects.
 --
 -- * 'gjrrsResponseStatus' - -- | The response status code.
 getJobRunsResponse
@@ -154,11 +154,11 @@ getJobRunsResponse pResponseStatus_
                         _gjrrsJobRuns = Nothing,
                         _gjrrsResponseStatus = pResponseStatus_}
 
--- | A continuation token, if not all reequested job runs have been returned.
+-- | A continuation token, if not all requested job runs have been returned.
 gjrrsNextToken :: Lens' GetJobRunsResponse (Maybe Text)
 gjrrsNextToken = lens _gjrrsNextToken (\ s a -> s{_gjrrsNextToken = a})
 
--- | A list of job-run metatdata objects.
+-- | A list of job-run metadata objects.
 gjrrsJobRuns :: Lens' GetJobRunsResponse [JobRun]
 gjrrsJobRuns = lens _gjrrsJobRuns (\ s a -> s{_gjrrsJobRuns = a}) . _Default . _Coerce
 

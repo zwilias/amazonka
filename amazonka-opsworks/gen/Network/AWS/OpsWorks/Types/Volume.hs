@@ -45,7 +45,7 @@ data Volume = Volume'{_vInstanceId :: !(Maybe Text),
 --
 -- * 'vInstanceId' - The instance ID.
 --
--- * 'vStatus' - The value returned by <http://docs.aws.amazon.com/AWSEC2/latest/APIReference/ApiReference-query-DescribeVolumes.html DescribeVolumes> .
+-- * 'vStatus' - The value returned by <https://docs.aws.amazon.com/AWSEC2/latest/APIReference/ApiReference-query-DescribeVolumes.html DescribeVolumes> .
 --
 -- * 'vSize' - The volume size.
 --
@@ -53,9 +53,9 @@ data Volume = Volume'{_vInstanceId :: !(Maybe Text),
 --
 -- * 'vDevice' - The device name.
 --
--- * 'vEncrypted' - Undocumented member.
+-- * 'vEncrypted' - Specifies whether an Amazon EBS volume is encrypted. For more information, see <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html Amazon EBS Encryption> .
 --
--- * 'vAvailabilityZone' - The volume Availability Zone. For more information, see <http://docs.aws.amazon.com/general/latest/gr/rande.html Regions and Endpoints> .
+-- * 'vAvailabilityZone' - The volume Availability Zone. For more information, see <https://docs.aws.amazon.com/general/latest/gr/rande.html Regions and Endpoints> .
 --
 -- * 'vName' - The volume name.
 --
@@ -63,9 +63,9 @@ data Volume = Volume'{_vInstanceId :: !(Maybe Text),
 --
 -- * 'vVolumeId' - The volume ID.
 --
--- * 'vRegion' - The AWS region. For more information about AWS regions, see <http://docs.aws.amazon.com/general/latest/gr/rande.html Regions and Endpoints> .
+-- * 'vRegion' - The AWS region. For more information about AWS regions, see <https://docs.aws.amazon.com/general/latest/gr/rande.html Regions and Endpoints> .
 --
--- * 'vVolumeType' - The volume type, standard or PIOPS.
+-- * 'vVolumeType' - The volume type. For more information, see <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html Amazon EBS Volume Types> .     * @standard@ - Magnetic. Magnetic volumes must have a minimum size of 1 GiB and a maximum size of 1024 GiB.     * @io1@ - Provisioned IOPS (SSD). PIOPS volumes must have a minimum size of 4 GiB and a maximum size of 16384 GiB.     * @gp2@ - General Purpose (SSD). General purpose volumes must have a minimum size of 1 GiB and a maximum size of 16384 GiB.     * @st1@ - Throughput Optimized hard disk drive (HDD). Throughput optimized HDD volumes must have a minimum size of 500 GiB and a maximum size of 16384 GiB.     * @sc1@ - Cold HDD. Cold HDD volumes must have a minimum size of 500 GiB and a maximum size of 16384 GiB.
 --
 -- * 'vEC2VolumeId' - The Amazon EC2 volume ID.
 --
@@ -85,7 +85,7 @@ volume
 vInstanceId :: Lens' Volume (Maybe Text)
 vInstanceId = lens _vInstanceId (\ s a -> s{_vInstanceId = a})
 
--- | The value returned by <http://docs.aws.amazon.com/AWSEC2/latest/APIReference/ApiReference-query-DescribeVolumes.html DescribeVolumes> .
+-- | The value returned by <https://docs.aws.amazon.com/AWSEC2/latest/APIReference/ApiReference-query-DescribeVolumes.html DescribeVolumes> .
 vStatus :: Lens' Volume (Maybe Text)
 vStatus = lens _vStatus (\ s a -> s{_vStatus = a})
 
@@ -101,11 +101,11 @@ vIOPS = lens _vIOPS (\ s a -> s{_vIOPS = a})
 vDevice :: Lens' Volume (Maybe Text)
 vDevice = lens _vDevice (\ s a -> s{_vDevice = a})
 
--- | Undocumented member.
+-- | Specifies whether an Amazon EBS volume is encrypted. For more information, see <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html Amazon EBS Encryption> .
 vEncrypted :: Lens' Volume (Maybe Bool)
 vEncrypted = lens _vEncrypted (\ s a -> s{_vEncrypted = a})
 
--- | The volume Availability Zone. For more information, see <http://docs.aws.amazon.com/general/latest/gr/rande.html Regions and Endpoints> .
+-- | The volume Availability Zone. For more information, see <https://docs.aws.amazon.com/general/latest/gr/rande.html Regions and Endpoints> .
 vAvailabilityZone :: Lens' Volume (Maybe Text)
 vAvailabilityZone = lens _vAvailabilityZone (\ s a -> s{_vAvailabilityZone = a})
 
@@ -121,11 +121,11 @@ vRAIdArrayId = lens _vRAIdArrayId (\ s a -> s{_vRAIdArrayId = a})
 vVolumeId :: Lens' Volume (Maybe Text)
 vVolumeId = lens _vVolumeId (\ s a -> s{_vVolumeId = a})
 
--- | The AWS region. For more information about AWS regions, see <http://docs.aws.amazon.com/general/latest/gr/rande.html Regions and Endpoints> .
+-- | The AWS region. For more information about AWS regions, see <https://docs.aws.amazon.com/general/latest/gr/rande.html Regions and Endpoints> .
 vRegion :: Lens' Volume (Maybe Text)
 vRegion = lens _vRegion (\ s a -> s{_vRegion = a})
 
--- | The volume type, standard or PIOPS.
+-- | The volume type. For more information, see <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html Amazon EBS Volume Types> .     * @standard@ - Magnetic. Magnetic volumes must have a minimum size of 1 GiB and a maximum size of 1024 GiB.     * @io1@ - Provisioned IOPS (SSD). PIOPS volumes must have a minimum size of 4 GiB and a maximum size of 16384 GiB.     * @gp2@ - General Purpose (SSD). General purpose volumes must have a minimum size of 1 GiB and a maximum size of 16384 GiB.     * @st1@ - Throughput Optimized hard disk drive (HDD). Throughput optimized HDD volumes must have a minimum size of 500 GiB and a maximum size of 16384 GiB.     * @sc1@ - Cold HDD. Cold HDD volumes must have a minimum size of 500 GiB and a maximum size of 16384 GiB.
 vVolumeType :: Lens' Volume (Maybe Text)
 vVolumeType = lens _vVolumeType (\ s a -> s{_vVolumeType = a})
 

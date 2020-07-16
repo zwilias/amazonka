@@ -19,9 +19,9 @@
 module Network.AWS.ECS.Types.HealthStatus (
   HealthStatus (
     ..
-    , Healthy
-    , Unhealthy
-    , Unknown
+    , HSHealthy
+    , HSUnhealthy
+    , HSUnknown
     )
   ) where
 
@@ -32,19 +32,19 @@ data HealthStatus = HealthStatus' (CI Text)
                       deriving (Eq, Ord, Read, Show, Data, Typeable,
                                 Generic)
 
-pattern Healthy :: HealthStatus
-pattern Healthy = HealthStatus' "HEALTHY"
+pattern HSHealthy :: HealthStatus
+pattern HSHealthy = HealthStatus' "HEALTHY"
 
-pattern Unhealthy :: HealthStatus
-pattern Unhealthy = HealthStatus' "UNHEALTHY"
+pattern HSUnhealthy :: HealthStatus
+pattern HSUnhealthy = HealthStatus' "UNHEALTHY"
 
-pattern Unknown :: HealthStatus
-pattern Unknown = HealthStatus' "UNKNOWN"
+pattern HSUnknown :: HealthStatus
+pattern HSUnknown = HealthStatus' "UNKNOWN"
 
 {-# COMPLETE
-  Healthy,
-  Unhealthy,
-  Unknown,
+  HSHealthy,
+  HSUnhealthy,
+  HSUnknown,
   HealthStatus' #-}
 
 instance FromText HealthStatus where
@@ -59,22 +59,22 @@ instance ToText HealthStatus where
 --   fromEnum is a partial function, and will error on values unknown at generation time.
 instance Enum HealthStatus where
     toEnum i = case i of
-        0 -> Healthy
-        1 -> Unhealthy
-        2 -> Unknown
+        0 -> HSHealthy
+        1 -> HSUnhealthy
+        2 -> HSUnknown
         _ -> (error . showText) $ "Unknown index for HealthStatus: " <> toText i
     fromEnum x = case x of
-        Healthy -> 0
-        Unhealthy -> 1
-        Unknown -> 2
+        HSHealthy -> 0
+        HSUnhealthy -> 1
+        HSUnknown -> 2
         HealthStatus' name -> (error . showText) $ "Unknown HealthStatus: " <> original name
 
 -- | Represents the bounds of /known/ $HealthStatus.
 --   AWS may have added more since the source was generated.
 --   This instance exists only for backward compatibility.
 instance Bounded HealthStatus where
-    minBound = Healthy
-    maxBound = Unknown
+    minBound = HSHealthy
+    maxBound = HSUnknown
 
 instance Hashable     HealthStatus
 instance NFData       HealthStatus

@@ -18,7 +18,9 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Update an APNS VoIP sandbox channel
+-- Enables the APNs VoIP sandbox channel for an application or updates the status and settings of the APNs VoIP sandbox channel for an application.
+--
+--
 module Network.AWS.Pinpoint.UpdateAPNSVoipSandboxChannel
     (
     -- * Creating a Request
@@ -56,7 +58,7 @@ data UpdateAPNSVoipSandboxChannel = UpdateAPNSVoipSandboxChannel'{_uavscApplicat
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'uavscApplicationId' - Undocumented member.
+-- * 'uavscApplicationId' - The unique identifier for the application. This identifier is displayed as the __Project ID__ on the Amazon Pinpoint console.
 --
 -- * 'uavscAPNSVoipSandboxChannelRequest' - Undocumented member.
 updateAPNSVoipSandboxChannel
@@ -70,7 +72,7 @@ updateAPNSVoipSandboxChannel pApplicationId_
                                   _uavscAPNSVoipSandboxChannelRequest =
                                     pAPNSVoipSandboxChannelRequest_}
 
--- | Undocumented member.
+-- | The unique identifier for the application. This identifier is displayed as the __Project ID__ on the Amazon Pinpoint console.
 uavscApplicationId :: Lens' UpdateAPNSVoipSandboxChannel Text
 uavscApplicationId = lens _uavscApplicationId (\ s a -> s{_uavscApplicationId = a})
 

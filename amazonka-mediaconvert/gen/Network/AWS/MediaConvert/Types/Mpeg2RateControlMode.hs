@@ -19,8 +19,8 @@
 module Network.AWS.MediaConvert.Types.Mpeg2RateControlMode (
   Mpeg2RateControlMode (
     ..
-    , MRCMCbr
-    , MRCMVbr
+    , Cbr
+    , Vbr
     )
   ) where
 
@@ -33,15 +33,15 @@ data Mpeg2RateControlMode = Mpeg2RateControlMode' (CI
                               deriving (Eq, Ord, Read, Show, Data, Typeable,
                                         Generic)
 
-pattern MRCMCbr :: Mpeg2RateControlMode
-pattern MRCMCbr = Mpeg2RateControlMode' "CBR"
+pattern Cbr :: Mpeg2RateControlMode
+pattern Cbr = Mpeg2RateControlMode' "CBR"
 
-pattern MRCMVbr :: Mpeg2RateControlMode
-pattern MRCMVbr = Mpeg2RateControlMode' "VBR"
+pattern Vbr :: Mpeg2RateControlMode
+pattern Vbr = Mpeg2RateControlMode' "VBR"
 
 {-# COMPLETE
-  MRCMCbr,
-  MRCMVbr,
+  Cbr,
+  Vbr,
   Mpeg2RateControlMode' #-}
 
 instance FromText Mpeg2RateControlMode where
@@ -56,20 +56,20 @@ instance ToText Mpeg2RateControlMode where
 --   fromEnum is a partial function, and will error on values unknown at generation time.
 instance Enum Mpeg2RateControlMode where
     toEnum i = case i of
-        0 -> MRCMCbr
-        1 -> MRCMVbr
+        0 -> Cbr
+        1 -> Vbr
         _ -> (error . showText) $ "Unknown index for Mpeg2RateControlMode: " <> toText i
     fromEnum x = case x of
-        MRCMCbr -> 0
-        MRCMVbr -> 1
+        Cbr -> 0
+        Vbr -> 1
         Mpeg2RateControlMode' name -> (error . showText) $ "Unknown Mpeg2RateControlMode: " <> original name
 
 -- | Represents the bounds of /known/ $Mpeg2RateControlMode.
 --   AWS may have added more since the source was generated.
 --   This instance exists only for backward compatibility.
 instance Bounded Mpeg2RateControlMode where
-    minBound = MRCMCbr
-    maxBound = MRCMVbr
+    minBound = Cbr
+    maxBound = Vbr
 
 instance Hashable     Mpeg2RateControlMode
 instance NFData       Mpeg2RateControlMode

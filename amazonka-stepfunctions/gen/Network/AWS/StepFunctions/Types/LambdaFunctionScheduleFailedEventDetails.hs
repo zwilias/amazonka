@@ -20,7 +20,7 @@ module Network.AWS.StepFunctions.Types.LambdaFunctionScheduleFailedEventDetails 
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | Contains details about a failed lambda function schedule event which occurred during an execution.
+-- | Contains details about a failed lambda function schedule event that occurred during an execution.
 --
 --
 --
@@ -28,14 +28,15 @@ import Network.AWS.Prelude
 data LambdaFunctionScheduleFailedEventDetails = LambdaFunctionScheduleFailedEventDetails'{_lError
                                                                                           ::
                                                                                           !(Maybe
-                                                                                              Text),
+                                                                                              (Sensitive
+                                                                                                 Text)),
                                                                                           _lCause
                                                                                           ::
                                                                                           !(Maybe
-                                                                                              Text)}
-                                                  deriving (Eq, Read, Show,
-                                                            Data, Typeable,
-                                                            Generic)
+                                                                                              (Sensitive
+                                                                                                 Text))}
+                                                  deriving (Eq, Show, Data,
+                                                            Typeable, Generic)
 
 -- | Creates a value of 'LambdaFunctionScheduleFailedEventDetails' with the minimum fields required to make a request.
 --
@@ -53,11 +54,11 @@ lambdaFunctionScheduleFailedEventDetails
 
 -- | The error code of the failure.
 lError :: Lens' LambdaFunctionScheduleFailedEventDetails (Maybe Text)
-lError = lens _lError (\ s a -> s{_lError = a})
+lError = lens _lError (\ s a -> s{_lError = a}) . mapping _Sensitive
 
 -- | A more detailed explanation of the cause of the failure.
 lCause :: Lens' LambdaFunctionScheduleFailedEventDetails (Maybe Text)
-lCause = lens _lCause (\ s a -> s{_lCause = a})
+lCause = lens _lCause (\ s a -> s{_lCause = a}) . mapping _Sensitive
 
 instance FromJSON
            LambdaFunctionScheduleFailedEventDetails

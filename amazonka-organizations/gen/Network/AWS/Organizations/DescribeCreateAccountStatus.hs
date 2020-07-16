@@ -21,7 +21,7 @@
 -- Retrieves the current status of an asynchronous request to create an account.
 --
 --
--- This operation can be called only from the organization's master account.
+-- This operation can be called only from the organization's master account or by a member account that is a delegated administrator for an AWS service.
 --
 module Network.AWS.Organizations.DescribeCreateAccountStatus
     (
@@ -56,7 +56,7 @@ newtype DescribeCreateAccountStatus = DescribeCreateAccountStatus'{_dcasCreateAc
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dcasCreateAccountRequestId' - Specifies the @operationId@ that uniquely identifies the request. You can get the ID from the response to an earlier 'CreateAccount' request, or from the 'ListCreateAccountStatus' operation. The <http://wikipedia.org/wiki/regex regex pattern> for an create account request ID string requires "car-" followed by from 8 to 32 lower-case letters or digits.
+-- * 'dcasCreateAccountRequestId' - Specifies the @operationId@ that uniquely identifies the request. You can get the ID from the response to an earlier 'CreateAccount' request, or from the 'ListCreateAccountStatus' operation. The <http://wikipedia.org/wiki/regex regex pattern> for a create account request ID string requires "car-" followed by from 8 to 32 lowercase letters or digits.
 describeCreateAccountStatus
     :: Text -- ^ 'dcasCreateAccountRequestId'
     -> DescribeCreateAccountStatus
@@ -64,7 +64,7 @@ describeCreateAccountStatus pCreateAccountRequestId_
   = DescribeCreateAccountStatus'{_dcasCreateAccountRequestId
                                    = pCreateAccountRequestId_}
 
--- | Specifies the @operationId@ that uniquely identifies the request. You can get the ID from the response to an earlier 'CreateAccount' request, or from the 'ListCreateAccountStatus' operation. The <http://wikipedia.org/wiki/regex regex pattern> for an create account request ID string requires "car-" followed by from 8 to 32 lower-case letters or digits.
+-- | Specifies the @operationId@ that uniquely identifies the request. You can get the ID from the response to an earlier 'CreateAccount' request, or from the 'ListCreateAccountStatus' operation. The <http://wikipedia.org/wiki/regex regex pattern> for a create account request ID string requires "car-" followed by from 8 to 32 lowercase letters or digits.
 dcasCreateAccountRequestId :: Lens' DescribeCreateAccountStatus Text
 dcasCreateAccountRequestId = lens _dcasCreateAccountRequestId (\ s a -> s{_dcasCreateAccountRequestId = a})
 

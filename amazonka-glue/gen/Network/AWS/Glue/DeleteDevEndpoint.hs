@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Deletes a specified DevEndpoint.
+-- Deletes a specified development endpoint.
 --
 --
 module Network.AWS.Glue.DeleteDevEndpoint
@@ -52,7 +52,7 @@ newtype DeleteDevEndpoint = DeleteDevEndpoint'{_ddeEndpointName
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'ddeEndpointName' - The name of the DevEndpoint.
+-- * 'ddeEndpointName' - The name of the @DevEndpoint@ .
 deleteDevEndpoint
     :: Text -- ^ 'ddeEndpointName'
     -> DeleteDevEndpoint
@@ -60,7 +60,7 @@ deleteDevEndpoint pEndpointName_
   = DeleteDevEndpoint'{_ddeEndpointName =
                          pEndpointName_}
 
--- | The name of the DevEndpoint.
+-- | The name of the @DevEndpoint@ .
 ddeEndpointName :: Lens' DeleteDevEndpoint Text
 ddeEndpointName = lens _ddeEndpointName (\ s a -> s{_ddeEndpointName = a})
 

@@ -17,9 +17,12 @@
 --
 module Network.AWS.IoT.Types.OTAUpdateInfo where
 
+import Network.AWS.IoT.Types.AWSJobExecutionsRolloutConfig
+import Network.AWS.IoT.Types.AWSJobPresignedURLConfig
 import Network.AWS.IoT.Types.ErrorInfo
 import Network.AWS.IoT.Types.OTAUpdateFile
 import Network.AWS.IoT.Types.OTAUpdateStatus
+import Network.AWS.IoT.Types.Protocol
 import Network.AWS.IoT.Types.TargetSelection
 import Network.AWS.Lens
 import Network.AWS.Prelude
@@ -31,7 +34,13 @@ import Network.AWS.Prelude
 -- /See:/ 'oTAUpdateInfo' smart constructor.
 data OTAUpdateInfo = OTAUpdateInfo'{_otauiLastModifiedDate
                                     :: !(Maybe POSIX),
+                                    _otauiAwsJobExecutionsRolloutConfig ::
+                                    !(Maybe AWSJobExecutionsRolloutConfig),
                                     _otauiAwsIotJobId :: !(Maybe Text),
+                                    _otauiProtocols ::
+                                    !(Maybe (List1 Protocol)),
+                                    _otauiAwsJobPresignedURLConfig ::
+                                    !(Maybe AWSJobPresignedURLConfig),
                                     _otauiOtaUpdateFiles ::
                                     !(Maybe (List1 OTAUpdateFile)),
                                     _otauiOtaUpdateStatus ::
@@ -55,7 +64,13 @@ data OTAUpdateInfo = OTAUpdateInfo'{_otauiLastModifiedDate
 --
 -- * 'otauiLastModifiedDate' - The date when the OTA update was last updated.
 --
+-- * 'otauiAwsJobExecutionsRolloutConfig' - Configuration for the rollout of OTA updates.
+--
 -- * 'otauiAwsIotJobId' - The AWS IoT job ID associated with the OTA update.
+--
+-- * 'otauiProtocols' - The protocol used to transfer the OTA update image. Valid values are [HTTP], [MQTT], [HTTP, MQTT]. When both HTTP and MQTT are specified, the target device can choose the protocol.
+--
+-- * 'otauiAwsJobPresignedURLConfig' - Configuration information for pre-signed URLs. Valid when @protocols@ contains HTTP.
 --
 -- * 'otauiOtaUpdateFiles' - A list of files associated with the OTA update.
 --
@@ -82,7 +97,10 @@ oTAUpdateInfo
     :: OTAUpdateInfo
 oTAUpdateInfo
   = OTAUpdateInfo'{_otauiLastModifiedDate = Nothing,
+                   _otauiAwsJobExecutionsRolloutConfig = Nothing,
                    _otauiAwsIotJobId = Nothing,
+                   _otauiProtocols = Nothing,
+                   _otauiAwsJobPresignedURLConfig = Nothing,
                    _otauiOtaUpdateFiles = Nothing,
                    _otauiOtaUpdateStatus = Nothing,
                    _otauiTargets = Nothing,
@@ -99,9 +117,21 @@ oTAUpdateInfo
 otauiLastModifiedDate :: Lens' OTAUpdateInfo (Maybe UTCTime)
 otauiLastModifiedDate = lens _otauiLastModifiedDate (\ s a -> s{_otauiLastModifiedDate = a}) . mapping _Time
 
+-- | Configuration for the rollout of OTA updates.
+otauiAwsJobExecutionsRolloutConfig :: Lens' OTAUpdateInfo (Maybe AWSJobExecutionsRolloutConfig)
+otauiAwsJobExecutionsRolloutConfig = lens _otauiAwsJobExecutionsRolloutConfig (\ s a -> s{_otauiAwsJobExecutionsRolloutConfig = a})
+
 -- | The AWS IoT job ID associated with the OTA update.
 otauiAwsIotJobId :: Lens' OTAUpdateInfo (Maybe Text)
 otauiAwsIotJobId = lens _otauiAwsIotJobId (\ s a -> s{_otauiAwsIotJobId = a})
+
+-- | The protocol used to transfer the OTA update image. Valid values are [HTTP], [MQTT], [HTTP, MQTT]. When both HTTP and MQTT are specified, the target device can choose the protocol.
+otauiProtocols :: Lens' OTAUpdateInfo (Maybe (NonEmpty Protocol))
+otauiProtocols = lens _otauiProtocols (\ s a -> s{_otauiProtocols = a}) . mapping _List1
+
+-- | Configuration information for pre-signed URLs. Valid when @protocols@ contains HTTP.
+otauiAwsJobPresignedURLConfig :: Lens' OTAUpdateInfo (Maybe AWSJobPresignedURLConfig)
+otauiAwsJobPresignedURLConfig = lens _otauiAwsJobPresignedURLConfig (\ s a -> s{_otauiAwsJobPresignedURLConfig = a})
 
 -- | A list of files associated with the OTA update.
 otauiOtaUpdateFiles :: Lens' OTAUpdateInfo (Maybe (NonEmpty OTAUpdateFile))
@@ -152,7 +182,11 @@ instance FromJSON OTAUpdateInfo where
           = withObject "OTAUpdateInfo"
               (\ x ->
                  OTAUpdateInfo' <$>
-                   (x .:? "lastModifiedDate") <*> (x .:? "awsIotJobId")
+                   (x .:? "lastModifiedDate") <*>
+                     (x .:? "awsJobExecutionsRolloutConfig")
+                     <*> (x .:? "awsIotJobId")
+                     <*> (x .:? "protocols")
+                     <*> (x .:? "awsJobPresignedUrlConfig")
                      <*> (x .:? "otaUpdateFiles")
                      <*> (x .:? "otaUpdateStatus")
                      <*> (x .:? "targets")

@@ -42,13 +42,13 @@ data JobExecutionSummary = JobExecutionSummary'{_jesStatus
 --
 -- * 'jesStatus' - The status of the job execution.
 --
--- * 'jesLastUpdatedAt' - The time, in milliseconds since the epoch, when the job execution was last updated.
+-- * 'jesLastUpdatedAt' - The time, in seconds since the epoch, when the job execution was last updated.
 --
--- * 'jesQueuedAt' - The time, in milliseconds since the epoch, when the job execution was queued.
+-- * 'jesQueuedAt' - The time, in seconds since the epoch, when the job execution was queued.
 --
 -- * 'jesExecutionNumber' - A string (consisting of the digits "0" through "9") which identifies this particular job execution on this particular device. It can be used later in commands which return or update job execution information.
 --
--- * 'jesStartedAt' - The time, in milliseconds since the epoch, when the job execution started.
+-- * 'jesStartedAt' - The time, in seconds since the epoch, when the job execution started.
 jobExecutionSummary
     :: JobExecutionSummary
 jobExecutionSummary
@@ -61,11 +61,11 @@ jobExecutionSummary
 jesStatus :: Lens' JobExecutionSummary (Maybe JobExecutionStatus)
 jesStatus = lens _jesStatus (\ s a -> s{_jesStatus = a})
 
--- | The time, in milliseconds since the epoch, when the job execution was last updated.
+-- | The time, in seconds since the epoch, when the job execution was last updated.
 jesLastUpdatedAt :: Lens' JobExecutionSummary (Maybe UTCTime)
 jesLastUpdatedAt = lens _jesLastUpdatedAt (\ s a -> s{_jesLastUpdatedAt = a}) . mapping _Time
 
--- | The time, in milliseconds since the epoch, when the job execution was queued.
+-- | The time, in seconds since the epoch, when the job execution was queued.
 jesQueuedAt :: Lens' JobExecutionSummary (Maybe UTCTime)
 jesQueuedAt = lens _jesQueuedAt (\ s a -> s{_jesQueuedAt = a}) . mapping _Time
 
@@ -73,7 +73,7 @@ jesQueuedAt = lens _jesQueuedAt (\ s a -> s{_jesQueuedAt = a}) . mapping _Time
 jesExecutionNumber :: Lens' JobExecutionSummary (Maybe Integer)
 jesExecutionNumber = lens _jesExecutionNumber (\ s a -> s{_jesExecutionNumber = a})
 
--- | The time, in milliseconds since the epoch, when the job execution started.
+-- | The time, in seconds since the epoch, when the job execution started.
 jesStartedAt :: Lens' JobExecutionSummary (Maybe UTCTime)
 jesStartedAt = lens _jesStartedAt (\ s a -> s{_jesStartedAt = a}) . mapping _Time
 

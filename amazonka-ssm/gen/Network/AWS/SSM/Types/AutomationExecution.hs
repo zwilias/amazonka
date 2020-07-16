@@ -21,9 +21,11 @@ import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.SSM.Types.AutomationExecutionStatus
 import Network.AWS.SSM.Types.ExecutionMode
+import Network.AWS.SSM.Types.ProgressCounters
 import Network.AWS.SSM.Types.ResolvedTargets
 import Network.AWS.SSM.Types.StepExecution
 import Network.AWS.SSM.Types.Target
+import Network.AWS.SSM.Types.TargetLocation
 
 -- | Detailed information about the current state of an individual Automation execution.
 --
@@ -34,6 +36,10 @@ data AutomationExecution = AutomationExecution'{_aeCurrentStepName
                                                 :: !(Maybe Text),
                                                 _aeTargetParameterName ::
                                                 !(Maybe Text),
+                                                _aeTargetLocations ::
+                                                !(Maybe (List1 TargetLocation)),
+                                                _aeProgressCounters ::
+                                                !(Maybe ProgressCounters),
                                                 _aeExecutedBy :: !(Maybe Text),
                                                 _aeDocumentName ::
                                                 !(Maybe Text),
@@ -43,6 +49,8 @@ data AutomationExecution = AutomationExecution'{_aeCurrentStepName
                                                 !(Maybe Text),
                                                 _aeMode ::
                                                 !(Maybe ExecutionMode),
+                                                _aeTargetMaps ::
+                                                !(Maybe [Map Text [Text]]),
                                                 _aeStepExecutionsTruncated ::
                                                 !(Maybe Bool),
                                                 _aeAutomationExecutionStatus ::
@@ -77,11 +85,15 @@ data AutomationExecution = AutomationExecution'{_aeCurrentStepName
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'aeCurrentStepName' - The name of the currently executing step.
+-- * 'aeCurrentStepName' - The name of the step that is currently running.
 --
 -- * 'aeTargetParameterName' - The parameter name.
 --
--- * 'aeExecutedBy' - The Amazon Resource Name (ARN) of the user who executed the automation.
+-- * 'aeTargetLocations' - The combination of AWS Regions and/or AWS accounts where you want to run the Automation.
+--
+-- * 'aeProgressCounters' - An aggregate of step execution statuses displayed in the AWS Console for a multi-Region and multi-account Automation execution.
+--
+-- * 'aeExecutedBy' - The Amazon Resource Name (ARN) of the user who ran the automation.
 --
 -- * 'aeDocumentName' - The name of the Automation document used during the execution.
 --
@@ -90,6 +102,8 @@ data AutomationExecution = AutomationExecution'{_aeCurrentStepName
 -- * 'aeFailureMessage' - A message describing why an execution has failed, if the status is set to Failed.
 --
 -- * 'aeMode' - The automation execution mode.
+--
+-- * 'aeTargetMaps' - The specified key-value mapping of document parameters to target resources.
 --
 -- * 'aeStepExecutionsTruncated' - A boolean value that indicates if the response contains the full list of the Automation step executions. If true, use the DescribeAutomationStepExecutions API action to get the full list of step executions.
 --
@@ -103,7 +117,7 @@ data AutomationExecution = AutomationExecution'{_aeCurrentStepName
 --
 -- * 'aeExecutionStartTime' - The time the execution started.
 --
--- * 'aeCurrentAction' - The action of the currently executing step.
+-- * 'aeCurrentAction' - The action of the step that is currently running.
 --
 -- * 'aeTargets' - The specified targets.
 --
@@ -115,7 +129,7 @@ data AutomationExecution = AutomationExecution'{_aeCurrentStepName
 --
 -- * 'aeAutomationExecutionId' - The execution ID.
 --
--- * 'aeStepExecutions' - A list of details about the current state of all steps that comprise an execution. An Automation document contains a list of steps that are executed in order.
+-- * 'aeStepExecutions' - A list of details about the current state of all steps that comprise an execution. An Automation document contains a list of steps that are run in order.
 --
 -- * 'aeMaxConcurrency' - The MaxConcurrency value specified by the user when the execution started.
 --
@@ -125,9 +139,12 @@ automationExecution
 automationExecution
   = AutomationExecution'{_aeCurrentStepName = Nothing,
                          _aeTargetParameterName = Nothing,
+                         _aeTargetLocations = Nothing,
+                         _aeProgressCounters = Nothing,
                          _aeExecutedBy = Nothing, _aeDocumentName = Nothing,
                          _aeExecutionEndTime = Nothing,
                          _aeFailureMessage = Nothing, _aeMode = Nothing,
+                         _aeTargetMaps = Nothing,
                          _aeStepExecutionsTruncated = Nothing,
                          _aeAutomationExecutionStatus = Nothing,
                          _aeParentAutomationExecutionId = Nothing,
@@ -141,7 +158,7 @@ automationExecution
                          _aeStepExecutions = Nothing,
                          _aeMaxConcurrency = Nothing, _aeTarget = Nothing}
 
--- | The name of the currently executing step.
+-- | The name of the step that is currently running.
 aeCurrentStepName :: Lens' AutomationExecution (Maybe Text)
 aeCurrentStepName = lens _aeCurrentStepName (\ s a -> s{_aeCurrentStepName = a})
 
@@ -149,7 +166,15 @@ aeCurrentStepName = lens _aeCurrentStepName (\ s a -> s{_aeCurrentStepName = a})
 aeTargetParameterName :: Lens' AutomationExecution (Maybe Text)
 aeTargetParameterName = lens _aeTargetParameterName (\ s a -> s{_aeTargetParameterName = a})
 
--- | The Amazon Resource Name (ARN) of the user who executed the automation.
+-- | The combination of AWS Regions and/or AWS accounts where you want to run the Automation.
+aeTargetLocations :: Lens' AutomationExecution (Maybe (NonEmpty TargetLocation))
+aeTargetLocations = lens _aeTargetLocations (\ s a -> s{_aeTargetLocations = a}) . mapping _List1
+
+-- | An aggregate of step execution statuses displayed in the AWS Console for a multi-Region and multi-account Automation execution.
+aeProgressCounters :: Lens' AutomationExecution (Maybe ProgressCounters)
+aeProgressCounters = lens _aeProgressCounters (\ s a -> s{_aeProgressCounters = a})
+
+-- | The Amazon Resource Name (ARN) of the user who ran the automation.
 aeExecutedBy :: Lens' AutomationExecution (Maybe Text)
 aeExecutedBy = lens _aeExecutedBy (\ s a -> s{_aeExecutedBy = a})
 
@@ -168,6 +193,10 @@ aeFailureMessage = lens _aeFailureMessage (\ s a -> s{_aeFailureMessage = a})
 -- | The automation execution mode.
 aeMode :: Lens' AutomationExecution (Maybe ExecutionMode)
 aeMode = lens _aeMode (\ s a -> s{_aeMode = a})
+
+-- | The specified key-value mapping of document parameters to target resources.
+aeTargetMaps :: Lens' AutomationExecution [HashMap Text [Text]]
+aeTargetMaps = lens _aeTargetMaps (\ s a -> s{_aeTargetMaps = a}) . _Default . _Coerce
 
 -- | A boolean value that indicates if the response contains the full list of the Automation step executions. If true, use the DescribeAutomationStepExecutions API action to get the full list of step executions.
 aeStepExecutionsTruncated :: Lens' AutomationExecution (Maybe Bool)
@@ -193,7 +222,7 @@ aeMaxErrors = lens _aeMaxErrors (\ s a -> s{_aeMaxErrors = a})
 aeExecutionStartTime :: Lens' AutomationExecution (Maybe UTCTime)
 aeExecutionStartTime = lens _aeExecutionStartTime (\ s a -> s{_aeExecutionStartTime = a}) . mapping _Time
 
--- | The action of the currently executing step.
+-- | The action of the step that is currently running.
 aeCurrentAction :: Lens' AutomationExecution (Maybe Text)
 aeCurrentAction = lens _aeCurrentAction (\ s a -> s{_aeCurrentAction = a})
 
@@ -217,7 +246,7 @@ aeDocumentVersion = lens _aeDocumentVersion (\ s a -> s{_aeDocumentVersion = a})
 aeAutomationExecutionId :: Lens' AutomationExecution (Maybe Text)
 aeAutomationExecutionId = lens _aeAutomationExecutionId (\ s a -> s{_aeAutomationExecutionId = a})
 
--- | A list of details about the current state of all steps that comprise an execution. An Automation document contains a list of steps that are executed in order.
+-- | A list of details about the current state of all steps that comprise an execution. An Automation document contains a list of steps that are run in order.
 aeStepExecutions :: Lens' AutomationExecution [StepExecution]
 aeStepExecutions = lens _aeStepExecutions (\ s a -> s{_aeStepExecutions = a}) . _Default . _Coerce
 
@@ -236,11 +265,14 @@ instance FromJSON AutomationExecution where
                  AutomationExecution' <$>
                    (x .:? "CurrentStepName") <*>
                      (x .:? "TargetParameterName")
+                     <*> (x .:? "TargetLocations")
+                     <*> (x .:? "ProgressCounters")
                      <*> (x .:? "ExecutedBy")
                      <*> (x .:? "DocumentName")
                      <*> (x .:? "ExecutionEndTime")
                      <*> (x .:? "FailureMessage")
                      <*> (x .:? "Mode")
+                     <*> (x .:? "TargetMaps" .!= mempty)
                      <*> (x .:? "StepExecutionsTruncated")
                      <*> (x .:? "AutomationExecutionStatus")
                      <*> (x .:? "ParentAutomationExecutionId")

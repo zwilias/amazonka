@@ -66,7 +66,7 @@ data DescribeAssociation = DescribeAssociation'{_daAssociationId
 --
 -- * 'daName' - The name of the Systems Manager document.
 --
--- * 'daAssociationVersion' - Specify the association version to retrieve. To view the latest version, either specify @> LATEST@ for this parameter, or omit this parameter. To view a list of all associations for an instance, use ListInstanceAssociations. To get a list of versions for a specific association, use ListAssociationVersions. 
+-- * 'daAssociationVersion' - Specify the association version to retrieve. To view the latest version, either specify @> LATEST@ for this parameter, or omit this parameter. To view a list of all associations for an instance, use 'ListAssociations' . To get a list of versions for a specific association, use 'ListAssociationVersions' . 
 describeAssociation
     :: DescribeAssociation
 describeAssociation
@@ -86,7 +86,7 @@ daInstanceId = lens _daInstanceId (\ s a -> s{_daInstanceId = a})
 daName :: Lens' DescribeAssociation (Maybe Text)
 daName = lens _daName (\ s a -> s{_daName = a})
 
--- | Specify the association version to retrieve. To view the latest version, either specify @> LATEST@ for this parameter, or omit this parameter. To view a list of all associations for an instance, use ListInstanceAssociations. To get a list of versions for a specific association, use ListAssociationVersions. 
+-- | Specify the association version to retrieve. To view the latest version, either specify @> LATEST@ for this parameter, or omit this parameter. To view a list of all associations for an instance, use 'ListAssociations' . To get a list of versions for a specific association, use 'ListAssociationVersions' . 
 daAssociationVersion :: Lens' DescribeAssociation (Maybe Text)
 daAssociationVersion = lens _daAssociationVersion (\ s a -> s{_daAssociationVersion = a})
 

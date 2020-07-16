@@ -18,7 +18,9 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Update a BAIDU GCM channel
+-- Enables the Baidu channel for an application or updates the status and settings of the Baidu channel for an application.
+--
+--
 module Network.AWS.Pinpoint.UpdateBaiduChannel
     (
     -- * Creating a Request
@@ -54,7 +56,7 @@ data UpdateBaiduChannel = UpdateBaiduChannel'{_ubcApplicationId
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'ubcApplicationId' - Undocumented member.
+-- * 'ubcApplicationId' - The unique identifier for the application. This identifier is displayed as the __Project ID__ on the Amazon Pinpoint console.
 --
 -- * 'ubcBaiduChannelRequest' - Undocumented member.
 updateBaiduChannel
@@ -67,7 +69,7 @@ updateBaiduChannel pApplicationId_
                           pApplicationId_,
                         _ubcBaiduChannelRequest = pBaiduChannelRequest_}
 
--- | Undocumented member.
+-- | The unique identifier for the application. This identifier is displayed as the __Project ID__ on the Amazon Pinpoint console.
 ubcApplicationId :: Lens' UpdateBaiduChannel Text
 ubcApplicationId = lens _ubcApplicationId (\ s a -> s{_ubcApplicationId = a})
 

@@ -21,7 +21,7 @@
 -- Describes the specified rule.
 --
 --
--- @DescribeRule@ doesn't list the targets of a rule. To see the targets associated with a rule, use 'ListTargetsByRule' .
+-- DescribeRule does not list the targets of a rule. To see the targets associated with a rule, use 'ListTargetsByRule' .
 --
 module Network.AWS.CloudWatchEvents.DescribeRule
     (
@@ -149,7 +149,7 @@ data DescribeRuleResponse = DescribeRuleResponse'{_drrsEventPattern
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'drrsEventPattern' - The event pattern. For more information, see <https://docs.aws.amazon.com/eventbridge/latest/userguide/eventbridge-and-event-patterns.html Event Patterns> in the /Amazon EventBridge User Guide/ .
+-- * 'drrsEventPattern' - The event pattern. For more information, see <https://docs.aws.amazon.com/eventbridge/latest/userguide/eventbridge-and-event-patterns.html Events and Event Patterns> in the /Amazon EventBridge User Guide/ .
 --
 -- * 'drrsState' - Specifies whether the rule is enabled or disabled.
 --
@@ -157,7 +157,7 @@ data DescribeRuleResponse = DescribeRuleResponse'{_drrsEventPattern
 --
 -- * 'drrsEventBusName' - The event bus associated with the rule.
 --
--- * 'drrsScheduleExpression' - The scheduling expression: for example, @"cron(0 20 * * ? *)"@ or @"rate(5 minutes)"@ .
+-- * 'drrsScheduleExpression' - The scheduling expression. For example, "cron(0 20 * * ? *)", "rate(5 minutes)".
 --
 -- * 'drrsName' - The name of the rule.
 --
@@ -180,7 +180,7 @@ describeRuleResponse pResponseStatus_
                           _drrsManagedBy = Nothing, _drrsRoleARN = Nothing,
                           _drrsResponseStatus = pResponseStatus_}
 
--- | The event pattern. For more information, see <https://docs.aws.amazon.com/eventbridge/latest/userguide/eventbridge-and-event-patterns.html Event Patterns> in the /Amazon EventBridge User Guide/ .
+-- | The event pattern. For more information, see <https://docs.aws.amazon.com/eventbridge/latest/userguide/eventbridge-and-event-patterns.html Events and Event Patterns> in the /Amazon EventBridge User Guide/ .
 drrsEventPattern :: Lens' DescribeRuleResponse (Maybe Text)
 drrsEventPattern = lens _drrsEventPattern (\ s a -> s{_drrsEventPattern = a})
 
@@ -196,7 +196,7 @@ drrsARN = lens _drrsARN (\ s a -> s{_drrsARN = a})
 drrsEventBusName :: Lens' DescribeRuleResponse (Maybe Text)
 drrsEventBusName = lens _drrsEventBusName (\ s a -> s{_drrsEventBusName = a})
 
--- | The scheduling expression: for example, @"cron(0 20 * * ? *)"@ or @"rate(5 minutes)"@ .
+-- | The scheduling expression. For example, "cron(0 20 * * ? *)", "rate(5 minutes)".
 drrsScheduleExpression :: Lens' DescribeRuleResponse (Maybe Text)
 drrsScheduleExpression = lens _drrsScheduleExpression (\ s a -> s{_drrsScheduleExpression = a})
 

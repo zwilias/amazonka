@@ -19,6 +19,7 @@ module Network.AWS.SageMaker.Types.DataSource where
 
 import Network.AWS.Lens
 import Network.AWS.Prelude
+import Network.AWS.SageMaker.Types.FileSystemDataSource
 import Network.AWS.SageMaker.Types.S3DataSource
 
 -- | Describes the location of the channel data.
@@ -26,29 +27,40 @@ import Network.AWS.SageMaker.Types.S3DataSource
 --
 --
 -- /See:/ 'dataSource' smart constructor.
-newtype DataSource = DataSource'{_dsS3DataSource ::
-                                 S3DataSource}
-                       deriving (Eq, Read, Show, Data, Typeable, Generic)
+data DataSource = DataSource'{_dsS3DataSource ::
+                              !(Maybe S3DataSource),
+                              _dsFileSystemDataSource ::
+                              !(Maybe FileSystemDataSource)}
+                    deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DataSource' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'dsS3DataSource' - The S3 location of the data source that is associated with a channel.
+--
+-- * 'dsFileSystemDataSource' - The file system that is associated with a channel.
 dataSource
-    :: S3DataSource -- ^ 'dsS3DataSource'
-    -> DataSource
-dataSource pS3DataSource_
-  = DataSource'{_dsS3DataSource = pS3DataSource_}
+    :: DataSource
+dataSource
+  = DataSource'{_dsS3DataSource = Nothing,
+                _dsFileSystemDataSource = Nothing}
 
 -- | The S3 location of the data source that is associated with a channel.
-dsS3DataSource :: Lens' DataSource S3DataSource
+dsS3DataSource :: Lens' DataSource (Maybe S3DataSource)
 dsS3DataSource = lens _dsS3DataSource (\ s a -> s{_dsS3DataSource = a})
+
+-- | The file system that is associated with a channel.
+dsFileSystemDataSource :: Lens' DataSource (Maybe FileSystemDataSource)
+dsFileSystemDataSource = lens _dsFileSystemDataSource (\ s a -> s{_dsFileSystemDataSource = a})
 
 instance FromJSON DataSource where
         parseJSON
           = withObject "DataSource"
-              (\ x -> DataSource' <$> (x .: "S3DataSource"))
+              (\ x ->
+                 DataSource' <$>
+                   (x .:? "S3DataSource") <*>
+                     (x .:? "FileSystemDataSource"))
 
 instance Hashable DataSource where
 
@@ -58,4 +70,6 @@ instance ToJSON DataSource where
         toJSON DataSource'{..}
           = object
               (catMaybes
-                 [Just ("S3DataSource" .= _dsS3DataSource)])
+                 [("S3DataSource" .=) <$> _dsS3DataSource,
+                  ("FileSystemDataSource" .=) <$>
+                    _dsFileSystemDataSource])

@@ -281,6 +281,11 @@ elb
             = Just "throttling_exception"
           | has (hasCode "Throttling" . hasStatus 400) e =
             Just "throttling"
+          | has
+              (hasCode "ProvisionedThroughputExceededException" .
+                 hasStatus 400)
+              e
+            = Just "throughput_exceeded"
           | has (hasStatus 504) e = Just "gateway_timeout"
           | has
               (hasCode "RequestThrottledException" . hasStatus 400)
@@ -364,7 +369,9 @@ _DuplicateListenerException
   = _MatchServiceError elb "DuplicateListener" .
       hasStatus 400
 
--- | Prism for DependencyThrottleException' errors.
+-- | A request made by Elastic Load Balancing to another service exceeds the maximum request rate permitted for your account.
+--
+--
 _DependencyThrottleException :: AsError a => Getting (First ServiceError) a ServiceError
 _DependencyThrottleException
   = _MatchServiceError elb "DependencyThrottle" .

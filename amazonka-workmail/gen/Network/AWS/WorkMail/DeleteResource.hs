@@ -54,7 +54,7 @@ data DeleteResource = DeleteResource'{_dOrganizationId
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dOrganizationId' - The identifier associated with the organization for which the resource is deleted.
+-- * 'dOrganizationId' - The identifier associated with the organization from which the resource is deleted.
 --
 -- * 'dResourceId' - The identifier of the resource to be deleted.
 deleteResource
@@ -66,7 +66,7 @@ deleteResource pOrganizationId_ pResourceId_
                       pOrganizationId_,
                     _dResourceId = pResourceId_}
 
--- | The identifier associated with the organization for which the resource is deleted.
+-- | The identifier associated with the organization from which the resource is deleted.
 dOrganizationId :: Lens' DeleteResource Text
 dOrganizationId = lens _dOrganizationId (\ s a -> s{_dOrganizationId = a})
 

@@ -49,13 +49,13 @@ data Partition = Partition'{_pCreationTime ::
 --
 -- * 'pStorageDescriptor' - Provides information about the physical location where the partition is stored.
 --
--- * 'pDatabaseName' - The name of the catalog database where the table in question is located.
+-- * 'pDatabaseName' - The name of the catalog database in which to create the partition.
 --
--- * 'pParameters' - Partition parameters, in the form of a list of key-value pairs.
+-- * 'pParameters' - These key-value pairs define partition parameters.
 --
 -- * 'pLastAccessTime' - The last time at which the partition was accessed.
 --
--- * 'pTableName' - The name of the table in question.
+-- * 'pTableName' - The name of the database table in which to create the partition.
 partition
     :: Partition
 partition
@@ -81,11 +81,11 @@ pLastAnalyzedTime = lens _pLastAnalyzedTime (\ s a -> s{_pLastAnalyzedTime = a})
 pStorageDescriptor :: Lens' Partition (Maybe StorageDescriptor)
 pStorageDescriptor = lens _pStorageDescriptor (\ s a -> s{_pStorageDescriptor = a})
 
--- | The name of the catalog database where the table in question is located.
+-- | The name of the catalog database in which to create the partition.
 pDatabaseName :: Lens' Partition (Maybe Text)
 pDatabaseName = lens _pDatabaseName (\ s a -> s{_pDatabaseName = a})
 
--- | Partition parameters, in the form of a list of key-value pairs.
+-- | These key-value pairs define partition parameters.
 pParameters :: Lens' Partition (HashMap Text Text)
 pParameters = lens _pParameters (\ s a -> s{_pParameters = a}) . _Default . _Map
 
@@ -93,7 +93,7 @@ pParameters = lens _pParameters (\ s a -> s{_pParameters = a}) . _Default . _Map
 pLastAccessTime :: Lens' Partition (Maybe UTCTime)
 pLastAccessTime = lens _pLastAccessTime (\ s a -> s{_pLastAccessTime = a}) . mapping _Time
 
--- | The name of the table in question.
+-- | The name of the database table in which to create the partition.
 pTableName :: Lens' Partition (Maybe Text)
 pTableName = lens _pTableName (\ s a -> s{_pTableName = a})
 

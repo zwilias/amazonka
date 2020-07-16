@@ -21,6 +21,8 @@
 -- List all the comments for the specified document version.
 --
 --
+--
+-- This operation returns paginated results.
 module Network.AWS.WorkDocs.DescribeComments
     (
     -- * Creating a Request
@@ -43,6 +45,7 @@ module Network.AWS.WorkDocs.DescribeComments
     ) where
 
 import Network.AWS.Lens
+import Network.AWS.Pager
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
@@ -62,7 +65,7 @@ data DescribeComments = DescribeComments'{_dcAuthenticationToken
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dcAuthenticationToken' - Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.
+-- * 'dcAuthenticationToken' - Amazon WorkDocs authentication token. Not required when using AWS administrator credentials to access the API.
 --
 -- * 'dcMarker' - The marker for the next set of results. This marker was received from a previous call.
 --
@@ -81,7 +84,7 @@ describeComments pDocumentId_ pVersionId_
                       _dcDocumentId = pDocumentId_,
                       _dcVersionId = pVersionId_}
 
--- | Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.
+-- | Amazon WorkDocs authentication token. Not required when using AWS administrator credentials to access the API.
 dcAuthenticationToken :: Lens' DescribeComments (Maybe Text)
 dcAuthenticationToken = lens _dcAuthenticationToken (\ s a -> s{_dcAuthenticationToken = a}) . mapping _Sensitive
 
@@ -100,6 +103,13 @@ dcDocumentId = lens _dcDocumentId (\ s a -> s{_dcDocumentId = a})
 -- | The ID of the document version.
 dcVersionId :: Lens' DescribeComments Text
 dcVersionId = lens _dcVersionId (\ s a -> s{_dcVersionId = a})
+
+instance AWSPager DescribeComments where
+        page rq rs
+          | stop (rs ^. dcrsMarker) = Nothing
+          | stop (rs ^. dcrsComments) = Nothing
+          | otherwise =
+            Just $ rq & dcMarker .~ rs ^. dcrsMarker
 
 instance AWSRequest DescribeComments where
         type Rs DescribeComments = DescribeCommentsResponse

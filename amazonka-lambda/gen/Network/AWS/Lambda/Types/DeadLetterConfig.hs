@@ -20,7 +20,7 @@ module Network.AWS.Lambda.Types.DeadLetterConfig where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | The Amazon Resource Name (ARN) of an Amazon SQS queue or Amazon SNS topic you specify as your Dead Letter Queue (DLQ). For more information, see 'dlq' . 
+-- | The <https://docs.aws.amazon.com/lambda/latest/dg/invocation-async.html#dlq dead-letter queue> for failed asynchronous invocations.
 --
 --
 --
@@ -33,13 +33,13 @@ newtype DeadLetterConfig = DeadLetterConfig'{_dlcTargetARN
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dlcTargetARN' - The Amazon Resource Name (ARN) of an Amazon SQS queue or Amazon SNS topic you specify as your Dead Letter Queue (DLQ). 'dlq' . For more information, see 'dlq' . 
+-- * 'dlcTargetARN' - The Amazon Resource Name (ARN) of an Amazon SQS queue or Amazon SNS topic.
 deadLetterConfig
     :: DeadLetterConfig
 deadLetterConfig
   = DeadLetterConfig'{_dlcTargetARN = Nothing}
 
--- | The Amazon Resource Name (ARN) of an Amazon SQS queue or Amazon SNS topic you specify as your Dead Letter Queue (DLQ). 'dlq' . For more information, see 'dlq' . 
+-- | The Amazon Resource Name (ARN) of an Amazon SQS queue or Amazon SNS topic.
 dlcTargetARN :: Lens' DeadLetterConfig (Maybe Text)
 dlcTargetARN = lens _dlcTargetARN (\ s a -> s{_dlcTargetARN = a})
 

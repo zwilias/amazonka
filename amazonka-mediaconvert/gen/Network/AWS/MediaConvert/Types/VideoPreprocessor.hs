@@ -20,6 +20,7 @@ module Network.AWS.MediaConvert.Types.VideoPreprocessor where
 import Network.AWS.Lens
 import Network.AWS.MediaConvert.Types.ColorCorrector
 import Network.AWS.MediaConvert.Types.Deinterlacer
+import Network.AWS.MediaConvert.Types.DolbyVision
 import Network.AWS.MediaConvert.Types.ImageInserter
 import Network.AWS.MediaConvert.Types.NoiseReducer
 import Network.AWS.MediaConvert.Types.TimecodeBurnin
@@ -30,6 +31,8 @@ import Network.AWS.Prelude
 -- /See:/ 'videoPreprocessor' smart constructor.
 data VideoPreprocessor = VideoPreprocessor'{_vpTimecodeBurnin
                                             :: !(Maybe TimecodeBurnin),
+                                            _vpDolbyVision ::
+                                            !(Maybe DolbyVision),
                                             _vpColorCorrector ::
                                             !(Maybe ColorCorrector),
                                             _vpDeinterlacer ::
@@ -46,6 +49,8 @@ data VideoPreprocessor = VideoPreprocessor'{_vpTimecodeBurnin
 --
 -- * 'vpTimecodeBurnin' - Timecode burn-in (TimecodeBurnIn)--Burns the output timecode and specified prefix into the output.
 --
+-- * 'vpDolbyVision' - Enable Dolby Vision feature to produce Dolby Vision compatible video output.
+--
 -- * 'vpColorCorrector' - Enable the Color corrector (ColorCorrector) feature if necessary. Enable or disable this feature for each output individually. This setting is disabled by default.
 --
 -- * 'vpDeinterlacer' - Use Deinterlacer (Deinterlacer) to produce smoother motion and a clearer picture.
@@ -57,6 +62,7 @@ videoPreprocessor
     :: VideoPreprocessor
 videoPreprocessor
   = VideoPreprocessor'{_vpTimecodeBurnin = Nothing,
+                       _vpDolbyVision = Nothing,
                        _vpColorCorrector = Nothing,
                        _vpDeinterlacer = Nothing, _vpNoiseReducer = Nothing,
                        _vpImageInserter = Nothing}
@@ -64,6 +70,10 @@ videoPreprocessor
 -- | Timecode burn-in (TimecodeBurnIn)--Burns the output timecode and specified prefix into the output.
 vpTimecodeBurnin :: Lens' VideoPreprocessor (Maybe TimecodeBurnin)
 vpTimecodeBurnin = lens _vpTimecodeBurnin (\ s a -> s{_vpTimecodeBurnin = a})
+
+-- | Enable Dolby Vision feature to produce Dolby Vision compatible video output.
+vpDolbyVision :: Lens' VideoPreprocessor (Maybe DolbyVision)
+vpDolbyVision = lens _vpDolbyVision (\ s a -> s{_vpDolbyVision = a})
 
 -- | Enable the Color corrector (ColorCorrector) feature if necessary. Enable or disable this feature for each output individually. This setting is disabled by default.
 vpColorCorrector :: Lens' VideoPreprocessor (Maybe ColorCorrector)
@@ -86,7 +96,8 @@ instance FromJSON VideoPreprocessor where
           = withObject "VideoPreprocessor"
               (\ x ->
                  VideoPreprocessor' <$>
-                   (x .:? "timecodeBurnin") <*> (x .:? "colorCorrector")
+                   (x .:? "timecodeBurnin") <*> (x .:? "dolbyVision")
+                     <*> (x .:? "colorCorrector")
                      <*> (x .:? "deinterlacer")
                      <*> (x .:? "noiseReducer")
                      <*> (x .:? "imageInserter"))
@@ -100,6 +111,7 @@ instance ToJSON VideoPreprocessor where
           = object
               (catMaybes
                  [("timecodeBurnin" .=) <$> _vpTimecodeBurnin,
+                  ("dolbyVision" .=) <$> _vpDolbyVision,
                   ("colorCorrector" .=) <$> _vpColorCorrector,
                   ("deinterlacer" .=) <$> _vpDeinterlacer,
                   ("noiseReducer" .=) <$> _vpNoiseReducer,

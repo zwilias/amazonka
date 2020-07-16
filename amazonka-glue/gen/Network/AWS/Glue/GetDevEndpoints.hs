@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Retrieves all the DevEndpoints in this AWS account.
+-- Retrieves all the development endpoints in this AWS account.
 --
 --
 --
@@ -134,9 +134,9 @@ data GetDevEndpointsResponse = GetDevEndpointsResponse'{_gdersNextToken
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'gdersNextToken' - A continuation token, if not all DevEndpoint definitions have yet been returned.
+-- * 'gdersNextToken' - A continuation token, if not all @DevEndpoint@ definitions have yet been returned.
 --
--- * 'gdersDevEndpoints' - A list of DevEndpoint definitions.
+-- * 'gdersDevEndpoints' - A list of @DevEndpoint@ definitions.
 --
 -- * 'gdersResponseStatus' - -- | The response status code.
 getDevEndpointsResponse
@@ -147,11 +147,11 @@ getDevEndpointsResponse pResponseStatus_
                              _gdersDevEndpoints = Nothing,
                              _gdersResponseStatus = pResponseStatus_}
 
--- | A continuation token, if not all DevEndpoint definitions have yet been returned.
+-- | A continuation token, if not all @DevEndpoint@ definitions have yet been returned.
 gdersNextToken :: Lens' GetDevEndpointsResponse (Maybe Text)
 gdersNextToken = lens _gdersNextToken (\ s a -> s{_gdersNextToken = a})
 
--- | A list of DevEndpoint definitions.
+-- | A list of @DevEndpoint@ definitions.
 gdersDevEndpoints :: Lens' GetDevEndpointsResponse [DevEndpoint]
 gdersDevEndpoints = lens _gdersDevEndpoints (\ s a -> s{_gdersDevEndpoints = a}) . _Default . _Coerce
 

@@ -114,7 +114,7 @@ data GetCORSPolicyResponse = GetCORSPolicyResponse'{_gcorsprsResponseStatus
 --
 -- * 'gcorsprsResponseStatus' - -- | The response status code.
 --
--- * 'gcorsprsCORSPolicy' - Undocumented member.
+-- * 'gcorsprsCORSPolicy' - The CORS policy assigned to the container.
 getCORSPolicyResponse
     :: Int -- ^ 'gcorsprsResponseStatus'
     -> NonEmpty CORSRule -- ^ 'gcorsprsCORSPolicy'
@@ -128,7 +128,7 @@ getCORSPolicyResponse pResponseStatus_ pCORSPolicy_
 gcorsprsResponseStatus :: Lens' GetCORSPolicyResponse Int
 gcorsprsResponseStatus = lens _gcorsprsResponseStatus (\ s a -> s{_gcorsprsResponseStatus = a})
 
--- | Undocumented member.
+-- | The CORS policy assigned to the container.
 gcorsprsCORSPolicy :: Lens' GetCORSPolicyResponse (NonEmpty CORSRule)
 gcorsprsCORSPolicy = lens _gcorsprsCORSPolicy (\ s a -> s{_gcorsprsCORSPolicy = a}) . _List1
 

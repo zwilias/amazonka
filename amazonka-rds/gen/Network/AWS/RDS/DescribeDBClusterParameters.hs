@@ -21,8 +21,10 @@
 -- Returns the detailed parameter list for a particular DB cluster parameter group.
 --
 --
--- For more information on Amazon Aurora, see <http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Aurora.html Aurora on Amazon RDS> in the /Amazon RDS User Guide./ 
+-- For more information on Amazon Aurora, see <https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html What Is Amazon Aurora?> in the /Amazon Aurora User Guide./ 
 --
+--
+-- This operation returns paginated results.
 module Network.AWS.RDS.DescribeDBClusterParameters
     (
     -- * Creating a Request
@@ -45,6 +47,7 @@ module Network.AWS.RDS.DescribeDBClusterParameters
     ) where
 
 import Network.AWS.Lens
+import Network.AWS.Pager
 import Network.AWS.Prelude
 import Network.AWS.RDS.Types
 import Network.AWS.RDS.Types.Product
@@ -75,11 +78,11 @@ data DescribeDBClusterParameters = DescribeDBClusterParameters'{_ddcpFilters
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'ddcpFilters' - This parameter is not currently supported.
+-- * 'ddcpFilters' - This parameter isn't currently supported.
 --
 -- * 'ddcpMarker' - An optional pagination token provided by a previous @DescribeDBClusterParameters@ request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by @MaxRecords@ . 
 --
--- * 'ddcpMaxRecords' - The maximum number of records to include in the response. If more records exist than the specified @MaxRecords@ value, a pagination token called a marker is included in the response so that the remaining results can be retrieved.  Default: 100 Constraints: Minimum 20, maximum 100.
+-- * 'ddcpMaxRecords' - The maximum number of records to include in the response. If more records exist than the specified @MaxRecords@ value, a pagination token called a marker is included in the response so you can retrieve the remaining results.  Default: 100 Constraints: Minimum 20, maximum 100.
 --
 -- * 'ddcpSource' - A value that indicates to return only parameters for a specific source. Parameter sources can be @engine@ , @service@ , or @customer@ . 
 --
@@ -97,7 +100,7 @@ describeDBClusterParameters
                                  _ddcpDBClusterParameterGroupName =
                                    pDBClusterParameterGroupName_}
 
--- | This parameter is not currently supported.
+-- | This parameter isn't currently supported.
 ddcpFilters :: Lens' DescribeDBClusterParameters [Filter]
 ddcpFilters = lens _ddcpFilters (\ s a -> s{_ddcpFilters = a}) . _Default . _Coerce
 
@@ -105,7 +108,7 @@ ddcpFilters = lens _ddcpFilters (\ s a -> s{_ddcpFilters = a}) . _Default . _Coe
 ddcpMarker :: Lens' DescribeDBClusterParameters (Maybe Text)
 ddcpMarker = lens _ddcpMarker (\ s a -> s{_ddcpMarker = a})
 
--- | The maximum number of records to include in the response. If more records exist than the specified @MaxRecords@ value, a pagination token called a marker is included in the response so that the remaining results can be retrieved.  Default: 100 Constraints: Minimum 20, maximum 100.
+-- | The maximum number of records to include in the response. If more records exist than the specified @MaxRecords@ value, a pagination token called a marker is included in the response so you can retrieve the remaining results.  Default: 100 Constraints: Minimum 20, maximum 100.
 ddcpMaxRecords :: Lens' DescribeDBClusterParameters (Maybe Int)
 ddcpMaxRecords = lens _ddcpMaxRecords (\ s a -> s{_ddcpMaxRecords = a})
 
@@ -116,6 +119,13 @@ ddcpSource = lens _ddcpSource (\ s a -> s{_ddcpSource = a})
 -- | The name of a specific DB cluster parameter group to return parameter details for. Constraints:     * If supplied, must match the name of an existing DBClusterParameterGroup.
 ddcpDBClusterParameterGroupName :: Lens' DescribeDBClusterParameters Text
 ddcpDBClusterParameterGroupName = lens _ddcpDBClusterParameterGroupName (\ s a -> s{_ddcpDBClusterParameterGroupName = a})
+
+instance AWSPager DescribeDBClusterParameters where
+        page rq rs
+          | stop (rs ^. ddcprsMarker) = Nothing
+          | stop (rs ^. ddcprsParameters) = Nothing
+          | otherwise =
+            Just $ rq & ddcpMarker .~ rs ^. ddcprsMarker
 
 instance AWSRequest DescribeDBClusterParameters where
         type Rs DescribeDBClusterParameters =

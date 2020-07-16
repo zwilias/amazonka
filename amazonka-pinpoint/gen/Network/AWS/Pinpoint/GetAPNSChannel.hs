@@ -18,7 +18,9 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Returns information about the APNs channel for an app.
+-- Retrieves information about the status and settings of the APNs channel for an application.
+--
+--
 module Network.AWS.Pinpoint.GetAPNSChannel
     (
     -- * Creating a Request
@@ -51,7 +53,7 @@ newtype GetAPNSChannel = GetAPNSChannel'{_gacApplicationId
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'gacApplicationId' - Undocumented member.
+-- * 'gacApplicationId' - The unique identifier for the application. This identifier is displayed as the __Project ID__ on the Amazon Pinpoint console.
 getAPNSChannel
     :: Text -- ^ 'gacApplicationId'
     -> GetAPNSChannel
@@ -59,7 +61,7 @@ getAPNSChannel pApplicationId_
   = GetAPNSChannel'{_gacApplicationId =
                       pApplicationId_}
 
--- | Undocumented member.
+-- | The unique identifier for the application. This identifier is displayed as the __Project ID__ on the Amazon Pinpoint console.
 gacApplicationId :: Lens' GetAPNSChannel Text
 gacApplicationId = lens _gacApplicationId (\ s a -> s{_gacApplicationId = a})
 

@@ -54,6 +54,7 @@ library
         , Network.AWS.MigrationHub.DisassociateCreatedArtifact
         , Network.AWS.MigrationHub.DisassociateDiscoveredResource
         , Network.AWS.MigrationHub.ImportMigrationTask
+        , Network.AWS.MigrationHub.ListApplicationStates
         , Network.AWS.MigrationHub.ListCreatedArtifacts
         , Network.AWS.MigrationHub.ListDiscoveredResources
         , Network.AWS.MigrationHub.ListMigrationTasks
@@ -65,7 +66,8 @@ library
         , Network.AWS.MigrationHub.Waiters
 
     other-modules:
-          Network.AWS.MigrationHub.Types.ApplicationStatus
+          Network.AWS.MigrationHub.Types.ApplicationState
+        , Network.AWS.MigrationHub.Types.ApplicationStatus
         , Network.AWS.MigrationHub.Types.CreatedArtifact
         , Network.AWS.MigrationHub.Types.DiscoveredResource
         , Network.AWS.MigrationHub.Types.MigrationStatus

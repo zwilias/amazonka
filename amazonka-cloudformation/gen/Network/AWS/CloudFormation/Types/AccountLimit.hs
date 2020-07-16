@@ -20,8 +20,20 @@ module Network.AWS.CloudFormation.Types.AccountLimit where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | The AccountLimit data type.
+-- | The AccountLimit data type. 
 --
+--
+-- CloudFormation has the following limits per account:
+--
+--     * Number of concurrent resources
+--
+--     * Number of stacks
+--
+--     * Number of stack outputs
+--
+--
+--
+-- For more information about these account limits, and other CloudFormation limits, see <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cloudformation-limits.html AWS CloudFormation Limits> in the /AWS CloudFormation User Guide/ .
 --
 --
 -- /See:/ 'accountLimit' smart constructor.
@@ -36,7 +48,7 @@ data AccountLimit = AccountLimit'{_alValue ::
 --
 -- * 'alValue' - The value that is associated with the account limit name.
 --
--- * 'alName' - The name of the account limit. Currently, the only account limit is @StackLimit@ .
+-- * 'alName' - The name of the account limit. Values: @ConcurrentResourcesLimit@ | @StackLimit@ | @StackOutputsLimit@ 
 accountLimit
     :: AccountLimit
 accountLimit
@@ -47,7 +59,7 @@ accountLimit
 alValue :: Lens' AccountLimit (Maybe Int)
 alValue = lens _alValue (\ s a -> s{_alValue = a})
 
--- | The name of the account limit. Currently, the only account limit is @StackLimit@ .
+-- | The name of the account limit. Values: @ConcurrentResourcesLimit@ | @StackLimit@ | @StackOutputsLimit@ 
 alName :: Lens' AccountLimit (Maybe Text)
 alName = lens _alName (\ s a -> s{_alName = a})
 

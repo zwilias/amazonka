@@ -18,7 +18,25 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Lists the metrics configurations for the bucket.
+-- Lists the metrics configurations for the bucket. The metrics configurations are only for the request metrics of the bucket and do not provide information on daily storage metrics. You can have up to 1,000 configurations per bucket.
+--
+--
+-- This operation supports list pagination and does not return more than 100 configurations at a time. Always check the @IsTruncated@ element in the response. If there are no more configurations to list, @IsTruncated@ is set to false. If there are more configurations to list, @IsTruncated@ is set to true, and there is a value in @NextContinuationToken@ . You use the @NextContinuationToken@ value to continue the pagination of the list by passing the value in @continuation-token@ in the request to @GET@ the next page.
+--
+-- To use this operation, you must have permissions to perform the @s3:GetMetricsConfiguration@ action. The bucket owner has this permission by default. The bucket owner can grant this permission to others. For more information about permissions, see <https://docs.aws.amazon.com/AmazonS3/latest/dev/using-with-s3-actions.html#using-with-s3-actions-related-to-bucket-subresources Permissions Related to Bucket Subresource Operations> and <https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-access-control.html Managing Access Permissions to Your Amazon S3 Resources> .
+--
+-- For more information about metrics configurations and CloudWatch request metrics, see <https://docs.aws.amazon.com/AmazonS3/latest/dev/cloudwatch-monitoring.html Monitoring Metrics with Amazon CloudWatch> .
+--
+-- The following operations are related to @ListBucketMetricsConfigurations@ :
+--
+--     * 'PutBucketMetricsConfiguration' 
+--
+--     * 'GetBucketMetricsConfiguration' 
+--
+--     * 'DeleteBucketMetricsConfiguration' 
+--
+--
+--
 module Network.AWS.S3.ListBucketMetricsConfigurations
     (
     -- * Creating a Request
@@ -146,7 +164,7 @@ data ListBucketMetricsConfigurationsResponse = ListBucketMetricsConfigurationsRe
 --
 -- * 'lbmcrsMetricsConfigurationList' - The list of metrics configurations for a bucket.
 --
--- * 'lbmcrsNextContinuationToken' - The marker used to continue a metrics configuration listing that has been truncated. Use the NextContinuationToken from a previously truncated list response to continue the listing. The continuation token is an opaque value that Amazon S3 understands.
+-- * 'lbmcrsNextContinuationToken' - The marker used to continue a metrics configuration listing that has been truncated. Use the @NextContinuationToken@ from a previously truncated list response to continue the listing. The continuation token is an opaque value that Amazon S3 understands.
 --
 -- * 'lbmcrsIsTruncated' - Indicates whether the returned list of metrics configurations is complete. A value of true indicates that the list is not complete and the NextContinuationToken will be provided for a subsequent request.
 --
@@ -174,7 +192,7 @@ lbmcrsContinuationToken = lens _lbmcrsContinuationToken (\ s a -> s{_lbmcrsConti
 lbmcrsMetricsConfigurationList :: Lens' ListBucketMetricsConfigurationsResponse [MetricsConfiguration]
 lbmcrsMetricsConfigurationList = lens _lbmcrsMetricsConfigurationList (\ s a -> s{_lbmcrsMetricsConfigurationList = a}) . _Default . _Coerce
 
--- | The marker used to continue a metrics configuration listing that has been truncated. Use the NextContinuationToken from a previously truncated list response to continue the listing. The continuation token is an opaque value that Amazon S3 understands.
+-- | The marker used to continue a metrics configuration listing that has been truncated. Use the @NextContinuationToken@ from a previously truncated list response to continue the listing. The continuation token is an opaque value that Amazon S3 understands.
 lbmcrsNextContinuationToken :: Lens' ListBucketMetricsConfigurationsResponse (Maybe Text)
 lbmcrsNextContinuationToken = lens _lbmcrsNextContinuationToken (\ s a -> s{_lbmcrsNextContinuationToken = a})
 

@@ -20,7 +20,7 @@ module Network.AWS.RDS.Types.CharacterSet where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | This data type is used as a response element in the action 'DescribeDBEngineVersions' . 
+-- | This data type is used as a response element in the action @DescribeDBEngineVersions@ . 
 --
 --
 --

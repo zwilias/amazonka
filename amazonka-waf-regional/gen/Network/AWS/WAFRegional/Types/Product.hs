@@ -22,6 +22,7 @@ module Network.AWS.WAFRegional.Types.Product (
     module Network.AWS.WAFRegional.Types.ByteMatchSetSummary,
     module Network.AWS.WAFRegional.Types.ByteMatchSetUpdate,
     module Network.AWS.WAFRegional.Types.ByteMatchTuple,
+    module Network.AWS.WAFRegional.Types.ExcludedRule,
     module Network.AWS.WAFRegional.Types.FieldToMatch,
     module Network.AWS.WAFRegional.Types.GeoMatchConstraint,
     module Network.AWS.WAFRegional.Types.GeoMatchSet,
@@ -33,6 +34,7 @@ module Network.AWS.WAFRegional.Types.Product (
     module Network.AWS.WAFRegional.Types.IPSetDescriptor,
     module Network.AWS.WAFRegional.Types.IPSetSummary,
     module Network.AWS.WAFRegional.Types.IPSetUpdate,
+    module Network.AWS.WAFRegional.Types.LoggingConfiguration,
     module Network.AWS.WAFRegional.Types.Predicate,
     module Network.AWS.WAFRegional.Types.RateBasedRule,
     module Network.AWS.WAFRegional.Types.RegexMatchSet,
@@ -58,6 +60,8 @@ module Network.AWS.WAFRegional.Types.Product (
     module Network.AWS.WAFRegional.Types.SqlInjectionMatchSetUpdate,
     module Network.AWS.WAFRegional.Types.SqlInjectionMatchTuple,
     module Network.AWS.WAFRegional.Types.SubscribedRuleGroupSummary,
+    module Network.AWS.WAFRegional.Types.Tag,
+    module Network.AWS.WAFRegional.Types.TagInfoForResource,
     module Network.AWS.WAFRegional.Types.TimeWindow,
     module Network.AWS.WAFRegional.Types.WafAction,
     module Network.AWS.WAFRegional.Types.WafOverrideAction,
@@ -77,6 +81,7 @@ import Network.AWS.WAFRegional.Types.ByteMatchSet
 import Network.AWS.WAFRegional.Types.ByteMatchSetSummary
 import Network.AWS.WAFRegional.Types.ByteMatchSetUpdate
 import Network.AWS.WAFRegional.Types.ByteMatchTuple
+import Network.AWS.WAFRegional.Types.ExcludedRule
 import Network.AWS.WAFRegional.Types.FieldToMatch
 import Network.AWS.WAFRegional.Types.GeoMatchConstraint
 import Network.AWS.WAFRegional.Types.GeoMatchSet
@@ -88,6 +93,7 @@ import Network.AWS.WAFRegional.Types.IPSet
 import Network.AWS.WAFRegional.Types.IPSetDescriptor
 import Network.AWS.WAFRegional.Types.IPSetSummary
 import Network.AWS.WAFRegional.Types.IPSetUpdate
+import Network.AWS.WAFRegional.Types.LoggingConfiguration
 import Network.AWS.WAFRegional.Types.Predicate
 import Network.AWS.WAFRegional.Types.RateBasedRule
 import Network.AWS.WAFRegional.Types.RegexMatchSet
@@ -113,6 +119,8 @@ import Network.AWS.WAFRegional.Types.SqlInjectionMatchSetSummary
 import Network.AWS.WAFRegional.Types.SqlInjectionMatchSetUpdate
 import Network.AWS.WAFRegional.Types.SqlInjectionMatchTuple
 import Network.AWS.WAFRegional.Types.SubscribedRuleGroupSummary
+import Network.AWS.WAFRegional.Types.Tag
+import Network.AWS.WAFRegional.Types.TagInfoForResource
 import Network.AWS.WAFRegional.Types.TimeWindow
 import Network.AWS.WAFRegional.Types.WafAction
 import Network.AWS.WAFRegional.Types.WafOverrideAction

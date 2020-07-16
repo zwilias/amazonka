@@ -31,9 +31,9 @@
 --
 -- @com.ex\344mple.@ 
 --
--- The labels are reversed and alphabetized using the escaped value. For more information about valid domain name formats, including internationalized domain names, see <http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DomainNameFormat.html DNS Domain Name Format> in the /Amazon Route 53 Developer Guide/ .
+-- The labels are reversed and alphabetized using the escaped value. For more information about valid domain name formats, including internationalized domain names, see <https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DomainNameFormat.html DNS Domain Name Format> in the /Amazon Route 53 Developer Guide/ .
 --
--- Amazon Route 53 returns up to 100 items in each response. If you have a lot of hosted zones, use the @MaxItems@ parameter to list them in groups of up to 100. The response includes values that help navigate from one group of @MaxItems@ hosted zones to the next:
+-- Route 53 returns up to 100 items in each response. If you have a lot of hosted zones, use the @MaxItems@ parameter to list them in groups of up to 100. The response includes values that help navigate from one group of @MaxItems@ hosted zones to the next:
 --
 --     * The @DNSName@ and @HostedZoneId@ elements in the response contain the values, if any, specified for the @dnsname@ and @hostedzoneid@ parameters in the request that produced the current response.
 --

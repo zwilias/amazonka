@@ -19,10 +19,11 @@
 module Network.AWS.GameLift.Types.GameSessionPlacementState (
   GameSessionPlacementState (
     ..
-    , Cancelled
-    , Fulfilled
-    , Pending
-    , TimedOut
+    , GSPSCancelled
+    , GSPSFailed
+    , GSPSFulfilled
+    , GSPSPending
+    , GSPSTimedOut
     )
   ) where
 
@@ -34,23 +35,27 @@ data GameSessionPlacementState = GameSessionPlacementState' (CI
                                    deriving (Eq, Ord, Read, Show, Data,
                                              Typeable, Generic)
 
-pattern Cancelled :: GameSessionPlacementState
-pattern Cancelled = GameSessionPlacementState' "CANCELLED"
+pattern GSPSCancelled :: GameSessionPlacementState
+pattern GSPSCancelled = GameSessionPlacementState' "CANCELLED"
 
-pattern Fulfilled :: GameSessionPlacementState
-pattern Fulfilled = GameSessionPlacementState' "FULFILLED"
+pattern GSPSFailed :: GameSessionPlacementState
+pattern GSPSFailed = GameSessionPlacementState' "FAILED"
 
-pattern Pending :: GameSessionPlacementState
-pattern Pending = GameSessionPlacementState' "PENDING"
+pattern GSPSFulfilled :: GameSessionPlacementState
+pattern GSPSFulfilled = GameSessionPlacementState' "FULFILLED"
 
-pattern TimedOut :: GameSessionPlacementState
-pattern TimedOut = GameSessionPlacementState' "TIMED_OUT"
+pattern GSPSPending :: GameSessionPlacementState
+pattern GSPSPending = GameSessionPlacementState' "PENDING"
+
+pattern GSPSTimedOut :: GameSessionPlacementState
+pattern GSPSTimedOut = GameSessionPlacementState' "TIMED_OUT"
 
 {-# COMPLETE
-  Cancelled,
-  Fulfilled,
-  Pending,
-  TimedOut,
+  GSPSCancelled,
+  GSPSFailed,
+  GSPSFulfilled,
+  GSPSPending,
+  GSPSTimedOut,
   GameSessionPlacementState' #-}
 
 instance FromText GameSessionPlacementState where
@@ -65,24 +70,26 @@ instance ToText GameSessionPlacementState where
 --   fromEnum is a partial function, and will error on values unknown at generation time.
 instance Enum GameSessionPlacementState where
     toEnum i = case i of
-        0 -> Cancelled
-        1 -> Fulfilled
-        2 -> Pending
-        3 -> TimedOut
+        0 -> GSPSCancelled
+        1 -> GSPSFailed
+        2 -> GSPSFulfilled
+        3 -> GSPSPending
+        4 -> GSPSTimedOut
         _ -> (error . showText) $ "Unknown index for GameSessionPlacementState: " <> toText i
     fromEnum x = case x of
-        Cancelled -> 0
-        Fulfilled -> 1
-        Pending -> 2
-        TimedOut -> 3
+        GSPSCancelled -> 0
+        GSPSFailed -> 1
+        GSPSFulfilled -> 2
+        GSPSPending -> 3
+        GSPSTimedOut -> 4
         GameSessionPlacementState' name -> (error . showText) $ "Unknown GameSessionPlacementState: " <> original name
 
 -- | Represents the bounds of /known/ $GameSessionPlacementState.
 --   AWS may have added more since the source was generated.
 --   This instance exists only for backward compatibility.
 instance Bounded GameSessionPlacementState where
-    minBound = Cancelled
-    maxBound = TimedOut
+    minBound = GSPSCancelled
+    maxBound = GSPSTimedOut
 
 instance Hashable     GameSessionPlacementState
 instance NFData       GameSessionPlacementState

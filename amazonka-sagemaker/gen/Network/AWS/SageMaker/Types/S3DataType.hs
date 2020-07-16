@@ -19,6 +19,7 @@
 module Network.AWS.SageMaker.Types.S3DataType (
   S3DataType (
     ..
+    , AugmentedManifestFile
     , ManifestFile
     , S3Prefix
     )
@@ -31,6 +32,9 @@ data S3DataType = S3DataType' (CI Text)
                     deriving (Eq, Ord, Read, Show, Data, Typeable,
                               Generic)
 
+pattern AugmentedManifestFile :: S3DataType
+pattern AugmentedManifestFile = S3DataType' "AugmentedManifestFile"
+
 pattern ManifestFile :: S3DataType
 pattern ManifestFile = S3DataType' "ManifestFile"
 
@@ -38,6 +42,7 @@ pattern S3Prefix :: S3DataType
 pattern S3Prefix = S3DataType' "S3Prefix"
 
 {-# COMPLETE
+  AugmentedManifestFile,
   ManifestFile,
   S3Prefix,
   S3DataType' #-}
@@ -54,19 +59,21 @@ instance ToText S3DataType where
 --   fromEnum is a partial function, and will error on values unknown at generation time.
 instance Enum S3DataType where
     toEnum i = case i of
-        0 -> ManifestFile
-        1 -> S3Prefix
+        0 -> AugmentedManifestFile
+        1 -> ManifestFile
+        2 -> S3Prefix
         _ -> (error . showText) $ "Unknown index for S3DataType: " <> toText i
     fromEnum x = case x of
-        ManifestFile -> 0
-        S3Prefix -> 1
+        AugmentedManifestFile -> 0
+        ManifestFile -> 1
+        S3Prefix -> 2
         S3DataType' name -> (error . showText) $ "Unknown S3DataType: " <> original name
 
 -- | Represents the bounds of /known/ $S3DataType.
 --   AWS may have added more since the source was generated.
 --   This instance exists only for backward compatibility.
 instance Bounded S3DataType where
-    minBound = ManifestFile
+    minBound = AugmentedManifestFile
     maxBound = S3Prefix
 
 instance Hashable     S3DataType

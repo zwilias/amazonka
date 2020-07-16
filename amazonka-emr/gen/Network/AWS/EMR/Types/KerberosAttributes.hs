@@ -20,7 +20,7 @@ module Network.AWS.EMR.Types.KerberosAttributes where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | Attributes for Kerberos configuration when Kerberos authentication is enabled using a security configuration. For more information see <http://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-kerberos.html Use Kerberos Authentication> in the /EMR Management Guide/ .
+-- | Attributes for Kerberos configuration when Kerberos authentication is enabled using a security configuration. For more information see <https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-kerberos.html Use Kerberos Authentication> in the /EMR Management Guide/ .
 --
 --
 --

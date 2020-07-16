@@ -27,7 +27,7 @@ module Network.AWS.MQ.Types.DeploymentMode (
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | The deployment mode of the broker. Possible values: SINGLE_INSTANCE, ACTIVE_STANDBY_MULTI_AZ SINGLE_INSTANCE creates a single-instance broker in a single Availability Zone. ACTIVE_STANDBY_MULTI_AZ creates an active/standby broker for high availability.
+-- | The deployment mode of the broker.
 data DeploymentMode = DeploymentMode' (CI Text)
                         deriving (Eq, Ord, Read, Show, Data, Typeable,
                                   Generic)

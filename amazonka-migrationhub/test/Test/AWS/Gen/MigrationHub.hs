@@ -34,6 +34,9 @@ import Test.AWS.MigrationHub.Internal
 --         , requestCreateProgressUpdateStream $
 --             createProgressUpdateStream
 --
+--         , requestListApplicationStates $
+--             listApplicationStates
+--
 --         , requestListCreatedArtifacts $
 --             listCreatedArtifacts
 --
@@ -84,6 +87,9 @@ import Test.AWS.MigrationHub.Internal
 --
 --         , responseCreateProgressUpdateStream $
 --             createProgressUpdateStreamResponse
+--
+--         , responseListApplicationStates $
+--             listApplicationStatesResponse
 --
 --         , responseListCreatedArtifacts $
 --             listCreatedArtifactsResponse
@@ -141,6 +147,11 @@ requestCreateProgressUpdateStream :: CreateProgressUpdateStream -> TestTree
 requestCreateProgressUpdateStream = req
     "CreateProgressUpdateStream"
     "fixture/CreateProgressUpdateStream.yaml"
+
+requestListApplicationStates :: ListApplicationStates -> TestTree
+requestListApplicationStates = req
+    "ListApplicationStates"
+    "fixture/ListApplicationStates.yaml"
 
 requestListCreatedArtifacts :: ListCreatedArtifacts -> TestTree
 requestListCreatedArtifacts = req
@@ -227,6 +238,13 @@ responseCreateProgressUpdateStream = res
     "fixture/CreateProgressUpdateStreamResponse.proto"
     migrationHub
     (Proxy :: Proxy CreateProgressUpdateStream)
+
+responseListApplicationStates :: ListApplicationStatesResponse -> TestTree
+responseListApplicationStates = res
+    "ListApplicationStatesResponse"
+    "fixture/ListApplicationStatesResponse.proto"
+    migrationHub
+    (Proxy :: Proxy ListApplicationStates)
 
 responseListCreatedArtifacts :: ListCreatedArtifactsResponse -> TestTree
 responseListCreatedArtifacts = res

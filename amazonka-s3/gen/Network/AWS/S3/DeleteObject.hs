@@ -19,6 +19,22 @@
 -- Portability : non-portable (GHC extensions)
 --
 -- Removes the null version (if there is one) of an object and inserts a delete marker, which becomes the latest version of the object. If there isn't a null version, Amazon S3 does not remove any objects.
+--
+--
+-- To remove a specific version, you must be the bucket owner and you must use the version Id subresource. Using this subresource permanently deletes the version. If the object deleted is a delete marker, Amazon S3 sets the response header, @x-amz-delete-marker@ , to true. 
+--
+-- If the object you want to delete is in a bucket where the bucket versioning configuration is MFA Delete enabled, you must include the @x-amz-mfa@ request header in the DELETE @versionId@ request. Requests that include @x-amz-mfa@ must use HTTPS. 
+--
+-- For more information about MFA Delete, see <https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingMFADelete.html Using MFA Delete> . To see sample requests that use versioning, see <https://docs.aws.amazon.com/AmazonS3/latest/API/RESTObjectDELETE.html#ExampleVersionObjectDelete Sample Request> . 
+--
+-- You can delete objects by explicitly calling the DELETE Object API or configure its lifecycle ('PutBucketLifecycle' ) to enable Amazon S3 to remove them for you. If you want to block users or accounts from removing or deleting objects from your bucket, you must deny them the @s3:DeleteObject@ , @s3:DeleteObjectVersion@ , and @s3:PutLifeCycleConfiguration@ actions. 
+--
+-- The following operation is related to @DeleteObject@ :
+--
+--     * 'PutObject' 
+--
+--
+--
 module Network.AWS.S3.DeleteObject
     (
     -- * Creating a Request
@@ -28,6 +44,7 @@ module Network.AWS.S3.DeleteObject
     , doVersionId
     , doMFA
     , doRequestPayer
+    , doBypassGovernanceRetention
     , doBucket
     , doKey
 
@@ -53,6 +70,7 @@ data DeleteObject = DeleteObject'{_doVersionId ::
                                   !(Maybe ObjectVersionId),
                                   _doMFA :: !(Maybe Text),
                                   _doRequestPayer :: !(Maybe RequestPayer),
+                                  _doBypassGovernanceRetention :: !(Maybe Bool),
                                   _doBucket :: !BucketName,
                                   _doKey :: !ObjectKey}
                       deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -63,13 +81,15 @@ data DeleteObject = DeleteObject'{_doVersionId ::
 --
 -- * 'doVersionId' - VersionId used to reference a specific version of the object.
 --
--- * 'doMFA' - The concatenation of the authentication device's serial number, a space, and the value that is displayed on your authentication device.
+-- * 'doMFA' - The concatenation of the authentication device's serial number, a space, and the value that is displayed on your authentication device. Required to permanently delete a versioned object if versioning is configured with MFA delete enabled.
 --
 -- * 'doRequestPayer' - Undocumented member.
 --
--- * 'doBucket' - Undocumented member.
+-- * 'doBypassGovernanceRetention' - Indicates whether S3 Object Lock should bypass Governance-mode restrictions to process this operation.
 --
--- * 'doKey' - Undocumented member.
+-- * 'doBucket' - The bucket name of the bucket containing the object.  When using this API with an access point, you must direct requests to the access point hostname. The access point hostname takes the form /AccessPointName/ -/AccountId/ .s3-accesspoint./Region/ .amazonaws.com. When using this operation using an access point through the AWS SDKs, you provide the access point ARN in place of the bucket name. For more information about access point ARNs, see <https://docs.aws.amazon.com/AmazonS3/latest/dev/using-access-points.html Using Access Points> in the /Amazon Simple Storage Service Developer Guide/ .
+--
+-- * 'doKey' - Key name of the object to delete.
 deleteObject
     :: BucketName -- ^ 'doBucket'
     -> ObjectKey -- ^ 'doKey'
@@ -77,13 +97,14 @@ deleteObject
 deleteObject pBucket_ pKey_
   = DeleteObject'{_doVersionId = Nothing,
                   _doMFA = Nothing, _doRequestPayer = Nothing,
+                  _doBypassGovernanceRetention = Nothing,
                   _doBucket = pBucket_, _doKey = pKey_}
 
 -- | VersionId used to reference a specific version of the object.
 doVersionId :: Lens' DeleteObject (Maybe ObjectVersionId)
 doVersionId = lens _doVersionId (\ s a -> s{_doVersionId = a})
 
--- | The concatenation of the authentication device's serial number, a space, and the value that is displayed on your authentication device.
+-- | The concatenation of the authentication device's serial number, a space, and the value that is displayed on your authentication device. Required to permanently delete a versioned object if versioning is configured with MFA delete enabled.
 doMFA :: Lens' DeleteObject (Maybe Text)
 doMFA = lens _doMFA (\ s a -> s{_doMFA = a})
 
@@ -91,11 +112,15 @@ doMFA = lens _doMFA (\ s a -> s{_doMFA = a})
 doRequestPayer :: Lens' DeleteObject (Maybe RequestPayer)
 doRequestPayer = lens _doRequestPayer (\ s a -> s{_doRequestPayer = a})
 
--- | Undocumented member.
+-- | Indicates whether S3 Object Lock should bypass Governance-mode restrictions to process this operation.
+doBypassGovernanceRetention :: Lens' DeleteObject (Maybe Bool)
+doBypassGovernanceRetention = lens _doBypassGovernanceRetention (\ s a -> s{_doBypassGovernanceRetention = a})
+
+-- | The bucket name of the bucket containing the object.  When using this API with an access point, you must direct requests to the access point hostname. The access point hostname takes the form /AccessPointName/ -/AccountId/ .s3-accesspoint./Region/ .amazonaws.com. When using this operation using an access point through the AWS SDKs, you provide the access point ARN in place of the bucket name. For more information about access point ARNs, see <https://docs.aws.amazon.com/AmazonS3/latest/dev/using-access-points.html Using Access Points> in the /Amazon Simple Storage Service Developer Guide/ .
 doBucket :: Lens' DeleteObject BucketName
 doBucket = lens _doBucket (\ s a -> s{_doBucket = a})
 
--- | Undocumented member.
+-- | Key name of the object to delete.
 doKey :: Lens' DeleteObject ObjectKey
 doKey = lens _doKey (\ s a -> s{_doKey = a})
 
@@ -119,7 +144,9 @@ instance ToHeaders DeleteObject where
         toHeaders DeleteObject'{..}
           = mconcat
               ["x-amz-mfa" =# _doMFA,
-               "x-amz-request-payer" =# _doRequestPayer]
+               "x-amz-request-payer" =# _doRequestPayer,
+               "x-amz-bypass-governance-retention" =#
+                 _doBypassGovernanceRetention]
 
 instance ToPath DeleteObject where
         toPath DeleteObject'{..}

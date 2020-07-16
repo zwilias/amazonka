@@ -18,7 +18,9 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Get a BAIDU GCM channel
+-- Retrieves information about the status and settings of the Baidu channel for an application.
+--
+--
 module Network.AWS.Pinpoint.GetBaiduChannel
     (
     -- * Creating a Request
@@ -51,7 +53,7 @@ newtype GetBaiduChannel = GetBaiduChannel'{_gbcApplicationId
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'gbcApplicationId' - Undocumented member.
+-- * 'gbcApplicationId' - The unique identifier for the application. This identifier is displayed as the __Project ID__ on the Amazon Pinpoint console.
 getBaiduChannel
     :: Text -- ^ 'gbcApplicationId'
     -> GetBaiduChannel
@@ -59,7 +61,7 @@ getBaiduChannel pApplicationId_
   = GetBaiduChannel'{_gbcApplicationId =
                        pApplicationId_}
 
--- | Undocumented member.
+-- | The unique identifier for the application. This identifier is displayed as the __Project ID__ on the Amazon Pinpoint console.
 gbcApplicationId :: Lens' GetBaiduChannel Text
 gbcApplicationId = lens _gbcApplicationId (\ s a -> s{_gbcApplicationId = a})
 

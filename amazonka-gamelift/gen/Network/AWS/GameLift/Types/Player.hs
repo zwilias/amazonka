@@ -36,13 +36,13 @@ data Player = Player'{_pPlayerAttributes ::
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'pPlayerAttributes' - Collection of key:value pairs containing player information for use in matchmaking. Player attribute keys must match the /playerAttributes/ used in a matchmaking rule set. Example: @"PlayerAttributes": {"skill": {"N": "23"}, "gameMode": {"S": "deathmatch"}}@ .
+-- * 'pPlayerAttributes' - A collection of key:value pairs containing player information for use in matchmaking. Player attribute keys must match the /playerAttributes/ used in a matchmaking rule set. Example: @"PlayerAttributes": {"skill": {"N": "23"}, "gameMode": {"S": "deathmatch"}}@ .
 --
 -- * 'pTeam' - Name of the team that the player is assigned to in a match. Team names are defined in a matchmaking rule set.
 --
--- * 'pPlayerId' - Unique identifier for a player
+-- * 'pPlayerId' - A unique identifier for a player
 --
--- * 'pLatencyInMs' - Set of values, expressed in milliseconds, indicating the amount of latency that a player experiences when connected to AWS regions. If this property is present, FlexMatch considers placing the match only in regions for which latency is reported.  If a matchmaker has a rule that evaluates player latency, players must report latency in order to be matched. If no latency is reported in this scenario, FlexMatch assumes that no regions are available to the player and the ticket is not matchable. 
+-- * 'pLatencyInMs' - Set of values, expressed in milliseconds, indicating the amount of latency that a player experiences when connected to AWS Regions. If this property is present, FlexMatch considers placing the match only in Regions for which latency is reported.  If a matchmaker has a rule that evaluates player latency, players must report latency in order to be matched. If no latency is reported in this scenario, FlexMatch assumes that no Regions are available to the player and the ticket is not matchable. 
 player
     :: Player
 player
@@ -50,7 +50,7 @@ player
             _pTeam = Nothing, _pPlayerId = Nothing,
             _pLatencyInMs = Nothing}
 
--- | Collection of key:value pairs containing player information for use in matchmaking. Player attribute keys must match the /playerAttributes/ used in a matchmaking rule set. Example: @"PlayerAttributes": {"skill": {"N": "23"}, "gameMode": {"S": "deathmatch"}}@ .
+-- | A collection of key:value pairs containing player information for use in matchmaking. Player attribute keys must match the /playerAttributes/ used in a matchmaking rule set. Example: @"PlayerAttributes": {"skill": {"N": "23"}, "gameMode": {"S": "deathmatch"}}@ .
 pPlayerAttributes :: Lens' Player (HashMap Text AttributeValue)
 pPlayerAttributes = lens _pPlayerAttributes (\ s a -> s{_pPlayerAttributes = a}) . _Default . _Map
 
@@ -58,11 +58,11 @@ pPlayerAttributes = lens _pPlayerAttributes (\ s a -> s{_pPlayerAttributes = a})
 pTeam :: Lens' Player (Maybe Text)
 pTeam = lens _pTeam (\ s a -> s{_pTeam = a})
 
--- | Unique identifier for a player
+-- | A unique identifier for a player
 pPlayerId :: Lens' Player (Maybe Text)
 pPlayerId = lens _pPlayerId (\ s a -> s{_pPlayerId = a})
 
--- | Set of values, expressed in milliseconds, indicating the amount of latency that a player experiences when connected to AWS regions. If this property is present, FlexMatch considers placing the match only in regions for which latency is reported.  If a matchmaker has a rule that evaluates player latency, players must report latency in order to be matched. If no latency is reported in this scenario, FlexMatch assumes that no regions are available to the player and the ticket is not matchable. 
+-- | Set of values, expressed in milliseconds, indicating the amount of latency that a player experiences when connected to AWS Regions. If this property is present, FlexMatch considers placing the match only in Regions for which latency is reported.  If a matchmaker has a rule that evaluates player latency, players must report latency in order to be matched. If no latency is reported in this scenario, FlexMatch assumes that no Regions are available to the player and the ticket is not matchable. 
 pLatencyInMs :: Lens' Player (HashMap Text Natural)
 pLatencyInMs = lens _pLatencyInMs (\ s a -> s{_pLatencyInMs = a}) . _Default . _Map
 

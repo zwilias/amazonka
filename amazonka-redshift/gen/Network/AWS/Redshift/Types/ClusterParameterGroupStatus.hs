@@ -44,7 +44,7 @@ data ClusterParameterGroupStatus = ClusterParameterGroupStatus'{_cpgsClusterPara
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'cpgsClusterParameterStatusList' - The list of parameter statuses. For more information about parameters and parameter groups, go to <http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-parameter-groups.html Amazon Redshift Parameter Groups> in the /Amazon Redshift Cluster Management Guide/ .
+-- * 'cpgsClusterParameterStatusList' - The list of parameter statuses. For more information about parameters and parameter groups, go to <https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-parameter-groups.html Amazon Redshift Parameter Groups> in the /Amazon Redshift Cluster Management Guide/ .
 --
 -- * 'cpgsParameterApplyStatus' - The status of parameter updates.
 --
@@ -57,7 +57,7 @@ clusterParameterGroupStatus
                                  _cpgsParameterApplyStatus = Nothing,
                                  _cpgsParameterGroupName = Nothing}
 
--- | The list of parameter statuses. For more information about parameters and parameter groups, go to <http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-parameter-groups.html Amazon Redshift Parameter Groups> in the /Amazon Redshift Cluster Management Guide/ .
+-- | The list of parameter statuses. For more information about parameters and parameter groups, go to <https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-parameter-groups.html Amazon Redshift Parameter Groups> in the /Amazon Redshift Cluster Management Guide/ .
 cpgsClusterParameterStatusList :: Lens' ClusterParameterGroupStatus [ClusterParameterStatus]
 cpgsClusterParameterStatusList = lens _cpgsClusterParameterStatusList (\ s a -> s{_cpgsClusterParameterStatusList = a}) . _Default . _Coerce
 

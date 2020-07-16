@@ -21,7 +21,7 @@ import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Support.Types.AttachmentDetails
 
--- | A communication associated with an AWS Support case. The communication consists of the case ID, the message body, attachment information, the account email address, and the date and time of the communication.
+-- | A communication associated with an AWS Support case. The communication consists of the case ID, the message body, attachment information, the submitter of the communication, and the date and time of the communication.
 --
 --
 --
@@ -43,7 +43,7 @@ data Communication = Communication'{_cBody ::
 --
 -- * 'cCaseId' - The AWS Support case ID requested or returned in the call. The case ID is an alphanumeric string formatted as shown in this example: case-/12345678910-2013-c4c1d2bf33c5cf47/ 
 --
--- * 'cSubmittedBy' - The email address of the account that submitted the AWS Support case.
+-- * 'cSubmittedBy' - The identity of the account that submitted, or responded to, the support case. Customer entries include the role or IAM user as well as the email address. For example, "AdminRole (Role) <someone@example.com>. Entries from the AWS Support team display "Amazon Web Services," and do not show an email address. 
 --
 -- * 'cTimeCreated' - The time the communication was created.
 --
@@ -63,7 +63,7 @@ cBody = lens _cBody (\ s a -> s{_cBody = a})
 cCaseId :: Lens' Communication (Maybe Text)
 cCaseId = lens _cCaseId (\ s a -> s{_cCaseId = a})
 
--- | The email address of the account that submitted the AWS Support case.
+-- | The identity of the account that submitted, or responded to, the support case. Customer entries include the role or IAM user as well as the email address. For example, "AdminRole (Role) <someone@example.com>. Entries from the AWS Support team display "Amazon Web Services," and do not show an email address. 
 cSubmittedBy :: Lens' Communication (Maybe Text)
 cSubmittedBy = lens _cSubmittedBy (\ s a -> s{_cSubmittedBy = a})
 

@@ -68,7 +68,8 @@ module Network.AWS.KinesisAnalytics.Types.Product (
     module Network.AWS.KinesisAnalytics.Types.S3ReferenceDataSource,
     module Network.AWS.KinesisAnalytics.Types.S3ReferenceDataSourceDescription,
     module Network.AWS.KinesisAnalytics.Types.S3ReferenceDataSourceUpdate,
-    module Network.AWS.KinesisAnalytics.Types.SourceSchema
+    module Network.AWS.KinesisAnalytics.Types.SourceSchema,
+    module Network.AWS.KinesisAnalytics.Types.Tag
   ) where
 
 import Network.AWS.KinesisAnalytics.Types.ApplicationDetail
@@ -123,5 +124,6 @@ import Network.AWS.KinesisAnalytics.Types.S3ReferenceDataSource
 import Network.AWS.KinesisAnalytics.Types.S3ReferenceDataSourceDescription
 import Network.AWS.KinesisAnalytics.Types.S3ReferenceDataSourceUpdate
 import Network.AWS.KinesisAnalytics.Types.SourceSchema
+import Network.AWS.KinesisAnalytics.Types.Tag
 import Network.AWS.Lens
 import Network.AWS.Prelude

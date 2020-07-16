@@ -27,7 +27,7 @@ module Network.AWS.MediaLive.Types.H264FramerateControl (
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | Placeholder documentation for H264FramerateControl
+-- | H264 Framerate Control
 data H264FramerateControl = H264FramerateControl' (CI
                                                      Text)
                               deriving (Eq, Ord, Read, Show, Data, Typeable,

@@ -25,7 +25,7 @@ import Network.AWS.Prelude
 --
 -- This data type is used as a response element in the 'ListEntitiesForPolicy' operation. 
 --
--- For more information about managed policies, refer to <http://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html Managed Policies and Inline Policies> in the /Using IAM/ guide. 
+-- For more information about managed policies, refer to <https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html Managed Policies and Inline Policies> in the /IAM User Guide/ . 
 --
 --
 -- /See:/ 'policyUser' smart constructor.
@@ -40,7 +40,7 @@ data PolicyUser = PolicyUser'{_puUserName ::
 --
 -- * 'puUserName' - The name (friendly name, not ARN) identifying the user.
 --
--- * 'puUserId' - The stable and unique string identifying the user. For more information about IDs, see <http://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html IAM Identifiers> in the /IAM User Guide/ .
+-- * 'puUserId' - The stable and unique string identifying the user. For more information about IDs, see <https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html IAM Identifiers> in the /IAM User Guide/ .
 policyUser
     :: PolicyUser
 policyUser
@@ -51,7 +51,7 @@ policyUser
 puUserName :: Lens' PolicyUser (Maybe Text)
 puUserName = lens _puUserName (\ s a -> s{_puUserName = a})
 
--- | The stable and unique string identifying the user. For more information about IDs, see <http://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html IAM Identifiers> in the /IAM User Guide/ .
+-- | The stable and unique string identifying the user. For more information about IDs, see <https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html IAM Identifiers> in the /IAM User Guide/ .
 puUserId :: Lens' PolicyUser (Maybe Text)
 puUserId = lens _puUserId (\ s a -> s{_puUserId = a})
 

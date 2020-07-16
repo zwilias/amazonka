@@ -24,6 +24,7 @@ module Network.AWS.Snowball.Types
     , _InvalidAddressException
     , _InvalidNextTokenException
     , _InvalidResourceException
+    , _EC2RequestFailedException
 
     -- * ClusterState
     , ClusterState (..)
@@ -84,7 +85,14 @@ module Network.AWS.Snowball.Types
     , cmClusterId
     , cmCreationDate
     , cmDescription
+    , cmTaxDocuments
     , cmRoleARN
+
+    -- * CompatibleImage
+    , CompatibleImage
+    , compatibleImage
+    , ciName
+    , ciAMIId
 
     -- * DataTransfer
     , DataTransfer
@@ -94,10 +102,21 @@ module Network.AWS.Snowball.Types
     , dtObjectsTransferred
     , dtBytesTransferred
 
+    -- * EC2AMIResource
+    , EC2AMIResource
+    , ec2AMIResource
+    , earSnowballAMIId
+    , earAMIId
+
     -- * EventTriggerDefinition
     , EventTriggerDefinition
     , eventTriggerDefinition
     , etdEventResourceARN
+
+    -- * INDTaxDocuments
+    , INDTaxDocuments
+    , iNDTaxDocuments
+    , indtdGSTIN
 
     -- * JobListEntry
     , JobListEntry
@@ -135,12 +154,14 @@ module Network.AWS.Snowball.Types
     , jmClusterId
     , jmCreationDate
     , jmDescription
+    , jmTaxDocuments
     , jmRoleARN
     , jmSnowballCapacityPreference
 
     -- * JobResource
     , JobResource
     , jobResource
+    , jrEC2AMIResources
     , jrLambdaResources
     , jrS3Resources
 
@@ -181,6 +202,11 @@ module Network.AWS.Snowball.Types
     , sdShippingOption
     , sdOutboundShipment
     , sdInboundShipment
+
+    -- * TaxDocuments
+    , TaxDocuments
+    , taxDocuments
+    , tdIND
     ) where
 
 import Network.AWS.Lens
@@ -195,8 +221,11 @@ import Network.AWS.Snowball.Types.SnowballType
 import Network.AWS.Snowball.Types.Address
 import Network.AWS.Snowball.Types.ClusterListEntry
 import Network.AWS.Snowball.Types.ClusterMetadata
+import Network.AWS.Snowball.Types.CompatibleImage
 import Network.AWS.Snowball.Types.DataTransfer
+import Network.AWS.Snowball.Types.EC2AMIResource
 import Network.AWS.Snowball.Types.EventTriggerDefinition
+import Network.AWS.Snowball.Types.INDTaxDocuments
 import Network.AWS.Snowball.Types.JobListEntry
 import Network.AWS.Snowball.Types.JobLogs
 import Network.AWS.Snowball.Types.JobMetadata
@@ -207,6 +236,7 @@ import Network.AWS.Snowball.Types.Notification
 import Network.AWS.Snowball.Types.S3Resource
 import Network.AWS.Snowball.Types.Shipment
 import Network.AWS.Snowball.Types.ShippingDetails
+import Network.AWS.Snowball.Types.TaxDocuments
 
 -- | API version @2016-06-30@ of the Amazon Import/Export Snowball SDK configuration.
 snowball :: Service
@@ -230,6 +260,11 @@ snowball
             = Just "throttling_exception"
           | has (hasCode "Throttling" . hasStatus 400) e =
             Just "throttling"
+          | has
+              (hasCode "ProvisionedThroughputExceededException" .
+                 hasStatus 400)
+              e
+            = Just "throughput_exceeded"
           | has (hasStatus 504) e = Just "gateway_timeout"
           | has
               (hasCode "RequestThrottledException" . hasStatus 400)
@@ -304,3 +339,11 @@ _InvalidResourceException :: AsError a => Getting (First ServiceError) a Service
 _InvalidResourceException
   = _MatchServiceError snowball
       "InvalidResourceException"
+
+-- | Your IAM user lacks the necessary Amazon EC2 permissions to perform the attempted action.
+--
+--
+_EC2RequestFailedException :: AsError a => Getting (First ServiceError) a ServiceError
+_EC2RequestFailedException
+  = _MatchServiceError snowball
+      "Ec2RequestFailedException"

@@ -76,23 +76,23 @@ data JobFlowInstancesConfig = JobFlowInstancesConfig'{_jficInstanceFleets
 --
 -- * 'jficEC2KeyName' - The name of the EC2 key pair that can be used to ssh to the master node as the user called "hadoop."
 --
--- * 'jficSlaveInstanceType' - The EC2 instance type of the slave nodes.
+-- * 'jficSlaveInstanceType' - The EC2 instance type of the core and task nodes.
 --
 -- * 'jficInstanceCount' - The number of EC2 instances in the cluster.
 --
--- * 'jficEmrManagedSlaveSecurityGroup' - The identifier of the Amazon EC2 security group for the slave nodes.
+-- * 'jficEmrManagedSlaveSecurityGroup' - The identifier of the Amazon EC2 security group for the core and task nodes.
 --
--- * 'jficAdditionalSlaveSecurityGroups' - A list of additional Amazon EC2 security group IDs for the slave nodes.
+-- * 'jficAdditionalSlaveSecurityGroups' - A list of additional Amazon EC2 security group IDs for the core and task nodes.
 --
 -- * 'jficEC2SubnetIds' - Applies to clusters that use the instance fleet configuration. When multiple EC2 subnet IDs are specified, Amazon EMR evaluates them and launches instances in the optimal subnet.
 --
--- * 'jficHadoopVersion' - The Hadoop version for the cluster. Valid inputs are "0.18" (deprecated), "0.20" (deprecated), "0.20.205" (deprecated), "1.0.3", "2.2.0", or "2.4.0". If you do not set this value, the default of 0.18 is used, unless the AmiVersion parameter is set in the RunJobFlow call, in which case the default version of Hadoop for that AMI version is used.
+-- * 'jficHadoopVersion' - Applies only to Amazon EMR release versions earlier than 4.0. The Hadoop version for the cluster. Valid inputs are "0.18" (deprecated), "0.20" (deprecated), "0.20.205" (deprecated), "1.0.3", "2.2.0", or "2.4.0". If you do not set this value, the default of 0.18 is used, unless the @AmiVersion@ parameter is set in the RunJobFlow call, in which case the default version of Hadoop for that AMI version is used.
 --
 -- * 'jficAdditionalMasterSecurityGroups' - A list of additional Amazon EC2 security group IDs for the master node.
 --
 -- * 'jficEmrManagedMasterSecurityGroup' - The identifier of the Amazon EC2 security group for the master node.
 --
--- * 'jficEC2SubnetId' - Applies to clusters that use the uniform instance group configuration. To launch the cluster in Amazon Virtual Private Cloud (Amazon VPC), set this parameter to the identifier of the Amazon VPC subnet where you want the cluster to launch. If you do not specify this value, the cluster launches in the normal Amazon Web Services cloud, outside of an Amazon VPC, if the account launching the cluster supports EC2 Classic networks in the region where the cluster launches. Amazon VPC currently does not support cluster compute quadruple extra large (cc1.4xlarge) instances. Thus you cannot specify the cc1.4xlarge instance type for clusters launched in an Amazon VPC.
+-- * 'jficEC2SubnetId' - Applies to clusters that use the uniform instance group configuration. To launch the cluster in Amazon Virtual Private Cloud (Amazon VPC), set this parameter to the identifier of the Amazon VPC subnet where you want the cluster to launch. If you do not specify this value and your account supports EC2-Classic, the cluster launches in EC2-Classic.
 --
 -- * 'jficMasterInstanceType' - The EC2 instance type of the master node.
 --
@@ -135,7 +135,7 @@ jficInstanceFleets = lens _jficInstanceFleets (\ s a -> s{_jficInstanceFleets = 
 jficEC2KeyName :: Lens' JobFlowInstancesConfig (Maybe Text)
 jficEC2KeyName = lens _jficEC2KeyName (\ s a -> s{_jficEC2KeyName = a})
 
--- | The EC2 instance type of the slave nodes.
+-- | The EC2 instance type of the core and task nodes.
 jficSlaveInstanceType :: Lens' JobFlowInstancesConfig (Maybe Text)
 jficSlaveInstanceType = lens _jficSlaveInstanceType (\ s a -> s{_jficSlaveInstanceType = a})
 
@@ -143,11 +143,11 @@ jficSlaveInstanceType = lens _jficSlaveInstanceType (\ s a -> s{_jficSlaveInstan
 jficInstanceCount :: Lens' JobFlowInstancesConfig (Maybe Int)
 jficInstanceCount = lens _jficInstanceCount (\ s a -> s{_jficInstanceCount = a})
 
--- | The identifier of the Amazon EC2 security group for the slave nodes.
+-- | The identifier of the Amazon EC2 security group for the core and task nodes.
 jficEmrManagedSlaveSecurityGroup :: Lens' JobFlowInstancesConfig (Maybe Text)
 jficEmrManagedSlaveSecurityGroup = lens _jficEmrManagedSlaveSecurityGroup (\ s a -> s{_jficEmrManagedSlaveSecurityGroup = a})
 
--- | A list of additional Amazon EC2 security group IDs for the slave nodes.
+-- | A list of additional Amazon EC2 security group IDs for the core and task nodes.
 jficAdditionalSlaveSecurityGroups :: Lens' JobFlowInstancesConfig [Text]
 jficAdditionalSlaveSecurityGroups = lens _jficAdditionalSlaveSecurityGroups (\ s a -> s{_jficAdditionalSlaveSecurityGroups = a}) . _Default . _Coerce
 
@@ -155,7 +155,7 @@ jficAdditionalSlaveSecurityGroups = lens _jficAdditionalSlaveSecurityGroups (\ s
 jficEC2SubnetIds :: Lens' JobFlowInstancesConfig [Text]
 jficEC2SubnetIds = lens _jficEC2SubnetIds (\ s a -> s{_jficEC2SubnetIds = a}) . _Default . _Coerce
 
--- | The Hadoop version for the cluster. Valid inputs are "0.18" (deprecated), "0.20" (deprecated), "0.20.205" (deprecated), "1.0.3", "2.2.0", or "2.4.0". If you do not set this value, the default of 0.18 is used, unless the AmiVersion parameter is set in the RunJobFlow call, in which case the default version of Hadoop for that AMI version is used.
+-- | Applies only to Amazon EMR release versions earlier than 4.0. The Hadoop version for the cluster. Valid inputs are "0.18" (deprecated), "0.20" (deprecated), "0.20.205" (deprecated), "1.0.3", "2.2.0", or "2.4.0". If you do not set this value, the default of 0.18 is used, unless the @AmiVersion@ parameter is set in the RunJobFlow call, in which case the default version of Hadoop for that AMI version is used.
 jficHadoopVersion :: Lens' JobFlowInstancesConfig (Maybe Text)
 jficHadoopVersion = lens _jficHadoopVersion (\ s a -> s{_jficHadoopVersion = a})
 
@@ -167,7 +167,7 @@ jficAdditionalMasterSecurityGroups = lens _jficAdditionalMasterSecurityGroups (\
 jficEmrManagedMasterSecurityGroup :: Lens' JobFlowInstancesConfig (Maybe Text)
 jficEmrManagedMasterSecurityGroup = lens _jficEmrManagedMasterSecurityGroup (\ s a -> s{_jficEmrManagedMasterSecurityGroup = a})
 
--- | Applies to clusters that use the uniform instance group configuration. To launch the cluster in Amazon Virtual Private Cloud (Amazon VPC), set this parameter to the identifier of the Amazon VPC subnet where you want the cluster to launch. If you do not specify this value, the cluster launches in the normal Amazon Web Services cloud, outside of an Amazon VPC, if the account launching the cluster supports EC2 Classic networks in the region where the cluster launches. Amazon VPC currently does not support cluster compute quadruple extra large (cc1.4xlarge) instances. Thus you cannot specify the cc1.4xlarge instance type for clusters launched in an Amazon VPC.
+-- | Applies to clusters that use the uniform instance group configuration. To launch the cluster in Amazon Virtual Private Cloud (Amazon VPC), set this parameter to the identifier of the Amazon VPC subnet where you want the cluster to launch. If you do not specify this value and your account supports EC2-Classic, the cluster launches in EC2-Classic.
 jficEC2SubnetId :: Lens' JobFlowInstancesConfig (Maybe Text)
 jficEC2SubnetId = lens _jficEC2SubnetId (\ s a -> s{_jficEC2SubnetId = a})
 

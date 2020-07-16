@@ -21,7 +21,7 @@ import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.RDS.Types.Parameter
 
--- | Contains the result of a successful invocation of the 'DescribeEngineDefaultParameters' action. 
+-- | Contains the result of a successful invocation of the @DescribeEngineDefaultParameters@ action. 
 --
 --
 --

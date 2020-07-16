@@ -19,28 +19,27 @@
 module Network.AWS.GuardDuty.Types.DetectorStatus (
   DetectorStatus (
     ..
-    , Disabled
-    , Enabled
+    , DSDisabled
+    , DSEnabled
     )
   ) where
 
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | The status of detector.
 data DetectorStatus = DetectorStatus' (CI Text)
                         deriving (Eq, Ord, Read, Show, Data, Typeable,
                                   Generic)
 
-pattern Disabled :: DetectorStatus
-pattern Disabled = DetectorStatus' "DISABLED"
+pattern DSDisabled :: DetectorStatus
+pattern DSDisabled = DetectorStatus' "DISABLED"
 
-pattern Enabled :: DetectorStatus
-pattern Enabled = DetectorStatus' "ENABLED"
+pattern DSEnabled :: DetectorStatus
+pattern DSEnabled = DetectorStatus' "ENABLED"
 
 {-# COMPLETE
-  Disabled,
-  Enabled,
+  DSDisabled,
+  DSEnabled,
   DetectorStatus' #-}
 
 instance FromText DetectorStatus where
@@ -55,20 +54,20 @@ instance ToText DetectorStatus where
 --   fromEnum is a partial function, and will error on values unknown at generation time.
 instance Enum DetectorStatus where
     toEnum i = case i of
-        0 -> Disabled
-        1 -> Enabled
+        0 -> DSDisabled
+        1 -> DSEnabled
         _ -> (error . showText) $ "Unknown index for DetectorStatus: " <> toText i
     fromEnum x = case x of
-        Disabled -> 0
-        Enabled -> 1
+        DSDisabled -> 0
+        DSEnabled -> 1
         DetectorStatus' name -> (error . showText) $ "Unknown DetectorStatus: " <> original name
 
 -- | Represents the bounds of /known/ $DetectorStatus.
 --   AWS may have added more since the source was generated.
 --   This instance exists only for backward compatibility.
 instance Bounded DetectorStatus where
-    minBound = Disabled
-    maxBound = Enabled
+    minBound = DSDisabled
+    maxBound = DSEnabled
 
 instance Hashable     DetectorStatus
 instance NFData       DetectorStatus

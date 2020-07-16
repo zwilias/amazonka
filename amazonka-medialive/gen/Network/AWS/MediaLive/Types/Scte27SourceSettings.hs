@@ -20,7 +20,7 @@ module Network.AWS.MediaLive.Types.Scte27SourceSettings where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | Placeholder documentation for Scte27SourceSettings
+-- | Scte27 Source Settings
 --
 -- /See:/ 'scte27SourceSettings' smart constructor.
 newtype Scte27SourceSettings = Scte27SourceSettings'{_sssPid

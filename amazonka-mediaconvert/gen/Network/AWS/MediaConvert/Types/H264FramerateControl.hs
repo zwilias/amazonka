@@ -19,29 +19,29 @@
 module Network.AWS.MediaConvert.Types.H264FramerateControl (
   H264FramerateControl (
     ..
-    , HInitializeFromSource
-    , HSpecified
+    , H26InitializeFromSource
+    , H26Specified
     )
   ) where
 
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | Using the API, set FramerateControl to INITIALIZE_FROM_SOURCE if you want the service to use the framerate from the input. Using the console, do this by choosing INITIALIZE_FROM_SOURCE for Framerate.
+-- | If you are using the console, use the Framerate setting to specify the frame rate for this output. If you want to keep the same frame rate as the input video, choose Follow source. If you want to do frame rate conversion, choose a frame rate from the dropdown list or choose Custom. The framerates shown in the dropdown list are decimal approximations of fractions. If you choose Custom, specify your frame rate as a fraction. If you are creating your transcoding job specification as a JSON file without the console, use FramerateControl to specify which value the service uses for the frame rate for this output. Choose INITIALIZE_FROM_SOURCE if you want the service to use the frame rate from the input. Choose SPECIFIED if you want the service to use the frame rate you specify in the settings FramerateNumerator and FramerateDenominator.
 data H264FramerateControl = H264FramerateControl' (CI
                                                      Text)
                               deriving (Eq, Ord, Read, Show, Data, Typeable,
                                         Generic)
 
-pattern HInitializeFromSource :: H264FramerateControl
-pattern HInitializeFromSource = H264FramerateControl' "INITIALIZE_FROM_SOURCE"
+pattern H26InitializeFromSource :: H264FramerateControl
+pattern H26InitializeFromSource = H264FramerateControl' "INITIALIZE_FROM_SOURCE"
 
-pattern HSpecified :: H264FramerateControl
-pattern HSpecified = H264FramerateControl' "SPECIFIED"
+pattern H26Specified :: H264FramerateControl
+pattern H26Specified = H264FramerateControl' "SPECIFIED"
 
 {-# COMPLETE
-  HInitializeFromSource,
-  HSpecified,
+  H26InitializeFromSource,
+  H26Specified,
   H264FramerateControl' #-}
 
 instance FromText H264FramerateControl where
@@ -56,20 +56,20 @@ instance ToText H264FramerateControl where
 --   fromEnum is a partial function, and will error on values unknown at generation time.
 instance Enum H264FramerateControl where
     toEnum i = case i of
-        0 -> HInitializeFromSource
-        1 -> HSpecified
+        0 -> H26InitializeFromSource
+        1 -> H26Specified
         _ -> (error . showText) $ "Unknown index for H264FramerateControl: " <> toText i
     fromEnum x = case x of
-        HInitializeFromSource -> 0
-        HSpecified -> 1
+        H26InitializeFromSource -> 0
+        H26Specified -> 1
         H264FramerateControl' name -> (error . showText) $ "Unknown H264FramerateControl: " <> original name
 
 -- | Represents the bounds of /known/ $H264FramerateControl.
 --   AWS may have added more since the source was generated.
 --   This instance exists only for backward compatibility.
 instance Bounded H264FramerateControl where
-    minBound = HInitializeFromSource
-    maxBound = HSpecified
+    minBound = H26InitializeFromSource
+    maxBound = H26Specified
 
 instance Hashable     H264FramerateControl
 instance NFData       H264FramerateControl

@@ -19,13 +19,18 @@ module Network.AWS.Lambda.Types.FunctionConfiguration where
 
 import Network.AWS.Lambda.Types.DeadLetterConfig
 import Network.AWS.Lambda.Types.EnvironmentResponse
+import Network.AWS.Lambda.Types.LastUpdateStatus
+import Network.AWS.Lambda.Types.LastUpdateStatusReasonCode
+import Network.AWS.Lambda.Types.Layer
 import Network.AWS.Lambda.Types.Runtime
+import Network.AWS.Lambda.Types.State
+import Network.AWS.Lambda.Types.StateReasonCode
 import Network.AWS.Lambda.Types.TracingConfigResponse
 import Network.AWS.Lambda.Types.VPCConfigResponse
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | A complex type that describes function metadata.
+-- | Details about a function's configuration.
 --
 --
 --
@@ -34,6 +39,9 @@ data FunctionConfiguration = FunctionConfiguration'{_fcMemorySize
                                                     :: !(Maybe Nat),
                                                     _fcRuntime ::
                                                     !(Maybe Runtime),
+                                                    _fcState :: !(Maybe State),
+                                                    _fcLastUpdateStatus ::
+                                                    !(Maybe LastUpdateStatus),
                                                     _fcFunctionARN ::
                                                     !(Maybe Text),
                                                     _fcKMSKeyARN ::
@@ -49,10 +57,16 @@ data FunctionConfiguration = FunctionConfiguration'{_fcMemorySize
                                                     _fcVersion :: !(Maybe Text),
                                                     _fcFunctionName ::
                                                     !(Maybe Text),
+                                                    _fcLayers ::
+                                                    !(Maybe [Layer]),
                                                     _fcCodeSize ::
                                                     !(Maybe Integer),
                                                     _fcHandler :: !(Maybe Text),
                                                     _fcTimeout :: !(Maybe Nat),
+                                                    _fcLastUpdateStatusReason ::
+                                                    !(Maybe Text),
+                                                    _fcStateReason ::
+                                                    !(Maybe Text),
                                                     _fcLastModified ::
                                                     !(Maybe Text),
                                                     _fcCodeSha256 ::
@@ -60,8 +74,14 @@ data FunctionConfiguration = FunctionConfiguration'{_fcMemorySize
                                                     _fcTracingConfig ::
                                                     !(Maybe
                                                         TracingConfigResponse),
+                                                    _fcStateReasonCode ::
+                                                    !(Maybe StateReasonCode),
                                                     _fcDescription ::
                                                     !(Maybe Text),
+                                                    _fcLastUpdateStatusReasonCode
+                                                    ::
+                                                    !(Maybe
+                                                        LastUpdateStatusReasonCode),
                                                     _fcRevisionId ::
                                                     !(Maybe Text),
                                                     _fcMasterARN ::
@@ -72,58 +92,79 @@ data FunctionConfiguration = FunctionConfiguration'{_fcMemorySize
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'fcMemorySize' - The memory size, in MB, you configured for the function. Must be a multiple of 64 MB.
+-- * 'fcMemorySize' - The memory that's allocated to the function.
 --
 -- * 'fcRuntime' - The runtime environment for the Lambda function.
 --
--- * 'fcFunctionARN' - The Amazon Resource Name (ARN) assigned to the function.
+-- * 'fcState' - The current state of the function. When the state is @Inactive@ , you can reactivate the function by invoking it.
 --
--- * 'fcKMSKeyARN' - The Amazon Resource Name (ARN) of the KMS key used to encrypt your function's environment variables. If empty, it means you are using the AWS Lambda default service key.
+-- * 'fcLastUpdateStatus' - The status of the last update that was performed on the function. This is first set to @Successful@ after function creation completes.
 --
--- * 'fcEnvironment' - The parent object that contains your environment's configuration settings.
+-- * 'fcFunctionARN' - The function's Amazon Resource Name (ARN).
 --
--- * 'fcDeadLetterConfig' - The parent object that contains the target ARN (Amazon Resource Name) of an Amazon SQS queue or Amazon SNS topic. For more information, see 'dlq' . 
+-- * 'fcKMSKeyARN' - The KMS key that's used to encrypt the function's environment variables. This key is only returned if you've configured a customer managed CMK.
 --
--- * 'fcRole' - The Amazon Resource Name (ARN) of the IAM role that Lambda assumes when it executes your function to access any other Amazon Web Services (AWS) resources.
+-- * 'fcEnvironment' - The function's environment variables.
 --
--- * 'fcVPCConfig' - VPC configuration associated with your Lambda function.
+-- * 'fcDeadLetterConfig' - The function's dead letter queue.
+--
+-- * 'fcRole' - The function's execution role.
+--
+-- * 'fcVPCConfig' - The function's networking configuration.
 --
 -- * 'fcVersion' - The version of the Lambda function.
 --
--- * 'fcFunctionName' - The name of the function. Note that the length constraint applies only to the ARN. If you specify only the function name, it is limited to 64 characters in length.
+-- * 'fcFunctionName' - The name of the function.
 --
--- * 'fcCodeSize' - The size, in bytes, of the function .zip file you uploaded.
+-- * 'fcLayers' - The function's <https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html layers> .
 --
--- * 'fcHandler' - The function Lambda calls to begin executing your function.
+-- * 'fcCodeSize' - The size of the function's deployment package, in bytes.
 --
--- * 'fcTimeout' - The function execution time at which Lambda should terminate the function. Because the execution time has cost implications, we recommend you set this value based on your expected execution time. The default is 3 seconds.
+-- * 'fcHandler' - The function that Lambda calls to begin executing your function.
 --
--- * 'fcLastModified' - The time stamp of the last time you updated the function. The time stamp is conveyed as a string complying with ISO-8601 in this way YYYY-MM-DDThh:mm:ssTZD (e.g., 1997-07-16T19:20:30+01:00). For more information, see <https://www.w3.org/TR/NOTE-datetime Date and Time Formats> .
+-- * 'fcTimeout' - The amount of time in seconds that Lambda allows a function to run before stopping it.
 --
--- * 'fcCodeSha256' - It is the SHA256 hash of your function deployment package.
+-- * 'fcLastUpdateStatusReason' - The reason for the last update that was performed on the function.
 --
--- * 'fcTracingConfig' - The parent object that contains your function's tracing settings.
+-- * 'fcStateReason' - The reason for the function's current state.
 --
--- * 'fcDescription' - The user-provided description.
+-- * 'fcLastModified' - The date and time that the function was last updated, in <https://www.w3.org/TR/NOTE-datetime ISO-8601 format> (YYYY-MM-DDThh:mm:ss.sTZD).
 --
--- * 'fcRevisionId' - Represents the latest updated revision of the function or alias.
+-- * 'fcCodeSha256' - The SHA256 hash of the function's deployment package.
 --
--- * 'fcMasterARN' - Returns the ARN (Amazon Resource Name) of the master function.
+-- * 'fcTracingConfig' - The function's AWS X-Ray tracing configuration.
+--
+-- * 'fcStateReasonCode' - The reason code for the function's current state. When the code is @Creating@ , you can't invoke or modify the function.
+--
+-- * 'fcDescription' - The function's description.
+--
+-- * 'fcLastUpdateStatusReasonCode' - The reason code for the last update that was performed on the function.
+--
+-- * 'fcRevisionId' - The latest updated revision of the function or alias.
+--
+-- * 'fcMasterARN' - For Lambda@Edge functions, the ARN of the master function.
 functionConfiguration
     :: FunctionConfiguration
 functionConfiguration
   = FunctionConfiguration'{_fcMemorySize = Nothing,
-                           _fcRuntime = Nothing, _fcFunctionARN = Nothing,
-                           _fcKMSKeyARN = Nothing, _fcEnvironment = Nothing,
+                           _fcRuntime = Nothing, _fcState = Nothing,
+                           _fcLastUpdateStatus = Nothing,
+                           _fcFunctionARN = Nothing, _fcKMSKeyARN = Nothing,
+                           _fcEnvironment = Nothing,
                            _fcDeadLetterConfig = Nothing, _fcRole = Nothing,
                            _fcVPCConfig = Nothing, _fcVersion = Nothing,
-                           _fcFunctionName = Nothing, _fcCodeSize = Nothing,
-                           _fcHandler = Nothing, _fcTimeout = Nothing,
-                           _fcLastModified = Nothing, _fcCodeSha256 = Nothing,
-                           _fcTracingConfig = Nothing, _fcDescription = Nothing,
+                           _fcFunctionName = Nothing, _fcLayers = Nothing,
+                           _fcCodeSize = Nothing, _fcHandler = Nothing,
+                           _fcTimeout = Nothing,
+                           _fcLastUpdateStatusReason = Nothing,
+                           _fcStateReason = Nothing, _fcLastModified = Nothing,
+                           _fcCodeSha256 = Nothing, _fcTracingConfig = Nothing,
+                           _fcStateReasonCode = Nothing,
+                           _fcDescription = Nothing,
+                           _fcLastUpdateStatusReasonCode = Nothing,
                            _fcRevisionId = Nothing, _fcMasterARN = Nothing}
 
--- | The memory size, in MB, you configured for the function. Must be a multiple of 64 MB.
+-- | The memory that's allocated to the function.
 fcMemorySize :: Lens' FunctionConfiguration (Maybe Natural)
 fcMemorySize = lens _fcMemorySize (\ s a -> s{_fcMemorySize = a}) . mapping _Nat
 
@@ -131,27 +172,35 @@ fcMemorySize = lens _fcMemorySize (\ s a -> s{_fcMemorySize = a}) . mapping _Nat
 fcRuntime :: Lens' FunctionConfiguration (Maybe Runtime)
 fcRuntime = lens _fcRuntime (\ s a -> s{_fcRuntime = a})
 
--- | The Amazon Resource Name (ARN) assigned to the function.
+-- | The current state of the function. When the state is @Inactive@ , you can reactivate the function by invoking it.
+fcState :: Lens' FunctionConfiguration (Maybe State)
+fcState = lens _fcState (\ s a -> s{_fcState = a})
+
+-- | The status of the last update that was performed on the function. This is first set to @Successful@ after function creation completes.
+fcLastUpdateStatus :: Lens' FunctionConfiguration (Maybe LastUpdateStatus)
+fcLastUpdateStatus = lens _fcLastUpdateStatus (\ s a -> s{_fcLastUpdateStatus = a})
+
+-- | The function's Amazon Resource Name (ARN).
 fcFunctionARN :: Lens' FunctionConfiguration (Maybe Text)
 fcFunctionARN = lens _fcFunctionARN (\ s a -> s{_fcFunctionARN = a})
 
--- | The Amazon Resource Name (ARN) of the KMS key used to encrypt your function's environment variables. If empty, it means you are using the AWS Lambda default service key.
+-- | The KMS key that's used to encrypt the function's environment variables. This key is only returned if you've configured a customer managed CMK.
 fcKMSKeyARN :: Lens' FunctionConfiguration (Maybe Text)
 fcKMSKeyARN = lens _fcKMSKeyARN (\ s a -> s{_fcKMSKeyARN = a})
 
--- | The parent object that contains your environment's configuration settings.
+-- | The function's environment variables.
 fcEnvironment :: Lens' FunctionConfiguration (Maybe EnvironmentResponse)
 fcEnvironment = lens _fcEnvironment (\ s a -> s{_fcEnvironment = a})
 
--- | The parent object that contains the target ARN (Amazon Resource Name) of an Amazon SQS queue or Amazon SNS topic. For more information, see 'dlq' . 
+-- | The function's dead letter queue.
 fcDeadLetterConfig :: Lens' FunctionConfiguration (Maybe DeadLetterConfig)
 fcDeadLetterConfig = lens _fcDeadLetterConfig (\ s a -> s{_fcDeadLetterConfig = a})
 
--- | The Amazon Resource Name (ARN) of the IAM role that Lambda assumes when it executes your function to access any other Amazon Web Services (AWS) resources.
+-- | The function's execution role.
 fcRole :: Lens' FunctionConfiguration (Maybe Text)
 fcRole = lens _fcRole (\ s a -> s{_fcRole = a})
 
--- | VPC configuration associated with your Lambda function.
+-- | The function's networking configuration.
 fcVPCConfig :: Lens' FunctionConfiguration (Maybe VPCConfigResponse)
 fcVPCConfig = lens _fcVPCConfig (\ s a -> s{_fcVPCConfig = a})
 
@@ -159,43 +208,63 @@ fcVPCConfig = lens _fcVPCConfig (\ s a -> s{_fcVPCConfig = a})
 fcVersion :: Lens' FunctionConfiguration (Maybe Text)
 fcVersion = lens _fcVersion (\ s a -> s{_fcVersion = a})
 
--- | The name of the function. Note that the length constraint applies only to the ARN. If you specify only the function name, it is limited to 64 characters in length.
+-- | The name of the function.
 fcFunctionName :: Lens' FunctionConfiguration (Maybe Text)
 fcFunctionName = lens _fcFunctionName (\ s a -> s{_fcFunctionName = a})
 
--- | The size, in bytes, of the function .zip file you uploaded.
+-- | The function's <https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html layers> .
+fcLayers :: Lens' FunctionConfiguration [Layer]
+fcLayers = lens _fcLayers (\ s a -> s{_fcLayers = a}) . _Default . _Coerce
+
+-- | The size of the function's deployment package, in bytes.
 fcCodeSize :: Lens' FunctionConfiguration (Maybe Integer)
 fcCodeSize = lens _fcCodeSize (\ s a -> s{_fcCodeSize = a})
 
--- | The function Lambda calls to begin executing your function.
+-- | The function that Lambda calls to begin executing your function.
 fcHandler :: Lens' FunctionConfiguration (Maybe Text)
 fcHandler = lens _fcHandler (\ s a -> s{_fcHandler = a})
 
--- | The function execution time at which Lambda should terminate the function. Because the execution time has cost implications, we recommend you set this value based on your expected execution time. The default is 3 seconds.
+-- | The amount of time in seconds that Lambda allows a function to run before stopping it.
 fcTimeout :: Lens' FunctionConfiguration (Maybe Natural)
 fcTimeout = lens _fcTimeout (\ s a -> s{_fcTimeout = a}) . mapping _Nat
 
--- | The time stamp of the last time you updated the function. The time stamp is conveyed as a string complying with ISO-8601 in this way YYYY-MM-DDThh:mm:ssTZD (e.g., 1997-07-16T19:20:30+01:00). For more information, see <https://www.w3.org/TR/NOTE-datetime Date and Time Formats> .
+-- | The reason for the last update that was performed on the function.
+fcLastUpdateStatusReason :: Lens' FunctionConfiguration (Maybe Text)
+fcLastUpdateStatusReason = lens _fcLastUpdateStatusReason (\ s a -> s{_fcLastUpdateStatusReason = a})
+
+-- | The reason for the function's current state.
+fcStateReason :: Lens' FunctionConfiguration (Maybe Text)
+fcStateReason = lens _fcStateReason (\ s a -> s{_fcStateReason = a})
+
+-- | The date and time that the function was last updated, in <https://www.w3.org/TR/NOTE-datetime ISO-8601 format> (YYYY-MM-DDThh:mm:ss.sTZD).
 fcLastModified :: Lens' FunctionConfiguration (Maybe Text)
 fcLastModified = lens _fcLastModified (\ s a -> s{_fcLastModified = a})
 
--- | It is the SHA256 hash of your function deployment package.
+-- | The SHA256 hash of the function's deployment package.
 fcCodeSha256 :: Lens' FunctionConfiguration (Maybe Text)
 fcCodeSha256 = lens _fcCodeSha256 (\ s a -> s{_fcCodeSha256 = a})
 
--- | The parent object that contains your function's tracing settings.
+-- | The function's AWS X-Ray tracing configuration.
 fcTracingConfig :: Lens' FunctionConfiguration (Maybe TracingConfigResponse)
 fcTracingConfig = lens _fcTracingConfig (\ s a -> s{_fcTracingConfig = a})
 
--- | The user-provided description.
+-- | The reason code for the function's current state. When the code is @Creating@ , you can't invoke or modify the function.
+fcStateReasonCode :: Lens' FunctionConfiguration (Maybe StateReasonCode)
+fcStateReasonCode = lens _fcStateReasonCode (\ s a -> s{_fcStateReasonCode = a})
+
+-- | The function's description.
 fcDescription :: Lens' FunctionConfiguration (Maybe Text)
 fcDescription = lens _fcDescription (\ s a -> s{_fcDescription = a})
 
--- | Represents the latest updated revision of the function or alias.
+-- | The reason code for the last update that was performed on the function.
+fcLastUpdateStatusReasonCode :: Lens' FunctionConfiguration (Maybe LastUpdateStatusReasonCode)
+fcLastUpdateStatusReasonCode = lens _fcLastUpdateStatusReasonCode (\ s a -> s{_fcLastUpdateStatusReasonCode = a})
+
+-- | The latest updated revision of the function or alias.
 fcRevisionId :: Lens' FunctionConfiguration (Maybe Text)
 fcRevisionId = lens _fcRevisionId (\ s a -> s{_fcRevisionId = a})
 
--- | Returns the ARN (Amazon Resource Name) of the master function.
+-- | For Lambda@Edge functions, the ARN of the master function.
 fcMasterARN :: Lens' FunctionConfiguration (Maybe Text)
 fcMasterARN = lens _fcMasterARN (\ s a -> s{_fcMasterARN = a})
 
@@ -205,7 +274,9 @@ instance FromJSON FunctionConfiguration where
               (\ x ->
                  FunctionConfiguration' <$>
                    (x .:? "MemorySize") <*> (x .:? "Runtime") <*>
-                     (x .:? "FunctionArn")
+                     (x .:? "State")
+                     <*> (x .:? "LastUpdateStatus")
+                     <*> (x .:? "FunctionArn")
                      <*> (x .:? "KMSKeyArn")
                      <*> (x .:? "Environment")
                      <*> (x .:? "DeadLetterConfig")
@@ -213,13 +284,18 @@ instance FromJSON FunctionConfiguration where
                      <*> (x .:? "VpcConfig")
                      <*> (x .:? "Version")
                      <*> (x .:? "FunctionName")
+                     <*> (x .:? "Layers" .!= mempty)
                      <*> (x .:? "CodeSize")
                      <*> (x .:? "Handler")
                      <*> (x .:? "Timeout")
+                     <*> (x .:? "LastUpdateStatusReason")
+                     <*> (x .:? "StateReason")
                      <*> (x .:? "LastModified")
                      <*> (x .:? "CodeSha256")
                      <*> (x .:? "TracingConfig")
+                     <*> (x .:? "StateReasonCode")
                      <*> (x .:? "Description")
+                     <*> (x .:? "LastUpdateStatusReasonCode")
                      <*> (x .:? "RevisionId")
                      <*> (x .:? "MasterArn"))
 

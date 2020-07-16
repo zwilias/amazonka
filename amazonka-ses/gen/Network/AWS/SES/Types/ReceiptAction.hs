@@ -30,7 +30,7 @@ import Network.AWS.SES.Types.WorkmailAction
 -- | An action that Amazon SES can take when it receives an email on behalf of one or more email addresses or domains that you own. An instance of this data type can represent only one action.
 --
 --
--- For information about setting up receipt rules, see the <http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-receipt-rules.html Amazon SES Developer Guide> .
+-- For information about setting up receipt rules, see the <https://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-receipt-rules.html Amazon SES Developer Guide> .
 --
 --
 -- /See:/ 'receiptAction' smart constructor.
@@ -53,7 +53,7 @@ data ReceiptAction = ReceiptAction'{_raAddHeaderAction
 --
 -- * 'raSNSAction' - Publishes the email content within a notification to Amazon SNS.
 --
--- * 'raWorkmailAction' - Calls Amazon WorkMail and, optionally, publishes a notification to Amazon SNS.
+-- * 'raWorkmailAction' - Calls Amazon WorkMail and, optionally, publishes a notification to Amazon Amazon SNS.
 --
 -- * 'raBounceAction' - Rejects the received email by returning a bounce response to the sender and, optionally, publishes a notification to Amazon Simple Notification Service (Amazon SNS).
 --
@@ -78,7 +78,7 @@ raAddHeaderAction = lens _raAddHeaderAction (\ s a -> s{_raAddHeaderAction = a})
 raSNSAction :: Lens' ReceiptAction (Maybe SNSAction)
 raSNSAction = lens _raSNSAction (\ s a -> s{_raSNSAction = a})
 
--- | Calls Amazon WorkMail and, optionally, publishes a notification to Amazon SNS.
+-- | Calls Amazon WorkMail and, optionally, publishes a notification to Amazon Amazon SNS.
 raWorkmailAction :: Lens' ReceiptAction (Maybe WorkmailAction)
 raWorkmailAction = lens _raWorkmailAction (\ s a -> s{_raWorkmailAction = a})
 

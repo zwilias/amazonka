@@ -20,8 +20,9 @@ module Network.AWS.RDS.Types.PendingModifiedValues where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.RDS.Types.PendingCloudwatchLogsExports
+import Network.AWS.RDS.Types.ProcessorFeature
 
--- | This data type is used as a response element in the 'ModifyDBInstance' action. 
+-- | This data type is used as a response element in the @ModifyDBInstance@ action. 
 --
 --
 --
@@ -33,6 +34,8 @@ data PendingModifiedValues = PendingModifiedValues'{_pmvEngineVersion
                                                     _pmvDBSubnetGroupName ::
                                                     !(Maybe Text),
                                                     _pmvIOPS :: !(Maybe Int),
+                                                    _pmvProcessorFeatures ::
+                                                    !(Maybe [ProcessorFeature]),
                                                     _pmvDBInstanceClass ::
                                                     !(Maybe Text),
                                                     _pmvLicenseModel ::
@@ -69,6 +72,8 @@ data PendingModifiedValues = PendingModifiedValues'{_pmvEngineVersion
 --
 -- * 'pmvIOPS' - Specifies the new Provisioned IOPS value for the DB instance that will be applied or is currently being applied.
 --
+-- * 'pmvProcessorFeatures' - The number of CPU cores and the number of threads per core for the DB instance class of the DB instance.
+--
 -- * 'pmvDBInstanceClass' - Contains the new @DBInstanceClass@ for the DB instance that will be applied or is currently being applied. 
 --
 -- * 'pmvLicenseModel' - The license model for the DB instance. Valid values: @license-included@ | @bring-your-own-license@ | @general-public-license@ 
@@ -94,6 +99,7 @@ pendingModifiedValues
   = PendingModifiedValues'{_pmvEngineVersion = Nothing,
                            _pmvMasterUserPassword = Nothing,
                            _pmvDBSubnetGroupName = Nothing, _pmvIOPS = Nothing,
+                           _pmvProcessorFeatures = Nothing,
                            _pmvDBInstanceClass = Nothing,
                            _pmvLicenseModel = Nothing,
                            _pmvCACertificateIdentifier = Nothing,
@@ -119,6 +125,10 @@ pmvDBSubnetGroupName = lens _pmvDBSubnetGroupName (\ s a -> s{_pmvDBSubnetGroupN
 -- | Specifies the new Provisioned IOPS value for the DB instance that will be applied or is currently being applied.
 pmvIOPS :: Lens' PendingModifiedValues (Maybe Int)
 pmvIOPS = lens _pmvIOPS (\ s a -> s{_pmvIOPS = a})
+
+-- | The number of CPU cores and the number of threads per core for the DB instance class of the DB instance.
+pmvProcessorFeatures :: Lens' PendingModifiedValues [ProcessorFeature]
+pmvProcessorFeatures = lens _pmvProcessorFeatures (\ s a -> s{_pmvProcessorFeatures = a}) . _Default . _Coerce
 
 -- | Contains the new @DBInstanceClass@ for the DB instance that will be applied or is currently being applied. 
 pmvDBInstanceClass :: Lens' PendingModifiedValues (Maybe Text)
@@ -167,6 +177,9 @@ instance FromXML PendingModifiedValues where
                 (x .@? "MasterUserPassword")
                 <*> (x .@? "DBSubnetGroupName")
                 <*> (x .@? "Iops")
+                <*>
+                (x .@? "ProcessorFeatures" .!@ mempty >>=
+                   may (parseXMLList "ProcessorFeature"))
                 <*> (x .@? "DBInstanceClass")
                 <*> (x .@? "LicenseModel")
                 <*> (x .@? "CACertificateIdentifier")

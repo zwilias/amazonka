@@ -18,6 +18,7 @@
 module Network.AWS.IoTAnalytics.Types.Channel where
 
 import Network.AWS.IoTAnalytics.Types.ChannelStatus
+import Network.AWS.IoTAnalytics.Types.ChannelStorage
 import Network.AWS.IoTAnalytics.Types.RetentionPeriod
 import Network.AWS.Lens
 import Network.AWS.Prelude
@@ -31,6 +32,7 @@ data Channel = Channel'{_cCreationTime ::
                         !(Maybe POSIX),
                         _cStatus :: !(Maybe ChannelStatus),
                         _cArn :: !(Maybe Text),
+                        _cStorage :: !(Maybe ChannelStorage),
                         _cRetentionPeriod :: !(Maybe RetentionPeriod),
                         _cName :: !(Maybe Text),
                         _cLastUpdateTime :: !(Maybe POSIX)}
@@ -46,6 +48,8 @@ data Channel = Channel'{_cCreationTime ::
 --
 -- * 'cArn' - The ARN of the channel.
 --
+-- * 'cStorage' - Where channel data is stored. You may choose one of "serviceManagedS3" or "customerManagedS3" storage. If not specified, the default is "serviceManagedS3". This cannot be changed after creation of the channel.
+--
 -- * 'cRetentionPeriod' - How long, in days, message data is kept for the channel.
 --
 -- * 'cName' - The name of the channel.
@@ -56,8 +60,8 @@ channel
 channel
   = Channel'{_cCreationTime = Nothing,
              _cStatus = Nothing, _cArn = Nothing,
-             _cRetentionPeriod = Nothing, _cName = Nothing,
-             _cLastUpdateTime = Nothing}
+             _cStorage = Nothing, _cRetentionPeriod = Nothing,
+             _cName = Nothing, _cLastUpdateTime = Nothing}
 
 -- | When the channel was created.
 cCreationTime :: Lens' Channel (Maybe UTCTime)
@@ -70,6 +74,10 @@ cStatus = lens _cStatus (\ s a -> s{_cStatus = a})
 -- | The ARN of the channel.
 cArn :: Lens' Channel (Maybe Text)
 cArn = lens _cArn (\ s a -> s{_cArn = a})
+
+-- | Where channel data is stored. You may choose one of "serviceManagedS3" or "customerManagedS3" storage. If not specified, the default is "serviceManagedS3". This cannot be changed after creation of the channel.
+cStorage :: Lens' Channel (Maybe ChannelStorage)
+cStorage = lens _cStorage (\ s a -> s{_cStorage = a})
 
 -- | How long, in days, message data is kept for the channel.
 cRetentionPeriod :: Lens' Channel (Maybe RetentionPeriod)
@@ -90,6 +98,7 @@ instance FromJSON Channel where
                  Channel' <$>
                    (x .:? "creationTime") <*> (x .:? "status") <*>
                      (x .:? "arn")
+                     <*> (x .:? "storage")
                      <*> (x .:? "retentionPeriod")
                      <*> (x .:? "name")
                      <*> (x .:? "lastUpdateTime"))

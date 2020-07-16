@@ -18,15 +18,20 @@ module Network.AWS.WAFRegional.Types
     -- * Errors
     , _WAFNonexistentContainerException
     , _WAFInvalidRegexPatternException
+    , _WAFEntityMigrationException
     , _WAFLimitsExceededException
     , _WAFInvalidParameterException
+    , _WAFServiceLinkedRoleErrorException
+    , _WAFBadRequestException
     , _WAFUnavailableEntityException
     , _WAFInvalidOperationException
     , _WAFStaleDataException
     , _WAFInternalErrorException
+    , _WAFTagOperationException
     , _WAFInvalidPermissionPolicyException
     , _WAFReferencedItemException
     , _WAFSubscriptionNotFoundException
+    , _WAFTagOperationInternalErrorException
     , _WAFInvalidAccountException
     , _WAFNonexistentItemException
     , _WAFNonEmptyEntityException
@@ -62,6 +67,9 @@ module Network.AWS.WAFRegional.Types
     -- * RateKey
     , RateKey (..)
 
+    -- * ResourceType
+    , ResourceType (..)
+
     -- * TextTransformation
     , TextTransformation (..)
 
@@ -79,6 +87,7 @@ module Network.AWS.WAFRegional.Types
     , activatedRule
     , arOverrideAction
     , arAction
+    , arExcludedRules
     , arType
     , arPriority
     , arRuleId
@@ -109,6 +118,11 @@ module Network.AWS.WAFRegional.Types
     , bmtTargetString
     , bmtTextTransformation
     , bmtPositionalConstraint
+
+    -- * ExcludedRule
+    , ExcludedRule
+    , excludedRule
+    , erRuleId
 
     -- * FieldToMatch
     , FieldToMatch
@@ -181,6 +195,13 @@ module Network.AWS.WAFRegional.Types
     , ipSetUpdate
     , isuAction
     , isuIPSetDescriptor
+
+    -- * LoggingConfiguration
+    , LoggingConfiguration
+    , loggingConfiguration
+    , lcRedactedFields
+    , lcResourceARN
+    , lcLogDestinationConfigs
 
     -- * Predicate
     , Predicate
@@ -351,6 +372,18 @@ module Network.AWS.WAFRegional.Types
     , srgsName
     , srgsMetricName
 
+    -- * Tag
+    , Tag
+    , tag
+    , tagKey
+    , tagValue
+
+    -- * TagInfoForResource
+    , TagInfoForResource
+    , tagInfoForResource
+    , tifrTagList
+    , tifrResourceARN
+
     -- * TimeWindow
     , TimeWindow
     , timeWindow
@@ -372,6 +405,7 @@ module Network.AWS.WAFRegional.Types
     , webACL
     , waMetricName
     , waName
+    , waWebACLARN
     , waWebACLId
     , waDefaultAction
     , waRules
@@ -427,6 +461,7 @@ import Network.AWS.WAFRegional.Types.MatchFieldType
 import Network.AWS.WAFRegional.Types.PositionalConstraint
 import Network.AWS.WAFRegional.Types.PredicateType
 import Network.AWS.WAFRegional.Types.RateKey
+import Network.AWS.WAFRegional.Types.ResourceType
 import Network.AWS.WAFRegional.Types.TextTransformation
 import Network.AWS.WAFRegional.Types.WafActionType
 import Network.AWS.WAFRegional.Types.WafOverrideActionType
@@ -436,6 +471,7 @@ import Network.AWS.WAFRegional.Types.ByteMatchSet
 import Network.AWS.WAFRegional.Types.ByteMatchSetSummary
 import Network.AWS.WAFRegional.Types.ByteMatchSetUpdate
 import Network.AWS.WAFRegional.Types.ByteMatchTuple
+import Network.AWS.WAFRegional.Types.ExcludedRule
 import Network.AWS.WAFRegional.Types.FieldToMatch
 import Network.AWS.WAFRegional.Types.GeoMatchConstraint
 import Network.AWS.WAFRegional.Types.GeoMatchSet
@@ -447,6 +483,7 @@ import Network.AWS.WAFRegional.Types.IPSet
 import Network.AWS.WAFRegional.Types.IPSetDescriptor
 import Network.AWS.WAFRegional.Types.IPSetSummary
 import Network.AWS.WAFRegional.Types.IPSetUpdate
+import Network.AWS.WAFRegional.Types.LoggingConfiguration
 import Network.AWS.WAFRegional.Types.Predicate
 import Network.AWS.WAFRegional.Types.RateBasedRule
 import Network.AWS.WAFRegional.Types.RegexMatchSet
@@ -472,6 +509,8 @@ import Network.AWS.WAFRegional.Types.SqlInjectionMatchSetSummary
 import Network.AWS.WAFRegional.Types.SqlInjectionMatchSetUpdate
 import Network.AWS.WAFRegional.Types.SqlInjectionMatchTuple
 import Network.AWS.WAFRegional.Types.SubscribedRuleGroupSummary
+import Network.AWS.WAFRegional.Types.Tag
+import Network.AWS.WAFRegional.Types.TagInfoForResource
 import Network.AWS.WAFRegional.Types.TimeWindow
 import Network.AWS.WAFRegional.Types.WafAction
 import Network.AWS.WAFRegional.Types.WafOverrideAction
@@ -506,6 +545,11 @@ wAFRegional
             = Just "throttling_exception"
           | has (hasCode "Throttling" . hasStatus 400) e =
             Just "throttling"
+          | has
+              (hasCode "ProvisionedThroughputExceededException" .
+                 hasStatus 400)
+              e
+            = Just "throughput_exceeded"
           | has (hasStatus 504) e = Just "gateway_timeout"
           | has
               (hasCode "RequestThrottledException" . hasStatus 400)
@@ -543,7 +587,31 @@ _WAFInvalidRegexPatternException
   = _MatchServiceError wAFRegional
       "WAFInvalidRegexPatternException"
 
--- | The operation exceeds a resource limit, for example, the maximum number of @WebACL@ objects that you can create for an AWS account. For more information, see <http://docs.aws.amazon.com/waf/latest/developerguide/limits.html Limits> in the /AWS WAF Developer Guide/ .
+-- | The operation failed due to a problem with the migration. The failure cause is provided in the exception, in the @MigrationErrorType@ : 
+--
+--
+--     * @ENTITY_NOT_SUPPORTED@ - The web ACL has an unsupported entity but the @IgnoreUnsupportedType@ is not set to true.
+--
+--     * @ENTITY_NOT_FOUND@ - The web ACL doesn't exist. 
+--
+--     * @S3_BUCKET_NO_PERMISSION@ - You don't have permission to perform the @PutObject@ action to the specified Amazon S3 bucket.
+--
+--     * @S3_BUCKET_NOT_ACCESSIBLE@ - The bucket policy doesn't allow AWS WAF to perform the @PutObject@ action in the bucket.
+--
+--     * @S3_BUCKET_NOT_FOUND@ - The S3 bucket doesn't exist. 
+--
+--     * @S3_BUCKET_INVALID_REGION@ - The S3 bucket is not in the same Region as the web ACL.
+--
+--     * @S3_INTERNAL_ERROR@ - AWS WAF failed to create the template in the S3 bucket for another reason.
+--
+--
+--
+_WAFEntityMigrationException :: AsError a => Getting (First ServiceError) a ServiceError
+_WAFEntityMigrationException
+  = _MatchServiceError wAFRegional
+      "WAFEntityMigrationException"
+
+-- | The operation exceeds a resource limit, for example, the maximum number of @WebACL@ objects that you can create for an AWS account. For more information, see <https://docs.aws.amazon.com/waf/latest/developerguide/limits.html Limits> in the /AWS WAF Developer Guide/ .
 --
 --
 _WAFLimitsExceededException :: AsError a => Getting (First ServiceError) a ServiceError
@@ -579,6 +647,22 @@ _WAFInvalidParameterException
   = _MatchServiceError wAFRegional
       "WAFInvalidParameterException"
 
+-- | AWS WAF is not able to access the service linked role. This can be caused by a previous @PutLoggingConfiguration@ request, which can lock the service linked role for about 20 seconds. Please try your request again. The service linked role can also be locked by a previous @DeleteServiceLinkedRole@ request, which can lock the role for 15 minutes or more. If you recently made a @DeleteServiceLinkedRole@ , wait at least 15 minutes and try the request again. If you receive this same exception again, you will have to wait additional time until the role is unlocked.
+--
+--
+_WAFServiceLinkedRoleErrorException :: AsError a => Getting (First ServiceError) a ServiceError
+_WAFServiceLinkedRoleErrorException
+  = _MatchServiceError wAFRegional
+      "WAFServiceLinkedRoleErrorException"
+
+-- | 
+--
+--
+_WAFBadRequestException :: AsError a => Getting (First ServiceError) a ServiceError
+_WAFBadRequestException
+  = _MatchServiceError wAFRegional
+      "WAFBadRequestException"
+
 -- | The operation failed because the entity referenced is temporarily unavailable. Retry your request.
 --
 --
@@ -597,8 +681,6 @@ _WAFUnavailableEntityException
 --     * You tried to remove a @ByteMatchTuple@ from a @ByteMatchSet@ , but the @ByteMatchTuple@ isn't in the specified @WebACL@ .
 --
 --     * You tried to add a @Rule@ to a @WebACL@ , but the @Rule@ already exists in the specified @WebACL@ .
---
---     * You tried to add an IP address to an @IPSet@ , but the IP address already exists in the specified @IPSet@ .
 --
 --     * You tried to add a @ByteMatchTuple@ to a @ByteMatchSet@ , but the @ByteMatchTuple@ already exists in the specified @WebACL@ .
 --
@@ -625,6 +707,14 @@ _WAFInternalErrorException
   = _MatchServiceError wAFRegional
       "WAFInternalErrorException"
 
+-- | 
+--
+--
+_WAFTagOperationException :: AsError a => Getting (First ServiceError) a ServiceError
+_WAFTagOperationException
+  = _MatchServiceError wAFRegional
+      "WAFTagOperationException"
+
 -- | The operation failed because the specified policy is not in the proper format. 
 --
 --
@@ -636,7 +726,7 @@ _WAFInternalErrorException
 --
 --     * @Effect@ must specify @Allow@ .
 --
---     * The @Action@ in the policy must be @waf:UpdateWebACL@ or @waf-regional:UpdateWebACL@ . Any extra or wildcard actions in the policy will be rejected.
+--     * The @Action@ in the policy must be @waf:UpdateWebACL@ , @waf-regional:UpdateWebACL@ , @waf:GetRuleGroup@ and @waf-regional:GetRuleGroup@ . Any extra or wildcard actions in the policy will be rejected.
 --
 --     * The policy cannot include a @Resource@ parameter.
 --
@@ -674,6 +764,14 @@ _WAFSubscriptionNotFoundException :: AsError a => Getting (First ServiceError) a
 _WAFSubscriptionNotFoundException
   = _MatchServiceError wAFRegional
       "WAFSubscriptionNotFoundException"
+
+-- | 
+--
+--
+_WAFTagOperationInternalErrorException :: AsError a => Getting (First ServiceError) a ServiceError
+_WAFTagOperationInternalErrorException
+  = _MatchServiceError wAFRegional
+      "WAFTagOperationInternalErrorException"
 
 -- | The operation failed because you tried to create, update, or delete an object by using an invalid account identifier.
 --

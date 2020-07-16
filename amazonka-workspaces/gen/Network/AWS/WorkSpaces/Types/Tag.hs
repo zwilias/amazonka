@@ -20,7 +20,7 @@ module Network.AWS.WorkSpaces.Types.Tag where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | Information about a tag.
+-- | Describes a tag.
 --
 --
 --

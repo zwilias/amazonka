@@ -33,7 +33,7 @@ data ListGrantsResponse = ListGrantsResponse'{_lgTruncated
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'lgTruncated' - A flag that indicates whether there are more items in the list. When this value is true, the list in this response is truncated. To get more items, pass the value of the @NextMarker@ element in this response to the @Marker@ parameter in a subsequent request.
+-- * 'lgTruncated' - A flag that indicates whether there are more items in the list. When this value is true, the list in this response is truncated. To get more items, pass the value of the @NextMarker@ element in thisresponse to the @Marker@ parameter in a subsequent request.
 --
 -- * 'lgGrants' - A list of grants.
 --
@@ -44,7 +44,7 @@ listGrantsResponse
   = ListGrantsResponse'{_lgTruncated = Nothing,
                         _lgGrants = Nothing, _lgNextMarker = Nothing}
 
--- | A flag that indicates whether there are more items in the list. When this value is true, the list in this response is truncated. To get more items, pass the value of the @NextMarker@ element in this response to the @Marker@ parameter in a subsequent request.
+-- | A flag that indicates whether there are more items in the list. When this value is true, the list in this response is truncated. To get more items, pass the value of the @NextMarker@ element in thisresponse to the @Marker@ parameter in a subsequent request.
 lgTruncated :: Lens' ListGrantsResponse (Maybe Bool)
 lgTruncated = lens _lgTruncated (\ s a -> s{_lgTruncated = a})
 

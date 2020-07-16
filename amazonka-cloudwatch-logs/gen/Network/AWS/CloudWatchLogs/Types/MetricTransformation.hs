@@ -20,7 +20,7 @@ module Network.AWS.CloudWatchLogs.Types.MetricTransformation where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | Indicates how to transform ingested log events in to metric data in a CloudWatch metric.
+-- | Indicates how to transform ingested log events to metric data in a CloudWatch metric.
 --
 --
 --

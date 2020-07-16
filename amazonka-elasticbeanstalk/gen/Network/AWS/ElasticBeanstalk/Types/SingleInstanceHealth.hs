@@ -60,13 +60,13 @@ data SingleInstanceHealth = SingleInstanceHealth'{_sihInstanceId
 --
 -- * 'sihApplicationMetrics' - Request metrics from your application.
 --
--- * 'sihColor' - Represents the color indicator that gives you information about the health of the EC2 instance. For more information, see <http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/health-enhanced-status.html Health Colors and Statuses> .
+-- * 'sihColor' - Represents the color indicator that gives you information about the health of the EC2 instance. For more information, see <https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/health-enhanced-status.html Health Colors and Statuses> .
 --
 -- * 'sihInstanceType' - The instance's type.
 --
 -- * 'sihAvailabilityZone' - The availability zone in which the instance runs.
 --
--- * 'sihHealthStatus' - Returns the health status of the specified instance. For more information, see <http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/health-enhanced-status.html Health Colors and Statuses> .
+-- * 'sihHealthStatus' - Returns the health status of the specified instance. For more information, see <https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/health-enhanced-status.html Health Colors and Statuses> .
 --
 -- * 'sihDeployment' - Information about the most recent deployment to an instance.
 --
@@ -98,7 +98,7 @@ sihSystem = lens _sihSystem (\ s a -> s{_sihSystem = a})
 sihApplicationMetrics :: Lens' SingleInstanceHealth (Maybe ApplicationMetrics)
 sihApplicationMetrics = lens _sihApplicationMetrics (\ s a -> s{_sihApplicationMetrics = a})
 
--- | Represents the color indicator that gives you information about the health of the EC2 instance. For more information, see <http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/health-enhanced-status.html Health Colors and Statuses> .
+-- | Represents the color indicator that gives you information about the health of the EC2 instance. For more information, see <https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/health-enhanced-status.html Health Colors and Statuses> .
 sihColor :: Lens' SingleInstanceHealth (Maybe Text)
 sihColor = lens _sihColor (\ s a -> s{_sihColor = a})
 
@@ -110,7 +110,7 @@ sihInstanceType = lens _sihInstanceType (\ s a -> s{_sihInstanceType = a})
 sihAvailabilityZone :: Lens' SingleInstanceHealth (Maybe Text)
 sihAvailabilityZone = lens _sihAvailabilityZone (\ s a -> s{_sihAvailabilityZone = a})
 
--- | Returns the health status of the specified instance. For more information, see <http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/health-enhanced-status.html Health Colors and Statuses> .
+-- | Returns the health status of the specified instance. For more information, see <https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/health-enhanced-status.html Health Colors and Statuses> .
 sihHealthStatus :: Lens' SingleInstanceHealth (Maybe Text)
 sihHealthStatus = lens _sihHealthStatus (\ s a -> s{_sihHealthStatus = a})
 

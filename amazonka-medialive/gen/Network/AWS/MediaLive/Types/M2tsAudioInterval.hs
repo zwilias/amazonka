@@ -27,7 +27,7 @@ module Network.AWS.MediaLive.Types.M2tsAudioInterval (
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | Placeholder documentation for M2tsAudioInterval
+-- | M2ts Audio Interval
 data M2tsAudioInterval = M2tsAudioInterval' (CI Text)
                            deriving (Eq, Ord, Read, Show, Data, Typeable,
                                      Generic)

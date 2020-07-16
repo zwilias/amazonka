@@ -21,7 +21,11 @@ import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.S3.Internal
 
--- | /See:/ 'stats' smart constructor.
+-- | Container for the stats details.
+--
+--
+--
+-- /See:/ 'stats' smart constructor.
 data Stats = Stats'{_sBytesReturned ::
                     !(Maybe Integer),
                     _sBytesScanned :: !(Maybe Integer),
@@ -32,26 +36,26 @@ data Stats = Stats'{_sBytesReturned ::
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'sBytesReturned' - Total number of bytes of records payload data returned.
+-- * 'sBytesReturned' - The total number of bytes of records payload data returned.
 --
--- * 'sBytesScanned' - Total number of object bytes scanned.
+-- * 'sBytesScanned' - The total number of object bytes scanned.
 --
--- * 'sBytesProcessed' - Total number of uncompressed object bytes processed.
+-- * 'sBytesProcessed' - The total number of uncompressed object bytes processed.
 stats
     :: Stats
 stats
   = Stats'{_sBytesReturned = Nothing,
            _sBytesScanned = Nothing, _sBytesProcessed = Nothing}
 
--- | Total number of bytes of records payload data returned.
+-- | The total number of bytes of records payload data returned.
 sBytesReturned :: Lens' Stats (Maybe Integer)
 sBytesReturned = lens _sBytesReturned (\ s a -> s{_sBytesReturned = a})
 
--- | Total number of object bytes scanned.
+-- | The total number of object bytes scanned.
 sBytesScanned :: Lens' Stats (Maybe Integer)
 sBytesScanned = lens _sBytesScanned (\ s a -> s{_sBytesScanned = a})
 
--- | Total number of uncompressed object bytes processed.
+-- | The total number of uncompressed object bytes processed.
 sBytesProcessed :: Lens' Stats (Maybe Integer)
 sBytesProcessed = lens _sBytesProcessed (\ s a -> s{_sBytesProcessed = a})
 

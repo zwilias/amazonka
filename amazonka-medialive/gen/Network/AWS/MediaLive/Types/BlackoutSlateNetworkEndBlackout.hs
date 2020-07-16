@@ -27,7 +27,7 @@ module Network.AWS.MediaLive.Types.BlackoutSlateNetworkEndBlackout (
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | Placeholder documentation for BlackoutSlateNetworkEndBlackout
+-- | Blackout Slate Network End Blackout
 data BlackoutSlateNetworkEndBlackout = BlackoutSlateNetworkEndBlackout' (CI
                                                                            Text)
                                          deriving (Eq, Ord, Read, Show, Data,

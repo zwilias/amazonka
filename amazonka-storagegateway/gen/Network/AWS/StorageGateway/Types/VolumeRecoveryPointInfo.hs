@@ -20,7 +20,11 @@ module Network.AWS.StorageGateway.Types.VolumeRecoveryPointInfo where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | /See:/ 'volumeRecoveryPointInfo' smart constructor.
+-- | Describes a storage volume recovery point object.
+--
+--
+--
+-- /See:/ 'volumeRecoveryPointInfo' smart constructor.
 data VolumeRecoveryPointInfo = VolumeRecoveryPointInfo'{_vrpiVolumeRecoveryPointTime
                                                         :: !(Maybe Text),
                                                         _vrpiVolumeARN ::
@@ -36,13 +40,13 @@ data VolumeRecoveryPointInfo = VolumeRecoveryPointInfo'{_vrpiVolumeRecoveryPoint
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'vrpiVolumeRecoveryPointTime' - Undocumented member.
+-- * 'vrpiVolumeRecoveryPointTime' - The time the recovery point was taken.
 --
--- * 'vrpiVolumeARN' - Undocumented member.
+-- * 'vrpiVolumeARN' - The Amazon Resource Name (ARN) of the volume target.
 --
--- * 'vrpiVolumeSizeInBytes' - Undocumented member.
+-- * 'vrpiVolumeSizeInBytes' - The size of the volume in bytes.
 --
--- * 'vrpiVolumeUsageInBytes' - Undocumented member.
+-- * 'vrpiVolumeUsageInBytes' - The size of the data stored on the volume in bytes.
 volumeRecoveryPointInfo
     :: VolumeRecoveryPointInfo
 volumeRecoveryPointInfo
@@ -52,19 +56,19 @@ volumeRecoveryPointInfo
                              _vrpiVolumeSizeInBytes = Nothing,
                              _vrpiVolumeUsageInBytes = Nothing}
 
--- | Undocumented member.
+-- | The time the recovery point was taken.
 vrpiVolumeRecoveryPointTime :: Lens' VolumeRecoveryPointInfo (Maybe Text)
 vrpiVolumeRecoveryPointTime = lens _vrpiVolumeRecoveryPointTime (\ s a -> s{_vrpiVolumeRecoveryPointTime = a})
 
--- | Undocumented member.
+-- | The Amazon Resource Name (ARN) of the volume target.
 vrpiVolumeARN :: Lens' VolumeRecoveryPointInfo (Maybe Text)
 vrpiVolumeARN = lens _vrpiVolumeARN (\ s a -> s{_vrpiVolumeARN = a})
 
--- | Undocumented member.
+-- | The size of the volume in bytes.
 vrpiVolumeSizeInBytes :: Lens' VolumeRecoveryPointInfo (Maybe Integer)
 vrpiVolumeSizeInBytes = lens _vrpiVolumeSizeInBytes (\ s a -> s{_vrpiVolumeSizeInBytes = a})
 
--- | Undocumented member.
+-- | The size of the data stored on the volume in bytes.
 vrpiVolumeUsageInBytes :: Lens' VolumeRecoveryPointInfo (Maybe Integer)
 vrpiVolumeUsageInBytes = lens _vrpiVolumeUsageInBytes (\ s a -> s{_vrpiVolumeUsageInBytes = a})
 

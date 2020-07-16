@@ -74,6 +74,7 @@ library
         , Network.AWS.ElasticBeanstalk.DescribeInstancesHealth
         , Network.AWS.ElasticBeanstalk.DescribePlatformVersion
         , Network.AWS.ElasticBeanstalk.ListAvailableSolutionStacks
+        , Network.AWS.ElasticBeanstalk.ListPlatformBranches
         , Network.AWS.ElasticBeanstalk.ListPlatformVersions
         , Network.AWS.ElasticBeanstalk.ListTagsForResource
         , Network.AWS.ElasticBeanstalk.RebuildEnvironment
@@ -136,6 +137,7 @@ library
         , Network.AWS.ElasticBeanstalk.Types.InstancesHealthAttribute
         , Network.AWS.ElasticBeanstalk.Types.Latency
         , Network.AWS.ElasticBeanstalk.Types.LaunchConfiguration
+        , Network.AWS.ElasticBeanstalk.Types.LaunchTemplate
         , Network.AWS.ElasticBeanstalk.Types.Listener
         , Network.AWS.ElasticBeanstalk.Types.LoadBalancer
         , Network.AWS.ElasticBeanstalk.Types.LoadBalancerDescription
@@ -145,6 +147,7 @@ library
         , Network.AWS.ElasticBeanstalk.Types.MaxCountRule
         , Network.AWS.ElasticBeanstalk.Types.OptionRestrictionRegex
         , Network.AWS.ElasticBeanstalk.Types.OptionSpecification
+        , Network.AWS.ElasticBeanstalk.Types.PlatformBranchSummary
         , Network.AWS.ElasticBeanstalk.Types.PlatformDescription
         , Network.AWS.ElasticBeanstalk.Types.PlatformFilter
         , Network.AWS.ElasticBeanstalk.Types.PlatformFramework
@@ -156,6 +159,7 @@ library
         , Network.AWS.ElasticBeanstalk.Types.ResourceQuota
         , Network.AWS.ElasticBeanstalk.Types.ResourceQuotas
         , Network.AWS.ElasticBeanstalk.Types.S3Location
+        , Network.AWS.ElasticBeanstalk.Types.SearchFilter
         , Network.AWS.ElasticBeanstalk.Types.SingleInstanceHealth
         , Network.AWS.ElasticBeanstalk.Types.SolutionStackDescription
         , Network.AWS.ElasticBeanstalk.Types.SourceBuildInformation

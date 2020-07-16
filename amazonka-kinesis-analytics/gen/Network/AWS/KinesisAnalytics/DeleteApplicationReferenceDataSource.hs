@@ -21,7 +21,7 @@
 -- Deletes a reference data source configuration from the specified application configuration.
 --
 --
--- If the application is running, Amazon Kinesis Analytics immediately removes the in-application table that you created using the 'AddApplicationReferenceDataSource' operation. 
+-- If the application is running, Amazon Kinesis Analytics immediately removes the in-application table that you created using the <https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_AddApplicationReferenceDataSource.html AddApplicationReferenceDataSource> operation. 
 --
 -- This operation requires permissions to perform the @kinesisanalytics.DeleteApplicationReferenceDataSource@ action.
 --
@@ -68,9 +68,9 @@ data DeleteApplicationReferenceDataSource = DeleteApplicationReferenceDataSource
 --
 -- * 'dardsApplicationName' - Name of an existing application.
 --
--- * 'dardsCurrentApplicationVersionId' - Version of the application. You can use the 'DescribeApplication' operation to get the current application version. If the version specified is not the current version, the @ConcurrentModificationException@ is returned.
+-- * 'dardsCurrentApplicationVersionId' - Version of the application. You can use the <https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_DescribeApplication.html DescribeApplication> operation to get the current application version. If the version specified is not the current version, the @ConcurrentModificationException@ is returned.
 --
--- * 'dardsReferenceId' - ID of the reference data source. When you add a reference data source to your application using the 'AddApplicationReferenceDataSource' , Amazon Kinesis Analytics assigns an ID. You can use the 'DescribeApplication' operation to get the reference ID. 
+-- * 'dardsReferenceId' - ID of the reference data source. When you add a reference data source to your application using the <https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_AddApplicationReferenceDataSource.html AddApplicationReferenceDataSource> , Amazon Kinesis Analytics assigns an ID. You can use the <https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_DescribeApplication.html DescribeApplication> operation to get the reference ID. 
 deleteApplicationReferenceDataSource
     :: Text -- ^ 'dardsApplicationName'
     -> Natural -- ^ 'dardsCurrentApplicationVersionId'
@@ -90,11 +90,11 @@ deleteApplicationReferenceDataSource
 dardsApplicationName :: Lens' DeleteApplicationReferenceDataSource Text
 dardsApplicationName = lens _dardsApplicationName (\ s a -> s{_dardsApplicationName = a})
 
--- | Version of the application. You can use the 'DescribeApplication' operation to get the current application version. If the version specified is not the current version, the @ConcurrentModificationException@ is returned.
+-- | Version of the application. You can use the <https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_DescribeApplication.html DescribeApplication> operation to get the current application version. If the version specified is not the current version, the @ConcurrentModificationException@ is returned.
 dardsCurrentApplicationVersionId :: Lens' DeleteApplicationReferenceDataSource Natural
 dardsCurrentApplicationVersionId = lens _dardsCurrentApplicationVersionId (\ s a -> s{_dardsCurrentApplicationVersionId = a}) . _Nat
 
--- | ID of the reference data source. When you add a reference data source to your application using the 'AddApplicationReferenceDataSource' , Amazon Kinesis Analytics assigns an ID. You can use the 'DescribeApplication' operation to get the reference ID. 
+-- | ID of the reference data source. When you add a reference data source to your application using the <https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_AddApplicationReferenceDataSource.html AddApplicationReferenceDataSource> , Amazon Kinesis Analytics assigns an ID. You can use the <https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_DescribeApplication.html DescribeApplication> operation to get the reference ID. 
 dardsReferenceId :: Lens' DeleteApplicationReferenceDataSource Text
 dardsReferenceId = lens _dardsReferenceId (\ s a -> s{_dardsReferenceId = a})
 

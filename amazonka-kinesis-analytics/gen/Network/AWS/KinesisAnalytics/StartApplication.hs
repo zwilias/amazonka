@@ -23,9 +23,9 @@
 --
 -- After the application starts, it begins consuming the input data, processes it, and writes the output to the configured destination.
 --
--- The application status must be @READY@ for you to start an application. You can get the application status in the console or using the 'DescribeApplication' operation.
+-- The application status must be @READY@ for you to start an application. You can get the application status in the console or using the <https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_DescribeApplication.html DescribeApplication> operation.
 --
--- After you start the application, you can stop the application from processing the input by calling the 'StopApplication' operation.
+-- After you start the application, you can stop the application from processing the input by calling the <https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_StopApplication.html StopApplication> operation.
 --
 -- This operation requires permissions to perform the @kinesisanalytics:StartApplication@ action.
 --

@@ -23,6 +23,7 @@ module Network.AWS.EMR.Types.InstanceGroupState (
     , Bootstrapping
     , Ended
     , Provisioning
+    , Reconfiguring
     , Resizing
     , Running
     , ShuttingDown
@@ -52,6 +53,9 @@ pattern Ended = InstanceGroupState' "ENDED"
 pattern Provisioning :: InstanceGroupState
 pattern Provisioning = InstanceGroupState' "PROVISIONING"
 
+pattern Reconfiguring :: InstanceGroupState
+pattern Reconfiguring = InstanceGroupState' "RECONFIGURING"
+
 pattern Resizing :: InstanceGroupState
 pattern Resizing = InstanceGroupState' "RESIZING"
 
@@ -75,6 +79,7 @@ pattern Terminating = InstanceGroupState' "TERMINATING"
   Bootstrapping,
   Ended,
   Provisioning,
+  Reconfiguring,
   Resizing,
   Running,
   ShuttingDown,
@@ -99,24 +104,26 @@ instance Enum InstanceGroupState where
         1 -> Bootstrapping
         2 -> Ended
         3 -> Provisioning
-        4 -> Resizing
-        5 -> Running
-        6 -> ShuttingDown
-        7 -> Suspended
-        8 -> Terminated
-        9 -> Terminating
+        4 -> Reconfiguring
+        5 -> Resizing
+        6 -> Running
+        7 -> ShuttingDown
+        8 -> Suspended
+        9 -> Terminated
+        10 -> Terminating
         _ -> (error . showText) $ "Unknown index for InstanceGroupState: " <> toText i
     fromEnum x = case x of
         Arrested -> 0
         Bootstrapping -> 1
         Ended -> 2
         Provisioning -> 3
-        Resizing -> 4
-        Running -> 5
-        ShuttingDown -> 6
-        Suspended -> 7
-        Terminated -> 8
-        Terminating -> 9
+        Reconfiguring -> 4
+        Resizing -> 5
+        Running -> 6
+        ShuttingDown -> 7
+        Suspended -> 8
+        Terminated -> 9
+        Terminating -> 10
         InstanceGroupState' name -> (error . showText) $ "Unknown InstanceGroupState: " <> original name
 
 -- | Represents the bounds of /known/ $InstanceGroupState.

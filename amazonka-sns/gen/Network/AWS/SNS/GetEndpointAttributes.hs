@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Retrieves the endpoint attributes for a device on one of the supported push notification services, such as GCM and APNS. For more information, see <http://docs.aws.amazon.com/sns/latest/dg/SNSMobilePush.html Using Amazon SNS Mobile Push Notifications> . 
+-- Retrieves the endpoint attributes for a device on one of the supported push notification services, such as FCM and APNS. For more information, see <https://docs.aws.amazon.com/sns/latest/dg/SNSMobilePush.html Using Amazon SNS Mobile Push Notifications> . 
 --
 --
 module Network.AWS.SNS.GetEndpointAttributes
@@ -119,7 +119,7 @@ data GetEndpointAttributesResponse = GetEndpointAttributesResponse'{_gearsAttrib
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'gearsAttributes' - Attributes include the following:     * @CustomUserData@ -- arbitrary user data to associate with the endpoint. Amazon SNS does not use this data. The data must be in UTF-8 format and less than 2KB.     * @Enabled@ -- flag that enables/disables delivery to the endpoint. Amazon SNS will set this to false when a notification service indicates to Amazon SNS that the endpoint is invalid. Users can set it back to true, typically after updating Token.     * @Token@ -- device token, also referred to as a registration id, for an app and mobile device. This is returned from the notification service when an app and mobile device are registered with the notification service.
+-- * 'gearsAttributes' - Attributes include the following:     * @CustomUserData@ – arbitrary user data to associate with the endpoint. Amazon SNS does not use this data. The data must be in UTF-8 format and less than 2KB.     * @Enabled@ – flag that enables/disables delivery to the endpoint. Amazon SNS will set this to false when a notification service indicates to Amazon SNS that the endpoint is invalid. Users can set it back to true, typically after updating Token.     * @Token@ – device token, also referred to as a registration id, for an app and mobile device. This is returned from the notification service when an app and mobile device are registered with the notification service.
 --
 -- * 'gearsResponseStatus' - -- | The response status code.
 getEndpointAttributesResponse
@@ -130,7 +130,7 @@ getEndpointAttributesResponse pResponseStatus_
                                      Nothing,
                                    _gearsResponseStatus = pResponseStatus_}
 
--- | Attributes include the following:     * @CustomUserData@ -- arbitrary user data to associate with the endpoint. Amazon SNS does not use this data. The data must be in UTF-8 format and less than 2KB.     * @Enabled@ -- flag that enables/disables delivery to the endpoint. Amazon SNS will set this to false when a notification service indicates to Amazon SNS that the endpoint is invalid. Users can set it back to true, typically after updating Token.     * @Token@ -- device token, also referred to as a registration id, for an app and mobile device. This is returned from the notification service when an app and mobile device are registered with the notification service.
+-- | Attributes include the following:     * @CustomUserData@ – arbitrary user data to associate with the endpoint. Amazon SNS does not use this data. The data must be in UTF-8 format and less than 2KB.     * @Enabled@ – flag that enables/disables delivery to the endpoint. Amazon SNS will set this to false when a notification service indicates to Amazon SNS that the endpoint is invalid. Users can set it back to true, typically after updating Token.     * @Token@ – device token, also referred to as a registration id, for an app and mobile device. This is returned from the notification service when an app and mobile device are registered with the notification service.
 gearsAttributes :: Lens' GetEndpointAttributesResponse (HashMap Text Text)
 gearsAttributes = lens _gearsAttributes (\ s a -> s{_gearsAttributes = a}) . _Default . _Map
 

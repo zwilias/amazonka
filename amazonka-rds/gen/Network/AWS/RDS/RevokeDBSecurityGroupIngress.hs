@@ -74,7 +74,7 @@ data RevokeDBSecurityGroupIngress = RevokeDBSecurityGroupIngress'{_rdsgiEC2Secur
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'rdsgiEC2SecurityGroupOwnerId' - The AWS Account Number of the owner of the EC2 security group specified in the @EC2SecurityGroupName@ parameter. The AWS Access Key ID is not an acceptable value. For VPC DB security groups, @EC2SecurityGroupId@ must be provided. Otherwise, EC2SecurityGroupOwnerId and either @EC2SecurityGroupName@ or @EC2SecurityGroupId@ must be provided. 
+-- * 'rdsgiEC2SecurityGroupOwnerId' - The AWS account number of the owner of the EC2 security group specified in the @EC2SecurityGroupName@ parameter. The AWS access key ID isn't an acceptable value. For VPC DB security groups, @EC2SecurityGroupId@ must be provided. Otherwise, EC2SecurityGroupOwnerId and either @EC2SecurityGroupName@ or @EC2SecurityGroupId@ must be provided. 
 --
 -- * 'rdsgiEC2SecurityGroupName' - The name of the EC2 security group to revoke access from. For VPC DB security groups, @EC2SecurityGroupId@ must be provided. Otherwise, EC2SecurityGroupOwnerId and either @EC2SecurityGroupName@ or @EC2SecurityGroupId@ must be provided. 
 --
@@ -95,7 +95,7 @@ revokeDBSecurityGroupIngress pDBSecurityGroupName_
                                   _rdsgiDBSecurityGroupName =
                                     pDBSecurityGroupName_}
 
--- | The AWS Account Number of the owner of the EC2 security group specified in the @EC2SecurityGroupName@ parameter. The AWS Access Key ID is not an acceptable value. For VPC DB security groups, @EC2SecurityGroupId@ must be provided. Otherwise, EC2SecurityGroupOwnerId and either @EC2SecurityGroupName@ or @EC2SecurityGroupId@ must be provided. 
+-- | The AWS account number of the owner of the EC2 security group specified in the @EC2SecurityGroupName@ parameter. The AWS access key ID isn't an acceptable value. For VPC DB security groups, @EC2SecurityGroupId@ must be provided. Otherwise, EC2SecurityGroupOwnerId and either @EC2SecurityGroupName@ or @EC2SecurityGroupId@ must be provided. 
 rdsgiEC2SecurityGroupOwnerId :: Lens' RevokeDBSecurityGroupIngress (Maybe Text)
 rdsgiEC2SecurityGroupOwnerId = lens _rdsgiEC2SecurityGroupOwnerId (\ s a -> s{_rdsgiEC2SecurityGroupOwnerId = a})
 

@@ -21,10 +21,10 @@ import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.WAF.Types.IPSetDescriptor
 
--- | Contains one or more IP addresses or blocks of IP addresses specified in Classless Inter-Domain Routing (CIDR) notation. AWS WAF supports /8, /16, /24, and /32 IP address ranges for IPv4, and /24, /32, /48, /56, /64 and /128 for IPv6.
+-- | Contains one or more IP addresses or blocks of IP addresses specified in Classless Inter-Domain Routing (CIDR) notation. AWS WAF supports IPv4 address ranges: /8 and any range between /16 through /32. AWS WAF supports IPv6 address ranges: /24, /32, /48, /56, /64, and /128.
 --
 --
--- To specify an individual IP address, you specify the four-part IP address followed by a @/32@ , for example, 192.0.2.0/31. To block a range of IP addresses, you can specify a @/128@ , @/64@ , @/56@ , @/48@ , @/32@ , @/24@ , @/16@ , or @/8@ CIDR. For more information about CIDR notation, see the Wikipedia entry <https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing Classless Inter-Domain Routing> . 
+-- To specify an individual IP address, you specify the four-part IP address followed by a @/32@ , for example, 192.0.2.0/32. To block a range of IP addresses, you can specify /8 or any range between /16 through /32 (for IPv4) or /24, /32, /48, /56, /64, or /128 (for IPv6). For more information about CIDR notation, see the Wikipedia entry <https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing Classless Inter-Domain Routing> . 
 --
 --
 -- /See:/ 'ipSet' smart constructor.

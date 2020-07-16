@@ -21,6 +21,7 @@ module Network.AWS.MediaConvert.Types.SccDestinationFramerate (
     ..
     , Framerate2397
     , Framerate24
+    , Framerate25
     , Framerate2997Dropframe
     , Framerate2997NonDropframe
     )
@@ -29,7 +30,7 @@ module Network.AWS.MediaConvert.Types.SccDestinationFramerate (
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | Set Framerate (SccDestinationFramerate) to make sure that the captions and the video are synchronized in the output. Specify a framerate that matches the framerate of the associated video. If the video framerate is 29.97, choose 29.97 dropframe (FRAMERATE_29_97_DROPFRAME) only if the video has video_insertion=true and drop_frame_timecode=true; otherwise, choose 29.97 non-dropframe (FRAMERATE_29_97_NON_DROPFRAME).
+-- | Set Framerate (SccDestinationFramerate) to make sure that the captions and the video are synchronized in the output. Specify a frame rate that matches the frame rate of the associated video. If the video frame rate is 29.97, choose 29.97 dropframe (FRAMERATE_29_97_DROPFRAME) only if the video has video_insertion=true and drop_frame_timecode=true; otherwise, choose 29.97 non-dropframe (FRAMERATE_29_97_NON_DROPFRAME).
 data SccDestinationFramerate = SccDestinationFramerate' (CI
                                                            Text)
                                  deriving (Eq, Ord, Read, Show, Data, Typeable,
@@ -41,6 +42,9 @@ pattern Framerate2397 = SccDestinationFramerate' "FRAMERATE_23_97"
 pattern Framerate24 :: SccDestinationFramerate
 pattern Framerate24 = SccDestinationFramerate' "FRAMERATE_24"
 
+pattern Framerate25 :: SccDestinationFramerate
+pattern Framerate25 = SccDestinationFramerate' "FRAMERATE_25"
+
 pattern Framerate2997Dropframe :: SccDestinationFramerate
 pattern Framerate2997Dropframe = SccDestinationFramerate' "FRAMERATE_29_97_DROPFRAME"
 
@@ -50,6 +54,7 @@ pattern Framerate2997NonDropframe = SccDestinationFramerate' "FRAMERATE_29_97_NO
 {-# COMPLETE
   Framerate2397,
   Framerate24,
+  Framerate25,
   Framerate2997Dropframe,
   Framerate2997NonDropframe,
   SccDestinationFramerate' #-}
@@ -68,14 +73,16 @@ instance Enum SccDestinationFramerate where
     toEnum i = case i of
         0 -> Framerate2397
         1 -> Framerate24
-        2 -> Framerate2997Dropframe
-        3 -> Framerate2997NonDropframe
+        2 -> Framerate25
+        3 -> Framerate2997Dropframe
+        4 -> Framerate2997NonDropframe
         _ -> (error . showText) $ "Unknown index for SccDestinationFramerate: " <> toText i
     fromEnum x = case x of
         Framerate2397 -> 0
         Framerate24 -> 1
-        Framerate2997Dropframe -> 2
-        Framerate2997NonDropframe -> 3
+        Framerate25 -> 2
+        Framerate2997Dropframe -> 3
+        Framerate2997NonDropframe -> 4
         SccDestinationFramerate' name -> (error . showText) $ "Unknown SccDestinationFramerate: " <> original name
 
 -- | Represents the bounds of /known/ $SccDestinationFramerate.

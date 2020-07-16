@@ -19,6 +19,7 @@
 module Network.AWS.ECR.Types.TagStatus (
   TagStatus (
     ..
+    , Any
     , Tagged
     , Untagged
     )
@@ -31,6 +32,9 @@ data TagStatus = TagStatus' (CI Text)
                    deriving (Eq, Ord, Read, Show, Data, Typeable,
                              Generic)
 
+pattern Any :: TagStatus
+pattern Any = TagStatus' "ANY"
+
 pattern Tagged :: TagStatus
 pattern Tagged = TagStatus' "TAGGED"
 
@@ -38,6 +42,7 @@ pattern Untagged :: TagStatus
 pattern Untagged = TagStatus' "UNTAGGED"
 
 {-# COMPLETE
+  Any,
   Tagged,
   Untagged,
   TagStatus' #-}
@@ -54,19 +59,21 @@ instance ToText TagStatus where
 --   fromEnum is a partial function, and will error on values unknown at generation time.
 instance Enum TagStatus where
     toEnum i = case i of
-        0 -> Tagged
-        1 -> Untagged
+        0 -> Any
+        1 -> Tagged
+        2 -> Untagged
         _ -> (error . showText) $ "Unknown index for TagStatus: " <> toText i
     fromEnum x = case x of
-        Tagged -> 0
-        Untagged -> 1
+        Any -> 0
+        Tagged -> 1
+        Untagged -> 2
         TagStatus' name -> (error . showText) $ "Unknown TagStatus: " <> original name
 
 -- | Represents the bounds of /known/ $TagStatus.
 --   AWS may have added more since the source was generated.
 --   This instance exists only for backward compatibility.
 instance Bounded TagStatus where
-    minBound = Tagged
+    minBound = Any
     maxBound = Untagged
 
 instance Hashable     TagStatus

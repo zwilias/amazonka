@@ -21,7 +21,7 @@
 -- Retrieves information about an organizational unit (OU).
 --
 --
--- This operation can be called only from the organization's master account.
+-- This operation can be called only from the organization's master account or by a member account that is a delegated administrator for an AWS service.
 --
 module Network.AWS.Organizations.DescribeOrganizationalUnit
     (
@@ -56,7 +56,7 @@ newtype DescribeOrganizationalUnit = DescribeOrganizationalUnit'{_douOrganizatio
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'douOrganizationalUnitId' - The unique identifier (ID) of the organizational unit that you want details about. You can get the ID from the 'ListOrganizationalUnitsForParent' operation. The <http://wikipedia.org/wiki/regex regex pattern> for an organizational unit ID string requires "ou-" followed by from 4 to 32 lower-case letters or digits (the ID of the root that contains the OU) followed by a second "-" dash and from 8 to 32 additional lower-case letters or digits.
+-- * 'douOrganizationalUnitId' - The unique identifier (ID) of the organizational unit that you want details about. You can get the ID from the 'ListOrganizationalUnitsForParent' operation. The <http://wikipedia.org/wiki/regex regex pattern> for an organizational unit ID string requires "ou-" followed by from 4 to 32 lowercase letters or digits (the ID of the root that contains the OU). This string is followed by a second "-" dash and from 8 to 32 additional lowercase letters or digits.
 describeOrganizationalUnit
     :: Text -- ^ 'douOrganizationalUnitId'
     -> DescribeOrganizationalUnit
@@ -64,7 +64,7 @@ describeOrganizationalUnit pOrganizationalUnitId_
   = DescribeOrganizationalUnit'{_douOrganizationalUnitId
                                   = pOrganizationalUnitId_}
 
--- | The unique identifier (ID) of the organizational unit that you want details about. You can get the ID from the 'ListOrganizationalUnitsForParent' operation. The <http://wikipedia.org/wiki/regex regex pattern> for an organizational unit ID string requires "ou-" followed by from 4 to 32 lower-case letters or digits (the ID of the root that contains the OU) followed by a second "-" dash and from 8 to 32 additional lower-case letters or digits.
+-- | The unique identifier (ID) of the organizational unit that you want details about. You can get the ID from the 'ListOrganizationalUnitsForParent' operation. The <http://wikipedia.org/wiki/regex regex pattern> for an organizational unit ID string requires "ou-" followed by from 4 to 32 lowercase letters or digits (the ID of the root that contains the OU). This string is followed by a second "-" dash and from 8 to 32 additional lowercase letters or digits.
 douOrganizationalUnitId :: Lens' DescribeOrganizationalUnit Text
 douOrganizationalUnitId = lens _douOrganizationalUnitId (\ s a -> s{_douOrganizationalUnitId = a})
 

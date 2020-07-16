@@ -36,7 +36,7 @@ data Limit = Limit'{_lMax :: !(Maybe Text),
 --
 -- * 'lMax' - The maximum value of the limit.
 --
--- * 'lName' - The name of the limit. The possible values are:     * classic-listeners     * classic-load-balancers
+-- * 'lName' - The name of the limit. The possible values are:     * classic-listeners     * classic-load-balancers     * classic-registered-instances
 limit
     :: Limit
 limit = Limit'{_lMax = Nothing, _lName = Nothing}
@@ -45,7 +45,7 @@ limit = Limit'{_lMax = Nothing, _lName = Nothing}
 lMax :: Lens' Limit (Maybe Text)
 lMax = lens _lMax (\ s a -> s{_lMax = a})
 
--- | The name of the limit. The possible values are:     * classic-listeners     * classic-load-balancers
+-- | The name of the limit. The possible values are:     * classic-listeners     * classic-load-balancers     * classic-registered-instances
 lName :: Lens' Limit (Maybe Text)
 lName = lens _lName (\ s a -> s{_lName = a})
 

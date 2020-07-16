@@ -21,7 +21,11 @@ import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.S3.Internal
 
--- | /See:/ 'continuationEvent' smart constructor.
+-- | 
+--
+--
+--
+-- /See:/ 'continuationEvent' smart constructor.
 data ContinuationEvent = ContinuationEvent'
                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 

@@ -23,7 +23,7 @@
 --
 -- /Important:/ Make sure that you do not have any Amazon EC2 instances running with the instance profile you are about to delete. Deleting a role or instance profile that is associated with a running instance will break any applications running on the instance.
 --
--- For more information about instance profiles, go to <http://docs.aws.amazon.com/IAM/latest/UserGuide/AboutInstanceProfiles.html About Instance Profiles> .
+-- For more information about instance profiles, go to <https://docs.aws.amazon.com/IAM/latest/UserGuide/AboutInstanceProfiles.html About Instance Profiles> .
 --
 module Network.AWS.IAM.DeleteInstanceProfile
     (
@@ -55,7 +55,7 @@ newtype DeleteInstanceProfile = DeleteInstanceProfile'{_dipInstanceProfileName
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dipInstanceProfileName' - The name of the instance profile to delete. This parameter allows (per its <http://wikipedia.org/wiki/regex regex pattern> ) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
+-- * 'dipInstanceProfileName' - The name of the instance profile to delete. This parameter allows (through its <http://wikipedia.org/wiki/regex regex pattern> ) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
 deleteInstanceProfile
     :: Text -- ^ 'dipInstanceProfileName'
     -> DeleteInstanceProfile
@@ -63,7 +63,7 @@ deleteInstanceProfile pInstanceProfileName_
   = DeleteInstanceProfile'{_dipInstanceProfileName =
                              pInstanceProfileName_}
 
--- | The name of the instance profile to delete. This parameter allows (per its <http://wikipedia.org/wiki/regex regex pattern> ) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
+-- | The name of the instance profile to delete. This parameter allows (through its <http://wikipedia.org/wiki/regex regex pattern> ) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
 dipInstanceProfileName :: Lens' DeleteInstanceProfile Text
 dipInstanceProfileName = lens _dipInstanceProfileName (\ s a -> s{_dipInstanceProfileName = a})
 

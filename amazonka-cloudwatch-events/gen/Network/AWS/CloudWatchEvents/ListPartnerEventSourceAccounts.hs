@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- An SaaS partner can use this operation to display the AWS account ID that a particular partner event source name is associated with.
+-- An SaaS partner can use this operation to display the AWS account ID that a particular partner event source name is associated with. This operation is not used by AWS customers.
 --
 --
 module Network.AWS.CloudWatchEvents.ListPartnerEventSourceAccounts
@@ -67,7 +67,7 @@ data ListPartnerEventSourceAccounts = ListPartnerEventSourceAccounts'{_lpesaNext
 --
 -- * 'lpesaNextToken' - The token returned by a previous call to this operation. Specifying this retrieves the next set of results.
 --
--- * 'lpesaLimit' - Specifying this limits the number of results returned by this operation. The operation also returns a @NextToken@ that you can use in a subsequent operation to retrieve the next set of results.
+-- * 'lpesaLimit' - Specifying this limits the number of results returned by this operation. The operation also returns a NextToken which you can use in a subsequent operation to retrieve the next set of results.
 --
 -- * 'lpesaEventSourceName' - The name of the partner event source to display account information about.
 listPartnerEventSourceAccounts
@@ -83,7 +83,7 @@ listPartnerEventSourceAccounts pEventSourceName_
 lpesaNextToken :: Lens' ListPartnerEventSourceAccounts (Maybe Text)
 lpesaNextToken = lens _lpesaNextToken (\ s a -> s{_lpesaNextToken = a})
 
--- | Specifying this limits the number of results returned by this operation. The operation also returns a @NextToken@ that you can use in a subsequent operation to retrieve the next set of results.
+-- | Specifying this limits the number of results returned by this operation. The operation also returns a NextToken which you can use in a subsequent operation to retrieve the next set of results.
 lpesaLimit :: Lens' ListPartnerEventSourceAccounts (Maybe Natural)
 lpesaLimit = lens _lpesaLimit (\ s a -> s{_lpesaLimit = a}) . mapping _Nat
 

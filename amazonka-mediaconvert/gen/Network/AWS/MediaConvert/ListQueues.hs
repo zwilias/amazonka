@@ -19,6 +19,8 @@
 -- Portability : non-portable (GHC extensions)
 --
 -- Retrieve a JSON array of up to twenty of your queues. This will return the queues themselves, not just a list of them. To retrieve the next twenty queues, use the nextToken string returned with the array.
+--
+-- This operation returns paginated results.
 module Network.AWS.MediaConvert.ListQueues
     (
     -- * Creating a Request
@@ -42,6 +44,7 @@ module Network.AWS.MediaConvert.ListQueues
 import Network.AWS.Lens
 import Network.AWS.MediaConvert.Types
 import Network.AWS.MediaConvert.Types.Product
+import Network.AWS.Pager
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
@@ -51,18 +54,18 @@ data ListQueues = ListQueues'{_lqListBy ::
                               !(Maybe QueueListBy),
                               _lqNextToken :: !(Maybe Text),
                               _lqOrder :: !(Maybe Order),
-                              _lqMaxResults :: !(Maybe Int)}
+                              _lqMaxResults :: !(Maybe Nat)}
                     deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListQueues' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'lqListBy' - Undocumented member.
+-- * 'lqListBy' - Optional. When you request a list of queues, you can choose to list them alphabetically by NAME or chronologically by CREATION_DATE. If you don't specify, the service will list them by creation date.
 --
 -- * 'lqNextToken' - Use this string, provided with the response to a previous request, to request the next batch of queues.
 --
--- * 'lqOrder' - Undocumented member.
+-- * 'lqOrder' - Optional. When you request lists of resources, you can specify whether they are sorted in ASCENDING or DESCENDING order. Default varies by resource.
 --
 -- * 'lqMaxResults' - Optional. Number of queues, up to twenty, that will be returned at one time.
 listQueues
@@ -72,7 +75,7 @@ listQueues
                 _lqNextToken = Nothing, _lqOrder = Nothing,
                 _lqMaxResults = Nothing}
 
--- | Undocumented member.
+-- | Optional. When you request a list of queues, you can choose to list them alphabetically by NAME or chronologically by CREATION_DATE. If you don't specify, the service will list them by creation date.
 lqListBy :: Lens' ListQueues (Maybe QueueListBy)
 lqListBy = lens _lqListBy (\ s a -> s{_lqListBy = a})
 
@@ -80,13 +83,20 @@ lqListBy = lens _lqListBy (\ s a -> s{_lqListBy = a})
 lqNextToken :: Lens' ListQueues (Maybe Text)
 lqNextToken = lens _lqNextToken (\ s a -> s{_lqNextToken = a})
 
--- | Undocumented member.
+-- | Optional. When you request lists of resources, you can specify whether they are sorted in ASCENDING or DESCENDING order. Default varies by resource.
 lqOrder :: Lens' ListQueues (Maybe Order)
 lqOrder = lens _lqOrder (\ s a -> s{_lqOrder = a})
 
 -- | Optional. Number of queues, up to twenty, that will be returned at one time.
-lqMaxResults :: Lens' ListQueues (Maybe Int)
-lqMaxResults = lens _lqMaxResults (\ s a -> s{_lqMaxResults = a})
+lqMaxResults :: Lens' ListQueues (Maybe Natural)
+lqMaxResults = lens _lqMaxResults (\ s a -> s{_lqMaxResults = a}) . mapping _Nat
+
+instance AWSPager ListQueues where
+        page rq rs
+          | stop (rs ^. lqrsNextToken) = Nothing
+          | stop (rs ^. lqrsQueues) = Nothing
+          | otherwise =
+            Just $ rq & lqNextToken .~ rs ^. lqrsNextToken
 
 instance AWSRequest ListQueues where
         type Rs ListQueues = ListQueuesResponse
@@ -129,7 +139,7 @@ data ListQueuesResponse = ListQueuesResponse'{_lqrsQueues
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'lqrsQueues' - List of queues
+-- * 'lqrsQueues' - List of queues.
 --
 -- * 'lqrsNextToken' - Use this string to request the next batch of queues.
 --
@@ -142,7 +152,7 @@ listQueuesResponse pResponseStatus_
                         _lqrsNextToken = Nothing,
                         _lqrsResponseStatus = pResponseStatus_}
 
--- | List of queues
+-- | List of queues.
 lqrsQueues :: Lens' ListQueuesResponse [Queue]
 lqrsQueues = lens _lqrsQueues (\ s a -> s{_lqrsQueues = a}) . _Default . _Coerce
 

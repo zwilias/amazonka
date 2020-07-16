@@ -20,7 +20,7 @@ module Network.AWS.StepFunctions.Types.LambdaFunctionTimedOutEventDetails where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | Contains details about a lambda function timeout which occurred during an execution.
+-- | Contains details about a lambda function timeout that occurred during an execution.
 --
 --
 --
@@ -28,13 +28,15 @@ import Network.AWS.Prelude
 data LambdaFunctionTimedOutEventDetails = LambdaFunctionTimedOutEventDetails'{_lftoedError
                                                                               ::
                                                                               !(Maybe
-                                                                                  Text),
+                                                                                  (Sensitive
+                                                                                     Text)),
                                                                               _lftoedCause
                                                                               ::
                                                                               !(Maybe
-                                                                                  Text)}
-                                            deriving (Eq, Read, Show, Data,
-                                                      Typeable, Generic)
+                                                                                  (Sensitive
+                                                                                     Text))}
+                                            deriving (Eq, Show, Data, Typeable,
+                                                      Generic)
 
 -- | Creates a value of 'LambdaFunctionTimedOutEventDetails' with the minimum fields required to make a request.
 --
@@ -52,11 +54,11 @@ lambdaFunctionTimedOutEventDetails
 
 -- | The error code of the failure.
 lftoedError :: Lens' LambdaFunctionTimedOutEventDetails (Maybe Text)
-lftoedError = lens _lftoedError (\ s a -> s{_lftoedError = a})
+lftoedError = lens _lftoedError (\ s a -> s{_lftoedError = a}) . mapping _Sensitive
 
 -- | A more detailed explanation of the cause of the timeout.
 lftoedCause :: Lens' LambdaFunctionTimedOutEventDetails (Maybe Text)
-lftoedCause = lens _lftoedCause (\ s a -> s{_lftoedCause = a})
+lftoedCause = lens _lftoedCause (\ s a -> s{_lftoedCause = a}) . mapping _Sensitive
 
 instance FromJSON LambdaFunctionTimedOutEventDetails
          where

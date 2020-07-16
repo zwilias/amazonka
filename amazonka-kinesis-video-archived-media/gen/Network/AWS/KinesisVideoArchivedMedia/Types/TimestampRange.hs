@@ -20,7 +20,7 @@ module Network.AWS.KinesisVideoArchivedMedia.Types.TimestampRange where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | The range of time stamps for which to return fragments.
+-- | The range of timestamps for which to return fragments.
 --
 --
 --
@@ -34,9 +34,9 @@ data TimestampRange = TimestampRange'{_trStartTimestamp
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'trStartTimestamp' - The starting time stamp in the range of time stamps for which to return fragments.
+-- * 'trStartTimestamp' - The starting timestamp in the range of timestamps for which to return fragments.
 --
--- * 'trEndTimestamp' - The ending time stamp in the range of time stamps for which to return fragments.
+-- * 'trEndTimestamp' - The ending timestamp in the range of timestamps for which to return fragments.
 timestampRange
     :: UTCTime -- ^ 'trStartTimestamp'
     -> UTCTime -- ^ 'trEndTimestamp'
@@ -46,11 +46,11 @@ timestampRange pStartTimestamp_ pEndTimestamp_
                       _Time # pStartTimestamp_,
                     _trEndTimestamp = _Time # pEndTimestamp_}
 
--- | The starting time stamp in the range of time stamps for which to return fragments.
+-- | The starting timestamp in the range of timestamps for which to return fragments.
 trStartTimestamp :: Lens' TimestampRange UTCTime
 trStartTimestamp = lens _trStartTimestamp (\ s a -> s{_trStartTimestamp = a}) . _Time
 
--- | The ending time stamp in the range of time stamps for which to return fragments.
+-- | The ending timestamp in the range of timestamps for which to return fragments.
 trEndTimestamp :: Lens' TimestampRange UTCTime
 trEndTimestamp = lens _trEndTimestamp (\ s a -> s{_trEndTimestamp = a}) . _Time
 

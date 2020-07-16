@@ -20,7 +20,7 @@ module Network.AWS.SSM.Types.S3OutputURL where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | A URL for the Amazon S3 bucket where you want to store the results of this request.
+-- | A URL for the S3 bucket where you want to store the results of this request.
 --
 --
 --
@@ -33,12 +33,12 @@ newtype S3OutputURL = S3OutputURL'{_souOutputURL ::
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'souOutputURL' - A URL for an Amazon S3 bucket where you want to store the results of this request.
+-- * 'souOutputURL' - A URL for an S3 bucket where you want to store the results of this request.
 s3OutputURL
     :: S3OutputURL
 s3OutputURL = S3OutputURL'{_souOutputURL = Nothing}
 
--- | A URL for an Amazon S3 bucket where you want to store the results of this request.
+-- | A URL for an S3 bucket where you want to store the results of this request.
 souOutputURL :: Lens' S3OutputURL (Maybe Text)
 souOutputURL = lens _souOutputURL (\ s a -> s{_souOutputURL = a})
 

@@ -45,6 +45,7 @@ module Network.AWS.ElasticBeanstalk.Types.Product (
     module Network.AWS.ElasticBeanstalk.Types.InstanceHealthSummary,
     module Network.AWS.ElasticBeanstalk.Types.Latency,
     module Network.AWS.ElasticBeanstalk.Types.LaunchConfiguration,
+    module Network.AWS.ElasticBeanstalk.Types.LaunchTemplate,
     module Network.AWS.ElasticBeanstalk.Types.Listener,
     module Network.AWS.ElasticBeanstalk.Types.LoadBalancer,
     module Network.AWS.ElasticBeanstalk.Types.LoadBalancerDescription,
@@ -54,6 +55,7 @@ module Network.AWS.ElasticBeanstalk.Types.Product (
     module Network.AWS.ElasticBeanstalk.Types.MaxCountRule,
     module Network.AWS.ElasticBeanstalk.Types.OptionRestrictionRegex,
     module Network.AWS.ElasticBeanstalk.Types.OptionSpecification,
+    module Network.AWS.ElasticBeanstalk.Types.PlatformBranchSummary,
     module Network.AWS.ElasticBeanstalk.Types.PlatformDescription,
     module Network.AWS.ElasticBeanstalk.Types.PlatformFilter,
     module Network.AWS.ElasticBeanstalk.Types.PlatformFramework,
@@ -63,6 +65,7 @@ module Network.AWS.ElasticBeanstalk.Types.Product (
     module Network.AWS.ElasticBeanstalk.Types.ResourceQuota,
     module Network.AWS.ElasticBeanstalk.Types.ResourceQuotas,
     module Network.AWS.ElasticBeanstalk.Types.S3Location,
+    module Network.AWS.ElasticBeanstalk.Types.SearchFilter,
     module Network.AWS.ElasticBeanstalk.Types.SingleInstanceHealth,
     module Network.AWS.ElasticBeanstalk.Types.SolutionStackDescription,
     module Network.AWS.ElasticBeanstalk.Types.SourceBuildInformation,
@@ -102,6 +105,7 @@ import Network.AWS.ElasticBeanstalk.Types.Instance
 import Network.AWS.ElasticBeanstalk.Types.InstanceHealthSummary
 import Network.AWS.ElasticBeanstalk.Types.Latency
 import Network.AWS.ElasticBeanstalk.Types.LaunchConfiguration
+import Network.AWS.ElasticBeanstalk.Types.LaunchTemplate
 import Network.AWS.ElasticBeanstalk.Types.Listener
 import Network.AWS.ElasticBeanstalk.Types.LoadBalancer
 import Network.AWS.ElasticBeanstalk.Types.LoadBalancerDescription
@@ -111,6 +115,7 @@ import Network.AWS.ElasticBeanstalk.Types.MaxAgeRule
 import Network.AWS.ElasticBeanstalk.Types.MaxCountRule
 import Network.AWS.ElasticBeanstalk.Types.OptionRestrictionRegex
 import Network.AWS.ElasticBeanstalk.Types.OptionSpecification
+import Network.AWS.ElasticBeanstalk.Types.PlatformBranchSummary
 import Network.AWS.ElasticBeanstalk.Types.PlatformDescription
 import Network.AWS.ElasticBeanstalk.Types.PlatformFilter
 import Network.AWS.ElasticBeanstalk.Types.PlatformFramework
@@ -120,6 +125,7 @@ import Network.AWS.ElasticBeanstalk.Types.Queue
 import Network.AWS.ElasticBeanstalk.Types.ResourceQuota
 import Network.AWS.ElasticBeanstalk.Types.ResourceQuotas
 import Network.AWS.ElasticBeanstalk.Types.S3Location
+import Network.AWS.ElasticBeanstalk.Types.SearchFilter
 import Network.AWS.ElasticBeanstalk.Types.SingleInstanceHealth
 import Network.AWS.ElasticBeanstalk.Types.SolutionStackDescription
 import Network.AWS.ElasticBeanstalk.Types.SourceBuildInformation

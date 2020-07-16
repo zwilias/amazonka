@@ -28,6 +28,7 @@ module Network.AWS.Greengrass.CreateResourceDefinition
     , crdAmznClientToken
     , crdInitialVersion
     , crdName
+    , crdTags
 
     -- * Destructuring the Response
     , createResourceDefinitionResponse
@@ -57,7 +58,10 @@ data CreateResourceDefinition = CreateResourceDefinition'{_crdAmznClientToken
                                                           !(Maybe
                                                               ResourceDefinitionVersion),
                                                           _crdName ::
-                                                          !(Maybe Text)}
+                                                          !(Maybe Text),
+                                                          _crdTags ::
+                                                          !(Maybe
+                                                              (Map Text Text))}
                                   deriving (Eq, Read, Show, Data, Typeable,
                                             Generic)
 
@@ -70,12 +74,15 @@ data CreateResourceDefinition = CreateResourceDefinition'{_crdAmznClientToken
 -- * 'crdInitialVersion' - Information about the initial version of the resource definition.
 --
 -- * 'crdName' - The name of the resource definition.
+--
+-- * 'crdTags' - Tag(s) to add to the new resource.
 createResourceDefinition
     :: CreateResourceDefinition
 createResourceDefinition
   = CreateResourceDefinition'{_crdAmznClientToken =
                                 Nothing,
-                              _crdInitialVersion = Nothing, _crdName = Nothing}
+                              _crdInitialVersion = Nothing, _crdName = Nothing,
+                              _crdTags = Nothing}
 
 -- | A client token used to correlate requests and responses.
 crdAmznClientToken :: Lens' CreateResourceDefinition (Maybe Text)
@@ -88,6 +95,10 @@ crdInitialVersion = lens _crdInitialVersion (\ s a -> s{_crdInitialVersion = a})
 -- | The name of the resource definition.
 crdName :: Lens' CreateResourceDefinition (Maybe Text)
 crdName = lens _crdName (\ s a -> s{_crdName = a})
+
+-- | Tag(s) to add to the new resource.
+crdTags :: Lens' CreateResourceDefinition (HashMap Text Text)
+crdTags = lens _crdTags (\ s a -> s{_crdTags = a}) . _Default . _Map
 
 instance AWSRequest CreateResourceDefinition where
         type Rs CreateResourceDefinition =
@@ -121,7 +132,7 @@ instance ToJSON CreateResourceDefinition where
           = object
               (catMaybes
                  [("InitialVersion" .=) <$> _crdInitialVersion,
-                  ("Name" .=) <$> _crdName])
+                  ("Name" .=) <$> _crdName, ("tags" .=) <$> _crdTags])
 
 instance ToPath CreateResourceDefinition where
         toPath = const "/greengrass/definition/resources"
@@ -168,7 +179,7 @@ data CreateResourceDefinitionResponse = CreateResourceDefinitionResponse'{_crdrs
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'crdrsLatestVersionARN' - The ARN of the latest version of the definition.
+-- * 'crdrsLatestVersionARN' - The ARN of the latest version associated with the definition.
 --
 -- * 'crdrsARN' - The ARN of the definition.
 --
@@ -178,7 +189,7 @@ data CreateResourceDefinitionResponse = CreateResourceDefinitionResponse'{_crdrs
 --
 -- * 'crdrsId' - The ID of the definition.
 --
--- * 'crdrsLatestVersion' - The latest version of the definition.
+-- * 'crdrsLatestVersion' - The ID of the latest version associated with the definition.
 --
 -- * 'crdrsLastUpdatedTimestamp' - The time, in milliseconds since the epoch, when the definition was last updated.
 --
@@ -196,7 +207,7 @@ createResourceDefinitionResponse pResponseStatus_
                                       _crdrsLastUpdatedTimestamp = Nothing,
                                       _crdrsResponseStatus = pResponseStatus_}
 
--- | The ARN of the latest version of the definition.
+-- | The ARN of the latest version associated with the definition.
 crdrsLatestVersionARN :: Lens' CreateResourceDefinitionResponse (Maybe Text)
 crdrsLatestVersionARN = lens _crdrsLatestVersionARN (\ s a -> s{_crdrsLatestVersionARN = a})
 
@@ -216,7 +227,7 @@ crdrsCreationTimestamp = lens _crdrsCreationTimestamp (\ s a -> s{_crdrsCreation
 crdrsId :: Lens' CreateResourceDefinitionResponse (Maybe Text)
 crdrsId = lens _crdrsId (\ s a -> s{_crdrsId = a})
 
--- | The latest version of the definition.
+-- | The ID of the latest version associated with the definition.
 crdrsLatestVersion :: Lens' CreateResourceDefinitionResponse (Maybe Text)
 crdrsLatestVersion = lens _crdrsLatestVersion (\ s a -> s{_crdrsLatestVersion = a})
 

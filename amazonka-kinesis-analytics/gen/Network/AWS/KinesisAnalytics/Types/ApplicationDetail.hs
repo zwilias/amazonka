@@ -62,13 +62,13 @@ data ApplicationDetail = ApplicationDetail'{_adApplicationDescription
 --
 -- * 'adApplicationDescription' - Description of the application.
 --
--- * 'adOutputDescriptions' - Describes the application output configuration. For more information, see <http://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-it-works-output.html Configuring Application Output> . 
+-- * 'adOutputDescriptions' - Describes the application output configuration. For more information, see <https://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-it-works-output.html Configuring Application Output> . 
 --
--- * 'adCloudWatchLoggingOptionDescriptions' - Describes the CloudWatch log streams that are configured to receive application messages. For more information about using CloudWatch log streams with Amazon Kinesis Analytics applications, see <http://docs.aws.amazon.com/kinesisanalytics/latest/dev/cloudwatch-logs.html Working with Amazon CloudWatch Logs> . 
+-- * 'adCloudWatchLoggingOptionDescriptions' - Describes the CloudWatch log streams that are configured to receive application messages. For more information about using CloudWatch log streams with Amazon Kinesis Analytics applications, see <https://docs.aws.amazon.com/kinesisanalytics/latest/dev/cloudwatch-logs.html Working with Amazon CloudWatch Logs> . 
 --
--- * 'adReferenceDataSourceDescriptions' - Describes reference data sources configured for the application. For more information, see <http://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-it-works-input.html Configuring Application Input> . 
+-- * 'adReferenceDataSourceDescriptions' - Describes reference data sources configured for the application. For more information, see <https://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-it-works-input.html Configuring Application Input> . 
 --
--- * 'adInputDescriptions' - Describes the application input configuration. For more information, see <http://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-it-works-input.html Configuring Application Input> . 
+-- * 'adInputDescriptions' - Describes the application input configuration. For more information, see <https://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-it-works-input.html Configuring Application Input> . 
 --
 -- * 'adApplicationCode' - Returns the application code that you provided to perform data analysis on any of the in-application streams in your application.
 --
@@ -110,19 +110,19 @@ applicationDetail pApplicationName_ pApplicationARN_
 adApplicationDescription :: Lens' ApplicationDetail (Maybe Text)
 adApplicationDescription = lens _adApplicationDescription (\ s a -> s{_adApplicationDescription = a})
 
--- | Describes the application output configuration. For more information, see <http://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-it-works-output.html Configuring Application Output> . 
+-- | Describes the application output configuration. For more information, see <https://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-it-works-output.html Configuring Application Output> . 
 adOutputDescriptions :: Lens' ApplicationDetail [OutputDescription]
 adOutputDescriptions = lens _adOutputDescriptions (\ s a -> s{_adOutputDescriptions = a}) . _Default . _Coerce
 
--- | Describes the CloudWatch log streams that are configured to receive application messages. For more information about using CloudWatch log streams with Amazon Kinesis Analytics applications, see <http://docs.aws.amazon.com/kinesisanalytics/latest/dev/cloudwatch-logs.html Working with Amazon CloudWatch Logs> . 
+-- | Describes the CloudWatch log streams that are configured to receive application messages. For more information about using CloudWatch log streams with Amazon Kinesis Analytics applications, see <https://docs.aws.amazon.com/kinesisanalytics/latest/dev/cloudwatch-logs.html Working with Amazon CloudWatch Logs> . 
 adCloudWatchLoggingOptionDescriptions :: Lens' ApplicationDetail [CloudWatchLoggingOptionDescription]
 adCloudWatchLoggingOptionDescriptions = lens _adCloudWatchLoggingOptionDescriptions (\ s a -> s{_adCloudWatchLoggingOptionDescriptions = a}) . _Default . _Coerce
 
--- | Describes reference data sources configured for the application. For more information, see <http://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-it-works-input.html Configuring Application Input> . 
+-- | Describes reference data sources configured for the application. For more information, see <https://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-it-works-input.html Configuring Application Input> . 
 adReferenceDataSourceDescriptions :: Lens' ApplicationDetail [ReferenceDataSourceDescription]
 adReferenceDataSourceDescriptions = lens _adReferenceDataSourceDescriptions (\ s a -> s{_adReferenceDataSourceDescriptions = a}) . _Default . _Coerce
 
--- | Describes the application input configuration. For more information, see <http://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-it-works-input.html Configuring Application Input> . 
+-- | Describes the application input configuration. For more information, see <https://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-it-works-input.html Configuring Application Input> . 
 adInputDescriptions :: Lens' ApplicationDetail [InputDescription]
 adInputDescriptions = lens _adInputDescriptions (\ s a -> s{_adInputDescriptions = a}) . _Default . _Coerce
 

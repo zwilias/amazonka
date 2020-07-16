@@ -28,7 +28,7 @@ data Function = Function'{_fFunctionARN ::
                           !(Maybe Text),
                           _fFunctionConfiguration ::
                           !(Maybe FunctionConfiguration),
-                          _fId :: !(Maybe Text)}
+                          _fId :: !Text}
                   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'Function' with the minimum fields required to make a request.
@@ -39,12 +39,13 @@ data Function = Function'{_fFunctionARN ::
 --
 -- * 'fFunctionConfiguration' - The configuration of the Lambda function.
 --
--- * 'fId' - The ID of the Lambda function.
+-- * 'fId' - A descriptive or arbitrary ID for the function. This value must be unique within the function definition version. Max length is 128 characters with pattern ''[a-zA-Z0-9:_-]+''.
 function
-    :: Function
-function
+    :: Text -- ^ 'fId'
+    -> Function
+function pId_
   = Function'{_fFunctionARN = Nothing,
-              _fFunctionConfiguration = Nothing, _fId = Nothing}
+              _fFunctionConfiguration = Nothing, _fId = pId_}
 
 -- | The ARN of the Lambda function.
 fFunctionARN :: Lens' Function (Maybe Text)
@@ -54,8 +55,8 @@ fFunctionARN = lens _fFunctionARN (\ s a -> s{_fFunctionARN = a})
 fFunctionConfiguration :: Lens' Function (Maybe FunctionConfiguration)
 fFunctionConfiguration = lens _fFunctionConfiguration (\ s a -> s{_fFunctionConfiguration = a})
 
--- | The ID of the Lambda function.
-fId :: Lens' Function (Maybe Text)
+-- | A descriptive or arbitrary ID for the function. This value must be unique within the function definition version. Max length is 128 characters with pattern ''[a-zA-Z0-9:_-]+''.
+fId :: Lens' Function Text
 fId = lens _fId (\ s a -> s{_fId = a})
 
 instance FromJSON Function where
@@ -65,7 +66,7 @@ instance FromJSON Function where
                  Function' <$>
                    (x .:? "FunctionArn") <*>
                      (x .:? "FunctionConfiguration")
-                     <*> (x .:? "Id"))
+                     <*> (x .: "Id"))
 
 instance Hashable Function where
 
@@ -78,4 +79,4 @@ instance ToJSON Function where
                  [("FunctionArn" .=) <$> _fFunctionARN,
                   ("FunctionConfiguration" .=) <$>
                     _fFunctionConfiguration,
-                  ("Id" .=) <$> _fId])
+                  Just ("Id" .= _fId)])

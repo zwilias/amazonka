@@ -37,7 +37,7 @@ data Schedule = Schedule'{_sState ::
 --
 -- * 'sState' - The state of the schedule.
 --
--- * 'sScheduleExpression' - A @cron@ expression used to specify the schedule (see <http://docs.aws.amazon.com/glue/latest/dg/monitor-data-warehouse-schedule.html Time-Based Schedules for Jobs and Crawlers> . For example, to run something every day at 12:15 UTC, you would specify: @cron(15 12 * * ? *)@ .
+-- * 'sScheduleExpression' - A @cron@ expression used to specify the schedule. For more information, see <http://docs.aws.amazon.com/glue/latest/dg/monitor-data-warehouse-schedule.html Time-Based Schedules for Jobs and Crawlers> . For example, to run something every day at 12:15 UTC, specify @cron(15 12 * * ? *)@ .
 schedule
     :: Schedule
 schedule
@@ -48,7 +48,7 @@ schedule
 sState :: Lens' Schedule (Maybe ScheduleState)
 sState = lens _sState (\ s a -> s{_sState = a})
 
--- | A @cron@ expression used to specify the schedule (see <http://docs.aws.amazon.com/glue/latest/dg/monitor-data-warehouse-schedule.html Time-Based Schedules for Jobs and Crawlers> . For example, to run something every day at 12:15 UTC, you would specify: @cron(15 12 * * ? *)@ .
+-- | A @cron@ expression used to specify the schedule. For more information, see <http://docs.aws.amazon.com/glue/latest/dg/monitor-data-warehouse-schedule.html Time-Based Schedules for Jobs and Crawlers> . For example, to run something every day at 12:15 UTC, specify @cron(15 12 * * ? *)@ .
 sScheduleExpression :: Lens' Schedule (Maybe Text)
 sScheduleExpression = lens _sScheduleExpression (\ s a -> s{_sScheduleExpression = a})
 

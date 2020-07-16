@@ -18,22 +18,22 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Modifies the target of an existing Maintenance Window. You can't change the target type, but you can change the following:
+-- Modifies the target of an existing maintenance window. You can change the following:
 --
 --
--- The target from being an ID target to a Tag target, or a Tag target to an ID target.
+--     * Name
 --
--- IDs for an ID target.
+--     * Description
 --
--- Tags for a Tag target.
+--     * Owner
 --
--- Owner.
+--     * IDs for an ID target
 --
--- Name.
+--     * Tags for a Tag target
 --
--- Description.
+--     * From any supported tag type to another. The three supported tag types are ID target, Tag target, and resource group. For more information, see 'Target' .
 --
--- If a parameter is null, then the corresponding field is not modified.
+--
 --
 module Network.AWS.SSM.UpdateMaintenanceWindowTarget
     (
@@ -103,7 +103,7 @@ data UpdateMaintenanceWindowTarget = UpdateMaintenanceWindowTarget'{_uReplace
 --
 -- * 'uReplace' - If True, then all fields that are required by the RegisterTargetWithMaintenanceWindow action are also required for this API request. Optional fields that are not specified are set to null.
 --
--- * 'uOwnerInformation' - User-provided value that will be included in any CloudWatch events raised while running tasks for these targets in this Maintenance Window.
+-- * 'uOwnerInformation' - User-provided value that will be included in any CloudWatch events raised while running tasks for these targets in this maintenance window.
 --
 -- * 'uName' - A name for the update.
 --
@@ -111,7 +111,7 @@ data UpdateMaintenanceWindowTarget = UpdateMaintenanceWindowTarget'{_uReplace
 --
 -- * 'uDescription' - An optional description for the update.
 --
--- * 'uWindowId' - The Maintenance Window ID with which to modify the target.
+-- * 'uWindowId' - The maintenance window ID with which to modify the target.
 --
 -- * 'uWindowTargetId' - The target ID to modify.
 updateMaintenanceWindowTarget
@@ -131,7 +131,7 @@ updateMaintenanceWindowTarget pWindowId_
 uReplace :: Lens' UpdateMaintenanceWindowTarget (Maybe Bool)
 uReplace = lens _uReplace (\ s a -> s{_uReplace = a})
 
--- | User-provided value that will be included in any CloudWatch events raised while running tasks for these targets in this Maintenance Window.
+-- | User-provided value that will be included in any CloudWatch events raised while running tasks for these targets in this maintenance window.
 uOwnerInformation :: Lens' UpdateMaintenanceWindowTarget (Maybe Text)
 uOwnerInformation = lens _uOwnerInformation (\ s a -> s{_uOwnerInformation = a}) . mapping _Sensitive
 
@@ -147,7 +147,7 @@ uTargets = lens _uTargets (\ s a -> s{_uTargets = a}) . _Default . _Coerce
 uDescription :: Lens' UpdateMaintenanceWindowTarget (Maybe Text)
 uDescription = lens _uDescription (\ s a -> s{_uDescription = a}) . mapping _Sensitive
 
--- | The Maintenance Window ID with which to modify the target.
+-- | The maintenance window ID with which to modify the target.
 uWindowId :: Lens' UpdateMaintenanceWindowTarget Text
 uWindowId = lens _uWindowId (\ s a -> s{_uWindowId = a})
 
@@ -251,7 +251,7 @@ data UpdateMaintenanceWindowTargetResponse = UpdateMaintenanceWindowTargetRespon
 --
 -- * 'ursDescription' - The updated description.
 --
--- * 'ursWindowId' - The Maintenance Window ID specified in the update request.
+-- * 'ursWindowId' - The maintenance window ID specified in the update request.
 --
 -- * 'ursResponseStatus' - -- | The response status code.
 updateMaintenanceWindowTargetResponse
@@ -289,7 +289,7 @@ ursTargets = lens _ursTargets (\ s a -> s{_ursTargets = a}) . _Default . _Coerce
 ursDescription :: Lens' UpdateMaintenanceWindowTargetResponse (Maybe Text)
 ursDescription = lens _ursDescription (\ s a -> s{_ursDescription = a}) . mapping _Sensitive
 
--- | The Maintenance Window ID specified in the update request.
+-- | The maintenance window ID specified in the update request.
 ursWindowId :: Lens' UpdateMaintenanceWindowTargetResponse (Maybe Text)
 ursWindowId = lens _ursWindowId (\ s a -> s{_ursWindowId = a})
 

@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Removes one or more tags from the specified resource. This operation is only supported in the cached volume, stored volume and tape gateway types.
+-- Removes one or more tags from the specified resource. This operation is supported in storage gateways of all types.
 --
 --
 module Network.AWS.StorageGateway.RemoveTagsFromResource
@@ -62,7 +62,7 @@ data RemoveTagsFromResource = RemoveTagsFromResource'{_rtfrResourceARN
 --
 -- * 'rtfrResourceARN' - The Amazon Resource Name (ARN) of the resource you want to remove the tags from.
 --
--- * 'rtfrTagKeys' - The keys of the tags you want to remove from the specified resource. A tag is composed of a key/value pair.
+-- * 'rtfrTagKeys' - The keys of the tags you want to remove from the specified resource. A tag is composed of a key-value pair.
 removeTagsFromResource
     :: Text -- ^ 'rtfrResourceARN'
     -> RemoveTagsFromResource
@@ -75,7 +75,7 @@ removeTagsFromResource pResourceARN_
 rtfrResourceARN :: Lens' RemoveTagsFromResource Text
 rtfrResourceARN = lens _rtfrResourceARN (\ s a -> s{_rtfrResourceARN = a})
 
--- | The keys of the tags you want to remove from the specified resource. A tag is composed of a key/value pair.
+-- | The keys of the tags you want to remove from the specified resource. A tag is composed of a key-value pair.
 rtfrTagKeys :: Lens' RemoveTagsFromResource [Text]
 rtfrTagKeys = lens _rtfrTagKeys (\ s a -> s{_rtfrTagKeys = a}) . _Coerce
 

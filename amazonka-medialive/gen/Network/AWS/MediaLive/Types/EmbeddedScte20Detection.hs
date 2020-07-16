@@ -19,29 +19,29 @@
 module Network.AWS.MediaLive.Types.EmbeddedScte20Detection (
   EmbeddedScte20Detection (
     ..
-    , Auto
-    , Off
+    , ESDAuto
+    , ESDOff
     )
   ) where
 
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | Placeholder documentation for EmbeddedScte20Detection
+-- | Embedded Scte20 Detection
 data EmbeddedScte20Detection = EmbeddedScte20Detection' (CI
                                                            Text)
                                  deriving (Eq, Ord, Read, Show, Data, Typeable,
                                            Generic)
 
-pattern Auto :: EmbeddedScte20Detection
-pattern Auto = EmbeddedScte20Detection' "AUTO"
+pattern ESDAuto :: EmbeddedScte20Detection
+pattern ESDAuto = EmbeddedScte20Detection' "AUTO"
 
-pattern Off :: EmbeddedScte20Detection
-pattern Off = EmbeddedScte20Detection' "OFF"
+pattern ESDOff :: EmbeddedScte20Detection
+pattern ESDOff = EmbeddedScte20Detection' "OFF"
 
 {-# COMPLETE
-  Auto,
-  Off,
+  ESDAuto,
+  ESDOff,
   EmbeddedScte20Detection' #-}
 
 instance FromText EmbeddedScte20Detection where
@@ -56,20 +56,20 @@ instance ToText EmbeddedScte20Detection where
 --   fromEnum is a partial function, and will error on values unknown at generation time.
 instance Enum EmbeddedScte20Detection where
     toEnum i = case i of
-        0 -> Auto
-        1 -> Off
+        0 -> ESDAuto
+        1 -> ESDOff
         _ -> (error . showText) $ "Unknown index for EmbeddedScte20Detection: " <> toText i
     fromEnum x = case x of
-        Auto -> 0
-        Off -> 1
+        ESDAuto -> 0
+        ESDOff -> 1
         EmbeddedScte20Detection' name -> (error . showText) $ "Unknown EmbeddedScte20Detection: " <> original name
 
 -- | Represents the bounds of /known/ $EmbeddedScte20Detection.
 --   AWS may have added more since the source was generated.
 --   This instance exists only for backward compatibility.
 instance Bounded EmbeddedScte20Detection where
-    minBound = Auto
-    maxBound = Off
+    minBound = ESDAuto
+    maxBound = ESDOff
 
 instance Hashable     EmbeddedScte20Detection
 instance NFData       EmbeddedScte20Detection

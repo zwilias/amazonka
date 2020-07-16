@@ -19,15 +19,20 @@
 module Network.AWS.SageMaker.Types.SecondaryStatus (
   SecondaryStatus (
     ..
-    , SSCompleted
-    , SSDownloading
-    , SSFailed
-    , SSMaxRuntimeExceeded
-    , SSStarting
-    , SSStopped
-    , SSStopping
-    , SSTraining
-    , SSUploading
+    , SCompleted
+    , SDownloading
+    , SDownloadingTrainingImage
+    , SFailed
+    , SInterrupted
+    , SLaunchingMLInstances
+    , SMaxRuntimeExceeded
+    , SMaxWaitTimeExceeded
+    , SPreparingTrainingStack
+    , SStarting
+    , SStopped
+    , SStopping
+    , STraining
+    , SUploading
     )
   ) where
 
@@ -38,43 +43,63 @@ data SecondaryStatus = SecondaryStatus' (CI Text)
                          deriving (Eq, Ord, Read, Show, Data, Typeable,
                                    Generic)
 
-pattern SSCompleted :: SecondaryStatus
-pattern SSCompleted = SecondaryStatus' "Completed"
+pattern SCompleted :: SecondaryStatus
+pattern SCompleted = SecondaryStatus' "Completed"
 
-pattern SSDownloading :: SecondaryStatus
-pattern SSDownloading = SecondaryStatus' "Downloading"
+pattern SDownloading :: SecondaryStatus
+pattern SDownloading = SecondaryStatus' "Downloading"
 
-pattern SSFailed :: SecondaryStatus
-pattern SSFailed = SecondaryStatus' "Failed"
+pattern SDownloadingTrainingImage :: SecondaryStatus
+pattern SDownloadingTrainingImage = SecondaryStatus' "DownloadingTrainingImage"
 
-pattern SSMaxRuntimeExceeded :: SecondaryStatus
-pattern SSMaxRuntimeExceeded = SecondaryStatus' "MaxRuntimeExceeded"
+pattern SFailed :: SecondaryStatus
+pattern SFailed = SecondaryStatus' "Failed"
 
-pattern SSStarting :: SecondaryStatus
-pattern SSStarting = SecondaryStatus' "Starting"
+pattern SInterrupted :: SecondaryStatus
+pattern SInterrupted = SecondaryStatus' "Interrupted"
 
-pattern SSStopped :: SecondaryStatus
-pattern SSStopped = SecondaryStatus' "Stopped"
+pattern SLaunchingMLInstances :: SecondaryStatus
+pattern SLaunchingMLInstances = SecondaryStatus' "LaunchingMLInstances"
 
-pattern SSStopping :: SecondaryStatus
-pattern SSStopping = SecondaryStatus' "Stopping"
+pattern SMaxRuntimeExceeded :: SecondaryStatus
+pattern SMaxRuntimeExceeded = SecondaryStatus' "MaxRuntimeExceeded"
 
-pattern SSTraining :: SecondaryStatus
-pattern SSTraining = SecondaryStatus' "Training"
+pattern SMaxWaitTimeExceeded :: SecondaryStatus
+pattern SMaxWaitTimeExceeded = SecondaryStatus' "MaxWaitTimeExceeded"
 
-pattern SSUploading :: SecondaryStatus
-pattern SSUploading = SecondaryStatus' "Uploading"
+pattern SPreparingTrainingStack :: SecondaryStatus
+pattern SPreparingTrainingStack = SecondaryStatus' "PreparingTrainingStack"
+
+pattern SStarting :: SecondaryStatus
+pattern SStarting = SecondaryStatus' "Starting"
+
+pattern SStopped :: SecondaryStatus
+pattern SStopped = SecondaryStatus' "Stopped"
+
+pattern SStopping :: SecondaryStatus
+pattern SStopping = SecondaryStatus' "Stopping"
+
+pattern STraining :: SecondaryStatus
+pattern STraining = SecondaryStatus' "Training"
+
+pattern SUploading :: SecondaryStatus
+pattern SUploading = SecondaryStatus' "Uploading"
 
 {-# COMPLETE
-  SSCompleted,
-  SSDownloading,
-  SSFailed,
-  SSMaxRuntimeExceeded,
-  SSStarting,
-  SSStopped,
-  SSStopping,
-  SSTraining,
-  SSUploading,
+  SCompleted,
+  SDownloading,
+  SDownloadingTrainingImage,
+  SFailed,
+  SInterrupted,
+  SLaunchingMLInstances,
+  SMaxRuntimeExceeded,
+  SMaxWaitTimeExceeded,
+  SPreparingTrainingStack,
+  SStarting,
+  SStopped,
+  SStopping,
+  STraining,
+  SUploading,
   SecondaryStatus' #-}
 
 instance FromText SecondaryStatus where
@@ -89,34 +114,44 @@ instance ToText SecondaryStatus where
 --   fromEnum is a partial function, and will error on values unknown at generation time.
 instance Enum SecondaryStatus where
     toEnum i = case i of
-        0 -> SSCompleted
-        1 -> SSDownloading
-        2 -> SSFailed
-        3 -> SSMaxRuntimeExceeded
-        4 -> SSStarting
-        5 -> SSStopped
-        6 -> SSStopping
-        7 -> SSTraining
-        8 -> SSUploading
+        0 -> SCompleted
+        1 -> SDownloading
+        2 -> SDownloadingTrainingImage
+        3 -> SFailed
+        4 -> SInterrupted
+        5 -> SLaunchingMLInstances
+        6 -> SMaxRuntimeExceeded
+        7 -> SMaxWaitTimeExceeded
+        8 -> SPreparingTrainingStack
+        9 -> SStarting
+        10 -> SStopped
+        11 -> SStopping
+        12 -> STraining
+        13 -> SUploading
         _ -> (error . showText) $ "Unknown index for SecondaryStatus: " <> toText i
     fromEnum x = case x of
-        SSCompleted -> 0
-        SSDownloading -> 1
-        SSFailed -> 2
-        SSMaxRuntimeExceeded -> 3
-        SSStarting -> 4
-        SSStopped -> 5
-        SSStopping -> 6
-        SSTraining -> 7
-        SSUploading -> 8
+        SCompleted -> 0
+        SDownloading -> 1
+        SDownloadingTrainingImage -> 2
+        SFailed -> 3
+        SInterrupted -> 4
+        SLaunchingMLInstances -> 5
+        SMaxRuntimeExceeded -> 6
+        SMaxWaitTimeExceeded -> 7
+        SPreparingTrainingStack -> 8
+        SStarting -> 9
+        SStopped -> 10
+        SStopping -> 11
+        STraining -> 12
+        SUploading -> 13
         SecondaryStatus' name -> (error . showText) $ "Unknown SecondaryStatus: " <> original name
 
 -- | Represents the bounds of /known/ $SecondaryStatus.
 --   AWS may have added more since the source was generated.
 --   This instance exists only for backward compatibility.
 instance Bounded SecondaryStatus where
-    minBound = SSCompleted
-    maxBound = SSUploading
+    minBound = SCompleted
+    maxBound = SUploading
 
 instance Hashable     SecondaryStatus
 instance NFData       SecondaryStatus

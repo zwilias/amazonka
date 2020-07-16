@@ -35,26 +35,26 @@ data EnvironmentTier = EnvironmentTier'{_etName ::
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'etName' - The name of this environment tier.
+-- * 'etName' - The name of this environment tier. Valid values:     * For /Web server tier/ – @WebServer@      * For /Worker tier/ – @Worker@ 
 --
--- * 'etVersion' - The version of this environment tier.
+-- * 'etVersion' - The version of this environment tier. When you don't set a value to it, Elastic Beanstalk uses the latest compatible worker tier version.
 --
--- * 'etType' - The type of this environment tier.
+-- * 'etType' - The type of this environment tier. Valid values:     * For /Web server tier/ – @Standard@      * For /Worker tier/ – @SQS/HTTP@ 
 environmentTier
     :: EnvironmentTier
 environmentTier
   = EnvironmentTier'{_etName = Nothing,
                      _etVersion = Nothing, _etType = Nothing}
 
--- | The name of this environment tier.
+-- | The name of this environment tier. Valid values:     * For /Web server tier/ – @WebServer@      * For /Worker tier/ – @Worker@ 
 etName :: Lens' EnvironmentTier (Maybe Text)
 etName = lens _etName (\ s a -> s{_etName = a})
 
--- | The version of this environment tier.
+-- | The version of this environment tier. When you don't set a value to it, Elastic Beanstalk uses the latest compatible worker tier version.
 etVersion :: Lens' EnvironmentTier (Maybe Text)
 etVersion = lens _etVersion (\ s a -> s{_etVersion = a})
 
--- | The type of this environment tier.
+-- | The type of this environment tier. Valid values:     * For /Web server tier/ – @Standard@      * For /Worker tier/ – @SQS/HTTP@ 
 etType :: Lens' EnvironmentTier (Maybe Text)
 etType = lens _etType (\ s a -> s{_etType = a})
 

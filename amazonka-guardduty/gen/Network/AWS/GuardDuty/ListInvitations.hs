@@ -20,6 +20,8 @@
 --
 -- Lists all GuardDuty membership invitations that were sent to the current AWS account.
 --
+--
+--
 -- This operation returns paginated results.
 module Network.AWS.GuardDuty.ListInvitations
     (
@@ -57,20 +59,20 @@ data ListInvitations = ListInvitations'{_liNextToken
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'liNextToken' - You can use this parameter when paginating results. Set the value of this parameter to null on your first call to the ListInvitations action. Subsequent calls to the action fill nextToken in the request with the value of NextToken from the previous response to continue listing data.
+-- * 'liNextToken' - You can use this parameter when paginating results. Set the value of this parameter to null on your first call to the list action. For subsequent calls to the action, fill nextToken in the request with the value of NextToken from the previous response to continue listing data.
 --
--- * 'liMaxResults' - You can use this parameter to indicate the maximum number of invitations you want in the response. The default value is 50. The maximum value is 50.
+-- * 'liMaxResults' - You can use this parameter to indicate the maximum number of items that you want in the response. The default value is 50. The maximum value is 50.
 listInvitations
     :: ListInvitations
 listInvitations
   = ListInvitations'{_liNextToken = Nothing,
                      _liMaxResults = Nothing}
 
--- | You can use this parameter when paginating results. Set the value of this parameter to null on your first call to the ListInvitations action. Subsequent calls to the action fill nextToken in the request with the value of NextToken from the previous response to continue listing data.
+-- | You can use this parameter when paginating results. Set the value of this parameter to null on your first call to the list action. For subsequent calls to the action, fill nextToken in the request with the value of NextToken from the previous response to continue listing data.
 liNextToken :: Lens' ListInvitations (Maybe Text)
 liNextToken = lens _liNextToken (\ s a -> s{_liNextToken = a})
 
--- | You can use this parameter to indicate the maximum number of invitations you want in the response. The default value is 50. The maximum value is 50.
+-- | You can use this parameter to indicate the maximum number of items that you want in the response. The default value is 50. The maximum value is 50.
 liMaxResults :: Lens' ListInvitations (Maybe Natural)
 liMaxResults = lens _liMaxResults (\ s a -> s{_liMaxResults = a}) . mapping _Nat
 
@@ -127,9 +129,9 @@ data ListInvitationsResponse = ListInvitationsResponse'{_lirsInvitations
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'lirsInvitations' - Undocumented member.
+-- * 'lirsInvitations' - A list of invitation descriptions.
 --
--- * 'lirsNextToken' - Undocumented member.
+-- * 'lirsNextToken' - The pagination parameter to be used on the next list operation to retrieve more items.
 --
 -- * 'lirsResponseStatus' - -- | The response status code.
 listInvitationsResponse
@@ -141,11 +143,11 @@ listInvitationsResponse pResponseStatus_
                              _lirsNextToken = Nothing,
                              _lirsResponseStatus = pResponseStatus_}
 
--- | Undocumented member.
+-- | A list of invitation descriptions.
 lirsInvitations :: Lens' ListInvitationsResponse [Invitation]
 lirsInvitations = lens _lirsInvitations (\ s a -> s{_lirsInvitations = a}) . _Default . _Coerce
 
--- | Undocumented member.
+-- | The pagination parameter to be used on the next list operation to retrieve more items.
 lirsNextToken :: Lens' ListInvitationsResponse (Maybe Text)
 lirsNextToken = lens _lirsNextToken (\ s a -> s{_lirsNextToken = a})
 

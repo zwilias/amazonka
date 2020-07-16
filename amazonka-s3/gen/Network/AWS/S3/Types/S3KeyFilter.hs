@@ -22,7 +22,9 @@ import Network.AWS.Prelude
 import Network.AWS.S3.Internal
 import Network.AWS.S3.Types.FilterRule
 
--- | Container for object key name prefix and suffix filtering rules.
+-- | A container for object key name prefix and suffix filtering rules.
+--
+--
 --
 -- /See:/ 's3KeyFilter' smart constructor.
 newtype S3KeyFilter = S3KeyFilter'{_skfFilterRules ::

@@ -22,115 +22,128 @@ import Network.AWS.Pinpoint.Types.ImportJobResource
 import Network.AWS.Pinpoint.Types.JobStatus
 import Network.AWS.Prelude
 
--- | /See:/ 'importJobResponse' smart constructor.
+-- | Provides information about the status and settings of a job that imports endpoint definitions from one or more files. The files can be stored in an Amazon Simple Storage Service (Amazon S3) bucket or uploaded directly from a computer by using the Amazon Pinpoint console.
+--
+--
+--
+-- /See:/ 'importJobResponse' smart constructor.
 data ImportJobResponse = ImportJobResponse'{_ijCompletedPieces
                                             :: !(Maybe Int),
                                             _ijFailedPieces :: !(Maybe Int),
-                                            _ijDefinition ::
-                                            !(Maybe ImportJobResource),
                                             _ijTotalProcessed :: !(Maybe Int),
                                             _ijFailures :: !(Maybe [Text]),
                                             _ijTotalPieces :: !(Maybe Int),
-                                            _ijApplicationId :: !(Maybe Text),
-                                            _ijId :: !(Maybe Text),
-                                            _ijCreationDate :: !(Maybe Text),
-                                            _ijType :: !(Maybe Text),
                                             _ijCompletionDate :: !(Maybe Text),
-                                            _ijJobStatus :: !(Maybe JobStatus),
-                                            _ijTotalFailures :: !(Maybe Int)}
+                                            _ijTotalFailures :: !(Maybe Int),
+                                            _ijJobStatus :: !JobStatus,
+                                            _ijCreationDate :: !Text,
+                                            _ijType :: !Text,
+                                            _ijDefinition :: !ImportJobResource,
+                                            _ijId :: !Text,
+                                            _ijApplicationId :: !Text}
                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ImportJobResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'ijCompletedPieces' - The number of pieces that have successfully imported as of the time of the request.
+-- * 'ijCompletedPieces' - The number of pieces that were processed successfully (completed) by the import job, as of the time of the request.
 --
--- * 'ijFailedPieces' - The number of pieces that have failed to import as of the time of the request.
+-- * 'ijFailedPieces' - The number of pieces that weren't processed successfully (failed) by the import job, as of the time of the request.
 --
--- * 'ijDefinition' - The import job settings.
+-- * 'ijTotalProcessed' - The total number of endpoint definitions that were processed by the import job.
 --
--- * 'ijTotalProcessed' - The number of endpoints that were processed by the import job.
+-- * 'ijFailures' - An array of entries, one for each of the first 100 entries that weren't processed successfully (failed) by the import job, if any.
 --
--- * 'ijFailures' - Provides up to 100 of the first failed entries for the job, if any exist.
+-- * 'ijTotalPieces' - The total number of pieces that must be processed to complete the import job. Each piece consists of an approximately equal portion of the endpoint definitions that are part of the import job.
 --
--- * 'ijTotalPieces' - The total number of pieces that must be imported to finish the job. Each piece is an approximately equal portion of the endpoints to import.
+-- * 'ijCompletionDate' - The date, in ISO 8601 format, when the import job was completed.
 --
--- * 'ijApplicationId' - The unique ID of the application to which the import job applies.
+-- * 'ijTotalFailures' - The total number of endpoint definitions that weren't processed successfully (failed) by the import job, typically because an error, such as a syntax error, occurred.
 --
--- * 'ijId' - The unique ID of the import job.
+-- * 'ijJobStatus' - The status of the import job. The job status is FAILED if Amazon Pinpoint wasn't able to process one or more pieces in the job.
 --
--- * 'ijCreationDate' - The date the import job was created in ISO 8601 format.
+-- * 'ijCreationDate' - The date, in ISO 8601 format, when the import job was created.
 --
--- * 'ijType' - The job type. Will be Import.
+-- * 'ijType' - The job type. This value is IMPORT for import jobs.
 --
--- * 'ijCompletionDate' - The date the import job completed in ISO 8601 format.
+-- * 'ijDefinition' - The resource settings that apply to the import job.
 --
--- * 'ijJobStatus' - The status of the import job. Valid values: CREATED, INITIALIZING, PROCESSING, COMPLETING, COMPLETED, FAILING, FAILED The job status is FAILED if one or more pieces failed to import.
+-- * 'ijId' - The unique identifier for the import job.
 --
--- * 'ijTotalFailures' - The number of endpoints that failed to import; for example, because of syntax errors.
+-- * 'ijApplicationId' - The unique identifier for the application that's associated with the import job.
 importJobResponse
-    :: ImportJobResponse
-importJobResponse
+    :: JobStatus -- ^ 'ijJobStatus'
+    -> Text -- ^ 'ijCreationDate'
+    -> Text -- ^ 'ijType'
+    -> ImportJobResource -- ^ 'ijDefinition'
+    -> Text -- ^ 'ijId'
+    -> Text -- ^ 'ijApplicationId'
+    -> ImportJobResponse
+importJobResponse pJobStatus_ pCreationDate_ pType_
+  pDefinition_ pId_ pApplicationId_
   = ImportJobResponse'{_ijCompletedPieces = Nothing,
-                       _ijFailedPieces = Nothing, _ijDefinition = Nothing,
+                       _ijFailedPieces = Nothing,
                        _ijTotalProcessed = Nothing, _ijFailures = Nothing,
-                       _ijTotalPieces = Nothing, _ijApplicationId = Nothing,
-                       _ijId = Nothing, _ijCreationDate = Nothing,
-                       _ijType = Nothing, _ijCompletionDate = Nothing,
-                       _ijJobStatus = Nothing, _ijTotalFailures = Nothing}
+                       _ijTotalPieces = Nothing,
+                       _ijCompletionDate = Nothing,
+                       _ijTotalFailures = Nothing,
+                       _ijJobStatus = pJobStatus_,
+                       _ijCreationDate = pCreationDate_, _ijType = pType_,
+                       _ijDefinition = pDefinition_, _ijId = pId_,
+                       _ijApplicationId = pApplicationId_}
 
--- | The number of pieces that have successfully imported as of the time of the request.
+-- | The number of pieces that were processed successfully (completed) by the import job, as of the time of the request.
 ijCompletedPieces :: Lens' ImportJobResponse (Maybe Int)
 ijCompletedPieces = lens _ijCompletedPieces (\ s a -> s{_ijCompletedPieces = a})
 
--- | The number of pieces that have failed to import as of the time of the request.
+-- | The number of pieces that weren't processed successfully (failed) by the import job, as of the time of the request.
 ijFailedPieces :: Lens' ImportJobResponse (Maybe Int)
 ijFailedPieces = lens _ijFailedPieces (\ s a -> s{_ijFailedPieces = a})
 
--- | The import job settings.
-ijDefinition :: Lens' ImportJobResponse (Maybe ImportJobResource)
-ijDefinition = lens _ijDefinition (\ s a -> s{_ijDefinition = a})
-
--- | The number of endpoints that were processed by the import job.
+-- | The total number of endpoint definitions that were processed by the import job.
 ijTotalProcessed :: Lens' ImportJobResponse (Maybe Int)
 ijTotalProcessed = lens _ijTotalProcessed (\ s a -> s{_ijTotalProcessed = a})
 
--- | Provides up to 100 of the first failed entries for the job, if any exist.
+-- | An array of entries, one for each of the first 100 entries that weren't processed successfully (failed) by the import job, if any.
 ijFailures :: Lens' ImportJobResponse [Text]
 ijFailures = lens _ijFailures (\ s a -> s{_ijFailures = a}) . _Default . _Coerce
 
--- | The total number of pieces that must be imported to finish the job. Each piece is an approximately equal portion of the endpoints to import.
+-- | The total number of pieces that must be processed to complete the import job. Each piece consists of an approximately equal portion of the endpoint definitions that are part of the import job.
 ijTotalPieces :: Lens' ImportJobResponse (Maybe Int)
 ijTotalPieces = lens _ijTotalPieces (\ s a -> s{_ijTotalPieces = a})
 
--- | The unique ID of the application to which the import job applies.
-ijApplicationId :: Lens' ImportJobResponse (Maybe Text)
-ijApplicationId = lens _ijApplicationId (\ s a -> s{_ijApplicationId = a})
-
--- | The unique ID of the import job.
-ijId :: Lens' ImportJobResponse (Maybe Text)
-ijId = lens _ijId (\ s a -> s{_ijId = a})
-
--- | The date the import job was created in ISO 8601 format.
-ijCreationDate :: Lens' ImportJobResponse (Maybe Text)
-ijCreationDate = lens _ijCreationDate (\ s a -> s{_ijCreationDate = a})
-
--- | The job type. Will be Import.
-ijType :: Lens' ImportJobResponse (Maybe Text)
-ijType = lens _ijType (\ s a -> s{_ijType = a})
-
--- | The date the import job completed in ISO 8601 format.
+-- | The date, in ISO 8601 format, when the import job was completed.
 ijCompletionDate :: Lens' ImportJobResponse (Maybe Text)
 ijCompletionDate = lens _ijCompletionDate (\ s a -> s{_ijCompletionDate = a})
 
--- | The status of the import job. Valid values: CREATED, INITIALIZING, PROCESSING, COMPLETING, COMPLETED, FAILING, FAILED The job status is FAILED if one or more pieces failed to import.
-ijJobStatus :: Lens' ImportJobResponse (Maybe JobStatus)
-ijJobStatus = lens _ijJobStatus (\ s a -> s{_ijJobStatus = a})
-
--- | The number of endpoints that failed to import; for example, because of syntax errors.
+-- | The total number of endpoint definitions that weren't processed successfully (failed) by the import job, typically because an error, such as a syntax error, occurred.
 ijTotalFailures :: Lens' ImportJobResponse (Maybe Int)
 ijTotalFailures = lens _ijTotalFailures (\ s a -> s{_ijTotalFailures = a})
+
+-- | The status of the import job. The job status is FAILED if Amazon Pinpoint wasn't able to process one or more pieces in the job.
+ijJobStatus :: Lens' ImportJobResponse JobStatus
+ijJobStatus = lens _ijJobStatus (\ s a -> s{_ijJobStatus = a})
+
+-- | The date, in ISO 8601 format, when the import job was created.
+ijCreationDate :: Lens' ImportJobResponse Text
+ijCreationDate = lens _ijCreationDate (\ s a -> s{_ijCreationDate = a})
+
+-- | The job type. This value is IMPORT for import jobs.
+ijType :: Lens' ImportJobResponse Text
+ijType = lens _ijType (\ s a -> s{_ijType = a})
+
+-- | The resource settings that apply to the import job.
+ijDefinition :: Lens' ImportJobResponse ImportJobResource
+ijDefinition = lens _ijDefinition (\ s a -> s{_ijDefinition = a})
+
+-- | The unique identifier for the import job.
+ijId :: Lens' ImportJobResponse Text
+ijId = lens _ijId (\ s a -> s{_ijId = a})
+
+-- | The unique identifier for the application that's associated with the import job.
+ijApplicationId :: Lens' ImportJobResponse Text
+ijApplicationId = lens _ijApplicationId (\ s a -> s{_ijApplicationId = a})
 
 instance FromJSON ImportJobResponse where
         parseJSON
@@ -138,17 +151,17 @@ instance FromJSON ImportJobResponse where
               (\ x ->
                  ImportJobResponse' <$>
                    (x .:? "CompletedPieces") <*> (x .:? "FailedPieces")
-                     <*> (x .:? "Definition")
                      <*> (x .:? "TotalProcessed")
                      <*> (x .:? "Failures" .!= mempty)
                      <*> (x .:? "TotalPieces")
-                     <*> (x .:? "ApplicationId")
-                     <*> (x .:? "Id")
-                     <*> (x .:? "CreationDate")
-                     <*> (x .:? "Type")
                      <*> (x .:? "CompletionDate")
-                     <*> (x .:? "JobStatus")
-                     <*> (x .:? "TotalFailures"))
+                     <*> (x .:? "TotalFailures")
+                     <*> (x .: "JobStatus")
+                     <*> (x .: "CreationDate")
+                     <*> (x .: "Type")
+                     <*> (x .: "Definition")
+                     <*> (x .: "Id")
+                     <*> (x .: "ApplicationId"))
 
 instance Hashable ImportJobResponse where
 

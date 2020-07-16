@@ -17,6 +17,7 @@
 --
 module Network.AWS.Glue.Types.DatabaseInput where
 
+import Network.AWS.Glue.Types.PrincipalPermissions
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
@@ -29,6 +30,8 @@ data DatabaseInput = DatabaseInput'{_diLocationURI ::
                                     !(Maybe Text),
                                     _diParameters :: !(Maybe (Map Text Text)),
                                     _diDescription :: !(Maybe Text),
+                                    _diCreateTableDefaultPermissions ::
+                                    !(Maybe [PrincipalPermissions]),
                                     _diName :: !Text}
                        deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -36,34 +39,41 @@ data DatabaseInput = DatabaseInput'{_diLocationURI ::
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'diLocationURI' - The location of the database (for example, an HDFS path).
+-- * 'diLocationURI' - The location of the database (for example, an HDFS path). 
 --
--- * 'diParameters' - A list of key-value pairs that define parameters and properties of the database.
+-- * 'diParameters' - These key-value pairs define parameters and properties of the database. These key-value pairs define parameters and properties of the database.
 --
--- * 'diDescription' - Description of the database
+-- * 'diDescription' - A description of the database.
 --
--- * 'diName' - Name of the database. For Hive compatibility, this is folded to lowercase when it is stored.
+-- * 'diCreateTableDefaultPermissions' - Creates a set of default permissions on the table for principals. 
+--
+-- * 'diName' - The name of the database. For Hive compatibility, this is folded to lowercase when it is stored.
 databaseInput
     :: Text -- ^ 'diName'
     -> DatabaseInput
 databaseInput pName_
   = DatabaseInput'{_diLocationURI = Nothing,
                    _diParameters = Nothing, _diDescription = Nothing,
+                   _diCreateTableDefaultPermissions = Nothing,
                    _diName = pName_}
 
--- | The location of the database (for example, an HDFS path).
+-- | The location of the database (for example, an HDFS path). 
 diLocationURI :: Lens' DatabaseInput (Maybe Text)
 diLocationURI = lens _diLocationURI (\ s a -> s{_diLocationURI = a})
 
--- | A list of key-value pairs that define parameters and properties of the database.
+-- | These key-value pairs define parameters and properties of the database. These key-value pairs define parameters and properties of the database.
 diParameters :: Lens' DatabaseInput (HashMap Text Text)
 diParameters = lens _diParameters (\ s a -> s{_diParameters = a}) . _Default . _Map
 
--- | Description of the database
+-- | A description of the database.
 diDescription :: Lens' DatabaseInput (Maybe Text)
 diDescription = lens _diDescription (\ s a -> s{_diDescription = a})
 
--- | Name of the database. For Hive compatibility, this is folded to lowercase when it is stored.
+-- | Creates a set of default permissions on the table for principals. 
+diCreateTableDefaultPermissions :: Lens' DatabaseInput [PrincipalPermissions]
+diCreateTableDefaultPermissions = lens _diCreateTableDefaultPermissions (\ s a -> s{_diCreateTableDefaultPermissions = a}) . _Default . _Coerce
+
+-- | The name of the database. For Hive compatibility, this is folded to lowercase when it is stored.
 diName :: Lens' DatabaseInput Text
 diName = lens _diName (\ s a -> s{_diName = a})
 
@@ -78,4 +88,6 @@ instance ToJSON DatabaseInput where
                  [("LocationUri" .=) <$> _diLocationURI,
                   ("Parameters" .=) <$> _diParameters,
                   ("Description" .=) <$> _diDescription,
+                  ("CreateTableDefaultPermissions" .=) <$>
+                    _diCreateTableDefaultPermissions,
                   Just ("Name" .= _diName)])

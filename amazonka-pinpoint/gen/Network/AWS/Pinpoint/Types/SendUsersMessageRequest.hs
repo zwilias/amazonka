@@ -20,23 +20,29 @@ module Network.AWS.Pinpoint.Types.SendUsersMessageRequest where
 import Network.AWS.Lens
 import Network.AWS.Pinpoint.Types.DirectMessageConfiguration
 import Network.AWS.Pinpoint.Types.EndpointSendConfiguration
+import Network.AWS.Pinpoint.Types.TemplateConfiguration
 import Network.AWS.Prelude
 
--- | Send message request.
+-- | Specifies the configuration and other settings for a message to send to all the endpoints that are associated with a list of users.
+--
+--
 --
 -- /See:/ 'sendUsersMessageRequest' smart constructor.
-data SendUsersMessageRequest = SendUsersMessageRequest'{_sumrContext
-                                                        ::
+data SendUsersMessageRequest = SendUsersMessageRequest'{_sumrTraceId
+                                                        :: !(Maybe Text),
+                                                        _sumrContext ::
                                                         !(Maybe
                                                             (Map Text Text)),
-                                                        _sumrUsers ::
-                                                        !(Maybe
-                                                            (Map Text
-                                                               EndpointSendConfiguration)),
-                                                        _sumrMessageConfiguration
+                                                        _sumrTemplateConfiguration
                                                         ::
                                                         !(Maybe
-                                                            DirectMessageConfiguration)}
+                                                            TemplateConfiguration),
+                                                        _sumrMessageConfiguration
+                                                        ::
+                                                        !DirectMessageConfiguration,
+                                                        _sumrUsers ::
+                                                        !(Map Text
+                                                            EndpointSendConfiguration)}
                                  deriving (Eq, Read, Show, Data, Typeable,
                                            Generic)
 
@@ -44,29 +50,44 @@ data SendUsersMessageRequest = SendUsersMessageRequest'{_sumrContext
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'sumrContext' - A map of custom attributes to attributes to be attached to the message. This payload is added to the push notification's 'data.pinpoint' object or added to the email/sms delivery receipt event attributes.
+-- * 'sumrTraceId' - The unique identifier for tracing the message. This identifier is visible to message recipients.
 --
--- * 'sumrUsers' - A map of destination endpoints, with the EndpointId as the key Endpoint Message Configuration as the value.
+-- * 'sumrContext' - A map of custom attribute-value pairs. For a push notification, Amazon Pinpoint adds these attributes to the data.pinpoint object in the body of the notification payload. Amazon Pinpoint also provides these attributes in the events that it generates for users-messages deliveries.
 --
--- * 'sumrMessageConfiguration' - Message configuration.
+-- * 'sumrTemplateConfiguration' - The message template to use for the message.
+--
+-- * 'sumrMessageConfiguration' - The settings and content for the default message and any default messages that you defined for specific channels.
+--
+-- * 'sumrUsers' - A map that associates user IDs with EndpointSendConfiguration objects. You can use an EndpointSendConfiguration object to tailor the message for a user by specifying settings such as content overrides and message variables.
 sendUsersMessageRequest
-    :: SendUsersMessageRequest
-sendUsersMessageRequest
-  = SendUsersMessageRequest'{_sumrContext = Nothing,
-                             _sumrUsers = Nothing,
-                             _sumrMessageConfiguration = Nothing}
+    :: DirectMessageConfiguration -- ^ 'sumrMessageConfiguration'
+    -> SendUsersMessageRequest
+sendUsersMessageRequest pMessageConfiguration_
+  = SendUsersMessageRequest'{_sumrTraceId = Nothing,
+                             _sumrContext = Nothing,
+                             _sumrTemplateConfiguration = Nothing,
+                             _sumrMessageConfiguration = pMessageConfiguration_,
+                             _sumrUsers = mempty}
 
--- | A map of custom attributes to attributes to be attached to the message. This payload is added to the push notification's 'data.pinpoint' object or added to the email/sms delivery receipt event attributes.
+-- | The unique identifier for tracing the message. This identifier is visible to message recipients.
+sumrTraceId :: Lens' SendUsersMessageRequest (Maybe Text)
+sumrTraceId = lens _sumrTraceId (\ s a -> s{_sumrTraceId = a})
+
+-- | A map of custom attribute-value pairs. For a push notification, Amazon Pinpoint adds these attributes to the data.pinpoint object in the body of the notification payload. Amazon Pinpoint also provides these attributes in the events that it generates for users-messages deliveries.
 sumrContext :: Lens' SendUsersMessageRequest (HashMap Text Text)
 sumrContext = lens _sumrContext (\ s a -> s{_sumrContext = a}) . _Default . _Map
 
--- | A map of destination endpoints, with the EndpointId as the key Endpoint Message Configuration as the value.
-sumrUsers :: Lens' SendUsersMessageRequest (HashMap Text EndpointSendConfiguration)
-sumrUsers = lens _sumrUsers (\ s a -> s{_sumrUsers = a}) . _Default . _Map
+-- | The message template to use for the message.
+sumrTemplateConfiguration :: Lens' SendUsersMessageRequest (Maybe TemplateConfiguration)
+sumrTemplateConfiguration = lens _sumrTemplateConfiguration (\ s a -> s{_sumrTemplateConfiguration = a})
 
--- | Message configuration.
-sumrMessageConfiguration :: Lens' SendUsersMessageRequest (Maybe DirectMessageConfiguration)
+-- | The settings and content for the default message and any default messages that you defined for specific channels.
+sumrMessageConfiguration :: Lens' SendUsersMessageRequest DirectMessageConfiguration
 sumrMessageConfiguration = lens _sumrMessageConfiguration (\ s a -> s{_sumrMessageConfiguration = a})
+
+-- | A map that associates user IDs with EndpointSendConfiguration objects. You can use an EndpointSendConfiguration object to tailor the message for a user by specifying settings such as content overrides and message variables.
+sumrUsers :: Lens' SendUsersMessageRequest (HashMap Text EndpointSendConfiguration)
+sumrUsers = lens _sumrUsers (\ s a -> s{_sumrUsers = a}) . _Map
 
 instance Hashable SendUsersMessageRequest where
 
@@ -76,7 +97,11 @@ instance ToJSON SendUsersMessageRequest where
         toJSON SendUsersMessageRequest'{..}
           = object
               (catMaybes
-                 [("Context" .=) <$> _sumrContext,
-                  ("Users" .=) <$> _sumrUsers,
-                  ("MessageConfiguration" .=) <$>
-                    _sumrMessageConfiguration])
+                 [("TraceId" .=) <$> _sumrTraceId,
+                  ("Context" .=) <$> _sumrContext,
+                  ("TemplateConfiguration" .=) <$>
+                    _sumrTemplateConfiguration,
+                  Just
+                    ("MessageConfiguration" .=
+                       _sumrMessageConfiguration),
+                  Just ("Users" .= _sumrUsers)])

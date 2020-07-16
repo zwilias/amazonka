@@ -20,7 +20,7 @@ module Network.AWS.WorkSpaces.Types.RebootRequest where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | Information used to reboot a WorkSpace.
+-- | Describes the information used to reboot a WorkSpace.
 --
 --
 --
@@ -33,14 +33,14 @@ newtype RebootRequest = RebootRequest'{_rWorkspaceId
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'rWorkspaceId' - The ID of the WorkSpace.
+-- * 'rWorkspaceId' - The identifier of the WorkSpace.
 rebootRequest
     :: Text -- ^ 'rWorkspaceId'
     -> RebootRequest
 rebootRequest pWorkspaceId_
   = RebootRequest'{_rWorkspaceId = pWorkspaceId_}
 
--- | The ID of the WorkSpace.
+-- | The identifier of the WorkSpace.
 rWorkspaceId :: Lens' RebootRequest Text
 rWorkspaceId = lens _rWorkspaceId (\ s a -> s{_rWorkspaceId = a})
 

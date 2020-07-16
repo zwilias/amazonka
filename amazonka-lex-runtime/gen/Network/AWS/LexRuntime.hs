@@ -61,19 +61,37 @@ module Network.AWS.LexRuntime
     -- * Operations
     -- $operations
 
+    -- ** PutSession 
+    , module Network.AWS.LexRuntime.PutSession
+
+    -- ** DeleteSession 
+    , module Network.AWS.LexRuntime.DeleteSession
+
     -- ** PostText 
     , module Network.AWS.LexRuntime.PostText
 
     -- ** PostContent 
     , module Network.AWS.LexRuntime.PostContent
 
+    -- ** GetSession 
+    , module Network.AWS.LexRuntime.GetSession
+
     -- * Types
+
+    -- ** ConfirmationStatus
+    , ConfirmationStatus (..)
 
     -- ** ContentType
     , ContentType (..)
 
+    -- ** DialogActionType
+    , DialogActionType (..)
+
     -- ** DialogState
     , DialogState (..)
+
+    -- ** FulfillmentState
+    , FulfillmentState (..)
 
     -- ** MessageFormatType
     , MessageFormatType (..)
@@ -84,6 +102,17 @@ module Network.AWS.LexRuntime
     , bText
     , bValue
 
+    -- ** DialogAction
+    , DialogAction
+    , dialogAction
+    , daSlots
+    , daIntentName
+    , daFulfillmentState
+    , daMessageFormat
+    , daMessage
+    , daSlotToElicit
+    , daType
+
     -- ** GenericAttachment
     , GenericAttachment
     , genericAttachment
@@ -93,16 +122,36 @@ module Network.AWS.LexRuntime
     , gaAttachmentLinkURL
     , gaTitle
 
+    -- ** IntentSummary
+    , IntentSummary
+    , intentSummary
+    , isCheckpointLabel
+    , isSlots
+    , isIntentName
+    , isFulfillmentState
+    , isConfirmationStatus
+    , isSlotToElicit
+    , isDialogActionType
+
     -- ** ResponseCard
     , ResponseCard
     , responseCard
     , rcGenericAttachments
     , rcVersion
     , rcContentType
+
+    -- ** SentimentResponse
+    , SentimentResponse
+    , sentimentResponse
+    , sSentimentScore
+    , sSentimentLabel
     ) where
 
+import Network.AWS.LexRuntime.DeleteSession
+import Network.AWS.LexRuntime.GetSession
 import Network.AWS.LexRuntime.PostContent
 import Network.AWS.LexRuntime.PostText
+import Network.AWS.LexRuntime.PutSession
 import Network.AWS.LexRuntime.Types
 import Network.AWS.LexRuntime.Waiters
 

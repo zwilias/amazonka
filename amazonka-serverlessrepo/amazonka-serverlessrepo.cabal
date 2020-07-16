@@ -48,22 +48,32 @@ library
         , Network.AWS.ServerlessApplicationRepository.CreateApplication
         , Network.AWS.ServerlessApplicationRepository.CreateApplicationVersion
         , Network.AWS.ServerlessApplicationRepository.CreateCloudFormationChangeSet
+        , Network.AWS.ServerlessApplicationRepository.CreateCloudFormationTemplate
         , Network.AWS.ServerlessApplicationRepository.DeleteApplication
         , Network.AWS.ServerlessApplicationRepository.GetApplication
         , Network.AWS.ServerlessApplicationRepository.GetApplicationPolicy
+        , Network.AWS.ServerlessApplicationRepository.GetCloudFormationTemplate
+        , Network.AWS.ServerlessApplicationRepository.ListApplicationDependencies
         , Network.AWS.ServerlessApplicationRepository.ListApplicationVersions
         , Network.AWS.ServerlessApplicationRepository.ListApplications
         , Network.AWS.ServerlessApplicationRepository.PutApplicationPolicy
         , Network.AWS.ServerlessApplicationRepository.Types
+        , Network.AWS.ServerlessApplicationRepository.UnshareApplication
         , Network.AWS.ServerlessApplicationRepository.UpdateApplication
         , Network.AWS.ServerlessApplicationRepository.Waiters
 
     other-modules:
-          Network.AWS.ServerlessApplicationRepository.Types.ApplicationPolicyStatement
+          Network.AWS.ServerlessApplicationRepository.Types.ApplicationDependencySummary
+        , Network.AWS.ServerlessApplicationRepository.Types.ApplicationPolicyStatement
         , Network.AWS.ServerlessApplicationRepository.Types.ApplicationSummary
+        , Network.AWS.ServerlessApplicationRepository.Types.Capability
         , Network.AWS.ServerlessApplicationRepository.Types.ParameterDefinition
         , Network.AWS.ServerlessApplicationRepository.Types.ParameterValue
         , Network.AWS.ServerlessApplicationRepository.Types.Product
+        , Network.AWS.ServerlessApplicationRepository.Types.RepoStatus
+        , Network.AWS.ServerlessApplicationRepository.Types.RollbackConfiguration
+        , Network.AWS.ServerlessApplicationRepository.Types.RollbackTrigger
+        , Network.AWS.ServerlessApplicationRepository.Types.Tag
         , Network.AWS.ServerlessApplicationRepository.Types.Version
         , Network.AWS.ServerlessApplicationRepository.Types.VersionSummary
 

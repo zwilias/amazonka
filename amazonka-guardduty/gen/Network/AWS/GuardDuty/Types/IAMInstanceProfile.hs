@@ -20,7 +20,9 @@ module Network.AWS.GuardDuty.Types.IAMInstanceProfile where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | The profile information of the EC2 instance.
+-- | Contains information about the EC2 instance profile.
+--
+--
 --
 -- /See:/ 'iamInstanceProfile' smart constructor.
 data IAMInstanceProfile = IAMInstanceProfile'{_iapARN
@@ -32,20 +34,20 @@ data IAMInstanceProfile = IAMInstanceProfile'{_iapARN
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'iapARN' - AWS EC2 instance profile ARN.
+-- * 'iapARN' - The profile ARN of the EC2 instance.
 --
--- * 'iapId' - AWS EC2 instance profile ID.
+-- * 'iapId' - The profile ID of the EC2 instance.
 iamInstanceProfile
     :: IAMInstanceProfile
 iamInstanceProfile
   = IAMInstanceProfile'{_iapARN = Nothing,
                         _iapId = Nothing}
 
--- | AWS EC2 instance profile ARN.
+-- | The profile ARN of the EC2 instance.
 iapARN :: Lens' IAMInstanceProfile (Maybe Text)
 iapARN = lens _iapARN (\ s a -> s{_iapARN = a})
 
--- | AWS EC2 instance profile ID.
+-- | The profile ID of the EC2 instance.
 iapId :: Lens' IAMInstanceProfile (Maybe Text)
 iapId = lens _iapId (\ s a -> s{_iapId = a})
 

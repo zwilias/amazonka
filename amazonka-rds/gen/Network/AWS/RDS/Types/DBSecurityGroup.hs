@@ -25,7 +25,7 @@ import Network.AWS.RDS.Types.IPRange
 -- | Contains the details for an Amazon RDS DB security group. 
 --
 --
--- This data type is used as a response element in the 'DescribeDBSecurityGroups' action. 
+-- This data type is used as a response element in the @DescribeDBSecurityGroups@ action. 
 --
 --
 -- /See:/ 'dbSecurityGroup' smart constructor.
@@ -53,11 +53,11 @@ data DBSecurityGroup = DBSecurityGroup'{_dbsgVPCId ::
 --
 -- * 'dbsgDBSecurityGroupARN' - The Amazon Resource Name (ARN) for the DB security group.
 --
--- * 'dbsgIPRanges' - Contains a list of 'IPRange' elements. 
+-- * 'dbsgIPRanges' - Contains a list of @IPRange@ elements. 
 --
 -- * 'dbsgDBSecurityGroupName' - Specifies the name of the DB security group.
 --
--- * 'dbsgEC2SecurityGroups' - Contains a list of 'EC2SecurityGroup' elements. 
+-- * 'dbsgEC2SecurityGroups' - Contains a list of @EC2SecurityGroup@ elements. 
 --
 -- * 'dbsgDBSecurityGroupDescription' - Provides the description of the DB security group.
 dbSecurityGroup
@@ -83,7 +83,7 @@ dbsgOwnerId = lens _dbsgOwnerId (\ s a -> s{_dbsgOwnerId = a})
 dbsgDBSecurityGroupARN :: Lens' DBSecurityGroup (Maybe Text)
 dbsgDBSecurityGroupARN = lens _dbsgDBSecurityGroupARN (\ s a -> s{_dbsgDBSecurityGroupARN = a})
 
--- | Contains a list of 'IPRange' elements. 
+-- | Contains a list of @IPRange@ elements. 
 dbsgIPRanges :: Lens' DBSecurityGroup [IPRange]
 dbsgIPRanges = lens _dbsgIPRanges (\ s a -> s{_dbsgIPRanges = a}) . _Default . _Coerce
 
@@ -91,7 +91,7 @@ dbsgIPRanges = lens _dbsgIPRanges (\ s a -> s{_dbsgIPRanges = a}) . _Default . _
 dbsgDBSecurityGroupName :: Lens' DBSecurityGroup (Maybe Text)
 dbsgDBSecurityGroupName = lens _dbsgDBSecurityGroupName (\ s a -> s{_dbsgDBSecurityGroupName = a})
 
--- | Contains a list of 'EC2SecurityGroup' elements. 
+-- | Contains a list of @EC2SecurityGroup@ elements. 
 dbsgEC2SecurityGroups :: Lens' DBSecurityGroup [EC2SecurityGroup]
 dbsgEC2SecurityGroups = lens _dbsgEC2SecurityGroups (\ s a -> s{_dbsgEC2SecurityGroups = a}) . _Default . _Coerce
 

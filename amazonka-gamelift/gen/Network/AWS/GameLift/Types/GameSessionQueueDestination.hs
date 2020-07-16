@@ -20,10 +20,8 @@ module Network.AWS.GameLift.Types.GameSessionQueueDestination where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | Fleet designated in a game session queue. Requests for new game sessions in the queue are fulfilled by starting a new game session on any destination configured for a queue. 
+-- | Fleet designated in a game session queue. Requests for new game sessions in the queue are fulfilled by starting a new game session on any destination that is configured for a queue. 
 --
---
--- Queue-related operations include:
 --
 --     * 'CreateGameSessionQueue' 
 --
@@ -47,14 +45,14 @@ newtype GameSessionQueueDestination = GameSessionQueueDestination'{_gsqdDestinat
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'gsqdDestinationARN' - Amazon Resource Name (ARN) assigned to fleet or fleet alias. ARNs, which include a fleet ID or alias ID and a region name, provide a unique identifier across all regions. 
+-- * 'gsqdDestinationARN' - The Amazon Resource Name (ARN) that is assigned to fleet or fleet alias. ARNs, which include a fleet ID or alias ID and a Region name, provide a unique identifier across all Regions. 
 gameSessionQueueDestination
     :: GameSessionQueueDestination
 gameSessionQueueDestination
   = GameSessionQueueDestination'{_gsqdDestinationARN =
                                    Nothing}
 
--- | Amazon Resource Name (ARN) assigned to fleet or fleet alias. ARNs, which include a fleet ID or alias ID and a region name, provide a unique identifier across all regions. 
+-- | The Amazon Resource Name (ARN) that is assigned to fleet or fleet alias. ARNs, which include a fleet ID or alias ID and a Region name, provide a unique identifier across all Regions. 
 gsqdDestinationARN :: Lens' GameSessionQueueDestination (Maybe Text)
 gsqdDestinationARN = lens _gsqdDestinationARN (\ s a -> s{_gsqdDestinationARN = a})
 

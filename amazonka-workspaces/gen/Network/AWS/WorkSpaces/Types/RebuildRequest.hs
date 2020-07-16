@@ -20,7 +20,7 @@ module Network.AWS.WorkSpaces.Types.RebuildRequest where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | Information used to rebuild a WorkSpace.
+-- | Describes the information used to rebuild a WorkSpace.
 --
 --
 --
@@ -33,14 +33,14 @@ newtype RebuildRequest = RebuildRequest'{_rrWorkspaceId
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'rrWorkspaceId' - The ID of the WorkSpace.
+-- * 'rrWorkspaceId' - The identifier of the WorkSpace.
 rebuildRequest
     :: Text -- ^ 'rrWorkspaceId'
     -> RebuildRequest
 rebuildRequest pWorkspaceId_
   = RebuildRequest'{_rrWorkspaceId = pWorkspaceId_}
 
--- | The ID of the WorkSpace.
+-- | The identifier of the WorkSpace.
 rrWorkspaceId :: Lens' RebuildRequest Text
 rrWorkspaceId = lens _rrWorkspaceId (\ s a -> s{_rrWorkspaceId = a})
 

@@ -59,58 +59,58 @@ data Eac3Settings = Eac3Settings'{_esStereoDownmix ::
                                   _esDynamicRangeCompressionRf ::
                                   !(Maybe Eac3DynamicRangeCompressionRf),
                                   _esCodingMode :: !(Maybe Eac3CodingMode),
-                                  _esSampleRate :: !(Maybe Int),
+                                  _esSampleRate :: !(Maybe Nat),
                                   _esDcFilter :: !(Maybe Eac3DcFilter),
-                                  _esBitrate :: !(Maybe Int),
+                                  _esBitrate :: !(Maybe Nat),
                                   _esPhaseControl :: !(Maybe Eac3PhaseControl),
                                   _esSurroundExMode ::
                                   !(Maybe Eac3SurroundExMode),
-                                  _esDialnorm :: !(Maybe Int)}
+                                  _esDialnorm :: !(Maybe Nat)}
                       deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'Eac3Settings' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'esStereoDownmix' - Undocumented member.
+-- * 'esStereoDownmix' - Choose how the service does stereo downmixing. This setting only applies if you keep the default value of 3/2 - L, R, C, Ls, Rs (CODING_MODE_3_2) for the setting Coding mode (Eac3CodingMode). If you choose a different value for Coding mode, the service ignores Stereo downmix (Eac3StereoDownmix).
 --
--- * 'esLoRoCenterMixLevel' - Left only/Right only center mix level. Only used for 3/2 coding mode. Valid values: 3.0, 1.5, 0.0, -1.5 -3.0 -4.5 -6.0 -60
+-- * 'esLoRoCenterMixLevel' - Specify a value for the following Dolby Digital Plus setting: Left only/Right only center mix (Lo/Ro center). MediaConvert uses this value for downmixing. How the service uses this value depends on the value that you choose for Stereo downmix (Eac3StereoDownmix). Valid values: 3.0, 1.5, 0.0, -1.5, -3.0, -4.5, -6.0, and -60. The value -60 mutes the channel. This setting applies only if you keep the default value of 3/2 - L, R, C, Ls, Rs (CODING_MODE_3_2) for the setting Coding mode (Eac3CodingMode). If you choose a different value for Coding mode, the service ignores Left only/Right only center (loRoCenterMixLevel).
 --
--- * 'esLtRtCenterMixLevel' - Left total/Right total center mix level. Only used for 3/2 coding mode. Valid values: 3.0, 1.5, 0.0, -1.5 -3.0 -4.5 -6.0 -60
+-- * 'esLtRtCenterMixLevel' - Specify a value for the following Dolby Digital Plus setting: Left total/Right total center mix (Lt/Rt center). MediaConvert uses this value for downmixing. How the service uses this value depends on the value that you choose for Stereo downmix (Eac3StereoDownmix). Valid values: 3.0, 1.5, 0.0, -1.5, -3.0, -4.5, -6.0, and -60. The value -60 mutes the channel. This setting applies only if you keep the default value of 3/2 - L, R, C, Ls, Rs (CODING_MODE_3_2) for the setting Coding mode (Eac3CodingMode). If you choose a different value for Coding mode, the service ignores Left total/Right total center (ltRtCenterMixLevel).
 --
--- * 'esLfeFilter' - Undocumented member.
+-- * 'esLfeFilter' - Applies a 120Hz lowpass filter to the LFE channel prior to encoding. Only valid with 3_2_LFE coding mode.
 --
--- * 'esDynamicRangeCompressionLine' - Undocumented member.
+-- * 'esDynamicRangeCompressionLine' - Specify the absolute peak level for a signal with dynamic range compression.
 --
--- * 'esLtRtSurroundMixLevel' - Left total/Right total surround mix level. Only used for 3/2 coding mode. Valid values: -1.5 -3.0 -4.5 -6.0 -60
+-- * 'esLtRtSurroundMixLevel' - Specify a value for the following Dolby Digital Plus setting: Left total/Right total surround mix (Lt/Rt surround). MediaConvert uses this value for downmixing. How the service uses this value depends on the value that you choose for Stereo downmix (Eac3StereoDownmix). Valid values: -1.5, -3.0, -4.5, -6.0, and -60. The value -60 mutes the channel. This setting applies only if you keep the default value of 3/2 - L, R, C, Ls, Rs (CODING_MODE_3_2) for the setting Coding mode (Eac3CodingMode). If you choose a different value for Coding mode, the service ignores Left total/Right total surround (ltRtSurroundMixLevel).
 --
--- * 'esMetadataControl' - Undocumented member.
+-- * 'esMetadataControl' - When set to FOLLOW_INPUT, encoder metadata will be sourced from the DD, DD+, or DolbyE decoder that supplied this audio data. If audio was not supplied from one of these streams, then the static metadata settings will be used.
 --
--- * 'esLoRoSurroundMixLevel' - Left only/Right only surround mix level. Only used for 3/2 coding mode. Valid values: -1.5 -3.0 -4.5 -6.0 -60
+-- * 'esLoRoSurroundMixLevel' - Specify a value for the following Dolby Digital Plus setting: Left only/Right only (Lo/Ro surround). MediaConvert uses this value for downmixing. How the service uses this value depends on the value that you choose for Stereo downmix (Eac3StereoDownmix). Valid values: -1.5, -3.0, -4.5, -6.0, and -60. The value -60 mutes the channel. This setting applies only if you keep the default value of 3/2 - L, R, C, Ls, Rs (CODING_MODE_3_2) for the setting Coding mode (Eac3CodingMode). If you choose a different value for Coding mode, the service ignores Left only/Right only surround (loRoSurroundMixLevel).
 --
--- * 'esSurroundMode' - Undocumented member.
+-- * 'esSurroundMode' - When encoding 2/0 audio, sets whether Dolby Surround is matrix encoded into the two channels.
 --
--- * 'esAttenuationControl' - Undocumented member.
+-- * 'esAttenuationControl' - If set to ATTENUATE_3_DB, applies a 3 dB attenuation to the surround channels. Only used for 3/2 coding mode.
 --
--- * 'esPassthroughControl' - Undocumented member.
+-- * 'esPassthroughControl' - When set to WHEN_POSSIBLE, input DD+ audio will be passed through if it is present on the input. this detection is dynamic over the life of the transcode. Inputs that alternate between DD+ and non-DD+ content will have a consistent DD+ output as the system alternates between passthrough and encoding.
 --
--- * 'esBitstreamMode' - Undocumented member.
+-- * 'esBitstreamMode' - Specify the bitstream mode for the E-AC-3 stream that the encoder emits. For more information about the EAC3 bitstream mode, see ATSC A/52-2012 (Annex E).
 --
--- * 'esLfeControl' - Undocumented member.
+-- * 'esLfeControl' - When encoding 3/2 audio, controls whether the LFE channel is enabled
 --
--- * 'esDynamicRangeCompressionRf' - Undocumented member.
+-- * 'esDynamicRangeCompressionRf' - Specify how the service limits the audio dynamic range when compressing the audio.
 --
--- * 'esCodingMode' - Undocumented member.
+-- * 'esCodingMode' - Dolby Digital Plus coding mode. Determines number of channels.
 --
--- * 'esSampleRate' - Sample rate in hz. Sample rate is always 48000.
+-- * 'esSampleRate' - This value is always 48000. It represents the sample rate in Hz.
 --
--- * 'esDcFilter' - Undocumented member.
+-- * 'esDcFilter' - Activates a DC highpass filter for all input channels.
 --
--- * 'esBitrate' - Average bitrate in bits/second. Valid bitrates depend on the coding mode.
+-- * 'esBitrate' - Specify the average bitrate in bits per second. Valid bitrates depend on the coding mode.
 --
--- * 'esPhaseControl' - Undocumented member.
+-- * 'esPhaseControl' - Controls the amount of phase-shift applied to the surround channels. Only used for 3/2 coding mode.
 --
--- * 'esSurroundExMode' - Undocumented member.
+-- * 'esSurroundExMode' - When encoding 3/2 audio, sets whether an extra center back surround channel is matrix encoded into the left and right surround channels.
 --
 -- * 'esDialnorm' - Sets the dialnorm for the output. If blank and input audio is Dolby Digital Plus, dialnorm will be passed through.
 eac3Settings
@@ -134,89 +134,89 @@ eac3Settings
                   _esPhaseControl = Nothing,
                   _esSurroundExMode = Nothing, _esDialnorm = Nothing}
 
--- | Undocumented member.
+-- | Choose how the service does stereo downmixing. This setting only applies if you keep the default value of 3/2 - L, R, C, Ls, Rs (CODING_MODE_3_2) for the setting Coding mode (Eac3CodingMode). If you choose a different value for Coding mode, the service ignores Stereo downmix (Eac3StereoDownmix).
 esStereoDownmix :: Lens' Eac3Settings (Maybe Eac3StereoDownmix)
 esStereoDownmix = lens _esStereoDownmix (\ s a -> s{_esStereoDownmix = a})
 
--- | Left only/Right only center mix level. Only used for 3/2 coding mode. Valid values: 3.0, 1.5, 0.0, -1.5 -3.0 -4.5 -6.0 -60
+-- | Specify a value for the following Dolby Digital Plus setting: Left only/Right only center mix (Lo/Ro center). MediaConvert uses this value for downmixing. How the service uses this value depends on the value that you choose for Stereo downmix (Eac3StereoDownmix). Valid values: 3.0, 1.5, 0.0, -1.5, -3.0, -4.5, -6.0, and -60. The value -60 mutes the channel. This setting applies only if you keep the default value of 3/2 - L, R, C, Ls, Rs (CODING_MODE_3_2) for the setting Coding mode (Eac3CodingMode). If you choose a different value for Coding mode, the service ignores Left only/Right only center (loRoCenterMixLevel).
 esLoRoCenterMixLevel :: Lens' Eac3Settings (Maybe Double)
 esLoRoCenterMixLevel = lens _esLoRoCenterMixLevel (\ s a -> s{_esLoRoCenterMixLevel = a})
 
--- | Left total/Right total center mix level. Only used for 3/2 coding mode. Valid values: 3.0, 1.5, 0.0, -1.5 -3.0 -4.5 -6.0 -60
+-- | Specify a value for the following Dolby Digital Plus setting: Left total/Right total center mix (Lt/Rt center). MediaConvert uses this value for downmixing. How the service uses this value depends on the value that you choose for Stereo downmix (Eac3StereoDownmix). Valid values: 3.0, 1.5, 0.0, -1.5, -3.0, -4.5, -6.0, and -60. The value -60 mutes the channel. This setting applies only if you keep the default value of 3/2 - L, R, C, Ls, Rs (CODING_MODE_3_2) for the setting Coding mode (Eac3CodingMode). If you choose a different value for Coding mode, the service ignores Left total/Right total center (ltRtCenterMixLevel).
 esLtRtCenterMixLevel :: Lens' Eac3Settings (Maybe Double)
 esLtRtCenterMixLevel = lens _esLtRtCenterMixLevel (\ s a -> s{_esLtRtCenterMixLevel = a})
 
--- | Undocumented member.
+-- | Applies a 120Hz lowpass filter to the LFE channel prior to encoding. Only valid with 3_2_LFE coding mode.
 esLfeFilter :: Lens' Eac3Settings (Maybe Eac3LfeFilter)
 esLfeFilter = lens _esLfeFilter (\ s a -> s{_esLfeFilter = a})
 
--- | Undocumented member.
+-- | Specify the absolute peak level for a signal with dynamic range compression.
 esDynamicRangeCompressionLine :: Lens' Eac3Settings (Maybe Eac3DynamicRangeCompressionLine)
 esDynamicRangeCompressionLine = lens _esDynamicRangeCompressionLine (\ s a -> s{_esDynamicRangeCompressionLine = a})
 
--- | Left total/Right total surround mix level. Only used for 3/2 coding mode. Valid values: -1.5 -3.0 -4.5 -6.0 -60
+-- | Specify a value for the following Dolby Digital Plus setting: Left total/Right total surround mix (Lt/Rt surround). MediaConvert uses this value for downmixing. How the service uses this value depends on the value that you choose for Stereo downmix (Eac3StereoDownmix). Valid values: -1.5, -3.0, -4.5, -6.0, and -60. The value -60 mutes the channel. This setting applies only if you keep the default value of 3/2 - L, R, C, Ls, Rs (CODING_MODE_3_2) for the setting Coding mode (Eac3CodingMode). If you choose a different value for Coding mode, the service ignores Left total/Right total surround (ltRtSurroundMixLevel).
 esLtRtSurroundMixLevel :: Lens' Eac3Settings (Maybe Double)
 esLtRtSurroundMixLevel = lens _esLtRtSurroundMixLevel (\ s a -> s{_esLtRtSurroundMixLevel = a})
 
--- | Undocumented member.
+-- | When set to FOLLOW_INPUT, encoder metadata will be sourced from the DD, DD+, or DolbyE decoder that supplied this audio data. If audio was not supplied from one of these streams, then the static metadata settings will be used.
 esMetadataControl :: Lens' Eac3Settings (Maybe Eac3MetadataControl)
 esMetadataControl = lens _esMetadataControl (\ s a -> s{_esMetadataControl = a})
 
--- | Left only/Right only surround mix level. Only used for 3/2 coding mode. Valid values: -1.5 -3.0 -4.5 -6.0 -60
+-- | Specify a value for the following Dolby Digital Plus setting: Left only/Right only (Lo/Ro surround). MediaConvert uses this value for downmixing. How the service uses this value depends on the value that you choose for Stereo downmix (Eac3StereoDownmix). Valid values: -1.5, -3.0, -4.5, -6.0, and -60. The value -60 mutes the channel. This setting applies only if you keep the default value of 3/2 - L, R, C, Ls, Rs (CODING_MODE_3_2) for the setting Coding mode (Eac3CodingMode). If you choose a different value for Coding mode, the service ignores Left only/Right only surround (loRoSurroundMixLevel).
 esLoRoSurroundMixLevel :: Lens' Eac3Settings (Maybe Double)
 esLoRoSurroundMixLevel = lens _esLoRoSurroundMixLevel (\ s a -> s{_esLoRoSurroundMixLevel = a})
 
--- | Undocumented member.
+-- | When encoding 2/0 audio, sets whether Dolby Surround is matrix encoded into the two channels.
 esSurroundMode :: Lens' Eac3Settings (Maybe Eac3SurroundMode)
 esSurroundMode = lens _esSurroundMode (\ s a -> s{_esSurroundMode = a})
 
--- | Undocumented member.
+-- | If set to ATTENUATE_3_DB, applies a 3 dB attenuation to the surround channels. Only used for 3/2 coding mode.
 esAttenuationControl :: Lens' Eac3Settings (Maybe Eac3AttenuationControl)
 esAttenuationControl = lens _esAttenuationControl (\ s a -> s{_esAttenuationControl = a})
 
--- | Undocumented member.
+-- | When set to WHEN_POSSIBLE, input DD+ audio will be passed through if it is present on the input. this detection is dynamic over the life of the transcode. Inputs that alternate between DD+ and non-DD+ content will have a consistent DD+ output as the system alternates between passthrough and encoding.
 esPassthroughControl :: Lens' Eac3Settings (Maybe Eac3PassthroughControl)
 esPassthroughControl = lens _esPassthroughControl (\ s a -> s{_esPassthroughControl = a})
 
--- | Undocumented member.
+-- | Specify the bitstream mode for the E-AC-3 stream that the encoder emits. For more information about the EAC3 bitstream mode, see ATSC A/52-2012 (Annex E).
 esBitstreamMode :: Lens' Eac3Settings (Maybe Eac3BitstreamMode)
 esBitstreamMode = lens _esBitstreamMode (\ s a -> s{_esBitstreamMode = a})
 
--- | Undocumented member.
+-- | When encoding 3/2 audio, controls whether the LFE channel is enabled
 esLfeControl :: Lens' Eac3Settings (Maybe Eac3LfeControl)
 esLfeControl = lens _esLfeControl (\ s a -> s{_esLfeControl = a})
 
--- | Undocumented member.
+-- | Specify how the service limits the audio dynamic range when compressing the audio.
 esDynamicRangeCompressionRf :: Lens' Eac3Settings (Maybe Eac3DynamicRangeCompressionRf)
 esDynamicRangeCompressionRf = lens _esDynamicRangeCompressionRf (\ s a -> s{_esDynamicRangeCompressionRf = a})
 
--- | Undocumented member.
+-- | Dolby Digital Plus coding mode. Determines number of channels.
 esCodingMode :: Lens' Eac3Settings (Maybe Eac3CodingMode)
 esCodingMode = lens _esCodingMode (\ s a -> s{_esCodingMode = a})
 
--- | Sample rate in hz. Sample rate is always 48000.
-esSampleRate :: Lens' Eac3Settings (Maybe Int)
-esSampleRate = lens _esSampleRate (\ s a -> s{_esSampleRate = a})
+-- | This value is always 48000. It represents the sample rate in Hz.
+esSampleRate :: Lens' Eac3Settings (Maybe Natural)
+esSampleRate = lens _esSampleRate (\ s a -> s{_esSampleRate = a}) . mapping _Nat
 
--- | Undocumented member.
+-- | Activates a DC highpass filter for all input channels.
 esDcFilter :: Lens' Eac3Settings (Maybe Eac3DcFilter)
 esDcFilter = lens _esDcFilter (\ s a -> s{_esDcFilter = a})
 
--- | Average bitrate in bits/second. Valid bitrates depend on the coding mode.
-esBitrate :: Lens' Eac3Settings (Maybe Int)
-esBitrate = lens _esBitrate (\ s a -> s{_esBitrate = a})
+-- | Specify the average bitrate in bits per second. Valid bitrates depend on the coding mode.
+esBitrate :: Lens' Eac3Settings (Maybe Natural)
+esBitrate = lens _esBitrate (\ s a -> s{_esBitrate = a}) . mapping _Nat
 
--- | Undocumented member.
+-- | Controls the amount of phase-shift applied to the surround channels. Only used for 3/2 coding mode.
 esPhaseControl :: Lens' Eac3Settings (Maybe Eac3PhaseControl)
 esPhaseControl = lens _esPhaseControl (\ s a -> s{_esPhaseControl = a})
 
--- | Undocumented member.
+-- | When encoding 3/2 audio, sets whether an extra center back surround channel is matrix encoded into the left and right surround channels.
 esSurroundExMode :: Lens' Eac3Settings (Maybe Eac3SurroundExMode)
 esSurroundExMode = lens _esSurroundExMode (\ s a -> s{_esSurroundExMode = a})
 
 -- | Sets the dialnorm for the output. If blank and input audio is Dolby Digital Plus, dialnorm will be passed through.
-esDialnorm :: Lens' Eac3Settings (Maybe Int)
-esDialnorm = lens _esDialnorm (\ s a -> s{_esDialnorm = a})
+esDialnorm :: Lens' Eac3Settings (Maybe Natural)
+esDialnorm = lens _esDialnorm (\ s a -> s{_esDialnorm = a}) . mapping _Nat
 
 instance FromJSON Eac3Settings where
         parseJSON

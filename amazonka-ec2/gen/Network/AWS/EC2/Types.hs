@@ -5392,12 +5392,21 @@ ec2
               (hasCode "RequestLimitExceeded" . hasStatus 503)
               e
             = Just "request_limit_exceeded"
+          | has
+              (hasCode "EC2ThrottledException" . hasStatus 503)
+              e
+            = Just "ec2_throttled_exception"
           | has (hasStatus 429) e = Just "too_many_requests"
           | has (hasCode "ThrottlingException" . hasStatus 400)
               e
             = Just "throttling_exception"
           | has (hasCode "Throttling" . hasStatus 400) e =
             Just "throttling"
+          | has
+              (hasCode "ProvisionedThroughputExceededException" .
+                 hasStatus 400)
+              e
+            = Just "throughput_exceeded"
           | has (hasStatus 504) e = Just "gateway_timeout"
           | has
               (hasCode "RequestThrottledException" . hasStatus 400)

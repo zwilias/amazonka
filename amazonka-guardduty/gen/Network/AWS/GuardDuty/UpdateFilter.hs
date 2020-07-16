@@ -19,6 +19,8 @@
 -- Portability : non-portable (GHC extensions)
 --
 -- Updates the filter specified by the filter name.
+--
+--
 module Network.AWS.GuardDuty.UpdateFilter
     (
     -- * Creating a Request
@@ -36,8 +38,8 @@ module Network.AWS.GuardDuty.UpdateFilter
     , updateFilterResponse
     , UpdateFilterResponse
     -- * Response Lenses
-    , ufrsName
     , ufrsResponseStatus
+    , ufrsName
     ) where
 
 import Network.AWS.GuardDuty.Types
@@ -47,14 +49,12 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
--- | UpdateFilterRequest request body.
---
--- /See:/ 'updateFilter' smart constructor.
+-- | /See:/ 'updateFilter' smart constructor.
 data UpdateFilter = UpdateFilter'{_ufFindingCriteria
                                   :: !(Maybe FindingCriteria),
                                   _ufAction :: !(Maybe FilterAction),
                                   _ufDescription :: !(Maybe Text),
-                                  _ufRank :: !(Maybe Int),
+                                  _ufRank :: !(Maybe Nat),
                                   _ufDetectorId :: !Text,
                                   _ufFilterName :: !Text}
                       deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -97,8 +97,8 @@ ufDescription :: Lens' UpdateFilter (Maybe Text)
 ufDescription = lens _ufDescription (\ s a -> s{_ufDescription = a})
 
 -- | Specifies the position of the filter in the list of current filters. Also specifies the order in which this filter is applied to the findings.
-ufRank :: Lens' UpdateFilter (Maybe Int)
-ufRank = lens _ufRank (\ s a -> s{_ufRank = a})
+ufRank :: Lens' UpdateFilter (Maybe Natural)
+ufRank = lens _ufRank (\ s a -> s{_ufRank = a}) . mapping _Nat
 
 -- | The unique ID of the detector that specifies the GuardDuty service where you want to update a filter.
 ufDetectorId :: Lens' UpdateFilter Text
@@ -115,7 +115,7 @@ instance AWSRequest UpdateFilter where
           = receiveJSON
               (\ s h x ->
                  UpdateFilterResponse' <$>
-                   (x .?> "name") <*> (pure (fromEnum s)))
+                   (pure (fromEnum s)) <*> (x .:> "name"))
 
 instance Hashable UpdateFilter where
 
@@ -147,31 +147,33 @@ instance ToQuery UpdateFilter where
         toQuery = const mempty
 
 -- | /See:/ 'updateFilterResponse' smart constructor.
-data UpdateFilterResponse = UpdateFilterResponse'{_ufrsName
-                                                  :: !(Maybe Text),
-                                                  _ufrsResponseStatus :: !Int}
+data UpdateFilterResponse = UpdateFilterResponse'{_ufrsResponseStatus
+                                                  :: !Int,
+                                                  _ufrsName :: !Text}
                               deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UpdateFilterResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'ufrsName' - The name of the filter.
---
 -- * 'ufrsResponseStatus' - -- | The response status code.
+--
+-- * 'ufrsName' - The name of the filter.
 updateFilterResponse
     :: Int -- ^ 'ufrsResponseStatus'
+    -> Text -- ^ 'ufrsName'
     -> UpdateFilterResponse
-updateFilterResponse pResponseStatus_
-  = UpdateFilterResponse'{_ufrsName = Nothing,
-                          _ufrsResponseStatus = pResponseStatus_}
-
--- | The name of the filter.
-ufrsName :: Lens' UpdateFilterResponse (Maybe Text)
-ufrsName = lens _ufrsName (\ s a -> s{_ufrsName = a})
+updateFilterResponse pResponseStatus_ pName_
+  = UpdateFilterResponse'{_ufrsResponseStatus =
+                            pResponseStatus_,
+                          _ufrsName = pName_}
 
 -- | -- | The response status code.
 ufrsResponseStatus :: Lens' UpdateFilterResponse Int
 ufrsResponseStatus = lens _ufrsResponseStatus (\ s a -> s{_ufrsResponseStatus = a})
+
+-- | The name of the filter.
+ufrsName :: Lens' UpdateFilterResponse Text
+ufrsName = lens _ufrsName (\ s a -> s{_ufrsName = a})
 
 instance NFData UpdateFilterResponse where

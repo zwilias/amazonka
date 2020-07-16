@@ -22,7 +22,11 @@ import Network.AWS.Prelude
 import Network.AWS.S3.Internal
 import Network.AWS.S3.Types.Protocol
 
--- | /See:/ 'redirect' smart constructor.
+-- | Specifies how requests are redirected. In the event of an error, you can specify a different error code to return.
+--
+--
+--
+-- /See:/ 'redirect' smart constructor.
 data Redirect = Redirect'{_rHostName ::
                           !(Maybe Text),
                           _rProtocol :: !(Maybe Protocol),
@@ -37,13 +41,13 @@ data Redirect = Redirect'{_rHostName ::
 --
 -- * 'rHostName' - The host name to use in the redirect request.
 --
--- * 'rProtocol' - Protocol to use (http, https) when redirecting requests. The default is the protocol that is used in the original request.
+-- * 'rProtocol' - Protocol to use when redirecting requests. The default is the protocol that is used in the original request.
 --
 -- * 'rHTTPRedirectCode' - The HTTP redirect code to use on the response. Not required if one of the siblings is present.
 --
--- * 'rReplaceKeyWith' - The specific object key to use in the redirect request. For example, redirect request to error.html. Not required if one of the sibling is present. Can be present only if ReplaceKeyPrefixWith is not provided.
+-- * 'rReplaceKeyWith' - The specific object key to use in the redirect request. For example, redirect request to @error.html@ . Not required if one of the siblings is present. Can be present only if @ReplaceKeyPrefixWith@ is not provided.
 --
--- * 'rReplaceKeyPrefixWith' - The object key prefix to use in the redirect request. For example, to redirect requests for all pages with prefix docs/ (objects in the docs/ folder) to documents/, you can set a condition block with KeyPrefixEquals set to docs/ and in the Redirect set ReplaceKeyPrefixWith to /documents. Not required if one of the siblings is present. Can be present only if ReplaceKeyWith is not provided.
+-- * 'rReplaceKeyPrefixWith' - The object key prefix to use in the redirect request. For example, to redirect requests for all pages with prefix @docs/@ (objects in the @docs/@ folder) to @documents/@ , you can set a condition block with @KeyPrefixEquals@ set to @docs/@ and in the Redirect set @ReplaceKeyPrefixWith@ to @/documents@ . Not required if one of the siblings is present. Can be present only if @ReplaceKeyWith@ is not provided.
 redirect
     :: Redirect
 redirect
@@ -56,7 +60,7 @@ redirect
 rHostName :: Lens' Redirect (Maybe Text)
 rHostName = lens _rHostName (\ s a -> s{_rHostName = a})
 
--- | Protocol to use (http, https) when redirecting requests. The default is the protocol that is used in the original request.
+-- | Protocol to use when redirecting requests. The default is the protocol that is used in the original request.
 rProtocol :: Lens' Redirect (Maybe Protocol)
 rProtocol = lens _rProtocol (\ s a -> s{_rProtocol = a})
 
@@ -64,11 +68,11 @@ rProtocol = lens _rProtocol (\ s a -> s{_rProtocol = a})
 rHTTPRedirectCode :: Lens' Redirect (Maybe Text)
 rHTTPRedirectCode = lens _rHTTPRedirectCode (\ s a -> s{_rHTTPRedirectCode = a})
 
--- | The specific object key to use in the redirect request. For example, redirect request to error.html. Not required if one of the sibling is present. Can be present only if ReplaceKeyPrefixWith is not provided.
+-- | The specific object key to use in the redirect request. For example, redirect request to @error.html@ . Not required if one of the siblings is present. Can be present only if @ReplaceKeyPrefixWith@ is not provided.
 rReplaceKeyWith :: Lens' Redirect (Maybe Text)
 rReplaceKeyWith = lens _rReplaceKeyWith (\ s a -> s{_rReplaceKeyWith = a})
 
--- | The object key prefix to use in the redirect request. For example, to redirect requests for all pages with prefix docs/ (objects in the docs/ folder) to documents/, you can set a condition block with KeyPrefixEquals set to docs/ and in the Redirect set ReplaceKeyPrefixWith to /documents. Not required if one of the siblings is present. Can be present only if ReplaceKeyWith is not provided.
+-- | The object key prefix to use in the redirect request. For example, to redirect requests for all pages with prefix @docs/@ (objects in the @docs/@ folder) to @documents/@ , you can set a condition block with @KeyPrefixEquals@ set to @docs/@ and in the Redirect set @ReplaceKeyPrefixWith@ to @/documents@ . Not required if one of the siblings is present. Can be present only if @ReplaceKeyWith@ is not provided.
 rReplaceKeyPrefixWith :: Lens' Redirect (Maybe Text)
 rReplaceKeyPrefixWith = lens _rReplaceKeyPrefixWith (\ s a -> s{_rReplaceKeyPrefixWith = a})
 

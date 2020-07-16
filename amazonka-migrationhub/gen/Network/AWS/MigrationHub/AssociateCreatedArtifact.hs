@@ -74,7 +74,7 @@ data AssociateCreatedArtifact = AssociateCreatedArtifact'{_acaDryRun
 --
 -- * 'acaProgressUpdateStream' - The name of the ProgressUpdateStream. 
 --
--- * 'acaMigrationTaskName' - Unique identifier that references the migration task.
+-- * 'acaMigrationTaskName' - Unique identifier that references the migration task. /Do not store personal data in this field./ 
 --
 -- * 'acaCreatedArtifact' - An ARN of the AWS resource related to the migration (e.g., AMI, EC2 instance, RDS instance, etc.) 
 associateCreatedArtifact
@@ -97,7 +97,7 @@ acaDryRun = lens _acaDryRun (\ s a -> s{_acaDryRun = a})
 acaProgressUpdateStream :: Lens' AssociateCreatedArtifact Text
 acaProgressUpdateStream = lens _acaProgressUpdateStream (\ s a -> s{_acaProgressUpdateStream = a})
 
--- | Unique identifier that references the migration task.
+-- | Unique identifier that references the migration task. /Do not store personal data in this field./ 
 acaMigrationTaskName :: Lens' AssociateCreatedArtifact Text
 acaMigrationTaskName = lens _acaMigrationTaskName (\ s a -> s{_acaMigrationTaskName = a})
 

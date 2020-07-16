@@ -22,7 +22,9 @@ import Network.AWS.Prelude
 import Network.AWS.S3.Internal
 import Network.AWS.S3.Types.QuoteFields
 
--- | Describes how CSV-formatted results are formatted.
+-- | Describes how uncompressed comma-separated values (CSV)-formatted results are formatted.
+--
+--
 --
 -- /See:/ 'csvOutput' smart constructor.
 data CSVOutput = CSVOutput'{_coQuoteCharacter ::
@@ -37,15 +39,15 @@ data CSVOutput = CSVOutput'{_coQuoteCharacter ::
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'coQuoteCharacter' - Value used for escaping where the field delimiter is part of the value.
+-- * 'coQuoteCharacter' - A single character used for escaping when the field delimiter is part of the value. For example, if the value is @a, b@ , Amazon S3 wraps this field value in quotation marks, as follows: @" a , b "@ .
 --
--- * 'coQuoteFields' - Indicates whether or not all output fields should be quoted.
+-- * 'coQuoteFields' - Indicates whether to use quotation marks around output fields.      * @ALWAYS@ : Always use quotation marks for output fields.     * @ASNEEDED@ : Use quotation marks for output fields when needed.
 --
--- * 'coRecordDelimiter' - Value used to separate individual records.
+-- * 'coRecordDelimiter' - A single character used to separate individual records in the output. Instead of the default value, you can specify an arbitrary delimiter.
 --
--- * 'coQuoteEscapeCharacter' - Single character used for escaping the quote character inside an already escaped value.
+-- * 'coQuoteEscapeCharacter' - The single character used for escaping the quote character inside an already escaped value.
 --
--- * 'coFieldDelimiter' - Value used to separate individual fields in a record.
+-- * 'coFieldDelimiter' - The value used to separate individual fields in a record. You can specify an arbitrary delimiter.
 csvOutput
     :: CSVOutput
 csvOutput
@@ -55,23 +57,23 @@ csvOutput
                _coQuoteEscapeCharacter = Nothing,
                _coFieldDelimiter = Nothing}
 
--- | Value used for escaping where the field delimiter is part of the value.
+-- | A single character used for escaping when the field delimiter is part of the value. For example, if the value is @a, b@ , Amazon S3 wraps this field value in quotation marks, as follows: @" a , b "@ .
 coQuoteCharacter :: Lens' CSVOutput (Maybe Text)
 coQuoteCharacter = lens _coQuoteCharacter (\ s a -> s{_coQuoteCharacter = a})
 
--- | Indicates whether or not all output fields should be quoted.
+-- | Indicates whether to use quotation marks around output fields.      * @ALWAYS@ : Always use quotation marks for output fields.     * @ASNEEDED@ : Use quotation marks for output fields when needed.
 coQuoteFields :: Lens' CSVOutput (Maybe QuoteFields)
 coQuoteFields = lens _coQuoteFields (\ s a -> s{_coQuoteFields = a})
 
--- | Value used to separate individual records.
+-- | A single character used to separate individual records in the output. Instead of the default value, you can specify an arbitrary delimiter.
 coRecordDelimiter :: Lens' CSVOutput (Maybe Text)
 coRecordDelimiter = lens _coRecordDelimiter (\ s a -> s{_coRecordDelimiter = a})
 
--- | Single character used for escaping the quote character inside an already escaped value.
+-- | The single character used for escaping the quote character inside an already escaped value.
 coQuoteEscapeCharacter :: Lens' CSVOutput (Maybe Text)
 coQuoteEscapeCharacter = lens _coQuoteEscapeCharacter (\ s a -> s{_coQuoteEscapeCharacter = a})
 
--- | Value used to separate individual fields in a record.
+-- | The value used to separate individual fields in a record. You can specify an arbitrary delimiter.
 coFieldDelimiter :: Lens' CSVOutput (Maybe Text)
 coFieldDelimiter = lens _coFieldDelimiter (\ s a -> s{_coFieldDelimiter = a})
 

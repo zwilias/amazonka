@@ -64,7 +64,7 @@ data GetPlan = GetPlan'{_gpSinks ::
 --
 -- * 'gpSinks' - The target tables.
 --
--- * 'gpLocation' - Parameters for the mapping.
+-- * 'gpLocation' - The parameters for the mapping.
 --
 -- * 'gpLanguage' - The programming language of the code to perform the mapping.
 --
@@ -83,7 +83,7 @@ getPlan pSource_
 gpSinks :: Lens' GetPlan [CatalogEntry]
 gpSinks = lens _gpSinks (\ s a -> s{_gpSinks = a}) . _Default . _Coerce
 
--- | Parameters for the mapping.
+-- | The parameters for the mapping.
 gpLocation :: Lens' GetPlan (Maybe Location)
 gpLocation = lens _gpLocation (\ s a -> s{_gpLocation = a})
 
@@ -150,7 +150,7 @@ data GetPlanResponse = GetPlanResponse'{_gtplnrsPythonScript
 --
 -- * 'gtplnrsPythonScript' - A Python script to perform the mapping.
 --
--- * 'gtplnrsScalaCode' - Scala code to perform the mapping.
+-- * 'gtplnrsScalaCode' - The Scala code to perform the mapping.
 --
 -- * 'gtplnrsResponseStatus' - -- | The response status code.
 getPlanResponse
@@ -165,7 +165,7 @@ getPlanResponse pResponseStatus_
 gtplnrsPythonScript :: Lens' GetPlanResponse (Maybe Text)
 gtplnrsPythonScript = lens _gtplnrsPythonScript (\ s a -> s{_gtplnrsPythonScript = a})
 
--- | Scala code to perform the mapping.
+-- | The Scala code to perform the mapping.
 gtplnrsScalaCode :: Lens' GetPlanResponse (Maybe Text)
 gtplnrsScalaCode = lens _gtplnrsScalaCode (\ s a -> s{_gtplnrsScalaCode = a})
 

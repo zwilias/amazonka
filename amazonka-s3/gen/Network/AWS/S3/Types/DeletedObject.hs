@@ -21,7 +21,11 @@ import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.S3.Internal
 
--- | /See:/ 'deletedObject' smart constructor.
+-- | Information about the deleted object.
+--
+--
+--
+-- /See:/ 'deletedObject' smart constructor.
 data DeletedObject = DeletedObject'{_dVersionId ::
                                     !(Maybe ObjectVersionId),
                                     _dDeleteMarker :: !(Maybe Bool),
@@ -33,13 +37,13 @@ data DeletedObject = DeletedObject'{_dVersionId ::
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dVersionId' - Undocumented member.
+-- * 'dVersionId' - The version ID of the deleted object.
 --
--- * 'dDeleteMarker' - Undocumented member.
+-- * 'dDeleteMarker' - Specifies whether the versioned object that was permanently deleted was (true) or was not (false) a delete marker. In a simple DELETE, this header indicates whether (true) or not (false) a delete marker was created.
 --
--- * 'dDeleteMarkerVersionId' - Undocumented member.
+-- * 'dDeleteMarkerVersionId' - The version ID of the delete marker created as a result of the DELETE operation. If you delete a specific object version, the value returned by this header is the version ID of the object version deleted.
 --
--- * 'dKey' - Undocumented member.
+-- * 'dKey' - The name of the deleted object.
 deletedObject
     :: DeletedObject
 deletedObject
@@ -47,19 +51,19 @@ deletedObject
                    _dDeleteMarker = Nothing,
                    _dDeleteMarkerVersionId = Nothing, _dKey = Nothing}
 
--- | Undocumented member.
+-- | The version ID of the deleted object.
 dVersionId :: Lens' DeletedObject (Maybe ObjectVersionId)
 dVersionId = lens _dVersionId (\ s a -> s{_dVersionId = a})
 
--- | Undocumented member.
+-- | Specifies whether the versioned object that was permanently deleted was (true) or was not (false) a delete marker. In a simple DELETE, this header indicates whether (true) or not (false) a delete marker was created.
 dDeleteMarker :: Lens' DeletedObject (Maybe Bool)
 dDeleteMarker = lens _dDeleteMarker (\ s a -> s{_dDeleteMarker = a})
 
--- | Undocumented member.
+-- | The version ID of the delete marker created as a result of the DELETE operation. If you delete a specific object version, the value returned by this header is the version ID of the object version deleted.
 dDeleteMarkerVersionId :: Lens' DeletedObject (Maybe Text)
 dDeleteMarkerVersionId = lens _dDeleteMarkerVersionId (\ s a -> s{_dDeleteMarkerVersionId = a})
 
--- | Undocumented member.
+-- | The name of the deleted object.
 dKey :: Lens' DeletedObject (Maybe ObjectKey)
 dKey = lens _dKey (\ s a -> s{_dKey = a})
 

@@ -20,42 +20,46 @@ module Network.AWS.Pinpoint.Types.ADMChannelRequest where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | Amazon Device Messaging channel definition.
+-- | Specifies the status and settings of the ADM (Amazon Device Messaging) channel for an application.
+--
+--
 --
 -- /See:/ 'aDMChannelRequest' smart constructor.
-data ADMChannelRequest = ADMChannelRequest'{_admcrClientId
-                                            :: !(Maybe Text),
-                                            _admcrClientSecret :: !(Maybe Text),
-                                            _admcrEnabled :: !(Maybe Bool)}
+data ADMChannelRequest = ADMChannelRequest'{_admcrEnabled
+                                            :: !(Maybe Bool),
+                                            _admcrClientSecret :: !Text,
+                                            _admcrClientId :: !Text}
                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ADMChannelRequest' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'admcrClientId' - Client ID as gotten from Amazon
+-- * 'admcrEnabled' - Specifies whether to enable the ADM channel for the application.
 --
--- * 'admcrClientSecret' - Client secret as gotten from Amazon
+-- * 'admcrClientSecret' - The Client Secret that you received from Amazon to send messages by using ADM.
 --
--- * 'admcrEnabled' - If the channel is enabled for sending messages.
+-- * 'admcrClientId' - The Client ID that you received from Amazon to send messages by using ADM.
 aDMChannelRequest
-    :: ADMChannelRequest
-aDMChannelRequest
-  = ADMChannelRequest'{_admcrClientId = Nothing,
-                       _admcrClientSecret = Nothing,
-                       _admcrEnabled = Nothing}
+    :: Text -- ^ 'admcrClientSecret'
+    -> Text -- ^ 'admcrClientId'
+    -> ADMChannelRequest
+aDMChannelRequest pClientSecret_ pClientId_
+  = ADMChannelRequest'{_admcrEnabled = Nothing,
+                       _admcrClientSecret = pClientSecret_,
+                       _admcrClientId = pClientId_}
 
--- | Client ID as gotten from Amazon
-admcrClientId :: Lens' ADMChannelRequest (Maybe Text)
-admcrClientId = lens _admcrClientId (\ s a -> s{_admcrClientId = a})
-
--- | Client secret as gotten from Amazon
-admcrClientSecret :: Lens' ADMChannelRequest (Maybe Text)
-admcrClientSecret = lens _admcrClientSecret (\ s a -> s{_admcrClientSecret = a})
-
--- | If the channel is enabled for sending messages.
+-- | Specifies whether to enable the ADM channel for the application.
 admcrEnabled :: Lens' ADMChannelRequest (Maybe Bool)
 admcrEnabled = lens _admcrEnabled (\ s a -> s{_admcrEnabled = a})
+
+-- | The Client Secret that you received from Amazon to send messages by using ADM.
+admcrClientSecret :: Lens' ADMChannelRequest Text
+admcrClientSecret = lens _admcrClientSecret (\ s a -> s{_admcrClientSecret = a})
+
+-- | The Client ID that you received from Amazon to send messages by using ADM.
+admcrClientId :: Lens' ADMChannelRequest Text
+admcrClientId = lens _admcrClientId (\ s a -> s{_admcrClientId = a})
 
 instance Hashable ADMChannelRequest where
 
@@ -65,6 +69,6 @@ instance ToJSON ADMChannelRequest where
         toJSON ADMChannelRequest'{..}
           = object
               (catMaybes
-                 [("ClientId" .=) <$> _admcrClientId,
-                  ("ClientSecret" .=) <$> _admcrClientSecret,
-                  ("Enabled" .=) <$> _admcrEnabled])
+                 [("Enabled" .=) <$> _admcrEnabled,
+                  Just ("ClientSecret" .= _admcrClientSecret),
+                  Just ("ClientId" .= _admcrClientId)])

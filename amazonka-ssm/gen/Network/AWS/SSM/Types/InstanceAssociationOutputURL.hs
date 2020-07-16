@@ -21,7 +21,7 @@ import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.SSM.Types.S3OutputURL
 
--- | The URL of Amazon S3 bucket where you want to store the results of this request.
+-- | The URL of S3 bucket where you want to store the results of this request.
 --
 --
 --
@@ -37,14 +37,14 @@ newtype InstanceAssociationOutputURL = InstanceAssociationOutputURL'{_iaouS3Outp
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'iaouS3OutputURL' - The URL of Amazon S3 bucket where you want to store the results of this request.
+-- * 'iaouS3OutputURL' - The URL of S3 bucket where you want to store the results of this request.
 instanceAssociationOutputURL
     :: InstanceAssociationOutputURL
 instanceAssociationOutputURL
   = InstanceAssociationOutputURL'{_iaouS3OutputURL =
                                     Nothing}
 
--- | The URL of Amazon S3 bucket where you want to store the results of this request.
+-- | The URL of S3 bucket where you want to store the results of this request.
 iaouS3OutputURL :: Lens' InstanceAssociationOutputURL (Maybe S3OutputURL)
 iaouS3OutputURL = lens _iaouS3OutputURL (\ s a -> s{_iaouS3OutputURL = a})
 

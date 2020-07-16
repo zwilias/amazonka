@@ -22,8 +22,22 @@ import Network.AWS.KinesisVideoArchivedMedia.Types.TimestampRange
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | Describes the time stamp range and time stamp origin of a range of fragments.
+-- | Describes the timestamp range and timestamp origin of a range of fragments.
 --
+--
+-- Only fragments with a start timestamp greater than or equal to the given start time and less than or equal to the end time are returned. For example, if a stream contains fragments with the following start timestamps: 
+--
+--     * 00:00:00
+--
+--     * 00:00:02
+--
+--     * 00:00:04
+--
+--     * 00:00:06
+--
+--
+--
+-- A fragment selector range with a start time of 00:00:01 and end time of 00:00:04 would return the fragments with start times of 00:00:02 and 00:00:04. 
 --
 --
 -- /See:/ 'fragmentSelector' smart constructor.
@@ -36,9 +50,9 @@ data FragmentSelector = FragmentSelector'{_fsFragmentSelectorType
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'fsFragmentSelectorType' - The origin of the time stamps to use (Server or Producer).
+-- * 'fsFragmentSelectorType' - The origin of the timestamps to use (Server or Producer).
 --
--- * 'fsTimestampRange' - The range of time stamps to return.
+-- * 'fsTimestampRange' - The range of timestamps to return.
 fragmentSelector
     :: FragmentSelectorType -- ^ 'fsFragmentSelectorType'
     -> TimestampRange -- ^ 'fsTimestampRange'
@@ -49,11 +63,11 @@ fragmentSelector pFragmentSelectorType_
                         pFragmentSelectorType_,
                       _fsTimestampRange = pTimestampRange_}
 
--- | The origin of the time stamps to use (Server or Producer).
+-- | The origin of the timestamps to use (Server or Producer).
 fsFragmentSelectorType :: Lens' FragmentSelector FragmentSelectorType
 fsFragmentSelectorType = lens _fsFragmentSelectorType (\ s a -> s{_fsFragmentSelectorType = a})
 
--- | The range of time stamps to return.
+-- | The range of timestamps to return.
 fsTimestampRange :: Lens' FragmentSelector TimestampRange
 fsTimestampRange = lens _fsTimestampRange (\ s a -> s{_fsTimestampRange = a})
 

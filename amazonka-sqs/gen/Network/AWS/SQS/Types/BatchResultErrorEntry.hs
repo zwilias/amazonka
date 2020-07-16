@@ -20,7 +20,7 @@ module Network.AWS.SQS.Types.BatchResultErrorEntry where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | This is used in the responses of batch API to give a detailed description of the result of an action on each entry in the request.
+-- | Gives a detailed description of the result of an action on each entry in the request.
 --
 --
 --
@@ -41,7 +41,7 @@ data BatchResultErrorEntry = BatchResultErrorEntry'{_breeMessage
 --
 -- * 'breeId' - The @Id@ of an entry in a batch request.
 --
--- * 'breeSenderFault' - Specifies whether the error happened due to the sender's fault.
+-- * 'breeSenderFault' - Specifies whether the error happened due to the producer.
 --
 -- * 'breeCode' - An error code representing why the action failed on this entry.
 batchResultErrorEntry
@@ -62,7 +62,7 @@ breeMessage = lens _breeMessage (\ s a -> s{_breeMessage = a})
 breeId :: Lens' BatchResultErrorEntry Text
 breeId = lens _breeId (\ s a -> s{_breeId = a})
 
--- | Specifies whether the error happened due to the sender's fault.
+-- | Specifies whether the error happened due to the producer.
 breeSenderFault :: Lens' BatchResultErrorEntry Bool
 breeSenderFault = lens _breeSenderFault (\ s a -> s{_breeSenderFault = a})
 

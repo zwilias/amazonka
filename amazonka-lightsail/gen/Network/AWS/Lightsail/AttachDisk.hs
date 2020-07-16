@@ -21,6 +21,8 @@
 -- Attaches a block storage disk to a running or stopped Lightsail instance and exposes it to the instance with the specified disk name.
 --
 --
+-- The @attach disk@ operation supports tag-based access control via resource tags applied to the resource identified by @disk name@ . For more information, see the <https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags Lightsail Dev Guide> .
+--
 module Network.AWS.Lightsail.AttachDisk
     (
     -- * Creating a Request
@@ -129,7 +131,7 @@ data AttachDiskResponse = AttachDiskResponse'{_adrsOperations
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'adrsOperations' - An object describing the API operations.
+-- * 'adrsOperations' - An array of objects that describe the result of the action, such as the status of the request, the time stamp of the request, and the resources affected by the request.
 --
 -- * 'adrsResponseStatus' - -- | The response status code.
 attachDiskResponse
@@ -139,7 +141,7 @@ attachDiskResponse pResponseStatus_
   = AttachDiskResponse'{_adrsOperations = Nothing,
                         _adrsResponseStatus = pResponseStatus_}
 
--- | An object describing the API operations.
+-- | An array of objects that describe the result of the action, such as the status of the request, the time stamp of the request, and the resources affected by the request.
 adrsOperations :: Lens' AttachDiskResponse [Operation]
 adrsOperations = lens _adrsOperations (\ s a -> s{_adrsOperations = a}) . _Default . _Coerce
 

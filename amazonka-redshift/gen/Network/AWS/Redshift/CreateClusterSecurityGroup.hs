@@ -21,7 +21,7 @@
 -- Creates a new Amazon Redshift security group. You use security groups to control access to non-VPC clusters.
 --
 --
--- For information about managing security groups, go to <http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-security-groups.html Amazon Redshift Cluster Security Groups> in the /Amazon Redshift Cluster Management Guide/ .
+-- For information about managing security groups, go to <https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-security-groups.html Amazon Redshift Cluster Security Groups> in the /Amazon Redshift Cluster Management Guide/ .
 --
 module Network.AWS.Redshift.CreateClusterSecurityGroup
     (

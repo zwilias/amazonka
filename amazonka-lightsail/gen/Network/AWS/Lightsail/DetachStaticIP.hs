@@ -111,7 +111,7 @@ data DetachStaticIPResponse = DetachStaticIPResponse'{_dsirsOperations
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dsirsOperations' - An array of key-value pairs containing information about the results of your detach static IP request.
+-- * 'dsirsOperations' - An array of objects that describe the result of the action, such as the status of the request, the time stamp of the request, and the resources affected by the request.
 --
 -- * 'dsirsResponseStatus' - -- | The response status code.
 detachStaticIPResponse
@@ -121,7 +121,7 @@ detachStaticIPResponse pResponseStatus_
   = DetachStaticIPResponse'{_dsirsOperations = Nothing,
                             _dsirsResponseStatus = pResponseStatus_}
 
--- | An array of key-value pairs containing information about the results of your detach static IP request.
+-- | An array of objects that describe the result of the action, such as the status of the request, the time stamp of the request, and the resources affected by the request.
 dsirsOperations :: Lens' DetachStaticIPResponse [Operation]
 dsirsOperations = lens _dsirsOperations (\ s a -> s{_dsirsOperations = a}) . _Default . _Coerce
 

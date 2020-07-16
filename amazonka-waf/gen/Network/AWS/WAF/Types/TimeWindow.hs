@@ -23,6 +23,8 @@ import Network.AWS.Prelude
 -- | In a 'GetSampledRequests' request, the @StartTime@ and @EndTime@ objects specify the time range for which you want AWS WAF to return a sample of web requests.
 --
 --
+-- You must specify the times in Coordinated Universal Time (UTC) format. UTC format includes the special designator, @Z@ . For example, @"2016-09-27T14:50Z"@ . 
+--
 -- In a 'GetSampledRequests' response, the @StartTime@ and @EndTime@ objects specify the time range for which AWS WAF actually returned a sample of web requests. AWS WAF gets the specified number of requests from among the first 5,000 requests that your AWS resource receives during the specified time period. If your resource receives more than 5,000 requests during that period, AWS WAF stops sampling after the 5,000th request. In that case, @EndTime@ is the time that AWS WAF received the 5,000th request. 
 --
 --
@@ -35,9 +37,9 @@ data TimeWindow = TimeWindow'{_twStartTime :: !POSIX,
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'twStartTime' - The beginning of the time range from which you want @GetSampledRequests@ to return a sample of the requests that your AWS resource received. Specify the date and time in the following format: @"2016-09-27T14:50Z"@ . You can specify any time range in the previous three hours.
+-- * 'twStartTime' - The beginning of the time range from which you want @GetSampledRequests@ to return a sample of the requests that your AWS resource received. You must specify the date and time in Coordinated Universal Time (UTC) format. UTC format includes the special designator, @Z@ . For example, @"2016-09-27T14:50Z"@ . You can specify any time range in the previous three hours.
 --
--- * 'twEndTime' - The end of the time range from which you want @GetSampledRequests@ to return a sample of the requests that your AWS resource received. Specify the date and time in the following format: @"2016-09-27T14:50Z"@ . You can specify any time range in the previous three hours.
+-- * 'twEndTime' - The end of the time range from which you want @GetSampledRequests@ to return a sample of the requests that your AWS resource received. You must specify the date and time in Coordinated Universal Time (UTC) format. UTC format includes the special designator, @Z@ . For example, @"2016-09-27T14:50Z"@ . You can specify any time range in the previous three hours.
 timeWindow
     :: UTCTime -- ^ 'twStartTime'
     -> UTCTime -- ^ 'twEndTime'
@@ -46,11 +48,11 @@ timeWindow pStartTime_ pEndTime_
   = TimeWindow'{_twStartTime = _Time # pStartTime_,
                 _twEndTime = _Time # pEndTime_}
 
--- | The beginning of the time range from which you want @GetSampledRequests@ to return a sample of the requests that your AWS resource received. Specify the date and time in the following format: @"2016-09-27T14:50Z"@ . You can specify any time range in the previous three hours.
+-- | The beginning of the time range from which you want @GetSampledRequests@ to return a sample of the requests that your AWS resource received. You must specify the date and time in Coordinated Universal Time (UTC) format. UTC format includes the special designator, @Z@ . For example, @"2016-09-27T14:50Z"@ . You can specify any time range in the previous three hours.
 twStartTime :: Lens' TimeWindow UTCTime
 twStartTime = lens _twStartTime (\ s a -> s{_twStartTime = a}) . _Time
 
--- | The end of the time range from which you want @GetSampledRequests@ to return a sample of the requests that your AWS resource received. Specify the date and time in the following format: @"2016-09-27T14:50Z"@ . You can specify any time range in the previous three hours.
+-- | The end of the time range from which you want @GetSampledRequests@ to return a sample of the requests that your AWS resource received. You must specify the date and time in Coordinated Universal Time (UTC) format. UTC format includes the special designator, @Z@ . For example, @"2016-09-27T14:50Z"@ . You can specify any time range in the previous three hours.
 twEndTime :: Lens' TimeWindow UTCTime
 twEndTime = lens _twEndTime (\ s a -> s{_twEndTime = a}) . _Time
 

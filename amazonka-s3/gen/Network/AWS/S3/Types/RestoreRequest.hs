@@ -28,6 +28,8 @@ import Network.AWS.S3.Types.Tier
 
 -- | Container for restore job parameters.
 --
+--
+--
 -- /See:/ 'restoreRequest' smart constructor.
 data RestoreRequest = RestoreRequest'{_rrDays ::
                                       !(Maybe Int),
@@ -46,7 +48,7 @@ data RestoreRequest = RestoreRequest'{_rrDays ::
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'rrDays' - Lifetime of the active copy in days. Do not use with restores that specify OutputLocation.
+-- * 'rrDays' - Lifetime of the active copy in days. Do not use with restores that specify @OutputLocation@ .
 --
 -- * 'rrSelectParameters' - Describes the parameters for Select job types.
 --
@@ -54,7 +56,7 @@ data RestoreRequest = RestoreRequest'{_rrDays ::
 --
 -- * 'rrTier' - Glacier retrieval tier at which the restore will be processed.
 --
--- * 'rrGlacierJobParameters' - Glacier related parameters pertaining to this job. Do not use with restores that specify OutputLocation.
+-- * 'rrGlacierJobParameters' - Glacier related parameters pertaining to this job. Do not use with restores that specify @OutputLocation@ .
 --
 -- * 'rrType' - Type of restore request.
 --
@@ -68,7 +70,7 @@ restoreRequest
                     _rrGlacierJobParameters = Nothing, _rrType = Nothing,
                     _rrDescription = Nothing}
 
--- | Lifetime of the active copy in days. Do not use with restores that specify OutputLocation.
+-- | Lifetime of the active copy in days. Do not use with restores that specify @OutputLocation@ .
 rrDays :: Lens' RestoreRequest (Maybe Int)
 rrDays = lens _rrDays (\ s a -> s{_rrDays = a})
 
@@ -84,7 +86,7 @@ rrOutputLocation = lens _rrOutputLocation (\ s a -> s{_rrOutputLocation = a})
 rrTier :: Lens' RestoreRequest (Maybe Tier)
 rrTier = lens _rrTier (\ s a -> s{_rrTier = a})
 
--- | Glacier related parameters pertaining to this job. Do not use with restores that specify OutputLocation.
+-- | Glacier related parameters pertaining to this job. Do not use with restores that specify @OutputLocation@ .
 rrGlacierJobParameters :: Lens' RestoreRequest (Maybe GlacierJobParameters)
 rrGlacierJobParameters = lens _rrGlacierJobParameters (\ s a -> s{_rrGlacierJobParameters = a})
 

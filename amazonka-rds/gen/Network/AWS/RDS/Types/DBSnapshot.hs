@@ -19,11 +19,12 @@ module Network.AWS.RDS.Types.DBSnapshot where
 
 import Network.AWS.Lens
 import Network.AWS.Prelude
+import Network.AWS.RDS.Types.ProcessorFeature
 
 -- | Contains the details of an Amazon RDS DB snapshot. 
 --
 --
--- This data type is used as a response element in the 'DescribeDBSnapshots' action. 
+-- This data type is used as a response element in the @DescribeDBSnapshots@ action. 
 --
 --
 -- /See:/ 'dbSnapshot' smart constructor.
@@ -41,6 +42,8 @@ data DBSnapshot = DBSnapshot'{_dsEngineVersion ::
                               _dsEngine :: !(Maybe Text),
                               _dsEncrypted :: !(Maybe Bool),
                               _dsDBSnapshotIdentifier :: !(Maybe Text),
+                              _dsProcessorFeatures ::
+                              !(Maybe [ProcessorFeature]),
                               _dsLicenseModel :: !(Maybe Text),
                               _dsSourceDBSnapshotIdentifier :: !(Maybe Text),
                               _dsSnapshotType :: !(Maybe Text),
@@ -49,6 +52,7 @@ data DBSnapshot = DBSnapshot'{_dsEngineVersion ::
                               _dsAvailabilityZone :: !(Maybe Text),
                               _dsSnapshotCreateTime :: !(Maybe ISO8601),
                               _dsAllocatedStorage :: !(Maybe Int),
+                              _dsDBiResourceId :: !(Maybe Text),
                               _dsOptionGroupName :: !(Maybe Text),
                               _dsTimezone :: !(Maybe Text),
                               _dsTDECredentialARN :: !(Maybe Text),
@@ -85,6 +89,8 @@ data DBSnapshot = DBSnapshot'{_dsEngineVersion ::
 --
 -- * 'dsDBSnapshotIdentifier' - Specifies the identifier for the DB snapshot.
 --
+-- * 'dsProcessorFeatures' - The number of CPU cores and the number of threads per core for the DB instance class of the DB instance when the DB snapshot was created.
+--
 -- * 'dsLicenseModel' - License model information for the restored DB instance.
 --
 -- * 'dsSourceDBSnapshotIdentifier' - The DB snapshot Amazon Resource Name (ARN) that the DB snapshot was copied from. It only has value in case of cross-customer or cross-region copy.
@@ -100,6 +106,8 @@ data DBSnapshot = DBSnapshot'{_dsEngineVersion ::
 -- * 'dsSnapshotCreateTime' - Provides the time when the snapshot was taken, in Universal Coordinated Time (UTC).
 --
 -- * 'dsAllocatedStorage' - Specifies the allocated storage size in gibibytes (GiB).
+--
+-- * 'dsDBiResourceId' - The identifier for the source DB instance, which can't be changed and which is unique to an AWS Region.
 --
 -- * 'dsOptionGroupName' - Provides the option group name for the DB snapshot.
 --
@@ -124,6 +132,7 @@ dbSnapshot
                 _dsInstanceCreateTime = Nothing, _dsEngine = Nothing,
                 _dsEncrypted = Nothing,
                 _dsDBSnapshotIdentifier = Nothing,
+                _dsProcessorFeatures = Nothing,
                 _dsLicenseModel = Nothing,
                 _dsSourceDBSnapshotIdentifier = Nothing,
                 _dsSnapshotType = Nothing,
@@ -131,6 +140,7 @@ dbSnapshot
                 _dsKMSKeyId = Nothing, _dsAvailabilityZone = Nothing,
                 _dsSnapshotCreateTime = Nothing,
                 _dsAllocatedStorage = Nothing,
+                _dsDBiResourceId = Nothing,
                 _dsOptionGroupName = Nothing, _dsTimezone = Nothing,
                 _dsTDECredentialARN = Nothing,
                 _dsPercentProgress = Nothing, _dsPort = Nothing,
@@ -184,6 +194,10 @@ dsEncrypted = lens _dsEncrypted (\ s a -> s{_dsEncrypted = a})
 dsDBSnapshotIdentifier :: Lens' DBSnapshot (Maybe Text)
 dsDBSnapshotIdentifier = lens _dsDBSnapshotIdentifier (\ s a -> s{_dsDBSnapshotIdentifier = a})
 
+-- | The number of CPU cores and the number of threads per core for the DB instance class of the DB instance when the DB snapshot was created.
+dsProcessorFeatures :: Lens' DBSnapshot [ProcessorFeature]
+dsProcessorFeatures = lens _dsProcessorFeatures (\ s a -> s{_dsProcessorFeatures = a}) . _Default . _Coerce
+
 -- | License model information for the restored DB instance.
 dsLicenseModel :: Lens' DBSnapshot (Maybe Text)
 dsLicenseModel = lens _dsLicenseModel (\ s a -> s{_dsLicenseModel = a})
@@ -215,6 +229,10 @@ dsSnapshotCreateTime = lens _dsSnapshotCreateTime (\ s a -> s{_dsSnapshotCreateT
 -- | Specifies the allocated storage size in gibibytes (GiB).
 dsAllocatedStorage :: Lens' DBSnapshot (Maybe Int)
 dsAllocatedStorage = lens _dsAllocatedStorage (\ s a -> s{_dsAllocatedStorage = a})
+
+-- | The identifier for the source DB instance, which can't be changed and which is unique to an AWS Region.
+dsDBiResourceId :: Lens' DBSnapshot (Maybe Text)
+dsDBiResourceId = lens _dsDBiResourceId (\ s a -> s{_dsDBiResourceId = a})
 
 -- | Provides the option group name for the DB snapshot.
 dsOptionGroupName :: Lens' DBSnapshot (Maybe Text)
@@ -254,6 +272,9 @@ instance FromXML DBSnapshot where
                 <*> (x .@? "Engine")
                 <*> (x .@? "Encrypted")
                 <*> (x .@? "DBSnapshotIdentifier")
+                <*>
+                (x .@? "ProcessorFeatures" .!@ mempty >>=
+                   may (parseXMLList "ProcessorFeature"))
                 <*> (x .@? "LicenseModel")
                 <*> (x .@? "SourceDBSnapshotIdentifier")
                 <*> (x .@? "SnapshotType")
@@ -262,6 +283,7 @@ instance FromXML DBSnapshot where
                 <*> (x .@? "AvailabilityZone")
                 <*> (x .@? "SnapshotCreateTime")
                 <*> (x .@? "AllocatedStorage")
+                <*> (x .@? "DbiResourceId")
                 <*> (x .@? "OptionGroupName")
                 <*> (x .@? "Timezone")
                 <*> (x .@? "TdeCredentialArn")

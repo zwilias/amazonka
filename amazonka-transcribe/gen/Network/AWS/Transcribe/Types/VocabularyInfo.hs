@@ -22,7 +22,7 @@ import Network.AWS.Prelude
 import Network.AWS.Transcribe.Types.LanguageCode
 import Network.AWS.Transcribe.Types.VocabularyState
 
--- | Provides information about a custom vocabulary.
+-- | Provides information about a custom vocabulary. 
 --
 --
 --

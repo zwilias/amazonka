@@ -32,7 +32,7 @@ import Network.AWS.MediaLive.Types.TtmlDestinationSettings
 import Network.AWS.MediaLive.Types.WebvttDestinationSettings
 import Network.AWS.Prelude
 
--- | Placeholder documentation for CaptionDestinationSettings
+-- | Caption Destination Settings
 --
 -- /See:/ 'captionDestinationSettings' smart constructor.
 data CaptionDestinationSettings = CaptionDestinationSettings'{_cdsTeletextDestinationSettings

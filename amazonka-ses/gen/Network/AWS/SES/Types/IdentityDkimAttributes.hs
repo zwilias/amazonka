@@ -38,9 +38,9 @@ data IdentityDkimAttributes = IdentityDkimAttributes'{_idaDkimTokens
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'idaDkimTokens' - A set of character strings that represent the domain's identity. Using these tokens, you will need to create DNS CNAME records that point to DKIM public keys hosted by Amazon SES. Amazon Web Services will eventually detect that you have updated your DNS records; this detection process may take up to 72 hours. Upon successful detection, Amazon SES will be able to DKIM-sign email originating from that domain. (This only applies to domain identities, not email address identities.) For more information about creating DNS records using DKIM tokens, go to the <http://docs.aws.amazon.com/ses/latest/DeveloperGuide/easy-dkim-dns-records.html Amazon SES Developer Guide> .
+-- * 'idaDkimTokens' - A set of character strings that represent the domain's identity. Using these tokens, you need to create DNS CNAME records that point to DKIM public keys that are hosted by Amazon SES. Amazon Web Services eventually detects that you've updated your DNS records. This detection process might take up to 72 hours. After successful detection, Amazon SES is able to DKIM-sign email originating from that domain. (This only applies to domain identities, not email address identities.) For more information about creating DNS records using DKIM tokens, see the <https://docs.aws.amazon.com/ses/latest/DeveloperGuide/easy-dkim.html Amazon SES Developer Guide> .
 --
--- * 'idaDkimEnabled' - True if DKIM signing is enabled for email sent from the identity; false otherwise. The default value is true.
+-- * 'idaDkimEnabled' - Is true if DKIM signing is enabled for email sent from the identity. It's false otherwise. The default value is true.
 --
 -- * 'idaDkimVerificationStatus' - Describes whether Amazon SES has successfully verified the DKIM DNS records (tokens) published in the domain name's DNS. (This only applies to domain identities, not email address identities.)
 identityDkimAttributes
@@ -54,11 +54,11 @@ identityDkimAttributes pDkimEnabled_
                             _idaDkimVerificationStatus =
                               pDkimVerificationStatus_}
 
--- | A set of character strings that represent the domain's identity. Using these tokens, you will need to create DNS CNAME records that point to DKIM public keys hosted by Amazon SES. Amazon Web Services will eventually detect that you have updated your DNS records; this detection process may take up to 72 hours. Upon successful detection, Amazon SES will be able to DKIM-sign email originating from that domain. (This only applies to domain identities, not email address identities.) For more information about creating DNS records using DKIM tokens, go to the <http://docs.aws.amazon.com/ses/latest/DeveloperGuide/easy-dkim-dns-records.html Amazon SES Developer Guide> .
+-- | A set of character strings that represent the domain's identity. Using these tokens, you need to create DNS CNAME records that point to DKIM public keys that are hosted by Amazon SES. Amazon Web Services eventually detects that you've updated your DNS records. This detection process might take up to 72 hours. After successful detection, Amazon SES is able to DKIM-sign email originating from that domain. (This only applies to domain identities, not email address identities.) For more information about creating DNS records using DKIM tokens, see the <https://docs.aws.amazon.com/ses/latest/DeveloperGuide/easy-dkim.html Amazon SES Developer Guide> .
 idaDkimTokens :: Lens' IdentityDkimAttributes [Text]
 idaDkimTokens = lens _idaDkimTokens (\ s a -> s{_idaDkimTokens = a}) . _Default . _Coerce
 
--- | True if DKIM signing is enabled for email sent from the identity; false otherwise. The default value is true.
+-- | Is true if DKIM signing is enabled for email sent from the identity. It's false otherwise. The default value is true.
 idaDkimEnabled :: Lens' IdentityDkimAttributes Bool
 idaDkimEnabled = lens _idaDkimEnabled (\ s a -> s{_idaDkimEnabled = a})
 

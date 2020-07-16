@@ -19,6 +19,7 @@ module Network.AWS.ResourceGroupsTagging.Types.ResourceTagMapping where
 
 import Network.AWS.Lens
 import Network.AWS.Prelude
+import Network.AWS.ResourceGroupsTagging.Types.ComplianceDetails
 import Network.AWS.ResourceGroupsTagging.Types.Tag
 
 -- | A list of resource ARNs and the tags (keys and values) that are associated with each.
@@ -26,8 +27,9 @@ import Network.AWS.ResourceGroupsTagging.Types.Tag
 --
 --
 -- /See:/ 'resourceTagMapping' smart constructor.
-data ResourceTagMapping = ResourceTagMapping'{_rtmResourceARN
-                                              :: !(Maybe Text),
+data ResourceTagMapping = ResourceTagMapping'{_rtmComplianceDetails
+                                              :: !(Maybe ComplianceDetails),
+                                              _rtmResourceARN :: !(Maybe Text),
                                               _rtmTags :: !(Maybe [Tag])}
                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -35,16 +37,23 @@ data ResourceTagMapping = ResourceTagMapping'{_rtmResourceARN
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'rtmResourceARN' - An array of resource ARN(s).
+-- * 'rtmComplianceDetails' - Information that shows whether a resource is compliant with the effective tag policy, including details on any noncompliant tag keys.
+--
+-- * 'rtmResourceARN' - The ARN of the resource.
 --
 -- * 'rtmTags' - The tags that have been applied to one or more AWS resources.
 resourceTagMapping
     :: ResourceTagMapping
 resourceTagMapping
-  = ResourceTagMapping'{_rtmResourceARN = Nothing,
-                        _rtmTags = Nothing}
+  = ResourceTagMapping'{_rtmComplianceDetails =
+                          Nothing,
+                        _rtmResourceARN = Nothing, _rtmTags = Nothing}
 
--- | An array of resource ARN(s).
+-- | Information that shows whether a resource is compliant with the effective tag policy, including details on any noncompliant tag keys.
+rtmComplianceDetails :: Lens' ResourceTagMapping (Maybe ComplianceDetails)
+rtmComplianceDetails = lens _rtmComplianceDetails (\ s a -> s{_rtmComplianceDetails = a})
+
+-- | The ARN of the resource.
 rtmResourceARN :: Lens' ResourceTagMapping (Maybe Text)
 rtmResourceARN = lens _rtmResourceARN (\ s a -> s{_rtmResourceARN = a})
 
@@ -57,7 +66,8 @@ instance FromJSON ResourceTagMapping where
           = withObject "ResourceTagMapping"
               (\ x ->
                  ResourceTagMapping' <$>
-                   (x .:? "ResourceARN") <*> (x .:? "Tags" .!= mempty))
+                   (x .:? "ComplianceDetails") <*> (x .:? "ResourceARN")
+                     <*> (x .:? "Tags" .!= mempty))
 
 instance Hashable ResourceTagMapping where
 

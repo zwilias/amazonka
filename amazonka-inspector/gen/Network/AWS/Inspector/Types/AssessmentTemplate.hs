@@ -42,7 +42,7 @@ data AssessmentTemplate = AssessmentTemplate'{_atLastAssessmentRunARN
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'atLastAssessmentRunARN' - The Amazon Resource Name (ARN) of the most recent assessment run associated with this assessment template. This value exists only when the value of assessmentRunCount is greater than zero.
+-- * 'atLastAssessmentRunARN' - The Amazon Resource Name (ARN) of the most recent assessment run associated with this assessment template. This value exists only when the value of assessmentRunCount is greaterpa than zero.
 --
 -- * 'atArn' - The ARN of the assessment template.
 --
@@ -50,7 +50,7 @@ data AssessmentTemplate = AssessmentTemplate'{_atLastAssessmentRunARN
 --
 -- * 'atAssessmentTargetARN' - The ARN of the assessment target that corresponds to this assessment template.
 --
--- * 'atDurationInSeconds' - The duration in seconds specified for this assessment tempate. The default value is 3600 seconds (one hour). The maximum value is 86400 seconds (one day).
+-- * 'atDurationInSeconds' - The duration in seconds specified for this assessment template. The default value is 3600 seconds (one hour). The maximum value is 86400 seconds (one day).
 --
 -- * 'atRulesPackageARNs' - The rules packages that are specified for this assessment template.
 --
@@ -79,7 +79,7 @@ assessmentTemplate pArn_ pName_ pAssessmentTargetARN_
                         _atAssessmentRunCount = pAssessmentRunCount_,
                         _atCreatedAt = _Time # pCreatedAt_}
 
--- | The Amazon Resource Name (ARN) of the most recent assessment run associated with this assessment template. This value exists only when the value of assessmentRunCount is greater than zero.
+-- | The Amazon Resource Name (ARN) of the most recent assessment run associated with this assessment template. This value exists only when the value of assessmentRunCount is greaterpa than zero.
 atLastAssessmentRunARN :: Lens' AssessmentTemplate (Maybe Text)
 atLastAssessmentRunARN = lens _atLastAssessmentRunARN (\ s a -> s{_atLastAssessmentRunARN = a})
 
@@ -95,7 +95,7 @@ atName = lens _atName (\ s a -> s{_atName = a})
 atAssessmentTargetARN :: Lens' AssessmentTemplate Text
 atAssessmentTargetARN = lens _atAssessmentTargetARN (\ s a -> s{_atAssessmentTargetARN = a})
 
--- | The duration in seconds specified for this assessment tempate. The default value is 3600 seconds (one hour). The maximum value is 86400 seconds (one day).
+-- | The duration in seconds specified for this assessment template. The default value is 3600 seconds (one hour). The maximum value is 86400 seconds (one day).
 atDurationInSeconds :: Lens' AssessmentTemplate Natural
 atDurationInSeconds = lens _atDurationInSeconds (\ s a -> s{_atDurationInSeconds = a}) . _Nat
 

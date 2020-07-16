@@ -20,7 +20,7 @@ module Network.AWS.ElasticBeanstalk.Types.SourceConfiguration where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | A specification for an environment configuration
+-- | A specification for an environment configuration.
 --
 --
 --

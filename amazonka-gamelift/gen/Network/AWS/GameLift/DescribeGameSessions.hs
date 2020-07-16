@@ -25,8 +25,6 @@
 --
 -- /Available in Amazon GameLift Local./ 
 --
--- Game-session-related operations include:
---
 --     * 'CreateGameSession' 
 --
 --     * 'DescribeGameSessions' 
@@ -51,6 +49,8 @@
 --
 --
 --
+--
+-- This operation returns paginated results.
 module Network.AWS.GameLift.DescribeGameSessions
     (
     -- * Creating a Request
@@ -76,6 +76,7 @@ module Network.AWS.GameLift.DescribeGameSessions
 import Network.AWS.GameLift.Types
 import Network.AWS.GameLift.Types.Product
 import Network.AWS.Lens
+import Network.AWS.Pager
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
@@ -100,17 +101,17 @@ data DescribeGameSessions = DescribeGameSessions'{_dgsGameSessionId
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dgsGameSessionId' - Unique identifier for the game session to retrieve. You can use either a @GameSessionId@ or @GameSessionArn@ value. 
+-- * 'dgsGameSessionId' - A unique identifier for the game session to retrieve. 
 --
--- * 'dgsAliasId' - Unique identifier for an alias associated with the fleet to retrieve all game sessions for. 
+-- * 'dgsAliasId' - A unique identifier for an alias associated with the fleet to retrieve all game sessions for. You can use either the alias ID or ARN value.
 --
 -- * 'dgsNextToken' - Token that indicates the start of the next sequential page of results. Use the token that is returned with a previous call to this action. To start at the beginning of the result set, do not specify a value.
 --
 -- * 'dgsStatusFilter' - Game session status to filter results on. Possible game session statuses include @ACTIVE@ , @TERMINATED@ , @ACTIVATING@ , and @TERMINATING@ (the last two are transitory). 
 --
--- * 'dgsLimit' - Maximum number of results to return. Use this parameter with @NextToken@ to get results as a set of sequential pages.
+-- * 'dgsLimit' - The maximum number of results to return. Use this parameter with @NextToken@ to get results as a set of sequential pages.
 --
--- * 'dgsFleetId' - Unique identifier for a fleet to retrieve all game sessions for.
+-- * 'dgsFleetId' - A unique identifier for a fleet to retrieve all game sessions for. You can use either the fleet ID or ARN value. 
 describeGameSessions
     :: DescribeGameSessions
 describeGameSessions
@@ -119,11 +120,11 @@ describeGameSessions
                           _dgsStatusFilter = Nothing, _dgsLimit = Nothing,
                           _dgsFleetId = Nothing}
 
--- | Unique identifier for the game session to retrieve. You can use either a @GameSessionId@ or @GameSessionArn@ value. 
+-- | A unique identifier for the game session to retrieve. 
 dgsGameSessionId :: Lens' DescribeGameSessions (Maybe Text)
 dgsGameSessionId = lens _dgsGameSessionId (\ s a -> s{_dgsGameSessionId = a})
 
--- | Unique identifier for an alias associated with the fleet to retrieve all game sessions for. 
+-- | A unique identifier for an alias associated with the fleet to retrieve all game sessions for. You can use either the alias ID or ARN value.
 dgsAliasId :: Lens' DescribeGameSessions (Maybe Text)
 dgsAliasId = lens _dgsAliasId (\ s a -> s{_dgsAliasId = a})
 
@@ -135,13 +136,20 @@ dgsNextToken = lens _dgsNextToken (\ s a -> s{_dgsNextToken = a})
 dgsStatusFilter :: Lens' DescribeGameSessions (Maybe Text)
 dgsStatusFilter = lens _dgsStatusFilter (\ s a -> s{_dgsStatusFilter = a})
 
--- | Maximum number of results to return. Use this parameter with @NextToken@ to get results as a set of sequential pages.
+-- | The maximum number of results to return. Use this parameter with @NextToken@ to get results as a set of sequential pages.
 dgsLimit :: Lens' DescribeGameSessions (Maybe Natural)
 dgsLimit = lens _dgsLimit (\ s a -> s{_dgsLimit = a}) . mapping _Nat
 
--- | Unique identifier for a fleet to retrieve all game sessions for.
+-- | A unique identifier for a fleet to retrieve all game sessions for. You can use either the fleet ID or ARN value. 
 dgsFleetId :: Lens' DescribeGameSessions (Maybe Text)
 dgsFleetId = lens _dgsFleetId (\ s a -> s{_dgsFleetId = a})
+
+instance AWSPager DescribeGameSessions where
+        page rq rs
+          | stop (rs ^. dgsrsNextToken) = Nothing
+          | stop (rs ^. dgsrsGameSessions) = Nothing
+          | otherwise =
+            Just $ rq & dgsNextToken .~ rs ^. dgsrsNextToken
 
 instance AWSRequest DescribeGameSessions where
         type Rs DescribeGameSessions =
@@ -206,7 +214,7 @@ data DescribeGameSessionsResponse = DescribeGameSessionsResponse'{_dgsrsGameSess
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dgsrsGameSessions' - Collection of objects containing game session properties for each session matching the request.
+-- * 'dgsrsGameSessions' - A collection of objects containing game session properties for each session matching the request.
 --
 -- * 'dgsrsNextToken' - Token that indicates where to resume retrieving results on the next call to this action. If no token is returned, these results represent the end of the list.
 --
@@ -220,7 +228,7 @@ describeGameSessionsResponse pResponseStatus_
                                   _dgsrsNextToken = Nothing,
                                   _dgsrsResponseStatus = pResponseStatus_}
 
--- | Collection of objects containing game session properties for each session matching the request.
+-- | A collection of objects containing game session properties for each session matching the request.
 dgsrsGameSessions :: Lens' DescribeGameSessionsResponse [GameSession]
 dgsrsGameSessions = lens _dgsrsGameSessions (\ s a -> s{_dgsrsGameSessions = a}) . _Default . _Coerce
 

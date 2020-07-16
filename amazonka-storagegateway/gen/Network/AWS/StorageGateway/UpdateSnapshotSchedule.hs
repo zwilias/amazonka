@@ -32,6 +32,7 @@ module Network.AWS.StorageGateway.UpdateSnapshotSchedule
     , UpdateSnapshotSchedule
     -- * Request Lenses
     , ussDescription
+    , ussTags
     , ussVolumeARN
     , ussStartAt
     , ussRecurrenceInHours
@@ -68,6 +69,8 @@ import Network.AWS.StorageGateway.Types.Product
 -- /See:/ 'updateSnapshotSchedule' smart constructor.
 data UpdateSnapshotSchedule = UpdateSnapshotSchedule'{_ussDescription
                                                       :: !(Maybe Text),
+                                                      _ussTags ::
+                                                      !(Maybe [Tag]),
                                                       _ussVolumeARN :: !Text,
                                                       _ussStartAt :: !Nat,
                                                       _ussRecurrenceInHours ::
@@ -80,6 +83,8 @@ data UpdateSnapshotSchedule = UpdateSnapshotSchedule'{_ussDescription
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'ussDescription' - Optional description of the snapshot that overwrites the existing description.
+--
+-- * 'ussTags' - A list of up to 50 tags that can be assigned to a snapshot. Each tag is a key-value pair.
 --
 -- * 'ussVolumeARN' - The Amazon Resource Name (ARN) of the volume. Use the 'ListVolumes' operation to return a list of gateway volumes.
 --
@@ -94,13 +99,17 @@ updateSnapshotSchedule
 updateSnapshotSchedule pVolumeARN_ pStartAt_
   pRecurrenceInHours_
   = UpdateSnapshotSchedule'{_ussDescription = Nothing,
-                            _ussVolumeARN = pVolumeARN_,
+                            _ussTags = Nothing, _ussVolumeARN = pVolumeARN_,
                             _ussStartAt = _Nat # pStartAt_,
                             _ussRecurrenceInHours = _Nat # pRecurrenceInHours_}
 
 -- | Optional description of the snapshot that overwrites the existing description.
 ussDescription :: Lens' UpdateSnapshotSchedule (Maybe Text)
 ussDescription = lens _ussDescription (\ s a -> s{_ussDescription = a})
+
+-- | A list of up to 50 tags that can be assigned to a snapshot. Each tag is a key-value pair.
+ussTags :: Lens' UpdateSnapshotSchedule [Tag]
+ussTags = lens _ussTags (\ s a -> s{_ussTags = a}) . _Default . _Coerce
 
 -- | The Amazon Resource Name (ARN) of the volume. Use the 'ListVolumes' operation to return a list of gateway volumes.
 ussVolumeARN :: Lens' UpdateSnapshotSchedule Text
@@ -143,6 +152,7 @@ instance ToJSON UpdateSnapshotSchedule where
           = object
               (catMaybes
                  [("Description" .=) <$> _ussDescription,
+                  ("Tags" .=) <$> _ussTags,
                   Just ("VolumeARN" .= _ussVolumeARN),
                   Just ("StartAt" .= _ussStartAt),
                   Just ("RecurrenceInHours" .= _ussRecurrenceInHours)])
@@ -153,7 +163,7 @@ instance ToPath UpdateSnapshotSchedule where
 instance ToQuery UpdateSnapshotSchedule where
         toQuery = const mempty
 
--- | A JSON object containing the of the updated storage volume.
+-- | A JSON object containing the Amazon Resource Name (ARN) of the updated storage volume.
 --
 --
 --
@@ -171,7 +181,7 @@ data UpdateSnapshotScheduleResponse = UpdateSnapshotScheduleResponse'{_ussrsVolu
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'ussrsVolumeARN' - 
+-- * 'ussrsVolumeARN' - The Amazon Resource Name (ARN) of the volume. Use the 'ListVolumes' operation to return a list of gateway volumes.
 --
 -- * 'ussrsResponseStatus' - -- | The response status code.
 updateSnapshotScheduleResponse
@@ -182,7 +192,7 @@ updateSnapshotScheduleResponse pResponseStatus_
                                       Nothing,
                                     _ussrsResponseStatus = pResponseStatus_}
 
--- | 
+-- | The Amazon Resource Name (ARN) of the volume. Use the 'ListVolumes' operation to return a list of gateway volumes.
 ussrsVolumeARN :: Lens' UpdateSnapshotScheduleResponse (Maybe Text)
 ussrsVolumeARN = lens _ussrsVolumeARN (\ s a -> s{_ussrsVolumeARN = a})
 

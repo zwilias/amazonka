@@ -20,11 +20,11 @@ module Network.AWS.MediaConvert.Types.NielsenConfiguration where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | Settings for Nielsen Configuration
+-- | Settings for your Nielsen configuration. If you don't do Nielsen measurement and analytics, ignore these settings. When you enable Nielsen configuration (nielsenConfiguration), MediaConvert enables PCM to ID3 tagging for all outputs in the job. To enable Nielsen configuration programmatically, include an instance of nielsenConfiguration in your JSON job specification. Even if you don't include any children of nielsenConfiguration, you still enable the setting.
 --
 -- /See:/ 'nielsenConfiguration' smart constructor.
 data NielsenConfiguration = NielsenConfiguration'{_ncBreakoutCode
-                                                  :: !(Maybe Int),
+                                                  :: !(Maybe Nat),
                                                   _ncDistributorId ::
                                                   !(Maybe Text)}
                               deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -33,7 +33,7 @@ data NielsenConfiguration = NielsenConfiguration'{_ncBreakoutCode
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'ncBreakoutCode' - Use Nielsen Configuration (NielsenConfiguration) to set the Nielsen measurement system breakout code. Supported values are 0, 3, 7, and 9.
+-- * 'ncBreakoutCode' - Nielsen has discontinued the use of breakout code functionality. If you must include this property, set the value to zero.
 --
 -- * 'ncDistributorId' - Use Distributor ID (DistributorID) to specify the distributor ID that is assigned to your organization by Neilsen.
 nielsenConfiguration
@@ -42,9 +42,9 @@ nielsenConfiguration
   = NielsenConfiguration'{_ncBreakoutCode = Nothing,
                           _ncDistributorId = Nothing}
 
--- | Use Nielsen Configuration (NielsenConfiguration) to set the Nielsen measurement system breakout code. Supported values are 0, 3, 7, and 9.
-ncBreakoutCode :: Lens' NielsenConfiguration (Maybe Int)
-ncBreakoutCode = lens _ncBreakoutCode (\ s a -> s{_ncBreakoutCode = a})
+-- | Nielsen has discontinued the use of breakout code functionality. If you must include this property, set the value to zero.
+ncBreakoutCode :: Lens' NielsenConfiguration (Maybe Natural)
+ncBreakoutCode = lens _ncBreakoutCode (\ s a -> s{_ncBreakoutCode = a}) . mapping _Nat
 
 -- | Use Distributor ID (DistributorID) to specify the distributor ID that is assigned to your organization by Neilsen.
 ncDistributorId :: Lens' NielsenConfiguration (Maybe Text)

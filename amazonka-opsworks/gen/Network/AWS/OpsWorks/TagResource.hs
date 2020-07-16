@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Apply cost-allocation tags to a specified stack or layer in AWS OpsWorks Stacks. For more information about how tagging works, see <http://docs.aws.amazon.com/opsworks/latest/userguide/tagging.html Tags> in the AWS OpsWorks User Guide.
+-- Apply cost-allocation tags to a specified stack or layer in AWS OpsWorks Stacks. For more information about how tagging works, see <https://docs.aws.amazon.com/opsworks/latest/userguide/tagging.html Tags> in the AWS OpsWorks User Guide.
 --
 --
 module Network.AWS.OpsWorks.TagResource

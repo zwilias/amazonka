@@ -21,6 +21,7 @@ module Network.AWS.CertificateManagerPCA.Types.CertificateAuthorityStatus (
     ..
     , Active
     , Creating
+    , Deleted
     , Disabled
     , Expired
     , Failed
@@ -42,6 +43,9 @@ pattern Active = CertificateAuthorityStatus' "ACTIVE"
 pattern Creating :: CertificateAuthorityStatus
 pattern Creating = CertificateAuthorityStatus' "CREATING"
 
+pattern Deleted :: CertificateAuthorityStatus
+pattern Deleted = CertificateAuthorityStatus' "DELETED"
+
 pattern Disabled :: CertificateAuthorityStatus
 pattern Disabled = CertificateAuthorityStatus' "DISABLED"
 
@@ -57,6 +61,7 @@ pattern PendingCertificate = CertificateAuthorityStatus' "PENDING_CERTIFICATE"
 {-# COMPLETE
   Active,
   Creating,
+  Deleted,
   Disabled,
   Expired,
   Failed,
@@ -77,18 +82,20 @@ instance Enum CertificateAuthorityStatus where
     toEnum i = case i of
         0 -> Active
         1 -> Creating
-        2 -> Disabled
-        3 -> Expired
-        4 -> Failed
-        5 -> PendingCertificate
+        2 -> Deleted
+        3 -> Disabled
+        4 -> Expired
+        5 -> Failed
+        6 -> PendingCertificate
         _ -> (error . showText) $ "Unknown index for CertificateAuthorityStatus: " <> toText i
     fromEnum x = case x of
         Active -> 0
         Creating -> 1
-        Disabled -> 2
-        Expired -> 3
-        Failed -> 4
-        PendingCertificate -> 5
+        Deleted -> 2
+        Disabled -> 3
+        Expired -> 4
+        Failed -> 5
+        PendingCertificate -> 6
         CertificateAuthorityStatus' name -> (error . showText) $ "Unknown CertificateAuthorityStatus: " <> original name
 
 -- | Represents the bounds of /known/ $CertificateAuthorityStatus.

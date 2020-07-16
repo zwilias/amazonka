@@ -20,10 +20,10 @@ module Network.AWS.GameLift.Types.MatchmakingRuleSet where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | Set of rule statements, used with FlexMatch, that determine how to build a certain kind of player match. Each rule set describes a type of group to be created and defines the parameters for acceptable player matches. Rule sets are used in 'MatchmakingConfiguration' objects.
+-- | Set of rule statements, used with FlexMatch, that determine how to build your player matches. Each rule set describes a type of group to be created and defines the parameters for acceptable player matches. Rule sets are used in 'MatchmakingConfiguration' objects.
 --
 --
--- A rule set may define the following elements for a match. For detailed information and examples showing how to construct a rule set, see <http://docs.aws.amazon.com/gamelift/latest/developerguide/match-rulesets.html Build a FlexMatch Rule Set> . 
+-- A rule set may define the following elements for a match. For detailed information and examples showing how to construct a rule set, see <https://docs.aws.amazon.com/gamelift/latest/developerguide/match-rulesets.html Build a FlexMatch Rule Set> . 
 --
 --     * Teams -- Required. A rule set must define one or multiple teams for the match and set minimum and maximum team sizes. For example, a rule set might describe a 4x4 match that requires all eight slots to be filled. 
 --
@@ -40,6 +40,7 @@ import Network.AWS.Prelude
 data MatchmakingRuleSet = MatchmakingRuleSet'{_mrsCreationTime
                                               :: !(Maybe POSIX),
                                               _mrsRuleSetName :: !(Maybe Text),
+                                              _mrsRuleSetARN :: !(Maybe Text),
                                               _mrsRuleSetBody :: !Text}
                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -47,28 +48,34 @@ data MatchmakingRuleSet = MatchmakingRuleSet'{_mrsCreationTime
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'mrsCreationTime' - Time stamp indicating when this data object was created. Format is a number expressed in Unix time as milliseconds (for example "1469498468.057").
+-- * 'mrsCreationTime' - The time stamp indicating when this data object was created. The format is a number expressed in Unix time as milliseconds (for example "1469498468.057").
 --
--- * 'mrsRuleSetName' - Unique identifier for a matchmaking rule set
+-- * 'mrsRuleSetName' - A unique identifier for a matchmaking rule set
 --
--- * 'mrsRuleSetBody' - Collection of matchmaking rules, formatted as a JSON string. (Note that comments14 are not allowed in JSON, but most elements support a description field.)
+-- * 'mrsRuleSetARN' - Amazon Resource Name (<https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html ARN> ) that is assigned to a GameLift matchmaking rule set resource and uniquely identifies it. ARNs are unique across all Regions. In a GameLift rule set ARN, the resource ID matches the /RuleSetName/ value.
+--
+-- * 'mrsRuleSetBody' - A collection of matchmaking rules, formatted as a JSON string. Comments are not allowed in JSON, but most elements support a description field.
 matchmakingRuleSet
     :: Text -- ^ 'mrsRuleSetBody'
     -> MatchmakingRuleSet
 matchmakingRuleSet pRuleSetBody_
   = MatchmakingRuleSet'{_mrsCreationTime = Nothing,
-                        _mrsRuleSetName = Nothing,
+                        _mrsRuleSetName = Nothing, _mrsRuleSetARN = Nothing,
                         _mrsRuleSetBody = pRuleSetBody_}
 
--- | Time stamp indicating when this data object was created. Format is a number expressed in Unix time as milliseconds (for example "1469498468.057").
+-- | The time stamp indicating when this data object was created. The format is a number expressed in Unix time as milliseconds (for example "1469498468.057").
 mrsCreationTime :: Lens' MatchmakingRuleSet (Maybe UTCTime)
 mrsCreationTime = lens _mrsCreationTime (\ s a -> s{_mrsCreationTime = a}) . mapping _Time
 
--- | Unique identifier for a matchmaking rule set
+-- | A unique identifier for a matchmaking rule set
 mrsRuleSetName :: Lens' MatchmakingRuleSet (Maybe Text)
 mrsRuleSetName = lens _mrsRuleSetName (\ s a -> s{_mrsRuleSetName = a})
 
--- | Collection of matchmaking rules, formatted as a JSON string. (Note that comments14 are not allowed in JSON, but most elements support a description field.)
+-- | Amazon Resource Name (<https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html ARN> ) that is assigned to a GameLift matchmaking rule set resource and uniquely identifies it. ARNs are unique across all Regions. In a GameLift rule set ARN, the resource ID matches the /RuleSetName/ value.
+mrsRuleSetARN :: Lens' MatchmakingRuleSet (Maybe Text)
+mrsRuleSetARN = lens _mrsRuleSetARN (\ s a -> s{_mrsRuleSetARN = a})
+
+-- | A collection of matchmaking rules, formatted as a JSON string. Comments are not allowed in JSON, but most elements support a description field.
 mrsRuleSetBody :: Lens' MatchmakingRuleSet Text
 mrsRuleSetBody = lens _mrsRuleSetBody (\ s a -> s{_mrsRuleSetBody = a})
 
@@ -78,7 +85,8 @@ instance FromJSON MatchmakingRuleSet where
               (\ x ->
                  MatchmakingRuleSet' <$>
                    (x .:? "CreationTime") <*> (x .:? "RuleSetName") <*>
-                     (x .: "RuleSetBody"))
+                     (x .:? "RuleSetArn")
+                     <*> (x .: "RuleSetBody"))
 
 instance Hashable MatchmakingRuleSet where
 

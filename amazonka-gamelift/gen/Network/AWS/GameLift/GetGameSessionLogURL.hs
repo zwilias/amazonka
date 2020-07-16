@@ -21,8 +21,6 @@
 -- Retrieves the location of stored game session logs for a specified game session. When a game session is terminated, Amazon GameLift automatically stores the logs in Amazon S3 and retains them for 14 days. Use this URL to download the logs.
 --
 --
--- Game-session-related operations include:
---
 --     * 'CreateGameSession' 
 --
 --     * 'DescribeGameSessions' 
@@ -84,7 +82,7 @@ newtype GetGameSessionLogURL = GetGameSessionLogURL'{_ggsluGameSessionId
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'ggsluGameSessionId' - Unique identifier for the game session to get logs for.
+-- * 'ggsluGameSessionId' - A unique identifier for the game session to get logs for. 
 getGameSessionLogURL
     :: Text -- ^ 'ggsluGameSessionId'
     -> GetGameSessionLogURL
@@ -92,7 +90,7 @@ getGameSessionLogURL pGameSessionId_
   = GetGameSessionLogURL'{_ggsluGameSessionId =
                             pGameSessionId_}
 
--- | Unique identifier for the game session to get logs for.
+-- | A unique identifier for the game session to get logs for. 
 ggsluGameSessionId :: Lens' GetGameSessionLogURL Text
 ggsluGameSessionId = lens _ggsluGameSessionId (\ s a -> s{_ggsluGameSessionId = a})
 
@@ -148,7 +146,7 @@ data GetGameSessionLogURLResponse = GetGameSessionLogURLResponse'{_ggslursPreSig
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'ggslursPreSignedURL' - Location of the requested game session logs, available for download.
+-- * 'ggslursPreSignedURL' - Location of the requested game session logs, available for download. This URL is valid for 15 minutes, after which S3 will reject any download request using this URL. You can request a new URL any time within the 14-day period that the logs are retained.
 --
 -- * 'ggslursResponseStatus' - -- | The response status code.
 getGameSessionLogURLResponse
@@ -159,7 +157,7 @@ getGameSessionLogURLResponse pResponseStatus_
                                     = Nothing,
                                   _ggslursResponseStatus = pResponseStatus_}
 
--- | Location of the requested game session logs, available for download.
+-- | Location of the requested game session logs, available for download. This URL is valid for 15 minutes, after which S3 will reject any download request using this URL. You can request a new URL any time within the 14-day period that the logs are retained.
 ggslursPreSignedURL :: Lens' GetGameSessionLogURLResponse (Maybe Text)
 ggslursPreSignedURL = lens _ggslursPreSignedURL (\ s a -> s{_ggslursPreSignedURL = a})
 

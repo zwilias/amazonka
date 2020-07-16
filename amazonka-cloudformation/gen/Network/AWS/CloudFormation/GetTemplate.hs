@@ -136,7 +136,7 @@ data GetTemplateResponse = GetTemplateResponse'{_gtrsStagesAvailable
 --
 -- * 'gtrsStagesAvailable' - The stage of the template that you can retrieve. For stacks, the @Original@ and @Processed@ templates are always available. For change sets, the @Original@ template is always available. After AWS CloudFormation finishes creating the change set, the @Processed@ template becomes available.
 --
--- * 'gtrsTemplateBody' - Structure containing the template body. (For more information, go to <http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html Template Anatomy> in the AWS CloudFormation User Guide.) AWS CloudFormation returns the same template that was used when the stack was created.
+-- * 'gtrsTemplateBody' - Structure containing the template body. (For more information, go to <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html Template Anatomy> in the AWS CloudFormation User Guide.) AWS CloudFormation returns the same template that was used when the stack was created.
 --
 -- * 'gtrsResponseStatus' - -- | The response status code.
 getTemplateResponse
@@ -152,7 +152,7 @@ getTemplateResponse pResponseStatus_
 gtrsStagesAvailable :: Lens' GetTemplateResponse [TemplateStage]
 gtrsStagesAvailable = lens _gtrsStagesAvailable (\ s a -> s{_gtrsStagesAvailable = a}) . _Default . _Coerce
 
--- | Structure containing the template body. (For more information, go to <http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html Template Anatomy> in the AWS CloudFormation User Guide.) AWS CloudFormation returns the same template that was used when the stack was created.
+-- | Structure containing the template body. (For more information, go to <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html Template Anatomy> in the AWS CloudFormation User Guide.) AWS CloudFormation returns the same template that was used when the stack was created.
 gtrsTemplateBody :: Lens' GetTemplateResponse (Maybe Text)
 gtrsTemplateBody = lens _gtrsTemplateBody (\ s a -> s{_gtrsTemplateBody = a})
 

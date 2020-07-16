@@ -20,7 +20,7 @@ module Network.AWS.ResourceGroupsTagging.Types.Tag where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | The metadata that you apply to AWS resources to help you categorize and organize them. Each tag consists of a key and an optional value, both of which you define. For more information, see <http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html#tag-basics Tag Basics> in the /Amazon EC2 User Guide for Linux Instances/ .
+-- | The metadata that you apply to AWS resources to help you categorize and organize them. Each tag consists of a key and an optional value, both of which you define. For more information, see <http://docs.aws.amazon.com/general/latest/gr/aws_tagging.html Tagging AWS Resources> in the /AWS General Reference/ .
 --
 --
 --
@@ -32,7 +32,7 @@ data Tag = Tag'{_tagKey :: !Text, _tagValue :: !Text}
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'tagKey' - One part of a key-value pair that make up a tag. A key is a general label that acts like a category for more specific tag values.
+-- * 'tagKey' - One part of a key-value pair that makes up a tag. A key is a general label that acts like a category for more specific tag values.
 --
 -- * 'tagValue' - The optional part of a key-value pair that make up a tag. A value acts as a descriptor within a tag category (key).
 tag
@@ -42,7 +42,7 @@ tag
 tag pKey_ pValue_
   = Tag'{_tagKey = pKey_, _tagValue = pValue_}
 
--- | One part of a key-value pair that make up a tag. A key is a general label that acts like a category for more specific tag values.
+-- | One part of a key-value pair that makes up a tag. A key is a general label that acts like a category for more specific tag values.
 tagKey :: Lens' Tag Text
 tagKey = lens _tagKey (\ s a -> s{_tagKey = a})
 

@@ -18,6 +18,7 @@ module Network.AWS.SWF.Types
     -- * Errors
     , _TypeDeprecatedFault
     , _DefaultUndefinedFault
+    , _TooManyTagsFault
     , _TypeAlreadyExistsFault
     , _DomainDeprecatedFault
     , _UnknownResourceFault
@@ -350,6 +351,7 @@ module Network.AWS.SWF.Types
     -- * DomainInfo
     , DomainInfo
     , domainInfo
+    , diArn
     , diDescription
     , diName
     , diStatus
@@ -544,6 +546,12 @@ module Network.AWS.SWF.Types
     , rceweieaRunId
     , rceweieaWorkflowId
     , rceweieaDecisionTaskCompletedEventId
+
+    -- * ResourceTag
+    , ResourceTag
+    , resourceTag
+    , rtValue
+    , rtKey
 
     -- * ScheduleActivityTaskDecisionAttributes
     , ScheduleActivityTaskDecisionAttributes
@@ -953,6 +961,7 @@ import Network.AWS.SWF.Types.RequestCancelActivityTaskFailedEventAttributes
 import Network.AWS.SWF.Types.RequestCancelExternalWorkflowExecutionDecisionAttributes
 import Network.AWS.SWF.Types.RequestCancelExternalWorkflowExecutionFailedEventAttributes
 import Network.AWS.SWF.Types.RequestCancelExternalWorkflowExecutionInitiatedEventAttributes
+import Network.AWS.SWF.Types.ResourceTag
 import Network.AWS.SWF.Types.ScheduleActivityTaskDecisionAttributes
 import Network.AWS.SWF.Types.ScheduleActivityTaskFailedEventAttributes
 import Network.AWS.SWF.Types.ScheduleLambdaFunctionDecisionAttributes
@@ -1013,6 +1022,11 @@ swf
             = Just "throttling_exception"
           | has (hasCode "Throttling" . hasStatus 400) e =
             Just "throttling"
+          | has
+              (hasCode "ProvisionedThroughputExceededException" .
+                 hasStatus 400)
+              e
+            = Just "throughput_exceeded"
           | has (hasStatus 504) e = Just "gateway_timeout"
           | has
               (hasCode "RequestThrottledException" . hasStatus 400)
@@ -1040,7 +1054,14 @@ _DefaultUndefinedFault :: AsError a => Getting (First ServiceError) a ServiceErr
 _DefaultUndefinedFault
   = _MatchServiceError swf "DefaultUndefinedFault"
 
--- | Returned if the type already exists in the specified domain. You get this fault even if the existing type is in deprecated status. You can specify another version if the intent is to create a new distinct version of the type.
+-- | You've exceeded the number of tags allowed for a domain.
+--
+--
+_TooManyTagsFault :: AsError a => Getting (First ServiceError) a ServiceError
+_TooManyTagsFault
+  = _MatchServiceError swf "TooManyTagsFault"
+
+-- | Returned if the type already exists in the specified domain. You may get this fault if you are registering a type that is either already registered or deprecated, or if you undeprecate a type that is currently registered.
 --
 --
 _TypeAlreadyExistsFault :: AsError a => Getting (First ServiceError) a ServiceError
@@ -1083,7 +1104,7 @@ _LimitExceededFault :: AsError a => Getting (First ServiceError) a ServiceError
 _LimitExceededFault
   = _MatchServiceError swf "LimitExceededFault"
 
--- | Returned if the specified domain already exists. You get this fault even if the existing domain is in deprecated status.
+-- | Returned if the domain already exists. You may get this fault if you are registering a domain that is either already registered or deprecated, or if you undeprecate a domain that is currently registered.
 --
 --
 _DomainAlreadyExistsFault :: AsError a => Getting (First ServiceError) a ServiceError

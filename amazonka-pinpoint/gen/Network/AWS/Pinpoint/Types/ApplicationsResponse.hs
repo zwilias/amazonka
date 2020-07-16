@@ -21,7 +21,9 @@ import Network.AWS.Lens
 import Network.AWS.Pinpoint.Types.ApplicationResponse
 import Network.AWS.Prelude
 
--- | Get Applications Result.
+-- | Provides information about all of your applications.
+--
+--
 --
 -- /See:/ 'applicationsResponse' smart constructor.
 data ApplicationsResponse = ApplicationsResponse'{_appNextToken
@@ -35,20 +37,20 @@ data ApplicationsResponse = ApplicationsResponse'{_appNextToken
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'appNextToken' - The string that you use in a subsequent request to get the next page of results in a paginated response.
+-- * 'appNextToken' - The string to use in a subsequent request to get the next page of results in a paginated response. This value is null if there are no additional pages.
 --
--- * 'appItem' - List of applications returned in this page.
+-- * 'appItem' - An array of responses, one for each application that was returned.
 applicationsResponse
     :: ApplicationsResponse
 applicationsResponse
   = ApplicationsResponse'{_appNextToken = Nothing,
                           _appItem = Nothing}
 
--- | The string that you use in a subsequent request to get the next page of results in a paginated response.
+-- | The string to use in a subsequent request to get the next page of results in a paginated response. This value is null if there are no additional pages.
 appNextToken :: Lens' ApplicationsResponse (Maybe Text)
 appNextToken = lens _appNextToken (\ s a -> s{_appNextToken = a})
 
--- | List of applications returned in this page.
+-- | An array of responses, one for each application that was returned.
 appItem :: Lens' ApplicationsResponse [ApplicationResponse]
 appItem = lens _appItem (\ s a -> s{_appItem = a}) . _Default . _Coerce
 

@@ -18,7 +18,9 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Creates or updates a campaign.
+-- Creates a new campaign for an application or updates the settings of an existing campaign for an application.
+--
+--
 module Network.AWS.Pinpoint.CreateCampaign
     (
     -- * Creating a Request
@@ -54,7 +56,7 @@ data CreateCampaign = CreateCampaign'{_ccApplicationId
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'ccApplicationId' - Undocumented member.
+-- * 'ccApplicationId' - The unique identifier for the application. This identifier is displayed as the __Project ID__ on the Amazon Pinpoint console.
 --
 -- * 'ccWriteCampaignRequest' - Undocumented member.
 createCampaign
@@ -65,7 +67,7 @@ createCampaign pApplicationId_ pWriteCampaignRequest_
   = CreateCampaign'{_ccApplicationId = pApplicationId_,
                     _ccWriteCampaignRequest = pWriteCampaignRequest_}
 
--- | Undocumented member.
+-- | The unique identifier for the application. This identifier is displayed as the __Project ID__ on the Amazon Pinpoint console.
 ccApplicationId :: Lens' CreateCampaign Text
 ccApplicationId = lens _ccApplicationId (\ s a -> s{_ccApplicationId = a})
 

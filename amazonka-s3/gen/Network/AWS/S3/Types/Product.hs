@@ -41,14 +41,17 @@ module Network.AWS.S3.Types.Product (
     module Network.AWS.S3.Types.CopyObjectResult,
     module Network.AWS.S3.Types.CopyPartResult,
     module Network.AWS.S3.Types.CreateBucketConfiguration,
+    module Network.AWS.S3.Types.DefaultRetention,
     module Network.AWS.S3.Types.Delete,
     module Network.AWS.S3.Types.DeleteMarkerEntry,
+    module Network.AWS.S3.Types.DeleteMarkerReplication,
     module Network.AWS.S3.Types.DeletedObject,
     module Network.AWS.S3.Types.Destination,
     module Network.AWS.S3.Types.Encryption,
     module Network.AWS.S3.Types.EncryptionConfiguration,
     module Network.AWS.S3.Types.EndEvent,
     module Network.AWS.S3.Types.ErrorDocument,
+    module Network.AWS.S3.Types.ExistingObjectReplication,
     module Network.AWS.S3.Types.FilterRule,
     module Network.AWS.S3.Types.GlacierJobParameters,
     module Network.AWS.S3.Types.Grant,
@@ -71,6 +74,7 @@ module Network.AWS.S3.Types.Product (
     module Network.AWS.S3.Types.LifecycleRuleFilter,
     module Network.AWS.S3.Types.LoggingEnabled,
     module Network.AWS.S3.Types.MetadataEntry,
+    module Network.AWS.S3.Types.Metrics,
     module Network.AWS.S3.Types.MetricsAndOperator,
     module Network.AWS.S3.Types.MetricsConfiguration,
     module Network.AWS.S3.Types.MetricsFilter,
@@ -81,19 +85,30 @@ module Network.AWS.S3.Types.Product (
     module Network.AWS.S3.Types.NotificationConfigurationFilter,
     module Network.AWS.S3.Types.Object,
     module Network.AWS.S3.Types.ObjectIdentifier,
+    module Network.AWS.S3.Types.ObjectLockConfiguration,
+    module Network.AWS.S3.Types.ObjectLockLegalHold,
+    module Network.AWS.S3.Types.ObjectLockRetention,
+    module Network.AWS.S3.Types.ObjectLockRule,
     module Network.AWS.S3.Types.ObjectVersion,
     module Network.AWS.S3.Types.OutputLocation,
     module Network.AWS.S3.Types.OutputSerialization,
     module Network.AWS.S3.Types.Owner,
+    module Network.AWS.S3.Types.ParquetInput,
     module Network.AWS.S3.Types.Part,
+    module Network.AWS.S3.Types.PolicyStatus,
     module Network.AWS.S3.Types.Progress,
     module Network.AWS.S3.Types.ProgressEvent,
+    module Network.AWS.S3.Types.PublicAccessBlockConfiguration,
     module Network.AWS.S3.Types.QueueConfiguration,
     module Network.AWS.S3.Types.RecordsEvent,
     module Network.AWS.S3.Types.Redirect,
     module Network.AWS.S3.Types.RedirectAllRequestsTo,
     module Network.AWS.S3.Types.ReplicationConfiguration,
     module Network.AWS.S3.Types.ReplicationRule,
+    module Network.AWS.S3.Types.ReplicationRuleAndOperator,
+    module Network.AWS.S3.Types.ReplicationRuleFilter,
+    module Network.AWS.S3.Types.ReplicationTime,
+    module Network.AWS.S3.Types.ReplicationTimeValue,
     module Network.AWS.S3.Types.RequestPaymentConfiguration,
     module Network.AWS.S3.Types.RequestProgress,
     module Network.AWS.S3.Types.RestoreRequest,
@@ -103,6 +118,7 @@ module Network.AWS.S3.Types.Product (
     module Network.AWS.S3.Types.S3ServiceError,
     module Network.AWS.S3.Types.SSEKMS,
     module Network.AWS.S3.Types.SSES3,
+    module Network.AWS.S3.Types.ScanRange,
     module Network.AWS.S3.Types.SelectObjectContentEventStream,
     module Network.AWS.S3.Types.SelectParameters,
     module Network.AWS.S3.Types.ServerSideEncryptionByDefault,
@@ -150,14 +166,17 @@ import Network.AWS.S3.Types.ContinuationEvent
 import Network.AWS.S3.Types.CopyObjectResult
 import Network.AWS.S3.Types.CopyPartResult
 import Network.AWS.S3.Types.CreateBucketConfiguration
+import Network.AWS.S3.Types.DefaultRetention
 import Network.AWS.S3.Types.Delete
 import Network.AWS.S3.Types.DeleteMarkerEntry
+import Network.AWS.S3.Types.DeleteMarkerReplication
 import Network.AWS.S3.Types.DeletedObject
 import Network.AWS.S3.Types.Destination
 import Network.AWS.S3.Types.Encryption
 import Network.AWS.S3.Types.EncryptionConfiguration
 import Network.AWS.S3.Types.EndEvent
 import Network.AWS.S3.Types.ErrorDocument
+import Network.AWS.S3.Types.ExistingObjectReplication
 import Network.AWS.S3.Types.FilterRule
 import Network.AWS.S3.Types.GlacierJobParameters
 import Network.AWS.S3.Types.Grant
@@ -180,6 +199,7 @@ import Network.AWS.S3.Types.LifecycleRuleAndOperator
 import Network.AWS.S3.Types.LifecycleRuleFilter
 import Network.AWS.S3.Types.LoggingEnabled
 import Network.AWS.S3.Types.MetadataEntry
+import Network.AWS.S3.Types.Metrics
 import Network.AWS.S3.Types.MetricsAndOperator
 import Network.AWS.S3.Types.MetricsConfiguration
 import Network.AWS.S3.Types.MetricsFilter
@@ -190,19 +210,30 @@ import Network.AWS.S3.Types.NotificationConfiguration
 import Network.AWS.S3.Types.NotificationConfigurationFilter
 import Network.AWS.S3.Types.Object
 import Network.AWS.S3.Types.ObjectIdentifier
+import Network.AWS.S3.Types.ObjectLockConfiguration
+import Network.AWS.S3.Types.ObjectLockLegalHold
+import Network.AWS.S3.Types.ObjectLockRetention
+import Network.AWS.S3.Types.ObjectLockRule
 import Network.AWS.S3.Types.ObjectVersion
 import Network.AWS.S3.Types.OutputLocation
 import Network.AWS.S3.Types.OutputSerialization
 import Network.AWS.S3.Types.Owner
+import Network.AWS.S3.Types.ParquetInput
 import Network.AWS.S3.Types.Part
+import Network.AWS.S3.Types.PolicyStatus
 import Network.AWS.S3.Types.Progress
 import Network.AWS.S3.Types.ProgressEvent
+import Network.AWS.S3.Types.PublicAccessBlockConfiguration
 import Network.AWS.S3.Types.QueueConfiguration
 import Network.AWS.S3.Types.RecordsEvent
 import Network.AWS.S3.Types.Redirect
 import Network.AWS.S3.Types.RedirectAllRequestsTo
 import Network.AWS.S3.Types.ReplicationConfiguration
 import Network.AWS.S3.Types.ReplicationRule
+import Network.AWS.S3.Types.ReplicationRuleAndOperator
+import Network.AWS.S3.Types.ReplicationRuleFilter
+import Network.AWS.S3.Types.ReplicationTime
+import Network.AWS.S3.Types.ReplicationTimeValue
 import Network.AWS.S3.Types.RequestPaymentConfiguration
 import Network.AWS.S3.Types.RequestProgress
 import Network.AWS.S3.Types.RestoreRequest
@@ -212,6 +243,7 @@ import Network.AWS.S3.Types.S3Location
 import Network.AWS.S3.Types.S3ServiceError
 import Network.AWS.S3.Types.SSEKMS
 import Network.AWS.S3.Types.SSES3
+import Network.AWS.S3.Types.ScanRange
 import Network.AWS.S3.Types.SelectObjectContentEventStream
 import Network.AWS.S3.Types.SelectParameters
 import Network.AWS.S3.Types.ServerSideEncryptionByDefault

@@ -34,6 +34,7 @@ module Network.AWS.EMR.AddInstanceGroups
     , addInstanceGroupsResponse
     , AddInstanceGroupsResponse
     -- * Response Lenses
+    , aigrsClusterARN
     , aigrsJobFlowId
     , aigrsInstanceGroupIds
     , aigrsResponseStatus
@@ -85,7 +86,7 @@ instance AWSRequest AddInstanceGroups where
           = receiveJSON
               (\ s h x ->
                  AddInstanceGroupsResponse' <$>
-                   (x .?> "JobFlowId") <*>
+                   (x .?> "ClusterArn") <*> (x .?> "JobFlowId") <*>
                      (x .?> "InstanceGroupIds" .!@ mempty)
                      <*> (pure (fromEnum s)))
 
@@ -120,8 +121,10 @@ instance ToQuery AddInstanceGroups where
 --
 --
 -- /See:/ 'addInstanceGroupsResponse' smart constructor.
-data AddInstanceGroupsResponse = AddInstanceGroupsResponse'{_aigrsJobFlowId
+data AddInstanceGroupsResponse = AddInstanceGroupsResponse'{_aigrsClusterARN
                                                             :: !(Maybe Text),
+                                                            _aigrsJobFlowId ::
+                                                            !(Maybe Text),
                                                             _aigrsInstanceGroupIds
                                                             :: !(Maybe [Text]),
                                                             _aigrsResponseStatus
@@ -133,6 +136,8 @@ data AddInstanceGroupsResponse = AddInstanceGroupsResponse'{_aigrsJobFlowId
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
+-- * 'aigrsClusterARN' - The Amazon Resource Name of the cluster.
+--
 -- * 'aigrsJobFlowId' - The job flow ID in which the instance groups are added.
 --
 -- * 'aigrsInstanceGroupIds' - Instance group IDs of the newly created instance groups.
@@ -142,10 +147,15 @@ addInstanceGroupsResponse
     :: Int -- ^ 'aigrsResponseStatus'
     -> AddInstanceGroupsResponse
 addInstanceGroupsResponse pResponseStatus_
-  = AddInstanceGroupsResponse'{_aigrsJobFlowId =
+  = AddInstanceGroupsResponse'{_aigrsClusterARN =
                                  Nothing,
+                               _aigrsJobFlowId = Nothing,
                                _aigrsInstanceGroupIds = Nothing,
                                _aigrsResponseStatus = pResponseStatus_}
+
+-- | The Amazon Resource Name of the cluster.
+aigrsClusterARN :: Lens' AddInstanceGroupsResponse (Maybe Text)
+aigrsClusterARN = lens _aigrsClusterARN (\ s a -> s{_aigrsClusterARN = a})
 
 -- | The job flow ID in which the instance groups are added.
 aigrsJobFlowId :: Lens' AddInstanceGroupsResponse (Maybe Text)

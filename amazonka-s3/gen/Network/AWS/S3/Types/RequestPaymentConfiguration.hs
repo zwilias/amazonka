@@ -22,7 +22,11 @@ import Network.AWS.Prelude
 import Network.AWS.S3.Internal
 import Network.AWS.S3.Types.Payer
 
--- | /See:/ 'requestPaymentConfiguration' smart constructor.
+-- | Container for Payer.
+--
+--
+--
+-- /See:/ 'requestPaymentConfiguration' smart constructor.
 newtype RequestPaymentConfiguration = RequestPaymentConfiguration'{_rpcPayer
                                                                    :: Payer}
                                         deriving (Eq, Read, Show, Data,

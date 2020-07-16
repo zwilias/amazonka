@@ -19,9 +19,9 @@
 module Network.AWS.MediaConvert.Types.DeinterlacerMode (
   DeinterlacerMode (
     ..
-    , Adaptive
-    , Deinterlace
-    , InverseTelecine
+    , DMAdaptive
+    , DMDeinterlace
+    , DMInverseTelecine
     )
   ) where
 
@@ -33,19 +33,19 @@ data DeinterlacerMode = DeinterlacerMode' (CI Text)
                           deriving (Eq, Ord, Read, Show, Data, Typeable,
                                     Generic)
 
-pattern Adaptive :: DeinterlacerMode
-pattern Adaptive = DeinterlacerMode' "ADAPTIVE"
+pattern DMAdaptive :: DeinterlacerMode
+pattern DMAdaptive = DeinterlacerMode' "ADAPTIVE"
 
-pattern Deinterlace :: DeinterlacerMode
-pattern Deinterlace = DeinterlacerMode' "DEINTERLACE"
+pattern DMDeinterlace :: DeinterlacerMode
+pattern DMDeinterlace = DeinterlacerMode' "DEINTERLACE"
 
-pattern InverseTelecine :: DeinterlacerMode
-pattern InverseTelecine = DeinterlacerMode' "INVERSE_TELECINE"
+pattern DMInverseTelecine :: DeinterlacerMode
+pattern DMInverseTelecine = DeinterlacerMode' "INVERSE_TELECINE"
 
 {-# COMPLETE
-  Adaptive,
-  Deinterlace,
-  InverseTelecine,
+  DMAdaptive,
+  DMDeinterlace,
+  DMInverseTelecine,
   DeinterlacerMode' #-}
 
 instance FromText DeinterlacerMode where
@@ -60,22 +60,22 @@ instance ToText DeinterlacerMode where
 --   fromEnum is a partial function, and will error on values unknown at generation time.
 instance Enum DeinterlacerMode where
     toEnum i = case i of
-        0 -> Adaptive
-        1 -> Deinterlace
-        2 -> InverseTelecine
+        0 -> DMAdaptive
+        1 -> DMDeinterlace
+        2 -> DMInverseTelecine
         _ -> (error . showText) $ "Unknown index for DeinterlacerMode: " <> toText i
     fromEnum x = case x of
-        Adaptive -> 0
-        Deinterlace -> 1
-        InverseTelecine -> 2
+        DMAdaptive -> 0
+        DMDeinterlace -> 1
+        DMInverseTelecine -> 2
         DeinterlacerMode' name -> (error . showText) $ "Unknown DeinterlacerMode: " <> original name
 
 -- | Represents the bounds of /known/ $DeinterlacerMode.
 --   AWS may have added more since the source was generated.
 --   This instance exists only for backward compatibility.
 instance Bounded DeinterlacerMode where
-    minBound = Adaptive
-    maxBound = InverseTelecine
+    minBound = DMAdaptive
+    maxBound = DMInverseTelecine
 
 instance Hashable     DeinterlacerMode
 instance NFData       DeinterlacerMode

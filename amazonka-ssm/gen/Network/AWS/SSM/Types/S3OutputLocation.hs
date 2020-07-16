@@ -20,7 +20,7 @@ module Network.AWS.SSM.Types.S3OutputLocation where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | An Amazon S3 bucket where you want to store the results of this request.
+-- | An S3 bucket where you want to store the results of this request.
 --
 --
 --
@@ -36,11 +36,11 @@ data S3OutputLocation = S3OutputLocation'{_solOutputS3KeyPrefix
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'solOutputS3KeyPrefix' - The Amazon S3 bucket subfolder.
+-- * 'solOutputS3KeyPrefix' - The S3 bucket subfolder.
 --
--- * 'solOutputS3Region' - (Deprecated) You can no longer specify this parameter. The system ignores it. Instead, Systems Manager automatically determines the Amazon S3 bucket region.
+-- * 'solOutputS3Region' - (Deprecated) You can no longer specify this parameter. The system ignores it. Instead, Systems Manager automatically determines the Region of the S3 bucket.
 --
--- * 'solOutputS3BucketName' - The name of the Amazon S3 bucket.
+-- * 'solOutputS3BucketName' - The name of the S3 bucket.
 s3OutputLocation
     :: S3OutputLocation
 s3OutputLocation
@@ -48,15 +48,15 @@ s3OutputLocation
                       _solOutputS3Region = Nothing,
                       _solOutputS3BucketName = Nothing}
 
--- | The Amazon S3 bucket subfolder.
+-- | The S3 bucket subfolder.
 solOutputS3KeyPrefix :: Lens' S3OutputLocation (Maybe Text)
 solOutputS3KeyPrefix = lens _solOutputS3KeyPrefix (\ s a -> s{_solOutputS3KeyPrefix = a})
 
--- | (Deprecated) You can no longer specify this parameter. The system ignores it. Instead, Systems Manager automatically determines the Amazon S3 bucket region.
+-- | (Deprecated) You can no longer specify this parameter. The system ignores it. Instead, Systems Manager automatically determines the Region of the S3 bucket.
 solOutputS3Region :: Lens' S3OutputLocation (Maybe Text)
 solOutputS3Region = lens _solOutputS3Region (\ s a -> s{_solOutputS3Region = a})
 
--- | The name of the Amazon S3 bucket.
+-- | The name of the S3 bucket.
 solOutputS3BucketName :: Lens' S3OutputLocation (Maybe Text)
 solOutputS3BucketName = lens _solOutputS3BucketName (\ s a -> s{_solOutputS3BucketName = a})
 

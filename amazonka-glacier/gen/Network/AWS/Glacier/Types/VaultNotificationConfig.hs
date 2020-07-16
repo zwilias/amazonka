@@ -38,7 +38,7 @@ data VaultNotificationConfig = VaultNotificationConfig'{_vncSNSTopic
 --
 -- * 'vncSNSTopic' - The Amazon Simple Notification Service (Amazon SNS) topic Amazon Resource Name (ARN).
 --
--- * 'vncEvents' - A list of one or more events for which Amazon Glacier will send a notification to the specified Amazon SNS topic.
+-- * 'vncEvents' - A list of one or more events for which Amazon S3 Glacier will send a notification to the specified Amazon SNS topic.
 vaultNotificationConfig
     :: VaultNotificationConfig
 vaultNotificationConfig
@@ -49,7 +49,7 @@ vaultNotificationConfig
 vncSNSTopic :: Lens' VaultNotificationConfig (Maybe Text)
 vncSNSTopic = lens _vncSNSTopic (\ s a -> s{_vncSNSTopic = a})
 
--- | A list of one or more events for which Amazon Glacier will send a notification to the specified Amazon SNS topic.
+-- | A list of one or more events for which Amazon S3 Glacier will send a notification to the specified Amazon SNS topic.
 vncEvents :: Lens' VaultNotificationConfig [Text]
 vncEvents = lens _vncEvents (\ s a -> s{_vncEvents = a}) . _Default . _Coerce
 

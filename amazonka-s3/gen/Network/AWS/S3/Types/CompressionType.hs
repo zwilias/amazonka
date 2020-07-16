@@ -19,6 +19,7 @@
 module Network.AWS.S3.Types.CompressionType (
   CompressionType (
     ..
+    , CTBZIP2
     , CTGzip
     , CTNone
     )
@@ -32,6 +33,9 @@ data CompressionType = CompressionType' (CI Text)
                          deriving (Eq, Ord, Read, Show, Data, Typeable,
                                    Generic)
 
+pattern CTBZIP2 :: CompressionType
+pattern CTBZIP2 = CompressionType' "BZIP2"
+
 pattern CTGzip :: CompressionType
 pattern CTGzip = CompressionType' "GZIP"
 
@@ -39,6 +43,7 @@ pattern CTNone :: CompressionType
 pattern CTNone = CompressionType' "NONE"
 
 {-# COMPLETE
+  CTBZIP2,
   CTGzip,
   CTNone,
   CompressionType' #-}
@@ -55,19 +60,21 @@ instance ToText CompressionType where
 --   fromEnum is a partial function, and will error on values unknown at generation time.
 instance Enum CompressionType where
     toEnum i = case i of
-        0 -> CTGzip
-        1 -> CTNone
+        0 -> CTBZIP2
+        1 -> CTGzip
+        2 -> CTNone
         _ -> (error . showText) $ "Unknown index for CompressionType: " <> toText i
     fromEnum x = case x of
-        CTGzip -> 0
-        CTNone -> 1
+        CTBZIP2 -> 0
+        CTGzip -> 1
+        CTNone -> 2
         CompressionType' name -> (error . showText) $ "Unknown CompressionType: " <> original name
 
 -- | Represents the bounds of /known/ $CompressionType.
 --   AWS may have added more since the source was generated.
 --   This instance exists only for backward compatibility.
 instance Bounded CompressionType where
-    minBound = CTGzip
+    minBound = CTBZIP2
     maxBound = CTNone
 
 instance Hashable     CompressionType

@@ -22,7 +22,9 @@ import Network.AWS.GuardDuty.Types.RemoteIPDetails
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | Information about the AWS_API_CALL action described in this finding.
+-- | Contains information about the API operation.
+--
+--
 --
 -- /See:/ 'awsAPICallAction' smart constructor.
 data AWSAPICallAction = AWSAPICallAction'{_aacaRemoteIPDetails
@@ -38,15 +40,15 @@ data AWSAPICallAction = AWSAPICallAction'{_aacaRemoteIPDetails
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'aacaRemoteIPDetails' - Remote IP information of the connection.
+-- * 'aacaRemoteIPDetails' - The remote IP information of the connection.
 --
--- * 'aacaCallerType' - AWS API caller type.
+-- * 'aacaCallerType' - The AWS API caller type.
 --
--- * 'aacaDomainDetails' - Domain information for the AWS API call.
+-- * 'aacaDomainDetails' - The domain information for the AWS API call.
 --
--- * 'aacaServiceName' - AWS service name whose API was invoked.
+-- * 'aacaServiceName' - The AWS service name whose API was invoked.
 --
--- * 'aacaAPI' - AWS API name.
+-- * 'aacaAPI' - The AWS API name.
 awsAPICallAction
     :: AWSAPICallAction
 awsAPICallAction
@@ -55,23 +57,23 @@ awsAPICallAction
                       _aacaDomainDetails = Nothing,
                       _aacaServiceName = Nothing, _aacaAPI = Nothing}
 
--- | Remote IP information of the connection.
+-- | The remote IP information of the connection.
 aacaRemoteIPDetails :: Lens' AWSAPICallAction (Maybe RemoteIPDetails)
 aacaRemoteIPDetails = lens _aacaRemoteIPDetails (\ s a -> s{_aacaRemoteIPDetails = a})
 
--- | AWS API caller type.
+-- | The AWS API caller type.
 aacaCallerType :: Lens' AWSAPICallAction (Maybe Text)
 aacaCallerType = lens _aacaCallerType (\ s a -> s{_aacaCallerType = a})
 
--- | Domain information for the AWS API call.
+-- | The domain information for the AWS API call.
 aacaDomainDetails :: Lens' AWSAPICallAction (Maybe DomainDetails)
 aacaDomainDetails = lens _aacaDomainDetails (\ s a -> s{_aacaDomainDetails = a})
 
--- | AWS service name whose API was invoked.
+-- | The AWS service name whose API was invoked.
 aacaServiceName :: Lens' AWSAPICallAction (Maybe Text)
 aacaServiceName = lens _aacaServiceName (\ s a -> s{_aacaServiceName = a})
 
--- | AWS API name.
+-- | The AWS API name.
 aacaAPI :: Lens' AWSAPICallAction (Maybe Text)
 aacaAPI = lens _aacaAPI (\ s a -> s{_aacaAPI = a})
 

@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Updates the primary email for an entity. The current email is moved into the list of aliases (or swapped between an existing alias and the current primary email) and the email provided in the input is promoted as the primary.
+-- Updates the primary email for a user, group, or resource. The current email is moved into the list of aliases (or swapped between an existing alias and the current primary email), and the email provided in the input is promoted as the primary.
 --
 --
 module Network.AWS.WorkMail.UpdatePrimaryEmailAddress
@@ -58,9 +58,9 @@ data UpdatePrimaryEmailAddress = UpdatePrimaryEmailAddress'{_upeaOrganizationId
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'upeaOrganizationId' - The organization that contains the entity to update.
+-- * 'upeaOrganizationId' - The organization that contains the user, group, or resource to update.
 --
--- * 'upeaEntityId' - The entity to update (user, group, or resource).
+-- * 'upeaEntityId' - The user, group, or resource to update.
 --
 -- * 'upeaEmail' - The value of the email to be updated as primary.
 updatePrimaryEmailAddress
@@ -74,11 +74,11 @@ updatePrimaryEmailAddress pOrganizationId_ pEntityId_
                                  pOrganizationId_,
                                _upeaEntityId = pEntityId_, _upeaEmail = pEmail_}
 
--- | The organization that contains the entity to update.
+-- | The organization that contains the user, group, or resource to update.
 upeaOrganizationId :: Lens' UpdatePrimaryEmailAddress Text
 upeaOrganizationId = lens _upeaOrganizationId (\ s a -> s{_upeaOrganizationId = a})
 
--- | The entity to update (user, group, or resource).
+-- | The user, group, or resource to update.
 upeaEntityId :: Lens' UpdatePrimaryEmailAddress Text
 upeaEntityId = lens _upeaEntityId (\ s a -> s{_upeaEntityId = a})
 

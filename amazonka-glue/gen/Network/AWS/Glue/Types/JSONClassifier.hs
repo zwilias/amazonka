@@ -36,15 +36,15 @@ data JSONClassifier = JSONClassifier'{_jcCreationTime
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'jcCreationTime' - The time this classifier was registered.
+-- * 'jcCreationTime' - The time that this classifier was registered.
 --
--- * 'jcLastUpdated' - The time this classifier was last updated.
+-- * 'jcLastUpdated' - The time that this classifier was last updated.
 --
 -- * 'jcVersion' - The version of this classifier.
 --
 -- * 'jcName' - The name of the classifier.
 --
--- * 'jcJSONPath' - A @JsonPath@ string defining the JSON data for the classifier to classify. AWS Glue supports a subset of JsonPath, as described in <https://docs.aws.amazon.com/glue/latest/dg/custom-classifier.html#custom-classifier-json Writing JsonPath Custom Classifiers> .
+-- * 'jcJSONPath' - A @JsonPath@ string defining the JSON data for the classifier to classify. AWS Glue supports a subset of @JsonPath@ , as described in <https://docs.aws.amazon.com/glue/latest/dg/custom-classifier.html#custom-classifier-json Writing JsonPath Custom Classifiers> .
 jsonClassifier
     :: Text -- ^ 'jcName'
     -> Text -- ^ 'jcJSONPath'
@@ -54,11 +54,11 @@ jsonClassifier pName_ pJSONPath_
                     _jcLastUpdated = Nothing, _jcVersion = Nothing,
                     _jcName = pName_, _jcJSONPath = pJSONPath_}
 
--- | The time this classifier was registered.
+-- | The time that this classifier was registered.
 jcCreationTime :: Lens' JSONClassifier (Maybe UTCTime)
 jcCreationTime = lens _jcCreationTime (\ s a -> s{_jcCreationTime = a}) . mapping _Time
 
--- | The time this classifier was last updated.
+-- | The time that this classifier was last updated.
 jcLastUpdated :: Lens' JSONClassifier (Maybe UTCTime)
 jcLastUpdated = lens _jcLastUpdated (\ s a -> s{_jcLastUpdated = a}) . mapping _Time
 
@@ -70,7 +70,7 @@ jcVersion = lens _jcVersion (\ s a -> s{_jcVersion = a})
 jcName :: Lens' JSONClassifier Text
 jcName = lens _jcName (\ s a -> s{_jcName = a})
 
--- | A @JsonPath@ string defining the JSON data for the classifier to classify. AWS Glue supports a subset of JsonPath, as described in <https://docs.aws.amazon.com/glue/latest/dg/custom-classifier.html#custom-classifier-json Writing JsonPath Custom Classifiers> .
+-- | A @JsonPath@ string defining the JSON data for the classifier to classify. AWS Glue supports a subset of @JsonPath@ , as described in <https://docs.aws.amazon.com/glue/latest/dg/custom-classifier.html#custom-classifier-json Writing JsonPath Custom Classifiers> .
 jcJSONPath :: Lens' JSONClassifier Text
 jcJSONPath = lens _jcJSONPath (\ s a -> s{_jcJSONPath = a})
 

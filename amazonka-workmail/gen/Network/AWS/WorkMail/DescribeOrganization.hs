@@ -35,6 +35,7 @@ module Network.AWS.WorkMail.DescribeOrganization
     -- * Response Lenses
     , dorsDirectoryId
     , dorsState
+    , dorsARN
     , dorsAlias
     , dorsCompletedDate
     , dorsDirectoryType
@@ -82,7 +83,8 @@ instance AWSRequest DescribeOrganization where
               (\ s h x ->
                  DescribeOrganizationResponse' <$>
                    (x .?> "DirectoryId") <*> (x .?> "State") <*>
-                     (x .?> "Alias")
+                     (x .?> "ARN")
+                     <*> (x .?> "Alias")
                      <*> (x .?> "CompletedDate")
                      <*> (x .?> "DirectoryType")
                      <*> (x .?> "DefaultMailDomain")
@@ -122,6 +124,8 @@ data DescribeOrganizationResponse = DescribeOrganizationResponse'{_dorsDirectory
                                                                   !(Maybe Text),
                                                                   _dorsState ::
                                                                   !(Maybe Text),
+                                                                  _dorsARN ::
+                                                                  !(Maybe Text),
                                                                   _dorsAlias ::
                                                                   !(Maybe Text),
                                                                   _dorsCompletedDate
@@ -153,15 +157,17 @@ data DescribeOrganizationResponse = DescribeOrganizationResponse'{_dorsDirectory
 --
 -- * 'dorsState' - The state of an organization.
 --
+-- * 'dorsARN' - The Amazon Resource Name (ARN) of the organization.
+--
 -- * 'dorsAlias' - The alias for an organization.
 --
--- * 'dorsCompletedDate' - The date at which the organization became usable in the Amazon WorkMail context, in UNIX epoch time format.
+-- * 'dorsCompletedDate' - The date at which the organization became usable in the WorkMail context, in UNIX epoch time format.
 --
--- * 'dorsDirectoryType' - The type of directory associated with the Amazon WorkMail organization.
+-- * 'dorsDirectoryType' - The type of directory associated with the WorkMail organization.
 --
 -- * 'dorsDefaultMailDomain' - The default mail domain associated with the organization.
 --
--- * 'dorsErrorMessage' - The (optional) error message indicating if unexpected behavior was encountered with regards to the organization.
+-- * 'dorsErrorMessage' - (Optional) The error message indicating if unexpected behavior was encountered with regards to the organization.
 --
 -- * 'dorsOrganizationId' - The identifier of an organization.
 --
@@ -172,7 +178,8 @@ describeOrganizationResponse
 describeOrganizationResponse pResponseStatus_
   = DescribeOrganizationResponse'{_dorsDirectoryId =
                                     Nothing,
-                                  _dorsState = Nothing, _dorsAlias = Nothing,
+                                  _dorsState = Nothing, _dorsARN = Nothing,
+                                  _dorsAlias = Nothing,
                                   _dorsCompletedDate = Nothing,
                                   _dorsDirectoryType = Nothing,
                                   _dorsDefaultMailDomain = Nothing,
@@ -188,15 +195,19 @@ dorsDirectoryId = lens _dorsDirectoryId (\ s a -> s{_dorsDirectoryId = a})
 dorsState :: Lens' DescribeOrganizationResponse (Maybe Text)
 dorsState = lens _dorsState (\ s a -> s{_dorsState = a})
 
+-- | The Amazon Resource Name (ARN) of the organization.
+dorsARN :: Lens' DescribeOrganizationResponse (Maybe Text)
+dorsARN = lens _dorsARN (\ s a -> s{_dorsARN = a})
+
 -- | The alias for an organization.
 dorsAlias :: Lens' DescribeOrganizationResponse (Maybe Text)
 dorsAlias = lens _dorsAlias (\ s a -> s{_dorsAlias = a})
 
--- | The date at which the organization became usable in the Amazon WorkMail context, in UNIX epoch time format.
+-- | The date at which the organization became usable in the WorkMail context, in UNIX epoch time format.
 dorsCompletedDate :: Lens' DescribeOrganizationResponse (Maybe UTCTime)
 dorsCompletedDate = lens _dorsCompletedDate (\ s a -> s{_dorsCompletedDate = a}) . mapping _Time
 
--- | The type of directory associated with the Amazon WorkMail organization.
+-- | The type of directory associated with the WorkMail organization.
 dorsDirectoryType :: Lens' DescribeOrganizationResponse (Maybe Text)
 dorsDirectoryType = lens _dorsDirectoryType (\ s a -> s{_dorsDirectoryType = a})
 
@@ -204,7 +215,7 @@ dorsDirectoryType = lens _dorsDirectoryType (\ s a -> s{_dorsDirectoryType = a})
 dorsDefaultMailDomain :: Lens' DescribeOrganizationResponse (Maybe Text)
 dorsDefaultMailDomain = lens _dorsDefaultMailDomain (\ s a -> s{_dorsDefaultMailDomain = a})
 
--- | The (optional) error message indicating if unexpected behavior was encountered with regards to the organization.
+-- | (Optional) The error message indicating if unexpected behavior was encountered with regards to the organization.
 dorsErrorMessage :: Lens' DescribeOrganizationResponse (Maybe Text)
 dorsErrorMessage = lens _dorsErrorMessage (\ s a -> s{_dorsErrorMessage = a})
 

@@ -54,7 +54,7 @@ data UpdateJob = UpdateJob'{_ujJobName :: !Text,
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'ujJobName' - Name of the job definition to update.
+-- * 'ujJobName' - The name of the job definition to update.
 --
 -- * 'ujJobUpdate' - Specifies the values with which to update the job definition.
 updateJob
@@ -65,7 +65,7 @@ updateJob pJobName_ pJobUpdate_
   = UpdateJob'{_ujJobName = pJobName_,
                _ujJobUpdate = pJobUpdate_}
 
--- | Name of the job definition to update.
+-- | The name of the job definition to update.
 ujJobName :: Lens' UpdateJob Text
 ujJobName = lens _ujJobName (\ s a -> s{_ujJobName = a})
 

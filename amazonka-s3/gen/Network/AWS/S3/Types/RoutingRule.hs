@@ -23,7 +23,11 @@ import Network.AWS.S3.Internal
 import Network.AWS.S3.Types.Condition
 import Network.AWS.S3.Types.Redirect
 
--- | /See:/ 'routingRule' smart constructor.
+-- | Specifies the redirect behavior and when a redirect is applied.
+--
+--
+--
+-- /See:/ 'routingRule' smart constructor.
 data RoutingRule = RoutingRule'{_rrCondition ::
                                 !(Maybe Condition),
                                 _rrRedirect :: !Redirect}
@@ -33,9 +37,9 @@ data RoutingRule = RoutingRule'{_rrCondition ::
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'rrCondition' - A container for describing a condition that must be met for the specified redirect to apply. For example, 1. If request is for pages in the /docs folder, redirect to the /documents folder. 2. If request results in HTTP error 4xx, redirect request to another host where you might process the error.
+-- * 'rrCondition' - A container for describing a condition that must be met for the specified redirect to apply. For example, 1. If request is for pages in the @/docs@ folder, redirect to the @/documents@ folder. 2. If request results in HTTP error 4xx, redirect request to another host where you might process the error.
 --
--- * 'rrRedirect' - Container for redirect information. You can redirect requests to another host, to another page, or with another protocol. In the event of an error, you can can specify a different error code to return.
+-- * 'rrRedirect' - Container for redirect information. You can redirect requests to another host, to another page, or with another protocol. In the event of an error, you can specify a different error code to return.
 routingRule
     :: Redirect -- ^ 'rrRedirect'
     -> RoutingRule
@@ -43,11 +47,11 @@ routingRule pRedirect_
   = RoutingRule'{_rrCondition = Nothing,
                  _rrRedirect = pRedirect_}
 
--- | A container for describing a condition that must be met for the specified redirect to apply. For example, 1. If request is for pages in the /docs folder, redirect to the /documents folder. 2. If request results in HTTP error 4xx, redirect request to another host where you might process the error.
+-- | A container for describing a condition that must be met for the specified redirect to apply. For example, 1. If request is for pages in the @/docs@ folder, redirect to the @/documents@ folder. 2. If request results in HTTP error 4xx, redirect request to another host where you might process the error.
 rrCondition :: Lens' RoutingRule (Maybe Condition)
 rrCondition = lens _rrCondition (\ s a -> s{_rrCondition = a})
 
--- | Container for redirect information. You can redirect requests to another host, to another page, or with another protocol. In the event of an error, you can can specify a different error code to return.
+-- | Container for redirect information. You can redirect requests to another host, to another page, or with another protocol. In the event of an error, you can specify a different error code to return.
 rrRedirect :: Lens' RoutingRule Redirect
 rrRedirect = lens _rrRedirect (\ s a -> s{_rrRedirect = a})
 

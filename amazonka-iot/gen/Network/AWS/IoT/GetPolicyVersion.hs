@@ -147,7 +147,7 @@ data GetPolicyVersionResponse = GetPolicyVersionResponse'{_gpvrsLastModifiedDate
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'gpvrsLastModifiedDate' - The date the policy version was last modified.
+-- * 'gpvrsLastModifiedDate' - The date the policy was last modified.
 --
 -- * 'gpvrsPolicyName' - The policy name.
 --
@@ -157,7 +157,7 @@ data GetPolicyVersionResponse = GetPolicyVersionResponse'{_gpvrsLastModifiedDate
 --
 -- * 'gpvrsPolicyARN' - The policy ARN.
 --
--- * 'gpvrsCreationDate' - The date the policy version was created.
+-- * 'gpvrsCreationDate' - The date the policy was created.
 --
 -- * 'gpvrsGenerationId' - The generation ID of the policy version.
 --
@@ -179,7 +179,7 @@ getPolicyVersionResponse pResponseStatus_
                               _gpvrsIsDefaultVersion = Nothing,
                               _gpvrsResponseStatus = pResponseStatus_}
 
--- | The date the policy version was last modified.
+-- | The date the policy was last modified.
 gpvrsLastModifiedDate :: Lens' GetPolicyVersionResponse (Maybe UTCTime)
 gpvrsLastModifiedDate = lens _gpvrsLastModifiedDate (\ s a -> s{_gpvrsLastModifiedDate = a}) . mapping _Time
 
@@ -199,7 +199,7 @@ gpvrsPolicyVersionId = lens _gpvrsPolicyVersionId (\ s a -> s{_gpvrsPolicyVersio
 gpvrsPolicyARN :: Lens' GetPolicyVersionResponse (Maybe Text)
 gpvrsPolicyARN = lens _gpvrsPolicyARN (\ s a -> s{_gpvrsPolicyARN = a})
 
--- | The date the policy version was created.
+-- | The date the policy was created.
 gpvrsCreationDate :: Lens' GetPolicyVersionResponse (Maybe UTCTime)
 gpvrsCreationDate = lens _gpvrsCreationDate (\ s a -> s{_gpvrsCreationDate = a}) . mapping _Time
 

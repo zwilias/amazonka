@@ -32,12 +32,15 @@ module Network.AWS.Lambda.Types
     , _InvalidRequestContentException
     , _ResourceNotFoundException
     , _InvalidZipFileException
+    , _ResourceNotReadyException
+    , _ProvisionedConcurrencyConfigNotFoundException
     , _ResourceConflictException
     , _EC2AccessDeniedException
     , _InvalidSubnetIdException
     , _InvalidSecurityGroupIdException
     , _KMSInvalidStateException
     , _KMSAccessDeniedException
+    , _ResourceInUseException
     , _EC2UnexpectedException
     , _UnsupportedMediaTypeException
 
@@ -50,11 +53,26 @@ module Network.AWS.Lambda.Types
     -- * InvocationType
     , InvocationType (..)
 
+    -- * LastUpdateStatus
+    , LastUpdateStatus (..)
+
+    -- * LastUpdateStatusReasonCode
+    , LastUpdateStatusReasonCode (..)
+
     -- * LogType
     , LogType (..)
 
+    -- * ProvisionedConcurrencyStatusEnum
+    , ProvisionedConcurrencyStatusEnum (..)
+
     -- * Runtime
     , Runtime (..)
+
+    -- * State
+    , State (..)
+
+    -- * StateReasonCode
+    , StateReasonCode (..)
 
     -- * TracingMode
     , TracingMode (..)
@@ -99,6 +117,12 @@ module Network.AWS.Lambda.Types
     , deadLetterConfig
     , dlcTargetARN
 
+    -- * DestinationConfig
+    , DestinationConfig
+    , destinationConfig
+    , dcOnSuccess
+    , dcOnFailure
+
     -- * Environment
     , Environment
     , environment
@@ -122,11 +146,17 @@ module Network.AWS.Lambda.Types
     , esmcEventSourceARN
     , esmcState
     , esmcFunctionARN
+    , esmcBisectBatchOnFunctionError
     , esmcUUId
+    , esmcParallelizationFactor
     , esmcLastProcessingResult
+    , esmcMaximumRetryAttempts
     , esmcBatchSize
     , esmcStateTransitionReason
+    , esmcMaximumBatchingWindowInSeconds
+    , esmcMaximumRecordAgeInSeconds
     , esmcLastModified
+    , esmcDestinationConfig
 
     -- * FunctionCode
     , FunctionCode
@@ -147,6 +177,8 @@ module Network.AWS.Lambda.Types
     , functionConfiguration
     , fcMemorySize
     , fcRuntime
+    , fcState
+    , fcLastUpdateStatus
     , fcFunctionARN
     , fcKMSKeyARN
     , fcEnvironment
@@ -155,15 +187,100 @@ module Network.AWS.Lambda.Types
     , fcVPCConfig
     , fcVersion
     , fcFunctionName
+    , fcLayers
     , fcCodeSize
     , fcHandler
     , fcTimeout
+    , fcLastUpdateStatusReason
+    , fcStateReason
     , fcLastModified
     , fcCodeSha256
     , fcTracingConfig
+    , fcStateReasonCode
     , fcDescription
+    , fcLastUpdateStatusReasonCode
     , fcRevisionId
     , fcMasterARN
+
+    -- * FunctionEventInvokeConfig
+    , FunctionEventInvokeConfig
+    , functionEventInvokeConfig
+    , feicFunctionARN
+    , feicMaximumEventAgeInSeconds
+    , feicMaximumRetryAttempts
+    , feicLastModified
+    , feicDestinationConfig
+
+    -- * GetLayerVersionResponse
+    , GetLayerVersionResponse
+    , getLayerVersionResponse
+    , glvLayerVersionARN
+    , glvContent
+    , glvCreatedDate
+    , glvVersion
+    , glvLicenseInfo
+    , glvLayerARN
+    , glvDescription
+    , glvCompatibleRuntimes
+
+    -- * Layer
+    , Layer
+    , layer
+    , lARN
+    , lCodeSize
+
+    -- * LayerVersionContentInput
+    , LayerVersionContentInput
+    , layerVersionContentInput
+    , lvciS3ObjectVersion
+    , lvciS3Key
+    , lvciZipFile
+    , lvciS3Bucket
+
+    -- * LayerVersionContentOutput
+    , LayerVersionContentOutput
+    , layerVersionContentOutput
+    , lvcoLocation
+    , lvcoCodeSize
+    , lvcoCodeSha256
+
+    -- * LayerVersionsListItem
+    , LayerVersionsListItem
+    , layerVersionsListItem
+    , lvliLayerVersionARN
+    , lvliCreatedDate
+    , lvliVersion
+    , lvliLicenseInfo
+    , lvliDescription
+    , lvliCompatibleRuntimes
+
+    -- * LayersListItem
+    , LayersListItem
+    , layersListItem
+    , lliLayerName
+    , lliLatestMatchingVersion
+    , lliLayerARN
+
+    -- * OnFailure
+    , OnFailure
+    , onFailure
+    , ofDestination
+
+    -- * OnSuccess
+    , OnSuccess
+    , onSuccess
+    , osDestination
+
+    -- * ProvisionedConcurrencyConfigListItem
+    , ProvisionedConcurrencyConfigListItem
+    , provisionedConcurrencyConfigListItem
+    , pccliStatus
+    , pccliFunctionARN
+    , pccliRequestedProvisionedConcurrentExecutions
+    , pccliAvailableProvisionedConcurrentExecutions
+    , pccliStatusReason
+    , pccliAllocatedProvisionedConcurrentExecutions
+    , pccliLastModified
 
     -- * TracingConfig
     , TracingConfig
@@ -195,8 +312,13 @@ import Network.AWS.Sign.V4
 import Network.AWS.Lambda.Types.EventSourcePosition
 import Network.AWS.Lambda.Types.FunctionVersion
 import Network.AWS.Lambda.Types.InvocationType
+import Network.AWS.Lambda.Types.LastUpdateStatus
+import Network.AWS.Lambda.Types.LastUpdateStatusReasonCode
 import Network.AWS.Lambda.Types.LogType
+import Network.AWS.Lambda.Types.ProvisionedConcurrencyStatusEnum
 import Network.AWS.Lambda.Types.Runtime
+import Network.AWS.Lambda.Types.State
+import Network.AWS.Lambda.Types.StateReasonCode
 import Network.AWS.Lambda.Types.TracingMode
 import Network.AWS.Lambda.Types.AccountLimit
 import Network.AWS.Lambda.Types.AccountUsage
@@ -204,6 +326,7 @@ import Network.AWS.Lambda.Types.AliasConfiguration
 import Network.AWS.Lambda.Types.AliasRoutingConfiguration
 import Network.AWS.Lambda.Types.Concurrency
 import Network.AWS.Lambda.Types.DeadLetterConfig
+import Network.AWS.Lambda.Types.DestinationConfig
 import Network.AWS.Lambda.Types.Environment
 import Network.AWS.Lambda.Types.EnvironmentError
 import Network.AWS.Lambda.Types.EnvironmentResponse
@@ -211,6 +334,16 @@ import Network.AWS.Lambda.Types.EventSourceMappingConfiguration
 import Network.AWS.Lambda.Types.FunctionCode
 import Network.AWS.Lambda.Types.FunctionCodeLocation
 import Network.AWS.Lambda.Types.FunctionConfiguration
+import Network.AWS.Lambda.Types.FunctionEventInvokeConfig
+import Network.AWS.Lambda.Types.GetLayerVersionResponse
+import Network.AWS.Lambda.Types.Layer
+import Network.AWS.Lambda.Types.LayerVersionContentInput
+import Network.AWS.Lambda.Types.LayerVersionContentOutput
+import Network.AWS.Lambda.Types.LayerVersionsListItem
+import Network.AWS.Lambda.Types.LayersListItem
+import Network.AWS.Lambda.Types.OnFailure
+import Network.AWS.Lambda.Types.OnSuccess
+import Network.AWS.Lambda.Types.ProvisionedConcurrencyConfigListItem
 import Network.AWS.Lambda.Types.TracingConfig
 import Network.AWS.Lambda.Types.TracingConfigResponse
 import Network.AWS.Lambda.Types.VPCConfig
@@ -238,6 +371,11 @@ lambda
             = Just "throttling_exception"
           | has (hasCode "Throttling" . hasStatus 400) e =
             Just "throttling"
+          | has
+              (hasCode "ProvisionedThroughputExceededException" .
+                 hasStatus 400)
+              e
+            = Just "throughput_exceeded"
           | has (hasStatus 504) e = Just "gateway_timeout"
           | has
               (hasCode "RequestThrottledException" . hasStatus 400)
@@ -249,7 +387,7 @@ lambda
           | has (hasStatus 509) e = Just "limit_exceeded"
           | otherwise = Nothing
 
--- | Lambda function access policy is limited to 20 KB.
+-- | The permissions policy for the resource is too large. <https://docs.aws.amazon.com/lambda/latest/dg/limits.html Learn more> 
 --
 --
 _PolicyLengthExceededException :: AsError a => Getting (First ServiceError) a ServiceError
@@ -258,7 +396,7 @@ _PolicyLengthExceededException
       "PolicyLengthExceededException"
       . hasStatus 400
 
--- | You have exceeded your maximum total code size per account. <http://docs.aws.amazon.com/lambda/latest/dg/limits.html Limits> 
+-- | You have exceeded your maximum total code size per account. <https://docs.aws.amazon.com/lambda/latest/dg/limits.html Learn more> 
 --
 --
 _CodeStorageExceededException :: AsError a => Getting (First ServiceError) a ServiceError
@@ -293,7 +431,7 @@ _SubnetIPAddressLimitReachedException
       "SubnetIPAddressLimitReachedException"
       . hasStatus 502
 
--- | 
+-- | The request throughput limit was exceeded.
 --
 --
 _TooManyRequestsException :: AsError a => Getting (First ServiceError) a ServiceError
@@ -326,7 +464,7 @@ _EC2ThrottledException
   = _MatchServiceError lambda "EC2ThrottledException" .
       hasStatus 502
 
--- | The request payload exceeded the @Invoke@ request body JSON input limit. For more information, see <http://docs.aws.amazon.com/lambda/latest/dg/limits.html Limits> . 
+-- | The request payload exceeded the @Invoke@ request body JSON input limit. For more information, see <https://docs.aws.amazon.com/lambda/latest/dg/limits.html Limits> . 
 --
 --
 _RequestTooLargeException :: AsError a => Getting (First ServiceError) a ServiceError
@@ -335,7 +473,7 @@ _RequestTooLargeException
       "RequestTooLargeException"
       . hasStatus 413
 
--- | AWS Lambda was not able to create an Elastic Network Interface (ENI) in the VPC, specified as part of Lambda function configuration, because the limit for network interfaces has been reached.
+-- | AWS Lambda was not able to create an elastic network interface in the VPC, specified as part of Lambda function configuration, because the limit for network interfaces has been reached.
 --
 --
 _ENILimitReachedException :: AsError a => Getting (First ServiceError) a ServiceError
@@ -344,7 +482,7 @@ _ENILimitReachedException
       "ENILimitReachedException"
       . hasStatus 502
 
--- | One of the parameters in the request is invalid. For example, if you provided an IAM role for AWS Lambda to assume in the @CreateFunction@ or the @UpdateFunctionConfiguration@ API, that AWS Lambda is unable to assume you will get this exception.
+-- | One of the parameters in the request is invalid.
 --
 --
 _InvalidParameterValueException :: AsError a => Getting (First ServiceError) a ServiceError
@@ -370,7 +508,7 @@ _InvalidRequestContentException
       "InvalidRequestContentException"
       . hasStatus 400
 
--- | The resource (for example, a Lambda function or access policy statement) specified in the request does not exist.
+-- | The resource specified in the request does not exist.
 --
 --
 _ResourceNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
@@ -379,7 +517,7 @@ _ResourceNotFoundException
       "ResourceNotFoundException"
       . hasStatus 404
 
--- | AWS Lambda could not unzip the function zip file.
+-- | AWS Lambda could not unzip the deployment package.
 --
 --
 _InvalidZipFileException :: AsError a => Getting (First ServiceError) a ServiceError
@@ -387,7 +525,25 @@ _InvalidZipFileException
   = _MatchServiceError lambda "InvalidZipFileException"
       . hasStatus 502
 
--- | The resource already exists.
+-- | The function is inactive and its VPC connection is no longer available. Wait for the VPC connection to reestablish and try again.
+--
+--
+_ResourceNotReadyException :: AsError a => Getting (First ServiceError) a ServiceError
+_ResourceNotReadyException
+  = _MatchServiceError lambda
+      "ResourceNotReadyException"
+      . hasStatus 502
+
+-- | The specified configuration does not exist.
+--
+--
+_ProvisionedConcurrencyConfigNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
+_ProvisionedConcurrencyConfigNotFoundException
+  = _MatchServiceError lambda
+      "ProvisionedConcurrencyConfigNotFoundException"
+      . hasStatus 404
+
+-- | The resource already exists, or another operation is in progress.
 --
 --
 _ResourceConflictException :: AsError a => Getting (First ServiceError) a ServiceError
@@ -396,7 +552,7 @@ _ResourceConflictException
       "ResourceConflictException"
       . hasStatus 409
 
--- | 
+-- | Need additional permissions to configure VPC settings.
 --
 --
 _EC2AccessDeniedException :: AsError a => Getting (First ServiceError) a ServiceError
@@ -440,6 +596,14 @@ _KMSAccessDeniedException
   = _MatchServiceError lambda
       "KMSAccessDeniedException"
       . hasStatus 502
+
+-- | The operation conflicts with the resource's availability. For example, you attempted to update an EventSource Mapping in CREATING, or tried to delete a EventSource mapping currently in the UPDATING state. 
+--
+--
+_ResourceInUseException :: AsError a => Getting (First ServiceError) a ServiceError
+_ResourceInUseException
+  = _MatchServiceError lambda "ResourceInUseException"
+      . hasStatus 400
 
 -- | AWS Lambda received an unexpected EC2 client exception while setting up for the Lambda function.
 --

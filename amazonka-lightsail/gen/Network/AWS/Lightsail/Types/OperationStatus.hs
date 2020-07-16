@@ -19,11 +19,11 @@
 module Network.AWS.Lightsail.Types.OperationStatus (
   OperationStatus (
     ..
-    , Completed
-    , Failed
-    , NotStarted
-    , Started
-    , Succeeded
+    , OSCompleted
+    , OSFailed
+    , OSNotStarted
+    , OSStarted
+    , OSSucceeded
     )
   ) where
 
@@ -34,27 +34,27 @@ data OperationStatus = OperationStatus' (CI Text)
                          deriving (Eq, Ord, Read, Show, Data, Typeable,
                                    Generic)
 
-pattern Completed :: OperationStatus
-pattern Completed = OperationStatus' "Completed"
+pattern OSCompleted :: OperationStatus
+pattern OSCompleted = OperationStatus' "Completed"
 
-pattern Failed :: OperationStatus
-pattern Failed = OperationStatus' "Failed"
+pattern OSFailed :: OperationStatus
+pattern OSFailed = OperationStatus' "Failed"
 
-pattern NotStarted :: OperationStatus
-pattern NotStarted = OperationStatus' "NotStarted"
+pattern OSNotStarted :: OperationStatus
+pattern OSNotStarted = OperationStatus' "NotStarted"
 
-pattern Started :: OperationStatus
-pattern Started = OperationStatus' "Started"
+pattern OSStarted :: OperationStatus
+pattern OSStarted = OperationStatus' "Started"
 
-pattern Succeeded :: OperationStatus
-pattern Succeeded = OperationStatus' "Succeeded"
+pattern OSSucceeded :: OperationStatus
+pattern OSSucceeded = OperationStatus' "Succeeded"
 
 {-# COMPLETE
-  Completed,
-  Failed,
-  NotStarted,
-  Started,
-  Succeeded,
+  OSCompleted,
+  OSFailed,
+  OSNotStarted,
+  OSStarted,
+  OSSucceeded,
   OperationStatus' #-}
 
 instance FromText OperationStatus where
@@ -69,26 +69,26 @@ instance ToText OperationStatus where
 --   fromEnum is a partial function, and will error on values unknown at generation time.
 instance Enum OperationStatus where
     toEnum i = case i of
-        0 -> Completed
-        1 -> Failed
-        2 -> NotStarted
-        3 -> Started
-        4 -> Succeeded
+        0 -> OSCompleted
+        1 -> OSFailed
+        2 -> OSNotStarted
+        3 -> OSStarted
+        4 -> OSSucceeded
         _ -> (error . showText) $ "Unknown index for OperationStatus: " <> toText i
     fromEnum x = case x of
-        Completed -> 0
-        Failed -> 1
-        NotStarted -> 2
-        Started -> 3
-        Succeeded -> 4
+        OSCompleted -> 0
+        OSFailed -> 1
+        OSNotStarted -> 2
+        OSStarted -> 3
+        OSSucceeded -> 4
         OperationStatus' name -> (error . showText) $ "Unknown OperationStatus: " <> original name
 
 -- | Represents the bounds of /known/ $OperationStatus.
 --   AWS may have added more since the source was generated.
 --   This instance exists only for backward compatibility.
 instance Bounded OperationStatus where
-    minBound = Completed
-    maxBound = Succeeded
+    minBound = OSCompleted
+    maxBound = OSSucceeded
 
 instance Hashable     OperationStatus
 instance NFData       OperationStatus

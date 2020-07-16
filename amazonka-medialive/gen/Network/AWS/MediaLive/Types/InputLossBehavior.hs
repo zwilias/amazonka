@@ -22,7 +22,7 @@ import Network.AWS.MediaLive.Types.InputLocation
 import Network.AWS.MediaLive.Types.InputLossImageType
 import Network.AWS.Prelude
 
--- | Placeholder documentation for InputLossBehavior
+-- | Input Loss Behavior
 --
 -- /See:/ 'inputLossBehavior' smart constructor.
 data InputLossBehavior = InputLossBehavior'{_ilbInputLossImageColor

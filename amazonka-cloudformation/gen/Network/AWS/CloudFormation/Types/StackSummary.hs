@@ -17,6 +17,7 @@
 --
 module Network.AWS.CloudFormation.Types.StackSummary where
 
+import Network.AWS.CloudFormation.Types.StackDriftInformationSummary
 import Network.AWS.CloudFormation.Types.StackStatus
 import Network.AWS.Lens
 import Network.AWS.Prelude
@@ -31,6 +32,8 @@ data StackSummary = StackSummary'{_ssLastUpdatedTime
                                   _ssRootId :: !(Maybe Text),
                                   _ssStackStatusReason :: !(Maybe Text),
                                   _ssTemplateDescription :: !(Maybe Text),
+                                  _ssDriftInformation ::
+                                  !(Maybe StackDriftInformationSummary),
                                   _ssDeletionTime :: !(Maybe ISO8601),
                                   _ssStackId :: !(Maybe Text),
                                   _ssParentId :: !(Maybe Text),
@@ -45,11 +48,13 @@ data StackSummary = StackSummary'{_ssLastUpdatedTime
 --
 -- * 'ssLastUpdatedTime' - The time the stack was last updated. This field will only be returned if the stack has been updated at least once.
 --
--- * 'ssRootId' - For nested stacks--stacks created as resources for another stack--the stack ID of the the top-level stack to which the nested stack ultimately belongs. For more information, see <http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-nested-stacks.html Working with Nested Stacks> in the /AWS CloudFormation User Guide/ .
+-- * 'ssRootId' - For nested stacks--stacks created as resources for another stack--the stack ID of the top-level stack to which the nested stack ultimately belongs. For more information, see <http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-nested-stacks.html Working with Nested Stacks> in the /AWS CloudFormation User Guide/ .
 --
 -- * 'ssStackStatusReason' - Success/Failure message associated with the stack status.
 --
 -- * 'ssTemplateDescription' - The template description of the template used to create the stack.
+--
+-- * 'ssDriftInformation' - Summarizes information on whether a stack's actual configuration differs, or has /drifted/ , from it's expected configuration, as defined in the stack template and any values specified as template parameters. For more information, see <http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-stack-drift.html Detecting Unregulated Configuration Changes to Stacks and Resources> .
 --
 -- * 'ssDeletionTime' - The time the stack was deleted.
 --
@@ -71,6 +76,7 @@ stackSummary pStackName_ pCreationTime_ pStackStatus_
   = StackSummary'{_ssLastUpdatedTime = Nothing,
                   _ssRootId = Nothing, _ssStackStatusReason = Nothing,
                   _ssTemplateDescription = Nothing,
+                  _ssDriftInformation = Nothing,
                   _ssDeletionTime = Nothing, _ssStackId = Nothing,
                   _ssParentId = Nothing, _ssStackName = pStackName_,
                   _ssCreationTime = _Time # pCreationTime_,
@@ -80,7 +86,7 @@ stackSummary pStackName_ pCreationTime_ pStackStatus_
 ssLastUpdatedTime :: Lens' StackSummary (Maybe UTCTime)
 ssLastUpdatedTime = lens _ssLastUpdatedTime (\ s a -> s{_ssLastUpdatedTime = a}) . mapping _Time
 
--- | For nested stacks--stacks created as resources for another stack--the stack ID of the the top-level stack to which the nested stack ultimately belongs. For more information, see <http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-nested-stacks.html Working with Nested Stacks> in the /AWS CloudFormation User Guide/ .
+-- | For nested stacks--stacks created as resources for another stack--the stack ID of the top-level stack to which the nested stack ultimately belongs. For more information, see <http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-nested-stacks.html Working with Nested Stacks> in the /AWS CloudFormation User Guide/ .
 ssRootId :: Lens' StackSummary (Maybe Text)
 ssRootId = lens _ssRootId (\ s a -> s{_ssRootId = a})
 
@@ -91,6 +97,10 @@ ssStackStatusReason = lens _ssStackStatusReason (\ s a -> s{_ssStackStatusReason
 -- | The template description of the template used to create the stack.
 ssTemplateDescription :: Lens' StackSummary (Maybe Text)
 ssTemplateDescription = lens _ssTemplateDescription (\ s a -> s{_ssTemplateDescription = a})
+
+-- | Summarizes information on whether a stack's actual configuration differs, or has /drifted/ , from it's expected configuration, as defined in the stack template and any values specified as template parameters. For more information, see <http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-stack-drift.html Detecting Unregulated Configuration Changes to Stacks and Resources> .
+ssDriftInformation :: Lens' StackSummary (Maybe StackDriftInformationSummary)
+ssDriftInformation = lens _ssDriftInformation (\ s a -> s{_ssDriftInformation = a})
 
 -- | The time the stack was deleted.
 ssDeletionTime :: Lens' StackSummary (Maybe UTCTime)
@@ -122,6 +132,7 @@ instance FromXML StackSummary where
               (x .@? "LastUpdatedTime") <*> (x .@? "RootId") <*>
                 (x .@? "StackStatusReason")
                 <*> (x .@? "TemplateDescription")
+                <*> (x .@? "DriftInformation")
                 <*> (x .@? "DeletionTime")
                 <*> (x .@? "StackId")
                 <*> (x .@? "ParentId")

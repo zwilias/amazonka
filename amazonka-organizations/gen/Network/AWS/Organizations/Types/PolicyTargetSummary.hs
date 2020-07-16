@@ -37,9 +37,9 @@ data PolicyTargetSummary = PolicyTargetSummary'{_polTargetId
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'polTargetId' - The unique identifier (ID) of the policy target. The <http://wikipedia.org/wiki/regex regex pattern> for a target ID string requires one of the following:     * Root: a string that begins with "r-" followed by from 4 to 32 lower-case letters or digits.     * Account: a string that consists of exactly 12 digits.     * Organizational unit (OU): a string that begins with "ou-" followed by from 4 to 32 lower-case letters or digits (the ID of the root that the OU is in) followed by a second "-" dash and from 8 to 32 additional lower-case letters or digits.
+-- * 'polTargetId' - The unique identifier (ID) of the policy target. The <http://wikipedia.org/wiki/regex regex pattern> for a target ID string requires one of the following:     * Root: A string that begins with "r-" followed by from 4 to 32 lower-case letters or digits.     * Account: A string that consists of exactly 12 digits.     * Organizational unit (OU): A string that begins with "ou-" followed by from 4 to 32 lower-case letters or digits (the ID of the root that the OU is in). This string is followed by a second "-" dash and from 8 to 32 additional lower-case letters or digits.
 --
--- * 'polARN' - The Amazon Resource Name (ARN) of the policy target. For more information about ARNs in Organizations, see <http://docs.aws.amazon.com/organizations/latest/userguide/orgs_permissions.html#orgs-permissions-arns ARN Formats Supported by Organizations> in the /AWS Organizations User Guide/ .
+-- * 'polARN' - The Amazon Resource Name (ARN) of the policy target. For more information about ARNs in Organizations, see <https://docs.aws.amazon.com/organizations/latest/userguide/orgs_permissions.html#orgs-permissions-arns ARN Formats Supported by Organizations> in the /AWS Organizations User Guide/ .
 --
 -- * 'polName' - The friendly name of the policy target. The <http://wikipedia.org/wiki/regex regex pattern> that is used to validate this parameter is a string of any of the characters in the ASCII character range.
 --
@@ -51,11 +51,11 @@ policyTargetSummary
                          _polARN = Nothing, _polName = Nothing,
                          _polType = Nothing}
 
--- | The unique identifier (ID) of the policy target. The <http://wikipedia.org/wiki/regex regex pattern> for a target ID string requires one of the following:     * Root: a string that begins with "r-" followed by from 4 to 32 lower-case letters or digits.     * Account: a string that consists of exactly 12 digits.     * Organizational unit (OU): a string that begins with "ou-" followed by from 4 to 32 lower-case letters or digits (the ID of the root that the OU is in) followed by a second "-" dash and from 8 to 32 additional lower-case letters or digits.
+-- | The unique identifier (ID) of the policy target. The <http://wikipedia.org/wiki/regex regex pattern> for a target ID string requires one of the following:     * Root: A string that begins with "r-" followed by from 4 to 32 lower-case letters or digits.     * Account: A string that consists of exactly 12 digits.     * Organizational unit (OU): A string that begins with "ou-" followed by from 4 to 32 lower-case letters or digits (the ID of the root that the OU is in). This string is followed by a second "-" dash and from 8 to 32 additional lower-case letters or digits.
 polTargetId :: Lens' PolicyTargetSummary (Maybe Text)
 polTargetId = lens _polTargetId (\ s a -> s{_polTargetId = a})
 
--- | The Amazon Resource Name (ARN) of the policy target. For more information about ARNs in Organizations, see <http://docs.aws.amazon.com/organizations/latest/userguide/orgs_permissions.html#orgs-permissions-arns ARN Formats Supported by Organizations> in the /AWS Organizations User Guide/ .
+-- | The Amazon Resource Name (ARN) of the policy target. For more information about ARNs in Organizations, see <https://docs.aws.amazon.com/organizations/latest/userguide/orgs_permissions.html#orgs-permissions-arns ARN Formats Supported by Organizations> in the /AWS Organizations User Guide/ .
 polARN :: Lens' PolicyTargetSummary (Maybe Text)
 polARN = lens _polARN (\ s a -> s{_polARN = a})
 

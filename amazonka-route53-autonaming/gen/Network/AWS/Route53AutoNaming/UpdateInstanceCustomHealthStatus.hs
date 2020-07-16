@@ -18,7 +18,13 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Undocumented operation.
+-- Submits a request to change the health status of a custom health check to healthy or unhealthy.
+--
+--
+-- You can use @UpdateInstanceCustomHealthStatus@ to change the status only for custom health checks, which you define using @HealthCheckCustomConfig@ when you create a service. You can't use it to change the status for Route 53 health checks, which you define using @HealthCheckConfig@ .
+--
+-- For more information, see <https://docs.aws.amazon.com/cloud-map/latest/api/API_HealthCheckCustomConfig.html HealthCheckCustomConfig> .
+--
 module Network.AWS.Route53AutoNaming.UpdateInstanceCustomHealthStatus
     (
     -- * Creating a Request
@@ -58,11 +64,11 @@ data UpdateInstanceCustomHealthStatus = UpdateInstanceCustomHealthStatus'{_uichs
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'uichsServiceId' - Undocumented member.
+-- * 'uichsServiceId' - The ID of the service that includes the configuration for the custom health check that you want to change the status for.
 --
--- * 'uichsInstanceId' - Undocumented member.
+-- * 'uichsInstanceId' - The ID of the instance that you want to change the health status for.
 --
--- * 'uichsStatus' - Undocumented member.
+-- * 'uichsStatus' - The new status of the instance, @HEALTHY@ or @UNHEALTHY@ .
 updateInstanceCustomHealthStatus
     :: Text -- ^ 'uichsServiceId'
     -> Text -- ^ 'uichsInstanceId'
@@ -75,15 +81,15 @@ updateInstanceCustomHealthStatus pServiceId_
                                       _uichsInstanceId = pInstanceId_,
                                       _uichsStatus = pStatus_}
 
--- | Undocumented member.
+-- | The ID of the service that includes the configuration for the custom health check that you want to change the status for.
 uichsServiceId :: Lens' UpdateInstanceCustomHealthStatus Text
 uichsServiceId = lens _uichsServiceId (\ s a -> s{_uichsServiceId = a})
 
--- | Undocumented member.
+-- | The ID of the instance that you want to change the health status for.
 uichsInstanceId :: Lens' UpdateInstanceCustomHealthStatus Text
 uichsInstanceId = lens _uichsInstanceId (\ s a -> s{_uichsInstanceId = a})
 
--- | Undocumented member.
+-- | The new status of the instance, @HEALTHY@ or @UNHEALTHY@ .
 uichsStatus :: Lens' UpdateInstanceCustomHealthStatus CustomHealthStatus
 uichsStatus = lens _uichsStatus (\ s a -> s{_uichsStatus = a})
 

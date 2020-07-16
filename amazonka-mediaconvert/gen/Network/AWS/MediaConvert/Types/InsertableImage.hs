@@ -20,48 +20,48 @@ module Network.AWS.MediaConvert.Types.InsertableImage where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | Settings for Insertable Image
+-- | Settings that specify how your still graphic overlay appears.
 --
 -- /See:/ 'insertableImage' smart constructor.
 data InsertableImage = InsertableImage'{_iiImageX ::
-                                        !(Maybe Int),
-                                        _iiHeight :: !(Maybe Int),
+                                        !(Maybe Nat),
+                                        _iiHeight :: !(Maybe Nat),
                                         _iiStartTime :: !(Maybe Text),
-                                        _iiFadeOut :: !(Maybe Int),
-                                        _iiWidth :: !(Maybe Int),
-                                        _iiOpacity :: !(Maybe Int),
-                                        _iiLayer :: !(Maybe Int),
-                                        _iiDuration :: !(Maybe Int),
-                                        _iiImageY :: !(Maybe Int),
+                                        _iiFadeOut :: !(Maybe Nat),
+                                        _iiWidth :: !(Maybe Nat),
+                                        _iiOpacity :: !(Maybe Nat),
+                                        _iiLayer :: !(Maybe Nat),
+                                        _iiDuration :: !(Maybe Nat),
+                                        _iiImageY :: !(Maybe Nat),
                                         _iiImageInserterInput :: !(Maybe Text),
-                                        _iiFadeIn :: !(Maybe Int)}
+                                        _iiFadeIn :: !(Maybe Nat)}
                          deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'InsertableImage' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'iiImageX' - Use Left (ImageX) to set the distance, in pixels, between the inserted image and the left edge of the frame. Required for BMP, PNG and TGA input.
+-- * 'iiImageX' - Specify the distance, in pixels, between the inserted image and the left edge of the video frame. Required for any image overlay that you specify.
 --
--- * 'iiHeight' - Specify the Height (Height) of the inserted image. Use a value that is less than or equal to the video resolution height. Leave this setting blank to use the native height of the image.
+-- * 'iiHeight' - Specify the height of the inserted image in pixels. If you specify a value that's larger than the video resolution height, the service will crop your overlaid image to fit. To use the native height of the image, keep this setting blank.
 --
--- * 'iiStartTime' - Use Start time (StartTime) to specify the video timecode when the image is inserted in the output. This must be in timecode format (HH:MM:SS:FF)
+-- * 'iiStartTime' - Specify the timecode of the frame that you want the overlay to first appear on. This must be in timecode (HH:MM:SS:FF or HH:MM:SS;FF) format. Remember to take into account your timecode source settings.
 --
--- * 'iiFadeOut' - Use Fade out (FadeOut) to set the length, in milliseconds, of the inserted image fade out. If you don't specify a value for Fade out, the image will disappear abruptly at the end of the inserted image duration.
+-- * 'iiFadeOut' - Specify the length of time, in milliseconds, between the end of the time that you have specified for the image overlay Duration and when the overlaid image has faded to total transparency. If you don't specify a value for Fade-out, the image will disappear abruptly at the end of the inserted image duration.
 --
--- * 'iiWidth' - Specify the Width (Width) of the inserted image. Use a value that is less than or equal to the video resolution width. Leave this setting blank to use the native width of the image.
+-- * 'iiWidth' - Specify the width of the inserted image in pixels. If you specify a value that's larger than the video resolution width, the service will crop your overlaid image to fit. To use the native width of the image, keep this setting blank.
 --
 -- * 'iiOpacity' - Use Opacity (Opacity) to specify how much of the underlying video shows through the inserted image. 0 is transparent and 100 is fully opaque. Default is 50.
 --
--- * 'iiLayer' - Use Layer (Layer) to specify how overlapping inserted images appear. Images with higher values of layer appear on top of images with lower values of layer.
+-- * 'iiLayer' - Specify how overlapping inserted images appear. Images with higher values for Layer appear on top of images with lower values for Layer.
 --
--- * 'iiDuration' - Use Duration (Duration) to set the time, in milliseconds, for the image to remain on the output video.
+-- * 'iiDuration' - Specify the time, in milliseconds, for the image to remain on the output video. This duration includes fade-in time but not fade-out time.
 --
--- * 'iiImageY' - Use Top (ImageY) to set the distance, in pixels, between the inserted image and the top edge of the video frame. Required for BMP, PNG and TGA input.
+-- * 'iiImageY' - Specify the distance, in pixels, between the overlaid image and the top edge of the video frame. Required for any image overlay that you specify.
 --
--- * 'iiImageInserterInput' - Use Image location (imageInserterInput) to specify the Amazon S3 location of the image to be inserted into the output. Use a 32 bit BMP, PNG, or TGA file that fits inside the video frame.
+-- * 'iiImageInserterInput' - Specify the HTTP, HTTPS, or Amazon S3 location of the image that you want to overlay on the video. Use a PNG or TGA file.
 --
--- * 'iiFadeIn' - Use Fade in (FadeIut) to set the length, in milliseconds, of the inserted image fade in. If you don't specify a value for Fade in, the image will appear abruptly at the Start time.
+-- * 'iiFadeIn' - Specify the length of time, in milliseconds, between the Start time that you specify for the image insertion and the time that the image appears at full opacity. Full opacity is the level that you specify for the opacity setting. If you don't specify a value for Fade-in, the image will appear abruptly at the overlay start time.
 insertableImage
     :: InsertableImage
 insertableImage
@@ -72,49 +72,49 @@ insertableImage
                      _iiDuration = Nothing, _iiImageY = Nothing,
                      _iiImageInserterInput = Nothing, _iiFadeIn = Nothing}
 
--- | Use Left (ImageX) to set the distance, in pixels, between the inserted image and the left edge of the frame. Required for BMP, PNG and TGA input.
-iiImageX :: Lens' InsertableImage (Maybe Int)
-iiImageX = lens _iiImageX (\ s a -> s{_iiImageX = a})
+-- | Specify the distance, in pixels, between the inserted image and the left edge of the video frame. Required for any image overlay that you specify.
+iiImageX :: Lens' InsertableImage (Maybe Natural)
+iiImageX = lens _iiImageX (\ s a -> s{_iiImageX = a}) . mapping _Nat
 
--- | Specify the Height (Height) of the inserted image. Use a value that is less than or equal to the video resolution height. Leave this setting blank to use the native height of the image.
-iiHeight :: Lens' InsertableImage (Maybe Int)
-iiHeight = lens _iiHeight (\ s a -> s{_iiHeight = a})
+-- | Specify the height of the inserted image in pixels. If you specify a value that's larger than the video resolution height, the service will crop your overlaid image to fit. To use the native height of the image, keep this setting blank.
+iiHeight :: Lens' InsertableImage (Maybe Natural)
+iiHeight = lens _iiHeight (\ s a -> s{_iiHeight = a}) . mapping _Nat
 
--- | Use Start time (StartTime) to specify the video timecode when the image is inserted in the output. This must be in timecode format (HH:MM:SS:FF)
+-- | Specify the timecode of the frame that you want the overlay to first appear on. This must be in timecode (HH:MM:SS:FF or HH:MM:SS;FF) format. Remember to take into account your timecode source settings.
 iiStartTime :: Lens' InsertableImage (Maybe Text)
 iiStartTime = lens _iiStartTime (\ s a -> s{_iiStartTime = a})
 
--- | Use Fade out (FadeOut) to set the length, in milliseconds, of the inserted image fade out. If you don't specify a value for Fade out, the image will disappear abruptly at the end of the inserted image duration.
-iiFadeOut :: Lens' InsertableImage (Maybe Int)
-iiFadeOut = lens _iiFadeOut (\ s a -> s{_iiFadeOut = a})
+-- | Specify the length of time, in milliseconds, between the end of the time that you have specified for the image overlay Duration and when the overlaid image has faded to total transparency. If you don't specify a value for Fade-out, the image will disappear abruptly at the end of the inserted image duration.
+iiFadeOut :: Lens' InsertableImage (Maybe Natural)
+iiFadeOut = lens _iiFadeOut (\ s a -> s{_iiFadeOut = a}) . mapping _Nat
 
--- | Specify the Width (Width) of the inserted image. Use a value that is less than or equal to the video resolution width. Leave this setting blank to use the native width of the image.
-iiWidth :: Lens' InsertableImage (Maybe Int)
-iiWidth = lens _iiWidth (\ s a -> s{_iiWidth = a})
+-- | Specify the width of the inserted image in pixels. If you specify a value that's larger than the video resolution width, the service will crop your overlaid image to fit. To use the native width of the image, keep this setting blank.
+iiWidth :: Lens' InsertableImage (Maybe Natural)
+iiWidth = lens _iiWidth (\ s a -> s{_iiWidth = a}) . mapping _Nat
 
 -- | Use Opacity (Opacity) to specify how much of the underlying video shows through the inserted image. 0 is transparent and 100 is fully opaque. Default is 50.
-iiOpacity :: Lens' InsertableImage (Maybe Int)
-iiOpacity = lens _iiOpacity (\ s a -> s{_iiOpacity = a})
+iiOpacity :: Lens' InsertableImage (Maybe Natural)
+iiOpacity = lens _iiOpacity (\ s a -> s{_iiOpacity = a}) . mapping _Nat
 
--- | Use Layer (Layer) to specify how overlapping inserted images appear. Images with higher values of layer appear on top of images with lower values of layer.
-iiLayer :: Lens' InsertableImage (Maybe Int)
-iiLayer = lens _iiLayer (\ s a -> s{_iiLayer = a})
+-- | Specify how overlapping inserted images appear. Images with higher values for Layer appear on top of images with lower values for Layer.
+iiLayer :: Lens' InsertableImage (Maybe Natural)
+iiLayer = lens _iiLayer (\ s a -> s{_iiLayer = a}) . mapping _Nat
 
--- | Use Duration (Duration) to set the time, in milliseconds, for the image to remain on the output video.
-iiDuration :: Lens' InsertableImage (Maybe Int)
-iiDuration = lens _iiDuration (\ s a -> s{_iiDuration = a})
+-- | Specify the time, in milliseconds, for the image to remain on the output video. This duration includes fade-in time but not fade-out time.
+iiDuration :: Lens' InsertableImage (Maybe Natural)
+iiDuration = lens _iiDuration (\ s a -> s{_iiDuration = a}) . mapping _Nat
 
--- | Use Top (ImageY) to set the distance, in pixels, between the inserted image and the top edge of the video frame. Required for BMP, PNG and TGA input.
-iiImageY :: Lens' InsertableImage (Maybe Int)
-iiImageY = lens _iiImageY (\ s a -> s{_iiImageY = a})
+-- | Specify the distance, in pixels, between the overlaid image and the top edge of the video frame. Required for any image overlay that you specify.
+iiImageY :: Lens' InsertableImage (Maybe Natural)
+iiImageY = lens _iiImageY (\ s a -> s{_iiImageY = a}) . mapping _Nat
 
--- | Use Image location (imageInserterInput) to specify the Amazon S3 location of the image to be inserted into the output. Use a 32 bit BMP, PNG, or TGA file that fits inside the video frame.
+-- | Specify the HTTP, HTTPS, or Amazon S3 location of the image that you want to overlay on the video. Use a PNG or TGA file.
 iiImageInserterInput :: Lens' InsertableImage (Maybe Text)
 iiImageInserterInput = lens _iiImageInserterInput (\ s a -> s{_iiImageInserterInput = a})
 
--- | Use Fade in (FadeIut) to set the length, in milliseconds, of the inserted image fade in. If you don't specify a value for Fade in, the image will appear abruptly at the Start time.
-iiFadeIn :: Lens' InsertableImage (Maybe Int)
-iiFadeIn = lens _iiFadeIn (\ s a -> s{_iiFadeIn = a})
+-- | Specify the length of time, in milliseconds, between the Start time that you specify for the image insertion and the time that the image appears at full opacity. Full opacity is the level that you specify for the opacity setting. If you don't specify a value for Fade-in, the image will appear abruptly at the overlay start time.
+iiFadeIn :: Lens' InsertableImage (Maybe Natural)
+iiFadeIn = lens _iiFadeIn (\ s a -> s{_iiFadeIn = a}) . mapping _Nat
 
 instance FromJSON InsertableImage where
         parseJSON

@@ -20,8 +20,37 @@ module Network.AWS.StorageGateway.Types
     , _InternalServerError
     , _ServiceUnavailableError
 
+    -- * ActiveDirectoryStatus
+    , ActiveDirectoryStatus (..)
+
+    -- * AvailabilityMonitorTestStatus
+    , AvailabilityMonitorTestStatus (..)
+
+    -- * FileShareType
+    , FileShareType (..)
+
+    -- * HostEnvironment
+    , HostEnvironment (..)
+
     -- * ObjectACL
     , ObjectACL (..)
+
+    -- * SMBSecurityStrategy
+    , SMBSecurityStrategy (..)
+
+    -- * AutomaticTapeCreationPolicyInfo
+    , AutomaticTapeCreationPolicyInfo
+    , automaticTapeCreationPolicyInfo
+    , atcpiGatewayARN
+    , atcpiAutomaticTapeCreationRules
+
+    -- * AutomaticTapeCreationRule
+    , AutomaticTapeCreationRule
+    , automaticTapeCreationRule
+    , atcrTapeBarcodePrefix
+    , atcrPoolId
+    , atcrTapeSizeInBytes
+    , atcrMinimumNumTapes
 
     -- * CachediSCSIVolume
     , CachediSCSIVolume
@@ -29,6 +58,8 @@ module Network.AWS.StorageGateway.Types
     , cscsivVolumeiSCSIAttributes
     , cscsivVolumeStatus
     , cscsivSourceSnapshotId
+    , cscsivKMSKey
+    , cscsivVolumeAttachmentStatus
     , cscsivVolumeARN
     , cscsivVolumeProgress
     , cscsivVolumeSizeInBytes
@@ -36,6 +67,7 @@ module Network.AWS.StorageGateway.Types
     , cscsivCreatedDate
     , cscsivVolumeId
     , cscsivVolumeType
+    , cscsivTargetName
 
     -- * ChapInfo
     , ChapInfo
@@ -63,6 +95,7 @@ module Network.AWS.StorageGateway.Types
     , dDiskSizeInBytes
     , dDiskStatus
     , dDiskId
+    , dDiskAttributeList
 
     -- * FileShareInfo
     , FileShareInfo
@@ -71,11 +104,14 @@ module Network.AWS.StorageGateway.Types
     , fsiGatewayARN
     , fsiFileShareId
     , fsiFileShareARN
+    , fsiFileShareType
 
     -- * GatewayInfo
     , GatewayInfo
     , gatewayInfo
+    , giEC2InstanceRegion
     , giGatewayARN
+    , giEC2InstanceId
     , giGatewayOperationalState
     , giGatewayName
     , giGatewayId
@@ -109,6 +145,7 @@ module Network.AWS.StorageGateway.Types
     , nfsfsiClientList
     , nfsfsiGuessMIMETypeEnabled
     , nfsfsiReadOnly
+    , nfsfsiTags
 
     -- * NetworkInterface
     , NetworkInterface
@@ -117,6 +154,31 @@ module Network.AWS.StorageGateway.Types
     , niMACAddress
     , niIPv4Address
 
+    -- * SMBFileShareInfo
+    , SMBFileShareInfo
+    , sMBFileShareInfo
+    , smbfsiAdminUserList
+    , smbfsiAuditDestinationARN
+    , smbfsiFileShareStatus
+    , smbfsiInvalidUserList
+    , smbfsiKMSKey
+    , smbfsiValidUserList
+    , smbfsiGatewayARN
+    , smbfsiPath
+    , smbfsiAuthentication
+    , smbfsiObjectACL
+    , smbfsiKMSEncrypted
+    , smbfsiFileShareId
+    , smbfsiFileShareARN
+    , smbfsiDefaultStorageClass
+    , smbfsiRole
+    , smbfsiSMBACLEnabled
+    , smbfsiRequesterPays
+    , smbfsiLocationARN
+    , smbfsiGuessMIMETypeEnabled
+    , smbfsiReadOnly
+    , smbfsiTags
+
     -- * StorediSCSIVolume
     , StorediSCSIVolume
     , storediSCSIVolume
@@ -124,6 +186,8 @@ module Network.AWS.StorageGateway.Types
     , sscsivVolumeStatus
     , sscsivSourceSnapshotId
     , sscsivPreservedExistingData
+    , sscsivKMSKey
+    , sscsivVolumeAttachmentStatus
     , sscsivVolumeARN
     , sscsivVolumeProgress
     , sscsivVolumeSizeInBytes
@@ -132,6 +196,7 @@ module Network.AWS.StorageGateway.Types
     , sscsivVolumeId
     , sscsivVolumeDiskId
     , sscsivVolumeType
+    , sscsivTargetName
 
     -- * Tag
     , Tag
@@ -144,10 +209,12 @@ module Network.AWS.StorageGateway.Types
     , tape
     , tTapeBarcode
     , tTapeStatus
+    , tKMSKey
     , tTapeARN
     , tProgress
     , tTapeSizeInBytes
     , tVTLDevice
+    , tPoolId
     , tTapeUsedInBytes
     , tTapeCreatedDate
 
@@ -156,9 +223,11 @@ module Network.AWS.StorageGateway.Types
     , tapeArchive
     , taTapeBarcode
     , taTapeStatus
+    , taKMSKey
     , taTapeARN
     , taTapeSizeInBytes
     , taCompletionTime
+    , taPoolId
     , taTapeUsedInBytes
     , taTapeCreatedDate
     , taRetrievedTo
@@ -171,6 +240,7 @@ module Network.AWS.StorageGateway.Types
     , tiTapeARN
     , tiGatewayARN
     , tiTapeSizeInBytes
+    , tiPoolId
 
     -- * TapeRecoveryPointInfo
     , TapeRecoveryPointInfo
@@ -193,6 +263,7 @@ module Network.AWS.StorageGateway.Types
     , VolumeInfo
     , volumeInfo
     , viGatewayARN
+    , viVolumeAttachmentStatus
     , viVolumeARN
     , viVolumeSizeInBytes
     , viVolumeId
@@ -220,7 +291,14 @@ module Network.AWS.StorageGateway.Types
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Sign.V4
+import Network.AWS.StorageGateway.Types.ActiveDirectoryStatus
+import Network.AWS.StorageGateway.Types.AvailabilityMonitorTestStatus
+import Network.AWS.StorageGateway.Types.FileShareType
+import Network.AWS.StorageGateway.Types.HostEnvironment
 import Network.AWS.StorageGateway.Types.ObjectACL
+import Network.AWS.StorageGateway.Types.SMBSecurityStrategy
+import Network.AWS.StorageGateway.Types.AutomaticTapeCreationPolicyInfo
+import Network.AWS.StorageGateway.Types.AutomaticTapeCreationRule
 import Network.AWS.StorageGateway.Types.CachediSCSIVolume
 import Network.AWS.StorageGateway.Types.ChapInfo
 import Network.AWS.StorageGateway.Types.DeviceiSCSIAttributes
@@ -230,6 +308,7 @@ import Network.AWS.StorageGateway.Types.GatewayInfo
 import Network.AWS.StorageGateway.Types.NFSFileShareDefaults
 import Network.AWS.StorageGateway.Types.NFSFileShareInfo
 import Network.AWS.StorageGateway.Types.NetworkInterface
+import Network.AWS.StorageGateway.Types.SMBFileShareInfo
 import Network.AWS.StorageGateway.Types.StorediSCSIVolume
 import Network.AWS.StorageGateway.Types.Tag
 import Network.AWS.StorageGateway.Types.Tape
@@ -264,6 +343,11 @@ storageGateway
             = Just "throttling_exception"
           | has (hasCode "Throttling" . hasStatus 400) e =
             Just "throttling"
+          | has
+              (hasCode "ProvisionedThroughputExceededException" .
+                 hasStatus 400)
+              e
+            = Just "throughput_exceeded"
           | has (hasStatus 504) e = Just "gateway_timeout"
           | has
               (hasCode "RequestThrottledException" . hasStatus 400)

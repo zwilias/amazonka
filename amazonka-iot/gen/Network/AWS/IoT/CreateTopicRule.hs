@@ -27,6 +27,7 @@ module Network.AWS.IoT.CreateTopicRule
       createTopicRule
     , CreateTopicRule
     -- * Request Lenses
+    , ctrTags
     , ctrRuleName
     , ctrTopicRulePayload
 
@@ -47,8 +48,9 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'createTopicRule' smart constructor.
-data CreateTopicRule = CreateTopicRule'{_ctrRuleName
-                                        :: !Text,
+data CreateTopicRule = CreateTopicRule'{_ctrTags ::
+                                        !(Maybe Text),
+                                        _ctrRuleName :: !Text,
                                         _ctrTopicRulePayload ::
                                         !TopicRulePayload}
                          deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -56,6 +58,8 @@ data CreateTopicRule = CreateTopicRule'{_ctrRuleName
 -- | Creates a value of 'CreateTopicRule' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'ctrTags' - Metadata which can be used to manage the topic rule.
 --
 -- * 'ctrRuleName' - The name of the rule.
 --
@@ -65,8 +69,13 @@ createTopicRule
     -> TopicRulePayload -- ^ 'ctrTopicRulePayload'
     -> CreateTopicRule
 createTopicRule pRuleName_ pTopicRulePayload_
-  = CreateTopicRule'{_ctrRuleName = pRuleName_,
+  = CreateTopicRule'{_ctrTags = Nothing,
+                     _ctrRuleName = pRuleName_,
                      _ctrTopicRulePayload = pTopicRulePayload_}
+
+-- | Metadata which can be used to manage the topic rule.
+ctrTags :: Lens' CreateTopicRule (Maybe Text)
+ctrTags = lens _ctrTags (\ s a -> s{_ctrTags = a})
 
 -- | The name of the rule.
 ctrRuleName :: Lens' CreateTopicRule Text
@@ -86,7 +95,8 @@ instance Hashable CreateTopicRule where
 instance NFData CreateTopicRule where
 
 instance ToHeaders CreateTopicRule where
-        toHeaders = const mempty
+        toHeaders CreateTopicRule'{..}
+          = mconcat ["x-amz-tagging" =# _ctrTags]
 
 instance ToJSON CreateTopicRule where
         toJSON CreateTopicRule'{..}

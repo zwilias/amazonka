@@ -38,6 +38,7 @@ module Network.AWS.ServiceCatalog.DescribeProvisioningParameters
     , describeProvisioningParametersResponse
     , DescribeProvisioningParametersResponse
     -- * Response Lenses
+    , dpprsProvisioningArtifactPreferences
     , dpprsProvisioningArtifactParameters
     , dpprsUsageInstructions
     , dpprsConstraintSummaries
@@ -117,7 +118,8 @@ instance AWSRequest DescribeProvisioningParameters
           = receiveJSON
               (\ s h x ->
                  DescribeProvisioningParametersResponse' <$>
-                   (x .?> "ProvisioningArtifactParameters" .!@ mempty)
+                   (x .?> "ProvisioningArtifactPreferences") <*>
+                     (x .?> "ProvisioningArtifactParameters" .!@ mempty)
                      <*> (x .?> "UsageInstructions" .!@ mempty)
                      <*> (x .?> "ConstraintSummaries" .!@ mempty)
                      <*> (x .?> "TagOptions" .!@ mempty)
@@ -157,7 +159,11 @@ instance ToQuery DescribeProvisioningParameters where
         toQuery = const mempty
 
 -- | /See:/ 'describeProvisioningParametersResponse' smart constructor.
-data DescribeProvisioningParametersResponse = DescribeProvisioningParametersResponse'{_dpprsProvisioningArtifactParameters
+data DescribeProvisioningParametersResponse = DescribeProvisioningParametersResponse'{_dpprsProvisioningArtifactPreferences
+                                                                                      ::
+                                                                                      !(Maybe
+                                                                                          ProvisioningArtifactPreferences),
+                                                                                      _dpprsProvisioningArtifactParameters
                                                                                       ::
                                                                                       !(Maybe
                                                                                           [ProvisioningArtifactParameter]),
@@ -183,6 +189,8 @@ data DescribeProvisioningParametersResponse = DescribeProvisioningParametersResp
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
+-- * 'dpprsProvisioningArtifactPreferences' - An object that contains information about preferences, such as regions and accounts, for the provisioning artifact.
+--
 -- * 'dpprsProvisioningArtifactParameters' - Information about the parameters used to provision the product.
 --
 -- * 'dpprsUsageInstructions' - Any additional metadata specifically related to the provisioning of the product. For example, see the @Version@ field of the CloudFormation template.
@@ -197,13 +205,19 @@ describeProvisioningParametersResponse
     -> DescribeProvisioningParametersResponse
 describeProvisioningParametersResponse
   pResponseStatus_
-  = DescribeProvisioningParametersResponse'{_dpprsProvisioningArtifactParameters
+  = DescribeProvisioningParametersResponse'{_dpprsProvisioningArtifactPreferences
+                                              = Nothing,
+                                            _dpprsProvisioningArtifactParameters
                                               = Nothing,
                                             _dpprsUsageInstructions = Nothing,
                                             _dpprsConstraintSummaries = Nothing,
                                             _dpprsTagOptions = Nothing,
                                             _dpprsResponseStatus =
                                               pResponseStatus_}
+
+-- | An object that contains information about preferences, such as regions and accounts, for the provisioning artifact.
+dpprsProvisioningArtifactPreferences :: Lens' DescribeProvisioningParametersResponse (Maybe ProvisioningArtifactPreferences)
+dpprsProvisioningArtifactPreferences = lens _dpprsProvisioningArtifactPreferences (\ s a -> s{_dpprsProvisioningArtifactPreferences = a})
 
 -- | Information about the parameters used to provision the product.
 dpprsProvisioningArtifactParameters :: Lens' DescribeProvisioningParametersResponse [ProvisioningArtifactParameter]

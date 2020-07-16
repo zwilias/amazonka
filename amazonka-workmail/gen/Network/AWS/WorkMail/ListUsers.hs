@@ -61,7 +61,7 @@ data ListUsers = ListUsers'{_luNextToken ::
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'luNextToken' - TBD
+-- * 'luNextToken' - The token to use to retrieve the next page of results. The first call does not contain any tokens.
 --
 -- * 'luMaxResults' - The maximum number of results to return in a single call.
 --
@@ -74,7 +74,7 @@ listUsers pOrganizationId_
                _luMaxResults = Nothing,
                _luOrganizationId = pOrganizationId_}
 
--- | TBD
+-- | The token to use to retrieve the next page of results. The first call does not contain any tokens.
 luNextToken :: Lens' ListUsers (Maybe Text)
 luNextToken = lens _luNextToken (\ s a -> s{_luNextToken = a})
 

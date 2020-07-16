@@ -39,7 +39,7 @@ data Filters = Filters'{_fKeyTypes ::
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'fKeyTypes' - Specify one or more algorithms that can be used to generate key pairs.
+-- * 'fKeyTypes' - Specify one or more algorithms that can be used to generate key pairs. Default filtering returns only @RSA_2048@ certificates. To return other certificate types, provide the desired type signatures in a comma-separated list. For example, @"keyTypes": ["RSA_2048,RSA_4096"]@ returns both @RSA_2048@ and @RSA_4096@ certificates.
 --
 -- * 'fKeyUsage' - Specify one or more 'KeyUsage' extension values.
 --
@@ -50,7 +50,7 @@ filters
   = Filters'{_fKeyTypes = Nothing,
              _fKeyUsage = Nothing, _fExtendedKeyUsage = Nothing}
 
--- | Specify one or more algorithms that can be used to generate key pairs.
+-- | Specify one or more algorithms that can be used to generate key pairs. Default filtering returns only @RSA_2048@ certificates. To return other certificate types, provide the desired type signatures in a comma-separated list. For example, @"keyTypes": ["RSA_2048,RSA_4096"]@ returns both @RSA_2048@ and @RSA_4096@ certificates.
 fKeyTypes :: Lens' Filters [KeyAlgorithm]
 fKeyTypes = lens _fKeyTypes (\ s a -> s{_fKeyTypes = a}) . _Default . _Coerce
 

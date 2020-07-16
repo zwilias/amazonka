@@ -27,7 +27,7 @@ module Network.AWS.MediaLive.Types.TtmlDestinationStyleControl (
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | Placeholder documentation for TtmlDestinationStyleControl
+-- | Ttml Destination Style Control
 data TtmlDestinationStyleControl = TtmlDestinationStyleControl' (CI
                                                                    Text)
                                      deriving (Eq, Ord, Read, Show, Data,

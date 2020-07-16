@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Uses FlexMatch to create a game match for a group of players based on custom matchmaking rules, and starts a new game for the matched players. Each matchmaking request specifies the type of match to build (team configuration, rules for an acceptable match, etc.). The request also specifies the players to find a match for and where to host the new game session for optimal performance. A matchmaking request might start with a single player or a group of players who want to play together. FlexMatch finds additional players as needed to fill the match. Match type, rules, and the queue used to place a new game session are defined in a @MatchmakingConfiguration@ . For complete information on setting up and using FlexMatch, see the topic <http://docs.aws.amazon.com/gamelift/latest/developerguide/match-intro.html Adding FlexMatch to Your Game> .
+-- Uses FlexMatch to create a game match for a group of players based on custom matchmaking rules, and starts a new game for the matched players. Each matchmaking request specifies the type of match to build (team configuration, rules for an acceptable match, etc.). The request also specifies the players to find a match for and where to host the new game session for optimal performance. A matchmaking request might start with a single player or a group of players who want to play together. FlexMatch finds additional players as needed to fill the match. Match type, rules, and the queue used to place a new game session are defined in a @MatchmakingConfiguration@ . 
 --
 --
 -- To start matchmaking, provide a unique ticket ID, specify a matchmaking configuration, and include the players to be matched. You must also include a set of player attributes relevant for the matchmaking configuration. If successful, a matchmaking ticket is returned with status set to @QUEUED@ . Track the status of the ticket to respond as needed and acquire game session connection information for successfully completed matches.
@@ -45,7 +45,17 @@
 --
 --
 --
--- Matchmaking-related operations include:
+-- __Learn more__ 
+--
+-- <https://docs.aws.amazon.com/gamelift/latest/developerguide/match-client.html Add FlexMatch to a Game Client> 
+--
+-- <https://docs.aws.amazon.com/gamelift/latest/developerguide/match-notification.html Set Up FlexMatch Event Notification> 
+--
+-- <https://docs.aws.amazon.com/gamelift/latest/developerguide/match-tasks.html FlexMatch Integration Roadmap> 
+--
+-- <https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-match.html How GameLift FlexMatch Works> 
+--
+-- __Related operations__ 
 --
 --     * 'StartMatchmaking' 
 --
@@ -99,9 +109,9 @@ data StartMatchmaking = StartMatchmaking'{_sTicketId
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'sTicketId' - Unique identifier for a matchmaking ticket. If no ticket ID is specified here, Amazon GameLift will generate one in the form of a UUID. Use this identifier to track the matchmaking ticket status and retrieve match results.
+-- * 'sTicketId' - A unique identifier for a matchmaking ticket. If no ticket ID is specified here, Amazon GameLift will generate one in the form of a UUID. Use this identifier to track the matchmaking ticket status and retrieve match results.
 --
--- * 'sConfigurationName' - Name of the matchmaking configuration to use for this request. Matchmaking configurations must exist in the same region as this request.
+-- * 'sConfigurationName' - Name of the matchmaking configuration to use for this request. Matchmaking configurations must exist in the same Region as this request. You can use either the configuration name or ARN value.
 --
 -- * 'sPlayers' - Information on each player to be matched. This information must include a player ID, and may contain player attributes and latency data to be used in the matchmaking process. After a successful match, @Player@ objects contain the name of the team the player is assigned to.
 startMatchmaking
@@ -112,11 +122,11 @@ startMatchmaking pConfigurationName_
                       _sConfigurationName = pConfigurationName_,
                       _sPlayers = mempty}
 
--- | Unique identifier for a matchmaking ticket. If no ticket ID is specified here, Amazon GameLift will generate one in the form of a UUID. Use this identifier to track the matchmaking ticket status and retrieve match results.
+-- | A unique identifier for a matchmaking ticket. If no ticket ID is specified here, Amazon GameLift will generate one in the form of a UUID. Use this identifier to track the matchmaking ticket status and retrieve match results.
 sTicketId :: Lens' StartMatchmaking (Maybe Text)
 sTicketId = lens _sTicketId (\ s a -> s{_sTicketId = a})
 
--- | Name of the matchmaking configuration to use for this request. Matchmaking configurations must exist in the same region as this request.
+-- | Name of the matchmaking configuration to use for this request. Matchmaking configurations must exist in the same Region as this request. You can use either the configuration name or ARN value.
 sConfigurationName :: Lens' StartMatchmaking Text
 sConfigurationName = lens _sConfigurationName (\ s a -> s{_sConfigurationName = a})
 

@@ -175,6 +175,7 @@ module Network.AWS.ElasticBeanstalk.Types
     , cuIdle
     , cuIRQ
     , cuSystem
+    , cuPrivileged
     , cuUser
     , cuIOWait
     , cuNice
@@ -279,6 +280,7 @@ module Network.AWS.ElasticBeanstalk.Types
     , environmentResourceDescription
     , erdQueues
     , erdTriggers
+    , erdLaunchTemplates
     , erdLoadBalancers
     , erdEnvironmentName
     , erdInstances
@@ -343,6 +345,11 @@ module Network.AWS.ElasticBeanstalk.Types
     , LaunchConfiguration
     , launchConfiguration
     , lcName
+
+    -- * LaunchTemplate
+    , LaunchTemplate
+    , launchTemplate
+    , ltId
 
     -- * Listener
     , Listener
@@ -410,14 +417,26 @@ module Network.AWS.ElasticBeanstalk.Types
     , osResourceName
     , osNamespace
 
+    -- * PlatformBranchSummary
+    , PlatformBranchSummary
+    , platformBranchSummary
+    , pbsBranchName
+    , pbsBranchOrder
+    , pbsPlatformName
+    , pbsSupportedTierList
+    , pbsLifecycleState
+
     -- * PlatformDescription
     , PlatformDescription
     , platformDescription
+    , pdPlatformBranchName
     , pdSupportedAddonList
     , pdPlatformCategory
+    , pdPlatformBranchLifecycleState
     , pdPlatformVersion
     , pdPlatformStatus
     , pdMaintainer
+    , pdPlatformLifecycleState
     , pdPlatformOwner
     , pdDateUpdated
     , pdCustomAMIList
@@ -454,9 +473,13 @@ module Network.AWS.ElasticBeanstalk.Types
     -- * PlatformSummary
     , PlatformSummary
     , platformSummary
+    , psPlatformBranchName
     , psSupportedAddonList
     , psPlatformCategory
+    , psPlatformBranchLifecycleState
+    , psPlatformVersion
     , psPlatformStatus
+    , psPlatformLifecycleState
     , psPlatformOwner
     , psOperatingSystemName
     , psPlatformARN
@@ -488,6 +511,13 @@ module Network.AWS.ElasticBeanstalk.Types
     , s3Location
     , slS3Key
     , slS3Bucket
+
+    -- * SearchFilter
+    , SearchFilter
+    , searchFilter
+    , sfAttribute
+    , sfValues
+    , sfOperator
 
     -- * SingleInstanceHealth
     , SingleInstanceHealth
@@ -606,6 +636,7 @@ import Network.AWS.ElasticBeanstalk.Types.Instance
 import Network.AWS.ElasticBeanstalk.Types.InstanceHealthSummary
 import Network.AWS.ElasticBeanstalk.Types.Latency
 import Network.AWS.ElasticBeanstalk.Types.LaunchConfiguration
+import Network.AWS.ElasticBeanstalk.Types.LaunchTemplate
 import Network.AWS.ElasticBeanstalk.Types.Listener
 import Network.AWS.ElasticBeanstalk.Types.LoadBalancer
 import Network.AWS.ElasticBeanstalk.Types.LoadBalancerDescription
@@ -615,6 +646,7 @@ import Network.AWS.ElasticBeanstalk.Types.MaxAgeRule
 import Network.AWS.ElasticBeanstalk.Types.MaxCountRule
 import Network.AWS.ElasticBeanstalk.Types.OptionRestrictionRegex
 import Network.AWS.ElasticBeanstalk.Types.OptionSpecification
+import Network.AWS.ElasticBeanstalk.Types.PlatformBranchSummary
 import Network.AWS.ElasticBeanstalk.Types.PlatformDescription
 import Network.AWS.ElasticBeanstalk.Types.PlatformFilter
 import Network.AWS.ElasticBeanstalk.Types.PlatformFramework
@@ -624,6 +656,7 @@ import Network.AWS.ElasticBeanstalk.Types.Queue
 import Network.AWS.ElasticBeanstalk.Types.ResourceQuota
 import Network.AWS.ElasticBeanstalk.Types.ResourceQuotas
 import Network.AWS.ElasticBeanstalk.Types.S3Location
+import Network.AWS.ElasticBeanstalk.Types.SearchFilter
 import Network.AWS.ElasticBeanstalk.Types.SingleInstanceHealth
 import Network.AWS.ElasticBeanstalk.Types.SolutionStackDescription
 import Network.AWS.ElasticBeanstalk.Types.SourceBuildInformation
@@ -657,6 +690,11 @@ elasticBeanstalk
             = Just "throttling_exception"
           | has (hasCode "Throttling" . hasStatus 400) e =
             Just "throttling"
+          | has
+              (hasCode "ProvisionedThroughputExceededException" .
+                 hasStatus 400)
+              e
+            = Just "throughput_exceeded"
           | has (hasStatus 504) e = Just "gateway_timeout"
           | has
               (hasCode "RequestThrottledException" . hasStatus 400)

@@ -21,7 +21,7 @@ import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.SSM.Types.S3OutputLocation
 
--- | An Amazon S3 bucket where you want to store the results of this request.
+-- | An S3 bucket where you want to store the results of this request.
 --
 --
 --
@@ -37,14 +37,14 @@ newtype InstanceAssociationOutputLocation = InstanceAssociationOutputLocation'{_
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'iaolS3Location' - An Amazon S3 bucket where you want to store the results of this request.
+-- * 'iaolS3Location' - An S3 bucket where you want to store the results of this request.
 instanceAssociationOutputLocation
     :: InstanceAssociationOutputLocation
 instanceAssociationOutputLocation
   = InstanceAssociationOutputLocation'{_iaolS3Location
                                          = Nothing}
 
--- | An Amazon S3 bucket where you want to store the results of this request.
+-- | An S3 bucket where you want to store the results of this request.
 iaolS3Location :: Lens' InstanceAssociationOutputLocation (Maybe S3OutputLocation)
 iaolS3Location = lens _iaolS3Location (\ s a -> s{_iaolS3Location = a})
 

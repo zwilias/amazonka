@@ -21,7 +21,7 @@
 -- Creates a manual snapshot of the specified cluster. The cluster must be in the @available@ state. 
 --
 --
--- For more information about working with snapshots, go to <http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-snapshots.html Amazon Redshift Snapshots> in the /Amazon Redshift Cluster Management Guide/ .
+-- For more information about working with snapshots, go to <https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-snapshots.html Amazon Redshift Snapshots> in the /Amazon Redshift Cluster Management Guide/ .
 --
 module Network.AWS.Redshift.CreateClusterSnapshot
     (
@@ -29,6 +29,7 @@ module Network.AWS.Redshift.CreateClusterSnapshot
       createClusterSnapshot
     , CreateClusterSnapshot
     -- * Request Lenses
+    , ccsManualSnapshotRetentionPeriod
     , ccsTags
     , ccsSnapshotIdentifier
     , ccsClusterIdentifier
@@ -53,8 +54,9 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'createClusterSnapshot' smart constructor.
-data CreateClusterSnapshot = CreateClusterSnapshot'{_ccsTags
-                                                    :: !(Maybe [Tag]),
+data CreateClusterSnapshot = CreateClusterSnapshot'{_ccsManualSnapshotRetentionPeriod
+                                                    :: !(Maybe Int),
+                                                    _ccsTags :: !(Maybe [Tag]),
                                                     _ccsSnapshotIdentifier ::
                                                     !Text,
                                                     _ccsClusterIdentifier ::
@@ -65,6 +67,8 @@ data CreateClusterSnapshot = CreateClusterSnapshot'{_ccsTags
 -- | Creates a value of 'CreateClusterSnapshot' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'ccsManualSnapshotRetentionPeriod' - The number of days that a manual snapshot is retained. If the value is -1, the manual snapshot is retained indefinitely.  The value must be either -1 or an integer between 1 and 3,653. The default value is -1.
 --
 -- * 'ccsTags' - A list of tag instances.
 --
@@ -77,9 +81,15 @@ createClusterSnapshot
     -> CreateClusterSnapshot
 createClusterSnapshot pSnapshotIdentifier_
   pClusterIdentifier_
-  = CreateClusterSnapshot'{_ccsTags = Nothing,
+  = CreateClusterSnapshot'{_ccsManualSnapshotRetentionPeriod
+                             = Nothing,
+                           _ccsTags = Nothing,
                            _ccsSnapshotIdentifier = pSnapshotIdentifier_,
                            _ccsClusterIdentifier = pClusterIdentifier_}
+
+-- | The number of days that a manual snapshot is retained. If the value is -1, the manual snapshot is retained indefinitely.  The value must be either -1 or an integer between 1 and 3,653. The default value is -1.
+ccsManualSnapshotRetentionPeriod :: Lens' CreateClusterSnapshot (Maybe Int)
+ccsManualSnapshotRetentionPeriod = lens _ccsManualSnapshotRetentionPeriod (\ s a -> s{_ccsManualSnapshotRetentionPeriod = a})
 
 -- | A list of tag instances.
 ccsTags :: Lens' CreateClusterSnapshot [Tag]
@@ -118,6 +128,8 @@ instance ToQuery CreateClusterSnapshot where
           = mconcat
               ["Action" =: ("CreateClusterSnapshot" :: ByteString),
                "Version" =: ("2012-12-01" :: ByteString),
+               "ManualSnapshotRetentionPeriod" =:
+                 _ccsManualSnapshotRetentionPeriod,
                "Tags" =: toQuery (toQueryList "Tag" <$> _ccsTags),
                "SnapshotIdentifier" =: _ccsSnapshotIdentifier,
                "ClusterIdentifier" =: _ccsClusterIdentifier]

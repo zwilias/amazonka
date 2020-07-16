@@ -22,13 +22,17 @@ module Network.AWS.CertificateManager.Types.FailureReason (
     , AdditionalVerificationRequired
     , CaaError
     , DomainNotAllowed
+    , DomainValidationDenied
     , InvalidPublicDomain
     , NoAvailableContacts
     , Other
+    , PcaAccessDenied
     , PcaInvalidARN
     , PcaInvalidArgs
+    , PcaInvalidDuration
     , PcaInvalidState
     , PcaLimitExceeded
+    , PcaNameConstraintsValidation
     , PcaRequestFailed
     , PcaResourceNotFound
     )
@@ -50,6 +54,9 @@ pattern CaaError = FailureReason' "CAA_ERROR"
 pattern DomainNotAllowed :: FailureReason
 pattern DomainNotAllowed = FailureReason' "DOMAIN_NOT_ALLOWED"
 
+pattern DomainValidationDenied :: FailureReason
+pattern DomainValidationDenied = FailureReason' "DOMAIN_VALIDATION_DENIED"
+
 pattern InvalidPublicDomain :: FailureReason
 pattern InvalidPublicDomain = FailureReason' "INVALID_PUBLIC_DOMAIN"
 
@@ -59,17 +66,26 @@ pattern NoAvailableContacts = FailureReason' "NO_AVAILABLE_CONTACTS"
 pattern Other :: FailureReason
 pattern Other = FailureReason' "OTHER"
 
+pattern PcaAccessDenied :: FailureReason
+pattern PcaAccessDenied = FailureReason' "PCA_ACCESS_DENIED"
+
 pattern PcaInvalidARN :: FailureReason
 pattern PcaInvalidARN = FailureReason' "PCA_INVALID_ARN"
 
 pattern PcaInvalidArgs :: FailureReason
 pattern PcaInvalidArgs = FailureReason' "PCA_INVALID_ARGS"
 
+pattern PcaInvalidDuration :: FailureReason
+pattern PcaInvalidDuration = FailureReason' "PCA_INVALID_DURATION"
+
 pattern PcaInvalidState :: FailureReason
 pattern PcaInvalidState = FailureReason' "PCA_INVALID_STATE"
 
 pattern PcaLimitExceeded :: FailureReason
 pattern PcaLimitExceeded = FailureReason' "PCA_LIMIT_EXCEEDED"
+
+pattern PcaNameConstraintsValidation :: FailureReason
+pattern PcaNameConstraintsValidation = FailureReason' "PCA_NAME_CONSTRAINTS_VALIDATION"
 
 pattern PcaRequestFailed :: FailureReason
 pattern PcaRequestFailed = FailureReason' "PCA_REQUEST_FAILED"
@@ -81,13 +97,17 @@ pattern PcaResourceNotFound = FailureReason' "PCA_RESOURCE_NOT_FOUND"
   AdditionalVerificationRequired,
   CaaError,
   DomainNotAllowed,
+  DomainValidationDenied,
   InvalidPublicDomain,
   NoAvailableContacts,
   Other,
+  PcaAccessDenied,
   PcaInvalidARN,
   PcaInvalidArgs,
+  PcaInvalidDuration,
   PcaInvalidState,
   PcaLimitExceeded,
+  PcaNameConstraintsValidation,
   PcaRequestFailed,
   PcaResourceNotFound,
   FailureReason' #-}
@@ -107,29 +127,37 @@ instance Enum FailureReason where
         0 -> AdditionalVerificationRequired
         1 -> CaaError
         2 -> DomainNotAllowed
-        3 -> InvalidPublicDomain
-        4 -> NoAvailableContacts
-        5 -> Other
-        6 -> PcaInvalidARN
-        7 -> PcaInvalidArgs
-        8 -> PcaInvalidState
-        9 -> PcaLimitExceeded
-        10 -> PcaRequestFailed
-        11 -> PcaResourceNotFound
+        3 -> DomainValidationDenied
+        4 -> InvalidPublicDomain
+        5 -> NoAvailableContacts
+        6 -> Other
+        7 -> PcaAccessDenied
+        8 -> PcaInvalidARN
+        9 -> PcaInvalidArgs
+        10 -> PcaInvalidDuration
+        11 -> PcaInvalidState
+        12 -> PcaLimitExceeded
+        13 -> PcaNameConstraintsValidation
+        14 -> PcaRequestFailed
+        15 -> PcaResourceNotFound
         _ -> (error . showText) $ "Unknown index for FailureReason: " <> toText i
     fromEnum x = case x of
         AdditionalVerificationRequired -> 0
         CaaError -> 1
         DomainNotAllowed -> 2
-        InvalidPublicDomain -> 3
-        NoAvailableContacts -> 4
-        Other -> 5
-        PcaInvalidARN -> 6
-        PcaInvalidArgs -> 7
-        PcaInvalidState -> 8
-        PcaLimitExceeded -> 9
-        PcaRequestFailed -> 10
-        PcaResourceNotFound -> 11
+        DomainValidationDenied -> 3
+        InvalidPublicDomain -> 4
+        NoAvailableContacts -> 5
+        Other -> 6
+        PcaAccessDenied -> 7
+        PcaInvalidARN -> 8
+        PcaInvalidArgs -> 9
+        PcaInvalidDuration -> 10
+        PcaInvalidState -> 11
+        PcaLimitExceeded -> 12
+        PcaNameConstraintsValidation -> 13
+        PcaRequestFailed -> 14
+        PcaResourceNotFound -> 15
         FailureReason' name -> (error . showText) $ "Unknown FailureReason: " <> original name
 
 -- | Represents the bounds of /known/ $FailureReason.

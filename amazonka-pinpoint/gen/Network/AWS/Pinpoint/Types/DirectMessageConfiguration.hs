@@ -23,11 +23,15 @@ import Network.AWS.Pinpoint.Types.APNSMessage
 import Network.AWS.Pinpoint.Types.BaiduMessage
 import Network.AWS.Pinpoint.Types.DefaultMessage
 import Network.AWS.Pinpoint.Types.DefaultPushNotificationMessage
+import Network.AWS.Pinpoint.Types.EmailMessage
 import Network.AWS.Pinpoint.Types.GCMMessage
 import Network.AWS.Pinpoint.Types.SMSMessage
+import Network.AWS.Pinpoint.Types.VoiceMessage
 import Network.AWS.Prelude
 
--- | The message configuration.
+-- | Specifies the settings and content for the default message and any default messages that you tailored for specific channels.
+--
+--
 --
 -- /See:/ 'directMessageConfiguration' smart constructor.
 data DirectMessageConfiguration = DirectMessageConfiguration'{_dmcAPNSMessage
@@ -47,6 +51,14 @@ data DirectMessageConfiguration = DirectMessageConfiguration'{_dmcAPNSMessage
                                                               _dmcSMSMessage ::
                                                               !(Maybe
                                                                   SMSMessage),
+                                                              _dmcEmailMessage
+                                                              ::
+                                                              !(Maybe
+                                                                  EmailMessage),
+                                                              _dmcVoiceMessage
+                                                              ::
+                                                              !(Maybe
+                                                                  VoiceMessage),
                                                               _dmcBaiduMessage
                                                               ::
                                                               !(Maybe
@@ -62,19 +74,23 @@ data DirectMessageConfiguration = DirectMessageConfiguration'{_dmcAPNSMessage
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dmcAPNSMessage' - The message to APNS channels. Overrides the default push notification message.
+-- * 'dmcAPNSMessage' - The default push notification message for the APNs (Apple Push Notification service) channel. This message overrides the default push notification message (DefaultPushNotificationMessage).
 --
--- * 'dmcGCMMessage' - The message to GCM channels. Overrides the default push notification message.
+-- * 'dmcGCMMessage' - The default push notification message for the GCM channel, which is used to send notifications through the Firebase Cloud Messaging (FCM), formerly Google Cloud Messaging (GCM), service. This message overrides the default push notification message (DefaultPushNotificationMessage).
 --
 -- * 'dmcDefaultMessage' - The default message for all channels.
 --
--- * 'dmcADMMessage' - The message to ADM channels. Overrides the default push notification message.
+-- * 'dmcADMMessage' - The default push notification message for the ADM (Amazon Device Messaging) channel. This message overrides the default push notification message (DefaultPushNotificationMessage).
 --
--- * 'dmcSMSMessage' - The message to SMS channels. Overrides the default message.
+-- * 'dmcSMSMessage' - The default message for the SMS channel. This message overrides the default message (DefaultMessage).
 --
--- * 'dmcBaiduMessage' - The message to Baidu GCM channels. Overrides the default push notification message.
+-- * 'dmcEmailMessage' - The default message for the email channel. This message overrides the default message (DefaultMessage).
 --
--- * 'dmcDefaultPushNotificationMessage' - The default push notification message for all push channels.
+-- * 'dmcVoiceMessage' - The default message for the voice channel. This message overrides the default message (DefaultMessage).
+--
+-- * 'dmcBaiduMessage' - The default push notification message for the Baidu (Baidu Cloud Push) channel. This message overrides the default push notification message (DefaultPushNotificationMessage).
+--
+-- * 'dmcDefaultPushNotificationMessage' - The default push notification message for all push notification channels.
 directMessageConfiguration
     :: DirectMessageConfiguration
 directMessageConfiguration
@@ -84,14 +100,16 @@ directMessageConfiguration
                                 _dmcDefaultMessage = Nothing,
                                 _dmcADMMessage = Nothing,
                                 _dmcSMSMessage = Nothing,
+                                _dmcEmailMessage = Nothing,
+                                _dmcVoiceMessage = Nothing,
                                 _dmcBaiduMessage = Nothing,
                                 _dmcDefaultPushNotificationMessage = Nothing}
 
--- | The message to APNS channels. Overrides the default push notification message.
+-- | The default push notification message for the APNs (Apple Push Notification service) channel. This message overrides the default push notification message (DefaultPushNotificationMessage).
 dmcAPNSMessage :: Lens' DirectMessageConfiguration (Maybe APNSMessage)
 dmcAPNSMessage = lens _dmcAPNSMessage (\ s a -> s{_dmcAPNSMessage = a})
 
--- | The message to GCM channels. Overrides the default push notification message.
+-- | The default push notification message for the GCM channel, which is used to send notifications through the Firebase Cloud Messaging (FCM), formerly Google Cloud Messaging (GCM), service. This message overrides the default push notification message (DefaultPushNotificationMessage).
 dmcGCMMessage :: Lens' DirectMessageConfiguration (Maybe GCMMessage)
 dmcGCMMessage = lens _dmcGCMMessage (\ s a -> s{_dmcGCMMessage = a})
 
@@ -99,19 +117,27 @@ dmcGCMMessage = lens _dmcGCMMessage (\ s a -> s{_dmcGCMMessage = a})
 dmcDefaultMessage :: Lens' DirectMessageConfiguration (Maybe DefaultMessage)
 dmcDefaultMessage = lens _dmcDefaultMessage (\ s a -> s{_dmcDefaultMessage = a})
 
--- | The message to ADM channels. Overrides the default push notification message.
+-- | The default push notification message for the ADM (Amazon Device Messaging) channel. This message overrides the default push notification message (DefaultPushNotificationMessage).
 dmcADMMessage :: Lens' DirectMessageConfiguration (Maybe ADMMessage)
 dmcADMMessage = lens _dmcADMMessage (\ s a -> s{_dmcADMMessage = a})
 
--- | The message to SMS channels. Overrides the default message.
+-- | The default message for the SMS channel. This message overrides the default message (DefaultMessage).
 dmcSMSMessage :: Lens' DirectMessageConfiguration (Maybe SMSMessage)
 dmcSMSMessage = lens _dmcSMSMessage (\ s a -> s{_dmcSMSMessage = a})
 
--- | The message to Baidu GCM channels. Overrides the default push notification message.
+-- | The default message for the email channel. This message overrides the default message (DefaultMessage).
+dmcEmailMessage :: Lens' DirectMessageConfiguration (Maybe EmailMessage)
+dmcEmailMessage = lens _dmcEmailMessage (\ s a -> s{_dmcEmailMessage = a})
+
+-- | The default message for the voice channel. This message overrides the default message (DefaultMessage).
+dmcVoiceMessage :: Lens' DirectMessageConfiguration (Maybe VoiceMessage)
+dmcVoiceMessage = lens _dmcVoiceMessage (\ s a -> s{_dmcVoiceMessage = a})
+
+-- | The default push notification message for the Baidu (Baidu Cloud Push) channel. This message overrides the default push notification message (DefaultPushNotificationMessage).
 dmcBaiduMessage :: Lens' DirectMessageConfiguration (Maybe BaiduMessage)
 dmcBaiduMessage = lens _dmcBaiduMessage (\ s a -> s{_dmcBaiduMessage = a})
 
--- | The default push notification message for all push channels.
+-- | The default push notification message for all push notification channels.
 dmcDefaultPushNotificationMessage :: Lens' DirectMessageConfiguration (Maybe DefaultPushNotificationMessage)
 dmcDefaultPushNotificationMessage = lens _dmcDefaultPushNotificationMessage (\ s a -> s{_dmcDefaultPushNotificationMessage = a})
 
@@ -128,6 +154,8 @@ instance ToJSON DirectMessageConfiguration where
                   ("DefaultMessage" .=) <$> _dmcDefaultMessage,
                   ("ADMMessage" .=) <$> _dmcADMMessage,
                   ("SMSMessage" .=) <$> _dmcSMSMessage,
+                  ("EmailMessage" .=) <$> _dmcEmailMessage,
+                  ("VoiceMessage" .=) <$> _dmcVoiceMessage,
                   ("BaiduMessage" .=) <$> _dmcBaiduMessage,
                   ("DefaultPushNotificationMessage" .=) <$>
                     _dmcDefaultPushNotificationMessage])

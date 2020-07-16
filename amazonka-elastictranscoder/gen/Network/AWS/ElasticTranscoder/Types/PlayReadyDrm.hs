@@ -23,7 +23,7 @@ import Network.AWS.Prelude
 -- | The PlayReady DRM settings, if any, that you want Elastic Transcoder to apply to the output files associated with this playlist.
 --
 --
--- PlayReady DRM encrypts your media files using @AES-CTR@ encryption.
+-- PlayReady DRM encrypts your media files using @aes-ctr@ encryption.
 --
 -- If you use DRM for an @HLSv3@ playlist, your outputs must have a master playlist.
 --

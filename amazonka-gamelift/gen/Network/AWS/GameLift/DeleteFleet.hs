@@ -21,9 +21,15 @@
 -- Deletes everything related to a fleet. Before deleting a fleet, you must set the fleet's desired capacity to zero. See 'UpdateFleetCapacity' .
 --
 --
--- This action removes the fleet's resources and the fleet record. Once a fleet is deleted, you can no longer use that fleet.
+-- If the fleet being deleted has a VPC peering connection, you first need to get a valid authorization (good for 24 hours) by calling 'CreateVpcPeeringAuthorization' . You do not need to explicitly delete the VPC peering connection--this is done as part of the delete fleet process.
 --
--- Fleet-related operations include:
+-- This action removes the fleet and its resources. Once a fleet is deleted, you can no longer use any of the resource in that fleet.
+--
+-- __Learn more__ 
+--
+-- <https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html Setting up GameLift Fleets> 
+--
+-- __Related operations__ 
 --
 --     * 'CreateFleet' 
 --
@@ -31,43 +37,11 @@
 --
 --     * 'DeleteFleet' 
 --
---     * Describe fleets:
---
 --     * 'DescribeFleetAttributes' 
---
---     * 'DescribeFleetCapacity' 
---
---     * 'DescribeFleetPortSettings' 
---
---     * 'DescribeFleetUtilization' 
---
---     * 'DescribeRuntimeConfiguration' 
---
---     * 'DescribeEC2InstanceLimits' 
---
---     * 'DescribeFleetEvents' 
---
---
---
---     * Update fleets:
 --
 --     * 'UpdateFleetAttributes' 
 --
---     * 'UpdateFleetCapacity' 
---
---     * 'UpdateFleetPortSettings' 
---
---     * 'UpdateRuntimeConfiguration' 
---
---
---
---     * Manage fleet actions:
---
---     * 'StartFleetActions' 
---
---     * 'StopFleetActions' 
---
---
+--     * 'StartFleetActions' or 'StopFleetActions' 
 --
 --
 --
@@ -104,14 +78,14 @@ newtype DeleteFleet = DeleteFleet'{_dfFleetId ::
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dfFleetId' - Unique identifier for a fleet to be deleted.
+-- * 'dfFleetId' - A unique identifier for a fleet to be deleted. You can use either the fleet ID or ARN value.
 deleteFleet
     :: Text -- ^ 'dfFleetId'
     -> DeleteFleet
 deleteFleet pFleetId_
   = DeleteFleet'{_dfFleetId = pFleetId_}
 
--- | Unique identifier for a fleet to be deleted.
+-- | A unique identifier for a fleet to be deleted. You can use either the fleet ID or ARN value.
 dfFleetId :: Lens' DeleteFleet Text
 dfFleetId = lens _dfFleetId (\ s a -> s{_dfFleetId = a})
 

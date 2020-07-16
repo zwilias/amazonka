@@ -19,13 +19,14 @@
 module Network.AWS.IoT.Types.JobExecutionStatus (
   JobExecutionStatus (
     ..
-    , Canceled
-    , Failed
-    , InProgress
-    , Queued
-    , Rejected
-    , Removed
-    , Succeeded
+    , JESCanceled
+    , JESFailed
+    , JESInProgress
+    , JESQueued
+    , JESRejected
+    , JESRemoved
+    , JESSucceeded
+    , JESTimedOut
     )
   ) where
 
@@ -37,35 +38,39 @@ data JobExecutionStatus = JobExecutionStatus' (CI
                             deriving (Eq, Ord, Read, Show, Data, Typeable,
                                       Generic)
 
-pattern Canceled :: JobExecutionStatus
-pattern Canceled = JobExecutionStatus' "CANCELED"
+pattern JESCanceled :: JobExecutionStatus
+pattern JESCanceled = JobExecutionStatus' "CANCELED"
 
-pattern Failed :: JobExecutionStatus
-pattern Failed = JobExecutionStatus' "FAILED"
+pattern JESFailed :: JobExecutionStatus
+pattern JESFailed = JobExecutionStatus' "FAILED"
 
-pattern InProgress :: JobExecutionStatus
-pattern InProgress = JobExecutionStatus' "IN_PROGRESS"
+pattern JESInProgress :: JobExecutionStatus
+pattern JESInProgress = JobExecutionStatus' "IN_PROGRESS"
 
-pattern Queued :: JobExecutionStatus
-pattern Queued = JobExecutionStatus' "QUEUED"
+pattern JESQueued :: JobExecutionStatus
+pattern JESQueued = JobExecutionStatus' "QUEUED"
 
-pattern Rejected :: JobExecutionStatus
-pattern Rejected = JobExecutionStatus' "REJECTED"
+pattern JESRejected :: JobExecutionStatus
+pattern JESRejected = JobExecutionStatus' "REJECTED"
 
-pattern Removed :: JobExecutionStatus
-pattern Removed = JobExecutionStatus' "REMOVED"
+pattern JESRemoved :: JobExecutionStatus
+pattern JESRemoved = JobExecutionStatus' "REMOVED"
 
-pattern Succeeded :: JobExecutionStatus
-pattern Succeeded = JobExecutionStatus' "SUCCEEDED"
+pattern JESSucceeded :: JobExecutionStatus
+pattern JESSucceeded = JobExecutionStatus' "SUCCEEDED"
+
+pattern JESTimedOut :: JobExecutionStatus
+pattern JESTimedOut = JobExecutionStatus' "TIMED_OUT"
 
 {-# COMPLETE
-  Canceled,
-  Failed,
-  InProgress,
-  Queued,
-  Rejected,
-  Removed,
-  Succeeded,
+  JESCanceled,
+  JESFailed,
+  JESInProgress,
+  JESQueued,
+  JESRejected,
+  JESRemoved,
+  JESSucceeded,
+  JESTimedOut,
   JobExecutionStatus' #-}
 
 instance FromText JobExecutionStatus where
@@ -80,30 +85,32 @@ instance ToText JobExecutionStatus where
 --   fromEnum is a partial function, and will error on values unknown at generation time.
 instance Enum JobExecutionStatus where
     toEnum i = case i of
-        0 -> Canceled
-        1 -> Failed
-        2 -> InProgress
-        3 -> Queued
-        4 -> Rejected
-        5 -> Removed
-        6 -> Succeeded
+        0 -> JESCanceled
+        1 -> JESFailed
+        2 -> JESInProgress
+        3 -> JESQueued
+        4 -> JESRejected
+        5 -> JESRemoved
+        6 -> JESSucceeded
+        7 -> JESTimedOut
         _ -> (error . showText) $ "Unknown index for JobExecutionStatus: " <> toText i
     fromEnum x = case x of
-        Canceled -> 0
-        Failed -> 1
-        InProgress -> 2
-        Queued -> 3
-        Rejected -> 4
-        Removed -> 5
-        Succeeded -> 6
+        JESCanceled -> 0
+        JESFailed -> 1
+        JESInProgress -> 2
+        JESQueued -> 3
+        JESRejected -> 4
+        JESRemoved -> 5
+        JESSucceeded -> 6
+        JESTimedOut -> 7
         JobExecutionStatus' name -> (error . showText) $ "Unknown JobExecutionStatus: " <> original name
 
 -- | Represents the bounds of /known/ $JobExecutionStatus.
 --   AWS may have added more since the source was generated.
 --   This instance exists only for backward compatibility.
 instance Bounded JobExecutionStatus where
-    minBound = Canceled
-    maxBound = Succeeded
+    minBound = JESCanceled
+    maxBound = JESTimedOut
 
 instance Hashable     JobExecutionStatus
 instance NFData       JobExecutionStatus

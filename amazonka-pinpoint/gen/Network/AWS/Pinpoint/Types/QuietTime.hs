@@ -20,7 +20,9 @@ module Network.AWS.Pinpoint.Types.QuietTime where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | Quiet Time
+-- | Specifies the start and end times that define a time range when messages aren't sent to endpoints.
+--
+--
 --
 -- /See:/ 'quietTime' smart constructor.
 data QuietTime = QuietTime'{_qtStart ::
@@ -32,19 +34,19 @@ data QuietTime = QuietTime'{_qtStart ::
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'qtStart' - The default start time for quiet time in ISO 8601 format.
+-- * 'qtStart' - The specific time when quiet time begins. This value has to use 24-hour notation and be in HH:MM format, where HH is the hour (with a leading zero, if applicable) and MM is the minutes. For example, use 02:30 to represent 2:30 AM, or 14:30 to represent 2:30 PM.
 --
--- * 'qtEnd' - The default end time for quiet time in ISO 8601 format.
+-- * 'qtEnd' - The specific time when quiet time ends. This value has to use 24-hour notation and be in HH:MM format, where HH is the hour (with a leading zero, if applicable) and MM is the minutes. For example, use 02:30 to represent 2:30 AM, or 14:30 to represent 2:30 PM.
 quietTime
     :: QuietTime
 quietTime
   = QuietTime'{_qtStart = Nothing, _qtEnd = Nothing}
 
--- | The default start time for quiet time in ISO 8601 format.
+-- | The specific time when quiet time begins. This value has to use 24-hour notation and be in HH:MM format, where HH is the hour (with a leading zero, if applicable) and MM is the minutes. For example, use 02:30 to represent 2:30 AM, or 14:30 to represent 2:30 PM.
 qtStart :: Lens' QuietTime (Maybe Text)
 qtStart = lens _qtStart (\ s a -> s{_qtStart = a})
 
--- | The default end time for quiet time in ISO 8601 format.
+-- | The specific time when quiet time ends. This value has to use 24-hour notation and be in HH:MM format, where HH is the hour (with a leading zero, if applicable) and MM is the minutes. For example, use 02:30 to represent 2:30 AM, or 14:30 to represent 2:30 PM.
 qtEnd :: Lens' QuietTime (Maybe Text)
 qtEnd = lens _qtEnd (\ s a -> s{_qtEnd = a})
 

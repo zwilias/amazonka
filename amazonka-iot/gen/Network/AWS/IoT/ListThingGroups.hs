@@ -21,6 +21,8 @@
 -- List the thing groups in your account.
 --
 --
+--
+-- This operation returns paginated results.
 module Network.AWS.IoT.ListThingGroups
     (
     -- * Creating a Request
@@ -45,6 +47,7 @@ module Network.AWS.IoT.ListThingGroups
 import Network.AWS.IoT.Types
 import Network.AWS.IoT.Types.Product
 import Network.AWS.Lens
+import Network.AWS.Pager
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
@@ -66,7 +69,7 @@ data ListThingGroups = ListThingGroups'{_ltgNamePrefixFilter
 --
 -- * 'ltgParentGroup' - A filter that limits the results to those with the specified parent group.
 --
--- * 'ltgNextToken' - The token used to get the next set of results, or __null__ if there are no additional results.
+-- * 'ltgNextToken' - The token to retrieve the next set of results.
 --
 -- * 'ltgRecursive' - If true, return child groups as well.
 --
@@ -86,7 +89,7 @@ ltgNamePrefixFilter = lens _ltgNamePrefixFilter (\ s a -> s{_ltgNamePrefixFilter
 ltgParentGroup :: Lens' ListThingGroups (Maybe Text)
 ltgParentGroup = lens _ltgParentGroup (\ s a -> s{_ltgParentGroup = a})
 
--- | The token used to get the next set of results, or __null__ if there are no additional results.
+-- | The token to retrieve the next set of results.
 ltgNextToken :: Lens' ListThingGroups (Maybe Text)
 ltgNextToken = lens _ltgNextToken (\ s a -> s{_ltgNextToken = a})
 
@@ -97,6 +100,13 @@ ltgRecursive = lens _ltgRecursive (\ s a -> s{_ltgRecursive = a})
 -- | The maximum number of results to return at one time.
 ltgMaxResults :: Lens' ListThingGroups (Maybe Natural)
 ltgMaxResults = lens _ltgMaxResults (\ s a -> s{_ltgMaxResults = a}) . mapping _Nat
+
+instance AWSPager ListThingGroups where
+        page rq rs
+          | stop (rs ^. ltgrsNextToken) = Nothing
+          | stop (rs ^. ltgrsThingGroups) = Nothing
+          | otherwise =
+            Just $ rq & ltgNextToken .~ rs ^. ltgrsNextToken
 
 instance AWSRequest ListThingGroups where
         type Rs ListThingGroups = ListThingGroupsResponse

@@ -57,7 +57,7 @@ data Operation = Operation'{_oStatus ::
 --
 -- * 'oResourceName' - The resource name.
 --
--- * 'oLocation' - The region and Availability Zone.
+-- * 'oLocation' - The AWS Region and Availability Zone.
 --
 -- * 'oStatusChangedAt' - The timestamp when the status was changed (e.g., @1479816991.349@ ).
 --
@@ -102,7 +102,7 @@ oCreatedAt = lens _oCreatedAt (\ s a -> s{_oCreatedAt = a}) . mapping _Time
 oResourceName :: Lens' Operation (Maybe Text)
 oResourceName = lens _oResourceName (\ s a -> s{_oResourceName = a})
 
--- | The region and Availability Zone.
+-- | The AWS Region and Availability Zone.
 oLocation :: Lens' Operation (Maybe ResourceLocation)
 oLocation = lens _oLocation (\ s a -> s{_oLocation = a})
 

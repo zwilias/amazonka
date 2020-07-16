@@ -20,7 +20,9 @@ module Network.AWS.GuardDuty.Types.ProductCode where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | The product code of the EC2 instance.
+-- | Contains information about the product code for the EC2 instance.
+--
+--
 --
 -- /See:/ 'productCode' smart constructor.
 data ProductCode = ProductCode'{_pcProductType ::
@@ -32,20 +34,20 @@ data ProductCode = ProductCode'{_pcProductType ::
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'pcProductType' - Product code type.
+-- * 'pcProductType' - The product code type.
 --
--- * 'pcCode' - Product code information.
+-- * 'pcCode' - The product code information.
 productCode
     :: ProductCode
 productCode
   = ProductCode'{_pcProductType = Nothing,
                  _pcCode = Nothing}
 
--- | Product code type.
+-- | The product code type.
 pcProductType :: Lens' ProductCode (Maybe Text)
 pcProductType = lens _pcProductType (\ s a -> s{_pcProductType = a})
 
--- | Product code information.
+-- | The product code information.
 pcCode :: Lens' ProductCode (Maybe Text)
 pcCode = lens _pcCode (\ s a -> s{_pcCode = a})
 

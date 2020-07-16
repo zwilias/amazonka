@@ -30,7 +30,8 @@ data TapeInfo = TapeInfo'{_tiTapeBarcode ::
                           _tiTapeStatus :: !(Maybe Text),
                           _tiTapeARN :: !(Maybe Text),
                           _tiGatewayARN :: !(Maybe Text),
-                          _tiTapeSizeInBytes :: !(Maybe Integer)}
+                          _tiTapeSizeInBytes :: !(Maybe Integer),
+                          _tiPoolId :: !(Maybe Text)}
                   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'TapeInfo' with the minimum fields required to make a request.
@@ -43,16 +44,18 @@ data TapeInfo = TapeInfo'{_tiTapeBarcode ::
 --
 -- * 'tiTapeARN' - The Amazon Resource Name (ARN) of a virtual tape.
 --
--- * 'tiGatewayARN' - The Amazon Resource Name (ARN) of the gateway. Use the 'ListGateways' operation to return a list of gateways for your account and region.
+-- * 'tiGatewayARN' - The Amazon Resource Name (ARN) of the gateway. Use the 'ListGateways' operation to return a list of gateways for your account and AWS Region.
 --
 -- * 'tiTapeSizeInBytes' - The size, in bytes, of a virtual tape.
+--
+-- * 'tiPoolId' - The ID of the pool that you want to add your tape to for archiving. The tape in this pool is archived in the S3 storage class that is associated with the pool. When you use your backup application to eject the tape, the tape is archived directly into the storage class (S3 Glacier or S3 Glacier Deep Archive) that corresponds to the pool. Valid values: "GLACIER", "DEEP_ARCHIVE"
 tapeInfo
     :: TapeInfo
 tapeInfo
   = TapeInfo'{_tiTapeBarcode = Nothing,
               _tiTapeStatus = Nothing, _tiTapeARN = Nothing,
               _tiGatewayARN = Nothing,
-              _tiTapeSizeInBytes = Nothing}
+              _tiTapeSizeInBytes = Nothing, _tiPoolId = Nothing}
 
 -- | The barcode that identifies a specific virtual tape.
 tiTapeBarcode :: Lens' TapeInfo (Maybe Text)
@@ -66,13 +69,17 @@ tiTapeStatus = lens _tiTapeStatus (\ s a -> s{_tiTapeStatus = a})
 tiTapeARN :: Lens' TapeInfo (Maybe Text)
 tiTapeARN = lens _tiTapeARN (\ s a -> s{_tiTapeARN = a})
 
--- | The Amazon Resource Name (ARN) of the gateway. Use the 'ListGateways' operation to return a list of gateways for your account and region.
+-- | The Amazon Resource Name (ARN) of the gateway. Use the 'ListGateways' operation to return a list of gateways for your account and AWS Region.
 tiGatewayARN :: Lens' TapeInfo (Maybe Text)
 tiGatewayARN = lens _tiGatewayARN (\ s a -> s{_tiGatewayARN = a})
 
 -- | The size, in bytes, of a virtual tape.
 tiTapeSizeInBytes :: Lens' TapeInfo (Maybe Integer)
 tiTapeSizeInBytes = lens _tiTapeSizeInBytes (\ s a -> s{_tiTapeSizeInBytes = a})
+
+-- | The ID of the pool that you want to add your tape to for archiving. The tape in this pool is archived in the S3 storage class that is associated with the pool. When you use your backup application to eject the tape, the tape is archived directly into the storage class (S3 Glacier or S3 Glacier Deep Archive) that corresponds to the pool. Valid values: "GLACIER", "DEEP_ARCHIVE"
+tiPoolId :: Lens' TapeInfo (Maybe Text)
+tiPoolId = lens _tiPoolId (\ s a -> s{_tiPoolId = a})
 
 instance FromJSON TapeInfo where
         parseJSON
@@ -82,7 +89,8 @@ instance FromJSON TapeInfo where
                    (x .:? "TapeBarcode") <*> (x .:? "TapeStatus") <*>
                      (x .:? "TapeARN")
                      <*> (x .:? "GatewayARN")
-                     <*> (x .:? "TapeSizeInBytes"))
+                     <*> (x .:? "TapeSizeInBytes")
+                     <*> (x .:? "PoolId"))
 
 instance Hashable TapeInfo where
 

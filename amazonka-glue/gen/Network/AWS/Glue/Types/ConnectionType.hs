@@ -20,6 +20,8 @@ module Network.AWS.Glue.Types.ConnectionType (
   ConnectionType (
     ..
     , Jdbc
+    , Kafka
+    , Mongodb
     , Sftp
     )
   ) where
@@ -34,11 +36,19 @@ data ConnectionType = ConnectionType' (CI Text)
 pattern Jdbc :: ConnectionType
 pattern Jdbc = ConnectionType' "JDBC"
 
+pattern Kafka :: ConnectionType
+pattern Kafka = ConnectionType' "KAFKA"
+
+pattern Mongodb :: ConnectionType
+pattern Mongodb = ConnectionType' "MONGODB"
+
 pattern Sftp :: ConnectionType
 pattern Sftp = ConnectionType' "SFTP"
 
 {-# COMPLETE
   Jdbc,
+  Kafka,
+  Mongodb,
   Sftp,
   ConnectionType' #-}
 
@@ -55,11 +65,15 @@ instance ToText ConnectionType where
 instance Enum ConnectionType where
     toEnum i = case i of
         0 -> Jdbc
-        1 -> Sftp
+        1 -> Kafka
+        2 -> Mongodb
+        3 -> Sftp
         _ -> (error . showText) $ "Unknown index for ConnectionType: " <> toText i
     fromEnum x = case x of
         Jdbc -> 0
-        Sftp -> 1
+        Kafka -> 1
+        Mongodb -> 2
+        Sftp -> 3
         ConnectionType' name -> (error . showText) $ "Unknown ConnectionType: " <> original name
 
 -- | Represents the bounds of /known/ $ConnectionType.

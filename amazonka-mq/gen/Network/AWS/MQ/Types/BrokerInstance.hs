@@ -23,8 +23,9 @@ import Network.AWS.Prelude
 -- | Returns information about all brokers.
 --
 -- /See:/ 'brokerInstance' smart constructor.
-data BrokerInstance = BrokerInstance'{_biConsoleURL
-                                      :: !(Maybe Text),
+data BrokerInstance = BrokerInstance'{_biIPAddress ::
+                                      !(Maybe Text),
+                                      _biConsoleURL :: !(Maybe Text),
                                       _biEndpoints :: !(Maybe [Text])}
                         deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -32,14 +33,20 @@ data BrokerInstance = BrokerInstance'{_biConsoleURL
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
+-- * 'biIPAddress' - The IP address of the Elastic Network Interface (ENI) attached to the broker.
+--
 -- * 'biConsoleURL' - The URL of the broker's ActiveMQ Web Console.
 --
 -- * 'biEndpoints' - The broker's wire-level protocol endpoints.
 brokerInstance
     :: BrokerInstance
 brokerInstance
-  = BrokerInstance'{_biConsoleURL = Nothing,
-                    _biEndpoints = Nothing}
+  = BrokerInstance'{_biIPAddress = Nothing,
+                    _biConsoleURL = Nothing, _biEndpoints = Nothing}
+
+-- | The IP address of the Elastic Network Interface (ENI) attached to the broker.
+biIPAddress :: Lens' BrokerInstance (Maybe Text)
+biIPAddress = lens _biIPAddress (\ s a -> s{_biIPAddress = a})
 
 -- | The URL of the broker's ActiveMQ Web Console.
 biConsoleURL :: Lens' BrokerInstance (Maybe Text)
@@ -54,7 +61,7 @@ instance FromJSON BrokerInstance where
           = withObject "BrokerInstance"
               (\ x ->
                  BrokerInstance' <$>
-                   (x .:? "consoleURL") <*>
+                   (x .:? "ipAddress") <*> (x .:? "consoleURL") <*>
                      (x .:? "endpoints" .!= mempty))
 
 instance Hashable BrokerInstance where

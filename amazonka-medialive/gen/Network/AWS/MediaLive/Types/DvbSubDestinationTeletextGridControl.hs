@@ -19,29 +19,29 @@
 module Network.AWS.MediaLive.Types.DvbSubDestinationTeletextGridControl (
   DvbSubDestinationTeletextGridControl (
     ..
-    , Fixed
-    , Scaled
+    , DSDTGCFixed
+    , DSDTGCScaled
     )
   ) where
 
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | Placeholder documentation for DvbSubDestinationTeletextGridControl
+-- | Dvb Sub Destination Teletext Grid Control
 data DvbSubDestinationTeletextGridControl = DvbSubDestinationTeletextGridControl' (CI
                                                                                      Text)
                                               deriving (Eq, Ord, Read, Show,
                                                         Data, Typeable, Generic)
 
-pattern Fixed :: DvbSubDestinationTeletextGridControl
-pattern Fixed = DvbSubDestinationTeletextGridControl' "FIXED"
+pattern DSDTGCFixed :: DvbSubDestinationTeletextGridControl
+pattern DSDTGCFixed = DvbSubDestinationTeletextGridControl' "FIXED"
 
-pattern Scaled :: DvbSubDestinationTeletextGridControl
-pattern Scaled = DvbSubDestinationTeletextGridControl' "SCALED"
+pattern DSDTGCScaled :: DvbSubDestinationTeletextGridControl
+pattern DSDTGCScaled = DvbSubDestinationTeletextGridControl' "SCALED"
 
 {-# COMPLETE
-  Fixed,
-  Scaled,
+  DSDTGCFixed,
+  DSDTGCScaled,
   DvbSubDestinationTeletextGridControl' #-}
 
 instance FromText DvbSubDestinationTeletextGridControl where
@@ -56,20 +56,20 @@ instance ToText DvbSubDestinationTeletextGridControl where
 --   fromEnum is a partial function, and will error on values unknown at generation time.
 instance Enum DvbSubDestinationTeletextGridControl where
     toEnum i = case i of
-        0 -> Fixed
-        1 -> Scaled
+        0 -> DSDTGCFixed
+        1 -> DSDTGCScaled
         _ -> (error . showText) $ "Unknown index for DvbSubDestinationTeletextGridControl: " <> toText i
     fromEnum x = case x of
-        Fixed -> 0
-        Scaled -> 1
+        DSDTGCFixed -> 0
+        DSDTGCScaled -> 1
         DvbSubDestinationTeletextGridControl' name -> (error . showText) $ "Unknown DvbSubDestinationTeletextGridControl: " <> original name
 
 -- | Represents the bounds of /known/ $DvbSubDestinationTeletextGridControl.
 --   AWS may have added more since the source was generated.
 --   This instance exists only for backward compatibility.
 instance Bounded DvbSubDestinationTeletextGridControl where
-    minBound = Fixed
-    maxBound = Scaled
+    minBound = DSDTGCFixed
+    maxBound = DSDTGCScaled
 
 instance Hashable     DvbSubDestinationTeletextGridControl
 instance NFData       DvbSubDestinationTeletextGridControl

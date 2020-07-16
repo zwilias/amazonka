@@ -75,19 +75,19 @@ data ListTasks = ListTasks'{_ltDesiredStatus ::
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'ltDesiredStatus' - The task desired status with which to filter the @ListTasks@ results. Specifying a @desiredStatus@ of @STOPPED@ limits the results to tasks that Amazon ECS has set the desired status to @STOPPED@ , which can be useful for debugging tasks that are not starting properly or have died or finished. The default status filter is @RUNNING@ , which shows tasks that Amazon ECS has set the desired status to @RUNNING@ .
+-- * 'ltDesiredStatus' - The task desired status with which to filter the @ListTasks@ results. Specifying a @desiredStatus@ of @STOPPED@ limits the results to tasks that Amazon ECS has set the desired status to @STOPPED@ . This can be useful for debugging tasks that are not starting properly or have died or finished. The default status filter is @RUNNING@ , which shows tasks that Amazon ECS has set the desired status to @RUNNING@ .
 --
 -- * 'ltCluster' - The short name or full Amazon Resource Name (ARN) of the cluster that hosts the tasks to list. If you do not specify a cluster, the default cluster is assumed.
 --
 -- * 'ltFamily' - The name of the family with which to filter the @ListTasks@ results. Specifying a @family@ limits the results to tasks that belong to that family.
 --
--- * 'ltNextToken' - The @nextToken@ value returned from a previous paginated @ListTasks@ request where @maxResults@ was used and the results exceeded the value of that parameter. Pagination continues from the end of the previous results that returned the @nextToken@ value.
+-- * 'ltNextToken' - The @nextToken@ value returned from a @ListTasks@ request indicating that more results are available to fulfill the request and further calls will be needed. If @maxResults@ was provided, it is possible the number of results to be fewer than @maxResults@ .
 --
 -- * 'ltStartedBy' - The @startedBy@ value with which to filter the task results. Specifying a @startedBy@ value limits the results to tasks that were started with that value.
 --
 -- * 'ltServiceName' - The name of the service with which to filter the @ListTasks@ results. Specifying a @serviceName@ limits the results to tasks that belong to that service.
 --
--- * 'ltLaunchType' - The launch type for services you want to list.
+-- * 'ltLaunchType' - The launch type for services to list.
 --
 -- * 'ltContainerInstance' - The container instance ID or full ARN of the container instance with which to filter the @ListTasks@ results. Specifying a @containerInstance@ limits the results to tasks that belong to that container instance.
 --
@@ -102,7 +102,7 @@ listTasks
                _ltContainerInstance = Nothing,
                _ltMaxResults = Nothing}
 
--- | The task desired status with which to filter the @ListTasks@ results. Specifying a @desiredStatus@ of @STOPPED@ limits the results to tasks that Amazon ECS has set the desired status to @STOPPED@ , which can be useful for debugging tasks that are not starting properly or have died or finished. The default status filter is @RUNNING@ , which shows tasks that Amazon ECS has set the desired status to @RUNNING@ .
+-- | The task desired status with which to filter the @ListTasks@ results. Specifying a @desiredStatus@ of @STOPPED@ limits the results to tasks that Amazon ECS has set the desired status to @STOPPED@ . This can be useful for debugging tasks that are not starting properly or have died or finished. The default status filter is @RUNNING@ , which shows tasks that Amazon ECS has set the desired status to @RUNNING@ .
 ltDesiredStatus :: Lens' ListTasks (Maybe DesiredStatus)
 ltDesiredStatus = lens _ltDesiredStatus (\ s a -> s{_ltDesiredStatus = a})
 
@@ -114,7 +114,7 @@ ltCluster = lens _ltCluster (\ s a -> s{_ltCluster = a})
 ltFamily :: Lens' ListTasks (Maybe Text)
 ltFamily = lens _ltFamily (\ s a -> s{_ltFamily = a})
 
--- | The @nextToken@ value returned from a previous paginated @ListTasks@ request where @maxResults@ was used and the results exceeded the value of that parameter. Pagination continues from the end of the previous results that returned the @nextToken@ value.
+-- | The @nextToken@ value returned from a @ListTasks@ request indicating that more results are available to fulfill the request and further calls will be needed. If @maxResults@ was provided, it is possible the number of results to be fewer than @maxResults@ .
 ltNextToken :: Lens' ListTasks (Maybe Text)
 ltNextToken = lens _ltNextToken (\ s a -> s{_ltNextToken = a})
 
@@ -126,7 +126,7 @@ ltStartedBy = lens _ltStartedBy (\ s a -> s{_ltStartedBy = a})
 ltServiceName :: Lens' ListTasks (Maybe Text)
 ltServiceName = lens _ltServiceName (\ s a -> s{_ltServiceName = a})
 
--- | The launch type for services you want to list.
+-- | The launch type for services to list.
 ltLaunchType :: Lens' ListTasks (Maybe LaunchType)
 ltLaunchType = lens _ltLaunchType (\ s a -> s{_ltLaunchType = a})
 

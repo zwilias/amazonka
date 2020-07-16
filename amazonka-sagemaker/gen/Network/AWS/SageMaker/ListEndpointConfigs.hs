@@ -75,11 +75,11 @@ data ListEndpointConfigs = ListEndpointConfigs'{_lecNameContains
 --
 -- * 'lecNameContains' - A string in the endpoint configuration name. This filter returns only endpoint configurations whose name contains the specified string. 
 --
--- * 'lecCreationTimeAfter' - A filter that returns only endpoint configurations created after the specified time (timestamp).
+-- * 'lecCreationTimeAfter' - A filter that returns only endpoint configurations with a creation time greater than or equal to the specified time (timestamp).
 --
 -- * 'lecNextToken' - If the result of the previous @ListEndpointConfig@ request was truncated, the response includes a @NextToken@ . To retrieve the next set of endpoint configurations, use the token in the next request. 
 --
--- * 'lecSortOrder' - The sort order for results. The default is @Ascending@ .
+-- * 'lecSortOrder' - The sort order for results. The default is @Descending@ .
 --
 -- * 'lecCreationTimeBefore' - A filter that returns only endpoint configurations created before the specified time (timestamp).
 --
@@ -99,7 +99,7 @@ listEndpointConfigs
 lecNameContains :: Lens' ListEndpointConfigs (Maybe Text)
 lecNameContains = lens _lecNameContains (\ s a -> s{_lecNameContains = a})
 
--- | A filter that returns only endpoint configurations created after the specified time (timestamp).
+-- | A filter that returns only endpoint configurations with a creation time greater than or equal to the specified time (timestamp).
 lecCreationTimeAfter :: Lens' ListEndpointConfigs (Maybe UTCTime)
 lecCreationTimeAfter = lens _lecCreationTimeAfter (\ s a -> s{_lecCreationTimeAfter = a}) . mapping _Time
 
@@ -107,7 +107,7 @@ lecCreationTimeAfter = lens _lecCreationTimeAfter (\ s a -> s{_lecCreationTimeAf
 lecNextToken :: Lens' ListEndpointConfigs (Maybe Text)
 lecNextToken = lens _lecNextToken (\ s a -> s{_lecNextToken = a})
 
--- | The sort order for results. The default is @Ascending@ .
+-- | The sort order for results. The default is @Descending@ .
 lecSortOrder :: Lens' ListEndpointConfigs (Maybe OrderKey)
 lecSortOrder = lens _lecSortOrder (\ s a -> s{_lecSortOrder = a})
 

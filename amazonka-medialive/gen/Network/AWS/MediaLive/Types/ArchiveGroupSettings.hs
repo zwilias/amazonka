@@ -21,7 +21,7 @@ import Network.AWS.Lens
 import Network.AWS.MediaLive.Types.OutputLocationRef
 import Network.AWS.Prelude
 
--- | Placeholder documentation for ArchiveGroupSettings
+-- | Archive Group Settings
 --
 -- /See:/ 'archiveGroupSettings' smart constructor.
 data ArchiveGroupSettings = ArchiveGroupSettings'{_agsRolloverInterval
@@ -36,7 +36,7 @@ data ArchiveGroupSettings = ArchiveGroupSettings'{_agsRolloverInterval
 --
 -- * 'agsRolloverInterval' - Number of seconds to write to archive file before closing and starting a new one.
 --
--- * 'agsDestination' - A directory and base filename where archive files should be written.  If the base filename portion of the URI is left blank, the base filename of the first input will be automatically inserted.
+-- * 'agsDestination' - A directory and base filename where archive files should be written.
 archiveGroupSettings
     :: OutputLocationRef -- ^ 'agsDestination'
     -> ArchiveGroupSettings
@@ -49,7 +49,7 @@ archiveGroupSettings pDestination_
 agsRolloverInterval :: Lens' ArchiveGroupSettings (Maybe Natural)
 agsRolloverInterval = lens _agsRolloverInterval (\ s a -> s{_agsRolloverInterval = a}) . mapping _Nat
 
--- | A directory and base filename where archive files should be written.  If the base filename portion of the URI is left blank, the base filename of the first input will be automatically inserted.
+-- | A directory and base filename where archive files should be written.
 agsDestination :: Lens' ArchiveGroupSettings OutputLocationRef
 agsDestination = lens _agsDestination (\ s a -> s{_agsDestination = a})
 

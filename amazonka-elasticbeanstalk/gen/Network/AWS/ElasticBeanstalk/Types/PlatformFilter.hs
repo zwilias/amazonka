@@ -20,12 +20,10 @@ module Network.AWS.ElasticBeanstalk.Types.PlatformFilter where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | Specify criteria to restrict the results when listing custom platforms.
+-- | Describes criteria to restrict the results when listing platform versions.
 --
 --
--- The filter is evaluated as the expression:
---
--- @Type@ @Operator@ @Values[i]@ 
+-- The filter is evaluated as follows: @Type Operator Values[1]@ 
 --
 --
 -- /See:/ 'platformFilter' smart constructor.
@@ -39,26 +37,26 @@ data PlatformFilter = PlatformFilter'{_pfValues ::
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'pfValues' - The list of values applied to the custom platform attribute.
+-- * 'pfValues' - The list of values applied to the filtering platform version attribute. Only one value is supported for all current operators. The following list shows valid filter values for some filter attributes.     * @PlatformStatus@ : @Creating@ | @Failed@ | @Ready@ | @Deleting@ | @Deleted@      * @PlatformLifecycleState@ : @recommended@      * @SupportedTier@ : @WebServer/Standard@ | @Worker/SQS/HTTP@      * @SupportedAddon@ : @Log/S3@ | @Monitoring/Healthd@ | @WorkerDaemon/SQSD@ 
 --
--- * 'pfOperator' - The operator to apply to the @Type@ with each of the @Values@ . Valid Values: @=@ (equal to) | @!=@ (not equal to) | @<@ (less than) | @<=@ (less than or equal to) | @>@ (greater than) | @>=@ (greater than or equal to) | @contains@ | @begins_with@ | @ends_with@ 
+-- * 'pfOperator' - The operator to apply to the @Type@ with each of the @Values@ . Valid values: @=@ | @!=@ | @<@ | @<=@ | @>@ | @>=@ | @contains@ | @begins_with@ | @ends_with@ 
 --
--- * 'pfType' - The custom platform attribute to which the filter values are applied. Valid Values: @PlatformName@ | @PlatformVersion@ | @PlatformStatus@ | @PlatformOwner@ 
+-- * 'pfType' - The platform version attribute to which the filter values are applied. Valid values: @PlatformName@ | @PlatformVersion@ | @PlatformStatus@ | @PlatformBranchName@ | @PlatformLifecycleState@ | @PlatformOwner@ | @SupportedTier@ | @SupportedAddon@ | @ProgrammingLanguageName@ | @OperatingSystemName@ 
 platformFilter
     :: PlatformFilter
 platformFilter
   = PlatformFilter'{_pfValues = Nothing,
                     _pfOperator = Nothing, _pfType = Nothing}
 
--- | The list of values applied to the custom platform attribute.
+-- | The list of values applied to the filtering platform version attribute. Only one value is supported for all current operators. The following list shows valid filter values for some filter attributes.     * @PlatformStatus@ : @Creating@ | @Failed@ | @Ready@ | @Deleting@ | @Deleted@      * @PlatformLifecycleState@ : @recommended@      * @SupportedTier@ : @WebServer/Standard@ | @Worker/SQS/HTTP@      * @SupportedAddon@ : @Log/S3@ | @Monitoring/Healthd@ | @WorkerDaemon/SQSD@ 
 pfValues :: Lens' PlatformFilter [Text]
 pfValues = lens _pfValues (\ s a -> s{_pfValues = a}) . _Default . _Coerce
 
--- | The operator to apply to the @Type@ with each of the @Values@ . Valid Values: @=@ (equal to) | @!=@ (not equal to) | @<@ (less than) | @<=@ (less than or equal to) | @>@ (greater than) | @>=@ (greater than or equal to) | @contains@ | @begins_with@ | @ends_with@ 
+-- | The operator to apply to the @Type@ with each of the @Values@ . Valid values: @=@ | @!=@ | @<@ | @<=@ | @>@ | @>=@ | @contains@ | @begins_with@ | @ends_with@ 
 pfOperator :: Lens' PlatformFilter (Maybe Text)
 pfOperator = lens _pfOperator (\ s a -> s{_pfOperator = a})
 
--- | The custom platform attribute to which the filter values are applied. Valid Values: @PlatformName@ | @PlatformVersion@ | @PlatformStatus@ | @PlatformOwner@ 
+-- | The platform version attribute to which the filter values are applied. Valid values: @PlatformName@ | @PlatformVersion@ | @PlatformStatus@ | @PlatformBranchName@ | @PlatformLifecycleState@ | @PlatformOwner@ | @SupportedTier@ | @SupportedAddon@ | @ProgrammingLanguageName@ | @OperatingSystemName@ 
 pfType :: Lens' PlatformFilter (Maybe Text)
 pfType = lens _pfType (\ s a -> s{_pfType = a})
 

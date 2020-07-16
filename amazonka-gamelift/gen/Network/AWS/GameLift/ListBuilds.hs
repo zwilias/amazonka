@@ -18,10 +18,14 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Retrieves build records for all builds associated with the AWS account in use. You can limit results to builds that are in a specific status by using the @Status@ parameter. Use the pagination parameters to retrieve results in a set of sequential pages. 
+-- Retrieves build resources for all builds associated with the AWS account in use. You can limit results to builds that are in a specific status by using the @Status@ parameter. Use the pagination parameters to retrieve results in a set of sequential pages. 
 --
 --
--- Build-related operations include:
+-- __Learn more__ 
+--
+-- <https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-build-intro.html Upload a Custom Server Build> 
+--
+-- __Related operations__ 
 --
 --     * 'CreateBuild' 
 --
@@ -35,6 +39,8 @@
 --
 --
 --
+--
+-- This operation returns paginated results.
 module Network.AWS.GameLift.ListBuilds
     (
     -- * Creating a Request
@@ -57,6 +63,7 @@ module Network.AWS.GameLift.ListBuilds
 import Network.AWS.GameLift.Types
 import Network.AWS.GameLift.Types.Product
 import Network.AWS.Lens
+import Network.AWS.Pager
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
@@ -80,7 +87,7 @@ data ListBuilds = ListBuilds'{_lbStatus ::
 --
 -- * 'lbNextToken' - Token that indicates the start of the next sequential page of results. Use the token that is returned with a previous call to this action. To start at the beginning of the result set, do not specify a value.
 --
--- * 'lbLimit' - Maximum number of results to return. Use this parameter with @NextToken@ to get results as a set of sequential pages.
+-- * 'lbLimit' - The maximum number of results to return. Use this parameter with @NextToken@ to get results as a set of sequential pages.
 listBuilds
     :: ListBuilds
 listBuilds
@@ -95,9 +102,16 @@ lbStatus = lens _lbStatus (\ s a -> s{_lbStatus = a})
 lbNextToken :: Lens' ListBuilds (Maybe Text)
 lbNextToken = lens _lbNextToken (\ s a -> s{_lbNextToken = a})
 
--- | Maximum number of results to return. Use this parameter with @NextToken@ to get results as a set of sequential pages.
+-- | The maximum number of results to return. Use this parameter with @NextToken@ to get results as a set of sequential pages.
 lbLimit :: Lens' ListBuilds (Maybe Natural)
 lbLimit = lens _lbLimit (\ s a -> s{_lbLimit = a}) . mapping _Nat
+
+instance AWSPager ListBuilds where
+        page rq rs
+          | stop (rs ^. lbrsNextToken) = Nothing
+          | stop (rs ^. lbrsBuilds) = Nothing
+          | otherwise =
+            Just $ rq & lbNextToken .~ rs ^. lbrsNextToken
 
 instance AWSRequest ListBuilds where
         type Rs ListBuilds = ListBuildsResponse
@@ -151,7 +165,7 @@ data ListBuildsResponse = ListBuildsResponse'{_lbrsBuilds
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'lbrsBuilds' - Collection of build records that match the request.
+-- * 'lbrsBuilds' - A collection of build resources that match the request.
 --
 -- * 'lbrsNextToken' - Token that indicates where to resume retrieving results on the next call to this action. If no token is returned, these results represent the end of the list.
 --
@@ -164,7 +178,7 @@ listBuildsResponse pResponseStatus_
                         _lbrsNextToken = Nothing,
                         _lbrsResponseStatus = pResponseStatus_}
 
--- | Collection of build records that match the request.
+-- | A collection of build resources that match the request.
 lbrsBuilds :: Lens' ListBuildsResponse [Build]
 lbrsBuilds = lens _lbrsBuilds (\ s a -> s{_lbrsBuilds = a}) . _Default . _Coerce
 

@@ -34,7 +34,7 @@ data PartListElement = PartListElement'{_pleSHA256TreeHash
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'pleSHA256TreeHash' - The SHA256 tree hash value that Amazon Glacier calculated for the part. This field is never @null@ .
+-- * 'pleSHA256TreeHash' - The SHA256 tree hash value that Amazon S3 Glacier calculated for the part. This field is never @null@ .
 --
 -- * 'pleRangeInBytes' - The byte range of a part, inclusive of the upper value of the range.
 partListElement
@@ -43,7 +43,7 @@ partListElement
   = PartListElement'{_pleSHA256TreeHash = Nothing,
                      _pleRangeInBytes = Nothing}
 
--- | The SHA256 tree hash value that Amazon Glacier calculated for the part. This field is never @null@ .
+-- | The SHA256 tree hash value that Amazon S3 Glacier calculated for the part. This field is never @null@ .
 pleSHA256TreeHash :: Lens' PartListElement (Maybe Text)
 pleSHA256TreeHash = lens _pleSHA256TreeHash (\ s a -> s{_pleSHA256TreeHash = a})
 

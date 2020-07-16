@@ -19,28 +19,28 @@
 module Network.AWS.MediaConvert.Types.QueueStatus (
   QueueStatus (
     ..
-    , Active
-    , Paused
+    , QSActive
+    , QSPaused
     )
   ) where
 
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | Queues can be ACTIVE or PAUSED. If you pause a queue, jobs in that queue will not begin. Jobs running when a queue is paused continue to run until they finish or error out.
+-- | Queues can be ACTIVE or PAUSED. If you pause a queue, jobs in that queue won't begin. Jobs that are running when you pause a queue continue to run until they finish or result in an error.
 data QueueStatus = QueueStatus' (CI Text)
                      deriving (Eq, Ord, Read, Show, Data, Typeable,
                                Generic)
 
-pattern Active :: QueueStatus
-pattern Active = QueueStatus' "ACTIVE"
+pattern QSActive :: QueueStatus
+pattern QSActive = QueueStatus' "ACTIVE"
 
-pattern Paused :: QueueStatus
-pattern Paused = QueueStatus' "PAUSED"
+pattern QSPaused :: QueueStatus
+pattern QSPaused = QueueStatus' "PAUSED"
 
 {-# COMPLETE
-  Active,
-  Paused,
+  QSActive,
+  QSPaused,
   QueueStatus' #-}
 
 instance FromText QueueStatus where
@@ -55,20 +55,20 @@ instance ToText QueueStatus where
 --   fromEnum is a partial function, and will error on values unknown at generation time.
 instance Enum QueueStatus where
     toEnum i = case i of
-        0 -> Active
-        1 -> Paused
+        0 -> QSActive
+        1 -> QSPaused
         _ -> (error . showText) $ "Unknown index for QueueStatus: " <> toText i
     fromEnum x = case x of
-        Active -> 0
-        Paused -> 1
+        QSActive -> 0
+        QSPaused -> 1
         QueueStatus' name -> (error . showText) $ "Unknown QueueStatus: " <> original name
 
 -- | Represents the bounds of /known/ $QueueStatus.
 --   AWS may have added more since the source was generated.
 --   This instance exists only for backward compatibility.
 instance Bounded QueueStatus where
-    minBound = Active
-    maxBound = Paused
+    minBound = QSActive
+    maxBound = QSPaused
 
 instance Hashable     QueueStatus
 instance NFData       QueueStatus

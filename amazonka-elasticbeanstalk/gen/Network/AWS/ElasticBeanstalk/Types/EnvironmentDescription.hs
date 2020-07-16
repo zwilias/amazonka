@@ -99,11 +99,11 @@ data EnvironmentDescription = EnvironmentDescription'{_eStatus
 --
 -- * 'eDateCreated' - The creation date for this environment.
 --
--- * 'eHealth' - Describes the health status of the environment. AWS Elastic Beanstalk indicates the failure levels for a running environment:     * @Red@ : Indicates the environment is not responsive. Occurs when three or more consecutive failures occur for an environment.     * @Yellow@ : Indicates that something is wrong. Occurs when two consecutive failures occur for an environment.     * @Green@ : Indicates the environment is healthy and fully functional.     * @Grey@ : Default health for a new environment. The environment is not fully launched and health checks have not started or health checks are suspended during an @UpdateEnvironment@ or @RestartEnvironement@ request. Default: @Grey@ 
+-- * 'eHealth' - Describes the health status of the environment. AWS Elastic Beanstalk indicates the failure levels for a running environment:     * @Red@ : Indicates the environment is not responsive. Occurs when three or more consecutive failures occur for an environment.     * @Yellow@ : Indicates that something is wrong. Occurs when two consecutive failures occur for an environment.     * @Green@ : Indicates the environment is healthy and fully functional.     * @Grey@ : Default health for a new environment. The environment is not fully launched and health checks have not started or health checks are suspended during an @UpdateEnvironment@ or @RestartEnvironment@ request. Default: @Grey@ 
 --
 -- * 'eVersionLabel' - The application version deployed in this environment.
 --
--- * 'ePlatformARN' - The ARN of the platform.
+-- * 'ePlatformARN' - The ARN of the platform version.
 --
 -- * 'eTier' - Describes the current tier of this environment.
 --
@@ -117,7 +117,7 @@ data EnvironmentDescription = EnvironmentDescription'{_eStatus
 --
 -- * 'eEnvironmentId' - The ID of this environment.
 --
--- * 'eHealthStatus' - Returns the health status of the application running in your environment. For more information, see <http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/health-enhanced-status.html Health Colors and Statuses> .
+-- * 'eHealthStatus' - Returns the health status of the application running in your environment. For more information, see <https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/health-enhanced-status.html Health Colors and Statuses> .
 --
 -- * 'eEnvironmentLinks' - A list of links to other environments in the same group.
 --
@@ -172,7 +172,7 @@ eDateUpdated = lens _eDateUpdated (\ s a -> s{_eDateUpdated = a}) . mapping _Tim
 eDateCreated :: Lens' EnvironmentDescription (Maybe UTCTime)
 eDateCreated = lens _eDateCreated (\ s a -> s{_eDateCreated = a}) . mapping _Time
 
--- | Describes the health status of the environment. AWS Elastic Beanstalk indicates the failure levels for a running environment:     * @Red@ : Indicates the environment is not responsive. Occurs when three or more consecutive failures occur for an environment.     * @Yellow@ : Indicates that something is wrong. Occurs when two consecutive failures occur for an environment.     * @Green@ : Indicates the environment is healthy and fully functional.     * @Grey@ : Default health for a new environment. The environment is not fully launched and health checks have not started or health checks are suspended during an @UpdateEnvironment@ or @RestartEnvironement@ request. Default: @Grey@ 
+-- | Describes the health status of the environment. AWS Elastic Beanstalk indicates the failure levels for a running environment:     * @Red@ : Indicates the environment is not responsive. Occurs when three or more consecutive failures occur for an environment.     * @Yellow@ : Indicates that something is wrong. Occurs when two consecutive failures occur for an environment.     * @Green@ : Indicates the environment is healthy and fully functional.     * @Grey@ : Default health for a new environment. The environment is not fully launched and health checks have not started or health checks are suspended during an @UpdateEnvironment@ or @RestartEnvironment@ request. Default: @Grey@ 
 eHealth :: Lens' EnvironmentDescription (Maybe EnvironmentHealth)
 eHealth = lens _eHealth (\ s a -> s{_eHealth = a})
 
@@ -180,7 +180,7 @@ eHealth = lens _eHealth (\ s a -> s{_eHealth = a})
 eVersionLabel :: Lens' EnvironmentDescription (Maybe Text)
 eVersionLabel = lens _eVersionLabel (\ s a -> s{_eVersionLabel = a})
 
--- | The ARN of the platform.
+-- | The ARN of the platform version.
 ePlatformARN :: Lens' EnvironmentDescription (Maybe Text)
 ePlatformARN = lens _ePlatformARN (\ s a -> s{_ePlatformARN = a})
 
@@ -208,7 +208,7 @@ eSolutionStackName = lens _eSolutionStackName (\ s a -> s{_eSolutionStackName = 
 eEnvironmentId :: Lens' EnvironmentDescription (Maybe Text)
 eEnvironmentId = lens _eEnvironmentId (\ s a -> s{_eEnvironmentId = a})
 
--- | Returns the health status of the application running in your environment. For more information, see <http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/health-enhanced-status.html Health Colors and Statuses> .
+-- | Returns the health status of the application running in your environment. For more information, see <https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/health-enhanced-status.html Health Colors and Statuses> .
 eHealthStatus :: Lens' EnvironmentDescription (Maybe EnvironmentHealthStatus)
 eHealthStatus = lens _eHealthStatus (\ s a -> s{_eHealthStatus = a})
 

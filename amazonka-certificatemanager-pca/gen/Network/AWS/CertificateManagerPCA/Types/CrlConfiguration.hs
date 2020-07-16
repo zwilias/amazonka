@@ -20,7 +20,7 @@ module Network.AWS.CertificateManagerPCA.Types.CrlConfiguration where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | Contains configuration information for a certificate revocation list (CRL). Your private certificate authority (CA) creates base CRLs. Delta CRLs are not supported. You can enable CRLs for your new or an existing private CA by setting the __Enabled__ parameter to @true@ . Your private CA writes CRLs to an S3 bucket that you specify in the __S3BucketName__ parameter. You can hide the name of your bucket by specifying a value for the __CustomCname__ parameter. Your private CA copies the CNAME or the S3 bucket name to the __CRL Distribution Points__ extension of each certificate it issues. Your S3 bucket policy must give write permission to ACM PCA. 
+-- | Contains configuration information for a certificate revocation list (CRL). Your private certificate authority (CA) creates base CRLs. Delta CRLs are not supported. You can enable CRLs for your new or an existing private CA by setting the __Enabled__ parameter to @true@ . Your private CA writes CRLs to an S3 bucket that you specify in the __S3BucketName__ parameter. You can hide the name of your bucket by specifying a value for the __CustomCname__ parameter. Your private CA copies the CNAME or the S3 bucket name to the __CRL Distribution Points__ extension of each certificate it issues. Your S3 bucket policy must give write permission to ACM Private CA. 
 --
 --
 -- Your private CA uses the value in the __ExpirationInDays__ parameter to calculate the __nextUpdate__ field in the CRL. The CRL is refreshed at 1/2 the age of next update or when a certificate is revoked. When a certificate is revoked, it is recorded in the next CRL that is generated and in the next audit report. Only time valid certificates are listed in the CRL. Expired certificates are not included. 
@@ -65,7 +65,7 @@ import Network.AWS.Prelude
 --
 --
 --
--- Certificate revocation lists created by ACM PCA are DER-encoded. You can use the following OpenSSL command to list a CRL.
+-- Certificate revocation lists created by ACM Private CA are DER-encoded. You can use the following OpenSSL command to list a CRL.
 --
 -- @openssl crl -inform DER -text -in /crl_path/ -noout@ 
 --
@@ -86,9 +86,9 @@ data CrlConfiguration = CrlConfiguration'{_ccCustomCname
 --
 -- * 'ccExpirationInDays' - Number of days until a certificate expires.
 --
--- * 'ccS3BucketName' - Name of the S3 bucket that contains the CRL. If you do not provide a value for the __CustomCname__ argument, the name of your S3 bucket is placed into the __CRL Distribution Points__ extension of the issued certificate. You can change the name of your bucket by calling the 'UpdateCertificateAuthority' function. You must specify a bucket policy that allows ACM PCA to write the CRL to your bucket.
+-- * 'ccS3BucketName' - Name of the S3 bucket that contains the CRL. If you do not provide a value for the __CustomCname__ argument, the name of your S3 bucket is placed into the __CRL Distribution Points__ extension of the issued certificate. You can change the name of your bucket by calling the 'UpdateCertificateAuthority' action. You must specify a bucket policy that allows ACM Private CA to write the CRL to your bucket.
 --
--- * 'ccEnabled' - Boolean value that specifies whether certificate revocation lists (CRLs) are enabled. You can use this value to enable certificate revocation for a new CA when you call the 'CreateCertificateAuthority' function or for an existing CA when you call the 'UpdateCertificateAuthority' function. 
+-- * 'ccEnabled' - Boolean value that specifies whether certificate revocation lists (CRLs) are enabled. You can use this value to enable certificate revocation for a new CA when you call the 'CreateCertificateAuthority' action or for an existing CA when you call the 'UpdateCertificateAuthority' action. 
 crlConfiguration
     :: Bool -- ^ 'ccEnabled'
     -> CrlConfiguration
@@ -105,11 +105,11 @@ ccCustomCname = lens _ccCustomCname (\ s a -> s{_ccCustomCname = a})
 ccExpirationInDays :: Lens' CrlConfiguration (Maybe Natural)
 ccExpirationInDays = lens _ccExpirationInDays (\ s a -> s{_ccExpirationInDays = a}) . mapping _Nat
 
--- | Name of the S3 bucket that contains the CRL. If you do not provide a value for the __CustomCname__ argument, the name of your S3 bucket is placed into the __CRL Distribution Points__ extension of the issued certificate. You can change the name of your bucket by calling the 'UpdateCertificateAuthority' function. You must specify a bucket policy that allows ACM PCA to write the CRL to your bucket.
+-- | Name of the S3 bucket that contains the CRL. If you do not provide a value for the __CustomCname__ argument, the name of your S3 bucket is placed into the __CRL Distribution Points__ extension of the issued certificate. You can change the name of your bucket by calling the 'UpdateCertificateAuthority' action. You must specify a bucket policy that allows ACM Private CA to write the CRL to your bucket.
 ccS3BucketName :: Lens' CrlConfiguration (Maybe Text)
 ccS3BucketName = lens _ccS3BucketName (\ s a -> s{_ccS3BucketName = a})
 
--- | Boolean value that specifies whether certificate revocation lists (CRLs) are enabled. You can use this value to enable certificate revocation for a new CA when you call the 'CreateCertificateAuthority' function or for an existing CA when you call the 'UpdateCertificateAuthority' function. 
+-- | Boolean value that specifies whether certificate revocation lists (CRLs) are enabled. You can use this value to enable certificate revocation for a new CA when you call the 'CreateCertificateAuthority' action or for an existing CA when you call the 'UpdateCertificateAuthority' action. 
 ccEnabled :: Lens' CrlConfiguration Bool
 ccEnabled = lens _ccEnabled (\ s a -> s{_ccEnabled = a})
 

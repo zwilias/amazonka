@@ -18,6 +18,7 @@
 module Network.AWS.MediaConvert.Types.VideoCodecSettings where
 
 import Network.AWS.Lens
+import Network.AWS.MediaConvert.Types.Av1Settings
 import Network.AWS.MediaConvert.Types.FrameCaptureSettings
 import Network.AWS.MediaConvert.Types.H264Settings
 import Network.AWS.MediaConvert.Types.H265Settings
@@ -26,11 +27,13 @@ import Network.AWS.MediaConvert.Types.ProresSettings
 import Network.AWS.MediaConvert.Types.VideoCodec
 import Network.AWS.Prelude
 
--- | Video codec settings, (CodecSettings) under (VideoDescription), contains the group of settings related to video encoding. The settings in this group vary depending on the value you choose for Video codec (Codec). For each codec enum you choose, define the corresponding settings object. The following lists the codec enum, settings object pairs. * H_264, H264Settings * H_265, H265Settings * MPEG2, Mpeg2Settings * PRORES, ProresSettings * FRAME_CAPTURE, FrameCaptureSettings
+-- | Video codec settings, (CodecSettings) under (VideoDescription), contains the group of settings related to video encoding. The settings in this group vary depending on the value that you choose for Video codec (Codec). For each codec enum that you choose, define the corresponding settings object. The following lists the codec enum, settings object pairs. * FRAME_CAPTURE, FrameCaptureSettings * AV1, Av1Settings * H_264, H264Settings * H_265, H265Settings * MPEG2, Mpeg2Settings * PRORES, ProresSettings
 --
 -- /See:/ 'videoCodecSettings' smart constructor.
 data VideoCodecSettings = VideoCodecSettings'{_vcsFrameCaptureSettings
                                               :: !(Maybe FrameCaptureSettings),
+                                              _vcsAv1Settings ::
+                                              !(Maybe Av1Settings),
                                               _vcsCodec :: !(Maybe VideoCodec),
                                               _vcsH265Settings ::
                                               !(Maybe H265Settings),
@@ -46,48 +49,55 @@ data VideoCodecSettings = VideoCodecSettings'{_vcsFrameCaptureSettings
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'vcsFrameCaptureSettings' - Undocumented member.
+-- * 'vcsFrameCaptureSettings' - Required when you set (Codec) under (VideoDescription)>(CodecSettings) to the value FRAME_CAPTURE.
 --
--- * 'vcsCodec' - Undocumented member.
+-- * 'vcsAv1Settings' - Required when you set Codec, under VideoDescription>CodecSettings to the value AV1.
 --
--- * 'vcsH265Settings' - Undocumented member.
+-- * 'vcsCodec' - Specifies the video codec. This must be equal to one of the enum values defined by the object  VideoCodec.
 --
--- * 'vcsProresSettings' - Undocumented member.
+-- * 'vcsH265Settings' - Settings for H265 codec
 --
--- * 'vcsH264Settings' - Undocumented member.
+-- * 'vcsProresSettings' - Required when you set (Codec) under (VideoDescription)>(CodecSettings) to the value PRORES.
 --
--- * 'vcsMpeg2Settings' - Undocumented member.
+-- * 'vcsH264Settings' - Required when you set (Codec) under (VideoDescription)>(CodecSettings) to the value H_264.
+--
+-- * 'vcsMpeg2Settings' - Required when you set (Codec) under (VideoDescription)>(CodecSettings) to the value MPEG2.
 videoCodecSettings
     :: VideoCodecSettings
 videoCodecSettings
   = VideoCodecSettings'{_vcsFrameCaptureSettings =
                           Nothing,
-                        _vcsCodec = Nothing, _vcsH265Settings = Nothing,
+                        _vcsAv1Settings = Nothing, _vcsCodec = Nothing,
+                        _vcsH265Settings = Nothing,
                         _vcsProresSettings = Nothing,
                         _vcsH264Settings = Nothing,
                         _vcsMpeg2Settings = Nothing}
 
--- | Undocumented member.
+-- | Required when you set (Codec) under (VideoDescription)>(CodecSettings) to the value FRAME_CAPTURE.
 vcsFrameCaptureSettings :: Lens' VideoCodecSettings (Maybe FrameCaptureSettings)
 vcsFrameCaptureSettings = lens _vcsFrameCaptureSettings (\ s a -> s{_vcsFrameCaptureSettings = a})
 
--- | Undocumented member.
+-- | Required when you set Codec, under VideoDescription>CodecSettings to the value AV1.
+vcsAv1Settings :: Lens' VideoCodecSettings (Maybe Av1Settings)
+vcsAv1Settings = lens _vcsAv1Settings (\ s a -> s{_vcsAv1Settings = a})
+
+-- | Specifies the video codec. This must be equal to one of the enum values defined by the object  VideoCodec.
 vcsCodec :: Lens' VideoCodecSettings (Maybe VideoCodec)
 vcsCodec = lens _vcsCodec (\ s a -> s{_vcsCodec = a})
 
--- | Undocumented member.
+-- | Settings for H265 codec
 vcsH265Settings :: Lens' VideoCodecSettings (Maybe H265Settings)
 vcsH265Settings = lens _vcsH265Settings (\ s a -> s{_vcsH265Settings = a})
 
--- | Undocumented member.
+-- | Required when you set (Codec) under (VideoDescription)>(CodecSettings) to the value PRORES.
 vcsProresSettings :: Lens' VideoCodecSettings (Maybe ProresSettings)
 vcsProresSettings = lens _vcsProresSettings (\ s a -> s{_vcsProresSettings = a})
 
--- | Undocumented member.
+-- | Required when you set (Codec) under (VideoDescription)>(CodecSettings) to the value H_264.
 vcsH264Settings :: Lens' VideoCodecSettings (Maybe H264Settings)
 vcsH264Settings = lens _vcsH264Settings (\ s a -> s{_vcsH264Settings = a})
 
--- | Undocumented member.
+-- | Required when you set (Codec) under (VideoDescription)>(CodecSettings) to the value MPEG2.
 vcsMpeg2Settings :: Lens' VideoCodecSettings (Maybe Mpeg2Settings)
 vcsMpeg2Settings = lens _vcsMpeg2Settings (\ s a -> s{_vcsMpeg2Settings = a})
 
@@ -96,7 +106,9 @@ instance FromJSON VideoCodecSettings where
           = withObject "VideoCodecSettings"
               (\ x ->
                  VideoCodecSettings' <$>
-                   (x .:? "frameCaptureSettings") <*> (x .:? "codec")
+                   (x .:? "frameCaptureSettings") <*>
+                     (x .:? "av1Settings")
+                     <*> (x .:? "codec")
                      <*> (x .:? "h265Settings")
                      <*> (x .:? "proresSettings")
                      <*> (x .:? "h264Settings")
@@ -112,6 +124,7 @@ instance ToJSON VideoCodecSettings where
               (catMaybes
                  [("frameCaptureSettings" .=) <$>
                     _vcsFrameCaptureSettings,
+                  ("av1Settings" .=) <$> _vcsAv1Settings,
                   ("codec" .=) <$> _vcsCodec,
                   ("h265Settings" .=) <$> _vcsH265Settings,
                   ("proresSettings" .=) <$> _vcsProresSettings,

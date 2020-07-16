@@ -27,7 +27,7 @@ module Network.AWS.MediaLive.Types.H264ParControl (
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | Placeholder documentation for H264ParControl
+-- | H264 Par Control
 data H264ParControl = H264ParControl' (CI Text)
                         deriving (Eq, Ord, Read, Show, Data, Typeable,
                                   Generic)

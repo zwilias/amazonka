@@ -21,7 +21,11 @@
 -- Updates port settings for a fleet. To update settings, specify the fleet ID to be updated and list the permissions you want to update. List the permissions you want to add in @InboundPermissionAuthorizations@ , and permissions you want to remove in @InboundPermissionRevocations@ . Permissions to be removed must match existing fleet permissions. If successful, the fleet ID for the updated fleet is returned.
 --
 --
--- Fleet-related operations include:
+-- __Learn more__ 
+--
+-- <https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html Setting up GameLift Fleets> 
+--
+-- __Related operations__ 
 --
 --     * 'CreateFleet' 
 --
@@ -29,23 +33,7 @@
 --
 --     * 'DeleteFleet' 
 --
---     * Describe fleets:
---
 --     * 'DescribeFleetAttributes' 
---
---     * 'DescribeFleetCapacity' 
---
---     * 'DescribeFleetPortSettings' 
---
---     * 'DescribeFleetUtilization' 
---
---     * 'DescribeRuntimeConfiguration' 
---
---     * 'DescribeEC2InstanceLimits' 
---
---     * 'DescribeFleetEvents' 
---
---
 --
 --     * Update fleets:
 --
@@ -59,13 +47,7 @@
 --
 --
 --
---     * Manage fleet actions:
---
---     * 'StartFleetActions' 
---
---     * 'StopFleetActions' 
---
---
+--     * 'StartFleetActions' or 'StopFleetActions' 
 --
 --
 --
@@ -113,11 +95,11 @@ data UpdateFleetPortSettings = UpdateFleetPortSettings'{_ufpsInboundPermissionRe
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'ufpsInboundPermissionRevocations' - Collection of port settings to be removed from the fleet record.
+-- * 'ufpsInboundPermissionRevocations' - A collection of port settings to be removed from the fleet resource.
 --
--- * 'ufpsInboundPermissionAuthorizations' - Collection of port settings to be added to the fleet record.
+-- * 'ufpsInboundPermissionAuthorizations' - A collection of port settings to be added to the fleet resource.
 --
--- * 'ufpsFleetId' - Unique identifier for a fleet to update port settings for.
+-- * 'ufpsFleetId' - A unique identifier for a fleet to update port settings for. You can use either the fleet ID or ARN value.
 updateFleetPortSettings
     :: Text -- ^ 'ufpsFleetId'
     -> UpdateFleetPortSettings
@@ -127,15 +109,15 @@ updateFleetPortSettings pFleetId_
                              _ufpsInboundPermissionAuthorizations = Nothing,
                              _ufpsFleetId = pFleetId_}
 
--- | Collection of port settings to be removed from the fleet record.
+-- | A collection of port settings to be removed from the fleet resource.
 ufpsInboundPermissionRevocations :: Lens' UpdateFleetPortSettings [IPPermission]
 ufpsInboundPermissionRevocations = lens _ufpsInboundPermissionRevocations (\ s a -> s{_ufpsInboundPermissionRevocations = a}) . _Default . _Coerce
 
--- | Collection of port settings to be added to the fleet record.
+-- | A collection of port settings to be added to the fleet resource.
 ufpsInboundPermissionAuthorizations :: Lens' UpdateFleetPortSettings [IPPermission]
 ufpsInboundPermissionAuthorizations = lens _ufpsInboundPermissionAuthorizations (\ s a -> s{_ufpsInboundPermissionAuthorizations = a}) . _Default . _Coerce
 
--- | Unique identifier for a fleet to update port settings for.
+-- | A unique identifier for a fleet to update port settings for. You can use either the fleet ID or ARN value.
 ufpsFleetId :: Lens' UpdateFleetPortSettings Text
 ufpsFleetId = lens _ufpsFleetId (\ s a -> s{_ufpsFleetId = a})
 
@@ -196,7 +178,7 @@ data UpdateFleetPortSettingsResponse = UpdateFleetPortSettingsResponse'{_ufpsrsF
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'ufpsrsFleetId' - Unique identifier for a fleet that was updated.
+-- * 'ufpsrsFleetId' - A unique identifier for a fleet that was updated.
 --
 -- * 'ufpsrsResponseStatus' - -- | The response status code.
 updateFleetPortSettingsResponse
@@ -207,7 +189,7 @@ updateFleetPortSettingsResponse pResponseStatus_
                                        Nothing,
                                      _ufpsrsResponseStatus = pResponseStatus_}
 
--- | Unique identifier for a fleet that was updated.
+-- | A unique identifier for a fleet that was updated.
 ufpsrsFleetId :: Lens' UpdateFleetPortSettingsResponse (Maybe Text)
 ufpsrsFleetId = lens _ufpsrsFleetId (\ s a -> s{_ufpsrsFleetId = a})
 

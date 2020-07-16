@@ -55,7 +55,7 @@ data App = App'{_appSSLConfiguration ::
 --
 -- * 'appSSLConfiguration' - An @SslConfiguration@ object with the SSL configuration.
 --
--- * 'appEnvironment' - An array of @EnvironmentVariable@ objects that specify environment variables to be associated with the app. After you deploy the app, these variables are defined on the associated app server instances. For more information, see <http://docs.aws.amazon.com/opsworks/latest/userguide/workingapps-creating.html#workingapps-creating-environment Environment Variables> . 
+-- * 'appEnvironment' - An array of @EnvironmentVariable@ objects that specify environment variables to be associated with the app. After you deploy the app, these variables are defined on the associated app server instances. For more information, see <https://docs.aws.amazon.com/opsworks/latest/userguide/workingapps-creating.html#workingapps-creating-environment Environment Variables> . 
 --
 -- * 'appEnableSSL' - Whether to enable SSL for the app.
 --
@@ -96,7 +96,7 @@ app
 appSSLConfiguration :: Lens' App (Maybe SSLConfiguration)
 appSSLConfiguration = lens _appSSLConfiguration (\ s a -> s{_appSSLConfiguration = a})
 
--- | An array of @EnvironmentVariable@ objects that specify environment variables to be associated with the app. After you deploy the app, these variables are defined on the associated app server instances. For more information, see <http://docs.aws.amazon.com/opsworks/latest/userguide/workingapps-creating.html#workingapps-creating-environment Environment Variables> . 
+-- | An array of @EnvironmentVariable@ objects that specify environment variables to be associated with the app. After you deploy the app, these variables are defined on the associated app server instances. For more information, see <https://docs.aws.amazon.com/opsworks/latest/userguide/workingapps-creating.html#workingapps-creating-environment Environment Variables> . 
 appEnvironment :: Lens' App [EnvironmentVariable]
 appEnvironment = lens _appEnvironment (\ s a -> s{_appEnvironment = a}) . _Default . _Coerce
 

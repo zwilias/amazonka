@@ -167,9 +167,9 @@ data CreateResourceDefinitionVersionResponse = CreateResourceDefinitionVersionRe
 --
 -- * 'crdvrsCreationTimestamp' - The time, in milliseconds since the epoch, when the version was created.
 --
--- * 'crdvrsVersion' - The unique ID of the version.
+-- * 'crdvrsVersion' - The ID of the version.
 --
--- * 'crdvrsId' - The ID of the version.
+-- * 'crdvrsId' - The ID of the parent definition that the version is associated with.
 --
 -- * 'crdvrsResponseStatus' - -- | The response status code.
 createResourceDefinitionVersionResponse
@@ -193,11 +193,11 @@ crdvrsARN = lens _crdvrsARN (\ s a -> s{_crdvrsARN = a})
 crdvrsCreationTimestamp :: Lens' CreateResourceDefinitionVersionResponse (Maybe Text)
 crdvrsCreationTimestamp = lens _crdvrsCreationTimestamp (\ s a -> s{_crdvrsCreationTimestamp = a})
 
--- | The unique ID of the version.
+-- | The ID of the version.
 crdvrsVersion :: Lens' CreateResourceDefinitionVersionResponse (Maybe Text)
 crdvrsVersion = lens _crdvrsVersion (\ s a -> s{_crdvrsVersion = a})
 
--- | The ID of the version.
+-- | The ID of the parent definition that the version is associated with.
 crdvrsId :: Lens' CreateResourceDefinitionVersionResponse (Maybe Text)
 crdvrsId = lens _crdvrsId (\ s a -> s{_crdvrsId = a})
 

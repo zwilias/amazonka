@@ -21,7 +21,7 @@
 -- Synchronizes the specified MFA device with its IAM resource object on the AWS servers.
 --
 --
--- For more information about creating and working with virtual MFA devices, go to <http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_VirtualMFA.html Using a Virtual MFA Device> in the /IAM User Guide/ .
+-- For more information about creating and working with virtual MFA devices, go to <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_VirtualMFA.html Using a Virtual MFA Device> in the /IAM User Guide/ .
 --
 module Network.AWS.IAM.ResyncMFADevice
     (
@@ -58,9 +58,9 @@ data ResyncMFADevice = ResyncMFADevice'{_rmdUserName
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'rmdUserName' - The name of the user whose MFA device you want to resynchronize. This parameter allows (per its <http://wikipedia.org/wiki/regex regex pattern> ) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
+-- * 'rmdUserName' - The name of the user whose MFA device you want to resynchronize. This parameter allows (through its <http://wikipedia.org/wiki/regex regex pattern> ) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
 --
--- * 'rmdSerialNumber' - Serial number that uniquely identifies the MFA device. This parameter allows (per its <http://wikipedia.org/wiki/regex regex pattern> ) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
+-- * 'rmdSerialNumber' - Serial number that uniquely identifies the MFA device. This parameter allows (through its <http://wikipedia.org/wiki/regex regex pattern> ) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
 --
 -- * 'rmdAuthenticationCode1' - An authentication code emitted by the device. The format for this parameter is a sequence of six digits.
 --
@@ -78,11 +78,11 @@ resyncMFADevice pUserName_ pSerialNumber_
                      _rmdAuthenticationCode1 = pAuthenticationCode1_,
                      _rmdAuthenticationCode2 = pAuthenticationCode2_}
 
--- | The name of the user whose MFA device you want to resynchronize. This parameter allows (per its <http://wikipedia.org/wiki/regex regex pattern> ) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
+-- | The name of the user whose MFA device you want to resynchronize. This parameter allows (through its <http://wikipedia.org/wiki/regex regex pattern> ) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
 rmdUserName :: Lens' ResyncMFADevice Text
 rmdUserName = lens _rmdUserName (\ s a -> s{_rmdUserName = a})
 
--- | Serial number that uniquely identifies the MFA device. This parameter allows (per its <http://wikipedia.org/wiki/regex regex pattern> ) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
+-- | Serial number that uniquely identifies the MFA device. This parameter allows (through its <http://wikipedia.org/wiki/regex regex pattern> ) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
 rmdSerialNumber :: Lens' ResyncMFADevice Text
 rmdSerialNumber = lens _rmdSerialNumber (\ s a -> s{_rmdSerialNumber = a})
 

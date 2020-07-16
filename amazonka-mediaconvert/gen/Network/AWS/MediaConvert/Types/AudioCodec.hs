@@ -19,13 +19,15 @@
 module Network.AWS.MediaConvert.Types.AudioCodec (
   AudioCodec (
     ..
-    , AC3
-    , Aac
-    , Aiff
-    , EAC3
-    , MP2
-    , Passthrough
-    , Wav
+    , ACAC3
+    , ACAac
+    , ACAiff
+    , ACEAC3
+    , ACEAC3Atmos
+    , ACMP2
+    , ACMP3
+    , ACPassthrough
+    , ACWav
     )
   ) where
 
@@ -37,35 +39,43 @@ data AudioCodec = AudioCodec' (CI Text)
                     deriving (Eq, Ord, Read, Show, Data, Typeable,
                               Generic)
 
-pattern AC3 :: AudioCodec
-pattern AC3 = AudioCodec' "AC3"
+pattern ACAC3 :: AudioCodec
+pattern ACAC3 = AudioCodec' "AC3"
 
-pattern Aac :: AudioCodec
-pattern Aac = AudioCodec' "AAC"
+pattern ACAac :: AudioCodec
+pattern ACAac = AudioCodec' "AAC"
 
-pattern Aiff :: AudioCodec
-pattern Aiff = AudioCodec' "AIFF"
+pattern ACAiff :: AudioCodec
+pattern ACAiff = AudioCodec' "AIFF"
 
-pattern EAC3 :: AudioCodec
-pattern EAC3 = AudioCodec' "EAC3"
+pattern ACEAC3 :: AudioCodec
+pattern ACEAC3 = AudioCodec' "EAC3"
 
-pattern MP2 :: AudioCodec
-pattern MP2 = AudioCodec' "MP2"
+pattern ACEAC3Atmos :: AudioCodec
+pattern ACEAC3Atmos = AudioCodec' "EAC3_ATMOS"
 
-pattern Passthrough :: AudioCodec
-pattern Passthrough = AudioCodec' "PASSTHROUGH"
+pattern ACMP2 :: AudioCodec
+pattern ACMP2 = AudioCodec' "MP2"
 
-pattern Wav :: AudioCodec
-pattern Wav = AudioCodec' "WAV"
+pattern ACMP3 :: AudioCodec
+pattern ACMP3 = AudioCodec' "MP3"
+
+pattern ACPassthrough :: AudioCodec
+pattern ACPassthrough = AudioCodec' "PASSTHROUGH"
+
+pattern ACWav :: AudioCodec
+pattern ACWav = AudioCodec' "WAV"
 
 {-# COMPLETE
-  AC3,
-  Aac,
-  Aiff,
-  EAC3,
-  MP2,
-  Passthrough,
-  Wav,
+  ACAC3,
+  ACAac,
+  ACAiff,
+  ACEAC3,
+  ACEAC3Atmos,
+  ACMP2,
+  ACMP3,
+  ACPassthrough,
+  ACWav,
   AudioCodec' #-}
 
 instance FromText AudioCodec where
@@ -80,30 +90,34 @@ instance ToText AudioCodec where
 --   fromEnum is a partial function, and will error on values unknown at generation time.
 instance Enum AudioCodec where
     toEnum i = case i of
-        0 -> AC3
-        1 -> Aac
-        2 -> Aiff
-        3 -> EAC3
-        4 -> MP2
-        5 -> Passthrough
-        6 -> Wav
+        0 -> ACAC3
+        1 -> ACAac
+        2 -> ACAiff
+        3 -> ACEAC3
+        4 -> ACEAC3Atmos
+        5 -> ACMP2
+        6 -> ACMP3
+        7 -> ACPassthrough
+        8 -> ACWav
         _ -> (error . showText) $ "Unknown index for AudioCodec: " <> toText i
     fromEnum x = case x of
-        AC3 -> 0
-        Aac -> 1
-        Aiff -> 2
-        EAC3 -> 3
-        MP2 -> 4
-        Passthrough -> 5
-        Wav -> 6
+        ACAC3 -> 0
+        ACAac -> 1
+        ACAiff -> 2
+        ACEAC3 -> 3
+        ACEAC3Atmos -> 4
+        ACMP2 -> 5
+        ACMP3 -> 6
+        ACPassthrough -> 7
+        ACWav -> 8
         AudioCodec' name -> (error . showText) $ "Unknown AudioCodec: " <> original name
 
 -- | Represents the bounds of /known/ $AudioCodec.
 --   AWS may have added more since the source was generated.
 --   This instance exists only for backward compatibility.
 instance Bounded AudioCodec where
-    minBound = AC3
-    maxBound = Wav
+    minBound = ACAC3
+    maxBound = ACWav
 
 instance Hashable     AudioCodec
 instance NFData       AudioCodec

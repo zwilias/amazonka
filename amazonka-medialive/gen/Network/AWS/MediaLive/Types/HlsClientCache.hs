@@ -27,7 +27,7 @@ module Network.AWS.MediaLive.Types.HlsClientCache (
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | Placeholder documentation for HlsClientCache
+-- | Hls Client Cache
 data HlsClientCache = HlsClientCache' (CI Text)
                         deriving (Eq, Ord, Read, Show, Data, Typeable,
                                   Generic)

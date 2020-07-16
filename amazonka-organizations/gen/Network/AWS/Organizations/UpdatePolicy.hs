@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Updates an existing policy with a new name, description, or content. If any parameter is not supplied, that value remains unchanged. Note that you cannot change a policy's type.
+-- Updates an existing policy with a new name, description, or content. If you don't supply any parameter, that value remains unchanged. You can't change a policy's type.
 --
 --
 -- This operation can be called only from the organization's master account.
@@ -61,13 +61,13 @@ data UpdatePolicy = UpdatePolicy'{_upContent ::
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'upContent' - If provided, the new content for the policy. The text must be correctly formatted JSON that complies with the syntax for the policy's type. For more information, see <http://docs.aws.amazon.com/organizations/latest/userguide/orgs_reference_scp-syntax.html Service Control Policy Syntax> in the /AWS Organizations User Guide/ .
+-- * 'upContent' - If provided, the new content for the policy. The text must be correctly formatted JSON that complies with the syntax for the policy's type. For more information, see <https://docs.aws.amazon.com/organizations/latest/userguide/orgs_reference_scp-syntax.html Service Control Policy Syntax> in the /AWS Organizations User Guide./ 
 --
 -- * 'upName' - If provided, the new name for the policy. The <http://wikipedia.org/wiki/regex regex pattern> that is used to validate this parameter is a string of any of the characters in the ASCII character range.
 --
 -- * 'upDescription' - If provided, the new description for the policy.
 --
--- * 'upPolicyId' - The unique identifier (ID) of the policy that you want to update. The <http://wikipedia.org/wiki/regex regex pattern> for a policy ID string requires "p-" followed by from 8 to 128 lower-case letters or digits.
+-- * 'upPolicyId' - The unique identifier (ID) of the policy that you want to update. The <http://wikipedia.org/wiki/regex regex pattern> for a policy ID string requires "p-" followed by from 8 to 128 lowercase or uppercase letters, digits, or the underscore character (_).
 updatePolicy
     :: Text -- ^ 'upPolicyId'
     -> UpdatePolicy
@@ -76,7 +76,7 @@ updatePolicy pPolicyId_
                   _upName = Nothing, _upDescription = Nothing,
                   _upPolicyId = pPolicyId_}
 
--- | If provided, the new content for the policy. The text must be correctly formatted JSON that complies with the syntax for the policy's type. For more information, see <http://docs.aws.amazon.com/organizations/latest/userguide/orgs_reference_scp-syntax.html Service Control Policy Syntax> in the /AWS Organizations User Guide/ .
+-- | If provided, the new content for the policy. The text must be correctly formatted JSON that complies with the syntax for the policy's type. For more information, see <https://docs.aws.amazon.com/organizations/latest/userguide/orgs_reference_scp-syntax.html Service Control Policy Syntax> in the /AWS Organizations User Guide./ 
 upContent :: Lens' UpdatePolicy (Maybe Text)
 upContent = lens _upContent (\ s a -> s{_upContent = a})
 
@@ -88,7 +88,7 @@ upName = lens _upName (\ s a -> s{_upName = a})
 upDescription :: Lens' UpdatePolicy (Maybe Text)
 upDescription = lens _upDescription (\ s a -> s{_upDescription = a})
 
--- | The unique identifier (ID) of the policy that you want to update. The <http://wikipedia.org/wiki/regex regex pattern> for a policy ID string requires "p-" followed by from 8 to 128 lower-case letters or digits.
+-- | The unique identifier (ID) of the policy that you want to update. The <http://wikipedia.org/wiki/regex regex pattern> for a policy ID string requires "p-" followed by from 8 to 128 lowercase or uppercase letters, digits, or the underscore character (_).
 upPolicyId :: Lens' UpdatePolicy Text
 upPolicyId = lens _upPolicyId (\ s a -> s{_upPolicyId = a})
 

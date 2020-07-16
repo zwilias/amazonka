@@ -17,6 +17,7 @@
 --
 module Network.AWS.ElastiCache.Types.PendingModifiedValues where
 
+import Network.AWS.ElastiCache.Types.AuthTokenUpdateStatus
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
@@ -29,6 +30,9 @@ data PendingModifiedValues = PendingModifiedValues'{_pmvEngineVersion
                                                     :: !(Maybe Text),
                                                     _pmvCacheNodeType ::
                                                     !(Maybe Text),
+                                                    _pmvAuthTokenStatus ::
+                                                    !(Maybe
+                                                        AuthTokenUpdateStatus),
                                                     _pmvCacheNodeIdsToRemove ::
                                                     !(Maybe [Text]),
                                                     _pmvNumCacheNodes ::
@@ -44,7 +48,9 @@ data PendingModifiedValues = PendingModifiedValues'{_pmvEngineVersion
 --
 -- * 'pmvCacheNodeType' - The cache node type that this cluster or replication group is scaled to.
 --
--- * 'pmvCacheNodeIdsToRemove' - A list of cache node IDs that are being removed (or will be removed) from the cluster. A node ID is a numeric identifier (0001, 0002, etc.).
+-- * 'pmvAuthTokenStatus' - The auth token status
+--
+-- * 'pmvCacheNodeIdsToRemove' - A list of cache node IDs that are being removed (or will be removed) from the cluster. A node ID is a 4-digit numeric identifier (0001, 0002, etc.).
 --
 -- * 'pmvNumCacheNodes' - The new number of cache nodes for the cluster. For clusters running Redis, this value must be 1. For clusters running Memcached, this value must be between 1 and 20.
 pendingModifiedValues
@@ -52,6 +58,7 @@ pendingModifiedValues
 pendingModifiedValues
   = PendingModifiedValues'{_pmvEngineVersion = Nothing,
                            _pmvCacheNodeType = Nothing,
+                           _pmvAuthTokenStatus = Nothing,
                            _pmvCacheNodeIdsToRemove = Nothing,
                            _pmvNumCacheNodes = Nothing}
 
@@ -63,7 +70,11 @@ pmvEngineVersion = lens _pmvEngineVersion (\ s a -> s{_pmvEngineVersion = a})
 pmvCacheNodeType :: Lens' PendingModifiedValues (Maybe Text)
 pmvCacheNodeType = lens _pmvCacheNodeType (\ s a -> s{_pmvCacheNodeType = a})
 
--- | A list of cache node IDs that are being removed (or will be removed) from the cluster. A node ID is a numeric identifier (0001, 0002, etc.).
+-- | The auth token status
+pmvAuthTokenStatus :: Lens' PendingModifiedValues (Maybe AuthTokenUpdateStatus)
+pmvAuthTokenStatus = lens _pmvAuthTokenStatus (\ s a -> s{_pmvAuthTokenStatus = a})
+
+-- | A list of cache node IDs that are being removed (or will be removed) from the cluster. A node ID is a 4-digit numeric identifier (0001, 0002, etc.).
 pmvCacheNodeIdsToRemove :: Lens' PendingModifiedValues [Text]
 pmvCacheNodeIdsToRemove = lens _pmvCacheNodeIdsToRemove (\ s a -> s{_pmvCacheNodeIdsToRemove = a}) . _Default . _Coerce
 
@@ -75,6 +86,7 @@ instance FromXML PendingModifiedValues where
         parseXML x
           = PendingModifiedValues' <$>
               (x .@? "EngineVersion") <*> (x .@? "CacheNodeType")
+                <*> (x .@? "AuthTokenStatus")
                 <*>
                 (x .@? "CacheNodeIdsToRemove" .!@ mempty >>=
                    may (parseXMLList "CacheNodeId"))

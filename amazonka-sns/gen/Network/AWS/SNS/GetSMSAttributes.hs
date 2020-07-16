@@ -59,13 +59,13 @@ newtype GetSMSAttributes = GetSMSAttributes'{_gsmsaAttributes
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'gsmsaAttributes' - A list of the individual attribute names, such as @MonthlySpendLimit@ , for which you want values. For all attribute names, see <http://docs.aws.amazon.com/sns/latest/api/API_SetSMSAttributes.html SetSMSAttributes> . If you don't use this parameter, Amazon SNS returns all SMS attributes.
+-- * 'gsmsaAttributes' - A list of the individual attribute names, such as @MonthlySpendLimit@ , for which you want values. For all attribute names, see <https://docs.aws.amazon.com/sns/latest/api/API_SetSMSAttributes.html SetSMSAttributes> . If you don't use this parameter, Amazon SNS returns all SMS attributes.
 getSMSAttributes
     :: GetSMSAttributes
 getSMSAttributes
   = GetSMSAttributes'{_gsmsaAttributes = Nothing}
 
--- | A list of the individual attribute names, such as @MonthlySpendLimit@ , for which you want values. For all attribute names, see <http://docs.aws.amazon.com/sns/latest/api/API_SetSMSAttributes.html SetSMSAttributes> . If you don't use this parameter, Amazon SNS returns all SMS attributes.
+-- | A list of the individual attribute names, such as @MonthlySpendLimit@ , for which you want values. For all attribute names, see <https://docs.aws.amazon.com/sns/latest/api/API_SetSMSAttributes.html SetSMSAttributes> . If you don't use this parameter, Amazon SNS returns all SMS attributes.
 gsmsaAttributes :: Lens' GetSMSAttributes [Text]
 gsmsaAttributes = lens _gsmsaAttributes (\ s a -> s{_gsmsaAttributes = a}) . _Default . _Coerce
 

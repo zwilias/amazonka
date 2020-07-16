@@ -34,6 +34,8 @@ data S3DestinationUpdate = S3DestinationUpdate'{_sPrefix
                                                 _sCloudWatchLoggingOptions ::
                                                 !(Maybe
                                                     CloudWatchLoggingOptions),
+                                                _sErrorOutputPrefix ::
+                                                !(Maybe Text),
                                                 _sEncryptionConfiguration ::
                                                 !(Maybe
                                                     EncryptionConfiguration),
@@ -49,9 +51,11 @@ data S3DestinationUpdate = S3DestinationUpdate'{_sPrefix
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'sPrefix' - The "YYYY/MM/DD/HH" time format prefix is automatically used for delivered Amazon S3 files. You can specify an extra prefix to be added in front of the time format prefix. If the prefix ends with a slash, it appears as a folder in the S3 bucket. For more information, see <http://docs.aws.amazon.com/firehose/latest/dev/basic-deliver.html#s3-object-name Amazon S3 Object Name Format> in the /Amazon Kinesis Data Firehose Developer Guide/ .
+-- * 'sPrefix' - The "YYYY/MM/DD/HH" time format prefix is automatically used for delivered Amazon S3 files. You can also specify a custom prefix, as described in <https://docs.aws.amazon.com/firehose/latest/dev/s3-prefixes.html Custom Prefixes for Amazon S3 Objects> .
 --
 -- * 'sCloudWatchLoggingOptions' - The CloudWatch logging options for your delivery stream.
+--
+-- * 'sErrorOutputPrefix' - A prefix that Kinesis Data Firehose evaluates and adds to failed records before writing them to S3. This prefix appears immediately following the bucket name. For information about how to specify this prefix, see <https://docs.aws.amazon.com/firehose/latest/dev/s3-prefixes.html Custom Prefixes for Amazon S3 Objects> .
 --
 -- * 'sEncryptionConfiguration' - The encryption configuration. If no value is specified, the default is no encryption.
 --
@@ -67,18 +71,23 @@ s3DestinationUpdate
 s3DestinationUpdate
   = S3DestinationUpdate'{_sPrefix = Nothing,
                          _sCloudWatchLoggingOptions = Nothing,
+                         _sErrorOutputPrefix = Nothing,
                          _sEncryptionConfiguration = Nothing,
                          _sCompressionFormat = Nothing,
                          _sBufferingHints = Nothing, _sBucketARN = Nothing,
                          _sRoleARN = Nothing}
 
--- | The "YYYY/MM/DD/HH" time format prefix is automatically used for delivered Amazon S3 files. You can specify an extra prefix to be added in front of the time format prefix. If the prefix ends with a slash, it appears as a folder in the S3 bucket. For more information, see <http://docs.aws.amazon.com/firehose/latest/dev/basic-deliver.html#s3-object-name Amazon S3 Object Name Format> in the /Amazon Kinesis Data Firehose Developer Guide/ .
+-- | The "YYYY/MM/DD/HH" time format prefix is automatically used for delivered Amazon S3 files. You can also specify a custom prefix, as described in <https://docs.aws.amazon.com/firehose/latest/dev/s3-prefixes.html Custom Prefixes for Amazon S3 Objects> .
 sPrefix :: Lens' S3DestinationUpdate (Maybe Text)
 sPrefix = lens _sPrefix (\ s a -> s{_sPrefix = a})
 
 -- | The CloudWatch logging options for your delivery stream.
 sCloudWatchLoggingOptions :: Lens' S3DestinationUpdate (Maybe CloudWatchLoggingOptions)
 sCloudWatchLoggingOptions = lens _sCloudWatchLoggingOptions (\ s a -> s{_sCloudWatchLoggingOptions = a})
+
+-- | A prefix that Kinesis Data Firehose evaluates and adds to failed records before writing them to S3. This prefix appears immediately following the bucket name. For information about how to specify this prefix, see <https://docs.aws.amazon.com/firehose/latest/dev/s3-prefixes.html Custom Prefixes for Amazon S3 Objects> .
+sErrorOutputPrefix :: Lens' S3DestinationUpdate (Maybe Text)
+sErrorOutputPrefix = lens _sErrorOutputPrefix (\ s a -> s{_sErrorOutputPrefix = a})
 
 -- | The encryption configuration. If no value is specified, the default is no encryption.
 sEncryptionConfiguration :: Lens' S3DestinationUpdate (Maybe EncryptionConfiguration)
@@ -111,6 +120,7 @@ instance ToJSON S3DestinationUpdate where
                  [("Prefix" .=) <$> _sPrefix,
                   ("CloudWatchLoggingOptions" .=) <$>
                     _sCloudWatchLoggingOptions,
+                  ("ErrorOutputPrefix" .=) <$> _sErrorOutputPrefix,
                   ("EncryptionConfiguration" .=) <$>
                     _sEncryptionConfiguration,
                   ("CompressionFormat" .=) <$> _sCompressionFormat,

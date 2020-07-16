@@ -55,7 +55,7 @@ newtype DescribeApplicationState = DescribeApplicationState'{_dasApplicationId
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dasApplicationId' - The configurationId in ADS that uniquely identifies the grouped application.
+-- * 'dasApplicationId' - The configurationId in Application Discovery Service that uniquely identifies the grouped application.
 describeApplicationState
     :: Text -- ^ 'dasApplicationId'
     -> DescribeApplicationState
@@ -63,7 +63,7 @@ describeApplicationState pApplicationId_
   = DescribeApplicationState'{_dasApplicationId =
                                 pApplicationId_}
 
--- | The configurationId in ADS that uniquely identifies the grouped application.
+-- | The configurationId in Application Discovery Service that uniquely identifies the grouped application.
 dasApplicationId :: Lens' DescribeApplicationState Text
 dasApplicationId = lens _dasApplicationId (\ s a -> s{_dasApplicationId = a})
 

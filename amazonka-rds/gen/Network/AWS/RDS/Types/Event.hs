@@ -21,7 +21,7 @@ import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.RDS.Types.SourceType
 
--- | This data type is used as a response element in the 'DescribeEvents' action. 
+-- | This data type is used as a response element in the @DescribeEvents@ action. 
 --
 --
 --

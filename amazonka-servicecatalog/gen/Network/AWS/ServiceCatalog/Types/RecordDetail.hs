@@ -62,7 +62,7 @@ data RecordDetail = RecordDetail'{_rdStatus ::
 --
 -- * 'rdRecordId' - The identifier of the record.
 --
--- * 'rdProvisionedProductType' - The type of provisioned product. The supported value is @CFN_STACK@ .
+-- * 'rdProvisionedProductType' - The type of provisioned product. The supported values are @CFN_STACK@ and @CFN_STACKSET@ .
 --
 -- * 'rdUpdatedTime' - The time when the record was last updated.
 --
@@ -115,7 +115,7 @@ rdRecordType = lens _rdRecordType (\ s a -> s{_rdRecordType = a})
 rdRecordId :: Lens' RecordDetail (Maybe Text)
 rdRecordId = lens _rdRecordId (\ s a -> s{_rdRecordId = a})
 
--- | The type of provisioned product. The supported value is @CFN_STACK@ .
+-- | The type of provisioned product. The supported values are @CFN_STACK@ and @CFN_STACKSET@ .
 rdProvisionedProductType :: Lens' RecordDetail (Maybe Text)
 rdProvisionedProductType = lens _rdProvisionedProductType (\ s a -> s{_rdProvisionedProductType = a})
 

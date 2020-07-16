@@ -21,7 +21,7 @@
 -- Updates the name and/or the path of the specified IAM group.
 --
 --
--- /Important:/ You should understand the implications of changing a group's path or name. For more information, see <http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_WorkingWithGroupsAndUsers.html Renaming Users and Groups> in the /IAM User Guide/ .
+-- /Important:/ You should understand the implications of changing a group's path or name. For more information, see <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_WorkingWithGroupsAndUsers.html Renaming Users and Groups> in the /IAM User Guide/ .
 --
 module Network.AWS.IAM.UpdateGroup
     (
@@ -56,11 +56,11 @@ data UpdateGroup = UpdateGroup'{_ugNewGroupName ::
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'ugNewGroupName' - New name for the IAM group. Only include this if changing the group's name. This parameter allows (per its <http://wikipedia.org/wiki/regex regex pattern> ) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
+-- * 'ugNewGroupName' - New name for the IAM group. Only include this if changing the group's name. IAM user, group, role, and policy names must be unique within the account. Names are not distinguished by case. For example, you cannot create resources named both "MyResource" and "myresource".
 --
--- * 'ugNewPath' - New path for the IAM group. Only include this if changing the group's path. This parameter allows (per its <http://wikipedia.org/wiki/regex regex pattern> ) a string of characters consisting of either a forward slash (/) by itself or a string that must begin and end with forward slashes. In addition, it can contain any ASCII character from the ! (\u0021) through the DEL character (\u007F), including most punctuation characters, digits, and upper and lowercased letters.
+-- * 'ugNewPath' - New path for the IAM group. Only include this if changing the group's path. This parameter allows (through its <http://wikipedia.org/wiki/regex regex pattern> ) a string of characters consisting of either a forward slash (/) by itself or a string that must begin and end with forward slashes. In addition, it can contain any ASCII character from the ! (@\u0021@ ) through the DEL character (@\u007F@ ), including most punctuation characters, digits, and upper and lowercased letters.
 --
--- * 'ugGroupName' - Name of the IAM group to update. If you're changing the name of the group, this is the original name. This parameter allows (per its <http://wikipedia.org/wiki/regex regex pattern> ) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
+-- * 'ugGroupName' - Name of the IAM group to update. If you're changing the name of the group, this is the original name. This parameter allows (through its <http://wikipedia.org/wiki/regex regex pattern> ) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
 updateGroup
     :: Text -- ^ 'ugGroupName'
     -> UpdateGroup
@@ -68,15 +68,15 @@ updateGroup pGroupName_
   = UpdateGroup'{_ugNewGroupName = Nothing,
                  _ugNewPath = Nothing, _ugGroupName = pGroupName_}
 
--- | New name for the IAM group. Only include this if changing the group's name. This parameter allows (per its <http://wikipedia.org/wiki/regex regex pattern> ) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
+-- | New name for the IAM group. Only include this if changing the group's name. IAM user, group, role, and policy names must be unique within the account. Names are not distinguished by case. For example, you cannot create resources named both "MyResource" and "myresource".
 ugNewGroupName :: Lens' UpdateGroup (Maybe Text)
 ugNewGroupName = lens _ugNewGroupName (\ s a -> s{_ugNewGroupName = a})
 
--- | New path for the IAM group. Only include this if changing the group's path. This parameter allows (per its <http://wikipedia.org/wiki/regex regex pattern> ) a string of characters consisting of either a forward slash (/) by itself or a string that must begin and end with forward slashes. In addition, it can contain any ASCII character from the ! (\u0021) through the DEL character (\u007F), including most punctuation characters, digits, and upper and lowercased letters.
+-- | New path for the IAM group. Only include this if changing the group's path. This parameter allows (through its <http://wikipedia.org/wiki/regex regex pattern> ) a string of characters consisting of either a forward slash (/) by itself or a string that must begin and end with forward slashes. In addition, it can contain any ASCII character from the ! (@\u0021@ ) through the DEL character (@\u007F@ ), including most punctuation characters, digits, and upper and lowercased letters.
 ugNewPath :: Lens' UpdateGroup (Maybe Text)
 ugNewPath = lens _ugNewPath (\ s a -> s{_ugNewPath = a})
 
--- | Name of the IAM group to update. If you're changing the name of the group, this is the original name. This parameter allows (per its <http://wikipedia.org/wiki/regex regex pattern> ) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
+-- | Name of the IAM group to update. If you're changing the name of the group, this is the original name. This parameter allows (through its <http://wikipedia.org/wiki/regex regex pattern> ) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
 ugGroupName :: Lens' UpdateGroup Text
 ugGroupName = lens _ugGroupName (\ s a -> s{_ugGroupName = a})
 

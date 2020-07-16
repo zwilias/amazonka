@@ -28,9 +28,11 @@ import Network.AWS.Prelude
 data TapeArchive = TapeArchive'{_taTapeBarcode ::
                                 !(Maybe Text),
                                 _taTapeStatus :: !(Maybe Text),
+                                _taKMSKey :: !(Maybe Text),
                                 _taTapeARN :: !(Maybe Text),
                                 _taTapeSizeInBytes :: !(Maybe Integer),
                                 _taCompletionTime :: !(Maybe POSIX),
+                                _taPoolId :: !(Maybe Text),
                                 _taTapeUsedInBytes :: !(Maybe Integer),
                                 _taTapeCreatedDate :: !(Maybe POSIX),
                                 _taRetrievedTo :: !(Maybe Text)}
@@ -44,24 +46,28 @@ data TapeArchive = TapeArchive'{_taTapeBarcode ::
 --
 -- * 'taTapeStatus' - The current state of the archived virtual tape.
 --
+-- * 'taKMSKey' - Undocumented member.
+--
 -- * 'taTapeARN' - The Amazon Resource Name (ARN) of an archived virtual tape.
 --
 -- * 'taTapeSizeInBytes' - The size, in bytes, of the archived virtual tape.
 --
--- * 'taCompletionTime' - The time that the archiving of the virtual tape was completed. The string format of the completion time is in the ISO8601 extended YYYY-MM-DD'T'HH:MM:SS'Z' format.
+-- * 'taCompletionTime' - The time that the archiving of the virtual tape was completed. The default time stamp format is in the ISO8601 extended YYYY-MM-DD'T'HH:MM:SS'Z' format.
+--
+-- * 'taPoolId' - The ID of the pool that was used to archive the tape. The tapes in this pool are archived in the S3 storage class that is associated with the pool. Valid values: "GLACIER", "DEEP_ARCHIVE"
 --
 -- * 'taTapeUsedInBytes' - The size, in bytes, of data stored on the virtual tape.
 --
--- * 'taTapeCreatedDate' - Undocumented member.
+-- * 'taTapeCreatedDate' - The date the virtual tape was created.
 --
 -- * 'taRetrievedTo' - The Amazon Resource Name (ARN) of the tape gateway that the virtual tape is being retrieved to. The virtual tape is retrieved from the virtual tape shelf (VTS).
 tapeArchive
     :: TapeArchive
 tapeArchive
   = TapeArchive'{_taTapeBarcode = Nothing,
-                 _taTapeStatus = Nothing, _taTapeARN = Nothing,
-                 _taTapeSizeInBytes = Nothing,
-                 _taCompletionTime = Nothing,
+                 _taTapeStatus = Nothing, _taKMSKey = Nothing,
+                 _taTapeARN = Nothing, _taTapeSizeInBytes = Nothing,
+                 _taCompletionTime = Nothing, _taPoolId = Nothing,
                  _taTapeUsedInBytes = Nothing,
                  _taTapeCreatedDate = Nothing,
                  _taRetrievedTo = Nothing}
@@ -74,6 +80,10 @@ taTapeBarcode = lens _taTapeBarcode (\ s a -> s{_taTapeBarcode = a})
 taTapeStatus :: Lens' TapeArchive (Maybe Text)
 taTapeStatus = lens _taTapeStatus (\ s a -> s{_taTapeStatus = a})
 
+-- | Undocumented member.
+taKMSKey :: Lens' TapeArchive (Maybe Text)
+taKMSKey = lens _taKMSKey (\ s a -> s{_taKMSKey = a})
+
 -- | The Amazon Resource Name (ARN) of an archived virtual tape.
 taTapeARN :: Lens' TapeArchive (Maybe Text)
 taTapeARN = lens _taTapeARN (\ s a -> s{_taTapeARN = a})
@@ -82,15 +92,19 @@ taTapeARN = lens _taTapeARN (\ s a -> s{_taTapeARN = a})
 taTapeSizeInBytes :: Lens' TapeArchive (Maybe Integer)
 taTapeSizeInBytes = lens _taTapeSizeInBytes (\ s a -> s{_taTapeSizeInBytes = a})
 
--- | The time that the archiving of the virtual tape was completed. The string format of the completion time is in the ISO8601 extended YYYY-MM-DD'T'HH:MM:SS'Z' format.
+-- | The time that the archiving of the virtual tape was completed. The default time stamp format is in the ISO8601 extended YYYY-MM-DD'T'HH:MM:SS'Z' format.
 taCompletionTime :: Lens' TapeArchive (Maybe UTCTime)
 taCompletionTime = lens _taCompletionTime (\ s a -> s{_taCompletionTime = a}) . mapping _Time
+
+-- | The ID of the pool that was used to archive the tape. The tapes in this pool are archived in the S3 storage class that is associated with the pool. Valid values: "GLACIER", "DEEP_ARCHIVE"
+taPoolId :: Lens' TapeArchive (Maybe Text)
+taPoolId = lens _taPoolId (\ s a -> s{_taPoolId = a})
 
 -- | The size, in bytes, of data stored on the virtual tape.
 taTapeUsedInBytes :: Lens' TapeArchive (Maybe Integer)
 taTapeUsedInBytes = lens _taTapeUsedInBytes (\ s a -> s{_taTapeUsedInBytes = a})
 
--- | Undocumented member.
+-- | The date the virtual tape was created.
 taTapeCreatedDate :: Lens' TapeArchive (Maybe UTCTime)
 taTapeCreatedDate = lens _taTapeCreatedDate (\ s a -> s{_taTapeCreatedDate = a}) . mapping _Time
 
@@ -104,9 +118,11 @@ instance FromJSON TapeArchive where
               (\ x ->
                  TapeArchive' <$>
                    (x .:? "TapeBarcode") <*> (x .:? "TapeStatus") <*>
-                     (x .:? "TapeARN")
+                     (x .:? "KMSKey")
+                     <*> (x .:? "TapeARN")
                      <*> (x .:? "TapeSizeInBytes")
                      <*> (x .:? "CompletionTime")
+                     <*> (x .:? "PoolId")
                      <*> (x .:? "TapeUsedInBytes")
                      <*> (x .:? "TapeCreatedDate")
                      <*> (x .:? "RetrievedTo"))

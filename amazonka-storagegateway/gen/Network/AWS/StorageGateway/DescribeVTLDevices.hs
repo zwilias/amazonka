@@ -173,7 +173,7 @@ data DescribeVTLDevicesResponse = DescribeVTLDevicesResponse'{_dvtldrsVTLDevices
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dvtldrsVTLDevices' - An array of VTL device objects composed of the Amazon Resource Name(ARN) of the VTL devices.
+-- * 'dvtldrsVTLDevices' - An array of VTL device objects composed of the Amazon Resource Name (ARN) of the VTL devices.
 --
 -- * 'dvtldrsGatewayARN' - Undocumented member.
 --
@@ -190,7 +190,7 @@ describeVTLDevicesResponse pResponseStatus_
                                 _dvtldrsMarker = Nothing,
                                 _dvtldrsResponseStatus = pResponseStatus_}
 
--- | An array of VTL device objects composed of the Amazon Resource Name(ARN) of the VTL devices.
+-- | An array of VTL device objects composed of the Amazon Resource Name (ARN) of the VTL devices.
 dvtldrsVTLDevices :: Lens' DescribeVTLDevicesResponse [VTLDevice]
 dvtldrsVTLDevices = lens _dvtldrsVTLDevices (\ s a -> s{_dvtldrsVTLDevices = a}) . _Default . _Coerce
 

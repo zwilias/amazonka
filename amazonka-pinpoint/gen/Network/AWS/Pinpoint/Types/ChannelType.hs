@@ -19,16 +19,17 @@
 module Network.AWS.Pinpoint.Types.ChannelType (
   ChannelType (
     ..
-    , ADM
-    , APNS
-    , APNSSandbox
-    , APNSVoip
-    , APNSVoipSandbox
-    , Baidu
-    , Custom
-    , Email
-    , GCM
-    , Sms
+    , CTADM
+    , CTAPNS
+    , CTAPNSSandbox
+    , CTAPNSVoip
+    , CTAPNSVoipSandbox
+    , CTBaidu
+    , CTCustom
+    , CTEmail
+    , CTGCM
+    , CTSms
+    , CTVoice
     )
   ) where
 
@@ -39,47 +40,51 @@ data ChannelType = ChannelType' (CI Text)
                      deriving (Eq, Ord, Read, Show, Data, Typeable,
                                Generic)
 
-pattern ADM :: ChannelType
-pattern ADM = ChannelType' "ADM"
+pattern CTADM :: ChannelType
+pattern CTADM = ChannelType' "ADM"
 
-pattern APNS :: ChannelType
-pattern APNS = ChannelType' "APNS"
+pattern CTAPNS :: ChannelType
+pattern CTAPNS = ChannelType' "APNS"
 
-pattern APNSSandbox :: ChannelType
-pattern APNSSandbox = ChannelType' "APNS_SANDBOX"
+pattern CTAPNSSandbox :: ChannelType
+pattern CTAPNSSandbox = ChannelType' "APNS_SANDBOX"
 
-pattern APNSVoip :: ChannelType
-pattern APNSVoip = ChannelType' "APNS_VOIP"
+pattern CTAPNSVoip :: ChannelType
+pattern CTAPNSVoip = ChannelType' "APNS_VOIP"
 
-pattern APNSVoipSandbox :: ChannelType
-pattern APNSVoipSandbox = ChannelType' "APNS_VOIP_SANDBOX"
+pattern CTAPNSVoipSandbox :: ChannelType
+pattern CTAPNSVoipSandbox = ChannelType' "APNS_VOIP_SANDBOX"
 
-pattern Baidu :: ChannelType
-pattern Baidu = ChannelType' "BAIDU"
+pattern CTBaidu :: ChannelType
+pattern CTBaidu = ChannelType' "BAIDU"
 
-pattern Custom :: ChannelType
-pattern Custom = ChannelType' "CUSTOM"
+pattern CTCustom :: ChannelType
+pattern CTCustom = ChannelType' "CUSTOM"
 
-pattern Email :: ChannelType
-pattern Email = ChannelType' "EMAIL"
+pattern CTEmail :: ChannelType
+pattern CTEmail = ChannelType' "EMAIL"
 
-pattern GCM :: ChannelType
-pattern GCM = ChannelType' "GCM"
+pattern CTGCM :: ChannelType
+pattern CTGCM = ChannelType' "GCM"
 
-pattern Sms :: ChannelType
-pattern Sms = ChannelType' "SMS"
+pattern CTSms :: ChannelType
+pattern CTSms = ChannelType' "SMS"
+
+pattern CTVoice :: ChannelType
+pattern CTVoice = ChannelType' "VOICE"
 
 {-# COMPLETE
-  ADM,
-  APNS,
-  APNSSandbox,
-  APNSVoip,
-  APNSVoipSandbox,
-  Baidu,
-  Custom,
-  Email,
-  GCM,
-  Sms,
+  CTADM,
+  CTAPNS,
+  CTAPNSSandbox,
+  CTAPNSVoip,
+  CTAPNSVoipSandbox,
+  CTBaidu,
+  CTCustom,
+  CTEmail,
+  CTGCM,
+  CTSms,
+  CTVoice,
   ChannelType' #-}
 
 instance FromText ChannelType where
@@ -94,36 +99,38 @@ instance ToText ChannelType where
 --   fromEnum is a partial function, and will error on values unknown at generation time.
 instance Enum ChannelType where
     toEnum i = case i of
-        0 -> ADM
-        1 -> APNS
-        2 -> APNSSandbox
-        3 -> APNSVoip
-        4 -> APNSVoipSandbox
-        5 -> Baidu
-        6 -> Custom
-        7 -> Email
-        8 -> GCM
-        9 -> Sms
+        0 -> CTADM
+        1 -> CTAPNS
+        2 -> CTAPNSSandbox
+        3 -> CTAPNSVoip
+        4 -> CTAPNSVoipSandbox
+        5 -> CTBaidu
+        6 -> CTCustom
+        7 -> CTEmail
+        8 -> CTGCM
+        9 -> CTSms
+        10 -> CTVoice
         _ -> (error . showText) $ "Unknown index for ChannelType: " <> toText i
     fromEnum x = case x of
-        ADM -> 0
-        APNS -> 1
-        APNSSandbox -> 2
-        APNSVoip -> 3
-        APNSVoipSandbox -> 4
-        Baidu -> 5
-        Custom -> 6
-        Email -> 7
-        GCM -> 8
-        Sms -> 9
+        CTADM -> 0
+        CTAPNS -> 1
+        CTAPNSSandbox -> 2
+        CTAPNSVoip -> 3
+        CTAPNSVoipSandbox -> 4
+        CTBaidu -> 5
+        CTCustom -> 6
+        CTEmail -> 7
+        CTGCM -> 8
+        CTSms -> 9
+        CTVoice -> 10
         ChannelType' name -> (error . showText) $ "Unknown ChannelType: " <> original name
 
 -- | Represents the bounds of /known/ $ChannelType.
 --   AWS may have added more since the source was generated.
 --   This instance exists only for backward compatibility.
 instance Bounded ChannelType where
-    minBound = ADM
-    maxBound = Sms
+    minBound = CTADM
+    maxBound = CTVoice
 
 instance Hashable     ChannelType
 instance NFData       ChannelType

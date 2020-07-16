@@ -71,17 +71,17 @@ data GetInstanceMetricData = GetInstanceMetricData'{_gimdInstanceName
 --
 -- * 'gimdInstanceName' - The name of the instance for which you want to get metrics data.
 --
--- * 'gimdMetricName' - The metric name to get data about. 
+-- * 'gimdMetricName' - The metric for which you want to return information. Valid instance metric names are listed below, along with the most useful @statistics@ to include in your request, and the published @unit@ value.     * __@CPUUtilization@ __ — The percentage of allocated compute units that are currently in use on the instance. This metric identifies the processing power to run the applications on the instance. Tools in your operating system can show a lower percentage than Lightsail when the instance is not allocated a full processor core. @Statistics@ : The most useful statistics are @Maximum@ and @Average@ . @Unit@ : The published unit is @Percent@ .     * __@NetworkIn@ __ — The number of bytes received on all network interfaces by the instance. This metric identifies the volume of incoming network traffic to the instance. The number reported is the number of bytes received during the period. Because this metric is reported in 5-minute intervals, divide the reported number by 300 to find Bytes/second. @Statistics@ : The most useful statistic is @Sum@ . @Unit@ : The published unit is @Bytes@ .     * __@NetworkOut@ __ — The number of bytes sent out on all network interfaces by the instance. This metric identifies the volume of outgoing network traffic from the instance. The number reported is the number of bytes sent during the period. Because this metric is reported in 5-minute intervals, divide the reported number by 300 to find Bytes/second. @Statistics@ : The most useful statistic is @Sum@ . @Unit@ : The published unit is @Bytes@ .     * __@StatusCheckFailed@ __ — Reports whether the instance passed or failed both the instance status check and the system status check. This metric can be either 0 (passed) or 1 (failed). This metric data is available in 1-minute (60 seconds) granularity. @Statistics@ : The most useful statistic is @Sum@ . @Unit@ : The published unit is @Count@ .     * __@StatusCheckFailed_Instance@ __ — Reports whether the instance passed or failed the instance status check. This metric can be either 0 (passed) or 1 (failed). This metric data is available in 1-minute (60 seconds) granularity. @Statistics@ : The most useful statistic is @Sum@ . @Unit@ : The published unit is @Count@ .     * __@StatusCheckFailed_System@ __ — Reports whether the instance passed or failed the system status check. This metric can be either 0 (passed) or 1 (failed). This metric data is available in 1-minute (60 seconds) granularity. @Statistics@ : The most useful statistic is @Sum@ . @Unit@ : The published unit is @Count@ .
 --
--- * 'gimdPeriod' - The time period for which you are requesting data.
+-- * 'gimdPeriod' - The granularity, in seconds, of the returned data points. The @StatusCheckFailed@ , @StatusCheckFailed_Instance@ , and @StatusCheckFailed_System@ instance metric data is available in 1-minute (60 seconds) granularity. All other instance metric data is available in 5-minute (300 seconds) granularity.
 --
 -- * 'gimdStartTime' - The start time of the time period.
 --
 -- * 'gimdEndTime' - The end time of the time period.
 --
--- * 'gimdUnit' - The unit. The list of valid values is below.
+-- * 'gimdUnit' - The unit for the metric data request. Valid units depend on the metric data being required. For the valid units with each available metric, see the @metricName@ parameter.
 --
--- * 'gimdStatistics' - The instance statistics. 
+-- * 'gimdStatistics' - The statistic for the metric. The following statistics are available:     * @Minimum@ — The lowest value observed during the specified period. Use this value to determine low volumes of activity for your application.     * @Maximum@ — The highest value observed during the specified period. Use this value to determine high volumes of activity for your application.     * @Sum@ — All values submitted for the matching metric added together. You can use this statistic to determine the total volume of a metric.     * @Average@ — The value of Sum / SampleCount during the specified period. By comparing this statistic with the Minimum and Maximum values, you can determine the full scope of a metric and how close the average use is to the Minimum and Maximum values. This comparison helps you to know when to increase or decrease your resources.     * @SampleCount@ — The count, or number, of data points used for the statistical calculation.
 getInstanceMetricData
     :: Text -- ^ 'gimdInstanceName'
     -> InstanceMetricName -- ^ 'gimdMetricName'
@@ -104,11 +104,11 @@ getInstanceMetricData pInstanceName_ pMetricName_
 gimdInstanceName :: Lens' GetInstanceMetricData Text
 gimdInstanceName = lens _gimdInstanceName (\ s a -> s{_gimdInstanceName = a})
 
--- | The metric name to get data about. 
+-- | The metric for which you want to return information. Valid instance metric names are listed below, along with the most useful @statistics@ to include in your request, and the published @unit@ value.     * __@CPUUtilization@ __ — The percentage of allocated compute units that are currently in use on the instance. This metric identifies the processing power to run the applications on the instance. Tools in your operating system can show a lower percentage than Lightsail when the instance is not allocated a full processor core. @Statistics@ : The most useful statistics are @Maximum@ and @Average@ . @Unit@ : The published unit is @Percent@ .     * __@NetworkIn@ __ — The number of bytes received on all network interfaces by the instance. This metric identifies the volume of incoming network traffic to the instance. The number reported is the number of bytes received during the period. Because this metric is reported in 5-minute intervals, divide the reported number by 300 to find Bytes/second. @Statistics@ : The most useful statistic is @Sum@ . @Unit@ : The published unit is @Bytes@ .     * __@NetworkOut@ __ — The number of bytes sent out on all network interfaces by the instance. This metric identifies the volume of outgoing network traffic from the instance. The number reported is the number of bytes sent during the period. Because this metric is reported in 5-minute intervals, divide the reported number by 300 to find Bytes/second. @Statistics@ : The most useful statistic is @Sum@ . @Unit@ : The published unit is @Bytes@ .     * __@StatusCheckFailed@ __ — Reports whether the instance passed or failed both the instance status check and the system status check. This metric can be either 0 (passed) or 1 (failed). This metric data is available in 1-minute (60 seconds) granularity. @Statistics@ : The most useful statistic is @Sum@ . @Unit@ : The published unit is @Count@ .     * __@StatusCheckFailed_Instance@ __ — Reports whether the instance passed or failed the instance status check. This metric can be either 0 (passed) or 1 (failed). This metric data is available in 1-minute (60 seconds) granularity. @Statistics@ : The most useful statistic is @Sum@ . @Unit@ : The published unit is @Count@ .     * __@StatusCheckFailed_System@ __ — Reports whether the instance passed or failed the system status check. This metric can be either 0 (passed) or 1 (failed). This metric data is available in 1-minute (60 seconds) granularity. @Statistics@ : The most useful statistic is @Sum@ . @Unit@ : The published unit is @Count@ .
 gimdMetricName :: Lens' GetInstanceMetricData InstanceMetricName
 gimdMetricName = lens _gimdMetricName (\ s a -> s{_gimdMetricName = a})
 
--- | The time period for which you are requesting data.
+-- | The granularity, in seconds, of the returned data points. The @StatusCheckFailed@ , @StatusCheckFailed_Instance@ , and @StatusCheckFailed_System@ instance metric data is available in 1-minute (60 seconds) granularity. All other instance metric data is available in 5-minute (300 seconds) granularity.
 gimdPeriod :: Lens' GetInstanceMetricData Natural
 gimdPeriod = lens _gimdPeriod (\ s a -> s{_gimdPeriod = a}) . _Nat
 
@@ -120,11 +120,11 @@ gimdStartTime = lens _gimdStartTime (\ s a -> s{_gimdStartTime = a}) . _Time
 gimdEndTime :: Lens' GetInstanceMetricData UTCTime
 gimdEndTime = lens _gimdEndTime (\ s a -> s{_gimdEndTime = a}) . _Time
 
--- | The unit. The list of valid values is below.
+-- | The unit for the metric data request. Valid units depend on the metric data being required. For the valid units with each available metric, see the @metricName@ parameter.
 gimdUnit :: Lens' GetInstanceMetricData MetricUnit
 gimdUnit = lens _gimdUnit (\ s a -> s{_gimdUnit = a})
 
--- | The instance statistics. 
+-- | The statistic for the metric. The following statistics are available:     * @Minimum@ — The lowest value observed during the specified period. Use this value to determine low volumes of activity for your application.     * @Maximum@ — The highest value observed during the specified period. Use this value to determine high volumes of activity for your application.     * @Sum@ — All values submitted for the matching metric added together. You can use this statistic to determine the total volume of a metric.     * @Average@ — The value of Sum / SampleCount during the specified period. By comparing this statistic with the Minimum and Maximum values, you can determine the full scope of a metric and how close the average use is to the Minimum and Maximum values. This comparison helps you to know when to increase or decrease your resources.     * @SampleCount@ — The count, or number, of data points used for the statistical calculation.
 gimdStatistics :: Lens' GetInstanceMetricData [MetricStatistic]
 gimdStatistics = lens _gimdStatistics (\ s a -> s{_gimdStatistics = a}) . _Coerce
 

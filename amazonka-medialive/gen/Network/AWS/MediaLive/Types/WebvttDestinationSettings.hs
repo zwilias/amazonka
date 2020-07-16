@@ -20,7 +20,7 @@ module Network.AWS.MediaLive.Types.WebvttDestinationSettings where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | Placeholder documentation for WebvttDestinationSettings
+-- | Webvtt Destination Settings
 --
 -- /See:/ 'webvttDestinationSettings' smart constructor.
 data WebvttDestinationSettings = WebvttDestinationSettings'

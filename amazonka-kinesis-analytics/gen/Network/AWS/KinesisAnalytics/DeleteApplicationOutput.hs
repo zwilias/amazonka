@@ -66,9 +66,9 @@ data DeleteApplicationOutput = DeleteApplicationOutput'{_daoApplicationName
 --
 -- * 'daoApplicationName' - Amazon Kinesis Analytics application name.
 --
--- * 'daoCurrentApplicationVersionId' - Amazon Kinesis Analytics application version. You can use the 'DescribeApplication' operation to get the current application version. If the version specified is not the current version, the @ConcurrentModificationException@ is returned. 
+-- * 'daoCurrentApplicationVersionId' - Amazon Kinesis Analytics application version. You can use the <https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_DescribeApplication.html DescribeApplication> operation to get the current application version. If the version specified is not the current version, the @ConcurrentModificationException@ is returned. 
 --
--- * 'daoOutputId' - The ID of the configuration to delete. Each output configuration that is added to the application, either when the application is created or later using the 'AddApplicationOutput' operation, has a unique ID. You need to provide the ID to uniquely identify the output configuration that you want to delete from the application configuration. You can use the 'DescribeApplication' operation to get the specific @OutputId@ . 
+-- * 'daoOutputId' - The ID of the configuration to delete. Each output configuration that is added to the application, either when the application is created or later using the <https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_AddApplicationOutput.html AddApplicationOutput> operation, has a unique ID. You need to provide the ID to uniquely identify the output configuration that you want to delete from the application configuration. You can use the <https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_DescribeApplication.html DescribeApplication> operation to get the specific @OutputId@ . 
 deleteApplicationOutput
     :: Text -- ^ 'daoApplicationName'
     -> Natural -- ^ 'daoCurrentApplicationVersionId'
@@ -86,11 +86,11 @@ deleteApplicationOutput pApplicationName_
 daoApplicationName :: Lens' DeleteApplicationOutput Text
 daoApplicationName = lens _daoApplicationName (\ s a -> s{_daoApplicationName = a})
 
--- | Amazon Kinesis Analytics application version. You can use the 'DescribeApplication' operation to get the current application version. If the version specified is not the current version, the @ConcurrentModificationException@ is returned. 
+-- | Amazon Kinesis Analytics application version. You can use the <https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_DescribeApplication.html DescribeApplication> operation to get the current application version. If the version specified is not the current version, the @ConcurrentModificationException@ is returned. 
 daoCurrentApplicationVersionId :: Lens' DeleteApplicationOutput Natural
 daoCurrentApplicationVersionId = lens _daoCurrentApplicationVersionId (\ s a -> s{_daoCurrentApplicationVersionId = a}) . _Nat
 
--- | The ID of the configuration to delete. Each output configuration that is added to the application, either when the application is created or later using the 'AddApplicationOutput' operation, has a unique ID. You need to provide the ID to uniquely identify the output configuration that you want to delete from the application configuration. You can use the 'DescribeApplication' operation to get the specific @OutputId@ . 
+-- | The ID of the configuration to delete. Each output configuration that is added to the application, either when the application is created or later using the <https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_AddApplicationOutput.html AddApplicationOutput> operation, has a unique ID. You need to provide the ID to uniquely identify the output configuration that you want to delete from the application configuration. You can use the <https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_DescribeApplication.html DescribeApplication> operation to get the specific @OutputId@ . 
 daoOutputId :: Lens' DeleteApplicationOutput Text
 daoOutputId = lens _daoOutputId (\ s a -> s{_daoOutputId = a})
 

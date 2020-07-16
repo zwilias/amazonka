@@ -28,7 +28,7 @@ module Network.AWS.MediaLive.Types.H264LookAheadRateControl (
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | Placeholder documentation for H264LookAheadRateControl
+-- | H264 Look Ahead Rate Control
 data H264LookAheadRateControl = H264LookAheadRateControl' (CI
                                                              Text)
                                   deriving (Eq, Ord, Read, Show, Data, Typeable,

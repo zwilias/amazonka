@@ -22,6 +22,7 @@ module Network.AWS.Organizations.Types.CreateAccountFailureReason (
     , AccountLimitExceeded
     , ConcurrentAccountModification
     , EmailAlreadyExists
+    , GovcloudAccountAlreadyExists
     , InternalFailure
     , InvalidAddress
     , InvalidEmail
@@ -45,6 +46,9 @@ pattern ConcurrentAccountModification = CreateAccountFailureReason' "CONCURRENT_
 pattern EmailAlreadyExists :: CreateAccountFailureReason
 pattern EmailAlreadyExists = CreateAccountFailureReason' "EMAIL_ALREADY_EXISTS"
 
+pattern GovcloudAccountAlreadyExists :: CreateAccountFailureReason
+pattern GovcloudAccountAlreadyExists = CreateAccountFailureReason' "GOVCLOUD_ACCOUNT_ALREADY_EXISTS"
+
 pattern InternalFailure :: CreateAccountFailureReason
 pattern InternalFailure = CreateAccountFailureReason' "INTERNAL_FAILURE"
 
@@ -58,6 +62,7 @@ pattern InvalidEmail = CreateAccountFailureReason' "INVALID_EMAIL"
   AccountLimitExceeded,
   ConcurrentAccountModification,
   EmailAlreadyExists,
+  GovcloudAccountAlreadyExists,
   InternalFailure,
   InvalidAddress,
   InvalidEmail,
@@ -78,17 +83,19 @@ instance Enum CreateAccountFailureReason where
         0 -> AccountLimitExceeded
         1 -> ConcurrentAccountModification
         2 -> EmailAlreadyExists
-        3 -> InternalFailure
-        4 -> InvalidAddress
-        5 -> InvalidEmail
+        3 -> GovcloudAccountAlreadyExists
+        4 -> InternalFailure
+        5 -> InvalidAddress
+        6 -> InvalidEmail
         _ -> (error . showText) $ "Unknown index for CreateAccountFailureReason: " <> toText i
     fromEnum x = case x of
         AccountLimitExceeded -> 0
         ConcurrentAccountModification -> 1
         EmailAlreadyExists -> 2
-        InternalFailure -> 3
-        InvalidAddress -> 4
-        InvalidEmail -> 5
+        GovcloudAccountAlreadyExists -> 3
+        InternalFailure -> 4
+        InvalidAddress -> 5
+        InvalidEmail -> 6
         CreateAccountFailureReason' name -> (error . showText) $ "Unknown CreateAccountFailureReason: " <> original name
 
 -- | Represents the bounds of /known/ $CreateAccountFailureReason.

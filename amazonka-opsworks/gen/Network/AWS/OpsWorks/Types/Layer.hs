@@ -64,7 +64,7 @@ data Layer = Layer'{_lCustomInstanceProfileARN ::
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'lCustomInstanceProfileARN' - The ARN of the default IAM profile to be used for the layer's EC2 instances. For more information about IAM ARNs, see <http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html Using Identifiers> .
+-- * 'lCustomInstanceProfileARN' - The ARN of the default IAM profile to be used for the layer's EC2 instances. For more information about IAM ARNs, see <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html Using Identifiers> .
 --
 -- * 'lCustomSecurityGroupIds' - An array containing the layer's custom security group IDs.
 --
@@ -74,13 +74,13 @@ data Layer = Layer'{_lCustomInstanceProfileARN ::
 --
 -- * 'lLifecycleEventConfiguration' - A @LifeCycleEventConfiguration@ object that specifies the Shutdown event configuration.
 --
--- * 'lARN' - Undocumented member.
+-- * 'lARN' - The Amazon Resource Number (ARN) of a layer.
 --
 -- * 'lCreatedAt' - Date when the layer was created.
 --
 -- * 'lShortname' - The layer short name.
 --
--- * 'lDefaultRecipes' - Undocumented member.
+-- * 'lDefaultRecipes' - AWS OpsWorks Stacks supports five lifecycle events: __setup__ , __configuration__ , __deploy__ , __undeploy__ , and __shutdown__ . For each layer, AWS OpsWorks Stacks runs a set of standard recipes for each event. You can also provide custom recipes for any or all layers and events. AWS OpsWorks Stacks runs custom event recipes after the standard recipes. @LayerCustomRecipes@ specifies the custom recipes for a particular layer to be run in response to each of the five events. To specify a recipe, use the cookbook's directory name in the repository followed by two colons and the recipe name, which is the recipe's file name without the @.rb@ extension. For example: @phpapp2::dbsetup@ specifies the @dbsetup.rb@ recipe in the repository's @phpapp2@ folder.
 --
 -- * 'lCustomRecipes' - A @LayerCustomRecipes@ object that specifies the layer's custom recipes.
 --
@@ -96,7 +96,7 @@ data Layer = Layer'{_lCustomInstanceProfileARN ::
 --
 -- * 'lName' - The layer name.
 --
--- * 'lAutoAssignPublicIPs' - For stacks that are running in a VPC, whether to automatically assign a public IP address to the layer's instances. For more information, see <http://docs.aws.amazon.com/opsworks/latest/userguide/workinglayers-basics-edit.html How to Edit a Layer> .
+-- * 'lAutoAssignPublicIPs' - For stacks that are running in a VPC, whether to automatically assign a public IP address to the layer's instances. For more information, see <https://docs.aws.amazon.com/opsworks/latest/userguide/workinglayers-basics-edit.html How to Edit a Layer> .
 --
 -- * 'lType' - The layer type.
 --
@@ -108,7 +108,7 @@ data Layer = Layer'{_lCustomInstanceProfileARN ::
 --
 -- * 'lDefaultSecurityGroupNames' - An array containing the layer's security group names.
 --
--- * 'lAutoAssignElasticIPs' - Whether to automatically assign an <http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html Elastic IP address> to the layer's instances. For more information, see <http://docs.aws.amazon.com/opsworks/latest/userguide/workinglayers-basics-edit.html How to Edit a Layer> .
+-- * 'lAutoAssignElasticIPs' - Whether to automatically assign an <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html Elastic IP address> to the layer's instances. For more information, see <https://docs.aws.amazon.com/opsworks/latest/userguide/workinglayers-basics-edit.html How to Edit a Layer> .
 layer
     :: Layer
 layer
@@ -129,7 +129,7 @@ layer
            _lDefaultSecurityGroupNames = Nothing,
            _lAutoAssignElasticIPs = Nothing}
 
--- | The ARN of the default IAM profile to be used for the layer's EC2 instances. For more information about IAM ARNs, see <http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html Using Identifiers> .
+-- | The ARN of the default IAM profile to be used for the layer's EC2 instances. For more information about IAM ARNs, see <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html Using Identifiers> .
 lCustomInstanceProfileARN :: Lens' Layer (Maybe Text)
 lCustomInstanceProfileARN = lens _lCustomInstanceProfileARN (\ s a -> s{_lCustomInstanceProfileARN = a})
 
@@ -149,7 +149,7 @@ lCloudWatchLogsConfiguration = lens _lCloudWatchLogsConfiguration (\ s a -> s{_l
 lLifecycleEventConfiguration :: Lens' Layer (Maybe LifecycleEventConfiguration)
 lLifecycleEventConfiguration = lens _lLifecycleEventConfiguration (\ s a -> s{_lLifecycleEventConfiguration = a})
 
--- | Undocumented member.
+-- | The Amazon Resource Number (ARN) of a layer.
 lARN :: Lens' Layer (Maybe Text)
 lARN = lens _lARN (\ s a -> s{_lARN = a})
 
@@ -161,7 +161,7 @@ lCreatedAt = lens _lCreatedAt (\ s a -> s{_lCreatedAt = a})
 lShortname :: Lens' Layer (Maybe Text)
 lShortname = lens _lShortname (\ s a -> s{_lShortname = a})
 
--- | Undocumented member.
+-- | AWS OpsWorks Stacks supports five lifecycle events: __setup__ , __configuration__ , __deploy__ , __undeploy__ , and __shutdown__ . For each layer, AWS OpsWorks Stacks runs a set of standard recipes for each event. You can also provide custom recipes for any or all layers and events. AWS OpsWorks Stacks runs custom event recipes after the standard recipes. @LayerCustomRecipes@ specifies the custom recipes for a particular layer to be run in response to each of the five events. To specify a recipe, use the cookbook's directory name in the repository followed by two colons and the recipe name, which is the recipe's file name without the @.rb@ extension. For example: @phpapp2::dbsetup@ specifies the @dbsetup.rb@ recipe in the repository's @phpapp2@ folder.
 lDefaultRecipes :: Lens' Layer (Maybe Recipes)
 lDefaultRecipes = lens _lDefaultRecipes (\ s a -> s{_lDefaultRecipes = a})
 
@@ -193,7 +193,7 @@ lAttributes = lens _lAttributes (\ s a -> s{_lAttributes = a}) . _Default . _Map
 lName :: Lens' Layer (Maybe Text)
 lName = lens _lName (\ s a -> s{_lName = a})
 
--- | For stacks that are running in a VPC, whether to automatically assign a public IP address to the layer's instances. For more information, see <http://docs.aws.amazon.com/opsworks/latest/userguide/workinglayers-basics-edit.html How to Edit a Layer> .
+-- | For stacks that are running in a VPC, whether to automatically assign a public IP address to the layer's instances. For more information, see <https://docs.aws.amazon.com/opsworks/latest/userguide/workinglayers-basics-edit.html How to Edit a Layer> .
 lAutoAssignPublicIPs :: Lens' Layer (Maybe Bool)
 lAutoAssignPublicIPs = lens _lAutoAssignPublicIPs (\ s a -> s{_lAutoAssignPublicIPs = a})
 
@@ -217,7 +217,7 @@ lLayerId = lens _lLayerId (\ s a -> s{_lLayerId = a})
 lDefaultSecurityGroupNames :: Lens' Layer [Text]
 lDefaultSecurityGroupNames = lens _lDefaultSecurityGroupNames (\ s a -> s{_lDefaultSecurityGroupNames = a}) . _Default . _Coerce
 
--- | Whether to automatically assign an <http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html Elastic IP address> to the layer's instances. For more information, see <http://docs.aws.amazon.com/opsworks/latest/userguide/workinglayers-basics-edit.html How to Edit a Layer> .
+-- | Whether to automatically assign an <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html Elastic IP address> to the layer's instances. For more information, see <https://docs.aws.amazon.com/opsworks/latest/userguide/workinglayers-basics-edit.html How to Edit a Layer> .
 lAutoAssignElasticIPs :: Lens' Layer (Maybe Bool)
 lAutoAssignElasticIPs = lens _lAutoAssignElasticIPs (\ s a -> s{_lAutoAssignElasticIPs = a})
 

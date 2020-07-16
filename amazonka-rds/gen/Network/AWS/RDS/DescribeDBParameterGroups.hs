@@ -72,13 +72,13 @@ data DescribeDBParameterGroups = DescribeDBParameterGroups'{_ddpgFilters
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'ddpgFilters' - This parameter is not currently supported.
+-- * 'ddpgFilters' - This parameter isn't currently supported.
 --
 -- * 'ddpgDBParameterGroupName' - The name of a specific DB parameter group to return details for. Constraints:     * If supplied, must match the name of an existing DBClusterParameterGroup.
 --
 -- * 'ddpgMarker' - An optional pagination token provided by a previous @DescribeDBParameterGroups@ request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by @MaxRecords@ . 
 --
--- * 'ddpgMaxRecords' - The maximum number of records to include in the response. If more records exist than the specified @MaxRecords@ value, a pagination token called a marker is included in the response so that the remaining results can be retrieved.  Default: 100 Constraints: Minimum 20, maximum 100.
+-- * 'ddpgMaxRecords' - The maximum number of records to include in the response. If more records exist than the specified @MaxRecords@ value, a pagination token called a marker is included in the response so that you can retrieve the remaining results.  Default: 100 Constraints: Minimum 20, maximum 100.
 describeDBParameterGroups
     :: DescribeDBParameterGroups
 describeDBParameterGroups
@@ -86,7 +86,7 @@ describeDBParameterGroups
                                _ddpgDBParameterGroupName = Nothing,
                                _ddpgMarker = Nothing, _ddpgMaxRecords = Nothing}
 
--- | This parameter is not currently supported.
+-- | This parameter isn't currently supported.
 ddpgFilters :: Lens' DescribeDBParameterGroups [Filter]
 ddpgFilters = lens _ddpgFilters (\ s a -> s{_ddpgFilters = a}) . _Default . _Coerce
 
@@ -98,7 +98,7 @@ ddpgDBParameterGroupName = lens _ddpgDBParameterGroupName (\ s a -> s{_ddpgDBPar
 ddpgMarker :: Lens' DescribeDBParameterGroups (Maybe Text)
 ddpgMarker = lens _ddpgMarker (\ s a -> s{_ddpgMarker = a})
 
--- | The maximum number of records to include in the response. If more records exist than the specified @MaxRecords@ value, a pagination token called a marker is included in the response so that the remaining results can be retrieved.  Default: 100 Constraints: Minimum 20, maximum 100.
+-- | The maximum number of records to include in the response. If more records exist than the specified @MaxRecords@ value, a pagination token called a marker is included in the response so that you can retrieve the remaining results.  Default: 100 Constraints: Minimum 20, maximum 100.
 ddpgMaxRecords :: Lens' DescribeDBParameterGroups (Maybe Int)
 ddpgMaxRecords = lens _ddpgMaxRecords (\ s a -> s{_ddpgMaxRecords = a})
 
@@ -144,7 +144,7 @@ instance ToQuery DescribeDBParameterGroups where
                "Marker" =: _ddpgMarker,
                "MaxRecords" =: _ddpgMaxRecords]
 
--- | Contains the result of a successful invocation of the 'DescribeDBParameterGroups' action. 
+-- | Contains the result of a successful invocation of the @DescribeDBParameterGroups@ action. 
 --
 --
 --
@@ -169,7 +169,7 @@ data DescribeDBParameterGroupsResponse = DescribeDBParameterGroupsResponse'{_ddp
 --
 -- * 'ddpgrsMarker' - An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by @MaxRecords@ . 
 --
--- * 'ddpgrsDBParameterGroups' - A list of 'DBParameterGroup' instances. 
+-- * 'ddpgrsDBParameterGroups' - A list of @DBParameterGroup@ instances. 
 --
 -- * 'ddpgrsResponseStatus' - -- | The response status code.
 describeDBParameterGroupsResponse
@@ -185,7 +185,7 @@ describeDBParameterGroupsResponse pResponseStatus_
 ddpgrsMarker :: Lens' DescribeDBParameterGroupsResponse (Maybe Text)
 ddpgrsMarker = lens _ddpgrsMarker (\ s a -> s{_ddpgrsMarker = a})
 
--- | A list of 'DBParameterGroup' instances. 
+-- | A list of @DBParameterGroup@ instances. 
 ddpgrsDBParameterGroups :: Lens' DescribeDBParameterGroupsResponse [DBParameterGroup]
 ddpgrsDBParameterGroups = lens _ddpgrsDBParameterGroups (\ s a -> s{_ddpgrsDBParameterGroups = a}) . _Default . _Coerce
 

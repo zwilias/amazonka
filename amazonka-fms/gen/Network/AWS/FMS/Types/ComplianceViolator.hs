@@ -39,7 +39,7 @@ data ComplianceViolator = ComplianceViolator'{_cvResourceId
 --
 -- * 'cvResourceId' - The resource ID.
 --
--- * 'cvResourceType' - The resource type. This is in the format shown in <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html AWS Resource Types Reference> . Valid values are @AWS::ElasticLoadBalancingV2::LoadBalancer@ or @AWS::CloudFront::Distribution@ .
+-- * 'cvResourceType' - The resource type. This is in the format shown in the <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html AWS Resource Types Reference> . For example: @AWS::ElasticLoadBalancingV2::LoadBalancer@ or @AWS::CloudFront::Distribution@ .
 --
 -- * 'cvViolationReason' - The reason that the resource is not protected by the policy.
 complianceViolator
@@ -53,7 +53,7 @@ complianceViolator
 cvResourceId :: Lens' ComplianceViolator (Maybe Text)
 cvResourceId = lens _cvResourceId (\ s a -> s{_cvResourceId = a})
 
--- | The resource type. This is in the format shown in <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html AWS Resource Types Reference> . Valid values are @AWS::ElasticLoadBalancingV2::LoadBalancer@ or @AWS::CloudFront::Distribution@ .
+-- | The resource type. This is in the format shown in the <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html AWS Resource Types Reference> . For example: @AWS::ElasticLoadBalancingV2::LoadBalancer@ or @AWS::CloudFront::Distribution@ .
 cvResourceType :: Lens' ComplianceViolator (Maybe Text)
 cvResourceType = lens _cvResourceType (\ s a -> s{_cvResourceType = a})
 

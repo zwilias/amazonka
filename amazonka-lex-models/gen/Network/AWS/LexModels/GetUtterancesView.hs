@@ -25,6 +25,10 @@
 --
 -- After you publish a new version of a bot, you can get information about the old version and the new so that you can compare the performance across the two versions. 
 --
+-- Utterance statistics are generated once a day. Data is available for the last 15 days. You can request information for up to 5 versions of your bot in each request. Amazon Lex returns the most frequent utterances received by the bot in the last 15 days. The response contains information about a maximum of 100 utterances for each version.
+--
+-- If you set @childDirected@ field to true when you created your bot, or if you opted out of participating in improving Amazon Lex, utterances are not available.
+--
 -- This operation requires permissions for the @lex:GetUtterancesView@ action.
 --
 module Network.AWS.LexModels.GetUtterancesView
@@ -68,7 +72,7 @@ data GetUtterancesView = GetUtterancesView'{_guvBotName
 --
 -- * 'guvBotVersions' - An array of bot versions for which utterance information should be returned. The limit is 5 versions per request.
 --
--- * 'guvStatusType' - To return utterances that were recognized and handled, use@Detected@ . To return utterances that were not recognized, use @Missed@ .
+-- * 'guvStatusType' - To return utterances that were recognized and handled, use @Detected@ . To return utterances that were not recognized, use @Missed@ .
 getUtterancesView
     :: Text -- ^ 'guvBotName'
     -> NonEmpty Text -- ^ 'guvBotVersions'
@@ -88,7 +92,7 @@ guvBotName = lens _guvBotName (\ s a -> s{_guvBotName = a})
 guvBotVersions :: Lens' GetUtterancesView (NonEmpty Text)
 guvBotVersions = lens _guvBotVersions (\ s a -> s{_guvBotVersions = a}) . _List1
 
--- | To return utterances that were recognized and handled, use@Detected@ . To return utterances that were not recognized, use @Missed@ .
+-- | To return utterances that were recognized and handled, use @Detected@ . To return utterances that were not recognized, use @Missed@ .
 guvStatusType :: Lens' GetUtterancesView StatusType
 guvStatusType = lens _guvStatusType (\ s a -> s{_guvStatusType = a})
 
@@ -141,7 +145,7 @@ data GetUtterancesViewResponse = GetUtterancesViewResponse'{_guvrsBotName
 --
 -- * 'guvrsBotName' - The name of the bot for which utterance information was returned.
 --
--- * 'guvrsUtterances' - An array of 'UtteranceList' objects, each containing a list of 'UtteranceData' objects describing the utterances that were processed by your bot. The response contains a maximum of 100 @UtteranceData@ objects for each version.
+-- * 'guvrsUtterances' - An array of 'UtteranceList' objects, each containing a list of 'UtteranceData' objects describing the utterances that were processed by your bot. The response contains a maximum of 100 @UtteranceData@ objects for each version. Amazon Lex returns the most frequent utterances received by the bot in the last 15 days.
 --
 -- * 'guvrsResponseStatus' - -- | The response status code.
 getUtterancesViewResponse
@@ -156,7 +160,7 @@ getUtterancesViewResponse pResponseStatus_
 guvrsBotName :: Lens' GetUtterancesViewResponse (Maybe Text)
 guvrsBotName = lens _guvrsBotName (\ s a -> s{_guvrsBotName = a})
 
--- | An array of 'UtteranceList' objects, each containing a list of 'UtteranceData' objects describing the utterances that were processed by your bot. The response contains a maximum of 100 @UtteranceData@ objects for each version.
+-- | An array of 'UtteranceList' objects, each containing a list of 'UtteranceData' objects describing the utterances that were processed by your bot. The response contains a maximum of 100 @UtteranceData@ objects for each version. Amazon Lex returns the most frequent utterances received by the bot in the last 15 days.
 guvrsUtterances :: Lens' GetUtterancesViewResponse [UtteranceList]
 guvrsUtterances = lens _guvrsUtterances (\ s a -> s{_guvrsUtterances = a}) . _Default . _Coerce
 

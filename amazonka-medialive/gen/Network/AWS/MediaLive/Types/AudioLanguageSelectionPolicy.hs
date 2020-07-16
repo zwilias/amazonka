@@ -27,7 +27,7 @@ module Network.AWS.MediaLive.Types.AudioLanguageSelectionPolicy (
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | Placeholder documentation for AudioLanguageSelectionPolicy
+-- | Audio Language Selection Policy
 data AudioLanguageSelectionPolicy = AudioLanguageSelectionPolicy' (CI
                                                                      Text)
                                       deriving (Eq, Ord, Read, Show, Data,

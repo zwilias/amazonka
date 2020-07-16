@@ -111,7 +111,7 @@ data ReleaseStaticIPResponse = ReleaseStaticIPResponse'{_rsirsOperations
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'rsirsOperations' - An array of key-value pairs containing information about the request operation.
+-- * 'rsirsOperations' - An array of objects that describe the result of the action, such as the status of the request, the time stamp of the request, and the resources affected by the request.
 --
 -- * 'rsirsResponseStatus' - -- | The response status code.
 releaseStaticIPResponse
@@ -122,7 +122,7 @@ releaseStaticIPResponse pResponseStatus_
                                Nothing,
                              _rsirsResponseStatus = pResponseStatus_}
 
--- | An array of key-value pairs containing information about the request operation.
+-- | An array of objects that describe the result of the action, such as the status of the request, the time stamp of the request, and the resources affected by the request.
 rsirsOperations :: Lens' ReleaseStaticIPResponse [Operation]
 rsirsOperations = lens _rsirsOperations (\ s a -> s{_rsirsOperations = a}) . _Default . _Coerce
 

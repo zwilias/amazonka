@@ -21,7 +21,9 @@
 -- Attaches a Transport Layer Security (TLS) certificate to your load balancer. TLS is just an updated, more secure version of Secure Socket Layer (SSL).
 --
 --
--- Once you create and validate your certificate, you can attach it to your load balancer. You can also use this API to rotate the certificates on your account. Use the @AttachLoadBalancerTlsCertificate@ operation with the non-attached certificate, and it will replace the existing one and become the attached certificate.
+-- Once you create and validate your certificate, you can attach it to your load balancer. You can also use this API to rotate the certificates on your account. Use the @AttachLoadBalancerTlsCertificate@ action with the non-attached certificate, and it will replace the existing one and become the attached certificate.
+--
+-- The @AttachLoadBalancerTlsCertificate@ operation supports tag-based access control via resource tags applied to the resource identified by @load balancer name@ . For more information, see the <https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags Lightsail Dev Guide> .
 --
 module Network.AWS.Lightsail.AttachLoadBalancerTLSCertificate
     (
@@ -143,7 +145,7 @@ data AttachLoadBalancerTLSCertificateResponse = AttachLoadBalancerTLSCertificate
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'albtcrsOperations' - An object representing the API operations. These SSL/TLS certificates are only usable by Lightsail load balancers. You can't get the certificate and use it for another purpose.
+-- * 'albtcrsOperations' - An array of objects that describe the result of the action, such as the status of the request, the time stamp of the request, and the resources affected by the request. These SSL/TLS certificates are only usable by Lightsail load balancers. You can't get the certificate and use it for another purpose.
 --
 -- * 'albtcrsResponseStatus' - -- | The response status code.
 attachLoadBalancerTLSCertificateResponse
@@ -156,7 +158,7 @@ attachLoadBalancerTLSCertificateResponse
                                               _albtcrsResponseStatus =
                                                 pResponseStatus_}
 
--- | An object representing the API operations. These SSL/TLS certificates are only usable by Lightsail load balancers. You can't get the certificate and use it for another purpose.
+-- | An array of objects that describe the result of the action, such as the status of the request, the time stamp of the request, and the resources affected by the request. These SSL/TLS certificates are only usable by Lightsail load balancers. You can't get the certificate and use it for another purpose.
 albtcrsOperations :: Lens' AttachLoadBalancerTLSCertificateResponse [Operation]
 albtcrsOperations = lens _albtcrsOperations (\ s a -> s{_albtcrsOperations = a}) . _Default . _Coerce
 

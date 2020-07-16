@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Uploads an object to the specified path. Object sizes are limited to 10 MB.
+-- Uploads an object to the specified path. Object sizes are limited to 25 MB for standard upload availability and 10 MB for streaming upload availability.
 --
 --
 module Network.AWS.MediaStoreData.PutObject
@@ -28,6 +28,7 @@ module Network.AWS.MediaStoreData.PutObject
     , PutObject
     -- * Request Lenses
     , poStorageClass
+    , poUploadAvailability
     , poCacheControl
     , poContentType
     , poPath
@@ -53,6 +54,8 @@ import Network.AWS.Response
 -- | /See:/ 'putObject' smart constructor.
 data PutObject = PutObject'{_poStorageClass ::
                             !(Maybe StorageClass),
+                            _poUploadAvailability ::
+                            !(Maybe UploadAvailability),
                             _poCacheControl :: !(Maybe Text),
                             _poContentType :: !(Maybe Text), _poPath :: !Text,
                             _poBody :: !HashedBody}
@@ -63,6 +66,8 @@ data PutObject = PutObject'{_poStorageClass ::
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'poStorageClass' - Indicates the storage class of a @Put@ request. Defaults to high-performance temporal storage class, and objects are persisted into durable storage shortly after being received.
+--
+-- * 'poUploadAvailability' - Indicates the availability of an object while it is still uploading. If the value is set to @streaming@ , the object is available for downloading after some initial buffering but before the object is uploaded completely. If the value is set to @standard@ , the object is available for downloading only when it is uploaded completely. The default value for this header is @standard@ . To use this header, you must also set the HTTP @Transfer-Encoding@ header to @chunked@ .
 --
 -- * 'poCacheControl' - An optional @CacheControl@ header that allows the caller to control the object's cache behavior. Headers can be passed in as specified in the HTTP at <https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9 https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9> . Headers with a custom user-defined value are also accepted.
 --
@@ -77,12 +82,17 @@ putObject
     -> PutObject
 putObject pPath_ pBody_
   = PutObject'{_poStorageClass = Nothing,
+               _poUploadAvailability = Nothing,
                _poCacheControl = Nothing, _poContentType = Nothing,
                _poPath = pPath_, _poBody = pBody_}
 
 -- | Indicates the storage class of a @Put@ request. Defaults to high-performance temporal storage class, and objects are persisted into durable storage shortly after being received.
 poStorageClass :: Lens' PutObject (Maybe StorageClass)
 poStorageClass = lens _poStorageClass (\ s a -> s{_poStorageClass = a})
+
+-- | Indicates the availability of an object while it is still uploading. If the value is set to @streaming@ , the object is available for downloading after some initial buffering but before the object is uploaded completely. If the value is set to @standard@ , the object is available for downloading only when it is uploaded completely. The default value for this header is @standard@ . To use this header, you must also set the HTTP @Transfer-Encoding@ header to @chunked@ .
+poUploadAvailability :: Lens' PutObject (Maybe UploadAvailability)
+poUploadAvailability = lens _poUploadAvailability (\ s a -> s{_poUploadAvailability = a})
 
 -- | An optional @CacheControl@ header that allows the caller to control the object's cache behavior. Headers can be passed in as specified in the HTTP at <https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9 https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9> . Headers with a custom user-defined value are also accepted.
 poCacheControl :: Lens' PutObject (Maybe Text)
@@ -118,6 +128,7 @@ instance ToHeaders PutObject where
         toHeaders PutObject'{..}
           = mconcat
               ["x-amz-storage-class" =# _poStorageClass,
+               "x-amz-upload-availability" =# _poUploadAvailability,
                "Cache-Control" =# _poCacheControl,
                "Content-Type" =# _poContentType]
 
@@ -142,7 +153,7 @@ data PutObjectResponse = PutObjectResponse'{_porsETag
 --
 -- * 'porsETag' - Unique identifier of the object in the container.
 --
--- * 'porsStorageClass' - The storage class where the object was persisted. Should be “Temporal”.
+-- * 'porsStorageClass' - The storage class where the object was persisted. The class should be “Temporal”.
 --
 -- * 'porsContentSHA256' - The SHA256 digest of the object that is persisted.
 --
@@ -160,7 +171,7 @@ putObjectResponse pResponseStatus_
 porsETag :: Lens' PutObjectResponse (Maybe Text)
 porsETag = lens _porsETag (\ s a -> s{_porsETag = a})
 
--- | The storage class where the object was persisted. Should be “Temporal”.
+-- | The storage class where the object was persisted. The class should be “Temporal”.
 porsStorageClass :: Lens' PutObjectResponse (Maybe StorageClass)
 porsStorageClass = lens _porsStorageClass (\ s a -> s{_porsStorageClass = a})
 

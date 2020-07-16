@@ -27,6 +27,9 @@ import Network.AWS.Prelude
 -- /See:/ 'applicationPolicyStatement' smart constructor.
 data ApplicationPolicyStatement = ApplicationPolicyStatement'{_apsStatementId
                                                               :: !(Maybe Text),
+                                                              _apsPrincipalOrgIds
+                                                              ::
+                                                              !(Maybe [Text]),
                                                               _apsPrincipals ::
                                                               ![Text],
                                                               _apsActions ::
@@ -40,25 +43,32 @@ data ApplicationPolicyStatement = ApplicationPolicyStatement'{_apsStatementId
 --
 -- * 'apsStatementId' - A unique ID for the statement.
 --
--- * 'apsPrincipals' - An AWS account ID, or * to make the application public.
+-- * 'apsPrincipalOrgIds' - An array of PrinciplalOrgIDs, which corresponds to AWS IAM <https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_condition-keys.html#principal-org-id aws:PrincipalOrgID> global condition key.
 --
--- * 'apsActions' - A list of supported actions:  GetApplication    CreateCloudFormationChangeSet    ListApplicationVersions    SearchApplications    Deploy (Note: This action enables all other actions above.)
+-- * 'apsPrincipals' - An array of AWS account IDs, or * to make the application public.
+--
+-- * 'apsActions' - For the list of actions supported for this operation, see <https://docs.aws.amazon.com/serverlessrepo/latest/devguide/access-control-resource-based.html#application-permissions Application   Permissions> .
 applicationPolicyStatement
     :: ApplicationPolicyStatement
 applicationPolicyStatement
   = ApplicationPolicyStatement'{_apsStatementId =
                                   Nothing,
+                                _apsPrincipalOrgIds = Nothing,
                                 _apsPrincipals = mempty, _apsActions = mempty}
 
 -- | A unique ID for the statement.
 apsStatementId :: Lens' ApplicationPolicyStatement (Maybe Text)
 apsStatementId = lens _apsStatementId (\ s a -> s{_apsStatementId = a})
 
--- | An AWS account ID, or * to make the application public.
+-- | An array of PrinciplalOrgIDs, which corresponds to AWS IAM <https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_condition-keys.html#principal-org-id aws:PrincipalOrgID> global condition key.
+apsPrincipalOrgIds :: Lens' ApplicationPolicyStatement [Text]
+apsPrincipalOrgIds = lens _apsPrincipalOrgIds (\ s a -> s{_apsPrincipalOrgIds = a}) . _Default . _Coerce
+
+-- | An array of AWS account IDs, or * to make the application public.
 apsPrincipals :: Lens' ApplicationPolicyStatement [Text]
 apsPrincipals = lens _apsPrincipals (\ s a -> s{_apsPrincipals = a}) . _Coerce
 
--- | A list of supported actions:  GetApplication    CreateCloudFormationChangeSet    ListApplicationVersions    SearchApplications    Deploy (Note: This action enables all other actions above.)
+-- | For the list of actions supported for this operation, see <https://docs.aws.amazon.com/serverlessrepo/latest/devguide/access-control-resource-based.html#application-permissions Application   Permissions> .
 apsActions :: Lens' ApplicationPolicyStatement [Text]
 apsActions = lens _apsActions (\ s a -> s{_apsActions = a}) . _Coerce
 
@@ -68,7 +78,8 @@ instance FromJSON ApplicationPolicyStatement where
               (\ x ->
                  ApplicationPolicyStatement' <$>
                    (x .:? "statementId") <*>
-                     (x .:? "principals" .!= mempty)
+                     (x .:? "principalOrgIDs" .!= mempty)
+                     <*> (x .:? "principals" .!= mempty)
                      <*> (x .:? "actions" .!= mempty))
 
 instance Hashable ApplicationPolicyStatement where
@@ -80,5 +91,6 @@ instance ToJSON ApplicationPolicyStatement where
           = object
               (catMaybes
                  [("statementId" .=) <$> _apsStatementId,
+                  ("principalOrgIDs" .=) <$> _apsPrincipalOrgIds,
                   Just ("principals" .= _apsPrincipals),
                   Just ("actions" .= _apsActions)])

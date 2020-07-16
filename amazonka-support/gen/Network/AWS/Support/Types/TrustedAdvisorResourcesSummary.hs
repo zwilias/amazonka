@@ -20,7 +20,7 @@ module Network.AWS.Support.Types.TrustedAdvisorResourcesSummary where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | Details about AWS resources that were analyzed in a call to Trusted Advisor 'DescribeTrustedAdvisorCheckSummaries' . 
+-- | Details about AWS resources that were analyzed in a call to Trusted Advisor 'DescribeTrustedAdvisorCheckSummaries' .
 --
 --
 --

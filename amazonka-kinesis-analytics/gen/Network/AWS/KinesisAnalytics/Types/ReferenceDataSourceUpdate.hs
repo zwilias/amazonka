@@ -52,7 +52,7 @@ data ReferenceDataSourceUpdate = ReferenceDataSourceUpdate'{_rdsuTableNameUpdate
 --
 -- * 'rdsuReferenceSchemaUpdate' - Describes the format of the data in the streaming source, and how each data element maps to corresponding columns created in the in-application stream. 
 --
--- * 'rdsuReferenceId' - ID of the reference data source being updated. You can use the 'DescribeApplication' operation to get this value.
+-- * 'rdsuReferenceId' - ID of the reference data source being updated. You can use the <https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_DescribeApplication.html DescribeApplication> operation to get this value.
 referenceDataSourceUpdate
     :: Text -- ^ 'rdsuReferenceId'
     -> ReferenceDataSourceUpdate
@@ -75,7 +75,7 @@ rdsuS3ReferenceDataSourceUpdate = lens _rdsuS3ReferenceDataSourceUpdate (\ s a -
 rdsuReferenceSchemaUpdate :: Lens' ReferenceDataSourceUpdate (Maybe SourceSchema)
 rdsuReferenceSchemaUpdate = lens _rdsuReferenceSchemaUpdate (\ s a -> s{_rdsuReferenceSchemaUpdate = a})
 
--- | ID of the reference data source being updated. You can use the 'DescribeApplication' operation to get this value.
+-- | ID of the reference data source being updated. You can use the <https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_DescribeApplication.html DescribeApplication> operation to get this value.
 rdsuReferenceId :: Lens' ReferenceDataSourceUpdate Text
 rdsuReferenceId = lens _rdsuReferenceId (\ s a -> s{_rdsuReferenceId = a})
 

@@ -36,7 +36,7 @@ data RecordColumn = RecordColumn'{_rcMapping ::
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'rcMapping' - Reference to the data element in the streaming input of the reference data source.
+-- * 'rcMapping' - Reference to the data element in the streaming input or the reference data source. This element is required if the <https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_RecordFormat.html#analytics-Type-RecordFormat-RecordFormatTypel RecordFormatType> is @JSON@ .
 --
 -- * 'rcName' - Name of the column created in the in-application input stream or reference table.
 --
@@ -49,7 +49,7 @@ recordColumn pName_ pSqlType_
   = RecordColumn'{_rcMapping = Nothing,
                   _rcName = pName_, _rcSqlType = pSqlType_}
 
--- | Reference to the data element in the streaming input of the reference data source.
+-- | Reference to the data element in the streaming input or the reference data source. This element is required if the <https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_RecordFormat.html#analytics-Type-RecordFormat-RecordFormatTypel RecordFormatType> is @JSON@ .
 rcMapping :: Lens' RecordColumn (Maybe Text)
 rcMapping = lens _rcMapping (\ s a -> s{_rcMapping = a})
 

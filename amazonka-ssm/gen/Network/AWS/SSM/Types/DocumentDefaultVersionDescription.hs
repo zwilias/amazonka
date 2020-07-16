@@ -25,7 +25,11 @@ import Network.AWS.Prelude
 --
 --
 -- /See:/ 'documentDefaultVersionDescription' smart constructor.
-data DocumentDefaultVersionDescription = DocumentDefaultVersionDescription'{_ddvdDefaultVersion
+data DocumentDefaultVersionDescription = DocumentDefaultVersionDescription'{_ddvdDefaultVersionName
+                                                                            ::
+                                                                            !(Maybe
+                                                                                Text),
+                                                                            _ddvdDefaultVersion
                                                                             ::
                                                                             !(Maybe
                                                                                 Text),
@@ -40,15 +44,22 @@ data DocumentDefaultVersionDescription = DocumentDefaultVersionDescription'{_ddv
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
+-- * 'ddvdDefaultVersionName' - The default version of the artifact associated with the document.
+--
 -- * 'ddvdDefaultVersion' - The default version of the document.
 --
 -- * 'ddvdName' - The name of the document.
 documentDefaultVersionDescription
     :: DocumentDefaultVersionDescription
 documentDefaultVersionDescription
-  = DocumentDefaultVersionDescription'{_ddvdDefaultVersion
+  = DocumentDefaultVersionDescription'{_ddvdDefaultVersionName
                                          = Nothing,
+                                       _ddvdDefaultVersion = Nothing,
                                        _ddvdName = Nothing}
+
+-- | The default version of the artifact associated with the document.
+ddvdDefaultVersionName :: Lens' DocumentDefaultVersionDescription (Maybe Text)
+ddvdDefaultVersionName = lens _ddvdDefaultVersionName (\ s a -> s{_ddvdDefaultVersionName = a})
 
 -- | The default version of the document.
 ddvdDefaultVersion :: Lens' DocumentDefaultVersionDescription (Maybe Text)
@@ -64,7 +75,9 @@ instance FromJSON DocumentDefaultVersionDescription
           = withObject "DocumentDefaultVersionDescription"
               (\ x ->
                  DocumentDefaultVersionDescription' <$>
-                   (x .:? "DefaultVersion") <*> (x .:? "Name"))
+                   (x .:? "DefaultVersionName") <*>
+                     (x .:? "DefaultVersion")
+                     <*> (x .:? "Name"))
 
 instance Hashable DocumentDefaultVersionDescription
          where

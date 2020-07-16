@@ -27,7 +27,7 @@ module Network.AWS.MediaLive.Types.InputLossActionForHlsOut (
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | Placeholder documentation for InputLossActionForHlsOut
+-- | Input Loss Action For Hls Out
 data InputLossActionForHlsOut = InputLossActionForHlsOut' (CI
                                                              Text)
                                   deriving (Eq, Ord, Read, Show, Data, Typeable,

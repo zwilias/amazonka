@@ -22,7 +22,11 @@ import Network.AWS.Prelude
 import Network.AWS.S3.Internal
 import Network.AWS.S3.Types.Progress
 
--- | /See:/ 'progressEvent' smart constructor.
+-- | This data type contains information about the progress event of an operation.
+--
+--
+--
+-- /See:/ 'progressEvent' smart constructor.
 newtype ProgressEvent = ProgressEvent'{_peDetails ::
                                        Maybe Progress}
                           deriving (Eq, Read, Show, Data, Typeable, Generic)

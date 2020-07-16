@@ -57,7 +57,7 @@ data RemoveAllResourcePermissions = RemoveAllResourcePermissions'{_rarpAuthentic
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'rarpAuthenticationToken' - Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.
+-- * 'rarpAuthenticationToken' - Amazon WorkDocs authentication token. Not required when using AWS administrator credentials to access the API.
 --
 -- * 'rarpResourceId' - The ID of the resource.
 removeAllResourcePermissions
@@ -68,7 +68,7 @@ removeAllResourcePermissions pResourceId_
                                     = Nothing,
                                   _rarpResourceId = pResourceId_}
 
--- | Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.
+-- | Amazon WorkDocs authentication token. Not required when using AWS administrator credentials to access the API.
 rarpAuthenticationToken :: Lens' RemoveAllResourcePermissions (Maybe Text)
 rarpAuthenticationToken = lens _rarpAuthenticationToken (\ s a -> s{_rarpAuthenticationToken = a}) . mapping _Sensitive
 

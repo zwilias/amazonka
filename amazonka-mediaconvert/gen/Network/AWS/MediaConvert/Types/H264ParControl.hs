@@ -19,8 +19,8 @@
 module Network.AWS.MediaConvert.Types.H264ParControl (
   H264ParControl (
     ..
-    , HPCInitializeFromSource
-    , HPCSpecified
+    , HInitializeFromSource
+    , HSpecified
     )
   ) where
 
@@ -32,15 +32,15 @@ data H264ParControl = H264ParControl' (CI Text)
                         deriving (Eq, Ord, Read, Show, Data, Typeable,
                                   Generic)
 
-pattern HPCInitializeFromSource :: H264ParControl
-pattern HPCInitializeFromSource = H264ParControl' "INITIALIZE_FROM_SOURCE"
+pattern HInitializeFromSource :: H264ParControl
+pattern HInitializeFromSource = H264ParControl' "INITIALIZE_FROM_SOURCE"
 
-pattern HPCSpecified :: H264ParControl
-pattern HPCSpecified = H264ParControl' "SPECIFIED"
+pattern HSpecified :: H264ParControl
+pattern HSpecified = H264ParControl' "SPECIFIED"
 
 {-# COMPLETE
-  HPCInitializeFromSource,
-  HPCSpecified,
+  HInitializeFromSource,
+  HSpecified,
   H264ParControl' #-}
 
 instance FromText H264ParControl where
@@ -55,20 +55,20 @@ instance ToText H264ParControl where
 --   fromEnum is a partial function, and will error on values unknown at generation time.
 instance Enum H264ParControl where
     toEnum i = case i of
-        0 -> HPCInitializeFromSource
-        1 -> HPCSpecified
+        0 -> HInitializeFromSource
+        1 -> HSpecified
         _ -> (error . showText) $ "Unknown index for H264ParControl: " <> toText i
     fromEnum x = case x of
-        HPCInitializeFromSource -> 0
-        HPCSpecified -> 1
+        HInitializeFromSource -> 0
+        HSpecified -> 1
         H264ParControl' name -> (error . showText) $ "Unknown H264ParControl: " <> original name
 
 -- | Represents the bounds of /known/ $H264ParControl.
 --   AWS may have added more since the source was generated.
 --   This instance exists only for backward compatibility.
 instance Bounded H264ParControl where
-    minBound = HPCInitializeFromSource
-    maxBound = HPCSpecified
+    minBound = HInitializeFromSource
+    maxBound = HSpecified
 
 instance Hashable     H264ParControl
 instance NFData       H264ParControl

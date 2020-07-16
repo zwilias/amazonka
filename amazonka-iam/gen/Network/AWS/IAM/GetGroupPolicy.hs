@@ -23,7 +23,7 @@
 --
 -- An IAM group can also have managed policies attached to it. To retrieve a managed policy document that is attached to a group, use 'GetPolicy' to determine the policy's default version, then use 'GetPolicyVersion' to retrieve the policy document.
 --
--- For more information about policies, see <http://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html Managed Policies and Inline Policies> in the /IAM User Guide/ .
+-- For more information about policies, see <https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html Managed Policies and Inline Policies> in the /IAM User Guide/ .
 --
 module Network.AWS.IAM.GetGroupPolicy
     (
@@ -61,9 +61,9 @@ data GetGroupPolicy = GetGroupPolicy'{_ggpGroupName
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'ggpGroupName' - The name of the group the policy is associated with. This parameter allows (per its <http://wikipedia.org/wiki/regex regex pattern> ) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
+-- * 'ggpGroupName' - The name of the group the policy is associated with. This parameter allows (through its <http://wikipedia.org/wiki/regex regex pattern> ) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
 --
--- * 'ggpPolicyName' - The name of the policy document to get. This parameter allows (per its <http://wikipedia.org/wiki/regex regex pattern> ) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
+-- * 'ggpPolicyName' - The name of the policy document to get. This parameter allows (through its <http://wikipedia.org/wiki/regex regex pattern> ) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
 getGroupPolicy
     :: Text -- ^ 'ggpGroupName'
     -> Text -- ^ 'ggpPolicyName'
@@ -72,11 +72,11 @@ getGroupPolicy pGroupName_ pPolicyName_
   = GetGroupPolicy'{_ggpGroupName = pGroupName_,
                     _ggpPolicyName = pPolicyName_}
 
--- | The name of the group the policy is associated with. This parameter allows (per its <http://wikipedia.org/wiki/regex regex pattern> ) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
+-- | The name of the group the policy is associated with. This parameter allows (through its <http://wikipedia.org/wiki/regex regex pattern> ) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
 ggpGroupName :: Lens' GetGroupPolicy Text
 ggpGroupName = lens _ggpGroupName (\ s a -> s{_ggpGroupName = a})
 
--- | The name of the policy document to get. This parameter allows (per its <http://wikipedia.org/wiki/regex regex pattern> ) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
+-- | The name of the policy document to get. This parameter allows (through its <http://wikipedia.org/wiki/regex regex pattern> ) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
 ggpPolicyName :: Lens' GetGroupPolicy Text
 ggpPolicyName = lens _ggpPolicyName (\ s a -> s{_ggpPolicyName = a})
 
@@ -133,7 +133,7 @@ data GetGroupPolicyResponse = GetGroupPolicyResponse'{_ggprsResponseStatus
 --
 -- * 'ggprsPolicyName' - The name of the policy.
 --
--- * 'ggprsPolicyDocument' - The policy document.
+-- * 'ggprsPolicyDocument' - The policy document. IAM stores policies in JSON format. However, resources that were created using AWS CloudFormation templates can be formatted in YAML. AWS CloudFormation always converts a YAML policy to JSON format before submitting it to IAM.
 getGroupPolicyResponse
     :: Int -- ^ 'ggprsResponseStatus'
     -> Text -- ^ 'ggprsGroupName'
@@ -160,7 +160,7 @@ ggprsGroupName = lens _ggprsGroupName (\ s a -> s{_ggprsGroupName = a})
 ggprsPolicyName :: Lens' GetGroupPolicyResponse Text
 ggprsPolicyName = lens _ggprsPolicyName (\ s a -> s{_ggprsPolicyName = a})
 
--- | The policy document.
+-- | The policy document. IAM stores policies in JSON format. However, resources that were created using AWS CloudFormation templates can be formatted in YAML. AWS CloudFormation always converts a YAML policy to JSON format before submitting it to IAM.
 ggprsPolicyDocument :: Lens' GetGroupPolicyResponse Text
 ggprsPolicyDocument = lens _ggprsPolicyDocument (\ s a -> s{_ggprsPolicyDocument = a})
 

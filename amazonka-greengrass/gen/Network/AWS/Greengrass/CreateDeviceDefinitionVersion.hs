@@ -163,9 +163,9 @@ data CreateDeviceDefinitionVersionResponse = CreateDeviceDefinitionVersionRespon
 --
 -- * 'cddvrsCreationTimestamp' - The time, in milliseconds since the epoch, when the version was created.
 --
--- * 'cddvrsVersion' - The unique ID of the version.
+-- * 'cddvrsVersion' - The ID of the version.
 --
--- * 'cddvrsId' - The ID of the version.
+-- * 'cddvrsId' - The ID of the parent definition that the version is associated with.
 --
 -- * 'cddvrsResponseStatus' - -- | The response status code.
 createDeviceDefinitionVersionResponse
@@ -189,11 +189,11 @@ cddvrsARN = lens _cddvrsARN (\ s a -> s{_cddvrsARN = a})
 cddvrsCreationTimestamp :: Lens' CreateDeviceDefinitionVersionResponse (Maybe Text)
 cddvrsCreationTimestamp = lens _cddvrsCreationTimestamp (\ s a -> s{_cddvrsCreationTimestamp = a})
 
--- | The unique ID of the version.
+-- | The ID of the version.
 cddvrsVersion :: Lens' CreateDeviceDefinitionVersionResponse (Maybe Text)
 cddvrsVersion = lens _cddvrsVersion (\ s a -> s{_cddvrsVersion = a})
 
--- | The ID of the version.
+-- | The ID of the parent definition that the version is associated with.
 cddvrsId :: Lens' CreateDeviceDefinitionVersionResponse (Maybe Text)
 cddvrsId = lens _cddvrsId (\ s a -> s{_cddvrsId = a})
 

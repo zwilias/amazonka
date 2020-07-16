@@ -21,8 +21,6 @@
 -- Retrieves valid VPC peering authorizations that are pending for the AWS account. This operation returns all VPC peering authorizations and requests for peering. This includes those initiated and received by this account. 
 --
 --
--- VPC peering connection operations include:
---
 --     * 'CreateVpcPeeringAuthorization' 
 --
 --     * 'DescribeVpcPeeringAuthorizations' 
@@ -127,7 +125,7 @@ data DescribeVPCPeeringAuthorizationsResponse = DescribeVPCPeeringAuthorizations
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dvpcparsVPCPeeringAuthorizations' - Collection of objects that describe all valid VPC peering operations for the current AWS account.
+-- * 'dvpcparsVPCPeeringAuthorizations' - A collection of objects that describe all valid VPC peering operations for the current AWS account.
 --
 -- * 'dvpcparsResponseStatus' - -- | The response status code.
 describeVPCPeeringAuthorizationsResponse
@@ -140,7 +138,7 @@ describeVPCPeeringAuthorizationsResponse
                                               _dvpcparsResponseStatus =
                                                 pResponseStatus_}
 
--- | Collection of objects that describe all valid VPC peering operations for the current AWS account.
+-- | A collection of objects that describe all valid VPC peering operations for the current AWS account.
 dvpcparsVPCPeeringAuthorizations :: Lens' DescribeVPCPeeringAuthorizationsResponse [VPCPeeringAuthorization]
 dvpcparsVPCPeeringAuthorizations = lens _dvpcparsVPCPeeringAuthorizations (\ s a -> s{_dvpcparsVPCPeeringAuthorizations = a}) . _Default . _Coerce
 

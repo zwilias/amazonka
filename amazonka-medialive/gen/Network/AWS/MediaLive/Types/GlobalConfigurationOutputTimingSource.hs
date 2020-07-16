@@ -27,7 +27,7 @@ module Network.AWS.MediaLive.Types.GlobalConfigurationOutputTimingSource (
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | Placeholder documentation for GlobalConfigurationOutputTimingSource
+-- | Global Configuration Output Timing Source
 data GlobalConfigurationOutputTimingSource = GlobalConfigurationOutputTimingSource' (CI
                                                                                        Text)
                                                deriving (Eq, Ord, Read, Show,

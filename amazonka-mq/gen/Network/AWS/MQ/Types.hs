@@ -26,6 +26,9 @@ module Network.AWS.MQ.Types
     -- * BrokerState
     , BrokerState (..)
 
+    -- * BrokerStorageType
+    , BrokerStorageType (..)
+
     -- * ChangeType
     , ChangeType (..)
 
@@ -41,17 +44,40 @@ module Network.AWS.MQ.Types
     -- * SanitizationWarningReason
     , SanitizationWarningReason (..)
 
+    -- * AvailabilityZone
+    , AvailabilityZone
+    , availabilityZone
+    , azName
+
+    -- * BrokerEngineType
+    , BrokerEngineType
+    , brokerEngineType
+    , betEngineVersions
+    , betEngineType
+
     -- * BrokerInstance
     , BrokerInstance
     , brokerInstance
+    , biIPAddress
     , biConsoleURL
     , biEndpoints
+
+    -- * BrokerInstanceOption
+    , BrokerInstanceOption
+    , brokerInstanceOption
+    , bioSupportedEngineVersions
+    , bioAvailabilityZones
+    , bioSupportedDeploymentModes
+    , bioEngineType
+    , bioHostInstanceType
+    , bioStorageType
 
     -- * BrokerSummary
     , BrokerSummary
     , brokerSummary
     , bsBrokerName
     , bsBrokerState
+    , bsCreated
     , bsDeploymentMode
     , bsBrokerId
     , bsBrokerARN
@@ -63,10 +89,12 @@ module Network.AWS.MQ.Types
     , cEngineVersion
     , cARN
     , cLatestRevision
+    , cCreated
     , cName
     , cId
     , cDescription
     , cEngineType
+    , cTags
 
     -- * ConfigurationId
     , ConfigurationId
@@ -77,6 +105,7 @@ module Network.AWS.MQ.Types
     -- * ConfigurationRevision
     , ConfigurationRevision
     , configurationRevision
+    , crCreated
     , crRevision
     , crDescription
 
@@ -86,6 +115,38 @@ module Network.AWS.MQ.Types
     , cPending
     , cHistory
     , cCurrent
+
+    -- * EncryptionOptions
+    , EncryptionOptions
+    , encryptionOptions
+    , eoKMSKeyId
+    , eoUseAWSOwnedKey
+
+    -- * EngineVersion
+    , EngineVersion
+    , engineVersion
+    , evName
+
+    -- * Logs
+    , Logs
+    , logs
+    , lAudit
+    , lGeneral
+
+    -- * LogsSummary
+    , LogsSummary
+    , logsSummary
+    , lsPending
+    , lsAudit
+    , lsGeneral
+    , lsGeneralLogGroup
+    , lsAuditLogGroup
+
+    -- * PendingLogs
+    , PendingLogs
+    , pendingLogs
+    , plAudit
+    , plGeneral
 
     -- * SanitizationWarning
     , SanitizationWarning
@@ -127,17 +188,26 @@ import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Sign.V4
 import Network.AWS.MQ.Types.BrokerState
+import Network.AWS.MQ.Types.BrokerStorageType
 import Network.AWS.MQ.Types.ChangeType
 import Network.AWS.MQ.Types.DayOfWeek
 import Network.AWS.MQ.Types.DeploymentMode
 import Network.AWS.MQ.Types.EngineType
 import Network.AWS.MQ.Types.SanitizationWarningReason
+import Network.AWS.MQ.Types.AvailabilityZone
+import Network.AWS.MQ.Types.BrokerEngineType
 import Network.AWS.MQ.Types.BrokerInstance
+import Network.AWS.MQ.Types.BrokerInstanceOption
 import Network.AWS.MQ.Types.BrokerSummary
 import Network.AWS.MQ.Types.Configuration
 import Network.AWS.MQ.Types.ConfigurationId
 import Network.AWS.MQ.Types.ConfigurationRevision
 import Network.AWS.MQ.Types.Configurations
+import Network.AWS.MQ.Types.EncryptionOptions
+import Network.AWS.MQ.Types.EngineVersion
+import Network.AWS.MQ.Types.Logs
+import Network.AWS.MQ.Types.LogsSummary
+import Network.AWS.MQ.Types.PendingLogs
 import Network.AWS.MQ.Types.SanitizationWarning
 import Network.AWS.MQ.Types.User
 import Network.AWS.MQ.Types.UserPendingChanges
@@ -165,6 +235,11 @@ mq
             = Just "throttling_exception"
           | has (hasCode "Throttling" . hasStatus 400) e =
             Just "throttling"
+          | has
+              (hasCode "ProvisionedThroughputExceededException" .
+                 hasStatus 400)
+              e
+            = Just "throughput_exceeded"
           | has (hasStatus 504) e = Just "gateway_timeout"
           | has
               (hasCode "RequestThrottledException" . hasStatus 400)

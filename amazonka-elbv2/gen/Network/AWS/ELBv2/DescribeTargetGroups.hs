@@ -165,7 +165,7 @@ data DescribeTargetGroupsResponse = DescribeTargetGroupsResponse'{_dtgsrsNextMar
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dtgsrsNextMarker' - The marker to use when requesting the next set of results. If there are no additional results, the string is empty.
+-- * 'dtgsrsNextMarker' - If there are additional results, this is the marker for the next set of results. Otherwise, this is null.
 --
 -- * 'dtgsrsTargetGroups' - Information about the target groups.
 --
@@ -179,7 +179,7 @@ describeTargetGroupsResponse pResponseStatus_
                                   _dtgsrsTargetGroups = Nothing,
                                   _dtgsrsResponseStatus = pResponseStatus_}
 
--- | The marker to use when requesting the next set of results. If there are no additional results, the string is empty.
+-- | If there are additional results, this is the marker for the next set of results. Otherwise, this is null.
 dtgsrsNextMarker :: Lens' DescribeTargetGroupsResponse (Maybe Text)
 dtgsrsNextMarker = lens _dtgsrsNextMarker (\ s a -> s{_dtgsrsNextMarker = a})
 

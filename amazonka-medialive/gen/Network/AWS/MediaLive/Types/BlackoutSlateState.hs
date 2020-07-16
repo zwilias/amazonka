@@ -27,7 +27,7 @@ module Network.AWS.MediaLive.Types.BlackoutSlateState (
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | Placeholder documentation for BlackoutSlateState
+-- | Blackout Slate State
 data BlackoutSlateState = BlackoutSlateState' (CI
                                                  Text)
                             deriving (Eq, Ord, Read, Show, Data, Typeable,

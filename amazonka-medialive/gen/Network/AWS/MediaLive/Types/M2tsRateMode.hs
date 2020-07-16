@@ -27,7 +27,7 @@ module Network.AWS.MediaLive.Types.M2tsRateMode (
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | Placeholder documentation for M2tsRateMode
+-- | M2ts Rate Mode
 data M2tsRateMode = M2tsRateMode' (CI Text)
                       deriving (Eq, Ord, Read, Show, Data, Typeable,
                                 Generic)

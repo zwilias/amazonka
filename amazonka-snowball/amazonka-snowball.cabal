@@ -57,8 +57,10 @@ library
         , Network.AWS.Snowball.GetJobManifest
         , Network.AWS.Snowball.GetJobUnlockCode
         , Network.AWS.Snowball.GetSnowballUsage
+        , Network.AWS.Snowball.GetSoftwareUpdates
         , Network.AWS.Snowball.ListClusterJobs
         , Network.AWS.Snowball.ListClusters
+        , Network.AWS.Snowball.ListCompatibleImages
         , Network.AWS.Snowball.ListJobs
         , Network.AWS.Snowball.Types
         , Network.AWS.Snowball.UpdateCluster
@@ -70,8 +72,11 @@ library
         , Network.AWS.Snowball.Types.ClusterListEntry
         , Network.AWS.Snowball.Types.ClusterMetadata
         , Network.AWS.Snowball.Types.ClusterState
+        , Network.AWS.Snowball.Types.CompatibleImage
         , Network.AWS.Snowball.Types.DataTransfer
+        , Network.AWS.Snowball.Types.EC2AMIResource
         , Network.AWS.Snowball.Types.EventTriggerDefinition
+        , Network.AWS.Snowball.Types.INDTaxDocuments
         , Network.AWS.Snowball.Types.JobListEntry
         , Network.AWS.Snowball.Types.JobLogs
         , Network.AWS.Snowball.Types.JobMetadata
@@ -88,6 +93,7 @@ library
         , Network.AWS.Snowball.Types.ShippingOption
         , Network.AWS.Snowball.Types.SnowballCapacity
         , Network.AWS.Snowball.Types.SnowballType
+        , Network.AWS.Snowball.Types.TaxDocuments
 
     build-depends:
           amazonka-core == 1.6.1.*

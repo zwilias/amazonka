@@ -21,7 +21,7 @@ import Network.AWS.Lens
 import Network.AWS.MediaLive.Types.TtmlDestinationStyleControl
 import Network.AWS.Prelude
 
--- | Placeholder documentation for TtmlDestinationSettings
+-- | Ttml Destination Settings
 --
 -- /See:/ 'ttmlDestinationSettings' smart constructor.
 newtype TtmlDestinationSettings = TtmlDestinationSettings'{_tdsStyleControl

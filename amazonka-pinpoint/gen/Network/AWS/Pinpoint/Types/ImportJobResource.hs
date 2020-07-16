@@ -21,78 +21,85 @@ import Network.AWS.Lens
 import Network.AWS.Pinpoint.Types.DefinitionFormat
 import Network.AWS.Prelude
 
--- | /See:/ 'importJobResource' smart constructor.
+-- | Provides information about the resource settings for a job that imports endpoint definitions from one or more files. The files can be stored in an Amazon Simple Storage Service (Amazon S3) bucket or uploaded directly from a computer by using the Amazon Pinpoint console.
+--
+--
+--
+-- /See:/ 'importJobResource' smart constructor.
 data ImportJobResource = ImportJobResource'{_ijrSegmentName
                                             :: !(Maybe Text),
-                                            _ijrFormat ::
-                                            !(Maybe DefinitionFormat),
                                             _ijrDefineSegment :: !(Maybe Bool),
                                             _ijrRegisterEndpoints ::
                                             !(Maybe Bool),
                                             _ijrExternalId :: !(Maybe Text),
-                                            _ijrS3URL :: !(Maybe Text),
                                             _ijrSegmentId :: !(Maybe Text),
-                                            _ijrRoleARN :: !(Maybe Text)}
+                                            _ijrFormat :: !DefinitionFormat,
+                                            _ijrS3URL :: !Text,
+                                            _ijrRoleARN :: !Text}
                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ImportJobResource' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'ijrSegmentName' - A custom name for the segment created by the import job. Use if DefineSegment is true.
+-- * 'ijrSegmentName' - The custom name for the segment that's created by the import job, if the value of the DefineSegment property is true.
 --
--- * 'ijrFormat' - The format of the files that contain the endpoint definitions. Valid values: CSV, JSON
+-- * 'ijrDefineSegment' - Specifies whether the import job creates a segment that contains the endpoints, when the endpoint definitions are imported.
 --
--- * 'ijrDefineSegment' - Sets whether the endpoints create a segment when they are imported.
+-- * 'ijrRegisterEndpoints' - Specifies whether the import job registers the endpoints with Amazon Pinpoint, when the endpoint definitions are imported.
 --
--- * 'ijrRegisterEndpoints' - Sets whether the endpoints are registered with Amazon Pinpoint when they are imported.
+-- * 'ijrExternalId' - (Deprecated) Your AWS account ID, which you assigned to an external ID key in an IAM trust policy. Amazon Pinpoint previously used this value to assume an IAM role when importing endpoint definitions, but we removed this requirement. We don't recommend use of external IDs for IAM roles that are assumed by Amazon Pinpoint.
 --
--- * 'ijrExternalId' - DEPRECATED. Your AWS account ID, which you assigned to the ExternalID key in an IAM trust policy. Used by Amazon Pinpoint to assume an IAM role. This requirement is removed, and external IDs are not recommended for IAM roles assumed by Amazon Pinpoint.
+-- * 'ijrSegmentId' - The identifier for the segment that the import job updates or adds endpoint definitions to, if the import job updates an existing segment.
 --
--- * 'ijrS3URL' - A URL that points to the location within an Amazon S3 bucket that contains the endpoints to import. The location can be a folder or a single file. The URL should follow this format: s3://bucket-name/folder-name/file-name Amazon Pinpoint will import endpoints from this location and any subfolders it contains.
+-- * 'ijrFormat' - The format of the files that contain the endpoint definitions to import. Valid values are: CSV, for comma-separated values format; and, JSON, for newline-delimited JSON format. If the files are stored in an Amazon S3 location and that location contains multiple files that use different formats, Amazon Pinpoint imports data only from the files that use the specified format.
 --
--- * 'ijrSegmentId' - The ID of the segment to update if the import job is meant to update an existing segment.
+-- * 'ijrS3URL' - The URL of the Amazon Simple Storage Service (Amazon S3) bucket that contains the endpoint definitions to import. This location can be a folder or a single file. If the location is a folder, Amazon Pinpoint imports endpoint definitions from the files in this location, including any subfolders that the folder contains. The URL should be in the following format: s3://<replaceable>bucket-name/<replaceable>folder-name/<replaceable>file-name. The location can end with the key for an individual object or a prefix that qualifies multiple objects.
 --
--- * 'ijrRoleARN' - The Amazon Resource Name (ARN) of an IAM role that grants Amazon Pinpoint access to the Amazon S3 location that contains the endpoints to import.
+-- * 'ijrRoleARN' - The Amazon Resource Name (ARN) of the AWS Identity and Access Management (IAM) role that authorizes Amazon Pinpoint to access the Amazon S3 location to import endpoint definitions from.
 importJobResource
-    :: ImportJobResource
-importJobResource
+    :: DefinitionFormat -- ^ 'ijrFormat'
+    -> Text -- ^ 'ijrS3URL'
+    -> Text -- ^ 'ijrRoleARN'
+    -> ImportJobResource
+importJobResource pFormat_ pS3URL_ pRoleARN_
   = ImportJobResource'{_ijrSegmentName = Nothing,
-                       _ijrFormat = Nothing, _ijrDefineSegment = Nothing,
+                       _ijrDefineSegment = Nothing,
                        _ijrRegisterEndpoints = Nothing,
-                       _ijrExternalId = Nothing, _ijrS3URL = Nothing,
-                       _ijrSegmentId = Nothing, _ijrRoleARN = Nothing}
+                       _ijrExternalId = Nothing, _ijrSegmentId = Nothing,
+                       _ijrFormat = pFormat_, _ijrS3URL = pS3URL_,
+                       _ijrRoleARN = pRoleARN_}
 
--- | A custom name for the segment created by the import job. Use if DefineSegment is true.
+-- | The custom name for the segment that's created by the import job, if the value of the DefineSegment property is true.
 ijrSegmentName :: Lens' ImportJobResource (Maybe Text)
 ijrSegmentName = lens _ijrSegmentName (\ s a -> s{_ijrSegmentName = a})
 
--- | The format of the files that contain the endpoint definitions. Valid values: CSV, JSON
-ijrFormat :: Lens' ImportJobResource (Maybe DefinitionFormat)
-ijrFormat = lens _ijrFormat (\ s a -> s{_ijrFormat = a})
-
--- | Sets whether the endpoints create a segment when they are imported.
+-- | Specifies whether the import job creates a segment that contains the endpoints, when the endpoint definitions are imported.
 ijrDefineSegment :: Lens' ImportJobResource (Maybe Bool)
 ijrDefineSegment = lens _ijrDefineSegment (\ s a -> s{_ijrDefineSegment = a})
 
--- | Sets whether the endpoints are registered with Amazon Pinpoint when they are imported.
+-- | Specifies whether the import job registers the endpoints with Amazon Pinpoint, when the endpoint definitions are imported.
 ijrRegisterEndpoints :: Lens' ImportJobResource (Maybe Bool)
 ijrRegisterEndpoints = lens _ijrRegisterEndpoints (\ s a -> s{_ijrRegisterEndpoints = a})
 
--- | DEPRECATED. Your AWS account ID, which you assigned to the ExternalID key in an IAM trust policy. Used by Amazon Pinpoint to assume an IAM role. This requirement is removed, and external IDs are not recommended for IAM roles assumed by Amazon Pinpoint.
+-- | (Deprecated) Your AWS account ID, which you assigned to an external ID key in an IAM trust policy. Amazon Pinpoint previously used this value to assume an IAM role when importing endpoint definitions, but we removed this requirement. We don't recommend use of external IDs for IAM roles that are assumed by Amazon Pinpoint.
 ijrExternalId :: Lens' ImportJobResource (Maybe Text)
 ijrExternalId = lens _ijrExternalId (\ s a -> s{_ijrExternalId = a})
 
--- | A URL that points to the location within an Amazon S3 bucket that contains the endpoints to import. The location can be a folder or a single file. The URL should follow this format: s3://bucket-name/folder-name/file-name Amazon Pinpoint will import endpoints from this location and any subfolders it contains.
-ijrS3URL :: Lens' ImportJobResource (Maybe Text)
-ijrS3URL = lens _ijrS3URL (\ s a -> s{_ijrS3URL = a})
-
--- | The ID of the segment to update if the import job is meant to update an existing segment.
+-- | The identifier for the segment that the import job updates or adds endpoint definitions to, if the import job updates an existing segment.
 ijrSegmentId :: Lens' ImportJobResource (Maybe Text)
 ijrSegmentId = lens _ijrSegmentId (\ s a -> s{_ijrSegmentId = a})
 
--- | The Amazon Resource Name (ARN) of an IAM role that grants Amazon Pinpoint access to the Amazon S3 location that contains the endpoints to import.
-ijrRoleARN :: Lens' ImportJobResource (Maybe Text)
+-- | The format of the files that contain the endpoint definitions to import. Valid values are: CSV, for comma-separated values format; and, JSON, for newline-delimited JSON format. If the files are stored in an Amazon S3 location and that location contains multiple files that use different formats, Amazon Pinpoint imports data only from the files that use the specified format.
+ijrFormat :: Lens' ImportJobResource DefinitionFormat
+ijrFormat = lens _ijrFormat (\ s a -> s{_ijrFormat = a})
+
+-- | The URL of the Amazon Simple Storage Service (Amazon S3) bucket that contains the endpoint definitions to import. This location can be a folder or a single file. If the location is a folder, Amazon Pinpoint imports endpoint definitions from the files in this location, including any subfolders that the folder contains. The URL should be in the following format: s3://<replaceable>bucket-name/<replaceable>folder-name/<replaceable>file-name. The location can end with the key for an individual object or a prefix that qualifies multiple objects.
+ijrS3URL :: Lens' ImportJobResource Text
+ijrS3URL = lens _ijrS3URL (\ s a -> s{_ijrS3URL = a})
+
+-- | The Amazon Resource Name (ARN) of the AWS Identity and Access Management (IAM) role that authorizes Amazon Pinpoint to access the Amazon S3 location to import endpoint definitions from.
+ijrRoleARN :: Lens' ImportJobResource Text
 ijrRoleARN = lens _ijrRoleARN (\ s a -> s{_ijrRoleARN = a})
 
 instance FromJSON ImportJobResource where
@@ -100,13 +107,13 @@ instance FromJSON ImportJobResource where
           = withObject "ImportJobResource"
               (\ x ->
                  ImportJobResource' <$>
-                   (x .:? "SegmentName") <*> (x .:? "Format") <*>
-                     (x .:? "DefineSegment")
-                     <*> (x .:? "RegisterEndpoints")
+                   (x .:? "SegmentName") <*> (x .:? "DefineSegment") <*>
+                     (x .:? "RegisterEndpoints")
                      <*> (x .:? "ExternalId")
-                     <*> (x .:? "S3Url")
                      <*> (x .:? "SegmentId")
-                     <*> (x .:? "RoleArn"))
+                     <*> (x .: "Format")
+                     <*> (x .: "S3Url")
+                     <*> (x .: "RoleArn"))
 
 instance Hashable ImportJobResource where
 

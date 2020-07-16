@@ -21,7 +21,9 @@ import Network.AWS.Lens
 import Network.AWS.Pinpoint.Types.EndpointMessageResult
 import Network.AWS.Prelude
 
--- | User send message response.
+-- | Provides information about which users and endpoints a message was sent to.
+--
+--
 --
 -- /See:/ 'sendUsersMessageResponse' smart constructor.
 data SendUsersMessageResponse = SendUsersMessageResponse'{_sumRequestId
@@ -32,7 +34,7 @@ data SendUsersMessageResponse = SendUsersMessageResponse'{_sumRequestId
                                                                  (Map Text
                                                                     EndpointMessageResult))),
                                                           _sumApplicationId ::
-                                                          !(Maybe Text)}
+                                                          !Text}
                                   deriving (Eq, Read, Show, Data, Typeable,
                                             Generic)
 
@@ -40,27 +42,29 @@ data SendUsersMessageResponse = SendUsersMessageResponse'{_sumRequestId
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'sumRequestId' - Original request Id for which this message was delivered.
+-- * 'sumRequestId' - The unique identifier that was assigned to the message request.
 --
--- * 'sumResult' - A map containing of UserId to Map of EndpointId to Endpoint Message Result.
+-- * 'sumResult' - An object that indicates which endpoints the message was sent to, for each user. The object lists user IDs and, for each user ID, provides the endpoint IDs that the message was sent to. For each endpoint ID, it provides an EndpointMessageResult object.
 --
--- * 'sumApplicationId' - Application id of the message.
+-- * 'sumApplicationId' - The unique identifier for the application that was used to send the message.
 sendUsersMessageResponse
-    :: SendUsersMessageResponse
-sendUsersMessageResponse
+    :: Text -- ^ 'sumApplicationId'
+    -> SendUsersMessageResponse
+sendUsersMessageResponse pApplicationId_
   = SendUsersMessageResponse'{_sumRequestId = Nothing,
-                              _sumResult = Nothing, _sumApplicationId = Nothing}
+                              _sumResult = Nothing,
+                              _sumApplicationId = pApplicationId_}
 
--- | Original request Id for which this message was delivered.
+-- | The unique identifier that was assigned to the message request.
 sumRequestId :: Lens' SendUsersMessageResponse (Maybe Text)
 sumRequestId = lens _sumRequestId (\ s a -> s{_sumRequestId = a})
 
--- | A map containing of UserId to Map of EndpointId to Endpoint Message Result.
+-- | An object that indicates which endpoints the message was sent to, for each user. The object lists user IDs and, for each user ID, provides the endpoint IDs that the message was sent to. For each endpoint ID, it provides an EndpointMessageResult object.
 sumResult :: Lens' SendUsersMessageResponse (HashMap Text (HashMap Text EndpointMessageResult))
 sumResult = lens _sumResult (\ s a -> s{_sumResult = a}) . _Default . _Map
 
--- | Application id of the message.
-sumApplicationId :: Lens' SendUsersMessageResponse (Maybe Text)
+-- | The unique identifier for the application that was used to send the message.
+sumApplicationId :: Lens' SendUsersMessageResponse Text
 sumApplicationId = lens _sumApplicationId (\ s a -> s{_sumApplicationId = a})
 
 instance FromJSON SendUsersMessageResponse where
@@ -69,7 +73,7 @@ instance FromJSON SendUsersMessageResponse where
               (\ x ->
                  SendUsersMessageResponse' <$>
                    (x .:? "RequestId") <*> (x .:? "Result" .!= mempty)
-                     <*> (x .:? "ApplicationId"))
+                     <*> (x .: "ApplicationId"))
 
 instance Hashable SendUsersMessageResponse where
 

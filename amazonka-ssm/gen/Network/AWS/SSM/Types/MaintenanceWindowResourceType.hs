@@ -20,6 +20,7 @@ module Network.AWS.SSM.Types.MaintenanceWindowResourceType (
   MaintenanceWindowResourceType (
     ..
     , Instance
+    , ResourceGroup
     )
   ) where
 
@@ -34,8 +35,12 @@ data MaintenanceWindowResourceType = MaintenanceWindowResourceType' (CI
 pattern Instance :: MaintenanceWindowResourceType
 pattern Instance = MaintenanceWindowResourceType' "INSTANCE"
 
+pattern ResourceGroup :: MaintenanceWindowResourceType
+pattern ResourceGroup = MaintenanceWindowResourceType' "RESOURCE_GROUP"
+
 {-# COMPLETE
   Instance,
+  ResourceGroup,
   MaintenanceWindowResourceType' #-}
 
 instance FromText MaintenanceWindowResourceType where
@@ -51,9 +56,11 @@ instance ToText MaintenanceWindowResourceType where
 instance Enum MaintenanceWindowResourceType where
     toEnum i = case i of
         0 -> Instance
+        1 -> ResourceGroup
         _ -> (error . showText) $ "Unknown index for MaintenanceWindowResourceType: " <> toText i
     fromEnum x = case x of
         Instance -> 0
+        ResourceGroup -> 1
         MaintenanceWindowResourceType' name -> (error . showText) $ "Unknown MaintenanceWindowResourceType: " <> original name
 
 -- | Represents the bounds of /known/ $MaintenanceWindowResourceType.
@@ -61,7 +68,7 @@ instance Enum MaintenanceWindowResourceType where
 --   This instance exists only for backward compatibility.
 instance Bounded MaintenanceWindowResourceType where
     minBound = Instance
-    maxBound = Instance
+    maxBound = ResourceGroup
 
 instance Hashable     MaintenanceWindowResourceType
 instance NFData       MaintenanceWindowResourceType

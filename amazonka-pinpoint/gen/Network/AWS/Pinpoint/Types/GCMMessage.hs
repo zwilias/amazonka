@@ -21,7 +21,9 @@ import Network.AWS.Lens
 import Network.AWS.Pinpoint.Types.Action
 import Network.AWS.Prelude
 
--- | GCM Message.
+-- | Specifies the settings for a one-time message that's sent directly to an endpoint through the GCM channel. The GCM channel enables Amazon Pinpoint to send messages to the Firebase Cloud Messaging (FCM), formerly Google Cloud Messaging (GCM), service.
+--
+--
 --
 -- /See:/ 'gcmMessage' smart constructor.
 data GCMMessage = GCMMessage'{_gmSubstitutions ::
@@ -48,39 +50,39 @@ data GCMMessage = GCMMessage'{_gmSubstitutions ::
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'gmSubstitutions' - Default message substitutions. Can be overridden by individual address substitutions.
+-- * 'gmSubstitutions' - The default message variables to use in the notification message. You can override the default variables with individual address variables.
 --
--- * 'gmSilentPush' - Indicates if the message should display on the users device. Silent pushes can be used for Remote Configuration and Phone Home use cases.
+-- * 'gmSilentPush' - Specifies whether the notification is a silent push notification, which is a push notification that doesn't display on a recipient's device. Silent push notifications can be used for cases such as updating an app's configuration or supporting phone home functionality.
 --
--- * 'gmImageIconURL' - The URL that points to an image used as the large icon to the notification content view.
+-- * 'gmImageIconURL' - The URL of the large icon image to display in the content view of the push notification.
 --
--- * 'gmPriority' - The message priority. Amazon Pinpoint uses this value to set the FCM or GCM priority parameter when it sends the message. Accepts the following values: "Normal" - Messages might be delayed. Delivery is optimized for battery usage on the receiving device. Use normal priority unless immediate delivery is required. "High" - Messages are sent immediately and might wake a sleeping device. The equivalent values for APNs messages are "5" and "10". Amazon Pinpoint accepts these values here and converts them. For more information, see About FCM Messages in the Firebase documentation.
+-- * 'gmPriority' - para>normal - The notification might be delayed. Delivery is optimized for battery usage on the recipient's device. Use this value unless immediate delivery is required. /listitem>     * high - The notification is sent immediately and might wake a sleeping device. /para> Amazon Pinpoint specifies this value in the FCM priority parameter when it sends the notification message to FCM. The equivalent values for Apple Push Notification service (APNs) are 5, for normal, and 10, for high. If you specify an APNs value for this property, Amazon Pinpoint accepts and converts the value to the corresponding FCM value.
 --
--- * 'gmRawContent' - The Raw JSON formatted string to be used as the payload. This value overrides the message.
+-- * 'gmRawContent' - The raw, JSON-formatted string to use as the payload for the notification message. If specified, this value overrides all other content for the message.
 --
--- * 'gmData' - The data payload used for a silent push. This payload is added to the notifications' data.pinpoint.jsonBody' object
+-- * 'gmData' - The JSON data payload to use for the push notification, if the notification is a silent push notification. This payload is added to the data.pinpoint.jsonBody object of the notification.
 --
--- * 'gmRestrictedPackageName' - This parameter specifies the package name of the application where the registration tokens must match in order to receive the message.
+-- * 'gmRestrictedPackageName' - The package name of the application where registration tokens must match in order for the recipient to receive the message.
 --
--- * 'gmSmallImageIconURL' - The URL that points to an image used as the small icon for the notification which will be used to represent the notification in the status bar and content view
+-- * 'gmSmallImageIconURL' - The URL of the small icon image to display in the status bar and the content view of the push notification.
 --
--- * 'gmBody' - The message body of the notification, the email body or the text message.
+-- * 'gmBody' - The body of the notification message.
 --
--- * 'gmTimeToLive' - The length of time (in seconds) that FCM or GCM stores and attempts to deliver the message. If unspecified, the value defaults to the maximum, which is 2,419,200 seconds (28 days). Amazon Pinpoint uses this value to set the FCM or GCM time_to_live parameter.
+-- * 'gmTimeToLive' - The amount of time, in seconds, that FCM should store and attempt to deliver the push notification, if the service is unable to deliver the notification the first time. If you don't specify this value, FCM defaults to the maximum value, which is 2,419,200 seconds (28 days). Amazon Pinpoint specifies this value in the FCM time_to_live parameter when it sends the notification message to FCM.
 --
--- * 'gmURL' - The URL to open in the user's mobile browser. Used if the value for Action is URL.
+-- * 'gmURL' - The URL to open in the recipient's default mobile browser, if a recipient taps the push notification and the value of the Action property is URL.
 --
--- * 'gmSound' - Indicates a sound to play when the device receives the notification. Supports default, or the filename of a sound resource bundled in the app. Android sound files must reside in /res/raw/
+-- * 'gmSound' - The sound to play when the recipient receives the push notification. You can use the default stream or specify the file name of a sound resource that's bundled in your app. On an Android platform, the sound file must reside in /res/raw/.
 --
--- * 'gmAction' - The action that occurs if the user taps a push notification delivered by the campaign: OPEN_APP - Your app launches, or it becomes the foreground app if it has been sent to the background. This is the default action. DEEP_LINK - Uses deep linking features in iOS and Android to open your app and display a designated user interface within the app. URL - The default mobile browser on the user's device launches and opens a web page at the URL you specify. Possible values include: OPEN_APP | DEEP_LINK | URL
+-- * 'gmAction' - The action to occur if the recipient taps the push notification. Valid values are:     * OPEN_APP - Your app opens or it becomes the foreground app if it was sent to the background. This is the default action.     * DEEP_LINK - Your app opens and displays a designated user interface in the app. This action uses the deep-linking features of the Android platform.     * URL - The default mobile browser on the recipient's device opens and loads the web page at a URL that you specify.
 --
--- * 'gmCollapseKey' - This parameter identifies a group of messages (e.g., with collapse_key: "Updates Available") that can be collapsed, so that only the last message gets sent when delivery can be resumed. This is intended to avoid sending too many of the same messages when the device comes back online or becomes active.
+-- * 'gmCollapseKey' - An arbitrary string that identifies a group of messages that can be collapsed to ensure that only the last message is sent when delivery can resume. This helps avoid sending too many instances of the same messages when the recipient's device comes online again or becomes active. Amazon Pinpoint specifies this value in the Firebase Cloud Messaging (FCM) collapse_key parameter when it sends the notification message to FCM.
 --
--- * 'gmImageURL' - The URL that points to an image used in the push notification.
+-- * 'gmImageURL' - The URL of an image to display in the push notification.
 --
--- * 'gmTitle' - The message title that displays above the message on the user's device.
+-- * 'gmTitle' - The title to display above the notification message on the recipient's device.
 --
--- * 'gmIconReference' - The icon image name of the asset saved in your application.
+-- * 'gmIconReference' - The icon image name of the asset saved in your app.
 gcmMessage
     :: GCMMessage
 gcmMessage
@@ -95,71 +97,71 @@ gcmMessage
                 _gmCollapseKey = Nothing, _gmImageURL = Nothing,
                 _gmTitle = Nothing, _gmIconReference = Nothing}
 
--- | Default message substitutions. Can be overridden by individual address substitutions.
+-- | The default message variables to use in the notification message. You can override the default variables with individual address variables.
 gmSubstitutions :: Lens' GCMMessage (HashMap Text [Text])
 gmSubstitutions = lens _gmSubstitutions (\ s a -> s{_gmSubstitutions = a}) . _Default . _Map
 
--- | Indicates if the message should display on the users device. Silent pushes can be used for Remote Configuration and Phone Home use cases.
+-- | Specifies whether the notification is a silent push notification, which is a push notification that doesn't display on a recipient's device. Silent push notifications can be used for cases such as updating an app's configuration or supporting phone home functionality.
 gmSilentPush :: Lens' GCMMessage (Maybe Bool)
 gmSilentPush = lens _gmSilentPush (\ s a -> s{_gmSilentPush = a})
 
--- | The URL that points to an image used as the large icon to the notification content view.
+-- | The URL of the large icon image to display in the content view of the push notification.
 gmImageIconURL :: Lens' GCMMessage (Maybe Text)
 gmImageIconURL = lens _gmImageIconURL (\ s a -> s{_gmImageIconURL = a})
 
--- | The message priority. Amazon Pinpoint uses this value to set the FCM or GCM priority parameter when it sends the message. Accepts the following values: "Normal" - Messages might be delayed. Delivery is optimized for battery usage on the receiving device. Use normal priority unless immediate delivery is required. "High" - Messages are sent immediately and might wake a sleeping device. The equivalent values for APNs messages are "5" and "10". Amazon Pinpoint accepts these values here and converts them. For more information, see About FCM Messages in the Firebase documentation.
+-- | para>normal - The notification might be delayed. Delivery is optimized for battery usage on the recipient's device. Use this value unless immediate delivery is required. /listitem>     * high - The notification is sent immediately and might wake a sleeping device. /para> Amazon Pinpoint specifies this value in the FCM priority parameter when it sends the notification message to FCM. The equivalent values for Apple Push Notification service (APNs) are 5, for normal, and 10, for high. If you specify an APNs value for this property, Amazon Pinpoint accepts and converts the value to the corresponding FCM value.
 gmPriority :: Lens' GCMMessage (Maybe Text)
 gmPriority = lens _gmPriority (\ s a -> s{_gmPriority = a})
 
--- | The Raw JSON formatted string to be used as the payload. This value overrides the message.
+-- | The raw, JSON-formatted string to use as the payload for the notification message. If specified, this value overrides all other content for the message.
 gmRawContent :: Lens' GCMMessage (Maybe Text)
 gmRawContent = lens _gmRawContent (\ s a -> s{_gmRawContent = a})
 
--- | The data payload used for a silent push. This payload is added to the notifications' data.pinpoint.jsonBody' object
+-- | The JSON data payload to use for the push notification, if the notification is a silent push notification. This payload is added to the data.pinpoint.jsonBody object of the notification.
 gmData :: Lens' GCMMessage (HashMap Text Text)
 gmData = lens _gmData (\ s a -> s{_gmData = a}) . _Default . _Map
 
--- | This parameter specifies the package name of the application where the registration tokens must match in order to receive the message.
+-- | The package name of the application where registration tokens must match in order for the recipient to receive the message.
 gmRestrictedPackageName :: Lens' GCMMessage (Maybe Text)
 gmRestrictedPackageName = lens _gmRestrictedPackageName (\ s a -> s{_gmRestrictedPackageName = a})
 
--- | The URL that points to an image used as the small icon for the notification which will be used to represent the notification in the status bar and content view
+-- | The URL of the small icon image to display in the status bar and the content view of the push notification.
 gmSmallImageIconURL :: Lens' GCMMessage (Maybe Text)
 gmSmallImageIconURL = lens _gmSmallImageIconURL (\ s a -> s{_gmSmallImageIconURL = a})
 
--- | The message body of the notification, the email body or the text message.
+-- | The body of the notification message.
 gmBody :: Lens' GCMMessage (Maybe Text)
 gmBody = lens _gmBody (\ s a -> s{_gmBody = a})
 
--- | The length of time (in seconds) that FCM or GCM stores and attempts to deliver the message. If unspecified, the value defaults to the maximum, which is 2,419,200 seconds (28 days). Amazon Pinpoint uses this value to set the FCM or GCM time_to_live parameter.
+-- | The amount of time, in seconds, that FCM should store and attempt to deliver the push notification, if the service is unable to deliver the notification the first time. If you don't specify this value, FCM defaults to the maximum value, which is 2,419,200 seconds (28 days). Amazon Pinpoint specifies this value in the FCM time_to_live parameter when it sends the notification message to FCM.
 gmTimeToLive :: Lens' GCMMessage (Maybe Int)
 gmTimeToLive = lens _gmTimeToLive (\ s a -> s{_gmTimeToLive = a})
 
--- | The URL to open in the user's mobile browser. Used if the value for Action is URL.
+-- | The URL to open in the recipient's default mobile browser, if a recipient taps the push notification and the value of the Action property is URL.
 gmURL :: Lens' GCMMessage (Maybe Text)
 gmURL = lens _gmURL (\ s a -> s{_gmURL = a})
 
--- | Indicates a sound to play when the device receives the notification. Supports default, or the filename of a sound resource bundled in the app. Android sound files must reside in /res/raw/
+-- | The sound to play when the recipient receives the push notification. You can use the default stream or specify the file name of a sound resource that's bundled in your app. On an Android platform, the sound file must reside in /res/raw/.
 gmSound :: Lens' GCMMessage (Maybe Text)
 gmSound = lens _gmSound (\ s a -> s{_gmSound = a})
 
--- | The action that occurs if the user taps a push notification delivered by the campaign: OPEN_APP - Your app launches, or it becomes the foreground app if it has been sent to the background. This is the default action. DEEP_LINK - Uses deep linking features in iOS and Android to open your app and display a designated user interface within the app. URL - The default mobile browser on the user's device launches and opens a web page at the URL you specify. Possible values include: OPEN_APP | DEEP_LINK | URL
+-- | The action to occur if the recipient taps the push notification. Valid values are:     * OPEN_APP - Your app opens or it becomes the foreground app if it was sent to the background. This is the default action.     * DEEP_LINK - Your app opens and displays a designated user interface in the app. This action uses the deep-linking features of the Android platform.     * URL - The default mobile browser on the recipient's device opens and loads the web page at a URL that you specify.
 gmAction :: Lens' GCMMessage (Maybe Action)
 gmAction = lens _gmAction (\ s a -> s{_gmAction = a})
 
--- | This parameter identifies a group of messages (e.g., with collapse_key: "Updates Available") that can be collapsed, so that only the last message gets sent when delivery can be resumed. This is intended to avoid sending too many of the same messages when the device comes back online or becomes active.
+-- | An arbitrary string that identifies a group of messages that can be collapsed to ensure that only the last message is sent when delivery can resume. This helps avoid sending too many instances of the same messages when the recipient's device comes online again or becomes active. Amazon Pinpoint specifies this value in the Firebase Cloud Messaging (FCM) collapse_key parameter when it sends the notification message to FCM.
 gmCollapseKey :: Lens' GCMMessage (Maybe Text)
 gmCollapseKey = lens _gmCollapseKey (\ s a -> s{_gmCollapseKey = a})
 
--- | The URL that points to an image used in the push notification.
+-- | The URL of an image to display in the push notification.
 gmImageURL :: Lens' GCMMessage (Maybe Text)
 gmImageURL = lens _gmImageURL (\ s a -> s{_gmImageURL = a})
 
--- | The message title that displays above the message on the user's device.
+-- | The title to display above the notification message on the recipient's device.
 gmTitle :: Lens' GCMMessage (Maybe Text)
 gmTitle = lens _gmTitle (\ s a -> s{_gmTitle = a})
 
--- | The icon image name of the asset saved in your application.
+-- | The icon image name of the asset saved in your app.
 gmIconReference :: Lens' GCMMessage (Maybe Text)
 gmIconReference = lens _gmIconReference (\ s a -> s{_gmIconReference = a})
 

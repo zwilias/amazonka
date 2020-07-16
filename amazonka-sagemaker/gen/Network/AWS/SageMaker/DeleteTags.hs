@@ -36,7 +36,7 @@ module Network.AWS.SageMaker.DeleteTags
     , deleteTagsResponse
     , DeleteTagsResponse
     -- * Response Lenses
-    , dtrsResponseStatus
+    , dtsrsResponseStatus
     ) where
 
 import Network.AWS.Lens
@@ -110,7 +110,7 @@ instance ToQuery DeleteTags where
         toQuery = const mempty
 
 -- | /See:/ 'deleteTagsResponse' smart constructor.
-newtype DeleteTagsResponse = DeleteTagsResponse'{_dtrsResponseStatus
+newtype DeleteTagsResponse = DeleteTagsResponse'{_dtsrsResponseStatus
                                                  :: Int}
                                deriving (Eq, Read, Show, Data, Typeable,
                                          Generic)
@@ -119,16 +119,16 @@ newtype DeleteTagsResponse = DeleteTagsResponse'{_dtrsResponseStatus
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dtrsResponseStatus' - -- | The response status code.
+-- * 'dtsrsResponseStatus' - -- | The response status code.
 deleteTagsResponse
-    :: Int -- ^ 'dtrsResponseStatus'
+    :: Int -- ^ 'dtsrsResponseStatus'
     -> DeleteTagsResponse
 deleteTagsResponse pResponseStatus_
-  = DeleteTagsResponse'{_dtrsResponseStatus =
+  = DeleteTagsResponse'{_dtsrsResponseStatus =
                           pResponseStatus_}
 
 -- | -- | The response status code.
-dtrsResponseStatus :: Lens' DeleteTagsResponse Int
-dtrsResponseStatus = lens _dtrsResponseStatus (\ s a -> s{_dtrsResponseStatus = a})
+dtsrsResponseStatus :: Lens' DeleteTagsResponse Int
+dtsrsResponseStatus = lens _dtsrsResponseStatus (\ s a -> s{_dtsrsResponseStatus = a})
 
 instance NFData DeleteTagsResponse where

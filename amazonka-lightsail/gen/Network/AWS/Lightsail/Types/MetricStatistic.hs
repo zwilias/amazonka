@@ -98,3 +98,6 @@ instance ToHeader     MetricStatistic
 
 instance ToJSON MetricStatistic where
     toJSON = toJSONText
+
+instance FromJSON MetricStatistic where
+    parseJSON = parseJSONText "MetricStatistic"

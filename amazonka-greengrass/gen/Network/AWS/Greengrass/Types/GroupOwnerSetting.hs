@@ -32,7 +32,7 @@ data GroupOwnerSetting = GroupOwnerSetting'{_gosAutoAddGroupOwner
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'gosAutoAddGroupOwner' - If true, GreenGrass automatically adds the specified Linux OS group owner of the resource to the Lambda process privileges. Thus the Lambda process will have the file access permissions of the added Linux group.
+-- * 'gosAutoAddGroupOwner' - If true, AWS IoT Greengrass automatically adds the specified Linux OS group owner of the resource to the Lambda process privileges. Thus the Lambda process will have the file access permissions of the added Linux group.
 --
 -- * 'gosGroupOwner' - The name of the Linux OS group whose privileges will be added to the Lambda process. This field is optional.
 groupOwnerSetting
@@ -41,7 +41,7 @@ groupOwnerSetting
   = GroupOwnerSetting'{_gosAutoAddGroupOwner = Nothing,
                        _gosGroupOwner = Nothing}
 
--- | If true, GreenGrass automatically adds the specified Linux OS group owner of the resource to the Lambda process privileges. Thus the Lambda process will have the file access permissions of the added Linux group.
+-- | If true, AWS IoT Greengrass automatically adds the specified Linux OS group owner of the resource to the Lambda process privileges. Thus the Lambda process will have the file access permissions of the added Linux group.
 gosAutoAddGroupOwner :: Lens' GroupOwnerSetting (Maybe Bool)
 gosAutoAddGroupOwner = lens _gosAutoAddGroupOwner (\ s a -> s{_gosAutoAddGroupOwner = a})
 

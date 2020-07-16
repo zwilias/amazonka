@@ -31,6 +31,8 @@ data AuthorizerDescription = AuthorizerDescription'{_adStatus
                                                     !(Maybe AuthorizerStatus),
                                                     _adLastModifiedDate ::
                                                     !(Maybe POSIX),
+                                                    _adSigningDisabled ::
+                                                    !(Maybe Bool),
                                                     _adAuthorizerName ::
                                                     !(Maybe Text),
                                                     _adAuthorizerFunctionARN ::
@@ -54,6 +56,8 @@ data AuthorizerDescription = AuthorizerDescription'{_adStatus
 --
 -- * 'adLastModifiedDate' - The UNIX timestamp of when the authorizer was last updated.
 --
+-- * 'adSigningDisabled' - Specifies whether AWS IoT validates the token signature in an authorization request.
+--
 -- * 'adAuthorizerName' - The authorizer name.
 --
 -- * 'adAuthorizerFunctionARN' - The authorizer's Lambda function ARN.
@@ -70,6 +74,7 @@ authorizerDescription
 authorizerDescription
   = AuthorizerDescription'{_adStatus = Nothing,
                            _adLastModifiedDate = Nothing,
+                           _adSigningDisabled = Nothing,
                            _adAuthorizerName = Nothing,
                            _adAuthorizerFunctionARN = Nothing,
                            _adAuthorizerARN = Nothing,
@@ -84,6 +89,10 @@ adStatus = lens _adStatus (\ s a -> s{_adStatus = a})
 -- | The UNIX timestamp of when the authorizer was last updated.
 adLastModifiedDate :: Lens' AuthorizerDescription (Maybe UTCTime)
 adLastModifiedDate = lens _adLastModifiedDate (\ s a -> s{_adLastModifiedDate = a}) . mapping _Time
+
+-- | Specifies whether AWS IoT validates the token signature in an authorization request.
+adSigningDisabled :: Lens' AuthorizerDescription (Maybe Bool)
+adSigningDisabled = lens _adSigningDisabled (\ s a -> s{_adSigningDisabled = a})
 
 -- | The authorizer name.
 adAuthorizerName :: Lens' AuthorizerDescription (Maybe Text)
@@ -115,7 +124,8 @@ instance FromJSON AuthorizerDescription where
               (\ x ->
                  AuthorizerDescription' <$>
                    (x .:? "status") <*> (x .:? "lastModifiedDate") <*>
-                     (x .:? "authorizerName")
+                     (x .:? "signingDisabled")
+                     <*> (x .:? "authorizerName")
                      <*> (x .:? "authorizerFunctionArn")
                      <*> (x .:? "authorizerArn")
                      <*> (x .:? "creationDate")

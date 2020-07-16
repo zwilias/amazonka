@@ -33,6 +33,8 @@ data GroupVersion = GroupVersion'{_gvResourceDefinitionVersionARN
                                   _gvFunctionDefinitionVersionARN ::
                                   !(Maybe Text),
                                   _gvLoggerDefinitionVersionARN ::
+                                  !(Maybe Text),
+                                  _gvConnectorDefinitionVersionARN ::
                                   !(Maybe Text)}
                       deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -40,7 +42,7 @@ data GroupVersion = GroupVersion'{_gvResourceDefinitionVersionARN
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'gvResourceDefinitionVersionARN' - The resource definition version ARN for this group.
+-- * 'gvResourceDefinitionVersionARN' - The ARN of the resource definition version for this group.
 --
 -- * 'gvSubscriptionDefinitionVersionARN' - The ARN of the subscription definition version for this group.
 --
@@ -51,6 +53,8 @@ data GroupVersion = GroupVersion'{_gvResourceDefinitionVersionARN
 -- * 'gvFunctionDefinitionVersionARN' - The ARN of the function definition version for this group.
 --
 -- * 'gvLoggerDefinitionVersionARN' - The ARN of the logger definition version for this group.
+--
+-- * 'gvConnectorDefinitionVersionARN' - The ARN of the connector definition version for this group.
 groupVersion
     :: GroupVersion
 groupVersion
@@ -60,9 +64,10 @@ groupVersion
                   _gvCoreDefinitionVersionARN = Nothing,
                   _gvDeviceDefinitionVersionARN = Nothing,
                   _gvFunctionDefinitionVersionARN = Nothing,
-                  _gvLoggerDefinitionVersionARN = Nothing}
+                  _gvLoggerDefinitionVersionARN = Nothing,
+                  _gvConnectorDefinitionVersionARN = Nothing}
 
--- | The resource definition version ARN for this group.
+-- | The ARN of the resource definition version for this group.
 gvResourceDefinitionVersionARN :: Lens' GroupVersion (Maybe Text)
 gvResourceDefinitionVersionARN = lens _gvResourceDefinitionVersionARN (\ s a -> s{_gvResourceDefinitionVersionARN = a})
 
@@ -86,6 +91,10 @@ gvFunctionDefinitionVersionARN = lens _gvFunctionDefinitionVersionARN (\ s a -> 
 gvLoggerDefinitionVersionARN :: Lens' GroupVersion (Maybe Text)
 gvLoggerDefinitionVersionARN = lens _gvLoggerDefinitionVersionARN (\ s a -> s{_gvLoggerDefinitionVersionARN = a})
 
+-- | The ARN of the connector definition version for this group.
+gvConnectorDefinitionVersionARN :: Lens' GroupVersion (Maybe Text)
+gvConnectorDefinitionVersionARN = lens _gvConnectorDefinitionVersionARN (\ s a -> s{_gvConnectorDefinitionVersionARN = a})
+
 instance FromJSON GroupVersion where
         parseJSON
           = withObject "GroupVersion"
@@ -96,7 +105,8 @@ instance FromJSON GroupVersion where
                      <*> (x .:? "CoreDefinitionVersionArn")
                      <*> (x .:? "DeviceDefinitionVersionArn")
                      <*> (x .:? "FunctionDefinitionVersionArn")
-                     <*> (x .:? "LoggerDefinitionVersionArn"))
+                     <*> (x .:? "LoggerDefinitionVersionArn")
+                     <*> (x .:? "ConnectorDefinitionVersionArn"))
 
 instance Hashable GroupVersion where
 
@@ -117,4 +127,6 @@ instance ToJSON GroupVersion where
                   ("FunctionDefinitionVersionArn" .=) <$>
                     _gvFunctionDefinitionVersionARN,
                   ("LoggerDefinitionVersionArn" .=) <$>
-                    _gvLoggerDefinitionVersionARN])
+                    _gvLoggerDefinitionVersionARN,
+                  ("ConnectorDefinitionVersionArn" .=) <$>
+                    _gvConnectorDefinitionVersionARN])

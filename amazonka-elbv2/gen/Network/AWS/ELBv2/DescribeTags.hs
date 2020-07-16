@@ -53,13 +53,13 @@ newtype DescribeTags = DescribeTags'{_dtResourceARNs
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dtResourceARNs' - The Amazon Resource Names (ARN) of the resources.
+-- * 'dtResourceARNs' - The Amazon Resource Names (ARN) of the resources. You can specify up to 20 resources in a single call.
 describeTags
     :: DescribeTags
 describeTags
   = DescribeTags'{_dtResourceARNs = mempty}
 
--- | The Amazon Resource Names (ARN) of the resources.
+-- | The Amazon Resource Names (ARN) of the resources. You can specify up to 20 resources in a single call.
 dtResourceARNs :: Lens' DescribeTags [Text]
 dtResourceARNs = lens _dtResourceARNs (\ s a -> s{_dtResourceARNs = a}) . _Coerce
 

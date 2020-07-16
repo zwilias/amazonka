@@ -19,6 +19,8 @@ module Network.AWS.SSM.Types.ParameterHistory where
 
 import Network.AWS.Lens
 import Network.AWS.Prelude
+import Network.AWS.SSM.Types.ParameterInlinePolicy
+import Network.AWS.SSM.Types.ParameterTier
 import Network.AWS.SSM.Types.ParameterType
 
 -- | Information about parameter usage.
@@ -31,11 +33,15 @@ data ParameterHistory = ParameterHistory'{_phLastModifiedDate
                                           _phKeyId :: !(Maybe Text),
                                           _phValue :: !(Maybe Text),
                                           _phName :: !(Maybe Text),
+                                          _phTier :: !(Maybe ParameterTier),
                                           _phVersion :: !(Maybe Integer),
                                           _phLastModifiedUser :: !(Maybe Text),
+                                          _phLabels :: !(Maybe (List1 Text)),
                                           _phAllowedPattern :: !(Maybe Text),
                                           _phType :: !(Maybe ParameterType),
-                                          _phDescription :: !(Maybe Text)}
+                                          _phDescription :: !(Maybe Text),
+                                          _phPolicies ::
+                                          !(Maybe [ParameterInlinePolicy])}
                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ParameterHistory' with the minimum fields required to make a request.
@@ -50,24 +56,31 @@ data ParameterHistory = ParameterHistory'{_phLastModifiedDate
 --
 -- * 'phName' - The name of the parameter.
 --
+-- * 'phTier' - The parameter tier.
+--
 -- * 'phVersion' - The parameter version.
 --
 -- * 'phLastModifiedUser' - Amazon Resource Name (ARN) of the AWS user who last changed the parameter.
+--
+-- * 'phLabels' - Labels assigned to the parameter version.
 --
 -- * 'phAllowedPattern' - Parameter names can include the following letters and symbols. a-zA-Z0-9_.-
 --
 -- * 'phType' - The type of parameter used.
 --
 -- * 'phDescription' - Information about the parameter.
+--
+-- * 'phPolicies' - Information about the policies assigned to a parameter. <https://docs.aws.amazon.com/systems-manager/latest/userguide/parameter-store-policies.html Assigning parameter policies> in the /AWS Systems Manager User Guide/ .
 parameterHistory
     :: ParameterHistory
 parameterHistory
   = ParameterHistory'{_phLastModifiedDate = Nothing,
                       _phKeyId = Nothing, _phValue = Nothing,
-                      _phName = Nothing, _phVersion = Nothing,
-                      _phLastModifiedUser = Nothing,
-                      _phAllowedPattern = Nothing, _phType = Nothing,
-                      _phDescription = Nothing}
+                      _phName = Nothing, _phTier = Nothing,
+                      _phVersion = Nothing, _phLastModifiedUser = Nothing,
+                      _phLabels = Nothing, _phAllowedPattern = Nothing,
+                      _phType = Nothing, _phDescription = Nothing,
+                      _phPolicies = Nothing}
 
 -- | Date the parameter was last changed or updated.
 phLastModifiedDate :: Lens' ParameterHistory (Maybe UTCTime)
@@ -85,6 +98,10 @@ phValue = lens _phValue (\ s a -> s{_phValue = a})
 phName :: Lens' ParameterHistory (Maybe Text)
 phName = lens _phName (\ s a -> s{_phName = a})
 
+-- | The parameter tier.
+phTier :: Lens' ParameterHistory (Maybe ParameterTier)
+phTier = lens _phTier (\ s a -> s{_phTier = a})
+
 -- | The parameter version.
 phVersion :: Lens' ParameterHistory (Maybe Integer)
 phVersion = lens _phVersion (\ s a -> s{_phVersion = a})
@@ -92,6 +109,10 @@ phVersion = lens _phVersion (\ s a -> s{_phVersion = a})
 -- | Amazon Resource Name (ARN) of the AWS user who last changed the parameter.
 phLastModifiedUser :: Lens' ParameterHistory (Maybe Text)
 phLastModifiedUser = lens _phLastModifiedUser (\ s a -> s{_phLastModifiedUser = a})
+
+-- | Labels assigned to the parameter version.
+phLabels :: Lens' ParameterHistory (Maybe (NonEmpty Text))
+phLabels = lens _phLabels (\ s a -> s{_phLabels = a}) . mapping _List1
 
 -- | Parameter names can include the following letters and symbols. a-zA-Z0-9_.-
 phAllowedPattern :: Lens' ParameterHistory (Maybe Text)
@@ -105,6 +126,10 @@ phType = lens _phType (\ s a -> s{_phType = a})
 phDescription :: Lens' ParameterHistory (Maybe Text)
 phDescription = lens _phDescription (\ s a -> s{_phDescription = a})
 
+-- | Information about the policies assigned to a parameter. <https://docs.aws.amazon.com/systems-manager/latest/userguide/parameter-store-policies.html Assigning parameter policies> in the /AWS Systems Manager User Guide/ .
+phPolicies :: Lens' ParameterHistory [ParameterInlinePolicy]
+phPolicies = lens _phPolicies (\ s a -> s{_phPolicies = a}) . _Default . _Coerce
+
 instance FromJSON ParameterHistory where
         parseJSON
           = withObject "ParameterHistory"
@@ -113,11 +138,14 @@ instance FromJSON ParameterHistory where
                    (x .:? "LastModifiedDate") <*> (x .:? "KeyId") <*>
                      (x .:? "Value")
                      <*> (x .:? "Name")
+                     <*> (x .:? "Tier")
                      <*> (x .:? "Version")
                      <*> (x .:? "LastModifiedUser")
+                     <*> (x .:? "Labels")
                      <*> (x .:? "AllowedPattern")
                      <*> (x .:? "Type")
-                     <*> (x .:? "Description"))
+                     <*> (x .:? "Description")
+                     <*> (x .:? "Policies" .!= mempty))
 
 instance Hashable ParameterHistory where
 

@@ -60,7 +60,7 @@ data BatchCreatePartition = BatchCreatePartition'{_bcpCatalogId
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'bcpCatalogId' - The ID of the catalog in which the partion is to be created. Currently, this should be the AWS account ID.
+-- * 'bcpCatalogId' - The ID of the catalog in which the partition is to be created. Currently, this should be the AWS account ID.
 --
 -- * 'bcpDatabaseName' - The name of the metadata database in which the partition is to be created.
 --
@@ -77,7 +77,7 @@ batchCreatePartition pDatabaseName_ pTableName_
                           _bcpTableName = pTableName_,
                           _bcpPartitionInputList = mempty}
 
--- | The ID of the catalog in which the partion is to be created. Currently, this should be the AWS account ID.
+-- | The ID of the catalog in which the partition is to be created. Currently, this should be the AWS account ID.
 bcpCatalogId :: Lens' BatchCreatePartition (Maybe Text)
 bcpCatalogId = lens _bcpCatalogId (\ s a -> s{_bcpCatalogId = a})
 
@@ -146,7 +146,7 @@ data BatchCreatePartitionResponse = BatchCreatePartitionResponse'{_bcprsErrors
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'bcprsErrors' - Errors encountered when trying to create the requested partitions.
+-- * 'bcprsErrors' - The errors encountered when trying to create the requested partitions.
 --
 -- * 'bcprsResponseStatus' - -- | The response status code.
 batchCreatePartitionResponse
@@ -157,7 +157,7 @@ batchCreatePartitionResponse pResponseStatus_
                                     Nothing,
                                   _bcprsResponseStatus = pResponseStatus_}
 
--- | Errors encountered when trying to create the requested partitions.
+-- | The errors encountered when trying to create the requested partitions.
 bcprsErrors :: Lens' BatchCreatePartitionResponse [PartitionError]
 bcprsErrors = lens _bcprsErrors (\ s a -> s{_bcprsErrors = a}) . _Default . _Coerce
 

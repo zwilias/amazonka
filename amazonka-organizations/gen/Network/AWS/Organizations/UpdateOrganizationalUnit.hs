@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Renames the specified organizational unit (OU). The ID and ARN do not change. The child OUs and accounts remain in place, and any attached policies of the OU remain attached. 
+-- Renames the specified organizational unit (OU). The ID and ARN don't change. The child OUs and accounts remain in place, and any attached policies of the OU remain attached. 
 --
 --
 -- This operation can be called only from the organization's master account.
@@ -61,7 +61,7 @@ data UpdateOrganizationalUnit = UpdateOrganizationalUnit'{_uouName
 --
 -- * 'uouName' - The new name that you want to assign to the OU. The <http://wikipedia.org/wiki/regex regex pattern> that is used to validate this parameter is a string of any of the characters in the ASCII character range.
 --
--- * 'uouOrganizationalUnitId' - The unique identifier (ID) of the OU that you want to rename. You can get the ID from the 'ListOrganizationalUnitsForParent' operation. The <http://wikipedia.org/wiki/regex regex pattern> for an organizational unit ID string requires "ou-" followed by from 4 to 32 lower-case letters or digits (the ID of the root that contains the OU) followed by a second "-" dash and from 8 to 32 additional lower-case letters or digits.
+-- * 'uouOrganizationalUnitId' - The unique identifier (ID) of the OU that you want to rename. You can get the ID from the 'ListOrganizationalUnitsForParent' operation. The <http://wikipedia.org/wiki/regex regex pattern> for an organizational unit ID string requires "ou-" followed by from 4 to 32 lowercase letters or digits (the ID of the root that contains the OU). This string is followed by a second "-" dash and from 8 to 32 additional lowercase letters or digits.
 updateOrganizationalUnit
     :: Text -- ^ 'uouOrganizationalUnitId'
     -> UpdateOrganizationalUnit
@@ -73,7 +73,7 @@ updateOrganizationalUnit pOrganizationalUnitId_
 uouName :: Lens' UpdateOrganizationalUnit (Maybe Text)
 uouName = lens _uouName (\ s a -> s{_uouName = a})
 
--- | The unique identifier (ID) of the OU that you want to rename. You can get the ID from the 'ListOrganizationalUnitsForParent' operation. The <http://wikipedia.org/wiki/regex regex pattern> for an organizational unit ID string requires "ou-" followed by from 4 to 32 lower-case letters or digits (the ID of the root that contains the OU) followed by a second "-" dash and from 8 to 32 additional lower-case letters or digits.
+-- | The unique identifier (ID) of the OU that you want to rename. You can get the ID from the 'ListOrganizationalUnitsForParent' operation. The <http://wikipedia.org/wiki/regex regex pattern> for an organizational unit ID string requires "ou-" followed by from 4 to 32 lowercase letters or digits (the ID of the root that contains the OU). This string is followed by a second "-" dash and from 8 to 32 additional lowercase letters or digits.
 uouOrganizationalUnitId :: Lens' UpdateOrganizationalUnit Text
 uouOrganizationalUnitId = lens _uouOrganizationalUnitId (\ s a -> s{_uouOrganizationalUnitId = a})
 

@@ -21,6 +21,7 @@ import Network.AWS.Lens
 import Network.AWS.Lightsail.Types.DomainEntry
 import Network.AWS.Lightsail.Types.ResourceLocation
 import Network.AWS.Lightsail.Types.ResourceType
+import Network.AWS.Lightsail.Types.Tag
 import Network.AWS.Prelude
 
 -- | Describes a domain where you are storing recordsets in Lightsail.
@@ -35,7 +36,8 @@ data Domain = Domain'{_domResourceType ::
                       _domCreatedAt :: !(Maybe POSIX),
                       _domLocation :: !(Maybe ResourceLocation),
                       _domName :: !(Maybe Text),
-                      _domSupportCode :: !(Maybe Text)}
+                      _domSupportCode :: !(Maybe Text),
+                      _domTags :: !(Maybe [Tag])}
                 deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'Domain' with the minimum fields required to make a request.
@@ -55,13 +57,16 @@ data Domain = Domain'{_domResourceType ::
 -- * 'domName' - The name of the domain.
 --
 -- * 'domSupportCode' - The support code. Include this code in your email to support when you have questions about an instance or another resource in Lightsail. This code enables our support team to look up your Lightsail information more easily.
+--
+-- * 'domTags' - The tag keys and optional values for the resource. For more information about tags in Lightsail, see the <https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-tags Lightsail Dev Guide> .
 domain
     :: Domain
 domain
   = Domain'{_domResourceType = Nothing,
             _domDomainEntries = Nothing, _domArn = Nothing,
             _domCreatedAt = Nothing, _domLocation = Nothing,
-            _domName = Nothing, _domSupportCode = Nothing}
+            _domName = Nothing, _domSupportCode = Nothing,
+            _domTags = Nothing}
 
 -- | The resource type. 
 domResourceType :: Lens' Domain (Maybe ResourceType)
@@ -91,6 +96,10 @@ domName = lens _domName (\ s a -> s{_domName = a})
 domSupportCode :: Lens' Domain (Maybe Text)
 domSupportCode = lens _domSupportCode (\ s a -> s{_domSupportCode = a})
 
+-- | The tag keys and optional values for the resource. For more information about tags in Lightsail, see the <https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-tags Lightsail Dev Guide> .
+domTags :: Lens' Domain [Tag]
+domTags = lens _domTags (\ s a -> s{_domTags = a}) . _Default . _Coerce
+
 instance FromJSON Domain where
         parseJSON
           = withObject "Domain"
@@ -102,7 +111,8 @@ instance FromJSON Domain where
                      <*> (x .:? "createdAt")
                      <*> (x .:? "location")
                      <*> (x .:? "name")
-                     <*> (x .:? "supportCode"))
+                     <*> (x .:? "supportCode")
+                     <*> (x .:? "tags" .!= mempty))
 
 instance Hashable Domain where
 

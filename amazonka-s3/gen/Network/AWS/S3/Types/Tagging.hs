@@ -22,7 +22,11 @@ import Network.AWS.Prelude
 import Network.AWS.S3.Internal
 import Network.AWS.S3.Types.Tag
 
--- | /See:/ 'tagging' smart constructor.
+-- | Container for @TagSet@ elements.
+--
+--
+--
+-- /See:/ 'tagging' smart constructor.
 newtype Tagging = Tagging'{_tTagSet :: [Tag]}
                     deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -30,12 +34,12 @@ newtype Tagging = Tagging'{_tTagSet :: [Tag]}
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'tTagSet' - Undocumented member.
+-- * 'tTagSet' - A collection for a set of tags
 tagging
     :: Tagging
 tagging = Tagging'{_tTagSet = mempty}
 
--- | Undocumented member.
+-- | A collection for a set of tags
 tTagSet :: Lens' Tagging [Tag]
 tTagSet = lens _tTagSet (\ s a -> s{_tTagSet = a}) . _Coerce
 

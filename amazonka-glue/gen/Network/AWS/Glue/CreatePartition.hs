@@ -58,7 +58,7 @@ data CreatePartition = CreatePartition'{_cpCatalogId
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'cpCatalogId' - The ID of the catalog in which the partion is to be created. Currently, this should be the AWS account ID.
+-- * 'cpCatalogId' - The AWS account ID of the catalog in which the partition is to be created.
 --
 -- * 'cpDatabaseName' - The name of the metadata database in which the partition is to be created.
 --
@@ -77,7 +77,7 @@ createPartition pDatabaseName_ pTableName_
                      _cpTableName = pTableName_,
                      _cpPartitionInput = pPartitionInput_}
 
--- | The ID of the catalog in which the partion is to be created. Currently, this should be the AWS account ID.
+-- | The AWS account ID of the catalog in which the partition is to be created.
 cpCatalogId :: Lens' CreatePartition (Maybe Text)
 cpCatalogId = lens _cpCatalogId (\ s a -> s{_cpCatalogId = a})
 

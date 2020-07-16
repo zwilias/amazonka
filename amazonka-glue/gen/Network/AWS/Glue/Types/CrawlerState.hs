@@ -19,9 +19,9 @@
 module Network.AWS.Glue.Types.CrawlerState (
   CrawlerState (
     ..
-    , CSReady
-    , CSRunning
-    , CSStopping
+    , CReady
+    , CRunning
+    , CStopping
     )
   ) where
 
@@ -32,19 +32,19 @@ data CrawlerState = CrawlerState' (CI Text)
                       deriving (Eq, Ord, Read, Show, Data, Typeable,
                                 Generic)
 
-pattern CSReady :: CrawlerState
-pattern CSReady = CrawlerState' "READY"
+pattern CReady :: CrawlerState
+pattern CReady = CrawlerState' "READY"
 
-pattern CSRunning :: CrawlerState
-pattern CSRunning = CrawlerState' "RUNNING"
+pattern CRunning :: CrawlerState
+pattern CRunning = CrawlerState' "RUNNING"
 
-pattern CSStopping :: CrawlerState
-pattern CSStopping = CrawlerState' "STOPPING"
+pattern CStopping :: CrawlerState
+pattern CStopping = CrawlerState' "STOPPING"
 
 {-# COMPLETE
-  CSReady,
-  CSRunning,
-  CSStopping,
+  CReady,
+  CRunning,
+  CStopping,
   CrawlerState' #-}
 
 instance FromText CrawlerState where
@@ -59,22 +59,22 @@ instance ToText CrawlerState where
 --   fromEnum is a partial function, and will error on values unknown at generation time.
 instance Enum CrawlerState where
     toEnum i = case i of
-        0 -> CSReady
-        1 -> CSRunning
-        2 -> CSStopping
+        0 -> CReady
+        1 -> CRunning
+        2 -> CStopping
         _ -> (error . showText) $ "Unknown index for CrawlerState: " <> toText i
     fromEnum x = case x of
-        CSReady -> 0
-        CSRunning -> 1
-        CSStopping -> 2
+        CReady -> 0
+        CRunning -> 1
+        CStopping -> 2
         CrawlerState' name -> (error . showText) $ "Unknown CrawlerState: " <> original name
 
 -- | Represents the bounds of /known/ $CrawlerState.
 --   AWS may have added more since the source was generated.
 --   This instance exists only for backward compatibility.
 instance Bounded CrawlerState where
-    minBound = CSReady
-    maxBound = CSStopping
+    minBound = CReady
+    maxBound = CStopping
 
 instance Hashable     CrawlerState
 instance NFData       CrawlerState

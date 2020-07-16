@@ -20,6 +20,7 @@ module Network.AWS.Organizations.Types.PolicyType (
   PolicyType (
     ..
     , ServiceControlPolicy
+    , TagPolicy
     )
   ) where
 
@@ -33,8 +34,12 @@ data PolicyType = PolicyType' (CI Text)
 pattern ServiceControlPolicy :: PolicyType
 pattern ServiceControlPolicy = PolicyType' "SERVICE_CONTROL_POLICY"
 
+pattern TagPolicy :: PolicyType
+pattern TagPolicy = PolicyType' "TAG_POLICY"
+
 {-# COMPLETE
   ServiceControlPolicy,
+  TagPolicy,
   PolicyType' #-}
 
 instance FromText PolicyType where
@@ -50,9 +55,11 @@ instance ToText PolicyType where
 instance Enum PolicyType where
     toEnum i = case i of
         0 -> ServiceControlPolicy
+        1 -> TagPolicy
         _ -> (error . showText) $ "Unknown index for PolicyType: " <> toText i
     fromEnum x = case x of
         ServiceControlPolicy -> 0
+        TagPolicy -> 1
         PolicyType' name -> (error . showText) $ "Unknown PolicyType: " <> original name
 
 -- | Represents the bounds of /known/ $PolicyType.
@@ -60,7 +67,7 @@ instance Enum PolicyType where
 --   This instance exists only for backward compatibility.
 instance Bounded PolicyType where
     minBound = ServiceControlPolicy
-    maxBound = ServiceControlPolicy
+    maxBound = TagPolicy
 
 instance Hashable     PolicyType
 instance NFData       PolicyType

@@ -33,6 +33,7 @@ module Network.AWS.WorkSpaces.CreateIPGroup
     -- * Request Lenses
     , cigGroupDesc
     , cigUserRules
+    , cigTags
     , cigGroupName
 
     -- * Destructuring the Response
@@ -54,6 +55,7 @@ import Network.AWS.WorkSpaces.Types.Product
 data CreateIPGroup = CreateIPGroup'{_cigGroupDesc ::
                                     !(Maybe Text),
                                     _cigUserRules :: !(Maybe [IPRuleItem]),
+                                    _cigTags :: !(Maybe [Tag]),
                                     _cigGroupName :: !Text}
                        deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -65,13 +67,16 @@ data CreateIPGroup = CreateIPGroup'{_cigGroupDesc ::
 --
 -- * 'cigUserRules' - The rules to add to the group.
 --
+-- * 'cigTags' - The tags. Each WorkSpaces resource can have a maximum of 50 tags.
+--
 -- * 'cigGroupName' - The name of the group.
 createIPGroup
     :: Text -- ^ 'cigGroupName'
     -> CreateIPGroup
 createIPGroup pGroupName_
   = CreateIPGroup'{_cigGroupDesc = Nothing,
-                   _cigUserRules = Nothing, _cigGroupName = pGroupName_}
+                   _cigUserRules = Nothing, _cigTags = Nothing,
+                   _cigGroupName = pGroupName_}
 
 -- | The description of the group.
 cigGroupDesc :: Lens' CreateIPGroup (Maybe Text)
@@ -80,6 +85,10 @@ cigGroupDesc = lens _cigGroupDesc (\ s a -> s{_cigGroupDesc = a})
 -- | The rules to add to the group.
 cigUserRules :: Lens' CreateIPGroup [IPRuleItem]
 cigUserRules = lens _cigUserRules (\ s a -> s{_cigUserRules = a}) . _Default . _Coerce
+
+-- | The tags. Each WorkSpaces resource can have a maximum of 50 tags.
+cigTags :: Lens' CreateIPGroup [Tag]
+cigTags = lens _cigTags (\ s a -> s{_cigTags = a}) . _Default . _Coerce
 
 -- | The name of the group.
 cigGroupName :: Lens' CreateIPGroup Text
@@ -113,6 +122,7 @@ instance ToJSON CreateIPGroup where
               (catMaybes
                  [("GroupDesc" .=) <$> _cigGroupDesc,
                   ("UserRules" .=) <$> _cigUserRules,
+                  ("Tags" .=) <$> _cigTags,
                   Just ("GroupName" .= _cigGroupName)])
 
 instance ToPath CreateIPGroup where
@@ -133,7 +143,7 @@ data CreateIPGroupResponse = CreateIPGroupResponse'{_cigrsGroupId
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'cigrsGroupId' - The ID of the group.
+-- * 'cigrsGroupId' - The identifier of the group.
 --
 -- * 'cigrsResponseStatus' - -- | The response status code.
 createIPGroupResponse
@@ -143,7 +153,7 @@ createIPGroupResponse pResponseStatus_
   = CreateIPGroupResponse'{_cigrsGroupId = Nothing,
                            _cigrsResponseStatus = pResponseStatus_}
 
--- | The ID of the group.
+-- | The identifier of the group.
 cigrsGroupId :: Lens' CreateIPGroupResponse (Maybe Text)
 cigrsGroupId = lens _cigrsGroupId (\ s a -> s{_cigrsGroupId = a})
 

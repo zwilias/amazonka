@@ -29,7 +29,7 @@ module Network.AWS.MediaLive.Types.AudioType (
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | Placeholder documentation for AudioType
+-- | Audio Type
 data AudioType = AudioType' (CI Text)
                    deriving (Eq, Ord, Read, Show, Data, Typeable,
                              Generic)

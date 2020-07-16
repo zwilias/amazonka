@@ -29,7 +29,7 @@ import Network.AWS.Prelude
 --
 --
 --
--- For limits on how many destinations an application can write and other limitations, see <http://docs.aws.amazon.com/kinesisanalytics/latest/dev/limits.html Limits> . 
+-- For limits on how many destinations an application can write and other limitations, see <https://docs.aws.amazon.com/kinesisanalytics/latest/dev/limits.html Limits> . 
 --
 --
 -- /See:/ 'output' smart constructor.
@@ -55,7 +55,7 @@ data Output = Output'{_oLambdaOutput ::
 --
 -- * 'oName' - Name of the in-application stream.
 --
--- * 'oDestinationSchema' - Describes the data format when records are written to the destination. For more information, see <http://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-it-works-output.html Configuring Application Output> .
+-- * 'oDestinationSchema' - Describes the data format when records are written to the destination. For more information, see <https://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-it-works-output.html Configuring Application Output> .
 output
     :: Text -- ^ 'oName'
     -> DestinationSchema -- ^ 'oDestinationSchema'
@@ -82,7 +82,7 @@ oKinesisFirehoseOutput = lens _oKinesisFirehoseOutput (\ s a -> s{_oKinesisFireh
 oName :: Lens' Output Text
 oName = lens _oName (\ s a -> s{_oName = a})
 
--- | Describes the data format when records are written to the destination. For more information, see <http://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-it-works-output.html Configuring Application Output> .
+-- | Describes the data format when records are written to the destination. For more information, see <https://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-it-works-output.html Configuring Application Output> .
 oDestinationSchema :: Lens' Output DestinationSchema
 oDestinationSchema = lens _oDestinationSchema (\ s a -> s{_oDestinationSchema = a})
 

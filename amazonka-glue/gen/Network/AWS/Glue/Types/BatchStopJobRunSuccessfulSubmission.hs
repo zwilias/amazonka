@@ -20,7 +20,7 @@ module Network.AWS.Glue.Types.BatchStopJobRunSuccessfulSubmission where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | Records a successful request to stop a specified JobRun.
+-- | Records a successful request to stop a specified @JobRun@ .
 --
 --
 --
@@ -42,7 +42,7 @@ data BatchStopJobRunSuccessfulSubmission = BatchStopJobRunSuccessfulSubmission'{
 --
 -- * 'bsjrssJobName' - The name of the job definition used in the job run that was stopped.
 --
--- * 'bsjrssJobRunId' - The JobRunId of the job run that was stopped.
+-- * 'bsjrssJobRunId' - The @JobRunId@ of the job run that was stopped.
 batchStopJobRunSuccessfulSubmission
     :: BatchStopJobRunSuccessfulSubmission
 batchStopJobRunSuccessfulSubmission
@@ -54,7 +54,7 @@ batchStopJobRunSuccessfulSubmission
 bsjrssJobName :: Lens' BatchStopJobRunSuccessfulSubmission (Maybe Text)
 bsjrssJobName = lens _bsjrssJobName (\ s a -> s{_bsjrssJobName = a})
 
--- | The JobRunId of the job run that was stopped.
+-- | The @JobRunId@ of the job run that was stopped.
 bsjrssJobRunId :: Lens' BatchStopJobRunSuccessfulSubmission (Maybe Text)
 bsjrssJobRunId = lens _bsjrssJobRunId (\ s a -> s{_bsjrssJobRunId = a})
 

@@ -20,6 +20,7 @@ module Network.AWS.Lightsail.Types.KeyPair where
 import Network.AWS.Lens
 import Network.AWS.Lightsail.Types.ResourceLocation
 import Network.AWS.Lightsail.Types.ResourceType
+import Network.AWS.Lightsail.Types.Tag
 import Network.AWS.Prelude
 
 -- | Describes the SSH key pair.
@@ -34,7 +35,8 @@ data KeyPair = KeyPair'{_kpResourceType ::
                         _kpLocation :: !(Maybe ResourceLocation),
                         _kpFingerprint :: !(Maybe Text),
                         _kpName :: !(Maybe Text),
-                        _kpSupportCode :: !(Maybe Text)}
+                        _kpSupportCode :: !(Maybe Text),
+                        _kpTags :: !(Maybe [Tag])}
                  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'KeyPair' with the minimum fields required to make a request.
@@ -54,13 +56,16 @@ data KeyPair = KeyPair'{_kpResourceType ::
 -- * 'kpName' - The friendly name of the SSH key pair.
 --
 -- * 'kpSupportCode' - The support code. Include this code in your email to support when you have questions about an instance or another resource in Lightsail. This code enables our support team to look up your Lightsail information more easily.
+--
+-- * 'kpTags' - The tag keys and optional values for the resource. For more information about tags in Lightsail, see the <https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-tags Lightsail Dev Guide> .
 keyPair
     :: KeyPair
 keyPair
   = KeyPair'{_kpResourceType = Nothing,
              _kpArn = Nothing, _kpCreatedAt = Nothing,
              _kpLocation = Nothing, _kpFingerprint = Nothing,
-             _kpName = Nothing, _kpSupportCode = Nothing}
+             _kpName = Nothing, _kpSupportCode = Nothing,
+             _kpTags = Nothing}
 
 -- | The resource type (usually @KeyPair@ ).
 kpResourceType :: Lens' KeyPair (Maybe ResourceType)
@@ -90,6 +95,10 @@ kpName = lens _kpName (\ s a -> s{_kpName = a})
 kpSupportCode :: Lens' KeyPair (Maybe Text)
 kpSupportCode = lens _kpSupportCode (\ s a -> s{_kpSupportCode = a})
 
+-- | The tag keys and optional values for the resource. For more information about tags in Lightsail, see the <https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-tags Lightsail Dev Guide> .
+kpTags :: Lens' KeyPair [Tag]
+kpTags = lens _kpTags (\ s a -> s{_kpTags = a}) . _Default . _Coerce
+
 instance FromJSON KeyPair where
         parseJSON
           = withObject "KeyPair"
@@ -100,7 +109,8 @@ instance FromJSON KeyPair where
                      <*> (x .:? "location")
                      <*> (x .:? "fingerprint")
                      <*> (x .:? "name")
-                     <*> (x .:? "supportCode"))
+                     <*> (x .:? "supportCode")
+                     <*> (x .:? "tags" .!= mempty))
 
 instance Hashable KeyPair where
 

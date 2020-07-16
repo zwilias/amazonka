@@ -18,11 +18,13 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Provides a list of the configuration sets associated with your Amazon SES account. For information about using configuration sets, see <http://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html Monitoring Your Amazon SES Sending Activity> in the /Amazon SES Developer Guide./ 
+-- Provides a list of the configuration sets associated with your Amazon SES account in the current AWS Region. For information about using configuration sets, see <https://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html Monitoring Your Amazon SES Sending Activity> in the /Amazon SES Developer Guide./ 
 --
 --
 -- You can execute this operation no more than once per second. This operation will return up to 1,000 configuration sets each time it is run. If your Amazon SES account has more than 1,000 configuration sets, this operation will also return a NextToken element. You can then execute the @ListConfigurationSets@ operation again, passing the @NextToken@ parameter and the value of the NextToken element to retrieve additional results.
 --
+--
+-- This operation returns paginated results.
 module Network.AWS.SES.ListConfigurationSets
     (
     -- * Creating a Request
@@ -42,13 +44,14 @@ module Network.AWS.SES.ListConfigurationSets
     ) where
 
 import Network.AWS.Lens
+import Network.AWS.Pager
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.SES.Types
 import Network.AWS.SES.Types.Product
 
--- | Represents a request to list the configuration sets associated with your AWS account. Configuration sets enable you to publish email sending events. For information about using configuration sets, see the <http://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html Amazon SES Developer Guide> .
+-- | Represents a request to list the configuration sets associated with your AWS account. Configuration sets enable you to publish email sending events. For information about using configuration sets, see the <https://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html Amazon SES Developer Guide> .
 --
 --
 --
@@ -81,6 +84,13 @@ lcsNextToken = lens _lcsNextToken (\ s a -> s{_lcsNextToken = a})
 lcsMaxItems :: Lens' ListConfigurationSets (Maybe Int)
 lcsMaxItems = lens _lcsMaxItems (\ s a -> s{_lcsMaxItems = a})
 
+instance AWSPager ListConfigurationSets where
+        page rq rs
+          | stop (rs ^. lcsrsNextToken) = Nothing
+          | stop (rs ^. lcsrsConfigurationSets) = Nothing
+          | otherwise =
+            Just $ rq & lcsNextToken .~ rs ^. lcsrsNextToken
+
 instance AWSRequest ListConfigurationSets where
         type Rs ListConfigurationSets =
              ListConfigurationSetsResponse
@@ -112,7 +122,7 @@ instance ToQuery ListConfigurationSets where
                "NextToken" =: _lcsNextToken,
                "MaxItems" =: _lcsMaxItems]
 
--- | A list of configuration sets associated with your AWS account. Configuration sets enable you to publish email sending events. For information about using configuration sets, see the <http://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html Amazon SES Developer Guide> .
+-- | A list of configuration sets associated with your AWS account. Configuration sets enable you to publish email sending events. For information about using configuration sets, see the <https://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html Amazon SES Developer Guide> .
 --
 --
 --

@@ -37,13 +37,13 @@ data DBInstanceStatusInfo = DBInstanceStatusInfo'{_disiStatus
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'disiStatus' - Status of the DB instance. For a StatusType of read replica, the values can be replicating, error, stopped, or terminated.
+-- * 'disiStatus' - Status of the DB instance. For a StatusType of read replica, the values can be replicating, replication stop point set, replication stop point reached, error, stopped, or terminated.
 --
 -- * 'disiNormal' - Boolean value that is true if the instance is operating normally, or false if the instance is in an error state.
 --
 -- * 'disiStatusType' - This value is currently "read replication."
 --
--- * 'disiMessage' - Details of the error if there is an error for the instance. If the instance is not in an error state, this value is blank.
+-- * 'disiMessage' - Details of the error if there is an error for the instance. If the instance isn't in an error state, this value is blank.
 dbInstanceStatusInfo
     :: DBInstanceStatusInfo
 dbInstanceStatusInfo
@@ -51,7 +51,7 @@ dbInstanceStatusInfo
                           _disiNormal = Nothing, _disiStatusType = Nothing,
                           _disiMessage = Nothing}
 
--- | Status of the DB instance. For a StatusType of read replica, the values can be replicating, error, stopped, or terminated.
+-- | Status of the DB instance. For a StatusType of read replica, the values can be replicating, replication stop point set, replication stop point reached, error, stopped, or terminated.
 disiStatus :: Lens' DBInstanceStatusInfo (Maybe Text)
 disiStatus = lens _disiStatus (\ s a -> s{_disiStatus = a})
 
@@ -63,7 +63,7 @@ disiNormal = lens _disiNormal (\ s a -> s{_disiNormal = a})
 disiStatusType :: Lens' DBInstanceStatusInfo (Maybe Text)
 disiStatusType = lens _disiStatusType (\ s a -> s{_disiStatusType = a})
 
--- | Details of the error if there is an error for the instance. If the instance is not in an error state, this value is blank.
+-- | Details of the error if there is an error for the instance. If the instance isn't in an error state, this value is blank.
 disiMessage :: Lens' DBInstanceStatusInfo (Maybe Text)
 disiMessage = lens _disiMessage (\ s a -> s{_disiMessage = a})
 

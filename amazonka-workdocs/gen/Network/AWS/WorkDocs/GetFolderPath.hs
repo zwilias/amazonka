@@ -63,7 +63,7 @@ data GetFolderPath = GetFolderPath'{_gfpAuthenticationToken
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'gfpAuthenticationToken' - Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.
+-- * 'gfpAuthenticationToken' - Amazon WorkDocs authentication token. Not required when using AWS administrator credentials to access the API.
 --
 -- * 'gfpMarker' - This value is not supported.
 --
@@ -80,7 +80,7 @@ getFolderPath pFolderId_
                    _gfpMarker = Nothing, _gfpLimit = Nothing,
                    _gfpFields = Nothing, _gfpFolderId = pFolderId_}
 
--- | Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.
+-- | Amazon WorkDocs authentication token. Not required when using AWS administrator credentials to access the API.
 gfpAuthenticationToken :: Lens' GetFolderPath (Maybe Text)
 gfpAuthenticationToken = lens _gfpAuthenticationToken (\ s a -> s{_gfpAuthenticationToken = a}) . mapping _Sensitive
 

@@ -35,20 +35,20 @@ data TableError = TableError'{_teTableName ::
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'teTableName' - Name of the table. For Hive compatibility, this must be entirely lowercase.
+-- * 'teTableName' - The name of the table. For Hive compatibility, this must be entirely lowercase.
 --
--- * 'teErrorDetail' - Detail about the error.
+-- * 'teErrorDetail' - The details about the error.
 tableError
     :: TableError
 tableError
   = TableError'{_teTableName = Nothing,
                 _teErrorDetail = Nothing}
 
--- | Name of the table. For Hive compatibility, this must be entirely lowercase.
+-- | The name of the table. For Hive compatibility, this must be entirely lowercase.
 teTableName :: Lens' TableError (Maybe Text)
 teTableName = lens _teTableName (\ s a -> s{_teTableName = a})
 
--- | Detail about the error.
+-- | The details about the error.
 teErrorDetail :: Lens' TableError (Maybe ErrorDetail)
 teErrorDetail = lens _teErrorDetail (\ s a -> s{_teErrorDetail = a})
 

@@ -46,15 +46,15 @@ data JobSummary = JobSummary'{_jsStatus ::
 --
 -- * 'jsJobId' - The unique identifier you assigned to this job when it was created.
 --
--- * 'jsLastUpdatedAt' - The time, in milliseconds since the epoch, when the job was last updated.
+-- * 'jsLastUpdatedAt' - The time, in seconds since the epoch, when the job was last updated.
 --
 -- * 'jsJobARN' - The job ARN.
 --
--- * 'jsCreatedAt' - The time, in milliseconds since the epoch, when the job was created.
+-- * 'jsCreatedAt' - The time, in seconds since the epoch, when the job was created.
 --
 -- * 'jsThingGroupId' - The ID of the thing group.
 --
--- * 'jsCompletedAt' - The time, in milliseconds since the epoch, when the job completed.
+-- * 'jsCompletedAt' - The time, in seconds since the epoch, when the job completed.
 --
 -- * 'jsTargetSelection' - Specifies whether the job will continue to run (CONTINUOUS), or will be complete after all those things specified as targets have completed the job (SNAPSHOT). If continuous, the job may also be run on a thing when a change is detected in a target. For example, a job will run on a thing when the thing is added to a target group, even after the job was completed by all things originally in the group.
 jobSummary
@@ -74,7 +74,7 @@ jsStatus = lens _jsStatus (\ s a -> s{_jsStatus = a})
 jsJobId :: Lens' JobSummary (Maybe Text)
 jsJobId = lens _jsJobId (\ s a -> s{_jsJobId = a})
 
--- | The time, in milliseconds since the epoch, when the job was last updated.
+-- | The time, in seconds since the epoch, when the job was last updated.
 jsLastUpdatedAt :: Lens' JobSummary (Maybe UTCTime)
 jsLastUpdatedAt = lens _jsLastUpdatedAt (\ s a -> s{_jsLastUpdatedAt = a}) . mapping _Time
 
@@ -82,7 +82,7 @@ jsLastUpdatedAt = lens _jsLastUpdatedAt (\ s a -> s{_jsLastUpdatedAt = a}) . map
 jsJobARN :: Lens' JobSummary (Maybe Text)
 jsJobARN = lens _jsJobARN (\ s a -> s{_jsJobARN = a})
 
--- | The time, in milliseconds since the epoch, when the job was created.
+-- | The time, in seconds since the epoch, when the job was created.
 jsCreatedAt :: Lens' JobSummary (Maybe UTCTime)
 jsCreatedAt = lens _jsCreatedAt (\ s a -> s{_jsCreatedAt = a}) . mapping _Time
 
@@ -90,7 +90,7 @@ jsCreatedAt = lens _jsCreatedAt (\ s a -> s{_jsCreatedAt = a}) . mapping _Time
 jsThingGroupId :: Lens' JobSummary (Maybe Text)
 jsThingGroupId = lens _jsThingGroupId (\ s a -> s{_jsThingGroupId = a})
 
--- | The time, in milliseconds since the epoch, when the job completed.
+-- | The time, in seconds since the epoch, when the job completed.
 jsCompletedAt :: Lens' JobSummary (Maybe UTCTime)
 jsCompletedAt = lens _jsCompletedAt (\ s a -> s{_jsCompletedAt = a}) . mapping _Time
 

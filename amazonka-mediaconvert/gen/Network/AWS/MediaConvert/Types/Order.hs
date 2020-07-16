@@ -27,7 +27,7 @@ module Network.AWS.MediaConvert.Types.Order (
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | When you request lists of resources, you can optionally specify whether they are sorted in ASCENDING or DESCENDING order. Default varies by resource.
+-- | Optional. When you request lists of resources, you can specify whether they are sorted in ASCENDING or DESCENDING order. Default varies by resource.
 data Order = Order' (CI Text)
                deriving (Eq, Ord, Read, Show, Data, Typeable,
                          Generic)

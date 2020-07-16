@@ -66,7 +66,7 @@ data UpdateCACertificate = UpdateCACertificate'{_ucacRemoveAutoRegistration
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'ucacRemoveAutoRegistration' - If true, remove auto registration.
+-- * 'ucacRemoveAutoRegistration' - If true, removes auto registration.
 --
 -- * 'ucacNewStatus' - The updated status of the CA certificate. __Note:__ The status value REGISTER_INACTIVE is deprecated and should not be used.
 --
@@ -86,7 +86,7 @@ updateCACertificate pCertificateId_
                          _ucacNewAutoRegistrationStatus = Nothing,
                          _ucacCertificateId = pCertificateId_}
 
--- | If true, remove auto registration.
+-- | If true, removes auto registration.
 ucacRemoveAutoRegistration :: Lens' UpdateCACertificate (Maybe Bool)
 ucacRemoveAutoRegistration = lens _ucacRemoveAutoRegistration (\ s a -> s{_ucacRemoveAutoRegistration = a})
 

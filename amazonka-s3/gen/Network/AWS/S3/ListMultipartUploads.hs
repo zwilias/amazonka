@@ -18,7 +18,31 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- This operation lists in-progress multipart uploads.
+-- This operation lists in-progress multipart uploads. An in-progress multipart upload is a multipart upload that has been initiated using the Initiate Multipart Upload request, but has not yet been completed or aborted.
+--
+--
+-- This operation returns at most 1,000 multipart uploads in the response. 1,000 multipart uploads is the maximum number of uploads a response can include, which is also the default value. You can further limit the number of uploads in a response by specifying the @max-uploads@ parameter in the response. If additional multipart uploads satisfy the list criteria, the response will contain an @IsTruncated@ element with the value true. To list the additional multipart uploads, use the @key-marker@ and @upload-id-marker@ request parameters.
+--
+-- In the response, the uploads are sorted by key. If your application has initiated more than one multipart upload using the same object key, then uploads in the response are first sorted by key. Additionally, uploads are sorted in ascending order within each key by the upload initiation time.
+--
+-- For more information on multipart uploads, see <https://docs.aws.amazon.com/AmazonS3/latest/dev/uploadobjusingmpu.html Uploading Objects Using Multipart Upload> .
+--
+-- For information on permissions required to use the multipart upload API, see <https://docs.aws.amazon.com/AmazonS3/latest/dev/mpuAndPermissions.html Multipart Upload API and Permissions> .
+--
+-- The following operations are related to @ListMultipartUploads@ :
+--
+--     * 'CreateMultipartUpload' 
+--
+--     * 'UploadPart' 
+--
+--     * 'CompleteMultipartUpload' 
+--
+--     * 'ListParts' 
+--
+--     * 'AbortMultipartUpload' 
+--
+--
+--
 --
 -- This operation returns paginated results.
 module Network.AWS.S3.ListMultipartUploads
@@ -81,19 +105,19 @@ data ListMultipartUploads = ListMultipartUploads'{_lmuKeyMarker
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'lmuKeyMarker' - Together with upload-id-marker, this parameter specifies the multipart upload after which listing should begin.
+-- * 'lmuKeyMarker' - Together with upload-id-marker, this parameter specifies the multipart upload after which listing should begin. If @upload-id-marker@ is not specified, only the keys lexicographically greater than the specified @key-marker@ will be included in the list. If @upload-id-marker@ is specified, any multipart uploads for a key equal to the @key-marker@ might also be included, provided those multipart uploads have upload IDs lexicographically greater than the specified @upload-id-marker@ .
 --
--- * 'lmuPrefix' - Lists in-progress uploads only for those keys that begin with the specified prefix.
+-- * 'lmuPrefix' - Lists in-progress uploads only for those keys that begin with the specified prefix. You can use prefixes to separate a bucket into different grouping of keys. (You can think of using prefix to make groups in the same way you'd use a folder in a file system.)
 --
 -- * 'lmuEncodingType' - Undocumented member.
 --
--- * 'lmuUploadIdMarker' - Together with key-marker, specifies the multipart upload after which listing should begin. If key-marker is not specified, the upload-id-marker parameter is ignored.
+-- * 'lmuUploadIdMarker' - Together with key-marker, specifies the multipart upload after which listing should begin. If key-marker is not specified, the upload-id-marker parameter is ignored. Otherwise, any multipart uploads for a key equal to the key-marker might be included in the list only if they have an upload ID lexicographically greater than the specified @upload-id-marker@ .
 --
 -- * 'lmuMaxUploads' - Sets the maximum number of multipart uploads, from 1 to 1,000, to return in the response body. 1,000 is the maximum number of uploads that can be returned in a response.
 --
--- * 'lmuDelimiter' - Character you use to group keys.
+-- * 'lmuDelimiter' - Character you use to group keys. All keys that contain the same string between the prefix, if specified, and the first occurrence of the delimiter after the prefix are grouped under a single result element, @CommonPrefixes@ . If you don't specify the prefix parameter, then the substring starts at the beginning of the key. The keys that are grouped under @CommonPrefixes@ result element are not returned elsewhere in the response.
 --
--- * 'lmuBucket' - Undocumented member.
+-- * 'lmuBucket' - Name of the bucket to which the multipart upload was initiated.  When using this API with an access point, you must direct requests to the access point hostname. The access point hostname takes the form /AccessPointName/ -/AccountId/ .s3-accesspoint./Region/ .amazonaws.com. When using this operation using an access point through the AWS SDKs, you provide the access point ARN in place of the bucket name. For more information about access point ARNs, see <https://docs.aws.amazon.com/AmazonS3/latest/dev/using-access-points.html Using Access Points> in the /Amazon Simple Storage Service Developer Guide/ .
 listMultipartUploads
     :: BucketName -- ^ 'lmuBucket'
     -> ListMultipartUploads
@@ -104,11 +128,11 @@ listMultipartUploads pBucket_
                           _lmuMaxUploads = Nothing, _lmuDelimiter = Nothing,
                           _lmuBucket = pBucket_}
 
--- | Together with upload-id-marker, this parameter specifies the multipart upload after which listing should begin.
+-- | Together with upload-id-marker, this parameter specifies the multipart upload after which listing should begin. If @upload-id-marker@ is not specified, only the keys lexicographically greater than the specified @key-marker@ will be included in the list. If @upload-id-marker@ is specified, any multipart uploads for a key equal to the @key-marker@ might also be included, provided those multipart uploads have upload IDs lexicographically greater than the specified @upload-id-marker@ .
 lmuKeyMarker :: Lens' ListMultipartUploads (Maybe Text)
 lmuKeyMarker = lens _lmuKeyMarker (\ s a -> s{_lmuKeyMarker = a})
 
--- | Lists in-progress uploads only for those keys that begin with the specified prefix.
+-- | Lists in-progress uploads only for those keys that begin with the specified prefix. You can use prefixes to separate a bucket into different grouping of keys. (You can think of using prefix to make groups in the same way you'd use a folder in a file system.)
 lmuPrefix :: Lens' ListMultipartUploads (Maybe Text)
 lmuPrefix = lens _lmuPrefix (\ s a -> s{_lmuPrefix = a})
 
@@ -116,7 +140,7 @@ lmuPrefix = lens _lmuPrefix (\ s a -> s{_lmuPrefix = a})
 lmuEncodingType :: Lens' ListMultipartUploads (Maybe EncodingType)
 lmuEncodingType = lens _lmuEncodingType (\ s a -> s{_lmuEncodingType = a})
 
--- | Together with key-marker, specifies the multipart upload after which listing should begin. If key-marker is not specified, the upload-id-marker parameter is ignored.
+-- | Together with key-marker, specifies the multipart upload after which listing should begin. If key-marker is not specified, the upload-id-marker parameter is ignored. Otherwise, any multipart uploads for a key equal to the key-marker might be included in the list only if they have an upload ID lexicographically greater than the specified @upload-id-marker@ .
 lmuUploadIdMarker :: Lens' ListMultipartUploads (Maybe Text)
 lmuUploadIdMarker = lens _lmuUploadIdMarker (\ s a -> s{_lmuUploadIdMarker = a})
 
@@ -124,11 +148,11 @@ lmuUploadIdMarker = lens _lmuUploadIdMarker (\ s a -> s{_lmuUploadIdMarker = a})
 lmuMaxUploads :: Lens' ListMultipartUploads (Maybe Int)
 lmuMaxUploads = lens _lmuMaxUploads (\ s a -> s{_lmuMaxUploads = a})
 
--- | Character you use to group keys.
+-- | Character you use to group keys. All keys that contain the same string between the prefix, if specified, and the first occurrence of the delimiter after the prefix are grouped under a single result element, @CommonPrefixes@ . If you don't specify the prefix parameter, then the substring starts at the beginning of the key. The keys that are grouped under @CommonPrefixes@ result element are not returned elsewhere in the response.
 lmuDelimiter :: Lens' ListMultipartUploads (Maybe Delimiter)
 lmuDelimiter = lens _lmuDelimiter (\ s a -> s{_lmuDelimiter = a})
 
--- | Undocumented member.
+-- | Name of the bucket to which the multipart upload was initiated.  When using this API with an access point, you must direct requests to the access point hostname. The access point hostname takes the form /AccessPointName/ -/AccountId/ .s3-accesspoint./Region/ .amazonaws.com. When using this operation using an access point through the AWS SDKs, you provide the access point ARN in place of the bucket name. For more information about access point ARNs, see <https://docs.aws.amazon.com/AmazonS3/latest/dev/using-access-points.html Using Access Points> in the /Amazon Simple Storage Service Developer Guide/ .
 lmuBucket :: Lens' ListMultipartUploads BucketName
 lmuBucket = lens _lmuBucket (\ s a -> s{_lmuBucket = a})
 
@@ -239,9 +263,9 @@ data ListMultipartUploadsResponse = ListMultipartUploadsResponse'{_lmursKeyMarke
 --
 -- * 'lmursPrefix' - When a prefix is provided in the request, this field contains the specified prefix. The result contains only keys starting with the specified prefix.
 --
--- * 'lmursCommonPrefixes' - Undocumented member.
+-- * 'lmursCommonPrefixes' - If you specify a delimiter in the request, then the result returns each distinct key prefix containing the delimiter in a @CommonPrefixes@ element. The distinct key prefixes are returned in the @Prefix@ child element.
 --
--- * 'lmursEncodingType' - Encoding type used by Amazon S3 to encode object keys in the response.
+-- * 'lmursEncodingType' - Encoding type used by Amazon S3 to encode object keys in the response. If you specify @encoding-type@ request parameter, Amazon S3 includes this element in the response, and returns encoded key name values in the following response elements: @Delimiter@ , @KeyMarker@ , @Prefix@ , @NextKeyMarker@ , @Key@ .
 --
 -- * 'lmursBucket' - Name of the bucket to which the multipart upload was initiated.
 --
@@ -251,13 +275,13 @@ data ListMultipartUploadsResponse = ListMultipartUploadsResponse'{_lmursKeyMarke
 --
 -- * 'lmursNextKeyMarker' - When a list is truncated, this element specifies the value that should be used for the key-marker request parameter in a subsequent request.
 --
--- * 'lmursUploads' - Undocumented member.
+-- * 'lmursUploads' - Container for elements related to a particular multipart upload. A response can contain zero or more @Upload@ elements.
 --
 -- * 'lmursIsTruncated' - Indicates whether the returned list of multipart uploads is truncated. A value of true indicates that the list was truncated. The list can be truncated if the number of multipart uploads exceeds the limit allowed or specified by max uploads.
 --
--- * 'lmursNextUploadIdMarker' - When a list is truncated, this element specifies the value that should be used for the upload-id-marker request parameter in a subsequent request.
+-- * 'lmursNextUploadIdMarker' - When a list is truncated, this element specifies the value that should be used for the @upload-id-marker@ request parameter in a subsequent request.
 --
--- * 'lmursDelimiter' - Undocumented member.
+-- * 'lmursDelimiter' - Contains the delimiter you specified in the request. If you don't specify a delimiter in your request, this element is absent from the response.
 --
 -- * 'lmursResponseStatus' - -- | The response status code.
 listMultipartUploadsResponse
@@ -287,11 +311,11 @@ lmursKeyMarker = lens _lmursKeyMarker (\ s a -> s{_lmursKeyMarker = a})
 lmursPrefix :: Lens' ListMultipartUploadsResponse (Maybe Text)
 lmursPrefix = lens _lmursPrefix (\ s a -> s{_lmursPrefix = a})
 
--- | Undocumented member.
+-- | If you specify a delimiter in the request, then the result returns each distinct key prefix containing the delimiter in a @CommonPrefixes@ element. The distinct key prefixes are returned in the @Prefix@ child element.
 lmursCommonPrefixes :: Lens' ListMultipartUploadsResponse [CommonPrefix]
 lmursCommonPrefixes = lens _lmursCommonPrefixes (\ s a -> s{_lmursCommonPrefixes = a}) . _Default . _Coerce
 
--- | Encoding type used by Amazon S3 to encode object keys in the response.
+-- | Encoding type used by Amazon S3 to encode object keys in the response. If you specify @encoding-type@ request parameter, Amazon S3 includes this element in the response, and returns encoded key name values in the following response elements: @Delimiter@ , @KeyMarker@ , @Prefix@ , @NextKeyMarker@ , @Key@ .
 lmursEncodingType :: Lens' ListMultipartUploadsResponse (Maybe EncodingType)
 lmursEncodingType = lens _lmursEncodingType (\ s a -> s{_lmursEncodingType = a})
 
@@ -311,7 +335,7 @@ lmursMaxUploads = lens _lmursMaxUploads (\ s a -> s{_lmursMaxUploads = a})
 lmursNextKeyMarker :: Lens' ListMultipartUploadsResponse (Maybe Text)
 lmursNextKeyMarker = lens _lmursNextKeyMarker (\ s a -> s{_lmursNextKeyMarker = a})
 
--- | Undocumented member.
+-- | Container for elements related to a particular multipart upload. A response can contain zero or more @Upload@ elements.
 lmursUploads :: Lens' ListMultipartUploadsResponse [MultipartUpload]
 lmursUploads = lens _lmursUploads (\ s a -> s{_lmursUploads = a}) . _Default . _Coerce
 
@@ -319,11 +343,11 @@ lmursUploads = lens _lmursUploads (\ s a -> s{_lmursUploads = a}) . _Default . _
 lmursIsTruncated :: Lens' ListMultipartUploadsResponse (Maybe Bool)
 lmursIsTruncated = lens _lmursIsTruncated (\ s a -> s{_lmursIsTruncated = a})
 
--- | When a list is truncated, this element specifies the value that should be used for the upload-id-marker request parameter in a subsequent request.
+-- | When a list is truncated, this element specifies the value that should be used for the @upload-id-marker@ request parameter in a subsequent request.
 lmursNextUploadIdMarker :: Lens' ListMultipartUploadsResponse (Maybe Text)
 lmursNextUploadIdMarker = lens _lmursNextUploadIdMarker (\ s a -> s{_lmursNextUploadIdMarker = a})
 
--- | Undocumented member.
+-- | Contains the delimiter you specified in the request. If you don't specify a delimiter in your request, this element is absent from the response.
 lmursDelimiter :: Lens' ListMultipartUploadsResponse (Maybe Delimiter)
 lmursDelimiter = lens _lmursDelimiter (\ s a -> s{_lmursDelimiter = a})
 

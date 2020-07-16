@@ -49,11 +49,11 @@ data Deployment = Deployment'{_dDeploymentId ::
 --
 -- * 'dStatus' - The deployment status:     * running     * successful     * failed
 --
--- * 'dCommand' - Undocumented member.
+-- * 'dCommand' - Used to specify a stack or deployment command.
 --
 -- * 'dCreatedAt' - Date when the deployment was created.
 --
--- * 'dCustomJSON' - A string that contains user-defined custom JSON. It can be used to override the corresponding default stack configuration attribute values for stack or to pass data to recipes. The string should be in the following format: @"{\"key1\": \"value1\", \"key2\": \"value2\",...}"@  For more information on custom JSON, see <http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-json.html Use Custom JSON to Modify the Stack Configuration Attributes> .
+-- * 'dCustomJSON' - A string that contains user-defined custom JSON. It can be used to override the corresponding default stack configuration attribute values for stack or to pass data to recipes. The string should be in the following format: @"{\"key1\": \"value1\", \"key2\": \"value2\",...}"@  For more information on custom JSON, see <https://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-json.html Use Custom JSON to Modify the Stack Configuration Attributes> .
 --
 -- * 'dIAMUserARN' - The user's IAM ARN.
 --
@@ -87,7 +87,7 @@ dDeploymentId = lens _dDeploymentId (\ s a -> s{_dDeploymentId = a})
 dStatus :: Lens' Deployment (Maybe Text)
 dStatus = lens _dStatus (\ s a -> s{_dStatus = a})
 
--- | Undocumented member.
+-- | Used to specify a stack or deployment command.
 dCommand :: Lens' Deployment (Maybe DeploymentCommand)
 dCommand = lens _dCommand (\ s a -> s{_dCommand = a})
 
@@ -95,7 +95,7 @@ dCommand = lens _dCommand (\ s a -> s{_dCommand = a})
 dCreatedAt :: Lens' Deployment (Maybe Text)
 dCreatedAt = lens _dCreatedAt (\ s a -> s{_dCreatedAt = a})
 
--- | A string that contains user-defined custom JSON. It can be used to override the corresponding default stack configuration attribute values for stack or to pass data to recipes. The string should be in the following format: @"{\"key1\": \"value1\", \"key2\": \"value2\",...}"@  For more information on custom JSON, see <http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-json.html Use Custom JSON to Modify the Stack Configuration Attributes> .
+-- | A string that contains user-defined custom JSON. It can be used to override the corresponding default stack configuration attribute values for stack or to pass data to recipes. The string should be in the following format: @"{\"key1\": \"value1\", \"key2\": \"value2\",...}"@  For more information on custom JSON, see <https://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-json.html Use Custom JSON to Modify the Stack Configuration Attributes> .
 dCustomJSON :: Lens' Deployment (Maybe Text)
 dCustomJSON = lens _dCustomJSON (\ s a -> s{_dCustomJSON = a})
 

@@ -22,7 +22,7 @@ import Network.AWS.Glue.Types.Predicate
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | A structure used to provide information used to update a trigger. This object will update the the previous trigger definition by overwriting it completely.
+-- | A structure used to provide information used to update a trigger. This object updates the previous trigger definition by overwriting it completely.
 --
 --
 --
@@ -41,7 +41,7 @@ data TriggerUpdate = TriggerUpdate'{_tuActions ::
 --
 -- * 'tuActions' - The actions initiated by this trigger.
 --
--- * 'tuSchedule' - A @cron@ expression used to specify the schedule (see <http://docs.aws.amazon.com/glue/latest/dg/monitor-data-warehouse-schedule.html Time-Based Schedules for Jobs and Crawlers> . For example, to run something every day at 12:15 UTC, you would specify: @cron(15 12 * * ? *)@ .
+-- * 'tuSchedule' - A @cron@ expression used to specify the schedule (see <https://docs.aws.amazon.com/glue/latest/dg/monitor-data-warehouse-schedule.html Time-Based Schedules for Jobs and Crawlers> . For example, to run something every day at 12:15 UTC, you would specify: @cron(15 12 * * ? *)@ .
 --
 -- * 'tuPredicate' - The predicate of this trigger, which defines when it will fire.
 --
@@ -59,7 +59,7 @@ triggerUpdate
 tuActions :: Lens' TriggerUpdate [Action]
 tuActions = lens _tuActions (\ s a -> s{_tuActions = a}) . _Default . _Coerce
 
--- | A @cron@ expression used to specify the schedule (see <http://docs.aws.amazon.com/glue/latest/dg/monitor-data-warehouse-schedule.html Time-Based Schedules for Jobs and Crawlers> . For example, to run something every day at 12:15 UTC, you would specify: @cron(15 12 * * ? *)@ .
+-- | A @cron@ expression used to specify the schedule (see <https://docs.aws.amazon.com/glue/latest/dg/monitor-data-warehouse-schedule.html Time-Based Schedules for Jobs and Crawlers> . For example, to run something every day at 12:15 UTC, you would specify: @cron(15 12 * * ? *)@ .
 tuSchedule :: Lens' TriggerUpdate (Maybe Text)
 tuSchedule = lens _tuSchedule (\ s a -> s{_tuSchedule = a})
 

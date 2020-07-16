@@ -21,7 +21,7 @@ import Network.AWS.ECS.Types.PlacementConstraintType
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | An object representing a constraint on task placement. For more information, see <http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-placement-constraints.html Task Placement Constraints> in the /Amazon Elastic Container Service Developer Guide/ .
+-- | An object representing a constraint on task placement. For more information, see <https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-placement-constraints.html Task Placement Constraints> in the /Amazon Elastic Container Service Developer Guide/ .
 --
 --
 --
@@ -37,20 +37,20 @@ data PlacementConstraint = PlacementConstraint'{_pcExpression
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'pcExpression' - A cluster query language expression to apply to the constraint. Note you cannot specify an expression if the constraint type is @distinctInstance@ . For more information, see <http://docs.aws.amazon.com/AmazonECS/latest/developerguide/cluster-query-language.html Cluster Query Language> in the /Amazon Elastic Container Service Developer Guide/ .
+-- * 'pcExpression' - A cluster query language expression to apply to the constraint. You cannot specify an expression if the constraint type is @distinctInstance@ . For more information, see <https://docs.aws.amazon.com/AmazonECS/latest/developerguide/cluster-query-language.html Cluster Query Language> in the /Amazon Elastic Container Service Developer Guide/ .
 --
--- * 'pcType' - The type of constraint. Use @distinctInstance@ to ensure that each task in a particular group is running on a different container instance. Use @memberOf@ to restrict the selection to a group of valid candidates. The value @distinctInstance@ is not supported in task definitions.
+-- * 'pcType' - The type of constraint. Use @distinctInstance@ to ensure that each task in a particular group is running on a different container instance. Use @memberOf@ to restrict the selection to a group of valid candidates.
 placementConstraint
     :: PlacementConstraint
 placementConstraint
   = PlacementConstraint'{_pcExpression = Nothing,
                          _pcType = Nothing}
 
--- | A cluster query language expression to apply to the constraint. Note you cannot specify an expression if the constraint type is @distinctInstance@ . For more information, see <http://docs.aws.amazon.com/AmazonECS/latest/developerguide/cluster-query-language.html Cluster Query Language> in the /Amazon Elastic Container Service Developer Guide/ .
+-- | A cluster query language expression to apply to the constraint. You cannot specify an expression if the constraint type is @distinctInstance@ . For more information, see <https://docs.aws.amazon.com/AmazonECS/latest/developerguide/cluster-query-language.html Cluster Query Language> in the /Amazon Elastic Container Service Developer Guide/ .
 pcExpression :: Lens' PlacementConstraint (Maybe Text)
 pcExpression = lens _pcExpression (\ s a -> s{_pcExpression = a})
 
--- | The type of constraint. Use @distinctInstance@ to ensure that each task in a particular group is running on a different container instance. Use @memberOf@ to restrict the selection to a group of valid candidates. The value @distinctInstance@ is not supported in task definitions.
+-- | The type of constraint. Use @distinctInstance@ to ensure that each task in a particular group is running on a different container instance. Use @memberOf@ to restrict the selection to a group of valid candidates.
 pcType :: Lens' PlacementConstraint (Maybe PlacementConstraintType)
 pcType = lens _pcType (\ s a -> s{_pcType = a})
 

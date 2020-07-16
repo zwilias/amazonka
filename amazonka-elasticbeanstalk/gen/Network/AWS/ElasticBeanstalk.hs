@@ -19,7 +19,7 @@
 --
 -- __Endpoints__ 
 --
--- For a list of region-specific endpoints that AWS Elastic Beanstalk supports, go to <http://docs.aws.amazon.com/general/latest/gr/rande.html#elasticbeanstalk_region Regions and Endpoints> in the /Amazon Web Services Glossary/ .
+-- For a list of region-specific endpoints that AWS Elastic Beanstalk supports, go to <https://docs.aws.amazon.com/general/latest/gr/rande.html#elasticbeanstalk_region Regions and Endpoints> in the /Amazon Web Services Glossary/ .
 --
 module Network.AWS.ElasticBeanstalk
     (
@@ -101,7 +101,7 @@ module Network.AWS.ElasticBeanstalk
     -- ** TerminateEnvironment 
     , module Network.AWS.ElasticBeanstalk.TerminateEnvironment
 
-    -- ** ListPlatformVersions 
+    -- ** ListPlatformVersions (Paginated)
     , module Network.AWS.ElasticBeanstalk.ListPlatformVersions
 
     -- ** DeletePlatformVersion 
@@ -109,6 +109,9 @@ module Network.AWS.ElasticBeanstalk
 
     -- ** CreateApplicationVersion 
     , module Network.AWS.ElasticBeanstalk.CreateApplicationVersion
+
+    -- ** ListPlatformBranches 
+    , module Network.AWS.ElasticBeanstalk.ListPlatformBranches
 
     -- ** DescribeEvents (Paginated)
     , module Network.AWS.ElasticBeanstalk.DescribeEvents
@@ -155,7 +158,7 @@ module Network.AWS.ElasticBeanstalk
     -- ** DescribeEnvironmentResources 
     , module Network.AWS.ElasticBeanstalk.DescribeEnvironmentResources
 
-    -- ** DescribeEnvironmentManagedActionHistory 
+    -- ** DescribeEnvironmentManagedActionHistory (Paginated)
     , module Network.AWS.ElasticBeanstalk.DescribeEnvironmentManagedActionHistory
 
     -- ** DeleteApplicationVersion 
@@ -209,13 +212,13 @@ module Network.AWS.ElasticBeanstalk
     -- ** RestartAppServer 
     , module Network.AWS.ElasticBeanstalk.RestartAppServer
 
-    -- ** DescribeEnvironments 
+    -- ** DescribeEnvironments (Paginated)
     , module Network.AWS.ElasticBeanstalk.DescribeEnvironments
 
     -- ** CheckDNSAvailability 
     , module Network.AWS.ElasticBeanstalk.CheckDNSAvailability
 
-    -- ** DescribeApplicationVersions 
+    -- ** DescribeApplicationVersions (Paginated)
     , module Network.AWS.ElasticBeanstalk.DescribeApplicationVersions
 
     -- ** CreateEnvironment 
@@ -365,6 +368,7 @@ module Network.AWS.ElasticBeanstalk
     , cuIdle
     , cuIRQ
     , cuSystem
+    , cuPrivileged
     , cuUser
     , cuIOWait
     , cuNice
@@ -469,6 +473,7 @@ module Network.AWS.ElasticBeanstalk
     , environmentResourceDescription
     , erdQueues
     , erdTriggers
+    , erdLaunchTemplates
     , erdLoadBalancers
     , erdEnvironmentName
     , erdInstances
@@ -533,6 +538,11 @@ module Network.AWS.ElasticBeanstalk
     , LaunchConfiguration
     , launchConfiguration
     , lcName
+
+    -- ** LaunchTemplate
+    , LaunchTemplate
+    , launchTemplate
+    , ltId
 
     -- ** Listener
     , Listener
@@ -600,14 +610,26 @@ module Network.AWS.ElasticBeanstalk
     , osResourceName
     , osNamespace
 
+    -- ** PlatformBranchSummary
+    , PlatformBranchSummary
+    , platformBranchSummary
+    , pbsBranchName
+    , pbsBranchOrder
+    , pbsPlatformName
+    , pbsSupportedTierList
+    , pbsLifecycleState
+
     -- ** PlatformDescription
     , PlatformDescription
     , platformDescription
+    , pdPlatformBranchName
     , pdSupportedAddonList
     , pdPlatformCategory
+    , pdPlatformBranchLifecycleState
     , pdPlatformVersion
     , pdPlatformStatus
     , pdMaintainer
+    , pdPlatformLifecycleState
     , pdPlatformOwner
     , pdDateUpdated
     , pdCustomAMIList
@@ -644,9 +666,13 @@ module Network.AWS.ElasticBeanstalk
     -- ** PlatformSummary
     , PlatformSummary
     , platformSummary
+    , psPlatformBranchName
     , psSupportedAddonList
     , psPlatformCategory
+    , psPlatformBranchLifecycleState
+    , psPlatformVersion
     , psPlatformStatus
+    , psPlatformLifecycleState
     , psPlatformOwner
     , psOperatingSystemName
     , psPlatformARN
@@ -678,6 +704,13 @@ module Network.AWS.ElasticBeanstalk
     , s3Location
     , slS3Key
     , slS3Bucket
+
+    -- ** SearchFilter
+    , SearchFilter
+    , searchFilter
+    , sfAttribute
+    , sfValues
+    , sfOperator
 
     -- ** SingleInstanceHealth
     , SingleInstanceHealth
@@ -775,6 +808,7 @@ import Network.AWS.ElasticBeanstalk.DescribeEvents
 import Network.AWS.ElasticBeanstalk.DescribeInstancesHealth
 import Network.AWS.ElasticBeanstalk.DescribePlatformVersion
 import Network.AWS.ElasticBeanstalk.ListAvailableSolutionStacks
+import Network.AWS.ElasticBeanstalk.ListPlatformBranches
 import Network.AWS.ElasticBeanstalk.ListPlatformVersions
 import Network.AWS.ElasticBeanstalk.ListTagsForResource
 import Network.AWS.ElasticBeanstalk.RebuildEnvironment

@@ -24,7 +24,7 @@ import Network.AWS.SES.Types.StopScope
 -- | When included in a receipt rule, this action terminates the evaluation of the receipt rule set and, optionally, publishes a notification to Amazon Simple Notification Service (Amazon SNS).
 --
 --
--- For information about setting a stop action in a receipt rule, see the <http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-action-stop.html Amazon SES Developer Guide> .
+-- For information about setting a stop action in a receipt rule, see the <https://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-action-stop.html Amazon SES Developer Guide> .
 --
 --
 -- /See:/ 'stopAction' smart constructor.
@@ -37,9 +37,9 @@ data StopAction = StopAction'{_sTopicARN ::
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'sTopicARN' - The Amazon Resource Name (ARN) of the Amazon SNS topic to notify when the stop action is taken. An example of an Amazon SNS topic ARN is @arn:aws:sns:us-west-2:123456789012:MyTopic@ . For more information about Amazon SNS topics, see the <http://docs.aws.amazon.com/sns/latest/dg/CreateTopic.html Amazon SNS Developer Guide> .
+-- * 'sTopicARN' - The Amazon Resource Name (ARN) of the Amazon SNS topic to notify when the stop action is taken. An example of an Amazon SNS topic ARN is @arn:aws:sns:us-west-2:123456789012:MyTopic@ . For more information about Amazon SNS topics, see the <https://docs.aws.amazon.com/sns/latest/dg/CreateTopic.html Amazon SNS Developer Guide> .
 --
--- * 'sScope' - The name of the RuleSet that is being stopped.
+-- * 'sScope' - The scope of the StopAction. The only acceptable value is @RuleSet@ .
 stopAction
     :: StopScope -- ^ 'sScope'
     -> StopAction
@@ -47,11 +47,11 @@ stopAction pScope_
   = StopAction'{_sTopicARN = Nothing,
                 _sScope = pScope_}
 
--- | The Amazon Resource Name (ARN) of the Amazon SNS topic to notify when the stop action is taken. An example of an Amazon SNS topic ARN is @arn:aws:sns:us-west-2:123456789012:MyTopic@ . For more information about Amazon SNS topics, see the <http://docs.aws.amazon.com/sns/latest/dg/CreateTopic.html Amazon SNS Developer Guide> .
+-- | The Amazon Resource Name (ARN) of the Amazon SNS topic to notify when the stop action is taken. An example of an Amazon SNS topic ARN is @arn:aws:sns:us-west-2:123456789012:MyTopic@ . For more information about Amazon SNS topics, see the <https://docs.aws.amazon.com/sns/latest/dg/CreateTopic.html Amazon SNS Developer Guide> .
 sTopicARN :: Lens' StopAction (Maybe Text)
 sTopicARN = lens _sTopicARN (\ s a -> s{_sTopicARN = a})
 
--- | The name of the RuleSet that is being stopped.
+-- | The scope of the StopAction. The only acceptable value is @RuleSet@ .
 sScope :: Lens' StopAction StopScope
 sScope = lens _sScope (\ s a -> s{_sScope = a})
 

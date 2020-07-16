@@ -20,6 +20,7 @@ module Network.AWS.SSM.Types.DocumentFormat (
   DocumentFormat (
     ..
     , JSON
+    , Text
     , Yaml
     )
   ) where
@@ -34,11 +35,15 @@ data DocumentFormat = DocumentFormat' (CI Text)
 pattern JSON :: DocumentFormat
 pattern JSON = DocumentFormat' "JSON"
 
+pattern Text :: DocumentFormat
+pattern Text = DocumentFormat' "TEXT"
+
 pattern Yaml :: DocumentFormat
 pattern Yaml = DocumentFormat' "YAML"
 
 {-# COMPLETE
   JSON,
+  Text,
   Yaml,
   DocumentFormat' #-}
 
@@ -55,11 +60,13 @@ instance ToText DocumentFormat where
 instance Enum DocumentFormat where
     toEnum i = case i of
         0 -> JSON
-        1 -> Yaml
+        1 -> Text
+        2 -> Yaml
         _ -> (error . showText) $ "Unknown index for DocumentFormat: " <> toText i
     fromEnum x = case x of
         JSON -> 0
-        Yaml -> 1
+        Text -> 1
+        Yaml -> 2
         DocumentFormat' name -> (error . showText) $ "Unknown DocumentFormat: " <> original name
 
 -- | Represents the bounds of /known/ $DocumentFormat.

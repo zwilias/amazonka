@@ -47,7 +47,7 @@ import Network.AWS.Response
 import Network.AWS.StorageGateway.Types
 import Network.AWS.StorageGateway.Types.Product
 
--- | A JSON object containing the of the gateway.
+-- | A JSON object containing the Amazon Resource Name (ARN) of the gateway.
 --
 --
 --
@@ -122,7 +122,7 @@ data ListLocalDisksResponse = ListLocalDisksResponse'{_lldrsGatewayARN
 --
 -- * 'lldrsGatewayARN' - Undocumented member.
 --
--- * 'lldrsDisks' - Undocumented member.
+-- * 'lldrsDisks' - A JSON object containing the following fields:     * 'ListLocalDisksOutput$Disks' 
 --
 -- * 'lldrsResponseStatus' - -- | The response status code.
 listLocalDisksResponse
@@ -137,7 +137,7 @@ listLocalDisksResponse pResponseStatus_
 lldrsGatewayARN :: Lens' ListLocalDisksResponse (Maybe Text)
 lldrsGatewayARN = lens _lldrsGatewayARN (\ s a -> s{_lldrsGatewayARN = a})
 
--- | Undocumented member.
+-- | A JSON object containing the following fields:     * 'ListLocalDisksOutput$Disks' 
 lldrsDisks :: Lens' ListLocalDisksResponse [Disk]
 lldrsDisks = lens _lldrsDisks (\ s a -> s{_lldrsDisks = a}) . _Default . _Coerce
 

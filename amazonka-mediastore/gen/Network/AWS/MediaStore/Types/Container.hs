@@ -29,6 +29,7 @@ import Network.AWS.Prelude
 data Container = Container'{_cCreationTime ::
                             !(Maybe POSIX),
                             _cStatus :: !(Maybe ContainerStatus),
+                            _cAccessLoggingEnabled :: !(Maybe Bool),
                             _cARN :: !(Maybe Text), _cName :: !(Maybe Text),
                             _cEndpoint :: !(Maybe Text)}
                    deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -41,6 +42,8 @@ data Container = Container'{_cCreationTime ::
 --
 -- * 'cStatus' - The status of container creation or deletion. The status is one of the following: @CREATING@ , @ACTIVE@ , or @DELETING@ . While the service is creating the container, the status is @CREATING@ . When the endpoint is available, the status changes to @ACTIVE@ .
 --
+-- * 'cAccessLoggingEnabled' - The state of access logging on the container. This value is @false@ by default, indicating that AWS Elemental MediaStore does not send access logs to Amazon CloudWatch Logs. When you enable access logging on the container, MediaStore changes this value to @true@ , indicating that the service delivers access logs for objects stored in that container to CloudWatch Logs.
+--
 -- * 'cARN' - The Amazon Resource Name (ARN) of the container. The ARN has the following format: arn:aws:<region>:<account that owns this container>:container/<name of container>  For example: arn:aws:mediastore:us-west-2:111122223333:container/movies 
 --
 -- * 'cName' - The name of the container.
@@ -50,8 +53,9 @@ container
     :: Container
 container
   = Container'{_cCreationTime = Nothing,
-               _cStatus = Nothing, _cARN = Nothing,
-               _cName = Nothing, _cEndpoint = Nothing}
+               _cStatus = Nothing, _cAccessLoggingEnabled = Nothing,
+               _cARN = Nothing, _cName = Nothing,
+               _cEndpoint = Nothing}
 
 -- | Unix timestamp.
 cCreationTime :: Lens' Container (Maybe UTCTime)
@@ -60,6 +64,10 @@ cCreationTime = lens _cCreationTime (\ s a -> s{_cCreationTime = a}) . mapping _
 -- | The status of container creation or deletion. The status is one of the following: @CREATING@ , @ACTIVE@ , or @DELETING@ . While the service is creating the container, the status is @CREATING@ . When the endpoint is available, the status changes to @ACTIVE@ .
 cStatus :: Lens' Container (Maybe ContainerStatus)
 cStatus = lens _cStatus (\ s a -> s{_cStatus = a})
+
+-- | The state of access logging on the container. This value is @false@ by default, indicating that AWS Elemental MediaStore does not send access logs to Amazon CloudWatch Logs. When you enable access logging on the container, MediaStore changes this value to @true@ , indicating that the service delivers access logs for objects stored in that container to CloudWatch Logs.
+cAccessLoggingEnabled :: Lens' Container (Maybe Bool)
+cAccessLoggingEnabled = lens _cAccessLoggingEnabled (\ s a -> s{_cAccessLoggingEnabled = a})
 
 -- | The Amazon Resource Name (ARN) of the container. The ARN has the following format: arn:aws:<region>:<account that owns this container>:container/<name of container>  For example: arn:aws:mediastore:us-west-2:111122223333:container/movies 
 cARN :: Lens' Container (Maybe Text)
@@ -79,7 +87,8 @@ instance FromJSON Container where
               (\ x ->
                  Container' <$>
                    (x .:? "CreationTime") <*> (x .:? "Status") <*>
-                     (x .:? "ARN")
+                     (x .:? "AccessLoggingEnabled")
+                     <*> (x .:? "ARN")
                      <*> (x .:? "Name")
                      <*> (x .:? "Endpoint"))
 

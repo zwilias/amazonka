@@ -21,7 +21,7 @@ import Network.AWS.Lens
 import Network.AWS.MediaLive.Types.HlsAkamaiHTTPTransferMode
 import Network.AWS.Prelude
 
--- | Placeholder documentation for HlsAkamaiSettings
+-- | Hls Akamai Settings
 --
 -- /See:/ 'hlsAkamaiSettings' smart constructor.
 data HlsAkamaiSettings = HlsAkamaiSettings'{_hasHTTPTransferMode

@@ -35,26 +35,26 @@ data Landmark = Landmark'{_lType ::
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'lType' - Type of the landmark.
+-- * 'lType' - Type of landmark.
 --
--- * 'lX' - x-coordinate from the top left of the landmark expressed as the ratio of the width of the image. For example, if the images is 700x200 and the x-coordinate of the landmark is at 350 pixels, this value is 0.5. 
+-- * 'lX' - The x-coordinate from the top left of the landmark expressed as the ratio of the width of the image. For example, if the image is 700 x 200 and the x-coordinate of the landmark is at 350 pixels, this value is 0.5. 
 --
--- * 'lY' - y-coordinate from the top left of the landmark expressed as the ratio of the height of the image. For example, if the images is 700x200 and the y-coordinate of the landmark is at 100 pixels, this value is 0.5.
+-- * 'lY' - The y-coordinate from the top left of the landmark expressed as the ratio of the height of the image. For example, if the image is 700 x 200 and the y-coordinate of the landmark is at 100 pixels, this value is 0.5.
 landmark
     :: Landmark
 landmark
   = Landmark'{_lType = Nothing, _lX = Nothing,
               _lY = Nothing}
 
--- | Type of the landmark.
+-- | Type of landmark.
 lType :: Lens' Landmark (Maybe LandmarkType)
 lType = lens _lType (\ s a -> s{_lType = a})
 
--- | x-coordinate from the top left of the landmark expressed as the ratio of the width of the image. For example, if the images is 700x200 and the x-coordinate of the landmark is at 350 pixels, this value is 0.5. 
+-- | The x-coordinate from the top left of the landmark expressed as the ratio of the width of the image. For example, if the image is 700 x 200 and the x-coordinate of the landmark is at 350 pixels, this value is 0.5. 
 lX :: Lens' Landmark (Maybe Double)
 lX = lens _lX (\ s a -> s{_lX = a})
 
--- | y-coordinate from the top left of the landmark expressed as the ratio of the height of the image. For example, if the images is 700x200 and the y-coordinate of the landmark is at 100 pixels, this value is 0.5.
+-- | The y-coordinate from the top left of the landmark expressed as the ratio of the height of the image. For example, if the image is 700 x 200 and the y-coordinate of the landmark is at 100 pixels, this value is 0.5.
 lY :: Lens' Landmark (Maybe Double)
 lY = lens _lY (\ s a -> s{_lY = a})
 

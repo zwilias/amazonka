@@ -19,9 +19,9 @@
 module Network.AWS.Rekognition.Types.VideoJobStatus (
   VideoJobStatus (
     ..
-    , Failed
-    , InProgress
-    , Succeeded
+    , VJSFailed
+    , VJSInProgress
+    , VJSSucceeded
     )
   ) where
 
@@ -32,19 +32,19 @@ data VideoJobStatus = VideoJobStatus' (CI Text)
                         deriving (Eq, Ord, Read, Show, Data, Typeable,
                                   Generic)
 
-pattern Failed :: VideoJobStatus
-pattern Failed = VideoJobStatus' "FAILED"
+pattern VJSFailed :: VideoJobStatus
+pattern VJSFailed = VideoJobStatus' "FAILED"
 
-pattern InProgress :: VideoJobStatus
-pattern InProgress = VideoJobStatus' "IN_PROGRESS"
+pattern VJSInProgress :: VideoJobStatus
+pattern VJSInProgress = VideoJobStatus' "IN_PROGRESS"
 
-pattern Succeeded :: VideoJobStatus
-pattern Succeeded = VideoJobStatus' "SUCCEEDED"
+pattern VJSSucceeded :: VideoJobStatus
+pattern VJSSucceeded = VideoJobStatus' "SUCCEEDED"
 
 {-# COMPLETE
-  Failed,
-  InProgress,
-  Succeeded,
+  VJSFailed,
+  VJSInProgress,
+  VJSSucceeded,
   VideoJobStatus' #-}
 
 instance FromText VideoJobStatus where
@@ -59,22 +59,22 @@ instance ToText VideoJobStatus where
 --   fromEnum is a partial function, and will error on values unknown at generation time.
 instance Enum VideoJobStatus where
     toEnum i = case i of
-        0 -> Failed
-        1 -> InProgress
-        2 -> Succeeded
+        0 -> VJSFailed
+        1 -> VJSInProgress
+        2 -> VJSSucceeded
         _ -> (error . showText) $ "Unknown index for VideoJobStatus: " <> toText i
     fromEnum x = case x of
-        Failed -> 0
-        InProgress -> 1
-        Succeeded -> 2
+        VJSFailed -> 0
+        VJSInProgress -> 1
+        VJSSucceeded -> 2
         VideoJobStatus' name -> (error . showText) $ "Unknown VideoJobStatus: " <> original name
 
 -- | Represents the bounds of /known/ $VideoJobStatus.
 --   AWS may have added more since the source was generated.
 --   This instance exists only for backward compatibility.
 instance Bounded VideoJobStatus where
-    minBound = Failed
-    maxBound = Succeeded
+    minBound = VJSFailed
+    maxBound = VJSSucceeded
 
 instance Hashable     VideoJobStatus
 instance NFData       VideoJobStatus

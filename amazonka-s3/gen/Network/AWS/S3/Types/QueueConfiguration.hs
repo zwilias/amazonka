@@ -23,7 +23,9 @@ import Network.AWS.S3.Internal
 import Network.AWS.S3.Types.Event
 import Network.AWS.S3.Types.NotificationConfigurationFilter
 
--- | Container for specifying an configuration when you want Amazon S3 to publish events to an Amazon Simple Queue Service (Amazon SQS) queue.
+-- | Specifies the configuration for publishing messages to an Amazon Simple Queue Service (Amazon SQS) queue when Amazon S3 detects specified events.
+--
+--
 --
 -- /See:/ 'queueConfiguration' smart constructor.
 data QueueConfiguration = QueueConfiguration'{_qcId
@@ -43,9 +45,9 @@ data QueueConfiguration = QueueConfiguration'{_qcId
 --
 -- * 'qcFilter' - Undocumented member.
 --
--- * 'qcQueueARN' - Amazon SQS queue ARN to which Amazon S3 will publish a message when it detects events of specified type.
+-- * 'qcQueueARN' - The Amazon Resource Name (ARN) of the Amazon SQS queue to which Amazon S3 publishes a message when it detects events of the specified type.
 --
--- * 'qcEvents' - Undocumented member.
+-- * 'qcEvents' - A collection of bucket events for which to send notifications
 queueConfiguration
     :: Text -- ^ 'qcQueueARN'
     -> QueueConfiguration
@@ -62,11 +64,11 @@ qcId = lens _qcId (\ s a -> s{_qcId = a})
 qcFilter :: Lens' QueueConfiguration (Maybe NotificationConfigurationFilter)
 qcFilter = lens _qcFilter (\ s a -> s{_qcFilter = a})
 
--- | Amazon SQS queue ARN to which Amazon S3 will publish a message when it detects events of specified type.
+-- | The Amazon Resource Name (ARN) of the Amazon SQS queue to which Amazon S3 publishes a message when it detects events of the specified type.
 qcQueueARN :: Lens' QueueConfiguration Text
 qcQueueARN = lens _qcQueueARN (\ s a -> s{_qcQueueARN = a})
 
--- | Undocumented member.
+-- | A collection of bucket events for which to send notifications
 qcEvents :: Lens' QueueConfiguration [Event]
 qcEvents = lens _qcEvents (\ s a -> s{_qcEvents = a}) . _Coerce
 

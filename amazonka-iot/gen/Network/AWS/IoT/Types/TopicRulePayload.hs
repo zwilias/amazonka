@@ -47,7 +47,7 @@ data TopicRulePayload = TopicRulePayload'{_trpAwsIotSqlVersion
 --
 -- * 'trpDescription' - The description of the rule.
 --
--- * 'trpSql' - The SQL statement used to query the topic. For more information, see <http://docs.aws.amazon.com/iot/latest/developerguide/iot-rules.html#aws-iot-sql-reference AWS IoT SQL Reference> in the /AWS IoT Developer Guide/ .
+-- * 'trpSql' - The SQL statement used to query the topic. For more information, see <https://docs.aws.amazon.com/iot/latest/developerguide/iot-rules.html#aws-iot-sql-reference AWS IoT SQL Reference> in the /AWS IoT Developer Guide/ .
 --
 -- * 'trpActions' - The actions associated with the rule.
 topicRulePayload
@@ -76,7 +76,7 @@ trpRuleDisabled = lens _trpRuleDisabled (\ s a -> s{_trpRuleDisabled = a})
 trpDescription :: Lens' TopicRulePayload (Maybe Text)
 trpDescription = lens _trpDescription (\ s a -> s{_trpDescription = a})
 
--- | The SQL statement used to query the topic. For more information, see <http://docs.aws.amazon.com/iot/latest/developerguide/iot-rules.html#aws-iot-sql-reference AWS IoT SQL Reference> in the /AWS IoT Developer Guide/ .
+-- | The SQL statement used to query the topic. For more information, see <https://docs.aws.amazon.com/iot/latest/developerguide/iot-rules.html#aws-iot-sql-reference AWS IoT SQL Reference> in the /AWS IoT Developer Guide/ .
 trpSql :: Lens' TopicRulePayload Text
 trpSql = lens _trpSql (\ s a -> s{_trpSql = a})
 

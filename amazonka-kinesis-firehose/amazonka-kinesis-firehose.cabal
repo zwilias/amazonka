@@ -52,6 +52,8 @@ library
         , Network.AWS.Firehose.ListTagsForDeliveryStream
         , Network.AWS.Firehose.PutRecord
         , Network.AWS.Firehose.PutRecordBatch
+        , Network.AWS.Firehose.StartDeliveryStreamEncryption
+        , Network.AWS.Firehose.StopDeliveryStreamEncryption
         , Network.AWS.Firehose.TagDeliveryStream
         , Network.AWS.Firehose.Types
         , Network.AWS.Firehose.UntagDeliveryStream
@@ -65,6 +67,10 @@ library
         , Network.AWS.Firehose.Types.CopyCommand
         , Network.AWS.Firehose.Types.DataFormatConversionConfiguration
         , Network.AWS.Firehose.Types.DeliveryStreamDescription
+        , Network.AWS.Firehose.Types.DeliveryStreamEncryptionConfiguration
+        , Network.AWS.Firehose.Types.DeliveryStreamEncryptionConfigurationInput
+        , Network.AWS.Firehose.Types.DeliveryStreamEncryptionStatus
+        , Network.AWS.Firehose.Types.DeliveryStreamFailureType
         , Network.AWS.Firehose.Types.DeliveryStreamStatus
         , Network.AWS.Firehose.Types.DeliveryStreamType
         , Network.AWS.Firehose.Types.Deserializer
@@ -80,10 +86,12 @@ library
         , Network.AWS.Firehose.Types.ExtendedS3DestinationConfiguration
         , Network.AWS.Firehose.Types.ExtendedS3DestinationDescription
         , Network.AWS.Firehose.Types.ExtendedS3DestinationUpdate
+        , Network.AWS.Firehose.Types.FailureDescription
         , Network.AWS.Firehose.Types.HECEndpointType
         , Network.AWS.Firehose.Types.HiveJSONSerDe
         , Network.AWS.Firehose.Types.InputFormatConfiguration
         , Network.AWS.Firehose.Types.KMSEncryptionConfig
+        , Network.AWS.Firehose.Types.KeyType
         , Network.AWS.Firehose.Types.KinesisStreamSourceConfiguration
         , Network.AWS.Firehose.Types.KinesisStreamSourceDescription
         , Network.AWS.Firehose.Types.NoEncryptionConfig
@@ -121,6 +129,8 @@ library
         , Network.AWS.Firehose.Types.SplunkRetryOptions
         , Network.AWS.Firehose.Types.SplunkS3BackupMode
         , Network.AWS.Firehose.Types.Tag
+        , Network.AWS.Firehose.Types.VPCConfiguration
+        , Network.AWS.Firehose.Types.VPCConfigurationDescription
 
     build-depends:
           amazonka-core == 1.6.1.*

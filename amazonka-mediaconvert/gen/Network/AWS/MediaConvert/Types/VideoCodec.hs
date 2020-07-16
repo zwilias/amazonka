@@ -19,6 +19,7 @@
 module Network.AWS.MediaConvert.Types.VideoCodec (
   VideoCodec (
     ..
+    , AV1
     , FrameCapture
     , H264
     , H265
@@ -34,6 +35,9 @@ import Network.AWS.Prelude
 data VideoCodec = VideoCodec' (CI Text)
                     deriving (Eq, Ord, Read, Show, Data, Typeable,
                               Generic)
+
+pattern AV1 :: VideoCodec
+pattern AV1 = VideoCodec' "AV1"
 
 pattern FrameCapture :: VideoCodec
 pattern FrameCapture = VideoCodec' "FRAME_CAPTURE"
@@ -51,6 +55,7 @@ pattern Prores :: VideoCodec
 pattern Prores = VideoCodec' "PRORES"
 
 {-# COMPLETE
+  AV1,
   FrameCapture,
   H264,
   H265,
@@ -70,25 +75,27 @@ instance ToText VideoCodec where
 --   fromEnum is a partial function, and will error on values unknown at generation time.
 instance Enum VideoCodec where
     toEnum i = case i of
-        0 -> FrameCapture
-        1 -> H264
-        2 -> H265
-        3 -> MPEG2
-        4 -> Prores
+        0 -> AV1
+        1 -> FrameCapture
+        2 -> H264
+        3 -> H265
+        4 -> MPEG2
+        5 -> Prores
         _ -> (error . showText) $ "Unknown index for VideoCodec: " <> toText i
     fromEnum x = case x of
-        FrameCapture -> 0
-        H264 -> 1
-        H265 -> 2
-        MPEG2 -> 3
-        Prores -> 4
+        AV1 -> 0
+        FrameCapture -> 1
+        H264 -> 2
+        H265 -> 3
+        MPEG2 -> 4
+        Prores -> 5
         VideoCodec' name -> (error . showText) $ "Unknown VideoCodec: " <> original name
 
 -- | Represents the bounds of /known/ $VideoCodec.
 --   AWS may have added more since the source was generated.
 --   This instance exists only for backward compatibility.
 instance Bounded VideoCodec where
-    minBound = FrameCapture
+    minBound = AV1
     maxBound = Prores
 
 instance Hashable     VideoCodec

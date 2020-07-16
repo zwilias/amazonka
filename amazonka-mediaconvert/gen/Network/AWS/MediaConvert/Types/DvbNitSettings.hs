@@ -24,9 +24,9 @@ import Network.AWS.Prelude
 --
 -- /See:/ 'dvbNitSettings' smart constructor.
 data DvbNitSettings = DvbNitSettings'{_dnsNetworkId
-                                      :: !(Maybe Int),
+                                      :: !(Maybe Nat),
                                       _dnsNetworkName :: !(Maybe Text),
-                                      _dnsNitInterval :: !(Maybe Int)}
+                                      _dnsNitInterval :: !(Maybe Nat)}
                         deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DvbNitSettings' with the minimum fields required to make a request.
@@ -45,16 +45,16 @@ dvbNitSettings
                     _dnsNetworkName = Nothing, _dnsNitInterval = Nothing}
 
 -- | The numeric value placed in the Network Information Table (NIT).
-dnsNetworkId :: Lens' DvbNitSettings (Maybe Int)
-dnsNetworkId = lens _dnsNetworkId (\ s a -> s{_dnsNetworkId = a})
+dnsNetworkId :: Lens' DvbNitSettings (Maybe Natural)
+dnsNetworkId = lens _dnsNetworkId (\ s a -> s{_dnsNetworkId = a}) . mapping _Nat
 
 -- | The network name text placed in the network_name_descriptor inside the Network Information Table. Maximum length is 256 characters.
 dnsNetworkName :: Lens' DvbNitSettings (Maybe Text)
 dnsNetworkName = lens _dnsNetworkName (\ s a -> s{_dnsNetworkName = a})
 
 -- | The number of milliseconds between instances of this table in the output transport stream.
-dnsNitInterval :: Lens' DvbNitSettings (Maybe Int)
-dnsNitInterval = lens _dnsNitInterval (\ s a -> s{_dnsNitInterval = a})
+dnsNitInterval :: Lens' DvbNitSettings (Maybe Natural)
+dnsNitInterval = lens _dnsNitInterval (\ s a -> s{_dnsNitInterval = a}) . mapping _Nat
 
 instance FromJSON DvbNitSettings where
         parseJSON

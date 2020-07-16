@@ -22,7 +22,7 @@ import Network.AWS.MediaLive.Types.Scte35AposNoRegionalBlackoutBehavior
 import Network.AWS.MediaLive.Types.Scte35AposWebDeliveryAllowedBehavior
 import Network.AWS.Prelude
 
--- | Placeholder documentation for Scte35TimeSignalApos
+-- | Scte35 Time Signal Apos
 --
 -- /See:/ 'scte35TimeSignalApos' smart constructor.
 data Scte35TimeSignalApos = Scte35TimeSignalApos'{_stsaWebDeliveryAllowedFlag

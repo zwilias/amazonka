@@ -108,7 +108,7 @@ data DeleteNamespaceResponse = DeleteNamespaceResponse'{_dnrsOperationId
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dnrsOperationId' - A value that you can use to determine whether the request completed successfully. To get the status of the operation, see 'GetOperation' .
+-- * 'dnrsOperationId' - A value that you can use to determine whether the request completed successfully. To get the status of the operation, see <https://docs.aws.amazon.com/cloud-map/latest/api/API_GetOperation.html GetOperation> .
 --
 -- * 'dnrsResponseStatus' - -- | The response status code.
 deleteNamespaceResponse
@@ -119,7 +119,7 @@ deleteNamespaceResponse pResponseStatus_
                                Nothing,
                              _dnrsResponseStatus = pResponseStatus_}
 
--- | A value that you can use to determine whether the request completed successfully. To get the status of the operation, see 'GetOperation' .
+-- | A value that you can use to determine whether the request completed successfully. To get the status of the operation, see <https://docs.aws.amazon.com/cloud-map/latest/api/API_GetOperation.html GetOperation> .
 dnrsOperationId :: Lens' DeleteNamespaceResponse (Maybe Text)
 dnrsOperationId = lens _dnrsOperationId (\ s a -> s{_dnrsOperationId = a})
 

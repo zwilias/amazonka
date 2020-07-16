@@ -20,7 +20,7 @@ module Network.AWS.MediaConvert.Types.Id3Insertion where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | To insert ID3 tags in your output, specify two values. Use ID3 tag (Id3) to specify the base 64 encoded string and use Timecode (TimeCode) to specify the time when the tag should be inserted. To insert multiple ID3 tags in your output, create mulitple instances of ID3 insertion (Id3Insertion).
+-- | To insert ID3 tags in your output, specify two values. Use ID3 tag (Id3) to specify the base 64 encoded string and use Timecode (TimeCode) to specify the time when the tag should be inserted. To insert multiple ID3 tags in your output, create multiple instances of ID3 insertion (Id3Insertion).
 --
 -- /See:/ 'id3Insertion' smart constructor.
 data Id3Insertion = Id3Insertion'{_iiId3 ::

@@ -34,7 +34,7 @@ data VolumeFrom = VolumeFrom'{_vfSourceContainer ::
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'vfSourceContainer' - The name of another container within the same task definition to mount volumes from.
+-- * 'vfSourceContainer' - The name of another container within the same task definition from which to mount volumes.
 --
 -- * 'vfReadOnly' - If this value is @true@ , the container has read-only access to the volume. If this value is @false@ , then the container can write to the volume. The default value is @false@ .
 volumeFrom
@@ -43,7 +43,7 @@ volumeFrom
   = VolumeFrom'{_vfSourceContainer = Nothing,
                 _vfReadOnly = Nothing}
 
--- | The name of another container within the same task definition to mount volumes from.
+-- | The name of another container within the same task definition from which to mount volumes.
 vfSourceContainer :: Lens' VolumeFrom (Maybe Text)
 vfSourceContainer = lens _vfSourceContainer (\ s a -> s{_vfSourceContainer = a})
 

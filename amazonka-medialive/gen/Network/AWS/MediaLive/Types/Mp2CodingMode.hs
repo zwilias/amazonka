@@ -27,7 +27,7 @@ module Network.AWS.MediaLive.Types.Mp2CodingMode (
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | Placeholder documentation for Mp2CodingMode
+-- | Mp2 Coding Mode
 data Mp2CodingMode = Mp2CodingMode' (CI Text)
                        deriving (Eq, Ord, Read, Show, Data, Typeable,
                                  Generic)

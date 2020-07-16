@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Applies a repository policy on a specified repository to control access permissions.
+-- Applies a repository policy to the specified repository to control access permissions. For more information, see <https://docs.aws.amazon.com/AmazonECR/latest/userguide/RepositoryPolicies.html Amazon ECR Repository Policies> in the /Amazon Elastic Container Registry User Guide/ .
 --
 --
 module Network.AWS.ECR.SetRepositoryPolicy
@@ -67,7 +67,7 @@ data SetRepositoryPolicy = SetRepositoryPolicy'{_srpForce
 --
 -- * 'srpRepositoryName' - The name of the repository to receive the policy.
 --
--- * 'srpPolicyText' - The JSON repository policy text to apply to the repository.
+-- * 'srpPolicyText' - The JSON repository policy text to apply to the repository. For more information, see <https://docs.aws.amazon.com/AmazonECR/latest/userguide/RepositoryPolicyExamples.html Amazon ECR Repository Policy Examples> in the /Amazon Elastic Container Registry User Guide/ .
 setRepositoryPolicy
     :: Text -- ^ 'srpRepositoryName'
     -> Text -- ^ 'srpPolicyText'
@@ -90,7 +90,7 @@ srpRegistryId = lens _srpRegistryId (\ s a -> s{_srpRegistryId = a})
 srpRepositoryName :: Lens' SetRepositoryPolicy Text
 srpRepositoryName = lens _srpRepositoryName (\ s a -> s{_srpRepositoryName = a})
 
--- | The JSON repository policy text to apply to the repository.
+-- | The JSON repository policy text to apply to the repository. For more information, see <https://docs.aws.amazon.com/AmazonECR/latest/userguide/RepositoryPolicyExamples.html Amazon ECR Repository Policy Examples> in the /Amazon Elastic Container Registry User Guide/ .
 srpPolicyText :: Lens' SetRepositoryPolicy Text
 srpPolicyText = lens _srpPolicyText (\ s a -> s{_srpPolicyText = a})
 

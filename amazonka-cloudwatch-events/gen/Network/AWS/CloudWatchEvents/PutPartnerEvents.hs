@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- This is used by SaaS partners to write events to a customer's partner event bus.
+-- This is used by SaaS partners to write events to a customer's partner event bus. AWS customers do not use this operation.
 --
 --
 module Network.AWS.CloudWatchEvents.PutPartnerEvents
@@ -116,7 +116,7 @@ data PutPartnerEventsResponse = PutPartnerEventsResponse'{_ppersFailedEntryCount
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'ppersFailedEntryCount' - The number of events from this operation that couldn't be written to the partner event bus.
+-- * 'ppersFailedEntryCount' - The number of events from this operation that could not be written to the partner event bus.
 --
 -- * 'ppersEntries' - The list of events from this operation that were successfully written to the partner event bus.
 --
@@ -130,7 +130,7 @@ putPartnerEventsResponse pResponseStatus_
                               _ppersEntries = Nothing,
                               _ppersResponseStatus = pResponseStatus_}
 
--- | The number of events from this operation that couldn't be written to the partner event bus.
+-- | The number of events from this operation that could not be written to the partner event bus.
 ppersFailedEntryCount :: Lens' PutPartnerEventsResponse (Maybe Int)
 ppersFailedEntryCount = lens _ppersFailedEntryCount (\ s a -> s{_ppersFailedEntryCount = a})
 

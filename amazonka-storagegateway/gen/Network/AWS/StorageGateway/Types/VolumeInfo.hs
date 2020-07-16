@@ -27,6 +27,7 @@ import Network.AWS.Prelude
 -- /See:/ 'volumeInfo' smart constructor.
 data VolumeInfo = VolumeInfo'{_viGatewayARN ::
                               !(Maybe Text),
+                              _viVolumeAttachmentStatus :: !(Maybe Text),
                               _viVolumeARN :: !(Maybe Text),
                               _viVolumeSizeInBytes :: !(Maybe Integer),
                               _viVolumeId :: !(Maybe Text),
@@ -40,6 +41,8 @@ data VolumeInfo = VolumeInfo'{_viGatewayARN ::
 --
 -- * 'viGatewayARN' - Undocumented member.
 --
+-- * 'viVolumeAttachmentStatus' - One of the VolumeStatus values that indicates the state of the storage volume. 
+--
 -- * 'viVolumeARN' - The Amazon Resource Name (ARN) for the storage volume. For example, the following is a valid ARN: @arn:aws:storagegateway:us-east-2:111122223333:gateway/sgw-12A3456B/volume/vol-1122AABB@  Valid Values: 50 to 500 lowercase letters, numbers, periods (.), and hyphens (-).
 --
 -- * 'viVolumeSizeInBytes' - The size of the volume in bytes. Valid Values: 50 to 500 lowercase letters, numbers, periods (.), and hyphens (-).
@@ -48,11 +51,12 @@ data VolumeInfo = VolumeInfo'{_viGatewayARN ::
 --
 -- * 'viGatewayId' - The unique identifier assigned to your gateway during activation. This ID becomes part of the gateway Amazon Resource Name (ARN), which you use as input for other operations. Valid Values: 50 to 500 lowercase letters, numbers, periods (.), and hyphens (-).
 --
--- * 'viVolumeType' - Undocumented member.
+-- * 'viVolumeType' - One of the VolumeType enumeration values describing the type of the volume.
 volumeInfo
     :: VolumeInfo
 volumeInfo
   = VolumeInfo'{_viGatewayARN = Nothing,
+                _viVolumeAttachmentStatus = Nothing,
                 _viVolumeARN = Nothing,
                 _viVolumeSizeInBytes = Nothing,
                 _viVolumeId = Nothing, _viGatewayId = Nothing,
@@ -61,6 +65,10 @@ volumeInfo
 -- | Undocumented member.
 viGatewayARN :: Lens' VolumeInfo (Maybe Text)
 viGatewayARN = lens _viGatewayARN (\ s a -> s{_viGatewayARN = a})
+
+-- | One of the VolumeStatus values that indicates the state of the storage volume. 
+viVolumeAttachmentStatus :: Lens' VolumeInfo (Maybe Text)
+viVolumeAttachmentStatus = lens _viVolumeAttachmentStatus (\ s a -> s{_viVolumeAttachmentStatus = a})
 
 -- | The Amazon Resource Name (ARN) for the storage volume. For example, the following is a valid ARN: @arn:aws:storagegateway:us-east-2:111122223333:gateway/sgw-12A3456B/volume/vol-1122AABB@  Valid Values: 50 to 500 lowercase letters, numbers, periods (.), and hyphens (-).
 viVolumeARN :: Lens' VolumeInfo (Maybe Text)
@@ -78,7 +86,7 @@ viVolumeId = lens _viVolumeId (\ s a -> s{_viVolumeId = a})
 viGatewayId :: Lens' VolumeInfo (Maybe Text)
 viGatewayId = lens _viGatewayId (\ s a -> s{_viGatewayId = a})
 
--- | Undocumented member.
+-- | One of the VolumeType enumeration values describing the type of the volume.
 viVolumeType :: Lens' VolumeInfo (Maybe Text)
 viVolumeType = lens _viVolumeType (\ s a -> s{_viVolumeType = a})
 
@@ -87,8 +95,10 @@ instance FromJSON VolumeInfo where
           = withObject "VolumeInfo"
               (\ x ->
                  VolumeInfo' <$>
-                   (x .:? "GatewayARN") <*> (x .:? "VolumeARN") <*>
-                     (x .:? "VolumeSizeInBytes")
+                   (x .:? "GatewayARN") <*>
+                     (x .:? "VolumeAttachmentStatus")
+                     <*> (x .:? "VolumeARN")
+                     <*> (x .:? "VolumeSizeInBytes")
                      <*> (x .:? "VolumeId")
                      <*> (x .:? "GatewayId")
                      <*> (x .:? "VolumeType"))

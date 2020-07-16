@@ -22,7 +22,11 @@ import Network.AWS.Prelude
 import Network.AWS.S3.Internal
 import Network.AWS.S3.Types.Stats
 
--- | /See:/ 'statsEvent' smart constructor.
+-- | Container for the Stats Event.
+--
+--
+--
+-- /See:/ 'statsEvent' smart constructor.
 newtype StatsEvent = StatsEvent'{_seDetails ::
                                  Maybe Stats}
                        deriving (Eq, Read, Show, Data, Typeable, Generic)

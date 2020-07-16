@@ -11,7 +11,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- This is the /AWS WAF Regional API Reference/ for using AWS WAF with Elastic Load Balancing (ELB) Application Load Balancers. The AWS WAF actions and data types listed in the reference are available for protecting Application Load Balancers. You can use these actions and data types by means of the endpoints listed in <http://docs.aws.amazon.com/general/latest/gr/rande.html#waf_region AWS Regions and Endpoints> . This guide is for developers who need detailed information about the AWS WAF API actions, data types, and errors. For detailed information about AWS WAF features and an overview of how to use the AWS WAF API, see the <http://docs.aws.amazon.com/waf/latest/developerguide/ AWS WAF Developer Guide> .
+-- This is the /AWS WAF Regional Classic API Reference/ for using AWS WAF Classic with the AWS resources, Elastic Load Balancing (ELB) Application Load Balancers and API Gateway APIs. The AWS WAF Classic actions and data types listed in the reference are available for protecting Elastic Load Balancing (ELB) Application Load Balancers and API Gateway APIs. You can use these actions and data types by means of the endpoints listed in <https://docs.aws.amazon.com/general/latest/gr/rande.html#waf_region AWS Regions and Endpoints> . This guide is for developers who need detailed information about the AWS WAF Classic API actions, data types, and errors. For detailed information about AWS WAF Classic features and an overview of how to use the AWS WAF Classic API, see the <https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html AWS WAF Classic> in the developer guide.
 --
 --
 module Network.AWS.WAFRegional
@@ -28,11 +28,20 @@ module Network.AWS.WAFRegional
     -- ** WAFInvalidRegexPatternException
     , _WAFInvalidRegexPatternException
 
+    -- ** WAFEntityMigrationException
+    , _WAFEntityMigrationException
+
     -- ** WAFLimitsExceededException
     , _WAFLimitsExceededException
 
     -- ** WAFInvalidParameterException
     , _WAFInvalidParameterException
+
+    -- ** WAFServiceLinkedRoleErrorException
+    , _WAFServiceLinkedRoleErrorException
+
+    -- ** WAFBadRequestException
+    , _WAFBadRequestException
 
     -- ** WAFUnavailableEntityException
     , _WAFUnavailableEntityException
@@ -46,6 +55,9 @@ module Network.AWS.WAFRegional
     -- ** WAFInternalErrorException
     , _WAFInternalErrorException
 
+    -- ** WAFTagOperationException
+    , _WAFTagOperationException
+
     -- ** WAFInvalidPermissionPolicyException
     , _WAFInvalidPermissionPolicyException
 
@@ -54,6 +66,9 @@ module Network.AWS.WAFRegional
 
     -- ** WAFSubscriptionNotFoundException
     , _WAFSubscriptionNotFoundException
+
+    -- ** WAFTagOperationInternalErrorException
+    , _WAFTagOperationInternalErrorException
 
     -- ** WAFInvalidAccountException
     , _WAFInvalidAccountException
@@ -118,17 +133,29 @@ module Network.AWS.WAFRegional
     -- ** CreateRule 
     , module Network.AWS.WAFRegional.CreateRule
 
+    -- ** DeleteLoggingConfiguration 
+    , module Network.AWS.WAFRegional.DeleteLoggingConfiguration
+
     -- ** CreateWebACL 
     , module Network.AWS.WAFRegional.CreateWebACL
 
     -- ** GetGeoMatchSet 
     , module Network.AWS.WAFRegional.GetGeoMatchSet
 
+    -- ** PutLoggingConfiguration 
+    , module Network.AWS.WAFRegional.PutLoggingConfiguration
+
+    -- ** ListTagsForResource 
+    , module Network.AWS.WAFRegional.ListTagsForResource
+
     -- ** ListByteMatchSets 
     , module Network.AWS.WAFRegional.ListByteMatchSets
 
     -- ** ListGeoMatchSets 
     , module Network.AWS.WAFRegional.ListGeoMatchSets
+
+    -- ** GetLoggingConfiguration 
+    , module Network.AWS.WAFRegional.GetLoggingConfiguration
 
     -- ** CreateRuleGroup 
     , module Network.AWS.WAFRegional.CreateRuleGroup
@@ -153,6 +180,9 @@ module Network.AWS.WAFRegional
 
     -- ** UpdateXSSMatchSet 
     , module Network.AWS.WAFRegional.UpdateXSSMatchSet
+
+    -- ** CreateWebACLMigrationStack 
+    , module Network.AWS.WAFRegional.CreateWebACLMigrationStack
 
     -- ** ListXSSMatchSets 
     , module Network.AWS.WAFRegional.ListXSSMatchSets
@@ -202,6 +232,9 @@ module Network.AWS.WAFRegional
     -- ** PutPermissionPolicy 
     , module Network.AWS.WAFRegional.PutPermissionPolicy
 
+    -- ** ListLoggingConfigurations 
+    , module Network.AWS.WAFRegional.ListLoggingConfigurations
+
     -- ** GetRateBasedRuleManagedKeys 
     , module Network.AWS.WAFRegional.GetRateBasedRuleManagedKeys
 
@@ -244,6 +277,9 @@ module Network.AWS.WAFRegional
     -- ** ListRuleGroups 
     , module Network.AWS.WAFRegional.ListRuleGroups
 
+    -- ** TagResource 
+    , module Network.AWS.WAFRegional.TagResource
+
     -- ** DeleteRuleGroup 
     , module Network.AWS.WAFRegional.DeleteRuleGroup
 
@@ -264,6 +300,9 @@ module Network.AWS.WAFRegional
 
     -- ** UpdateSizeConstraintSet 
     , module Network.AWS.WAFRegional.UpdateSizeConstraintSet
+
+    -- ** UntagResource 
+    , module Network.AWS.WAFRegional.UntagResource
 
     -- ** DeleteRegexPatternSet 
     , module Network.AWS.WAFRegional.DeleteRegexPatternSet
@@ -324,6 +363,9 @@ module Network.AWS.WAFRegional
     -- ** RateKey
     , RateKey (..)
 
+    -- ** ResourceType
+    , ResourceType (..)
+
     -- ** TextTransformation
     , TextTransformation (..)
 
@@ -341,6 +383,7 @@ module Network.AWS.WAFRegional
     , activatedRule
     , arOverrideAction
     , arAction
+    , arExcludedRules
     , arType
     , arPriority
     , arRuleId
@@ -371,6 +414,11 @@ module Network.AWS.WAFRegional
     , bmtTargetString
     , bmtTextTransformation
     , bmtPositionalConstraint
+
+    -- ** ExcludedRule
+    , ExcludedRule
+    , excludedRule
+    , erRuleId
 
     -- ** FieldToMatch
     , FieldToMatch
@@ -443,6 +491,13 @@ module Network.AWS.WAFRegional
     , ipSetUpdate
     , isuAction
     , isuIPSetDescriptor
+
+    -- ** LoggingConfiguration
+    , LoggingConfiguration
+    , loggingConfiguration
+    , lcRedactedFields
+    , lcResourceARN
+    , lcLogDestinationConfigs
 
     -- ** Predicate
     , Predicate
@@ -613,6 +668,18 @@ module Network.AWS.WAFRegional
     , srgsName
     , srgsMetricName
 
+    -- ** Tag
+    , Tag
+    , tag
+    , tagKey
+    , tagValue
+
+    -- ** TagInfoForResource
+    , TagInfoForResource
+    , tagInfoForResource
+    , tifrTagList
+    , tifrResourceARN
+
     -- ** TimeWindow
     , TimeWindow
     , timeWindow
@@ -634,6 +701,7 @@ module Network.AWS.WAFRegional
     , webACL
     , waMetricName
     , waName
+    , waWebACLARN
     , waWebACLId
     , waDefaultAction
     , waRules
@@ -688,10 +756,12 @@ import Network.AWS.WAFRegional.CreateRuleGroup
 import Network.AWS.WAFRegional.CreateSizeConstraintSet
 import Network.AWS.WAFRegional.CreateSqlInjectionMatchSet
 import Network.AWS.WAFRegional.CreateWebACL
+import Network.AWS.WAFRegional.CreateWebACLMigrationStack
 import Network.AWS.WAFRegional.CreateXSSMatchSet
 import Network.AWS.WAFRegional.DeleteByteMatchSet
 import Network.AWS.WAFRegional.DeleteGeoMatchSet
 import Network.AWS.WAFRegional.DeleteIPSet
+import Network.AWS.WAFRegional.DeleteLoggingConfiguration
 import Network.AWS.WAFRegional.DeletePermissionPolicy
 import Network.AWS.WAFRegional.DeleteRateBasedRule
 import Network.AWS.WAFRegional.DeleteRegexMatchSet
@@ -708,6 +778,7 @@ import Network.AWS.WAFRegional.GetChangeToken
 import Network.AWS.WAFRegional.GetChangeTokenStatus
 import Network.AWS.WAFRegional.GetGeoMatchSet
 import Network.AWS.WAFRegional.GetIPSet
+import Network.AWS.WAFRegional.GetLoggingConfiguration
 import Network.AWS.WAFRegional.GetPermissionPolicy
 import Network.AWS.WAFRegional.GetRateBasedRule
 import Network.AWS.WAFRegional.GetRateBasedRuleManagedKeys
@@ -725,6 +796,7 @@ import Network.AWS.WAFRegional.ListActivatedRulesInRuleGroup
 import Network.AWS.WAFRegional.ListByteMatchSets
 import Network.AWS.WAFRegional.ListGeoMatchSets
 import Network.AWS.WAFRegional.ListIPSets
+import Network.AWS.WAFRegional.ListLoggingConfigurations
 import Network.AWS.WAFRegional.ListRateBasedRules
 import Network.AWS.WAFRegional.ListRegexMatchSets
 import Network.AWS.WAFRegional.ListRegexPatternSets
@@ -734,10 +806,14 @@ import Network.AWS.WAFRegional.ListRules
 import Network.AWS.WAFRegional.ListSizeConstraintSets
 import Network.AWS.WAFRegional.ListSqlInjectionMatchSets
 import Network.AWS.WAFRegional.ListSubscribedRuleGroups
+import Network.AWS.WAFRegional.ListTagsForResource
 import Network.AWS.WAFRegional.ListWebACLs
 import Network.AWS.WAFRegional.ListXSSMatchSets
+import Network.AWS.WAFRegional.PutLoggingConfiguration
 import Network.AWS.WAFRegional.PutPermissionPolicy
+import Network.AWS.WAFRegional.TagResource
 import Network.AWS.WAFRegional.Types
+import Network.AWS.WAFRegional.UntagResource
 import Network.AWS.WAFRegional.UpdateByteMatchSet
 import Network.AWS.WAFRegional.UpdateGeoMatchSet
 import Network.AWS.WAFRegional.UpdateIPSet

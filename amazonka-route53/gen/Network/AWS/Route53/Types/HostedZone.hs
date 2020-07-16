@@ -40,7 +40,7 @@ data HostedZone = HostedZone'{_hzLinkedService ::
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'hzLinkedService' - If the hosted zone was created by another service, the service that created the hosted zone. When a hosted zone is created by another service, you can't edit or delete it using Amazon Route 53. 
+-- * 'hzLinkedService' - If the hosted zone was created by another service, the service that created the hosted zone. When a hosted zone is created by another service, you can't edit or delete it using Route 53. 
 --
 -- * 'hzConfig' - A complex type that includes the @Comment@ and @PrivateZone@ elements. If you omitted the @HostedZoneConfig@ and @Comment@ elements from the request, the @Config@ and @Comment@ elements don't appear in the response.
 --
@@ -48,7 +48,7 @@ data HostedZone = HostedZone'{_hzLinkedService ::
 --
 -- * 'hzId' - The ID that Amazon Route 53 assigned to the hosted zone when you created it.
 --
--- * 'hzName' - The name of the domain. For public hosted zones, this is the name that you have registered with your DNS registrar. For information about how to specify characters other than @a-z@ , @0-9@ , and @-@ (hyphen) and how to specify internationalized domain names, see 'CreateHostedZone' .
+-- * 'hzName' - The name of the domain. For public hosted zones, this is the name that you have registered with your DNS registrar. For information about how to specify characters other than @a-z@ , @0-9@ , and @-@ (hyphen) and how to specify internationalized domain names, see <https://docs.aws.amazon.com/Route53/latest/APIReference/API_CreateHostedZone.html CreateHostedZone> .
 --
 -- * 'hzCallerReference' - The value that you specified for @CallerReference@ when you created the hosted zone.
 hostedZone
@@ -63,7 +63,7 @@ hostedZone pId_ pName_ pCallerReference_
                 _hzName = pName_,
                 _hzCallerReference = pCallerReference_}
 
--- | If the hosted zone was created by another service, the service that created the hosted zone. When a hosted zone is created by another service, you can't edit or delete it using Amazon Route 53. 
+-- | If the hosted zone was created by another service, the service that created the hosted zone. When a hosted zone is created by another service, you can't edit or delete it using Route 53. 
 hzLinkedService :: Lens' HostedZone (Maybe LinkedService)
 hzLinkedService = lens _hzLinkedService (\ s a -> s{_hzLinkedService = a})
 
@@ -79,7 +79,7 @@ hzResourceRecordSetCount = lens _hzResourceRecordSetCount (\ s a -> s{_hzResourc
 hzId :: Lens' HostedZone ResourceId
 hzId = lens _hzId (\ s a -> s{_hzId = a})
 
--- | The name of the domain. For public hosted zones, this is the name that you have registered with your DNS registrar. For information about how to specify characters other than @a-z@ , @0-9@ , and @-@ (hyphen) and how to specify internationalized domain names, see 'CreateHostedZone' .
+-- | The name of the domain. For public hosted zones, this is the name that you have registered with your DNS registrar. For information about how to specify characters other than @a-z@ , @0-9@ , and @-@ (hyphen) and how to specify internationalized domain names, see <https://docs.aws.amazon.com/Route53/latest/APIReference/API_CreateHostedZone.html CreateHostedZone> .
 hzName :: Lens' HostedZone Text
 hzName = lens _hzName (\ s a -> s{_hzName = a})
 

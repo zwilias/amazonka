@@ -21,8 +21,6 @@
 -- Cancels a game session placement that is in @PENDING@ status. To stop a placement, provide the placement ID values. If successful, the placement is moved to @CANCELLED@ status.
 --
 --
--- Game-session-related operations include:
---
 --     * 'CreateGameSession' 
 --
 --     * 'DescribeGameSessions' 
@@ -84,7 +82,7 @@ newtype StopGameSessionPlacement = StopGameSessionPlacement'{_sPlacementId
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'sPlacementId' - Unique identifier for a game session placement to cancel.
+-- * 'sPlacementId' - A unique identifier for a game session placement to cancel.
 stopGameSessionPlacement
     :: Text -- ^ 'sPlacementId'
     -> StopGameSessionPlacement
@@ -92,7 +90,7 @@ stopGameSessionPlacement pPlacementId_
   = StopGameSessionPlacement'{_sPlacementId =
                                 pPlacementId_}
 
--- | Unique identifier for a game session placement to cancel.
+-- | A unique identifier for a game session placement to cancel.
 sPlacementId :: Lens' StopGameSessionPlacement Text
 sPlacementId = lens _sPlacementId (\ s a -> s{_sPlacementId = a})
 

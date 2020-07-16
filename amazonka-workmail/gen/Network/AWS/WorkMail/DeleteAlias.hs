@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Remove the alias from a set of aliases for a given user.
+-- Remove one or more specified aliases from a set of aliases for a given user.
 --
 --
 module Network.AWS.WorkMail.DeleteAlias
@@ -57,7 +57,7 @@ data DeleteAlias = DeleteAlias'{_daOrganizationId ::
 --
 -- * 'daOrganizationId' - The identifier for the organization under which the user exists.
 --
--- * 'daEntityId' - The identifier for the Amazon WorkMail entity to have the aliases removed.
+-- * 'daEntityId' - The identifier for the member (user or group) from which to have the aliases removed.
 --
 -- * 'daAlias' - The aliases to be removed from the user's set of aliases. Duplicate entries in the list are collapsed into single entries (the list is transformed into a set).
 deleteAlias
@@ -73,7 +73,7 @@ deleteAlias pOrganizationId_ pEntityId_ pAlias_
 daOrganizationId :: Lens' DeleteAlias Text
 daOrganizationId = lens _daOrganizationId (\ s a -> s{_daOrganizationId = a})
 
--- | The identifier for the Amazon WorkMail entity to have the aliases removed.
+-- | The identifier for the member (user or group) from which to have the aliases removed.
 daEntityId :: Lens' DeleteAlias Text
 daEntityId = lens _daEntityId (\ s a -> s{_daEntityId = a})
 

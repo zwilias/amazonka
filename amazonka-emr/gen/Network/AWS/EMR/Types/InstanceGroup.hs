@@ -34,9 +34,13 @@ import Network.AWS.Prelude
 -- /See:/ 'instanceGroup' smart constructor.
 data InstanceGroup = InstanceGroup'{_igStatus ::
                                     !(Maybe InstanceGroupStatus),
+                                    _igLastSuccessfullyAppliedConfigurationsVersion
+                                    :: !(Maybe Integer),
                                     _igBidPrice :: !(Maybe Text),
                                     _igRequestedInstanceCount :: !(Maybe Int),
                                     _igRunningInstanceCount :: !(Maybe Int),
+                                    _igLastSuccessfullyAppliedConfigurations ::
+                                    !(Maybe [Configuration]),
                                     _igConfigurations ::
                                     !(Maybe [Configuration]),
                                     _igInstanceGroupType ::
@@ -44,6 +48,8 @@ data InstanceGroup = InstanceGroup'{_igStatus ::
                                     _igEBSBlockDevices ::
                                     !(Maybe [EBSBlockDevice]),
                                     _igInstanceType :: !(Maybe Text),
+                                    _igConfigurationsVersion ::
+                                    !(Maybe Integer),
                                     _igEBSOptimized :: !(Maybe Bool),
                                     _igMarket :: !(Maybe MarketType),
                                     _igName :: !(Maybe Text),
@@ -59,11 +65,15 @@ data InstanceGroup = InstanceGroup'{_igStatus ::
 --
 -- * 'igStatus' - The current status of the instance group.
 --
--- * 'igBidPrice' - The bid price for each EC2 instance in the instance group when launching nodes as Spot Instances, expressed in USD.
+-- * 'igLastSuccessfullyAppliedConfigurationsVersion' - The version number of a configuration specification that was successfully applied for an instance group last time. 
+--
+-- * 'igBidPrice' - The bid price for each EC2 Spot instance type as defined by @InstanceType@ . Expressed in USD. If neither @BidPrice@ nor @BidPriceAsPercentageOfOnDemandPrice@ is provided, @BidPriceAsPercentageOfOnDemandPrice@ defaults to 100%.
 --
 -- * 'igRequestedInstanceCount' - The target number of instances for the instance group.
 --
 -- * 'igRunningInstanceCount' - The number of instances currently running in this instance group.
+--
+-- * 'igLastSuccessfullyAppliedConfigurations' - A list of configurations that were successfully applied for an instance group last time.
 --
 -- * 'igConfigurations' - The list of configurations supplied for an EMR cluster instance group. You can specify a separate configuration for each instance group (master, core, and task).
 --
@@ -72,6 +82,8 @@ data InstanceGroup = InstanceGroup'{_igStatus ::
 -- * 'igEBSBlockDevices' - The EBS block devices that are mapped to this instance group.
 --
 -- * 'igInstanceType' - The EC2 instance type for all instances in the instance group.
+--
+-- * 'igConfigurationsVersion' - The version number of the requested configuration specification for this instance group.
 --
 -- * 'igEBSOptimized' - If the instance group is EBS-optimized. An Amazon EBS-optimized instance uses an optimized configuration stack and provides additional, dedicated capacity for Amazon EBS I/O.
 --
@@ -88,22 +100,30 @@ instanceGroup
     :: InstanceGroup
 instanceGroup
   = InstanceGroup'{_igStatus = Nothing,
+                   _igLastSuccessfullyAppliedConfigurationsVersion =
+                     Nothing,
                    _igBidPrice = Nothing,
                    _igRequestedInstanceCount = Nothing,
                    _igRunningInstanceCount = Nothing,
+                   _igLastSuccessfullyAppliedConfigurations = Nothing,
                    _igConfigurations = Nothing,
                    _igInstanceGroupType = Nothing,
                    _igEBSBlockDevices = Nothing,
-                   _igInstanceType = Nothing, _igEBSOptimized = Nothing,
-                   _igMarket = Nothing, _igName = Nothing,
-                   _igAutoScalingPolicy = Nothing,
+                   _igInstanceType = Nothing,
+                   _igConfigurationsVersion = Nothing,
+                   _igEBSOptimized = Nothing, _igMarket = Nothing,
+                   _igName = Nothing, _igAutoScalingPolicy = Nothing,
                    _igShrinkPolicy = Nothing, _igId = Nothing}
 
 -- | The current status of the instance group.
 igStatus :: Lens' InstanceGroup (Maybe InstanceGroupStatus)
 igStatus = lens _igStatus (\ s a -> s{_igStatus = a})
 
--- | The bid price for each EC2 instance in the instance group when launching nodes as Spot Instances, expressed in USD.
+-- | The version number of a configuration specification that was successfully applied for an instance group last time. 
+igLastSuccessfullyAppliedConfigurationsVersion :: Lens' InstanceGroup (Maybe Integer)
+igLastSuccessfullyAppliedConfigurationsVersion = lens _igLastSuccessfullyAppliedConfigurationsVersion (\ s a -> s{_igLastSuccessfullyAppliedConfigurationsVersion = a})
+
+-- | The bid price for each EC2 Spot instance type as defined by @InstanceType@ . Expressed in USD. If neither @BidPrice@ nor @BidPriceAsPercentageOfOnDemandPrice@ is provided, @BidPriceAsPercentageOfOnDemandPrice@ defaults to 100%.
 igBidPrice :: Lens' InstanceGroup (Maybe Text)
 igBidPrice = lens _igBidPrice (\ s a -> s{_igBidPrice = a})
 
@@ -114,6 +134,10 @@ igRequestedInstanceCount = lens _igRequestedInstanceCount (\ s a -> s{_igRequest
 -- | The number of instances currently running in this instance group.
 igRunningInstanceCount :: Lens' InstanceGroup (Maybe Int)
 igRunningInstanceCount = lens _igRunningInstanceCount (\ s a -> s{_igRunningInstanceCount = a})
+
+-- | A list of configurations that were successfully applied for an instance group last time.
+igLastSuccessfullyAppliedConfigurations :: Lens' InstanceGroup [Configuration]
+igLastSuccessfullyAppliedConfigurations = lens _igLastSuccessfullyAppliedConfigurations (\ s a -> s{_igLastSuccessfullyAppliedConfigurations = a}) . _Default . _Coerce
 
 -- | The list of configurations supplied for an EMR cluster instance group. You can specify a separate configuration for each instance group (master, core, and task).
 igConfigurations :: Lens' InstanceGroup [Configuration]
@@ -130,6 +154,10 @@ igEBSBlockDevices = lens _igEBSBlockDevices (\ s a -> s{_igEBSBlockDevices = a})
 -- | The EC2 instance type for all instances in the instance group.
 igInstanceType :: Lens' InstanceGroup (Maybe Text)
 igInstanceType = lens _igInstanceType (\ s a -> s{_igInstanceType = a})
+
+-- | The version number of the requested configuration specification for this instance group.
+igConfigurationsVersion :: Lens' InstanceGroup (Maybe Integer)
+igConfigurationsVersion = lens _igConfigurationsVersion (\ s a -> s{_igConfigurationsVersion = a})
 
 -- | If the instance group is EBS-optimized. An Amazon EBS-optimized instance uses an optimized configuration stack and provides additional, dedicated capacity for Amazon EBS I/O.
 igEBSOptimized :: Lens' InstanceGroup (Maybe Bool)
@@ -160,13 +188,20 @@ instance FromJSON InstanceGroup where
           = withObject "InstanceGroup"
               (\ x ->
                  InstanceGroup' <$>
-                   (x .:? "Status") <*> (x .:? "BidPrice") <*>
-                     (x .:? "RequestedInstanceCount")
+                   (x .:? "Status") <*>
+                     (x .:?
+                        "LastSuccessfullyAppliedConfigurationsVersion")
+                     <*> (x .:? "BidPrice")
+                     <*> (x .:? "RequestedInstanceCount")
                      <*> (x .:? "RunningInstanceCount")
+                     <*>
+                     (x .:? "LastSuccessfullyAppliedConfigurations" .!=
+                        mempty)
                      <*> (x .:? "Configurations" .!= mempty)
                      <*> (x .:? "InstanceGroupType")
                      <*> (x .:? "EbsBlockDevices" .!= mempty)
                      <*> (x .:? "InstanceType")
+                     <*> (x .:? "ConfigurationsVersion")
                      <*> (x .:? "EbsOptimized")
                      <*> (x .:? "Market")
                      <*> (x .:? "Name")

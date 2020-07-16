@@ -21,7 +21,7 @@
 -- Retrieves information about a previously requested handshake. The handshake ID comes from the response to the original 'InviteAccountToOrganization' operation that generated the handshake.
 --
 --
--- You can access handshakes that are ACCEPTED, DECLINED, or CANCELED for only 30 days after they change to that state. They are then deleted and no longer accessible.
+-- You can access handshakes that are @ACCEPTED@ , @DECLINED@ , or @CANCELED@ for only 30 days after they change to that state. They're then deleted and no longer accessible.
 --
 -- This operation can be called from any account in the organization.
 --
@@ -57,14 +57,14 @@ newtype DescribeHandshake = DescribeHandshake'{_dhHandshakeId
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dhHandshakeId' - The unique identifier (ID) of the handshake that you want information about. You can get the ID from the original call to 'InviteAccountToOrganization' , or from a call to 'ListHandshakesForAccount' or 'ListHandshakesForOrganization' . The <http://wikipedia.org/wiki/regex regex pattern> for handshake ID string requires "h-" followed by from 8 to 32 lower-case letters or digits.
+-- * 'dhHandshakeId' - The unique identifier (ID) of the handshake that you want information about. You can get the ID from the original call to 'InviteAccountToOrganization' , or from a call to 'ListHandshakesForAccount' or 'ListHandshakesForOrganization' . The <http://wikipedia.org/wiki/regex regex pattern> for handshake ID string requires "h-" followed by from 8 to 32 lowercase letters or digits.
 describeHandshake
     :: Text -- ^ 'dhHandshakeId'
     -> DescribeHandshake
 describeHandshake pHandshakeId_
   = DescribeHandshake'{_dhHandshakeId = pHandshakeId_}
 
--- | The unique identifier (ID) of the handshake that you want information about. You can get the ID from the original call to 'InviteAccountToOrganization' , or from a call to 'ListHandshakesForAccount' or 'ListHandshakesForOrganization' . The <http://wikipedia.org/wiki/regex regex pattern> for handshake ID string requires "h-" followed by from 8 to 32 lower-case letters or digits.
+-- | The unique identifier (ID) of the handshake that you want information about. You can get the ID from the original call to 'InviteAccountToOrganization' , or from a call to 'ListHandshakesForAccount' or 'ListHandshakesForOrganization' . The <http://wikipedia.org/wiki/regex regex pattern> for handshake ID string requires "h-" followed by from 8 to 32 lowercase letters or digits.
 dhHandshakeId :: Lens' DescribeHandshake Text
 dhHandshakeId = lens _dhHandshakeId (\ s a -> s{_dhHandshakeId = a})
 

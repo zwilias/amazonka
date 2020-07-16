@@ -22,6 +22,8 @@ module Network.AWS.EMR.Types.Product (
     module Network.AWS.EMR.Types.AutoScalingPolicyDescription,
     module Network.AWS.EMR.Types.AutoScalingPolicyStateChangeReason,
     module Network.AWS.EMR.Types.AutoScalingPolicyStatus,
+    module Network.AWS.EMR.Types.BlockPublicAccessConfiguration,
+    module Network.AWS.EMR.Types.BlockPublicAccessConfigurationMetadata,
     module Network.AWS.EMR.Types.BootstrapActionConfig,
     module Network.AWS.EMR.Types.CancelStepsInfo,
     module Network.AWS.EMR.Types.CloudWatchAlarmDefinition,
@@ -31,6 +33,7 @@ module Network.AWS.EMR.Types.Product (
     module Network.AWS.EMR.Types.ClusterSummary,
     module Network.AWS.EMR.Types.ClusterTimeline,
     module Network.AWS.EMR.Types.Command,
+    module Network.AWS.EMR.Types.ComputeLimits,
     module Network.AWS.EMR.Types.Configuration,
     module Network.AWS.EMR.Types.EBSBlockDevice,
     module Network.AWS.EMR.Types.EBSBlockDeviceConfig,
@@ -63,8 +66,10 @@ module Network.AWS.EMR.Types.Product (
     module Network.AWS.EMR.Types.JobFlowInstancesConfig,
     module Network.AWS.EMR.Types.KerberosAttributes,
     module Network.AWS.EMR.Types.KeyValue,
+    module Network.AWS.EMR.Types.ManagedScalingPolicy,
     module Network.AWS.EMR.Types.MetricDimension,
     module Network.AWS.EMR.Types.PlacementType,
+    module Network.AWS.EMR.Types.PortRange,
     module Network.AWS.EMR.Types.ScalingAction,
     module Network.AWS.EMR.Types.ScalingConstraints,
     module Network.AWS.EMR.Types.ScalingRule,
@@ -90,6 +95,8 @@ import Network.AWS.EMR.Types.AutoScalingPolicy
 import Network.AWS.EMR.Types.AutoScalingPolicyDescription
 import Network.AWS.EMR.Types.AutoScalingPolicyStateChangeReason
 import Network.AWS.EMR.Types.AutoScalingPolicyStatus
+import Network.AWS.EMR.Types.BlockPublicAccessConfiguration
+import Network.AWS.EMR.Types.BlockPublicAccessConfigurationMetadata
 import Network.AWS.EMR.Types.BootstrapActionConfig
 import Network.AWS.EMR.Types.CancelStepsInfo
 import Network.AWS.EMR.Types.CloudWatchAlarmDefinition
@@ -99,6 +106,7 @@ import Network.AWS.EMR.Types.ClusterStatus
 import Network.AWS.EMR.Types.ClusterSummary
 import Network.AWS.EMR.Types.ClusterTimeline
 import Network.AWS.EMR.Types.Command
+import Network.AWS.EMR.Types.ComputeLimits
 import Network.AWS.EMR.Types.Configuration
 import Network.AWS.EMR.Types.EBSBlockDevice
 import Network.AWS.EMR.Types.EBSBlockDeviceConfig
@@ -131,8 +139,10 @@ import Network.AWS.EMR.Types.InstanceTypeSpecification
 import Network.AWS.EMR.Types.JobFlowInstancesConfig
 import Network.AWS.EMR.Types.KerberosAttributes
 import Network.AWS.EMR.Types.KeyValue
+import Network.AWS.EMR.Types.ManagedScalingPolicy
 import Network.AWS.EMR.Types.MetricDimension
 import Network.AWS.EMR.Types.PlacementType
+import Network.AWS.EMR.Types.PortRange
 import Network.AWS.EMR.Types.ScalingAction
 import Network.AWS.EMR.Types.ScalingConstraints
 import Network.AWS.EMR.Types.ScalingRule

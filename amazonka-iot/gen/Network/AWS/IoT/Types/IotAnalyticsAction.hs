@@ -39,7 +39,7 @@ data IotAnalyticsAction = IotAnalyticsAction'{_iaaChannelARN
 --
 -- * 'iaaChannelName' - The name of the IoT Analytics channel to which message data will be sent.
 --
--- * 'iaaRoleARN' - The ARN of the role which has a policy that grants IoT permission to send message data via IoT Analytics (iotanalytics:BatchPutMessage).
+-- * 'iaaRoleARN' - The ARN of the role which has a policy that grants IoT Analytics permission to send message data via IoT Analytics (iotanalytics:BatchPutMessage).
 iotAnalyticsAction
     :: IotAnalyticsAction
 iotAnalyticsAction
@@ -54,7 +54,7 @@ iaaChannelARN = lens _iaaChannelARN (\ s a -> s{_iaaChannelARN = a})
 iaaChannelName :: Lens' IotAnalyticsAction (Maybe Text)
 iaaChannelName = lens _iaaChannelName (\ s a -> s{_iaaChannelName = a})
 
--- | The ARN of the role which has a policy that grants IoT permission to send message data via IoT Analytics (iotanalytics:BatchPutMessage).
+-- | The ARN of the role which has a policy that grants IoT Analytics permission to send message data via IoT Analytics (iotanalytics:BatchPutMessage).
 iaaRoleARN :: Lens' IotAnalyticsAction (Maybe Text)
 iaaRoleARN = lens _iaaRoleARN (\ s a -> s{_iaaRoleARN = a})
 

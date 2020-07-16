@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Deletes permissions granted to a user or group.
+-- Deletes permissions granted to a member (user or group).
 --
 --
 module Network.AWS.WorkMail.DeleteMailboxPermissions
@@ -58,11 +58,11 @@ data DeleteMailboxPermissions = DeleteMailboxPermissions'{_dmpOrganizationId
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dmpOrganizationId' - The identifier of the organization under which the entity (user or group) exists.
+-- * 'dmpOrganizationId' - The identifier of the organization under which the member (user or group) exists.
 --
--- * 'dmpEntityId' - The identifier of the entity (user or group) for which to delete mailbox permissions.
+-- * 'dmpEntityId' - The identifier of the member (user or group)that owns the mailbox.
 --
--- * 'dmpGranteeId' - The identifier of the entity (user or group) for which to delete granted permissions.
+-- * 'dmpGranteeId' - The identifier of the member (user or group) for which to delete granted permissions.
 deleteMailboxPermissions
     :: Text -- ^ 'dmpOrganizationId'
     -> Text -- ^ 'dmpEntityId'
@@ -75,15 +75,15 @@ deleteMailboxPermissions pOrganizationId_ pEntityId_
                               _dmpEntityId = pEntityId_,
                               _dmpGranteeId = pGranteeId_}
 
--- | The identifier of the organization under which the entity (user or group) exists.
+-- | The identifier of the organization under which the member (user or group) exists.
 dmpOrganizationId :: Lens' DeleteMailboxPermissions Text
 dmpOrganizationId = lens _dmpOrganizationId (\ s a -> s{_dmpOrganizationId = a})
 
--- | The identifier of the entity (user or group) for which to delete mailbox permissions.
+-- | The identifier of the member (user or group)that owns the mailbox.
 dmpEntityId :: Lens' DeleteMailboxPermissions Text
 dmpEntityId = lens _dmpEntityId (\ s a -> s{_dmpEntityId = a})
 
--- | The identifier of the entity (user or group) for which to delete granted permissions.
+-- | The identifier of the member (user or group) for which to delete granted permissions.
 dmpGranteeId :: Lens' DeleteMailboxPermissions Text
 dmpGranteeId = lens _dmpGranteeId (\ s a -> s{_dmpGranteeId = a})
 

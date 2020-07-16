@@ -22,7 +22,11 @@ import Network.AWS.Prelude
 import Network.AWS.S3.Internal
 import Network.AWS.S3.Types.InventoryFrequency
 
--- | /See:/ 'inventorySchedule' smart constructor.
+-- | Specifies the schedule for generating inventory results.
+--
+--
+--
+-- /See:/ 'inventorySchedule' smart constructor.
 newtype InventorySchedule = InventorySchedule'{_isFrequency
                                                :: InventoryFrequency}
                               deriving (Eq, Read, Show, Data, Typeable, Generic)

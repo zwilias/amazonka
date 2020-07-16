@@ -18,7 +18,9 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Deletes the APNs channel for an app.
+-- Disables the APNs channel for an application and deletes any existing settings for the channel.
+--
+--
 module Network.AWS.Pinpoint.DeleteAPNSChannel
     (
     -- * Creating a Request
@@ -51,7 +53,7 @@ newtype DeleteAPNSChannel = DeleteAPNSChannel'{_dacApplicationId
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dacApplicationId' - Undocumented member.
+-- * 'dacApplicationId' - The unique identifier for the application. This identifier is displayed as the __Project ID__ on the Amazon Pinpoint console.
 deleteAPNSChannel
     :: Text -- ^ 'dacApplicationId'
     -> DeleteAPNSChannel
@@ -59,7 +61,7 @@ deleteAPNSChannel pApplicationId_
   = DeleteAPNSChannel'{_dacApplicationId =
                          pApplicationId_}
 
--- | Undocumented member.
+-- | The unique identifier for the application. This identifier is displayed as the __Project ID__ on the Amazon Pinpoint console.
 dacApplicationId :: Lens' DeleteAPNSChannel Text
 dacApplicationId = lens _dacApplicationId (\ s a -> s{_dacApplicationId = a})
 

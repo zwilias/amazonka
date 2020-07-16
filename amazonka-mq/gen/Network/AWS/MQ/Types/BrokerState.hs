@@ -30,7 +30,7 @@ module Network.AWS.MQ.Types.BrokerState (
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | The status of the broker. Possible values: CREATION_IN_PROGRESS, CREATION_FAILED, DELETION_IN_PROGRESS, RUNNING, REBOOT_IN_PROGRESS
+-- | The status of the broker.
 data BrokerState = BrokerState' (CI Text)
                      deriving (Eq, Ord, Read, Show, Data, Typeable,
                                Generic)

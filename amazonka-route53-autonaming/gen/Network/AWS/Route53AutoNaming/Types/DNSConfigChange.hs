@@ -21,7 +21,7 @@ import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Route53AutoNaming.Types.DNSRecord
 
--- | A complex type that contains information about changes to the records that Route 53 creates when you register an instance.
+-- | A complex type that contains information about changes to the Route 53 DNS records that AWS Cloud Map creates when you register an instance.
 --
 --
 --
@@ -34,13 +34,13 @@ newtype DNSConfigChange = DNSConfigChange'{_dccDNSRecords
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dccDNSRecords' - An array that contains one @DnsRecord@ object for each record that you want Route 53 to create when you register an instance.
+-- * 'dccDNSRecords' - An array that contains one @DnsRecord@ object for each Route 53 record that you want AWS Cloud Map to create when you register an instance.
 dnsConfigChange
     :: DNSConfigChange
 dnsConfigChange
   = DNSConfigChange'{_dccDNSRecords = mempty}
 
--- | An array that contains one @DnsRecord@ object for each record that you want Route 53 to create when you register an instance.
+-- | An array that contains one @DnsRecord@ object for each Route 53 record that you want AWS Cloud Map to create when you register an instance.
 dccDNSRecords :: Lens' DNSConfigChange [DNSRecord]
 dccDNSRecords = lens _dccDNSRecords (\ s a -> s{_dccDNSRecords = a}) . _Coerce
 

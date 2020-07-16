@@ -26,12 +26,16 @@ import Network.AWS.Redshift.Internal
 --
 --
 -- /See:/ 'pendingModifiedValues' smart constructor.
-data PendingModifiedValues = PendingModifiedValues'{_pmvEnhancedVPCRouting
-                                                    :: !(Maybe Bool),
+data PendingModifiedValues = PendingModifiedValues'{_pmvEncryptionType
+                                                    :: !(Maybe Text),
+                                                    _pmvEnhancedVPCRouting ::
+                                                    !(Maybe Bool),
                                                     _pmvMasterUserPassword ::
                                                     !(Maybe Text),
                                                     _pmvPubliclyAccessible ::
                                                     !(Maybe Bool),
+                                                    _pmvMaintenanceTrackName ::
+                                                    !(Maybe Text),
                                                     _pmvAutomatedSnapshotRetentionPeriod
                                                     :: !(Maybe Int),
                                                     _pmvClusterIdentifier ::
@@ -51,11 +55,15 @@ data PendingModifiedValues = PendingModifiedValues'{_pmvEnhancedVPCRouting
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'pmvEnhancedVPCRouting' - An option that specifies whether to create the cluster with enhanced VPC routing enabled. To create a cluster that uses enhanced VPC routing, the cluster must be in a VPC. For more information, see <http://docs.aws.amazon.com/redshift/latest/mgmt/enhanced-vpc-routing.html Enhanced VPC Routing> in the Amazon Redshift Cluster Management Guide. If this option is @true@ , enhanced VPC routing is enabled.  Default: false
+-- * 'pmvEncryptionType' - The encryption type for a cluster. Possible values are: KMS and None. For the China region the possible values are None, and Legacy. 
+--
+-- * 'pmvEnhancedVPCRouting' - An option that specifies whether to create the cluster with enhanced VPC routing enabled. To create a cluster that uses enhanced VPC routing, the cluster must be in a VPC. For more information, see <https://docs.aws.amazon.com/redshift/latest/mgmt/enhanced-vpc-routing.html Enhanced VPC Routing> in the Amazon Redshift Cluster Management Guide. If this option is @true@ , enhanced VPC routing is enabled.  Default: false
 --
 -- * 'pmvMasterUserPassword' - The pending or in-progress change of the master user password for the cluster.
 --
 -- * 'pmvPubliclyAccessible' - The pending or in-progress change of the ability to connect to the cluster from the public network.
+--
+-- * 'pmvMaintenanceTrackName' - The name of the maintenance track that the cluster will change to during the next maintenance window.
 --
 -- * 'pmvAutomatedSnapshotRetentionPeriod' - The pending or in-progress change of the automated snapshot retention period.
 --
@@ -71,17 +79,23 @@ data PendingModifiedValues = PendingModifiedValues'{_pmvEnhancedVPCRouting
 pendingModifiedValues
     :: PendingModifiedValues
 pendingModifiedValues
-  = PendingModifiedValues'{_pmvEnhancedVPCRouting =
+  = PendingModifiedValues'{_pmvEncryptionType =
                              Nothing,
+                           _pmvEnhancedVPCRouting = Nothing,
                            _pmvMasterUserPassword = Nothing,
                            _pmvPubliclyAccessible = Nothing,
+                           _pmvMaintenanceTrackName = Nothing,
                            _pmvAutomatedSnapshotRetentionPeriod = Nothing,
                            _pmvClusterIdentifier = Nothing,
                            _pmvNumberOfNodes = Nothing,
                            _pmvClusterType = Nothing,
                            _pmvClusterVersion = Nothing, _pmvNodeType = Nothing}
 
--- | An option that specifies whether to create the cluster with enhanced VPC routing enabled. To create a cluster that uses enhanced VPC routing, the cluster must be in a VPC. For more information, see <http://docs.aws.amazon.com/redshift/latest/mgmt/enhanced-vpc-routing.html Enhanced VPC Routing> in the Amazon Redshift Cluster Management Guide. If this option is @true@ , enhanced VPC routing is enabled.  Default: false
+-- | The encryption type for a cluster. Possible values are: KMS and None. For the China region the possible values are None, and Legacy. 
+pmvEncryptionType :: Lens' PendingModifiedValues (Maybe Text)
+pmvEncryptionType = lens _pmvEncryptionType (\ s a -> s{_pmvEncryptionType = a})
+
+-- | An option that specifies whether to create the cluster with enhanced VPC routing enabled. To create a cluster that uses enhanced VPC routing, the cluster must be in a VPC. For more information, see <https://docs.aws.amazon.com/redshift/latest/mgmt/enhanced-vpc-routing.html Enhanced VPC Routing> in the Amazon Redshift Cluster Management Guide. If this option is @true@ , enhanced VPC routing is enabled.  Default: false
 pmvEnhancedVPCRouting :: Lens' PendingModifiedValues (Maybe Bool)
 pmvEnhancedVPCRouting = lens _pmvEnhancedVPCRouting (\ s a -> s{_pmvEnhancedVPCRouting = a})
 
@@ -92,6 +106,10 @@ pmvMasterUserPassword = lens _pmvMasterUserPassword (\ s a -> s{_pmvMasterUserPa
 -- | The pending or in-progress change of the ability to connect to the cluster from the public network.
 pmvPubliclyAccessible :: Lens' PendingModifiedValues (Maybe Bool)
 pmvPubliclyAccessible = lens _pmvPubliclyAccessible (\ s a -> s{_pmvPubliclyAccessible = a})
+
+-- | The name of the maintenance track that the cluster will change to during the next maintenance window.
+pmvMaintenanceTrackName :: Lens' PendingModifiedValues (Maybe Text)
+pmvMaintenanceTrackName = lens _pmvMaintenanceTrackName (\ s a -> s{_pmvMaintenanceTrackName = a})
 
 -- | The pending or in-progress change of the automated snapshot retention period.
 pmvAutomatedSnapshotRetentionPeriod :: Lens' PendingModifiedValues (Maybe Int)
@@ -120,9 +138,11 @@ pmvNodeType = lens _pmvNodeType (\ s a -> s{_pmvNodeType = a})
 instance FromXML PendingModifiedValues where
         parseXML x
           = PendingModifiedValues' <$>
-              (x .@? "EnhancedVpcRouting") <*>
-                (x .@? "MasterUserPassword")
+              (x .@? "EncryptionType") <*>
+                (x .@? "EnhancedVpcRouting")
+                <*> (x .@? "MasterUserPassword")
                 <*> (x .@? "PubliclyAccessible")
+                <*> (x .@? "MaintenanceTrackName")
                 <*> (x .@? "AutomatedSnapshotRetentionPeriod")
                 <*> (x .@? "ClusterIdentifier")
                 <*> (x .@? "NumberOfNodes")

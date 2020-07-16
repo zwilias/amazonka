@@ -23,6 +23,8 @@
 --
 -- The response includes a @VPCs@ element with a @VPC@ child element for each VPC that can be associated with the hosted zone.
 --
+--
+-- This operation returns paginated results.
 module Network.AWS.Route53.ListVPCAssociationAuthorizations
     (
     -- * Creating a Request
@@ -44,6 +46,7 @@ module Network.AWS.Route53.ListVPCAssociationAuthorizations
     ) where
 
 import Network.AWS.Lens
+import Network.AWS.Pager
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
@@ -75,7 +78,7 @@ data ListVPCAssociationAuthorizations = ListVPCAssociationAuthorizations'{_lvaaN
 --
 -- * 'lvaaNextToken' - /Optional/ : If a response includes a @NextToken@ element, there are more VPCs that can be associated with the specified hosted zone. To get the next page of results, submit another request, and include the value of @NextToken@ from the response in the @nexttoken@ parameter in another @ListVPCAssociationAuthorizations@ request.
 --
--- * 'lvaaMaxResults' - /Optional/ : An integer that specifies the maximum number of VPCs that you want Amazon Route 53 to return. If you don't specify a value for @MaxResults@ , Amazon Route 53 returns up to 50 VPCs per page.
+-- * 'lvaaMaxResults' - /Optional/ : An integer that specifies the maximum number of VPCs that you want Amazon Route 53 to return. If you don't specify a value for @MaxResults@ , Route 53 returns up to 50 VPCs per page.
 --
 -- * 'lvaaHostedZoneId' - The ID of the hosted zone for which you want a list of VPCs that can be associated with the hosted zone.
 listVPCAssociationAuthorizations
@@ -91,13 +94,21 @@ listVPCAssociationAuthorizations pHostedZoneId_
 lvaaNextToken :: Lens' ListVPCAssociationAuthorizations (Maybe Text)
 lvaaNextToken = lens _lvaaNextToken (\ s a -> s{_lvaaNextToken = a})
 
--- | /Optional/ : An integer that specifies the maximum number of VPCs that you want Amazon Route 53 to return. If you don't specify a value for @MaxResults@ , Amazon Route 53 returns up to 50 VPCs per page.
+-- | /Optional/ : An integer that specifies the maximum number of VPCs that you want Amazon Route 53 to return. If you don't specify a value for @MaxResults@ , Route 53 returns up to 50 VPCs per page.
 lvaaMaxResults :: Lens' ListVPCAssociationAuthorizations (Maybe Text)
 lvaaMaxResults = lens _lvaaMaxResults (\ s a -> s{_lvaaMaxResults = a})
 
 -- | The ID of the hosted zone for which you want a list of VPCs that can be associated with the hosted zone.
 lvaaHostedZoneId :: Lens' ListVPCAssociationAuthorizations ResourceId
 lvaaHostedZoneId = lens _lvaaHostedZoneId (\ s a -> s{_lvaaHostedZoneId = a})
+
+instance AWSPager ListVPCAssociationAuthorizations
+         where
+        page rq rs
+          | stop (rs ^. lvaarsNextToken) = Nothing
+          | stop (rs ^. lvaarsVPCs) = Nothing
+          | otherwise =
+            Just $ rq & lvaaNextToken .~ rs ^. lvaarsNextToken
 
 instance AWSRequest ListVPCAssociationAuthorizations
          where

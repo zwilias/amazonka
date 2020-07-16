@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Mark a user, group, or resource as no longer used in Amazon WorkMail. This action disassociates the mailbox and schedules it for clean-up. Amazon WorkMail keeps mailboxes for 30 days before they are permanently removed. The functionality in the console is /Disable/ .
+-- Mark a user, group, or resource as no longer used in Amazon WorkMail. This action disassociates the mailbox and schedules it for clean-up. WorkMail keeps mailboxes for 30 days before they are permanently removed. The functionality in the console is /Disable/ .
 --
 --
 module Network.AWS.WorkMail.DeregisterFromWorkMail
@@ -57,7 +57,7 @@ data DeregisterFromWorkMail = DeregisterFromWorkMail'{_dfwmOrganizationId
 --
 -- * 'dfwmOrganizationId' - The identifier for the organization under which the Amazon WorkMail entity exists.
 --
--- * 'dfwmEntityId' - The identifier for the entity to be updated.
+-- * 'dfwmEntityId' - The identifier for the member (user or group) to be updated.
 deregisterFromWorkMail
     :: Text -- ^ 'dfwmOrganizationId'
     -> Text -- ^ 'dfwmEntityId'
@@ -71,7 +71,7 @@ deregisterFromWorkMail pOrganizationId_ pEntityId_
 dfwmOrganizationId :: Lens' DeregisterFromWorkMail Text
 dfwmOrganizationId = lens _dfwmOrganizationId (\ s a -> s{_dfwmOrganizationId = a})
 
--- | The identifier for the entity to be updated.
+-- | The identifier for the member (user or group) to be updated.
 dfwmEntityId :: Lens' DeregisterFromWorkMail Text
 dfwmEntityId = lens _dfwmEntityId (\ s a -> s{_dfwmEntityId = a})
 

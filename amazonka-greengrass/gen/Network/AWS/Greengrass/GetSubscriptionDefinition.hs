@@ -38,6 +38,7 @@ module Network.AWS.Greengrass.GetSubscriptionDefinition
     , gsdrsId
     , gsdrsLatestVersion
     , gsdrsLastUpdatedTimestamp
+    , gsdrsTags
     , gsdrsResponseStatus
     ) where
 
@@ -84,6 +85,7 @@ instance AWSRequest GetSubscriptionDefinition where
                      <*> (x .?> "Id")
                      <*> (x .?> "LatestVersion")
                      <*> (x .?> "LastUpdatedTimestamp")
+                     <*> (x .?> "tags" .!@ mempty)
                      <*> (pure (fromEnum s)))
 
 instance Hashable GetSubscriptionDefinition where
@@ -135,6 +137,12 @@ data GetSubscriptionDefinitionResponse = GetSubscriptionDefinitionResponse'{_gsd
                                                                             ::
                                                                             !(Maybe
                                                                                 Text),
+                                                                            _gsdrsTags
+                                                                            ::
+                                                                            !(Maybe
+                                                                                (Map
+                                                                                   Text
+                                                                                   Text)),
                                                                             _gsdrsResponseStatus
                                                                             ::
                                                                             !Int}
@@ -145,7 +153,7 @@ data GetSubscriptionDefinitionResponse = GetSubscriptionDefinitionResponse'{_gsd
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'gsdrsLatestVersionARN' - The ARN of the latest version of the definition.
+-- * 'gsdrsLatestVersionARN' - The ARN of the latest version associated with the definition.
 --
 -- * 'gsdrsARN' - The ARN of the definition.
 --
@@ -155,9 +163,11 @@ data GetSubscriptionDefinitionResponse = GetSubscriptionDefinitionResponse'{_gsd
 --
 -- * 'gsdrsId' - The ID of the definition.
 --
--- * 'gsdrsLatestVersion' - The latest version of the definition.
+-- * 'gsdrsLatestVersion' - The ID of the latest version associated with the definition.
 --
 -- * 'gsdrsLastUpdatedTimestamp' - The time, in milliseconds since the epoch, when the definition was last updated.
+--
+-- * 'gsdrsTags' - Tag(s) attached to the resource arn.
 --
 -- * 'gsdrsResponseStatus' - -- | The response status code.
 getSubscriptionDefinitionResponse
@@ -172,9 +182,10 @@ getSubscriptionDefinitionResponse pResponseStatus_
                                        _gsdrsId = Nothing,
                                        _gsdrsLatestVersion = Nothing,
                                        _gsdrsLastUpdatedTimestamp = Nothing,
+                                       _gsdrsTags = Nothing,
                                        _gsdrsResponseStatus = pResponseStatus_}
 
--- | The ARN of the latest version of the definition.
+-- | The ARN of the latest version associated with the definition.
 gsdrsLatestVersionARN :: Lens' GetSubscriptionDefinitionResponse (Maybe Text)
 gsdrsLatestVersionARN = lens _gsdrsLatestVersionARN (\ s a -> s{_gsdrsLatestVersionARN = a})
 
@@ -194,13 +205,17 @@ gsdrsCreationTimestamp = lens _gsdrsCreationTimestamp (\ s a -> s{_gsdrsCreation
 gsdrsId :: Lens' GetSubscriptionDefinitionResponse (Maybe Text)
 gsdrsId = lens _gsdrsId (\ s a -> s{_gsdrsId = a})
 
--- | The latest version of the definition.
+-- | The ID of the latest version associated with the definition.
 gsdrsLatestVersion :: Lens' GetSubscriptionDefinitionResponse (Maybe Text)
 gsdrsLatestVersion = lens _gsdrsLatestVersion (\ s a -> s{_gsdrsLatestVersion = a})
 
 -- | The time, in milliseconds since the epoch, when the definition was last updated.
 gsdrsLastUpdatedTimestamp :: Lens' GetSubscriptionDefinitionResponse (Maybe Text)
 gsdrsLastUpdatedTimestamp = lens _gsdrsLastUpdatedTimestamp (\ s a -> s{_gsdrsLastUpdatedTimestamp = a})
+
+-- | Tag(s) attached to the resource arn.
+gsdrsTags :: Lens' GetSubscriptionDefinitionResponse (HashMap Text Text)
+gsdrsTags = lens _gsdrsTags (\ s a -> s{_gsdrsTags = a}) . _Default . _Map
 
 -- | -- | The response status code.
 gsdrsResponseStatus :: Lens' GetSubscriptionDefinitionResponse Int

@@ -38,13 +38,13 @@ data XMLClassifier = XMLClassifier'{_xcCreationTime
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'xcCreationTime' - The time this classifier was registered.
+-- * 'xcCreationTime' - The time that this classifier was registered.
 --
--- * 'xcLastUpdated' - The time this classifier was last updated.
+-- * 'xcLastUpdated' - The time that this classifier was last updated.
 --
 -- * 'xcVersion' - The version of this classifier.
 --
--- * 'xcRowTag' - The XML tag designating the element that contains each record in an XML document being parsed. Note that this cannot identify a self-closing element (closed by @/>@ ). An empty row element that contains only attributes can be parsed as long as it ends with a closing tag (for example, @<row item_a="A" item_b="B"></row>@ is okay, but @<row item_a="A" item_b="B" />@ is not).
+-- * 'xcRowTag' - The XML tag designating the element that contains each record in an XML document being parsed. This can't identify a self-closing element (closed by @/>@ ). An empty row element that contains only attributes can be parsed as long as it ends with a closing tag (for example, @<row item_a="A" item_b="B"></row>@ is okay, but @<row item_a="A" item_b="B" />@ is not).
 --
 -- * 'xcName' - The name of the classifier.
 --
@@ -59,11 +59,11 @@ xmlClassifier pName_ pClassification_
                    _xcRowTag = Nothing, _xcName = pName_,
                    _xcClassification = pClassification_}
 
--- | The time this classifier was registered.
+-- | The time that this classifier was registered.
 xcCreationTime :: Lens' XMLClassifier (Maybe UTCTime)
 xcCreationTime = lens _xcCreationTime (\ s a -> s{_xcCreationTime = a}) . mapping _Time
 
--- | The time this classifier was last updated.
+-- | The time that this classifier was last updated.
 xcLastUpdated :: Lens' XMLClassifier (Maybe UTCTime)
 xcLastUpdated = lens _xcLastUpdated (\ s a -> s{_xcLastUpdated = a}) . mapping _Time
 
@@ -71,7 +71,7 @@ xcLastUpdated = lens _xcLastUpdated (\ s a -> s{_xcLastUpdated = a}) . mapping _
 xcVersion :: Lens' XMLClassifier (Maybe Integer)
 xcVersion = lens _xcVersion (\ s a -> s{_xcVersion = a})
 
--- | The XML tag designating the element that contains each record in an XML document being parsed. Note that this cannot identify a self-closing element (closed by @/>@ ). An empty row element that contains only attributes can be parsed as long as it ends with a closing tag (for example, @<row item_a="A" item_b="B"></row>@ is okay, but @<row item_a="A" item_b="B" />@ is not).
+-- | The XML tag designating the element that contains each record in an XML document being parsed. This can't identify a self-closing element (closed by @/>@ ). An empty row element that contains only attributes can be parsed as long as it ends with a closing tag (for example, @<row item_a="A" item_b="B"></row>@ is okay, but @<row item_a="A" item_b="B" />@ is not).
 xcRowTag :: Lens' XMLClassifier (Maybe Text)
 xcRowTag = lens _xcRowTag (\ s a -> s{_xcRowTag = a})
 

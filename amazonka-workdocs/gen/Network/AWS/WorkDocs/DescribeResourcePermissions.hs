@@ -21,6 +21,8 @@
 -- Describes the permissions of a specified resource.
 --
 --
+--
+-- This operation returns paginated results.
 module Network.AWS.WorkDocs.DescribeResourcePermissions
     (
     -- * Creating a Request
@@ -43,6 +45,7 @@ module Network.AWS.WorkDocs.DescribeResourcePermissions
     ) where
 
 import Network.AWS.Lens
+import Network.AWS.Pager
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
@@ -73,7 +76,7 @@ data DescribeResourcePermissions = DescribeResourcePermissions'{_drpPrincipalId
 --
 -- * 'drpPrincipalId' - The ID of the principal to filter permissions by.
 --
--- * 'drpAuthenticationToken' - Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.
+-- * 'drpAuthenticationToken' - Amazon WorkDocs authentication token. Not required when using AWS administrator credentials to access the API.
 --
 -- * 'drpMarker' - The marker for the next set of results. (You received this marker from a previous call)
 --
@@ -94,7 +97,7 @@ describeResourcePermissions pResourceId_
 drpPrincipalId :: Lens' DescribeResourcePermissions (Maybe Text)
 drpPrincipalId = lens _drpPrincipalId (\ s a -> s{_drpPrincipalId = a})
 
--- | Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.
+-- | Amazon WorkDocs authentication token. Not required when using AWS administrator credentials to access the API.
 drpAuthenticationToken :: Lens' DescribeResourcePermissions (Maybe Text)
 drpAuthenticationToken = lens _drpAuthenticationToken (\ s a -> s{_drpAuthenticationToken = a}) . mapping _Sensitive
 
@@ -109,6 +112,13 @@ drpLimit = lens _drpLimit (\ s a -> s{_drpLimit = a}) . mapping _Nat
 -- | The ID of the resource.
 drpResourceId :: Lens' DescribeResourcePermissions Text
 drpResourceId = lens _drpResourceId (\ s a -> s{_drpResourceId = a})
+
+instance AWSPager DescribeResourcePermissions where
+        page rq rs
+          | stop (rs ^. drprsMarker) = Nothing
+          | stop (rs ^. drprsPrincipals) = Nothing
+          | otherwise =
+            Just $ rq & drpMarker .~ rs ^. drprsMarker
 
 instance AWSRequest DescribeResourcePermissions where
         type Rs DescribeResourcePermissions =

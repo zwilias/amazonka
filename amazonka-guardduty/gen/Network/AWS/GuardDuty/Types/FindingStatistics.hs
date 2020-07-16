@@ -20,7 +20,9 @@ module Network.AWS.GuardDuty.Types.FindingStatistics where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | Finding statistics object.
+-- | Contains information about finding statistics.
+--
+--
 --
 -- /See:/ 'findingStatistics' smart constructor.
 newtype FindingStatistics = FindingStatistics'{_fsCountBySeverity
@@ -31,13 +33,13 @@ newtype FindingStatistics = FindingStatistics'{_fsCountBySeverity
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'fsCountBySeverity' - Represents a map of severity to count statistic for a set of findings
+-- * 'fsCountBySeverity' - Represents a map of severity to count statistics for a set of findings.
 findingStatistics
     :: FindingStatistics
 findingStatistics
   = FindingStatistics'{_fsCountBySeverity = Nothing}
 
--- | Represents a map of severity to count statistic for a set of findings
+-- | Represents a map of severity to count statistics for a set of findings.
 fsCountBySeverity :: Lens' FindingStatistics (HashMap Text Int)
 fsCountBySeverity = lens _fsCountBySeverity (\ s a -> s{_fsCountBySeverity = a}) . _Default . _Map
 

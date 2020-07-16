@@ -19,9 +19,9 @@
 module Network.AWS.IoT.Types.ThingIndexingMode (
   ThingIndexingMode (
     ..
-    , Off
-    , Registry
-    , RegistryAndShadow
+    , TIMOff
+    , TIMRegistry
+    , TIMRegistryAndShadow
     )
   ) where
 
@@ -32,19 +32,19 @@ data ThingIndexingMode = ThingIndexingMode' (CI Text)
                            deriving (Eq, Ord, Read, Show, Data, Typeable,
                                      Generic)
 
-pattern Off :: ThingIndexingMode
-pattern Off = ThingIndexingMode' "OFF"
+pattern TIMOff :: ThingIndexingMode
+pattern TIMOff = ThingIndexingMode' "OFF"
 
-pattern Registry :: ThingIndexingMode
-pattern Registry = ThingIndexingMode' "REGISTRY"
+pattern TIMRegistry :: ThingIndexingMode
+pattern TIMRegistry = ThingIndexingMode' "REGISTRY"
 
-pattern RegistryAndShadow :: ThingIndexingMode
-pattern RegistryAndShadow = ThingIndexingMode' "REGISTRY_AND_SHADOW"
+pattern TIMRegistryAndShadow :: ThingIndexingMode
+pattern TIMRegistryAndShadow = ThingIndexingMode' "REGISTRY_AND_SHADOW"
 
 {-# COMPLETE
-  Off,
-  Registry,
-  RegistryAndShadow,
+  TIMOff,
+  TIMRegistry,
+  TIMRegistryAndShadow,
   ThingIndexingMode' #-}
 
 instance FromText ThingIndexingMode where
@@ -59,22 +59,22 @@ instance ToText ThingIndexingMode where
 --   fromEnum is a partial function, and will error on values unknown at generation time.
 instance Enum ThingIndexingMode where
     toEnum i = case i of
-        0 -> Off
-        1 -> Registry
-        2 -> RegistryAndShadow
+        0 -> TIMOff
+        1 -> TIMRegistry
+        2 -> TIMRegistryAndShadow
         _ -> (error . showText) $ "Unknown index for ThingIndexingMode: " <> toText i
     fromEnum x = case x of
-        Off -> 0
-        Registry -> 1
-        RegistryAndShadow -> 2
+        TIMOff -> 0
+        TIMRegistry -> 1
+        TIMRegistryAndShadow -> 2
         ThingIndexingMode' name -> (error . showText) $ "Unknown ThingIndexingMode: " <> original name
 
 -- | Represents the bounds of /known/ $ThingIndexingMode.
 --   AWS may have added more since the source was generated.
 --   This instance exists only for backward compatibility.
 instance Bounded ThingIndexingMode where
-    minBound = Off
-    maxBound = RegistryAndShadow
+    minBound = TIMOff
+    maxBound = TIMRegistryAndShadow
 
 instance Hashable     ThingIndexingMode
 instance NFData       ThingIndexingMode

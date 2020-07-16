@@ -73,7 +73,7 @@ data ListThings = ListThings'{_ltAttributeValue ::
 --
 -- * 'ltThingTypeName' - The name of the thing type used to search for things.
 --
--- * 'ltNextToken' - The token used to get the next set of results, or __null__ if there are no additional results.
+-- * 'ltNextToken' - The token to retrieve the next set of results.
 --
 -- * 'ltAttributeName' - The attribute name used to search for things.
 --
@@ -93,7 +93,7 @@ ltAttributeValue = lens _ltAttributeValue (\ s a -> s{_ltAttributeValue = a})
 ltThingTypeName :: Lens' ListThings (Maybe Text)
 ltThingTypeName = lens _ltThingTypeName (\ s a -> s{_ltThingTypeName = a})
 
--- | The token used to get the next set of results, or __null__ if there are no additional results.
+-- | The token to retrieve the next set of results.
 ltNextToken :: Lens' ListThings (Maybe Text)
 ltNextToken = lens _ltNextToken (\ s a -> s{_ltNextToken = a})
 

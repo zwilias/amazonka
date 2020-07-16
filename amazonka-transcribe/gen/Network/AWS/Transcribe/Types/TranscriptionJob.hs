@@ -19,6 +19,8 @@ module Network.AWS.Transcribe.Types.TranscriptionJob where
 
 import Network.AWS.Lens
 import Network.AWS.Prelude
+import Network.AWS.Transcribe.Types.ContentRedaction
+import Network.AWS.Transcribe.Types.JobExecutionSettings
 import Network.AWS.Transcribe.Types.LanguageCode
 import Network.AWS.Transcribe.Types.Media
 import Network.AWS.Transcribe.Types.MediaFormat
@@ -26,7 +28,7 @@ import Network.AWS.Transcribe.Types.Settings
 import Network.AWS.Transcribe.Types.Transcript
 import Network.AWS.Transcribe.Types.TranscriptionJobStatus
 
--- | Describes an asynchronous transcription job that was created with the @StartTranscriptionJob@ operation.
+-- | Describes an asynchronous transcription job that was created with the @StartTranscriptionJob@ operation. 
 --
 --
 --
@@ -34,15 +36,20 @@ import Network.AWS.Transcribe.Types.TranscriptionJobStatus
 data TranscriptionJob = TranscriptionJob'{_tjCreationTime
                                           :: !(Maybe POSIX),
                                           _tjFailureReason :: !(Maybe Text),
+                                          _tjContentRedaction ::
+                                          !(Maybe ContentRedaction),
                                           _tjLanguageCode ::
                                           !(Maybe LanguageCode),
                                           _tjSettings :: !(Maybe Settings),
+                                          _tjStartTime :: !(Maybe POSIX),
                                           _tjCompletionTime :: !(Maybe POSIX),
                                           _tjMedia :: !(Maybe Media),
                                           _tjMediaFormat ::
                                           !(Maybe MediaFormat),
                                           _tjTranscriptionJobStatus ::
                                           !(Maybe TranscriptionJobStatus),
+                                          _tjJobExecutionSettings ::
+                                          !(Maybe JobExecutionSettings),
                                           _tjTranscriptionJobName ::
                                           !(Maybe Text),
                                           _tjTranscript :: !(Maybe Transcript),
@@ -54,23 +61,29 @@ data TranscriptionJob = TranscriptionJob'{_tjCreationTime
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'tjCreationTime' - Timestamp of the date and time that the job was created.
+-- * 'tjCreationTime' - A timestamp that shows when the job was created.
 --
--- * 'tjFailureReason' - If the @TranscriptionJobStatus@ field is @FAILED@ , this field contains information about why the job failed.
+-- * 'tjFailureReason' - If the @TranscriptionJobStatus@ field is @FAILED@ , this field contains information about why the job failed. The @FailureReason@ field can contain one of the following values:     * @Unsupported media format@ - The media format specified in the @MediaFormat@ field of the request isn't valid. See the description of the @MediaFormat@ field for a list of valid values.     * @The media format provided does not match the detected media format@ - The media format of the audio file doesn't match the format specified in the @MediaFormat@ field in the request. Check the media format of your media file and make sure that the two values match.     * @Invalid sample rate for audio file@ - The sample rate specified in the @MediaSampleRateHertz@ of the request isn't valid. The sample rate must be between 8000 and 48000 Hertz.     * @The sample rate provided does not match the detected sample rate@ - The sample rate in the audio file doesn't match the sample rate specified in the @MediaSampleRateHertz@ field in the request. Check the sample rate of your media file and make sure that the two values match.     * @Invalid file size: file size too large@ - The size of your audio file is larger than Amazon Transcribe can process. For more information, see <https://docs.aws.amazon.com/transcribe/latest/dg/limits-guidelines.html#limits Limits> in the /Amazon Transcribe Developer Guide/ .     * @Invalid number of channels: number of channels too large@ - Your audio contains more channels than Amazon Transcribe is configured to process. To request additional channels, see <https://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html#limits-amazon-transcribe Amazon Transcribe Limits> in the /Amazon Web Services General Reference/ .
+--
+-- * 'tjContentRedaction' - An object that describes content redaction settings for the transcription job.
 --
 -- * 'tjLanguageCode' - The language code for the input speech.
 --
--- * 'tjSettings' - Optional settings for the transcription job.
+-- * 'tjSettings' - Optional settings for the transcription job. Use these settings to turn on speaker recognition, to set the maximum number of speakers that should be identified and to specify a custom vocabulary to use when processing the transcription job.
 --
--- * 'tjCompletionTime' - Timestamp of the date and time that the job completed.
+-- * 'tjStartTime' - A timestamp that shows with the job was started processing.
 --
--- * 'tjMedia' - An object that describes the input media for a transcription job.
+-- * 'tjCompletionTime' - A timestamp that shows when the job was completed.
+--
+-- * 'tjMedia' - An object that describes the input media for the transcription job.
 --
 -- * 'tjMediaFormat' - The format of the input media file.
 --
 -- * 'tjTranscriptionJobStatus' - The status of the transcription job.
 --
--- * 'tjTranscriptionJobName' - A name to identify the transcription job.
+-- * 'tjJobExecutionSettings' - Provides information about how a transcription job is executed.
+--
+-- * 'tjTranscriptionJobName' - The name of the transcription job.
 --
 -- * 'tjTranscript' - An object that describes the output of the transcription job.
 --
@@ -80,35 +93,45 @@ transcriptionJob
 transcriptionJob
   = TranscriptionJob'{_tjCreationTime = Nothing,
                       _tjFailureReason = Nothing,
+                      _tjContentRedaction = Nothing,
                       _tjLanguageCode = Nothing, _tjSettings = Nothing,
-                      _tjCompletionTime = Nothing, _tjMedia = Nothing,
-                      _tjMediaFormat = Nothing,
+                      _tjStartTime = Nothing, _tjCompletionTime = Nothing,
+                      _tjMedia = Nothing, _tjMediaFormat = Nothing,
                       _tjTranscriptionJobStatus = Nothing,
+                      _tjJobExecutionSettings = Nothing,
                       _tjTranscriptionJobName = Nothing,
                       _tjTranscript = Nothing,
                       _tjMediaSampleRateHertz = Nothing}
 
--- | Timestamp of the date and time that the job was created.
+-- | A timestamp that shows when the job was created.
 tjCreationTime :: Lens' TranscriptionJob (Maybe UTCTime)
 tjCreationTime = lens _tjCreationTime (\ s a -> s{_tjCreationTime = a}) . mapping _Time
 
--- | If the @TranscriptionJobStatus@ field is @FAILED@ , this field contains information about why the job failed.
+-- | If the @TranscriptionJobStatus@ field is @FAILED@ , this field contains information about why the job failed. The @FailureReason@ field can contain one of the following values:     * @Unsupported media format@ - The media format specified in the @MediaFormat@ field of the request isn't valid. See the description of the @MediaFormat@ field for a list of valid values.     * @The media format provided does not match the detected media format@ - The media format of the audio file doesn't match the format specified in the @MediaFormat@ field in the request. Check the media format of your media file and make sure that the two values match.     * @Invalid sample rate for audio file@ - The sample rate specified in the @MediaSampleRateHertz@ of the request isn't valid. The sample rate must be between 8000 and 48000 Hertz.     * @The sample rate provided does not match the detected sample rate@ - The sample rate in the audio file doesn't match the sample rate specified in the @MediaSampleRateHertz@ field in the request. Check the sample rate of your media file and make sure that the two values match.     * @Invalid file size: file size too large@ - The size of your audio file is larger than Amazon Transcribe can process. For more information, see <https://docs.aws.amazon.com/transcribe/latest/dg/limits-guidelines.html#limits Limits> in the /Amazon Transcribe Developer Guide/ .     * @Invalid number of channels: number of channels too large@ - Your audio contains more channels than Amazon Transcribe is configured to process. To request additional channels, see <https://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html#limits-amazon-transcribe Amazon Transcribe Limits> in the /Amazon Web Services General Reference/ .
 tjFailureReason :: Lens' TranscriptionJob (Maybe Text)
 tjFailureReason = lens _tjFailureReason (\ s a -> s{_tjFailureReason = a})
+
+-- | An object that describes content redaction settings for the transcription job.
+tjContentRedaction :: Lens' TranscriptionJob (Maybe ContentRedaction)
+tjContentRedaction = lens _tjContentRedaction (\ s a -> s{_tjContentRedaction = a})
 
 -- | The language code for the input speech.
 tjLanguageCode :: Lens' TranscriptionJob (Maybe LanguageCode)
 tjLanguageCode = lens _tjLanguageCode (\ s a -> s{_tjLanguageCode = a})
 
--- | Optional settings for the transcription job.
+-- | Optional settings for the transcription job. Use these settings to turn on speaker recognition, to set the maximum number of speakers that should be identified and to specify a custom vocabulary to use when processing the transcription job.
 tjSettings :: Lens' TranscriptionJob (Maybe Settings)
 tjSettings = lens _tjSettings (\ s a -> s{_tjSettings = a})
 
--- | Timestamp of the date and time that the job completed.
+-- | A timestamp that shows with the job was started processing.
+tjStartTime :: Lens' TranscriptionJob (Maybe UTCTime)
+tjStartTime = lens _tjStartTime (\ s a -> s{_tjStartTime = a}) . mapping _Time
+
+-- | A timestamp that shows when the job was completed.
 tjCompletionTime :: Lens' TranscriptionJob (Maybe UTCTime)
 tjCompletionTime = lens _tjCompletionTime (\ s a -> s{_tjCompletionTime = a}) . mapping _Time
 
--- | An object that describes the input media for a transcription job.
+-- | An object that describes the input media for the transcription job.
 tjMedia :: Lens' TranscriptionJob (Maybe Media)
 tjMedia = lens _tjMedia (\ s a -> s{_tjMedia = a})
 
@@ -120,7 +143,11 @@ tjMediaFormat = lens _tjMediaFormat (\ s a -> s{_tjMediaFormat = a})
 tjTranscriptionJobStatus :: Lens' TranscriptionJob (Maybe TranscriptionJobStatus)
 tjTranscriptionJobStatus = lens _tjTranscriptionJobStatus (\ s a -> s{_tjTranscriptionJobStatus = a})
 
--- | A name to identify the transcription job.
+-- | Provides information about how a transcription job is executed.
+tjJobExecutionSettings :: Lens' TranscriptionJob (Maybe JobExecutionSettings)
+tjJobExecutionSettings = lens _tjJobExecutionSettings (\ s a -> s{_tjJobExecutionSettings = a})
+
+-- | The name of the transcription job.
 tjTranscriptionJobName :: Lens' TranscriptionJob (Maybe Text)
 tjTranscriptionJobName = lens _tjTranscriptionJobName (\ s a -> s{_tjTranscriptionJobName = a})
 
@@ -138,12 +165,15 @@ instance FromJSON TranscriptionJob where
               (\ x ->
                  TranscriptionJob' <$>
                    (x .:? "CreationTime") <*> (x .:? "FailureReason")
+                     <*> (x .:? "ContentRedaction")
                      <*> (x .:? "LanguageCode")
                      <*> (x .:? "Settings")
+                     <*> (x .:? "StartTime")
                      <*> (x .:? "CompletionTime")
                      <*> (x .:? "Media")
                      <*> (x .:? "MediaFormat")
                      <*> (x .:? "TranscriptionJobStatus")
+                     <*> (x .:? "JobExecutionSettings")
                      <*> (x .:? "TranscriptionJobName")
                      <*> (x .:? "Transcript")
                      <*> (x .:? "MediaSampleRateHertz"))

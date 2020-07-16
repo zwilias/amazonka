@@ -64,6 +64,7 @@ library
         , Network.AWS.S3.DeleteObject
         , Network.AWS.S3.DeleteObjectTagging
         , Network.AWS.S3.DeleteObjects
+        , Network.AWS.S3.DeletePublicAccessBlock
         , Network.AWS.S3.GetBucketACL
         , Network.AWS.S3.GetBucketAccelerateConfiguration
         , Network.AWS.S3.GetBucketAnalyticsConfiguration
@@ -76,6 +77,7 @@ library
         , Network.AWS.S3.GetBucketMetricsConfiguration
         , Network.AWS.S3.GetBucketNotificationConfiguration
         , Network.AWS.S3.GetBucketPolicy
+        , Network.AWS.S3.GetBucketPolicyStatus
         , Network.AWS.S3.GetBucketReplication
         , Network.AWS.S3.GetBucketRequestPayment
         , Network.AWS.S3.GetBucketTagging
@@ -83,8 +85,12 @@ library
         , Network.AWS.S3.GetBucketWebsite
         , Network.AWS.S3.GetObject
         , Network.AWS.S3.GetObjectACL
+        , Network.AWS.S3.GetObjectLegalHold
+        , Network.AWS.S3.GetObjectLockConfiguration
+        , Network.AWS.S3.GetObjectRetention
         , Network.AWS.S3.GetObjectTagging
         , Network.AWS.S3.GetObjectTorrent
+        , Network.AWS.S3.GetPublicAccessBlock
         , Network.AWS.S3.HeadBucket
         , Network.AWS.S3.HeadObject
         , Network.AWS.S3.ListBucketAnalyticsConfigurations
@@ -114,7 +120,11 @@ library
         , Network.AWS.S3.PutBucketWebsite
         , Network.AWS.S3.PutObject
         , Network.AWS.S3.PutObjectACL
+        , Network.AWS.S3.PutObjectLegalHold
+        , Network.AWS.S3.PutObjectLockConfiguration
+        , Network.AWS.S3.PutObjectRetention
         , Network.AWS.S3.PutObjectTagging
+        , Network.AWS.S3.PutPublicAccessBlock
         , Network.AWS.S3.RestoreObject
         , Network.AWS.S3.SelectObjectContent
         , Network.AWS.S3.Types
@@ -154,8 +164,11 @@ library
         , Network.AWS.S3.Types.CopyObjectResult
         , Network.AWS.S3.Types.CopyPartResult
         , Network.AWS.S3.Types.CreateBucketConfiguration
+        , Network.AWS.S3.Types.DefaultRetention
         , Network.AWS.S3.Types.Delete
         , Network.AWS.S3.Types.DeleteMarkerEntry
+        , Network.AWS.S3.Types.DeleteMarkerReplication
+        , Network.AWS.S3.Types.DeleteMarkerReplicationStatus
         , Network.AWS.S3.Types.DeletedObject
         , Network.AWS.S3.Types.Destination
         , Network.AWS.S3.Types.EncodingType
@@ -164,6 +177,8 @@ library
         , Network.AWS.S3.Types.EndEvent
         , Network.AWS.S3.Types.ErrorDocument
         , Network.AWS.S3.Types.Event
+        , Network.AWS.S3.Types.ExistingObjectReplication
+        , Network.AWS.S3.Types.ExistingObjectReplicationStatus
         , Network.AWS.S3.Types.ExpirationStatus
         , Network.AWS.S3.Types.ExpressionType
         , Network.AWS.S3.Types.FileHeaderInfo
@@ -198,9 +213,11 @@ library
         , Network.AWS.S3.Types.MFADeleteStatus
         , Network.AWS.S3.Types.MetadataDirective
         , Network.AWS.S3.Types.MetadataEntry
+        , Network.AWS.S3.Types.Metrics
         , Network.AWS.S3.Types.MetricsAndOperator
         , Network.AWS.S3.Types.MetricsConfiguration
         , Network.AWS.S3.Types.MetricsFilter
+        , Network.AWS.S3.Types.MetricsStatus
         , Network.AWS.S3.Types.MultipartUpload
         , Network.AWS.S3.Types.NoncurrentVersionExpiration
         , Network.AWS.S3.Types.NoncurrentVersionTransition
@@ -209,6 +226,14 @@ library
         , Network.AWS.S3.Types.Object
         , Network.AWS.S3.Types.ObjectCannedACL
         , Network.AWS.S3.Types.ObjectIdentifier
+        , Network.AWS.S3.Types.ObjectLockConfiguration
+        , Network.AWS.S3.Types.ObjectLockEnabled
+        , Network.AWS.S3.Types.ObjectLockLegalHold
+        , Network.AWS.S3.Types.ObjectLockLegalHoldStatus
+        , Network.AWS.S3.Types.ObjectLockMode
+        , Network.AWS.S3.Types.ObjectLockRetention
+        , Network.AWS.S3.Types.ObjectLockRetentionMode
+        , Network.AWS.S3.Types.ObjectLockRule
         , Network.AWS.S3.Types.ObjectStorageClass
         , Network.AWS.S3.Types.ObjectVersion
         , Network.AWS.S3.Types.ObjectVersionStorageClass
@@ -216,13 +241,16 @@ library
         , Network.AWS.S3.Types.OutputSerialization
         , Network.AWS.S3.Types.Owner
         , Network.AWS.S3.Types.OwnerOverride
+        , Network.AWS.S3.Types.ParquetInput
         , Network.AWS.S3.Types.Part
         , Network.AWS.S3.Types.Payer
         , Network.AWS.S3.Types.Permission
+        , Network.AWS.S3.Types.PolicyStatus
         , Network.AWS.S3.Types.Product
         , Network.AWS.S3.Types.Progress
         , Network.AWS.S3.Types.ProgressEvent
         , Network.AWS.S3.Types.Protocol
+        , Network.AWS.S3.Types.PublicAccessBlockConfiguration
         , Network.AWS.S3.Types.QueueConfiguration
         , Network.AWS.S3.Types.QuoteFields
         , Network.AWS.S3.Types.RecordsEvent
@@ -230,8 +258,13 @@ library
         , Network.AWS.S3.Types.RedirectAllRequestsTo
         , Network.AWS.S3.Types.ReplicationConfiguration
         , Network.AWS.S3.Types.ReplicationRule
+        , Network.AWS.S3.Types.ReplicationRuleAndOperator
+        , Network.AWS.S3.Types.ReplicationRuleFilter
         , Network.AWS.S3.Types.ReplicationRuleStatus
         , Network.AWS.S3.Types.ReplicationStatus
+        , Network.AWS.S3.Types.ReplicationTime
+        , Network.AWS.S3.Types.ReplicationTimeStatus
+        , Network.AWS.S3.Types.ReplicationTimeValue
         , Network.AWS.S3.Types.RequestCharged
         , Network.AWS.S3.Types.RequestPayer
         , Network.AWS.S3.Types.RequestPaymentConfiguration
@@ -244,6 +277,7 @@ library
         , Network.AWS.S3.Types.S3ServiceError
         , Network.AWS.S3.Types.SSEKMS
         , Network.AWS.S3.Types.SSES3
+        , Network.AWS.S3.Types.ScanRange
         , Network.AWS.S3.Types.SelectObjectContentEventStream
         , Network.AWS.S3.Types.SelectParameters
         , Network.AWS.S3.Types.ServerSideEncryption

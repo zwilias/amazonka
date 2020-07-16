@@ -27,7 +27,6 @@ module Network.AWS.SMS.Types.ConnectorStatus (
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | Status of on-premise Connector
 data ConnectorStatus = ConnectorStatus' (CI Text)
                          deriving (Eq, Ord, Read, Show, Data, Typeable,
                                    Generic)

@@ -18,7 +18,9 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Creates an export job.
+-- Creates an export job for an application.
+--
+--
 module Network.AWS.Pinpoint.CreateExportJob
     (
     -- * Creating a Request
@@ -54,7 +56,7 @@ data CreateExportJob = CreateExportJob'{_cejApplicationId
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'cejApplicationId' - Undocumented member.
+-- * 'cejApplicationId' - The unique identifier for the application. This identifier is displayed as the __Project ID__ on the Amazon Pinpoint console.
 --
 -- * 'cejExportJobRequest' - Undocumented member.
 createExportJob
@@ -66,7 +68,7 @@ createExportJob pApplicationId_ pExportJobRequest_
                        pApplicationId_,
                      _cejExportJobRequest = pExportJobRequest_}
 
--- | Undocumented member.
+-- | The unique identifier for the application. This identifier is displayed as the __Project ID__ on the Amazon Pinpoint console.
 cejApplicationId :: Lens' CreateExportJob Text
 cejApplicationId = lens _cejApplicationId (\ s a -> s{_cejApplicationId = a})
 

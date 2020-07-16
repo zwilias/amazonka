@@ -17,7 +17,6 @@
 --
 module Network.AWS.IoT.Types.CodeSigningSignature where
 
-import Network.AWS.IoT.Types.Stream
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
@@ -26,28 +25,20 @@ import Network.AWS.Prelude
 --
 --
 -- /See:/ 'codeSigningSignature' smart constructor.
-data CodeSigningSignature = CodeSigningSignature'{_cssStream
-                                                  :: !(Maybe Stream),
-                                                  _cssInlineDocument ::
-                                                  !(Maybe Base64)}
-                              deriving (Eq, Read, Show, Data, Typeable, Generic)
+newtype CodeSigningSignature = CodeSigningSignature'{_cssInlineDocument
+                                                     :: Maybe Base64}
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'CodeSigningSignature' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'cssStream' - A stream of the code signing signature.
---
 -- * 'cssInlineDocument' - A base64 encoded binary representation of the code signing signature.-- /Note:/ This 'Lens' automatically encodes and decodes Base64 data. The underlying isomorphism will encode to Base64 representation during serialisation, and decode from Base64 representation during deserialisation. This 'Lens' accepts and returns only raw unencoded data.
 codeSigningSignature
     :: CodeSigningSignature
 codeSigningSignature
-  = CodeSigningSignature'{_cssStream = Nothing,
-                          _cssInlineDocument = Nothing}
-
--- | A stream of the code signing signature.
-cssStream :: Lens' CodeSigningSignature (Maybe Stream)
-cssStream = lens _cssStream (\ s a -> s{_cssStream = a})
+  = CodeSigningSignature'{_cssInlineDocument = Nothing}
 
 -- | A base64 encoded binary representation of the code signing signature.-- /Note:/ This 'Lens' automatically encodes and decodes Base64 data. The underlying isomorphism will encode to Base64 representation during serialisation, and decode from Base64 representation during deserialisation. This 'Lens' accepts and returns only raw unencoded data.
 cssInlineDocument :: Lens' CodeSigningSignature (Maybe ByteString)
@@ -57,8 +48,7 @@ instance FromJSON CodeSigningSignature where
         parseJSON
           = withObject "CodeSigningSignature"
               (\ x ->
-                 CodeSigningSignature' <$>
-                   (x .:? "stream") <*> (x .:? "inlineDocument"))
+                 CodeSigningSignature' <$> (x .:? "inlineDocument"))
 
 instance Hashable CodeSigningSignature where
 
@@ -68,5 +58,4 @@ instance ToJSON CodeSigningSignature where
         toJSON CodeSigningSignature'{..}
           = object
               (catMaybes
-                 [("stream" .=) <$> _cssStream,
-                  ("inlineDocument" .=) <$> _cssInlineDocument])
+                 [("inlineDocument" .=) <$> _cssInlineDocument])

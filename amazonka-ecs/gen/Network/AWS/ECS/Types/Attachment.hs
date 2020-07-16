@@ -38,7 +38,7 @@ data Attachment = Attachment'{_aStatus ::
 --
 -- * 'aStatus' - The status of the attachment. Valid values are @PRECREATED@ , @CREATED@ , @ATTACHING@ , @ATTACHED@ , @DETACHING@ , @DETACHED@ , and @DELETED@ .
 --
--- * 'aDetails' - Details of the attachment. For Elastic Network Interfaces, this includes the network interface ID, the MAC address, the subnet ID, and the private IPv4 address.
+-- * 'aDetails' - Details of the attachment. For elastic network interfaces, this includes the network interface ID, the MAC address, the subnet ID, and the private IPv4 address.
 --
 -- * 'aId' - The unique identifier for the attachment.
 --
@@ -54,7 +54,7 @@ attachment
 aStatus :: Lens' Attachment (Maybe Text)
 aStatus = lens _aStatus (\ s a -> s{_aStatus = a})
 
--- | Details of the attachment. For Elastic Network Interfaces, this includes the network interface ID, the MAC address, the subnet ID, and the private IPv4 address.
+-- | Details of the attachment. For elastic network interfaces, this includes the network interface ID, the MAC address, the subnet ID, and the private IPv4 address.
 aDetails :: Lens' Attachment [KeyValuePair]
 aDetails = lens _aDetails (\ s a -> s{_aDetails = a}) . _Default . _Coerce
 

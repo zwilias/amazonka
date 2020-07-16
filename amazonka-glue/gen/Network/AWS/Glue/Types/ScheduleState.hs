@@ -19,9 +19,9 @@
 module Network.AWS.Glue.Types.ScheduleState (
   ScheduleState (
     ..
-    , NotScheduled
-    , Scheduled
-    , Transitioning
+    , SSNotScheduled
+    , SSScheduled
+    , SSTransitioning
     )
   ) where
 
@@ -32,19 +32,19 @@ data ScheduleState = ScheduleState' (CI Text)
                        deriving (Eq, Ord, Read, Show, Data, Typeable,
                                  Generic)
 
-pattern NotScheduled :: ScheduleState
-pattern NotScheduled = ScheduleState' "NOT_SCHEDULED"
+pattern SSNotScheduled :: ScheduleState
+pattern SSNotScheduled = ScheduleState' "NOT_SCHEDULED"
 
-pattern Scheduled :: ScheduleState
-pattern Scheduled = ScheduleState' "SCHEDULED"
+pattern SSScheduled :: ScheduleState
+pattern SSScheduled = ScheduleState' "SCHEDULED"
 
-pattern Transitioning :: ScheduleState
-pattern Transitioning = ScheduleState' "TRANSITIONING"
+pattern SSTransitioning :: ScheduleState
+pattern SSTransitioning = ScheduleState' "TRANSITIONING"
 
 {-# COMPLETE
-  NotScheduled,
-  Scheduled,
-  Transitioning,
+  SSNotScheduled,
+  SSScheduled,
+  SSTransitioning,
   ScheduleState' #-}
 
 instance FromText ScheduleState where
@@ -59,22 +59,22 @@ instance ToText ScheduleState where
 --   fromEnum is a partial function, and will error on values unknown at generation time.
 instance Enum ScheduleState where
     toEnum i = case i of
-        0 -> NotScheduled
-        1 -> Scheduled
-        2 -> Transitioning
+        0 -> SSNotScheduled
+        1 -> SSScheduled
+        2 -> SSTransitioning
         _ -> (error . showText) $ "Unknown index for ScheduleState: " <> toText i
     fromEnum x = case x of
-        NotScheduled -> 0
-        Scheduled -> 1
-        Transitioning -> 2
+        SSNotScheduled -> 0
+        SSScheduled -> 1
+        SSTransitioning -> 2
         ScheduleState' name -> (error . showText) $ "Unknown ScheduleState: " <> original name
 
 -- | Represents the bounds of /known/ $ScheduleState.
 --   AWS may have added more since the source was generated.
 --   This instance exists only for backward compatibility.
 instance Bounded ScheduleState where
-    minBound = NotScheduled
-    maxBound = Transitioning
+    minBound = SSNotScheduled
+    maxBound = SSTransitioning
 
 instance Hashable     ScheduleState
 instance NFData       ScheduleState

@@ -19,7 +19,7 @@
 module Network.AWS.CloudFormation.Types.ChangeType (
   ChangeType (
     ..
-    , Resource
+    , CTResource
     )
   ) where
 
@@ -30,11 +30,11 @@ data ChangeType = ChangeType' (CI Text)
                     deriving (Eq, Ord, Read, Show, Data, Typeable,
                               Generic)
 
-pattern Resource :: ChangeType
-pattern Resource = ChangeType' "Resource"
+pattern CTResource :: ChangeType
+pattern CTResource = ChangeType' "Resource"
 
 {-# COMPLETE
-  Resource,
+  CTResource,
   ChangeType' #-}
 
 instance FromText ChangeType where
@@ -49,18 +49,18 @@ instance ToText ChangeType where
 --   fromEnum is a partial function, and will error on values unknown at generation time.
 instance Enum ChangeType where
     toEnum i = case i of
-        0 -> Resource
+        0 -> CTResource
         _ -> (error . showText) $ "Unknown index for ChangeType: " <> toText i
     fromEnum x = case x of
-        Resource -> 0
+        CTResource -> 0
         ChangeType' name -> (error . showText) $ "Unknown ChangeType: " <> original name
 
 -- | Represents the bounds of /known/ $ChangeType.
 --   AWS may have added more since the source was generated.
 --   This instance exists only for backward compatibility.
 instance Bounded ChangeType where
-    minBound = Resource
-    maxBound = Resource
+    minBound = CTResource
+    maxBound = CTResource
 
 instance Hashable     ChangeType
 instance NFData       ChangeType

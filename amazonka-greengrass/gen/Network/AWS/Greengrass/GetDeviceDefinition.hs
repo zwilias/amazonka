@@ -38,6 +38,7 @@ module Network.AWS.Greengrass.GetDeviceDefinition
     , gddrsId
     , gddrsLatestVersion
     , gddrsLastUpdatedTimestamp
+    , gddrsTags
     , gddrsResponseStatus
     ) where
 
@@ -84,6 +85,7 @@ instance AWSRequest GetDeviceDefinition where
                      <*> (x .?> "Id")
                      <*> (x .?> "LatestVersion")
                      <*> (x .?> "LastUpdatedTimestamp")
+                     <*> (x .?> "tags" .!@ mempty)
                      <*> (pure (fromEnum s)))
 
 instance Hashable GetDeviceDefinition where
@@ -125,6 +127,10 @@ data GetDeviceDefinitionResponse = GetDeviceDefinitionResponse'{_gddrsLatestVers
                                                                 _gddrsLastUpdatedTimestamp
                                                                 ::
                                                                 !(Maybe Text),
+                                                                _gddrsTags ::
+                                                                !(Maybe
+                                                                    (Map Text
+                                                                       Text)),
                                                                 _gddrsResponseStatus
                                                                 :: !Int}
                                      deriving (Eq, Read, Show, Data, Typeable,
@@ -134,7 +140,7 @@ data GetDeviceDefinitionResponse = GetDeviceDefinitionResponse'{_gddrsLatestVers
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'gddrsLatestVersionARN' - The ARN of the latest version of the definition.
+-- * 'gddrsLatestVersionARN' - The ARN of the latest version associated with the definition.
 --
 -- * 'gddrsARN' - The ARN of the definition.
 --
@@ -144,9 +150,11 @@ data GetDeviceDefinitionResponse = GetDeviceDefinitionResponse'{_gddrsLatestVers
 --
 -- * 'gddrsId' - The ID of the definition.
 --
--- * 'gddrsLatestVersion' - The latest version of the definition.
+-- * 'gddrsLatestVersion' - The ID of the latest version associated with the definition.
 --
 -- * 'gddrsLastUpdatedTimestamp' - The time, in milliseconds since the epoch, when the definition was last updated.
+--
+-- * 'gddrsTags' - Tag(s) attached to the resource arn.
 --
 -- * 'gddrsResponseStatus' - -- | The response status code.
 getDeviceDefinitionResponse
@@ -160,9 +168,10 @@ getDeviceDefinitionResponse pResponseStatus_
                                  _gddrsId = Nothing,
                                  _gddrsLatestVersion = Nothing,
                                  _gddrsLastUpdatedTimestamp = Nothing,
+                                 _gddrsTags = Nothing,
                                  _gddrsResponseStatus = pResponseStatus_}
 
--- | The ARN of the latest version of the definition.
+-- | The ARN of the latest version associated with the definition.
 gddrsLatestVersionARN :: Lens' GetDeviceDefinitionResponse (Maybe Text)
 gddrsLatestVersionARN = lens _gddrsLatestVersionARN (\ s a -> s{_gddrsLatestVersionARN = a})
 
@@ -182,13 +191,17 @@ gddrsCreationTimestamp = lens _gddrsCreationTimestamp (\ s a -> s{_gddrsCreation
 gddrsId :: Lens' GetDeviceDefinitionResponse (Maybe Text)
 gddrsId = lens _gddrsId (\ s a -> s{_gddrsId = a})
 
--- | The latest version of the definition.
+-- | The ID of the latest version associated with the definition.
 gddrsLatestVersion :: Lens' GetDeviceDefinitionResponse (Maybe Text)
 gddrsLatestVersion = lens _gddrsLatestVersion (\ s a -> s{_gddrsLatestVersion = a})
 
 -- | The time, in milliseconds since the epoch, when the definition was last updated.
 gddrsLastUpdatedTimestamp :: Lens' GetDeviceDefinitionResponse (Maybe Text)
 gddrsLastUpdatedTimestamp = lens _gddrsLastUpdatedTimestamp (\ s a -> s{_gddrsLastUpdatedTimestamp = a})
+
+-- | Tag(s) attached to the resource arn.
+gddrsTags :: Lens' GetDeviceDefinitionResponse (HashMap Text Text)
+gddrsTags = lens _gddrsTags (\ s a -> s{_gddrsTags = a}) . _Default . _Map
 
 -- | -- | The response status code.
 gddrsResponseStatus :: Lens' GetDeviceDefinitionResponse Int

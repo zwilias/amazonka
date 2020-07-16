@@ -18,6 +18,7 @@
 module Network.AWS.MediaLive.Types.InputDestination where
 
 import Network.AWS.Lens
+import Network.AWS.MediaLive.Types.InputDestinationVPC
 import Network.AWS.Prelude
 
 -- | The settings for a PUSH type input.
@@ -26,6 +27,8 @@ import Network.AWS.Prelude
 data InputDestination = InputDestination'{_idURL ::
                                           !(Maybe Text),
                                           _idIP :: !(Maybe Text),
+                                          _idVPC ::
+                                          !(Maybe InputDestinationVPC),
                                           _idPort :: !(Maybe Text)}
                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -37,12 +40,14 @@ data InputDestination = InputDestination'{_idURL ::
 --
 -- * 'idIP' - The system-generated static IP address of endpoint. It remains fixed for the lifetime of the input.
 --
+-- * 'idVPC' - Undocumented member.
+--
 -- * 'idPort' - The port number for the input.
 inputDestination
     :: InputDestination
 inputDestination
   = InputDestination'{_idURL = Nothing,
-                      _idIP = Nothing, _idPort = Nothing}
+                      _idIP = Nothing, _idVPC = Nothing, _idPort = Nothing}
 
 -- | This represents the endpoint that the customer stream will be pushed to.
 idURL :: Lens' InputDestination (Maybe Text)
@@ -51,6 +56,10 @@ idURL = lens _idURL (\ s a -> s{_idURL = a})
 -- | The system-generated static IP address of endpoint. It remains fixed for the lifetime of the input.
 idIP :: Lens' InputDestination (Maybe Text)
 idIP = lens _idIP (\ s a -> s{_idIP = a})
+
+-- | Undocumented member.
+idVPC :: Lens' InputDestination (Maybe InputDestinationVPC)
+idVPC = lens _idVPC (\ s a -> s{_idVPC = a})
 
 -- | The port number for the input.
 idPort :: Lens' InputDestination (Maybe Text)
@@ -61,7 +70,8 @@ instance FromJSON InputDestination where
           = withObject "InputDestination"
               (\ x ->
                  InputDestination' <$>
-                   (x .:? "url") <*> (x .:? "ip") <*> (x .:? "port"))
+                   (x .:? "url") <*> (x .:? "ip") <*> (x .:? "vpc") <*>
+                     (x .:? "port"))
 
 instance Hashable InputDestination where
 

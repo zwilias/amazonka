@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Deletes the specified role. The role must not have any policies attached. For more information about roles, go to <http://docs.aws.amazon.com/IAM/latest/UserGuide/WorkingWithRoles.html Working with Roles> .
+-- Deletes the specified role. The role must not have any policies attached. For more information about roles, go to <https://docs.aws.amazon.com/IAM/latest/UserGuide/WorkingWithRoles.html Working with Roles> .
 --
 --
 -- /Important:/ Make sure that you do not have any Amazon EC2 instances running with the role you are about to delete. Deleting a role or instance profile that is associated with a running instance will break any applications running on the instance.
@@ -51,14 +51,14 @@ newtype DeleteRole = DeleteRole'{_drRoleName :: Text}
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'drRoleName' - The name of the role to delete. This parameter allows (per its <http://wikipedia.org/wiki/regex regex pattern> ) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
+-- * 'drRoleName' - The name of the role to delete. This parameter allows (through its <http://wikipedia.org/wiki/regex regex pattern> ) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
 deleteRole
     :: Text -- ^ 'drRoleName'
     -> DeleteRole
 deleteRole pRoleName_
   = DeleteRole'{_drRoleName = pRoleName_}
 
--- | The name of the role to delete. This parameter allows (per its <http://wikipedia.org/wiki/regex regex pattern> ) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
+-- | The name of the role to delete. This parameter allows (through its <http://wikipedia.org/wiki/regex regex pattern> ) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
 drRoleName :: Lens' DeleteRole Text
 drRoleName = lens _drRoleName (\ s a -> s{_drRoleName = a})
 

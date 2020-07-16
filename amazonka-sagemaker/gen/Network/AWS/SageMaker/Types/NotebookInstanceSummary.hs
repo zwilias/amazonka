@@ -29,6 +29,8 @@ import Network.AWS.SageMaker.Types.NotebookInstanceStatus
 -- /See:/ 'notebookInstanceSummary' smart constructor.
 data NotebookInstanceSummary = NotebookInstanceSummary'{_nisCreationTime
                                                         :: !(Maybe POSIX),
+                                                        _nisAdditionalCodeRepositories
+                                                        :: !(Maybe [Text]),
                                                         _nisURL ::
                                                         !(Maybe Text),
                                                         _nisLastModifiedTime ::
@@ -39,6 +41,8 @@ data NotebookInstanceSummary = NotebookInstanceSummary'{_nisCreationTime
                                                         ::
                                                         !(Maybe
                                                             NotebookInstanceStatus),
+                                                        _nisDefaultCodeRepository
+                                                        :: !(Maybe Text),
                                                         _nisNotebookInstanceLifecycleConfigName
                                                         :: !(Maybe Text),
                                                         _nisNotebookInstanceName
@@ -54,6 +58,8 @@ data NotebookInstanceSummary = NotebookInstanceSummary'{_nisCreationTime
 --
 -- * 'nisCreationTime' - A timestamp that shows when the notebook instance was created.
 --
+-- * 'nisAdditionalCodeRepositories' - An array of up to three Git repositories associated with the notebook instance. These can be either the names of Git repositories stored as resources in your account, or the URL of Git repositories in <https://docs.aws.amazon.com/codecommit/latest/userguide/welcome.html AWS CodeCommit> or in any other Git repository. These repositories are cloned at the same level as the default repository of your notebook instance. For more information, see <https://docs.aws.amazon.com/sagemaker/latest/dg/nbi-git-repo.html Associating Git Repositories with Amazon SageMaker Notebook Instances> .
+--
 -- * 'nisURL' - The URL that you use to connect to the Jupyter instance running in your notebook instance. 
 --
 -- * 'nisLastModifiedTime' - A timestamp that shows when the notebook instance was last modified.
@@ -62,7 +68,9 @@ data NotebookInstanceSummary = NotebookInstanceSummary'{_nisCreationTime
 --
 -- * 'nisNotebookInstanceStatus' - The status of the notebook instance.
 --
--- * 'nisNotebookInstanceLifecycleConfigName' - The name of a notebook instance lifecycle configuration associated with this notebook instance. For information about notebook instance lifestyle configurations, see 'notebook-lifecycle-config' .
+-- * 'nisDefaultCodeRepository' - The Git repository associated with the notebook instance as its default code repository. This can be either the name of a Git repository stored as a resource in your account, or the URL of a Git repository in <https://docs.aws.amazon.com/codecommit/latest/userguide/welcome.html AWS CodeCommit> or in any other Git repository. When you open a notebook instance, it opens in the directory that contains this repository. For more information, see <https://docs.aws.amazon.com/sagemaker/latest/dg/nbi-git-repo.html Associating Git Repositories with Amazon SageMaker Notebook Instances> .
+--
+-- * 'nisNotebookInstanceLifecycleConfigName' - The name of a notebook instance lifecycle configuration associated with this notebook instance. For information about notebook instance lifestyle configurations, see <https://docs.aws.amazon.com/sagemaker/latest/dg/notebook-lifecycle-config.html Step 2.1: (Optional) Customize a Notebook Instance> .
 --
 -- * 'nisNotebookInstanceName' - The name of the notebook instance that you want a summary for.
 --
@@ -75,9 +83,11 @@ notebookInstanceSummary pNotebookInstanceName_
   pNotebookInstanceARN_
   = NotebookInstanceSummary'{_nisCreationTime =
                                Nothing,
+                             _nisAdditionalCodeRepositories = Nothing,
                              _nisURL = Nothing, _nisLastModifiedTime = Nothing,
                              _nisInstanceType = Nothing,
                              _nisNotebookInstanceStatus = Nothing,
+                             _nisDefaultCodeRepository = Nothing,
                              _nisNotebookInstanceLifecycleConfigName = Nothing,
                              _nisNotebookInstanceName = pNotebookInstanceName_,
                              _nisNotebookInstanceARN = pNotebookInstanceARN_}
@@ -85,6 +95,10 @@ notebookInstanceSummary pNotebookInstanceName_
 -- | A timestamp that shows when the notebook instance was created.
 nisCreationTime :: Lens' NotebookInstanceSummary (Maybe UTCTime)
 nisCreationTime = lens _nisCreationTime (\ s a -> s{_nisCreationTime = a}) . mapping _Time
+
+-- | An array of up to three Git repositories associated with the notebook instance. These can be either the names of Git repositories stored as resources in your account, or the URL of Git repositories in <https://docs.aws.amazon.com/codecommit/latest/userguide/welcome.html AWS CodeCommit> or in any other Git repository. These repositories are cloned at the same level as the default repository of your notebook instance. For more information, see <https://docs.aws.amazon.com/sagemaker/latest/dg/nbi-git-repo.html Associating Git Repositories with Amazon SageMaker Notebook Instances> .
+nisAdditionalCodeRepositories :: Lens' NotebookInstanceSummary [Text]
+nisAdditionalCodeRepositories = lens _nisAdditionalCodeRepositories (\ s a -> s{_nisAdditionalCodeRepositories = a}) . _Default . _Coerce
 
 -- | The URL that you use to connect to the Jupyter instance running in your notebook instance. 
 nisURL :: Lens' NotebookInstanceSummary (Maybe Text)
@@ -102,7 +116,11 @@ nisInstanceType = lens _nisInstanceType (\ s a -> s{_nisInstanceType = a})
 nisNotebookInstanceStatus :: Lens' NotebookInstanceSummary (Maybe NotebookInstanceStatus)
 nisNotebookInstanceStatus = lens _nisNotebookInstanceStatus (\ s a -> s{_nisNotebookInstanceStatus = a})
 
--- | The name of a notebook instance lifecycle configuration associated with this notebook instance. For information about notebook instance lifestyle configurations, see 'notebook-lifecycle-config' .
+-- | The Git repository associated with the notebook instance as its default code repository. This can be either the name of a Git repository stored as a resource in your account, or the URL of a Git repository in <https://docs.aws.amazon.com/codecommit/latest/userguide/welcome.html AWS CodeCommit> or in any other Git repository. When you open a notebook instance, it opens in the directory that contains this repository. For more information, see <https://docs.aws.amazon.com/sagemaker/latest/dg/nbi-git-repo.html Associating Git Repositories with Amazon SageMaker Notebook Instances> .
+nisDefaultCodeRepository :: Lens' NotebookInstanceSummary (Maybe Text)
+nisDefaultCodeRepository = lens _nisDefaultCodeRepository (\ s a -> s{_nisDefaultCodeRepository = a})
+
+-- | The name of a notebook instance lifecycle configuration associated with this notebook instance. For information about notebook instance lifestyle configurations, see <https://docs.aws.amazon.com/sagemaker/latest/dg/notebook-lifecycle-config.html Step 2.1: (Optional) Customize a Notebook Instance> .
 nisNotebookInstanceLifecycleConfigName :: Lens' NotebookInstanceSummary (Maybe Text)
 nisNotebookInstanceLifecycleConfigName = lens _nisNotebookInstanceLifecycleConfigName (\ s a -> s{_nisNotebookInstanceLifecycleConfigName = a})
 
@@ -119,10 +137,13 @@ instance FromJSON NotebookInstanceSummary where
           = withObject "NotebookInstanceSummary"
               (\ x ->
                  NotebookInstanceSummary' <$>
-                   (x .:? "CreationTime") <*> (x .:? "Url") <*>
-                     (x .:? "LastModifiedTime")
+                   (x .:? "CreationTime") <*>
+                     (x .:? "AdditionalCodeRepositories" .!= mempty)
+                     <*> (x .:? "Url")
+                     <*> (x .:? "LastModifiedTime")
                      <*> (x .:? "InstanceType")
                      <*> (x .:? "NotebookInstanceStatus")
+                     <*> (x .:? "DefaultCodeRepository")
                      <*> (x .:? "NotebookInstanceLifecycleConfigName")
                      <*> (x .: "NotebookInstanceName")
                      <*> (x .: "NotebookInstanceArn"))

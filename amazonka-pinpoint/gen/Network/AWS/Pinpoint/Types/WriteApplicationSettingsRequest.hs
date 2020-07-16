@@ -23,10 +23,16 @@ import Network.AWS.Pinpoint.Types.CampaignLimits
 import Network.AWS.Pinpoint.Types.QuietTime
 import Network.AWS.Prelude
 
--- | Creating application setting request
+-- | Specifies the default settings for an application.
+--
+--
 --
 -- /See:/ 'writeApplicationSettingsRequest' smart constructor.
-data WriteApplicationSettingsRequest = WriteApplicationSettingsRequest'{_wasrLimits
+data WriteApplicationSettingsRequest = WriteApplicationSettingsRequest'{_wasrCloudWatchMetricsEnabled
+                                                                        ::
+                                                                        !(Maybe
+                                                                            Bool),
+                                                                        _wasrLimits
                                                                         ::
                                                                         !(Maybe
                                                                             CampaignLimits),
@@ -45,28 +51,35 @@ data WriteApplicationSettingsRequest = WriteApplicationSettingsRequest'{_wasrLim
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'wasrLimits' - The default campaign limits for the app. These limits apply to each campaign for the app, unless the campaign overrides the default with limits of its own.
+-- * 'wasrCloudWatchMetricsEnabled' - Specifies whether to enable application-related alarms in Amazon CloudWatch.
 --
--- * 'wasrQuietTime' - The default quiet time for the app. Each campaign for this app sends no messages during this time unless the campaign overrides the default with a quiet time of its own.
+-- * 'wasrLimits' - The default sending limits for campaigns and journeys in the application. To override these limits and define custom limits for a specific campaign or journey, use the <link>Campaign resource or the <link>Journey resource, respectively.
 --
--- * 'wasrCampaignHook' - Default campaign hook information.
+-- * 'wasrQuietTime' - The default quiet time for campaigns and journeys in the application. Quiet time is a specific time range when messages aren't sent to endpoints, if all the following conditions are met:     * The EndpointDemographic.Timezone property of the endpoint is set to a valid value.     * The current time in the endpoint's time zone is later than or equal to the time specified by the QuietTime.Start property for the application (or a campaign or journey that has custom quiet time settings).     * The current time in the endpoint's time zone is earlier than or equal to the time specified by the QuietTime.End property for the application (or a campaign or journey that has custom quiet time settings). If any of the preceding conditions isn't met, the endpoint will receive messages from a campaign or journey, even if quiet time is enabled. To override the default quiet time settings for a specific campaign or journey, use the <link>Campaign resource or the <link>Journey resource to define a custom quiet time for the campaign or journey.
+--
+-- * 'wasrCampaignHook' - The settings for the AWS Lambda function to invoke by default as a code hook for campaigns in the application. You can use this hook to customize segments that are used by campaigns in the application. To override these settings and define custom settings for a specific campaign, use the CampaignHook object of the <link>Campaign resource.
 writeApplicationSettingsRequest
     :: WriteApplicationSettingsRequest
 writeApplicationSettingsRequest
-  = WriteApplicationSettingsRequest'{_wasrLimits =
-                                       Nothing,
+  = WriteApplicationSettingsRequest'{_wasrCloudWatchMetricsEnabled
+                                       = Nothing,
+                                     _wasrLimits = Nothing,
                                      _wasrQuietTime = Nothing,
                                      _wasrCampaignHook = Nothing}
 
--- | The default campaign limits for the app. These limits apply to each campaign for the app, unless the campaign overrides the default with limits of its own.
+-- | Specifies whether to enable application-related alarms in Amazon CloudWatch.
+wasrCloudWatchMetricsEnabled :: Lens' WriteApplicationSettingsRequest (Maybe Bool)
+wasrCloudWatchMetricsEnabled = lens _wasrCloudWatchMetricsEnabled (\ s a -> s{_wasrCloudWatchMetricsEnabled = a})
+
+-- | The default sending limits for campaigns and journeys in the application. To override these limits and define custom limits for a specific campaign or journey, use the <link>Campaign resource or the <link>Journey resource, respectively.
 wasrLimits :: Lens' WriteApplicationSettingsRequest (Maybe CampaignLimits)
 wasrLimits = lens _wasrLimits (\ s a -> s{_wasrLimits = a})
 
--- | The default quiet time for the app. Each campaign for this app sends no messages during this time unless the campaign overrides the default with a quiet time of its own.
+-- | The default quiet time for campaigns and journeys in the application. Quiet time is a specific time range when messages aren't sent to endpoints, if all the following conditions are met:     * The EndpointDemographic.Timezone property of the endpoint is set to a valid value.     * The current time in the endpoint's time zone is later than or equal to the time specified by the QuietTime.Start property for the application (or a campaign or journey that has custom quiet time settings).     * The current time in the endpoint's time zone is earlier than or equal to the time specified by the QuietTime.End property for the application (or a campaign or journey that has custom quiet time settings). If any of the preceding conditions isn't met, the endpoint will receive messages from a campaign or journey, even if quiet time is enabled. To override the default quiet time settings for a specific campaign or journey, use the <link>Campaign resource or the <link>Journey resource to define a custom quiet time for the campaign or journey.
 wasrQuietTime :: Lens' WriteApplicationSettingsRequest (Maybe QuietTime)
 wasrQuietTime = lens _wasrQuietTime (\ s a -> s{_wasrQuietTime = a})
 
--- | Default campaign hook information.
+-- | The settings for the AWS Lambda function to invoke by default as a code hook for campaigns in the application. You can use this hook to customize segments that are used by campaigns in the application. To override these settings and define custom settings for a specific campaign, use the CampaignHook object of the <link>Campaign resource.
 wasrCampaignHook :: Lens' WriteApplicationSettingsRequest (Maybe CampaignHook)
 wasrCampaignHook = lens _wasrCampaignHook (\ s a -> s{_wasrCampaignHook = a})
 
@@ -79,6 +92,8 @@ instance ToJSON WriteApplicationSettingsRequest where
         toJSON WriteApplicationSettingsRequest'{..}
           = object
               (catMaybes
-                 [("Limits" .=) <$> _wasrLimits,
+                 [("CloudWatchMetricsEnabled" .=) <$>
+                    _wasrCloudWatchMetricsEnabled,
+                  ("Limits" .=) <$> _wasrLimits,
                   ("QuietTime" .=) <$> _wasrQuietTime,
                   ("CampaignHook" .=) <$> _wasrCampaignHook])

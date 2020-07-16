@@ -33,6 +33,7 @@ import Network.AWS.MediaLive.Types.M2tsEbifControl
 import Network.AWS.MediaLive.Types.M2tsEbpPlacement
 import Network.AWS.MediaLive.Types.M2tsEsRateInPes
 import Network.AWS.MediaLive.Types.M2tsKlv
+import Network.AWS.MediaLive.Types.M2tsNielsenId3Behavior
 import Network.AWS.MediaLive.Types.M2tsPcrControl
 import Network.AWS.MediaLive.Types.M2tsRateMode
 import Network.AWS.MediaLive.Types.M2tsScte35Control
@@ -41,13 +42,15 @@ import Network.AWS.MediaLive.Types.M2tsSegmentationStyle
 import Network.AWS.MediaLive.Types.M2tsTimedMetadataBehavior
 import Network.AWS.Prelude
 
--- | Placeholder documentation for M2tsSettings
+-- | M2ts Settings
 --
 -- /See:/ 'm2tsSettings' smart constructor.
 data M2tsSettings = M2tsSettings'{_msPmtPid ::
                                   !(Maybe Text),
                                   _msEtvSignalPid :: !(Maybe Text),
                                   _msVideoPid :: !(Maybe Text),
+                                  _msNielsenId3Behavior ::
+                                  !(Maybe M2tsNielsenId3Behavior),
                                   _msBufferModel :: !(Maybe M2tsBufferModel),
                                   _msScte35Pid :: !(Maybe Text),
                                   _msTransportStreamId :: !(Maybe Nat),
@@ -111,6 +114,8 @@ data M2tsSettings = M2tsSettings'{_msPmtPid ::
 -- * 'msEtvSignalPid' - Packet Identifier (PID) for input source ETV Signal data to this output. Can be entered as a decimal or hexadecimal value.  Valid values are 32 (or 0x20)..8182 (or 0x1ff6).
 --
 -- * 'msVideoPid' - Packet Identifier (PID) of the elementary video stream in the transport stream. Can be entered as a decimal or hexadecimal value.  Valid values are 32 (or 0x20)..8182 (or 0x1ff6).
+--
+-- * 'msNielsenId3Behavior' - If set to passthrough, Nielsen inaudible tones for media tracking will be detected in the input audio and an equivalent ID3 tag will be inserted in the output.
 --
 -- * 'msBufferModel' - If set to multiplex, use multiplex buffer model for accurate interleaving.  Setting to bufferModel to none can lead to lower latency, but low-memory devices may not be able to play back the stream without interruptions.
 --
@@ -202,6 +207,7 @@ m2tsSettings
 m2tsSettings
   = M2tsSettings'{_msPmtPid = Nothing,
                   _msEtvSignalPid = Nothing, _msVideoPid = Nothing,
+                  _msNielsenId3Behavior = Nothing,
                   _msBufferModel = Nothing, _msScte35Pid = Nothing,
                   _msTransportStreamId = Nothing,
                   _msProgramNum = Nothing, _msFragmentTime = Nothing,
@@ -243,6 +249,10 @@ msEtvSignalPid = lens _msEtvSignalPid (\ s a -> s{_msEtvSignalPid = a})
 -- | Packet Identifier (PID) of the elementary video stream in the transport stream. Can be entered as a decimal or hexadecimal value.  Valid values are 32 (or 0x20)..8182 (or 0x1ff6).
 msVideoPid :: Lens' M2tsSettings (Maybe Text)
 msVideoPid = lens _msVideoPid (\ s a -> s{_msVideoPid = a})
+
+-- | If set to passthrough, Nielsen inaudible tones for media tracking will be detected in the input audio and an equivalent ID3 tag will be inserted in the output.
+msNielsenId3Behavior :: Lens' M2tsSettings (Maybe M2tsNielsenId3Behavior)
+msNielsenId3Behavior = lens _msNielsenId3Behavior (\ s a -> s{_msNielsenId3Behavior = a})
 
 -- | If set to multiplex, use multiplex buffer model for accurate interleaving.  Setting to bufferModel to none can lead to lower latency, but low-memory devices may not be able to play back the stream without interruptions.
 msBufferModel :: Lens' M2tsSettings (Maybe M2tsBufferModel)
@@ -423,6 +433,7 @@ instance FromJSON M2tsSettings where
                  M2tsSettings' <$>
                    (x .:? "pmtPid") <*> (x .:? "etvSignalPid") <*>
                      (x .:? "videoPid")
+                     <*> (x .:? "nielsenId3Behavior")
                      <*> (x .:? "bufferModel")
                      <*> (x .:? "scte35Pid")
                      <*> (x .:? "transportStreamId")
@@ -478,6 +489,7 @@ instance ToJSON M2tsSettings where
                  [("pmtPid" .=) <$> _msPmtPid,
                   ("etvSignalPid" .=) <$> _msEtvSignalPid,
                   ("videoPid" .=) <$> _msVideoPid,
+                  ("nielsenId3Behavior" .=) <$> _msNielsenId3Behavior,
                   ("bufferModel" .=) <$> _msBufferModel,
                   ("scte35Pid" .=) <$> _msScte35Pid,
                   ("transportStreamId" .=) <$> _msTransportStreamId,

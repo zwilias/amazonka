@@ -26,7 +26,11 @@ import Network.AWS.ServiceCatalog.Types.ProvisioningArtifactType
 --
 --
 -- /See:/ 'provisioningArtifactProperties' smart constructor.
-data ProvisioningArtifactProperties = ProvisioningArtifactProperties'{_papName
+data ProvisioningArtifactProperties = ProvisioningArtifactProperties'{_papDisableTemplateValidation
+                                                                      ::
+                                                                      !(Maybe
+                                                                          Bool),
+                                                                      _papName
                                                                       ::
                                                                       !(Maybe
                                                                           Text),
@@ -49,6 +53,8 @@ data ProvisioningArtifactProperties = ProvisioningArtifactProperties'{_papName
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
+-- * 'papDisableTemplateValidation' - If set to true, AWS Service Catalog stops validating the specified provisioning artifact even if it is invalid.
+--
 -- * 'papName' - The name of the provisioning artifact (for example, v1 v2beta). No spaces are allowed.
 --
 -- * 'papType' - The type of provisioning artifact.     * @CLOUD_FORMATION_TEMPLATE@ - AWS CloudFormation template     * @MARKETPLACE_AMI@ - AWS Marketplace AMI     * @MARKETPLACE_CAR@ - AWS Marketplace Clusters and AWS Resources
@@ -59,10 +65,15 @@ data ProvisioningArtifactProperties = ProvisioningArtifactProperties'{_papName
 provisioningArtifactProperties
     :: ProvisioningArtifactProperties
 provisioningArtifactProperties
-  = ProvisioningArtifactProperties'{_papName = Nothing,
-                                    _papType = Nothing,
+  = ProvisioningArtifactProperties'{_papDisableTemplateValidation
+                                      = Nothing,
+                                    _papName = Nothing, _papType = Nothing,
                                     _papDescription = Nothing,
                                     _papInfo = mempty}
+
+-- | If set to true, AWS Service Catalog stops validating the specified provisioning artifact even if it is invalid.
+papDisableTemplateValidation :: Lens' ProvisioningArtifactProperties (Maybe Bool)
+papDisableTemplateValidation = lens _papDisableTemplateValidation (\ s a -> s{_papDisableTemplateValidation = a})
 
 -- | The name of the provisioning artifact (for example, v1 v2beta). No spaces are allowed.
 papName :: Lens' ProvisioningArtifactProperties (Maybe Text)
@@ -89,6 +100,8 @@ instance ToJSON ProvisioningArtifactProperties where
         toJSON ProvisioningArtifactProperties'{..}
           = object
               (catMaybes
-                 [("Name" .=) <$> _papName, ("Type" .=) <$> _papType,
+                 [("DisableTemplateValidation" .=) <$>
+                    _papDisableTemplateValidation,
+                  ("Name" .=) <$> _papName, ("Type" .=) <$> _papType,
                   ("Description" .=) <$> _papDescription,
                   Just ("Info" .= _papInfo)])

@@ -18,7 +18,9 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Deletes a campaign.
+-- Deletes a campaign from an application.
+--
+--
 module Network.AWS.Pinpoint.DeleteCampaign
     (
     -- * Creating a Request
@@ -53,9 +55,9 @@ data DeleteCampaign = DeleteCampaign'{_dcCampaignId
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dcCampaignId' - Undocumented member.
+-- * 'dcCampaignId' - The unique identifier for the campaign.
 --
--- * 'dcApplicationId' - Undocumented member.
+-- * 'dcApplicationId' - The unique identifier for the application. This identifier is displayed as the __Project ID__ on the Amazon Pinpoint console.
 deleteCampaign
     :: Text -- ^ 'dcCampaignId'
     -> Text -- ^ 'dcApplicationId'
@@ -64,11 +66,11 @@ deleteCampaign pCampaignId_ pApplicationId_
   = DeleteCampaign'{_dcCampaignId = pCampaignId_,
                     _dcApplicationId = pApplicationId_}
 
--- | Undocumented member.
+-- | The unique identifier for the campaign.
 dcCampaignId :: Lens' DeleteCampaign Text
 dcCampaignId = lens _dcCampaignId (\ s a -> s{_dcCampaignId = a})
 
--- | Undocumented member.
+-- | The unique identifier for the application. This identifier is displayed as the __Project ID__ on the Amazon Pinpoint console.
 dcApplicationId :: Lens' DeleteCampaign Text
 dcApplicationId = lens _dcApplicationId (\ s a -> s{_dcApplicationId = a})
 

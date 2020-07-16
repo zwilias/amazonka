@@ -34,7 +34,7 @@ newtype AttackVectorDescription = AttackVectorDescription'{_avdVectorType
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'avdVectorType' - The attack type. Valid values:     * UDP_TRAFFIC     * UDP_FRAGMENT     * GENERIC_UDP_REFLECTION     * DNS_REFLECTION     * NTP_REFLECTION     * CHARGEN_REFLECTION     * SSDP_REFLECTION     * PORT_MAPPER     * RIP_REFLECTION     * SNMP_REFLECTION     * MSSQL_REFLECTION     * NET_BIOS_REFLECTION     * SYN_FLOOD     * ACK_FLOOD     * REQUEST_FLOOD
+-- * 'avdVectorType' - The attack type. Valid values:     * UDP_TRAFFIC     * UDP_FRAGMENT     * GENERIC_UDP_REFLECTION     * DNS_REFLECTION     * NTP_REFLECTION     * CHARGEN_REFLECTION     * SSDP_REFLECTION     * PORT_MAPPER     * RIP_REFLECTION     * SNMP_REFLECTION     * MSSQL_REFLECTION     * NET_BIOS_REFLECTION     * SYN_FLOOD     * ACK_FLOOD     * REQUEST_FLOOD     * HTTP_REFLECTION     * UDS_REFLECTION     * MEMCACHED_REFLECTION
 attackVectorDescription
     :: Text -- ^ 'avdVectorType'
     -> AttackVectorDescription
@@ -42,7 +42,7 @@ attackVectorDescription pVectorType_
   = AttackVectorDescription'{_avdVectorType =
                                pVectorType_}
 
--- | The attack type. Valid values:     * UDP_TRAFFIC     * UDP_FRAGMENT     * GENERIC_UDP_REFLECTION     * DNS_REFLECTION     * NTP_REFLECTION     * CHARGEN_REFLECTION     * SSDP_REFLECTION     * PORT_MAPPER     * RIP_REFLECTION     * SNMP_REFLECTION     * MSSQL_REFLECTION     * NET_BIOS_REFLECTION     * SYN_FLOOD     * ACK_FLOOD     * REQUEST_FLOOD
+-- | The attack type. Valid values:     * UDP_TRAFFIC     * UDP_FRAGMENT     * GENERIC_UDP_REFLECTION     * DNS_REFLECTION     * NTP_REFLECTION     * CHARGEN_REFLECTION     * SSDP_REFLECTION     * PORT_MAPPER     * RIP_REFLECTION     * SNMP_REFLECTION     * MSSQL_REFLECTION     * NET_BIOS_REFLECTION     * SYN_FLOOD     * ACK_FLOOD     * REQUEST_FLOOD     * HTTP_REFLECTION     * UDS_REFLECTION     * MEMCACHED_REFLECTION
 avdVectorType :: Lens' AttackVectorDescription Text
 avdVectorType = lens _avdVectorType (\ s a -> s{_avdVectorType = a})
 

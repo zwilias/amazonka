@@ -24,7 +24,8 @@ module Network.AWS.FMS.Types.Product (
     module Network.AWS.FMS.Types.PolicyComplianceStatus,
     module Network.AWS.FMS.Types.PolicySummary,
     module Network.AWS.FMS.Types.ResourceTag,
-    module Network.AWS.FMS.Types.SecurityServicePolicyData
+    module Network.AWS.FMS.Types.SecurityServicePolicyData,
+    module Network.AWS.FMS.Types.Tag
   ) where
 
 import Network.AWS.FMS.Types.ComplianceViolator
@@ -35,5 +36,6 @@ import Network.AWS.FMS.Types.PolicyComplianceStatus
 import Network.AWS.FMS.Types.PolicySummary
 import Network.AWS.FMS.Types.ResourceTag
 import Network.AWS.FMS.Types.SecurityServicePolicyData
+import Network.AWS.FMS.Types.Tag
 import Network.AWS.Lens
 import Network.AWS.Prelude

@@ -23,7 +23,7 @@
 --
 --
 --
--- For more information on Amazon Aurora, see <http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Aurora.html Aurora on Amazon RDS> in the /Amazon RDS User Guide./ 
+-- For more information on Amazon Aurora, see <https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html What Is Amazon Aurora?> in the /Amazon Aurora User Guide./ 
 --
 module Network.AWS.RDS.DeleteDBCluster
     (
@@ -65,9 +65,9 @@ data DeleteDBCluster = DeleteDBCluster'{_ddbcFinalDBSnapshotIdentifier
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'ddbcFinalDBSnapshotIdentifier' - The DB cluster snapshot identifier of the new DB cluster snapshot created when @SkipFinalSnapshot@ is set to @false@ .  Constraints:     * Must be 1 to 255 letters, numbers, or hyphens.     * First character must be a letter     * Cannot end with a hyphen or contain two consecutive hyphens
+-- * 'ddbcFinalDBSnapshotIdentifier' - The DB cluster snapshot identifier of the new DB cluster snapshot created when @SkipFinalSnapshot@ is disabled.  Constraints:     * Must be 1 to 255 letters, numbers, or hyphens.     * First character must be a letter     * Can't end with a hyphen or contain two consecutive hyphens
 --
--- * 'ddbcSkipFinalSnapshot' - Determines whether a final DB cluster snapshot is created before the DB cluster is deleted. If @true@ is specified, no DB cluster snapshot is created. If @false@ is specified, a DB cluster snapshot is created before the DB cluster is deleted.  Default: @false@ 
+-- * 'ddbcSkipFinalSnapshot' - A value that indicates whether to skip the creation of a final DB cluster snapshot before the DB cluster is deleted. If skip is specified, no DB cluster snapshot is created. If skip isn't specified, a DB cluster snapshot is created before the DB cluster is deleted. By default, skip isn't specified, and the DB cluster snapshot is created. By default, this parameter is disabled.
 --
 -- * 'ddbcDBClusterIdentifier' - The DB cluster identifier for the DB cluster to be deleted. This parameter isn't case-sensitive. Constraints:     * Must match an existing DBClusterIdentifier.
 deleteDBCluster
@@ -79,11 +79,11 @@ deleteDBCluster pDBClusterIdentifier_
                      _ddbcSkipFinalSnapshot = Nothing,
                      _ddbcDBClusterIdentifier = pDBClusterIdentifier_}
 
--- | The DB cluster snapshot identifier of the new DB cluster snapshot created when @SkipFinalSnapshot@ is set to @false@ .  Constraints:     * Must be 1 to 255 letters, numbers, or hyphens.     * First character must be a letter     * Cannot end with a hyphen or contain two consecutive hyphens
+-- | The DB cluster snapshot identifier of the new DB cluster snapshot created when @SkipFinalSnapshot@ is disabled.  Constraints:     * Must be 1 to 255 letters, numbers, or hyphens.     * First character must be a letter     * Can't end with a hyphen or contain two consecutive hyphens
 ddbcFinalDBSnapshotIdentifier :: Lens' DeleteDBCluster (Maybe Text)
 ddbcFinalDBSnapshotIdentifier = lens _ddbcFinalDBSnapshotIdentifier (\ s a -> s{_ddbcFinalDBSnapshotIdentifier = a})
 
--- | Determines whether a final DB cluster snapshot is created before the DB cluster is deleted. If @true@ is specified, no DB cluster snapshot is created. If @false@ is specified, a DB cluster snapshot is created before the DB cluster is deleted.  Default: @false@ 
+-- | A value that indicates whether to skip the creation of a final DB cluster snapshot before the DB cluster is deleted. If skip is specified, no DB cluster snapshot is created. If skip isn't specified, a DB cluster snapshot is created before the DB cluster is deleted. By default, skip isn't specified, and the DB cluster snapshot is created. By default, this parameter is disabled.
 ddbcSkipFinalSnapshot :: Lens' DeleteDBCluster (Maybe Bool)
 ddbcSkipFinalSnapshot = lens _ddbcSkipFinalSnapshot (\ s a -> s{_ddbcSkipFinalSnapshot = a})
 

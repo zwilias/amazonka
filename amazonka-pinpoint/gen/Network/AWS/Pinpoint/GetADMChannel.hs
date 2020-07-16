@@ -18,7 +18,9 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Get an ADM channel
+-- Retrieves information about the status and settings of the ADM channel for an application.
+--
+--
 module Network.AWS.Pinpoint.GetADMChannel
     (
     -- * Creating a Request
@@ -51,7 +53,7 @@ newtype GetADMChannel = GetADMChannel'{_gadmcApplicationId
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'gadmcApplicationId' - Undocumented member.
+-- * 'gadmcApplicationId' - The unique identifier for the application. This identifier is displayed as the __Project ID__ on the Amazon Pinpoint console.
 getADMChannel
     :: Text -- ^ 'gadmcApplicationId'
     -> GetADMChannel
@@ -59,7 +61,7 @@ getADMChannel pApplicationId_
   = GetADMChannel'{_gadmcApplicationId =
                      pApplicationId_}
 
--- | Undocumented member.
+-- | The unique identifier for the application. This identifier is displayed as the __Project ID__ on the Amazon Pinpoint console.
 gadmcApplicationId :: Lens' GetADMChannel Text
 gadmcApplicationId = lens _gadmcApplicationId (\ s a -> s{_gadmcApplicationId = a})
 

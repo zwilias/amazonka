@@ -20,7 +20,7 @@ module Network.AWS.KinesisAnalytics.Types.LambdaOutputUpdate where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | When updating an output configuration using the 'UpdateApplication' operation, provides information about an AWS Lambda function configured as the destination.
+-- | When updating an output configuration using the <https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_UpdateApplication.html UpdateApplication> operation, provides information about an AWS Lambda function configured as the destination.
 --
 --
 --

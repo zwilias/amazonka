@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Deletes the specified thing.
+-- Deletes the specified thing. Returns successfully with no error if the deletion is successful or you specify a thing that doesn't exist.
 --
 --
 module Network.AWS.IoT.DeleteThing

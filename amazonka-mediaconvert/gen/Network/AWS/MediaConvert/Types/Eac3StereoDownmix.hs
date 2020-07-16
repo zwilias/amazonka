@@ -19,38 +19,38 @@
 module Network.AWS.MediaConvert.Types.Eac3StereoDownmix (
   Eac3StereoDownmix (
     ..
-    , DPL2
-    , LoRo
-    , LtRt
-    , NotIndicated
+    , ESDDPL2
+    , ESDLoRo
+    , ESDLtRt
+    , ESDNotIndicated
     )
   ) where
 
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | Stereo downmix preference. Only used for 3/2 coding mode.
+-- | Choose how the service does stereo downmixing. This setting only applies if you keep the default value of 3/2 - L, R, C, Ls, Rs (CODING_MODE_3_2) for the setting Coding mode (Eac3CodingMode). If you choose a different value for Coding mode, the service ignores Stereo downmix (Eac3StereoDownmix).
 data Eac3StereoDownmix = Eac3StereoDownmix' (CI Text)
                            deriving (Eq, Ord, Read, Show, Data, Typeable,
                                      Generic)
 
-pattern DPL2 :: Eac3StereoDownmix
-pattern DPL2 = Eac3StereoDownmix' "DPL2"
+pattern ESDDPL2 :: Eac3StereoDownmix
+pattern ESDDPL2 = Eac3StereoDownmix' "DPL2"
 
-pattern LoRo :: Eac3StereoDownmix
-pattern LoRo = Eac3StereoDownmix' "LO_RO"
+pattern ESDLoRo :: Eac3StereoDownmix
+pattern ESDLoRo = Eac3StereoDownmix' "LO_RO"
 
-pattern LtRt :: Eac3StereoDownmix
-pattern LtRt = Eac3StereoDownmix' "LT_RT"
+pattern ESDLtRt :: Eac3StereoDownmix
+pattern ESDLtRt = Eac3StereoDownmix' "LT_RT"
 
-pattern NotIndicated :: Eac3StereoDownmix
-pattern NotIndicated = Eac3StereoDownmix' "NOT_INDICATED"
+pattern ESDNotIndicated :: Eac3StereoDownmix
+pattern ESDNotIndicated = Eac3StereoDownmix' "NOT_INDICATED"
 
 {-# COMPLETE
-  DPL2,
-  LoRo,
-  LtRt,
-  NotIndicated,
+  ESDDPL2,
+  ESDLoRo,
+  ESDLtRt,
+  ESDNotIndicated,
   Eac3StereoDownmix' #-}
 
 instance FromText Eac3StereoDownmix where
@@ -65,24 +65,24 @@ instance ToText Eac3StereoDownmix where
 --   fromEnum is a partial function, and will error on values unknown at generation time.
 instance Enum Eac3StereoDownmix where
     toEnum i = case i of
-        0 -> DPL2
-        1 -> LoRo
-        2 -> LtRt
-        3 -> NotIndicated
+        0 -> ESDDPL2
+        1 -> ESDLoRo
+        2 -> ESDLtRt
+        3 -> ESDNotIndicated
         _ -> (error . showText) $ "Unknown index for Eac3StereoDownmix: " <> toText i
     fromEnum x = case x of
-        DPL2 -> 0
-        LoRo -> 1
-        LtRt -> 2
-        NotIndicated -> 3
+        ESDDPL2 -> 0
+        ESDLoRo -> 1
+        ESDLtRt -> 2
+        ESDNotIndicated -> 3
         Eac3StereoDownmix' name -> (error . showText) $ "Unknown Eac3StereoDownmix: " <> original name
 
 -- | Represents the bounds of /known/ $Eac3StereoDownmix.
 --   AWS may have added more since the source was generated.
 --   This instance exists only for backward compatibility.
 instance Bounded Eac3StereoDownmix where
-    minBound = DPL2
-    maxBound = NotIndicated
+    minBound = ESDDPL2
+    maxBound = ESDNotIndicated
 
 instance Hashable     Eac3StereoDownmix
 instance NFData       Eac3StereoDownmix

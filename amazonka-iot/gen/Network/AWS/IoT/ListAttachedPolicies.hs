@@ -21,6 +21,8 @@
 -- Lists the policies attached to the specified thing group.
 --
 --
+--
+-- This operation returns paginated results.
 module Network.AWS.IoT.ListAttachedPolicies
     (
     -- * Creating a Request
@@ -44,6 +46,7 @@ module Network.AWS.IoT.ListAttachedPolicies
 import Network.AWS.IoT.Types
 import Network.AWS.IoT.Types.Product
 import Network.AWS.Lens
+import Network.AWS.Pager
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
@@ -67,7 +70,7 @@ data ListAttachedPolicies = ListAttachedPolicies'{_lapMarker
 --
 -- * 'lapPageSize' - The maximum number of results to be returned per request.
 --
--- * 'lapTarget' - The group for which the policies will be listed.
+-- * 'lapTarget' - The group or principal for which the policies will be listed.
 listAttachedPolicies
     :: Text -- ^ 'lapTarget'
     -> ListAttachedPolicies
@@ -88,9 +91,16 @@ lapRecursive = lens _lapRecursive (\ s a -> s{_lapRecursive = a})
 lapPageSize :: Lens' ListAttachedPolicies (Maybe Natural)
 lapPageSize = lens _lapPageSize (\ s a -> s{_lapPageSize = a}) . mapping _Nat
 
--- | The group for which the policies will be listed.
+-- | The group or principal for which the policies will be listed.
 lapTarget :: Lens' ListAttachedPolicies Text
 lapTarget = lens _lapTarget (\ s a -> s{_lapTarget = a})
+
+instance AWSPager ListAttachedPolicies where
+        page rq rs
+          | stop (rs ^. laprsNextMarker) = Nothing
+          | stop (rs ^. laprsPolicies) = Nothing
+          | otherwise =
+            Just $ rq & lapMarker .~ rs ^. laprsNextMarker
 
 instance AWSRequest ListAttachedPolicies where
         type Rs ListAttachedPolicies =

@@ -45,7 +45,7 @@ data SimulatePolicyResponse = SimulatePolicyResponse'{_spEvaluationResults
 --
 -- * 'spMarker' - When @IsTruncated@ is @true@ , this element is present and contains the value to use for the @Marker@ parameter in a subsequent pagination request.
 --
--- * 'spIsTruncated' - A flag that indicates whether there are more items to return. If your results were truncated, you can make a subsequent pagination request using the @Marker@ request parameter to retrieve more items. Note that IAM might return fewer than the @MaxItems@ number of results even when there are more results available. We recommend that you check @IsTruncated@ after every call to ensure that you receive all of your results.
+-- * 'spIsTruncated' - A flag that indicates whether there are more items to return. If your results were truncated, you can make a subsequent pagination request using the @Marker@ request parameter to retrieve more items. Note that IAM might return fewer than the @MaxItems@ number of results even when there are more results available. We recommend that you check @IsTruncated@ after every call to ensure that you receive all your results.
 simulatePolicyResponse
     :: SimulatePolicyResponse
 simulatePolicyResponse
@@ -61,7 +61,7 @@ spEvaluationResults = lens _spEvaluationResults (\ s a -> s{_spEvaluationResults
 spMarker :: Lens' SimulatePolicyResponse (Maybe Text)
 spMarker = lens _spMarker (\ s a -> s{_spMarker = a})
 
--- | A flag that indicates whether there are more items to return. If your results were truncated, you can make a subsequent pagination request using the @Marker@ request parameter to retrieve more items. Note that IAM might return fewer than the @MaxItems@ number of results even when there are more results available. We recommend that you check @IsTruncated@ after every call to ensure that you receive all of your results.
+-- | A flag that indicates whether there are more items to return. If your results were truncated, you can make a subsequent pagination request using the @Marker@ request parameter to retrieve more items. Note that IAM might return fewer than the @MaxItems@ number of results even when there are more results available. We recommend that you check @IsTruncated@ after every call to ensure that you receive all your results.
 spIsTruncated :: Lens' SimulatePolicyResponse (Maybe Bool)
 spIsTruncated = lens _spIsTruncated (\ s a -> s{_spIsTruncated = a})
 

@@ -18,7 +18,9 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Returns information about your campaign versions.
+-- Retrieves information about the status, configuration, and other settings for all versions of a campaign.
+--
+--
 module Network.AWS.Pinpoint.GetCampaignVersions
     (
     -- * Creating a Request
@@ -57,13 +59,13 @@ data GetCampaignVersions = GetCampaignVersions'{_gcvToken
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'gcvToken' - The NextToken string returned on a previous page that you use to get the next page of results in a paginated response.
+-- * 'gcvToken' - The NextToken string that specifies which page of results to return in a paginated response.
 --
--- * 'gcvPageSize' - The number of entries you want on each page in the response.
+-- * 'gcvPageSize' - The maximum number of items to include in each page of a paginated response. This parameter is not supported for application, campaign, and journey metrics.
 --
--- * 'gcvApplicationId' - Undocumented member.
+-- * 'gcvApplicationId' - The unique identifier for the application. This identifier is displayed as the __Project ID__ on the Amazon Pinpoint console.
 --
--- * 'gcvCampaignId' - Undocumented member.
+-- * 'gcvCampaignId' - The unique identifier for the campaign.
 getCampaignVersions
     :: Text -- ^ 'gcvApplicationId'
     -> Text -- ^ 'gcvCampaignId'
@@ -74,19 +76,19 @@ getCampaignVersions pApplicationId_ pCampaignId_
                          _gcvApplicationId = pApplicationId_,
                          _gcvCampaignId = pCampaignId_}
 
--- | The NextToken string returned on a previous page that you use to get the next page of results in a paginated response.
+-- | The NextToken string that specifies which page of results to return in a paginated response.
 gcvToken :: Lens' GetCampaignVersions (Maybe Text)
 gcvToken = lens _gcvToken (\ s a -> s{_gcvToken = a})
 
--- | The number of entries you want on each page in the response.
+-- | The maximum number of items to include in each page of a paginated response. This parameter is not supported for application, campaign, and journey metrics.
 gcvPageSize :: Lens' GetCampaignVersions (Maybe Text)
 gcvPageSize = lens _gcvPageSize (\ s a -> s{_gcvPageSize = a})
 
--- | Undocumented member.
+-- | The unique identifier for the application. This identifier is displayed as the __Project ID__ on the Amazon Pinpoint console.
 gcvApplicationId :: Lens' GetCampaignVersions Text
 gcvApplicationId = lens _gcvApplicationId (\ s a -> s{_gcvApplicationId = a})
 
--- | Undocumented member.
+-- | The unique identifier for the campaign.
 gcvCampaignId :: Lens' GetCampaignVersions Text
 gcvCampaignId = lens _gcvCampaignId (\ s a -> s{_gcvCampaignId = a})
 

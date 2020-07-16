@@ -15,33 +15,9 @@
 --
 -- A load balancer distributes incoming traffic across targets, such as your EC2 instances. This enables you to increase the availability of your application. The load balancer also monitors the health of its registered targets and ensures that it routes traffic only to healthy targets. You configure your load balancer to accept incoming traffic by specifying one or more listeners, which are configured with a protocol and port number for connections from clients to the load balancer. You configure a target group with a protocol and port number for connections from the load balancer to the targets, and with health check settings to be used when checking the health status of the targets.
 --
--- Elastic Load Balancing supports the following types of load balancers: Application Load Balancers, Network Load Balancers, and Classic Load Balancers.
+-- Elastic Load Balancing supports the following types of load balancers: Application Load Balancers, Network Load Balancers, and Classic Load Balancers. This reference covers Application Load Balancers and Network Load Balancers.
 --
--- An Application Load Balancer makes routing and load balancing decisions at the application layer (HTTP/HTTPS). A Network Load Balancer makes routing and load balancing decisions at the transport layer (TCP). Both Application Load Balancers and Network Load Balancers can route requests to one or more ports on each EC2 instance or container instance in your virtual private cloud (VPC).
---
--- A Classic Load Balancer makes routing and load balancing decisions either at the transport layer (TCP/SSL) or the application layer (HTTP/HTTPS), and supports either EC2-Classic or a VPC. For more information, see the <http://docs.aws.amazon.com/elasticloadbalancing/latest/userguide/ Elastic Load Balancing User Guide> .
---
--- This reference covers the 2015-12-01 API, which supports Application Load Balancers and Network Load Balancers. The 2012-06-01 API supports Classic Load Balancers.
---
--- To get started, complete the following tasks:
---
---     * Create a load balancer using 'CreateLoadBalancer' .
---
---     * Create a target group using 'CreateTargetGroup' .
---
---     * Register targets for the target group using 'RegisterTargets' .
---
---     * Create one or more listeners for your load balancer using 'CreateListener' .
---
---
---
--- To delete a load balancer and its related resources, complete the following tasks:
---
---     * Delete the load balancer using 'DeleteLoadBalancer' .
---
---     * Delete the target group using 'DeleteTargetGroup' .
---
---
+-- An Application Load Balancer makes routing and load balancing decisions at the application layer (HTTP/HTTPS). A Network Load Balancer makes routing and load balancing decisions at the transport layer (TCP/TLS). Both Application Load Balancers and Network Load Balancers can route requests to one or more ports on each EC2 instance or container instance in your virtual private cloud (VPC). For more information, see the <https://docs.aws.amazon.com/elasticloadbalancing/latest/userguide/ Elastic Load Balancing User Guide> .
 --
 -- All Elastic Load Balancing operations are idempotent, which means that they complete at most one time. If you repeat an operation, it succeeds.
 --
@@ -62,6 +38,9 @@ module Network.AWS.ELBv2
     -- ** TooManyRegistrationsForTargetIdException
     , _TooManyRegistrationsForTargetIdException
 
+    -- ** TooManyActionsException
+    , _TooManyActionsException
+
     -- ** TooManyRulesException
     , _TooManyRulesException
 
@@ -70,6 +49,9 @@ module Network.AWS.ELBv2
 
     -- ** OperationNotPermittedException
     , _OperationNotPermittedException
+
+    -- ** InvalidLoadBalancerActionException
+    , _InvalidLoadBalancerActionException
 
     -- ** TargetGroupNotFoundException
     , _TargetGroupNotFoundException
@@ -109,6 +91,9 @@ module Network.AWS.ELBv2
 
     -- ** AvailabilityZoneNotSupportedException
     , _AvailabilityZoneNotSupportedException
+
+    -- ** TooManyUniqueTargetGroupsPerLoadBalancerException
+    , _TooManyUniqueTargetGroupsPerLoadBalancerException
 
     -- ** IncompatibleProtocolsException
     , _IncompatibleProtocolsException
@@ -194,7 +179,7 @@ module Network.AWS.ELBv2
     -- ** CreateRule 
     , module Network.AWS.ELBv2.CreateRule
 
-    -- ** DescribeListenerCertificates 
+    -- ** DescribeListenerCertificates (Paginated)
     , module Network.AWS.ELBv2.DescribeListenerCertificates
 
     -- ** SetSecurityGroups 
@@ -206,7 +191,7 @@ module Network.AWS.ELBv2
     -- ** DescribeTargetGroups (Paginated)
     , module Network.AWS.ELBv2.DescribeTargetGroups
 
-    -- ** DescribeRules 
+    -- ** DescribeRules (Paginated)
     , module Network.AWS.ELBv2.DescribeRules
 
     -- ** DeleteLoadBalancer 
@@ -230,10 +215,10 @@ module Network.AWS.ELBv2
     -- ** DeleteListener 
     , module Network.AWS.ELBv2.DeleteListener
 
-    -- ** DescribeSSLPolicies 
+    -- ** DescribeSSLPolicies (Paginated)
     , module Network.AWS.ELBv2.DescribeSSLPolicies
 
-    -- ** DescribeAccountLimits 
+    -- ** DescribeAccountLimits (Paginated)
     , module Network.AWS.ELBv2.DescribeAccountLimits
 
     -- ** DeregisterTargets 
@@ -280,6 +265,12 @@ module Network.AWS.ELBv2
     -- ** ActionTypeEnum
     , ActionTypeEnum (..)
 
+    -- ** AuthenticateCognitoActionConditionalBehaviorEnum
+    , AuthenticateCognitoActionConditionalBehaviorEnum (..)
+
+    -- ** AuthenticateOidcActionConditionalBehaviorEnum
+    , AuthenticateOidcActionConditionalBehaviorEnum (..)
+
     -- ** IPAddressType
     , IPAddressType (..)
 
@@ -295,6 +286,9 @@ module Network.AWS.ELBv2
     -- ** ProtocolEnum
     , ProtocolEnum (..)
 
+    -- ** RedirectActionStatusCodeEnum
+    , RedirectActionStatusCodeEnum (..)
+
     -- ** TargetHealthReasonEnum
     , TargetHealthReasonEnum (..)
 
@@ -307,8 +301,42 @@ module Network.AWS.ELBv2
     -- ** Action
     , Action
     , action
-    , aType
+    , aFixedResponseConfig
     , aTargetGroupARN
+    , aForwardConfig
+    , aRedirectConfig
+    , aAuthenticateCognitoConfig
+    , aOrder
+    , aAuthenticateOidcConfig
+    , aType
+
+    -- ** AuthenticateCognitoActionConfig
+    , AuthenticateCognitoActionConfig
+    , authenticateCognitoActionConfig
+    , acacAuthenticationRequestExtraParams
+    , acacScope
+    , acacOnUnauthenticatedRequest
+    , acacSessionCookieName
+    , acacSessionTimeout
+    , acacUserPoolARN
+    , acacUserPoolClientId
+    , acacUserPoolDomain
+
+    -- ** AuthenticateOidcActionConfig
+    , AuthenticateOidcActionConfig
+    , authenticateOidcActionConfig
+    , aoacClientSecret
+    , aoacUseExistingClientSecret
+    , aoacAuthenticationRequestExtraParams
+    , aoacScope
+    , aoacOnUnauthenticatedRequest
+    , aoacSessionCookieName
+    , aoacSessionTimeout
+    , aoacIssuer
+    , aoacAuthorizationEndpoint
+    , aoacTokenEndpoint
+    , aoacUserInfoEndpoint
+    , aoacClientId
 
     -- ** AvailabilityZone
     , AvailabilityZone
@@ -328,6 +356,35 @@ module Network.AWS.ELBv2
     , cipher
     , cPriority
     , cName
+
+    -- ** FixedResponseActionConfig
+    , FixedResponseActionConfig
+    , fixedResponseActionConfig
+    , fracMessageBody
+    , fracContentType
+    , fracStatusCode
+
+    -- ** ForwardActionConfig
+    , ForwardActionConfig
+    , forwardActionConfig
+    , facTargetGroups
+    , facTargetGroupStickinessConfig
+
+    -- ** HTTPHeaderConditionConfig
+    , HTTPHeaderConditionConfig
+    , hTTPHeaderConditionConfig
+    , httphccValues
+    , httphccHTTPHeaderName
+
+    -- ** HTTPRequestMethodConditionConfig
+    , HTTPRequestMethodConditionConfig
+    , hTTPRequestMethodConditionConfig
+    , httprmccValues
+
+    -- ** HostHeaderConditionConfig
+    , HostHeaderConditionConfig
+    , hostHeaderConditionConfig
+    , hhccValues
 
     -- ** Limit
     , Limit
@@ -367,6 +424,7 @@ module Network.AWS.ELBv2
     , loadBalancerAddress
     , lbaIPAddress
     , lbaAllocationId
+    , lbaPrivateIPv4Address
 
     -- ** LoadBalancerAttribute
     , LoadBalancerAttribute
@@ -385,6 +443,32 @@ module Network.AWS.ELBv2
     , matcher
     , mHTTPCode
 
+    -- ** PathPatternConditionConfig
+    , PathPatternConditionConfig
+    , pathPatternConditionConfig
+    , ppccValues
+
+    -- ** QueryStringConditionConfig
+    , QueryStringConditionConfig
+    , queryStringConditionConfig
+    , qsccValues
+
+    -- ** QueryStringKeyValuePair
+    , QueryStringKeyValuePair
+    , queryStringKeyValuePair
+    , qskvpValue
+    , qskvpKey
+
+    -- ** RedirectActionConfig
+    , RedirectActionConfig
+    , redirectActionConfig
+    , racPath
+    , racProtocol
+    , racQuery
+    , racHost
+    , racPort
+    , racStatusCode
+
     -- ** Rule
     , Rule
     , rule
@@ -398,7 +482,13 @@ module Network.AWS.ELBv2
     , RuleCondition
     , ruleCondition
     , rcField
+    , rcHTTPHeaderConfig
+    , rcHostHeaderConfig
     , rcValues
+    , rcSourceIPConfig
+    , rcHTTPRequestMethodConfig
+    , rcPathPatternConfig
+    , rcQueryStringConfig
 
     -- ** RulePriorityPair
     , RulePriorityPair
@@ -413,10 +503,16 @@ module Network.AWS.ELBv2
     , spName
     , spSSLProtocols
 
+    -- ** SourceIPConditionConfig
+    , SourceIPConditionConfig
+    , sourceIPConditionConfig
+    , siccValues
+
     -- ** SubnetMapping
     , SubnetMapping
     , subnetMapping
     , smAllocationId
+    , smPrivateIPv4Address
     , smSubnetId
 
     -- ** Tag
@@ -443,6 +539,7 @@ module Network.AWS.ELBv2
     , targetGroup
     , tgMatcher
     , tgHealthCheckPath
+    , tgHealthCheckEnabled
     , tgUnhealthyThresholdCount
     , tgVPCId
     , tgTargetGroupARN
@@ -462,6 +559,18 @@ module Network.AWS.ELBv2
     , targetGroupAttribute
     , tgaValue
     , tgaKey
+
+    -- ** TargetGroupStickinessConfig
+    , TargetGroupStickinessConfig
+    , targetGroupStickinessConfig
+    , tgscEnabled
+    , tgscDurationSeconds
+
+    -- ** TargetGroupTuple
+    , TargetGroupTuple
+    , targetGroupTuple
+    , tgtWeight
+    , tgtTargetGroupARN
 
     -- ** TargetHealth
     , TargetHealth

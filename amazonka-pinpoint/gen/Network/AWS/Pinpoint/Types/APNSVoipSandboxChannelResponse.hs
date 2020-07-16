@@ -20,14 +20,12 @@ module Network.AWS.Pinpoint.Types.APNSVoipSandboxChannelResponse where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | Apple VoIP Developer Push Notification Service channel definition.
+-- | Provides information about the status and settings of the APNs (Apple Push Notification service) VoIP sandbox channel for an application.
+--
+--
 --
 -- /See:/ 'apnsVoipSandboxChannelResponse' smart constructor.
-data APNSVoipSandboxChannelResponse = APNSVoipSandboxChannelResponse'{_avscPlatform
-                                                                      ::
-                                                                      !(Maybe
-                                                                          Text),
-                                                                      _avscLastModifiedDate
+data APNSVoipSandboxChannelResponse = APNSVoipSandboxChannelResponse'{_avscLastModifiedDate
                                                                       ::
                                                                       !(Maybe
                                                                           Text),
@@ -69,7 +67,9 @@ data APNSVoipSandboxChannelResponse = APNSVoipSandboxChannelResponse'{_avscPlatf
                                                                       _avscHasCredential
                                                                       ::
                                                                       !(Maybe
-                                                                          Bool)}
+                                                                          Bool),
+                                                                      _avscPlatform
+                                                                      :: !Text}
                                         deriving (Eq, Read, Show, Data,
                                                   Typeable, Generic)
 
@@ -77,35 +77,35 @@ data APNSVoipSandboxChannelResponse = APNSVoipSandboxChannelResponse'{_avscPlatf
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'avscPlatform' - The platform type. Will be APNS.
+-- * 'avscLastModifiedDate' - The date and time when the APNs VoIP sandbox channel was last modified.
 --
--- * 'avscLastModifiedDate' - Last date this was updated
+-- * 'avscEnabled' - Specifies whether the APNs VoIP sandbox channel is enabled for the application.
 --
--- * 'avscEnabled' - If the channel is enabled for sending messages.
+-- * 'avscHasTokenKey' - Specifies whether the APNs VoIP sandbox channel is configured to communicate with APNs by using APNs tokens. To provide an authentication key for APNs tokens, set the TokenKey property of the channel.
 --
--- * 'avscHasTokenKey' - If the channel is registered with a token key for authentication.
+-- * 'avscDefaultAuthenticationMethod' - The default authentication method that Amazon Pinpoint uses to authenticate with the APNs sandbox environment for this channel, key or certificate.
 --
--- * 'avscDefaultAuthenticationMethod' - The default authentication method used for APNs.
+-- * 'avscIsArchived' - Specifies whether the APNs VoIP sandbox channel is archived.
 --
--- * 'avscIsArchived' - Is this channel archived
+-- * 'avscApplicationId' - The unique identifier for the application that the APNs VoIP sandbox channel applies to.
 --
--- * 'avscApplicationId' - Application id
+-- * 'avscVersion' - The current version of the APNs VoIP sandbox channel.
 --
--- * 'avscVersion' - Version of channel
+-- * 'avscId' - (Deprecated) An identifier for the APNs VoIP sandbox channel. This property is retained only for backward compatibility.
 --
--- * 'avscId' - Channel ID. Not used, only for backwards compatibility.
+-- * 'avscCreationDate' - The date and time when the APNs VoIP sandbox channel was enabled.
 --
--- * 'avscCreationDate' - When was this segment created
+-- * 'avscLastModifiedBy' - The user who last modified the APNs VoIP sandbox channel.
 --
--- * 'avscLastModifiedBy' - Who made the last change
+-- * 'avscHasCredential' - (Not used) This property is retained only for backward compatibility.
 --
--- * 'avscHasCredential' - If the channel is registered with a credential for authentication.
+-- * 'avscPlatform' - The type of messaging or notification platform for the channel. For the APNs VoIP sandbox channel, this value is APNS_VOIP_SANDBOX.
 apnsVoipSandboxChannelResponse
-    :: APNSVoipSandboxChannelResponse
-apnsVoipSandboxChannelResponse
-  = APNSVoipSandboxChannelResponse'{_avscPlatform =
-                                      Nothing,
-                                    _avscLastModifiedDate = Nothing,
+    :: Text -- ^ 'avscPlatform'
+    -> APNSVoipSandboxChannelResponse
+apnsVoipSandboxChannelResponse pPlatform_
+  = APNSVoipSandboxChannelResponse'{_avscLastModifiedDate
+                                      = Nothing,
                                     _avscEnabled = Nothing,
                                     _avscHasTokenKey = Nothing,
                                     _avscDefaultAuthenticationMethod = Nothing,
@@ -114,55 +114,56 @@ apnsVoipSandboxChannelResponse
                                     _avscVersion = Nothing, _avscId = Nothing,
                                     _avscCreationDate = Nothing,
                                     _avscLastModifiedBy = Nothing,
-                                    _avscHasCredential = Nothing}
+                                    _avscHasCredential = Nothing,
+                                    _avscPlatform = pPlatform_}
 
--- | The platform type. Will be APNS.
-avscPlatform :: Lens' APNSVoipSandboxChannelResponse (Maybe Text)
-avscPlatform = lens _avscPlatform (\ s a -> s{_avscPlatform = a})
-
--- | Last date this was updated
+-- | The date and time when the APNs VoIP sandbox channel was last modified.
 avscLastModifiedDate :: Lens' APNSVoipSandboxChannelResponse (Maybe Text)
 avscLastModifiedDate = lens _avscLastModifiedDate (\ s a -> s{_avscLastModifiedDate = a})
 
--- | If the channel is enabled for sending messages.
+-- | Specifies whether the APNs VoIP sandbox channel is enabled for the application.
 avscEnabled :: Lens' APNSVoipSandboxChannelResponse (Maybe Bool)
 avscEnabled = lens _avscEnabled (\ s a -> s{_avscEnabled = a})
 
--- | If the channel is registered with a token key for authentication.
+-- | Specifies whether the APNs VoIP sandbox channel is configured to communicate with APNs by using APNs tokens. To provide an authentication key for APNs tokens, set the TokenKey property of the channel.
 avscHasTokenKey :: Lens' APNSVoipSandboxChannelResponse (Maybe Bool)
 avscHasTokenKey = lens _avscHasTokenKey (\ s a -> s{_avscHasTokenKey = a})
 
--- | The default authentication method used for APNs.
+-- | The default authentication method that Amazon Pinpoint uses to authenticate with the APNs sandbox environment for this channel, key or certificate.
 avscDefaultAuthenticationMethod :: Lens' APNSVoipSandboxChannelResponse (Maybe Text)
 avscDefaultAuthenticationMethod = lens _avscDefaultAuthenticationMethod (\ s a -> s{_avscDefaultAuthenticationMethod = a})
 
--- | Is this channel archived
+-- | Specifies whether the APNs VoIP sandbox channel is archived.
 avscIsArchived :: Lens' APNSVoipSandboxChannelResponse (Maybe Bool)
 avscIsArchived = lens _avscIsArchived (\ s a -> s{_avscIsArchived = a})
 
--- | Application id
+-- | The unique identifier for the application that the APNs VoIP sandbox channel applies to.
 avscApplicationId :: Lens' APNSVoipSandboxChannelResponse (Maybe Text)
 avscApplicationId = lens _avscApplicationId (\ s a -> s{_avscApplicationId = a})
 
--- | Version of channel
+-- | The current version of the APNs VoIP sandbox channel.
 avscVersion :: Lens' APNSVoipSandboxChannelResponse (Maybe Int)
 avscVersion = lens _avscVersion (\ s a -> s{_avscVersion = a})
 
--- | Channel ID. Not used, only for backwards compatibility.
+-- | (Deprecated) An identifier for the APNs VoIP sandbox channel. This property is retained only for backward compatibility.
 avscId :: Lens' APNSVoipSandboxChannelResponse (Maybe Text)
 avscId = lens _avscId (\ s a -> s{_avscId = a})
 
--- | When was this segment created
+-- | The date and time when the APNs VoIP sandbox channel was enabled.
 avscCreationDate :: Lens' APNSVoipSandboxChannelResponse (Maybe Text)
 avscCreationDate = lens _avscCreationDate (\ s a -> s{_avscCreationDate = a})
 
--- | Who made the last change
+-- | The user who last modified the APNs VoIP sandbox channel.
 avscLastModifiedBy :: Lens' APNSVoipSandboxChannelResponse (Maybe Text)
 avscLastModifiedBy = lens _avscLastModifiedBy (\ s a -> s{_avscLastModifiedBy = a})
 
--- | If the channel is registered with a credential for authentication.
+-- | (Not used) This property is retained only for backward compatibility.
 avscHasCredential :: Lens' APNSVoipSandboxChannelResponse (Maybe Bool)
 avscHasCredential = lens _avscHasCredential (\ s a -> s{_avscHasCredential = a})
+
+-- | The type of messaging or notification platform for the channel. For the APNs VoIP sandbox channel, this value is APNS_VOIP_SANDBOX.
+avscPlatform :: Lens' APNSVoipSandboxChannelResponse Text
+avscPlatform = lens _avscPlatform (\ s a -> s{_avscPlatform = a})
 
 instance FromJSON APNSVoipSandboxChannelResponse
          where
@@ -170,9 +171,8 @@ instance FromJSON APNSVoipSandboxChannelResponse
           = withObject "APNSVoipSandboxChannelResponse"
               (\ x ->
                  APNSVoipSandboxChannelResponse' <$>
-                   (x .:? "Platform") <*> (x .:? "LastModifiedDate") <*>
-                     (x .:? "Enabled")
-                     <*> (x .:? "HasTokenKey")
+                   (x .:? "LastModifiedDate") <*> (x .:? "Enabled") <*>
+                     (x .:? "HasTokenKey")
                      <*> (x .:? "DefaultAuthenticationMethod")
                      <*> (x .:? "IsArchived")
                      <*> (x .:? "ApplicationId")
@@ -180,7 +180,8 @@ instance FromJSON APNSVoipSandboxChannelResponse
                      <*> (x .:? "Id")
                      <*> (x .:? "CreationDate")
                      <*> (x .:? "LastModifiedBy")
-                     <*> (x .:? "HasCredential"))
+                     <*> (x .:? "HasCredential")
+                     <*> (x .: "Platform"))
 
 instance Hashable APNSVoipSandboxChannelResponse
          where

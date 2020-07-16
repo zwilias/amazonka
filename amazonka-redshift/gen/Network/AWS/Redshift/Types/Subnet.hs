@@ -42,7 +42,7 @@ data Subnet = Subnet'{_sSubnetStatus ::
 --
 -- * 'sSubnetIdentifier' - The identifier of the subnet.
 --
--- * 'sSubnetAvailabilityZone' - Undocumented member.
+-- * 'sSubnetAvailabilityZone' - 
 subnet
     :: Subnet
 subnet
@@ -58,7 +58,7 @@ sSubnetStatus = lens _sSubnetStatus (\ s a -> s{_sSubnetStatus = a})
 sSubnetIdentifier :: Lens' Subnet (Maybe Text)
 sSubnetIdentifier = lens _sSubnetIdentifier (\ s a -> s{_sSubnetIdentifier = a})
 
--- | Undocumented member.
+-- | 
 sSubnetAvailabilityZone :: Lens' Subnet (Maybe AvailabilityZone)
 sSubnetAvailabilityZone = lens _sSubnetAvailabilityZone (\ s a -> s{_sSubnetAvailabilityZone = a})
 

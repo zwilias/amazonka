@@ -25,7 +25,7 @@ import Network.AWS.Prelude
 --
 -- This data type is used as a response element in the 'CreatePolicy' , 'GetPolicy' , and 'ListPolicies' operations. 
 --
--- For more information about managed policies, refer to <http://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html Managed Policies and Inline Policies> in the /Using IAM/ guide. 
+-- For more information about managed policies, refer to <https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html Managed Policies and Inline Policies> in the /IAM User Guide/ . 
 --
 --
 -- /See:/ 'policy' smart constructor.
@@ -35,6 +35,7 @@ data Policy = Policy'{_pPolicyName :: !(Maybe Text),
                       _pPolicyId :: !(Maybe Text), _pPath :: !(Maybe Text),
                       _pCreateDate :: !(Maybe ISO8601),
                       _pIsAttachable :: !(Maybe Bool),
+                      _pPermissionsBoundaryUsageCount :: !(Maybe Int),
                       _pDefaultVersionId :: !(Maybe Text),
                       _pAttachmentCount :: !(Maybe Int),
                       _pDescription :: !(Maybe Text)}
@@ -50,13 +51,15 @@ data Policy = Policy'{_pPolicyName :: !(Maybe Text),
 --
 -- * 'pUpdateDate' - The date and time, in <http://www.iso.org/iso/iso8601 ISO 8601 date-time format> , when the policy was last updated. When a policy has only one version, this field contains the date and time when the policy was created. When a policy has more than one version, this field contains the date and time when the most recent policy version was created.
 --
--- * 'pPolicyId' - The stable and unique string identifying the policy. For more information about IDs, see <http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html IAM Identifiers> in the /Using IAM/ guide.
+-- * 'pPolicyId' - The stable and unique string identifying the policy. For more information about IDs, see <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html IAM Identifiers> in the /IAM User Guide/ .
 --
--- * 'pPath' - The path to the policy. For more information about paths, see <http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html IAM Identifiers> in the /Using IAM/ guide.
+-- * 'pPath' - The path to the policy. For more information about paths, see <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html IAM Identifiers> in the /IAM User Guide/ .
 --
 -- * 'pCreateDate' - The date and time, in <http://www.iso.org/iso/iso8601 ISO 8601 date-time format> , when the policy was created.
 --
 -- * 'pIsAttachable' - Specifies whether the policy can be attached to an IAM user, group, or role.
+--
+-- * 'pPermissionsBoundaryUsageCount' - The number of entities (users and roles) for which the policy is used to set the permissions boundary.  For more information about permissions boundaries, see <https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_boundaries.html Permissions Boundaries for IAM Identities > in the /IAM User Guide/ .
 --
 -- * 'pDefaultVersionId' - The identifier for the version of the policy that is set as the default version.
 --
@@ -70,6 +73,7 @@ policy
             _pUpdateDate = Nothing, _pPolicyId = Nothing,
             _pPath = Nothing, _pCreateDate = Nothing,
             _pIsAttachable = Nothing,
+            _pPermissionsBoundaryUsageCount = Nothing,
             _pDefaultVersionId = Nothing,
             _pAttachmentCount = Nothing, _pDescription = Nothing}
 
@@ -85,11 +89,11 @@ pARN = lens _pARN (\ s a -> s{_pARN = a})
 pUpdateDate :: Lens' Policy (Maybe UTCTime)
 pUpdateDate = lens _pUpdateDate (\ s a -> s{_pUpdateDate = a}) . mapping _Time
 
--- | The stable and unique string identifying the policy. For more information about IDs, see <http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html IAM Identifiers> in the /Using IAM/ guide.
+-- | The stable and unique string identifying the policy. For more information about IDs, see <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html IAM Identifiers> in the /IAM User Guide/ .
 pPolicyId :: Lens' Policy (Maybe Text)
 pPolicyId = lens _pPolicyId (\ s a -> s{_pPolicyId = a})
 
--- | The path to the policy. For more information about paths, see <http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html IAM Identifiers> in the /Using IAM/ guide.
+-- | The path to the policy. For more information about paths, see <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html IAM Identifiers> in the /IAM User Guide/ .
 pPath :: Lens' Policy (Maybe Text)
 pPath = lens _pPath (\ s a -> s{_pPath = a})
 
@@ -100,6 +104,10 @@ pCreateDate = lens _pCreateDate (\ s a -> s{_pCreateDate = a}) . mapping _Time
 -- | Specifies whether the policy can be attached to an IAM user, group, or role.
 pIsAttachable :: Lens' Policy (Maybe Bool)
 pIsAttachable = lens _pIsAttachable (\ s a -> s{_pIsAttachable = a})
+
+-- | The number of entities (users and roles) for which the policy is used to set the permissions boundary.  For more information about permissions boundaries, see <https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_boundaries.html Permissions Boundaries for IAM Identities > in the /IAM User Guide/ .
+pPermissionsBoundaryUsageCount :: Lens' Policy (Maybe Int)
+pPermissionsBoundaryUsageCount = lens _pPermissionsBoundaryUsageCount (\ s a -> s{_pPermissionsBoundaryUsageCount = a})
 
 -- | The identifier for the version of the policy that is set as the default version.
 pDefaultVersionId :: Lens' Policy (Maybe Text)
@@ -122,6 +130,7 @@ instance FromXML Policy where
                 <*> (x .@? "Path")
                 <*> (x .@? "CreateDate")
                 <*> (x .@? "IsAttachable")
+                <*> (x .@? "PermissionsBoundaryUsageCount")
                 <*> (x .@? "DefaultVersionId")
                 <*> (x .@? "AttachmentCount")
                 <*> (x .@? "Description")

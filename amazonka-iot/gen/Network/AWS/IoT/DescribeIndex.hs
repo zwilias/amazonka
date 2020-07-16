@@ -108,7 +108,7 @@ data DescribeIndexResponse = DescribeIndexResponse'{_dirsIndexStatus
 --
 -- * 'dirsIndexStatus' - The index status.
 --
--- * 'dirsSchema' - Contains a value that specifies the type of indexing performed. Valid values are:     * REGISTRY – Your thing index will contain only registry data.     * REGISTRY_AND_SHADOW - Your thing index will contain registry and shadow data.
+-- * 'dirsSchema' - Contains a value that specifies the type of indexing performed. Valid values are:     * REGISTRY – Your thing index contains only registry data.     * REGISTRY_AND_SHADOW - Your thing index contains registry data and shadow data.     * REGISTRY_AND_CONNECTIVITY_STATUS - Your thing index contains registry data and thing connectivity status data.     * REGISTRY_AND_SHADOW_AND_CONNECTIVITY_STATUS - Your thing index contains registry data, shadow data, and thing connectivity status data.
 --
 -- * 'dirsIndexName' - The index name.
 --
@@ -125,7 +125,7 @@ describeIndexResponse pResponseStatus_
 dirsIndexStatus :: Lens' DescribeIndexResponse (Maybe IndexStatus)
 dirsIndexStatus = lens _dirsIndexStatus (\ s a -> s{_dirsIndexStatus = a})
 
--- | Contains a value that specifies the type of indexing performed. Valid values are:     * REGISTRY – Your thing index will contain only registry data.     * REGISTRY_AND_SHADOW - Your thing index will contain registry and shadow data.
+-- | Contains a value that specifies the type of indexing performed. Valid values are:     * REGISTRY – Your thing index contains only registry data.     * REGISTRY_AND_SHADOW - Your thing index contains registry data and shadow data.     * REGISTRY_AND_CONNECTIVITY_STATUS - Your thing index contains registry data and thing connectivity status data.     * REGISTRY_AND_SHADOW_AND_CONNECTIVITY_STATUS - Your thing index contains registry data, shadow data, and thing connectivity status data.
 dirsSchema :: Lens' DescribeIndexResponse (Maybe Text)
 dirsSchema = lens _dirsSchema (\ s a -> s{_dirsSchema = a})
 

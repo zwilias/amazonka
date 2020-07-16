@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Creates a new custom vocabulary that you can use to change the way Amazon Transcribe handles transcription of an audio file.
+-- Creates a new custom vocabulary that you can use to change the way Amazon Transcribe handles transcription of an audio file. 
 --
 --
 module Network.AWS.Transcribe.CreateVocabulary
@@ -27,9 +27,10 @@ module Network.AWS.Transcribe.CreateVocabulary
       createVocabulary
     , CreateVocabulary
     -- * Request Lenses
+    , cvVocabularyFileURI
+    , cvPhrases
     , cvVocabularyName
     , cvLanguageCode
-    , cvPhrases
 
     -- * Destructuring the Response
     , createVocabularyResponse
@@ -51,42 +52,49 @@ import Network.AWS.Transcribe.Types
 import Network.AWS.Transcribe.Types.Product
 
 -- | /See:/ 'createVocabulary' smart constructor.
-data CreateVocabulary = CreateVocabulary'{_cvVocabularyName
-                                          :: !Text,
-                                          _cvLanguageCode :: !LanguageCode,
-                                          _cvPhrases :: ![Text]}
+data CreateVocabulary = CreateVocabulary'{_cvVocabularyFileURI
+                                          :: !(Maybe Text),
+                                          _cvPhrases :: !(Maybe [Text]),
+                                          _cvVocabularyName :: !Text,
+                                          _cvLanguageCode :: !LanguageCode}
                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateVocabulary' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'cvVocabularyName' - The name of the vocabulary. The name must be unique within an AWS account. The name is case-sensitive.
---
--- * 'cvLanguageCode' - The language code of the vocabulary entries.
+-- * 'cvVocabularyFileURI' - The S3 location of the text file that contains the definition of the custom vocabulary. The URI must be in the same region as the API endpoint that you are calling. The general form is  @https://s3.<aws-region>.amazonaws.com/<bucket-name>/<keyprefix>/<objectkey> @  For example: @https://s3.us-east-1.amazonaws.com/examplebucket/vocab.txt@  For more information about S3 object names, see <http://docs.aws.amazon.com/AmazonS3/latest/dev/UsingMetadata.html#object-keys Object Keys> in the /Amazon S3 Developer Guide/ . For more information about custom vocabularies, see <http://docs.aws.amazon.com/transcribe/latest/dg/how-it-works.html#how-vocabulary Custom Vocabularies> .
 --
 -- * 'cvPhrases' - An array of strings that contains the vocabulary entries. 
+--
+-- * 'cvVocabularyName' - The name of the vocabulary. The name must be unique within an AWS account. The name is case-sensitive. If you try to create a vocabulary with the same name as a previous vocabulary you will receive a @ConflictException@ error.
+--
+-- * 'cvLanguageCode' - The language code of the vocabulary entries.
 createVocabulary
     :: Text -- ^ 'cvVocabularyName'
     -> LanguageCode -- ^ 'cvLanguageCode'
     -> CreateVocabulary
 createVocabulary pVocabularyName_ pLanguageCode_
-  = CreateVocabulary'{_cvVocabularyName =
-                        pVocabularyName_,
-                      _cvLanguageCode = pLanguageCode_,
-                      _cvPhrases = mempty}
+  = CreateVocabulary'{_cvVocabularyFileURI = Nothing,
+                      _cvPhrases = Nothing,
+                      _cvVocabularyName = pVocabularyName_,
+                      _cvLanguageCode = pLanguageCode_}
 
--- | The name of the vocabulary. The name must be unique within an AWS account. The name is case-sensitive.
+-- | The S3 location of the text file that contains the definition of the custom vocabulary. The URI must be in the same region as the API endpoint that you are calling. The general form is  @https://s3.<aws-region>.amazonaws.com/<bucket-name>/<keyprefix>/<objectkey> @  For example: @https://s3.us-east-1.amazonaws.com/examplebucket/vocab.txt@  For more information about S3 object names, see <http://docs.aws.amazon.com/AmazonS3/latest/dev/UsingMetadata.html#object-keys Object Keys> in the /Amazon S3 Developer Guide/ . For more information about custom vocabularies, see <http://docs.aws.amazon.com/transcribe/latest/dg/how-it-works.html#how-vocabulary Custom Vocabularies> .
+cvVocabularyFileURI :: Lens' CreateVocabulary (Maybe Text)
+cvVocabularyFileURI = lens _cvVocabularyFileURI (\ s a -> s{_cvVocabularyFileURI = a})
+
+-- | An array of strings that contains the vocabulary entries. 
+cvPhrases :: Lens' CreateVocabulary [Text]
+cvPhrases = lens _cvPhrases (\ s a -> s{_cvPhrases = a}) . _Default . _Coerce
+
+-- | The name of the vocabulary. The name must be unique within an AWS account. The name is case-sensitive. If you try to create a vocabulary with the same name as a previous vocabulary you will receive a @ConflictException@ error.
 cvVocabularyName :: Lens' CreateVocabulary Text
 cvVocabularyName = lens _cvVocabularyName (\ s a -> s{_cvVocabularyName = a})
 
 -- | The language code of the vocabulary entries.
 cvLanguageCode :: Lens' CreateVocabulary LanguageCode
 cvLanguageCode = lens _cvLanguageCode (\ s a -> s{_cvLanguageCode = a})
-
--- | An array of strings that contains the vocabulary entries. 
-cvPhrases :: Lens' CreateVocabulary [Text]
-cvPhrases = lens _cvPhrases (\ s a -> s{_cvPhrases = a}) . _Coerce
 
 instance AWSRequest CreateVocabulary where
         type Rs CreateVocabulary = CreateVocabularyResponse
@@ -118,9 +126,10 @@ instance ToJSON CreateVocabulary where
         toJSON CreateVocabulary'{..}
           = object
               (catMaybes
-                 [Just ("VocabularyName" .= _cvVocabularyName),
-                  Just ("LanguageCode" .= _cvLanguageCode),
-                  Just ("Phrases" .= _cvPhrases)])
+                 [("VocabularyFileUri" .=) <$> _cvVocabularyFileURI,
+                  ("Phrases" .=) <$> _cvPhrases,
+                  Just ("VocabularyName" .= _cvVocabularyName),
+                  Just ("LanguageCode" .= _cvLanguageCode)])
 
 instance ToPath CreateVocabulary where
         toPath = const "/"

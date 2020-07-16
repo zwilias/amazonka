@@ -22,7 +22,7 @@ import Network.AWS.Prelude
 import Network.AWS.WorkMail.Types.EntityState
 import Network.AWS.WorkMail.Types.ResourceType
 
--- | The overview for a resource containing relevant data regarding it.
+-- | The representation of a resource.
 --
 --
 --

@@ -31,9 +31,9 @@ import Network.AWS.WAF.Types.RateKey
 --
 --
 --
--- In the rule, you also define the rate limit as 15,000.
+-- In the rule, you also define the rate limit as 1,000.
 --
--- Requests that meet both of these conditions and exceed 15,000 requests every five minutes trigger the rule's action (block or count), which is defined in the web ACL.
+-- Requests that meet both of these conditions and exceed 1,000 requests every five minutes trigger the rule's action (block or count), which is defined in the web ACL.
 --
 --
 -- /See:/ 'rateBasedRule' smart constructor.
@@ -50,7 +50,7 @@ data RateBasedRule = RateBasedRule'{_rbrMetricName ::
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'rbrMetricName' - A friendly name or description for the metrics for a @RateBasedRule@ . The name can contain only alphanumeric characters (A-Z, a-z, 0-9); the name can't contain whitespace. You can't change the name of the metric after you create the @RateBasedRule@ .
+-- * 'rbrMetricName' - A friendly name or description for the metrics for a @RateBasedRule@ . The name can contain only alphanumeric characters (A-Z, a-z, 0-9), with maximum length 128 and minimum length one. It can't contain whitespace or metric names reserved for AWS WAF, including "All" and "Default_Action." You can't change the name of the metric after you create the @RateBasedRule@ .
 --
 -- * 'rbrName' - A friendly name or description for a @RateBasedRule@ . You can't change the name of a @RateBasedRule@ after you create it.
 --
@@ -73,7 +73,7 @@ rateBasedRule pRuleId_ pRateKey_ pRateLimit_
                    _rbrRateKey = pRateKey_,
                    _rbrRateLimit = _Nat # pRateLimit_}
 
--- | A friendly name or description for the metrics for a @RateBasedRule@ . The name can contain only alphanumeric characters (A-Z, a-z, 0-9); the name can't contain whitespace. You can't change the name of the metric after you create the @RateBasedRule@ .
+-- | A friendly name or description for the metrics for a @RateBasedRule@ . The name can contain only alphanumeric characters (A-Z, a-z, 0-9), with maximum length 128 and minimum length one. It can't contain whitespace or metric names reserved for AWS WAF, including "All" and "Default_Action." You can't change the name of the metric after you create the @RateBasedRule@ .
 rbrMetricName :: Lens' RateBasedRule (Maybe Text)
 rbrMetricName = lens _rbrMetricName (\ s a -> s{_rbrMetricName = a})
 

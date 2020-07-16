@@ -18,7 +18,9 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Deletes an app.
+-- Deletes an application.
+--
+--
 module Network.AWS.Pinpoint.DeleteApp
     (
     -- * Creating a Request
@@ -51,14 +53,14 @@ newtype DeleteApp = DeleteApp'{_daApplicationId ::
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'daApplicationId' - Undocumented member.
+-- * 'daApplicationId' - The unique identifier for the application. This identifier is displayed as the __Project ID__ on the Amazon Pinpoint console.
 deleteApp
     :: Text -- ^ 'daApplicationId'
     -> DeleteApp
 deleteApp pApplicationId_
   = DeleteApp'{_daApplicationId = pApplicationId_}
 
--- | Undocumented member.
+-- | The unique identifier for the application. This identifier is displayed as the __Project ID__ on the Amazon Pinpoint console.
 daApplicationId :: Lens' DeleteApp Text
 daApplicationId = lens _daApplicationId (\ s a -> s{_daApplicationId = a})
 

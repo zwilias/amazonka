@@ -22,7 +22,7 @@ import Network.AWS.Organizations.Types.CreateAccountFailureReason
 import Network.AWS.Organizations.Types.CreateAccountState
 import Network.AWS.Prelude
 
--- | Contains the status about a 'CreateAccount' request to create an AWS account in an organization.
+-- | Contains the status about a 'CreateAccount' or 'CreateGovCloudAccount' request to create an AWS account or an AWS GovCloud (US) account in an organization.
 --
 --
 --
@@ -39,6 +39,8 @@ data CreateAccountStatus = CreateAccountStatus'{_casFailureReason
                                                 !(Maybe (Sensitive Text)),
                                                 _casAccountId :: !(Maybe Text),
                                                 _casId :: !(Maybe Text),
+                                                _casGovCloudAccountId ::
+                                                !(Maybe Text),
                                                 _casRequestedTimestamp ::
                                                 !(Maybe POSIX)}
                              deriving (Eq, Show, Data, Typeable, Generic)
@@ -47,7 +49,7 @@ data CreateAccountStatus = CreateAccountStatus'{_casFailureReason
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'casFailureReason' - If the request failed, a description of the reason for the failure.     * ACCOUNT_LIMIT_EXCEEDED: The account could not be created because you have reached the limit on the number of accounts in your organization.     * EMAIL_ALREADY_EXISTS: The account could not be created because another AWS account with that email address already exists.     * INVALID_ADDRESS: The account could not be created because the address you provided is not valid.     * INVALID_EMAIL: The account could not be created because the email address you provided is not valid.     * INTERNAL_FAILURE: The account could not be created because of an internal failure. Try again later. If the problem persists, contact Customer Support.
+-- * 'casFailureReason' - If the request failed, a description of the reason for the failure.     * ACCOUNT_LIMIT_EXCEEDED: The account could not be created because you have reached the limit on the number of accounts in your organization.     * EMAIL_ALREADY_EXISTS: The account could not be created because another AWS account with that email address already exists.     * GOVCLOUD_ACCOUNT_ALREADY_EXISTS: The account in the AWS GovCloud (US) Region could not be created because this Region already includes an account with that email address.     * INVALID_ADDRESS: The account could not be created because the address you provided is not valid.     * INVALID_EMAIL: The account could not be created because the email address you provided is not valid.     * INTERNAL_FAILURE: The account could not be created because of an internal failure. Try again later. If the problem persists, contact Customer Support.
 --
 -- * 'casState' - The status of the request.
 --
@@ -57,7 +59,9 @@ data CreateAccountStatus = CreateAccountStatus'{_casFailureReason
 --
 -- * 'casAccountId' - If the account was created successfully, the unique identifier (ID) of the new account. The <http://wikipedia.org/wiki/regex regex pattern> for an account ID string requires exactly 12 digits.
 --
--- * 'casId' - The unique identifier (ID) that references this request. You get this value from the response of the initial 'CreateAccount' request to create the account. The <http://wikipedia.org/wiki/regex regex pattern> for an create account request ID string requires "car-" followed by from 8 to 32 lower-case letters or digits.
+-- * 'casId' - The unique identifier (ID) that references this request. You get this value from the response of the initial 'CreateAccount' request to create the account. The <http://wikipedia.org/wiki/regex regex pattern> for a create account request ID string requires "car-" followed by from 8 to 32 lower-case letters or digits.
+--
+-- * 'casGovCloudAccountId' - If the account was created successfully, the unique identifier (ID) of the new account in the AWS GovCloud (US) Region.
 --
 -- * 'casRequestedTimestamp' - The date and time that the request was made for the account creation.
 createAccountStatus
@@ -67,9 +71,10 @@ createAccountStatus
                          _casState = Nothing,
                          _casCompletedTimestamp = Nothing,
                          _casAccountName = Nothing, _casAccountId = Nothing,
-                         _casId = Nothing, _casRequestedTimestamp = Nothing}
+                         _casId = Nothing, _casGovCloudAccountId = Nothing,
+                         _casRequestedTimestamp = Nothing}
 
--- | If the request failed, a description of the reason for the failure.     * ACCOUNT_LIMIT_EXCEEDED: The account could not be created because you have reached the limit on the number of accounts in your organization.     * EMAIL_ALREADY_EXISTS: The account could not be created because another AWS account with that email address already exists.     * INVALID_ADDRESS: The account could not be created because the address you provided is not valid.     * INVALID_EMAIL: The account could not be created because the email address you provided is not valid.     * INTERNAL_FAILURE: The account could not be created because of an internal failure. Try again later. If the problem persists, contact Customer Support.
+-- | If the request failed, a description of the reason for the failure.     * ACCOUNT_LIMIT_EXCEEDED: The account could not be created because you have reached the limit on the number of accounts in your organization.     * EMAIL_ALREADY_EXISTS: The account could not be created because another AWS account with that email address already exists.     * GOVCLOUD_ACCOUNT_ALREADY_EXISTS: The account in the AWS GovCloud (US) Region could not be created because this Region already includes an account with that email address.     * INVALID_ADDRESS: The account could not be created because the address you provided is not valid.     * INVALID_EMAIL: The account could not be created because the email address you provided is not valid.     * INTERNAL_FAILURE: The account could not be created because of an internal failure. Try again later. If the problem persists, contact Customer Support.
 casFailureReason :: Lens' CreateAccountStatus (Maybe CreateAccountFailureReason)
 casFailureReason = lens _casFailureReason (\ s a -> s{_casFailureReason = a})
 
@@ -89,9 +94,13 @@ casAccountName = lens _casAccountName (\ s a -> s{_casAccountName = a}) . mappin
 casAccountId :: Lens' CreateAccountStatus (Maybe Text)
 casAccountId = lens _casAccountId (\ s a -> s{_casAccountId = a})
 
--- | The unique identifier (ID) that references this request. You get this value from the response of the initial 'CreateAccount' request to create the account. The <http://wikipedia.org/wiki/regex regex pattern> for an create account request ID string requires "car-" followed by from 8 to 32 lower-case letters or digits.
+-- | The unique identifier (ID) that references this request. You get this value from the response of the initial 'CreateAccount' request to create the account. The <http://wikipedia.org/wiki/regex regex pattern> for a create account request ID string requires "car-" followed by from 8 to 32 lower-case letters or digits.
 casId :: Lens' CreateAccountStatus (Maybe Text)
 casId = lens _casId (\ s a -> s{_casId = a})
+
+-- | If the account was created successfully, the unique identifier (ID) of the new account in the AWS GovCloud (US) Region.
+casGovCloudAccountId :: Lens' CreateAccountStatus (Maybe Text)
+casGovCloudAccountId = lens _casGovCloudAccountId (\ s a -> s{_casGovCloudAccountId = a})
 
 -- | The date and time that the request was made for the account creation.
 casRequestedTimestamp :: Lens' CreateAccountStatus (Maybe UTCTime)
@@ -107,6 +116,7 @@ instance FromJSON CreateAccountStatus where
                      <*> (x .:? "AccountName")
                      <*> (x .:? "AccountId")
                      <*> (x .:? "Id")
+                     <*> (x .:? "GovCloudAccountId")
                      <*> (x .:? "RequestedTimestamp"))
 
 instance Hashable CreateAccountStatus where

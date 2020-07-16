@@ -20,7 +20,7 @@ module Network.AWS.RDS.Types.Timezone where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | A time zone associated with a 'DBInstance' or a 'DBSnapshot' . This data type is an element in the response to the 'DescribeDBInstances' , the 'DescribeDBSnapshots' , and the 'DescribeDBEngineVersions' actions. 
+-- | A time zone associated with a @DBInstance@ or a @DBSnapshot@ . This data type is an element in the response to the @DescribeDBInstances@ , the @DescribeDBSnapshots@ , and the @DescribeDBEngineVersions@ actions. 
 --
 --
 --

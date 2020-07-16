@@ -21,6 +21,7 @@ module Network.AWS.ELBv2.Types.TargetTypeEnum (
     ..
     , IP
     , Instance
+    , Lambda
     )
   ) where
 
@@ -37,9 +38,13 @@ pattern IP = TargetTypeEnum' "ip"
 pattern Instance :: TargetTypeEnum
 pattern Instance = TargetTypeEnum' "instance"
 
+pattern Lambda :: TargetTypeEnum
+pattern Lambda = TargetTypeEnum' "lambda"
+
 {-# COMPLETE
   IP,
   Instance,
+  Lambda,
   TargetTypeEnum' #-}
 
 instance FromText TargetTypeEnum where
@@ -56,10 +61,12 @@ instance Enum TargetTypeEnum where
     toEnum i = case i of
         0 -> IP
         1 -> Instance
+        2 -> Lambda
         _ -> (error . showText) $ "Unknown index for TargetTypeEnum: " <> toText i
     fromEnum x = case x of
         IP -> 0
         Instance -> 1
+        Lambda -> 2
         TargetTypeEnum' name -> (error . showText) $ "Unknown TargetTypeEnum: " <> original name
 
 -- | Represents the bounds of /known/ $TargetTypeEnum.
@@ -67,7 +74,7 @@ instance Enum TargetTypeEnum where
 --   This instance exists only for backward compatibility.
 instance Bounded TargetTypeEnum where
     minBound = IP
-    maxBound = Instance
+    maxBound = Lambda
 
 instance Hashable     TargetTypeEnum
 instance NFData       TargetTypeEnum

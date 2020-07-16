@@ -22,7 +22,9 @@ import Network.AWS.GuardDuty.Types.SecurityGroup
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | The network interface information of the EC2 instance.
+-- | Contains information about the elastic network interface of the EC2 instance.
+--
+--
 --
 -- /See:/ 'networkInterface' smart constructor.
 data NetworkInterface = NetworkInterface'{_niPrivateIPAddresses
@@ -46,23 +48,23 @@ data NetworkInterface = NetworkInterface'{_niPrivateIPAddresses
 --
 -- * 'niPrivateIPAddresses' - Other private IP address information of the EC2 instance.
 --
--- * 'niPublicDNSName' - Public DNS name of the EC2 instance.
+-- * 'niPublicDNSName' - The public DNS name of the EC2 instance.
 --
--- * 'niSecurityGroups' - Security groups associated with the EC2 instance.
+-- * 'niSecurityGroups' - The security groups associated with the EC2 instance.
 --
 -- * 'niVPCId' - The VPC ID of the EC2 instance.
 --
--- * 'niNetworkInterfaceId' - The ID of the network interface
+-- * 'niNetworkInterfaceId' - The ID of the network interface.
 --
 -- * 'niSubnetId' - The subnet ID of the EC2 instance.
 --
--- * 'niPrivateIPAddress' - Private IP address of the EC2 instance.
+-- * 'niPrivateIPAddress' - The private IP address of the EC2 instance.
 --
--- * 'niPublicIP' - Public IP address of the EC2 instance.
+-- * 'niPublicIP' - The public IP address of the EC2 instance.
 --
--- * 'niPrivateDNSName' - Private DNS name of the EC2 instance.
+-- * 'niPrivateDNSName' - The private DNS name of the EC2 instance.
 --
--- * 'niIPv6Addresses' - A list of EC2 instance IPv6 address information.
+-- * 'niIPv6Addresses' - A list of IPv6 addresses for the EC2 instance.
 networkInterface
     :: NetworkInterface
 networkInterface
@@ -78,11 +80,11 @@ networkInterface
 niPrivateIPAddresses :: Lens' NetworkInterface [PrivateIPAddressDetails]
 niPrivateIPAddresses = lens _niPrivateIPAddresses (\ s a -> s{_niPrivateIPAddresses = a}) . _Default . _Coerce
 
--- | Public DNS name of the EC2 instance.
+-- | The public DNS name of the EC2 instance.
 niPublicDNSName :: Lens' NetworkInterface (Maybe Text)
 niPublicDNSName = lens _niPublicDNSName (\ s a -> s{_niPublicDNSName = a})
 
--- | Security groups associated with the EC2 instance.
+-- | The security groups associated with the EC2 instance.
 niSecurityGroups :: Lens' NetworkInterface [SecurityGroup]
 niSecurityGroups = lens _niSecurityGroups (\ s a -> s{_niSecurityGroups = a}) . _Default . _Coerce
 
@@ -90,7 +92,7 @@ niSecurityGroups = lens _niSecurityGroups (\ s a -> s{_niSecurityGroups = a}) . 
 niVPCId :: Lens' NetworkInterface (Maybe Text)
 niVPCId = lens _niVPCId (\ s a -> s{_niVPCId = a})
 
--- | The ID of the network interface
+-- | The ID of the network interface.
 niNetworkInterfaceId :: Lens' NetworkInterface (Maybe Text)
 niNetworkInterfaceId = lens _niNetworkInterfaceId (\ s a -> s{_niNetworkInterfaceId = a})
 
@@ -98,19 +100,19 @@ niNetworkInterfaceId = lens _niNetworkInterfaceId (\ s a -> s{_niNetworkInterfac
 niSubnetId :: Lens' NetworkInterface (Maybe Text)
 niSubnetId = lens _niSubnetId (\ s a -> s{_niSubnetId = a})
 
--- | Private IP address of the EC2 instance.
+-- | The private IP address of the EC2 instance.
 niPrivateIPAddress :: Lens' NetworkInterface (Maybe Text)
 niPrivateIPAddress = lens _niPrivateIPAddress (\ s a -> s{_niPrivateIPAddress = a})
 
--- | Public IP address of the EC2 instance.
+-- | The public IP address of the EC2 instance.
 niPublicIP :: Lens' NetworkInterface (Maybe Text)
 niPublicIP = lens _niPublicIP (\ s a -> s{_niPublicIP = a})
 
--- | Private DNS name of the EC2 instance.
+-- | The private DNS name of the EC2 instance.
 niPrivateDNSName :: Lens' NetworkInterface (Maybe Text)
 niPrivateDNSName = lens _niPrivateDNSName (\ s a -> s{_niPrivateDNSName = a})
 
--- | A list of EC2 instance IPv6 address information.
+-- | A list of IPv6 addresses for the EC2 instance.
 niIPv6Addresses :: Lens' NetworkInterface [Text]
 niIPv6Addresses = lens _niIPv6Addresses (\ s a -> s{_niIPv6Addresses = a}) . _Default . _Coerce
 

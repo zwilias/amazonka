@@ -63,7 +63,7 @@ data InventoryDeletionStatusItem = InventoryDeletionStatusItem'{_idsiTypeName
 --
 -- * 'idsiLastStatusMessage' - Information about the status.
 --
--- * 'idsiDeletionSummary' - Information about the delete operation. For more information about this summary, see <http://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-inventory-delete.html#sysman-inventory-delete-summary Understanding the Delete Inventory Summary> .
+-- * 'idsiDeletionSummary' - Information about the delete operation. For more information about this summary, see <https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-inventory-custom.html#sysman-inventory-delete Understanding the delete inventory summary> in the /AWS Systems Manager User Guide/ .
 --
 -- * 'idsiLastStatus' - The status of the operation. Possible values are InProgress and Complete.
 --
@@ -94,7 +94,7 @@ idsiLastStatusUpdateTime = lens _idsiLastStatusUpdateTime (\ s a -> s{_idsiLastS
 idsiLastStatusMessage :: Lens' InventoryDeletionStatusItem (Maybe Text)
 idsiLastStatusMessage = lens _idsiLastStatusMessage (\ s a -> s{_idsiLastStatusMessage = a})
 
--- | Information about the delete operation. For more information about this summary, see <http://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-inventory-delete.html#sysman-inventory-delete-summary Understanding the Delete Inventory Summary> .
+-- | Information about the delete operation. For more information about this summary, see <https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-inventory-custom.html#sysman-inventory-delete Understanding the delete inventory summary> in the /AWS Systems Manager User Guide/ .
 idsiDeletionSummary :: Lens' InventoryDeletionStatusItem (Maybe InventoryDeletionSummary)
 idsiDeletionSummary = lens _idsiDeletionSummary (\ s a -> s{_idsiDeletionSummary = a})
 

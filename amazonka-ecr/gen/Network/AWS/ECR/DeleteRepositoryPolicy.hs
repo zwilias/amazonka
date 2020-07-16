@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Deletes the repository policy from a specified repository.
+-- Deletes the repository policy associated with the specified repository.
 --
 --
 module Network.AWS.ECR.DeleteRepositoryPolicy

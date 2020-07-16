@@ -21,6 +21,8 @@
 -- Lists the authorizers registered in your account.
 --
 --
+--
+-- This operation returns paginated results.
 module Network.AWS.IoT.ListAuthorizers
     (
     -- * Creating a Request
@@ -44,6 +46,7 @@ module Network.AWS.IoT.ListAuthorizers
 import Network.AWS.IoT.Types
 import Network.AWS.IoT.Types.Product
 import Network.AWS.Lens
+import Network.AWS.Pager
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
@@ -89,6 +92,13 @@ laAscendingOrder = lens _laAscendingOrder (\ s a -> s{_laAscendingOrder = a})
 -- | The maximum number of results to return at one time.
 laPageSize :: Lens' ListAuthorizers (Maybe Natural)
 laPageSize = lens _laPageSize (\ s a -> s{_laPageSize = a}) . mapping _Nat
+
+instance AWSPager ListAuthorizers where
+        page rq rs
+          | stop (rs ^. larsNextMarker) = Nothing
+          | stop (rs ^. larsAuthorizers) = Nothing
+          | otherwise =
+            Just $ rq & laMarker .~ rs ^. larsNextMarker
 
 instance AWSRequest ListAuthorizers where
         type Rs ListAuthorizers = ListAuthorizersResponse

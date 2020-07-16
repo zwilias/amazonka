@@ -22,7 +22,9 @@ import Network.AWS.Prelude
 import Network.AWS.S3.Internal
 import Network.AWS.S3.Types.OwnerOverride
 
--- | Container for information regarding the access control for replicas.
+-- | A container for information about access control for replicas.
+--
+--
 --
 -- /See:/ 'accessControlTranslation' smart constructor.
 newtype AccessControlTranslation = AccessControlTranslation'{_actOwner
@@ -34,14 +36,14 @@ newtype AccessControlTranslation = AccessControlTranslation'{_actOwner
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'actOwner' - The override value for the owner of the replica object.
+-- * 'actOwner' - Specifies the replica ownership. For default and valid values, see <https://docs.aws.amazon.com/AmazonS3/latest/API/RESTBucketPUTreplication.html PUT bucket replication> in the /Amazon Simple Storage Service API Reference/ .
 accessControlTranslation
     :: OwnerOverride -- ^ 'actOwner'
     -> AccessControlTranslation
 accessControlTranslation pOwner_
   = AccessControlTranslation'{_actOwner = pOwner_}
 
--- | The override value for the owner of the replica object.
+-- | Specifies the replica ownership. For default and valid values, see <https://docs.aws.amazon.com/AmazonS3/latest/API/RESTBucketPUTreplication.html PUT bucket replication> in the /Amazon Simple Storage Service API Reference/ .
 actOwner :: Lens' AccessControlTranslation OwnerOverride
 actOwner = lens _actOwner (\ s a -> s{_actOwner = a})
 

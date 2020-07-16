@@ -38,7 +38,7 @@ data Parameter = Parameter'{_pParameterValue ::
 --
 -- * 'pParameterValue' - The input value associated with the parameter.
 --
--- * 'pResolvedValue' - Read-only. The value that corresponds to a Systems Manager parameter key. This field is returned only for <http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/parameters-section-structure.html#aws-ssm-parameter-types @SSM@ parameter types> in the template.
+-- * 'pResolvedValue' - Read-only. The value that corresponds to a Systems Manager parameter key. This field is returned only for <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/parameters-section-structure.html#aws-ssm-parameter-types @SSM@ parameter types> in the template.
 --
 -- * 'pParameterKey' - The key associated with the parameter. If you don't specify a key and value for a particular parameter, AWS CloudFormation uses the default value that is specified in your template.
 --
@@ -54,7 +54,7 @@ parameter
 pParameterValue :: Lens' Parameter (Maybe Text)
 pParameterValue = lens _pParameterValue (\ s a -> s{_pParameterValue = a})
 
--- | Read-only. The value that corresponds to a Systems Manager parameter key. This field is returned only for <http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/parameters-section-structure.html#aws-ssm-parameter-types @SSM@ parameter types> in the template.
+-- | Read-only. The value that corresponds to a Systems Manager parameter key. This field is returned only for <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/parameters-section-structure.html#aws-ssm-parameter-types @SSM@ parameter types> in the template.
 pResolvedValue :: Lens' Parameter (Maybe Text)
 pResolvedValue = lens _pResolvedValue (\ s a -> s{_pResolvedValue = a})
 

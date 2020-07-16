@@ -25,7 +25,7 @@ import Network.AWS.MediaLive.Types.Mp2Settings
 import Network.AWS.MediaLive.Types.PassThroughSettings
 import Network.AWS.Prelude
 
--- | Placeholder documentation for AudioCodecSettings
+-- | Audio Codec Settings
 --
 -- /See:/ 'audioCodecSettings' smart constructor.
 data AudioCodecSettings = AudioCodecSettings'{_acsPassThroughSettings

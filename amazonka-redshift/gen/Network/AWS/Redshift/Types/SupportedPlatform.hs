@@ -34,13 +34,13 @@ newtype SupportedPlatform = SupportedPlatform'{_spName
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'spName' - Undocumented member.
+-- * 'spName' - 
 supportedPlatform
     :: SupportedPlatform
 supportedPlatform
   = SupportedPlatform'{_spName = Nothing}
 
--- | Undocumented member.
+-- | 
 spName :: Lens' SupportedPlatform (Maybe Text)
 spName = lens _spName (\ s a -> s{_spName = a})
 

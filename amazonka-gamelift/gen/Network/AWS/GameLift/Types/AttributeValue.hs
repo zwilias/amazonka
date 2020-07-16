@@ -20,7 +20,7 @@ module Network.AWS.GameLift.Types.AttributeValue where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | Values for use in 'Player' attribute key:value pairs. This object lets you specify an attribute value using any of the valid data types: string, number, string array or data map. Each @AttributeValue@ object can use only one of the available properties.
+-- | Values for use in 'Player' attribute key-value pairs. This object lets you specify an attribute value using any of the valid data types: string, number, string array, or data map. Each @AttributeValue@ object can use only one of the available properties.
 --
 --
 --

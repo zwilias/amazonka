@@ -42,9 +42,9 @@ data GeoLocationDetails = GeoLocationDetails'{_gldSubdivisionName
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'gldSubdivisionName' - The full name of the subdivision, for example, a state in the United States or a province in Canada.
+-- * 'gldSubdivisionName' - The full name of the subdivision. Route 53 currently supports only states in the United States.
 --
--- * 'gldSubdivisionCode' - The code for the subdivision, for example, a state in the United States or a province in Canada.
+-- * 'gldSubdivisionCode' - The code for the subdivision. Route 53 currently supports only states in the United States.
 --
 -- * 'gldCountryName' - The name of the country.
 --
@@ -62,11 +62,11 @@ geoLocationDetails
                         _gldContinentCode = Nothing,
                         _gldContinentName = Nothing}
 
--- | The full name of the subdivision, for example, a state in the United States or a province in Canada.
+-- | The full name of the subdivision. Route 53 currently supports only states in the United States.
 gldSubdivisionName :: Lens' GeoLocationDetails (Maybe Text)
 gldSubdivisionName = lens _gldSubdivisionName (\ s a -> s{_gldSubdivisionName = a})
 
--- | The code for the subdivision, for example, a state in the United States or a province in Canada.
+-- | The code for the subdivision. Route 53 currently supports only states in the United States.
 gldSubdivisionCode :: Lens' GeoLocationDetails (Maybe Text)
 gldSubdivisionCode = lens _gldSubdivisionCode (\ s a -> s{_gldSubdivisionCode = a})
 

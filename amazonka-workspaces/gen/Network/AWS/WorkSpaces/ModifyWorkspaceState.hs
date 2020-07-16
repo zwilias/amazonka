@@ -21,7 +21,7 @@
 -- Sets the state of the specified WorkSpace.
 --
 --
--- To maintain a WorkSpace without being interrupted, set the WorkSpace state to @ADMIN_MAINTENANCE@ . WorkSpaces in this state do not respond to requests to reboot, stop, start, or rebuild. An AutoStop WorkSpace in this state is not stopped. Users can log into a WorkSpace in the @ADMIN_MAINTENANCE@ state.
+-- To maintain a WorkSpace without being interrupted, set the WorkSpace state to @ADMIN_MAINTENANCE@ . WorkSpaces in this state do not respond to requests to reboot, stop, start, rebuild, or restore. An AutoStop WorkSpace in this state is not stopped. Users cannot log into a WorkSpace in the @ADMIN_MAINTENANCE@ state.
 --
 module Network.AWS.WorkSpaces.ModifyWorkspaceState
     (
@@ -57,7 +57,7 @@ data ModifyWorkspaceState = ModifyWorkspaceState'{_mwsWorkspaceId
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'mwsWorkspaceId' - The ID of the WorkSpace.
+-- * 'mwsWorkspaceId' - The identifier of the WorkSpace.
 --
 -- * 'mwsWorkspaceState' - The WorkSpace state.
 modifyWorkspaceState
@@ -69,7 +69,7 @@ modifyWorkspaceState pWorkspaceId_ pWorkspaceState_
                             pWorkspaceId_,
                           _mwsWorkspaceState = pWorkspaceState_}
 
--- | The ID of the WorkSpace.
+-- | The identifier of the WorkSpace.
 mwsWorkspaceId :: Lens' ModifyWorkspaceState Text
 mwsWorkspaceId = lens _mwsWorkspaceId (\ s a -> s{_mwsWorkspaceId = a})
 

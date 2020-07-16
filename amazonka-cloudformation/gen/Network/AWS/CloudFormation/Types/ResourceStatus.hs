@@ -26,6 +26,12 @@ module Network.AWS.CloudFormation.Types.ResourceStatus (
     , DeleteFailed
     , DeleteInProgress
     , DeleteSkipped
+    , ImportComplete
+    , ImportFailed
+    , ImportInProgress
+    , ImportRollbackComplete
+    , ImportRollbackFailed
+    , ImportRollbackInProgress
     , UpdateComplete
     , UpdateFailed
     , UpdateInProgress
@@ -60,6 +66,24 @@ pattern DeleteInProgress = ResourceStatus' "DELETE_IN_PROGRESS"
 pattern DeleteSkipped :: ResourceStatus
 pattern DeleteSkipped = ResourceStatus' "DELETE_SKIPPED"
 
+pattern ImportComplete :: ResourceStatus
+pattern ImportComplete = ResourceStatus' "IMPORT_COMPLETE"
+
+pattern ImportFailed :: ResourceStatus
+pattern ImportFailed = ResourceStatus' "IMPORT_FAILED"
+
+pattern ImportInProgress :: ResourceStatus
+pattern ImportInProgress = ResourceStatus' "IMPORT_IN_PROGRESS"
+
+pattern ImportRollbackComplete :: ResourceStatus
+pattern ImportRollbackComplete = ResourceStatus' "IMPORT_ROLLBACK_COMPLETE"
+
+pattern ImportRollbackFailed :: ResourceStatus
+pattern ImportRollbackFailed = ResourceStatus' "IMPORT_ROLLBACK_FAILED"
+
+pattern ImportRollbackInProgress :: ResourceStatus
+pattern ImportRollbackInProgress = ResourceStatus' "IMPORT_ROLLBACK_IN_PROGRESS"
+
 pattern UpdateComplete :: ResourceStatus
 pattern UpdateComplete = ResourceStatus' "UPDATE_COMPLETE"
 
@@ -77,6 +101,12 @@ pattern UpdateInProgress = ResourceStatus' "UPDATE_IN_PROGRESS"
   DeleteFailed,
   DeleteInProgress,
   DeleteSkipped,
+  ImportComplete,
+  ImportFailed,
+  ImportInProgress,
+  ImportRollbackComplete,
+  ImportRollbackFailed,
+  ImportRollbackInProgress,
   UpdateComplete,
   UpdateFailed,
   UpdateInProgress,
@@ -101,9 +131,15 @@ instance Enum ResourceStatus where
         4 -> DeleteFailed
         5 -> DeleteInProgress
         6 -> DeleteSkipped
-        7 -> UpdateComplete
-        8 -> UpdateFailed
-        9 -> UpdateInProgress
+        7 -> ImportComplete
+        8 -> ImportFailed
+        9 -> ImportInProgress
+        10 -> ImportRollbackComplete
+        11 -> ImportRollbackFailed
+        12 -> ImportRollbackInProgress
+        13 -> UpdateComplete
+        14 -> UpdateFailed
+        15 -> UpdateInProgress
         _ -> (error . showText) $ "Unknown index for ResourceStatus: " <> toText i
     fromEnum x = case x of
         CreateComplete -> 0
@@ -113,9 +149,15 @@ instance Enum ResourceStatus where
         DeleteFailed -> 4
         DeleteInProgress -> 5
         DeleteSkipped -> 6
-        UpdateComplete -> 7
-        UpdateFailed -> 8
-        UpdateInProgress -> 9
+        ImportComplete -> 7
+        ImportFailed -> 8
+        ImportInProgress -> 9
+        ImportRollbackComplete -> 10
+        ImportRollbackFailed -> 11
+        ImportRollbackInProgress -> 12
+        UpdateComplete -> 13
+        UpdateFailed -> 14
+        UpdateInProgress -> 15
         ResourceStatus' name -> (error . showText) $ "Unknown ResourceStatus: " <> original name
 
 -- | Represents the bounds of /known/ $ResourceStatus.

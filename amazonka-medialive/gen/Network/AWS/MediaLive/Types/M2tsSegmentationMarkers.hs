@@ -31,7 +31,7 @@ module Network.AWS.MediaLive.Types.M2tsSegmentationMarkers (
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | Placeholder documentation for M2tsSegmentationMarkers
+-- | M2ts Segmentation Markers
 data M2tsSegmentationMarkers = M2tsSegmentationMarkers' (CI
                                                            Text)
                                  deriving (Eq, Ord, Read, Show, Data, Typeable,

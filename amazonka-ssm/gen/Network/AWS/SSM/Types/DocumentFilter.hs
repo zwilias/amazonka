@@ -21,7 +21,7 @@ import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.SSM.Types.DocumentFilterKey
 
--- | Describes a filter.
+-- | This data type is deprecated. Instead, use 'DocumentKeyValuesFilter' .
 --
 --
 --

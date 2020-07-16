@@ -21,6 +21,8 @@
 -- Returns a list of resources (for example, DB instances) that have at least one pending maintenance action.
 --
 --
+--
+-- This operation returns paginated results.
 module Network.AWS.RDS.DescribePendingMaintenanceActions
     (
     -- * Creating a Request
@@ -42,6 +44,7 @@ module Network.AWS.RDS.DescribePendingMaintenanceActions
     ) where
 
 import Network.AWS.Lens
+import Network.AWS.Pager
 import Network.AWS.Prelude
 import Network.AWS.RDS.Types
 import Network.AWS.RDS.Types.Product
@@ -80,7 +83,7 @@ data DescribePendingMaintenanceActions = DescribePendingMaintenanceActions'{_dpm
 --
 -- * 'dpmaMarker' - An optional pagination token provided by a previous @DescribePendingMaintenanceActions@ request. If this parameter is specified, the response includes only records beyond the marker, up to a number of records specified by @MaxRecords@ . 
 --
--- * 'dpmaMaxRecords' - The maximum number of records to include in the response. If more records exist than the specified @MaxRecords@ value, a pagination token called a marker is included in the response so that the remaining results can be retrieved.  Default: 100 Constraints: Minimum 20, maximum 100.
+-- * 'dpmaMaxRecords' - The maximum number of records to include in the response. If more records exist than the specified @MaxRecords@ value, a pagination token called a marker is included in the response so that you can retrieve the remaining results.  Default: 100 Constraints: Minimum 20, maximum 100.
 --
 -- * 'dpmaResourceIdentifier' - The ARN of a resource to return pending maintenance actions for.
 describePendingMaintenanceActions
@@ -100,13 +103,22 @@ dpmaFilters = lens _dpmaFilters (\ s a -> s{_dpmaFilters = a}) . _Default . _Coe
 dpmaMarker :: Lens' DescribePendingMaintenanceActions (Maybe Text)
 dpmaMarker = lens _dpmaMarker (\ s a -> s{_dpmaMarker = a})
 
--- | The maximum number of records to include in the response. If more records exist than the specified @MaxRecords@ value, a pagination token called a marker is included in the response so that the remaining results can be retrieved.  Default: 100 Constraints: Minimum 20, maximum 100.
+-- | The maximum number of records to include in the response. If more records exist than the specified @MaxRecords@ value, a pagination token called a marker is included in the response so that you can retrieve the remaining results.  Default: 100 Constraints: Minimum 20, maximum 100.
 dpmaMaxRecords :: Lens' DescribePendingMaintenanceActions (Maybe Int)
 dpmaMaxRecords = lens _dpmaMaxRecords (\ s a -> s{_dpmaMaxRecords = a})
 
 -- | The ARN of a resource to return pending maintenance actions for.
 dpmaResourceIdentifier :: Lens' DescribePendingMaintenanceActions (Maybe Text)
 dpmaResourceIdentifier = lens _dpmaResourceIdentifier (\ s a -> s{_dpmaResourceIdentifier = a})
+
+instance AWSPager DescribePendingMaintenanceActions
+         where
+        page rq rs
+          | stop (rs ^. dpmarsMarker) = Nothing
+          | stop (rs ^. dpmarsPendingMaintenanceActions) =
+            Nothing
+          | otherwise =
+            Just $ rq & dpmaMarker .~ rs ^. dpmarsMarker
 
 instance AWSRequest DescribePendingMaintenanceActions
          where

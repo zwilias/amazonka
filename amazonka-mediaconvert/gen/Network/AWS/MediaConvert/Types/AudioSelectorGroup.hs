@@ -32,14 +32,14 @@ newtype AudioSelectorGroup = AudioSelectorGroup'{_asgAudioSelectorNames
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'asgAudioSelectorNames' - Name of an "Audio Selector":#inputs-audio_selector within the same input to include in the group.  Audio selector names are standardized, based on their order within the input (e.g. "Audio Selector 1").  The audio_selector_name parameter can be repeated to add any number of audio selectors to the group.
+-- * 'asgAudioSelectorNames' - Name of an Audio Selector within the same input to include in the group.  Audio selector names are standardized, based on their order within the input (e.g., "Audio Selector 1"). The audio selector name parameter can be repeated to add any number of audio selectors to the group.
 audioSelectorGroup
     :: AudioSelectorGroup
 audioSelectorGroup
   = AudioSelectorGroup'{_asgAudioSelectorNames =
                           Nothing}
 
--- | Name of an "Audio Selector":#inputs-audio_selector within the same input to include in the group.  Audio selector names are standardized, based on their order within the input (e.g. "Audio Selector 1").  The audio_selector_name parameter can be repeated to add any number of audio selectors to the group.
+-- | Name of an Audio Selector within the same input to include in the group.  Audio selector names are standardized, based on their order within the input (e.g., "Audio Selector 1"). The audio selector name parameter can be repeated to add any number of audio selectors to the group.
 asgAudioSelectorNames :: Lens' AudioSelectorGroup [Text]
 asgAudioSelectorNames = lens _asgAudioSelectorNames (\ s a -> s{_asgAudioSelectorNames = a}) . _Default . _Coerce
 

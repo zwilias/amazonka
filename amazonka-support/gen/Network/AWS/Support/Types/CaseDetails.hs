@@ -38,9 +38,9 @@ import Network.AWS.Support.Types.RecentCaseCommunications
 --
 --     * __serviceCode.__ The identifier for the AWS service that corresponds to the service code defined in the call to 'DescribeServices' .
 --
---     * __severityCode. __ The severity code assigned to the case. Contains one of the values returned by the call to 'DescribeSeverityLevels' .
+--     * __severityCode.__ The severity code assigned to the case. Contains one of the values returned by the call to 'DescribeSeverityLevels' . The possible values are: @low@ , @normal@ , @high@ , @urgent@ , and @critical@ .
 --
---     * __status.__ The status of the case in the AWS Support Center.
+--     * __status.__ The status of the case in the AWS Support Center. The possible values are: @resolved@ , @pending-customer-action@ , @opened@ , @unassigned@ , and @work-in-progress@ .
 --
 --     * __subject.__ The subject line of the case.
 --
@@ -74,7 +74,7 @@ data CaseDetails = CaseDetails'{_cdSubject ::
 --
 -- * 'cdSubject' - The subject line for the case in the AWS Support Center.
 --
--- * 'cdStatus' - The status of the case.
+-- * 'cdStatus' - The status of the case. Valid values: @resolved@ | @pending-customer-action@ | @opened@ | @unassigned@ | @work-in-progress@ .
 --
 -- * 'cdRecentCommunications' - The five most recent communications between you and AWS Support Center, including the IDs of any attachments to the communications. Also includes a @nextToken@ that you can use to retrieve earlier communications.
 --
@@ -94,7 +94,7 @@ data CaseDetails = CaseDetails'{_cdSubject ::
 --
 -- * 'cdCategoryCode' - The category of problem for the AWS Support case.
 --
--- * 'cdServiceCode' - The code for the AWS service returned by the call to 'DescribeServices' .
+-- * 'cdServiceCode' - The code for the AWS service. You can get a list of codes and the corresponding service names by calling 'DescribeServices' .
 caseDetails
     :: CaseDetails
 caseDetails
@@ -111,7 +111,7 @@ caseDetails
 cdSubject :: Lens' CaseDetails (Maybe Text)
 cdSubject = lens _cdSubject (\ s a -> s{_cdSubject = a})
 
--- | The status of the case.
+-- | The status of the case. Valid values: @resolved@ | @pending-customer-action@ | @opened@ | @unassigned@ | @work-in-progress@ .
 cdStatus :: Lens' CaseDetails (Maybe Text)
 cdStatus = lens _cdStatus (\ s a -> s{_cdStatus = a})
 
@@ -151,7 +151,7 @@ cdTimeCreated = lens _cdTimeCreated (\ s a -> s{_cdTimeCreated = a})
 cdCategoryCode :: Lens' CaseDetails (Maybe Text)
 cdCategoryCode = lens _cdCategoryCode (\ s a -> s{_cdCategoryCode = a})
 
--- | The code for the AWS service returned by the call to 'DescribeServices' .
+-- | The code for the AWS service. You can get a list of codes and the corresponding service names by calling 'DescribeServices' .
 cdServiceCode :: Lens' CaseDetails (Maybe Text)
 cdServiceCode = lens _cdServiceCode (\ s a -> s{_cdServiceCode = a})
 

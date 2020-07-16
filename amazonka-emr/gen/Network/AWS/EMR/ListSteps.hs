@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Provides a list of steps for the cluster in reverse order unless you specify stepIds with the request.
+-- Provides a list of steps for the cluster in reverse order unless you specify @stepIds@ with the request of filter by @StepStates@ . You can specify a maximum of ten @stepIDs@ .
 --
 --
 --
@@ -66,7 +66,7 @@ data ListSteps = ListSteps'{_lsStepIds ::
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'lsStepIds' - The filter to limit the step list based on the identifier of the steps.
+-- * 'lsStepIds' - The filter to limit the step list based on the identifier of the steps. You can specify a maximum of ten Step IDs. The character constraint applies to the overall length of the array.
 --
 -- * 'lsStepStates' - The filter to limit the step list based on certain states.
 --
@@ -81,7 +81,7 @@ listSteps pClusterId_
                _lsStepStates = Nothing, _lsMarker = Nothing,
                _lsClusterId = pClusterId_}
 
--- | The filter to limit the step list based on the identifier of the steps.
+-- | The filter to limit the step list based on the identifier of the steps. You can specify a maximum of ten Step IDs. The character constraint applies to the overall length of the array.
 lsStepIds :: Lens' ListSteps [Text]
 lsStepIds = lens _lsStepIds (\ s a -> s{_lsStepIds = a}) . _Default . _Coerce
 

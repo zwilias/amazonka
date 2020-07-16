@@ -23,8 +23,6 @@
 --
 -- To get game session record(s), specify just one of the following: game session ID, fleet ID, or alias ID. You can filter this request by game session status. Use the pagination parameters to retrieve results as a set of sequential pages. If successful, a 'GameSessionDetail' object is returned for each session matching the request.
 --
--- Game-session-related operations include:
---
 --     * 'CreateGameSession' 
 --
 --     * 'DescribeGameSessions' 
@@ -49,6 +47,8 @@
 --
 --
 --
+--
+-- This operation returns paginated results.
 module Network.AWS.GameLift.DescribeGameSessionDetails
     (
     -- * Creating a Request
@@ -74,6 +74,7 @@ module Network.AWS.GameLift.DescribeGameSessionDetails
 import Network.AWS.GameLift.Types
 import Network.AWS.GameLift.Types.Product
 import Network.AWS.Lens
+import Network.AWS.Pager
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
@@ -102,17 +103,17 @@ data DescribeGameSessionDetails = DescribeGameSessionDetails'{_dgsdGameSessionId
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dgsdGameSessionId' - Unique identifier for the game session to retrieve.
+-- * 'dgsdGameSessionId' - A unique identifier for the game session to retrieve. 
 --
--- * 'dgsdAliasId' - Unique identifier for an alias associated with the fleet to retrieve all game sessions for.
+-- * 'dgsdAliasId' - A unique identifier for an alias associated with the fleet to retrieve all game sessions for. You can use either the alias ID or ARN value.
 --
 -- * 'dgsdNextToken' - Token that indicates the start of the next sequential page of results. Use the token that is returned with a previous call to this action. To start at the beginning of the result set, do not specify a value.
 --
 -- * 'dgsdStatusFilter' - Game session status to filter results on. Possible game session statuses include @ACTIVE@ , @TERMINATED@ , @ACTIVATING@ and @TERMINATING@ (the last two are transitory). 
 --
--- * 'dgsdLimit' - Maximum number of results to return. Use this parameter with @NextToken@ to get results as a set of sequential pages.
+-- * 'dgsdLimit' - The maximum number of results to return. Use this parameter with @NextToken@ to get results as a set of sequential pages.
 --
--- * 'dgsdFleetId' - Unique identifier for a fleet to retrieve all game sessions active on the fleet.
+-- * 'dgsdFleetId' - A unique identifier for a fleet to retrieve all game sessions active on the fleet. You can use either the fleet ID or ARN value.
 describeGameSessionDetails
     :: DescribeGameSessionDetails
 describeGameSessionDetails
@@ -123,11 +124,11 @@ describeGameSessionDetails
                                 _dgsdStatusFilter = Nothing,
                                 _dgsdLimit = Nothing, _dgsdFleetId = Nothing}
 
--- | Unique identifier for the game session to retrieve.
+-- | A unique identifier for the game session to retrieve. 
 dgsdGameSessionId :: Lens' DescribeGameSessionDetails (Maybe Text)
 dgsdGameSessionId = lens _dgsdGameSessionId (\ s a -> s{_dgsdGameSessionId = a})
 
--- | Unique identifier for an alias associated with the fleet to retrieve all game sessions for.
+-- | A unique identifier for an alias associated with the fleet to retrieve all game sessions for. You can use either the alias ID or ARN value.
 dgsdAliasId :: Lens' DescribeGameSessionDetails (Maybe Text)
 dgsdAliasId = lens _dgsdAliasId (\ s a -> s{_dgsdAliasId = a})
 
@@ -139,13 +140,20 @@ dgsdNextToken = lens _dgsdNextToken (\ s a -> s{_dgsdNextToken = a})
 dgsdStatusFilter :: Lens' DescribeGameSessionDetails (Maybe Text)
 dgsdStatusFilter = lens _dgsdStatusFilter (\ s a -> s{_dgsdStatusFilter = a})
 
--- | Maximum number of results to return. Use this parameter with @NextToken@ to get results as a set of sequential pages.
+-- | The maximum number of results to return. Use this parameter with @NextToken@ to get results as a set of sequential pages.
 dgsdLimit :: Lens' DescribeGameSessionDetails (Maybe Natural)
 dgsdLimit = lens _dgsdLimit (\ s a -> s{_dgsdLimit = a}) . mapping _Nat
 
--- | Unique identifier for a fleet to retrieve all game sessions active on the fleet.
+-- | A unique identifier for a fleet to retrieve all game sessions active on the fleet. You can use either the fleet ID or ARN value.
 dgsdFleetId :: Lens' DescribeGameSessionDetails (Maybe Text)
 dgsdFleetId = lens _dgsdFleetId (\ s a -> s{_dgsdFleetId = a})
+
+instance AWSPager DescribeGameSessionDetails where
+        page rq rs
+          | stop (rs ^. dgsdrsNextToken) = Nothing
+          | stop (rs ^. dgsdrsGameSessionDetails) = Nothing
+          | otherwise =
+            Just $ rq & dgsdNextToken .~ rs ^. dgsdrsNextToken
 
 instance AWSRequest DescribeGameSessionDetails where
         type Rs DescribeGameSessionDetails =
@@ -213,7 +221,7 @@ data DescribeGameSessionDetailsResponse = DescribeGameSessionDetailsResponse'{_d
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dgsdrsGameSessionDetails' - Collection of objects containing game session properties and the protection policy currently in force for each session matching the request.
+-- * 'dgsdrsGameSessionDetails' - A collection of objects containing game session properties and the protection policy currently in force for each session matching the request.
 --
 -- * 'dgsdrsNextToken' - Token that indicates where to resume retrieving results on the next call to this action. If no token is returned, these results represent the end of the list.
 --
@@ -228,7 +236,7 @@ describeGameSessionDetailsResponse pResponseStatus_
                                         _dgsdrsResponseStatus =
                                           pResponseStatus_}
 
--- | Collection of objects containing game session properties and the protection policy currently in force for each session matching the request.
+-- | A collection of objects containing game session properties and the protection policy currently in force for each session matching the request.
 dgsdrsGameSessionDetails :: Lens' DescribeGameSessionDetailsResponse [GameSessionDetail]
 dgsdrsGameSessionDetails = lens _dgsdrsGameSessionDetails (\ s a -> s{_dgsdrsGameSessionDetails = a}) . _Default . _Coerce
 

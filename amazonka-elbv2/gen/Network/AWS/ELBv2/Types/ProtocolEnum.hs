@@ -22,6 +22,9 @@ module Network.AWS.ELBv2.Types.ProtocolEnum (
     , HTTP
     , HTTPS
     , TCP
+    , TCPUdp
+    , TLS
+    , Udp
     )
   ) where
 
@@ -41,10 +44,22 @@ pattern HTTPS = ProtocolEnum' "HTTPS"
 pattern TCP :: ProtocolEnum
 pattern TCP = ProtocolEnum' "TCP"
 
+pattern TCPUdp :: ProtocolEnum
+pattern TCPUdp = ProtocolEnum' "TCP_UDP"
+
+pattern TLS :: ProtocolEnum
+pattern TLS = ProtocolEnum' "TLS"
+
+pattern Udp :: ProtocolEnum
+pattern Udp = ProtocolEnum' "UDP"
+
 {-# COMPLETE
   HTTP,
   HTTPS,
   TCP,
+  TCPUdp,
+  TLS,
+  Udp,
   ProtocolEnum' #-}
 
 instance FromText ProtocolEnum where
@@ -62,11 +77,17 @@ instance Enum ProtocolEnum where
         0 -> HTTP
         1 -> HTTPS
         2 -> TCP
+        3 -> TCPUdp
+        4 -> TLS
+        5 -> Udp
         _ -> (error . showText) $ "Unknown index for ProtocolEnum: " <> toText i
     fromEnum x = case x of
         HTTP -> 0
         HTTPS -> 1
         TCP -> 2
+        TCPUdp -> 3
+        TLS -> 4
+        Udp -> 5
         ProtocolEnum' name -> (error . showText) $ "Unknown ProtocolEnum: " <> original name
 
 -- | Represents the bounds of /known/ $ProtocolEnum.
@@ -74,7 +95,7 @@ instance Enum ProtocolEnum where
 --   This instance exists only for backward compatibility.
 instance Bounded ProtocolEnum where
     minBound = HTTP
-    maxBound = TCP
+    maxBound = Udp
 
 instance Hashable     ProtocolEnum
 instance NFData       ProtocolEnum

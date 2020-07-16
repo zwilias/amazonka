@@ -18,7 +18,9 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Delete an APNS VoIP channel
+-- Disables the APNs VoIP channel for an application and deletes any existing settings for the channel.
+--
+--
 module Network.AWS.Pinpoint.DeleteAPNSVoipChannel
     (
     -- * Creating a Request
@@ -52,7 +54,7 @@ newtype DeleteAPNSVoipChannel = DeleteAPNSVoipChannel'{_davcApplicationId
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'davcApplicationId' - Undocumented member.
+-- * 'davcApplicationId' - The unique identifier for the application. This identifier is displayed as the __Project ID__ on the Amazon Pinpoint console.
 deleteAPNSVoipChannel
     :: Text -- ^ 'davcApplicationId'
     -> DeleteAPNSVoipChannel
@@ -60,7 +62,7 @@ deleteAPNSVoipChannel pApplicationId_
   = DeleteAPNSVoipChannel'{_davcApplicationId =
                              pApplicationId_}
 
--- | Undocumented member.
+-- | The unique identifier for the application. This identifier is displayed as the __Project ID__ on the Amazon Pinpoint console.
 davcApplicationId :: Lens' DeleteAPNSVoipChannel Text
 davcApplicationId = lens _davcApplicationId (\ s a -> s{_davcApplicationId = a})
 

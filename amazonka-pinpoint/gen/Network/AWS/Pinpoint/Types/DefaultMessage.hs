@@ -20,7 +20,9 @@ module Network.AWS.Pinpoint.Types.DefaultMessage where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | Default Message across push notification, email, and sms.
+-- | Specifies the default message for all channels.
+--
+--
 --
 -- /See:/ 'defaultMessage' smart constructor.
 data DefaultMessage = DefaultMessage'{_dmSubstitutions
@@ -32,20 +34,20 @@ data DefaultMessage = DefaultMessage'{_dmSubstitutions
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dmSubstitutions' - Default message substitutions. Can be overridden by individual address substitutions.
+-- * 'dmSubstitutions' - The default message variables to use in the message. You can override these default variables with individual address variables.
 --
--- * 'dmBody' - The message body of the notification, the email body or the text message.
+-- * 'dmBody' - The default body of the message.
 defaultMessage
     :: DefaultMessage
 defaultMessage
   = DefaultMessage'{_dmSubstitutions = Nothing,
                     _dmBody = Nothing}
 
--- | Default message substitutions. Can be overridden by individual address substitutions.
+-- | The default message variables to use in the message. You can override these default variables with individual address variables.
 dmSubstitutions :: Lens' DefaultMessage (HashMap Text [Text])
 dmSubstitutions = lens _dmSubstitutions (\ s a -> s{_dmSubstitutions = a}) . _Default . _Map
 
--- | The message body of the notification, the email body or the text message.
+-- | The default body of the message.
 dmBody :: Lens' DefaultMessage (Maybe Text)
 dmBody = lens _dmBody (\ s a -> s{_dmBody = a})
 

@@ -18,16 +18,20 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Creates an endpoint using the endpoint configuration specified in the request. Amazon SageMaker uses the endpoint to provision resources and deploy models. You create the endpoint configuration with the <http://docs.aws.amazon.com/sagemaker/latest/dg/API_CreateEndpointConfig.html CreateEndpointConfig> API. 
+-- Creates an endpoint using the endpoint configuration specified in the request. Amazon SageMaker uses the endpoint to provision resources and deploy models. You create the endpoint configuration with the 'CreateEndpointConfig' API. 
 --
+--
+-- Use this API to deploy models using Amazon SageMaker hosting services. 
+--
+-- For an example that calls this method when deploying a model to Amazon SageMaker hosting services, see <https://docs.aws.amazon.com/sagemaker/latest/dg/ex1-deploy-model.html#ex1-deploy-model-boto Deploy the Model to Amazon SageMaker Hosting Services (AWS SDK for Python (Boto 3)).> 
 --
 -- The endpoint name must be unique within an AWS Region in your AWS account. 
 --
 -- When it receives the request, Amazon SageMaker creates the endpoint, launches the resources (ML compute instances), and deploys the model(s) on them. 
 --
--- When Amazon SageMaker receives the request, it sets the endpoint status to @Creating@ . After it creates the endpoint, it sets the status to @InService@ . Amazon SageMaker can then process incoming requests for inferences. To check the status of an endpoint, use the <http://docs.aws.amazon.com/sagemaker/latest/dg/API_DescribeEndpoint.html DescribeEndpoint> API.
+-- When Amazon SageMaker receives the request, it sets the endpoint status to @Creating@ . After it creates the endpoint, it sets the status to @InService@ . Amazon SageMaker can then process incoming requests for inferences. To check the status of an endpoint, use the 'DescribeEndpoint' API.
 --
--- For an example, see <http://docs.aws.amazon.com/sagemaker/latest/dg/ex1.html Exercise 1: Using the K-Means Algorithm Provided by Amazon SageMaker> . 
+-- If any of the models hosted at this endpoint get model data from an Amazon S3 location, Amazon SageMaker uses AWS Security Token Service to download model artifacts from the S3 path you provided. AWS STS is activated in your IAM user account by default. If you previously deactivated AWS STS for a region, you need to reactivate AWS STS for that region. For more information, see <https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_enable-regions.html Activating and Deactivating AWS STS in an AWS Region> in the /AWS Identity and Access Management User Guide/ .
 --
 module Network.AWS.SageMaker.CreateEndpoint
     (
@@ -65,11 +69,11 @@ data CreateEndpoint = CreateEndpoint'{_ceTags ::
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'ceTags' - An array of key-value pairs. For more information, see <http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what Using Cost Allocation Tags> in the /AWS Billing and Cost Management User Guide/ . 
+-- * 'ceTags' - An array of key-value pairs. For more information, see <https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what Using Cost Allocation Tags> in the /AWS Billing and Cost Management User Guide/ . 
 --
 -- * 'ceEndpointName' - The name of the endpoint. The name must be unique within an AWS Region in your AWS account.
 --
--- * 'ceEndpointConfigName' - The name of an endpoint configuration. For more information, see <http://docs.aws.amazon.com/sagemaker/latest/dg/API_CreateEndpointConfig.html CreateEndpointConfig> . 
+-- * 'ceEndpointConfigName' - The name of an endpoint configuration. For more information, see 'CreateEndpointConfig' . 
 createEndpoint
     :: Text -- ^ 'ceEndpointName'
     -> Text -- ^ 'ceEndpointConfigName'
@@ -79,7 +83,7 @@ createEndpoint pEndpointName_ pEndpointConfigName_
                     _ceEndpointName = pEndpointName_,
                     _ceEndpointConfigName = pEndpointConfigName_}
 
--- | An array of key-value pairs. For more information, see <http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what Using Cost Allocation Tags> in the /AWS Billing and Cost Management User Guide/ . 
+-- | An array of key-value pairs. For more information, see <https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what Using Cost Allocation Tags> in the /AWS Billing and Cost Management User Guide/ . 
 ceTags :: Lens' CreateEndpoint [Tag]
 ceTags = lens _ceTags (\ s a -> s{_ceTags = a}) . _Default . _Coerce
 
@@ -87,7 +91,7 @@ ceTags = lens _ceTags (\ s a -> s{_ceTags = a}) . _Default . _Coerce
 ceEndpointName :: Lens' CreateEndpoint Text
 ceEndpointName = lens _ceEndpointName (\ s a -> s{_ceEndpointName = a})
 
--- | The name of an endpoint configuration. For more information, see <http://docs.aws.amazon.com/sagemaker/latest/dg/API_CreateEndpointConfig.html CreateEndpointConfig> . 
+-- | The name of an endpoint configuration. For more information, see 'CreateEndpointConfig' . 
 ceEndpointConfigName :: Lens' CreateEndpoint Text
 ceEndpointConfigName = lens _ceEndpointConfigName (\ s a -> s{_ceEndpointConfigName = a})
 

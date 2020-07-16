@@ -27,7 +27,7 @@ module Network.AWS.MediaConvert.Types.ColorMetadata (
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | Enable Insert color metadata (ColorMetadata) to include color metadata in this output. This setting is enabled by default.
+-- | Choose Insert (INSERT) for this setting to include color metadata in this output. Choose Ignore (IGNORE) to exclude color metadata from this output. If you don't specify a value, the service sets this to Insert by default.
 data ColorMetadata = ColorMetadata' (CI Text)
                        deriving (Eq, Ord, Read, Show, Data, Typeable,
                                  Generic)

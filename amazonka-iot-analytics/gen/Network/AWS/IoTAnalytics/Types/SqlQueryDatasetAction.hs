@@ -17,6 +17,7 @@
 --
 module Network.AWS.IoTAnalytics.Types.SqlQueryDatasetAction where
 
+import Network.AWS.IoTAnalytics.Types.QueryFilter
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
@@ -25,30 +26,40 @@ import Network.AWS.Prelude
 --
 --
 -- /See:/ 'sqlQueryDatasetAction' smart constructor.
-newtype SqlQueryDatasetAction = SqlQueryDatasetAction'{_sqdaSqlQuery
-                                                       :: Text}
-                                  deriving (Eq, Read, Show, Data, Typeable,
-                                            Generic)
+data SqlQueryDatasetAction = SqlQueryDatasetAction'{_sqdaFilters
+                                                    :: !(Maybe [QueryFilter]),
+                                                    _sqdaSqlQuery :: !Text}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'SqlQueryDatasetAction' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'sqdaSqlQuery' - An SQL query string.
+-- * 'sqdaFilters' - Pre-filters applied to message data.
+--
+-- * 'sqdaSqlQuery' - A SQL query string.
 sqlQueryDatasetAction
     :: Text -- ^ 'sqdaSqlQuery'
     -> SqlQueryDatasetAction
 sqlQueryDatasetAction pSqlQuery_
-  = SqlQueryDatasetAction'{_sqdaSqlQuery = pSqlQuery_}
+  = SqlQueryDatasetAction'{_sqdaFilters = Nothing,
+                           _sqdaSqlQuery = pSqlQuery_}
 
--- | An SQL query string.
+-- | Pre-filters applied to message data.
+sqdaFilters :: Lens' SqlQueryDatasetAction [QueryFilter]
+sqdaFilters = lens _sqdaFilters (\ s a -> s{_sqdaFilters = a}) . _Default . _Coerce
+
+-- | A SQL query string.
 sqdaSqlQuery :: Lens' SqlQueryDatasetAction Text
 sqdaSqlQuery = lens _sqdaSqlQuery (\ s a -> s{_sqdaSqlQuery = a})
 
 instance FromJSON SqlQueryDatasetAction where
         parseJSON
           = withObject "SqlQueryDatasetAction"
-              (\ x -> SqlQueryDatasetAction' <$> (x .: "sqlQuery"))
+              (\ x ->
+                 SqlQueryDatasetAction' <$>
+                   (x .:? "filters" .!= mempty) <*> (x .: "sqlQuery"))
 
 instance Hashable SqlQueryDatasetAction where
 
@@ -57,4 +68,6 @@ instance NFData SqlQueryDatasetAction where
 instance ToJSON SqlQueryDatasetAction where
         toJSON SqlQueryDatasetAction'{..}
           = object
-              (catMaybes [Just ("sqlQuery" .= _sqdaSqlQuery)])
+              (catMaybes
+                 [("filters" .=) <$> _sqdaFilters,
+                  Just ("sqlQuery" .= _sqdaSqlQuery)])

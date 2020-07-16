@@ -59,7 +59,7 @@ data GetResourceDefinitionVersion = GetResourceDefinitionVersion'{_grdvResourceD
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'grdvResourceDefinitionVersionId' - The ID of the resource definition version.
+-- * 'grdvResourceDefinitionVersionId' - The ID of the resource definition version. This value maps to the ''Version'' property of the corresponding ''VersionInformation'' object, which is returned by ''ListResourceDefinitionVersions'' requests. If the version is the last one that was associated with a resource definition, the value also maps to the ''LatestVersion'' property of the corresponding ''DefinitionInformation'' object.
 --
 -- * 'grdvResourceDefinitionId' - The ID of the resource definition.
 getResourceDefinitionVersion
@@ -73,7 +73,7 @@ getResourceDefinitionVersion
                                   _grdvResourceDefinitionId =
                                     pResourceDefinitionId_}
 
--- | The ID of the resource definition version.
+-- | The ID of the resource definition version. This value maps to the ''Version'' property of the corresponding ''VersionInformation'' object, which is returned by ''ListResourceDefinitionVersions'' requests. If the version is the last one that was associated with a resource definition, the value also maps to the ''LatestVersion'' property of the corresponding ''DefinitionInformation'' object.
 grdvResourceDefinitionVersionId :: Lens' GetResourceDefinitionVersion Text
 grdvResourceDefinitionVersionId = lens _grdvResourceDefinitionVersionId (\ s a -> s{_grdvResourceDefinitionVersionId = a})
 

@@ -50,7 +50,7 @@ newtype DeleteCertificate = DeleteCertificate'{_dcCertificateARN
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dcCertificateARN' - String that contains the ARN of the ACM certificate to be deleted. This must be of the form: @arn:aws:acm:region:123456789012:certificate/12345678-1234-1234-1234-123456789012@  For more information about ARNs, see <http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html Amazon Resource Names (ARNs) and AWS Service Namespaces> .
+-- * 'dcCertificateARN' - String that contains the ARN of the ACM certificate to be deleted. This must be of the form: @arn:aws:acm:region:123456789012:certificate/12345678-1234-1234-1234-123456789012@  For more information about ARNs, see <https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html Amazon Resource Names (ARNs) and AWS Service Namespaces> .
 deleteCertificate
     :: Text -- ^ 'dcCertificateARN'
     -> DeleteCertificate
@@ -58,7 +58,7 @@ deleteCertificate pCertificateARN_
   = DeleteCertificate'{_dcCertificateARN =
                          pCertificateARN_}
 
--- | String that contains the ARN of the ACM certificate to be deleted. This must be of the form: @arn:aws:acm:region:123456789012:certificate/12345678-1234-1234-1234-123456789012@  For more information about ARNs, see <http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html Amazon Resource Names (ARNs) and AWS Service Namespaces> .
+-- | String that contains the ARN of the ACM certificate to be deleted. This must be of the form: @arn:aws:acm:region:123456789012:certificate/12345678-1234-1234-1234-123456789012@  For more information about ARNs, see <https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html Amazon Resource Names (ARNs) and AWS Service Namespaces> .
 dcCertificateARN :: Lens' DeleteCertificate Text
 dcCertificateARN = lens _dcCertificateARN (\ s a -> s{_dcCertificateARN = a})
 

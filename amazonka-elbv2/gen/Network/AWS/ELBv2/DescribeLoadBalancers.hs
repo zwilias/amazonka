@@ -160,7 +160,7 @@ data DescribeLoadBalancersResponse = DescribeLoadBalancersResponse'{_dlbrsLoadBa
 --
 -- * 'dlbrsLoadBalancers' - Information about the load balancers.
 --
--- * 'dlbrsNextMarker' - The marker to use when requesting the next set of results. If there are no additional results, the string is empty.
+-- * 'dlbrsNextMarker' - If there are additional results, this is the marker for the next set of results. Otherwise, this is null.
 --
 -- * 'dlbrsResponseStatus' - -- | The response status code.
 describeLoadBalancersResponse
@@ -176,7 +176,7 @@ describeLoadBalancersResponse pResponseStatus_
 dlbrsLoadBalancers :: Lens' DescribeLoadBalancersResponse [LoadBalancer]
 dlbrsLoadBalancers = lens _dlbrsLoadBalancers (\ s a -> s{_dlbrsLoadBalancers = a}) . _Default . _Coerce
 
--- | The marker to use when requesting the next set of results. If there are no additional results, the string is empty.
+-- | If there are additional results, this is the marker for the next set of results. Otherwise, this is null.
 dlbrsNextMarker :: Lens' DescribeLoadBalancersResponse (Maybe Text)
 dlbrsNextMarker = lens _dlbrsNextMarker (\ s a -> s{_dlbrsNextMarker = a})
 

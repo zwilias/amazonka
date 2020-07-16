@@ -23,8 +23,9 @@ import Network.AWS.Prelude
 -- | Returns information about the specified configuration revision.
 --
 -- /See:/ 'configurationRevision' smart constructor.
-data ConfigurationRevision = ConfigurationRevision'{_crRevision
-                                                    :: !(Maybe Int),
+data ConfigurationRevision = ConfigurationRevision'{_crCreated
+                                                    :: !(Maybe POSIX),
+                                                    _crRevision :: !(Maybe Int),
                                                     _crDescription ::
                                                     !(Maybe Text)}
                                deriving (Eq, Read, Show, Data, Typeable,
@@ -34,16 +35,22 @@ data ConfigurationRevision = ConfigurationRevision'{_crRevision
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'crRevision' - Required. The revision of the configuration.
+-- * 'crCreated' - Required. The date and time of the configuration revision.
+--
+-- * 'crRevision' - Required. The revision number of the configuration.
 --
 -- * 'crDescription' - The description of the configuration revision.
 configurationRevision
     :: ConfigurationRevision
 configurationRevision
-  = ConfigurationRevision'{_crRevision = Nothing,
-                           _crDescription = Nothing}
+  = ConfigurationRevision'{_crCreated = Nothing,
+                           _crRevision = Nothing, _crDescription = Nothing}
 
--- | Required. The revision of the configuration.
+-- | Required. The date and time of the configuration revision.
+crCreated :: Lens' ConfigurationRevision (Maybe UTCTime)
+crCreated = lens _crCreated (\ s a -> s{_crCreated = a}) . mapping _Time
+
+-- | Required. The revision number of the configuration.
 crRevision :: Lens' ConfigurationRevision (Maybe Int)
 crRevision = lens _crRevision (\ s a -> s{_crRevision = a})
 
@@ -56,7 +63,8 @@ instance FromJSON ConfigurationRevision where
           = withObject "ConfigurationRevision"
               (\ x ->
                  ConfigurationRevision' <$>
-                   (x .:? "revision") <*> (x .:? "description"))
+                   (x .:? "created") <*> (x .:? "revision") <*>
+                     (x .:? "description"))
 
 instance Hashable ConfigurationRevision where
 

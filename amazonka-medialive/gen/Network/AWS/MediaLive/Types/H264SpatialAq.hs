@@ -27,7 +27,7 @@ module Network.AWS.MediaLive.Types.H264SpatialAq (
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | Placeholder documentation for H264SpatialAq
+-- | H264 Spatial Aq
 data H264SpatialAq = H264SpatialAq' (CI Text)
                        deriving (Eq, Ord, Read, Show, Data, Typeable,
                                  Generic)

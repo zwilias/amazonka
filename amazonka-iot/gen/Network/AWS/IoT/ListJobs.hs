@@ -21,6 +21,8 @@
 -- Lists jobs.
 --
 --
+--
+-- This operation returns paginated results.
 module Network.AWS.IoT.ListJobs
     (
     -- * Creating a Request
@@ -46,6 +48,7 @@ module Network.AWS.IoT.ListJobs
 import Network.AWS.IoT.Types
 import Network.AWS.IoT.Types.Product
 import Network.AWS.Lens
+import Network.AWS.Pager
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
@@ -106,6 +109,13 @@ ljMaxResults = lens _ljMaxResults (\ s a -> s{_ljMaxResults = a}) . mapping _Nat
 -- | Specifies whether the job will continue to run (CONTINUOUS), or will be complete after all those things specified as targets have completed the job (SNAPSHOT). If continuous, the job may also be run on a thing when a change is detected in a target. For example, a job will run on a thing when the thing is added to a target group, even after the job was completed by all things originally in the group. 
 ljTargetSelection :: Lens' ListJobs (Maybe TargetSelection)
 ljTargetSelection = lens _ljTargetSelection (\ s a -> s{_ljTargetSelection = a})
+
+instance AWSPager ListJobs where
+        page rq rs
+          | stop (rs ^. ljrsNextToken) = Nothing
+          | stop (rs ^. ljrsJobs) = Nothing
+          | otherwise =
+            Just $ rq & ljNextToken .~ rs ^. ljrsNextToken
 
 instance AWSRequest ListJobs where
         type Rs ListJobs = ListJobsResponse

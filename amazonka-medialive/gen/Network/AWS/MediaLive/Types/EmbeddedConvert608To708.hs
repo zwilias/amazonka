@@ -27,7 +27,7 @@ module Network.AWS.MediaLive.Types.EmbeddedConvert608To708 (
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | Placeholder documentation for EmbeddedConvert608To708
+-- | Embedded Convert608 To708
 data EmbeddedConvert608To708 = EmbeddedConvert608To708' (CI
                                                            Text)
                                  deriving (Eq, Ord, Read, Show, Data, Typeable,

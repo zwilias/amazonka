@@ -37,7 +37,7 @@ data ChangeInfo = ChangeInfo'{_ciComment ::
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'ciComment' - A complex type that describes change information about changes made to your hosted zone. This element contains an ID that you use when performing a 'GetChange' action to get detailed information about the change.
+-- * 'ciComment' - A complex type that describes change information about changes made to your hosted zone. This element contains an ID that you use when performing a <https://docs.aws.amazon.com/Route53/latest/APIReference/API_GetChange.html GetChange> action to get detailed information about the change.
 --
 -- * 'ciId' - The ID of the request.
 --
@@ -54,7 +54,7 @@ changeInfo pId_ pStatus_ pSubmittedAt_
                 _ciStatus = pStatus_,
                 _ciSubmittedAt = _Time # pSubmittedAt_}
 
--- | A complex type that describes change information about changes made to your hosted zone. This element contains an ID that you use when performing a 'GetChange' action to get detailed information about the change.
+-- | A complex type that describes change information about changes made to your hosted zone. This element contains an ID that you use when performing a <https://docs.aws.amazon.com/Route53/latest/APIReference/API_GetChange.html GetChange> action to get detailed information about the change.
 ciComment :: Lens' ChangeInfo (Maybe Text)
 ciComment = lens _ciComment (\ s a -> s{_ciComment = a})
 

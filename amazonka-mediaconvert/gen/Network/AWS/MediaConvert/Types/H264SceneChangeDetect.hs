@@ -21,13 +21,14 @@ module Network.AWS.MediaConvert.Types.H264SceneChangeDetect (
     ..
     , H264ScnChngDtctDisabled
     , H264ScnChngDtctEnabled
+    , H264ScnChngDtctTransitionDetection
     )
   ) where
 
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | Scene change detection (inserts I-frames on scene changes).
+-- | Enable this setting to insert I-frames at scene changes that the service automatically detects. This improves video quality and is enabled by default. If this output uses QVBR, choose Transition detection (TRANSITION_DETECTION) for further video quality improvement. For more information about QVBR, see https://docs.aws.amazon.com/console/mediaconvert/cbr-vbr-qvbr.
 data H264SceneChangeDetect = H264SceneChangeDetect' (CI
                                                        Text)
                                deriving (Eq, Ord, Read, Show, Data, Typeable,
@@ -39,9 +40,13 @@ pattern H264ScnChngDtctDisabled = H264SceneChangeDetect' "DISABLED"
 pattern H264ScnChngDtctEnabled :: H264SceneChangeDetect
 pattern H264ScnChngDtctEnabled = H264SceneChangeDetect' "ENABLED"
 
+pattern H264ScnChngDtctTransitionDetection :: H264SceneChangeDetect
+pattern H264ScnChngDtctTransitionDetection = H264SceneChangeDetect' "TRANSITION_DETECTION"
+
 {-# COMPLETE
   H264ScnChngDtctDisabled,
   H264ScnChngDtctEnabled,
+  H264ScnChngDtctTransitionDetection,
   H264SceneChangeDetect' #-}
 
 instance FromText H264SceneChangeDetect where
@@ -58,10 +63,12 @@ instance Enum H264SceneChangeDetect where
     toEnum i = case i of
         0 -> H264ScnChngDtctDisabled
         1 -> H264ScnChngDtctEnabled
+        2 -> H264ScnChngDtctTransitionDetection
         _ -> (error . showText) $ "Unknown index for H264SceneChangeDetect: " <> toText i
     fromEnum x = case x of
         H264ScnChngDtctDisabled -> 0
         H264ScnChngDtctEnabled -> 1
+        H264ScnChngDtctTransitionDetection -> 2
         H264SceneChangeDetect' name -> (error . showText) $ "Unknown H264SceneChangeDetect: " <> original name
 
 -- | Represents the bounds of /known/ $H264SceneChangeDetect.
@@ -69,7 +76,7 @@ instance Enum H264SceneChangeDetect where
 --   This instance exists only for backward compatibility.
 instance Bounded H264SceneChangeDetect where
     minBound = H264ScnChngDtctDisabled
-    maxBound = H264ScnChngDtctEnabled
+    maxBound = H264ScnChngDtctTransitionDetection
 
 instance Hashable     H264SceneChangeDetect
 instance NFData       H264SceneChangeDetect

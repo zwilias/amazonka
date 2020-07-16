@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Updates a notebook instance lifecycle configuration created with the API.
+-- Updates a notebook instance lifecycle configuration created with the 'CreateNotebookInstanceLifecycleConfig' API.
 --
 --
 module Network.AWS.SageMaker.UpdateNotebookInstanceLifecycleConfig
@@ -64,9 +64,9 @@ data UpdateNotebookInstanceLifecycleConfig = UpdateNotebookInstanceLifecycleConf
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'unilcOnCreate' - The shell script that runs only once, when you create a notebook instance
+-- * 'unilcOnCreate' - The shell script that runs only once, when you create a notebook instance. The shell script must be a base64-encoded string.
 --
--- * 'unilcOnStart' - The shell script that runs every time you start a notebook instance, including when you create the notebook instance.
+-- * 'unilcOnStart' - The shell script that runs every time you start a notebook instance, including when you create the notebook instance. The shell script must be a base64-encoded string.
 --
 -- * 'unilcNotebookInstanceLifecycleConfigName' - The name of the lifecycle configuration.
 updateNotebookInstanceLifecycleConfig
@@ -81,11 +81,11 @@ updateNotebookInstanceLifecycleConfig
                                              =
                                              pNotebookInstanceLifecycleConfigName_}
 
--- | The shell script that runs only once, when you create a notebook instance
+-- | The shell script that runs only once, when you create a notebook instance. The shell script must be a base64-encoded string.
 unilcOnCreate :: Lens' UpdateNotebookInstanceLifecycleConfig [NotebookInstanceLifecycleHook]
 unilcOnCreate = lens _unilcOnCreate (\ s a -> s{_unilcOnCreate = a}) . _Default . _Coerce
 
--- | The shell script that runs every time you start a notebook instance, including when you create the notebook instance.
+-- | The shell script that runs every time you start a notebook instance, including when you create the notebook instance. The shell script must be a base64-encoded string.
 unilcOnStart :: Lens' UpdateNotebookInstanceLifecycleConfig [NotebookInstanceLifecycleHook]
 unilcOnStart = lens _unilcOnStart (\ s a -> s{_unilcOnStart = a}) . _Default . _Coerce
 

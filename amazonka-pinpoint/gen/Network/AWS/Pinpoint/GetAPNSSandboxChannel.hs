@@ -18,7 +18,9 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Get an APNS sandbox channel
+-- Retrieves information about the status and settings of the APNs sandbox channel for an application.
+--
+--
 module Network.AWS.Pinpoint.GetAPNSSandboxChannel
     (
     -- * Creating a Request
@@ -52,7 +54,7 @@ newtype GetAPNSSandboxChannel = GetAPNSSandboxChannel'{_gascApplicationId
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'gascApplicationId' - Undocumented member.
+-- * 'gascApplicationId' - The unique identifier for the application. This identifier is displayed as the __Project ID__ on the Amazon Pinpoint console.
 getAPNSSandboxChannel
     :: Text -- ^ 'gascApplicationId'
     -> GetAPNSSandboxChannel
@@ -60,7 +62,7 @@ getAPNSSandboxChannel pApplicationId_
   = GetAPNSSandboxChannel'{_gascApplicationId =
                              pApplicationId_}
 
--- | Undocumented member.
+-- | The unique identifier for the application. This identifier is displayed as the __Project ID__ on the Amazon Pinpoint console.
 gascApplicationId :: Lens' GetAPNSSandboxChannel Text
 gascApplicationId = lens _gascApplicationId (\ s a -> s{_gascApplicationId = a})
 

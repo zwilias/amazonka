@@ -22,6 +22,7 @@ module Network.AWS.Transcribe.Types.TranscriptionJobStatus (
     , TJSCompleted
     , TJSFailed
     , TJSInProgress
+    , TJSQueued
     )
   ) where
 
@@ -42,10 +43,14 @@ pattern TJSFailed = TranscriptionJobStatus' "FAILED"
 pattern TJSInProgress :: TranscriptionJobStatus
 pattern TJSInProgress = TranscriptionJobStatus' "IN_PROGRESS"
 
+pattern TJSQueued :: TranscriptionJobStatus
+pattern TJSQueued = TranscriptionJobStatus' "QUEUED"
+
 {-# COMPLETE
   TJSCompleted,
   TJSFailed,
   TJSInProgress,
+  TJSQueued,
   TranscriptionJobStatus' #-}
 
 instance FromText TranscriptionJobStatus where
@@ -63,11 +68,13 @@ instance Enum TranscriptionJobStatus where
         0 -> TJSCompleted
         1 -> TJSFailed
         2 -> TJSInProgress
+        3 -> TJSQueued
         _ -> (error . showText) $ "Unknown index for TranscriptionJobStatus: " <> toText i
     fromEnum x = case x of
         TJSCompleted -> 0
         TJSFailed -> 1
         TJSInProgress -> 2
+        TJSQueued -> 3
         TranscriptionJobStatus' name -> (error . showText) $ "Unknown TranscriptionJobStatus: " <> original name
 
 -- | Represents the bounds of /known/ $TranscriptionJobStatus.
@@ -75,7 +82,7 @@ instance Enum TranscriptionJobStatus where
 --   This instance exists only for backward compatibility.
 instance Bounded TranscriptionJobStatus where
     minBound = TJSCompleted
-    maxBound = TJSInProgress
+    maxBound = TJSQueued
 
 instance Hashable     TranscriptionJobStatus
 instance NFData       TranscriptionJobStatus

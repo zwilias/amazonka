@@ -21,13 +21,13 @@ import Network.AWS.KinesisAnalytics.Types.RecordFormatType
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | Describes the data format when records are written to the destination. For more information, see <http://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-it-works-output.html Configuring Application Output> . 
+-- | Describes the data format when records are written to the destination. For more information, see <https://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-it-works-output.html Configuring Application Output> . 
 --
 --
 --
 -- /See:/ 'destinationSchema' smart constructor.
 newtype DestinationSchema = DestinationSchema'{_dsRecordFormatType
-                                               :: Maybe RecordFormatType}
+                                               :: RecordFormatType}
                               deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DestinationSchema' with the minimum fields required to make a request.
@@ -36,19 +36,21 @@ newtype DestinationSchema = DestinationSchema'{_dsRecordFormatType
 --
 -- * 'dsRecordFormatType' - Specifies the format of the records on the output stream.
 destinationSchema
-    :: DestinationSchema
-destinationSchema
-  = DestinationSchema'{_dsRecordFormatType = Nothing}
+    :: RecordFormatType -- ^ 'dsRecordFormatType'
+    -> DestinationSchema
+destinationSchema pRecordFormatType_
+  = DestinationSchema'{_dsRecordFormatType =
+                         pRecordFormatType_}
 
 -- | Specifies the format of the records on the output stream.
-dsRecordFormatType :: Lens' DestinationSchema (Maybe RecordFormatType)
+dsRecordFormatType :: Lens' DestinationSchema RecordFormatType
 dsRecordFormatType = lens _dsRecordFormatType (\ s a -> s{_dsRecordFormatType = a})
 
 instance FromJSON DestinationSchema where
         parseJSON
           = withObject "DestinationSchema"
               (\ x ->
-                 DestinationSchema' <$> (x .:? "RecordFormatType"))
+                 DestinationSchema' <$> (x .: "RecordFormatType"))
 
 instance Hashable DestinationSchema where
 
@@ -58,4 +60,4 @@ instance ToJSON DestinationSchema where
         toJSON DestinationSchema'{..}
           = object
               (catMaybes
-                 [("RecordFormatType" .=) <$> _dsRecordFormatType])
+                 [Just ("RecordFormatType" .= _dsRecordFormatType)])

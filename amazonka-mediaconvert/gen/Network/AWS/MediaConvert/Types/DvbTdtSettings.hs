@@ -24,7 +24,7 @@ import Network.AWS.Prelude
 --
 -- /See:/ 'dvbTdtSettings' smart constructor.
 newtype DvbTdtSettings = DvbTdtSettings'{_dtsTdtInterval
-                                         :: Maybe Int}
+                                         :: Maybe Nat}
                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DvbTdtSettings' with the minimum fields required to make a request.
@@ -38,8 +38,8 @@ dvbTdtSettings
   = DvbTdtSettings'{_dtsTdtInterval = Nothing}
 
 -- | The number of milliseconds between instances of this table in the output transport stream.
-dtsTdtInterval :: Lens' DvbTdtSettings (Maybe Int)
-dtsTdtInterval = lens _dtsTdtInterval (\ s a -> s{_dtsTdtInterval = a})
+dtsTdtInterval :: Lens' DvbTdtSettings (Maybe Natural)
+dtsTdtInterval = lens _dtsTdtInterval (\ s a -> s{_dtsTdtInterval = a}) . mapping _Nat
 
 instance FromJSON DvbTdtSettings where
         parseJSON

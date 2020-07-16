@@ -40,21 +40,21 @@ data ApplicationSummary = ApplicationSummary'{_asCreationTime
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'asCreationTime' - The date/time this resource was created.
+-- * 'asCreationTime' - The date and time this resource was created.
 --
--- * 'asHomePageURL' - A URL with more information about the application, for example  the location of your GitHub repository for the application.
+-- * 'asHomePageURL' - A URL with more information about the application, for example the location of your GitHub repository for the application.
 --
--- * 'asLabels' - Labels to improve discovery of apps in search results. Min Length=1. Max Length=127. Maximum number of labels: 10 Pattern: "^[a-zA-Z0-9+\\-_:\\/@]+$";
+-- * 'asLabels' - Labels to improve discovery of apps in search results. Minimum length=1. Maximum length=127. Maximum number of labels: 10 Pattern: "^[a-zA-Z0-9+\\-_:\\/@]+$";
 --
 -- * 'asSpdxLicenseId' - A valid identifier from <https://spdx.org/licenses/ https://spdx.org/licenses/> .
 --
--- * 'asDescription' - The description of the application. Min Length=1. Max Length=256
+-- * 'asDescription' - The description of the application. Minimum length=1. Maximum length=256
 --
--- * 'asAuthor' - The name of the author publishing the app. Min Length=1. Max Length=127. Pattern "^[a-z0-9](([a-z0-9]|-(?!-))*[a-z0-9])?$";
+-- * 'asAuthor' - The name of the author publishing the app. Minimum length=1. Maximum length=127. Pattern "^[a-z0-9](([a-z0-9]|-(?!-))*[a-z0-9])?$";
 --
--- * 'asApplicationId' - The application ARN.
+-- * 'asApplicationId' - The application Amazon Resource Name (ARN).
 --
--- * 'asName' - The name of the application. Min Length=1. Max Length=140 Pattern: "[a-zA-Z0-9\\-]+";
+-- * 'asName' - The name of the application. Minimum length=1. Maximum length=140 Pattern: "[a-zA-Z0-9\\-]+";
 applicationSummary
     :: Text -- ^ 'asDescription'
     -> Text -- ^ 'asAuthor'
@@ -69,15 +69,15 @@ applicationSummary pDescription_ pAuthor_
                         _asDescription = pDescription_, _asAuthor = pAuthor_,
                         _asApplicationId = pApplicationId_, _asName = pName_}
 
--- | The date/time this resource was created.
+-- | The date and time this resource was created.
 asCreationTime :: Lens' ApplicationSummary (Maybe Text)
 asCreationTime = lens _asCreationTime (\ s a -> s{_asCreationTime = a})
 
--- | A URL with more information about the application, for example  the location of your GitHub repository for the application.
+-- | A URL with more information about the application, for example the location of your GitHub repository for the application.
 asHomePageURL :: Lens' ApplicationSummary (Maybe Text)
 asHomePageURL = lens _asHomePageURL (\ s a -> s{_asHomePageURL = a})
 
--- | Labels to improve discovery of apps in search results. Min Length=1. Max Length=127. Maximum number of labels: 10 Pattern: "^[a-zA-Z0-9+\\-_:\\/@]+$";
+-- | Labels to improve discovery of apps in search results. Minimum length=1. Maximum length=127. Maximum number of labels: 10 Pattern: "^[a-zA-Z0-9+\\-_:\\/@]+$";
 asLabels :: Lens' ApplicationSummary [Text]
 asLabels = lens _asLabels (\ s a -> s{_asLabels = a}) . _Default . _Coerce
 
@@ -85,19 +85,19 @@ asLabels = lens _asLabels (\ s a -> s{_asLabels = a}) . _Default . _Coerce
 asSpdxLicenseId :: Lens' ApplicationSummary (Maybe Text)
 asSpdxLicenseId = lens _asSpdxLicenseId (\ s a -> s{_asSpdxLicenseId = a})
 
--- | The description of the application. Min Length=1. Max Length=256
+-- | The description of the application. Minimum length=1. Maximum length=256
 asDescription :: Lens' ApplicationSummary Text
 asDescription = lens _asDescription (\ s a -> s{_asDescription = a})
 
--- | The name of the author publishing the app. Min Length=1. Max Length=127. Pattern "^[a-z0-9](([a-z0-9]|-(?!-))*[a-z0-9])?$";
+-- | The name of the author publishing the app. Minimum length=1. Maximum length=127. Pattern "^[a-z0-9](([a-z0-9]|-(?!-))*[a-z0-9])?$";
 asAuthor :: Lens' ApplicationSummary Text
 asAuthor = lens _asAuthor (\ s a -> s{_asAuthor = a})
 
--- | The application ARN.
+-- | The application Amazon Resource Name (ARN).
 asApplicationId :: Lens' ApplicationSummary Text
 asApplicationId = lens _asApplicationId (\ s a -> s{_asApplicationId = a})
 
--- | The name of the application. Min Length=1. Max Length=140 Pattern: "[a-zA-Z0-9\\-]+";
+-- | The name of the application. Minimum length=1. Maximum length=140 Pattern: "[a-zA-Z0-9\\-]+";
 asName :: Lens' ApplicationSummary Text
 asName = lens _asName (\ s a -> s{_asName = a})
 

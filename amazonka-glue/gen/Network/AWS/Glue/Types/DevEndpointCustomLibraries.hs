@@ -20,7 +20,7 @@ module Network.AWS.Glue.Types.DevEndpointCustomLibraries where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | Custom libraries to be loaded into a DevEndpoint.
+-- | Custom libraries to be loaded into a development endpoint.
 --
 --
 --
@@ -36,9 +36,9 @@ data DevEndpointCustomLibraries = DevEndpointCustomLibraries'{_declExtraPythonLi
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'declExtraPythonLibsS3Path' - Path(s) to one or more Python libraries in an S3 bucket that should be loaded in your DevEndpoint. Multiple values must be complete paths separated by a comma. Please note that only pure Python libraries can currently be used on a DevEndpoint. Libraries that rely on C extensions, such as the <http://pandas.pydata.org/ pandas> Python data analysis library, are not yet supported.
+-- * 'declExtraPythonLibsS3Path' - The paths to one or more Python libraries in an Amazon Simple Storage Service (Amazon S3) bucket that should be loaded in your @DevEndpoint@ . Multiple values must be complete paths separated by a comma.
 --
--- * 'declExtraJARsS3Path' - Path to one or more Java Jars in an S3 bucket that should be loaded in your DevEndpoint. Please note that only pure Java/Scala libraries can currently be used on a DevEndpoint.
+-- * 'declExtraJARsS3Path' - The path to one or more Java @.jar@ files in an S3 bucket that should be loaded in your @DevEndpoint@ .
 devEndpointCustomLibraries
     :: DevEndpointCustomLibraries
 devEndpointCustomLibraries
@@ -46,11 +46,11 @@ devEndpointCustomLibraries
                                   = Nothing,
                                 _declExtraJARsS3Path = Nothing}
 
--- | Path(s) to one or more Python libraries in an S3 bucket that should be loaded in your DevEndpoint. Multiple values must be complete paths separated by a comma. Please note that only pure Python libraries can currently be used on a DevEndpoint. Libraries that rely on C extensions, such as the <http://pandas.pydata.org/ pandas> Python data analysis library, are not yet supported.
+-- | The paths to one or more Python libraries in an Amazon Simple Storage Service (Amazon S3) bucket that should be loaded in your @DevEndpoint@ . Multiple values must be complete paths separated by a comma.
 declExtraPythonLibsS3Path :: Lens' DevEndpointCustomLibraries (Maybe Text)
 declExtraPythonLibsS3Path = lens _declExtraPythonLibsS3Path (\ s a -> s{_declExtraPythonLibsS3Path = a})
 
--- | Path to one or more Java Jars in an S3 bucket that should be loaded in your DevEndpoint. Please note that only pure Java/Scala libraries can currently be used on a DevEndpoint.
+-- | The path to one or more Java @.jar@ files in an S3 bucket that should be loaded in your @DevEndpoint@ .
 declExtraJARsS3Path :: Lens' DevEndpointCustomLibraries (Maybe Text)
 declExtraJARsS3Path = lens _declExtraJARsS3Path (\ s a -> s{_declExtraJARsS3Path = a})
 

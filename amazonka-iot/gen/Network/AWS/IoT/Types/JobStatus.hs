@@ -21,6 +21,7 @@ module Network.AWS.IoT.Types.JobStatus (
     ..
     , JSCanceled
     , JSCompleted
+    , JSDeletionInProgress
     , JSInProgress
     )
   ) where
@@ -38,12 +39,16 @@ pattern JSCanceled = JobStatus' "CANCELED"
 pattern JSCompleted :: JobStatus
 pattern JSCompleted = JobStatus' "COMPLETED"
 
+pattern JSDeletionInProgress :: JobStatus
+pattern JSDeletionInProgress = JobStatus' "DELETION_IN_PROGRESS"
+
 pattern JSInProgress :: JobStatus
 pattern JSInProgress = JobStatus' "IN_PROGRESS"
 
 {-# COMPLETE
   JSCanceled,
   JSCompleted,
+  JSDeletionInProgress,
   JSInProgress,
   JobStatus' #-}
 
@@ -61,12 +66,14 @@ instance Enum JobStatus where
     toEnum i = case i of
         0 -> JSCanceled
         1 -> JSCompleted
-        2 -> JSInProgress
+        2 -> JSDeletionInProgress
+        3 -> JSInProgress
         _ -> (error . showText) $ "Unknown index for JobStatus: " <> toText i
     fromEnum x = case x of
         JSCanceled -> 0
         JSCompleted -> 1
-        JSInProgress -> 2
+        JSDeletionInProgress -> 2
+        JSInProgress -> 3
         JobStatus' name -> (error . showText) $ "Unknown JobStatus: " <> original name
 
 -- | Represents the bounds of /known/ $JobStatus.

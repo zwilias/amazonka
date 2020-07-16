@@ -18,7 +18,9 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Delete an APNS sandbox channel
+-- Disables the APNs sandbox channel for an application and deletes any existing settings for the channel.
+--
+--
 module Network.AWS.Pinpoint.DeleteAPNSSandboxChannel
     (
     -- * Creating a Request
@@ -52,7 +54,7 @@ newtype DeleteAPNSSandboxChannel = DeleteAPNSSandboxChannel'{_dascApplicationId
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dascApplicationId' - Undocumented member.
+-- * 'dascApplicationId' - The unique identifier for the application. This identifier is displayed as the __Project ID__ on the Amazon Pinpoint console.
 deleteAPNSSandboxChannel
     :: Text -- ^ 'dascApplicationId'
     -> DeleteAPNSSandboxChannel
@@ -60,7 +62,7 @@ deleteAPNSSandboxChannel pApplicationId_
   = DeleteAPNSSandboxChannel'{_dascApplicationId =
                                 pApplicationId_}
 
--- | Undocumented member.
+-- | The unique identifier for the application. This identifier is displayed as the __Project ID__ on the Amazon Pinpoint console.
 dascApplicationId :: Lens' DeleteAPNSSandboxChannel Text
 dascApplicationId = lens _dascApplicationId (\ s a -> s{_dascApplicationId = a})
 

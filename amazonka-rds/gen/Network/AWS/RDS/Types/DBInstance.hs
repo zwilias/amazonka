@@ -19,6 +19,7 @@ module Network.AWS.RDS.Types.DBInstance where
 
 import Network.AWS.Lens
 import Network.AWS.Prelude
+import Network.AWS.RDS.Types.DBInstanceRole
 import Network.AWS.RDS.Types.DBInstanceStatusInfo
 import Network.AWS.RDS.Types.DBParameterGroupStatus
 import Network.AWS.RDS.Types.DBSecurityGroupMembership
@@ -27,12 +28,13 @@ import Network.AWS.RDS.Types.DomainMembership
 import Network.AWS.RDS.Types.Endpoint
 import Network.AWS.RDS.Types.OptionGroupMembership
 import Network.AWS.RDS.Types.PendingModifiedValues
+import Network.AWS.RDS.Types.ProcessorFeature
 import Network.AWS.RDS.Types.VPCSecurityGroupMembership
 
 -- | Contains the details of an Amazon RDS DB instance. 
 --
 --
--- This data type is used as a response element in the 'DescribeDBInstances' action. 
+-- This data type is used as a response element in the @DescribeDBInstances@ action. 
 --
 --
 -- /See:/ 'dbInstance' smart constructor.
@@ -40,6 +42,7 @@ data DBInstance = DBInstance'{_diEngineVersion ::
                               !(Maybe Text),
                               _diDBSecurityGroups ::
                               !(Maybe [DBSecurityGroupMembership]),
+                              _diDeletionProtection :: !(Maybe Bool),
                               _diStorageEncrypted :: !(Maybe Bool),
                               _diDBClusterIdentifier :: !(Maybe Text),
                               _diPubliclyAccessible :: !(Maybe Bool),
@@ -57,16 +60,22 @@ data DBInstance = DBInstance'{_diEngineVersion ::
                               !(Maybe Text),
                               _diMonitoringInterval :: !(Maybe Int),
                               _diEngine :: !(Maybe Text),
+                              _diProcessorFeatures ::
+                              !(Maybe [ProcessorFeature]),
                               _diLatestRestorableTime :: !(Maybe ISO8601),
                               _diDBInstanceClass :: !(Maybe Text),
                               _diPromotionTier :: !(Maybe Int),
                               _diLicenseModel :: !(Maybe Text),
                               _diPreferredMaintenanceWindow :: !(Maybe Text),
+                              _diPerformanceInsightsRetentionPeriod ::
+                              !(Maybe Int),
                               _diCACertificateIdentifier :: !(Maybe Text),
                               _diDBInstanceIdentifier :: !(Maybe Text),
                               _diCharacterSetName :: !(Maybe Text),
+                              _diMaxAllocatedStorage :: !(Maybe Int),
                               _diKMSKeyId :: !(Maybe Text),
                               _diPreferredBackupWindow :: !(Maybe Text),
+                              _diAssociatedRoles :: !(Maybe [DBInstanceRole]),
                               _diAvailabilityZone :: !(Maybe Text),
                               _diVPCSecurityGroups ::
                               !(Maybe [VPCSecurityGroupMembership]),
@@ -74,6 +83,7 @@ data DBInstance = DBInstance'{_diEngineVersion ::
                               _diPerformanceInsightsKMSKeyId :: !(Maybe Text),
                               _diDBSubnetGroup :: !(Maybe DBSubnetGroup),
                               _diMultiAZ :: !(Maybe Bool),
+                              _diListenerEndpoint :: !(Maybe Endpoint),
                               _diOptionGroupMemberships ::
                               !(Maybe [OptionGroupMembership]),
                               _diEnabledCloudwatchLogsExports ::
@@ -108,13 +118,15 @@ data DBInstance = DBInstance'{_diEngineVersion ::
 --
 -- * 'diEngineVersion' - Indicates the database engine version.
 --
--- * 'diDBSecurityGroups' - Provides List of DB security group elements containing only @DBSecurityGroup.Name@ and @DBSecurityGroup.Status@ subelements. 
+-- * 'diDBSecurityGroups' - A list of DB security group elements containing @DBSecurityGroup.Name@ and @DBSecurityGroup.Status@ subelements. 
+--
+-- * 'diDeletionProtection' - Indicates if the DB instance has deletion protection enabled. The database can't be deleted when deletion protection is enabled. For more information, see <https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_DeleteInstance.html Deleting a DB Instance> . 
 --
 -- * 'diStorageEncrypted' - Specifies whether the DB instance is encrypted.
 --
 -- * 'diDBClusterIdentifier' - If the DB instance is a member of a DB cluster, contains the name of the DB cluster that the DB instance is a member of.
 --
--- * 'diPubliclyAccessible' - Specifies the accessibility options for the DB instance. A value of true specifies an Internet-facing instance with a publicly resolvable DNS name, which resolves to a public IP address. A value of false specifies an internal instance with a DNS name that resolves to a private IP address. Default: The default behavior varies depending on whether a VPC has been requested or not. The following list shows the default behavior in each case.     * __Default VPC:__ true     * __VPC:__ false If no DB subnet group has been specified as part of the request and the PubliclyAccessible value has not been set, the DB instance is publicly accessible. If a specific DB subnet group has been specified as part of the request and the PubliclyAccessible value has not been set, the DB instance is private.
+-- * 'diPubliclyAccessible' - Specifies the accessibility options for the DB instance. A value of true specifies an Internet-facing instance with a publicly resolvable DNS name, which resolves to a public IP address. A value of false specifies an internal instance with a DNS name that resolves to a private IP address.
 --
 -- * 'diAutoMinorVersionUpgrade' - Indicates that minor version patches are applied automatically.
 --
@@ -122,7 +134,7 @@ data DBInstance = DBInstance'{_diEngineVersion ::
 --
 -- * 'diMasterUsername' - Contains the master username for the DB instance.
 --
--- * 'diReadReplicaDBInstanceIdentifiers' - Contains one or more identifiers of the Read Replicas associated with this DB instance.
+-- * 'diReadReplicaDBInstanceIdentifiers' - Contains one or more identifiers of the read replicas associated with this DB instance.
 --
 -- * 'diIAMDatabaseAuthenticationEnabled' - True if mapping of AWS Identity and Access Management (IAM) accounts to database accounts is enabled, and otherwise false. IAM database authentication can be enabled for the following database engines     * For MySQL 5.6, minor version 5.6.34 or higher     * For MySQL 5.7, minor version 5.7.16 or higher     * Aurora 5.6 or higher. To enable IAM database authentication for Aurora, see DBCluster Type.
 --
@@ -132,21 +144,25 @@ data DBInstance = DBInstance'{_diEngineVersion ::
 --
 -- * 'diInstanceCreateTime' - Provides the date and time the DB instance was created.
 --
--- * 'diReadReplicaSourceDBInstanceIdentifier' - Contains the identifier of the source DB instance if this DB instance is a Read Replica.
+-- * 'diReadReplicaSourceDBInstanceIdentifier' - Contains the identifier of the source DB instance if this DB instance is a read replica.
 --
 -- * 'diMonitoringInterval' - The interval, in seconds, between points when Enhanced Monitoring metrics are collected for the DB instance.
 --
 -- * 'diEngine' - Provides the name of the database engine to be used for this DB instance.
 --
+-- * 'diProcessorFeatures' - The number of CPU cores and the number of threads per core for the DB instance class of the DB instance.
+--
 -- * 'diLatestRestorableTime' - Specifies the latest time to which a database can be restored with point-in-time restore.
 --
 -- * 'diDBInstanceClass' - Contains the name of the compute and memory capacity class of the DB instance.
 --
--- * 'diPromotionTier' - A value that specifies the order in which an Aurora Replica is promoted to the primary instance after a failure of the existing primary instance. For more information, see <http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Aurora.Managing.html#Aurora.Managing.FaultTolerance Fault Tolerance for an Aurora DB Cluster> . 
+-- * 'diPromotionTier' - A value that specifies the order in which an Aurora Replica is promoted to the primary instance after a failure of the existing primary instance. For more information, see <https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.Managing.Backups.html#Aurora.Managing.FaultTolerance Fault Tolerance for an Aurora DB Cluster> in the /Amazon Aurora User Guide/ . 
 --
 -- * 'diLicenseModel' - License model information for this DB instance.
 --
 -- * 'diPreferredMaintenanceWindow' - Specifies the weekly time range during which system maintenance can occur, in Universal Coordinated Time (UTC).
+--
+-- * 'diPerformanceInsightsRetentionPeriod' - The amount of time, in days, to retain Performance Insights data. Valid values are 7 or 731 (2 years). 
 --
 -- * 'diCACertificateIdentifier' - The identifier of the CA certificate for this DB instance.
 --
@@ -154,9 +170,13 @@ data DBInstance = DBInstance'{_diEngineVersion ::
 --
 -- * 'diCharacterSetName' - If present, specifies the name of the character set that this instance is associated with.
 --
+-- * 'diMaxAllocatedStorage' - The upper limit to which Amazon RDS can automatically scale the storage of the DB instance.
+--
 -- * 'diKMSKeyId' - If @StorageEncrypted@ is true, the AWS KMS key identifier for the encrypted DB instance. 
 --
 -- * 'diPreferredBackupWindow' - Specifies the daily time range during which automated backups are created if automated backups are enabled, as determined by the @BackupRetentionPeriod@ . 
+--
+-- * 'diAssociatedRoles' - The AWS Identity and Access Management (IAM) roles associated with the DB instance. 
 --
 -- * 'diAvailabilityZone' - Specifies the name of the Availability Zone the DB instance is located in.
 --
@@ -170,9 +190,11 @@ data DBInstance = DBInstance'{_diEngineVersion ::
 --
 -- * 'diMultiAZ' - Specifies if the DB instance is a Multi-AZ deployment.
 --
+-- * 'diListenerEndpoint' - Specifies the listener connection endpoint for SQL Server Always On.
+--
 -- * 'diOptionGroupMemberships' - Provides the list of option group memberships for this DB instance.
 --
--- * 'diEnabledCloudwatchLogsExports' - A list of log types that this DB instance is configured to export to CloudWatch Logs.
+-- * 'diEnabledCloudwatchLogsExports' - A list of log types that this DB instance is configured to export to CloudWatch Logs. Log types vary by DB engine. For information about the log types for each DB engine, see <https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_LogAccess.html Amazon RDS Database Log Files> in the /Amazon RDS User Guide./ 
 --
 -- * 'diEnhancedMonitoringResourceARN' - The Amazon Resource Name (ARN) of the Amazon CloudWatch Logs log stream that receives the Enhanced Monitoring metrics data for the DB instance.
 --
@@ -186,7 +208,7 @@ data DBInstance = DBInstance'{_diEngineVersion ::
 --
 -- * 'diDBParameterGroups' - Provides the list of DB parameter groups applied to this DB instance.
 --
--- * 'diCopyTagsToSnapshot' - Specifies whether tags are copied from the DB instance to snapshots of the DB instance.
+-- * 'diCopyTagsToSnapshot' - Specifies whether tags are copied from the DB instance to snapshots of the DB instance. __Amazon Aurora__  Not applicable. Copying tags to snapshots is managed by the DB cluster. Setting this value for an Aurora DB instance has no effect on the DB cluster setting. For more information, see @DBCluster@ .
 --
 -- * 'diTimezone' - The time zone of the DB instance. In most cases, the @Timezone@ element is empty. @Timezone@ content appears only for Microsoft SQL Server DB instances that were created with a time zone specified. 
 --
@@ -194,26 +216,27 @@ data DBInstance = DBInstance'{_diEngineVersion ::
 --
 -- * 'diEndpoint' - Specifies the connection endpoint.
 --
--- * 'diDBInstanceStatus' - Specifies the current state of this database.
+-- * 'diDBInstanceStatus' - Specifies the current state of this database. For information about DB instance statuses, see <https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.DBInstance.Status.html DB Instance Status> in the /Amazon RDS User Guide./ 
 --
 -- * 'diDBInstancePort' - Specifies the port that the DB instance listens on. If the DB instance is part of a DB cluster, this can be a different port than the DB cluster port.
 --
 -- * 'diPendingModifiedValues' - Specifies that changes to the DB instance are pending. This element is only included when changes are pending. Specific changes are identified by subelements.
 --
--- * 'diReadReplicaDBClusterIdentifiers' - Contains one or more identifiers of Aurora DB clusters that are Read Replicas of this DB instance.
+-- * 'diReadReplicaDBClusterIdentifiers' - Contains one or more identifiers of Aurora DB clusters to which the RDS DB instance is replicated as a read replica. For example, when you create an Aurora read replica of an RDS MySQL DB instance, the Aurora MySQL DB cluster for the Aurora read replica is shown. This output does not contain information about cross region Aurora read replicas.
 --
 -- * 'diStorageType' - Specifies the storage type associated with DB instance.
 --
--- * 'diStatusInfos' - The status of a Read Replica. If the instance is not a Read Replica, this is blank.
+-- * 'diStatusInfos' - The status of a read replica. If the instance isn't a read replica, this is blank.
 --
 -- * 'diDomainMemberships' - The Active Directory Domain membership records associated with the DB instance.
 --
--- * 'diDBName' - The meaning of this parameter differs according to the database engine you use. For example, this value returns MySQL, MariaDB, or PostgreSQL information when returning values from CreateDBInstanceReadReplica since Read Replicas are only supported for these engines. __MySQL, MariaDB, SQL Server, PostgreSQL__  Contains the name of the initial database of this instance that was provided at create time, if one was specified when the DB instance was created. This same name is returned for the life of the DB instance. Type: String __Oracle__  Contains the Oracle System ID (SID) of the created DB instance. Not shown when the returned parameters do not apply to an Oracle DB instance.
+-- * 'diDBName' - The meaning of this parameter differs according to the database engine you use. __MySQL, MariaDB, SQL Server, PostgreSQL__  Contains the name of the initial database of this instance that was provided at create time, if one was specified when the DB instance was created. This same name is returned for the life of the DB instance. Type: String __Oracle__  Contains the Oracle System ID (SID) of the created DB instance. Not shown when the returned parameters do not apply to an Oracle DB instance.
 dbInstance
     :: DBInstance
 dbInstance
   = DBInstance'{_diEngineVersion = Nothing,
                 _diDBSecurityGroups = Nothing,
+                _diDeletionProtection = Nothing,
                 _diStorageEncrypted = Nothing,
                 _diDBClusterIdentifier = Nothing,
                 _diPubliclyAccessible = Nothing,
@@ -226,20 +249,26 @@ dbInstance
                 _diInstanceCreateTime = Nothing,
                 _diReadReplicaSourceDBInstanceIdentifier = Nothing,
                 _diMonitoringInterval = Nothing, _diEngine = Nothing,
+                _diProcessorFeatures = Nothing,
                 _diLatestRestorableTime = Nothing,
                 _diDBInstanceClass = Nothing,
                 _diPromotionTier = Nothing,
                 _diLicenseModel = Nothing,
                 _diPreferredMaintenanceWindow = Nothing,
+                _diPerformanceInsightsRetentionPeriod = Nothing,
                 _diCACertificateIdentifier = Nothing,
                 _diDBInstanceIdentifier = Nothing,
-                _diCharacterSetName = Nothing, _diKMSKeyId = Nothing,
+                _diCharacterSetName = Nothing,
+                _diMaxAllocatedStorage = Nothing,
+                _diKMSKeyId = Nothing,
                 _diPreferredBackupWindow = Nothing,
+                _diAssociatedRoles = Nothing,
                 _diAvailabilityZone = Nothing,
                 _diVPCSecurityGroups = Nothing,
                 _diBackupRetentionPeriod = Nothing,
                 _diPerformanceInsightsKMSKeyId = Nothing,
                 _diDBSubnetGroup = Nothing, _diMultiAZ = Nothing,
+                _diListenerEndpoint = Nothing,
                 _diOptionGroupMemberships = Nothing,
                 _diEnabledCloudwatchLogsExports = Nothing,
                 _diEnhancedMonitoringResourceARN = Nothing,
@@ -261,9 +290,13 @@ dbInstance
 diEngineVersion :: Lens' DBInstance (Maybe Text)
 diEngineVersion = lens _diEngineVersion (\ s a -> s{_diEngineVersion = a})
 
--- | Provides List of DB security group elements containing only @DBSecurityGroup.Name@ and @DBSecurityGroup.Status@ subelements. 
+-- | A list of DB security group elements containing @DBSecurityGroup.Name@ and @DBSecurityGroup.Status@ subelements. 
 diDBSecurityGroups :: Lens' DBInstance [DBSecurityGroupMembership]
 diDBSecurityGroups = lens _diDBSecurityGroups (\ s a -> s{_diDBSecurityGroups = a}) . _Default . _Coerce
+
+-- | Indicates if the DB instance has deletion protection enabled. The database can't be deleted when deletion protection is enabled. For more information, see <https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_DeleteInstance.html Deleting a DB Instance> . 
+diDeletionProtection :: Lens' DBInstance (Maybe Bool)
+diDeletionProtection = lens _diDeletionProtection (\ s a -> s{_diDeletionProtection = a})
 
 -- | Specifies whether the DB instance is encrypted.
 diStorageEncrypted :: Lens' DBInstance (Maybe Bool)
@@ -273,7 +306,7 @@ diStorageEncrypted = lens _diStorageEncrypted (\ s a -> s{_diStorageEncrypted = 
 diDBClusterIdentifier :: Lens' DBInstance (Maybe Text)
 diDBClusterIdentifier = lens _diDBClusterIdentifier (\ s a -> s{_diDBClusterIdentifier = a})
 
--- | Specifies the accessibility options for the DB instance. A value of true specifies an Internet-facing instance with a publicly resolvable DNS name, which resolves to a public IP address. A value of false specifies an internal instance with a DNS name that resolves to a private IP address. Default: The default behavior varies depending on whether a VPC has been requested or not. The following list shows the default behavior in each case.     * __Default VPC:__ true     * __VPC:__ false If no DB subnet group has been specified as part of the request and the PubliclyAccessible value has not been set, the DB instance is publicly accessible. If a specific DB subnet group has been specified as part of the request and the PubliclyAccessible value has not been set, the DB instance is private.
+-- | Specifies the accessibility options for the DB instance. A value of true specifies an Internet-facing instance with a publicly resolvable DNS name, which resolves to a public IP address. A value of false specifies an internal instance with a DNS name that resolves to a private IP address.
 diPubliclyAccessible :: Lens' DBInstance (Maybe Bool)
 diPubliclyAccessible = lens _diPubliclyAccessible (\ s a -> s{_diPubliclyAccessible = a})
 
@@ -289,7 +322,7 @@ diDBInstanceARN = lens _diDBInstanceARN (\ s a -> s{_diDBInstanceARN = a})
 diMasterUsername :: Lens' DBInstance (Maybe Text)
 diMasterUsername = lens _diMasterUsername (\ s a -> s{_diMasterUsername = a})
 
--- | Contains one or more identifiers of the Read Replicas associated with this DB instance.
+-- | Contains one or more identifiers of the read replicas associated with this DB instance.
 diReadReplicaDBInstanceIdentifiers :: Lens' DBInstance [Text]
 diReadReplicaDBInstanceIdentifiers = lens _diReadReplicaDBInstanceIdentifiers (\ s a -> s{_diReadReplicaDBInstanceIdentifiers = a}) . _Default . _Coerce
 
@@ -309,7 +342,7 @@ diIOPS = lens _diIOPS (\ s a -> s{_diIOPS = a})
 diInstanceCreateTime :: Lens' DBInstance (Maybe UTCTime)
 diInstanceCreateTime = lens _diInstanceCreateTime (\ s a -> s{_diInstanceCreateTime = a}) . mapping _Time
 
--- | Contains the identifier of the source DB instance if this DB instance is a Read Replica.
+-- | Contains the identifier of the source DB instance if this DB instance is a read replica.
 diReadReplicaSourceDBInstanceIdentifier :: Lens' DBInstance (Maybe Text)
 diReadReplicaSourceDBInstanceIdentifier = lens _diReadReplicaSourceDBInstanceIdentifier (\ s a -> s{_diReadReplicaSourceDBInstanceIdentifier = a})
 
@@ -321,6 +354,10 @@ diMonitoringInterval = lens _diMonitoringInterval (\ s a -> s{_diMonitoringInter
 diEngine :: Lens' DBInstance (Maybe Text)
 diEngine = lens _diEngine (\ s a -> s{_diEngine = a})
 
+-- | The number of CPU cores and the number of threads per core for the DB instance class of the DB instance.
+diProcessorFeatures :: Lens' DBInstance [ProcessorFeature]
+diProcessorFeatures = lens _diProcessorFeatures (\ s a -> s{_diProcessorFeatures = a}) . _Default . _Coerce
+
 -- | Specifies the latest time to which a database can be restored with point-in-time restore.
 diLatestRestorableTime :: Lens' DBInstance (Maybe UTCTime)
 diLatestRestorableTime = lens _diLatestRestorableTime (\ s a -> s{_diLatestRestorableTime = a}) . mapping _Time
@@ -329,7 +366,7 @@ diLatestRestorableTime = lens _diLatestRestorableTime (\ s a -> s{_diLatestResto
 diDBInstanceClass :: Lens' DBInstance (Maybe Text)
 diDBInstanceClass = lens _diDBInstanceClass (\ s a -> s{_diDBInstanceClass = a})
 
--- | A value that specifies the order in which an Aurora Replica is promoted to the primary instance after a failure of the existing primary instance. For more information, see <http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Aurora.Managing.html#Aurora.Managing.FaultTolerance Fault Tolerance for an Aurora DB Cluster> . 
+-- | A value that specifies the order in which an Aurora Replica is promoted to the primary instance after a failure of the existing primary instance. For more information, see <https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.Managing.Backups.html#Aurora.Managing.FaultTolerance Fault Tolerance for an Aurora DB Cluster> in the /Amazon Aurora User Guide/ . 
 diPromotionTier :: Lens' DBInstance (Maybe Int)
 diPromotionTier = lens _diPromotionTier (\ s a -> s{_diPromotionTier = a})
 
@@ -340,6 +377,10 @@ diLicenseModel = lens _diLicenseModel (\ s a -> s{_diLicenseModel = a})
 -- | Specifies the weekly time range during which system maintenance can occur, in Universal Coordinated Time (UTC).
 diPreferredMaintenanceWindow :: Lens' DBInstance (Maybe Text)
 diPreferredMaintenanceWindow = lens _diPreferredMaintenanceWindow (\ s a -> s{_diPreferredMaintenanceWindow = a})
+
+-- | The amount of time, in days, to retain Performance Insights data. Valid values are 7 or 731 (2 years). 
+diPerformanceInsightsRetentionPeriod :: Lens' DBInstance (Maybe Int)
+diPerformanceInsightsRetentionPeriod = lens _diPerformanceInsightsRetentionPeriod (\ s a -> s{_diPerformanceInsightsRetentionPeriod = a})
 
 -- | The identifier of the CA certificate for this DB instance.
 diCACertificateIdentifier :: Lens' DBInstance (Maybe Text)
@@ -353,6 +394,10 @@ diDBInstanceIdentifier = lens _diDBInstanceIdentifier (\ s a -> s{_diDBInstanceI
 diCharacterSetName :: Lens' DBInstance (Maybe Text)
 diCharacterSetName = lens _diCharacterSetName (\ s a -> s{_diCharacterSetName = a})
 
+-- | The upper limit to which Amazon RDS can automatically scale the storage of the DB instance.
+diMaxAllocatedStorage :: Lens' DBInstance (Maybe Int)
+diMaxAllocatedStorage = lens _diMaxAllocatedStorage (\ s a -> s{_diMaxAllocatedStorage = a})
+
 -- | If @StorageEncrypted@ is true, the AWS KMS key identifier for the encrypted DB instance. 
 diKMSKeyId :: Lens' DBInstance (Maybe Text)
 diKMSKeyId = lens _diKMSKeyId (\ s a -> s{_diKMSKeyId = a})
@@ -360,6 +405,10 @@ diKMSKeyId = lens _diKMSKeyId (\ s a -> s{_diKMSKeyId = a})
 -- | Specifies the daily time range during which automated backups are created if automated backups are enabled, as determined by the @BackupRetentionPeriod@ . 
 diPreferredBackupWindow :: Lens' DBInstance (Maybe Text)
 diPreferredBackupWindow = lens _diPreferredBackupWindow (\ s a -> s{_diPreferredBackupWindow = a})
+
+-- | The AWS Identity and Access Management (IAM) roles associated with the DB instance. 
+diAssociatedRoles :: Lens' DBInstance [DBInstanceRole]
+diAssociatedRoles = lens _diAssociatedRoles (\ s a -> s{_diAssociatedRoles = a}) . _Default . _Coerce
 
 -- | Specifies the name of the Availability Zone the DB instance is located in.
 diAvailabilityZone :: Lens' DBInstance (Maybe Text)
@@ -385,11 +434,15 @@ diDBSubnetGroup = lens _diDBSubnetGroup (\ s a -> s{_diDBSubnetGroup = a})
 diMultiAZ :: Lens' DBInstance (Maybe Bool)
 diMultiAZ = lens _diMultiAZ (\ s a -> s{_diMultiAZ = a})
 
+-- | Specifies the listener connection endpoint for SQL Server Always On.
+diListenerEndpoint :: Lens' DBInstance (Maybe Endpoint)
+diListenerEndpoint = lens _diListenerEndpoint (\ s a -> s{_diListenerEndpoint = a})
+
 -- | Provides the list of option group memberships for this DB instance.
 diOptionGroupMemberships :: Lens' DBInstance [OptionGroupMembership]
 diOptionGroupMemberships = lens _diOptionGroupMemberships (\ s a -> s{_diOptionGroupMemberships = a}) . _Default . _Coerce
 
--- | A list of log types that this DB instance is configured to export to CloudWatch Logs.
+-- | A list of log types that this DB instance is configured to export to CloudWatch Logs. Log types vary by DB engine. For information about the log types for each DB engine, see <https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_LogAccess.html Amazon RDS Database Log Files> in the /Amazon RDS User Guide./ 
 diEnabledCloudwatchLogsExports :: Lens' DBInstance [Text]
 diEnabledCloudwatchLogsExports = lens _diEnabledCloudwatchLogsExports (\ s a -> s{_diEnabledCloudwatchLogsExports = a}) . _Default . _Coerce
 
@@ -417,7 +470,7 @@ diDBiResourceId = lens _diDBiResourceId (\ s a -> s{_diDBiResourceId = a})
 diDBParameterGroups :: Lens' DBInstance [DBParameterGroupStatus]
 diDBParameterGroups = lens _diDBParameterGroups (\ s a -> s{_diDBParameterGroups = a}) . _Default . _Coerce
 
--- | Specifies whether tags are copied from the DB instance to snapshots of the DB instance.
+-- | Specifies whether tags are copied from the DB instance to snapshots of the DB instance. __Amazon Aurora__  Not applicable. Copying tags to snapshots is managed by the DB cluster. Setting this value for an Aurora DB instance has no effect on the DB cluster setting. For more information, see @DBCluster@ .
 diCopyTagsToSnapshot :: Lens' DBInstance (Maybe Bool)
 diCopyTagsToSnapshot = lens _diCopyTagsToSnapshot (\ s a -> s{_diCopyTagsToSnapshot = a})
 
@@ -433,7 +486,7 @@ diTDECredentialARN = lens _diTDECredentialARN (\ s a -> s{_diTDECredentialARN = 
 diEndpoint :: Lens' DBInstance (Maybe Endpoint)
 diEndpoint = lens _diEndpoint (\ s a -> s{_diEndpoint = a})
 
--- | Specifies the current state of this database.
+-- | Specifies the current state of this database. For information about DB instance statuses, see <https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.DBInstance.Status.html DB Instance Status> in the /Amazon RDS User Guide./ 
 diDBInstanceStatus :: Lens' DBInstance (Maybe Text)
 diDBInstanceStatus = lens _diDBInstanceStatus (\ s a -> s{_diDBInstanceStatus = a})
 
@@ -445,7 +498,7 @@ diDBInstancePort = lens _diDBInstancePort (\ s a -> s{_diDBInstancePort = a})
 diPendingModifiedValues :: Lens' DBInstance (Maybe PendingModifiedValues)
 diPendingModifiedValues = lens _diPendingModifiedValues (\ s a -> s{_diPendingModifiedValues = a})
 
--- | Contains one or more identifiers of Aurora DB clusters that are Read Replicas of this DB instance.
+-- | Contains one or more identifiers of Aurora DB clusters to which the RDS DB instance is replicated as a read replica. For example, when you create an Aurora read replica of an RDS MySQL DB instance, the Aurora MySQL DB cluster for the Aurora read replica is shown. This output does not contain information about cross region Aurora read replicas.
 diReadReplicaDBClusterIdentifiers :: Lens' DBInstance [Text]
 diReadReplicaDBClusterIdentifiers = lens _diReadReplicaDBClusterIdentifiers (\ s a -> s{_diReadReplicaDBClusterIdentifiers = a}) . _Default . _Coerce
 
@@ -453,7 +506,7 @@ diReadReplicaDBClusterIdentifiers = lens _diReadReplicaDBClusterIdentifiers (\ s
 diStorageType :: Lens' DBInstance (Maybe Text)
 diStorageType = lens _diStorageType (\ s a -> s{_diStorageType = a})
 
--- | The status of a Read Replica. If the instance is not a Read Replica, this is blank.
+-- | The status of a read replica. If the instance isn't a read replica, this is blank.
 diStatusInfos :: Lens' DBInstance [DBInstanceStatusInfo]
 diStatusInfos = lens _diStatusInfos (\ s a -> s{_diStatusInfos = a}) . _Default . _Coerce
 
@@ -461,7 +514,7 @@ diStatusInfos = lens _diStatusInfos (\ s a -> s{_diStatusInfos = a}) . _Default 
 diDomainMemberships :: Lens' DBInstance [DomainMembership]
 diDomainMemberships = lens _diDomainMemberships (\ s a -> s{_diDomainMemberships = a}) . _Default . _Coerce
 
--- | The meaning of this parameter differs according to the database engine you use. For example, this value returns MySQL, MariaDB, or PostgreSQL information when returning values from CreateDBInstanceReadReplica since Read Replicas are only supported for these engines. __MySQL, MariaDB, SQL Server, PostgreSQL__  Contains the name of the initial database of this instance that was provided at create time, if one was specified when the DB instance was created. This same name is returned for the life of the DB instance. Type: String __Oracle__  Contains the Oracle System ID (SID) of the created DB instance. Not shown when the returned parameters do not apply to an Oracle DB instance.
+-- | The meaning of this parameter differs according to the database engine you use. __MySQL, MariaDB, SQL Server, PostgreSQL__  Contains the name of the initial database of this instance that was provided at create time, if one was specified when the DB instance was created. This same name is returned for the life of the DB instance. Type: String __Oracle__  Contains the Oracle System ID (SID) of the created DB instance. Not shown when the returned parameters do not apply to an Oracle DB instance.
 diDBName :: Lens' DBInstance (Maybe Text)
 diDBName = lens _diDBName (\ s a -> s{_diDBName = a})
 
@@ -471,6 +524,7 @@ instance FromXML DBInstance where
               (x .@? "EngineVersion") <*>
                 (x .@? "DBSecurityGroups" .!@ mempty >>=
                    may (parseXMLList "DBSecurityGroup"))
+                <*> (x .@? "DeletionProtection")
                 <*> (x .@? "StorageEncrypted")
                 <*> (x .@? "DBClusterIdentifier")
                 <*> (x .@? "PubliclyAccessible")
@@ -488,16 +542,24 @@ instance FromXML DBInstance where
                 <*> (x .@? "ReadReplicaSourceDBInstanceIdentifier")
                 <*> (x .@? "MonitoringInterval")
                 <*> (x .@? "Engine")
+                <*>
+                (x .@? "ProcessorFeatures" .!@ mempty >>=
+                   may (parseXMLList "ProcessorFeature"))
                 <*> (x .@? "LatestRestorableTime")
                 <*> (x .@? "DBInstanceClass")
                 <*> (x .@? "PromotionTier")
                 <*> (x .@? "LicenseModel")
                 <*> (x .@? "PreferredMaintenanceWindow")
+                <*> (x .@? "PerformanceInsightsRetentionPeriod")
                 <*> (x .@? "CACertificateIdentifier")
                 <*> (x .@? "DBInstanceIdentifier")
                 <*> (x .@? "CharacterSetName")
+                <*> (x .@? "MaxAllocatedStorage")
                 <*> (x .@? "KmsKeyId")
                 <*> (x .@? "PreferredBackupWindow")
+                <*>
+                (x .@? "AssociatedRoles" .!@ mempty >>=
+                   may (parseXMLList "DBInstanceRole"))
                 <*> (x .@? "AvailabilityZone")
                 <*>
                 (x .@? "VpcSecurityGroups" .!@ mempty >>=
@@ -506,6 +568,7 @@ instance FromXML DBInstance where
                 <*> (x .@? "PerformanceInsightsKMSKeyId")
                 <*> (x .@? "DBSubnetGroup")
                 <*> (x .@? "MultiAZ")
+                <*> (x .@? "ListenerEndpoint")
                 <*>
                 (x .@? "OptionGroupMemberships" .!@ mempty >>=
                    may (parseXMLList "OptionGroupMembership"))

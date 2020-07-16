@@ -21,6 +21,8 @@
 -- Closes the public ports on a specific Amazon Lightsail instance.
 --
 --
+-- The @close instance public ports@ operation supports tag-based access control via resource tags applied to the resource identified by @instance name@ . For more information, see the <https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags Lightsail Dev Guide> .
+--
 module Network.AWS.Lightsail.CloseInstancePublicPorts
     (
     -- * Creating a Request
@@ -129,7 +131,7 @@ data CloseInstancePublicPortsResponse = CloseInstancePublicPortsResponse'{_cippr
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'cipprsOperation' - An array of key-value pairs that contains information about the operation.
+-- * 'cipprsOperation' - An array of objects that describe the result of the action, such as the status of the request, the time stamp of the request, and the resources affected by the request.
 --
 -- * 'cipprsResponseStatus' - -- | The response status code.
 closeInstancePublicPortsResponse
@@ -140,7 +142,7 @@ closeInstancePublicPortsResponse pResponseStatus_
                                         = Nothing,
                                       _cipprsResponseStatus = pResponseStatus_}
 
--- | An array of key-value pairs that contains information about the operation.
+-- | An array of objects that describe the result of the action, such as the status of the request, the time stamp of the request, and the resources affected by the request.
 cipprsOperation :: Lens' CloseInstancePublicPortsResponse (Maybe Operation)
 cipprsOperation = lens _cipprsOperation (\ s a -> s{_cipprsOperation = a})
 

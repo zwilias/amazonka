@@ -21,7 +21,7 @@
 -- Deletes a snapshot of a volume.
 --
 --
--- You can take snapshots of your gateway volumes on a scheduled or ad hoc basis. This API action enables you to delete a snapshot schedule for a volume. For more information, see <http://docs.aws.amazon.com/storagegateway/latest/userguide/WorkingWithSnapshots.html Working with Snapshots> . In the @DeleteSnapshotSchedule@ request, you identify the volume by providing its Amazon Resource Name (ARN). This operation is only supported in stored and cached volume gateway types.
+-- You can take snapshots of your gateway volumes on a scheduled or ad hoc basis. This API action enables you to delete a snapshot schedule for a volume. For more information, see <https://docs.aws.amazon.com/storagegateway/latest/userguide/WorkingWithSnapshots.html Working with Snapshots> . In the @DeleteSnapshotSchedule@ request, you identify the volume by providing its Amazon Resource Name (ARN). This operation is only supported in stored and cached volume gateway types.
 --
 module Network.AWS.StorageGateway.DeleteSnapshotSchedule
     (
@@ -56,14 +56,14 @@ newtype DeleteSnapshotSchedule = DeleteSnapshotSchedule'{_dVolumeARN
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dVolumeARN' - Undocumented member.
+-- * 'dVolumeARN' - The volume which snapshot schedule to delete.
 deleteSnapshotSchedule
     :: Text -- ^ 'dVolumeARN'
     -> DeleteSnapshotSchedule
 deleteSnapshotSchedule pVolumeARN_
   = DeleteSnapshotSchedule'{_dVolumeARN = pVolumeARN_}
 
--- | Undocumented member.
+-- | The volume which snapshot schedule to delete.
 dVolumeARN :: Lens' DeleteSnapshotSchedule Text
 dVolumeARN = lens _dVolumeARN (\ s a -> s{_dVolumeARN = a})
 
@@ -116,7 +116,7 @@ data DeleteSnapshotScheduleResponse = DeleteSnapshotScheduleResponse'{_dltsnpsht
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dltsnpshtschdlrsVolumeARN' - Undocumented member.
+-- * 'dltsnpshtschdlrsVolumeARN' - The volume which snapshot schedule was deleted.
 --
 -- * 'dltsnpshtschdlrsResponseStatus' - -- | The response status code.
 deleteSnapshotScheduleResponse
@@ -128,7 +128,7 @@ deleteSnapshotScheduleResponse pResponseStatus_
                                     _dltsnpshtschdlrsResponseStatus =
                                       pResponseStatus_}
 
--- | Undocumented member.
+-- | The volume which snapshot schedule was deleted.
 dltsnpshtschdlrsVolumeARN :: Lens' DeleteSnapshotScheduleResponse (Maybe Text)
 dltsnpshtschdlrsVolumeARN = lens _dltsnpshtschdlrsVolumeARN (\ s a -> s{_dltsnpshtschdlrsVolumeARN = a})
 

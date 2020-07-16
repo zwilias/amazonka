@@ -32,13 +32,13 @@ newtype OutputSettings = OutputSettings'{_osHlsSettings
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'osHlsSettings' - Undocumented member.
+-- * 'osHlsSettings' - Settings for HLS output groups
 outputSettings
     :: OutputSettings
 outputSettings
   = OutputSettings'{_osHlsSettings = Nothing}
 
--- | Undocumented member.
+-- | Settings for HLS output groups
 osHlsSettings :: Lens' OutputSettings (Maybe HlsSettings)
 osHlsSettings = lens _osHlsSettings (\ s a -> s{_osHlsSettings = a})
 

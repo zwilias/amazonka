@@ -18,12 +18,12 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Creates an AWS organization. The account whose user is calling the CreateOrganization operation automatically becomes the <http://docs.aws.amazon.com/IAM/latest/UserGuide/orgs_getting-started_concepts.html#account master account> of the new organization.
+-- Creates an AWS organization. The account whose user is calling the @CreateOrganization@ operation automatically becomes the <https://docs.aws.amazon.com/IAM/latest/UserGuide/orgs_getting-started_concepts.html#account master account> of the new organization.
 --
 --
 -- This operation must be called using credentials from the account that is to become the new organization's master account. The principal must also have the relevant IAM permissions.
 --
--- By default (or if you set the @FeatureSet@ parameter to @ALL@ ), the new organization is created with all features enabled and service control policies automatically enabled in the root. If you instead choose to create the organization supporting only the consolidated billing features by setting the @FeatureSet@ parameter to @CONSOLIDATED_BILLING"@ , then no policy types are enabled by default and you cannot use organization policies.
+-- By default (or if you set the @FeatureSet@ parameter to @ALL@ ), the new organization is created with all features enabled and service control policies automatically enabled in the root. If you instead choose to create the organization supporting only the consolidated billing features by setting the @FeatureSet@ parameter to @CONSOLIDATED_BILLING"@ , no policy types are enabled by default, and you can't use organization policies
 --
 module Network.AWS.Organizations.CreateOrganization
     (
@@ -59,13 +59,13 @@ newtype CreateOrganization = CreateOrganization'{_coFeatureSet
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'coFeatureSet' - Specifies the feature set supported by the new organization. Each feature set supports different levels of functionality.     * /CONSOLIDATED_BILLING/ : All member accounts have their bills consolidated to and paid by the master account. For more information, see <http://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html#feature-set-cb-only Consolidated Billing> in the /AWS Organizations User Guide/ .     * /ALL/ : In addition to all the features supported by the consolidated billing feature set, the master account can also apply any type of policy to any member account in the organization. For more information, see <http://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html#feature-set-all All features> in the /AWS Organizations User Guide/ .
+-- * 'coFeatureSet' - Specifies the feature set supported by the new organization. Each feature set supports different levels of functionality.     * @CONSOLIDATED_BILLING@ : All member accounts have their bills consolidated to and paid by the master account. For more information, see <https://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html#feature-set-cb-only Consolidated billing> in the /AWS Organizations User Guide./  The consolidated billing feature subset isn't available for organizations in the AWS GovCloud (US) Region.     * @ALL@ : In addition to all the features supported by the consolidated billing feature set, the master account can also apply any policy type to any member account in the organization. For more information, see <https://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html#feature-set-all All features> in the /AWS Organizations User Guide./ 
 createOrganization
     :: CreateOrganization
 createOrganization
   = CreateOrganization'{_coFeatureSet = Nothing}
 
--- | Specifies the feature set supported by the new organization. Each feature set supports different levels of functionality.     * /CONSOLIDATED_BILLING/ : All member accounts have their bills consolidated to and paid by the master account. For more information, see <http://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html#feature-set-cb-only Consolidated Billing> in the /AWS Organizations User Guide/ .     * /ALL/ : In addition to all the features supported by the consolidated billing feature set, the master account can also apply any type of policy to any member account in the organization. For more information, see <http://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html#feature-set-all All features> in the /AWS Organizations User Guide/ .
+-- | Specifies the feature set supported by the new organization. Each feature set supports different levels of functionality.     * @CONSOLIDATED_BILLING@ : All member accounts have their bills consolidated to and paid by the master account. For more information, see <https://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html#feature-set-cb-only Consolidated billing> in the /AWS Organizations User Guide./  The consolidated billing feature subset isn't available for organizations in the AWS GovCloud (US) Region.     * @ALL@ : In addition to all the features supported by the consolidated billing feature set, the master account can also apply any policy type to any member account in the organization. For more information, see <https://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html#feature-set-all All features> in the /AWS Organizations User Guide./ 
 coFeatureSet :: Lens' CreateOrganization (Maybe OrganizationFeatureSet)
 coFeatureSet = lens _coFeatureSet (\ s a -> s{_coFeatureSet = a})
 

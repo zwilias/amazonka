@@ -21,7 +21,9 @@ import Network.AWS.Lens
 import Network.AWS.Pinpoint.Types.ChannelType
 import Network.AWS.Prelude
 
--- | Address configuration.
+-- | Specifies address-based configuration settings for a message that's sent directly to an endpoint.
+--
+--
 --
 -- /See:/ 'addressConfiguration' smart constructor.
 data AddressConfiguration = AddressConfiguration'{_acSubstitutions
@@ -42,17 +44,17 @@ data AddressConfiguration = AddressConfiguration'{_acSubstitutions
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'acSubstitutions' - A map of substitution values for the message to be merged with the DefaultMessage's substitutions. Substitutions on this map take precedence over the all other substitutions.
+-- * 'acSubstitutions' - A map of the message variables to merge with the variables specified by properties of the DefaultMessage object. The variables specified in this map take precedence over all other variables.
 --
--- * 'acTitleOverride' - Title override. If specified will override default title if applicable.
+-- * 'acTitleOverride' - The message title to use instead of the default message title. This value overrides the default message title.
 --
--- * 'acContext' - A map of custom attributes to attributes to be attached to the message for this address. This payload is added to the push notification's 'data.pinpoint' object or added to the email/sms delivery receipt event attributes.
+-- * 'acContext' - An object that maps custom attributes to attributes for the address and is attached to the message. Attribute names are case sensitive. For a push notification, this payload is added to the data.pinpoint object. For an email or text message, this payload is added to email/SMS delivery receipt event attributes.
 --
--- * 'acRawContent' - The Raw JSON formatted string to be used as the payload. This value overrides the message.
+-- * 'acRawContent' - The raw, JSON-formatted string to use as the payload for the message. If specified, this value overrides all other values for the message.
 --
--- * 'acBodyOverride' - Body override. If specified will override default body.
+-- * 'acBodyOverride' - The message body to use instead of the default message body. This value overrides the default message body.
 --
--- * 'acChannelType' - The channel type. Valid values: GCM | APNS | APNS_SANDBOX | APNS_VOIP | APNS_VOIP_SANDBOX | ADM | SMS | EMAIL | BAIDU
+-- * 'acChannelType' - The channel to use when sending the message.
 addressConfiguration
     :: AddressConfiguration
 addressConfiguration
@@ -61,27 +63,27 @@ addressConfiguration
                           _acRawContent = Nothing, _acBodyOverride = Nothing,
                           _acChannelType = Nothing}
 
--- | A map of substitution values for the message to be merged with the DefaultMessage's substitutions. Substitutions on this map take precedence over the all other substitutions.
+-- | A map of the message variables to merge with the variables specified by properties of the DefaultMessage object. The variables specified in this map take precedence over all other variables.
 acSubstitutions :: Lens' AddressConfiguration (HashMap Text [Text])
 acSubstitutions = lens _acSubstitutions (\ s a -> s{_acSubstitutions = a}) . _Default . _Map
 
--- | Title override. If specified will override default title if applicable.
+-- | The message title to use instead of the default message title. This value overrides the default message title.
 acTitleOverride :: Lens' AddressConfiguration (Maybe Text)
 acTitleOverride = lens _acTitleOverride (\ s a -> s{_acTitleOverride = a})
 
--- | A map of custom attributes to attributes to be attached to the message for this address. This payload is added to the push notification's 'data.pinpoint' object or added to the email/sms delivery receipt event attributes.
+-- | An object that maps custom attributes to attributes for the address and is attached to the message. Attribute names are case sensitive. For a push notification, this payload is added to the data.pinpoint object. For an email or text message, this payload is added to email/SMS delivery receipt event attributes.
 acContext :: Lens' AddressConfiguration (HashMap Text Text)
 acContext = lens _acContext (\ s a -> s{_acContext = a}) . _Default . _Map
 
--- | The Raw JSON formatted string to be used as the payload. This value overrides the message.
+-- | The raw, JSON-formatted string to use as the payload for the message. If specified, this value overrides all other values for the message.
 acRawContent :: Lens' AddressConfiguration (Maybe Text)
 acRawContent = lens _acRawContent (\ s a -> s{_acRawContent = a})
 
--- | Body override. If specified will override default body.
+-- | The message body to use instead of the default message body. This value overrides the default message body.
 acBodyOverride :: Lens' AddressConfiguration (Maybe Text)
 acBodyOverride = lens _acBodyOverride (\ s a -> s{_acBodyOverride = a})
 
--- | The channel type. Valid values: GCM | APNS | APNS_SANDBOX | APNS_VOIP | APNS_VOIP_SANDBOX | ADM | SMS | EMAIL | BAIDU
+-- | The channel to use when sending the message.
 acChannelType :: Lens' AddressConfiguration (Maybe ChannelType)
 acChannelType = lens _acChannelType (\ s a -> s{_acChannelType = a})
 

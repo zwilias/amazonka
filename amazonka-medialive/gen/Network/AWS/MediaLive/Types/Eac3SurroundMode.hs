@@ -28,7 +28,7 @@ module Network.AWS.MediaLive.Types.Eac3SurroundMode (
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | Placeholder documentation for Eac3SurroundMode
+-- | Eac3 Surround Mode
 data Eac3SurroundMode = Eac3SurroundMode' (CI Text)
                           deriving (Eq, Ord, Read, Show, Data, Typeable,
                                     Generic)

@@ -25,6 +25,7 @@ import Network.AWS.Lightsail.Types.LoadBalancerState
 import Network.AWS.Lightsail.Types.LoadBalancerTLSCertificateSummary
 import Network.AWS.Lightsail.Types.ResourceLocation
 import Network.AWS.Lightsail.Types.ResourceType
+import Network.AWS.Lightsail.Types.Tag
 import Network.AWS.Prelude
 
 -- | Describes the Lightsail load balancer.
@@ -50,7 +51,8 @@ data LoadBalancer = LoadBalancer'{_lbHealthCheckPath
                                   _lbPublicPorts :: !(Maybe [Nat]),
                                   _lbDnsName :: !(Maybe Text),
                                   _lbInstanceHealthSummary ::
-                                  !(Maybe [InstanceHealthSummary])}
+                                  !(Maybe [InstanceHealthSummary]),
+                                  _lbTags :: !(Maybe [Tag])}
                       deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'LoadBalancer' with the minimum fields required to make a request.
@@ -86,6 +88,8 @@ data LoadBalancer = LoadBalancer'{_lbHealthCheckPath
 -- * 'lbDnsName' - The DNS name of your Lightsail load balancer.
 --
 -- * 'lbInstanceHealthSummary' - An array of InstanceHealthSummary objects describing the health of the load balancer.
+--
+-- * 'lbTags' - The tag keys and optional values for the resource. For more information about tags in Lightsail, see the <https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-tags Lightsail Dev Guide> .
 loadBalancer
     :: LoadBalancer
 loadBalancer
@@ -98,7 +102,8 @@ loadBalancer
                   _lbTlsCertificateSummaries = Nothing,
                   _lbName = Nothing, _lbSupportCode = Nothing,
                   _lbPublicPorts = Nothing, _lbDnsName = Nothing,
-                  _lbInstanceHealthSummary = Nothing}
+                  _lbInstanceHealthSummary = Nothing,
+                  _lbTags = Nothing}
 
 -- | The path you specified to perform your health checks. If no path is specified, the load balancer tries to make a request to the default (root) page.
 lbHealthCheckPath :: Lens' LoadBalancer (Maybe Text)
@@ -160,6 +165,10 @@ lbDnsName = lens _lbDnsName (\ s a -> s{_lbDnsName = a})
 lbInstanceHealthSummary :: Lens' LoadBalancer [InstanceHealthSummary]
 lbInstanceHealthSummary = lens _lbInstanceHealthSummary (\ s a -> s{_lbInstanceHealthSummary = a}) . _Default . _Coerce
 
+-- | The tag keys and optional values for the resource. For more information about tags in Lightsail, see the <https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-tags Lightsail Dev Guide> .
+lbTags :: Lens' LoadBalancer [Tag]
+lbTags = lens _lbTags (\ s a -> s{_lbTags = a}) . _Default . _Coerce
+
 instance FromJSON LoadBalancer where
         parseJSON
           = withObject "LoadBalancer"
@@ -178,7 +187,8 @@ instance FromJSON LoadBalancer where
                      <*> (x .:? "supportCode")
                      <*> (x .:? "publicPorts" .!= mempty)
                      <*> (x .:? "dnsName")
-                     <*> (x .:? "instanceHealthSummary" .!= mempty))
+                     <*> (x .:? "instanceHealthSummary" .!= mempty)
+                     <*> (x .:? "tags" .!= mempty))
 
 instance Hashable LoadBalancer where
 

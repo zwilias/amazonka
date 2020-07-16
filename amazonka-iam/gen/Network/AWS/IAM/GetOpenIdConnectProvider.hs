@@ -57,7 +57,7 @@ newtype GetOpenIdConnectProvider = GetOpenIdConnectProvider'{_goicpOpenIdConnect
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'goicpOpenIdConnectProviderARN' - The Amazon Resource Name (ARN) of the OIDC provider resource object in IAM to get information for. You can get a list of OIDC provider resource ARNs by using the 'ListOpenIDConnectProviders' operation. For more information about ARNs, see <http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html Amazon Resource Names (ARNs) and AWS Service Namespaces> in the /AWS General Reference/ .
+-- * 'goicpOpenIdConnectProviderARN' - The Amazon Resource Name (ARN) of the OIDC provider resource object in IAM to get information for. You can get a list of OIDC provider resource ARNs by using the 'ListOpenIDConnectProviders' operation. For more information about ARNs, see <https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html Amazon Resource Names (ARNs) and AWS Service Namespaces> in the /AWS General Reference/ .
 getOpenIdConnectProvider
     :: Text -- ^ 'goicpOpenIdConnectProviderARN'
     -> GetOpenIdConnectProvider
@@ -65,7 +65,7 @@ getOpenIdConnectProvider pOpenIdConnectProviderARN_
   = GetOpenIdConnectProvider'{_goicpOpenIdConnectProviderARN
                                 = pOpenIdConnectProviderARN_}
 
--- | The Amazon Resource Name (ARN) of the OIDC provider resource object in IAM to get information for. You can get a list of OIDC provider resource ARNs by using the 'ListOpenIDConnectProviders' operation. For more information about ARNs, see <http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html Amazon Resource Names (ARNs) and AWS Service Namespaces> in the /AWS General Reference/ .
+-- | The Amazon Resource Name (ARN) of the OIDC provider resource object in IAM to get information for. You can get a list of OIDC provider resource ARNs by using the 'ListOpenIDConnectProviders' operation. For more information about ARNs, see <https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html Amazon Resource Names (ARNs) and AWS Service Namespaces> in the /AWS General Reference/ .
 goicpOpenIdConnectProviderARN :: Lens' GetOpenIdConnectProvider Text
 goicpOpenIdConnectProviderARN = lens _goicpOpenIdConnectProviderARN (\ s a -> s{_goicpOpenIdConnectProviderARN = a})
 

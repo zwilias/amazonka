@@ -53,25 +53,25 @@ data StorageDescriptor = StorageDescriptor'{_sdSortColumns
 --
 -- * 'sdSortColumns' - A list specifying the sort order of each bucket in the table.
 --
--- * 'sdCompressed' - True if the data in the table is compressed, or False if not.
+-- * 'sdCompressed' - @True@ if the data in the table is compressed, or @False@ if not.
 --
--- * 'sdLocation' - The physical location of the table. By default this takes the form of the warehouse location, followed by the database location in the warehouse, followed by the table name.
+-- * 'sdLocation' - The physical location of the table. By default, this takes the form of the warehouse location, followed by the database location in the warehouse, followed by the table name.
 --
 -- * 'sdBucketColumns' - A list of reducer grouping columns, clustering columns, and bucketing columns in the table.
 --
--- * 'sdSerdeInfo' - Serialization/deserialization (SerDe) information.
+-- * 'sdSerdeInfo' - The serialization/deserialization (SerDe) information.
 --
 -- * 'sdOutputFormat' - The output format: @SequenceFileOutputFormat@ (binary), or @IgnoreKeyTextOutputFormat@ , or a custom format.
 --
 -- * 'sdNumberOfBuckets' - Must be specified if the table contains any dimension columns.
 --
--- * 'sdStoredAsSubDirectories' - True if the table data is stored in subdirectories, or False if not.
+-- * 'sdStoredAsSubDirectories' - @True@ if the table data is stored in subdirectories, or @False@ if not.
 --
--- * 'sdParameters' - User-supplied properties in key-value form.
+-- * 'sdParameters' - The user-supplied properties in key-value form.
 --
 -- * 'sdInputFormat' - The input format: @SequenceFileInputFormat@ (binary), or @TextInputFormat@ , or a custom format.
 --
--- * 'sdSkewedInfo' - Information about values that appear very frequently in a column (skewed values).
+-- * 'sdSkewedInfo' - The information about values that appear frequently in a column (skewed values).
 --
 -- * 'sdColumns' - A list of the @Columns@ in the table.
 storageDescriptor
@@ -90,11 +90,11 @@ storageDescriptor
 sdSortColumns :: Lens' StorageDescriptor [Order]
 sdSortColumns = lens _sdSortColumns (\ s a -> s{_sdSortColumns = a}) . _Default . _Coerce
 
--- | True if the data in the table is compressed, or False if not.
+-- | @True@ if the data in the table is compressed, or @False@ if not.
 sdCompressed :: Lens' StorageDescriptor (Maybe Bool)
 sdCompressed = lens _sdCompressed (\ s a -> s{_sdCompressed = a})
 
--- | The physical location of the table. By default this takes the form of the warehouse location, followed by the database location in the warehouse, followed by the table name.
+-- | The physical location of the table. By default, this takes the form of the warehouse location, followed by the database location in the warehouse, followed by the table name.
 sdLocation :: Lens' StorageDescriptor (Maybe Text)
 sdLocation = lens _sdLocation (\ s a -> s{_sdLocation = a})
 
@@ -102,7 +102,7 @@ sdLocation = lens _sdLocation (\ s a -> s{_sdLocation = a})
 sdBucketColumns :: Lens' StorageDescriptor [Text]
 sdBucketColumns = lens _sdBucketColumns (\ s a -> s{_sdBucketColumns = a}) . _Default . _Coerce
 
--- | Serialization/deserialization (SerDe) information.
+-- | The serialization/deserialization (SerDe) information.
 sdSerdeInfo :: Lens' StorageDescriptor (Maybe SerDeInfo)
 sdSerdeInfo = lens _sdSerdeInfo (\ s a -> s{_sdSerdeInfo = a})
 
@@ -114,11 +114,11 @@ sdOutputFormat = lens _sdOutputFormat (\ s a -> s{_sdOutputFormat = a})
 sdNumberOfBuckets :: Lens' StorageDescriptor (Maybe Int)
 sdNumberOfBuckets = lens _sdNumberOfBuckets (\ s a -> s{_sdNumberOfBuckets = a})
 
--- | True if the table data is stored in subdirectories, or False if not.
+-- | @True@ if the table data is stored in subdirectories, or @False@ if not.
 sdStoredAsSubDirectories :: Lens' StorageDescriptor (Maybe Bool)
 sdStoredAsSubDirectories = lens _sdStoredAsSubDirectories (\ s a -> s{_sdStoredAsSubDirectories = a})
 
--- | User-supplied properties in key-value form.
+-- | The user-supplied properties in key-value form.
 sdParameters :: Lens' StorageDescriptor (HashMap Text Text)
 sdParameters = lens _sdParameters (\ s a -> s{_sdParameters = a}) . _Default . _Map
 
@@ -126,7 +126,7 @@ sdParameters = lens _sdParameters (\ s a -> s{_sdParameters = a}) . _Default . _
 sdInputFormat :: Lens' StorageDescriptor (Maybe Text)
 sdInputFormat = lens _sdInputFormat (\ s a -> s{_sdInputFormat = a})
 
--- | Information about values that appear very frequently in a column (skewed values).
+-- | The information about values that appear frequently in a column (skewed values).
 sdSkewedInfo :: Lens' StorageDescriptor (Maybe SkewedInfo)
 sdSkewedInfo = lens _sdSkewedInfo (\ s a -> s{_sdSkewedInfo = a})
 

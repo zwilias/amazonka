@@ -48,7 +48,7 @@ data PhysicalConnectionRequirements = PhysicalConnectionRequirements'{_pcrSecuri
 --
 -- * 'pcrSubnetId' - The subnet ID used by the connection.
 --
--- * 'pcrAvailabilityZone' - The connection's availability zone. This field is deprecated and has no effect.
+-- * 'pcrAvailabilityZone' - The connection's Availability Zone. This field is redundant because the specified subnet implies the Availability Zone to be used. Currently the field must be populated, but it will be deprecated in the future.
 physicalConnectionRequirements
     :: PhysicalConnectionRequirements
 physicalConnectionRequirements
@@ -65,7 +65,7 @@ pcrSecurityGroupIdList = lens _pcrSecurityGroupIdList (\ s a -> s{_pcrSecurityGr
 pcrSubnetId :: Lens' PhysicalConnectionRequirements (Maybe Text)
 pcrSubnetId = lens _pcrSubnetId (\ s a -> s{_pcrSubnetId = a})
 
--- | The connection's availability zone. This field is deprecated and has no effect.
+-- | The connection's Availability Zone. This field is redundant because the specified subnet implies the Availability Zone to be used. Currently the field must be populated, but it will be deprecated in the future.
 pcrAvailabilityZone :: Lens' PhysicalConnectionRequirements (Maybe Text)
 pcrAvailabilityZone = lens _pcrAvailabilityZone (\ s a -> s{_pcrAvailabilityZone = a})
 

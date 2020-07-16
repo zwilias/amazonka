@@ -37,18 +37,18 @@ data TableVersionError = TableVersionError'{_tveVersionId
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'tveVersionId' - The ID value of the version in question.
+-- * 'tveVersionId' - The ID value of the version in question. A @VersionID@ is a string representation of an integer. Each version is incremented by 1.
 --
 -- * 'tveTableName' - The name of the table in question.
 --
--- * 'tveErrorDetail' - Detail about the error.
+-- * 'tveErrorDetail' - The details about the error.
 tableVersionError
     :: TableVersionError
 tableVersionError
   = TableVersionError'{_tveVersionId = Nothing,
                        _tveTableName = Nothing, _tveErrorDetail = Nothing}
 
--- | The ID value of the version in question.
+-- | The ID value of the version in question. A @VersionID@ is a string representation of an integer. Each version is incremented by 1.
 tveVersionId :: Lens' TableVersionError (Maybe Text)
 tveVersionId = lens _tveVersionId (\ s a -> s{_tveVersionId = a})
 
@@ -56,7 +56,7 @@ tveVersionId = lens _tveVersionId (\ s a -> s{_tveVersionId = a})
 tveTableName :: Lens' TableVersionError (Maybe Text)
 tveTableName = lens _tveTableName (\ s a -> s{_tveTableName = a})
 
--- | Detail about the error.
+-- | The details about the error.
 tveErrorDetail :: Lens' TableVersionError (Maybe ErrorDetail)
 tveErrorDetail = lens _tveErrorDetail (\ s a -> s{_tveErrorDetail = a})
 

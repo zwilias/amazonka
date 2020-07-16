@@ -27,7 +27,7 @@ module Network.AWS.MediaConvert.Types.TimedMetadata (
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | If PASSTHROUGH, inserts ID3 timed metadata from the timed_metadata REST command into this output.
+-- | Applies only to HLS outputs. Use this setting to specify whether the service inserts the ID3 timed metadata from the input in this output.
 data TimedMetadata = TimedMetadata' (CI Text)
                        deriving (Eq, Ord, Read, Show, Data, Typeable,
                                  Generic)

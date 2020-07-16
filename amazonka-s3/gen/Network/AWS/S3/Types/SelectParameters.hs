@@ -26,6 +26,8 @@ import Network.AWS.S3.Types.OutputSerialization
 
 -- | Describes the parameters for Select job types.
 --
+--
+--
 -- /See:/ 'selectParameters' smart constructor.
 data SelectParameters = SelectParameters'{_spInputSerialization
                                           :: !InputSerialization,
@@ -41,7 +43,7 @@ data SelectParameters = SelectParameters'{_spInputSerialization
 --
 -- * 'spInputSerialization' - Describes the serialization format of the object.
 --
--- * 'spExpressionType' - The type of the provided expression (e.g., SQL).
+-- * 'spExpressionType' - The type of the provided expression (for example, SQL).
 --
 -- * 'spExpression' - The expression that is used to query the object.
 --
@@ -64,7 +66,7 @@ selectParameters pInputSerialization_
 spInputSerialization :: Lens' SelectParameters InputSerialization
 spInputSerialization = lens _spInputSerialization (\ s a -> s{_spInputSerialization = a})
 
--- | The type of the provided expression (e.g., SQL).
+-- | The type of the provided expression (for example, SQL).
 spExpressionType :: Lens' SelectParameters ExpressionType
 spExpressionType = lens _spExpressionType (\ s a -> s{_spExpressionType = a})
 

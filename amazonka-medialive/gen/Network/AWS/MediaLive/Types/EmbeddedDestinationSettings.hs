@@ -20,7 +20,7 @@ module Network.AWS.MediaLive.Types.EmbeddedDestinationSettings where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | Placeholder documentation for EmbeddedDestinationSettings
+-- | Embedded Destination Settings
 --
 -- /See:/ 'embeddedDestinationSettings' smart constructor.
 data EmbeddedDestinationSettings = EmbeddedDestinationSettings'

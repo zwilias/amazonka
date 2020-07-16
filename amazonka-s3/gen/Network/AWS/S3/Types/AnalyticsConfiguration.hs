@@ -23,7 +23,11 @@ import Network.AWS.S3.Internal
 import Network.AWS.S3.Types.AnalyticsFilter
 import Network.AWS.S3.Types.StorageClassAnalysis
 
--- | /See:/ 'analyticsConfiguration' smart constructor.
+-- | Specifies the configuration and any analyses for the analytics filter of an Amazon S3 bucket.
+--
+--
+--
+-- /See:/ 'analyticsConfiguration' smart constructor.
 data AnalyticsConfiguration = AnalyticsConfiguration'{_acFilter
                                                       ::
                                                       !(Maybe AnalyticsFilter),
@@ -39,9 +43,9 @@ data AnalyticsConfiguration = AnalyticsConfiguration'{_acFilter
 --
 -- * 'acFilter' - The filter used to describe a set of objects for analyses. A filter must have exactly one prefix, one tag, or one conjunction (AnalyticsAndOperator). If no filter is provided, all objects will be considered in any analysis.
 --
--- * 'acId' - The identifier used to represent an analytics configuration.
+-- * 'acId' - The ID that identifies the analytics configuration.
 --
--- * 'acStorageClassAnalysis' - If present, it indicates that data related to access patterns will be collected and made available to analyze the tradeoffs between different storage classes.
+-- * 'acStorageClassAnalysis' - Contains data related to access patterns to be collected and made available to analyze the tradeoffs between different storage classes. 
 analyticsConfiguration
     :: Text -- ^ 'acId'
     -> StorageClassAnalysis -- ^ 'acStorageClassAnalysis'
@@ -55,11 +59,11 @@ analyticsConfiguration pId_ pStorageClassAnalysis_
 acFilter :: Lens' AnalyticsConfiguration (Maybe AnalyticsFilter)
 acFilter = lens _acFilter (\ s a -> s{_acFilter = a})
 
--- | The identifier used to represent an analytics configuration.
+-- | The ID that identifies the analytics configuration.
 acId :: Lens' AnalyticsConfiguration Text
 acId = lens _acId (\ s a -> s{_acId = a})
 
--- | If present, it indicates that data related to access patterns will be collected and made available to analyze the tradeoffs between different storage classes.
+-- | Contains data related to access patterns to be collected and made available to analyze the tradeoffs between different storage classes. 
 acStorageClassAnalysis :: Lens' AnalyticsConfiguration StorageClassAnalysis
 acStorageClassAnalysis = lens _acStorageClassAnalysis (\ s a -> s{_acStorageClassAnalysis = a})
 

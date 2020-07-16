@@ -27,7 +27,7 @@ module Network.AWS.MediaLive.Types.M2tsAribCaptionsPidControl (
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | Placeholder documentation for M2tsAribCaptionsPidControl
+-- | M2ts Arib Captions Pid Control
 data M2tsAribCaptionsPidControl = M2tsAribCaptionsPidControl' (CI
                                                                  Text)
                                     deriving (Eq, Ord, Read, Show, Data,

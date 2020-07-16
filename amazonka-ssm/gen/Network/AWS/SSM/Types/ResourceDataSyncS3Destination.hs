@@ -19,9 +19,10 @@ module Network.AWS.SSM.Types.ResourceDataSyncS3Destination where
 
 import Network.AWS.Lens
 import Network.AWS.Prelude
+import Network.AWS.SSM.Types.ResourceDataSyncDestinationDataSharing
 import Network.AWS.SSM.Types.ResourceDataSyncS3Format
 
--- | Information about the target Amazon S3 bucket for the Resource Data Sync.
+-- | Information about the target S3 bucket for the Resource Data Sync.
 --
 --
 --
@@ -30,6 +31,10 @@ data ResourceDataSyncS3Destination = ResourceDataSyncS3Destination'{_rdssdPrefix
                                                                     ::
                                                                     !(Maybe
                                                                         Text),
+                                                                    _rdssdDestinationDataSharing
+                                                                    ::
+                                                                    !(Maybe
+                                                                        ResourceDataSyncDestinationDataSharing),
                                                                     _rdssdAWSKMSKeyARN
                                                                     ::
                                                                     !(Maybe
@@ -50,13 +55,15 @@ data ResourceDataSyncS3Destination = ResourceDataSyncS3Destination'{_rdssdPrefix
 --
 -- * 'rdssdPrefix' - An Amazon S3 prefix for the bucket.
 --
--- * 'rdssdAWSKMSKeyARN' - The ARN of an encryption key for a destination in Amazon S3. Must belong to the same region as the destination Amazon S3 bucket.
+-- * 'rdssdDestinationDataSharing' - Enables destination data sharing. By default, this field is @null@ .
 --
--- * 'rdssdBucketName' - The name of the Amazon S3 bucket where the aggregated data is stored.
+-- * 'rdssdAWSKMSKeyARN' - The ARN of an encryption key for a destination in Amazon S3. Must belong to the same Region as the destination S3 bucket.
+--
+-- * 'rdssdBucketName' - The name of the S3 bucket where the aggregated data is stored.
 --
 -- * 'rdssdSyncFormat' - A supported sync format. The following format is currently supported: JsonSerDe
 --
--- * 'rdssdRegion' - The AWS Region with the Amazon S3 bucket targeted by the Resource Data Sync.
+-- * 'rdssdRegion' - The AWS Region with the S3 bucket targeted by the Resource Data Sync.
 resourceDataSyncS3Destination
     :: Text -- ^ 'rdssdBucketName'
     -> ResourceDataSyncS3Format -- ^ 'rdssdSyncFormat'
@@ -66,6 +73,7 @@ resourceDataSyncS3Destination pBucketName_
   pSyncFormat_ pRegion_
   = ResourceDataSyncS3Destination'{_rdssdPrefix =
                                      Nothing,
+                                   _rdssdDestinationDataSharing = Nothing,
                                    _rdssdAWSKMSKeyARN = Nothing,
                                    _rdssdBucketName = pBucketName_,
                                    _rdssdSyncFormat = pSyncFormat_,
@@ -75,11 +83,15 @@ resourceDataSyncS3Destination pBucketName_
 rdssdPrefix :: Lens' ResourceDataSyncS3Destination (Maybe Text)
 rdssdPrefix = lens _rdssdPrefix (\ s a -> s{_rdssdPrefix = a})
 
--- | The ARN of an encryption key for a destination in Amazon S3. Must belong to the same region as the destination Amazon S3 bucket.
+-- | Enables destination data sharing. By default, this field is @null@ .
+rdssdDestinationDataSharing :: Lens' ResourceDataSyncS3Destination (Maybe ResourceDataSyncDestinationDataSharing)
+rdssdDestinationDataSharing = lens _rdssdDestinationDataSharing (\ s a -> s{_rdssdDestinationDataSharing = a})
+
+-- | The ARN of an encryption key for a destination in Amazon S3. Must belong to the same Region as the destination S3 bucket.
 rdssdAWSKMSKeyARN :: Lens' ResourceDataSyncS3Destination (Maybe Text)
 rdssdAWSKMSKeyARN = lens _rdssdAWSKMSKeyARN (\ s a -> s{_rdssdAWSKMSKeyARN = a})
 
--- | The name of the Amazon S3 bucket where the aggregated data is stored.
+-- | The name of the S3 bucket where the aggregated data is stored.
 rdssdBucketName :: Lens' ResourceDataSyncS3Destination Text
 rdssdBucketName = lens _rdssdBucketName (\ s a -> s{_rdssdBucketName = a})
 
@@ -87,7 +99,7 @@ rdssdBucketName = lens _rdssdBucketName (\ s a -> s{_rdssdBucketName = a})
 rdssdSyncFormat :: Lens' ResourceDataSyncS3Destination ResourceDataSyncS3Format
 rdssdSyncFormat = lens _rdssdSyncFormat (\ s a -> s{_rdssdSyncFormat = a})
 
--- | The AWS Region with the Amazon S3 bucket targeted by the Resource Data Sync.
+-- | The AWS Region with the S3 bucket targeted by the Resource Data Sync.
 rdssdRegion :: Lens' ResourceDataSyncS3Destination Text
 rdssdRegion = lens _rdssdRegion (\ s a -> s{_rdssdRegion = a})
 
@@ -96,8 +108,9 @@ instance FromJSON ResourceDataSyncS3Destination where
           = withObject "ResourceDataSyncS3Destination"
               (\ x ->
                  ResourceDataSyncS3Destination' <$>
-                   (x .:? "Prefix") <*> (x .:? "AWSKMSKeyARN") <*>
-                     (x .: "BucketName")
+                   (x .:? "Prefix") <*> (x .:? "DestinationDataSharing")
+                     <*> (x .:? "AWSKMSKeyARN")
+                     <*> (x .: "BucketName")
                      <*> (x .: "SyncFormat")
                      <*> (x .: "Region"))
 
@@ -110,6 +123,8 @@ instance ToJSON ResourceDataSyncS3Destination where
           = object
               (catMaybes
                  [("Prefix" .=) <$> _rdssdPrefix,
+                  ("DestinationDataSharing" .=) <$>
+                    _rdssdDestinationDataSharing,
                   ("AWSKMSKeyARN" .=) <$> _rdssdAWSKMSKeyARN,
                   Just ("BucketName" .= _rdssdBucketName),
                   Just ("SyncFormat" .= _rdssdSyncFormat),

@@ -41,9 +41,9 @@ data LocalVolumeResourceData = LocalVolumeResourceData'{_lvrdGroupOwnerSetting
 --
 -- * 'lvrdGroupOwnerSetting' - Allows you to configure additional group privileges for the Lambda process. This field is optional.
 --
--- * 'lvrdDestinationPath' - The absolute local path of the resource inside the lambda environment.
+-- * 'lvrdDestinationPath' - The absolute local path of the resource inside the Lambda environment.
 --
--- * 'lvrdSourcePath' - The local absolute path of the volume resource on the host. The source path for a volume resource type cannot start with ''/proc'' or ''/sys''.
+-- * 'lvrdSourcePath' - The local absolute path of the volume resource on the host. The source path for a volume resource type cannot start with ''/sys''.
 localVolumeResourceData
     :: LocalVolumeResourceData
 localVolumeResourceData
@@ -56,11 +56,11 @@ localVolumeResourceData
 lvrdGroupOwnerSetting :: Lens' LocalVolumeResourceData (Maybe GroupOwnerSetting)
 lvrdGroupOwnerSetting = lens _lvrdGroupOwnerSetting (\ s a -> s{_lvrdGroupOwnerSetting = a})
 
--- | The absolute local path of the resource inside the lambda environment.
+-- | The absolute local path of the resource inside the Lambda environment.
 lvrdDestinationPath :: Lens' LocalVolumeResourceData (Maybe Text)
 lvrdDestinationPath = lens _lvrdDestinationPath (\ s a -> s{_lvrdDestinationPath = a})
 
--- | The local absolute path of the volume resource on the host. The source path for a volume resource type cannot start with ''/proc'' or ''/sys''.
+-- | The local absolute path of the volume resource on the host. The source path for a volume resource type cannot start with ''/sys''.
 lvrdSourcePath :: Lens' LocalVolumeResourceData (Maybe Text)
 lvrdSourcePath = lens _lvrdSourcePath (\ s a -> s{_lvrdSourcePath = a})
 

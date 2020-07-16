@@ -54,7 +54,7 @@ data WorkflowExecutionConfiguration = WorkflowExecutionConfiguration'{_wecLambda
 --
 -- * 'wecLambdaRole' - The IAM role attached to the child workflow execution.
 --
--- * 'wecTaskPriority' - The priority assigned to decision tasks for this workflow execution. Valid values are integers that range from Java's @Integer.MIN_VALUE@ (-2147483648) to @Integer.MAX_VALUE@ (2147483647). Higher numbers indicate higher priority. For more information about setting task priority, see <http://docs.aws.amazon.com/amazonswf/latest/developerguide/programming-priority.html Setting Task Priority> in the /Amazon SWF Developer Guide/ .
+-- * 'wecTaskPriority' - The priority assigned to decision tasks for this workflow execution. Valid values are integers that range from Java's @Integer.MIN_VALUE@ (-2147483648) to @Integer.MAX_VALUE@ (2147483647). Higher numbers indicate higher priority. For more information about setting task priority, see <https://docs.aws.amazon.com/amazonswf/latest/developerguide/programming-priority.html Setting Task Priority> in the /Amazon SWF Developer Guide/ .
 --
 -- * 'wecTaskStartToCloseTimeout' - The maximum duration allowed for decision tasks for this workflow execution. The duration is specified in seconds, an integer greater than or equal to @0@ . You can use @NONE@ to specify unlimited duration.
 --
@@ -87,7 +87,7 @@ workflowExecutionConfiguration
 wecLambdaRole :: Lens' WorkflowExecutionConfiguration (Maybe Text)
 wecLambdaRole = lens _wecLambdaRole (\ s a -> s{_wecLambdaRole = a})
 
--- | The priority assigned to decision tasks for this workflow execution. Valid values are integers that range from Java's @Integer.MIN_VALUE@ (-2147483648) to @Integer.MAX_VALUE@ (2147483647). Higher numbers indicate higher priority. For more information about setting task priority, see <http://docs.aws.amazon.com/amazonswf/latest/developerguide/programming-priority.html Setting Task Priority> in the /Amazon SWF Developer Guide/ .
+-- | The priority assigned to decision tasks for this workflow execution. Valid values are integers that range from Java's @Integer.MIN_VALUE@ (-2147483648) to @Integer.MAX_VALUE@ (2147483647). Higher numbers indicate higher priority. For more information about setting task priority, see <https://docs.aws.amazon.com/amazonswf/latest/developerguide/programming-priority.html Setting Task Priority> in the /Amazon SWF Developer Guide/ .
 wecTaskPriority :: Lens' WorkflowExecutionConfiguration (Maybe Text)
 wecTaskPriority = lens _wecTaskPriority (\ s a -> s{_wecTaskPriority = a})
 

@@ -26,7 +26,11 @@ import Network.AWS.S3.Types.InventoryIncludedObjectVersions
 import Network.AWS.S3.Types.InventoryOptionalField
 import Network.AWS.S3.Types.InventorySchedule
 
--- | /See:/ 'inventoryConfiguration' smart constructor.
+-- | Specifies the inventory configuration for an Amazon S3 bucket. For more information, see <https://docs.aws.amazon.com/AmazonS3/latest/API/RESTBucketGETInventoryConfig.html GET Bucket inventory> in the /Amazon Simple Storage Service API Reference/ . 
+--
+--
+--
+-- /See:/ 'inventoryConfiguration' smart constructor.
 data InventoryConfiguration = InventoryConfiguration'{_icOptionalFields
                                                       ::
                                                       !(Maybe
@@ -54,11 +58,11 @@ data InventoryConfiguration = InventoryConfiguration'{_icOptionalFields
 --
 -- * 'icDestination' - Contains information about where to publish the inventory results.
 --
--- * 'icIsEnabled' - Specifies whether the inventory is enabled or disabled.
+-- * 'icIsEnabled' - Specifies whether the inventory is enabled or disabled. If set to @True@ , an inventory list is generated. If set to @False@ , no inventory list is generated.
 --
 -- * 'icId' - The ID used to identify the inventory configuration.
 --
--- * 'icIncludedObjectVersions' - Specifies which object version(s) to included in the inventory results.
+-- * 'icIncludedObjectVersions' - Object versions to include in the inventory list. If set to @All@ , the list includes all the object versions, which adds the version-related fields @VersionId@ , @IsLatest@ , and @DeleteMarker@ to the list. If set to @Current@ , the list does not contain these version-related fields.
 --
 -- * 'icSchedule' - Specifies the schedule for generating inventory results.
 inventoryConfiguration
@@ -90,7 +94,7 @@ icFilter = lens _icFilter (\ s a -> s{_icFilter = a})
 icDestination :: Lens' InventoryConfiguration InventoryDestination
 icDestination = lens _icDestination (\ s a -> s{_icDestination = a})
 
--- | Specifies whether the inventory is enabled or disabled.
+-- | Specifies whether the inventory is enabled or disabled. If set to @True@ , an inventory list is generated. If set to @False@ , no inventory list is generated.
 icIsEnabled :: Lens' InventoryConfiguration Bool
 icIsEnabled = lens _icIsEnabled (\ s a -> s{_icIsEnabled = a})
 
@@ -98,7 +102,7 @@ icIsEnabled = lens _icIsEnabled (\ s a -> s{_icIsEnabled = a})
 icId :: Lens' InventoryConfiguration Text
 icId = lens _icId (\ s a -> s{_icId = a})
 
--- | Specifies which object version(s) to included in the inventory results.
+-- | Object versions to include in the inventory list. If set to @All@ , the list includes all the object versions, which adds the version-related fields @VersionId@ , @IsLatest@ , and @DeleteMarker@ to the list. If set to @Current@ , the list does not contain these version-related fields.
 icIncludedObjectVersions :: Lens' InventoryConfiguration InventoryIncludedObjectVersions
 icIncludedObjectVersions = lens _icIncludedObjectVersions (\ s a -> s{_icIncludedObjectVersions = a})
 

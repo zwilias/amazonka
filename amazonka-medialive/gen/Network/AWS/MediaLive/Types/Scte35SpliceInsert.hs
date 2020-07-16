@@ -22,7 +22,7 @@ import Network.AWS.MediaLive.Types.Scte35SpliceInsertNoRegionalBlackoutBehavior
 import Network.AWS.MediaLive.Types.Scte35SpliceInsertWebDeliveryAllowedBehavior
 import Network.AWS.Prelude
 
--- | Placeholder documentation for Scte35SpliceInsert
+-- | Scte35 Splice Insert
 --
 -- /See:/ 'scte35SpliceInsert' smart constructor.
 data Scte35SpliceInsert = Scte35SpliceInsert'{_ssiWebDeliveryAllowedFlag

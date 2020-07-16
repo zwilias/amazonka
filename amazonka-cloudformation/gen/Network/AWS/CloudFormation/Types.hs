@@ -18,9 +18,12 @@ module Network.AWS.CloudFormation.Types
     -- * Errors
     , _StackInstanceNotFoundException
     , _CreatedButModifiedException
+    , _TypeNotFoundException
     , _StaleRequestException
     , _OperationNotFoundException
+    , _InvalidStateTransitionException
     , _InvalidOperationException
+    , _OperationStatusCheckFailedException
     , _StackSetNotEmptyException
     , _OperationInProgressException
     , _ChangeSetNotFoundException
@@ -30,6 +33,7 @@ module Network.AWS.CloudFormation.Types
     , _LimitExceededException
     , _AlreadyExistsException
     , _OperationIdAlreadyExistsException
+    , _CFNRegistryException
     , _NameAlreadyExistsException
     , _InvalidChangeSetStatusException
 
@@ -54,14 +58,38 @@ module Network.AWS.CloudFormation.Types
     -- * ChangeType
     , ChangeType (..)
 
+    -- * DeprecatedStatus
+    , DeprecatedStatus (..)
+
+    -- * DifferenceType
+    , DifferenceType (..)
+
     -- * EvaluationType
     , EvaluationType (..)
 
     -- * ExecutionStatus
     , ExecutionStatus (..)
 
+    -- * HandlerErrorCode
+    , HandlerErrorCode (..)
+
     -- * OnFailure
     , OnFailure (..)
+
+    -- * OperationStatus
+    , OperationStatus (..)
+
+    -- * PermissionModels
+    , PermissionModels (..)
+
+    -- * ProvisioningType
+    , ProvisioningType (..)
+
+    -- * RegistrationStatus
+    , RegistrationStatus (..)
+
+    -- * RegistryType
+    , RegistryType (..)
 
     -- * Replacement
     , Replacement (..)
@@ -78,8 +106,23 @@ module Network.AWS.CloudFormation.Types
     -- * ResourceStatus
     , ResourceStatus (..)
 
+    -- * StackDriftDetectionStatus
+    , StackDriftDetectionStatus (..)
+
+    -- * StackDriftStatus
+    , StackDriftStatus (..)
+
     -- * StackInstanceStatus
     , StackInstanceStatus (..)
+
+    -- * StackResourceDriftStatus
+    , StackResourceDriftStatus (..)
+
+    -- * StackSetDriftDetectionStatus
+    , StackSetDriftDetectionStatus (..)
+
+    -- * StackSetDriftStatus
+    , StackSetDriftStatus (..)
 
     -- * StackSetOperationAction
     , StackSetOperationAction (..)
@@ -99,6 +142,9 @@ module Network.AWS.CloudFormation.Types
     -- * TemplateStage
     , TemplateStage (..)
 
+    -- * Visibility
+    , Visibility (..)
+
     -- * AccountGateResult
     , AccountGateResult
     , accountGateResult
@@ -110,6 +156,12 @@ module Network.AWS.CloudFormation.Types
     , accountLimit
     , alValue
     , alName
+
+    -- * AutoDeployment
+    , AutoDeployment
+    , autoDeployment
+    , adEnabled
+    , adRetainStacksOnAccountRemoval
 
     -- * Change
     , Change
@@ -130,12 +182,24 @@ module Network.AWS.CloudFormation.Types
     , cDescription
     , cStackName
 
+    -- * DeploymentTargets
+    , DeploymentTargets
+    , deploymentTargets
+    , dtAccounts
+    , dtOrganizationalUnitIds
+
     -- * Export
     , Export
     , export'
     , eValue
     , eExportingStackId
     , eName
+
+    -- * LoggingConfig
+    , LoggingConfig
+    , loggingConfig
+    , lcLogRoleARN
+    , lcLogGroupName
 
     -- * Output
     , Output
@@ -168,6 +232,20 @@ module Network.AWS.CloudFormation.Types
     , pdNoEcho
     , pdDescription
 
+    -- * PhysicalResourceIdContextKeyValuePair
+    , PhysicalResourceIdContextKeyValuePair
+    , physicalResourceIdContextKeyValuePair
+    , prickvpKey
+    , prickvpValue
+
+    -- * PropertyDifference
+    , PropertyDifference
+    , propertyDifference
+    , pdPropertyPath
+    , pdExpectedValue
+    , pdActualValue
+    , pdDifferenceType
+
     -- * ResourceChange
     , ResourceChange
     , resourceChange
@@ -187,12 +265,26 @@ module Network.AWS.CloudFormation.Types
     , rcdEvaluation
     , rcdTarget
 
+    -- * ResourceIdentifierSummary
+    , ResourceIdentifierSummary
+    , resourceIdentifierSummary
+    , risResourceType
+    , risLogicalResourceIds
+    , risResourceIdentifiers
+
     -- * ResourceTargetDefinition
     , ResourceTargetDefinition
     , resourceTargetDefinition
     , rtdAttribute
     , rtdRequiresRecreation
     , rtdName
+
+    -- * ResourceToImport
+    , ResourceToImport
+    , resourceToImport
+    , rtiResourceType
+    , rtiLogicalResourceId
+    , rtiResourceIdentifier
 
     -- * RollbackConfiguration
     , RollbackConfiguration
@@ -209,27 +301,40 @@ module Network.AWS.CloudFormation.Types
     -- * Stack
     , Stack
     , stack
-    , sDisableRollback
-    , sLastUpdatedTime
-    , sRootId
-    , sNotificationARNs
-    , sStackStatusReason
-    , sEnableTerminationProtection
-    , sChangeSetId
-    , sDeletionTime
-    , sOutputs
-    , sParameters
-    , sStackId
-    , sDescription
-    , sCapabilities
-    , sRollbackConfiguration
-    , sTags
-    , sTimeoutInMinutes
-    , sParentId
-    , sRoleARN
-    , sStackName
-    , sCreationTime
-    , sStackStatus
+    , staDisableRollback
+    , staLastUpdatedTime
+    , staRootId
+    , staNotificationARNs
+    , staStackStatusReason
+    , staEnableTerminationProtection
+    , staDriftInformation
+    , staChangeSetId
+    , staDeletionTime
+    , staOutputs
+    , staParameters
+    , staStackId
+    , staDescription
+    , staCapabilities
+    , staRollbackConfiguration
+    , staTags
+    , staTimeoutInMinutes
+    , staParentId
+    , staRoleARN
+    , staStackName
+    , staCreationTime
+    , staStackStatus
+
+    -- * StackDriftInformation
+    , StackDriftInformation
+    , stackDriftInformation
+    , sdiLastCheckTimestamp
+    , sdiStackDriftStatus
+
+    -- * StackDriftInformationSummary
+    , StackDriftInformationSummary
+    , stackDriftInformationSummary
+    , sdisLastCheckTimestamp
+    , sdisStackDriftStatus
 
     -- * StackEvent
     , StackEvent
@@ -250,7 +355,10 @@ module Network.AWS.CloudFormation.Types
     , StackInstance
     , stackInstance
     , siStatus
+    , siLastDriftCheckTimestamp
     , siAccount
+    , siDriftStatus
+    , siOrganizationalUnitId
     , siRegion
     , siStatusReason
     , siStackId
@@ -261,7 +369,10 @@ module Network.AWS.CloudFormation.Types
     , StackInstanceSummary
     , stackInstanceSummary
     , sisStatus
+    , sisLastDriftCheckTimestamp
     , sisAccount
+    , sisDriftStatus
+    , sisOrganizationalUnitId
     , sisRegion
     , sisStatusReason
     , sisStackId
@@ -272,6 +383,7 @@ module Network.AWS.CloudFormation.Types
     , stackResource
     , srPhysicalResourceId
     , srResourceStatusReason
+    , srDriftInformation
     , srStackId
     , srDescription
     , srStackName
@@ -283,22 +395,50 @@ module Network.AWS.CloudFormation.Types
     -- * StackResourceDetail
     , StackResourceDetail
     , stackResourceDetail
+    , sPhysicalResourceId
+    , sResourceStatusReason
+    , sDriftInformation
+    , sMetadata
+    , sStackId
+    , sDescription
+    , sStackName
+    , sLogicalResourceId
+    , sResourceType
+    , sLastUpdatedTimestamp
+    , sResourceStatus
+
+    -- * StackResourceDrift
+    , StackResourceDrift
+    , stackResourceDrift
+    , srdActualProperties
     , srdPhysicalResourceId
-    , srdResourceStatusReason
-    , srdMetadata
+    , srdPhysicalResourceIdContext
+    , srdPropertyDifferences
+    , srdExpectedProperties
     , srdStackId
-    , srdDescription
-    , srdStackName
     , srdLogicalResourceId
     , srdResourceType
-    , srdLastUpdatedTimestamp
-    , srdResourceStatus
+    , srdStackResourceDriftStatus
+    , srdTimestamp
+
+    -- * StackResourceDriftInformation
+    , StackResourceDriftInformation
+    , stackResourceDriftInformation
+    , srdiLastCheckTimestamp
+    , srdiStackResourceDriftStatus
+
+    -- * StackResourceDriftInformationSummary
+    , StackResourceDriftInformationSummary
+    , stackResourceDriftInformationSummary
+    , srdisLastCheckTimestamp
+    , srdisStackResourceDriftStatus
 
     -- * StackResourceSummary
     , StackResourceSummary
     , stackResourceSummary
     , srsPhysicalResourceId
     , srsResourceStatusReason
+    , srsDriftInformation
     , srsLogicalResourceId
     , srsResourceType
     , srsLastUpdatedTimestamp
@@ -307,9 +447,13 @@ module Network.AWS.CloudFormation.Types
     -- * StackSet
     , StackSet
     , stackSet
+    , ssStackSetDriftDetectionDetails
     , ssStatus
     , ssAdministrationRoleARN
+    , ssAutoDeployment
+    , ssOrganizationalUnitIds
     , ssStackSetARN
+    , ssPermissionModel
     , ssParameters
     , ssTemplateBody
     , ssStackSetName
@@ -317,10 +461,24 @@ module Network.AWS.CloudFormation.Types
     , ssCapabilities
     , ssTags
     , ssStackSetId
+    , ssExecutionRoleName
+
+    -- * StackSetDriftDetectionDetails
+    , StackSetDriftDetectionDetails
+    , stackSetDriftDetectionDetails
+    , ssdddLastDriftCheckTimestamp
+    , ssdddTotalStackInstancesCount
+    , ssdddInProgressStackInstancesCount
+    , ssdddDriftedStackInstancesCount
+    , ssdddDriftDetectionStatus
+    , ssdddDriftStatus
+    , ssdddFailedStackInstancesCount
+    , ssdddInSyncStackInstancesCount
 
     -- * StackSetOperation
     , StackSetOperation
     , stackSetOperation
+    , ssoStackSetDriftDetectionDetails
     , ssoStatus
     , ssoAdministrationRoleARN
     , ssoAction
@@ -329,7 +487,9 @@ module Network.AWS.CloudFormation.Types
     , ssoOperationPreferences
     , ssoOperationId
     , ssoRetainStacks
+    , ssoDeploymentTargets
     , ssoStackSetId
+    , ssoExecutionRoleName
 
     -- * StackSetOperationPreferences
     , StackSetOperationPreferences
@@ -346,6 +506,7 @@ module Network.AWS.CloudFormation.Types
     , ssorsStatus
     , ssorsAccount
     , ssorsAccountGateResult
+    , ssorsOrganizationalUnitId
     , ssorsRegion
     , ssorsStatusReason
 
@@ -362,6 +523,10 @@ module Network.AWS.CloudFormation.Types
     , StackSetSummary
     , stackSetSummary
     , sssStatus
+    , sssLastDriftCheckTimestamp
+    , sssAutoDeployment
+    , sssDriftStatus
+    , sssPermissionModel
     , sssStackSetName
     , sssDescription
     , sssStackSetId
@@ -373,6 +538,7 @@ module Network.AWS.CloudFormation.Types
     , ssRootId
     , ssStackStatusReason
     , ssTemplateDescription
+    , ssDriftInformation
     , ssDeletionTime
     , ssStackId
     , ssParentId
@@ -393,6 +559,26 @@ module Network.AWS.CloudFormation.Types
     , tpDefaultValue
     , tpNoEcho
     , tpDescription
+
+    -- * TypeSummary
+    , TypeSummary
+    , typeSummary
+    , tsLastUpdated
+    , tsTypeName
+    , tsDefaultVersionId
+    , tsTypeARN
+    , tsType
+    , tsDescription
+
+    -- * TypeVersionSummary
+    , TypeVersionSummary
+    , typeVersionSummary
+    , tvsVersionId
+    , tvsTypeName
+    , tvsARN
+    , tvsTimeCreated
+    , tvsType
+    , tvsDescription
     ) where
 
 import Network.AWS.Lens
@@ -405,43 +591,70 @@ import Network.AWS.CloudFormation.Types.ChangeSetStatus
 import Network.AWS.CloudFormation.Types.ChangeSetType
 import Network.AWS.CloudFormation.Types.ChangeSource
 import Network.AWS.CloudFormation.Types.ChangeType
+import Network.AWS.CloudFormation.Types.DeprecatedStatus
+import Network.AWS.CloudFormation.Types.DifferenceType
 import Network.AWS.CloudFormation.Types.EvaluationType
 import Network.AWS.CloudFormation.Types.ExecutionStatus
+import Network.AWS.CloudFormation.Types.HandlerErrorCode
 import Network.AWS.CloudFormation.Types.OnFailure
+import Network.AWS.CloudFormation.Types.OperationStatus
+import Network.AWS.CloudFormation.Types.PermissionModels
+import Network.AWS.CloudFormation.Types.ProvisioningType
+import Network.AWS.CloudFormation.Types.RegistrationStatus
+import Network.AWS.CloudFormation.Types.RegistryType
 import Network.AWS.CloudFormation.Types.Replacement
 import Network.AWS.CloudFormation.Types.RequiresRecreation
 import Network.AWS.CloudFormation.Types.ResourceAttribute
 import Network.AWS.CloudFormation.Types.ResourceSignalStatus
 import Network.AWS.CloudFormation.Types.ResourceStatus
+import Network.AWS.CloudFormation.Types.StackDriftDetectionStatus
+import Network.AWS.CloudFormation.Types.StackDriftStatus
 import Network.AWS.CloudFormation.Types.StackInstanceStatus
+import Network.AWS.CloudFormation.Types.StackResourceDriftStatus
+import Network.AWS.CloudFormation.Types.StackSetDriftDetectionStatus
+import Network.AWS.CloudFormation.Types.StackSetDriftStatus
 import Network.AWS.CloudFormation.Types.StackSetOperationAction
 import Network.AWS.CloudFormation.Types.StackSetOperationResultStatus
 import Network.AWS.CloudFormation.Types.StackSetOperationStatus
 import Network.AWS.CloudFormation.Types.StackSetStatus
 import Network.AWS.CloudFormation.Types.StackStatus
 import Network.AWS.CloudFormation.Types.TemplateStage
+import Network.AWS.CloudFormation.Types.Visibility
 import Network.AWS.CloudFormation.Types.AccountGateResult
 import Network.AWS.CloudFormation.Types.AccountLimit
+import Network.AWS.CloudFormation.Types.AutoDeployment
 import Network.AWS.CloudFormation.Types.Change
 import Network.AWS.CloudFormation.Types.ChangeSetSummary
+import Network.AWS.CloudFormation.Types.DeploymentTargets
 import Network.AWS.CloudFormation.Types.Export
+import Network.AWS.CloudFormation.Types.LoggingConfig
 import Network.AWS.CloudFormation.Types.Output
 import Network.AWS.CloudFormation.Types.Parameter
 import Network.AWS.CloudFormation.Types.ParameterConstraints
 import Network.AWS.CloudFormation.Types.ParameterDeclaration
+import Network.AWS.CloudFormation.Types.PhysicalResourceIdContextKeyValuePair
+import Network.AWS.CloudFormation.Types.PropertyDifference
 import Network.AWS.CloudFormation.Types.ResourceChange
 import Network.AWS.CloudFormation.Types.ResourceChangeDetail
+import Network.AWS.CloudFormation.Types.ResourceIdentifierSummary
 import Network.AWS.CloudFormation.Types.ResourceTargetDefinition
+import Network.AWS.CloudFormation.Types.ResourceToImport
 import Network.AWS.CloudFormation.Types.RollbackConfiguration
 import Network.AWS.CloudFormation.Types.RollbackTrigger
 import Network.AWS.CloudFormation.Types.Stack
+import Network.AWS.CloudFormation.Types.StackDriftInformation
+import Network.AWS.CloudFormation.Types.StackDriftInformationSummary
 import Network.AWS.CloudFormation.Types.StackEvent
 import Network.AWS.CloudFormation.Types.StackInstance
 import Network.AWS.CloudFormation.Types.StackInstanceSummary
 import Network.AWS.CloudFormation.Types.StackResource
 import Network.AWS.CloudFormation.Types.StackResourceDetail
+import Network.AWS.CloudFormation.Types.StackResourceDrift
+import Network.AWS.CloudFormation.Types.StackResourceDriftInformation
+import Network.AWS.CloudFormation.Types.StackResourceDriftInformationSummary
 import Network.AWS.CloudFormation.Types.StackResourceSummary
 import Network.AWS.CloudFormation.Types.StackSet
+import Network.AWS.CloudFormation.Types.StackSetDriftDetectionDetails
 import Network.AWS.CloudFormation.Types.StackSetOperation
 import Network.AWS.CloudFormation.Types.StackSetOperationPreferences
 import Network.AWS.CloudFormation.Types.StackSetOperationResultSummary
@@ -450,6 +663,8 @@ import Network.AWS.CloudFormation.Types.StackSetSummary
 import Network.AWS.CloudFormation.Types.StackSummary
 import Network.AWS.CloudFormation.Types.Tag
 import Network.AWS.CloudFormation.Types.TemplateParameter
+import Network.AWS.CloudFormation.Types.TypeSummary
+import Network.AWS.CloudFormation.Types.TypeVersionSummary
 
 -- | API version @2010-05-15@ of the Amazon CloudFormation SDK configuration.
 cloudFormation :: Service
@@ -474,6 +689,11 @@ cloudFormation
             = Just "throttling_exception"
           | has (hasCode "Throttling" . hasStatus 400) e =
             Just "throttling"
+          | has
+              (hasCode "ProvisionedThroughputExceededException" .
+                 hasStatus 400)
+              e
+            = Just "throughput_exceeded"
           | has (hasStatus 504) e = Just "gateway_timeout"
           | has
               (hasCode "RequestThrottledException" . hasStatus 400)
@@ -503,6 +723,15 @@ _CreatedButModifiedException
       "CreatedButModifiedException"
       . hasStatus 409
 
+-- | The specified type does not exist in the CloudFormation registry.
+--
+--
+_TypeNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
+_TypeNotFoundException
+  = _MatchServiceError cloudFormation
+      "TypeNotFoundException"
+      . hasStatus 404
+
 -- | Another operation has been performed on this stack set since the specified operation was performed. 
 --
 --
@@ -521,6 +750,15 @@ _OperationNotFoundException
       "OperationNotFoundException"
       . hasStatus 404
 
+-- | Error reserved for use by the <https://docs.aws.amazon.com/cloudformation-cli/latest/userguide/what-is-cloudformation-cli.html CloudFormation CLI> . CloudFormation does not return this error to users.
+--
+--
+_InvalidStateTransitionException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidStateTransitionException
+  = _MatchServiceError cloudFormation
+      "InvalidStateTransition"
+      . hasStatus 400
+
 -- | The specified operation isn't valid.
 --
 --
@@ -528,6 +766,15 @@ _InvalidOperationException :: AsError a => Getting (First ServiceError) a Servic
 _InvalidOperationException
   = _MatchServiceError cloudFormation
       "InvalidOperationException"
+      . hasStatus 400
+
+-- | Error reserved for use by the <https://docs.aws.amazon.com/cloudformation-cli/latest/userguide/what-is-cloudformation-cli.html CloudFormation CLI> . CloudFormation does not return this error to users.
+--
+--
+_OperationStatusCheckFailedException :: AsError a => Getting (First ServiceError) a ServiceError
+_OperationStatusCheckFailedException
+  = _MatchServiceError cloudFormation
+      "ConditionalCheckFailed"
       . hasStatus 400
 
 -- | You can't yet delete this stack set, because it still contains one or more stack instances. Delete all stack instances from the stack set before deleting the stack set.
@@ -587,7 +834,7 @@ _InsufficientCapabilitiesException
 -- | The quota for the resource has already been reached.
 --
 --
--- For information on stack set limitations, see <http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-limitations.html Limitations of StackSets> .
+-- For information on resource and stack limitations, see <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cloudformation-limits.html Limits> in the /AWS CloudFormation User Guide/ .
 --
 _LimitExceededException :: AsError a => Getting (First ServiceError) a ServiceError
 _LimitExceededException
@@ -612,6 +859,15 @@ _OperationIdAlreadyExistsException
   = _MatchServiceError cloudFormation
       "OperationIdAlreadyExistsException"
       . hasStatus 409
+
+-- | An error occurred during a CloudFormation registry operation.
+--
+--
+_CFNRegistryException :: AsError a => Getting (First ServiceError) a ServiceError
+_CFNRegistryException
+  = _MatchServiceError cloudFormation
+      "CFNRegistryException"
+      . hasStatus 400
 
 -- | The specified name is already in use.
 --

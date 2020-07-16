@@ -21,7 +21,7 @@ import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Rekognition.Types.ModerationLabel
 
--- | Information about a moderation label detection in a stored video.
+-- | Information about an unsafe content label detection in a stored video.
 --
 --
 --
@@ -39,9 +39,9 @@ data ContentModerationDetection = ContentModerationDetection'{_cmdModerationLabe
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'cmdModerationLabel' - The moderation label detected by in the stored video.
+-- * 'cmdModerationLabel' - The unsafe content label detected by in the stored video.
 --
--- * 'cmdTimestamp' - Time, in milliseconds from the beginning of the video, that the moderation label was detected.
+-- * 'cmdTimestamp' - Time, in milliseconds from the beginning of the video, that the unsafe content label was detected.
 contentModerationDetection
     :: ContentModerationDetection
 contentModerationDetection
@@ -49,11 +49,11 @@ contentModerationDetection
                                   Nothing,
                                 _cmdTimestamp = Nothing}
 
--- | The moderation label detected by in the stored video.
+-- | The unsafe content label detected by in the stored video.
 cmdModerationLabel :: Lens' ContentModerationDetection (Maybe ModerationLabel)
 cmdModerationLabel = lens _cmdModerationLabel (\ s a -> s{_cmdModerationLabel = a})
 
--- | Time, in milliseconds from the beginning of the video, that the moderation label was detected.
+-- | Time, in milliseconds from the beginning of the video, that the unsafe content label was detected.
 cmdTimestamp :: Lens' ContentModerationDetection (Maybe Integer)
 cmdTimestamp = lens _cmdTimestamp (\ s a -> s{_cmdTimestamp = a})
 

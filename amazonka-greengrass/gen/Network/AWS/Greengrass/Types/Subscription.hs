@@ -23,55 +23,55 @@ import Network.AWS.Prelude
 -- | Information about a subscription.
 --
 -- /See:/ 'subscription' smart constructor.
-data Subscription = Subscription'{_sSubject ::
-                                  !(Maybe Text),
-                                  _sSource :: !(Maybe Text),
-                                  _sId :: !(Maybe Text),
-                                  _sTarget :: !(Maybe Text)}
+data Subscription = Subscription'{_sTarget :: !Text,
+                                  _sId :: !Text, _sSubject :: !Text,
+                                  _sSource :: !Text}
                       deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'Subscription' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'sSubject' - The subject of the message.
+-- * 'sTarget' - Where the message is sent to. Can be a thing ARN, a Lambda function ARN, a connector ARN, 'cloud' (which represents the AWS IoT cloud), or 'GGShadowService'.
 --
--- * 'sSource' - The source of the subscription. Can be a thing ARN, a Lambda function ARN, 'cloud' (which represents the IoT cloud), or 'GGShadowService'.
+-- * 'sId' - A descriptive or arbitrary ID for the subscription. This value must be unique within the subscription definition version. Max length is 128 characters with pattern ''[a-zA-Z0-9:_-]+''.
 --
--- * 'sId' - The id of the subscription.
+-- * 'sSubject' - The MQTT topic used to route the message.
 --
--- * 'sTarget' - Where the message is sent to. Can be a thing ARN, a Lambda function ARN, 'cloud' (which represents the IoT cloud), or 'GGShadowService'.
+-- * 'sSource' - The source of the subscription. Can be a thing ARN, a Lambda function ARN, a connector ARN, 'cloud' (which represents the AWS IoT cloud), or 'GGShadowService'.
 subscription
-    :: Subscription
-subscription
-  = Subscription'{_sSubject = Nothing,
-                  _sSource = Nothing, _sId = Nothing,
-                  _sTarget = Nothing}
+    :: Text -- ^ 'sTarget'
+    -> Text -- ^ 'sId'
+    -> Text -- ^ 'sSubject'
+    -> Text -- ^ 'sSource'
+    -> Subscription
+subscription pTarget_ pId_ pSubject_ pSource_
+  = Subscription'{_sTarget = pTarget_, _sId = pId_,
+                  _sSubject = pSubject_, _sSource = pSource_}
 
--- | The subject of the message.
-sSubject :: Lens' Subscription (Maybe Text)
-sSubject = lens _sSubject (\ s a -> s{_sSubject = a})
+-- | Where the message is sent to. Can be a thing ARN, a Lambda function ARN, a connector ARN, 'cloud' (which represents the AWS IoT cloud), or 'GGShadowService'.
+sTarget :: Lens' Subscription Text
+sTarget = lens _sTarget (\ s a -> s{_sTarget = a})
 
--- | The source of the subscription. Can be a thing ARN, a Lambda function ARN, 'cloud' (which represents the IoT cloud), or 'GGShadowService'.
-sSource :: Lens' Subscription (Maybe Text)
-sSource = lens _sSource (\ s a -> s{_sSource = a})
-
--- | The id of the subscription.
-sId :: Lens' Subscription (Maybe Text)
+-- | A descriptive or arbitrary ID for the subscription. This value must be unique within the subscription definition version. Max length is 128 characters with pattern ''[a-zA-Z0-9:_-]+''.
+sId :: Lens' Subscription Text
 sId = lens _sId (\ s a -> s{_sId = a})
 
--- | Where the message is sent to. Can be a thing ARN, a Lambda function ARN, 'cloud' (which represents the IoT cloud), or 'GGShadowService'.
-sTarget :: Lens' Subscription (Maybe Text)
-sTarget = lens _sTarget (\ s a -> s{_sTarget = a})
+-- | The MQTT topic used to route the message.
+sSubject :: Lens' Subscription Text
+sSubject = lens _sSubject (\ s a -> s{_sSubject = a})
+
+-- | The source of the subscription. Can be a thing ARN, a Lambda function ARN, a connector ARN, 'cloud' (which represents the AWS IoT cloud), or 'GGShadowService'.
+sSource :: Lens' Subscription Text
+sSource = lens _sSource (\ s a -> s{_sSource = a})
 
 instance FromJSON Subscription where
         parseJSON
           = withObject "Subscription"
               (\ x ->
                  Subscription' <$>
-                   (x .:? "Subject") <*> (x .:? "Source") <*>
-                     (x .:? "Id")
-                     <*> (x .:? "Target"))
+                   (x .: "Target") <*> (x .: "Id") <*> (x .: "Subject")
+                     <*> (x .: "Source"))
 
 instance Hashable Subscription where
 
@@ -81,6 +81,6 @@ instance ToJSON Subscription where
         toJSON Subscription'{..}
           = object
               (catMaybes
-                 [("Subject" .=) <$> _sSubject,
-                  ("Source" .=) <$> _sSource, ("Id" .=) <$> _sId,
-                  ("Target" .=) <$> _sTarget])
+                 [Just ("Target" .= _sTarget), Just ("Id" .= _sId),
+                  Just ("Subject" .= _sSubject),
+                  Just ("Source" .= _sSource)])

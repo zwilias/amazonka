@@ -19,8 +19,8 @@
 module Network.AWS.KinesisVideoArchivedMedia.Types.FragmentSelectorType (
   FragmentSelectorType (
     ..
-    , ProducerTimestamp
-    , ServerTimestamp
+    , FSTProducerTimestamp
+    , FSTServerTimestamp
     )
   ) where
 
@@ -32,15 +32,15 @@ data FragmentSelectorType = FragmentSelectorType' (CI
                               deriving (Eq, Ord, Read, Show, Data, Typeable,
                                         Generic)
 
-pattern ProducerTimestamp :: FragmentSelectorType
-pattern ProducerTimestamp = FragmentSelectorType' "PRODUCER_TIMESTAMP"
+pattern FSTProducerTimestamp :: FragmentSelectorType
+pattern FSTProducerTimestamp = FragmentSelectorType' "PRODUCER_TIMESTAMP"
 
-pattern ServerTimestamp :: FragmentSelectorType
-pattern ServerTimestamp = FragmentSelectorType' "SERVER_TIMESTAMP"
+pattern FSTServerTimestamp :: FragmentSelectorType
+pattern FSTServerTimestamp = FragmentSelectorType' "SERVER_TIMESTAMP"
 
 {-# COMPLETE
-  ProducerTimestamp,
-  ServerTimestamp,
+  FSTProducerTimestamp,
+  FSTServerTimestamp,
   FragmentSelectorType' #-}
 
 instance FromText FragmentSelectorType where
@@ -55,20 +55,20 @@ instance ToText FragmentSelectorType where
 --   fromEnum is a partial function, and will error on values unknown at generation time.
 instance Enum FragmentSelectorType where
     toEnum i = case i of
-        0 -> ProducerTimestamp
-        1 -> ServerTimestamp
+        0 -> FSTProducerTimestamp
+        1 -> FSTServerTimestamp
         _ -> (error . showText) $ "Unknown index for FragmentSelectorType: " <> toText i
     fromEnum x = case x of
-        ProducerTimestamp -> 0
-        ServerTimestamp -> 1
+        FSTProducerTimestamp -> 0
+        FSTServerTimestamp -> 1
         FragmentSelectorType' name -> (error . showText) $ "Unknown FragmentSelectorType: " <> original name
 
 -- | Represents the bounds of /known/ $FragmentSelectorType.
 --   AWS may have added more since the source was generated.
 --   This instance exists only for backward compatibility.
 instance Bounded FragmentSelectorType where
-    minBound = ProducerTimestamp
-    maxBound = ServerTimestamp
+    minBound = FSTProducerTimestamp
+    maxBound = FSTServerTimestamp
 
 instance Hashable     FragmentSelectorType
 instance NFData       FragmentSelectorType

@@ -44,13 +44,13 @@ data PolicySummary = PolicySummary'{_psPolicyName ::
 --
 -- * 'psRemediationEnabled' - Indicates if the policy should be automatically applied to new resources.
 --
--- * 'psResourceType' - The type of resource to protect with the policy, either an Application Load Balancer or a CloudFront distribution. This is in the format shown in <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html AWS Resource Types Reference> . Valid values are @AWS::ElasticLoadBalancingV2::LoadBalancer@ or @AWS::CloudFront::Distribution@ .
+-- * 'psResourceType' - The type of resource protected by or in scope of the policy. This is in the format shown in the <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html AWS Resource Types Reference> . For AWS WAF and Shield Advanced, examples include @AWS::ElasticLoadBalancingV2::LoadBalancer@ and @AWS::CloudFront::Distribution@ . For a security group common policy, valid values are @AWS::EC2::NetworkInterface@ and @AWS::EC2::Instance@ . For a security group content audit policy, valid values are @AWS::EC2::SecurityGroup@ , @AWS::EC2::NetworkInterface@ , and @AWS::EC2::Instance@ . For a security group usage audit policy, the value is @AWS::EC2::SecurityGroup@ . 
 --
 -- * 'psPolicyId' - The ID of the specified policy.
 --
 -- * 'psPolicyARN' - The Amazon Resource Name (ARN) of the specified policy.
 --
--- * 'psSecurityServiceType' - The service that the policy is using to protect the resources. This value is @WAF@ .
+-- * 'psSecurityServiceType' - The service that the policy is using to protect the resources. This specifies the type of policy that is created, either an AWS WAF policy, a Shield Advanced policy, or a security group policy.
 policySummary
     :: PolicySummary
 policySummary
@@ -68,7 +68,7 @@ psPolicyName = lens _psPolicyName (\ s a -> s{_psPolicyName = a})
 psRemediationEnabled :: Lens' PolicySummary (Maybe Bool)
 psRemediationEnabled = lens _psRemediationEnabled (\ s a -> s{_psRemediationEnabled = a})
 
--- | The type of resource to protect with the policy, either an Application Load Balancer or a CloudFront distribution. This is in the format shown in <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html AWS Resource Types Reference> . Valid values are @AWS::ElasticLoadBalancingV2::LoadBalancer@ or @AWS::CloudFront::Distribution@ .
+-- | The type of resource protected by or in scope of the policy. This is in the format shown in the <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html AWS Resource Types Reference> . For AWS WAF and Shield Advanced, examples include @AWS::ElasticLoadBalancingV2::LoadBalancer@ and @AWS::CloudFront::Distribution@ . For a security group common policy, valid values are @AWS::EC2::NetworkInterface@ and @AWS::EC2::Instance@ . For a security group content audit policy, valid values are @AWS::EC2::SecurityGroup@ , @AWS::EC2::NetworkInterface@ , and @AWS::EC2::Instance@ . For a security group usage audit policy, the value is @AWS::EC2::SecurityGroup@ . 
 psResourceType :: Lens' PolicySummary (Maybe Text)
 psResourceType = lens _psResourceType (\ s a -> s{_psResourceType = a})
 
@@ -80,7 +80,7 @@ psPolicyId = lens _psPolicyId (\ s a -> s{_psPolicyId = a})
 psPolicyARN :: Lens' PolicySummary (Maybe Text)
 psPolicyARN = lens _psPolicyARN (\ s a -> s{_psPolicyARN = a})
 
--- | The service that the policy is using to protect the resources. This value is @WAF@ .
+-- | The service that the policy is using to protect the resources. This specifies the type of policy that is created, either an AWS WAF policy, a Shield Advanced policy, or a security group policy.
 psSecurityServiceType :: Lens' PolicySummary (Maybe SecurityServiceType)
 psSecurityServiceType = lens _psSecurityServiceType (\ s a -> s{_psSecurityServiceType = a})
 

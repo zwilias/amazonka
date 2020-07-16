@@ -34,7 +34,7 @@ data ConstraintSummary = ConstraintSummary'{_csType
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'csType' - The type of constraint.     * @LAUNCH@      * @NOTIFICATION@      * @TEMPLATE@ 
+-- * 'csType' - The type of constraint.     * @LAUNCH@      * @NOTIFICATION@      * STACKSET     * @TEMPLATE@ 
 --
 -- * 'csDescription' - The description of the constraint.
 constraintSummary
@@ -43,7 +43,7 @@ constraintSummary
   = ConstraintSummary'{_csType = Nothing,
                        _csDescription = Nothing}
 
--- | The type of constraint.     * @LAUNCH@      * @NOTIFICATION@      * @TEMPLATE@ 
+-- | The type of constraint.     * @LAUNCH@      * @NOTIFICATION@      * STACKSET     * @TEMPLATE@ 
 csType :: Lens' ConstraintSummary (Maybe Text)
 csType = lens _csType (\ s a -> s{_csType = a})
 

@@ -27,6 +27,7 @@ module Network.AWS.MigrationHub.NotifyApplicationState
       notifyApplicationState
     , NotifyApplicationState
     -- * Request Lenses
+    , nasUpdateDateTime
     , nasDryRun
     , nasApplicationId
     , nasStatus
@@ -46,8 +47,10 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'notifyApplicationState' smart constructor.
-data NotifyApplicationState = NotifyApplicationState'{_nasDryRun
-                                                      :: !(Maybe Bool),
+data NotifyApplicationState = NotifyApplicationState'{_nasUpdateDateTime
+                                                      :: !(Maybe POSIX),
+                                                      _nasDryRun ::
+                                                      !(Maybe Bool),
                                                       _nasApplicationId ::
                                                       !Text,
                                                       _nasStatus ::
@@ -59,9 +62,11 @@ data NotifyApplicationState = NotifyApplicationState'{_nasDryRun
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
+-- * 'nasUpdateDateTime' - The timestamp when the application state changed.
+--
 -- * 'nasDryRun' - Optional boolean flag to indicate whether any effect should take place. Used to test if the caller has permission to make the call.
 --
--- * 'nasApplicationId' - The configurationId in ADS that uniquely identifies the grouped application.
+-- * 'nasApplicationId' - The configurationId in Application Discovery Service that uniquely identifies the grouped application.
 --
 -- * 'nasStatus' - Status of the application - Not Started, In-Progress, Complete.
 notifyApplicationState
@@ -69,15 +74,21 @@ notifyApplicationState
     -> ApplicationStatus -- ^ 'nasStatus'
     -> NotifyApplicationState
 notifyApplicationState pApplicationId_ pStatus_
-  = NotifyApplicationState'{_nasDryRun = Nothing,
+  = NotifyApplicationState'{_nasUpdateDateTime =
+                              Nothing,
+                            _nasDryRun = Nothing,
                             _nasApplicationId = pApplicationId_,
                             _nasStatus = pStatus_}
+
+-- | The timestamp when the application state changed.
+nasUpdateDateTime :: Lens' NotifyApplicationState (Maybe UTCTime)
+nasUpdateDateTime = lens _nasUpdateDateTime (\ s a -> s{_nasUpdateDateTime = a}) . mapping _Time
 
 -- | Optional boolean flag to indicate whether any effect should take place. Used to test if the caller has permission to make the call.
 nasDryRun :: Lens' NotifyApplicationState (Maybe Bool)
 nasDryRun = lens _nasDryRun (\ s a -> s{_nasDryRun = a})
 
--- | The configurationId in ADS that uniquely identifies the grouped application.
+-- | The configurationId in Application Discovery Service that uniquely identifies the grouped application.
 nasApplicationId :: Lens' NotifyApplicationState Text
 nasApplicationId = lens _nasApplicationId (\ s a -> s{_nasApplicationId = a})
 
@@ -113,7 +124,8 @@ instance ToJSON NotifyApplicationState where
         toJSON NotifyApplicationState'{..}
           = object
               (catMaybes
-                 [("DryRun" .=) <$> _nasDryRun,
+                 [("UpdateDateTime" .=) <$> _nasUpdateDateTime,
+                  ("DryRun" .=) <$> _nasDryRun,
                   Just ("ApplicationId" .= _nasApplicationId),
                   Just ("Status" .= _nasStatus)])
 

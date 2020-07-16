@@ -25,6 +25,7 @@ module Network.AWS.Greengrass.GetDeviceDefinitionVersion
       getDeviceDefinitionVersion
     , GetDeviceDefinitionVersion
     -- * Request Lenses
+    , gddvNextToken
     , gddvDeviceDefinitionVersionId
     , gddvDeviceDefinitionId
 
@@ -34,6 +35,7 @@ module Network.AWS.Greengrass.GetDeviceDefinitionVersion
     -- * Response Lenses
     , gddvrsDefinition
     , gddvrsARN
+    , gddvrsNextToken
     , gddvrsCreationTimestamp
     , gddvrsVersion
     , gddvrsId
@@ -48,7 +50,9 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getDeviceDefinitionVersion' smart constructor.
-data GetDeviceDefinitionVersion = GetDeviceDefinitionVersion'{_gddvDeviceDefinitionVersionId
+data GetDeviceDefinitionVersion = GetDeviceDefinitionVersion'{_gddvNextToken
+                                                              :: !(Maybe Text),
+                                                              _gddvDeviceDefinitionVersionId
                                                               :: !Text,
                                                               _gddvDeviceDefinitionId
                                                               :: !Text}
@@ -59,7 +63,9 @@ data GetDeviceDefinitionVersion = GetDeviceDefinitionVersion'{_gddvDeviceDefinit
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'gddvDeviceDefinitionVersionId' - The ID of the device definition version.
+-- * 'gddvNextToken' - The token for the next set of results, or ''null'' if there are no additional results.
+--
+-- * 'gddvDeviceDefinitionVersionId' - The ID of the device definition version. This value maps to the ''Version'' property of the corresponding ''VersionInformation'' object, which is returned by ''ListDeviceDefinitionVersions'' requests. If the version is the last one that was associated with a device definition, the value also maps to the ''LatestVersion'' property of the corresponding ''DefinitionInformation'' object.
 --
 -- * 'gddvDeviceDefinitionId' - The ID of the device definition.
 getDeviceDefinitionVersion
@@ -68,11 +74,17 @@ getDeviceDefinitionVersion
     -> GetDeviceDefinitionVersion
 getDeviceDefinitionVersion
   pDeviceDefinitionVersionId_ pDeviceDefinitionId_
-  = GetDeviceDefinitionVersion'{_gddvDeviceDefinitionVersionId
-                                  = pDeviceDefinitionVersionId_,
+  = GetDeviceDefinitionVersion'{_gddvNextToken =
+                                  Nothing,
+                                _gddvDeviceDefinitionVersionId =
+                                  pDeviceDefinitionVersionId_,
                                 _gddvDeviceDefinitionId = pDeviceDefinitionId_}
 
--- | The ID of the device definition version.
+-- | The token for the next set of results, or ''null'' if there are no additional results.
+gddvNextToken :: Lens' GetDeviceDefinitionVersion (Maybe Text)
+gddvNextToken = lens _gddvNextToken (\ s a -> s{_gddvNextToken = a})
+
+-- | The ID of the device definition version. This value maps to the ''Version'' property of the corresponding ''VersionInformation'' object, which is returned by ''ListDeviceDefinitionVersions'' requests. If the version is the last one that was associated with a device definition, the value also maps to the ''LatestVersion'' property of the corresponding ''DefinitionInformation'' object.
 gddvDeviceDefinitionVersionId :: Lens' GetDeviceDefinitionVersion Text
 gddvDeviceDefinitionVersionId = lens _gddvDeviceDefinitionVersionId (\ s a -> s{_gddvDeviceDefinitionVersionId = a})
 
@@ -89,7 +101,8 @@ instance AWSRequest GetDeviceDefinitionVersion where
               (\ s h x ->
                  GetDeviceDefinitionVersionResponse' <$>
                    (x .?> "Definition") <*> (x .?> "Arn") <*>
-                     (x .?> "CreationTimestamp")
+                     (x .?> "NextToken")
+                     <*> (x .?> "CreationTimestamp")
                      <*> (x .?> "Version")
                      <*> (x .?> "Id")
                      <*> (pure (fromEnum s)))
@@ -113,7 +126,8 @@ instance ToPath GetDeviceDefinitionVersion where
                toBS _gddvDeviceDefinitionVersionId]
 
 instance ToQuery GetDeviceDefinitionVersion where
-        toQuery = const mempty
+        toQuery GetDeviceDefinitionVersion'{..}
+          = mconcat ["NextToken" =: _gddvNextToken]
 
 -- | /See:/ 'getDeviceDefinitionVersionResponse' smart constructor.
 data GetDeviceDefinitionVersionResponse = GetDeviceDefinitionVersionResponse'{_gddvrsDefinition
@@ -121,6 +135,10 @@ data GetDeviceDefinitionVersionResponse = GetDeviceDefinitionVersionResponse'{_g
                                                                               !(Maybe
                                                                                   DeviceDefinitionVersion),
                                                                               _gddvrsARN
+                                                                              ::
+                                                                              !(Maybe
+                                                                                  Text),
+                                                                              _gddvrsNextToken
                                                                               ::
                                                                               !(Maybe
                                                                                   Text),
@@ -150,6 +168,8 @@ data GetDeviceDefinitionVersionResponse = GetDeviceDefinitionVersionResponse'{_g
 --
 -- * 'gddvrsARN' - The ARN of the device definition version.
 --
+-- * 'gddvrsNextToken' - The token for the next set of results, or ''null'' if there are no additional results.
+--
 -- * 'gddvrsCreationTimestamp' - The time, in milliseconds since the epoch, when the device definition version was created.
 --
 -- * 'gddvrsVersion' - The version of the device definition version.
@@ -164,6 +184,7 @@ getDeviceDefinitionVersionResponse pResponseStatus_
   = GetDeviceDefinitionVersionResponse'{_gddvrsDefinition
                                           = Nothing,
                                         _gddvrsARN = Nothing,
+                                        _gddvrsNextToken = Nothing,
                                         _gddvrsCreationTimestamp = Nothing,
                                         _gddvrsVersion = Nothing,
                                         _gddvrsId = Nothing,
@@ -177,6 +198,10 @@ gddvrsDefinition = lens _gddvrsDefinition (\ s a -> s{_gddvrsDefinition = a})
 -- | The ARN of the device definition version.
 gddvrsARN :: Lens' GetDeviceDefinitionVersionResponse (Maybe Text)
 gddvrsARN = lens _gddvrsARN (\ s a -> s{_gddvrsARN = a})
+
+-- | The token for the next set of results, or ''null'' if there are no additional results.
+gddvrsNextToken :: Lens' GetDeviceDefinitionVersionResponse (Maybe Text)
+gddvrsNextToken = lens _gddvrsNextToken (\ s a -> s{_gddvrsNextToken = a})
 
 -- | The time, in milliseconds since the epoch, when the device definition version was created.
 gddvrsCreationTimestamp :: Lens' GetDeviceDefinitionVersionResponse (Maybe Text)

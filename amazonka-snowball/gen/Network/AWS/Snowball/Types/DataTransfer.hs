@@ -20,7 +20,7 @@ module Network.AWS.Snowball.Types.DataTransfer where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | Defines the real-time status of a Snowball's data transfer while the appliance is at AWS. This data is only available while a job has a @JobState@ value of @InProgress@ , for both import and export jobs.
+-- | Defines the real-time status of a Snowball's data transfer while the device is at AWS. This data is only available while a job has a @JobState@ value of @InProgress@ , for both import and export jobs.
 --
 --
 --

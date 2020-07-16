@@ -149,7 +149,7 @@ data UpdateDomainNameserversResponse = UpdateDomainNameserversResponse'{_udnrsRe
 --
 -- * 'udnrsResponseStatus' - -- | The response status code.
 --
--- * 'udnrsOperationId' - Identifier for tracking the progress of the request. To use this ID to query the operation status, use 'GetOperationDetail' .
+-- * 'udnrsOperationId' - Identifier for tracking the progress of the request. To query the operation status, use <https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_GetOperationDetail.html GetOperationDetail> .
 updateDomainNameserversResponse
     :: Int -- ^ 'udnrsResponseStatus'
     -> Text -- ^ 'udnrsOperationId'
@@ -164,7 +164,7 @@ updateDomainNameserversResponse pResponseStatus_
 udnrsResponseStatus :: Lens' UpdateDomainNameserversResponse Int
 udnrsResponseStatus = lens _udnrsResponseStatus (\ s a -> s{_udnrsResponseStatus = a})
 
--- | Identifier for tracking the progress of the request. To use this ID to query the operation status, use 'GetOperationDetail' .
+-- | Identifier for tracking the progress of the request. To query the operation status, use <https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_GetOperationDetail.html GetOperationDetail> .
 udnrsOperationId :: Lens' UpdateDomainNameserversResponse Text
 udnrsOperationId = lens _udnrsOperationId (\ s a -> s{_udnrsOperationId = a})
 

@@ -36,14 +36,14 @@ newtype NetworkConfiguration = NetworkConfiguration'{_ncAwsvpcConfiguration
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'ncAwsvpcConfiguration' - Use this structure to specify the VPC subnets and security groups for the task and whether a public IP address is to be used. This structure is relevant only for ECS tasks that use the @awsvpc@ network mode.
+-- * 'ncAwsvpcConfiguration' - Use this structure to specify the VPC subnets and security groups for the task, and whether a public IP address is to be used. This structure is relevant only for ECS tasks that use the @awsvpc@ network mode.
 networkConfiguration
     :: NetworkConfiguration
 networkConfiguration
   = NetworkConfiguration'{_ncAwsvpcConfiguration =
                             Nothing}
 
--- | Use this structure to specify the VPC subnets and security groups for the task and whether a public IP address is to be used. This structure is relevant only for ECS tasks that use the @awsvpc@ network mode.
+-- | Use this structure to specify the VPC subnets and security groups for the task, and whether a public IP address is to be used. This structure is relevant only for ECS tasks that use the @awsvpc@ network mode.
 ncAwsvpcConfiguration :: Lens' NetworkConfiguration (Maybe AWSVPCConfiguration)
 ncAwsvpcConfiguration = lens _ncAwsvpcConfiguration (\ s a -> s{_ncAwsvpcConfiguration = a})
 

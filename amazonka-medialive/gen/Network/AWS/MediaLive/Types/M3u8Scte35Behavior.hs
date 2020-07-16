@@ -27,7 +27,7 @@ module Network.AWS.MediaLive.Types.M3u8Scte35Behavior (
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | Placeholder documentation for M3u8Scte35Behavior
+-- | M3u8 Scte35 Behavior
 data M3u8Scte35Behavior = M3u8Scte35Behavior' (CI
                                                  Text)
                             deriving (Eq, Ord, Read, Show, Data, Typeable,

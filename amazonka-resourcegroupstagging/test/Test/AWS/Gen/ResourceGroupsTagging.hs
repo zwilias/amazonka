@@ -28,7 +28,13 @@ import Test.AWS.ResourceGroupsTagging.Internal
 -- fixtures :: TestTree
 -- fixtures =
 --     [ testGroup "request"
---         [ requestGetTagKeys $
+--         [ requestGetComplianceSummary $
+--             getComplianceSummary
+--
+--         , requestDescribeReportCreation $
+--             describeReportCreation
+--
+--         , requestGetTagKeys $
 --             getTagKeys
 --
 --         , requestTagResources $
@@ -36,6 +42,9 @@ import Test.AWS.ResourceGroupsTagging.Internal
 --
 --         , requestGetTagValues $
 --             getTagValues
+--
+--         , requestStartReportCreation $
+--             startReportCreation
 --
 --         , requestGetResources $
 --             getResources
@@ -46,7 +55,13 @@ import Test.AWS.ResourceGroupsTagging.Internal
 --           ]
 
 --     , testGroup "response"
---         [ responseGetTagKeys $
+--         [ responseGetComplianceSummary $
+--             getComplianceSummaryResponse
+--
+--         , responseDescribeReportCreation $
+--             describeReportCreationResponse
+--
+--         , responseGetTagKeys $
 --             getTagKeysResponse
 --
 --         , responseTagResources $
@@ -54,6 +69,9 @@ import Test.AWS.ResourceGroupsTagging.Internal
 --
 --         , responseGetTagValues $
 --             getTagValuesResponse
+--
+--         , responseStartReportCreation $
+--             startReportCreationResponse
 --
 --         , responseGetResources $
 --             getResourcesResponse
@@ -65,6 +83,16 @@ import Test.AWS.ResourceGroupsTagging.Internal
 --     ]
 
 -- Requests
+
+requestGetComplianceSummary :: GetComplianceSummary -> TestTree
+requestGetComplianceSummary = req
+    "GetComplianceSummary"
+    "fixture/GetComplianceSummary.yaml"
+
+requestDescribeReportCreation :: DescribeReportCreation -> TestTree
+requestDescribeReportCreation = req
+    "DescribeReportCreation"
+    "fixture/DescribeReportCreation.yaml"
 
 requestGetTagKeys :: GetTagKeys -> TestTree
 requestGetTagKeys = req
@@ -81,6 +109,11 @@ requestGetTagValues = req
     "GetTagValues"
     "fixture/GetTagValues.yaml"
 
+requestStartReportCreation :: StartReportCreation -> TestTree
+requestStartReportCreation = req
+    "StartReportCreation"
+    "fixture/StartReportCreation.yaml"
+
 requestGetResources :: GetResources -> TestTree
 requestGetResources = req
     "GetResources"
@@ -92,6 +125,20 @@ requestUntagResources = req
     "fixture/UntagResources.yaml"
 
 -- Responses
+
+responseGetComplianceSummary :: GetComplianceSummaryResponse -> TestTree
+responseGetComplianceSummary = res
+    "GetComplianceSummaryResponse"
+    "fixture/GetComplianceSummaryResponse.proto"
+    resourceGroupsTagging
+    (Proxy :: Proxy GetComplianceSummary)
+
+responseDescribeReportCreation :: DescribeReportCreationResponse -> TestTree
+responseDescribeReportCreation = res
+    "DescribeReportCreationResponse"
+    "fixture/DescribeReportCreationResponse.proto"
+    resourceGroupsTagging
+    (Proxy :: Proxy DescribeReportCreation)
 
 responseGetTagKeys :: GetTagKeysResponse -> TestTree
 responseGetTagKeys = res
@@ -113,6 +160,13 @@ responseGetTagValues = res
     "fixture/GetTagValuesResponse.proto"
     resourceGroupsTagging
     (Proxy :: Proxy GetTagValues)
+
+responseStartReportCreation :: StartReportCreationResponse -> TestTree
+responseStartReportCreation = res
+    "StartReportCreationResponse"
+    "fixture/StartReportCreationResponse.proto"
+    resourceGroupsTagging
+    (Proxy :: Proxy StartReportCreation)
 
 responseGetResources :: GetResourcesResponse -> TestTree
 responseGetResources = res

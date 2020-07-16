@@ -68,7 +68,7 @@ data CreateTrafficPolicyVersion = CreateTrafficPolicyVersion'{_ctpvComment
 --
 -- * 'ctpvId' - The ID of the traffic policy for which you want to create a new version.
 --
--- * 'ctpvDocument' - The definition of this version of the traffic policy, in JSON format. You specified the JSON in the @CreateTrafficPolicyVersion@ request. For more information about the JSON format, see 'CreateTrafficPolicy' .
+-- * 'ctpvDocument' - The definition of this version of the traffic policy, in JSON format. You specified the JSON in the @CreateTrafficPolicyVersion@ request. For more information about the JSON format, see <https://docs.aws.amazon.com/Route53/latest/APIReference/API_CreateTrafficPolicy.html CreateTrafficPolicy> .
 createTrafficPolicyVersion
     :: Text -- ^ 'ctpvId'
     -> Text -- ^ 'ctpvDocument'
@@ -85,7 +85,7 @@ ctpvComment = lens _ctpvComment (\ s a -> s{_ctpvComment = a})
 ctpvId :: Lens' CreateTrafficPolicyVersion Text
 ctpvId = lens _ctpvId (\ s a -> s{_ctpvId = a})
 
--- | The definition of this version of the traffic policy, in JSON format. You specified the JSON in the @CreateTrafficPolicyVersion@ request. For more information about the JSON format, see 'CreateTrafficPolicy' .
+-- | The definition of this version of the traffic policy, in JSON format. You specified the JSON in the @CreateTrafficPolicyVersion@ request. For more information about the JSON format, see <https://docs.aws.amazon.com/Route53/latest/APIReference/API_CreateTrafficPolicy.html CreateTrafficPolicy> .
 ctpvDocument :: Lens' CreateTrafficPolicyVersion Text
 ctpvDocument = lens _ctpvDocument (\ s a -> s{_ctpvDocument = a})
 

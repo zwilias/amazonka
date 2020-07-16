@@ -22,7 +22,7 @@ import Network.AWS.MediaLive.Types.VideoSelectorPid
 import Network.AWS.MediaLive.Types.VideoSelectorProgramId
 import Network.AWS.Prelude
 
--- | Placeholder documentation for VideoSelectorSettings
+-- | Video Selector Settings
 --
 -- /See:/ 'videoSelectorSettings' smart constructor.
 data VideoSelectorSettings = VideoSelectorSettings'{_vssVideoSelectorProgramId

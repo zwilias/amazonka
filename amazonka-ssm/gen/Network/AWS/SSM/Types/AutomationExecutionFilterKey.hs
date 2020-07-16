@@ -19,6 +19,7 @@
 module Network.AWS.SSM.Types.AutomationExecutionFilterKey (
   AutomationExecutionFilterKey (
     ..
+    , AEFKAutomationType
     , AEFKCurrentAction
     , AEFKDocumentNamePrefix
     , AEFKExecutionId
@@ -26,6 +27,7 @@ module Network.AWS.SSM.Types.AutomationExecutionFilterKey (
     , AEFKParentExecutionId
     , AEFKStartTimeAfter
     , AEFKStartTimeBefore
+    , AEFKTagKey
     )
   ) where
 
@@ -36,6 +38,9 @@ data AutomationExecutionFilterKey = AutomationExecutionFilterKey' (CI
                                                                      Text)
                                       deriving (Eq, Ord, Read, Show, Data,
                                                 Typeable, Generic)
+
+pattern AEFKAutomationType :: AutomationExecutionFilterKey
+pattern AEFKAutomationType = AutomationExecutionFilterKey' "AutomationType"
 
 pattern AEFKCurrentAction :: AutomationExecutionFilterKey
 pattern AEFKCurrentAction = AutomationExecutionFilterKey' "CurrentAction"
@@ -58,7 +63,11 @@ pattern AEFKStartTimeAfter = AutomationExecutionFilterKey' "StartTimeAfter"
 pattern AEFKStartTimeBefore :: AutomationExecutionFilterKey
 pattern AEFKStartTimeBefore = AutomationExecutionFilterKey' "StartTimeBefore"
 
+pattern AEFKTagKey :: AutomationExecutionFilterKey
+pattern AEFKTagKey = AutomationExecutionFilterKey' "TagKey"
+
 {-# COMPLETE
+  AEFKAutomationType,
   AEFKCurrentAction,
   AEFKDocumentNamePrefix,
   AEFKExecutionId,
@@ -66,6 +75,7 @@ pattern AEFKStartTimeBefore = AutomationExecutionFilterKey' "StartTimeBefore"
   AEFKParentExecutionId,
   AEFKStartTimeAfter,
   AEFKStartTimeBefore,
+  AEFKTagKey,
   AutomationExecutionFilterKey' #-}
 
 instance FromText AutomationExecutionFilterKey where
@@ -80,30 +90,34 @@ instance ToText AutomationExecutionFilterKey where
 --   fromEnum is a partial function, and will error on values unknown at generation time.
 instance Enum AutomationExecutionFilterKey where
     toEnum i = case i of
-        0 -> AEFKCurrentAction
-        1 -> AEFKDocumentNamePrefix
-        2 -> AEFKExecutionId
-        3 -> AEFKExecutionStatus
-        4 -> AEFKParentExecutionId
-        5 -> AEFKStartTimeAfter
-        6 -> AEFKStartTimeBefore
+        0 -> AEFKAutomationType
+        1 -> AEFKCurrentAction
+        2 -> AEFKDocumentNamePrefix
+        3 -> AEFKExecutionId
+        4 -> AEFKExecutionStatus
+        5 -> AEFKParentExecutionId
+        6 -> AEFKStartTimeAfter
+        7 -> AEFKStartTimeBefore
+        8 -> AEFKTagKey
         _ -> (error . showText) $ "Unknown index for AutomationExecutionFilterKey: " <> toText i
     fromEnum x = case x of
-        AEFKCurrentAction -> 0
-        AEFKDocumentNamePrefix -> 1
-        AEFKExecutionId -> 2
-        AEFKExecutionStatus -> 3
-        AEFKParentExecutionId -> 4
-        AEFKStartTimeAfter -> 5
-        AEFKStartTimeBefore -> 6
+        AEFKAutomationType -> 0
+        AEFKCurrentAction -> 1
+        AEFKDocumentNamePrefix -> 2
+        AEFKExecutionId -> 3
+        AEFKExecutionStatus -> 4
+        AEFKParentExecutionId -> 5
+        AEFKStartTimeAfter -> 6
+        AEFKStartTimeBefore -> 7
+        AEFKTagKey -> 8
         AutomationExecutionFilterKey' name -> (error . showText) $ "Unknown AutomationExecutionFilterKey: " <> original name
 
 -- | Represents the bounds of /known/ $AutomationExecutionFilterKey.
 --   AWS may have added more since the source was generated.
 --   This instance exists only for backward compatibility.
 instance Bounded AutomationExecutionFilterKey where
-    minBound = AEFKCurrentAction
-    maxBound = AEFKStartTimeBefore
+    minBound = AEFKAutomationType
+    maxBound = AEFKTagKey
 
 instance Hashable     AutomationExecutionFilterKey
 instance NFData       AutomationExecutionFilterKey

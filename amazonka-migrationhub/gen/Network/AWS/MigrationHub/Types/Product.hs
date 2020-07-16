@@ -17,6 +17,7 @@
 -- Portability : non-portable (GHC extensions)
 --
 module Network.AWS.MigrationHub.Types.Product (
+    module Network.AWS.MigrationHub.Types.ApplicationState,
     module Network.AWS.MigrationHub.Types.CreatedArtifact,
     module Network.AWS.MigrationHub.Types.DiscoveredResource,
     module Network.AWS.MigrationHub.Types.MigrationTask,
@@ -27,6 +28,7 @@ module Network.AWS.MigrationHub.Types.Product (
   ) where
 
 import Network.AWS.Lens
+import Network.AWS.MigrationHub.Types.ApplicationState
 import Network.AWS.MigrationHub.Types.CreatedArtifact
 import Network.AWS.MigrationHub.Types.DiscoveredResource
 import Network.AWS.MigrationHub.Types.MigrationTask

@@ -21,7 +21,7 @@
 -- Returns information about a specific Amazon Kinesis Analytics application.
 --
 --
--- If you want to retrieve a list of all applications in your account, use the 'ListApplications' operation.
+-- If you want to retrieve a list of all applications in your account, use the <https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_ListApplications.html ListApplications> operation.
 --
 -- This operation requires permissions to perform the @kinesisanalytics:DescribeApplication@ action. You can use @DescribeApplication@ to get the current application versionId, which you need to call other operations such as @Update@ . 
 --

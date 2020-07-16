@@ -27,7 +27,7 @@ module Network.AWS.MediaConvert.Types.Mpeg2SceneChangeDetect (
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | Scene change detection (inserts I-frames on scene changes).
+-- | Enable this setting to insert I-frames at scene changes that the service automatically detects. This improves video quality and is enabled by default.
 data Mpeg2SceneChangeDetect = Mpeg2SceneChangeDetect' (CI
                                                          Text)
                                 deriving (Eq, Ord, Read, Show, Data, Typeable,

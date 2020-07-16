@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- The document you want to update.
+-- Updates one or more values for an SSM document.
 --
 --
 module Network.AWS.SSM.UpdateDocument
@@ -27,6 +27,8 @@ module Network.AWS.SSM.UpdateDocument
       updateDocument
     , UpdateDocument
     -- * Request Lenses
+    , udAttachments
+    , udVersionName
     , udTargetType
     , udDocumentFormat
     , udDocumentVersion
@@ -49,8 +51,10 @@ import Network.AWS.SSM.Types
 import Network.AWS.SSM.Types.Product
 
 -- | /See:/ 'updateDocument' smart constructor.
-data UpdateDocument = UpdateDocument'{_udTargetType
-                                      :: !(Maybe Text),
+data UpdateDocument = UpdateDocument'{_udAttachments
+                                      :: !(Maybe [AttachmentsSource]),
+                                      _udVersionName :: !(Maybe Text),
+                                      _udTargetType :: !(Maybe Text),
                                       _udDocumentFormat ::
                                       !(Maybe DocumentFormat),
                                       _udDocumentVersion :: !(Maybe Text),
@@ -61,13 +65,17 @@ data UpdateDocument = UpdateDocument'{_udTargetType
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
+-- * 'udAttachments' - A list of key and value pairs that describe attachments to a version of a document.
+--
+-- * 'udVersionName' - An optional field specifying the version of the artifact you are updating with the document. For example, "Release 12, Update 6". This value is unique across all versions of a document, and cannot be changed.
+--
 -- * 'udTargetType' - Specify a new target type for the document.
 --
 -- * 'udDocumentFormat' - Specify the document format for the new document version. Systems Manager supports JSON and YAML documents. JSON is the default format.
 --
--- * 'udDocumentVersion' - The version of the document that you want to update.
+-- * 'udDocumentVersion' - (Required) The latest version of the document that you want to update. The latest document version can be specified using the $LATEST variable or by the version number. Updating a previous version of a document is not supported.
 --
--- * 'udContent' - The content in a document that you want to update.
+-- * 'udContent' - A valid JSON or YAML string.
 --
 -- * 'udName' - The name of the document that you want to update.
 updateDocument
@@ -75,10 +83,19 @@ updateDocument
     -> Text -- ^ 'udName'
     -> UpdateDocument
 updateDocument pContent_ pName_
-  = UpdateDocument'{_udTargetType = Nothing,
+  = UpdateDocument'{_udAttachments = Nothing,
+                    _udVersionName = Nothing, _udTargetType = Nothing,
                     _udDocumentFormat = Nothing,
                     _udDocumentVersion = Nothing, _udContent = pContent_,
                     _udName = pName_}
+
+-- | A list of key and value pairs that describe attachments to a version of a document.
+udAttachments :: Lens' UpdateDocument [AttachmentsSource]
+udAttachments = lens _udAttachments (\ s a -> s{_udAttachments = a}) . _Default . _Coerce
+
+-- | An optional field specifying the version of the artifact you are updating with the document. For example, "Release 12, Update 6". This value is unique across all versions of a document, and cannot be changed.
+udVersionName :: Lens' UpdateDocument (Maybe Text)
+udVersionName = lens _udVersionName (\ s a -> s{_udVersionName = a})
 
 -- | Specify a new target type for the document.
 udTargetType :: Lens' UpdateDocument (Maybe Text)
@@ -88,11 +105,11 @@ udTargetType = lens _udTargetType (\ s a -> s{_udTargetType = a})
 udDocumentFormat :: Lens' UpdateDocument (Maybe DocumentFormat)
 udDocumentFormat = lens _udDocumentFormat (\ s a -> s{_udDocumentFormat = a})
 
--- | The version of the document that you want to update.
+-- | (Required) The latest version of the document that you want to update. The latest document version can be specified using the $LATEST variable or by the version number. Updating a previous version of a document is not supported.
 udDocumentVersion :: Lens' UpdateDocument (Maybe Text)
 udDocumentVersion = lens _udDocumentVersion (\ s a -> s{_udDocumentVersion = a})
 
--- | The content in a document that you want to update.
+-- | A valid JSON or YAML string.
 udContent :: Lens' UpdateDocument Text
 udContent = lens _udContent (\ s a -> s{_udContent = a})
 
@@ -127,7 +144,9 @@ instance ToJSON UpdateDocument where
         toJSON UpdateDocument'{..}
           = object
               (catMaybes
-                 [("TargetType" .=) <$> _udTargetType,
+                 [("Attachments" .=) <$> _udAttachments,
+                  ("VersionName" .=) <$> _udVersionName,
+                  ("TargetType" .=) <$> _udTargetType,
                   ("DocumentFormat" .=) <$> _udDocumentFormat,
                   ("DocumentVersion" .=) <$> _udDocumentVersion,
                   Just ("Content" .= _udContent),

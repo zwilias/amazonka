@@ -23,7 +23,9 @@ import Network.AWS.SMS.Types.ConnectorCapability
 import Network.AWS.SMS.Types.ConnectorStatus
 import Network.AWS.SMS.Types.VMManagerType
 
--- | Object representing a Connector
+-- | Represents a connector.
+--
+--
 --
 -- /See:/ 'connector' smart constructor.
 data Connector = Connector'{_cStatus ::
@@ -43,25 +45,25 @@ data Connector = Connector'{_cStatus ::
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'cStatus' - Undocumented member.
+-- * 'cStatus' - The status of the connector.
 --
--- * 'cVmManagerName' - Undocumented member.
+-- * 'cVmManagerName' - The name of the VM manager.
 --
--- * 'cIpAddress' - Undocumented member.
+-- * 'cIpAddress' - The IP address of the connector.
 --
--- * 'cVmManagerId' - Undocumented member.
+-- * 'cVmManagerId' - The identifier of the VM manager.
 --
--- * 'cVmManagerType' - Undocumented member.
+-- * 'cVmManagerType' - The VM management product.
 --
--- * 'cConnectorId' - Undocumented member.
+-- * 'cConnectorId' - The identifier of the connector.
 --
--- * 'cAssociatedOn' - Undocumented member.
+-- * 'cAssociatedOn' - The time the connector was associated.
 --
--- * 'cMacAddress' - Undocumented member.
+-- * 'cMacAddress' - The MAC address of the connector.
 --
--- * 'cVersion' - Undocumented member.
+-- * 'cVersion' - The connector version.
 --
--- * 'cCapabilityList' - Undocumented member.
+-- * 'cCapabilityList' - The capabilities of the connector.
 connector
     :: Connector
 connector
@@ -72,43 +74,43 @@ connector
                _cMacAddress = Nothing, _cVersion = Nothing,
                _cCapabilityList = Nothing}
 
--- | Undocumented member.
+-- | The status of the connector.
 cStatus :: Lens' Connector (Maybe ConnectorStatus)
 cStatus = lens _cStatus (\ s a -> s{_cStatus = a})
 
--- | Undocumented member.
+-- | The name of the VM manager.
 cVmManagerName :: Lens' Connector (Maybe Text)
 cVmManagerName = lens _cVmManagerName (\ s a -> s{_cVmManagerName = a})
 
--- | Undocumented member.
+-- | The IP address of the connector.
 cIpAddress :: Lens' Connector (Maybe Text)
 cIpAddress = lens _cIpAddress (\ s a -> s{_cIpAddress = a})
 
--- | Undocumented member.
+-- | The identifier of the VM manager.
 cVmManagerId :: Lens' Connector (Maybe Text)
 cVmManagerId = lens _cVmManagerId (\ s a -> s{_cVmManagerId = a})
 
--- | Undocumented member.
+-- | The VM management product.
 cVmManagerType :: Lens' Connector (Maybe VMManagerType)
 cVmManagerType = lens _cVmManagerType (\ s a -> s{_cVmManagerType = a})
 
--- | Undocumented member.
+-- | The identifier of the connector.
 cConnectorId :: Lens' Connector (Maybe Text)
 cConnectorId = lens _cConnectorId (\ s a -> s{_cConnectorId = a})
 
--- | Undocumented member.
+-- | The time the connector was associated.
 cAssociatedOn :: Lens' Connector (Maybe UTCTime)
 cAssociatedOn = lens _cAssociatedOn (\ s a -> s{_cAssociatedOn = a}) . mapping _Time
 
--- | Undocumented member.
+-- | The MAC address of the connector.
 cMacAddress :: Lens' Connector (Maybe Text)
 cMacAddress = lens _cMacAddress (\ s a -> s{_cMacAddress = a})
 
--- | Undocumented member.
+-- | The connector version.
 cVersion :: Lens' Connector (Maybe Text)
 cVersion = lens _cVersion (\ s a -> s{_cVersion = a})
 
--- | Undocumented member.
+-- | The capabilities of the connector.
 cCapabilityList :: Lens' Connector [ConnectorCapability]
 cCapabilityList = lens _cCapabilityList (\ s a -> s{_cCapabilityList = a}) . _Default . _Coerce
 

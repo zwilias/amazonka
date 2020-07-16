@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Creates a user who can be used in Amazon WorkMail by calling the RegisterToWorkMail operation.
+-- Creates a user who can be used in Amazon WorkMail by calling the 'RegisterToWorkMail' operation.
 --
 --
 module Network.AWS.WorkMail.CreateUser
@@ -60,11 +60,11 @@ data CreateUser = CreateUser'{_cuOrganizationId ::
 --
 -- * 'cuOrganizationId' - The identifier of the organization for which the user is created.
 --
--- * 'cuName' - The name for the user to be created.
+-- * 'cuName' - The name for the new user. Simple AD or AD Connector user names have a maximum length of 20. All others have a maximum length of 64.
 --
--- * 'cuDisplayName' - The display name for the user to be created.
+-- * 'cuDisplayName' - The display name for the new user.
 --
--- * 'cuPassword' - The password for the user to be created.
+-- * 'cuPassword' - The password for the new user.
 createUser
     :: Text -- ^ 'cuOrganizationId'
     -> Text -- ^ 'cuName'
@@ -81,15 +81,15 @@ createUser pOrganizationId_ pName_ pDisplayName_
 cuOrganizationId :: Lens' CreateUser Text
 cuOrganizationId = lens _cuOrganizationId (\ s a -> s{_cuOrganizationId = a})
 
--- | The name for the user to be created.
+-- | The name for the new user. Simple AD or AD Connector user names have a maximum length of 20. All others have a maximum length of 64.
 cuName :: Lens' CreateUser Text
 cuName = lens _cuName (\ s a -> s{_cuName = a})
 
--- | The display name for the user to be created.
+-- | The display name for the new user.
 cuDisplayName :: Lens' CreateUser Text
 cuDisplayName = lens _cuDisplayName (\ s a -> s{_cuDisplayName = a})
 
--- | The password for the user to be created.
+-- | The password for the new user.
 cuPassword :: Lens' CreateUser Text
 cuPassword = lens _cuPassword (\ s a -> s{_cuPassword = a}) . _Sensitive
 
@@ -140,7 +140,7 @@ data CreateUserResponse = CreateUserResponse'{_cursUserId
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'cursUserId' - The information regarding the newly created user.
+-- * 'cursUserId' - The identifier for the new user.
 --
 -- * 'cursResponseStatus' - -- | The response status code.
 createUserResponse
@@ -150,7 +150,7 @@ createUserResponse pResponseStatus_
   = CreateUserResponse'{_cursUserId = Nothing,
                         _cursResponseStatus = pResponseStatus_}
 
--- | The information regarding the newly created user.
+-- | The identifier for the new user.
 cursUserId :: Lens' CreateUserResponse (Maybe Text)
 cursUserId = lens _cursUserId (\ s a -> s{_cursUserId = a})
 

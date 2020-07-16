@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Retrieves information about the specified role, including the role's path, GUID, ARN, and the role's trust policy that grants permission to assume the role. For more information about roles, see <http://docs.aws.amazon.com/IAM/latest/UserGuide/WorkingWithRoles.html Working with Roles> .
+-- Retrieves information about the specified role, including the role's path, GUID, ARN, and the role's trust policy that grants permission to assume the role. For more information about roles, see <https://docs.aws.amazon.com/IAM/latest/UserGuide/WorkingWithRoles.html Working with Roles> .
 --
 --
 module Network.AWS.IAM.GetRole
@@ -52,14 +52,14 @@ newtype GetRole = GetRole'{_grRoleName :: Text}
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'grRoleName' - The name of the IAM role to get information about. This parameter allows (per its <http://wikipedia.org/wiki/regex regex pattern> ) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
+-- * 'grRoleName' - The name of the IAM role to get information about. This parameter allows (through its <http://wikipedia.org/wiki/regex regex pattern> ) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
 getRole
     :: Text -- ^ 'grRoleName'
     -> GetRole
 getRole pRoleName_
   = GetRole'{_grRoleName = pRoleName_}
 
--- | The name of the IAM role to get information about. This parameter allows (per its <http://wikipedia.org/wiki/regex regex pattern> ) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
+-- | The name of the IAM role to get information about. This parameter allows (through its <http://wikipedia.org/wiki/regex regex pattern> ) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
 grRoleName :: Lens' GetRole Text
 grRoleName = lens _grRoleName (\ s a -> s{_grRoleName = a})
 

@@ -23,10 +23,23 @@ module Network.AWS.ServerlessApplicationRepository.Types
     , _NotFoundException
     , _ConflictException
 
+    -- * Capability
+    , Capability (..)
+
+    -- * RepoStatus
+    , RepoStatus (..)
+
+    -- * ApplicationDependencySummary
+    , ApplicationDependencySummary
+    , applicationDependencySummary
+    , adsApplicationId
+    , adsSemanticVersion
+
     -- * ApplicationPolicyStatement
     , ApplicationPolicyStatement
     , applicationPolicyStatement
     , apsStatementId
+    , apsPrincipalOrgIds
     , apsPrincipals
     , apsActions
 
@@ -65,13 +78,34 @@ module Network.AWS.ServerlessApplicationRepository.Types
     , pvValue
     , pvName
 
+    -- * RollbackConfiguration
+    , RollbackConfiguration
+    , rollbackConfiguration
+    , rcRollbackTriggers
+    , rcMonitoringTimeInMinutes
+
+    -- * RollbackTrigger
+    , RollbackTrigger
+    , rollbackTrigger
+    , rtType
+    , rtARN
+
+    -- * Tag
+    , Tag
+    , tag
+    , tagValue
+    , tagKey
+
     -- * Version
     , Version
     , version
     , vSourceCodeURL
+    , vSourceCodeArchiveURL
     , vTemplateURL
     , vParameterDefinitions
+    , vResourcesSupported
     , vCreationTime
+    , vRequiredCapabilities
     , vApplicationId
     , vSemanticVersion
 
@@ -87,10 +121,16 @@ module Network.AWS.ServerlessApplicationRepository.Types
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Sign.V4
+import Network.AWS.ServerlessApplicationRepository.Types.Capability
+import Network.AWS.ServerlessApplicationRepository.Types.RepoStatus
+import Network.AWS.ServerlessApplicationRepository.Types.ApplicationDependencySummary
 import Network.AWS.ServerlessApplicationRepository.Types.ApplicationPolicyStatement
 import Network.AWS.ServerlessApplicationRepository.Types.ApplicationSummary
 import Network.AWS.ServerlessApplicationRepository.Types.ParameterDefinition
 import Network.AWS.ServerlessApplicationRepository.Types.ParameterValue
+import Network.AWS.ServerlessApplicationRepository.Types.RollbackConfiguration
+import Network.AWS.ServerlessApplicationRepository.Types.RollbackTrigger
+import Network.AWS.ServerlessApplicationRepository.Types.Tag
 import Network.AWS.ServerlessApplicationRepository.Types.Version
 import Network.AWS.ServerlessApplicationRepository.Types.VersionSummary
 
@@ -120,6 +160,11 @@ serverlessApplicationRepository
             = Just "throttling_exception"
           | has (hasCode "Throttling" . hasStatus 400) e =
             Just "throttling"
+          | has
+              (hasCode "ProvisionedThroughputExceededException" .
+                 hasStatus 400)
+              e
+            = Just "throughput_exceeded"
           | has (hasStatus 504) e = Just "gateway_timeout"
           | has
               (hasCode "RequestThrottledException" . hasStatus 400)
@@ -140,7 +185,7 @@ _InternalServerErrorException
       "InternalServerErrorException"
       . hasStatus 500
 
--- | The client is sending more than the allowed number of requests per unit time.
+-- | The client is sending more than the allowed number of requests per unit of time.
 --
 --
 _TooManyRequestsException :: AsError a => Getting (First ServiceError) a ServiceError
@@ -167,7 +212,7 @@ _BadRequestException
       "BadRequestException"
       . hasStatus 400
 
--- | The resource (for example, an access policy statement) specified in the request does not exist.
+-- | The resource (for example, an access policy statement) specified in the request doesn't exist.
 --
 --
 _NotFoundException :: AsError a => Getting (First ServiceError) a ServiceError

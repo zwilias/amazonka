@@ -19,12 +19,12 @@
 module Network.AWS.Lightsail.Types.InstanceMetricName (
   InstanceMetricName (
     ..
-    , CPUUtilization
-    , NetworkIn
-    , NetworkOut
-    , StatusCheckFailed
-    , StatusCheckFailedInstance
-    , StatusCheckFailedSystem
+    , IMNCPUUtilization
+    , IMNNetworkIn
+    , IMNNetworkOut
+    , IMNStatusCheckFailed
+    , IMNStatusCheckFailedInstance
+    , IMNStatusCheckFailedSystem
     )
   ) where
 
@@ -36,31 +36,31 @@ data InstanceMetricName = InstanceMetricName' (CI
                             deriving (Eq, Ord, Read, Show, Data, Typeable,
                                       Generic)
 
-pattern CPUUtilization :: InstanceMetricName
-pattern CPUUtilization = InstanceMetricName' "CPUUtilization"
+pattern IMNCPUUtilization :: InstanceMetricName
+pattern IMNCPUUtilization = InstanceMetricName' "CPUUtilization"
 
-pattern NetworkIn :: InstanceMetricName
-pattern NetworkIn = InstanceMetricName' "NetworkIn"
+pattern IMNNetworkIn :: InstanceMetricName
+pattern IMNNetworkIn = InstanceMetricName' "NetworkIn"
 
-pattern NetworkOut :: InstanceMetricName
-pattern NetworkOut = InstanceMetricName' "NetworkOut"
+pattern IMNNetworkOut :: InstanceMetricName
+pattern IMNNetworkOut = InstanceMetricName' "NetworkOut"
 
-pattern StatusCheckFailed :: InstanceMetricName
-pattern StatusCheckFailed = InstanceMetricName' "StatusCheckFailed"
+pattern IMNStatusCheckFailed :: InstanceMetricName
+pattern IMNStatusCheckFailed = InstanceMetricName' "StatusCheckFailed"
 
-pattern StatusCheckFailedInstance :: InstanceMetricName
-pattern StatusCheckFailedInstance = InstanceMetricName' "StatusCheckFailed_Instance"
+pattern IMNStatusCheckFailedInstance :: InstanceMetricName
+pattern IMNStatusCheckFailedInstance = InstanceMetricName' "StatusCheckFailed_Instance"
 
-pattern StatusCheckFailedSystem :: InstanceMetricName
-pattern StatusCheckFailedSystem = InstanceMetricName' "StatusCheckFailed_System"
+pattern IMNStatusCheckFailedSystem :: InstanceMetricName
+pattern IMNStatusCheckFailedSystem = InstanceMetricName' "StatusCheckFailed_System"
 
 {-# COMPLETE
-  CPUUtilization,
-  NetworkIn,
-  NetworkOut,
-  StatusCheckFailed,
-  StatusCheckFailedInstance,
-  StatusCheckFailedSystem,
+  IMNCPUUtilization,
+  IMNNetworkIn,
+  IMNNetworkOut,
+  IMNStatusCheckFailed,
+  IMNStatusCheckFailedInstance,
+  IMNStatusCheckFailedSystem,
   InstanceMetricName' #-}
 
 instance FromText InstanceMetricName where
@@ -75,28 +75,28 @@ instance ToText InstanceMetricName where
 --   fromEnum is a partial function, and will error on values unknown at generation time.
 instance Enum InstanceMetricName where
     toEnum i = case i of
-        0 -> CPUUtilization
-        1 -> NetworkIn
-        2 -> NetworkOut
-        3 -> StatusCheckFailed
-        4 -> StatusCheckFailedInstance
-        5 -> StatusCheckFailedSystem
+        0 -> IMNCPUUtilization
+        1 -> IMNNetworkIn
+        2 -> IMNNetworkOut
+        3 -> IMNStatusCheckFailed
+        4 -> IMNStatusCheckFailedInstance
+        5 -> IMNStatusCheckFailedSystem
         _ -> (error . showText) $ "Unknown index for InstanceMetricName: " <> toText i
     fromEnum x = case x of
-        CPUUtilization -> 0
-        NetworkIn -> 1
-        NetworkOut -> 2
-        StatusCheckFailed -> 3
-        StatusCheckFailedInstance -> 4
-        StatusCheckFailedSystem -> 5
+        IMNCPUUtilization -> 0
+        IMNNetworkIn -> 1
+        IMNNetworkOut -> 2
+        IMNStatusCheckFailed -> 3
+        IMNStatusCheckFailedInstance -> 4
+        IMNStatusCheckFailedSystem -> 5
         InstanceMetricName' name -> (error . showText) $ "Unknown InstanceMetricName: " <> original name
 
 -- | Represents the bounds of /known/ $InstanceMetricName.
 --   AWS may have added more since the source was generated.
 --   This instance exists only for backward compatibility.
 instance Bounded InstanceMetricName where
-    minBound = CPUUtilization
-    maxBound = StatusCheckFailedSystem
+    minBound = IMNCPUUtilization
+    maxBound = IMNStatusCheckFailedSystem
 
 instance Hashable     InstanceMetricName
 instance NFData       InstanceMetricName

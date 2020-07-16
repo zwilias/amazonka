@@ -19,6 +19,18 @@
 -- Portability : non-portable (GHC extensions)
 --
 -- Deletes the tags from the bucket.
+--
+--
+-- To use this operation, you must have permission to perform the @s3:PutBucketTagging@ action. By default, the bucket owner has this permission and can grant this permission to others. 
+--
+-- The following operations are related to @DeleteBucketTagging@ :
+--
+--     * 'GetBucketTagging' 
+--
+--     * 'PutBucketTagging' 
+--
+--
+--
 module Network.AWS.S3.DeleteBucketTagging
     (
     -- * Creating a Request
@@ -49,14 +61,14 @@ newtype DeleteBucketTagging = DeleteBucketTagging'{_dbtBucket
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dbtBucket' - Undocumented member.
+-- * 'dbtBucket' - The bucket that has the tag set to be removed.
 deleteBucketTagging
     :: BucketName -- ^ 'dbtBucket'
     -> DeleteBucketTagging
 deleteBucketTagging pBucket_
   = DeleteBucketTagging'{_dbtBucket = pBucket_}
 
--- | Undocumented member.
+-- | The bucket that has the tag set to be removed.
 dbtBucket :: Lens' DeleteBucketTagging BucketName
 dbtBucket = lens _dbtBucket (\ s a -> s{_dbtBucket = a})
 

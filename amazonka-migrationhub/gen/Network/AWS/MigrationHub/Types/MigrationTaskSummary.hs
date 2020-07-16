@@ -48,13 +48,13 @@ data MigrationTaskSummary = MigrationTaskSummary'{_mtsStatus
 --
 -- * 'mtsUpdateDateTime' - The timestamp when the task was gathered.
 --
--- * 'mtsProgressPercent' - 
+-- * 'mtsProgressPercent' - Indication of the percentage completion of the task.
 --
 -- * 'mtsStatusDetail' - Detail information of what is being done within the overall status state.
 --
 -- * 'mtsProgressUpdateStream' - An AWS resource used for access control. It should uniquely identify the migration tool as it is used for all updates made by the tool.
 --
--- * 'mtsMigrationTaskName' - Unique identifier that references the migration task.
+-- * 'mtsMigrationTaskName' - Unique identifier that references the migration task. /Do not store personal data in this field./ 
 migrationTaskSummary
     :: MigrationTaskSummary
 migrationTaskSummary
@@ -73,7 +73,7 @@ mtsStatus = lens _mtsStatus (\ s a -> s{_mtsStatus = a})
 mtsUpdateDateTime :: Lens' MigrationTaskSummary (Maybe UTCTime)
 mtsUpdateDateTime = lens _mtsUpdateDateTime (\ s a -> s{_mtsUpdateDateTime = a}) . mapping _Time
 
--- | 
+-- | Indication of the percentage completion of the task.
 mtsProgressPercent :: Lens' MigrationTaskSummary (Maybe Natural)
 mtsProgressPercent = lens _mtsProgressPercent (\ s a -> s{_mtsProgressPercent = a}) . mapping _Nat
 
@@ -85,7 +85,7 @@ mtsStatusDetail = lens _mtsStatusDetail (\ s a -> s{_mtsStatusDetail = a})
 mtsProgressUpdateStream :: Lens' MigrationTaskSummary (Maybe Text)
 mtsProgressUpdateStream = lens _mtsProgressUpdateStream (\ s a -> s{_mtsProgressUpdateStream = a})
 
--- | Unique identifier that references the migration task.
+-- | Unique identifier that references the migration task. /Do not store personal data in this field./ 
 mtsMigrationTaskName :: Lens' MigrationTaskSummary (Maybe Text)
 mtsMigrationTaskName = lens _mtsMigrationTaskName (\ s a -> s{_mtsMigrationTaskName = a})
 

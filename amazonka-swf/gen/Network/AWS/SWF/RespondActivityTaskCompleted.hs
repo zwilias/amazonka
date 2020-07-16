@@ -23,7 +23,7 @@
 --
 -- /Important:/ If the requested task doesn't complete successfully, use 'RespondActivityTaskFailed' instead. If the worker finds that the task is canceled through the @canceled@ flag returned by 'RecordActivityTaskHeartbeat' , it should cancel the task, clean up and then call 'RespondActivityTaskCanceled' .
 --
--- A task is considered open from the time that it is scheduled until it is closed. Therefore a task is reported as open while a worker is processing it. A task is closed after it has been specified in a call to RespondActivityTaskCompleted, 'RespondActivityTaskCanceled' , 'RespondActivityTaskFailed' , or the task has <http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dg-basic.html#swf-dev-timeout-types timed out> .
+-- A task is considered open from the time that it is scheduled until it is closed. Therefore a task is reported as open while a worker is processing it. A task is closed after it has been specified in a call to RespondActivityTaskCompleted, 'RespondActivityTaskCanceled' , 'RespondActivityTaskFailed' , or the task has <https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dg-basic.html#swf-dev-timeout-types timed out> .
 --
 -- __Access Control__ 
 --
@@ -37,7 +37,7 @@
 --
 --
 --
--- If the caller doesn't have sufficient permissions to invoke the action, or the parameter values fall outside the specified constraints, the action fails. The associated event attribute's @cause@ parameter is set to @OPERATION_NOT_PERMITTED@ . For details and example IAM policies, see <http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html Using IAM to Manage Access to Amazon SWF Workflows> in the /Amazon SWF Developer Guide/ .
+-- If the caller doesn't have sufficient permissions to invoke the action, or the parameter values fall outside the specified constraints, the action fails. The associated event attribute's @cause@ parameter is set to @OPERATION_NOT_PERMITTED@ . For details and example IAM policies, see <https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html Using IAM to Manage Access to Amazon SWF Workflows> in the /Amazon SWF Developer Guide/ .
 --
 module Network.AWS.SWF.RespondActivityTaskCompleted
     (

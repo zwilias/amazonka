@@ -21,16 +21,17 @@ import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.RDS.Types.ApplyMethod
 
--- | This data type is used as a request parameter in the 'ModifyDBParameterGroup' and 'ResetDBParameterGroup' actions. 
+-- | This data type is used as a request parameter in the @ModifyDBParameterGroup@ and @ResetDBParameterGroup@ actions. 
 --
 --
--- This data type is used as a response element in the 'DescribeEngineDefaultParameters' and 'DescribeDBParameters' actions.
+-- This data type is used as a response element in the @DescribeEngineDefaultParameters@ and @DescribeDBParameters@ actions.
 --
 --
 -- /See:/ 'parameter' smart constructor.
 data Parameter = Parameter'{_pApplyType ::
                             !(Maybe Text),
                             _pParameterValue :: !(Maybe Text),
+                            _pSupportedEngineModes :: !(Maybe [Text]),
                             _pApplyMethod :: !(Maybe ApplyMethod),
                             _pMinimumEngineVersion :: !(Maybe Text),
                             _pSource :: !(Maybe Text),
@@ -48,6 +49,8 @@ data Parameter = Parameter'{_pApplyType ::
 -- * 'pApplyType' - Specifies the engine specific parameters type.
 --
 -- * 'pParameterValue' - Specifies the value of the parameter.
+--
+-- * 'pSupportedEngineModes' - The valid DB engine modes.
 --
 -- * 'pApplyMethod' - Indicates when to apply parameter updates.
 --
@@ -68,7 +71,9 @@ parameter
     :: Parameter
 parameter
   = Parameter'{_pApplyType = Nothing,
-               _pParameterValue = Nothing, _pApplyMethod = Nothing,
+               _pParameterValue = Nothing,
+               _pSupportedEngineModes = Nothing,
+               _pApplyMethod = Nothing,
                _pMinimumEngineVersion = Nothing, _pSource = Nothing,
                _pIsModifiable = Nothing, _pDataType = Nothing,
                _pAllowedValues = Nothing, _pParameterName = Nothing,
@@ -81,6 +86,10 @@ pApplyType = lens _pApplyType (\ s a -> s{_pApplyType = a})
 -- | Specifies the value of the parameter.
 pParameterValue :: Lens' Parameter (Maybe Text)
 pParameterValue = lens _pParameterValue (\ s a -> s{_pParameterValue = a})
+
+-- | The valid DB engine modes.
+pSupportedEngineModes :: Lens' Parameter [Text]
+pSupportedEngineModes = lens _pSupportedEngineModes (\ s a -> s{_pSupportedEngineModes = a}) . _Default . _Coerce
 
 -- | Indicates when to apply parameter updates.
 pApplyMethod :: Lens' Parameter (Maybe ApplyMethod)
@@ -118,7 +127,9 @@ instance FromXML Parameter where
         parseXML x
           = Parameter' <$>
               (x .@? "ApplyType") <*> (x .@? "ParameterValue") <*>
-                (x .@? "ApplyMethod")
+                (x .@? "SupportedEngineModes" .!@ mempty >>=
+                   may (parseXMLList "member"))
+                <*> (x .@? "ApplyMethod")
                 <*> (x .@? "MinimumEngineVersion")
                 <*> (x .@? "Source")
                 <*> (x .@? "IsModifiable")
@@ -136,6 +147,9 @@ instance ToQuery Parameter where
           = mconcat
               ["ApplyType" =: _pApplyType,
                "ParameterValue" =: _pParameterValue,
+               "SupportedEngineModes" =:
+                 toQuery
+                   (toQueryList "member" <$> _pSupportedEngineModes),
                "ApplyMethod" =: _pApplyMethod,
                "MinimumEngineVersion" =: _pMinimumEngineVersion,
                "Source" =: _pSource,

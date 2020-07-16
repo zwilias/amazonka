@@ -31,6 +31,7 @@ module Network.AWS.StorageGateway.CreateSnapshotFromVolumeRecoveryPoint
       createSnapshotFromVolumeRecoveryPoint
     , CreateSnapshotFromVolumeRecoveryPoint
     -- * Request Lenses
+    , csfvrpTags
     , csfvrpVolumeARN
     , csfvrpSnapshotDescription
 
@@ -52,7 +53,11 @@ import Network.AWS.StorageGateway.Types
 import Network.AWS.StorageGateway.Types.Product
 
 -- | /See:/ 'createSnapshotFromVolumeRecoveryPoint' smart constructor.
-data CreateSnapshotFromVolumeRecoveryPoint = CreateSnapshotFromVolumeRecoveryPoint'{_csfvrpVolumeARN
+data CreateSnapshotFromVolumeRecoveryPoint = CreateSnapshotFromVolumeRecoveryPoint'{_csfvrpTags
+                                                                                    ::
+                                                                                    !(Maybe
+                                                                                        [Tag]),
+                                                                                    _csfvrpVolumeARN
                                                                                     ::
                                                                                     !Text,
                                                                                     _csfvrpSnapshotDescription
@@ -65,25 +70,32 @@ data CreateSnapshotFromVolumeRecoveryPoint = CreateSnapshotFromVolumeRecoveryPoi
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'csfvrpVolumeARN' - Undocumented member.
+-- * 'csfvrpTags' - A list of up to 50 tags that can be assigned to a snapshot. Each tag is a key-value pair.
 --
--- * 'csfvrpSnapshotDescription' - Undocumented member.
+-- * 'csfvrpVolumeARN' - The Amazon Resource Name (ARN) of the iSCSI volume target. Use the 'DescribeStorediSCSIVolumes' operation to return to retrieve the TargetARN for specified VolumeARN.
+--
+-- * 'csfvrpSnapshotDescription' - Textual description of the snapshot that appears in the Amazon EC2 console, Elastic Block Store snapshots panel in the __Description__ field, and in the AWS Storage Gateway snapshot __Details__ pane, __Description__ field
 createSnapshotFromVolumeRecoveryPoint
     :: Text -- ^ 'csfvrpVolumeARN'
     -> Text -- ^ 'csfvrpSnapshotDescription'
     -> CreateSnapshotFromVolumeRecoveryPoint
 createSnapshotFromVolumeRecoveryPoint pVolumeARN_
   pSnapshotDescription_
-  = CreateSnapshotFromVolumeRecoveryPoint'{_csfvrpVolumeARN
-                                             = pVolumeARN_,
+  = CreateSnapshotFromVolumeRecoveryPoint'{_csfvrpTags
+                                             = Nothing,
+                                           _csfvrpVolumeARN = pVolumeARN_,
                                            _csfvrpSnapshotDescription =
                                              pSnapshotDescription_}
 
--- | Undocumented member.
+-- | A list of up to 50 tags that can be assigned to a snapshot. Each tag is a key-value pair.
+csfvrpTags :: Lens' CreateSnapshotFromVolumeRecoveryPoint [Tag]
+csfvrpTags = lens _csfvrpTags (\ s a -> s{_csfvrpTags = a}) . _Default . _Coerce
+
+-- | The Amazon Resource Name (ARN) of the iSCSI volume target. Use the 'DescribeStorediSCSIVolumes' operation to return to retrieve the TargetARN for specified VolumeARN.
 csfvrpVolumeARN :: Lens' CreateSnapshotFromVolumeRecoveryPoint Text
 csfvrpVolumeARN = lens _csfvrpVolumeARN (\ s a -> s{_csfvrpVolumeARN = a})
 
--- | Undocumented member.
+-- | Textual description of the snapshot that appears in the Amazon EC2 console, Elastic Block Store snapshots panel in the __Description__ field, and in the AWS Storage Gateway snapshot __Details__ pane, __Description__ field
 csfvrpSnapshotDescription :: Lens' CreateSnapshotFromVolumeRecoveryPoint Text
 csfvrpSnapshotDescription = lens _csfvrpSnapshotDescription (\ s a -> s{_csfvrpSnapshotDescription = a})
 
@@ -126,7 +138,8 @@ instance ToJSON CreateSnapshotFromVolumeRecoveryPoint
         toJSON CreateSnapshotFromVolumeRecoveryPoint'{..}
           = object
               (catMaybes
-                 [Just ("VolumeARN" .= _csfvrpVolumeARN),
+                 [("Tags" .=) <$> _csfvrpTags,
+                  Just ("VolumeARN" .= _csfvrpVolumeARN),
                   Just
                     ("SnapshotDescription" .=
                        _csfvrpSnapshotDescription)])
@@ -164,11 +177,11 @@ data CreateSnapshotFromVolumeRecoveryPointResponse = CreateSnapshotFromVolumeRec
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'csfvrprsVolumeRecoveryPointTime' - Undocumented member.
+-- * 'csfvrprsVolumeRecoveryPointTime' - The time the volume was created from the recovery point.
 --
--- * 'csfvrprsVolumeARN' - Undocumented member.
+-- * 'csfvrprsVolumeARN' - The Amazon Resource Name (ARN) of the iSCSI volume target. Use the 'DescribeStorediSCSIVolumes' operation to return to retrieve the TargetARN for specified VolumeARN.
 --
--- * 'csfvrprsSnapshotId' - Undocumented member.
+-- * 'csfvrprsSnapshotId' - The ID of the snapshot.
 --
 -- * 'csfvrprsResponseStatus' - -- | The response status code.
 createSnapshotFromVolumeRecoveryPointResponse
@@ -184,15 +197,15 @@ createSnapshotFromVolumeRecoveryPointResponse
                                                    _csfvrprsResponseStatus =
                                                      pResponseStatus_}
 
--- | Undocumented member.
+-- | The time the volume was created from the recovery point.
 csfvrprsVolumeRecoveryPointTime :: Lens' CreateSnapshotFromVolumeRecoveryPointResponse (Maybe Text)
 csfvrprsVolumeRecoveryPointTime = lens _csfvrprsVolumeRecoveryPointTime (\ s a -> s{_csfvrprsVolumeRecoveryPointTime = a})
 
--- | Undocumented member.
+-- | The Amazon Resource Name (ARN) of the iSCSI volume target. Use the 'DescribeStorediSCSIVolumes' operation to return to retrieve the TargetARN for specified VolumeARN.
 csfvrprsVolumeARN :: Lens' CreateSnapshotFromVolumeRecoveryPointResponse (Maybe Text)
 csfvrprsVolumeARN = lens _csfvrprsVolumeARN (\ s a -> s{_csfvrprsVolumeARN = a})
 
--- | Undocumented member.
+-- | The ID of the snapshot.
 csfvrprsSnapshotId :: Lens' CreateSnapshotFromVolumeRecoveryPointResponse (Maybe Text)
 csfvrprsSnapshotId = lens _csfvrprsSnapshotId (\ s a -> s{_csfvrprsSnapshotId = a})
 

@@ -59,7 +59,7 @@ data AbortDocumentVersionUpload = AbortDocumentVersionUpload'{_advuAuthenticatio
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'advuAuthenticationToken' - Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.
+-- * 'advuAuthenticationToken' - Amazon WorkDocs authentication token. Not required when using AWS administrator credentials to access the API.
 --
 -- * 'advuDocumentId' - The ID of the document.
 --
@@ -74,7 +74,7 @@ abortDocumentVersionUpload pDocumentId_ pVersionId_
                                 _advuDocumentId = pDocumentId_,
                                 _advuVersionId = pVersionId_}
 
--- | Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.
+-- | Amazon WorkDocs authentication token. Not required when using AWS administrator credentials to access the API.
 advuAuthenticationToken :: Lens' AbortDocumentVersionUpload (Maybe Text)
 advuAuthenticationToken = lens _advuAuthenticationToken (\ s a -> s{_advuAuthenticationToken = a}) . mapping _Sensitive
 

@@ -20,7 +20,9 @@ module Network.AWS.Pinpoint.Types.APNSVoipSandboxChannelRequest where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | Apple VoIP Developer Push Notification Service channel definition.
+-- | Specifies the status and settings of the APNs (Apple Push Notification service) VoIP sandbox channel for an application.
+--
+--
 --
 -- /See:/ 'apnsVoipSandboxChannelRequest' smart constructor.
 data APNSVoipSandboxChannelRequest = APNSVoipSandboxChannelRequest'{_avscrTokenKey
@@ -62,21 +64,21 @@ data APNSVoipSandboxChannelRequest = APNSVoipSandboxChannelRequest'{_avscrTokenK
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'avscrTokenKey' - The token key used for APNs Tokens.
+-- * 'avscrTokenKey' - The authentication key to use for APNs tokens.
 --
--- * 'avscrPrivateKey' - The certificate private key.
+-- * 'avscrPrivateKey' - The private key for the APNs client certificate that you want Amazon Pinpoint to use to communicate with the APNs sandbox environment.
 --
--- * 'avscrEnabled' - If the channel is enabled for sending messages.
+-- * 'avscrEnabled' - Specifies whether the APNs VoIP sandbox channel is enabled for the application.
 --
--- * 'avscrTeamId' - The team id used for APNs Tokens.
+-- * 'avscrTeamId' - The identifier that's assigned to your Apple developer account team. This identifier is used for APNs tokens.
 --
--- * 'avscrBundleId' - The bundle id used for APNs Tokens.
+-- * 'avscrBundleId' - The bundle identifier that's assigned to your iOS app. This identifier is used for APNs tokens.
 --
--- * 'avscrDefaultAuthenticationMethod' - The default authentication method used for APNs.
+-- * 'avscrDefaultAuthenticationMethod' - The default authentication method that you want Amazon Pinpoint to use when authenticating with the APNs sandbox environment for this channel, key or certificate.
 --
--- * 'avscrCertificate' - The distribution certificate from Apple.
+-- * 'avscrCertificate' - The APNs client certificate that you received from Apple, if you want Amazon Pinpoint to communicate with the APNs sandbox environment by using an APNs certificate.
 --
--- * 'avscrTokenKeyId' - The token key used for APNs Tokens.
+-- * 'avscrTokenKeyId' - The key identifier that's assigned to your APNs signing key, if you want Amazon Pinpoint to communicate with the APNs sandbox environment by using APNs tokens.
 apnsVoipSandboxChannelRequest
     :: APNSVoipSandboxChannelRequest
 apnsVoipSandboxChannelRequest
@@ -90,35 +92,35 @@ apnsVoipSandboxChannelRequest
                                    _avscrCertificate = Nothing,
                                    _avscrTokenKeyId = Nothing}
 
--- | The token key used for APNs Tokens.
+-- | The authentication key to use for APNs tokens.
 avscrTokenKey :: Lens' APNSVoipSandboxChannelRequest (Maybe Text)
 avscrTokenKey = lens _avscrTokenKey (\ s a -> s{_avscrTokenKey = a})
 
--- | The certificate private key.
+-- | The private key for the APNs client certificate that you want Amazon Pinpoint to use to communicate with the APNs sandbox environment.
 avscrPrivateKey :: Lens' APNSVoipSandboxChannelRequest (Maybe Text)
 avscrPrivateKey = lens _avscrPrivateKey (\ s a -> s{_avscrPrivateKey = a})
 
--- | If the channel is enabled for sending messages.
+-- | Specifies whether the APNs VoIP sandbox channel is enabled for the application.
 avscrEnabled :: Lens' APNSVoipSandboxChannelRequest (Maybe Bool)
 avscrEnabled = lens _avscrEnabled (\ s a -> s{_avscrEnabled = a})
 
--- | The team id used for APNs Tokens.
+-- | The identifier that's assigned to your Apple developer account team. This identifier is used for APNs tokens.
 avscrTeamId :: Lens' APNSVoipSandboxChannelRequest (Maybe Text)
 avscrTeamId = lens _avscrTeamId (\ s a -> s{_avscrTeamId = a})
 
--- | The bundle id used for APNs Tokens.
+-- | The bundle identifier that's assigned to your iOS app. This identifier is used for APNs tokens.
 avscrBundleId :: Lens' APNSVoipSandboxChannelRequest (Maybe Text)
 avscrBundleId = lens _avscrBundleId (\ s a -> s{_avscrBundleId = a})
 
--- | The default authentication method used for APNs.
+-- | The default authentication method that you want Amazon Pinpoint to use when authenticating with the APNs sandbox environment for this channel, key or certificate.
 avscrDefaultAuthenticationMethod :: Lens' APNSVoipSandboxChannelRequest (Maybe Text)
 avscrDefaultAuthenticationMethod = lens _avscrDefaultAuthenticationMethod (\ s a -> s{_avscrDefaultAuthenticationMethod = a})
 
--- | The distribution certificate from Apple.
+-- | The APNs client certificate that you received from Apple, if you want Amazon Pinpoint to communicate with the APNs sandbox environment by using an APNs certificate.
 avscrCertificate :: Lens' APNSVoipSandboxChannelRequest (Maybe Text)
 avscrCertificate = lens _avscrCertificate (\ s a -> s{_avscrCertificate = a})
 
--- | The token key used for APNs Tokens.
+-- | The key identifier that's assigned to your APNs signing key, if you want Amazon Pinpoint to communicate with the APNs sandbox environment by using APNs tokens.
 avscrTokenKeyId :: Lens' APNSVoipSandboxChannelRequest (Maybe Text)
 avscrTokenKeyId = lens _avscrTokenKeyId (\ s a -> s{_avscrTokenKeyId = a})
 

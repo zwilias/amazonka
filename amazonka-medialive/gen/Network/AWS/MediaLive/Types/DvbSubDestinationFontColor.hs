@@ -31,7 +31,7 @@ module Network.AWS.MediaLive.Types.DvbSubDestinationFontColor (
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | Placeholder documentation for DvbSubDestinationFontColor
+-- | Dvb Sub Destination Font Color
 data DvbSubDestinationFontColor = DvbSubDestinationFontColor' (CI
                                                                  Text)
                                     deriving (Eq, Ord, Read, Show, Data,

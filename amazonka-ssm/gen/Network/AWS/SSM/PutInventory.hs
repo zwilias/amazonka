@@ -55,7 +55,7 @@ data PutInventory = PutInventory'{_piInstanceId ::
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'piInstanceId' - One or more instance IDs where you want to add or update inventory items.
+-- * 'piInstanceId' - An instance ID where you want to add or update inventory items.
 --
 -- * 'piItems' - The inventory items that you want to add or update on instances.
 putInventory
@@ -66,7 +66,7 @@ putInventory pInstanceId_ pItems_
   = PutInventory'{_piInstanceId = pInstanceId_,
                   _piItems = _List1 # pItems_}
 
--- | One or more instance IDs where you want to add or update inventory items.
+-- | An instance ID where you want to add or update inventory items.
 piInstanceId :: Lens' PutInventory Text
 piInstanceId = lens _piInstanceId (\ s a -> s{_piInstanceId = a})
 

@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Sets permissions for a user or group. This replaces any pre-existing permissions set for the entity.
+-- Sets permissions for a user, group, or resource. This replaces any pre-existing permissions.
 --
 --
 module Network.AWS.WorkMail.PutMailboxPermissions
@@ -60,11 +60,11 @@ data PutMailboxPermissions = PutMailboxPermissions'{_pmpOrganizationId
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'pmpOrganizationId' - The identifier of the organization under which the entity (user or group) exists.
+-- * 'pmpOrganizationId' - The identifier of the organization under which the user, group, or resource exists.
 --
--- * 'pmpEntityId' - The identifier of the entity (user or group) for which to update mailbox permissions.
+-- * 'pmpEntityId' - The identifier of the user, group, or resource for which to update mailbox permissions.
 --
--- * 'pmpGranteeId' - The identifier of the entity (user or group) to which to grant the permissions.
+-- * 'pmpGranteeId' - The identifier of the user, group, or resource to which to grant the permissions.
 --
 -- * 'pmpPermissionValues' - The permissions granted to the grantee. SEND_AS allows the grantee to send email as the owner of the mailbox (the grantee is not mentioned on these emails). SEND_ON_BEHALF allows the grantee to send email on behalf of the owner of the mailbox (the grantee is not mentioned as the physical sender of these emails). FULL_ACCESS allows the grantee full access to the mailbox, irrespective of other folder-level permissions set on the mailbox.
 putMailboxPermissions
@@ -80,15 +80,15 @@ putMailboxPermissions pOrganizationId_ pEntityId_
                            _pmpGranteeId = pGranteeId_,
                            _pmpPermissionValues = mempty}
 
--- | The identifier of the organization under which the entity (user or group) exists.
+-- | The identifier of the organization under which the user, group, or resource exists.
 pmpOrganizationId :: Lens' PutMailboxPermissions Text
 pmpOrganizationId = lens _pmpOrganizationId (\ s a -> s{_pmpOrganizationId = a})
 
--- | The identifier of the entity (user or group) for which to update mailbox permissions.
+-- | The identifier of the user, group, or resource for which to update mailbox permissions.
 pmpEntityId :: Lens' PutMailboxPermissions Text
 pmpEntityId = lens _pmpEntityId (\ s a -> s{_pmpEntityId = a})
 
--- | The identifier of the entity (user or group) to which to grant the permissions.
+-- | The identifier of the user, group, or resource to which to grant the permissions.
 pmpGranteeId :: Lens' PutMailboxPermissions Text
 pmpGranteeId = lens _pmpGranteeId (\ s a -> s{_pmpGranteeId = a})
 

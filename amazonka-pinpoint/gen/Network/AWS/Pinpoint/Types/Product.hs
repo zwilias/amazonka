@@ -23,6 +23,7 @@ module Network.AWS.Pinpoint.Types.Product (
     module Network.AWS.Pinpoint.Types.APNSChannelRequest,
     module Network.AWS.Pinpoint.Types.APNSChannelResponse,
     module Network.AWS.Pinpoint.Types.APNSMessage,
+    module Network.AWS.Pinpoint.Types.APNSPushNotificationTemplate,
     module Network.AWS.Pinpoint.Types.APNSSandboxChannelRequest,
     module Network.AWS.Pinpoint.Types.APNSSandboxChannelResponse,
     module Network.AWS.Pinpoint.Types.APNSVoipChannelRequest,
@@ -30,38 +31,66 @@ module Network.AWS.Pinpoint.Types.Product (
     module Network.AWS.Pinpoint.Types.APNSVoipSandboxChannelRequest,
     module Network.AWS.Pinpoint.Types.APNSVoipSandboxChannelResponse,
     module Network.AWS.Pinpoint.Types.ActivitiesResponse,
+    module Network.AWS.Pinpoint.Types.Activity,
     module Network.AWS.Pinpoint.Types.ActivityResponse,
     module Network.AWS.Pinpoint.Types.AddressConfiguration,
+    module Network.AWS.Pinpoint.Types.AndroidPushNotificationTemplate,
+    module Network.AWS.Pinpoint.Types.ApplicationDateRangeKpiResponse,
     module Network.AWS.Pinpoint.Types.ApplicationResponse,
     module Network.AWS.Pinpoint.Types.ApplicationSettingsResource,
     module Network.AWS.Pinpoint.Types.ApplicationsResponse,
     module Network.AWS.Pinpoint.Types.AttributeDimension,
+    module Network.AWS.Pinpoint.Types.AttributesResource,
     module Network.AWS.Pinpoint.Types.BaiduChannelRequest,
     module Network.AWS.Pinpoint.Types.BaiduChannelResponse,
     module Network.AWS.Pinpoint.Types.BaiduMessage,
+    module Network.AWS.Pinpoint.Types.BaseKpiResult,
+    module Network.AWS.Pinpoint.Types.CampaignCustomMessage,
+    module Network.AWS.Pinpoint.Types.CampaignDateRangeKpiResponse,
     module Network.AWS.Pinpoint.Types.CampaignEmailMessage,
+    module Network.AWS.Pinpoint.Types.CampaignEventFilter,
     module Network.AWS.Pinpoint.Types.CampaignHook,
     module Network.AWS.Pinpoint.Types.CampaignLimits,
     module Network.AWS.Pinpoint.Types.CampaignResponse,
     module Network.AWS.Pinpoint.Types.CampaignSmsMessage,
     module Network.AWS.Pinpoint.Types.CampaignState,
     module Network.AWS.Pinpoint.Types.CampaignsResponse,
+    module Network.AWS.Pinpoint.Types.ChannelResponse,
+    module Network.AWS.Pinpoint.Types.ChannelsResponse,
+    module Network.AWS.Pinpoint.Types.Condition,
+    module Network.AWS.Pinpoint.Types.ConditionalSplitActivity,
     module Network.AWS.Pinpoint.Types.CreateApplicationRequest,
+    module Network.AWS.Pinpoint.Types.CreateTemplateMessageBody,
+    module Network.AWS.Pinpoint.Types.CustomDeliveryConfiguration,
     module Network.AWS.Pinpoint.Types.DefaultMessage,
     module Network.AWS.Pinpoint.Types.DefaultPushNotificationMessage,
+    module Network.AWS.Pinpoint.Types.DefaultPushNotificationTemplate,
     module Network.AWS.Pinpoint.Types.DirectMessageConfiguration,
     module Network.AWS.Pinpoint.Types.EmailChannelRequest,
     module Network.AWS.Pinpoint.Types.EmailChannelResponse,
+    module Network.AWS.Pinpoint.Types.EmailMessage,
+    module Network.AWS.Pinpoint.Types.EmailMessageActivity,
+    module Network.AWS.Pinpoint.Types.EmailTemplateRequest,
+    module Network.AWS.Pinpoint.Types.EmailTemplateResponse,
     module Network.AWS.Pinpoint.Types.EndpointBatchItem,
     module Network.AWS.Pinpoint.Types.EndpointBatchRequest,
     module Network.AWS.Pinpoint.Types.EndpointDemographic,
+    module Network.AWS.Pinpoint.Types.EndpointItemResponse,
     module Network.AWS.Pinpoint.Types.EndpointLocation,
     module Network.AWS.Pinpoint.Types.EndpointMessageResult,
     module Network.AWS.Pinpoint.Types.EndpointRequest,
     module Network.AWS.Pinpoint.Types.EndpointResponse,
     module Network.AWS.Pinpoint.Types.EndpointSendConfiguration,
     module Network.AWS.Pinpoint.Types.EndpointUser,
+    module Network.AWS.Pinpoint.Types.EndpointsResponse,
+    module Network.AWS.Pinpoint.Types.Event,
+    module Network.AWS.Pinpoint.Types.EventCondition,
+    module Network.AWS.Pinpoint.Types.EventDimensions,
+    module Network.AWS.Pinpoint.Types.EventItemResponse,
     module Network.AWS.Pinpoint.Types.EventStream,
+    module Network.AWS.Pinpoint.Types.EventsBatch,
+    module Network.AWS.Pinpoint.Types.EventsRequest,
+    module Network.AWS.Pinpoint.Types.EventsResponse,
     module Network.AWS.Pinpoint.Types.ExportJobRequest,
     module Network.AWS.Pinpoint.Types.ExportJobResource,
     module Network.AWS.Pinpoint.Types.ExportJobResponse,
@@ -69,36 +98,92 @@ module Network.AWS.Pinpoint.Types.Product (
     module Network.AWS.Pinpoint.Types.GCMChannelRequest,
     module Network.AWS.Pinpoint.Types.GCMChannelResponse,
     module Network.AWS.Pinpoint.Types.GCMMessage,
+    module Network.AWS.Pinpoint.Types.GPSCoordinates,
+    module Network.AWS.Pinpoint.Types.GPSPointDimension,
+    module Network.AWS.Pinpoint.Types.HoldoutActivity,
     module Network.AWS.Pinpoint.Types.ImportJobRequest,
     module Network.AWS.Pinpoint.Types.ImportJobResource,
     module Network.AWS.Pinpoint.Types.ImportJobResponse,
     module Network.AWS.Pinpoint.Types.ImportJobsResponse,
+    module Network.AWS.Pinpoint.Types.ItemResponse,
+    module Network.AWS.Pinpoint.Types.JourneyDateRangeKpiResponse,
+    module Network.AWS.Pinpoint.Types.JourneyEmailMessage,
+    module Network.AWS.Pinpoint.Types.JourneyExecutionActivityMetricsResponse,
+    module Network.AWS.Pinpoint.Types.JourneyExecutionMetricsResponse,
+    module Network.AWS.Pinpoint.Types.JourneyLimits,
+    module Network.AWS.Pinpoint.Types.JourneyResponse,
+    module Network.AWS.Pinpoint.Types.JourneySchedule,
+    module Network.AWS.Pinpoint.Types.JourneyStateRequest,
+    module Network.AWS.Pinpoint.Types.JourneysResponse,
+    module Network.AWS.Pinpoint.Types.ListRecommenderConfigurationsResponse,
     module Network.AWS.Pinpoint.Types.Message,
     module Network.AWS.Pinpoint.Types.MessageBody,
     module Network.AWS.Pinpoint.Types.MessageConfiguration,
     module Network.AWS.Pinpoint.Types.MessageRequest,
     module Network.AWS.Pinpoint.Types.MessageResponse,
     module Network.AWS.Pinpoint.Types.MessageResult,
+    module Network.AWS.Pinpoint.Types.MetricDimension,
+    module Network.AWS.Pinpoint.Types.MultiConditionalBranch,
+    module Network.AWS.Pinpoint.Types.MultiConditionalSplitActivity,
+    module Network.AWS.Pinpoint.Types.NumberValidateRequest,
+    module Network.AWS.Pinpoint.Types.NumberValidateResponse,
+    module Network.AWS.Pinpoint.Types.PublicEndpoint,
+    module Network.AWS.Pinpoint.Types.PushNotificationTemplateRequest,
+    module Network.AWS.Pinpoint.Types.PushNotificationTemplateResponse,
     module Network.AWS.Pinpoint.Types.QuietTime,
+    module Network.AWS.Pinpoint.Types.RandomSplitActivity,
+    module Network.AWS.Pinpoint.Types.RandomSplitEntry,
+    module Network.AWS.Pinpoint.Types.RawEmail,
     module Network.AWS.Pinpoint.Types.RecencyDimension,
+    module Network.AWS.Pinpoint.Types.RecommenderConfigurationResponse,
+    module Network.AWS.Pinpoint.Types.ResultRow,
+    module Network.AWS.Pinpoint.Types.ResultRowValue,
     module Network.AWS.Pinpoint.Types.SMSChannelRequest,
     module Network.AWS.Pinpoint.Types.SMSChannelResponse,
     module Network.AWS.Pinpoint.Types.SMSMessage,
+    module Network.AWS.Pinpoint.Types.SMSTemplateRequest,
+    module Network.AWS.Pinpoint.Types.SMSTemplateResponse,
     module Network.AWS.Pinpoint.Types.Schedule,
     module Network.AWS.Pinpoint.Types.SegmentBehaviors,
+    module Network.AWS.Pinpoint.Types.SegmentCondition,
     module Network.AWS.Pinpoint.Types.SegmentDemographics,
     module Network.AWS.Pinpoint.Types.SegmentDimensions,
+    module Network.AWS.Pinpoint.Types.SegmentGroup,
+    module Network.AWS.Pinpoint.Types.SegmentGroupList,
     module Network.AWS.Pinpoint.Types.SegmentImportResource,
     module Network.AWS.Pinpoint.Types.SegmentLocation,
+    module Network.AWS.Pinpoint.Types.SegmentReference,
     module Network.AWS.Pinpoint.Types.SegmentResponse,
     module Network.AWS.Pinpoint.Types.SegmentsResponse,
     module Network.AWS.Pinpoint.Types.SendUsersMessageRequest,
     module Network.AWS.Pinpoint.Types.SendUsersMessageResponse,
+    module Network.AWS.Pinpoint.Types.Session,
     module Network.AWS.Pinpoint.Types.SetDimension,
+    module Network.AWS.Pinpoint.Types.SimpleCondition,
+    module Network.AWS.Pinpoint.Types.SimpleEmail,
+    module Network.AWS.Pinpoint.Types.SimpleEmailPart,
+    module Network.AWS.Pinpoint.Types.StartCondition,
+    module Network.AWS.Pinpoint.Types.TagsModel,
+    module Network.AWS.Pinpoint.Types.Template,
+    module Network.AWS.Pinpoint.Types.TemplateActiveVersionRequest,
+    module Network.AWS.Pinpoint.Types.TemplateConfiguration,
+    module Network.AWS.Pinpoint.Types.TemplateResponse,
+    module Network.AWS.Pinpoint.Types.TemplateVersionResponse,
+    module Network.AWS.Pinpoint.Types.TemplateVersionsResponse,
+    module Network.AWS.Pinpoint.Types.TemplatesResponse,
     module Network.AWS.Pinpoint.Types.TreatmentResource,
+    module Network.AWS.Pinpoint.Types.UpdateAttributesRequest,
+    module Network.AWS.Pinpoint.Types.VoiceChannelRequest,
+    module Network.AWS.Pinpoint.Types.VoiceChannelResponse,
+    module Network.AWS.Pinpoint.Types.VoiceMessage,
+    module Network.AWS.Pinpoint.Types.VoiceTemplateRequest,
+    module Network.AWS.Pinpoint.Types.VoiceTemplateResponse,
+    module Network.AWS.Pinpoint.Types.WaitActivity,
+    module Network.AWS.Pinpoint.Types.WaitTime,
     module Network.AWS.Pinpoint.Types.WriteApplicationSettingsRequest,
     module Network.AWS.Pinpoint.Types.WriteCampaignRequest,
     module Network.AWS.Pinpoint.Types.WriteEventStream,
+    module Network.AWS.Pinpoint.Types.WriteJourneyRequest,
     module Network.AWS.Pinpoint.Types.WriteSegmentRequest,
     module Network.AWS.Pinpoint.Types.WriteTreatmentResource
   ) where
@@ -110,6 +195,7 @@ import Network.AWS.Pinpoint.Types.ADMMessage
 import Network.AWS.Pinpoint.Types.APNSChannelRequest
 import Network.AWS.Pinpoint.Types.APNSChannelResponse
 import Network.AWS.Pinpoint.Types.APNSMessage
+import Network.AWS.Pinpoint.Types.APNSPushNotificationTemplate
 import Network.AWS.Pinpoint.Types.APNSSandboxChannelRequest
 import Network.AWS.Pinpoint.Types.APNSSandboxChannelResponse
 import Network.AWS.Pinpoint.Types.APNSVoipChannelRequest
@@ -117,38 +203,66 @@ import Network.AWS.Pinpoint.Types.APNSVoipChannelResponse
 import Network.AWS.Pinpoint.Types.APNSVoipSandboxChannelRequest
 import Network.AWS.Pinpoint.Types.APNSVoipSandboxChannelResponse
 import Network.AWS.Pinpoint.Types.ActivitiesResponse
+import Network.AWS.Pinpoint.Types.Activity
 import Network.AWS.Pinpoint.Types.ActivityResponse
 import Network.AWS.Pinpoint.Types.AddressConfiguration
+import Network.AWS.Pinpoint.Types.AndroidPushNotificationTemplate
+import Network.AWS.Pinpoint.Types.ApplicationDateRangeKpiResponse
 import Network.AWS.Pinpoint.Types.ApplicationResponse
 import Network.AWS.Pinpoint.Types.ApplicationSettingsResource
 import Network.AWS.Pinpoint.Types.ApplicationsResponse
 import Network.AWS.Pinpoint.Types.AttributeDimension
+import Network.AWS.Pinpoint.Types.AttributesResource
 import Network.AWS.Pinpoint.Types.BaiduChannelRequest
 import Network.AWS.Pinpoint.Types.BaiduChannelResponse
 import Network.AWS.Pinpoint.Types.BaiduMessage
+import Network.AWS.Pinpoint.Types.BaseKpiResult
+import Network.AWS.Pinpoint.Types.CampaignCustomMessage
+import Network.AWS.Pinpoint.Types.CampaignDateRangeKpiResponse
 import Network.AWS.Pinpoint.Types.CampaignEmailMessage
+import Network.AWS.Pinpoint.Types.CampaignEventFilter
 import Network.AWS.Pinpoint.Types.CampaignHook
 import Network.AWS.Pinpoint.Types.CampaignLimits
 import Network.AWS.Pinpoint.Types.CampaignResponse
 import Network.AWS.Pinpoint.Types.CampaignSmsMessage
 import Network.AWS.Pinpoint.Types.CampaignState
 import Network.AWS.Pinpoint.Types.CampaignsResponse
+import Network.AWS.Pinpoint.Types.ChannelResponse
+import Network.AWS.Pinpoint.Types.ChannelsResponse
+import Network.AWS.Pinpoint.Types.Condition
+import Network.AWS.Pinpoint.Types.ConditionalSplitActivity
 import Network.AWS.Pinpoint.Types.CreateApplicationRequest
+import Network.AWS.Pinpoint.Types.CreateTemplateMessageBody
+import Network.AWS.Pinpoint.Types.CustomDeliveryConfiguration
 import Network.AWS.Pinpoint.Types.DefaultMessage
 import Network.AWS.Pinpoint.Types.DefaultPushNotificationMessage
+import Network.AWS.Pinpoint.Types.DefaultPushNotificationTemplate
 import Network.AWS.Pinpoint.Types.DirectMessageConfiguration
 import Network.AWS.Pinpoint.Types.EmailChannelRequest
 import Network.AWS.Pinpoint.Types.EmailChannelResponse
+import Network.AWS.Pinpoint.Types.EmailMessage
+import Network.AWS.Pinpoint.Types.EmailMessageActivity
+import Network.AWS.Pinpoint.Types.EmailTemplateRequest
+import Network.AWS.Pinpoint.Types.EmailTemplateResponse
 import Network.AWS.Pinpoint.Types.EndpointBatchItem
 import Network.AWS.Pinpoint.Types.EndpointBatchRequest
 import Network.AWS.Pinpoint.Types.EndpointDemographic
+import Network.AWS.Pinpoint.Types.EndpointItemResponse
 import Network.AWS.Pinpoint.Types.EndpointLocation
 import Network.AWS.Pinpoint.Types.EndpointMessageResult
 import Network.AWS.Pinpoint.Types.EndpointRequest
 import Network.AWS.Pinpoint.Types.EndpointResponse
 import Network.AWS.Pinpoint.Types.EndpointSendConfiguration
 import Network.AWS.Pinpoint.Types.EndpointUser
+import Network.AWS.Pinpoint.Types.EndpointsResponse
+import Network.AWS.Pinpoint.Types.Event
+import Network.AWS.Pinpoint.Types.EventCondition
+import Network.AWS.Pinpoint.Types.EventDimensions
+import Network.AWS.Pinpoint.Types.EventItemResponse
 import Network.AWS.Pinpoint.Types.EventStream
+import Network.AWS.Pinpoint.Types.EventsBatch
+import Network.AWS.Pinpoint.Types.EventsRequest
+import Network.AWS.Pinpoint.Types.EventsResponse
 import Network.AWS.Pinpoint.Types.ExportJobRequest
 import Network.AWS.Pinpoint.Types.ExportJobResource
 import Network.AWS.Pinpoint.Types.ExportJobResponse
@@ -156,36 +270,92 @@ import Network.AWS.Pinpoint.Types.ExportJobsResponse
 import Network.AWS.Pinpoint.Types.GCMChannelRequest
 import Network.AWS.Pinpoint.Types.GCMChannelResponse
 import Network.AWS.Pinpoint.Types.GCMMessage
+import Network.AWS.Pinpoint.Types.GPSCoordinates
+import Network.AWS.Pinpoint.Types.GPSPointDimension
+import Network.AWS.Pinpoint.Types.HoldoutActivity
 import Network.AWS.Pinpoint.Types.ImportJobRequest
 import Network.AWS.Pinpoint.Types.ImportJobResource
 import Network.AWS.Pinpoint.Types.ImportJobResponse
 import Network.AWS.Pinpoint.Types.ImportJobsResponse
+import Network.AWS.Pinpoint.Types.ItemResponse
+import Network.AWS.Pinpoint.Types.JourneyDateRangeKpiResponse
+import Network.AWS.Pinpoint.Types.JourneyEmailMessage
+import Network.AWS.Pinpoint.Types.JourneyExecutionActivityMetricsResponse
+import Network.AWS.Pinpoint.Types.JourneyExecutionMetricsResponse
+import Network.AWS.Pinpoint.Types.JourneyLimits
+import Network.AWS.Pinpoint.Types.JourneyResponse
+import Network.AWS.Pinpoint.Types.JourneySchedule
+import Network.AWS.Pinpoint.Types.JourneyStateRequest
+import Network.AWS.Pinpoint.Types.JourneysResponse
+import Network.AWS.Pinpoint.Types.ListRecommenderConfigurationsResponse
 import Network.AWS.Pinpoint.Types.Message
 import Network.AWS.Pinpoint.Types.MessageBody
 import Network.AWS.Pinpoint.Types.MessageConfiguration
 import Network.AWS.Pinpoint.Types.MessageRequest
 import Network.AWS.Pinpoint.Types.MessageResponse
 import Network.AWS.Pinpoint.Types.MessageResult
+import Network.AWS.Pinpoint.Types.MetricDimension
+import Network.AWS.Pinpoint.Types.MultiConditionalBranch
+import Network.AWS.Pinpoint.Types.MultiConditionalSplitActivity
+import Network.AWS.Pinpoint.Types.NumberValidateRequest
+import Network.AWS.Pinpoint.Types.NumberValidateResponse
+import Network.AWS.Pinpoint.Types.PublicEndpoint
+import Network.AWS.Pinpoint.Types.PushNotificationTemplateRequest
+import Network.AWS.Pinpoint.Types.PushNotificationTemplateResponse
 import Network.AWS.Pinpoint.Types.QuietTime
+import Network.AWS.Pinpoint.Types.RandomSplitActivity
+import Network.AWS.Pinpoint.Types.RandomSplitEntry
+import Network.AWS.Pinpoint.Types.RawEmail
 import Network.AWS.Pinpoint.Types.RecencyDimension
+import Network.AWS.Pinpoint.Types.RecommenderConfigurationResponse
+import Network.AWS.Pinpoint.Types.ResultRow
+import Network.AWS.Pinpoint.Types.ResultRowValue
 import Network.AWS.Pinpoint.Types.SMSChannelRequest
 import Network.AWS.Pinpoint.Types.SMSChannelResponse
 import Network.AWS.Pinpoint.Types.SMSMessage
+import Network.AWS.Pinpoint.Types.SMSTemplateRequest
+import Network.AWS.Pinpoint.Types.SMSTemplateResponse
 import Network.AWS.Pinpoint.Types.Schedule
 import Network.AWS.Pinpoint.Types.SegmentBehaviors
+import Network.AWS.Pinpoint.Types.SegmentCondition
 import Network.AWS.Pinpoint.Types.SegmentDemographics
 import Network.AWS.Pinpoint.Types.SegmentDimensions
+import Network.AWS.Pinpoint.Types.SegmentGroup
+import Network.AWS.Pinpoint.Types.SegmentGroupList
 import Network.AWS.Pinpoint.Types.SegmentImportResource
 import Network.AWS.Pinpoint.Types.SegmentLocation
+import Network.AWS.Pinpoint.Types.SegmentReference
 import Network.AWS.Pinpoint.Types.SegmentResponse
 import Network.AWS.Pinpoint.Types.SegmentsResponse
 import Network.AWS.Pinpoint.Types.SendUsersMessageRequest
 import Network.AWS.Pinpoint.Types.SendUsersMessageResponse
+import Network.AWS.Pinpoint.Types.Session
 import Network.AWS.Pinpoint.Types.SetDimension
+import Network.AWS.Pinpoint.Types.SimpleCondition
+import Network.AWS.Pinpoint.Types.SimpleEmail
+import Network.AWS.Pinpoint.Types.SimpleEmailPart
+import Network.AWS.Pinpoint.Types.StartCondition
+import Network.AWS.Pinpoint.Types.TagsModel
+import Network.AWS.Pinpoint.Types.Template
+import Network.AWS.Pinpoint.Types.TemplateActiveVersionRequest
+import Network.AWS.Pinpoint.Types.TemplateConfiguration
+import Network.AWS.Pinpoint.Types.TemplateResponse
+import Network.AWS.Pinpoint.Types.TemplateVersionResponse
+import Network.AWS.Pinpoint.Types.TemplateVersionsResponse
+import Network.AWS.Pinpoint.Types.TemplatesResponse
 import Network.AWS.Pinpoint.Types.TreatmentResource
+import Network.AWS.Pinpoint.Types.UpdateAttributesRequest
+import Network.AWS.Pinpoint.Types.VoiceChannelRequest
+import Network.AWS.Pinpoint.Types.VoiceChannelResponse
+import Network.AWS.Pinpoint.Types.VoiceMessage
+import Network.AWS.Pinpoint.Types.VoiceTemplateRequest
+import Network.AWS.Pinpoint.Types.VoiceTemplateResponse
+import Network.AWS.Pinpoint.Types.WaitActivity
+import Network.AWS.Pinpoint.Types.WaitTime
 import Network.AWS.Pinpoint.Types.WriteApplicationSettingsRequest
 import Network.AWS.Pinpoint.Types.WriteCampaignRequest
 import Network.AWS.Pinpoint.Types.WriteEventStream
+import Network.AWS.Pinpoint.Types.WriteJourneyRequest
 import Network.AWS.Pinpoint.Types.WriteSegmentRequest
 import Network.AWS.Pinpoint.Types.WriteTreatmentResource
 import Network.AWS.Prelude

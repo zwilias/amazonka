@@ -22,7 +22,9 @@ import Network.AWS.Prelude
 import Network.AWS.S3.Internal
 import Network.AWS.S3.Types.ServerSideEncryptionRule
 
--- | Container for server-side encryption configuration rules. Currently S3 supports one rule only.
+-- | Specifies the default server-side-encryption configuration.
+--
+--
 --
 -- /See:/ 'serverSideEncryptionConfiguration' smart constructor.
 newtype ServerSideEncryptionConfiguration = ServerSideEncryptionConfiguration'{_ssecRules

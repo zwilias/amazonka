@@ -27,7 +27,7 @@ module Network.AWS.MediaLive.Types.AvailBlankingState (
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | Placeholder documentation for AvailBlankingState
+-- | Avail Blanking State
 data AvailBlankingState = AvailBlankingState' (CI
                                                  Text)
                             deriving (Eq, Ord, Read, Show, Data, Typeable,

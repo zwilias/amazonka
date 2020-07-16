@@ -37,7 +37,7 @@ data UserProfile = UserProfile'{_upAllowSelfManagement
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'upAllowSelfManagement' - Whether users can specify their own SSH public key through the My Settings page. For more information, see <http://docs.aws.amazon.com/opsworks/latest/userguide/security-settingsshkey.html Managing User Permissions> .
+-- * 'upAllowSelfManagement' - Whether users can specify their own SSH public key through the My Settings page. For more information, see <https://docs.aws.amazon.com/opsworks/latest/userguide/security-settingsshkey.html Managing User Permissions> .
 --
 -- * 'upSSHPublicKey' - The user's SSH public key.
 --
@@ -53,7 +53,7 @@ userProfile
                  _upSSHPublicKey = Nothing, _upSSHUsername = Nothing,
                  _upIAMUserARN = Nothing, _upName = Nothing}
 
--- | Whether users can specify their own SSH public key through the My Settings page. For more information, see <http://docs.aws.amazon.com/opsworks/latest/userguide/security-settingsshkey.html Managing User Permissions> .
+-- | Whether users can specify their own SSH public key through the My Settings page. For more information, see <https://docs.aws.amazon.com/opsworks/latest/userguide/security-settingsshkey.html Managing User Permissions> .
 upAllowSelfManagement :: Lens' UserProfile (Maybe Bool)
 upAllowSelfManagement = lens _upAllowSelfManagement (\ s a -> s{_upAllowSelfManagement = a})
 

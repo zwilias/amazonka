@@ -18,7 +18,23 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Returns the access control list (ACL) of an object.
+-- Returns the access control list (ACL) of an object. To use this operation, you must have READ_ACP access to the object.
+--
+--
+-- __Versioning__ 
+--
+-- By default, GET returns ACL information about the current version of an object. To return ACL information about a different version, use the versionId subresource.
+--
+-- The following operations are related to @GetObjectAcl@ :
+--
+--     * 'GetObject' 
+--
+--     * 'DeleteObject' 
+--
+--     * 'PutObject' 
+--
+--
+--
 module Network.AWS.S3.GetObjectACL
     (
     -- * Creating a Request
@@ -63,9 +79,9 @@ data GetObjectACL = GetObjectACL'{_goaVersionId ::
 --
 -- * 'goaRequestPayer' - Undocumented member.
 --
--- * 'goaBucket' - Undocumented member.
+-- * 'goaBucket' - The bucket name that contains the object for which to get the ACL information.  When using this API with an access point, you must direct requests to the access point hostname. The access point hostname takes the form /AccessPointName/ -/AccountId/ .s3-accesspoint./Region/ .amazonaws.com. When using this operation using an access point through the AWS SDKs, you provide the access point ARN in place of the bucket name. For more information about access point ARNs, see <https://docs.aws.amazon.com/AmazonS3/latest/dev/using-access-points.html Using Access Points> in the /Amazon Simple Storage Service Developer Guide/ .
 --
--- * 'goaKey' - Undocumented member.
+-- * 'goaKey' - The key of the object for which to get the ACL information.
 getObjectACL
     :: BucketName -- ^ 'goaBucket'
     -> ObjectKey -- ^ 'goaKey'
@@ -83,11 +99,11 @@ goaVersionId = lens _goaVersionId (\ s a -> s{_goaVersionId = a})
 goaRequestPayer :: Lens' GetObjectACL (Maybe RequestPayer)
 goaRequestPayer = lens _goaRequestPayer (\ s a -> s{_goaRequestPayer = a})
 
--- | Undocumented member.
+-- | The bucket name that contains the object for which to get the ACL information.  When using this API with an access point, you must direct requests to the access point hostname. The access point hostname takes the form /AccessPointName/ -/AccountId/ .s3-accesspoint./Region/ .amazonaws.com. When using this operation using an access point through the AWS SDKs, you provide the access point ARN in place of the bucket name. For more information about access point ARNs, see <https://docs.aws.amazon.com/AmazonS3/latest/dev/using-access-points.html Using Access Points> in the /Amazon Simple Storage Service Developer Guide/ .
 goaBucket :: Lens' GetObjectACL BucketName
 goaBucket = lens _goaBucket (\ s a -> s{_goaBucket = a})
 
--- | Undocumented member.
+-- | The key of the object for which to get the ACL information.
 goaKey :: Lens' GetObjectACL ObjectKey
 goaKey = lens _goaKey (\ s a -> s{_goaKey = a})
 
@@ -137,7 +153,7 @@ data GetObjectACLResponse = GetObjectACLResponse'{_goarsRequestCharged
 --
 -- * 'goarsGrants' - A list of grants.
 --
--- * 'goarsOwner' - Undocumented member.
+-- * 'goarsOwner' - Container for the bucket owner's display name and ID.
 --
 -- * 'goarsResponseStatus' - -- | The response status code.
 getObjectACLResponse
@@ -157,7 +173,7 @@ goarsRequestCharged = lens _goarsRequestCharged (\ s a -> s{_goarsRequestCharged
 goarsGrants :: Lens' GetObjectACLResponse [Grant]
 goarsGrants = lens _goarsGrants (\ s a -> s{_goarsGrants = a}) . _Default . _Coerce
 
--- | Undocumented member.
+-- | Container for the bucket owner's display name and ID.
 goarsOwner :: Lens' GetObjectACLResponse (Maybe Owner)
 goarsOwner = lens _goarsOwner (\ s a -> s{_goarsOwner = a})
 

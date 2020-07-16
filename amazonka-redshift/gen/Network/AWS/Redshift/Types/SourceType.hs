@@ -23,6 +23,7 @@ module Network.AWS.Redshift.Types.SourceType (
     , ClusterParameterGroup
     , ClusterSecurityGroup
     , ClusterSnapshot
+    , ScheduledAction
     )
   ) where
 
@@ -46,11 +47,15 @@ pattern ClusterSecurityGroup = SourceType' "cluster-security-group"
 pattern ClusterSnapshot :: SourceType
 pattern ClusterSnapshot = SourceType' "cluster-snapshot"
 
+pattern ScheduledAction :: SourceType
+pattern ScheduledAction = SourceType' "scheduled-action"
+
 {-# COMPLETE
   Cluster,
   ClusterParameterGroup,
   ClusterSecurityGroup,
   ClusterSnapshot,
+  ScheduledAction,
   SourceType' #-}
 
 instance FromText SourceType where
@@ -69,12 +74,14 @@ instance Enum SourceType where
         1 -> ClusterParameterGroup
         2 -> ClusterSecurityGroup
         3 -> ClusterSnapshot
+        4 -> ScheduledAction
         _ -> (error . showText) $ "Unknown index for SourceType: " <> toText i
     fromEnum x = case x of
         Cluster -> 0
         ClusterParameterGroup -> 1
         ClusterSecurityGroup -> 2
         ClusterSnapshot -> 3
+        ScheduledAction -> 4
         SourceType' name -> (error . showText) $ "Unknown SourceType: " <> original name
 
 -- | Represents the bounds of /known/ $SourceType.
@@ -82,7 +89,7 @@ instance Enum SourceType where
 --   This instance exists only for backward compatibility.
 instance Bounded SourceType where
     minBound = Cluster
-    maxBound = ClusterSnapshot
+    maxBound = ScheduledAction
 
 instance Hashable     SourceType
 instance NFData       SourceType

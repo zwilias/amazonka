@@ -23,7 +23,7 @@ import Network.AWS.Prelude
 -- | Contains the name and values of a manual DB snapshot attribute
 --
 --
--- Manual DB snapshot attributes are used to authorize other AWS accounts to restore a manual DB snapshot. For more information, see the 'ModifyDBSnapshotAttribute' API.
+-- Manual DB snapshot attributes are used to authorize other AWS accounts to restore a manual DB snapshot. For more information, see the @ModifyDBSnapshotAttribute@ API.
 --
 --
 -- /See:/ 'dbSnapshotAttribute' smart constructor.
@@ -39,7 +39,7 @@ data DBSnapshotAttribute = DBSnapshotAttribute'{_dsaAttributeValues
 --
 -- * 'dsaAttributeValues' - The value or values for the manual DB snapshot attribute. If the @AttributeName@ field is set to @restore@ , then this element returns a list of IDs of the AWS accounts that are authorized to copy or restore the manual DB snapshot. If a value of @all@ is in the list, then the manual DB snapshot is public and available for any AWS account to copy or restore.
 --
--- * 'dsaAttributeName' - The name of the manual DB snapshot attribute. The attribute named @restore@ refers to the list of AWS accounts that have permission to copy or restore the manual DB cluster snapshot. For more information, see the 'ModifyDBSnapshotAttribute' API action.
+-- * 'dsaAttributeName' - The name of the manual DB snapshot attribute. The attribute named @restore@ refers to the list of AWS accounts that have permission to copy or restore the manual DB cluster snapshot. For more information, see the @ModifyDBSnapshotAttribute@ API action.
 dbSnapshotAttribute
     :: DBSnapshotAttribute
 dbSnapshotAttribute
@@ -50,7 +50,7 @@ dbSnapshotAttribute
 dsaAttributeValues :: Lens' DBSnapshotAttribute [Text]
 dsaAttributeValues = lens _dsaAttributeValues (\ s a -> s{_dsaAttributeValues = a}) . _Default . _Coerce
 
--- | The name of the manual DB snapshot attribute. The attribute named @restore@ refers to the list of AWS accounts that have permission to copy or restore the manual DB cluster snapshot. For more information, see the 'ModifyDBSnapshotAttribute' API action.
+-- | The name of the manual DB snapshot attribute. The attribute named @restore@ refers to the list of AWS accounts that have permission to copy or restore the manual DB cluster snapshot. For more information, see the @ModifyDBSnapshotAttribute@ API action.
 dsaAttributeName :: Lens' DBSnapshotAttribute (Maybe Text)
 dsaAttributeName = lens _dsaAttributeName (\ s a -> s{_dsaAttributeName = a})
 

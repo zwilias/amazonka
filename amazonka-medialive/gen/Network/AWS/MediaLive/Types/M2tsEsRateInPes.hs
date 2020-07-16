@@ -27,7 +27,7 @@ module Network.AWS.MediaLive.Types.M2tsEsRateInPes (
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | Placeholder documentation for M2tsEsRateInPes
+-- | M2ts Es Rate In Pes
 data M2tsEsRateInPes = M2tsEsRateInPes' (CI Text)
                          deriving (Eq, Ord, Read, Show, Data, Typeable,
                                    Generic)

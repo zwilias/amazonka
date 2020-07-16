@@ -29,6 +29,7 @@ module Network.AWS.ElasticBeanstalk.CreatePlatformVersion
     -- * Request Lenses
     , cpvOptionSettings
     , cpvEnvironmentName
+    , cpvTags
     , cpvPlatformName
     , cpvPlatformVersion
     , cpvPlatformDefinitionBundle
@@ -60,6 +61,7 @@ data CreatePlatformVersion = CreatePlatformVersion'{_cpvOptionSettings
                                                         [ConfigurationOptionSetting]),
                                                     _cpvEnvironmentName ::
                                                     !(Maybe Text),
+                                                    _cpvTags :: !(Maybe [Tag]),
                                                     _cpvPlatformName :: !Text,
                                                     _cpvPlatformVersion ::
                                                     !Text,
@@ -76,6 +78,8 @@ data CreatePlatformVersion = CreatePlatformVersion'{_cpvOptionSettings
 --
 -- * 'cpvEnvironmentName' - The name of the builder environment.
 --
+-- * 'cpvTags' - Specifies the tags applied to the new platform version. Elastic Beanstalk applies these tags only to the platform version. Environments that you create using the platform version don't inherit the tags.
+--
 -- * 'cpvPlatformName' - The name of your custom platform.
 --
 -- * 'cpvPlatformVersion' - The number, such as 1.0.2, for the new platform version.
@@ -90,7 +94,7 @@ createPlatformVersion pPlatformName_
   pPlatformVersion_ pPlatformDefinitionBundle_
   = CreatePlatformVersion'{_cpvOptionSettings =
                              Nothing,
-                           _cpvEnvironmentName = Nothing,
+                           _cpvEnvironmentName = Nothing, _cpvTags = Nothing,
                            _cpvPlatformName = pPlatformName_,
                            _cpvPlatformVersion = pPlatformVersion_,
                            _cpvPlatformDefinitionBundle =
@@ -103,6 +107,10 @@ cpvOptionSettings = lens _cpvOptionSettings (\ s a -> s{_cpvOptionSettings = a})
 -- | The name of the builder environment.
 cpvEnvironmentName :: Lens' CreatePlatformVersion (Maybe Text)
 cpvEnvironmentName = lens _cpvEnvironmentName (\ s a -> s{_cpvEnvironmentName = a})
+
+-- | Specifies the tags applied to the new platform version. Elastic Beanstalk applies these tags only to the platform version. Environments that you create using the platform version don't inherit the tags.
+cpvTags :: Lens' CreatePlatformVersion [Tag]
+cpvTags = lens _cpvTags (\ s a -> s{_cpvTags = a}) . _Default . _Coerce
 
 -- | The name of your custom platform.
 cpvPlatformName :: Lens' CreatePlatformVersion Text
@@ -146,6 +154,8 @@ instance ToQuery CreatePlatformVersion where
                  toQuery
                    (toQueryList "member" <$> _cpvOptionSettings),
                "EnvironmentName" =: _cpvEnvironmentName,
+               "Tags" =:
+                 toQuery (toQueryList "member" <$> _cpvTags),
                "PlatformName" =: _cpvPlatformName,
                "PlatformVersion" =: _cpvPlatformVersion,
                "PlatformDefinitionBundle" =:

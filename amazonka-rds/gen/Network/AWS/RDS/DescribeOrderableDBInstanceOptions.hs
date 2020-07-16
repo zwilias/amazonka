@@ -30,6 +30,7 @@ module Network.AWS.RDS.DescribeOrderableDBInstanceOptions
     , DescribeOrderableDBInstanceOptions
     -- * Request Lenses
     , dodioEngineVersion
+    , dodioAvailabilityZoneGroup
     , dodioFilters
     , dodioDBInstanceClass
     , dodioLicenseModel
@@ -61,6 +62,10 @@ import Network.AWS.Response
 --
 -- /See:/ 'describeOrderableDBInstanceOptions' smart constructor.
 data DescribeOrderableDBInstanceOptions = DescribeOrderableDBInstanceOptions'{_dodioEngineVersion
+                                                                              ::
+                                                                              !(Maybe
+                                                                                  Text),
+                                                                              _dodioAvailabilityZoneGroup
                                                                               ::
                                                                               !(Maybe
                                                                                   Text),
@@ -100,7 +105,9 @@ data DescribeOrderableDBInstanceOptions = DescribeOrderableDBInstanceOptions'{_d
 --
 -- * 'dodioEngineVersion' - The engine version filter value. Specify this parameter to show only the available offerings matching the specified engine version.
 --
--- * 'dodioFilters' - This parameter is not currently supported.
+-- * 'dodioAvailabilityZoneGroup' - The Availability Zone group associated with a Local Zone. Specify this parameter to retrieve available offerings for the Local Zones in the group. Omit this parameter to show the available offerings in the specified AWS Region.
+--
+-- * 'dodioFilters' - This parameter isn't currently supported.
 --
 -- * 'dodioDBInstanceClass' - The DB instance class filter value. Specify this parameter to show only the available offerings matching the specified DB instance class.
 --
@@ -108,9 +115,9 @@ data DescribeOrderableDBInstanceOptions = DescribeOrderableDBInstanceOptions'{_d
 --
 -- * 'dodioMarker' - An optional pagination token provided by a previous DescribeOrderableDBInstanceOptions request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by @MaxRecords@ . 
 --
--- * 'dodioMaxRecords' - The maximum number of records to include in the response. If more records exist than the specified @MaxRecords@ value, a pagination token called a marker is included in the response so that the remaining results can be retrieved.  Default: 100 Constraints: Minimum 20, maximum 100.
+-- * 'dodioMaxRecords' - The maximum number of records to include in the response. If more records exist than the specified @MaxRecords@ value, a pagination token called a marker is included in the response so that you can retrieve the remaining results.  Default: 100 Constraints: Minimum 20, maximum 100.
 --
--- * 'dodioVPC' - The VPC filter value. Specify this parameter to show only the available VPC or non-VPC offerings.
+-- * 'dodioVPC' - A value that indicates whether to show only VPC or non-VPC offerings.
 --
 -- * 'dodioEngine' - The name of the engine to retrieve DB instance options for.
 describeOrderableDBInstanceOptions
@@ -119,6 +126,7 @@ describeOrderableDBInstanceOptions
 describeOrderableDBInstanceOptions pEngine_
   = DescribeOrderableDBInstanceOptions'{_dodioEngineVersion
                                           = Nothing,
+                                        _dodioAvailabilityZoneGroup = Nothing,
                                         _dodioFilters = Nothing,
                                         _dodioDBInstanceClass = Nothing,
                                         _dodioLicenseModel = Nothing,
@@ -131,7 +139,11 @@ describeOrderableDBInstanceOptions pEngine_
 dodioEngineVersion :: Lens' DescribeOrderableDBInstanceOptions (Maybe Text)
 dodioEngineVersion = lens _dodioEngineVersion (\ s a -> s{_dodioEngineVersion = a})
 
--- | This parameter is not currently supported.
+-- | The Availability Zone group associated with a Local Zone. Specify this parameter to retrieve available offerings for the Local Zones in the group. Omit this parameter to show the available offerings in the specified AWS Region.
+dodioAvailabilityZoneGroup :: Lens' DescribeOrderableDBInstanceOptions (Maybe Text)
+dodioAvailabilityZoneGroup = lens _dodioAvailabilityZoneGroup (\ s a -> s{_dodioAvailabilityZoneGroup = a})
+
+-- | This parameter isn't currently supported.
 dodioFilters :: Lens' DescribeOrderableDBInstanceOptions [Filter]
 dodioFilters = lens _dodioFilters (\ s a -> s{_dodioFilters = a}) . _Default . _Coerce
 
@@ -147,11 +159,11 @@ dodioLicenseModel = lens _dodioLicenseModel (\ s a -> s{_dodioLicenseModel = a})
 dodioMarker :: Lens' DescribeOrderableDBInstanceOptions (Maybe Text)
 dodioMarker = lens _dodioMarker (\ s a -> s{_dodioMarker = a})
 
--- | The maximum number of records to include in the response. If more records exist than the specified @MaxRecords@ value, a pagination token called a marker is included in the response so that the remaining results can be retrieved.  Default: 100 Constraints: Minimum 20, maximum 100.
+-- | The maximum number of records to include in the response. If more records exist than the specified @MaxRecords@ value, a pagination token called a marker is included in the response so that you can retrieve the remaining results.  Default: 100 Constraints: Minimum 20, maximum 100.
 dodioMaxRecords :: Lens' DescribeOrderableDBInstanceOptions (Maybe Int)
 dodioMaxRecords = lens _dodioMaxRecords (\ s a -> s{_dodioMaxRecords = a})
 
--- | The VPC filter value. Specify this parameter to show only the available VPC or non-VPC offerings.
+-- | A value that indicates whether to show only VPC or non-VPC offerings.
 dodioVPC :: Lens' DescribeOrderableDBInstanceOptions (Maybe Bool)
 dodioVPC = lens _dodioVPC (\ s a -> s{_dodioVPC = a})
 
@@ -206,6 +218,8 @@ instance ToQuery DescribeOrderableDBInstanceOptions
                  ("DescribeOrderableDBInstanceOptions" :: ByteString),
                "Version" =: ("2014-10-31" :: ByteString),
                "EngineVersion" =: _dodioEngineVersion,
+               "AvailabilityZoneGroup" =:
+                 _dodioAvailabilityZoneGroup,
                "Filters" =:
                  toQuery (toQueryList "Filter" <$> _dodioFilters),
                "DBInstanceClass" =: _dodioDBInstanceClass,
@@ -214,7 +228,7 @@ instance ToQuery DescribeOrderableDBInstanceOptions
                "MaxRecords" =: _dodioMaxRecords, "Vpc" =: _dodioVPC,
                "Engine" =: _dodioEngine]
 
--- | Contains the result of a successful invocation of the 'DescribeOrderableDBInstanceOptions' action. 
+-- | Contains the result of a successful invocation of the @DescribeOrderableDBInstanceOptions@ action. 
 --
 --
 --
@@ -238,7 +252,7 @@ data DescribeOrderableDBInstanceOptionsResponse = DescribeOrderableDBInstanceOpt
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dodiorsOrderableDBInstanceOptions' - An 'OrderableDBInstanceOption' structure containing information about orderable options for the DB instance.
+-- * 'dodiorsOrderableDBInstanceOptions' - An @OrderableDBInstanceOption@ structure containing information about orderable options for the DB instance.
 --
 -- * 'dodiorsMarker' - An optional pagination token provided by a previous OrderableDBInstanceOptions request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by @MaxRecords@ . 
 --
@@ -254,7 +268,7 @@ describeOrderableDBInstanceOptionsResponse
                                                 _dodiorsResponseStatus =
                                                   pResponseStatus_}
 
--- | An 'OrderableDBInstanceOption' structure containing information about orderable options for the DB instance.
+-- | An @OrderableDBInstanceOption@ structure containing information about orderable options for the DB instance.
 dodiorsOrderableDBInstanceOptions :: Lens' DescribeOrderableDBInstanceOptionsResponse [OrderableDBInstanceOption]
 dodiorsOrderableDBInstanceOptions = lens _dodiorsOrderableDBInstanceOptions (\ s a -> s{_dodiorsOrderableDBInstanceOptions = a}) . _Default . _Coerce
 

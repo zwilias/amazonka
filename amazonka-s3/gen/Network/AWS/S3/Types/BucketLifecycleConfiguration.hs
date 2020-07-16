@@ -22,7 +22,11 @@ import Network.AWS.Prelude
 import Network.AWS.S3.Internal
 import Network.AWS.S3.Types.LifecycleRule
 
--- | /See:/ 'bucketLifecycleConfiguration' smart constructor.
+-- | Specifies the lifecycle configuration for objects in an Amazon S3 bucket. For more information, see <https://docs.aws.amazon.com/AmazonS3/latest/dev/object-lifecycle-mgmt.html Object Lifecycle Management> in the /Amazon Simple Storage Service Developer Guide/ .
+--
+--
+--
+-- /See:/ 'bucketLifecycleConfiguration' smart constructor.
 newtype BucketLifecycleConfiguration = BucketLifecycleConfiguration'{_blcRules
                                                                      ::
                                                                      [LifecycleRule]}
@@ -33,13 +37,13 @@ newtype BucketLifecycleConfiguration = BucketLifecycleConfiguration'{_blcRules
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'blcRules' - Undocumented member.
+-- * 'blcRules' - A lifecycle rule for individual objects in an Amazon S3 bucket.
 bucketLifecycleConfiguration
     :: BucketLifecycleConfiguration
 bucketLifecycleConfiguration
   = BucketLifecycleConfiguration'{_blcRules = mempty}
 
--- | Undocumented member.
+-- | A lifecycle rule for individual objects in an Amazon S3 bucket.
 blcRules :: Lens' BucketLifecycleConfiguration [LifecycleRule]
 blcRules = lens _blcRules (\ s a -> s{_blcRules = a}) . _Coerce
 

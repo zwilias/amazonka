@@ -44,17 +44,17 @@ data PendingMaintenanceAction = PendingMaintenanceAction'{_pmaAutoAppliedAfterDa
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'pmaAutoAppliedAfterDate' - The date of the maintenance window when the action is applied. The maintenance action is applied to the resource during its first maintenance window after this date. If this date is specified, any @next-maintenance@ opt-in requests are ignored.
+-- * 'pmaAutoAppliedAfterDate' - The date of the maintenance window when the action is applied. The maintenance action is applied to the resource during its first maintenance window after this date.
 --
--- * 'pmaAction' - The type of pending maintenance action that is available for the resource.
+-- * 'pmaAction' - The type of pending maintenance action that is available for the resource. Valid actions are @system-update@ , @db-upgrade@ , @hardware-maintenance@ , and @ca-certificate-rotation@ .
 --
 -- * 'pmaOptInStatus' - Indicates the type of opt-in request that has been received for the resource.
 --
 -- * 'pmaDescription' - A description providing more detail about the maintenance action.
 --
--- * 'pmaForcedApplyDate' - The date when the maintenance action is automatically applied. The maintenance action is applied to the resource on this date regardless of the maintenance window for the resource. If this date is specified, any @immediate@ opt-in requests are ignored.
+-- * 'pmaForcedApplyDate' - The date when the maintenance action is automatically applied. The maintenance action is applied to the resource on this date regardless of the maintenance window for the resource.
 --
--- * 'pmaCurrentApplyDate' - The effective date when the pending maintenance action is applied to the resource. This date takes into account opt-in requests received from the 'ApplyPendingMaintenanceAction' API, the @AutoAppliedAfterDate@ , and the @ForcedApplyDate@ . This value is blank if an opt-in request has not been received and nothing has been specified as @AutoAppliedAfterDate@ or @ForcedApplyDate@ .
+-- * 'pmaCurrentApplyDate' - The effective date when the pending maintenance action is applied to the resource. This date takes into account opt-in requests received from the @ApplyPendingMaintenanceAction@ API, the @AutoAppliedAfterDate@ , and the @ForcedApplyDate@ . This value is blank if an opt-in request has not been received and nothing has been specified as @AutoAppliedAfterDate@ or @ForcedApplyDate@ .
 pendingMaintenanceAction
     :: PendingMaintenanceAction
 pendingMaintenanceAction
@@ -65,11 +65,11 @@ pendingMaintenanceAction
                               _pmaForcedApplyDate = Nothing,
                               _pmaCurrentApplyDate = Nothing}
 
--- | The date of the maintenance window when the action is applied. The maintenance action is applied to the resource during its first maintenance window after this date. If this date is specified, any @next-maintenance@ opt-in requests are ignored.
+-- | The date of the maintenance window when the action is applied. The maintenance action is applied to the resource during its first maintenance window after this date.
 pmaAutoAppliedAfterDate :: Lens' PendingMaintenanceAction (Maybe UTCTime)
 pmaAutoAppliedAfterDate = lens _pmaAutoAppliedAfterDate (\ s a -> s{_pmaAutoAppliedAfterDate = a}) . mapping _Time
 
--- | The type of pending maintenance action that is available for the resource.
+-- | The type of pending maintenance action that is available for the resource. Valid actions are @system-update@ , @db-upgrade@ , @hardware-maintenance@ , and @ca-certificate-rotation@ .
 pmaAction :: Lens' PendingMaintenanceAction (Maybe Text)
 pmaAction = lens _pmaAction (\ s a -> s{_pmaAction = a})
 
@@ -81,11 +81,11 @@ pmaOptInStatus = lens _pmaOptInStatus (\ s a -> s{_pmaOptInStatus = a})
 pmaDescription :: Lens' PendingMaintenanceAction (Maybe Text)
 pmaDescription = lens _pmaDescription (\ s a -> s{_pmaDescription = a})
 
--- | The date when the maintenance action is automatically applied. The maintenance action is applied to the resource on this date regardless of the maintenance window for the resource. If this date is specified, any @immediate@ opt-in requests are ignored.
+-- | The date when the maintenance action is automatically applied. The maintenance action is applied to the resource on this date regardless of the maintenance window for the resource.
 pmaForcedApplyDate :: Lens' PendingMaintenanceAction (Maybe UTCTime)
 pmaForcedApplyDate = lens _pmaForcedApplyDate (\ s a -> s{_pmaForcedApplyDate = a}) . mapping _Time
 
--- | The effective date when the pending maintenance action is applied to the resource. This date takes into account opt-in requests received from the 'ApplyPendingMaintenanceAction' API, the @AutoAppliedAfterDate@ , and the @ForcedApplyDate@ . This value is blank if an opt-in request has not been received and nothing has been specified as @AutoAppliedAfterDate@ or @ForcedApplyDate@ .
+-- | The effective date when the pending maintenance action is applied to the resource. This date takes into account opt-in requests received from the @ApplyPendingMaintenanceAction@ API, the @AutoAppliedAfterDate@ , and the @ForcedApplyDate@ . This value is blank if an opt-in request has not been received and nothing has been specified as @AutoAppliedAfterDate@ or @ForcedApplyDate@ .
 pmaCurrentApplyDate :: Lens' PendingMaintenanceAction (Maybe UTCTime)
 pmaCurrentApplyDate = lens _pmaCurrentApplyDate (\ s a -> s{_pmaCurrentApplyDate = a}) . mapping _Time
 

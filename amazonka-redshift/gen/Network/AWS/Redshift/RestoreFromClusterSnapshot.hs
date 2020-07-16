@@ -23,7 +23,7 @@
 --
 -- If you restore a cluster into a VPC, you must provide a cluster subnet group where you want the cluster restored.
 --
--- For more information about working with snapshots, go to <http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-snapshots.html Amazon Redshift Snapshots> in the /Amazon Redshift Cluster Management Guide/ .
+-- For more information about working with snapshots, go to <https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-snapshots.html Amazon Redshift Snapshots> in the /Amazon Redshift Cluster Management Guide/ .
 --
 module Network.AWS.Redshift.RestoreFromClusterSnapshot
     (
@@ -31,15 +31,19 @@ module Network.AWS.Redshift.RestoreFromClusterSnapshot
       restoreFromClusterSnapshot
     , RestoreFromClusterSnapshot
     -- * Request Lenses
+    , rfcsManualSnapshotRetentionPeriod
     , rfcsEnhancedVPCRouting
     , rfcsAdditionalInfo
+    , rfcsSnapshotScheduleIdentifier
     , rfcsPubliclyAccessible
     , rfcsSnapshotClusterIdentifier
+    , rfcsMaintenanceTrackName
     , rfcsHSMConfigurationIdentifier
     , rfcsClusterSecurityGroups
     , rfcsAutomatedSnapshotRetentionPeriod
     , rfcsClusterSubnetGroupName
     , rfcsHSMClientCertificateIdentifier
+    , rfcsNumberOfNodes
     , rfcsElasticIP
     , rfcsPreferredMaintenanceWindow
     , rfcsKMSKeyId
@@ -74,13 +78,19 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'restoreFromClusterSnapshot' smart constructor.
-data RestoreFromClusterSnapshot = RestoreFromClusterSnapshot'{_rfcsEnhancedVPCRouting
+data RestoreFromClusterSnapshot = RestoreFromClusterSnapshot'{_rfcsManualSnapshotRetentionPeriod
+                                                              :: !(Maybe Int),
+                                                              _rfcsEnhancedVPCRouting
                                                               :: !(Maybe Bool),
                                                               _rfcsAdditionalInfo
+                                                              :: !(Maybe Text),
+                                                              _rfcsSnapshotScheduleIdentifier
                                                               :: !(Maybe Text),
                                                               _rfcsPubliclyAccessible
                                                               :: !(Maybe Bool),
                                                               _rfcsSnapshotClusterIdentifier
+                                                              :: !(Maybe Text),
+                                                              _rfcsMaintenanceTrackName
                                                               :: !(Maybe Text),
                                                               _rfcsHSMConfigurationIdentifier
                                                               :: !(Maybe Text),
@@ -93,6 +103,8 @@ data RestoreFromClusterSnapshot = RestoreFromClusterSnapshot'{_rfcsEnhancedVPCRo
                                                               :: !(Maybe Text),
                                                               _rfcsHSMClientCertificateIdentifier
                                                               :: !(Maybe Text),
+                                                              _rfcsNumberOfNodes
+                                                              :: !(Maybe Int),
                                                               _rfcsElasticIP ::
                                                               !(Maybe Text),
                                                               _rfcsPreferredMaintenanceWindow
@@ -127,13 +139,19 @@ data RestoreFromClusterSnapshot = RestoreFromClusterSnapshot'{_rfcsEnhancedVPCRo
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'rfcsEnhancedVPCRouting' - An option that specifies whether to create the cluster with enhanced VPC routing enabled. To create a cluster that uses enhanced VPC routing, the cluster must be in a VPC. For more information, see <http://docs.aws.amazon.com/redshift/latest/mgmt/enhanced-vpc-routing.html Enhanced VPC Routing> in the Amazon Redshift Cluster Management Guide. If this option is @true@ , enhanced VPC routing is enabled.  Default: false
+-- * 'rfcsManualSnapshotRetentionPeriod' - The default number of days to retain a manual snapshot. If the value is -1, the snapshot is retained indefinitely. This setting doesn't change the retention period of existing snapshots. The value must be either -1 or an integer between 1 and 3,653.
+--
+-- * 'rfcsEnhancedVPCRouting' - An option that specifies whether to create the cluster with enhanced VPC routing enabled. To create a cluster that uses enhanced VPC routing, the cluster must be in a VPC. For more information, see <https://docs.aws.amazon.com/redshift/latest/mgmt/enhanced-vpc-routing.html Enhanced VPC Routing> in the Amazon Redshift Cluster Management Guide. If this option is @true@ , enhanced VPC routing is enabled.  Default: false
 --
 -- * 'rfcsAdditionalInfo' - Reserved.
+--
+-- * 'rfcsSnapshotScheduleIdentifier' - A unique identifier for the snapshot schedule.
 --
 -- * 'rfcsPubliclyAccessible' - If @true@ , the cluster can be accessed from a public network. 
 --
 -- * 'rfcsSnapshotClusterIdentifier' - The name of the cluster the source snapshot was created from. This parameter is required if your IAM user has a policy containing a snapshot resource element that specifies anything other than * for the cluster name.
+--
+-- * 'rfcsMaintenanceTrackName' - The name of the maintenance track for the restored cluster. When you take a snapshot, the snapshot inherits the @MaintenanceTrack@ value from the cluster. The snapshot might be on a different track than the cluster that was the source for the snapshot. For example, suppose that you take a snapshot of a cluster that is on the current track and then change the cluster to be on the trailing track. In this case, the snapshot and the source cluster are on different tracks.
 --
 -- * 'rfcsHSMConfigurationIdentifier' - Specifies the name of the HSM configuration that contains the information the Amazon Redshift cluster can use to retrieve and store keys in an HSM.
 --
@@ -145,13 +163,15 @@ data RestoreFromClusterSnapshot = RestoreFromClusterSnapshot'{_rfcsEnhancedVPCRo
 --
 -- * 'rfcsHSMClientCertificateIdentifier' - Specifies the name of the HSM client certificate the Amazon Redshift cluster uses to retrieve the data encryption keys stored in an HSM.
 --
+-- * 'rfcsNumberOfNodes' - The number of nodes specified when provisioning the restored cluster.
+--
 -- * 'rfcsElasticIP' - The elastic IP (EIP) address for the cluster.
 --
--- * 'rfcsPreferredMaintenanceWindow' - The weekly time range (in UTC) during which automated cluster maintenance can occur. Format: @ddd:hh24:mi-ddd:hh24:mi@  Default: The value selected for the cluster from which the snapshot was taken. For more information about the time blocks for each region, see <http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html#rs-maintenance-windows Maintenance Windows> in Amazon Redshift Cluster Management Guide.  Valid Days: Mon | Tue | Wed | Thu | Fri | Sat | Sun Constraints: Minimum 30-minute window.
+-- * 'rfcsPreferredMaintenanceWindow' - The weekly time range (in UTC) during which automated cluster maintenance can occur. Format: @ddd:hh24:mi-ddd:hh24:mi@  Default: The value selected for the cluster from which the snapshot was taken. For more information about the time blocks for each region, see <https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html#rs-maintenance-windows Maintenance Windows> in Amazon Redshift Cluster Management Guide.  Valid Days: Mon | Tue | Wed | Thu | Fri | Sat | Sun Constraints: Minimum 30-minute window.
 --
 -- * 'rfcsKMSKeyId' - The AWS Key Management Service (KMS) key ID of the encryption key that you want to use to encrypt data in the cluster that you restore from a shared snapshot.
 --
--- * 'rfcsAvailabilityZone' - The Amazon EC2 Availability Zone in which to restore the cluster. Default: A random, system-chosen Availability Zone. Example: @us-east-1a@ 
+-- * 'rfcsAvailabilityZone' - The Amazon EC2 Availability Zone in which to restore the cluster. Default: A random, system-chosen Availability Zone. Example: @us-east-2a@ 
 --
 -- * 'rfcsVPCSecurityGroupIds' - A list of Virtual Private Cloud (VPC) security groups to be associated with the cluster. Default: The default VPC security group is associated with the cluster. VPC security groups only apply to clusters in VPCs.
 --
@@ -159,11 +179,11 @@ data RestoreFromClusterSnapshot = RestoreFromClusterSnapshot'{_rfcsEnhancedVPCRo
 --
 -- * 'rfcsOwnerAccount' - The AWS customer account used to create or copy the snapshot. Required if you are restoring a snapshot you do not own, optional if you own the snapshot.
 --
--- * 'rfcsNodeType' - The node type that the restored cluster will be provisioned with. Default: The node type of the cluster from which the snapshot was taken. You can modify this if you are using any DS node type. In that case, you can choose to restore into another DS node type of the same size. For example, you can restore ds1.8xlarge into ds2.8xlarge, or ds1.xlarge into ds2.xlarge. If you have a DC instance type, you must restore into that same instance type and size. In other words, you can only restore a dc1.large instance type into another dc1.large instance type or dc2.large instance type. You can't restore dc1.8xlarge to dc2.8xlarge. First restore to a dc1.8xlareg cluster, then resize to a dc2.8large cluster. For more information about node types, see <http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html#rs-about-clusters-and-nodes About Clusters and Nodes> in the /Amazon Redshift Cluster Management Guide/ . 
+-- * 'rfcsNodeType' - The node type that the restored cluster will be provisioned with. Default: The node type of the cluster from which the snapshot was taken. You can modify this if you are using any DS node type. In that case, you can choose to restore into another DS node type of the same size. For example, you can restore ds1.8xlarge into ds2.8xlarge, or ds1.xlarge into ds2.xlarge. If you have a DC instance type, you must restore into that same instance type and size. In other words, you can only restore a dc1.large instance type into another dc1.large instance type or dc2.large instance type. You can't restore dc1.8xlarge to dc2.8xlarge. First restore to a dc1.8xlarge cluster, then resize to a dc2.8large cluster. For more information about node types, see <https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html#rs-about-clusters-and-nodes About Clusters and Nodes> in the /Amazon Redshift Cluster Management Guide/ . 
 --
 -- * 'rfcsAllowVersionUpgrade' - If @true@ , major version upgrades can be applied during the maintenance window to the Amazon Redshift engine that is running on the cluster.  Default: @true@ 
 --
--- * 'rfcsClusterParameterGroupName' - The name of the parameter group to be associated with this cluster. Default: The default Amazon Redshift cluster parameter group. For information about the default parameter group, go to <http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-parameter-groups.html Working with Amazon Redshift Parameter Groups> . Constraints:     * Must be 1 to 255 alphanumeric characters or hyphens.     * First character must be a letter.     * Cannot end with a hyphen or contain two consecutive hyphens.
+-- * 'rfcsClusterParameterGroupName' - The name of the parameter group to be associated with this cluster. Default: The default Amazon Redshift cluster parameter group. For information about the default parameter group, go to <https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-parameter-groups.html Working with Amazon Redshift Parameter Groups> . Constraints:     * Must be 1 to 255 alphanumeric characters or hyphens.     * First character must be a letter.     * Cannot end with a hyphen or contain two consecutive hyphens.
 --
 -- * 'rfcsPort' - The port number on which the cluster accepts connections. Default: The same port as the original cluster. Constraints: Must be between @1115@ and @65535@ .
 --
@@ -176,16 +196,20 @@ restoreFromClusterSnapshot
     -> RestoreFromClusterSnapshot
 restoreFromClusterSnapshot pClusterIdentifier_
   pSnapshotIdentifier_
-  = RestoreFromClusterSnapshot'{_rfcsEnhancedVPCRouting
+  = RestoreFromClusterSnapshot'{_rfcsManualSnapshotRetentionPeriod
                                   = Nothing,
+                                _rfcsEnhancedVPCRouting = Nothing,
                                 _rfcsAdditionalInfo = Nothing,
+                                _rfcsSnapshotScheduleIdentifier = Nothing,
                                 _rfcsPubliclyAccessible = Nothing,
                                 _rfcsSnapshotClusterIdentifier = Nothing,
+                                _rfcsMaintenanceTrackName = Nothing,
                                 _rfcsHSMConfigurationIdentifier = Nothing,
                                 _rfcsClusterSecurityGroups = Nothing,
                                 _rfcsAutomatedSnapshotRetentionPeriod = Nothing,
                                 _rfcsClusterSubnetGroupName = Nothing,
                                 _rfcsHSMClientCertificateIdentifier = Nothing,
+                                _rfcsNumberOfNodes = Nothing,
                                 _rfcsElasticIP = Nothing,
                                 _rfcsPreferredMaintenanceWindow = Nothing,
                                 _rfcsKMSKeyId = Nothing,
@@ -200,13 +224,21 @@ restoreFromClusterSnapshot pClusterIdentifier_
                                 _rfcsClusterIdentifier = pClusterIdentifier_,
                                 _rfcsSnapshotIdentifier = pSnapshotIdentifier_}
 
--- | An option that specifies whether to create the cluster with enhanced VPC routing enabled. To create a cluster that uses enhanced VPC routing, the cluster must be in a VPC. For more information, see <http://docs.aws.amazon.com/redshift/latest/mgmt/enhanced-vpc-routing.html Enhanced VPC Routing> in the Amazon Redshift Cluster Management Guide. If this option is @true@ , enhanced VPC routing is enabled.  Default: false
+-- | The default number of days to retain a manual snapshot. If the value is -1, the snapshot is retained indefinitely. This setting doesn't change the retention period of existing snapshots. The value must be either -1 or an integer between 1 and 3,653.
+rfcsManualSnapshotRetentionPeriod :: Lens' RestoreFromClusterSnapshot (Maybe Int)
+rfcsManualSnapshotRetentionPeriod = lens _rfcsManualSnapshotRetentionPeriod (\ s a -> s{_rfcsManualSnapshotRetentionPeriod = a})
+
+-- | An option that specifies whether to create the cluster with enhanced VPC routing enabled. To create a cluster that uses enhanced VPC routing, the cluster must be in a VPC. For more information, see <https://docs.aws.amazon.com/redshift/latest/mgmt/enhanced-vpc-routing.html Enhanced VPC Routing> in the Amazon Redshift Cluster Management Guide. If this option is @true@ , enhanced VPC routing is enabled.  Default: false
 rfcsEnhancedVPCRouting :: Lens' RestoreFromClusterSnapshot (Maybe Bool)
 rfcsEnhancedVPCRouting = lens _rfcsEnhancedVPCRouting (\ s a -> s{_rfcsEnhancedVPCRouting = a})
 
 -- | Reserved.
 rfcsAdditionalInfo :: Lens' RestoreFromClusterSnapshot (Maybe Text)
 rfcsAdditionalInfo = lens _rfcsAdditionalInfo (\ s a -> s{_rfcsAdditionalInfo = a})
+
+-- | A unique identifier for the snapshot schedule.
+rfcsSnapshotScheduleIdentifier :: Lens' RestoreFromClusterSnapshot (Maybe Text)
+rfcsSnapshotScheduleIdentifier = lens _rfcsSnapshotScheduleIdentifier (\ s a -> s{_rfcsSnapshotScheduleIdentifier = a})
 
 -- | If @true@ , the cluster can be accessed from a public network. 
 rfcsPubliclyAccessible :: Lens' RestoreFromClusterSnapshot (Maybe Bool)
@@ -215,6 +247,10 @@ rfcsPubliclyAccessible = lens _rfcsPubliclyAccessible (\ s a -> s{_rfcsPubliclyA
 -- | The name of the cluster the source snapshot was created from. This parameter is required if your IAM user has a policy containing a snapshot resource element that specifies anything other than * for the cluster name.
 rfcsSnapshotClusterIdentifier :: Lens' RestoreFromClusterSnapshot (Maybe Text)
 rfcsSnapshotClusterIdentifier = lens _rfcsSnapshotClusterIdentifier (\ s a -> s{_rfcsSnapshotClusterIdentifier = a})
+
+-- | The name of the maintenance track for the restored cluster. When you take a snapshot, the snapshot inherits the @MaintenanceTrack@ value from the cluster. The snapshot might be on a different track than the cluster that was the source for the snapshot. For example, suppose that you take a snapshot of a cluster that is on the current track and then change the cluster to be on the trailing track. In this case, the snapshot and the source cluster are on different tracks.
+rfcsMaintenanceTrackName :: Lens' RestoreFromClusterSnapshot (Maybe Text)
+rfcsMaintenanceTrackName = lens _rfcsMaintenanceTrackName (\ s a -> s{_rfcsMaintenanceTrackName = a})
 
 -- | Specifies the name of the HSM configuration that contains the information the Amazon Redshift cluster can use to retrieve and store keys in an HSM.
 rfcsHSMConfigurationIdentifier :: Lens' RestoreFromClusterSnapshot (Maybe Text)
@@ -236,11 +272,15 @@ rfcsClusterSubnetGroupName = lens _rfcsClusterSubnetGroupName (\ s a -> s{_rfcsC
 rfcsHSMClientCertificateIdentifier :: Lens' RestoreFromClusterSnapshot (Maybe Text)
 rfcsHSMClientCertificateIdentifier = lens _rfcsHSMClientCertificateIdentifier (\ s a -> s{_rfcsHSMClientCertificateIdentifier = a})
 
+-- | The number of nodes specified when provisioning the restored cluster.
+rfcsNumberOfNodes :: Lens' RestoreFromClusterSnapshot (Maybe Int)
+rfcsNumberOfNodes = lens _rfcsNumberOfNodes (\ s a -> s{_rfcsNumberOfNodes = a})
+
 -- | The elastic IP (EIP) address for the cluster.
 rfcsElasticIP :: Lens' RestoreFromClusterSnapshot (Maybe Text)
 rfcsElasticIP = lens _rfcsElasticIP (\ s a -> s{_rfcsElasticIP = a})
 
--- | The weekly time range (in UTC) during which automated cluster maintenance can occur. Format: @ddd:hh24:mi-ddd:hh24:mi@  Default: The value selected for the cluster from which the snapshot was taken. For more information about the time blocks for each region, see <http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html#rs-maintenance-windows Maintenance Windows> in Amazon Redshift Cluster Management Guide.  Valid Days: Mon | Tue | Wed | Thu | Fri | Sat | Sun Constraints: Minimum 30-minute window.
+-- | The weekly time range (in UTC) during which automated cluster maintenance can occur. Format: @ddd:hh24:mi-ddd:hh24:mi@  Default: The value selected for the cluster from which the snapshot was taken. For more information about the time blocks for each region, see <https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html#rs-maintenance-windows Maintenance Windows> in Amazon Redshift Cluster Management Guide.  Valid Days: Mon | Tue | Wed | Thu | Fri | Sat | Sun Constraints: Minimum 30-minute window.
 rfcsPreferredMaintenanceWindow :: Lens' RestoreFromClusterSnapshot (Maybe Text)
 rfcsPreferredMaintenanceWindow = lens _rfcsPreferredMaintenanceWindow (\ s a -> s{_rfcsPreferredMaintenanceWindow = a})
 
@@ -248,7 +288,7 @@ rfcsPreferredMaintenanceWindow = lens _rfcsPreferredMaintenanceWindow (\ s a -> 
 rfcsKMSKeyId :: Lens' RestoreFromClusterSnapshot (Maybe Text)
 rfcsKMSKeyId = lens _rfcsKMSKeyId (\ s a -> s{_rfcsKMSKeyId = a})
 
--- | The Amazon EC2 Availability Zone in which to restore the cluster. Default: A random, system-chosen Availability Zone. Example: @us-east-1a@ 
+-- | The Amazon EC2 Availability Zone in which to restore the cluster. Default: A random, system-chosen Availability Zone. Example: @us-east-2a@ 
 rfcsAvailabilityZone :: Lens' RestoreFromClusterSnapshot (Maybe Text)
 rfcsAvailabilityZone = lens _rfcsAvailabilityZone (\ s a -> s{_rfcsAvailabilityZone = a})
 
@@ -264,7 +304,7 @@ rfcsIAMRoles = lens _rfcsIAMRoles (\ s a -> s{_rfcsIAMRoles = a}) . _Default . _
 rfcsOwnerAccount :: Lens' RestoreFromClusterSnapshot (Maybe Text)
 rfcsOwnerAccount = lens _rfcsOwnerAccount (\ s a -> s{_rfcsOwnerAccount = a})
 
--- | The node type that the restored cluster will be provisioned with. Default: The node type of the cluster from which the snapshot was taken. You can modify this if you are using any DS node type. In that case, you can choose to restore into another DS node type of the same size. For example, you can restore ds1.8xlarge into ds2.8xlarge, or ds1.xlarge into ds2.xlarge. If you have a DC instance type, you must restore into that same instance type and size. In other words, you can only restore a dc1.large instance type into another dc1.large instance type or dc2.large instance type. You can't restore dc1.8xlarge to dc2.8xlarge. First restore to a dc1.8xlareg cluster, then resize to a dc2.8large cluster. For more information about node types, see <http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html#rs-about-clusters-and-nodes About Clusters and Nodes> in the /Amazon Redshift Cluster Management Guide/ . 
+-- | The node type that the restored cluster will be provisioned with. Default: The node type of the cluster from which the snapshot was taken. You can modify this if you are using any DS node type. In that case, you can choose to restore into another DS node type of the same size. For example, you can restore ds1.8xlarge into ds2.8xlarge, or ds1.xlarge into ds2.xlarge. If you have a DC instance type, you must restore into that same instance type and size. In other words, you can only restore a dc1.large instance type into another dc1.large instance type or dc2.large instance type. You can't restore dc1.8xlarge to dc2.8xlarge. First restore to a dc1.8xlarge cluster, then resize to a dc2.8large cluster. For more information about node types, see <https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html#rs-about-clusters-and-nodes About Clusters and Nodes> in the /Amazon Redshift Cluster Management Guide/ . 
 rfcsNodeType :: Lens' RestoreFromClusterSnapshot (Maybe Text)
 rfcsNodeType = lens _rfcsNodeType (\ s a -> s{_rfcsNodeType = a})
 
@@ -272,7 +312,7 @@ rfcsNodeType = lens _rfcsNodeType (\ s a -> s{_rfcsNodeType = a})
 rfcsAllowVersionUpgrade :: Lens' RestoreFromClusterSnapshot (Maybe Bool)
 rfcsAllowVersionUpgrade = lens _rfcsAllowVersionUpgrade (\ s a -> s{_rfcsAllowVersionUpgrade = a})
 
--- | The name of the parameter group to be associated with this cluster. Default: The default Amazon Redshift cluster parameter group. For information about the default parameter group, go to <http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-parameter-groups.html Working with Amazon Redshift Parameter Groups> . Constraints:     * Must be 1 to 255 alphanumeric characters or hyphens.     * First character must be a letter.     * Cannot end with a hyphen or contain two consecutive hyphens.
+-- | The name of the parameter group to be associated with this cluster. Default: The default Amazon Redshift cluster parameter group. For information about the default parameter group, go to <https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-parameter-groups.html Working with Amazon Redshift Parameter Groups> . Constraints:     * Must be 1 to 255 alphanumeric characters or hyphens.     * First character must be a letter.     * Cannot end with a hyphen or contain two consecutive hyphens.
 rfcsClusterParameterGroupName :: Lens' RestoreFromClusterSnapshot (Maybe Text)
 rfcsClusterParameterGroupName = lens _rfcsClusterParameterGroupName (\ s a -> s{_rfcsClusterParameterGroupName = a})
 
@@ -315,11 +355,16 @@ instance ToQuery RestoreFromClusterSnapshot where
               ["Action" =:
                  ("RestoreFromClusterSnapshot" :: ByteString),
                "Version" =: ("2012-12-01" :: ByteString),
+               "ManualSnapshotRetentionPeriod" =:
+                 _rfcsManualSnapshotRetentionPeriod,
                "EnhancedVpcRouting" =: _rfcsEnhancedVPCRouting,
                "AdditionalInfo" =: _rfcsAdditionalInfo,
+               "SnapshotScheduleIdentifier" =:
+                 _rfcsSnapshotScheduleIdentifier,
                "PubliclyAccessible" =: _rfcsPubliclyAccessible,
                "SnapshotClusterIdentifier" =:
                  _rfcsSnapshotClusterIdentifier,
+               "MaintenanceTrackName" =: _rfcsMaintenanceTrackName,
                "HsmConfigurationIdentifier" =:
                  _rfcsHSMConfigurationIdentifier,
                "ClusterSecurityGroups" =:
@@ -332,6 +377,7 @@ instance ToQuery RestoreFromClusterSnapshot where
                  _rfcsClusterSubnetGroupName,
                "HsmClientCertificateIdentifier" =:
                  _rfcsHSMClientCertificateIdentifier,
+               "NumberOfNodes" =: _rfcsNumberOfNodes,
                "ElasticIp" =: _rfcsElasticIP,
                "PreferredMaintenanceWindow" =:
                  _rfcsPreferredMaintenanceWindow,

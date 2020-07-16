@@ -20,7 +20,7 @@ module Network.AWS.RDS.Types.EventSubscription where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | Contains the results of a successful invocation of the 'DescribeEventSubscriptions' action.
+-- | Contains the results of a successful invocation of the @DescribeEventSubscriptions@ action.
 --
 --
 --

@@ -27,12 +27,11 @@ import Network.AWS.Prelude
 -- /See:/ 'preset' smart constructor.
 data Preset = Preset'{_pLastUpdated ::
                       !(Maybe POSIX),
-                      _pSettings :: !(Maybe PresetSettings),
                       _pARN :: !(Maybe Text),
                       _pCreatedAt :: !(Maybe POSIX),
-                      _pCategory :: !(Maybe Text), _pName :: !(Maybe Text),
-                      _pType :: !(Maybe Type),
-                      _pDescription :: !(Maybe Text)}
+                      _pCategory :: !(Maybe Text), _pType :: !(Maybe Type),
+                      _pDescription :: !(Maybe Text),
+                      _pSettings :: !PresetSettings, _pName :: !Text}
                 deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'Preset' with the minimum fields required to make a request.
@@ -41,35 +40,32 @@ data Preset = Preset'{_pLastUpdated ::
 --
 -- * 'pLastUpdated' - The timestamp in epoch seconds when the preset was last updated.
 --
--- * 'pSettings' - Undocumented member.
---
 -- * 'pARN' - An identifier for this resource that is unique within all of AWS.
 --
 -- * 'pCreatedAt' - The timestamp in epoch seconds for preset creation.
 --
 -- * 'pCategory' - An optional category you create to organize your presets.
 --
--- * 'pName' - A name you create for each preset. Each name must be unique within your account.
---
 -- * 'pType' - A preset can be of two types: system or custom. System or built-in preset can't be modified or deleted by the user.
 --
 -- * 'pDescription' - An optional description you create for each preset.
+--
+-- * 'pSettings' - Settings for preset
+--
+-- * 'pName' - A name you create for each preset. Each name must be unique within your account.
 preset
-    :: Preset
-preset
-  = Preset'{_pLastUpdated = Nothing,
-            _pSettings = Nothing, _pARN = Nothing,
+    :: PresetSettings -- ^ 'pSettings'
+    -> Text -- ^ 'pName'
+    -> Preset
+preset pSettings_ pName_
+  = Preset'{_pLastUpdated = Nothing, _pARN = Nothing,
             _pCreatedAt = Nothing, _pCategory = Nothing,
-            _pName = Nothing, _pType = Nothing,
-            _pDescription = Nothing}
+            _pType = Nothing, _pDescription = Nothing,
+            _pSettings = pSettings_, _pName = pName_}
 
 -- | The timestamp in epoch seconds when the preset was last updated.
 pLastUpdated :: Lens' Preset (Maybe UTCTime)
 pLastUpdated = lens _pLastUpdated (\ s a -> s{_pLastUpdated = a}) . mapping _Time
-
--- | Undocumented member.
-pSettings :: Lens' Preset (Maybe PresetSettings)
-pSettings = lens _pSettings (\ s a -> s{_pSettings = a})
 
 -- | An identifier for this resource that is unique within all of AWS.
 pARN :: Lens' Preset (Maybe Text)
@@ -83,10 +79,6 @@ pCreatedAt = lens _pCreatedAt (\ s a -> s{_pCreatedAt = a}) . mapping _Time
 pCategory :: Lens' Preset (Maybe Text)
 pCategory = lens _pCategory (\ s a -> s{_pCategory = a})
 
--- | A name you create for each preset. Each name must be unique within your account.
-pName :: Lens' Preset (Maybe Text)
-pName = lens _pName (\ s a -> s{_pName = a})
-
 -- | A preset can be of two types: system or custom. System or built-in preset can't be modified or deleted by the user.
 pType :: Lens' Preset (Maybe Type)
 pType = lens _pType (\ s a -> s{_pType = a})
@@ -95,18 +87,26 @@ pType = lens _pType (\ s a -> s{_pType = a})
 pDescription :: Lens' Preset (Maybe Text)
 pDescription = lens _pDescription (\ s a -> s{_pDescription = a})
 
+-- | Settings for preset
+pSettings :: Lens' Preset PresetSettings
+pSettings = lens _pSettings (\ s a -> s{_pSettings = a})
+
+-- | A name you create for each preset. Each name must be unique within your account.
+pName :: Lens' Preset Text
+pName = lens _pName (\ s a -> s{_pName = a})
+
 instance FromJSON Preset where
         parseJSON
           = withObject "Preset"
               (\ x ->
                  Preset' <$>
-                   (x .:? "lastUpdated") <*> (x .:? "settings") <*>
-                     (x .:? "arn")
-                     <*> (x .:? "createdAt")
+                   (x .:? "lastUpdated") <*> (x .:? "arn") <*>
+                     (x .:? "createdAt")
                      <*> (x .:? "category")
-                     <*> (x .:? "name")
                      <*> (x .:? "type")
-                     <*> (x .:? "description"))
+                     <*> (x .:? "description")
+                     <*> (x .: "settings")
+                     <*> (x .: "name"))
 
 instance Hashable Preset where
 

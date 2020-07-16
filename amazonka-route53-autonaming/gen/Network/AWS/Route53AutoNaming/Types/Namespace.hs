@@ -41,7 +41,7 @@ data Namespace = Namespace'{_nARN :: !(Maybe Text),
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'nARN' - The Amazon Resource Name (ARN) that Route 53 assigns to the namespace when you create it.
+-- * 'nARN' - The Amazon Resource Name (ARN) that AWS Cloud Map assigns to the namespace when you create it.
 --
 -- * 'nCreatorRequestId' - A unique string that identifies the request and that allows failed requests to be retried without the risk of executing an operation twice. 
 --
@@ -53,7 +53,7 @@ data Namespace = Namespace'{_nARN :: !(Maybe Text),
 --
 -- * 'nId' - The ID of a namespace.
 --
--- * 'nType' - The type of the namespace. Valid values are @DNS_PUBLIC@ and @DNS_PRIVATE@ .
+-- * 'nType' - The type of the namespace. The methods for discovering instances depends on the value that you specify:     * @HTTP@ : Instances can be discovered only programmatically, using the AWS Cloud Map @DiscoverInstances@ API.     * @DNS_PUBLIC@ : Instances can be discovered using public DNS queries and using the @DiscoverInstances@ API.     * @DNS_PRIVATE@ : Instances can be discovered using DNS queries in VPCs and using the @DiscoverInstances@ API.
 --
 -- * 'nDescription' - The description that you specify for the namespace when you create it.
 --
@@ -67,7 +67,7 @@ namespace
                _nId = Nothing, _nType = Nothing,
                _nDescription = Nothing, _nProperties = Nothing}
 
--- | The Amazon Resource Name (ARN) that Route 53 assigns to the namespace when you create it.
+-- | The Amazon Resource Name (ARN) that AWS Cloud Map assigns to the namespace when you create it.
 nARN :: Lens' Namespace (Maybe Text)
 nARN = lens _nARN (\ s a -> s{_nARN = a})
 
@@ -91,7 +91,7 @@ nName = lens _nName (\ s a -> s{_nName = a})
 nId :: Lens' Namespace (Maybe Text)
 nId = lens _nId (\ s a -> s{_nId = a})
 
--- | The type of the namespace. Valid values are @DNS_PUBLIC@ and @DNS_PRIVATE@ .
+-- | The type of the namespace. The methods for discovering instances depends on the value that you specify:     * @HTTP@ : Instances can be discovered only programmatically, using the AWS Cloud Map @DiscoverInstances@ API.     * @DNS_PUBLIC@ : Instances can be discovered using public DNS queries and using the @DiscoverInstances@ API.     * @DNS_PRIVATE@ : Instances can be discovered using DNS queries in VPCs and using the @DiscoverInstances@ API.
 nType :: Lens' Namespace (Maybe NamespaceType)
 nType = lens _nType (\ s a -> s{_nType = a})
 

@@ -21,42 +21,44 @@ import Network.AWS.Lens
 import Network.AWS.Pinpoint.Types.DimensionType
 import Network.AWS.Prelude
 
--- | Dimension specification of a segment.
+-- | Specifies the dimension type and values for a segment dimension.
+--
+--
 --
 -- /See:/ 'setDimension' smart constructor.
-data SetDimension = SetDimension'{_sdValues ::
-                                  !(Maybe [Text]),
-                                  _sdDimensionType :: !(Maybe DimensionType)}
+data SetDimension = SetDimension'{_sdDimensionType ::
+                                  !(Maybe DimensionType),
+                                  _sdValues :: ![Text]}
                       deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'SetDimension' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'sdValues' - The criteria values for the segment dimension. Endpoints with matching attribute values are included or excluded from the segment, depending on the setting for Type.
+-- * 'sdDimensionType' - The type of segment dimension to use. Valid values are: INCLUSIVE, endpoints that match the criteria are included in the segment; and, EXCLUSIVE, endpoints that match the criteria are excluded from the segment.
 --
--- * 'sdDimensionType' - The type of dimension: INCLUSIVE - Endpoints that match the criteria are included in the segment. EXCLUSIVE - Endpoints that match the criteria are excluded from the segment.
+-- * 'sdValues' - The criteria values to use for the segment dimension. Depending on the value of the DimensionType property, endpoints are included or excluded from the segment if their values match the criteria values.
 setDimension
     :: SetDimension
 setDimension
-  = SetDimension'{_sdValues = Nothing,
-                  _sdDimensionType = Nothing}
+  = SetDimension'{_sdDimensionType = Nothing,
+                  _sdValues = mempty}
 
--- | The criteria values for the segment dimension. Endpoints with matching attribute values are included or excluded from the segment, depending on the setting for Type.
-sdValues :: Lens' SetDimension [Text]
-sdValues = lens _sdValues (\ s a -> s{_sdValues = a}) . _Default . _Coerce
-
--- | The type of dimension: INCLUSIVE - Endpoints that match the criteria are included in the segment. EXCLUSIVE - Endpoints that match the criteria are excluded from the segment.
+-- | The type of segment dimension to use. Valid values are: INCLUSIVE, endpoints that match the criteria are included in the segment; and, EXCLUSIVE, endpoints that match the criteria are excluded from the segment.
 sdDimensionType :: Lens' SetDimension (Maybe DimensionType)
 sdDimensionType = lens _sdDimensionType (\ s a -> s{_sdDimensionType = a})
+
+-- | The criteria values to use for the segment dimension. Depending on the value of the DimensionType property, endpoints are included or excluded from the segment if their values match the criteria values.
+sdValues :: Lens' SetDimension [Text]
+sdValues = lens _sdValues (\ s a -> s{_sdValues = a}) . _Coerce
 
 instance FromJSON SetDimension where
         parseJSON
           = withObject "SetDimension"
               (\ x ->
                  SetDimension' <$>
-                   (x .:? "Values" .!= mempty) <*>
-                     (x .:? "DimensionType"))
+                   (x .:? "DimensionType") <*>
+                     (x .:? "Values" .!= mempty))
 
 instance Hashable SetDimension where
 
@@ -66,5 +68,5 @@ instance ToJSON SetDimension where
         toJSON SetDimension'{..}
           = object
               (catMaybes
-                 [("Values" .=) <$> _sdValues,
-                  ("DimensionType" .=) <$> _sdDimensionType])
+                 [("DimensionType" .=) <$> _sdDimensionType,
+                  Just ("Values" .= _sdValues)])

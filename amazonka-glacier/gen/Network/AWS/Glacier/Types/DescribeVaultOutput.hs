@@ -20,7 +20,7 @@ module Network.AWS.Glacier.Types.DescribeVaultOutput where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | Contains the Amazon Glacier response to your request.
+-- | Contains the Amazon S3 Glacier response to your request.
 --
 --
 --
@@ -46,7 +46,7 @@ data DescribeVaultOutput = DescribeVaultOutput'{_dvoVaultName
 --
 -- * 'dvoSizeInBytes' - Total size, in bytes, of the archives in the vault as of the last inventory date. This field will return null if an inventory has not yet run on the vault, for example if you just created the vault.
 --
--- * 'dvoLastInventoryDate' - The Universal Coordinated Time (UTC) date when Amazon Glacier completed the last vault inventory. This value should be a string in the ISO 8601 date format, for example @2012-03-20T17:03:43.221Z@ .
+-- * 'dvoLastInventoryDate' - The Universal Coordinated Time (UTC) date when Amazon S3 Glacier completed the last vault inventory. This value should be a string in the ISO 8601 date format, for example @2012-03-20T17:03:43.221Z@ .
 --
 -- * 'dvoVaultARN' - The Amazon Resource Name (ARN) of the vault.
 --
@@ -70,7 +70,7 @@ dvoVaultName = lens _dvoVaultName (\ s a -> s{_dvoVaultName = a})
 dvoSizeInBytes :: Lens' DescribeVaultOutput (Maybe Integer)
 dvoSizeInBytes = lens _dvoSizeInBytes (\ s a -> s{_dvoSizeInBytes = a})
 
--- | The Universal Coordinated Time (UTC) date when Amazon Glacier completed the last vault inventory. This value should be a string in the ISO 8601 date format, for example @2012-03-20T17:03:43.221Z@ .
+-- | The Universal Coordinated Time (UTC) date when Amazon S3 Glacier completed the last vault inventory. This value should be a string in the ISO 8601 date format, for example @2012-03-20T17:03:43.221Z@ .
 dvoLastInventoryDate :: Lens' DescribeVaultOutput (Maybe Text)
 dvoLastInventoryDate = lens _dvoLastInventoryDate (\ s a -> s{_dvoLastInventoryDate = a})
 

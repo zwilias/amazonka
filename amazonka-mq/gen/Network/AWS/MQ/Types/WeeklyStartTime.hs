@@ -38,7 +38,7 @@ data WeeklyStartTime = WeeklyStartTime'{_wstTimeOfDay
 --
 -- * 'wstTimeZone' - The time zone, UTC by default, in either the Country/City format, or the UTC offset format.
 --
--- * 'wstDayOfWeek' - Required. The day of the week. Possible values: MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY
+-- * 'wstDayOfWeek' - Required. The day of the week.
 weeklyStartTime
     :: WeeklyStartTime
 weeklyStartTime
@@ -53,7 +53,7 @@ wstTimeOfDay = lens _wstTimeOfDay (\ s a -> s{_wstTimeOfDay = a})
 wstTimeZone :: Lens' WeeklyStartTime (Maybe Text)
 wstTimeZone = lens _wstTimeZone (\ s a -> s{_wstTimeZone = a})
 
--- | Required. The day of the week. Possible values: MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY
+-- | Required. The day of the week.
 wstDayOfWeek :: Lens' WeeklyStartTime (Maybe DayOfWeek)
 wstDayOfWeek = lens _wstDayOfWeek (\ s a -> s{_wstDayOfWeek = a})
 

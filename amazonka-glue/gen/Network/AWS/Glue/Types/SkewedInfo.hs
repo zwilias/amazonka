@@ -20,7 +20,7 @@ module Network.AWS.Glue.Types.SkewedInfo where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | Specifies skewed values in a table. Skewed are ones that occur with very high frequency.
+-- | Specifies skewed values in a table. Skewed values are those that occur with very high frequency.
 --
 --
 --

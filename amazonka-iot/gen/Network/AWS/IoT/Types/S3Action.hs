@@ -36,7 +36,7 @@ data S3Action = S3Action'{_sCannedACL ::
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'sCannedACL' - The Amazon S3 canned ACL that controls access to the object identified by the object key. For more information, see <http://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#canned-acl S3 canned ACLs> .
+-- * 'sCannedACL' - The Amazon S3 canned ACL that controls access to the object identified by the object key. For more information, see <https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#canned-acl S3 canned ACLs> .
 --
 -- * 'sRoleARN' - The ARN of the IAM role that grants access.
 --
@@ -53,7 +53,7 @@ s3Action pRoleARN_ pBucketName_ pKey_
               _sRoleARN = pRoleARN_, _sBucketName = pBucketName_,
               _sKey = pKey_}
 
--- | The Amazon S3 canned ACL that controls access to the object identified by the object key. For more information, see <http://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#canned-acl S3 canned ACLs> .
+-- | The Amazon S3 canned ACL that controls access to the object identified by the object key. For more information, see <https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#canned-acl S3 canned ACLs> .
 sCannedACL :: Lens' S3Action (Maybe CannedAccessControlList)
 sCannedACL = lens _sCannedACL (\ s a -> s{_sCannedACL = a})
 

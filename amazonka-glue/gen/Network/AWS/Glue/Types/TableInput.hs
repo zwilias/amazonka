@@ -22,7 +22,7 @@ import Network.AWS.Glue.Types.StorageDescriptor
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | Structure used to create or update the table.
+-- | A structure used to define a table.
 --
 --
 --
@@ -47,29 +47,29 @@ data TableInput = TableInput'{_tiRetention ::
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'tiRetention' - Retention time for this table.
+-- * 'tiRetention' - The retention time for this table.
 --
 -- * 'tiTableType' - The type of this table (@EXTERNAL_TABLE@ , @VIRTUAL_VIEW@ , etc.).
 --
--- * 'tiOwner' - Owner of the table.
+-- * 'tiOwner' - The table owner.
 --
 -- * 'tiViewOriginalText' - If the table is a view, the original text of the view; otherwise @null@ .
 --
 -- * 'tiViewExpandedText' - If the table is a view, the expanded text of the view; otherwise @null@ .
 --
--- * 'tiLastAnalyzedTime' - Last time column statistics were computed for this table.
+-- * 'tiLastAnalyzedTime' - The last time that column statistics were computed for this table.
 --
 -- * 'tiStorageDescriptor' - A storage descriptor containing information about the physical storage of this table.
 --
--- * 'tiParameters' - Properties associated with this table, as a list of key-value pairs.
+-- * 'tiParameters' - These key-value pairs define properties associated with the table.
 --
--- * 'tiLastAccessTime' - Last time the table was accessed.
+-- * 'tiLastAccessTime' - The last time that the table was accessed.
 --
--- * 'tiDescription' - Description of the table.
+-- * 'tiDescription' - A description of the table.
 --
--- * 'tiPartitionKeys' - A list of columns by which the table is partitioned. Only primitive types are supported as partition keys.
+-- * 'tiPartitionKeys' - A list of columns by which the table is partitioned. Only primitive types are supported as partition keys. When you create a table used by Amazon Athena, and you do not specify any @partitionKeys@ , you must at least set the value of @partitionKeys@ to an empty list. For example: @"PartitionKeys": []@ 
 --
--- * 'tiName' - Name of the table. For Hive compatibility, this is folded to lowercase when it is stored.
+-- * 'tiName' - The table name. For Hive compatibility, this is folded to lowercase when it is stored.
 tableInput
     :: Text -- ^ 'tiName'
     -> TableInput
@@ -84,7 +84,7 @@ tableInput pName_
                 _tiDescription = Nothing, _tiPartitionKeys = Nothing,
                 _tiName = pName_}
 
--- | Retention time for this table.
+-- | The retention time for this table.
 tiRetention :: Lens' TableInput (Maybe Natural)
 tiRetention = lens _tiRetention (\ s a -> s{_tiRetention = a}) . mapping _Nat
 
@@ -92,7 +92,7 @@ tiRetention = lens _tiRetention (\ s a -> s{_tiRetention = a}) . mapping _Nat
 tiTableType :: Lens' TableInput (Maybe Text)
 tiTableType = lens _tiTableType (\ s a -> s{_tiTableType = a})
 
--- | Owner of the table.
+-- | The table owner.
 tiOwner :: Lens' TableInput (Maybe Text)
 tiOwner = lens _tiOwner (\ s a -> s{_tiOwner = a})
 
@@ -104,7 +104,7 @@ tiViewOriginalText = lens _tiViewOriginalText (\ s a -> s{_tiViewOriginalText = 
 tiViewExpandedText :: Lens' TableInput (Maybe Text)
 tiViewExpandedText = lens _tiViewExpandedText (\ s a -> s{_tiViewExpandedText = a})
 
--- | Last time column statistics were computed for this table.
+-- | The last time that column statistics were computed for this table.
 tiLastAnalyzedTime :: Lens' TableInput (Maybe UTCTime)
 tiLastAnalyzedTime = lens _tiLastAnalyzedTime (\ s a -> s{_tiLastAnalyzedTime = a}) . mapping _Time
 
@@ -112,23 +112,23 @@ tiLastAnalyzedTime = lens _tiLastAnalyzedTime (\ s a -> s{_tiLastAnalyzedTime = 
 tiStorageDescriptor :: Lens' TableInput (Maybe StorageDescriptor)
 tiStorageDescriptor = lens _tiStorageDescriptor (\ s a -> s{_tiStorageDescriptor = a})
 
--- | Properties associated with this table, as a list of key-value pairs.
+-- | These key-value pairs define properties associated with the table.
 tiParameters :: Lens' TableInput (HashMap Text Text)
 tiParameters = lens _tiParameters (\ s a -> s{_tiParameters = a}) . _Default . _Map
 
--- | Last time the table was accessed.
+-- | The last time that the table was accessed.
 tiLastAccessTime :: Lens' TableInput (Maybe UTCTime)
 tiLastAccessTime = lens _tiLastAccessTime (\ s a -> s{_tiLastAccessTime = a}) . mapping _Time
 
--- | Description of the table.
+-- | A description of the table.
 tiDescription :: Lens' TableInput (Maybe Text)
 tiDescription = lens _tiDescription (\ s a -> s{_tiDescription = a})
 
--- | A list of columns by which the table is partitioned. Only primitive types are supported as partition keys.
+-- | A list of columns by which the table is partitioned. Only primitive types are supported as partition keys. When you create a table used by Amazon Athena, and you do not specify any @partitionKeys@ , you must at least set the value of @partitionKeys@ to an empty list. For example: @"PartitionKeys": []@ 
 tiPartitionKeys :: Lens' TableInput [Column]
 tiPartitionKeys = lens _tiPartitionKeys (\ s a -> s{_tiPartitionKeys = a}) . _Default . _Coerce
 
--- | Name of the table. For Hive compatibility, this is folded to lowercase when it is stored.
+-- | The table name. For Hive compatibility, this is folded to lowercase when it is stored.
 tiName :: Lens' TableInput Text
 tiName = lens _tiName (\ s a -> s{_tiName = a})
 

@@ -21,6 +21,8 @@
 -- Gets the logging options.
 --
 --
+-- NOTE: use of this command is not recommended. Use @GetV2LoggingOptions@ instead.
+--
 module Network.AWS.IoT.GetLoggingOptions
     (
     -- * Creating a Request

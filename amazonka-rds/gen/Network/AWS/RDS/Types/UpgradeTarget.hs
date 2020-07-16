@@ -43,7 +43,7 @@ data UpgradeTarget = UpgradeTarget'{_utEngineVersion
 --
 -- * 'utEngine' - The name of the upgrade target database engine.
 --
--- * 'utAutoUpgrade' - A value that indicates whether the target version is applied to any source DB instances that have AutoMinorVersionUpgrade set to true.
+-- * 'utAutoUpgrade' - A value that indicates whether the target version is applied to any source DB instances that have @AutoMinorVersionUpgrade@ set to true.
 --
 -- * 'utDescription' - The version of the database engine that a DB instance can be upgraded to.
 upgradeTarget
@@ -66,7 +66,7 @@ utIsMajorVersionUpgrade = lens _utIsMajorVersionUpgrade (\ s a -> s{_utIsMajorVe
 utEngine :: Lens' UpgradeTarget (Maybe Text)
 utEngine = lens _utEngine (\ s a -> s{_utEngine = a})
 
--- | A value that indicates whether the target version is applied to any source DB instances that have AutoMinorVersionUpgrade set to true.
+-- | A value that indicates whether the target version is applied to any source DB instances that have @AutoMinorVersionUpgrade@ set to true.
 utAutoUpgrade :: Lens' UpgradeTarget (Maybe Bool)
 utAutoUpgrade = lens _utAutoUpgrade (\ s a -> s{_utAutoUpgrade = a})
 

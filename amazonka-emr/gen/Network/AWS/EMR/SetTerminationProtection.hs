@@ -25,7 +25,7 @@
 --
 -- To terminate a cluster that has been locked by setting @SetTerminationProtection@ to @true@ , you must first unlock the job flow by a subsequent call to @SetTerminationProtection@ in which you set the value to @false@ . 
 --
--- For more information, see<http://docs.aws.amazon.com/emr/latest/ManagementGuide/UsingEMR_TerminationProtection.html Managing Cluster Termination> in the /Amazon EMR Management Guide/ . 
+-- For more information, see<https://docs.aws.amazon.com/emr/latest/ManagementGuide/UsingEMR_TerminationProtection.html Managing Cluster Termination> in the /Amazon EMR Management Guide/ . 
 --
 module Network.AWS.EMR.SetTerminationProtection
     (

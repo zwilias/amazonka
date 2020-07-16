@@ -21,7 +21,7 @@
 -- Generates and sends a bounce message to the sender of an email you received through Amazon SES. You can only use this API on an email up to 24 hours after you receive it.
 --
 --
--- For information about receiving email through Amazon SES, see the <http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email.html Amazon SES Developer Guide> .
+-- For information about receiving email through Amazon SES, see the <https://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email.html Amazon SES Developer Guide> .
 --
 -- You can execute this operation no more than once per second.
 --
@@ -76,7 +76,7 @@ data SendBounce = SendBounce'{_sbMessageDsn ::
 --
 -- * 'sbExplanation' - Human-readable text for the bounce message to explain the failure. If not specified, the text will be auto-generated based on the bounced recipient information.
 --
--- * 'sbBounceSenderARN' - This parameter is used only for sending authorization. It is the ARN of the identity that is associated with the sending authorization policy that permits you to use the address in the "From" header of the bounce. For more information about sending authorization, see the <http://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html Amazon SES Developer Guide> .
+-- * 'sbBounceSenderARN' - This parameter is used only for sending authorization. It is the ARN of the identity that is associated with the sending authorization policy that permits you to use the address in the "From" header of the bounce. For more information about sending authorization, see the <https://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html Amazon SES Developer Guide> .
 --
 -- * 'sbOriginalMessageId' - The message ID of the message to be bounced.
 --
@@ -103,7 +103,7 @@ sbMessageDsn = lens _sbMessageDsn (\ s a -> s{_sbMessageDsn = a})
 sbExplanation :: Lens' SendBounce (Maybe Text)
 sbExplanation = lens _sbExplanation (\ s a -> s{_sbExplanation = a})
 
--- | This parameter is used only for sending authorization. It is the ARN of the identity that is associated with the sending authorization policy that permits you to use the address in the "From" header of the bounce. For more information about sending authorization, see the <http://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html Amazon SES Developer Guide> .
+-- | This parameter is used only for sending authorization. It is the ARN of the identity that is associated with the sending authorization policy that permits you to use the address in the "From" header of the bounce. For more information about sending authorization, see the <https://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html Amazon SES Developer Guide> .
 sbBounceSenderARN :: Lens' SendBounce (Maybe Text)
 sbBounceSenderARN = lens _sbBounceSenderARN (\ s a -> s{_sbBounceSenderARN = a})
 

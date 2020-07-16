@@ -35,6 +35,7 @@ module Network.AWS.MediaPackage.DescribeChannel
     , dcrsARN
     , dcrsId
     , dcrsDescription
+    , dcrsTags
     , dcrsResponseStatus
     ) where
 
@@ -74,6 +75,7 @@ instance AWSRequest DescribeChannel where
                    (x .?> "hlsIngest") <*> (x .?> "arn") <*>
                      (x .?> "id")
                      <*> (x .?> "description")
+                     <*> (x .?> "tags" .!@ mempty)
                      <*> (pure (fromEnum s)))
 
 instance Hashable DescribeChannel where
@@ -103,6 +105,9 @@ data DescribeChannelResponse = DescribeChannelResponse'{_dcrsHlsIngest
                                                         !(Maybe Text),
                                                         _dcrsDescription ::
                                                         !(Maybe Text),
+                                                        _dcrsTags ::
+                                                        !(Maybe
+                                                            (Map Text Text)),
                                                         _dcrsResponseStatus ::
                                                         !Int}
                                  deriving (Eq, Read, Show, Data, Typeable,
@@ -120,6 +125,8 @@ data DescribeChannelResponse = DescribeChannelResponse'{_dcrsHlsIngest
 --
 -- * 'dcrsDescription' - A short text description of the Channel.
 --
+-- * 'dcrsTags' - Undocumented member.
+--
 -- * 'dcrsResponseStatus' - -- | The response status code.
 describeChannelResponse
     :: Int -- ^ 'dcrsResponseStatus'
@@ -127,7 +134,7 @@ describeChannelResponse
 describeChannelResponse pResponseStatus_
   = DescribeChannelResponse'{_dcrsHlsIngest = Nothing,
                              _dcrsARN = Nothing, _dcrsId = Nothing,
-                             _dcrsDescription = Nothing,
+                             _dcrsDescription = Nothing, _dcrsTags = Nothing,
                              _dcrsResponseStatus = pResponseStatus_}
 
 -- | Undocumented member.
@@ -145,6 +152,10 @@ dcrsId = lens _dcrsId (\ s a -> s{_dcrsId = a})
 -- | A short text description of the Channel.
 dcrsDescription :: Lens' DescribeChannelResponse (Maybe Text)
 dcrsDescription = lens _dcrsDescription (\ s a -> s{_dcrsDescription = a})
+
+-- | Undocumented member.
+dcrsTags :: Lens' DescribeChannelResponse (HashMap Text Text)
+dcrsTags = lens _dcrsTags (\ s a -> s{_dcrsTags = a}) . _Default . _Map
 
 -- | -- | The response status code.
 dcrsResponseStatus :: Lens' DescribeChannelResponse Int

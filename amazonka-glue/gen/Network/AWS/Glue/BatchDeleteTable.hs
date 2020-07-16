@@ -57,9 +57,9 @@ data BatchDeleteTable = BatchDeleteTable'{_bdtCatalogId
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'bdtCatalogId' - The ID of the Data Catalog where the table resides. If none is supplied, the AWS account ID is used by default.
+-- * 'bdtCatalogId' - The ID of the Data Catalog where the table resides. If none is provided, the AWS account ID is used by default.
 --
--- * 'bdtDatabaseName' - The name of the catalog database where the tables to delete reside. For Hive compatibility, this name is entirely lowercase.
+-- * 'bdtDatabaseName' - The name of the catalog database in which the tables to delete reside. For Hive compatibility, this name is entirely lowercase.
 --
 -- * 'bdtTablesToDelete' - A list of the table to delete.
 batchDeleteTable
@@ -70,11 +70,11 @@ batchDeleteTable pDatabaseName_
                       _bdtDatabaseName = pDatabaseName_,
                       _bdtTablesToDelete = mempty}
 
--- | The ID of the Data Catalog where the table resides. If none is supplied, the AWS account ID is used by default.
+-- | The ID of the Data Catalog where the table resides. If none is provided, the AWS account ID is used by default.
 bdtCatalogId :: Lens' BatchDeleteTable (Maybe Text)
 bdtCatalogId = lens _bdtCatalogId (\ s a -> s{_bdtCatalogId = a})
 
--- | The name of the catalog database where the tables to delete reside. For Hive compatibility, this name is entirely lowercase.
+-- | The name of the catalog database in which the tables to delete reside. For Hive compatibility, this name is entirely lowercase.
 bdtDatabaseName :: Lens' BatchDeleteTable Text
 bdtDatabaseName = lens _bdtDatabaseName (\ s a -> s{_bdtDatabaseName = a})
 

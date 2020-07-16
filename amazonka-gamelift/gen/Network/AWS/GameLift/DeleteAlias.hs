@@ -21,8 +21,6 @@
 -- Deletes an alias. This action removes all record of the alias. Game clients attempting to access a server process using the deleted alias receive an error. To delete an alias, specify the alias ID to be deleted.
 --
 --
--- Alias-related operations include:
---
 --     * 'CreateAlias' 
 --
 --     * 'ListAliases' 
@@ -70,14 +68,14 @@ newtype DeleteAlias = DeleteAlias'{_daAliasId ::
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'daAliasId' - Unique identifier for a fleet alias. Specify the alias you want to delete.
+-- * 'daAliasId' - A unique identifier of the alias that you want to delete. You can use either the alias ID or ARN value.
 deleteAlias
     :: Text -- ^ 'daAliasId'
     -> DeleteAlias
 deleteAlias pAliasId_
   = DeleteAlias'{_daAliasId = pAliasId_}
 
--- | Unique identifier for a fleet alias. Specify the alias you want to delete.
+-- | A unique identifier of the alias that you want to delete. You can use either the alias ID or ARN value.
 daAliasId :: Lens' DeleteAlias Text
 daAliasId = lens _daAliasId (\ s a -> s{_daAliasId = a})
 

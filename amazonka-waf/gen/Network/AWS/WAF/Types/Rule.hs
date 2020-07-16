@@ -43,7 +43,7 @@ data Rule = Rule'{_rMetricName :: !(Maybe Text),
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'rMetricName' - A friendly name or description for the metrics for this @Rule@ . The name can contain only alphanumeric characters (A-Z, a-z, 0-9); the name can't contain whitespace. You can't change @MetricName@ after you create the @Rule@ .
+-- * 'rMetricName' - A friendly name or description for the metrics for this @Rule@ . The name can contain only alphanumeric characters (A-Z, a-z, 0-9), with maximum length 128 and minimum length one. It can't contain whitespace or metric names reserved for AWS WAF, including "All" and "Default_Action." You can't change @MetricName@ after you create the @Rule@ .
 --
 -- * 'rName' - The friendly name or description for the @Rule@ . You can't change the name of a @Rule@ after you create it.
 --
@@ -57,7 +57,7 @@ rule pRuleId_
   = Rule'{_rMetricName = Nothing, _rName = Nothing,
           _rRuleId = pRuleId_, _rPredicates = mempty}
 
--- | A friendly name or description for the metrics for this @Rule@ . The name can contain only alphanumeric characters (A-Z, a-z, 0-9); the name can't contain whitespace. You can't change @MetricName@ after you create the @Rule@ .
+-- | A friendly name or description for the metrics for this @Rule@ . The name can contain only alphanumeric characters (A-Z, a-z, 0-9), with maximum length 128 and minimum length one. It can't contain whitespace or metric names reserved for AWS WAF, including "All" and "Default_Action." You can't change @MetricName@ after you create the @Rule@ .
 rMetricName :: Lens' Rule (Maybe Text)
 rMetricName = lens _rMetricName (\ s a -> s{_rMetricName = a})
 

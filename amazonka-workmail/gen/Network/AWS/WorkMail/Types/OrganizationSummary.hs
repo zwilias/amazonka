@@ -20,7 +20,7 @@ module Network.AWS.WorkMail.Types.OrganizationSummary where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | The brief overview associated with an organization.
+-- | The representation of an organization.
 --
 --
 --

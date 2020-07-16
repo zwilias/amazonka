@@ -56,7 +56,7 @@ data DescribeClusters = DescribeClusters'{_dcInclude
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dcInclude' - Additional information about your clusters to be separated by launch type, including:     * runningEC2TasksCount     * runningFargateTasksCount     * pendingEC2TasksCount     * pendingFargateTasksCount     * activeEC2ServiceCount     * activeFargateServiceCount     * drainingEC2ServiceCount     * drainingFargateServiceCount
+-- * 'dcInclude' - Whether to include additional information about your clusters in the response. If this field is omitted, the attachments, statistics, and tags are not included. If @ATTACHMENTS@ is specified, the attachments for the container instances or tasks within the cluster are included. If @SETTINGS@ is specified, the settings for the cluster are included. If @STATISTICS@ is specified, the following additional information, separated by launch type, is included:     * runningEC2TasksCount     * runningFargateTasksCount     * pendingEC2TasksCount     * pendingFargateTasksCount     * activeEC2ServiceCount     * activeFargateServiceCount     * drainingEC2ServiceCount     * drainingFargateServiceCount If @TAGS@ is specified, the metadata tags associated with the cluster are included.
 --
 -- * 'dcClusters' - A list of up to 100 cluster names or full cluster Amazon Resource Name (ARN) entries. If you do not specify a cluster, the default cluster is assumed.
 describeClusters
@@ -65,7 +65,7 @@ describeClusters
   = DescribeClusters'{_dcInclude = Nothing,
                       _dcClusters = Nothing}
 
--- | Additional information about your clusters to be separated by launch type, including:     * runningEC2TasksCount     * runningFargateTasksCount     * pendingEC2TasksCount     * pendingFargateTasksCount     * activeEC2ServiceCount     * activeFargateServiceCount     * drainingEC2ServiceCount     * drainingFargateServiceCount
+-- | Whether to include additional information about your clusters in the response. If this field is omitted, the attachments, statistics, and tags are not included. If @ATTACHMENTS@ is specified, the attachments for the container instances or tasks within the cluster are included. If @SETTINGS@ is specified, the settings for the cluster are included. If @STATISTICS@ is specified, the following additional information, separated by launch type, is included:     * runningEC2TasksCount     * runningFargateTasksCount     * pendingEC2TasksCount     * pendingFargateTasksCount     * activeEC2ServiceCount     * activeFargateServiceCount     * drainingEC2ServiceCount     * drainingFargateServiceCount If @TAGS@ is specified, the metadata tags associated with the cluster are included.
 dcInclude :: Lens' DescribeClusters [ClusterField]
 dcInclude = lens _dcInclude (\ s a -> s{_dcInclude = a}) . _Default . _Coerce
 

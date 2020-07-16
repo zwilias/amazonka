@@ -60,7 +60,7 @@ data CreateGroupCertificateAuthority = CreateGroupCertificateAuthority'{_cgcaAmz
 --
 -- * 'cgcaAmznClientToken' - A client token used to correlate requests and responses.
 --
--- * 'cgcaGroupId' - The ID of the AWS Greengrass group.
+-- * 'cgcaGroupId' - The ID of the Greengrass group.
 createGroupCertificateAuthority
     :: Text -- ^ 'cgcaGroupId'
     -> CreateGroupCertificateAuthority
@@ -73,7 +73,7 @@ createGroupCertificateAuthority pGroupId_
 cgcaAmznClientToken :: Lens' CreateGroupCertificateAuthority (Maybe Text)
 cgcaAmznClientToken = lens _cgcaAmznClientToken (\ s a -> s{_cgcaAmznClientToken = a})
 
--- | The ID of the AWS Greengrass group.
+-- | The ID of the Greengrass group.
 cgcaGroupId :: Lens' CreateGroupCertificateAuthority Text
 cgcaGroupId = lens _cgcaGroupId (\ s a -> s{_cgcaGroupId = a})
 

@@ -24,7 +24,7 @@ import Network.AWS.MediaLive.Types.HlsMediaStoreSettings
 import Network.AWS.MediaLive.Types.HlsWebdavSettings
 import Network.AWS.Prelude
 
--- | Placeholder documentation for HlsCdnSettings
+-- | Hls Cdn Settings
 --
 -- /See:/ 'hlsCdnSettings' smart constructor.
 data HlsCdnSettings = HlsCdnSettings'{_hcsHlsAkamaiSettings

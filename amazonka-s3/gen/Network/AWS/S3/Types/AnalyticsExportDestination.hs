@@ -22,7 +22,11 @@ import Network.AWS.Prelude
 import Network.AWS.S3.Internal
 import Network.AWS.S3.Types.AnalyticsS3BucketDestination
 
--- | /See:/ 'analyticsExportDestination' smart constructor.
+-- | Where to publish the analytics results.
+--
+--
+--
+-- /See:/ 'analyticsExportDestination' smart constructor.
 newtype AnalyticsExportDestination = AnalyticsExportDestination'{_aedS3BucketDestination
                                                                  ::
                                                                  AnalyticsS3BucketDestination}

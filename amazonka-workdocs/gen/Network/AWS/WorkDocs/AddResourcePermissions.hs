@@ -65,7 +65,7 @@ data AddResourcePermissions = AddResourcePermissions'{_arpNotificationOptions
 --
 -- * 'arpNotificationOptions' - The notification options.
 --
--- * 'arpAuthenticationToken' - Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.
+-- * 'arpAuthenticationToken' - Amazon WorkDocs authentication token. Not required when using AWS administrator credentials to access the API.
 --
 -- * 'arpResourceId' - The ID of the resource.
 --
@@ -84,7 +84,7 @@ addResourcePermissions pResourceId_
 arpNotificationOptions :: Lens' AddResourcePermissions (Maybe NotificationOptions)
 arpNotificationOptions = lens _arpNotificationOptions (\ s a -> s{_arpNotificationOptions = a})
 
--- | Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.
+-- | Amazon WorkDocs authentication token. Not required when using AWS administrator credentials to access the API.
 arpAuthenticationToken :: Lens' AddResourcePermissions (Maybe Text)
 arpAuthenticationToken = lens _arpAuthenticationToken (\ s a -> s{_arpAuthenticationToken = a}) . mapping _Sensitive
 

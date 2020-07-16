@@ -18,7 +18,53 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Set the logging parameters for a bucket and to specify permissions for who can view and modify the logging parameters. To set the logging status of a bucket, you must be the bucket owner.
+-- Set the logging parameters for a bucket and to specify permissions for who can view and modify the logging parameters. All logs are saved to buckets in the same AWS Region as the source bucket. To set the logging status of a bucket, you must be the bucket owner.
+--
+--
+-- The bucket owner is automatically granted FULL_CONTROL to all logs. You use the @Grantee@ request element to grant access to other people. The @Permissions@ request element specifies the kind of access the grantee has to the logs.
+--
+-- __Grantee Values__ 
+--
+-- You can specify the person (grantee) to whom you're assigning access rights (using request elements) in the following ways:
+--
+--     * By the person's ID:
+--
+-- @<Grantee xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="CanonicalUser"><ID><>ID<></ID><DisplayName><>GranteesEmail<></DisplayName> </Grantee>@ 
+--
+-- DisplayName is optional and ignored in the request.
+--
+--     * By Email address:
+--
+-- @<Grantee xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="AmazonCustomerByEmail"><EmailAddress><>Grantees@email.com<></EmailAddress></Grantee>@ 
+--
+-- The grantee is resolved to the CanonicalUser and, in a response to a GET Object acl request, appears as the CanonicalUser.
+--
+--     * By URI:
+--
+-- @<Grantee xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="Group"><URI><>http://acs.amazonaws.com/groups/global/AuthenticatedUsers<></URI></Grantee>@ 
+--
+--
+--
+-- To enable logging, you use LoggingEnabled and its children request elements. To disable logging, you use an empty BucketLoggingStatus request element:
+--
+-- @<BucketLoggingStatus xmlns="http://doc.s3.amazonaws.com/2006-03-01" />@ 
+--
+-- For more information about server access logging, see <https://docs.aws.amazon.com/AmazonS3/latest/dev/ServerLogs.html Server Access Logging> . 
+--
+-- For more information about creating a bucket, see 'CreateBucket' . For more information about returning the logging status of a bucket, see 'GetBucketLogging' .
+--
+-- The following operations are related to @PutBucketLogging@ :
+--
+--     * 'PutObject' 
+--
+--     * 'DeleteBucket' 
+--
+--     * 'CreateBucket' 
+--
+--     * 'GetBucketLogging' 
+--
+--
+--
 module Network.AWS.S3.PutBucketLogging
     (
     -- * Creating a Request
@@ -53,11 +99,11 @@ data PutBucketLogging = PutBucketLogging'{_pblContentMD5
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'pblContentMD5' - Undocumented member.
+-- * 'pblContentMD5' - The MD5 hash of the @PutBucketLogging@ request body.
 --
--- * 'pblBucket' - Undocumented member.
+-- * 'pblBucket' - The name of the bucket for which to set the logging parameters.
 --
--- * 'pblBucketLoggingStatus' - Undocumented member.
+-- * 'pblBucketLoggingStatus' - Container for logging status information.
 putBucketLogging
     :: BucketName -- ^ 'pblBucket'
     -> BucketLoggingStatus -- ^ 'pblBucketLoggingStatus'
@@ -67,15 +113,15 @@ putBucketLogging pBucket_ pBucketLoggingStatus_
                       _pblBucket = pBucket_,
                       _pblBucketLoggingStatus = pBucketLoggingStatus_}
 
--- | Undocumented member.
+-- | The MD5 hash of the @PutBucketLogging@ request body.
 pblContentMD5 :: Lens' PutBucketLogging (Maybe Text)
 pblContentMD5 = lens _pblContentMD5 (\ s a -> s{_pblContentMD5 = a})
 
--- | Undocumented member.
+-- | The name of the bucket for which to set the logging parameters.
 pblBucket :: Lens' PutBucketLogging BucketName
 pblBucket = lens _pblBucket (\ s a -> s{_pblBucket = a})
 
--- | Undocumented member.
+-- | Container for logging status information.
 pblBucketLoggingStatus :: Lens' PutBucketLogging BucketLoggingStatus
 pblBucketLoggingStatus = lens _pblBucketLoggingStatus (\ s a -> s{_pblBucketLoggingStatus = a})
 

@@ -20,7 +20,11 @@ module Network.AWS.StorageGateway.Types.Tag where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | /See:/ 'tag' smart constructor.
+-- | A key-value pair that helps you manage, filter, and search for your resource. Allowed characters: letters, white space, and numbers, representable in UTF-8, and the following characters: + - = . _ : /
+--
+--
+--
+-- /See:/ 'tag' smart constructor.
 data Tag = Tag'{_tagKey :: !Text, _tagValue :: !Text}
              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -28,9 +32,9 @@ data Tag = Tag'{_tagKey :: !Text, _tagValue :: !Text}
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'tagKey' - Undocumented member.
+-- * 'tagKey' - Tag key (String). The key can't start with aws:. 
 --
--- * 'tagValue' - Undocumented member.
+-- * 'tagValue' - Value of the tag key.
 tag
     :: Text -- ^ 'tagKey'
     -> Text -- ^ 'tagValue'
@@ -38,11 +42,11 @@ tag
 tag pKey_ pValue_
   = Tag'{_tagKey = pKey_, _tagValue = pValue_}
 
--- | Undocumented member.
+-- | Tag key (String). The key can't start with aws:. 
 tagKey :: Lens' Tag Text
 tagKey = lens _tagKey (\ s a -> s{_tagKey = a})
 
--- | Undocumented member.
+-- | Value of the tag key.
 tagValue :: Lens' Tag Text
 tagValue = lens _tagValue (\ s a -> s{_tagValue = a})
 

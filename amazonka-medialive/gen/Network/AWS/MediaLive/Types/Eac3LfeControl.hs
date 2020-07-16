@@ -27,7 +27,7 @@ module Network.AWS.MediaLive.Types.Eac3LfeControl (
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | Placeholder documentation for Eac3LfeControl
+-- | Eac3 Lfe Control
 data Eac3LfeControl = Eac3LfeControl' (CI Text)
                         deriving (Eq, Ord, Read, Show, Data, Typeable,
                                   Generic)

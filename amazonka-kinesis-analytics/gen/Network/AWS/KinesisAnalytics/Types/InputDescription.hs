@@ -26,7 +26,7 @@ import Network.AWS.KinesisAnalytics.Types.SourceSchema
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | Describes the application input configuration. For more information, see <http://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-it-works-input.html Configuring Application Input> . 
+-- | Describes the application input configuration. For more information, see <https://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-it-works-input.html Configuring Application Input> . 
 --
 --
 --

@@ -65,7 +65,7 @@ data CreateDBSubnetGroup = CreateDBSubnetGroup'{_cdbsgTags
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'cdbsgTags' - Undocumented member.
+-- * 'cdbsgTags' - Tags to assign to the DB subnet group.
 --
 -- * 'cdbsgDBSubnetGroupName' - The name for the DB subnet group. This value is stored as a lowercase string. Constraints: Must contain no more than 255 letters, numbers, periods, underscores, spaces, or hyphens. Must not be default. Example: @mySubnetgroup@ 
 --
@@ -84,7 +84,7 @@ createDBSubnetGroup pDBSubnetGroupName_
                            pDBSubnetGroupDescription_,
                          _cdbsgSubnetIds = mempty}
 
--- | Undocumented member.
+-- | Tags to assign to the DB subnet group.
 cdbsgTags :: Lens' CreateDBSubnetGroup [Tag]
 cdbsgTags = lens _cdbsgTags (\ s a -> s{_cdbsgTags = a}) . _Default . _Coerce
 

@@ -37,7 +37,7 @@ data PartitionError = PartitionError'{_pePartitionValues
 --
 -- * 'pePartitionValues' - The values that define the partition.
 --
--- * 'peErrorDetail' - Details about the partition error.
+-- * 'peErrorDetail' - The details about the partition error.
 partitionError
     :: PartitionError
 partitionError
@@ -48,7 +48,7 @@ partitionError
 pePartitionValues :: Lens' PartitionError [Text]
 pePartitionValues = lens _pePartitionValues (\ s a -> s{_pePartitionValues = a}) . _Default . _Coerce
 
--- | Details about the partition error.
+-- | The details about the partition error.
 peErrorDetail :: Lens' PartitionError (Maybe ErrorDetail)
 peErrorDetail = lens _peErrorDetail (\ s a -> s{_peErrorDetail = a})
 

@@ -21,7 +21,7 @@ import Network.AWS.KinesisAnalytics.Types.InputLambdaProcessorDescription
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | Provides configuration information about an input processor. Currently, the only input processor available is <https://aws.amazon.com/documentation/lambda/ AWS Lambda> .
+-- | Provides configuration information about an input processor. Currently, the only input processor available is <https://docs.aws.amazon.com/lambda/ AWS Lambda> .
 --
 --
 --
@@ -38,14 +38,14 @@ newtype InputProcessingConfigurationDescription = InputProcessingConfigurationDe
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'ipcdInputLambdaProcessorDescription' - Provides configuration information about the associated 'InputLambdaProcessorDescription' .
+-- * 'ipcdInputLambdaProcessorDescription' - Provides configuration information about the associated <https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_InputLambdaProcessorDescription.html InputLambdaProcessorDescription> .
 inputProcessingConfigurationDescription
     :: InputProcessingConfigurationDescription
 inputProcessingConfigurationDescription
   = InputProcessingConfigurationDescription'{_ipcdInputLambdaProcessorDescription
                                                = Nothing}
 
--- | Provides configuration information about the associated 'InputLambdaProcessorDescription' .
+-- | Provides configuration information about the associated <https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_InputLambdaProcessorDescription.html InputLambdaProcessorDescription> .
 ipcdInputLambdaProcessorDescription :: Lens' InputProcessingConfigurationDescription (Maybe InputLambdaProcessorDescription)
 ipcdInputLambdaProcessorDescription = lens _ipcdInputLambdaProcessorDescription (\ s a -> s{_ipcdInputLambdaProcessorDescription = a})
 

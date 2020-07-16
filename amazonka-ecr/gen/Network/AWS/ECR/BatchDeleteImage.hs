@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Deletes a list of specified images within a specified repository. Images are specified with either @imageTag@ or @imageDigest@ .
+-- Deletes a list of specified images within a repository. Images are specified with either an @imageTag@ or @imageDigest@ .
 --
 --
 -- You can remove a tag from an image by specifying the image's tag in your request. When you remove the last tag from an image, the image is deleted from your repository.

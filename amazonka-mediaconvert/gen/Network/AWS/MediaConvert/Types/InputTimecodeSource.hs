@@ -19,34 +19,34 @@
 module Network.AWS.MediaConvert.Types.InputTimecodeSource (
   InputTimecodeSource (
     ..
-    , Embedded
-    , Specifiedstart
-    , Zerobased
+    , ITSEmbedded
+    , ITSSpecifiedstart
+    , ITSZerobased
     )
   ) where
 
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | Use Timecode source (InputTimecodeSource) to specify how timecode information from your input is adjusted and encoded in all outputs for the job. Default is embedded. Set to Embedded (EMBEDDED) to use the timecode that is in the input video. If no embedded timecode is in the source, will set the timecode for the first frame to 00:00:00:00. Set to Start at 0 (ZEROBASED) to set the timecode of the initial frame to 00:00:00:00. Set to Specified start (SPECIFIEDSTART) to provide the initial timecode yourself the setting (Start).
+-- | Use this Timecode source setting, located under the input settings (InputTimecodeSource), to specify how the service counts input video frames. This input frame count affects only the behavior of features that apply to a single input at a time, such as input clipping and synchronizing some captions formats. Choose Embedded (EMBEDDED) to use the timecodes in your input video. Choose Start at zero (ZEROBASED) to start the first frame at zero. Choose Specified start (SPECIFIEDSTART) to start the first frame at the timecode that you specify in the setting Start timecode (timecodeStart). If you don't specify a value for Timecode source, the service will use Embedded by default. For more information about timecodes, see https://docs.aws.amazon.com/console/mediaconvert/timecode.
 data InputTimecodeSource = InputTimecodeSource' (CI
                                                    Text)
                              deriving (Eq, Ord, Read, Show, Data, Typeable,
                                        Generic)
 
-pattern Embedded :: InputTimecodeSource
-pattern Embedded = InputTimecodeSource' "EMBEDDED"
+pattern ITSEmbedded :: InputTimecodeSource
+pattern ITSEmbedded = InputTimecodeSource' "EMBEDDED"
 
-pattern Specifiedstart :: InputTimecodeSource
-pattern Specifiedstart = InputTimecodeSource' "SPECIFIEDSTART"
+pattern ITSSpecifiedstart :: InputTimecodeSource
+pattern ITSSpecifiedstart = InputTimecodeSource' "SPECIFIEDSTART"
 
-pattern Zerobased :: InputTimecodeSource
-pattern Zerobased = InputTimecodeSource' "ZEROBASED"
+pattern ITSZerobased :: InputTimecodeSource
+pattern ITSZerobased = InputTimecodeSource' "ZEROBASED"
 
 {-# COMPLETE
-  Embedded,
-  Specifiedstart,
-  Zerobased,
+  ITSEmbedded,
+  ITSSpecifiedstart,
+  ITSZerobased,
   InputTimecodeSource' #-}
 
 instance FromText InputTimecodeSource where
@@ -61,22 +61,22 @@ instance ToText InputTimecodeSource where
 --   fromEnum is a partial function, and will error on values unknown at generation time.
 instance Enum InputTimecodeSource where
     toEnum i = case i of
-        0 -> Embedded
-        1 -> Specifiedstart
-        2 -> Zerobased
+        0 -> ITSEmbedded
+        1 -> ITSSpecifiedstart
+        2 -> ITSZerobased
         _ -> (error . showText) $ "Unknown index for InputTimecodeSource: " <> toText i
     fromEnum x = case x of
-        Embedded -> 0
-        Specifiedstart -> 1
-        Zerobased -> 2
+        ITSEmbedded -> 0
+        ITSSpecifiedstart -> 1
+        ITSZerobased -> 2
         InputTimecodeSource' name -> (error . showText) $ "Unknown InputTimecodeSource: " <> original name
 
 -- | Represents the bounds of /known/ $InputTimecodeSource.
 --   AWS may have added more since the source was generated.
 --   This instance exists only for backward compatibility.
 instance Bounded InputTimecodeSource where
-    minBound = Embedded
-    maxBound = Zerobased
+    minBound = ITSEmbedded
+    maxBound = ITSZerobased
 
 instance Hashable     InputTimecodeSource
 instance NFData       InputTimecodeSource

@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Synthesizes UTF-8 input, plain text or SSML, to a stream of bytes. SSML input must be valid, well-formed SSML. Some alphabets might not be available with all the voices (for example, Cyrillic might not be read at all by English voices) unless phoneme mapping is used. For more information, see <http://docs.aws.amazon.com/polly/latest/dg/how-text-to-speech-works.html How it Works> .
+-- Synthesizes UTF-8 input, plain text or SSML, to a stream of bytes. SSML input must be valid, well-formed SSML. Some alphabets might not be available with all the voices (for example, Cyrillic might not be read at all by English voices) unless phoneme mapping is used. For more information, see <https://docs.aws.amazon.com/polly/latest/dg/how-text-to-speech-works.html How it Works> .
 --
 --
 module Network.AWS.Polly.SynthesizeSpeech
@@ -27,6 +27,8 @@ module Network.AWS.Polly.SynthesizeSpeech
       synthesizeSpeech
     , SynthesizeSpeech
     -- * Request Lenses
+    , ssLanguageCode
+    , ssEngine
     , ssSpeechMarkTypes
     , ssSampleRate
     , ssTextType
@@ -53,8 +55,11 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'synthesizeSpeech' smart constructor.
-data SynthesizeSpeech = SynthesizeSpeech'{_ssSpeechMarkTypes
-                                          :: !(Maybe [SpeechMarkType]),
+data SynthesizeSpeech = SynthesizeSpeech'{_ssLanguageCode
+                                          :: !(Maybe LanguageCode),
+                                          _ssEngine :: !(Maybe Engine),
+                                          _ssSpeechMarkTypes ::
+                                          !(Maybe [SpeechMarkType]),
                                           _ssSampleRate :: !(Maybe Text),
                                           _ssTextType :: !(Maybe TextType),
                                           _ssLexiconNames ::
@@ -68,48 +73,61 @@ data SynthesizeSpeech = SynthesizeSpeech'{_ssSpeechMarkTypes
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
+-- * 'ssLanguageCode' - Optional language code for the Synthesize Speech request. This is only necessary if using a bilingual voice, such as Aditi, which can be used for either Indian English (en-IN) or Hindi (hi-IN).  If a bilingual voice is used and no language code is specified, Amazon Polly will use the default language of the bilingual voice. The default language for any voice is the one returned by the <https://docs.aws.amazon.com/polly/latest/dg/API_DescribeVoices.html DescribeVoices> operation for the @LanguageCode@ parameter. For example, if no language code is specified, Aditi will use Indian English rather than Hindi.
+--
+-- * 'ssEngine' - Specifies the engine (@standard@ or @neural@ ) for Amazon Polly to use when processing input text for speech synthesis. Using a voice that is not supported for the engine selected will result in an error.
+--
 -- * 'ssSpeechMarkTypes' - The type of speech marks returned for the input text.
 --
--- * 'ssSampleRate' - The audio frequency specified in Hz.  The valid values for @mp3@ and @ogg_vorbis@ are "8000", "16000", and "22050". The default value is "22050".  Valid values for @pcm@ are "8000" and "16000" The default value is "16000". 
+-- * 'ssSampleRate' - The audio frequency specified in Hz. The valid values for mp3 and ogg_vorbis are "8000", "16000", "22050", and "24000". The default value for standard voices is "22050". The default value for neural voices is "24000". Valid values for pcm are "8000" and "16000" The default value is "16000". 
 --
--- * 'ssTextType' - Specifies whether the input text is plain text or SSML. The default value is plain text. For more information, see <http://docs.aws.amazon.com/polly/latest/dg/ssml.html Using SSML> .
+-- * 'ssTextType' - Specifies whether the input text is plain text or SSML. The default value is plain text. For more information, see <https://docs.aws.amazon.com/polly/latest/dg/ssml.html Using SSML> .
 --
--- * 'ssLexiconNames' - List of one or more pronunciation lexicon names you want the service to apply during synthesis. Lexicons are applied only if the language of the lexicon is the same as the language of the voice. For information about storing lexicons, see <http://docs.aws.amazon.com/polly/latest/dg/API_PutLexicon.html PutLexicon> .
+-- * 'ssLexiconNames' - List of one or more pronunciation lexicon names you want the service to apply during synthesis. Lexicons are applied only if the language of the lexicon is the same as the language of the voice. For information about storing lexicons, see <https://docs.aws.amazon.com/polly/latest/dg/API_PutLexicon.html PutLexicon> .
 --
--- * 'ssOutputFormat' - The format in which the returned output will be encoded. For audio stream, this will be mp3, ogg_vorbis, or pcm. For speech marks, this will be json. 
+-- * 'ssOutputFormat' - The format in which the returned output will be encoded. For audio stream, this will be mp3, ogg_vorbis, or pcm. For speech marks, this will be json.  When pcm is used, the content returned is audio/pcm in a signed 16-bit, 1 channel (mono), little-endian format. 
 --
 -- * 'ssText' - Input text to synthesize. If you specify @ssml@ as the @TextType@ , follow the SSML format for the input text. 
 --
--- * 'ssVoiceId' - Voice ID to use for the synthesis. You can get a list of available voice IDs by calling the <http://docs.aws.amazon.com/polly/latest/dg/API_DescribeVoices.html DescribeVoices> operation. 
+-- * 'ssVoiceId' - Voice ID to use for the synthesis. You can get a list of available voice IDs by calling the <https://docs.aws.amazon.com/polly/latest/dg/API_DescribeVoices.html DescribeVoices> operation. 
 synthesizeSpeech
     :: OutputFormat -- ^ 'ssOutputFormat'
     -> Text -- ^ 'ssText'
     -> VoiceId -- ^ 'ssVoiceId'
     -> SynthesizeSpeech
 synthesizeSpeech pOutputFormat_ pText_ pVoiceId_
-  = SynthesizeSpeech'{_ssSpeechMarkTypes = Nothing,
+  = SynthesizeSpeech'{_ssLanguageCode = Nothing,
+                      _ssEngine = Nothing, _ssSpeechMarkTypes = Nothing,
                       _ssSampleRate = Nothing, _ssTextType = Nothing,
                       _ssLexiconNames = Nothing,
                       _ssOutputFormat = pOutputFormat_, _ssText = pText_,
                       _ssVoiceId = pVoiceId_}
 
+-- | Optional language code for the Synthesize Speech request. This is only necessary if using a bilingual voice, such as Aditi, which can be used for either Indian English (en-IN) or Hindi (hi-IN).  If a bilingual voice is used and no language code is specified, Amazon Polly will use the default language of the bilingual voice. The default language for any voice is the one returned by the <https://docs.aws.amazon.com/polly/latest/dg/API_DescribeVoices.html DescribeVoices> operation for the @LanguageCode@ parameter. For example, if no language code is specified, Aditi will use Indian English rather than Hindi.
+ssLanguageCode :: Lens' SynthesizeSpeech (Maybe LanguageCode)
+ssLanguageCode = lens _ssLanguageCode (\ s a -> s{_ssLanguageCode = a})
+
+-- | Specifies the engine (@standard@ or @neural@ ) for Amazon Polly to use when processing input text for speech synthesis. Using a voice that is not supported for the engine selected will result in an error.
+ssEngine :: Lens' SynthesizeSpeech (Maybe Engine)
+ssEngine = lens _ssEngine (\ s a -> s{_ssEngine = a})
+
 -- | The type of speech marks returned for the input text.
 ssSpeechMarkTypes :: Lens' SynthesizeSpeech [SpeechMarkType]
 ssSpeechMarkTypes = lens _ssSpeechMarkTypes (\ s a -> s{_ssSpeechMarkTypes = a}) . _Default . _Coerce
 
--- | The audio frequency specified in Hz.  The valid values for @mp3@ and @ogg_vorbis@ are "8000", "16000", and "22050". The default value is "22050".  Valid values for @pcm@ are "8000" and "16000" The default value is "16000". 
+-- | The audio frequency specified in Hz. The valid values for mp3 and ogg_vorbis are "8000", "16000", "22050", and "24000". The default value for standard voices is "22050". The default value for neural voices is "24000". Valid values for pcm are "8000" and "16000" The default value is "16000". 
 ssSampleRate :: Lens' SynthesizeSpeech (Maybe Text)
 ssSampleRate = lens _ssSampleRate (\ s a -> s{_ssSampleRate = a})
 
--- | Specifies whether the input text is plain text or SSML. The default value is plain text. For more information, see <http://docs.aws.amazon.com/polly/latest/dg/ssml.html Using SSML> .
+-- | Specifies whether the input text is plain text or SSML. The default value is plain text. For more information, see <https://docs.aws.amazon.com/polly/latest/dg/ssml.html Using SSML> .
 ssTextType :: Lens' SynthesizeSpeech (Maybe TextType)
 ssTextType = lens _ssTextType (\ s a -> s{_ssTextType = a})
 
--- | List of one or more pronunciation lexicon names you want the service to apply during synthesis. Lexicons are applied only if the language of the lexicon is the same as the language of the voice. For information about storing lexicons, see <http://docs.aws.amazon.com/polly/latest/dg/API_PutLexicon.html PutLexicon> .
+-- | List of one or more pronunciation lexicon names you want the service to apply during synthesis. Lexicons are applied only if the language of the lexicon is the same as the language of the voice. For information about storing lexicons, see <https://docs.aws.amazon.com/polly/latest/dg/API_PutLexicon.html PutLexicon> .
 ssLexiconNames :: Lens' SynthesizeSpeech [Text]
 ssLexiconNames = lens _ssLexiconNames (\ s a -> s{_ssLexiconNames = a}) . _Default . _Coerce
 
--- | The format in which the returned output will be encoded. For audio stream, this will be mp3, ogg_vorbis, or pcm. For speech marks, this will be json. 
+-- | The format in which the returned output will be encoded. For audio stream, this will be mp3, ogg_vorbis, or pcm. For speech marks, this will be json.  When pcm is used, the content returned is audio/pcm in a signed 16-bit, 1 channel (mono), little-endian format. 
 ssOutputFormat :: Lens' SynthesizeSpeech OutputFormat
 ssOutputFormat = lens _ssOutputFormat (\ s a -> s{_ssOutputFormat = a})
 
@@ -117,7 +135,7 @@ ssOutputFormat = lens _ssOutputFormat (\ s a -> s{_ssOutputFormat = a})
 ssText :: Lens' SynthesizeSpeech Text
 ssText = lens _ssText (\ s a -> s{_ssText = a})
 
--- | Voice ID to use for the synthesis. You can get a list of available voice IDs by calling the <http://docs.aws.amazon.com/polly/latest/dg/API_DescribeVoices.html DescribeVoices> operation. 
+-- | Voice ID to use for the synthesis. You can get a list of available voice IDs by calling the <https://docs.aws.amazon.com/polly/latest/dg/API_DescribeVoices.html DescribeVoices> operation. 
 ssVoiceId :: Lens' SynthesizeSpeech VoiceId
 ssVoiceId = lens _ssVoiceId (\ s a -> s{_ssVoiceId = a})
 
@@ -144,7 +162,9 @@ instance ToJSON SynthesizeSpeech where
         toJSON SynthesizeSpeech'{..}
           = object
               (catMaybes
-                 [("SpeechMarkTypes" .=) <$> _ssSpeechMarkTypes,
+                 [("LanguageCode" .=) <$> _ssLanguageCode,
+                  ("Engine" .=) <$> _ssEngine,
+                  ("SpeechMarkTypes" .=) <$> _ssSpeechMarkTypes,
                   ("SampleRate" .=) <$> _ssSampleRate,
                   ("TextType" .=) <$> _ssTextType,
                   ("LexiconNames" .=) <$> _ssLexiconNames,

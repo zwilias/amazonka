@@ -22,7 +22,9 @@ import Network.AWS.Prelude
 import Network.AWS.S3.Internal
 import Network.AWS.S3.Types.TransitionStorageClass
 
--- | Container for the transition rule that describes when noncurrent objects transition to the STANDARD_IA, ONEZONE_IA or GLACIER storage class. If your bucket is versioning-enabled (or versioning is suspended), you can set this action to request that Amazon S3 transition noncurrent object versions to the STANDARD_IA, ONEZONE_IA or GLACIER storage class at a specific period in the object's lifetime.
+-- | Container for the transition rule that describes when noncurrent objects transition to the @STANDARD_IA@ , @ONEZONE_IA@ , @INTELLIGENT_TIERING@ , @GLACIER@ , or @DEEP_ARCHIVE@ storage class. If your bucket is versioning-enabled (or versioning is suspended), you can set this action to request that Amazon S3 transition noncurrent object versions to the @STANDARD_IA@ , @ONEZONE_IA@ , @INTELLIGENT_TIERING@ , @GLACIER@ , or @DEEP_ARCHIVE@ storage class at a specific period in the object's lifetime.
+--
+--
 --
 -- /See:/ 'noncurrentVersionTransition' smart constructor.
 data NoncurrentVersionTransition = NoncurrentVersionTransition'{_nvtNoncurrentDays
@@ -37,7 +39,7 @@ data NoncurrentVersionTransition = NoncurrentVersionTransition'{_nvtNoncurrentDa
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'nvtNoncurrentDays' - <http://docs.aws.amazon.com/AmazonS3/latest/dev/s3-access-control.html How Amazon S3 Calculates When an Object Became Noncurrent> 
+-- * 'nvtNoncurrentDays' - Specifies the number of days an object is noncurrent before Amazon S3 can perform the associated action. For information about the noncurrent days calculations, see <https://docs.aws.amazon.com/AmazonS3/latest/dev/intro-lifecycle-rules.html#non-current-days-calculations How Amazon S3 Calculates How Long an Object Has Been Noncurrent> in the /Amazon Simple Storage Service Developer Guide/ .
 --
 -- * 'nvtStorageClass' - The class of storage used to store the object.
 noncurrentVersionTransition
@@ -50,7 +52,7 @@ noncurrentVersionTransition pNoncurrentDays_
                                    pNoncurrentDays_,
                                  _nvtStorageClass = pStorageClass_}
 
--- | <http://docs.aws.amazon.com/AmazonS3/latest/dev/s3-access-control.html How Amazon S3 Calculates When an Object Became Noncurrent> 
+-- | Specifies the number of days an object is noncurrent before Amazon S3 can perform the associated action. For information about the noncurrent days calculations, see <https://docs.aws.amazon.com/AmazonS3/latest/dev/intro-lifecycle-rules.html#non-current-days-calculations How Amazon S3 Calculates How Long an Object Has Been Noncurrent> in the /Amazon Simple Storage Service Developer Guide/ .
 nvtNoncurrentDays :: Lens' NoncurrentVersionTransition Int
 nvtNoncurrentDays = lens _nvtNoncurrentDays (\ s a -> s{_nvtNoncurrentDays = a})
 

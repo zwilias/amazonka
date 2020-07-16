@@ -24,10 +24,15 @@ module Network.AWS.KMS.Types.GrantOperation (
     , DescribeKey
     , Encrypt
     , GenerateDataKey
+    , GenerateDataKeyPair
+    , GenerateDataKeyPairWithoutPlaintext
     , GenerateDataKeyWithoutPlaintext
+    , GetPublicKey
     , ReEncryptFrom
     , ReEncryptTo
     , RetireGrant
+    , Sign
+    , Verify
     )
   ) where
 
@@ -53,8 +58,17 @@ pattern Encrypt = GrantOperation' "Encrypt"
 pattern GenerateDataKey :: GrantOperation
 pattern GenerateDataKey = GrantOperation' "GenerateDataKey"
 
+pattern GenerateDataKeyPair :: GrantOperation
+pattern GenerateDataKeyPair = GrantOperation' "GenerateDataKeyPair"
+
+pattern GenerateDataKeyPairWithoutPlaintext :: GrantOperation
+pattern GenerateDataKeyPairWithoutPlaintext = GrantOperation' "GenerateDataKeyPairWithoutPlaintext"
+
 pattern GenerateDataKeyWithoutPlaintext :: GrantOperation
 pattern GenerateDataKeyWithoutPlaintext = GrantOperation' "GenerateDataKeyWithoutPlaintext"
+
+pattern GetPublicKey :: GrantOperation
+pattern GetPublicKey = GrantOperation' "GetPublicKey"
 
 pattern ReEncryptFrom :: GrantOperation
 pattern ReEncryptFrom = GrantOperation' "ReEncryptFrom"
@@ -65,16 +79,27 @@ pattern ReEncryptTo = GrantOperation' "ReEncryptTo"
 pattern RetireGrant :: GrantOperation
 pattern RetireGrant = GrantOperation' "RetireGrant"
 
+pattern Sign :: GrantOperation
+pattern Sign = GrantOperation' "Sign"
+
+pattern Verify :: GrantOperation
+pattern Verify = GrantOperation' "Verify"
+
 {-# COMPLETE
   CreateGrant,
   Decrypt,
   DescribeKey,
   Encrypt,
   GenerateDataKey,
+  GenerateDataKeyPair,
+  GenerateDataKeyPairWithoutPlaintext,
   GenerateDataKeyWithoutPlaintext,
+  GetPublicKey,
   ReEncryptFrom,
   ReEncryptTo,
   RetireGrant,
+  Sign,
+  Verify,
   GrantOperation' #-}
 
 instance FromText GrantOperation where
@@ -94,10 +119,15 @@ instance Enum GrantOperation where
         2 -> DescribeKey
         3 -> Encrypt
         4 -> GenerateDataKey
-        5 -> GenerateDataKeyWithoutPlaintext
-        6 -> ReEncryptFrom
-        7 -> ReEncryptTo
-        8 -> RetireGrant
+        5 -> GenerateDataKeyPair
+        6 -> GenerateDataKeyPairWithoutPlaintext
+        7 -> GenerateDataKeyWithoutPlaintext
+        8 -> GetPublicKey
+        9 -> ReEncryptFrom
+        10 -> ReEncryptTo
+        11 -> RetireGrant
+        12 -> Sign
+        13 -> Verify
         _ -> (error . showText) $ "Unknown index for GrantOperation: " <> toText i
     fromEnum x = case x of
         CreateGrant -> 0
@@ -105,10 +135,15 @@ instance Enum GrantOperation where
         DescribeKey -> 2
         Encrypt -> 3
         GenerateDataKey -> 4
-        GenerateDataKeyWithoutPlaintext -> 5
-        ReEncryptFrom -> 6
-        ReEncryptTo -> 7
-        RetireGrant -> 8
+        GenerateDataKeyPair -> 5
+        GenerateDataKeyPairWithoutPlaintext -> 6
+        GenerateDataKeyWithoutPlaintext -> 7
+        GetPublicKey -> 8
+        ReEncryptFrom -> 9
+        ReEncryptTo -> 10
+        RetireGrant -> 11
+        Sign -> 12
+        Verify -> 13
         GrantOperation' name -> (error . showText) $ "Unknown GrantOperation: " <> original name
 
 -- | Represents the bounds of /known/ $GrantOperation.
@@ -116,7 +151,7 @@ instance Enum GrantOperation where
 --   This instance exists only for backward compatibility.
 instance Bounded GrantOperation where
     minBound = CreateGrant
-    maxBound = RetireGrant
+    maxBound = Verify
 
 instance Hashable     GrantOperation
 instance NFData       GrantOperation

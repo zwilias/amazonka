@@ -37,7 +37,7 @@ data ActivityListItem = ActivityListItem'{_aliActivityARN
 --
 -- * 'aliActivityARN' - The Amazon Resource Name (ARN) that identifies the activity.
 --
--- * 'aliName' - The name of the activity. A name must /not/ contain:     * whitespace     * brackets @< > { } [ ]@      * wildcard characters @? *@      * special characters @" # % \ ^ | ~ ` $ & , ; : /@      * control characters (@U+0000-001F@ , @U+007F-009F@ )
+-- * 'aliName' - The name of the activity. A name must /not/ contain:     * white space     * brackets @< > { } [ ]@      * wildcard characters @? *@      * special characters @" # % \ ^ | ~ ` $ & , ; : /@      * control characters (@U+0000-001F@ , @U+007F-009F@ ) To enable logging with CloudWatch Logs, the name should only contain 0-9, A-Z, a-z, - and _.
 --
 -- * 'aliCreationDate' - The date the activity is created.
 activityListItem
@@ -54,7 +54,7 @@ activityListItem pActivityARN_ pName_ pCreationDate_
 aliActivityARN :: Lens' ActivityListItem Text
 aliActivityARN = lens _aliActivityARN (\ s a -> s{_aliActivityARN = a})
 
--- | The name of the activity. A name must /not/ contain:     * whitespace     * brackets @< > { } [ ]@      * wildcard characters @? *@      * special characters @" # % \ ^ | ~ ` $ & , ; : /@      * control characters (@U+0000-001F@ , @U+007F-009F@ )
+-- | The name of the activity. A name must /not/ contain:     * white space     * brackets @< > { } [ ]@      * wildcard characters @? *@      * special characters @" # % \ ^ | ~ ` $ & , ; : /@      * control characters (@U+0000-001F@ , @U+007F-009F@ ) To enable logging with CloudWatch Logs, the name should only contain 0-9, A-Z, a-z, - and _.
 aliName :: Lens' ActivityListItem Text
 aliName = lens _aliName (\ s a -> s{_aliName = a})
 

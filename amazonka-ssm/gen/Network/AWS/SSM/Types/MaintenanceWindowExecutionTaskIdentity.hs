@@ -22,7 +22,7 @@ import Network.AWS.Prelude
 import Network.AWS.SSM.Types.MaintenanceWindowExecutionStatus
 import Network.AWS.SSM.Types.MaintenanceWindowTaskType
 
--- | Information about a task execution performed as part of a Maintenance Window execution.
+-- | Information about a task execution performed as part of a maintenance window execution.
 --
 --
 --
@@ -68,15 +68,15 @@ data MaintenanceWindowExecutionTaskIdentity = MaintenanceWindowExecutionTaskIden
 --
 -- * 'mwetiStatus' - The status of the task execution.
 --
--- * 'mwetiTaskExecutionId' - The ID of the specific task execution in the Maintenance Window execution.
+-- * 'mwetiTaskExecutionId' - The ID of the specific task execution in the maintenance window execution.
 --
 -- * 'mwetiStartTime' - The time the task execution started.
 --
--- * 'mwetiTaskType' - The type of executed task.
+-- * 'mwetiTaskType' - The type of task that ran.
 --
--- * 'mwetiTaskARN' - The ARN of the executed task.
+-- * 'mwetiTaskARN' - The ARN of the task that ran.
 --
--- * 'mwetiWindowExecutionId' - The ID of the Maintenance Window execution that ran the task.
+-- * 'mwetiWindowExecutionId' - The ID of the maintenance window execution that ran the task.
 --
 -- * 'mwetiStatusDetails' - The details explaining the status of the task execution. Only available for certain status values.
 --
@@ -98,7 +98,7 @@ maintenanceWindowExecutionTaskIdentity
 mwetiStatus :: Lens' MaintenanceWindowExecutionTaskIdentity (Maybe MaintenanceWindowExecutionStatus)
 mwetiStatus = lens _mwetiStatus (\ s a -> s{_mwetiStatus = a})
 
--- | The ID of the specific task execution in the Maintenance Window execution.
+-- | The ID of the specific task execution in the maintenance window execution.
 mwetiTaskExecutionId :: Lens' MaintenanceWindowExecutionTaskIdentity (Maybe Text)
 mwetiTaskExecutionId = lens _mwetiTaskExecutionId (\ s a -> s{_mwetiTaskExecutionId = a})
 
@@ -106,15 +106,15 @@ mwetiTaskExecutionId = lens _mwetiTaskExecutionId (\ s a -> s{_mwetiTaskExecutio
 mwetiStartTime :: Lens' MaintenanceWindowExecutionTaskIdentity (Maybe UTCTime)
 mwetiStartTime = lens _mwetiStartTime (\ s a -> s{_mwetiStartTime = a}) . mapping _Time
 
--- | The type of executed task.
+-- | The type of task that ran.
 mwetiTaskType :: Lens' MaintenanceWindowExecutionTaskIdentity (Maybe MaintenanceWindowTaskType)
 mwetiTaskType = lens _mwetiTaskType (\ s a -> s{_mwetiTaskType = a})
 
--- | The ARN of the executed task.
+-- | The ARN of the task that ran.
 mwetiTaskARN :: Lens' MaintenanceWindowExecutionTaskIdentity (Maybe Text)
 mwetiTaskARN = lens _mwetiTaskARN (\ s a -> s{_mwetiTaskARN = a})
 
--- | The ID of the Maintenance Window execution that ran the task.
+-- | The ID of the maintenance window execution that ran the task.
 mwetiWindowExecutionId :: Lens' MaintenanceWindowExecutionTaskIdentity (Maybe Text)
 mwetiWindowExecutionId = lens _mwetiWindowExecutionId (\ s a -> s{_mwetiWindowExecutionId = a})
 

@@ -19,21 +19,39 @@ module Network.AWS.Discovery.Types
     , _ServerInternalErrorException
     , _OperationNotPermittedException
     , _InvalidParameterException
+    , _HomeRegionNotSetException
     , _AuthorizationErrorException
     , _InvalidParameterValueException
+    , _ConflictErrorException
     , _ResourceNotFoundException
+    , _ResourceInUseException
 
     -- * AgentStatus
     , AgentStatus (..)
 
+    -- * BatchDeleteImportDataErrorCode
+    , BatchDeleteImportDataErrorCode (..)
+
     -- * ConfigurationItemType
     , ConfigurationItemType (..)
+
+    -- * ContinuousExportStatus
+    , ContinuousExportStatus (..)
+
+    -- * DataSource
+    , DataSource (..)
 
     -- * ExportDataFormat
     , ExportDataFormat (..)
 
     -- * ExportStatus
     , ExportStatus (..)
+
+    -- * ImportStatus
+    , ImportStatus (..)
+
+    -- * ImportTaskFilterName
+    , ImportTaskFilterName (..)
 
     -- * OrderString
     , OrderString (..)
@@ -65,6 +83,13 @@ module Network.AWS.Discovery.Types
     , aniIpAddress
     , aniMacAddress
 
+    -- * BatchDeleteImportDataError
+    , BatchDeleteImportDataError
+    , batchDeleteImportDataError
+    , bdideImportTaskId
+    , bdideErrorCode
+    , bdideErrorDescription
+
     -- * ConfigurationTag
     , ConfigurationTag
     , configurationTag
@@ -73,6 +98,18 @@ module Network.AWS.Discovery.Types
     , ctConfigurationType
     , ctValue
     , ctKey
+
+    -- * ContinuousExportDescription
+    , ContinuousExportDescription
+    , continuousExportDescription
+    , cedStatus
+    , cedStartTime
+    , cedSchemaStorageConfig
+    , cedStatusDetail
+    , cedStopTime
+    , cedDataSource
+    , cedS3Bucket
+    , cedExportId
 
     -- * CustomerAgentInfo
     , CustomerAgentInfo
@@ -122,6 +159,29 @@ module Network.AWS.Discovery.Types
     , fValues
     , fCondition
 
+    -- * ImportTask
+    , ImportTask
+    , importTask
+    , itApplicationImportSuccess
+    , itStatus
+    , itServerImportSuccess
+    , itImportCompletionTime
+    , itName
+    , itApplicationImportFailure
+    , itErrorsAndFailedEntriesZip
+    , itImportTaskId
+    , itImportDeletedTime
+    , itServerImportFailure
+    , itClientRequestToken
+    , itImportURL
+    , itImportRequestTime
+
+    -- * ImportTaskFilter
+    , ImportTaskFilter
+    , importTaskFilter
+    , itfValues
+    , itfName
+
     -- * NeighborConnectionDetail
     , NeighborConnectionDetail
     , neighborConnectionDetail
@@ -154,19 +214,28 @@ import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Sign.V4
 import Network.AWS.Discovery.Types.AgentStatus
+import Network.AWS.Discovery.Types.BatchDeleteImportDataErrorCode
 import Network.AWS.Discovery.Types.ConfigurationItemType
+import Network.AWS.Discovery.Types.ContinuousExportStatus
+import Network.AWS.Discovery.Types.DataSource
 import Network.AWS.Discovery.Types.ExportDataFormat
 import Network.AWS.Discovery.Types.ExportStatus
+import Network.AWS.Discovery.Types.ImportStatus
+import Network.AWS.Discovery.Types.ImportTaskFilterName
 import Network.AWS.Discovery.Types.OrderString
 import Network.AWS.Discovery.Types.AgentConfigurationStatus
 import Network.AWS.Discovery.Types.AgentInfo
 import Network.AWS.Discovery.Types.AgentNetworkInfo
+import Network.AWS.Discovery.Types.BatchDeleteImportDataError
 import Network.AWS.Discovery.Types.ConfigurationTag
+import Network.AWS.Discovery.Types.ContinuousExportDescription
 import Network.AWS.Discovery.Types.CustomerAgentInfo
 import Network.AWS.Discovery.Types.CustomerConnectorInfo
 import Network.AWS.Discovery.Types.ExportFilter
 import Network.AWS.Discovery.Types.ExportInfo
 import Network.AWS.Discovery.Types.Filter
+import Network.AWS.Discovery.Types.ImportTask
+import Network.AWS.Discovery.Types.ImportTaskFilter
 import Network.AWS.Discovery.Types.NeighborConnectionDetail
 import Network.AWS.Discovery.Types.OrderByElement
 import Network.AWS.Discovery.Types.Tag
@@ -194,6 +263,11 @@ discovery
             = Just "throttling_exception"
           | has (hasCode "Throttling" . hasStatus 400) e =
             Just "throttling"
+          | has
+              (hasCode "ProvisionedThroughputExceededException" .
+                 hasStatus 400)
+              e
+            = Just "throughput_exceeded"
           | has (hasStatus 504) e = Just "gateway_timeout"
           | has
               (hasCode "RequestThrottledException" . hasStatus 400)
@@ -229,6 +303,14 @@ _InvalidParameterException
   = _MatchServiceError discovery
       "InvalidParameterException"
 
+-- | The home region is not set. Set the home region to continue.
+--
+--
+_HomeRegionNotSetException :: AsError a => Getting (First ServiceError) a ServiceError
+_HomeRegionNotSetException
+  = _MatchServiceError discovery
+      "HomeRegionNotSetException"
+
 -- | The AWS user account does not have permission to perform the action. Check the IAM policy associated with this account.
 --
 --
@@ -245,6 +327,14 @@ _InvalidParameterValueException
   = _MatchServiceError discovery
       "InvalidParameterValueException"
 
+-- | 
+--
+--
+_ConflictErrorException :: AsError a => Getting (First ServiceError) a ServiceError
+_ConflictErrorException
+  = _MatchServiceError discovery
+      "ConflictErrorException"
+
 -- | The specified configuration ID was not located. Verify the configuration ID and try again.
 --
 --
@@ -252,3 +342,11 @@ _ResourceNotFoundException :: AsError a => Getting (First ServiceError) a Servic
 _ResourceNotFoundException
   = _MatchServiceError discovery
       "ResourceNotFoundException"
+
+-- | This issue occurs when the same @clientRequestToken@ is used with the @StartImportTask@ action, but with different parameters. For example, you use the same request token but have two different import URLs, you can encounter this issue. If the import tasks are meant to be different, use a different @clientRequestToken@ , and try again.
+--
+--
+_ResourceInUseException :: AsError a => Getting (First ServiceError) a ServiceError
+_ResourceInUseException
+  = _MatchServiceError discovery
+      "ResourceInUseException"

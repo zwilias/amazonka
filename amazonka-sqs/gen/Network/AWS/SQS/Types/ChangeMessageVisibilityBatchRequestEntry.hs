@@ -25,11 +25,11 @@ import Network.AWS.Prelude
 --
 -- /Important:/ All of the following list parameters must be prefixed with @ChangeMessageVisibilityBatchRequestEntry.n@ , where @n@ is an integer value starting with @1@ . For example, a parameter list for this action might look like this:
 --
--- @&amp;ChangeMessageVisibilityBatchRequestEntry.1.Id=change_visibility_msg_2@ 
+-- @&ChangeMessageVisibilityBatchRequestEntry.1.Id=change_visibility_msg_2@ 
 --
--- @&amp;ChangeMessageVisibilityBatchRequestEntry.1.ReceiptHandle=<replaceable>Your_Receipt_Handle</replaceable>@ 
+-- @&ChangeMessageVisibilityBatchRequestEntry.1.ReceiptHandle=your_receipt_handle@ 
 --
--- @&amp;ChangeMessageVisibilityBatchRequestEntry.1.VisibilityTimeout=45@ 
+-- @&ChangeMessageVisibilityBatchRequestEntry.1.VisibilityTimeout=45@ 
 --
 --
 -- /See:/ 'changeMessageVisibilityBatchRequestEntry' smart constructor.

@@ -49,13 +49,13 @@ newtype DeleteQueue = DeleteQueue'{_dqName :: Text}
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dqName' - The name of the queue to be deleted.
+-- * 'dqName' - The name of the queue that you want to delete.
 deleteQueue
     :: Text -- ^ 'dqName'
     -> DeleteQueue
 deleteQueue pName_ = DeleteQueue'{_dqName = pName_}
 
--- | The name of the queue to be deleted.
+-- | The name of the queue that you want to delete.
 dqName :: Lens' DeleteQueue Text
 dqName = lens _dqName (\ s a -> s{_dqName = a})
 

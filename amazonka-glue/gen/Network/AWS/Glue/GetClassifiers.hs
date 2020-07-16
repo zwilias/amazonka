@@ -61,7 +61,7 @@ data GetClassifiers = GetClassifiers'{_gcNextToken ::
 --
 -- * 'gcNextToken' - An optional continuation token.
 --
--- * 'gcMaxResults' - Size of the list to return (optional).
+-- * 'gcMaxResults' - The size of the list to return (optional).
 getClassifiers
     :: GetClassifiers
 getClassifiers
@@ -72,7 +72,7 @@ getClassifiers
 gcNextToken :: Lens' GetClassifiers (Maybe Text)
 gcNextToken = lens _gcNextToken (\ s a -> s{_gcNextToken = a})
 
--- | Size of the list to return (optional).
+-- | The size of the list to return (optional).
 gcMaxResults :: Lens' GetClassifiers (Maybe Natural)
 gcMaxResults = lens _gcMaxResults (\ s a -> s{_gcMaxResults = a}) . mapping _Nat
 

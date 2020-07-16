@@ -63,7 +63,7 @@ data GetDocumentPath = GetDocumentPath'{_gdpAuthenticationToken
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'gdpAuthenticationToken' - Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.
+-- * 'gdpAuthenticationToken' - Amazon WorkDocs authentication token. Not required when using AWS administrator credentials to access the API.
 --
 -- * 'gdpMarker' - This value is not supported.
 --
@@ -80,7 +80,7 @@ getDocumentPath pDocumentId_
                      _gdpMarker = Nothing, _gdpLimit = Nothing,
                      _gdpFields = Nothing, _gdpDocumentId = pDocumentId_}
 
--- | Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.
+-- | Amazon WorkDocs authentication token. Not required when using AWS administrator credentials to access the API.
 gdpAuthenticationToken :: Lens' GetDocumentPath (Maybe Text)
 gdpAuthenticationToken = lens _gdpAuthenticationToken (\ s a -> s{_gdpAuthenticationToken = a}) . mapping _Sensitive
 

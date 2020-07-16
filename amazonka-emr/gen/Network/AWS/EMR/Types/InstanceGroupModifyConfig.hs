@@ -17,17 +17,22 @@
 --
 module Network.AWS.EMR.Types.InstanceGroupModifyConfig where
 
+import Network.AWS.EMR.Types.Configuration
 import Network.AWS.EMR.Types.ShrinkPolicy
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | Modify an instance group size.
+-- | Modify the size or configurations of an instance group.
 --
 --
 --
 -- /See:/ 'instanceGroupModifyConfig' smart constructor.
 data InstanceGroupModifyConfig = InstanceGroupModifyConfig'{_igmcInstanceCount
                                                             :: !(Maybe Int),
+                                                            _igmcConfigurations
+                                                            ::
+                                                            !(Maybe
+                                                                [Configuration]),
                                                             _igmcEC2InstanceIdsToTerminate
                                                             :: !(Maybe [Text]),
                                                             _igmcShrinkPolicy ::
@@ -44,6 +49,8 @@ data InstanceGroupModifyConfig = InstanceGroupModifyConfig'{_igmcInstanceCount
 --
 -- * 'igmcInstanceCount' - Target size for the instance group.
 --
+-- * 'igmcConfigurations' - A list of new or modified configurations to apply for an instance group.
+--
 -- * 'igmcEC2InstanceIdsToTerminate' - The EC2 InstanceIds to terminate. After you terminate the instances, the instance group will not return to its original requested size.
 --
 -- * 'igmcShrinkPolicy' - Policy for customizing shrink operations.
@@ -55,6 +62,7 @@ instanceGroupModifyConfig
 instanceGroupModifyConfig pInstanceGroupId_
   = InstanceGroupModifyConfig'{_igmcInstanceCount =
                                  Nothing,
+                               _igmcConfigurations = Nothing,
                                _igmcEC2InstanceIdsToTerminate = Nothing,
                                _igmcShrinkPolicy = Nothing,
                                _igmcInstanceGroupId = pInstanceGroupId_}
@@ -62,6 +70,10 @@ instanceGroupModifyConfig pInstanceGroupId_
 -- | Target size for the instance group.
 igmcInstanceCount :: Lens' InstanceGroupModifyConfig (Maybe Int)
 igmcInstanceCount = lens _igmcInstanceCount (\ s a -> s{_igmcInstanceCount = a})
+
+-- | A list of new or modified configurations to apply for an instance group.
+igmcConfigurations :: Lens' InstanceGroupModifyConfig [Configuration]
+igmcConfigurations = lens _igmcConfigurations (\ s a -> s{_igmcConfigurations = a}) . _Default . _Coerce
 
 -- | The EC2 InstanceIds to terminate. After you terminate the instances, the instance group will not return to its original requested size.
 igmcEC2InstanceIdsToTerminate :: Lens' InstanceGroupModifyConfig [Text]
@@ -84,6 +96,7 @@ instance ToJSON InstanceGroupModifyConfig where
           = object
               (catMaybes
                  [("InstanceCount" .=) <$> _igmcInstanceCount,
+                  ("Configurations" .=) <$> _igmcConfigurations,
                   ("EC2InstanceIdsToTerminate" .=) <$>
                     _igmcEC2InstanceIdsToTerminate,
                   ("ShrinkPolicy" .=) <$> _igmcShrinkPolicy,

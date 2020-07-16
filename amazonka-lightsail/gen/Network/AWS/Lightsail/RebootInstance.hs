@@ -18,8 +18,10 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Restarts a specific instance. When your Amazon Lightsail instance is finished rebooting, Lightsail assigns a new public IP address. To use the same IP address after restarting, create a static IP address and attach it to the instance.
+-- Restarts a specific instance.
 --
+--
+-- The @reboot instance@ operation supports tag-based access control via resource tags applied to the resource identified by @instance name@ . For more information, see the <https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags Lightsail Dev Guide> .
 --
 module Network.AWS.Lightsail.RebootInstance
     (
@@ -111,7 +113,7 @@ data RebootInstanceResponse = RebootInstanceResponse'{_rirsOperations
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'rirsOperations' - An array of key-value pairs containing information about the request operations.
+-- * 'rirsOperations' - An array of objects that describe the result of the action, such as the status of the request, the time stamp of the request, and the resources affected by the request.
 --
 -- * 'rirsResponseStatus' - -- | The response status code.
 rebootInstanceResponse
@@ -121,7 +123,7 @@ rebootInstanceResponse pResponseStatus_
   = RebootInstanceResponse'{_rirsOperations = Nothing,
                             _rirsResponseStatus = pResponseStatus_}
 
--- | An array of key-value pairs containing information about the request operations.
+-- | An array of objects that describe the result of the action, such as the status of the request, the time stamp of the request, and the resources affected by the request.
 rirsOperations :: Lens' RebootInstanceResponse [Operation]
 rirsOperations = lens _rirsOperations (\ s a -> s{_rirsOperations = a}) . _Default . _Coerce
 

@@ -19,6 +19,7 @@ module Network.AWS.SSM.Types.MaintenanceWindowRunCommandParameters where
 
 import Network.AWS.Lens
 import Network.AWS.Prelude
+import Network.AWS.SSM.Types.CloudWatchOutputConfig
 import Network.AWS.SSM.Types.DocumentHashType
 import Network.AWS.SSM.Types.NotificationConfig
 
@@ -41,6 +42,10 @@ data MaintenanceWindowRunCommandParameters = MaintenanceWindowRunCommandParamete
                                                                                     ::
                                                                                     !(Maybe
                                                                                         DocumentHashType),
+                                                                                    _mwrcpCloudWatchOutputConfig
+                                                                                    ::
+                                                                                    !(Maybe
+                                                                                        CloudWatchOutputConfig),
                                                                                     _mwrcpOutputS3KeyPrefix
                                                                                     ::
                                                                                     !(Maybe
@@ -52,6 +57,10 @@ data MaintenanceWindowRunCommandParameters = MaintenanceWindowRunCommandParamete
                                                                                            Text
                                                                                            [Text])),
                                                                                     _mwrcpDocumentHash
+                                                                                    ::
+                                                                                    !(Maybe
+                                                                                        Text),
+                                                                                    _mwrcpDocumentVersion
                                                                                     ::
                                                                                     !(Maybe
                                                                                         Text),
@@ -74,23 +83,27 @@ data MaintenanceWindowRunCommandParameters = MaintenanceWindowRunCommandParamete
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'mwrcpServiceRoleARN' - The IAM service role to assume during task execution.
+-- * 'mwrcpServiceRoleARN' - The ARN of the IAM service role to use to publish Amazon Simple Notification Service (Amazon SNS) notifications for maintenance window Run Command tasks.
 --
 -- * 'mwrcpNotificationConfig' - Configurations for sending notifications about command status changes on a per-instance basis.
 --
 -- * 'mwrcpDocumentHashType' - SHA-256 or SHA-1. SHA-1 hashes have been deprecated.
 --
--- * 'mwrcpOutputS3KeyPrefix' - The Amazon S3 bucket subfolder.
+-- * 'mwrcpCloudWatchOutputConfig' - Undocumented member.
+--
+-- * 'mwrcpOutputS3KeyPrefix' - The S3 bucket subfolder.
 --
 -- * 'mwrcpParameters' - The parameters for the RUN_COMMAND task execution.
 --
 -- * 'mwrcpDocumentHash' - The SHA-256 or SHA-1 hash created by the system when the document was created. SHA-1 hashes have been deprecated.
 --
--- * 'mwrcpTimeoutSeconds' - If this time is reached and the command has not already started executing, it doesn not execute.
+-- * 'mwrcpDocumentVersion' - The SSM document version to use in the request. You can specify $DEFAULT, $LATEST, or a specific version number. If you run commands by using the AWS CLI, then you must escape the first two options by using a backslash. If you specify a version number, then you don't need to use the backslash. For example: --document-version "\$DEFAULT" --document-version "\$LATEST" --document-version "3"
 --
--- * 'mwrcpComment' - Information about the command(s) to execute.
+-- * 'mwrcpTimeoutSeconds' - If this time is reached and the command has not already started running, it doesn't run.
 --
--- * 'mwrcpOutputS3BucketName' - The name of the Amazon S3 bucket.
+-- * 'mwrcpComment' - Information about the commands to run.
+--
+-- * 'mwrcpOutputS3BucketName' - The name of the S3 bucket.
 maintenanceWindowRunCommandParameters
     :: MaintenanceWindowRunCommandParameters
 maintenanceWindowRunCommandParameters
@@ -98,14 +111,17 @@ maintenanceWindowRunCommandParameters
                                              = Nothing,
                                            _mwrcpNotificationConfig = Nothing,
                                            _mwrcpDocumentHashType = Nothing,
+                                           _mwrcpCloudWatchOutputConfig =
+                                             Nothing,
                                            _mwrcpOutputS3KeyPrefix = Nothing,
                                            _mwrcpParameters = Nothing,
                                            _mwrcpDocumentHash = Nothing,
+                                           _mwrcpDocumentVersion = Nothing,
                                            _mwrcpTimeoutSeconds = Nothing,
                                            _mwrcpComment = Nothing,
                                            _mwrcpOutputS3BucketName = Nothing}
 
--- | The IAM service role to assume during task execution.
+-- | The ARN of the IAM service role to use to publish Amazon Simple Notification Service (Amazon SNS) notifications for maintenance window Run Command tasks.
 mwrcpServiceRoleARN :: Lens' MaintenanceWindowRunCommandParameters (Maybe Text)
 mwrcpServiceRoleARN = lens _mwrcpServiceRoleARN (\ s a -> s{_mwrcpServiceRoleARN = a})
 
@@ -117,7 +133,11 @@ mwrcpNotificationConfig = lens _mwrcpNotificationConfig (\ s a -> s{_mwrcpNotifi
 mwrcpDocumentHashType :: Lens' MaintenanceWindowRunCommandParameters (Maybe DocumentHashType)
 mwrcpDocumentHashType = lens _mwrcpDocumentHashType (\ s a -> s{_mwrcpDocumentHashType = a})
 
--- | The Amazon S3 bucket subfolder.
+-- | Undocumented member.
+mwrcpCloudWatchOutputConfig :: Lens' MaintenanceWindowRunCommandParameters (Maybe CloudWatchOutputConfig)
+mwrcpCloudWatchOutputConfig = lens _mwrcpCloudWatchOutputConfig (\ s a -> s{_mwrcpCloudWatchOutputConfig = a})
+
+-- | The S3 bucket subfolder.
 mwrcpOutputS3KeyPrefix :: Lens' MaintenanceWindowRunCommandParameters (Maybe Text)
 mwrcpOutputS3KeyPrefix = lens _mwrcpOutputS3KeyPrefix (\ s a -> s{_mwrcpOutputS3KeyPrefix = a})
 
@@ -129,15 +149,19 @@ mwrcpParameters = lens _mwrcpParameters (\ s a -> s{_mwrcpParameters = a}) . _De
 mwrcpDocumentHash :: Lens' MaintenanceWindowRunCommandParameters (Maybe Text)
 mwrcpDocumentHash = lens _mwrcpDocumentHash (\ s a -> s{_mwrcpDocumentHash = a})
 
--- | If this time is reached and the command has not already started executing, it doesn not execute.
+-- | The SSM document version to use in the request. You can specify $DEFAULT, $LATEST, or a specific version number. If you run commands by using the AWS CLI, then you must escape the first two options by using a backslash. If you specify a version number, then you don't need to use the backslash. For example: --document-version "\$DEFAULT" --document-version "\$LATEST" --document-version "3"
+mwrcpDocumentVersion :: Lens' MaintenanceWindowRunCommandParameters (Maybe Text)
+mwrcpDocumentVersion = lens _mwrcpDocumentVersion (\ s a -> s{_mwrcpDocumentVersion = a})
+
+-- | If this time is reached and the command has not already started running, it doesn't run.
 mwrcpTimeoutSeconds :: Lens' MaintenanceWindowRunCommandParameters (Maybe Natural)
 mwrcpTimeoutSeconds = lens _mwrcpTimeoutSeconds (\ s a -> s{_mwrcpTimeoutSeconds = a}) . mapping _Nat
 
--- | Information about the command(s) to execute.
+-- | Information about the commands to run.
 mwrcpComment :: Lens' MaintenanceWindowRunCommandParameters (Maybe Text)
 mwrcpComment = lens _mwrcpComment (\ s a -> s{_mwrcpComment = a})
 
--- | The name of the Amazon S3 bucket.
+-- | The name of the S3 bucket.
 mwrcpOutputS3BucketName :: Lens' MaintenanceWindowRunCommandParameters (Maybe Text)
 mwrcpOutputS3BucketName = lens _mwrcpOutputS3BucketName (\ s a -> s{_mwrcpOutputS3BucketName = a})
 
@@ -151,9 +175,11 @@ instance FromJSON
                    (x .:? "ServiceRoleArn") <*>
                      (x .:? "NotificationConfig")
                      <*> (x .:? "DocumentHashType")
+                     <*> (x .:? "CloudWatchOutputConfig")
                      <*> (x .:? "OutputS3KeyPrefix")
                      <*> (x .:? "Parameters" .!= mempty)
                      <*> (x .:? "DocumentHash")
+                     <*> (x .:? "DocumentVersion")
                      <*> (x .:? "TimeoutSeconds")
                      <*> (x .:? "Comment")
                      <*> (x .:? "OutputS3BucketName"))
@@ -174,9 +200,12 @@ instance ToJSON MaintenanceWindowRunCommandParameters
                   ("NotificationConfig" .=) <$>
                     _mwrcpNotificationConfig,
                   ("DocumentHashType" .=) <$> _mwrcpDocumentHashType,
+                  ("CloudWatchOutputConfig" .=) <$>
+                    _mwrcpCloudWatchOutputConfig,
                   ("OutputS3KeyPrefix" .=) <$> _mwrcpOutputS3KeyPrefix,
                   ("Parameters" .=) <$> _mwrcpParameters,
                   ("DocumentHash" .=) <$> _mwrcpDocumentHash,
+                  ("DocumentVersion" .=) <$> _mwrcpDocumentVersion,
                   ("TimeoutSeconds" .=) <$> _mwrcpTimeoutSeconds,
                   ("Comment" .=) <$> _mwrcpComment,
                   ("OutputS3BucketName" .=) <$>

@@ -20,7 +20,7 @@ module Network.AWS.GameLift.Types.PlayerLatency where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | Regional latency information for a player, used when requesting a new game session with 'StartGameSessionPlacement' . This value indicates the amount of time lag that exists when the player is connected to a fleet in the specified region. The relative difference between a player's latency values for multiple regions are used to determine which fleets are best suited to place a new game session for the player. 
+-- | Regional latency information for a player, used when requesting a new game session with 'StartGameSessionPlacement' . This value indicates the amount of time lag that exists when the player is connected to a fleet in the specified Region. The relative difference between a player's latency values for multiple Regions are used to determine which fleets are best suited to place a new game session for the player. 
 --
 --
 --
@@ -35,26 +35,26 @@ data PlayerLatency = PlayerLatency'{_plLatencyInMilliseconds
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'plLatencyInMilliseconds' - Amount of time that represents the time lag experienced by the player when connected to the specified region.
+-- * 'plLatencyInMilliseconds' - Amount of time that represents the time lag experienced by the player when connected to the specified Region.
 --
--- * 'plRegionIdentifier' - Name of the region that is associated with the latency value.
+-- * 'plRegionIdentifier' - Name of the Region that is associated with the latency value.
 --
--- * 'plPlayerId' - Unique identifier for a player associated with the latency data.
+-- * 'plPlayerId' - A unique identifier for a player associated with the latency data.
 playerLatency
     :: PlayerLatency
 playerLatency
   = PlayerLatency'{_plLatencyInMilliseconds = Nothing,
                    _plRegionIdentifier = Nothing, _plPlayerId = Nothing}
 
--- | Amount of time that represents the time lag experienced by the player when connected to the specified region.
+-- | Amount of time that represents the time lag experienced by the player when connected to the specified Region.
 plLatencyInMilliseconds :: Lens' PlayerLatency (Maybe Double)
 plLatencyInMilliseconds = lens _plLatencyInMilliseconds (\ s a -> s{_plLatencyInMilliseconds = a})
 
--- | Name of the region that is associated with the latency value.
+-- | Name of the Region that is associated with the latency value.
 plRegionIdentifier :: Lens' PlayerLatency (Maybe Text)
 plRegionIdentifier = lens _plRegionIdentifier (\ s a -> s{_plRegionIdentifier = a})
 
--- | Unique identifier for a player associated with the latency data.
+-- | A unique identifier for a player associated with the latency data.
 plPlayerId :: Lens' PlayerLatency (Maybe Text)
 plPlayerId = lens _plPlayerId (\ s a -> s{_plPlayerId = a})
 

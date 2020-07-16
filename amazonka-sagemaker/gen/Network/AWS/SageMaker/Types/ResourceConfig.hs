@@ -37,7 +37,7 @@ data ResourceConfig = ResourceConfig'{_rcVolumeKMSKeyId
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'rcVolumeKMSKeyId' - The Amazon Resource Name (ARN) of a AWS Key Management Service key that Amazon SageMaker uses to encrypt data on the storage volume attached to the ML compute instance(s) that run the training job.
+-- * 'rcVolumeKMSKeyId' - The AWS KMS key that Amazon SageMaker uses to encrypt data on the storage volume attached to the ML compute instance(s) that run the training job. The @VolumeKmsKeyId@ can be in any of the following formats:     * // KMS Key ID @"1234abcd-12ab-34cd-56ef-1234567890ab"@      * // Amazon Resource Name (ARN) of a KMS Key @"arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab"@ 
 --
 -- * 'rcInstanceType' - The ML compute instance type. 
 --
@@ -56,7 +56,7 @@ resourceConfig pInstanceType_ pInstanceCount_
                     _rcInstanceCount = _Nat # pInstanceCount_,
                     _rcVolumeSizeInGB = _Nat # pVolumeSizeInGB_}
 
--- | The Amazon Resource Name (ARN) of a AWS Key Management Service key that Amazon SageMaker uses to encrypt data on the storage volume attached to the ML compute instance(s) that run the training job.
+-- | The AWS KMS key that Amazon SageMaker uses to encrypt data on the storage volume attached to the ML compute instance(s) that run the training job. The @VolumeKmsKeyId@ can be in any of the following formats:     * // KMS Key ID @"1234abcd-12ab-34cd-56ef-1234567890ab"@      * // Amazon Resource Name (ARN) of a KMS Key @"arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab"@ 
 rcVolumeKMSKeyId :: Lens' ResourceConfig (Maybe Text)
 rcVolumeKMSKeyId = lens _rcVolumeKMSKeyId (\ s a -> s{_rcVolumeKMSKeyId = a})
 

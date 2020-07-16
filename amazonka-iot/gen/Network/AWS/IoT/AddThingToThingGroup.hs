@@ -30,6 +30,7 @@ module Network.AWS.IoT.AddThingToThingGroup
     , atttgThingGroupARN
     , atttgThingARN
     , atttgThingGroupName
+    , atttgOverrideDynamicGroups
     , atttgThingName
 
     -- * Destructuring the Response
@@ -53,6 +54,8 @@ data AddThingToThingGroup = AddThingToThingGroup'{_atttgThingGroupARN
                                                   !(Maybe Text),
                                                   _atttgThingGroupName ::
                                                   !(Maybe Text),
+                                                  _atttgOverrideDynamicGroups ::
+                                                  !(Maybe Bool),
                                                   _atttgThingName ::
                                                   !(Maybe Text)}
                               deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -67,6 +70,8 @@ data AddThingToThingGroup = AddThingToThingGroup'{_atttgThingGroupARN
 --
 -- * 'atttgThingGroupName' - The name of the group to which you are adding a thing.
 --
+-- * 'atttgOverrideDynamicGroups' - Override dynamic thing groups with static thing groups when 10-group limit is reached. If a thing belongs to 10 thing groups, and one or more of those groups are dynamic thing groups, adding a thing to a static group removes the thing from the last dynamic group.
+--
 -- * 'atttgThingName' - The name of the thing to add to a group.
 addThingToThingGroup
     :: AddThingToThingGroup
@@ -75,6 +80,7 @@ addThingToThingGroup
                             Nothing,
                           _atttgThingARN = Nothing,
                           _atttgThingGroupName = Nothing,
+                          _atttgOverrideDynamicGroups = Nothing,
                           _atttgThingName = Nothing}
 
 -- | The ARN of the group to which you are adding a thing.
@@ -88,6 +94,10 @@ atttgThingARN = lens _atttgThingARN (\ s a -> s{_atttgThingARN = a})
 -- | The name of the group to which you are adding a thing.
 atttgThingGroupName :: Lens' AddThingToThingGroup (Maybe Text)
 atttgThingGroupName = lens _atttgThingGroupName (\ s a -> s{_atttgThingGroupName = a})
+
+-- | Override dynamic thing groups with static thing groups when 10-group limit is reached. If a thing belongs to 10 thing groups, and one or more of those groups are dynamic thing groups, adding a thing to a static group removes the thing from the last dynamic group.
+atttgOverrideDynamicGroups :: Lens' AddThingToThingGroup (Maybe Bool)
+atttgOverrideDynamicGroups = lens _atttgOverrideDynamicGroups (\ s a -> s{_atttgOverrideDynamicGroups = a})
 
 -- | The name of the thing to add to a group.
 atttgThingName :: Lens' AddThingToThingGroup (Maybe Text)
@@ -117,6 +127,8 @@ instance ToJSON AddThingToThingGroup where
                  [("thingGroupArn" .=) <$> _atttgThingGroupARN,
                   ("thingArn" .=) <$> _atttgThingARN,
                   ("thingGroupName" .=) <$> _atttgThingGroupName,
+                  ("overrideDynamicGroups" .=) <$>
+                    _atttgOverrideDynamicGroups,
                   ("thingName" .=) <$> _atttgThingName])
 
 instance ToPath AddThingToThingGroup where

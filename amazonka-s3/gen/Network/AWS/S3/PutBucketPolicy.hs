@@ -18,7 +18,23 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Replaces a policy on a bucket. If the bucket already has a policy, the one in this request completely replaces it.
+-- Applies an Amazon S3 bucket policy to an Amazon S3 bucket. If you are using an identity other than the root user of the AWS account that owns the bucket, the calling identity must have the @PutBucketPolicy@ permissions on the specified bucket and belong to the bucket owner's account in order to use this operation.
+--
+--
+-- If you don't have @PutBucketPolic@ y permissions, Amazon S3 returns a @403 Access Denied@ error. If you have the correct permissions, but you're not using an identity that belongs to the bucket owner's account, Amazon S3 returns a @405 Method Not Allowed@ error.
+--
+-- /Important:/ As a security precaution, the root user of the AWS account that owns a bucket can always use this operation, even if the policy explicitly denies the root user the ability to perform this action. 
+--
+-- For more information about bucket policies, see <https://docs.aws.amazon.com/AmazonS3/latest/dev/using-iam-policies.html Using Bucket Policies and User Policies> .
+--
+-- The following operations are related to @PutBucketPolicy@ :
+--
+--     * 'CreateBucket' 
+--
+--     * 'DeleteBucket' 
+--
+--
+--
 module Network.AWS.S3.PutBucketPolicy
     (
     -- * Creating a Request
@@ -56,9 +72,9 @@ data PutBucketPolicy = PutBucketPolicy'{_pbpConfirmRemoveSelfBucketAccess
 --
 -- * 'pbpConfirmRemoveSelfBucketAccess' - Set this parameter to true to confirm that you want to remove your permissions to change this bucket policy in the future.
 --
--- * 'pbpContentMD5' - Undocumented member.
+-- * 'pbpContentMD5' - The MD5 hash of the request body.
 --
--- * 'pbpBucket' - Undocumented member.
+-- * 'pbpBucket' - The name of the bucket.
 --
 -- * 'pbpPolicy' - The bucket policy as a JSON document.
 putBucketPolicy
@@ -75,11 +91,11 @@ putBucketPolicy pBucket_ pPolicy_
 pbpConfirmRemoveSelfBucketAccess :: Lens' PutBucketPolicy (Maybe Bool)
 pbpConfirmRemoveSelfBucketAccess = lens _pbpConfirmRemoveSelfBucketAccess (\ s a -> s{_pbpConfirmRemoveSelfBucketAccess = a})
 
--- | Undocumented member.
+-- | The MD5 hash of the request body.
 pbpContentMD5 :: Lens' PutBucketPolicy (Maybe Text)
 pbpContentMD5 = lens _pbpContentMD5 (\ s a -> s{_pbpContentMD5 = a})
 
--- | Undocumented member.
+-- | The name of the bucket.
 pbpBucket :: Lens' PutBucketPolicy BucketName
 pbpBucket = lens _pbpBucket (\ s a -> s{_pbpBucket = a})
 

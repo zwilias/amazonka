@@ -27,7 +27,7 @@ module Network.AWS.MediaLive.Types.Eac3AttenuationControl (
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | Placeholder documentation for Eac3AttenuationControl
+-- | Eac3 Attenuation Control
 data Eac3AttenuationControl = Eac3AttenuationControl' (CI
                                                          Text)
                                 deriving (Eq, Ord, Read, Show, Data, Typeable,

@@ -38,7 +38,7 @@ data ShutdownEventConfiguration = ShutdownEventConfiguration'{_secExecutionTimeo
 --
 -- * 'secExecutionTimeout' - The time, in seconds, that AWS OpsWorks Stacks will wait after triggering a Shutdown event before shutting down an instance.
 --
--- * 'secDelayUntilElbConnectionsDrained' - Whether to enable Elastic Load Balancing connection draining. For more information, see <http://docs.aws.amazon.com/ElasticLoadBalancing/latest/DeveloperGuide/TerminologyandKeyConcepts.html#conn-drain Connection Draining> 
+-- * 'secDelayUntilElbConnectionsDrained' - Whether to enable Elastic Load Balancing connection draining. For more information, see <https://docs.aws.amazon.com/ElasticLoadBalancing/latest/DeveloperGuide/TerminologyandKeyConcepts.html#conn-drain Connection Draining> 
 shutdownEventConfiguration
     :: ShutdownEventConfiguration
 shutdownEventConfiguration
@@ -50,7 +50,7 @@ shutdownEventConfiguration
 secExecutionTimeout :: Lens' ShutdownEventConfiguration (Maybe Int)
 secExecutionTimeout = lens _secExecutionTimeout (\ s a -> s{_secExecutionTimeout = a})
 
--- | Whether to enable Elastic Load Balancing connection draining. For more information, see <http://docs.aws.amazon.com/ElasticLoadBalancing/latest/DeveloperGuide/TerminologyandKeyConcepts.html#conn-drain Connection Draining> 
+-- | Whether to enable Elastic Load Balancing connection draining. For more information, see <https://docs.aws.amazon.com/ElasticLoadBalancing/latest/DeveloperGuide/TerminologyandKeyConcepts.html#conn-drain Connection Draining> 
 secDelayUntilElbConnectionsDrained :: Lens' ShutdownEventConfiguration (Maybe Bool)
 secDelayUntilElbConnectionsDrained = lens _secDelayUntilElbConnectionsDrained (\ s a -> s{_secDelayUntilElbConnectionsDrained = a})
 

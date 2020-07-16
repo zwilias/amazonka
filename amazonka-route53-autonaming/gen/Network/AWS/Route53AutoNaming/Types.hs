@@ -40,6 +40,9 @@ module Network.AWS.Route53AutoNaming.Types
     -- * HealthStatus
     , HealthStatus (..)
 
+    -- * HealthStatusFilter
+    , HealthStatusFilter (..)
+
     -- * NamespaceFilterName
     , NamespaceFilterName (..)
 
@@ -90,6 +93,20 @@ module Network.AWS.Route53AutoNaming.Types
     , drType
     , drTTL
 
+    -- * HTTPInstanceSummary
+    , HTTPInstanceSummary
+    , hTTPInstanceSummary
+    , httpisInstanceId
+    , httpisNamespaceName
+    , httpisAttributes
+    , httpisServiceName
+    , httpisHealthStatus
+
+    -- * HTTPProperties
+    , HTTPProperties
+    , hTTPProperties
+    , httppHTTPName
+
     -- * HealthCheckConfig
     , HealthCheckConfig
     , healthCheckConfig
@@ -139,14 +156,19 @@ module Network.AWS.Route53AutoNaming.Types
     , NamespaceProperties
     , namespaceProperties
     , npDNSProperties
+    , npHTTPProperties
 
     -- * NamespaceSummary
     , NamespaceSummary
     , namespaceSummary
     , nsARN
+    , nsCreateDate
+    , nsServiceCount
     , nsName
     , nsId
     , nsType
+    , nsDescription
+    , nsProperties
 
     -- * Operation
     , Operation
@@ -196,6 +218,7 @@ module Network.AWS.Route53AutoNaming.Types
     , siCreatorRequestId
     , siCreateDate
     , siHealthCheckCustomConfig
+    , siNamespaceId
     , siName
     , siId
     , siDNSConfig
@@ -206,8 +229,12 @@ module Network.AWS.Route53AutoNaming.Types
     , serviceSummary
     , ssInstanceCount
     , ssARN
+    , ssHealthCheckConfig
+    , ssCreateDate
+    , ssHealthCheckCustomConfig
     , ssName
     , ssId
+    , ssDNSConfig
     , ssDescription
     ) where
 
@@ -218,6 +245,7 @@ import Network.AWS.Route53AutoNaming.Types.CustomHealthStatus
 import Network.AWS.Route53AutoNaming.Types.FilterCondition
 import Network.AWS.Route53AutoNaming.Types.HealthCheckType
 import Network.AWS.Route53AutoNaming.Types.HealthStatus
+import Network.AWS.Route53AutoNaming.Types.HealthStatusFilter
 import Network.AWS.Route53AutoNaming.Types.NamespaceFilterName
 import Network.AWS.Route53AutoNaming.Types.NamespaceType
 import Network.AWS.Route53AutoNaming.Types.OperationFilterName
@@ -231,6 +259,8 @@ import Network.AWS.Route53AutoNaming.Types.DNSConfig
 import Network.AWS.Route53AutoNaming.Types.DNSConfigChange
 import Network.AWS.Route53AutoNaming.Types.DNSProperties
 import Network.AWS.Route53AutoNaming.Types.DNSRecord
+import Network.AWS.Route53AutoNaming.Types.HTTPInstanceSummary
+import Network.AWS.Route53AutoNaming.Types.HTTPProperties
 import Network.AWS.Route53AutoNaming.Types.HealthCheckConfig
 import Network.AWS.Route53AutoNaming.Types.HealthCheckCustomConfig
 import Network.AWS.Route53AutoNaming.Types.Instance
@@ -247,7 +277,7 @@ import Network.AWS.Route53AutoNaming.Types.ServiceFilter
 import Network.AWS.Route53AutoNaming.Types.ServiceInfo
 import Network.AWS.Route53AutoNaming.Types.ServiceSummary
 
--- | API version @2017-03-14@ of the Amazon Route 53 Auto Naming SDK configuration.
+-- | API version @2017-03-14@ of the Amazon Cloud Map SDK configuration.
 route53AutoNaming :: Service
 route53AutoNaming
   = Service{_svcAbbrev = "Route53AutoNaming",
@@ -270,6 +300,11 @@ route53AutoNaming
             = Just "throttling_exception"
           | has (hasCode "Throttling" . hasStatus 400) e =
             Just "throttling"
+          | has
+              (hasCode "ProvisionedThroughputExceededException" .
+                 hasStatus 400)
+              e
+            = Just "throughput_exceeded"
           | has (hasStatus 504) e = Just "gateway_timeout"
           | has
               (hasCode "RequestThrottledException" . hasStatus 400)
@@ -297,7 +332,9 @@ _InstanceNotFound
   = _MatchServiceError route53AutoNaming
       "InstanceNotFound"
 
--- | Prism for CustomHealthNotFound' errors.
+-- | The health check for the instance that is specified by @ServiceId@ and @InstanceId@ is not a custom health check. 
+--
+--
 _CustomHealthNotFound :: AsError a => Getting (First ServiceError) a ServiceError
 _CustomHealthNotFound
   = _MatchServiceError route53AutoNaming
@@ -343,7 +380,7 @@ _NamespaceAlreadyExists
   = _MatchServiceError route53AutoNaming
       "NamespaceAlreadyExists"
 
--- | One or more specified values aren't valid. For example, when you're creating a namespace, the value of @Name@ might not be a valid DNS name.
+-- | One or more specified values aren't valid. For example, a required value might be missing, a numeric value might be outside the allowed range, or a string value might exceed length constraints.
 --
 --
 _InvalidInput :: AsError a => Getting (First ServiceError) a ServiceError

@@ -20,7 +20,7 @@ module Network.AWS.CloudWatchEvents.Types.Condition where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | A JSON string that you can use to limit the event bus permissions that you're granting to only accounts that fulfill the condition. Currently, the only supported condition is membership in a certain AWS organization. The string must contain @Type@ , @Key@ , and @Value@ fields. The @Value@ field specifies the ID of the AWS organization. The following is an example value for @Condition@ :
+-- | A JSON string which you can use to limit the event bus permissions you are granting to only accounts that fulfill the condition. Currently, the only supported condition is membership in a certain AWS organization. The string must contain @Type@ , @Key@ , and @Value@ fields. The @Value@ field specifies the ID of the AWS organization. Following is an example value for @Condition@ :
 --
 --
 -- @'{"Type" : "StringEquals", "Key": "aws:PrincipalOrgID", "Value": "o-1234567890"}'@ 
@@ -35,11 +35,11 @@ data Condition = Condition'{_cType :: !Text,
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'cType' - The type of condition. Currently, the only supported value is @StringEquals@ .
+-- * 'cType' - Specifies the type of condition. Currently the only supported value is @StringEquals@ .
 --
--- * 'cKey' - The key for the condition. Currently, the only supported key is @aws:PrincipalOrgID@ .
+-- * 'cKey' - Specifies the key for the condition. Currently the only supported key is @aws:PrincipalOrgID@ .
 --
--- * 'cValue' - The value for the key. Currently, this must be the ID of the organization.
+-- * 'cValue' - Specifies the value for the key. Currently, this must be the ID of the organization.
 condition
     :: Text -- ^ 'cType'
     -> Text -- ^ 'cKey'
@@ -49,15 +49,15 @@ condition pType_ pKey_ pValue_
   = Condition'{_cType = pType_, _cKey = pKey_,
                _cValue = pValue_}
 
--- | The type of condition. Currently, the only supported value is @StringEquals@ .
+-- | Specifies the type of condition. Currently the only supported value is @StringEquals@ .
 cType :: Lens' Condition Text
 cType = lens _cType (\ s a -> s{_cType = a})
 
--- | The key for the condition. Currently, the only supported key is @aws:PrincipalOrgID@ .
+-- | Specifies the key for the condition. Currently the only supported key is @aws:PrincipalOrgID@ .
 cKey :: Lens' Condition Text
 cKey = lens _cKey (\ s a -> s{_cKey = a})
 
--- | The value for the key. Currently, this must be the ID of the organization.
+-- | Specifies the value for the key. Currently, this must be the ID of the organization.
 cValue :: Lens' Condition Text
 cValue = lens _cValue (\ s a -> s{_cValue = a})
 

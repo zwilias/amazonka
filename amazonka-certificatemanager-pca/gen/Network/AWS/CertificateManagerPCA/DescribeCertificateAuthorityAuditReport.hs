@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Lists information about a specific audit report created by calling the 'CreateCertificateAuthorityAuditReport' function. Audit information is created every time the certificate authority (CA) private key is used. The private key is used when you call the 'IssueCertificate' function or the 'RevokeCertificate' function. 
+-- Lists information about a specific audit report created by calling the 'CreateCertificateAuthorityAuditReport' action. Audit information is created every time the certificate authority (CA) private key is used. The private key is used when you call the 'IssueCertificate' action or the 'RevokeCertificate' action. 
 --
 --
 module Network.AWS.CertificateManagerPCA.DescribeCertificateAuthorityAuditReport
@@ -62,9 +62,9 @@ data DescribeCertificateAuthorityAuditReport = DescribeCertificateAuthorityAudit
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dcaarCertificateAuthorityARN' - The Amazon Resource Name (ARN) of the private CA. This must be of the form: @arn:aws:acm:/region/ :/account/ :certificate-authority//12345678-1234-1234-1234-123456789012/ @ . 
+-- * 'dcaarCertificateAuthorityARN' - The Amazon Resource Name (ARN) of the private CA. This must be of the form: @arn:aws:acm-pca:/region/ :/account/ :certificate-authority//12345678-1234-1234-1234-123456789012/ @ . 
 --
--- * 'dcaarAuditReportId' - The report ID returned by calling the 'CreateCertificateAuthorityAuditReport' function.
+-- * 'dcaarAuditReportId' - The report ID returned by calling the 'CreateCertificateAuthorityAuditReport' action.
 describeCertificateAuthorityAuditReport
     :: Text -- ^ 'dcaarCertificateAuthorityARN'
     -> Text -- ^ 'dcaarAuditReportId'
@@ -76,11 +76,11 @@ describeCertificateAuthorityAuditReport
                                              _dcaarAuditReportId =
                                                pAuditReportId_}
 
--- | The Amazon Resource Name (ARN) of the private CA. This must be of the form: @arn:aws:acm:/region/ :/account/ :certificate-authority//12345678-1234-1234-1234-123456789012/ @ . 
+-- | The Amazon Resource Name (ARN) of the private CA. This must be of the form: @arn:aws:acm-pca:/region/ :/account/ :certificate-authority//12345678-1234-1234-1234-123456789012/ @ . 
 dcaarCertificateAuthorityARN :: Lens' DescribeCertificateAuthorityAuditReport Text
 dcaarCertificateAuthorityARN = lens _dcaarCertificateAuthorityARN (\ s a -> s{_dcaarCertificateAuthorityARN = a})
 
--- | The report ID returned by calling the 'CreateCertificateAuthorityAuditReport' function.
+-- | The report ID returned by calling the 'CreateCertificateAuthorityAuditReport' action.
 dcaarAuditReportId :: Lens' DescribeCertificateAuthorityAuditReport Text
 dcaarAuditReportId = lens _dcaarAuditReportId (\ s a -> s{_dcaarAuditReportId = a})
 

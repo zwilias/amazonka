@@ -19,8 +19,8 @@
 module Network.AWS.MediaConvert.Types.HlsSegmentControl (
   HlsSegmentControl (
     ..
-    , SegmentedFiles
-    , SingleFile
+    , HSCSegmentedFiles
+    , HSCSingleFile
     )
   ) where
 
@@ -32,15 +32,15 @@ data HlsSegmentControl = HlsSegmentControl' (CI Text)
                            deriving (Eq, Ord, Read, Show, Data, Typeable,
                                      Generic)
 
-pattern SegmentedFiles :: HlsSegmentControl
-pattern SegmentedFiles = HlsSegmentControl' "SEGMENTED_FILES"
+pattern HSCSegmentedFiles :: HlsSegmentControl
+pattern HSCSegmentedFiles = HlsSegmentControl' "SEGMENTED_FILES"
 
-pattern SingleFile :: HlsSegmentControl
-pattern SingleFile = HlsSegmentControl' "SINGLE_FILE"
+pattern HSCSingleFile :: HlsSegmentControl
+pattern HSCSingleFile = HlsSegmentControl' "SINGLE_FILE"
 
 {-# COMPLETE
-  SegmentedFiles,
-  SingleFile,
+  HSCSegmentedFiles,
+  HSCSingleFile,
   HlsSegmentControl' #-}
 
 instance FromText HlsSegmentControl where
@@ -55,20 +55,20 @@ instance ToText HlsSegmentControl where
 --   fromEnum is a partial function, and will error on values unknown at generation time.
 instance Enum HlsSegmentControl where
     toEnum i = case i of
-        0 -> SegmentedFiles
-        1 -> SingleFile
+        0 -> HSCSegmentedFiles
+        1 -> HSCSingleFile
         _ -> (error . showText) $ "Unknown index for HlsSegmentControl: " <> toText i
     fromEnum x = case x of
-        SegmentedFiles -> 0
-        SingleFile -> 1
+        HSCSegmentedFiles -> 0
+        HSCSingleFile -> 1
         HlsSegmentControl' name -> (error . showText) $ "Unknown HlsSegmentControl: " <> original name
 
 -- | Represents the bounds of /known/ $HlsSegmentControl.
 --   AWS may have added more since the source was generated.
 --   This instance exists only for backward compatibility.
 instance Bounded HlsSegmentControl where
-    minBound = SegmentedFiles
-    maxBound = SingleFile
+    minBound = HSCSegmentedFiles
+    maxBound = HSCSingleFile
 
 instance Hashable     HlsSegmentControl
 instance NFData       HlsSegmentControl

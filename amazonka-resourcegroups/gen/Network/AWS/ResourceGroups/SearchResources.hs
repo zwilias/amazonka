@@ -37,6 +37,7 @@ module Network.AWS.ResourceGroups.SearchResources
     , searchResourcesResponse
     , SearchResourcesResponse
     -- * Response Lenses
+    , srrsQueryErrors
     , srrsNextToken
     , srrsResourceIdentifiers
     , srrsResponseStatus
@@ -100,8 +101,9 @@ instance AWSRequest SearchResources where
           = receiveJSON
               (\ s h x ->
                  SearchResourcesResponse' <$>
-                   (x .?> "NextToken") <*>
-                     (x .?> "ResourceIdentifiers" .!@ mempty)
+                   (x .?> "QueryErrors" .!@ mempty) <*>
+                     (x .?> "NextToken")
+                     <*> (x .?> "ResourceIdentifiers" .!@ mempty)
                      <*> (pure (fromEnum s)))
 
 instance Hashable SearchResources where
@@ -126,8 +128,11 @@ instance ToQuery SearchResources where
         toQuery = const mempty
 
 -- | /See:/ 'searchResourcesResponse' smart constructor.
-data SearchResourcesResponse = SearchResourcesResponse'{_srrsNextToken
-                                                        :: !(Maybe Text),
+data SearchResourcesResponse = SearchResourcesResponse'{_srrsQueryErrors
+                                                        ::
+                                                        !(Maybe [QueryError]),
+                                                        _srrsNextToken ::
+                                                        !(Maybe Text),
                                                         _srrsResourceIdentifiers
                                                         ::
                                                         !(Maybe
@@ -141,6 +146,8 @@ data SearchResourcesResponse = SearchResourcesResponse'{_srrsNextToken
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
+-- * 'srrsQueryErrors' - A list of @QueryError@ objects. Each error is an object that contains @ErrorCode@ and @Message@ structures. Possible values for @ErrorCode@ are @CLOUDFORMATION_STACK_INACTIVE@ and @CLOUDFORMATION_STACK_NOT_EXISTING@ .
+--
 -- * 'srrsNextToken' - The NextToken value to include in a subsequent @SearchResources@ request, to get more results.
 --
 -- * 'srrsResourceIdentifiers' - The ARNs and resource types of resources that are members of the group that you specified.
@@ -150,9 +157,15 @@ searchResourcesResponse
     :: Int -- ^ 'srrsResponseStatus'
     -> SearchResourcesResponse
 searchResourcesResponse pResponseStatus_
-  = SearchResourcesResponse'{_srrsNextToken = Nothing,
+  = SearchResourcesResponse'{_srrsQueryErrors =
+                               Nothing,
+                             _srrsNextToken = Nothing,
                              _srrsResourceIdentifiers = Nothing,
                              _srrsResponseStatus = pResponseStatus_}
+
+-- | A list of @QueryError@ objects. Each error is an object that contains @ErrorCode@ and @Message@ structures. Possible values for @ErrorCode@ are @CLOUDFORMATION_STACK_INACTIVE@ and @CLOUDFORMATION_STACK_NOT_EXISTING@ .
+srrsQueryErrors :: Lens' SearchResourcesResponse [QueryError]
+srrsQueryErrors = lens _srrsQueryErrors (\ s a -> s{_srrsQueryErrors = a}) . _Default . _Coerce
 
 -- | The NextToken value to include in a subsequent @SearchResources@ request, to get more results.
 srrsNextToken :: Lens' SearchResourcesResponse (Maybe Text)

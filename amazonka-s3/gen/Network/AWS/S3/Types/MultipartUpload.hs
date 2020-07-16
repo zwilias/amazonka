@@ -24,9 +24,13 @@ import Network.AWS.S3.Types.Initiator
 import Network.AWS.S3.Types.Owner
 import Network.AWS.S3.Types.StorageClass
 
--- | /See:/ 'multipartUpload' smart constructor.
+-- | Container for the @MultipartUpload@ for the Amazon S3 object.
+--
+--
+--
+-- /See:/ 'multipartUpload' smart constructor.
 data MultipartUpload = MultipartUpload'{_muInitiated
-                                        :: !(Maybe RFC822),
+                                        :: !(Maybe ISO8601),
                                         _muInitiator :: !(Maybe Initiator),
                                         _muOwner :: !(Maybe Owner),
                                         _muKey :: !(Maybe ObjectKey),
@@ -43,7 +47,7 @@ data MultipartUpload = MultipartUpload'{_muInitiated
 --
 -- * 'muInitiator' - Identifies who initiated the multipart upload.
 --
--- * 'muOwner' - Undocumented member.
+-- * 'muOwner' - Specifies the owner of the object that is part of the multipart upload. 
 --
 -- * 'muKey' - Key of the object for which the multipart upload was initiated.
 --
@@ -66,7 +70,7 @@ muInitiated = lens _muInitiated (\ s a -> s{_muInitiated = a}) . mapping _Time
 muInitiator :: Lens' MultipartUpload (Maybe Initiator)
 muInitiator = lens _muInitiator (\ s a -> s{_muInitiator = a})
 
--- | Undocumented member.
+-- | Specifies the owner of the object that is part of the multipart upload. 
 muOwner :: Lens' MultipartUpload (Maybe Owner)
 muOwner = lens _muOwner (\ s a -> s{_muOwner = a})
 

@@ -18,7 +18,9 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Send a batch of messages
+-- Creates and sends a direct message.
+--
+--
 module Network.AWS.Pinpoint.SendMessages
     (
     -- * Creating a Request
@@ -53,7 +55,7 @@ data SendMessages = SendMessages'{_smApplicationId ::
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'smApplicationId' - Undocumented member.
+-- * 'smApplicationId' - The unique identifier for the application. This identifier is displayed as the __Project ID__ on the Amazon Pinpoint console.
 --
 -- * 'smMessageRequest' - Undocumented member.
 sendMessages
@@ -64,7 +66,7 @@ sendMessages pApplicationId_ pMessageRequest_
   = SendMessages'{_smApplicationId = pApplicationId_,
                   _smMessageRequest = pMessageRequest_}
 
--- | Undocumented member.
+-- | The unique identifier for the application. This identifier is displayed as the __Project ID__ on the Amazon Pinpoint console.
 smApplicationId :: Lens' SendMessages Text
 smApplicationId = lens _smApplicationId (\ s a -> s{_smApplicationId = a})
 

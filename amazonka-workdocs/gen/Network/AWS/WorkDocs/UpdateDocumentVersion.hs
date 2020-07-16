@@ -61,7 +61,7 @@ data UpdateDocumentVersion = UpdateDocumentVersion'{_udvAuthenticationToken
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'udvAuthenticationToken' - Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.
+-- * 'udvAuthenticationToken' - Amazon WorkDocs authentication token. Not required when using AWS administrator credentials to access the API.
 --
 -- * 'udvVersionStatus' - The status of the version.
 --
@@ -79,7 +79,7 @@ updateDocumentVersion pDocumentId_ pVersionId_
                            _udvDocumentId = pDocumentId_,
                            _udvVersionId = pVersionId_}
 
--- | Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.
+-- | Amazon WorkDocs authentication token. Not required when using AWS administrator credentials to access the API.
 udvAuthenticationToken :: Lens' UpdateDocumentVersion (Maybe Text)
 udvAuthenticationToken = lens _udvAuthenticationToken (\ s a -> s{_udvAuthenticationToken = a}) . mapping _Sensitive
 

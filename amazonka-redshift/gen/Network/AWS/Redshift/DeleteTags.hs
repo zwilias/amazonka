@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Deletes a tag or tags from a resource. You must provide the ARN of the resource from which you want to delete the tag or tags.
+-- Deletes tags from a resource. You must provide the ARN of the resource from which you want to delete the tag or tags.
 --
 --
 module Network.AWS.Redshift.DeleteTags
@@ -56,7 +56,7 @@ data DeleteTags = DeleteTags'{_dtsResourceName ::
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dtsResourceName' - The Amazon Resource Name (ARN) from which you want to remove the tag or tags. For example, @arn:aws:redshift:us-east-1:123456789:cluster:t1@ . 
+-- * 'dtsResourceName' - The Amazon Resource Name (ARN) from which you want to remove the tag or tags. For example, @arn:aws:redshift:us-east-2:123456789:cluster:t1@ . 
 --
 -- * 'dtsTagKeys' - The tag key that you want to delete.
 deleteTags
@@ -66,7 +66,7 @@ deleteTags pResourceName_
   = DeleteTags'{_dtsResourceName = pResourceName_,
                 _dtsTagKeys = mempty}
 
--- | The Amazon Resource Name (ARN) from which you want to remove the tag or tags. For example, @arn:aws:redshift:us-east-1:123456789:cluster:t1@ . 
+-- | The Amazon Resource Name (ARN) from which you want to remove the tag or tags. For example, @arn:aws:redshift:us-east-2:123456789:cluster:t1@ . 
 dtsResourceName :: Lens' DeleteTags Text
 dtsResourceName = lens _dtsResourceName (\ s a -> s{_dtsResourceName = a})
 

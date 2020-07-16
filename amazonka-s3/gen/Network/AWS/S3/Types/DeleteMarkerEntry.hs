@@ -22,13 +22,18 @@ import Network.AWS.Prelude
 import Network.AWS.S3.Internal
 import Network.AWS.S3.Types.Owner
 
--- | /See:/ 'deleteMarkerEntry' smart constructor.
+-- | Information about the delete marker.
+--
+--
+--
+-- /See:/ 'deleteMarkerEntry' smart constructor.
 data DeleteMarkerEntry = DeleteMarkerEntry'{_dmeVersionId
                                             :: !(Maybe ObjectVersionId),
                                             _dmeIsLatest :: !(Maybe Bool),
                                             _dmeOwner :: !(Maybe Owner),
                                             _dmeKey :: !(Maybe ObjectKey),
-                                            _dmeLastModified :: !(Maybe RFC822)}
+                                            _dmeLastModified ::
+                                            !(Maybe ISO8601)}
                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteMarkerEntry' with the minimum fields required to make a request.
@@ -39,7 +44,7 @@ data DeleteMarkerEntry = DeleteMarkerEntry'{_dmeVersionId
 --
 -- * 'dmeIsLatest' - Specifies whether the object is (true) or is not (false) the latest version of an object.
 --
--- * 'dmeOwner' - Undocumented member.
+-- * 'dmeOwner' - The account that created the delete marker.>
 --
 -- * 'dmeKey' - The object key.
 --
@@ -59,7 +64,7 @@ dmeVersionId = lens _dmeVersionId (\ s a -> s{_dmeVersionId = a})
 dmeIsLatest :: Lens' DeleteMarkerEntry (Maybe Bool)
 dmeIsLatest = lens _dmeIsLatest (\ s a -> s{_dmeIsLatest = a})
 
--- | Undocumented member.
+-- | The account that created the delete marker.>
 dmeOwner :: Lens' DeleteMarkerEntry (Maybe Owner)
 dmeOwner = lens _dmeOwner (\ s a -> s{_dmeOwner = a})
 

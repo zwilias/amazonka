@@ -40,6 +40,9 @@ import Test.AWS.KinesisAnalytics.Internal
 --         , requestStartApplication $
 --             startApplication
 --
+--         , requestListTagsForResource $
+--             listTagsForResource
+--
 --         , requestDeleteApplicationReferenceDataSource $
 --             deleteApplicationReferenceDataSource
 --
@@ -70,11 +73,17 @@ import Test.AWS.KinesisAnalytics.Internal
 --         , requestAddApplicationInput $
 --             addApplicationInput
 --
+--         , requestTagResource $
+--             tagResource
+--
 --         , requestAddApplicationCloudWatchLoggingOption $
 --             addApplicationCloudWatchLoggingOption
 --
 --         , requestListApplications $
 --             listApplications
+--
+--         , requestUntagResource $
+--             untagResource
 --
 --         , requestDeleteApplicationInputProcessingConfiguration $
 --             deleteApplicationInputProcessingConfiguration
@@ -93,6 +102,9 @@ import Test.AWS.KinesisAnalytics.Internal
 --
 --         , responseStartApplication $
 --             startApplicationResponse
+--
+--         , responseListTagsForResource $
+--             listTagsForResourceResponse
 --
 --         , responseDeleteApplicationReferenceDataSource $
 --             deleteApplicationReferenceDataSourceResponse
@@ -124,11 +136,17 @@ import Test.AWS.KinesisAnalytics.Internal
 --         , responseAddApplicationInput $
 --             addApplicationInputResponse
 --
+--         , responseTagResource $
+--             tagResourceResponse
+--
 --         , responseAddApplicationCloudWatchLoggingOption $
 --             addApplicationCloudWatchLoggingOptionResponse
 --
 --         , responseListApplications $
 --             listApplicationsResponse
+--
+--         , responseUntagResource $
+--             untagResourceResponse
 --
 --         , responseDeleteApplicationInputProcessingConfiguration $
 --             deleteApplicationInputProcessingConfigurationResponse
@@ -157,6 +175,11 @@ requestStartApplication :: StartApplication -> TestTree
 requestStartApplication = req
     "StartApplication"
     "fixture/StartApplication.yaml"
+
+requestListTagsForResource :: ListTagsForResource -> TestTree
+requestListTagsForResource = req
+    "ListTagsForResource"
+    "fixture/ListTagsForResource.yaml"
 
 requestDeleteApplicationReferenceDataSource :: DeleteApplicationReferenceDataSource -> TestTree
 requestDeleteApplicationReferenceDataSource = req
@@ -208,6 +231,11 @@ requestAddApplicationInput = req
     "AddApplicationInput"
     "fixture/AddApplicationInput.yaml"
 
+requestTagResource :: TagResource -> TestTree
+requestTagResource = req
+    "TagResource"
+    "fixture/TagResource.yaml"
+
 requestAddApplicationCloudWatchLoggingOption :: AddApplicationCloudWatchLoggingOption -> TestTree
 requestAddApplicationCloudWatchLoggingOption = req
     "AddApplicationCloudWatchLoggingOption"
@@ -217,6 +245,11 @@ requestListApplications :: ListApplications -> TestTree
 requestListApplications = req
     "ListApplications"
     "fixture/ListApplications.yaml"
+
+requestUntagResource :: UntagResource -> TestTree
+requestUntagResource = req
+    "UntagResource"
+    "fixture/UntagResource.yaml"
 
 requestDeleteApplicationInputProcessingConfiguration :: DeleteApplicationInputProcessingConfiguration -> TestTree
 requestDeleteApplicationInputProcessingConfiguration = req
@@ -252,6 +285,13 @@ responseStartApplication = res
     "fixture/StartApplicationResponse.proto"
     kinesisAnalytics
     (Proxy :: Proxy StartApplication)
+
+responseListTagsForResource :: ListTagsForResourceResponse -> TestTree
+responseListTagsForResource = res
+    "ListTagsForResourceResponse"
+    "fixture/ListTagsForResourceResponse.proto"
+    kinesisAnalytics
+    (Proxy :: Proxy ListTagsForResource)
 
 responseDeleteApplicationReferenceDataSource :: DeleteApplicationReferenceDataSourceResponse -> TestTree
 responseDeleteApplicationReferenceDataSource = res
@@ -323,6 +363,13 @@ responseAddApplicationInput = res
     kinesisAnalytics
     (Proxy :: Proxy AddApplicationInput)
 
+responseTagResource :: TagResourceResponse -> TestTree
+responseTagResource = res
+    "TagResourceResponse"
+    "fixture/TagResourceResponse.proto"
+    kinesisAnalytics
+    (Proxy :: Proxy TagResource)
+
 responseAddApplicationCloudWatchLoggingOption :: AddApplicationCloudWatchLoggingOptionResponse -> TestTree
 responseAddApplicationCloudWatchLoggingOption = res
     "AddApplicationCloudWatchLoggingOptionResponse"
@@ -336,6 +383,13 @@ responseListApplications = res
     "fixture/ListApplicationsResponse.proto"
     kinesisAnalytics
     (Proxy :: Proxy ListApplications)
+
+responseUntagResource :: UntagResourceResponse -> TestTree
+responseUntagResource = res
+    "UntagResourceResponse"
+    "fixture/UntagResourceResponse.proto"
+    kinesisAnalytics
+    (Proxy :: Proxy UntagResource)
 
 responseDeleteApplicationInputProcessingConfiguration :: DeleteApplicationInputProcessingConfigurationResponse -> TestTree
 responseDeleteApplicationInputProcessingConfiguration = res

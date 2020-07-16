@@ -77,6 +77,8 @@ library
         , Network.AWS.SQS.Types.Message
         , Network.AWS.SQS.Types.MessageAttribute
         , Network.AWS.SQS.Types.MessageAttributeValue
+        , Network.AWS.SQS.Types.MessageSystemAttributeNameForSends
+        , Network.AWS.SQS.Types.MessageSystemAttributeValue
         , Network.AWS.SQS.Types.Product
         , Network.AWS.SQS.Types.QueueAttributeName
         , Network.AWS.SQS.Types.SendMessageBatchRequestEntry

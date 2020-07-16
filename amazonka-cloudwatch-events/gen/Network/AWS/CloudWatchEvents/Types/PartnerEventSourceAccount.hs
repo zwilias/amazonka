@@ -42,13 +42,13 @@ data PartnerEventSourceAccount = PartnerEventSourceAccount'{_pesaCreationTime
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'pesaCreationTime' - The date and time when the event source was created.
+-- * 'pesaCreationTime' - The date and time the event source was created.
 --
--- * 'pesaState' - The state of the event source. If it's @ACTIVE@ , you have already created a matching event bus for this event source, and that event bus is active. If it's @PENDING@ , either you haven't yet created a matching event bus, or that event bus is deactivated. If it's @DELETED@ , you have created a matching event bus, but the event source has since been deleted.
+-- * 'pesaState' - The state of the event source. If it is ACTIVE, you have already created a matching event bus for this event source, and that event bus is active. If it is PENDING, either you haven't yet created a matching event bus, or that event bus is deactivated. If it is DELETED, you have created a matching event bus, but the event source has since been deleted.
 --
 -- * 'pesaAccount' - The AWS account ID that the partner event source was offered to.
 --
--- * 'pesaExpirationTime' - The date and time when the event source will expire if the AWS account doesn't create a matching event bus for it.
+-- * 'pesaExpirationTime' - The date and time that the event source will expire, if the AWS account doesn't create a matching event bus for it.
 partnerEventSourceAccount
     :: PartnerEventSourceAccount
 partnerEventSourceAccount
@@ -57,11 +57,11 @@ partnerEventSourceAccount
                                _pesaState = Nothing, _pesaAccount = Nothing,
                                _pesaExpirationTime = Nothing}
 
--- | The date and time when the event source was created.
+-- | The date and time the event source was created.
 pesaCreationTime :: Lens' PartnerEventSourceAccount (Maybe UTCTime)
 pesaCreationTime = lens _pesaCreationTime (\ s a -> s{_pesaCreationTime = a}) . mapping _Time
 
--- | The state of the event source. If it's @ACTIVE@ , you have already created a matching event bus for this event source, and that event bus is active. If it's @PENDING@ , either you haven't yet created a matching event bus, or that event bus is deactivated. If it's @DELETED@ , you have created a matching event bus, but the event source has since been deleted.
+-- | The state of the event source. If it is ACTIVE, you have already created a matching event bus for this event source, and that event bus is active. If it is PENDING, either you haven't yet created a matching event bus, or that event bus is deactivated. If it is DELETED, you have created a matching event bus, but the event source has since been deleted.
 pesaState :: Lens' PartnerEventSourceAccount (Maybe EventSourceState)
 pesaState = lens _pesaState (\ s a -> s{_pesaState = a})
 
@@ -69,7 +69,7 @@ pesaState = lens _pesaState (\ s a -> s{_pesaState = a})
 pesaAccount :: Lens' PartnerEventSourceAccount (Maybe Text)
 pesaAccount = lens _pesaAccount (\ s a -> s{_pesaAccount = a})
 
--- | The date and time when the event source will expire if the AWS account doesn't create a matching event bus for it.
+-- | The date and time that the event source will expire, if the AWS account doesn't create a matching event bus for it.
 pesaExpirationTime :: Lens' PartnerEventSourceAccount (Maybe UTCTime)
 pesaExpirationTime = lens _pesaExpirationTime (\ s a -> s{_pesaExpirationTime = a}) . mapping _Time
 

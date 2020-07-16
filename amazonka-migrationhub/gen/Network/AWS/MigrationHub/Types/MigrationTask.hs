@@ -42,13 +42,13 @@ data MigrationTask = MigrationTask'{_mtUpdateDateTime
 --
 -- * 'mtUpdateDateTime' - The timestamp when the task was gathered.
 --
--- * 'mtResourceAttributeList' - 
+-- * 'mtResourceAttributeList' - Information about the resource that is being migrated. This data will be used to map the task to a resource in the Application Discovery Service repository.
 --
 -- * 'mtTask' - Task object encapsulating task information.
 --
 -- * 'mtProgressUpdateStream' - A name that identifies the vendor of the migration tool being used.
 --
--- * 'mtMigrationTaskName' - Unique identifier that references the migration task.
+-- * 'mtMigrationTaskName' - Unique identifier that references the migration task. /Do not store personal data in this field./ 
 migrationTask
     :: MigrationTask
 migrationTask
@@ -61,7 +61,7 @@ migrationTask
 mtUpdateDateTime :: Lens' MigrationTask (Maybe UTCTime)
 mtUpdateDateTime = lens _mtUpdateDateTime (\ s a -> s{_mtUpdateDateTime = a}) . mapping _Time
 
--- | 
+-- | Information about the resource that is being migrated. This data will be used to map the task to a resource in the Application Discovery Service repository.
 mtResourceAttributeList :: Lens' MigrationTask [ResourceAttribute]
 mtResourceAttributeList = lens _mtResourceAttributeList (\ s a -> s{_mtResourceAttributeList = a}) . _Default . _Coerce
 
@@ -73,7 +73,7 @@ mtTask = lens _mtTask (\ s a -> s{_mtTask = a})
 mtProgressUpdateStream :: Lens' MigrationTask (Maybe Text)
 mtProgressUpdateStream = lens _mtProgressUpdateStream (\ s a -> s{_mtProgressUpdateStream = a})
 
--- | Unique identifier that references the migration task.
+-- | Unique identifier that references the migration task. /Do not store personal data in this field./ 
 mtMigrationTaskName :: Lens' MigrationTask (Maybe Text)
 mtMigrationTaskName = lens _mtMigrationTaskName (\ s a -> s{_mtMigrationTaskName = a})
 

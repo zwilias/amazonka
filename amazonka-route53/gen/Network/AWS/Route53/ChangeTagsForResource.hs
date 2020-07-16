@@ -21,7 +21,7 @@
 -- Adds, edits, or deletes tags for a health check or a hosted zone.
 --
 --
--- For information about using tags for cost allocation, see <http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html Using Cost Allocation Tags> in the /AWS Billing and Cost Management User Guide/ .
+-- For information about using tags for cost allocation, see <https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html Using Cost Allocation Tags> in the /AWS Billing and Cost Management User Guide/ .
 --
 module Network.AWS.Route53.ChangeTagsForResource
     (

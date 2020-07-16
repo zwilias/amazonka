@@ -21,7 +21,7 @@ import Network.AWS.ECS.Types.PlacementStrategyType
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | The task placement strategy for a task or service. For more information, see <http://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-placement-strategies.html Task Placement Strategies> in the /Amazon Elastic Container Service Developer Guide/ .
+-- | The task placement strategy for a task or service. For more information, see <https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-placement-strategies.html Task Placement Strategies> in the /Amazon Elastic Container Service Developer Guide/ .
 --
 --
 --

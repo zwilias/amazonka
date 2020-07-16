@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Retrieves information about a specified DevEndpoint.
+-- Retrieves information about a specified development endpoint.
 --
 --
 module Network.AWS.Glue.GetDevEndpoint
@@ -53,14 +53,14 @@ newtype GetDevEndpoint = GetDevEndpoint'{_gdeEndpointName
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'gdeEndpointName' - Name of the DevEndpoint for which to retrieve information.
+-- * 'gdeEndpointName' - Name of the @DevEndpoint@ to retrieve information for.
 getDevEndpoint
     :: Text -- ^ 'gdeEndpointName'
     -> GetDevEndpoint
 getDevEndpoint pEndpointName_
   = GetDevEndpoint'{_gdeEndpointName = pEndpointName_}
 
--- | Name of the DevEndpoint for which to retrieve information.
+-- | Name of the @DevEndpoint@ to retrieve information for.
 gdeEndpointName :: Lens' GetDevEndpoint Text
 gdeEndpointName = lens _gdeEndpointName (\ s a -> s{_gdeEndpointName = a})
 
@@ -110,7 +110,7 @@ data GetDevEndpointResponse = GetDevEndpointResponse'{_gtdvendpntrsDevEndpoint
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'gtdvendpntrsDevEndpoint' - A DevEndpoint definition.
+-- * 'gtdvendpntrsDevEndpoint' - A @DevEndpoint@ definition.
 --
 -- * 'gtdvendpntrsResponseStatus' - -- | The response status code.
 getDevEndpointResponse
@@ -121,7 +121,7 @@ getDevEndpointResponse pResponseStatus_
                               Nothing,
                             _gtdvendpntrsResponseStatus = pResponseStatus_}
 
--- | A DevEndpoint definition.
+-- | A @DevEndpoint@ definition.
 gtdvendpntrsDevEndpoint :: Lens' GetDevEndpointResponse (Maybe DevEndpoint)
 gtdvendpntrsDevEndpoint = lens _gtdvendpntrsDevEndpoint (\ s a -> s{_gtdvendpntrsDevEndpoint = a})
 

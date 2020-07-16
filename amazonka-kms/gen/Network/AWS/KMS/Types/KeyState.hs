@@ -23,6 +23,7 @@ module Network.AWS.KMS.Types.KeyState (
     , Enabled
     , PendingDeletion
     , PendingImport
+    , Unavailable
     )
   ) where
 
@@ -45,11 +46,15 @@ pattern PendingDeletion = KeyState' "PendingDeletion"
 pattern PendingImport :: KeyState
 pattern PendingImport = KeyState' "PendingImport"
 
+pattern Unavailable :: KeyState
+pattern Unavailable = KeyState' "Unavailable"
+
 {-# COMPLETE
   Disabled,
   Enabled,
   PendingDeletion,
   PendingImport,
+  Unavailable,
   KeyState' #-}
 
 instance FromText KeyState where
@@ -68,12 +73,14 @@ instance Enum KeyState where
         1 -> Enabled
         2 -> PendingDeletion
         3 -> PendingImport
+        4 -> Unavailable
         _ -> (error . showText) $ "Unknown index for KeyState: " <> toText i
     fromEnum x = case x of
         Disabled -> 0
         Enabled -> 1
         PendingDeletion -> 2
         PendingImport -> 3
+        Unavailable -> 4
         KeyState' name -> (error . showText) $ "Unknown KeyState: " <> original name
 
 -- | Represents the bounds of /known/ $KeyState.
@@ -81,7 +88,7 @@ instance Enum KeyState where
 --   This instance exists only for backward compatibility.
 instance Bounded KeyState where
     minBound = Disabled
-    maxBound = PendingImport
+    maxBound = Unavailable
 
 instance Hashable     KeyState
 instance NFData       KeyState

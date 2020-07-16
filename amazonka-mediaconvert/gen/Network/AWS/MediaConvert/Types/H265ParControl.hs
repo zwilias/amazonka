@@ -19,8 +19,8 @@
 module Network.AWS.MediaConvert.Types.H265ParControl (
   H265ParControl (
     ..
-    , InitializeFromSource
-    , Specified
+    , HPCInitializeFromSource
+    , HPCSpecified
     )
   ) where
 
@@ -32,15 +32,15 @@ data H265ParControl = H265ParControl' (CI Text)
                         deriving (Eq, Ord, Read, Show, Data, Typeable,
                                   Generic)
 
-pattern InitializeFromSource :: H265ParControl
-pattern InitializeFromSource = H265ParControl' "INITIALIZE_FROM_SOURCE"
+pattern HPCInitializeFromSource :: H265ParControl
+pattern HPCInitializeFromSource = H265ParControl' "INITIALIZE_FROM_SOURCE"
 
-pattern Specified :: H265ParControl
-pattern Specified = H265ParControl' "SPECIFIED"
+pattern HPCSpecified :: H265ParControl
+pattern HPCSpecified = H265ParControl' "SPECIFIED"
 
 {-# COMPLETE
-  InitializeFromSource,
-  Specified,
+  HPCInitializeFromSource,
+  HPCSpecified,
   H265ParControl' #-}
 
 instance FromText H265ParControl where
@@ -55,20 +55,20 @@ instance ToText H265ParControl where
 --   fromEnum is a partial function, and will error on values unknown at generation time.
 instance Enum H265ParControl where
     toEnum i = case i of
-        0 -> InitializeFromSource
-        1 -> Specified
+        0 -> HPCInitializeFromSource
+        1 -> HPCSpecified
         _ -> (error . showText) $ "Unknown index for H265ParControl: " <> toText i
     fromEnum x = case x of
-        InitializeFromSource -> 0
-        Specified -> 1
+        HPCInitializeFromSource -> 0
+        HPCSpecified -> 1
         H265ParControl' name -> (error . showText) $ "Unknown H265ParControl: " <> original name
 
 -- | Represents the bounds of /known/ $H265ParControl.
 --   AWS may have added more since the source was generated.
 --   This instance exists only for backward compatibility.
 instance Bounded H265ParControl where
-    minBound = InitializeFromSource
-    maxBound = Specified
+    minBound = HPCInitializeFromSource
+    maxBound = HPCSpecified
 
 instance Hashable     H265ParControl
 instance NFData       H265ParControl

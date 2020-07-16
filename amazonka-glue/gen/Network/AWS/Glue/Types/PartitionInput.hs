@@ -21,7 +21,7 @@ import Network.AWS.Glue.Types.StorageDescriptor
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | The structure used to create and update a partion.
+-- | The structure used to create and update a partition.
 --
 --
 --
@@ -39,13 +39,13 @@ data PartitionInput = PartitionInput'{_piValues ::
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'piValues' - The values of the partition.
+-- * 'piValues' - The values of the partition. Although this parameter is not required by the SDK, you must specify this parameter for a valid input. The values for the keys for the new partition must be passed as an array of String objects that must be ordered in the same order as the partition keys appearing in the Amazon S3 prefix. Otherwise AWS Glue will add the values to the wrong keys.
 --
 -- * 'piLastAnalyzedTime' - The last time at which column statistics were computed for this partition.
 --
 -- * 'piStorageDescriptor' - Provides information about the physical location where the partition is stored.
 --
--- * 'piParameters' - Partition parameters, in the form of a list of key-value pairs.
+-- * 'piParameters' - These key-value pairs define partition parameters.
 --
 -- * 'piLastAccessTime' - The last time at which the partition was accessed.
 partitionInput
@@ -56,7 +56,7 @@ partitionInput
                     _piStorageDescriptor = Nothing,
                     _piParameters = Nothing, _piLastAccessTime = Nothing}
 
--- | The values of the partition.
+-- | The values of the partition. Although this parameter is not required by the SDK, you must specify this parameter for a valid input. The values for the keys for the new partition must be passed as an array of String objects that must be ordered in the same order as the partition keys appearing in the Amazon S3 prefix. Otherwise AWS Glue will add the values to the wrong keys.
 piValues :: Lens' PartitionInput [Text]
 piValues = lens _piValues (\ s a -> s{_piValues = a}) . _Default . _Coerce
 
@@ -68,7 +68,7 @@ piLastAnalyzedTime = lens _piLastAnalyzedTime (\ s a -> s{_piLastAnalyzedTime = 
 piStorageDescriptor :: Lens' PartitionInput (Maybe StorageDescriptor)
 piStorageDescriptor = lens _piStorageDescriptor (\ s a -> s{_piStorageDescriptor = a})
 
--- | Partition parameters, in the form of a list of key-value pairs.
+-- | These key-value pairs define partition parameters.
 piParameters :: Lens' PartitionInput (HashMap Text Text)
 piParameters = lens _piParameters (\ s a -> s{_piParameters = a}) . _Default . _Map
 

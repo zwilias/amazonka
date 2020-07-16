@@ -79,7 +79,7 @@ data LoadBalancerDescription = LoadBalancerDescription'{_lbdSourceSecurityGroup
 --
 -- * 'lbdSourceSecurityGroup' - The security group for the load balancer, which you can use as part of your inbound rules for your registered instances. To only allow traffic from load balancers, add a security group rule that specifies this source security group as the inbound source.
 --
--- * 'lbdCanonicalHostedZoneName' - The DNS name of the load balancer. For more information, see <http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/using-domain-names-with-elb.html Configure a Custom Domain Name> in the /Classic Load Balancer Guide/ .
+-- * 'lbdCanonicalHostedZoneName' - The DNS name of the load balancer. For more information, see <http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/using-domain-names-with-elb.html Configure a Custom Domain Name> in the /Classic Load Balancers Guide/ .
 --
 -- * 'lbdSecurityGroups' - The security groups for the load balancer. Valid only for load balancers in a VPC.
 --
@@ -130,7 +130,7 @@ loadBalancerDescription
 lbdSourceSecurityGroup :: Lens' LoadBalancerDescription (Maybe SourceSecurityGroup)
 lbdSourceSecurityGroup = lens _lbdSourceSecurityGroup (\ s a -> s{_lbdSourceSecurityGroup = a})
 
--- | The DNS name of the load balancer. For more information, see <http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/using-domain-names-with-elb.html Configure a Custom Domain Name> in the /Classic Load Balancer Guide/ .
+-- | The DNS name of the load balancer. For more information, see <http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/using-domain-names-with-elb.html Configure a Custom Domain Name> in the /Classic Load Balancers Guide/ .
 lbdCanonicalHostedZoneName :: Lens' LoadBalancerDescription (Maybe Text)
 lbdCanonicalHostedZoneName = lens _lbdCanonicalHostedZoneName (\ s a -> s{_lbdCanonicalHostedZoneName = a})
 

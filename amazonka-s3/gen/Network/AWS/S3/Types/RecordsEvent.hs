@@ -21,7 +21,11 @@ import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.S3.Internal
 
--- | /See:/ 'recordsEvent' smart constructor.
+-- | The container for the records event.
+--
+--
+--
+-- /See:/ 'recordsEvent' smart constructor.
 newtype RecordsEvent = RecordsEvent'{_rePayload ::
                                      Maybe Base64}
                          deriving (Eq, Read, Show, Data, Typeable, Generic)

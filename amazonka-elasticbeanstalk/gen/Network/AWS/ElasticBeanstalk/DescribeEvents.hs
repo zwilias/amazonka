@@ -95,7 +95,7 @@ data DescribeEvents = DescribeEvents'{_deRequestId ::
 --
 -- * 'deVersionLabel' - If specified, AWS Elastic Beanstalk restricts the returned descriptions to those associated with this application version.
 --
--- * 'dePlatformARN' - The ARN of the version of the custom platform.
+-- * 'dePlatformARN' - The ARN of a custom platform version. If specified, AWS Elastic Beanstalk restricts the returned descriptions to those associated with this custom platform version.
 --
 -- * 'deEnvironmentName' - If specified, AWS Elastic Beanstalk restricts the returned descriptions to those associated with this environment.
 --
@@ -142,7 +142,7 @@ deNextToken = lens _deNextToken (\ s a -> s{_deNextToken = a})
 deVersionLabel :: Lens' DescribeEvents (Maybe Text)
 deVersionLabel = lens _deVersionLabel (\ s a -> s{_deVersionLabel = a})
 
--- | The ARN of the version of the custom platform.
+-- | The ARN of a custom platform version. If specified, AWS Elastic Beanstalk restricts the returned descriptions to those associated with this custom platform version.
 dePlatformARN :: Lens' DescribeEvents (Maybe Text)
 dePlatformARN = lens _dePlatformARN (\ s a -> s{_dePlatformARN = a})
 

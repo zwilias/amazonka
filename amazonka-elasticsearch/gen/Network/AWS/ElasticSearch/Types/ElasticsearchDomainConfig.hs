@@ -19,12 +19,15 @@ module Network.AWS.ElasticSearch.Types.ElasticsearchDomainConfig where
 
 import Network.AWS.ElasticSearch.Types.AccessPoliciesStatus
 import Network.AWS.ElasticSearch.Types.AdvancedOptionsStatus
+import Network.AWS.ElasticSearch.Types.AdvancedSecurityOptionsStatus
 import Network.AWS.ElasticSearch.Types.CognitoOptionsStatus
+import Network.AWS.ElasticSearch.Types.DomainEndpointOptionsStatus
 import Network.AWS.ElasticSearch.Types.EBSOptionsStatus
 import Network.AWS.ElasticSearch.Types.ElasticsearchClusterConfigStatus
 import Network.AWS.ElasticSearch.Types.ElasticsearchVersionStatus
 import Network.AWS.ElasticSearch.Types.EncryptionAtRestOptionsStatus
 import Network.AWS.ElasticSearch.Types.LogPublishingOptionsStatus
+import Network.AWS.ElasticSearch.Types.NodeToNodeEncryptionOptionsStatus
 import Network.AWS.ElasticSearch.Types.SnapshotOptionsStatus
 import Network.AWS.ElasticSearch.Types.VPCDerivedInfoStatus
 import Network.AWS.Lens
@@ -39,6 +42,10 @@ data ElasticsearchDomainConfig = ElasticsearchDomainConfig'{_edcEBSOptions
                                                             ::
                                                             !(Maybe
                                                                 EBSOptionsStatus),
+                                                            _edcNodeToNodeEncryptionOptions
+                                                            ::
+                                                            !(Maybe
+                                                                NodeToNodeEncryptionOptionsStatus),
                                                             _edcAccessPolicies
                                                             ::
                                                             !(Maybe
@@ -47,6 +54,10 @@ data ElasticsearchDomainConfig = ElasticsearchDomainConfig'{_edcEBSOptions
                                                             ::
                                                             !(Maybe
                                                                 LogPublishingOptionsStatus),
+                                                            _edcAdvancedSecurityOptions
+                                                            ::
+                                                            !(Maybe
+                                                                AdvancedSecurityOptionsStatus),
                                                             _edcElasticsearchClusterConfig
                                                             ::
                                                             !(Maybe
@@ -66,6 +77,10 @@ data ElasticsearchDomainConfig = ElasticsearchDomainConfig'{_edcEBSOptions
                                                             _edcVPCOptions ::
                                                             !(Maybe
                                                                 VPCDerivedInfoStatus),
+                                                            _edcDomainEndpointOptions
+                                                            ::
+                                                            !(Maybe
+                                                                DomainEndpointOptionsStatus),
                                                             _edcAdvancedOptions
                                                             ::
                                                             !(Maybe
@@ -83,9 +98,13 @@ data ElasticsearchDomainConfig = ElasticsearchDomainConfig'{_edcEBSOptions
 --
 -- * 'edcEBSOptions' - Specifies the @EBSOptions@ for the Elasticsearch domain.
 --
+-- * 'edcNodeToNodeEncryptionOptions' - Specifies the @NodeToNodeEncryptionOptions@ for the Elasticsearch domain.
+--
 -- * 'edcAccessPolicies' - IAM access policy as a JSON-formatted string.
 --
 -- * 'edcLogPublishingOptions' - Log publishing options for the given domain.
+--
+-- * 'edcAdvancedSecurityOptions' - Specifies @AdvancedSecurityOptions@ for the domain. 
 --
 -- * 'edcElasticsearchClusterConfig' - Specifies the @ElasticsearchClusterConfig@ for the Elasticsearch domain.
 --
@@ -97,6 +116,8 @@ data ElasticsearchDomainConfig = ElasticsearchDomainConfig'{_edcEBSOptions
 --
 -- * 'edcVPCOptions' - The @VPCOptions@ for the specified domain. For more information, see <http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-vpc.html VPC Endpoints for Amazon Elasticsearch Service Domains> .
 --
+-- * 'edcDomainEndpointOptions' - Specifies the @DomainEndpointOptions@ for the Elasticsearch domain.
+--
 -- * 'edcAdvancedOptions' - Specifies the @AdvancedOptions@ for the domain. See <http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html#es-createdomain-configure-advanced-options Configuring Advanced Options> for more information.
 --
 -- * 'edcElasticsearchVersion' - String of format X.Y to specify version for the Elasticsearch domain.
@@ -105,19 +126,26 @@ elasticsearchDomainConfig
 elasticsearchDomainConfig
   = ElasticsearchDomainConfig'{_edcEBSOptions =
                                  Nothing,
+                               _edcNodeToNodeEncryptionOptions = Nothing,
                                _edcAccessPolicies = Nothing,
                                _edcLogPublishingOptions = Nothing,
+                               _edcAdvancedSecurityOptions = Nothing,
                                _edcElasticsearchClusterConfig = Nothing,
                                _edcSnapshotOptions = Nothing,
                                _edcCognitoOptions = Nothing,
                                _edcEncryptionAtRestOptions = Nothing,
                                _edcVPCOptions = Nothing,
+                               _edcDomainEndpointOptions = Nothing,
                                _edcAdvancedOptions = Nothing,
                                _edcElasticsearchVersion = Nothing}
 
 -- | Specifies the @EBSOptions@ for the Elasticsearch domain.
 edcEBSOptions :: Lens' ElasticsearchDomainConfig (Maybe EBSOptionsStatus)
 edcEBSOptions = lens _edcEBSOptions (\ s a -> s{_edcEBSOptions = a})
+
+-- | Specifies the @NodeToNodeEncryptionOptions@ for the Elasticsearch domain.
+edcNodeToNodeEncryptionOptions :: Lens' ElasticsearchDomainConfig (Maybe NodeToNodeEncryptionOptionsStatus)
+edcNodeToNodeEncryptionOptions = lens _edcNodeToNodeEncryptionOptions (\ s a -> s{_edcNodeToNodeEncryptionOptions = a})
 
 -- | IAM access policy as a JSON-formatted string.
 edcAccessPolicies :: Lens' ElasticsearchDomainConfig (Maybe AccessPoliciesStatus)
@@ -126,6 +154,10 @@ edcAccessPolicies = lens _edcAccessPolicies (\ s a -> s{_edcAccessPolicies = a})
 -- | Log publishing options for the given domain.
 edcLogPublishingOptions :: Lens' ElasticsearchDomainConfig (Maybe LogPublishingOptionsStatus)
 edcLogPublishingOptions = lens _edcLogPublishingOptions (\ s a -> s{_edcLogPublishingOptions = a})
+
+-- | Specifies @AdvancedSecurityOptions@ for the domain. 
+edcAdvancedSecurityOptions :: Lens' ElasticsearchDomainConfig (Maybe AdvancedSecurityOptionsStatus)
+edcAdvancedSecurityOptions = lens _edcAdvancedSecurityOptions (\ s a -> s{_edcAdvancedSecurityOptions = a})
 
 -- | Specifies the @ElasticsearchClusterConfig@ for the Elasticsearch domain.
 edcElasticsearchClusterConfig :: Lens' ElasticsearchDomainConfig (Maybe ElasticsearchClusterConfigStatus)
@@ -147,6 +179,10 @@ edcEncryptionAtRestOptions = lens _edcEncryptionAtRestOptions (\ s a -> s{_edcEn
 edcVPCOptions :: Lens' ElasticsearchDomainConfig (Maybe VPCDerivedInfoStatus)
 edcVPCOptions = lens _edcVPCOptions (\ s a -> s{_edcVPCOptions = a})
 
+-- | Specifies the @DomainEndpointOptions@ for the Elasticsearch domain.
+edcDomainEndpointOptions :: Lens' ElasticsearchDomainConfig (Maybe DomainEndpointOptionsStatus)
+edcDomainEndpointOptions = lens _edcDomainEndpointOptions (\ s a -> s{_edcDomainEndpointOptions = a})
+
 -- | Specifies the @AdvancedOptions@ for the domain. See <http://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html#es-createdomain-configure-advanced-options Configuring Advanced Options> for more information.
 edcAdvancedOptions :: Lens' ElasticsearchDomainConfig (Maybe AdvancedOptionsStatus)
 edcAdvancedOptions = lens _edcAdvancedOptions (\ s a -> s{_edcAdvancedOptions = a})
@@ -160,13 +196,17 @@ instance FromJSON ElasticsearchDomainConfig where
           = withObject "ElasticsearchDomainConfig"
               (\ x ->
                  ElasticsearchDomainConfig' <$>
-                   (x .:? "EBSOptions") <*> (x .:? "AccessPolicies") <*>
-                     (x .:? "LogPublishingOptions")
+                   (x .:? "EBSOptions") <*>
+                     (x .:? "NodeToNodeEncryptionOptions")
+                     <*> (x .:? "AccessPolicies")
+                     <*> (x .:? "LogPublishingOptions")
+                     <*> (x .:? "AdvancedSecurityOptions")
                      <*> (x .:? "ElasticsearchClusterConfig")
                      <*> (x .:? "SnapshotOptions")
                      <*> (x .:? "CognitoOptions")
                      <*> (x .:? "EncryptionAtRestOptions")
                      <*> (x .:? "VPCOptions")
+                     <*> (x .:? "DomainEndpointOptions")
                      <*> (x .:? "AdvancedOptions")
                      <*> (x .:? "ElasticsearchVersion"))
 

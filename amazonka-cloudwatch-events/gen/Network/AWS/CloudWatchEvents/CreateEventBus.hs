@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Creates a new event bus within your account. This can be a custom event bus which you can use to receive events from your own custom applications and services, or it can be a partner event bus which can be matched to a partner event source.
+-- Creates a new event bus within your account. This can be a custom event bus which you can use to receive events from your custom applications and services, or it can be a partner event bus which can be matched to a partner event source.
 --
 --
 module Network.AWS.CloudWatchEvents.CreateEventBus
@@ -28,6 +28,7 @@ module Network.AWS.CloudWatchEvents.CreateEventBus
     , CreateEventBus
     -- * Request Lenses
     , cebEventSourceName
+    , cebTags
     , cebName
 
     -- * Destructuring the Response
@@ -48,6 +49,7 @@ import Network.AWS.Response
 -- | /See:/ 'createEventBus' smart constructor.
 data CreateEventBus = CreateEventBus'{_cebEventSourceName
                                       :: !(Maybe Text),
+                                      _cebTags :: !(Maybe [Tag]),
                                       _cebName :: !Text}
                         deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -55,21 +57,27 @@ data CreateEventBus = CreateEventBus'{_cebEventSourceName
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'cebEventSourceName' - If you're creating a partner event bus, this specifies the partner event source that the new event bus will be matched with.
+-- * 'cebEventSourceName' - If you are creating a partner event bus, this specifies the partner event source that the new event bus will be matched with.
 --
--- * 'cebName' - The name of the new event bus.  The names of custom event buses can't contain the @/@ character. You can't use the name @default@ for a custom event bus because this name is already used for your account's default event bus. If this is a partner event bus, the name must exactly match the name of the partner event source that this event bus is matched to. This name will include the @/@ character.
+-- * 'cebTags' - Tags to associate with the event bus.
+--
+-- * 'cebName' - The name of the new event bus.  Event bus names cannot contain the / character. You can't use the name @default@ for a custom event bus, as this name is already used for your account's default event bus. If this is a partner event bus, the name must exactly match the name of the partner event source that this event bus is matched to.
 createEventBus
     :: Text -- ^ 'cebName'
     -> CreateEventBus
 createEventBus pName_
   = CreateEventBus'{_cebEventSourceName = Nothing,
-                    _cebName = pName_}
+                    _cebTags = Nothing, _cebName = pName_}
 
--- | If you're creating a partner event bus, this specifies the partner event source that the new event bus will be matched with.
+-- | If you are creating a partner event bus, this specifies the partner event source that the new event bus will be matched with.
 cebEventSourceName :: Lens' CreateEventBus (Maybe Text)
 cebEventSourceName = lens _cebEventSourceName (\ s a -> s{_cebEventSourceName = a})
 
--- | The name of the new event bus.  The names of custom event buses can't contain the @/@ character. You can't use the name @default@ for a custom event bus because this name is already used for your account's default event bus. If this is a partner event bus, the name must exactly match the name of the partner event source that this event bus is matched to. This name will include the @/@ character.
+-- | Tags to associate with the event bus.
+cebTags :: Lens' CreateEventBus [Tag]
+cebTags = lens _cebTags (\ s a -> s{_cebTags = a}) . _Default . _Coerce
+
+-- | The name of the new event bus.  Event bus names cannot contain the / character. You can't use the name @default@ for a custom event bus, as this name is already used for your account's default event bus. If this is a partner event bus, the name must exactly match the name of the partner event source that this event bus is matched to.
 cebName :: Lens' CreateEventBus Text
 cebName = lens _cebName (\ s a -> s{_cebName = a})
 
@@ -100,7 +108,7 @@ instance ToJSON CreateEventBus where
           = object
               (catMaybes
                  [("EventSourceName" .=) <$> _cebEventSourceName,
-                  Just ("Name" .= _cebName)])
+                  ("Tags" .=) <$> _cebTags, Just ("Name" .= _cebName)])
 
 instance ToPath CreateEventBus where
         toPath = const "/"

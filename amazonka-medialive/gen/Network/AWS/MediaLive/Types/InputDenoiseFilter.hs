@@ -27,7 +27,7 @@ module Network.AWS.MediaLive.Types.InputDenoiseFilter (
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | Placeholder documentation for InputDenoiseFilter
+-- | Input Denoise Filter
 data InputDenoiseFilter = InputDenoiseFilter' (CI
                                                  Text)
                             deriving (Eq, Ord, Read, Show, Data, Typeable,

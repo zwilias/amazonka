@@ -22,7 +22,9 @@ import Network.AWS.Prelude
 import Network.AWS.S3.Internal
 import Network.AWS.S3.Types.S3KeyFilter
 
--- | <http://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html Configuring Event Notifications> 
+-- | Specifies object key name filtering rules. For information about key name filtering, see <https://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html Configuring Event Notifications> in the /Amazon Simple Storage Service Developer Guide/ .
+--
+--
 --
 -- /See:/ 'notificationConfigurationFilter' smart constructor.
 newtype NotificationConfigurationFilter = NotificationConfigurationFilter'{_ncfKey

@@ -18,10 +18,10 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Adds one or more tags to a specified resource.
+-- Adds tags to a cluster.
 --
 --
--- A resource can have up to 10 tags. If you try to create more than 10 tags for a resource, you will receive an error and the attempt will fail.
+-- A resource can have up to 50 tags. If you try to create more than 50 tags for a resource, you will receive an error and the attempt will fail.
 --
 -- If you specify a key that already exists for the resource, the value for that key will be updated with the new value.
 --
@@ -60,7 +60,7 @@ data CreateTags = CreateTags'{_ctResourceName ::
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'ctResourceName' - The Amazon Resource Name (ARN) to which you want to add the tag or tags. For example, @arn:aws:redshift:us-east-1:123456789:cluster:t1@ . 
+-- * 'ctResourceName' - The Amazon Resource Name (ARN) to which you want to add the tag or tags. For example, @arn:aws:redshift:us-east-2:123456789:cluster:t1@ . 
 --
 -- * 'ctTags' - One or more name/value pairs to add as tags to the specified resource. Each tag name is passed in with the parameter @Key@ and the corresponding value is passed in with the parameter @Value@ . The @Key@ and @Value@ parameters are separated by a comma (,). Separate multiple tags with a space. For example, @--tags "Key"="owner","Value"="admin" "Key"="environment","Value"="test" "Key"="version","Value"="1.0"@ . 
 createTags
@@ -70,7 +70,7 @@ createTags pResourceName_
   = CreateTags'{_ctResourceName = pResourceName_,
                 _ctTags = mempty}
 
--- | The Amazon Resource Name (ARN) to which you want to add the tag or tags. For example, @arn:aws:redshift:us-east-1:123456789:cluster:t1@ . 
+-- | The Amazon Resource Name (ARN) to which you want to add the tag or tags. For example, @arn:aws:redshift:us-east-2:123456789:cluster:t1@ . 
 ctResourceName :: Lens' CreateTags Text
 ctResourceName = lens _ctResourceName (\ s a -> s{_ctResourceName = a})
 

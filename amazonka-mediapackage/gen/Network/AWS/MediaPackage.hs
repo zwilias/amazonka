@@ -44,8 +44,8 @@ module Network.AWS.MediaPackage
     -- * Operations
     -- $operations
 
-    -- ** RotateChannelCredentials 
-    , module Network.AWS.MediaPackage.RotateChannelCredentials
+    -- ** CreateHarvestJob 
+    , module Network.AWS.MediaPackage.CreateHarvestJob
 
     -- ** DescribeOriginEndpoint 
     , module Network.AWS.MediaPackage.DescribeOriginEndpoint
@@ -53,11 +53,20 @@ module Network.AWS.MediaPackage
     -- ** ListChannels (Paginated)
     , module Network.AWS.MediaPackage.ListChannels
 
+    -- ** ListTagsForResource 
+    , module Network.AWS.MediaPackage.ListTagsForResource
+
     -- ** DeleteChannel 
     , module Network.AWS.MediaPackage.DeleteChannel
 
     -- ** UpdateChannel 
     , module Network.AWS.MediaPackage.UpdateChannel
+
+    -- ** DescribeHarvestJob 
+    , module Network.AWS.MediaPackage.DescribeHarvestJob
+
+    -- ** RotateIngestEndpointCredentials 
+    , module Network.AWS.MediaPackage.RotateIngestEndpointCredentials
 
     -- ** CreateOriginEndpoint 
     , module Network.AWS.MediaPackage.CreateOriginEndpoint
@@ -65,8 +74,17 @@ module Network.AWS.MediaPackage
     -- ** ListOriginEndpoints (Paginated)
     , module Network.AWS.MediaPackage.ListOriginEndpoints
 
+    -- ** ListHarvestJobs (Paginated)
+    , module Network.AWS.MediaPackage.ListHarvestJobs
+
     -- ** CreateChannel 
     , module Network.AWS.MediaPackage.CreateChannel
+
+    -- ** TagResource 
+    , module Network.AWS.MediaPackage.TagResource
+
+    -- ** UntagResource 
+    , module Network.AWS.MediaPackage.UntagResource
 
     -- ** DescribeChannel 
     , module Network.AWS.MediaPackage.DescribeChannel
@@ -82,8 +100,23 @@ module Network.AWS.MediaPackage
     -- ** AdMarkers
     , AdMarkers (..)
 
+    -- ** AdTriggersElement
+    , AdTriggersElement (..)
+
+    -- ** AdsOnDeliveryRestrictions
+    , AdsOnDeliveryRestrictions (..)
+
     -- ** EncryptionMethod
     , EncryptionMethod (..)
+
+    -- ** ManifestLayout
+    , ManifestLayout (..)
+
+    -- ** Origination
+    , Origination (..)
+
+    -- ** PeriodTriggersElement
+    , PeriodTriggersElement (..)
 
     -- ** PlaylistType
     , PlaylistType (..)
@@ -91,8 +124,20 @@ module Network.AWS.MediaPackage
     -- ** Profile
     , Profile (..)
 
+    -- ** SegmentTemplateFormat
+    , SegmentTemplateFormat (..)
+
     -- ** StreamOrder
     , StreamOrder (..)
+
+    -- ** TaskStatus
+    , TaskStatus (..)
+
+    -- ** Authorization
+    , Authorization
+    , authorization
+    , aSecretsRoleARN
+    , aCdnIdentifierSecret
 
     -- ** Channel
     , Channel
@@ -101,6 +146,7 @@ module Network.AWS.MediaPackage
     , cARN
     , cId
     , cDescription
+    , cTags
 
     -- ** CmafEncryption
     , CmafEncryption
@@ -135,14 +181,32 @@ module Network.AWS.MediaPackage
     -- ** DashPackage
     , DashPackage
     , dashPackage
+    , dpAdsOnDeliveryRestrictions
     , dpMinBufferTimeSeconds
+    , dpSegmentTemplateFormat
     , dpProfile
     , dpSegmentDurationSeconds
     , dpStreamSelection
     , dpEncryption
     , dpMinUpdatePeriodSeconds
+    , dpManifestLayout
     , dpSuggestedPresentationDelaySeconds
     , dpManifestWindowSeconds
+    , dpAdTriggers
+    , dpPeriodTriggers
+
+    -- ** HarvestJob
+    , HarvestJob
+    , harvestJob
+    , hjStatus
+    , hjOriginEndpointId
+    , hjStartTime
+    , hjARN
+    , hjCreatedAt
+    , hjChannelId
+    , hjS3Destination
+    , hjEndTime
+    , hjId
 
     -- ** HlsEncryption
     , HlsEncryption
@@ -173,17 +237,20 @@ module Network.AWS.MediaPackage
     -- ** HlsManifestCreateOrUpdateParameters
     , HlsManifestCreateOrUpdateParameters
     , hlsManifestCreateOrUpdateParameters
+    , hmcoupAdsOnDeliveryRestrictions
     , hmcoupManifestName
     , hmcoupPlaylistType
     , hmcoupProgramDateTimeIntervalSeconds
     , hmcoupAdMarkers
     , hmcoupIncludeIframeOnlyStream
+    , hmcoupAdTriggers
     , hmcoupPlaylistWindowSeconds
     , hmcoupId
 
     -- ** HlsPackage
     , HlsPackage
     , hlsPackage
+    , hpAdsOnDeliveryRestrictions
     , hpUseAudioRenditionGroup
     , hpPlaylistType
     , hpSegmentDurationSeconds
@@ -192,6 +259,7 @@ module Network.AWS.MediaPackage
     , hpAdMarkers
     , hpEncryption
     , hpIncludeIframeOnlyStream
+    , hpAdTriggers
     , hpPlaylistWindowSeconds
 
     -- ** IngestEndpoint
@@ -200,6 +268,7 @@ module Network.AWS.MediaPackage
     , ieURL
     , ieUsername
     , iePassword
+    , ieId
 
     -- ** MssEncryption
     , MssEncryption
@@ -222,6 +291,7 @@ module Network.AWS.MediaPackage
     , oeARN
     , oeManifestName
     , oeURL
+    , oeAuthorization
     , oeChannelId
     , oeStartoverWindowSeconds
     , oeDashPackage
@@ -230,14 +300,24 @@ module Network.AWS.MediaPackage
     , oeTimeDelaySeconds
     , oeCmafPackage
     , oeDescription
+    , oeTags
+    , oeOrigination
+
+    -- ** S3Destination
+    , S3Destination
+    , s3Destination
+    , sdManifestKey
+    , sdBucketName
+    , sdRoleARN
 
     -- ** SpekeKeyProvider
     , SpekeKeyProvider
     , spekeKeyProvider
-    , skpURL
+    , skpCertificateARN
     , skpResourceId
-    , skpRoleARN
     , skpSystemIds
+    , skpURL
+    , skpRoleARN
 
     -- ** StreamSelection
     , StreamSelection
@@ -248,15 +328,21 @@ module Network.AWS.MediaPackage
     ) where
 
 import Network.AWS.MediaPackage.CreateChannel
+import Network.AWS.MediaPackage.CreateHarvestJob
 import Network.AWS.MediaPackage.CreateOriginEndpoint
 import Network.AWS.MediaPackage.DeleteChannel
 import Network.AWS.MediaPackage.DeleteOriginEndpoint
 import Network.AWS.MediaPackage.DescribeChannel
+import Network.AWS.MediaPackage.DescribeHarvestJob
 import Network.AWS.MediaPackage.DescribeOriginEndpoint
 import Network.AWS.MediaPackage.ListChannels
+import Network.AWS.MediaPackage.ListHarvestJobs
 import Network.AWS.MediaPackage.ListOriginEndpoints
-import Network.AWS.MediaPackage.RotateChannelCredentials
+import Network.AWS.MediaPackage.ListTagsForResource
+import Network.AWS.MediaPackage.RotateIngestEndpointCredentials
+import Network.AWS.MediaPackage.TagResource
 import Network.AWS.MediaPackage.Types
+import Network.AWS.MediaPackage.UntagResource
 import Network.AWS.MediaPackage.UpdateChannel
 import Network.AWS.MediaPackage.UpdateOriginEndpoint
 import Network.AWS.MediaPackage.Waiters

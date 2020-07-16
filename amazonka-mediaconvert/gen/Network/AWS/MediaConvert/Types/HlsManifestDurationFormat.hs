@@ -19,8 +19,8 @@
 module Network.AWS.MediaConvert.Types.HlsManifestDurationFormat (
   HlsManifestDurationFormat (
     ..
-    , FloatingPoint
-    , Integer
+    , HMDFFloatingPoint
+    , HMDFInteger
     )
   ) where
 
@@ -33,15 +33,15 @@ data HlsManifestDurationFormat = HlsManifestDurationFormat' (CI
                                    deriving (Eq, Ord, Read, Show, Data,
                                              Typeable, Generic)
 
-pattern FloatingPoint :: HlsManifestDurationFormat
-pattern FloatingPoint = HlsManifestDurationFormat' "FLOATING_POINT"
+pattern HMDFFloatingPoint :: HlsManifestDurationFormat
+pattern HMDFFloatingPoint = HlsManifestDurationFormat' "FLOATING_POINT"
 
-pattern Integer :: HlsManifestDurationFormat
-pattern Integer = HlsManifestDurationFormat' "INTEGER"
+pattern HMDFInteger :: HlsManifestDurationFormat
+pattern HMDFInteger = HlsManifestDurationFormat' "INTEGER"
 
 {-# COMPLETE
-  FloatingPoint,
-  Integer,
+  HMDFFloatingPoint,
+  HMDFInteger,
   HlsManifestDurationFormat' #-}
 
 instance FromText HlsManifestDurationFormat where
@@ -56,20 +56,20 @@ instance ToText HlsManifestDurationFormat where
 --   fromEnum is a partial function, and will error on values unknown at generation time.
 instance Enum HlsManifestDurationFormat where
     toEnum i = case i of
-        0 -> FloatingPoint
-        1 -> Integer
+        0 -> HMDFFloatingPoint
+        1 -> HMDFInteger
         _ -> (error . showText) $ "Unknown index for HlsManifestDurationFormat: " <> toText i
     fromEnum x = case x of
-        FloatingPoint -> 0
-        Integer -> 1
+        HMDFFloatingPoint -> 0
+        HMDFInteger -> 1
         HlsManifestDurationFormat' name -> (error . showText) $ "Unknown HlsManifestDurationFormat: " <> original name
 
 -- | Represents the bounds of /known/ $HlsManifestDurationFormat.
 --   AWS may have added more since the source was generated.
 --   This instance exists only for backward compatibility.
 instance Bounded HlsManifestDurationFormat where
-    minBound = FloatingPoint
-    maxBound = Integer
+    minBound = HMDFFloatingPoint
+    maxBound = HMDFInteger
 
 instance Hashable     HlsManifestDurationFormat
 instance NFData       HlsManifestDurationFormat

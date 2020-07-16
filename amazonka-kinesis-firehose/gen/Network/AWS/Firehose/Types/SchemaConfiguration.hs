@@ -20,7 +20,7 @@ module Network.AWS.Firehose.Types.SchemaConfiguration where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | Specifies the schema to which you want Kinesis Data Firehose to configure your data before it writes it to Amazon S3.
+-- | Specifies the schema to which you want Kinesis Data Firehose to configure your data before it writes it to Amazon S3. This parameter is required if @Enabled@ is set to true.
 --
 --
 --

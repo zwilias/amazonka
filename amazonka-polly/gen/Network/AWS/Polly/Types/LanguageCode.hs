@@ -19,6 +19,8 @@
 module Network.AWS.Polly.Types.LanguageCode (
   LanguageCode (
     ..
+    , Arb
+    , CmnCn
     , CyGb
     , DaDk
     , DeDe
@@ -28,9 +30,11 @@ module Network.AWS.Polly.Types.LanguageCode (
     , EnIn
     , EnUs
     , EsEs
+    , EsMx
     , EsUs
     , FrCa
     , FrFr
+    , HiIn
     , IsIs
     , ItIt
     , JaJp
@@ -53,6 +57,12 @@ import Network.AWS.Prelude
 data LanguageCode = LanguageCode' (CI Text)
                       deriving (Eq, Ord, Read, Show, Data, Typeable,
                                 Generic)
+
+pattern Arb :: LanguageCode
+pattern Arb = LanguageCode' "arb"
+
+pattern CmnCn :: LanguageCode
+pattern CmnCn = LanguageCode' "cmn-CN"
 
 pattern CyGb :: LanguageCode
 pattern CyGb = LanguageCode' "cy-GB"
@@ -81,6 +91,9 @@ pattern EnUs = LanguageCode' "en-US"
 pattern EsEs :: LanguageCode
 pattern EsEs = LanguageCode' "es-ES"
 
+pattern EsMx :: LanguageCode
+pattern EsMx = LanguageCode' "es-MX"
+
 pattern EsUs :: LanguageCode
 pattern EsUs = LanguageCode' "es-US"
 
@@ -89,6 +102,9 @@ pattern FrCa = LanguageCode' "fr-CA"
 
 pattern FrFr :: LanguageCode
 pattern FrFr = LanguageCode' "fr-FR"
+
+pattern HiIn :: LanguageCode
+pattern HiIn = LanguageCode' "hi-IN"
 
 pattern IsIs :: LanguageCode
 pattern IsIs = LanguageCode' "is-IS"
@@ -130,6 +146,8 @@ pattern TrTr :: LanguageCode
 pattern TrTr = LanguageCode' "tr-TR"
 
 {-# COMPLETE
+  Arb,
+  CmnCn,
   CyGb,
   DaDk,
   DeDe,
@@ -139,9 +157,11 @@ pattern TrTr = LanguageCode' "tr-TR"
   EnIn,
   EnUs,
   EsEs,
+  EsMx,
   EsUs,
   FrCa,
   FrFr,
+  HiIn,
   IsIs,
   ItIt,
   JaJp,
@@ -169,65 +189,73 @@ instance ToText LanguageCode where
 --   fromEnum is a partial function, and will error on values unknown at generation time.
 instance Enum LanguageCode where
     toEnum i = case i of
-        0 -> CyGb
-        1 -> DaDk
-        2 -> DeDe
-        3 -> EnAu
-        4 -> EnGb
-        5 -> EnGbWls
-        6 -> EnIn
-        7 -> EnUs
-        8 -> EsEs
-        9 -> EsUs
-        10 -> FrCa
-        11 -> FrFr
-        12 -> IsIs
-        13 -> ItIt
-        14 -> JaJp
-        15 -> KoKr
-        16 -> NbNo
-        17 -> NlNl
-        18 -> PlPl
-        19 -> PtBr
-        20 -> PtPt
-        21 -> RoRo
-        22 -> RuRu
-        23 -> SvSe
-        24 -> TrTr
+        0 -> Arb
+        1 -> CmnCn
+        2 -> CyGb
+        3 -> DaDk
+        4 -> DeDe
+        5 -> EnAu
+        6 -> EnGb
+        7 -> EnGbWls
+        8 -> EnIn
+        9 -> EnUs
+        10 -> EsEs
+        11 -> EsMx
+        12 -> EsUs
+        13 -> FrCa
+        14 -> FrFr
+        15 -> HiIn
+        16 -> IsIs
+        17 -> ItIt
+        18 -> JaJp
+        19 -> KoKr
+        20 -> NbNo
+        21 -> NlNl
+        22 -> PlPl
+        23 -> PtBr
+        24 -> PtPt
+        25 -> RoRo
+        26 -> RuRu
+        27 -> SvSe
+        28 -> TrTr
         _ -> (error . showText) $ "Unknown index for LanguageCode: " <> toText i
     fromEnum x = case x of
-        CyGb -> 0
-        DaDk -> 1
-        DeDe -> 2
-        EnAu -> 3
-        EnGb -> 4
-        EnGbWls -> 5
-        EnIn -> 6
-        EnUs -> 7
-        EsEs -> 8
-        EsUs -> 9
-        FrCa -> 10
-        FrFr -> 11
-        IsIs -> 12
-        ItIt -> 13
-        JaJp -> 14
-        KoKr -> 15
-        NbNo -> 16
-        NlNl -> 17
-        PlPl -> 18
-        PtBr -> 19
-        PtPt -> 20
-        RoRo -> 21
-        RuRu -> 22
-        SvSe -> 23
-        TrTr -> 24
+        Arb -> 0
+        CmnCn -> 1
+        CyGb -> 2
+        DaDk -> 3
+        DeDe -> 4
+        EnAu -> 5
+        EnGb -> 6
+        EnGbWls -> 7
+        EnIn -> 8
+        EnUs -> 9
+        EsEs -> 10
+        EsMx -> 11
+        EsUs -> 12
+        FrCa -> 13
+        FrFr -> 14
+        HiIn -> 15
+        IsIs -> 16
+        ItIt -> 17
+        JaJp -> 18
+        KoKr -> 19
+        NbNo -> 20
+        NlNl -> 21
+        PlPl -> 22
+        PtBr -> 23
+        PtPt -> 24
+        RoRo -> 25
+        RuRu -> 26
+        SvSe -> 27
+        TrTr -> 28
         LanguageCode' name -> (error . showText) $ "Unknown LanguageCode: " <> original name
 
 -- | Represents the bounds of /known/ $LanguageCode.
 --   AWS may have added more since the source was generated.
 --   This instance exists only for backward compatibility.
 instance Bounded LanguageCode where
-    minBound = CyGb
+    minBound = Arb
     maxBound = TrTr
 
 instance Hashable     LanguageCode

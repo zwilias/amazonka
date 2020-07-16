@@ -33,7 +33,7 @@ module Network.AWS.Shield.DeleteProtection
     , deleteProtectionResponse
     , DeleteProtectionResponse
     -- * Response Lenses
-    , delrsResponseStatus
+    , drsResponseStatus
     ) where
 
 import Network.AWS.Lens
@@ -97,7 +97,7 @@ instance ToQuery DeleteProtection where
         toQuery = const mempty
 
 -- | /See:/ 'deleteProtectionResponse' smart constructor.
-newtype DeleteProtectionResponse = DeleteProtectionResponse'{_delrsResponseStatus
+newtype DeleteProtectionResponse = DeleteProtectionResponse'{_drsResponseStatus
                                                              :: Int}
                                      deriving (Eq, Read, Show, Data, Typeable,
                                                Generic)
@@ -106,16 +106,16 @@ newtype DeleteProtectionResponse = DeleteProtectionResponse'{_delrsResponseStatu
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'delrsResponseStatus' - -- | The response status code.
+-- * 'drsResponseStatus' - -- | The response status code.
 deleteProtectionResponse
-    :: Int -- ^ 'delrsResponseStatus'
+    :: Int -- ^ 'drsResponseStatus'
     -> DeleteProtectionResponse
 deleteProtectionResponse pResponseStatus_
-  = DeleteProtectionResponse'{_delrsResponseStatus =
+  = DeleteProtectionResponse'{_drsResponseStatus =
                                 pResponseStatus_}
 
 -- | -- | The response status code.
-delrsResponseStatus :: Lens' DeleteProtectionResponse Int
-delrsResponseStatus = lens _delrsResponseStatus (\ s a -> s{_delrsResponseStatus = a})
+drsResponseStatus :: Lens' DeleteProtectionResponse Int
+drsResponseStatus = lens _drsResponseStatus (\ s a -> s{_drsResponseStatus = a})
 
 instance NFData DeleteProtectionResponse where

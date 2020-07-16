@@ -19,9 +19,9 @@
 module Network.AWS.MediaPackage.Types.PlaylistType (
   PlaylistType (
     ..
-    , Event
-    , None
-    , Vod
+    , PTEvent
+    , PTNone
+    , PTVod
     )
   ) where
 
@@ -32,19 +32,19 @@ data PlaylistType = PlaylistType' (CI Text)
                       deriving (Eq, Ord, Read, Show, Data, Typeable,
                                 Generic)
 
-pattern Event :: PlaylistType
-pattern Event = PlaylistType' "EVENT"
+pattern PTEvent :: PlaylistType
+pattern PTEvent = PlaylistType' "EVENT"
 
-pattern None :: PlaylistType
-pattern None = PlaylistType' "NONE"
+pattern PTNone :: PlaylistType
+pattern PTNone = PlaylistType' "NONE"
 
-pattern Vod :: PlaylistType
-pattern Vod = PlaylistType' "VOD"
+pattern PTVod :: PlaylistType
+pattern PTVod = PlaylistType' "VOD"
 
 {-# COMPLETE
-  Event,
-  None,
-  Vod,
+  PTEvent,
+  PTNone,
+  PTVod,
   PlaylistType' #-}
 
 instance FromText PlaylistType where
@@ -59,22 +59,22 @@ instance ToText PlaylistType where
 --   fromEnum is a partial function, and will error on values unknown at generation time.
 instance Enum PlaylistType where
     toEnum i = case i of
-        0 -> Event
-        1 -> None
-        2 -> Vod
+        0 -> PTEvent
+        1 -> PTNone
+        2 -> PTVod
         _ -> (error . showText) $ "Unknown index for PlaylistType: " <> toText i
     fromEnum x = case x of
-        Event -> 0
-        None -> 1
-        Vod -> 2
+        PTEvent -> 0
+        PTNone -> 1
+        PTVod -> 2
         PlaylistType' name -> (error . showText) $ "Unknown PlaylistType: " <> original name
 
 -- | Represents the bounds of /known/ $PlaylistType.
 --   AWS may have added more since the source was generated.
 --   This instance exists only for backward compatibility.
 instance Bounded PlaylistType where
-    minBound = Event
-    maxBound = Vod
+    minBound = PTEvent
+    maxBound = PTVod
 
 instance Hashable     PlaylistType
 instance NFData       PlaylistType

@@ -22,7 +22,9 @@ import Network.AWS.Prelude
 import Network.AWS.S3.Internal
 import Network.AWS.S3.Types.ServerSideEncryptionByDefault
 
--- | Container for information about a particular server-side encryption configuration rule.
+-- | Specifies the default server-side encryption configuration.
+--
+--
 --
 -- /See:/ 'serverSideEncryptionRule' smart constructor.
 newtype ServerSideEncryptionRule = ServerSideEncryptionRule'{_sserApplyServerSideEncryptionByDefault
@@ -36,14 +38,14 @@ newtype ServerSideEncryptionRule = ServerSideEncryptionRule'{_sserApplyServerSid
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'sserApplyServerSideEncryptionByDefault' - Describes the default server-side encryption to apply to new objects in the bucket. If Put Object request does not specify any server-side encryption, this default encryption will be applied.
+-- * 'sserApplyServerSideEncryptionByDefault' - Specifies the default server-side encryption to apply to new objects in the bucket. If a PUT Object request doesn't specify any server-side encryption, this default encryption will be applied.
 serverSideEncryptionRule
     :: ServerSideEncryptionRule
 serverSideEncryptionRule
   = ServerSideEncryptionRule'{_sserApplyServerSideEncryptionByDefault
                                 = Nothing}
 
--- | Describes the default server-side encryption to apply to new objects in the bucket. If Put Object request does not specify any server-side encryption, this default encryption will be applied.
+-- | Specifies the default server-side encryption to apply to new objects in the bucket. If a PUT Object request doesn't specify any server-side encryption, this default encryption will be applied.
 sserApplyServerSideEncryptionByDefault :: Lens' ServerSideEncryptionRule (Maybe ServerSideEncryptionByDefault)
 sserApplyServerSideEncryptionByDefault = lens _sserApplyServerSideEncryptionByDefault (\ s a -> s{_sserApplyServerSideEncryptionByDefault = a})
 

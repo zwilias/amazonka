@@ -29,6 +29,7 @@ module Network.AWS.IoT.UpdateThingGroupsForThing
     -- * Request Lenses
     , utgftThingGroupsToAdd
     , utgftThingGroupsToRemove
+    , utgftOverrideDynamicGroups
     , utgftThingName
 
     -- * Destructuring the Response
@@ -50,6 +51,8 @@ data UpdateThingGroupsForThing = UpdateThingGroupsForThing'{_utgftThingGroupsToA
                                                             :: !(Maybe [Text]),
                                                             _utgftThingGroupsToRemove
                                                             :: !(Maybe [Text]),
+                                                            _utgftOverrideDynamicGroups
+                                                            :: !(Maybe Bool),
                                                             _utgftThingName ::
                                                             !(Maybe Text)}
                                    deriving (Eq, Read, Show, Data, Typeable,
@@ -63,6 +66,8 @@ data UpdateThingGroupsForThing = UpdateThingGroupsForThing'{_utgftThingGroupsToA
 --
 -- * 'utgftThingGroupsToRemove' - The groups from which the thing will be removed.
 --
+-- * 'utgftOverrideDynamicGroups' - Override dynamic thing groups with static thing groups when 10-group limit is reached. If a thing belongs to 10 thing groups, and one or more of those groups are dynamic thing groups, adding a thing to a static group removes the thing from the last dynamic group.
+--
 -- * 'utgftThingName' - The thing whose group memberships will be updated.
 updateThingGroupsForThing
     :: UpdateThingGroupsForThing
@@ -70,6 +75,7 @@ updateThingGroupsForThing
   = UpdateThingGroupsForThing'{_utgftThingGroupsToAdd =
                                  Nothing,
                                _utgftThingGroupsToRemove = Nothing,
+                               _utgftOverrideDynamicGroups = Nothing,
                                _utgftThingName = Nothing}
 
 -- | The groups to which the thing will be added.
@@ -79,6 +85,10 @@ utgftThingGroupsToAdd = lens _utgftThingGroupsToAdd (\ s a -> s{_utgftThingGroup
 -- | The groups from which the thing will be removed.
 utgftThingGroupsToRemove :: Lens' UpdateThingGroupsForThing [Text]
 utgftThingGroupsToRemove = lens _utgftThingGroupsToRemove (\ s a -> s{_utgftThingGroupsToRemove = a}) . _Default . _Coerce
+
+-- | Override dynamic thing groups with static thing groups when 10-group limit is reached. If a thing belongs to 10 thing groups, and one or more of those groups are dynamic thing groups, adding a thing to a static group removes the thing from the last dynamic group.
+utgftOverrideDynamicGroups :: Lens' UpdateThingGroupsForThing (Maybe Bool)
+utgftOverrideDynamicGroups = lens _utgftOverrideDynamicGroups (\ s a -> s{_utgftOverrideDynamicGroups = a})
 
 -- | The thing whose group memberships will be updated.
 utgftThingName :: Lens' UpdateThingGroupsForThing (Maybe Text)
@@ -108,6 +118,8 @@ instance ToJSON UpdateThingGroupsForThing where
                  [("thingGroupsToAdd" .=) <$> _utgftThingGroupsToAdd,
                   ("thingGroupsToRemove" .=) <$>
                     _utgftThingGroupsToRemove,
+                  ("overrideDynamicGroups" .=) <$>
+                    _utgftOverrideDynamicGroups,
                   ("thingName" .=) <$> _utgftThingName])
 
 instance ToPath UpdateThingGroupsForThing where

@@ -36,7 +36,7 @@ data Certificate = Certificate'{_cCertificateARN ::
 --
 -- * 'cCertificateARN' - The Amazon Resource Name (ARN) of the certificate.
 --
--- * 'cIsDefault' - Indicates whether the certificate is the default certificate.
+-- * 'cIsDefault' - Indicates whether the certificate is the default certificate. Do not set this value when specifying a certificate as an input. This value is not included in the output when describing a listener, but is included when describing listener certificates.
 certificate
     :: Certificate
 certificate
@@ -47,7 +47,7 @@ certificate
 cCertificateARN :: Lens' Certificate (Maybe Text)
 cCertificateARN = lens _cCertificateARN (\ s a -> s{_cCertificateARN = a})
 
--- | Indicates whether the certificate is the default certificate.
+-- | Indicates whether the certificate is the default certificate. Do not set this value when specifying a certificate as an input. This value is not included in the output when describing a listener, but is included when describing listener certificates.
 cIsDefault :: Lens' Certificate (Maybe Bool)
 cIsDefault = lens _cIsDefault (\ s a -> s{_cIsDefault = a})
 

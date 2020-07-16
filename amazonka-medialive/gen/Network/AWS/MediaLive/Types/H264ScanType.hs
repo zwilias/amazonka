@@ -19,28 +19,28 @@
 module Network.AWS.MediaLive.Types.H264ScanType (
   H264ScanType (
     ..
-    , Interlaced
-    , Progressive
+    , HSTInterlaced
+    , HSTProgressive
     )
   ) where
 
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | Placeholder documentation for H264ScanType
+-- | H264 Scan Type
 data H264ScanType = H264ScanType' (CI Text)
                       deriving (Eq, Ord, Read, Show, Data, Typeable,
                                 Generic)
 
-pattern Interlaced :: H264ScanType
-pattern Interlaced = H264ScanType' "INTERLACED"
+pattern HSTInterlaced :: H264ScanType
+pattern HSTInterlaced = H264ScanType' "INTERLACED"
 
-pattern Progressive :: H264ScanType
-pattern Progressive = H264ScanType' "PROGRESSIVE"
+pattern HSTProgressive :: H264ScanType
+pattern HSTProgressive = H264ScanType' "PROGRESSIVE"
 
 {-# COMPLETE
-  Interlaced,
-  Progressive,
+  HSTInterlaced,
+  HSTProgressive,
   H264ScanType' #-}
 
 instance FromText H264ScanType where
@@ -55,20 +55,20 @@ instance ToText H264ScanType where
 --   fromEnum is a partial function, and will error on values unknown at generation time.
 instance Enum H264ScanType where
     toEnum i = case i of
-        0 -> Interlaced
-        1 -> Progressive
+        0 -> HSTInterlaced
+        1 -> HSTProgressive
         _ -> (error . showText) $ "Unknown index for H264ScanType: " <> toText i
     fromEnum x = case x of
-        Interlaced -> 0
-        Progressive -> 1
+        HSTInterlaced -> 0
+        HSTProgressive -> 1
         H264ScanType' name -> (error . showText) $ "Unknown H264ScanType: " <> original name
 
 -- | Represents the bounds of /known/ $H264ScanType.
 --   AWS may have added more since the source was generated.
 --   This instance exists only for backward compatibility.
 instance Bounded H264ScanType where
-    minBound = Interlaced
-    maxBound = Progressive
+    minBound = HSTInterlaced
+    maxBound = HSTProgressive
 
 instance Hashable     H264ScanType
 instance NFData       H264ScanType

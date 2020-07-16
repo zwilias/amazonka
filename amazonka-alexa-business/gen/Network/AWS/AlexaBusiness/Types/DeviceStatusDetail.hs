@@ -18,6 +18,7 @@
 module Network.AWS.AlexaBusiness.Types.DeviceStatusDetail where
 
 import Network.AWS.AlexaBusiness.Types.DeviceStatusDetailCode
+import Network.AWS.AlexaBusiness.Types.Feature
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
@@ -26,21 +27,28 @@ import Network.AWS.Prelude
 --
 --
 -- /See:/ 'deviceStatusDetail' smart constructor.
-newtype DeviceStatusDetail = DeviceStatusDetail'{_dsdCode
-                                                 ::
-                                                 Maybe DeviceStatusDetailCode}
-                               deriving (Eq, Read, Show, Data, Typeable,
-                                         Generic)
+data DeviceStatusDetail = DeviceStatusDetail'{_dsdFeature
+                                              :: !(Maybe Feature),
+                                              _dsdCode ::
+                                              !(Maybe DeviceStatusDetailCode)}
+                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeviceStatusDetail' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
+-- * 'dsdFeature' - The list of available features on the device.
+--
 -- * 'dsdCode' - The device status detail code.
 deviceStatusDetail
     :: DeviceStatusDetail
 deviceStatusDetail
-  = DeviceStatusDetail'{_dsdCode = Nothing}
+  = DeviceStatusDetail'{_dsdFeature = Nothing,
+                        _dsdCode = Nothing}
+
+-- | The list of available features on the device.
+dsdFeature :: Lens' DeviceStatusDetail (Maybe Feature)
+dsdFeature = lens _dsdFeature (\ s a -> s{_dsdFeature = a})
 
 -- | The device status detail code.
 dsdCode :: Lens' DeviceStatusDetail (Maybe DeviceStatusDetailCode)
@@ -49,7 +57,9 @@ dsdCode = lens _dsdCode (\ s a -> s{_dsdCode = a})
 instance FromJSON DeviceStatusDetail where
         parseJSON
           = withObject "DeviceStatusDetail"
-              (\ x -> DeviceStatusDetail' <$> (x .:? "Code"))
+              (\ x ->
+                 DeviceStatusDetail' <$>
+                   (x .:? "Feature") <*> (x .:? "Code"))
 
 instance Hashable DeviceStatusDetail where
 

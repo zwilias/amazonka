@@ -58,7 +58,7 @@ data BatchStopJobRun = BatchStopJobRun'{_bsjrJobName
 --
 -- * 'bsjrJobName' - The name of the job definition for which to stop job runs.
 --
--- * 'bsjrJobRunIds' - A list of the JobRunIds that should be stopped for that job definition.
+-- * 'bsjrJobRunIds' - A list of the @JobRunIds@ that should be stopped for that job definition.
 batchStopJobRun
     :: Text -- ^ 'bsjrJobName'
     -> NonEmpty Text -- ^ 'bsjrJobRunIds'
@@ -71,7 +71,7 @@ batchStopJobRun pJobName_ pJobRunIds_
 bsjrJobName :: Lens' BatchStopJobRun Text
 bsjrJobName = lens _bsjrJobName (\ s a -> s{_bsjrJobName = a})
 
--- | A list of the JobRunIds that should be stopped for that job definition.
+-- | A list of the @JobRunIds@ that should be stopped for that job definition.
 bsjrJobRunIds :: Lens' BatchStopJobRun (NonEmpty Text)
 bsjrJobRunIds = lens _bsjrJobRunIds (\ s a -> s{_bsjrJobRunIds = a}) . _List1
 
@@ -131,7 +131,7 @@ data BatchStopJobRunResponse = BatchStopJobRunResponse'{_bsjrrsSuccessfulSubmiss
 --
 -- * 'bsjrrsSuccessfulSubmissions' - A list of the JobRuns that were successfully submitted for stopping.
 --
--- * 'bsjrrsErrors' - A list of the errors that were encountered in tryng to stop JobRuns, including the JobRunId for which each error was encountered and details about the error.
+-- * 'bsjrrsErrors' - A list of the errors that were encountered in trying to stop @JobRuns@ , including the @JobRunId@ for which each error was encountered and details about the error.
 --
 -- * 'bsjrrsResponseStatus' - -- | The response status code.
 batchStopJobRunResponse
@@ -147,7 +147,7 @@ batchStopJobRunResponse pResponseStatus_
 bsjrrsSuccessfulSubmissions :: Lens' BatchStopJobRunResponse [BatchStopJobRunSuccessfulSubmission]
 bsjrrsSuccessfulSubmissions = lens _bsjrrsSuccessfulSubmissions (\ s a -> s{_bsjrrsSuccessfulSubmissions = a}) . _Default . _Coerce
 
--- | A list of the errors that were encountered in tryng to stop JobRuns, including the JobRunId for which each error was encountered and details about the error.
+-- | A list of the errors that were encountered in trying to stop @JobRuns@ , including the @JobRunId@ for which each error was encountered and details about the error.
 bsjrrsErrors :: Lens' BatchStopJobRunResponse [BatchStopJobRunError]
 bsjrrsErrors = lens _bsjrrsErrors (\ s a -> s{_bsjrrsErrors = a}) . _Default . _Coerce
 

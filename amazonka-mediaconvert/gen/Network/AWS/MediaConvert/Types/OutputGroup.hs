@@ -36,7 +36,7 @@ data OutputGroup = OutputGroup'{_ogOutputGroupSettings
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'ogOutputGroupSettings' - Undocumented member.
+-- * 'ogOutputGroupSettings' - Output Group settings, including type
 --
 -- * 'ogOutputs' - This object holds groups of encoding settings, one group of settings per output.
 --
@@ -50,7 +50,7 @@ outputGroup
                  _ogOutputs = Nothing, _ogCustomName = Nothing,
                  _ogName = Nothing}
 
--- | Undocumented member.
+-- | Output Group settings, including type
 ogOutputGroupSettings :: Lens' OutputGroup (Maybe OutputGroupSettings)
 ogOutputGroupSettings = lens _ogOutputGroupSettings (\ s a -> s{_ogOutputGroupSettings = a})
 

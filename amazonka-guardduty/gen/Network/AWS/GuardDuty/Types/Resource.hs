@@ -22,7 +22,9 @@ import Network.AWS.GuardDuty.Types.InstanceDetails
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | The AWS resource associated with the activity that prompted GuardDuty to generate a finding.
+-- | Contains information about the AWS resource associated with the activity that prompted GuardDuty to generate a finding.
+--
+--
 --
 -- /See:/ 'resource' smart constructor.
 data Resource = Resource'{_rResourceType ::
@@ -35,11 +37,11 @@ data Resource = Resource'{_rResourceType ::
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'rResourceType' - The type of the AWS resource.
+-- * 'rResourceType' - The type of AWS resource.
 --
--- * 'rInstanceDetails' - Undocumented member.
+-- * 'rInstanceDetails' - The information about the EC2 instance associated with the activity that prompted GuardDuty to generate a finding.
 --
--- * 'rAccessKeyDetails' - Undocumented member.
+-- * 'rAccessKeyDetails' - The IAM access key details (IAM user information) of a user that engaged in the activity that prompted GuardDuty to generate a finding.
 resource
     :: Resource
 resource
@@ -47,15 +49,15 @@ resource
               _rInstanceDetails = Nothing,
               _rAccessKeyDetails = Nothing}
 
--- | The type of the AWS resource.
+-- | The type of AWS resource.
 rResourceType :: Lens' Resource (Maybe Text)
 rResourceType = lens _rResourceType (\ s a -> s{_rResourceType = a})
 
--- | Undocumented member.
+-- | The information about the EC2 instance associated with the activity that prompted GuardDuty to generate a finding.
 rInstanceDetails :: Lens' Resource (Maybe InstanceDetails)
 rInstanceDetails = lens _rInstanceDetails (\ s a -> s{_rInstanceDetails = a})
 
--- | Undocumented member.
+-- | The IAM access key details (IAM user information) of a user that engaged in the activity that prompted GuardDuty to generate a finding.
 rAccessKeyDetails :: Lens' Resource (Maybe AccessKeyDetails)
 rAccessKeyDetails = lens _rAccessKeyDetails (\ s a -> s{_rAccessKeyDetails = a})
 

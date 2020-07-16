@@ -21,7 +21,7 @@ import Network.AWS.Lambda.Types.TracingMode
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | Parent object of the tracing information associated with your Lambda function.
+-- | The function's AWS X-Ray tracing configuration.
 --
 --
 --
@@ -35,13 +35,13 @@ newtype TracingConfigResponse = TracingConfigResponse'{_tcMode
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'tcMode' - The tracing mode associated with your Lambda function.
+-- * 'tcMode' - The tracing mode.
 tracingConfigResponse
     :: TracingConfigResponse
 tracingConfigResponse
   = TracingConfigResponse'{_tcMode = Nothing}
 
--- | The tracing mode associated with your Lambda function.
+-- | The tracing mode.
 tcMode :: Lens' TracingConfigResponse (Maybe TracingMode)
 tcMode = lens _tcMode (\ s a -> s{_tcMode = a})
 

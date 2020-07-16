@@ -23,7 +23,7 @@
 --
 -- You use this API to attach a managed policy to a group. To embed an inline policy in a group, use 'PutGroupPolicy' .
 --
--- For more information about policies, see <http://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html Managed Policies and Inline Policies> in the /IAM User Guide/ .
+-- For more information about policies, see <https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html Managed Policies and Inline Policies> in the /IAM User Guide/ .
 --
 module Network.AWS.IAM.AttachGroupPolicy
     (
@@ -56,9 +56,9 @@ data AttachGroupPolicy = AttachGroupPolicy'{_agpGroupName
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'agpGroupName' - The name (friendly name, not ARN) of the group to attach the policy to. This parameter allows (per its <http://wikipedia.org/wiki/regex regex pattern> ) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
+-- * 'agpGroupName' - The name (friendly name, not ARN) of the group to attach the policy to. This parameter allows (through its <http://wikipedia.org/wiki/regex regex pattern> ) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
 --
--- * 'agpPolicyARN' - The Amazon Resource Name (ARN) of the IAM policy you want to attach. For more information about ARNs, see <http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html Amazon Resource Names (ARNs) and AWS Service Namespaces> in the /AWS General Reference/ .
+-- * 'agpPolicyARN' - The Amazon Resource Name (ARN) of the IAM policy you want to attach. For more information about ARNs, see <https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html Amazon Resource Names (ARNs) and AWS Service Namespaces> in the /AWS General Reference/ .
 attachGroupPolicy
     :: Text -- ^ 'agpGroupName'
     -> Text -- ^ 'agpPolicyARN'
@@ -67,11 +67,11 @@ attachGroupPolicy pGroupName_ pPolicyARN_
   = AttachGroupPolicy'{_agpGroupName = pGroupName_,
                        _agpPolicyARN = pPolicyARN_}
 
--- | The name (friendly name, not ARN) of the group to attach the policy to. This parameter allows (per its <http://wikipedia.org/wiki/regex regex pattern> ) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
+-- | The name (friendly name, not ARN) of the group to attach the policy to. This parameter allows (through its <http://wikipedia.org/wiki/regex regex pattern> ) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
 agpGroupName :: Lens' AttachGroupPolicy Text
 agpGroupName = lens _agpGroupName (\ s a -> s{_agpGroupName = a})
 
--- | The Amazon Resource Name (ARN) of the IAM policy you want to attach. For more information about ARNs, see <http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html Amazon Resource Names (ARNs) and AWS Service Namespaces> in the /AWS General Reference/ .
+-- | The Amazon Resource Name (ARN) of the IAM policy you want to attach. For more information about ARNs, see <https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html Amazon Resource Names (ARNs) and AWS Service Namespaces> in the /AWS General Reference/ .
 agpPolicyARN :: Lens' AttachGroupPolicy Text
 agpPolicyARN = lens _agpPolicyARN (\ s a -> s{_agpPolicyARN = a})
 

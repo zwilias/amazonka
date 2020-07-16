@@ -30,7 +30,7 @@ import Network.AWS.MediaLive.Types.SmoothGroupStreamManifestBehavior
 import Network.AWS.MediaLive.Types.SmoothGroupTimestampOffsetMode
 import Network.AWS.Prelude
 
--- | Placeholder documentation for MsSmoothGroupSettings
+-- | Ms Smooth Group Settings
 --
 -- /See:/ 'msSmoothGroupSettings' smart constructor.
 data MsSmoothGroupSettings = MsSmoothGroupSettings'{_msgsFragmentLength
@@ -93,7 +93,7 @@ data MsSmoothGroupSettings = MsSmoothGroupSettings'{_msgsFragmentLength
 --
 -- * 'msgsStreamManifestBehavior' - When set to send, send stream manifest so publishing point doesn't start until all streams start.
 --
--- * 'msgsSendDelayMs' - Outputs that are "output locked" can use this delay. Assign a delay to the output that is "secondary".  Do not assign a delay to the "primary" output. The delay means that the primary output will always reach the downstream system before the secondary, which helps ensure that the downstream system always uses the primary output. (If there were no delay, the downstream system might flip-flop between whichever output happens to arrive first.) If the primary fails, the downstream system will switch to the secondary output. When the primary is restarted, the downstream system will switch back to the primary (because once again it is always arriving first)
+-- * 'msgsSendDelayMs' - Number of milliseconds to delay the output from the second pipeline.
 --
 -- * 'msgsEventStopBehavior' - When set to sendEos, send EOS signal to IIS server when stopping the event
 --
@@ -109,7 +109,7 @@ data MsSmoothGroupSettings = MsSmoothGroupSettings'{_msgsFragmentLength
 --
 -- * 'msgsCertificateMode' - If set to verifyAuthenticity, verify the https certificate chain to a trusted Certificate Authority (CA).  This will cause https outputs to self-signed certificates to fail.
 --
--- * 'msgsSparseTrackType' - If set to scte35, use incoming SCTE-35 messages to generate a sparse track in this group of MS-Smooth outputs.
+-- * 'msgsSparseTrackType' - If set to scte35, use incoming SCTE-35 messages to generate a sparse track in this group of MS-Smooth outputs. scte35WithoutSegmentation is the same as scte35, except EML will not start a new segment at a SCTE-35 marker. It will still encode an IDR frame at a SCTE-35 marker.
 --
 -- * 'msgsConnectionRetryInterval' - Number of seconds to wait before retrying connection to the IIS server if the connection is lost. Content will be cached during this time and the cache will be be delivered to the IIS server once the connection is re-established.
 --
@@ -121,7 +121,7 @@ data MsSmoothGroupSettings = MsSmoothGroupSettings'{_msgsFragmentLength
 --
 -- * 'msgsAudioOnlyTimecodeControl' - If set to passthrough for an audio-only MS Smooth output, the fragment absolute time will be set to the current timecode. This option does not write timecodes to the audio elementary stream.
 --
--- * 'msgsSegmentationMode' - When set to useInputSegmentation, the output segment or fragment points are set by the RAI markers from the input streams.
+-- * 'msgsSegmentationMode' - useInputSegmentation has been deprecated. The configured segment size is always used.
 --
 -- * 'msgsEventId' - MS Smooth event ID to be sent to the IIS server. Should only be specified if eventIdMode is set to useConfigured.
 --
@@ -159,7 +159,7 @@ msgsFragmentLength = lens _msgsFragmentLength (\ s a -> s{_msgsFragmentLength = 
 msgsStreamManifestBehavior :: Lens' MsSmoothGroupSettings (Maybe SmoothGroupStreamManifestBehavior)
 msgsStreamManifestBehavior = lens _msgsStreamManifestBehavior (\ s a -> s{_msgsStreamManifestBehavior = a})
 
--- | Outputs that are "output locked" can use this delay. Assign a delay to the output that is "secondary".  Do not assign a delay to the "primary" output. The delay means that the primary output will always reach the downstream system before the secondary, which helps ensure that the downstream system always uses the primary output. (If there were no delay, the downstream system might flip-flop between whichever output happens to arrive first.) If the primary fails, the downstream system will switch to the secondary output. When the primary is restarted, the downstream system will switch back to the primary (because once again it is always arriving first)
+-- | Number of milliseconds to delay the output from the second pipeline.
 msgsSendDelayMs :: Lens' MsSmoothGroupSettings (Maybe Natural)
 msgsSendDelayMs = lens _msgsSendDelayMs (\ s a -> s{_msgsSendDelayMs = a}) . mapping _Nat
 
@@ -191,7 +191,7 @@ msgsTimestampOffset = lens _msgsTimestampOffset (\ s a -> s{_msgsTimestampOffset
 msgsCertificateMode :: Lens' MsSmoothGroupSettings (Maybe SmoothGroupCertificateMode)
 msgsCertificateMode = lens _msgsCertificateMode (\ s a -> s{_msgsCertificateMode = a})
 
--- | If set to scte35, use incoming SCTE-35 messages to generate a sparse track in this group of MS-Smooth outputs.
+-- | If set to scte35, use incoming SCTE-35 messages to generate a sparse track in this group of MS-Smooth outputs. scte35WithoutSegmentation is the same as scte35, except EML will not start a new segment at a SCTE-35 marker. It will still encode an IDR frame at a SCTE-35 marker.
 msgsSparseTrackType :: Lens' MsSmoothGroupSettings (Maybe SmoothGroupSparseTrackType)
 msgsSparseTrackType = lens _msgsSparseTrackType (\ s a -> s{_msgsSparseTrackType = a})
 
@@ -215,7 +215,7 @@ msgsEventIdMode = lens _msgsEventIdMode (\ s a -> s{_msgsEventIdMode = a})
 msgsAudioOnlyTimecodeControl :: Lens' MsSmoothGroupSettings (Maybe SmoothGroupAudioOnlyTimecodeControl)
 msgsAudioOnlyTimecodeControl = lens _msgsAudioOnlyTimecodeControl (\ s a -> s{_msgsAudioOnlyTimecodeControl = a})
 
--- | When set to useInputSegmentation, the output segment or fragment points are set by the RAI markers from the input streams.
+-- | useInputSegmentation has been deprecated. The configured segment size is always used.
 msgsSegmentationMode :: Lens' MsSmoothGroupSettings (Maybe SmoothGroupSegmentationMode)
 msgsSegmentationMode = lens _msgsSegmentationMode (\ s a -> s{_msgsSegmentationMode = a})
 

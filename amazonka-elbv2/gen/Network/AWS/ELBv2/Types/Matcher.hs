@@ -32,14 +32,14 @@ newtype Matcher = Matcher'{_mHTTPCode :: Text}
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'mHTTPCode' - The HTTP codes. For Application Load Balancers, you can specify values between 200 and 499, and the default value is 200. You can specify multiple values (for example, "200,202") or a range of values (for example, "200-299"). For Network Load Balancers, this is 200 to 399.
+-- * 'mHTTPCode' - The HTTP codes. For Application Load Balancers, you can specify values between 200 and 499, and the default value is 200. You can specify multiple values (for example, "200,202") or a range of values (for example, "200-299"). For Network Load Balancers, this is 200–399.
 matcher
     :: Text -- ^ 'mHTTPCode'
     -> Matcher
 matcher pHTTPCode_
   = Matcher'{_mHTTPCode = pHTTPCode_}
 
--- | The HTTP codes. For Application Load Balancers, you can specify values between 200 and 499, and the default value is 200. You can specify multiple values (for example, "200,202") or a range of values (for example, "200-299"). For Network Load Balancers, this is 200 to 399.
+-- | The HTTP codes. For Application Load Balancers, you can specify values between 200 and 499, and the default value is 200. You can specify multiple values (for example, "200,202") or a range of values (for example, "200-299"). For Network Load Balancers, this is 200–399.
 mHTTPCode :: Lens' Matcher Text
 mHTTPCode = lens _mHTTPCode (\ s a -> s{_mHTTPCode = a})
 

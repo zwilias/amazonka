@@ -20,7 +20,7 @@ module Network.AWS.EFS.Types.Tag where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | A tag is a key-value pair. Allowed characters: letters, whitespace, and numbers, representable in UTF-8, and the following characters:@+ - = . _ : /@ 
+-- | A tag is a key-value pair. Allowed characters are letters, white space, and numbers that can be represented in UTF-8, and the following characters:@+ - = . _ : /@ 
 --
 --
 --
@@ -32,9 +32,9 @@ data Tag = Tag'{_tagKey :: !Text, _tagValue :: !Text}
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'tagKey' - Tag key (String). The key can't start with @aws:@ .
+-- * 'tagKey' - The tag key (String). The key can't start with @aws:@ .
 --
--- * 'tagValue' - Value of the tag key.
+-- * 'tagValue' - The value of the tag key.
 tag
     :: Text -- ^ 'tagKey'
     -> Text -- ^ 'tagValue'
@@ -42,11 +42,11 @@ tag
 tag pKey_ pValue_
   = Tag'{_tagKey = pKey_, _tagValue = pValue_}
 
--- | Tag key (String). The key can't start with @aws:@ .
+-- | The tag key (String). The key can't start with @aws:@ .
 tagKey :: Lens' Tag Text
 tagKey = lens _tagKey (\ s a -> s{_tagKey = a})
 
--- | Value of the tag key.
+-- | The value of the tag key.
 tagValue :: Lens' Tag Text
 tagValue = lens _tagValue (\ s a -> s{_tagValue = a})
 

@@ -44,17 +44,17 @@ data PutEventsRequestEntry = PutEventsRequestEntry'{_pereTime
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'pereTime' - The timestamp of the event, per <https://www.rfc-editor.org/rfc/rfc3339.txt RFC3339> . If no timestamp is provided, the timestamp of the 'PutEvents' call is used.
+-- * 'pereTime' - The time stamp of the event, per <https://www.rfc-editor.org/rfc/rfc3339.txt RFC3339> . If no time stamp is provided, the time stamp of the 'PutEvents' call is used.
 --
--- * 'pereDetailType' - Free-form string used to decide which fields to expect in the event detail.
+-- * 'pereDetailType' - Free-form string used to decide what fields to expect in the event detail.
 --
--- * 'pereResources' - AWS resources, identified by Amazon Resource Name (ARN), that the event primarily concerns. Any number, including zero, can be present.
+-- * 'pereResources' - AWS resources, identified by Amazon Resource Name (ARN), which the event primarily concerns. Any number, including zero, may be present.
 --
--- * 'pereEventBusName' - The event bus that will receive the event. Only the rules that are associated with this event bus can match the event.
+-- * 'pereEventBusName' - The event bus that will receive the event. Only the rules that are associated with this event bus will be able to match the event.
 --
--- * 'pereSource' - The source of the event. This field is required.
+-- * 'pereSource' - The source of the event.
 --
--- * 'pereDetail' - A valid JSON string. There is no other schema imposed. The JSON string can contain fields and nested subobjects.
+-- * 'pereDetail' - A valid JSON string. There is no other schema imposed. The JSON string may contain fields and nested subobjects.
 putEventsRequestEntry
     :: PutEventsRequestEntry
 putEventsRequestEntry
@@ -63,27 +63,27 @@ putEventsRequestEntry
                            _pereEventBusName = Nothing, _pereSource = Nothing,
                            _pereDetail = Nothing}
 
--- | The timestamp of the event, per <https://www.rfc-editor.org/rfc/rfc3339.txt RFC3339> . If no timestamp is provided, the timestamp of the 'PutEvents' call is used.
+-- | The time stamp of the event, per <https://www.rfc-editor.org/rfc/rfc3339.txt RFC3339> . If no time stamp is provided, the time stamp of the 'PutEvents' call is used.
 pereTime :: Lens' PutEventsRequestEntry (Maybe UTCTime)
 pereTime = lens _pereTime (\ s a -> s{_pereTime = a}) . mapping _Time
 
--- | Free-form string used to decide which fields to expect in the event detail.
+-- | Free-form string used to decide what fields to expect in the event detail.
 pereDetailType :: Lens' PutEventsRequestEntry (Maybe Text)
 pereDetailType = lens _pereDetailType (\ s a -> s{_pereDetailType = a})
 
--- | AWS resources, identified by Amazon Resource Name (ARN), that the event primarily concerns. Any number, including zero, can be present.
+-- | AWS resources, identified by Amazon Resource Name (ARN), which the event primarily concerns. Any number, including zero, may be present.
 pereResources :: Lens' PutEventsRequestEntry [Text]
 pereResources = lens _pereResources (\ s a -> s{_pereResources = a}) . _Default . _Coerce
 
--- | The event bus that will receive the event. Only the rules that are associated with this event bus can match the event.
+-- | The event bus that will receive the event. Only the rules that are associated with this event bus will be able to match the event.
 pereEventBusName :: Lens' PutEventsRequestEntry (Maybe Text)
 pereEventBusName = lens _pereEventBusName (\ s a -> s{_pereEventBusName = a})
 
--- | The source of the event. This field is required.
+-- | The source of the event.
 pereSource :: Lens' PutEventsRequestEntry (Maybe Text)
 pereSource = lens _pereSource (\ s a -> s{_pereSource = a})
 
--- | A valid JSON string. There is no other schema imposed. The JSON string can contain fields and nested subobjects.
+-- | A valid JSON string. There is no other schema imposed. The JSON string may contain fields and nested subobjects.
 pereDetail :: Lens' PutEventsRequestEntry (Maybe Text)
 pereDetail = lens _pereDetail (\ s a -> s{_pereDetail = a})
 

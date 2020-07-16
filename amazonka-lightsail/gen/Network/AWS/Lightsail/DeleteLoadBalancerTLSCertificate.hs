@@ -21,6 +21,8 @@
 -- Deletes an SSL/TLS certificate associated with a Lightsail load balancer.
 --
 --
+-- The @DeleteLoadBalancerTlsCertificate@ operation supports tag-based access control via resource tags applied to the resource identified by @load balancer name@ . For more information, see the <https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags Lightsail Dev Guide> .
+--
 module Network.AWS.Lightsail.DeleteLoadBalancerTLSCertificate
     (
     -- * Creating a Request
@@ -64,7 +66,7 @@ data DeleteLoadBalancerTLSCertificate = DeleteLoadBalancerTLSCertificate'{_dlbtc
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dlbtcForce' - When @true@ , forces the deletion of an SSL/TLS certificate. There can be two certificates associated with a Lightsail load balancer: the primary and the backup. The force parameter is required when the primary SSL/TLS certificate is in use by an instance attached to the load balancer.
+-- * 'dlbtcForce' - When @true@ , forces the deletion of an SSL/TLS certificate. There can be two certificates associated with a Lightsail load balancer: the primary and the backup. The @force@ parameter is required when the primary SSL/TLS certificate is in use by an instance attached to the load balancer.
 --
 -- * 'dlbtcLoadBalancerName' - The load balancer name.
 --
@@ -81,7 +83,7 @@ deleteLoadBalancerTLSCertificate pLoadBalancerName_
                                         pLoadBalancerName_,
                                       _dlbtcCertificateName = pCertificateName_}
 
--- | When @true@ , forces the deletion of an SSL/TLS certificate. There can be two certificates associated with a Lightsail load balancer: the primary and the backup. The force parameter is required when the primary SSL/TLS certificate is in use by an instance attached to the load balancer.
+-- | When @true@ , forces the deletion of an SSL/TLS certificate. There can be two certificates associated with a Lightsail load balancer: the primary and the backup. The @force@ parameter is required when the primary SSL/TLS certificate is in use by an instance attached to the load balancer.
 dlbtcForce :: Lens' DeleteLoadBalancerTLSCertificate (Maybe Bool)
 dlbtcForce = lens _dlbtcForce (\ s a -> s{_dlbtcForce = a})
 
@@ -155,7 +157,7 @@ data DeleteLoadBalancerTLSCertificateResponse = DeleteLoadBalancerTLSCertificate
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dlbtcrsOperations' - An object describing the API operations.
+-- * 'dlbtcrsOperations' - An array of objects that describe the result of the action, such as the status of the request, the time stamp of the request, and the resources affected by the request.
 --
 -- * 'dlbtcrsResponseStatus' - -- | The response status code.
 deleteLoadBalancerTLSCertificateResponse
@@ -168,7 +170,7 @@ deleteLoadBalancerTLSCertificateResponse
                                               _dlbtcrsResponseStatus =
                                                 pResponseStatus_}
 
--- | An object describing the API operations.
+-- | An array of objects that describe the result of the action, such as the status of the request, the time stamp of the request, and the resources affected by the request.
 dlbtcrsOperations :: Lens' DeleteLoadBalancerTLSCertificateResponse [Operation]
 dlbtcrsOperations = lens _dlbtcrsOperations (\ s a -> s{_dlbtcrsOperations = a}) . _Default . _Coerce
 

@@ -33,6 +33,9 @@ module Network.AWS.LexModels.Types
     -- * ContentType
     , ContentType (..)
 
+    -- * Destination
+    , Destination (..)
+
     -- * ExportStatus
     , ExportStatus (..)
 
@@ -51,8 +54,14 @@ module Network.AWS.LexModels.Types
     -- * Locale
     , Locale (..)
 
+    -- * LogType
+    , LogType (..)
+
     -- * MergeStrategy
     , MergeStrategy (..)
+
+    -- * ObfuscationSetting
+    , ObfuscationSetting (..)
 
     -- * ProcessBehavior
     , ProcessBehavior (..)
@@ -77,6 +86,7 @@ module Network.AWS.LexModels.Types
     , bamBotName
     , bamCreatedDate
     , bamName
+    , bamConversationLogs
     , bamLastUpdatedDate
     , bamDescription
 
@@ -126,6 +136,18 @@ module Network.AWS.LexModels.Types
     , chUri
     , chMessageVersion
 
+    -- * ConversationLogsRequest
+    , ConversationLogsRequest
+    , conversationLogsRequest
+    , clrLogSettings
+    , clrIamRoleARN
+
+    -- * ConversationLogsResponse
+    , ConversationLogsResponse
+    , conversationLogsResponse
+    , clIamRoleARN
+    , clLogSettings
+
     -- * EnumerationValue
     , EnumerationValue
     , enumerationValue
@@ -159,6 +181,23 @@ module Network.AWS.LexModels.Types
     , imLastUpdatedDate
     , imDescription
 
+    -- * LogSettingsRequest
+    , LogSettingsRequest
+    , logSettingsRequest
+    , lsrKmsKeyARN
+    , lsrLogType
+    , lsrDestination
+    , lsrResourceARN
+
+    -- * LogSettingsResponse
+    , LogSettingsResponse
+    , logSettingsResponse
+    , lsDestination
+    , lsKmsKeyARN
+    , lsLogType
+    , lsResourceARN
+    , lsResourcePrefix
+
     -- * Message
     , Message
     , message
@@ -180,11 +219,17 @@ module Network.AWS.LexModels.Types
     , sValueElicitationPrompt
     , sResponseCard
     , sPriority
+    , sObfuscationSetting
     , sSlotTypeVersion
     , sSampleUtterances
     , sDescription
     , sName
     , sSlotConstraint
+
+    -- * SlotTypeConfiguration
+    , SlotTypeConfiguration
+    , slotTypeConfiguration
+    , stcRegexConfiguration
 
     -- * SlotTypeMetadata
     , SlotTypeMetadata
@@ -195,11 +240,22 @@ module Network.AWS.LexModels.Types
     , stmLastUpdatedDate
     , stmDescription
 
+    -- * SlotTypeRegexConfiguration
+    , SlotTypeRegexConfiguration
+    , slotTypeRegexConfiguration
+    , strcPattern
+
     -- * Statement
     , Statement
     , statement
     , staResponseCard
     , staMessages
+
+    -- * Tag
+    , Tag
+    , tag
+    , tagKey
+    , tagValue
 
     -- * UtteranceData
     , UtteranceData
@@ -223,13 +279,16 @@ import Network.AWS.Sign.V4
 import Network.AWS.LexModels.Types.ChannelStatus
 import Network.AWS.LexModels.Types.ChannelType
 import Network.AWS.LexModels.Types.ContentType
+import Network.AWS.LexModels.Types.Destination
 import Network.AWS.LexModels.Types.ExportStatus
 import Network.AWS.LexModels.Types.ExportType
 import Network.AWS.LexModels.Types.FulfillmentActivityType
 import Network.AWS.LexModels.Types.ImportStatus
 import Network.AWS.LexModels.Types.LexStatus
 import Network.AWS.LexModels.Types.Locale
+import Network.AWS.LexModels.Types.LogType
 import Network.AWS.LexModels.Types.MergeStrategy
+import Network.AWS.LexModels.Types.ObfuscationSetting
 import Network.AWS.LexModels.Types.ProcessBehavior
 import Network.AWS.LexModels.Types.ResourceType
 import Network.AWS.LexModels.Types.SlotConstraint
@@ -242,16 +301,23 @@ import Network.AWS.LexModels.Types.BuiltinIntentMetadata
 import Network.AWS.LexModels.Types.BuiltinIntentSlot
 import Network.AWS.LexModels.Types.BuiltinSlotTypeMetadata
 import Network.AWS.LexModels.Types.CodeHook
+import Network.AWS.LexModels.Types.ConversationLogsRequest
+import Network.AWS.LexModels.Types.ConversationLogsResponse
 import Network.AWS.LexModels.Types.EnumerationValue
 import Network.AWS.LexModels.Types.FollowUpPrompt
 import Network.AWS.LexModels.Types.FulfillmentActivity
 import Network.AWS.LexModels.Types.Intent
 import Network.AWS.LexModels.Types.IntentMetadata
+import Network.AWS.LexModels.Types.LogSettingsRequest
+import Network.AWS.LexModels.Types.LogSettingsResponse
 import Network.AWS.LexModels.Types.Message
 import Network.AWS.LexModels.Types.Prompt
 import Network.AWS.LexModels.Types.Slot
+import Network.AWS.LexModels.Types.SlotTypeConfiguration
 import Network.AWS.LexModels.Types.SlotTypeMetadata
+import Network.AWS.LexModels.Types.SlotTypeRegexConfiguration
 import Network.AWS.LexModels.Types.Statement
+import Network.AWS.LexModels.Types.Tag
 import Network.AWS.LexModels.Types.UtteranceData
 import Network.AWS.LexModels.Types.UtteranceList
 
@@ -278,6 +344,11 @@ lexModels
             = Just "throttling_exception"
           | has (hasCode "Throttling" . hasStatus 400) e =
             Just "throttling"
+          | has
+              (hasCode "ProvisionedThroughputExceededException" .
+                 hasStatus 400)
+              e
+            = Just "throughput_exceeded"
           | has (hasStatus 504) e = Just "gateway_timeout"
           | has
               (hasCode "RequestThrottledException" . hasStatus 400)

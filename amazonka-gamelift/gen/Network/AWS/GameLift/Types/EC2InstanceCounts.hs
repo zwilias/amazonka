@@ -23,51 +23,17 @@ import Network.AWS.Prelude
 -- | Current status of fleet capacity. The number of active instances should match or be in the process of matching the number of desired instances. Pending and terminating counts are non-zero only if fleet capacity is adjusting to an 'UpdateFleetCapacity' request, or if access to resources is temporarily affected.
 --
 --
--- Fleet-related operations include:
---
 --     * 'CreateFleet' 
 --
 --     * 'ListFleets' 
 --
 --     * 'DeleteFleet' 
 --
---     * Describe fleets:
---
 --     * 'DescribeFleetAttributes' 
---
---     * 'DescribeFleetCapacity' 
---
---     * 'DescribeFleetPortSettings' 
---
---     * 'DescribeFleetUtilization' 
---
---     * 'DescribeRuntimeConfiguration' 
---
---     * 'DescribeEC2InstanceLimits' 
---
---     * 'DescribeFleetEvents' 
---
---
---
---     * Update fleets:
 --
 --     * 'UpdateFleetAttributes' 
 --
---     * 'UpdateFleetCapacity' 
---
---     * 'UpdateFleetPortSettings' 
---
---     * 'UpdateRuntimeConfiguration' 
---
---
---
---     * Manage fleet actions:
---
---     * 'StartFleetActions' 
---
---     * 'StopFleetActions' 
---
---
+--     * 'StartFleetActions' or 'StopFleetActions' 
 --
 --
 --
@@ -93,11 +59,11 @@ data EC2InstanceCounts = EC2InstanceCounts'{_eicIdLE
 --
 -- * 'eicPENDING' - Number of instances in the fleet that are starting but not yet active.
 --
--- * 'eicMAXIMUM' - Maximum value allowed for the fleet's instance count.
+-- * 'eicMAXIMUM' - The maximum value allowed for the fleet's instance count.
 --
 -- * 'eicDESIRED' - Ideal number of active instances in the fleet.
 --
--- * 'eicMINIMUM' - Minimum value allowed for the fleet's instance count.
+-- * 'eicMINIMUM' - The minimum value allowed for the fleet's instance count.
 --
 -- * 'eicACTIVE' - Actual number of active instances in the fleet.
 ec2InstanceCounts
@@ -120,7 +86,7 @@ eicTERMINATING = lens _eicTERMINATING (\ s a -> s{_eicTERMINATING = a}) . mappin
 eicPENDING :: Lens' EC2InstanceCounts (Maybe Natural)
 eicPENDING = lens _eicPENDING (\ s a -> s{_eicPENDING = a}) . mapping _Nat
 
--- | Maximum value allowed for the fleet's instance count.
+-- | The maximum value allowed for the fleet's instance count.
 eicMAXIMUM :: Lens' EC2InstanceCounts (Maybe Natural)
 eicMAXIMUM = lens _eicMAXIMUM (\ s a -> s{_eicMAXIMUM = a}) . mapping _Nat
 
@@ -128,7 +94,7 @@ eicMAXIMUM = lens _eicMAXIMUM (\ s a -> s{_eicMAXIMUM = a}) . mapping _Nat
 eicDESIRED :: Lens' EC2InstanceCounts (Maybe Natural)
 eicDESIRED = lens _eicDESIRED (\ s a -> s{_eicDESIRED = a}) . mapping _Nat
 
--- | Minimum value allowed for the fleet's instance count.
+-- | The minimum value allowed for the fleet's instance count.
 eicMINIMUM :: Lens' EC2InstanceCounts (Maybe Natural)
 eicMINIMUM = lens _eicMINIMUM (\ s a -> s{_eicMINIMUM = a}) . mapping _Nat
 

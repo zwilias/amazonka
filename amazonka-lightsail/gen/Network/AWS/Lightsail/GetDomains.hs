@@ -57,12 +57,12 @@ newtype GetDomains = GetDomains'{_gdPageToken ::
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'gdPageToken' - A token used for advancing to the next page of results from your get domains request.
+-- * 'gdPageToken' - The token to advance to the next page of results from your request. To get a page token, perform an initial @GetDomains@ request. If your results are paginated, the response will return a next page token that you can specify as the page token in a subsequent request.
 getDomains
     :: GetDomains
 getDomains = GetDomains'{_gdPageToken = Nothing}
 
--- | A token used for advancing to the next page of results from your get domains request.
+-- | The token to advance to the next page of results from your request. To get a page token, perform an initial @GetDomains@ request. If your results are paginated, the response will return a next page token that you can specify as the page token in a subsequent request.
 gdPageToken :: Lens' GetDomains (Maybe Text)
 gdPageToken = lens _gdPageToken (\ s a -> s{_gdPageToken = a})
 
@@ -121,7 +121,7 @@ data GetDomainsResponse = GetDomainsResponse'{_gtdmnsrsNextPageToken
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'gtdmnsrsNextPageToken' - A token used for advancing to the next page of results from your get active names request.
+-- * 'gtdmnsrsNextPageToken' - The token to advance to the next page of resutls from your request. A next page token is not returned if there are no more results to display. To get the next page of results, perform another @GetDomains@ request and specify the next page token using the @pageToken@ parameter.
 --
 -- * 'gtdmnsrsDomains' - An array of key-value pairs containing information about each of the domain entries in the user's account.
 --
@@ -135,7 +135,7 @@ getDomainsResponse pResponseStatus_
                         _gtdmnsrsDomains = Nothing,
                         _gtdmnsrsResponseStatus = pResponseStatus_}
 
--- | A token used for advancing to the next page of results from your get active names request.
+-- | The token to advance to the next page of resutls from your request. A next page token is not returned if there are no more results to display. To get the next page of results, perform another @GetDomains@ request and specify the next page token using the @pageToken@ parameter.
 gtdmnsrsNextPageToken :: Lens' GetDomainsResponse (Maybe Text)
 gtdmnsrsNextPageToken = lens _gtdmnsrsNextPageToken (\ s a -> s{_gtdmnsrsNextPageToken = a})
 

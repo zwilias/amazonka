@@ -20,13 +20,13 @@ module Network.AWS.Pinpoint.Types.ADMChannelResponse where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | Amazon Device Messaging channel definition.
+-- | Provides information about the status and settings of the ADM (Amazon Device Messaging) channel for an application.
+--
+--
 --
 -- /See:/ 'aDMChannelResponse' smart constructor.
-data ADMChannelResponse = ADMChannelResponse'{_admcPlatform
+data ADMChannelResponse = ADMChannelResponse'{_admcLastModifiedDate
                                               :: !(Maybe Text),
-                                              _admcLastModifiedDate ::
-                                              !(Maybe Text),
                                               _admcEnabled :: !(Maybe Bool),
                                               _admcIsArchived :: !(Maybe Bool),
                                               _admcApplicationId ::
@@ -38,97 +38,100 @@ data ADMChannelResponse = ADMChannelResponse'{_admcPlatform
                                               _admcLastModifiedBy ::
                                               !(Maybe Text),
                                               _admcHasCredential ::
-                                              !(Maybe Bool)}
+                                              !(Maybe Bool),
+                                              _admcPlatform :: !Text}
                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ADMChannelResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'admcPlatform' - Platform type. Will be "ADM"
+-- * 'admcLastModifiedDate' - The date and time when the ADM channel was last modified.
 --
--- * 'admcLastModifiedDate' - Last date this was updated
+-- * 'admcEnabled' - Specifies whether the ADM channel is enabled for the application.
 --
--- * 'admcEnabled' - If the channel is enabled for sending messages.
+-- * 'admcIsArchived' - Specifies whether the ADM channel is archived.
 --
--- * 'admcIsArchived' - Is this channel archived
+-- * 'admcApplicationId' - The unique identifier for the application that the ADM channel applies to.
 --
--- * 'admcApplicationId' - The ID of the application to which the channel applies.
+-- * 'admcVersion' - The current version of the ADM channel.
 --
--- * 'admcVersion' - Version of channel
+-- * 'admcId' - (Deprecated) An identifier for the ADM channel. This property is retained only for backward compatibility.
 --
--- * 'admcId' - Channel ID. Not used, only for backwards compatibility.
+-- * 'admcCreationDate' - The date and time when the ADM channel was enabled.
 --
--- * 'admcCreationDate' - When was this segment created
+-- * 'admcLastModifiedBy' - The user who last modified the ADM channel.
 --
--- * 'admcLastModifiedBy' - Who last updated this entry
+-- * 'admcHasCredential' - (Not used) This property is retained only for backward compatibility.
 --
--- * 'admcHasCredential' - Indicates whether the channel is configured with ADM credentials. Amazon Pinpoint uses your credentials to authenticate push notifications with ADM. Provide your credentials by setting the ClientId and ClientSecret attributes.
+-- * 'admcPlatform' - The type of messaging or notification platform for the channel. For the ADM channel, this value is ADM.
 aDMChannelResponse
-    :: ADMChannelResponse
-aDMChannelResponse
-  = ADMChannelResponse'{_admcPlatform = Nothing,
-                        _admcLastModifiedDate = Nothing,
+    :: Text -- ^ 'admcPlatform'
+    -> ADMChannelResponse
+aDMChannelResponse pPlatform_
+  = ADMChannelResponse'{_admcLastModifiedDate =
+                          Nothing,
                         _admcEnabled = Nothing, _admcIsArchived = Nothing,
                         _admcApplicationId = Nothing, _admcVersion = Nothing,
                         _admcId = Nothing, _admcCreationDate = Nothing,
                         _admcLastModifiedBy = Nothing,
-                        _admcHasCredential = Nothing}
+                        _admcHasCredential = Nothing,
+                        _admcPlatform = pPlatform_}
 
--- | Platform type. Will be "ADM"
-admcPlatform :: Lens' ADMChannelResponse (Maybe Text)
-admcPlatform = lens _admcPlatform (\ s a -> s{_admcPlatform = a})
-
--- | Last date this was updated
+-- | The date and time when the ADM channel was last modified.
 admcLastModifiedDate :: Lens' ADMChannelResponse (Maybe Text)
 admcLastModifiedDate = lens _admcLastModifiedDate (\ s a -> s{_admcLastModifiedDate = a})
 
--- | If the channel is enabled for sending messages.
+-- | Specifies whether the ADM channel is enabled for the application.
 admcEnabled :: Lens' ADMChannelResponse (Maybe Bool)
 admcEnabled = lens _admcEnabled (\ s a -> s{_admcEnabled = a})
 
--- | Is this channel archived
+-- | Specifies whether the ADM channel is archived.
 admcIsArchived :: Lens' ADMChannelResponse (Maybe Bool)
 admcIsArchived = lens _admcIsArchived (\ s a -> s{_admcIsArchived = a})
 
--- | The ID of the application to which the channel applies.
+-- | The unique identifier for the application that the ADM channel applies to.
 admcApplicationId :: Lens' ADMChannelResponse (Maybe Text)
 admcApplicationId = lens _admcApplicationId (\ s a -> s{_admcApplicationId = a})
 
--- | Version of channel
+-- | The current version of the ADM channel.
 admcVersion :: Lens' ADMChannelResponse (Maybe Int)
 admcVersion = lens _admcVersion (\ s a -> s{_admcVersion = a})
 
--- | Channel ID. Not used, only for backwards compatibility.
+-- | (Deprecated) An identifier for the ADM channel. This property is retained only for backward compatibility.
 admcId :: Lens' ADMChannelResponse (Maybe Text)
 admcId = lens _admcId (\ s a -> s{_admcId = a})
 
--- | When was this segment created
+-- | The date and time when the ADM channel was enabled.
 admcCreationDate :: Lens' ADMChannelResponse (Maybe Text)
 admcCreationDate = lens _admcCreationDate (\ s a -> s{_admcCreationDate = a})
 
--- | Who last updated this entry
+-- | The user who last modified the ADM channel.
 admcLastModifiedBy :: Lens' ADMChannelResponse (Maybe Text)
 admcLastModifiedBy = lens _admcLastModifiedBy (\ s a -> s{_admcLastModifiedBy = a})
 
--- | Indicates whether the channel is configured with ADM credentials. Amazon Pinpoint uses your credentials to authenticate push notifications with ADM. Provide your credentials by setting the ClientId and ClientSecret attributes.
+-- | (Not used) This property is retained only for backward compatibility.
 admcHasCredential :: Lens' ADMChannelResponse (Maybe Bool)
 admcHasCredential = lens _admcHasCredential (\ s a -> s{_admcHasCredential = a})
+
+-- | The type of messaging or notification platform for the channel. For the ADM channel, this value is ADM.
+admcPlatform :: Lens' ADMChannelResponse Text
+admcPlatform = lens _admcPlatform (\ s a -> s{_admcPlatform = a})
 
 instance FromJSON ADMChannelResponse where
         parseJSON
           = withObject "ADMChannelResponse"
               (\ x ->
                  ADMChannelResponse' <$>
-                   (x .:? "Platform") <*> (x .:? "LastModifiedDate") <*>
-                     (x .:? "Enabled")
-                     <*> (x .:? "IsArchived")
+                   (x .:? "LastModifiedDate") <*> (x .:? "Enabled") <*>
+                     (x .:? "IsArchived")
                      <*> (x .:? "ApplicationId")
                      <*> (x .:? "Version")
                      <*> (x .:? "Id")
                      <*> (x .:? "CreationDate")
                      <*> (x .:? "LastModifiedBy")
-                     <*> (x .:? "HasCredential"))
+                     <*> (x .:? "HasCredential")
+                     <*> (x .: "Platform"))
 
 instance Hashable ADMChannelResponse where
 

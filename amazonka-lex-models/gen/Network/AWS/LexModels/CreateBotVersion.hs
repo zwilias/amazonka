@@ -43,6 +43,7 @@ module Network.AWS.LexModels.CreateBotVersion
     , cbvrsAbortStatement
     , cbvrsIntents
     , cbvrsChecksum
+    , cbvrsDetectSentiment
     , cbvrsLocale
     , cbvrsCreatedDate
     , cbvrsName
@@ -102,6 +103,7 @@ instance AWSRequest CreateBotVersion where
                      (x .?> "abortStatement")
                      <*> (x .?> "intents" .!@ mempty)
                      <*> (x .?> "checksum")
+                     <*> (x .?> "detectSentiment")
                      <*> (x .?> "locale")
                      <*> (x .?> "createdDate")
                      <*> (x .?> "name")
@@ -148,6 +150,8 @@ data CreateBotVersionResponse = CreateBotVersionResponse'{_cbvrsFailureReason
                                                           !(Maybe [Intent]),
                                                           _cbvrsChecksum ::
                                                           !(Maybe Text),
+                                                          _cbvrsDetectSentiment
+                                                          :: !(Maybe Bool),
                                                           _cbvrsLocale ::
                                                           !(Maybe Locale),
                                                           _cbvrsCreatedDate ::
@@ -187,6 +191,8 @@ data CreateBotVersionResponse = CreateBotVersionResponse'{_cbvrsFailureReason
 --
 -- * 'cbvrsChecksum' - Checksum identifying the version of the bot that was created.
 --
+-- * 'cbvrsDetectSentiment' - Indicates whether utterances entered by the user should be sent to Amazon Comprehend for sentiment analysis.
+--
 -- * 'cbvrsLocale' - Specifies the target locale for the bot. 
 --
 -- * 'cbvrsCreatedDate' - The date when the bot version was created.
@@ -217,6 +223,7 @@ createBotVersionResponse pResponseStatus_
                               _cbvrsStatus = Nothing,
                               _cbvrsAbortStatement = Nothing,
                               _cbvrsIntents = Nothing, _cbvrsChecksum = Nothing,
+                              _cbvrsDetectSentiment = Nothing,
                               _cbvrsLocale = Nothing,
                               _cbvrsCreatedDate = Nothing, _cbvrsName = Nothing,
                               _cbvrsVersion = Nothing,
@@ -247,6 +254,10 @@ cbvrsIntents = lens _cbvrsIntents (\ s a -> s{_cbvrsIntents = a}) . _Default . _
 -- | Checksum identifying the version of the bot that was created.
 cbvrsChecksum :: Lens' CreateBotVersionResponse (Maybe Text)
 cbvrsChecksum = lens _cbvrsChecksum (\ s a -> s{_cbvrsChecksum = a})
+
+-- | Indicates whether utterances entered by the user should be sent to Amazon Comprehend for sentiment analysis.
+cbvrsDetectSentiment :: Lens' CreateBotVersionResponse (Maybe Bool)
+cbvrsDetectSentiment = lens _cbvrsDetectSentiment (\ s a -> s{_cbvrsDetectSentiment = a})
 
 -- | Specifies the target locale for the bot. 
 cbvrsLocale :: Lens' CreateBotVersionResponse (Maybe Locale)

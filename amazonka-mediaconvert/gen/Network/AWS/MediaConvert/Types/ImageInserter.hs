@@ -21,7 +21,7 @@ import Network.AWS.Lens
 import Network.AWS.MediaConvert.Types.InsertableImage
 import Network.AWS.Prelude
 
--- | Enable the Image inserter (ImageInserter) feature to include a graphic overlay on your video. Enable or disable this feature for each output individually. This setting is disabled by default.
+-- | Enable the image inserter feature to include a graphic overlay on your video. Enable or disable this feature for each input or output individually. This setting is disabled by default.
 --
 -- /See:/ 'imageInserter' smart constructor.
 newtype ImageInserter = ImageInserter'{_iiInsertableImages
@@ -32,13 +32,13 @@ newtype ImageInserter = ImageInserter'{_iiInsertableImages
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'iiInsertableImages' - Image to insert. Must be 32 bit windows BMP, PNG, or TGA file. Must not be  larger than the output frames.
+-- * 'iiInsertableImages' - Specify the images that you want to overlay on your video. The images must be PNG or TGA files.
 imageInserter
     :: ImageInserter
 imageInserter
   = ImageInserter'{_iiInsertableImages = Nothing}
 
--- | Image to insert. Must be 32 bit windows BMP, PNG, or TGA file. Must not be  larger than the output frames.
+-- | Specify the images that you want to overlay on your video. The images must be PNG or TGA files.
 iiInsertableImages :: Lens' ImageInserter [InsertableImage]
 iiInsertableImages = lens _iiInsertableImages (\ s a -> s{_iiInsertableImages = a}) . _Default . _Coerce
 

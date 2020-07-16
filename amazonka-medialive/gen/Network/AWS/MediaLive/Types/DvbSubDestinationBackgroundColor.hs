@@ -28,7 +28,7 @@ module Network.AWS.MediaLive.Types.DvbSubDestinationBackgroundColor (
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | Placeholder documentation for DvbSubDestinationBackgroundColor
+-- | Dvb Sub Destination Background Color
 data DvbSubDestinationBackgroundColor = DvbSubDestinationBackgroundColor' (CI
                                                                              Text)
                                           deriving (Eq, Ord, Read, Show, Data,

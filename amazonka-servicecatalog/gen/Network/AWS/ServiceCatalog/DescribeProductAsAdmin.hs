@@ -37,6 +37,7 @@ module Network.AWS.ServiceCatalog.DescribeProductAsAdmin
     , dpaarsProductViewDetail
     , dpaarsTagOptions
     , dpaarsProvisioningArtifactSummaries
+    , dpaarsBudgets
     , dpaarsTags
     , dpaarsResponseStatus
     ) where
@@ -90,6 +91,7 @@ instance AWSRequest DescribeProductAsAdmin where
                      (x .?> "TagOptions" .!@ mempty)
                      <*>
                      (x .?> "ProvisioningArtifactSummaries" .!@ mempty)
+                     <*> (x .?> "Budgets" .!@ mempty)
                      <*> (x .?> "Tags" .!@ mempty)
                      <*> (pure (fromEnum s)))
 
@@ -133,6 +135,10 @@ data DescribeProductAsAdminResponse = DescribeProductAsAdminResponse'{_dpaarsPro
                                                                       ::
                                                                       !(Maybe
                                                                           [ProvisioningArtifactSummary]),
+                                                                      _dpaarsBudgets
+                                                                      ::
+                                                                      !(Maybe
+                                                                          [BudgetDetail]),
                                                                       _dpaarsTags
                                                                       ::
                                                                       !(Maybe
@@ -152,6 +158,8 @@ data DescribeProductAsAdminResponse = DescribeProductAsAdminResponse'{_dpaarsPro
 --
 -- * 'dpaarsProvisioningArtifactSummaries' - Information about the provisioning artifacts (also known as versions) for the specified product.
 --
+-- * 'dpaarsBudgets' - Information about the associated budgets.
+--
 -- * 'dpaarsTags' - Information about the tags associated with the product.
 --
 -- * 'dpaarsResponseStatus' - -- | The response status code.
@@ -164,6 +172,7 @@ describeProductAsAdminResponse pResponseStatus_
                                     _dpaarsTagOptions = Nothing,
                                     _dpaarsProvisioningArtifactSummaries =
                                       Nothing,
+                                    _dpaarsBudgets = Nothing,
                                     _dpaarsTags = Nothing,
                                     _dpaarsResponseStatus = pResponseStatus_}
 
@@ -178,6 +187,10 @@ dpaarsTagOptions = lens _dpaarsTagOptions (\ s a -> s{_dpaarsTagOptions = a}) . 
 -- | Information about the provisioning artifacts (also known as versions) for the specified product.
 dpaarsProvisioningArtifactSummaries :: Lens' DescribeProductAsAdminResponse [ProvisioningArtifactSummary]
 dpaarsProvisioningArtifactSummaries = lens _dpaarsProvisioningArtifactSummaries (\ s a -> s{_dpaarsProvisioningArtifactSummaries = a}) . _Default . _Coerce
+
+-- | Information about the associated budgets.
+dpaarsBudgets :: Lens' DescribeProductAsAdminResponse [BudgetDetail]
+dpaarsBudgets = lens _dpaarsBudgets (\ s a -> s{_dpaarsBudgets = a}) . _Default . _Coerce
 
 -- | Information about the tags associated with the product.
 dpaarsTags :: Lens' DescribeProductAsAdminResponse [Tag]

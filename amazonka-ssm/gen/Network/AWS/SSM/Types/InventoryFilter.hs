@@ -36,7 +36,7 @@ data InventoryFilter = InventoryFilter'{_ifType ::
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'ifType' - The type of filter. Valid values include the following: "Equal"|"NotEqual"|"BeginWith"|"LessThan"|"GreaterThan"
+-- * 'ifType' - The type of filter.
 --
 -- * 'ifKey' - The name of the filter key.
 --
@@ -49,7 +49,7 @@ inventoryFilter pKey_ pValues_
   = InventoryFilter'{_ifType = Nothing, _ifKey = pKey_,
                      _ifValues = _List1 # pValues_}
 
--- | The type of filter. Valid values include the following: "Equal"|"NotEqual"|"BeginWith"|"LessThan"|"GreaterThan"
+-- | The type of filter.
 ifType :: Lens' InventoryFilter (Maybe InventoryQueryOperatorType)
 ifType = lens _ifType (\ s a -> s{_ifType = a})
 

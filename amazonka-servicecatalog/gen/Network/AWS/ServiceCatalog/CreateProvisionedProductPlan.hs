@@ -107,7 +107,7 @@ data CreateProvisionedProductPlan = CreateProvisionedProductPlan'{_cpppNotificat
 --
 -- * 'cpppProvisioningParameters' - Parameters specified by the administrator that are required for provisioning the product.
 --
--- * 'cpppTags' - One or more tags.
+-- * 'cpppTags' - One or more tags. If the plan is for an existing provisioned product, the product must have a @RESOURCE_UPDATE@ constraint with @TagUpdatesOnProvisionedProduct@ set to @ALLOWED@ to allow tag updates.
 --
 -- * 'cpppPlanName' - The name of the plan.
 --
@@ -162,7 +162,7 @@ cpppPathId = lens _cpppPathId (\ s a -> s{_cpppPathId = a})
 cpppProvisioningParameters :: Lens' CreateProvisionedProductPlan [UpdateProvisioningParameter]
 cpppProvisioningParameters = lens _cpppProvisioningParameters (\ s a -> s{_cpppProvisioningParameters = a}) . _Default . _Coerce
 
--- | One or more tags.
+-- | One or more tags. If the plan is for an existing provisioned product, the product must have a @RESOURCE_UPDATE@ constraint with @TagUpdatesOnProvisionedProduct@ set to @ALLOWED@ to allow tag updates.
 cpppTags :: Lens' CreateProvisionedProductPlan [Tag]
 cpppTags = lens _cpppTags (\ s a -> s{_cpppTags = a}) . _Default . _Coerce
 

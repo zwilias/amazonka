@@ -28,7 +28,7 @@ module Network.AWS.MediaLive.Types.InputFilter (
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | Placeholder documentation for InputFilter
+-- | Input Filter
 data InputFilter = InputFilter' (CI Text)
                      deriving (Eq, Ord, Read, Show, Data, Typeable,
                                Generic)

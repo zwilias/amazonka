@@ -66,7 +66,7 @@ data CreateTrafficPolicy = CreateTrafficPolicy'{_ctpComment
 --
 -- * 'ctpName' - The name of the traffic policy.
 --
--- * 'ctpDocument' - The definition of this traffic policy in JSON format. For more information, see <http://docs.aws.amazon.com/Route53/latest/APIReference/api-policies-traffic-policy-document-format.html Traffic Policy Document Format> .
+-- * 'ctpDocument' - The definition of this traffic policy in JSON format. For more information, see <https://docs.aws.amazon.com/Route53/latest/APIReference/api-policies-traffic-policy-document-format.html Traffic Policy Document Format> .
 createTrafficPolicy
     :: Text -- ^ 'ctpName'
     -> Text -- ^ 'ctpDocument'
@@ -83,7 +83,7 @@ ctpComment = lens _ctpComment (\ s a -> s{_ctpComment = a})
 ctpName :: Lens' CreateTrafficPolicy Text
 ctpName = lens _ctpName (\ s a -> s{_ctpName = a})
 
--- | The definition of this traffic policy in JSON format. For more information, see <http://docs.aws.amazon.com/Route53/latest/APIReference/api-policies-traffic-policy-document-format.html Traffic Policy Document Format> .
+-- | The definition of this traffic policy in JSON format. For more information, see <https://docs.aws.amazon.com/Route53/latest/APIReference/api-policies-traffic-policy-document-format.html Traffic Policy Document Format> .
 ctpDocument :: Lens' CreateTrafficPolicy Text
 ctpDocument = lens _ctpDocument (\ s a -> s{_ctpDocument = a})
 

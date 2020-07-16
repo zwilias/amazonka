@@ -21,12 +21,13 @@ import Network.AWS.Lens
 import Network.AWS.Pinpoint.Types.EndpointBatchItem
 import Network.AWS.Prelude
 
--- | Endpoint batch update request.
+-- | Specifies a batch of endpoints to create or update and the settings and attributes to set or change for each endpoint.
+--
+--
 --
 -- /See:/ 'endpointBatchRequest' smart constructor.
 newtype EndpointBatchRequest = EndpointBatchRequest'{_ebrItem
-                                                     ::
-                                                     Maybe [EndpointBatchItem]}
+                                                     :: [EndpointBatchItem]}
                                  deriving (Eq, Read, Show, Data, Typeable,
                                            Generic)
 
@@ -34,15 +35,15 @@ newtype EndpointBatchRequest = EndpointBatchRequest'{_ebrItem
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'ebrItem' - List of items to update. Maximum 100 items
+-- * 'ebrItem' - An array that defines the endpoints to create or update and, for each endpoint, the property values to set or change. An array can contain a maximum of 100 items.
 endpointBatchRequest
     :: EndpointBatchRequest
 endpointBatchRequest
-  = EndpointBatchRequest'{_ebrItem = Nothing}
+  = EndpointBatchRequest'{_ebrItem = mempty}
 
--- | List of items to update. Maximum 100 items
+-- | An array that defines the endpoints to create or update and, for each endpoint, the property values to set or change. An array can contain a maximum of 100 items.
 ebrItem :: Lens' EndpointBatchRequest [EndpointBatchItem]
-ebrItem = lens _ebrItem (\ s a -> s{_ebrItem = a}) . _Default . _Coerce
+ebrItem = lens _ebrItem (\ s a -> s{_ebrItem = a}) . _Coerce
 
 instance Hashable EndpointBatchRequest where
 
@@ -50,4 +51,4 @@ instance NFData EndpointBatchRequest where
 
 instance ToJSON EndpointBatchRequest where
         toJSON EndpointBatchRequest'{..}
-          = object (catMaybes [("Item" .=) <$> _ebrItem])
+          = object (catMaybes [Just ("Item" .= _ebrItem)])

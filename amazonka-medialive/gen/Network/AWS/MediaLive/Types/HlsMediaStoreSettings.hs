@@ -21,7 +21,7 @@ import Network.AWS.Lens
 import Network.AWS.MediaLive.Types.HlsMediaStoreStorageClass
 import Network.AWS.Prelude
 
--- | Placeholder documentation for HlsMediaStoreSettings
+-- | Hls Media Store Settings
 --
 -- /See:/ 'hlsMediaStoreSettings' smart constructor.
 data HlsMediaStoreSettings = HlsMediaStoreSettings'{_hmssNumRetries

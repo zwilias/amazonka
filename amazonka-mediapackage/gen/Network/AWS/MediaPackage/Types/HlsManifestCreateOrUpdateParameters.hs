@@ -19,13 +19,19 @@ module Network.AWS.MediaPackage.Types.HlsManifestCreateOrUpdateParameters where
 
 import Network.AWS.Lens
 import Network.AWS.MediaPackage.Types.AdMarkers
+import Network.AWS.MediaPackage.Types.AdTriggersElement
+import Network.AWS.MediaPackage.Types.AdsOnDeliveryRestrictions
 import Network.AWS.MediaPackage.Types.PlaylistType
 import Network.AWS.Prelude
 
 -- | A HTTP Live Streaming (HLS) manifest configuration.
 --
 -- /See:/ 'hlsManifestCreateOrUpdateParameters' smart constructor.
-data HlsManifestCreateOrUpdateParameters = HlsManifestCreateOrUpdateParameters'{_hmcoupManifestName
+data HlsManifestCreateOrUpdateParameters = HlsManifestCreateOrUpdateParameters'{_hmcoupAdsOnDeliveryRestrictions
+                                                                                ::
+                                                                                !(Maybe
+                                                                                    AdsOnDeliveryRestrictions),
+                                                                                _hmcoupManifestName
                                                                                 ::
                                                                                 !(Maybe
                                                                                     Text),
@@ -45,6 +51,10 @@ data HlsManifestCreateOrUpdateParameters = HlsManifestCreateOrUpdateParameters'{
                                                                                 ::
                                                                                 !(Maybe
                                                                                     Bool),
+                                                                                _hmcoupAdTriggers
+                                                                                ::
+                                                                                !(Maybe
+                                                                                    [AdTriggersElement]),
                                                                                 _hmcoupPlaylistWindowSeconds
                                                                                 ::
                                                                                 !(Maybe
@@ -59,6 +69,8 @@ data HlsManifestCreateOrUpdateParameters = HlsManifestCreateOrUpdateParameters'{
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
+-- * 'hmcoupAdsOnDeliveryRestrictions' - Undocumented member.
+--
 -- * 'hmcoupManifestName' - An optional short string appended to the end of the OriginEndpoint URL. If not specified, defaults to the manifestName for the OriginEndpoint.
 --
 -- * 'hmcoupPlaylistType' - The HTTP Live Streaming (HLS) playlist type. When either "EVENT" or "VOD" is specified, a corresponding EXT-X-PLAYLIST-TYPE entry will be included in the media playlist.
@@ -69,6 +81,8 @@ data HlsManifestCreateOrUpdateParameters = HlsManifestCreateOrUpdateParameters'{
 --
 -- * 'hmcoupIncludeIframeOnlyStream' - When enabled, an I-Frame only stream will be included in the output.
 --
+-- * 'hmcoupAdTriggers' - Undocumented member.
+--
 -- * 'hmcoupPlaylistWindowSeconds' - Time window (in seconds) contained in each parent manifest.
 --
 -- * 'hmcoupId' - The ID of the manifest. The ID must be unique within the OriginEndpoint and it cannot be changed after it is created.
@@ -76,16 +90,22 @@ hlsManifestCreateOrUpdateParameters
     :: Text -- ^ 'hmcoupId'
     -> HlsManifestCreateOrUpdateParameters
 hlsManifestCreateOrUpdateParameters pId_
-  = HlsManifestCreateOrUpdateParameters'{_hmcoupManifestName
+  = HlsManifestCreateOrUpdateParameters'{_hmcoupAdsOnDeliveryRestrictions
                                            = Nothing,
+                                         _hmcoupManifestName = Nothing,
                                          _hmcoupPlaylistType = Nothing,
                                          _hmcoupProgramDateTimeIntervalSeconds =
                                            Nothing,
                                          _hmcoupAdMarkers = Nothing,
                                          _hmcoupIncludeIframeOnlyStream =
                                            Nothing,
+                                         _hmcoupAdTriggers = Nothing,
                                          _hmcoupPlaylistWindowSeconds = Nothing,
                                          _hmcoupId = pId_}
+
+-- | Undocumented member.
+hmcoupAdsOnDeliveryRestrictions :: Lens' HlsManifestCreateOrUpdateParameters (Maybe AdsOnDeliveryRestrictions)
+hmcoupAdsOnDeliveryRestrictions = lens _hmcoupAdsOnDeliveryRestrictions (\ s a -> s{_hmcoupAdsOnDeliveryRestrictions = a})
 
 -- | An optional short string appended to the end of the OriginEndpoint URL. If not specified, defaults to the manifestName for the OriginEndpoint.
 hmcoupManifestName :: Lens' HlsManifestCreateOrUpdateParameters (Maybe Text)
@@ -107,6 +127,10 @@ hmcoupAdMarkers = lens _hmcoupAdMarkers (\ s a -> s{_hmcoupAdMarkers = a})
 hmcoupIncludeIframeOnlyStream :: Lens' HlsManifestCreateOrUpdateParameters (Maybe Bool)
 hmcoupIncludeIframeOnlyStream = lens _hmcoupIncludeIframeOnlyStream (\ s a -> s{_hmcoupIncludeIframeOnlyStream = a})
 
+-- | Undocumented member.
+hmcoupAdTriggers :: Lens' HlsManifestCreateOrUpdateParameters [AdTriggersElement]
+hmcoupAdTriggers = lens _hmcoupAdTriggers (\ s a -> s{_hmcoupAdTriggers = a}) . _Default . _Coerce
+
 -- | Time window (in seconds) contained in each parent manifest.
 hmcoupPlaylistWindowSeconds :: Lens' HlsManifestCreateOrUpdateParameters (Maybe Int)
 hmcoupPlaylistWindowSeconds = lens _hmcoupPlaylistWindowSeconds (\ s a -> s{_hmcoupPlaylistWindowSeconds = a})
@@ -126,13 +150,16 @@ instance ToJSON HlsManifestCreateOrUpdateParameters
         toJSON HlsManifestCreateOrUpdateParameters'{..}
           = object
               (catMaybes
-                 [("manifestName" .=) <$> _hmcoupManifestName,
+                 [("adsOnDeliveryRestrictions" .=) <$>
+                    _hmcoupAdsOnDeliveryRestrictions,
+                  ("manifestName" .=) <$> _hmcoupManifestName,
                   ("playlistType" .=) <$> _hmcoupPlaylistType,
                   ("programDateTimeIntervalSeconds" .=) <$>
                     _hmcoupProgramDateTimeIntervalSeconds,
                   ("adMarkers" .=) <$> _hmcoupAdMarkers,
                   ("includeIframeOnlyStream" .=) <$>
                     _hmcoupIncludeIframeOnlyStream,
+                  ("adTriggers" .=) <$> _hmcoupAdTriggers,
                   ("playlistWindowSeconds" .=) <$>
                     _hmcoupPlaylistWindowSeconds,
                   Just ("id" .= _hmcoupId)])

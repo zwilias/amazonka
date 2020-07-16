@@ -19,13 +19,14 @@
 module Network.AWS.ECS.Types.LogDriver (
   LogDriver (
     ..
-    , AWSlogs
-    , Fluentd
-    , Gelf
-    , JSONFile
-    , Journald
-    , Splunk
-    , Syslog
+    , LDAWSfirelens
+    , LDAWSlogs
+    , LDFluentd
+    , LDGelf
+    , LDJSONFile
+    , LDJournald
+    , LDSplunk
+    , LDSyslog
     )
   ) where
 
@@ -36,35 +37,39 @@ data LogDriver = LogDriver' (CI Text)
                    deriving (Eq, Ord, Read, Show, Data, Typeable,
                              Generic)
 
-pattern AWSlogs :: LogDriver
-pattern AWSlogs = LogDriver' "awslogs"
+pattern LDAWSfirelens :: LogDriver
+pattern LDAWSfirelens = LogDriver' "awsfirelens"
 
-pattern Fluentd :: LogDriver
-pattern Fluentd = LogDriver' "fluentd"
+pattern LDAWSlogs :: LogDriver
+pattern LDAWSlogs = LogDriver' "awslogs"
 
-pattern Gelf :: LogDriver
-pattern Gelf = LogDriver' "gelf"
+pattern LDFluentd :: LogDriver
+pattern LDFluentd = LogDriver' "fluentd"
 
-pattern JSONFile :: LogDriver
-pattern JSONFile = LogDriver' "json-file"
+pattern LDGelf :: LogDriver
+pattern LDGelf = LogDriver' "gelf"
 
-pattern Journald :: LogDriver
-pattern Journald = LogDriver' "journald"
+pattern LDJSONFile :: LogDriver
+pattern LDJSONFile = LogDriver' "json-file"
 
-pattern Splunk :: LogDriver
-pattern Splunk = LogDriver' "splunk"
+pattern LDJournald :: LogDriver
+pattern LDJournald = LogDriver' "journald"
 
-pattern Syslog :: LogDriver
-pattern Syslog = LogDriver' "syslog"
+pattern LDSplunk :: LogDriver
+pattern LDSplunk = LogDriver' "splunk"
+
+pattern LDSyslog :: LogDriver
+pattern LDSyslog = LogDriver' "syslog"
 
 {-# COMPLETE
-  AWSlogs,
-  Fluentd,
-  Gelf,
-  JSONFile,
-  Journald,
-  Splunk,
-  Syslog,
+  LDAWSfirelens,
+  LDAWSlogs,
+  LDFluentd,
+  LDGelf,
+  LDJSONFile,
+  LDJournald,
+  LDSplunk,
+  LDSyslog,
   LogDriver' #-}
 
 instance FromText LogDriver where
@@ -79,30 +84,32 @@ instance ToText LogDriver where
 --   fromEnum is a partial function, and will error on values unknown at generation time.
 instance Enum LogDriver where
     toEnum i = case i of
-        0 -> AWSlogs
-        1 -> Fluentd
-        2 -> Gelf
-        3 -> JSONFile
-        4 -> Journald
-        5 -> Splunk
-        6 -> Syslog
+        0 -> LDAWSfirelens
+        1 -> LDAWSlogs
+        2 -> LDFluentd
+        3 -> LDGelf
+        4 -> LDJSONFile
+        5 -> LDJournald
+        6 -> LDSplunk
+        7 -> LDSyslog
         _ -> (error . showText) $ "Unknown index for LogDriver: " <> toText i
     fromEnum x = case x of
-        AWSlogs -> 0
-        Fluentd -> 1
-        Gelf -> 2
-        JSONFile -> 3
-        Journald -> 4
-        Splunk -> 5
-        Syslog -> 6
+        LDAWSfirelens -> 0
+        LDAWSlogs -> 1
+        LDFluentd -> 2
+        LDGelf -> 3
+        LDJSONFile -> 4
+        LDJournald -> 5
+        LDSplunk -> 6
+        LDSyslog -> 7
         LogDriver' name -> (error . showText) $ "Unknown LogDriver: " <> original name
 
 -- | Represents the bounds of /known/ $LogDriver.
 --   AWS may have added more since the source was generated.
 --   This instance exists only for backward compatibility.
 instance Bounded LogDriver where
-    minBound = AWSlogs
-    maxBound = Syslog
+    minBound = LDAWSfirelens
+    maxBound = LDSyslog
 
 instance Hashable     LogDriver
 instance NFData       LogDriver

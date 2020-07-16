@@ -21,10 +21,14 @@ import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.S3.Internal
 
--- | /See:/ 'part' smart constructor.
+-- | Container for elements related to a part.
+--
+--
+--
+-- /See:/ 'part' smart constructor.
 data Part = Part'{_pETag :: !(Maybe ETag),
                   _pSize :: !(Maybe Int), _pPartNumber :: !(Maybe Int),
-                  _pLastModified :: !(Maybe RFC822)}
+                  _pLastModified :: !(Maybe ISO8601)}
               deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'Part' with the minimum fields required to make a request.
@@ -33,7 +37,7 @@ data Part = Part'{_pETag :: !(Maybe ETag),
 --
 -- * 'pETag' - Entity tag returned when the part was uploaded.
 --
--- * 'pSize' - Size of the uploaded part data.
+-- * 'pSize' - Size in bytes of the uploaded part data.
 --
 -- * 'pPartNumber' - Part number identifying the part. This is a positive integer between 1 and 10,000.
 --
@@ -48,7 +52,7 @@ part
 pETag :: Lens' Part (Maybe ETag)
 pETag = lens _pETag (\ s a -> s{_pETag = a})
 
--- | Size of the uploaded part data.
+-- | Size in bytes of the uploaded part data.
 pSize :: Lens' Part (Maybe Int)
 pSize = lens _pSize (\ s a -> s{_pSize = a})
 

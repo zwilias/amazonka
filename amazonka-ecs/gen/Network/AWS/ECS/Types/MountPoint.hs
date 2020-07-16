@@ -37,7 +37,7 @@ data MountPoint = MountPoint'{_mpContainerPath ::
 --
 -- * 'mpContainerPath' - The path on the container to mount the host volume at.
 --
--- * 'mpSourceVolume' - The name of the volume to mount.
+-- * 'mpSourceVolume' - The name of the volume to mount. Must be a volume name referenced in the @name@ parameter of task definition @volume@ .
 --
 -- * 'mpReadOnly' - If this value is @true@ , the container has read-only access to the volume. If this value is @false@ , then the container can write to the volume. The default value is @false@ .
 mountPoint
@@ -50,7 +50,7 @@ mountPoint
 mpContainerPath :: Lens' MountPoint (Maybe Text)
 mpContainerPath = lens _mpContainerPath (\ s a -> s{_mpContainerPath = a})
 
--- | The name of the volume to mount.
+-- | The name of the volume to mount. Must be a volume name referenced in the @name@ parameter of task definition @volume@ .
 mpSourceVolume :: Lens' MountPoint (Maybe Text)
 mpSourceVolume = lens _mpSourceVolume (\ s a -> s{_mpSourceVolume = a})
 

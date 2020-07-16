@@ -18,7 +18,15 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Returns the request payment configuration of a bucket.
+-- Returns the request payment configuration of a bucket. To use this version of the operation, you must be the bucket owner. For more information, see <https://docs.aws.amazon.com/AmazonS3/latest/dev/RequesterPaysBuckets.html Requester Pays Buckets> .
+--
+--
+-- The following operations are related to @GetBucketRequestPayment@ :
+--
+--     * 'ListObjects' 
+--
+--
+--
 module Network.AWS.S3.GetBucketRequestPayment
     (
     -- * Creating a Request
@@ -52,14 +60,14 @@ newtype GetBucketRequestPayment = GetBucketRequestPayment'{_gbrpBucket
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'gbrpBucket' - Undocumented member.
+-- * 'gbrpBucket' - The name of the bucket for which to get the payment request configuration
 getBucketRequestPayment
     :: BucketName -- ^ 'gbrpBucket'
     -> GetBucketRequestPayment
 getBucketRequestPayment pBucket_
   = GetBucketRequestPayment'{_gbrpBucket = pBucket_}
 
--- | Undocumented member.
+-- | The name of the bucket for which to get the payment request configuration
 gbrpBucket :: Lens' GetBucketRequestPayment BucketName
 gbrpBucket = lens _gbrpBucket (\ s a -> s{_gbrpBucket = a})
 

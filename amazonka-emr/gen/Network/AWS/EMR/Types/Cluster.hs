@@ -34,11 +34,13 @@ import Network.AWS.Prelude
 --
 --
 -- /See:/ 'cluster' smart constructor.
-data Cluster = Cluster'{_cluRequestedAMIVersion ::
+data Cluster = Cluster'{_cluClusterARN ::
                         !(Maybe Text),
+                        _cluRequestedAMIVersion :: !(Maybe Text),
                         _cluEBSRootVolumeSize :: !(Maybe Int),
                         _cluEC2InstanceAttributes ::
                         !(Maybe EC2InstanceAttributes),
+                        _cluOutpostARN :: !(Maybe Text),
                         _cluNormalizedInstanceHours :: !(Maybe Int),
                         _cluConfigurations :: !(Maybe [Configuration]),
                         _cluCustomAMIId :: !(Maybe Text),
@@ -57,6 +59,7 @@ data Cluster = Cluster'{_cluRequestedAMIVersion ::
                         _cluTerminationProtected :: !(Maybe Bool),
                         _cluVisibleToAllUsers :: !(Maybe Bool),
                         _cluAutoTerminate :: !(Maybe Bool),
+                        _cluStepConcurrencyLevel :: !(Maybe Int),
                         _cluApplications :: !(Maybe [Application]),
                         _cluTags :: !(Maybe [Tag]),
                         _cluServiceRole :: !(Maybe Text), _cluId :: !Text,
@@ -67,11 +70,15 @@ data Cluster = Cluster'{_cluRequestedAMIVersion ::
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
+-- * 'cluClusterARN' - The Amazon Resource Name of the cluster.
+--
 -- * 'cluRequestedAMIVersion' - The AMI version requested for this cluster.
 --
 -- * 'cluEBSRootVolumeSize' - The size, in GiB, of the EBS root device volume of the Linux AMI that is used for each EC2 instance. Available in Amazon EMR version 4.x and later.
 --
 -- * 'cluEC2InstanceAttributes' - Provides information about the EC2 instances in a cluster grouped by category. For example, key name, subnet ID, IAM instance profile, and so on.
+--
+-- * 'cluOutpostARN' - The Amazon Resource Name (ARN) of the Outpost where the cluster is launched. 
 --
 -- * 'cluNormalizedInstanceHours' - An approximation of the cost of the cluster, represented in m1.small/hours. This value is incremented one time for every hour an m1.small instance runs. Larger instances are weighted more, so an EC2 instance that is roughly four times more expensive would result in the normalized instance hours being incremented by four. This result is only an approximation and does not reflect the actual billing rate.
 --
@@ -87,13 +94,13 @@ data Cluster = Cluster'{_cluRequestedAMIVersion ::
 --
 -- * 'cluInstanceCollectionType' - The instance group configuration of the cluster. A value of @INSTANCE_GROUP@ indicates a uniform instance group configuration. A value of @INSTANCE_FLEET@ indicates an instance fleets configuration.
 --
--- * 'cluReleaseLabel' - The release label for the Amazon EMR release.
+-- * 'cluReleaseLabel' - The Amazon EMR release label, which determines the version of open-source application packages installed on the cluster. Release labels are in the form @emr-x.x.x@ , where x.x.x is an Amazon EMR release version such as @emr-5.14.0@ . For more information about Amazon EMR release versions and included application versions and features, see <https://docs.aws.amazon.com/emr/latest/ReleaseGuide/ https://docs.aws.amazon.com/emr/latest/ReleaseGuide/> . The release label applies only to Amazon EMR releases version 4.0 and later. Earlier versions use @AmiVersion@ .
 --
 -- * 'cluRepoUpgradeOnBoot' - Applies only when @CustomAmiID@ is used. Specifies the type of updates that are applied from the Amazon Linux AMI package repositories when an instance boots using the AMI.
 --
 -- * 'cluLogURI' - The path to the Amazon S3 location where logs for this cluster are stored.
 --
--- * 'cluKerberosAttributes' - Attributes for Kerberos configuration when Kerberos authentication is enabled using a security configuration. For more information see <http://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-kerberos.html Use Kerberos Authentication> in the /EMR Management Guide/ .
+-- * 'cluKerberosAttributes' - Attributes for Kerberos configuration when Kerberos authentication is enabled using a security configuration. For more information see <https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-kerberos.html Use Kerberos Authentication> in the /EMR Management Guide/ .
 --
 -- * 'cluRunningAMIVersion' - The AMI version running on this cluster.
 --
@@ -101,9 +108,11 @@ data Cluster = Cluster'{_cluRequestedAMIVersion ::
 --
 -- * 'cluTerminationProtected' - Indicates whether Amazon EMR will lock the cluster to prevent the EC2 instances from being terminated by an API call or user intervention, or in the event of a cluster error.
 --
--- * 'cluVisibleToAllUsers' - Indicates whether the cluster is visible to all IAM users of the AWS account associated with the cluster. If this value is set to @true@ , all IAM users of that AWS account can view and manage the cluster if they have the proper policy permissions set. If this value is @false@ , only the IAM user that created the cluster can view and manage it. This value can be changed using the 'SetVisibleToAllUsers' action.
+-- * 'cluVisibleToAllUsers' - Indicates whether the cluster is visible to all IAM users of the AWS account associated with the cluster. The default value, @true@ , indicates that all IAM users in the AWS account can perform cluster actions if they have the proper IAM policy permissions. If this value is @false@ , only the IAM user that created the cluster can perform actions. This value can be changed on a running cluster by using the 'SetVisibleToAllUsers' action. You can override the default value of @true@ when you create a cluster by using the @VisibleToAllUsers@ parameter of the @RunJobFlow@ action.
 --
 -- * 'cluAutoTerminate' - Specifies whether the cluster should terminate after completing all steps.
+--
+-- * 'cluStepConcurrencyLevel' - Specifies the number of steps that can be executed concurrently.
 --
 -- * 'cluApplications' - The applications installed on this cluster.
 --
@@ -122,9 +131,11 @@ cluster
     -> ClusterStatus -- ^ 'cluStatus'
     -> Cluster
 cluster pId_ pName_ pStatus_
-  = Cluster'{_cluRequestedAMIVersion = Nothing,
+  = Cluster'{_cluClusterARN = Nothing,
+             _cluRequestedAMIVersion = Nothing,
              _cluEBSRootVolumeSize = Nothing,
              _cluEC2InstanceAttributes = Nothing,
+             _cluOutpostARN = Nothing,
              _cluNormalizedInstanceHours = Nothing,
              _cluConfigurations = Nothing,
              _cluCustomAMIId = Nothing,
@@ -141,9 +152,14 @@ cluster pId_ pName_ pStatus_
              _cluTerminationProtected = Nothing,
              _cluVisibleToAllUsers = Nothing,
              _cluAutoTerminate = Nothing,
+             _cluStepConcurrencyLevel = Nothing,
              _cluApplications = Nothing, _cluTags = Nothing,
              _cluServiceRole = Nothing, _cluId = pId_,
              _cluName = pName_, _cluStatus = pStatus_}
+
+-- | The Amazon Resource Name of the cluster.
+cluClusterARN :: Lens' Cluster (Maybe Text)
+cluClusterARN = lens _cluClusterARN (\ s a -> s{_cluClusterARN = a})
 
 -- | The AMI version requested for this cluster.
 cluRequestedAMIVersion :: Lens' Cluster (Maybe Text)
@@ -156,6 +172,10 @@ cluEBSRootVolumeSize = lens _cluEBSRootVolumeSize (\ s a -> s{_cluEBSRootVolumeS
 -- | Provides information about the EC2 instances in a cluster grouped by category. For example, key name, subnet ID, IAM instance profile, and so on.
 cluEC2InstanceAttributes :: Lens' Cluster (Maybe EC2InstanceAttributes)
 cluEC2InstanceAttributes = lens _cluEC2InstanceAttributes (\ s a -> s{_cluEC2InstanceAttributes = a})
+
+-- | The Amazon Resource Name (ARN) of the Outpost where the cluster is launched. 
+cluOutpostARN :: Lens' Cluster (Maybe Text)
+cluOutpostARN = lens _cluOutpostARN (\ s a -> s{_cluOutpostARN = a})
 
 -- | An approximation of the cost of the cluster, represented in m1.small/hours. This value is incremented one time for every hour an m1.small instance runs. Larger instances are weighted more, so an EC2 instance that is roughly four times more expensive would result in the normalized instance hours being incremented by four. This result is only an approximation and does not reflect the actual billing rate.
 cluNormalizedInstanceHours :: Lens' Cluster (Maybe Int)
@@ -185,7 +205,7 @@ cluScaleDownBehavior = lens _cluScaleDownBehavior (\ s a -> s{_cluScaleDownBehav
 cluInstanceCollectionType :: Lens' Cluster (Maybe InstanceCollectionType)
 cluInstanceCollectionType = lens _cluInstanceCollectionType (\ s a -> s{_cluInstanceCollectionType = a})
 
--- | The release label for the Amazon EMR release.
+-- | The Amazon EMR release label, which determines the version of open-source application packages installed on the cluster. Release labels are in the form @emr-x.x.x@ , where x.x.x is an Amazon EMR release version such as @emr-5.14.0@ . For more information about Amazon EMR release versions and included application versions and features, see <https://docs.aws.amazon.com/emr/latest/ReleaseGuide/ https://docs.aws.amazon.com/emr/latest/ReleaseGuide/> . The release label applies only to Amazon EMR releases version 4.0 and later. Earlier versions use @AmiVersion@ .
 cluReleaseLabel :: Lens' Cluster (Maybe Text)
 cluReleaseLabel = lens _cluReleaseLabel (\ s a -> s{_cluReleaseLabel = a})
 
@@ -197,7 +217,7 @@ cluRepoUpgradeOnBoot = lens _cluRepoUpgradeOnBoot (\ s a -> s{_cluRepoUpgradeOnB
 cluLogURI :: Lens' Cluster (Maybe Text)
 cluLogURI = lens _cluLogURI (\ s a -> s{_cluLogURI = a})
 
--- | Attributes for Kerberos configuration when Kerberos authentication is enabled using a security configuration. For more information see <http://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-kerberos.html Use Kerberos Authentication> in the /EMR Management Guide/ .
+-- | Attributes for Kerberos configuration when Kerberos authentication is enabled using a security configuration. For more information see <https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-kerberos.html Use Kerberos Authentication> in the /EMR Management Guide/ .
 cluKerberosAttributes :: Lens' Cluster (Maybe KerberosAttributes)
 cluKerberosAttributes = lens _cluKerberosAttributes (\ s a -> s{_cluKerberosAttributes = a})
 
@@ -213,13 +233,17 @@ cluMasterPublicDNSName = lens _cluMasterPublicDNSName (\ s a -> s{_cluMasterPubl
 cluTerminationProtected :: Lens' Cluster (Maybe Bool)
 cluTerminationProtected = lens _cluTerminationProtected (\ s a -> s{_cluTerminationProtected = a})
 
--- | Indicates whether the cluster is visible to all IAM users of the AWS account associated with the cluster. If this value is set to @true@ , all IAM users of that AWS account can view and manage the cluster if they have the proper policy permissions set. If this value is @false@ , only the IAM user that created the cluster can view and manage it. This value can be changed using the 'SetVisibleToAllUsers' action.
+-- | Indicates whether the cluster is visible to all IAM users of the AWS account associated with the cluster. The default value, @true@ , indicates that all IAM users in the AWS account can perform cluster actions if they have the proper IAM policy permissions. If this value is @false@ , only the IAM user that created the cluster can perform actions. This value can be changed on a running cluster by using the 'SetVisibleToAllUsers' action. You can override the default value of @true@ when you create a cluster by using the @VisibleToAllUsers@ parameter of the @RunJobFlow@ action.
 cluVisibleToAllUsers :: Lens' Cluster (Maybe Bool)
 cluVisibleToAllUsers = lens _cluVisibleToAllUsers (\ s a -> s{_cluVisibleToAllUsers = a})
 
 -- | Specifies whether the cluster should terminate after completing all steps.
 cluAutoTerminate :: Lens' Cluster (Maybe Bool)
 cluAutoTerminate = lens _cluAutoTerminate (\ s a -> s{_cluAutoTerminate = a})
+
+-- | Specifies the number of steps that can be executed concurrently.
+cluStepConcurrencyLevel :: Lens' Cluster (Maybe Int)
+cluStepConcurrencyLevel = lens _cluStepConcurrencyLevel (\ s a -> s{_cluStepConcurrencyLevel = a})
 
 -- | The applications installed on this cluster.
 cluApplications :: Lens' Cluster [Application]
@@ -250,9 +274,11 @@ instance FromJSON Cluster where
           = withObject "Cluster"
               (\ x ->
                  Cluster' <$>
-                   (x .:? "RequestedAmiVersion") <*>
-                     (x .:? "EbsRootVolumeSize")
+                   (x .:? "ClusterArn") <*>
+                     (x .:? "RequestedAmiVersion")
+                     <*> (x .:? "EbsRootVolumeSize")
                      <*> (x .:? "Ec2InstanceAttributes")
+                     <*> (x .:? "OutpostArn")
                      <*> (x .:? "NormalizedInstanceHours")
                      <*> (x .:? "Configurations" .!= mempty)
                      <*> (x .:? "CustomAmiId")
@@ -269,6 +295,7 @@ instance FromJSON Cluster where
                      <*> (x .:? "TerminationProtected")
                      <*> (x .:? "VisibleToAllUsers")
                      <*> (x .:? "AutoTerminate")
+                     <*> (x .:? "StepConcurrencyLevel")
                      <*> (x .:? "Applications" .!= mempty)
                      <*> (x .:? "Tags" .!= mempty)
                      <*> (x .:? "ServiceRole")

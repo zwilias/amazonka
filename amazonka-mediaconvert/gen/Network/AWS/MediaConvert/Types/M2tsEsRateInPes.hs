@@ -19,8 +19,8 @@
 module Network.AWS.MediaConvert.Types.M2tsEsRateInPes (
   M2tsEsRateInPes (
     ..
-    , MERIPExclude
-    , MERIPInclude
+    , Exclude
+    , Include
     )
   ) where
 
@@ -32,15 +32,15 @@ data M2tsEsRateInPes = M2tsEsRateInPes' (CI Text)
                          deriving (Eq, Ord, Read, Show, Data, Typeable,
                                    Generic)
 
-pattern MERIPExclude :: M2tsEsRateInPes
-pattern MERIPExclude = M2tsEsRateInPes' "EXCLUDE"
+pattern Exclude :: M2tsEsRateInPes
+pattern Exclude = M2tsEsRateInPes' "EXCLUDE"
 
-pattern MERIPInclude :: M2tsEsRateInPes
-pattern MERIPInclude = M2tsEsRateInPes' "INCLUDE"
+pattern Include :: M2tsEsRateInPes
+pattern Include = M2tsEsRateInPes' "INCLUDE"
 
 {-# COMPLETE
-  MERIPExclude,
-  MERIPInclude,
+  Exclude,
+  Include,
   M2tsEsRateInPes' #-}
 
 instance FromText M2tsEsRateInPes where
@@ -55,20 +55,20 @@ instance ToText M2tsEsRateInPes where
 --   fromEnum is a partial function, and will error on values unknown at generation time.
 instance Enum M2tsEsRateInPes where
     toEnum i = case i of
-        0 -> MERIPExclude
-        1 -> MERIPInclude
+        0 -> Exclude
+        1 -> Include
         _ -> (error . showText) $ "Unknown index for M2tsEsRateInPes: " <> toText i
     fromEnum x = case x of
-        MERIPExclude -> 0
-        MERIPInclude -> 1
+        Exclude -> 0
+        Include -> 1
         M2tsEsRateInPes' name -> (error . showText) $ "Unknown M2tsEsRateInPes: " <> original name
 
 -- | Represents the bounds of /known/ $M2tsEsRateInPes.
 --   AWS may have added more since the source was generated.
 --   This instance exists only for backward compatibility.
 instance Bounded M2tsEsRateInPes where
-    minBound = MERIPExclude
-    maxBound = MERIPInclude
+    minBound = Exclude
+    maxBound = Include
 
 instance Hashable     M2tsEsRateInPes
 instance NFData       M2tsEsRateInPes

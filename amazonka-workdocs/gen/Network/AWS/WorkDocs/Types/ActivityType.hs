@@ -37,7 +37,9 @@ module Network.AWS.WorkDocs.Types.ActivityType (
     , DocumentShared
     , DocumentUnshared
     , DocumentVersionDeleted
+    , DocumentVersionDownloaded
     , DocumentVersionUploaded
+    , DocumentVersionViewed
     , FolderCreated
     , FolderDeleted
     , FolderMoved
@@ -114,8 +116,14 @@ pattern DocumentUnshared = ActivityType' "DOCUMENT_UNSHARED"
 pattern DocumentVersionDeleted :: ActivityType
 pattern DocumentVersionDeleted = ActivityType' "DOCUMENT_VERSION_DELETED"
 
+pattern DocumentVersionDownloaded :: ActivityType
+pattern DocumentVersionDownloaded = ActivityType' "DOCUMENT_VERSION_DOWNLOADED"
+
 pattern DocumentVersionUploaded :: ActivityType
 pattern DocumentVersionUploaded = ActivityType' "DOCUMENT_VERSION_UPLOADED"
+
+pattern DocumentVersionViewed :: ActivityType
+pattern DocumentVersionViewed = ActivityType' "DOCUMENT_VERSION_VIEWED"
 
 pattern FolderCreated :: ActivityType
 pattern FolderCreated = ActivityType' "FOLDER_CREATED"
@@ -172,7 +180,9 @@ pattern FolderUnshared = ActivityType' "FOLDER_UNSHARED"
   DocumentShared,
   DocumentUnshared,
   DocumentVersionDeleted,
+  DocumentVersionDownloaded,
   DocumentVersionUploaded,
+  DocumentVersionViewed,
   FolderCreated,
   FolderDeleted,
   FolderMoved,
@@ -217,19 +227,21 @@ instance Enum ActivityType where
         15 -> DocumentShared
         16 -> DocumentUnshared
         17 -> DocumentVersionDeleted
-        18 -> DocumentVersionUploaded
-        19 -> FolderCreated
-        20 -> FolderDeleted
-        21 -> FolderMoved
-        22 -> FolderRecycled
-        23 -> FolderRenamed
-        24 -> FolderRestored
-        25 -> FolderSharePermissionChanged
-        26 -> FolderShareableLinkCreated
-        27 -> FolderShareableLinkPermissionChanged
-        28 -> FolderShareableLinkRemoved
-        29 -> FolderShared
-        30 -> FolderUnshared
+        18 -> DocumentVersionDownloaded
+        19 -> DocumentVersionUploaded
+        20 -> DocumentVersionViewed
+        21 -> FolderCreated
+        22 -> FolderDeleted
+        23 -> FolderMoved
+        24 -> FolderRecycled
+        25 -> FolderRenamed
+        26 -> FolderRestored
+        27 -> FolderSharePermissionChanged
+        28 -> FolderShareableLinkCreated
+        29 -> FolderShareableLinkPermissionChanged
+        30 -> FolderShareableLinkRemoved
+        31 -> FolderShared
+        32 -> FolderUnshared
         _ -> (error . showText) $ "Unknown index for ActivityType: " <> toText i
     fromEnum x = case x of
         DocumentAnnotationAdded -> 0
@@ -250,19 +262,21 @@ instance Enum ActivityType where
         DocumentShared -> 15
         DocumentUnshared -> 16
         DocumentVersionDeleted -> 17
-        DocumentVersionUploaded -> 18
-        FolderCreated -> 19
-        FolderDeleted -> 20
-        FolderMoved -> 21
-        FolderRecycled -> 22
-        FolderRenamed -> 23
-        FolderRestored -> 24
-        FolderSharePermissionChanged -> 25
-        FolderShareableLinkCreated -> 26
-        FolderShareableLinkPermissionChanged -> 27
-        FolderShareableLinkRemoved -> 28
-        FolderShared -> 29
-        FolderUnshared -> 30
+        DocumentVersionDownloaded -> 18
+        DocumentVersionUploaded -> 19
+        DocumentVersionViewed -> 20
+        FolderCreated -> 21
+        FolderDeleted -> 22
+        FolderMoved -> 23
+        FolderRecycled -> 24
+        FolderRenamed -> 25
+        FolderRestored -> 26
+        FolderSharePermissionChanged -> 27
+        FolderShareableLinkCreated -> 28
+        FolderShareableLinkPermissionChanged -> 29
+        FolderShareableLinkRemoved -> 30
+        FolderShared -> 31
+        FolderUnshared -> 32
         ActivityType' name -> (error . showText) $ "Unknown ActivityType: " <> original name
 
 -- | Represents the bounds of /known/ $ActivityType.

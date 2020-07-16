@@ -18,7 +18,9 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Get an SMS channel
+-- Retrieves information about the status and settings of the SMS channel for an application.
+--
+--
 module Network.AWS.Pinpoint.GetSmsChannel
     (
     -- * Creating a Request
@@ -51,14 +53,14 @@ newtype GetSmsChannel = GetSmsChannel'{_gscApplicationId
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'gscApplicationId' - Undocumented member.
+-- * 'gscApplicationId' - The unique identifier for the application. This identifier is displayed as the __Project ID__ on the Amazon Pinpoint console.
 getSmsChannel
     :: Text -- ^ 'gscApplicationId'
     -> GetSmsChannel
 getSmsChannel pApplicationId_
   = GetSmsChannel'{_gscApplicationId = pApplicationId_}
 
--- | Undocumented member.
+-- | The unique identifier for the application. This identifier is displayed as the __Project ID__ on the Amazon Pinpoint console.
 gscApplicationId :: Lens' GetSmsChannel Text
 gscApplicationId = lens _gscApplicationId (\ s a -> s{_gscApplicationId = a})
 

@@ -21,7 +21,7 @@ import Network.AWS.Lens
 import Network.AWS.MediaLive.Types.FecOutputIncludeFec
 import Network.AWS.Prelude
 
--- | Placeholder documentation for FecOutputSettings
+-- | Fec Output Settings
 --
 -- /See:/ 'fecOutputSettings' smart constructor.
 data FecOutputSettings = FecOutputSettings'{_fosRowLength

@@ -59,7 +59,7 @@ data GetPartition = GetPartition'{_gpCatalogId ::
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'gpCatalogId' - The ID of the Data Catalog where the partition in question resides. If none is supplied, the AWS account ID is used by default.
+-- * 'gpCatalogId' - The ID of the Data Catalog where the partition in question resides. If none is provided, the AWS account ID is used by default.
 --
 -- * 'gpDatabaseName' - The name of the catalog database where the partition resides.
 --
@@ -76,7 +76,7 @@ getPartition pDatabaseName_ pTableName_
                   _gpTableName = pTableName_,
                   _gpPartitionValues = mempty}
 
--- | The ID of the Data Catalog where the partition in question resides. If none is supplied, the AWS account ID is used by default.
+-- | The ID of the Data Catalog where the partition in question resides. If none is provided, the AWS account ID is used by default.
 gpCatalogId :: Lens' GetPartition (Maybe Text)
 gpCatalogId = lens _gpCatalogId (\ s a -> s{_gpCatalogId = a})
 

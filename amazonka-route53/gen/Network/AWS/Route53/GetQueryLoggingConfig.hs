@@ -21,7 +21,7 @@
 -- Gets information about a specified configuration for DNS query logging.
 --
 --
--- For more information about DNS query logs, see 'CreateQueryLoggingConfig' and <http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/query-logs.html Logging DNS Queries> .
+-- For more information about DNS query logs, see <https://docs.aws.amazon.com/Route53/latest/APIReference/API_CreateQueryLoggingConfig.html CreateQueryLoggingConfig> and <https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/query-logs.html Logging DNS Queries> .
 --
 module Network.AWS.Route53.GetQueryLoggingConfig
     (
@@ -107,7 +107,7 @@ data GetQueryLoggingConfigResponse = GetQueryLoggingConfigResponse'{_gqlcrsRespo
 --
 -- * 'gqlcrsResponseStatus' - -- | The response status code.
 --
--- * 'gqlcrsQueryLoggingConfig' - A complex type that contains information about the query logging configuration that you specified in a 'GetQueryLoggingConfig' request.
+-- * 'gqlcrsQueryLoggingConfig' - A complex type that contains information about the query logging configuration that you specified in a <https://docs.aws.amazon.com/Route53/latest/APIReference/API_GetQueryLoggingConfig.html GetQueryLoggingConfig> request.
 getQueryLoggingConfigResponse
     :: Int -- ^ 'gqlcrsResponseStatus'
     -> QueryLoggingConfig -- ^ 'gqlcrsQueryLoggingConfig'
@@ -123,7 +123,7 @@ getQueryLoggingConfigResponse pResponseStatus_
 gqlcrsResponseStatus :: Lens' GetQueryLoggingConfigResponse Int
 gqlcrsResponseStatus = lens _gqlcrsResponseStatus (\ s a -> s{_gqlcrsResponseStatus = a})
 
--- | A complex type that contains information about the query logging configuration that you specified in a 'GetQueryLoggingConfig' request.
+-- | A complex type that contains information about the query logging configuration that you specified in a <https://docs.aws.amazon.com/Route53/latest/APIReference/API_GetQueryLoggingConfig.html GetQueryLoggingConfig> request.
 gqlcrsQueryLoggingConfig :: Lens' GetQueryLoggingConfigResponse QueryLoggingConfig
 gqlcrsQueryLoggingConfig = lens _gqlcrsQueryLoggingConfig (\ s a -> s{_gqlcrsQueryLoggingConfig = a})
 

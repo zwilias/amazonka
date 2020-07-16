@@ -21,7 +21,7 @@ import Network.AWS.CertificateManagerPCA.Types.ValidityPeriodType
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | Length of time for which the certificate issued by your private certificate authority (CA), or by the private CA itself, is valid in days, months, or years. You can issue a certificate by calling the 'IssueCertificate' function.
+-- | Length of time for which the certificate issued by your private certificate authority (CA), or by the private CA itself, is valid in days, months, or years. You can issue a certificate by calling the 'IssueCertificate' action.
 --
 --
 --

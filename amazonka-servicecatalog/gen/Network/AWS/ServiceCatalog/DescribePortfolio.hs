@@ -36,6 +36,7 @@ module Network.AWS.ServiceCatalog.DescribePortfolio
     -- * Response Lenses
     , dprsPortfolioDetail
     , dprsTagOptions
+    , dprsBudgets
     , dprsTags
     , dprsResponseStatus
     ) where
@@ -84,6 +85,7 @@ instance AWSRequest DescribePortfolio where
                  DescribePortfolioResponse' <$>
                    (x .?> "PortfolioDetail") <*>
                      (x .?> "TagOptions" .!@ mempty)
+                     <*> (x .?> "Budgets" .!@ mempty)
                      <*> (x .?> "Tags" .!@ mempty)
                      <*> (pure (fromEnum s)))
 
@@ -122,6 +124,9 @@ data DescribePortfolioResponse = DescribePortfolioResponse'{_dprsPortfolioDetail
                                                             _dprsTagOptions ::
                                                             !(Maybe
                                                                 [TagOptionDetail]),
+                                                            _dprsBudgets ::
+                                                            !(Maybe
+                                                                [BudgetDetail]),
                                                             _dprsTags ::
                                                             !(Maybe [Tag]),
                                                             _dprsResponseStatus
@@ -137,6 +142,8 @@ data DescribePortfolioResponse = DescribePortfolioResponse'{_dprsPortfolioDetail
 --
 -- * 'dprsTagOptions' - Information about the TagOptions associated with the portfolio.
 --
+-- * 'dprsBudgets' - Information about the associated budgets.
+--
 -- * 'dprsTags' - Information about the tags associated with the portfolio.
 --
 -- * 'dprsResponseStatus' - -- | The response status code.
@@ -146,7 +153,8 @@ describePortfolioResponse
 describePortfolioResponse pResponseStatus_
   = DescribePortfolioResponse'{_dprsPortfolioDetail =
                                  Nothing,
-                               _dprsTagOptions = Nothing, _dprsTags = Nothing,
+                               _dprsTagOptions = Nothing,
+                               _dprsBudgets = Nothing, _dprsTags = Nothing,
                                _dprsResponseStatus = pResponseStatus_}
 
 -- | Information about the portfolio.
@@ -156,6 +164,10 @@ dprsPortfolioDetail = lens _dprsPortfolioDetail (\ s a -> s{_dprsPortfolioDetail
 -- | Information about the TagOptions associated with the portfolio.
 dprsTagOptions :: Lens' DescribePortfolioResponse [TagOptionDetail]
 dprsTagOptions = lens _dprsTagOptions (\ s a -> s{_dprsTagOptions = a}) . _Default . _Coerce
+
+-- | Information about the associated budgets.
+dprsBudgets :: Lens' DescribePortfolioResponse [BudgetDetail]
+dprsBudgets = lens _dprsBudgets (\ s a -> s{_dprsBudgets = a}) . _Default . _Coerce
 
 -- | Information about the tags associated with the portfolio.
 dprsTags :: Lens' DescribePortfolioResponse [Tag]

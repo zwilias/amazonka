@@ -25,6 +25,11 @@ module Network.AWS.CloudFormation.Types.StackStatus (
     , SSDeleteComplete
     , SSDeleteFailed
     , SSDeleteInProgress
+    , SSImportComplete
+    , SSImportInProgress
+    , SSImportRollbackComplete
+    , SSImportRollbackFailed
+    , SSImportRollbackInProgress
     , SSReviewInProgress
     , SSRollbackComplete
     , SSRollbackFailed
@@ -63,6 +68,21 @@ pattern SSDeleteFailed = StackStatus' "DELETE_FAILED"
 
 pattern SSDeleteInProgress :: StackStatus
 pattern SSDeleteInProgress = StackStatus' "DELETE_IN_PROGRESS"
+
+pattern SSImportComplete :: StackStatus
+pattern SSImportComplete = StackStatus' "IMPORT_COMPLETE"
+
+pattern SSImportInProgress :: StackStatus
+pattern SSImportInProgress = StackStatus' "IMPORT_IN_PROGRESS"
+
+pattern SSImportRollbackComplete :: StackStatus
+pattern SSImportRollbackComplete = StackStatus' "IMPORT_ROLLBACK_COMPLETE"
+
+pattern SSImportRollbackFailed :: StackStatus
+pattern SSImportRollbackFailed = StackStatus' "IMPORT_ROLLBACK_FAILED"
+
+pattern SSImportRollbackInProgress :: StackStatus
+pattern SSImportRollbackInProgress = StackStatus' "IMPORT_ROLLBACK_IN_PROGRESS"
 
 pattern SSReviewInProgress :: StackStatus
 pattern SSReviewInProgress = StackStatus' "REVIEW_IN_PROGRESS"
@@ -104,6 +124,11 @@ pattern SSUpdateRollbackInProgress = StackStatus' "UPDATE_ROLLBACK_IN_PROGRESS"
   SSDeleteComplete,
   SSDeleteFailed,
   SSDeleteInProgress,
+  SSImportComplete,
+  SSImportInProgress,
+  SSImportRollbackComplete,
+  SSImportRollbackFailed,
+  SSImportRollbackInProgress,
   SSReviewInProgress,
   SSRollbackComplete,
   SSRollbackFailed,
@@ -135,17 +160,22 @@ instance Enum StackStatus where
         3 -> SSDeleteComplete
         4 -> SSDeleteFailed
         5 -> SSDeleteInProgress
-        6 -> SSReviewInProgress
-        7 -> SSRollbackComplete
-        8 -> SSRollbackFailed
-        9 -> SSRollbackInProgress
-        10 -> SSUpdateComplete
-        11 -> SSUpdateCompleteCleanupInProgress
-        12 -> SSUpdateInProgress
-        13 -> SSUpdateRollbackComplete
-        14 -> SSUpdateRollbackCompleteCleanupInProgress
-        15 -> SSUpdateRollbackFailed
-        16 -> SSUpdateRollbackInProgress
+        6 -> SSImportComplete
+        7 -> SSImportInProgress
+        8 -> SSImportRollbackComplete
+        9 -> SSImportRollbackFailed
+        10 -> SSImportRollbackInProgress
+        11 -> SSReviewInProgress
+        12 -> SSRollbackComplete
+        13 -> SSRollbackFailed
+        14 -> SSRollbackInProgress
+        15 -> SSUpdateComplete
+        16 -> SSUpdateCompleteCleanupInProgress
+        17 -> SSUpdateInProgress
+        18 -> SSUpdateRollbackComplete
+        19 -> SSUpdateRollbackCompleteCleanupInProgress
+        20 -> SSUpdateRollbackFailed
+        21 -> SSUpdateRollbackInProgress
         _ -> (error . showText) $ "Unknown index for StackStatus: " <> toText i
     fromEnum x = case x of
         SSCreateComplete -> 0
@@ -154,17 +184,22 @@ instance Enum StackStatus where
         SSDeleteComplete -> 3
         SSDeleteFailed -> 4
         SSDeleteInProgress -> 5
-        SSReviewInProgress -> 6
-        SSRollbackComplete -> 7
-        SSRollbackFailed -> 8
-        SSRollbackInProgress -> 9
-        SSUpdateComplete -> 10
-        SSUpdateCompleteCleanupInProgress -> 11
-        SSUpdateInProgress -> 12
-        SSUpdateRollbackComplete -> 13
-        SSUpdateRollbackCompleteCleanupInProgress -> 14
-        SSUpdateRollbackFailed -> 15
-        SSUpdateRollbackInProgress -> 16
+        SSImportComplete -> 6
+        SSImportInProgress -> 7
+        SSImportRollbackComplete -> 8
+        SSImportRollbackFailed -> 9
+        SSImportRollbackInProgress -> 10
+        SSReviewInProgress -> 11
+        SSRollbackComplete -> 12
+        SSRollbackFailed -> 13
+        SSRollbackInProgress -> 14
+        SSUpdateComplete -> 15
+        SSUpdateCompleteCleanupInProgress -> 16
+        SSUpdateInProgress -> 17
+        SSUpdateRollbackComplete -> 18
+        SSUpdateRollbackCompleteCleanupInProgress -> 19
+        SSUpdateRollbackFailed -> 20
+        SSUpdateRollbackInProgress -> 21
         StackStatus' name -> (error . showText) $ "Unknown StackStatus: " <> original name
 
 -- | Represents the bounds of /known/ $StackStatus.

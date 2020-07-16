@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Returns all tag values for the specified key in the specified region for the AWS account.
+-- Returns all tag values for the specified key in the specified Region for the AWS account.
 --
 --
 --
@@ -59,9 +59,9 @@ data GetTagValues = GetTagValues'{_gtvPaginationToken
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'gtvPaginationToken' - A string that indicates that additional data is available. Leave this value empty for your initial request. If the response includes a PaginationToken, use that string for this value to request an additional page of data.
+-- * 'gtvPaginationToken' - A string that indicates that additional data is available. Leave this value empty for your initial request. If the response includes a @PaginationToken@ , use that string for this value to request an additional page of data.
 --
--- * 'gtvKey' - The key for which you want to list all existing values in the specified region for the AWS account.
+-- * 'gtvKey' - The key for which you want to list all existing values in the specified Region for the AWS account.
 getTagValues
     :: Text -- ^ 'gtvKey'
     -> GetTagValues
@@ -69,11 +69,11 @@ getTagValues pKey_
   = GetTagValues'{_gtvPaginationToken = Nothing,
                   _gtvKey = pKey_}
 
--- | A string that indicates that additional data is available. Leave this value empty for your initial request. If the response includes a PaginationToken, use that string for this value to request an additional page of data.
+-- | A string that indicates that additional data is available. Leave this value empty for your initial request. If the response includes a @PaginationToken@ , use that string for this value to request an additional page of data.
 gtvPaginationToken :: Lens' GetTagValues (Maybe Text)
 gtvPaginationToken = lens _gtvPaginationToken (\ s a -> s{_gtvPaginationToken = a})
 
--- | The key for which you want to list all existing values in the specified region for the AWS account.
+-- | The key for which you want to list all existing values in the specified Region for the AWS account.
 gtvKey :: Lens' GetTagValues Text
 gtvKey = lens _gtvKey (\ s a -> s{_gtvKey = a})
 

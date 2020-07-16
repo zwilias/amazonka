@@ -28,7 +28,8 @@ import Network.AWS.WAF.Types.WafAction
 --
 -- /See:/ 'webACL' smart constructor.
 data WebACL = WebACL'{_waMetricName :: !(Maybe Text),
-                      _waName :: !(Maybe Text), _waWebACLId :: !Text,
+                      _waName :: !(Maybe Text),
+                      _waWebACLARN :: !(Maybe Text), _waWebACLId :: !Text,
                       _waDefaultAction :: !WafAction,
                       _waRules :: ![ActivatedRule]}
                 deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -37,9 +38,11 @@ data WebACL = WebACL'{_waMetricName :: !(Maybe Text),
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'waMetricName' - A friendly name or description for the metrics for this @WebACL@ . The name can contain only alphanumeric characters (A-Z, a-z, 0-9); the name can't contain whitespace. You can't change @MetricName@ after you create the @WebACL@ .
+-- * 'waMetricName' - A friendly name or description for the metrics for this @WebACL@ . The name can contain only alphanumeric characters (A-Z, a-z, 0-9), with maximum length 128 and minimum length one. It can't contain whitespace or metric names reserved for AWS WAF, including "All" and "Default_Action." You can't change @MetricName@ after you create the @WebACL@ .
 --
 -- * 'waName' - A friendly name or description of the @WebACL@ . You can't change the name of a @WebACL@ after you create it.
+--
+-- * 'waWebACLARN' - Tha Amazon Resource Name (ARN) of the web ACL.
 --
 -- * 'waWebACLId' - A unique identifier for a @WebACL@ . You use @WebACLId@ to get information about a @WebACL@ (see 'GetWebACL' ), update a @WebACL@ (see 'UpdateWebACL' ), and delete a @WebACL@ from AWS WAF (see 'DeleteWebACL' ). @WebACLId@ is returned by 'CreateWebACL' and by 'ListWebACLs' .
 --
@@ -52,17 +55,21 @@ webACL
     -> WebACL
 webACL pWebACLId_ pDefaultAction_
   = WebACL'{_waMetricName = Nothing, _waName = Nothing,
-            _waWebACLId = pWebACLId_,
+            _waWebACLARN = Nothing, _waWebACLId = pWebACLId_,
             _waDefaultAction = pDefaultAction_,
             _waRules = mempty}
 
--- | A friendly name or description for the metrics for this @WebACL@ . The name can contain only alphanumeric characters (A-Z, a-z, 0-9); the name can't contain whitespace. You can't change @MetricName@ after you create the @WebACL@ .
+-- | A friendly name or description for the metrics for this @WebACL@ . The name can contain only alphanumeric characters (A-Z, a-z, 0-9), with maximum length 128 and minimum length one. It can't contain whitespace or metric names reserved for AWS WAF, including "All" and "Default_Action." You can't change @MetricName@ after you create the @WebACL@ .
 waMetricName :: Lens' WebACL (Maybe Text)
 waMetricName = lens _waMetricName (\ s a -> s{_waMetricName = a})
 
 -- | A friendly name or description of the @WebACL@ . You can't change the name of a @WebACL@ after you create it.
 waName :: Lens' WebACL (Maybe Text)
 waName = lens _waName (\ s a -> s{_waName = a})
+
+-- | Tha Amazon Resource Name (ARN) of the web ACL.
+waWebACLARN :: Lens' WebACL (Maybe Text)
+waWebACLARN = lens _waWebACLARN (\ s a -> s{_waWebACLARN = a})
 
 -- | A unique identifier for a @WebACL@ . You use @WebACLId@ to get information about a @WebACL@ (see 'GetWebACL' ), update a @WebACL@ (see 'UpdateWebACL' ), and delete a @WebACL@ from AWS WAF (see 'DeleteWebACL' ). @WebACLId@ is returned by 'CreateWebACL' and by 'ListWebACLs' .
 waWebACLId :: Lens' WebACL Text
@@ -82,7 +89,8 @@ instance FromJSON WebACL where
               (\ x ->
                  WebACL' <$>
                    (x .:? "MetricName") <*> (x .:? "Name") <*>
-                     (x .: "WebACLId")
+                     (x .:? "WebACLArn")
+                     <*> (x .: "WebACLId")
                      <*> (x .: "DefaultAction")
                      <*> (x .:? "Rules" .!= mempty))
 

@@ -22,7 +22,7 @@ import Network.AWS.Prelude
 import Network.AWS.WorkSpaces.Types.ModificationResourceEnum
 import Network.AWS.WorkSpaces.Types.ModificationStateEnum
 
--- | Information about a WorkSpace modification.
+-- | Describes a WorkSpace modification.
 --
 --
 --

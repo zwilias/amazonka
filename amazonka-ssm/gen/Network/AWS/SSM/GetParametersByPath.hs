@@ -18,10 +18,8 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Retrieve parameters in a specific hierarchy. For more information, see <http://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-paramstore-working.html Working with Systems Manager Parameters> . 
+-- Retrieve information about one or more parameters in a specific hierarchy. 
 --
---
--- Request results are returned on a best-effort basis. If you specify @MaxResults@ in the request, the response includes information up to the limit specified. The number of items returned, however, can be between zero and the value of @MaxResults@ . If the service reaches an internal limit while processing the results, it stops the operation and returns the matching values up to that point and a @NextToken@ . You can specify the @NextToken@ in a subsequent call to get the next set of results.
 --
 --
 -- This operation returns paginated results.
@@ -77,11 +75,11 @@ data GetParametersByPath = GetParametersByPath'{_gpbpWithDecryption
 --
 -- * 'gpbpNextToken' - A token to start the list. Use this token to get the next set of results. 
 --
--- * 'gpbpRecursive' - Retrieve all parameters within a hierarchy. /Important:/ If a user has access to a path, then the user can access all levels of that path. For example, if a user has permission to access path /a, then the user can also access /a/b. Even if a user has explicitly been denied access in IAM for parameter /a, they can still call the GetParametersByPath API action recursively and view /a/b.
+-- * 'gpbpRecursive' - Retrieve all parameters within a hierarchy. /Important:/ If a user has access to a path, then the user can access all levels of that path. For example, if a user has permission to access path @/a@ , then the user can also access @/a/b@ . Even if a user has explicitly been denied access in IAM for parameter @/a/b@ , they can still call the GetParametersByPath API action recursively for @/a@ and view @/a/b@ .
 --
 -- * 'gpbpMaxResults' - The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.
 --
--- * 'gpbpPath' - The hierarchy for the parameter. Hierarchies start with a forward slash (/) and end with the parameter name. A hierarchy can have a maximum of 15 levels. Here is an example of a hierarchy: @/Finance/Prod/IAD/WinServ2016/license33@ 
+-- * 'gpbpPath' - The hierarchy for the parameter. Hierarchies start with a forward slash (/) and end with the parameter name. A parameter name hierarchy can have a maximum of 15 levels. Here is an example of a hierarchy: @/Finance/Prod/IAD/WinServ2016/license33@ 
 getParametersByPath
     :: Text -- ^ 'gpbpPath'
     -> GetParametersByPath
@@ -103,7 +101,7 @@ gpbpParameterFilters = lens _gpbpParameterFilters (\ s a -> s{_gpbpParameterFilt
 gpbpNextToken :: Lens' GetParametersByPath (Maybe Text)
 gpbpNextToken = lens _gpbpNextToken (\ s a -> s{_gpbpNextToken = a})
 
--- | Retrieve all parameters within a hierarchy. /Important:/ If a user has access to a path, then the user can access all levels of that path. For example, if a user has permission to access path /a, then the user can also access /a/b. Even if a user has explicitly been denied access in IAM for parameter /a, they can still call the GetParametersByPath API action recursively and view /a/b.
+-- | Retrieve all parameters within a hierarchy. /Important:/ If a user has access to a path, then the user can access all levels of that path. For example, if a user has permission to access path @/a@ , then the user can also access @/a/b@ . Even if a user has explicitly been denied access in IAM for parameter @/a/b@ , they can still call the GetParametersByPath API action recursively for @/a@ and view @/a/b@ .
 gpbpRecursive :: Lens' GetParametersByPath (Maybe Bool)
 gpbpRecursive = lens _gpbpRecursive (\ s a -> s{_gpbpRecursive = a})
 
@@ -111,7 +109,7 @@ gpbpRecursive = lens _gpbpRecursive (\ s a -> s{_gpbpRecursive = a})
 gpbpMaxResults :: Lens' GetParametersByPath (Maybe Natural)
 gpbpMaxResults = lens _gpbpMaxResults (\ s a -> s{_gpbpMaxResults = a}) . mapping _Nat
 
--- | The hierarchy for the parameter. Hierarchies start with a forward slash (/) and end with the parameter name. A hierarchy can have a maximum of 15 levels. Here is an example of a hierarchy: @/Finance/Prod/IAD/WinServ2016/license33@ 
+-- | The hierarchy for the parameter. Hierarchies start with a forward slash (/) and end with the parameter name. A parameter name hierarchy can have a maximum of 15 levels. Here is an example of a hierarchy: @/Finance/Prod/IAD/WinServ2016/license33@ 
 gpbpPath :: Lens' GetParametersByPath Text
 gpbpPath = lens _gpbpPath (\ s a -> s{_gpbpPath = a})
 

@@ -19,6 +19,7 @@ module Network.AWS.RDS.Types.OptionGroupOptionSetting where
 
 import Network.AWS.Lens
 import Network.AWS.Prelude
+import Network.AWS.RDS.Types.MinimumEngineVersionPerAllowedValue
 
 -- | Option group option settings are used to display settings available for each option with their default values and other information. These values are used with the DescribeOptionGroupOptions action.
 --
@@ -27,6 +28,10 @@ import Network.AWS.Prelude
 -- /See:/ 'optionGroupOptionSetting' smart constructor.
 data OptionGroupOptionSetting = OptionGroupOptionSetting'{_ogosApplyType
                                                           :: !(Maybe Text),
+                                                          _ogosMinimumEngineVersionPerAllowedValue
+                                                          ::
+                                                          !(Maybe
+                                                              [MinimumEngineVersionPerAllowedValue]),
                                                           _ogosSettingName ::
                                                           !(Maybe Text),
                                                           _ogosDefaultValue ::
@@ -36,7 +41,9 @@ data OptionGroupOptionSetting = OptionGroupOptionSetting'{_ogosApplyType
                                                           _ogosSettingDescription
                                                           :: !(Maybe Text),
                                                           _ogosAllowedValues ::
-                                                          !(Maybe Text)}
+                                                          !(Maybe Text),
+                                                          _ogosIsRequired ::
+                                                          !(Maybe Bool)}
                                   deriving (Eq, Read, Show, Data, Typeable,
                                             Generic)
 
@@ -45,6 +52,8 @@ data OptionGroupOptionSetting = OptionGroupOptionSetting'{_ogosApplyType
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'ogosApplyType' - The DB engine specific parameter type for the option group option.
+--
+-- * 'ogosMinimumEngineVersionPerAllowedValue' - The minimum DB engine version required for the corresponding allowed value for this option setting.
 --
 -- * 'ogosSettingName' - The name of the option group option.
 --
@@ -55,19 +64,28 @@ data OptionGroupOptionSetting = OptionGroupOptionSetting'{_ogosApplyType
 -- * 'ogosSettingDescription' - The description of the option group option.
 --
 -- * 'ogosAllowedValues' - Indicates the acceptable values for the option group option.
+--
+-- * 'ogosIsRequired' - Boolean value where true indicates that a value must be specified for this option setting of the option group option.
 optionGroupOptionSetting
     :: OptionGroupOptionSetting
 optionGroupOptionSetting
   = OptionGroupOptionSetting'{_ogosApplyType = Nothing,
+                              _ogosMinimumEngineVersionPerAllowedValue =
+                                Nothing,
                               _ogosSettingName = Nothing,
                               _ogosDefaultValue = Nothing,
                               _ogosIsModifiable = Nothing,
                               _ogosSettingDescription = Nothing,
-                              _ogosAllowedValues = Nothing}
+                              _ogosAllowedValues = Nothing,
+                              _ogosIsRequired = Nothing}
 
 -- | The DB engine specific parameter type for the option group option.
 ogosApplyType :: Lens' OptionGroupOptionSetting (Maybe Text)
 ogosApplyType = lens _ogosApplyType (\ s a -> s{_ogosApplyType = a})
+
+-- | The minimum DB engine version required for the corresponding allowed value for this option setting.
+ogosMinimumEngineVersionPerAllowedValue :: Lens' OptionGroupOptionSetting [MinimumEngineVersionPerAllowedValue]
+ogosMinimumEngineVersionPerAllowedValue = lens _ogosMinimumEngineVersionPerAllowedValue (\ s a -> s{_ogosMinimumEngineVersionPerAllowedValue = a}) . _Default . _Coerce
 
 -- | The name of the option group option.
 ogosSettingName :: Lens' OptionGroupOptionSetting (Maybe Text)
@@ -89,14 +107,25 @@ ogosSettingDescription = lens _ogosSettingDescription (\ s a -> s{_ogosSettingDe
 ogosAllowedValues :: Lens' OptionGroupOptionSetting (Maybe Text)
 ogosAllowedValues = lens _ogosAllowedValues (\ s a -> s{_ogosAllowedValues = a})
 
+-- | Boolean value where true indicates that a value must be specified for this option setting of the option group option.
+ogosIsRequired :: Lens' OptionGroupOptionSetting (Maybe Bool)
+ogosIsRequired = lens _ogosIsRequired (\ s a -> s{_ogosIsRequired = a})
+
 instance FromXML OptionGroupOptionSetting where
         parseXML x
           = OptionGroupOptionSetting' <$>
-              (x .@? "ApplyType") <*> (x .@? "SettingName") <*>
-                (x .@? "DefaultValue")
+              (x .@? "ApplyType") <*>
+                (x .@? "MinimumEngineVersionPerAllowedValue" .!@
+                   mempty
+                   >>=
+                   may
+                     (parseXMLList "MinimumEngineVersionPerAllowedValue"))
+                <*> (x .@? "SettingName")
+                <*> (x .@? "DefaultValue")
                 <*> (x .@? "IsModifiable")
                 <*> (x .@? "SettingDescription")
                 <*> (x .@? "AllowedValues")
+                <*> (x .@? "IsRequired")
 
 instance Hashable OptionGroupOptionSetting where
 

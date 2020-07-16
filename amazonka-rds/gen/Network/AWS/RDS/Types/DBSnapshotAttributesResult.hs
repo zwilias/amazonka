@@ -21,10 +21,10 @@ import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.RDS.Types.DBSnapshotAttribute
 
--- | Contains the results of a successful call to the 'DescribeDBSnapshotAttributes' API action.
+-- | Contains the results of a successful call to the @DescribeDBSnapshotAttributes@ API action.
 --
 --
--- Manual DB snapshot attributes are used to authorize other AWS accounts to copy or restore a manual DB snapshot. For more information, see the 'ModifyDBSnapshotAttribute' API action.
+-- Manual DB snapshot attributes are used to authorize other AWS accounts to copy or restore a manual DB snapshot. For more information, see the @ModifyDBSnapshotAttribute@ API action.
 --
 --
 -- /See:/ 'dbSnapshotAttributesResult' smart constructor.

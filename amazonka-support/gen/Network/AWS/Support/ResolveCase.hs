@@ -45,11 +45,7 @@ import Network.AWS.Response
 import Network.AWS.Support.Types
 import Network.AWS.Support.Types.Product
 
--- | 
---
---
---
--- /See:/ 'resolveCase' smart constructor.
+-- | /See:/ 'resolveCase' smart constructor.
 newtype ResolveCase = ResolveCase'{_rcCaseId ::
                                    Maybe Text}
                         deriving (Eq, Read, Show, Data, Typeable, Generic)

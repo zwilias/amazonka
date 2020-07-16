@@ -19,29 +19,34 @@
 module Network.AWS.MediaConvert.Types.H265RateControlMode (
   H265RateControlMode (
     ..
-    , Cbr
-    , Vbr
+    , HRCMCbr
+    , HRCMQvbr
+    , HRCMVbr
     )
   ) where
 
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | Rate control mode. CQ uses constant quantizer (qp), ABR (average bitrate) does not write HRD parameters.
+-- | Use this setting to specify whether this output has a variable bitrate (VBR), constant bitrate (CBR) or quality-defined variable bitrate (QVBR).
 data H265RateControlMode = H265RateControlMode' (CI
                                                    Text)
                              deriving (Eq, Ord, Read, Show, Data, Typeable,
                                        Generic)
 
-pattern Cbr :: H265RateControlMode
-pattern Cbr = H265RateControlMode' "CBR"
+pattern HRCMCbr :: H265RateControlMode
+pattern HRCMCbr = H265RateControlMode' "CBR"
 
-pattern Vbr :: H265RateControlMode
-pattern Vbr = H265RateControlMode' "VBR"
+pattern HRCMQvbr :: H265RateControlMode
+pattern HRCMQvbr = H265RateControlMode' "QVBR"
+
+pattern HRCMVbr :: H265RateControlMode
+pattern HRCMVbr = H265RateControlMode' "VBR"
 
 {-# COMPLETE
-  Cbr,
-  Vbr,
+  HRCMCbr,
+  HRCMQvbr,
+  HRCMVbr,
   H265RateControlMode' #-}
 
 instance FromText H265RateControlMode where
@@ -56,20 +61,22 @@ instance ToText H265RateControlMode where
 --   fromEnum is a partial function, and will error on values unknown at generation time.
 instance Enum H265RateControlMode where
     toEnum i = case i of
-        0 -> Cbr
-        1 -> Vbr
+        0 -> HRCMCbr
+        1 -> HRCMQvbr
+        2 -> HRCMVbr
         _ -> (error . showText) $ "Unknown index for H265RateControlMode: " <> toText i
     fromEnum x = case x of
-        Cbr -> 0
-        Vbr -> 1
+        HRCMCbr -> 0
+        HRCMQvbr -> 1
+        HRCMVbr -> 2
         H265RateControlMode' name -> (error . showText) $ "Unknown H265RateControlMode: " <> original name
 
 -- | Represents the bounds of /known/ $H265RateControlMode.
 --   AWS may have added more since the source was generated.
 --   This instance exists only for backward compatibility.
 instance Bounded H265RateControlMode where
-    minBound = Cbr
-    maxBound = Vbr
+    minBound = HRCMCbr
+    maxBound = HRCMVbr
 
 instance Hashable     H265RateControlMode
 instance NFData       H265RateControlMode

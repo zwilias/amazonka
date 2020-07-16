@@ -20,7 +20,7 @@ module Network.AWS.RDS.Types.EventCategoriesMap where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | Contains the results of a successful invocation of the 'DescribeEventCategories' action.
+-- | Contains the results of a successful invocation of the @DescribeEventCategories@ action.
 --
 --
 --

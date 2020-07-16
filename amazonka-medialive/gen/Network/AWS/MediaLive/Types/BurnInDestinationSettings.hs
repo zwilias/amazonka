@@ -27,7 +27,7 @@ import Network.AWS.MediaLive.Types.BurnInTeletextGridControl
 import Network.AWS.MediaLive.Types.InputLocation
 import Network.AWS.Prelude
 
--- | Placeholder documentation for BurnInDestinationSettings
+-- | Burn In Destination Settings
 --
 -- /See:/ 'burnInDestinationSettings' smart constructor.
 data BurnInDestinationSettings = BurnInDestinationSettings'{_bidsBackgroundOpacity

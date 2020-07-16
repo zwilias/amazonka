@@ -19,11 +19,16 @@
 module Network.AWS.RDS.Types.Product (
     module Network.AWS.RDS.Types.AccountQuota,
     module Network.AWS.RDS.Types.AvailabilityZone,
+    module Network.AWS.RDS.Types.AvailableProcessorFeature,
     module Network.AWS.RDS.Types.Certificate,
     module Network.AWS.RDS.Types.CharacterSet,
     module Network.AWS.RDS.Types.CloudwatchLogsExportConfiguration,
+    module Network.AWS.RDS.Types.ConnectionPoolConfiguration,
+    module Network.AWS.RDS.Types.ConnectionPoolConfigurationInfo,
+    module Network.AWS.RDS.Types.CustomAvailabilityZone,
     module Network.AWS.RDS.Types.DBCluster,
     module Network.AWS.RDS.Types.DBClusterBacktrack,
+    module Network.AWS.RDS.Types.DBClusterEndpoint,
     module Network.AWS.RDS.Types.DBClusterMember,
     module Network.AWS.RDS.Types.DBClusterOptionGroupStatus,
     module Network.AWS.RDS.Types.DBClusterParameterGroup,
@@ -34,10 +39,15 @@ module Network.AWS.RDS.Types.Product (
     module Network.AWS.RDS.Types.DBClusterSnapshotAttributesResult,
     module Network.AWS.RDS.Types.DBEngineVersion,
     module Network.AWS.RDS.Types.DBInstance,
+    module Network.AWS.RDS.Types.DBInstanceAutomatedBackup,
+    module Network.AWS.RDS.Types.DBInstanceRole,
     module Network.AWS.RDS.Types.DBInstanceStatusInfo,
     module Network.AWS.RDS.Types.DBParameterGroup,
     module Network.AWS.RDS.Types.DBParameterGroupNameMessage,
     module Network.AWS.RDS.Types.DBParameterGroupStatus,
+    module Network.AWS.RDS.Types.DBProxy,
+    module Network.AWS.RDS.Types.DBProxyTarget,
+    module Network.AWS.RDS.Types.DBProxyTargetGroup,
     module Network.AWS.RDS.Types.DBSecurityGroup,
     module Network.AWS.RDS.Types.DBSecurityGroupMembership,
     module Network.AWS.RDS.Types.DBSnapshot,
@@ -53,8 +63,14 @@ module Network.AWS.RDS.Types.Product (
     module Network.AWS.RDS.Types.Event,
     module Network.AWS.RDS.Types.EventCategoriesMap,
     module Network.AWS.RDS.Types.EventSubscription,
+    module Network.AWS.RDS.Types.ExportTask,
     module Network.AWS.RDS.Types.Filter,
+    module Network.AWS.RDS.Types.GlobalCluster,
+    module Network.AWS.RDS.Types.GlobalClusterMember,
     module Network.AWS.RDS.Types.IPRange,
+    module Network.AWS.RDS.Types.InstallationMedia,
+    module Network.AWS.RDS.Types.InstallationMediaFailureCause,
+    module Network.AWS.RDS.Types.MinimumEngineVersionPerAllowedValue,
     module Network.AWS.RDS.Types.Option,
     module Network.AWS.RDS.Types.OptionConfiguration,
     module Network.AWS.RDS.Types.OptionGroup,
@@ -68,17 +84,25 @@ module Network.AWS.RDS.Types.Product (
     module Network.AWS.RDS.Types.PendingCloudwatchLogsExports,
     module Network.AWS.RDS.Types.PendingMaintenanceAction,
     module Network.AWS.RDS.Types.PendingModifiedValues,
+    module Network.AWS.RDS.Types.ProcessorFeature,
     module Network.AWS.RDS.Types.Range,
     module Network.AWS.RDS.Types.RecurringCharge,
     module Network.AWS.RDS.Types.ReservedDBInstance,
     module Network.AWS.RDS.Types.ReservedDBInstancesOffering,
     module Network.AWS.RDS.Types.ResourcePendingMaintenanceActions,
+    module Network.AWS.RDS.Types.RestoreWindow,
+    module Network.AWS.RDS.Types.ScalingConfiguration,
+    module Network.AWS.RDS.Types.ScalingConfigurationInfo,
     module Network.AWS.RDS.Types.SourceRegion,
     module Network.AWS.RDS.Types.Subnet,
     module Network.AWS.RDS.Types.Tag,
+    module Network.AWS.RDS.Types.TargetHealth,
     module Network.AWS.RDS.Types.Timezone,
     module Network.AWS.RDS.Types.UpgradeTarget,
+    module Network.AWS.RDS.Types.UserAuthConfig,
+    module Network.AWS.RDS.Types.UserAuthConfigInfo,
     module Network.AWS.RDS.Types.VPCSecurityGroupMembership,
+    module Network.AWS.RDS.Types.VPNDetails,
     module Network.AWS.RDS.Types.ValidDBInstanceModificationsMessage,
     module Network.AWS.RDS.Types.ValidStorageOptions
   ) where
@@ -87,11 +111,16 @@ import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.RDS.Types.AccountQuota
 import Network.AWS.RDS.Types.AvailabilityZone
+import Network.AWS.RDS.Types.AvailableProcessorFeature
 import Network.AWS.RDS.Types.Certificate
 import Network.AWS.RDS.Types.CharacterSet
 import Network.AWS.RDS.Types.CloudwatchLogsExportConfiguration
+import Network.AWS.RDS.Types.ConnectionPoolConfiguration
+import Network.AWS.RDS.Types.ConnectionPoolConfigurationInfo
+import Network.AWS.RDS.Types.CustomAvailabilityZone
 import Network.AWS.RDS.Types.DBCluster
 import Network.AWS.RDS.Types.DBClusterBacktrack
+import Network.AWS.RDS.Types.DBClusterEndpoint
 import Network.AWS.RDS.Types.DBClusterMember
 import Network.AWS.RDS.Types.DBClusterOptionGroupStatus
 import Network.AWS.RDS.Types.DBClusterParameterGroup
@@ -102,10 +131,15 @@ import Network.AWS.RDS.Types.DBClusterSnapshotAttribute
 import Network.AWS.RDS.Types.DBClusterSnapshotAttributesResult
 import Network.AWS.RDS.Types.DBEngineVersion
 import Network.AWS.RDS.Types.DBInstance
+import Network.AWS.RDS.Types.DBInstanceAutomatedBackup
+import Network.AWS.RDS.Types.DBInstanceRole
 import Network.AWS.RDS.Types.DBInstanceStatusInfo
 import Network.AWS.RDS.Types.DBParameterGroup
 import Network.AWS.RDS.Types.DBParameterGroupNameMessage
 import Network.AWS.RDS.Types.DBParameterGroupStatus
+import Network.AWS.RDS.Types.DBProxy
+import Network.AWS.RDS.Types.DBProxyTarget
+import Network.AWS.RDS.Types.DBProxyTargetGroup
 import Network.AWS.RDS.Types.DBSecurityGroup
 import Network.AWS.RDS.Types.DBSecurityGroupMembership
 import Network.AWS.RDS.Types.DBSnapshot
@@ -121,8 +155,14 @@ import Network.AWS.RDS.Types.EngineDefaults
 import Network.AWS.RDS.Types.Event
 import Network.AWS.RDS.Types.EventCategoriesMap
 import Network.AWS.RDS.Types.EventSubscription
+import Network.AWS.RDS.Types.ExportTask
 import Network.AWS.RDS.Types.Filter
+import Network.AWS.RDS.Types.GlobalCluster
+import Network.AWS.RDS.Types.GlobalClusterMember
 import Network.AWS.RDS.Types.IPRange
+import Network.AWS.RDS.Types.InstallationMedia
+import Network.AWS.RDS.Types.InstallationMediaFailureCause
+import Network.AWS.RDS.Types.MinimumEngineVersionPerAllowedValue
 import Network.AWS.RDS.Types.Option
 import Network.AWS.RDS.Types.OptionConfiguration
 import Network.AWS.RDS.Types.OptionGroup
@@ -136,16 +176,24 @@ import Network.AWS.RDS.Types.Parameter
 import Network.AWS.RDS.Types.PendingCloudwatchLogsExports
 import Network.AWS.RDS.Types.PendingMaintenanceAction
 import Network.AWS.RDS.Types.PendingModifiedValues
+import Network.AWS.RDS.Types.ProcessorFeature
 import Network.AWS.RDS.Types.Range
 import Network.AWS.RDS.Types.RecurringCharge
 import Network.AWS.RDS.Types.ReservedDBInstance
 import Network.AWS.RDS.Types.ReservedDBInstancesOffering
 import Network.AWS.RDS.Types.ResourcePendingMaintenanceActions
+import Network.AWS.RDS.Types.RestoreWindow
+import Network.AWS.RDS.Types.ScalingConfiguration
+import Network.AWS.RDS.Types.ScalingConfigurationInfo
 import Network.AWS.RDS.Types.SourceRegion
 import Network.AWS.RDS.Types.Subnet
 import Network.AWS.RDS.Types.Tag
+import Network.AWS.RDS.Types.TargetHealth
 import Network.AWS.RDS.Types.Timezone
 import Network.AWS.RDS.Types.UpgradeTarget
+import Network.AWS.RDS.Types.UserAuthConfig
+import Network.AWS.RDS.Types.UserAuthConfigInfo
 import Network.AWS.RDS.Types.VPCSecurityGroupMembership
+import Network.AWS.RDS.Types.VPNDetails
 import Network.AWS.RDS.Types.ValidDBInstanceModificationsMessage
 import Network.AWS.RDS.Types.ValidStorageOptions

@@ -18,7 +18,9 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Returns information about an endpoint.
+-- Retrieves information about the settings and attributes of a specific endpoint for an application.
+--
+--
 module Network.AWS.Pinpoint.GetEndpoint
     (
     -- * Creating a Request
@@ -53,9 +55,9 @@ data GetEndpoint = GetEndpoint'{_geApplicationId ::
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'geApplicationId' - Undocumented member.
+-- * 'geApplicationId' - The unique identifier for the application. This identifier is displayed as the __Project ID__ on the Amazon Pinpoint console.
 --
--- * 'geEndpointId' - Undocumented member.
+-- * 'geEndpointId' - The unique identifier for the endpoint.
 getEndpoint
     :: Text -- ^ 'geApplicationId'
     -> Text -- ^ 'geEndpointId'
@@ -64,11 +66,11 @@ getEndpoint pApplicationId_ pEndpointId_
   = GetEndpoint'{_geApplicationId = pApplicationId_,
                  _geEndpointId = pEndpointId_}
 
--- | Undocumented member.
+-- | The unique identifier for the application. This identifier is displayed as the __Project ID__ on the Amazon Pinpoint console.
 geApplicationId :: Lens' GetEndpoint Text
 geApplicationId = lens _geApplicationId (\ s a -> s{_geApplicationId = a})
 
--- | Undocumented member.
+-- | The unique identifier for the endpoint.
 geEndpointId :: Lens' GetEndpoint Text
 geEndpointId = lens _geEndpointId (\ s a -> s{_geEndpointId = a})
 

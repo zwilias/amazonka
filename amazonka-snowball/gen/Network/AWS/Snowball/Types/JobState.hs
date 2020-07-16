@@ -30,6 +30,7 @@ module Network.AWS.Snowball.Types.JobState (
     , JSPreparingAppliance
     , JSPreparingShipment
     , JSWithAWS
+    , JSWithAWSSortingFacility
     , JSWithCustomer
     )
   ) where
@@ -74,6 +75,9 @@ pattern JSPreparingShipment = JobState' "PreparingShipment"
 pattern JSWithAWS :: JobState
 pattern JSWithAWS = JobState' "WithAWS"
 
+pattern JSWithAWSSortingFacility :: JobState
+pattern JSWithAWSSortingFacility = JobState' "WithAWSSortingFacility"
+
 pattern JSWithCustomer :: JobState
 pattern JSWithCustomer = JobState' "WithCustomer"
 
@@ -89,6 +93,7 @@ pattern JSWithCustomer = JobState' "WithCustomer"
   JSPreparingAppliance,
   JSPreparingShipment,
   JSWithAWS,
+  JSWithAWSSortingFacility,
   JSWithCustomer,
   JobState' #-}
 
@@ -115,7 +120,8 @@ instance Enum JobState where
         8 -> JSPreparingAppliance
         9 -> JSPreparingShipment
         10 -> JSWithAWS
-        11 -> JSWithCustomer
+        11 -> JSWithAWSSortingFacility
+        12 -> JSWithCustomer
         _ -> (error . showText) $ "Unknown index for JobState: " <> toText i
     fromEnum x = case x of
         JSCancelled -> 0
@@ -129,7 +135,8 @@ instance Enum JobState where
         JSPreparingAppliance -> 8
         JSPreparingShipment -> 9
         JSWithAWS -> 10
-        JSWithCustomer -> 11
+        JSWithAWSSortingFacility -> 11
+        JSWithCustomer -> 12
         JobState' name -> (error . showText) $ "Unknown JobState: " <> original name
 
 -- | Represents the bounds of /known/ $JobState.

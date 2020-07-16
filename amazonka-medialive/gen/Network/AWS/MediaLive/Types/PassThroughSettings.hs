@@ -20,7 +20,7 @@ module Network.AWS.MediaLive.Types.PassThroughSettings where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | Placeholder documentation for PassThroughSettings
+-- | Pass Through Settings
 --
 -- /See:/ 'passThroughSettings' smart constructor.
 data PassThroughSettings = PassThroughSettings'

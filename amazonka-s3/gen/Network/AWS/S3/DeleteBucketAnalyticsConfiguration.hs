@@ -19,6 +19,22 @@
 -- Portability : non-portable (GHC extensions)
 --
 -- Deletes an analytics configuration for the bucket (specified by the analytics configuration ID).
+--
+--
+-- To use this operation, you must have permissions to perform the @s3:PutAnalyticsConfiguration@ action. The bucket owner has this permission by default. The bucket owner can grant this permission to others. For more information about permissions, see <https://docs.aws.amazon.com/AmazonS3/latest/dev//using-with-s3-actions.html#using-with-s3-actions-related-to-bucket-subresources Permissions Related to Bucket Subresource Operations> and <https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-access-control.html Managing Access Permissions to Your Amazon S3 Resources> .
+--
+-- For information about the Amazon S3 analytics feature, see <https://docs.aws.amazon.com/AmazonS3/latest/dev/analytics-storage-class.html Amazon S3 Analytics – Storage Class Analysis> . 
+--
+-- The following operations are related to @DeleteBucketAnalyticsConfiguration@ :
+--
+--     * 
+--
+--     * 
+--
+--     * 
+--
+--
+--
 module Network.AWS.S3.DeleteBucketAnalyticsConfiguration
     (
     -- * Creating a Request
@@ -56,7 +72,7 @@ data DeleteBucketAnalyticsConfiguration = DeleteBucketAnalyticsConfiguration'{_d
 --
 -- * 'dbacBucket' - The name of the bucket from which an analytics configuration is deleted.
 --
--- * 'dbacId' - The identifier used to represent an analytics configuration.
+-- * 'dbacId' - The ID that identifies the analytics configuration.
 deleteBucketAnalyticsConfiguration
     :: BucketName -- ^ 'dbacBucket'
     -> Text -- ^ 'dbacId'
@@ -70,7 +86,7 @@ deleteBucketAnalyticsConfiguration pBucket_ pId_
 dbacBucket :: Lens' DeleteBucketAnalyticsConfiguration BucketName
 dbacBucket = lens _dbacBucket (\ s a -> s{_dbacBucket = a})
 
--- | The identifier used to represent an analytics configuration.
+-- | The ID that identifies the analytics configuration.
 dbacId :: Lens' DeleteBucketAnalyticsConfiguration Text
 dbacId = lens _dbacId (\ s a -> s{_dbacId = a})
 

@@ -21,15 +21,17 @@
 -- Updates the assessment target that is specified by the ARN of the assessment target.
 --
 --
+-- If resourceGroupArn is not specified, all EC2 instances in the current AWS account and region are included in the assessment target.
+--
 module Network.AWS.Inspector.UpdateAssessmentTarget
     (
     -- * Creating a Request
       updateAssessmentTarget
     , UpdateAssessmentTarget
     -- * Request Lenses
+    , uatResourceGroupARN
     , uatAssessmentTargetARN
     , uatAssessmentTargetName
-    , uatResourceGroupARN
 
     -- * Destructuring the Response
     , updateAssessmentTargetResponse
@@ -44,12 +46,12 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'updateAssessmentTarget' smart constructor.
-data UpdateAssessmentTarget = UpdateAssessmentTarget'{_uatAssessmentTargetARN
-                                                      :: !Text,
+data UpdateAssessmentTarget = UpdateAssessmentTarget'{_uatResourceGroupARN
+                                                      :: !(Maybe Text),
+                                                      _uatAssessmentTargetARN ::
+                                                      !Text,
                                                       _uatAssessmentTargetName
-                                                      :: !Text,
-                                                      _uatResourceGroupARN ::
-                                                      !Text}
+                                                      :: !Text}
                                 deriving (Eq, Read, Show, Data, Typeable,
                                           Generic)
 
@@ -57,22 +59,25 @@ data UpdateAssessmentTarget = UpdateAssessmentTarget'{_uatAssessmentTargetARN
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
+-- * 'uatResourceGroupARN' - The ARN of the resource group that is used to specify the new resource group to associate with the assessment target.
+--
 -- * 'uatAssessmentTargetARN' - The ARN of the assessment target that you want to update.
 --
 -- * 'uatAssessmentTargetName' - The name of the assessment target that you want to update.
---
--- * 'uatResourceGroupARN' - The ARN of the resource group that is used to specify the new resource group to associate with the assessment target.
 updateAssessmentTarget
     :: Text -- ^ 'uatAssessmentTargetARN'
     -> Text -- ^ 'uatAssessmentTargetName'
-    -> Text -- ^ 'uatResourceGroupARN'
     -> UpdateAssessmentTarget
 updateAssessmentTarget pAssessmentTargetARN_
-  pAssessmentTargetName_ pResourceGroupARN_
-  = UpdateAssessmentTarget'{_uatAssessmentTargetARN =
-                              pAssessmentTargetARN_,
-                            _uatAssessmentTargetName = pAssessmentTargetName_,
-                            _uatResourceGroupARN = pResourceGroupARN_}
+  pAssessmentTargetName_
+  = UpdateAssessmentTarget'{_uatResourceGroupARN =
+                              Nothing,
+                            _uatAssessmentTargetARN = pAssessmentTargetARN_,
+                            _uatAssessmentTargetName = pAssessmentTargetName_}
+
+-- | The ARN of the resource group that is used to specify the new resource group to associate with the assessment target.
+uatResourceGroupARN :: Lens' UpdateAssessmentTarget (Maybe Text)
+uatResourceGroupARN = lens _uatResourceGroupARN (\ s a -> s{_uatResourceGroupARN = a})
 
 -- | The ARN of the assessment target that you want to update.
 uatAssessmentTargetARN :: Lens' UpdateAssessmentTarget Text
@@ -81,10 +86,6 @@ uatAssessmentTargetARN = lens _uatAssessmentTargetARN (\ s a -> s{_uatAssessment
 -- | The name of the assessment target that you want to update.
 uatAssessmentTargetName :: Lens' UpdateAssessmentTarget Text
 uatAssessmentTargetName = lens _uatAssessmentTargetName (\ s a -> s{_uatAssessmentTargetName = a})
-
--- | The ARN of the resource group that is used to specify the new resource group to associate with the assessment target.
-uatResourceGroupARN :: Lens' UpdateAssessmentTarget Text
-uatResourceGroupARN = lens _uatResourceGroupARN (\ s a -> s{_uatResourceGroupARN = a})
 
 instance AWSRequest UpdateAssessmentTarget where
         type Rs UpdateAssessmentTarget =
@@ -111,11 +112,12 @@ instance ToJSON UpdateAssessmentTarget where
         toJSON UpdateAssessmentTarget'{..}
           = object
               (catMaybes
-                 [Just
+                 [("resourceGroupArn" .=) <$> _uatResourceGroupARN,
+                  Just
                     ("assessmentTargetArn" .= _uatAssessmentTargetARN),
                   Just
-                    ("assessmentTargetName" .= _uatAssessmentTargetName),
-                  Just ("resourceGroupArn" .= _uatResourceGroupARN)])
+                    ("assessmentTargetName" .=
+                       _uatAssessmentTargetName)])
 
 instance ToPath UpdateAssessmentTarget where
         toPath = const "/"

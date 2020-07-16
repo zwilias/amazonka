@@ -36,7 +36,7 @@ data TagFilter = TagFilter'{_tfValues ::
 --
 -- * 'tfValues' - The optional part of a key-value pair that make up a tag. A value acts as a descriptor within a tag category (key).
 --
--- * 'tfKey' - One part of a key-value pair that make up a tag. A key is a general label that acts like a category for more specific tag values.
+-- * 'tfKey' - One part of a key-value pair that makes up a tag. A key is a general label that acts like a category for more specific tag values.
 tagFilter
     :: TagFilter
 tagFilter
@@ -46,7 +46,7 @@ tagFilter
 tfValues :: Lens' TagFilter [Text]
 tfValues = lens _tfValues (\ s a -> s{_tfValues = a}) . _Default . _Coerce
 
--- | One part of a key-value pair that make up a tag. A key is a general label that acts like a category for more specific tag values.
+-- | One part of a key-value pair that makes up a tag. A key is a general label that acts like a category for more specific tag values.
 tfKey :: Lens' TagFilter (Maybe Text)
 tfKey = lens _tfKey (\ s a -> s{_tfKey = a})
 

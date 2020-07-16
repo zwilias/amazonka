@@ -28,7 +28,11 @@ import Network.AWS.S3.Types.NoncurrentVersionExpiration
 import Network.AWS.S3.Types.NoncurrentVersionTransition
 import Network.AWS.S3.Types.Transition
 
--- | /See:/ 'lifecycleRule' smart constructor.
+-- | A lifecycle rule for individual objects in an Amazon S3 bucket.
+--
+--
+--
+-- /See:/ 'lifecycleRule' smart constructor.
 data LifecycleRule = LifecycleRule'{_lrTransitions ::
                                     !(Maybe [Transition]),
                                     _lrNoncurrentVersionExpiration ::
@@ -49,15 +53,15 @@ data LifecycleRule = LifecycleRule'{_lrTransitions ::
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'lrTransitions' - Undocumented member.
+-- * 'lrTransitions' - Specifies when an Amazon S3 object transitions to a specified storage class.
 --
 -- * 'lrNoncurrentVersionExpiration' - Undocumented member.
 --
--- * 'lrPrefix' - Prefix identifying one or more objects to which the rule applies. This is deprecated; use Filter instead.
+-- * 'lrPrefix' - Prefix identifying one or more objects to which the rule applies. This is No longer used; use @Filter@ instead.
 --
--- * 'lrNoncurrentVersionTransitions' - Undocumented member.
+-- * 'lrNoncurrentVersionTransitions' - Specifies the transition rule for the lifecycle rule that describes when noncurrent objects transition to a specific storage class. If your bucket is versioning-enabled (or versioning is suspended), you can set this action to request that Amazon S3 transition noncurrent object versions to a specific storage class at a set period in the object's lifetime. 
 --
--- * 'lrExpiration' - Undocumented member.
+-- * 'lrExpiration' - Specifies the expiration for the lifecycle of the object in the form of date, days and, whether the object has a delete marker.
 --
 -- * 'lrId' - Unique identifier for the rule. The value cannot be longer than 255 characters.
 --
@@ -79,7 +83,7 @@ lifecycleRule pStatus_
                    _lrAbortIncompleteMultipartUpload = Nothing,
                    _lrStatus = pStatus_}
 
--- | Undocumented member.
+-- | Specifies when an Amazon S3 object transitions to a specified storage class.
 lrTransitions :: Lens' LifecycleRule [Transition]
 lrTransitions = lens _lrTransitions (\ s a -> s{_lrTransitions = a}) . _Default . _Coerce
 
@@ -87,15 +91,15 @@ lrTransitions = lens _lrTransitions (\ s a -> s{_lrTransitions = a}) . _Default 
 lrNoncurrentVersionExpiration :: Lens' LifecycleRule (Maybe NoncurrentVersionExpiration)
 lrNoncurrentVersionExpiration = lens _lrNoncurrentVersionExpiration (\ s a -> s{_lrNoncurrentVersionExpiration = a})
 
--- | Prefix identifying one or more objects to which the rule applies. This is deprecated; use Filter instead.
+-- | Prefix identifying one or more objects to which the rule applies. This is No longer used; use @Filter@ instead.
 lrPrefix :: Lens' LifecycleRule (Maybe Text)
 lrPrefix = lens _lrPrefix (\ s a -> s{_lrPrefix = a})
 
--- | Undocumented member.
+-- | Specifies the transition rule for the lifecycle rule that describes when noncurrent objects transition to a specific storage class. If your bucket is versioning-enabled (or versioning is suspended), you can set this action to request that Amazon S3 transition noncurrent object versions to a specific storage class at a set period in the object's lifetime. 
 lrNoncurrentVersionTransitions :: Lens' LifecycleRule [NoncurrentVersionTransition]
 lrNoncurrentVersionTransitions = lens _lrNoncurrentVersionTransitions (\ s a -> s{_lrNoncurrentVersionTransitions = a}) . _Default . _Coerce
 
--- | Undocumented member.
+-- | Specifies the expiration for the lifecycle of the object in the form of date, days and, whether the object has a delete marker.
 lrExpiration :: Lens' LifecycleRule (Maybe LifecycleExpiration)
 lrExpiration = lens _lrExpiration (\ s a -> s{_lrExpiration = a})
 

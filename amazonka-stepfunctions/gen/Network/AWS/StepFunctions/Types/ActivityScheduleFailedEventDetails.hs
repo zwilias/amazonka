@@ -20,7 +20,7 @@ module Network.AWS.StepFunctions.Types.ActivityScheduleFailedEventDetails where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | Contains details about an activity schedule failure which occurred during an execution.
+-- | Contains details about an activity schedule failure that occurred during an execution.
 --
 --
 --
@@ -28,13 +28,15 @@ import Network.AWS.Prelude
 data ActivityScheduleFailedEventDetails = ActivityScheduleFailedEventDetails'{_asfedError
                                                                               ::
                                                                               !(Maybe
-                                                                                  Text),
+                                                                                  (Sensitive
+                                                                                     Text)),
                                                                               _asfedCause
                                                                               ::
                                                                               !(Maybe
-                                                                                  Text)}
-                                            deriving (Eq, Read, Show, Data,
-                                                      Typeable, Generic)
+                                                                                  (Sensitive
+                                                                                     Text))}
+                                            deriving (Eq, Show, Data, Typeable,
+                                                      Generic)
 
 -- | Creates a value of 'ActivityScheduleFailedEventDetails' with the minimum fields required to make a request.
 --
@@ -52,11 +54,11 @@ activityScheduleFailedEventDetails
 
 -- | The error code of the failure.
 asfedError :: Lens' ActivityScheduleFailedEventDetails (Maybe Text)
-asfedError = lens _asfedError (\ s a -> s{_asfedError = a})
+asfedError = lens _asfedError (\ s a -> s{_asfedError = a}) . mapping _Sensitive
 
 -- | A more detailed explanation of the cause of the failure.
 asfedCause :: Lens' ActivityScheduleFailedEventDetails (Maybe Text)
-asfedCause = lens _asfedCause (\ s a -> s{_asfedCause = a})
+asfedCause = lens _asfedCause (\ s a -> s{_asfedCause = a}) . mapping _Sensitive
 
 instance FromJSON ActivityScheduleFailedEventDetails
          where

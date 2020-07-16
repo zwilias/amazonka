@@ -44,7 +44,7 @@ data ParquetSerDe = ParquetSerDe'{_psdWriterVersion
 --
 -- * 'psdWriterVersion' - Indicates the version of row format to output. The possible values are @V1@ and @V2@ . The default is @V1@ .
 --
--- * 'psdCompression' - The compression code to use over data blocks. The possible values are @UNCOMPRESSED@ , @SNAPPY@ , and @GZIP@ , with the default being @SNAPPY@ . Use @SNAPPY@ for higher decompression speed. Use @GZIP@ if the compression ration is more important than speed.
+-- * 'psdCompression' - The compression code to use over data blocks. The possible values are @UNCOMPRESSED@ , @SNAPPY@ , and @GZIP@ , with the default being @SNAPPY@ . Use @SNAPPY@ for higher decompression speed. Use @GZIP@ if the compression ratio is more important than speed.
 --
 -- * 'psdMaxPaddingBytes' - The maximum amount of padding to apply. This is useful if you intend to copy the data from Amazon S3 to HDFS before querying. The default is 0.
 --
@@ -67,7 +67,7 @@ parquetSerDe
 psdWriterVersion :: Lens' ParquetSerDe (Maybe ParquetWriterVersion)
 psdWriterVersion = lens _psdWriterVersion (\ s a -> s{_psdWriterVersion = a})
 
--- | The compression code to use over data blocks. The possible values are @UNCOMPRESSED@ , @SNAPPY@ , and @GZIP@ , with the default being @SNAPPY@ . Use @SNAPPY@ for higher decompression speed. Use @GZIP@ if the compression ration is more important than speed.
+-- | The compression code to use over data blocks. The possible values are @UNCOMPRESSED@ , @SNAPPY@ , and @GZIP@ , with the default being @SNAPPY@ . Use @SNAPPY@ for higher decompression speed. Use @GZIP@ if the compression ratio is more important than speed.
 psdCompression :: Lens' ParquetSerDe (Maybe ParquetCompression)
 psdCompression = lens _psdCompression (\ s a -> s{_psdCompression = a})
 

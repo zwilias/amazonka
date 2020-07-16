@@ -34,6 +34,9 @@ import Test.AWS.FMS.Internal
 --         , requestGetComplianceDetail $
 --             getComplianceDetail
 --
+--         , requestListTagsForResource $
+--             listTagsForResource
+--
 --         , requestGetNotificationChannel $
 --             getNotificationChannel
 --
@@ -61,8 +64,20 @@ import Test.AWS.FMS.Internal
 --         , requestAssociateAdminAccount $
 --             associateAdminAccount
 --
+--         , requestListMemberAccounts $
+--             listMemberAccounts
+--
+--         , requestTagResource $
+--             tagResource
+--
+--         , requestUntagResource $
+--             untagResource
+--
 --         , requestGetPolicy $
 --             getPolicy
+--
+--         , requestGetProtectionStatus $
+--             getProtectionStatus
 --
 --           ]
 
@@ -72,6 +87,9 @@ import Test.AWS.FMS.Internal
 --
 --         , responseGetComplianceDetail $
 --             getComplianceDetailResponse
+--
+--         , responseListTagsForResource $
+--             listTagsForResourceResponse
 --
 --         , responseGetNotificationChannel $
 --             getNotificationChannelResponse
@@ -100,8 +118,20 @@ import Test.AWS.FMS.Internal
 --         , responseAssociateAdminAccount $
 --             associateAdminAccountResponse
 --
+--         , responseListMemberAccounts $
+--             listMemberAccountsResponse
+--
+--         , responseTagResource $
+--             tagResourceResponse
+--
+--         , responseUntagResource $
+--             untagResourceResponse
+--
 --         , responseGetPolicy $
 --             getPolicyResponse
+--
+--         , responseGetProtectionStatus $
+--             getProtectionStatusResponse
 --
 --           ]
 --     ]
@@ -117,6 +147,11 @@ requestGetComplianceDetail :: GetComplianceDetail -> TestTree
 requestGetComplianceDetail = req
     "GetComplianceDetail"
     "fixture/GetComplianceDetail.yaml"
+
+requestListTagsForResource :: ListTagsForResource -> TestTree
+requestListTagsForResource = req
+    "ListTagsForResource"
+    "fixture/ListTagsForResource.yaml"
 
 requestGetNotificationChannel :: GetNotificationChannel -> TestTree
 requestGetNotificationChannel = req
@@ -163,10 +198,30 @@ requestAssociateAdminAccount = req
     "AssociateAdminAccount"
     "fixture/AssociateAdminAccount.yaml"
 
+requestListMemberAccounts :: ListMemberAccounts -> TestTree
+requestListMemberAccounts = req
+    "ListMemberAccounts"
+    "fixture/ListMemberAccounts.yaml"
+
+requestTagResource :: TagResource -> TestTree
+requestTagResource = req
+    "TagResource"
+    "fixture/TagResource.yaml"
+
+requestUntagResource :: UntagResource -> TestTree
+requestUntagResource = req
+    "UntagResource"
+    "fixture/UntagResource.yaml"
+
 requestGetPolicy :: GetPolicy -> TestTree
 requestGetPolicy = req
     "GetPolicy"
     "fixture/GetPolicy.yaml"
+
+requestGetProtectionStatus :: GetProtectionStatus -> TestTree
+requestGetProtectionStatus = req
+    "GetProtectionStatus"
+    "fixture/GetProtectionStatus.yaml"
 
 -- Responses
 
@@ -183,6 +238,13 @@ responseGetComplianceDetail = res
     "fixture/GetComplianceDetailResponse.proto"
     fms
     (Proxy :: Proxy GetComplianceDetail)
+
+responseListTagsForResource :: ListTagsForResourceResponse -> TestTree
+responseListTagsForResource = res
+    "ListTagsForResourceResponse"
+    "fixture/ListTagsForResourceResponse.proto"
+    fms
+    (Proxy :: Proxy ListTagsForResource)
 
 responseGetNotificationChannel :: GetNotificationChannelResponse -> TestTree
 responseGetNotificationChannel = res
@@ -247,9 +309,37 @@ responseAssociateAdminAccount = res
     fms
     (Proxy :: Proxy AssociateAdminAccount)
 
+responseListMemberAccounts :: ListMemberAccountsResponse -> TestTree
+responseListMemberAccounts = res
+    "ListMemberAccountsResponse"
+    "fixture/ListMemberAccountsResponse.proto"
+    fms
+    (Proxy :: Proxy ListMemberAccounts)
+
+responseTagResource :: TagResourceResponse -> TestTree
+responseTagResource = res
+    "TagResourceResponse"
+    "fixture/TagResourceResponse.proto"
+    fms
+    (Proxy :: Proxy TagResource)
+
+responseUntagResource :: UntagResourceResponse -> TestTree
+responseUntagResource = res
+    "UntagResourceResponse"
+    "fixture/UntagResourceResponse.proto"
+    fms
+    (Proxy :: Proxy UntagResource)
+
 responseGetPolicy :: GetPolicyResponse -> TestTree
 responseGetPolicy = res
     "GetPolicyResponse"
     "fixture/GetPolicyResponse.proto"
     fms
     (Proxy :: Proxy GetPolicy)
+
+responseGetProtectionStatus :: GetProtectionStatusResponse -> TestTree
+responseGetProtectionStatus = res
+    "GetProtectionStatusResponse"
+    "fixture/GetProtectionStatusResponse.proto"
+    fms
+    (Proxy :: Proxy GetProtectionStatus)

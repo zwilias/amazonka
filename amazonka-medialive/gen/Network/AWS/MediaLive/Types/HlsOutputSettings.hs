@@ -18,14 +18,17 @@
 module Network.AWS.MediaLive.Types.HlsOutputSettings where
 
 import Network.AWS.Lens
+import Network.AWS.MediaLive.Types.HlsH265PackagingType
 import Network.AWS.MediaLive.Types.HlsSettings
 import Network.AWS.Prelude
 
--- | Placeholder documentation for HlsOutputSettings
+-- | Hls Output Settings
 --
 -- /See:/ 'hlsOutputSettings' smart constructor.
-data HlsOutputSettings = HlsOutputSettings'{_hosSegmentModifier
-                                            :: !(Maybe Text),
+data HlsOutputSettings = HlsOutputSettings'{_hosH265PackagingType
+                                            :: !(Maybe HlsH265PackagingType),
+                                            _hosSegmentModifier ::
+                                            !(Maybe Text),
                                             _hosNameModifier :: !(Maybe Text),
                                             _hosHlsSettings :: !HlsSettings}
                            deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -33,6 +36,8 @@ data HlsOutputSettings = HlsOutputSettings'{_hosSegmentModifier
 -- | Creates a value of 'HlsOutputSettings' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'hosH265PackagingType' - Only applicable when this output is referencing an H.265 video description. Specifies whether MP4 segments should be packaged as HEV1 or HVC1.
 --
 -- * 'hosSegmentModifier' - String concatenated to end of segment filenames.
 --
@@ -43,9 +48,14 @@ hlsOutputSettings
     :: HlsSettings -- ^ 'hosHlsSettings'
     -> HlsOutputSettings
 hlsOutputSettings pHlsSettings_
-  = HlsOutputSettings'{_hosSegmentModifier = Nothing,
+  = HlsOutputSettings'{_hosH265PackagingType = Nothing,
+                       _hosSegmentModifier = Nothing,
                        _hosNameModifier = Nothing,
                        _hosHlsSettings = pHlsSettings_}
+
+-- | Only applicable when this output is referencing an H.265 video description. Specifies whether MP4 segments should be packaged as HEV1 or HVC1.
+hosH265PackagingType :: Lens' HlsOutputSettings (Maybe HlsH265PackagingType)
+hosH265PackagingType = lens _hosH265PackagingType (\ s a -> s{_hosH265PackagingType = a})
 
 -- | String concatenated to end of segment filenames.
 hosSegmentModifier :: Lens' HlsOutputSettings (Maybe Text)
@@ -64,7 +74,9 @@ instance FromJSON HlsOutputSettings where
           = withObject "HlsOutputSettings"
               (\ x ->
                  HlsOutputSettings' <$>
-                   (x .:? "segmentModifier") <*> (x .:? "nameModifier")
+                   (x .:? "h265PackagingType") <*>
+                     (x .:? "segmentModifier")
+                     <*> (x .:? "nameModifier")
                      <*> (x .: "hlsSettings"))
 
 instance Hashable HlsOutputSettings where
@@ -75,6 +87,7 @@ instance ToJSON HlsOutputSettings where
         toJSON HlsOutputSettings'{..}
           = object
               (catMaybes
-                 [("segmentModifier" .=) <$> _hosSegmentModifier,
+                 [("h265PackagingType" .=) <$> _hosH265PackagingType,
+                  ("segmentModifier" .=) <$> _hosSegmentModifier,
                   ("nameModifier" .=) <$> _hosNameModifier,
                   Just ("hlsSettings" .= _hosHlsSettings)])

@@ -26,7 +26,7 @@ import Network.AWS.Prelude
 --
 -- This data type is used as a response element in the 'GetAccountAuthorizationDetails' operation.
 --
--- For more information about managed policies, see <http://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html Managed Policies and Inline Policies> in the /Using IAM/ guide. 
+-- For more information about managed policies, see <https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html Managed Policies and Inline Policies> in the /IAM User Guide/ . 
 --
 --
 -- /See:/ 'managedPolicyDetail' smart constructor.
@@ -43,6 +43,8 @@ data ManagedPolicyDetail = ManagedPolicyDetail'{_mpdPolicyName
                                                 !(Maybe ISO8601),
                                                 _mpdIsAttachable ::
                                                 !(Maybe Bool),
+                                                _mpdPermissionsBoundaryUsageCount
+                                                :: !(Maybe Int),
                                                 _mpdDefaultVersionId ::
                                                 !(Maybe Text),
                                                 _mpdAttachmentCount ::
@@ -61,9 +63,9 @@ data ManagedPolicyDetail = ManagedPolicyDetail'{_mpdPolicyName
 --
 -- * 'mpdUpdateDate' - The date and time, in <http://www.iso.org/iso/iso8601 ISO 8601 date-time format> , when the policy was last updated. When a policy has only one version, this field contains the date and time when the policy was created. When a policy has more than one version, this field contains the date and time when the most recent policy version was created.
 --
--- * 'mpdPolicyId' - The stable and unique string identifying the policy. For more information about IDs, see <http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html IAM Identifiers> in the /Using IAM/ guide.
+-- * 'mpdPolicyId' - The stable and unique string identifying the policy. For more information about IDs, see <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html IAM Identifiers> in the /IAM User Guide/ .
 --
--- * 'mpdPath' - The path to the policy. For more information about paths, see <http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html IAM Identifiers> in the /Using IAM/ guide.
+-- * 'mpdPath' - The path to the policy. For more information about paths, see <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html IAM Identifiers> in the /IAM User Guide/ .
 --
 -- * 'mpdPolicyVersionList' - A list containing information about the versions of the policy.
 --
@@ -71,7 +73,9 @@ data ManagedPolicyDetail = ManagedPolicyDetail'{_mpdPolicyName
 --
 -- * 'mpdIsAttachable' - Specifies whether the policy can be attached to an IAM user, group, or role.
 --
--- * 'mpdDefaultVersionId' - The identifier for the version of the policy that is set as the default (operative) version. For more information about policy versions, see <http://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-versions.html Versioning for Managed Policies> in the /Using IAM/ guide. 
+-- * 'mpdPermissionsBoundaryUsageCount' - The number of entities (users and roles) for which the policy is used as the permissions boundary.  For more information about permissions boundaries, see <https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_boundaries.html Permissions Boundaries for IAM Identities > in the /IAM User Guide/ .
+--
+-- * 'mpdDefaultVersionId' - The identifier for the version of the policy that is set as the default (operative) version. For more information about policy versions, see <https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-versions.html Versioning for Managed Policies> in the /IAM User Guide/ . 
 --
 -- * 'mpdAttachmentCount' - The number of principal entities (users, groups, and roles) that the policy is attached to.
 --
@@ -84,6 +88,7 @@ managedPolicyDetail
                          _mpdPolicyId = Nothing, _mpdPath = Nothing,
                          _mpdPolicyVersionList = Nothing,
                          _mpdCreateDate = Nothing, _mpdIsAttachable = Nothing,
+                         _mpdPermissionsBoundaryUsageCount = Nothing,
                          _mpdDefaultVersionId = Nothing,
                          _mpdAttachmentCount = Nothing,
                          _mpdDescription = Nothing}
@@ -100,11 +105,11 @@ mpdARN = lens _mpdARN (\ s a -> s{_mpdARN = a})
 mpdUpdateDate :: Lens' ManagedPolicyDetail (Maybe UTCTime)
 mpdUpdateDate = lens _mpdUpdateDate (\ s a -> s{_mpdUpdateDate = a}) . mapping _Time
 
--- | The stable and unique string identifying the policy. For more information about IDs, see <http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html IAM Identifiers> in the /Using IAM/ guide.
+-- | The stable and unique string identifying the policy. For more information about IDs, see <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html IAM Identifiers> in the /IAM User Guide/ .
 mpdPolicyId :: Lens' ManagedPolicyDetail (Maybe Text)
 mpdPolicyId = lens _mpdPolicyId (\ s a -> s{_mpdPolicyId = a})
 
--- | The path to the policy. For more information about paths, see <http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html IAM Identifiers> in the /Using IAM/ guide.
+-- | The path to the policy. For more information about paths, see <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html IAM Identifiers> in the /IAM User Guide/ .
 mpdPath :: Lens' ManagedPolicyDetail (Maybe Text)
 mpdPath = lens _mpdPath (\ s a -> s{_mpdPath = a})
 
@@ -120,7 +125,11 @@ mpdCreateDate = lens _mpdCreateDate (\ s a -> s{_mpdCreateDate = a}) . mapping _
 mpdIsAttachable :: Lens' ManagedPolicyDetail (Maybe Bool)
 mpdIsAttachable = lens _mpdIsAttachable (\ s a -> s{_mpdIsAttachable = a})
 
--- | The identifier for the version of the policy that is set as the default (operative) version. For more information about policy versions, see <http://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-versions.html Versioning for Managed Policies> in the /Using IAM/ guide. 
+-- | The number of entities (users and roles) for which the policy is used as the permissions boundary.  For more information about permissions boundaries, see <https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_boundaries.html Permissions Boundaries for IAM Identities > in the /IAM User Guide/ .
+mpdPermissionsBoundaryUsageCount :: Lens' ManagedPolicyDetail (Maybe Int)
+mpdPermissionsBoundaryUsageCount = lens _mpdPermissionsBoundaryUsageCount (\ s a -> s{_mpdPermissionsBoundaryUsageCount = a})
+
+-- | The identifier for the version of the policy that is set as the default (operative) version. For more information about policy versions, see <https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-versions.html Versioning for Managed Policies> in the /IAM User Guide/ . 
 mpdDefaultVersionId :: Lens' ManagedPolicyDetail (Maybe Text)
 mpdDefaultVersionId = lens _mpdDefaultVersionId (\ s a -> s{_mpdDefaultVersionId = a})
 
@@ -144,6 +153,7 @@ instance FromXML ManagedPolicyDetail where
                    may (parseXMLList "member"))
                 <*> (x .@? "CreateDate")
                 <*> (x .@? "IsAttachable")
+                <*> (x .@? "PermissionsBoundaryUsageCount")
                 <*> (x .@? "DefaultVersionId")
                 <*> (x .@? "AttachmentCount")
                 <*> (x .@? "Description")

@@ -16,7 +16,11 @@ module Network.AWS.MarketplaceMetering.Types
       marketplaceMetering
 
     -- * Errors
+    , _PlatformNotSupportedException
     , _InvalidProductCodeException
+    , _InvalidPublicKeyVersionException
+    , _DisabledAPIException
+    , _CustomerNotEntitledException
     , _ExpiredTokenException
     , _InvalidUsageDimensionException
     , _InvalidTokenException
@@ -26,6 +30,7 @@ module Network.AWS.MarketplaceMetering.Types
     , _TimestampOutOfBoundsException
     , _InvalidCustomerIdentifierException
     , _DuplicateRequestException
+    , _InvalidRegionException
 
     -- * UsageRecordResultStatus
     , UsageRecordResultStatus (..)
@@ -33,10 +38,10 @@ module Network.AWS.MarketplaceMetering.Types
     -- * UsageRecord
     , UsageRecord
     , usageRecord
+    , urQuantity
     , urTimestamp
     , urCustomerIdentifier
     , urDimension
-    , urQuantity
 
     -- * UsageRecordResult
     , UsageRecordResult
@@ -76,6 +81,11 @@ marketplaceMetering
             = Just "throttling_exception"
           | has (hasCode "Throttling" . hasStatus 400) e =
             Just "throttling"
+          | has
+              (hasCode "ProvisionedThroughputExceededException" .
+                 hasStatus 400)
+              e
+            = Just "throughput_exceeded"
           | has (hasStatus 504) e = Just "gateway_timeout"
           | has
               (hasCode "RequestThrottledException" . hasStatus 400)
@@ -87,6 +97,14 @@ marketplaceMetering
           | has (hasStatus 509) e = Just "limit_exceeded"
           | otherwise = Nothing
 
+-- | AWS Marketplace does not support metering usage from the underlying platform. Currently, only Amazon ECS is supported.
+--
+--
+_PlatformNotSupportedException :: AsError a => Getting (First ServiceError) a ServiceError
+_PlatformNotSupportedException
+  = _MatchServiceError marketplaceMetering
+      "PlatformNotSupportedException"
+
 -- | The product code passed does not match the product code used for publishing the product.
 --
 --
@@ -94,6 +112,30 @@ _InvalidProductCodeException :: AsError a => Getting (First ServiceError) a Serv
 _InvalidProductCodeException
   = _MatchServiceError marketplaceMetering
       "InvalidProductCodeException"
+
+-- | Public Key version is invalid.
+--
+--
+_InvalidPublicKeyVersionException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidPublicKeyVersionException
+  = _MatchServiceError marketplaceMetering
+      "InvalidPublicKeyVersionException"
+
+-- | The API is disabled in the Region.
+--
+--
+_DisabledAPIException :: AsError a => Getting (First ServiceError) a ServiceError
+_DisabledAPIException
+  = _MatchServiceError marketplaceMetering
+      "DisabledApiException"
+
+-- | Exception thrown when the customer does not have a valid subscription for the product.
+--
+--
+_CustomerNotEntitledException :: AsError a => Getting (First ServiceError) a ServiceError
+_CustomerNotEntitledException
+  = _MatchServiceError marketplaceMetering
+      "CustomerNotEntitledException"
 
 -- | The submitted registration token has expired. This can happen if the buyer's browser takes too long to redirect to your page, the buyer has resubmitted the registration token, or your application has held on to the registration token for too long. Your SaaS registration website should redeem this token as soon as it is submitted by the buyer's browser.
 --
@@ -111,13 +153,15 @@ _InvalidUsageDimensionException
   = _MatchServiceError marketplaceMetering
       "InvalidUsageDimensionException"
 
--- | Prism for InvalidTokenException' errors.
+-- | Registration token is invalid.
+--
+--
 _InvalidTokenException :: AsError a => Getting (First ServiceError) a ServiceError
 _InvalidTokenException
   = _MatchServiceError marketplaceMetering
       "InvalidTokenException"
 
--- | The endpoint being called is in a region different from your EC2 instance. The region of the Metering service endpoint and the region of the EC2 instance must match.
+-- | The endpoint being called is in a AWS Region different from your EC2 instance, ECS task, or EKS pod. The Region of the Metering Service endpoint and the AWS Region of the resource must match.
 --
 --
 _InvalidEndpointRegionException :: AsError a => Getting (First ServiceError) a ServiceError
@@ -133,7 +177,7 @@ _InternalServiceErrorException
   = _MatchServiceError marketplaceMetering
       "InternalServiceErrorException"
 
--- | The calls to the MeterUsage API are throttled.
+-- | The calls to the API are throttled.
 --
 --
 _ThrottlingException :: AsError a => Getting (First ServiceError) a ServiceError
@@ -157,10 +201,18 @@ _InvalidCustomerIdentifierException
   = _MatchServiceError marketplaceMetering
       "InvalidCustomerIdentifierException"
 
--- | A metering record has already been emitted by the same EC2 instance for the given {usageDimension, timestamp} with a different usageQuantity.
+-- | A metering record has already been emitted by the same EC2 instance, ECS task, or EKS pod for the given {usageDimension, timestamp} with a different usageQuantity.
 --
 --
 _DuplicateRequestException :: AsError a => Getting (First ServiceError) a ServiceError
 _DuplicateRequestException
   = _MatchServiceError marketplaceMetering
       "DuplicateRequestException"
+
+-- | RegisterUsage must be called in the same AWS Region the ECS task was launched in. This prevents a container from hardcoding a Region (e.g. withRegion(“us-east-1”) when calling RegisterUsage.
+--
+--
+_InvalidRegionException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidRegionException
+  = _MatchServiceError marketplaceMetering
+      "InvalidRegionException"

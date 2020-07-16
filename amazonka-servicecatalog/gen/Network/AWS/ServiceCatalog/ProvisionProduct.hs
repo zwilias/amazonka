@@ -36,6 +36,7 @@ module Network.AWS.ServiceCatalog.ProvisionProduct
     , ppPathId
     , ppProvisioningParameters
     , ppTags
+    , ppProvisioningPreferences
     , ppProductId
     , ppProvisioningArtifactId
     , ppProvisionedProductName
@@ -64,6 +65,8 @@ data ProvisionProduct = ProvisionProduct'{_ppNotificationARNs
                                           _ppProvisioningParameters ::
                                           !(Maybe [ProvisioningParameter]),
                                           _ppTags :: !(Maybe [Tag]),
+                                          _ppProvisioningPreferences ::
+                                          !(Maybe ProvisioningPreferences),
                                           _ppProductId :: !Text,
                                           _ppProvisioningArtifactId :: !Text,
                                           _ppProvisionedProductName :: !Text,
@@ -84,6 +87,8 @@ data ProvisionProduct = ProvisionProduct'{_ppNotificationARNs
 --
 -- * 'ppTags' - One or more tags.
 --
+-- * 'ppProvisioningPreferences' - An object that contains information about the provisioning preferences for a stack set.
+--
 -- * 'ppProductId' - The product identifier.
 --
 -- * 'ppProvisioningArtifactId' - The identifier of the provisioning artifact.
@@ -102,7 +107,9 @@ provisionProduct pProductId_ pProvisioningArtifactId_
   = ProvisionProduct'{_ppNotificationARNs = Nothing,
                       _ppAcceptLanguage = Nothing, _ppPathId = Nothing,
                       _ppProvisioningParameters = Nothing,
-                      _ppTags = Nothing, _ppProductId = pProductId_,
+                      _ppTags = Nothing,
+                      _ppProvisioningPreferences = Nothing,
+                      _ppProductId = pProductId_,
                       _ppProvisioningArtifactId = pProvisioningArtifactId_,
                       _ppProvisionedProductName = pProvisionedProductName_,
                       _ppProvisionToken = pProvisionToken_}
@@ -126,6 +133,10 @@ ppProvisioningParameters = lens _ppProvisioningParameters (\ s a -> s{_ppProvisi
 -- | One or more tags.
 ppTags :: Lens' ProvisionProduct [Tag]
 ppTags = lens _ppTags (\ s a -> s{_ppTags = a}) . _Default . _Coerce
+
+-- | An object that contains information about the provisioning preferences for a stack set.
+ppProvisioningPreferences :: Lens' ProvisionProduct (Maybe ProvisioningPreferences)
+ppProvisioningPreferences = lens _ppProvisioningPreferences (\ s a -> s{_ppProvisioningPreferences = a})
 
 -- | The product identifier.
 ppProductId :: Lens' ProvisionProduct Text
@@ -176,6 +187,8 @@ instance ToJSON ProvisionProduct where
                   ("ProvisioningParameters" .=) <$>
                     _ppProvisioningParameters,
                   ("Tags" .=) <$> _ppTags,
+                  ("ProvisioningPreferences" .=) <$>
+                    _ppProvisioningPreferences,
                   Just ("ProductId" .= _ppProductId),
                   Just
                     ("ProvisioningArtifactId" .=

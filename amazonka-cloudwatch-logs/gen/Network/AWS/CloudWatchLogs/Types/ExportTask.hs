@@ -53,9 +53,9 @@ data ExportTask = ExportTask'{_etDestinationPrefix ::
 --
 -- * 'etTaskId' - The ID of the export task.
 --
--- * 'etTo' - The end time, expressed as the number of milliseconds after Jan 1, 1970 00:00:00 UTC. Events with a time stamp later than this time are not exported.
+-- * 'etTo' - The end time, expressed as the number of milliseconds after Jan 1, 1970 00:00:00 UTC. Events with a timestamp later than this time are not exported.
 --
--- * 'etFrom' - The start time, expressed as the number of milliseconds after Jan 1, 1970 00:00:00 UTC. Events with a time stamp before this time are not exported.
+-- * 'etFrom' - The start time, expressed as the number of milliseconds after Jan 1, 1970 00:00:00 UTC. Events with a timestamp before this time are not exported.
 --
 -- * 'etLogGroupName' - The name of the log group from which logs data was exported.
 --
@@ -90,11 +90,11 @@ etTaskName = lens _etTaskName (\ s a -> s{_etTaskName = a})
 etTaskId :: Lens' ExportTask (Maybe Text)
 etTaskId = lens _etTaskId (\ s a -> s{_etTaskId = a})
 
--- | The end time, expressed as the number of milliseconds after Jan 1, 1970 00:00:00 UTC. Events with a time stamp later than this time are not exported.
+-- | The end time, expressed as the number of milliseconds after Jan 1, 1970 00:00:00 UTC. Events with a timestamp later than this time are not exported.
 etTo :: Lens' ExportTask (Maybe Natural)
 etTo = lens _etTo (\ s a -> s{_etTo = a}) . mapping _Nat
 
--- | The start time, expressed as the number of milliseconds after Jan 1, 1970 00:00:00 UTC. Events with a time stamp before this time are not exported.
+-- | The start time, expressed as the number of milliseconds after Jan 1, 1970 00:00:00 UTC. Events with a timestamp before this time are not exported.
 etFrom :: Lens' ExportTask (Maybe Natural)
 etFrom = lens _etFrom (\ s a -> s{_etFrom = a}) . mapping _Nat
 

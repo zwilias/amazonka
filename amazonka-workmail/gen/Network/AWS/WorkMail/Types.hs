@@ -22,16 +22,22 @@ module Network.AWS.WorkMail.Types
     , _UnsupportedOperationException
     , _DirectoryUnavailableException
     , _MailDomainStateException
+    , _TooManyTagsException
     , _NameAvailabilityException
+    , _ResourceNotFoundException
     , _OrganizationStateException
     , _EntityStateException
     , _MailDomainNotFoundException
     , _EntityNotFoundException
     , _OrganizationNotFoundException
     , _ReservedNameException
+    , _LimitExceededException
     , _EmailAddressInUseException
     , _InvalidPasswordException
     , _InvalidConfigurationException
+
+    -- * AccessControlRuleEffect
+    , AccessControlRuleEffect (..)
 
     -- * EntityState
     , EntityState (..)
@@ -47,6 +53,21 @@ module Network.AWS.WorkMail.Types
 
     -- * UserRole
     , UserRole (..)
+
+    -- * AccessControlRule
+    , AccessControlRule
+    , accessControlRule
+    , acrEffect
+    , acrUserIds
+    , acrActions
+    , acrDateCreated
+    , acrName
+    , acrNotUserIds
+    , acrDateModified
+    , acrIPRanges
+    , acrNotIPRanges
+    , acrNotActions
+    , acrDescription
 
     -- * BookingOptions
     , BookingOptions
@@ -107,6 +128,12 @@ module Network.AWS.WorkMail.Types
     , rType
     , rEnabledDate
 
+    -- * Tag
+    , Tag
+    , tag
+    , tagKey
+    , tagValue
+
     -- * User
     , User
     , user
@@ -123,11 +150,13 @@ module Network.AWS.WorkMail.Types
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Sign.V4
+import Network.AWS.WorkMail.Types.AccessControlRuleEffect
 import Network.AWS.WorkMail.Types.EntityState
 import Network.AWS.WorkMail.Types.MemberType
 import Network.AWS.WorkMail.Types.PermissionType
 import Network.AWS.WorkMail.Types.ResourceType
 import Network.AWS.WorkMail.Types.UserRole
+import Network.AWS.WorkMail.Types.AccessControlRule
 import Network.AWS.WorkMail.Types.BookingOptions
 import Network.AWS.WorkMail.Types.Delegate
 import Network.AWS.WorkMail.Types.Group
@@ -135,6 +164,7 @@ import Network.AWS.WorkMail.Types.Member
 import Network.AWS.WorkMail.Types.OrganizationSummary
 import Network.AWS.WorkMail.Types.Permission
 import Network.AWS.WorkMail.Types.Resource
+import Network.AWS.WorkMail.Types.Tag
 import Network.AWS.WorkMail.Types.User
 
 -- | API version @2017-10-01@ of the Amazon WorkMail SDK configuration.
@@ -159,6 +189,11 @@ workMail
             = Just "throttling_exception"
           | has (hasCode "Throttling" . hasStatus 400) e =
             Just "throttling"
+          | has
+              (hasCode "ProvisionedThroughputExceededException" .
+                 hasStatus 400)
+              e
+            = Just "throughput_exceeded"
           | has (hasStatus 504) e = Just "gateway_timeout"
           | has
               (hasCode "RequestThrottledException" . hasStatus 400)
@@ -170,7 +205,7 @@ workMail
           | has (hasStatus 509) e = Just "limit_exceeded"
           | otherwise = Nothing
 
--- | The Directory Service doesn't recognize the credentials supplied by the Amazon WorkMail service.
+-- | The directory service doesn't recognize the credentials supplied by WorkMail.
 --
 --
 _DirectoryServiceAuthenticationFailedException :: AsError a => Getting (First ServiceError) a ServiceError
@@ -202,7 +237,7 @@ _UnsupportedOperationException
   = _MatchServiceError workMail
       "UnsupportedOperationException"
 
--- | The directory that you are trying to perform operations on isn't available.
+-- | The directory on which you are trying to perform operations isn't available.
 --
 --
 _DirectoryUnavailableException :: AsError a => Getting (First ServiceError) a ServiceError
@@ -218,7 +253,14 @@ _MailDomainStateException
   = _MatchServiceError workMail
       "MailDomainStateException"
 
--- | The entity (user, group, or user) name isn't unique in Amazon WorkMail.
+-- | The resource can have up to 50 user-applied tags.
+--
+--
+_TooManyTagsException :: AsError a => Getting (First ServiceError) a ServiceError
+_TooManyTagsException
+  = _MatchServiceError workMail "TooManyTagsException"
+
+-- | The user, group, or resource name isn't unique in Amazon WorkMail.
 --
 --
 _NameAvailabilityException :: AsError a => Getting (First ServiceError) a ServiceError
@@ -226,7 +268,15 @@ _NameAvailabilityException
   = _MatchServiceError workMail
       "NameAvailabilityException"
 
--- | The organization must have a valid state (Active or Synchronizing) to perform certain operations on the organization or its entities.
+-- | The resource cannot be found.
+--
+--
+_ResourceNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
+_ResourceNotFoundException
+  = _MatchServiceError workMail
+      "ResourceNotFoundException"
+
+-- | The organization must have a valid state (Active or Synchronizing) to perform certain operations on the organization or its members.
 --
 --
 _OrganizationStateException :: AsError a => Getting (First ServiceError) a ServiceError
@@ -234,7 +284,7 @@ _OrganizationStateException
   = _MatchServiceError workMail
       "OrganizationStateException"
 
--- | You are performing an operation on an entity that isn't in the expected state, such as trying to update a deleted user.
+-- | You are performing an operation on a user, group, or resource that isn't in the expected state, such as trying to delete an active user.
 --
 --
 _EntityStateException :: AsError a => Getting (First ServiceError) a ServiceError
@@ -249,7 +299,7 @@ _MailDomainNotFoundException
   = _MatchServiceError workMail
       "MailDomainNotFoundException"
 
--- | The identifier supplied for the entity is valid, but it does not exist in your organization.
+-- | The identifier supplied for the user, group, or resource does not exist in your organization.
 --
 --
 _EntityNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
@@ -265,12 +315,20 @@ _OrganizationNotFoundException
   = _MatchServiceError workMail
       "OrganizationNotFoundException"
 
--- | This entity name is not allowed in Amazon WorkMail.
+-- | This user, group, or resource name is not allowed in Amazon WorkMail.
 --
 --
 _ReservedNameException :: AsError a => Getting (First ServiceError) a ServiceError
 _ReservedNameException
   = _MatchServiceError workMail "ReservedNameException"
+
+-- | The request exceeds the limit of the resource.
+--
+--
+_LimitExceededException :: AsError a => Getting (First ServiceError) a ServiceError
+_LimitExceededException
+  = _MatchServiceError workMail
+      "LimitExceededException"
 
 -- | The email address that you're trying to assign is already created for a different user, group, or resource.
 --
@@ -288,7 +346,7 @@ _InvalidPasswordException
   = _MatchServiceError workMail
       "InvalidPasswordException"
 
--- | The configuration for a resource isn't valid. A resource must either be able to auto-respond to requests or have at least one delegate associated that can do it on its behalf.
+-- | The configuration for a resource isn't valid. A resource must either be able to auto-respond to requests or have at least one delegate associated that can do so on its behalf.
 --
 --
 _InvalidConfigurationException :: AsError a => Getting (First ServiceError) a ServiceError

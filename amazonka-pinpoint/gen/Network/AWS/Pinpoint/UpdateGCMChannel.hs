@@ -18,7 +18,9 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Use to update the GCM channel for an app.
+-- Enables the GCM channel for an application or updates the status and settings of the GCM channel for an application.
+--
+--
 module Network.AWS.Pinpoint.UpdateGCMChannel
     (
     -- * Creating a Request
@@ -54,7 +56,7 @@ data UpdateGCMChannel = UpdateGCMChannel'{_ugcApplicationId
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'ugcApplicationId' - Undocumented member.
+-- * 'ugcApplicationId' - The unique identifier for the application. This identifier is displayed as the __Project ID__ on the Amazon Pinpoint console.
 --
 -- * 'ugcGCMChannelRequest' - Undocumented member.
 updateGCMChannel
@@ -66,7 +68,7 @@ updateGCMChannel pApplicationId_ pGCMChannelRequest_
                         pApplicationId_,
                       _ugcGCMChannelRequest = pGCMChannelRequest_}
 
--- | Undocumented member.
+-- | The unique identifier for the application. This identifier is displayed as the __Project ID__ on the Amazon Pinpoint console.
 ugcApplicationId :: Lens' UpdateGCMChannel Text
 ugcApplicationId = lens _ugcApplicationId (\ s a -> s{_ugcApplicationId = a})
 

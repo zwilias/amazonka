@@ -28,7 +28,7 @@ module Network.AWS.MediaLive.Types.HlsAdMarkers (
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | Placeholder documentation for HlsAdMarkers
+-- | Hls Ad Markers
 data HlsAdMarkers = HlsAdMarkers' (CI Text)
                       deriving (Eq, Ord, Read, Show, Data, Typeable,
                                 Generic)

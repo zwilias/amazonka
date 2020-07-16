@@ -27,7 +27,7 @@ module Network.AWS.MediaLive.Types.M2tsAudioBufferModel (
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | Placeholder documentation for M2tsAudioBufferModel
+-- | M2ts Audio Buffer Model
 data M2tsAudioBufferModel = M2tsAudioBufferModel' (CI
                                                      Text)
                               deriving (Eq, Ord, Read, Show, Data, Typeable,

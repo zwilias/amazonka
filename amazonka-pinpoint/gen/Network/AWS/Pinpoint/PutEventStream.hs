@@ -18,7 +18,9 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Use to create or update the event stream for an app.
+-- Creates a new event stream for an application or updates the settings of an existing event stream for an application.
+--
+--
 module Network.AWS.Pinpoint.PutEventStream
     (
     -- * Creating a Request
@@ -53,9 +55,9 @@ data PutEventStream = PutEventStream'{_pesApplicationId
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'pesApplicationId' - ApplicationId
+-- * 'pesApplicationId' - The unique identifier for the application. This identifier is displayed as the __Project ID__ on the Amazon Pinpoint console.
 --
--- * 'pesWriteEventStream' - EventStream to write.
+-- * 'pesWriteEventStream' - Undocumented member.
 putEventStream
     :: Text -- ^ 'pesApplicationId'
     -> WriteEventStream -- ^ 'pesWriteEventStream'
@@ -65,11 +67,11 @@ putEventStream pApplicationId_ pWriteEventStream_
                       pApplicationId_,
                     _pesWriteEventStream = pWriteEventStream_}
 
--- | ApplicationId
+-- | The unique identifier for the application. This identifier is displayed as the __Project ID__ on the Amazon Pinpoint console.
 pesApplicationId :: Lens' PutEventStream Text
 pesApplicationId = lens _pesApplicationId (\ s a -> s{_pesApplicationId = a})
 
--- | EventStream to write.
+-- | Undocumented member.
 pesWriteEventStream :: Lens' PutEventStream WriteEventStream
 pesWriteEventStream = lens _pesWriteEventStream (\ s a -> s{_pesWriteEventStream = a})
 

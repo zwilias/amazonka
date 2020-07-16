@@ -18,7 +18,9 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Returns the event stream for an app.
+-- Retrieves information about the event stream settings for an application.
+--
+--
 module Network.AWS.Pinpoint.GetEventStream
     (
     -- * Creating a Request
@@ -42,9 +44,7 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
--- | GetEventStreamRequest
---
--- /See:/ 'getEventStream' smart constructor.
+-- | /See:/ 'getEventStream' smart constructor.
 newtype GetEventStream = GetEventStream'{_gesApplicationId
                                          :: Text}
                            deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -53,7 +53,7 @@ newtype GetEventStream = GetEventStream'{_gesApplicationId
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'gesApplicationId' - ApplicationId
+-- * 'gesApplicationId' - The unique identifier for the application. This identifier is displayed as the __Project ID__ on the Amazon Pinpoint console.
 getEventStream
     :: Text -- ^ 'gesApplicationId'
     -> GetEventStream
@@ -61,7 +61,7 @@ getEventStream pApplicationId_
   = GetEventStream'{_gesApplicationId =
                       pApplicationId_}
 
--- | ApplicationId
+-- | The unique identifier for the application. This identifier is displayed as the __Project ID__ on the Amazon Pinpoint console.
 gesApplicationId :: Lens' GetEventStream Text
 gesApplicationId = lens _gesApplicationId (\ s a -> s{_gesApplicationId = a})
 

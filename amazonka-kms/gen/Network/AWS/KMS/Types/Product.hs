@@ -18,6 +18,7 @@
 --
 module Network.AWS.KMS.Types.Product (
     module Network.AWS.KMS.Types.AliasListEntry,
+    module Network.AWS.KMS.Types.CustomKeyStoresListEntry,
     module Network.AWS.KMS.Types.GrantConstraints,
     module Network.AWS.KMS.Types.GrantListEntry,
     module Network.AWS.KMS.Types.KeyListEntry,
@@ -27,6 +28,7 @@ module Network.AWS.KMS.Types.Product (
   ) where
 
 import Network.AWS.KMS.Types.AliasListEntry
+import Network.AWS.KMS.Types.CustomKeyStoresListEntry
 import Network.AWS.KMS.Types.GrantConstraints
 import Network.AWS.KMS.Types.GrantListEntry
 import Network.AWS.KMS.Types.KeyListEntry

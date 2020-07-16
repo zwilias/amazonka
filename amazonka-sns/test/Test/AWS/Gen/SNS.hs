@@ -34,6 +34,9 @@ import Test.AWS.SNS.Internal
 --         , requestDeleteEndpoint $
 --             deleteEndpoint
 --
+--         , requestListTagsForResource $
+--             listTagsForResource
+--
 --         , requestRemovePermission $
 --             removePermission
 --
@@ -100,8 +103,14 @@ import Test.AWS.SNS.Internal
 --         , requestCheckIfPhoneNumberIsOptedOut $
 --             checkIfPhoneNumberIsOptedOut
 --
+--         , requestTagResource $
+--             tagResource
+--
 --         , requestSubscribe $
 --             subscribe
+--
+--         , requestUntagResource $
+--             untagResource
 --
 --         , requestUnsubscribe $
 --             unsubscribe
@@ -126,6 +135,9 @@ import Test.AWS.SNS.Internal
 --
 --         , responseDeleteEndpoint $
 --             deleteEndpointResponse
+--
+--         , responseListTagsForResource $
+--             listTagsForResourceResponse
 --
 --         , responseRemovePermission $
 --             removePermissionResponse
@@ -193,8 +205,14 @@ import Test.AWS.SNS.Internal
 --         , responseCheckIfPhoneNumberIsOptedOut $
 --             checkIfPhoneNumberIsOptedOutResponse
 --
+--         , responseTagResource $
+--             tagResourceResponse
+--
 --         , responseSubscribe $
 --             subscribeResponse
+--
+--         , responseUntagResource $
+--             untagResourceResponse
 --
 --         , responseUnsubscribe $
 --             unsubscribeResponse
@@ -225,6 +243,11 @@ requestDeleteEndpoint :: DeleteEndpoint -> TestTree
 requestDeleteEndpoint = req
     "DeleteEndpoint"
     "fixture/DeleteEndpoint.yaml"
+
+requestListTagsForResource :: ListTagsForResource -> TestTree
+requestListTagsForResource = req
+    "ListTagsForResource"
+    "fixture/ListTagsForResource.yaml"
 
 requestRemovePermission :: RemovePermission -> TestTree
 requestRemovePermission = req
@@ -336,10 +359,20 @@ requestCheckIfPhoneNumberIsOptedOut = req
     "CheckIfPhoneNumberIsOptedOut"
     "fixture/CheckIfPhoneNumberIsOptedOut.yaml"
 
+requestTagResource :: TagResource -> TestTree
+requestTagResource = req
+    "TagResource"
+    "fixture/TagResource.yaml"
+
 requestSubscribe :: Subscribe -> TestTree
 requestSubscribe = req
     "Subscribe"
     "fixture/Subscribe.yaml"
+
+requestUntagResource :: UntagResource -> TestTree
+requestUntagResource = req
+    "UntagResource"
+    "fixture/UntagResource.yaml"
 
 requestUnsubscribe :: Unsubscribe -> TestTree
 requestUnsubscribe = req
@@ -381,6 +414,13 @@ responseDeleteEndpoint = res
     "fixture/DeleteEndpointResponse.proto"
     sns
     (Proxy :: Proxy DeleteEndpoint)
+
+responseListTagsForResource :: ListTagsForResourceResponse -> TestTree
+responseListTagsForResource = res
+    "ListTagsForResourceResponse"
+    "fixture/ListTagsForResourceResponse.proto"
+    sns
+    (Proxy :: Proxy ListTagsForResource)
 
 responseRemovePermission :: RemovePermissionResponse -> TestTree
 responseRemovePermission = res
@@ -536,12 +576,26 @@ responseCheckIfPhoneNumberIsOptedOut = res
     sns
     (Proxy :: Proxy CheckIfPhoneNumberIsOptedOut)
 
+responseTagResource :: TagResourceResponse -> TestTree
+responseTagResource = res
+    "TagResourceResponse"
+    "fixture/TagResourceResponse.proto"
+    sns
+    (Proxy :: Proxy TagResource)
+
 responseSubscribe :: SubscribeResponse -> TestTree
 responseSubscribe = res
     "SubscribeResponse"
     "fixture/SubscribeResponse.proto"
     sns
     (Proxy :: Proxy Subscribe)
+
+responseUntagResource :: UntagResourceResponse -> TestTree
+responseUntagResource = res
+    "UntagResourceResponse"
+    "fixture/UntagResourceResponse.proto"
+    sns
+    (Proxy :: Proxy UntagResource)
 
 responseUnsubscribe :: UnsubscribeResponse -> TestTree
 responseUnsubscribe = res

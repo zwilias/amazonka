@@ -27,7 +27,7 @@ module Network.AWS.MediaConvert.Types.Mpeg2FramerateConversionAlgorithm (
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | When set to INTERPOLATE, produces smoother motion during framerate conversion.
+-- | When set to INTERPOLATE, produces smoother motion during frame rate conversion.
 data Mpeg2FramerateConversionAlgorithm = Mpeg2FramerateConversionAlgorithm' (CI
                                                                                Text)
                                            deriving (Eq, Ord, Read, Show, Data,

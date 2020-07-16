@@ -20,7 +20,7 @@ module Network.AWS.WorkSpaces.Types.StopRequest where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | Information used to stop a WorkSpace.
+-- | Describes the information used to stop a WorkSpace.
 --
 --
 --
@@ -33,12 +33,12 @@ newtype StopRequest = StopRequest'{_srWorkspaceId ::
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'srWorkspaceId' - The ID of the WorkSpace.
+-- * 'srWorkspaceId' - The identifier of the WorkSpace.
 stopRequest
     :: StopRequest
 stopRequest = StopRequest'{_srWorkspaceId = Nothing}
 
--- | The ID of the WorkSpace.
+-- | The identifier of the WorkSpace.
 srWorkspaceId :: Lens' StopRequest (Maybe Text)
 srWorkspaceId = lens _srWorkspaceId (\ s a -> s{_srWorkspaceId = a})
 

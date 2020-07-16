@@ -21,8 +21,13 @@ module Network.AWS.Lambda.Types.Runtime (
     ..
     , DOTNETCORE1_0
     , DOTNETCORE2_0
+    , DOTNETCORE2_1
+    , DOTNETCORE3_1
     , GO1_x
+    , JAVA11
     , JAVA8
+    , NODEJS10_x
+    , NODEJS12_x
     , NODEJS4_3
     , NODEJS4_3Edge
     , NODEJS6_10
@@ -30,6 +35,11 @@ module Network.AWS.Lambda.Types.Runtime (
     , Nodejs
     , PYTHON2_7
     , PYTHON3_6
+    , PYTHON3_7
+    , PYTHON3_8
+    , Provided
+    , RUBY2_5
+    , RUBY2_7
     )
   ) where
 
@@ -46,11 +56,26 @@ pattern DOTNETCORE1_0 = Runtime' "dotnetcore1.0"
 pattern DOTNETCORE2_0 :: Runtime
 pattern DOTNETCORE2_0 = Runtime' "dotnetcore2.0"
 
+pattern DOTNETCORE2_1 :: Runtime
+pattern DOTNETCORE2_1 = Runtime' "dotnetcore2.1"
+
+pattern DOTNETCORE3_1 :: Runtime
+pattern DOTNETCORE3_1 = Runtime' "dotnetcore3.1"
+
 pattern GO1_x :: Runtime
 pattern GO1_x = Runtime' "go1.x"
 
+pattern JAVA11 :: Runtime
+pattern JAVA11 = Runtime' "java11"
+
 pattern JAVA8 :: Runtime
 pattern JAVA8 = Runtime' "java8"
+
+pattern NODEJS10_x :: Runtime
+pattern NODEJS10_x = Runtime' "nodejs10.x"
+
+pattern NODEJS12_x :: Runtime
+pattern NODEJS12_x = Runtime' "nodejs12.x"
 
 pattern NODEJS4_3 :: Runtime
 pattern NODEJS4_3 = Runtime' "nodejs4.3"
@@ -73,11 +98,31 @@ pattern PYTHON2_7 = Runtime' "python2.7"
 pattern PYTHON3_6 :: Runtime
 pattern PYTHON3_6 = Runtime' "python3.6"
 
+pattern PYTHON3_7 :: Runtime
+pattern PYTHON3_7 = Runtime' "python3.7"
+
+pattern PYTHON3_8 :: Runtime
+pattern PYTHON3_8 = Runtime' "python3.8"
+
+pattern Provided :: Runtime
+pattern Provided = Runtime' "provided"
+
+pattern RUBY2_5 :: Runtime
+pattern RUBY2_5 = Runtime' "ruby2.5"
+
+pattern RUBY2_7 :: Runtime
+pattern RUBY2_7 = Runtime' "ruby2.7"
+
 {-# COMPLETE
   DOTNETCORE1_0,
   DOTNETCORE2_0,
+  DOTNETCORE2_1,
+  DOTNETCORE3_1,
   GO1_x,
+  JAVA11,
   JAVA8,
+  NODEJS10_x,
+  NODEJS12_x,
   NODEJS4_3,
   NODEJS4_3Edge,
   NODEJS6_10,
@@ -85,6 +130,11 @@ pattern PYTHON3_6 = Runtime' "python3.6"
   Nodejs,
   PYTHON2_7,
   PYTHON3_6,
+  PYTHON3_7,
+  PYTHON3_8,
+  Provided,
+  RUBY2_5,
+  RUBY2_7,
   Runtime' #-}
 
 instance FromText Runtime where
@@ -101,28 +151,48 @@ instance Enum Runtime where
     toEnum i = case i of
         0 -> DOTNETCORE1_0
         1 -> DOTNETCORE2_0
-        2 -> GO1_x
-        3 -> JAVA8
-        4 -> NODEJS4_3
-        5 -> NODEJS4_3Edge
-        6 -> NODEJS6_10
-        7 -> NODEJS8_10
-        8 -> Nodejs
-        9 -> PYTHON2_7
-        10 -> PYTHON3_6
+        2 -> DOTNETCORE2_1
+        3 -> DOTNETCORE3_1
+        4 -> GO1_x
+        5 -> JAVA11
+        6 -> JAVA8
+        7 -> NODEJS10_x
+        8 -> NODEJS12_x
+        9 -> NODEJS4_3
+        10 -> NODEJS4_3Edge
+        11 -> NODEJS6_10
+        12 -> NODEJS8_10
+        13 -> Nodejs
+        14 -> PYTHON2_7
+        15 -> PYTHON3_6
+        16 -> PYTHON3_7
+        17 -> PYTHON3_8
+        18 -> Provided
+        19 -> RUBY2_5
+        20 -> RUBY2_7
         _ -> (error . showText) $ "Unknown index for Runtime: " <> toText i
     fromEnum x = case x of
         DOTNETCORE1_0 -> 0
         DOTNETCORE2_0 -> 1
-        GO1_x -> 2
-        JAVA8 -> 3
-        NODEJS4_3 -> 4
-        NODEJS4_3Edge -> 5
-        NODEJS6_10 -> 6
-        NODEJS8_10 -> 7
-        Nodejs -> 8
-        PYTHON2_7 -> 9
-        PYTHON3_6 -> 10
+        DOTNETCORE2_1 -> 2
+        DOTNETCORE3_1 -> 3
+        GO1_x -> 4
+        JAVA11 -> 5
+        JAVA8 -> 6
+        NODEJS10_x -> 7
+        NODEJS12_x -> 8
+        NODEJS4_3 -> 9
+        NODEJS4_3Edge -> 10
+        NODEJS6_10 -> 11
+        NODEJS8_10 -> 12
+        Nodejs -> 13
+        PYTHON2_7 -> 14
+        PYTHON3_6 -> 15
+        PYTHON3_7 -> 16
+        PYTHON3_8 -> 17
+        Provided -> 18
+        RUBY2_5 -> 19
+        RUBY2_7 -> 20
         Runtime' name -> (error . showText) $ "Unknown Runtime: " <> original name
 
 -- | Represents the bounds of /known/ $Runtime.
@@ -130,7 +200,7 @@ instance Enum Runtime where
 --   This instance exists only for backward compatibility.
 instance Bounded Runtime where
     minBound = DOTNETCORE1_0
-    maxBound = PYTHON3_6
+    maxBound = RUBY2_7
 
 instance Hashable     Runtime
 instance NFData       Runtime

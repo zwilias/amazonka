@@ -21,6 +21,8 @@
 -- Updates the specified attribute for a load balancer. You can only update one attribute at a time.
 --
 --
+-- The @update load balancer attribute@ operation supports tag-based access control via resource tags applied to the resource identified by @load balancer name@ . For more information, see the <https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags Lightsail Dev Guide> .
+--
 module Network.AWS.Lightsail.UpdateLoadBalancerAttribute
     (
     -- * Creating a Request
@@ -144,7 +146,7 @@ data UpdateLoadBalancerAttributeResponse = UpdateLoadBalancerAttributeResponse'{
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'ulbarsOperations' - An object describing the API operations.
+-- * 'ulbarsOperations' - An array of objects that describe the result of the action, such as the status of the request, the time stamp of the request, and the resources affected by the request.
 --
 -- * 'ulbarsResponseStatus' - -- | The response status code.
 updateLoadBalancerAttributeResponse
@@ -156,7 +158,7 @@ updateLoadBalancerAttributeResponse pResponseStatus_
                                          _ulbarsResponseStatus =
                                            pResponseStatus_}
 
--- | An object describing the API operations.
+-- | An array of objects that describe the result of the action, such as the status of the request, the time stamp of the request, and the resources affected by the request.
 ulbarsOperations :: Lens' UpdateLoadBalancerAttributeResponse [Operation]
 ulbarsOperations = lens _ulbarsOperations (\ s a -> s{_ulbarsOperations = a}) . _Default . _Coerce
 

@@ -55,7 +55,7 @@ data PutEncryptionConfig = PutEncryptionConfig'{_pecKeyId
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'pecKeyId' - An AWS KMS customer master key (CMK) in one of the following formats:     * __Alias__ - The name of the key. For example, @alias/MyKey@ .     * __Key ID__ - The KMS key ID of the key. For example, @ae4aa6d49-a4d8-9df9-a475-4ff6d7898456@ .     * __ARN__ - The full Amazon Resource Name of the key ID or alias. For example, @arn:aws:kms:us-east-2:123456789012:key/ae4aa6d49-a4d8-9df9-a475-4ff6d7898456@ . Use this format to specify a key in a different account. Omit this key if you set @Type@ to @NONE@ .
+-- * 'pecKeyId' - An AWS KMS customer master key (CMK) in one of the following formats:     * __Alias__ - The name of the key. For example, @alias/MyKey@ .     * __Key ID__ - The KMS key ID of the key. For example, @ae4aa6d49-a4d8-9df9-a475-4ff6d7898456@ . AWS X-Ray does not support asymmetric CMKs.     * __ARN__ - The full Amazon Resource Name of the key ID or alias. For example, @arn:aws:kms:us-east-2:123456789012:key/ae4aa6d49-a4d8-9df9-a475-4ff6d7898456@ . Use this format to specify a key in a different account. Omit this key if you set @Type@ to @NONE@ .
 --
 -- * 'pecType' - The type of encryption. Set to @KMS@ to use your own key for encryption. Set to @NONE@ for default encryption.
 putEncryptionConfig
@@ -65,7 +65,7 @@ putEncryptionConfig pType_
   = PutEncryptionConfig'{_pecKeyId = Nothing,
                          _pecType = pType_}
 
--- | An AWS KMS customer master key (CMK) in one of the following formats:     * __Alias__ - The name of the key. For example, @alias/MyKey@ .     * __Key ID__ - The KMS key ID of the key. For example, @ae4aa6d49-a4d8-9df9-a475-4ff6d7898456@ .     * __ARN__ - The full Amazon Resource Name of the key ID or alias. For example, @arn:aws:kms:us-east-2:123456789012:key/ae4aa6d49-a4d8-9df9-a475-4ff6d7898456@ . Use this format to specify a key in a different account. Omit this key if you set @Type@ to @NONE@ .
+-- | An AWS KMS customer master key (CMK) in one of the following formats:     * __Alias__ - The name of the key. For example, @alias/MyKey@ .     * __Key ID__ - The KMS key ID of the key. For example, @ae4aa6d49-a4d8-9df9-a475-4ff6d7898456@ . AWS X-Ray does not support asymmetric CMKs.     * __ARN__ - The full Amazon Resource Name of the key ID or alias. For example, @arn:aws:kms:us-east-2:123456789012:key/ae4aa6d49-a4d8-9df9-a475-4ff6d7898456@ . Use this format to specify a key in a different account. Omit this key if you set @Type@ to @NONE@ .
 pecKeyId :: Lens' PutEncryptionConfig (Maybe Text)
 pecKeyId = lens _pecKeyId (\ s a -> s{_pecKeyId = a})
 

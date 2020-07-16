@@ -22,7 +22,7 @@ import Network.AWS.Glue.Types.UpdateBehavior
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | Crawler policy for update and deletion behavior.
+-- | A policy that specifies update and deletion behaviors for the crawler.
 --
 --
 --

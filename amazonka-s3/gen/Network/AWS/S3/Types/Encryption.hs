@@ -22,7 +22,9 @@ import Network.AWS.Prelude
 import Network.AWS.S3.Internal
 import Network.AWS.S3.Types.ServerSideEncryption
 
--- | Describes the server-side encryption that will be applied to the restore results.
+-- | Contains the type of server-side encryption used.
+--
+--
 --
 -- /See:/ 'encryption' smart constructor.
 data Encryption = Encryption'{_eKMSKeyId ::
@@ -35,11 +37,11 @@ data Encryption = Encryption'{_eKMSKeyId ::
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'eKMSKeyId' - If the encryption type is aws:kms, this optional value specifies the AWS KMS key ID to use for encryption of job results.
+-- * 'eKMSKeyId' - If the encryption type is @aws:kms@ , this optional value specifies the ID of the symmetric customer managed AWS KMS CMK to use for encryption of job results. Amazon S3 only supports symmetric CMKs. For more information, see <https://docs.aws.amazon.com/kms/latest/developerguide/symmetric-asymmetric.html Using Symmetric and Asymmetric Keys> in the /AWS Key Management Service Developer Guide/ .
 --
--- * 'eKMSContext' - If the encryption type is aws:kms, this optional value can be used to specify the encryption context for the restore results.
+-- * 'eKMSContext' - If the encryption type is @aws:kms@ , this optional value can be used to specify the encryption context for the restore results.
 --
--- * 'eEncryptionType' - The server-side encryption algorithm used when storing job results in Amazon S3 (e.g., AES256, aws:kms).
+-- * 'eEncryptionType' - The server-side encryption algorithm used when storing job results in Amazon S3 (for example, AES256, aws:kms).
 encryption
     :: ServerSideEncryption -- ^ 'eEncryptionType'
     -> Encryption
@@ -48,15 +50,15 @@ encryption pEncryptionType_
                 _eKMSContext = Nothing,
                 _eEncryptionType = pEncryptionType_}
 
--- | If the encryption type is aws:kms, this optional value specifies the AWS KMS key ID to use for encryption of job results.
+-- | If the encryption type is @aws:kms@ , this optional value specifies the ID of the symmetric customer managed AWS KMS CMK to use for encryption of job results. Amazon S3 only supports symmetric CMKs. For more information, see <https://docs.aws.amazon.com/kms/latest/developerguide/symmetric-asymmetric.html Using Symmetric and Asymmetric Keys> in the /AWS Key Management Service Developer Guide/ .
 eKMSKeyId :: Lens' Encryption (Maybe Text)
 eKMSKeyId = lens _eKMSKeyId (\ s a -> s{_eKMSKeyId = a}) . mapping _Sensitive
 
--- | If the encryption type is aws:kms, this optional value can be used to specify the encryption context for the restore results.
+-- | If the encryption type is @aws:kms@ , this optional value can be used to specify the encryption context for the restore results.
 eKMSContext :: Lens' Encryption (Maybe Text)
 eKMSContext = lens _eKMSContext (\ s a -> s{_eKMSContext = a})
 
--- | The server-side encryption algorithm used when storing job results in Amazon S3 (e.g., AES256, aws:kms).
+-- | The server-side encryption algorithm used when storing job results in Amazon S3 (for example, AES256, aws:kms).
 eEncryptionType :: Lens' Encryption ServerSideEncryption
 eEncryptionType = lens _eEncryptionType (\ s a -> s{_eEncryptionType = a})
 

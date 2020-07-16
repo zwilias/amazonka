@@ -18,15 +18,19 @@
 module Network.AWS.MediaLive.Types.AudioOnlyHlsSettings where
 
 import Network.AWS.Lens
+import Network.AWS.MediaLive.Types.AudioOnlyHlsSegmentType
 import Network.AWS.MediaLive.Types.AudioOnlyHlsTrackType
 import Network.AWS.MediaLive.Types.InputLocation
 import Network.AWS.Prelude
 
--- | Placeholder documentation for AudioOnlyHlsSettings
+-- | Audio Only Hls Settings
 --
 -- /See:/ 'audioOnlyHlsSettings' smart constructor.
 data AudioOnlyHlsSettings = AudioOnlyHlsSettings'{_aohsAudioOnlyImage
                                                   :: !(Maybe InputLocation),
+                                                  _aohsSegmentType ::
+                                                  !(Maybe
+                                                      AudioOnlyHlsSegmentType),
                                                   _aohsAudioGroupId ::
                                                   !(Maybe Text),
                                                   _aohsAudioTrackType ::
@@ -38,7 +42,9 @@ data AudioOnlyHlsSettings = AudioOnlyHlsSettings'{_aohsAudioOnlyImage
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'aohsAudioOnlyImage' - For use with an audio only Stream. Must be a .jpg or .png file. If given, this image will be used as the cover-art for the audio only output. Ideally, it should be formatted for an iPhone screen for two reasons. The iPhone does not resize the image, it crops a centered image on the top/bottom and left/right. Additionally, this image file gets saved bit-for-bit into every 10-second segment file, so will increase bandwidth by {image file size} * {segment count} * {user count.}.
+-- * 'aohsAudioOnlyImage' - Optional. Specifies the .jpg or .png image to use as the cover art for an audio-only output. We recommend a low bit-size file because the image increases the output audio bandwidth. The image is attached to the audio as an ID3 tag, frame type APIC, picture type 0x10, as per the "ID3 tag version 2.4.0 - Native Frames" standard.
+--
+-- * 'aohsSegmentType' - Specifies the segment type.
 --
 -- * 'aohsAudioGroupId' - Specifies the group to which the audio Rendition belongs.
 --
@@ -48,12 +54,17 @@ audioOnlyHlsSettings
 audioOnlyHlsSettings
   = AudioOnlyHlsSettings'{_aohsAudioOnlyImage =
                             Nothing,
+                          _aohsSegmentType = Nothing,
                           _aohsAudioGroupId = Nothing,
                           _aohsAudioTrackType = Nothing}
 
--- | For use with an audio only Stream. Must be a .jpg or .png file. If given, this image will be used as the cover-art for the audio only output. Ideally, it should be formatted for an iPhone screen for two reasons. The iPhone does not resize the image, it crops a centered image on the top/bottom and left/right. Additionally, this image file gets saved bit-for-bit into every 10-second segment file, so will increase bandwidth by {image file size} * {segment count} * {user count.}.
+-- | Optional. Specifies the .jpg or .png image to use as the cover art for an audio-only output. We recommend a low bit-size file because the image increases the output audio bandwidth. The image is attached to the audio as an ID3 tag, frame type APIC, picture type 0x10, as per the "ID3 tag version 2.4.0 - Native Frames" standard.
 aohsAudioOnlyImage :: Lens' AudioOnlyHlsSettings (Maybe InputLocation)
 aohsAudioOnlyImage = lens _aohsAudioOnlyImage (\ s a -> s{_aohsAudioOnlyImage = a})
+
+-- | Specifies the segment type.
+aohsSegmentType :: Lens' AudioOnlyHlsSettings (Maybe AudioOnlyHlsSegmentType)
+aohsSegmentType = lens _aohsSegmentType (\ s a -> s{_aohsSegmentType = a})
 
 -- | Specifies the group to which the audio Rendition belongs.
 aohsAudioGroupId :: Lens' AudioOnlyHlsSettings (Maybe Text)
@@ -68,7 +79,8 @@ instance FromJSON AudioOnlyHlsSettings where
           = withObject "AudioOnlyHlsSettings"
               (\ x ->
                  AudioOnlyHlsSettings' <$>
-                   (x .:? "audioOnlyImage") <*> (x .:? "audioGroupId")
+                   (x .:? "audioOnlyImage") <*> (x .:? "segmentType")
+                     <*> (x .:? "audioGroupId")
                      <*> (x .:? "audioTrackType"))
 
 instance Hashable AudioOnlyHlsSettings where
@@ -80,5 +92,6 @@ instance ToJSON AudioOnlyHlsSettings where
           = object
               (catMaybes
                  [("audioOnlyImage" .=) <$> _aohsAudioOnlyImage,
+                  ("segmentType" .=) <$> _aohsSegmentType,
                   ("audioGroupId" .=) <$> _aohsAudioGroupId,
                   ("audioTrackType" .=) <$> _aohsAudioTrackType])

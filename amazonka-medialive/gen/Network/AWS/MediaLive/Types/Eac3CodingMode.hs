@@ -28,7 +28,7 @@ module Network.AWS.MediaLive.Types.Eac3CodingMode (
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | Placeholder documentation for Eac3CodingMode
+-- | Eac3 Coding Mode
 data Eac3CodingMode = Eac3CodingMode' (CI Text)
                         deriving (Eq, Ord, Read, Show, Data, Typeable,
                                   Generic)

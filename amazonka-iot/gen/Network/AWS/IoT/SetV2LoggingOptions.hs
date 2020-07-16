@@ -55,11 +55,11 @@ data SetV2LoggingOptions = SetV2LoggingOptions'{_svloDisableAllLogs
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'svloDisableAllLogs' - Set to true to disable all logs, otherwise set to false.
+-- * 'svloDisableAllLogs' - If true all logs are disabled. The default is false.
 --
 -- * 'svloDefaultLogLevel' - The default logging level.
 --
--- * 'svloRoleARN' - The role ARN that allows IoT to write to Cloudwatch logs.
+-- * 'svloRoleARN' - The ARN of the role that allows IoT to write to Cloudwatch logs.
 setV2LoggingOptions
     :: SetV2LoggingOptions
 setV2LoggingOptions
@@ -67,7 +67,7 @@ setV2LoggingOptions
                          _svloDefaultLogLevel = Nothing,
                          _svloRoleARN = Nothing}
 
--- | Set to true to disable all logs, otherwise set to false.
+-- | If true all logs are disabled. The default is false.
 svloDisableAllLogs :: Lens' SetV2LoggingOptions (Maybe Bool)
 svloDisableAllLogs = lens _svloDisableAllLogs (\ s a -> s{_svloDisableAllLogs = a})
 
@@ -75,7 +75,7 @@ svloDisableAllLogs = lens _svloDisableAllLogs (\ s a -> s{_svloDisableAllLogs = 
 svloDefaultLogLevel :: Lens' SetV2LoggingOptions (Maybe LogLevel)
 svloDefaultLogLevel = lens _svloDefaultLogLevel (\ s a -> s{_svloDefaultLogLevel = a})
 
--- | The role ARN that allows IoT to write to Cloudwatch logs.
+-- | The ARN of the role that allows IoT to write to Cloudwatch logs.
 svloRoleARN :: Lens' SetV2LoggingOptions (Maybe Text)
 svloRoleARN = lens _svloRoleARN (\ s a -> s{_svloRoleARN = a})
 

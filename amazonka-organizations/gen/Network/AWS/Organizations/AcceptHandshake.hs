@@ -25,15 +25,15 @@
 --
 --     * __Invitation to join__ or __Approve all features request__ handshakes: only a principal from the member account. 
 --
--- The user who calls the API for an invitation to join must have the @organizations:AcceptHandshake@ permission. If you enabled all features in the organization, then the user must also have the @iam:CreateServiceLinkedRole@ permission so that Organizations can create the required service-linked role named /OrgsServiceLinkedRoleName/ . For more information, see <http://docs.aws.amazon.com/organizations/latest/userguide/orgs_integration_services.html#orgs_integration_service-linked-roles AWS Organizations and Service-Linked Roles> in the /AWS Organizations User Guide/ .
+-- The user who calls the API for an invitation to join must have the @organizations:AcceptHandshake@ permission. If you enabled all features in the organization, the user must also have the @iam:CreateServiceLinkedRole@ permission so that AWS Organizations can create the required service-linked role named @AWSServiceRoleForOrganizations@ . For more information, see <http://docs.aws.amazon.com/organizations/latest/userguide/orgs_integration_services.html#orgs_integration_service-linked-roles AWS Organizations and Service-Linked Roles> in the /AWS Organizations User Guide/ .
 --
 --     * __Enable all features final confirmation__ handshake: only a principal from the master account.
 --
--- For more information about invitations, see <http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_invites.html Inviting an AWS Account to Join Your Organization> in the /AWS Organizations User Guide/ . For more information about requests to enable all features in the organization, see <http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_support-all-features.html Enabling All Features in Your Organization> in the /AWS Organizations User Guide/ .
+-- For more information about invitations, see <https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_invites.html Inviting an AWS Account to Join Your Organization> in the /AWS Organizations User Guide./ For more information about requests to enable all features in the organization, see <https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_support-all-features.html Enabling All Features in Your Organization> in the /AWS Organizations User Guide./ 
 --
 --
 --
--- After you accept a handshake, it continues to appear in the results of relevant APIs for only 30 days. After that it is deleted.
+-- After you accept a handshake, it continues to appear in the results of relevant APIs for only 30 days. After that, it's deleted.
 --
 module Network.AWS.Organizations.AcceptHandshake
     (
@@ -67,14 +67,14 @@ newtype AcceptHandshake = AcceptHandshake'{_ahHandshakeId
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'ahHandshakeId' - The unique identifier (ID) of the handshake that you want to accept. The <http://wikipedia.org/wiki/regex regex pattern> for handshake ID string requires "h-" followed by from 8 to 32 lower-case letters or digits.
+-- * 'ahHandshakeId' - The unique identifier (ID) of the handshake that you want to accept. The <http://wikipedia.org/wiki/regex regex pattern> for handshake ID string requires "h-" followed by from 8 to 32 lowercase letters or digits.
 acceptHandshake
     :: Text -- ^ 'ahHandshakeId'
     -> AcceptHandshake
 acceptHandshake pHandshakeId_
   = AcceptHandshake'{_ahHandshakeId = pHandshakeId_}
 
--- | The unique identifier (ID) of the handshake that you want to accept. The <http://wikipedia.org/wiki/regex regex pattern> for handshake ID string requires "h-" followed by from 8 to 32 lower-case letters or digits.
+-- | The unique identifier (ID) of the handshake that you want to accept. The <http://wikipedia.org/wiki/regex regex pattern> for handshake ID string requires "h-" followed by from 8 to 32 lowercase letters or digits.
 ahHandshakeId :: Lens' AcceptHandshake Text
 ahHandshakeId = lens _ahHandshakeId (\ s a -> s{_ahHandshakeId = a})
 

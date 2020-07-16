@@ -19,16 +19,22 @@ module Network.AWS.Pinpoint.Types.SegmentDimensions where
 
 import Network.AWS.Lens
 import Network.AWS.Pinpoint.Types.AttributeDimension
+import Network.AWS.Pinpoint.Types.MetricDimension
 import Network.AWS.Pinpoint.Types.SegmentBehaviors
 import Network.AWS.Pinpoint.Types.SegmentDemographics
 import Network.AWS.Pinpoint.Types.SegmentLocation
 import Network.AWS.Prelude
 
--- | Segment dimensions
+-- | Specifies the dimension settings for a segment.
+--
+--
 --
 -- /See:/ 'segmentDimensions' smart constructor.
-data SegmentDimensions = SegmentDimensions'{_sdLocation
-                                            :: !(Maybe SegmentLocation),
+data SegmentDimensions = SegmentDimensions'{_sdMetrics
+                                            ::
+                                            !(Maybe (Map Text MetricDimension)),
+                                            _sdLocation ::
+                                            !(Maybe SegmentLocation),
                                             _sdDemographic ::
                                             !(Maybe SegmentDemographics),
                                             _sdUserAttributes ::
@@ -45,40 +51,46 @@ data SegmentDimensions = SegmentDimensions'{_sdLocation
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'sdLocation' - The segment location attributes.
+-- * 'sdMetrics' - One or more custom metrics to use as criteria for the segment.
 --
--- * 'sdDemographic' - The segment demographics attributes.
+-- * 'sdLocation' - The location-based criteria, such as region or GPS coordinates, for the segment.
 --
--- * 'sdUserAttributes' - Custom segment user attributes.
+-- * 'sdDemographic' - The demographic-based criteria, such as device platform, for the segment.
 --
--- * 'sdBehavior' - The segment behaviors attributes.
+-- * 'sdUserAttributes' - One or more custom user attributes to use as criteria for the segment.
 --
--- * 'sdAttributes' - Custom segment attributes.
+-- * 'sdBehavior' - The behavior-based criteria, such as how recently users have used your app, for the segment.
+--
+-- * 'sdAttributes' - One or more custom attributes to use as criteria for the segment.
 segmentDimensions
     :: SegmentDimensions
 segmentDimensions
-  = SegmentDimensions'{_sdLocation = Nothing,
-                       _sdDemographic = Nothing,
+  = SegmentDimensions'{_sdMetrics = Nothing,
+                       _sdLocation = Nothing, _sdDemographic = Nothing,
                        _sdUserAttributes = Nothing, _sdBehavior = Nothing,
                        _sdAttributes = Nothing}
 
--- | The segment location attributes.
+-- | One or more custom metrics to use as criteria for the segment.
+sdMetrics :: Lens' SegmentDimensions (HashMap Text MetricDimension)
+sdMetrics = lens _sdMetrics (\ s a -> s{_sdMetrics = a}) . _Default . _Map
+
+-- | The location-based criteria, such as region or GPS coordinates, for the segment.
 sdLocation :: Lens' SegmentDimensions (Maybe SegmentLocation)
 sdLocation = lens _sdLocation (\ s a -> s{_sdLocation = a})
 
--- | The segment demographics attributes.
+-- | The demographic-based criteria, such as device platform, for the segment.
 sdDemographic :: Lens' SegmentDimensions (Maybe SegmentDemographics)
 sdDemographic = lens _sdDemographic (\ s a -> s{_sdDemographic = a})
 
--- | Custom segment user attributes.
+-- | One or more custom user attributes to use as criteria for the segment.
 sdUserAttributes :: Lens' SegmentDimensions (HashMap Text AttributeDimension)
 sdUserAttributes = lens _sdUserAttributes (\ s a -> s{_sdUserAttributes = a}) . _Default . _Map
 
--- | The segment behaviors attributes.
+-- | The behavior-based criteria, such as how recently users have used your app, for the segment.
 sdBehavior :: Lens' SegmentDimensions (Maybe SegmentBehaviors)
 sdBehavior = lens _sdBehavior (\ s a -> s{_sdBehavior = a})
 
--- | Custom segment attributes.
+-- | One or more custom attributes to use as criteria for the segment.
 sdAttributes :: Lens' SegmentDimensions (HashMap Text AttributeDimension)
 sdAttributes = lens _sdAttributes (\ s a -> s{_sdAttributes = a}) . _Default . _Map
 
@@ -87,8 +99,9 @@ instance FromJSON SegmentDimensions where
           = withObject "SegmentDimensions"
               (\ x ->
                  SegmentDimensions' <$>
-                   (x .:? "Location") <*> (x .:? "Demographic") <*>
-                     (x .:? "UserAttributes" .!= mempty)
+                   (x .:? "Metrics" .!= mempty) <*> (x .:? "Location")
+                     <*> (x .:? "Demographic")
+                     <*> (x .:? "UserAttributes" .!= mempty)
                      <*> (x .:? "Behavior")
                      <*> (x .:? "Attributes" .!= mempty))
 
@@ -100,7 +113,8 @@ instance ToJSON SegmentDimensions where
         toJSON SegmentDimensions'{..}
           = object
               (catMaybes
-                 [("Location" .=) <$> _sdLocation,
+                 [("Metrics" .=) <$> _sdMetrics,
+                  ("Location" .=) <$> _sdLocation,
                   ("Demographic" .=) <$> _sdDemographic,
                   ("UserAttributes" .=) <$> _sdUserAttributes,
                   ("Behavior" .=) <$> _sdBehavior,

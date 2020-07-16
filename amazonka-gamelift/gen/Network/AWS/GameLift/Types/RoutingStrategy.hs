@@ -21,54 +21,20 @@ import Network.AWS.GameLift.Types.RoutingStrategyType
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | Routing configuration for a fleet alias.
+-- | The routing configuration for a fleet alias.
 --
 --
--- Fleet-related operations include:
+--     * 'CreateAlias' 
 --
---     * 'CreateFleet' 
+--     * 'ListAliases' 
 --
---     * 'ListFleets' 
+--     * 'DescribeAlias' 
 --
---     * 'DeleteFleet' 
+--     * 'UpdateAlias' 
 --
---     * Describe fleets:
+--     * 'DeleteAlias' 
 --
---     * 'DescribeFleetAttributes' 
---
---     * 'DescribeFleetCapacity' 
---
---     * 'DescribeFleetPortSettings' 
---
---     * 'DescribeFleetUtilization' 
---
---     * 'DescribeRuntimeConfiguration' 
---
---     * 'DescribeEC2InstanceLimits' 
---
---     * 'DescribeFleetEvents' 
---
---
---
---     * Update fleets:
---
---     * 'UpdateFleetAttributes' 
---
---     * 'UpdateFleetCapacity' 
---
---     * 'UpdateFleetPortSettings' 
---
---     * 'UpdateRuntimeConfiguration' 
---
---
---
---     * Manage fleet actions:
---
---     * 'StartFleetActions' 
---
---     * 'StopFleetActions' 
---
---
+--     * 'ResolveAlias' 
 --
 --
 --
@@ -84,26 +50,26 @@ data RoutingStrategy = RoutingStrategy'{_rsType ::
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'rsType' - Type of routing strategy. Possible routing types include the following:     * __SIMPLE__ -- The alias resolves to one specific fleet. Use this type when routing to active fleets.     * __TERMINAL__ -- The alias does not resolve to a fleet but instead can be used to display a message to the user. A terminal alias throws a TerminalRoutingStrategyException with the 'RoutingStrategy' message embedded.
+-- * 'rsType' - The type of routing strategy for the alias. Possible routing types include the following:     * __SIMPLE__ - The alias resolves to one specific fleet. Use this type when routing to active fleets.     * __TERMINAL__ - The alias does not resolve to a fleet but instead can be used to display a message to the user. A terminal alias throws a TerminalRoutingStrategyException with the 'RoutingStrategy' message embedded.
 --
--- * 'rsMessage' - Message text to be used with a terminal routing strategy.
+-- * 'rsMessage' - The message text to be used with a terminal routing strategy.
 --
--- * 'rsFleetId' - Unique identifier for a fleet that the alias points to.
+-- * 'rsFleetId' - The unique identifier for a fleet that the alias points to. This value is the fleet ID, not the fleet ARN.
 routingStrategy
     :: RoutingStrategy
 routingStrategy
   = RoutingStrategy'{_rsType = Nothing,
                      _rsMessage = Nothing, _rsFleetId = Nothing}
 
--- | Type of routing strategy. Possible routing types include the following:     * __SIMPLE__ -- The alias resolves to one specific fleet. Use this type when routing to active fleets.     * __TERMINAL__ -- The alias does not resolve to a fleet but instead can be used to display a message to the user. A terminal alias throws a TerminalRoutingStrategyException with the 'RoutingStrategy' message embedded.
+-- | The type of routing strategy for the alias. Possible routing types include the following:     * __SIMPLE__ - The alias resolves to one specific fleet. Use this type when routing to active fleets.     * __TERMINAL__ - The alias does not resolve to a fleet but instead can be used to display a message to the user. A terminal alias throws a TerminalRoutingStrategyException with the 'RoutingStrategy' message embedded.
 rsType :: Lens' RoutingStrategy (Maybe RoutingStrategyType)
 rsType = lens _rsType (\ s a -> s{_rsType = a})
 
--- | Message text to be used with a terminal routing strategy.
+-- | The message text to be used with a terminal routing strategy.
 rsMessage :: Lens' RoutingStrategy (Maybe Text)
 rsMessage = lens _rsMessage (\ s a -> s{_rsMessage = a})
 
--- | Unique identifier for a fleet that the alias points to.
+-- | The unique identifier for a fleet that the alias points to. This value is the fleet ID, not the fleet ARN.
 rsFleetId :: Lens' RoutingStrategy (Maybe Text)
 rsFleetId = lens _rsFleetId (\ s a -> s{_rsFleetId = a})
 

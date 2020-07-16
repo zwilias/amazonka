@@ -50,11 +50,11 @@ data LogStream = LogStream'{_lsCreationTime ::
 --
 -- * 'lsLogStreamName' - The name of the log stream.
 --
--- * 'lsStoredBytes' - The number of bytes stored.
+-- * 'lsStoredBytes' - The number of bytes stored. __IMPORTANT:__ On June 17, 2019, this parameter was deprecated for log streams, and is always reported as zero. This change applies only to log streams. The @storedBytes@ parameter for log groups is not affected.
 --
 -- * 'lsLastIngestionTime' - The ingestion time, expressed as the number of milliseconds after Jan 1, 1970 00:00:00 UTC.
 --
--- * 'lsLastEventTimestamp' - the time of the most recent log event in the log stream in CloudWatch Logs. This number is expressed as the number of milliseconds after Jan 1, 1970 00:00:00 UTC. lastEventTime updates on an eventual consistency basis. It typically updates in less than an hour from ingestion, but may take longer in some rare situations.
+-- * 'lsLastEventTimestamp' - The time of the most recent log event in the log stream in CloudWatch Logs. This number is expressed as the number of milliseconds after Jan 1, 1970 00:00:00 UTC. The @lastEventTime@ value updates on an eventual consistency basis. It typically updates in less than an hour from ingestion, but may take longer in some rare situations.
 logStream
     :: LogStream
 logStream
@@ -85,7 +85,7 @@ lsFirstEventTimestamp = lens _lsFirstEventTimestamp (\ s a -> s{_lsFirstEventTim
 lsLogStreamName :: Lens' LogStream (Maybe Text)
 lsLogStreamName = lens _lsLogStreamName (\ s a -> s{_lsLogStreamName = a})
 
--- | The number of bytes stored.
+-- | The number of bytes stored. __IMPORTANT:__ On June 17, 2019, this parameter was deprecated for log streams, and is always reported as zero. This change applies only to log streams. The @storedBytes@ parameter for log groups is not affected.
 lsStoredBytes :: Lens' LogStream (Maybe Natural)
 lsStoredBytes = lens _lsStoredBytes (\ s a -> s{_lsStoredBytes = a}) . mapping _Nat
 
@@ -93,7 +93,7 @@ lsStoredBytes = lens _lsStoredBytes (\ s a -> s{_lsStoredBytes = a}) . mapping _
 lsLastIngestionTime :: Lens' LogStream (Maybe Natural)
 lsLastIngestionTime = lens _lsLastIngestionTime (\ s a -> s{_lsLastIngestionTime = a}) . mapping _Nat
 
--- | the time of the most recent log event in the log stream in CloudWatch Logs. This number is expressed as the number of milliseconds after Jan 1, 1970 00:00:00 UTC. lastEventTime updates on an eventual consistency basis. It typically updates in less than an hour from ingestion, but may take longer in some rare situations.
+-- | The time of the most recent log event in the log stream in CloudWatch Logs. This number is expressed as the number of milliseconds after Jan 1, 1970 00:00:00 UTC. The @lastEventTime@ value updates on an eventual consistency basis. It typically updates in less than an hour from ingestion, but may take longer in some rare situations.
 lsLastEventTimestamp :: Lens' LogStream (Maybe Natural)
 lsLastEventTimestamp = lens _lsLastEventTimestamp (\ s a -> s{_lsLastEventTimestamp = a}) . mapping _Nat
 

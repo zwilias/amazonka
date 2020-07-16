@@ -41,11 +41,11 @@ data ExecutionListItem = ExecutionListItem'{_eliStopDate
 --
 -- * 'eliStopDate' - If the execution already ended, the date the execution stopped.
 --
--- * 'eliExecutionARN' - The Amazon Resource Name (ARN) that identifies the execution.
+-- * 'eliExecutionARN' - The Amazon Resource Name (ARN) that id entifies the execution.
 --
 -- * 'eliStateMachineARN' - The Amazon Resource Name (ARN) of the executed state machine.
 --
--- * 'eliName' - The name of the execution. A name must /not/ contain:     * whitespace     * brackets @< > { } [ ]@      * wildcard characters @? *@      * special characters @" # % \ ^ | ~ ` $ & , ; : /@      * control characters (@U+0000-001F@ , @U+007F-009F@ )
+-- * 'eliName' - The name of the execution. A name must /not/ contain:     * white space     * brackets @< > { } [ ]@      * wildcard characters @? *@      * special characters @" # % \ ^ | ~ ` $ & , ; : /@      * control characters (@U+0000-001F@ , @U+007F-009F@ ) To enable logging with CloudWatch Logs, the name should only contain 0-9, A-Z, a-z, - and _.
 --
 -- * 'eliStatus' - The current status of the execution.
 --
@@ -69,7 +69,7 @@ executionListItem pExecutionARN_ pStateMachineARN_
 eliStopDate :: Lens' ExecutionListItem (Maybe UTCTime)
 eliStopDate = lens _eliStopDate (\ s a -> s{_eliStopDate = a}) . mapping _Time
 
--- | The Amazon Resource Name (ARN) that identifies the execution.
+-- | The Amazon Resource Name (ARN) that id entifies the execution.
 eliExecutionARN :: Lens' ExecutionListItem Text
 eliExecutionARN = lens _eliExecutionARN (\ s a -> s{_eliExecutionARN = a})
 
@@ -77,7 +77,7 @@ eliExecutionARN = lens _eliExecutionARN (\ s a -> s{_eliExecutionARN = a})
 eliStateMachineARN :: Lens' ExecutionListItem Text
 eliStateMachineARN = lens _eliStateMachineARN (\ s a -> s{_eliStateMachineARN = a})
 
--- | The name of the execution. A name must /not/ contain:     * whitespace     * brackets @< > { } [ ]@      * wildcard characters @? *@      * special characters @" # % \ ^ | ~ ` $ & , ; : /@      * control characters (@U+0000-001F@ , @U+007F-009F@ )
+-- | The name of the execution. A name must /not/ contain:     * white space     * brackets @< > { } [ ]@      * wildcard characters @? *@      * special characters @" # % \ ^ | ~ ` $ & , ; : /@      * control characters (@U+0000-001F@ , @U+007F-009F@ ) To enable logging with CloudWatch Logs, the name should only contain 0-9, A-Z, a-z, - and _.
 eliName :: Lens' ExecutionListItem Text
 eliName = lens _eliName (\ s a -> s{_eliName = a})
 

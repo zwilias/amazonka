@@ -25,7 +25,7 @@ import Network.AWS.Prelude
 --
 -- /See:/ 'dvbSdtSettings' smart constructor.
 data DvbSdtSettings = DvbSdtSettings'{_dssSdtInterval
-                                      :: !(Maybe Int),
+                                      :: !(Maybe Nat),
                                       _dssServiceProviderName :: !(Maybe Text),
                                       _dssOutputSdt :: !(Maybe OutputSdt),
                                       _dssServiceName :: !(Maybe Text)}
@@ -39,7 +39,7 @@ data DvbSdtSettings = DvbSdtSettings'{_dssSdtInterval
 --
 -- * 'dssServiceProviderName' - The service provider name placed in the service_descriptor in the Service Description Table. Maximum length is 256 characters.
 --
--- * 'dssOutputSdt' - Undocumented member.
+-- * 'dssOutputSdt' - Selects method of inserting SDT information into output stream.  "Follow input SDT" copies SDT information from input stream to  output stream. "Follow input SDT if present" copies SDT information from  input stream to output stream if SDT information is present in the input, otherwise it will fall back on the user-defined values. Enter "SDT  Manually" means user will enter the SDT information. "No SDT" means output  stream will not contain SDT information.
 --
 -- * 'dssServiceName' - The service name placed in the service_descriptor in the Service Description Table. Maximum length is 256 characters.
 dvbSdtSettings
@@ -50,14 +50,14 @@ dvbSdtSettings
                     _dssOutputSdt = Nothing, _dssServiceName = Nothing}
 
 -- | The number of milliseconds between instances of this table in the output transport stream.
-dssSdtInterval :: Lens' DvbSdtSettings (Maybe Int)
-dssSdtInterval = lens _dssSdtInterval (\ s a -> s{_dssSdtInterval = a})
+dssSdtInterval :: Lens' DvbSdtSettings (Maybe Natural)
+dssSdtInterval = lens _dssSdtInterval (\ s a -> s{_dssSdtInterval = a}) . mapping _Nat
 
 -- | The service provider name placed in the service_descriptor in the Service Description Table. Maximum length is 256 characters.
 dssServiceProviderName :: Lens' DvbSdtSettings (Maybe Text)
 dssServiceProviderName = lens _dssServiceProviderName (\ s a -> s{_dssServiceProviderName = a})
 
--- | Undocumented member.
+-- | Selects method of inserting SDT information into output stream.  "Follow input SDT" copies SDT information from input stream to  output stream. "Follow input SDT if present" copies SDT information from  input stream to output stream if SDT information is present in the input, otherwise it will fall back on the user-defined values. Enter "SDT  Manually" means user will enter the SDT information. "No SDT" means output  stream will not contain SDT information.
 dssOutputSdt :: Lens' DvbSdtSettings (Maybe OutputSdt)
 dssOutputSdt = lens _dssOutputSdt (\ s a -> s{_dssOutputSdt = a})
 

@@ -49,7 +49,7 @@ data EcsParameters = EcsParameters'{_epGroup ::
 --
 -- * 'epTaskCount' - The number of tasks to create based on @TaskDefinition@ . The default is 1.
 --
--- * 'epNetworkConfiguration' - Use this structure if the ECS task uses the @awsvpc@ network mode. This structure specifies the VPC subnets and security groups associated with the task and whether a public IP address is to be used. This structure is required if @LaunchType@ is @FARGATE@ because the @awsvpc@ mode is required for Fargate tasks. If you specify @NetworkConfiguration@ when the target ECS task doesn't use the @awsvpc@ network mode, the task fails.
+-- * 'epNetworkConfiguration' - Use this structure if the ECS task uses the @awsvpc@ network mode. This structure specifies the VPC subnets and security groups associated with the task, and whether a public IP address is to be used. This structure is required if @LaunchType@ is @FARGATE@ because the @awsvpc@ mode is required for Fargate tasks. If you specify @NetworkConfiguration@ when the target ECS task does not use the @awsvpc@ network mode, the task fails.
 --
 -- * 'epTaskDefinitionARN' - The ARN of the task definition to use if the event target is an Amazon ECS task. 
 ecsParameters
@@ -78,7 +78,7 @@ epLaunchType = lens _epLaunchType (\ s a -> s{_epLaunchType = a})
 epTaskCount :: Lens' EcsParameters (Maybe Natural)
 epTaskCount = lens _epTaskCount (\ s a -> s{_epTaskCount = a}) . mapping _Nat
 
--- | Use this structure if the ECS task uses the @awsvpc@ network mode. This structure specifies the VPC subnets and security groups associated with the task and whether a public IP address is to be used. This structure is required if @LaunchType@ is @FARGATE@ because the @awsvpc@ mode is required for Fargate tasks. If you specify @NetworkConfiguration@ when the target ECS task doesn't use the @awsvpc@ network mode, the task fails.
+-- | Use this structure if the ECS task uses the @awsvpc@ network mode. This structure specifies the VPC subnets and security groups associated with the task, and whether a public IP address is to be used. This structure is required if @LaunchType@ is @FARGATE@ because the @awsvpc@ mode is required for Fargate tasks. If you specify @NetworkConfiguration@ when the target ECS task does not use the @awsvpc@ network mode, the task fails.
 epNetworkConfiguration :: Lens' EcsParameters (Maybe NetworkConfiguration)
 epNetworkConfiguration = lens _epNetworkConfiguration (\ s a -> s{_epNetworkConfiguration = a})
 

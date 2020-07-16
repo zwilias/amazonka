@@ -39,19 +39,19 @@ data GrokClassifier = GrokClassifier'{_gcCreationTime
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'gcCreationTime' - The time this classifier was registered.
+-- * 'gcCreationTime' - The time that this classifier was registered.
 --
--- * 'gcLastUpdated' - The time this classifier was last updated.
+-- * 'gcLastUpdated' - The time that this classifier was last updated.
 --
 -- * 'gcVersion' - The version of this classifier.
 --
--- * 'gcCustomPatterns' - Optional custom grok patterns defined by this classifier. For more information, see custom patterns in <http://docs.aws.amazon.com/glue/latest/dg/custom-classifier.html Writing Custom Classifers> .
+-- * 'gcCustomPatterns' - Optional custom grok patterns defined by this classifier. For more information, see custom patterns in <http://docs.aws.amazon.com/glue/latest/dg/custom-classifier.html Writing Custom Classifiers> .
 --
 -- * 'gcName' - The name of the classifier.
 --
 -- * 'gcClassification' - An identifier of the data format that the classifier matches, such as Twitter, JSON, Omniture logs, and so on.
 --
--- * 'gcGrokPattern' - The grok pattern applied to a data store by this classifier. For more information, see built-in patterns in <http://docs.aws.amazon.com/glue/latest/dg/custom-classifier.html Writing Custom Classifers> .
+-- * 'gcGrokPattern' - The grok pattern applied to a data store by this classifier. For more information, see built-in patterns in <http://docs.aws.amazon.com/glue/latest/dg/custom-classifier.html Writing Custom Classifiers> .
 grokClassifier
     :: Text -- ^ 'gcName'
     -> Text -- ^ 'gcClassification'
@@ -64,11 +64,11 @@ grokClassifier pName_ pClassification_ pGrokPattern_
                     _gcClassification = pClassification_,
                     _gcGrokPattern = pGrokPattern_}
 
--- | The time this classifier was registered.
+-- | The time that this classifier was registered.
 gcCreationTime :: Lens' GrokClassifier (Maybe UTCTime)
 gcCreationTime = lens _gcCreationTime (\ s a -> s{_gcCreationTime = a}) . mapping _Time
 
--- | The time this classifier was last updated.
+-- | The time that this classifier was last updated.
 gcLastUpdated :: Lens' GrokClassifier (Maybe UTCTime)
 gcLastUpdated = lens _gcLastUpdated (\ s a -> s{_gcLastUpdated = a}) . mapping _Time
 
@@ -76,7 +76,7 @@ gcLastUpdated = lens _gcLastUpdated (\ s a -> s{_gcLastUpdated = a}) . mapping _
 gcVersion :: Lens' GrokClassifier (Maybe Integer)
 gcVersion = lens _gcVersion (\ s a -> s{_gcVersion = a})
 
--- | Optional custom grok patterns defined by this classifier. For more information, see custom patterns in <http://docs.aws.amazon.com/glue/latest/dg/custom-classifier.html Writing Custom Classifers> .
+-- | Optional custom grok patterns defined by this classifier. For more information, see custom patterns in <http://docs.aws.amazon.com/glue/latest/dg/custom-classifier.html Writing Custom Classifiers> .
 gcCustomPatterns :: Lens' GrokClassifier (Maybe Text)
 gcCustomPatterns = lens _gcCustomPatterns (\ s a -> s{_gcCustomPatterns = a})
 
@@ -88,7 +88,7 @@ gcName = lens _gcName (\ s a -> s{_gcName = a})
 gcClassification :: Lens' GrokClassifier Text
 gcClassification = lens _gcClassification (\ s a -> s{_gcClassification = a})
 
--- | The grok pattern applied to a data store by this classifier. For more information, see built-in patterns in <http://docs.aws.amazon.com/glue/latest/dg/custom-classifier.html Writing Custom Classifers> .
+-- | The grok pattern applied to a data store by this classifier. For more information, see built-in patterns in <http://docs.aws.amazon.com/glue/latest/dg/custom-classifier.html Writing Custom Classifiers> .
 gcGrokPattern :: Lens' GrokClassifier Text
 gcGrokPattern = lens _gcGrokPattern (\ s a -> s{_gcGrokPattern = a})
 

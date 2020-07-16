@@ -33,7 +33,7 @@ data OutputDetail = OutputDetail'{_odVideoDetails ::
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'odVideoDetails' - Undocumented member.
+-- * 'odVideoDetails' - Contains details about the output's video stream
 --
 -- * 'odDurationInMs' - Duration in milliseconds
 outputDetail
@@ -42,7 +42,7 @@ outputDetail
   = OutputDetail'{_odVideoDetails = Nothing,
                   _odDurationInMs = Nothing}
 
--- | Undocumented member.
+-- | Contains details about the output's video stream
 odVideoDetails :: Lens' OutputDetail (Maybe VideoDetail)
 odVideoDetails = lens _odVideoDetails (\ s a -> s{_odVideoDetails = a})
 

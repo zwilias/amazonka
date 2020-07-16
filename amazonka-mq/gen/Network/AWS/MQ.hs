@@ -62,8 +62,14 @@ module Network.AWS.MQ
     -- ** ListConfigurationRevisions 
     , module Network.AWS.MQ.ListConfigurationRevisions
 
+    -- ** CreateTags 
+    , module Network.AWS.MQ.CreateTags
+
     -- ** ListUsers 
     , module Network.AWS.MQ.ListUsers
+
+    -- ** DeleteTags 
+    , module Network.AWS.MQ.DeleteTags
 
     -- ** ListConfigurations 
     , module Network.AWS.MQ.ListConfigurations
@@ -71,7 +77,10 @@ module Network.AWS.MQ
     -- ** DescribeUser 
     , module Network.AWS.MQ.DescribeUser
 
-    -- ** ListBrokers 
+    -- ** DescribeBrokerInstanceOptions 
+    , module Network.AWS.MQ.DescribeBrokerInstanceOptions
+
+    -- ** ListBrokers (Paginated)
     , module Network.AWS.MQ.ListBrokers
 
     -- ** CreateUser 
@@ -86,6 +95,12 @@ module Network.AWS.MQ
     -- ** DeleteUser 
     , module Network.AWS.MQ.DeleteUser
 
+    -- ** ListTags 
+    , module Network.AWS.MQ.ListTags
+
+    -- ** DescribeBrokerEngineTypes 
+    , module Network.AWS.MQ.DescribeBrokerEngineTypes
+
     -- ** DescribeConfigurationRevision 
     , module Network.AWS.MQ.DescribeConfigurationRevision
 
@@ -99,6 +114,9 @@ module Network.AWS.MQ
 
     -- ** BrokerState
     , BrokerState (..)
+
+    -- ** BrokerStorageType
+    , BrokerStorageType (..)
 
     -- ** ChangeType
     , ChangeType (..)
@@ -115,17 +133,40 @@ module Network.AWS.MQ
     -- ** SanitizationWarningReason
     , SanitizationWarningReason (..)
 
+    -- ** AvailabilityZone
+    , AvailabilityZone
+    , availabilityZone
+    , azName
+
+    -- ** BrokerEngineType
+    , BrokerEngineType
+    , brokerEngineType
+    , betEngineVersions
+    , betEngineType
+
     -- ** BrokerInstance
     , BrokerInstance
     , brokerInstance
+    , biIPAddress
     , biConsoleURL
     , biEndpoints
+
+    -- ** BrokerInstanceOption
+    , BrokerInstanceOption
+    , brokerInstanceOption
+    , bioSupportedEngineVersions
+    , bioAvailabilityZones
+    , bioSupportedDeploymentModes
+    , bioEngineType
+    , bioHostInstanceType
+    , bioStorageType
 
     -- ** BrokerSummary
     , BrokerSummary
     , brokerSummary
     , bsBrokerName
     , bsBrokerState
+    , bsCreated
     , bsDeploymentMode
     , bsBrokerId
     , bsBrokerARN
@@ -137,10 +178,12 @@ module Network.AWS.MQ
     , cEngineVersion
     , cARN
     , cLatestRevision
+    , cCreated
     , cName
     , cId
     , cDescription
     , cEngineType
+    , cTags
 
     -- ** ConfigurationId
     , ConfigurationId
@@ -151,6 +194,7 @@ module Network.AWS.MQ
     -- ** ConfigurationRevision
     , ConfigurationRevision
     , configurationRevision
+    , crCreated
     , crRevision
     , crDescription
 
@@ -160,6 +204,38 @@ module Network.AWS.MQ
     , cPending
     , cHistory
     , cCurrent
+
+    -- ** EncryptionOptions
+    , EncryptionOptions
+    , encryptionOptions
+    , eoKMSKeyId
+    , eoUseAWSOwnedKey
+
+    -- ** EngineVersion
+    , EngineVersion
+    , engineVersion
+    , evName
+
+    -- ** Logs
+    , Logs
+    , logs
+    , lAudit
+    , lGeneral
+
+    -- ** LogsSummary
+    , LogsSummary
+    , logsSummary
+    , lsPending
+    , lsAudit
+    , lsGeneral
+    , lsGeneralLogGroup
+    , lsAuditLogGroup
+
+    -- ** PendingLogs
+    , PendingLogs
+    , pendingLogs
+    , plAudit
+    , plGeneral
 
     -- ** SanitizationWarning
     , SanitizationWarning
@@ -199,16 +275,21 @@ module Network.AWS.MQ
 
 import Network.AWS.MQ.CreateBroker
 import Network.AWS.MQ.CreateConfiguration
+import Network.AWS.MQ.CreateTags
 import Network.AWS.MQ.CreateUser
 import Network.AWS.MQ.DeleteBroker
+import Network.AWS.MQ.DeleteTags
 import Network.AWS.MQ.DeleteUser
 import Network.AWS.MQ.DescribeBroker
+import Network.AWS.MQ.DescribeBrokerEngineTypes
+import Network.AWS.MQ.DescribeBrokerInstanceOptions
 import Network.AWS.MQ.DescribeConfiguration
 import Network.AWS.MQ.DescribeConfigurationRevision
 import Network.AWS.MQ.DescribeUser
 import Network.AWS.MQ.ListBrokers
 import Network.AWS.MQ.ListConfigurationRevisions
 import Network.AWS.MQ.ListConfigurations
+import Network.AWS.MQ.ListTags
 import Network.AWS.MQ.ListUsers
 import Network.AWS.MQ.RebootBroker
 import Network.AWS.MQ.Types

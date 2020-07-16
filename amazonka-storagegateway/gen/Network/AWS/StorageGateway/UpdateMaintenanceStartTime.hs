@@ -27,10 +27,11 @@ module Network.AWS.StorageGateway.UpdateMaintenanceStartTime
       updateMaintenanceStartTime
     , UpdateMaintenanceStartTime
     -- * Request Lenses
+    , umstDayOfMonth
+    , umstDayOfWeek
     , umstGatewayARN
     , umstHourOfDay
     , umstMinuteOfHour
-    , umstDayOfWeek
 
     -- * Destructuring the Response
     , updateMaintenanceStartTimeResponse
@@ -50,6 +51,8 @@ import Network.AWS.StorageGateway.Types.Product
 -- | A JSON object containing the following fields:
 --
 --
+--     * 'UpdateMaintenanceStartTimeInput$DayOfMonth' 
+--
 --     * 'UpdateMaintenanceStartTimeInput$DayOfWeek' 
 --
 --     * 'UpdateMaintenanceStartTimeInput$HourOfDay' 
@@ -60,14 +63,16 @@ import Network.AWS.StorageGateway.Types.Product
 --
 --
 -- /See:/ 'updateMaintenanceStartTime' smart constructor.
-data UpdateMaintenanceStartTime = UpdateMaintenanceStartTime'{_umstGatewayARN
-                                                              :: !Text,
+data UpdateMaintenanceStartTime = UpdateMaintenanceStartTime'{_umstDayOfMonth
+                                                              :: !(Maybe Nat),
+                                                              _umstDayOfWeek ::
+                                                              !(Maybe Nat),
+                                                              _umstGatewayARN ::
+                                                              !Text,
                                                               _umstHourOfDay ::
                                                               !Nat,
                                                               _umstMinuteOfHour
-                                                              :: !Nat,
-                                                              _umstDayOfWeek ::
-                                                              !Nat}
+                                                              :: !Nat}
                                     deriving (Eq, Read, Show, Data, Typeable,
                                               Generic)
 
@@ -75,26 +80,36 @@ data UpdateMaintenanceStartTime = UpdateMaintenanceStartTime'{_umstGatewayARN
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
+-- * 'umstDayOfMonth' - The day of the month component of the maintenance start time represented as an ordinal number from 1 to 28, where 1 represents the first day of the month and 28 represents the last day of the month.
+--
+-- * 'umstDayOfWeek' - The day of the week component of the maintenance start time week represented as an ordinal number from 0 to 6, where 0 represents Sunday and 6 Saturday.
+--
 -- * 'umstGatewayARN' - Undocumented member.
 --
 -- * 'umstHourOfDay' - The hour component of the maintenance start time represented as /hh/ , where /hh/ is the hour (00 to 23). The hour of the day is in the time zone of the gateway.
 --
 -- * 'umstMinuteOfHour' - The minute component of the maintenance start time represented as /mm/ , where /mm/ is the minute (00 to 59). The minute of the hour is in the time zone of the gateway.
---
--- * 'umstDayOfWeek' - The maintenance start time day of the week represented as an ordinal number from 0 to 6, where 0 represents Sunday and 6 Saturday.
 updateMaintenanceStartTime
     :: Text -- ^ 'umstGatewayARN'
     -> Natural -- ^ 'umstHourOfDay'
     -> Natural -- ^ 'umstMinuteOfHour'
-    -> Natural -- ^ 'umstDayOfWeek'
     -> UpdateMaintenanceStartTime
 updateMaintenanceStartTime pGatewayARN_ pHourOfDay_
-  pMinuteOfHour_ pDayOfWeek_
-  = UpdateMaintenanceStartTime'{_umstGatewayARN =
-                                  pGatewayARN_,
+  pMinuteOfHour_
+  = UpdateMaintenanceStartTime'{_umstDayOfMonth =
+                                  Nothing,
+                                _umstDayOfWeek = Nothing,
+                                _umstGatewayARN = pGatewayARN_,
                                 _umstHourOfDay = _Nat # pHourOfDay_,
-                                _umstMinuteOfHour = _Nat # pMinuteOfHour_,
-                                _umstDayOfWeek = _Nat # pDayOfWeek_}
+                                _umstMinuteOfHour = _Nat # pMinuteOfHour_}
+
+-- | The day of the month component of the maintenance start time represented as an ordinal number from 1 to 28, where 1 represents the first day of the month and 28 represents the last day of the month.
+umstDayOfMonth :: Lens' UpdateMaintenanceStartTime (Maybe Natural)
+umstDayOfMonth = lens _umstDayOfMonth (\ s a -> s{_umstDayOfMonth = a}) . mapping _Nat
+
+-- | The day of the week component of the maintenance start time week represented as an ordinal number from 0 to 6, where 0 represents Sunday and 6 Saturday.
+umstDayOfWeek :: Lens' UpdateMaintenanceStartTime (Maybe Natural)
+umstDayOfWeek = lens _umstDayOfWeek (\ s a -> s{_umstDayOfWeek = a}) . mapping _Nat
 
 -- | Undocumented member.
 umstGatewayARN :: Lens' UpdateMaintenanceStartTime Text
@@ -107,10 +122,6 @@ umstHourOfDay = lens _umstHourOfDay (\ s a -> s{_umstHourOfDay = a}) . _Nat
 -- | The minute component of the maintenance start time represented as /mm/ , where /mm/ is the minute (00 to 59). The minute of the hour is in the time zone of the gateway.
 umstMinuteOfHour :: Lens' UpdateMaintenanceStartTime Natural
 umstMinuteOfHour = lens _umstMinuteOfHour (\ s a -> s{_umstMinuteOfHour = a}) . _Nat
-
--- | The maintenance start time day of the week represented as an ordinal number from 0 to 6, where 0 represents Sunday and 6 Saturday.
-umstDayOfWeek :: Lens' UpdateMaintenanceStartTime Natural
-umstDayOfWeek = lens _umstDayOfWeek (\ s a -> s{_umstDayOfWeek = a}) . _Nat
 
 instance AWSRequest UpdateMaintenanceStartTime where
         type Rs UpdateMaintenanceStartTime =
@@ -140,10 +151,11 @@ instance ToJSON UpdateMaintenanceStartTime where
         toJSON UpdateMaintenanceStartTime'{..}
           = object
               (catMaybes
-                 [Just ("GatewayARN" .= _umstGatewayARN),
+                 [("DayOfMonth" .=) <$> _umstDayOfMonth,
+                  ("DayOfWeek" .=) <$> _umstDayOfWeek,
+                  Just ("GatewayARN" .= _umstGatewayARN),
                   Just ("HourOfDay" .= _umstHourOfDay),
-                  Just ("MinuteOfHour" .= _umstMinuteOfHour),
-                  Just ("DayOfWeek" .= _umstDayOfWeek)])
+                  Just ("MinuteOfHour" .= _umstMinuteOfHour)])
 
 instance ToPath UpdateMaintenanceStartTime where
         toPath = const "/"
@@ -151,7 +163,7 @@ instance ToPath UpdateMaintenanceStartTime where
 instance ToQuery UpdateMaintenanceStartTime where
         toQuery = const mempty
 
--- | A JSON object containing the of the gateway whose maintenance start time is updated.
+-- | A JSON object containing the Amazon Resource Name (ARN) of the gateway whose maintenance start time is updated.
 --
 --
 --

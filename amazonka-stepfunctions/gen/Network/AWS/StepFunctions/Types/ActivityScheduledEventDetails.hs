@@ -32,14 +32,15 @@ data ActivityScheduledEventDetails = ActivityScheduledEventDetails'{_asedHeartbe
                                                                     _asedInput
                                                                     ::
                                                                     !(Maybe
-                                                                        Text),
+                                                                        (Sensitive
+                                                                           Text)),
                                                                     _asedTimeoutInSeconds
                                                                     ::
                                                                     !(Maybe
                                                                         Integer),
                                                                     _asedResource
                                                                     :: !Text}
-                                       deriving (Eq, Read, Show, Data, Typeable,
+                                       deriving (Eq, Show, Data, Typeable,
                                                  Generic)
 
 -- | Creates a value of 'ActivityScheduledEventDetails' with the minimum fields required to make a request.
@@ -69,7 +70,7 @@ asedHeartbeatInSeconds = lens _asedHeartbeatInSeconds (\ s a -> s{_asedHeartbeat
 
 -- | The JSON data input to the activity task.
 asedInput :: Lens' ActivityScheduledEventDetails (Maybe Text)
-asedInput = lens _asedInput (\ s a -> s{_asedInput = a})
+asedInput = lens _asedInput (\ s a -> s{_asedInput = a}) . mapping _Sensitive
 
 -- | The maximum allowed duration of the activity task.
 asedTimeoutInSeconds :: Lens' ActivityScheduledEventDetails (Maybe Integer)

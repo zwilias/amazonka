@@ -17,6 +17,8 @@
 --
 module Network.AWS.Glue.Types.CrawlerTargets where
 
+import Network.AWS.Glue.Types.CatalogTarget
+import Network.AWS.Glue.Types.DynamoDBTarget
 import Network.AWS.Glue.Types.JdbcTarget
 import Network.AWS.Glue.Types.S3Target
 import Network.AWS.Lens
@@ -27,8 +29,11 @@ import Network.AWS.Prelude
 --
 --
 -- /See:/ 'crawlerTargets' smart constructor.
-data CrawlerTargets = CrawlerTargets'{_ctS3Targets ::
-                                      !(Maybe [S3Target]),
+data CrawlerTargets = CrawlerTargets'{_ctDynamoDBTargets
+                                      :: !(Maybe [DynamoDBTarget]),
+                                      _ctS3Targets :: !(Maybe [S3Target]),
+                                      _ctCatalogTargets ::
+                                      !(Maybe [CatalogTarget]),
                                       _ctJdbcTargets :: !(Maybe [JdbcTarget])}
                         deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -36,18 +41,31 @@ data CrawlerTargets = CrawlerTargets'{_ctS3Targets ::
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'ctS3Targets' - Specifies Amazon S3 targets.
+-- * 'ctDynamoDBTargets' - Specifies Amazon DynamoDB targets.
+--
+-- * 'ctS3Targets' - Specifies Amazon Simple Storage Service (Amazon S3) targets.
+--
+-- * 'ctCatalogTargets' - Specifies AWS Glue Data Catalog targets.
 --
 -- * 'ctJdbcTargets' - Specifies JDBC targets.
 crawlerTargets
     :: CrawlerTargets
 crawlerTargets
-  = CrawlerTargets'{_ctS3Targets = Nothing,
+  = CrawlerTargets'{_ctDynamoDBTargets = Nothing,
+                    _ctS3Targets = Nothing, _ctCatalogTargets = Nothing,
                     _ctJdbcTargets = Nothing}
 
--- | Specifies Amazon S3 targets.
+-- | Specifies Amazon DynamoDB targets.
+ctDynamoDBTargets :: Lens' CrawlerTargets [DynamoDBTarget]
+ctDynamoDBTargets = lens _ctDynamoDBTargets (\ s a -> s{_ctDynamoDBTargets = a}) . _Default . _Coerce
+
+-- | Specifies Amazon Simple Storage Service (Amazon S3) targets.
 ctS3Targets :: Lens' CrawlerTargets [S3Target]
 ctS3Targets = lens _ctS3Targets (\ s a -> s{_ctS3Targets = a}) . _Default . _Coerce
+
+-- | Specifies AWS Glue Data Catalog targets.
+ctCatalogTargets :: Lens' CrawlerTargets [CatalogTarget]
+ctCatalogTargets = lens _ctCatalogTargets (\ s a -> s{_ctCatalogTargets = a}) . _Default . _Coerce
 
 -- | Specifies JDBC targets.
 ctJdbcTargets :: Lens' CrawlerTargets [JdbcTarget]
@@ -58,8 +76,10 @@ instance FromJSON CrawlerTargets where
           = withObject "CrawlerTargets"
               (\ x ->
                  CrawlerTargets' <$>
-                   (x .:? "S3Targets" .!= mempty) <*>
-                     (x .:? "JdbcTargets" .!= mempty))
+                   (x .:? "DynamoDBTargets" .!= mempty) <*>
+                     (x .:? "S3Targets" .!= mempty)
+                     <*> (x .:? "CatalogTargets" .!= mempty)
+                     <*> (x .:? "JdbcTargets" .!= mempty))
 
 instance Hashable CrawlerTargets where
 
@@ -69,5 +89,7 @@ instance ToJSON CrawlerTargets where
         toJSON CrawlerTargets'{..}
           = object
               (catMaybes
-                 [("S3Targets" .=) <$> _ctS3Targets,
+                 [("DynamoDBTargets" .=) <$> _ctDynamoDBTargets,
+                  ("S3Targets" .=) <$> _ctS3Targets,
+                  ("CatalogTargets" .=) <$> _ctCatalogTargets,
                   ("JdbcTargets" .=) <$> _ctJdbcTargets])

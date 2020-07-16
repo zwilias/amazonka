@@ -24,6 +24,7 @@ module Network.AWS.ELBv2.Types.TargetHealthReasonEnum (
     , Elb_RegistrationInProgress
     , Target_DeregistrationInProgress
     , Target_FailedHealthChecks
+    , Target_HealthCheckDisabled
     , Target_IPUnusable
     , Target_InvalidState
     , Target_NotInUse
@@ -56,6 +57,9 @@ pattern Target_DeregistrationInProgress = TargetHealthReasonEnum' "Target.Deregi
 pattern Target_FailedHealthChecks :: TargetHealthReasonEnum
 pattern Target_FailedHealthChecks = TargetHealthReasonEnum' "Target.FailedHealthChecks"
 
+pattern Target_HealthCheckDisabled :: TargetHealthReasonEnum
+pattern Target_HealthCheckDisabled = TargetHealthReasonEnum' "Target.HealthCheckDisabled"
+
 pattern Target_IPUnusable :: TargetHealthReasonEnum
 pattern Target_IPUnusable = TargetHealthReasonEnum' "Target.IpUnusable"
 
@@ -80,6 +84,7 @@ pattern Target_Timeout = TargetHealthReasonEnum' "Target.Timeout"
   Elb_RegistrationInProgress,
   Target_DeregistrationInProgress,
   Target_FailedHealthChecks,
+  Target_HealthCheckDisabled,
   Target_IPUnusable,
   Target_InvalidState,
   Target_NotInUse,
@@ -105,12 +110,13 @@ instance Enum TargetHealthReasonEnum where
         2 -> Elb_RegistrationInProgress
         3 -> Target_DeregistrationInProgress
         4 -> Target_FailedHealthChecks
-        5 -> Target_IPUnusable
-        6 -> Target_InvalidState
-        7 -> Target_NotInUse
-        8 -> Target_NotRegistered
-        9 -> Target_ResponseCodeMismatch
-        10 -> Target_Timeout
+        5 -> Target_HealthCheckDisabled
+        6 -> Target_IPUnusable
+        7 -> Target_InvalidState
+        8 -> Target_NotInUse
+        9 -> Target_NotRegistered
+        10 -> Target_ResponseCodeMismatch
+        11 -> Target_Timeout
         _ -> (error . showText) $ "Unknown index for TargetHealthReasonEnum: " <> toText i
     fromEnum x = case x of
         Elb_InitialHealthChecking -> 0
@@ -118,12 +124,13 @@ instance Enum TargetHealthReasonEnum where
         Elb_RegistrationInProgress -> 2
         Target_DeregistrationInProgress -> 3
         Target_FailedHealthChecks -> 4
-        Target_IPUnusable -> 5
-        Target_InvalidState -> 6
-        Target_NotInUse -> 7
-        Target_NotRegistered -> 8
-        Target_ResponseCodeMismatch -> 9
-        Target_Timeout -> 10
+        Target_HealthCheckDisabled -> 5
+        Target_IPUnusable -> 6
+        Target_InvalidState -> 7
+        Target_NotInUse -> 8
+        Target_NotRegistered -> 9
+        Target_ResponseCodeMismatch -> 10
+        Target_Timeout -> 11
         TargetHealthReasonEnum' name -> (error . showText) $ "Unknown TargetHealthReasonEnum: " <> original name
 
 -- | Represents the bounds of /known/ $TargetHealthReasonEnum.

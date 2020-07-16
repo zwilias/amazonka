@@ -21,7 +21,11 @@ import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.S3.Internal
 
--- | /See:/ 'endEvent' smart constructor.
+-- | A message that indicates the request is complete and no more messages will be sent. You should not assume that the request is complete until the client receives an @EndEvent@ .
+--
+--
+--
+-- /See:/ 'endEvent' smart constructor.
 data EndEvent = EndEvent'
                   deriving (Eq, Read, Show, Data, Typeable, Generic)
 

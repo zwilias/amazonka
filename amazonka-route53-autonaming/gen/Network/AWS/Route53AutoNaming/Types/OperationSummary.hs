@@ -21,7 +21,7 @@ import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Route53AutoNaming.Types.OperationStatus
 
--- | A complex type that contains information about an operation that matches the criteria that you specified in a 'ListOperations' request.
+-- | A complex type that contains information about an operation that matches the criteria that you specified in a <https://docs.aws.amazon.com/cloud-map/latest/api/API_ListOperations.html ListOperations> request.
 --
 --
 --
@@ -35,7 +35,7 @@ data OperationSummary = OperationSummary'{_osStatus
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'osStatus' - The status of the operation. Values include the following:     * __SUBMITTED__ : This is the initial state immediately after you submit a request.     * __PENDING__ : Route 53 is performing the operation.     * __SUCCESS__ : The operation succeeded.     * __FAIL__ : The operation failed. For the failure reason, see @ErrorMessage@ .
+-- * 'osStatus' - The status of the operation. Values include the following:     * __SUBMITTED__ : This is the initial state immediately after you submit a request.     * __PENDING__ : AWS Cloud Map is performing the operation.     * __SUCCESS__ : The operation succeeded.     * __FAIL__ : The operation failed. For the failure reason, see @ErrorMessage@ .
 --
 -- * 'osId' - The ID for an operation.
 operationSummary
@@ -44,7 +44,7 @@ operationSummary
   = OperationSummary'{_osStatus = Nothing,
                       _osId = Nothing}
 
--- | The status of the operation. Values include the following:     * __SUBMITTED__ : This is the initial state immediately after you submit a request.     * __PENDING__ : Route 53 is performing the operation.     * __SUCCESS__ : The operation succeeded.     * __FAIL__ : The operation failed. For the failure reason, see @ErrorMessage@ .
+-- | The status of the operation. Values include the following:     * __SUBMITTED__ : This is the initial state immediately after you submit a request.     * __PENDING__ : AWS Cloud Map is performing the operation.     * __SUCCESS__ : The operation succeeded.     * __FAIL__ : The operation failed. For the failure reason, see @ErrorMessage@ .
 osStatus :: Lens' OperationSummary (Maybe OperationStatus)
 osStatus = lens _osStatus (\ s a -> s{_osStatus = a})
 

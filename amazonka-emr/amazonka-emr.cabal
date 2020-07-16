@@ -55,6 +55,8 @@ library
         , Network.AWS.EMR.DescribeCluster
         , Network.AWS.EMR.DescribeSecurityConfiguration
         , Network.AWS.EMR.DescribeStep
+        , Network.AWS.EMR.GetBlockPublicAccessConfiguration
+        , Network.AWS.EMR.GetManagedScalingPolicy
         , Network.AWS.EMR.ListBootstrapActions
         , Network.AWS.EMR.ListClusters
         , Network.AWS.EMR.ListInstanceFleets
@@ -62,10 +64,14 @@ library
         , Network.AWS.EMR.ListInstances
         , Network.AWS.EMR.ListSecurityConfigurations
         , Network.AWS.EMR.ListSteps
+        , Network.AWS.EMR.ModifyCluster
         , Network.AWS.EMR.ModifyInstanceFleet
         , Network.AWS.EMR.ModifyInstanceGroups
         , Network.AWS.EMR.PutAutoScalingPolicy
+        , Network.AWS.EMR.PutBlockPublicAccessConfiguration
+        , Network.AWS.EMR.PutManagedScalingPolicy
         , Network.AWS.EMR.RemoveAutoScalingPolicy
+        , Network.AWS.EMR.RemoveManagedScalingPolicy
         , Network.AWS.EMR.RemoveTags
         , Network.AWS.EMR.RunJobFlow
         , Network.AWS.EMR.SetTerminationProtection
@@ -84,6 +90,8 @@ library
         , Network.AWS.EMR.Types.AutoScalingPolicyStateChangeReason
         , Network.AWS.EMR.Types.AutoScalingPolicyStateChangeReasonCode
         , Network.AWS.EMR.Types.AutoScalingPolicyStatus
+        , Network.AWS.EMR.Types.BlockPublicAccessConfiguration
+        , Network.AWS.EMR.Types.BlockPublicAccessConfigurationMetadata
         , Network.AWS.EMR.Types.BootstrapActionConfig
         , Network.AWS.EMR.Types.CancelStepsInfo
         , Network.AWS.EMR.Types.CancelStepsRequestStatus
@@ -97,6 +105,8 @@ library
         , Network.AWS.EMR.Types.ClusterTimeline
         , Network.AWS.EMR.Types.Command
         , Network.AWS.EMR.Types.ComparisonOperator
+        , Network.AWS.EMR.Types.ComputeLimits
+        , Network.AWS.EMR.Types.ComputeLimitsUnitType
         , Network.AWS.EMR.Types.Configuration
         , Network.AWS.EMR.Types.EBSBlockDevice
         , Network.AWS.EMR.Types.EBSBlockDeviceConfig
@@ -139,9 +149,11 @@ library
         , Network.AWS.EMR.Types.JobFlowInstancesConfig
         , Network.AWS.EMR.Types.KerberosAttributes
         , Network.AWS.EMR.Types.KeyValue
+        , Network.AWS.EMR.Types.ManagedScalingPolicy
         , Network.AWS.EMR.Types.MarketType
         , Network.AWS.EMR.Types.MetricDimension
         , Network.AWS.EMR.Types.PlacementType
+        , Network.AWS.EMR.Types.PortRange
         , Network.AWS.EMR.Types.Product
         , Network.AWS.EMR.Types.RepoUpgradeOnBoot
         , Network.AWS.EMR.Types.ScaleDownBehavior
@@ -157,6 +169,7 @@ library
         , Network.AWS.EMR.Types.SpotProvisioningTimeoutAction
         , Network.AWS.EMR.Types.Statistic
         , Network.AWS.EMR.Types.Step
+        , Network.AWS.EMR.Types.StepCancellationOption
         , Network.AWS.EMR.Types.StepConfig
         , Network.AWS.EMR.Types.StepState
         , Network.AWS.EMR.Types.StepStateChangeReason

@@ -20,7 +20,7 @@ module Network.AWS.Glue.Types.CatalogEntry where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | Specifies a table definition in the Data Catalog.
+-- | Specifies a table definition in the AWS Glue Data Catalog.
 --
 --
 --

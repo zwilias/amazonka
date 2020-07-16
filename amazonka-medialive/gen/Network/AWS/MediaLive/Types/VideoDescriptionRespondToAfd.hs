@@ -28,7 +28,7 @@ module Network.AWS.MediaLive.Types.VideoDescriptionRespondToAfd (
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | Placeholder documentation for VideoDescriptionRespondToAfd
+-- | Video Description Respond To Afd
 data VideoDescriptionRespondToAfd = VideoDescriptionRespondToAfd' (CI
                                                                      Text)
                                       deriving (Eq, Ord, Read, Show, Data,

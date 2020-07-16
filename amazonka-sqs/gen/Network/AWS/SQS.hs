@@ -32,17 +32,19 @@
 --
 --     * /Amazon Simple Queue Service Developer Guide/ 
 --
---     * <http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/MakingRequestsArticle.html Making API Requests> 
+--     * <https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-making-api-requests.html Making API Requests> 
 --
---     * <http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-message-attributes.html Using Amazon SQS Message Attributes> 
+--     * <https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-message-attributes.html Amazon SQS Message Attributes> 
 --
---     * <http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-dead-letter-queues.html Using Amazon SQS Dead-Letter Queues> 
+--     * <https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-dead-letter-queues.html Amazon SQS Dead-Letter Queues> 
 --
 --
+--
+--     * <http://docs.aws.amazon.com/cli/latest/reference/sqs/index.html Amazon SQS in the /AWS CLI Command Reference/ > 
 --
 --     * /Amazon Web Services General Reference/ 
 --
---     * <http://docs.aws.amazon.com/general/latest/gr/rande.html#sqs_region Regions and Endpoints> 
+--     * <https://docs.aws.amazon.com/general/latest/gr/rande.html#sqs_region Regions and Endpoints> 
 --
 --
 --
@@ -175,6 +177,9 @@ module Network.AWS.SQS
     -- ** MessageAttribute
     , MessageAttribute (..)
 
+    -- ** MessageSystemAttributeNameForSends
+    , MessageSystemAttributeNameForSends (..)
+
     -- ** QueueAttributeName
     , QueueAttributeName (..)
 
@@ -229,11 +234,21 @@ module Network.AWS.SQS
     , mavBinaryListValues
     , mavDataType
 
+    -- ** MessageSystemAttributeValue
+    , MessageSystemAttributeValue
+    , messageSystemAttributeValue
+    , msavBinaryValue
+    , msavStringListValues
+    , msavStringValue
+    , msavBinaryListValues
+    , msavDataType
+
     -- ** SendMessageBatchRequestEntry
     , SendMessageBatchRequestEntry
     , sendMessageBatchRequestEntry
     , sMessageAttributes
     , sDelaySeconds
+    , sMessageSystemAttributes
     , sMessageDeduplicationId
     , sMessageGroupId
     , sId
@@ -243,6 +258,7 @@ module Network.AWS.SQS
     , SendMessageBatchResultEntry
     , sendMessageBatchResultEntry
     , smbreSequenceNumber
+    , smbreMD5OfMessageSystemAttributes
     , smbreMD5OfMessageAttributes
     , smbreId
     , smbreMessageId

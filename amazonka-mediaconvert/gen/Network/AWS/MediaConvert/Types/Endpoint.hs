@@ -20,7 +20,7 @@ module Network.AWS.MediaConvert.Types.Endpoint where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | Describes account specific API endpoint
+-- | Describes an account-specific API endpoint.
 --
 -- /See:/ 'endpoint' smart constructor.
 newtype Endpoint = Endpoint'{_eURL :: Maybe Text}

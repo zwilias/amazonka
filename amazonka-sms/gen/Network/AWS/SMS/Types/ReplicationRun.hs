@@ -19,17 +19,24 @@ module Network.AWS.SMS.Types.ReplicationRun where
 
 import Network.AWS.Lens
 import Network.AWS.Prelude
+import Network.AWS.SMS.Types.ReplicationRunStageDetails
 import Network.AWS.SMS.Types.ReplicationRunState
 import Network.AWS.SMS.Types.ReplicationRunType
 
--- | Object representing a Replication Run
+-- | Represents a replication run.
+--
+--
 --
 -- /See:/ 'replicationRun' smart constructor.
 data ReplicationRun = ReplicationRun'{_rrState ::
                                       !(Maybe ReplicationRunState),
                                       _rrReplicationRunId :: !(Maybe Text),
+                                      _rrEncrypted :: !(Maybe Bool),
+                                      _rrStageDetails ::
+                                      !(Maybe ReplicationRunStageDetails),
                                       _rrScheduledStartTime :: !(Maybe POSIX),
                                       _rrStatusMessage :: !(Maybe Text),
+                                      _rrKmsKeyId :: !(Maybe Text),
                                       _rrCompletedTime :: !(Maybe POSIX),
                                       _rrAmiId :: !(Maybe Text),
                                       _rrType :: !(Maybe ReplicationRunType),
@@ -40,60 +47,79 @@ data ReplicationRun = ReplicationRun'{_rrState ::
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'rrState' - Undocumented member.
+-- * 'rrState' - The state of the replication run.
 --
--- * 'rrReplicationRunId' - Undocumented member.
+-- * 'rrReplicationRunId' - The identifier of the replication run.
 --
--- * 'rrScheduledStartTime' - Undocumented member.
+-- * 'rrEncrypted' - Whether the replication run should produce encrypted AMI or not. See also @KmsKeyId@ below.
 --
--- * 'rrStatusMessage' - Undocumented member.
+-- * 'rrStageDetails' - Details of the current stage of the replication run.
 --
--- * 'rrCompletedTime' - Undocumented member.
+-- * 'rrScheduledStartTime' - The start time of the next replication run.
 --
--- * 'rrAmiId' - Undocumented member.
+-- * 'rrStatusMessage' - The description of the current status of the replication job.
 --
--- * 'rrType' - Undocumented member.
+-- * 'rrKmsKeyId' - KMS key ID for replication jobs that produce encrypted AMIs. Can be any of the following:      * KMS key ID     * KMS key alias     * ARN referring to KMS key ID     * ARN referring to KMS key alias If encrypted is /true/ but a KMS key id is not specified, the customer's default KMS key for EBS is used. 
 --
--- * 'rrDescription' - Undocumented member.
+-- * 'rrCompletedTime' - The completion time of the last replication run.
+--
+-- * 'rrAmiId' - The identifier of the Amazon Machine Image (AMI) from the replication run.
+--
+-- * 'rrType' - The type of replication run.
+--
+-- * 'rrDescription' - The description of the replication run.
 replicationRun
     :: ReplicationRun
 replicationRun
   = ReplicationRun'{_rrState = Nothing,
                     _rrReplicationRunId = Nothing,
+                    _rrEncrypted = Nothing, _rrStageDetails = Nothing,
                     _rrScheduledStartTime = Nothing,
-                    _rrStatusMessage = Nothing,
+                    _rrStatusMessage = Nothing, _rrKmsKeyId = Nothing,
                     _rrCompletedTime = Nothing, _rrAmiId = Nothing,
                     _rrType = Nothing, _rrDescription = Nothing}
 
--- | Undocumented member.
+-- | The state of the replication run.
 rrState :: Lens' ReplicationRun (Maybe ReplicationRunState)
 rrState = lens _rrState (\ s a -> s{_rrState = a})
 
--- | Undocumented member.
+-- | The identifier of the replication run.
 rrReplicationRunId :: Lens' ReplicationRun (Maybe Text)
 rrReplicationRunId = lens _rrReplicationRunId (\ s a -> s{_rrReplicationRunId = a})
 
--- | Undocumented member.
+-- | Whether the replication run should produce encrypted AMI or not. See also @KmsKeyId@ below.
+rrEncrypted :: Lens' ReplicationRun (Maybe Bool)
+rrEncrypted = lens _rrEncrypted (\ s a -> s{_rrEncrypted = a})
+
+-- | Details of the current stage of the replication run.
+rrStageDetails :: Lens' ReplicationRun (Maybe ReplicationRunStageDetails)
+rrStageDetails = lens _rrStageDetails (\ s a -> s{_rrStageDetails = a})
+
+-- | The start time of the next replication run.
 rrScheduledStartTime :: Lens' ReplicationRun (Maybe UTCTime)
 rrScheduledStartTime = lens _rrScheduledStartTime (\ s a -> s{_rrScheduledStartTime = a}) . mapping _Time
 
--- | Undocumented member.
+-- | The description of the current status of the replication job.
 rrStatusMessage :: Lens' ReplicationRun (Maybe Text)
 rrStatusMessage = lens _rrStatusMessage (\ s a -> s{_rrStatusMessage = a})
 
--- | Undocumented member.
+-- | KMS key ID for replication jobs that produce encrypted AMIs. Can be any of the following:      * KMS key ID     * KMS key alias     * ARN referring to KMS key ID     * ARN referring to KMS key alias If encrypted is /true/ but a KMS key id is not specified, the customer's default KMS key for EBS is used. 
+rrKmsKeyId :: Lens' ReplicationRun (Maybe Text)
+rrKmsKeyId = lens _rrKmsKeyId (\ s a -> s{_rrKmsKeyId = a})
+
+-- | The completion time of the last replication run.
 rrCompletedTime :: Lens' ReplicationRun (Maybe UTCTime)
 rrCompletedTime = lens _rrCompletedTime (\ s a -> s{_rrCompletedTime = a}) . mapping _Time
 
--- | Undocumented member.
+-- | The identifier of the Amazon Machine Image (AMI) from the replication run.
 rrAmiId :: Lens' ReplicationRun (Maybe Text)
 rrAmiId = lens _rrAmiId (\ s a -> s{_rrAmiId = a})
 
--- | Undocumented member.
+-- | The type of replication run.
 rrType :: Lens' ReplicationRun (Maybe ReplicationRunType)
 rrType = lens _rrType (\ s a -> s{_rrType = a})
 
--- | Undocumented member.
+-- | The description of the replication run.
 rrDescription :: Lens' ReplicationRun (Maybe Text)
 rrDescription = lens _rrDescription (\ s a -> s{_rrDescription = a})
 
@@ -103,8 +129,11 @@ instance FromJSON ReplicationRun where
               (\ x ->
                  ReplicationRun' <$>
                    (x .:? "state") <*> (x .:? "replicationRunId") <*>
-                     (x .:? "scheduledStartTime")
+                     (x .:? "encrypted")
+                     <*> (x .:? "stageDetails")
+                     <*> (x .:? "scheduledStartTime")
                      <*> (x .:? "statusMessage")
+                     <*> (x .:? "kmsKeyId")
                      <*> (x .:? "completedTime")
                      <*> (x .:? "amiId")
                      <*> (x .:? "type")

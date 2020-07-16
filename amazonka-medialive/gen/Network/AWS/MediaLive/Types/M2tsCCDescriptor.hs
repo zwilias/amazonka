@@ -27,7 +27,7 @@ module Network.AWS.MediaLive.Types.M2tsCCDescriptor (
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | Placeholder documentation for M2tsCcDescriptor
+-- | M2ts Cc Descriptor
 data M2tsCCDescriptor = M2tsCCDescriptor' (CI Text)
                           deriving (Eq, Ord, Read, Show, Data, Typeable,
                                     Generic)

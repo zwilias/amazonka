@@ -21,7 +21,9 @@ import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.S3.Internal
 
--- | Specifies the use of SSE-KMS to encrypt delievered Inventory reports.
+-- | Specifies the use of SSE-KMS to encrypt delivered inventory reports.
+--
+--
 --
 -- /See:/ 'sSEKMS' smart constructor.
 newtype SSEKMS = SSEKMS'{_ssekKeyId ::
@@ -32,14 +34,14 @@ newtype SSEKMS = SSEKMS'{_ssekKeyId ::
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'ssekKeyId' - Specifies the ID of the AWS Key Management Service (KMS) master encryption key to use for encrypting Inventory reports.
+-- * 'ssekKeyId' - Specifies the ID of the AWS Key Management Service (AWS KMS) symmetric customer managed customer master key (CMK) to use for encrypting inventory reports.
 sSEKMS
     :: Text -- ^ 'ssekKeyId'
     -> SSEKMS
 sSEKMS pKeyId_
   = SSEKMS'{_ssekKeyId = _Sensitive # pKeyId_}
 
--- | Specifies the ID of the AWS Key Management Service (KMS) master encryption key to use for encrypting Inventory reports.
+-- | Specifies the ID of the AWS Key Management Service (AWS KMS) symmetric customer managed customer master key (CMK) to use for encrypting inventory reports.
 ssekKeyId :: Lens' SSEKMS Text
 ssekKeyId = lens _ssekKeyId (\ s a -> s{_ssekKeyId = a}) . _Sensitive
 

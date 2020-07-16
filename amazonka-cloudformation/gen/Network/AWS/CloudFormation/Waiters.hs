@@ -20,10 +20,44 @@ import Network.AWS.CloudFormation.DescribeStacks
 import Network.AWS.CloudFormation.DescribeStacks
 import Network.AWS.CloudFormation.DescribeStacks
 import Network.AWS.CloudFormation.DescribeStacks
+import Network.AWS.CloudFormation.DescribeStacks
+import Network.AWS.CloudFormation.DescribeTypeRegistration
 import Network.AWS.CloudFormation.Types
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Waiter
+
+-- | Polls 'Network.AWS.CloudFormation.DescribeStacks' every 30 seconds until a successful state is reached. An error is returned after 120 failed checks.
+stackImportComplete :: Wait DescribeStacks
+stackImportComplete
+  = Wait{_waitName = "StackImportComplete",
+         _waitAttempts = 120, _waitDelay = 30,
+         _waitAcceptors =
+           [matchAll "IMPORT_COMPLETE" AcceptSuccess
+              (folding (concatOf (dsrsStacks . to toList)) .
+                 staStackStatus
+                 . to toTextCI),
+            matchAny "ROLLBACK_COMPLETE" AcceptFailure
+              (folding (concatOf (dsrsStacks . to toList)) .
+                 staStackStatus
+                 . to toTextCI),
+            matchAny "ROLLBACK_FAILED" AcceptFailure
+              (folding (concatOf (dsrsStacks . to toList)) .
+                 staStackStatus
+                 . to toTextCI),
+            matchAny "IMPORT_ROLLBACK_IN_PROGRESS" AcceptFailure
+              (folding (concatOf (dsrsStacks . to toList)) .
+                 staStackStatus
+                 . to toTextCI),
+            matchAny "IMPORT_ROLLBACK_FAILED" AcceptFailure
+              (folding (concatOf (dsrsStacks . to toList)) .
+                 staStackStatus
+                 . to toTextCI),
+            matchAny "IMPORT_ROLLBACK_COMPLETE" AcceptFailure
+              (folding (concatOf (dsrsStacks . to toList)) .
+                 staStackStatus
+                 . to toTextCI),
+            matchError "ValidationError" AcceptFailure]}
 
 -- | Polls 'Network.AWS.CloudFormation.DescribeStacks' every 30 seconds until a successful state is reached. An error is returned after 120 failed checks.
 stackCreateComplete :: Wait DescribeStacks
@@ -33,29 +67,40 @@ stackCreateComplete
          _waitAcceptors =
            [matchAll "CREATE_COMPLETE" AcceptSuccess
               (folding (concatOf (dsrsStacks . to toList)) .
-                 sStackStatus
+                 staStackStatus
                  . to toTextCI),
             matchAny "CREATE_FAILED" AcceptFailure
               (folding (concatOf (dsrsStacks . to toList)) .
-                 sStackStatus
+                 staStackStatus
                  . to toTextCI),
             matchAny "DELETE_COMPLETE" AcceptFailure
               (folding (concatOf (dsrsStacks . to toList)) .
-                 sStackStatus
+                 staStackStatus
                  . to toTextCI),
             matchAny "DELETE_FAILED" AcceptFailure
               (folding (concatOf (dsrsStacks . to toList)) .
-                 sStackStatus
+                 staStackStatus
                  . to toTextCI),
             matchAny "ROLLBACK_FAILED" AcceptFailure
               (folding (concatOf (dsrsStacks . to toList)) .
-                 sStackStatus
+                 staStackStatus
                  . to toTextCI),
             matchAny "ROLLBACK_COMPLETE" AcceptFailure
               (folding (concatOf (dsrsStacks . to toList)) .
-                 sStackStatus
+                 staStackStatus
                  . to toTextCI),
             matchError "ValidationError" AcceptFailure]}
+
+-- | Polls 'Network.AWS.CloudFormation.DescribeTypeRegistration' every 30 seconds until a successful state is reached. An error is returned after 120 failed checks.
+typeRegistrationComplete :: Wait DescribeTypeRegistration
+typeRegistrationComplete
+  = Wait{_waitName = "TypeRegistrationComplete",
+         _waitAttempts = 120, _waitDelay = 30,
+         _waitAcceptors =
+           [matchAll "COMPLETE" AcceptSuccess
+              (dtrrsProgressStatus . _Just . to toTextCI),
+            matchAll "FAILED" AcceptFailure
+              (dtrrsProgressStatus . _Just . to toTextCI)]}
 
 -- | Polls 'Network.AWS.CloudFormation.DescribeStacks' every 30 seconds until a successful state is reached. An error is returned after 120 failed checks.
 stackUpdateComplete :: Wait DescribeStacks
@@ -65,19 +110,19 @@ stackUpdateComplete
          _waitAcceptors =
            [matchAll "UPDATE_COMPLETE" AcceptSuccess
               (folding (concatOf (dsrsStacks . to toList)) .
-                 sStackStatus
+                 staStackStatus
                  . to toTextCI),
             matchAny "UPDATE_FAILED" AcceptFailure
               (folding (concatOf (dsrsStacks . to toList)) .
-                 sStackStatus
+                 staStackStatus
                  . to toTextCI),
             matchAny "UPDATE_ROLLBACK_FAILED" AcceptFailure
               (folding (concatOf (dsrsStacks . to toList)) .
-                 sStackStatus
+                 staStackStatus
                  . to toTextCI),
             matchAny "UPDATE_ROLLBACK_COMPLETE" AcceptFailure
               (folding (concatOf (dsrsStacks . to toList)) .
-                 sStackStatus
+                 staStackStatus
                  . to toTextCI),
             matchError "ValidationError" AcceptFailure]}
 
@@ -98,28 +143,32 @@ stackDeleteComplete
          _waitAcceptors =
            [matchAll "DELETE_COMPLETE" AcceptSuccess
               (folding (concatOf (dsrsStacks . to toList)) .
-                 sStackStatus
+                 staStackStatus
                  . to toTextCI),
             matchError "ValidationError" AcceptSuccess,
             matchAny "DELETE_FAILED" AcceptFailure
               (folding (concatOf (dsrsStacks . to toList)) .
-                 sStackStatus
+                 staStackStatus
                  . to toTextCI),
             matchAny "CREATE_FAILED" AcceptFailure
               (folding (concatOf (dsrsStacks . to toList)) .
-                 sStackStatus
+                 staStackStatus
                  . to toTextCI),
             matchAny "ROLLBACK_FAILED" AcceptFailure
               (folding (concatOf (dsrsStacks . to toList)) .
-                 sStackStatus
-                 . to toTextCI),
-            matchAny "UPDATE_ROLLBACK_FAILED" AcceptFailure
-              (folding (concatOf (dsrsStacks . to toList)) .
-                 sStackStatus
+                 staStackStatus
                  . to toTextCI),
             matchAny "UPDATE_ROLLBACK_IN_PROGRESS" AcceptFailure
               (folding (concatOf (dsrsStacks . to toList)) .
-                 sStackStatus
+                 staStackStatus
+                 . to toTextCI),
+            matchAny "UPDATE_ROLLBACK_FAILED" AcceptFailure
+              (folding (concatOf (dsrsStacks . to toList)) .
+                 staStackStatus
+                 . to toTextCI),
+            matchAny "UPDATE_ROLLBACK_COMPLETE" AcceptFailure
+              (folding (concatOf (dsrsStacks . to toList)) .
+                 staStackStatus
                  . to toTextCI)]}
 
 -- | Polls 'Network.AWS.CloudFormation.DescribeChangeSet' every 30 seconds until a successful state is reached. An error is returned after 120 failed checks.
@@ -129,7 +178,7 @@ changeSetCreateComplete
          _waitAttempts = 120, _waitDelay = 30,
          _waitAcceptors =
            [matchAll "CREATE_COMPLETE" AcceptSuccess
-              (desrsStatus . to toTextCI),
+              (dscrbchngstrsStatus . to toTextCI),
             matchAll "FAILED" AcceptFailure
-              (desrsStatus . to toTextCI),
+              (dscrbchngstrsStatus . to toTextCI),
             matchError "ValidationError" AcceptFailure]}

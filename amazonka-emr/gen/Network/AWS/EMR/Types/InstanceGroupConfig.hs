@@ -52,7 +52,7 @@ data InstanceGroupConfig = InstanceGroupConfig'{_igcEBSConfiguration
 --
 -- * 'igcEBSConfiguration' - EBS configurations that will be attached to each EC2 instance in the instance group.
 --
--- * 'igcBidPrice' - Bid price for each EC2 instance in the instance group when launching nodes as Spot Instances, expressed in USD.
+-- * 'igcBidPrice' - The bid price for each EC2 Spot instance type as defined by @InstanceType@ . Expressed in USD. If neither @BidPrice@ nor @BidPriceAsPercentageOfOnDemandPrice@ is provided, @BidPriceAsPercentageOfOnDemandPrice@ defaults to 100%.
 --
 -- * 'igcConfigurations' - The list of configurations supplied for an EMR cluster instance group. You can specify a separate configuration for each instance group (master, core, and task).
 --
@@ -87,7 +87,7 @@ instanceGroupConfig pInstanceRole_ pInstanceType_
 igcEBSConfiguration :: Lens' InstanceGroupConfig (Maybe EBSConfiguration)
 igcEBSConfiguration = lens _igcEBSConfiguration (\ s a -> s{_igcEBSConfiguration = a})
 
--- | Bid price for each EC2 instance in the instance group when launching nodes as Spot Instances, expressed in USD.
+-- | The bid price for each EC2 Spot instance type as defined by @InstanceType@ . Expressed in USD. If neither @BidPrice@ nor @BidPriceAsPercentageOfOnDemandPrice@ is provided, @BidPriceAsPercentageOfOnDemandPrice@ defaults to 100%.
 igcBidPrice :: Lens' InstanceGroupConfig (Maybe Text)
 igcBidPrice = lens _igcBidPrice (\ s a -> s{_igcBidPrice = a})
 

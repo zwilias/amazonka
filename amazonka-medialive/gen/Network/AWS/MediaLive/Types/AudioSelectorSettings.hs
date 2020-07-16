@@ -20,15 +20,19 @@ module Network.AWS.MediaLive.Types.AudioSelectorSettings where
 import Network.AWS.Lens
 import Network.AWS.MediaLive.Types.AudioLanguageSelection
 import Network.AWS.MediaLive.Types.AudioPidSelection
+import Network.AWS.MediaLive.Types.AudioTrackSelection
 import Network.AWS.Prelude
 
--- | Placeholder documentation for AudioSelectorSettings
+-- | Audio Selector Settings
 --
 -- /See:/ 'audioSelectorSettings' smart constructor.
 data AudioSelectorSettings = AudioSelectorSettings'{_assAudioLanguageSelection
                                                     ::
                                                     !(Maybe
                                                         AudioLanguageSelection),
+                                                    _assAudioTrackSelection ::
+                                                    !(Maybe
+                                                        AudioTrackSelection),
                                                     _assAudioPidSelection ::
                                                     !(Maybe AudioPidSelection)}
                                deriving (Eq, Read, Show, Data, Typeable,
@@ -40,17 +44,24 @@ data AudioSelectorSettings = AudioSelectorSettings'{_assAudioLanguageSelection
 --
 -- * 'assAudioLanguageSelection' - Undocumented member.
 --
+-- * 'assAudioTrackSelection' - Undocumented member.
+--
 -- * 'assAudioPidSelection' - Undocumented member.
 audioSelectorSettings
     :: AudioSelectorSettings
 audioSelectorSettings
   = AudioSelectorSettings'{_assAudioLanguageSelection =
                              Nothing,
+                           _assAudioTrackSelection = Nothing,
                            _assAudioPidSelection = Nothing}
 
 -- | Undocumented member.
 assAudioLanguageSelection :: Lens' AudioSelectorSettings (Maybe AudioLanguageSelection)
 assAudioLanguageSelection = lens _assAudioLanguageSelection (\ s a -> s{_assAudioLanguageSelection = a})
+
+-- | Undocumented member.
+assAudioTrackSelection :: Lens' AudioSelectorSettings (Maybe AudioTrackSelection)
+assAudioTrackSelection = lens _assAudioTrackSelection (\ s a -> s{_assAudioTrackSelection = a})
 
 -- | Undocumented member.
 assAudioPidSelection :: Lens' AudioSelectorSettings (Maybe AudioPidSelection)
@@ -62,7 +73,8 @@ instance FromJSON AudioSelectorSettings where
               (\ x ->
                  AudioSelectorSettings' <$>
                    (x .:? "audioLanguageSelection") <*>
-                     (x .:? "audioPidSelection"))
+                     (x .:? "audioTrackSelection")
+                     <*> (x .:? "audioPidSelection"))
 
 instance Hashable AudioSelectorSettings where
 
@@ -74,4 +86,6 @@ instance ToJSON AudioSelectorSettings where
               (catMaybes
                  [("audioLanguageSelection" .=) <$>
                     _assAudioLanguageSelection,
+                  ("audioTrackSelection" .=) <$>
+                    _assAudioTrackSelection,
                   ("audioPidSelection" .=) <$> _assAudioPidSelection])

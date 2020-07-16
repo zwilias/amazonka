@@ -36,7 +36,7 @@ data DiscoveredResource = DiscoveredResource'{_drDescription
 --
 -- * 'drDescription' - A description that can be free-form text to record additional detail about the discovered resource for clarity or later reference.
 --
--- * 'drConfigurationId' - The configurationId in ADS that uniquely identifies the on-premise resource.
+-- * 'drConfigurationId' - The configurationId in Application Discovery Service that uniquely identifies the on-premise resource.
 discoveredResource
     :: Text -- ^ 'drConfigurationId'
     -> DiscoveredResource
@@ -48,7 +48,7 @@ discoveredResource pConfigurationId_
 drDescription :: Lens' DiscoveredResource (Maybe Text)
 drDescription = lens _drDescription (\ s a -> s{_drDescription = a})
 
--- | The configurationId in ADS that uniquely identifies the on-premise resource.
+-- | The configurationId in Application Discovery Service that uniquely identifies the on-premise resource.
 drConfigurationId :: Lens' DiscoveredResource Text
 drConfigurationId = lens _drConfigurationId (\ s a -> s{_drConfigurationId = a})
 

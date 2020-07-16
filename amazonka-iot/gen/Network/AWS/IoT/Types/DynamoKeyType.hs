@@ -19,8 +19,8 @@
 module Network.AWS.IoT.Types.DynamoKeyType (
   DynamoKeyType (
     ..
-    , Number
-    , String
+    , DKTNumber
+    , DKTString
     )
   ) where
 
@@ -31,15 +31,15 @@ data DynamoKeyType = DynamoKeyType' (CI Text)
                        deriving (Eq, Ord, Read, Show, Data, Typeable,
                                  Generic)
 
-pattern Number :: DynamoKeyType
-pattern Number = DynamoKeyType' "NUMBER"
+pattern DKTNumber :: DynamoKeyType
+pattern DKTNumber = DynamoKeyType' "NUMBER"
 
-pattern String :: DynamoKeyType
-pattern String = DynamoKeyType' "STRING"
+pattern DKTString :: DynamoKeyType
+pattern DKTString = DynamoKeyType' "STRING"
 
 {-# COMPLETE
-  Number,
-  String,
+  DKTNumber,
+  DKTString,
   DynamoKeyType' #-}
 
 instance FromText DynamoKeyType where
@@ -54,20 +54,20 @@ instance ToText DynamoKeyType where
 --   fromEnum is a partial function, and will error on values unknown at generation time.
 instance Enum DynamoKeyType where
     toEnum i = case i of
-        0 -> Number
-        1 -> String
+        0 -> DKTNumber
+        1 -> DKTString
         _ -> (error . showText) $ "Unknown index for DynamoKeyType: " <> toText i
     fromEnum x = case x of
-        Number -> 0
-        String -> 1
+        DKTNumber -> 0
+        DKTString -> 1
         DynamoKeyType' name -> (error . showText) $ "Unknown DynamoKeyType: " <> original name
 
 -- | Represents the bounds of /known/ $DynamoKeyType.
 --   AWS may have added more since the source was generated.
 --   This instance exists only for backward compatibility.
 instance Bounded DynamoKeyType where
-    minBound = Number
-    maxBound = String
+    minBound = DKTNumber
+    maxBound = DKTString
 
 instance Hashable     DynamoKeyType
 instance NFData       DynamoKeyType

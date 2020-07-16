@@ -21,9 +21,9 @@
 -- Rebuilds the specified WorkSpace.
 --
 --
--- You cannot rebuild a WorkSpace unless its state is @AVAILABLE@ , @ERROR@ , or @UNHEALTHY@ .
+-- You cannot rebuild a WorkSpace unless its state is @AVAILABLE@ , @ERROR@ , @UNHEALTHY@ , or @STOPPED@ .
 --
--- Rebuilding a WorkSpace is a potentially destructive action that can result in the loss of data. For more information, see <http://docs.aws.amazon.com/workspaces/latest/adminguide/reset-workspace.html Rebuild a WorkSpace> .
+-- Rebuilding a WorkSpace is a potentially destructive action that can result in the loss of data. For more information, see <https://docs.aws.amazon.com/workspaces/latest/adminguide/reset-workspace.html Rebuild a WorkSpace> .
 --
 -- This operation is asynchronous and returns before the WorkSpaces have been completely rebuilt.
 --
@@ -123,7 +123,7 @@ data RebuildWorkspacesResponse = RebuildWorkspacesResponse'{_rwrsFailedRequests
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'rwrsFailedRequests' - Information about the WorkSpace if it could not be rebuilt.
+-- * 'rwrsFailedRequests' - Information about the WorkSpace that could not be rebuilt.
 --
 -- * 'rwrsResponseStatus' - -- | The response status code.
 rebuildWorkspacesResponse
@@ -134,7 +134,7 @@ rebuildWorkspacesResponse pResponseStatus_
                                  Nothing,
                                _rwrsResponseStatus = pResponseStatus_}
 
--- | Information about the WorkSpace if it could not be rebuilt.
+-- | Information about the WorkSpace that could not be rebuilt.
 rwrsFailedRequests :: Lens' RebuildWorkspacesResponse [FailedWorkspaceChangeRequest]
 rwrsFailedRequests = lens _rwrsFailedRequests (\ s a -> s{_rwrsFailedRequests = a}) . _Default . _Coerce
 

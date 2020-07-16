@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Creates a stream for delivering one or more large files in chunks over MQTT. A stream transports data bytes in chunks or blocks packaged as MQTT messages from a source like S3. You can have one or more files associated with a stream. The total size of a file associated with the stream cannot exceed more than 2 MB. The stream will be created with version 0. If a stream is created with the same streamID as a stream that existed and was deleted within last 90 days, we will resurrect that old stream by incrementing the version by 1.
+-- Creates a stream for delivering one or more large files in chunks over MQTT. A stream transports data bytes in chunks or blocks packaged as MQTT messages from a source like S3. You can have one or more files associated with a stream.
 --
 --
 module Network.AWS.IoT.CreateStream
@@ -28,6 +28,7 @@ module Network.AWS.IoT.CreateStream
     , CreateStream
     -- * Request Lenses
     , csDescription
+    , csTags
     , csStreamId
     , csFiles
     , csRoleARN
@@ -53,6 +54,7 @@ import Network.AWS.Response
 -- | /See:/ 'createStream' smart constructor.
 data CreateStream = CreateStream'{_csDescription ::
                                   !(Maybe Text),
+                                  _csTags :: !(Maybe [Tag]),
                                   _csStreamId :: !Text,
                                   _csFiles :: !(List1 StreamFile),
                                   _csRoleARN :: !Text}
@@ -63,6 +65,8 @@ data CreateStream = CreateStream'{_csDescription ::
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'csDescription' - A description of the stream.
+--
+-- * 'csTags' - Metadata which can be used to manage streams.
 --
 -- * 'csStreamId' - The stream ID.
 --
@@ -76,12 +80,16 @@ createStream
     -> CreateStream
 createStream pStreamId_ pFiles_ pRoleARN_
   = CreateStream'{_csDescription = Nothing,
-                  _csStreamId = pStreamId_,
+                  _csTags = Nothing, _csStreamId = pStreamId_,
                   _csFiles = _List1 # pFiles_, _csRoleARN = pRoleARN_}
 
 -- | A description of the stream.
 csDescription :: Lens' CreateStream (Maybe Text)
 csDescription = lens _csDescription (\ s a -> s{_csDescription = a})
+
+-- | Metadata which can be used to manage streams.
+csTags :: Lens' CreateStream [Tag]
+csTags = lens _csTags (\ s a -> s{_csTags = a}) . _Default . _Coerce
 
 -- | The stream ID.
 csStreamId :: Lens' CreateStream Text
@@ -119,7 +127,7 @@ instance ToJSON CreateStream where
           = object
               (catMaybes
                  [("description" .=) <$> _csDescription,
-                  Just ("files" .= _csFiles),
+                  ("tags" .=) <$> _csTags, Just ("files" .= _csFiles),
                   Just ("roleArn" .= _csRoleARN)])
 
 instance ToPath CreateStream where

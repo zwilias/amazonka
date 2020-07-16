@@ -34,30 +34,30 @@ data Ac3Settings = Ac3Settings'{_aLfeFilter ::
                                 !(Maybe Ac3MetadataControl),
                                 _aBitstreamMode :: !(Maybe Ac3BitstreamMode),
                                 _aCodingMode :: !(Maybe Ac3CodingMode),
-                                _aSampleRate :: !(Maybe Int),
+                                _aSampleRate :: !(Maybe Nat),
                                 _aDynamicRangeCompressionProfile ::
                                 !(Maybe Ac3DynamicRangeCompressionProfile),
-                                _aBitrate :: !(Maybe Int),
-                                _aDialnorm :: !(Maybe Int)}
+                                _aBitrate :: !(Maybe Nat),
+                                _aDialnorm :: !(Maybe Nat)}
                      deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'Ac3Settings' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'aLfeFilter' - Undocumented member.
+-- * 'aLfeFilter' - Applies a 120Hz lowpass filter to the LFE channel prior to encoding. Only valid with 3_2_LFE coding mode.
 --
--- * 'aMetadataControl' - Undocumented member.
+-- * 'aMetadataControl' - When set to FOLLOW_INPUT, encoder metadata will be sourced from the DD, DD+, or DolbyE decoder that supplied this audio data. If audio was not supplied from one of these streams, then the static metadata settings will be used.
 --
--- * 'aBitstreamMode' - Undocumented member.
+-- * 'aBitstreamMode' - Specify the bitstream mode for the AC-3 stream that the encoder emits. For more information about the AC3 bitstream mode, see ATSC A/52-2012 (Annex E).
 --
--- * 'aCodingMode' - Undocumented member.
+-- * 'aCodingMode' - Dolby Digital coding mode. Determines number of channels.
 --
--- * 'aSampleRate' - Sample rate in hz. Sample rate is always 48000.
+-- * 'aSampleRate' - This value is always 48000. It represents the sample rate in Hz.
 --
--- * 'aDynamicRangeCompressionProfile' - Undocumented member.
+-- * 'aDynamicRangeCompressionProfile' - If set to FILM_STANDARD, adds dynamic range compression signaling to the output bitstream as defined in the Dolby Digital specification.
 --
--- * 'aBitrate' - Average bitrate in bits/second. Valid bitrates depend on the coding mode.
+-- * 'aBitrate' - Specify the average bitrate in bits per second. Valid bitrates depend on the coding mode.
 --
 -- * 'aDialnorm' - Sets the dialnorm for the output. If blank and input audio is Dolby Digital, dialnorm will be passed through.
 ac3Settings
@@ -70,37 +70,37 @@ ac3Settings
                  _aDynamicRangeCompressionProfile = Nothing,
                  _aBitrate = Nothing, _aDialnorm = Nothing}
 
--- | Undocumented member.
+-- | Applies a 120Hz lowpass filter to the LFE channel prior to encoding. Only valid with 3_2_LFE coding mode.
 aLfeFilter :: Lens' Ac3Settings (Maybe Ac3LfeFilter)
 aLfeFilter = lens _aLfeFilter (\ s a -> s{_aLfeFilter = a})
 
--- | Undocumented member.
+-- | When set to FOLLOW_INPUT, encoder metadata will be sourced from the DD, DD+, or DolbyE decoder that supplied this audio data. If audio was not supplied from one of these streams, then the static metadata settings will be used.
 aMetadataControl :: Lens' Ac3Settings (Maybe Ac3MetadataControl)
 aMetadataControl = lens _aMetadataControl (\ s a -> s{_aMetadataControl = a})
 
--- | Undocumented member.
+-- | Specify the bitstream mode for the AC-3 stream that the encoder emits. For more information about the AC3 bitstream mode, see ATSC A/52-2012 (Annex E).
 aBitstreamMode :: Lens' Ac3Settings (Maybe Ac3BitstreamMode)
 aBitstreamMode = lens _aBitstreamMode (\ s a -> s{_aBitstreamMode = a})
 
--- | Undocumented member.
+-- | Dolby Digital coding mode. Determines number of channels.
 aCodingMode :: Lens' Ac3Settings (Maybe Ac3CodingMode)
 aCodingMode = lens _aCodingMode (\ s a -> s{_aCodingMode = a})
 
--- | Sample rate in hz. Sample rate is always 48000.
-aSampleRate :: Lens' Ac3Settings (Maybe Int)
-aSampleRate = lens _aSampleRate (\ s a -> s{_aSampleRate = a})
+-- | This value is always 48000. It represents the sample rate in Hz.
+aSampleRate :: Lens' Ac3Settings (Maybe Natural)
+aSampleRate = lens _aSampleRate (\ s a -> s{_aSampleRate = a}) . mapping _Nat
 
--- | Undocumented member.
+-- | If set to FILM_STANDARD, adds dynamic range compression signaling to the output bitstream as defined in the Dolby Digital specification.
 aDynamicRangeCompressionProfile :: Lens' Ac3Settings (Maybe Ac3DynamicRangeCompressionProfile)
 aDynamicRangeCompressionProfile = lens _aDynamicRangeCompressionProfile (\ s a -> s{_aDynamicRangeCompressionProfile = a})
 
--- | Average bitrate in bits/second. Valid bitrates depend on the coding mode.
-aBitrate :: Lens' Ac3Settings (Maybe Int)
-aBitrate = lens _aBitrate (\ s a -> s{_aBitrate = a})
+-- | Specify the average bitrate in bits per second. Valid bitrates depend on the coding mode.
+aBitrate :: Lens' Ac3Settings (Maybe Natural)
+aBitrate = lens _aBitrate (\ s a -> s{_aBitrate = a}) . mapping _Nat
 
 -- | Sets the dialnorm for the output. If blank and input audio is Dolby Digital, dialnorm will be passed through.
-aDialnorm :: Lens' Ac3Settings (Maybe Int)
-aDialnorm = lens _aDialnorm (\ s a -> s{_aDialnorm = a})
+aDialnorm :: Lens' Ac3Settings (Maybe Natural)
+aDialnorm = lens _aDialnorm (\ s a -> s{_aDialnorm = a}) . mapping _Nat
 
 instance FromJSON Ac3Settings where
         parseJSON

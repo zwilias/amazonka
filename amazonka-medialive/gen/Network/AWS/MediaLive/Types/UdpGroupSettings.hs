@@ -22,7 +22,7 @@ import Network.AWS.MediaLive.Types.InputLossActionForUdpOut
 import Network.AWS.MediaLive.Types.UdpTimedMetadataId3Frame
 import Network.AWS.Prelude
 
--- | Placeholder documentation for UdpGroupSettings
+-- | Udp Group Settings
 --
 -- /See:/ 'udpGroupSettings' smart constructor.
 data UdpGroupSettings = UdpGroupSettings'{_ugsTimedMetadataId3Period

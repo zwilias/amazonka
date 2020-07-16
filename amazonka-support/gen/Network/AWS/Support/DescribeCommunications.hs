@@ -56,11 +56,7 @@ import Network.AWS.Response
 import Network.AWS.Support.Types
 import Network.AWS.Support.Types.Product
 
--- | 
---
---
---
--- /See:/ 'describeCommunications' smart constructor.
+-- | /See:/ 'describeCommunications' smart constructor.
 data DescribeCommunications = DescribeCommunications'{_dAfterTime
                                                       :: !(Maybe Text),
                                                       _dBeforeTime ::

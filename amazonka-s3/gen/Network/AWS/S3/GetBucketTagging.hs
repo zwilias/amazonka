@@ -19,6 +19,28 @@
 -- Portability : non-portable (GHC extensions)
 --
 -- Returns the tag set associated with the bucket.
+--
+--
+-- To use this operation, you must have permission to perform the @s3:GetBucketTagging@ action. By default, the bucket owner has this permission and can grant this permission to others.
+--
+-- @GetBucketTagging@ has the following special error:
+--
+--     * Error code: @NoSuchTagSetError@ 
+--
+--     * Description: There is no tag set associated with the bucket.
+--
+--
+--
+--
+--
+-- The following operations are related to @GetBucketTagging@ :
+--
+--     * 'PutBucketTagging' 
+--
+--     * 'DeleteBucketTagging' 
+--
+--
+--
 module Network.AWS.S3.GetBucketTagging
     (
     -- * Creating a Request
@@ -51,14 +73,14 @@ newtype GetBucketTagging = GetBucketTagging'{_gbtBucket
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'gbtBucket' - Undocumented member.
+-- * 'gbtBucket' - The name of the bucket for which to get the tagging information.
 getBucketTagging
     :: BucketName -- ^ 'gbtBucket'
     -> GetBucketTagging
 getBucketTagging pBucket_
   = GetBucketTagging'{_gbtBucket = pBucket_}
 
--- | Undocumented member.
+-- | The name of the bucket for which to get the tagging information.
 gbtBucket :: Lens' GetBucketTagging BucketName
 gbtBucket = lens _gbtBucket (\ s a -> s{_gbtBucket = a})
 
@@ -100,7 +122,7 @@ data GetBucketTaggingResponse = GetBucketTaggingResponse'{_gbtrsResponseStatus
 --
 -- * 'gbtrsResponseStatus' - -- | The response status code.
 --
--- * 'gbtrsTagSet' - Undocumented member.
+-- * 'gbtrsTagSet' - Contains the tag set.
 getBucketTaggingResponse
     :: Int -- ^ 'gbtrsResponseStatus'
     -> GetBucketTaggingResponse
@@ -113,7 +135,7 @@ getBucketTaggingResponse pResponseStatus_
 gbtrsResponseStatus :: Lens' GetBucketTaggingResponse Int
 gbtrsResponseStatus = lens _gbtrsResponseStatus (\ s a -> s{_gbtrsResponseStatus = a})
 
--- | Undocumented member.
+-- | Contains the tag set.
 gbtrsTagSet :: Lens' GetBucketTaggingResponse [Tag]
 gbtrsTagSet = lens _gbtrsTagSet (\ s a -> s{_gbtrsTagSet = a}) . _Coerce
 

@@ -20,7 +20,7 @@ module Network.AWS.Route53AutoNaming.Types.DNSProperties where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | A complex type that contains the ID for the hosted zone that Route 53 creates when you create a namespace.
+-- | A complex type that contains the ID for the Route 53 hosted zone that AWS Cloud Map creates when you create a namespace.
 --
 --
 --
@@ -33,13 +33,13 @@ newtype DNSProperties = DNSProperties'{_dpHostedZoneId
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dpHostedZoneId' - The ID for the hosted zone that Route 53 creates when you create a namespace.
+-- * 'dpHostedZoneId' - The ID for the Route 53 hosted zone that AWS Cloud Map creates when you create a namespace.
 dnsProperties
     :: DNSProperties
 dnsProperties
   = DNSProperties'{_dpHostedZoneId = Nothing}
 
--- | The ID for the hosted zone that Route 53 creates when you create a namespace.
+-- | The ID for the Route 53 hosted zone that AWS Cloud Map creates when you create a namespace.
 dpHostedZoneId :: Lens' DNSProperties (Maybe Text)
 dpHostedZoneId = lens _dpHostedZoneId (\ s a -> s{_dpHostedZoneId = a})
 

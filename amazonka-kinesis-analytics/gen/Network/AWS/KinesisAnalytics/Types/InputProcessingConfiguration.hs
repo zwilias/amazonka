@@ -21,7 +21,7 @@ import Network.AWS.KinesisAnalytics.Types.InputLambdaProcessor
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | Provides a description of a processor that is used to preprocess the records in the stream before being processed by your application code. Currently, the only input processor available is <https://aws.amazon.com/documentation/lambda/ AWS Lambda> .
+-- | Provides a description of a processor that is used to preprocess the records in the stream before being processed by your application code. Currently, the only input processor available is <https://docs.aws.amazon.com/lambda/ AWS Lambda> .
 --
 --
 --
@@ -36,7 +36,7 @@ newtype InputProcessingConfiguration = InputProcessingConfiguration'{_ipcInputLa
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'ipcInputLambdaProcessor' - The 'InputLambdaProcessor' that is used to preprocess the records in the stream before being processed by your application code.
+-- * 'ipcInputLambdaProcessor' - The <https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_InputLambdaProcessor.html InputLambdaProcessor> that is used to preprocess the records in the stream before being processed by your application code.
 inputProcessingConfiguration
     :: InputLambdaProcessor -- ^ 'ipcInputLambdaProcessor'
     -> InputProcessingConfiguration
@@ -44,7 +44,7 @@ inputProcessingConfiguration pInputLambdaProcessor_
   = InputProcessingConfiguration'{_ipcInputLambdaProcessor
                                     = pInputLambdaProcessor_}
 
--- | The 'InputLambdaProcessor' that is used to preprocess the records in the stream before being processed by your application code.
+-- | The <https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_InputLambdaProcessor.html InputLambdaProcessor> that is used to preprocess the records in the stream before being processed by your application code.
 ipcInputLambdaProcessor :: Lens' InputProcessingConfiguration InputLambdaProcessor
 ipcInputLambdaProcessor = lens _ipcInputLambdaProcessor (\ s a -> s{_ipcInputLambdaProcessor = a})
 

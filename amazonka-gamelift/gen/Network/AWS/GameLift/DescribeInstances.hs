@@ -23,6 +23,22 @@
 --
 -- To get a specific instance, specify fleet ID and instance ID. To get all instances in a fleet, specify a fleet ID only. Use the pagination parameters to retrieve results as a set of sequential pages. If successful, an 'Instance' object is returned for each result.
 --
+-- __Learn more__ 
+--
+-- <https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-remote-access.html Remotely Access Fleet Instances> 
+--
+-- <https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-creating-debug.html Debug Fleet Issues> 
+--
+-- __Related operations__ 
+--
+--     * 'DescribeInstances' 
+--
+--     * 'GetInstanceAccess' 
+--
+--
+--
+--
+-- This operation returns paginated results.
 module Network.AWS.GameLift.DescribeInstances
     (
     -- * Creating a Request
@@ -46,6 +62,7 @@ module Network.AWS.GameLift.DescribeInstances
 import Network.AWS.GameLift.Types
 import Network.AWS.GameLift.Types.Product
 import Network.AWS.Lens
+import Network.AWS.Pager
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
@@ -66,13 +83,13 @@ data DescribeInstances = DescribeInstances'{_diInstanceId
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'diInstanceId' - Unique identifier for an instance to retrieve. Specify an instance ID or leave blank to retrieve all instances in the fleet.
+-- * 'diInstanceId' - A unique identifier for an instance to retrieve. Specify an instance ID or leave blank to retrieve all instances in the fleet.
 --
 -- * 'diNextToken' - Token that indicates the start of the next sequential page of results. Use the token that is returned with a previous call to this action. To start at the beginning of the result set, do not specify a value.
 --
--- * 'diLimit' - Maximum number of results to return. Use this parameter with @NextToken@ to get results as a set of sequential pages.
+-- * 'diLimit' - The maximum number of results to return. Use this parameter with @NextToken@ to get results as a set of sequential pages.
 --
--- * 'diFleetId' - Unique identifier for a fleet to retrieve instance information for.
+-- * 'diFleetId' - A unique identifier for a fleet to retrieve instance information for. You can use either the fleet ID or ARN value.
 describeInstances
     :: Text -- ^ 'diFleetId'
     -> DescribeInstances
@@ -81,7 +98,7 @@ describeInstances pFleetId_
                        _diNextToken = Nothing, _diLimit = Nothing,
                        _diFleetId = pFleetId_}
 
--- | Unique identifier for an instance to retrieve. Specify an instance ID or leave blank to retrieve all instances in the fleet.
+-- | A unique identifier for an instance to retrieve. Specify an instance ID or leave blank to retrieve all instances in the fleet.
 diInstanceId :: Lens' DescribeInstances (Maybe Text)
 diInstanceId = lens _diInstanceId (\ s a -> s{_diInstanceId = a})
 
@@ -89,13 +106,20 @@ diInstanceId = lens _diInstanceId (\ s a -> s{_diInstanceId = a})
 diNextToken :: Lens' DescribeInstances (Maybe Text)
 diNextToken = lens _diNextToken (\ s a -> s{_diNextToken = a})
 
--- | Maximum number of results to return. Use this parameter with @NextToken@ to get results as a set of sequential pages.
+-- | The maximum number of results to return. Use this parameter with @NextToken@ to get results as a set of sequential pages.
 diLimit :: Lens' DescribeInstances (Maybe Natural)
 diLimit = lens _diLimit (\ s a -> s{_diLimit = a}) . mapping _Nat
 
--- | Unique identifier for a fleet to retrieve instance information for.
+-- | A unique identifier for a fleet to retrieve instance information for. You can use either the fleet ID or ARN value.
 diFleetId :: Lens' DescribeInstances Text
 diFleetId = lens _diFleetId (\ s a -> s{_diFleetId = a})
+
+instance AWSPager DescribeInstances where
+        page rq rs
+          | stop (rs ^. dirsNextToken) = Nothing
+          | stop (rs ^. dirsInstances) = Nothing
+          | otherwise =
+            Just $ rq & diNextToken .~ rs ^. dirsNextToken
 
 instance AWSRequest DescribeInstances where
         type Rs DescribeInstances = DescribeInstancesResponse
@@ -156,7 +180,7 @@ data DescribeInstancesResponse = DescribeInstancesResponse'{_dirsNextToken
 --
 -- * 'dirsNextToken' - Token that indicates where to resume retrieving results on the next call to this action. If no token is returned, these results represent the end of the list.
 --
--- * 'dirsInstances' - Collection of objects containing properties for each instance returned.
+-- * 'dirsInstances' - A collection of objects containing properties for each instance returned.
 --
 -- * 'dirsResponseStatus' - -- | The response status code.
 describeInstancesResponse
@@ -172,7 +196,7 @@ describeInstancesResponse pResponseStatus_
 dirsNextToken :: Lens' DescribeInstancesResponse (Maybe Text)
 dirsNextToken = lens _dirsNextToken (\ s a -> s{_dirsNextToken = a})
 
--- | Collection of objects containing properties for each instance returned.
+-- | A collection of objects containing properties for each instance returned.
 dirsInstances :: Lens' DescribeInstancesResponse [Instance]
 dirsInstances = lens _dirsInstances (\ s a -> s{_dirsInstances = a}) . _Default . _Coerce
 

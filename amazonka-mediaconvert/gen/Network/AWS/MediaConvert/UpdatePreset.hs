@@ -57,7 +57,7 @@ data UpdatePreset = UpdatePreset'{_upSettings ::
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'upSettings' - Undocumented member.
+-- * 'upSettings' - Settings for preset
 --
 -- * 'upCategory' - The new category for the preset, if you are changing it.
 --
@@ -72,7 +72,7 @@ updatePreset pName_
                   _upCategory = Nothing, _upDescription = Nothing,
                   _upName = pName_}
 
--- | Undocumented member.
+-- | Settings for preset
 upSettings :: Lens' UpdatePreset (Maybe PresetSettings)
 upSettings = lens _upSettings (\ s a -> s{_upSettings = a})
 
@@ -133,7 +133,7 @@ data UpdatePresetResponse = UpdatePresetResponse'{_uprsPreset
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'uprsPreset' - Undocumented member.
+-- * 'uprsPreset' - A preset is a collection of preconfigured media conversion settings that you want MediaConvert to apply to the output during the conversion process.
 --
 -- * 'uprsResponseStatus' - -- | The response status code.
 updatePresetResponse
@@ -143,7 +143,7 @@ updatePresetResponse pResponseStatus_
   = UpdatePresetResponse'{_uprsPreset = Nothing,
                           _uprsResponseStatus = pResponseStatus_}
 
--- | Undocumented member.
+-- | A preset is a collection of preconfigured media conversion settings that you want MediaConvert to apply to the output during the conversion process.
 uprsPreset :: Lens' UpdatePresetResponse (Maybe Preset)
 uprsPreset = lens _uprsPreset (\ s a -> s{_uprsPreset = a})
 

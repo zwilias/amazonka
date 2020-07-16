@@ -54,15 +54,15 @@ data LoadBalancerAttributes = LoadBalancerAttributes'{_lbaCrossZoneLoadBalancing
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'lbaCrossZoneLoadBalancing' - If enabled, the load balancer routes the request traffic evenly across all instances regardless of the Availability Zones. For more information, see <http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/enable-disable-crosszone-lb.html Configure Cross-Zone Load Balancing> in the /Classic Load Balancer Guide/ .
+-- * 'lbaCrossZoneLoadBalancing' - If enabled, the load balancer routes the request traffic evenly across all instances regardless of the Availability Zones. For more information, see <http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/enable-disable-crosszone-lb.html Configure Cross-Zone Load Balancing> in the /Classic Load Balancers Guide/ .
 --
--- * 'lbaAccessLog' - If enabled, the load balancer captures detailed information of all requests and delivers the information to the Amazon S3 bucket that you specify. For more information, see <http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/enable-access-logs.html Enable Access Logs> in the /Classic Load Balancer Guide/ .
+-- * 'lbaAccessLog' - If enabled, the load balancer captures detailed information of all requests and delivers the information to the Amazon S3 bucket that you specify. For more information, see <http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/enable-access-logs.html Enable Access Logs> in the /Classic Load Balancers Guide/ .
 --
 -- * 'lbaAdditionalAttributes' - This parameter is reserved.
 --
--- * 'lbaConnectionSettings' - If enabled, the load balancer allows the connections to remain idle (no data is sent over the connection) for the specified duration. By default, Elastic Load Balancing maintains a 60-second idle connection timeout for both front-end and back-end connections of your load balancer. For more information, see <http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/config-idle-timeout.html Configure Idle Connection Timeout> in the /Classic Load Balancer Guide/ .
+-- * 'lbaConnectionSettings' - If enabled, the load balancer allows the connections to remain idle (no data is sent over the connection) for the specified duration. By default, Elastic Load Balancing maintains a 60-second idle connection timeout for both front-end and back-end connections of your load balancer. For more information, see <http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/config-idle-timeout.html Configure Idle Connection Timeout> in the /Classic Load Balancers Guide/ .
 --
--- * 'lbaConnectionDraining' - If enabled, the load balancer allows existing requests to complete before the load balancer shifts traffic away from a deregistered or unhealthy instance. For more information, see <http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/config-conn-drain.html Configure Connection Draining> in the /Classic Load Balancer Guide/ .
+-- * 'lbaConnectionDraining' - If enabled, the load balancer allows existing requests to complete before the load balancer shifts traffic away from a deregistered or unhealthy instance. For more information, see <http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/config-conn-drain.html Configure Connection Draining> in the /Classic Load Balancers Guide/ .
 loadBalancerAttributes
     :: LoadBalancerAttributes
 loadBalancerAttributes
@@ -73,11 +73,11 @@ loadBalancerAttributes
                             _lbaConnectionSettings = Nothing,
                             _lbaConnectionDraining = Nothing}
 
--- | If enabled, the load balancer routes the request traffic evenly across all instances regardless of the Availability Zones. For more information, see <http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/enable-disable-crosszone-lb.html Configure Cross-Zone Load Balancing> in the /Classic Load Balancer Guide/ .
+-- | If enabled, the load balancer routes the request traffic evenly across all instances regardless of the Availability Zones. For more information, see <http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/enable-disable-crosszone-lb.html Configure Cross-Zone Load Balancing> in the /Classic Load Balancers Guide/ .
 lbaCrossZoneLoadBalancing :: Lens' LoadBalancerAttributes (Maybe CrossZoneLoadBalancing)
 lbaCrossZoneLoadBalancing = lens _lbaCrossZoneLoadBalancing (\ s a -> s{_lbaCrossZoneLoadBalancing = a})
 
--- | If enabled, the load balancer captures detailed information of all requests and delivers the information to the Amazon S3 bucket that you specify. For more information, see <http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/enable-access-logs.html Enable Access Logs> in the /Classic Load Balancer Guide/ .
+-- | If enabled, the load balancer captures detailed information of all requests and delivers the information to the Amazon S3 bucket that you specify. For more information, see <http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/enable-access-logs.html Enable Access Logs> in the /Classic Load Balancers Guide/ .
 lbaAccessLog :: Lens' LoadBalancerAttributes (Maybe AccessLog)
 lbaAccessLog = lens _lbaAccessLog (\ s a -> s{_lbaAccessLog = a})
 
@@ -85,11 +85,11 @@ lbaAccessLog = lens _lbaAccessLog (\ s a -> s{_lbaAccessLog = a})
 lbaAdditionalAttributes :: Lens' LoadBalancerAttributes [AdditionalAttribute]
 lbaAdditionalAttributes = lens _lbaAdditionalAttributes (\ s a -> s{_lbaAdditionalAttributes = a}) . _Default . _Coerce
 
--- | If enabled, the load balancer allows the connections to remain idle (no data is sent over the connection) for the specified duration. By default, Elastic Load Balancing maintains a 60-second idle connection timeout for both front-end and back-end connections of your load balancer. For more information, see <http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/config-idle-timeout.html Configure Idle Connection Timeout> in the /Classic Load Balancer Guide/ .
+-- | If enabled, the load balancer allows the connections to remain idle (no data is sent over the connection) for the specified duration. By default, Elastic Load Balancing maintains a 60-second idle connection timeout for both front-end and back-end connections of your load balancer. For more information, see <http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/config-idle-timeout.html Configure Idle Connection Timeout> in the /Classic Load Balancers Guide/ .
 lbaConnectionSettings :: Lens' LoadBalancerAttributes (Maybe ConnectionSettings)
 lbaConnectionSettings = lens _lbaConnectionSettings (\ s a -> s{_lbaConnectionSettings = a})
 
--- | If enabled, the load balancer allows existing requests to complete before the load balancer shifts traffic away from a deregistered or unhealthy instance. For more information, see <http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/config-conn-drain.html Configure Connection Draining> in the /Classic Load Balancer Guide/ .
+-- | If enabled, the load balancer allows existing requests to complete before the load balancer shifts traffic away from a deregistered or unhealthy instance. For more information, see <http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/config-conn-drain.html Configure Connection Draining> in the /Classic Load Balancers Guide/ .
 lbaConnectionDraining :: Lens' LoadBalancerAttributes (Maybe ConnectionDraining)
 lbaConnectionDraining = lens _lbaConnectionDraining (\ s a -> s{_lbaConnectionDraining = a})
 

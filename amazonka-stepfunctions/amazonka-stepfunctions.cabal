@@ -58,12 +58,15 @@ library
         , Network.AWS.StepFunctions.ListActivities
         , Network.AWS.StepFunctions.ListExecutions
         , Network.AWS.StepFunctions.ListStateMachines
+        , Network.AWS.StepFunctions.ListTagsForResource
         , Network.AWS.StepFunctions.SendTaskFailure
         , Network.AWS.StepFunctions.SendTaskHeartbeat
         , Network.AWS.StepFunctions.SendTaskSuccess
         , Network.AWS.StepFunctions.StartExecution
         , Network.AWS.StepFunctions.StopExecution
+        , Network.AWS.StepFunctions.TagResource
         , Network.AWS.StepFunctions.Types
+        , Network.AWS.StepFunctions.UntagResource
         , Network.AWS.StepFunctions.UpdateStateMachine
         , Network.AWS.StepFunctions.Waiters
 
@@ -75,6 +78,7 @@ library
         , Network.AWS.StepFunctions.Types.ActivityStartedEventDetails
         , Network.AWS.StepFunctions.Types.ActivitySucceededEventDetails
         , Network.AWS.StepFunctions.Types.ActivityTimedOutEventDetails
+        , Network.AWS.StepFunctions.Types.CloudWatchLogsLogGroup
         , Network.AWS.StepFunctions.Types.ExecutionAbortedEventDetails
         , Network.AWS.StepFunctions.Types.ExecutionFailedEventDetails
         , Network.AWS.StepFunctions.Types.ExecutionListItem
@@ -90,11 +94,26 @@ library
         , Network.AWS.StepFunctions.Types.LambdaFunctionStartFailedEventDetails
         , Network.AWS.StepFunctions.Types.LambdaFunctionSucceededEventDetails
         , Network.AWS.StepFunctions.Types.LambdaFunctionTimedOutEventDetails
+        , Network.AWS.StepFunctions.Types.LogDestination
+        , Network.AWS.StepFunctions.Types.LogLevel
+        , Network.AWS.StepFunctions.Types.LoggingConfiguration
+        , Network.AWS.StepFunctions.Types.MapIterationEventDetails
+        , Network.AWS.StepFunctions.Types.MapStateStartedEventDetails
         , Network.AWS.StepFunctions.Types.Product
         , Network.AWS.StepFunctions.Types.StateEnteredEventDetails
         , Network.AWS.StepFunctions.Types.StateExitedEventDetails
         , Network.AWS.StepFunctions.Types.StateMachineListItem
         , Network.AWS.StepFunctions.Types.StateMachineStatus
+        , Network.AWS.StepFunctions.Types.StateMachineType
+        , Network.AWS.StepFunctions.Types.Tag
+        , Network.AWS.StepFunctions.Types.TaskFailedEventDetails
+        , Network.AWS.StepFunctions.Types.TaskScheduledEventDetails
+        , Network.AWS.StepFunctions.Types.TaskStartFailedEventDetails
+        , Network.AWS.StepFunctions.Types.TaskStartedEventDetails
+        , Network.AWS.StepFunctions.Types.TaskSubmitFailedEventDetails
+        , Network.AWS.StepFunctions.Types.TaskSubmittedEventDetails
+        , Network.AWS.StepFunctions.Types.TaskSucceededEventDetails
+        , Network.AWS.StepFunctions.Types.TaskTimedOutEventDetails
 
     build-depends:
           amazonka-core == 1.6.1.*

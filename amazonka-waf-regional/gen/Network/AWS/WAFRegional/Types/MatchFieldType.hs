@@ -19,10 +19,12 @@
 module Network.AWS.WAFRegional.Types.MatchFieldType (
   MatchFieldType (
     ..
+    , AllQueryArgs
     , Body
     , Header
     , Method
     , QueryString
+    , SingleQueryArg
     , URI
     )
   ) where
@@ -33,6 +35,9 @@ import Network.AWS.Prelude
 data MatchFieldType = MatchFieldType' (CI Text)
                         deriving (Eq, Ord, Read, Show, Data, Typeable,
                                   Generic)
+
+pattern AllQueryArgs :: MatchFieldType
+pattern AllQueryArgs = MatchFieldType' "ALL_QUERY_ARGS"
 
 pattern Body :: MatchFieldType
 pattern Body = MatchFieldType' "BODY"
@@ -46,14 +51,19 @@ pattern Method = MatchFieldType' "METHOD"
 pattern QueryString :: MatchFieldType
 pattern QueryString = MatchFieldType' "QUERY_STRING"
 
+pattern SingleQueryArg :: MatchFieldType
+pattern SingleQueryArg = MatchFieldType' "SINGLE_QUERY_ARG"
+
 pattern URI :: MatchFieldType
 pattern URI = MatchFieldType' "URI"
 
 {-# COMPLETE
+  AllQueryArgs,
   Body,
   Header,
   Method,
   QueryString,
+  SingleQueryArg,
   URI,
   MatchFieldType' #-}
 
@@ -69,25 +79,29 @@ instance ToText MatchFieldType where
 --   fromEnum is a partial function, and will error on values unknown at generation time.
 instance Enum MatchFieldType where
     toEnum i = case i of
-        0 -> Body
-        1 -> Header
-        2 -> Method
-        3 -> QueryString
-        4 -> URI
+        0 -> AllQueryArgs
+        1 -> Body
+        2 -> Header
+        3 -> Method
+        4 -> QueryString
+        5 -> SingleQueryArg
+        6 -> URI
         _ -> (error . showText) $ "Unknown index for MatchFieldType: " <> toText i
     fromEnum x = case x of
-        Body -> 0
-        Header -> 1
-        Method -> 2
-        QueryString -> 3
-        URI -> 4
+        AllQueryArgs -> 0
+        Body -> 1
+        Header -> 2
+        Method -> 3
+        QueryString -> 4
+        SingleQueryArg -> 5
+        URI -> 6
         MatchFieldType' name -> (error . showText) $ "Unknown MatchFieldType: " <> original name
 
 -- | Represents the bounds of /known/ $MatchFieldType.
 --   AWS may have added more since the source was generated.
 --   This instance exists only for backward compatibility.
 instance Bounded MatchFieldType where
-    minBound = Body
+    minBound = AllQueryArgs
     maxBound = URI
 
 instance Hashable     MatchFieldType

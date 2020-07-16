@@ -25,7 +25,7 @@
 --
 -- __Access Control__ 
 --
--- If an IAM policy grants permission to use @RespondDecisionTaskCompleted@ , it can express permissions for the list of decisions in the @decisions@ parameter. Each of the decisions has one or more parameters, much like a regular API call. To allow for policies to be as readable as possible, you can express permissions on decisions as if they were actual API calls, including applying conditions to some parameters. For more information, see <http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html Using IAM to Manage Access to Amazon SWF Workflows> in the /Amazon SWF Developer Guide/ .
+-- If an IAM policy grants permission to use @RespondDecisionTaskCompleted@ , it can express permissions for the list of decisions in the @decisions@ parameter. Each of the decisions has one or more parameters, much like a regular API call. To allow for policies to be as readable as possible, you can express permissions on decisions as if they were actual API calls, including applying conditions to some parameters. For more information, see <https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dev-iam.html Using IAM to Manage Access to Amazon SWF Workflows> in the /Amazon SWF Developer Guide/ .
 --
 module Network.AWS.SWF.RespondDecisionTaskCompleted
     (

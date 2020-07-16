@@ -32,6 +32,7 @@ import Network.AWS.WorkDocs.Types.UserMetadata
 -- /See:/ 'activity' smart constructor.
 data Activity = Activity'{_aResourceMetadata ::
                           !(Maybe ResourceMetadata),
+                          _aIsIndirectActivity :: !(Maybe Bool),
                           _aInitiator :: !(Maybe UserMetadata),
                           _aParticipants :: !(Maybe Participants),
                           _aOriginalParent :: !(Maybe ResourceMetadata),
@@ -46,6 +47,8 @@ data Activity = Activity'{_aResourceMetadata ::
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'aResourceMetadata' - The metadata of the resource involved in the user action.
+--
+-- * 'aIsIndirectActivity' - Indicates whether an activity is indirect or direct. An indirect activity results from a direct activity performed on a parent resource. For example, sharing a parent folder (the direct activity) shares all of the subfolders and documents within the parent folder (the indirect activity).
 --
 -- * 'aInitiator' - The user who performed the action.
 --
@@ -64,6 +67,7 @@ activity
     :: Activity
 activity
   = Activity'{_aResourceMetadata = Nothing,
+              _aIsIndirectActivity = Nothing,
               _aInitiator = Nothing, _aParticipants = Nothing,
               _aOriginalParent = Nothing, _aType = Nothing,
               _aCommentMetadata = Nothing, _aTimeStamp = Nothing,
@@ -72,6 +76,10 @@ activity
 -- | The metadata of the resource involved in the user action.
 aResourceMetadata :: Lens' Activity (Maybe ResourceMetadata)
 aResourceMetadata = lens _aResourceMetadata (\ s a -> s{_aResourceMetadata = a})
+
+-- | Indicates whether an activity is indirect or direct. An indirect activity results from a direct activity performed on a parent resource. For example, sharing a parent folder (the direct activity) shares all of the subfolders and documents within the parent folder (the indirect activity).
+aIsIndirectActivity :: Lens' Activity (Maybe Bool)
+aIsIndirectActivity = lens _aIsIndirectActivity (\ s a -> s{_aIsIndirectActivity = a})
 
 -- | The user who performed the action.
 aInitiator :: Lens' Activity (Maybe UserMetadata)
@@ -106,7 +114,9 @@ instance FromJSON Activity where
           = withObject "Activity"
               (\ x ->
                  Activity' <$>
-                   (x .:? "ResourceMetadata") <*> (x .:? "Initiator")
+                   (x .:? "ResourceMetadata") <*>
+                     (x .:? "IsIndirectActivity")
+                     <*> (x .:? "Initiator")
                      <*> (x .:? "Participants")
                      <*> (x .:? "OriginalParent")
                      <*> (x .:? "Type")

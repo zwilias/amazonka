@@ -20,7 +20,9 @@ module Network.AWS.Pinpoint.Types.EndpointLocation where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | Endpoint location data
+-- | Specifies geographic information about an endpoint.
+--
+--
 --
 -- /See:/ 'endpointLocation' smart constructor.
 data EndpointLocation = EndpointLocation'{_elPostalCode
@@ -36,17 +38,17 @@ data EndpointLocation = EndpointLocation'{_elPostalCode
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'elPostalCode' - The postal code or zip code of the endpoint.
+-- * 'elPostalCode' - The postal or ZIP code for the area where the endpoint is located.
 --
--- * 'elLatitude' - The latitude of the endpoint location. Rounded to one decimal (Roughly corresponding to a mile).
+-- * 'elLatitude' - The latitude coordinate of the endpoint location, rounded to one decimal place.
 --
--- * 'elCountry' - Country according to ISO 3166-1 Alpha-2 codes. For example, US.
+-- * 'elCountry' - The two-character code, in ISO 3166-1 alpha-2 format, for the country or region where the endpoint is located. For example, US for the United States.
 --
--- * 'elCity' - The city where the endpoint is located.
+-- * 'elCity' - The name of the city where the endpoint is located.
 --
--- * 'elRegion' - The region of the endpoint location. For example, corresponds to a state in US.
+-- * 'elRegion' - The name of the region where the endpoint is located. For locations in the United States, this value is the name of a state.
 --
--- * 'elLongitude' - The longitude of the endpoint location. Rounded to one decimal (Roughly corresponding to a mile).
+-- * 'elLongitude' - The longitude coordinate of the endpoint location, rounded to one decimal place.
 endpointLocation
     :: EndpointLocation
 endpointLocation
@@ -55,27 +57,27 @@ endpointLocation
                       _elCity = Nothing, _elRegion = Nothing,
                       _elLongitude = Nothing}
 
--- | The postal code or zip code of the endpoint.
+-- | The postal or ZIP code for the area where the endpoint is located.
 elPostalCode :: Lens' EndpointLocation (Maybe Text)
 elPostalCode = lens _elPostalCode (\ s a -> s{_elPostalCode = a})
 
--- | The latitude of the endpoint location. Rounded to one decimal (Roughly corresponding to a mile).
+-- | The latitude coordinate of the endpoint location, rounded to one decimal place.
 elLatitude :: Lens' EndpointLocation (Maybe Double)
 elLatitude = lens _elLatitude (\ s a -> s{_elLatitude = a})
 
--- | Country according to ISO 3166-1 Alpha-2 codes. For example, US.
+-- | The two-character code, in ISO 3166-1 alpha-2 format, for the country or region where the endpoint is located. For example, US for the United States.
 elCountry :: Lens' EndpointLocation (Maybe Text)
 elCountry = lens _elCountry (\ s a -> s{_elCountry = a})
 
--- | The city where the endpoint is located.
+-- | The name of the city where the endpoint is located.
 elCity :: Lens' EndpointLocation (Maybe Text)
 elCity = lens _elCity (\ s a -> s{_elCity = a})
 
--- | The region of the endpoint location. For example, corresponds to a state in US.
+-- | The name of the region where the endpoint is located. For locations in the United States, this value is the name of a state.
 elRegion :: Lens' EndpointLocation (Maybe Text)
 elRegion = lens _elRegion (\ s a -> s{_elRegion = a})
 
--- | The longitude of the endpoint location. Rounded to one decimal (Roughly corresponding to a mile).
+-- | The longitude coordinate of the endpoint location, rounded to one decimal place.
 elLongitude :: Lens' EndpointLocation (Maybe Double)
 elLongitude = lens _elLongitude (\ s a -> s{_elLongitude = a})
 

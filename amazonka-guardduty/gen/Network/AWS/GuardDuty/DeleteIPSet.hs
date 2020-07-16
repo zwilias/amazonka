@@ -18,7 +18,9 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Deletes the IPSet specified by the IPSet ID.
+-- Deletes the IPSet specified by the @ipSetId@ . IPSets are called trusted IP lists in the console user interface.
+--
+--
 module Network.AWS.GuardDuty.DeleteIPSet
     (
     -- * Creating a Request
@@ -52,9 +54,9 @@ data DeleteIPSet = DeleteIPSet'{_disDetectorId ::
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'disDetectorId' - The detectorID that specifies the GuardDuty service whose IPSet you want to delete.
+-- * 'disDetectorId' - The unique ID of the detector associated with the IPSet.
 --
--- * 'disIPSetId' - The unique ID that specifies the IPSet that you want to delete.
+-- * 'disIPSetId' - The unique ID of the IPSet to delete.
 deleteIPSet
     :: Text -- ^ 'disDetectorId'
     -> Text -- ^ 'disIPSetId'
@@ -63,11 +65,11 @@ deleteIPSet pDetectorId_ pIPSetId_
   = DeleteIPSet'{_disDetectorId = pDetectorId_,
                  _disIPSetId = pIPSetId_}
 
--- | The detectorID that specifies the GuardDuty service whose IPSet you want to delete.
+-- | The unique ID of the detector associated with the IPSet.
 disDetectorId :: Lens' DeleteIPSet Text
 disDetectorId = lens _disDetectorId (\ s a -> s{_disDetectorId = a})
 
--- | The unique ID that specifies the IPSet that you want to delete.
+-- | The unique ID of the IPSet to delete.
 disIPSetId :: Lens' DeleteIPSet Text
 disIPSetId = lens _disIPSetId (\ s a -> s{_disIPSetId = a})
 

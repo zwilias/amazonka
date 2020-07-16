@@ -34,6 +34,7 @@ module Network.AWS.SageMaker.DescribeEndpointConfig
     , DescribeEndpointConfigResponse
     -- * Response Lenses
     , decrsKMSKeyId
+    , decrsDataCaptureConfig
     , decrsResponseStatus
     , decrsEndpointConfigName
     , decrsEndpointConfigARN
@@ -78,8 +79,9 @@ instance AWSRequest DescribeEndpointConfig where
           = receiveJSON
               (\ s h x ->
                  DescribeEndpointConfigResponse' <$>
-                   (x .?> "KmsKeyId") <*> (pure (fromEnum s)) <*>
-                     (x .:> "EndpointConfigName")
+                   (x .?> "KmsKeyId") <*> (x .?> "DataCaptureConfig")
+                     <*> (pure (fromEnum s))
+                     <*> (x .:> "EndpointConfigName")
                      <*> (x .:> "EndpointConfigArn")
                      <*> (x .:> "ProductionVariants")
                      <*> (x .:> "CreationTime"))
@@ -115,6 +117,10 @@ data DescribeEndpointConfigResponse = DescribeEndpointConfigResponse'{_decrsKMSK
                                                                       ::
                                                                       !(Maybe
                                                                           Text),
+                                                                      _decrsDataCaptureConfig
+                                                                      ::
+                                                                      !(Maybe
+                                                                          DataCaptureConfig),
                                                                       _decrsResponseStatus
                                                                       :: !Int,
                                                                       _decrsEndpointConfigName
@@ -135,6 +141,8 @@ data DescribeEndpointConfigResponse = DescribeEndpointConfigResponse'{_decrsKMSK
 -- Use one of the following lenses to modify other fields as desired:
 --
 -- * 'decrsKMSKeyId' - AWS KMS key ID Amazon SageMaker uses to encrypt data when storing it on the ML storage volume attached to the instance.
+--
+-- * 'decrsDataCaptureConfig' - Undocumented member.
 --
 -- * 'decrsResponseStatus' - -- | The response status code.
 --
@@ -157,6 +165,7 @@ describeEndpointConfigResponse pResponseStatus_
   pProductionVariants_ pCreationTime_
   = DescribeEndpointConfigResponse'{_decrsKMSKeyId =
                                       Nothing,
+                                    _decrsDataCaptureConfig = Nothing,
                                     _decrsResponseStatus = pResponseStatus_,
                                     _decrsEndpointConfigName =
                                       pEndpointConfigName_,
@@ -169,6 +178,10 @@ describeEndpointConfigResponse pResponseStatus_
 -- | AWS KMS key ID Amazon SageMaker uses to encrypt data when storing it on the ML storage volume attached to the instance.
 decrsKMSKeyId :: Lens' DescribeEndpointConfigResponse (Maybe Text)
 decrsKMSKeyId = lens _decrsKMSKeyId (\ s a -> s{_decrsKMSKeyId = a})
+
+-- | Undocumented member.
+decrsDataCaptureConfig :: Lens' DescribeEndpointConfigResponse (Maybe DataCaptureConfig)
+decrsDataCaptureConfig = lens _decrsDataCaptureConfig (\ s a -> s{_decrsDataCaptureConfig = a})
 
 -- | -- | The response status code.
 decrsResponseStatus :: Lens' DescribeEndpointConfigResponse Int

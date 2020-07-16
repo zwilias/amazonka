@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Lists models created with the <http://docs.aws.amazon.com/sagemaker/latest/dg/API_CreateModel.html CreateModel> API.
+-- Lists models created with the 'CreateModel' API.
 --
 --
 --
@@ -71,11 +71,11 @@ data ListModels = ListModels'{_lmNameContains ::
 --
 -- * 'lmNameContains' - A string in the training job name. This filter returns only models in the training job whose name contains the specified string.
 --
--- * 'lmCreationTimeAfter' - A filter that returns only models created after the specified time (timestamp).
+-- * 'lmCreationTimeAfter' - A filter that returns only models with a creation time greater than or equal to the specified time (timestamp).
 --
 -- * 'lmNextToken' - If the response to a previous @ListModels@ request was truncated, the response includes a @NextToken@ . To retrieve the next set of models, use the token in the next request.
 --
--- * 'lmSortOrder' - The sort order for results. The default is @Ascending@ .
+-- * 'lmSortOrder' - The sort order for results. The default is @Descending@ .
 --
 -- * 'lmCreationTimeBefore' - A filter that returns only models created before the specified time (timestamp).
 --
@@ -95,7 +95,7 @@ listModels
 lmNameContains :: Lens' ListModels (Maybe Text)
 lmNameContains = lens _lmNameContains (\ s a -> s{_lmNameContains = a})
 
--- | A filter that returns only models created after the specified time (timestamp).
+-- | A filter that returns only models with a creation time greater than or equal to the specified time (timestamp).
 lmCreationTimeAfter :: Lens' ListModels (Maybe UTCTime)
 lmCreationTimeAfter = lens _lmCreationTimeAfter (\ s a -> s{_lmCreationTimeAfter = a}) . mapping _Time
 
@@ -103,7 +103,7 @@ lmCreationTimeAfter = lens _lmCreationTimeAfter (\ s a -> s{_lmCreationTimeAfter
 lmNextToken :: Lens' ListModels (Maybe Text)
 lmNextToken = lens _lmNextToken (\ s a -> s{_lmNextToken = a})
 
--- | The sort order for results. The default is @Ascending@ .
+-- | The sort order for results. The default is @Descending@ .
 lmSortOrder :: Lens' ListModels (Maybe OrderKey)
 lmSortOrder = lens _lmSortOrder (\ s a -> s{_lmSortOrder = a})
 

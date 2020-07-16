@@ -28,8 +28,8 @@ import Test.AWS.MediaPackage.Internal
 -- fixtures :: TestTree
 -- fixtures =
 --     [ testGroup "request"
---         [ requestRotateChannelCredentials $
---             rotateChannelCredentials
+--         [ requestCreateHarvestJob $
+--             createHarvestJob
 --
 --         , requestDescribeOriginEndpoint $
 --             describeOriginEndpoint
@@ -37,11 +37,20 @@ import Test.AWS.MediaPackage.Internal
 --         , requestListChannels $
 --             listChannels
 --
+--         , requestListTagsForResource $
+--             listTagsForResource
+--
 --         , requestDeleteChannel $
 --             deleteChannel
 --
 --         , requestUpdateChannel $
 --             updateChannel
+--
+--         , requestDescribeHarvestJob $
+--             describeHarvestJob
+--
+--         , requestRotateIngestEndpointCredentials $
+--             rotateIngestEndpointCredentials
 --
 --         , requestCreateOriginEndpoint $
 --             createOriginEndpoint
@@ -49,8 +58,17 @@ import Test.AWS.MediaPackage.Internal
 --         , requestListOriginEndpoints $
 --             listOriginEndpoints
 --
+--         , requestListHarvestJobs $
+--             listHarvestJobs
+--
 --         , requestCreateChannel $
 --             createChannel
+--
+--         , requestTagResource $
+--             tagResource
+--
+--         , requestUntagResource $
+--             untagResource
 --
 --         , requestDescribeChannel $
 --             describeChannel
@@ -64,8 +82,8 @@ import Test.AWS.MediaPackage.Internal
 --           ]
 
 --     , testGroup "response"
---         [ responseRotateChannelCredentials $
---             rotateChannelCredentialsResponse
+--         [ responseCreateHarvestJob $
+--             createHarvestJobResponse
 --
 --         , responseDescribeOriginEndpoint $
 --             describeOriginEndpointResponse
@@ -73,11 +91,20 @@ import Test.AWS.MediaPackage.Internal
 --         , responseListChannels $
 --             listChannelsResponse
 --
+--         , responseListTagsForResource $
+--             listTagsForResourceResponse
+--
 --         , responseDeleteChannel $
 --             deleteChannelResponse
 --
 --         , responseUpdateChannel $
 --             updateChannelResponse
+--
+--         , responseDescribeHarvestJob $
+--             describeHarvestJobResponse
+--
+--         , responseRotateIngestEndpointCredentials $
+--             rotateIngestEndpointCredentialsResponse
 --
 --         , responseCreateOriginEndpoint $
 --             createOriginEndpointResponse
@@ -85,8 +112,17 @@ import Test.AWS.MediaPackage.Internal
 --         , responseListOriginEndpoints $
 --             listOriginEndpointsResponse
 --
+--         , responseListHarvestJobs $
+--             listHarvestJobsResponse
+--
 --         , responseCreateChannel $
 --             createChannelResponse
+--
+--         , responseTagResource $
+--             tagResourceResponse
+--
+--         , responseUntagResource $
+--             untagResourceResponse
 --
 --         , responseDescribeChannel $
 --             describeChannelResponse
@@ -102,10 +138,10 @@ import Test.AWS.MediaPackage.Internal
 
 -- Requests
 
-requestRotateChannelCredentials :: RotateChannelCredentials -> TestTree
-requestRotateChannelCredentials = req
-    "RotateChannelCredentials"
-    "fixture/RotateChannelCredentials.yaml"
+requestCreateHarvestJob :: CreateHarvestJob -> TestTree
+requestCreateHarvestJob = req
+    "CreateHarvestJob"
+    "fixture/CreateHarvestJob.yaml"
 
 requestDescribeOriginEndpoint :: DescribeOriginEndpoint -> TestTree
 requestDescribeOriginEndpoint = req
@@ -117,6 +153,11 @@ requestListChannels = req
     "ListChannels"
     "fixture/ListChannels.yaml"
 
+requestListTagsForResource :: ListTagsForResource -> TestTree
+requestListTagsForResource = req
+    "ListTagsForResource"
+    "fixture/ListTagsForResource.yaml"
+
 requestDeleteChannel :: DeleteChannel -> TestTree
 requestDeleteChannel = req
     "DeleteChannel"
@@ -126,6 +167,16 @@ requestUpdateChannel :: UpdateChannel -> TestTree
 requestUpdateChannel = req
     "UpdateChannel"
     "fixture/UpdateChannel.yaml"
+
+requestDescribeHarvestJob :: DescribeHarvestJob -> TestTree
+requestDescribeHarvestJob = req
+    "DescribeHarvestJob"
+    "fixture/DescribeHarvestJob.yaml"
+
+requestRotateIngestEndpointCredentials :: RotateIngestEndpointCredentials -> TestTree
+requestRotateIngestEndpointCredentials = req
+    "RotateIngestEndpointCredentials"
+    "fixture/RotateIngestEndpointCredentials.yaml"
 
 requestCreateOriginEndpoint :: CreateOriginEndpoint -> TestTree
 requestCreateOriginEndpoint = req
@@ -137,10 +188,25 @@ requestListOriginEndpoints = req
     "ListOriginEndpoints"
     "fixture/ListOriginEndpoints.yaml"
 
+requestListHarvestJobs :: ListHarvestJobs -> TestTree
+requestListHarvestJobs = req
+    "ListHarvestJobs"
+    "fixture/ListHarvestJobs.yaml"
+
 requestCreateChannel :: CreateChannel -> TestTree
 requestCreateChannel = req
     "CreateChannel"
     "fixture/CreateChannel.yaml"
+
+requestTagResource :: TagResource -> TestTree
+requestTagResource = req
+    "TagResource"
+    "fixture/TagResource.yaml"
+
+requestUntagResource :: UntagResource -> TestTree
+requestUntagResource = req
+    "UntagResource"
+    "fixture/UntagResource.yaml"
 
 requestDescribeChannel :: DescribeChannel -> TestTree
 requestDescribeChannel = req
@@ -159,12 +225,12 @@ requestUpdateOriginEndpoint = req
 
 -- Responses
 
-responseRotateChannelCredentials :: RotateChannelCredentialsResponse -> TestTree
-responseRotateChannelCredentials = res
-    "RotateChannelCredentialsResponse"
-    "fixture/RotateChannelCredentialsResponse.proto"
+responseCreateHarvestJob :: CreateHarvestJobResponse -> TestTree
+responseCreateHarvestJob = res
+    "CreateHarvestJobResponse"
+    "fixture/CreateHarvestJobResponse.proto"
     mediaPackage
-    (Proxy :: Proxy RotateChannelCredentials)
+    (Proxy :: Proxy CreateHarvestJob)
 
 responseDescribeOriginEndpoint :: DescribeOriginEndpointResponse -> TestTree
 responseDescribeOriginEndpoint = res
@@ -180,6 +246,13 @@ responseListChannels = res
     mediaPackage
     (Proxy :: Proxy ListChannels)
 
+responseListTagsForResource :: ListTagsForResourceResponse -> TestTree
+responseListTagsForResource = res
+    "ListTagsForResourceResponse"
+    "fixture/ListTagsForResourceResponse.proto"
+    mediaPackage
+    (Proxy :: Proxy ListTagsForResource)
+
 responseDeleteChannel :: DeleteChannelResponse -> TestTree
 responseDeleteChannel = res
     "DeleteChannelResponse"
@@ -193,6 +266,20 @@ responseUpdateChannel = res
     "fixture/UpdateChannelResponse.proto"
     mediaPackage
     (Proxy :: Proxy UpdateChannel)
+
+responseDescribeHarvestJob :: DescribeHarvestJobResponse -> TestTree
+responseDescribeHarvestJob = res
+    "DescribeHarvestJobResponse"
+    "fixture/DescribeHarvestJobResponse.proto"
+    mediaPackage
+    (Proxy :: Proxy DescribeHarvestJob)
+
+responseRotateIngestEndpointCredentials :: RotateIngestEndpointCredentialsResponse -> TestTree
+responseRotateIngestEndpointCredentials = res
+    "RotateIngestEndpointCredentialsResponse"
+    "fixture/RotateIngestEndpointCredentialsResponse.proto"
+    mediaPackage
+    (Proxy :: Proxy RotateIngestEndpointCredentials)
 
 responseCreateOriginEndpoint :: CreateOriginEndpointResponse -> TestTree
 responseCreateOriginEndpoint = res
@@ -208,12 +295,33 @@ responseListOriginEndpoints = res
     mediaPackage
     (Proxy :: Proxy ListOriginEndpoints)
 
+responseListHarvestJobs :: ListHarvestJobsResponse -> TestTree
+responseListHarvestJobs = res
+    "ListHarvestJobsResponse"
+    "fixture/ListHarvestJobsResponse.proto"
+    mediaPackage
+    (Proxy :: Proxy ListHarvestJobs)
+
 responseCreateChannel :: CreateChannelResponse -> TestTree
 responseCreateChannel = res
     "CreateChannelResponse"
     "fixture/CreateChannelResponse.proto"
     mediaPackage
     (Proxy :: Proxy CreateChannel)
+
+responseTagResource :: TagResourceResponse -> TestTree
+responseTagResource = res
+    "TagResourceResponse"
+    "fixture/TagResourceResponse.proto"
+    mediaPackage
+    (Proxy :: Proxy TagResource)
+
+responseUntagResource :: UntagResourceResponse -> TestTree
+responseUntagResource = res
+    "UntagResourceResponse"
+    "fixture/UntagResourceResponse.proto"
+    mediaPackage
+    (Proxy :: Proxy UntagResource)
 
 responseDescribeChannel :: DescribeChannelResponse -> TestTree
 responseDescribeChannel = res

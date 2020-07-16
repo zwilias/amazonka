@@ -163,9 +163,9 @@ data CreateLoggerDefinitionVersionResponse = CreateLoggerDefinitionVersionRespon
 --
 -- * 'cldvrsCreationTimestamp' - The time, in milliseconds since the epoch, when the version was created.
 --
--- * 'cldvrsVersion' - The unique ID of the version.
+-- * 'cldvrsVersion' - The ID of the version.
 --
--- * 'cldvrsId' - The ID of the version.
+-- * 'cldvrsId' - The ID of the parent definition that the version is associated with.
 --
 -- * 'cldvrsResponseStatus' - -- | The response status code.
 createLoggerDefinitionVersionResponse
@@ -189,11 +189,11 @@ cldvrsARN = lens _cldvrsARN (\ s a -> s{_cldvrsARN = a})
 cldvrsCreationTimestamp :: Lens' CreateLoggerDefinitionVersionResponse (Maybe Text)
 cldvrsCreationTimestamp = lens _cldvrsCreationTimestamp (\ s a -> s{_cldvrsCreationTimestamp = a})
 
--- | The unique ID of the version.
+-- | The ID of the version.
 cldvrsVersion :: Lens' CreateLoggerDefinitionVersionResponse (Maybe Text)
 cldvrsVersion = lens _cldvrsVersion (\ s a -> s{_cldvrsVersion = a})
 
--- | The ID of the version.
+-- | The ID of the parent definition that the version is associated with.
 cldvrsId :: Lens' CreateLoggerDefinitionVersionResponse (Maybe Text)
 cldvrsId = lens _cldvrsId (\ s a -> s{_cldvrsId = a})
 

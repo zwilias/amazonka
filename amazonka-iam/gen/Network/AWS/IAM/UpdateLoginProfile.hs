@@ -21,7 +21,7 @@
 -- Changes the password for the specified IAM user.
 --
 --
--- IAM users can change their own passwords by calling 'ChangePassword' . For more information about modifying passwords, see <http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_ManagingLogins.html Managing Passwords> in the /IAM User Guide/ .
+-- IAM users can change their own passwords by calling 'ChangePassword' . For more information about modifying passwords, see <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_ManagingLogins.html Managing Passwords> in the /IAM User Guide/ .
 --
 module Network.AWS.IAM.UpdateLoginProfile
     (
@@ -57,11 +57,11 @@ data UpdateLoginProfile = UpdateLoginProfile'{_ulpPassword
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'ulpPassword' - The new password for the specified IAM user. The <http://wikipedia.org/wiki/regex regex pattern> used to validate this parameter is a string of characters consisting of the following:     * Any printable ASCII character ranging from the space character (\u0020) through the end of the ASCII character range     * The printable characters in the Basic Latin and Latin-1 Supplement character set (through \u00FF)     * The special characters tab (\u0009), line feed (\u000A), and carriage return (\u000D) However, the format can be further restricted by the account administrator by setting a password policy on the AWS account. For more information, see 'UpdateAccountPasswordPolicy' .
+-- * 'ulpPassword' - The new password for the specified IAM user. The <http://wikipedia.org/wiki/regex regex pattern> used to validate this parameter is a string of characters consisting of the following:     * Any printable ASCII character ranging from the space character (@\u0020@ ) through the end of the ASCII character range     * The printable characters in the Basic Latin and Latin-1 Supplement character set (through @\u00FF@ )     * The special characters tab (@\u0009@ ), line feed (@\u000A@ ), and carriage return (@\u000D@ ) However, the format can be further restricted by the account administrator by setting a password policy on the AWS account. For more information, see 'UpdateAccountPasswordPolicy' .
 --
 -- * 'ulpPasswordResetRequired' - Allows this new password to be used only once by requiring the specified IAM user to set a new password on next sign-in.
 --
--- * 'ulpUserName' - The name of the user whose password you want to update. This parameter allows (per its <http://wikipedia.org/wiki/regex regex pattern> ) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
+-- * 'ulpUserName' - The name of the user whose password you want to update. This parameter allows (through its <http://wikipedia.org/wiki/regex regex pattern> ) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
 updateLoginProfile
     :: Text -- ^ 'ulpUserName'
     -> UpdateLoginProfile
@@ -70,7 +70,7 @@ updateLoginProfile pUserName_
                         _ulpPasswordResetRequired = Nothing,
                         _ulpUserName = pUserName_}
 
--- | The new password for the specified IAM user. The <http://wikipedia.org/wiki/regex regex pattern> used to validate this parameter is a string of characters consisting of the following:     * Any printable ASCII character ranging from the space character (\u0020) through the end of the ASCII character range     * The printable characters in the Basic Latin and Latin-1 Supplement character set (through \u00FF)     * The special characters tab (\u0009), line feed (\u000A), and carriage return (\u000D) However, the format can be further restricted by the account administrator by setting a password policy on the AWS account. For more information, see 'UpdateAccountPasswordPolicy' .
+-- | The new password for the specified IAM user. The <http://wikipedia.org/wiki/regex regex pattern> used to validate this parameter is a string of characters consisting of the following:     * Any printable ASCII character ranging from the space character (@\u0020@ ) through the end of the ASCII character range     * The printable characters in the Basic Latin and Latin-1 Supplement character set (through @\u00FF@ )     * The special characters tab (@\u0009@ ), line feed (@\u000A@ ), and carriage return (@\u000D@ ) However, the format can be further restricted by the account administrator by setting a password policy on the AWS account. For more information, see 'UpdateAccountPasswordPolicy' .
 ulpPassword :: Lens' UpdateLoginProfile (Maybe Text)
 ulpPassword = lens _ulpPassword (\ s a -> s{_ulpPassword = a}) . mapping _Sensitive
 
@@ -78,7 +78,7 @@ ulpPassword = lens _ulpPassword (\ s a -> s{_ulpPassword = a}) . mapping _Sensit
 ulpPasswordResetRequired :: Lens' UpdateLoginProfile (Maybe Bool)
 ulpPasswordResetRequired = lens _ulpPasswordResetRequired (\ s a -> s{_ulpPasswordResetRequired = a})
 
--- | The name of the user whose password you want to update. This parameter allows (per its <http://wikipedia.org/wiki/regex regex pattern> ) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
+-- | The name of the user whose password you want to update. This parameter allows (through its <http://wikipedia.org/wiki/regex regex pattern> ) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
 ulpUserName :: Lens' UpdateLoginProfile Text
 ulpUserName = lens _ulpUserName (\ s a -> s{_ulpUserName = a})
 

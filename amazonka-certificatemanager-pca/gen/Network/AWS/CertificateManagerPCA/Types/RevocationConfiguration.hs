@@ -21,7 +21,7 @@ import Network.AWS.CertificateManagerPCA.Types.CrlConfiguration
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | Certificate revocation information used by the 'CreateCertificateAuthority' and 'UpdateCertificateAuthority' functions. Your private certificate authority (CA) can create and maintain a certificate revocation list (CRL). A CRL contains information about certificates revoked by your CA. For more information, see 'RevokeCertificate' .
+-- | Certificate revocation information used by the 'CreateCertificateAuthority' and 'UpdateCertificateAuthority' actions. Your private certificate authority (CA) can create and maintain a certificate revocation list (CRL). A CRL contains information about certificates revoked by your CA. For more information, see 'RevokeCertificate' .
 --
 --
 --

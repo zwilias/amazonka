@@ -20,7 +20,13 @@ module Network.AWS.FMS.Types.ViolationReason (
   ViolationReason (
     ..
     , ResourceIncorrectWebACL
+    , ResourceMissingSecurityGroup
+    , ResourceMissingShieldProtection
     , ResourceMissingWebACL
+    , ResourceMissingWebACLOrShieldProtection
+    , ResourceViolatesAuditSecurityGroup
+    , SecurityGroupRedundant
+    , SecurityGroupUnused
     , WebACLMissingRuleGroup
     )
   ) where
@@ -35,15 +41,39 @@ data ViolationReason = ViolationReason' (CI Text)
 pattern ResourceIncorrectWebACL :: ViolationReason
 pattern ResourceIncorrectWebACL = ViolationReason' "RESOURCE_INCORRECT_WEB_ACL"
 
+pattern ResourceMissingSecurityGroup :: ViolationReason
+pattern ResourceMissingSecurityGroup = ViolationReason' "RESOURCE_MISSING_SECURITY_GROUP"
+
+pattern ResourceMissingShieldProtection :: ViolationReason
+pattern ResourceMissingShieldProtection = ViolationReason' "RESOURCE_MISSING_SHIELD_PROTECTION"
+
 pattern ResourceMissingWebACL :: ViolationReason
 pattern ResourceMissingWebACL = ViolationReason' "RESOURCE_MISSING_WEB_ACL"
+
+pattern ResourceMissingWebACLOrShieldProtection :: ViolationReason
+pattern ResourceMissingWebACLOrShieldProtection = ViolationReason' "RESOURCE_MISSING_WEB_ACL_OR_SHIELD_PROTECTION"
+
+pattern ResourceViolatesAuditSecurityGroup :: ViolationReason
+pattern ResourceViolatesAuditSecurityGroup = ViolationReason' "RESOURCE_VIOLATES_AUDIT_SECURITY_GROUP"
+
+pattern SecurityGroupRedundant :: ViolationReason
+pattern SecurityGroupRedundant = ViolationReason' "SECURITY_GROUP_REDUNDANT"
+
+pattern SecurityGroupUnused :: ViolationReason
+pattern SecurityGroupUnused = ViolationReason' "SECURITY_GROUP_UNUSED"
 
 pattern WebACLMissingRuleGroup :: ViolationReason
 pattern WebACLMissingRuleGroup = ViolationReason' "WEB_ACL_MISSING_RULE_GROUP"
 
 {-# COMPLETE
   ResourceIncorrectWebACL,
+  ResourceMissingSecurityGroup,
+  ResourceMissingShieldProtection,
   ResourceMissingWebACL,
+  ResourceMissingWebACLOrShieldProtection,
+  ResourceViolatesAuditSecurityGroup,
+  SecurityGroupRedundant,
+  SecurityGroupUnused,
   WebACLMissingRuleGroup,
   ViolationReason' #-}
 
@@ -60,13 +90,25 @@ instance ToText ViolationReason where
 instance Enum ViolationReason where
     toEnum i = case i of
         0 -> ResourceIncorrectWebACL
-        1 -> ResourceMissingWebACL
-        2 -> WebACLMissingRuleGroup
+        1 -> ResourceMissingSecurityGroup
+        2 -> ResourceMissingShieldProtection
+        3 -> ResourceMissingWebACL
+        4 -> ResourceMissingWebACLOrShieldProtection
+        5 -> ResourceViolatesAuditSecurityGroup
+        6 -> SecurityGroupRedundant
+        7 -> SecurityGroupUnused
+        8 -> WebACLMissingRuleGroup
         _ -> (error . showText) $ "Unknown index for ViolationReason: " <> toText i
     fromEnum x = case x of
         ResourceIncorrectWebACL -> 0
-        ResourceMissingWebACL -> 1
-        WebACLMissingRuleGroup -> 2
+        ResourceMissingSecurityGroup -> 1
+        ResourceMissingShieldProtection -> 2
+        ResourceMissingWebACL -> 3
+        ResourceMissingWebACLOrShieldProtection -> 4
+        ResourceViolatesAuditSecurityGroup -> 5
+        SecurityGroupRedundant -> 6
+        SecurityGroupUnused -> 7
+        WebACLMissingRuleGroup -> 8
         ViolationReason' name -> (error . showText) $ "Unknown ViolationReason: " <> original name
 
 -- | Represents the bounds of /known/ $ViolationReason.

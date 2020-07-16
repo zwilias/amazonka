@@ -25,6 +25,8 @@ import Network.AWS.S3.Types.SSES3
 
 -- | Contains the type of server-side encryption used to encrypt the inventory results.
 --
+--
+--
 -- /See:/ 'inventoryEncryption' smart constructor.
 data InventoryEncryption = InventoryEncryption'{_ieSSES3
                                                 :: !(Maybe SSES3),
@@ -35,20 +37,20 @@ data InventoryEncryption = InventoryEncryption'{_ieSSES3
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'ieSSES3' - Specifies the use of SSE-S3 to encrypt delievered Inventory reports.
+-- * 'ieSSES3' - Specifies the use of SSE-S3 to encrypt delivered inventory reports.
 --
--- * 'ieSSEKMS' - Specifies the use of SSE-KMS to encrypt delievered Inventory reports.
+-- * 'ieSSEKMS' - Specifies the use of SSE-KMS to encrypt delivered inventory reports.
 inventoryEncryption
     :: InventoryEncryption
 inventoryEncryption
   = InventoryEncryption'{_ieSSES3 = Nothing,
                          _ieSSEKMS = Nothing}
 
--- | Specifies the use of SSE-S3 to encrypt delievered Inventory reports.
+-- | Specifies the use of SSE-S3 to encrypt delivered inventory reports.
 ieSSES3 :: Lens' InventoryEncryption (Maybe SSES3)
 ieSSES3 = lens _ieSSES3 (\ s a -> s{_ieSSES3 = a})
 
--- | Specifies the use of SSE-KMS to encrypt delievered Inventory reports.
+-- | Specifies the use of SSE-KMS to encrypt delivered inventory reports.
 ieSSEKMS :: Lens' InventoryEncryption (Maybe SSEKMS)
 ieSSEKMS = lens _ieSSEKMS (\ s a -> s{_ieSSEKMS = a})
 

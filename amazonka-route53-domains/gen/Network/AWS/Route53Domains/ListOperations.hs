@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- This operation returns the operation IDs of operations that are not yet complete.
+-- Returns information about all of the operations that return an operation ID and that have ever been performed on domains that were registered by the current account. 
 --
 --
 --
@@ -69,7 +69,7 @@ data ListOperations = ListOperations'{_loMarker ::
 --
 -- * 'loMaxItems' - Number of domains to be returned. Default: 20
 --
--- * 'loSubmittedSince' - An optional parameter that lets you get information about all the operations that you submitted after a specified date and time. Specify the date and time in Coordinated Universal time (UTC).
+-- * 'loSubmittedSince' - An optional parameter that lets you get information about all the operations that you submitted after a specified date and time. Specify the date and time in Unix time format and Coordinated Universal time (UTC).
 listOperations
     :: ListOperations
 listOperations
@@ -84,7 +84,7 @@ loMarker = lens _loMarker (\ s a -> s{_loMarker = a})
 loMaxItems :: Lens' ListOperations (Maybe Int)
 loMaxItems = lens _loMaxItems (\ s a -> s{_loMaxItems = a})
 
--- | An optional parameter that lets you get information about all the operations that you submitted after a specified date and time. Specify the date and time in Coordinated Universal time (UTC).
+-- | An optional parameter that lets you get information about all the operations that you submitted after a specified date and time. Specify the date and time in Unix time format and Coordinated Universal time (UTC).
 loSubmittedSince :: Lens' ListOperations (Maybe UTCTime)
 loSubmittedSince = lens _loSubmittedSince (\ s a -> s{_loSubmittedSince = a}) . mapping _Time
 

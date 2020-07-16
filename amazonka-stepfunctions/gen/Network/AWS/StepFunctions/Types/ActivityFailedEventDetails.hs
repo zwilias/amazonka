@@ -20,17 +20,21 @@ module Network.AWS.StepFunctions.Types.ActivityFailedEventDetails where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | Contains details about an activity which failed during an execution.
+-- | Contains details about an activity that failed during an execution.
 --
 --
 --
 -- /See:/ 'activityFailedEventDetails' smart constructor.
 data ActivityFailedEventDetails = ActivityFailedEventDetails'{_afedError
-                                                              :: !(Maybe Text),
+                                                              ::
+                                                              !(Maybe
+                                                                  (Sensitive
+                                                                     Text)),
                                                               _afedCause ::
-                                                              !(Maybe Text)}
-                                    deriving (Eq, Read, Show, Data, Typeable,
-                                              Generic)
+                                                              !(Maybe
+                                                                  (Sensitive
+                                                                     Text))}
+                                    deriving (Eq, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ActivityFailedEventDetails' with the minimum fields required to make a request.
 --
@@ -47,11 +51,11 @@ activityFailedEventDetails
 
 -- | The error code of the failure.
 afedError :: Lens' ActivityFailedEventDetails (Maybe Text)
-afedError = lens _afedError (\ s a -> s{_afedError = a})
+afedError = lens _afedError (\ s a -> s{_afedError = a}) . mapping _Sensitive
 
 -- | A more detailed explanation of the cause of the failure.
 afedCause :: Lens' ActivityFailedEventDetails (Maybe Text)
-afedCause = lens _afedCause (\ s a -> s{_afedCause = a})
+afedCause = lens _afedCause (\ s a -> s{_afedCause = a}) . mapping _Sensitive
 
 instance FromJSON ActivityFailedEventDetails where
         parseJSON

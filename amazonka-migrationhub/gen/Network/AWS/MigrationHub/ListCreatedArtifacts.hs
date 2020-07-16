@@ -29,6 +29,8 @@
 --
 --
 --
+--
+-- This operation returns paginated results.
 module Network.AWS.MigrationHub.ListCreatedArtifacts
     (
     -- * Creating a Request
@@ -52,6 +54,7 @@ module Network.AWS.MigrationHub.ListCreatedArtifacts
 import Network.AWS.Lens
 import Network.AWS.MigrationHub.Types
 import Network.AWS.MigrationHub.Types.Product
+import Network.AWS.Pager
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
@@ -77,7 +80,7 @@ data ListCreatedArtifacts = ListCreatedArtifacts'{_lcaNextToken
 --
 -- * 'lcaProgressUpdateStream' - The name of the ProgressUpdateStream. 
 --
--- * 'lcaMigrationTaskName' - Unique identifier that references the migration task.
+-- * 'lcaMigrationTaskName' - Unique identifier that references the migration task. /Do not store personal data in this field./ 
 listCreatedArtifacts
     :: Text -- ^ 'lcaProgressUpdateStream'
     -> Text -- ^ 'lcaMigrationTaskName'
@@ -101,9 +104,16 @@ lcaMaxResults = lens _lcaMaxResults (\ s a -> s{_lcaMaxResults = a}) . mapping _
 lcaProgressUpdateStream :: Lens' ListCreatedArtifacts Text
 lcaProgressUpdateStream = lens _lcaProgressUpdateStream (\ s a -> s{_lcaProgressUpdateStream = a})
 
--- | Unique identifier that references the migration task.
+-- | Unique identifier that references the migration task. /Do not store personal data in this field./ 
 lcaMigrationTaskName :: Lens' ListCreatedArtifacts Text
 lcaMigrationTaskName = lens _lcaMigrationTaskName (\ s a -> s{_lcaMigrationTaskName = a})
+
+instance AWSPager ListCreatedArtifacts where
+        page rq rs
+          | stop (rs ^. lcarsNextToken) = Nothing
+          | stop (rs ^. lcarsCreatedArtifactList) = Nothing
+          | otherwise =
+            Just $ rq & lcaNextToken .~ rs ^. lcarsNextToken
 
 instance AWSRequest ListCreatedArtifacts where
         type Rs ListCreatedArtifacts =

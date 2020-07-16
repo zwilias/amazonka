@@ -31,7 +31,7 @@ module Network.AWS.MediaLive.Types.BurnInFontColor (
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | Placeholder documentation for BurnInFontColor
+-- | Burn In Font Color
 data BurnInFontColor = BurnInFontColor' (CI Text)
                          deriving (Eq, Ord, Read, Show, Data, Typeable,
                                    Generic)

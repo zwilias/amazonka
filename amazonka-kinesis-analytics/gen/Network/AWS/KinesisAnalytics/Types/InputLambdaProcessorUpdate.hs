@@ -20,7 +20,7 @@ module Network.AWS.KinesisAnalytics.Types.InputLambdaProcessorUpdate where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | Represents an update to the 'InputLambdaProcessor' that is used to preprocess the records in the stream.
+-- | Represents an update to the <https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_InputLambdaProcessor.html InputLambdaProcessor> that is used to preprocess the records in the stream.
 --
 --
 --
@@ -38,7 +38,7 @@ data InputLambdaProcessorUpdate = InputLambdaProcessorUpdate'{_ilpuRoleARNUpdate
 --
 -- * 'ilpuRoleARNUpdate' - The ARN of the new IAM role that is used to access the AWS Lambda function.
 --
--- * 'ilpuResourceARNUpdate' - The Amazon Resource Name (ARN) of the new <https://aws.amazon.com/documentation/lambda/ AWS Lambda> function that is used to preprocess the records in the stream.
+-- * 'ilpuResourceARNUpdate' - The Amazon Resource Name (ARN) of the new <https://docs.aws.amazon.com/lambda/ AWS Lambda> function that is used to preprocess the records in the stream.
 inputLambdaProcessorUpdate
     :: InputLambdaProcessorUpdate
 inputLambdaProcessorUpdate
@@ -50,7 +50,7 @@ inputLambdaProcessorUpdate
 ilpuRoleARNUpdate :: Lens' InputLambdaProcessorUpdate (Maybe Text)
 ilpuRoleARNUpdate = lens _ilpuRoleARNUpdate (\ s a -> s{_ilpuRoleARNUpdate = a})
 
--- | The Amazon Resource Name (ARN) of the new <https://aws.amazon.com/documentation/lambda/ AWS Lambda> function that is used to preprocess the records in the stream.
+-- | The Amazon Resource Name (ARN) of the new <https://docs.aws.amazon.com/lambda/ AWS Lambda> function that is used to preprocess the records in the stream.
 ilpuResourceARNUpdate :: Lens' InputLambdaProcessorUpdate (Maybe Text)
 ilpuResourceARNUpdate = lens _ilpuResourceARNUpdate (\ s a -> s{_ilpuResourceARNUpdate = a})
 

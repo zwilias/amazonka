@@ -25,14 +25,17 @@ import Network.AWS.Prelude
 --
 --
 -- /See:/ 'protection' smart constructor.
-data Protection = Protection'{_pResourceARN ::
-                              !(Maybe Text),
+data Protection = Protection'{_pHealthCheckIds ::
+                              !(Maybe [Text]),
+                              _pResourceARN :: !(Maybe Text),
                               _pName :: !(Maybe Text), _pId :: !(Maybe Text)}
                     deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'Protection' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'pHealthCheckIds' - The unique identifier (ID) for the Route 53 health check that's associated with the protection. 
 --
 -- * 'pResourceARN' - The ARN (Amazon Resource Name) of the AWS resource that is protected.
 --
@@ -42,8 +45,13 @@ data Protection = Protection'{_pResourceARN ::
 protection
     :: Protection
 protection
-  = Protection'{_pResourceARN = Nothing,
-                _pName = Nothing, _pId = Nothing}
+  = Protection'{_pHealthCheckIds = Nothing,
+                _pResourceARN = Nothing, _pName = Nothing,
+                _pId = Nothing}
+
+-- | The unique identifier (ID) for the Route 53 health check that's associated with the protection. 
+pHealthCheckIds :: Lens' Protection [Text]
+pHealthCheckIds = lens _pHealthCheckIds (\ s a -> s{_pHealthCheckIds = a}) . _Default . _Coerce
 
 -- | The ARN (Amazon Resource Name) of the AWS resource that is protected.
 pResourceARN :: Lens' Protection (Maybe Text)
@@ -62,8 +70,10 @@ instance FromJSON Protection where
           = withObject "Protection"
               (\ x ->
                  Protection' <$>
-                   (x .:? "ResourceArn") <*> (x .:? "Name") <*>
-                     (x .:? "Id"))
+                   (x .:? "HealthCheckIds" .!= mempty) <*>
+                     (x .:? "ResourceArn")
+                     <*> (x .:? "Name")
+                     <*> (x .:? "Id"))
 
 instance Hashable Protection where
 

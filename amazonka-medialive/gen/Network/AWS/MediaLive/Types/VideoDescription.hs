@@ -44,15 +44,15 @@ data VideoDescription = VideoDescription'{_vdHeight
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'vdHeight' - Output video height (in pixels). Leave blank to use source video height. If left blank, width must also be unspecified.
+-- * 'vdHeight' - Output video height, in pixels. Must be an even number. For most codecs, you can leave this field and width blank in order to use the height and width (resolution) from the source. Note, however, that leaving blank is not recommended. For the Frame Capture codec, height and width are required.
 --
--- * 'vdSharpness' - Changes the width of the anti-alias filter kernel used for scaling. Only applies if scaling is being performed and antiAlias is set to true. 0 is the softest setting, 100 the sharpest, and 50 recommended for most content.
+-- * 'vdSharpness' - Changes the strength of the anti-alias filter used for scaling. 0 is the softest setting, 100 is the sharpest. A setting of 50 is recommended for most content.
 --
--- * 'vdWidth' - Output video width (in pixels). Leave out to use source video width.  If left out, height must also be left out. Display aspect ratio is always preserved by letterboxing or pillarboxing when necessary.
+-- * 'vdWidth' - Output video width, in pixels. Must be an even number. For most codecs, you can leave this field and height blank in order to use the height and width (resolution) from the source. Note, however, that leaving blank is not recommended. For the Frame Capture codec, height and width are required.
 --
--- * 'vdScalingBehavior' - When set to "stretchToOutput", automatically configures the output position to stretch the video to the specified output resolution. This option will override any position value.
+-- * 'vdScalingBehavior' - STRETCHTOOUTPUT configures the output position to stretch the video to the specified output resolution (height and width). This option will override any position value. DEFAULT may insert black boxes (pillar boxes or letter boxes) around the video to provide the specified output resolution.
 --
--- * 'vdRespondToAfd' - Indicates how to respond to the AFD values in the input stream. Setting to "respond" causes input video to be clipped, depending on AFD value, input display aspect ratio and output display aspect ratio.
+-- * 'vdRespondToAfd' - Indicates how to respond to the AFD values in the input stream. RESPOND causes input video to be clipped, depending on the AFD value, input display aspect ratio, and output display aspect ratio, and (except for FRAMECAPTURE codec) includes the values in the output. PASSTHROUGH (does not apply to FRAMECAPTURE codec) ignores the AFD values and includes the values in the output, so input video is not clipped. NONE ignores the AFD values and does not include the values through to the output, so input video is not clipped.
 --
 -- * 'vdCodecSettings' - Video codec settings.
 --
@@ -67,23 +67,23 @@ videoDescription pName_
                       _vdRespondToAfd = Nothing,
                       _vdCodecSettings = Nothing, _vdName = pName_}
 
--- | Output video height (in pixels). Leave blank to use source video height. If left blank, width must also be unspecified.
+-- | Output video height, in pixels. Must be an even number. For most codecs, you can leave this field and width blank in order to use the height and width (resolution) from the source. Note, however, that leaving blank is not recommended. For the Frame Capture codec, height and width are required.
 vdHeight :: Lens' VideoDescription (Maybe Int)
 vdHeight = lens _vdHeight (\ s a -> s{_vdHeight = a})
 
--- | Changes the width of the anti-alias filter kernel used for scaling. Only applies if scaling is being performed and antiAlias is set to true. 0 is the softest setting, 100 the sharpest, and 50 recommended for most content.
+-- | Changes the strength of the anti-alias filter used for scaling. 0 is the softest setting, 100 is the sharpest. A setting of 50 is recommended for most content.
 vdSharpness :: Lens' VideoDescription (Maybe Natural)
 vdSharpness = lens _vdSharpness (\ s a -> s{_vdSharpness = a}) . mapping _Nat
 
--- | Output video width (in pixels). Leave out to use source video width.  If left out, height must also be left out. Display aspect ratio is always preserved by letterboxing or pillarboxing when necessary.
+-- | Output video width, in pixels. Must be an even number. For most codecs, you can leave this field and height blank in order to use the height and width (resolution) from the source. Note, however, that leaving blank is not recommended. For the Frame Capture codec, height and width are required.
 vdWidth :: Lens' VideoDescription (Maybe Int)
 vdWidth = lens _vdWidth (\ s a -> s{_vdWidth = a})
 
--- | When set to "stretchToOutput", automatically configures the output position to stretch the video to the specified output resolution. This option will override any position value.
+-- | STRETCHTOOUTPUT configures the output position to stretch the video to the specified output resolution (height and width). This option will override any position value. DEFAULT may insert black boxes (pillar boxes or letter boxes) around the video to provide the specified output resolution.
 vdScalingBehavior :: Lens' VideoDescription (Maybe VideoDescriptionScalingBehavior)
 vdScalingBehavior = lens _vdScalingBehavior (\ s a -> s{_vdScalingBehavior = a})
 
--- | Indicates how to respond to the AFD values in the input stream. Setting to "respond" causes input video to be clipped, depending on AFD value, input display aspect ratio and output display aspect ratio.
+-- | Indicates how to respond to the AFD values in the input stream. RESPOND causes input video to be clipped, depending on the AFD value, input display aspect ratio, and output display aspect ratio, and (except for FRAMECAPTURE codec) includes the values in the output. PASSTHROUGH (does not apply to FRAMECAPTURE codec) ignores the AFD values and includes the values in the output, so input video is not clipped. NONE ignores the AFD values and does not include the values through to the output, so input video is not clipped.
 vdRespondToAfd :: Lens' VideoDescription (Maybe VideoDescriptionRespondToAfd)
 vdRespondToAfd = lens _vdRespondToAfd (\ s a -> s{_vdRespondToAfd = a})
 

@@ -26,7 +26,9 @@ import Network.AWS.Redshift.Internal
 --
 --
 -- /See:/ 'clusterSnapshotCopyStatus' smart constructor.
-data ClusterSnapshotCopyStatus = ClusterSnapshotCopyStatus'{_cscsRetentionPeriod
+data ClusterSnapshotCopyStatus = ClusterSnapshotCopyStatus'{_cscsManualSnapshotRetentionPeriod
+                                                            :: !(Maybe Int),
+                                                            _cscsRetentionPeriod
                                                             :: !(Maybe Integer),
                                                             _cscsDestinationRegion
                                                             :: !(Maybe Text),
@@ -39,6 +41,8 @@ data ClusterSnapshotCopyStatus = ClusterSnapshotCopyStatus'{_cscsRetentionPeriod
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
+-- * 'cscsManualSnapshotRetentionPeriod' - The number of days that automated snapshots are retained in the destination region after they are copied from a source region. If the value is -1, the manual snapshot is retained indefinitely.  The value must be either -1 or an integer between 1 and 3,653.
+--
 -- * 'cscsRetentionPeriod' - The number of days that automated snapshots are retained in the destination region after they are copied from a source region.
 --
 -- * 'cscsDestinationRegion' - The destination region that snapshots are automatically copied to when cross-region snapshot copy is enabled.
@@ -47,10 +51,15 @@ data ClusterSnapshotCopyStatus = ClusterSnapshotCopyStatus'{_cscsRetentionPeriod
 clusterSnapshotCopyStatus
     :: ClusterSnapshotCopyStatus
 clusterSnapshotCopyStatus
-  = ClusterSnapshotCopyStatus'{_cscsRetentionPeriod =
-                                 Nothing,
+  = ClusterSnapshotCopyStatus'{_cscsManualSnapshotRetentionPeriod
+                                 = Nothing,
+                               _cscsRetentionPeriod = Nothing,
                                _cscsDestinationRegion = Nothing,
                                _cscsSnapshotCopyGrantName = Nothing}
+
+-- | The number of days that automated snapshots are retained in the destination region after they are copied from a source region. If the value is -1, the manual snapshot is retained indefinitely.  The value must be either -1 or an integer between 1 and 3,653.
+cscsManualSnapshotRetentionPeriod :: Lens' ClusterSnapshotCopyStatus (Maybe Int)
+cscsManualSnapshotRetentionPeriod = lens _cscsManualSnapshotRetentionPeriod (\ s a -> s{_cscsManualSnapshotRetentionPeriod = a})
 
 -- | The number of days that automated snapshots are retained in the destination region after they are copied from a source region.
 cscsRetentionPeriod :: Lens' ClusterSnapshotCopyStatus (Maybe Integer)
@@ -67,8 +76,9 @@ cscsSnapshotCopyGrantName = lens _cscsSnapshotCopyGrantName (\ s a -> s{_cscsSna
 instance FromXML ClusterSnapshotCopyStatus where
         parseXML x
           = ClusterSnapshotCopyStatus' <$>
-              (x .@? "RetentionPeriod") <*>
-                (x .@? "DestinationRegion")
+              (x .@? "ManualSnapshotRetentionPeriod") <*>
+                (x .@? "RetentionPeriod")
+                <*> (x .@? "DestinationRegion")
                 <*> (x .@? "SnapshotCopyGrantName")
 
 instance Hashable ClusterSnapshotCopyStatus where

@@ -22,7 +22,7 @@ import Network.AWS.Prelude
 import Network.AWS.WorkSpaces.Types.Compute
 import Network.AWS.WorkSpaces.Types.RunningMode
 
--- | Information about a WorkSpace.
+-- | Describes a WorkSpace.
 --
 --
 --
@@ -45,11 +45,11 @@ data WorkspaceProperties = WorkspaceProperties'{_wpComputeTypeName
 --
 -- * 'wpComputeTypeName' - The compute type. For more information, see <http://aws.amazon.com/workspaces/details/#Amazon_WorkSpaces_Bundles Amazon WorkSpaces Bundles> .
 --
--- * 'wpRunningMode' - The running mode. For more information, see <http://docs.aws.amazon.com/workspaces/latest/adminguide/running-mode.html Manage the WorkSpace Running Mode> .
+-- * 'wpRunningMode' - The running mode. For more information, see <https://docs.aws.amazon.com/workspaces/latest/adminguide/running-mode.html Manage the WorkSpace Running Mode> .
 --
 -- * 'wpRootVolumeSizeGib' - The size of the root volume.
 --
--- * 'wpRunningModeAutoStopTimeoutInMinutes' - The time after a user logs off when WorkSpaces are automatically stopped. Configured in 60 minute intervals.
+-- * 'wpRunningModeAutoStopTimeoutInMinutes' - The time after a user logs off when WorkSpaces are automatically stopped. Configured in 60-minute intervals.
 --
 -- * 'wpUserVolumeSizeGib' - The size of the user storage.
 workspaceProperties
@@ -65,7 +65,7 @@ workspaceProperties
 wpComputeTypeName :: Lens' WorkspaceProperties (Maybe Compute)
 wpComputeTypeName = lens _wpComputeTypeName (\ s a -> s{_wpComputeTypeName = a})
 
--- | The running mode. For more information, see <http://docs.aws.amazon.com/workspaces/latest/adminguide/running-mode.html Manage the WorkSpace Running Mode> .
+-- | The running mode. For more information, see <https://docs.aws.amazon.com/workspaces/latest/adminguide/running-mode.html Manage the WorkSpace Running Mode> .
 wpRunningMode :: Lens' WorkspaceProperties (Maybe RunningMode)
 wpRunningMode = lens _wpRunningMode (\ s a -> s{_wpRunningMode = a})
 
@@ -73,7 +73,7 @@ wpRunningMode = lens _wpRunningMode (\ s a -> s{_wpRunningMode = a})
 wpRootVolumeSizeGib :: Lens' WorkspaceProperties (Maybe Int)
 wpRootVolumeSizeGib = lens _wpRootVolumeSizeGib (\ s a -> s{_wpRootVolumeSizeGib = a})
 
--- | The time after a user logs off when WorkSpaces are automatically stopped. Configured in 60 minute intervals.
+-- | The time after a user logs off when WorkSpaces are automatically stopped. Configured in 60-minute intervals.
 wpRunningModeAutoStopTimeoutInMinutes :: Lens' WorkspaceProperties (Maybe Int)
 wpRunningModeAutoStopTimeoutInMinutes = lens _wpRunningModeAutoStopTimeoutInMinutes (\ s a -> s{_wpRunningModeAutoStopTimeoutInMinutes = a})
 

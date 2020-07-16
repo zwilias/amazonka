@@ -55,7 +55,7 @@ data CreateConnection = CreateConnection'{_ccCatalogId
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'ccCatalogId' - The ID of the Data Catalog in which to create the connection. If none is supplied, the AWS account ID is used by default.
+-- * 'ccCatalogId' - The ID of the Data Catalog in which to create the connection. If none is provided, the AWS account ID is used by default.
 --
 -- * 'ccConnectionInput' - A @ConnectionInput@ object defining the connection to create.
 createConnection
@@ -65,7 +65,7 @@ createConnection pConnectionInput_
   = CreateConnection'{_ccCatalogId = Nothing,
                       _ccConnectionInput = pConnectionInput_}
 
--- | The ID of the Data Catalog in which to create the connection. If none is supplied, the AWS account ID is used by default.
+-- | The ID of the Data Catalog in which to create the connection. If none is provided, the AWS account ID is used by default.
 ccCatalogId :: Lens' CreateConnection (Maybe Text)
 ccCatalogId = lens _ccCatalogId (\ s a -> s{_ccCatalogId = a})
 

@@ -37,7 +37,7 @@ data SystemStatus = SystemStatus'{_ssCPUUtilization
 --
 -- * 'ssCPUUtilization' - CPU utilization metrics for the instance.
 --
--- * 'ssLoadAverage' - Load average in the last 1-minute, 5-minute, and 15-minute periods. For more information, see <http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/health-enhanced-metrics.html#health-enhanced-metrics-os Operating System Metrics> .
+-- * 'ssLoadAverage' - Load average in the last 1-minute, 5-minute, and 15-minute periods. For more information, see <https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/health-enhanced-metrics.html#health-enhanced-metrics-os Operating System Metrics> .
 systemStatus
     :: SystemStatus
 systemStatus
@@ -48,7 +48,7 @@ systemStatus
 ssCPUUtilization :: Lens' SystemStatus (Maybe CPUUtilization)
 ssCPUUtilization = lens _ssCPUUtilization (\ s a -> s{_ssCPUUtilization = a})
 
--- | Load average in the last 1-minute, 5-minute, and 15-minute periods. For more information, see <http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/health-enhanced-metrics.html#health-enhanced-metrics-os Operating System Metrics> .
+-- | Load average in the last 1-minute, 5-minute, and 15-minute periods. For more information, see <https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/health-enhanced-metrics.html#health-enhanced-metrics-os Operating System Metrics> .
 ssLoadAverage :: Lens' SystemStatus [Double]
 ssLoadAverage = lens _ssLoadAverage (\ s a -> s{_ssLoadAverage = a}) . _Default . _Coerce
 

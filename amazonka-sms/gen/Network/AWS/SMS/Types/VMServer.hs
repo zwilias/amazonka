@@ -22,7 +22,9 @@ import Network.AWS.Prelude
 import Network.AWS.SMS.Types.VMManagerType
 import Network.AWS.SMS.Types.VMServerAddress
 
--- | Object representing a VM server
+-- | Represents a VM server.
+--
+--
 --
 -- /See:/ 'vMServer' smart constructor.
 data VMServer = VMServer'{_vmsVmManagerName ::
@@ -37,15 +39,15 @@ data VMServer = VMServer'{_vmsVmManagerName ::
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'vmsVmManagerName' - Undocumented member.
+-- * 'vmsVmManagerName' - The name of the VM manager.
 --
--- * 'vmsVmManagerType' - Undocumented member.
+-- * 'vmsVmManagerType' - The type of VM management product.
 --
--- * 'vmsVmServerAddress' - Undocumented member.
+-- * 'vmsVmServerAddress' - Information about the VM server location.
 --
--- * 'vmsVmName' - Undocumented member.
+-- * 'vmsVmName' - The name of the VM.
 --
--- * 'vmsVmPath' - Undocumented member.
+-- * 'vmsVmPath' - The VM folder path in the vCenter Server virtual machine inventory tree.
 vMServer
     :: VMServer
 vMServer
@@ -54,23 +56,23 @@ vMServer
               _vmsVmServerAddress = Nothing, _vmsVmName = Nothing,
               _vmsVmPath = Nothing}
 
--- | Undocumented member.
+-- | The name of the VM manager.
 vmsVmManagerName :: Lens' VMServer (Maybe Text)
 vmsVmManagerName = lens _vmsVmManagerName (\ s a -> s{_vmsVmManagerName = a})
 
--- | Undocumented member.
+-- | The type of VM management product.
 vmsVmManagerType :: Lens' VMServer (Maybe VMManagerType)
 vmsVmManagerType = lens _vmsVmManagerType (\ s a -> s{_vmsVmManagerType = a})
 
--- | Undocumented member.
+-- | Information about the VM server location.
 vmsVmServerAddress :: Lens' VMServer (Maybe VMServerAddress)
 vmsVmServerAddress = lens _vmsVmServerAddress (\ s a -> s{_vmsVmServerAddress = a})
 
--- | Undocumented member.
+-- | The name of the VM.
 vmsVmName :: Lens' VMServer (Maybe Text)
 vmsVmName = lens _vmsVmName (\ s a -> s{_vmsVmName = a})
 
--- | Undocumented member.
+-- | The VM folder path in the vCenter Server virtual machine inventory tree.
 vmsVmPath :: Lens' VMServer (Maybe Text)
 vmsVmPath = lens _vmsVmPath (\ s a -> s{_vmsVmPath = a})
 
@@ -87,3 +89,13 @@ instance FromJSON VMServer where
 instance Hashable VMServer where
 
 instance NFData VMServer where
+
+instance ToJSON VMServer where
+        toJSON VMServer'{..}
+          = object
+              (catMaybes
+                 [("vmManagerName" .=) <$> _vmsVmManagerName,
+                  ("vmManagerType" .=) <$> _vmsVmManagerType,
+                  ("vmServerAddress" .=) <$> _vmsVmServerAddress,
+                  ("vmName" .=) <$> _vmsVmName,
+                  ("vmPath" .=) <$> _vmsVmPath])

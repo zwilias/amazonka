@@ -20,16 +20,21 @@ module Network.AWS.Pinpoint.Types.SMSChannelResponse where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | SMS Channel Response.
+-- | Provides information about the status and settings of the SMS channel for an application.
+--
+--
 --
 -- /See:/ 'sMSChannelResponse' smart constructor.
-data SMSChannelResponse = SMSChannelResponse'{_smscPlatform
+data SMSChannelResponse = SMSChannelResponse'{_smscShortCode
                                               :: !(Maybe Text),
-                                              _smscShortCode :: !(Maybe Text),
                                               _smscLastModifiedDate ::
                                               !(Maybe Text),
                                               _smscEnabled :: !(Maybe Bool),
                                               _smscSenderId :: !(Maybe Text),
+                                              _smscTransactionalMessagesPerSecond
+                                              :: !(Maybe Int),
+                                              _smscPromotionalMessagesPerSecond
+                                              :: !(Maybe Int),
                                               _smscIsArchived :: !(Maybe Bool),
                                               _smscApplicationId ::
                                               !(Maybe Text),
@@ -40,113 +45,131 @@ data SMSChannelResponse = SMSChannelResponse'{_smscPlatform
                                               _smscLastModifiedBy ::
                                               !(Maybe Text),
                                               _smscHasCredential ::
-                                              !(Maybe Bool)}
+                                              !(Maybe Bool),
+                                              _smscPlatform :: !Text}
                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'SMSChannelResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'smscPlatform' - Platform type. Will be "SMS"
+-- * 'smscShortCode' - The registered short code to use when you send messages through the SMS channel.
 --
--- * 'smscShortCode' - The short code registered with the phone provider.
+-- * 'smscLastModifiedDate' - The date and time, in ISO 8601 format, when the SMS channel was last modified.
 --
--- * 'smscLastModifiedDate' - Last date this was updated
+-- * 'smscEnabled' - Specifies whether the SMS channel is enabled for the application.
 --
--- * 'smscEnabled' - If the channel is enabled for sending messages.
+-- * 'smscSenderId' - The identity that displays on recipients' devices when they receive messages from the SMS channel.
 --
--- * 'smscSenderId' - Sender identifier of your messages.
+-- * 'smscTransactionalMessagesPerSecond' - The maximum number of transactional messages that you can send through the SMS channel each second.
 --
--- * 'smscIsArchived' - Is this channel archived
+-- * 'smscPromotionalMessagesPerSecond' - The maximum number of promotional messages that you can send through the SMS channel each second.
 --
--- * 'smscApplicationId' - The unique ID of the application to which the SMS channel belongs.
+-- * 'smscIsArchived' - Specifies whether the SMS channel is archived.
 --
--- * 'smscVersion' - Version of channel
+-- * 'smscApplicationId' - The unique identifier for the application that the SMS channel applies to.
 --
--- * 'smscId' - Channel ID. Not used, only for backwards compatibility.
+-- * 'smscVersion' - The current version of the SMS channel.
 --
--- * 'smscCreationDate' - The date that the settings were last updated in ISO 8601 format.
+-- * 'smscId' - (Deprecated) An identifier for the SMS channel. This property is retained only for backward compatibility.
 --
--- * 'smscLastModifiedBy' - Who last updated this entry
+-- * 'smscCreationDate' - The date and time, in ISO 8601 format, when the SMS channel was enabled.
 --
--- * 'smscHasCredential' - If the channel is registered with a credential for authentication.
+-- * 'smscLastModifiedBy' - The user who last modified the SMS channel.
+--
+-- * 'smscHasCredential' - (Not used) This property is retained only for backward compatibility.
+--
+-- * 'smscPlatform' - The type of messaging or notification platform for the channel. For the SMS channel, this value is SMS.
 sMSChannelResponse
-    :: SMSChannelResponse
-sMSChannelResponse
-  = SMSChannelResponse'{_smscPlatform = Nothing,
-                        _smscShortCode = Nothing,
+    :: Text -- ^ 'smscPlatform'
+    -> SMSChannelResponse
+sMSChannelResponse pPlatform_
+  = SMSChannelResponse'{_smscShortCode = Nothing,
                         _smscLastModifiedDate = Nothing,
                         _smscEnabled = Nothing, _smscSenderId = Nothing,
+                        _smscTransactionalMessagesPerSecond = Nothing,
+                        _smscPromotionalMessagesPerSecond = Nothing,
                         _smscIsArchived = Nothing,
                         _smscApplicationId = Nothing, _smscVersion = Nothing,
                         _smscId = Nothing, _smscCreationDate = Nothing,
                         _smscLastModifiedBy = Nothing,
-                        _smscHasCredential = Nothing}
+                        _smscHasCredential = Nothing,
+                        _smscPlatform = pPlatform_}
 
--- | Platform type. Will be "SMS"
-smscPlatform :: Lens' SMSChannelResponse (Maybe Text)
-smscPlatform = lens _smscPlatform (\ s a -> s{_smscPlatform = a})
-
--- | The short code registered with the phone provider.
+-- | The registered short code to use when you send messages through the SMS channel.
 smscShortCode :: Lens' SMSChannelResponse (Maybe Text)
 smscShortCode = lens _smscShortCode (\ s a -> s{_smscShortCode = a})
 
--- | Last date this was updated
+-- | The date and time, in ISO 8601 format, when the SMS channel was last modified.
 smscLastModifiedDate :: Lens' SMSChannelResponse (Maybe Text)
 smscLastModifiedDate = lens _smscLastModifiedDate (\ s a -> s{_smscLastModifiedDate = a})
 
--- | If the channel is enabled for sending messages.
+-- | Specifies whether the SMS channel is enabled for the application.
 smscEnabled :: Lens' SMSChannelResponse (Maybe Bool)
 smscEnabled = lens _smscEnabled (\ s a -> s{_smscEnabled = a})
 
--- | Sender identifier of your messages.
+-- | The identity that displays on recipients' devices when they receive messages from the SMS channel.
 smscSenderId :: Lens' SMSChannelResponse (Maybe Text)
 smscSenderId = lens _smscSenderId (\ s a -> s{_smscSenderId = a})
 
--- | Is this channel archived
+-- | The maximum number of transactional messages that you can send through the SMS channel each second.
+smscTransactionalMessagesPerSecond :: Lens' SMSChannelResponse (Maybe Int)
+smscTransactionalMessagesPerSecond = lens _smscTransactionalMessagesPerSecond (\ s a -> s{_smscTransactionalMessagesPerSecond = a})
+
+-- | The maximum number of promotional messages that you can send through the SMS channel each second.
+smscPromotionalMessagesPerSecond :: Lens' SMSChannelResponse (Maybe Int)
+smscPromotionalMessagesPerSecond = lens _smscPromotionalMessagesPerSecond (\ s a -> s{_smscPromotionalMessagesPerSecond = a})
+
+-- | Specifies whether the SMS channel is archived.
 smscIsArchived :: Lens' SMSChannelResponse (Maybe Bool)
 smscIsArchived = lens _smscIsArchived (\ s a -> s{_smscIsArchived = a})
 
--- | The unique ID of the application to which the SMS channel belongs.
+-- | The unique identifier for the application that the SMS channel applies to.
 smscApplicationId :: Lens' SMSChannelResponse (Maybe Text)
 smscApplicationId = lens _smscApplicationId (\ s a -> s{_smscApplicationId = a})
 
--- | Version of channel
+-- | The current version of the SMS channel.
 smscVersion :: Lens' SMSChannelResponse (Maybe Int)
 smscVersion = lens _smscVersion (\ s a -> s{_smscVersion = a})
 
--- | Channel ID. Not used, only for backwards compatibility.
+-- | (Deprecated) An identifier for the SMS channel. This property is retained only for backward compatibility.
 smscId :: Lens' SMSChannelResponse (Maybe Text)
 smscId = lens _smscId (\ s a -> s{_smscId = a})
 
--- | The date that the settings were last updated in ISO 8601 format.
+-- | The date and time, in ISO 8601 format, when the SMS channel was enabled.
 smscCreationDate :: Lens' SMSChannelResponse (Maybe Text)
 smscCreationDate = lens _smscCreationDate (\ s a -> s{_smscCreationDate = a})
 
--- | Who last updated this entry
+-- | The user who last modified the SMS channel.
 smscLastModifiedBy :: Lens' SMSChannelResponse (Maybe Text)
 smscLastModifiedBy = lens _smscLastModifiedBy (\ s a -> s{_smscLastModifiedBy = a})
 
--- | If the channel is registered with a credential for authentication.
+-- | (Not used) This property is retained only for backward compatibility.
 smscHasCredential :: Lens' SMSChannelResponse (Maybe Bool)
 smscHasCredential = lens _smscHasCredential (\ s a -> s{_smscHasCredential = a})
+
+-- | The type of messaging or notification platform for the channel. For the SMS channel, this value is SMS.
+smscPlatform :: Lens' SMSChannelResponse Text
+smscPlatform = lens _smscPlatform (\ s a -> s{_smscPlatform = a})
 
 instance FromJSON SMSChannelResponse where
         parseJSON
           = withObject "SMSChannelResponse"
               (\ x ->
                  SMSChannelResponse' <$>
-                   (x .:? "Platform") <*> (x .:? "ShortCode") <*>
-                     (x .:? "LastModifiedDate")
+                   (x .:? "ShortCode") <*> (x .:? "LastModifiedDate")
                      <*> (x .:? "Enabled")
                      <*> (x .:? "SenderId")
+                     <*> (x .:? "TransactionalMessagesPerSecond")
+                     <*> (x .:? "PromotionalMessagesPerSecond")
                      <*> (x .:? "IsArchived")
                      <*> (x .:? "ApplicationId")
                      <*> (x .:? "Version")
                      <*> (x .:? "Id")
                      <*> (x .:? "CreationDate")
                      <*> (x .:? "LastModifiedBy")
-                     <*> (x .:? "HasCredential"))
+                     <*> (x .:? "HasCredential")
+                     <*> (x .: "Platform"))
 
 instance Hashable SMSChannelResponse where
 

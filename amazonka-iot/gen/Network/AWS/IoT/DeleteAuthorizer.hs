@@ -33,7 +33,7 @@ module Network.AWS.IoT.DeleteAuthorizer
     , deleteAuthorizerResponse
     , DeleteAuthorizerResponse
     -- * Response Lenses
-    , delrsResponseStatus
+    , dltathrzrrsResponseStatus
     ) where
 
 import Network.AWS.IoT.Types
@@ -87,7 +87,7 @@ instance ToQuery DeleteAuthorizer where
         toQuery = const mempty
 
 -- | /See:/ 'deleteAuthorizerResponse' smart constructor.
-newtype DeleteAuthorizerResponse = DeleteAuthorizerResponse'{_delrsResponseStatus
+newtype DeleteAuthorizerResponse = DeleteAuthorizerResponse'{_dltathrzrrsResponseStatus
                                                              :: Int}
                                      deriving (Eq, Read, Show, Data, Typeable,
                                                Generic)
@@ -96,16 +96,16 @@ newtype DeleteAuthorizerResponse = DeleteAuthorizerResponse'{_delrsResponseStatu
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'delrsResponseStatus' - -- | The response status code.
+-- * 'dltathrzrrsResponseStatus' - -- | The response status code.
 deleteAuthorizerResponse
-    :: Int -- ^ 'delrsResponseStatus'
+    :: Int -- ^ 'dltathrzrrsResponseStatus'
     -> DeleteAuthorizerResponse
 deleteAuthorizerResponse pResponseStatus_
-  = DeleteAuthorizerResponse'{_delrsResponseStatus =
-                                pResponseStatus_}
+  = DeleteAuthorizerResponse'{_dltathrzrrsResponseStatus
+                                = pResponseStatus_}
 
 -- | -- | The response status code.
-delrsResponseStatus :: Lens' DeleteAuthorizerResponse Int
-delrsResponseStatus = lens _delrsResponseStatus (\ s a -> s{_delrsResponseStatus = a})
+dltathrzrrsResponseStatus :: Lens' DeleteAuthorizerResponse Int
+dltathrzrrsResponseStatus = lens _dltathrzrrsResponseStatus (\ s a -> s{_dltathrzrrsResponseStatus = a})
 
 instance NFData DeleteAuthorizerResponse where

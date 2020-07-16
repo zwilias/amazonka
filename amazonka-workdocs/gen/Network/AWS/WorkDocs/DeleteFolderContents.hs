@@ -52,7 +52,7 @@ data DeleteFolderContents = DeleteFolderContents'{_dfcAuthenticationToken
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dfcAuthenticationToken' - Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.
+-- * 'dfcAuthenticationToken' - Amazon WorkDocs authentication token. Not required when using AWS administrator credentials to access the API.
 --
 -- * 'dfcFolderId' - The ID of the folder.
 deleteFolderContents
@@ -63,7 +63,7 @@ deleteFolderContents pFolderId_
                             Nothing,
                           _dfcFolderId = pFolderId_}
 
--- | Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.
+-- | Amazon WorkDocs authentication token. Not required when using AWS administrator credentials to access the API.
 dfcAuthenticationToken :: Lens' DeleteFolderContents (Maybe Text)
 dfcAuthenticationToken = lens _dfcAuthenticationToken (\ s a -> s{_dfcAuthenticationToken = a}) . mapping _Sensitive
 

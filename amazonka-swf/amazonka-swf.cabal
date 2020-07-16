@@ -61,6 +61,7 @@ library
         , Network.AWS.SWF.ListClosedWorkflowExecutions
         , Network.AWS.SWF.ListDomains
         , Network.AWS.SWF.ListOpenWorkflowExecutions
+        , Network.AWS.SWF.ListTagsForResource
         , Network.AWS.SWF.ListWorkflowTypes
         , Network.AWS.SWF.PollForActivityTask
         , Network.AWS.SWF.PollForDecisionTask
@@ -75,8 +76,13 @@ library
         , Network.AWS.SWF.RespondDecisionTaskCompleted
         , Network.AWS.SWF.SignalWorkflowExecution
         , Network.AWS.SWF.StartWorkflowExecution
+        , Network.AWS.SWF.TagResource
         , Network.AWS.SWF.TerminateWorkflowExecution
         , Network.AWS.SWF.Types
+        , Network.AWS.SWF.UndeprecateActivityType
+        , Network.AWS.SWF.UndeprecateDomain
+        , Network.AWS.SWF.UndeprecateWorkflowType
+        , Network.AWS.SWF.UntagResource
         , Network.AWS.SWF.Waiters
 
     other-modules:
@@ -150,6 +156,7 @@ library
         , Network.AWS.SWF.Types.RequestCancelExternalWorkflowExecutionFailedCause
         , Network.AWS.SWF.Types.RequestCancelExternalWorkflowExecutionFailedEventAttributes
         , Network.AWS.SWF.Types.RequestCancelExternalWorkflowExecutionInitiatedEventAttributes
+        , Network.AWS.SWF.Types.ResourceTag
         , Network.AWS.SWF.Types.ScheduleActivityTaskDecisionAttributes
         , Network.AWS.SWF.Types.ScheduleActivityTaskFailedCause
         , Network.AWS.SWF.Types.ScheduleActivityTaskFailedEventAttributes

@@ -22,7 +22,7 @@ import Network.AWS.Prelude
 import Network.AWS.WorkMail.Types.EntityState
 import Network.AWS.WorkMail.Types.MemberType
 
--- | The representation of a group member (user or group).
+-- | The representation of a user or group.
 --
 --
 --

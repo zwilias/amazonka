@@ -65,7 +65,7 @@ data CheckDomainTransferability = CheckDomainTransferability'{_cdtAuthCode
 --
 -- * 'cdtAuthCode' - If the registrar for the top-level domain (TLD) requires an authorization code to transfer the domain, the code that you got from the current registrar for the domain.
 --
--- * 'cdtDomainName' - The name of the domain that you want to transfer to Amazon Route 53. Constraints: The domain name can contain only the letters a through z, the numbers 0 through 9, and hyphen (-). Internationalized Domain Names are not supported.
+-- * 'cdtDomainName' - The name of the domain that you want to transfer to Route 53. The top-level domain (TLD), such as .com, must be a TLD that Route 53 supports. For a list of supported TLDs, see <https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/registrar-tld-list.html Domains that You Can Register with Amazon Route 53> in the /Amazon Route 53 Developer Guide/ . The domain name can contain only the following characters:     * Letters a through z. Domain names are not case sensitive.     * Numbers 0 through 9.     * Hyphen (-). You can't specify a hyphen at the beginning or end of a label.      * Period (.) to separate the labels in the name, such as the @.@ in @example.com@ .
 checkDomainTransferability
     :: Text -- ^ 'cdtDomainName'
     -> CheckDomainTransferability
@@ -77,7 +77,7 @@ checkDomainTransferability pDomainName_
 cdtAuthCode :: Lens' CheckDomainTransferability (Maybe Text)
 cdtAuthCode = lens _cdtAuthCode (\ s a -> s{_cdtAuthCode = a}) . mapping _Sensitive
 
--- | The name of the domain that you want to transfer to Amazon Route 53. Constraints: The domain name can contain only the letters a through z, the numbers 0 through 9, and hyphen (-). Internationalized Domain Names are not supported.
+-- | The name of the domain that you want to transfer to Route 53. The top-level domain (TLD), such as .com, must be a TLD that Route 53 supports. For a list of supported TLDs, see <https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/registrar-tld-list.html Domains that You Can Register with Amazon Route 53> in the /Amazon Route 53 Developer Guide/ . The domain name can contain only the following characters:     * Letters a through z. Domain names are not case sensitive.     * Numbers 0 through 9.     * Hyphen (-). You can't specify a hyphen at the beginning or end of a label.      * Period (.) to separate the labels in the name, such as the @.@ in @example.com@ .
 cdtDomainName :: Lens' CheckDomainTransferability Text
 cdtDomainName = lens _cdtDomainName (\ s a -> s{_cdtDomainName = a})
 
@@ -138,7 +138,7 @@ data CheckDomainTransferabilityResponse = CheckDomainTransferabilityResponse'{_c
 --
 -- * 'cdtrsResponseStatus' - -- | The response status code.
 --
--- * 'cdtrsTransferability' - A complex type that contains information about whether the specified domain can be transferred to Amazon Route 53.
+-- * 'cdtrsTransferability' - A complex type that contains information about whether the specified domain can be transferred to Route 53.
 checkDomainTransferabilityResponse
     :: Int -- ^ 'cdtrsResponseStatus'
     -> DomainTransferability -- ^ 'cdtrsTransferability'
@@ -154,7 +154,7 @@ checkDomainTransferabilityResponse pResponseStatus_
 cdtrsResponseStatus :: Lens' CheckDomainTransferabilityResponse Int
 cdtrsResponseStatus = lens _cdtrsResponseStatus (\ s a -> s{_cdtrsResponseStatus = a})
 
--- | A complex type that contains information about whether the specified domain can be transferred to Amazon Route 53.
+-- | A complex type that contains information about whether the specified domain can be transferred to Route 53.
 cdtrsTransferability :: Lens' CheckDomainTransferabilityResponse DomainTransferability
 cdtrsTransferability = lens _cdtrsTransferability (\ s a -> s{_cdtrsTransferability = a})
 

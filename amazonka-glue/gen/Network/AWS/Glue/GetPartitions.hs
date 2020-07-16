@@ -69,11 +69,11 @@ data GetPartitions = GetPartitions'{_gpsCatalogId ::
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'gpsCatalogId' - The ID of the Data Catalog where the partitions in question reside. If none is supplied, the AWS account ID is used by default.
+-- * 'gpsCatalogId' - The ID of the Data Catalog where the partitions in question reside. If none is provided, the AWS account ID is used by default.
 --
 -- * 'gpsNextToken' - A continuation token, if this is not the first call to retrieve these partitions.
 --
--- * 'gpsExpression' - An expression filtering the partitions to be returned.
+-- * 'gpsExpression' - An expression that filters the partitions to be returned. The expression uses SQL syntax similar to the SQL @WHERE@ filter clause. The SQL statement parser <http://jsqlparser.sourceforge.net/home.php JSQLParser> parses the expression.  /Operators/ : The following are the operators that you can use in the @Expression@ API call:     * =    * Checks whether the values of the two operands are equal; if yes, then the condition becomes true. Example: Assume 'variable a' holds 10 and 'variable b' holds 20.  (a = b) is not true.     * < >    * Checks whether the values of two operands are equal; if the values are not equal, then the condition becomes true. Example: (a < > b) is true.     * >    * Checks whether the value of the left operand is greater than the value of the right operand; if yes, then the condition becomes true. Example: (a > b) is not true.     * <    * Checks whether the value of the left operand is less than the value of the right operand; if yes, then the condition becomes true. Example: (a < b) is true.     * >=    * Checks whether the value of the left operand is greater than or equal to the value of the right operand; if yes, then the condition becomes true. Example: (a >= b) is not true.     * <=    * Checks whether the value of the left operand is less than or equal to the value of the right operand; if yes, then the condition becomes true. Example: (a <= b) is true.     * AND, OR, IN, BETWEEN, LIKE, NOT, IS NULL    * Logical operators. /Supported Partition Key Types/ : The following are the supported partition keys.     * @string@      * @date@      * @timestamp@      * @int@      * @bigint@      * @long@      * @tinyint@      * @smallint@      * @decimal@  If an invalid type is encountered, an exception is thrown.  The following list shows the valid operators on each type. When you define a crawler, the @partitionKey@ type is created as a @STRING@ , to be compatible with the catalog partitions.  /Sample API Call/ : 
 --
 -- * 'gpsSegment' - The segment of the table's partitions to scan in this request.
 --
@@ -93,7 +93,7 @@ getPartitions pDatabaseName_ pTableName_
                    _gpsDatabaseName = pDatabaseName_,
                    _gpsTableName = pTableName_}
 
--- | The ID of the Data Catalog where the partitions in question reside. If none is supplied, the AWS account ID is used by default.
+-- | The ID of the Data Catalog where the partitions in question reside. If none is provided, the AWS account ID is used by default.
 gpsCatalogId :: Lens' GetPartitions (Maybe Text)
 gpsCatalogId = lens _gpsCatalogId (\ s a -> s{_gpsCatalogId = a})
 
@@ -101,7 +101,7 @@ gpsCatalogId = lens _gpsCatalogId (\ s a -> s{_gpsCatalogId = a})
 gpsNextToken :: Lens' GetPartitions (Maybe Text)
 gpsNextToken = lens _gpsNextToken (\ s a -> s{_gpsNextToken = a})
 
--- | An expression filtering the partitions to be returned.
+-- | An expression that filters the partitions to be returned. The expression uses SQL syntax similar to the SQL @WHERE@ filter clause. The SQL statement parser <http://jsqlparser.sourceforge.net/home.php JSQLParser> parses the expression.  /Operators/ : The following are the operators that you can use in the @Expression@ API call:     * =    * Checks whether the values of the two operands are equal; if yes, then the condition becomes true. Example: Assume 'variable a' holds 10 and 'variable b' holds 20.  (a = b) is not true.     * < >    * Checks whether the values of two operands are equal; if the values are not equal, then the condition becomes true. Example: (a < > b) is true.     * >    * Checks whether the value of the left operand is greater than the value of the right operand; if yes, then the condition becomes true. Example: (a > b) is not true.     * <    * Checks whether the value of the left operand is less than the value of the right operand; if yes, then the condition becomes true. Example: (a < b) is true.     * >=    * Checks whether the value of the left operand is greater than or equal to the value of the right operand; if yes, then the condition becomes true. Example: (a >= b) is not true.     * <=    * Checks whether the value of the left operand is less than or equal to the value of the right operand; if yes, then the condition becomes true. Example: (a <= b) is true.     * AND, OR, IN, BETWEEN, LIKE, NOT, IS NULL    * Logical operators. /Supported Partition Key Types/ : The following are the supported partition keys.     * @string@      * @date@      * @timestamp@      * @int@      * @bigint@      * @long@      * @tinyint@      * @smallint@      * @decimal@  If an invalid type is encountered, an exception is thrown.  The following list shows the valid operators on each type. When you define a crawler, the @partitionKey@ type is created as a @STRING@ , to be compatible with the catalog partitions.  /Sample API Call/ : 
 gpsExpression :: Lens' GetPartitions (Maybe Text)
 gpsExpression = lens _gpsExpression (\ s a -> s{_gpsExpression = a})
 
@@ -186,7 +186,7 @@ data GetPartitionsResponse = GetPartitionsResponse'{_gpsrsPartitions
 --
 -- * 'gpsrsPartitions' - A list of requested partitions.
 --
--- * 'gpsrsNextToken' - A continuation token, if the returned list of partitions does not does not include the last one.
+-- * 'gpsrsNextToken' - A continuation token, if the returned list of partitions does not include the last one.
 --
 -- * 'gpsrsResponseStatus' - -- | The response status code.
 getPartitionsResponse
@@ -201,7 +201,7 @@ getPartitionsResponse pResponseStatus_
 gpsrsPartitions :: Lens' GetPartitionsResponse [Partition]
 gpsrsPartitions = lens _gpsrsPartitions (\ s a -> s{_gpsrsPartitions = a}) . _Default . _Coerce
 
--- | A continuation token, if the returned list of partitions does not does not include the last one.
+-- | A continuation token, if the returned list of partitions does not include the last one.
 gpsrsNextToken :: Lens' GetPartitionsResponse (Maybe Text)
 gpsrsNextToken = lens _gpsrsNextToken (\ s a -> s{_gpsrsNextToken = a})
 

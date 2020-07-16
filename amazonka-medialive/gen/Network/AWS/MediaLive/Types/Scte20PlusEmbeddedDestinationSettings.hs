@@ -20,7 +20,7 @@ module Network.AWS.MediaLive.Types.Scte20PlusEmbeddedDestinationSettings where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | Placeholder documentation for Scte20PlusEmbeddedDestinationSettings
+-- | Scte20 Plus Embedded Destination Settings
 --
 -- /See:/ 'scte20PlusEmbeddedDestinationSettings' smart constructor.
 data Scte20PlusEmbeddedDestinationSettings = Scte20PlusEmbeddedDestinationSettings'

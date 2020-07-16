@@ -25,6 +25,7 @@ module Network.AWS.SageMaker.Types.NotebookInstanceStatus (
     , NISPending
     , NISStopped
     , NISStopping
+    , NISUpdating
     )
   ) where
 
@@ -54,6 +55,9 @@ pattern NISStopped = NotebookInstanceStatus' "Stopped"
 pattern NISStopping :: NotebookInstanceStatus
 pattern NISStopping = NotebookInstanceStatus' "Stopping"
 
+pattern NISUpdating :: NotebookInstanceStatus
+pattern NISUpdating = NotebookInstanceStatus' "Updating"
+
 {-# COMPLETE
   NISDeleting,
   NISFailed,
@@ -61,6 +65,7 @@ pattern NISStopping = NotebookInstanceStatus' "Stopping"
   NISPending,
   NISStopped,
   NISStopping,
+  NISUpdating,
   NotebookInstanceStatus' #-}
 
 instance FromText NotebookInstanceStatus where
@@ -81,6 +86,7 @@ instance Enum NotebookInstanceStatus where
         3 -> NISPending
         4 -> NISStopped
         5 -> NISStopping
+        6 -> NISUpdating
         _ -> (error . showText) $ "Unknown index for NotebookInstanceStatus: " <> toText i
     fromEnum x = case x of
         NISDeleting -> 0
@@ -89,6 +95,7 @@ instance Enum NotebookInstanceStatus where
         NISPending -> 3
         NISStopped -> 4
         NISStopping -> 5
+        NISUpdating -> 6
         NotebookInstanceStatus' name -> (error . showText) $ "Unknown NotebookInstanceStatus: " <> original name
 
 -- | Represents the bounds of /known/ $NotebookInstanceStatus.
@@ -96,7 +103,7 @@ instance Enum NotebookInstanceStatus where
 --   This instance exists only for backward compatibility.
 instance Bounded NotebookInstanceStatus where
     minBound = NISDeleting
-    maxBound = NISStopping
+    maxBound = NISUpdating
 
 instance Hashable     NotebookInstanceStatus
 instance NFData       NotebookInstanceStatus

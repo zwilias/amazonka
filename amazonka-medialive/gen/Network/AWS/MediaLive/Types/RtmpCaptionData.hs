@@ -28,7 +28,7 @@ module Network.AWS.MediaLive.Types.RtmpCaptionData (
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | Placeholder documentation for RtmpCaptionData
+-- | Rtmp Caption Data
 data RtmpCaptionData = RtmpCaptionData' (CI Text)
                          deriving (Eq, Ord, Read, Show, Data, Typeable,
                                    Generic)

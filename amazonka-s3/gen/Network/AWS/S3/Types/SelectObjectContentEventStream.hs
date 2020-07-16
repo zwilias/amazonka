@@ -26,7 +26,11 @@ import Network.AWS.S3.Types.ProgressEvent
 import Network.AWS.S3.Types.RecordsEvent
 import Network.AWS.S3.Types.StatsEvent
 
--- | /See:/ 'selectObjectContentEventStream' smart constructor.
+-- | The container for selecting objects from a content event stream.
+--
+--
+--
+-- /See:/ 'selectObjectContentEventStream' smart constructor.
 data SelectObjectContentEventStream = SelectObjectContentEventStream'{_socesProgress
                                                                       ::
                                                                       !(Maybe

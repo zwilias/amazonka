@@ -19,59 +19,79 @@
 module Network.AWS.MediaConvert.Types.CaptionDestinationType (
   CaptionDestinationType (
     ..
-    , CDTBurnIn
-    , CDTDvbSub
-    , CDTEmbedded
-    , CDTScc
-    , CDTSrt
-    , CDTTeletext
-    , CDTTtml
-    , CDTWebvtt
+    , BurnIn
+    , DvbSub
+    , Embedded
+    , EmbeddedPlusSCTE20
+    , Imsc
+    , SCTE20PlusEmbedded
+    , Scc
+    , Smi
+    , Srt
+    , Teletext
+    , Ttml
+    , Webvtt
     )
   ) where
 
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | Type of Caption output, including Burn-In, Embedded, SCC, SRT, TTML, WebVTT, DVB-Sub, Teletext.
+-- | Specify the format for this set of captions on this output. The default format is embedded without SCTE-20. Other options are embedded with SCTE-20, burn-in, DVB-sub, IMSC, SCC, SRT, teletext, TTML, and web-VTT. If you are using SCTE-20, choose SCTE-20 plus embedded (SCTE20_PLUS_EMBEDDED) to create an output that complies with the SCTE-43 spec. To create a non-compliant output where the embedded captions come first, choose Embedded plus SCTE-20 (EMBEDDED_PLUS_SCTE20).
 data CaptionDestinationType = CaptionDestinationType' (CI
                                                          Text)
                                 deriving (Eq, Ord, Read, Show, Data, Typeable,
                                           Generic)
 
-pattern CDTBurnIn :: CaptionDestinationType
-pattern CDTBurnIn = CaptionDestinationType' "BURN_IN"
+pattern BurnIn :: CaptionDestinationType
+pattern BurnIn = CaptionDestinationType' "BURN_IN"
 
-pattern CDTDvbSub :: CaptionDestinationType
-pattern CDTDvbSub = CaptionDestinationType' "DVB_SUB"
+pattern DvbSub :: CaptionDestinationType
+pattern DvbSub = CaptionDestinationType' "DVB_SUB"
 
-pattern CDTEmbedded :: CaptionDestinationType
-pattern CDTEmbedded = CaptionDestinationType' "EMBEDDED"
+pattern Embedded :: CaptionDestinationType
+pattern Embedded = CaptionDestinationType' "EMBEDDED"
 
-pattern CDTScc :: CaptionDestinationType
-pattern CDTScc = CaptionDestinationType' "SCC"
+pattern EmbeddedPlusSCTE20 :: CaptionDestinationType
+pattern EmbeddedPlusSCTE20 = CaptionDestinationType' "EMBEDDED_PLUS_SCTE20"
 
-pattern CDTSrt :: CaptionDestinationType
-pattern CDTSrt = CaptionDestinationType' "SRT"
+pattern Imsc :: CaptionDestinationType
+pattern Imsc = CaptionDestinationType' "IMSC"
 
-pattern CDTTeletext :: CaptionDestinationType
-pattern CDTTeletext = CaptionDestinationType' "TELETEXT"
+pattern SCTE20PlusEmbedded :: CaptionDestinationType
+pattern SCTE20PlusEmbedded = CaptionDestinationType' "SCTE20_PLUS_EMBEDDED"
 
-pattern CDTTtml :: CaptionDestinationType
-pattern CDTTtml = CaptionDestinationType' "TTML"
+pattern Scc :: CaptionDestinationType
+pattern Scc = CaptionDestinationType' "SCC"
 
-pattern CDTWebvtt :: CaptionDestinationType
-pattern CDTWebvtt = CaptionDestinationType' "WEBVTT"
+pattern Smi :: CaptionDestinationType
+pattern Smi = CaptionDestinationType' "SMI"
+
+pattern Srt :: CaptionDestinationType
+pattern Srt = CaptionDestinationType' "SRT"
+
+pattern Teletext :: CaptionDestinationType
+pattern Teletext = CaptionDestinationType' "TELETEXT"
+
+pattern Ttml :: CaptionDestinationType
+pattern Ttml = CaptionDestinationType' "TTML"
+
+pattern Webvtt :: CaptionDestinationType
+pattern Webvtt = CaptionDestinationType' "WEBVTT"
 
 {-# COMPLETE
-  CDTBurnIn,
-  CDTDvbSub,
-  CDTEmbedded,
-  CDTScc,
-  CDTSrt,
-  CDTTeletext,
-  CDTTtml,
-  CDTWebvtt,
+  BurnIn,
+  DvbSub,
+  Embedded,
+  EmbeddedPlusSCTE20,
+  Imsc,
+  SCTE20PlusEmbedded,
+  Scc,
+  Smi,
+  Srt,
+  Teletext,
+  Ttml,
+  Webvtt,
   CaptionDestinationType' #-}
 
 instance FromText CaptionDestinationType where
@@ -86,32 +106,40 @@ instance ToText CaptionDestinationType where
 --   fromEnum is a partial function, and will error on values unknown at generation time.
 instance Enum CaptionDestinationType where
     toEnum i = case i of
-        0 -> CDTBurnIn
-        1 -> CDTDvbSub
-        2 -> CDTEmbedded
-        3 -> CDTScc
-        4 -> CDTSrt
-        5 -> CDTTeletext
-        6 -> CDTTtml
-        7 -> CDTWebvtt
+        0 -> BurnIn
+        1 -> DvbSub
+        2 -> Embedded
+        3 -> EmbeddedPlusSCTE20
+        4 -> Imsc
+        5 -> SCTE20PlusEmbedded
+        6 -> Scc
+        7 -> Smi
+        8 -> Srt
+        9 -> Teletext
+        10 -> Ttml
+        11 -> Webvtt
         _ -> (error . showText) $ "Unknown index for CaptionDestinationType: " <> toText i
     fromEnum x = case x of
-        CDTBurnIn -> 0
-        CDTDvbSub -> 1
-        CDTEmbedded -> 2
-        CDTScc -> 3
-        CDTSrt -> 4
-        CDTTeletext -> 5
-        CDTTtml -> 6
-        CDTWebvtt -> 7
+        BurnIn -> 0
+        DvbSub -> 1
+        Embedded -> 2
+        EmbeddedPlusSCTE20 -> 3
+        Imsc -> 4
+        SCTE20PlusEmbedded -> 5
+        Scc -> 6
+        Smi -> 7
+        Srt -> 8
+        Teletext -> 9
+        Ttml -> 10
+        Webvtt -> 11
         CaptionDestinationType' name -> (error . showText) $ "Unknown CaptionDestinationType: " <> original name
 
 -- | Represents the bounds of /known/ $CaptionDestinationType.
 --   AWS may have added more since the source was generated.
 --   This instance exists only for backward compatibility.
 instance Bounded CaptionDestinationType where
-    minBound = CDTBurnIn
-    maxBound = CDTWebvtt
+    minBound = BurnIn
+    maxBound = Webvtt
 
 instance Hashable     CaptionDestinationType
 instance NFData       CaptionDestinationType

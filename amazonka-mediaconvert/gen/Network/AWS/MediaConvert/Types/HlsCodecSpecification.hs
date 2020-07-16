@@ -19,8 +19,8 @@
 module Network.AWS.MediaConvert.Types.HlsCodecSpecification (
   HlsCodecSpecification (
     ..
-    , Rfc4281
-    , Rfc6381
+    , HCSRfc4281
+    , HCSRfc6381
     )
   ) where
 
@@ -33,15 +33,15 @@ data HlsCodecSpecification = HlsCodecSpecification' (CI
                                deriving (Eq, Ord, Read, Show, Data, Typeable,
                                          Generic)
 
-pattern Rfc4281 :: HlsCodecSpecification
-pattern Rfc4281 = HlsCodecSpecification' "RFC_4281"
+pattern HCSRfc4281 :: HlsCodecSpecification
+pattern HCSRfc4281 = HlsCodecSpecification' "RFC_4281"
 
-pattern Rfc6381 :: HlsCodecSpecification
-pattern Rfc6381 = HlsCodecSpecification' "RFC_6381"
+pattern HCSRfc6381 :: HlsCodecSpecification
+pattern HCSRfc6381 = HlsCodecSpecification' "RFC_6381"
 
 {-# COMPLETE
-  Rfc4281,
-  Rfc6381,
+  HCSRfc4281,
+  HCSRfc6381,
   HlsCodecSpecification' #-}
 
 instance FromText HlsCodecSpecification where
@@ -56,20 +56,20 @@ instance ToText HlsCodecSpecification where
 --   fromEnum is a partial function, and will error on values unknown at generation time.
 instance Enum HlsCodecSpecification where
     toEnum i = case i of
-        0 -> Rfc4281
-        1 -> Rfc6381
+        0 -> HCSRfc4281
+        1 -> HCSRfc6381
         _ -> (error . showText) $ "Unknown index for HlsCodecSpecification: " <> toText i
     fromEnum x = case x of
-        Rfc4281 -> 0
-        Rfc6381 -> 1
+        HCSRfc4281 -> 0
+        HCSRfc6381 -> 1
         HlsCodecSpecification' name -> (error . showText) $ "Unknown HlsCodecSpecification: " <> original name
 
 -- | Represents the bounds of /known/ $HlsCodecSpecification.
 --   AWS may have added more since the source was generated.
 --   This instance exists only for backward compatibility.
 instance Bounded HlsCodecSpecification where
-    minBound = Rfc4281
-    maxBound = Rfc6381
+    minBound = HCSRfc4281
+    maxBound = HCSRfc6381
 
 instance Hashable     HlsCodecSpecification
 instance NFData       HlsCodecSpecification

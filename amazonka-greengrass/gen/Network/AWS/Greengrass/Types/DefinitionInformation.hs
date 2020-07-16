@@ -30,6 +30,8 @@ data DefinitionInformation = DefinitionInformation'{_diLatestVersionARN
                                                     _diCreationTimestamp ::
                                                     !(Maybe Text),
                                                     _diId :: !(Maybe Text),
+                                                    _diTags ::
+                                                    !(Maybe (Map Text Text)),
                                                     _diLatestVersion ::
                                                     !(Maybe Text),
                                                     _diLastUpdatedTimestamp ::
@@ -41,7 +43,7 @@ data DefinitionInformation = DefinitionInformation'{_diLatestVersionARN
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'diLatestVersionARN' - The ARN of the latest version of the definition.
+-- * 'diLatestVersionARN' - The ARN of the latest version associated with the definition.
 --
 -- * 'diARN' - The ARN of the definition.
 --
@@ -51,7 +53,9 @@ data DefinitionInformation = DefinitionInformation'{_diLatestVersionARN
 --
 -- * 'diId' - The ID of the definition.
 --
--- * 'diLatestVersion' - The latest version of the definition.
+-- * 'diTags' - Tag(s) attached to the resource arn.
+--
+-- * 'diLatestVersion' - The ID of the latest version associated with the definition.
 --
 -- * 'diLastUpdatedTimestamp' - The time, in milliseconds since the epoch, when the definition was last updated.
 definitionInformation
@@ -61,10 +65,10 @@ definitionInformation
                              Nothing,
                            _diARN = Nothing, _diName = Nothing,
                            _diCreationTimestamp = Nothing, _diId = Nothing,
-                           _diLatestVersion = Nothing,
+                           _diTags = Nothing, _diLatestVersion = Nothing,
                            _diLastUpdatedTimestamp = Nothing}
 
--- | The ARN of the latest version of the definition.
+-- | The ARN of the latest version associated with the definition.
 diLatestVersionARN :: Lens' DefinitionInformation (Maybe Text)
 diLatestVersionARN = lens _diLatestVersionARN (\ s a -> s{_diLatestVersionARN = a})
 
@@ -84,7 +88,11 @@ diCreationTimestamp = lens _diCreationTimestamp (\ s a -> s{_diCreationTimestamp
 diId :: Lens' DefinitionInformation (Maybe Text)
 diId = lens _diId (\ s a -> s{_diId = a})
 
--- | The latest version of the definition.
+-- | Tag(s) attached to the resource arn.
+diTags :: Lens' DefinitionInformation (HashMap Text Text)
+diTags = lens _diTags (\ s a -> s{_diTags = a}) . _Default . _Map
+
+-- | The ID of the latest version associated with the definition.
 diLatestVersion :: Lens' DefinitionInformation (Maybe Text)
 diLatestVersion = lens _diLatestVersion (\ s a -> s{_diLatestVersion = a})
 
@@ -101,6 +109,7 @@ instance FromJSON DefinitionInformation where
                      (x .:? "Name")
                      <*> (x .:? "CreationTimestamp")
                      <*> (x .:? "Id")
+                     <*> (x .:? "tags" .!= mempty)
                      <*> (x .:? "LatestVersion")
                      <*> (x .:? "LastUpdatedTimestamp"))
 

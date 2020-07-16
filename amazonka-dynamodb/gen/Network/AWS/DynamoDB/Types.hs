@@ -933,6 +933,11 @@ dynamoDB
             = Just "throughput_exceeded"
           | has (hasStatus 504) e = Just "gateway_timeout"
           | has
+              (hasCode "TransactionInProgressException" .
+                 hasStatus 400)
+              e
+            = Just "still_processing"
+          | has
               (hasCode "RequestThrottledException" . hasStatus 400)
               e
             = Just "request_throttled_exception"

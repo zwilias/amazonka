@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Deletes the stream processor identified by @Name@ . You assign the value for @Name@ when you create the stream processor with . You might not be able to use the same name for a stream processor for a few seconds after calling @DeleteStreamProcessor@ .
+-- Deletes the stream processor identified by @Name@ . You assign the value for @Name@ when you create the stream processor with 'CreateStreamProcessor' . You might not be able to use the same name for a stream processor for a few seconds after calling @DeleteStreamProcessor@ .
 --
 --
 module Network.AWS.Rekognition.DeleteStreamProcessor
@@ -33,7 +33,7 @@ module Network.AWS.Rekognition.DeleteStreamProcessor
     , deleteStreamProcessorResponse
     , DeleteStreamProcessorResponse
     -- * Response Lenses
-    , drsResponseStatus
+    , dltstrmprcssrrsResponseStatus
     ) where
 
 import Network.AWS.Lens
@@ -99,7 +99,7 @@ instance ToQuery DeleteStreamProcessor where
         toQuery = const mempty
 
 -- | /See:/ 'deleteStreamProcessorResponse' smart constructor.
-newtype DeleteStreamProcessorResponse = DeleteStreamProcessorResponse'{_drsResponseStatus
+newtype DeleteStreamProcessorResponse = DeleteStreamProcessorResponse'{_dltstrmprcssrrsResponseStatus
                                                                        :: Int}
                                           deriving (Eq, Read, Show, Data,
                                                     Typeable, Generic)
@@ -108,16 +108,16 @@ newtype DeleteStreamProcessorResponse = DeleteStreamProcessorResponse'{_drsRespo
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'drsResponseStatus' - -- | The response status code.
+-- * 'dltstrmprcssrrsResponseStatus' - -- | The response status code.
 deleteStreamProcessorResponse
-    :: Int -- ^ 'drsResponseStatus'
+    :: Int -- ^ 'dltstrmprcssrrsResponseStatus'
     -> DeleteStreamProcessorResponse
 deleteStreamProcessorResponse pResponseStatus_
-  = DeleteStreamProcessorResponse'{_drsResponseStatus =
-                                     pResponseStatus_}
+  = DeleteStreamProcessorResponse'{_dltstrmprcssrrsResponseStatus
+                                     = pResponseStatus_}
 
 -- | -- | The response status code.
-drsResponseStatus :: Lens' DeleteStreamProcessorResponse Int
-drsResponseStatus = lens _drsResponseStatus (\ s a -> s{_drsResponseStatus = a})
+dltstrmprcssrrsResponseStatus :: Lens' DeleteStreamProcessorResponse Int
+dltstrmprcssrrsResponseStatus = lens _dltstrmprcssrrsResponseStatus (\ s a -> s{_dltstrmprcssrrsResponseStatus = a})
 
 instance NFData DeleteStreamProcessorResponse where

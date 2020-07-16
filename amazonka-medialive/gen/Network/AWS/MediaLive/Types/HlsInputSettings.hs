@@ -20,7 +20,7 @@ module Network.AWS.MediaLive.Types.HlsInputSettings where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | Placeholder documentation for HlsInputSettings
+-- | Hls Input Settings
 --
 -- /See:/ 'hlsInputSettings' smart constructor.
 data HlsInputSettings = HlsInputSettings'{_hisBufferSegments

@@ -19,7 +19,10 @@
 module Network.AWS.ECS.Types.ClusterField (
   ClusterField (
     ..
+    , Attachments
+    , Settings
     , Statistics
+    , Tags
     )
   ) where
 
@@ -30,11 +33,23 @@ data ClusterField = ClusterField' (CI Text)
                       deriving (Eq, Ord, Read, Show, Data, Typeable,
                                 Generic)
 
+pattern Attachments :: ClusterField
+pattern Attachments = ClusterField' "ATTACHMENTS"
+
+pattern Settings :: ClusterField
+pattern Settings = ClusterField' "SETTINGS"
+
 pattern Statistics :: ClusterField
 pattern Statistics = ClusterField' "STATISTICS"
 
+pattern Tags :: ClusterField
+pattern Tags = ClusterField' "TAGS"
+
 {-# COMPLETE
+  Attachments,
+  Settings,
   Statistics,
+  Tags,
   ClusterField' #-}
 
 instance FromText ClusterField where
@@ -49,18 +64,24 @@ instance ToText ClusterField where
 --   fromEnum is a partial function, and will error on values unknown at generation time.
 instance Enum ClusterField where
     toEnum i = case i of
-        0 -> Statistics
+        0 -> Attachments
+        1 -> Settings
+        2 -> Statistics
+        3 -> Tags
         _ -> (error . showText) $ "Unknown index for ClusterField: " <> toText i
     fromEnum x = case x of
-        Statistics -> 0
+        Attachments -> 0
+        Settings -> 1
+        Statistics -> 2
+        Tags -> 3
         ClusterField' name -> (error . showText) $ "Unknown ClusterField: " <> original name
 
 -- | Represents the bounds of /known/ $ClusterField.
 --   AWS may have added more since the source was generated.
 --   This instance exists only for backward compatibility.
 instance Bounded ClusterField where
-    minBound = Statistics
-    maxBound = Statistics
+    minBound = Attachments
+    maxBound = Tags
 
 instance Hashable     ClusterField
 instance NFData       ClusterField

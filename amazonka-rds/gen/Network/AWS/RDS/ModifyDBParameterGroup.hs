@@ -62,9 +62,9 @@ data ModifyDBParameterGroup = ModifyDBParameterGroup'{_mdpgDBParameterGroupName
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'mdpgDBParameterGroupName' - The name of the DB parameter group. Constraints:     * If supplied, must match the name of an existing DBParameterGroup.
+-- * 'mdpgDBParameterGroupName' - The name of the DB parameter group. Constraints:     * If supplied, must match the name of an existing @DBParameterGroup@ .
 --
--- * 'mdpgParameters' - An array of parameter names, values, and the apply method for the parameter update. At least one parameter name, value, and apply method must be supplied; subsequent arguments are optional. A maximum of 20 parameters can be modified in a single request. Valid Values (for the application method): @immediate | pending-reboot@ 
+-- * 'mdpgParameters' - An array of parameter names, values, and the apply method for the parameter update. At least one parameter name, value, and apply method must be supplied; later arguments are optional. A maximum of 20 parameters can be modified in a single request. Valid Values (for the application method): @immediate | pending-reboot@ 
 modifyDBParameterGroup
     :: Text -- ^ 'mdpgDBParameterGroupName'
     -> ModifyDBParameterGroup
@@ -73,11 +73,11 @@ modifyDBParameterGroup pDBParameterGroupName_
                               pDBParameterGroupName_,
                             _mdpgParameters = mempty}
 
--- | The name of the DB parameter group. Constraints:     * If supplied, must match the name of an existing DBParameterGroup.
+-- | The name of the DB parameter group. Constraints:     * If supplied, must match the name of an existing @DBParameterGroup@ .
 mdpgDBParameterGroupName :: Lens' ModifyDBParameterGroup Text
 mdpgDBParameterGroupName = lens _mdpgDBParameterGroupName (\ s a -> s{_mdpgDBParameterGroupName = a})
 
--- | An array of parameter names, values, and the apply method for the parameter update. At least one parameter name, value, and apply method must be supplied; subsequent arguments are optional. A maximum of 20 parameters can be modified in a single request. Valid Values (for the application method): @immediate | pending-reboot@ 
+-- | An array of parameter names, values, and the apply method for the parameter update. At least one parameter name, value, and apply method must be supplied; later arguments are optional. A maximum of 20 parameters can be modified in a single request. Valid Values (for the application method): @immediate | pending-reboot@ 
 mdpgParameters :: Lens' ModifyDBParameterGroup [Parameter]
 mdpgParameters = lens _mdpgParameters (\ s a -> s{_mdpgParameters = a}) . _Coerce
 

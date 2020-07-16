@@ -20,7 +20,7 @@ module Network.AWS.Lambda.Types.VPCConfig where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | If your Lambda function accesses resources in a VPC, you provide this parameter identifying the list of security group IDs and subnet IDs. These must belong to the same VPC. You must provide at least one security group and one subnet ID.
+-- | The VPC security groups and subnets that are attached to a Lambda function. For more information, see <https://docs.aws.amazon.com/lambda/latest/dg/configuration-vpc.html VPC Settings> .
 --
 --
 --
@@ -34,20 +34,20 @@ data VPCConfig = VPCConfig'{_vpccSecurityGroupIds ::
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'vpccSecurityGroupIds' - A list of one or more security groups IDs in your VPC.
+-- * 'vpccSecurityGroupIds' - A list of VPC security groups IDs.
 --
--- * 'vpccSubnetIds' - A list of one or more subnet IDs in your VPC.
+-- * 'vpccSubnetIds' - A list of VPC subnet IDs.
 vpcConfig
     :: VPCConfig
 vpcConfig
   = VPCConfig'{_vpccSecurityGroupIds = Nothing,
                _vpccSubnetIds = Nothing}
 
--- | A list of one or more security groups IDs in your VPC.
+-- | A list of VPC security groups IDs.
 vpccSecurityGroupIds :: Lens' VPCConfig [Text]
 vpccSecurityGroupIds = lens _vpccSecurityGroupIds (\ s a -> s{_vpccSecurityGroupIds = a}) . _Default . _Coerce
 
--- | A list of one or more subnet IDs in your VPC.
+-- | A list of VPC subnet IDs.
 vpccSubnetIds :: Lens' VPCConfig [Text]
 vpccSubnetIds = lens _vpccSubnetIds (\ s a -> s{_vpccSubnetIds = a}) . _Default . _Coerce
 

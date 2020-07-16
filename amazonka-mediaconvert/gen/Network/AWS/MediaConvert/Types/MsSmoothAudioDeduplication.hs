@@ -19,8 +19,8 @@
 module Network.AWS.MediaConvert.Types.MsSmoothAudioDeduplication (
   MsSmoothAudioDeduplication (
     ..
-    , CombineDuplicateStreams
-    , None
+    , MSADCombineDuplicateStreams
+    , MSADNone
     )
   ) where
 
@@ -33,15 +33,15 @@ data MsSmoothAudioDeduplication = MsSmoothAudioDeduplication' (CI
                                     deriving (Eq, Ord, Read, Show, Data,
                                               Typeable, Generic)
 
-pattern CombineDuplicateStreams :: MsSmoothAudioDeduplication
-pattern CombineDuplicateStreams = MsSmoothAudioDeduplication' "COMBINE_DUPLICATE_STREAMS"
+pattern MSADCombineDuplicateStreams :: MsSmoothAudioDeduplication
+pattern MSADCombineDuplicateStreams = MsSmoothAudioDeduplication' "COMBINE_DUPLICATE_STREAMS"
 
-pattern None :: MsSmoothAudioDeduplication
-pattern None = MsSmoothAudioDeduplication' "NONE"
+pattern MSADNone :: MsSmoothAudioDeduplication
+pattern MSADNone = MsSmoothAudioDeduplication' "NONE"
 
 {-# COMPLETE
-  CombineDuplicateStreams,
-  None,
+  MSADCombineDuplicateStreams,
+  MSADNone,
   MsSmoothAudioDeduplication' #-}
 
 instance FromText MsSmoothAudioDeduplication where
@@ -56,20 +56,20 @@ instance ToText MsSmoothAudioDeduplication where
 --   fromEnum is a partial function, and will error on values unknown at generation time.
 instance Enum MsSmoothAudioDeduplication where
     toEnum i = case i of
-        0 -> CombineDuplicateStreams
-        1 -> None
+        0 -> MSADCombineDuplicateStreams
+        1 -> MSADNone
         _ -> (error . showText) $ "Unknown index for MsSmoothAudioDeduplication: " <> toText i
     fromEnum x = case x of
-        CombineDuplicateStreams -> 0
-        None -> 1
+        MSADCombineDuplicateStreams -> 0
+        MSADNone -> 1
         MsSmoothAudioDeduplication' name -> (error . showText) $ "Unknown MsSmoothAudioDeduplication: " <> original name
 
 -- | Represents the bounds of /known/ $MsSmoothAudioDeduplication.
 --   AWS may have added more since the source was generated.
 --   This instance exists only for backward compatibility.
 instance Bounded MsSmoothAudioDeduplication where
-    minBound = CombineDuplicateStreams
-    maxBound = None
+    minBound = MSADCombineDuplicateStreams
+    maxBound = MSADNone
 
 instance Hashable     MsSmoothAudioDeduplication
 instance NFData       MsSmoothAudioDeduplication

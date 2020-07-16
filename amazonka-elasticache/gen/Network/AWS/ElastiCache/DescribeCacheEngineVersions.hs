@@ -82,7 +82,7 @@ data DescribeCacheEngineVersions = DescribeCacheEngineVersions'{_dcevEngineVersi
 --
 -- * 'dcevEngineVersion' - The cache engine version to return. Example: @1.4.14@ 
 --
--- * 'dcevCacheParameterGroupFamily' - The name of a specific cache parameter group family to return details for. Valid values are: @memcached1.4@ | @redis2.6@ | @redis2.8@ | @redis3.2@  Constraints:     * Must be 1 to 255 alphanumeric characters     * First character must be a letter     * Cannot end with a hyphen or contain two consecutive hyphens
+-- * 'dcevCacheParameterGroupFamily' - The name of a specific cache parameter group family to return details for. Valid values are: @memcached1.4@ | @memcached1.5@ | @redis2.6@ | @redis2.8@ | @redis3.2@ | @redis4.0@ | @redis5.0@ |  Constraints:     * Must be 1 to 255 alphanumeric characters     * First character must be a letter     * Cannot end with a hyphen or contain two consecutive hyphens
 --
 -- * 'dcevDefaultOnly' - If @true@ , specifies that only the default version of the specified engine or engine and major version combination is to be returned.
 --
@@ -105,7 +105,7 @@ describeCacheEngineVersions
 dcevEngineVersion :: Lens' DescribeCacheEngineVersions (Maybe Text)
 dcevEngineVersion = lens _dcevEngineVersion (\ s a -> s{_dcevEngineVersion = a})
 
--- | The name of a specific cache parameter group family to return details for. Valid values are: @memcached1.4@ | @redis2.6@ | @redis2.8@ | @redis3.2@  Constraints:     * Must be 1 to 255 alphanumeric characters     * First character must be a letter     * Cannot end with a hyphen or contain two consecutive hyphens
+-- | The name of a specific cache parameter group family to return details for. Valid values are: @memcached1.4@ | @memcached1.5@ | @redis2.6@ | @redis2.8@ | @redis3.2@ | @redis4.0@ | @redis5.0@ |  Constraints:     * Must be 1 to 255 alphanumeric characters     * First character must be a letter     * Cannot end with a hyphen or contain two consecutive hyphens
 dcevCacheParameterGroupFamily :: Lens' DescribeCacheEngineVersions (Maybe Text)
 dcevCacheParameterGroupFamily = lens _dcevCacheParameterGroupFamily (\ s a -> s{_dcevCacheParameterGroupFamily = a})
 

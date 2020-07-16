@@ -27,7 +27,7 @@ module Network.AWS.MediaLive.Types.Ac3DrcProfile (
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | Placeholder documentation for Ac3DrcProfile
+-- | Ac3 Drc Profile
 data Ac3DrcProfile = Ac3DrcProfile' (CI Text)
                        deriving (Eq, Ord, Read, Show, Data, Typeable,
                                  Generic)

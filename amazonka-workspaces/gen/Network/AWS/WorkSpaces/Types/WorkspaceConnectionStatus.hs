@@ -45,9 +45,9 @@ data WorkspaceConnectionStatus = WorkspaceConnectionStatus'{_wcsLastKnownUserCon
 --
 -- * 'wcsLastKnownUserConnectionTimestamp' - The timestamp of the last known user connection.
 --
--- * 'wcsConnectionStateCheckTimestamp' - The timestamp of the connection state check.
+-- * 'wcsConnectionStateCheckTimestamp' - The timestamp of the connection status check.
 --
--- * 'wcsWorkspaceId' - The ID of the WorkSpace.
+-- * 'wcsWorkspaceId' - The identifier of the WorkSpace.
 --
 -- * 'wcsConnectionState' - The connection state of the WorkSpace. The connection state is unknown if the WorkSpace is stopped.
 workspaceConnectionStatus
@@ -63,11 +63,11 @@ workspaceConnectionStatus
 wcsLastKnownUserConnectionTimestamp :: Lens' WorkspaceConnectionStatus (Maybe UTCTime)
 wcsLastKnownUserConnectionTimestamp = lens _wcsLastKnownUserConnectionTimestamp (\ s a -> s{_wcsLastKnownUserConnectionTimestamp = a}) . mapping _Time
 
--- | The timestamp of the connection state check.
+-- | The timestamp of the connection status check.
 wcsConnectionStateCheckTimestamp :: Lens' WorkspaceConnectionStatus (Maybe UTCTime)
 wcsConnectionStateCheckTimestamp = lens _wcsConnectionStateCheckTimestamp (\ s a -> s{_wcsConnectionStateCheckTimestamp = a}) . mapping _Time
 
--- | The ID of the WorkSpace.
+-- | The identifier of the WorkSpace.
 wcsWorkspaceId :: Lens' WorkspaceConnectionStatus (Maybe Text)
 wcsWorkspaceId = lens _wcsWorkspaceId (\ s a -> s{_wcsWorkspaceId = a})
 

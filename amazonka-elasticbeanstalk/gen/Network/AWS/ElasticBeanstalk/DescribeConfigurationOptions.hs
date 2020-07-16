@@ -194,7 +194,7 @@ data DescribeConfigurationOptionsResponse = DescribeConfigurationOptionsResponse
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dcorsPlatformARN' - The ARN of the platform.
+-- * 'dcorsPlatformARN' - The ARN of the platform version.
 --
 -- * 'dcorsSolutionStackName' - The name of the solution stack these configuration options belong to.
 --
@@ -212,7 +212,7 @@ describeConfigurationOptionsResponse pResponseStatus_
                                           _dcorsResponseStatus =
                                             pResponseStatus_}
 
--- | The ARN of the platform.
+-- | The ARN of the platform version.
 dcorsPlatformARN :: Lens' DescribeConfigurationOptionsResponse (Maybe Text)
 dcorsPlatformARN = lens _dcorsPlatformARN (\ s a -> s{_dcorsPlatformARN = a})
 

@@ -20,7 +20,7 @@ module Network.AWS.Support.Types.SeverityLevel where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | A code and name pair that represent a severity level that can be applied to a support case.
+-- | A code and name pair that represents the severity level of a support case. The available values depend on the support plan for the account. For more information, see <https://docs.aws.amazon.com/awssupport/latest/user/getting-started.html#choosing-severity Choosing a Severity> .
 --
 --
 --
@@ -34,20 +34,20 @@ data SeverityLevel = SeverityLevel'{_slName ::
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'slName' - The name of the severity level that corresponds to the severity level code.
+-- * 'slName' - The name of the severity level that corresponds to the severity level code. For more information, see <https://docs.aws.amazon.com/awssupport/latest/user/getting-started.html#choosing-severity Choosing a Severity> 
 --
--- * 'slCode' - One of four values: "low," "medium," "high," and "urgent". These values correspond to response times returned to the caller in @severityLevel.name@ . 
+-- * 'slCode' - The code for case severity level. Valid values: @low@ | @normal@ | @high@ | @urgent@ | @critical@ 
 severityLevel
     :: SeverityLevel
 severityLevel
   = SeverityLevel'{_slName = Nothing,
                    _slCode = Nothing}
 
--- | The name of the severity level that corresponds to the severity level code.
+-- | The name of the severity level that corresponds to the severity level code. For more information, see <https://docs.aws.amazon.com/awssupport/latest/user/getting-started.html#choosing-severity Choosing a Severity> 
 slName :: Lens' SeverityLevel (Maybe Text)
 slName = lens _slName (\ s a -> s{_slName = a})
 
--- | One of four values: "low," "medium," "high," and "urgent". These values correspond to response times returned to the caller in @severityLevel.name@ . 
+-- | The code for case severity level. Valid values: @low@ | @normal@ | @high@ | @urgent@ | @critical@ 
 slCode :: Lens' SeverityLevel (Maybe Text)
 slCode = lens _slCode (\ s a -> s{_slCode = a})
 

@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Deletes the specified lifecycle policy.
+-- Deletes the lifecycle policy associated with the specified repository.
 --
 --
 module Network.AWS.ECR.DeleteLifecyclePolicy

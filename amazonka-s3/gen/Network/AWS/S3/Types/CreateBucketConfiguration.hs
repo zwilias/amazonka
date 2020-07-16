@@ -21,7 +21,11 @@ import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.S3.Internal
 
--- | /See:/ 'createBucketConfiguration' smart constructor.
+-- | The configuration information for the bucket.
+--
+--
+--
+-- /See:/ 'createBucketConfiguration' smart constructor.
 newtype CreateBucketConfiguration = CreateBucketConfiguration'{_cbcLocationConstraint
                                                                ::
                                                                Maybe
@@ -33,14 +37,14 @@ newtype CreateBucketConfiguration = CreateBucketConfiguration'{_cbcLocationConst
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'cbcLocationConstraint' - Specifies the region where the bucket will be created. If you don't specify a region, the bucket will be created in US Standard.
+-- * 'cbcLocationConstraint' - Specifies the Region where the bucket will be created. If you don't specify a Region, the bucket is created in the US East (N. Virginia) Region (us-east-1).
 createBucketConfiguration
     :: CreateBucketConfiguration
 createBucketConfiguration
   = CreateBucketConfiguration'{_cbcLocationConstraint =
                                  Nothing}
 
--- | Specifies the region where the bucket will be created. If you don't specify a region, the bucket will be created in US Standard.
+-- | Specifies the Region where the bucket will be created. If you don't specify a Region, the bucket is created in the US East (N. Virginia) Region (us-east-1).
 cbcLocationConstraint :: Lens' CreateBucketConfiguration (Maybe LocationConstraint)
 cbcLocationConstraint = lens _cbcLocationConstraint (\ s a -> s{_cbcLocationConstraint = a})
 

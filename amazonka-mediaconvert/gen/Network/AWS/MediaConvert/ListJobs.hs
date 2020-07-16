@@ -19,6 +19,8 @@
 -- Portability : non-portable (GHC extensions)
 --
 -- Retrieve a JSON array of up to twenty of your most recently created jobs. This array includes in-process, completed, and errored jobs. This will return the jobs themselves, not just a list of the jobs. To retrieve the twenty next most recent jobs, use the nextToken string returned with the array.
+--
+-- This operation returns paginated results.
 module Network.AWS.MediaConvert.ListJobs
     (
     -- * Creating a Request
@@ -43,6 +45,7 @@ module Network.AWS.MediaConvert.ListJobs
 import Network.AWS.Lens
 import Network.AWS.MediaConvert.Types
 import Network.AWS.MediaConvert.Types.Product
+import Network.AWS.Pager
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
@@ -53,20 +56,20 @@ data ListJobs = ListJobs'{_ljStatus ::
                           _ljQueue :: !(Maybe Text),
                           _ljNextToken :: !(Maybe Text),
                           _ljOrder :: !(Maybe Order),
-                          _ljMaxResults :: !(Maybe Int)}
+                          _ljMaxResults :: !(Maybe Nat)}
                   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListJobs' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'ljStatus' - Undocumented member.
+-- * 'ljStatus' - Optional. A job's status can be SUBMITTED, PROGRESSING, COMPLETE, CANCELED, or ERROR.
 --
--- * 'ljQueue' - Provide a queue name to get back only jobs from that queue.
+-- * 'ljQueue' - Optional. Provide a queue name to get back only jobs from that queue.
 --
--- * 'ljNextToken' - Use this string, provided with the response to a previous request, to request the next batch of jobs.
+-- * 'ljNextToken' - Optional. Use this string, provided with the response to a previous request, to request the next batch of jobs.
 --
--- * 'ljOrder' - Undocumented member.
+-- * 'ljOrder' - Optional. When you request lists of resources, you can specify whether they are sorted in ASCENDING or DESCENDING order. Default varies by resource.
 --
 -- * 'ljMaxResults' - Optional. Number of jobs, up to twenty, that will be returned at one time.
 listJobs
@@ -76,25 +79,32 @@ listJobs
               _ljNextToken = Nothing, _ljOrder = Nothing,
               _ljMaxResults = Nothing}
 
--- | Undocumented member.
+-- | Optional. A job's status can be SUBMITTED, PROGRESSING, COMPLETE, CANCELED, or ERROR.
 ljStatus :: Lens' ListJobs (Maybe JobStatus)
 ljStatus = lens _ljStatus (\ s a -> s{_ljStatus = a})
 
--- | Provide a queue name to get back only jobs from that queue.
+-- | Optional. Provide a queue name to get back only jobs from that queue.
 ljQueue :: Lens' ListJobs (Maybe Text)
 ljQueue = lens _ljQueue (\ s a -> s{_ljQueue = a})
 
--- | Use this string, provided with the response to a previous request, to request the next batch of jobs.
+-- | Optional. Use this string, provided with the response to a previous request, to request the next batch of jobs.
 ljNextToken :: Lens' ListJobs (Maybe Text)
 ljNextToken = lens _ljNextToken (\ s a -> s{_ljNextToken = a})
 
--- | Undocumented member.
+-- | Optional. When you request lists of resources, you can specify whether they are sorted in ASCENDING or DESCENDING order. Default varies by resource.
 ljOrder :: Lens' ListJobs (Maybe Order)
 ljOrder = lens _ljOrder (\ s a -> s{_ljOrder = a})
 
 -- | Optional. Number of jobs, up to twenty, that will be returned at one time.
-ljMaxResults :: Lens' ListJobs (Maybe Int)
-ljMaxResults = lens _ljMaxResults (\ s a -> s{_ljMaxResults = a})
+ljMaxResults :: Lens' ListJobs (Maybe Natural)
+ljMaxResults = lens _ljMaxResults (\ s a -> s{_ljMaxResults = a}) . mapping _Nat
+
+instance AWSPager ListJobs where
+        page rq rs
+          | stop (rs ^. ljrsNextToken) = Nothing
+          | stop (rs ^. ljrsJobs) = Nothing
+          | otherwise =
+            Just $ rq & ljNextToken .~ rs ^. ljrsNextToken
 
 instance AWSRequest ListJobs where
         type Rs ListJobs = ListJobsResponse

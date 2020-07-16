@@ -29,6 +29,8 @@ module Network.AWS.AlexaBusiness.CreateProfile
     -- * Request Lenses
     , cpSetupModeDisabled
     , cpPSTNEnabled
+    , cpLocale
+    , cpMeetingRoomConfiguration
     , cpClientRequestToken
     , cpMaxVolumeLimit
     , cpProfileName
@@ -57,6 +59,9 @@ import Network.AWS.Response
 data CreateProfile = CreateProfile'{_cpSetupModeDisabled
                                     :: !(Maybe Bool),
                                     _cpPSTNEnabled :: !(Maybe Bool),
+                                    _cpLocale :: !(Maybe Text),
+                                    _cpMeetingRoomConfiguration ::
+                                    !(Maybe CreateMeetingRoomConfiguration),
                                     _cpClientRequestToken :: !(Maybe Text),
                                     _cpMaxVolumeLimit :: !(Maybe Int),
                                     _cpProfileName :: !Text,
@@ -73,6 +78,10 @@ data CreateProfile = CreateProfile'{_cpSetupModeDisabled
 -- * 'cpSetupModeDisabled' - Whether room profile setup is enabled.
 --
 -- * 'cpPSTNEnabled' - Whether PSTN calling is enabled.
+--
+-- * 'cpLocale' - The locale of the room profile. (This is currently only available to a limited preview audience.)
+--
+-- * 'cpMeetingRoomConfiguration' - The meeting room settings of a room profile.
 --
 -- * 'cpClientRequestToken' - The user-specified token that is used during the creation of a profile.
 --
@@ -100,7 +109,8 @@ createProfile
 createProfile pProfileName_ pTimezone_ pAddress_
   pDistanceUnit_ pTemperatureUnit_ pWakeWord_
   = CreateProfile'{_cpSetupModeDisabled = Nothing,
-                   _cpPSTNEnabled = Nothing,
+                   _cpPSTNEnabled = Nothing, _cpLocale = Nothing,
+                   _cpMeetingRoomConfiguration = Nothing,
                    _cpClientRequestToken = Nothing,
                    _cpMaxVolumeLimit = Nothing,
                    _cpProfileName = pProfileName_,
@@ -116,6 +126,14 @@ cpSetupModeDisabled = lens _cpSetupModeDisabled (\ s a -> s{_cpSetupModeDisabled
 -- | Whether PSTN calling is enabled.
 cpPSTNEnabled :: Lens' CreateProfile (Maybe Bool)
 cpPSTNEnabled = lens _cpPSTNEnabled (\ s a -> s{_cpPSTNEnabled = a})
+
+-- | The locale of the room profile. (This is currently only available to a limited preview audience.)
+cpLocale :: Lens' CreateProfile (Maybe Text)
+cpLocale = lens _cpLocale (\ s a -> s{_cpLocale = a})
+
+-- | The meeting room settings of a room profile.
+cpMeetingRoomConfiguration :: Lens' CreateProfile (Maybe CreateMeetingRoomConfiguration)
+cpMeetingRoomConfiguration = lens _cpMeetingRoomConfiguration (\ s a -> s{_cpMeetingRoomConfiguration = a})
 
 -- | The user-specified token that is used during the creation of a profile.
 cpClientRequestToken :: Lens' CreateProfile (Maybe Text)
@@ -177,6 +195,9 @@ instance ToJSON CreateProfile where
               (catMaybes
                  [("SetupModeDisabled" .=) <$> _cpSetupModeDisabled,
                   ("PSTNEnabled" .=) <$> _cpPSTNEnabled,
+                  ("Locale" .=) <$> _cpLocale,
+                  ("MeetingRoomConfiguration" .=) <$>
+                    _cpMeetingRoomConfiguration,
                   ("ClientRequestToken" .=) <$> _cpClientRequestToken,
                   ("MaxVolumeLimit" .=) <$> _cpMaxVolumeLimit,
                   Just ("ProfileName" .= _cpProfileName),

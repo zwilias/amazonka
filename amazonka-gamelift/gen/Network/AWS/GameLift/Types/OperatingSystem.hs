@@ -20,6 +20,7 @@ module Network.AWS.GameLift.Types.OperatingSystem (
   OperatingSystem (
     ..
     , AmazonLinux
+    , AmazonLinux2
     , Windows2012
     )
   ) where
@@ -34,11 +35,15 @@ data OperatingSystem = OperatingSystem' (CI Text)
 pattern AmazonLinux :: OperatingSystem
 pattern AmazonLinux = OperatingSystem' "AMAZON_LINUX"
 
+pattern AmazonLinux2 :: OperatingSystem
+pattern AmazonLinux2 = OperatingSystem' "AMAZON_LINUX_2"
+
 pattern Windows2012 :: OperatingSystem
 pattern Windows2012 = OperatingSystem' "WINDOWS_2012"
 
 {-# COMPLETE
   AmazonLinux,
+  AmazonLinux2,
   Windows2012,
   OperatingSystem' #-}
 
@@ -55,11 +60,13 @@ instance ToText OperatingSystem where
 instance Enum OperatingSystem where
     toEnum i = case i of
         0 -> AmazonLinux
-        1 -> Windows2012
+        1 -> AmazonLinux2
+        2 -> Windows2012
         _ -> (error . showText) $ "Unknown index for OperatingSystem: " <> toText i
     fromEnum x = case x of
         AmazonLinux -> 0
-        Windows2012 -> 1
+        AmazonLinux2 -> 1
+        Windows2012 -> 2
         OperatingSystem' name -> (error . showText) $ "Unknown OperatingSystem: " <> original name
 
 -- | Represents the bounds of /known/ $OperatingSystem.

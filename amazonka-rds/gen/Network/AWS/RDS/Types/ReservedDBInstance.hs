@@ -21,7 +21,7 @@ import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.RDS.Types.RecurringCharge
 
--- | This data type is used as a response element in the 'DescribeReservedDBInstances' and 'PurchaseReservedDBInstancesOffering' actions. 
+-- | This data type is used as a response element in the @DescribeReservedDBInstances@ and @PurchaseReservedDBInstancesOffering@ actions. 
 --
 --
 --
@@ -33,6 +33,7 @@ data ReservedDBInstance = ReservedDBInstance'{_rdiDBInstanceCount
                                               _rdiStartTime :: !(Maybe ISO8601),
                                               _rdiProductDescription ::
                                               !(Maybe Text),
+                                              _rdiLeaseId :: !(Maybe Text),
                                               _rdiReservedDBInstanceId ::
                                               !(Maybe Text),
                                               _rdiReservedDBInstanceARN ::
@@ -64,6 +65,8 @@ data ReservedDBInstance = ReservedDBInstance'{_rdiDBInstanceCount
 --
 -- * 'rdiProductDescription' - The description of the reserved DB instance.
 --
+-- * 'rdiLeaseId' - The unique identifier for the lease associated with the reserved DB instance.
+--
 -- * 'rdiReservedDBInstanceId' - The unique identifier for the reservation.
 --
 -- * 'rdiReservedDBInstanceARN' - The Amazon Resource Name (ARN) for the reserved DB instance.
@@ -90,6 +93,7 @@ reservedDBInstance
                         _rdiState = Nothing, _rdiCurrencyCode = Nothing,
                         _rdiStartTime = Nothing,
                         _rdiProductDescription = Nothing,
+                        _rdiLeaseId = Nothing,
                         _rdiReservedDBInstanceId = Nothing,
                         _rdiReservedDBInstanceARN = Nothing,
                         _rdiDBInstanceClass = Nothing, _rdiMultiAZ = Nothing,
@@ -117,6 +121,10 @@ rdiStartTime = lens _rdiStartTime (\ s a -> s{_rdiStartTime = a}) . mapping _Tim
 -- | The description of the reserved DB instance.
 rdiProductDescription :: Lens' ReservedDBInstance (Maybe Text)
 rdiProductDescription = lens _rdiProductDescription (\ s a -> s{_rdiProductDescription = a})
+
+-- | The unique identifier for the lease associated with the reserved DB instance.
+rdiLeaseId :: Lens' ReservedDBInstance (Maybe Text)
+rdiLeaseId = lens _rdiLeaseId (\ s a -> s{_rdiLeaseId = a})
 
 -- | The unique identifier for the reservation.
 rdiReservedDBInstanceId :: Lens' ReservedDBInstance (Maybe Text)
@@ -165,6 +173,7 @@ instance FromXML ReservedDBInstance where
                 (x .@? "CurrencyCode")
                 <*> (x .@? "StartTime")
                 <*> (x .@? "ProductDescription")
+                <*> (x .@? "LeaseId")
                 <*> (x .@? "ReservedDBInstanceId")
                 <*> (x .@? "ReservedDBInstanceArn")
                 <*> (x .@? "DBInstanceClass")

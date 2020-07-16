@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Returns the list of severity levels that you can assign to an AWS Support case. The severity level for a case is also a field in the 'CaseDetails' data type included in any 'CreateCase' request. 
+-- Returns the list of severity levels that you can assign to an AWS Support case. The severity level for a case is also a field in the 'CaseDetails' data type included in any 'CreateCase' request.
 --
 --
 module Network.AWS.Support.DescribeSeverityLevels
@@ -44,11 +44,7 @@ import Network.AWS.Response
 import Network.AWS.Support.Types
 import Network.AWS.Support.Types.Product
 
--- | 
---
---
---
--- /See:/ 'describeSeverityLevels' smart constructor.
+-- | /See:/ 'describeSeverityLevels' smart constructor.
 newtype DescribeSeverityLevels = DescribeSeverityLevels'{_dslLanguage
                                                          :: Maybe Text}
                                    deriving (Eq, Read, Show, Data, Typeable,

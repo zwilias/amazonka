@@ -23,6 +23,12 @@ module Network.AWS.KinesisAnalytics
     -- * Errors
     -- $errors
 
+    -- ** UnsupportedOperationException
+    , _UnsupportedOperationException
+
+    -- ** TooManyTagsException
+    , _TooManyTagsException
+
     -- ** ResourceNotFoundException
     , _ResourceNotFoundException
 
@@ -71,6 +77,9 @@ module Network.AWS.KinesisAnalytics
     -- ** StartApplication 
     , module Network.AWS.KinesisAnalytics.StartApplication
 
+    -- ** ListTagsForResource 
+    , module Network.AWS.KinesisAnalytics.ListTagsForResource
+
     -- ** DeleteApplicationReferenceDataSource 
     , module Network.AWS.KinesisAnalytics.DeleteApplicationReferenceDataSource
 
@@ -101,11 +110,17 @@ module Network.AWS.KinesisAnalytics
     -- ** AddApplicationInput 
     , module Network.AWS.KinesisAnalytics.AddApplicationInput
 
+    -- ** TagResource 
+    , module Network.AWS.KinesisAnalytics.TagResource
+
     -- ** AddApplicationCloudWatchLoggingOption 
     , module Network.AWS.KinesisAnalytics.AddApplicationCloudWatchLoggingOption
 
     -- ** ListApplications 
     , module Network.AWS.KinesisAnalytics.ListApplications
+
+    -- ** UntagResource 
+    , module Network.AWS.KinesisAnalytics.UntagResource
 
     -- ** DeleteApplicationInputProcessingConfiguration 
     , module Network.AWS.KinesisAnalytics.DeleteApplicationInputProcessingConfiguration
@@ -479,6 +494,12 @@ module Network.AWS.KinesisAnalytics
     , ssRecordEncoding
     , ssRecordFormat
     , ssRecordColumns
+
+    -- ** Tag
+    , Tag
+    , tag
+    , tagValue
+    , tagKey
     ) where
 
 import Network.AWS.KinesisAnalytics.AddApplicationCloudWatchLoggingOption
@@ -495,9 +516,12 @@ import Network.AWS.KinesisAnalytics.DeleteApplicationReferenceDataSource
 import Network.AWS.KinesisAnalytics.DescribeApplication
 import Network.AWS.KinesisAnalytics.DiscoverInputSchema
 import Network.AWS.KinesisAnalytics.ListApplications
+import Network.AWS.KinesisAnalytics.ListTagsForResource
 import Network.AWS.KinesisAnalytics.StartApplication
 import Network.AWS.KinesisAnalytics.StopApplication
+import Network.AWS.KinesisAnalytics.TagResource
 import Network.AWS.KinesisAnalytics.Types
+import Network.AWS.KinesisAnalytics.UntagResource
 import Network.AWS.KinesisAnalytics.UpdateApplication
 import Network.AWS.KinesisAnalytics.Waiters
 

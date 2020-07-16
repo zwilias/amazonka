@@ -35,6 +35,7 @@ module Network.AWS.SES.Types
     , _RuleSetDoesNotExistException
     , _MissingRenderingAttributeException
     , _InvalidRenderingParameterException
+    , _InvalidDeliveryOptionsException
     , _InvalidCloudWatchDestinationException
     , _CustomVerificationEmailTemplateAlreadyExistsException
     , _ConfigurationSetSendingPausedException
@@ -172,6 +173,11 @@ module Network.AWS.SES.Types
     , cvetFailureRedirectionURL
     , cvetTemplateSubject
     , cvetSuccessRedirectionURL
+
+    -- * DeliveryOptions
+    , DeliveryOptions
+    , deliveryOptions
+    , doTLSPolicy
 
     -- * Destination
     , Destination
@@ -411,6 +417,7 @@ import Network.AWS.SES.Types.CloudWatchDimensionConfiguration
 import Network.AWS.SES.Types.ConfigurationSet
 import Network.AWS.SES.Types.Content
 import Network.AWS.SES.Types.CustomVerificationEmailTemplate
+import Network.AWS.SES.Types.DeliveryOptions
 import Network.AWS.SES.Types.Destination
 import Network.AWS.SES.Types.EventDestination
 import Network.AWS.SES.Types.ExtensionField
@@ -462,6 +469,11 @@ ses
             = Just "throttling_exception"
           | has (hasCode "Throttling" . hasStatus 400) e =
             Just "throttling"
+          | has
+              (hasCode "ProvisionedThroughputExceededException" .
+                 hasStatus 400)
+              e
+            = Just "throughput_exceeded"
           | has (hasStatus 504) e = Just "gateway_timeout"
           | has
               (hasCode "RequestThrottledException" . hasStatus 400)
@@ -490,7 +502,7 @@ _InvalidFirehoseDestinationException
   = _MatchServiceError ses "InvalidFirehoseDestination"
       . hasStatus 400
 
--- | Indicates that the provided AWS Lambda function is invalid, or that Amazon SES could not execute the provided function, possibly due to permissions issues. For information about giving permissions, see the <http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-permissions.html Amazon SES Developer Guide> .
+-- | Indicates that the provided AWS Lambda function is invalid, or that Amazon SES could not execute the provided function, possibly due to permissions issues. For information about giving permissions, see the <https://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-permissions.html Amazon SES Developer Guide> .
 --
 --
 _InvalidLambdaFunctionException :: AsError a => Getting (First ServiceError) a ServiceError
@@ -574,7 +586,7 @@ _TrackingOptionsAlreadyExistsException
       "TrackingOptionsAlreadyExistsException"
       . hasStatus 400
 
--- | Indicates that the provided Amazon S3 bucket or AWS KMS encryption key is invalid, or that Amazon SES could not publish to the bucket, possibly due to permissions issues. For information about giving permissions, see the <http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-permissions.html Amazon SES Developer Guide> .
+-- | Indicates that the provided Amazon S3 bucket or AWS KMS encryption key is invalid, or that Amazon SES could not publish to the bucket, possibly due to permissions issues. For information about giving permissions, see the <https://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-permissions.html Amazon SES Developer Guide> .
 --
 --
 _InvalidS3ConfigurationException :: AsError a => Getting (First ServiceError) a ServiceError
@@ -591,7 +603,7 @@ _ConfigurationSetAlreadyExistsException
       "ConfigurationSetAlreadyExists"
       . hasStatus 400
 
--- | Indicates that the message could not be sent because Amazon SES could not read the MX record required to use the specified MAIL FROM domain. For information about editing the custom MAIL FROM domain settings for an identity, see the <http://docs.aws.amazon.com/ses/latest/DeveloperGuide/mail-from-edit.html Amazon SES Developer Guide> .
+-- | Indicates that the message could not be sent because Amazon SES could not read the MX record required to use the specified MAIL FROM domain. For information about editing the custom MAIL FROM domain settings for an identity, see the <https://docs.aws.amazon.com/ses/latest/DeveloperGuide/mail-from-edit.html Amazon SES Developer Guide> .
 --
 --
 _MailFromDomainNotVerifiedException :: AsError a => Getting (First ServiceError) a ServiceError
@@ -632,6 +644,14 @@ _InvalidRenderingParameterException :: AsError a => Getting (First ServiceError)
 _InvalidRenderingParameterException
   = _MatchServiceError ses "InvalidRenderingParameter"
       . hasStatus 400
+
+-- | Indicates that provided delivery option is invalid.
+--
+--
+_InvalidDeliveryOptionsException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidDeliveryOptionsException
+  = _MatchServiceError ses "InvalidDeliveryOptions" .
+      hasStatus 400
 
 -- | Indicates that the Amazon CloudWatch destination is invalid. See the error message for details.
 --
@@ -698,7 +718,7 @@ _InvalidSNSDestinationException
   = _MatchServiceError ses "InvalidSNSDestination" .
       hasStatus 400
 
--- | Indicates that a resource could not be created because of service limits. For a list of Amazon SES limits, see the <http://docs.aws.amazon.com/ses/latest/DeveloperGuide/limits.html Amazon SES Developer Guide> .
+-- | Indicates that a resource could not be created because of service limits. For a list of Amazon SES limits, see the <https://docs.aws.amazon.com/ses/latest/DeveloperGuide/limits.html Amazon SES Developer Guide> .
 --
 --
 _LimitExceededException :: AsError a => Getting (First ServiceError) a ServiceError
@@ -706,7 +726,7 @@ _LimitExceededException
   = _MatchServiceError ses "LimitExceeded" .
       hasStatus 400
 
--- | Indicates that the provided Amazon SNS topic is invalid, or that Amazon SES could not publish to the topic, possibly due to permissions issues. For information about giving permissions, see the <http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-permissions.html Amazon SES Developer Guide> .
+-- | Indicates that the provided Amazon SNS topic is invalid, or that Amazon SES could not publish to the topic, possibly due to permissions issues. For information about giving permissions, see the <https://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-permissions.html Amazon SES Developer Guide> .
 --
 --
 _InvalidSNSTopicException :: AsError a => Getting (First ServiceError) a ServiceError
@@ -745,7 +765,7 @@ _InvalidTrackingOptionsException
   = _MatchServiceError ses "InvalidTrackingOptions" .
       hasStatus 400
 
--- | Indicates that a template could not be created because it contained invalid JSON.
+-- | Indicates that the template that you specified could not be rendered. This issue may occur when a template refers to a partial that does not exist.
 --
 --
 _InvalidTemplateException :: AsError a => Getting (First ServiceError) a ServiceError

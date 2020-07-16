@@ -21,7 +21,7 @@ import Network.AWS.Lens
 import Network.AWS.MediaLive.Types.InputLocation
 import Network.AWS.Prelude
 
--- | Placeholder documentation for StaticKeySettings
+-- | Static Key Settings
 --
 -- /See:/ 'staticKeySettings' smart constructor.
 data StaticKeySettings = StaticKeySettings'{_sksKeyProviderServer

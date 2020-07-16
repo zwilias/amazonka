@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Lists the things associated with the specified principal.
+-- Lists the things associated with the specified principal. A principal can be X.509 certificates, IAM users, groups, and roles, Amazon Cognito identities or federated identities. 
 --
 --
 --
@@ -65,7 +65,7 @@ data ListPrincipalThings = ListPrincipalThings'{_lptNextToken
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'lptNextToken' - The token used to get the next set of results, or __null__ if there are no additional results.
+-- * 'lptNextToken' - The token to retrieve the next set of results.
 --
 -- * 'lptMaxResults' - The maximum number of results to return in this operation.
 --
@@ -78,7 +78,7 @@ listPrincipalThings pPrincipal_
                          _lptMaxResults = Nothing,
                          _lptPrincipal = pPrincipal_}
 
--- | The token used to get the next set of results, or __null__ if there are no additional results.
+-- | The token to retrieve the next set of results.
 lptNextToken :: Lens' ListPrincipalThings (Maybe Text)
 lptNextToken = lens _lptNextToken (\ s a -> s{_lptNextToken = a})
 

@@ -29,7 +29,7 @@ module Network.AWS.MediaLive.Types.DvbSdtOutputSdt (
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | Placeholder documentation for DvbSdtOutputSdt
+-- | Dvb Sdt Output Sdt
 data DvbSdtOutputSdt = DvbSdtOutputSdt' (CI Text)
                          deriving (Eq, Ord, Read, Show, Data, Typeable,
                                    Generic)

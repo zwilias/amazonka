@@ -18,10 +18,14 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Retrieves the details of FlexMatch matchmaking configurations. with this operation, you have the following options: (1) retrieve all existing configurations, (2) provide the names of one or more configurations to retrieve, or (3) retrieve all configurations that use a specified rule set name. When requesting multiple items, use the pagination parameters to retrieve results as a set of sequential pages. If successful, a configuration is returned for each requested name. When specifying a list of names, only configurations that currently exist are returned. 
+-- Retrieves the details of FlexMatch matchmaking configurations. With this operation, you have the following options: (1) retrieve all existing configurations, (2) provide the names of one or more configurations to retrieve, or (3) retrieve all configurations that use a specified rule set name. When requesting multiple items, use the pagination parameters to retrieve results as a set of sequential pages. If successful, a configuration is returned for each requested name. When specifying a list of names, only configurations that currently exist are returned. 
 --
 --
--- Operations related to match configurations and rule sets include:
+-- __Learn more__ 
+--
+-- <https://docs.aws.amazon.com/gamelift/latest/developerguide/matchmaker-build.html Setting Up FlexMatch Matchmakers> 
+--
+-- __Related operations__ 
 --
 --     * 'CreateMatchmakingConfiguration' 
 --
@@ -37,8 +41,12 @@
 --
 --     * 'ValidateMatchmakingRuleSet' 
 --
+--     * 'DeleteMatchmakingRuleSet' 
 --
 --
+--
+--
+-- This operation returns paginated results.
 module Network.AWS.GameLift.DescribeMatchmakingConfigurations
     (
     -- * Creating a Request
@@ -62,6 +70,7 @@ module Network.AWS.GameLift.DescribeMatchmakingConfigurations
 import Network.AWS.GameLift.Types
 import Network.AWS.GameLift.Types.Product
 import Network.AWS.Lens
+import Network.AWS.Pager
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
@@ -94,13 +103,13 @@ data DescribeMatchmakingConfigurations = DescribeMatchmakingConfigurations'{_dmc
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dmcRuleSetName' - Unique identifier for a matchmaking rule set. Use this parameter to retrieve all matchmaking configurations that use this rule set.
+-- * 'dmcRuleSetName' - A unique identifier for a matchmaking rule set. You can use either the rule set name or ARN value. Use this parameter to retrieve all matchmaking configurations that use this rule set.
 --
--- * 'dmcNextToken' - Token that indicates the start of the next sequential page of results. Use the token that is returned with a previous call to this action. To start at the beginning of the result set, do not specify a value.
+-- * 'dmcNextToken' - A token that indicates the start of the next sequential page of results. Use the token that is returned with a previous call to this action. To start at the beginning of the result set, do not specify a value.
 --
--- * 'dmcNames' - Unique identifier for a matchmaking configuration(s) to retrieve. To request all existing configurations, leave this parameter empty.
+-- * 'dmcNames' - A unique identifier for a matchmaking configuration(s) to retrieve. You can use either the configuration name or ARN value. To request all existing configurations, leave this parameter empty.
 --
--- * 'dmcLimit' - Maximum number of results to return. Use this parameter with @NextToken@ to get results as a set of sequential pages. This parameter is limited to 10.
+-- * 'dmcLimit' - The maximum number of results to return. Use this parameter with @NextToken@ to get results as a set of sequential pages. This parameter is limited to 10.
 describeMatchmakingConfigurations
     :: DescribeMatchmakingConfigurations
 describeMatchmakingConfigurations
@@ -109,21 +118,29 @@ describeMatchmakingConfigurations
                                        _dmcNextToken = Nothing,
                                        _dmcNames = Nothing, _dmcLimit = Nothing}
 
--- | Unique identifier for a matchmaking rule set. Use this parameter to retrieve all matchmaking configurations that use this rule set.
+-- | A unique identifier for a matchmaking rule set. You can use either the rule set name or ARN value. Use this parameter to retrieve all matchmaking configurations that use this rule set.
 dmcRuleSetName :: Lens' DescribeMatchmakingConfigurations (Maybe Text)
 dmcRuleSetName = lens _dmcRuleSetName (\ s a -> s{_dmcRuleSetName = a})
 
--- | Token that indicates the start of the next sequential page of results. Use the token that is returned with a previous call to this action. To start at the beginning of the result set, do not specify a value.
+-- | A token that indicates the start of the next sequential page of results. Use the token that is returned with a previous call to this action. To start at the beginning of the result set, do not specify a value.
 dmcNextToken :: Lens' DescribeMatchmakingConfigurations (Maybe Text)
 dmcNextToken = lens _dmcNextToken (\ s a -> s{_dmcNextToken = a})
 
--- | Unique identifier for a matchmaking configuration(s) to retrieve. To request all existing configurations, leave this parameter empty.
+-- | A unique identifier for a matchmaking configuration(s) to retrieve. You can use either the configuration name or ARN value. To request all existing configurations, leave this parameter empty.
 dmcNames :: Lens' DescribeMatchmakingConfigurations [Text]
 dmcNames = lens _dmcNames (\ s a -> s{_dmcNames = a}) . _Default . _Coerce
 
--- | Maximum number of results to return. Use this parameter with @NextToken@ to get results as a set of sequential pages. This parameter is limited to 10.
+-- | The maximum number of results to return. Use this parameter with @NextToken@ to get results as a set of sequential pages. This parameter is limited to 10.
 dmcLimit :: Lens' DescribeMatchmakingConfigurations (Maybe Natural)
 dmcLimit = lens _dmcLimit (\ s a -> s{_dmcLimit = a}) . mapping _Nat
+
+instance AWSPager DescribeMatchmakingConfigurations
+         where
+        page rq rs
+          | stop (rs ^. dmcsrsNextToken) = Nothing
+          | stop (rs ^. dmcsrsConfigurations) = Nothing
+          | otherwise =
+            Just $ rq & dmcNextToken .~ rs ^. dmcsrsNextToken
 
 instance AWSRequest DescribeMatchmakingConfigurations
          where
@@ -197,9 +214,9 @@ data DescribeMatchmakingConfigurationsResponse = DescribeMatchmakingConfiguratio
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dmcsrsConfigurations' - Collection of requested matchmaking configuration objects.
+-- * 'dmcsrsConfigurations' - A collection of requested matchmaking configurations.
 --
--- * 'dmcsrsNextToken' - Token that indicates where to resume retrieving results on the next call to this action. If no token is returned, these results represent the end of the list.
+-- * 'dmcsrsNextToken' - A token that indicates where to resume retrieving results on the next call to this action. If no token is returned, these results represent the end of the list.
 --
 -- * 'dmcsrsResponseStatus' - -- | The response status code.
 describeMatchmakingConfigurationsResponse
@@ -213,11 +230,11 @@ describeMatchmakingConfigurationsResponse
                                                _dmcsrsResponseStatus =
                                                  pResponseStatus_}
 
--- | Collection of requested matchmaking configuration objects.
+-- | A collection of requested matchmaking configurations.
 dmcsrsConfigurations :: Lens' DescribeMatchmakingConfigurationsResponse [MatchmakingConfiguration]
 dmcsrsConfigurations = lens _dmcsrsConfigurations (\ s a -> s{_dmcsrsConfigurations = a}) . _Default . _Coerce
 
--- | Token that indicates where to resume retrieving results on the next call to this action. If no token is returned, these results represent the end of the list.
+-- | A token that indicates where to resume retrieving results on the next call to this action. If no token is returned, these results represent the end of the list.
 dmcsrsNextToken :: Lens' DescribeMatchmakingConfigurationsResponse (Maybe Text)
 dmcsrsNextToken = lens _dmcsrsNextToken (\ s a -> s{_dmcsrsNextToken = a})
 

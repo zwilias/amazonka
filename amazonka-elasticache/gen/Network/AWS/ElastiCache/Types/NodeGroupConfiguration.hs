@@ -32,7 +32,9 @@ data NodeGroupConfiguration = NodeGroupConfiguration'{_ngcSlots
                                                       _ngcPrimaryAvailabilityZone
                                                       :: !(Maybe Text),
                                                       _ngcReplicaAvailabilityZones
-                                                      :: !(Maybe [Text])}
+                                                      :: !(Maybe [Text]),
+                                                      _ngcNodeGroupId ::
+                                                      !(Maybe Text)}
                                 deriving (Eq, Read, Show, Data, Typeable,
                                           Generic)
 
@@ -47,13 +49,16 @@ data NodeGroupConfiguration = NodeGroupConfiguration'{_ngcSlots
 -- * 'ngcPrimaryAvailabilityZone' - The Availability Zone where the primary node of this node group (shard) is launched.
 --
 -- * 'ngcReplicaAvailabilityZones' - A list of Availability Zones to be used for the read replicas. The number of Availability Zones in this list must match the value of @ReplicaCount@ or @ReplicasPerNodeGroup@ if not specified.
+--
+-- * 'ngcNodeGroupId' - Either the ElastiCache for Redis supplied 4-digit id or a user supplied id for the node group these configuration values apply to.
 nodeGroupConfiguration
     :: NodeGroupConfiguration
 nodeGroupConfiguration
   = NodeGroupConfiguration'{_ngcSlots = Nothing,
                             _ngcReplicaCount = Nothing,
                             _ngcPrimaryAvailabilityZone = Nothing,
-                            _ngcReplicaAvailabilityZones = Nothing}
+                            _ngcReplicaAvailabilityZones = Nothing,
+                            _ngcNodeGroupId = Nothing}
 
 -- | A string that specifies the keyspace for a particular node group. Keyspaces range from 0 to 16,383. The string is in the format @startkey-endkey@ . Example: @"0-3999"@ 
 ngcSlots :: Lens' NodeGroupConfiguration (Maybe Text)
@@ -71,6 +76,10 @@ ngcPrimaryAvailabilityZone = lens _ngcPrimaryAvailabilityZone (\ s a -> s{_ngcPr
 ngcReplicaAvailabilityZones :: Lens' NodeGroupConfiguration [Text]
 ngcReplicaAvailabilityZones = lens _ngcReplicaAvailabilityZones (\ s a -> s{_ngcReplicaAvailabilityZones = a}) . _Default . _Coerce
 
+-- | Either the ElastiCache for Redis supplied 4-digit id or a user supplied id for the node group these configuration values apply to.
+ngcNodeGroupId :: Lens' NodeGroupConfiguration (Maybe Text)
+ngcNodeGroupId = lens _ngcNodeGroupId (\ s a -> s{_ngcNodeGroupId = a})
+
 instance FromXML NodeGroupConfiguration where
         parseXML x
           = NodeGroupConfiguration' <$>
@@ -79,6 +88,7 @@ instance FromXML NodeGroupConfiguration where
                 <*>
                 (x .@? "ReplicaAvailabilityZones" .!@ mempty >>=
                    may (parseXMLList "AvailabilityZone"))
+                <*> (x .@? "NodeGroupId")
 
 instance Hashable NodeGroupConfiguration where
 
@@ -94,4 +104,5 @@ instance ToQuery NodeGroupConfiguration where
                "ReplicaAvailabilityZones" =:
                  toQuery
                    (toQueryList "AvailabilityZone" <$>
-                      _ngcReplicaAvailabilityZones)]
+                      _ngcReplicaAvailabilityZones),
+               "NodeGroupId" =: _ngcNodeGroupId]

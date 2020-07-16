@@ -21,6 +21,16 @@ module Network.AWS.FMS.Types
     , _InternalErrorException
     , _InvalidInputException
     , _LimitExceededException
+    , _InvalidTypeException
+
+    -- * AccountRoleStatus
+    , AccountRoleStatus (..)
+
+    -- * CustomerPolicyScopeIdType
+    , CustomerPolicyScopeIdType (..)
+
+    -- * DependentServiceName
+    , DependentServiceName (..)
 
     -- * PolicyComplianceStatusType
     , PolicyComplianceStatusType (..)
@@ -49,8 +59,11 @@ module Network.AWS.FMS.Types
     , Policy
     , policy
     , pPolicyId
+    , pResourceTypeList
     , pResourceTags
     , pPolicyUpdateToken
+    , pExcludeMap
+    , pIncludeMap
     , pPolicyName
     , pSecurityServicePolicyData
     , pResourceType
@@ -64,6 +77,7 @@ module Network.AWS.FMS.Types
     , pcdPolicyId
     , pcdViolators
     , pcdEvaluationLimitExceeded
+    , pcdIssueInfoMap
     , pcdPolicyOwner
     , pcdMemberAccount
 
@@ -74,6 +88,7 @@ module Network.AWS.FMS.Types
     , pcsLastUpdated
     , pcsPolicyName
     , pcsPolicyId
+    , pcsIssueInfoMap
     , pcsPolicyOwner
     , pcsMemberAccount
 
@@ -98,11 +113,20 @@ module Network.AWS.FMS.Types
     , securityServicePolicyData
     , sspdManagedServiceData
     , sspdType
+
+    -- * Tag
+    , Tag
+    , tag
+    , tagKey
+    , tagValue
     ) where
 
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Sign.V4
+import Network.AWS.FMS.Types.AccountRoleStatus
+import Network.AWS.FMS.Types.CustomerPolicyScopeIdType
+import Network.AWS.FMS.Types.DependentServiceName
 import Network.AWS.FMS.Types.PolicyComplianceStatusType
 import Network.AWS.FMS.Types.SecurityServiceType
 import Network.AWS.FMS.Types.ViolationReason
@@ -114,6 +138,7 @@ import Network.AWS.FMS.Types.PolicyComplianceStatus
 import Network.AWS.FMS.Types.PolicySummary
 import Network.AWS.FMS.Types.ResourceTag
 import Network.AWS.FMS.Types.SecurityServicePolicyData
+import Network.AWS.FMS.Types.Tag
 
 -- | API version @2018-01-01@ of the Amazon Firewall Management Service SDK configuration.
 fms :: Service
@@ -136,6 +161,11 @@ fms
             = Just "throttling_exception"
           | has (hasCode "Throttling" . hasStatus 400) e =
             Just "throttling"
+          | has
+              (hasCode "ProvisionedThroughputExceededException" .
+                 hasStatus 400)
+              e
+            = Just "throughput_exceeded"
           | has (hasStatus 504) e = Just "gateway_timeout"
           | has
               (hasCode "RequestThrottledException" . hasStatus 400)
@@ -175,9 +205,16 @@ _InvalidInputException :: AsError a => Getting (First ServiceError) a ServiceErr
 _InvalidInputException
   = _MatchServiceError fms "InvalidInputException"
 
--- | The operation exceeds a resource limit, for example, the maximum number of @policy@ objects that you can create for an AWS account. For more information, see <http://docs.aws.amazon.com/waf/latest/developerguide/fms-limits.html Firewall Manager Limits> in the /AWS WAF Developer Guide/ .
+-- | The operation exceeds a resource limit, for example, the maximum number of @policy@ objects that you can create for an AWS account. For more information, see <https://docs.aws.amazon.com/waf/latest/developerguide/fms-limits.html Firewall Manager Limits> in the /AWS WAF Developer Guide/ .
 --
 --
 _LimitExceededException :: AsError a => Getting (First ServiceError) a ServiceError
 _LimitExceededException
   = _MatchServiceError fms "LimitExceededException"
+
+-- | The value of the @Type@ parameter is invalid.
+--
+--
+_InvalidTypeException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidTypeException
+  = _MatchServiceError fms "InvalidTypeException"

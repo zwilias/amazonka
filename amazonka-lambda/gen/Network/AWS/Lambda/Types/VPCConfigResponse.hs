@@ -20,7 +20,7 @@ module Network.AWS.Lambda.Types.VPCConfigResponse where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | VPC configuration associated with your Lambda function.
+-- | The VPC security groups and subnets that are attached to a Lambda function.
 --
 --
 --
@@ -35,26 +35,26 @@ data VPCConfigResponse = VPCConfigResponse'{_vcSecurityGroupIds
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'vcSecurityGroupIds' - A list of security group IDs associated with the Lambda function.
+-- * 'vcSecurityGroupIds' - A list of VPC security groups IDs.
 --
--- * 'vcSubnetIds' - A list of subnet IDs associated with the Lambda function.
+-- * 'vcSubnetIds' - A list of VPC subnet IDs.
 --
--- * 'vcVPCId' - The VPC ID associated with you Lambda function.
+-- * 'vcVPCId' - The ID of the VPC.
 vpcConfigResponse
     :: VPCConfigResponse
 vpcConfigResponse
   = VPCConfigResponse'{_vcSecurityGroupIds = Nothing,
                        _vcSubnetIds = Nothing, _vcVPCId = Nothing}
 
--- | A list of security group IDs associated with the Lambda function.
+-- | A list of VPC security groups IDs.
 vcSecurityGroupIds :: Lens' VPCConfigResponse [Text]
 vcSecurityGroupIds = lens _vcSecurityGroupIds (\ s a -> s{_vcSecurityGroupIds = a}) . _Default . _Coerce
 
--- | A list of subnet IDs associated with the Lambda function.
+-- | A list of VPC subnet IDs.
 vcSubnetIds :: Lens' VPCConfigResponse [Text]
 vcSubnetIds = lens _vcSubnetIds (\ s a -> s{_vcSubnetIds = a}) . _Default . _Coerce
 
--- | The VPC ID associated with you Lambda function.
+-- | The ID of the VPC.
 vcVPCId :: Lens' VPCConfigResponse (Maybe Text)
 vcVPCId = lens _vcVPCId (\ s a -> s{_vcVPCId = a})
 

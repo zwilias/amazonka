@@ -23,6 +23,8 @@
 --
 -- After some time, the instances are attached to the load balancer and the health check status is available.
 --
+-- The @attach instances to load balancer@ operation supports tag-based access control via resource tags applied to the resource identified by @load balancer name@ . For more information, see the <https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags Lightsail Dev Guide> .
+--
 module Network.AWS.Lightsail.AttachInstancesToLoadBalancer
     (
     -- * Creating a Request
@@ -133,7 +135,7 @@ data AttachInstancesToLoadBalancerResponse = AttachInstancesToLoadBalancerRespon
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'aitlbrsOperations' - An object representing the API operations.
+-- * 'aitlbrsOperations' - An array of objects that describe the result of the action, such as the status of the request, the time stamp of the request, and the resources affected by the request.
 --
 -- * 'aitlbrsResponseStatus' - -- | The response status code.
 attachInstancesToLoadBalancerResponse
@@ -146,7 +148,7 @@ attachInstancesToLoadBalancerResponse
                                            _aitlbrsResponseStatus =
                                              pResponseStatus_}
 
--- | An object representing the API operations.
+-- | An array of objects that describe the result of the action, such as the status of the request, the time stamp of the request, and the resources affected by the request.
 aitlbrsOperations :: Lens' AttachInstancesToLoadBalancerResponse [Operation]
 aitlbrsOperations = lens _aitlbrsOperations (\ s a -> s{_aitlbrsOperations = a}) . _Default . _Coerce
 

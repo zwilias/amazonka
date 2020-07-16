@@ -37,7 +37,7 @@ data XSSMatchSetUpdate = XSSMatchSetUpdate'{_xmsuAction
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'xmsuAction' - Specify @INSERT@ to add a 'XssMatchSetUpdate' to an 'XssMatchSet' . Use @DELETE@ to remove a @XssMatchSetUpdate@ from an @XssMatchSet@ .
+-- * 'xmsuAction' - Specify @INSERT@ to add an 'XssMatchSetUpdate' to an 'XssMatchSet' . Use @DELETE@ to remove an @XssMatchSetUpdate@ from an @XssMatchSet@ .
 --
 -- * 'xmsuXSSMatchTuple' - Specifies the part of a web request that you want AWS WAF to inspect for cross-site scripting attacks and, if you want AWS WAF to inspect a header, the name of the header.
 xssMatchSetUpdate
@@ -48,7 +48,7 @@ xssMatchSetUpdate pAction_ pXSSMatchTuple_
   = XSSMatchSetUpdate'{_xmsuAction = pAction_,
                        _xmsuXSSMatchTuple = pXSSMatchTuple_}
 
--- | Specify @INSERT@ to add a 'XssMatchSetUpdate' to an 'XssMatchSet' . Use @DELETE@ to remove a @XssMatchSetUpdate@ from an @XssMatchSet@ .
+-- | Specify @INSERT@ to add an 'XssMatchSetUpdate' to an 'XssMatchSet' . Use @DELETE@ to remove an @XssMatchSetUpdate@ from an @XssMatchSet@ .
 xmsuAction :: Lens' XSSMatchSetUpdate ChangeAction
 xmsuAction = lens _xmsuAction (\ s a -> s{_xmsuAction = a})
 

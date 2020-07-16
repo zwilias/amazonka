@@ -31,7 +31,7 @@ module Network.AWS.MediaConvert.Types.Eac3DynamicRangeCompressionRf (
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | Enables Heavy Dynamic Range Compression, ensures that the instantaneous signal peaks do not exceed specified levels.
+-- | Specify how the service limits the audio dynamic range when compressing the audio.
 data Eac3DynamicRangeCompressionRf = Eac3DynamicRangeCompressionRf' (CI
                                                                        Text)
                                        deriving (Eq, Ord, Read, Show, Data,

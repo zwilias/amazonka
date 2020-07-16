@@ -21,7 +21,7 @@ import Network.AWS.Lens
 import Network.AWS.OpsWorks.Types.VolumeType
 import Network.AWS.Prelude
 
--- | Describes an Amazon EBS volume. This data type maps directly to the Amazon EC2 <http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_EbsBlockDevice.html EbsBlockDevice> data type.
+-- | Describes an Amazon EBS volume. This data type maps directly to the Amazon EC2 <https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_EbsBlockDevice.html EbsBlockDevice> data type.
 --
 --
 --
@@ -40,9 +40,9 @@ data EBSBlockDevice = EBSBlockDevice'{_ebdDeleteOnTermination
 --
 -- * 'ebdDeleteOnTermination' - Whether the volume is deleted on instance termination.
 --
--- * 'ebdVolumeSize' - The volume size, in GiB. For more information, see <http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_EbsBlockDevice.html EbsBlockDevice> .
+-- * 'ebdVolumeSize' - The volume size, in GiB. For more information, see <https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_EbsBlockDevice.html EbsBlockDevice> .
 --
--- * 'ebdIOPS' - The number of I/O operations per second (IOPS) that the volume supports. For more information, see <http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_EbsBlockDevice.html EbsBlockDevice> .
+-- * 'ebdIOPS' - The number of I/O operations per second (IOPS) that the volume supports. For more information, see <https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_EbsBlockDevice.html EbsBlockDevice> .
 --
 -- * 'ebdVolumeType' - The volume type. @gp2@ for General Purpose (SSD) volumes, @io1@ for Provisioned IOPS (SSD) volumes, @st1@ for Throughput Optimized hard disk drives (HDD), @sc1@ for Cold HDD,and @standard@ for Magnetic volumes. If you specify the @io1@ volume type, you must also specify a value for the @Iops@ attribute. The maximum ratio of provisioned IOPS to requested volume size (in GiB) is 50:1. AWS uses the default volume size (in GiB) specified in the AMI attributes to set IOPS to 50 x (volume size).
 --
@@ -58,11 +58,11 @@ ebsBlockDevice
 ebdDeleteOnTermination :: Lens' EBSBlockDevice (Maybe Bool)
 ebdDeleteOnTermination = lens _ebdDeleteOnTermination (\ s a -> s{_ebdDeleteOnTermination = a})
 
--- | The volume size, in GiB. For more information, see <http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_EbsBlockDevice.html EbsBlockDevice> .
+-- | The volume size, in GiB. For more information, see <https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_EbsBlockDevice.html EbsBlockDevice> .
 ebdVolumeSize :: Lens' EBSBlockDevice (Maybe Int)
 ebdVolumeSize = lens _ebdVolumeSize (\ s a -> s{_ebdVolumeSize = a})
 
--- | The number of I/O operations per second (IOPS) that the volume supports. For more information, see <http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_EbsBlockDevice.html EbsBlockDevice> .
+-- | The number of I/O operations per second (IOPS) that the volume supports. For more information, see <https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_EbsBlockDevice.html EbsBlockDevice> .
 ebdIOPS :: Lens' EBSBlockDevice (Maybe Int)
 ebdIOPS = lens _ebdIOPS (\ s a -> s{_ebdIOPS = a})
 

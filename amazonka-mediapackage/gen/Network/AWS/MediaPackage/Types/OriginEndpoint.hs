@@ -18,10 +18,12 @@
 module Network.AWS.MediaPackage.Types.OriginEndpoint where
 
 import Network.AWS.Lens
+import Network.AWS.MediaPackage.Types.Authorization
 import Network.AWS.MediaPackage.Types.CmafPackage
 import Network.AWS.MediaPackage.Types.DashPackage
 import Network.AWS.MediaPackage.Types.HlsPackage
 import Network.AWS.MediaPackage.Types.MssPackage
+import Network.AWS.MediaPackage.Types.Origination
 import Network.AWS.Prelude
 
 -- | An OriginEndpoint resource configuration.
@@ -33,6 +35,8 @@ data OriginEndpoint = OriginEndpoint'{_oeWhitelist ::
                                       _oeARN :: !(Maybe Text),
                                       _oeManifestName :: !(Maybe Text),
                                       _oeURL :: !(Maybe Text),
+                                      _oeAuthorization ::
+                                      !(Maybe Authorization),
                                       _oeChannelId :: !(Maybe Text),
                                       _oeStartoverWindowSeconds :: !(Maybe Int),
                                       _oeDashPackage :: !(Maybe DashPackage),
@@ -40,7 +44,9 @@ data OriginEndpoint = OriginEndpoint'{_oeWhitelist ::
                                       _oeId :: !(Maybe Text),
                                       _oeTimeDelaySeconds :: !(Maybe Int),
                                       _oeCmafPackage :: !(Maybe CmafPackage),
-                                      _oeDescription :: !(Maybe Text)}
+                                      _oeDescription :: !(Maybe Text),
+                                      _oeTags :: !(Maybe (Map Text Text)),
+                                      _oeOrigination :: !(Maybe Origination)}
                         deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'OriginEndpoint' with the minimum fields required to make a request.
@@ -57,6 +63,8 @@ data OriginEndpoint = OriginEndpoint'{_oeWhitelist ::
 --
 -- * 'oeURL' - The URL of the packaged OriginEndpoint for consumption.
 --
+-- * 'oeAuthorization' - Undocumented member.
+--
 -- * 'oeChannelId' - The ID of the Channel the OriginEndpoint is associated with.
 --
 -- * 'oeStartoverWindowSeconds' - Maximum duration (seconds) of content to retain for startover playback. If not specified, startover playback will be disabled for the OriginEndpoint.
@@ -72,17 +80,22 @@ data OriginEndpoint = OriginEndpoint'{_oeWhitelist ::
 -- * 'oeCmafPackage' - Undocumented member.
 --
 -- * 'oeDescription' - A short text description of the OriginEndpoint.
+--
+-- * 'oeTags' - Undocumented member.
+--
+-- * 'oeOrigination' - Control whether origination of video is allowed for this OriginEndpoint. If set to ALLOW, the OriginEndpoint may by requested, pursuant to any other form of access control. If set to DENY, the OriginEndpoint may not be requested. This can be helpful for Live to VOD harvesting, or for temporarily disabling origination
 originEndpoint
     :: OriginEndpoint
 originEndpoint
   = OriginEndpoint'{_oeWhitelist = Nothing,
                     _oeHlsPackage = Nothing, _oeARN = Nothing,
                     _oeManifestName = Nothing, _oeURL = Nothing,
-                    _oeChannelId = Nothing,
+                    _oeAuthorization = Nothing, _oeChannelId = Nothing,
                     _oeStartoverWindowSeconds = Nothing,
                     _oeDashPackage = Nothing, _oeMssPackage = Nothing,
                     _oeId = Nothing, _oeTimeDelaySeconds = Nothing,
-                    _oeCmafPackage = Nothing, _oeDescription = Nothing}
+                    _oeCmafPackage = Nothing, _oeDescription = Nothing,
+                    _oeTags = Nothing, _oeOrigination = Nothing}
 
 -- | A list of source IP CIDR blocks that will be allowed to access the OriginEndpoint.
 oeWhitelist :: Lens' OriginEndpoint [Text]
@@ -103,6 +116,10 @@ oeManifestName = lens _oeManifestName (\ s a -> s{_oeManifestName = a})
 -- | The URL of the packaged OriginEndpoint for consumption.
 oeURL :: Lens' OriginEndpoint (Maybe Text)
 oeURL = lens _oeURL (\ s a -> s{_oeURL = a})
+
+-- | Undocumented member.
+oeAuthorization :: Lens' OriginEndpoint (Maybe Authorization)
+oeAuthorization = lens _oeAuthorization (\ s a -> s{_oeAuthorization = a})
 
 -- | The ID of the Channel the OriginEndpoint is associated with.
 oeChannelId :: Lens' OriginEndpoint (Maybe Text)
@@ -136,6 +153,14 @@ oeCmafPackage = lens _oeCmafPackage (\ s a -> s{_oeCmafPackage = a})
 oeDescription :: Lens' OriginEndpoint (Maybe Text)
 oeDescription = lens _oeDescription (\ s a -> s{_oeDescription = a})
 
+-- | Undocumented member.
+oeTags :: Lens' OriginEndpoint (HashMap Text Text)
+oeTags = lens _oeTags (\ s a -> s{_oeTags = a}) . _Default . _Map
+
+-- | Control whether origination of video is allowed for this OriginEndpoint. If set to ALLOW, the OriginEndpoint may by requested, pursuant to any other form of access control. If set to DENY, the OriginEndpoint may not be requested. This can be helpful for Live to VOD harvesting, or for temporarily disabling origination
+oeOrigination :: Lens' OriginEndpoint (Maybe Origination)
+oeOrigination = lens _oeOrigination (\ s a -> s{_oeOrigination = a})
+
 instance FromJSON OriginEndpoint where
         parseJSON
           = withObject "OriginEndpoint"
@@ -146,6 +171,7 @@ instance FromJSON OriginEndpoint where
                      <*> (x .:? "arn")
                      <*> (x .:? "manifestName")
                      <*> (x .:? "url")
+                     <*> (x .:? "authorization")
                      <*> (x .:? "channelId")
                      <*> (x .:? "startoverWindowSeconds")
                      <*> (x .:? "dashPackage")
@@ -153,7 +179,9 @@ instance FromJSON OriginEndpoint where
                      <*> (x .:? "id")
                      <*> (x .:? "timeDelaySeconds")
                      <*> (x .:? "cmafPackage")
-                     <*> (x .:? "description"))
+                     <*> (x .:? "description")
+                     <*> (x .:? "tags" .!= mempty)
+                     <*> (x .:? "origination"))
 
 instance Hashable OriginEndpoint where
 

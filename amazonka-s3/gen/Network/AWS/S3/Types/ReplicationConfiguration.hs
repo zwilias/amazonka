@@ -22,7 +22,9 @@ import Network.AWS.Prelude
 import Network.AWS.S3.Internal
 import Network.AWS.S3.Types.ReplicationRule
 
--- | Container for replication rules. You can add as many as 1,000 rules. Total replication configuration size can be up to 2 MB.
+-- | A container for replication rules. You can add up to 1,000 rules. The maximum size of a replication configuration is 2 MB.
+--
+--
 --
 -- /See:/ 'replicationConfiguration' smart constructor.
 data ReplicationConfiguration = ReplicationConfiguration'{_rcRole
@@ -36,9 +38,9 @@ data ReplicationConfiguration = ReplicationConfiguration'{_rcRole
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'rcRole' - Amazon Resource Name (ARN) of an IAM role for Amazon S3 to assume when replicating the objects.
+-- * 'rcRole' - The Amazon Resource Name (ARN) of the AWS Identity and Access Management (IAM) role that Amazon S3 assumes when replicating objects. For more information, see <https://docs.aws.amazon.com/AmazonS3/latest/dev/replication-how-setup.html How to Set Up Replication> in the /Amazon Simple Storage Service Developer Guide/ .
 --
--- * 'rcRules' - Container for information about a particular replication rule. Replication configuration must have at least one rule and can contain up to 1,000 rules.
+-- * 'rcRules' - A container for one or more replication rules. A replication configuration must have at least one rule and can contain a maximum of 1,000 rules. 
 replicationConfiguration
     :: Text -- ^ 'rcRole'
     -> ReplicationConfiguration
@@ -46,11 +48,11 @@ replicationConfiguration pRole_
   = ReplicationConfiguration'{_rcRole = pRole_,
                               _rcRules = mempty}
 
--- | Amazon Resource Name (ARN) of an IAM role for Amazon S3 to assume when replicating the objects.
+-- | The Amazon Resource Name (ARN) of the AWS Identity and Access Management (IAM) role that Amazon S3 assumes when replicating objects. For more information, see <https://docs.aws.amazon.com/AmazonS3/latest/dev/replication-how-setup.html How to Set Up Replication> in the /Amazon Simple Storage Service Developer Guide/ .
 rcRole :: Lens' ReplicationConfiguration Text
 rcRole = lens _rcRole (\ s a -> s{_rcRole = a})
 
--- | Container for information about a particular replication rule. Replication configuration must have at least one rule and can contain up to 1,000 rules.
+-- | A container for one or more replication rules. A replication configuration must have at least one rule and can contain a maximum of 1,000 rules. 
 rcRules :: Lens' ReplicationConfiguration [ReplicationRule]
 rcRules = lens _rcRules (\ s a -> s{_rcRules = a}) . _Coerce
 

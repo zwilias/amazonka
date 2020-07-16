@@ -23,15 +23,18 @@ import Network.AWS.RDS.Types.CharacterSet
 import Network.AWS.RDS.Types.Timezone
 import Network.AWS.RDS.Types.UpgradeTarget
 
--- | This data type is used as a response element in the action 'DescribeDBEngineVersions' . 
+-- | This data type is used as a response element in the action @DescribeDBEngineVersions@ . 
 --
 --
 --
 -- /See:/ 'dbEngineVersion' smart constructor.
 data DBEngineVersion = DBEngineVersion'{_devEngineVersion
                                         :: !(Maybe Text),
+                                        _devStatus :: !(Maybe Text),
                                         _devDBEngineVersionDescription ::
                                         !(Maybe Text),
+                                        _devSupportedEngineModes ::
+                                        !(Maybe [Text]),
                                         _devDefaultCharacterSet ::
                                         !(Maybe CharacterSet),
                                         _devEngine :: !(Maybe Text),
@@ -47,6 +50,8 @@ data DBEngineVersion = DBEngineVersion'{_devEngineVersion
                                         :: !(Maybe Bool),
                                         _devSupportsReadReplica ::
                                         !(Maybe Bool),
+                                        _devSupportedFeatureNames ::
+                                        !(Maybe [Text]),
                                         _devSupportedTimezones ::
                                         !(Maybe [Timezone]),
                                         _devExportableLogTypes ::
@@ -59,9 +64,13 @@ data DBEngineVersion = DBEngineVersion'{_devEngineVersion
 --
 -- * 'devEngineVersion' - The version number of the database engine.
 --
+-- * 'devStatus' - The status of the DB engine version, either @available@ or @deprecated@ .
+--
 -- * 'devDBEngineVersionDescription' - The description of the database engine version.
 --
--- * 'devDefaultCharacterSet' - The default character set for new instances of this engine version, if the @CharacterSetName@ parameter of the CreateDBInstance API is not specified. 
+-- * 'devSupportedEngineModes' - A list of the supported DB engine modes.
+--
+-- * 'devDefaultCharacterSet' - The default character set for new instances of this engine version, if the @CharacterSetName@ parameter of the CreateDBInstance API isn't specified. 
 --
 -- * 'devEngine' - The name of the database engine.
 --
@@ -77,6 +86,8 @@ data DBEngineVersion = DBEngineVersion'{_devEngineVersion
 --
 -- * 'devSupportsReadReplica' - Indicates whether the database engine version supports read replicas.
 --
+-- * 'devSupportedFeatureNames' - A list of features supported by the DB engine. Supported feature names include the following.      * s3Import
+--
 -- * 'devSupportedTimezones' - A list of the time zones supported by this engine for the @Timezone@ parameter of the @CreateDBInstance@ action. 
 --
 -- * 'devExportableLogTypes' - The types of logs that the database engine has available for export to CloudWatch Logs.
@@ -84,7 +95,9 @@ dbEngineVersion
     :: DBEngineVersion
 dbEngineVersion
   = DBEngineVersion'{_devEngineVersion = Nothing,
+                     _devStatus = Nothing,
                      _devDBEngineVersionDescription = Nothing,
+                     _devSupportedEngineModes = Nothing,
                      _devDefaultCharacterSet = Nothing,
                      _devEngine = Nothing,
                      _devDBParameterGroupFamily = Nothing,
@@ -93,6 +106,7 @@ dbEngineVersion
                      _devValidUpgradeTarget = Nothing,
                      _devSupportsLogExportsToCloudwatchLogs = Nothing,
                      _devSupportsReadReplica = Nothing,
+                     _devSupportedFeatureNames = Nothing,
                      _devSupportedTimezones = Nothing,
                      _devExportableLogTypes = Nothing}
 
@@ -100,11 +114,19 @@ dbEngineVersion
 devEngineVersion :: Lens' DBEngineVersion (Maybe Text)
 devEngineVersion = lens _devEngineVersion (\ s a -> s{_devEngineVersion = a})
 
+-- | The status of the DB engine version, either @available@ or @deprecated@ .
+devStatus :: Lens' DBEngineVersion (Maybe Text)
+devStatus = lens _devStatus (\ s a -> s{_devStatus = a})
+
 -- | The description of the database engine version.
 devDBEngineVersionDescription :: Lens' DBEngineVersion (Maybe Text)
 devDBEngineVersionDescription = lens _devDBEngineVersionDescription (\ s a -> s{_devDBEngineVersionDescription = a})
 
--- | The default character set for new instances of this engine version, if the @CharacterSetName@ parameter of the CreateDBInstance API is not specified. 
+-- | A list of the supported DB engine modes.
+devSupportedEngineModes :: Lens' DBEngineVersion [Text]
+devSupportedEngineModes = lens _devSupportedEngineModes (\ s a -> s{_devSupportedEngineModes = a}) . _Default . _Coerce
+
+-- | The default character set for new instances of this engine version, if the @CharacterSetName@ parameter of the CreateDBInstance API isn't specified. 
 devDefaultCharacterSet :: Lens' DBEngineVersion (Maybe CharacterSet)
 devDefaultCharacterSet = lens _devDefaultCharacterSet (\ s a -> s{_devDefaultCharacterSet = a})
 
@@ -136,6 +158,10 @@ devSupportsLogExportsToCloudwatchLogs = lens _devSupportsLogExportsToCloudwatchL
 devSupportsReadReplica :: Lens' DBEngineVersion (Maybe Bool)
 devSupportsReadReplica = lens _devSupportsReadReplica (\ s a -> s{_devSupportsReadReplica = a})
 
+-- | A list of features supported by the DB engine. Supported feature names include the following.      * s3Import
+devSupportedFeatureNames :: Lens' DBEngineVersion [Text]
+devSupportedFeatureNames = lens _devSupportedFeatureNames (\ s a -> s{_devSupportedFeatureNames = a}) . _Default . _Coerce
+
 -- | A list of the time zones supported by this engine for the @Timezone@ parameter of the @CreateDBInstance@ action. 
 devSupportedTimezones :: Lens' DBEngineVersion [Timezone]
 devSupportedTimezones = lens _devSupportedTimezones (\ s a -> s{_devSupportedTimezones = a}) . _Default . _Coerce
@@ -147,8 +173,11 @@ devExportableLogTypes = lens _devExportableLogTypes (\ s a -> s{_devExportableLo
 instance FromXML DBEngineVersion where
         parseXML x
           = DBEngineVersion' <$>
-              (x .@? "EngineVersion") <*>
+              (x .@? "EngineVersion") <*> (x .@? "Status") <*>
                 (x .@? "DBEngineVersionDescription")
+                <*>
+                (x .@? "SupportedEngineModes" .!@ mempty >>=
+                   may (parseXMLList "member"))
                 <*> (x .@? "DefaultCharacterSet")
                 <*> (x .@? "Engine")
                 <*> (x .@? "DBParameterGroupFamily")
@@ -161,6 +190,9 @@ instance FromXML DBEngineVersion where
                    may (parseXMLList "UpgradeTarget"))
                 <*> (x .@? "SupportsLogExportsToCloudwatchLogs")
                 <*> (x .@? "SupportsReadReplica")
+                <*>
+                (x .@? "SupportedFeatureNames" .!@ mempty >>=
+                   may (parseXMLList "member"))
                 <*>
                 (x .@? "SupportedTimezones" .!@ mempty >>=
                    may (parseXMLList "Timezone"))

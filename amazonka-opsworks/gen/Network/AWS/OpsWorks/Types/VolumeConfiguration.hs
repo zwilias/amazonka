@@ -43,9 +43,9 @@ data VolumeConfiguration = VolumeConfiguration'{_vcIOPS
 --
 -- * 'vcRAIdLevel' - The volume <http://en.wikipedia.org/wiki/Standard_RAID_levels RAID level> .
 --
--- * 'vcEncrypted' - Specifies whether an Amazon EBS volume is encrypted. For more information, see <http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html Amazon EBS Encryption> .
+-- * 'vcEncrypted' - Specifies whether an Amazon EBS volume is encrypted. For more information, see <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html Amazon EBS Encryption> .
 --
--- * 'vcVolumeType' - The volume type. For more information, see <http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html Amazon EBS Volume Types> .     * @standard@ - Magnetic     * @io1@ - Provisioned IOPS (SSD)     * @gp2@ - General Purpose (SSD)     * @st1@ - Throughput Optimized hard disk drive (HDD)     * @sc1@ - Cold HDD
+-- * 'vcVolumeType' - The volume type. For more information, see <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html Amazon EBS Volume Types> .     * @standard@ - Magnetic. Magnetic volumes must have a minimum size of 1 GiB and a maximum size of 1024 GiB.     * @io1@ - Provisioned IOPS (SSD). PIOPS volumes must have a minimum size of 4 GiB and a maximum size of 16384 GiB.     * @gp2@ - General Purpose (SSD). General purpose volumes must have a minimum size of 1 GiB and a maximum size of 16384 GiB.     * @st1@ - Throughput Optimized hard disk drive (HDD). Throughput optimized HDD volumes must have a minimum size of 500 GiB and a maximum size of 16384 GiB.     * @sc1@ - Cold HDD. Cold HDD volumes must have a minimum size of 500 GiB and a maximum size of 16384 GiB.
 --
 -- * 'vcMountPoint' - The volume mount point. For example "/dev/sdh".
 --
@@ -73,11 +73,11 @@ vcIOPS = lens _vcIOPS (\ s a -> s{_vcIOPS = a})
 vcRAIdLevel :: Lens' VolumeConfiguration (Maybe Int)
 vcRAIdLevel = lens _vcRAIdLevel (\ s a -> s{_vcRAIdLevel = a})
 
--- | Specifies whether an Amazon EBS volume is encrypted. For more information, see <http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html Amazon EBS Encryption> .
+-- | Specifies whether an Amazon EBS volume is encrypted. For more information, see <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html Amazon EBS Encryption> .
 vcEncrypted :: Lens' VolumeConfiguration (Maybe Bool)
 vcEncrypted = lens _vcEncrypted (\ s a -> s{_vcEncrypted = a})
 
--- | The volume type. For more information, see <http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html Amazon EBS Volume Types> .     * @standard@ - Magnetic     * @io1@ - Provisioned IOPS (SSD)     * @gp2@ - General Purpose (SSD)     * @st1@ - Throughput Optimized hard disk drive (HDD)     * @sc1@ - Cold HDD
+-- | The volume type. For more information, see <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html Amazon EBS Volume Types> .     * @standard@ - Magnetic. Magnetic volumes must have a minimum size of 1 GiB and a maximum size of 1024 GiB.     * @io1@ - Provisioned IOPS (SSD). PIOPS volumes must have a minimum size of 4 GiB and a maximum size of 16384 GiB.     * @gp2@ - General Purpose (SSD). General purpose volumes must have a minimum size of 1 GiB and a maximum size of 16384 GiB.     * @st1@ - Throughput Optimized hard disk drive (HDD). Throughput optimized HDD volumes must have a minimum size of 500 GiB and a maximum size of 16384 GiB.     * @sc1@ - Cold HDD. Cold HDD volumes must have a minimum size of 500 GiB and a maximum size of 16384 GiB.
 vcVolumeType :: Lens' VolumeConfiguration (Maybe Text)
 vcVolumeType = lens _vcVolumeType (\ s a -> s{_vcVolumeType = a})
 

@@ -23,8 +23,6 @@ import Network.AWS.Prelude
 -- | Information about a player session that was created as part of a 'StartGameSessionPlacement' request. This object contains only the player ID and player session ID. To retrieve full details on a player session, call 'DescribePlayerSessions' with the player session ID.
 --
 --
--- Player-session-related operations include:
---
 --     * 'CreatePlayerSession' 
 --
 --     * 'CreatePlayerSessions' 
@@ -54,20 +52,20 @@ data PlacedPlayerSession = PlacedPlayerSession'{_ppsPlayerSessionId
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'ppsPlayerSessionId' - Unique identifier for a player session.
+-- * 'ppsPlayerSessionId' - A unique identifier for a player session.
 --
--- * 'ppsPlayerId' - Unique identifier for a player that is associated with this player session.
+-- * 'ppsPlayerId' - A unique identifier for a player that is associated with this player session.
 placedPlayerSession
     :: PlacedPlayerSession
 placedPlayerSession
   = PlacedPlayerSession'{_ppsPlayerSessionId = Nothing,
                          _ppsPlayerId = Nothing}
 
--- | Unique identifier for a player session.
+-- | A unique identifier for a player session.
 ppsPlayerSessionId :: Lens' PlacedPlayerSession (Maybe Text)
 ppsPlayerSessionId = lens _ppsPlayerSessionId (\ s a -> s{_ppsPlayerSessionId = a})
 
--- | Unique identifier for a player that is associated with this player session.
+-- | A unique identifier for a player that is associated with this player session.
 ppsPlayerId :: Lens' PlacedPlayerSession (Maybe Text)
 ppsPlayerId = lens _ppsPlayerId (\ s a -> s{_ppsPlayerId = a})
 

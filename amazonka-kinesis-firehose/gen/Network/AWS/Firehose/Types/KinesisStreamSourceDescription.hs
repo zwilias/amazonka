@@ -44,7 +44,7 @@ data KinesisStreamSourceDescription = KinesisStreamSourceDescription'{_kssdDeliv
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'kssdDeliveryStartTimestamp' - Kinesis Data Firehose starts retrieving records from the Kinesis data stream starting with this time stamp.
+-- * 'kssdDeliveryStartTimestamp' - Kinesis Data Firehose starts retrieving records from the Kinesis data stream starting with this timestamp.
 --
 -- * 'kssdKinesisStreamARN' - The Amazon Resource Name (ARN) of the source Kinesis data stream. For more information, see <https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-kinesis-streams Amazon Kinesis Data Streams ARN Format> .
 --
@@ -57,7 +57,7 @@ kinesisStreamSourceDescription
                                     _kssdKinesisStreamARN = Nothing,
                                     _kssdRoleARN = Nothing}
 
--- | Kinesis Data Firehose starts retrieving records from the Kinesis data stream starting with this time stamp.
+-- | Kinesis Data Firehose starts retrieving records from the Kinesis data stream starting with this timestamp.
 kssdDeliveryStartTimestamp :: Lens' KinesisStreamSourceDescription (Maybe UTCTime)
 kssdDeliveryStartTimestamp = lens _kssdDeliveryStartTimestamp (\ s a -> s{_kssdDeliveryStartTimestamp = a}) . mapping _Time
 

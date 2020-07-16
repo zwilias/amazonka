@@ -21,7 +21,7 @@ import Network.AWS.Lens
 import Network.AWS.OpsWorks.Types.EBSBlockDevice
 import Network.AWS.Prelude
 
--- | Describes a block device mapping. This data type maps directly to the Amazon EC2 <http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_BlockDeviceMapping.html BlockDeviceMapping> data type. 
+-- | Describes a block device mapping. This data type maps directly to the Amazon EC2 <https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_BlockDeviceMapping.html BlockDeviceMapping> data type. 
 --
 --
 --
@@ -38,7 +38,7 @@ data BlockDeviceMapping = BlockDeviceMapping'{_bdmVirtualName
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'bdmVirtualName' - The virtual device name. For more information, see <http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_BlockDeviceMapping.html BlockDeviceMapping> .
+-- * 'bdmVirtualName' - The virtual device name. For more information, see <https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_BlockDeviceMapping.html BlockDeviceMapping> .
 --
 -- * 'bdmNoDevice' - Suppresses the specified device included in the AMI's block device mapping.
 --
@@ -52,7 +52,7 @@ blockDeviceMapping
                         _bdmNoDevice = Nothing, _bdmEBS = Nothing,
                         _bdmDeviceName = Nothing}
 
--- | The virtual device name. For more information, see <http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_BlockDeviceMapping.html BlockDeviceMapping> .
+-- | The virtual device name. For more information, see <https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_BlockDeviceMapping.html BlockDeviceMapping> .
 bdmVirtualName :: Lens' BlockDeviceMapping (Maybe Text)
 bdmVirtualName = lens _bdmVirtualName (\ s a -> s{_bdmVirtualName = a})
 

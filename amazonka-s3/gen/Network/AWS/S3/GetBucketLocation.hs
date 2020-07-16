@@ -18,7 +18,19 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Returns the region the bucket resides in.
+-- Returns the Region the bucket resides in. You set the bucket's Region using the @LocationConstraint@ request parameter in a @CreateBucket@ request. For more information, see 'CreateBucket' .
+--
+--
+-- To use this implementation of the operation, you must be the bucket owner.
+--
+-- The following operations are related to @GetBucketLocation@ :
+--
+--     * 'GetObject' 
+--
+--     * 'CreateBucket' 
+--
+--
+--
 module Network.AWS.S3.GetBucketLocation
     (
     -- * Creating a Request
@@ -51,14 +63,14 @@ newtype GetBucketLocation = GetBucketLocation'{_gblBucket
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'gblBucket' - Undocumented member.
+-- * 'gblBucket' - The name of the bucket for which to get the location.
 getBucketLocation
     :: BucketName -- ^ 'gblBucket'
     -> GetBucketLocation
 getBucketLocation pBucket_
   = GetBucketLocation'{_gblBucket = pBucket_}
 
--- | Undocumented member.
+-- | The name of the bucket for which to get the location.
 gblBucket :: Lens' GetBucketLocation BucketName
 gblBucket = lens _gblBucket (\ s a -> s{_gblBucket = a})
 
@@ -100,7 +112,7 @@ data GetBucketLocationResponse = GetBucketLocationResponse'{_gtbcktlctnrsRespons
 --
 -- * 'gtbcktlctnrsResponseStatus' - -- | The response status code.
 --
--- * 'gtbcktlctnrsLocationConstraint' - Undocumented member.
+-- * 'gtbcktlctnrsLocationConstraint' - Specifies the Region where the bucket resides. For a list of all the Amazon S3 supported location constraints by Region, see <https://docs.aws.amazon.com/general/latest/gr/rande.html#s3_region Regions and Endpoints> .
 getBucketLocationResponse
     :: Int -- ^ 'gtbcktlctnrsResponseStatus'
     -> LocationConstraint -- ^ 'gtbcktlctnrsLocationConstraint'
@@ -116,7 +128,7 @@ getBucketLocationResponse pResponseStatus_
 gtbcktlctnrsResponseStatus :: Lens' GetBucketLocationResponse Int
 gtbcktlctnrsResponseStatus = lens _gtbcktlctnrsResponseStatus (\ s a -> s{_gtbcktlctnrsResponseStatus = a})
 
--- | Undocumented member.
+-- | Specifies the Region where the bucket resides. For a list of all the Amazon S3 supported location constraints by Region, see <https://docs.aws.amazon.com/general/latest/gr/rande.html#s3_region Regions and Endpoints> .
 gtbcktlctnrsLocationConstraint :: Lens' GetBucketLocationResponse LocationConstraint
 gtbcktlctnrsLocationConstraint = lens _gtbcktlctnrsLocationConstraint (\ s a -> s{_gtbcktlctnrsLocationConstraint = a})
 

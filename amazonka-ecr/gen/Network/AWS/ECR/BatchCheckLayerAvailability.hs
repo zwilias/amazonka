@@ -18,8 +18,10 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Check the availability of multiple image layers in a specified registry and repository.
+-- Checks the availability of one or more image layers in a repository.
 --
+--
+-- When an image is pushed to a repository, each image layer is checked to verify if it has been uploaded before. If it has been uploaded, then the image layer is skipped.
 --
 module Network.AWS.ECR.BatchCheckLayerAvailability
     (

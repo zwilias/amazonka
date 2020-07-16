@@ -44,6 +44,9 @@ module Network.AWS.EMR.Types
     -- * ComparisonOperator
     , ComparisonOperator (..)
 
+    -- * ComputeLimitsUnitType
+    , ComputeLimitsUnitType (..)
+
     -- * InstanceCollectionType
     , InstanceCollectionType (..)
 
@@ -89,6 +92,9 @@ module Network.AWS.EMR.Types
     -- * Statistic
     , Statistic (..)
 
+    -- * StepCancellationOption
+    , StepCancellationOption (..)
+
     -- * StepState
     , StepState (..)
 
@@ -131,6 +137,18 @@ module Network.AWS.EMR.Types
     , aspsState
     , aspsStateChangeReason
 
+    -- * BlockPublicAccessConfiguration
+    , BlockPublicAccessConfiguration
+    , blockPublicAccessConfiguration
+    , bpacPermittedPublicSecurityGroupRuleRanges
+    , bpacBlockPublicSecurityGroupRules
+
+    -- * BlockPublicAccessConfigurationMetadata
+    , BlockPublicAccessConfigurationMetadata
+    , blockPublicAccessConfigurationMetadata
+    , bpacmCreationDateTime
+    , bpacmCreatedByARN
+
     -- * BootstrapActionConfig
     , BootstrapActionConfig
     , bootstrapActionConfig
@@ -160,9 +178,11 @@ module Network.AWS.EMR.Types
     -- * Cluster
     , Cluster
     , cluster
+    , cluClusterARN
     , cluRequestedAMIVersion
     , cluEBSRootVolumeSize
     , cluEC2InstanceAttributes
+    , cluOutpostARN
     , cluNormalizedInstanceHours
     , cluConfigurations
     , cluCustomAMIId
@@ -179,6 +199,7 @@ module Network.AWS.EMR.Types
     , cluTerminationProtected
     , cluVisibleToAllUsers
     , cluAutoTerminate
+    , cluStepConcurrencyLevel
     , cluApplications
     , cluTags
     , cluServiceRole
@@ -203,6 +224,8 @@ module Network.AWS.EMR.Types
     , ClusterSummary
     , clusterSummary
     , csStatus
+    , csClusterARN
+    , csOutpostARN
     , csNormalizedInstanceHours
     , csName
     , csId
@@ -220,6 +243,14 @@ module Network.AWS.EMR.Types
     , cArgs
     , cScriptPath
     , cName
+
+    -- * ComputeLimits
+    , ComputeLimits
+    , computeLimits
+    , clMaximumOnDemandCapacityUnits
+    , clUnitType
+    , clMinimumCapacityUnits
+    , clMaximumCapacityUnits
 
     -- * Configuration
     , Configuration
@@ -366,13 +397,16 @@ module Network.AWS.EMR.Types
     , InstanceGroup
     , instanceGroup
     , igStatus
+    , igLastSuccessfullyAppliedConfigurationsVersion
     , igBidPrice
     , igRequestedInstanceCount
     , igRunningInstanceCount
+    , igLastSuccessfullyAppliedConfigurations
     , igConfigurations
     , igInstanceGroupType
     , igEBSBlockDevices
     , igInstanceType
+    , igConfigurationsVersion
     , igEBSOptimized
     , igMarket
     , igName
@@ -397,6 +431,7 @@ module Network.AWS.EMR.Types
     , InstanceGroupModifyConfig
     , instanceGroupModifyConfig
     , igmcInstanceCount
+    , igmcConfigurations
     , igmcEC2InstanceIdsToTerminate
     , igmcShrinkPolicy
     , igmcInstanceGroupId
@@ -505,6 +540,11 @@ module Network.AWS.EMR.Types
     , kvValue
     , kvKey
 
+    -- * ManagedScalingPolicy
+    , ManagedScalingPolicy
+    , managedScalingPolicy
+    , mspComputeLimits
+
     -- * MetricDimension
     , MetricDimension
     , metricDimension
@@ -516,6 +556,12 @@ module Network.AWS.EMR.Types
     , placementType
     , ptAvailabilityZones
     , ptAvailabilityZone
+
+    -- * PortRange
+    , PortRange
+    , portRange
+    , prMaxRange
+    , prMinRange
 
     -- * ScalingAction
     , ScalingAction
@@ -651,6 +697,7 @@ import Network.AWS.EMR.Types.CancelStepsRequestStatus
 import Network.AWS.EMR.Types.ClusterState
 import Network.AWS.EMR.Types.ClusterStateChangeReasonCode
 import Network.AWS.EMR.Types.ComparisonOperator
+import Network.AWS.EMR.Types.ComputeLimitsUnitType
 import Network.AWS.EMR.Types.InstanceCollectionType
 import Network.AWS.EMR.Types.InstanceFleetState
 import Network.AWS.EMR.Types.InstanceFleetStateChangeReasonCode
@@ -666,6 +713,7 @@ import Network.AWS.EMR.Types.RepoUpgradeOnBoot
 import Network.AWS.EMR.Types.ScaleDownBehavior
 import Network.AWS.EMR.Types.SpotProvisioningTimeoutAction
 import Network.AWS.EMR.Types.Statistic
+import Network.AWS.EMR.Types.StepCancellationOption
 import Network.AWS.EMR.Types.StepState
 import Network.AWS.EMR.Types.StepStateChangeReasonCode
 import Network.AWS.EMR.Types.Unit
@@ -674,6 +722,8 @@ import Network.AWS.EMR.Types.AutoScalingPolicy
 import Network.AWS.EMR.Types.AutoScalingPolicyDescription
 import Network.AWS.EMR.Types.AutoScalingPolicyStateChangeReason
 import Network.AWS.EMR.Types.AutoScalingPolicyStatus
+import Network.AWS.EMR.Types.BlockPublicAccessConfiguration
+import Network.AWS.EMR.Types.BlockPublicAccessConfigurationMetadata
 import Network.AWS.EMR.Types.BootstrapActionConfig
 import Network.AWS.EMR.Types.CancelStepsInfo
 import Network.AWS.EMR.Types.CloudWatchAlarmDefinition
@@ -683,6 +733,7 @@ import Network.AWS.EMR.Types.ClusterStatus
 import Network.AWS.EMR.Types.ClusterSummary
 import Network.AWS.EMR.Types.ClusterTimeline
 import Network.AWS.EMR.Types.Command
+import Network.AWS.EMR.Types.ComputeLimits
 import Network.AWS.EMR.Types.Configuration
 import Network.AWS.EMR.Types.EBSBlockDevice
 import Network.AWS.EMR.Types.EBSBlockDeviceConfig
@@ -715,8 +766,10 @@ import Network.AWS.EMR.Types.InstanceTypeSpecification
 import Network.AWS.EMR.Types.JobFlowInstancesConfig
 import Network.AWS.EMR.Types.KerberosAttributes
 import Network.AWS.EMR.Types.KeyValue
+import Network.AWS.EMR.Types.ManagedScalingPolicy
 import Network.AWS.EMR.Types.MetricDimension
 import Network.AWS.EMR.Types.PlacementType
+import Network.AWS.EMR.Types.PortRange
 import Network.AWS.EMR.Types.ScalingAction
 import Network.AWS.EMR.Types.ScalingConstraints
 import Network.AWS.EMR.Types.ScalingRule
@@ -758,6 +811,11 @@ emr
             = Just "throttling_exception"
           | has (hasCode "Throttling" . hasStatus 400) e =
             Just "throttling"
+          | has
+              (hasCode "ProvisionedThroughputExceededException" .
+                 hasStatus 400)
+              e
+            = Just "throughput_exceeded"
           | has (hasStatus 504) e = Just "gateway_timeout"
           | has
               (hasCode "RequestThrottledException" . hasStatus 400)

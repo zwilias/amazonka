@@ -58,11 +58,11 @@ data DeletePartition = DeletePartition'{_dpCatalogId
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dpCatalogId' - The ID of the Data Catalog where the partition to be deleted resides. If none is supplied, the AWS account ID is used by default.
+-- * 'dpCatalogId' - The ID of the Data Catalog where the partition to be deleted resides. If none is provided, the AWS account ID is used by default.
 --
 -- * 'dpDatabaseName' - The name of the catalog database in which the table in question resides.
 --
--- * 'dpTableName' - The name of the table where the partition to be deleted is located.
+-- * 'dpTableName' - The name of the table that contains the partition to be deleted.
 --
 -- * 'dpPartitionValues' - The values that define the partition.
 deletePartition
@@ -75,7 +75,7 @@ deletePartition pDatabaseName_ pTableName_
                      _dpTableName = pTableName_,
                      _dpPartitionValues = mempty}
 
--- | The ID of the Data Catalog where the partition to be deleted resides. If none is supplied, the AWS account ID is used by default.
+-- | The ID of the Data Catalog where the partition to be deleted resides. If none is provided, the AWS account ID is used by default.
 dpCatalogId :: Lens' DeletePartition (Maybe Text)
 dpCatalogId = lens _dpCatalogId (\ s a -> s{_dpCatalogId = a})
 
@@ -83,7 +83,7 @@ dpCatalogId = lens _dpCatalogId (\ s a -> s{_dpCatalogId = a})
 dpDatabaseName :: Lens' DeletePartition Text
 dpDatabaseName = lens _dpDatabaseName (\ s a -> s{_dpDatabaseName = a})
 
--- | The name of the table where the partition to be deleted is located.
+-- | The name of the table that contains the partition to be deleted.
 dpTableName :: Lens' DeletePartition Text
 dpTableName = lens _dpTableName (\ s a -> s{_dpTableName = a})
 

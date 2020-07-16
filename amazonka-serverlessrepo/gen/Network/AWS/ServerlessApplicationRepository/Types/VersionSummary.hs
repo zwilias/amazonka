@@ -20,7 +20,7 @@ module Network.AWS.ServerlessApplicationRepository.Types.VersionSummary where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | Application version summary.
+-- | An application version summary.
 --
 --
 --
@@ -36,9 +36,9 @@ data VersionSummary = VersionSummary'{_vsSourceCodeURL
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'vsSourceCodeURL' - A link to a public repository for the source code of your application.
+-- * 'vsSourceCodeURL' - A link to a public repository for the source code of your application, for example the URL of a specific GitHub commit.
 --
--- * 'vsCreationTime' - The date/time this resource was created.
+-- * 'vsCreationTime' - The date and time this resource was created.
 --
 -- * 'vsApplicationId' - The application Amazon Resource Name (ARN).
 --
@@ -55,11 +55,11 @@ versionSummary pCreationTime_ pApplicationId_
                     _vsApplicationId = pApplicationId_,
                     _vsSemanticVersion = pSemanticVersion_}
 
--- | A link to a public repository for the source code of your application.
+-- | A link to a public repository for the source code of your application, for example the URL of a specific GitHub commit.
 vsSourceCodeURL :: Lens' VersionSummary (Maybe Text)
 vsSourceCodeURL = lens _vsSourceCodeURL (\ s a -> s{_vsSourceCodeURL = a})
 
--- | The date/time this resource was created.
+-- | The date and time this resource was created.
 vsCreationTime :: Lens' VersionSummary Text
 vsCreationTime = lens _vsCreationTime (\ s a -> s{_vsCreationTime = a})
 

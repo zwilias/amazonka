@@ -20,7 +20,7 @@ module Network.AWS.ElasticBeanstalk.Types.PlatformFramework where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | A framework supported by the custom platform.
+-- | A framework supported by the platform.
 --
 --
 --

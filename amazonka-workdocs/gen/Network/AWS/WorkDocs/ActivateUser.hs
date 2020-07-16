@@ -55,7 +55,7 @@ data ActivateUser = ActivateUser'{_auAuthenticationToken
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'auAuthenticationToken' - Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.
+-- * 'auAuthenticationToken' - Amazon WorkDocs authentication token. Not required when using AWS administrator credentials to access the API.
 --
 -- * 'auUserId' - The ID of the user.
 activateUser
@@ -65,7 +65,7 @@ activateUser pUserId_
   = ActivateUser'{_auAuthenticationToken = Nothing,
                   _auUserId = pUserId_}
 
--- | Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.
+-- | Amazon WorkDocs authentication token. Not required when using AWS administrator credentials to access the API.
 auAuthenticationToken :: Lens' ActivateUser (Maybe Text)
 auAuthenticationToken = lens _auAuthenticationToken (\ s a -> s{_auAuthenticationToken = a}) . mapping _Sensitive
 

@@ -18,6 +18,7 @@
 module Network.AWS.MediaConvert.Types.OutputGroupSettings where
 
 import Network.AWS.Lens
+import Network.AWS.MediaConvert.Types.CmafGroupSettings
 import Network.AWS.MediaConvert.Types.DashIsoGroupSettings
 import Network.AWS.MediaConvert.Types.FileGroupSettings
 import Network.AWS.MediaConvert.Types.HlsGroupSettings
@@ -30,6 +31,8 @@ import Network.AWS.Prelude
 -- /See:/ 'outputGroupSettings' smart constructor.
 data OutputGroupSettings = OutputGroupSettings'{_ogsFileGroupSettings
                                                 :: !(Maybe FileGroupSettings),
+                                                _ogsCmafGroupSettings ::
+                                                !(Maybe CmafGroupSettings),
                                                 _ogsMsSmoothGroupSettings ::
                                                 !(Maybe MsSmoothGroupSettings),
                                                 _ogsHlsGroupSettings ::
@@ -44,41 +47,48 @@ data OutputGroupSettings = OutputGroupSettings'{_ogsFileGroupSettings
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'ogsFileGroupSettings' - Undocumented member.
+-- * 'ogsFileGroupSettings' - Required when you set (Type) under (OutputGroups)>(OutputGroupSettings) to FILE_GROUP_SETTINGS.
 --
--- * 'ogsMsSmoothGroupSettings' - Undocumented member.
+-- * 'ogsCmafGroupSettings' - Required when you set (Type) under (OutputGroups)>(OutputGroupSettings) to CMAF_GROUP_SETTINGS. Each output in a CMAF Output Group may only contain a single video, audio, or caption output.
 --
--- * 'ogsHlsGroupSettings' - Undocumented member.
+-- * 'ogsMsSmoothGroupSettings' - Required when you set (Type) under (OutputGroups)>(OutputGroupSettings) to MS_SMOOTH_GROUP_SETTINGS.
 --
--- * 'ogsType' - Undocumented member.
+-- * 'ogsHlsGroupSettings' - Required when you set (Type) under (OutputGroups)>(OutputGroupSettings) to HLS_GROUP_SETTINGS.
 --
--- * 'ogsDashIsoGroupSettings' - Undocumented member.
+-- * 'ogsType' - Type of output group (File group, Apple HLS, DASH ISO, Microsoft Smooth Streaming, CMAF)
+--
+-- * 'ogsDashIsoGroupSettings' - Required when you set (Type) under (OutputGroups)>(OutputGroupSettings) to DASH_ISO_GROUP_SETTINGS.
 outputGroupSettings
     :: OutputGroupSettings
 outputGroupSettings
   = OutputGroupSettings'{_ogsFileGroupSettings =
                            Nothing,
+                         _ogsCmafGroupSettings = Nothing,
                          _ogsMsSmoothGroupSettings = Nothing,
                          _ogsHlsGroupSettings = Nothing, _ogsType = Nothing,
                          _ogsDashIsoGroupSettings = Nothing}
 
--- | Undocumented member.
+-- | Required when you set (Type) under (OutputGroups)>(OutputGroupSettings) to FILE_GROUP_SETTINGS.
 ogsFileGroupSettings :: Lens' OutputGroupSettings (Maybe FileGroupSettings)
 ogsFileGroupSettings = lens _ogsFileGroupSettings (\ s a -> s{_ogsFileGroupSettings = a})
 
--- | Undocumented member.
+-- | Required when you set (Type) under (OutputGroups)>(OutputGroupSettings) to CMAF_GROUP_SETTINGS. Each output in a CMAF Output Group may only contain a single video, audio, or caption output.
+ogsCmafGroupSettings :: Lens' OutputGroupSettings (Maybe CmafGroupSettings)
+ogsCmafGroupSettings = lens _ogsCmafGroupSettings (\ s a -> s{_ogsCmafGroupSettings = a})
+
+-- | Required when you set (Type) under (OutputGroups)>(OutputGroupSettings) to MS_SMOOTH_GROUP_SETTINGS.
 ogsMsSmoothGroupSettings :: Lens' OutputGroupSettings (Maybe MsSmoothGroupSettings)
 ogsMsSmoothGroupSettings = lens _ogsMsSmoothGroupSettings (\ s a -> s{_ogsMsSmoothGroupSettings = a})
 
--- | Undocumented member.
+-- | Required when you set (Type) under (OutputGroups)>(OutputGroupSettings) to HLS_GROUP_SETTINGS.
 ogsHlsGroupSettings :: Lens' OutputGroupSettings (Maybe HlsGroupSettings)
 ogsHlsGroupSettings = lens _ogsHlsGroupSettings (\ s a -> s{_ogsHlsGroupSettings = a})
 
--- | Undocumented member.
+-- | Type of output group (File group, Apple HLS, DASH ISO, Microsoft Smooth Streaming, CMAF)
 ogsType :: Lens' OutputGroupSettings (Maybe OutputGroupType)
 ogsType = lens _ogsType (\ s a -> s{_ogsType = a})
 
--- | Undocumented member.
+-- | Required when you set (Type) under (OutputGroups)>(OutputGroupSettings) to DASH_ISO_GROUP_SETTINGS.
 ogsDashIsoGroupSettings :: Lens' OutputGroupSettings (Maybe DashIsoGroupSettings)
 ogsDashIsoGroupSettings = lens _ogsDashIsoGroupSettings (\ s a -> s{_ogsDashIsoGroupSettings = a})
 
@@ -88,7 +98,8 @@ instance FromJSON OutputGroupSettings where
               (\ x ->
                  OutputGroupSettings' <$>
                    (x .:? "fileGroupSettings") <*>
-                     (x .:? "msSmoothGroupSettings")
+                     (x .:? "cmafGroupSettings")
+                     <*> (x .:? "msSmoothGroupSettings")
                      <*> (x .:? "hlsGroupSettings")
                      <*> (x .:? "type")
                      <*> (x .:? "dashIsoGroupSettings"))
@@ -102,6 +113,7 @@ instance ToJSON OutputGroupSettings where
           = object
               (catMaybes
                  [("fileGroupSettings" .=) <$> _ogsFileGroupSettings,
+                  ("cmafGroupSettings" .=) <$> _ogsCmafGroupSettings,
                   ("msSmoothGroupSettings" .=) <$>
                     _ogsMsSmoothGroupSettings,
                   ("hlsGroupSettings" .=) <$> _ogsHlsGroupSettings,

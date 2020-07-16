@@ -18,7 +18,9 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Deletes an endpoint.
+-- Deletes an endpoint from an application.
+--
+--
 module Network.AWS.Pinpoint.DeleteEndpoint
     (
     -- * Creating a Request
@@ -53,9 +55,9 @@ data DeleteEndpoint = DeleteEndpoint'{_deApplicationId
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'deApplicationId' - Undocumented member.
+-- * 'deApplicationId' - The unique identifier for the application. This identifier is displayed as the __Project ID__ on the Amazon Pinpoint console.
 --
--- * 'deEndpointId' - Undocumented member.
+-- * 'deEndpointId' - The unique identifier for the endpoint.
 deleteEndpoint
     :: Text -- ^ 'deApplicationId'
     -> Text -- ^ 'deEndpointId'
@@ -64,11 +66,11 @@ deleteEndpoint pApplicationId_ pEndpointId_
   = DeleteEndpoint'{_deApplicationId = pApplicationId_,
                     _deEndpointId = pEndpointId_}
 
--- | Undocumented member.
+-- | The unique identifier for the application. This identifier is displayed as the __Project ID__ on the Amazon Pinpoint console.
 deApplicationId :: Lens' DeleteEndpoint Text
 deApplicationId = lens _deApplicationId (\ s a -> s{_deApplicationId = a})
 
--- | Undocumented member.
+-- | The unique identifier for the endpoint.
 deEndpointId :: Lens' DeleteEndpoint Text
 deEndpointId = lens _deEndpointId (\ s a -> s{_deEndpointId = a})
 

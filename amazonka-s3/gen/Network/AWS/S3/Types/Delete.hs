@@ -22,7 +22,11 @@ import Network.AWS.Prelude
 import Network.AWS.S3.Internal
 import Network.AWS.S3.Types.ObjectIdentifier
 
--- | /See:/ 'delete'' smart constructor.
+-- | Container for the objects to delete.
+--
+--
+--
+-- /See:/ 'delete'' smart constructor.
 data Delete = Delete'{_dQuiet :: !(Maybe Bool),
                       _dObjects :: ![ObjectIdentifier]}
                 deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -33,7 +37,7 @@ data Delete = Delete'{_dQuiet :: !(Maybe Bool),
 --
 -- * 'dQuiet' - Element to enable quiet mode for the request. When you add this element, you must set its value to true.
 --
--- * 'dObjects' - Undocumented member.
+-- * 'dObjects' - The objects to delete.
 delete'
     :: Delete
 delete'
@@ -43,7 +47,7 @@ delete'
 dQuiet :: Lens' Delete (Maybe Bool)
 dQuiet = lens _dQuiet (\ s a -> s{_dQuiet = a})
 
--- | Undocumented member.
+-- | The objects to delete.
 dObjects :: Lens' Delete [ObjectIdentifier]
 dObjects = lens _dObjects (\ s a -> s{_dObjects = a}) . _Coerce
 

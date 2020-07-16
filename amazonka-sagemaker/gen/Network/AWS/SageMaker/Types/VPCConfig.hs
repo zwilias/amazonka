@@ -20,7 +20,7 @@ module Network.AWS.SageMaker.Types.VPCConfig where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | Specifies a VPC that your training jobs and hosted models have access to. Control access to and from your training and model containers by configuring the VPC. For more information, see 'host-vpc' and 'train-vpc' .
+-- | Specifies a VPC that your training jobs and hosted models have access to. Control access to and from your training and model containers by configuring the VPC. For more information, see <https://docs.aws.amazon.com/sagemaker/latest/dg/host-vpc.html Protect Endpoints by Using an Amazon Virtual Private Cloud> and <https://docs.aws.amazon.com/sagemaker/latest/dg/train-vpc.html Protect Training Jobs by Using an Amazon Virtual Private Cloud> . 
 --
 --
 --
@@ -36,7 +36,7 @@ data VPCConfig = VPCConfig'{_vcSecurityGroupIds ::
 --
 -- * 'vcSecurityGroupIds' - The VPC security group IDs, in the form sg-xxxxxxxx. Specify the security groups for the VPC that is specified in the @Subnets@ field.
 --
--- * 'vcSubnets' - The ID of the subnets in the VPC to which you want to connect your training job or model.
+-- * 'vcSubnets' - The ID of the subnets in the VPC to which you want to connect your training job or model. For information about the availability of specific instance types, see <https://docs.aws.amazon.com/sagemaker/latest/dg/instance-types-az.html Supported Instance Types and Availability Zones> .
 vpcConfig
     :: NonEmpty Text -- ^ 'vcSecurityGroupIds'
     -> NonEmpty Text -- ^ 'vcSubnets'
@@ -50,7 +50,7 @@ vpcConfig pSecurityGroupIds_ pSubnets_
 vcSecurityGroupIds :: Lens' VPCConfig (NonEmpty Text)
 vcSecurityGroupIds = lens _vcSecurityGroupIds (\ s a -> s{_vcSecurityGroupIds = a}) . _List1
 
--- | The ID of the subnets in the VPC to which you want to connect your training job or model.
+-- | The ID of the subnets in the VPC to which you want to connect your training job or model. For information about the availability of specific instance types, see <https://docs.aws.amazon.com/sagemaker/latest/dg/instance-types-az.html Supported Instance Types and Availability Zones> .
 vcSubnets :: Lens' VPCConfig (NonEmpty Text)
 vcSubnets = lens _vcSubnets (\ s a -> s{_vcSubnets = a}) . _List1
 

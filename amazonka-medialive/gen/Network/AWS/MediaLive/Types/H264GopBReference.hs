@@ -27,7 +27,7 @@ module Network.AWS.MediaLive.Types.H264GopBReference (
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | Placeholder documentation for H264GopBReference
+-- | H264 Gop BReference
 data H264GopBReference = H264GopBReference' (CI Text)
                            deriving (Eq, Ord, Read, Show, Data, Typeable,
                                      Generic)

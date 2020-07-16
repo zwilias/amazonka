@@ -27,7 +27,7 @@ module Network.AWS.MediaLive.Types.Ac3MetadataControl (
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | Placeholder documentation for Ac3MetadataControl
+-- | Ac3 Metadata Control
 data Ac3MetadataControl = Ac3MetadataControl' (CI
                                                  Text)
                             deriving (Eq, Ord, Read, Show, Data, Typeable,

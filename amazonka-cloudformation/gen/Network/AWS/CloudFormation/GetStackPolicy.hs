@@ -110,7 +110,7 @@ data GetStackPolicyResponse = GetStackPolicyResponse'{_gsprsStackPolicyBody
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'gsprsStackPolicyBody' - Structure containing the stack policy body. (For more information, go to <http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/protect-stack-resources.html Prevent Updates to Stack Resources> in the AWS CloudFormation User Guide.)
+-- * 'gsprsStackPolicyBody' - Structure containing the stack policy body. (For more information, go to <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/protect-stack-resources.html Prevent Updates to Stack Resources> in the AWS CloudFormation User Guide.)
 --
 -- * 'gsprsResponseStatus' - -- | The response status code.
 getStackPolicyResponse
@@ -121,7 +121,7 @@ getStackPolicyResponse pResponseStatus_
                               Nothing,
                             _gsprsResponseStatus = pResponseStatus_}
 
--- | Structure containing the stack policy body. (For more information, go to <http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/protect-stack-resources.html Prevent Updates to Stack Resources> in the AWS CloudFormation User Guide.)
+-- | Structure containing the stack policy body. (For more information, go to <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/protect-stack-resources.html Prevent Updates to Stack Resources> in the AWS CloudFormation User Guide.)
 gsprsStackPolicyBody :: Lens' GetStackPolicyResponse (Maybe Text)
 gsprsStackPolicyBody = lens _gsprsStackPolicyBody (\ s a -> s{_gsprsStackPolicyBody = a})
 

@@ -22,7 +22,11 @@ import Network.AWS.Prelude
 import Network.AWS.S3.Internal
 import Network.AWS.S3.Types.Protocol
 
--- | /See:/ 'redirectAllRequestsTo' smart constructor.
+-- | Specifies the redirect behavior of all requests to a website endpoint of an Amazon S3 bucket.
+--
+--
+--
+-- /See:/ 'redirectAllRequestsTo' smart constructor.
 data RedirectAllRequestsTo = RedirectAllRequestsTo'{_rartProtocol
                                                     :: !(Maybe Protocol),
                                                     _rartHostName :: !Text}
@@ -33,9 +37,9 @@ data RedirectAllRequestsTo = RedirectAllRequestsTo'{_rartProtocol
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'rartProtocol' - Protocol to use (http, https) when redirecting requests. The default is the protocol that is used in the original request.
+-- * 'rartProtocol' - Protocol to use when redirecting requests. The default is the protocol that is used in the original request.
 --
--- * 'rartHostName' - Name of the host where requests will be redirected.
+-- * 'rartHostName' - Name of the host where requests are redirected.
 redirectAllRequestsTo
     :: Text -- ^ 'rartHostName'
     -> RedirectAllRequestsTo
@@ -43,11 +47,11 @@ redirectAllRequestsTo pHostName_
   = RedirectAllRequestsTo'{_rartProtocol = Nothing,
                            _rartHostName = pHostName_}
 
--- | Protocol to use (http, https) when redirecting requests. The default is the protocol that is used in the original request.
+-- | Protocol to use when redirecting requests. The default is the protocol that is used in the original request.
 rartProtocol :: Lens' RedirectAllRequestsTo (Maybe Protocol)
 rartProtocol = lens _rartProtocol (\ s a -> s{_rartProtocol = a})
 
--- | Name of the host where requests will be redirected.
+-- | Name of the host where requests are redirected.
 rartHostName :: Lens' RedirectAllRequestsTo Text
 rartHostName = lens _rartHostName (\ s a -> s{_rartHostName = a})
 

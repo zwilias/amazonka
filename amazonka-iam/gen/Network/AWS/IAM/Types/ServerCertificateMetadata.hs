@@ -48,13 +48,13 @@ data ServerCertificateMetadata = ServerCertificateMetadata'{_scmUploadDate
 --
 -- * 'scmExpiration' - The date on which the certificate is set to expire.
 --
--- * 'scmPath' - The path to the server certificate. For more information about paths, see <http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html IAM Identifiers> in the /Using IAM/ guide. 
+-- * 'scmPath' - The path to the server certificate. For more information about paths, see <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html IAM Identifiers> in the /IAM User Guide/ . 
 --
 -- * 'scmServerCertificateName' - The name that identifies the server certificate.
 --
--- * 'scmServerCertificateId' - The stable and unique string identifying the server certificate. For more information about IDs, see <http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html IAM Identifiers> in the /Using IAM/ guide. 
+-- * 'scmServerCertificateId' - The stable and unique string identifying the server certificate. For more information about IDs, see <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html IAM Identifiers> in the /IAM User Guide/ . 
 --
--- * 'scmARN' - The Amazon Resource Name (ARN) specifying the server certificate. For more information about ARNs and how to use them in policies, see <http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html IAM Identifiers> in the /Using IAM/ guide. 
+-- * 'scmARN' - The Amazon Resource Name (ARN) specifying the server certificate. For more information about ARNs and how to use them in policies, see <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html IAM Identifiers> in the /IAM User Guide/ . 
 serverCertificateMetadata
     :: Text -- ^ 'scmPath'
     -> Text -- ^ 'scmServerCertificateName'
@@ -79,7 +79,7 @@ scmUploadDate = lens _scmUploadDate (\ s a -> s{_scmUploadDate = a}) . mapping _
 scmExpiration :: Lens' ServerCertificateMetadata (Maybe UTCTime)
 scmExpiration = lens _scmExpiration (\ s a -> s{_scmExpiration = a}) . mapping _Time
 
--- | The path to the server certificate. For more information about paths, see <http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html IAM Identifiers> in the /Using IAM/ guide. 
+-- | The path to the server certificate. For more information about paths, see <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html IAM Identifiers> in the /IAM User Guide/ . 
 scmPath :: Lens' ServerCertificateMetadata Text
 scmPath = lens _scmPath (\ s a -> s{_scmPath = a})
 
@@ -87,11 +87,11 @@ scmPath = lens _scmPath (\ s a -> s{_scmPath = a})
 scmServerCertificateName :: Lens' ServerCertificateMetadata Text
 scmServerCertificateName = lens _scmServerCertificateName (\ s a -> s{_scmServerCertificateName = a})
 
--- | The stable and unique string identifying the server certificate. For more information about IDs, see <http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html IAM Identifiers> in the /Using IAM/ guide. 
+-- | The stable and unique string identifying the server certificate. For more information about IDs, see <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html IAM Identifiers> in the /IAM User Guide/ . 
 scmServerCertificateId :: Lens' ServerCertificateMetadata Text
 scmServerCertificateId = lens _scmServerCertificateId (\ s a -> s{_scmServerCertificateId = a})
 
--- | The Amazon Resource Name (ARN) specifying the server certificate. For more information about ARNs and how to use them in policies, see <http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html IAM Identifiers> in the /Using IAM/ guide. 
+-- | The Amazon Resource Name (ARN) specifying the server certificate. For more information about ARNs and how to use them in policies, see <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html IAM Identifiers> in the /IAM User Guide/ . 
 scmARN :: Lens' ServerCertificateMetadata Text
 scmARN = lens _scmARN (\ s a -> s{_scmARN = a})
 

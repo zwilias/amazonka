@@ -19,10 +19,10 @@
 module Network.AWS.MigrationHub.Types.MigrationStatus (
   MigrationStatus (
     ..
-    , Completed
-    , Failed
-    , InProgress
-    , NotStarted
+    , MSCompleted
+    , MSFailed
+    , MSInProgress
+    , MSNotStarted
     )
   ) where
 
@@ -33,23 +33,23 @@ data MigrationStatus = MigrationStatus' (CI Text)
                          deriving (Eq, Ord, Read, Show, Data, Typeable,
                                    Generic)
 
-pattern Completed :: MigrationStatus
-pattern Completed = MigrationStatus' "COMPLETED"
+pattern MSCompleted :: MigrationStatus
+pattern MSCompleted = MigrationStatus' "COMPLETED"
 
-pattern Failed :: MigrationStatus
-pattern Failed = MigrationStatus' "FAILED"
+pattern MSFailed :: MigrationStatus
+pattern MSFailed = MigrationStatus' "FAILED"
 
-pattern InProgress :: MigrationStatus
-pattern InProgress = MigrationStatus' "IN_PROGRESS"
+pattern MSInProgress :: MigrationStatus
+pattern MSInProgress = MigrationStatus' "IN_PROGRESS"
 
-pattern NotStarted :: MigrationStatus
-pattern NotStarted = MigrationStatus' "NOT_STARTED"
+pattern MSNotStarted :: MigrationStatus
+pattern MSNotStarted = MigrationStatus' "NOT_STARTED"
 
 {-# COMPLETE
-  Completed,
-  Failed,
-  InProgress,
-  NotStarted,
+  MSCompleted,
+  MSFailed,
+  MSInProgress,
+  MSNotStarted,
   MigrationStatus' #-}
 
 instance FromText MigrationStatus where
@@ -64,24 +64,24 @@ instance ToText MigrationStatus where
 --   fromEnum is a partial function, and will error on values unknown at generation time.
 instance Enum MigrationStatus where
     toEnum i = case i of
-        0 -> Completed
-        1 -> Failed
-        2 -> InProgress
-        3 -> NotStarted
+        0 -> MSCompleted
+        1 -> MSFailed
+        2 -> MSInProgress
+        3 -> MSNotStarted
         _ -> (error . showText) $ "Unknown index for MigrationStatus: " <> toText i
     fromEnum x = case x of
-        Completed -> 0
-        Failed -> 1
-        InProgress -> 2
-        NotStarted -> 3
+        MSCompleted -> 0
+        MSFailed -> 1
+        MSInProgress -> 2
+        MSNotStarted -> 3
         MigrationStatus' name -> (error . showText) $ "Unknown MigrationStatus: " <> original name
 
 -- | Represents the bounds of /known/ $MigrationStatus.
 --   AWS may have added more since the source was generated.
 --   This instance exists only for backward compatibility.
 instance Bounded MigrationStatus where
-    minBound = Completed
-    maxBound = NotStarted
+    minBound = MSCompleted
+    maxBound = MSNotStarted
 
 instance Hashable     MigrationStatus
 instance NFData       MigrationStatus

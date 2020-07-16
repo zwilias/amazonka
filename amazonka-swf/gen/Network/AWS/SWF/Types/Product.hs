@@ -69,6 +69,7 @@ module Network.AWS.SWF.Types.Product (
     module Network.AWS.SWF.Types.RequestCancelExternalWorkflowExecutionDecisionAttributes,
     module Network.AWS.SWF.Types.RequestCancelExternalWorkflowExecutionFailedEventAttributes,
     module Network.AWS.SWF.Types.RequestCancelExternalWorkflowExecutionInitiatedEventAttributes,
+    module Network.AWS.SWF.Types.ResourceTag,
     module Network.AWS.SWF.Types.ScheduleActivityTaskDecisionAttributes,
     module Network.AWS.SWF.Types.ScheduleActivityTaskFailedEventAttributes,
     module Network.AWS.SWF.Types.ScheduleLambdaFunctionDecisionAttributes,
@@ -163,6 +164,7 @@ import Network.AWS.SWF.Types.RequestCancelActivityTaskFailedEventAttributes
 import Network.AWS.SWF.Types.RequestCancelExternalWorkflowExecutionDecisionAttributes
 import Network.AWS.SWF.Types.RequestCancelExternalWorkflowExecutionFailedEventAttributes
 import Network.AWS.SWF.Types.RequestCancelExternalWorkflowExecutionInitiatedEventAttributes
+import Network.AWS.SWF.Types.ResourceTag
 import Network.AWS.SWF.Types.ScheduleActivityTaskDecisionAttributes
 import Network.AWS.SWF.Types.ScheduleActivityTaskFailedEventAttributes
 import Network.AWS.SWF.Types.ScheduleLambdaFunctionDecisionAttributes

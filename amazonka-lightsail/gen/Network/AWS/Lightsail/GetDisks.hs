@@ -21,15 +21,15 @@
 -- Returns information about all block storage disks in your AWS account and region.
 --
 --
--- If you are describing a long list of disks, you can paginate the output to make the list more manageable. You can use the pageToken and nextPageToken values to retrieve the next items in the list.
 --
+-- This operation returns paginated results.
 module Network.AWS.Lightsail.GetDisks
     (
     -- * Creating a Request
       getDisks
     , GetDisks
     -- * Request Lenses
-    , gPageToken
+    , getPageToken
 
     -- * Destructuring the Response
     , getDisksResponse
@@ -43,12 +43,13 @@ module Network.AWS.Lightsail.GetDisks
 import Network.AWS.Lens
 import Network.AWS.Lightsail.Types
 import Network.AWS.Lightsail.Types.Product
+import Network.AWS.Pager
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getDisks' smart constructor.
-newtype GetDisks = GetDisks'{_gPageToken ::
+newtype GetDisks = GetDisks'{_getPageToken ::
                              Maybe Text}
                      deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -56,14 +57,22 @@ newtype GetDisks = GetDisks'{_gPageToken ::
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'gPageToken' - A token used for advancing to the next page of results from your GetDisks request.
+-- * 'getPageToken' - The token to advance to the next page of results from your request. To get a page token, perform an initial @GetDisks@ request. If your results are paginated, the response will return a next page token that you can specify as the page token in a subsequent request.
 getDisks
     :: GetDisks
-getDisks = GetDisks'{_gPageToken = Nothing}
+getDisks = GetDisks'{_getPageToken = Nothing}
 
--- | A token used for advancing to the next page of results from your GetDisks request.
-gPageToken :: Lens' GetDisks (Maybe Text)
-gPageToken = lens _gPageToken (\ s a -> s{_gPageToken = a})
+-- | The token to advance to the next page of results from your request. To get a page token, perform an initial @GetDisks@ request. If your results are paginated, the response will return a next page token that you can specify as the page token in a subsequent request.
+getPageToken :: Lens' GetDisks (Maybe Text)
+getPageToken = lens _getPageToken (\ s a -> s{_getPageToken = a})
+
+instance AWSPager GetDisks where
+        page rq rs
+          | stop (rs ^. gtdsksrsNextPageToken) = Nothing
+          | stop (rs ^. gtdsksrsDisks) = Nothing
+          | otherwise =
+            Just $ rq &
+              getPageToken .~ rs ^. gtdsksrsNextPageToken
 
 instance AWSRequest GetDisks where
         type Rs GetDisks = GetDisksResponse
@@ -92,7 +101,7 @@ instance ToHeaders GetDisks where
 instance ToJSON GetDisks where
         toJSON GetDisks'{..}
           = object
-              (catMaybes [("pageToken" .=) <$> _gPageToken])
+              (catMaybes [("pageToken" .=) <$> _getPageToken])
 
 instance ToPath GetDisks where
         toPath = const "/"
@@ -111,7 +120,7 @@ data GetDisksResponse = GetDisksResponse'{_gtdsksrsNextPageToken
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'gtdsksrsNextPageToken' - A token used for advancing to the next page of results from your GetDisks request.
+-- * 'gtdsksrsNextPageToken' - The token to advance to the next page of resutls from your request. A next page token is not returned if there are no more results to display. To get the next page of results, perform another @GetDisks@ request and specify the next page token using the @pageToken@ parameter.
 --
 -- * 'gtdsksrsDisks' - An array of objects containing information about all block storage disks.
 --
@@ -124,7 +133,7 @@ getDisksResponse pResponseStatus_
                       _gtdsksrsDisks = Nothing,
                       _gtdsksrsResponseStatus = pResponseStatus_}
 
--- | A token used for advancing to the next page of results from your GetDisks request.
+-- | The token to advance to the next page of resutls from your request. A next page token is not returned if there are no more results to display. To get the next page of results, perform another @GetDisks@ request and specify the next page token using the @pageToken@ parameter.
 gtdsksrsNextPageToken :: Lens' GetDisksResponse (Maybe Text)
 gtdsksrsNextPageToken = lens _gtdsksrsNextPageToken (\ s a -> s{_gtdsksrsNextPageToken = a})
 

@@ -21,8 +21,14 @@ import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Rekognition.Types.GenderType
 
--- | Gender of the face and the confidence level in the determination.
+-- | The predicted gender of a detected face. 
 --
+--
+-- Amazon Rekognition makes gender binary (male/female) predictions based on the physical appearance of a face in a particular image. This kind of prediction is not designed to categorize a person’s gender identity, and you shouldn't use Amazon Rekognition to make such a determination. For example, a male actor wearing a long-haired wig and earrings for a role might be predicted as female.
+--
+-- Using Amazon Rekognition to make gender binary predictions is best suited for use cases where aggregate gender distribution statistics need to be analyzed without identifying specific users. For example, the percentage of female users compared to male users on a social media platform. 
+--
+-- We don't recommend using gender binary predictions to make decisions that impact  an individual's rights, privacy, or access to services.
 --
 --
 -- /See:/ 'gender' smart constructor.
@@ -34,19 +40,19 @@ data Gender = Gender'{_gValue :: !(Maybe GenderType),
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'gValue' - Gender of the face.
+-- * 'gValue' - The predicted gender of the face.
 --
--- * 'gConfidence' - Level of confidence in the determination.
+-- * 'gConfidence' - Level of confidence in the prediction.
 gender
     :: Gender
 gender
   = Gender'{_gValue = Nothing, _gConfidence = Nothing}
 
--- | Gender of the face.
+-- | The predicted gender of the face.
 gValue :: Lens' Gender (Maybe GenderType)
 gValue = lens _gValue (\ s a -> s{_gValue = a})
 
--- | Level of confidence in the determination.
+-- | Level of confidence in the prediction.
 gConfidence :: Lens' Gender (Maybe Double)
 gConfidence = lens _gConfidence (\ s a -> s{_gConfidence = a})
 

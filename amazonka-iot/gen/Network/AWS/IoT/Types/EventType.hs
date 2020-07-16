@@ -19,8 +19,11 @@
 module Network.AWS.IoT.Types.EventType (
   EventType (
     ..
+    , CaCertificate
+    , Certificate
     , Job
     , JobExecution
+    , Policy
     , Thing
     , ThingGroup
     , ThingGroupHierarchy
@@ -37,11 +40,20 @@ data EventType = EventType' (CI Text)
                    deriving (Eq, Ord, Read, Show, Data, Typeable,
                              Generic)
 
+pattern CaCertificate :: EventType
+pattern CaCertificate = EventType' "CA_CERTIFICATE"
+
+pattern Certificate :: EventType
+pattern Certificate = EventType' "CERTIFICATE"
+
 pattern Job :: EventType
 pattern Job = EventType' "JOB"
 
 pattern JobExecution :: EventType
 pattern JobExecution = EventType' "JOB_EXECUTION"
+
+pattern Policy :: EventType
+pattern Policy = EventType' "POLICY"
 
 pattern Thing :: EventType
 pattern Thing = EventType' "THING"
@@ -62,8 +74,11 @@ pattern ThingTypeAssociation :: EventType
 pattern ThingTypeAssociation = EventType' "THING_TYPE_ASSOCIATION"
 
 {-# COMPLETE
+  CaCertificate,
+  Certificate,
   Job,
   JobExecution,
+  Policy,
   Thing,
   ThingGroup,
   ThingGroupHierarchy,
@@ -84,31 +99,37 @@ instance ToText EventType where
 --   fromEnum is a partial function, and will error on values unknown at generation time.
 instance Enum EventType where
     toEnum i = case i of
-        0 -> Job
-        1 -> JobExecution
-        2 -> Thing
-        3 -> ThingGroup
-        4 -> ThingGroupHierarchy
-        5 -> ThingGroupMembership
-        6 -> ThingType
-        7 -> ThingTypeAssociation
+        0 -> CaCertificate
+        1 -> Certificate
+        2 -> Job
+        3 -> JobExecution
+        4 -> Policy
+        5 -> Thing
+        6 -> ThingGroup
+        7 -> ThingGroupHierarchy
+        8 -> ThingGroupMembership
+        9 -> ThingType
+        10 -> ThingTypeAssociation
         _ -> (error . showText) $ "Unknown index for EventType: " <> toText i
     fromEnum x = case x of
-        Job -> 0
-        JobExecution -> 1
-        Thing -> 2
-        ThingGroup -> 3
-        ThingGroupHierarchy -> 4
-        ThingGroupMembership -> 5
-        ThingType -> 6
-        ThingTypeAssociation -> 7
+        CaCertificate -> 0
+        Certificate -> 1
+        Job -> 2
+        JobExecution -> 3
+        Policy -> 4
+        Thing -> 5
+        ThingGroup -> 6
+        ThingGroupHierarchy -> 7
+        ThingGroupMembership -> 8
+        ThingType -> 9
+        ThingTypeAssociation -> 10
         EventType' name -> (error . showText) $ "Unknown EventType: " <> original name
 
 -- | Represents the bounds of /known/ $EventType.
 --   AWS may have added more since the source was generated.
 --   This instance exists only for backward compatibility.
 instance Bounded EventType where
-    minBound = Job
+    minBound = CaCertificate
     maxBound = ThingTypeAssociation
 
 instance Hashable     EventType

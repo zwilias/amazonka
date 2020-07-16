@@ -20,36 +20,38 @@ module Network.AWS.GuardDuty.Types.AccountDetail where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | An object containing the member's accountId and email address.
+-- | Contains information about the account.
+--
+--
 --
 -- /See:/ 'accountDetail' smart constructor.
-data AccountDetail = AccountDetail'{_adEmail ::
+data AccountDetail = AccountDetail'{_adAccountId ::
                                     !Text,
-                                    _adAccountId :: !Text}
+                                    _adEmail :: !Text}
                        deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'AccountDetail' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'adEmail' - Member account's email address.
+-- * 'adAccountId' - The member account ID.
 --
--- * 'adAccountId' - Member account ID.
+-- * 'adEmail' - The email address of the member account.
 accountDetail
-    :: Text -- ^ 'adEmail'
-    -> Text -- ^ 'adAccountId'
+    :: Text -- ^ 'adAccountId'
+    -> Text -- ^ 'adEmail'
     -> AccountDetail
-accountDetail pEmail_ pAccountId_
-  = AccountDetail'{_adEmail = pEmail_,
-                   _adAccountId = pAccountId_}
+accountDetail pAccountId_ pEmail_
+  = AccountDetail'{_adAccountId = pAccountId_,
+                   _adEmail = pEmail_}
 
--- | Member account's email address.
-adEmail :: Lens' AccountDetail Text
-adEmail = lens _adEmail (\ s a -> s{_adEmail = a})
-
--- | Member account ID.
+-- | The member account ID.
 adAccountId :: Lens' AccountDetail Text
 adAccountId = lens _adAccountId (\ s a -> s{_adAccountId = a})
+
+-- | The email address of the member account.
+adEmail :: Lens' AccountDetail Text
+adEmail = lens _adEmail (\ s a -> s{_adEmail = a})
 
 instance Hashable AccountDetail where
 
@@ -59,5 +61,5 @@ instance ToJSON AccountDetail where
         toJSON AccountDetail'{..}
           = object
               (catMaybes
-                 [Just ("email" .= _adEmail),
-                  Just ("accountId" .= _adAccountId)])
+                 [Just ("accountId" .= _adAccountId),
+                  Just ("email" .= _adEmail)])

@@ -20,7 +20,9 @@ module Network.AWS.GuardDuty.Types.Tag where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | A tag of the EC2 instance.
+-- | Contains information about a tag associated with the EC2 instance.
+--
+--
 --
 -- /See:/ 'tag' smart constructor.
 data Tag = Tag'{_tagValue :: !(Maybe Text),
@@ -31,18 +33,18 @@ data Tag = Tag'{_tagValue :: !(Maybe Text),
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'tagValue' - EC2 instance tag value.
+-- * 'tagValue' - The EC2 instance tag value.
 --
--- * 'tagKey' - EC2 instance tag key.
+-- * 'tagKey' - The EC2 instance tag key.
 tag
     :: Tag
 tag = Tag'{_tagValue = Nothing, _tagKey = Nothing}
 
--- | EC2 instance tag value.
+-- | The EC2 instance tag value.
 tagValue :: Lens' Tag (Maybe Text)
 tagValue = lens _tagValue (\ s a -> s{_tagValue = a})
 
--- | EC2 instance tag key.
+-- | The EC2 instance tag key.
 tagKey :: Lens' Tag (Maybe Text)
 tagKey = lens _tagKey (\ s a -> s{_tagKey = a})
 

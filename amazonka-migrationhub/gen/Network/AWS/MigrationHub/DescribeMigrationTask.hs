@@ -59,7 +59,7 @@ data DescribeMigrationTask = DescribeMigrationTask'{_dmtProgressUpdateStream
 --
 -- * 'dmtProgressUpdateStream' - The name of the ProgressUpdateStream. 
 --
--- * 'dmtMigrationTaskName' - The identifier given to the MigrationTask.
+-- * 'dmtMigrationTaskName' - The identifier given to the MigrationTask. /Do not store personal data in this field./ 
 describeMigrationTask
     :: Text -- ^ 'dmtProgressUpdateStream'
     -> Text -- ^ 'dmtMigrationTaskName'
@@ -74,7 +74,7 @@ describeMigrationTask pProgressUpdateStream_
 dmtProgressUpdateStream :: Lens' DescribeMigrationTask Text
 dmtProgressUpdateStream = lens _dmtProgressUpdateStream (\ s a -> s{_dmtProgressUpdateStream = a})
 
--- | The identifier given to the MigrationTask.
+-- | The identifier given to the MigrationTask. /Do not store personal data in this field./ 
 dmtMigrationTaskName :: Lens' DescribeMigrationTask Text
 dmtMigrationTaskName = lens _dmtMigrationTaskName (\ s a -> s{_dmtMigrationTaskName = a})
 

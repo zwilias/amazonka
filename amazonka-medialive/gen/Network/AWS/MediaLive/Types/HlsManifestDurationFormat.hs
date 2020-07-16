@@ -27,7 +27,7 @@ module Network.AWS.MediaLive.Types.HlsManifestDurationFormat (
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | Placeholder documentation for HlsManifestDurationFormat
+-- | Hls Manifest Duration Format
 data HlsManifestDurationFormat = HlsManifestDurationFormat' (CI
                                                                Text)
                                    deriving (Eq, Ord, Read, Show, Data,

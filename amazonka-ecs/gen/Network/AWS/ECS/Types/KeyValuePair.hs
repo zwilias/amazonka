@@ -20,7 +20,7 @@ module Network.AWS.ECS.Types.KeyValuePair where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | A key and value pair object.
+-- | A key-value pair object.
 --
 --
 --
@@ -34,20 +34,20 @@ data KeyValuePair = KeyValuePair'{_kvpValue ::
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'kvpValue' - The value of the key value pair. For environment variables, this is the value of the environment variable.
+-- * 'kvpValue' - The value of the key-value pair. For environment variables, this is the value of the environment variable.
 --
--- * 'kvpName' - The name of the key value pair. For environment variables, this is the name of the environment variable.
+-- * 'kvpName' - The name of the key-value pair. For environment variables, this is the name of the environment variable.
 keyValuePair
     :: KeyValuePair
 keyValuePair
   = KeyValuePair'{_kvpValue = Nothing,
                   _kvpName = Nothing}
 
--- | The value of the key value pair. For environment variables, this is the value of the environment variable.
+-- | The value of the key-value pair. For environment variables, this is the value of the environment variable.
 kvpValue :: Lens' KeyValuePair (Maybe Text)
 kvpValue = lens _kvpValue (\ s a -> s{_kvpValue = a})
 
--- | The name of the key value pair. For environment variables, this is the name of the environment variable.
+-- | The name of the key-value pair. For environment variables, this is the name of the environment variable.
 kvpName :: Lens' KeyValuePair (Maybe Text)
 kvpName = lens _kvpName (\ s a -> s{_kvpName = a})
 

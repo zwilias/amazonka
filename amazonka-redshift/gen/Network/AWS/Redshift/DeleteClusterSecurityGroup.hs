@@ -21,7 +21,7 @@
 -- Deletes an Amazon Redshift security group.
 --
 --
--- For information about managing security groups, go to <http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-security-groups.html Amazon Redshift Cluster Security Groups> in the /Amazon Redshift Cluster Management Guide/ .
+-- For information about managing security groups, go to <https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-security-groups.html Amazon Redshift Cluster Security Groups> in the /Amazon Redshift Cluster Management Guide/ .
 --
 module Network.AWS.Redshift.DeleteClusterSecurityGroup
     (

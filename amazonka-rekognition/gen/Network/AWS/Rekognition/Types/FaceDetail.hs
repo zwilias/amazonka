@@ -39,7 +39,7 @@ import Network.AWS.Rekognition.Types.Sunglasses
 --
 -- A @FaceDetail@ object contains either the default facial attributes or all facial attributes. The default attributes are @BoundingBox@ , @Confidence@ , @Landmarks@ , @Pose@ , and @Quality@ .
 --
--- is the only Rekognition Video stored video operation that can return a @FaceDetail@ object with all attributes. To specify which attributes to return, use the @FaceAttributes@ input parameter for . The following Rekognition Video operations return only the default attributes. The corresponding Start operations don't have a @FaceAttributes@ input parameter.
+-- 'GetFaceDetection' is the only Amazon Rekognition Video stored video operation that can return a @FaceDetail@ object with all attributes. To specify which attributes to return, use the @FaceAttributes@ input parameter for 'StartFaceDetection' . The following Amazon Rekognition Video operations return only the default attributes. The corresponding Start operations don't have a @FaceAttributes@ input parameter.
 --
 --     * GetCelebrityRecognition
 --
@@ -49,7 +49,7 @@ import Network.AWS.Rekognition.Types.Sunglasses
 --
 --
 --
--- The Rekognition Image and operations can return all facial attributes. To specify which attributes to return, use the @Attributes@ input parameter for @DetectFaces@ . For @IndexFaces@ , use the @DetectAttributes@ input parameter.
+-- The Amazon Rekognition Image 'DetectFaces' and 'IndexFaces' operations can return all facial attributes. To specify which attributes to return, use the @Attributes@ input parameter for @DetectFaces@ . For @IndexFaces@ , use the @DetectAttributes@ input parameter.
 --
 --
 -- /See:/ 'faceDetail' smart constructor.
@@ -83,7 +83,7 @@ data FaceDetail = FaceDetail'{_fdAgeRange ::
 --
 -- * 'fdBoundingBox' - Bounding box of the face. Default attribute.
 --
--- * 'fdEmotions' - The emotions detected on the face, and the confidence level in the determination. For example, HAPPY, SAD, and ANGRY. 
+-- * 'fdEmotions' - The emotions that appear to be expressed on the face, and the confidence level in the determination. The API is only making a determination of the physical appearance of a person's face. It is not a determination of the person’s internal emotional state and should not be used in such a way. For example, a person pretending to have a sad face might not be sad emotionally.
 --
 -- * 'fdEyesOpen' - Indicates whether or not the eyes on the face are open, and the confidence level in the determination.
 --
@@ -91,7 +91,7 @@ data FaceDetail = FaceDetail'{_fdAgeRange ::
 --
 -- * 'fdConfidence' - Confidence level that the bounding box contains a face (and not a different object such as a tree). Default attribute.
 --
--- * 'fdGender' - Gender of the face and the confidence level in the determination.
+-- * 'fdGender' - The predicted gender of a detected face. 
 --
 -- * 'fdQuality' - Identifies image brightness and sharpness. Default attribute.
 --
@@ -132,7 +132,7 @@ fdMouthOpen = lens _fdMouthOpen (\ s a -> s{_fdMouthOpen = a})
 fdBoundingBox :: Lens' FaceDetail (Maybe BoundingBox)
 fdBoundingBox = lens _fdBoundingBox (\ s a -> s{_fdBoundingBox = a})
 
--- | The emotions detected on the face, and the confidence level in the determination. For example, HAPPY, SAD, and ANGRY. 
+-- | The emotions that appear to be expressed on the face, and the confidence level in the determination. The API is only making a determination of the physical appearance of a person's face. It is not a determination of the person’s internal emotional state and should not be used in such a way. For example, a person pretending to have a sad face might not be sad emotionally.
 fdEmotions :: Lens' FaceDetail [Emotion]
 fdEmotions = lens _fdEmotions (\ s a -> s{_fdEmotions = a}) . _Default . _Coerce
 
@@ -148,7 +148,7 @@ fdPose = lens _fdPose (\ s a -> s{_fdPose = a})
 fdConfidence :: Lens' FaceDetail (Maybe Double)
 fdConfidence = lens _fdConfidence (\ s a -> s{_fdConfidence = a})
 
--- | Gender of the face and the confidence level in the determination.
+-- | The predicted gender of a detected face. 
 fdGender :: Lens' FaceDetail (Maybe Gender)
 fdGender = lens _fdGender (\ s a -> s{_fdGender = a})
 

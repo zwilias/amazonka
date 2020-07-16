@@ -19,6 +19,22 @@
 -- Portability : non-portable (GHC extensions)
 --
 -- Returns the versioning state of a bucket.
+--
+--
+-- To retrieve the versioning state of a bucket, you must be the bucket owner.
+--
+-- This implementation also returns the MFA Delete status of the versioning state. If the MFA Delete status is @enabled@ , the bucket owner must use an authentication device to change the versioning state of the bucket.
+--
+-- The following operations are related to @GetBucketVersioning@ :
+--
+--     * 'GetObject' 
+--
+--     * 'PutObject' 
+--
+--     * 'DeleteObject' 
+--
+--
+--
 module Network.AWS.S3.GetBucketVersioning
     (
     -- * Creating a Request
@@ -53,14 +69,14 @@ newtype GetBucketVersioning = GetBucketVersioning'{_gbvBucket
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'gbvBucket' - Undocumented member.
+-- * 'gbvBucket' - The name of the bucket for which to get the versioning information.
 getBucketVersioning
     :: BucketName -- ^ 'gbvBucket'
     -> GetBucketVersioning
 getBucketVersioning pBucket_
   = GetBucketVersioning'{_gbvBucket = pBucket_}
 
--- | Undocumented member.
+-- | The name of the bucket for which to get the versioning information.
 gbvBucket :: Lens' GetBucketVersioning BucketName
 gbvBucket = lens _gbvBucket (\ s a -> s{_gbvBucket = a})
 

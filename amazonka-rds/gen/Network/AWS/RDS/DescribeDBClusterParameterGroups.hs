@@ -21,8 +21,10 @@
 -- Returns a list of @DBClusterParameterGroup@ descriptions. If a @DBClusterParameterGroupName@ parameter is specified, the list will contain only the description of the specified DB cluster parameter group. 
 --
 --
--- For more information on Amazon Aurora, see <http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Aurora.html Aurora on Amazon RDS> in the /Amazon RDS User Guide./ 
+-- For more information on Amazon Aurora, see <https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html What Is Amazon Aurora?> in the /Amazon Aurora User Guide./ 
 --
+--
+-- This operation returns paginated results.
 module Network.AWS.RDS.DescribeDBClusterParameterGroups
     (
     -- * Creating a Request
@@ -44,6 +46,7 @@ module Network.AWS.RDS.DescribeDBClusterParameterGroups
     ) where
 
 import Network.AWS.Lens
+import Network.AWS.Pager
 import Network.AWS.Prelude
 import Network.AWS.RDS.Types
 import Network.AWS.RDS.Types.Product
@@ -78,11 +81,11 @@ data DescribeDBClusterParameterGroups = DescribeDBClusterParameterGroups'{_ddcpg
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'ddcpgFilters' - This parameter is not currently supported.
+-- * 'ddcpgFilters' - This parameter isn't currently supported.
 --
 -- * 'ddcpgMarker' - An optional pagination token provided by a previous @DescribeDBClusterParameterGroups@ request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by @MaxRecords@ . 
 --
--- * 'ddcpgMaxRecords' - The maximum number of records to include in the response. If more records exist than the specified @MaxRecords@ value, a pagination token called a marker is included in the response so that the remaining results can be retrieved.  Default: 100 Constraints: Minimum 20, maximum 100.
+-- * 'ddcpgMaxRecords' - The maximum number of records to include in the response. If more records exist than the specified @MaxRecords@ value, a pagination token called a marker is included in the response so you can retrieve the remaining results.  Default: 100 Constraints: Minimum 20, maximum 100.
 --
 -- * 'ddcpgDBClusterParameterGroupName' - The name of a specific DB cluster parameter group to return details for. Constraints:     * If supplied, must match the name of an existing DBClusterParameterGroup.
 describeDBClusterParameterGroups
@@ -95,7 +98,7 @@ describeDBClusterParameterGroups
                                       _ddcpgDBClusterParameterGroupName =
                                         Nothing}
 
--- | This parameter is not currently supported.
+-- | This parameter isn't currently supported.
 ddcpgFilters :: Lens' DescribeDBClusterParameterGroups [Filter]
 ddcpgFilters = lens _ddcpgFilters (\ s a -> s{_ddcpgFilters = a}) . _Default . _Coerce
 
@@ -103,13 +106,22 @@ ddcpgFilters = lens _ddcpgFilters (\ s a -> s{_ddcpgFilters = a}) . _Default . _
 ddcpgMarker :: Lens' DescribeDBClusterParameterGroups (Maybe Text)
 ddcpgMarker = lens _ddcpgMarker (\ s a -> s{_ddcpgMarker = a})
 
--- | The maximum number of records to include in the response. If more records exist than the specified @MaxRecords@ value, a pagination token called a marker is included in the response so that the remaining results can be retrieved.  Default: 100 Constraints: Minimum 20, maximum 100.
+-- | The maximum number of records to include in the response. If more records exist than the specified @MaxRecords@ value, a pagination token called a marker is included in the response so you can retrieve the remaining results.  Default: 100 Constraints: Minimum 20, maximum 100.
 ddcpgMaxRecords :: Lens' DescribeDBClusterParameterGroups (Maybe Int)
 ddcpgMaxRecords = lens _ddcpgMaxRecords (\ s a -> s{_ddcpgMaxRecords = a})
 
 -- | The name of a specific DB cluster parameter group to return details for. Constraints:     * If supplied, must match the name of an existing DBClusterParameterGroup.
 ddcpgDBClusterParameterGroupName :: Lens' DescribeDBClusterParameterGroups (Maybe Text)
 ddcpgDBClusterParameterGroupName = lens _ddcpgDBClusterParameterGroupName (\ s a -> s{_ddcpgDBClusterParameterGroupName = a})
+
+instance AWSPager DescribeDBClusterParameterGroups
+         where
+        page rq rs
+          | stop (rs ^. ddcpgrsMarker) = Nothing
+          | stop (rs ^. ddcpgrsDBClusterParameterGroups) =
+            Nothing
+          | otherwise =
+            Just $ rq & ddcpgMarker .~ rs ^. ddcpgrsMarker
 
 instance AWSRequest DescribeDBClusterParameterGroups
          where

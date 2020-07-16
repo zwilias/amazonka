@@ -27,7 +27,7 @@ module Network.AWS.MediaLive.Types.SmoothGroupTimestampOffsetMode (
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | Placeholder documentation for SmoothGroupTimestampOffsetMode
+-- | Smooth Group Timestamp Offset Mode
 data SmoothGroupTimestampOffsetMode = SmoothGroupTimestampOffsetMode' (CI
                                                                          Text)
                                         deriving (Eq, Ord, Read, Show, Data,

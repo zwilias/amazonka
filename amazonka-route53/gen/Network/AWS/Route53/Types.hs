@@ -216,6 +216,7 @@ module Network.AWS.Route53.Types
     , hccFailureThreshold
     , hccIPAddress
     , hccEnableSNI
+    , hccDisabled
     , hccSearchString
     , hccHealthThreshold
     , hccRegions
@@ -432,6 +433,11 @@ route53
             = Just "throttling_exception"
           | has (hasCode "Throttling" . hasStatus 400) e =
             Just "throttling"
+          | has
+              (hasCode "ProvisionedThroughputExceededException" .
+                 hasStatus 400)
+              e
+            = Just "throughput_exceeded"
           | has (hasStatus 504) e = Just "gateway_timeout"
           | has
               (hasCode "PriorRequestNotComplete" . hasStatus 400)
@@ -450,11 +456,11 @@ route53
 -- | This operation can't be completed either because the current account has reached the limit on the number of hosted zones or because you've reached the limit on the number of hosted zones that can be associated with a reusable delegation set.
 --
 --
--- For information about default limits, see <http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DNSLimitations.html Limits> in the /Amazon Route 53 Developer Guide/ .
+-- For information about default limits, see <https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DNSLimitations.html Limits> in the /Amazon Route 53 Developer Guide/ .
 --
--- To get the current limit on hosted zones that can be created by an account, see 'GetAccountLimit' .
+-- To get the current limit on hosted zones that can be created by an account, see <https://docs.aws.amazon.com/Route53/latest/APIReference/API_GetAccountLimit.html GetAccountLimit> .
 --
--- To get the current limit on hosted zones that can be associated with a reusable delegation set, see 'GetReusableDelegationSetLimit' .
+-- To get the current limit on hosted zones that can be associated with a reusable delegation set, see <https://docs.aws.amazon.com/Route53/latest/APIReference/API_GetReusableDelegationSetLimit.html GetReusableDelegationSetLimit> .
 --
 -- To request a higher limit, <http://aws.amazon.com/route53-request create a case> with the AWS Support Center.
 --
@@ -489,7 +495,7 @@ _PublicZoneVPCAssociation
       "PublicZoneVPCAssociation"
       . hasStatus 400
 
--- | If Amazon Route 53 can't process a request before the next request arrives, it will reject subsequent requests for the same hosted zone and return an @HTTP 400 error@ (@Bad request@ ). If Amazon Route 53 returns this error repeatedly for the same request, we recommend that you wait, in intervals of increasing duration, before you try the request again.
+-- | If Amazon Route 53 can't process a request before the next request arrives, it will reject subsequent requests for the same hosted zone and return an @HTTP 400 error@ (@Bad request@ ). If Route 53 returns this error repeatedly for the same request, we recommend that you wait, in intervals of increasing duration, before you try the request again.
 --
 --
 _PriorRequestNotComplete :: AsError a => Getting (First ServiceError) a ServiceError
@@ -498,7 +504,7 @@ _PriorRequestNotComplete
       "PriorRequestNotComplete"
       . hasStatus 400
 
--- | This operation can't be completed either because the current account has reached the limit on reusable delegation sets that it can create or because you've reached the limit on the number of Amazon VPCs that you can associate with a private hosted zone. To get the current limit on the number of reusable delegation sets, see 'GetAccountLimit' . To get the current limit on the number of Amazon VPCs that you can associate with a private hosted zone, see 'GetHostedZoneLimit' . To request a higher limit, <http://aws.amazon.com/route53-request create a case> with the AWS Support Center.
+-- | This operation can't be completed either because the current account has reached the limit on reusable delegation sets that it can create or because you've reached the limit on the number of Amazon VPCs that you can associate with a private hosted zone. To get the current limit on the number of reusable delegation sets, see <https://docs.aws.amazon.com/Route53/latest/APIReference/API_GetAccountLimit.html GetAccountLimit> . To get the current limit on the number of Amazon VPCs that you can associate with a private hosted zone, see <https://docs.aws.amazon.com/Route53/latest/APIReference/API_GetHostedZoneLimit.html GetHostedZoneLimit> . To request a higher limit, <http://aws.amazon.com/route53-request create a case> with the AWS Support Center.
 --
 --
 _LimitsExceeded :: AsError a => Getting (First ServiceError) a ServiceError
@@ -540,9 +546,9 @@ _VPCAssociationNotFound
 -- | This traffic policy can't be created because the current account has reached the limit on the number of traffic policies.
 --
 --
--- For information about default limits, see <http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DNSLimitations.html Limits> in the /Amazon Route 53 Developer Guide/ .
+-- For information about default limits, see <https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DNSLimitations.html Limits> in the /Amazon Route 53 Developer Guide/ .
 --
--- To get the current limit for an account, see 'GetAccountLimit' . 
+-- To get the current limit for an account, see <https://docs.aws.amazon.com/Route53/latest/APIReference/API_GetAccountLimit.html GetAccountLimit> . 
 --
 -- To request a higher limit, <http://aws.amazon.com/route53-request create a case> with the AWS Support Center.
 --
@@ -600,9 +606,9 @@ _InvalidPaginationToken
 -- | This health check can't be created because the current account has reached the limit on the number of active health checks.
 --
 --
--- For information about default limits, see <http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DNSLimitations.html Limits> in the /Amazon Route 53 Developer Guide/ .
+-- For information about default limits, see <https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DNSLimitations.html Limits> in the /Amazon Route 53 Developer Guide/ .
 --
--- For information about how to get the current limit for an account, see 'GetAccountLimit' . To request a higher limit, <http://aws.amazon.com/route53-request create a case> with the AWS Support Center.
+-- For information about how to get the current limit for an account, see <https://docs.aws.amazon.com/Route53/latest/APIReference/API_GetAccountLimit.html GetAccountLimit> . To request a higher limit, <http://aws.amazon.com/route53-request create a case> with the AWS Support Center.
 --
 -- You have reached the maximum number of active health checks for an AWS account. To request a higher limit, <http://aws.amazon.com/route53-request create a case> with the AWS Support Center.
 --
@@ -610,12 +616,14 @@ _TooManyHealthChecks :: AsError a => Getting (First ServiceError) a ServiceError
 _TooManyHealthChecks
   = _MatchServiceError route53 "TooManyHealthChecks"
 
--- | The cause of this error depends on whether you're trying to create a public or a private hosted zone:
+-- | The cause of this error depends on the operation that you're performing:
 --
 --
---     * __Public hosted zone:__ Two hosted zones that have the same name or that have a parent/child relationship (example.com and test.example.com) can't have any common name servers. You tried to create a hosted zone that has the same name as an existing hosted zone or that's the parent or child of an existing hosted zone, and you specified a delegation set that shares one or more name servers with the existing hosted zone. For more information, see 'CreateReusableDelegationSet' .
+--     * __Create a public hosted zone:__ Two hosted zones that have the same name or that have a parent/child relationship (example.com and test.example.com) can't have any common name servers. You tried to create a hosted zone that has the same name as an existing hosted zone or that's the parent or child of an existing hosted zone, and you specified a delegation set that shares one or more name servers with the existing hosted zone. For more information, see <https://docs.aws.amazon.com/Route53/latest/APIReference/API_CreateReusableDelegationSet.html CreateReusableDelegationSet> .
 --
---     * __Private hosted zone:__ You specified an Amazon VPC that you're already using for another hosted zone, and the domain that you specified for one of the hosted zones is a subdomain of the domain that you specified for the other hosted zone. For example, you can't use the same Amazon VPC for the hosted zones for example.com and test.example.com.
+--     * __Create a private hosted zone:__ A hosted zone with the specified name already exists and is already associated with the Amazon VPC that you specified.
+--
+--     * __Associate VPCs with a private hosted zone:__ The VPC that you specified is already associated with another hosted zone that has the same name.
 --
 --
 --
@@ -640,7 +648,7 @@ _DelegationSetAlreadyCreated
   = _MatchServiceError route53
       "DelegationSetAlreadyCreated"
 
--- | No health check exists with the ID that you specified in the @DeleteHealthCheck@ request.
+-- | No health check exists with the specified ID.
 --
 --
 _NoSuchHealthCheck :: AsError a => Getting (First ServiceError) a ServiceError
@@ -693,9 +701,9 @@ _NoSuchTrafficPolicyInstance
 -- | This traffic policy instance can't be created because the current account has reached the limit on the number of traffic policy instances.
 --
 --
--- For information about default limits, see <http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DNSLimitations.html Limits> in the /Amazon Route 53 Developer Guide/ .
+-- For information about default limits, see <https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DNSLimitations.html Limits> in the /Amazon Route 53 Developer Guide/ .
 --
--- For information about how to get the current limit for an account, see 'GetAccountLimit' .
+-- For information about how to get the current limit for an account, see <https://docs.aws.amazon.com/Route53/latest/APIReference/API_GetAccountLimit.html GetAccountLimit> .
 --
 -- To request a higher limit, <http://aws.amazon.com/route53-request create a case> with the AWS Support Center.
 --
@@ -812,7 +820,7 @@ _InvalidInput
   = _MatchServiceError route53 "InvalidInput" .
       hasStatus 400
 
--- | You can create a hosted zone that has the same name as an existing hosted zone (example.com is common), but there is a limit to the number of hosted zones that have the same name. If you get this error, Amazon Route 53 has reached that limit. If you own the domain name and Amazon Route 53 generates this error, contact Customer Support.
+-- | You can create a hosted zone that has the same name as an existing hosted zone (example.com is common), but there is a limit to the number of hosted zones that have the same name. If you get this error, Amazon Route 53 has reached that limit. If you own the domain name and Route 53 generates this error, contact Customer Support.
 --
 --
 _DelegationSetNotAvailable :: AsError a => Getting (First ServiceError) a ServiceError
@@ -829,7 +837,7 @@ _HealthCheckVersionMismatch
       "HealthCheckVersionMismatch"
       . hasStatus 409
 
--- | Amazon Route 53 doesn't support the specified geolocation.
+-- | Amazon Route 53 doesn't support the specified geographic location. For a list of supported geolocation codes, see the <https://docs.aws.amazon.com/Route53/latest/APIReference/API_GeoLocation.html GeoLocation> data type.
 --
 --
 _NoSuchGeoLocation :: AsError a => Getting (First ServiceError) a ServiceError
@@ -880,7 +888,7 @@ _NoSuchTrafficPolicy
 -- | This traffic policy version can't be created because you've reached the limit of 1000 on the number of versions that you can create for the current traffic policy.
 --
 --
--- To create more traffic policy versions, you can use 'GetTrafficPolicy' to get the traffic policy document for a specified traffic policy version, and then use 'CreateTrafficPolicy' to create a new traffic policy using the traffic policy document.
+-- To create more traffic policy versions, you can use <https://docs.aws.amazon.com/Route53/latest/APIReference/API_GetTrafficPolicy.html GetTrafficPolicy> to get the traffic policy document for a specified traffic policy version, and then use <https://docs.aws.amazon.com/Route53/latest/APIReference/API_CreateTrafficPolicy.html CreateTrafficPolicy> to create a new traffic policy using the traffic policy document.
 --
 _TooManyTrafficPolicyVersionsForCurrentPolicy :: AsError a => Getting (First ServiceError) a ServiceError
 _TooManyTrafficPolicyVersionsForCurrentPolicy

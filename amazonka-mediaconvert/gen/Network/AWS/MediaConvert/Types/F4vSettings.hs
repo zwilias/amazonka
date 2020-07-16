@@ -32,13 +32,13 @@ newtype F4vSettings = F4vSettings'{_fsMoovPlacement
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'fsMoovPlacement' - Undocumented member.
+-- * 'fsMoovPlacement' - If set to PROGRESSIVE_DOWNLOAD, the MOOV atom is relocated to the beginning of the archive as required for progressive downloading. Otherwise it is placed normally at the end.
 f4vSettings
     :: F4vSettings
 f4vSettings
   = F4vSettings'{_fsMoovPlacement = Nothing}
 
--- | Undocumented member.
+-- | If set to PROGRESSIVE_DOWNLOAD, the MOOV atom is relocated to the beginning of the archive as required for progressive downloading. Otherwise it is placed normally at the end.
 fsMoovPlacement :: Lens' F4vSettings (Maybe F4vMoovPlacement)
 fsMoovPlacement = lens _fsMoovPlacement (\ s a -> s{_fsMoovPlacement = a})
 

@@ -32,7 +32,9 @@ data InputSecurityGroup = InputSecurityGroup'{_isgState
                                               _isgInputs :: !(Maybe [Text]),
                                               _isgId :: !(Maybe Text),
                                               _isgWhitelistRules ::
-                                              !(Maybe [InputWhitelistRule])}
+                                              !(Maybe [InputWhitelistRule]),
+                                              _isgTags ::
+                                              !(Maybe (Map Text Text))}
                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'InputSecurityGroup' with the minimum fields required to make a request.
@@ -48,12 +50,15 @@ data InputSecurityGroup = InputSecurityGroup'{_isgState
 -- * 'isgId' - The Id of the Input Security Group
 --
 -- * 'isgWhitelistRules' - Whitelist rules and their sync status
+--
+-- * 'isgTags' - A collection of key-value pairs.
 inputSecurityGroup
     :: InputSecurityGroup
 inputSecurityGroup
   = InputSecurityGroup'{_isgState = Nothing,
                         _isgARN = Nothing, _isgInputs = Nothing,
-                        _isgId = Nothing, _isgWhitelistRules = Nothing}
+                        _isgId = Nothing, _isgWhitelistRules = Nothing,
+                        _isgTags = Nothing}
 
 -- | The current state of the Input Security Group.
 isgState :: Lens' InputSecurityGroup (Maybe InputSecurityGroupState)
@@ -75,6 +80,10 @@ isgId = lens _isgId (\ s a -> s{_isgId = a})
 isgWhitelistRules :: Lens' InputSecurityGroup [InputWhitelistRule]
 isgWhitelistRules = lens _isgWhitelistRules (\ s a -> s{_isgWhitelistRules = a}) . _Default . _Coerce
 
+-- | A collection of key-value pairs.
+isgTags :: Lens' InputSecurityGroup (HashMap Text Text)
+isgTags = lens _isgTags (\ s a -> s{_isgTags = a}) . _Default . _Map
+
 instance FromJSON InputSecurityGroup where
         parseJSON
           = withObject "InputSecurityGroup"
@@ -83,7 +92,8 @@ instance FromJSON InputSecurityGroup where
                    (x .:? "state") <*> (x .:? "arn") <*>
                      (x .:? "inputs" .!= mempty)
                      <*> (x .:? "id")
-                     <*> (x .:? "whitelistRules" .!= mempty))
+                     <*> (x .:? "whitelistRules" .!= mempty)
+                     <*> (x .:? "tags" .!= mempty))
 
 instance Hashable InputSecurityGroup where
 

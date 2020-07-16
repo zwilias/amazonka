@@ -45,9 +45,9 @@ data Account = Account'{_aStatus ::
 --
 -- * 'aJoinedMethod' - The method by which the account joined the organization.
 --
--- * 'aEmail' - The email address associated with the AWS account. The <http://wikipedia.org/wiki/regex regex pattern> for this parameter is a string of characters that represents a standard Internet email address.
+-- * 'aEmail' - The email address associated with the AWS account. The <http://wikipedia.org/wiki/regex regex pattern> for this parameter is a string of characters that represents a standard internet email address.
 --
--- * 'aARN' - The Amazon Resource Name (ARN) of the account. For more information about ARNs in Organizations, see <http://docs.aws.amazon.com/organizations/latest/userguide/orgs_permissions.html#orgs-permissions-arns ARN Formats Supported by Organizations> in the /AWS Organizations User Guide/ .
+-- * 'aARN' - The Amazon Resource Name (ARN) of the account. For more information about ARNs in Organizations, see <https://docs.aws.amazon.com/organizations/latest/userguide/orgs_permissions.html#orgs-permissions-arns ARN Formats Supported by Organizations> in the /AWS Organizations User Guide/ .
 --
 -- * 'aJoinedTimestamp' - The date the account became a part of the organization.
 --
@@ -70,11 +70,11 @@ aStatus = lens _aStatus (\ s a -> s{_aStatus = a})
 aJoinedMethod :: Lens' Account (Maybe AccountJoinedMethod)
 aJoinedMethod = lens _aJoinedMethod (\ s a -> s{_aJoinedMethod = a})
 
--- | The email address associated with the AWS account. The <http://wikipedia.org/wiki/regex regex pattern> for this parameter is a string of characters that represents a standard Internet email address.
+-- | The email address associated with the AWS account. The <http://wikipedia.org/wiki/regex regex pattern> for this parameter is a string of characters that represents a standard internet email address.
 aEmail :: Lens' Account (Maybe Text)
 aEmail = lens _aEmail (\ s a -> s{_aEmail = a}) . mapping _Sensitive
 
--- | The Amazon Resource Name (ARN) of the account. For more information about ARNs in Organizations, see <http://docs.aws.amazon.com/organizations/latest/userguide/orgs_permissions.html#orgs-permissions-arns ARN Formats Supported by Organizations> in the /AWS Organizations User Guide/ .
+-- | The Amazon Resource Name (ARN) of the account. For more information about ARNs in Organizations, see <https://docs.aws.amazon.com/organizations/latest/userguide/orgs_permissions.html#orgs-permissions-arns ARN Formats Supported by Organizations> in the /AWS Organizations User Guide/ .
 aARN :: Lens' Account (Maybe Text)
 aARN = lens _aARN (\ s a -> s{_aARN = a})
 

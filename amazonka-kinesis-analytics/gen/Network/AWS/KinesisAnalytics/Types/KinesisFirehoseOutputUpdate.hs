@@ -20,7 +20,7 @@ module Network.AWS.KinesisAnalytics.Types.KinesisFirehoseOutputUpdate where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | When updating an output configuration using the 'UpdateApplication' operation, provides information about an Amazon Kinesis Firehose delivery stream configured as the destination. 
+-- | When updating an output configuration using the <https://docs.aws.amazon.com/kinesisanalytics/latest/dev/API_UpdateApplication.html UpdateApplication> operation, provides information about an Amazon Kinesis Firehose delivery stream configured as the destination. 
 --
 --
 --
@@ -38,7 +38,7 @@ data KinesisFirehoseOutputUpdate = KinesisFirehoseOutputUpdate'{_kfouRoleARNUpda
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'kfouRoleARNUpdate' - ARN of the IAM role that Amazon Kinesis Analytics can assume to access the stream on your behalf. You need to grant necessary permissions to this role.
+-- * 'kfouRoleARNUpdate' - ARN of the IAM role that Amazon Kinesis Analytics can assume to access the stream on your behalf. You need to grant the necessary permissions to this role.
 --
 -- * 'kfouResourceARNUpdate' - Amazon Resource Name (ARN) of the Amazon Kinesis Firehose delivery stream to write to.
 kinesisFirehoseOutputUpdate
@@ -48,7 +48,7 @@ kinesisFirehoseOutputUpdate
                                    Nothing,
                                  _kfouResourceARNUpdate = Nothing}
 
--- | ARN of the IAM role that Amazon Kinesis Analytics can assume to access the stream on your behalf. You need to grant necessary permissions to this role.
+-- | ARN of the IAM role that Amazon Kinesis Analytics can assume to access the stream on your behalf. You need to grant the necessary permissions to this role.
 kfouRoleARNUpdate :: Lens' KinesisFirehoseOutputUpdate (Maybe Text)
 kfouRoleARNUpdate = lens _kfouRoleARNUpdate (\ s a -> s{_kfouRoleARNUpdate = a})
 

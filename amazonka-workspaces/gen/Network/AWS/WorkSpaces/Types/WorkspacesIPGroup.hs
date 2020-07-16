@@ -21,7 +21,7 @@ import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.WorkSpaces.Types.IPRuleItem
 
--- | Information about an IP access control group.
+-- | Describes an IP access control group.
 --
 --
 --
@@ -42,7 +42,7 @@ data WorkspacesIPGroup = WorkspacesIPGroup'{_wigGroupDesc
 --
 -- * 'wigUserRules' - The rules.
 --
--- * 'wigGroupId' - The ID of the group.
+-- * 'wigGroupId' - The identifier of the group.
 --
 -- * 'wigGroupName' - The name of the group.
 workspacesIPGroup
@@ -60,7 +60,7 @@ wigGroupDesc = lens _wigGroupDesc (\ s a -> s{_wigGroupDesc = a})
 wigUserRules :: Lens' WorkspacesIPGroup [IPRuleItem]
 wigUserRules = lens _wigUserRules (\ s a -> s{_wigUserRules = a}) . _Default . _Coerce
 
--- | The ID of the group.
+-- | The identifier of the group.
 wigGroupId :: Lens' WorkspacesIPGroup (Maybe Text)
 wigGroupId = lens _wigGroupId (\ s a -> s{_wigGroupId = a})
 

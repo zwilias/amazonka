@@ -27,7 +27,7 @@ module Network.AWS.MediaLive.Types.HlsOutputSelection (
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | Placeholder documentation for HlsOutputSelection
+-- | Hls Output Selection
 data HlsOutputSelection = HlsOutputSelection' (CI
                                                  Text)
                             deriving (Eq, Ord, Read, Show, Data, Typeable,

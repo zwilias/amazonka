@@ -19,6 +19,7 @@
 module Network.AWS.MediaConvert.Types.Product (
     module Network.AWS.MediaConvert.Types.AacSettings,
     module Network.AWS.MediaConvert.Types.Ac3Settings,
+    module Network.AWS.MediaConvert.Types.AccelerationSettings,
     module Network.AWS.MediaConvert.Types.AiffSettings,
     module Network.AWS.MediaConvert.Types.AncillarySourceSettings,
     module Network.AWS.MediaConvert.Types.AudioCodecSettings,
@@ -26,60 +27,92 @@ module Network.AWS.MediaConvert.Types.Product (
     module Network.AWS.MediaConvert.Types.AudioNormalizationSettings,
     module Network.AWS.MediaConvert.Types.AudioSelector,
     module Network.AWS.MediaConvert.Types.AudioSelectorGroup,
+    module Network.AWS.MediaConvert.Types.Av1QvbrSettings,
+    module Network.AWS.MediaConvert.Types.Av1Settings,
     module Network.AWS.MediaConvert.Types.AvailBlanking,
     module Network.AWS.MediaConvert.Types.BurninDestinationSettings,
     module Network.AWS.MediaConvert.Types.CaptionDescription,
     module Network.AWS.MediaConvert.Types.CaptionDescriptionPreset,
     module Network.AWS.MediaConvert.Types.CaptionDestinationSettings,
     module Network.AWS.MediaConvert.Types.CaptionSelector,
+    module Network.AWS.MediaConvert.Types.CaptionSourceFramerate,
     module Network.AWS.MediaConvert.Types.CaptionSourceSettings,
     module Network.AWS.MediaConvert.Types.ChannelMapping,
+    module Network.AWS.MediaConvert.Types.CmafAdditionalManifest,
+    module Network.AWS.MediaConvert.Types.CmafEncryptionSettings,
+    module Network.AWS.MediaConvert.Types.CmafGroupSettings,
+    module Network.AWS.MediaConvert.Types.CmfcSettings,
     module Network.AWS.MediaConvert.Types.ColorCorrector,
     module Network.AWS.MediaConvert.Types.ContainerSettings,
+    module Network.AWS.MediaConvert.Types.DashAdditionalManifest,
     module Network.AWS.MediaConvert.Types.DashIsoEncryptionSettings,
     module Network.AWS.MediaConvert.Types.DashIsoGroupSettings,
     module Network.AWS.MediaConvert.Types.Deinterlacer,
+    module Network.AWS.MediaConvert.Types.DestinationSettings,
+    module Network.AWS.MediaConvert.Types.DolbyVision,
+    module Network.AWS.MediaConvert.Types.DolbyVisionLevel6Metadata,
     module Network.AWS.MediaConvert.Types.DvbNitSettings,
     module Network.AWS.MediaConvert.Types.DvbSdtSettings,
     module Network.AWS.MediaConvert.Types.DvbSubDestinationSettings,
     module Network.AWS.MediaConvert.Types.DvbSubSourceSettings,
     module Network.AWS.MediaConvert.Types.DvbTdtSettings,
+    module Network.AWS.MediaConvert.Types.Eac3AtmosSettings,
     module Network.AWS.MediaConvert.Types.Eac3Settings,
+    module Network.AWS.MediaConvert.Types.EmbeddedDestinationSettings,
     module Network.AWS.MediaConvert.Types.EmbeddedSourceSettings,
     module Network.AWS.MediaConvert.Types.Endpoint,
+    module Network.AWS.MediaConvert.Types.EsamManifestConfirmConditionNotification,
+    module Network.AWS.MediaConvert.Types.EsamSettings,
+    module Network.AWS.MediaConvert.Types.EsamSignalProcessingNotification,
     module Network.AWS.MediaConvert.Types.F4vSettings,
     module Network.AWS.MediaConvert.Types.FileGroupSettings,
     module Network.AWS.MediaConvert.Types.FileSourceSettings,
     module Network.AWS.MediaConvert.Types.FrameCaptureSettings,
+    module Network.AWS.MediaConvert.Types.H264QvbrSettings,
     module Network.AWS.MediaConvert.Types.H264Settings,
+    module Network.AWS.MediaConvert.Types.H265QvbrSettings,
     module Network.AWS.MediaConvert.Types.H265Settings,
     module Network.AWS.MediaConvert.Types.Hdr10Metadata,
+    module Network.AWS.MediaConvert.Types.HlsAdditionalManifest,
     module Network.AWS.MediaConvert.Types.HlsCaptionLanguageMapping,
     module Network.AWS.MediaConvert.Types.HlsEncryptionSettings,
     module Network.AWS.MediaConvert.Types.HlsGroupSettings,
     module Network.AWS.MediaConvert.Types.HlsSettings,
+    module Network.AWS.MediaConvert.Types.HopDestination,
     module Network.AWS.MediaConvert.Types.Id3Insertion,
     module Network.AWS.MediaConvert.Types.ImageInserter,
+    module Network.AWS.MediaConvert.Types.ImscDestinationSettings,
     module Network.AWS.MediaConvert.Types.Input,
     module Network.AWS.MediaConvert.Types.InputClipping,
+    module Network.AWS.MediaConvert.Types.InputDecryptionSettings,
     module Network.AWS.MediaConvert.Types.InputTemplate,
     module Network.AWS.MediaConvert.Types.InsertableImage,
     module Network.AWS.MediaConvert.Types.Job,
+    module Network.AWS.MediaConvert.Types.JobMessages,
     module Network.AWS.MediaConvert.Types.JobSettings,
     module Network.AWS.MediaConvert.Types.JobTemplate,
     module Network.AWS.MediaConvert.Types.JobTemplateSettings,
+    module Network.AWS.MediaConvert.Types.M2tsScte35Esam,
     module Network.AWS.MediaConvert.Types.M2tsSettings,
     module Network.AWS.MediaConvert.Types.M3u8Settings,
+    module Network.AWS.MediaConvert.Types.MotionImageInserter,
+    module Network.AWS.MediaConvert.Types.MotionImageInsertionFramerate,
+    module Network.AWS.MediaConvert.Types.MotionImageInsertionOffset,
     module Network.AWS.MediaConvert.Types.MovSettings,
     module Network.AWS.MediaConvert.Types.Mp2Settings,
+    module Network.AWS.MediaConvert.Types.Mp3Settings,
     module Network.AWS.MediaConvert.Types.Mp4Settings,
+    module Network.AWS.MediaConvert.Types.MpdSettings,
     module Network.AWS.MediaConvert.Types.Mpeg2Settings,
+    module Network.AWS.MediaConvert.Types.MsSmoothAdditionalManifest,
     module Network.AWS.MediaConvert.Types.MsSmoothEncryptionSettings,
     module Network.AWS.MediaConvert.Types.MsSmoothGroupSettings,
+    module Network.AWS.MediaConvert.Types.MxfSettings,
     module Network.AWS.MediaConvert.Types.NielsenConfiguration,
     module Network.AWS.MediaConvert.Types.NoiseReducer,
     module Network.AWS.MediaConvert.Types.NoiseReducerFilterSettings,
     module Network.AWS.MediaConvert.Types.NoiseReducerSpatialFilterSettings,
+    module Network.AWS.MediaConvert.Types.NoiseReducerTemporalFilterSettings,
     module Network.AWS.MediaConvert.Types.Output,
     module Network.AWS.MediaConvert.Types.OutputChannelMapping,
     module Network.AWS.MediaConvert.Types.OutputDetail,
@@ -91,10 +124,18 @@ module Network.AWS.MediaConvert.Types.Product (
     module Network.AWS.MediaConvert.Types.PresetSettings,
     module Network.AWS.MediaConvert.Types.ProresSettings,
     module Network.AWS.MediaConvert.Types.Queue,
+    module Network.AWS.MediaConvert.Types.QueueTransition,
     module Network.AWS.MediaConvert.Types.Rectangle,
     module Network.AWS.MediaConvert.Types.RemixSettings,
+    module Network.AWS.MediaConvert.Types.ReservationPlan,
+    module Network.AWS.MediaConvert.Types.ReservationPlanSettings,
+    module Network.AWS.MediaConvert.Types.ResourceTags,
+    module Network.AWS.MediaConvert.Types.S3DestinationAccessControl,
+    module Network.AWS.MediaConvert.Types.S3DestinationSettings,
+    module Network.AWS.MediaConvert.Types.S3EncryptionSettings,
     module Network.AWS.MediaConvert.Types.SccDestinationSettings,
     module Network.AWS.MediaConvert.Types.SpekeKeyProvider,
+    module Network.AWS.MediaConvert.Types.SpekeKeyProviderCmaf,
     module Network.AWS.MediaConvert.Types.StaticKeyProvider,
     module Network.AWS.MediaConvert.Types.TeletextDestinationSettings,
     module Network.AWS.MediaConvert.Types.TeletextSourceSettings,
@@ -102,6 +143,7 @@ module Network.AWS.MediaConvert.Types.Product (
     module Network.AWS.MediaConvert.Types.TimecodeConfig,
     module Network.AWS.MediaConvert.Types.TimedMetadataInsertion,
     module Network.AWS.MediaConvert.Types.Timing,
+    module Network.AWS.MediaConvert.Types.TrackSourceSettings,
     module Network.AWS.MediaConvert.Types.TtmlDestinationSettings,
     module Network.AWS.MediaConvert.Types.VideoCodecSettings,
     module Network.AWS.MediaConvert.Types.VideoDescription,
@@ -114,6 +156,7 @@ module Network.AWS.MediaConvert.Types.Product (
 import Network.AWS.Lens
 import Network.AWS.MediaConvert.Types.AacSettings
 import Network.AWS.MediaConvert.Types.Ac3Settings
+import Network.AWS.MediaConvert.Types.AccelerationSettings
 import Network.AWS.MediaConvert.Types.AiffSettings
 import Network.AWS.MediaConvert.Types.AncillarySourceSettings
 import Network.AWS.MediaConvert.Types.AudioCodecSettings
@@ -121,60 +164,92 @@ import Network.AWS.MediaConvert.Types.AudioDescription
 import Network.AWS.MediaConvert.Types.AudioNormalizationSettings
 import Network.AWS.MediaConvert.Types.AudioSelector
 import Network.AWS.MediaConvert.Types.AudioSelectorGroup
+import Network.AWS.MediaConvert.Types.Av1QvbrSettings
+import Network.AWS.MediaConvert.Types.Av1Settings
 import Network.AWS.MediaConvert.Types.AvailBlanking
 import Network.AWS.MediaConvert.Types.BurninDestinationSettings
 import Network.AWS.MediaConvert.Types.CaptionDescription
 import Network.AWS.MediaConvert.Types.CaptionDescriptionPreset
 import Network.AWS.MediaConvert.Types.CaptionDestinationSettings
 import Network.AWS.MediaConvert.Types.CaptionSelector
+import Network.AWS.MediaConvert.Types.CaptionSourceFramerate
 import Network.AWS.MediaConvert.Types.CaptionSourceSettings
 import Network.AWS.MediaConvert.Types.ChannelMapping
+import Network.AWS.MediaConvert.Types.CmafAdditionalManifest
+import Network.AWS.MediaConvert.Types.CmafEncryptionSettings
+import Network.AWS.MediaConvert.Types.CmafGroupSettings
+import Network.AWS.MediaConvert.Types.CmfcSettings
 import Network.AWS.MediaConvert.Types.ColorCorrector
 import Network.AWS.MediaConvert.Types.ContainerSettings
+import Network.AWS.MediaConvert.Types.DashAdditionalManifest
 import Network.AWS.MediaConvert.Types.DashIsoEncryptionSettings
 import Network.AWS.MediaConvert.Types.DashIsoGroupSettings
 import Network.AWS.MediaConvert.Types.Deinterlacer
+import Network.AWS.MediaConvert.Types.DestinationSettings
+import Network.AWS.MediaConvert.Types.DolbyVision
+import Network.AWS.MediaConvert.Types.DolbyVisionLevel6Metadata
 import Network.AWS.MediaConvert.Types.DvbNitSettings
 import Network.AWS.MediaConvert.Types.DvbSdtSettings
 import Network.AWS.MediaConvert.Types.DvbSubDestinationSettings
 import Network.AWS.MediaConvert.Types.DvbSubSourceSettings
 import Network.AWS.MediaConvert.Types.DvbTdtSettings
+import Network.AWS.MediaConvert.Types.Eac3AtmosSettings
 import Network.AWS.MediaConvert.Types.Eac3Settings
+import Network.AWS.MediaConvert.Types.EmbeddedDestinationSettings
 import Network.AWS.MediaConvert.Types.EmbeddedSourceSettings
 import Network.AWS.MediaConvert.Types.Endpoint
+import Network.AWS.MediaConvert.Types.EsamManifestConfirmConditionNotification
+import Network.AWS.MediaConvert.Types.EsamSettings
+import Network.AWS.MediaConvert.Types.EsamSignalProcessingNotification
 import Network.AWS.MediaConvert.Types.F4vSettings
 import Network.AWS.MediaConvert.Types.FileGroupSettings
 import Network.AWS.MediaConvert.Types.FileSourceSettings
 import Network.AWS.MediaConvert.Types.FrameCaptureSettings
+import Network.AWS.MediaConvert.Types.H264QvbrSettings
 import Network.AWS.MediaConvert.Types.H264Settings
+import Network.AWS.MediaConvert.Types.H265QvbrSettings
 import Network.AWS.MediaConvert.Types.H265Settings
 import Network.AWS.MediaConvert.Types.Hdr10Metadata
+import Network.AWS.MediaConvert.Types.HlsAdditionalManifest
 import Network.AWS.MediaConvert.Types.HlsCaptionLanguageMapping
 import Network.AWS.MediaConvert.Types.HlsEncryptionSettings
 import Network.AWS.MediaConvert.Types.HlsGroupSettings
 import Network.AWS.MediaConvert.Types.HlsSettings
+import Network.AWS.MediaConvert.Types.HopDestination
 import Network.AWS.MediaConvert.Types.Id3Insertion
 import Network.AWS.MediaConvert.Types.ImageInserter
+import Network.AWS.MediaConvert.Types.ImscDestinationSettings
 import Network.AWS.MediaConvert.Types.Input
 import Network.AWS.MediaConvert.Types.InputClipping
+import Network.AWS.MediaConvert.Types.InputDecryptionSettings
 import Network.AWS.MediaConvert.Types.InputTemplate
 import Network.AWS.MediaConvert.Types.InsertableImage
 import Network.AWS.MediaConvert.Types.Job
+import Network.AWS.MediaConvert.Types.JobMessages
 import Network.AWS.MediaConvert.Types.JobSettings
 import Network.AWS.MediaConvert.Types.JobTemplate
 import Network.AWS.MediaConvert.Types.JobTemplateSettings
+import Network.AWS.MediaConvert.Types.M2tsScte35Esam
 import Network.AWS.MediaConvert.Types.M2tsSettings
 import Network.AWS.MediaConvert.Types.M3u8Settings
+import Network.AWS.MediaConvert.Types.MotionImageInserter
+import Network.AWS.MediaConvert.Types.MotionImageInsertionFramerate
+import Network.AWS.MediaConvert.Types.MotionImageInsertionOffset
 import Network.AWS.MediaConvert.Types.MovSettings
 import Network.AWS.MediaConvert.Types.Mp2Settings
+import Network.AWS.MediaConvert.Types.Mp3Settings
 import Network.AWS.MediaConvert.Types.Mp4Settings
+import Network.AWS.MediaConvert.Types.MpdSettings
 import Network.AWS.MediaConvert.Types.Mpeg2Settings
+import Network.AWS.MediaConvert.Types.MsSmoothAdditionalManifest
 import Network.AWS.MediaConvert.Types.MsSmoothEncryptionSettings
 import Network.AWS.MediaConvert.Types.MsSmoothGroupSettings
+import Network.AWS.MediaConvert.Types.MxfSettings
 import Network.AWS.MediaConvert.Types.NielsenConfiguration
 import Network.AWS.MediaConvert.Types.NoiseReducer
 import Network.AWS.MediaConvert.Types.NoiseReducerFilterSettings
 import Network.AWS.MediaConvert.Types.NoiseReducerSpatialFilterSettings
+import Network.AWS.MediaConvert.Types.NoiseReducerTemporalFilterSettings
 import Network.AWS.MediaConvert.Types.Output
 import Network.AWS.MediaConvert.Types.OutputChannelMapping
 import Network.AWS.MediaConvert.Types.OutputDetail
@@ -186,10 +261,18 @@ import Network.AWS.MediaConvert.Types.Preset
 import Network.AWS.MediaConvert.Types.PresetSettings
 import Network.AWS.MediaConvert.Types.ProresSettings
 import Network.AWS.MediaConvert.Types.Queue
+import Network.AWS.MediaConvert.Types.QueueTransition
 import Network.AWS.MediaConvert.Types.Rectangle
 import Network.AWS.MediaConvert.Types.RemixSettings
+import Network.AWS.MediaConvert.Types.ReservationPlan
+import Network.AWS.MediaConvert.Types.ReservationPlanSettings
+import Network.AWS.MediaConvert.Types.ResourceTags
+import Network.AWS.MediaConvert.Types.S3DestinationAccessControl
+import Network.AWS.MediaConvert.Types.S3DestinationSettings
+import Network.AWS.MediaConvert.Types.S3EncryptionSettings
 import Network.AWS.MediaConvert.Types.SccDestinationSettings
 import Network.AWS.MediaConvert.Types.SpekeKeyProvider
+import Network.AWS.MediaConvert.Types.SpekeKeyProviderCmaf
 import Network.AWS.MediaConvert.Types.StaticKeyProvider
 import Network.AWS.MediaConvert.Types.TeletextDestinationSettings
 import Network.AWS.MediaConvert.Types.TeletextSourceSettings
@@ -197,6 +280,7 @@ import Network.AWS.MediaConvert.Types.TimecodeBurnin
 import Network.AWS.MediaConvert.Types.TimecodeConfig
 import Network.AWS.MediaConvert.Types.TimedMetadataInsertion
 import Network.AWS.MediaConvert.Types.Timing
+import Network.AWS.MediaConvert.Types.TrackSourceSettings
 import Network.AWS.MediaConvert.Types.TtmlDestinationSettings
 import Network.AWS.MediaConvert.Types.VideoCodecSettings
 import Network.AWS.MediaConvert.Types.VideoDescription

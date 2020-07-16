@@ -22,7 +22,11 @@ import Network.AWS.Prelude
 import Network.AWS.S3.Internal
 import Network.AWS.S3.Types.Tag
 
--- | /See:/ 'metricsAndOperator' smart constructor.
+-- | A conjunction (logical AND) of predicates, which is used in evaluating a metrics filter. The operator must have at least two predicates, and an object must match all of the predicates in order for the filter to apply.
+--
+--
+--
+-- /See:/ 'metricsAndOperator' smart constructor.
 data MetricsAndOperator = MetricsAndOperator'{_maoPrefix
                                               :: !(Maybe Text),
                                               _maoTags :: !(Maybe [Tag])}

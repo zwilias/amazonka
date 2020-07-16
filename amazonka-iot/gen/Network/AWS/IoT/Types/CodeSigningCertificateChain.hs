@@ -17,7 +17,6 @@
 --
 module Network.AWS.IoT.Types.CodeSigningCertificateChain where
 
-import Network.AWS.IoT.Types.Stream
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
@@ -26,10 +25,7 @@ import Network.AWS.Prelude
 --
 --
 -- /See:/ 'codeSigningCertificateChain' smart constructor.
-data CodeSigningCertificateChain = CodeSigningCertificateChain'{_csccStream
-                                                                ::
-                                                                !(Maybe Stream),
-                                                                _csccCertificateName
+data CodeSigningCertificateChain = CodeSigningCertificateChain'{_csccCertificateName
                                                                 ::
                                                                 !(Maybe Text),
                                                                 _csccInlineDocument
@@ -42,21 +38,15 @@ data CodeSigningCertificateChain = CodeSigningCertificateChain'{_csccStream
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'csccStream' - A stream of the certificate chain files.
---
 -- * 'csccCertificateName' - The name of the certificate.
 --
 -- * 'csccInlineDocument' - A base64 encoded binary representation of the code signing certificate chain.
 codeSigningCertificateChain
     :: CodeSigningCertificateChain
 codeSigningCertificateChain
-  = CodeSigningCertificateChain'{_csccStream = Nothing,
-                                 _csccCertificateName = Nothing,
+  = CodeSigningCertificateChain'{_csccCertificateName =
+                                   Nothing,
                                  _csccInlineDocument = Nothing}
-
--- | A stream of the certificate chain files.
-csccStream :: Lens' CodeSigningCertificateChain (Maybe Stream)
-csccStream = lens _csccStream (\ s a -> s{_csccStream = a})
 
 -- | The name of the certificate.
 csccCertificateName :: Lens' CodeSigningCertificateChain (Maybe Text)
@@ -71,7 +61,7 @@ instance FromJSON CodeSigningCertificateChain where
           = withObject "CodeSigningCertificateChain"
               (\ x ->
                  CodeSigningCertificateChain' <$>
-                   (x .:? "stream") <*> (x .:? "certificateName") <*>
+                   (x .:? "certificateName") <*>
                      (x .:? "inlineDocument"))
 
 instance Hashable CodeSigningCertificateChain where
@@ -82,6 +72,5 @@ instance ToJSON CodeSigningCertificateChain where
         toJSON CodeSigningCertificateChain'{..}
           = object
               (catMaybes
-                 [("stream" .=) <$> _csccStream,
-                  ("certificateName" .=) <$> _csccCertificateName,
+                 [("certificateName" .=) <$> _csccCertificateName,
                   ("inlineDocument" .=) <$> _csccInlineDocument])

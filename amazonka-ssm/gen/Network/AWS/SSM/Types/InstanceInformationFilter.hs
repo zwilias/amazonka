@@ -21,8 +21,10 @@ import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.SSM.Types.InstanceInformationFilterKey
 
--- | Describes a filter for a specific list of instances. 
+-- | Describes a filter for a specific list of instances. You can filter instances information by using tags. You specify tags by using a key-value mapping.
 --
+--
+-- Use this action instead of the 'DescribeInstanceInformationRequest$InstanceInformationFilterList' method. The @InstanceInformationFilterList@ method is a legacy method and does not support tags. 
 --
 --
 -- /See:/ 'instanceInformationFilter' smart constructor.

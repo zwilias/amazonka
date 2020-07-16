@@ -18,7 +18,9 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Delete a BAIDU GCM channel
+-- Disables the Baidu channel for an application and deletes any existing settings for the channel.
+--
+--
 module Network.AWS.Pinpoint.DeleteBaiduChannel
     (
     -- * Creating a Request
@@ -52,7 +54,7 @@ newtype DeleteBaiduChannel = DeleteBaiduChannel'{_dbcApplicationId
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dbcApplicationId' - Undocumented member.
+-- * 'dbcApplicationId' - The unique identifier for the application. This identifier is displayed as the __Project ID__ on the Amazon Pinpoint console.
 deleteBaiduChannel
     :: Text -- ^ 'dbcApplicationId'
     -> DeleteBaiduChannel
@@ -60,7 +62,7 @@ deleteBaiduChannel pApplicationId_
   = DeleteBaiduChannel'{_dbcApplicationId =
                           pApplicationId_}
 
--- | Undocumented member.
+-- | The unique identifier for the application. This identifier is displayed as the __Project ID__ on the Amazon Pinpoint console.
 dbcApplicationId :: Lens' DeleteBaiduChannel Text
 dbcApplicationId = lens _dbcApplicationId (\ s a -> s{_dbcApplicationId = a})
 

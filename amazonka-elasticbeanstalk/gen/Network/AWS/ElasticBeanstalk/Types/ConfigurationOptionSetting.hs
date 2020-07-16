@@ -20,7 +20,7 @@ module Network.AWS.ElasticBeanstalk.Types.ConfigurationOptionSetting where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | A specification identifying an individual configuration option along with its current value. For a list of possible option values, go to <http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/command-options.html Option Values> in the /AWS Elastic Beanstalk Developer Guide/ . 
+-- | A specification identifying an individual configuration option along with its current value. For a list of possible namespaces and option values, see <https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/command-options.html Option Values> in the /AWS Elastic Beanstalk Developer Guide/ . 
 --
 --
 --
@@ -42,9 +42,9 @@ data ConfigurationOptionSetting = ConfigurationOptionSetting'{_cosOptionName
 --
 -- * 'cosOptionName' - The name of the configuration option.
 --
--- * 'cosResourceName' - A unique resource name for a time-based scaling configuration option.
+-- * 'cosResourceName' - A unique resource name for the option setting. Use it for a time–based scaling configuration option.
 --
--- * 'cosNamespace' - A unique namespace identifying the option's associated AWS resource.
+-- * 'cosNamespace' - A unique namespace that identifies the option's associated AWS resource.
 --
 -- * 'cosValue' - The current value for the configuration option.
 configurationOptionSetting
@@ -59,11 +59,11 @@ configurationOptionSetting
 cosOptionName :: Lens' ConfigurationOptionSetting (Maybe Text)
 cosOptionName = lens _cosOptionName (\ s a -> s{_cosOptionName = a})
 
--- | A unique resource name for a time-based scaling configuration option.
+-- | A unique resource name for the option setting. Use it for a time–based scaling configuration option.
 cosResourceName :: Lens' ConfigurationOptionSetting (Maybe Text)
 cosResourceName = lens _cosResourceName (\ s a -> s{_cosResourceName = a})
 
--- | A unique namespace identifying the option's associated AWS resource.
+-- | A unique namespace that identifies the option's associated AWS resource.
 cosNamespace :: Lens' ConfigurationOptionSetting (Maybe Text)
 cosNamespace = lens _cosNamespace (\ s a -> s{_cosNamespace = a})
 

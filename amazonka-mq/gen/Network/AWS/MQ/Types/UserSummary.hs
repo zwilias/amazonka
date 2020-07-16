@@ -35,7 +35,7 @@ data UserSummary = UserSummary'{_usUsername ::
 --
 -- * 'usUsername' - Required. The username of the ActiveMQ user. This value can contain only alphanumeric characters, dashes, periods, underscores, and tildes (- . _ ~). This value must be 2-100 characters long.
 --
--- * 'usPendingChange' - The type of change pending for the ActiveMQ user. Possible values: CREATE, UPDATE, DELETE
+-- * 'usPendingChange' - The type of change pending for the ActiveMQ user.
 userSummary
     :: UserSummary
 userSummary
@@ -46,7 +46,7 @@ userSummary
 usUsername :: Lens' UserSummary (Maybe Text)
 usUsername = lens _usUsername (\ s a -> s{_usUsername = a})
 
--- | The type of change pending for the ActiveMQ user. Possible values: CREATE, UPDATE, DELETE
+-- | The type of change pending for the ActiveMQ user.
 usPendingChange :: Lens' UserSummary (Maybe ChangeType)
 usPendingChange = lens _usPendingChange (\ s a -> s{_usPendingChange = a})
 

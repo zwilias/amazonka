@@ -21,6 +21,8 @@
 -- Uploads an image layer part to Amazon ECR.
 --
 --
+-- When an image is pushed, each new image layer is uploaded in parts. The maximum size of each image layer part can be 20971520 bytes (or about 20MB). The UploadLayerPart API is called once per each new image layer part.
+--
 module Network.AWS.ECR.UploadLayerPart
     (
     -- * Creating a Request

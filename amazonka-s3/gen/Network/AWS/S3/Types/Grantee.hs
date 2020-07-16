@@ -22,7 +22,11 @@ import Network.AWS.Prelude
 import Network.AWS.S3.Internal
 import Network.AWS.S3.Types.Type
 
--- | /See:/ 'grantee' smart constructor.
+-- | Container for the person being granted permissions.
+--
+--
+--
+-- /See:/ 'grantee' smart constructor.
 data Grantee = Grantee'{_gURI :: !(Maybe Text),
                         _gEmailAddress :: !(Maybe Text),
                         _gDisplayName :: !(Maybe Text),

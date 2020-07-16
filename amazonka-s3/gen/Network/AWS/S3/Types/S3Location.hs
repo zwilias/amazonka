@@ -27,7 +27,9 @@ import Network.AWS.S3.Types.ObjectCannedACL
 import Network.AWS.S3.Types.StorageClass
 import Network.AWS.S3.Types.Tagging
 
--- | Describes an S3 location that will receive the results of the restore request.
+-- | Describes an Amazon S3 location that will receive the results of the restore request.
+--
+--
 --
 -- /See:/ 's3Location' smart constructor.
 data S3Location = S3Location'{_slCannedACL ::

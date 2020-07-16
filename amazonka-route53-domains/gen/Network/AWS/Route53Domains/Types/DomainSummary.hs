@@ -36,7 +36,7 @@ data DomainSummary = DomainSummary'{_dsExpiry ::
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dsExpiry' - Expiration date of the domain in Coordinated Universal Time (UTC).
+-- * 'dsExpiry' - Expiration date of the domain in Unix time format and Coordinated Universal Time (UTC).
 --
 -- * 'dsTransferLock' - Indicates whether a domain is locked from unauthorized transfer to another party.
 --
@@ -51,7 +51,7 @@ domainSummary pDomainName_
                    _dsTransferLock = Nothing, _dsAutoRenew = Nothing,
                    _dsDomainName = pDomainName_}
 
--- | Expiration date of the domain in Coordinated Universal Time (UTC).
+-- | Expiration date of the domain in Unix time format and Coordinated Universal Time (UTC).
 dsExpiry :: Lens' DomainSummary (Maybe UTCTime)
 dsExpiry = lens _dsExpiry (\ s a -> s{_dsExpiry = a}) . mapping _Time
 

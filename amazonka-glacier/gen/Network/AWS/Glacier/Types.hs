@@ -314,6 +314,11 @@ glacier
             = Just "throttling_exception"
           | has (hasCode "Throttling" . hasStatus 400) e =
             Just "throttling"
+          | has
+              (hasCode "ProvisionedThroughputExceededException" .
+                 hasStatus 400)
+              e
+            = Just "throughput_exceeded"
           | has (hasStatus 504) e = Just "gateway_timeout"
           | has
               (hasCode "RequestThrottledException" . hasStatus 400)
@@ -374,7 +379,7 @@ _ServiceUnavailableException
       "ServiceUnavailableException"
       . hasStatus 500
 
--- | Returned if, when uploading an archive, Amazon Glacier times out while receiving the upload.
+-- | Returned if, when uploading an archive, Amazon S3 Glacier times out while receiving the upload.
 --
 --
 _RequestTimeoutException :: AsError a => Getting (First ServiceError) a ServiceError

@@ -20,7 +20,9 @@ module Network.AWS.GuardDuty.Types.PrivateIPAddressDetails where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | Other private IP address information of the EC2 instance.
+-- | Contains other private IP address information of the EC2 instance.
+--
+--
 --
 -- /See:/ 'privateIPAddressDetails' smart constructor.
 data PrivateIPAddressDetails = PrivateIPAddressDetails'{_piadPrivateIPAddress
@@ -34,9 +36,9 @@ data PrivateIPAddressDetails = PrivateIPAddressDetails'{_piadPrivateIPAddress
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'piadPrivateIPAddress' - Private IP address of the EC2 instance.
+-- * 'piadPrivateIPAddress' - The private IP address of the EC2 instance.
 --
--- * 'piadPrivateDNSName' - Private DNS name of the EC2 instance.
+-- * 'piadPrivateDNSName' - The private DNS name of the EC2 instance.
 privateIPAddressDetails
     :: PrivateIPAddressDetails
 privateIPAddressDetails
@@ -44,11 +46,11 @@ privateIPAddressDetails
                                Nothing,
                              _piadPrivateDNSName = Nothing}
 
--- | Private IP address of the EC2 instance.
+-- | The private IP address of the EC2 instance.
 piadPrivateIPAddress :: Lens' PrivateIPAddressDetails (Maybe Text)
 piadPrivateIPAddress = lens _piadPrivateIPAddress (\ s a -> s{_piadPrivateIPAddress = a})
 
--- | Private DNS name of the EC2 instance.
+-- | The private DNS name of the EC2 instance.
 piadPrivateDNSName :: Lens' PrivateIPAddressDetails (Maybe Text)
 piadPrivateDNSName = lens _piadPrivateDNSName (\ s a -> s{_piadPrivateDNSName = a})
 

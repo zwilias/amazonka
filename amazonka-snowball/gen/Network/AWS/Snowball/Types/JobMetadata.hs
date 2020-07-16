@@ -28,6 +28,7 @@ import Network.AWS.Snowball.Types.Notification
 import Network.AWS.Snowball.Types.ShippingDetails
 import Network.AWS.Snowball.Types.SnowballCapacity
 import Network.AWS.Snowball.Types.SnowballType
+import Network.AWS.Snowball.Types.TaxDocuments
 
 -- | Contains information about a specific job including shipping information, job status, and other important metadata. This information is returned as a part of the response syntax of the @DescribeJob@ action.
 --
@@ -51,6 +52,7 @@ data JobMetadata = JobMetadata'{_jmJobType ::
                                 _jmClusterId :: !(Maybe Text),
                                 _jmCreationDate :: !(Maybe POSIX),
                                 _jmDescription :: !(Maybe Text),
+                                _jmTaxDocuments :: !(Maybe TaxDocuments),
                                 _jmRoleARN :: !(Maybe Text),
                                 _jmSnowballCapacityPreference ::
                                 !(Maybe SnowballCapacity)}
@@ -62,7 +64,7 @@ data JobMetadata = JobMetadata'{_jmJobType ::
 --
 -- * 'jmJobType' - The type of job.
 --
--- * 'jmKMSKeyARN' - The Amazon Resource Name (ARN) for the AWS Key Management Service (AWS KMS) key associated with this job. This ARN was created using the <http://docs.aws.amazon.com/kms/latest/APIReference/API_CreateKey.html CreateKey> API action in AWS KMS.
+-- * 'jmKMSKeyARN' - The Amazon Resource Name (ARN) for the AWS Key Management Service (AWS KMS) key associated with this job. This ARN was created using the <https://docs.aws.amazon.com/kms/latest/APIReference/API_CreateKey.html CreateKey> API action in AWS KMS.
 --
 -- * 'jmJobId' - The automatically generated ID for a job, for example @JID123e4567-e89b-12d3-a456-426655440000@ .
 --
@@ -78,9 +80,9 @@ data JobMetadata = JobMetadata'{_jmJobType ::
 --
 -- * 'jmAddressId' - The ID for the address that you want the Snowball shipped to.
 --
--- * 'jmSnowballType' - The type of appliance used with this job.
+-- * 'jmSnowballType' - The type of device used with this job.
 --
--- * 'jmDataTransferProgress' - A value that defines the real-time status of a Snowball's data transfer while the appliance is at AWS. This data is only available while a job has a @JobState@ value of @InProgress@ , for both import and export jobs.
+-- * 'jmDataTransferProgress' - A value that defines the real-time status of a Snowball's data transfer while the device is at AWS. This data is only available while a job has a @JobState@ value of @InProgress@ , for both import and export jobs.
 --
 -- * 'jmResources' - An array of @S3Resource@ objects. Each @S3Resource@ object represents an Amazon S3 bucket that your transferred data will be exported from or imported into.
 --
@@ -90,7 +92,9 @@ data JobMetadata = JobMetadata'{_jmJobType ::
 --
 -- * 'jmDescription' - The description of the job, provided at job creation.
 --
--- * 'jmRoleARN' - The role ARN associated with this job. This ARN was created using the <http://docs.aws.amazon.com/IAM/latest/APIReference/API_CreateRole.html CreateRole> API action in AWS Identity and Access Management (IAM).
+-- * 'jmTaxDocuments' - The metadata associated with the tax documents required in your AWS Region.
+--
+-- * 'jmRoleARN' - The role ARN associated with this job. This ARN was created using the <https://docs.aws.amazon.com/IAM/latest/APIReference/API_CreateRole.html CreateRole> API action in AWS Identity and Access Management (IAM).
 --
 -- * 'jmSnowballCapacityPreference' - The Snowball capacity preference for this job, specified at job creation. In US regions, you can choose between 50 TB and 80 TB Snowballs. All other regions use 80 TB capacity Snowballs.
 jobMetadata
@@ -106,14 +110,14 @@ jobMetadata
                  _jmDataTransferProgress = Nothing,
                  _jmResources = Nothing, _jmClusterId = Nothing,
                  _jmCreationDate = Nothing, _jmDescription = Nothing,
-                 _jmRoleARN = Nothing,
+                 _jmTaxDocuments = Nothing, _jmRoleARN = Nothing,
                  _jmSnowballCapacityPreference = Nothing}
 
 -- | The type of job.
 jmJobType :: Lens' JobMetadata (Maybe JobType)
 jmJobType = lens _jmJobType (\ s a -> s{_jmJobType = a})
 
--- | The Amazon Resource Name (ARN) for the AWS Key Management Service (AWS KMS) key associated with this job. This ARN was created using the <http://docs.aws.amazon.com/kms/latest/APIReference/API_CreateKey.html CreateKey> API action in AWS KMS.
+-- | The Amazon Resource Name (ARN) for the AWS Key Management Service (AWS KMS) key associated with this job. This ARN was created using the <https://docs.aws.amazon.com/kms/latest/APIReference/API_CreateKey.html CreateKey> API action in AWS KMS.
 jmKMSKeyARN :: Lens' JobMetadata (Maybe Text)
 jmKMSKeyARN = lens _jmKMSKeyARN (\ s a -> s{_jmKMSKeyARN = a})
 
@@ -145,11 +149,11 @@ jmShippingDetails = lens _jmShippingDetails (\ s a -> s{_jmShippingDetails = a})
 jmAddressId :: Lens' JobMetadata (Maybe Text)
 jmAddressId = lens _jmAddressId (\ s a -> s{_jmAddressId = a})
 
--- | The type of appliance used with this job.
+-- | The type of device used with this job.
 jmSnowballType :: Lens' JobMetadata (Maybe SnowballType)
 jmSnowballType = lens _jmSnowballType (\ s a -> s{_jmSnowballType = a})
 
--- | A value that defines the real-time status of a Snowball's data transfer while the appliance is at AWS. This data is only available while a job has a @JobState@ value of @InProgress@ , for both import and export jobs.
+-- | A value that defines the real-time status of a Snowball's data transfer while the device is at AWS. This data is only available while a job has a @JobState@ value of @InProgress@ , for both import and export jobs.
 jmDataTransferProgress :: Lens' JobMetadata (Maybe DataTransfer)
 jmDataTransferProgress = lens _jmDataTransferProgress (\ s a -> s{_jmDataTransferProgress = a})
 
@@ -169,7 +173,11 @@ jmCreationDate = lens _jmCreationDate (\ s a -> s{_jmCreationDate = a}) . mappin
 jmDescription :: Lens' JobMetadata (Maybe Text)
 jmDescription = lens _jmDescription (\ s a -> s{_jmDescription = a})
 
--- | The role ARN associated with this job. This ARN was created using the <http://docs.aws.amazon.com/IAM/latest/APIReference/API_CreateRole.html CreateRole> API action in AWS Identity and Access Management (IAM).
+-- | The metadata associated with the tax documents required in your AWS Region.
+jmTaxDocuments :: Lens' JobMetadata (Maybe TaxDocuments)
+jmTaxDocuments = lens _jmTaxDocuments (\ s a -> s{_jmTaxDocuments = a})
+
+-- | The role ARN associated with this job. This ARN was created using the <https://docs.aws.amazon.com/IAM/latest/APIReference/API_CreateRole.html CreateRole> API action in AWS Identity and Access Management (IAM).
 jmRoleARN :: Lens' JobMetadata (Maybe Text)
 jmRoleARN = lens _jmRoleARN (\ s a -> s{_jmRoleARN = a})
 
@@ -196,6 +204,7 @@ instance FromJSON JobMetadata where
                      <*> (x .:? "ClusterId")
                      <*> (x .:? "CreationDate")
                      <*> (x .:? "Description")
+                     <*> (x .:? "TaxDocuments")
                      <*> (x .:? "RoleARN")
                      <*> (x .:? "SnowballCapacityPreference"))
 

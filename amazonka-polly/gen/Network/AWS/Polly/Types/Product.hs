@@ -20,6 +20,7 @@ module Network.AWS.Polly.Types.Product (
     module Network.AWS.Polly.Types.Lexicon,
     module Network.AWS.Polly.Types.LexiconAttributes,
     module Network.AWS.Polly.Types.LexiconDescription,
+    module Network.AWS.Polly.Types.SynthesisTask,
     module Network.AWS.Polly.Types.Voice
   ) where
 
@@ -27,5 +28,6 @@ import Network.AWS.Lens
 import Network.AWS.Polly.Types.Lexicon
 import Network.AWS.Polly.Types.LexiconAttributes
 import Network.AWS.Polly.Types.LexiconDescription
+import Network.AWS.Polly.Types.SynthesisTask
 import Network.AWS.Polly.Types.Voice
 import Network.AWS.Prelude

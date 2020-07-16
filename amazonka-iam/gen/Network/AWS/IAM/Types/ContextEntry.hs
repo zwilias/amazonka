@@ -24,7 +24,7 @@ import Network.AWS.Prelude
 -- | Contains information about a condition context key. It includes the name of the key and specifies the value (or values, if the context key supports multiple values) to use in the simulation. This information is used when evaluating the @Condition@ elements of the input policies.
 --
 --
--- This data type is used as an input parameter to @'SimulateCustomPolicy' @ and @'SimulateCustomPolicy' @ .
+-- This data type is used as an input parameter to 'SimulateCustomPolicy' and 'SimulatePrincipalPolicy' .
 --
 --
 -- /See:/ 'contextEntry' smart constructor.

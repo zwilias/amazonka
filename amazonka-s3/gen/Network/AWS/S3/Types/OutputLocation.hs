@@ -24,6 +24,8 @@ import Network.AWS.S3.Types.S3Location
 
 -- | Describes the location where the restore job's output is stored.
 --
+--
+--
 -- /See:/ 'outputLocation' smart constructor.
 newtype OutputLocation = OutputLocation'{_olS3 ::
                                          Maybe S3Location}

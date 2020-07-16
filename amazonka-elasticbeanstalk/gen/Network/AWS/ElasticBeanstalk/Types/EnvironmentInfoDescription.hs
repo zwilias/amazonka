@@ -49,7 +49,7 @@ data EnvironmentInfoDescription = EnvironmentInfoDescription'{_eidSampleTimestam
 --
 -- * 'eidInfoType' - The type of information retrieved.
 --
--- * 'eidMessage' - The retrieved information.
+-- * 'eidMessage' - The retrieved information. Currently contains a presigned Amazon S3 URL. The files are deleted after 15 minutes. Anyone in possession of this URL can access the files before they are deleted. Make the URL available only to trusted parties.
 environmentInfoDescription
     :: EnvironmentInfoDescription
 environmentInfoDescription
@@ -70,7 +70,7 @@ eidEC2InstanceId = lens _eidEC2InstanceId (\ s a -> s{_eidEC2InstanceId = a})
 eidInfoType :: Lens' EnvironmentInfoDescription (Maybe EnvironmentInfoType)
 eidInfoType = lens _eidInfoType (\ s a -> s{_eidInfoType = a})
 
--- | The retrieved information.
+-- | The retrieved information. Currently contains a presigned Amazon S3 URL. The files are deleted after 15 minutes. Anyone in possession of this URL can access the files before they are deleted. Make the URL available only to trusted parties.
 eidMessage :: Lens' EnvironmentInfoDescription (Maybe Text)
 eidMessage = lens _eidMessage (\ s a -> s{_eidMessage = a})
 

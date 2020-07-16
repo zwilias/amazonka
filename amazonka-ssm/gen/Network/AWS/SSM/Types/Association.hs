@@ -27,92 +27,92 @@ import Network.AWS.SSM.Types.Target
 --
 --
 -- /See:/ 'association' smart constructor.
-data Association = Association'{_aAssociationId ::
+data Association = Association'{_assAssociationId ::
                                 !(Maybe Text),
-                                _aInstanceId :: !(Maybe Text),
-                                _aOverview :: !(Maybe AssociationOverview),
-                                _aLastExecutionDate :: !(Maybe POSIX),
-                                _aScheduleExpression :: !(Maybe Text),
-                                _aName :: !(Maybe Text),
-                                _aTargets :: !(Maybe [Target]),
-                                _aDocumentVersion :: !(Maybe Text),
-                                _aAssociationVersion :: !(Maybe Text),
-                                _aAssociationName :: !(Maybe Text)}
+                                _assInstanceId :: !(Maybe Text),
+                                _assOverview :: !(Maybe AssociationOverview),
+                                _assLastExecutionDate :: !(Maybe POSIX),
+                                _assScheduleExpression :: !(Maybe Text),
+                                _assName :: !(Maybe Text),
+                                _assTargets :: !(Maybe [Target]),
+                                _assDocumentVersion :: !(Maybe Text),
+                                _assAssociationVersion :: !(Maybe Text),
+                                _assAssociationName :: !(Maybe Text)}
                      deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'Association' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'aAssociationId' - The ID created by the system when you create an association. An association is a binding between a document and a set of targets with a schedule.
+-- * 'assAssociationId' - The ID created by the system when you create an association. An association is a binding between a document and a set of targets with a schedule.
 --
--- * 'aInstanceId' - The ID of the instance.
+-- * 'assInstanceId' - The ID of the instance.
 --
--- * 'aOverview' - Information about the association.
+-- * 'assOverview' - Information about the association.
 --
--- * 'aLastExecutionDate' - The date on which the association was last run.
+-- * 'assLastExecutionDate' - The date on which the association was last run.
 --
--- * 'aScheduleExpression' - A cron expression that specifies a schedule when the association runs.
+-- * 'assScheduleExpression' - A cron expression that specifies a schedule when the association runs.
 --
--- * 'aName' - The name of the Systems Manager document.
+-- * 'assName' - The name of the Systems Manager document.
 --
--- * 'aTargets' - The instances targeted by the request to create an association. 
+-- * 'assTargets' - The instances targeted by the request to create an association. 
 --
--- * 'aDocumentVersion' - The version of the document used in the association.
+-- * 'assDocumentVersion' - The version of the document used in the association.
 --
--- * 'aAssociationVersion' - The association version.
+-- * 'assAssociationVersion' - The association version.
 --
--- * 'aAssociationName' - The association name.
+-- * 'assAssociationName' - The association name.
 association
     :: Association
 association
-  = Association'{_aAssociationId = Nothing,
-                 _aInstanceId = Nothing, _aOverview = Nothing,
-                 _aLastExecutionDate = Nothing,
-                 _aScheduleExpression = Nothing, _aName = Nothing,
-                 _aTargets = Nothing, _aDocumentVersion = Nothing,
-                 _aAssociationVersion = Nothing,
-                 _aAssociationName = Nothing}
+  = Association'{_assAssociationId = Nothing,
+                 _assInstanceId = Nothing, _assOverview = Nothing,
+                 _assLastExecutionDate = Nothing,
+                 _assScheduleExpression = Nothing, _assName = Nothing,
+                 _assTargets = Nothing, _assDocumentVersion = Nothing,
+                 _assAssociationVersion = Nothing,
+                 _assAssociationName = Nothing}
 
 -- | The ID created by the system when you create an association. An association is a binding between a document and a set of targets with a schedule.
-aAssociationId :: Lens' Association (Maybe Text)
-aAssociationId = lens _aAssociationId (\ s a -> s{_aAssociationId = a})
+assAssociationId :: Lens' Association (Maybe Text)
+assAssociationId = lens _assAssociationId (\ s a -> s{_assAssociationId = a})
 
 -- | The ID of the instance.
-aInstanceId :: Lens' Association (Maybe Text)
-aInstanceId = lens _aInstanceId (\ s a -> s{_aInstanceId = a})
+assInstanceId :: Lens' Association (Maybe Text)
+assInstanceId = lens _assInstanceId (\ s a -> s{_assInstanceId = a})
 
 -- | Information about the association.
-aOverview :: Lens' Association (Maybe AssociationOverview)
-aOverview = lens _aOverview (\ s a -> s{_aOverview = a})
+assOverview :: Lens' Association (Maybe AssociationOverview)
+assOverview = lens _assOverview (\ s a -> s{_assOverview = a})
 
 -- | The date on which the association was last run.
-aLastExecutionDate :: Lens' Association (Maybe UTCTime)
-aLastExecutionDate = lens _aLastExecutionDate (\ s a -> s{_aLastExecutionDate = a}) . mapping _Time
+assLastExecutionDate :: Lens' Association (Maybe UTCTime)
+assLastExecutionDate = lens _assLastExecutionDate (\ s a -> s{_assLastExecutionDate = a}) . mapping _Time
 
 -- | A cron expression that specifies a schedule when the association runs.
-aScheduleExpression :: Lens' Association (Maybe Text)
-aScheduleExpression = lens _aScheduleExpression (\ s a -> s{_aScheduleExpression = a})
+assScheduleExpression :: Lens' Association (Maybe Text)
+assScheduleExpression = lens _assScheduleExpression (\ s a -> s{_assScheduleExpression = a})
 
 -- | The name of the Systems Manager document.
-aName :: Lens' Association (Maybe Text)
-aName = lens _aName (\ s a -> s{_aName = a})
+assName :: Lens' Association (Maybe Text)
+assName = lens _assName (\ s a -> s{_assName = a})
 
 -- | The instances targeted by the request to create an association. 
-aTargets :: Lens' Association [Target]
-aTargets = lens _aTargets (\ s a -> s{_aTargets = a}) . _Default . _Coerce
+assTargets :: Lens' Association [Target]
+assTargets = lens _assTargets (\ s a -> s{_assTargets = a}) . _Default . _Coerce
 
 -- | The version of the document used in the association.
-aDocumentVersion :: Lens' Association (Maybe Text)
-aDocumentVersion = lens _aDocumentVersion (\ s a -> s{_aDocumentVersion = a})
+assDocumentVersion :: Lens' Association (Maybe Text)
+assDocumentVersion = lens _assDocumentVersion (\ s a -> s{_assDocumentVersion = a})
 
 -- | The association version.
-aAssociationVersion :: Lens' Association (Maybe Text)
-aAssociationVersion = lens _aAssociationVersion (\ s a -> s{_aAssociationVersion = a})
+assAssociationVersion :: Lens' Association (Maybe Text)
+assAssociationVersion = lens _assAssociationVersion (\ s a -> s{_assAssociationVersion = a})
 
 -- | The association name.
-aAssociationName :: Lens' Association (Maybe Text)
-aAssociationName = lens _aAssociationName (\ s a -> s{_aAssociationName = a})
+assAssociationName :: Lens' Association (Maybe Text)
+assAssociationName = lens _assAssociationName (\ s a -> s{_assAssociationName = a})
 
 instance FromJSON Association where
         parseJSON

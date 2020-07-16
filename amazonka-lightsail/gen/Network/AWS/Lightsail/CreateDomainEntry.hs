@@ -18,8 +18,10 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Creates one of the following entry records associated with the domain: A record, CNAME record, TXT record, or MX record.
+-- Creates one of the following entry records associated with the domain: Address (A), canonical name (CNAME), mail exchanger (MX), name server (NS), start of authority (SOA), service locator (SRV), or text (TXT).
 --
+--
+-- The @create domain entry@ operation supports tag-based access control via resource tags applied to the resource identified by @domain name@ . For more information, see the <https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags Lightsail Dev Guide> .
 --
 module Network.AWS.Lightsail.CreateDomainEntry
     (
@@ -123,7 +125,7 @@ data CreateDomainEntryResponse = CreateDomainEntryResponse'{_cdersOperation
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'cdersOperation' - An array of key-value pairs containing information about the operation.
+-- * 'cdersOperation' - An array of objects that describe the result of the action, such as the status of the request, the time stamp of the request, and the resources affected by the request.
 --
 -- * 'cdersResponseStatus' - -- | The response status code.
 createDomainEntryResponse
@@ -134,7 +136,7 @@ createDomainEntryResponse pResponseStatus_
                                  Nothing,
                                _cdersResponseStatus = pResponseStatus_}
 
--- | An array of key-value pairs containing information about the operation.
+-- | An array of objects that describe the result of the action, such as the status of the request, the time stamp of the request, and the resources affected by the request.
 cdersOperation :: Lens' CreateDomainEntryResponse (Maybe Operation)
 cdersOperation = lens _cdersOperation (\ s a -> s{_cdersOperation = a})
 

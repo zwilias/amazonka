@@ -27,7 +27,7 @@ module Network.AWS.MediaLive.Types.HlsTsFileMode (
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | Placeholder documentation for HlsTsFileMode
+-- | Hls Ts File Mode
 data HlsTsFileMode = HlsTsFileMode' (CI Text)
                        deriving (Eq, Ord, Read, Show, Data, Typeable,
                                  Generic)

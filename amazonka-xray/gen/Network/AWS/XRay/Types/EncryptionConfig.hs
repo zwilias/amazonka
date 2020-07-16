@@ -37,7 +37,7 @@ data EncryptionConfig = EncryptionConfig'{_ecStatus
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'ecStatus' - The encryption status. After modifying encryption configuration with 'PutEncryptionConfig' , the status can be @UPDATING@ for up to one hour before X-Ray starts encrypting data with the new key.
+-- * 'ecStatus' - The encryption status. While the status is @UPDATING@ , X-Ray may encrypt data with a combination of the new and old settings.
 --
 -- * 'ecKeyId' - The ID of the customer master key (CMK) used for encryption, if applicable.
 --
@@ -48,7 +48,7 @@ encryptionConfig
   = EncryptionConfig'{_ecStatus = Nothing,
                       _ecKeyId = Nothing, _ecType = Nothing}
 
--- | The encryption status. After modifying encryption configuration with 'PutEncryptionConfig' , the status can be @UPDATING@ for up to one hour before X-Ray starts encrypting data with the new key.
+-- | The encryption status. While the status is @UPDATING@ , X-Ray may encrypt data with a combination of the new and old settings.
 ecStatus :: Lens' EncryptionConfig (Maybe EncryptionStatus)
 ecStatus = lens _ecStatus (\ s a -> s{_ecStatus = a})
 

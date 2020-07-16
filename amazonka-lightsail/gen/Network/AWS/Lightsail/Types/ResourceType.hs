@@ -19,16 +19,22 @@
 module Network.AWS.Lightsail.Types.ResourceType (
   ResourceType (
     ..
-    , Disk
-    , DiskSnapshot
-    , Domain
-    , Instance
-    , InstanceSnapshot
-    , KeyPair
-    , LoadBalancer
-    , LoadBalancerTLSCertificate
-    , PeeredVPC
-    , StaticIP
+    , RTAlarm
+    , RTCloudFormationStackRecord
+    , RTContactMethod
+    , RTDisk
+    , RTDiskSnapshot
+    , RTDomain
+    , RTExportSnapshotRecord
+    , RTInstance
+    , RTInstanceSnapshot
+    , RTKeyPair
+    , RTLoadBalancer
+    , RTLoadBalancerTLSCertificate
+    , RTPeeredVPC
+    , RTRelationalDatabase
+    , RTRelationalDatabaseSnapshot
+    , RTStaticIP
     )
   ) where
 
@@ -39,47 +45,71 @@ data ResourceType = ResourceType' (CI Text)
                       deriving (Eq, Ord, Read, Show, Data, Typeable,
                                 Generic)
 
-pattern Disk :: ResourceType
-pattern Disk = ResourceType' "Disk"
+pattern RTAlarm :: ResourceType
+pattern RTAlarm = ResourceType' "Alarm"
 
-pattern DiskSnapshot :: ResourceType
-pattern DiskSnapshot = ResourceType' "DiskSnapshot"
+pattern RTCloudFormationStackRecord :: ResourceType
+pattern RTCloudFormationStackRecord = ResourceType' "CloudFormationStackRecord"
 
-pattern Domain :: ResourceType
-pattern Domain = ResourceType' "Domain"
+pattern RTContactMethod :: ResourceType
+pattern RTContactMethod = ResourceType' "ContactMethod"
 
-pattern Instance :: ResourceType
-pattern Instance = ResourceType' "Instance"
+pattern RTDisk :: ResourceType
+pattern RTDisk = ResourceType' "Disk"
 
-pattern InstanceSnapshot :: ResourceType
-pattern InstanceSnapshot = ResourceType' "InstanceSnapshot"
+pattern RTDiskSnapshot :: ResourceType
+pattern RTDiskSnapshot = ResourceType' "DiskSnapshot"
 
-pattern KeyPair :: ResourceType
-pattern KeyPair = ResourceType' "KeyPair"
+pattern RTDomain :: ResourceType
+pattern RTDomain = ResourceType' "Domain"
 
-pattern LoadBalancer :: ResourceType
-pattern LoadBalancer = ResourceType' "LoadBalancer"
+pattern RTExportSnapshotRecord :: ResourceType
+pattern RTExportSnapshotRecord = ResourceType' "ExportSnapshotRecord"
 
-pattern LoadBalancerTLSCertificate :: ResourceType
-pattern LoadBalancerTLSCertificate = ResourceType' "LoadBalancerTlsCertificate"
+pattern RTInstance :: ResourceType
+pattern RTInstance = ResourceType' "Instance"
 
-pattern PeeredVPC :: ResourceType
-pattern PeeredVPC = ResourceType' "PeeredVpc"
+pattern RTInstanceSnapshot :: ResourceType
+pattern RTInstanceSnapshot = ResourceType' "InstanceSnapshot"
 
-pattern StaticIP :: ResourceType
-pattern StaticIP = ResourceType' "StaticIp"
+pattern RTKeyPair :: ResourceType
+pattern RTKeyPair = ResourceType' "KeyPair"
+
+pattern RTLoadBalancer :: ResourceType
+pattern RTLoadBalancer = ResourceType' "LoadBalancer"
+
+pattern RTLoadBalancerTLSCertificate :: ResourceType
+pattern RTLoadBalancerTLSCertificate = ResourceType' "LoadBalancerTlsCertificate"
+
+pattern RTPeeredVPC :: ResourceType
+pattern RTPeeredVPC = ResourceType' "PeeredVpc"
+
+pattern RTRelationalDatabase :: ResourceType
+pattern RTRelationalDatabase = ResourceType' "RelationalDatabase"
+
+pattern RTRelationalDatabaseSnapshot :: ResourceType
+pattern RTRelationalDatabaseSnapshot = ResourceType' "RelationalDatabaseSnapshot"
+
+pattern RTStaticIP :: ResourceType
+pattern RTStaticIP = ResourceType' "StaticIp"
 
 {-# COMPLETE
-  Disk,
-  DiskSnapshot,
-  Domain,
-  Instance,
-  InstanceSnapshot,
-  KeyPair,
-  LoadBalancer,
-  LoadBalancerTLSCertificate,
-  PeeredVPC,
-  StaticIP,
+  RTAlarm,
+  RTCloudFormationStackRecord,
+  RTContactMethod,
+  RTDisk,
+  RTDiskSnapshot,
+  RTDomain,
+  RTExportSnapshotRecord,
+  RTInstance,
+  RTInstanceSnapshot,
+  RTKeyPair,
+  RTLoadBalancer,
+  RTLoadBalancerTLSCertificate,
+  RTPeeredVPC,
+  RTRelationalDatabase,
+  RTRelationalDatabaseSnapshot,
+  RTStaticIP,
   ResourceType' #-}
 
 instance FromText ResourceType where
@@ -94,36 +124,48 @@ instance ToText ResourceType where
 --   fromEnum is a partial function, and will error on values unknown at generation time.
 instance Enum ResourceType where
     toEnum i = case i of
-        0 -> Disk
-        1 -> DiskSnapshot
-        2 -> Domain
-        3 -> Instance
-        4 -> InstanceSnapshot
-        5 -> KeyPair
-        6 -> LoadBalancer
-        7 -> LoadBalancerTLSCertificate
-        8 -> PeeredVPC
-        9 -> StaticIP
+        0 -> RTAlarm
+        1 -> RTCloudFormationStackRecord
+        2 -> RTContactMethod
+        3 -> RTDisk
+        4 -> RTDiskSnapshot
+        5 -> RTDomain
+        6 -> RTExportSnapshotRecord
+        7 -> RTInstance
+        8 -> RTInstanceSnapshot
+        9 -> RTKeyPair
+        10 -> RTLoadBalancer
+        11 -> RTLoadBalancerTLSCertificate
+        12 -> RTPeeredVPC
+        13 -> RTRelationalDatabase
+        14 -> RTRelationalDatabaseSnapshot
+        15 -> RTStaticIP
         _ -> (error . showText) $ "Unknown index for ResourceType: " <> toText i
     fromEnum x = case x of
-        Disk -> 0
-        DiskSnapshot -> 1
-        Domain -> 2
-        Instance -> 3
-        InstanceSnapshot -> 4
-        KeyPair -> 5
-        LoadBalancer -> 6
-        LoadBalancerTLSCertificate -> 7
-        PeeredVPC -> 8
-        StaticIP -> 9
+        RTAlarm -> 0
+        RTCloudFormationStackRecord -> 1
+        RTContactMethod -> 2
+        RTDisk -> 3
+        RTDiskSnapshot -> 4
+        RTDomain -> 5
+        RTExportSnapshotRecord -> 6
+        RTInstance -> 7
+        RTInstanceSnapshot -> 8
+        RTKeyPair -> 9
+        RTLoadBalancer -> 10
+        RTLoadBalancerTLSCertificate -> 11
+        RTPeeredVPC -> 12
+        RTRelationalDatabase -> 13
+        RTRelationalDatabaseSnapshot -> 14
+        RTStaticIP -> 15
         ResourceType' name -> (error . showText) $ "Unknown ResourceType: " <> original name
 
 -- | Represents the bounds of /known/ $ResourceType.
 --   AWS may have added more since the source was generated.
 --   This instance exists only for backward compatibility.
 instance Bounded ResourceType where
-    minBound = Disk
-    maxBound = StaticIP
+    minBound = RTAlarm
+    maxBound = RTStaticIP
 
 instance Hashable     ResourceType
 instance NFData       ResourceType

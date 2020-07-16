@@ -20,7 +20,7 @@ module Network.AWS.StepFunctions.Types.LambdaFunctionStartFailedEventDetails whe
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | Contains details about a lambda function which failed to start during an execution.
+-- | Contains details about a lambda function that failed to start during an execution.
 --
 --
 --
@@ -28,12 +28,14 @@ import Network.AWS.Prelude
 data LambdaFunctionStartFailedEventDetails = LambdaFunctionStartFailedEventDetails'{_lfsfedError
                                                                                     ::
                                                                                     !(Maybe
-                                                                                        Text),
+                                                                                        (Sensitive
+                                                                                           Text)),
                                                                                     _lfsfedCause
                                                                                     ::
                                                                                     !(Maybe
-                                                                                        Text)}
-                                               deriving (Eq, Read, Show, Data,
+                                                                                        (Sensitive
+                                                                                           Text))}
+                                               deriving (Eq, Show, Data,
                                                          Typeable, Generic)
 
 -- | Creates a value of 'LambdaFunctionStartFailedEventDetails' with the minimum fields required to make a request.
@@ -52,11 +54,11 @@ lambdaFunctionStartFailedEventDetails
 
 -- | The error code of the failure.
 lfsfedError :: Lens' LambdaFunctionStartFailedEventDetails (Maybe Text)
-lfsfedError = lens _lfsfedError (\ s a -> s{_lfsfedError = a})
+lfsfedError = lens _lfsfedError (\ s a -> s{_lfsfedError = a}) . mapping _Sensitive
 
 -- | A more detailed explanation of the cause of the failure.
 lfsfedCause :: Lens' LambdaFunctionStartFailedEventDetails (Maybe Text)
-lfsfedCause = lens _lfsfedCause (\ s a -> s{_lfsfedCause = a})
+lfsfedCause = lens _lfsfedCause (\ s a -> s{_lfsfedCause = a}) . mapping _Sensitive
 
 instance FromJSON
            LambdaFunctionStartFailedEventDetails

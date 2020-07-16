@@ -19,9 +19,9 @@
 module Network.AWS.MigrationHub.Types.ApplicationStatus (
   ApplicationStatus (
     ..
-    , ASCompleted
-    , ASInProgress
-    , ASNotStarted
+    , Completed
+    , InProgress
+    , NotStarted
     )
   ) where
 
@@ -32,19 +32,19 @@ data ApplicationStatus = ApplicationStatus' (CI Text)
                            deriving (Eq, Ord, Read, Show, Data, Typeable,
                                      Generic)
 
-pattern ASCompleted :: ApplicationStatus
-pattern ASCompleted = ApplicationStatus' "COMPLETED"
+pattern Completed :: ApplicationStatus
+pattern Completed = ApplicationStatus' "COMPLETED"
 
-pattern ASInProgress :: ApplicationStatus
-pattern ASInProgress = ApplicationStatus' "IN_PROGRESS"
+pattern InProgress :: ApplicationStatus
+pattern InProgress = ApplicationStatus' "IN_PROGRESS"
 
-pattern ASNotStarted :: ApplicationStatus
-pattern ASNotStarted = ApplicationStatus' "NOT_STARTED"
+pattern NotStarted :: ApplicationStatus
+pattern NotStarted = ApplicationStatus' "NOT_STARTED"
 
 {-# COMPLETE
-  ASCompleted,
-  ASInProgress,
-  ASNotStarted,
+  Completed,
+  InProgress,
+  NotStarted,
   ApplicationStatus' #-}
 
 instance FromText ApplicationStatus where
@@ -59,22 +59,22 @@ instance ToText ApplicationStatus where
 --   fromEnum is a partial function, and will error on values unknown at generation time.
 instance Enum ApplicationStatus where
     toEnum i = case i of
-        0 -> ASCompleted
-        1 -> ASInProgress
-        2 -> ASNotStarted
+        0 -> Completed
+        1 -> InProgress
+        2 -> NotStarted
         _ -> (error . showText) $ "Unknown index for ApplicationStatus: " <> toText i
     fromEnum x = case x of
-        ASCompleted -> 0
-        ASInProgress -> 1
-        ASNotStarted -> 2
+        Completed -> 0
+        InProgress -> 1
+        NotStarted -> 2
         ApplicationStatus' name -> (error . showText) $ "Unknown ApplicationStatus: " <> original name
 
 -- | Represents the bounds of /known/ $ApplicationStatus.
 --   AWS may have added more since the source was generated.
 --   This instance exists only for backward compatibility.
 instance Bounded ApplicationStatus where
-    minBound = ASCompleted
-    maxBound = ASNotStarted
+    minBound = Completed
+    maxBound = NotStarted
 
 instance Hashable     ApplicationStatus
 instance NFData       ApplicationStatus

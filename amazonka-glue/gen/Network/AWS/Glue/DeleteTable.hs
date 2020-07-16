@@ -55,7 +55,7 @@ data DeleteTable = DeleteTable'{_dtCatalogId ::
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dtCatalogId' - The ID of the Data Catalog where the table resides. If none is supplied, the AWS account ID is used by default.
+-- * 'dtCatalogId' - The ID of the Data Catalog where the table resides. If none is provided, the AWS account ID is used by default.
 --
 -- * 'dtDatabaseName' - The name of the catalog database in which the table resides. For Hive compatibility, this name is entirely lowercase.
 --
@@ -68,7 +68,7 @@ deleteTable pDatabaseName_ pName_
   = DeleteTable'{_dtCatalogId = Nothing,
                  _dtDatabaseName = pDatabaseName_, _dtName = pName_}
 
--- | The ID of the Data Catalog where the table resides. If none is supplied, the AWS account ID is used by default.
+-- | The ID of the Data Catalog where the table resides. If none is provided, the AWS account ID is used by default.
 dtCatalogId :: Lens' DeleteTable (Maybe Text)
 dtCatalogId = lens _dtCatalogId (\ s a -> s{_dtCatalogId = a})
 

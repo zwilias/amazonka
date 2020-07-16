@@ -23,9 +23,9 @@
 --
 -- A newly created CacheParameterGroup is an exact duplicate of the default parameter group for the CacheParameterGroupFamily. To customize the newly created CacheParameterGroup you can change the values of specific parameters. For more information, see:
 --
---     * <http://docs.aws.amazon.com/AmazonElastiCache/latest/APIReference/API_ModifyCacheParameterGroup.html ModifyCacheParameterGroup> in the ElastiCache API Reference.
+--     * <https://docs.aws.amazon.com/AmazonElastiCache/latest/APIReference/API_ModifyCacheParameterGroup.html ModifyCacheParameterGroup> in the ElastiCache API Reference.
 --
---     * <http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/ParameterGroups.html Parameters and Parameter Groups> in the ElastiCache User Guide.
+--     * <https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/ParameterGroups.html Parameters and Parameter Groups> in the ElastiCache User Guide.
 --
 --
 --
@@ -74,7 +74,7 @@ data CreateCacheParameterGroup = CreateCacheParameterGroup'{_ccpgCacheParameterG
 --
 -- * 'ccpgCacheParameterGroupName' - A user-specified name for the cache parameter group.
 --
--- * 'ccpgCacheParameterGroupFamily' - The name of the cache parameter group family that the cache parameter group can be used with. Valid values are: @memcached1.4@ | @redis2.6@ | @redis2.8@ | @redis3.2@ 
+-- * 'ccpgCacheParameterGroupFamily' - The name of the cache parameter group family that the cache parameter group can be used with. Valid values are: @memcached1.4@ | @memcached1.5@ | @redis2.6@ | @redis2.8@ | @redis3.2@ | @redis4.0@ | @redis5.0@ | 
 --
 -- * 'ccpgDescription' - A user-specified description for the cache parameter group.
 createCacheParameterGroup
@@ -94,7 +94,7 @@ createCacheParameterGroup pCacheParameterGroupName_
 ccpgCacheParameterGroupName :: Lens' CreateCacheParameterGroup Text
 ccpgCacheParameterGroupName = lens _ccpgCacheParameterGroupName (\ s a -> s{_ccpgCacheParameterGroupName = a})
 
--- | The name of the cache parameter group family that the cache parameter group can be used with. Valid values are: @memcached1.4@ | @redis2.6@ | @redis2.8@ | @redis3.2@ 
+-- | The name of the cache parameter group family that the cache parameter group can be used with. Valid values are: @memcached1.4@ | @memcached1.5@ | @redis2.6@ | @redis2.8@ | @redis3.2@ | @redis4.0@ | @redis5.0@ | 
 ccpgCacheParameterGroupFamily :: Lens' CreateCacheParameterGroup Text
 ccpgCacheParameterGroupFamily = lens _ccpgCacheParameterGroupFamily (\ s a -> s{_ccpgCacheParameterGroupFamily = a})
 

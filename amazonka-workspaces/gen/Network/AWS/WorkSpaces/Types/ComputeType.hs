@@ -21,7 +21,7 @@ import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.WorkSpaces.Types.Compute
 
--- | Information about the compute type.
+-- | Describes the compute type.
 --
 --
 --

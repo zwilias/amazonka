@@ -93,7 +93,7 @@ data UpdateCustomVerificationEmailTemplate = UpdateCustomVerificationEmailTempla
 --
 -- * 'ucvetSuccessRedirectionURL' - The URL that the recipient of the verification email is sent to if his or her address is successfully verified.
 --
--- * 'ucvetTemplateContent' - The content of the custom verification email. The total size of the email must be less than 10 MB. The message body may contain HTML, with some limitations. For more information, see <http://docs.aws.amazon.com/ses/latest/DeveloperGuide/custom-verification-emails.html#custom-verification-emails-faq Custom Verification Email Frequently Asked Questions> in the /Amazon SES Developer Guide/ .
+-- * 'ucvetTemplateContent' - The content of the custom verification email. The total size of the email must be less than 10 MB. The message body may contain HTML, with some limitations. For more information, see <https://docs.aws.amazon.com/ses/latest/DeveloperGuide/custom-verification-emails.html#custom-verification-emails-faq Custom Verification Email Frequently Asked Questions> in the /Amazon SES Developer Guide/ .
 --
 -- * 'ucvetTemplateName' - The name of the custom verification email template that you want to update.
 updateCustomVerificationEmailTemplate
@@ -126,7 +126,7 @@ ucvetTemplateSubject = lens _ucvetTemplateSubject (\ s a -> s{_ucvetTemplateSubj
 ucvetSuccessRedirectionURL :: Lens' UpdateCustomVerificationEmailTemplate (Maybe Text)
 ucvetSuccessRedirectionURL = lens _ucvetSuccessRedirectionURL (\ s a -> s{_ucvetSuccessRedirectionURL = a})
 
--- | The content of the custom verification email. The total size of the email must be less than 10 MB. The message body may contain HTML, with some limitations. For more information, see <http://docs.aws.amazon.com/ses/latest/DeveloperGuide/custom-verification-emails.html#custom-verification-emails-faq Custom Verification Email Frequently Asked Questions> in the /Amazon SES Developer Guide/ .
+-- | The content of the custom verification email. The total size of the email must be less than 10 MB. The message body may contain HTML, with some limitations. For more information, see <https://docs.aws.amazon.com/ses/latest/DeveloperGuide/custom-verification-emails.html#custom-verification-emails-faq Custom Verification Email Frequently Asked Questions> in the /Amazon SES Developer Guide/ .
 ucvetTemplateContent :: Lens' UpdateCustomVerificationEmailTemplate (Maybe Text)
 ucvetTemplateContent = lens _ucvetTemplateContent (\ s a -> s{_ucvetTemplateContent = a})
 

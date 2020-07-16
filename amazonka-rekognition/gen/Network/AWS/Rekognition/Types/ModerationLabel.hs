@@ -20,7 +20,7 @@ module Network.AWS.Rekognition.Types.ModerationLabel where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | Provides information about a single type of moderated content found in an image or video. Each type of moderated content has a label within a hierarchical taxonomy. For more information, see 'moderation' .
+-- | Provides information about a single type of unsafe content found in an image or video. Each type of moderated content has a label within a hierarchical taxonomy. For more information, see Detecting Unsafe Content in the Amazon Rekognition Developer Guide.
 --
 --
 --
@@ -37,9 +37,9 @@ data ModerationLabel = ModerationLabel'{_mlConfidence
 --
 -- * 'mlConfidence' - Specifies the confidence that Amazon Rekognition has that the label has been correctly identified. If you don't specify the @MinConfidence@ parameter in the call to @DetectModerationLabels@ , the operation returns labels with a confidence value greater than or equal to 50 percent.
 --
--- * 'mlName' - The label name for the type of content detected in the image.
+-- * 'mlName' - The label name for the type of unsafe content detected in the image.
 --
--- * 'mlParentName' - The name for the parent label. Labels at the top-level of the hierarchy have the parent label @""@ .
+-- * 'mlParentName' - The name for the parent label. Labels at the top level of the hierarchy have the parent label @""@ .
 moderationLabel
     :: ModerationLabel
 moderationLabel
@@ -50,11 +50,11 @@ moderationLabel
 mlConfidence :: Lens' ModerationLabel (Maybe Double)
 mlConfidence = lens _mlConfidence (\ s a -> s{_mlConfidence = a})
 
--- | The label name for the type of content detected in the image.
+-- | The label name for the type of unsafe content detected in the image.
 mlName :: Lens' ModerationLabel (Maybe Text)
 mlName = lens _mlName (\ s a -> s{_mlName = a})
 
--- | The name for the parent label. Labels at the top-level of the hierarchy have the parent label @""@ .
+-- | The name for the parent label. Labels at the top level of the hierarchy have the parent label @""@ .
 mlParentName :: Lens' ModerationLabel (Maybe Text)
 mlParentName = lens _mlParentName (\ s a -> s{_mlParentName = a})
 

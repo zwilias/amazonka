@@ -17,12 +17,13 @@
 --
 module Network.AWS.ECS.Types.Deployment where
 
+import Network.AWS.ECS.Types.CapacityProviderStrategyItem
 import Network.AWS.ECS.Types.LaunchType
 import Network.AWS.ECS.Types.NetworkConfiguration
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | The details of an Amazon ECS service deployment.
+-- | The details of an Amazon ECS service deployment. This is used only when a service uses the @ECS@ deployment controller type.
 --
 --
 --
@@ -39,7 +40,9 @@ data Deployment = Deployment'{_dRunningCount ::
                               _dUpdatedAt :: !(Maybe POSIX),
                               _dTaskDefinition :: !(Maybe Text),
                               _dNetworkConfiguration ::
-                              !(Maybe NetworkConfiguration)}
+                              !(Maybe NetworkConfiguration),
+                              _dCapacityProviderStrategy ::
+                              !(Maybe [CapacityProviderStrategyItem])}
                     deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'Deployment' with the minimum fields required to make a request.
@@ -48,11 +51,11 @@ data Deployment = Deployment'{_dRunningCount ::
 --
 -- * 'dRunningCount' - The number of tasks in the deployment that are in the @RUNNING@ status.
 --
--- * 'dStatus' - The status of the deployment. Valid values are @PRIMARY@ (for the most recent deployment), @ACTIVE@ (for previous deployments that still have tasks running, but are being replaced with the @PRIMARY@ deployment), and @INACTIVE@ (for deployments that have been completely replaced).
+-- * 'dStatus' - The status of the deployment. The following describes each state:     * PRIMARY    * The most recent deployment of a service.     * ACTIVE    * A service deployment that still has running tasks, but are in the process of being replaced with a new @PRIMARY@ deployment.     * INACTIVE    * A deployment that has been completely replaced.
 --
--- * 'dCreatedAt' - The Unix time stamp for when the service was created.
+-- * 'dCreatedAt' - The Unix timestamp for when the service deployment was created.
 --
--- * 'dPlatformVersion' - The platform version on which your service is running.
+-- * 'dPlatformVersion' - The platform version on which your tasks in the service are running. A platform version is only specified for tasks using the Fargate launch type. If one is not specified, the @LATEST@ platform version is used by default. For more information, see <https://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html AWS Fargate Platform Versions> in the /Amazon Elastic Container Service Developer Guide/ .
 --
 -- * 'dDesiredCount' - The most recent desired count of tasks that was specified for the service to deploy or maintain.
 --
@@ -60,13 +63,15 @@ data Deployment = Deployment'{_dRunningCount ::
 --
 -- * 'dId' - The ID of the deployment.
 --
--- * 'dLaunchType' - The launch type on which your service is running.
+-- * 'dLaunchType' - The launch type the tasks in the service are using. For more information, see <https://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_types.html Amazon ECS Launch Types> in the /Amazon Elastic Container Service Developer Guide/ .
 --
--- * 'dUpdatedAt' - The Unix time stamp for when the service was last updated.
+-- * 'dUpdatedAt' - The Unix timestamp for when the service deployment was last updated.
 --
--- * 'dTaskDefinition' - The most recent task definition that was specified for the service to use.
+-- * 'dTaskDefinition' - The most recent task definition that was specified for the tasks in the service to use.
 --
--- * 'dNetworkConfiguration' - The VPC subnet and security group configuration for tasks that receive their own Elastic Network Interface by using the @awsvpc@ networking mode.
+-- * 'dNetworkConfiguration' - The VPC subnet and security group configuration for tasks that receive their own elastic network interface by using the @awsvpc@ networking mode.
+--
+-- * 'dCapacityProviderStrategy' - The capacity provider strategy that the deployment is using.
 deployment
     :: Deployment
 deployment
@@ -76,21 +81,22 @@ deployment
                 _dDesiredCount = Nothing, _dPendingCount = Nothing,
                 _dId = Nothing, _dLaunchType = Nothing,
                 _dUpdatedAt = Nothing, _dTaskDefinition = Nothing,
-                _dNetworkConfiguration = Nothing}
+                _dNetworkConfiguration = Nothing,
+                _dCapacityProviderStrategy = Nothing}
 
 -- | The number of tasks in the deployment that are in the @RUNNING@ status.
 dRunningCount :: Lens' Deployment (Maybe Int)
 dRunningCount = lens _dRunningCount (\ s a -> s{_dRunningCount = a})
 
--- | The status of the deployment. Valid values are @PRIMARY@ (for the most recent deployment), @ACTIVE@ (for previous deployments that still have tasks running, but are being replaced with the @PRIMARY@ deployment), and @INACTIVE@ (for deployments that have been completely replaced).
+-- | The status of the deployment. The following describes each state:     * PRIMARY    * The most recent deployment of a service.     * ACTIVE    * A service deployment that still has running tasks, but are in the process of being replaced with a new @PRIMARY@ deployment.     * INACTIVE    * A deployment that has been completely replaced.
 dStatus :: Lens' Deployment (Maybe Text)
 dStatus = lens _dStatus (\ s a -> s{_dStatus = a})
 
--- | The Unix time stamp for when the service was created.
+-- | The Unix timestamp for when the service deployment was created.
 dCreatedAt :: Lens' Deployment (Maybe UTCTime)
 dCreatedAt = lens _dCreatedAt (\ s a -> s{_dCreatedAt = a}) . mapping _Time
 
--- | The platform version on which your service is running.
+-- | The platform version on which your tasks in the service are running. A platform version is only specified for tasks using the Fargate launch type. If one is not specified, the @LATEST@ platform version is used by default. For more information, see <https://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html AWS Fargate Platform Versions> in the /Amazon Elastic Container Service Developer Guide/ .
 dPlatformVersion :: Lens' Deployment (Maybe Text)
 dPlatformVersion = lens _dPlatformVersion (\ s a -> s{_dPlatformVersion = a})
 
@@ -106,21 +112,25 @@ dPendingCount = lens _dPendingCount (\ s a -> s{_dPendingCount = a})
 dId :: Lens' Deployment (Maybe Text)
 dId = lens _dId (\ s a -> s{_dId = a})
 
--- | The launch type on which your service is running.
+-- | The launch type the tasks in the service are using. For more information, see <https://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_types.html Amazon ECS Launch Types> in the /Amazon Elastic Container Service Developer Guide/ .
 dLaunchType :: Lens' Deployment (Maybe LaunchType)
 dLaunchType = lens _dLaunchType (\ s a -> s{_dLaunchType = a})
 
--- | The Unix time stamp for when the service was last updated.
+-- | The Unix timestamp for when the service deployment was last updated.
 dUpdatedAt :: Lens' Deployment (Maybe UTCTime)
 dUpdatedAt = lens _dUpdatedAt (\ s a -> s{_dUpdatedAt = a}) . mapping _Time
 
--- | The most recent task definition that was specified for the service to use.
+-- | The most recent task definition that was specified for the tasks in the service to use.
 dTaskDefinition :: Lens' Deployment (Maybe Text)
 dTaskDefinition = lens _dTaskDefinition (\ s a -> s{_dTaskDefinition = a})
 
--- | The VPC subnet and security group configuration for tasks that receive their own Elastic Network Interface by using the @awsvpc@ networking mode.
+-- | The VPC subnet and security group configuration for tasks that receive their own elastic network interface by using the @awsvpc@ networking mode.
 dNetworkConfiguration :: Lens' Deployment (Maybe NetworkConfiguration)
 dNetworkConfiguration = lens _dNetworkConfiguration (\ s a -> s{_dNetworkConfiguration = a})
+
+-- | The capacity provider strategy that the deployment is using.
+dCapacityProviderStrategy :: Lens' Deployment [CapacityProviderStrategyItem]
+dCapacityProviderStrategy = lens _dCapacityProviderStrategy (\ s a -> s{_dCapacityProviderStrategy = a}) . _Default . _Coerce
 
 instance FromJSON Deployment where
         parseJSON
@@ -136,7 +146,8 @@ instance FromJSON Deployment where
                      <*> (x .:? "launchType")
                      <*> (x .:? "updatedAt")
                      <*> (x .:? "taskDefinition")
-                     <*> (x .:? "networkConfiguration"))
+                     <*> (x .:? "networkConfiguration")
+                     <*> (x .:? "capacityProviderStrategy" .!= mempty))
 
 instance Hashable Deployment where
 

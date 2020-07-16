@@ -23,11 +23,12 @@ import Network.AWS.MediaConvert.Types.Mp4FreeSpaceBox
 import Network.AWS.MediaConvert.Types.Mp4MoovPlacement
 import Network.AWS.Prelude
 
--- | Settings for MP4 Container
+-- | Settings for MP4 container. You can create audio-only AAC outputs with this container.
 --
 -- /See:/ 'mp4Settings' smart constructor.
 data Mp4Settings = Mp4Settings'{_mMoovPlacement ::
                                 !(Maybe Mp4MoovPlacement),
+                                _mCttsVersion :: !(Maybe Nat),
                                 _mFreeSpaceBox :: !(Maybe Mp4FreeSpaceBox),
                                 _mMp4MajorBrand :: !(Maybe Text),
                                 _mCslgAtom :: !(Maybe Mp4CslgAtom)}
@@ -37,25 +38,31 @@ data Mp4Settings = Mp4Settings'{_mMoovPlacement ::
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'mMoovPlacement' - Undocumented member.
+-- * 'mMoovPlacement' - If set to PROGRESSIVE_DOWNLOAD, the MOOV atom is relocated to the beginning of the archive as required for progressive downloading. Otherwise it is placed normally at the end.
 --
--- * 'mFreeSpaceBox' - Undocumented member.
+-- * 'mCttsVersion' - Ignore this setting unless compliance to the CTTS box version specification matters in your workflow. Specify a value of 1 to set your CTTS box version to 1 and make your output compliant with the specification. When you specify a value of 1, you must also set CSLG atom (cslgAtom) to the value INCLUDE. Keep the default value 0 to set your CTTS box version to 0. This can provide backward compatibility for some players and packagers.
+--
+-- * 'mFreeSpaceBox' - Inserts a free-space box immediately after the moov box.
 --
 -- * 'mMp4MajorBrand' - Overrides the "Major Brand" field in the output file. Usually not necessary to specify.
 --
--- * 'mCslgAtom' - Undocumented member.
+-- * 'mCslgAtom' - When enabled, file composition times will start at zero, composition times in the 'ctts' (composition time to sample) box for B-frames will be negative, and a 'cslg' (composition shift least greatest) box will be included per 14496-1 amendment 1. This improves compatibility with Apple players and tools.
 mp4Settings
     :: Mp4Settings
 mp4Settings
   = Mp4Settings'{_mMoovPlacement = Nothing,
-                 _mFreeSpaceBox = Nothing, _mMp4MajorBrand = Nothing,
-                 _mCslgAtom = Nothing}
+                 _mCttsVersion = Nothing, _mFreeSpaceBox = Nothing,
+                 _mMp4MajorBrand = Nothing, _mCslgAtom = Nothing}
 
--- | Undocumented member.
+-- | If set to PROGRESSIVE_DOWNLOAD, the MOOV atom is relocated to the beginning of the archive as required for progressive downloading. Otherwise it is placed normally at the end.
 mMoovPlacement :: Lens' Mp4Settings (Maybe Mp4MoovPlacement)
 mMoovPlacement = lens _mMoovPlacement (\ s a -> s{_mMoovPlacement = a})
 
--- | Undocumented member.
+-- | Ignore this setting unless compliance to the CTTS box version specification matters in your workflow. Specify a value of 1 to set your CTTS box version to 1 and make your output compliant with the specification. When you specify a value of 1, you must also set CSLG atom (cslgAtom) to the value INCLUDE. Keep the default value 0 to set your CTTS box version to 0. This can provide backward compatibility for some players and packagers.
+mCttsVersion :: Lens' Mp4Settings (Maybe Natural)
+mCttsVersion = lens _mCttsVersion (\ s a -> s{_mCttsVersion = a}) . mapping _Nat
+
+-- | Inserts a free-space box immediately after the moov box.
 mFreeSpaceBox :: Lens' Mp4Settings (Maybe Mp4FreeSpaceBox)
 mFreeSpaceBox = lens _mFreeSpaceBox (\ s a -> s{_mFreeSpaceBox = a})
 
@@ -63,7 +70,7 @@ mFreeSpaceBox = lens _mFreeSpaceBox (\ s a -> s{_mFreeSpaceBox = a})
 mMp4MajorBrand :: Lens' Mp4Settings (Maybe Text)
 mMp4MajorBrand = lens _mMp4MajorBrand (\ s a -> s{_mMp4MajorBrand = a})
 
--- | Undocumented member.
+-- | When enabled, file composition times will start at zero, composition times in the 'ctts' (composition time to sample) box for B-frames will be negative, and a 'cslg' (composition shift least greatest) box will be included per 14496-1 amendment 1. This improves compatibility with Apple players and tools.
 mCslgAtom :: Lens' Mp4Settings (Maybe Mp4CslgAtom)
 mCslgAtom = lens _mCslgAtom (\ s a -> s{_mCslgAtom = a})
 
@@ -72,7 +79,8 @@ instance FromJSON Mp4Settings where
           = withObject "Mp4Settings"
               (\ x ->
                  Mp4Settings' <$>
-                   (x .:? "moovPlacement") <*> (x .:? "freeSpaceBox")
+                   (x .:? "moovPlacement") <*> (x .:? "cttsVersion") <*>
+                     (x .:? "freeSpaceBox")
                      <*> (x .:? "mp4MajorBrand")
                      <*> (x .:? "cslgAtom"))
 
@@ -85,6 +93,7 @@ instance ToJSON Mp4Settings where
           = object
               (catMaybes
                  [("moovPlacement" .=) <$> _mMoovPlacement,
+                  ("cttsVersion" .=) <$> _mCttsVersion,
                   ("freeSpaceBox" .=) <$> _mFreeSpaceBox,
                   ("mp4MajorBrand" .=) <$> _mMp4MajorBrand,
                   ("cslgAtom" .=) <$> _mCslgAtom])

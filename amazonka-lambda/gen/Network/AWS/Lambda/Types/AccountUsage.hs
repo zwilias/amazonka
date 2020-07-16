@@ -20,7 +20,7 @@ module Network.AWS.Lambda.Types.AccountUsage where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | Provides code size usage and function count associated with the current account and region.
+-- | The number of functions and amount of storage in use.
 --
 --
 --
@@ -34,20 +34,20 @@ data AccountUsage = AccountUsage'{_auTotalCodeSize ::
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'auTotalCodeSize' - Total size, in bytes, of the account's deployment packages per region.
+-- * 'auTotalCodeSize' - The amount of storage space, in bytes, that's being used by deployment packages and layer archives.
 --
--- * 'auFunctionCount' - The number of your account's existing functions per region.
+-- * 'auFunctionCount' - The number of Lambda functions.
 accountUsage
     :: AccountUsage
 accountUsage
   = AccountUsage'{_auTotalCodeSize = Nothing,
                   _auFunctionCount = Nothing}
 
--- | Total size, in bytes, of the account's deployment packages per region.
+-- | The amount of storage space, in bytes, that's being used by deployment packages and layer archives.
 auTotalCodeSize :: Lens' AccountUsage (Maybe Integer)
 auTotalCodeSize = lens _auTotalCodeSize (\ s a -> s{_auTotalCodeSize = a})
 
--- | The number of your account's existing functions per region.
+-- | The number of Lambda functions.
 auFunctionCount :: Lens' AccountUsage (Maybe Integer)
 auFunctionCount = lens _auFunctionCount (\ s a -> s{_auFunctionCount = a})
 

@@ -21,8 +21,10 @@ import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Rekognition.Types.PersonDetail
 
--- | Details and tracking information for a single time a person is tracked in a video. Amazon Rekognition operations that track persons return an array of @PersonDetection@ objects with elements for each time a person is tracked in a video. For more information, see . 
+-- | Details and path tracking information for a single time a person's path is tracked in a video. Amazon Rekognition operations that track people's paths return an array of @PersonDetection@ objects with elements for each time a person's path is tracked in a video. 
 --
+--
+-- For more information, see GetPersonTracking in the Amazon Rekognition Developer Guide. 
 --
 --
 -- /See:/ 'personDetection' smart constructor.
@@ -35,20 +37,20 @@ data PersonDetection = PersonDetection'{_pdPerson ::
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'pdPerson' - Details about a person tracked in a video.
+-- * 'pdPerson' - Details about a person whose path was tracked in a video.
 --
--- * 'pdTimestamp' - The time, in milliseconds from the start of the video, that the person was tracked.
+-- * 'pdTimestamp' - The time, in milliseconds from the start of the video, that the person's path was tracked.
 personDetection
     :: PersonDetection
 personDetection
   = PersonDetection'{_pdPerson = Nothing,
                      _pdTimestamp = Nothing}
 
--- | Details about a person tracked in a video.
+-- | Details about a person whose path was tracked in a video.
 pdPerson :: Lens' PersonDetection (Maybe PersonDetail)
 pdPerson = lens _pdPerson (\ s a -> s{_pdPerson = a})
 
--- | The time, in milliseconds from the start of the video, that the person was tracked.
+-- | The time, in milliseconds from the start of the video, that the person's path was tracked.
 pdTimestamp :: Lens' PersonDetection (Maybe Integer)
 pdTimestamp = lens _pdTimestamp (\ s a -> s{_pdTimestamp = a})
 

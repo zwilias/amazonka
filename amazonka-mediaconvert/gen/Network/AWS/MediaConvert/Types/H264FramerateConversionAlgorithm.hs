@@ -19,29 +19,29 @@
 module Network.AWS.MediaConvert.Types.H264FramerateConversionAlgorithm (
   H264FramerateConversionAlgorithm (
     ..
-    , HFCADuplicateDrop
-    , HFCAInterpolate
+    , HDuplicateDrop
+    , HInterpolate
     )
   ) where
 
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | When set to INTERPOLATE, produces smoother motion during framerate conversion.
+-- | When set to INTERPOLATE, produces smoother motion during frame rate conversion.
 data H264FramerateConversionAlgorithm = H264FramerateConversionAlgorithm' (CI
                                                                              Text)
                                           deriving (Eq, Ord, Read, Show, Data,
                                                     Typeable, Generic)
 
-pattern HFCADuplicateDrop :: H264FramerateConversionAlgorithm
-pattern HFCADuplicateDrop = H264FramerateConversionAlgorithm' "DUPLICATE_DROP"
+pattern HDuplicateDrop :: H264FramerateConversionAlgorithm
+pattern HDuplicateDrop = H264FramerateConversionAlgorithm' "DUPLICATE_DROP"
 
-pattern HFCAInterpolate :: H264FramerateConversionAlgorithm
-pattern HFCAInterpolate = H264FramerateConversionAlgorithm' "INTERPOLATE"
+pattern HInterpolate :: H264FramerateConversionAlgorithm
+pattern HInterpolate = H264FramerateConversionAlgorithm' "INTERPOLATE"
 
 {-# COMPLETE
-  HFCADuplicateDrop,
-  HFCAInterpolate,
+  HDuplicateDrop,
+  HInterpolate,
   H264FramerateConversionAlgorithm' #-}
 
 instance FromText H264FramerateConversionAlgorithm where
@@ -56,20 +56,20 @@ instance ToText H264FramerateConversionAlgorithm where
 --   fromEnum is a partial function, and will error on values unknown at generation time.
 instance Enum H264FramerateConversionAlgorithm where
     toEnum i = case i of
-        0 -> HFCADuplicateDrop
-        1 -> HFCAInterpolate
+        0 -> HDuplicateDrop
+        1 -> HInterpolate
         _ -> (error . showText) $ "Unknown index for H264FramerateConversionAlgorithm: " <> toText i
     fromEnum x = case x of
-        HFCADuplicateDrop -> 0
-        HFCAInterpolate -> 1
+        HDuplicateDrop -> 0
+        HInterpolate -> 1
         H264FramerateConversionAlgorithm' name -> (error . showText) $ "Unknown H264FramerateConversionAlgorithm: " <> original name
 
 -- | Represents the bounds of /known/ $H264FramerateConversionAlgorithm.
 --   AWS may have added more since the source was generated.
 --   This instance exists only for backward compatibility.
 instance Bounded H264FramerateConversionAlgorithm where
-    minBound = HFCADuplicateDrop
-    maxBound = HFCAInterpolate
+    minBound = HDuplicateDrop
+    maxBound = HInterpolate
 
 instance Hashable     H264FramerateConversionAlgorithm
 instance NFData       H264FramerateConversionAlgorithm

@@ -20,7 +20,7 @@ module Network.AWS.SSM.Types.MaintenanceWindowStepFunctionsParameters where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | The parameters for a STEP_FUNCTION task.
+-- | The parameters for a STEP_FUNCTIONS task.
 --
 --
 -- For information about specifying and updating task parameters, see 'RegisterTaskWithMaintenanceWindow' and 'UpdateMaintenanceWindowTask' .
@@ -43,9 +43,9 @@ data MaintenanceWindowStepFunctionsParameters = MaintenanceWindowStepFunctionsPa
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'mwsfpInput' - The inputs for the STEP_FUNCTION task.
+-- * 'mwsfpInput' - The inputs for the STEP_FUNCTIONS task.
 --
--- * 'mwsfpName' - The name of the STEP_FUNCTION task.
+-- * 'mwsfpName' - The name of the STEP_FUNCTIONS task.
 maintenanceWindowStepFunctionsParameters
     :: MaintenanceWindowStepFunctionsParameters
 maintenanceWindowStepFunctionsParameters
@@ -53,11 +53,11 @@ maintenanceWindowStepFunctionsParameters
                                                 = Nothing,
                                               _mwsfpName = Nothing}
 
--- | The inputs for the STEP_FUNCTION task.
+-- | The inputs for the STEP_FUNCTIONS task.
 mwsfpInput :: Lens' MaintenanceWindowStepFunctionsParameters (Maybe Text)
 mwsfpInput = lens _mwsfpInput (\ s a -> s{_mwsfpInput = a}) . mapping _Sensitive
 
--- | The name of the STEP_FUNCTION task.
+-- | The name of the STEP_FUNCTIONS task.
 mwsfpName :: Lens' MaintenanceWindowStepFunctionsParameters (Maybe Text)
 mwsfpName = lens _mwsfpName (\ s a -> s{_mwsfpName = a})
 

@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Delete a list of parameters. This API is used to delete parameters by using the Amazon EC2 console.
+-- Delete a list of parameters.
 --
 --
 module Network.AWS.SSM.DeleteParameters

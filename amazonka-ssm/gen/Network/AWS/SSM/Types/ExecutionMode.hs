@@ -19,8 +19,8 @@
 module Network.AWS.SSM.Types.ExecutionMode (
   ExecutionMode (
     ..
-    , Auto
-    , Interactive
+    , EMAuto
+    , EMInteractive
     )
   ) where
 
@@ -31,15 +31,15 @@ data ExecutionMode = ExecutionMode' (CI Text)
                        deriving (Eq, Ord, Read, Show, Data, Typeable,
                                  Generic)
 
-pattern Auto :: ExecutionMode
-pattern Auto = ExecutionMode' "Auto"
+pattern EMAuto :: ExecutionMode
+pattern EMAuto = ExecutionMode' "Auto"
 
-pattern Interactive :: ExecutionMode
-pattern Interactive = ExecutionMode' "Interactive"
+pattern EMInteractive :: ExecutionMode
+pattern EMInteractive = ExecutionMode' "Interactive"
 
 {-# COMPLETE
-  Auto,
-  Interactive,
+  EMAuto,
+  EMInteractive,
   ExecutionMode' #-}
 
 instance FromText ExecutionMode where
@@ -54,20 +54,20 @@ instance ToText ExecutionMode where
 --   fromEnum is a partial function, and will error on values unknown at generation time.
 instance Enum ExecutionMode where
     toEnum i = case i of
-        0 -> Auto
-        1 -> Interactive
+        0 -> EMAuto
+        1 -> EMInteractive
         _ -> (error . showText) $ "Unknown index for ExecutionMode: " <> toText i
     fromEnum x = case x of
-        Auto -> 0
-        Interactive -> 1
+        EMAuto -> 0
+        EMInteractive -> 1
         ExecutionMode' name -> (error . showText) $ "Unknown ExecutionMode: " <> original name
 
 -- | Represents the bounds of /known/ $ExecutionMode.
 --   AWS may have added more since the source was generated.
 --   This instance exists only for backward compatibility.
 instance Bounded ExecutionMode where
-    minBound = Auto
-    maxBound = Interactive
+    minBound = EMAuto
+    maxBound = EMInteractive
 
 instance Hashable     ExecutionMode
 instance NFData       ExecutionMode

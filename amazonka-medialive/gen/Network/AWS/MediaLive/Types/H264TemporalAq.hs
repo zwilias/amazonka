@@ -27,7 +27,7 @@ module Network.AWS.MediaLive.Types.H264TemporalAq (
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | Placeholder documentation for H264TemporalAq
+-- | H264 Temporal Aq
 data H264TemporalAq = H264TemporalAq' (CI Text)
                         deriving (Eq, Ord, Read, Show, Data, Typeable,
                                   Generic)

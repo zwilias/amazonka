@@ -19,6 +19,8 @@
 module Network.AWS.Route53.Types.CloudWatchRegion (
   CloudWatchRegion (
     ..
+    , CWRAfSouth1
+    , CWRApEast1
     , CWRApNortheast1
     , CWRApNortheast2
     , CWRApNortheast3
@@ -26,13 +28,21 @@ module Network.AWS.Route53.Types.CloudWatchRegion (
     , CWRApSoutheast1
     , CWRApSoutheast2
     , CWRCaCentral1
+    , CWRCnNorth1
+    , CWRCnNorthwest1
     , CWREuCentral1
+    , CWREuNorth1
     , CWREuWest1
     , CWREuWest2
     , CWREuWest3
+    , CWRMeSouth1
     , CWRSaEast1
     , CWRUsEast1
     , CWRUsEast2
+    , CWRUsGovEast1
+    , CWRUsGovWest1
+    , CWRUsIsoEast1
+    , CWRUsIsobEast1
     , CWRUsWest1
     , CWRUsWest2
     )
@@ -45,6 +55,12 @@ import Network.AWS.Route53.Internal
 data CloudWatchRegion = CloudWatchRegion' (CI Text)
                           deriving (Eq, Ord, Read, Show, Data, Typeable,
                                     Generic)
+
+pattern CWRAfSouth1 :: CloudWatchRegion
+pattern CWRAfSouth1 = CloudWatchRegion' "af-south-1"
+
+pattern CWRApEast1 :: CloudWatchRegion
+pattern CWRApEast1 = CloudWatchRegion' "ap-east-1"
 
 pattern CWRApNortheast1 :: CloudWatchRegion
 pattern CWRApNortheast1 = CloudWatchRegion' "ap-northeast-1"
@@ -67,8 +83,17 @@ pattern CWRApSoutheast2 = CloudWatchRegion' "ap-southeast-2"
 pattern CWRCaCentral1 :: CloudWatchRegion
 pattern CWRCaCentral1 = CloudWatchRegion' "ca-central-1"
 
+pattern CWRCnNorth1 :: CloudWatchRegion
+pattern CWRCnNorth1 = CloudWatchRegion' "cn-north-1"
+
+pattern CWRCnNorthwest1 :: CloudWatchRegion
+pattern CWRCnNorthwest1 = CloudWatchRegion' "cn-northwest-1"
+
 pattern CWREuCentral1 :: CloudWatchRegion
 pattern CWREuCentral1 = CloudWatchRegion' "eu-central-1"
+
+pattern CWREuNorth1 :: CloudWatchRegion
+pattern CWREuNorth1 = CloudWatchRegion' "eu-north-1"
 
 pattern CWREuWest1 :: CloudWatchRegion
 pattern CWREuWest1 = CloudWatchRegion' "eu-west-1"
@@ -79,6 +104,9 @@ pattern CWREuWest2 = CloudWatchRegion' "eu-west-2"
 pattern CWREuWest3 :: CloudWatchRegion
 pattern CWREuWest3 = CloudWatchRegion' "eu-west-3"
 
+pattern CWRMeSouth1 :: CloudWatchRegion
+pattern CWRMeSouth1 = CloudWatchRegion' "me-south-1"
+
 pattern CWRSaEast1 :: CloudWatchRegion
 pattern CWRSaEast1 = CloudWatchRegion' "sa-east-1"
 
@@ -88,6 +116,18 @@ pattern CWRUsEast1 = CloudWatchRegion' "us-east-1"
 pattern CWRUsEast2 :: CloudWatchRegion
 pattern CWRUsEast2 = CloudWatchRegion' "us-east-2"
 
+pattern CWRUsGovEast1 :: CloudWatchRegion
+pattern CWRUsGovEast1 = CloudWatchRegion' "us-gov-east-1"
+
+pattern CWRUsGovWest1 :: CloudWatchRegion
+pattern CWRUsGovWest1 = CloudWatchRegion' "us-gov-west-1"
+
+pattern CWRUsIsoEast1 :: CloudWatchRegion
+pattern CWRUsIsoEast1 = CloudWatchRegion' "us-iso-east-1"
+
+pattern CWRUsIsobEast1 :: CloudWatchRegion
+pattern CWRUsIsobEast1 = CloudWatchRegion' "us-isob-east-1"
+
 pattern CWRUsWest1 :: CloudWatchRegion
 pattern CWRUsWest1 = CloudWatchRegion' "us-west-1"
 
@@ -95,6 +135,8 @@ pattern CWRUsWest2 :: CloudWatchRegion
 pattern CWRUsWest2 = CloudWatchRegion' "us-west-2"
 
 {-# COMPLETE
+  CWRAfSouth1,
+  CWRApEast1,
   CWRApNortheast1,
   CWRApNortheast2,
   CWRApNortheast3,
@@ -102,13 +144,21 @@ pattern CWRUsWest2 = CloudWatchRegion' "us-west-2"
   CWRApSoutheast1,
   CWRApSoutheast2,
   CWRCaCentral1,
+  CWRCnNorth1,
+  CWRCnNorthwest1,
   CWREuCentral1,
+  CWREuNorth1,
   CWREuWest1,
   CWREuWest2,
   CWREuWest3,
+  CWRMeSouth1,
   CWRSaEast1,
   CWRUsEast1,
   CWRUsEast2,
+  CWRUsGovEast1,
+  CWRUsGovWest1,
+  CWRUsIsoEast1,
+  CWRUsIsobEast1,
   CWRUsWest1,
   CWRUsWest2,
   CloudWatchRegion' #-}
@@ -125,47 +175,67 @@ instance ToText CloudWatchRegion where
 --   fromEnum is a partial function, and will error on values unknown at generation time.
 instance Enum CloudWatchRegion where
     toEnum i = case i of
-        0 -> CWRApNortheast1
-        1 -> CWRApNortheast2
-        2 -> CWRApNortheast3
-        3 -> CWRApSouth1
-        4 -> CWRApSoutheast1
-        5 -> CWRApSoutheast2
-        6 -> CWRCaCentral1
-        7 -> CWREuCentral1
-        8 -> CWREuWest1
-        9 -> CWREuWest2
-        10 -> CWREuWest3
-        11 -> CWRSaEast1
-        12 -> CWRUsEast1
-        13 -> CWRUsEast2
-        14 -> CWRUsWest1
-        15 -> CWRUsWest2
+        0 -> CWRAfSouth1
+        1 -> CWRApEast1
+        2 -> CWRApNortheast1
+        3 -> CWRApNortheast2
+        4 -> CWRApNortheast3
+        5 -> CWRApSouth1
+        6 -> CWRApSoutheast1
+        7 -> CWRApSoutheast2
+        8 -> CWRCaCentral1
+        9 -> CWRCnNorth1
+        10 -> CWRCnNorthwest1
+        11 -> CWREuCentral1
+        12 -> CWREuNorth1
+        13 -> CWREuWest1
+        14 -> CWREuWest2
+        15 -> CWREuWest3
+        16 -> CWRMeSouth1
+        17 -> CWRSaEast1
+        18 -> CWRUsEast1
+        19 -> CWRUsEast2
+        20 -> CWRUsGovEast1
+        21 -> CWRUsGovWest1
+        22 -> CWRUsIsoEast1
+        23 -> CWRUsIsobEast1
+        24 -> CWRUsWest1
+        25 -> CWRUsWest2
         _ -> (error . showText) $ "Unknown index for CloudWatchRegion: " <> toText i
     fromEnum x = case x of
-        CWRApNortheast1 -> 0
-        CWRApNortheast2 -> 1
-        CWRApNortheast3 -> 2
-        CWRApSouth1 -> 3
-        CWRApSoutheast1 -> 4
-        CWRApSoutheast2 -> 5
-        CWRCaCentral1 -> 6
-        CWREuCentral1 -> 7
-        CWREuWest1 -> 8
-        CWREuWest2 -> 9
-        CWREuWest3 -> 10
-        CWRSaEast1 -> 11
-        CWRUsEast1 -> 12
-        CWRUsEast2 -> 13
-        CWRUsWest1 -> 14
-        CWRUsWest2 -> 15
+        CWRAfSouth1 -> 0
+        CWRApEast1 -> 1
+        CWRApNortheast1 -> 2
+        CWRApNortheast2 -> 3
+        CWRApNortheast3 -> 4
+        CWRApSouth1 -> 5
+        CWRApSoutheast1 -> 6
+        CWRApSoutheast2 -> 7
+        CWRCaCentral1 -> 8
+        CWRCnNorth1 -> 9
+        CWRCnNorthwest1 -> 10
+        CWREuCentral1 -> 11
+        CWREuNorth1 -> 12
+        CWREuWest1 -> 13
+        CWREuWest2 -> 14
+        CWREuWest3 -> 15
+        CWRMeSouth1 -> 16
+        CWRSaEast1 -> 17
+        CWRUsEast1 -> 18
+        CWRUsEast2 -> 19
+        CWRUsGovEast1 -> 20
+        CWRUsGovWest1 -> 21
+        CWRUsIsoEast1 -> 22
+        CWRUsIsobEast1 -> 23
+        CWRUsWest1 -> 24
+        CWRUsWest2 -> 25
         CloudWatchRegion' name -> (error . showText) $ "Unknown CloudWatchRegion: " <> original name
 
 -- | Represents the bounds of /known/ $CloudWatchRegion.
 --   AWS may have added more since the source was generated.
 --   This instance exists only for backward compatibility.
 instance Bounded CloudWatchRegion where
-    minBound = CWRApNortheast1
+    minBound = CWRAfSouth1
     maxBound = CWRUsWest2
 
 instance Hashable     CloudWatchRegion

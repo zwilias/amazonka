@@ -25,10 +25,9 @@ import Network.AWS.Prelude
 --
 --
 -- /See:/ 'assessmentTarget' smart constructor.
-data AssessmentTarget = AssessmentTarget'{_aArn ::
-                                          !Text,
-                                          _aName :: !Text,
-                                          _aResourceGroupARN :: !Text,
+data AssessmentTarget = AssessmentTarget'{_aResourceGroupARN
+                                          :: !(Maybe Text),
+                                          _aArn :: !Text, _aName :: !Text,
                                           _aCreatedAt :: !POSIX,
                                           _aUpdatedAt :: !POSIX}
                           deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -37,11 +36,11 @@ data AssessmentTarget = AssessmentTarget'{_aArn ::
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
+-- * 'aResourceGroupARN' - The ARN that specifies the resource group that is associated with the assessment target.
+--
 -- * 'aArn' - The ARN that specifies the Amazon Inspector assessment target.
 --
 -- * 'aName' - The name of the Amazon Inspector assessment target.
---
--- * 'aResourceGroupARN' - The ARN that specifies the resource group that is associated with the assessment target.
 --
 -- * 'aCreatedAt' - The time at which the assessment target is created.
 --
@@ -49,16 +48,18 @@ data AssessmentTarget = AssessmentTarget'{_aArn ::
 assessmentTarget
     :: Text -- ^ 'aArn'
     -> Text -- ^ 'aName'
-    -> Text -- ^ 'aResourceGroupARN'
     -> UTCTime -- ^ 'aCreatedAt'
     -> UTCTime -- ^ 'aUpdatedAt'
     -> AssessmentTarget
-assessmentTarget pArn_ pName_ pResourceGroupARN_
-  pCreatedAt_ pUpdatedAt_
-  = AssessmentTarget'{_aArn = pArn_, _aName = pName_,
-                      _aResourceGroupARN = pResourceGroupARN_,
+assessmentTarget pArn_ pName_ pCreatedAt_ pUpdatedAt_
+  = AssessmentTarget'{_aResourceGroupARN = Nothing,
+                      _aArn = pArn_, _aName = pName_,
                       _aCreatedAt = _Time # pCreatedAt_,
                       _aUpdatedAt = _Time # pUpdatedAt_}
+
+-- | The ARN that specifies the resource group that is associated with the assessment target.
+aResourceGroupARN :: Lens' AssessmentTarget (Maybe Text)
+aResourceGroupARN = lens _aResourceGroupARN (\ s a -> s{_aResourceGroupARN = a})
 
 -- | The ARN that specifies the Amazon Inspector assessment target.
 aArn :: Lens' AssessmentTarget Text
@@ -67,10 +68,6 @@ aArn = lens _aArn (\ s a -> s{_aArn = a})
 -- | The name of the Amazon Inspector assessment target.
 aName :: Lens' AssessmentTarget Text
 aName = lens _aName (\ s a -> s{_aName = a})
-
--- | The ARN that specifies the resource group that is associated with the assessment target.
-aResourceGroupARN :: Lens' AssessmentTarget Text
-aResourceGroupARN = lens _aResourceGroupARN (\ s a -> s{_aResourceGroupARN = a})
 
 -- | The time at which the assessment target is created.
 aCreatedAt :: Lens' AssessmentTarget UTCTime
@@ -85,8 +82,8 @@ instance FromJSON AssessmentTarget where
           = withObject "AssessmentTarget"
               (\ x ->
                  AssessmentTarget' <$>
-                   (x .: "arn") <*> (x .: "name") <*>
-                     (x .: "resourceGroupArn")
+                   (x .:? "resourceGroupArn") <*> (x .: "arn") <*>
+                     (x .: "name")
                      <*> (x .: "createdAt")
                      <*> (x .: "updatedAt"))
 

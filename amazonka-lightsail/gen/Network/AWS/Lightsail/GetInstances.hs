@@ -57,12 +57,12 @@ newtype GetInstances = GetInstances'{_giPageToken ::
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'giPageToken' - A token used for advancing to the next page of results from your get instances request.
+-- * 'giPageToken' - The token to advance to the next page of results from your request. To get a page token, perform an initial @GetInstances@ request. If your results are paginated, the response will return a next page token that you can specify as the page token in a subsequent request.
 getInstances
     :: GetInstances
 getInstances = GetInstances'{_giPageToken = Nothing}
 
--- | A token used for advancing to the next page of results from your get instances request.
+-- | The token to advance to the next page of results from your request. To get a page token, perform an initial @GetInstances@ request. If your results are paginated, the response will return a next page token that you can specify as the page token in a subsequent request.
 giPageToken :: Lens' GetInstances (Maybe Text)
 giPageToken = lens _giPageToken (\ s a -> s{_giPageToken = a})
 
@@ -120,7 +120,7 @@ data GetInstancesResponse = GetInstancesResponse'{_grsNextPageToken
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'grsNextPageToken' - A token used for advancing to the next page of results from your get instances request.
+-- * 'grsNextPageToken' - The token to advance to the next page of resutls from your request. A next page token is not returned if there are no more results to display. To get the next page of results, perform another @GetInstances@ request and specify the next page token using the @pageToken@ parameter.
 --
 -- * 'grsInstances' - An array of key-value pairs containing information about your instances.
 --
@@ -133,7 +133,7 @@ getInstancesResponse pResponseStatus_
                           _grsInstances = Nothing,
                           _grsResponseStatus = pResponseStatus_}
 
--- | A token used for advancing to the next page of results from your get instances request.
+-- | The token to advance to the next page of resutls from your request. A next page token is not returned if there are no more results to display. To get the next page of results, perform another @GetInstances@ request and specify the next page token using the @pageToken@ parameter.
 grsNextPageToken :: Lens' GetInstancesResponse (Maybe Text)
 grsNextPageToken = lens _grsNextPageToken (\ s a -> s{_grsNextPageToken = a})
 

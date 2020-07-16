@@ -27,7 +27,7 @@ module Network.AWS.MediaLive.Types.AudioDescriptionAudioTypeControl (
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | Placeholder documentation for AudioDescriptionAudioTypeControl
+-- | Audio Description Audio Type Control
 data AudioDescriptionAudioTypeControl = AudioDescriptionAudioTypeControl' (CI
                                                                              Text)
                                           deriving (Eq, Ord, Read, Show, Data,

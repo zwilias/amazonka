@@ -27,6 +27,7 @@ import Network.AWS.Prelude
 -- /See:/ 'subnetMapping' smart constructor.
 data SubnetMapping = SubnetMapping'{_smAllocationId
                                     :: !(Maybe Text),
+                                    _smPrivateIPv4Address :: !(Maybe Text),
                                     _smSubnetId :: !(Maybe Text)}
                        deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -34,18 +35,25 @@ data SubnetMapping = SubnetMapping'{_smAllocationId
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'smAllocationId' - [Network Load Balancers] The allocation ID of the Elastic IP address.
+-- * 'smAllocationId' - [Network Load Balancers] The allocation ID of the Elastic IP address for an internet-facing load balancer.
+--
+-- * 'smPrivateIPv4Address' - [Network Load Balancers] The private IPv4 address for an internal load balancer.
 --
 -- * 'smSubnetId' - The ID of the subnet.
 subnetMapping
     :: SubnetMapping
 subnetMapping
   = SubnetMapping'{_smAllocationId = Nothing,
+                   _smPrivateIPv4Address = Nothing,
                    _smSubnetId = Nothing}
 
--- | [Network Load Balancers] The allocation ID of the Elastic IP address.
+-- | [Network Load Balancers] The allocation ID of the Elastic IP address for an internet-facing load balancer.
 smAllocationId :: Lens' SubnetMapping (Maybe Text)
 smAllocationId = lens _smAllocationId (\ s a -> s{_smAllocationId = a})
+
+-- | [Network Load Balancers] The private IPv4 address for an internal load balancer.
+smPrivateIPv4Address :: Lens' SubnetMapping (Maybe Text)
+smPrivateIPv4Address = lens _smPrivateIPv4Address (\ s a -> s{_smPrivateIPv4Address = a})
 
 -- | The ID of the subnet.
 smSubnetId :: Lens' SubnetMapping (Maybe Text)
@@ -59,4 +67,5 @@ instance ToQuery SubnetMapping where
         toQuery SubnetMapping'{..}
           = mconcat
               ["AllocationId" =: _smAllocationId,
+               "PrivateIPv4Address" =: _smPrivateIPv4Address,
                "SubnetId" =: _smSubnetId]

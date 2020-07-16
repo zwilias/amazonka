@@ -22,12 +22,15 @@ import Network.AWS.Prelude
 import Network.AWS.S3.Internal
 import Network.AWS.S3.Types.FileHeaderInfo
 
--- | Describes how a CSV-formatted input object is formatted.
+-- | Describes how an uncompressed comma-separated values (CSV)-formatted input object is formatted.
+--
+--
 --
 -- /See:/ 'csvInput' smart constructor.
 data CSVInput = CSVInput'{_ciQuoteCharacter ::
                           !(Maybe Text),
                           _ciRecordDelimiter :: !(Maybe Text),
+                          _ciAllowQuotedRecordDelimiter :: !(Maybe Bool),
                           _ciFileHeaderInfo :: !(Maybe FileHeaderInfo),
                           _ciQuoteEscapeCharacter :: !(Maybe Text),
                           _ciComments :: !(Maybe Text),
@@ -38,47 +41,54 @@ data CSVInput = CSVInput'{_ciQuoteCharacter ::
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'ciQuoteCharacter' - Value used for escaping where the field delimiter is part of the value.
+-- * 'ciQuoteCharacter' - A single character used for escaping when the field delimiter is part of the value. For example, if the value is @a, b@ , Amazon S3 wraps this field value in quotation marks, as follows: @" a , b "@ . Type: String Default: @"@  Ancestors: @CSV@ 
 --
--- * 'ciRecordDelimiter' - Value used to separate individual records.
+-- * 'ciRecordDelimiter' - A single character used to separate individual records in the input. Instead of the default value, you can specify an arbitrary delimiter.
 --
--- * 'ciFileHeaderInfo' - Describes the first line of input. Valid values: None, Ignore, Use.
+-- * 'ciAllowQuotedRecordDelimiter' - Specifies that CSV field values may contain quoted record delimiters and such records should be allowed. Default value is FALSE. Setting this value to TRUE may lower performance.
 --
--- * 'ciQuoteEscapeCharacter' - Single character used for escaping the quote character inside an already escaped value.
+-- * 'ciFileHeaderInfo' - Describes the first line of input. Valid values are:     * @NONE@ : First line is not a header.     * @IGNORE@ : First line is a header, but you can't use the header values to indicate the column in an expression. You can use column position (such as _1, _2, …) to indicate the column (@SELECT s._1 FROM OBJECT s@ ).     * @Use@ : First line is a header, and you can use the header value to identify a column in an expression (@SELECT "name" FROM OBJECT@ ). 
 --
--- * 'ciComments' - Single character used to indicate a row should be ignored when present at the start of a row.
+-- * 'ciQuoteEscapeCharacter' - A single character used for escaping the quotation mark character inside an already escaped value. For example, the value """ a , b """ is parsed as " a , b ".
 --
--- * 'ciFieldDelimiter' - Value used to separate individual fields in a record.
+-- * 'ciComments' - A single character used to indicate that a row should be ignored when the character is present at the start of that row. You can specify any character to indicate a comment line.
+--
+-- * 'ciFieldDelimiter' - A single character used to separate individual fields in a record. You can specify an arbitrary delimiter.
 csvInput
     :: CSVInput
 csvInput
   = CSVInput'{_ciQuoteCharacter = Nothing,
               _ciRecordDelimiter = Nothing,
+              _ciAllowQuotedRecordDelimiter = Nothing,
               _ciFileHeaderInfo = Nothing,
               _ciQuoteEscapeCharacter = Nothing,
               _ciComments = Nothing, _ciFieldDelimiter = Nothing}
 
--- | Value used for escaping where the field delimiter is part of the value.
+-- | A single character used for escaping when the field delimiter is part of the value. For example, if the value is @a, b@ , Amazon S3 wraps this field value in quotation marks, as follows: @" a , b "@ . Type: String Default: @"@  Ancestors: @CSV@ 
 ciQuoteCharacter :: Lens' CSVInput (Maybe Text)
 ciQuoteCharacter = lens _ciQuoteCharacter (\ s a -> s{_ciQuoteCharacter = a})
 
--- | Value used to separate individual records.
+-- | A single character used to separate individual records in the input. Instead of the default value, you can specify an arbitrary delimiter.
 ciRecordDelimiter :: Lens' CSVInput (Maybe Text)
 ciRecordDelimiter = lens _ciRecordDelimiter (\ s a -> s{_ciRecordDelimiter = a})
 
--- | Describes the first line of input. Valid values: None, Ignore, Use.
+-- | Specifies that CSV field values may contain quoted record delimiters and such records should be allowed. Default value is FALSE. Setting this value to TRUE may lower performance.
+ciAllowQuotedRecordDelimiter :: Lens' CSVInput (Maybe Bool)
+ciAllowQuotedRecordDelimiter = lens _ciAllowQuotedRecordDelimiter (\ s a -> s{_ciAllowQuotedRecordDelimiter = a})
+
+-- | Describes the first line of input. Valid values are:     * @NONE@ : First line is not a header.     * @IGNORE@ : First line is a header, but you can't use the header values to indicate the column in an expression. You can use column position (such as _1, _2, …) to indicate the column (@SELECT s._1 FROM OBJECT s@ ).     * @Use@ : First line is a header, and you can use the header value to identify a column in an expression (@SELECT "name" FROM OBJECT@ ). 
 ciFileHeaderInfo :: Lens' CSVInput (Maybe FileHeaderInfo)
 ciFileHeaderInfo = lens _ciFileHeaderInfo (\ s a -> s{_ciFileHeaderInfo = a})
 
--- | Single character used for escaping the quote character inside an already escaped value.
+-- | A single character used for escaping the quotation mark character inside an already escaped value. For example, the value """ a , b """ is parsed as " a , b ".
 ciQuoteEscapeCharacter :: Lens' CSVInput (Maybe Text)
 ciQuoteEscapeCharacter = lens _ciQuoteEscapeCharacter (\ s a -> s{_ciQuoteEscapeCharacter = a})
 
--- | Single character used to indicate a row should be ignored when present at the start of a row.
+-- | A single character used to indicate that a row should be ignored when the character is present at the start of that row. You can specify any character to indicate a comment line.
 ciComments :: Lens' CSVInput (Maybe Text)
 ciComments = lens _ciComments (\ s a -> s{_ciComments = a})
 
--- | Value used to separate individual fields in a record.
+-- | A single character used to separate individual fields in a record. You can specify an arbitrary delimiter.
 ciFieldDelimiter :: Lens' CSVInput (Maybe Text)
 ciFieldDelimiter = lens _ciFieldDelimiter (\ s a -> s{_ciFieldDelimiter = a})
 
@@ -91,6 +101,8 @@ instance ToXML CSVInput where
           = mconcat
               ["QuoteCharacter" @= _ciQuoteCharacter,
                "RecordDelimiter" @= _ciRecordDelimiter,
+               "AllowQuotedRecordDelimiter" @=
+                 _ciAllowQuotedRecordDelimiter,
                "FileHeaderInfo" @= _ciFileHeaderInfo,
                "QuoteEscapeCharacter" @= _ciQuoteEscapeCharacter,
                "Comments" @= _ciComments,

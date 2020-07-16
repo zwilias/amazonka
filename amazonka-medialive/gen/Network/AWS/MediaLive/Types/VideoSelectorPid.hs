@@ -20,7 +20,7 @@ module Network.AWS.MediaLive.Types.VideoSelectorPid where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | Placeholder documentation for VideoSelectorPid
+-- | Video Selector Pid
 --
 -- /See:/ 'videoSelectorPid' smart constructor.
 newtype VideoSelectorPid = VideoSelectorPid'{_vspPid

@@ -40,9 +40,9 @@ data TapeRecoveryPointInfo = TapeRecoveryPointInfo'{_trpiTapeStatus
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'trpiTapeStatus' - Undocumented member.
+-- * 'trpiTapeStatus' - The status of the virtual tapes.
 --
--- * 'trpiTapeRecoveryPointTime' - The time when the point-in-time view of the virtual tape was replicated for later recovery. The string format of the tape recovery point time is in the ISO8601 extended YYYY-MM-DD'T'HH:MM:SS'Z' format.
+-- * 'trpiTapeRecoveryPointTime' - The time when the point-in-time view of the virtual tape was replicated for later recovery. The default time stamp format of the tape recovery point time is in the ISO8601 extended YYYY-MM-DD'T'HH:MM:SS'Z' format.
 --
 -- * 'trpiTapeARN' - The Amazon Resource Name (ARN) of the virtual tape.
 --
@@ -55,11 +55,11 @@ tapeRecoveryPointInfo
                            _trpiTapeARN = Nothing,
                            _trpiTapeSizeInBytes = Nothing}
 
--- | Undocumented member.
+-- | The status of the virtual tapes.
 trpiTapeStatus :: Lens' TapeRecoveryPointInfo (Maybe Text)
 trpiTapeStatus = lens _trpiTapeStatus (\ s a -> s{_trpiTapeStatus = a})
 
--- | The time when the point-in-time view of the virtual tape was replicated for later recovery. The string format of the tape recovery point time is in the ISO8601 extended YYYY-MM-DD'T'HH:MM:SS'Z' format.
+-- | The time when the point-in-time view of the virtual tape was replicated for later recovery. The default time stamp format of the tape recovery point time is in the ISO8601 extended YYYY-MM-DD'T'HH:MM:SS'Z' format.
 trpiTapeRecoveryPointTime :: Lens' TapeRecoveryPointInfo (Maybe UTCTime)
 trpiTapeRecoveryPointTime = lens _trpiTapeRecoveryPointTime (\ s a -> s{_trpiTapeRecoveryPointTime = a}) . mapping _Time
 

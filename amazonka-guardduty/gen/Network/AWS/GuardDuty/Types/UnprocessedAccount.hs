@@ -20,7 +20,9 @@ module Network.AWS.GuardDuty.Types.UnprocessedAccount where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | An object containing the unprocessed account and a result string explaining why it was unprocessed.
+-- | Contains information about the accounts that weren't processed.
+--
+--
 --
 -- /See:/ 'unprocessedAccount' smart constructor.
 data UnprocessedAccount = UnprocessedAccount'{_uaAccountId
@@ -32,7 +34,7 @@ data UnprocessedAccount = UnprocessedAccount'{_uaAccountId
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'uaAccountId' - AWS Account ID.
+-- * 'uaAccountId' - The AWS account ID.
 --
 -- * 'uaResult' - A reason why the account hasn't been processed.
 unprocessedAccount
@@ -43,7 +45,7 @@ unprocessedAccount pAccountId_ pResult_
   = UnprocessedAccount'{_uaAccountId = pAccountId_,
                         _uaResult = pResult_}
 
--- | AWS Account ID.
+-- | The AWS account ID.
 uaAccountId :: Lens' UnprocessedAccount Text
 uaAccountId = lens _uaAccountId (\ s a -> s{_uaAccountId = a})
 

@@ -17,11 +17,13 @@
 --
 module Network.AWS.IoT.Types.Job where
 
+import Network.AWS.IoT.Types.AbortConfig
 import Network.AWS.IoT.Types.JobExecutionsRolloutConfig
 import Network.AWS.IoT.Types.JobProcessDetails
 import Network.AWS.IoT.Types.JobStatus
 import Network.AWS.IoT.Types.PresignedURLConfig
 import Network.AWS.IoT.Types.TargetSelection
+import Network.AWS.IoT.Types.TimeoutConfig
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
@@ -37,48 +39,57 @@ data Job = Job'{_jobStatus :: !(Maybe JobStatus),
                 _jobLastUpdatedAt :: !(Maybe POSIX),
                 _jobJobARN :: !(Maybe Text),
                 _jobCreatedAt :: !(Maybe POSIX),
-                _jobDocumentParameters :: !(Maybe (Map Text Text)),
+                _jobAbortConfig :: !(Maybe AbortConfig),
                 _jobJobProcessDetails :: !(Maybe JobProcessDetails),
+                _jobReasonCode :: !(Maybe Text),
                 _jobPresignedURLConfig ::
                 !(Maybe PresignedURLConfig),
+                _jobForceCanceled :: !(Maybe Bool),
                 _jobTargets :: !(Maybe (List1 Text)),
                 _jobCompletedAt :: !(Maybe POSIX),
                 _jobComment :: !(Maybe Text),
                 _jobDescription :: !(Maybe Text),
-                _jobTargetSelection :: !(Maybe TargetSelection)}
+                _jobTargetSelection :: !(Maybe TargetSelection),
+                _jobTimeoutConfig :: !(Maybe TimeoutConfig)}
              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'Job' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'jobStatus' - The status of the job, one of @IN_PROGRESS@ , @CANCELED@ , or @COMPLETED@ . 
+-- * 'jobStatus' - The status of the job, one of @IN_PROGRESS@ , @CANCELED@ , @DELETION_IN_PROGRESS@ or @COMPLETED@ . 
 --
 -- * 'jobJobExecutionsRolloutConfig' - Allows you to create a staged rollout of a job.
 --
 -- * 'jobJobId' - The unique identifier you assigned to this job when it was created.
 --
--- * 'jobLastUpdatedAt' - The time, in milliseconds since the epoch, when the job was last updated.
+-- * 'jobLastUpdatedAt' - The time, in seconds since the epoch, when the job was last updated.
 --
 -- * 'jobJobARN' - An ARN identifying the job with format "arn:aws:iot:region:account:job/jobId".
 --
--- * 'jobCreatedAt' - The time, in milliseconds since the epoch, when the job was created.
+-- * 'jobCreatedAt' - The time, in seconds since the epoch, when the job was created.
 --
--- * 'jobDocumentParameters' - The parameters specified for the job document.
+-- * 'jobAbortConfig' - Configuration for criteria to abort the job.
 --
 -- * 'jobJobProcessDetails' - Details about the job process.
 --
+-- * 'jobReasonCode' - If the job was updated, provides the reason code for the update.
+--
 -- * 'jobPresignedURLConfig' - Configuration for pre-signed S3 URLs.
+--
+-- * 'jobForceCanceled' - Will be @true@ if the job was canceled with the optional @force@ parameter set to @true@ .
 --
 -- * 'jobTargets' - A list of IoT things and thing groups to which the job should be sent.
 --
--- * 'jobCompletedAt' - The time, in milliseconds since the epoch, when the job was completed.
+-- * 'jobCompletedAt' - The time, in seconds since the epoch, when the job was completed.
 --
 -- * 'jobComment' - If the job was updated, describes the reason for the update.
 --
 -- * 'jobDescription' - A short text description of the job.
 --
 -- * 'jobTargetSelection' - Specifies whether the job will continue to run (CONTINUOUS), or will be complete after all those things specified as targets have completed the job (SNAPSHOT). If continuous, the job may also be run on a thing when a change is detected in a target. For example, a job will run on a device when the thing representing the device is added to a target group, even after the job was completed by all things originally in the group. 
+--
+-- * 'jobTimeoutConfig' - Specifies the amount of time each device has to finish its execution of the job. A timer is started when the job execution status is set to @IN_PROGRESS@ . If the job execution status is not set to another terminal state before the timer expires, it will be automatically set to @TIMED_OUT@ .
 job
     :: Job
 job
@@ -86,14 +97,17 @@ job
          _jobJobExecutionsRolloutConfig = Nothing,
          _jobJobId = Nothing, _jobLastUpdatedAt = Nothing,
          _jobJobARN = Nothing, _jobCreatedAt = Nothing,
-         _jobDocumentParameters = Nothing,
+         _jobAbortConfig = Nothing,
          _jobJobProcessDetails = Nothing,
+         _jobReasonCode = Nothing,
          _jobPresignedURLConfig = Nothing,
-         _jobTargets = Nothing, _jobCompletedAt = Nothing,
-         _jobComment = Nothing, _jobDescription = Nothing,
-         _jobTargetSelection = Nothing}
+         _jobForceCanceled = Nothing, _jobTargets = Nothing,
+         _jobCompletedAt = Nothing, _jobComment = Nothing,
+         _jobDescription = Nothing,
+         _jobTargetSelection = Nothing,
+         _jobTimeoutConfig = Nothing}
 
--- | The status of the job, one of @IN_PROGRESS@ , @CANCELED@ , or @COMPLETED@ . 
+-- | The status of the job, one of @IN_PROGRESS@ , @CANCELED@ , @DELETION_IN_PROGRESS@ or @COMPLETED@ . 
 jobStatus :: Lens' Job (Maybe JobStatus)
 jobStatus = lens _jobStatus (\ s a -> s{_jobStatus = a})
 
@@ -105,7 +119,7 @@ jobJobExecutionsRolloutConfig = lens _jobJobExecutionsRolloutConfig (\ s a -> s{
 jobJobId :: Lens' Job (Maybe Text)
 jobJobId = lens _jobJobId (\ s a -> s{_jobJobId = a})
 
--- | The time, in milliseconds since the epoch, when the job was last updated.
+-- | The time, in seconds since the epoch, when the job was last updated.
 jobLastUpdatedAt :: Lens' Job (Maybe UTCTime)
 jobLastUpdatedAt = lens _jobLastUpdatedAt (\ s a -> s{_jobLastUpdatedAt = a}) . mapping _Time
 
@@ -113,27 +127,35 @@ jobLastUpdatedAt = lens _jobLastUpdatedAt (\ s a -> s{_jobLastUpdatedAt = a}) . 
 jobJobARN :: Lens' Job (Maybe Text)
 jobJobARN = lens _jobJobARN (\ s a -> s{_jobJobARN = a})
 
--- | The time, in milliseconds since the epoch, when the job was created.
+-- | The time, in seconds since the epoch, when the job was created.
 jobCreatedAt :: Lens' Job (Maybe UTCTime)
 jobCreatedAt = lens _jobCreatedAt (\ s a -> s{_jobCreatedAt = a}) . mapping _Time
 
--- | The parameters specified for the job document.
-jobDocumentParameters :: Lens' Job (HashMap Text Text)
-jobDocumentParameters = lens _jobDocumentParameters (\ s a -> s{_jobDocumentParameters = a}) . _Default . _Map
+-- | Configuration for criteria to abort the job.
+jobAbortConfig :: Lens' Job (Maybe AbortConfig)
+jobAbortConfig = lens _jobAbortConfig (\ s a -> s{_jobAbortConfig = a})
 
 -- | Details about the job process.
 jobJobProcessDetails :: Lens' Job (Maybe JobProcessDetails)
 jobJobProcessDetails = lens _jobJobProcessDetails (\ s a -> s{_jobJobProcessDetails = a})
 
+-- | If the job was updated, provides the reason code for the update.
+jobReasonCode :: Lens' Job (Maybe Text)
+jobReasonCode = lens _jobReasonCode (\ s a -> s{_jobReasonCode = a})
+
 -- | Configuration for pre-signed S3 URLs.
 jobPresignedURLConfig :: Lens' Job (Maybe PresignedURLConfig)
 jobPresignedURLConfig = lens _jobPresignedURLConfig (\ s a -> s{_jobPresignedURLConfig = a})
+
+-- | Will be @true@ if the job was canceled with the optional @force@ parameter set to @true@ .
+jobForceCanceled :: Lens' Job (Maybe Bool)
+jobForceCanceled = lens _jobForceCanceled (\ s a -> s{_jobForceCanceled = a})
 
 -- | A list of IoT things and thing groups to which the job should be sent.
 jobTargets :: Lens' Job (Maybe (NonEmpty Text))
 jobTargets = lens _jobTargets (\ s a -> s{_jobTargets = a}) . mapping _List1
 
--- | The time, in milliseconds since the epoch, when the job was completed.
+-- | The time, in seconds since the epoch, when the job was completed.
 jobCompletedAt :: Lens' Job (Maybe UTCTime)
 jobCompletedAt = lens _jobCompletedAt (\ s a -> s{_jobCompletedAt = a}) . mapping _Time
 
@@ -149,6 +171,10 @@ jobDescription = lens _jobDescription (\ s a -> s{_jobDescription = a})
 jobTargetSelection :: Lens' Job (Maybe TargetSelection)
 jobTargetSelection = lens _jobTargetSelection (\ s a -> s{_jobTargetSelection = a})
 
+-- | Specifies the amount of time each device has to finish its execution of the job. A timer is started when the job execution status is set to @IN_PROGRESS@ . If the job execution status is not set to another terminal state before the timer expires, it will be automatically set to @TIMED_OUT@ .
+jobTimeoutConfig :: Lens' Job (Maybe TimeoutConfig)
+jobTimeoutConfig = lens _jobTimeoutConfig (\ s a -> s{_jobTimeoutConfig = a})
+
 instance FromJSON Job where
         parseJSON
           = withObject "Job"
@@ -160,14 +186,17 @@ instance FromJSON Job where
                      <*> (x .:? "lastUpdatedAt")
                      <*> (x .:? "jobArn")
                      <*> (x .:? "createdAt")
-                     <*> (x .:? "documentParameters" .!= mempty)
+                     <*> (x .:? "abortConfig")
                      <*> (x .:? "jobProcessDetails")
+                     <*> (x .:? "reasonCode")
                      <*> (x .:? "presignedUrlConfig")
+                     <*> (x .:? "forceCanceled")
                      <*> (x .:? "targets")
                      <*> (x .:? "completedAt")
                      <*> (x .:? "comment")
                      <*> (x .:? "description")
-                     <*> (x .:? "targetSelection"))
+                     <*> (x .:? "targetSelection")
+                     <*> (x .:? "timeoutConfig"))
 
 instance Hashable Job where
 

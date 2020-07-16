@@ -25,7 +25,7 @@ import Network.AWS.CertificateManagerPCA.Types.RevocationConfiguration
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | Contains information about your private certificate authority (CA). Your private CA can issue and revoke X.509 digital certificates. Digital certificates verify that the entity named in the certificate __Subject__ field owns or controls the public key contained in the __Subject Public Key Info__ field. Call the 'CreateCertificateAuthority' function to create your private CA. You must then call the 'GetCertificateAuthorityCertificate' function to retrieve a private CA certificate signing request (CSR). Take the CSR to your on-premises CA and sign it with the root CA certificate or a subordinate certificate. Call the 'ImportCertificateAuthorityCertificate' function to import the signed certificate into AWS Certificate Manager (ACM). 
+-- | Contains information about your private certificate authority (CA). Your private CA can issue and revoke X.509 digital certificates. Digital certificates verify that the entity named in the certificate __Subject__ field owns or controls the public key contained in the __Subject Public Key Info__ field. Call the 'CreateCertificateAuthority' action to create your private CA. You must then call the 'GetCertificateAuthorityCertificate' action to retrieve a private CA certificate signing request (CSR). Sign the CSR with your ACM Private CA-hosted or on-premises root or subordinate CA certificate. Call the 'ImportCertificateAuthorityCertificate' action to import the signed certificate into AWS Certificate Manager (ACM). 
 --
 --
 --
@@ -45,6 +45,8 @@ data CertificateAuthority = CertificateAuthority'{_caStatus
                                                   !(Maybe POSIX),
                                                   _caSerial :: !(Maybe Text),
                                                   _caNotBefore ::
+                                                  !(Maybe POSIX),
+                                                  _caRestorableUntil ::
                                                   !(Maybe POSIX),
                                                   _caType ::
                                                   !(Maybe
@@ -75,6 +77,8 @@ data CertificateAuthority = CertificateAuthority'{_caStatus
 --
 -- * 'caNotBefore' - Date and time before which your private CA certificate is not valid.
 --
+-- * 'caRestorableUntil' - The period during which a deleted CA can be restored. For more information, see the @PermanentDeletionTimeInDays@ parameter of the 'DeleteCertificateAuthorityRequest' action. 
+--
 -- * 'caType' - Type of your private CA.
 --
 -- * 'caRevocationConfiguration' - Information about the certificate revocation list (CRL) created and maintained by your private CA. 
@@ -90,7 +94,7 @@ certificateAuthority
                           _caCertificateAuthorityConfiguration = Nothing,
                           _caARN = Nothing, _caCreatedAt = Nothing,
                           _caSerial = Nothing, _caNotBefore = Nothing,
-                          _caType = Nothing,
+                          _caRestorableUntil = Nothing, _caType = Nothing,
                           _caRevocationConfiguration = Nothing,
                           _caLastStateChangeAt = Nothing,
                           _caNotAfter = Nothing}
@@ -123,6 +127,10 @@ caSerial = lens _caSerial (\ s a -> s{_caSerial = a})
 caNotBefore :: Lens' CertificateAuthority (Maybe UTCTime)
 caNotBefore = lens _caNotBefore (\ s a -> s{_caNotBefore = a}) . mapping _Time
 
+-- | The period during which a deleted CA can be restored. For more information, see the @PermanentDeletionTimeInDays@ parameter of the 'DeleteCertificateAuthorityRequest' action. 
+caRestorableUntil :: Lens' CertificateAuthority (Maybe UTCTime)
+caRestorableUntil = lens _caRestorableUntil (\ s a -> s{_caRestorableUntil = a}) . mapping _Time
+
 -- | Type of your private CA.
 caType :: Lens' CertificateAuthority (Maybe CertificateAuthorityType)
 caType = lens _caType (\ s a -> s{_caType = a})
@@ -150,6 +158,7 @@ instance FromJSON CertificateAuthority where
                      <*> (x .:? "CreatedAt")
                      <*> (x .:? "Serial")
                      <*> (x .:? "NotBefore")
+                     <*> (x .:? "RestorableUntil")
                      <*> (x .:? "Type")
                      <*> (x .:? "RevocationConfiguration")
                      <*> (x .:? "LastStateChangeAt")

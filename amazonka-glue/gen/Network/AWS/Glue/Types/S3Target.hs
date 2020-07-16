@@ -20,7 +20,7 @@ module Network.AWS.Glue.Types.S3Target where
 import Network.AWS.Lens
 import Network.AWS.Prelude
 
--- | Specifies a data store in Amazon S3.
+-- | Specifies a data store in Amazon Simple Storage Service (Amazon S3).
 --
 --
 --

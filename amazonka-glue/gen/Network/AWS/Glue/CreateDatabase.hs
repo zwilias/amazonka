@@ -54,9 +54,9 @@ data CreateDatabase = CreateDatabase'{_cdCatalogId ::
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'cdCatalogId' - The ID of the Data Catalog in which to create the database. If none is supplied, the AWS account ID is used by default.
+-- * 'cdCatalogId' - The ID of the Data Catalog in which to create the database. If none is provided, the AWS account ID is used by default.
 --
--- * 'cdDatabaseInput' - A @DatabaseInput@ object defining the metadata database to create in the catalog.
+-- * 'cdDatabaseInput' - The metadata for the database.
 createDatabase
     :: DatabaseInput -- ^ 'cdDatabaseInput'
     -> CreateDatabase
@@ -64,11 +64,11 @@ createDatabase pDatabaseInput_
   = CreateDatabase'{_cdCatalogId = Nothing,
                     _cdDatabaseInput = pDatabaseInput_}
 
--- | The ID of the Data Catalog in which to create the database. If none is supplied, the AWS account ID is used by default.
+-- | The ID of the Data Catalog in which to create the database. If none is provided, the AWS account ID is used by default.
 cdCatalogId :: Lens' CreateDatabase (Maybe Text)
 cdCatalogId = lens _cdCatalogId (\ s a -> s{_cdCatalogId = a})
 
--- | A @DatabaseInput@ object defining the metadata database to create in the catalog.
+-- | The metadata for the database.
 cdDatabaseInput :: Lens' CreateDatabase DatabaseInput
 cdDatabaseInput = lens _cdDatabaseInput (\ s a -> s{_cdDatabaseInput = a})
 

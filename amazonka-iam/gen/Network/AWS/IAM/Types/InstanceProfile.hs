@@ -51,13 +51,13 @@ data InstanceProfile = InstanceProfile'{_ipPath ::
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'ipPath' - The path to the instance profile. For more information about paths, see <http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html IAM Identifiers> in the /Using IAM/ guide. 
+-- * 'ipPath' - The path to the instance profile. For more information about paths, see <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html IAM Identifiers> in the /IAM User Guide/ . 
 --
 -- * 'ipInstanceProfileName' - The name identifying the instance profile.
 --
--- * 'ipInstanceProfileId' - The stable and unique string identifying the instance profile. For more information about IDs, see <http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html IAM Identifiers> in the /Using IAM/ guide. 
+-- * 'ipInstanceProfileId' - The stable and unique string identifying the instance profile. For more information about IDs, see <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html IAM Identifiers> in the /IAM User Guide/ . 
 --
--- * 'ipARN' - The Amazon Resource Name (ARN) specifying the instance profile. For more information about ARNs and how to use them in policies, see <http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html IAM Identifiers> in the /Using IAM/ guide. 
+-- * 'ipARN' - The Amazon Resource Name (ARN) specifying the instance profile. For more information about ARNs and how to use them in policies, see <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html IAM Identifiers> in the /IAM User Guide/ . 
 --
 -- * 'ipCreateDate' - The date when the instance profile was created.
 --
@@ -77,7 +77,7 @@ instanceProfile pPath_ pInstanceProfileName_
                      _ipARN = pARN_, _ipCreateDate = _Time # pCreateDate_,
                      _ipRoles = mempty}
 
--- | The path to the instance profile. For more information about paths, see <http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html IAM Identifiers> in the /Using IAM/ guide. 
+-- | The path to the instance profile. For more information about paths, see <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html IAM Identifiers> in the /IAM User Guide/ . 
 ipPath :: Lens' InstanceProfile Text
 ipPath = lens _ipPath (\ s a -> s{_ipPath = a})
 
@@ -85,11 +85,11 @@ ipPath = lens _ipPath (\ s a -> s{_ipPath = a})
 ipInstanceProfileName :: Lens' InstanceProfile Text
 ipInstanceProfileName = lens _ipInstanceProfileName (\ s a -> s{_ipInstanceProfileName = a})
 
--- | The stable and unique string identifying the instance profile. For more information about IDs, see <http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html IAM Identifiers> in the /Using IAM/ guide. 
+-- | The stable and unique string identifying the instance profile. For more information about IDs, see <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html IAM Identifiers> in the /IAM User Guide/ . 
 ipInstanceProfileId :: Lens' InstanceProfile Text
 ipInstanceProfileId = lens _ipInstanceProfileId (\ s a -> s{_ipInstanceProfileId = a})
 
--- | The Amazon Resource Name (ARN) specifying the instance profile. For more information about ARNs and how to use them in policies, see <http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html IAM Identifiers> in the /Using IAM/ guide. 
+-- | The Amazon Resource Name (ARN) specifying the instance profile. For more information about ARNs and how to use them in policies, see <https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html IAM Identifiers> in the /IAM User Guide/ . 
 ipARN :: Lens' InstanceProfile Text
 ipARN = lens _ipARN (\ s a -> s{_ipARN = a})
 

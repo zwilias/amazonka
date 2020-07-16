@@ -22,11 +22,13 @@ import Network.AWS.MediaConvert.Types.CaptionSourceSettings
 import Network.AWS.MediaConvert.Types.LanguageCode
 import Network.AWS.Prelude
 
--- | Caption inputs to be mapped to caption outputs.
+-- | Set up captions in your outputs by first selecting them from your input here.
 --
 -- /See:/ 'captionSelector' smart constructor.
-data CaptionSelector = CaptionSelector'{_csLanguageCode
-                                        :: !(Maybe LanguageCode),
+data CaptionSelector = CaptionSelector'{_csCustomLanguageCode
+                                        :: !(Maybe Text),
+                                        _csLanguageCode ::
+                                        !(Maybe LanguageCode),
                                         _csSourceSettings ::
                                         !(Maybe CaptionSourceSettings)}
                          deriving (Eq, Read, Show, Data, Typeable, Generic)
@@ -35,20 +37,27 @@ data CaptionSelector = CaptionSelector'{_csLanguageCode
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
+-- * 'csCustomLanguageCode' - The specific language to extract from source, using the ISO 639-2 or ISO 639-3 three-letter language code. If input is SCTE-27, complete this field and/or PID to select the caption language to extract. If input is DVB-Sub and output is Burn-in or SMPTE-TT, complete this field and/or PID to select the caption language to extract. If input is DVB-Sub that is being passed through, omit this field (and PID field); there is no way to extract a specific language with pass-through captions.
+--
 -- * 'csLanguageCode' - The specific language to extract from source. If input is SCTE-27, complete this field and/or PID to select the caption language to extract. If input is DVB-Sub and output is Burn-in or SMPTE-TT, complete this field and/or PID to select the caption language to extract. If input is DVB-Sub that is being passed through, omit this field (and PID field); there is no way to extract a specific language with pass-through captions.
 --
--- * 'csSourceSettings' - Undocumented member.
+-- * 'csSourceSettings' - If your input captions are SCC, TTML, STL, SMI, SRT, or IMSC in an xml file, specify the URI of the input captions source file. If your input captions are IMSC in an IMF package, use TrackSourceSettings instead of FileSoureSettings.
 captionSelector
     :: CaptionSelector
 captionSelector
-  = CaptionSelector'{_csLanguageCode = Nothing,
+  = CaptionSelector'{_csCustomLanguageCode = Nothing,
+                     _csLanguageCode = Nothing,
                      _csSourceSettings = Nothing}
+
+-- | The specific language to extract from source, using the ISO 639-2 or ISO 639-3 three-letter language code. If input is SCTE-27, complete this field and/or PID to select the caption language to extract. If input is DVB-Sub and output is Burn-in or SMPTE-TT, complete this field and/or PID to select the caption language to extract. If input is DVB-Sub that is being passed through, omit this field (and PID field); there is no way to extract a specific language with pass-through captions.
+csCustomLanguageCode :: Lens' CaptionSelector (Maybe Text)
+csCustomLanguageCode = lens _csCustomLanguageCode (\ s a -> s{_csCustomLanguageCode = a})
 
 -- | The specific language to extract from source. If input is SCTE-27, complete this field and/or PID to select the caption language to extract. If input is DVB-Sub and output is Burn-in or SMPTE-TT, complete this field and/or PID to select the caption language to extract. If input is DVB-Sub that is being passed through, omit this field (and PID field); there is no way to extract a specific language with pass-through captions.
 csLanguageCode :: Lens' CaptionSelector (Maybe LanguageCode)
 csLanguageCode = lens _csLanguageCode (\ s a -> s{_csLanguageCode = a})
 
--- | Undocumented member.
+-- | If your input captions are SCC, TTML, STL, SMI, SRT, or IMSC in an xml file, specify the URI of the input captions source file. If your input captions are IMSC in an IMF package, use TrackSourceSettings instead of FileSoureSettings.
 csSourceSettings :: Lens' CaptionSelector (Maybe CaptionSourceSettings)
 csSourceSettings = lens _csSourceSettings (\ s a -> s{_csSourceSettings = a})
 
@@ -57,7 +66,9 @@ instance FromJSON CaptionSelector where
           = withObject "CaptionSelector"
               (\ x ->
                  CaptionSelector' <$>
-                   (x .:? "languageCode") <*> (x .:? "sourceSettings"))
+                   (x .:? "customLanguageCode") <*>
+                     (x .:? "languageCode")
+                     <*> (x .:? "sourceSettings"))
 
 instance Hashable CaptionSelector where
 
@@ -67,5 +78,6 @@ instance ToJSON CaptionSelector where
         toJSON CaptionSelector'{..}
           = object
               (catMaybes
-                 [("languageCode" .=) <$> _csLanguageCode,
+                 [("customLanguageCode" .=) <$> _csCustomLanguageCode,
+                  ("languageCode" .=) <$> _csLanguageCode,
                   ("sourceSettings" .=) <$> _csSourceSettings])

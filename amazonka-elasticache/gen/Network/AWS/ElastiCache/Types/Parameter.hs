@@ -58,7 +58,7 @@ data Parameter = Parameter'{_pParameterValue ::
 --
 -- * 'pDescription' - A description of the parameter.
 --
--- * 'pChangeType' - Indicates whether a change to the parameter is applied immediately or requires a reboot for the change to be applied. You can force a reboot or wait until the next maintenance window's reboot. For more information, see <http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/Clusters.Rebooting.html Rebooting a Cluster> .
+-- * 'pChangeType' - Indicates whether a change to the parameter is applied immediately or requires a reboot for the change to be applied. You can force a reboot or wait until the next maintenance window's reboot. For more information, see <https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Clusters.Rebooting.html Rebooting a Cluster> .
 parameter
     :: Parameter
 parameter
@@ -100,7 +100,7 @@ pParameterName = lens _pParameterName (\ s a -> s{_pParameterName = a})
 pDescription :: Lens' Parameter (Maybe Text)
 pDescription = lens _pDescription (\ s a -> s{_pDescription = a})
 
--- | Indicates whether a change to the parameter is applied immediately or requires a reboot for the change to be applied. You can force a reboot or wait until the next maintenance window's reboot. For more information, see <http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/Clusters.Rebooting.html Rebooting a Cluster> .
+-- | Indicates whether a change to the parameter is applied immediately or requires a reboot for the change to be applied. You can force a reboot or wait until the next maintenance window's reboot. For more information, see <https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Clusters.Rebooting.html Rebooting a Cluster> .
 pChangeType :: Lens' Parameter (Maybe ChangeType)
 pChangeType = lens _pChangeType (\ s a -> s{_pChangeType = a})
 

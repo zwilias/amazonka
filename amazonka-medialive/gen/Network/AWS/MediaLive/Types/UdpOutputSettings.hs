@@ -23,7 +23,7 @@ import Network.AWS.MediaLive.Types.OutputLocationRef
 import Network.AWS.MediaLive.Types.UdpContainerSettings
 import Network.AWS.Prelude
 
--- | Placeholder documentation for UdpOutputSettings
+-- | Udp Output Settings
 --
 -- /See:/ 'udpOutputSettings' smart constructor.
 data UdpOutputSettings = UdpOutputSettings'{_uosFecOutputSettings

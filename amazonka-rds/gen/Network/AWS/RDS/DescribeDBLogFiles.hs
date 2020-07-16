@@ -77,7 +77,7 @@ data DescribeDBLogFiles = DescribeDBLogFiles'{_ddlfFilenameContains
 --
 -- * 'ddlfFilenameContains' - Filters the available log files for log file names that contain the specified string.
 --
--- * 'ddlfFilters' - This parameter is not currently supported.
+-- * 'ddlfFilters' - This parameter isn't currently supported.
 --
 -- * 'ddlfFileSize' - Filters the available log files for files larger than the specified size.
 --
@@ -85,7 +85,7 @@ data DescribeDBLogFiles = DescribeDBLogFiles'{_ddlfFilenameContains
 --
 -- * 'ddlfMarker' - The pagination token provided in the previous request. If this parameter is specified the response includes only records beyond the marker, up to MaxRecords.
 --
--- * 'ddlfMaxRecords' - The maximum number of records to include in the response. If more records exist than the specified MaxRecords value, a pagination token called a marker is included in the response so that the remaining results can be retrieved.
+-- * 'ddlfMaxRecords' - The maximum number of records to include in the response. If more records exist than the specified MaxRecords value, a pagination token called a marker is included in the response so you can retrieve the remaining results.
 --
 -- * 'ddlfDBInstanceIdentifier' - The customer-assigned name of the DB instance that contains the log files you want to list. Constraints:     * Must match the identifier of an existing DBInstance.
 describeDBLogFiles
@@ -103,7 +103,7 @@ describeDBLogFiles pDBInstanceIdentifier_
 ddlfFilenameContains :: Lens' DescribeDBLogFiles (Maybe Text)
 ddlfFilenameContains = lens _ddlfFilenameContains (\ s a -> s{_ddlfFilenameContains = a})
 
--- | This parameter is not currently supported.
+-- | This parameter isn't currently supported.
 ddlfFilters :: Lens' DescribeDBLogFiles [Filter]
 ddlfFilters = lens _ddlfFilters (\ s a -> s{_ddlfFilters = a}) . _Default . _Coerce
 
@@ -119,7 +119,7 @@ ddlfFileLastWritten = lens _ddlfFileLastWritten (\ s a -> s{_ddlfFileLastWritten
 ddlfMarker :: Lens' DescribeDBLogFiles (Maybe Text)
 ddlfMarker = lens _ddlfMarker (\ s a -> s{_ddlfMarker = a})
 
--- | The maximum number of records to include in the response. If more records exist than the specified MaxRecords value, a pagination token called a marker is included in the response so that the remaining results can be retrieved.
+-- | The maximum number of records to include in the response. If more records exist than the specified MaxRecords value, a pagination token called a marker is included in the response so you can retrieve the remaining results.
 ddlfMaxRecords :: Lens' DescribeDBLogFiles (Maybe Int)
 ddlfMaxRecords = lens _ddlfMaxRecords (\ s a -> s{_ddlfMaxRecords = a})
 
@@ -171,7 +171,7 @@ instance ToQuery DescribeDBLogFiles where
                "MaxRecords" =: _ddlfMaxRecords,
                "DBInstanceIdentifier" =: _ddlfDBInstanceIdentifier]
 
--- | The response from a call to 'DescribeDBLogFiles' . 
+-- | The response from a call to @DescribeDBLogFiles@ . 
 --
 --
 --
@@ -193,7 +193,7 @@ data DescribeDBLogFilesResponse = DescribeDBLogFilesResponse'{_ddlfrsDescribeDBL
 --
 -- * 'ddlfrsDescribeDBLogFiles' - The DB log files returned.
 --
--- * 'ddlfrsMarker' - A pagination token that can be used in a subsequent DescribeDBLogFiles request.
+-- * 'ddlfrsMarker' - A pagination token that can be used in a later DescribeDBLogFiles request.
 --
 -- * 'ddlfrsResponseStatus' - -- | The response status code.
 describeDBLogFilesResponse
@@ -209,7 +209,7 @@ describeDBLogFilesResponse pResponseStatus_
 ddlfrsDescribeDBLogFiles :: Lens' DescribeDBLogFilesResponse [DescribeDBLogFilesDetails]
 ddlfrsDescribeDBLogFiles = lens _ddlfrsDescribeDBLogFiles (\ s a -> s{_ddlfrsDescribeDBLogFiles = a}) . _Default . _Coerce
 
--- | A pagination token that can be used in a subsequent DescribeDBLogFiles request.
+-- | A pagination token that can be used in a later DescribeDBLogFiles request.
 ddlfrsMarker :: Lens' DescribeDBLogFilesResponse (Maybe Text)
 ddlfrsMarker = lens _ddlfrsMarker (\ s a -> s{_ddlfrsMarker = a})
 

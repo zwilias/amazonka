@@ -19,6 +19,8 @@
 module Network.AWS.SSM.Types.CommandFilterKey (
   CommandFilterKey (
     ..
+    , CommandDocumentName
+    , CommandExecutionStage
     , CommandInvokedAfter
     , CommandInvokedBefore
     , CommandStatus
@@ -32,6 +34,12 @@ data CommandFilterKey = CommandFilterKey' (CI Text)
                           deriving (Eq, Ord, Read, Show, Data, Typeable,
                                     Generic)
 
+pattern CommandDocumentName :: CommandFilterKey
+pattern CommandDocumentName = CommandFilterKey' "DocumentName"
+
+pattern CommandExecutionStage :: CommandFilterKey
+pattern CommandExecutionStage = CommandFilterKey' "ExecutionStage"
+
 pattern CommandInvokedAfter :: CommandFilterKey
 pattern CommandInvokedAfter = CommandFilterKey' "InvokedAfter"
 
@@ -42,6 +50,8 @@ pattern CommandStatus :: CommandFilterKey
 pattern CommandStatus = CommandFilterKey' "Status"
 
 {-# COMPLETE
+  CommandDocumentName,
+  CommandExecutionStage,
   CommandInvokedAfter,
   CommandInvokedBefore,
   CommandStatus,
@@ -59,21 +69,25 @@ instance ToText CommandFilterKey where
 --   fromEnum is a partial function, and will error on values unknown at generation time.
 instance Enum CommandFilterKey where
     toEnum i = case i of
-        0 -> CommandInvokedAfter
-        1 -> CommandInvokedBefore
-        2 -> CommandStatus
+        0 -> CommandDocumentName
+        1 -> CommandExecutionStage
+        2 -> CommandInvokedAfter
+        3 -> CommandInvokedBefore
+        4 -> CommandStatus
         _ -> (error . showText) $ "Unknown index for CommandFilterKey: " <> toText i
     fromEnum x = case x of
-        CommandInvokedAfter -> 0
-        CommandInvokedBefore -> 1
-        CommandStatus -> 2
+        CommandDocumentName -> 0
+        CommandExecutionStage -> 1
+        CommandInvokedAfter -> 2
+        CommandInvokedBefore -> 3
+        CommandStatus -> 4
         CommandFilterKey' name -> (error . showText) $ "Unknown CommandFilterKey: " <> original name
 
 -- | Represents the bounds of /known/ $CommandFilterKey.
 --   AWS may have added more since the source was generated.
 --   This instance exists only for backward compatibility.
 instance Bounded CommandFilterKey where
-    minBound = CommandInvokedAfter
+    minBound = CommandDocumentName
     maxBound = CommandStatus
 
 instance Hashable     CommandFilterKey

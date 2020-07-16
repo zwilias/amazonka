@@ -25,8 +25,10 @@ import Network.AWS.Prelude
 --
 --
 -- /See:/ 'gatewayInfo' smart constructor.
-data GatewayInfo = GatewayInfo'{_giGatewayARN ::
-                                !(Maybe Text),
+data GatewayInfo = GatewayInfo'{_giEC2InstanceRegion
+                                :: !(Maybe Text),
+                                _giGatewayARN :: !(Maybe Text),
+                                _giEC2InstanceId :: !(Maybe Text),
                                 _giGatewayOperationalState :: !(Maybe Text),
                                 _giGatewayName :: !(Maybe Text),
                                 _giGatewayId :: !(Maybe Text),
@@ -37,7 +39,11 @@ data GatewayInfo = GatewayInfo'{_giGatewayARN ::
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'giGatewayARN' - The Amazon Resource Name (ARN) of the gateway. Use the 'ListGateways' operation to return a list of gateways for your account and region.
+-- * 'giEC2InstanceRegion' - The AWS Region where the Amazon EC2 instance is located.
+--
+-- * 'giGatewayARN' - The Amazon Resource Name (ARN) of the gateway. Use the 'ListGateways' operation to return a list of gateways for your account and AWS Region.
+--
+-- * 'giEC2InstanceId' - The ID of the Amazon EC2 instance that was used to launch the gateway.
 --
 -- * 'giGatewayOperationalState' - The state of the gateway. Valid Values: DISABLED or ACTIVE
 --
@@ -49,14 +55,23 @@ data GatewayInfo = GatewayInfo'{_giGatewayARN ::
 gatewayInfo
     :: GatewayInfo
 gatewayInfo
-  = GatewayInfo'{_giGatewayARN = Nothing,
+  = GatewayInfo'{_giEC2InstanceRegion = Nothing,
+                 _giGatewayARN = Nothing, _giEC2InstanceId = Nothing,
                  _giGatewayOperationalState = Nothing,
                  _giGatewayName = Nothing, _giGatewayId = Nothing,
                  _giGatewayType = Nothing}
 
--- | The Amazon Resource Name (ARN) of the gateway. Use the 'ListGateways' operation to return a list of gateways for your account and region.
+-- | The AWS Region where the Amazon EC2 instance is located.
+giEC2InstanceRegion :: Lens' GatewayInfo (Maybe Text)
+giEC2InstanceRegion = lens _giEC2InstanceRegion (\ s a -> s{_giEC2InstanceRegion = a})
+
+-- | The Amazon Resource Name (ARN) of the gateway. Use the 'ListGateways' operation to return a list of gateways for your account and AWS Region.
 giGatewayARN :: Lens' GatewayInfo (Maybe Text)
 giGatewayARN = lens _giGatewayARN (\ s a -> s{_giGatewayARN = a})
+
+-- | The ID of the Amazon EC2 instance that was used to launch the gateway.
+giEC2InstanceId :: Lens' GatewayInfo (Maybe Text)
+giEC2InstanceId = lens _giEC2InstanceId (\ s a -> s{_giEC2InstanceId = a})
 
 -- | The state of the gateway. Valid Values: DISABLED or ACTIVE
 giGatewayOperationalState :: Lens' GatewayInfo (Maybe Text)
@@ -79,8 +94,9 @@ instance FromJSON GatewayInfo where
           = withObject "GatewayInfo"
               (\ x ->
                  GatewayInfo' <$>
-                   (x .:? "GatewayARN") <*>
-                     (x .:? "GatewayOperationalState")
+                   (x .:? "Ec2InstanceRegion") <*> (x .:? "GatewayARN")
+                     <*> (x .:? "Ec2InstanceId")
+                     <*> (x .:? "GatewayOperationalState")
                      <*> (x .:? "GatewayName")
                      <*> (x .:? "GatewayId")
                      <*> (x .:? "GatewayType"))

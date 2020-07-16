@@ -26,14 +26,14 @@ import Network.AWS.SageMaker.Types.TrainingJobStatus
 --
 --
 -- /See:/ 'trainingJobSummary' smart constructor.
-data TrainingJobSummary = TrainingJobSummary'{_tjsTrainingEndTime
+data TrainingJobSummary = TrainingJobSummary'{_traTrainingEndTime
                                               :: !(Maybe POSIX),
-                                              _tjsLastModifiedTime ::
+                                              _traLastModifiedTime ::
                                               !(Maybe POSIX),
-                                              _tjsTrainingJobName :: !Text,
-                                              _tjsTrainingJobARN :: !Text,
-                                              _tjsCreationTime :: !POSIX,
-                                              _tjsTrainingJobStatus ::
+                                              _traTrainingJobName :: !Text,
+                                              _traTrainingJobARN :: !Text,
+                                              _traCreationTime :: !POSIX,
+                                              _traTrainingJobStatus ::
                                               !TrainingJobStatus}
                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
@@ -41,55 +41,55 @@ data TrainingJobSummary = TrainingJobSummary'{_tjsTrainingEndTime
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'tjsTrainingEndTime' - A timestamp that shows when the training job ended. This field is set only if the training job has one of the terminal statuses (@Completed@ , @Failed@ , or @Stopped@ ). 
+-- * 'traTrainingEndTime' - A timestamp that shows when the training job ended. This field is set only if the training job has one of the terminal statuses (@Completed@ , @Failed@ , or @Stopped@ ). 
 --
--- * 'tjsLastModifiedTime' - Timestamp when the training job was last modified. 
+-- * 'traLastModifiedTime' - Timestamp when the training job was last modified. 
 --
--- * 'tjsTrainingJobName' - The name of the training job that you want a summary for.
+-- * 'traTrainingJobName' - The name of the training job that you want a summary for.
 --
--- * 'tjsTrainingJobARN' - The Amazon Resource Name (ARN) of the training job.
+-- * 'traTrainingJobARN' - The Amazon Resource Name (ARN) of the training job.
 --
--- * 'tjsCreationTime' - A timestamp that shows when the training job was created.
+-- * 'traCreationTime' - A timestamp that shows when the training job was created.
 --
--- * 'tjsTrainingJobStatus' - The status of the training job.
+-- * 'traTrainingJobStatus' - The status of the training job.
 trainingJobSummary
-    :: Text -- ^ 'tjsTrainingJobName'
-    -> Text -- ^ 'tjsTrainingJobARN'
-    -> UTCTime -- ^ 'tjsCreationTime'
-    -> TrainingJobStatus -- ^ 'tjsTrainingJobStatus'
+    :: Text -- ^ 'traTrainingJobName'
+    -> Text -- ^ 'traTrainingJobARN'
+    -> UTCTime -- ^ 'traCreationTime'
+    -> TrainingJobStatus -- ^ 'traTrainingJobStatus'
     -> TrainingJobSummary
 trainingJobSummary pTrainingJobName_ pTrainingJobARN_
   pCreationTime_ pTrainingJobStatus_
-  = TrainingJobSummary'{_tjsTrainingEndTime = Nothing,
-                        _tjsLastModifiedTime = Nothing,
-                        _tjsTrainingJobName = pTrainingJobName_,
-                        _tjsTrainingJobARN = pTrainingJobARN_,
-                        _tjsCreationTime = _Time # pCreationTime_,
-                        _tjsTrainingJobStatus = pTrainingJobStatus_}
+  = TrainingJobSummary'{_traTrainingEndTime = Nothing,
+                        _traLastModifiedTime = Nothing,
+                        _traTrainingJobName = pTrainingJobName_,
+                        _traTrainingJobARN = pTrainingJobARN_,
+                        _traCreationTime = _Time # pCreationTime_,
+                        _traTrainingJobStatus = pTrainingJobStatus_}
 
 -- | A timestamp that shows when the training job ended. This field is set only if the training job has one of the terminal statuses (@Completed@ , @Failed@ , or @Stopped@ ). 
-tjsTrainingEndTime :: Lens' TrainingJobSummary (Maybe UTCTime)
-tjsTrainingEndTime = lens _tjsTrainingEndTime (\ s a -> s{_tjsTrainingEndTime = a}) . mapping _Time
+traTrainingEndTime :: Lens' TrainingJobSummary (Maybe UTCTime)
+traTrainingEndTime = lens _traTrainingEndTime (\ s a -> s{_traTrainingEndTime = a}) . mapping _Time
 
 -- | Timestamp when the training job was last modified. 
-tjsLastModifiedTime :: Lens' TrainingJobSummary (Maybe UTCTime)
-tjsLastModifiedTime = lens _tjsLastModifiedTime (\ s a -> s{_tjsLastModifiedTime = a}) . mapping _Time
+traLastModifiedTime :: Lens' TrainingJobSummary (Maybe UTCTime)
+traLastModifiedTime = lens _traLastModifiedTime (\ s a -> s{_traLastModifiedTime = a}) . mapping _Time
 
 -- | The name of the training job that you want a summary for.
-tjsTrainingJobName :: Lens' TrainingJobSummary Text
-tjsTrainingJobName = lens _tjsTrainingJobName (\ s a -> s{_tjsTrainingJobName = a})
+traTrainingJobName :: Lens' TrainingJobSummary Text
+traTrainingJobName = lens _traTrainingJobName (\ s a -> s{_traTrainingJobName = a})
 
 -- | The Amazon Resource Name (ARN) of the training job.
-tjsTrainingJobARN :: Lens' TrainingJobSummary Text
-tjsTrainingJobARN = lens _tjsTrainingJobARN (\ s a -> s{_tjsTrainingJobARN = a})
+traTrainingJobARN :: Lens' TrainingJobSummary Text
+traTrainingJobARN = lens _traTrainingJobARN (\ s a -> s{_traTrainingJobARN = a})
 
 -- | A timestamp that shows when the training job was created.
-tjsCreationTime :: Lens' TrainingJobSummary UTCTime
-tjsCreationTime = lens _tjsCreationTime (\ s a -> s{_tjsCreationTime = a}) . _Time
+traCreationTime :: Lens' TrainingJobSummary UTCTime
+traCreationTime = lens _traCreationTime (\ s a -> s{_traCreationTime = a}) . _Time
 
 -- | The status of the training job.
-tjsTrainingJobStatus :: Lens' TrainingJobSummary TrainingJobStatus
-tjsTrainingJobStatus = lens _tjsTrainingJobStatus (\ s a -> s{_tjsTrainingJobStatus = a})
+traTrainingJobStatus :: Lens' TrainingJobSummary TrainingJobStatus
+traTrainingJobStatus = lens _traTrainingJobStatus (\ s a -> s{_traTrainingJobStatus = a})
 
 instance FromJSON TrainingJobSummary where
         parseJSON

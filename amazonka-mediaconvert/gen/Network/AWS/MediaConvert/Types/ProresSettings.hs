@@ -32,7 +32,7 @@ import Network.AWS.Prelude
 -- /See:/ 'proresSettings' smart constructor.
 data ProresSettings = ProresSettings'{_psSlowPal ::
                                       !(Maybe ProresSlowPal),
-                                      _psParNumerator :: !(Maybe Int),
+                                      _psParNumerator :: !(Maybe Nat),
                                       _psTelecine :: !(Maybe ProresTelecine),
                                       _psInterlaceMode ::
                                       !(Maybe ProresInterlaceMode),
@@ -40,39 +40,39 @@ data ProresSettings = ProresSettings'{_psSlowPal ::
                                       !(Maybe ProresParControl),
                                       _psCodecProfile ::
                                       !(Maybe ProresCodecProfile),
-                                      _psFramerateDenominator :: !(Maybe Int),
+                                      _psFramerateDenominator :: !(Maybe Nat),
                                       _psFramerateConversionAlgorithm ::
                                       !(Maybe
                                           ProresFramerateConversionAlgorithm),
                                       _psFramerateControl ::
                                       !(Maybe ProresFramerateControl),
-                                      _psFramerateNumerator :: !(Maybe Int),
-                                      _psParDenominator :: !(Maybe Int)}
+                                      _psFramerateNumerator :: !(Maybe Nat),
+                                      _psParDenominator :: !(Maybe Nat)}
                         deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ProresSettings' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'psSlowPal' - Undocumented member.
+-- * 'psSlowPal' - Enables Slow PAL rate conversion. 23.976fps and 24fps input is relabeled as 25fps, and audio is sped up correspondingly.
 --
 -- * 'psParNumerator' - Pixel Aspect Ratio numerator.
 --
--- * 'psTelecine' - Undocumented member.
+-- * 'psTelecine' - Only use Telecine (ProresTelecine) when you set Framerate (Framerate) to 29.970. Set Telecine (ProresTelecine) to Hard (hard) to produce a 29.97i output from a 23.976 input. Set it to Soft (soft) to produce 23.976 output and leave converstion to the player.
 --
--- * 'psInterlaceMode' - Undocumented member.
+-- * 'psInterlaceMode' - Use Interlace mode (InterlaceMode) to choose the scan line type for the output. * Top Field First (TOP_FIELD) and Bottom Field First (BOTTOM_FIELD) produce interlaced output with the entire output having the same field polarity (top or bottom first). * Follow, Default Top (FOLLOW_TOP_FIELD) and Follow, Default Bottom (FOLLOW_BOTTOM_FIELD) use the same field polarity as the source. Therefore, behavior depends on the input scan type.   - If the source is interlaced, the output will be interlaced with the same polarity as the source (it will follow the source). The output could therefore be a mix of "top field first" and "bottom field first".   - If the source is progressive, the output will be interlaced with "top field first" or "bottom field first" polarity, depending on which of the Follow options you chose.
 --
--- * 'psParControl' - Undocumented member.
+-- * 'psParControl' - Use (ProresParControl) to specify how the service determines the pixel aspect ratio. Set to Follow source (INITIALIZE_FROM_SOURCE) to use the pixel aspect ratio from the input.  To specify a different pixel aspect ratio: Using the console, choose it from the dropdown menu. Using the API, set ProresParControl to (SPECIFIED) and provide  for (ParNumerator) and (ParDenominator).
 --
--- * 'psCodecProfile' - Undocumented member.
+-- * 'psCodecProfile' - Use Profile (ProResCodecProfile) to specifiy the type of Apple ProRes codec to use for this output.
 --
--- * 'psFramerateDenominator' - Framerate denominator.
+-- * 'psFramerateDenominator' - Frame rate denominator.
 --
--- * 'psFramerateConversionAlgorithm' - Undocumented member.
+-- * 'psFramerateConversionAlgorithm' - When set to INTERPOLATE, produces smoother motion during frame rate conversion.
 --
--- * 'psFramerateControl' - Undocumented member.
+-- * 'psFramerateControl' - If you are using the console, use the Framerate setting to specify the frame rate for this output. If you want to keep the same frame rate as the input video, choose Follow source. If you want to do frame rate conversion, choose a frame rate from the dropdown list or choose Custom. The framerates shown in the dropdown list are decimal approximations of fractions. If you choose Custom, specify your frame rate as a fraction. If you are creating your transcoding job sepecification as a JSON file without the console, use FramerateControl to specify which value the service uses for the frame rate for this output. Choose INITIALIZE_FROM_SOURCE if you want the service to use the frame rate from the input. Choose SPECIFIED if you want the service to use the frame rate you specify in the settings FramerateNumerator and FramerateDenominator.
 --
--- * 'psFramerateNumerator' - When you use the API for transcode jobs that use framerate conversion, specify the framerate as a fraction. For example,  24000 / 1001 = 23.976 fps. Use FramerateNumerator to specify the numerator of this fraction. In this example, use 24000 for the value of FramerateNumerator.
+-- * 'psFramerateNumerator' - When you use the API for transcode jobs that use frame rate conversion, specify the frame rate as a fraction. For example,  24000 / 1001 = 23.976 fps. Use FramerateNumerator to specify the numerator of this fraction. In this example, use 24000 for the value of FramerateNumerator.
 --
 -- * 'psParDenominator' - Pixel Aspect Ratio denominator.
 proresSettings
@@ -88,49 +88,49 @@ proresSettings
                     _psFramerateNumerator = Nothing,
                     _psParDenominator = Nothing}
 
--- | Undocumented member.
+-- | Enables Slow PAL rate conversion. 23.976fps and 24fps input is relabeled as 25fps, and audio is sped up correspondingly.
 psSlowPal :: Lens' ProresSettings (Maybe ProresSlowPal)
 psSlowPal = lens _psSlowPal (\ s a -> s{_psSlowPal = a})
 
 -- | Pixel Aspect Ratio numerator.
-psParNumerator :: Lens' ProresSettings (Maybe Int)
-psParNumerator = lens _psParNumerator (\ s a -> s{_psParNumerator = a})
+psParNumerator :: Lens' ProresSettings (Maybe Natural)
+psParNumerator = lens _psParNumerator (\ s a -> s{_psParNumerator = a}) . mapping _Nat
 
--- | Undocumented member.
+-- | Only use Telecine (ProresTelecine) when you set Framerate (Framerate) to 29.970. Set Telecine (ProresTelecine) to Hard (hard) to produce a 29.97i output from a 23.976 input. Set it to Soft (soft) to produce 23.976 output and leave converstion to the player.
 psTelecine :: Lens' ProresSettings (Maybe ProresTelecine)
 psTelecine = lens _psTelecine (\ s a -> s{_psTelecine = a})
 
--- | Undocumented member.
+-- | Use Interlace mode (InterlaceMode) to choose the scan line type for the output. * Top Field First (TOP_FIELD) and Bottom Field First (BOTTOM_FIELD) produce interlaced output with the entire output having the same field polarity (top or bottom first). * Follow, Default Top (FOLLOW_TOP_FIELD) and Follow, Default Bottom (FOLLOW_BOTTOM_FIELD) use the same field polarity as the source. Therefore, behavior depends on the input scan type.   - If the source is interlaced, the output will be interlaced with the same polarity as the source (it will follow the source). The output could therefore be a mix of "top field first" and "bottom field first".   - If the source is progressive, the output will be interlaced with "top field first" or "bottom field first" polarity, depending on which of the Follow options you chose.
 psInterlaceMode :: Lens' ProresSettings (Maybe ProresInterlaceMode)
 psInterlaceMode = lens _psInterlaceMode (\ s a -> s{_psInterlaceMode = a})
 
--- | Undocumented member.
+-- | Use (ProresParControl) to specify how the service determines the pixel aspect ratio. Set to Follow source (INITIALIZE_FROM_SOURCE) to use the pixel aspect ratio from the input.  To specify a different pixel aspect ratio: Using the console, choose it from the dropdown menu. Using the API, set ProresParControl to (SPECIFIED) and provide  for (ParNumerator) and (ParDenominator).
 psParControl :: Lens' ProresSettings (Maybe ProresParControl)
 psParControl = lens _psParControl (\ s a -> s{_psParControl = a})
 
--- | Undocumented member.
+-- | Use Profile (ProResCodecProfile) to specifiy the type of Apple ProRes codec to use for this output.
 psCodecProfile :: Lens' ProresSettings (Maybe ProresCodecProfile)
 psCodecProfile = lens _psCodecProfile (\ s a -> s{_psCodecProfile = a})
 
--- | Framerate denominator.
-psFramerateDenominator :: Lens' ProresSettings (Maybe Int)
-psFramerateDenominator = lens _psFramerateDenominator (\ s a -> s{_psFramerateDenominator = a})
+-- | Frame rate denominator.
+psFramerateDenominator :: Lens' ProresSettings (Maybe Natural)
+psFramerateDenominator = lens _psFramerateDenominator (\ s a -> s{_psFramerateDenominator = a}) . mapping _Nat
 
--- | Undocumented member.
+-- | When set to INTERPOLATE, produces smoother motion during frame rate conversion.
 psFramerateConversionAlgorithm :: Lens' ProresSettings (Maybe ProresFramerateConversionAlgorithm)
 psFramerateConversionAlgorithm = lens _psFramerateConversionAlgorithm (\ s a -> s{_psFramerateConversionAlgorithm = a})
 
--- | Undocumented member.
+-- | If you are using the console, use the Framerate setting to specify the frame rate for this output. If you want to keep the same frame rate as the input video, choose Follow source. If you want to do frame rate conversion, choose a frame rate from the dropdown list or choose Custom. The framerates shown in the dropdown list are decimal approximations of fractions. If you choose Custom, specify your frame rate as a fraction. If you are creating your transcoding job sepecification as a JSON file without the console, use FramerateControl to specify which value the service uses for the frame rate for this output. Choose INITIALIZE_FROM_SOURCE if you want the service to use the frame rate from the input. Choose SPECIFIED if you want the service to use the frame rate you specify in the settings FramerateNumerator and FramerateDenominator.
 psFramerateControl :: Lens' ProresSettings (Maybe ProresFramerateControl)
 psFramerateControl = lens _psFramerateControl (\ s a -> s{_psFramerateControl = a})
 
--- | When you use the API for transcode jobs that use framerate conversion, specify the framerate as a fraction. For example,  24000 / 1001 = 23.976 fps. Use FramerateNumerator to specify the numerator of this fraction. In this example, use 24000 for the value of FramerateNumerator.
-psFramerateNumerator :: Lens' ProresSettings (Maybe Int)
-psFramerateNumerator = lens _psFramerateNumerator (\ s a -> s{_psFramerateNumerator = a})
+-- | When you use the API for transcode jobs that use frame rate conversion, specify the frame rate as a fraction. For example,  24000 / 1001 = 23.976 fps. Use FramerateNumerator to specify the numerator of this fraction. In this example, use 24000 for the value of FramerateNumerator.
+psFramerateNumerator :: Lens' ProresSettings (Maybe Natural)
+psFramerateNumerator = lens _psFramerateNumerator (\ s a -> s{_psFramerateNumerator = a}) . mapping _Nat
 
 -- | Pixel Aspect Ratio denominator.
-psParDenominator :: Lens' ProresSettings (Maybe Int)
-psParDenominator = lens _psParDenominator (\ s a -> s{_psParDenominator = a})
+psParDenominator :: Lens' ProresSettings (Maybe Natural)
+psParDenominator = lens _psParDenominator (\ s a -> s{_psParDenominator = a}) . mapping _Nat
 
 instance FromJSON ProresSettings where
         parseJSON

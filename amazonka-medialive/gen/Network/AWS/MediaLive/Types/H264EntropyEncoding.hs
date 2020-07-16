@@ -27,7 +27,7 @@ module Network.AWS.MediaLive.Types.H264EntropyEncoding (
 import Data.CaseInsensitive
 import Network.AWS.Prelude
 
--- | Placeholder documentation for H264EntropyEncoding
+-- | H264 Entropy Encoding
 data H264EntropyEncoding = H264EntropyEncoding' (CI
                                                    Text)
                              deriving (Eq, Ord, Read, Show, Data, Typeable,

@@ -18,30 +18,42 @@ module Network.AWS.ECR.Types
     -- * Errors
     , _RepositoryAlreadyExistsException
     , _LifecyclePolicyPreviewNotFoundException
+    , _InvalidTagParameterException
     , _InvalidLayerException
     , _ServerException
     , _LayerAlreadyExistsException
     , _LifecyclePolicyNotFoundException
     , _InvalidParameterException
+    , _ReferencedImagesNotFoundException
     , _LayersNotFoundException
+    , _TooManyTagsException
     , _RepositoryPolicyNotFoundException
+    , _ScanNotFoundException
     , _ImageNotFoundException
     , _LayerPartTooSmallException
     , _RepositoryNotEmptyException
+    , _UnsupportedImageTypeException
     , _LayerInaccessibleException
     , _InvalidLayerPartException
     , _UploadNotFoundException
+    , _ImageTagAlreadyExistsException
     , _LimitExceededException
     , _LifecyclePolicyPreviewInProgressException
     , _EmptyUploadException
     , _RepositoryNotFoundException
     , _ImageAlreadyExistsException
 
+    -- * FindingSeverity
+    , FindingSeverity (..)
+
     -- * ImageActionType
     , ImageActionType (..)
 
     -- * ImageFailureCode
     , ImageFailureCode (..)
+
+    -- * ImageTagMutability
+    , ImageTagMutability (..)
 
     -- * LayerAvailability
     , LayerAvailability (..)
@@ -52,8 +64,17 @@ module Network.AWS.ECR.Types
     -- * LifecyclePolicyPreviewStatus
     , LifecyclePolicyPreviewStatus (..)
 
+    -- * ScanStatus
+    , ScanStatus (..)
+
     -- * TagStatus
     , TagStatus (..)
+
+    -- * Attribute
+    , Attribute
+    , attribute
+    , aValue
+    , aKey
 
     -- * AuthorizationData
     , AuthorizationData
@@ -80,8 +101,10 @@ module Network.AWS.ECR.Types
     , imageDetail
     , idRegistryId
     , idImageTags
+    , idImageScanStatus
     , idImageSizeInBytes
     , idImageDigest
+    , idImageScanFindingsSummary
     , idImagePushedAt
     , idRepositoryName
 
@@ -97,6 +120,41 @@ module Network.AWS.ECR.Types
     , imageIdentifier
     , iiImageDigest
     , iiImageTag
+
+    -- * ImageScanFinding
+    , ImageScanFinding
+    , imageScanFinding
+    , isfSeverity
+    , isfUri
+    , isfName
+    , isfAttributes
+    , isfDescription
+
+    -- * ImageScanFindings
+    , ImageScanFindings
+    , imageScanFindings
+    , isfImageScanCompletedAt
+    , isfFindings
+    , isfFindingSeverityCounts
+    , isfVulnerabilitySourceUpdatedAt
+
+    -- * ImageScanFindingsSummary
+    , ImageScanFindingsSummary
+    , imageScanFindingsSummary
+    , isfsImageScanCompletedAt
+    , isfsFindingSeverityCounts
+    , isfsVulnerabilitySourceUpdatedAt
+
+    -- * ImageScanStatus
+    , ImageScanStatus
+    , imageScanStatus
+    , issStatus
+    , issDescription
+
+    -- * ImageScanningConfiguration
+    , ImageScanningConfiguration
+    , imageScanningConfiguration
+    , iscScanOnPush
 
     -- * Layer
     , Layer
@@ -148,25 +206,42 @@ module Network.AWS.ECR.Types
     , rRepositoryARN
     , rCreatedAt
     , rRegistryId
+    , rImageScanningConfiguration
     , rRepositoryURI
     , rRepositoryName
+    , rImageTagMutability
+
+    -- * Tag
+    , Tag
+    , tag
+    , tagValue
+    , tagKey
     ) where
 
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Sign.V4
+import Network.AWS.ECR.Types.FindingSeverity
 import Network.AWS.ECR.Types.ImageActionType
 import Network.AWS.ECR.Types.ImageFailureCode
+import Network.AWS.ECR.Types.ImageTagMutability
 import Network.AWS.ECR.Types.LayerAvailability
 import Network.AWS.ECR.Types.LayerFailureCode
 import Network.AWS.ECR.Types.LifecyclePolicyPreviewStatus
+import Network.AWS.ECR.Types.ScanStatus
 import Network.AWS.ECR.Types.TagStatus
+import Network.AWS.ECR.Types.Attribute
 import Network.AWS.ECR.Types.AuthorizationData
 import Network.AWS.ECR.Types.DescribeImagesFilter
 import Network.AWS.ECR.Types.Image
 import Network.AWS.ECR.Types.ImageDetail
 import Network.AWS.ECR.Types.ImageFailure
 import Network.AWS.ECR.Types.ImageIdentifier
+import Network.AWS.ECR.Types.ImageScanFinding
+import Network.AWS.ECR.Types.ImageScanFindings
+import Network.AWS.ECR.Types.ImageScanFindingsSummary
+import Network.AWS.ECR.Types.ImageScanStatus
+import Network.AWS.ECR.Types.ImageScanningConfiguration
 import Network.AWS.ECR.Types.Layer
 import Network.AWS.ECR.Types.LayerFailure
 import Network.AWS.ECR.Types.LifecyclePolicyPreviewFilter
@@ -175,12 +250,13 @@ import Network.AWS.ECR.Types.LifecyclePolicyPreviewSummary
 import Network.AWS.ECR.Types.LifecyclePolicyRuleAction
 import Network.AWS.ECR.Types.ListImagesFilter
 import Network.AWS.ECR.Types.Repository
+import Network.AWS.ECR.Types.Tag
 
 -- | API version @2015-09-21@ of the Amazon EC2 Container Registry SDK configuration.
 ecr :: Service
 ecr
   = Service{_svcAbbrev = "ECR", _svcSigner = v4,
-            _svcPrefix = "ecr", _svcVersion = "2015-09-21",
+            _svcPrefix = "api.ecr", _svcVersion = "2015-09-21",
             _svcEndpoint = defaultEndpoint ecr,
             _svcTimeout = Just 70, _svcCheck = statusSuccess,
             _svcError = parseJSONError "ECR", _svcRetry = retry}
@@ -197,6 +273,11 @@ ecr
             = Just "throttling_exception"
           | has (hasCode "Throttling" . hasStatus 400) e =
             Just "throttling"
+          | has
+              (hasCode "ProvisionedThroughputExceededException" .
+                 hasStatus 400)
+              e
+            = Just "throughput_exceeded"
           | has (hasStatus 504) e = Just "gateway_timeout"
           | has
               (hasCode "RequestThrottledException" . hasStatus 400)
@@ -223,6 +304,14 @@ _LifecyclePolicyPreviewNotFoundException :: AsError a => Getting (First ServiceE
 _LifecyclePolicyPreviewNotFoundException
   = _MatchServiceError ecr
       "LifecyclePolicyPreviewNotFoundException"
+
+-- | An invalid parameter has been specified. Tag keys can have a maximum character length of 128 characters, and tag values can have a maximum length of 256 characters.
+--
+--
+_InvalidTagParameterException :: AsError a => Getting (First ServiceError) a ServiceError
+_InvalidTagParameterException
+  = _MatchServiceError ecr
+      "InvalidTagParameterException"
 
 -- | The layer digest calculation performed by Amazon ECR upon receipt of the image layer does not match the digest specified.
 --
@@ -261,12 +350,27 @@ _InvalidParameterException :: AsError a => Getting (First ServiceError) a Servic
 _InvalidParameterException
   = _MatchServiceError ecr "InvalidParameterException"
 
+-- | The manifest list is referencing an image that does not exist.
+--
+--
+_ReferencedImagesNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
+_ReferencedImagesNotFoundException
+  = _MatchServiceError ecr
+      "ReferencedImagesNotFoundException"
+
 -- | The specified layers could not be found, or the specified layer is not valid for this repository.
 --
 --
 _LayersNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
 _LayersNotFoundException
   = _MatchServiceError ecr "LayersNotFoundException"
+
+-- | The list of tags on the repository is over the limit. The maximum number of tags that can be applied to a repository is 50.
+--
+--
+_TooManyTagsException :: AsError a => Getting (First ServiceError) a ServiceError
+_TooManyTagsException
+  = _MatchServiceError ecr "TooManyTagsException"
 
 -- | The specified repository and registry combination does not have an associated repository policy.
 --
@@ -275,6 +379,13 @@ _RepositoryPolicyNotFoundException :: AsError a => Getting (First ServiceError) 
 _RepositoryPolicyNotFoundException
   = _MatchServiceError ecr
       "RepositoryPolicyNotFoundException"
+
+-- | The specified image scan could not be found. Ensure that image scanning is enabled on the repository and try again.
+--
+--
+_ScanNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
+_ScanNotFoundException
+  = _MatchServiceError ecr "ScanNotFoundException"
 
 -- | The image requested does not exist in the specified repository.
 --
@@ -298,6 +409,14 @@ _RepositoryNotEmptyException
   = _MatchServiceError ecr
       "RepositoryNotEmptyException"
 
+-- | The image is of a type that cannot be scanned.
+--
+--
+_UnsupportedImageTypeException :: AsError a => Getting (First ServiceError) a ServiceError
+_UnsupportedImageTypeException
+  = _MatchServiceError ecr
+      "UnsupportedImageTypeException"
+
 -- | The specified layer is not available because it is not associated with an image. Unassociated image layers may be cleaned up at any time.
 --
 --
@@ -319,7 +438,15 @@ _UploadNotFoundException :: AsError a => Getting (First ServiceError) a ServiceE
 _UploadNotFoundException
   = _MatchServiceError ecr "UploadNotFoundException"
 
--- | The operation did not succeed because it would have exceeded a service limit for your account. For more information, see <http://docs.aws.amazon.com/AmazonECR/latest/userguide/service_limits.html Amazon ECR Default Service Limits> in the Amazon Elastic Container Registry User Guide.
+-- | The specified image is tagged with a tag that already exists. The repository is configured for tag immutability.
+--
+--
+_ImageTagAlreadyExistsException :: AsError a => Getting (First ServiceError) a ServiceError
+_ImageTagAlreadyExistsException
+  = _MatchServiceError ecr
+      "ImageTagAlreadyExistsException"
+
+-- | The operation did not succeed because it would have exceeded a service limit for your account. For more information, see <https://docs.aws.amazon.com/AmazonECR/latest/userguide/service_limits.html Amazon ECR Default Service Limits> in the Amazon Elastic Container Registry User Guide.
 --
 --
 _LimitExceededException :: AsError a => Getting (First ServiceError) a ServiceError

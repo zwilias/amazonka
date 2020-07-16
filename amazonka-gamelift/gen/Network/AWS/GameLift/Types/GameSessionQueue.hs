@@ -33,8 +33,6 @@ import Network.AWS.Prelude
 --
 --
 --
--- Queue-related operations include:
---
 --     * 'CreateGameSessionQueue' 
 --
 --     * 'DescribeGameSessionQueues' 
@@ -62,15 +60,15 @@ data GameSessionQueue = GameSessionQueue'{_gsqGameSessionQueueARN
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'gsqGameSessionQueueARN' - Amazon Resource Name (<http://docs.aws.amazon.com/AmazonS3/latest/dev/s3-arn-format.html ARN> ) that is assigned to a game session queue and uniquely identifies it. Format is @arn:aws:gamelift:<region>::fleet/fleet-a1234567-b8c9-0d1e-2fa3-b45c6d7e8912@ .
+-- * 'gsqGameSessionQueueARN' - Amazon Resource Name (<https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html ARN> ) that is assigned to a GameLift game session queue resource and uniquely identifies it. ARNs are unique across all Regions. In a GameLift game session queue ARN, the resource ID matches the /Name/ value.
 --
--- * 'gsqPlayerLatencyPolicies' - Collection of latency policies to apply when processing game sessions placement requests with player latency information. Multiple policies are evaluated in order of the maximum latency value, starting with the lowest latency values. With just one policy, it is enforced at the start of the game session placement for the duration period. With multiple policies, each policy is enforced consecutively for its duration period. For example, a queue might enforce a 60-second policy followed by a 120-second policy, and then no policy for the remainder of the placement. 
+-- * 'gsqPlayerLatencyPolicies' - A collection of latency policies to apply when processing game sessions placement requests with player latency information. Multiple policies are evaluated in order of the maximum latency value, starting with the lowest latency values. With just one policy, the policy is enforced at the start of the game session placement for the duration period. With multiple policies, each policy is enforced consecutively for its duration period. For example, a queue might enforce a 60-second policy followed by a 120-second policy, and then no policy for the remainder of the placement. 
 --
--- * 'gsqTimeoutInSeconds' - Maximum time, in seconds, that a new game session placement request remains in the queue. When a request exceeds this time, the game session placement changes to a @TIMED_OUT@ status.
+-- * 'gsqTimeoutInSeconds' - The maximum time, in seconds, that a new game session placement request remains in the queue. When a request exceeds this time, the game session placement changes to a @TIMED_OUT@ status.
 --
--- * 'gsqDestinations' - List of fleets that can be used to fulfill game session placement requests in the queue. Fleets are identified by either a fleet ARN or a fleet alias ARN. Destinations are listed in default preference order.
+-- * 'gsqDestinations' - A list of fleets that can be used to fulfill game session placement requests in the queue. Fleets are identified by either a fleet ARN or a fleet alias ARN. Destinations are listed in default preference order.
 --
--- * 'gsqName' - Descriptive label that is associated with game session queue. Queue names must be unique within each region.
+-- * 'gsqName' - A descriptive label that is associated with game session queue. Queue names must be unique within each Region.
 gameSessionQueue
     :: GameSessionQueue
 gameSessionQueue
@@ -80,23 +78,23 @@ gameSessionQueue
                       _gsqTimeoutInSeconds = Nothing,
                       _gsqDestinations = Nothing, _gsqName = Nothing}
 
--- | Amazon Resource Name (<http://docs.aws.amazon.com/AmazonS3/latest/dev/s3-arn-format.html ARN> ) that is assigned to a game session queue and uniquely identifies it. Format is @arn:aws:gamelift:<region>::fleet/fleet-a1234567-b8c9-0d1e-2fa3-b45c6d7e8912@ .
+-- | Amazon Resource Name (<https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html ARN> ) that is assigned to a GameLift game session queue resource and uniquely identifies it. ARNs are unique across all Regions. In a GameLift game session queue ARN, the resource ID matches the /Name/ value.
 gsqGameSessionQueueARN :: Lens' GameSessionQueue (Maybe Text)
 gsqGameSessionQueueARN = lens _gsqGameSessionQueueARN (\ s a -> s{_gsqGameSessionQueueARN = a})
 
--- | Collection of latency policies to apply when processing game sessions placement requests with player latency information. Multiple policies are evaluated in order of the maximum latency value, starting with the lowest latency values. With just one policy, it is enforced at the start of the game session placement for the duration period. With multiple policies, each policy is enforced consecutively for its duration period. For example, a queue might enforce a 60-second policy followed by a 120-second policy, and then no policy for the remainder of the placement. 
+-- | A collection of latency policies to apply when processing game sessions placement requests with player latency information. Multiple policies are evaluated in order of the maximum latency value, starting with the lowest latency values. With just one policy, the policy is enforced at the start of the game session placement for the duration period. With multiple policies, each policy is enforced consecutively for its duration period. For example, a queue might enforce a 60-second policy followed by a 120-second policy, and then no policy for the remainder of the placement. 
 gsqPlayerLatencyPolicies :: Lens' GameSessionQueue [PlayerLatencyPolicy]
 gsqPlayerLatencyPolicies = lens _gsqPlayerLatencyPolicies (\ s a -> s{_gsqPlayerLatencyPolicies = a}) . _Default . _Coerce
 
--- | Maximum time, in seconds, that a new game session placement request remains in the queue. When a request exceeds this time, the game session placement changes to a @TIMED_OUT@ status.
+-- | The maximum time, in seconds, that a new game session placement request remains in the queue. When a request exceeds this time, the game session placement changes to a @TIMED_OUT@ status.
 gsqTimeoutInSeconds :: Lens' GameSessionQueue (Maybe Natural)
 gsqTimeoutInSeconds = lens _gsqTimeoutInSeconds (\ s a -> s{_gsqTimeoutInSeconds = a}) . mapping _Nat
 
--- | List of fleets that can be used to fulfill game session placement requests in the queue. Fleets are identified by either a fleet ARN or a fleet alias ARN. Destinations are listed in default preference order.
+-- | A list of fleets that can be used to fulfill game session placement requests in the queue. Fleets are identified by either a fleet ARN or a fleet alias ARN. Destinations are listed in default preference order.
 gsqDestinations :: Lens' GameSessionQueue [GameSessionQueueDestination]
 gsqDestinations = lens _gsqDestinations (\ s a -> s{_gsqDestinations = a}) . _Default . _Coerce
 
--- | Descriptive label that is associated with game session queue. Queue names must be unique within each region.
+-- | A descriptive label that is associated with game session queue. Queue names must be unique within each Region.
 gsqName :: Lens' GameSessionQueue (Maybe Text)
 gsqName = lens _gsqName (\ s a -> s{_gsqName = a})
 

@@ -21,7 +21,7 @@ import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.RDS.Types.RecurringCharge
 
--- | This data type is used as a response element in the 'DescribeReservedDBInstancesOfferings' action. 
+-- | This data type is used as a response element in the @DescribeReservedDBInstancesOfferings@ action. 
 --
 --
 --

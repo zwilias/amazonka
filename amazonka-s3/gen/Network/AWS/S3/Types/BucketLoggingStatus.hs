@@ -22,7 +22,11 @@ import Network.AWS.Prelude
 import Network.AWS.S3.Internal
 import Network.AWS.S3.Types.LoggingEnabled
 
--- | /See:/ 'bucketLoggingStatus' smart constructor.
+-- | Container for logging status information.
+--
+--
+--
+-- /See:/ 'bucketLoggingStatus' smart constructor.
 newtype BucketLoggingStatus = BucketLoggingStatus'{_blsLoggingEnabled
                                                    :: Maybe LoggingEnabled}
                                 deriving (Eq, Read, Show, Data, Typeable,

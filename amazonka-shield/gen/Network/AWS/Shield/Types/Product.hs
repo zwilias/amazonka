@@ -22,6 +22,8 @@ module Network.AWS.Shield.Types.Product (
     module Network.AWS.Shield.Types.AttackSummary,
     module Network.AWS.Shield.Types.AttackVectorDescription,
     module Network.AWS.Shield.Types.Contributor,
+    module Network.AWS.Shield.Types.EmergencyContact,
+    module Network.AWS.Shield.Types.Limit,
     module Network.AWS.Shield.Types.Mitigation,
     module Network.AWS.Shield.Types.Protection,
     module Network.AWS.Shield.Types.SubResourceSummary,
@@ -38,6 +40,8 @@ import Network.AWS.Shield.Types.AttackProperty
 import Network.AWS.Shield.Types.AttackSummary
 import Network.AWS.Shield.Types.AttackVectorDescription
 import Network.AWS.Shield.Types.Contributor
+import Network.AWS.Shield.Types.EmergencyContact
+import Network.AWS.Shield.Types.Limit
 import Network.AWS.Shield.Types.Mitigation
 import Network.AWS.Shield.Types.Protection
 import Network.AWS.Shield.Types.SubResourceSummary

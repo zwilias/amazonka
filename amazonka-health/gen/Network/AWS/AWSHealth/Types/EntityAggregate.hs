@@ -36,7 +36,7 @@ data EntityAggregate = EntityAggregate'{_eCount ::
 --
 -- * 'eCount' - The number entities that match the criteria for the specified events.
 --
--- * 'eEventARN' - The unique identifier for the event. Format: @arn:aws:health:/event-region/ ::event//EVENT_TYPE_PLUS_ID/ @ . Example: @arn:aws:health:us-east-1::event/AWS_EC2_MAINTENANCE_5331@ 
+-- * 'eEventARN' - The unique identifier for the event. Format: @arn:aws:health:/event-region/ ::event//SERVICE/ //EVENT_TYPE_CODE/ //EVENT_TYPE_PLUS_ID/ @ . Example: @Example: arn:aws:health:us-east-1::event/EC2/EC2_INSTANCE_RETIREMENT_SCHEDULED/EC2_INSTANCE_RETIREMENT_SCHEDULED_ABC123-DEF456@ 
 entityAggregate
     :: EntityAggregate
 entityAggregate
@@ -47,7 +47,7 @@ entityAggregate
 eCount :: Lens' EntityAggregate (Maybe Int)
 eCount = lens _eCount (\ s a -> s{_eCount = a})
 
--- | The unique identifier for the event. Format: @arn:aws:health:/event-region/ ::event//EVENT_TYPE_PLUS_ID/ @ . Example: @arn:aws:health:us-east-1::event/AWS_EC2_MAINTENANCE_5331@ 
+-- | The unique identifier for the event. Format: @arn:aws:health:/event-region/ ::event//SERVICE/ //EVENT_TYPE_CODE/ //EVENT_TYPE_PLUS_ID/ @ . Example: @Example: arn:aws:health:us-east-1::event/EC2/EC2_INSTANCE_RETIREMENT_SCHEDULED/EC2_INSTANCE_RETIREMENT_SCHEDULED_ABC123-DEF456@ 
 eEventARN :: Lens' EntityAggregate (Maybe Text)
 eEventARN = lens _eEventARN (\ s a -> s{_eEventARN = a})
 

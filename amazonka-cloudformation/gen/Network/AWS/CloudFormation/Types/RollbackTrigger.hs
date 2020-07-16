@@ -36,7 +36,7 @@ data RollbackTrigger = RollbackTrigger'{_rtARN ::
 --
 -- * 'rtARN' - The Amazon Resource Name (ARN) of the rollback trigger. If a specified trigger is missing, the entire stack operation fails and is rolled back. 
 --
--- * 'rtType' - The resource type of the rollback trigger. Currently, <http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cw-alarm.html AWS::CloudWatch::Alarm> is the only supported resource type.
+-- * 'rtType' - The resource type of the rollback trigger. Currently, <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cw-alarm.html AWS::CloudWatch::Alarm> is the only supported resource type.
 rollbackTrigger
     :: Text -- ^ 'rtARN'
     -> Text -- ^ 'rtType'
@@ -48,7 +48,7 @@ rollbackTrigger pARN_ pType_
 rtARN :: Lens' RollbackTrigger Text
 rtARN = lens _rtARN (\ s a -> s{_rtARN = a})
 
--- | The resource type of the rollback trigger. Currently, <http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cw-alarm.html AWS::CloudWatch::Alarm> is the only supported resource type.
+-- | The resource type of the rollback trigger. Currently, <https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cw-alarm.html AWS::CloudWatch::Alarm> is the only supported resource type.
 rtType :: Lens' RollbackTrigger Text
 rtType = lens _rtType (\ s a -> s{_rtType = a})
 
